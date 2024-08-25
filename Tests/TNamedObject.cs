@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 using NUnit.Framework;
-
+using NUnit.Framework.Legacy;
 using SpaceAge;
 
 namespace UnitTests
@@ -34,13 +34,13 @@ namespace UnitTests
 		[Test]
 		public void SetupTeardown()
 		{
-			Assert.IsTrue(true);
+			ClassicAssert.IsTrue(true);
 		}
 
 		[Test]
 		public void RandomId()
 		{
-			Assert.AreNotEqual(this.named.GenerateRandomIdentifier(), this.named.GenerateRandomIdentifier());
+			ClassicAssert.AreNotEqual(this.named.GenerateRandomIdentifier(), this.named.GenerateRandomIdentifier());
 		}
 
 	}

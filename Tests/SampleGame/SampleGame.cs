@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using NUnit.Framework;
-
+using NUnit.Framework.Legacy;
 using SpaceAge;
 using UnitTests;
 
@@ -27,7 +27,7 @@ namespace IntegrationTests
 		}
 
 		[SetUp]
-		public void setupGame()
+		public void SetupGame()
 		{
 			this.testDir = string.Concat(Directory.GetCurrentDirectory(), "/SampleGame");
 			this.confDir = Directory.GetCurrentDirectory();
@@ -36,7 +36,7 @@ namespace IntegrationTests
 		}
 
 		[TearDown]
-		public void teardownGame()
+		public void TeardownGame()
 		{
 			this.game.ClearDictionaries();
 			this.game = null;
@@ -46,7 +46,7 @@ namespace IntegrationTests
 		[Test]
 		public void SetupTeardown()
 		{
-			Assert.IsTrue(true);
+			ClassicAssert.IsTrue(true);
 		}
 
 		public void LoadGalaxy(string gameinFileName)
@@ -58,15 +58,15 @@ namespace IntegrationTests
             this.dataFile.LoadOrders();
 
             this.game = this.dataFile.Game;
-			Assert.IsNotNull(this.game.Galaxy);
-			Assert.AreEqual(1, this.game.Galaxy.SpaceSystems.Count);
-			Assert.AreEqual("Sol", this.game.Galaxy.SpaceSystems[0].FullName);
+			ClassicAssert.IsNotNull(this.game.Galaxy);
+			ClassicAssert.AreEqual(1, this.game.Galaxy.SpaceSystems.Count);
+			ClassicAssert.AreEqual("Sol", this.game.Galaxy.SpaceSystems[0].FullName);
 
 			SpaceSystem system = this.game.Galaxy.SpaceSystems[0];
-			Assert.IsNotNull(system.Objects);
-			Assert.AreEqual(2, system.Objects.Count);
-			Assert.IsInstanceOf(typeof(Star), system.Objects["S00001"]);
-			Assert.IsInstanceOf(typeof(Planet), system.Objects["P00001"]);
+			ClassicAssert.IsNotNull(system.Objects);
+			ClassicAssert.AreEqual(2, system.Objects.Count);
+			ClassicAssert.IsInstanceOf(typeof(Star), system.Objects["S00001"]);
+			ClassicAssert.IsInstanceOf(typeof(Planet), system.Objects["P00001"]);
 		}
 
 
@@ -509,9 +509,9 @@ namespace IntegrationTests
                 {
                     Console.WriteLine(reportLines[i]);
                 }
-                Assert.AreEqual(testLines[i], reportLines[i], "error in line " + i + ": " + reportLines[i]);
+                ClassicAssert.AreEqual(testLines[i], reportLines[i], "error in line " + i + ": " + reportLines[i]);
 			}
-			Assert.AreEqual(testLines.Count, reportLines.Count);
+			ClassicAssert.AreEqual(testLines.Count, reportLines.Count);
 		}
 
 		private void parseOrders(string filename)
@@ -591,7 +591,7 @@ namespace IntegrationTests
             this.copyFile("gameout.2_saved.xml", "gamein.3.xml");
 		}
 
-		[Test, Ignore]
+		[Test, Ignore("not ready")]
 		public void ExecuteTurn3()
 		{
 			this.dataFile.LoadGameDocument(Directory.GetCurrentDirectory(), "SampleGame/gamein.3.xml");
@@ -606,7 +606,7 @@ namespace IntegrationTests
 			// city build a ship
 		}
 
-		[Test, Ignore]
+		[Test, Ignore("not ready")]
 		public void ExecuteTurn4()
 		{
 			this.dataFile.LoadGameDocument(Directory.GetCurrentDirectory(), "SampleGame/gamein.4.xml");
@@ -623,7 +623,7 @@ namespace IntegrationTests
             
 		}
 
-		[Test, Ignore]
+		[Test, Ignore("not ready")]
 		public void ExecuteTurn5()
 		{
 			this.dataFile.LoadGameDocument(Directory.GetCurrentDirectory(), "SampleGame/gamein.5.xml");

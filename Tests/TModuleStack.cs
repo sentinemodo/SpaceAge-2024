@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 using NUnit.Framework;
-
+using NUnit.Framework.Legacy;
 using SpaceAge;
 
 namespace UnitTests
@@ -47,7 +47,7 @@ namespace UnitTests
 		[Test]
 		public void SetupTeardown()
 		{
-			Assert.IsTrue(true);
+			ClassicAssert.IsTrue(true);
 		}
 
 		[Test]
@@ -59,8 +59,8 @@ namespace UnitTests
 			this.moduleStack.AddModule();
 			this.moduleStack.AddModule();
 			this.moduleStack.AddModule();
-			Assert.AreEqual(10, this.moduleType.Size);		
-			Assert.AreEqual(50, this.moduleStack.Size);		
+			ClassicAssert.AreEqual(10, this.moduleType.Size);		
+			ClassicAssert.AreEqual(50, this.moduleStack.Size);		
 		}
 
 		[Test]
@@ -72,8 +72,8 @@ namespace UnitTests
 			this.moduleStack.AddModule();
 			this.moduleStack.AddModule();
 			this.moduleStack.AddModule();
-			Assert.AreEqual(10, this.moduleType.TechnologyCapacity);
-			Assert.AreEqual(10, this.moduleStack.TechnologyCapacity);
+			ClassicAssert.AreEqual(10, this.moduleType.TechnologyCapacity);
+			ClassicAssert.AreEqual(10, this.moduleStack.TechnologyCapacity);
 		}
 
 		[Test]
@@ -88,21 +88,21 @@ namespace UnitTests
 			this.moduleStack.AddModule();
 			this.moduleStack.AddModule();
 			this.moduleStack.AddModule();
-			Assert.AreEqual(10, this.moduleType.Consume[itemType].Quantity);
-			Assert.AreEqual(50, this.moduleStack.Consume[itemType].Quantity);
+			ClassicAssert.AreEqual(10, this.moduleType.Consume[itemType].Quantity);
+			ClassicAssert.AreEqual(50, this.moduleStack.Consume[itemType].Quantity);
 		}
 
 		[Test]
 		public void AlltheSame()
 		{
-			Assert.AreSame(this.moduleStack, ModuleStack.All[this.region][this.moduleStack.Name]);
-			Assert.AreSame(this.moduleStack, ModuleStack.All[this.faction][this.moduleStack.Name]);
-			Assert.AreSame(this.moduleStack, ModuleStack.All[this.moduleStack.Name]);
+			ClassicAssert.AreSame(this.moduleStack, ModuleStack.All[this.region][this.moduleStack.Name]);
+			ClassicAssert.AreSame(this.moduleStack, ModuleStack.All[this.faction][this.moduleStack.Name]);
+			ClassicAssert.AreSame(this.moduleStack, ModuleStack.All[this.moduleStack.Name]);
 			this.moduleStack.AddModule();
 			this.moduleStack.AddModule();
-			Assert.AreEqual(2, ModuleStack.All[this.region][this.moduleStack.Name].Quantity);
-			Assert.AreEqual(2, ModuleStack.All[this.faction][this.moduleStack.Name].Quantity);
-			Assert.AreEqual(2, ModuleStack.All[this.moduleStack.Name].Quantity);
+			ClassicAssert.AreEqual(2, ModuleStack.All[this.region][this.moduleStack.Name].Quantity);
+			ClassicAssert.AreEqual(2, ModuleStack.All[this.faction][this.moduleStack.Name].Quantity);
+			ClassicAssert.AreEqual(2, ModuleStack.All[this.moduleStack.Name].Quantity);
 		}
 
 		[Test]
@@ -130,22 +130,22 @@ namespace UnitTests
 		public void ModuleStackVisibleByNPCFaction()
 		{
 			Faction faction = new Faction("1", "NPC");
-			Assert.IsTrue(this.moduleStack.Visible(faction));
+			ClassicAssert.IsTrue(this.moduleStack.Visible(faction));
 		}
 
 		[Test]
 		public void ModuleStackVisibleByOwnerFaction()
 		{
-			Assert.AreEqual(this.region.Name, this.moduleStack.Location.Name, "this are not the same locations");
-			Assert.AreEqual(this.region.ModuleStacks.Count, 1, "more than 1 modulestack");
-			Assert.IsTrue(this.moduleStack.Visible(this.faction));
+			ClassicAssert.AreEqual(this.region.Name, this.moduleStack.Location.Name, "this are not the same locations");
+			ClassicAssert.AreEqual(this.region.ModuleStacks.Count, 1, "more than 1 modulestack");
+			ClassicAssert.IsTrue(this.moduleStack.Visible(this.faction));
 		}
 
 		[Test]
 		public void ModuleStackNotVisibleByFaction()
 		{
 			Faction otherFaction = new Faction("2", "otherFaction");
-			Assert.IsFalse(this.moduleStack.Visible(otherFaction));
+			ClassicAssert.IsFalse(this.moduleStack.Visible(otherFaction));
 		}
 
 		[Test]
@@ -153,7 +153,7 @@ namespace UnitTests
 		{
 			Faction otherFaction = new Faction("2", "otherFaction");
 			ModuleStack otherModuleStack = new ModuleStack(this.region, otherFaction, this.moduleType, "otherModuleStack");
-			Assert.IsTrue(this.moduleStack.Visible(otherFaction));
+			ClassicAssert.IsTrue(this.moduleStack.Visible(otherFaction));
 		}
 
 	}

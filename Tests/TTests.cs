@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using NUnit.Framework;
 using NUnit.Core;
+using NUnit.Framework.Legacy;
 
 namespace UnitTests
 {
@@ -17,7 +18,7 @@ namespace UnitTests
         [Test]
         public void SetupTeardown()
         {
-            Assert.IsTrue(true);
+            ClassicAssert.IsTrue(true);
         }
     }
 }

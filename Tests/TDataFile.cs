@@ -6,6 +6,7 @@ using NUnit.Framework;
 
 using SpaceAge;
 using System.Xml;
+using NUnit.Framework.Legacy;
 
 namespace UnitTests
 {
@@ -42,14 +43,18 @@ namespace UnitTests
 		[Test]
 		public void SetupTeardown()
 		{
-			Assert.IsTrue(true);
+			ClassicAssert.IsTrue(true);
 		}
 
-		[Test, ExpectedException(typeof(ArgumentNullException))]
+		[Test]
 		public void LoadGameData_nullparameter()
 		{
-			this.dataFile = new DataFile(null);
-			this.dataFile.LoadGame();
+			Assert.Throws<ArgumentNullException>(
+				delegate
+				{
+					this.dataFile = new DataFile(null);
+					this.dataFile.LoadGame();
+				});
 		}
 
 		[Test]
@@ -65,12 +70,12 @@ namespace UnitTests
 			this.LoadGameDocument();
 			this.dataFile.LoadFactions();
 			this.game = this.dataFile.Game;
-			Assert.IsNotNull(this.game.Factions);
-			Assert.AreEqual(2, this.game.Factions.Count);
-			Assert.AreEqual("1", this.game.Factions["1"].Name);
-			Assert.AreEqual("NPC", this.game.Factions["1"].FullName);
-			Assert.AreEqual("2", this.game.Factions["2"].Name);
-			Assert.AreEqual("Caste Prime", this.game.Factions["2"].FullName);
+			ClassicAssert.IsNotNull(this.game.Factions);
+			ClassicAssert.AreEqual(2, this.game.Factions.Count);
+			ClassicAssert.AreEqual("1", this.game.Factions["1"].Name);
+			ClassicAssert.AreEqual("NPC", this.game.Factions["1"].FullName);
+			ClassicAssert.AreEqual("2", this.game.Factions["2"].Name);
+			ClassicAssert.AreEqual("Caste Prime", this.game.Factions["2"].FullName);
 		}
 
 		[Test]
@@ -80,10 +85,14 @@ namespace UnitTests
 			this.dataFile.LoadConfDocument(Directory.GetCurrentDirectory());
 		}
 
-		[Test, ExpectedException(typeof(InvalidOperationException))]
+		[Test]
 		public void LoadGameData_invalidOperation()
 		{
-			this.dataFile.LoadGame();
+			Assert.Throws<InvalidOperationException>(
+				delegate
+				{
+					this.dataFile.LoadGame();
+				});
 		}
 
 
@@ -95,16 +104,16 @@ namespace UnitTests
 			this.dataFile.LoadFactions();
 			this.dataFile.LoadGalaxy();
 			this.game = this.dataFile.Game;
-			Assert.IsNotNull(this.game.Galaxy);
-			Assert.AreEqual(2, this.game.Galaxy.SpaceSystems.Count);
-			Assert.AreEqual("Sol", this.game.Galaxy.SpaceSystems[0].FullName);
-			Assert.AreEqual("Proxima Centauri", this.game.Galaxy.SpaceSystems[1].FullName);
+			ClassicAssert.IsNotNull(this.game.Galaxy);
+			ClassicAssert.AreEqual(2, this.game.Galaxy.SpaceSystems.Count);
+			ClassicAssert.AreEqual("Sol", this.game.Galaxy.SpaceSystems[0].FullName);
+			ClassicAssert.AreEqual("Proxima Centauri", this.game.Galaxy.SpaceSystems[1].FullName);
 
 			SpaceSystem system = this.game.Galaxy.SpaceSystems[0];
-			Assert.IsNotNull(system.Objects);
-			Assert.AreEqual(3, system.Objects.Count);
-			Assert.IsInstanceOf(typeof(Star), system.Objects["S00001"]);
-			Assert.IsInstanceOf(typeof(Planet), system.Objects["P00001"]);
+			ClassicAssert.IsNotNull(system.Objects);
+			ClassicAssert.AreEqual(3, system.Objects.Count);
+			ClassicAssert.IsInstanceOf(typeof(Star), system.Objects["S00001"]);
+			ClassicAssert.IsInstanceOf(typeof(Planet), system.Objects["P00001"]);
 		}
 
 		[Test]
@@ -122,11 +131,11 @@ namespace UnitTests
 			this.dataFile.LoadGalaxy();
 			this.game = this.dataFile.Game;
 			Region region = Region.All["R00001"];
-			Assert.IsNotNull(region);
-			Assert.AreEqual(1, region.Exits.Count);
-			Assert.AreEqual(Region.All["R00002"], region.Exits[0].To);
-			Assert.IsNotNull(region.Exits[0].ExitModes[EMoveMode.ground]);
-			Assert.AreEqual(3, region.Exits[0].ExitModes[EMoveMode.ground].Duration);
+			ClassicAssert.IsNotNull(region);
+			ClassicAssert.AreEqual(1, region.Exits.Count);
+			ClassicAssert.AreEqual(Region.All["R00002"], region.Exits[0].To);
+			ClassicAssert.IsNotNull(region.Exits[0].ExitModes[EMoveMode.ground]);
+			ClassicAssert.AreEqual(3, region.Exits[0].ExitModes[EMoveMode.ground].Duration);
 		}
 
 		[Test]
@@ -135,12 +144,12 @@ namespace UnitTests
 			this.LoadGameDocument();
 			this.dataFile.LoadConfiguration();
 			ItemType itemtype = this.game.ItemTypes["iron"];
-			Assert.IsNotNull(itemtype);
-			Assert.AreEqual("iron", itemtype.Name);
-			Assert.AreEqual("unit of iron", itemtype.FullName);
-			Assert.AreEqual("units of iron", itemtype.FullNameMultiple);
-			Assert.AreEqual("unit of iron [iron]", itemtype.ReportName);
-			Assert.AreEqual("units of iron [iron]", itemtype.ReportNameMultiple);
+			ClassicAssert.IsNotNull(itemtype);
+			ClassicAssert.AreEqual("iron", itemtype.Name);
+			ClassicAssert.AreEqual("unit of iron", itemtype.FullName);
+			ClassicAssert.AreEqual("units of iron", itemtype.FullNameMultiple);
+			ClassicAssert.AreEqual("unit of iron [iron]", itemtype.ReportName);
+			ClassicAssert.AreEqual("units of iron [iron]", itemtype.ReportNameMultiple);
 		}
 
 		[Test]
@@ -152,16 +161,16 @@ namespace UnitTests
 			this.dataFile.LoadGalaxy();
 			this.game = this.dataFile.Game;
 			ItemType itemType = ItemType.All["terran"];
-			Assert.IsNotNull(itemType);
-			Assert.AreEqual(EItemTypesGroup.crew, itemType.Group);
+			ClassicAssert.IsNotNull(itemType);
+			ClassicAssert.AreEqual(EItemTypesGroup.crew, itemType.Group);
 			Race race = Race.All["terran"];
-			Assert.IsNotNull(race);
-			Assert.AreEqual(4, race.Size);
-			Assert.AreEqual(4, race.Mass);
-			Assert.AreEqual(3, race.Capacity);
+			ClassicAssert.IsNotNull(race);
+			ClassicAssert.AreEqual(4, race.Size);
+			ClassicAssert.AreEqual(4, race.Mass);
+			ClassicAssert.AreEqual(3, race.Capacity);
 			Person person = Person.All["200001"];
-			Assert.IsNotNull(person);
-			Assert.AreEqual(race, person.Race);			
+			ClassicAssert.IsNotNull(person);
+			ClassicAssert.AreEqual(race, person.Race);			
 		}
 
 		[Test]
@@ -170,34 +179,34 @@ namespace UnitTests
 			this.LoadGameDocument();
 			this.dataFile.LoadConfiguration();
 			ModuleType moduleType = ModuleType.All["cdrill"];
-			Assert.IsNotNull(moduleType);
+			ClassicAssert.IsNotNull(moduleType);
 			ItemType itemType = ItemType.All["cash"];
-			Assert.AreEqual(40, moduleType.Upkeep[itemType].Quantity);
+			ClassicAssert.AreEqual(40, moduleType.Upkeep[itemType].Quantity);
 
 			ItemType crewType = ItemType.All["terran"];
-			Assert.AreEqual(1, crewType.Upkeep[itemType].Quantity);
+			ClassicAssert.AreEqual(1, crewType.Upkeep[itemType].Quantity);
 
 			ItemStack crewStack = new ItemStack(crewType, 6);
-			Assert.AreEqual(6, crewStack.Quantity);
-			Assert.AreEqual(6, crewStack.Upkeep[itemType].Quantity);
+			ClassicAssert.AreEqual(6, crewStack.Quantity);
+			ClassicAssert.AreEqual(6, crewStack.Upkeep[itemType].Quantity);
 
 			ItemStacks itemStacks = new ItemStacks();
 			itemStacks.Add(crewStack);
-			Assert.AreEqual(6, itemStacks[crewType].Quantity);
+			ClassicAssert.AreEqual(6, itemStacks[crewType].Quantity);
 
 			ItemStack itemStack2 = itemStacks[crewType];
-			Assert.AreEqual(6, itemStack2.Quantity);
-			Assert.AreEqual(6, itemStack2.Upkeep[itemType].Quantity);
-			Assert.AreEqual(6, itemStacks[crewType].Upkeep[itemType].Quantity);
+			ClassicAssert.AreEqual(6, itemStack2.Quantity);
+			ClassicAssert.AreEqual(6, itemStack2.Upkeep[itemType].Quantity);
+			ClassicAssert.AreEqual(6, itemStacks[crewType].Upkeep[itemType].Quantity);
 
 			ModuleStack moduleStack = new ModuleStack(null, null, moduleType, "000000");
 			moduleStack.AddModule();
 			moduleStack.ItemStacks.Add(crewStack);
-			Assert.AreEqual(40, moduleStack.UpkeepNetto[itemType].Quantity);
-			Assert.AreEqual(6, moduleStack.ItemStacks[crewType].Quantity);
-			Assert.AreEqual(1, moduleStack.ItemStacks[crewType].Upkeep.Count);
-			Assert.AreEqual(6, moduleStack.ItemStacks[crewType].Upkeep[itemType].Quantity);
-			Assert.AreEqual(40 + 6, moduleStack.Upkeep[itemType].Quantity);
+			ClassicAssert.AreEqual(40, moduleStack.UpkeepNetto[itemType].Quantity);
+			ClassicAssert.AreEqual(6, moduleStack.ItemStacks[crewType].Quantity);
+			ClassicAssert.AreEqual(1, moduleStack.ItemStacks[crewType].Upkeep.Count);
+			ClassicAssert.AreEqual(6, moduleStack.ItemStacks[crewType].Upkeep[itemType].Quantity);
+			ClassicAssert.AreEqual(40 + 6, moduleStack.Upkeep[itemType].Quantity);
 		}
 
 		[Test]
@@ -206,11 +215,11 @@ namespace UnitTests
 			this.LoadGameDocument();
 			this.dataFile.LoadConfiguration();
 			Technology technology = Technology.All["agrplx"];
-			Assert.IsNotNull(technology);
+			ClassicAssert.IsNotNull(technology);
 			ItemType itemType = ItemType.All["iron"];
 
-			Assert.AreEqual(1, technology.UseConsumeItems.Count);
-			Assert.AreEqual(10, technology.UseConsumeItems[itemType].Quantity);
+			ClassicAssert.AreEqual(1, technology.UseConsumeItems.Count);
+			ClassicAssert.AreEqual(10, technology.UseConsumeItems[itemType].Quantity);
 		}
 
 		[Test]
@@ -222,28 +231,35 @@ namespace UnitTests
 			this.dataFile.LoadGalaxy();
 			this.game = this.dataFile.Game;
 			ModuleStack moduleStack = ModuleStack.All["000006"];			
-			Assert.IsNotNull(moduleStack);
-			Assert.AreEqual(1, moduleStack.Technologies.Count);
+			ClassicAssert.IsNotNull(moduleStack);
+			ClassicAssert.AreEqual(1, moduleStack.Technologies.Count);
 			Technology technology = Technology.All["hcdril"];
-			Assert.IsNotNull(technology, "technology is not loaded");
-			Assert.IsNotNull(moduleStack.Technologies["hcdril"], "modulestack has not loaded the echnology");
+			ClassicAssert.IsNotNull(technology, "technology is not loaded");
+			ClassicAssert.IsNotNull(moduleStack.Technologies["hcdril"], "modulestack has not loaded the echnology");
 		}
 
-		[Test, ExpectedException(typeof(Exception))]
+		[Test]
 		public void LoadDoubleModuleStack()
-		{                        
-            this.dataFile.LoadGameDocument(Directory.GetCurrentDirectory(), "gamein.double.xml");
-			this.dataFile.LoadConfiguration();
-			this.dataFile.LoadFactions();
-			try {
-				this.dataFile.LoadGalaxy();
-			}
-			catch (Exception ex) 
-			{
-				Assert.AreEqual("Modulestack with name [000001] already exists", ex.InnerException.InnerException.Message);
-				throw ex;				
-			}
-            this.consoleOutReport("loaded region", Region.All["R10001"], Faction.All["1"]);
+		{
+			Assert.Throws<Exception>(
+				delegate
+				{
+					this.dataFile.LoadGameDocument(Directory.GetCurrentDirectory(), "gamein.double.xml");
+					this.dataFile.LoadConfiguration();
+					this.dataFile.LoadFactions();
+					try
+					{
+						this.dataFile.LoadGalaxy();
+					}
+					catch (Exception ex)
+					{
+						ClassicAssert.AreEqual(
+                            "Modulestack with name [000001] already exists",
+                            ex.InnerException.InnerException.Message);
+						throw ex;
+					}
+					this.consoleOutReport("loaded region", Region.All["R10001"], Faction.All["1"]);
+				});
         }
 
 		[Test]
@@ -252,9 +268,9 @@ namespace UnitTests
 			this.LoadGameDocument();
 			this.dataFile.LoadConfiguration();
 			Race race = Race.All["terran"];
-			Assert.IsNotNull(race);
+			ClassicAssert.IsNotNull(race);
 			ItemType itemType = ItemType.All["cash"];
-			Assert.AreEqual(10, race.Upkeep[itemType].Quantity);
+			ClassicAssert.AreEqual(10, race.Upkeep[itemType].Quantity);
 		}
 
 		[Test]
@@ -267,9 +283,9 @@ namespace UnitTests
 			this.game = this.dataFile.Game;
 
 			Race race = Race.All["terran"];
-			Assert.IsNotNull(race);
+			ClassicAssert.IsNotNull(race);
 			Orbit orbit = Orbit.All["O00003"];
-			Assert.AreEqual(1, orbit.Races.Count);
+			ClassicAssert.AreEqual(1, orbit.Races.Count);
 
 		}
 
@@ -283,9 +299,9 @@ namespace UnitTests
 			this.game = this.dataFile.Game;
 
 			Planet planet = Planet.All["P00002"];
-			Assert.IsNotNull(planet);
-			Assert.AreEqual(6, planet.SurfaceSizeX);
-			Assert.AreEqual(4, planet.SurfaceSizeY);
+			ClassicAssert.IsNotNull(planet);
+			ClassicAssert.AreEqual(6, planet.SurfaceSizeX);
+			ClassicAssert.AreEqual(4, planet.SurfaceSizeY);
 
 		}
 
@@ -300,21 +316,21 @@ namespace UnitTests
 			this.game = this.dataFile.Game;
 
 			ModuleStack moduleStack = ModuleStack.All["100002"];
-			Assert.IsNotNull(moduleStack);
-			Assert.AreEqual(1, moduleStack.Orders.Count);
+			ClassicAssert.IsNotNull(moduleStack);
+			ClassicAssert.AreEqual(1, moduleStack.Orders.Count);
 			
 			MoveOrder order = (MoveOrder)moduleStack.Orders[0];
-			Assert.AreEqual(2, order.Route.Count);
+			ClassicAssert.AreEqual(2, order.Route.Count);
 
 		}
 
-		[Test, Ignore]
+		[Test, Ignore("not ready")]
 		public void SaveLoadUseOrder_withUseOrderInProgress_sameOrder()
 		{
 			Assert.Fail("don't know");
 		}
 		
-		[Test, Ignore]
+		[Test, Ignore("not ready")]
 		public void SaveLoadUseOrder_withUseOrderInProgress_newOrder()
 		{
 			Assert.Fail("don't know");
@@ -330,8 +346,8 @@ namespace UnitTests
             this.game = this.dataFile.Game;
 
             ModuleStack moduleStack = ModuleStack.All["100002"];
-            Assert.IsNotNull(moduleStack);
-            Assert.AreEqual(0, moduleStack.Orders.Count);
+            ClassicAssert.IsNotNull(moduleStack);
+            ClassicAssert.AreEqual(0, moduleStack.Orders.Count);
 
             Faction testFaction = this.game.Factions["2"];
 			ModuleStack testModuleStack = this.game.ModuleStacks["100001"];
@@ -347,10 +363,10 @@ namespace UnitTests
 			ordersReader.AssignOrders(testcommands);
 
 			GetOrder order = (GetOrder) testModuleStack.Orders[0];
-			Assert.AreEqual(1, order.Quantity);
-			Assert.AreEqual("iron", order.ItemType.Name);
-			Assert.AreEqual("core drill [000006]", order.Transferer.ReportName);
-            Assert.AreEqual(1, order.Repeat);
+			ClassicAssert.AreEqual(1, order.Quantity);
+			ClassicAssert.AreEqual("iron", order.ItemType.Name);
+			ClassicAssert.AreEqual("core drill [000006]", order.Transferer.ReportName);
+            ClassicAssert.AreEqual(1, order.Repeat);
 
             XmlDocument doc = new XmlDocument();
             doc.LoadXml("<game/>"); 
@@ -392,9 +408,9 @@ namespace UnitTests
             for (int i = 0; i < testlines.Count; i++)
             {
                 Console.WriteLine(testlines[i]);
-                Assert.AreEqual(testlines[i], generatedFile[i]);
+                ClassicAssert.AreEqual(testlines[i], generatedFile[i]);
             }
-            Assert.AreEqual(testlines.Count, generatedFile.Count);
+            ClassicAssert.AreEqual(testlines.Count, generatedFile.Count);
 
         }
 

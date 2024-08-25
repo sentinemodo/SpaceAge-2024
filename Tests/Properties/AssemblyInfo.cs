@@ -8,9 +8,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Tests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Ernst&Young")]
 [assembly: AssemblyProduct("Tests")]
-[assembly: AssemblyCopyright("Copyright © Ernst&Young 2007")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

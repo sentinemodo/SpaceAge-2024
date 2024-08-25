@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using NUnit.Framework;
-
+using NUnit.Framework.Legacy;
 using SpaceAge;
 using UnitTests;
 
@@ -37,7 +37,7 @@ namespace IntegrationTests
 		[Test]
 		public void SetupTeardown()
 		{
-			Assert.IsTrue(true);
+			ClassicAssert.IsTrue(true);
 		}
 
 		[Test]
@@ -96,9 +96,9 @@ namespace IntegrationTests
 
 			for (int i = 0; i < lines.Count; i++)
 			{
-				Assert.AreEqual(testlines[i], lines[i], "line number " + i);
+				ClassicAssert.AreEqual(testlines[i], lines[i], "line number " + i);
 			}
-			Assert.AreEqual(testlines.Count, lines.Count);			
+			ClassicAssert.AreEqual(testlines.Count, lines.Count);			
 		}
 
 		[Test]
@@ -139,9 +139,9 @@ namespace IntegrationTests
 
 			for (int i = 0; i < lines.Count; i++)
 			{
-				Assert.AreEqual(testlines[i], lines[i], "error in line " + i);
+				ClassicAssert.AreEqual(testlines[i], lines[i], "error in line " + i);
 			}
-			Assert.AreEqual(testlines.Count, lines.Count);
+			ClassicAssert.AreEqual(testlines.Count, lines.Count);
 		}
 
 		[Test]
@@ -204,9 +204,9 @@ namespace IntegrationTests
 
 			for (int i = 0; i < lines.Count; i++)
 			{
-				Assert.AreEqual(testlines[i], lines[i]);
+				ClassicAssert.AreEqual(testlines[i], lines[i]);
 			}
-			Assert.AreEqual(testlines.Count, lines.Count);
+			ClassicAssert.AreEqual(testlines.Count, lines.Count);
 		}
 
 		[Test]
@@ -261,9 +261,9 @@ namespace IntegrationTests
 
 			for (int i = 0; i < lines.Count; i++)
 			{
-				Assert.AreEqual(testlines1[i], lines[i]);
+				ClassicAssert.AreEqual(testlines1[i], lines[i]);
 			}
-			Assert.AreEqual(testlines1.Count, lines.Count);
+			ClassicAssert.AreEqual(testlines1.Count, lines.Count);
 
 			List<string> testlines2 = new List<string>();			
 			testlines2.Add(string.Format("+ farming complex [{0}], farming complex [farms], disabled.", farmsStack.Name));
@@ -280,9 +280,9 @@ namespace IntegrationTests
 
 			for (int i = 0; i < lines.Count; i++)
 			{
-				Assert.AreEqual(testlines2[i], lines[i]);
+				ClassicAssert.AreEqual(testlines2[i], lines[i]);
 			}
-			Assert.AreEqual(testlines2.Count, lines.Count);
+			ClassicAssert.AreEqual(testlines2.Count, lines.Count);
 
 		}
 
@@ -468,9 +468,9 @@ namespace IntegrationTests
 
 			for (int i = 0; i < lines.Count; i++)
 			{
-				Assert.AreEqual(testlines[i], lines[i]);
+				ClassicAssert.AreEqual(testlines[i], lines[i]);
 			}
-			Assert.AreEqual(testlines.Count, lines.Count);
+			ClassicAssert.AreEqual(testlines.Count, lines.Count);
 		}
 
 		[Test]
@@ -635,9 +635,9 @@ namespace IntegrationTests
 
 			for (int i = 0; i < lines.Count; i++)
 			{
-				Assert.AreEqual(testlines[i], lines[i]);
+				ClassicAssert.AreEqual(testlines[i], lines[i]);
 			}
-			Assert.AreEqual(testlines.Count, lines.Count);
+			ClassicAssert.AreEqual(testlines.Count, lines.Count);
 		}
 
 		[Test]
@@ -659,9 +659,9 @@ namespace IntegrationTests
 
 			for (int i = 0; i < lines.Count; i++)
 			{
-				Assert.AreEqual(testlines[i], lines[i]);
+				ClassicAssert.AreEqual(testlines[i], lines[i]);
 			}
-			Assert.AreEqual(testlines.Count, lines.Count);
+			ClassicAssert.AreEqual(testlines.Count, lines.Count);
 		}
 
 		[Test]
@@ -695,14 +695,14 @@ namespace IntegrationTests
 
 			OrdersReader ordersReader = new OrdersReader(game);
 			ordersReader.AssignOrders(testcommands);
-			Assert.AreEqual(1, testModuleStack.Orders.Count);
+			ClassicAssert.AreEqual(1, testModuleStack.Orders.Count);
 
-			Assert.IsTrue(testModuleStack.Orders[0] is UseOrder);
+			ClassicAssert.IsTrue(testModuleStack.Orders[0] is UseOrder);
 			UseOrder useOrder = (UseOrder)testModuleStack.Orders[0];
-			Assert.AreEqual(Technology.All["agrplx"], useOrder.Technology);
-			Assert.AreEqual(1, useOrder.Repeat);
+			ClassicAssert.AreEqual(Technology.All["agrplx"], useOrder.Technology);
+			ClassicAssert.AreEqual(1, useOrder.Repeat);
 
-			Assert.AreEqual(4, Technology.All["agrplx"].UseTime);
+			ClassicAssert.AreEqual(4, Technology.All["agrplx"].UseTime);
 
 			testModuleStack.Execute(this.game.Week);
 			this.consoleOutReport("factory:", testModuleStack, testFaction);
@@ -725,7 +725,7 @@ namespace IntegrationTests
 
 			for (int i = 0; i < lines.Count; i++)
 			{
-				Assert.AreEqual(testlines[i], lines[i], "error in line " + i);
+				ClassicAssert.AreEqual(testlines[i], lines[i], "error in line " + i);
 			}
 
 		}
@@ -773,7 +773,7 @@ namespace IntegrationTests
 
 			for (int i = 0; i < lines.Count; i++)
 			{
-				Assert.AreEqual(testlines[i], lines[i], "error in line " + i);
+				ClassicAssert.AreEqual(testlines[i], lines[i], "error in line " + i);
 			}
 		}
 
@@ -793,13 +793,13 @@ namespace IntegrationTests
 
             OrdersReader ordersReader = new OrdersReader(game);
             ordersReader.AssignOrders(testcommands);
-            Assert.AreEqual(1, testModuleStack.Orders.Count);
+            ClassicAssert.AreEqual(1, testModuleStack.Orders.Count);
 
             this.consoleOutReport("orders:", testModuleStack.Orders, testFaction);
 
             List<string> lines = testModuleStack.Orders.Report(testFaction);
 
-            Assert.AreEqual("@produce energy", lines[0]);
+            ClassicAssert.AreEqual("@produce energy", lines[0]);
         }
 
         [Test]
@@ -883,7 +883,7 @@ namespace IntegrationTests
 
             for (int i = 0; i < lines.Count; i++)
             {
-                Assert.AreEqual(testlines[i], lines[i], "error in line " + i);
+                ClassicAssert.AreEqual(testlines[i], lines[i], "error in line " + i);
             }
 
             this.datafile.SaveGame(Directory.GetCurrentDirectory(), "gameout.marketsequence.xml");
@@ -912,7 +912,7 @@ namespace IntegrationTests
 
             for (int i = 0; i < lines.Count; i++)
             {
-                Assert.AreEqual(testlines[i], lines[i], "error in line " + i);
+                ClassicAssert.AreEqual(testlines[i], lines[i], "error in line " + i);
             }
         }
 

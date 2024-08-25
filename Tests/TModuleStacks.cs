@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 using NUnit.Framework;
-
+using NUnit.Framework.Legacy;
 using SpaceAge;
 
 namespace UnitTests
@@ -49,13 +49,13 @@ namespace UnitTests
 		[Test]
 		public void SetupTeardown()
 		{
-			Assert.IsTrue(true);
+			ClassicAssert.IsTrue(true);
 		}
 
 		[Test]
 		public void Count()
 		{
-			Assert.AreEqual(2, this.moduleStacks.Count);		
+			ClassicAssert.AreEqual(2, this.moduleStacks.Count);		
 		}
 
 		[Test]
@@ -72,15 +72,15 @@ namespace UnitTests
 		[Test]
 		public void OwnersList()
 		{
-			Assert.AreEqual(1, this.moduleStacks.Owners.Count);
-			Assert.AreEqual("testFaction", this.moduleStacks.Owners[0].Name);
+			ClassicAssert.AreEqual(1, this.moduleStacks.Owners.Count);
+			ClassicAssert.AreEqual("testFaction", this.moduleStacks.Owners[0].Name);
 
 			Faction faction2 = new Faction("testFaction2", "testFaction2");
 			this.moduleStacks.Add("testModuleStack 3", new ModuleStack(this.region, faction2, this.moduleType, "testModuleStack 3"));
 
-			Assert.AreEqual(2, this.moduleStacks.Owners.Count);
-			Assert.AreEqual("testFaction", this.moduleStacks.Owners[0].Name);
-			Assert.AreEqual("testFaction2", this.moduleStacks.Owners[1].Name);
+			ClassicAssert.AreEqual(2, this.moduleStacks.Owners.Count);
+			ClassicAssert.AreEqual("testFaction", this.moduleStacks.Owners[0].Name);
+			ClassicAssert.AreEqual("testFaction2", this.moduleStacks.Owners[1].Name);
 		}
 
 	}

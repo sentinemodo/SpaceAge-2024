@@ -611,7 +611,8 @@ namespace SpaceAge
             {
                 moduleStack = ModuleStack.All.GetOrCreateNewModuleStack(
                     Faction.All[elModuleStack.GetAttribute("faction")],
-                    elModuleStack.GetAttribute("name"));
+                    elModuleStack.GetAttribute("name"),
+					true);
                 moduleStack.Parent = holder;
                 moduleStack.LoadXml(elModuleStack);
             }

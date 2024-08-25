@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using NUnit.Framework;
+using NUnit.Framework.Legacy;
 
 namespace IntegrationTests
 {
@@ -17,7 +18,7 @@ namespace IntegrationTests
 		[Test]
 		public void SetupTeardown()
 		{
-			Assert.IsTrue(true);
+			ClassicAssert.IsTrue(true);
 		}
 	}
 }

@@ -1660,7 +1660,7 @@ namespace SpaceAge
 
             int modules = this.XMLAssignInteger(elModuleStack.GetAttribute("quantity"), 1); 
             
-            // here need to implment damage that currently does not transfers between turns
+            // TODO: here need to implement damage that currently does not transfers between turns
             for (int i = 0; i < modules; i++)
             {
                 this.AddModule();
