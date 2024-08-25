@@ -115,10 +115,12 @@ namespace SpaceAge
 
 		private List<string> reportHeader(Faction faction)
 		{
-			List<string> lines = new List<string>();
-			// lines.Add(string.Format("    * {0}.", this.ReportName));
-			lines.Add("  * Luna [P00003] (1, 0, 0), moon, unexplored.");
-			lines.Add("------------------------------------------------------------");
+			List<string> lines = new List<string>
+            {
+                // lines.Add(string.Format("    * {0}.", this.ReportName));
+                "  * Luna [P00003] (1, 0, 0), moon, unexplored.",
+                "------------------------------------------------------------"
+            };
 			return lines;
 		}
 

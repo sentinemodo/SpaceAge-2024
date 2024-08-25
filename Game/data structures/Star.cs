@@ -73,11 +73,12 @@ namespace SpaceAge
 
 		public override List<string> Report(Faction faction)
 		{
-			List<string> reportLines = new List<string>();
-
-			reportLines.Add("");
-			reportLines.Add("  * Sol [S00001] (0, 0, 0), M4 star, unexplored.");
-			reportLines.Add("------------------------------------------------------------");
+			List<string> reportLines = new List<string>
+            {
+                "",
+                "  * Sol [S00001] (0, 0, 0), M4 star, unexplored.",
+                "------------------------------------------------------------"
+            };
 
 			return reportLines;
 		}

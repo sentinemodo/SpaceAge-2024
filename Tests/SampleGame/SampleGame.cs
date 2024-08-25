@@ -46,7 +46,7 @@ namespace IntegrationTests
 		[Test]
 		public void SetupTeardown()
 		{
-			ClassicAssert.IsTrue(true);
+            Assert.That(true);
 		}
 
 		public void LoadGalaxy(string gameinFileName)
@@ -58,13 +58,13 @@ namespace IntegrationTests
             this.dataFile.LoadOrders();
 
             this.game = this.dataFile.Game;
-			ClassicAssert.IsNotNull(this.game.Galaxy);
-			ClassicAssert.AreEqual(1, this.game.Galaxy.SpaceSystems.Count);
-			ClassicAssert.AreEqual("Sol", this.game.Galaxy.SpaceSystems[0].FullName);
+            Assert.That(this.game.Galaxy, Is.Not.Null);
+            Assert.That(this.game.Galaxy.SpaceSystems.Count, Is.EqualTo(1));
+            Assert.That(this.game.Galaxy.SpaceSystems[0].FullName, Is.EqualTo("Sol"));
 
 			SpaceSystem system = this.game.Galaxy.SpaceSystems[0];
-			ClassicAssert.IsNotNull(system.Objects);
-			ClassicAssert.AreEqual(2, system.Objects.Count);
+            Assert.That(system.Objects, Is.Not.Null);
+            Assert.That(system.Objects.Count, Is.EqualTo(2));
 			ClassicAssert.IsInstanceOf(typeof(Star), system.Objects["S00001"]);
 			ClassicAssert.IsInstanceOf(typeof(Planet), system.Objects["P00001"]);
 		}
@@ -87,9 +87,7 @@ namespace IntegrationTests
 			ReportWriter reportsWriter = new ReportWriter(this.game, this.dataFile, this.testDir);
 			reportsWriter.GenerateReports(this.testDir);
 
-            this.consoleOutFile("report.1.1.txt");
-
-			this.compareFiles("testreport.1.1.txt", "report.1.1.txt");
+            this.compareFiles("testreport.1.1.txt", "report.1.1.txt");
 			this.compareFiles("testreport.1.2.txt", "report.1.2.txt");
 			this.compareFiles("testreport.1.3.txt", "report.1.3.txt");
 		}
@@ -509,9 +507,9 @@ namespace IntegrationTests
                 {
                     Console.WriteLine(reportLines[i]);
                 }
-                ClassicAssert.AreEqual(testLines[i], reportLines[i], "error in line " + i + ": " + reportLines[i]);
+				Assert.That(reportLines[i], Is.EqualTo(testLines[i]), "error in file " + generated + " in line " + i + ": " + reportLines[i]);
 			}
-			ClassicAssert.AreEqual(testLines.Count, reportLines.Count);
+			Assert.That(reportLines.Count, Is.EqualTo(testLines.Count), "error in file " + generated + " files are differing in lenght");
 		}
 
 		private void parseOrders(string filename)

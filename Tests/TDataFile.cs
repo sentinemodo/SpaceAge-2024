@@ -43,7 +43,7 @@ namespace UnitTests
 		[Test]
 		public void SetupTeardown()
 		{
-			ClassicAssert.IsTrue(true);
+            Assert.That(true);
 		}
 
 		[Test]
@@ -70,12 +70,12 @@ namespace UnitTests
 			this.LoadGameDocument();
 			this.dataFile.LoadFactions();
 			this.game = this.dataFile.Game;
-			ClassicAssert.IsNotNull(this.game.Factions);
-			ClassicAssert.AreEqual(2, this.game.Factions.Count);
-			ClassicAssert.AreEqual("1", this.game.Factions["1"].Name);
-			ClassicAssert.AreEqual("NPC", this.game.Factions["1"].FullName);
-			ClassicAssert.AreEqual("2", this.game.Factions["2"].Name);
-			ClassicAssert.AreEqual("Caste Prime", this.game.Factions["2"].FullName);
+            Assert.That(this.game.Factions, Is.Not.Null);
+            Assert.That(this.game.Factions.Count, Is.EqualTo(2));
+            Assert.That(this.game.Factions["1"].Name, Is.EqualTo("1"));
+            Assert.That(this.game.Factions["1"].FullName, Is.EqualTo("NPC"));
+            Assert.That(this.game.Factions["2"].Name, Is.EqualTo("2"));
+            Assert.That(this.game.Factions["2"].FullName, Is.EqualTo("Caste Prime"));
 		}
 
 		[Test]
@@ -104,14 +104,14 @@ namespace UnitTests
 			this.dataFile.LoadFactions();
 			this.dataFile.LoadGalaxy();
 			this.game = this.dataFile.Game;
-			ClassicAssert.IsNotNull(this.game.Galaxy);
-			ClassicAssert.AreEqual(2, this.game.Galaxy.SpaceSystems.Count);
-			ClassicAssert.AreEqual("Sol", this.game.Galaxy.SpaceSystems[0].FullName);
-			ClassicAssert.AreEqual("Proxima Centauri", this.game.Galaxy.SpaceSystems[1].FullName);
+            Assert.That(this.game.Galaxy, Is.Not.Null);
+            Assert.That(this.game.Galaxy.SpaceSystems.Count, Is.EqualTo(2));
+            Assert.That(this.game.Galaxy.SpaceSystems[0].FullName, Is.EqualTo("Sol"));
+            Assert.That(this.game.Galaxy.SpaceSystems[1].FullName, Is.EqualTo("Proxima Centauri"));
 
 			SpaceSystem system = this.game.Galaxy.SpaceSystems[0];
-			ClassicAssert.IsNotNull(system.Objects);
-			ClassicAssert.AreEqual(3, system.Objects.Count);
+            Assert.That(system.Objects, Is.Not.Null);
+            Assert.That(system.Objects.Count, Is.EqualTo(3));
 			ClassicAssert.IsInstanceOf(typeof(Star), system.Objects["S00001"]);
 			ClassicAssert.IsInstanceOf(typeof(Planet), system.Objects["P00001"]);
 		}
@@ -131,11 +131,11 @@ namespace UnitTests
 			this.dataFile.LoadGalaxy();
 			this.game = this.dataFile.Game;
 			Region region = Region.All["R00001"];
-			ClassicAssert.IsNotNull(region);
-			ClassicAssert.AreEqual(1, region.Exits.Count);
-			ClassicAssert.AreEqual(Region.All["R00002"], region.Exits[0].To);
-			ClassicAssert.IsNotNull(region.Exits[0].ExitModes[EMoveMode.ground]);
-			ClassicAssert.AreEqual(3, region.Exits[0].ExitModes[EMoveMode.ground].Duration);
+            Assert.That(region, Is.Not.Null);
+            Assert.That(region.Exits.Count, Is.EqualTo(1));
+            Assert.That(region.Exits[0].To, Is.EqualTo(Region.All["R00002"]));
+            Assert.That(region.Exits[0].ExitModes[EMoveMode.ground], Is.Not.Null);
+            Assert.That(region.Exits[0].ExitModes[EMoveMode.ground].Duration, Is.EqualTo(3));
 		}
 
 		[Test]
@@ -144,12 +144,12 @@ namespace UnitTests
 			this.LoadGameDocument();
 			this.dataFile.LoadConfiguration();
 			ItemType itemtype = this.game.ItemTypes["iron"];
-			ClassicAssert.IsNotNull(itemtype);
-			ClassicAssert.AreEqual("iron", itemtype.Name);
-			ClassicAssert.AreEqual("unit of iron", itemtype.FullName);
-			ClassicAssert.AreEqual("units of iron", itemtype.FullNameMultiple);
-			ClassicAssert.AreEqual("unit of iron [iron]", itemtype.ReportName);
-			ClassicAssert.AreEqual("units of iron [iron]", itemtype.ReportNameMultiple);
+            Assert.That(itemtype, Is.Not.Null);
+            Assert.That(itemtype.Name, Is.EqualTo("iron"));
+            Assert.That(itemtype.FullName, Is.EqualTo("unit of iron"));
+            Assert.That(itemtype.FullNameMultiple, Is.EqualTo("units of iron"));
+            Assert.That(itemtype.ReportName, Is.EqualTo("unit of iron [iron]"));
+            Assert.That(itemtype.ReportNameMultiple, Is.EqualTo("units of iron [iron]"));
 		}
 
 		[Test]
@@ -161,16 +161,16 @@ namespace UnitTests
 			this.dataFile.LoadGalaxy();
 			this.game = this.dataFile.Game;
 			ItemType itemType = ItemType.All["terran"];
-			ClassicAssert.IsNotNull(itemType);
-			ClassicAssert.AreEqual(EItemTypesGroup.crew, itemType.Group);
+            Assert.That(itemType, Is.Not.Null);
+            Assert.That(itemType.Group, Is.EqualTo(EItemTypesGroup.crew));
 			Race race = Race.All["terran"];
-			ClassicAssert.IsNotNull(race);
-			ClassicAssert.AreEqual(4, race.Size);
-			ClassicAssert.AreEqual(4, race.Mass);
-			ClassicAssert.AreEqual(3, race.Capacity);
+            Assert.That(race, Is.Not.Null);
+            Assert.That(race.Size, Is.EqualTo(4));
+            Assert.That(race.Mass, Is.EqualTo(4));
+            Assert.That(race.Capacity, Is.EqualTo(3));
 			Person person = Person.All["200001"];
-			ClassicAssert.IsNotNull(person);
-			ClassicAssert.AreEqual(race, person.Race);			
+            Assert.That(person, Is.Not.Null);
+            Assert.That(person.Race, Is.EqualTo(race));			
 		}
 
 		[Test]
@@ -179,34 +179,36 @@ namespace UnitTests
 			this.LoadGameDocument();
 			this.dataFile.LoadConfiguration();
 			ModuleType moduleType = ModuleType.All["cdrill"];
-			ClassicAssert.IsNotNull(moduleType);
+            Assert.That(moduleType, Is.Not.Null);
 			ItemType itemType = ItemType.All["cash"];
-			ClassicAssert.AreEqual(40, moduleType.Upkeep[itemType].Quantity);
+            Assert.That(moduleType.Upkeep[itemType].Quantity, Is.EqualTo(40));
 
 			ItemType crewType = ItemType.All["terran"];
-			ClassicAssert.AreEqual(1, crewType.Upkeep[itemType].Quantity);
+            Assert.That(crewType.Upkeep[itemType].Quantity, Is.EqualTo(1));
 
 			ItemStack crewStack = new ItemStack(crewType, 6);
-			ClassicAssert.AreEqual(6, crewStack.Quantity);
-			ClassicAssert.AreEqual(6, crewStack.Upkeep[itemType].Quantity);
+            Assert.That(crewStack.Quantity, Is.EqualTo(6));
+            Assert.That(crewStack.Upkeep[itemType].Quantity, Is.EqualTo(6));
 
-			ItemStacks itemStacks = new ItemStacks();
-			itemStacks.Add(crewStack);
-			ClassicAssert.AreEqual(6, itemStacks[crewType].Quantity);
+			ItemStacks itemStacks = new ItemStacks
+            {
+                crewStack
+            };
+            Assert.That(itemStacks[crewType].Quantity, Is.EqualTo(6));
 
 			ItemStack itemStack2 = itemStacks[crewType];
-			ClassicAssert.AreEqual(6, itemStack2.Quantity);
-			ClassicAssert.AreEqual(6, itemStack2.Upkeep[itemType].Quantity);
-			ClassicAssert.AreEqual(6, itemStacks[crewType].Upkeep[itemType].Quantity);
+            Assert.That(itemStack2.Quantity, Is.EqualTo(6));
+            Assert.That(itemStack2.Upkeep[itemType].Quantity, Is.EqualTo(6));
+            Assert.That(itemStacks[crewType].Upkeep[itemType].Quantity, Is.EqualTo(6));
 
 			ModuleStack moduleStack = new ModuleStack(null, null, moduleType, "000000");
 			moduleStack.AddModule();
 			moduleStack.ItemStacks.Add(crewStack);
-			ClassicAssert.AreEqual(40, moduleStack.UpkeepNetto[itemType].Quantity);
-			ClassicAssert.AreEqual(6, moduleStack.ItemStacks[crewType].Quantity);
-			ClassicAssert.AreEqual(1, moduleStack.ItemStacks[crewType].Upkeep.Count);
-			ClassicAssert.AreEqual(6, moduleStack.ItemStacks[crewType].Upkeep[itemType].Quantity);
-			ClassicAssert.AreEqual(40 + 6, moduleStack.Upkeep[itemType].Quantity);
+            Assert.That(moduleStack.UpkeepNetto[itemType].Quantity, Is.EqualTo(40));
+            Assert.That(moduleStack.ItemStacks[crewType].Quantity, Is.EqualTo(6));
+            Assert.That(moduleStack.ItemStacks[crewType].Upkeep.Count, Is.EqualTo(1));
+            Assert.That(moduleStack.ItemStacks[crewType].Upkeep[itemType].Quantity, Is.EqualTo(6));
+            Assert.That(moduleStack.Upkeep[itemType].Quantity, Is.EqualTo(40 + 6));
 		}
 
 		[Test]
@@ -215,11 +217,11 @@ namespace UnitTests
 			this.LoadGameDocument();
 			this.dataFile.LoadConfiguration();
 			Technology technology = Technology.All["agrplx"];
-			ClassicAssert.IsNotNull(technology);
+            Assert.That(technology, Is.Not.Null);
 			ItemType itemType = ItemType.All["iron"];
 
-			ClassicAssert.AreEqual(1, technology.UseConsumeItems.Count);
-			ClassicAssert.AreEqual(10, technology.UseConsumeItems[itemType].Quantity);
+            Assert.That(technology.UseConsumeItems.Count, Is.EqualTo(1));
+            Assert.That(technology.UseConsumeItems[itemType].Quantity, Is.EqualTo(10));
 		}
 
 		[Test]
@@ -230,12 +232,12 @@ namespace UnitTests
 			this.dataFile.LoadFactions();
 			this.dataFile.LoadGalaxy();
 			this.game = this.dataFile.Game;
-			ModuleStack moduleStack = ModuleStack.All["000006"];			
-			ClassicAssert.IsNotNull(moduleStack);
-			ClassicAssert.AreEqual(1, moduleStack.Technologies.Count);
+			ModuleStack moduleStack = ModuleStack.All["000006"];
+            Assert.That(moduleStack, Is.Not.Null);
+            Assert.That(moduleStack.Technologies.Count, Is.EqualTo(1));
 			Technology technology = Technology.All["hcdril"];
-			ClassicAssert.IsNotNull(technology, "technology is not loaded");
-			ClassicAssert.IsNotNull(moduleStack.Technologies["hcdril"], "modulestack has not loaded the echnology");
+            Assert.That(technology, Is.Not.Null, "technology is not loaded");
+            Assert.That(moduleStack.Technologies["hcdril"], Is.Not.Null, "modulestack has not loaded the echnology");
 		}
 
 		[Test]
@@ -253,9 +255,9 @@ namespace UnitTests
 					}
 					catch (Exception ex)
 					{
-						ClassicAssert.AreEqual(
-                            "Modulestack with name [000001] already exists",
-                            ex.InnerException.InnerException.Message);
+                        Assert.That(
+                            ex.InnerException.InnerException.Message,
+                            Is.EqualTo("Modulestack with name [000001] already exists"));
 						throw ex;
 					}
 					this.consoleOutReport("loaded region", Region.All["R10001"], Faction.All["1"]);
@@ -268,9 +270,9 @@ namespace UnitTests
 			this.LoadGameDocument();
 			this.dataFile.LoadConfiguration();
 			Race race = Race.All["terran"];
-			ClassicAssert.IsNotNull(race);
+            Assert.That(race, Is.Not.Null);
 			ItemType itemType = ItemType.All["cash"];
-			ClassicAssert.AreEqual(10, race.Upkeep[itemType].Quantity);
+            Assert.That(race.Upkeep[itemType].Quantity, Is.EqualTo(10));
 		}
 
 		[Test]
@@ -283,9 +285,9 @@ namespace UnitTests
 			this.game = this.dataFile.Game;
 
 			Race race = Race.All["terran"];
-			ClassicAssert.IsNotNull(race);
+            Assert.That(race, Is.Not.Null);
 			Orbit orbit = Orbit.All["O00003"];
-			ClassicAssert.AreEqual(1, orbit.Races.Count);
+            Assert.That(orbit.Races.Count, Is.EqualTo(1));
 
 		}
 
@@ -299,9 +301,9 @@ namespace UnitTests
 			this.game = this.dataFile.Game;
 
 			Planet planet = Planet.All["P00002"];
-			ClassicAssert.IsNotNull(planet);
-			ClassicAssert.AreEqual(6, planet.SurfaceSizeX);
-			ClassicAssert.AreEqual(4, planet.SurfaceSizeY);
+            Assert.That(planet, Is.Not.Null);
+            Assert.That(planet.SurfaceSizeX, Is.EqualTo(6));
+            Assert.That(planet.SurfaceSizeY, Is.EqualTo(4));
 
 		}
 
@@ -316,15 +318,33 @@ namespace UnitTests
 			this.game = this.dataFile.Game;
 
 			ModuleStack moduleStack = ModuleStack.All["100002"];
-			ClassicAssert.IsNotNull(moduleStack);
-			ClassicAssert.AreEqual(1, moduleStack.Orders.Count);
+            Assert.That(moduleStack, Is.Not.Null);
+            Assert.That(moduleStack.Orders.Count, Is.EqualTo(1));
 			
 			MoveOrder order = (MoveOrder)moduleStack.Orders[0];
-			ClassicAssert.AreEqual(2, order.Route.Count);
+            Assert.That(order.Route.Count, Is.EqualTo(2));
 
 		}
 
-		[Test, Ignore("not ready")]
+        [Test]
+        public void LoadOrder_unlimited()
+        {
+            this.LoadGameDocument();
+            this.dataFile.LoadConfiguration();
+            this.dataFile.LoadFactions();
+            this.dataFile.LoadGalaxy();
+            this.dataFile.LoadOrders();
+            this.game = this.dataFile.Game;
+
+            ModuleStack moduleStack = ModuleStack.All["000011"];
+            Assert.That(moduleStack, Is.Not.Null);
+            Assert.That(moduleStack.Orders.Count, Is.EqualTo(1));
+
+            ProduceOrder order = (ProduceOrder)moduleStack.Orders[0];
+            Assert.That(order.IsUnlimited, Is.True);
+        }
+
+        [Test, Ignore("not ready")]
 		public void SaveLoadUseOrder_withUseOrderInProgress_sameOrder()
 		{
 			Assert.Fail("don't know");
@@ -346,27 +366,29 @@ namespace UnitTests
             this.game = this.dataFile.Game;
 
             ModuleStack moduleStack = ModuleStack.All["100002"];
-            ClassicAssert.IsNotNull(moduleStack);
-            ClassicAssert.AreEqual(0, moduleStack.Orders.Count);
+            Assert.That(moduleStack, Is.Not.Null);
+            Assert.That(moduleStack.Orders.Count, Is.EqualTo(0));
 
             Faction testFaction = this.game.Factions["2"];
 			ModuleStack testModuleStack = this.game.ModuleStacks["100001"];
 
-			List<string> testcommands = new List<string>();
-			testcommands.Add("#faction 2");
-			testcommands.Add("#modulestack 100001");
-			testcommands.Add("get 1 iron from 000006");
-   			testcommands.Add("@get 1 iron from 000006");
-			testcommands.Add("#end");
+			List<string> testcommands = new List<string>
+            {
+                "#faction 2",
+                "#modulestack 100001",
+                "get 1 iron from 000006",
+                "@get 1 iron from 000006",
+                "#end"
+            };
 
 			OrdersReader ordersReader = new OrdersReader(game);
 			ordersReader.AssignOrders(testcommands);
 
 			GetOrder order = (GetOrder) testModuleStack.Orders[0];
-			ClassicAssert.AreEqual(1, order.Quantity);
-			ClassicAssert.AreEqual("iron", order.ItemType.Name);
-			ClassicAssert.AreEqual("core drill [000006]", order.Transferer.ReportName);
-            ClassicAssert.AreEqual(1, order.Repeat);
+            Assert.That(order.Quantity, Is.EqualTo(1));
+            Assert.That(order.ItemType.Name, Is.EqualTo("iron"));
+            Assert.That(order.Transferer.ReportName, Is.EqualTo("core drill [000006]"));
+            Assert.That(order.Repeat, Is.EqualTo(1));
 
             XmlDocument doc = new XmlDocument();
             doc.LoadXml("<game/>"); 
@@ -384,18 +406,20 @@ namespace UnitTests
             doc.WriteContentTo(xmlWriter);
             xmlWriter.Close();
 
-            List<string> testlines = new List<string>();
-            testlines.Add("<?xml version=\"1.0\" encoding=\"windows-1251\"?>");
-            testlines.Add("<game>");
-            testlines.Add("	<orders>");
-            testlines.Add("		<order subject=\"modulestack\" name=\"100001\">");
-            testlines.Add("			<get item=\"iron\" quantity=\"1\" transferer=\"000006\" />");
-            testlines.Add("		</order>");
-            testlines.Add("		<order subject=\"modulestack\" name=\"100001\" repeat=\"unlimited\">");
-            testlines.Add("			<get item=\"iron\" quantity=\"1\" transferer=\"000006\" />");
-            testlines.Add("		</order>");
-            testlines.Add("	</orders>");
-            testlines.Add("</game>");
+            List<string> testlines = new List<string>
+            {
+                "<?xml version=\"1.0\" encoding=\"windows-1251\"?>",
+                "<game>",
+                "	<orders>",
+                "		<order subject=\"modulestack\" name=\"100001\">",
+                "			<get item=\"iron\" quantity=\"1\" transferer=\"000006\" />",
+                "		</order>",
+                "		<order subject=\"modulestack\" name=\"100001\" repeat=\"unlimited\">",
+                "			<get item=\"iron\" quantity=\"1\" transferer=\"000006\" />",
+                "		</order>",
+                "	</orders>",
+                "</game>"
+            };
             this.TextReader = new StreamReader(
                 Path.Combine(testdir, testfile), 
                 System.Text.Encoding.GetEncoding(1251));
@@ -408,11 +432,193 @@ namespace UnitTests
             for (int i = 0; i < testlines.Count; i++)
             {
                 Console.WriteLine(testlines[i]);
-                ClassicAssert.AreEqual(testlines[i], generatedFile[i]);
+                Assert.That(generatedFile[i], Is.EqualTo(testlines[i]));
             }
-            ClassicAssert.AreEqual(testlines.Count, generatedFile.Count);
+            Assert.That(generatedFile.Count, Is.EqualTo(testlines.Count));
 
         }
 
-	}
+        [Test]
+        public void SaveUnlimitedProduceOrder()
+        {
+            this.LoadGameDocument();
+            this.dataFile.LoadConfiguration();
+            this.dataFile.LoadFactions();
+            this.dataFile.LoadGalaxy();
+            this.game = this.dataFile.Game;
+
+            ModuleStack moduleStack = ModuleStack.All["100002"];
+
+			Assert.That(moduleStack, Is.Not.Null);
+			Assert.That(moduleStack.Orders.Count, Is.Zero);
+
+            Faction testFaction = this.game.Factions["2"];
+            ModuleStack testModuleStack = this.game.ModuleStacks["000112"];
+
+            List<string> testcommands = new List<string>
+            {
+                "#faction 2",
+                "#modulestack 000112",
+                "@produce cash",
+                "#end"
+            };
+
+            OrdersReader ordersReader = new OrdersReader(game);
+            ordersReader.AssignOrders(testcommands);
+
+            ProduceOrder order = (ProduceOrder)testModuleStack.Orders[0];
+			Assert.That(order.IsUnlimited, Is.True);
+			Assert.That(order.Producer.ReportName, Is.EqualTo("Caste Prime Headquarters [000112]"));
+			Assert.That(order.ItemType.Name, Is.EqualTo("cash"));
+
+            XmlDocument doc = new XmlDocument();
+            doc.LoadXml("<game/>");
+            this.dataFile.SaveOrders(doc);
+
+            string testdir = Directory.GetCurrentDirectory();
+            string testfile = "gameout.saved_unlimitedProduceOrder.xml";
+            XmlTextWriter xmlWriter = new XmlTextWriter(
+                Path.Combine(testdir, testfile),
+                System.Text.Encoding.GetEncoding(1251));
+            xmlWriter.Formatting = Formatting.Indented;
+            xmlWriter.IndentChar = '\t';
+            xmlWriter.Indentation = 1;
+            xmlWriter.WriteStartDocument();
+            doc.WriteContentTo(xmlWriter);
+            xmlWriter.Close();
+
+            List<string> testlines = new List<string>
+            {
+                "<?xml version=\"1.0\" encoding=\"windows-1251\"?>",
+                "<game>",
+                "	<orders>",
+                "		<order subject=\"modulestack\" name=\"000112\" repeat=\"unlimited\">",
+                "			<produce produce-type=\"item\" item=\"cash\" />",
+                "		</order>",
+                "	</orders>",
+                "</game>"
+            };
+            this.TextReader = new StreamReader(
+                Path.Combine(testdir, testfile),
+                System.Text.Encoding.GetEncoding(1251));
+            List<string> generatedFile = new List<string>();
+            string line;
+
+            while ((line = this.TextReader.ReadLine()) != null)
+                generatedFile.Add(line);
+
+            for (int i = 0; i < testlines.Count; i++)
+            {
+                Console.WriteLine(testlines[i]);
+				Assert.That(generatedFile[i], Is.EqualTo(testlines[i]));
+            }
+			Assert.That(generatedFile.Count, Is.EqualTo(testlines.Count));
+
+            List<string> testlinesReport = new List<string>
+            {
+                "@produce cash"
+            };
+			
+			List<string> generatedReport = order.Report(testFaction);
+
+            for (int i = 0; i < testlinesReport.Count; i++)
+            {
+                Console.WriteLine(testlinesReport[i]);
+                Assert.That(generatedReport[i], Is.EqualTo(testlinesReport[i]));
+            }
+            Assert.That(generatedReport.Count, Is.EqualTo(testlinesReport.Count));
+
+        }
+
+        public void LoadXML_UnlimitedProduceOrder()
+        {
+            this.LoadGameDocument();
+            this.dataFile.LoadConfiguration();
+            this.dataFile.LoadFactions();
+            this.dataFile.LoadGalaxy();
+            
+            this.game = this.dataFile.Game;
+
+            ModuleStack moduleStack = ModuleStack.All["100002"];
+
+            Assert.That(moduleStack, Is.Not.Null);
+            Assert.That(moduleStack.Orders.Count, Is.Zero);
+
+            Faction testFaction = this.game.Factions["2"];
+            ModuleStack testModuleStack = this.game.ModuleStacks["000112"];
+
+            List<string> testcommands = new List<string>
+            {
+                "<order subject=\"modulestack\" name=\"000012\" repeat=\"unlimited\">",
+                "<produce produce-type=\"item\" item=\"cash\" />",
+                "</order>"
+            };
+
+            OrdersReader ordersReader = new OrdersReader(game);
+            ordersReader.AssignOrders(testcommands);
+
+            ProduceOrder order = (ProduceOrder)testModuleStack.Orders[0];
+            Assert.That(order.IsUnlimited, Is.True);
+            Assert.That(order.Producer.ReportName, Is.EqualTo("Caste Prime Headquarters [000112]"));
+            Assert.That(order.ItemType.Name, Is.EqualTo("cash"));
+
+            XmlDocument doc = new XmlDocument();
+            doc.LoadXml("<game/>");
+            this.dataFile.SaveOrders(doc);
+
+            string testdir = Directory.GetCurrentDirectory();
+            string testfile = "gameout.saved_unlimitedProduceOrder.xml";
+            XmlTextWriter xmlWriter = new XmlTextWriter(
+                Path.Combine(testdir, testfile),
+                System.Text.Encoding.GetEncoding(1251));
+            xmlWriter.Formatting = Formatting.Indented;
+            xmlWriter.IndentChar = '\t';
+            xmlWriter.Indentation = 1;
+            xmlWriter.WriteStartDocument();
+            doc.WriteContentTo(xmlWriter);
+            xmlWriter.Close();
+
+            List<string> testlines = new List<string>
+            {
+                "<?xml version=\"1.0\" encoding=\"windows-1251\"?>",
+                "<game>",
+                "	<orders>",
+                "		<order subject=\"modulestack\" name=\"000112\" repeat=\"unlimited\">",
+                "			<produce produce-type=\"item\" item=\"cash\" />",
+                "		</order>",
+                "	</orders>",
+                "</game>"
+            };
+            this.TextReader = new StreamReader(
+                Path.Combine(testdir, testfile),
+                System.Text.Encoding.GetEncoding(1251));
+            List<string> generatedFile = new List<string>();
+            string line;
+
+            while ((line = this.TextReader.ReadLine()) != null)
+                generatedFile.Add(line);
+
+            for (int i = 0; i < testlines.Count; i++)
+            {
+                Console.WriteLine(testlines[i]);
+                Assert.That(generatedFile[i], Is.EqualTo(testlines[i]));
+            }
+            Assert.That(generatedFile.Count, Is.EqualTo(testlines.Count));
+
+            List<string> testlinesReport = new List<string>
+            {
+                "@produce cash"
+            };
+
+            List<string> generatedReport = order.Report(testFaction);
+
+            for (int i = 0; i < testlinesReport.Count; i++)
+            {
+                Console.WriteLine(testlinesReport[i]);
+                Assert.That(generatedReport[i], Is.EqualTo(testlinesReport[i]));
+            }
+            Assert.That(generatedReport.Count, Is.EqualTo(testlinesReport.Count));
+
+        }
+    }
 }

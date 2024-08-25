@@ -35,7 +35,7 @@ namespace UnitTests
 		[Test]
 		public void SetupTeardown()
 		{
-			ClassicAssert.IsTrue(true);
+            Assert.That(true);
 		}
 
 
@@ -60,7 +60,7 @@ namespace UnitTests
             Assert.That(buyOffer.Quantity, Is.EqualTo(200));
 
             Offer sellOffer = this.game.Offers[EOfferType.SellItems][food][seller].GetIndex(0);
-            ClassicAssert.AreEqual(40, sellOffer.Quantity);
+            Assert.That(sellOffer.Quantity, Is.EqualTo(40));
 
             Offer foundOffer = market.FindMatch(buyOffer);
             ClassicAssert.IsNull(foundOffer);
@@ -68,7 +68,7 @@ namespace UnitTests
             seller.Owner = Faction.All["2"];
             foundOffer = market.FindMatch(buyOffer);
             // can work only if buyer and seller are from different factions
-            ClassicAssert.AreEqual(sellOffer, foundOffer);
+            Assert.That(foundOffer, Is.EqualTo(sellOffer));
         }
 
         [Test]
@@ -93,18 +93,18 @@ namespace UnitTests
 
             // assert existing offers
             this.consoleOutReport("Existing offers", Offer.All, buyer.Owner);
-            ClassicAssert.AreEqual(9, Offer.All.Count);
+            Assert.That(Offer.All.Count, Is.EqualTo(9));
 
-            ClassicAssert.AreEqual(40, seller.ItemStacks[food].Quantity);
+            Assert.That(seller.ItemStacks[food].Quantity, Is.EqualTo(40));
 
             Offer buyOffer = this.game.Offers[EOfferType.BuyItems][food][buyer].GetIndex(0);
-            ClassicAssert.AreEqual(200, buyOffer.Quantity);
+            Assert.That(buyOffer.Quantity, Is.EqualTo(200));
 
             Offer sellOffer = this.game.Offers[EOfferType.SellItems][food][seller].GetIndex(0);
-            ClassicAssert.AreEqual(40, sellOffer.Quantity);
+            Assert.That(sellOffer.Quantity, Is.EqualTo(40));
 
             ClassicAssert.IsFalse(market.PriceList.ContainsKey(food), "without prior transaction, pricelist should be empty");
-            ClassicAssert.AreEqual(0, market.GetPrice(food), "with getPrice initiated and no other prices on other markets, price should be set to 0 - any price");
+            Assert.That(market.GetPrice(food), Is.EqualTo(0), "with getPrice initiated and no other prices on other markets, price should be set to 0 - any price");
 
             // market.process
             // assert orders are matched and done
@@ -112,24 +112,24 @@ namespace UnitTests
             this.game.Week = 1;
 
             market.ProcessOffer(this.game.Week, buyOffer);
-            ClassicAssert.AreEqual(160, buyOffer.Quantity);
+            Assert.That(buyOffer.Quantity, Is.EqualTo(160));
 
-            ClassicAssert.AreEqual(0, this.game.Offers[EOfferType.SellItems][food][seller].Count);
+            Assert.That(this.game.Offers[EOfferType.SellItems][food][seller].Count, Is.EqualTo(0));
             
             // assert items transfers is taking place
-            ReceivingItems foodTransfer = (ReceivingItems)buyer.Effects[0];            
-            ClassicAssert.AreEqual(40, foodTransfer.ItemStack.Quantity);
-            ClassicAssert.AreEqual(food, foodTransfer.ItemStack.ItemType);
+            ReceivingItems foodTransfer = (ReceivingItems)buyer.Effects[0];
+            Assert.That(foodTransfer.ItemStack.Quantity, Is.EqualTo(40));
+            Assert.That(foodTransfer.ItemStack.ItemType, Is.EqualTo(food));
 
             this.consoleOutReport("food transfer event", foodTransfer, buyer.Owner);
 
             foodTransfer.Execute(this.game.Week);
-            
+
             // received
-            ClassicAssert.AreEqual(40, buyer.ItemStacks[food].Quantity);
+            Assert.That(buyer.ItemStacks[food].Quantity, Is.EqualTo(40));
 
             // assert prices get updated accordingly
-            ClassicAssert.AreEqual(2, market.PriceList[food]);
+            Assert.That(market.PriceList[food], Is.EqualTo(2));
         }
 
         [Test]
@@ -161,34 +161,36 @@ namespace UnitTests
 
             Faction buyerFaction = this.game.Factions["2"];
 
-            List<string> testcommands = new List<string>();
-            testcommands.Add("#faction 2");
-            testcommands.Add("#modulestack 000004");
-            testcommands.Add("@buy all terran everywhere");
-            testcommands.Add("#end");
+            List<string> testcommands = new List<string>
+            {
+                "#faction 2",
+                "#modulestack 000004",
+                "@buy all terran everywhere",
+                "#end"
+            };
 
             OrdersReader ordersReader = new OrdersReader(game);
             ordersReader.AssignOrders(testcommands);
 
             // assert existing offers
             this.consoleOutReport("Existing offers", Offer.All, buyerFaction);
-            ClassicAssert.AreEqual(9, Offer.All.Count);
+            Assert.That(Offer.All.Count, Is.EqualTo(9));
 
             // assert buyer and seller are existing and in a single place
             this.consoleOutReport("Location of buy/seller1", buyer.Location.Market, buyerFaction);
             this.consoleOutReport("Location of seller2", seller2.Location.Market, buyerFaction);
 
-            ClassicAssert.AreEqual(10, seller1.ItemStacks[terran].Quantity);
-            ClassicAssert.AreEqual(20, seller2.ItemStacks[terran].Quantity);
+            Assert.That(seller1.ItemStacks[terran].Quantity, Is.EqualTo(10));
+            Assert.That(seller2.ItemStacks[terran].Quantity, Is.EqualTo(20));
 
             // assert that buyer has cash
-            ClassicAssert.AreEqual(300, buyer.ItemStacks[cash].Quantity);
+            Assert.That(buyer.ItemStacks[cash].Quantity, Is.EqualTo(300));
             // 300 cash would suffice for 6 terrans at 50 for cash, but we're using bank account anyway
 
             #region buyer.Execute(this.game.Week);
             BuyOrder order = (BuyOrder)buyer.Orders[0];
-            ClassicAssert.IsTrue(order.AllQuantity);
-            ClassicAssert.IsTrue(order.Repeat < 0);
+            Assert.That(order.AllQuantity);
+            Assert.That(order.Repeat < 0);
 
             order.Execute(this.game.Week);
             buyer.Orders.RemoveExecuted();
@@ -200,39 +202,39 @@ namespace UnitTests
             ClassicAssert.IsFalse(seller2.ItemStacks.ContainsKey(terran));
 
             // there are still only 20 terrans in place (10 already received), the rest is in effects (transferring)
-            ClassicAssert.AreEqual(20, buyer.ItemStacks[terran].Quantity);
+            Assert.That(buyer.ItemStacks[terran].Quantity, Is.EqualTo(20));
 
             // but the cash is already gone 10 local, 20 other region, transferCost for different regions transaction
-            ClassicAssert.AreEqual(20000 - 10 * 50 - 20 * 50 - 100, buyer.Owner.Bank.AvailableFunds);
+            Assert.That(buyer.Owner.Bank.AvailableFunds, Is.EqualTo(20000 - 10 * 50 - 20 * 50 - 100));
 
-            ClassicAssert.AreEqual(2, buyer.Effects.Count);
+            Assert.That(buyer.Effects.Count, Is.EqualTo(2));
 
             // first transfers reached 
-            ClassicAssert.AreEqual(20, buyer.ItemStacks[terran].Quantity);
+            Assert.That(buyer.ItemStacks[terran].Quantity, Is.EqualTo(20));
             // second transfer has still 5 week of duration
             Receiving receivingEffect = (Receiving)buyer.Effects[1];
-            ClassicAssert.AreEqual(5, receivingEffect.Duration);
+            Assert.That(receivingEffect.Duration, Is.EqualTo(5));
 
             // assert remaining offers
             this.consoleOutReport("Location of buyer/seller1", buyer.Location.Market, buyerFaction);
             this.consoleOutReport("Location of seller2", seller2.Location.Market, buyerFaction);
-            ClassicAssert.AreEqual(8, Offer.All.Count); // two sell offers done, one new buy offer in place
+            Assert.That(Offer.All.Count, Is.EqualTo(8)); // two sell offers done, one new buy offer in place
 
             // TODO: this will require further work to remove possibility to add offers without orders, as of now it works the both ways, which can be useful
             // assert orders are matched and done
             // assert matched orders are removed
-            
+
             #region buyer.Execute(this.game.Week) - continued2;
-            ClassicAssert.IsTrue(order.Executed);
-            ClassicAssert.AreEqual(1, buyer.Orders.Count);
+            Assert.That(order.Executed);
+            Assert.That(buyer.Orders.Count, Is.EqualTo(1));
             buyer.Orders.RemoveExecuted();
-            ClassicAssert.AreEqual(1, buyer.Orders.Count); // stays the same, because the order is unlimited
+            Assert.That(buyer.Orders.Count, Is.EqualTo(1)); // stays the same, because the order is unlimited
             #endregion
 
             // assert prices get updated accordingly
-            ClassicAssert.IsTrue(buyer.Location.Market.PriceList.ContainsKey(terran));
-            ClassicAssert.IsTrue(seller2.Location.Market.PriceList.ContainsKey(terran));
-            ClassicAssert.AreEqual(50, buyer.Location.Market.GetPrice(terran));
+            Assert.That(buyer.Location.Market.PriceList.ContainsKey(terran));
+            Assert.That(seller2.Location.Market.PriceList.ContainsKey(terran));
+            Assert.That(buyer.Location.Market.GetPrice(terran), Is.EqualTo(50));
         }
 
         [Test]
@@ -259,18 +261,20 @@ namespace UnitTests
 
             // assert existing offers, there should be 9 offers and no windplants offers
             this.consoleOutReport("Existing offers", Offer.All, buyer.Owner);
-            ClassicAssert.AreEqual(9, Offer.All.Count);
+            Assert.That(Offer.All.Count, Is.EqualTo(9));
 
             // there should be 10 existing windplants in seller and buyer shouldn't (yet) have any windplants for sale
-            ClassicAssert.AreEqual(10, buyer.Modules.Count);
+            Assert.That(buyer.Modules.Count, Is.EqualTo(10));
             ClassicAssert.IsFalse(seller.HasModuleStacks(windplant));
 
             // setup sell order
-            List<string> testcommands = new List<string>();
-            testcommands.Add("#faction 2");
-            testcommands.Add("#modulestack 000004");
-            testcommands.Add("sell all wnplnt");
-            testcommands.Add("#end");
+            List<string> testcommands = new List<string>
+            {
+                "#faction 2",
+                "#modulestack 000004",
+                "sell all wnplnt",
+                "#end"
+            };
 
             OrdersReader ordersReader = new OrdersReader(game);
             ordersReader.AssignOrders(testcommands);
@@ -283,20 +287,22 @@ namespace UnitTests
             ModuleStack windplantStack = new ModuleStack(seller, seller.Owner, windplant);
             windplantStack.AddModule();
             this.consoleOutReport("seller", seller, seller.Owner);
-            ClassicAssert.IsTrue(seller.HasModuleStacks(windplant));
+            Assert.That(seller.HasModuleStacks(windplant));
             seller.Orders[0].Execute(this.game.Week + 1);
 
             // check if an offer appeared
             Offer sellOffer = this.game.Offers[EOfferType.SellModules][windplant][seller].GetIndex(0);
-            ClassicAssert.IsTrue(sellOffer.AllQuantity);
+            Assert.That(sellOffer.AllQuantity);
             ClassicAssert.IsFalse(seller.Orders[0].Executed);
 
             // setup buy order
-            testcommands = new List<string>();
-            testcommands.Add("#faction 1");
-            testcommands.Add("#modulestack 000009");
-            testcommands.Add("buy 1 wnplnt");
-            testcommands.Add("#end");
+            testcommands = new List<string>
+            {
+                "#faction 1",
+                "#modulestack 000009",
+                "buy 1 wnplnt",
+                "#end"
+            };
 
             ordersReader.AssignOrders(testcommands);
 
@@ -304,27 +310,27 @@ namespace UnitTests
             buyer.Orders[0].Execute(this.game.Week + 1);
             this.consoleOutReport("Buyer", buyer, buyer.Owner);
             this.consoleOutReport("Seller", seller, seller.Owner);
-  
-            ClassicAssert.AreEqual(
-                "week 2: received wind powerplant [wnplnt] from factory [000004].", 
-                buyer.EventReports[0].Report(buyer.Owner)[0]);
-            ClassicAssert.AreEqual(
-                "week 2: transferred wind powerplant [wnplnt] to Warsaw wind powerplants [000009].", 
-                seller.EventReports[0].Report(seller.Owner)[0]);
+
+            Assert.That(
+                buyer.EventReports[0].Report(buyer.Owner)[0],
+                Is.EqualTo("week 2: received wind powerplant [wnplnt] from factory [000004]."));
+            Assert.That(
+                seller.EventReports[0].Report(seller.Owner)[0],
+                Is.EqualTo("week 2: transferred wind powerplant [wnplnt] to Warsaw wind powerplants [000009]."));
 
             // check if both offers are no longer on the market, and that both orders are marked as executed          
-            ClassicAssert.AreEqual(0, this.game.Offers[EOfferType.BuyModules][windplant][buyer].Count);
-            ClassicAssert.AreEqual(0, this.game.Offers[EOfferType.SellModules][windplant][seller].Count);
+            Assert.That(this.game.Offers[EOfferType.BuyModules][windplant][buyer].Count, Is.EqualTo(0));
+            Assert.That(this.game.Offers[EOfferType.SellModules][windplant][seller].Count, Is.EqualTo(0));
 
-            ClassicAssert.IsTrue(seller.Orders[0].Executed);
-            ClassicAssert.IsTrue(buyer.Orders[0].Executed);
+            Assert.That(seller.Orders[0].Executed);
+            Assert.That(buyer.Orders[0].Executed);
 
             // check if pricelist got updated
             ClassicAssert.IsFalse(market.PriceList.ContainsKey(windplant), "without prior transaction, pricelist should be empty");
-            ClassicAssert.AreEqual(-1, market.GetPrice(windplant), "with getPrice initiated and no other prices on other markets, price should be set to 0 - any price");
-           
+            Assert.That(market.GetPrice(windplant), Is.EqualTo(-1), "with getPrice initiated and no other prices on other markets, price should be set to 0 - any price");
+
             // received, factory again has no modulestack
-            ClassicAssert.AreEqual(11, buyer.Modules.Count);
+            Assert.That(buyer.Modules.Count, Is.EqualTo(11));
             ClassicAssert.IsFalse(seller.HasModuleStacks(windplant));
         }
 
@@ -348,20 +354,22 @@ namespace UnitTests
             
             // assert existing offers, there should be 9 offers and no windplants offers
             this.consoleOutReport("Existing offers", Offer.All, seller.Owner);
-            ClassicAssert.AreEqual(9, Offer.All.Count);
+            Assert.That(Offer.All.Count, Is.EqualTo(9));
 
             // there shouldn't be technology in seller nor in buyers 
-            ClassicAssert.AreEqual(0, buyer1.Technologies.Count);
-            ClassicAssert.AreEqual(0, buyer2.Technologies.Count);
-            ClassicAssert.AreEqual(0, seller.Technologies.Count);
+            Assert.That(buyer1.Technologies.Count, Is.EqualTo(0));
+            Assert.That(buyer2.Technologies.Count, Is.EqualTo(0));
+            Assert.That(seller.Technologies.Count, Is.EqualTo(0));
             ClassicAssert.IsFalse(seller.HasTechnology(cityPlanning));
 
             // setup sell order
-            List<string> testcommands = new List<string>();
-            testcommands.Add("#faction 2");
-            testcommands.Add("#modulestack 000112");
-            testcommands.Add("sell ctypln at 500");
-            testcommands.Add("#end");
+            List<string> testcommands = new List<string>
+            {
+                "#faction 2",
+                "#modulestack 000112",
+                "sell ctypln at 500",
+                "#end"
+            };
 
             OrdersReader ordersReader = new OrdersReader(game);
             ordersReader.AssignOrders(testcommands);
@@ -375,13 +383,13 @@ namespace UnitTests
             seller.Technologies.Add(cityPlanning);
             this.consoleOutReport("seller", seller, seller.Owner);
             this.consoleOutReport("seller orders", seller.Orders, seller.Owner);
-            ClassicAssert.IsTrue(seller.HasTechnology(cityPlanning));
+            Assert.That(seller.HasTechnology(cityPlanning));
             seller.Orders[0].Execute(this.game.Week + 1);
 
             // check if an offer appeared
             this.consoleOutReport("Existing offers", Offer.All, seller.Owner);
             Offer sellOffer = this.game.Offers[EOfferType.SellTechnologies][cityPlanning][seller].GetIndex(0);
-            ClassicAssert.AreEqual(cityPlanning.Name, sellOffer.Technology.Name);
+            Assert.That(sellOffer.Technology.Name, Is.EqualTo(cityPlanning.Name));
             ClassicAssert.IsFalse(seller.Orders[0].Executed);
 
             // change the external buyer to increase the price
@@ -393,11 +401,13 @@ namespace UnitTests
             seller.Orders[0].Execute(this.game.Week + 2);
 
             // setup buy order
-            testcommands = new List<string>();
-            testcommands.Add("#faction 1");
-            testcommands.Add("#modulestack 000001");
-            testcommands.Add("buy ctypln at 525");
-            testcommands.Add("#end");
+            testcommands = new List<string>
+            {
+                "#faction 1",
+                "#modulestack 000001",
+                "buy ctypln at 525",
+                "#end"
+            };
 
             ordersReader.AssignOrders(testcommands);
 
@@ -407,19 +417,19 @@ namespace UnitTests
             this.consoleOutReport("Seller", seller, seller.Owner);
             this.consoleOutReport("Market", seller.Location.Market, seller.Owner);
 
-            ClassicAssert.AreEqual(
-                "week 4: received copy of city planning [ctypln] technology from Caste Prime Headquarters [000112].", 
-                buyer1.EventReports[0].Report(buyer1.Owner)[0]);
-            ClassicAssert.AreEqual(
-                "week 4: copied city planning [ctypln] technology to Warszawa [000001].", 
-                seller.EventReports[0].Report(seller.Owner)[0]);
+            Assert.That(
+                buyer1.EventReports[0].Report(buyer1.Owner)[0],
+                Is.EqualTo("week 4: received copy of city planning [ctypln] technology from Caste Prime Headquarters [000112]."));
+            Assert.That(
+                seller.EventReports[0].Report(seller.Owner)[0],
+                Is.EqualTo("week 4: copied city planning [ctypln] technology to Warszawa [000001]."));
 
             // check if both offers are no longer on the market, and that both orders are marked as executed          
-            ClassicAssert.AreEqual(0, this.game.Offers[EOfferType.BuyTechnologies][cityPlanning][buyer1].Count);
-            ClassicAssert.AreEqual(0, this.game.Offers[EOfferType.SellTechnologies][cityPlanning][seller].Count);
+            Assert.That(this.game.Offers[EOfferType.BuyTechnologies][cityPlanning][buyer1].Count, Is.EqualTo(0));
+            Assert.That(this.game.Offers[EOfferType.SellTechnologies][cityPlanning][seller].Count, Is.EqualTo(0));
 
-            ClassicAssert.IsTrue(seller.Orders[0].Executed);
-            ClassicAssert.IsTrue(buyer1.Orders[0].Executed);
+            Assert.That(seller.Orders[0].Executed);
+            Assert.That(buyer1.Orders[0].Executed);
             // an assert should be there to prove buyer2 not executed order, but there wasn't an order in the first place, 
             // just an auto generated offer
 
@@ -429,16 +439,16 @@ namespace UnitTests
             {
                 Console.WriteLine(namedType.ReportName + " " + market.PriceList[namedType]);
             }
-            ClassicAssert.IsTrue(market.PriceList.ContainsKey(cityPlanning), "with prior transaction, pricelist should have a single entry");
-            ClassicAssert.AreEqual(
-                500, 
-                market.GetPrice(cityPlanning), 
+            Assert.That(market.PriceList.ContainsKey(cityPlanning), "with prior transaction, pricelist should have a single entry");
+            Assert.That(
+                market.GetPrice(cityPlanning),
+                Is.EqualTo(500),
                 "with getPrice initiated and no other prices on other markets, price should be set to last selling price");
 
             // received, we have technology in two places now
-            ClassicAssert.IsTrue(buyer1.HasTechnology(cityPlanning));
+            Assert.That(buyer1.HasTechnology(cityPlanning));
             ClassicAssert.IsFalse(buyer2.HasTechnology(cityPlanning));
-            ClassicAssert.IsTrue(seller.HasTechnology(cityPlanning));
+            Assert.That(seller.HasTechnology(cityPlanning));
         }
 
         [Test, Ignore("not ready")]
@@ -469,10 +479,10 @@ namespace UnitTests
             ModuleStack seller = this.game.ModuleStacks["000008"];
 
             Offer buyOffer = this.game.Offers[EOfferType.BuyItems][food][buyer].GetIndex(0);
-            ClassicAssert.AreEqual(200, buyOffer.Quantity);
+            Assert.That(buyOffer.Quantity, Is.EqualTo(200));
 
             Offer sellOffer = this.game.Offers[EOfferType.SellItems][food][seller].GetIndex(0);
-            ClassicAssert.AreEqual(40, sellOffer.Quantity);
+            Assert.That(sellOffer.Quantity, Is.EqualTo(40));
 
             seller.Owner = buyer.Owner;
 

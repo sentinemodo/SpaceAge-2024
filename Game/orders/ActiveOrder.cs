@@ -55,11 +55,13 @@ namespace SpaceAge
 
 		public override List<string> Report(Faction owner)
 		{
-			List<string> lines = new List<string>();
-			lines.Add(string.Format("{0}{1}active {2}",
-			    this.Conditions,
-				(this.Repeat > 1) ? string.Concat(this.Repeat.ToString(), " ") : ((this.Repeat < 0) ? "@" : string.Empty),
-				string.Concat(((ModuleStack)this.observed).IsFormed ? string.Empty : "new", this.observed.Name)));
+			List<string> lines = new List<string>
+            {
+                string.Format("{0}{1}active {2}",
+                this.Conditions,
+                (this.Repeat > 1) ? string.Concat(this.Repeat.ToString(), " ") : ((this.Repeat < 0) ? "@" : string.Empty),
+                string.Concat(((ModuleStack)this.observed).IsFormed ? string.Empty : "new", this.observed.Name))
+            };
 			return lines;
 		}
 

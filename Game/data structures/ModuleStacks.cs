@@ -493,8 +493,10 @@ namespace SpaceAge
 						moduleStack.ModuleType.ReportName));
 				}
 			}				
-			ReportLines reportLines = new ReportLines();
-			reportLines.Add(lines, level);
+			ReportLines reportLines = new ReportLines
+            {
+                { lines, level }
+            };
 			return reportLines.IndentedLines;
 		}
 

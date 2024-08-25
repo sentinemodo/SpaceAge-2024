@@ -113,10 +113,12 @@ namespace SpaceAge
 
 		private List<string> reportHeader(Faction faction)
 		{
-			List<string> lines = new List<string>();
-			lines.Add("");
-			lines.Add(string.Format("  * {0}.", this.ReportName));
-			lines.Add("------------------------------------------------------------");
+			List<string> lines = new List<string>
+            {
+                "",
+                string.Format("  * {0}.", this.ReportName),
+                "------------------------------------------------------------"
+            };
 			return lines;
 		}
 

@@ -98,11 +98,13 @@ namespace SpaceAge
 
 		private List<string> reportHeader(Faction faction)
 		{
-			List<string> lines = new List<string>();
-			lines.Add("Bank report:");
-			lines.Add(string.Format("  Bank account balance: {0}.", this.Balance));
-			lines.Add(string.Format("  Credit line maximum: {0}.", this.CreditLine));
-			lines.Add(string.Format("  Credit rate: {0}%, Deposit rate: {1}%.", this.CreditRate * 100, this.DepositRate * 100));
+			List<string> lines = new List<string>
+            {
+                "Bank report:",
+                string.Format("  Bank account balance: {0}.", this.Balance),
+                string.Format("  Credit line maximum: {0}.", this.CreditLine),
+                string.Format("  Credit rate: {0}%, Deposit rate: {1}%.", this.CreditRate * 100, this.DepositRate * 100)
+            };
 			return lines;
 		}
 

@@ -120,8 +120,18 @@ namespace SpaceAge
 			get { return this.repeat; }
 			set { this.repeat = value; }
 		}
+		public bool IsUnlimited
+		{
+			get
+			{
+				if (this.repeat < 0)
+					return true;
+				else
+					return false;
+			}
+		}
 
-		virtual public void Execute(int week)
+        virtual public void Execute(int week)
 		{
 			foreach (Order order in this.conditionalOrders)
 			{				

@@ -10,9 +10,11 @@ namespace SpaceAge
 
 		public List<string> Report(Faction faction)
 		{
-			List<string> reportLines = new List<string>();
-			reportLines.Add("Battles report:");
-			reportLines.Add("");
+			List<string> reportLines = new List<string>
+            {
+                "Battles report:",
+                ""
+            };
 			foreach (Battle battle in this)
 			{
 				reportLines.AddRange(battle.Report(faction));

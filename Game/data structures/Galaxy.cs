@@ -29,9 +29,11 @@ namespace SpaceAge
 
 		private List<string> reportHeader(Faction faction)
 		{
-			List<string> lines = new List<string>();
-			lines.Add("Galaxy report:");
-			lines.Add("------------------------------------------------------------");
+			List<string> lines = new List<string>
+            {
+                "Galaxy report:",
+                "------------------------------------------------------------"
+            };
 			return lines;
 		}
 

@@ -203,6 +203,9 @@
 				<destination destination="R00002" />
 			</move>
 		</order>
+    <order subject="modulestack" name="000011" repeat="unlimited">
+      <produce produce-type="energy" />
+    </order>
 	</orders>
 
 </game>

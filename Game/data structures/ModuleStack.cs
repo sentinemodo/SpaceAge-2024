@@ -211,8 +211,10 @@ namespace SpaceAge
 		{
 			get
 			{
-				List<Faction> owners = new List<Faction>();
-				owners.Add(this.owner);
+				List<Faction> owners = new List<Faction>
+                {
+                    this.owner
+                };
 				foreach (ModuleStack moduleStack in this.ModuleStacks.Values)
 				{
 					foreach (Faction faction in moduleStack.Owners)
@@ -1209,9 +1211,11 @@ namespace SpaceAge
 
 		public List<string> Report(Faction faction, int level)
 		{
-			ReportLines reportLines = new ReportLines();
-			reportLines.Add(this.ReportHeader(faction), level);
-			reportLines.Add(this.reportDetails(faction), level + 1);
+			ReportLines reportLines = new ReportLines
+            {
+                { this.ReportHeader(faction), level },
+                { this.reportDetails(faction), level + 1 }
+            };
 
             if (this.IsFormed)
             {
@@ -1334,10 +1338,11 @@ namespace SpaceAge
 
 		public List<string> BattleReport(Faction faction)
 		{
-			ReportLines lines = new ReportLines();
-
-			lines.Add(this.ReportHeader(faction));
-			lines.Add(this.battleReportDetails(faction), 1);
+			ReportLines lines = new ReportLines
+            {
+                this.ReportHeader(faction),
+                { this.battleReportDetails(faction), 1 }
+            };
 
 			// submodulestacks
 			foreach (ModuleStack moduleStack in this.ModuleStacks.Values)
@@ -1581,9 +1586,10 @@ namespace SpaceAge
 
 		public List<string> ReportOrdersTemplateHeader(Faction faction)
 		{
-			ReportLines reportLines = new ReportLines();
-
-            reportLines.Add(this.ReportHeader(faction));
+			ReportLines reportLines = new ReportLines
+            {
+                this.ReportHeader(faction)
+            };
 
 			if (this.Technologies.Count > 0)
 			{

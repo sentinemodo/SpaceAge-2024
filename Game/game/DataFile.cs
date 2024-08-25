@@ -399,21 +399,27 @@ namespace SpaceAge
 						    if (elAllowed.HasAttribute("planet-type"))
 						    {
 							    condition = elAllowed.GetAttribute("planet-type");
-                                technology.UseCondition_PlanetTypes = new PlanetTypes();
-                                technology.UseCondition_PlanetTypes.Add(condition, this.game.PlanetTypes[condition]);
+                                technology.UseCondition_PlanetTypes = new PlanetTypes
+                                {
+                                    { condition, this.game.PlanetTypes[condition] }
+                                };
 						    }
 
 						    if (elAllowed.HasAttribute("planet-atmosphere"))
 						    {
 							    condition = elAllowed.GetAttribute("planet-atmosphere");
-                                technology.UseCondition_AtmosphereResources = new ItemTypes();
-							    technology.UseCondition_AtmosphereResources.Add(condition, this.game.ItemTypes[condition]);
+                                technology.UseCondition_AtmosphereResources = new ItemTypes
+                                {
+                                    { condition, this.game.ItemTypes[condition] }
+                                };
 						    }
 
 						    if (elAllowed.HasAttribute("location-type"))
 						    {
-                                technology.UseCondition_LocationTypes = new LocationTypes();
-							    technology.UseCondition_LocationTypes.Add(this.LoadLocationType(elAllowed));
+                                technology.UseCondition_LocationTypes = new LocationTypes
+                                {
+                                    this.LoadLocationType(elAllowed)
+                                };
 						    }
 
                             if (elAllowed.HasAttribute("module-type-group"))
@@ -779,8 +785,8 @@ namespace SpaceAge
 					if (subject == null)
 						throw new Exception("could not find the order subject: " + subjectType + " named: " + subjectName);
 				}
-					
-				switch (elOrder.FirstChild.Name)
+
+                switch (elOrder.FirstChild.Name)
 				{
 					case "active":
                         order = new ActiveOrder(subject);
@@ -837,9 +843,19 @@ namespace SpaceAge
                         throw new Exception("Unknown order. " + elOrder.FirstChild.Name);
 				}
 				order.LoadXml(elOrder);
-			}
 
-		}
+				//TODO: validate conditional orders load up in xml
+
+				if (elOrder.GetAttribute("repeat") == "unlimited")
+				{ 
+					order.Repeat = -1; 
+				}
+				else 
+				{
+					order.Repeat = this.XMLAssignInteger(elOrder.GetAttribute("repeat"), 1);
+				}
+            }
+        }
 
 		public void LoadGalaxy()
 		{

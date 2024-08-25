@@ -108,6 +108,7 @@
     <Content Include="gameout.saved_getorders.xml" />
     <Content Include="SampleGame\gamein.1_saved.xml" />
     <Content Include="SampleGame\gamein.1_saved_orders.xml" />
+    <Content Include="SampleGame\gamein.2.xml" />
     <Content Include="SampleGame\gameout.1_saved.xml" />
     <Content Include="SampleGame\gameout.2.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

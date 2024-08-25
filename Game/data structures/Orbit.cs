@@ -78,8 +78,10 @@ namespace SpaceAge
 
 		public List<string> Report(Faction faction, int level)
 		{
-			ReportLines reportLines = new ReportLines();
-			reportLines.Add(this.reportHeader(), level);
+			ReportLines reportLines = new ReportLines
+            {
+                { this.reportHeader(), level }
+            };
 
 			if (this.resources.Count > 0)
 			{

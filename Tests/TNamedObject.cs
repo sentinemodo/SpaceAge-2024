@@ -34,7 +34,7 @@ namespace UnitTests
 		[Test]
 		public void SetupTeardown()
 		{
-			ClassicAssert.IsTrue(true);
+            Assert.That(true);
 		}
 
 		[Test]

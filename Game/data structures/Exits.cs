@@ -39,8 +39,10 @@ namespace SpaceAge
 			get
 			{
 				string line;
-				List<string> lines = new List<string>();
-				lines.Add("Exits:");
+				List<string> lines = new List<string>
+                {
+                    "Exits:"
+                };
 				foreach (Exit exit in this)
 				{
 					Region destination = (Region)exit.To;

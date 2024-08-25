@@ -39,7 +39,7 @@ namespace UnitTests
 		[Test]
 		public void SetupTeardown()
 		{
-			ClassicAssert.IsTrue(true);
+            Assert.That(true);
 		}
 
 
@@ -50,10 +50,10 @@ namespace UnitTests
 			ModuleStack frigate = ModuleStack.All["100011"];
 			ModuleStack station = ModuleStack.All["100021"];
 			Battle battle = new Battle(frigate, station);
-			ClassicAssert.AreEqual(1, battle.Attackers.Count);
-			ClassicAssert.IsTrue(battle.Attackers.Contains("100011"));
-			ClassicAssert.AreEqual(1, battle.Defenders.Count);
-			ClassicAssert.IsTrue(battle.Defenders.Contains("100021"));
+            Assert.That(battle.Attackers.Count, Is.EqualTo(1));
+            Assert.That(battle.Attackers.Contains("100011"));
+            Assert.That(battle.Defenders.Count, Is.EqualTo(1));
+            Assert.That(battle.Defenders.Contains("100021"));
 		}
 
 

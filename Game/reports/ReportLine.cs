@@ -55,8 +55,10 @@ namespace SpaceAge
 		{
 			get
 			{
-				List<string> lines = new List<string>();
-				lines.Add(string.Concat(this.IndentationString, this.Line));
+				List<string> lines = new List<string>
+                {
+                    string.Concat(this.IndentationString, this.Line)
+                };
 				return lines;				
 			}
 		}

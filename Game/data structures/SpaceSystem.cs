@@ -56,9 +56,11 @@ namespace SpaceAge
 
 		private List<string> reportHeader(Faction faction)
 		{
-			List<string> lines = new List<string>();
-			lines.Add("* Sol [SS0001] (0, 0, 0), star system.");
-			lines.Add("------------------------------------------------------------");
+			List<string> lines = new List<string>
+            {
+                "* Sol [SS0001] (0, 0, 0), star system.",
+                "------------------------------------------------------------"
+            };
 			return lines;
 		}
 

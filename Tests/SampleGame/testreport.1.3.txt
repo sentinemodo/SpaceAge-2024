@@ -38,11 +38,11 @@ Galaxy report:
   500 units of food [food].
   Market report:
     Offers of selling items:
-      sell 20 terrans [terran] at 50 each from Sydney [000006].
       sell 59 units of food [food] at 5 each from Sydney [000006].
-      sell 10 terrans [terran] at 50 each from Gelvaren complex
-      [000026].
+      sell 20 terrans [terran] at 50 each from Sydney [000006].
       sell 25 units of food [food] at 5 each from Gelvaren complex
+      [000026].
+      sell 10 terrans [terran] at 50 each from Gelvaren complex
       [000026].
     Offers of buying items:
       buy 200 units of food [food] at 1 each by Sydney [000006].

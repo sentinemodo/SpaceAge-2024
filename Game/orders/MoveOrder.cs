@@ -143,8 +143,10 @@ namespace SpaceAge
                 Dictionary<EMoveMode, List<IMoveable>> moveModes = new Dictionary<EMoveMode, List<IMoveable>>();
                 if (this.Mover.MoveModes.ContainsKey(EMoveMode.ground))
                 {
-                    List<IMoveable> ground = new List<IMoveable>();
-                    ground.Add(this.Mover);
+                    List<IMoveable> ground = new List<IMoveable>
+                    {
+                        this.Mover
+                    };
                     moveModes.Add(EMoveMode.ground, ground);
                 }
 

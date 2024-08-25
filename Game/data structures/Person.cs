@@ -245,10 +245,11 @@ namespace SpaceAge
 
 		public List<string> Report(Faction faction, int level)
 		{
-			ReportLines reportLines = new ReportLines();
-
-			reportLines.Add(this.ReportHeader(faction), level);
-			reportLines.Add(this.reportDetails(faction), level + 1);
+			ReportLines reportLines = new ReportLines
+            {
+                { this.ReportHeader(faction), level },
+                { this.reportDetails(faction), level + 1 }
+            };
             if (this.Owner == faction && this.Skills.Count > 0)
             {
                 reportLines.Add(this.Skills.Report(faction, level + 1));
@@ -390,9 +391,10 @@ namespace SpaceAge
 
 		public List<string> ReportOrdersTemplateHeader(Faction faction)
 		{
-			ReportLines reportLines = new ReportLines();
-
-			reportLines.Add(this.ReportHeader(faction));
+			ReportLines reportLines = new ReportLines
+            {
+                this.ReportHeader(faction)
+            };
 			if (this.Skills.Count > 0)
 			{
 				reportLines.Add(string.Concat("skills: ", this.Skills.ReportList, "."));
@@ -416,9 +418,11 @@ namespace SpaceAge
 
 		public List<string> BattleReport(Faction faction)
 		{
-			ReportLines lines = new ReportLines();
-			lines.Add(this.ReportHeader(faction));
-			lines.Add(this.reportBattleDetails(faction), 1);
+			ReportLines lines = new ReportLines
+            {
+                this.ReportHeader(faction),
+                { this.reportBattleDetails(faction), 1 }
+            };
 			return lines.IndentedLines;
 		}
 

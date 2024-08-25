@@ -468,10 +468,12 @@ namespace SpaceAge
 
 		private List<string> reportHeader(Faction faction)
 		{
-			List<string> lines = new List<string>();
-			lines.Add("  Week 1.");
-			lines.Add(string.Format("  Battle has commenced at {0}.", this.attacker.Location.BattleReportName));
-			lines.Add("  ------------------------------------------------------------");
+			List<string> lines = new List<string>
+            {
+                "  Week 1.",
+                string.Format("  Battle has commenced at {0}.", this.attacker.Location.BattleReportName),
+                "  ------------------------------------------------------------"
+            };
 			return lines;
 		}
 

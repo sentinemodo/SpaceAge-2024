@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using NUnit.Core;
 using NUnit.Framework;
 using NUnit.Framework.Legacy;
 using SpaceAge;
@@ -35,25 +36,27 @@ namespace UnitTests
 		[Test]
 		public void SetupTeardown()
 		{
-			ClassicAssert.IsTrue(true);
+            Assert.That(true);
 		}
 
 		[Test]
 		public void ReadOrdersFile()
 		{
 			OrdersReader ordersReader = new OrdersReader(game);
-			List<string> testlines = new List<string>();
-			testlines.Add("#faction 2");
-			testlines.Add("");
-			testlines.Add("#modulestack 100001");
-			testlines.Add("move R00002");
-			testlines.Add("");
-			testlines.Add("#end");
+			List<string> testlines = new List<string>
+            {
+                "#faction 2",
+                "",
+                "#modulestack 100001",
+                "move R00002",
+                "",
+                "#end"
+            };
 			List<string> lines = ordersReader.ReadOrdersFile(Path.Combine(Directory.GetCurrentDirectory(), "orders.move.txt"));
-			ClassicAssert.AreEqual(testlines.Count, lines.Count);
+            Assert.That(lines.Count, Is.EqualTo(testlines.Count));
 			for (int i = 0; i < lines.Count ; i++)
 			{
-				ClassicAssert.AreEqual(testlines[i], lines[i]);
+                Assert.That(lines[i], Is.EqualTo(testlines[i]));
 			}			
 		}
 
@@ -63,18 +66,20 @@ namespace UnitTests
 			Faction testFaction = this.game.Factions["2"];
 			ModuleStack testModuleStack = this.game.ModuleStacks["100001"];
 
-			List<string> testcommands = new List<string>();
-			testcommands.Add("#faction 2");
-			testcommands.Add("#modulestack 100001");
-			testcommands.Add("move R00002");
-			testcommands.Add("#end");
+			List<string> testcommands = new List<string>
+            {
+                "#faction 2",
+                "#modulestack 100001",
+                "move R00002",
+                "#end"
+            };
 
 			OrdersReader ordersReader = new OrdersReader(game);
 			ordersReader.AssignOrders(testcommands);
-			ClassicAssert.AreEqual(1, testModuleStack.Orders.Count);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
 
 			MoveOrder order = (MoveOrder) testModuleStack.Orders[0];
-			ClassicAssert.AreEqual(1, order.Route.Count);
+            Assert.That(order.Route.Count, Is.EqualTo(1));
 		}
 
 		[Test]
@@ -82,8 +87,8 @@ namespace UnitTests
 		{
 			ModuleStack testModuleStack = this.game.ModuleStacks["100001"];
 			MoveOrder mo = new MoveOrder(testModuleStack);
-			ClassicAssert.AreEqual(1, testModuleStack.Orders.Count);
-			ClassicAssert.AreEqual(mo, testModuleStack.Orders[0]);			
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
+            Assert.That(testModuleStack.Orders[0], Is.EqualTo(mo));			
 		}
 
 		[Test]
@@ -91,8 +96,8 @@ namespace UnitTests
 		{
 			string command = "#faction 2";
 			string token = LineParser.GetToken(ref command);
-			ClassicAssert.AreEqual("#faction", token);
-			ClassicAssert.AreEqual("2", command);
+            Assert.That(token, Is.EqualTo("#faction"));
+            Assert.That(command, Is.EqualTo("2"));
 		}
 
 		[Test]
@@ -103,70 +108,70 @@ namespace UnitTests
 			MoveOrder order = (MoveOrder)testModuleStack.Orders[0];
 			Region region1 = Region.All["R00001"];
 			Region region2 = Region.All["R00002"];
-			ClassicAssert.AreEqual(3, region1.Exits[0].ExitModes[EMoveMode.ground].Duration);
+            Assert.That(region1.Exits[0].ExitModes[EMoveMode.ground].Duration, Is.EqualTo(3));
  
 			// check if the world state changes corretly	
 			ClassicAssert.IsNull(testModuleStack.MovingTo);
-			ClassicAssert.AreEqual(region1, testModuleStack.Parent); 
-			ClassicAssert.AreEqual(1, testModuleStack.Orders.Count);
-			ClassicAssert.IsFalse(order.Executing);
-			ClassicAssert.IsFalse(order.Executed);
+            Assert.That(testModuleStack.Parent, Is.EqualTo(region1));
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
+            Assert.That(order.Executing, Is.False);
+            Assert.That(order.Executed, Is.False);
 
 			testModuleStack.ExecutedLongOrder = false; 
 			testModuleStack.Orders.Execute(this.game.Week);
-			ClassicAssert.AreEqual(region2, testModuleStack.MovingTo);
-			ClassicAssert.AreEqual(region1, testModuleStack.Parent);
-			ClassicAssert.AreEqual(1, testModuleStack.Orders.Count);
-			ClassicAssert.AreEqual(5, order.DurationLeft);
-			ClassicAssert.IsTrue(order.Executing);
-			ClassicAssert.IsFalse(order.Executed);
+            Assert.That(testModuleStack.MovingTo, Is.EqualTo(region2));
+            Assert.That(testModuleStack.Parent, Is.EqualTo(region1));
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
+            Assert.That(order.DurationLeft, Is.EqualTo(5));
+            Assert.That(order.Executing);
+            Assert.That(order.Executed, Is.False);
 
 			testModuleStack.ExecutedLongOrder = false; 
 			testModuleStack.Orders.Execute(this.game.Week);
-			ClassicAssert.AreEqual(region2, testModuleStack.MovingTo);
-			ClassicAssert.AreEqual(region1, testModuleStack.Parent);
-			ClassicAssert.AreEqual(1, testModuleStack.Orders.Count);
-			ClassicAssert.AreEqual(4, order.DurationLeft);
-			ClassicAssert.IsTrue(order.Executing);
-			ClassicAssert.IsFalse(order.Executed);
+            Assert.That(testModuleStack.MovingTo, Is.EqualTo(region2));
+            Assert.That(testModuleStack.Parent, Is.EqualTo(region1));
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
+            Assert.That(order.DurationLeft, Is.EqualTo(4));
+            Assert.That(order.Executing);
+            Assert.That(order.Executed, Is.False);
 
 			testModuleStack.ExecutedLongOrder = false; 
 			testModuleStack.Orders.Execute(this.game.Week);
-			ClassicAssert.AreEqual(region2, testModuleStack.MovingTo);
-			ClassicAssert.AreEqual(region1, testModuleStack.Parent);
-			ClassicAssert.AreEqual(1, testModuleStack.Orders.Count);
-			ClassicAssert.AreEqual(3, order.DurationLeft);
-			ClassicAssert.IsTrue(order.Executing);
-			ClassicAssert.IsFalse(order.Executed);
+            Assert.That(testModuleStack.MovingTo, Is.EqualTo(region2));
+            Assert.That(testModuleStack.Parent, Is.EqualTo(region1));
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
+            Assert.That(order.DurationLeft, Is.EqualTo(3));
+            Assert.That(order.Executing);
+            Assert.That(order.Executed, Is.False);
 
 			testModuleStack.ExecutedLongOrder = false; 
 			testModuleStack.Orders.Execute(this.game.Week);
-			ClassicAssert.AreEqual(region2, testModuleStack.MovingTo);
-			ClassicAssert.AreEqual(region1, testModuleStack.Parent);
-			ClassicAssert.AreEqual(1, testModuleStack.Orders.Count);
-			ClassicAssert.AreEqual(2, order.DurationLeft);
-			ClassicAssert.IsTrue(order.Executing);
-			ClassicAssert.IsFalse(order.Executed);
+            Assert.That(testModuleStack.MovingTo, Is.EqualTo(region2));
+            Assert.That(testModuleStack.Parent, Is.EqualTo(region1));
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
+            Assert.That(order.DurationLeft, Is.EqualTo(2));
+            Assert.That(order.Executing);
+            Assert.That(order.Executed, Is.False);
 
 			testModuleStack.ExecutedLongOrder = false; 
 			testModuleStack.Orders.Execute(this.game.Week);
-			ClassicAssert.AreEqual(region2, testModuleStack.MovingTo);
-			ClassicAssert.AreEqual(region1, testModuleStack.Parent);
-			ClassicAssert.AreEqual(1, testModuleStack.Orders.Count);
-			ClassicAssert.AreEqual(1, order.DurationLeft);
-			ClassicAssert.IsTrue(order.Executing);
-			ClassicAssert.IsFalse(order.Executed);
+            Assert.That(testModuleStack.MovingTo, Is.EqualTo(region2));
+            Assert.That(testModuleStack.Parent, Is.EqualTo(region1));
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
+            Assert.That(order.DurationLeft, Is.EqualTo(1));
+            Assert.That(order.Executing);
+            Assert.That(order.Executed, Is.False);
 
 			testModuleStack.ExecutedLongOrder = false; 
 			testModuleStack.Orders.Execute(this.game.Week);
 			ClassicAssert.IsNull (testModuleStack.MovingTo);
-			ClassicAssert.AreEqual(region2, testModuleStack.Parent);
-			ClassicAssert.AreEqual(1, testModuleStack.Orders.Count);
-			ClassicAssert.IsFalse(order.Executing);
-			ClassicAssert.IsTrue(order.Executed);
+            Assert.That(testModuleStack.Parent, Is.EqualTo(region2));
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
+            Assert.That(order.Executing, Is.False);
+            Assert.That(order.Executed);
 
 			testModuleStack.Orders.RemoveExecuted();
-			ClassicAssert.AreEqual(0, testModuleStack.Orders.Count);			
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(0));			
 		}
 
 		[Test]
@@ -175,20 +180,22 @@ namespace UnitTests
 			Faction testFaction = this.game.Factions["2"];
 			ModuleStack testModuleStack = this.game.ModuleStacks["000004"];
 
-			List<string> testcommands = new List<string>();
-			testcommands.Add("#faction 2");
-			testcommands.Add("#modulestack 000004");
-			testcommands.Add("use agrplx");
-			testcommands.Add("#end");
+			List<string> testcommands = new List<string>
+            {
+                "#faction 2",
+                "#modulestack 000004",
+                "use agrplx",
+                "#end"
+            };
 
 			OrdersReader ordersReader = new OrdersReader(game);
 			ordersReader.AssignOrders(testcommands);
-			ClassicAssert.AreEqual(1, testModuleStack.Orders.Count);
-            
-			ClassicAssert.IsTrue(testModuleStack.Orders[0] is UseOrder);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
+
+            Assert.That(testModuleStack.Orders[0] is UseOrder);
 			UseOrder useOrder = (UseOrder)testModuleStack.Orders[0];
-			ClassicAssert.AreEqual(Technology.All["agrplx"], useOrder.Technology);
-            ClassicAssert.AreEqual(1, useOrder.Repeat);
+            Assert.That(useOrder.Technology, Is.EqualTo(Technology.All["agrplx"]));
+            Assert.That(useOrder.Repeat, Is.EqualTo(1));
 		}
 
 		[Test]
@@ -196,8 +203,8 @@ namespace UnitTests
 		{
 			Technology technology = Technology.All["agrplx"];
 			ClassicAssert.IsNull(technology.UseProduceItems);
-			ClassicAssert.IsNotNull(technology.UseProduceModules);
-			ClassicAssert.AreEqual(4, technology.UseTime);
+            Assert.That(technology.UseProduceModules, Is.Not.Null);
+            Assert.That(technology.UseTime, Is.EqualTo(4));
 		}
 
 		[Test]
@@ -209,57 +216,57 @@ namespace UnitTests
 			ItemType iron = ItemType.All["iron"];
 			ModuleType farms = ModuleType.All["farms"];
 
-			ClassicAssert.AreEqual(4, Technology.All["agrplx"].UseTime);
+            Assert.That(Technology.All["agrplx"].UseTime, Is.EqualTo(4));
 
-			// check if the world state changes correctly	
-			ClassicAssert.IsFalse(testModuleStack.Effects.IsProducing);
-			ClassicAssert.AreEqual(20, testModuleStack.ItemStacks[iron].Quantity);
-			ClassicAssert.AreEqual(7, testModuleStack.Parent.ModuleStacks.Count);
-			ClassicAssert.AreEqual(1, testModuleStack.Orders.Count);
-			ClassicAssert.IsFalse(order.Executing);
-			ClassicAssert.IsFalse(order.Executed);
-
-			testModuleStack.ExecutedLongOrder = false;
-			ClassicAssert.AreEqual(1, order.Repeat);
-			testModuleStack.Execute(this.game.Week);
-			ClassicAssert.IsTrue(testModuleStack.Effects.IsProducing);
-			ClassicAssert.AreEqual(10, testModuleStack.ItemStacks[iron].Quantity);
-			ClassicAssert.AreEqual(7, testModuleStack.Parent.ModuleStacks.Count);
-			ClassicAssert.AreEqual(1, testModuleStack.Orders.Count);
-
-			ClassicAssert.AreEqual(3, order.DurationLeft, "Producer is having " + testModuleStack.Quantity.ToString() + " modules");
-			ClassicAssert.IsTrue(order.Executing);
-			ClassicAssert.IsFalse(order.Executed);
+            // check if the world state changes correctly	
+            Assert.That(testModuleStack.Effects.IsProducing, Is.False);
+            Assert.That(testModuleStack.ItemStacks[iron].Quantity, Is.EqualTo(20));
+            Assert.That(testModuleStack.Parent.ModuleStacks.Count, Is.EqualTo(7));
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
+            Assert.That(order.Executing, Is.False);
+            Assert.That(order.Executed, Is.False);
 
 			testModuleStack.ExecutedLongOrder = false;
+            Assert.That(order.Repeat, Is.EqualTo(1));
 			testModuleStack.Execute(this.game.Week);
-			ClassicAssert.AreEqual(10, testModuleStack.ItemStacks[iron].Quantity);
-			ClassicAssert.AreEqual(7, testModuleStack.Parent.ModuleStacks.Count);
-			ClassicAssert.AreEqual(1, testModuleStack.Orders.Count);
+            Assert.That(testModuleStack.Effects.IsProducing);
+            Assert.That(testModuleStack.ItemStacks[iron].Quantity, Is.EqualTo(10));
+            Assert.That(testModuleStack.Parent.ModuleStacks.Count, Is.EqualTo(7));
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
+
+            Assert.That(order.DurationLeft, Is.EqualTo(3), "Producer is having " + testModuleStack.Quantity.ToString() + " modules");
+            Assert.That(order.Executing);
+            Assert.That(order.Executed, Is.False);
+
+			testModuleStack.ExecutedLongOrder = false;
+			testModuleStack.Execute(this.game.Week);
+            Assert.That(testModuleStack.ItemStacks[iron].Quantity, Is.EqualTo(10));
+            Assert.That(testModuleStack.Parent.ModuleStacks.Count, Is.EqualTo(7));
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
 			this.consoleOutReport("producer: ", testModuleStack, Faction.All["2"]);
 
-			ClassicAssert.AreEqual(2, order.DurationLeft);
+            Assert.That(order.DurationLeft, Is.EqualTo(2));
 			testModuleStack.Effects.RemoveExecuted();
-			ClassicAssert.IsTrue(testModuleStack.Effects.IsProducing);
+            Assert.That(testModuleStack.Effects.IsProducing);
 
 			testModuleStack.ExecutedLongOrder = false;
-			ClassicAssert.AreEqual(1, order.Repeat);
+            Assert.That(order.Repeat, Is.EqualTo(1));
 			testModuleStack.Execute(this.game.Week);
-			ClassicAssert.AreEqual(1, order.DurationLeft);
-			ClassicAssert.IsTrue(testModuleStack.Effects.IsProducing);
+            Assert.That(order.DurationLeft, Is.EqualTo(1));
+            Assert.That(testModuleStack.Effects.IsProducing);
 
 			testModuleStack.ExecutedLongOrder = false;
-			ClassicAssert.AreEqual(1, order.Repeat);
+            Assert.That(order.Repeat, Is.EqualTo(1));
 			testModuleStack.Execute(this.game.Week);
-			//ClassicAssert.AreEqual(0, order.DurationLeft);
-			ClassicAssert.IsFalse(testModuleStack.Effects.IsProducing);
-			ClassicAssert.AreEqual(10, testModuleStack.ItemStacks[iron].Quantity);
-			ClassicAssert.AreEqual(7 + 1, testModuleStack.Parent.ModuleStacks.Count);
+            //ClassicAssert.AreEqual(0, order.DurationLeft);
+            Assert.That(testModuleStack.Effects.IsProducing, Is.False);
+            Assert.That(testModuleStack.ItemStacks[iron].Quantity, Is.EqualTo(10));
+            Assert.That(testModuleStack.Parent.ModuleStacks.Count, Is.EqualTo(7 + 1));
 
-			ClassicAssert.IsFalse(order.Executing);
-			ClassicAssert.IsTrue(order.Executed);
-			ClassicAssert.AreEqual(0, order.Repeat);
-			ClassicAssert.AreEqual(0, testModuleStack.Orders.Count);
+            Assert.That(order.Executing, Is.False);
+            Assert.That(order.Executed);
+            Assert.That(order.Repeat, Is.EqualTo(0));
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(0));
 		}
 
 		[Test]
@@ -268,24 +275,26 @@ namespace UnitTests
 			Faction testFaction = this.game.Factions["2"];
 			ModuleStack testModuleStack = this.game.ModuleStacks["000004"];
 
-			List<string> testcommands = new List<string>();
-			testcommands.Add("#faction 2");
-			testcommands.Add("#modulestack 000004");
-			testcommands.Add("buy 5 terran at 5");
-			testcommands.Add("#end");
+			List<string> testcommands = new List<string>
+            {
+                "#faction 2",
+                "#modulestack 000004",
+                "buy 5 terran at 5",
+                "#end"
+            };
 
-			ClassicAssert.AreEqual(9, Offer.All.Count);
+            Assert.That(Offer.All.Count, Is.EqualTo(9));
 
 			OrdersReader ordersReader = new OrdersReader(game);
 			ordersReader.AssignOrders(testcommands);
-			ClassicAssert.AreEqual(1, testModuleStack.Orders.Count);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
 
-			ClassicAssert.IsTrue(testModuleStack.Orders[0] is BuyOrder);
+            Assert.That(testModuleStack.Orders[0] is BuyOrder);
 			BuyOrder buyOrder = (BuyOrder)testModuleStack.Orders[0];
-			ClassicAssert.AreEqual(ItemType.All["terran"], buyOrder.ItemType);
-			ClassicAssert.AreEqual(1, buyOrder.Repeat);
+            Assert.That(buyOrder.ItemType, Is.EqualTo(ItemType.All["terran"]));
+            Assert.That(buyOrder.Repeat, Is.EqualTo(1));
 
-			ClassicAssert.AreEqual(9, Offer.All.Count, "assign shouldn't change number of offers");
+            Assert.That(Offer.All.Count, Is.EqualTo(9), "assign shouldn't change number of offers");
 		}
 
 		[Test]
@@ -300,13 +309,13 @@ namespace UnitTests
 			ItemType terran = ItemType.All["terran"];
 			ItemType cash = ItemType.All["cash"];
 
-			// check if the world state changes corretly	
-			ClassicAssert.AreEqual(10, testModuleStack.ItemStacks[terran].Quantity);
-			ClassicAssert.AreEqual(300, testModuleStack.ItemStacks[cash].Quantity);
-			ClassicAssert.AreEqual(1, testModuleStack.Orders.Count);
-			ClassicAssert.IsFalse(order.Executing);
-			ClassicAssert.IsFalse(order.Executed);
-			ClassicAssert.AreEqual(0, testModuleStack.Effects.Count);
+            // check if the world state changes corretly	
+            Assert.That(testModuleStack.ItemStacks[terran].Quantity, Is.EqualTo(10));
+            Assert.That(testModuleStack.ItemStacks[cash].Quantity, Is.EqualTo(300));
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
+            Assert.That(order.Executing, Is.False);
+            Assert.That(order.Executed, Is.False);
+            Assert.That(testModuleStack.Effects.Count, Is.EqualTo(0));
 			Console.WriteLine("existing offers");
 			List<string> lines = testModuleStack.Location.Market.Report(testFaction);
 
@@ -315,15 +324,15 @@ namespace UnitTests
 				Console.WriteLine(line);
 			}
 
-			ClassicAssert.AreEqual(4, Offer.All[market].Count);
+            Assert.That(Offer.All[market].Count, Is.EqualTo(4));
 
 			testModuleStack.Execute(this.game.Week);
-			ClassicAssert.AreEqual(10, testModuleStack.ItemStacks[terran].Quantity, "shouldn'teardownOrder execute - offers are to expensive");
-			ClassicAssert.AreEqual(300, testModuleStack.ItemStacks[cash].Quantity);
-            ClassicAssert.AreEqual(20000, testModuleStack.Owner.Bank.AvailableFunds);
-			ClassicAssert.AreEqual(1, testModuleStack.Orders.Count);
-			ClassicAssert.IsFalse(order.Executing, "it's immediate, can't be continously executing");
-			ClassicAssert.IsFalse(order.Executed, "offer is placed but not completed - not executed");
+            Assert.That(testModuleStack.ItemStacks[terran].Quantity, Is.EqualTo(10), "shouldn'teardownOrder execute - offers are to expensive");
+            Assert.That(testModuleStack.ItemStacks[cash].Quantity, Is.EqualTo(300));
+            Assert.That(testModuleStack.Owner.Bank.AvailableFunds, Is.EqualTo(20000));
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
+            Assert.That(order.Executing, Is.False, "it's immediate, can't be continously executing");
+            Assert.That(order.Executed, Is.False, "offer is placed but not completed - not executed");
 
 			Console.WriteLine("existing offers stage 2");
 			lines = testModuleStack.Location.Market.Report(testFaction);
@@ -332,23 +341,23 @@ namespace UnitTests
 				Console.WriteLine(line);
 			}
 
-			ClassicAssert.AreEqual(5, Offer.All[market].Count);
+            Assert.That(Offer.All[market].Count, Is.EqualTo(5));
 
 
 			Offers testOffers = Offer.All[testModuleStack][EOfferType.BuyItems];
-			ClassicAssert.AreEqual(1, testOffers.Count);
+            Assert.That(testOffers.Count, Is.EqualTo(1));
 			foreach (Offer offer in testOffers)
 			{
-				ClassicAssert.AreEqual(testModuleStack, offer.Offerent);
+                Assert.That(offer.Offerent, Is.EqualTo(testModuleStack));
 			}
 
 			order.Buy.Price = 50;
 			testModuleStack.Execute(this.game.Week);
-			ClassicAssert.AreEqual(15, testModuleStack.ItemStacks[terran].Quantity);
-			ClassicAssert.AreEqual(300, testModuleStack.ItemStacks[cash].Quantity);
-            ClassicAssert.AreEqual(19750, testModuleStack.Owner.Bank.AvailableFunds); // used bank account for transaction
-			ClassicAssert.AreEqual(0, testModuleStack.Effects.Count, "there was some kind of effect planned");
-			ClassicAssert.AreEqual(4, Offer.All[market].Count);
+            Assert.That(testModuleStack.ItemStacks[terran].Quantity, Is.EqualTo(15));
+            Assert.That(testModuleStack.ItemStacks[cash].Quantity, Is.EqualTo(300));
+            Assert.That(testModuleStack.Owner.Bank.AvailableFunds, Is.EqualTo(19750)); // used bank account for transaction
+            Assert.That(testModuleStack.Effects.Count, Is.EqualTo(0), "there was some kind of effect planned");
+            Assert.That(Offer.All[market].Count, Is.EqualTo(4));
 		}
 
 		[Test]
@@ -359,25 +368,25 @@ namespace UnitTests
 			ModuleStack testModuleStack = this.game.ModuleStacks["100001"];
 			ItemType oil = ItemType.All["oil"];
 
-			ClassicAssert.IsNotNull(oil);
-			ClassicAssert.AreEqual(2, testModuleStack.ItemStacks.Count);
+            Assert.That(oil, Is.Not.Null);
+            Assert.That(testModuleStack.ItemStacks.Count, Is.EqualTo(2));
 
-			// check if the world state changes correctly				
-			ClassicAssert.AreEqual(2, testModuleStack.ItemStacks[oil].Quantity);
-			ClassicAssert.AreEqual(0, testModuleStack.Effects.Count);
+            // check if the world state changes correctly				
+            Assert.That(testModuleStack.ItemStacks[oil].Quantity, Is.EqualTo(2));
+            Assert.That(testModuleStack.Effects.Count, Is.EqualTo(0));
 
 			testModuleStack.Orders.Execute(this.game.Week);
             this.consoleOutReport("itemstacks: ", testModuleStack.ItemStacks, testFaction);
             this.consoleOutReport("modulestack: ", testModuleStack, testFaction);
-            ClassicAssert.AreEqual(1, testModuleStack.ItemStacks.Count);
-			ClassicAssert.AreEqual(2, testModuleStack.Effects.Count); // moving and fuelled
-            ClassicAssert.IsTrue(testModuleStack.Effects.IsFuelled);
-            ClassicAssert.IsTrue(testModuleStack.Effects.IsMoving);
-            ClassicAssert.IsTrue(testModuleStack.Effects[1] is Fuelled);
-            ClassicAssert.AreEqual(13, testModuleStack.Effects[1].Duration);
+            Assert.That(testModuleStack.ItemStacks.Count, Is.EqualTo(1));
+            Assert.That(testModuleStack.Effects.Count, Is.EqualTo(2)); // moving and fuelled
+            Assert.That(testModuleStack.Effects.IsFuelled);
+            Assert.That(testModuleStack.Effects.IsMoving);
+            Assert.That(testModuleStack.Effects[1] is Fuelled);
+            Assert.That(testModuleStack.Effects[1].Duration, Is.EqualTo(13));
 
 			testModuleStack.Effects.Execute(this.game.Week);
-			ClassicAssert.AreEqual(12, testModuleStack.Effects[1].Duration);
+            Assert.That(testModuleStack.Effects[1].Duration, Is.EqualTo(12));
 		}
 
 		[Test]
@@ -386,31 +395,33 @@ namespace UnitTests
 			Faction testFaction = this.game.Factions["2"];
 			ModuleStack testModuleStack = this.game.ModuleStacks["100001"];
 
-			List<string> testcommands = new List<string>();
-			testcommands.Add("#faction 2");
-			testcommands.Add("#modulestack 100001");
-			// get exact amount from defined modulestack
-			testcommands.Add("get 1 iron from 000006");
-			// get all except exact amount from defined modulestack
-			testcommands.Add("get -5 iron from 000006");
-			// get all iron from defined modulestack
-			testcommands.Add("get all iron from 000006");
-			// get all resources from defined modulestack
-			testcommands.Add("get all from 000006");
-			// get all resources from all modulestacks
-			testcommands.Add("get all iron");
-			// get all resources from all modulestacks
-			testcommands.Add("get all");
-			testcommands.Add("#end");
+			List<string> testcommands = new List<string>
+            {
+                "#faction 2",
+                "#modulestack 100001",
+                // get exact amount from defined modulestack
+                "get 1 iron from 000006",
+                // get all except exact amount from defined modulestack
+                "get -5 iron from 000006",
+                // get all iron from defined modulestack
+                "get all iron from 000006",
+                // get all resources from defined modulestack
+                "get all from 000006",
+                // get all resources from all modulestacks
+                "get all iron",
+                // get all resources from all modulestacks
+                "get all",
+                "#end"
+            };
 
 			OrdersReader ordersReader = new OrdersReader(game);
 			ordersReader.AssignOrders(testcommands);
-			ClassicAssert.AreEqual(6, testModuleStack.Orders.Count);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(6));
 
 			GetOrder order = (GetOrder) testModuleStack.Orders[0];
-			ClassicAssert.AreEqual(1, order.Quantity);
-			ClassicAssert.AreEqual("iron", order.ItemType.Name);
-			ClassicAssert.AreEqual("core drill [000006]", order.Transferer.ReportName);
+            Assert.That(order.Quantity, Is.EqualTo(1));
+            Assert.That(order.ItemType.Name, Is.EqualTo("iron"));
+            Assert.That(order.Transferer.ReportName, Is.EqualTo("core drill [000006]"));
 		}
 
 		[Test]
@@ -422,14 +433,14 @@ namespace UnitTests
 			ItemType iron = ItemType.All["iron"];
 			ItemType terran = ItemType.All["terran"];
 
-			ClassicAssert.IsNotNull(iron);
-			ClassicAssert.AreEqual(2, receiver.ItemStacks.Count);
+            Assert.That(iron, Is.Not.Null);
+            Assert.That(receiver.ItemStacks.Count, Is.EqualTo(2));
 
-			// check if the world state changes corretly				
-			ClassicAssert.IsFalse(receiver.ItemStacks.ContainsKey(iron));
-			ClassicAssert.AreEqual(10, holder.ItemStacks[iron].Quantity);
-			ClassicAssert.AreEqual(1, receiver.ItemStacks[terran].Quantity);
-			ClassicAssert.AreEqual(12, holder.ItemStacks[terran].Quantity);
+            // check if the world state changes corretly				
+            Assert.That(receiver.ItemStacks.ContainsKey(iron), Is.False);
+            Assert.That(holder.ItemStacks[iron].Quantity, Is.EqualTo(10));
+            Assert.That(receiver.ItemStacks[terran].Quantity, Is.EqualTo(1));
+            Assert.That(holder.ItemStacks[terran].Quantity, Is.EqualTo(12));
 			// get exact amount from defined modulestack
 			// testcommands.Add("get 1 iron from 000006");
             this.consoleOutReport("before get 1 iron holder", holder, holder.Owner);
@@ -439,44 +450,44 @@ namespace UnitTests
             
             receiver.Orders[0].Execute(this.game.Week);
             this.consoleOutReport("after get 1 iron", holder, holder.Owner);
-            ClassicAssert.AreEqual(3, receiver.ItemStacks.Count);
-			ClassicAssert.IsTrue(receiver.ItemStacks.ContainsKey(iron));
-			ClassicAssert.AreEqual(1, receiver.ItemStacks[iron].Quantity);
-			ClassicAssert.AreEqual(9, holder.ItemStacks[iron].Quantity);
-			ClassicAssert.AreEqual(1, receiver.ItemStacks[terran].Quantity);
-			ClassicAssert.AreEqual(12, holder.ItemStacks[terran].Quantity);
+            Assert.That(receiver.ItemStacks.Count, Is.EqualTo(3));
+            Assert.That(receiver.ItemStacks.ContainsKey(iron));
+            Assert.That(receiver.ItemStacks[iron].Quantity, Is.EqualTo(1));
+            Assert.That(holder.ItemStacks[iron].Quantity, Is.EqualTo(9));
+            Assert.That(receiver.ItemStacks[terran].Quantity, Is.EqualTo(1));
+            Assert.That(holder.ItemStacks[terran].Quantity, Is.EqualTo(12));
 			// get all except exact amount from defined modulestack
 			// testcommands.Add("get -5 iron from 000006");
 			receiver.Orders[1].Execute(this.game.Week);
-			ClassicAssert.AreEqual(3, receiver.ItemStacks.Count);
-			ClassicAssert.AreEqual(5, receiver.ItemStacks[iron].Quantity);
-			ClassicAssert.AreEqual(5, holder.ItemStacks[iron].Quantity);
-			ClassicAssert.AreEqual(1, receiver.ItemStacks[terran].Quantity);
-			ClassicAssert.AreEqual(12, holder.ItemStacks[terran].Quantity);
+            Assert.That(receiver.ItemStacks.Count, Is.EqualTo(3));
+            Assert.That(receiver.ItemStacks[iron].Quantity, Is.EqualTo(5));
+            Assert.That(holder.ItemStacks[iron].Quantity, Is.EqualTo(5));
+            Assert.That(receiver.ItemStacks[terran].Quantity, Is.EqualTo(1));
+            Assert.That(holder.ItemStacks[terran].Quantity, Is.EqualTo(12));
 			// get all iron from defined modulestack
 			// testcommands.Add("get all iron from 000006");
 			receiver.Orders[2].Execute(this.game.Week);
-			ClassicAssert.AreEqual(3, receiver.ItemStacks.Count);
-			ClassicAssert.AreEqual(10, receiver.ItemStacks[iron].Quantity);
-			ClassicAssert.IsFalse(holder.ItemStacks.ContainsKey(iron));
-			ClassicAssert.AreEqual(1, receiver.ItemStacks[terran].Quantity);
-			ClassicAssert.AreEqual(12, holder.ItemStacks[terran].Quantity);
+            Assert.That(receiver.ItemStacks.Count, Is.EqualTo(3));
+            Assert.That(receiver.ItemStacks[iron].Quantity, Is.EqualTo(10));
+            Assert.That(holder.ItemStacks.ContainsKey(iron), Is.False);
+            Assert.That(receiver.ItemStacks[terran].Quantity, Is.EqualTo(1));
+            Assert.That(holder.ItemStacks[terran].Quantity, Is.EqualTo(12));
 			// get all resources from defined modulestack
 			// testcommands.Add("get all from 000006");
 			receiver.Orders[3].Execute(this.game.Week);
-			ClassicAssert.AreEqual(3, receiver.ItemStacks.Count);
-			ClassicAssert.AreEqual(10, receiver.ItemStacks[iron].Quantity);
-			ClassicAssert.AreEqual(13, receiver.ItemStacks[terran].Quantity);
+            Assert.That(receiver.ItemStacks.Count, Is.EqualTo(3));
+            Assert.That(receiver.ItemStacks[iron].Quantity, Is.EqualTo(10));
+            Assert.That(receiver.ItemStacks[terran].Quantity, Is.EqualTo(13));
 			// get all resources from all modulestacks
 			// testcommands.Add("get all iron");
 			receiver.Orders[4].Execute(this.game.Week);
-			ClassicAssert.AreEqual(3, receiver.ItemStacks.Count);
-			ClassicAssert.AreEqual(15, receiver.ItemStacks[iron].Quantity);
-			ClassicAssert.AreEqual(13, receiver.ItemStacks[terran].Quantity);
+            Assert.That(receiver.ItemStacks.Count, Is.EqualTo(3));
+            Assert.That(receiver.ItemStacks[iron].Quantity, Is.EqualTo(15));
+            Assert.That(receiver.ItemStacks[terran].Quantity, Is.EqualTo(13));
 			// get all resources from all modulestacks
 			// testcommands.Add("get all");
-			receiver.Orders[5].Execute(this.game.Week); 
-			ClassicAssert.AreEqual(6, receiver.ItemStacks.Count);
+			receiver.Orders[5].Execute(this.game.Week);
+            Assert.That(receiver.ItemStacks.Count, Is.EqualTo(6));
 
 			List<string> reportLines = receiver.EventReports.Report(receiver.Owner);
 			foreach (string reportLine in reportLines)
@@ -493,27 +504,29 @@ namespace UnitTests
 			Faction testFaction = this.game.Factions["2"];
 			ModuleStack testModuleStack = this.game.ModuleStacks["000006"];
 
-			List<string> testcommands = new List<string>();
-			testcommands.Add("#faction 2");
-			testcommands.Add("#modulestack 000006");
-			// give exact amount to defined modulestack
-			testcommands.Add("give 1 iron to 100001");
-			// give all except exact amount to defined modulestack
-			testcommands.Add("give -5 iron to 100001");
-			// give all iron to  defined modulestack
-			testcommands.Add("give all iron to 100001");
-			// give all resources to defined modulestack
-			testcommands.Add("give all to 100001");
-			testcommands.Add("#end");
+			List<string> testcommands = new List<string>
+            {
+                "#faction 2",
+                "#modulestack 000006",
+                // give exact amount to defined modulestack
+                "give 1 iron to 100001",
+                // give all except exact amount to defined modulestack
+                "give -5 iron to 100001",
+                // give all iron to  defined modulestack
+                "give all iron to 100001",
+                // give all resources to defined modulestack
+                "give all to 100001",
+                "#end"
+            };
 
 			OrdersReader ordersReader = new OrdersReader(game);
 			ordersReader.AssignOrders(testcommands);
-			ClassicAssert.AreEqual(4, testModuleStack.Orders.Count);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(4));
 
 			GiveOrder order = (GiveOrder)testModuleStack.Orders[0];
-			ClassicAssert.AreEqual(1, order.Quantity);
-			ClassicAssert.AreEqual("iron", order.ItemType.Name);
-			ClassicAssert.AreEqual("trucks [100001]", ModuleStack.All[order.ReceiverName].ReportName);
+            Assert.That(order.Quantity, Is.EqualTo(1));
+            Assert.That(order.ItemType.Name, Is.EqualTo("iron"));
+            Assert.That(ModuleStack.All[order.ReceiverName].ReportName, Is.EqualTo("trucks [100001]"));
 		}
 
 		[Test]
@@ -527,45 +540,45 @@ namespace UnitTests
 			ItemType iron = ItemType.All["iron"];
 			ItemType terran = ItemType.All["terran"];
 
-			ClassicAssert.IsNotNull(iron);
-			ClassicAssert.AreEqual(2, testModuleStack.ItemStacks.Count);
+            Assert.That(iron, Is.Not.Null);
+            Assert.That(testModuleStack.ItemStacks.Count, Is.EqualTo(2));
 
-			// check if the world state changes corretly				
-			ClassicAssert.IsFalse(testModuleStack.ItemStacks.ContainsKey(iron));
-			ClassicAssert.AreEqual(10, testModuleStack2.ItemStacks[iron].Quantity);
-			ClassicAssert.AreEqual(1, testModuleStack.ItemStacks[terran].Quantity);
-			ClassicAssert.AreEqual(12, testModuleStack2.ItemStacks[terran].Quantity);
+            // check if the world state changes corretly				
+            Assert.That(testModuleStack.ItemStacks.ContainsKey(iron), Is.False);
+            Assert.That(testModuleStack2.ItemStacks[iron].Quantity, Is.EqualTo(10));
+            Assert.That(testModuleStack.ItemStacks[terran].Quantity, Is.EqualTo(1));
+            Assert.That(testModuleStack2.ItemStacks[terran].Quantity, Is.EqualTo(12));
 			// get exact amount from defined modulestack
 			//testcommands.Add("give 1 iron to 100001");			
 			testModuleStack2.Orders[0].Execute(this.game.Week);
-			ClassicAssert.AreEqual(3, testModuleStack.ItemStacks.Count);
-			ClassicAssert.IsTrue(testModuleStack.ItemStacks.ContainsKey(iron));
-			ClassicAssert.AreEqual(1, testModuleStack.ItemStacks[iron].Quantity);
-			ClassicAssert.AreEqual(9, testModuleStack2.ItemStacks[iron].Quantity);
-			ClassicAssert.AreEqual(1, testModuleStack.ItemStacks[terran].Quantity);
-			ClassicAssert.AreEqual(12, testModuleStack2.ItemStacks[terran].Quantity);
+            Assert.That(testModuleStack.ItemStacks.Count, Is.EqualTo(3));
+            Assert.That(testModuleStack.ItemStacks.ContainsKey(iron));
+            Assert.That(testModuleStack.ItemStacks[iron].Quantity, Is.EqualTo(1));
+            Assert.That(testModuleStack2.ItemStacks[iron].Quantity, Is.EqualTo(9));
+            Assert.That(testModuleStack.ItemStacks[terran].Quantity, Is.EqualTo(1));
+            Assert.That(testModuleStack2.ItemStacks[terran].Quantity, Is.EqualTo(12));
 			// get all except exact amount from defined modulestack
 			//testcommands.Add("give -5 iron to 100001");
 			testModuleStack2.Orders[1].Execute(this.game.Week);
-			ClassicAssert.AreEqual(3, testModuleStack.ItemStacks.Count);
-			ClassicAssert.AreEqual(5, testModuleStack.ItemStacks[iron].Quantity);
-			ClassicAssert.AreEqual(5, testModuleStack2.ItemStacks[iron].Quantity);
-			ClassicAssert.AreEqual(1, testModuleStack.ItemStacks[terran].Quantity);
-			ClassicAssert.AreEqual(12, testModuleStack2.ItemStacks[terran].Quantity);
+            Assert.That(testModuleStack.ItemStacks.Count, Is.EqualTo(3));
+            Assert.That(testModuleStack.ItemStacks[iron].Quantity, Is.EqualTo(5));
+            Assert.That(testModuleStack2.ItemStacks[iron].Quantity, Is.EqualTo(5));
+            Assert.That(testModuleStack.ItemStacks[terran].Quantity, Is.EqualTo(1));
+            Assert.That(testModuleStack2.ItemStacks[terran].Quantity, Is.EqualTo(12));
 			// get all iron from defined modulestack
 			//testcommands.Add("give all iron to 100001");
 			testModuleStack2.Orders[2].Execute(this.game.Week);
-			ClassicAssert.AreEqual(3, testModuleStack.ItemStacks.Count);
-			ClassicAssert.AreEqual(10, testModuleStack.ItemStacks[iron].Quantity);
-			ClassicAssert.IsFalse(testModuleStack2.ItemStacks.ContainsKey(iron));
-			ClassicAssert.AreEqual(1, testModuleStack.ItemStacks[terran].Quantity);
-			ClassicAssert.AreEqual(12, testModuleStack2.ItemStacks[terran].Quantity);
+            Assert.That(testModuleStack.ItemStacks.Count, Is.EqualTo(3));
+            Assert.That(testModuleStack.ItemStacks[iron].Quantity, Is.EqualTo(10));
+            Assert.That(testModuleStack2.ItemStacks.ContainsKey(iron), Is.False);
+            Assert.That(testModuleStack.ItemStacks[terran].Quantity, Is.EqualTo(1));
+            Assert.That(testModuleStack2.ItemStacks[terran].Quantity, Is.EqualTo(12));
 			// get all resources from defined modulestack
 			//testcommands.Add("give all to 100001"); 
 			testModuleStack2.Orders[3].Execute(this.game.Week);
-			ClassicAssert.AreEqual(3, testModuleStack.ItemStacks.Count);
-			ClassicAssert.AreEqual(10, testModuleStack.ItemStacks[iron].Quantity);
-			ClassicAssert.AreEqual(13, testModuleStack.ItemStacks[terran].Quantity);
+            Assert.That(testModuleStack.ItemStacks.Count, Is.EqualTo(3));
+            Assert.That(testModuleStack.ItemStacks[iron].Quantity, Is.EqualTo(10));
+            Assert.That(testModuleStack.ItemStacks[terran].Quantity, Is.EqualTo(13));
 
 			List<string> reportLines = testModuleStack2.EventReports.Report(testModuleStack.Owner);
 			foreach (string reportLine in reportLines)
@@ -580,19 +593,21 @@ namespace UnitTests
 			Faction testFaction = this.game.Factions["2"];
 			ModuleStack testModuleStack = this.game.ModuleStacks["000004"];
 
-			List<string> testcommands = new List<string>();
-			testcommands.Add("#faction 2");
-			testcommands.Add("#modulestack 000004");
-			testcommands.Add("name \"test name\"");
-			testcommands.Add("name R00002 \"test region name\"");
-			testcommands.Add("#end");
+			List<string> testcommands = new List<string>
+            {
+                "#faction 2",
+                "#modulestack 000004",
+                "name \"test name\"",
+                "name R00002 \"test region name\"",
+                "#end"
+            };
 
 			OrdersReader ordersReader = new OrdersReader(game);
 			ordersReader.AssignOrders(testcommands);
-			ClassicAssert.AreEqual(2, testModuleStack.Orders.Count);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(2));
 
 			NameOrder order = (NameOrder)testModuleStack.Orders[0];
-			ClassicAssert.AreEqual("test name", order.Description);
+            Assert.That(order.Description, Is.EqualTo("test name"));
 		}
 
 		[Test]
@@ -603,14 +618,14 @@ namespace UnitTests
 			ModuleStack testModuleStack = this.game.ModuleStacks["000004"];
 			Region testRegion = this.game.Regions["R00002"];
 
-			ClassicAssert.AreEqual(2, testModuleStack.Orders.Count);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(2));
 
-			// check if the world state changes corretly				
-			ClassicAssert.AreEqual("factory [000004]", testModuleStack.ReportName);
-			ClassicAssert.AreEqual("Eastern Europe [R00002] (1,4)", testRegion.ReportName);
+            // check if the world state changes corretly				
+            Assert.That(testModuleStack.ReportName, Is.EqualTo("factory [000004]"));
+            Assert.That(testRegion.ReportName, Is.EqualTo("Eastern Europe [R00002] (1,4)"));
 			testModuleStack.Orders.Execute(this.game.Week);
-			ClassicAssert.AreEqual("test name [000004]", testModuleStack.ReportName);
-			ClassicAssert.AreEqual("test region name [R00002] (1,4)", testRegion.ReportName);
+            Assert.That(testModuleStack.ReportName, Is.EqualTo("test name [000004]"));
+            Assert.That(testRegion.ReportName, Is.EqualTo("test region name [R00002] (1,4)"));
 		}
 
 		[Test]
@@ -619,21 +634,23 @@ namespace UnitTests
 			Faction testFaction = this.game.Factions["2"];
 			ModuleStack testModuleStack = this.game.ModuleStacks["100001"];
 
-			List<string> testcommands = new List<string>();
-			testcommands.Add("#faction 2");
-			testcommands.Add("#modulestack 100001");
-			// check having iron
-			testcommands.Add("has 3 iron");
-			testcommands.Add("get 1 iron from 000006");
-			testcommands.Add("get 2 iron from 000006");
-			testcommands.Add("#end");
+			List<string> testcommands = new List<string>
+            {
+                "#faction 2",
+                "#modulestack 100001",
+                // check having iron
+                "has 3 iron",
+                "get 1 iron from 000006",
+                "get 2 iron from 000006",
+                "#end"
+            };
 
 			OrdersReader ordersReader = new OrdersReader(game);
 			ordersReader.AssignOrders(testcommands);
-			ClassicAssert.AreEqual(3, testModuleStack.Orders.Count);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(3));
 
 			HasOrder order = (HasOrder)testModuleStack.Orders[0];
-			ClassicAssert.AreEqual(3, order.Quantity);
+            Assert.That(order.Quantity, Is.EqualTo(3));
 		}
 
 		[Test]
@@ -644,34 +661,34 @@ namespace UnitTests
 			ModuleStack testModuleStack = this.game.ModuleStacks["100001"];
 			ItemType iron = ItemType.All["iron"];
 
-			// check if the world state changes corretly				
-			ClassicAssert.AreEqual(3, testModuleStack.Orders.Count);
-			ClassicAssert.IsFalse(testModuleStack.ItemStacks.ContainsKey(iron));
+            // check if the world state changes corretly				
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(3));
+            Assert.That(testModuleStack.ItemStacks.ContainsKey(iron), Is.False);
 			testModuleStack.Orders[0].Execute(this.game.Week);
 			testModuleStack.Orders.RemoveExecuted();
-			ClassicAssert.AreEqual(3, testModuleStack.Orders.Count);
-			ClassicAssert.IsFalse(testModuleStack.ItemStacks.ContainsKey(iron));
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(3));
+            Assert.That(testModuleStack.ItemStacks.ContainsKey(iron), Is.False);
 			testModuleStack.Orders[1].Execute(this.game.Week);
 			testModuleStack.Orders.RemoveExecuted();
-			ClassicAssert.AreEqual(2, testModuleStack.Orders.Count);
-			ClassicAssert.IsTrue(testModuleStack.ItemStacks.ContainsKey(iron));
-			ClassicAssert.AreEqual(1, testModuleStack.ItemStacks[iron].Quantity);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(2));
+            Assert.That(testModuleStack.ItemStacks.ContainsKey(iron));
+            Assert.That(testModuleStack.ItemStacks[iron].Quantity, Is.EqualTo(1));
 
 			testModuleStack.Orders[0].Execute(this.game.Week);
 			testModuleStack.Orders.RemoveExecuted();
-			ClassicAssert.AreEqual(2, testModuleStack.Orders.Count);
-			ClassicAssert.IsTrue(testModuleStack.ItemStacks.ContainsKey(iron));
-			ClassicAssert.AreEqual(1, testModuleStack.ItemStacks[iron].Quantity);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(2));
+            Assert.That(testModuleStack.ItemStacks.ContainsKey(iron));
+            Assert.That(testModuleStack.ItemStacks[iron].Quantity, Is.EqualTo(1));
 
 			testModuleStack.Orders[1].Execute(this.game.Week);
 			testModuleStack.Orders.RemoveExecuted();
-			ClassicAssert.AreEqual(1, testModuleStack.Orders.Count);
-			ClassicAssert.IsTrue(testModuleStack.ItemStacks.ContainsKey(iron));
-			ClassicAssert.AreEqual(3, testModuleStack.ItemStacks[iron].Quantity);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
+            Assert.That(testModuleStack.ItemStacks.ContainsKey(iron));
+            Assert.That(testModuleStack.ItemStacks[iron].Quantity, Is.EqualTo(3));
 
 			testModuleStack.Orders[0].Execute(this.game.Week);
 			testModuleStack.Orders.RemoveExecuted();
-			ClassicAssert.AreEqual(0, testModuleStack.Orders.Count);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(0));
 		}
 
 		[Test]
@@ -680,18 +697,20 @@ namespace UnitTests
 			Faction testFaction = this.game.Factions["2"];
 			ModuleStack testModuleStack = this.game.ModuleStacks["000004"];
 
-			List<string> testcommands = new List<string>();
-			testcommands.Add("#faction 2");
-			testcommands.Add("#modulestack 000004");
-			testcommands.Add("2 use agrplx");
-			testcommands.Add("#end");
+			List<string> testcommands = new List<string>
+            {
+                "#faction 2",
+                "#modulestack 000004",
+                "2 use agrplx",
+                "#end"
+            };
 
 			OrdersReader ordersReader = new OrdersReader(game);
 			ordersReader.AssignOrders(testcommands);
-			ClassicAssert.AreEqual(1, testModuleStack.Orders.Count);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
 
 			UseOrder order = (UseOrder)testModuleStack.Orders[0];
-			ClassicAssert.AreEqual(2, order.Repeat);
+            Assert.That(order.Repeat, Is.EqualTo(2));
 		}
 
 		[Test]
@@ -703,24 +722,24 @@ namespace UnitTests
 			ItemType iron = ItemType.All["iron"];
 			ModuleType farms = ModuleType.All["farms"];
 
-			// check if the world state changes correctly	
-			ClassicAssert.IsFalse(testModuleStack.Effects.IsProducing);
-			ClassicAssert.AreEqual(20, testModuleStack.ItemStacks[iron].Quantity);
-			ClassicAssert.AreEqual(7, testModuleStack.Parent.ModuleStacks.Count);
-			ClassicAssert.AreEqual(1, testModuleStack.Orders.Count);
-			ClassicAssert.IsFalse(order.Executing);
-			ClassicAssert.IsFalse(order.Executed);
+            // check if the world state changes correctly	
+            Assert.That(testModuleStack.Effects.IsProducing, Is.False);
+            Assert.That(testModuleStack.ItemStacks[iron].Quantity, Is.EqualTo(20));
+            Assert.That(testModuleStack.Parent.ModuleStacks.Count, Is.EqualTo(7));
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
+            Assert.That(order.Executing, Is.False);
+            Assert.That(order.Executed, Is.False);
 
 			testModuleStack.ExecutedLongOrder = false; 
 			testModuleStack.Execute(this.game.Week);
-			ClassicAssert.IsTrue(testModuleStack.Effects.IsProducing);
-			ClassicAssert.AreEqual(10, testModuleStack.ItemStacks[iron].Quantity);
-			ClassicAssert.AreEqual(7, testModuleStack.Parent.ModuleStacks.Count);
-			ClassicAssert.AreEqual(1, testModuleStack.Orders.Count);
-			ClassicAssert.AreEqual(3, order.DurationLeft);
-			ClassicAssert.AreEqual(2, order.Repeat);
-			ClassicAssert.IsTrue(order.Executing);
-			ClassicAssert.IsFalse(order.Executed); 
+            Assert.That(testModuleStack.Effects.IsProducing);
+            Assert.That(testModuleStack.ItemStacks[iron].Quantity, Is.EqualTo(10));
+            Assert.That(testModuleStack.Parent.ModuleStacks.Count, Is.EqualTo(7));
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
+            Assert.That(order.DurationLeft, Is.EqualTo(3));
+            Assert.That(order.Repeat, Is.EqualTo(2));
+            Assert.That(order.Executing);
+            Assert.That(order.Executed, Is.False); 
 			
 			for (int i = 0; i < 3; i++)
 			{
@@ -728,23 +747,23 @@ namespace UnitTests
 				testModuleStack.Execute(this.game.Week);			
 			}
 
-			ClassicAssert.IsFalse(testModuleStack.Effects.IsProducing);
-			ClassicAssert.AreEqual(10, testModuleStack.ItemStacks[iron].Quantity);
-			ClassicAssert.AreEqual(7 + 1, testModuleStack.Parent.ModuleStacks.Count);
-			ClassicAssert.AreEqual(1, testModuleStack.Orders.Count);
-			ClassicAssert.IsFalse(order.Executing);
-			ClassicAssert.IsFalse(order.Executed);
+            Assert.That(testModuleStack.Effects.IsProducing, Is.False);
+            Assert.That(testModuleStack.ItemStacks[iron].Quantity, Is.EqualTo(10));
+            Assert.That(testModuleStack.Parent.ModuleStacks.Count, Is.EqualTo(7 + 1));
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
+            Assert.That(order.Executing, Is.False);
+            Assert.That(order.Executed, Is.False);
 
 			testModuleStack.ExecutedLongOrder = false; 
 			testModuleStack.Execute(this.game.Week);
-			ClassicAssert.IsTrue(testModuleStack.Effects.IsProducing);
-			ClassicAssert.IsFalse(testModuleStack.ItemStacks.ContainsKey(iron));
-			ClassicAssert.AreEqual(7 + 1, testModuleStack.Parent.ModuleStacks.Count);
-			ClassicAssert.AreEqual(1, testModuleStack.Orders.Count);
-			ClassicAssert.AreEqual(3, order.DurationLeft);
-			ClassicAssert.AreEqual(1, order.Repeat);
-			ClassicAssert.IsTrue(order.Executing);
-			ClassicAssert.IsFalse(order.Executed);
+            Assert.That(testModuleStack.Effects.IsProducing);
+            Assert.That(testModuleStack.ItemStacks.ContainsKey(iron), Is.False);
+            Assert.That(testModuleStack.Parent.ModuleStacks.Count, Is.EqualTo(7 + 1));
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
+            Assert.That(order.DurationLeft, Is.EqualTo(3));
+            Assert.That(order.Repeat, Is.EqualTo(1));
+            Assert.That(order.Executing);
+            Assert.That(order.Executed, Is.False);
 
 			for (int i = 0; i < 3; i++)
 			{
@@ -752,13 +771,13 @@ namespace UnitTests
 				testModuleStack.Execute(this.game.Week);
 			}
 
-			ClassicAssert.IsFalse(testModuleStack.Effects.IsProducing);
-			ClassicAssert.IsFalse(testModuleStack.ItemStacks.ContainsKey(iron));
-			// no change here - both farms are to be produced into single modulestack
-			ClassicAssert.AreEqual(7 + 1, testModuleStack.Parent.ModuleStacks.Count);
-			ClassicAssert.AreEqual(0, testModuleStack.Orders.Count);
-			ClassicAssert.IsFalse(order.Executing);
-			ClassicAssert.IsTrue(order.Executed);
+            Assert.That(testModuleStack.Effects.IsProducing, Is.False);
+            Assert.That(testModuleStack.ItemStacks.ContainsKey(iron), Is.False);
+            // no change here - both farms are to be produced into single modulestack
+            Assert.That(testModuleStack.Parent.ModuleStacks.Count, Is.EqualTo(7 + 1));
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(0));
+            Assert.That(order.Executing, Is.False);
+            Assert.That(order.Executed);
 		}
 
 		[Test]
@@ -767,19 +786,21 @@ namespace UnitTests
 			Faction testFaction = this.game.Factions["2"];
 			ModuleStack testModuleStack = this.game.ModuleStacks["000004"];
 
-			List<string> testcommands = new List<string>();
-			testcommands.Add("#faction 2");
-			testcommands.Add("#modulestack 000004");
-			testcommands.Add("has 30 iron");
-			testcommands.Add("-use agrplx");
-			testcommands.Add("#end");
+			List<string> testcommands = new List<string>
+            {
+                "#faction 2",
+                "#modulestack 000004",
+                "has 30 iron",
+                "-use agrplx",
+                "#end"
+            };
 
 			OrdersReader ordersReader = new OrdersReader(game);
 			ordersReader.AssignOrders(testcommands);
-			ClassicAssert.AreEqual(2, testModuleStack.Orders.Count);			
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(2));			
 			HasOrder order1 = (HasOrder)testModuleStack.Orders[0];
 			UseOrder order2 = (UseOrder)testModuleStack.Orders[1];
-			ClassicAssert.AreEqual(1, order2.ConditionalOrders.Count);
+            Assert.That(order2.ConditionalOrders.Count, Is.EqualTo(1));
 			ClassicAssert.AreSame(order1, order2.ConditionalOrders[0]);
 		}
 
@@ -789,23 +810,25 @@ namespace UnitTests
 			Faction testFaction = this.game.Factions["2"];
 			ModuleStack testModuleStack = this.game.ModuleStacks["000004"];
 
-			List<string> testcommands = new List<string>();
-			testcommands.Add("#faction 2");
-			testcommands.Add("#modulestack 000004");
-			testcommands.Add("get 10 iron from 000002");
-			testcommands.Add("has 30 iron");
-			testcommands.Add("-use agrplx");
-			testcommands.Add("#end");
+			List<string> testcommands = new List<string>
+            {
+                "#faction 2",
+                "#modulestack 000004",
+                "get 10 iron from 000002",
+                "has 30 iron",
+                "-use agrplx",
+                "#end"
+            };
 
 			OrdersReader ordersReader = new OrdersReader(game);
 			ordersReader.AssignOrders(testcommands);
-			ClassicAssert.AreEqual(3, testModuleStack.Orders.Count);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(3));
 			GetOrder order1 = (GetOrder)testModuleStack.Orders[0];
 			HasOrder order2 = (HasOrder)testModuleStack.Orders[1];
 			UseOrder order3 = (UseOrder)testModuleStack.Orders[2];
-			ClassicAssert.AreEqual(1, order3.ConditionalOrders.Count);
+            Assert.That(order3.ConditionalOrders.Count, Is.EqualTo(1));
 			ClassicAssert.AreSame(order2, order3.ConditionalOrders[0]);
-			ClassicAssert.AreEqual(1, order2.ConditionedOrders.Count);
+            Assert.That(order2.ConditionedOrders.Count, Is.EqualTo(1));
 			ClassicAssert.AreSame(order3, order2.ConditionedOrders[0]);
 		}
 
@@ -815,23 +838,25 @@ namespace UnitTests
 			Faction testFaction = this.game.Factions["2"];
 			ModuleStack testModuleStack = this.game.ModuleStacks["000004"];
 
-			List<string> testcommands = new List<string>();
-			testcommands.Add("#faction 2");
-			testcommands.Add("#modulestack 000004");
-			testcommands.Add("@get 10 iron from 000002");
-			testcommands.Add("has 30 iron");
-			testcommands.Add("-use agrplx");
-			testcommands.Add("#end");
+			List<string> testcommands = new List<string>
+            {
+                "#faction 2",
+                "#modulestack 000004",
+                "@get 10 iron from 000002",
+                "has 30 iron",
+                "-use agrplx",
+                "#end"
+            };
 
 			OrdersReader ordersReader = new OrdersReader(game);
 			ordersReader.AssignOrders(testcommands);
-			ClassicAssert.AreEqual(3, testModuleStack.Orders.Count);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(3));
 			GetOrder order1 = (GetOrder)testModuleStack.Orders[0];
 			HasOrder order2 = (HasOrder)testModuleStack.Orders[1];
 			UseOrder order3 = (UseOrder)testModuleStack.Orders[2];
-			ClassicAssert.AreEqual(1, order3.ConditionalOrders.Count);
+            Assert.That(order3.ConditionalOrders.Count, Is.EqualTo(1));
 			ClassicAssert.AreSame(order2, order3.ConditionalOrders[0]);
-			ClassicAssert.AreEqual(1, order2.ConditionedOrders.Count);
+            Assert.That(order2.ConditionedOrders.Count, Is.EqualTo(1));
 			ClassicAssert.AreSame(order3, order2.ConditionedOrders[0]);
 		}
 
@@ -842,35 +867,35 @@ namespace UnitTests
 			//-use agrplx
 			// use can be executed only if has been executed
 			this.AssignMinusConditionedOrders();
-			ModuleStack testModuleStack = this.game.ModuleStacks["000004"];		
-			ClassicAssert.AreEqual(2, testModuleStack.Orders.Count);
+			ModuleStack testModuleStack = this.game.ModuleStacks["000004"];
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(2));
 			HasOrder order1 = (HasOrder)testModuleStack.Orders[0];
 			UseOrder order2 = (UseOrder)testModuleStack.Orders[1];
 
 			ItemType iron = ItemType.All["iron"];
 
-			// check if the world state changes corretly				
-			ClassicAssert.IsFalse(testModuleStack.Effects.IsProducing);
-			ClassicAssert.AreEqual(20, testModuleStack.ItemStacks[iron].Quantity);
+            // check if the world state changes corretly				
+            Assert.That(testModuleStack.Effects.IsProducing, Is.False);
+            Assert.That(testModuleStack.ItemStacks[iron].Quantity, Is.EqualTo(20));
 			
 			testModuleStack.ExecutedLongOrder = false;
 			testModuleStack.Execute(this.game.Week);
-			ClassicAssert.AreEqual(2, testModuleStack.Orders.Count);
-			ClassicAssert.IsFalse(order2.Executing);
-			ClassicAssert.IsFalse(order2.Executed);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(2));
+            Assert.That(order2.Executing, Is.False);
+            Assert.That(order2.Executed, Is.False);
 			testModuleStack.ItemStacks[iron].Quantity += 10;
-			ClassicAssert.AreEqual(30, testModuleStack.ItemStacks[iron].Quantity);
+            Assert.That(testModuleStack.ItemStacks[iron].Quantity, Is.EqualTo(30));
 
 			testModuleStack.ExecutedLongOrder = false; 
 			testModuleStack.Execute(this.game.Week);
-			ClassicAssert.IsTrue(testModuleStack.Effects.IsProducing);
-			ClassicAssert.AreEqual(20, testModuleStack.ItemStacks[iron].Quantity);
-			ClassicAssert.AreEqual(7, testModuleStack.Parent.ModuleStacks.Count);
-			ClassicAssert.AreEqual(1, testModuleStack.Orders.Count);
-			ClassicAssert.AreEqual(3, order2.DurationLeft);
-			ClassicAssert.IsTrue(order1.Executed);
-			ClassicAssert.IsTrue(order2.Executing);
-			ClassicAssert.IsFalse(order2.Executed);
+            Assert.That(testModuleStack.Effects.IsProducing);
+            Assert.That(testModuleStack.ItemStacks[iron].Quantity, Is.EqualTo(20));
+            Assert.That(testModuleStack.Parent.ModuleStacks.Count, Is.EqualTo(7));
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
+            Assert.That(order2.DurationLeft, Is.EqualTo(3));
+            Assert.That(order1.Executed);
+            Assert.That(order2.Executing);
+            Assert.That(order2.Executed, Is.False);
 
 			for (int i = 0; i < 3; i++)
 			{
@@ -878,11 +903,11 @@ namespace UnitTests
 				testModuleStack.Execute(this.game.Week);
 			}
 
-			ClassicAssert.IsFalse(testModuleStack.Effects.IsProducing);
-			ClassicAssert.AreEqual(7 + 1, testModuleStack.Parent.ModuleStacks.Count);
-			ClassicAssert.AreEqual(0, testModuleStack.Orders.Count);
-			ClassicAssert.IsFalse(order2.Executing);
-			ClassicAssert.IsTrue(order2.Executed);
+            Assert.That(testModuleStack.Effects.IsProducing, Is.False);
+            Assert.That(testModuleStack.Parent.ModuleStacks.Count, Is.EqualTo(7 + 1));
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(0));
+            Assert.That(order2.Executing, Is.False);
+            Assert.That(order2.Executed);
 		}
 
 		[Test]
@@ -891,19 +916,21 @@ namespace UnitTests
 			Faction testFaction = this.game.Factions["2"];
 			ModuleStack testModuleStack = this.game.ModuleStacks["000004"];
 
-			List<string> testcommands = new List<string>();
-			testcommands.Add("#faction 2");
-			testcommands.Add("#modulestack 000004");
-			testcommands.Add("use agrplx");
-			testcommands.Add("+has 30 iron");
-			testcommands.Add("#end");
+			List<string> testcommands = new List<string>
+            {
+                "#faction 2",
+                "#modulestack 000004",
+                "use agrplx",
+                "+has 30 iron",
+                "#end"
+            };
 
 			OrdersReader ordersReader = new OrdersReader(game);
 			ordersReader.AssignOrders(testcommands);
-			ClassicAssert.AreEqual(2, testModuleStack.Orders.Count);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(2));
 			UseOrder order1 = (UseOrder)testModuleStack.Orders[0];
-			HasOrder order2 = (HasOrder)testModuleStack.Orders[1];			
-			ClassicAssert.AreEqual(1, order1.ConditionalOrders.Count);
+			HasOrder order2 = (HasOrder)testModuleStack.Orders[1];
+            Assert.That(order1.ConditionalOrders.Count, Is.EqualTo(1));
 			ClassicAssert.AreSame(order2, order1.ConditionalOrders[0]);
 		}
 
@@ -916,32 +943,32 @@ namespace UnitTests
 
 			this.AssignPlusConditionedOrders();
 			ModuleStack testModuleStack = this.game.ModuleStacks["000004"];
-			ClassicAssert.AreEqual(2, testModuleStack.Orders.Count);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(2));
 			HasOrder order1 = (HasOrder)testModuleStack.Orders[1];
 			UseOrder order2 = (UseOrder)testModuleStack.Orders[0];
 
 			ItemType iron = ItemType.All["iron"];
 
-			// check if the world state changes corretly				
-			ClassicAssert.IsFalse(testModuleStack.Effects.IsProducing);
-			ClassicAssert.AreEqual(20, testModuleStack.ItemStacks[iron].Quantity);
+            // check if the world state changes corretly				
+            Assert.That(testModuleStack.Effects.IsProducing, Is.False);
+            Assert.That(testModuleStack.ItemStacks[iron].Quantity, Is.EqualTo(20));
 			testModuleStack.Execute(this.game.Week);
-			ClassicAssert.AreEqual(2, testModuleStack.Orders.Count);
-			ClassicAssert.IsFalse(order2.Executing);
-			ClassicAssert.IsFalse(order2.Executed);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(2));
+            Assert.That(order2.Executing, Is.False);
+            Assert.That(order2.Executed, Is.False);
 			testModuleStack.ItemStacks[iron].Quantity += 10;
-			ClassicAssert.AreEqual(30, testModuleStack.ItemStacks[iron].Quantity);
+            Assert.That(testModuleStack.ItemStacks[iron].Quantity, Is.EqualTo(30));
 
 			testModuleStack.ExecutedLongOrder = false; 
 			testModuleStack.Execute(this.game.Week);
-			ClassicAssert.IsTrue(testModuleStack.Effects.IsProducing);
-			ClassicAssert.AreEqual(20, testModuleStack.ItemStacks[iron].Quantity);
-			ClassicAssert.AreEqual(7, testModuleStack.Parent.ModuleStacks.Count);
-			ClassicAssert.AreEqual(1, testModuleStack.Orders.Count);
-			ClassicAssert.AreEqual(3, order2.DurationLeft);
-			ClassicAssert.IsTrue(order1.Executed);
-			ClassicAssert.IsTrue(order2.Executing);
-			ClassicAssert.IsFalse(order2.Executed);
+            Assert.That(testModuleStack.Effects.IsProducing);
+            Assert.That(testModuleStack.ItemStacks[iron].Quantity, Is.EqualTo(20));
+            Assert.That(testModuleStack.Parent.ModuleStacks.Count, Is.EqualTo(7));
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
+            Assert.That(order2.DurationLeft, Is.EqualTo(3));
+            Assert.That(order1.Executed);
+            Assert.That(order2.Executing);
+            Assert.That(order2.Executed, Is.False);
 
 			for (int i = 0; i < 3; i++)
 			{
@@ -949,11 +976,11 @@ namespace UnitTests
 				testModuleStack.Execute(this.game.Week);
 			}
 
-			ClassicAssert.IsFalse(testModuleStack.Effects.IsProducing);
-			ClassicAssert.AreEqual(7 + 1, testModuleStack.Parent.ModuleStacks.Count);
-			ClassicAssert.AreEqual(0, testModuleStack.Orders.Count);
-			ClassicAssert.IsFalse(order2.Executing);
-			ClassicAssert.IsTrue(order2.Executed);
+            Assert.That(testModuleStack.Effects.IsProducing, Is.False);
+            Assert.That(testModuleStack.Parent.ModuleStacks.Count, Is.EqualTo(7 + 1));
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(0));
+            Assert.That(order2.Executing, Is.False);
+            Assert.That(order2.Executed);
 		}
 
 		[Test]
@@ -962,19 +989,21 @@ namespace UnitTests
 			Faction testFaction = this.game.Factions["2"];
 			ModuleStack testModuleStack = this.game.ModuleStacks["000004"];
 
-			List<string> testcommands = new List<string>();
-			testcommands.Add("#faction 2");
-			testcommands.Add("#modulestack 000004");
-			testcommands.Add("alias \"new1\"");
-			testcommands.Add("#end");
+			List<string> testcommands = new List<string>
+            {
+                "#faction 2",
+                "#modulestack 000004",
+                "alias \"new1\"",
+                "#end"
+            };
 
 			OrdersReader ordersReader = new OrdersReader(game);
 			ordersReader.AssignOrders(testcommands);
-			ClassicAssert.AreEqual(1, testModuleStack.Orders.Count);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
 
-			ClassicAssert.IsTrue(testModuleStack.Orders[0] is AliasOrder);
+            Assert.That(testModuleStack.Orders[0] is AliasOrder);
 			AliasOrder aliasOrder = (AliasOrder)testModuleStack.Orders[0];
-			ClassicAssert.AreEqual("new1", aliasOrder.Alias);
+            Assert.That(aliasOrder.Alias, Is.EqualTo("new1"));
 		}
 
 		[Test]
@@ -983,19 +1012,21 @@ namespace UnitTests
 			Faction testFaction = this.game.Factions["2"];
 			ModuleStack testModuleStack = this.game.ModuleStacks["000004"];
 
-			List<string> testcommands = new List<string>();
-			testcommands.Add("#faction 2");
-			testcommands.Add("#modulestack 000004");
-			testcommands.Add("alias new1");
-			testcommands.Add("#end");
+			List<string> testcommands = new List<string>
+            {
+                "#faction 2",
+                "#modulestack 000004",
+                "alias new1",
+                "#end"
+            };
 
 			OrdersReader ordersReader = new OrdersReader(game);
 			ordersReader.AssignOrders(testcommands);
-			ClassicAssert.AreEqual(1, testModuleStack.Orders.Count);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
 
-			ClassicAssert.IsTrue(testModuleStack.Orders[0] is AliasOrder);
+            Assert.That(testModuleStack.Orders[0] is AliasOrder);
 			AliasOrder aliasOrder = (AliasOrder)testModuleStack.Orders[0];
-			ClassicAssert.AreEqual("new1", aliasOrder.Alias);
+            Assert.That(aliasOrder.Alias, Is.EqualTo("new1"));
 		}
 
 		[Test]
@@ -1009,9 +1040,9 @@ namespace UnitTests
 
 			// check if the world state changes correctly				
 			ClassicAssert.IsNull(this.game.ModuleStacks["2_new1"]);
-			ClassicAssert.AreEqual("2_000004", testModuleStack.Alias);
+            Assert.That(testModuleStack.Alias, Is.EqualTo("2_000004"));
 			testModuleStack.Execute(this.game.Week);
-			ClassicAssert.AreEqual("2_new1", testModuleStack.Alias);
+            Assert.That(testModuleStack.Alias, Is.EqualTo("2_new1"));
 			ClassicAssert.AreSame(testModuleStack, this.game.ModuleStacks[testFaction, "new1", true]);
 
 		}
@@ -1025,20 +1056,22 @@ namespace UnitTests
 			Faction testFaction = this.game.Factions["2"];
 			ModuleStack testModuleStack = this.game.ModuleStacks["000004"];
 
-			List<string> testcommands = new List<string>();
-			testcommands.Add("#faction 2");
-			testcommands.Add("#modulestack 000004");
-			testcommands.Add("use agrplx as \"new1\"");
-			testcommands.Add("#end");
+			List<string> testcommands = new List<string>
+            {
+                "#faction 2",
+                "#modulestack 000004",
+                "use agrplx as \"new1\"",
+                "#end"
+            };
 
 			OrdersReader ordersReader = new OrdersReader(game);
 			ordersReader.AssignOrders(testcommands);
-			ClassicAssert.AreEqual(1, testModuleStack.Orders.Count);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
 
-			ClassicAssert.IsTrue(testModuleStack.Orders[0] is UseOrder);
+            Assert.That(testModuleStack.Orders[0] is UseOrder);
 			UseOrder useOrder = (UseOrder)testModuleStack.Orders[0];
-			ClassicAssert.AreEqual(Technology.All["agrplx"], useOrder.Technology);
-			ClassicAssert.AreEqual("100", useOrder.Receiver.Name);
+            Assert.That(useOrder.Technology, Is.EqualTo(Technology.All["agrplx"]));
+            Assert.That(useOrder.Receiver.Name, Is.EqualTo("100"));
 		}
 
 		[Test]
@@ -1063,7 +1096,7 @@ namespace UnitTests
 			testModuleStack.ExecutedLongOrder = false; 
 			testModuleStack.Execute(this.game.Week);
 			producedModuleStack = this.game.ModuleStacks[testFaction, "new1", true];
-			ClassicAssert.IsNotNull(producedModuleStack);
+            Assert.That(producedModuleStack, Is.Not.Null);
 
 			ClassicAssert.AreSame(effect.Produced, producedModuleStack);
 		}
@@ -1073,24 +1106,25 @@ namespace UnitTests
 		{
             Sequence.Ints.Push(100);
 
-			Console.WriteLine("TEST: AssignFormOrder");
 			Faction testFaction = this.game.Factions["1"];
 			ModuleStack testModuleStack = this.game.ModuleStacks["000009"];
 
-			List<string> testcommands = new List<string>();
-			testcommands.Add("#faction 1");
-			testcommands.Add("#modulestack 000009");
-			testcommands.Add("form new with 2 as \"new1\"");
-			testcommands.Add("#end");
+			List<string> testcommands = new List<string>
+            {
+                "#faction 1",
+                "#modulestack 000009",
+                "form new with 2 as \"new1\"",
+                "#end"
+            };
 
 			OrdersReader ordersReader = new OrdersReader(game);
 			ordersReader.AssignOrders(testcommands);
-			ClassicAssert.AreEqual(1, testModuleStack.Orders.Count);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
 
-			ClassicAssert.IsTrue(testModuleStack.Orders[0] is FormOrder);
+            Assert.That(testModuleStack.Orders[0] is FormOrder);
 			FormOrder formOrder = (FormOrder)testModuleStack.Orders[0];
-			ClassicAssert.AreEqual(2, formOrder.Quantity);
-			ClassicAssert.AreEqual("new1", formOrder.Alias);
+            Assert.That(formOrder.Quantity, Is.EqualTo(2));
+            Assert.That(formOrder.Alias, Is.EqualTo("new1"));
 		}
 
 		[Test]
@@ -1099,16 +1133,16 @@ namespace UnitTests
 			this.AssignFormOrder();
 			Faction testFaction = this.game.Factions["1"];
 			ModuleStack testModuleStack = this.game.ModuleStacks["000009"];
-			ClassicAssert.IsNotNull(testModuleStack);
+            Assert.That(testModuleStack, Is.Not.Null);
 			FormOrder order = (FormOrder)testModuleStack.Orders[0];
 
 			// check if the world state changes correctly				
 			ModuleStack formedModuleStack;
 			formedModuleStack = this.game.ModuleStacks[testFaction, "new1", true];
-			ClassicAssert.IsFalse(formedModuleStack.IsFormed);
+            Assert.That(formedModuleStack.IsFormed, Is.False);
 			testModuleStack.Execute(this.game.Week);
 			formedModuleStack = this.game.ModuleStacks[testFaction, "new1", true];
-			ClassicAssert.IsTrue(formedModuleStack.IsFormed);
+            Assert.That(formedModuleStack.IsFormed);
 		}
 
 		[Test]
@@ -1117,42 +1151,48 @@ namespace UnitTests
 			Faction testFaction = this.game.Factions["2"];
 			ModuleStack testModuleStack = this.game.ModuleStacks["100011"];
 
-			List<string> testcommands = new List<string>();
-			testcommands.Add("#faction 2");
-			testcommands.Add("#modulestack 100011");
-			testcommands.Add("move P00001 P00002 O00003 S00001");
-			testcommands.Add("#end");
+			List<string> testcommands = new List<string>
+            {
+                "#faction 2",
+                "#modulestack 100011",
+                "move P00001 P00002 O00003 S00001",
+                "#end"
+            };
 
 			OrdersReader ordersReader = new OrdersReader(game);
 			ordersReader.AssignOrders(testcommands);
-			ClassicAssert.AreEqual(1, testModuleStack.Orders.Count);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
 
 			MoveOrder order = (MoveOrder)testModuleStack.Orders[0];
-			ClassicAssert.AreEqual(4, order.Route.Count);
+            Assert.That(order.Route.Count, Is.EqualTo(4));
 		}
 
 		[Test]
 		public void RemoveCommentsAndEmptyLines()
 		{
 			OrdersReader ordersReader = new OrdersReader(game);
-			List<string> testlines = new List<string>();
-			testlines.Add("#faction 2");
-			testlines.Add("");
-			testlines.Add("#modulestack 100001");
-			testlines.Add("; some modulestack");
-			testlines.Add("move R00002");
-			testlines.Add("");
-			testlines.Add("#modulestack 100002");
-			testlines.Add("; some other modulestack");
-			testlines.Add("");
-			testlines.Add("#end");
+			List<string> testlines = new List<string>
+            {
+                "#faction 2",
+                "",
+                "#modulestack 100001",
+                "; some modulestack",
+                "move R00002",
+                "",
+                "#modulestack 100002",
+                "; some other modulestack",
+                "",
+                "#end"
+            };
 			
-			List<string> testlines2 = new List<string>();
-			testlines2.Add("#faction 2");
-			testlines2.Add("#modulestack 100001");
-			testlines2.Add("move R00002");
-			testlines2.Add("#modulestack 100002");
-			testlines2.Add("#end");
+			List<string> testlines2 = new List<string>
+            {
+                "#faction 2",
+                "#modulestack 100001",
+                "move R00002",
+                "#modulestack 100002",
+                "#end"
+            };
 
 			List<string> lines = ordersReader.RemoveCommentsAndEmptyLines(testlines);
 			for (int i = 0; i < lines.Count; i++)
@@ -1160,10 +1200,10 @@ namespace UnitTests
 				Console.WriteLine(lines[i]);
 			}
 
-			ClassicAssert.AreEqual(testlines2.Count, lines.Count);
+            Assert.That(lines.Count, Is.EqualTo(testlines2.Count));
 			for (int i = 0; i < lines.Count; i++)
 			{
-				ClassicAssert.AreEqual(testlines2[i], lines[i]);
+                Assert.That(lines[i], Is.EqualTo(testlines2[i]));
 			}
 		}
 
@@ -1171,19 +1211,21 @@ namespace UnitTests
 		public void AssignOrder_UnFormed()
 		{
 			Faction testFaction = this.game.Factions["2"];
-			List<string> testcommands = new List<string>();
-			testcommands.Add("#faction 2");
-			testcommands.Add("#modulestack new1");
-			// check if active - should execute
-			testcommands.Add("active 000002");
-			testcommands.Add("#end");
+			List<string> testcommands = new List<string>
+            {
+                "#faction 2",
+                "#modulestack new1",
+                // check if active - should execute
+                "active 000002",
+                "#end"
+            };
 
 			Console.WriteLine("Count: " + ModuleStack.All.Count);
 			foreach (ModuleStack stack in ModuleStack.All.Values)
 			{
 				Console.WriteLine(stack.ReportName);
 			}
-			ClassicAssert.AreEqual(25, ModuleStack.All.Count);
+            Assert.That(ModuleStack.All.Count, Is.EqualTo(25));
 			
 			ClassicAssert.IsNull(ModuleStack.All[testFaction, "new1", true]);
 
@@ -1191,20 +1233,20 @@ namespace UnitTests
 			ordersReader.AssignOrders(testcommands);
 			
 			ModuleStack testModuleStack = this.game.ModuleStacks[testFaction, "new1", true];
-            ClassicAssert.IsNotNull(testModuleStack, "should find it");
+            Assert.That(testModuleStack, Is.Not.Null, "should find it");
             Console.WriteLine("Name: " + testModuleStack.Name + " Alias: " + testModuleStack.Alias);
 			
 			ClassicAssert.AreNotEqual("new1", testModuleStack.Name);
-			ClassicAssert.AreEqual("2_new1", testModuleStack.Alias);
-			ClassicAssert.IsFalse(testModuleStack.IsFormed, testModuleStack.ReportName + " is formed and it should not since this is new test.");
+            Assert.That(testModuleStack.Alias, Is.EqualTo("2_new1"));
+            Assert.That(testModuleStack.IsFormed, Is.False, testModuleStack.ReportName + " is formed and it should not since this is new test.");
 
-			ClassicAssert.AreEqual(1, testModuleStack.Orders.Count);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
 
 			ActiveOrder order = (ActiveOrder)testModuleStack.Orders[0];
 
 			ModuleStack observed = ModuleStack.All[testFaction, order.Observed.Name];
-			ClassicAssert.AreEqual("core drill [000002]", observed.ReportName);
-			ClassicAssert.IsTrue(observed.IsFormed);
+            Assert.That(observed.ReportName, Is.EqualTo("core drill [000002]"));
+            Assert.That(observed.IsFormed);
 		}
 
 
@@ -1215,13 +1257,15 @@ namespace UnitTests
 			Faction testFaction = this.game.Factions["1"];
 			ModuleStack testModuleStack = this.game.ModuleStacks["000009"];
 
-			List<string> testcommands = new List<string>();
-			testcommands.Add("#faction 1");
-			testcommands.Add("#modulestack 000009");
-			testcommands.Add("form new with 2 as \"new1\"");
-			testcommands.Add("active new1");
-			testcommands.Add("active new2");
-			testcommands.Add("#end");
+			List<string> testcommands = new List<string>
+            {
+                "#faction 1",
+                "#modulestack 000009",
+                "form new with 2 as \"new1\"",
+                "active new1",
+                "active new2",
+                "#end"
+            };
 
 			OrdersReader ordersReader = new OrdersReader(this.game);
 			ordersReader.AssignOrders(testcommands);
@@ -1230,27 +1274,27 @@ namespace UnitTests
 			ModuleStack formedModuleStack1, formedModuleStack2;
 
 			formedModuleStack1 = this.game.ModuleStacks[testFaction, "new1", true];
-			ClassicAssert.IsNotNull(formedModuleStack1);
-			ClassicAssert.IsFalse(formedModuleStack1.IsFormed);
+            Assert.That(formedModuleStack1, Is.Not.Null);
+            Assert.That(formedModuleStack1.IsFormed, Is.False);
 			formedModuleStack2 = this.game.ModuleStacks[testFaction, "new2", true];
-			ClassicAssert.IsNotNull(formedModuleStack2);
-			ClassicAssert.IsFalse(formedModuleStack2.IsFormed);
+            Assert.That(formedModuleStack2, Is.Not.Null);
+            Assert.That(formedModuleStack2.IsFormed, Is.False);
 
 			testModuleStack.ExecutedLongOrder = false;
 			testModuleStack.Execute(this.game.Week);
 			formedModuleStack1 = this.game.ModuleStacks[testFaction, "new1", true];
-			ClassicAssert.IsNotNull(formedModuleStack1);
-			ClassicAssert.IsTrue(formedModuleStack1.IsFormed);
+            Assert.That(formedModuleStack1, Is.Not.Null);
+            Assert.That(formedModuleStack1.IsFormed);
 			formedModuleStack2 = this.game.ModuleStacks[testFaction, "new2", true];
-			ClassicAssert.IsNotNull(formedModuleStack2);
-			ClassicAssert.IsFalse(formedModuleStack2.IsFormed);
+            Assert.That(formedModuleStack2, Is.Not.Null);
+            Assert.That(formedModuleStack2.IsFormed, Is.False);
 
 			this.game.ClearUnformed();
 			testModuleStack.ExecutedLongOrder = false;
 			testModuleStack.Execute(this.game.Week);
 			formedModuleStack1 = this.game.ModuleStacks[testFaction, "new1", true];
-			ClassicAssert.IsNotNull(formedModuleStack1);
-			ClassicAssert.IsTrue(formedModuleStack1.IsFormed);
+            Assert.That(formedModuleStack1, Is.Not.Null);
+            Assert.That(formedModuleStack1.IsFormed);
 			formedModuleStack2 = this.game.ModuleStacks[testFaction, "new2", true];
 			ClassicAssert.IsNull(formedModuleStack2);
 		}
@@ -1261,19 +1305,21 @@ namespace UnitTests
 			Faction testFaction = this.game.Factions["2"];
 			ModuleStack testModuleStack = this.game.ModuleStacks["100002"];
 
-			List<string> testcommands = new List<string>();
-			testcommands.Add("#faction 2");
-			testcommands.Add("#modulestack 100002");
-			testcommands.Add("stack 000004");
-			testcommands.Add("#end");
+			List<string> testcommands = new List<string>
+            {
+                "#faction 2",
+                "#modulestack 100002",
+                "stack 000004",
+                "#end"
+            };
 
 			OrdersReader ordersReader = new OrdersReader(game);
 			ordersReader.AssignOrders(testcommands);
-			// 2 because the first one is imported with gamein file
-			ClassicAssert.AreEqual(2, testModuleStack.Orders.Count);
+            // 2 because the first one is imported with gamein file
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(2));
 
 			StackOrder order = (StackOrder)testModuleStack.Orders[1];
-			ClassicAssert.AreEqual("factory [000004]", ModuleStack.All[order.ParentName].ReportName);
+            Assert.That(ModuleStack.All[order.ParentName].ReportName, Is.EqualTo("factory [000004]"));
 		}
 
 		[Test]
@@ -1282,26 +1328,28 @@ namespace UnitTests
 			Faction testFaction = this.game.Factions["2"];
 			ModuleStack testModuleStack = this.game.ModuleStacks["000004"];
 
-			List<string> testcommands = new List<string>();
-			testcommands.Add("#faction 2");
-			testcommands.Add("#modulestack 000004");
-			testcommands.Add("active new1");
-			testcommands.Add("-give 20 iron to new1");
-			testcommands.Add("-give 20 titani to new1");
-			testcommands.Add("-give 20 silici to new1");
-			testcommands.Add("-give 20 copper to new1");
-			testcommands.Add("#end");
+			List<string> testcommands = new List<string>
+            {
+                "#faction 2",
+                "#modulestack 000004",
+                "active new1",
+                "-give 20 iron to new1",
+                "-give 20 titani to new1",
+                "-give 20 silici to new1",
+                "-give 20 copper to new1",
+                "#end"
+            };
 
 			OrdersReader ordersReader = new OrdersReader(game);
 			ordersReader.AssignOrders(testcommands);
-			ClassicAssert.AreEqual(5, testModuleStack.Orders.Count);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(5));
 
 			ModuleStack observed;
 			ActiveOrder order1 = (ActiveOrder) testModuleStack.Orders[0];
 			observed = order1.Observed;
-			ClassicAssert.IsNotNull(observed);
-			ClassicAssert.AreEqual("2_new1", observed.Alias);
-			ClassicAssert.AreEqual(4, order1.ConditionedOrders.Count);
+            Assert.That(observed, Is.Not.Null);
+            Assert.That(observed.Alias, Is.EqualTo("2_new1"));
+            Assert.That(order1.ConditionedOrders.Count, Is.EqualTo(4));
 
 			ModuleStack receiver;
 			GiveOrder order2 = (GiveOrder)testModuleStack.Orders[1];
@@ -1311,35 +1359,37 @@ namespace UnitTests
             Console.WriteLine("observed alias: " + observed.Alias);
             this.consoleOutReport("receiver", receiver, testFaction);
             Console.WriteLine("receiver alias: " + receiver.Alias);
-            ClassicAssert.AreEqual(observed.Name, receiver.Name);			
+            Assert.That(receiver.Name, Is.EqualTo(observed.Name));			
 		}
 
 		[Test]
 		public void AssignOrder_UnFormed2()
 		{
 			Faction testFaction = this.game.Factions["2"];
-			List<string> testcommands = new List<string>();
-			testcommands.Add("#faction 2");
-			testcommands.Add("#modulestack 000004");
-			testcommands.Add("active new1");
-			testcommands.Add("#modulestack new1");
-			testcommands.Add("active new1");
-			testcommands.Add("#end");
+			List<string> testcommands = new List<string>
+            {
+                "#faction 2",
+                "#modulestack 000004",
+                "active new1",
+                "#modulestack new1",
+                "active new1",
+                "#end"
+            };
 
 			OrdersReader ordersReader = new OrdersReader(game);
 			ordersReader.AssignOrders(testcommands);
 			ModuleStack testModuleStack = this.game.ModuleStacks[testFaction, "new1", true];
 			ClassicAssert.AreNotEqual("new1", testModuleStack.Name);
-			ClassicAssert.AreEqual("2_new1", testModuleStack.Alias);
-			ClassicAssert.IsFalse(testModuleStack.IsFormed);
+            Assert.That(testModuleStack.Alias, Is.EqualTo("2_new1"));
+            Assert.That(testModuleStack.IsFormed, Is.False);
 
-			ClassicAssert.AreEqual(1, testModuleStack.Orders.Count);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
 
 			ActiveOrder order = (ActiveOrder)testModuleStack.Orders[0];
 
 			ModuleStack observed = ModuleStack.All[testFaction, order.Observed.Name];
-			ClassicAssert.AreEqual("2_new1", observed.Alias);
-			ClassicAssert.IsFalse(observed.IsFormed);
+            Assert.That(observed.Alias, Is.EqualTo("2_new1"));
+            Assert.That(observed.IsFormed, Is.False);
 		}
 
 		[Test]
@@ -1350,39 +1400,41 @@ namespace UnitTests
 			ModuleStack testModuleStack = this.game.ModuleStacks["000006"];
 
 			ItemType iron = ItemType.All["iron"];
-			ClassicAssert.IsNotNull(iron);
+            Assert.That(iron, Is.Not.Null);
 
-			List<string> testcommands = new List<string>();
-			testcommands.Add("#faction 2");
-			testcommands.Add("#modulestack 000006");
-			// give exact amount to unformed modulestack
-			testcommands.Add("give 1 iron to new1");
-			testcommands.Add("#end");
+			List<string> testcommands = new List<string>
+            {
+                "#faction 2",
+                "#modulestack 000006",
+                // give exact amount to unformed modulestack
+                "give 1 iron to new1",
+                "#end"
+            };
 
 			OrdersReader ordersReader = new OrdersReader(game);
 			ordersReader.AssignOrders(testcommands);
-			ClassicAssert.AreEqual(1, testModuleStack.Orders.Count);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
 
 			GiveOrder order = (GiveOrder)testModuleStack.Orders[0];
-			ClassicAssert.AreEqual(1, order.Quantity);
-			ClassicAssert.AreEqual("iron", order.ItemType.Name);
+            Assert.That(order.Quantity, Is.EqualTo(1));
+            Assert.That(order.ItemType.Name, Is.EqualTo("iron"));
 
 			Console.WriteLine(order.ReceiverName);
 
 			ModuleStack testModuleStack2 = this.game.ModuleStacks[testFaction, "new1", true];
-			ClassicAssert.IsFalse(testModuleStack2.IsFormed);
-			ClassicAssert.IsFalse(testModuleStack2.ItemStacks.ContainsKey(iron));
+            Assert.That(testModuleStack2.IsFormed, Is.False);
+            Assert.That(testModuleStack2.ItemStacks.ContainsKey(iron), Is.False);
 
-			ClassicAssert.AreEqual(0, testModuleStack2.Capacity);
+            Assert.That(testModuleStack2.Capacity, Is.EqualTo(0));
 
-			ClassicAssert.AreEqual(2, testModuleStack.ItemStacks.Count);
+            Assert.That(testModuleStack.ItemStacks.Count, Is.EqualTo(2));
 
 			// give exact amount to undefined modulestack
 			testModuleStack.Orders[0].Execute(this.game.Week);
-			ClassicAssert.AreEqual(2, testModuleStack.ItemStacks.Count);
-			ClassicAssert.IsTrue(testModuleStack.ItemStacks.ContainsKey(iron));
-			ClassicAssert.AreEqual(10, testModuleStack.ItemStacks[iron].Quantity);
-			ClassicAssert.IsFalse(testModuleStack2.ItemStacks.ContainsKey(iron));
+            Assert.That(testModuleStack.ItemStacks.Count, Is.EqualTo(2));
+            Assert.That(testModuleStack.ItemStacks.ContainsKey(iron));
+            Assert.That(testModuleStack.ItemStacks[iron].Quantity, Is.EqualTo(10));
+            Assert.That(testModuleStack2.ItemStacks.ContainsKey(iron), Is.False);
 
 			List<string> reportLines = testModuleStack2.EventReports.Report(testModuleStack.Owner);
 			foreach (string reportLine in reportLines)
@@ -1396,26 +1448,28 @@ namespace UnitTests
 		{
 			//has 20 iron
 			Faction testFaction = this.game.Factions["2"];
-			List<string> testcommands = new List<string>();
-			testcommands.Add("#faction 2");
-			testcommands.Add("#modulestack new1");
-			// check having iron
-			testcommands.Add("move O00003");
-			testcommands.Add("+has 3 iron");
-			testcommands.Add("#end");
+			List<string> testcommands = new List<string>
+            {
+                "#faction 2",
+                "#modulestack new1",
+                // check having iron
+                "move O00003",
+                "+has 3 iron",
+                "#end"
+            };
 
 			OrdersReader ordersReader = new OrdersReader(game);
 			ordersReader.AssignOrders(testcommands);
 
 			ModuleStack testModuleStack = this.game.ModuleStacks[testFaction, "new1", true];
 
-			ClassicAssert.AreEqual(2, testModuleStack.Orders.Count);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(2));
 
 			HasOrder order = (HasOrder)testModuleStack.Orders[1];
-			ClassicAssert.AreEqual(3, order.Quantity);
+            Assert.That(order.Quantity, Is.EqualTo(3));
 			ItemType iron = ItemType.All["iron"];
 
-			ClassicAssert.IsFalse(testModuleStack.ItemStacks.ContainsKey(iron));
+            Assert.That(testModuleStack.ItemStacks.ContainsKey(iron), Is.False);
 			testModuleStack.Orders[0].Execute(this.game.Week);
 			testModuleStack.Orders[1].Execute(this.game.Week);
 			testModuleStack.Orders.RemoveExecuted();
@@ -1429,23 +1483,25 @@ namespace UnitTests
 			Person testPerson1 = this.game.People["200002"];
 			Person testPerson2 = this.game.People["200003"];
 
-			List<string> testcommands = new List<string>();
-			testcommands.Add("#faction 2");
-			testcommands.Add("#modulestack 100012");
-			// check having person
-			testcommands.Add("has person 200002");
-			testcommands.Add("has person 200003");
-			testcommands.Add("#end");
+			List<string> testcommands = new List<string>
+            {
+                "#faction 2",
+                "#modulestack 100012",
+                // check having person
+                "has person 200002",
+                "has person 200003",
+                "#end"
+            };
 
 			OrdersReader ordersReader = new OrdersReader(game);
 			ordersReader.AssignOrders(testcommands);
-			ClassicAssert.AreEqual(2, testModuleStack.Orders.Count);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(2));
 
 			HasOrder order1 = (HasOrder)testModuleStack.Orders[0];
-			ClassicAssert.AreEqual(testPerson1.Name, order1.PersonName);
+            Assert.That(order1.PersonName, Is.EqualTo(testPerson1.Name));
 
 			HasOrder order2 = (HasOrder)testModuleStack.Orders[1];
-			ClassicAssert.AreEqual(testPerson2.Name, order2.PersonName);
+            Assert.That(order2.PersonName, Is.EqualTo(testPerson2.Name));
 		}
 
 		[Test]
@@ -1458,16 +1514,16 @@ namespace UnitTests
 			Person testPerson1 = this.game.People["200002"];
 			Person testPerson2 = this.game.People["200003"];
 
-			// check if the world state changes corretly				
-			ClassicAssert.AreEqual(2, testModuleStack.Orders.Count);
-			ClassicAssert.IsTrue(testModuleStack.People.ContainsKey("200002"));
-			ClassicAssert.IsFalse(testModuleStack.People.ContainsKey("200003"));
+            // check if the world state changes corretly				
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(2));
+            Assert.That(testModuleStack.People.ContainsKey("200002"));
+            Assert.That(testModuleStack.People.ContainsKey("200003"), Is.False);
 			testModuleStack.Orders[0].Execute(this.game.Week);
 			testModuleStack.Orders[1].Execute(this.game.Week);
 			testModuleStack.Orders.RemoveExecuted();
-			ClassicAssert.AreEqual(1, testModuleStack.Orders.Count);
-			ClassicAssert.IsTrue(testModuleStack.People.ContainsKey("200002"));
-			ClassicAssert.IsFalse(testModuleStack.People.ContainsKey("200003"));
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
+            Assert.That(testModuleStack.People.ContainsKey("200002"));
+            Assert.That(testModuleStack.People.ContainsKey("200003"), Is.False);
 		}
 
 		[Test]
@@ -1475,22 +1531,24 @@ namespace UnitTests
 		{
 			Faction testFaction = this.game.Factions["1"];
 			ModuleStack testModuleStack = this.game.ModuleStacks["000008"];
-			ClassicAssert.AreEqual("Berlin farms", testModuleStack.FullName);
+            Assert.That(testModuleStack.FullName, Is.EqualTo("Berlin farms"));
 
-			List<string> testcommands = new List<string>();
-			testcommands.Add("#faction 1");
-			testcommands.Add("#modulestack 000008");
-			testcommands.Add("@use farmng");
-			testcommands.Add("#end");
+			List<string> testcommands = new List<string>
+            {
+                "#faction 1",
+                "#modulestack 000008",
+                "@use farmng",
+                "#end"
+            };
 
 			OrdersReader ordersReader = new OrdersReader(game);
 			ordersReader.AssignOrders(testcommands);
-			ClassicAssert.AreEqual(1, testModuleStack.Orders.Count);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
 
-			ClassicAssert.IsTrue(testModuleStack.Orders[0] is UseOrder);
+            Assert.That(testModuleStack.Orders[0] is UseOrder);
 			UseOrder useOrder = (UseOrder)testModuleStack.Orders[0];
-			ClassicAssert.AreEqual(Technology.All["farmng"], useOrder.Technology);
-			ClassicAssert.AreEqual(-1, useOrder.Repeat);
+            Assert.That(useOrder.Technology, Is.EqualTo(Technology.All["farmng"]));
+            Assert.That(useOrder.Repeat, Is.EqualTo(-1));
 		}
 
 		[Test]
@@ -1498,13 +1556,15 @@ namespace UnitTests
 		{
 			Faction testFaction = this.game.Factions["2"];
 			ModuleStack testModuleStack = this.game.ModuleStacks["000008"];
-			ClassicAssert.AreEqual("Berlin farms", testModuleStack.FullName);
+            Assert.That(testModuleStack.FullName, Is.EqualTo("Berlin farms"));
 
-			List<string> testcommands = new List<string>();
-			testcommands.Add("#faction 2");
-			testcommands.Add("#modulestack 000008");
-			testcommands.Add("@use farmng");
-			testcommands.Add("#end");
+			List<string> testcommands = new List<string>
+            {
+                "#faction 2",
+                "#modulestack 000008",
+                "@use farmng",
+                "#end"
+            };
 
 			OrdersReader ordersReader = new OrdersReader(game);
 			Assert.Throws<Exception>(
@@ -1521,7 +1581,7 @@ namespace UnitTests
 					}
 				});
 
-			ClassicAssert.AreEqual(0, testModuleStack.Orders.Count);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(0));
 		}
 
 		[Test]
@@ -1529,44 +1589,44 @@ namespace UnitTests
 		{
 			this.AssignUseOrder_unlimited();
 			ModuleStack testModuleStack = this.game.ModuleStacks["000008"];
-			ClassicAssert.AreEqual("Berlin farms", testModuleStack.FullName);
+            Assert.That(testModuleStack.FullName, Is.EqualTo("Berlin farms"));
 			UseOrder order = (UseOrder)testModuleStack.Orders[0];
 			ItemType food = ItemType.All["food"];
 			ModuleType farms = ModuleType.All["farms"];
 			Technology farming = Technology.All["farmng"];
-			ClassicAssert.AreEqual(1, farming.UseTime);
+            Assert.That(farming.UseTime, Is.EqualTo(1));
 
-			// check if the world state changes correctly	
-			ClassicAssert.IsFalse(testModuleStack.Effects.IsProducing);
-			ClassicAssert.AreEqual(40, testModuleStack.ItemStacks[food].Quantity);
-			ClassicAssert.AreEqual(3, testModuleStack.Quantity);
-			ClassicAssert.AreEqual(1, testModuleStack.Orders.Count);
-			//ClassicAssert.AreEqual(0, order.DurationLeft);
-			ClassicAssert.AreEqual(-1, order.Repeat);
-			ClassicAssert.IsFalse(order.Executing);
-			ClassicAssert.IsFalse(order.Executed);
+            // check if the world state changes correctly	
+            Assert.That(testModuleStack.Effects.IsProducing, Is.False);
+            Assert.That(testModuleStack.ItemStacks[food].Quantity, Is.EqualTo(40));
+            Assert.That(testModuleStack.Quantity, Is.EqualTo(3));
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
+            //ClassicAssert.AreEqual(0, order.DurationLeft);
+            Assert.That(order.Repeat, Is.EqualTo(-1));
+            Assert.That(order.Executing, Is.False);
+            Assert.That(order.Executed, Is.False);
 
 			testModuleStack.ExecutedLongOrder = false;
 			testModuleStack.Execute(this.game.Week);
 
-			ClassicAssert.IsFalse(testModuleStack.Effects.IsProducing, "Shouldn't be producing - farming is 1 duration order");
-			ClassicAssert.AreEqual(40 + testModuleStack.Quantity * farming.UseProduceItems[food].Quantity, testModuleStack.ItemStacks[food].Quantity, " MSQ " + testModuleStack.Quantity + " FUPIQ " + farming.UseProduceItems[food].Quantity);
-			ClassicAssert.AreEqual(1, testModuleStack.Orders.Count);
-			//ClassicAssert.AreEqual(0, order.DurationLeft);
-			ClassicAssert.AreEqual(-2, order.Repeat);
-			ClassicAssert.IsFalse(order.Executing);
-			ClassicAssert.IsFalse(order.Executed);
+            Assert.That(testModuleStack.Effects.IsProducing, Is.False, "Shouldn't be producing - farming is 1 duration order");
+            Assert.That(testModuleStack.ItemStacks[food].Quantity, Is.EqualTo(40 + testModuleStack.Quantity * farming.UseProduceItems[food].Quantity), " MSQ " + testModuleStack.Quantity + " FUPIQ " + farming.UseProduceItems[food].Quantity);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
+            //ClassicAssert.AreEqual(0, order.DurationLeft);
+            Assert.That(order.Repeat, Is.EqualTo(-2));
+            Assert.That(order.Executing, Is.False);
+            Assert.That(order.Executed, Is.False);
 			testModuleStack.Effects.RemoveExecuted();
 
 			testModuleStack.ExecutedLongOrder = false; 
 			testModuleStack.Execute(this.game.Week + 1);
-			ClassicAssert.IsFalse(testModuleStack.Effects.IsProducing, "Shouldn't be producing - farming is 1 duration order");
-			ClassicAssert.AreEqual(40 + 2 * testModuleStack.Quantity * farming.UseProduceItems[food].Quantity, testModuleStack.ItemStacks[food].Quantity);
-			ClassicAssert.AreEqual(1, testModuleStack.Orders.Count);
-			//ClassicAssert.AreEqual(0, order.DurationLeft);
-			ClassicAssert.AreEqual(-3, order.Repeat);
-			ClassicAssert.IsFalse(order.Executing);
-			ClassicAssert.IsFalse(order.Executed);
+            Assert.That(testModuleStack.Effects.IsProducing, Is.False, "Shouldn't be producing - farming is 1 duration order");
+            Assert.That(testModuleStack.ItemStacks[food].Quantity, Is.EqualTo(40 + 2 * testModuleStack.Quantity * farming.UseProduceItems[food].Quantity));
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
+            //ClassicAssert.AreEqual(0, order.DurationLeft);
+            Assert.That(order.Repeat, Is.EqualTo(-3));
+            Assert.That(order.Executing, Is.False);
+            Assert.That(order.Executed, Is.False);
 			testModuleStack.Effects.RemoveExecuted();
 		}
 
@@ -1578,21 +1638,23 @@ namespace UnitTests
 			Faction testFaction = this.game.Factions["2"];
 			ModuleStack testModuleStack = this.game.ModuleStacks["000004"];
 
-			List<string> testcommands = new List<string>();
-			testcommands.Add("#faction 2");
-			testcommands.Add("#modulestack 000004");
-			testcommands.Add("5 use agrplx as \"new1\"");
-			testcommands.Add("#end");
+			List<string> testcommands = new List<string>
+            {
+                "#faction 2",
+                "#modulestack 000004",
+                "5 use agrplx as \"new1\"",
+                "#end"
+            };
 
 			OrdersReader ordersReader = new OrdersReader(game);
 			ordersReader.AssignOrders(testcommands);
-			ClassicAssert.AreEqual(1, testModuleStack.Orders.Count);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
 
-			ClassicAssert.IsTrue(testModuleStack.Orders[0] is UseOrder);
+            Assert.That(testModuleStack.Orders[0] is UseOrder);
 			UseOrder useOrder = (UseOrder)testModuleStack.Orders[0];
-			ClassicAssert.AreEqual(Technology.All["agrplx"], useOrder.Technology);
-			ClassicAssert.AreEqual("100", useOrder.Receiver.Name);
-			ClassicAssert.AreEqual(5, useOrder.Repeat);
+            Assert.That(useOrder.Technology, Is.EqualTo(Technology.All["agrplx"]));
+            Assert.That(useOrder.Receiver.Name, Is.EqualTo("100"));
+            Assert.That(useOrder.Repeat, Is.EqualTo(5));
 		}
 
 		[Test]
@@ -1606,17 +1668,17 @@ namespace UnitTests
 			ItemType food = ItemType.All["food"];
 			ModuleType farms = ModuleType.All["farms"];
 			Technology farming = Technology.All["farmng"];
-			
-			ClassicAssert.IsTrue(testModuleStack.Technologies.Contains(farming));
-			testModuleStack.Technologies.Clear();
-            ClassicAssert.IsFalse(testModuleStack.Technologies.Contains(farming));
 
-			// check if the world state changes correctly 
-			
-			// SHOULD be producing, ZERO level technologies, DON'T need to be loaded
-			ClassicAssert.AreEqual(40, testModuleStack.ItemStacks[food].Quantity);
+            Assert.That(testModuleStack.Technologies.Contains(farming));
+			testModuleStack.Technologies.Clear();
+            Assert.That(testModuleStack.Technologies.Contains(farming), Is.False);
+
+            // check if the world state changes correctly 
+
+            // SHOULD be producing, ZERO level technologies, DON'T need to be loaded
+            Assert.That(testModuleStack.ItemStacks[food].Quantity, Is.EqualTo(40));
 			testModuleStack.Execute(this.game.Week);
-			ClassicAssert.AreEqual(40 + testModuleStack.Quantity * farming.UseProduceItems[food].Quantity, testModuleStack.ItemStacks[food].Quantity, " MSQ " + testModuleStack.Quantity + " FUPIQ " + farming.UseProduceItems[food].Quantity);
+            Assert.That(testModuleStack.ItemStacks[food].Quantity, Is.EqualTo(40 + testModuleStack.Quantity * farming.UseProduceItems[food].Quantity), " MSQ " + testModuleStack.Quantity + " FUPIQ " + farming.UseProduceItems[food].Quantity);
 		}
 
 		[Test]
@@ -1624,30 +1686,32 @@ namespace UnitTests
 		{
 			ModuleStack testModuleStack = this.game.ModuleStacks["000008"];
 
-			List<string> testcommands = new List<string>();
-			testcommands.Add("#faction 1");
-			testcommands.Add("#modulestack 000008");
-			testcommands.Add("@use afrmng");
-			testcommands.Add("#end");
+			List<string> testcommands = new List<string>
+            {
+                "#faction 1",
+                "#modulestack 000008",
+                "@use afrmng",
+                "#end"
+            };
 
 			OrdersReader ordersReader = new OrdersReader(game);
 			ordersReader.AssignOrders(testcommands);
-			ClassicAssert.AreEqual(1, testModuleStack.Orders.Count);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
 
-			ClassicAssert.IsTrue(testModuleStack.Orders[0] is UseOrder);
+            Assert.That(testModuleStack.Orders[0] is UseOrder);
 			UseOrder useOrder = (UseOrder)testModuleStack.Orders[0];
 			ItemType food = ItemType.All["food"];
 			ModuleType farms = ModuleType.All["farms"];
 			Technology advancedFarming = Technology.All["afrmng"];
 
-            ClassicAssert.IsFalse(testModuleStack.Technologies.Contains(advancedFarming));
+            Assert.That(testModuleStack.Technologies.Contains(advancedFarming), Is.False);
 
-			// check if the world state changes correctly 
+            // check if the world state changes correctly 
 
-			// SHOULDN'T be producing, advanced technologies NEED to be loaded
-			ClassicAssert.AreEqual(40, testModuleStack.ItemStacks[food].Quantity);
+            // SHOULDN'T be producing, advanced technologies NEED to be loaded
+            Assert.That(testModuleStack.ItemStacks[food].Quantity, Is.EqualTo(40));
 			testModuleStack.Execute(this.game.Week);
-			ClassicAssert.AreEqual(40, testModuleStack.ItemStacks[food].Quantity, " MSQ " + testModuleStack.Quantity + " FUPIQ " + advancedFarming.UseProduceItems[food].Quantity);
+            Assert.That(testModuleStack.ItemStacks[food].Quantity, Is.EqualTo(40), " MSQ " + testModuleStack.Quantity + " FUPIQ " + advancedFarming.UseProduceItems[food].Quantity);
 		}
 
 		[Test]
@@ -1655,46 +1719,48 @@ namespace UnitTests
 		{
 			ModuleStack testModuleStack = this.game.ModuleStacks["000008"];
 
-			List<string> testcommands = new List<string>();
-			testcommands.Add("#faction 1");
-			testcommands.Add("#modulestack 000008");
-			testcommands.Add("@use agrplx");
-			testcommands.Add("#end");
+			List<string> testcommands = new List<string>
+            {
+                "#faction 1",
+                "#modulestack 000008",
+                "@use agrplx",
+                "#end"
+            };
 
 			OrdersReader ordersReader = new OrdersReader(game);
 			ordersReader.AssignOrders(testcommands);
-			ClassicAssert.AreEqual(1, testModuleStack.Orders.Count);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
 
-			ClassicAssert.IsTrue(testModuleStack.Orders[0] is UseOrder);
+            Assert.That(testModuleStack.Orders[0] is UseOrder);
 			UseOrder useOrder = (UseOrder)testModuleStack.Orders[0];
 			ItemType food = ItemType.All["food"];
 			ItemType iron = ItemType.All["iron"];
 			ModuleType farms = ModuleType.All["farms"];
 			Technology agriculturalComplex = Technology.All["agrplx"];
 
-            ClassicAssert.IsFalse(testModuleStack.Technologies.Contains(agriculturalComplex));
-			ClassicAssert.AreEqual(4, agriculturalComplex.UseTime);
-			ClassicAssert.IsFalse(testModuleStack.ItemStacks.ContainsKey(iron));
+            Assert.That(testModuleStack.Technologies.Contains(agriculturalComplex), Is.False);
+            Assert.That(agriculturalComplex.UseTime, Is.EqualTo(4));
+            Assert.That(testModuleStack.ItemStacks.ContainsKey(iron), Is.False);
 
 			testModuleStack.ItemStacks.Add(new ItemStack(iron, 50));
 
-			// check if the world state changes correctly	
-			ClassicAssert.IsFalse(testModuleStack.Effects.IsProducing);
-			ClassicAssert.AreEqual(50, testModuleStack.ItemStacks[iron].Quantity);
-			ClassicAssert.AreEqual(4, testModuleStack.Parent.ModuleStacks.Count);
-			ClassicAssert.AreEqual(1, testModuleStack.Orders.Count);
-			ClassicAssert.IsFalse(useOrder.Executing);
-			ClassicAssert.IsFalse(useOrder.Executed);
+            // check if the world state changes correctly	
+            Assert.That(testModuleStack.Effects.IsProducing, Is.False);
+            Assert.That(testModuleStack.ItemStacks[iron].Quantity, Is.EqualTo(50));
+            Assert.That(testModuleStack.Parent.ModuleStacks.Count, Is.EqualTo(4));
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
+            Assert.That(useOrder.Executing, Is.False);
+            Assert.That(useOrder.Executed, Is.False);
 
 			testModuleStack.Execute(this.game.Week);
-			// SHOULDN'T be producing, production technologies can be used in production modules only
+            // SHOULDN'T be producing, production technologies can be used in production modules only
 
-			ClassicAssert.IsFalse(testModuleStack.Effects.IsProducing);
-			ClassicAssert.AreEqual(50, testModuleStack.ItemStacks[iron].Quantity);
-			ClassicAssert.AreEqual(4, testModuleStack.Parent.ModuleStacks.Count);
-			ClassicAssert.AreEqual(1, testModuleStack.Orders.Count);
- 			ClassicAssert.IsFalse(useOrder.Executing);
-			ClassicAssert.IsFalse(useOrder.Executed);
+            Assert.That(testModuleStack.Effects.IsProducing, Is.False);
+            Assert.That(testModuleStack.ItemStacks[iron].Quantity, Is.EqualTo(50));
+            Assert.That(testModuleStack.Parent.ModuleStacks.Count, Is.EqualTo(4));
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
+            Assert.That(useOrder.Executing, Is.False);
+            Assert.That(useOrder.Executed, Is.False);
 		}
 
 		[Test]
@@ -1708,32 +1774,34 @@ namespace UnitTests
             int stackBefore1 = testModuleStack.Parent.ModuleStacks.Count;
             int stackBefore2 = this.game.ModuleStacks.Count;
 
-			List<string> testcommands = new List<string>();
-			testcommands.Add("#faction 2");
-			testcommands.Add("#modulestack 000004");
-			testcommands.Add("2 use agrplx as \"new1\"");
-			testcommands.Add("#end");
+			List<string> testcommands = new List<string>
+            {
+                "#faction 2",
+                "#modulestack 000004",
+                "2 use agrplx as \"new1\"",
+                "#end"
+            };
 
 			OrdersReader ordersReader = new OrdersReader(game);
 			ordersReader.AssignOrders(testcommands);
 
             // modulestack created during assign
-            ClassicAssert.AreEqual(stackBefore1 + 0, testModuleStack.Parent.ModuleStacks.Count);
-            ClassicAssert.AreEqual(stackBefore2 + 1, this.game.ModuleStacks.Count);
+            Assert.That(testModuleStack.Parent.ModuleStacks.Count, Is.EqualTo(stackBefore1 + 0));
+            Assert.That(this.game.ModuleStacks.Count, Is.EqualTo(stackBefore2 + 1));
 
             UseOrder useOrder = (UseOrder)testModuleStack.Orders[0];
 			ItemType iron = ItemType.All["iron"];
 			ModuleType farms = ModuleType.All["farms"];
 
-			ClassicAssert.AreEqual(1, testModuleStack.Orders.Count);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
 
-			ClassicAssert.IsTrue(testModuleStack.Orders[0] is UseOrder);
-			
-			ClassicAssert.AreEqual(Technology.All["agrplx"], useOrder.Technology);
-			ClassicAssert.AreEqual("100", useOrder.Receiver.Name);
-			//ClassicAssert.AreEqual(null, useOrder.Receiver);
-			ClassicAssert.AreEqual(2, useOrder.Repeat);
-			ClassicAssert.AreEqual(4, Technology.All["agrplx"].UseTime);
+            Assert.That(testModuleStack.Orders[0] is UseOrder);
+
+            Assert.That(useOrder.Technology, Is.EqualTo(Technology.All["agrplx"]));
+            Assert.That(useOrder.Receiver.Name, Is.EqualTo("100"));
+            //ClassicAssert.AreEqual(null, useOrder.Receiver);
+            Assert.That(useOrder.Repeat, Is.EqualTo(2));
+            Assert.That(Technology.All["agrplx"].UseTime, Is.EqualTo(4));
 
 			// check if the world state changes correctly				
 
@@ -1744,13 +1812,13 @@ namespace UnitTests
 				testModuleStack.Execute(week++);
 			}
 
-			// produced the second module into new stack, that was created during assign
-			ClassicAssert.AreEqual(stackBefore1 + 1, testModuleStack.Parent.ModuleStacks.Count);
+            // produced the second module into new stack, that was created during assign
+            Assert.That(testModuleStack.Parent.ModuleStacks.Count, Is.EqualTo(stackBefore1 + 1));
 
 			ModuleStack producedModuleStack = this.game.ModuleStacks[testFaction, "new1", true];
-			ClassicAssert.IsNotNull(producedModuleStack);
-			ClassicAssert.AreEqual(1, producedModuleStack.Quantity);
-			ClassicAssert.AreEqual(producedModuleStack, useOrder.Receiver);
+            Assert.That(producedModuleStack, Is.Not.Null);
+            Assert.That(producedModuleStack.Quantity, Is.EqualTo(1));
+            Assert.That(useOrder.Receiver, Is.EqualTo(producedModuleStack));
 
 			for (int i = 1; i <= Technology.All["agrplx"].UseTime; i++)
 			{
@@ -1758,9 +1826,9 @@ namespace UnitTests
 				testModuleStack.Execute(week++);
 			}
 
-			// produced the second module into the same stack
-			ClassicAssert.AreEqual(stackBefore1 + 1, testModuleStack.Parent.ModuleStacks.Count);
-			ClassicAssert.AreEqual(2, producedModuleStack.Quantity);
+            // produced the second module into the same stack
+            Assert.That(testModuleStack.Parent.ModuleStacks.Count, Is.EqualTo(stackBefore1 + 1));
+            Assert.That(producedModuleStack.Quantity, Is.EqualTo(2));
 		}
 
 		[Test]
@@ -1771,28 +1839,30 @@ namespace UnitTests
 			Faction testFaction = this.game.Factions["2"];
 			ModuleStack testModuleStack = this.game.ModuleStacks["000004"];
 
-			List<string> testcommands = new List<string>();
-			testcommands.Add("#faction 2");
-			testcommands.Add("#modulestack 000004");
-			testcommands.Add("2 use agrplx as \"new1\"");
-			testcommands.Add("#end");
+			List<string> testcommands = new List<string>
+            {
+                "#faction 2",
+                "#modulestack 000004",
+                "2 use agrplx as \"new1\"",
+                "#end"
+            };
 
 			OrdersReader ordersReader = new OrdersReader(game);
 			ordersReader.AssignOrders(testcommands);
 			UseOrder useOrder = (UseOrder)testModuleStack.Orders[0];
 
-			ClassicAssert.AreEqual(1, testModuleStack.Orders.Count);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
 			ClassicAssert.AreSame(testModuleStack, useOrder.Subject);
-			ClassicAssert.IsFalse(useOrder.Subject.ExecutedLongOrder);
-			ClassicAssert.IsFalse(testModuleStack.ExecutedLongOrder);
+            Assert.That(useOrder.Subject.ExecutedLongOrder, Is.False);
+            Assert.That(testModuleStack.ExecutedLongOrder, Is.False);
 
 			// check if the world state changes correctly				
 
 			int week = this.game.Week;
 			testModuleStack.Execute(week++);
 			ClassicAssert.AreSame(testModuleStack, useOrder.Subject);
-			ClassicAssert.IsTrue(useOrder.Subject.ExecutedLongOrder);
-			ClassicAssert.IsTrue(testModuleStack.ExecutedLongOrder);
+            Assert.That(useOrder.Subject.ExecutedLongOrder);
+            Assert.That(testModuleStack.ExecutedLongOrder);
 		}
 
 		[Test]
@@ -1803,53 +1873,55 @@ namespace UnitTests
 			Faction testFaction = this.game.Factions["2"];
 			ModuleStack testModuleStack1 = this.game.ModuleStacks["000002"];
 			ModuleStack testModuleStack2 = this.game.ModuleStacks["000004"];
-			ClassicAssert.AreEqual(25, this.game.ModuleStacks.Count);
+            Assert.That(this.game.ModuleStacks.Count, Is.EqualTo(25));
 
-			List<string> testcommands = new List<string>();
-			testcommands.Add("#faction 2");
-			testcommands.Add("#modulestack 000002");
-			testcommands.Add("give 6 terran to new1");
-			testcommands.Add("#modulestack 000004");
-			testcommands.Add("use agrplx as new1");
-			testcommands.Add("#end");
+			List<string> testcommands = new List<string>
+            {
+                "#faction 2",
+                "#modulestack 000002",
+                "give 6 terran to new1",
+                "#modulestack 000004",
+                "use agrplx as new1",
+                "#end"
+            };
 
 			OrdersReader ordersReader = new OrdersReader(game);
 			ordersReader.AssignOrders(testcommands);
-			ClassicAssert.AreEqual(25 + 1, this.game.ModuleStacks.Count);
+            Assert.That(this.game.ModuleStacks.Count, Is.EqualTo(25 + 1));
 
 
-			ClassicAssert.AreEqual(1, testModuleStack1.Orders.Count);
-			ClassicAssert.AreEqual(1, testModuleStack2.Orders.Count);
+            Assert.That(testModuleStack1.Orders.Count, Is.EqualTo(1));
+            Assert.That(testModuleStack2.Orders.Count, Is.EqualTo(1));
 
-			ClassicAssert.IsTrue(testModuleStack1.Orders[0] is GiveOrder);
-			ClassicAssert.IsTrue(testModuleStack2.Orders[0] is UseOrder);
+            Assert.That(testModuleStack1.Orders[0] is GiveOrder);
+            Assert.That(testModuleStack2.Orders[0] is UseOrder);
 			GiveOrder giveOrder = (GiveOrder)testModuleStack1.Orders[0];
 			UseOrder useOrder = (UseOrder)testModuleStack2.Orders[0];
 
-			ClassicAssert.AreEqual("empty stack [100]", giveOrder.Receiver.ReportName);
-			ClassicAssert.AreEqual("empty stack [100]", useOrder.Receiver.ReportName);
+            Assert.That(giveOrder.Receiver.ReportName, Is.EqualTo("empty stack [100]"));
+            Assert.That(useOrder.Receiver.ReportName, Is.EqualTo("empty stack [100]"));
 
-			ClassicAssert.AreEqual(giveOrder.Receiver.ReportName, useOrder.Receiver.ReportName);
+            Assert.That(useOrder.Receiver.ReportName, Is.EqualTo(giveOrder.Receiver.ReportName));
 
 			// check if the world state changes correctly				
 			ModuleStack producedModuleStack;
 			producedModuleStack = this.game.ModuleStacks[testFaction, "new1", true];
-			ClassicAssert.IsNotNull(producedModuleStack);
+            Assert.That(producedModuleStack, Is.Not.Null);
 
 			testModuleStack1.Execute(this.game.Week);
-			ClassicAssert.IsFalse(giveOrder.Executed);
+            Assert.That(giveOrder.Executed, Is.False);
 
 			ItemType terran = ItemType.All["terran"];
 
-			ClassicAssert.AreEqual(6, testModuleStack1.ItemStacks.Quantity(terran));
-			ClassicAssert.AreEqual(0, producedModuleStack.ItemStacks.Quantity(terran));
+            Assert.That(testModuleStack1.ItemStacks.Quantity(terran), Is.EqualTo(6));
+            Assert.That(producedModuleStack.ItemStacks.Quantity(terran), Is.EqualTo(0));
 
 			testModuleStack2.Execute(this.game.Week);
 			ProducingModule effect = (ProducingModule)testModuleStack2.Effects[0];
 			testModuleStack1.Execute(this.game.Week);
-			ClassicAssert.IsFalse(giveOrder.Executed);
-			ClassicAssert.AreEqual(6, testModuleStack1.ItemStacks.Quantity(terran));
-			ClassicAssert.AreEqual(0, producedModuleStack.ItemStacks.Quantity(terran));
+            Assert.That(giveOrder.Executed, Is.False);
+            Assert.That(testModuleStack1.ItemStacks.Quantity(terran), Is.EqualTo(6));
+            Assert.That(producedModuleStack.ItemStacks.Quantity(terran), Is.EqualTo(0));
 
 			testModuleStack2.ExecutedLongOrder = false;
 			testModuleStack2.Execute(this.game.Week + 1);
@@ -1858,14 +1930,14 @@ namespace UnitTests
 			testModuleStack2.ExecutedLongOrder = false;
 			testModuleStack2.Execute(this.game.Week + 3);
 			producedModuleStack = this.game.ModuleStacks[testFaction, "new1", true];
-			ClassicAssert.IsNotNull(producedModuleStack);
+            Assert.That(producedModuleStack, Is.Not.Null);
 
 			ClassicAssert.AreSame(effect.Produced, producedModuleStack);
 
 			testModuleStack1.Execute(this.game.Week);
-			ClassicAssert.IsTrue(giveOrder.Executed);
-			ClassicAssert.AreEqual(0, testModuleStack1.ItemStacks.Quantity(terran));
-			ClassicAssert.AreEqual(6, producedModuleStack.ItemStacks.Quantity(terran));
+            Assert.That(giveOrder.Executed);
+            Assert.That(testModuleStack1.ItemStacks.Quantity(terran), Is.EqualTo(0));
+            Assert.That(producedModuleStack.ItemStacks.Quantity(terran), Is.EqualTo(6));
 		}
 
         [Test]
@@ -1877,30 +1949,32 @@ namespace UnitTests
             ModuleStack testModuleStack1 = this.game.ModuleStacks["000008"];
             ModuleStack testModuleStack2 = this.game.ModuleStacks["000005"];
 
-            List<string> testcommands = new List<string>();
-            testcommands.Add("#faction 1");
-            testcommands.Add("#modulestack 000008");
-            testcommands.Add("@use farmng");
-            testcommands.Add("#modulestack 000005");
-            testcommands.Add("@get all food from 000008");
-            testcommands.Add("#end");
+            List<string> testcommands = new List<string>
+            {
+                "#faction 1",
+                "#modulestack 000008",
+                "@use farmng",
+                "#modulestack 000005",
+                "@get all food from 000008",
+                "#end"
+            };
 
             OrdersReader ordersReader = new OrdersReader(game);
             ordersReader.AssignOrders(testcommands);
-            ClassicAssert.AreEqual(1, testModuleStack1.Orders.Count);
-            ClassicAssert.AreEqual(1, testModuleStack2.Orders.Count);
+            Assert.That(testModuleStack1.Orders.Count, Is.EqualTo(1));
+            Assert.That(testModuleStack2.Orders.Count, Is.EqualTo(1));
 
-            ClassicAssert.IsTrue(testModuleStack1.Orders[0] is UseOrder);
+            Assert.That(testModuleStack1.Orders[0] is UseOrder);
             UseOrder useOrder = (UseOrder)testModuleStack1.Orders[0];
-            ClassicAssert.AreEqual(Technology.All["farmng"], useOrder.Technology);
-            ClassicAssert.AreEqual(-1, useOrder.Repeat);
+            Assert.That(useOrder.Technology, Is.EqualTo(Technology.All["farmng"]));
+            Assert.That(useOrder.Repeat, Is.EqualTo(-1));
 
-            ClassicAssert.IsTrue(testModuleStack2.Orders[0] is GetOrder);
+            Assert.That(testModuleStack2.Orders[0] is GetOrder);
             GetOrder getOrder = (GetOrder)testModuleStack2.Orders[0];
-            ClassicAssert.AreEqual(-1, getOrder.Repeat); 
+            Assert.That(getOrder.Repeat, Is.EqualTo(-1));
 
-            ClassicAssert.AreEqual(40, testModuleStack1.ItemStacks.Quantity("food"));
-            ClassicAssert.AreEqual(0, testModuleStack2.ItemStacks.Quantity("food"));
+            Assert.That(testModuleStack1.ItemStacks.Quantity("food"), Is.EqualTo(40));
+            Assert.That(testModuleStack2.ItemStacks.Quantity("food"), Is.EqualTo(0));
 
             for (int week = 1; week <= 13; week++)
 			{
@@ -1922,18 +1996,18 @@ namespace UnitTests
                 }
                 if (week == 1)
                 {
-                    ClassicAssert.AreEqual(0, testModuleStack1.ItemStacks.Quantity("food"));
-                    ClassicAssert.AreEqual(55, testModuleStack2.ItemStacks.Quantity("food"));
+                    Assert.That(testModuleStack1.ItemStacks.Quantity("food"), Is.EqualTo(0));
+                    Assert.That(testModuleStack2.ItemStacks.Quantity("food"), Is.EqualTo(55));
                 }
                 else if (week == 2)
                 {
-                    ClassicAssert.AreEqual(0, testModuleStack1.ItemStacks.Quantity("food"));
-                    ClassicAssert.AreEqual(70, testModuleStack2.ItemStacks.Quantity("food"));
+                    Assert.That(testModuleStack1.ItemStacks.Quantity("food"), Is.EqualTo(0));
+                    Assert.That(testModuleStack2.ItemStacks.Quantity("food"), Is.EqualTo(70));
                 }
 			}
 
-            ClassicAssert.AreEqual(0, testModuleStack1.ItemStacks.Quantity("food"));
-            ClassicAssert.AreEqual(40 + 13 * 15, testModuleStack2.ItemStacks.Quantity("food"));
+            Assert.That(testModuleStack1.ItemStacks.Quantity("food"), Is.EqualTo(0));
+            Assert.That(testModuleStack2.ItemStacks.Quantity("food"), Is.EqualTo(40 + 13 * 15));
         }
 
         [Test]
@@ -1942,11 +2016,13 @@ namespace UnitTests
             Sequence.Ints.Push(100);
 
 
-            List<string> testcommands = new List<string>();
-            testcommands.Add("#faction 2");
-            testcommands.Add("#modulestack 000004");
-            testcommands.Add("2 use agrplx as new1");
-            testcommands.Add("#end");
+            List<string> testcommands = new List<string>
+            {
+                "#faction 2",
+                "#modulestack 000004",
+                "2 use agrplx as new1",
+                "#end"
+            };
 
             OrdersReader ordersReader = new OrdersReader(game);
             ordersReader.AssignOrders(testcommands);
@@ -1955,7 +2031,7 @@ namespace UnitTests
             ModuleStack testModuleStack1 = this.game.ModuleStacks["000004"];
             ModuleStack testModuleStack2 = this.game.ModuleStacks["100"];
 
-            ClassicAssert.IsTrue(testModuleStack1.Orders[0] is UseOrder);
+            Assert.That(testModuleStack1.Orders[0] is UseOrder);
             UseOrder useOrder = (UseOrder)testModuleStack1.Orders[0];
 
             // check if the world state changes correctly				
@@ -1966,22 +2042,22 @@ namespace UnitTests
                 testModuleStack1.Execute(i);
             }
 
-            ClassicAssert.AreEqual(2, testModuleStack2.Quantity);
-            ClassicAssert.AreEqual(3, testModuleStack2.EventReports.Count);
-            ClassicAssert.AreEqual("formed by factory [000004] with farming complex [farms].", testModuleStack2.EventReports[0].Description);
-            ClassicAssert.AreEqual("received farming complex [farms] produced by factory [000004].", testModuleStack2.EventReports[1].Description);
-            ClassicAssert.AreEqual("received farming complex [farms] produced by factory [000004].", testModuleStack2.EventReports[2].Description);
+            Assert.That(testModuleStack2.Quantity, Is.EqualTo(2));
+            Assert.That(testModuleStack2.EventReports.Count, Is.EqualTo(3));
+            Assert.That(testModuleStack2.EventReports[0].Description, Is.EqualTo("formed by factory [000004] with farming complex [farms]."));
+            Assert.That(testModuleStack2.EventReports[1].Description, Is.EqualTo("received farming complex [farms] produced by factory [000004]."));
+            Assert.That(testModuleStack2.EventReports[2].Description, Is.EqualTo("received farming complex [farms] produced by factory [000004]."));
 
             for (int i = 1; i <= testModuleStack1.EventReports.Count; i++)
             {
                 Console.WriteLine(testModuleStack1.EventReports[i-1].Report(testFaction)[0]);
             }
 
-            ClassicAssert.AreEqual(4, testModuleStack1.EventReports.Count);
-            ClassicAssert.AreEqual("week 1: consumed 10 units of iron [iron] to produce farming complex [farms] module.", testModuleStack1.EventReports[0].Report(testFaction)[0]);
-            ClassicAssert.AreEqual("week 4: produced farming complex [farms] into farming complex [100].", testModuleStack1.EventReports[1].Report(testFaction)[0]);
-            ClassicAssert.AreEqual("week 5: consumed 10 units of iron [iron] to produce farming complex [farms] module.", testModuleStack1.EventReports[2].Report(testFaction)[0]);
-            ClassicAssert.AreEqual("week 8: produced farming complex [farms] into farming complex [100].", testModuleStack1.EventReports[3].Report(testFaction)[0]);
+            Assert.That(testModuleStack1.EventReports.Count, Is.EqualTo(4));
+            Assert.That(testModuleStack1.EventReports[0].Report(testFaction)[0], Is.EqualTo("week 1: consumed 10 units of iron [iron] to produce farming complex [farms] module."));
+            Assert.That(testModuleStack1.EventReports[1].Report(testFaction)[0], Is.EqualTo("week 4: produced farming complex [farms] into farming complex [100]."));
+            Assert.That(testModuleStack1.EventReports[2].Report(testFaction)[0], Is.EqualTo("week 5: consumed 10 units of iron [iron] to produce farming complex [farms] module."));
+            Assert.That(testModuleStack1.EventReports[3].Report(testFaction)[0], Is.EqualTo("week 8: produced farming complex [farms] into farming complex [100]."));
         }
 
         [Test]
@@ -1990,22 +2066,24 @@ namespace UnitTests
             Faction testFaction = this.game.Factions["2"];
             ModuleStack testModuleStack = this.game.ModuleStacks["100011"];
 
-            List<string> testcommands = new List<string>();
-            testcommands.Add("#faction 2");
-            testcommands.Add("#modulestack 100011");
-            // check not seeing officer
-            testcommands.Add("see person 200001");
-            // check seeing officer
-            testcommands.Add("see person 200002");
-            // check not seeing modulestack
-            testcommands.Add("see 100001");
-            // check seeing modulestack
-            testcommands.Add("see 100012");
-            testcommands.Add("#end");
+            List<string> testcommands = new List<string>
+            {
+                "#faction 2",
+                "#modulestack 100011",
+                // check not seeing officer
+                "see person 200001",
+                // check seeing officer
+                "see person 200002",
+                // check not seeing modulestack
+                "see 100001",
+                // check seeing modulestack
+                "see 100012",
+                "#end"
+            };
 
             OrdersReader ordersReader = new OrdersReader(game);
             ordersReader.AssignOrders(testcommands);
-            ClassicAssert.AreEqual(4, testModuleStack.Orders.Count);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(4));
 
             SeeOrder order = (SeeOrder)testModuleStack.Orders[0];
         }
@@ -2023,21 +2101,21 @@ namespace UnitTests
             Person testPerson2 = this.game.People["200002"];
 
             // check if the world state changes corretly				
-            ClassicAssert.AreEqual(4, testModuleStack1.Orders.Count);
-            ClassicAssert.IsFalse(Person.All[testModuleStack1.Location, true].ContainsKey("200001"));
-            ClassicAssert.IsFalse(Person.All[testModuleStack1.Location, false].ContainsKey("200002"));
-            ClassicAssert.IsTrue(Person.All[testModuleStack1.Location, true].ContainsKey("200002"));
+            Assert.That(testModuleStack1.Orders.Count, Is.EqualTo(4));
+            Assert.That(Person.All[testModuleStack1.Location, true].ContainsKey("200001"), Is.False);
+            Assert.That(Person.All[testModuleStack1.Location, false].ContainsKey("200002"), Is.False);
+            Assert.That(Person.All[testModuleStack1.Location, true].ContainsKey("200002"));
 
-            ClassicAssert.IsFalse(ModuleStack.All[testModuleStack1.Location, true].ContainsKey("100001"));
-            ClassicAssert.IsFalse(ModuleStack.All[testModuleStack1.Location, false].ContainsKey("100012"));
-            ClassicAssert.IsTrue(ModuleStack.All[testModuleStack1.Location, true].ContainsKey("100012"));
+            Assert.That(ModuleStack.All[testModuleStack1.Location, true].ContainsKey("100001"), Is.False);
+            Assert.That(ModuleStack.All[testModuleStack1.Location, false].ContainsKey("100012"), Is.False);
+            Assert.That(ModuleStack.All[testModuleStack1.Location, true].ContainsKey("100012"));
 
             testModuleStack1.Orders[0].Execute(this.game.Week);
             testModuleStack1.Orders[1].Execute(this.game.Week);
             testModuleStack1.Orders[2].Execute(this.game.Week);
             testModuleStack1.Orders[3].Execute(this.game.Week);
             testModuleStack1.Orders.RemoveExecuted();
-            ClassicAssert.AreEqual(2, testModuleStack1.Orders.Count);
+            Assert.That(testModuleStack1.Orders.Count, Is.EqualTo(2));
         }
 
         [Test]
@@ -2046,22 +2124,24 @@ namespace UnitTests
             Faction testFaction = this.game.Factions["2"];
             Person testPerson = this.game.People["200002"];
 
-            List<string> testcommands = new List<string>();
-            testcommands.Add("#faction 2");
-            testcommands.Add("#person 200002");
-            // check not seeing officer
-            testcommands.Add("see person 200001");
-            // check seeing officer
-            testcommands.Add("see person 200002");
-            // check not seeing modulestack
-            testcommands.Add("see 100001");
-            // check seeing modulestack
-            testcommands.Add("see 100012");
-            testcommands.Add("#end");
+            List<string> testcommands = new List<string>
+            {
+                "#faction 2",
+                "#person 200002",
+                // check not seeing officer
+                "see person 200001",
+                // check seeing officer
+                "see person 200002",
+                // check not seeing modulestack
+                "see 100001",
+                // check seeing modulestack
+                "see 100012",
+                "#end"
+            };
 
             OrdersReader ordersReader = new OrdersReader(game);
             ordersReader.AssignOrders(testcommands);
-            ClassicAssert.AreEqual(4, testPerson.Orders.Count);
+            Assert.That(testPerson.Orders.Count, Is.EqualTo(4));
 
             SeeOrder order = (SeeOrder)testPerson.Orders[0];
         }
@@ -2079,21 +2159,21 @@ namespace UnitTests
             Person testPerson2 = this.game.People["200002"];
 
             // check if the world state changes corretly				
-            ClassicAssert.AreEqual(4, testPerson2.Orders.Count);
-            ClassicAssert.IsFalse(Person.All[testModuleStack1.Location, true].ContainsKey("200001"));
-            ClassicAssert.IsFalse(Person.All[testModuleStack1.Location, false].ContainsKey("200002"));
-            ClassicAssert.IsTrue(Person.All[testModuleStack1.Location, true].ContainsKey("200002"));
+            Assert.That(testPerson2.Orders.Count, Is.EqualTo(4));
+            Assert.That(Person.All[testModuleStack1.Location, true].ContainsKey("200001"), Is.False);
+            Assert.That(Person.All[testModuleStack1.Location, false].ContainsKey("200002"), Is.False);
+            Assert.That(Person.All[testModuleStack1.Location, true].ContainsKey("200002"));
 
-            ClassicAssert.IsFalse(ModuleStack.All[testModuleStack1.Location, true].ContainsKey("100001"));
-            ClassicAssert.IsFalse(ModuleStack.All[testModuleStack1.Location, false].ContainsKey("100012"));
-            ClassicAssert.IsTrue(ModuleStack.All[testModuleStack1.Location, true].ContainsKey("100012"));
+            Assert.That(ModuleStack.All[testModuleStack1.Location, true].ContainsKey("100001"), Is.False);
+            Assert.That(ModuleStack.All[testModuleStack1.Location, false].ContainsKey("100012"), Is.False);
+            Assert.That(ModuleStack.All[testModuleStack1.Location, true].ContainsKey("100012"));
 
             testPerson2.Orders[0].Execute(this.game.Week);
             testPerson2.Orders[1].Execute(this.game.Week);
             testPerson2.Orders[2].Execute(this.game.Week);
             testPerson2.Orders[3].Execute(this.game.Week);
             testPerson2.Orders.RemoveExecuted();
-            ClassicAssert.AreEqual(2, testPerson2.Orders.Count);
+            Assert.That(testPerson2.Orders.Count, Is.EqualTo(2));
         }
 
         [Test]
@@ -2104,19 +2184,21 @@ namespace UnitTests
             Faction testFaction = this.game.Factions["2"];
             ModuleStack testModuleStack = this.game.ModuleStacks["100001"];
 
-            List<string> testcommands = new List<string>();
-            testcommands.Add("#faction 2");
-            testcommands.Add("#modulestack 100001");
-            // check not seeing alias
-            testcommands.Add("see new1");
-            testcommands.Add("form new with 1 as new1");
-            // check seeing alias
-            testcommands.Add("-see new1");
-            testcommands.Add("#end");
+            List<string> testcommands = new List<string>
+            {
+                "#faction 2",
+                "#modulestack 100001",
+                // check not seeing alias
+                "see new1",
+                "form new with 1 as new1",
+                // check seeing alias
+                "-see new1",
+                "#end"
+            };
 
             OrdersReader ordersReader = new OrdersReader(game);
             ordersReader.AssignOrders(testcommands);
-            ClassicAssert.AreEqual(3, testModuleStack.Orders.Count);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(3));
 
             SeeOrder order = (SeeOrder)testModuleStack.Orders[0];
 
@@ -2129,9 +2211,9 @@ namespace UnitTests
                 Console.WriteLine(report[i]);
             }
 
-            ClassicAssert.AreEqual("see new100", report[0]);
-            ClassicAssert.AreEqual("form new with 1 as new100", report[1]);
-            ClassicAssert.AreEqual("-see new100", report[2]);
+            Assert.That(report[0], Is.EqualTo("see new100"));
+            Assert.That(report[1], Is.EqualTo("form new with 1 as new100"));
+            Assert.That(report[2], Is.EqualTo("-see new100"));
         }
 
         [Test]
@@ -2143,20 +2225,20 @@ namespace UnitTests
             ModuleStack testModuleStack_formed = this.game.ModuleStacks["100"];
 
             // check if the world state changes corretly				
-            ClassicAssert.AreEqual(3, testModuleStack.Orders.Count);
-            ClassicAssert.IsTrue(ModuleStack.All[testModuleStack.Location].ContainsKey("100001"));
-            ClassicAssert.IsFalse(ModuleStack.All[testModuleStack.Location].ContainsKey("100"));
-            ClassicAssert.IsFalse(testModuleStack_formed.IsFormed);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(3));
+            Assert.That(ModuleStack.All[testModuleStack.Location].ContainsKey("100001"));
+            Assert.That(ModuleStack.All[testModuleStack.Location].ContainsKey("100"), Is.False);
+            Assert.That(testModuleStack_formed.IsFormed, Is.False);
 
             // shouldn't execute, since the stack wasn't formed yet
             testModuleStack.Orders[0].Execute(this.game.Week);
             testModuleStack.Orders.RemoveExecuted();
-            ClassicAssert.AreEqual(3, testModuleStack.Orders.Count);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(3));
 
             // shouldn't execute, since the order is conditioned
             testModuleStack.Orders[2].Execute(this.game.Week);
             testModuleStack.Orders.RemoveExecuted();
-            ClassicAssert.AreEqual(3, testModuleStack.Orders.Count);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(3));
 
             // should execute form
             testModuleStack.Orders[1].Execute(this.game.Week);
@@ -2168,12 +2250,12 @@ namespace UnitTests
                 Console.WriteLine(report[i]);
             }
 
-            testModuleStack.Orders.RemoveExecuted();            
-            ClassicAssert.AreEqual(2, testModuleStack.Orders.Count);
-            ClassicAssert.IsTrue(ModuleStack.All[testModuleStack.Location].ContainsKey("100001"));
-            ClassicAssert.IsTrue(testModuleStack_formed.IsFormed);
-            ClassicAssert.AreEqual(testModuleStack.Location, testModuleStack_formed.Location);
-            ClassicAssert.IsTrue(ModuleStack.All[testModuleStack.Location].ContainsKey("100"));
+            testModuleStack.Orders.RemoveExecuted();
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(2));
+            Assert.That(ModuleStack.All[testModuleStack.Location].ContainsKey("100001"));
+            Assert.That(testModuleStack_formed.IsFormed);
+            Assert.That(testModuleStack_formed.Location, Is.EqualTo(testModuleStack.Location));
+            Assert.That(ModuleStack.All[testModuleStack.Location].ContainsKey("100"));
             
 
             // should execute now
@@ -2186,8 +2268,8 @@ namespace UnitTests
             for (int i = 0; i < report.Count; i++)
             {
                 Console.WriteLine(report[i]);
-            }          
-            ClassicAssert.AreEqual(0, testModuleStack.Orders.Count);
+            }
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(0));
         }
 
         [Test]
@@ -2199,20 +2281,22 @@ namespace UnitTests
             Person testPerson = this.game.People["200002"];
             ModuleStack testModuleStack = this.game.ModuleStacks["100013"];            
 
-            List<string> testcommands = new List<string>();
-            testcommands.Add("#faction 2");
-            testcommands.Add("#modulestack 100013");
-            testcommands.Add("form new with 1 as new1");
-            testcommands.Add("#person 200002");
-            testcommands.Add("stack new1");
-            testcommands.Add("#end");
+            List<string> testcommands = new List<string>
+            {
+                "#faction 2",
+                "#modulestack 100013",
+                "form new with 1 as new1",
+                "#person 200002",
+                "stack new1",
+                "#end"
+            };
 
             OrdersReader ordersReader = new OrdersReader(game);
             ordersReader.AssignOrders(testcommands);
-            ClassicAssert.AreEqual(1, testPerson.Orders.Count);
-            ClassicAssert.IsTrue(testPerson.Orders[0] is StackOrder);
-            ClassicAssert.AreEqual(1, testModuleStack.Orders.Count);
-            ClassicAssert.IsTrue(testModuleStack.Orders[0] is FormOrder);
+            Assert.That(testPerson.Orders.Count, Is.EqualTo(1));
+            Assert.That(testPerson.Orders[0] is StackOrder);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
+            Assert.That(testModuleStack.Orders[0] is FormOrder);
         }
 
         [Test]
@@ -2233,7 +2317,7 @@ namespace UnitTests
 
             ClassicAssert.AreNotEqual(testModuleStack_formed, testPerson.Parent);
             testPerson.Orders[0].Execute(this.game.Week);
-            ClassicAssert.AreEqual(testModuleStack_formed, testPerson.Parent);
+            Assert.That(testPerson.Parent, Is.EqualTo(testModuleStack_formed));
         }
 
         [Test]
@@ -2241,51 +2325,53 @@ namespace UnitTests
         {
             Faction testFaction = this.game.Factions["2"];
             ModuleStack testModuleStack = this.game.ModuleStacks["100011"]; // frigate
-            List<string> testcommands = new List<string>();
-            testcommands.Add("#faction 2");
-            testcommands.Add("#modulestack 100011");
-            testcommands.Add("move O00004");
-            testcommands.Add("#end");
+            List<string> testcommands = new List<string>
+            {
+                "#faction 2",
+                "#modulestack 100011",
+                "move O00004",
+                "#end"
+            };
 
             OrdersReader ordersReader = new OrdersReader(game);
             ordersReader.AssignOrders(testcommands);
 
             // check if the world state changes corretly				
-            ClassicAssert.AreEqual(1, testModuleStack.Orders.Count);
-            ClassicAssert.IsFalse(testModuleStack.Effects.IsMoving);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
+            Assert.That(testModuleStack.Effects.IsMoving, Is.False);
 
             Orbit orbit1 = Orbit.All["O00003"];
             Orbit orbit2 = Orbit.All["O00004"];
             Moon moon = (Moon)orbit2.OrbitHolder;
             moon.AU = 0.04;
             MoveOrder order = (MoveOrder)testModuleStack.Orders[0];
-            ClassicAssert.AreEqual(0.04, orbit1.OrbitHolder.DistanceTo(orbit2));
+            Assert.That(orbit1.OrbitHolder.DistanceTo(orbit2), Is.EqualTo(0.04));
 
             // check if the world state changes correctly	
-            ClassicAssert.IsFalse(testModuleStack.Effects.IsMoving);
+            Assert.That(testModuleStack.Effects.IsMoving, Is.False);
             ClassicAssert.IsNull(testModuleStack.MovingTo);
-            ClassicAssert.AreEqual(orbit1, testModuleStack.Parent);
-            ClassicAssert.AreEqual(1, testModuleStack.Orders.Count);
-            ClassicAssert.IsFalse(order.Executing);
-            ClassicAssert.IsFalse(order.Executed);
+            Assert.That(testModuleStack.Parent, Is.EqualTo(orbit1));
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
+            Assert.That(order.Executing, Is.False);
+            Assert.That(order.Executed, Is.False);
 
             testModuleStack.Execute(this.game.Week);
-            ClassicAssert.IsTrue(testModuleStack.Effects.IsMoving);
-            ClassicAssert.AreEqual(orbit2, testModuleStack.MovingTo);
-            ClassicAssert.AreEqual(orbit1, testModuleStack.Parent);
-            ClassicAssert.AreEqual(1, testModuleStack.Orders.Count);
-            ClassicAssert.AreEqual(1, order.DurationLeft);
-            ClassicAssert.IsTrue(order.Executing);
-            ClassicAssert.IsFalse(order.Executed);
+            Assert.That(testModuleStack.Effects.IsMoving);
+            Assert.That(testModuleStack.MovingTo, Is.EqualTo(orbit2));
+            Assert.That(testModuleStack.Parent, Is.EqualTo(orbit1));
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
+            Assert.That(order.DurationLeft, Is.EqualTo(1));
+            Assert.That(order.Executing);
+            Assert.That(order.Executed, Is.False);
 
             testModuleStack.ExecutedLongOrder = false;
             testModuleStack.Execute(this.game.Week + 1);
-            ClassicAssert.IsFalse(testModuleStack.Effects.IsMoving);
+            Assert.That(testModuleStack.Effects.IsMoving, Is.False);
             ClassicAssert.IsNull(testModuleStack.MovingTo);
-            ClassicAssert.AreEqual(orbit2, testModuleStack.Parent);
-            ClassicAssert.AreEqual(0, testModuleStack.Orders.Count);
-            ClassicAssert.IsFalse(order.Executing);
-            ClassicAssert.IsTrue(order.Executed);
+            Assert.That(testModuleStack.Parent, Is.EqualTo(orbit2));
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(0));
+            Assert.That(order.Executing, Is.False);
+            Assert.That(order.Executed);
         }
 
         [Test]
@@ -2314,44 +2400,46 @@ namespace UnitTests
             Moon moon = (Moon)orbit2.OrbitHolder;
             moon.AU = 0.04;
 
-            List<string> testcommands = new List<string>();
-            testcommands.Add("#faction 2");
-            testcommands.Add("#modulestack 100011");
-            testcommands.Add("move O00004");
-            testcommands.Add("+has 10 iron");
-            testcommands.Add("+has 10 terran");
-            testcommands.Add("-has 5 silici");
-            testcommands.Add("--move O00003");            
-            testcommands.Add("--+has 5 titani");
-            testcommands.Add("---move O00004");
-            testcommands.Add("#end");
+            List<string> testcommands = new List<string>
+            {
+                "#faction 2",
+                "#modulestack 100011",
+                "move O00004",
+                "+has 10 iron",
+                "+has 10 terran",
+                "-has 5 silici",
+                "--move O00003",
+                "--+has 5 titani",
+                "---move O00004",
+                "#end"
+            };
 
             OrdersReader ordersReader = new OrdersReader(game);
             ordersReader.AssignOrders(testcommands);
 
             // check if the world state changes corretly				
-            ClassicAssert.AreEqual(7, testModuleStack.Orders.Count);
-            ClassicAssert.AreEqual(2, testModuleStack.Orders[0].ConditionalOrders.Count);
-            ClassicAssert.AreEqual(4, testModuleStack.Orders[0].ConditionedOrders.Count);
-            ClassicAssert.AreEqual(1, testModuleStack.Orders[1].ConditionedOrders.Count);
-            ClassicAssert.AreEqual(1, testModuleStack.Orders[2].ConditionedOrders.Count);
-            ClassicAssert.AreEqual(1, testModuleStack.Orders[3].ConditionalOrders.Count);
-            ClassicAssert.AreEqual(3, testModuleStack.Orders[4].ConditionalOrders.Count);
-            ClassicAssert.AreEqual(1, testModuleStack.Orders[4].ConditionedOrders.Count);
-            ClassicAssert.AreEqual(2, testModuleStack.Orders[5].ConditionalOrders.Count);
-            ClassicAssert.AreEqual(1, testModuleStack.Orders[5].ConditionedOrders.Count);
-            ClassicAssert.AreEqual(3, testModuleStack.Orders[6].ConditionalOrders.Count);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(7));
+            Assert.That(testModuleStack.Orders[0].ConditionalOrders.Count, Is.EqualTo(2));
+            Assert.That(testModuleStack.Orders[0].ConditionedOrders.Count, Is.EqualTo(4));
+            Assert.That(testModuleStack.Orders[1].ConditionedOrders.Count, Is.EqualTo(1));
+            Assert.That(testModuleStack.Orders[2].ConditionedOrders.Count, Is.EqualTo(1));
+            Assert.That(testModuleStack.Orders[3].ConditionalOrders.Count, Is.EqualTo(1));
+            Assert.That(testModuleStack.Orders[4].ConditionalOrders.Count, Is.EqualTo(3));
+            Assert.That(testModuleStack.Orders[4].ConditionedOrders.Count, Is.EqualTo(1));
+            Assert.That(testModuleStack.Orders[5].ConditionalOrders.Count, Is.EqualTo(2));
+            Assert.That(testModuleStack.Orders[5].ConditionedOrders.Count, Is.EqualTo(1));
+            Assert.That(testModuleStack.Orders[6].ConditionalOrders.Count, Is.EqualTo(3));
 
-            ClassicAssert.IsFalse(testModuleStack.Effects.IsMoving);
+            Assert.That(testModuleStack.Effects.IsMoving, Is.False);
 
             // stage one - has only one resource, should complete has 10 terrans
             testModuleStack.ExecutedLongOrder = false;
             testModuleStack.Execute(this.game.Week);
             //this.consoleOutReport("orbit after week 1", testModuleStack.Location, testFaction);
             this.consoleOutReport("orders after week 1", testModuleStack.Orders, testFaction);
-            ClassicAssert.AreEqual(6, testModuleStack.Orders.Count);
-            ClassicAssert.IsFalse(testModuleStack.Effects.IsProducing);
-            ClassicAssert.IsFalse(testModuleStack.Effects.IsMoving);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(6));
+            Assert.That(testModuleStack.Effects.IsProducing, Is.False);
+            Assert.That(testModuleStack.Effects.IsMoving, Is.False);
 
 
             // stage two - added one more resource, should start moving
@@ -2360,8 +2448,8 @@ namespace UnitTests
             testModuleStack.Execute(this.game.Week + 1);
             //this.consoleOutReport("orbit after week 2", testModuleStack.Location, testFaction);
             this.consoleOutReport("orders after week 2", testModuleStack.Orders, testFaction);
-            ClassicAssert.AreEqual(5, testModuleStack.Orders.Count);
-            ClassicAssert.IsTrue(testModuleStack.Effects.IsMoving);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(5));
+            Assert.That(testModuleStack.Effects.IsMoving);
             
             // stage three - moving, should complete movement, should find silici
             factories.ItemStacks.Add(new ItemStack(ItemType.All["silici"], 5));
@@ -2369,8 +2457,8 @@ namespace UnitTests
             testModuleStack.Execute(this.game.Week + 2);
             //this.consoleOutReport("orbit after week 3", testModuleStack.Location, testFaction);
             this.consoleOutReport("orders after week 3", testModuleStack.Orders, testFaction);
-            ClassicAssert.AreEqual(3, testModuleStack.Orders.Count);
-            ClassicAssert.IsFalse(testModuleStack.Effects.IsMoving);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(3));
+            Assert.That(testModuleStack.Effects.IsMoving, Is.False);
 
             // stage four - added resource, should find tita, should start moving back
             factories.ItemStacks.Add(new ItemStack(ItemType.All["titani"], 5));
@@ -2378,32 +2466,32 @@ namespace UnitTests
             testModuleStack.Execute(this.game.Week + 3);
             //this.consoleOutReport("orbit after week 4", testModuleStack.Location, testFaction);
             this.consoleOutReport("orders after week 4", testModuleStack.Orders, testFaction);
-            ClassicAssert.AreEqual(2, testModuleStack.Orders.Count);
-            ClassicAssert.IsTrue(testModuleStack.Effects.IsMoving);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(2));
+            Assert.That(testModuleStack.Effects.IsMoving);
 
             // stage five - should complete movement           
             testModuleStack.ExecutedLongOrder = false; 
             testModuleStack.Execute(this.game.Week + 4);
             //this.consoleOutReport("orbit after week 5", testModuleStack.Location, testFaction);
             this.consoleOutReport("orders after week 5", testModuleStack.Orders, testFaction);
-            ClassicAssert.AreEqual(1, testModuleStack.Orders.Count);
-            ClassicAssert.IsFalse(testModuleStack.Effects.IsMoving);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
+            Assert.That(testModuleStack.Effects.IsMoving, Is.False);
  
             // stage six - should start moving again
             testModuleStack.ExecutedLongOrder = false; 
             testModuleStack.Execute(this.game.Week + 5);
-            ClassicAssert.AreEqual(1, testModuleStack.Orders.Count);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
             //this.consoleOutReport("orbit after week 6", testModuleStack.Location, testFaction);
             this.consoleOutReport("orders after week 6", testModuleStack.Orders, testFaction);
-            ClassicAssert.IsTrue(testModuleStack.Effects.IsMoving);
+            Assert.That(testModuleStack.Effects.IsMoving);
 
             // stage seven - should complete movement
             testModuleStack.ExecutedLongOrder = false;
             testModuleStack.Execute(this.game.Week + 6);
-            ClassicAssert.AreEqual(0, testModuleStack.Orders.Count);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(0));
             //this.consoleOutReport("orbit after week 7", testModuleStack.Location, testFaction);
             this.consoleOutReport("orders after week 7", testModuleStack.Orders, testFaction);
-            ClassicAssert.IsFalse(testModuleStack.Effects.IsMoving);
+            Assert.That(testModuleStack.Effects.IsMoving, Is.False);
         }
 
         [Test]
@@ -2413,31 +2501,33 @@ namespace UnitTests
             Faction testFaction = this.game.Factions["2"];
             ModuleStack testModuleStack = this.game.ModuleStacks["100001"];
 
-            List<string> testcommands = new List<string>();
-            testcommands.Add("#faction 2");
-            testcommands.Add("#modulestack 100001");
-            testcommands.Add("has modules 3");
-            testcommands.Add("has modules 2");
-            testcommands.Add("#end");
+            List<string> testcommands = new List<string>
+            {
+                "#faction 2",
+                "#modulestack 100001",
+                "has modules 3",
+                "has modules 2",
+                "#end"
+            };
 
             OrdersReader ordersReader = new OrdersReader(game);
             ordersReader.AssignOrders(testcommands);
 
-            ClassicAssert.AreEqual(2, testModuleStack.Orders.Count);
-            ClassicAssert.AreEqual(2, testModuleStack.Quantity);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(2));
+            Assert.That(testModuleStack.Quantity, Is.EqualTo(2));
             this.consoleOutReport("stack:", testModuleStack, testFaction);
             this.consoleOutReport("orders:", testModuleStack.Orders, testFaction);
 
             // secound counts should execute
             testModuleStack.Execute(this.game.Week);
-            ClassicAssert.AreEqual(1, testModuleStack.Orders.Count);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
             this.consoleOutReport("stack:", testModuleStack, testFaction);
             this.consoleOutReport("orders:", testModuleStack.Orders, testFaction);
 
             testModuleStack.AddModule();
             // first counts should execute
             testModuleStack.Execute(this.game.Week);
-            ClassicAssert.AreEqual(0, testModuleStack.Orders.Count);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(0));
             this.consoleOutReport("stack:", testModuleStack, testFaction);
             this.consoleOutReport("orders:", testModuleStack.Orders, testFaction);
         }
@@ -2451,21 +2541,23 @@ namespace UnitTests
             ModuleStack testModuleStack = this.game.ModuleStacks["100001"];
             ModuleStack testModuleStack2 = this.game.ModuleStacks["000006"];
 
-            List<string> testcommands = new List<string>();
-            testcommands.Add("#faction 2");
-            testcommands.Add("#modulestack 100001");
-            testcommands.Add("get 1 iron from 000006");
-            testcommands.Add("#end");
+            List<string> testcommands = new List<string>
+            {
+                "#faction 2",
+                "#modulestack 100001",
+                "get 1 iron from 000006",
+                "#end"
+            };
 
             OrdersReader ordersReader = new OrdersReader(game);
             ordersReader.AssignOrders(testcommands);
-            ClassicAssert.AreEqual(1, testModuleStack.Orders.Count);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
 
             testModuleStack.Parent = Region.All["R00002"];
 
             testModuleStack.Orders.Execute(this.game.Week);
             // should not execute - not the same location
-            ClassicAssert.AreEqual(1, testModuleStack.Orders.Count);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
 
             testModuleStack.Parent = Region.All["R00001"];
             testModuleStack.Orders.Execute(this.game.Week);
@@ -2484,7 +2576,7 @@ namespace UnitTests
             // adding necessary modulestacks and items            
             ModuleStack shuttles = new ModuleStack(region, faction, ModuleType.All["shuttl"], "100");
             shuttles.AddModules(5);
-            ClassicAssert.AreEqual(5, shuttles.Quantity);
+            Assert.That(shuttles.Quantity, Is.EqualTo(5));
 
             // resources to operate the shuttles (terrans, terair, food) but no fuel            
             shuttles.ItemStacks.Add(new ItemStack(ItemType.All["terran"], 10));
@@ -2499,22 +2591,24 @@ namespace UnitTests
             // this would execute in 8 weeks using single factory, or in two weeks using 5 factories
             // this shouldn't execute in region, without fuel
             // with the above provided it should take 8 * 10 -> 80 / 5 -> 16 weeks
-            List<string> testcommands = new List<string>();
-            testcommands.Add("#faction 2");
-            testcommands.Add("#modulestack 100");
-            testcommands.Add("use urfiss");
-            testcommands.Add("#end");
+            List<string> testcommands = new List<string>
+            {
+                "#faction 2",
+                "#modulestack 100",
+                "use urfiss",
+                "#end"
+            };
 
             OrdersReader ordersReader = new OrdersReader(game);
             ordersReader.AssignOrders(testcommands);
-            ClassicAssert.AreEqual(1, shuttles.Orders.Count);
+            Assert.That(shuttles.Orders.Count, Is.EqualTo(1));
 
             shuttles.Orders.Execute(this.game.Week);
             
             // should not execute - in region
             this.consoleOutReport("shuttles: ", shuttles.Parent, faction);
-            ClassicAssert.AreEqual(1, shuttles.Orders.Count);
-            ClassicAssert.IsFalse(shuttles.Effects.IsProducing);
+            Assert.That(shuttles.Orders.Count, Is.EqualTo(1));
+            Assert.That(shuttles.Effects.IsProducing, Is.False);
 
             // let's move it into the orbit and try again
             shuttles.Parent = orbit;
@@ -2523,9 +2617,9 @@ namespace UnitTests
 
             // should not execute - no fuel
             this.consoleOutReport("shuttles: ", shuttles.Parent, faction);
-            ClassicAssert.AreEqual(1, shuttles.Orders.Count);
-            ClassicAssert.IsFalse(shuttles.Effects.IsProducing);
-            ClassicAssert.IsFalse(shuttles.Effects.IsFuelled);
+            Assert.That(shuttles.Orders.Count, Is.EqualTo(1));
+            Assert.That(shuttles.Effects.IsProducing, Is.False);
+            Assert.That(shuttles.Effects.IsFuelled, Is.False);
 
             // let's give it some fuel
             shuttles.ItemStacks.Add(new ItemStack(ItemType.All["uraniu"], 5));
@@ -2536,12 +2630,12 @@ namespace UnitTests
             // should execute this time
             this.consoleOutReport("shuttles: ", shuttles, faction);
 
-            ClassicAssert.AreEqual(1, shuttles.Orders.Count);
-            ClassicAssert.IsTrue(shuttles.Effects.IsProducing);
-            ClassicAssert.IsTrue(shuttles.Effects.IsFuelled);
-            
-            ClassicAssert.AreEqual(15, shuttles.Effects.Producing.Duration);
-            ClassicAssert.AreEqual(13, shuttles.Effects.Fuelled.Duration);
+            Assert.That(shuttles.Orders.Count, Is.EqualTo(1));
+            Assert.That(shuttles.Effects.IsProducing);
+            Assert.That(shuttles.Effects.IsFuelled);
+
+            Assert.That(shuttles.Effects.Producing.Duration, Is.EqualTo(15));
+            Assert.That(shuttles.Effects.Fuelled.Duration, Is.EqualTo(13));
             this.consoleOutReport("shuttles", shuttles, faction);
 
 
@@ -2552,12 +2646,12 @@ namespace UnitTests
             shuttles.Effects.Execute(this.game.Week + 3);
             shuttles.Effects.RemoveExecuted();
 
-            ClassicAssert.AreEqual(1, shuttles.Orders.Count);
-            ClassicAssert.IsTrue(shuttles.Effects.IsProducing);
-            ClassicAssert.IsTrue(shuttles.Effects.IsFuelled);
+            Assert.That(shuttles.Orders.Count, Is.EqualTo(1));
+            Assert.That(shuttles.Effects.IsProducing);
+            Assert.That(shuttles.Effects.IsFuelled);
 
-            ClassicAssert.AreEqual(14, shuttles.Effects.Producing.Duration);
-            ClassicAssert.AreEqual(12, shuttles.Effects.Fuelled.Duration);
+            Assert.That(shuttles.Effects.Producing.Duration, Is.EqualTo(14));
+            Assert.That(shuttles.Effects.Fuelled.Duration, Is.EqualTo(12));
             this.consoleOutReport("shuttles", shuttles, faction);            
         }
 
@@ -2571,7 +2665,7 @@ namespace UnitTests
             // adding necessary modulestacks and items            
             ModuleStack shuttles = new ModuleStack(orbit, faction, ModuleType.All["shuttl"], "100");
             shuttles.AddModules(5);
-            ClassicAssert.AreEqual(5, shuttles.Quantity);
+            Assert.That(shuttles.Quantity, Is.EqualTo(5));
 
             // resources to operate the shuttles (terrans, terair, food, fuel)
             shuttles.ItemStacks.Add(new ItemStack(ItemType.All["terran"], 10));
@@ -2581,22 +2675,24 @@ namespace UnitTests
             shuttles.ItemStacks.Add(new ItemStack(ItemType.All["h2o2"], 5));
             this.consoleOutReport("shuttles", shuttles, faction);
  
-            List<string> testcommands = new List<string>();
-            testcommands.Add("#faction 2");
-            testcommands.Add("#modulestack 100");
-            testcommands.Add("use urfiss");
-            testcommands.Add("#end");
+            List<string> testcommands = new List<string>
+            {
+                "#faction 2",
+                "#modulestack 100",
+                "use urfiss",
+                "#end"
+            };
 
             OrdersReader ordersReader = new OrdersReader(game);
             ordersReader.AssignOrders(testcommands);
-            ClassicAssert.AreEqual(1, shuttles.Orders.Count);
+            Assert.That(shuttles.Orders.Count, Is.EqualTo(1));
 
             shuttles.Orders.Execute(this.game.Week);
 
             // should not execute - no resource
             this.consoleOutReport("shuttles: ", shuttles.Parent, faction);
-            ClassicAssert.AreEqual(1, shuttles.Orders.Count);
-            ClassicAssert.IsFalse(shuttles.Effects.IsProducing);
+            Assert.That(shuttles.Orders.Count, Is.EqualTo(1));
+            Assert.That(shuttles.Effects.IsProducing, Is.False);
 
             // resources to build fission reactor
             shuttles.ItemStacks.Add(new ItemStack(ItemType.All["iron"], 2));
@@ -2607,8 +2703,8 @@ namespace UnitTests
 
             // should execute 
             this.consoleOutReport("shuttles: ", shuttles.Parent, faction);
-            ClassicAssert.AreEqual(1, shuttles.Orders.Count);
-            ClassicAssert.IsTrue(shuttles.Effects.IsProducing);
+            Assert.That(shuttles.Orders.Count, Is.EqualTo(1));
+            Assert.That(shuttles.Effects.IsProducing);
         }
 
         [Test]
@@ -2620,23 +2716,25 @@ namespace UnitTests
             Faction testFaction = this.game.Factions["2"];
             ModuleStack testModuleStack = this.game.ModuleStacks["000006"];
 
-            List<string> testcommands = new List<string>();
-            testcommands.Add("#faction 2");
-            testcommands.Add("#modulestack 000006");
-            testcommands.Add("form new with 1 as new1");
-            testcommands.Add("-give 6 terran to new1");
-            testcommands.Add("#modulestack new1");
-            testcommands.Add("use hcdril"); 
-            testcommands.Add("#end");
+            List<string> testcommands = new List<string>
+            {
+                "#faction 2",
+                "#modulestack 000006",
+                "form new with 1 as new1",
+                "-give 6 terran to new1",
+                "#modulestack new1",
+                "use hcdril",
+                "#end"
+            };
 
             OrdersReader ordersReader = new OrdersReader(game);
             ordersReader.AssignOrders(testcommands);
-            ClassicAssert.AreEqual(2, testModuleStack.Orders.Count);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(2));
 
-            ClassicAssert.IsTrue(testModuleStack.Orders[0] is FormOrder);
+            Assert.That(testModuleStack.Orders[0] is FormOrder);
             FormOrder formOrder = (FormOrder)testModuleStack.Orders[0];
 
-            ClassicAssert.AreEqual(2, testModuleStack.Quantity);
+            Assert.That(testModuleStack.Quantity, Is.EqualTo(2));
             this.game.ClearExecutedLongOrder();
             //this.game.ClearFailedToExecuteImmediateOrders();
             this.game.ClearExecutedImmediateOrders();
@@ -2647,8 +2745,8 @@ namespace UnitTests
             
             this.consoleOutReport("formed unit: ", newModuleStack, testFaction);
 
-            ClassicAssert.AreEqual(1, newModuleStack.Quantity);
-            ClassicAssert.AreEqual(1, newModuleStack.ItemStacks[carbon].Quantity);
+            Assert.That(newModuleStack.Quantity, Is.EqualTo(1));
+            Assert.That(newModuleStack.ItemStacks[carbon].Quantity, Is.EqualTo(1));
         }
 
         [Test]
@@ -2663,24 +2761,26 @@ namespace UnitTests
 
             this.consoleOutReport("module stack:", testModuleStack, testModuleStack.Owner);
 
-            List<string> testcommands = new List<string>();
-            testcommands.Add("#faction 2");
-            testcommands.Add("#modulestack 000006");
-            testcommands.Add("use hcdril"); 
-            testcommands.Add("-form new with 2 as new1");
-            testcommands.Add("-give 6 terran to new1");
-            testcommands.Add("#modulestack new1");
-            testcommands.Add("use hcdril"); 
-            testcommands.Add("#end");
+            List<string> testcommands = new List<string>
+            {
+                "#faction 2",
+                "#modulestack 000006",
+                "use hcdril",
+                "-form new with 2 as new1",
+                "-give 6 terran to new1",
+                "#modulestack new1",
+                "use hcdril",
+                "#end"
+            };
 
             OrdersReader ordersReader = new OrdersReader(game);
             ordersReader.AssignOrders(testcommands);
-            ClassicAssert.AreEqual(3, testModuleStack.Orders.Count);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(3));
 
-            ClassicAssert.IsTrue(testModuleStack.Orders[1] is FormOrder);
+            Assert.That(testModuleStack.Orders[1] is FormOrder);
             FormOrder formOrder = (FormOrder)testModuleStack.Orders[1];
 
-            ClassicAssert.AreEqual(2, testModuleStack.Quantity);
+            Assert.That(testModuleStack.Quantity, Is.EqualTo(2));
 
             this.game.Execute();
 
@@ -2690,9 +2790,9 @@ namespace UnitTests
             this.consoleOutReport("old unit: ", testModuleStack, testFaction);
             this.consoleOutReport("formed unit: ", newModuleStack, testFaction);
 
-            ClassicAssert.AreEqual(2, newModuleStack.Quantity);
-            ClassicAssert.IsTrue(testModuleStack.ItemStacks.ContainsKey(carbon));
-            ClassicAssert.AreEqual(2, testModuleStack.ItemStacks[carbon].Quantity);
+            Assert.That(newModuleStack.Quantity, Is.EqualTo(2));
+            Assert.That(testModuleStack.ItemStacks.ContainsKey(carbon));
+            Assert.That(testModuleStack.ItemStacks[carbon].Quantity, Is.EqualTo(2));
 
             //TODO: the itemstacks should drop to the ground from empty stack
         }
@@ -2701,40 +2801,42 @@ namespace UnitTests
 		public void AssignProduceOrder_unlimited()
 		{
 			Faction testFaction = this.game.Factions["1"];
-			ModuleStack testModuleStack = this.game.ModuleStacks["000011"];
-			ClassicAssert.AreEqual("Berlin wind powerplants", testModuleStack.FullName);
+			ModuleStack testModuleStack = this.game.ModuleStacks["000009"];
+            Assert.That(testModuleStack.FullName, Is.EqualTo("Warsaw wind powerplants"));
 
-			List<string> testcommands = new List<string>();
-			testcommands.Add("#faction 1");
-			testcommands.Add("#modulestack 000011");
-			testcommands.Add("@produce energy");
-			testcommands.Add("#end");
+			List<string> testcommands = new List<string>
+            {
+                "#faction 1",
+                "#modulestack 000009",
+                "@produce energy",
+                "#end"
+            };
 
 			OrdersReader ordersReader = new OrdersReader(game);
 			ordersReader.AssignOrders(testcommands);
-			ClassicAssert.AreEqual(1, testModuleStack.Orders.Count);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
 
-			ClassicAssert.IsTrue(testModuleStack.Orders[0] is ProduceOrder);
+            Assert.That(testModuleStack.Orders[0] is ProduceOrder);
 			ProduceOrder produceOrder = (ProduceOrder)testModuleStack.Orders[0];
-			ClassicAssert.AreEqual(-1, produceOrder.Repeat);
+            Assert.That(produceOrder.Repeat, Is.EqualTo(-1));
 		}
 
 		[Test]
 		public void ExecuteProduceOrder_unlimited()
 		{
 			this.AssignProduceOrder_unlimited();
-			ModuleStack testModuleStack = this.game.ModuleStacks["000011"];
-			ClassicAssert.AreEqual("Berlin wind powerplants", testModuleStack.FullName);
+			ModuleStack testModuleStack = this.game.ModuleStacks["000009"];
+            Assert.That(testModuleStack.FullName, Is.EqualTo("Warsaw wind powerplants"));
 			ProduceOrder order = (ProduceOrder)testModuleStack.Orders[0];
 			ModuleType windplants = ModuleType.All["wnplnt"];
-			ClassicAssert.AreEqual(4, windplants.EnergyProduction);
+            Assert.That(windplants.EnergyProduction, Is.EqualTo(4));
 
-			// check if the world state changes correctly	
-			ClassicAssert.IsFalse(testModuleStack.Effects.IsProducing);
-			//ClassicAssert.AreEqual(0, order.DurationLeft);
-			ClassicAssert.AreEqual(-1, order.Repeat);
-			ClassicAssert.IsFalse(order.Executing);
-			ClassicAssert.IsFalse(order.Executed);
+            // check if the world state changes correctly	
+            Assert.That(testModuleStack.Effects.IsProducing, Is.False);
+            //ClassicAssert.AreEqual(0, order.DurationLeft);
+            Assert.That(order.Repeat, Is.EqualTo(-1));
+            Assert.That(order.Executing, Is.False);
+            Assert.That(order.Executed, Is.False);
 
 			testModuleStack.ExecutedLongOrder = false;
 			testModuleStack.Orders[0].Execute(this.game.Week + 0);
@@ -2742,12 +2844,12 @@ namespace UnitTests
 			testModuleStack.Effects.Execute(this.game.Week + 0);
 			testModuleStack.Effects.RemoveExecuted();
 
-			ClassicAssert.IsTrue(testModuleStack.Effects.IsProducing, "Should be producing - it's a 13 weeks duration order for wind powerplants");
-			ClassicAssert.AreEqual(1, testModuleStack.Orders.Count);
-			ClassicAssert.AreEqual(12, order.DurationLeft);
-			ClassicAssert.AreEqual(-1, order.Repeat);
-			ClassicAssert.IsTrue(order.Executing);
-			ClassicAssert.IsFalse(order.Executed);
+            Assert.That(testModuleStack.Effects.IsProducing, "Should be producing - it's a 13 weeks duration order for wind powerplants");
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
+            Assert.That(order.DurationLeft, Is.EqualTo(12));
+            Assert.That(order.Repeat, Is.EqualTo(-1));
+            Assert.That(order.Executing);
+            Assert.That(order.Executed, Is.False);
 
 			for (int i = 0; i < 12;i++)
 			{
@@ -2757,13 +2859,13 @@ namespace UnitTests
 				testModuleStack.Effects.Execute(this.game.Week + i);
 				testModuleStack.Effects.RemoveExecuted();
 			}
-			
-			ClassicAssert.IsFalse(testModuleStack.Effects.IsProducing, "Shouldn't be producing - it's a 13 weeks duration order for wind powerplants");
-			ClassicAssert.AreEqual(1, testModuleStack.Orders.Count);
-			//ClassicAssert.AreEqual(0, order.DurationLeft);
-			ClassicAssert.AreEqual(-2, order.Repeat);
-			ClassicAssert.IsFalse(order.Executing);
-			ClassicAssert.IsFalse(order.Executed);
+
+            Assert.That(testModuleStack.Effects.IsProducing, Is.False, "Shouldn't be producing - it's a 13 weeks duration order for wind powerplants");
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
+            //ClassicAssert.AreEqual(0, order.DurationLeft);
+            Assert.That(order.Repeat, Is.EqualTo(-2));
+            Assert.That(order.Executing, Is.False);
+            Assert.That(order.Executed, Is.False);
 		}
 
 		[Test]
@@ -2771,21 +2873,23 @@ namespace UnitTests
 		{
 			Faction testFaction = this.game.Factions["2"];
 			ModuleStack testModuleStack = this.game.ModuleStacks["000112"];
-			ClassicAssert.AreEqual("Caste Prime Headquarters", testModuleStack.FullName);
+            Assert.That(testModuleStack.FullName, Is.EqualTo("Caste Prime Headquarters"));
 
-			List<string> testcommands = new List<string>();
-			testcommands.Add("#faction 2");
-			testcommands.Add("#modulestack 000112");
-			testcommands.Add("2 produce cash");
-			testcommands.Add("#end");
+			List<string> testcommands = new List<string>
+            {
+                "#faction 2",
+                "#modulestack 000112",
+                "2 produce cash",
+                "#end"
+            };
 
 			OrdersReader ordersReader = new OrdersReader(game);
 			ordersReader.AssignOrders(testcommands);
-			ClassicAssert.AreEqual(1, testModuleStack.Orders.Count);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
 
-			ClassicAssert.IsTrue(testModuleStack.Orders[0] is ProduceOrder);
+            Assert.That(testModuleStack.Orders[0] is ProduceOrder);
 			ProduceOrder produceOrder = (ProduceOrder)testModuleStack.Orders[0];
-			ClassicAssert.AreEqual(2, produceOrder.Repeat);
+            Assert.That(produceOrder.Repeat, Is.EqualTo(2));
 		}
 
 		[Test]
@@ -2797,12 +2901,12 @@ namespace UnitTests
 			ModuleType corphq  = ModuleType.All["corphq"];
 			ItemType cash = ItemType.All["cash"];
 
-			// check if the world state changes correctly	
-			ClassicAssert.IsFalse(testModuleStack.Effects.IsProducing);
-			//ClassicAssert.AreEqual(0, order.DurationLeft);
-			ClassicAssert.AreEqual(2, order.Repeat);
-			ClassicAssert.IsFalse(order.Executing);
-			ClassicAssert.IsFalse(order.Executed, "Shouldn't be true, 2 to go");
+            // check if the world state changes correctly	
+            Assert.That(testModuleStack.Effects.IsProducing, Is.False);
+            //ClassicAssert.AreEqual(0, order.DurationLeft);
+            Assert.That(order.Repeat, Is.EqualTo(2));
+            Assert.That(order.Executing, Is.False);
+            Assert.That(order.Executed, Is.False, "Shouldn't be true, 2 to go");
 
 			testModuleStack.ExecutedLongOrder = false;
 			testModuleStack.Orders[0].Execute(this.game.Week + 0);
@@ -2810,12 +2914,12 @@ namespace UnitTests
 			testModuleStack.Effects.Execute(this.game.Week + 0);
 			testModuleStack.Effects.RemoveExecuted();
 
-			ClassicAssert.IsFalse(testModuleStack.Effects.IsProducing, "Shouldn't be producing - it's a 1 weeks duration order for corporate HQ");
-			ClassicAssert.AreEqual(1, testModuleStack.Orders.Count);
-			//ClassicAssert.AreEqual(0, order.DurationLeft);
-			ClassicAssert.AreEqual(1, order.Repeat);
-			ClassicAssert.IsFalse(order.Executing);
-			ClassicAssert.IsFalse(order.Executed, "Shouldn't be true, 1 to go");
+            Assert.That(testModuleStack.Effects.IsProducing, Is.False, "Shouldn't be producing - it's a 1 weeks duration order for corporate HQ");
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
+            //ClassicAssert.AreEqual(0, order.DurationLeft);
+            Assert.That(order.Repeat, Is.EqualTo(1));
+            Assert.That(order.Executing, Is.False);
+            Assert.That(order.Executed, Is.False, "Shouldn't be true, 1 to go");
 
 			testModuleStack.ExecutedLongOrder = false;
 			testModuleStack.Orders[0].Execute(this.game.Week + 1);
@@ -2823,35 +2927,134 @@ namespace UnitTests
 			testModuleStack.Effects.Execute(this.game.Week + 1);
 			testModuleStack.Effects.RemoveExecuted();
 
-			ClassicAssert.IsFalse(testModuleStack.Effects.IsProducing, "Shouldn't be producing - it's a 1 weeks duration order for corporate HQ");
-			ClassicAssert.AreEqual(0, testModuleStack.Orders.Count);
-			//ClassicAssert.AreEqual(0, order.DurationLeft);
-			ClassicAssert.AreEqual(0, order.Repeat);
-			ClassicAssert.IsFalse(order.Executing);
-			ClassicAssert.IsTrue(order.Executed, "Should be true, 0 repeats");
+            Assert.That(testModuleStack.Effects.IsProducing, Is.False, "Shouldn't be producing - it's a 1 weeks duration order for corporate HQ");
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(0));
+            //ClassicAssert.AreEqual(0, order.DurationLeft);
+            Assert.That(order.Repeat, Is.EqualTo(0));
+            Assert.That(order.Executing, Is.False);
+            Assert.That(order.Executed, "Should be true, 0 repeats");
 
-			ClassicAssert.IsTrue(testModuleStack.ItemStacks.ContainsKey(cash), "cash should appear in modulestack");
-			ClassicAssert.AreEqual(testModuleStack.ItemStacks[cash].Quantity, 200, "cash should appear in modulestack");
+            Assert.That(testModuleStack.ItemStacks.ContainsKey(cash), "cash should appear in modulestack");
+            Assert.That(testModuleStack.ItemStacks[cash].Quantity, Is.EqualTo(200), "cash should appear in modulestack");
 		}
 
-		[Test]
+        public void AssignProduceCash_unlimited()
+        {
+            Faction testFaction = this.game.Factions["2"];
+            ModuleStack testModuleStack = this.game.ModuleStacks["000112"];
+            Assert.That(testModuleStack.FullName, Is.EqualTo("Caste Prime Headquarters"));
+
+            List<string> testcommands = new List<string>
+            {
+                "#faction 2",
+                "#modulestack 000112",
+                "@produce cash",
+                "#end"
+            };
+
+            OrdersReader ordersReader = new OrdersReader(game);
+            ordersReader.AssignOrders(testcommands);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
+
+            Assert.That(testModuleStack.Orders[0] is ProduceOrder);
+            ProduceOrder produceOrder = (ProduceOrder)testModuleStack.Orders[0];
+            Assert.That(produceOrder.IsUnlimited, Is.True);
+        }
+
+        [Test]
+        public void ExecuteProduceCash_unlimited()
+        {
+            this.AssignProduceCash_unlimited();
+            ModuleStack testModuleStack = this.game.ModuleStacks["000112"];
+            ProduceOrder order = (ProduceOrder)testModuleStack.Orders[0];
+            ModuleType corphq = ModuleType.All["corphq"];
+            ItemType cash = ItemType.All["cash"];
+
+            // check if the world state changes correctly	
+            Assert.That(testModuleStack.Effects.IsProducing, Is.False);
+            Assert.That(order.IsUnlimited, Is.True);
+            Assert.That(order.Executing, Is.False);
+            Assert.That(order.Executed, Is.False, "Shouldn't be true, it is unlimited");
+
+            List<string> testlinesReport = new List<string>
+            {
+                "@produce cash"
+            };
+
+            List<string> generatedReport = null;
+            
+            generatedReport = order.Report(testModuleStack.Owner);
+            for (int i = 0; i < testlinesReport.Count; i++)
+            {
+                Console.WriteLine(testlinesReport[i]);
+                Assert.That(generatedReport[i], Is.EqualTo(testlinesReport[i]));
+            }
+            Assert.That(generatedReport.Count, Is.EqualTo(testlinesReport.Count));
+
+            testModuleStack.ExecutedLongOrder = false;
+            testModuleStack.Orders[0].Execute(this.game.Week + 0);
+            testModuleStack.Orders.RemoveExecuted();
+            testModuleStack.Effects.Execute(this.game.Week + 0);
+            testModuleStack.Effects.RemoveExecuted();
+
+            Assert.That(testModuleStack.Effects.IsProducing, Is.False, "Shouldn't be producing - it's a 1 weeks duration order for corporate HQ");
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
+            Assert.That(order.IsUnlimited, Is.True);
+            Assert.That(order.Executing, Is.False);
+            Assert.That(order.Executed, Is.False, "Shouldn't be true, it is still unlimited");
+
+            generatedReport = order.Report(testModuleStack.Owner);
+            for (int i = 0; i < testlinesReport.Count; i++)
+            {
+                Console.WriteLine(testlinesReport[i]);
+                Assert.That(generatedReport[i], Is.EqualTo(testlinesReport[i]));
+            }
+            Assert.That(generatedReport.Count, Is.EqualTo(testlinesReport.Count));
+
+            testModuleStack.ExecutedLongOrder = false;
+            testModuleStack.Orders[0].Execute(this.game.Week + 1);
+            testModuleStack.Orders.RemoveExecuted();
+            testModuleStack.Effects.Execute(this.game.Week + 1);
+            testModuleStack.Effects.RemoveExecuted();
+
+            Assert.That(testModuleStack.Effects.IsProducing, Is.False, "Shouldn't be producing - it's a 1 weeks duration order for corporate HQ");
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
+            Assert.That(order.IsUnlimited, Is.True);
+            Assert.That(order.Executing, Is.False);
+            Assert.That(order.Executed, Is.False, "Shouldn't be true, it is still unlimited");
+
+            generatedReport = order.Report(testModuleStack.Owner);
+            for (int i = 0; i < testlinesReport.Count; i++)
+            {
+                Console.WriteLine(testlinesReport[i]);
+                Assert.That(generatedReport[i], Is.EqualTo(testlinesReport[i]));
+            }
+            Assert.That(generatedReport.Count, Is.EqualTo(testlinesReport.Count));
+
+            Assert.That(testModuleStack.ItemStacks.ContainsKey(cash), "cash should appear in modulestack");
+            Assert.That(testModuleStack.ItemStacks[cash].Quantity, Is.EqualTo(200), "cash should appear in modulestack");
+        }
+
+        [Test]
 		public void AssignTrain_officer()
 		{
 			Faction testFaction = this.game.Factions["2"];
 			ModuleStack testModuleStack = this.game.ModuleStacks["000112"];
-			ClassicAssert.AreEqual("Caste Prime Headquarters", testModuleStack.FullName);
+            Assert.That(testModuleStack.FullName, Is.EqualTo("Caste Prime Headquarters"));
 
-			List<string> testcommands = new List<string>();
-			testcommands.Add("#faction 2");
-			testcommands.Add("#modulestack 000112");
-			testcommands.Add("train terran officer as new3");
-			testcommands.Add("#end");
+			List<string> testcommands = new List<string>
+            {
+                "#faction 2",
+                "#modulestack 000112",
+                "train terran officer as new3",
+                "#end"
+            };
 
 			OrdersReader ordersReader = new OrdersReader(game);
 			ordersReader.AssignOrders(testcommands);
-			ClassicAssert.AreEqual(1, testModuleStack.Orders.Count);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
 
-			ClassicAssert.IsTrue(testModuleStack.Orders[0] is TrainOrder);
+            Assert.That(testModuleStack.Orders[0] is TrainOrder);
 			TrainOrder trainOrder = (TrainOrder)testModuleStack.Orders[0];
 		}
 
@@ -2868,14 +3071,14 @@ namespace UnitTests
 			ModuleType corphq = ModuleType.All["corphq"];
 			ItemType terran = ItemType.All["terran"];
 
-			// check if the world state changes correctly	
-			ClassicAssert.IsFalse(testModuleStack.Effects.IsProducing);
-			ClassicAssert.AreEqual(20, testModuleStack.ItemStacks[terran].Quantity);
-			ClassicAssert.AreEqual(1, testModuleStack.People.Count);
-			ClassicAssert.AreEqual(6, order.Race.OfficerTrainingDuration);
-			ClassicAssert.AreEqual(1, order.Repeat);
-			ClassicAssert.IsFalse(order.Executing);
-			ClassicAssert.IsFalse(order.Executed);
+            // check if the world state changes correctly	
+            Assert.That(testModuleStack.Effects.IsProducing, Is.False);
+            Assert.That(testModuleStack.ItemStacks[terran].Quantity, Is.EqualTo(20));
+            Assert.That(testModuleStack.People.Count, Is.EqualTo(1));
+            Assert.That(order.Race.OfficerTrainingDuration, Is.EqualTo(6));
+            Assert.That(order.Repeat, Is.EqualTo(1));
+            Assert.That(order.Executing, Is.False);
+            Assert.That(order.Executed, Is.False);
 
 			testModuleStack.ExecutedLongOrder = false;
 			testModuleStack.Orders[0].Execute(this.game.Week + 0);
@@ -2883,12 +3086,12 @@ namespace UnitTests
 			testModuleStack.Effects.Execute(this.game.Week + 0);
 			testModuleStack.Effects.RemoveExecuted();
 
-			ClassicAssert.IsTrue(testModuleStack.Effects.IsTraining, "Should be training  - it's a 6 weeks duration order for terran officers");
-			ClassicAssert.AreEqual(1, testModuleStack.Orders.Count);
-			ClassicAssert.AreEqual(5, order.DurationLeft);
-			ClassicAssert.AreEqual(1, order.Repeat);
-			ClassicAssert.IsTrue(order.Executing);
-			ClassicAssert.IsFalse(order.Executed);
+            Assert.That(testModuleStack.Effects.IsTraining, "Should be training  - it's a 6 weeks duration order for terran officers");
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
+            Assert.That(order.DurationLeft, Is.EqualTo(5));
+            Assert.That(order.Repeat, Is.EqualTo(1));
+            Assert.That(order.Executing);
+            Assert.That(order.Executed, Is.False);
 
 			for (int i = 0; i < 5; i++)
 			{
@@ -2899,15 +3102,15 @@ namespace UnitTests
 				testModuleStack.Effects.RemoveExecuted();
 			}
 
-			ClassicAssert.IsFalse(testModuleStack.Effects.IsTraining, "Shouldn't be training - it's a 6 weeks duration order for terran officers");
-			ClassicAssert.AreEqual(0, testModuleStack.Orders.Count);
-			//ClassicAssert.AreEqual(0, order.DurationLeft);
-			ClassicAssert.AreEqual(0, order.Repeat);
-			ClassicAssert.IsFalse(order.Executing);
-			ClassicAssert.IsTrue(order.Executed);
+            Assert.That(testModuleStack.Effects.IsTraining, Is.False, "Shouldn't be training - it's a 6 weeks duration order for terran officers");
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(0));
+            //ClassicAssert.AreEqual(0, order.DurationLeft);
+            Assert.That(order.Repeat, Is.EqualTo(0));
+            Assert.That(order.Executing, Is.False);
+            Assert.That(order.Executed);
 
-			ClassicAssert.AreEqual(20 - 1, testModuleStack.ItemStacks[terran].Quantity);
-			ClassicAssert.AreEqual(2, testModuleStack.People.Count);
+            Assert.That(testModuleStack.ItemStacks[terran].Quantity, Is.EqualTo(20 - 1));
+            Assert.That(testModuleStack.People.Count, Is.EqualTo(2));
 
 			foreach (Person person in testModuleStack.People.Values)
 			{
@@ -2915,9 +3118,9 @@ namespace UnitTests
 			}
 
 			Person trainedOfficer = Person.All["2_new3"];
-			ClassicAssert.IsNotNull(trainedOfficer);
-			ClassicAssert.AreEqual("100", trainedOfficer.Name);
-			ClassicAssert.AreEqual(testModuleStack, trainedOfficer.Parent);
+            Assert.That(trainedOfficer, Is.Not.Null);
+            Assert.That(trainedOfficer.Name, Is.EqualTo("100"));
+            Assert.That(trainedOfficer.Parent, Is.EqualTo(testModuleStack));
 		}
 
 		[Test]
@@ -2925,21 +3128,23 @@ namespace UnitTests
 		{
 			Faction testFaction = this.game.Factions["2"];
 			Person testPerson = this.game.People["000101"];
-			ClassicAssert.AreEqual("Caste Prime CEO", testPerson.FullName);
+            Assert.That(testPerson.FullName, Is.EqualTo("Caste Prime CEO"));
 
-			List<string> testcommands = new List<string>();
-			testcommands.Add("#faction 2");
-			testcommands.Add("#person 000101");
-			testcommands.Add("train skill arpldr");
-			testcommands.Add("#end");
+			List<string> testcommands = new List<string>
+            {
+                "#faction 2",
+                "#person 000101",
+                "train skill arpldr",
+                "#end"
+            };
 
 			OrdersReader ordersReader = new OrdersReader(game);
 			ordersReader.AssignOrders(testcommands);
-			ClassicAssert.AreEqual(1, testPerson.Orders.Count);
+            Assert.That(testPerson.Orders.Count, Is.EqualTo(1));
 
-			ClassicAssert.IsTrue(testPerson.Orders[0] is TrainOrder);
+            Assert.That(testPerson.Orders[0] is TrainOrder);
 			TrainOrder trainOrder = (TrainOrder)testPerson.Orders[0];
-			ClassicAssert.IsFalse(trainOrder.TrainingOfficer);
+            Assert.That(trainOrder.TrainingOfficer, Is.False);
 		}
 
 		[Test]
@@ -2951,13 +3156,13 @@ namespace UnitTests
 			TrainOrder order = (TrainOrder)testPerson.Orders[0];
 			SkillType skill = SkillType.All["arpldr"];
 
-			// check if the world state changes correctly	
-			ClassicAssert.IsFalse(testPerson.Skills.ContainsKey(skill));
-			ClassicAssert.IsFalse(testPerson.Effects.IsProducing);
-			ClassicAssert.AreEqual(4, order.SkillType.TrainingDuration);
-			ClassicAssert.AreEqual(1, order.Repeat);
-			ClassicAssert.IsFalse(order.Executing);
-			ClassicAssert.IsFalse(order.Executed);
+            // check if the world state changes correctly	
+            Assert.That(testPerson.Skills.ContainsKey(skill), Is.False);
+            Assert.That(testPerson.Effects.IsProducing, Is.False);
+            Assert.That(order.SkillType.TrainingDuration, Is.EqualTo(4));
+            Assert.That(order.Repeat, Is.EqualTo(1));
+            Assert.That(order.Executing, Is.False);
+            Assert.That(order.Executed, Is.False);
 
 			testPerson.ExecutedLongOrder = false;
 			testPerson.Orders[0].Execute(this.game.Week + 0);
@@ -2965,14 +3170,14 @@ namespace UnitTests
 			testPerson.Effects.Execute(this.game.Week + 0);
 			testPerson.Effects.RemoveExecuted();
 
-			ClassicAssert.IsTrue(testPerson.Effects.IsTraining, "Should be training - it's a 4 weeks duration order for terran officers");
-			ClassicAssert.AreEqual(1, testPerson.Orders.Count);
-			ClassicAssert.AreEqual(3, order.DurationLeft);
-			ClassicAssert.AreEqual(1, order.Repeat);
-			ClassicAssert.IsTrue(order.Executing);
-			ClassicAssert.IsFalse(order.Executed);
+            Assert.That(testPerson.Effects.IsTraining, "Should be training - it's a 4 weeks duration order for terran officers");
+            Assert.That(testPerson.Orders.Count, Is.EqualTo(1));
+            Assert.That(order.DurationLeft, Is.EqualTo(3));
+            Assert.That(order.Repeat, Is.EqualTo(1));
+            Assert.That(order.Executing);
+            Assert.That(order.Executed, Is.False);
 
-            ClassicAssert.IsFalse(testPerson.Skills.ContainsKey(skill), "shouldn't have skill yet");
+            Assert.That(testPerson.Skills.ContainsKey(skill), Is.False, "shouldn't have skill yet");
 
 			for (int i = 0; i < 3; i++)
 			{
@@ -2983,14 +3188,14 @@ namespace UnitTests
 				testPerson.Effects.RemoveExecuted();
 			}
 
-			ClassicAssert.IsFalse(testPerson.Effects.IsTraining, "Shouldn't be training - it's a 4 weeks duration order for terran officers");
-			ClassicAssert.AreEqual(0, testPerson.Orders.Count);
-			//ClassicAssert.AreEqual(0, order.DurationLeft);
-			ClassicAssert.AreEqual(0, order.Repeat);
-			ClassicAssert.IsFalse(order.Executing);
-			ClassicAssert.IsTrue(order.Executed);
+            Assert.That(testPerson.Effects.IsTraining, Is.False, "Shouldn't be training - it's a 4 weeks duration order for terran officers");
+            Assert.That(testPerson.Orders.Count, Is.EqualTo(0));
+            //ClassicAssert.AreEqual(0, order.DurationLeft);
+            Assert.That(order.Repeat, Is.EqualTo(0));
+            Assert.That(order.Executing, Is.False);
+            Assert.That(order.Executed);
 
-			ClassicAssert.IsTrue(testPerson.Skills.ContainsKey(skill), "should have skill now");
+            Assert.That(testPerson.Skills.ContainsKey(skill), "should have skill now");
 
             this.consoleOutReport("trainign progress", testPerson, testFaction);
 		}
@@ -3023,48 +3228,52 @@ namespace UnitTests
 
 			Faction faction = this.game.Factions["1"];
 			ModuleStack producer = this.game.ModuleStacks["000008"];
-			ClassicAssert.AreEqual("Berlin farms", producer.FullName);
+            Assert.That(producer.FullName, Is.EqualTo("Berlin farms"));
 			ModuleStack receiver = this.game.ModuleStacks["000005"];
-			ClassicAssert.AreEqual("Berlin", receiver.FullName);
+            Assert.That(receiver.FullName, Is.EqualTo("Berlin"));
 
-			List<string> testcommands = new List<string>();
-			testcommands.Add("#faction 1");
-			testcommands.Add("#modulestack 000005");
-			testcommands.Add("@get all food from 000008");
-			testcommands.Add("#modulestack 000008");
-			testcommands.Add("@use farmng");
-			testcommands.Add("#end");
+			List<string> testcommands = new List<string>
+            {
+                "#faction 1",
+                "#modulestack 000005",
+                "@get all food from 000008",
+                "#modulestack 000008",
+                "@use farmng",
+                "#end"
+            };
 
 			OrdersReader ordersReader = new OrdersReader(game);
 			ordersReader.AssignOrders(testcommands);
-			ClassicAssert.AreEqual(1, producer.Orders.Count);
-			ClassicAssert.AreEqual(1, receiver.Orders.Count);
+            Assert.That(producer.Orders.Count, Is.EqualTo(1));
+            Assert.That(receiver.Orders.Count, Is.EqualTo(1));
 
 			UseOrder useOrder = (UseOrder)producer.Orders[0];
 			GetOrder getOrder = (GetOrder)receiver.Orders[0];
 			ItemType food = ItemType.All["food"];
 			ModuleType farms = ModuleType.All["farms"];
 			Technology farming = Technology.All["farmng"];
-			ClassicAssert.AreEqual(1, farming.UseTime, "if that change, the below test would be invalid");
+            Assert.That(farming.UseTime, Is.EqualTo(1), "if that change, the below test would be invalid");
 
-			// check if the world state changes correctly	
-			ClassicAssert.IsFalse(receiver.ItemStacks.ContainsKey(food));
-			ModuleStacks stacks = new ModuleStacks();
-			stacks.Add(producer);
-			stacks.Add(receiver);
+            // check if the world state changes correctly	
+            Assert.That(receiver.ItemStacks.ContainsKey(food), Is.False);
+			ModuleStacks stacks = new ModuleStacks
+            {
+                producer,
+                receiver
+            };
 
 			this.game.ExecuteOrdersByModuleStack(stacks);
 
-			ClassicAssert.IsFalse(producer.Effects.IsProducing, "Shouldn't be producing - farming is 1 duration order");
-			ClassicAssert.IsTrue(receiver.ItemStacks.ContainsKey(food));
-			ClassicAssert.AreEqual(40 + producer.Quantity * farming.UseProduceItems[food].Quantity, receiver.ItemStacks[food].Quantity);
-			ClassicAssert.IsFalse(producer.ItemStacks.ContainsKey(food));
-			ClassicAssert.AreEqual(1, producer.Orders.Count);
-			ClassicAssert.AreEqual(1, receiver.Orders.Count);
-			ClassicAssert.IsFalse(useOrder.Executing);
-			ClassicAssert.IsFalse(getOrder.Executing);
-			ClassicAssert.IsFalse(useOrder.Executed);
-			ClassicAssert.IsTrue(getOrder.Executed);
+            Assert.That(producer.Effects.IsProducing, Is.False, "Shouldn't be producing - farming is 1 duration order");
+            Assert.That(receiver.ItemStacks.ContainsKey(food));
+            Assert.That(receiver.ItemStacks[food].Quantity, Is.EqualTo(40 + producer.Quantity * farming.UseProduceItems[food].Quantity));
+            Assert.That(producer.ItemStacks.ContainsKey(food), Is.False);
+            Assert.That(producer.Orders.Count, Is.EqualTo(1));
+            Assert.That(receiver.Orders.Count, Is.EqualTo(1));
+            Assert.That(useOrder.Executing, Is.False);
+            Assert.That(getOrder.Executing, Is.False);
+            Assert.That(useOrder.Executed, Is.False);
+            Assert.That(getOrder.Executed);
 
 			this.game.ClearExecutedLongOrder();
 			//this.game.ClearFailedToExecuteImmediateOrders();
@@ -3073,14 +3282,14 @@ namespace UnitTests
 
 			this.game.Week++;
 			this.game.ExecuteOrdersByModuleStack(stacks);
-			ClassicAssert.AreEqual(40 + 2 * producer.Quantity * farming.UseProduceItems[food].Quantity, receiver.ItemStacks[food].Quantity);
-			ClassicAssert.IsFalse(producer.ItemStacks.ContainsKey(food));
-			ClassicAssert.AreEqual(1, producer.Orders.Count);
-			ClassicAssert.AreEqual(1, receiver.Orders.Count);
-			ClassicAssert.IsFalse(useOrder.Executing);
-			ClassicAssert.IsFalse(getOrder.Executing);
-			ClassicAssert.IsFalse(useOrder.Executed);
-			ClassicAssert.IsTrue(getOrder.Executed);
+            Assert.That(receiver.ItemStacks[food].Quantity, Is.EqualTo(40 + 2 * producer.Quantity * farming.UseProduceItems[food].Quantity));
+            Assert.That(producer.ItemStacks.ContainsKey(food), Is.False);
+            Assert.That(producer.Orders.Count, Is.EqualTo(1));
+            Assert.That(receiver.Orders.Count, Is.EqualTo(1));
+            Assert.That(useOrder.Executing, Is.False);
+            Assert.That(getOrder.Executing, Is.False);
+            Assert.That(useOrder.Executed, Is.False);
+            Assert.That(getOrder.Executed);
 
 			this.consoleOutReport("producer: ", producer, faction);
 			this.consoleOutReport("receiver: ", receiver, faction);
@@ -3116,7 +3325,7 @@ namespace UnitTests
 			ModuleStack testModuleStack = this.game.ModuleStacks["000112"];
 			Person trainedOfficer = Person.All["2_new3"];
 
-			ClassicAssert.AreEqual(testModuleStack, trainedOfficer.Parent);
+            Assert.That(trainedOfficer.Parent, Is.EqualTo(testModuleStack));
 
 			//manual verification if there are no double event report
 			this.consoleOutReport("trainer:", testModuleStack, testFaction);
@@ -3137,33 +3346,35 @@ namespace UnitTests
 
 			Faction testFaction = this.game.Factions["2"];
 			ModuleStack testModuleStack = this.game.ModuleStacks["000112"];
-			ClassicAssert.AreEqual("Caste Prime Headquarters", testModuleStack.FullName);
+            Assert.That(testModuleStack.FullName, Is.EqualTo("Caste Prime Headquarters"));
 
-			List<string> testcommands = new List<string>();
-			testcommands.Add("#faction 2");
-			testcommands.Add("#modulestack 000112");
-			testcommands.Add("train terran officer as new3");
-			testcommands.Add("#end");
+			List<string> testcommands = new List<string>
+            {
+                "#faction 2",
+                "#modulestack 000112",
+                "train terran officer as new3",
+                "#end"
+            };
 
 			OrdersReader ordersReader = new OrdersReader(game);
 			ordersReader.AssignOrders(testcommands);
-			ClassicAssert.AreEqual(1, testModuleStack.Orders.Count);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
 
-			ClassicAssert.IsTrue(testModuleStack.Orders[0] is TrainOrder);
+            Assert.That(testModuleStack.Orders[0] is TrainOrder);
 			TrainOrder trainOrder = (TrainOrder)testModuleStack.Orders[0];
 			ItemType terran = ItemType.All["terran"];
 
 			testModuleStack.ItemStacks[terran].Quantity = 10;
-			ClassicAssert.IsFalse(testModuleStack.IsActive);
+            Assert.That(testModuleStack.IsActive, Is.False);
 
 			TrainOrder order = (TrainOrder)testModuleStack.Orders[0];
 
-			// check if the world state changes correctly	
-			ClassicAssert.IsFalse(testModuleStack.Effects.IsProducing);
-			ClassicAssert.AreEqual(1, testModuleStack.People.Count);
-			ClassicAssert.AreEqual(1, order.Repeat);
-			ClassicAssert.IsFalse(order.Executing);
-			ClassicAssert.IsFalse(order.Executed);
+            // check if the world state changes correctly	
+            Assert.That(testModuleStack.Effects.IsProducing, Is.False);
+            Assert.That(testModuleStack.People.Count, Is.EqualTo(1));
+            Assert.That(order.Repeat, Is.EqualTo(1));
+            Assert.That(order.Executing, Is.False);
+            Assert.That(order.Executed, Is.False);
 
 			testModuleStack.ExecutedLongOrder = false;
 			testModuleStack.Orders[0].Execute(this.game.Week + 0);
@@ -3171,13 +3382,13 @@ namespace UnitTests
 			testModuleStack.Effects.Execute(this.game.Week + 0);
 			testModuleStack.Effects.RemoveExecuted();
 
-			ClassicAssert.IsFalse(testModuleStack.Effects.IsTraining, "Shouldn't be training - it's a disabled module");
-			ClassicAssert.AreEqual(1, testModuleStack.Orders.Count, "order failed due to lack of energy shouldn't be treated as executed");
-			ClassicAssert.AreEqual(1, order.Repeat, "order failed due to lack of energy shouldn't be treated as executed");
-			ClassicAssert.IsFalse(order.Executing);
-			ClassicAssert.IsFalse(order.Executed);
+            Assert.That(testModuleStack.Effects.IsTraining, Is.False, "Shouldn't be training - it's a disabled module");
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1), "order failed due to lack of energy shouldn't be treated as executed");
+            Assert.That(order.Repeat, Is.EqualTo(1), "order failed due to lack of energy shouldn't be treated as executed");
+            Assert.That(order.Executing, Is.False);
+            Assert.That(order.Executed, Is.False);
 
-			ClassicAssert.AreEqual(1, testModuleStack.People.Count);
+            Assert.That(testModuleStack.People.Count, Is.EqualTo(1));
 
 			this.consoleOutReport("trainer: ", testModuleStack, testFaction);
 			//this.consoleOutReport("trainee: ", this.game.People["100"], testFaction);
@@ -3196,43 +3407,45 @@ namespace UnitTests
             this.game.Week = 1;
 			Faction testFaction = this.game.Factions["2"];
 			ModuleStack testModuleStack = this.game.ModuleStacks["000004"];
-			ClassicAssert.AreEqual("factory [000004]", testModuleStack.ReportName);
+            Assert.That(testModuleStack.ReportName, Is.EqualTo("factory [000004]"));
 
-			List<string> testcommands = new List<string>();
-			testcommands.Add("#faction 2");
-			testcommands.Add("#modulestack 000004");
-			testcommands.Add("2 use armcbt as new1 for 000001");
-			testcommands.Add("#end");
+			List<string> testcommands = new List<string>
+            {
+                "#faction 2",
+                "#modulestack 000004",
+                "2 use armcbt as new1 for 000001",
+                "#end"
+            };
 
 			OrdersReader ordersReader = new OrdersReader(game);
 			ordersReader.AssignOrders(testcommands);
-			ClassicAssert.AreEqual(1, testModuleStack.Orders.Count);
-			ClassicAssert.IsTrue(testModuleStack.Orders[0] is UseOrder);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
+            Assert.That(testModuleStack.Orders[0] is UseOrder);
 			UseOrder useOrder = (UseOrder)testModuleStack.Orders[0];
 
-			ClassicAssert.AreEqual(2, useOrder.Repeat);
-			ClassicAssert.AreEqual("100", useOrder.Receiver.Name);
-			ClassicAssert.AreEqual("000001", useOrder.ReceiverParent.Name);
+            Assert.That(useOrder.Repeat, Is.EqualTo(2));
+            Assert.That(useOrder.Receiver.Name, Is.EqualTo("100"));
+            Assert.That(useOrder.ReceiverParent.Name, Is.EqualTo("000001"));
 
             this.executeOrder(testModuleStack, useOrder, 0);
 			this.consoleOutReport("trainer: ", testModuleStack, testFaction);
 			this.consoleOutReport("orders: ", testModuleStack.Orders, testFaction);
 
-			ClassicAssert.IsTrue(testModuleStack.Effects.IsProducing, "Should be producing - order takes 4 weekse");
-			ClassicAssert.AreEqual(1, testModuleStack.Orders.Count);
-			ClassicAssert.AreEqual(2, useOrder.Repeat, "order takes time to execute");
-			ClassicAssert.IsTrue(useOrder.Executing);
-			ClassicAssert.IsFalse(useOrder.Executed);
+            Assert.That(testModuleStack.Effects.IsProducing, "Should be producing - order takes 4 weekse");
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
+            Assert.That(useOrder.Repeat, Is.EqualTo(2), "order takes time to execute");
+            Assert.That(useOrder.Executing);
+            Assert.That(useOrder.Executed, Is.False);
 
             this.executeOrder(testModuleStack, useOrder, 1);
             this.executeOrder(testModuleStack, useOrder, 2);
             this.executeOrder(testModuleStack, useOrder, 3);
 
-			ClassicAssert.IsFalse(testModuleStack.Effects.IsProducing, "Shouldn't be producing - order takes 4 weekse");
-			ClassicAssert.AreEqual(1, testModuleStack.Orders.Count, "the order is still valid only one less repeat");
-			ClassicAssert.AreEqual(1, useOrder.Repeat, "order takes time to execute");
-			ClassicAssert.IsFalse(useOrder.Executing);
-			ClassicAssert.IsFalse(useOrder.Executed, "executed means ready to be removed - there is one more repeat before doing so");
+            Assert.That(testModuleStack.Effects.IsProducing, Is.False, "Shouldn't be producing - order takes 4 weekse");
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1), "the order is still valid only one less repeat");
+            Assert.That(useOrder.Repeat, Is.EqualTo(1), "order takes time to execute");
+            Assert.That(useOrder.Executing, Is.False);
+            Assert.That(useOrder.Executed, Is.False, "executed means ready to be removed - there is one more repeat before doing so");
 
 			ModuleStack trainee = ModuleStack.All["100"];
 			ModuleStack traineeParent = ModuleStack.All["000001"];
@@ -3240,16 +3453,16 @@ namespace UnitTests
 			this.consoleOutReport("trainer: ", testModuleStack, testFaction);
 
             // assert weeks are proper
-            ClassicAssert.AreEqual("    week 1: consumed 4 units of iron [iron] to produce tanks [tanks] module.", testModuleStack.Report(testFaction)[5]);
-            ClassicAssert.AreEqual("    week 4: produced tanks [tanks] into tanks [100].", testModuleStack.Report(testFaction)[6]);      
+            Assert.That(testModuleStack.Report(testFaction)[5], Is.EqualTo("    week 1: consumed 4 units of iron [iron] to produce tanks [tanks] module."));
+            Assert.That(testModuleStack.Report(testFaction)[6], Is.EqualTo("    week 4: produced tanks [tanks] into tanks [100]."));      
 
 			this.consoleOutReport("orders: ", testModuleStack.Orders, testFaction);
 
-			ClassicAssert.IsNotNull(trainee);
-			ClassicAssert.AreEqual("100", trainee.Name);
-			ClassicAssert.AreEqual(0, trainee.ModuleStacks.Count, "freshly trained stack shouldn't have stacked modulestacks");
+            Assert.That(trainee, Is.Not.Null);
+            Assert.That(trainee.Name, Is.EqualTo("100"));
+            Assert.That(trainee.ModuleStacks.Count, Is.EqualTo(0), "freshly trained stack shouldn't have stacked modulestacks");
 			this.consoleOutReport("trainee: ", trainee, testFaction);
-            ClassicAssert.AreEqual(7, trainee.Report(testFaction).Count);
+            Assert.That(trainee.Report(testFaction).Count, Is.EqualTo(7));
 			this.consoleOutReport("trainee parent: ", traineeParent, testFaction);
 
             for (int i = 1; i <= Technology.All["armcbt"].UseTime; i++)
@@ -3257,19 +3470,19 @@ namespace UnitTests
                 this.executeOrder(testModuleStack, useOrder, 3 + i);
             }
 
-            ClassicAssert.IsFalse(testModuleStack.Effects.IsProducing, "Shouldn't be producing");
-            ClassicAssert.AreEqual(0, testModuleStack.Orders.Count, "the order is not valid and removed");
-            ClassicAssert.AreEqual(0, useOrder.Repeat, "order repeated as much is it was planned");
-            ClassicAssert.IsFalse(useOrder.Executing);
-            ClassicAssert.IsTrue(useOrder.Executed, "executed means ready to be removed");
+            Assert.That(testModuleStack.Effects.IsProducing, Is.False, "Shouldn't be producing");
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(0), "the order is not valid and removed");
+            Assert.That(useOrder.Repeat, Is.EqualTo(0), "order repeated as much is it was planned");
+            Assert.That(useOrder.Executing, Is.False);
+            Assert.That(useOrder.Executed, "executed means ready to be removed");
 
             // assert weeks are proper
 
             this.consoleOutReport("trainer: ", testModuleStack, testFaction);
-            ClassicAssert.AreEqual("    week 1: consumed 4 units of iron [iron] to produce tanks [tanks] module.", testModuleStack.Report(testFaction)[5]);
-            ClassicAssert.AreEqual("    week 4: produced tanks [tanks] into tanks [100].", testModuleStack.Report(testFaction)[6]);
-            ClassicAssert.AreEqual("    week 5: consumed 4 units of iron [iron] to produce tanks [tanks] module.", testModuleStack.Report(testFaction)[7]);
-            ClassicAssert.AreEqual("    week 8: produced tanks [tanks] into tanks [100].", testModuleStack.Report(testFaction)[8]);      
+            Assert.That(testModuleStack.Report(testFaction)[5], Is.EqualTo("    week 1: consumed 4 units of iron [iron] to produce tanks [tanks] module."));
+            Assert.That(testModuleStack.Report(testFaction)[6], Is.EqualTo("    week 4: produced tanks [tanks] into tanks [100]."));
+            Assert.That(testModuleStack.Report(testFaction)[7], Is.EqualTo("    week 5: consumed 4 units of iron [iron] to produce tanks [tanks] module."));
+            Assert.That(testModuleStack.Report(testFaction)[8], Is.EqualTo("    week 8: produced tanks [tanks] into tanks [100]."));      
 
 			this.consoleOutReport("trainee: ", trainee, testFaction);
 			this.consoleOutReport("trainee parent: ", traineeParent, testFaction);
@@ -3281,24 +3494,26 @@ namespace UnitTests
             Faction testFaction = this.game.Factions["2"];
             ModuleStack testModuleStack = this.game.ModuleStacks["000004"];
 
-            List<string> testcommands = new List<string>();
-            testcommands.Add("#faction 2");
-            testcommands.Add("#modulestack 000004");
-            testcommands.Add("sell 5 terran at 5");
-            testcommands.Add("#end");
+            List<string> testcommands = new List<string>
+            {
+                "#faction 2",
+                "#modulestack 000004",
+                "sell 5 terran at 5",
+                "#end"
+            };
 
-            ClassicAssert.AreEqual(9, Offer.All.Count);
+            Assert.That(Offer.All.Count, Is.EqualTo(9));
 
             OrdersReader ordersReader = new OrdersReader(game);
             ordersReader.AssignOrders(testcommands);
-            ClassicAssert.AreEqual(1, testModuleStack.Orders.Count);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
 
-            ClassicAssert.IsTrue(testModuleStack.Orders[0] is SellOrder);
+            Assert.That(testModuleStack.Orders[0] is SellOrder);
             SellOrder sellOrder = (SellOrder)testModuleStack.Orders[0];
-            ClassicAssert.AreEqual(ItemType.All["terran"], sellOrder.ItemType);
-            ClassicAssert.AreEqual(1, sellOrder.Repeat);
+            Assert.That(sellOrder.ItemType, Is.EqualTo(ItemType.All["terran"]));
+            Assert.That(sellOrder.Repeat, Is.EqualTo(1));
 
-            ClassicAssert.AreEqual(9, Offer.All.Count, "assign shouldn't change number of offers");
+            Assert.That(Offer.All.Count, Is.EqualTo(9), "assign shouldn't change number of offers");
         }
 
         [Test]
@@ -3313,12 +3528,14 @@ namespace UnitTests
             int stackBefore1 = testModuleStack.Parent.ModuleStacks.Count;
             int stackBefore2 = this.game.ModuleStacks.Count;
 
-            List<string> testcommands = new List<string>();
-            testcommands.Add("#faction 2");
-            testcommands.Add("#modulestack 000004");
-            testcommands.Add("1 use agrplx as \"new1\" for 000001");
-            testcommands.Add("1 use agrplx as \"new2\" for 000112");
-            testcommands.Add("#end");
+            List<string> testcommands = new List<string>
+            {
+                "#faction 2",
+                "#modulestack 000004",
+                "1 use agrplx as \"new1\" for 000001",
+                "1 use agrplx as \"new2\" for 000112",
+                "#end"
+            };
 
             OrdersReader ordersReader = new OrdersReader(game);
             ordersReader.AssignOrders(testcommands);
@@ -3327,15 +3544,15 @@ namespace UnitTests
             UseOrder useOrder2 = (UseOrder)testModuleStack.Orders[1];
             ModuleType farms = ModuleType.All["farms"];
 
-            ClassicAssert.AreEqual(2, testModuleStack.Orders.Count);
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(2));
 
-            ClassicAssert.IsTrue(testModuleStack.Orders[0] is UseOrder);
+            Assert.That(testModuleStack.Orders[0] is UseOrder);
 
-            ClassicAssert.AreEqual(Technology.All["agrplx"], useOrder.Technology);
-            ClassicAssert.AreEqual("100", useOrder.Receiver.Name);
-            ClassicAssert.AreEqual("000001", useOrder.ReceiverParent.Name);
-            ClassicAssert.AreEqual(1, useOrder.Repeat);
-            ClassicAssert.AreEqual(4, Technology.All["agrplx"].UseTime);
+            Assert.That(useOrder.Technology, Is.EqualTo(Technology.All["agrplx"]));
+            Assert.That(useOrder.Receiver.Name, Is.EqualTo("100"));
+            Assert.That(useOrder.ReceiverParent.Name, Is.EqualTo("000001"));
+            Assert.That(useOrder.Repeat, Is.EqualTo(1));
+            Assert.That(Technology.All["agrplx"].UseTime, Is.EqualTo(4));
 
             // check if the world state changes correctly				
 
@@ -3347,12 +3564,12 @@ namespace UnitTests
             }
 
             // produced the module into new stack, that was created during assign under parent
-            ClassicAssert.AreEqual(stackBefore1 + 1, testModuleStack.Parent.ModuleStacks.Count);
+            Assert.That(testModuleStack.Parent.ModuleStacks.Count, Is.EqualTo(stackBefore1 + 1));
 
             ModuleStack producedModuleStack = this.game.ModuleStacks[testFaction, "new1", true];
-            ClassicAssert.IsNotNull(producedModuleStack);
-            ClassicAssert.AreEqual(1, producedModuleStack.Quantity);
-            ClassicAssert.AreEqual(producedModuleStack, useOrder.Receiver);
+            Assert.That(producedModuleStack, Is.Not.Null);
+            Assert.That(producedModuleStack.Quantity, Is.EqualTo(1));
+            Assert.That(useOrder.Receiver, Is.EqualTo(producedModuleStack));
 
             //for (int i = 1; i <= Technology.All["agrplx"].UseTime; i++)
             //{
@@ -3363,10 +3580,10 @@ namespace UnitTests
             this.consoleOutReport("new parent", producedModuleStack.Parent, producedModuleStack.Owner);
 
             // produced the second module into the same stack
-            ClassicAssert.AreEqual(stackBefore1 + 1, testModuleStack.Parent.ModuleStacks.Count);
-            ClassicAssert.AreEqual(1, producedModuleStack.Quantity);
+            Assert.That(testModuleStack.Parent.ModuleStacks.Count, Is.EqualTo(stackBefore1 + 1));
+            Assert.That(producedModuleStack.Quantity, Is.EqualTo(1));
 
-            ClassicAssert.AreEqual("000001", producedModuleStack.Parent.Name);
+            Assert.That(producedModuleStack.Parent.Name, Is.EqualTo("000001"));
 
             for (int i = 1; i <= Technology.All["agrplx"].UseTime; i++)
             {
@@ -3382,14 +3599,14 @@ namespace UnitTests
             this.consoleOutReport("new parent", producedModuleStack.Parent, producedModuleStack.Owner);
 
             producedModuleStack = this.game.ModuleStacks[testFaction, "new2", true];
-            ClassicAssert.IsNotNull(producedModuleStack);
-            ClassicAssert.AreEqual(producedModuleStack, useOrder2.Receiver);
+            Assert.That(producedModuleStack, Is.Not.Null);
+            Assert.That(useOrder2.Receiver, Is.EqualTo(producedModuleStack));
 
             // no change from above, the new modulestack is under hq
-            ClassicAssert.AreEqual(stackBefore1 + 1, testModuleStack.Parent.ModuleStacks.Count);
-            ClassicAssert.AreEqual(1, producedModuleStack.Quantity);
+            Assert.That(testModuleStack.Parent.ModuleStacks.Count, Is.EqualTo(stackBefore1 + 1));
+            Assert.That(producedModuleStack.Quantity, Is.EqualTo(1));
 
-            ClassicAssert.AreEqual("000112", producedModuleStack.Parent.Name);
+            Assert.That(producedModuleStack.Parent.Name, Is.EqualTo("000112"));
         }
 
         // research

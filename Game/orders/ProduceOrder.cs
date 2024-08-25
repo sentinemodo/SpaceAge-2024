@@ -74,12 +74,12 @@ namespace SpaceAge
         public override void LoadXml(XmlElement elOrder)
         {
             XmlElement elProduce = (XmlElement)elOrder.SelectNodes("produce")[0];
+
             switch (elProduce.GetAttribute("produce-type"))
             {
                 case "item":
                     this.ProduceType = EProduceType.Items;
                     this.ItemType = ItemType.All[elProduce.GetAttribute("item")];
-                    Console.WriteLine("*** reached here *** " + this.ItemType.Name);
                     break;
                 case "energy":
                     this.ProduceType = EProduceType.Energy;

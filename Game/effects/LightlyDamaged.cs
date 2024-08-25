@@ -17,8 +17,10 @@ namespace SpaceAge
 
 		new public  List<string> Report(Faction faction)
 		{
-			List<string> lines = new List<string>();
-			lines.Add(this.Description);
+			List<string> lines = new List<string>
+            {
+                this.Description
+            };
 			return lines;
 		}
 

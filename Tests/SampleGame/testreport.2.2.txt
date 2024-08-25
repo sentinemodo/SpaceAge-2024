@@ -85,8 +85,8 @@ Galaxy report:
   of oxyhydro [h2o2], 500 units of food [food].
   Market report:
     Offers of selling items:
-      sell 30 terrans [terran] at 50 each from Berlin [000001].
       sell 39 units of food [food] at 5 each from Berlin [000001].
+      sell 30 terrans [terran] at 50 each from Berlin [000001].
     Offers of buying items:
       buy 300 units of food [food] at 1 each by Berlin [000001].
     Offers of selling modules:

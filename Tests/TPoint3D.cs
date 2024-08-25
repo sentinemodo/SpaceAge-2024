@@ -26,24 +26,24 @@ namespace UnitTests
 		[Test]
 		public void SetupTeardown()
 		{
-			ClassicAssert.IsTrue(true);
+            Assert.That(true);
 		}
 
 		[Test]
 		public void Distance()
 		{
-			ClassicAssert.AreEqual(0, point.Distance(point));
+            Assert.That(point.Distance(point), Is.EqualTo(0));
 
 			this.point.X = 1;
 			
 			Point3D point2 = new Point3D();
-			ClassicAssert.AreEqual(1, point.Distance(point2));
+            Assert.That(point.Distance(point2), Is.EqualTo(1));
 
 			this.point.Y = 1;
-			ClassicAssert.AreEqual(Math.Sqrt(2), point.Distance(point2));
+            Assert.That(point.Distance(point2), Is.EqualTo(Math.Sqrt(2)));
 
 			this.point.Z = 1;
-			ClassicAssert.AreEqual(Math.Sqrt(3), point.Distance(point2));		
+            Assert.That(point.Distance(point2), Is.EqualTo(Math.Sqrt(3)));		
 
 		}	 
 	}
