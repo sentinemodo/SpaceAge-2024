@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<game turn="1">
+	<faction name="1"/>
+	<faction name="2"/>
+	<galaxy>
+		<system name="SS0001" X="0" Y="0" Z="0">
+			<star name="S00001">				
+			</star>
+			<planet name="P00001" X="1" Y="0" Z="0" surface-size-X="1" surface-size-Y="1" type="ocean">
+				<orbit>
+				</orbit>
+				<region name="R10001" X="0" Y="0" type="barren" climate="arctic">
+					<modulestack name="000001" faction="1" type="city">
+					</modulestack>
+					<modulestack name="000001" faction="2" type="city">
+					</modulestack>
+				</region>
+			</planet>
+		</system>
+	</galaxy>
+</game>

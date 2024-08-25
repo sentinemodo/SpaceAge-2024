@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<game turn="2">
+	<faction name="1" name-en="NPC" password="" email="" default-attitude="2" text-report="True" text-report-line-length="100" xml-report="True" balance="1000" credit-line="0" credit-rate="0" deposit-rate="0" />
+	<faction name="2" name-en="Caste Prime" password="xyzzy" email="mail1@mail.pl" default-attitude="2" text-report="True" text-report-line-length="100" xml-report="True" balance="10000" credit-line="10000" credit-rate="0.2" deposit-rate="0.05" />
+	<faction name="3" name-en="Gelvaren" password="abccb" email="mail2@mail.pl" default-attitude="2" text-report="True" text-report-line-length="72" xml-report="True" balance="9000" credit-line="10000" credit-rate="0.2" deposit-rate="0.05" />
+	<galaxy>
+		<system name="SS0001" name-en="Sol" X="0" Y="0" Z="0">
+			<star name="S00001" name-en="Sol" />
+			<planet name="P00001" name-en="Earth" AU="1" surface-size-X="1" surface-size-Y="1" type="ocean">
+				<moon name="P00001" name-en="Luna" AU="0.02" surface-size-X="1" surface-size-Y="1" type="rock">
+					<orbit name="O00001" />
+					<region name="R00001" name-en="Dusty field" X="0" Y="0" type="dust">
+						<capacity group="settlement" quantity="4" />
+						<resource type="iron" quantity="100" />
+						<resource type="silici" quantity="100" />
+						<resource type="titani" quantity="100" />
+						<resource type="uraniu" quantity="100" />
+						<resource type="copper" quantity="100" />
+						<resource type="silici" quantity="100" />
+					</region>
+				</moon>
+				<orbit name="O00002">
+					<race type="terran" />
+					<modulestack name="100" name-en="" type="shuttl" quantity="10" faction="2">
+						<person name="000001" name-en="Caste Prime CEO" race="terran" faction="2">
+							<upkeep type="cash" quantity="10" />
+						</person>
+						<itemstack type="terran" quantity="40" />
+						<itemstack type="iron" quantity="30" />
+						<itemstack type="titani" quantity="26" />
+						<itemstack type="silici" quantity="20" />
+						<itemstack type="copper" quantity="20" />
+						<itemstack type="uraniu" quantity="10" />
+						<itemstack type="food" quantity="150" />
+						<itemstack type="h2o2" quantity="90" />
+						<itemstack type="terair" quantity="150" />
+					</modulestack>
+				</orbit>
+				<region name="R00002" name-en="Northern Hemisphere" X="0" Y="0" type="grassl">
+					<capacity group="settlement" quantity="8" />
+					<exit region="R00003">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="iron" quantity="20" />
+					<resource type="carbon" quantity="20" />
+					<resource type="titani" quantity="20" />
+					<resource type="uraniu" quantity="20" />
+					<resource type="copper" quantity="20" />
+					<resource type="silici" quantity="20" />
+					<resource type="h2o2" quantity="250" />
+					<resource type="food" quantity="500" />
+					<modulestack name="000001" name-en="Berlin" type="city" quantity="3" faction="1">
+						<buying item="food" quantity="300" price="1" />
+						<buying module="farms" quantity="1" price="100" />
+						<selling item="food" quantity="39" price="5" />
+						<selling item="terran" quantity="30" price="50" />
+						<itemstack type="cash" quantity="3000" />
+						<itemstack type="terran" quantity="30" />
+						<modulestack name="000002" name-en="Berlin garrison" type="inftry" quantity="1" faction="1">
+							<itemstack type="rctlnc" quantity="1" />
+						</modulestack>
+						<modulestack name="000003" name-en="Berlin farms" type="farms" quantity="10" faction="1">
+							<itemstack type="terran" quantity="75" />
+						</modulestack>
+						<modulestack name="000004" name-en="Berlin coal powerplants" type="cplant" quantity="5" faction="1">
+							<itemstack type="carbon" quantity="100" />
+							<itemstack type="terran" quantity="15" />
+						</modulestack>
+						<modulestack name="000005" name-en="Berlin granary" type="cargob" quantity="1" faction="1">
+							<itemstack type="food" quantity="1000" />
+							<itemstack type="terran" quantity="3" />
+						</modulestack>
+						<modulestack name="000012" name-en="Caste Prime Headquarters" type="corphq" quantity="1" faction="2">
+							<itemstack type="terran" quantity="60" />
+							<itemstack type="cash" quantity="1300" />
+						</modulestack>
+						<modulestack name="000013" name-en="" type="cargob" quantity="5" faction="2">
+							<itemstack type="food" quantity="1030" />
+							<itemstack type="terair" quantity="850" />
+							<itemstack type="h2o2" quantity="900" />
+							<itemstack type="iron" quantity="70" />
+							<itemstack type="titani" quantity="70" />
+							<itemstack type="silici" quantity="80" />
+							<itemstack type="copper" quantity="80" />
+							<itemstack type="uraniu" quantity="80" />
+							<itemstack type="terran" quantity="10" />
+							<itemstack type="carbon" quantity="97" />
+						</modulestack>
+						<modulestack name="000014" name-en="" type="farms" quantity="3" faction="2">
+							<itemstack type="terran" quantity="15" />
+							<itemstack type="food" quantity="15" />
+						</modulestack>
+						<modulestack name="000015" name-en="" type="cplant" quantity="3" faction="2">
+							<itemstack type="terran" quantity="6" />
+						</modulestack>
+						<modulestack name="000016" name-en="" type="cdrill" quantity="1" faction="2">
+							<itemstack type="terran" quantity="6" />
+							<itemstack type="carbon" quantity="1" />
+						</modulestack>
+						<modulestack name="000017" name-en="" type="factry" quantity="5" faction="2">
+							<itemstack type="terran" quantity="50" />
+							<itemstack type="iron" quantity="20" />
+							<itemstack type="titani" quantity="10" />
+						</modulestack>
+					</modulestack>
+					<modulestack name="108" name-en="peaceful scout" type="tanks" quantity="1" faction="3">
+						<itemstack type="terran" quantity="16" />
+						<itemstack type="cash" quantity="42" />
+						<itemstack type="oil" quantity="12" />
+						<itemstack type="food" quantity="32" />
+					</modulestack>
+				</region>
+				<region name="R00003" name-en="Southern Hemisphere" X="1" Y="0" type="grassl">
+					<capacity group="settlement" quantity="8" />
+					<exit region="R00002">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="iron" quantity="20" />
+					<resource type="oil" quantity="20" />
+					<resource type="titani" quantity="20" />
+					<resource type="uraniu" quantity="20" />
+					<resource type="copper" quantity="20" />
+					<resource type="silici" quantity="20" />
+					<resource type="h2o2" quantity="250" />
+					<resource type="food" quantity="500" />
+					<modulestack name="000006" name-en="Sydney" type="city" quantity="2" faction="1">
+						<buying item="food" quantity="200" price="1" />
+						<buying module="wnplnt" quantity="1" price="50" />
+						<selling item="food" quantity="59" price="5" />
+						<itemstack type="cash" quantity="2000" />
+						<modulestack name="000007" name-en="Sydney garrison" type="inftry" quantity="1" faction="1">
+							<itemstack type="rctlnc" quantity="1" />
+						</modulestack>
+						<modulestack name="000008" name-en="Sydney farms" type="farms" quantity="10" faction="1">
+							<itemstack type="terran" quantity="75" />
+						</modulestack>
+						<modulestack name="000009" name-en="Sydney wind powerplants" type="wnplnt" quantity="10" faction="1" />
+						<modulestack name="000010" name-en="Sydney oil powerplants" type="oplant" quantity="5" faction="1">
+							<itemstack type="oil" quantity="100" />
+							<itemstack type="terran" quantity="15" />
+						</modulestack>
+						<modulestack name="000011" name-en="Sydney granary" type="cargob" quantity="1" faction="1">
+							<itemstack type="food" quantity="1000" />
+							<itemstack type="terran" quantity="3" />
+						</modulestack>
+					</modulestack>
+					<modulestack name="000026" name-en="Gelvaren complex" type="city" quantity="1" faction="3">
+						<buying item="food" quantity="100" price="1" />
+						<selling item="food" quantity="25" price="5" />
+						<selling item="terran" quantity="10" price="50" />
+						<modulestack name="000018" name-en="Gelvaren Headquarters" type="corphq" quantity="1" faction="3">
+							<buying item="terran" quantity="-19" price="-1" />
+							<itemstack type="terran" quantity="48" />
+							<itemstack type="cash" quantity="2658" />
+						</modulestack>
+						<modulestack name="000019" name-en="" type="cargob" quantity="1" faction="3">
+							<itemstack type="food" quantity="1088" />
+							<itemstack type="terran" quantity="2" />
+							<itemstack type="iron" quantity="3" />
+							<itemstack type="oil" quantity="18" />
+						</modulestack>
+						<modulestack name="000020" name-en="" type="farms" quantity="2" faction="3">
+							<itemstack type="terran" quantity="10" />
+							<itemstack type="food" quantity="10" />
+						</modulestack>
+						<modulestack name="000021" name-en="" type="wnplnt" quantity="20" faction="3" />
+						<modulestack name="000022" name-en="" type="cdrill" quantity="1" faction="3">
+							<itemstack type="terran" quantity="6" />
+							<itemstack type="oil" quantity="2" />
+						</modulestack>
+						<modulestack name="000023" name-en="" type="factry" quantity="1" faction="3">
+							<technology name="armcbt" />
+							<itemstack type="terran" quantity="10" />
+						</modulestack>
+						<modulestack name="000025" name-en="" type="barrck" quantity="1" faction="3">
+							<technology name="frminf" />
+							<itemstack type="terran" quantity="10" />
+							<modulestack name="109" name-en="" type="tanks" quantity="2" faction="3">
+								<person name="000002" name-en="Gelvaren CEO" race="terran" faction="3">
+									<upkeep type="cash" quantity="10" />
+								</person>
+							</modulestack>
+						</modulestack>
+						<modulestack name="110" name-en="" type="inftry" quantity="1" faction="3">
+							<person name="107" name-en="" race="terran" faction="3">
+								<upkeep type="cash" quantity="10" />
+							</person>
+						</modulestack>
+					</modulestack>
+				</region>
+			</planet>
+		</system>
+	</galaxy>
+	<orders>
+		<order subject="modulestack" name="000012" repeat="unlimited">
+			<produce produce-type="item" item="cash" />
+		</order>
+		<order subject="modulestack" name="000013" repeat="unlimited">
+			<get item="food" quantity="all" transferer="000014" />
+		</order>
+		<order subject="modulestack" name="000013" repeat="unlimited">
+			<get item="carbon" quantity="all" transferer="000016" />
+		</order>
+		<order subject="modulestack" name="000014" repeat="unlimited">
+			<technology technology="farmng" />
+		</order>
+		<order subject="modulestack" name="000015" repeat="unlimited">
+			<produce produce-type="energy" energy="True" />
+		</order>
+		<order subject="modulestack" name="000016" repeat="unlimited">
+			<technology technology="hcdril" />
+		</order>
+		<order subject="modulestack" name="000026" repeat="unlimited">
+			<produce produce-type="item" item="terran" />
+		</order>
+		<order subject="modulestack" name="000018" repeat="unlimited">
+			<get item="cash" quantity="all" transferer="000026" />
+		</order>
+		<order subject="modulestack" name="000018" repeat="unlimited">
+			<get item="terran" quantity="all" transferer="000026" />
+		</order>
+		<order subject="modulestack" name="000018" repeat="unlimited">
+			<buy price="-1" everywhere="False" quantity="all" buy-type="items" item="terran" />
+		</order>
+		<order subject="modulestack" name="000018" repeat="unlimited">
+			<produce produce-type="item" item="cash" />
+		</order>
+		<order subject="modulestack" name="000019" repeat="unlimited">
+			<get item="food" quantity="all" transferer="000020" />
+		</order>
+		<order subject="modulestack" name="000019" repeat="unlimited">
+			<get item="oil" quantity="all" transferer="000022" />
+		</order>
+		<order subject="modulestack" name="000020" repeat="unlimited">
+			<technology technology="farmng" />
+		</order>
+		<order subject="modulestack" name="000021" repeat="unlimited">
+			<produce produce-type="energy" energy="True" />
+		</order>
+		<order subject="modulestack" name="000022" repeat="unlimited">
+			<technology technology="oildwe" />
+		</order>
+	</orders>
+</game>

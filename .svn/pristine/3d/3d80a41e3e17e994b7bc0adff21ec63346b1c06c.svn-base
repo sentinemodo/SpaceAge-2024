@@ -1,0 +1,299 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!--This file represents the results of running a test suite-->
+<test-results name="C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Tests\spaceage.nunit" total="159" errors="1" failures="3" not-run="6" inconclusive="0" ignored="6" skipped="0" invalid="0" date="2016-08-15" time="21:19:07">
+  <environment nunit-version="2.6.4.14350" clr-version="2.0.50727.5485" os-version="Microsoft Windows NT 6.1.7601 Service Pack 1" platform="Win32NT" cwd="C:\dev\nunit\bin" machine-name="TP000003JVT4R1" user="kaczma10" user-domain="TP" />
+  <culture-info current-culture="pl-PL" current-uiculture="pl-PL" />
+  <test-suite type="Project" name="C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Tests\spaceage.nunit" executed="True" result="Failure" success="False" time="13.700" asserts="0">
+    <results>
+      <test-suite type="Assembly" name="C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Tests\bin\Debug\Tests.dll" executed="True" result="Failure" success="False" time="13.700" asserts="0">
+        <results>
+          <test-suite type="Namespace" name="IntegrationTests" executed="True" result="Failure" success="False" time="11.166" asserts="0">
+            <results>
+              <test-suite type="TestFixture" name="SampleGame" executed="True" result="Failure" success="False" time="10.592" asserts="0">
+                <results>
+                  <test-case name="IntegrationTests.SampleGame._1_LoadGameIn1" executed="True" result="Success" success="True" time="0.029" asserts="570" />
+                  <test-case name="IntegrationTests.SampleGame._2_SaveGameIn1" executed="True" result="Success" success="True" time="0.051" asserts="777" />
+                  <test-case name="IntegrationTests.SampleGame._2_SaveGameIn1_orders" executed="True" result="Success" success="True" time="0.027" asserts="741" />
+                  <test-case name="IntegrationTests.SampleGame._3_ExecuteTurn1" executed="True" result="Success" success="True" time="0.104" asserts="1691" />
+                  <test-case name="IntegrationTests.SampleGame._4_LoadGameIn2" executed="True" result="Failure" success="False" time="0.059" asserts="1117">
+                    <failure>
+                      <message><![CDATA[  error in line 293: produce cash
+  Expected string length 13 but was 12. Strings differ at index 0.
+  Expected: "@produce cash"
+  But was:  "produce cash"
+  -----------^
+]]></message>
+                      <stack-trace><![CDATA[at IntegrationTests.SampleGame.compareFiles(String expected, String generated, Boolean allToConsole) in C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Tests\SampleGame\SampleGame.cs:line 512
+at IntegrationTests.SampleGame._4_LoadGameIn2() in C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Tests\SampleGame\SampleGame.cs:line 538
+]]></stack-trace>
+                    </failure>
+                  </test-case>
+                  <test-case name="IntegrationTests.SampleGame._5_ParseGeneratedOrders" executed="True" result="Failure" success="False" time="0.001" asserts="0">
+                    <failure>
+                      <message><![CDATA[]]></message>
+                      <stack-trace><![CDATA[at IntegrationTests.SampleGame._5_ParseGeneratedOrders() in C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Tests\SampleGame\SampleGame.cs:line 546
+]]></stack-trace>
+                    </failure>
+                  </test-case>
+                  <test-case name="IntegrationTests.SampleGame._6_ExecuteTurn2" executed="True" result="Error" success="False" time="0.012" asserts="584">
+                    <failure>
+                      <message><![CDATA[System.Exception : bad command: @produce
+  ----> System.Exception : Bad syntax an ENERGY/itemtype expected. Received: ]]></message>
+                      <stack-trace><![CDATA[at SpaceAge.OrdersReader.AssignOrders(List`1 commands) in C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\orders\OrdersReader.cs:line 214
+at SpaceAge.OrdersReader.LoadOrders(String filename, Boolean checker) in C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\orders\OrdersReader.cs:line 362
+at IntegrationTests.SampleGame._6_ExecuteTurn2() in C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Tests\SampleGame\SampleGame.cs:line 575
+--Exception
+at SpaceAge.ProduceOrder.Parse(String command) in C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\orders\ProduceOrder.cs:line 50
+at SpaceAge.OrdersReader.AssignOrder(IOrderable subject, String command) in C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\orders\OrdersReader.cs:line 345
+at SpaceAge.OrdersReader.AssignOrders(List`1 commands) in C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\orders\OrdersReader.cs:line 206
+]]></stack-trace>
+                    </failure>
+                  </test-case>
+                  <test-case name="IntegrationTests.SampleGame.ExecuteTurn3" executed="False" result="Ignored">
+                    <reason>
+                      <message><![CDATA[]]></message>
+                    </reason>
+                  </test-case>
+                  <test-case name="IntegrationTests.SampleGame.ExecuteTurn4" executed="False" result="Ignored">
+                    <reason>
+                      <message><![CDATA[]]></message>
+                    </reason>
+                  </test-case>
+                  <test-case name="IntegrationTests.SampleGame.ExecuteTurn5" executed="False" result="Ignored">
+                    <reason>
+                      <message><![CDATA[]]></message>
+                    </reason>
+                  </test-case>
+                  <test-case name="IntegrationTests.SampleGame.SetupTeardown" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="TProgram" executed="True" result="Success" success="True" time="0.002" asserts="0">
+                <results>
+                  <test-case name="IntegrationTests.TProgram.SetupTeardown" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="TReport" executed="True" result="Success" success="True" time="0.563" asserts="0">
+                <results>
+                  <test-case name="IntegrationTests.TReport.BankReport" executed="True" result="Success" success="True" time="0.006" asserts="6" />
+                  <test-case name="IntegrationTests.TReport.BattleReport_ShipVsStation_ShipPerspective" executed="True" result="Success" success="True" time="0.009" asserts="142" />
+                  <test-case name="IntegrationTests.TReport.BattleReport_ShipVsStation_StationPerspective" executed="True" result="Success" success="True" time="0.011" asserts="138" />
+                  <test-case name="IntegrationTests.TReport.MarketReport" executed="True" result="Success" success="True" time="0.004" asserts="16" />
+                  <test-case name="IntegrationTests.TReport.MarketReport_sequence" executed="True" result="Success" success="True" time="0.023" asserts="30" />
+                  <test-case name="IntegrationTests.TReport.MarketReport_unlimitedOffers" executed="True" result="Success" success="True" time="0.005" asserts="14" />
+                  <test-case name="IntegrationTests.TReport.OrdersTemplate_producingEffect" executed="True" result="Success" success="True" time="0.005" asserts="10" />
+                  <test-case name="IntegrationTests.TReport.ProduceOrderReport" executed="True" result="Success" success="True" time="0.006" asserts="2" />
+                  <test-case name="IntegrationTests.TReport.RegionReport" executed="True" result="Success" success="True" time="0.006" asserts="42" />
+                  <test-case name="IntegrationTests.TReport.SetupTeardown" executed="True" result="Success" success="True" time="0.006" asserts="1" />
+                  <test-case name="IntegrationTests.TReport.UnitReport_Movement" executed="True" result="Success" success="True" time="0.005" asserts="19" />
+                  <test-case name="IntegrationTests.TReport.UnitReport_Produce" executed="True" result="Success" success="True" time="0.007" asserts="14" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+          <test-suite type="Namespace" name="UnitTests" executed="True" result="Failure" success="False" time="2.512" asserts="0">
+            <results>
+              <test-suite type="TestFixture" name="TBattle" executed="True" result="Success" success="True" time="0.016" asserts="0">
+                <results>
+                  <test-case name="UnitTests.TBattle.FindAllies_singleModulestack" executed="True" result="Success" success="True" time="0.006" asserts="4" />
+                  <test-case name="UnitTests.TBattle.SetupTeardown" executed="True" result="Success" success="True" time="0.004" asserts="1" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="TDataFile" executed="True" result="Failure" success="False" time="0.225" asserts="0">
+                <results>
+                  <test-case name="UnitTests.TDataFile.LoadConfDocument" executed="True" result="Success" success="True" time="0.001" asserts="0" />
+                  <test-case name="UnitTests.TDataFile.LoadConfiguration" executed="True" result="Success" success="True" time="0.003" asserts="0" />
+                  <test-case name="UnitTests.TDataFile.LoadDoubleModuleStack" executed="True" result="Failure" success="False" time="0.003" asserts="0">
+                    <failure>
+                      <message><![CDATA[System.Exception was expected]]></message>
+                      <stack-trace />
+                    </failure>
+                  </test-case>
+                  <test-case name="UnitTests.TDataFile.LoadExits" executed="True" result="Success" success="True" time="0.005" asserts="5" />
+                  <test-case name="UnitTests.TDataFile.LoadFactions" executed="True" result="Success" success="True" time="0.001" asserts="6" />
+                  <test-case name="UnitTests.TDataFile.LoadGalaxy" executed="True" result="Success" success="True" time="0.006" asserts="8" />
+                  <test-case name="UnitTests.TDataFile.LoadGameData_invalidOperation" executed="True" result="Success" success="True" time="0.001" asserts="0" />
+                  <test-case name="UnitTests.TDataFile.LoadGameData_nullparameter" executed="True" result="Success" success="True" time="0.001" asserts="0" />
+                  <test-case name="UnitTests.TDataFile.LoadGameDocument" executed="True" result="Success" success="True" time="0.001" asserts="0" />
+                  <test-case name="UnitTests.TDataFile.LoadItems" executed="True" result="Success" success="True" time="0.003" asserts="6" />
+                  <test-case name="UnitTests.TDataFile.LoadModuleStackTechnology" executed="True" result="Success" success="True" time="0.006" asserts="4" />
+                  <test-case name="UnitTests.TDataFile.LoadOrbit" executed="True" result="Success" success="True" time="0.004" asserts="2" />
+                  <test-case name="UnitTests.TDataFile.LoadOrder" executed="True" result="Success" success="True" time="0.007" asserts="3" />
+                  <test-case name="UnitTests.TDataFile.LoadPerson" executed="True" result="Success" success="True" time="0.004" asserts="8" />
+                  <test-case name="UnitTests.TDataFile.LoadPlanet" executed="True" result="Success" success="True" time="0.004" asserts="3" />
+                  <test-case name="UnitTests.TDataFile.LoadRaceUpkeep" executed="True" result="Success" success="True" time="0.003" asserts="2" />
+                  <test-case name="UnitTests.TDataFile.LoadTechnologyConsumeItems" executed="True" result="Success" success="True" time="0.003" asserts="3" />
+                  <test-case name="UnitTests.TDataFile.LoadUpkeep" executed="True" result="Success" success="True" time="0.004" asserts="14" />
+                  <test-case name="UnitTests.TDataFile.SaveGetOrder" executed="True" result="Success" success="True" time="0.012" asserts="18" />
+                  <test-case name="UnitTests.TDataFile.SaveLoadUseOrder_withUseOrderInProgress_newOrder" executed="False" result="Ignored">
+                    <reason>
+                      <message><![CDATA[]]></message>
+                    </reason>
+                  </test-case>
+                  <test-case name="UnitTests.TDataFile.SaveLoadUseOrder_withUseOrderInProgress_sameOrder" executed="False" result="Ignored">
+                    <reason>
+                      <message><![CDATA[]]></message>
+                    </reason>
+                  </test-case>
+                  <test-case name="UnitTests.TDataFile.SetupTeardown" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="TMarket" executed="True" result="Success" success="True" time="0.314" asserts="0">
+                <results>
+                  <test-case name="UnitTests.TMarket.DoNotFindOwnOffer" executed="True" result="Success" success="True" time="0.005" asserts="3" />
+                  <test-case name="UnitTests.TMarket.FindMatchLocal" executed="True" result="Success" success="True" time="0.004" asserts="4" />
+                  <test-case name="UnitTests.TMarket.ProcessBuySellItemStack" executed="True" result="Success" success="True" time="0.006" asserts="12" />
+                  <test-case name="UnitTests.TMarket.ProcessBuySellItemStackUnlimited" executed="True" result="Success" success="True" time="0.005" asserts="20" />
+                  <test-case name="UnitTests.TMarket.ProcessBuySellModulestack" executed="True" result="Success" success="True" time="0.009" asserts="17" />
+                  <test-case name="UnitTests.TMarket.ProcessBuySellTechnology" executed="True" result="Success" success="True" time="0.008" asserts="20" />
+                  <test-case name="UnitTests.TMarket.ProcessGenerateAutoOffers" executed="False" result="Ignored">
+                    <reason>
+                      <message><![CDATA[]]></message>
+                    </reason>
+                  </test-case>
+                  <test-case name="UnitTests.TMarket.SetupTeardown" executed="True" result="Success" success="True" time="0.006" asserts="1" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="TModuleStack" executed="True" result="Success" success="True" time="0.030" asserts="0">
+                <results>
+                  <test-case name="UnitTests.TModuleStack.AlltheSame" executed="True" result="Success" success="True" time="0.000" asserts="6" />
+                  <test-case name="UnitTests.TModuleStack.ConsumeItemStacks" executed="True" result="Success" success="True" time="0.000" asserts="2" />
+                  <test-case name="UnitTests.TModuleStack.CreateModuleStackFromSameAliasAsPerson" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="UnitTests.TModuleStack.ModuleStackNotVisibleByFaction" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                  <test-case name="UnitTests.TModuleStack.ModuleStackVisibleByFaction_ByOtherModuleStack" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                  <test-case name="UnitTests.TModuleStack.ModuleStackVisibleByNPCFaction" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                  <test-case name="UnitTests.TModuleStack.ModuleStackVisibleByOwnerFaction" executed="True" result="Success" success="True" time="0.000" asserts="3" />
+                  <test-case name="UnitTests.TModuleStack.SetupTeardown" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                  <test-case name="UnitTests.TModuleStack.TechnologyCapacity" executed="True" result="Success" success="True" time="0.000" asserts="2" />
+                  <test-case name="UnitTests.TModuleStack.TotalSize" executed="True" result="Success" success="True" time="0.000" asserts="2" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="TModuleStacks" executed="True" result="Success" success="True" time="0.009" asserts="0">
+                <results>
+                  <test-case name="UnitTests.TModuleStacks.Count" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                  <test-case name="UnitTests.TModuleStacks.OwnersList" executed="True" result="Success" success="True" time="0.000" asserts="5" />
+                  <test-case name="UnitTests.TModuleStacks.ReportList" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="UnitTests.TModuleStacks.SetupTeardown" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="TNamedObject" executed="True" result="Success" success="True" time="0.004" asserts="0">
+                <results>
+                  <test-case name="UnitTests.TNamedObject.RandomId" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                  <test-case name="UnitTests.TNamedObject.SetupTeardown" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="TOrder" executed="True" result="Success" success="True" time="1.725" asserts="0">
+                <results>
+                  <test-case name="UnitTests.TOrder.AgrplxSpike" executed="True" result="Success" success="True" time="0.006" asserts="3" />
+                  <test-case name="UnitTests.TOrder.AssignActiveOrder_MultipleConditionedOrders" executed="True" result="Success" success="True" time="0.008" asserts="5" />
+                  <test-case name="UnitTests.TOrder.AssignAliasOrder" executed="True" result="Success" success="True" time="0.005" asserts="3" />
+                  <test-case name="UnitTests.TOrder.AssignAliasOrder_noquotes" executed="True" result="Success" success="True" time="0.006" asserts="3" />
+                  <test-case name="UnitTests.TOrder.AssignBuyOrder" executed="True" result="Success" success="True" time="0.006" asserts="6" />
+                  <test-case name="UnitTests.TOrder.AssignFormOrder" executed="True" result="Success" success="True" time="0.007" asserts="4" />
+                  <test-case name="UnitTests.TOrder.AssignGetOrder" executed="True" result="Success" success="True" time="0.005" asserts="4" />
+                  <test-case name="UnitTests.TOrder.AssignGiveOrder" executed="True" result="Success" success="True" time="0.007" asserts="4" />
+                  <test-case name="UnitTests.TOrder.AssignHasOrder" executed="True" result="Success" success="True" time="0.005" asserts="2" />
+                  <test-case name="UnitTests.TOrder.AssignHasOrder_HasPerson" executed="True" result="Success" success="True" time="0.006" asserts="3" />
+                  <test-case name="UnitTests.TOrder.AssignMinusConditionedOrders" executed="True" result="Success" success="True" time="0.007" asserts="3" />
+                  <test-case name="UnitTests.TOrder.AssignMinusConditionedOrders2" executed="True" result="Success" success="True" time="0.006" asserts="5" />
+                  <test-case name="UnitTests.TOrder.AssignMinusConditionedOrders3" executed="True" result="Success" success="True" time="0.007" asserts="5" />
+                  <test-case name="UnitTests.TOrder.AssignMoveOrder" executed="True" result="Success" success="True" time="0.005" asserts="2" />
+                  <test-case name="UnitTests.TOrder.AssignMoveOrder_PlanetDestination" executed="True" result="Success" success="True" time="0.007" asserts="2" />
+                  <test-case name="UnitTests.TOrder.AssignNameOrder" executed="True" result="Success" success="True" time="0.005" asserts="2" />
+                  <test-case name="UnitTests.TOrder.AssignOrder_UnFormed" executed="True" result="Success" success="True" time="0.006" asserts="9" />
+                  <test-case name="UnitTests.TOrder.AssignOrder_UnFormed2" executed="True" result="Success" success="True" time="0.007" asserts="6" />
+                  <test-case name="UnitTests.TOrder.AssignOrder_wrongFaction" executed="True" result="Success" success="True" time="0.007" asserts="1" />
+                  <test-case name="UnitTests.TOrder.AssignOrderSpike" executed="True" result="Success" success="True" time="0.007" asserts="2" />
+                  <test-case name="UnitTests.TOrder.AssignPlusConditionedOrders" executed="True" result="Success" success="True" time="0.006" asserts="3" />
+                  <test-case name="UnitTests.TOrder.AssignProduceCash" executed="True" result="Success" success="True" time="0.004" asserts="4" />
+                  <test-case name="UnitTests.TOrder.AssignProduceOrder_unlimited" executed="True" result="Success" success="True" time="0.006" asserts="4" />
+                  <test-case name="UnitTests.TOrder.AssignRepeatableOrder" executed="True" result="Success" success="True" time="0.006" asserts="2" />
+                  <test-case name="UnitTests.TOrder.AssignSeeOrder" executed="True" result="Success" success="True" time="0.006" asserts="1" />
+                  <test-case name="UnitTests.TOrder.AssignSeeOrder_alias" executed="True" result="Success" success="True" time="0.007" asserts="4" />
+                  <test-case name="UnitTests.TOrder.AssignSeeOrder_person" executed="True" result="Success" success="True" time="0.007" asserts="1" />
+                  <test-case name="UnitTests.TOrder.AssignSellOrder" executed="True" result="Success" success="True" time="0.005" asserts="6" />
+                  <test-case name="UnitTests.TOrder.AssignStackOrder" executed="True" result="Success" success="True" time="0.006" asserts="2" />
+                  <test-case name="UnitTests.TOrder.AssignStackOrder_person_alias" executed="True" result="Success" success="True" time="0.008" asserts="4" />
+                  <test-case name="UnitTests.TOrder.AssignTrain_officer" executed="True" result="Success" success="True" time="0.007" asserts="3" />
+                  <test-case name="UnitTests.TOrder.AssignTrain_skill" executed="True" result="Success" success="True" time="0.006" asserts="4" />
+                  <test-case name="UnitTests.TOrder.AssignUseOrder" executed="True" result="Success" success="True" time="0.005" asserts="4" />
+                  <test-case name="UnitTests.TOrder.AssignUseOrder_Alias" executed="True" result="Success" success="True" time="0.008" asserts="4" />
+                  <test-case name="UnitTests.TOrder.AssignUseOrder_AliasRepeatable" executed="True" result="Success" success="True" time="0.006" asserts="5" />
+                  <test-case name="UnitTests.TOrder.AssignUseOrder_unlimited" executed="True" result="Success" success="True" time="0.006" asserts="5" />
+                  <test-case name="UnitTests.TOrder.CleanUpVirtualModulestacksAndPeople" executed="True" result="Success" success="True" time="0.007" asserts="11" />
+                  <test-case name="UnitTests.TOrder.ExecuteAliasOrder" executed="True" result="Success" success="True" time="0.006" asserts="7" />
+                  <test-case name="UnitTests.TOrder.ExecuteBuyOrder_ImmediateRange" executed="True" result="Success" success="True" time="0.007" asserts="27" />
+                  <test-case name="UnitTests.TOrder.ExecuteConditionedOrders_plus_minus_move" executed="True" result="Success" success="True" time="0.008" asserts="27" />
+                  <test-case name="UnitTests.TOrder.ExecuteFormOrder" executed="True" result="Success" success="True" time="0.007" asserts="7" />
+                  <test-case name="UnitTests.TOrder.ExecuteGetOrder" executed="True" result="Success" success="True" time="0.008" asserts="33" />
+                  <test-case name="UnitTests.TOrder.ExecuteGetOrder_differentLocations" executed="True" result="Success" success="True" time="0.006" asserts="2" />
+                  <test-case name="UnitTests.TOrder.ExecuteGiveOrder" executed="True" result="Success" success="True" time="0.007" asserts="29" />
+                  <test-case name="UnitTests.TOrder.ExecuteGiveOrder_toUnformed" executed="True" result="Success" success="True" time="0.005" asserts="12" />
+                  <test-case name="UnitTests.TOrder.ExecuteHasOrder" executed="True" result="Success" success="True" time="0.008" asserts="16" />
+                  <test-case name="UnitTests.TOrder.ExecuteHasOrder_countModules" executed="True" result="Success" success="True" time="0.005" asserts="4" />
+                  <test-case name="UnitTests.TOrder.ExecuteHasOrder_HasPerson" executed="True" result="Success" success="True" time="0.006" asserts="9" />
+                  <test-case name="UnitTests.TOrder.ExecuteHasOrder_unFormed" executed="True" result="Success" success="True" time="0.006" asserts="3" />
+                  <test-case name="UnitTests.TOrder.ExecuteLongOrder" executed="True" result="Success" success="True" time="0.005" asserts="7" />
+                  <test-case name="UnitTests.TOrder.ExecuteLongOrderAfterForm_FormAfterLong" executed="True" result="Success" success="True" time="0.008" asserts="6" />
+                  <test-case name="UnitTests.TOrder.ExecuteLongOrderAfterForm_FormImmediately" executed="True" result="Success" success="True" time="0.006" asserts="5" />
+                  <test-case name="UnitTests.TOrder.ExecuteMinusConditionedOrders" executed="True" result="Success" success="True" time="0.006" asserts="23" />
+                  <test-case name="UnitTests.TOrder.ExecuteMoveOrder" executed="True" result="Success" success="True" time="0.007" asserts="44" />
+                  <test-case name="UnitTests.TOrder.ExecuteMoveOrder_fuel" executed="True" result="Success" success="True" time="0.005" asserts="13" />
+                  <test-case name="UnitTests.TOrder.ExecuteMoveOrder_space" executed="True" result="Success" success="True" time="0.006" asserts="22" />
+                  <test-case name="UnitTests.TOrder.ExecuteNameOrder" executed="True" result="Success" success="True" time="0.005" asserts="7" />
+                  <test-case name="UnitTests.TOrder.ExecutePlusConditionedOrders" executed="True" result="Success" success="True" time="0.006" asserts="23" />
+                  <test-case name="UnitTests.TOrder.ExecuteProduceCash" executed="True" result="Success" success="True" time="0.006" asserts="20" />
+                  <test-case name="UnitTests.TOrder.ExecuteProduceOrder_unlimited" executed="True" result="Success" success="True" time="0.005" asserts="21" />
+                  <test-case name="UnitTests.TOrder.ExecuteRepeatableOrder" executed="True" result="Success" success="True" time="0.005" asserts="36" />
+                  <test-case name="UnitTests.TOrder.ExecuteSeeOrder" executed="True" result="Success" success="True" time="0.007" asserts="9" />
+                  <test-case name="UnitTests.TOrder.ExecuteSeeOrder_alias" executed="True" result="Success" success="True" time="0.006" asserts="16" />
+                  <test-case name="UnitTests.TOrder.ExecuteSeeOrder_person" executed="True" result="Success" success="True" time="0.007" asserts="9" />
+                  <test-case name="UnitTests.TOrder.ExecuteStackOrder_person_alias" executed="True" result="Success" success="True" time="0.007" asserts="6" />
+                  <test-case name="UnitTests.TOrder.ExecuteTrain_officer" executed="True" result="Success" success="True" time="0.007" asserts="26" />
+                  <test-case name="UnitTests.TOrder.ExecuteTrain_skill" executed="True" result="Success" success="True" time="0.005" asserts="23" />
+                  <test-case name="UnitTests.TOrder.ExecuteUseAndGetOrder_unlimited" executed="True" result="Success" success="True" time="0.006" asserts="15" />
+                  <test-case name="UnitTests.TOrder.ExecuteUseOrder" executed="True" result="Success" success="True" time="0.008" asserts="35" />
+                  <test-case name="UnitTests.TOrder.ExecuteUseOrder_Alias" executed="True" result="Success" success="True" time="0.006" asserts="6" />
+                  <test-case name="UnitTests.TOrder.ExecuteUseOrder_AliasFor" executed="True" result="Success" success="True" time="0.007" asserts="19" />
+                  <test-case name="UnitTests.TOrder.ExecuteUseOrder_AliasRepeatable" executed="True" result="Success" success="True" time="0.006" asserts="14" />
+                  <test-case name="UnitTests.TOrder.ExecuteUseOrder_lackOfResources" executed="True" result="Success" success="True" time="0.010" asserts="6" />
+                  <test-case name="UnitTests.TOrder.ExecuteUseOrder_lackOfTechnologyLevel0" executed="True" result="Success" success="True" time="0.006" asserts="9" />
+                  <test-case name="UnitTests.TOrder.ExecuteUseOrder_lackOfTechnologyLevel1" executed="True" result="Success" success="True" time="0.006" asserts="5" />
+                  <test-case name="UnitTests.TOrder.ExecuteUseOrder_RepeatableEffects" executed="True" result="Success" success="True" time="0.007" asserts="11" />
+                  <test-case name="UnitTests.TOrder.ExecuteUseOrder_shuttles" executed="True" result="Success" success="True" time="0.009" asserts="17" />
+                  <test-case name="UnitTests.TOrder.ExecuteUseOrder_TwoInstancesOfAlias" executed="True" result="Success" success="True" time="0.007" asserts="21" />
+                  <test-case name="UnitTests.TOrder.ExecuteUseOrder_unlimited" executed="True" result="Success" success="True" time="0.005" asserts="26" />
+                  <test-case name="UnitTests.TOrder.ExecuteUseOrder_usedInWrongModuleType" executed="True" result="Success" success="True" time="0.005" asserts="17" />
+                  <test-case name="UnitTests.TOrder.FactionTagSpike" executed="True" result="Success" success="True" time="0.007" asserts="2" />
+                  <test-case name="UnitTests.TOrder.InfiniteUseGiveLoop" executed="True" result="Success" success="True" time="0.006" asserts="24" />
+                  <test-case name="UnitTests.TOrder.ReadOrdersFile" executed="True" result="Success" success="True" time="0.007" asserts="7" />
+                  <test-case name="UnitTests.TOrder.RemoveCommentsAndEmptyLines" executed="True" result="Success" success="True" time="0.004" asserts="6" />
+                  <test-case name="UnitTests.TOrder.SetupTeardown" executed="True" result="Success" success="True" time="0.006" asserts="1" />
+                  <test-case name="UnitTests.TOrder.TrainOfficer_byDisabled" executed="True" result="Success" success="True" time="0.005" asserts="15" />
+                  <test-case name="UnitTests.TOrder.TrainOfficer_stacking" executed="True" result="Success" success="True" time="0.008" asserts="27" />
+                  <test-case name="UnitTests.TOrder.UseOrder_MultipleUseForAlias" executed="True" result="Success" success="True" time="0.009" asserts="31" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="TPoint2D" executed="True" result="Success" success="True" time="0.004" asserts="0">
+                <results>
+                  <test-case name="UnitTests.TPoint2D.Distance" executed="True" result="Success" success="True" time="0.000" asserts="3" />
+                  <test-case name="UnitTests.TPoint2D.SetupTeardown" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="TPoint3D" executed="True" result="Success" success="True" time="0.004" asserts="0">
+                <results>
+                  <test-case name="UnitTests.TPoint3D.Distance" executed="True" result="Success" success="True" time="0.000" asserts="4" />
+                  <test-case name="UnitTests.TPoint3D.SetupTeardown" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="TTests" executed="True" result="Success" success="True" time="0.002" asserts="0">
+                <results>
+                  <test-case name="UnitTests.TTests.SetupTeardown" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>

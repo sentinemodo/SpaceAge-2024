@@ -1,0 +1,247 @@
+WARN: sonar-runner.bat script is deprecated. Please use sonar-scanner.bat instead.
+c:\dev\sonar-scanner\bin\..
+INFO: Scanner configuration file: c:\dev\sonar-scanner\bin\..\conf\sonar-scanner.properties
+INFO: Project root configuration file: c:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\sonar-project.properties
+INFO: SonarQube Scanner 2.6.1
+INFO: Java 1.8.0_102 Oracle Corporation (64-bit)
+INFO: Windows 7 6.1 amd64
+INFO: User cache: C:\Users\Kaczma10\.sonar\cache
+INFO: Load global repositories
+INFO: Load global repositories (done) | time=100ms
+INFO: User cache: C:\Users\Kaczma10\.sonar\cache
+INFO: Load plugins index
+INFO: Load plugins index (done) | time=0ms
+INFO: SonarQube server 6.0
+INFO: Default locale: "pl_PL", source code encoding: "windows-1250" (analysis is platform dependent)
+INFO: Process project properties
+INFO: Load project repositories
+INFO: Load project repositories (done) | time=122ms
+INFO: Load quality profiles
+INFO: Load quality profiles (done) | time=60ms
+INFO: Load active rules
+INFO: Load active rules (done) | time=324ms
+INFO: Publish mode
+INFO: -------------  Scan SpaceAge
+INFO: Language is forced to cs
+INFO: Load server rules
+INFO: Load server rules (done) | time=152ms
+INFO: Base dir: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge
+INFO: Working dir: c:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\.sonar
+INFO: Source paths: .
+INFO: Source encoding: windows-1250, default locale: pl_PL
+INFO: Index files
+INFO: 186 files indexed
+INFO: Quality profile for cs: Sonar way
+INFO: All FxCop rules are disabled, skipping its execution.
+INFO: Sensor Lines Sensor
+INFO: Sensor Lines Sensor (done) | time=40ms
+INFO: Sensor org.sonar.plugins.csharp.CSharpSensor
+WARN: ***********************************************************************************
+WARN: *                 Use MSBuild 14 to get the best analysis results                 *
+WARN: * The use of MSBuild 12 or the sonar-scanner to analyze C# projects is DEPRECATED *
+WARN: ***********************************************************************************
+INFO: SonarLint for Visual Studio version 1.13.0.0
+INFO: 0/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\Events.cs
+INFO: 1/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\EventsReaders.cs
+INFO: 2/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\Game.cs
+INFO: 3/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\LineParser.cs
+INFO: 4/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\Program.cs
+INFO: 5/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\Properties\AssemblyInfo.cs
+INFO: 6/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\Request.cs
+INFO: 7/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\battle\Battle.cs
+INFO: 8/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\battle\BattleField.cs
+INFO: 9/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\battle\Battles.cs
+INFO: 10/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\battle\DisableTactic.cs
+INFO: 11/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\battle\EDamageStatus.cs
+INFO: 12/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\battle\ETactic.cs
+INFO: 13/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\battle\GroundUnit.cs
+INFO: 14/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\battle\IBattleReporting.cs
+INFO: 15/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\battle\Tactic.cs
+INFO: 16/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\battle\Tactics.cs
+INFO: 17/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\battle\Unit.cs
+INFO: 18/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\Anomalies.cs
+INFO: 19/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\Anomaly.cs
+INFO: 20/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\Capacities.cs
+INFO: 21/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\Capacity.cs
+INFO: 22/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\EItemTypesGroup.cs
+INFO: 23/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\ELocationType.cs
+INFO: 24/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\EModuleTypesGroup.cs
+INFO: 25/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\EMoonType.cs
+INFO: 26/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\EMoveMode.cs
+INFO: 27/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\EOfferType.cs
+INFO: 28/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\EOffersType.cs
+INFO: 29/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\EPlanetType.cs
+INFO: 30/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\EProductionType.cs
+INFO: 31/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\Exit.cs
+INFO: 32/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\ExitMode.cs
+INFO: 33/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\ExitModes.cs
+INFO: 34/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\Exits.cs
+INFO: 35/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\Faction.cs
+INFO: 36/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\FactionAttitude.cs
+INFO: 37/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\FactionAttitudes.cs
+INFO: 38/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\FactionOptions.cs
+INFO: 39/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\Factions.cs
+INFO: 40/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\Galaxy.cs
+INFO: 41/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\IHolder.cs
+INFO: 42/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\IItemStacksHolder.cs
+INFO: 43/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\ILocationsHolder.cs
+INFO: 44/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\IMoveable.cs
+INFO: 45/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\IMultiple.cs
+INFO: 46/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\IOfferent.cs
+INFO: 47/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\IOrbitHolder.cs
+INFO: 48/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\IProducable.cs
+INFO: 49/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\IRegionHolder.cs
+INFO: 50/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\IResourcesHolder.cs
+INFO: 51/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\ISingular.cs
+INFO: 52/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\IStacking.cs
+INFO: 53/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\ItemStack.cs
+INFO: 54/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\ItemStacks.cs
+INFO: 55/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\ItemType.cs
+INFO: 56/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\ItemTypes.cs
+INFO: 57/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\Location.cs
+INFO: 58/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\LocationType.cs
+INFO: 59/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\LocationTypes.cs
+INFO: 60/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\Module.cs
+INFO: 61/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\ModuleStack.cs
+INFO: 62/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\ModuleStacks.cs
+INFO: 63/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\ModuleType.cs
+INFO: 64/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\ModuleTypes.cs
+INFO: 65/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\Modules.cs
+INFO: 66/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\Moon.cs
+INFO: 67/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\MoonType.cs
+INFO: 68/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\MoonTypes.cs
+INFO: 69/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\Moons.cs
+INFO: 70/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\MoveMode.cs
+INFO: 71/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\MoveModes.cs
+INFO: 72/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\NamedObject.cs
+INFO: 73/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\NamedType.cs
+INFO: 74/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\Offer.cs
+INFO: 75/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\Offers.cs
+INFO: 76/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\Orbit.cs
+INFO: 77/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\Orbits.cs
+INFO: 78/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\People.cs
+INFO: 79/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\Person.cs
+INFO: 80/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\Planet.cs
+INFO: 81/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\PlanetType.cs
+INFO: 82/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\PlanetTypes.cs
+INFO: 83/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\Planets.cs
+INFO: 84/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\Point2D.cs
+INFO: 85/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\Point3D.cs
+INFO: 86/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\Race.cs
+INFO: 87/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\Races.cs
+INFO: 88/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\Region.cs
+INFO: 89/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\RegionType.cs
+INFO: 90/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\RegionTypes.cs
+INFO: 91/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\Regions.cs
+INFO: 92/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\Resource.cs
+INFO: 93/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\Resources.cs
+INFO: 94/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\Skill.cs
+INFO: 95/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\SkillType.cs
+INFO: 96/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\SkillTypes.cs
+INFO: 97/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\Skills.cs
+INFO: 98/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\SpacePoint.cs
+INFO: 99/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\SpacePoints.cs
+INFO: 100/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\SpaceSystem.cs
+INFO: 101/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\SpaceSystemObject.cs
+INFO: 102/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\SpaceSystemObjects.cs
+INFO: 103/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\SpaceSystems.cs
+INFO: 104/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\Star.cs
+INFO: 105/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\StarType.cs
+INFO: 106/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\StarTypes.cs
+INFO: 107/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\Stars.cs
+INFO: 108/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\Technologies.cs
+INFO: 109/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\data structures\Technology.cs
+INFO: 110/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\effects\Alter.cs
+INFO: 111/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\effects\ENoUpkeepEffects.cs
+INFO: 112/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\effects\EProducableEffects.cs
+INFO: 113/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\effects\Effect.cs
+INFO: 114/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\effects\Effects.cs
+INFO: 115/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\effects\Fuelled.cs
+INFO: 116/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\effects\IEffectable.cs
+INFO: 117/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\effects\LightlyDamaged.cs
+INFO: 118/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\effects\Moving.cs
+INFO: 119/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\effects\Producing.cs
+INFO: 120/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\effects\ProducingEffect.cs
+INFO: 121/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\effects\ProducingEnergy.cs
+INFO: 122/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\effects\ProducingItems.cs
+INFO: 123/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\effects\ProducingModule.cs
+INFO: 124/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\effects\Receiving.cs
+INFO: 125/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\effects\ReceivingItems.cs
+INFO: 126/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\effects\ReceivingModules.cs
+INFO: 127/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\effects\ReceivingTechnology.cs
+INFO: 128/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\effects\Training.cs
+INFO: 129/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\effects\TrainingOfficer.cs
+INFO: 130/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\effects\TrainingSkill.cs
+INFO: 131/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\game\Bank.cs
+INFO: 132/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\game\DataFile.cs
+INFO: 133/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\game\Market.cs
+INFO: 134/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\game\Sequence.cs
+INFO: 135/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\game\XMLProcessing.cs
+INFO: 136/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\orders\ActiveOrder.cs
+INFO: 137/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\orders\AliasOrder.cs
+INFO: 138/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\orders\BuyOrder.cs
+INFO: 139/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\orders\CopyOrder.cs
+INFO: 140/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\orders\EHasType.cs
+INFO: 141/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\orders\EOrderType.cs
+INFO: 142/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\orders\EProduceType.cs
+INFO: 143/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\orders\ESeeType.cs
+INFO: 144/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\orders\FormOrder.cs
+INFO: 145/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\orders\GetOrder.cs
+INFO: 146/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\orders\GiveOrder.cs
+INFO: 147/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\orders\HasOrder.cs
+INFO: 148/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\orders\IOrderable.cs
+INFO: 149/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\orders\ImmediateOrder.cs
+INFO: 150/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\orders\LongOrder.cs
+INFO: 151/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\orders\MoveOrder.cs
+INFO: 152/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\orders\NameOrder.cs
+INFO: 153/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\orders\Order.cs
+INFO: 154/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\orders\Orders.cs
+INFO: 155/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\orders\OrdersReader.cs
+INFO: 156/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\orders\ProduceOrder.cs
+INFO: 157/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\orders\SeeOrder.cs
+INFO: 158/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\orders\SellOrder.cs
+INFO: 159/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\orders\SetOrder.cs
+INFO: 160/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\orders\StackOrder.cs
+INFO: 161/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\orders\TrainOrder.cs
+INFO: 162/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\orders\TransferOrder.cs
+INFO: 163/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\orders\UseOrder.cs
+INFO: 164/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\reports\EventReport.cs
+INFO: 165/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\reports\EventReports.cs
+INFO: 166/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\reports\IEventReporting.cs
+INFO: 167/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\reports\IReporting.cs
+INFO: 168/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\reports\ReportLine.cs
+INFO: 169/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\reports\ReportLines.cs
+INFO: 170/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Game\reports\ReportWriter.cs
+INFO: 171/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Tests\Properties\AssemblyInfo.cs
+INFO: 172/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Tests\SampleGame\SampleGame.cs
+INFO: 173/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Tests\SampleGame\TProgram.cs
+INFO: 174/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Tests\TBattle.cs
+INFO: 175/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Tests\TDataFile.cs
+INFO: 176/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Tests\TMarket.cs
+INFO: 177/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Tests\TModuleStack.cs
+INFO: 178/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Tests\TModuleStacks.cs
+INFO: 179/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Tests\TNamedObject.cs
+INFO: 180/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Tests\TOrder.cs
+INFO: 181/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Tests\TPoint2D.cs
+INFO: 182/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Tests\TPoint3D.cs
+INFO: 183/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Tests\TReport.cs
+INFO: 184/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Tests\TTest.cs
+INFO: 185/186 files analyzed, starting to analyze: C:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\Tests\TTests.cs
+INFO: Sensor org.sonar.plugins.csharp.CSharpSensor (done) | time=13435ms
+INFO: Sensor org.sonar.plugins.csharp.CSharpCodeCoverageProvider$CSharpCoverageReportImportSensor
+INFO: Parsing the OpenCover report c:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\.\coverage.xml
+INFO: Adding this code coverage report to the cache for later reuse: c:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\.\coverage.xml
+INFO: Sensor org.sonar.plugins.csharp.CSharpCodeCoverageProvider$CSharpCoverageReportImportSensor (done) | time=290ms
+INFO: Sensor org.sonar.plugins.csharp.CSharpUnitTestResultsProvider$CSharpUnitTestResultsImportSensor
+INFO: Parsing the NUnit Test Results file c:\Users\Kaczma10\Documents\Visual Studio 2015\Projects\SpaceAge\.\TestResult.xml
+INFO: Sensor org.sonar.plugins.csharp.CSharpUnitTestResultsProvider$CSharpUnitTestResultsImportSensor (done) | time=10ms
+INFO: Sensor SCM Sensor
+INFO: SCM provider for this project is: svn
+INFO: 186 files to be analyzed
+INFO: 0/186 files analyzed
+INFO: ------------------------------------------------------------------------
+INFO: EXECUTION FAILURE
+INFO: ------------------------------------------------------------------------
+INFO: Total time: 19.737s
+INFO: Final Memory: 46M/304M
+INFO: ------------------------------------------------------------------------

@@ -1,0 +1,510 @@
+To: mail2@mail.pl
+Subject: [SpaceAge] Report for turn 2
+Content-Disposition: attachment
+
+SpaceAge report for Gelvaren [3].
+Turn 2, Year 2020, April 1.
+
+SpaceAge Engine Version: 0.1.137.
+
+Events during turn:
+  none.
+
+Bank report:
+  Bank account balance: 9000.
+  Credit line maximum: 10000.
+  Credit rate: 20%, Deposit rate: 5%.
+
+Galaxy report:
+------------------------------------------------------------
+* Sol [SS0001] (0, 0, 0), star system.
+------------------------------------------------------------
+
+  * Sol [S00001] (0, 0, 0), M4 star, unexplored.
+------------------------------------------------------------
+
+  * Earth [P00001] at AU 1, ocean planet [ocean].
+------------------------------------------------------------
+  orbit [O00002], has atmosphere suitable for terran [terran].
+
+  Northern Hemisphere [R00002] (0,0), grassland region, settlement
+  capacity 8/3.
+  Exits:
+    Southern Hemisphere [R00003] (1,0), grassland region, ground travel
+    duration 3 weeks.
+  Resources: 20 units of iron [iron], 20 units of carbon [carbon], 20
+  units of titanium [titani], 20 units of uranium [uraniu], 20 units of
+  copper [copper], 20 units of silicium [silici], 250 units of oxyhydro
+  [h2o2], 500 units of food [food].
+  Market report:
+    Offers of selling items:
+      sell 30 terrans [terran] at 50 each from Berlin [000001].
+      sell 39 units of food [food] at 5 each from Berlin [000001].
+    Offers of buying items:
+      buy 300 units of food [food] at 1 each by Berlin [000001].
+    Offers of selling modules:
+      none.
+    Offers of buying modules:
+      buy farming complex [farms] at 100 by Berlin [000001].
+    Offers of selling technologies:
+      none.
+    Offers of buying technologies:
+      none.
+  
+  - Berlin [000001], 3 cities [city], immobile, owned by NPC [1].
+    size: 75000.
+    - Berlin garrison [000002], infantry battalion [inftry], owned by
+      NPC [1].
+      size: 500.
+    - Berlin farms [000003], 10 farming complexes [farms], owned by NPC
+      [1].
+      size: 10000.
+    - Berlin coal powerplants [000004], 5 coal-burning plants [cplant],
+      owned by NPC [1].
+      size: 5000.
+    - Berlin granary [000005], small cargo bay [cargob], owned by NPC
+      [1].
+      size: 2000.
+    - Caste Prime Headquarters [000012], corporate headquarters
+      [corphq], owned by Caste Prime [2].
+      size: 1000.
+    - small cargo bay [000013], 5 small cargo bays [cargob], owned by
+      Caste Prime [2].
+      size: 10000.
+    - farming complex [000014], 3 farming complexes [farms], owned by
+      Caste Prime [2].
+      size: 3000.
+    - coal-burning plant [000015], 3 coal-burning plants [cplant], owned
+      by Caste Prime [2].
+      size: 3000.
+    - core drill [000016], core drill [cdrill], owned by Caste Prime
+      [2].
+      size: 1000.
+    - factory [000017], 5 factories [factry], owned by Caste Prime [2].
+      size: 5000.
+  + peaceful scout [108], tanks [tanks].
+    size: 250, mass: 406 (250), capacity: 200/144, crew: 16/16, upkeep:
+    40 (24) cash [cash], consume: 32 (16) units of food [food], 32 (16)
+    units of terran breathing gas mixture [terair].
+    movement speed: 0.5 on ground.
+    fuel requirements: 4 units of oil [oil] per 13 weeks.
+    items: 16 terrans [terran] (size: 64, mass: 64, upkeep: 16 cash
+    [cash], consume: 16 units of food [food], 16 units of terran
+    breathing gas mixture [terair]), 42 cash [cash], 12 units of oil
+    [oil] (size: 48, mass: 60), 32 units of food [food] (size: 32, mass:
+    32).
+    effects:
+      can operate for another 7 weeks without refueling.
+    events:
+      week 4: formed by factory [000023] with tanks [tanks].
+      week 4: received tanks [tanks] produced by factory [000023].
+      week 4: has modules in stack.
+      week 4: got 16 terrans [terran] from Gelvaren Headquarters
+      [000018].
+      week 4: got 42 cash [cash] from Gelvaren Headquarters [000018].
+      week 4: got 16 units of oil [oil] from small cargo bay [000019].
+      week 4: got 32 units of food [food] from small cargo bay [000019].
+      week 5: departed from Southern Hemisphere [R00003] (1,0) to
+      Northern Hemisphere [R00002] (0,0), ETA 5.
+      week 5: consumed 4 units of oil [oil] as fuel.
+      week 6: moving from Southern Hemisphere [R00003] (1,0) to Northern
+      Hemisphere [R00002] (0,0), ETA 4.
+      week 7: moving from Southern Hemisphere [R00003] (1,0) to Northern
+      Hemisphere [R00002] (0,0), ETA 3.
+      week 8: moving from Southern Hemisphere [R00003] (1,0) to Northern
+      Hemisphere [R00002] (0,0), ETA 2.
+      week 9: moving from Southern Hemisphere [R00003] (1,0) to Northern
+      Hemisphere [R00002] (0,0), ETA 1.
+      week 10: arrived at Northern Hemisphere [R00002] (0,0) from
+      Southern Hemisphere [R00003] (1,0).
+
+  Southern Hemisphere [R00003] (1,0), grassland region, settlement
+  capacity 8/3.
+  Exits:
+    Northern Hemisphere [R00002] (0,0), grassland region, ground travel
+    duration 3 weeks.
+  Resources: 20 units of iron [iron], 20 units of oil [oil], 20 units of
+  titanium [titani], 20 units of uranium [uraniu], 20 units of copper
+  [copper], 20 units of silicium [silici], 250 units of oxyhydro [h2o2],
+  500 units of food [food].
+  Market report:
+    Offers of selling items:
+      sell 59 units of food [food] at 5 each from Sydney [000006].
+      sell 10 terrans [terran] at 50 each from Gelvaren complex
+      [000026].
+      sell 25 units of food [food] at 5 each from Gelvaren complex
+      [000026].
+    Offers of buying items:
+      buy 200 units of food [food] at 1 each by Sydney [000006].
+      buy all terrans [terran] at any price by Gelvaren Headquarters
+      [000018].
+      buy 100 units of food [food] at 1 each by Gelvaren complex
+      [000026].
+    Offers of selling modules:
+      none.
+    Offers of buying modules:
+      buy wind powerplant [wnplnt] at 50 by Sydney [000006].
+    Offers of selling technologies:
+      none.
+    Offers of buying technologies:
+      none.
+  
+  - Sydney [000006], 2 cities [city], immobile, owned by NPC [1].
+    size: 50000.
+    - Sydney garrison [000007], infantry battalion [inftry], owned by
+      NPC [1].
+      size: 500.
+    - Sydney farms [000008], 10 farming complexes [farms], owned by NPC
+      [1].
+      size: 10000.
+    - Sydney wind powerplants [000009], 10 wind powerplants [wnplnt],
+      owned by NPC [1].
+      size: 100.
+    - Sydney oil powerplants [000010], 5 oil-burning plants [oplant],
+      owned by NPC [1].
+      size: 4000.
+    - Sydney granary [000011], small cargo bay [cargob], owned by NPC
+      [1].
+      size: 2000.
+  + Gelvaren complex [000026], city [city], immobile.
+    size: 25000, mass: 6934, capacity: 15000/10200, energy: 80/75 (10),
+    crew: 80/88, upkeep: 100 units of food [food], 889 (0) cash [cash],
+    consume: 220 (0) units of food [food], 220 (0) units of terran
+    breathing gas mixture [terair].
+    events:
+      week 1: started recruitment of terran, 13 weeks to complete.
+      week 1: given 1000 cash [cash] to Gelvaren Headquarters [000018].
+      week 1: given 10 terrans [terran] to Gelvaren Headquarters
+      [000018].
+      week 13: produced 1000 cash [cash], 10 terrans [terran].
+      week 13: given 1000 cash [cash] to Gelvaren Headquarters [000018].
+      week 13: given 10 terrans [terran] to Gelvaren Headquarters
+      [000018].
+    + Gelvaren Headquarters [000018], corporate headquarters [corphq].
+      size: 1000, mass: 1192 (1000), capacity: 750/192, energy: 10,
+      crew: 20/48, upkeep: 148 (100) cash [cash], consume: 48 (0) units
+      of food [food], 48 (0) units of terran breathing gas mixture
+      [terair].
+      items: 48 terrans [terran] (size: 192, mass: 192, upkeep: 48 cash
+      [cash], consume: 48 units of food [food], 48 units of terran
+      breathing gas mixture [terair]), 2658 cash [cash].
+      events:
+        week 1: got 1000 cash [cash] from Gelvaren complex [000026].
+        week 1: got 10 terrans [terran] from Gelvaren complex [000026].
+        week 4: given 16 terrans [terran] to peaceful scout [108].
+        week 4: given 42 cash [cash] to peaceful scout [108].
+        week 6: trained terran [terran] into terran officer [107].
+        week 7: produced 100 cash [cash].
+        week 8: produced 100 cash [cash].
+        week 9: produced 100 cash [cash].
+        week 10: produced 100 cash [cash].
+        week 11: produced 100 cash [cash].
+        week 12: produced 100 cash [cash].
+        week 13: got 1000 cash [cash] from Gelvaren complex [000026].
+        week 13: got 10 terrans [terran] from Gelvaren complex [000026].
+        week 13: produced 100 cash [cash].
+    + small cargo bay [000019], small cargo bay [cargob].
+      size: 2000, mass: 1416 (200), capacity: 1800/1183, upkeep: 32 (30)
+      cash [cash], consume: 2 (0) units of food [food], 2 (0) units of
+      terran breathing gas mixture [terair].
+      items: 1088 units of food [food] (size: 1088, mass: 1088), 2
+      terrans [terran] (size: 8, mass: 8, upkeep: 2 cash [cash],
+      consume: 2 units of food [food], 2 units of terran breathing gas
+      mixture [terair]), 3 units of iron [iron] (size: 15, mass: 30), 18
+      units of oil [oil] (size: 72, mass: 90).
+      events:
+        week 1: given 4 units of iron [iron] to factory [000023].
+        week 1: given 12 units of iron [iron] to factory [000023].
+        week 1: given unit of iron [iron] to military barrack [000025].
+        week 1: got 10 units of food [food] from farming complex
+        [000020].
+        week 1: got 2 units of oil [oil] from core drill [000022].
+        week 3: got 10 units of food [food] from farming complex
+        [000020].
+        week 3: got 2 units of oil [oil] from core drill [000022].
+        week 4: got 10 units of food [food] from farming complex
+        [000020].
+        week 4: got 2 units of oil [oil] from core drill [000022].
+        week 4: given 16 units of oil [oil] to peaceful scout [108].
+        week 4: given 32 units of food [food] to peaceful scout [108].
+        week 5: got 10 units of food [food] from farming complex
+        [000020].
+        week 5: got 2 units of oil [oil] from core drill [000022].
+        week 6: got 10 units of food [food] from farming complex
+        [000020].
+        week 6: got 2 units of oil [oil] from core drill [000022].
+        week 7: got 10 units of food [food] from farming complex
+        [000020].
+        week 7: got 2 units of oil [oil] from core drill [000022].
+        week 8: got 10 units of food [food] from farming complex
+        [000020].
+        week 8: got 2 units of oil [oil] from core drill [000022].
+        week 9: got 10 units of food [food] from farming complex
+        [000020].
+        week 9: got 2 units of oil [oil] from core drill [000022].
+        week 10: got 10 units of food [food] from farming complex
+        [000020].
+        week 10: got 2 units of oil [oil] from core drill [000022].
+        week 11: got 10 units of food [food] from farming complex
+        [000020].
+        week 11: got 2 units of oil [oil] from core drill [000022].
+        week 12: got 10 units of food [food] from farming complex
+        [000020].
+        week 12: got 2 units of oil [oil] from core drill [000022].
+        week 13: got 10 units of food [food] from farming complex
+        [000020].
+        week 13: got 2 units of oil [oil] from core drill [000022].
+    + farming complex [000020], 2 farming complexes [farms].
+      size: 2000, mass: 250 (200), capacity: 1000/50, energy: 10, crew:
+      10/10, upkeep: 110 (100) cash [cash], consume: 10 (0) units of
+      food [food], 10 (0) units of terran breathing gas mixture
+      [terair].
+      items: 10 terrans [terran] (size: 40, mass: 40, upkeep: 10 cash
+      [cash], consume: 10 units of food [food], 10 units of terran
+      breathing gas mixture [terair]), 10 units of food [food] (size:
+      10, mass: 10).
+      events:
+        week 1: produced 10 units of food [food].
+        week 1: given 10 units of food [food] to small cargo bay
+        [000019].
+        week 2: produced 10 units of food [food].
+        week 3: given 10 units of food [food] to small cargo bay
+        [000019].
+        week 3: produced 10 units of food [food].
+        week 4: given 10 units of food [food] to small cargo bay
+        [000019].
+        week 4: produced 10 units of food [food].
+        week 5: given 10 units of food [food] to small cargo bay
+        [000019].
+        week 5: produced 10 units of food [food].
+        week 6: given 10 units of food [food] to small cargo bay
+        [000019].
+        week 6: produced 10 units of food [food].
+        week 7: given 10 units of food [food] to small cargo bay
+        [000019].
+        week 7: produced 10 units of food [food].
+        week 8: given 10 units of food [food] to small cargo bay
+        [000019].
+        week 8: produced 10 units of food [food].
+        week 9: given 10 units of food [food] to small cargo bay
+        [000019].
+        week 9: produced 10 units of food [food].
+        week 10: given 10 units of food [food] to small cargo bay
+        [000019].
+        week 10: produced 10 units of food [food].
+        week 11: given 10 units of food [food] to small cargo bay
+        [000019].
+        week 11: produced 10 units of food [food].
+        week 12: given 10 units of food [food] to small cargo bay
+        [000019].
+        week 12: produced 10 units of food [food].
+        week 13: given 10 units of food [food] to small cargo bay
+        [000019].
+        week 13: produced 10 units of food [food].
+    + wind powerplant [000021], 20 wind powerplants [wnplnt].
+      size: 200, mass: 200 (200), energy: 80/20, upkeep: 200 cash
+      [cash].
+      events:
+        week 1: started energy production for the next 13 weeks.
+    + core drill [000022], core drill [cdrill].
+      size: 1000, mass: 1034 (1000), capacity: 750/32, energy: 5, crew:
+      6/6, upkeep: 46 (40) cash [cash], consume: 6 (0) units of food
+      [food], 6 (0) units of terran breathing gas mixture [terair].
+      items: 6 terrans [terran] (size: 24, mass: 24, upkeep: 6 cash
+      [cash], consume: 6 units of food [food], 6 units of terran
+      breathing gas mixture [terair]), 2 units of oil [oil] (size: 8,
+      mass: 10).
+      events:
+        week 1: produced 2 units of oil [oil].
+        week 1: given 2 units of oil [oil] to small cargo bay [000019].
+        week 2: produced 2 units of oil [oil].
+        week 3: given 2 units of oil [oil] to small cargo bay [000019].
+        week 3: produced 2 units of oil [oil].
+        week 4: given 2 units of oil [oil] to small cargo bay [000019].
+        week 4: produced 2 units of oil [oil].
+        week 5: given 2 units of oil [oil] to small cargo bay [000019].
+        week 5: produced 2 units of oil [oil].
+        week 6: given 2 units of oil [oil] to small cargo bay [000019].
+        week 6: produced 2 units of oil [oil].
+        week 7: given 2 units of oil [oil] to small cargo bay [000019].
+        week 7: produced 2 units of oil [oil].
+        week 8: given 2 units of oil [oil] to small cargo bay [000019].
+        week 8: produced 2 units of oil [oil].
+        week 9: given 2 units of oil [oil] to small cargo bay [000019].
+        week 9: produced 2 units of oil [oil].
+        week 10: given 2 units of oil [oil] to small cargo bay [000019].
+        week 10: produced 2 units of oil [oil].
+        week 11: given 2 units of oil [oil] to small cargo bay [000019].
+        week 11: produced 2 units of oil [oil].
+        week 12: given 2 units of oil [oil] to small cargo bay [000019].
+        week 12: produced 2 units of oil [oil].
+        week 13: given 2 units of oil [oil] to small cargo bay [000019].
+        week 13: produced 2 units of oil [oil].
+    + factory [000023], factory [factry].
+      size: 1000, mass: 790 (750), capacity: 500/40, energy: 15, crew:
+      10/10, upkeep: 70 (60) cash [cash], consume: 10 (0) units of food
+      [food], 10 (0) units of terran breathing gas mixture [terair].
+      technologies: armored combat [armcbt].
+      items: 10 terrans [terran] (size: 40, mass: 40, upkeep: 10 cash
+      [cash], consume: 10 units of food [food], 10 units of terran
+      breathing gas mixture [terair]).
+      effects:
+        producing tanks [tanks] for military barrack [000025] into tanks
+        [109], 3 weeks to complete.
+      events:
+        week 1: got 4 units of iron [iron] from small cargo bay
+        [000019].
+        week 1: got 12 units of iron [iron] from small cargo bay
+        [000019].
+        week 1: consumed 4 units of iron [iron] to produce tanks [tanks]
+        module.
+        week 4: produced tanks [tanks] into peaceful scout [108].
+        week 5: consumed 4 units of iron [iron] to produce tanks [tanks]
+        module.
+        week 8: produced tanks [tanks] into tanks [109].
+        week 9: consumed 4 units of iron [iron] to produce tanks [tanks]
+        module.
+        week 12: produced tanks [tanks] into tanks [109].
+        week 13: consumed 4 units of iron [iron] to produce tanks
+        [tanks] module.
+    + military barrack [000025], military barrack [barrck].
+      size: 2000, mass: 1044 (500), capacity: 1800/540, energy: 5, crew:
+      34/11 (2/10), upkeep: 268 (200) cash [cash], consume: 43 (0) units
+      of food [food], 43 (0) units of terran breathing gas mixture
+      [terair].
+      technologies: form infantry battalion [frminf].
+      items: 10 terrans [terran] (size: 40, mass: 40, upkeep: 10 cash
+      [cash], consume: 10 units of food [food], 10 units of terran
+      breathing gas mixture [terair]).
+      events:
+        week 1: got unit of iron [iron] from small cargo bay [000019].
+        week 1: consumed unit of iron [iron] to produce infantry
+        battalion [inftry] module.
+        week 13: produced infantry battalion [inftry] into infantry
+        battalion [110].
+      + tanks [109], 2 tanks [tanks], disabled.
+        size: 500, mass: 504 (500), capacity: 400/4, crew: 32/1, upkeep:
+        58 (48) cash [cash], consume: 33 (32) units of food [food], 33
+        (32) units of terran breathing gas mixture [terair].
+        movement speed: 0.5 on ground.
+        fuel requirements: 8 units of oil [oil] per 13 weeks.
+        events:
+          week 8: formed by factory [000023] with tanks [tanks].
+          week 8: received tanks [tanks] produced by factory [000023].
+          week 8: stacked under military barrack [000025].
+          week 12: received tanks [tanks] produced by factory [000023].
+        + Gelvaren CEO [000002], terran [terran].
+          size: 4, mass: 4, capacity: 3/0, upkeep: 10 cash [cash],
+          consume: unit of food [food], unit of terran breathing gas
+          mixture [terair].
+          skills: armor platoon leader [arpldr].
+          events:
+            week 1: stacked under military barrack [000025].
+            week 1: started training of armor platoon leader [arpldr]
+            skill.
+            week 4: trained armor platoon leader [arpldr] skill.
+            week 8: saw tanks [109] in Southern Hemisphere [R00003]
+            (1,0).
+            week 8: stacked under tanks [109].
+    + infantry battalion [110], infantry battalion [inftry].
+      size: 500, mass: 504 (500), capacity: 300/4, upkeep: 15 (5) cash
+      [cash], consume: 101 (100) units of food [food], 101 (100) units
+      of terran breathing gas mixture [terair].
+      movement speed: 0.1 on ground.
+      events:
+        week 13: formed by military barrack [000025] with infantry
+        battalion [inftry].
+        week 13: received infantry battalion [inftry] produced by
+        military barrack [000025].
+      + terran officer [107], terran [terran].
+        size: 4, mass: 4, capacity: 3/0, upkeep: 10 cash [cash],
+        consume: unit of food [food], unit of terran breathing gas
+        mixture [terair].
+        skills: infantry battalion commander [inbtcm].
+        events:
+          week 1: started training of terran [terran] officer.
+          week 6: trained by Gelvaren Headquarters [000018].
+          week 6: stacked under military barrack [000025].
+          week 6: started training of infantry battalion commander
+          [inbtcm] skill.
+          week 9: trained infantry battalion commander [inbtcm] skill.
+          week 13: saw infantry battalion [110] in Southern Hemisphere
+          [R00003] (1,0).
+          week 13: stacked under infantry battalion [110].
+------------------------------------------------------------
+  * Luna [P00003] (1, 0, 0), moon, unexplored.
+------------------------------------------------------------
+
+
+Orders Template:
+#faction 3 "abccb"
+#modulestack 000018
+; + Gelvaren Headquarters [000018], corporate headquarters [corphq].
+; items: 48 terrans [terran], 2658 cash [cash].
+@get all cash from 000026
+@get all terran from 000026
+@buy all terran
+@produce cash
+
+#modulestack 000019
+; + small cargo bay [000019], small cargo bay [cargob].
+; items: 1088 units of food [food], 2 terrans [terran], 3 units of iron
+; [iron], 18 units of oil [oil].
+@get all food from 000020
+@get all oil from 000022
+
+#modulestack 000020
+; + farming complex [000020], 2 farming complexes [farms].
+; items: 10 terrans [terran], 10 units of food [food].
+@use farmng
+
+#modulestack 000021
+; + wind powerplant [000021], 20 wind powerplants [wnplnt].
+@produce energy
+
+#modulestack 000022
+; + core drill [000022], core drill [cdrill].
+; items: 6 terrans [terran], 2 units of oil [oil].
+@use oildwe
+
+#modulestack 000023
+; + factory [000023], factory [factry].
+; technologies: armored combat [armcbt].
+; items: 10 terrans [terran].
+; effects:
+;   producing tanks [tanks] for military barrack [000025] into tanks
+;   [109], 3 weeks to complete.
+use armcbt as 109 for 000025
+
+#modulestack 000025
+; + military barrack [000025], military barrack [barrck].
+; technologies: form infantry battalion [frminf].
+; items: 10 terrans [terran].
+
+#modulestack 000026
+; + Gelvaren complex [000026], city [city], immobile.
+@produce terran
+
+#modulestack 108
+; + peaceful scout [108], tanks [tanks].
+; items: 16 terrans [terran], 42 cash [cash], 12 units of oil [oil], 32
+; units of food [food].
+; effects:
+;   can operate for another 7 weeks without refueling.
+
+#modulestack 109
+; + tanks [109], 2 tanks [tanks], disabled.
+
+#modulestack 110
+; + infantry battalion [110], infantry battalion [inftry].
+
+#person 000002
+; + Gelvaren CEO [000002], terran [terran].
+; skills: armor platoon leader [arpldr].
+
+#person 107
+; + terran officer [107], terran [terran].
+; skills: infantry battalion commander [inbtcm].
+
+#end
+

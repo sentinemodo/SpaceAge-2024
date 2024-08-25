@@ -1,0 +1,229 @@
+To: 
+Subject: [SpaceAge] Report for turn 1
+Content-Disposition: attachment
+
+SpaceAge report for NPC [1].
+Turn 1, Year 2020, January 1.
+
+SpaceAge Engine Version: 0.1.137.
+
+Events during turn:
+  none.
+
+Bank report:
+  Bank account balance: 0.
+  Credit line maximum: 0.
+  Credit rate: 0%, Deposit rate: 0%.
+
+Galaxy report:
+------------------------------------------------------------
+* Sol [SS0001] (0, 0, 0), star system.
+------------------------------------------------------------
+
+  * Sol [S00001] (0, 0, 0), M4 star, unexplored.
+------------------------------------------------------------
+
+  * Earth [P00001] at AU 1, ocean planet [ocean].
+------------------------------------------------------------
+  orbit [O00002], has atmosphere suitable for terran [terran].
+
+  Northern Hemisphere [R00002] (0,0), grassland region, settlement capacity 8/3.
+  Exits:
+    Southern Hemisphere [R00003] (1,0), grassland region, ground travel duration 3 weeks.
+  Resources: 20 units of iron [iron], 20 units of carbon [carbon], 20 units of titanium [titani], 20
+  units of uranium [uraniu], 20 units of copper [copper], 20 units of silicium [silici], 250 units
+  of oxyhydro [h2o2], 500 units of food [food].
+  Market report:
+    Offers of selling items:
+      sell 30 terrans [terran] at 50 each from Berlin [000001].
+      sell 39 units of food [food] at 5 each from Berlin [000001].
+    Offers of buying items:
+      buy 300 units of food [food] at 1 each by Berlin [000001].
+    Offers of selling modules:
+      none.
+    Offers of buying modules:
+      buy farming complex [farms] at 100 by Berlin [000001].
+    Offers of selling technologies:
+      none.
+    Offers of buying technologies:
+      none.
+  
+  + Berlin [000001], 3 cities [city], immobile.
+    size: 75000, mass: 27324 (0), capacity: 45000/40620, energy: 320/265 (30), crew: 157/311 (0/30),
+    upkeep: 300 units of food [food], 1995 (0) cash [cash], consume: 411 (0) units of food [food],
+    411 (0) units of terran breathing gas mixture [terair].
+    items: 3000 cash [cash], 30 terrans [terran] (size: 120, mass: 120, upkeep: 30 cash [cash],
+    consume: 30 units of food [food], 30 units of terran breathing gas mixture [terair]).
+    + Berlin garrison [000002], infantry battalion [inftry].
+      size: 500, mass: 600 (500), capacity: 300/100, upkeep: 5 cash [cash], consume: 100 units of
+      food [food], 100 units of terran breathing gas mixture [terair].
+      movement speed: 0.1 on ground.
+      items: rocket launchers [rctlnc] (size: 100, mass: 100).
+    + Berlin farms [000003], 10 farming complexes [farms].
+      size: 10000, mass: 1300 (1000), capacity: 5000/300, energy: 50, crew: 50/75, upkeep: 575 (500)
+      cash [cash], consume: 75 (0) units of food [food], 75 (0) units of terran breathing gas
+      mixture [terair].
+      items: 75 terrans [terran] (size: 300, mass: 300, upkeep: 75 cash [cash], consume: 75 units of
+      food [food], 75 units of terran breathing gas mixture [terair]).
+    + Berlin coal powerplants [000004], 5 coal-burning plants [cplant].
+      size: 5000, mass: 5560 (5000), capacity: 2500/560, energy: 200/50 (consume: 25 units of carbon
+      [carbon] for 13 weeks), crew: 10/15, upkeep: 265 (250) cash [cash], consume: 15 (0) units of
+      food [food], 15 (0) units of terran breathing gas mixture [terair].
+      fuel requirements: 25 units of carbon [carbon] per 13 weeks.
+      items: 100 units of carbon [carbon] (size: 500, mass: 500), 15 terrans [terran] (size: 60,
+      mass: 60, upkeep: 15 cash [cash], consume: 15 units of food [food], 15 units of terran
+      breathing gas mixture [terair]).
+    + Berlin granary [000005], small cargo bay [cargob].
+      size: 2000, mass: 1212 (200), capacity: 1800/1012, upkeep: 33 (30) cash [cash], consume: 3 (0)
+      units of food [food], 3 (0) units of terran breathing gas mixture [terair].
+      items: 1000 units of food [food] (size: 1000, mass: 1000), 3 terrans [terran] (size: 12, mass:
+      12, upkeep: 3 cash [cash], consume: 3 units of food [food], 3 units of terran breathing gas
+      mixture [terair]).
+    - Caste Prime Headquarters [000012], corporate headquarters [corphq], owned by Caste Prime [2].
+      size: 1000.
+      - Caste Prime CEO [000001], terran [terran], working for Caste Prime [2].
+        size: 4.
+    - small cargo bay [000013], 5 small cargo bays [cargob], owned by Caste Prime [2].
+      size: 10000.
+    - farming complex [000014], 3 farming complexes [farms], owned by Caste Prime [2].
+      size: 3000.
+    - coal-burning plant [000015], 3 coal-burning plants [cplant], owned by Caste Prime [2].
+      size: 3000.
+    - core drill [000016], core drill [cdrill], owned by Caste Prime [2].
+      size: 1000.
+    - factory [000017], 5 factories [factry], owned by Caste Prime [2].
+      size: 5000.
+
+  Southern Hemisphere [R00003] (1,0), grassland region, settlement capacity 8/3.
+  Exits:
+    Northern Hemisphere [R00002] (0,0), grassland region, ground travel duration 3 weeks.
+  Resources: 20 units of iron [iron], 20 units of oil [oil], 20 units of titanium [titani], 20 units
+  of uranium [uraniu], 20 units of copper [copper], 20 units of silicium [silici], 250 units of
+  oxyhydro [h2o2], 500 units of food [food].
+  Market report:
+    Offers of selling items:
+      sell 20 terrans [terran] at 50 each from Sydney [000006].
+      sell 59 units of food [food] at 5 each from Sydney [000006].
+      sell 10 terrans [terran] at 50 each from Gelvaren complex [000026].
+      sell 25 units of food [food] at 5 each from Gelvaren complex [000026].
+    Offers of buying items:
+      buy 200 units of food [food] at 1 each by Sydney [000006].
+      buy 100 units of food [food] at 1 each by Gelvaren complex [000026].
+    Offers of selling modules:
+      none.
+    Offers of buying modules:
+      buy wind powerplant [wnplnt] at 50 by Sydney [000006].
+    Offers of selling technologies:
+      none.
+    Offers of buying technologies:
+      none.
+  
+  + Sydney [000006], 2 cities [city], immobile.
+    size: 50000, mass: 7852 (0), capacity: 30000/16680, energy: 190/130 (20), crew: 60/113 (0/20),
+    upkeep: 200 units of food [food], 1048 (0) cash [cash], consume: 213 (0) units of food [food],
+    213 (0) units of terran breathing gas mixture [terair].
+    items: 2000 cash [cash], 20 terrans [terran] (size: 80, mass: 80, upkeep: 20 cash [cash],
+    consume: 20 units of food [food], 20 units of terran breathing gas mixture [terair]).
+    + Sydney garrison [000007], infantry battalion [inftry].
+      size: 500, mass: 600 (500), capacity: 300/100, upkeep: 5 cash [cash], consume: 100 units of
+      food [food], 100 units of terran breathing gas mixture [terair].
+      movement speed: 0.1 on ground.
+      items: rocket launchers [rctlnc] (size: 100, mass: 100).
+    + Sydney farms [000008], 10 farming complexes [farms].
+      size: 10000, mass: 1300 (1000), capacity: 5000/300, energy: 50, crew: 50/75, upkeep: 575 (500)
+      cash [cash], consume: 75 (0) units of food [food], 75 (0) units of terran breathing gas
+      mixture [terair].
+      items: 75 terrans [terran] (size: 300, mass: 300, upkeep: 75 cash [cash], consume: 75 units of
+      food [food], 75 units of terran breathing gas mixture [terair]).
+    + Sydney wind powerplants [000009], 10 wind powerplants [wnplnt].
+      size: 100, mass: 100 (100), energy: 40/10, upkeep: 100 cash [cash].
+    + Sydney oil powerplants [000010], 5 oil-burning plants [oplant].
+      size: 4000, mass: 4560 (4000), capacity: 2500/460, energy: 150/50 (consume: 25 units of oil
+      [oil] for 13 weeks), crew: 10/15, upkeep: 315 (300) cash [cash], consume: 15 (0) units of food
+      [food], 15 (0) units of terran breathing gas mixture [terair].
+      fuel requirements: 25 units of oil [oil] per 13 weeks.
+      items: 100 units of oil [oil] (size: 400, mass: 500), 15 terrans [terran] (size: 60, mass: 60,
+      upkeep: 15 cash [cash], consume: 15 units of food [food], 15 units of terran breathing gas
+      mixture [terair]).
+    + Sydney granary [000011], small cargo bay [cargob].
+      size: 2000, mass: 1212 (200), capacity: 1800/1012, upkeep: 33 (30) cash [cash], consume: 3 (0)
+      units of food [food], 3 (0) units of terran breathing gas mixture [terair].
+      items: 1000 units of food [food] (size: 1000, mass: 1000), 3 terrans [terran] (size: 12, mass:
+      12, upkeep: 3 cash [cash], consume: 3 units of food [food], 3 units of terran breathing gas
+      mixture [terair]).
+  - Gelvaren complex [000026], city [city], immobile, owned by Gelvaren [3].
+    size: 25000.
+    - Gelvaren Headquarters [000018], corporate headquarters [corphq], owned by Gelvaren [3].
+      size: 1000.
+      - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
+        size: 4.
+    - small cargo bay [000019], small cargo bay [cargob], owned by Gelvaren [3].
+      size: 2000.
+    - farming complex [000020], 2 farming complexes [farms], owned by Gelvaren [3].
+      size: 2000.
+    - wind powerplant [000021], 20 wind powerplants [wnplnt], owned by Gelvaren [3].
+      size: 200.
+    - core drill [000022], core drill [cdrill], owned by Gelvaren [3].
+      size: 1000.
+    - factory [000023], factory [factry], owned by Gelvaren [3].
+      size: 1000.
+    - military barrack [000025], military barrack [barrck], owned by Gelvaren [3].
+      size: 2000.
+------------------------------------------------------------
+  * Luna [P00003] (1, 0, 0), moon, unexplored.
+------------------------------------------------------------
+
+    Dusty field [R00001] (0,0), dusty region, settlement capacity 4/0.
+    Exits:
+    Resources: 100 units of iron [iron], 100 units of silicium [silici], 100 units of titanium
+    [titani], 100 units of uranium [uraniu], 100 units of copper [copper], 100 units of silicium
+    [silici].
+
+
+Orders Template:
+#faction 1 ""
+#modulestack 000001
+; + Berlin [000001], 3 cities [city], immobile.
+; items: 3000 cash [cash], 30 terrans [terran].
+
+#modulestack 000002
+; + Berlin garrison [000002], infantry battalion [inftry].
+; items: rocket launchers [rctlnc].
+
+#modulestack 000003
+; + Berlin farms [000003], 10 farming complexes [farms].
+; items: 75 terrans [terran].
+
+#modulestack 000004
+; + Berlin coal powerplants [000004], 5 coal-burning plants [cplant].
+; items: 100 units of carbon [carbon], 15 terrans [terran].
+
+#modulestack 000005
+; + Berlin granary [000005], small cargo bay [cargob].
+; items: 1000 units of food [food], 3 terrans [terran].
+
+#modulestack 000006
+; + Sydney [000006], 2 cities [city], immobile.
+; items: 2000 cash [cash], 20 terrans [terran].
+
+#modulestack 000007
+; + Sydney garrison [000007], infantry battalion [inftry].
+; items: rocket launchers [rctlnc].
+
+#modulestack 000008
+; + Sydney farms [000008], 10 farming complexes [farms].
+; items: 75 terrans [terran].
+
+#modulestack 000009
+; + Sydney wind powerplants [000009], 10 wind powerplants [wnplnt].
+
+#modulestack 000010
+; + Sydney oil powerplants [000010], 5 oil-burning plants [oplant].
+; items: 100 units of oil [oil], 15 terrans [terran].
+
+#modulestack 000011
+; + Sydney granary [000011], small cargo bay [cargob].
+; items: 1000 units of food [food], 3 terrans [terran].
+
+#end
+

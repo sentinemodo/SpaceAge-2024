@@ -1,0 +1,356 @@
+To: mail1@mail.pl
+Subject: [SpaceAge] Report for turn 2
+Content-Disposition: attachment
+
+SpaceAge report for Caste Prime [2].
+Turn 2, Year 2020, April 1.
+
+SpaceAge Engine Version: 0.1.137.
+
+Events during turn:
+  none.
+
+Bank report:
+  Bank account balance: 10000.
+  Credit line maximum: 10000.
+  Credit rate: 20%, Deposit rate: 5%.
+
+Galaxy report:
+------------------------------------------------------------
+* Sol [SS0001] (0, 0, 0), star system.
+------------------------------------------------------------
+
+  * Sol [S00001] (0, 0, 0), M4 star, unexplored.
+------------------------------------------------------------
+
+  * Earth [P00001] at AU 1, ocean planet [ocean].
+------------------------------------------------------------
+  orbit [O00002], has atmosphere suitable for terran [terran].
+  + space shuttle [100], 10 space shuttle [shuttl].
+    size: 2000, mass: 7500/1714 (300), capacity: 1250/1174, crew: 20/41, upkeep: 1050 (1000) cash
+    [cash], consume: 41 (0) units of food [food], 41 (0) units of terran breathing gas mixture
+    [terair].
+    movement speed: 0.4 in space.
+    fuel requirements: 10 units of uranium [uraniu] , 10 units of oxyhydro [h2o2] per 13 weeks.
+    items: 40 terrans [terran] (size: 160, mass: 160, upkeep: 40 cash [cash], consume: 40 units of
+    food [food], 40 units of terran breathing gas mixture [terair]), 30 units of iron [iron] (size:
+    150, mass: 300), 26 units of titanium [titani] (size: 260, mass: 260), 20 units of silicium
+    [silici] (size: 100, mass: 60), 20 units of copper [copper] (size: 100, mass: 160), 10 units of
+    uranium [uraniu] (size: 10, mass: 80), 150 units of food [food] (size: 150, mass: 150), 90 units
+    of oxyhydro [h2o2] (size: 90, mass: 90), 150 units of terran breathing gas mixture [terair]
+    (size: 150, mass: 150).
+    effects:
+      can operate for another 10 weeks without refueling.
+      producing spaceship hull [sshull] into empty stack [101], 3 weeks to complete (x10 efficiency
+      multiplier).
+    events:
+      week 1: formed by factory [000017] with space shuttle [shuttl].
+      week 1: received space shuttle [shuttl] produced by factory [000017].
+      week 2: received space shuttle [shuttl] produced by factory [000017].
+      week 3: received space shuttle [shuttl] produced by factory [000017].
+      week 4: received space shuttle [shuttl] produced by factory [000017].
+      week 5: received space shuttle [shuttl] produced by factory [000017].
+      week 6: received space shuttle [shuttl] produced by factory [000017].
+      week 7: received space shuttle [shuttl] produced by factory [000017].
+      week 8: received space shuttle [shuttl] produced by factory [000017].
+      week 9: received space shuttle [shuttl] produced by factory [000017].
+      week 10: received space shuttle [shuttl] produced by factory [000017].
+      week 10: has 10 modules in stack.
+      week 10: got 40 terrans [terran] from Caste Prime Headquarters [000012].
+      week 10: got 30 units of iron [iron] from small cargo bay [000013].
+      week 10: got 30 units of titanium [titani] from small cargo bay [000013].
+      week 10: got 20 units of silicium [silici] from small cargo bay [000013].
+      week 10: got 20 units of copper [copper] from small cargo bay [000013].
+      week 10: got 20 units of uranium [uraniu] from small cargo bay [000013].
+      week 10: got 150 units of food [food] from small cargo bay [000013].
+      week 10: got 100 units of oxyhydro [h2o2] from small cargo bay [000013].
+      week 10: got 150 units of terran breathing gas mixture [terair] from small cargo bay [000013].
+      week 10: has Caste Prime CEO [000001].
+      week 11: departed from Northern Hemisphere [R00002] (0,0) to orbit [O00002], ETA 0.
+      week 11: consumed 10 units of uranium [uraniu], 10 units of oxyhydro [h2o2] as fuel.
+      week 11: arrived at orbit [O00002] from Northern Hemisphere [R00002] (0,0).
+      week 12: consumed 4 units of titanium [titani] to produce spaceship hull [sshull] module.
+    + Caste Prime CEO [000001], terran [terran].
+      size: 4, mass: 4, capacity: 3/0, upkeep: 10 cash [cash], consume: unit of food [food], unit of
+      terran breathing gas mixture [terair].
+      events:
+        week 1: saw space shuttle [100] in Northern Hemisphere [R00002] (0,0).
+        week 1: stacked under space shuttle [100].
+
+  Northern Hemisphere [R00002] (0,0), grassland region, settlement capacity 8/3.
+  Exits:
+    Southern Hemisphere [R00003] (1,0), grassland region, ground travel duration 3 weeks.
+  Resources: 20 units of iron [iron], 20 units of carbon [carbon], 20 units of titanium [titani], 20
+  units of uranium [uraniu], 20 units of copper [copper], 20 units of silicium [silici], 250 units
+  of oxyhydro [h2o2], 500 units of food [food].
+  Market report:
+    Offers of selling items:
+      sell 30 terrans [terran] at 50 each from Berlin [000001].
+      sell 39 units of food [food] at 5 each from Berlin [000001].
+    Offers of buying items:
+      buy 300 units of food [food] at 1 each by Berlin [000001].
+    Offers of selling modules:
+      none.
+    Offers of buying modules:
+      buy farming complex [farms] at 100 by Berlin [000001].
+    Offers of selling technologies:
+      none.
+    Offers of buying technologies:
+      none.
+  
+  - Berlin [000001], 3 cities [city], immobile, owned by NPC [1].
+    size: 75000, capacity: 45000/40620, energy: 320/265 (30).
+    - Berlin garrison [000002], infantry battalion [inftry], owned by NPC [1].
+      size: 500.
+    - Berlin farms [000003], 10 farming complexes [farms], owned by NPC [1].
+      size: 10000.
+    - Berlin coal powerplants [000004], 5 coal-burning plants [cplant], owned by NPC [1].
+      size: 5000.
+    - Berlin granary [000005], small cargo bay [cargob], owned by NPC [1].
+      size: 2000.
+    + Caste Prime Headquarters [000012], corporate headquarters [corphq].
+      size: 1000, mass: 1240 (1000), capacity: 750/240, energy: 10, crew: 20/60, upkeep: 160 (100)
+      cash [cash], consume: 60 (0) units of food [food], 60 (0) units of terran breathing gas
+      mixture [terair].
+      items: 60 terrans [terran] (size: 240, mass: 240, upkeep: 60 cash [cash], consume: 60 units of
+      food [food], 60 units of terran breathing gas mixture [terair]), 1300 cash [cash].
+      events:
+        week 1: produced 100 cash [cash].
+        week 2: produced 100 cash [cash].
+        week 3: produced 100 cash [cash].
+        week 4: produced 100 cash [cash].
+        week 5: produced 100 cash [cash].
+        week 6: produced 100 cash [cash].
+        week 7: produced 100 cash [cash].
+        week 8: produced 100 cash [cash].
+        week 9: produced 100 cash [cash].
+        week 10: produced 100 cash [cash].
+        week 10: given 40 terrans [terran] to space shuttle [100].
+        week 11: produced 100 cash [cash].
+        week 12: produced 100 cash [cash].
+        week 13: produced 100 cash [cash].
+    + small cargo bay [000013], 5 small cargo bays [cargob].
+      size: 10000, mass: 7225 (1000), capacity: 9000/5235, upkeep: 160 (150) cash [cash], consume:
+      10 (0) units of food [food], 10 (0) units of terran breathing gas mixture [terair].
+      items: 1030 units of food [food] (size: 1030, mass: 1030), 850 units of terran breathing gas
+      mixture [terair] (size: 850, mass: 850), 900 units of oxyhydro [h2o2] (size: 900, mass: 900),
+      70 units of iron [iron] (size: 350, mass: 700), 70 units of titanium [titani] (size: 700,
+      mass: 700), 80 units of silicium [silici] (size: 400, mass: 240), 80 units of copper [copper]
+      (size: 400, mass: 640), 80 units of uranium [uraniu] (size: 80, mass: 640), 10 terrans
+      [terran] (size: 40, mass: 40, upkeep: 10 cash [cash], consume: 10 units of food [food], 10
+      units of terran breathing gas mixture [terair]), 97 units of carbon [carbon] (size: 485, mass:
+      485).
+      events:
+        week 1: got 85 units of carbon [carbon] from coal-burning plant [000015].
+        week 1: got 15 units of food [food] from farming complex [000014].
+        week 1: got unit of carbon [carbon] from core drill [000016].
+        week 3: got 15 units of food [food] from farming complex [000014].
+        week 3: got unit of carbon [carbon] from core drill [000016].
+        week 4: got 15 units of food [food] from farming complex [000014].
+        week 4: got unit of carbon [carbon] from core drill [000016].
+        week 5: got 15 units of food [food] from farming complex [000014].
+        week 5: got unit of carbon [carbon] from core drill [000016].
+        week 6: got 15 units of food [food] from farming complex [000014].
+        week 6: got unit of carbon [carbon] from core drill [000016].
+        week 7: got 15 units of food [food] from farming complex [000014].
+        week 7: got unit of carbon [carbon] from core drill [000016].
+        week 8: got 15 units of food [food] from farming complex [000014].
+        week 8: got unit of carbon [carbon] from core drill [000016].
+        week 9: got 15 units of food [food] from farming complex [000014].
+        week 9: got unit of carbon [carbon] from core drill [000016].
+        week 10: got 15 units of food [food] from farming complex [000014].
+        week 10: got unit of carbon [carbon] from core drill [000016].
+        week 10: given 30 units of iron [iron] to space shuttle [100].
+        week 10: given 30 units of titanium [titani] to space shuttle [100].
+        week 10: given 20 units of silicium [silici] to space shuttle [100].
+        week 10: given 20 units of copper [copper] to space shuttle [100].
+        week 10: given 20 units of uranium [uraniu] to space shuttle [100].
+        week 10: given 150 units of food [food] to space shuttle [100].
+        week 10: given 100 units of oxyhydro [h2o2] to space shuttle [100].
+        week 10: given 150 units of terran breathing gas mixture [terair] to space shuttle [100].
+        week 11: got 15 units of food [food] from farming complex [000014].
+        week 11: got unit of carbon [carbon] from core drill [000016].
+        week 12: got 15 units of food [food] from farming complex [000014].
+        week 12: got unit of carbon [carbon] from core drill [000016].
+        week 13: got 15 units of food [food] from farming complex [000014].
+        week 13: got unit of carbon [carbon] from core drill [000016].
+    + farming complex [000014], 3 farming complexes [farms].
+      size: 3000, mass: 375 (300), capacity: 1500/75, energy: 15, crew: 15/15, upkeep: 165 (150)
+      cash [cash], consume: 15 (0) units of food [food], 15 (0) units of terran breathing gas
+      mixture [terair].
+      items: 15 terrans [terran] (size: 60, mass: 60, upkeep: 15 cash [cash], consume: 15 units of
+      food [food], 15 units of terran breathing gas mixture [terair]), 15 units of food [food]
+      (size: 15, mass: 15).
+      events:
+        week 1: produced 15 units of food [food].
+        week 1: given 15 units of food [food] to small cargo bay [000013].
+        week 2: produced 15 units of food [food].
+        week 3: given 15 units of food [food] to small cargo bay [000013].
+        week 3: produced 15 units of food [food].
+        week 4: given 15 units of food [food] to small cargo bay [000013].
+        week 4: produced 15 units of food [food].
+        week 5: given 15 units of food [food] to small cargo bay [000013].
+        week 5: produced 15 units of food [food].
+        week 6: given 15 units of food [food] to small cargo bay [000013].
+        week 6: produced 15 units of food [food].
+        week 7: given 15 units of food [food] to small cargo bay [000013].
+        week 7: produced 15 units of food [food].
+        week 8: given 15 units of food [food] to small cargo bay [000013].
+        week 8: produced 15 units of food [food].
+        week 9: given 15 units of food [food] to small cargo bay [000013].
+        week 9: produced 15 units of food [food].
+        week 10: given 15 units of food [food] to small cargo bay [000013].
+        week 10: produced 15 units of food [food].
+        week 11: given 15 units of food [food] to small cargo bay [000013].
+        week 11: produced 15 units of food [food].
+        week 12: given 15 units of food [food] to small cargo bay [000013].
+        week 12: produced 15 units of food [food].
+        week 13: given 15 units of food [food] to small cargo bay [000013].
+        week 13: produced 15 units of food [food].
+    + coal-burning plant [000015], 3 coal-burning plants [cplant].
+      size: 3000, mass: 3024 (3000), capacity: 1500/24, energy: 120/30 (consume: 15 units of carbon
+      [carbon] for 13 weeks), crew: 6/6, upkeep: 156 (150) cash [cash], consume: 6 (0) units of food
+      [food], 6 (0) units of terran breathing gas mixture [terair].
+      fuel requirements: 15 units of carbon [carbon] per 13 weeks.
+      items: 6 terrans [terran] (size: 24, mass: 24, upkeep: 6 cash [cash], consume: 6 units of food
+      [food], 6 units of terran breathing gas mixture [terair]).
+      events:
+        week 1: given 85 units of carbon [carbon] to small cargo bay [000013].
+        week 1: consumed 15 units of carbon [carbon] as fuel.
+        week 1: started energy production for the next 13 weeks.
+    + core drill [000016], core drill [cdrill].
+      size: 1000, mass: 1029 (1000), capacity: 750/29, energy: 5, crew: 6/6, upkeep: 46 (40) cash
+      [cash], consume: 6 (0) units of food [food], 6 (0) units of terran breathing gas mixture
+      [terair].
+      items: 6 terrans [terran] (size: 24, mass: 24, upkeep: 6 cash [cash], consume: 6 units of food
+      [food], 6 units of terran breathing gas mixture [terair]), unit of carbon [carbon] (size: 5,
+      mass: 5).
+      events:
+        week 1: produced unit of carbon [carbon].
+        week 1: given unit of carbon [carbon] to small cargo bay [000013].
+        week 2: produced unit of carbon [carbon].
+        week 3: given unit of carbon [carbon] to small cargo bay [000013].
+        week 3: produced unit of carbon [carbon].
+        week 4: given unit of carbon [carbon] to small cargo bay [000013].
+        week 4: produced unit of carbon [carbon].
+        week 5: given unit of carbon [carbon] to small cargo bay [000013].
+        week 5: produced unit of carbon [carbon].
+        week 6: given unit of carbon [carbon] to small cargo bay [000013].
+        week 6: produced unit of carbon [carbon].
+        week 7: given unit of carbon [carbon] to small cargo bay [000013].
+        week 7: produced unit of carbon [carbon].
+        week 8: given unit of carbon [carbon] to small cargo bay [000013].
+        week 8: produced unit of carbon [carbon].
+        week 9: given unit of carbon [carbon] to small cargo bay [000013].
+        week 9: produced unit of carbon [carbon].
+        week 10: given unit of carbon [carbon] to small cargo bay [000013].
+        week 10: produced unit of carbon [carbon].
+        week 11: given unit of carbon [carbon] to small cargo bay [000013].
+        week 11: produced unit of carbon [carbon].
+        week 12: given unit of carbon [carbon] to small cargo bay [000013].
+        week 12: produced unit of carbon [carbon].
+        week 13: given unit of carbon [carbon] to small cargo bay [000013].
+        week 13: produced unit of carbon [carbon].
+    + factory [000017], 5 factories [factry].
+      size: 5000, mass: 4250 (3750), capacity: 2500/400, energy: 75, crew: 50/50, upkeep: 350 (300)
+      cash [cash], consume: 50 (0) units of food [food], 50 (0) units of terran breathing gas
+      mixture [terair].
+      items: 50 terrans [terran] (size: 200, mass: 200, upkeep: 50 cash [cash], consume: 50 units of
+      food [food], 50 units of terran breathing gas mixture [terair]), 20 units of iron [iron]
+      (size: 100, mass: 200), 10 units of titanium [titani] (size: 100, mass: 100).
+      events:
+        week 1: consumed unit of silicium [silici] to produce space shuttle [shuttl] module.
+        week 1: produced space shuttle [shuttl] into space shuttle [100].
+        week 2: consumed unit of silicium [silici] to produce space shuttle [shuttl] module.
+        week 2: produced space shuttle [shuttl] into space shuttle [100].
+        week 3: consumed unit of silicium [silici] to produce space shuttle [shuttl] module.
+        week 3: produced space shuttle [shuttl] into space shuttle [100].
+        week 4: consumed unit of silicium [silici] to produce space shuttle [shuttl] module.
+        week 4: produced space shuttle [shuttl] into space shuttle [100].
+        week 5: consumed unit of silicium [silici] to produce space shuttle [shuttl] module.
+        week 5: produced space shuttle [shuttl] into space shuttle [100].
+        week 6: consumed unit of silicium [silici] to produce space shuttle [shuttl] module.
+        week 6: produced space shuttle [shuttl] into space shuttle [100].
+        week 7: consumed unit of silicium [silici] to produce space shuttle [shuttl] module.
+        week 7: produced space shuttle [shuttl] into space shuttle [100].
+        week 8: consumed unit of silicium [silici] to produce space shuttle [shuttl] module.
+        week 8: produced space shuttle [shuttl] into space shuttle [100].
+        week 9: consumed unit of silicium [silici] to produce space shuttle [shuttl] module.
+        week 9: produced space shuttle [shuttl] into space shuttle [100].
+        week 10: consumed unit of silicium [silici] to produce space shuttle [shuttl] module.
+        week 10: produced space shuttle [shuttl] into space shuttle [100].
+  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
+    size: 250.
+------------------------------------------------------------
+  * Luna [P00003] (1, 0, 0), moon, unexplored.
+------------------------------------------------------------
+
+
+Orders Template:
+#faction 2 "xyzzy"
+#modulestack 000012
+; + Caste Prime Headquarters [000012], corporate headquarters [corphq].
+; items: 60 terrans [terran], 1300 cash [cash].
+@produce cash
+
+#modulestack 000013
+; + small cargo bay [000013], 5 small cargo bays [cargob].
+; items: 1030 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units of
+; oxyhydro [h2o2], 70 units of iron [iron], 70 units of titanium [titani], 80 units of silicium
+; [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 97 units
+; of carbon [carbon].
+@get all food from 000014
+@get all carbon from 000016
+
+#modulestack 000014
+; + farming complex [000014], 3 farming complexes [farms].
+; items: 15 terrans [terran], 15 units of food [food].
+@use farmng
+
+#modulestack 000015
+; + coal-burning plant [000015], 3 coal-burning plants [cplant].
+; items: 6 terrans [terran].
+@produce energy
+
+#modulestack 000016
+; + core drill [000016], core drill [cdrill].
+; items: 6 terrans [terran], unit of carbon [carbon].
+@use hcdril
+
+#modulestack 000017
+; + factory [000017], 5 factories [factry].
+; items: 50 terrans [terran], 20 units of iron [iron], 10 units of titanium [titani].
+
+#modulestack 100
+; + space shuttle [100], 10 space shuttle [shuttl].
+; items: 40 terrans [terran], 30 units of iron [iron], 26 units of titanium [titani], 20 units of
+; silicium [silici], 20 units of copper [copper], 10 units of uranium [uraniu], 150 units of food
+; [food], 90 units of oxyhydro [h2o2], 150 units of terran breathing gas mixture [terair].
+; effects:
+;   can operate for another 10 weeks without refueling.
+;   producing spaceship hull [sshull] into empty stack [101], 3 weeks to complete (x10 efficiency
+;   multiplier).
+move R00001
++use ssassm as new101
++-use spctrl as new102
++-use urfiss as new103
++-use areact as new104
++-use crewhs as new105
++--give -20 terran to new105
++--give -20 terair to new105
++--give -20 food to new105
++-use strans as new106
++--give all iron to new106
++--give all titani to new106
++--give all silici to new106
++--give all copper to new106
++--give -10 uraniu to new106
++--give -10 h2o2 to new106
+
+#person 000001
+; + Caste Prime CEO [000001], terran [terran].
+active new101
+-stack new102
+
+#end
+

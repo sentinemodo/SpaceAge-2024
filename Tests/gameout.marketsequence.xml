@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<game turn="36">
+	<faction name="1" name-en="NPC" password="" email="" default-attitude="2" text-report="True" text-report-line-length="100" xml-report="True" balance="0" credit-line="1000000" credit-rate="0" deposit-rate="0" />
+	<faction name="2" name-en="Caste Prime" password="xyzzy" email="mail@mail.pl" default-attitude="2" text-report="True" text-report-line-length="100" xml-report="True" balance="10000" credit-line="10000" credit-rate="0.2" deposit-rate="0.05" />
+	<galaxy>
+		<system name="SS0001" name-en="Sol" X="0" Y="0" Z="0">
+			<star name="S00001" name-en="Sol" />
+			<planet name="P00001" name-en="Mercury" AU="0.4" surface-size-X="1" surface-size-Y="1" type="dust">
+				<orbit name="O00005" />
+			</planet>
+			<planet name="P00002" name-en="Earth" AU="1" surface-size-X="6" surface-size-Y="4" type="ocean">
+				<moon name="P00002" name-en="Luna" AU="0.002" surface-size-X="0" surface-size-Y="0" type="rock">
+					<orbit name="O00004" />
+					<region name="R87705" name-en="Great Desert" X="0" Y="1" type="dust" />
+					<region name="R24776" name-en="Great Desert" X="0" Y="1" type="dust" />
+				</moon>
+				<orbit name="O00003">
+					<race type="terran" />
+					<modulestack name="100011" name-en="Frigate" type="sshull" quantity="1" faction="2">
+						<modulestack name="100012" name-en="" type="cbridg" quantity="1" faction="2">
+							<person name="200002" name-en="" type="terran" faction="2">
+								<upkeep type="cash" quantity="10" />
+							</person>
+							<technology name="miltac" />
+							<itemstack type="terran" quantity="9" />
+						</modulestack>
+						<modulestack name="100013" name-en="" type="fisrec" quantity="2" faction="2">
+							<itemstack type="uraniu" quantity="10" />
+							<itemstack type="terran" quantity="6" />
+						</modulestack>
+						<modulestack name="100014" name-en="" type="rctdrv" quantity="1" faction="2">
+							<itemstack type="h2o2" quantity="100" />
+							<itemstack type="terran" quantity="1" />
+						</modulestack>
+						<modulestack name="100015" name-en="" type="xraylz" quantity="2" faction="2">
+							<technology name="lasopt" />
+							<itemstack type="terran" quantity="2" />
+						</modulestack>
+						<modulestack name="100016" name-en="" type="crwqrt" quantity="2" faction="2">
+							<itemstack type="cash" quantity="10000" />
+							<itemstack type="food" quantity="1000" />
+							<itemstack type="h2o2" quantity="1000" />
+							<itemstack type="terran" quantity="11" />
+						</modulestack>
+					</modulestack>
+					<modulestack name="100021" name-en="Station" type="orcmpx" quantity="1" faction="1">
+						<modulestack name="100022" name-en="" type="cbridg" quantity="1" faction="1">
+							<person name="200003" name-en="" type="terran" faction="1">
+								<upkeep type="cash" quantity="10" />
+							</person>
+							<itemstack type="terran" quantity="9" />
+						</modulestack>
+						<modulestack name="100023" name-en="" type="fisrec" quantity="1" faction="1">
+							<itemstack type="uraniu" quantity="5" />
+							<itemstack type="terran" quantity="3" />
+						</modulestack>
+						<modulestack name="100024" name-en="" type="cargob" quantity="2" faction="1">
+							<itemstack type="iron" quantity="100" />
+							<itemstack type="titani" quantity="100" />
+							<itemstack type="copper" quantity="100" />
+							<itemstack type="silici" quantity="100" />
+							<itemstack type="h2o2" quantity="1000" />
+							<itemstack type="terran" quantity="4" />
+						</modulestack>
+						<modulestack name="100025" name-en="" type="crwqrt" quantity="1" faction="1">
+							<itemstack type="cash" quantity="10000" />
+							<itemstack type="food" quantity="1000" />
+							<itemstack type="terran" quantity="4" />
+						</modulestack>
+					</modulestack>
+				</orbit>
+				<region name="R10001" name-en="Arctic" X="0" Y="0" type="barren" />
+				<region name="R10002" name-en="Arctic" X="1" Y="0" type="barren" />
+				<region name="R10003" name-en="Northern Sea" X="0" Y="1" type="sea" />
+				<region name="R10004" name-en="Northern Sea" X="1" Y="1" type="sea" />
+				<region name="R10005" name-en="Northern Europe" X="0" Y="2" type="grassl" />
+				<region name="R10006" name-en="Northern Europe" X="1" Y="2" type="grassl" />
+				<region name="R10007" name-en="Baltic Sea" X="0" Y="3" type="sea" />
+				<region name="R10008" name-en="Baltic Sea" X="1" Y="3" type="sea" />
+				<region name="R00001" name-en="Western Europe" X="0" Y="4" type="grassl">
+					<capacity group="settlement" quantity="8" />
+					<exit region="R00002">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="iron" quantity="20" />
+					<resource type="food" quantity="500" />
+					<modulestack name="000005" name-en="Berlin" type="city" quantity="2" faction="1">
+						<buying item="terran" quantity="1" price="-1" />
+						<itemstack type="cash" quantity="1000" />
+						<itemstack type="terran" quantity="20" />
+						<modulestack name="000008" name-en="Berlin farms" type="farms" quantity="3" faction="1">
+							<technology name="farmng" />
+							<itemstack type="food" quantity="40" />
+							<itemstack type="terran" quantity="15" />
+						</modulestack>
+						<modulestack name="000011" name-en="Berlin wind powerplants" type="wnplnt" quantity="15" faction="1" />
+						<modulestack name="000007" name-en="" type="cplant" quantity="2" faction="2">
+							<itemstack type="carbon" quantity="10" />
+							<itemstack type="iron" quantity="5" />
+							<itemstack type="terran" quantity="4" />
+						</modulestack>
+						<modulestack name="000006" name-en="" type="cdrill" quantity="2" faction="2">
+							<technology name="hcdril" />
+							<itemstack type="iron" quantity="10" />
+							<itemstack type="terran" quantity="12" />
+						</modulestack>
+					</modulestack>
+					<modulestack name="100001" name-en="" type="trucks" quantity="2" faction="2">
+						<buying item="food" quantity="100" price="1" />
+						<person name="200001" name-en="" type="terran" faction="2">
+							<upkeep type="cash" quantity="10" />
+							<itemstack type="food" quantity="2" />
+							<itemstack type="cash" quantity="100" />
+						</person>
+						<itemstack type="oil" quantity="2" />
+						<itemstack type="terran" quantity="1" />
+					</modulestack>
+				</region>
+				<region name="R00002" name-en="Eastern Europe" X="1" Y="4" type="grassl">
+					<capacity group="settlement" quantity="4" />
+					<exit region="R00001">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="carbon" quantity="5" />
+					<resource type="food" quantity="600" />
+					<modulestack name="000001" name-en="Warszawa" type="city" quantity="1" faction="1">
+						<itemstack type="cash" quantity="500" />
+						<itemstack type="terran" quantity="10" />
+						<modulestack name="000010" name-en="Warsaw farms" type="farms" quantity="2" faction="1">
+							<technology name="farmng" />
+							<itemstack type="food" quantity="40" />
+							<itemstack type="terran" quantity="10" />
+						</modulestack>
+						<modulestack name="000009" name-en="Warsaw wind powerplants" type="wnplnt" quantity="10" faction="1" />
+						<modulestack name="000112" name-en="Caste Prime Headquarters" type="corphq" quantity="1" faction="2">
+							<person name="000101" name-en="Caste Prime CEO" type="terran" faction="2">
+								<upkeep type="cash" quantity="10" />
+							</person>
+							<itemstack type="terran" quantity="20" />
+						</modulestack>
+						<modulestack name="000002" name-en="" type="cdrill" quantity="1" faction="2">
+							<itemstack type="carbon" quantity="50" />
+							<itemstack type="terran" quantity="6" />
+						</modulestack>
+						<modulestack name="000003" name-en="" type="cplant" quantity="1" faction="2">
+							<itemstack type="terran" quantity="2" />
+						</modulestack>
+						<modulestack name="000004" name-en="" type="factry" quantity="1" faction="2">
+							<technology name="agrplx" />
+							<technology name="armcbt" />
+							<itemstack type="terran" quantity="10" />
+							<itemstack type="iron" quantity="20" />
+							<itemstack type="cash" quantity="300" />
+						</modulestack>
+						<modulestack name="100002" name-en="" type="trucks" quantity="1" faction="2" />
+					</modulestack>
+				</region>
+				<region name="R10009" name-en="Southern Europe" X="0" Y="5" type="mountn" />
+				<region name="R10010" name-en="Southern Europe" X="1" Y="5" type="grassl" />
+				<region name="R10011" name-en="Mediterrean Sea" X="0" Y="6" type="sea" />
+				<region name="R10012" name-en="Mediterrean Sea" X="1" Y="6" type="sea" />
+			</planet>
+		</system>
+		<system name="S00002" name-en="Proxima Centauri" X="0" Y="0" Z="0">
+			<star name="S61222" name-en="" />
+		</system>
+	</galaxy>
+	<orders>
+		<order subject="modulestack" name="100002">
+			<move>
+				<destination destination="R00001" />
+				<destination destination="R00002" />
+			</move>
+		</order>
+	</orders>
+</game>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<game>
+	<orders>
+		<order subject="modulestack" name="100001">
+			<get item="iron" quantity="1" transferer="000006" />
+		</order>
+		<order subject="modulestack" name="100001" repeat="unlimited">
+			<get item="iron" quantity="1" transferer="000006" />
+		</order>
+	</orders>
+</game>

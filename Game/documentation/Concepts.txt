@@ -1,0 +1,104 @@
+Galaxy movement
+1.  are two types of movement: solar speed (applicapble within range of the solar system) and space speed, (applicable between spacesystems. Initial the nuclear engines for example have both speeds equal. Later on some more powerful engines that are not easily turned on and off (like solar sails) allow greater speeds between spaces, on the other side, solar engines make use of the gravitional energy present in solar systems, making them more efficient when more mass is available
+2. 
+
+Combat
+1. game woud be heavily wieghted on defense, that is since most companies will have only single or two space ships, it should be extremaly difficult to destroy it completely. That same about the planet combat. While mass troops and cheap ground and air units should be more than enough to repel any invasion from another planet, it should be dificult to loose a ship during doing so.
+2. therethee will be three main weapon types: beam, particle and missile, matched by three defenses: armor, shields and antimissile systems
+3. aerial combat, will be just flat (2d) space combat, with possible aerial (non-space) units involvement
+4. ground combat would include infantry, and mechanized units, artillery, bunkers, naval units and aerial support
+5. bombardement from orbit possible
+
+Ship constructions:
+1. after initial small ships period, the ultimate ship caracass will be extensible, that is players having gathered resources will be able to build up the framework, and add more modules to the existing ship, ultimatey leading to the wandering space cities, since no single system will have all resources required for the future growth, it will be necessary to move the cities, as fetching resources from other planets will just take too long. capturing and colonising the planets on the way. Modules on ships does't have to be single owned making a consortium of companies possible, especially if they would not share the technology
+
+Planetary constructions
+1. by building modules in regions, each region have limited amount of city space, production modules can be added to city modules, but can be operated only if enough population is present and willing to work in facilities, to attract population to work a corporation sets wages level, wich directly transforms into upkeep of the module, if more than one corporation wants population to work the population choose the best wage. the change is not immediate.
+2. population in cities slowly increases with time
+3. population migrate from one city/region to another if there is space and average higher wage than in their current city
+4. the facilities operate on reduced effectiveness if there is not enough population to operate it fully
+5. standard rate is 50% working, 25% young, 25% old
+6. building universities is required to operate some more advanced facilities (but increase young)
+7. building hospitals is required to decrease the old ratio (increasing working)
+8. building farms is required to allow population increase (it will not increase if there is no food surplus)
+9. building entertainemnt increase morale
+9. lack of food, lack of entertainment, and reducing the wages, increasing taxes
+
+orbital/space constructions
+1. small scale facilities requiring number of officers to operate and producing one tenth of the large facitlites do not need the space habitats.
+2. large scale facilties require space habitats (space stations)
+3. space stations have owners, tat is 
+
+
+oficerowie
+- na rynku mozna kupic podstawowych oficerow (untrained) i trained (trained maja po jednej umiejetnosci)
+- trained oficers pojawiaja sie tylko w regionach w ktorych sa uniwersytety (uniwersytety 'produkuja' w kazdym miesiacu trained oficerow z umiejtnosciami odpowiednimi do technologii w nich zaladowanych)
+- untrained oficerow mozna szkolic wew wlasnych obiektach (self training i w educational facilities)
+
+oficeorwie moga uczyc sie nowych umijetenosci - kazda kolejna podwaja ich upkeep - np. navigator/energy oficer kostuje dwa ray tyle co dwoch oficerow, ale navigator/energy/fighter pilot tyle co 4 trained oficerow)
+
+trained oficerowie maja dodatkowe bonusy, np. +5% na poziom do produkcji energii albo +5% mocy statku przy oficerach silnikow
+
+im wyzszy poziom technologii zaladowany do facility (uniwersystet, training, tym wyzszy 
+
+types of officers:
+production: add large 10-50% bonus to time/quantity of specific production type: mining/gathering, factory production, energy production
+ecologist: add bonus to to ecology effects: growth rate, energy usage, waste output, reduce resource requirements
+politician: allows better results on loyalty/morale
+economist: better results on taxes, reduces modulestack (with submodulestacks) upkeep costs, increases credit/deposit ratio
+scientists: flat research points, increased chance for breakthrough, spontaneus discovery
+engineers: alow constructions of faction-specific module-types modifications like, increased integrity, lower size/mass/energy requirements/damage/range - modified designs gets Mk for versioning and Factoin name, blueprints are stored like standard technologies and can be sold/stolen/used
+marine: increase morale, damage, initiative of the infantry/armor unit
+pilot: increase speed/evasion/damage/initiative of the aerial/space fighters unit
+gunner: increase damage/accuracy/rate of fire of the single weapon modulestack
+tactician: increase initiative of the modulestack and submodulestacks
+commander: increases maximum size of the fleet/army, increases base initiative
+hacker: increases effectivenes of the modulestacks electronic contermeasures and computer attacks
+spy: ??
+media reporter: ??
+
+in battle one of the sides can have different kinds of superiorities:
+- ground superiority: defender units have higher initiative
+- air superiority: one of the sides that is the only one having aerial units, places bombardement after every three rounds
+- orbital superiority: one of the sides places orbital bombardement every ten rounds
+- computer superiority: every three turns one of the modules gets disabled for one turn
+- suprise superiority: free round of attacks before combat
+
+--- potrzebne technologie
+build headquarters - basic crew housing, technology center, basic crew housing, communication, high upkeep, self sustainable (o/o energy)
+
+
+- reasearch
+
+- faction credit (+5% -15%)
+
+
+market delivery times
+same region: 1 week
+neighbouring region: distance * 2
+other region on planet: quarter (unless the both seller and buyer regions have public airports - then 4 week)
+region to orbit: possible only if buyer region has is a public: cosmodrom - 4 week
+orbit to orbit: 4 week possible only if there is a public station built
+orbit to planet: possible only if buyer region has public cosmodrom
+planet to planet: possible only if both orbits have public stations built - distance * 2, limits to size of transported goods
+system  to system: I don't know yet
+
+market operations costs: 10% of the value + distance cost:
+	neighbouring costs: 20
+	farther: 100
+	orbit: 500
+	planet: 500 per week of distance
+market fees are paid in halfs to both regions, that is receiving lots of resources via public market services improves the economy of the region
+
+market operations size limits:
+	each region/station can trasnport up to 10% of its size per turn, no limit for receivement
+	limits are increased by public transport facilities
+	the sequence of operations is calculated based on the value of the offer, ie. profit for the transporting region
+
+market prices chcange rules
+1. prices of NPC modulestack rises or drops if the sell/buy order was not fullfilled and there are counter offers with nonmatching prices
+2. any offer that is going to be reapeated next turn (food, terrans) is apropriately higher/lower with aration of (fullfilment/10 )% that is: if an offer was fullfilled completely (ie. all terrans were bought) next turn price will be 10% higher, if an offer was fullfilled partialy (ie. city bought 100 of maximum 200 food units the price will drop by 5%
+2. the price change in any direction cannot be greater than 10% of the current offer
+3. if there are offers that would be met, if smaller than 10% change would suffice, the price will match this price
+
+technology can be only bought/sold in immediate distance

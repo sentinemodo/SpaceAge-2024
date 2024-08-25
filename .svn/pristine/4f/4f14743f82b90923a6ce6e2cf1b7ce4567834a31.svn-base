@@ -1,0 +1,233 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1BCECE13-83A2-4672-BB05-C3787126020E}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SpaceAge</RootNamespace>
+    <AssemblyName>Game</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="battle\BattleField.cs" />
+    <Compile Include="battle\EDamageStatus.cs" />
+    <Compile Include="battle\DisableTactic.cs" />
+    <Compile Include="battle\ETactic.cs" />
+    <Compile Include="battle\GroundUnit.cs" />
+    <Compile Include="battle\IBattleReporting.cs" />
+    <Compile Include="battle\Tactics.cs" />
+    <Compile Include="battle\Tactic.cs" />
+    <Compile Include="battle\Unit.cs" />
+    <Compile Include="data structures\Anomaly.cs" />
+    <Compile Include="data structures\Capacities.cs" />
+    <Compile Include="data structures\Capacity.cs" />
+    <Compile Include="battle\Battles.cs" />
+    <Compile Include="data structures\Anomalies.cs" />
+    <Compile Include="data structures\ELocationType.cs" />
+    <Compile Include="data structures\IOfferent.cs" />
+    <Compile Include="data structures\ILocationsHolder.cs" />
+    <Compile Include="data structures\IMoveable.cs" />
+    <Compile Include="data structures\NamedType.cs" />
+    <Compile Include="data structures\RegionType.cs" />
+    <Compile Include="data structures\RegionTypes.cs" />
+    <Compile Include="effects\TrainingSkill.cs" />
+    <Compile Include="effects\TrainingOfficer.cs" />
+    <Compile Include="effects\Training.cs" />
+    <Compile Include="effects\ProducingEnergy.cs" />
+    <Compile Include="game\Bank.cs" />
+    <Compile Include="game\XMLProcessing.cs" />
+    <Compile Include="orders\SellOrder.cs" />
+    <Compile Include="orders\EHasType.cs" />
+    <Compile Include="orders\EProduceType.cs" />
+    <Compile Include="orders\ESeeType.cs" />
+    <Compile Include="data structures\Location.cs" />
+    <Compile Include="data structures\SpacePoints.cs" />
+    <Compile Include="data structures\IHolder.cs" />
+    <Compile Include="data structures\SpacePoint.cs" />
+    <Compile Include="data structures\IStacking.cs" />
+    <Compile Include="data structures\Stars.cs" />
+    <Compile Include="data structures\MoonTypes.cs" />
+    <Compile Include="data structures\IOrbitHolder.cs" />
+    <Compile Include="data structures\EMoonType.cs" />
+    <Compile Include="data structures\EPlanetType.cs" />
+    <Compile Include="data structures\MoonType.cs" />
+    <Compile Include="data structures\Moons.cs" />
+    <Compile Include="data structures\Modules.cs" />
+    <Compile Include="data structures\SkillTypes.cs" />
+    <Compile Include="data structures\SkillType.cs" />
+    <Compile Include="data structures\Skills.cs" />
+    <Compile Include="data structures\Skill.cs" />
+    <Compile Include="data structures\Module.cs" />
+    <Compile Include="data structures\Planets.cs" />
+    <Compile Include="data structures\EProductionType.cs" />
+    <Compile Include="data structures\EOffersType.cs" />
+    <Compile Include="effects\Alter.cs" />
+    <Compile Include="effects\Moving.cs" />
+    <Compile Include="effects\LightlyDamaged.cs" />
+    <Compile Include="effects\ENoUpkeepEffects.cs" />
+    <Compile Include="effects\EProducableEffects.cs" />
+    <Compile Include="effects\ProducingEffect.cs" />
+    <Compile Include="effects\ProducingModule.cs" />
+    <Compile Include="effects\ProducingItems.cs" />
+    <Compile Include="effects\ReceivingTechnology.cs" />
+    <Compile Include="effects\ReceivingModules.cs" />
+    <Compile Include="effects\ReceivingItems.cs" />
+    <Compile Include="effects\Producing.cs" />
+    <Compile Include="effects\Fuelled.cs" />
+    <Compile Include="effects\Receiving.cs" />
+    <Compile Include="effects\Effect.cs" />
+    <Compile Include="data structures\EOfferType.cs" />
+    <Compile Include="data structures\Offers.cs" />
+    <Compile Include="data structures\IProducable.cs" />
+    <Compile Include="data structures\EMoveMode.cs" />
+    <Compile Include="data structures\MoveModes.cs" />
+    <Compile Include="data structures\MoveMode.cs" />
+    <Compile Include="data structures\EItemTypesGroup.cs" />
+    <Compile Include="data structures\Offer.cs" />
+    <Compile Include="data structures\Races.cs" />
+    <Compile Include="data structures\ISingular.cs" />
+    <Compile Include="data structures\IMultiple.cs" />
+    <Compile Include="data structures\IResourcesHolder.cs" />
+    <Compile Include="data structures\Orbits.cs" />
+    <Compile Include="data structures\ExitModes.cs" />
+    <Compile Include="data structures\EModuleTypesGroup.cs" />
+    <Compile Include="data structures\IItemStacksHolder.cs" />
+    <Compile Include="data structures\IRegionHolder.cs" />
+    <Compile Include="data structures\Exit.cs" />
+    <Compile Include="data structures\Exits.cs" />
+    <Compile Include="data structures\ExitMode.cs" />
+    <Compile Include="data structures\People.cs" />
+    <Compile Include="data structures\Person.cs" />
+    <Compile Include="data structures\Race.cs" />
+    <Compile Include="data structures\Resource.cs" />
+    <Compile Include="data structures\Resources.cs" />
+    <Compile Include="effects\Effects.cs" />
+    <Compile Include="effects\IEffectable.cs" />
+    <Compile Include="battle\Battle.cs" />
+    <Compile Include="game\Sequence.cs" />
+    <Compile Include="game\DataFile.cs" />
+    <Compile Include="Events.cs" />
+    <Compile Include="EventsReaders.cs" />
+    <Compile Include="data structures\Faction.cs" />
+    <Compile Include="data structures\FactionAttitude.cs" />
+    <Compile Include="data structures\FactionAttitudes.cs" />
+    <Compile Include="data structures\FactionOptions.cs" />
+    <Compile Include="data structures\Factions.cs" />
+    <Compile Include="data structures\Galaxy.cs" />
+    <Compile Include="Game.cs" />
+    <Compile Include="data structures\ItemStack.cs" />
+    <Compile Include="data structures\ItemStacks.cs" />
+    <Compile Include="data structures\ItemType.cs" />
+    <Compile Include="data structures\ItemTypes.cs" />
+    <Compile Include="data structures\ModuleStack.cs" />
+    <Compile Include="data structures\ModuleStacks.cs" />
+    <Compile Include="data structures\ModuleType.cs" />
+    <Compile Include="data structures\ModuleTypes.cs" />
+    <Compile Include="data structures\NamedObject.cs" />
+    <Compile Include="data structures\Orbit.cs" />
+    <Compile Include="data structures\PlanetType.cs" />
+    <Compile Include="data structures\PlanetTypes.cs" />
+    <Compile Include="data structures\Regions.cs" />
+    <Compile Include="data structures\LocationType.cs" />
+    <Compile Include="data structures\LocationTypes.cs" />
+    <Compile Include="data structures\SpaceSystemObject.cs" />
+    <Compile Include="data structures\Moon.cs" />
+    <Compile Include="game\Market.cs" />
+    <Compile Include="orders\BuyOrder.cs" />
+    <Compile Include="orders\ProduceOrder.cs" />
+    <Compile Include="orders\SeeOrder.cs" />
+    <Compile Include="orders\StackOrder.cs" />
+    <Compile Include="orders\SetOrder.cs" />
+    <Compile Include="orders\ActiveOrder.cs" />
+    <Compile Include="orders\AliasOrder.cs" />
+    <Compile Include="orders\EOrderType.cs" />
+    <Compile Include="orders\HasOrder.cs" />
+    <Compile Include="orders\NameOrder.cs" />
+    <Compile Include="orders\GiveOrder.cs" />
+    <Compile Include="orders\GetOrder.cs" />
+    <Compile Include="orders\CopyOrder.cs" />
+    <Compile Include="orders\TransferOrder.cs" />
+    <Compile Include="orders\FormOrder.cs" />
+    <Compile Include="orders\ImmediateOrder.cs" />
+    <Compile Include="orders\TrainOrder.cs" />
+    <Compile Include="orders\UseOrder.cs" />
+    <Compile Include="orders\MoveOrder.cs" />
+    <Compile Include="orders\IOrderable.cs" />
+    <Compile Include="reports\EventReports.cs" />
+    <Compile Include="reports\EventReport.cs" />
+    <Compile Include="reports\IEventReporting.cs" />
+    <Compile Include="reports\IReporting.cs" />
+    <Compile Include="LineParser.cs" />
+    <Compile Include="orders\LongOrder.cs" />
+    <Compile Include="orders\Order.cs" />
+    <Compile Include="orders\Orders.cs" />
+    <Compile Include="orders\OrdersReader.cs" />
+    <Compile Include="data structures\Planet.cs" />
+    <Compile Include="data structures\Point2D.cs" />
+    <Compile Include="data structures\Point3D.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="data structures\Region.cs" />
+    <Compile Include="reports\ReportLine.cs" />
+    <Compile Include="reports\ReportLines.cs" />
+    <Compile Include="reports\ReportWriter.cs" />
+    <Compile Include="Request.cs" />
+    <Compile Include="data structures\SpaceSystemObjects.cs" />
+    <Compile Include="data structures\SpaceSystems.cs" />
+    <Compile Include="data structures\Star.cs" />
+    <Compile Include="data structures\SpaceSystem.cs" />
+    <Compile Include="data structures\StarType.cs" />
+    <Compile Include="data structures\StarTypes.cs" />
+    <Compile Include="data structures\Technologies.cs" />
+    <Compile Include="data structures\Technology.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="documentation\Basics.txt" />
+    <Content Include="documentation\Concepts.txt" />
+    <Content Include="documentation\links.txt" />
+    <Content Include="documentation\Rules.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

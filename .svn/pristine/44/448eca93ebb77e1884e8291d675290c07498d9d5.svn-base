@@ -1,0 +1,2925 @@
+Alderson - A PBEM of Galactic strategy (V 1.5)
+
+
+1. Introduction
+
+
+A long, long time ago, in a galaxy far, far away...
+
+Or maybe in our future, here, in the Milky Way? Who knows what surprises the
+future holds for the human race.  One thing is sure, there is no one out there,
+or we'd have met them.  The star lanes were thought to be too difficult anyway.
+Until Alderson.  He theorised that weak points exist in the fabric of the
+space-time, out at the fringes of gravity wells.  From those weak points, one
+could "jump" to anothe weak point.
+
+It took years to mount an expedition, place proper equipment and get to the
+fringe of the Solar system.  There, one such weak point was located, and the
+experimental "Alderson Drive" used.  The expedition came back unscathed, with
+pictures of a different star system...  It took 3 months to triangulate, and
+find out that the explorers had gone out to more than 750 light-years... in the
+wink of an eye.  And had come back the next week.
+
+Today, Man has started to spread out, using the Alderson points that link
+together the galaxy in a gigantic whole.  The galaxy is vast, but seemingly
+empty.  Rich resources await the dynamic explorer, the astute trader, the smart
+operator and the strong captain.  There are no limits... but those of your
+imagination.
+
+
+1.1. In-game History
+
+Two hundred years ago, a terran physicist, Alderson, proved out the existence
+of stable space-time anomalies in the wormhole category.  The so-called Points
+consist of a wormhole, whose effective length and diameters are of the order of
+the proton (near effective zero).  However, Points are stable, and link two
+fixed regions of space time, provided the relativistic distortion between the
+two are not too high.
+
+What was a curiosity at first became more interesting when Alderson's next
+paper showed up that a simple device would be able to take the point, and
+enlarge it englobe almost any size and shape of a sufficiently high density.
+Alderson's "jump" would transport any physical object almost instantaneously as
+long as it was triggered while the immaterial point was within the structure
+that was transported.  Star Trek warp drive was out, but the "hyperspace"
+jump was in.
+
+The catch was, Alderson Points required a space-time well to form, but were
+stable only on relatively flat space-time.  So, barring special conditions,
+Points would form only in star systems, but far out of them, requiring
+powerful space ships to move toward the Alderson Corona, the place near enough
+a sun to allow them to form, while far enough to prevent their disruption.
+
+Alderson's formula allowed people to compute the geometry, and find out the
+position of the two stable points in Earth solar system.  The rest is history.
+With the potential of going through the galaxy within a single lifetime,
+competing teams made ships, and rushed out, further than Pluto's orbit, to
+reach Alderson Points.  The theory was vindicated by facts, and a
+euro-brasilian crew became the first men to see a different sun with their own
+eyes, and not merely look at a star through telescopes.
+
+Within decades, hundreds of star systems were scouted, industrial bases and
+colonies created around remote planets... and wars raged.  The control of the
+Alderson Points, the mandatory passage between places, became an obsession,
+and democracies exploded, incapable of facing fanaticism and greed over a
+galactic scale.  What started as an obscure theocracy in a remote system swept
+out, and in fifty years controlled all the human foam, bureaucracy slowly
+replacing clergy.  Only Earth, and a few scattered settlements remained
+nominally independent; the settlements because of their isolation and total
+lack of importance, and Earth because of its billions, its well-established
+industrial base, and the small, subconscious respect for the mother planet.
+
+Then, disaster struck. In a single day, almost in a single moment as far as
+measurement could tell afterwards, all Alderson Points simply shut down,
+without explanation.  More than 28% of the population of the Imperium died
+during these few months, as interstellar commerce was forcibly shut down,
+and colonies lacking essential resources began to starve or suffocate.
+Calculus showed where the Points should be, but they did not appear on
+space-time scanners, nor would the jump engines work.
+
+After four months of terror, Alderson points started to reactivate as
+mysteriously as they had shut down.  One by one, Points reappeared where they
+had been before.  Most of them led to the same points, but other, more stable
+configurations appeared, replacing some known links.  The Imperium almost fell
+during that period, and contact was never resumed with 10% of the systems.
+
+However, two glaring oddities remained.  Even after all Alderson Points had
+reopened, two of them remained obstinately inactive.  All calculations showed
+that these should exist, that they should open to a destination.  But none
+were detectable at the required places.
+
+Those two points previously led to Earth.
+
+Even today, after nearly 100 years, the two points remain obstinately inactive.
+Systems in radio range scanned the sky, listening for the incessant radio
+chatter coming out of the solar system, and reported the great silence.  After
+relativistic corrections, radio activity from the heavily encrypted links out
+of the solar system had started to dwindle two days before the Shutdown, and
+had been reduced to zero in a week.  Conventional astronomy showed no oddities.
+No change in Earth albedo, so it didn't get nuked.  No odd orbital changes, so
+the entire system was more or less unperturbed.  But the total silence was
+more than enough to show that Something had happened.
+
+War?  Accident?  Deliberate messing with the space-time (as impossible as it
+sounds)?  Invasion by aliens?  No one knows.  Talks of sending slower than
+light ships or probes regularly surface, but no one has really taken a step
+toward implementing any realistic scheme.
+
+The only thing remaining is now the Fear.
+
+
+2. Principles
+
+2.1. The game
+
+Alderson is a play by mail strategic game in a futuristic galaxy setting.  Each
+player represents an "Interest", usually a corporation, an association, a fleet
+or all of the above.  Alderson is played using E-Mail.  Each turn, typically
+once a week, the player receives a full quarterly report, detailing what has
+gone on during the past period in all its possessions, colonies, settlements
+and starships.  The player then ponders matters, discuss with other players,
+and sends back to the game server an order form detailing the activities for
+the next game quarter.  The game server will gather all those orders, advance
+the time mark one additional quarter, and sends back new reports.  And the
+cycle begins anew.
+
+
+Alderson belongs to the family of Open Play-by-Email Games, i.e., it has no
+definite end or victory condition.  Instead, players define their own goals,
+and measure their progression using their own criteria.  Some will become
+thriving settlement administrators, running industrial or farming planets, and
+highly successful shipbuilding consortium.  Others will become intrepid
+explorers, scouting ever farther in the galaxy, coming back to sell information
+on new resources, new technologies, new systems to colonise.  Some will manage
+huge trading empires, exploiting rare or useful commodities, selling back to
+others products from afar.  And finally, some might become warlords, jealously
+defending their domains against any form of intrusion, or even marauding
+pirates, living off settlements and undefended starships...
+
+
+2.2. Sample report
+
+The basics of Alderson will be shown using a sample report from an imaginary
+player.  The contents of the sample report are not supposed to reflect a
+possible situation in the game.  Technologies, modules, star systems and the
+like may be different in the running game.
+
+
+2.2.1. Heading
+
+>> Alderson Report for Masarian Combine [mc54], john.smith@some.net
+>> Report period #35: 1st quarter, 2766
+>> Next deadline is: February 7th, 2001
+>>
+>> You have a credit line of $60754.
+
+All Alderson reports start with the above lines, in one form or the other.  The
+first line indicates your identification.  In the game world, the interest for
+this report is known as the "Masarian Combine", and is managed through the
+email address of "john.smith@some.net".
+
+Masarian Combine is a simple name, which appears in the reports.  It has no
+in-game signification.  The important part is the "mc54" that appears in square
+brackets.  It is the interest's identifier.  All in-game entities, places,
+technologies, and man-made built structures have a unique identifier, which
+is composed of one or more letters or digits, enclosed in square brackets for
+ease of identification within a report.  These identifiers are unique, each
+refers to one specific game element.  Thus, if someone wants to refer to your
+interest within an order form, he will use the mc54 identifier - to declare you
+an ally or an enemy to be shot on sight.
+
+Next comes the report period.  You can see this is turn number 35 since the
+game beginning.  The in-game date is March 31, 2766 - the first quarter of the
+year has finished.  Each quarter is divided in 13 weeks; you can ignore the
+extra days, or leap years.
+
+For simplicity's sake, no relativistic effects are assumed. Time flows at the
+same speed in all parts of the universe.
+
+You now have until the february 7th wednesday, real time, to decide your
+actions for the upcoming game quarter.
+
+Finally, your interest benefits from a credit line of 60754 galactic units.
+For simplicity's sake, and to reduce report size, the US cash symbol '$' is
+used to denote galactic units.  There is no rate change between Earth dollar
+and galactic units since the Alderson point linking Earth suddenly shut off
+some 100 years ago, closing off Earth from the rest of the Galaxy.  Indeed, a
+single galactic unit represents many thousand of current-day dollars.  Galactic
+imperial units are accepted in the whole of the galaxy and have the same value
+everywhere.
+
+Your credit line may be used in a variety of ways.  Typically, you may pay your
+employees salaries from the credit line or local cash.  Credit lines may also
+be used at any civilised location for purchases or similar activities, as long
+as that location is linked to the galactic banking network. All computer-
+managed locations have this link, and will accept units from your credit line
+instead of cash.  Some technologies also allow you to put cash back into your
+credit line, to wire directly cash from one credit line to another, or to
+convert a credit line into hard cash.
+
+
+2.2.2. Star systems
+
+>> Star systems:
+>> Beta Epsilon Mutorae [S5578], M4 star (655,-231,100).
+
+The next part of the report shows all your locational reports.  Your have a
+presence in the Beta Epsilon Mutorae system, a system of the M4 stellar class.
+That system is located in the galactic co-ordinates at 655,-231,100.  The
+galaxy center is located in 0,0,0.  This gives you an indication of the
+distance, in parsec, that separates the various systems you may know.
+
+>> * Point [S5578A] to Gamma Tau Lyrae [S966], alderson point at UA 26
+>>
+>> * Point [S5578B] to Omicron Nu Nautae [S6550], alderson point at UA 25
+>>   - Birgon station [5569], Ycromae Hive [tr31], wheel station. Size: 40000.
+>>
+>> * Point [S5578C] to Theta Gamma Virgo [S8851], alderson point at UA 24
+
+The various features of the system are then shown, in decreasing distance from
+the central star.  Thus, the Alderson points - three in this system - are
+shown first.  Alderson points are very usually far from the inner system.
+Physics have demonstrated the possibility of having Alderson points in an
+inner system, but those seem to be very rare.
+
+The three Alderson points have their destination indicated.  A ship located at
+one alderson point may JUMP to the matching Alderson point in the destination
+system.  Alderson points are always in pair, and all have been reported as
+being bi-directional.
+
+One of the Alderson points has a construction present: Birgon station.  You
+do not know any information about Birgon station, except its affiliation
+(The Ycromae Hive) and basic structure, which is a wheel-shaped space station.
+The hull gives a good indication of the size of the structure: The station has
+40000 units of storage, as seen from the outside.  Part of this will be used by
+the station infrastructure, the rest may hold spaceships docked inside,
+materials, goods in transit, and so on, or even empty space, reserved for
+future development.  Unless you dock, however, you have no way of knowing what
+is inside or
+not.
+
+2.2.3. Inner system
+
+>> * Asteroid field [S5578D], asteroids at UA 14
+>>   Resources: 155 iron [iron], 101 titanium [tita], 19 uranium [uran].
+>>   - Orbital factory [2911], Ycromae Hive [tr31], wheel station. Size: 30000.
+>>   - Space tug [2960], Ycromae Hive [tr31], spaceship. Size: 10000.
+
+The next feature present is an asteroid field.  Asteroid fields are usually
+very useful, and resource rich.  This asteroid can be assessed quickly to be
+able to produce 155 units of iron ore each quarter, 101 of titanium, and 19 of
+uranium.  A good location for a mining concern.  Unsurprisingly, there is an
+orbital factory, run by the Ycromae again.  It is a smaller station than the
+outlying Birgon station.  It is probably producing full tilt some materials
+or products, which the Space tug will probably ferry somewhere.
+
+You will note that all structures advertise their interest affiliation.  This
+is the default setting.  Usually, only pirates or ships dispatched on discrete
+missions, as well as undeclared colonies will hide their affiliation.  An
+unaffiliated ship or colony is usually treated as hostile.
+
+Iron and titane are good construction materials for basic structures.  Iron
+will be used in factories and many basic structures, and titanium for more
+sophisticated structures.  Uranium may be useful, some technologies use it
+to power their factories and starships.
+
+>> * Beta Epsilon Mutorae III [S5578E], gas giant at UA 10
+>>   Resources: 201 helium3 [hel3], 1001 oxyhydro [h2o2]
+
+We're leaving the domain of the asteroids for the outer planet, number III.
+This one is a gas giant, unsuitable for colonies or outposts.  Like the
+asteroid field, it has some resources. Helium3 is important in fusion
+technologies.  Oxyhydro is also useful for some technologies, to provide
+reaction mass for ships and to supply remote outposts.
+
+2.2.4. Star ships
+
+>>   + The Star Gobbler [8112], Masarian Combine [mc54], 2 spaceship [shull1].
+>>     Size:6080/10000, mass:6609/20000, crew:26/30 energy:90/120,
+>>     defence:25(18), attack:20(14), upkeep:$790, tech:0/2. Speed: 3.026.
+>>        week 13: spared $100 upkeep
+>>        week 13: paid $887 upkeep
+
+Ah! Your first spaceship, orbiting planet III.  You have a lot more details on
+this spaceship than you had on the Ycromae ships.  From the outside, your
+spaceship would probably look like:
+
+>> - The Star Gobbler [8112], Masarian Combine [mc54], spaceship. Size:10000.
+
+Only you, or the owner of a host module placed inside of it, would be able to
+look at the details of the star ship.
+
+The ship is built using modules.  You start a space ship, settlement, outpost
+or anything else using a core module.  Settlement and outpost bases cost almost
+nothing to create, and are used as a grouping.  Space bases, ships, orbital
+factories all require a specific module to be manufactured and serve as the
+base for the construction.  The module types for such structures determine what
+type the structure will be: space stations are fixed, settlements can occur
+only on planetary surfaces, while starships move.
+
+Star Gobbler was built using 2 spaceship hulls assembled together.  This drives
+the maximum size of the starship.  In the example above, all hulls provide room
+for 5000 units, and provide a defence factor of 10, so the starship begins with
+room to hold 10000 units and a defence of 20.  Further factors will modify
+this. We'll skip over the number in parentheses for now; these represent your
+effective defence and attack (see detailed rules on battles).
+
+The ship displays a summary of the overall spaceship.  For example, the ship
+uses 6080 units of size overall, leaving room for lots of improvements.  If you
+check carefully, this size is the sum of the size in all the modules.
+In a similar manner, you have a crew summary (you have 30 crew available for
+26 required), your mass (you have 6609 total mass, and your drive is geared to
+move up to 20000 units of mass), energy requirements, and total maintenance
+costs.  Your ship is fully operational, it seems: light, powerful, with a
+complete crew...
+
+>>     + Command bridge [c8112], command bridge [cbridg]. Size:800, mass:300,
+>>       crew:10, energy:5, upkeep:$100, defence:5, attack:5, tech:1/1. Tech:
+>>       military tactics [miltact].
+
+Each separate module then provides a separate report.  You have four modules
+stored in there.  The command bridge is mandatory for any starship.  Unless
+you have a command bridge, your ship cannot move.  Once modules are added to
+a spaceship, no more hulls may be added.  Some space stations may have modules
+added after occupancy has begun.
+
+The command bridge also has a special section, named "Tech".  Tech indicates
+which technologies you master, and are stored in the appropriate library and
+computers of the module.  Each module may store a number of technologies.  Once
+it is full, technologies must be erased to make room for new technologies.
+The report includes a technology amount and size used for the module.
+
+Technologies provide specific benefits, and may usually be freely copied
+between modules of the same interest and of different interests.  If the
+technology is applicable to the module, it will either provide direct benefits,
+or be used to make something.  Here, the military tactics (identifier miltact)
+enables a +5 attack and defence factors from the command bridge.  Military
+tactics could be stored in other modules, but would not provide any benefits
+there.
+
+>>     + Crew quarters [q8112], 3 crew quarters [crewq1], has: 30 crew [crew],
+>>       188 food [food]. Size:1500, crew:3/30, mass:2508, energy:3,
+>>       upkeep:$150, tech:0/3.
+>>          week 1: consumed 30 rations [rati]
+>>          week 13: paid $450 wages
+
+Then you have crew quarters.  Crew quarters provide habitat for your starship
+crew.  You have 3 such quarters installed.  Each quarter may hold up to 10 crew
+members.  You have the full 30 crew members residing there, and food for some
+time.
+
+>>     + Fusion central [f8112], 3 fusion reactors [fusrec], has: 201 helium3
+>>       [hel3]. Size:1500, crew:9, mass:1401, energy:0/120, attack:9,
+>>       upkeep:$300, tech:2/3. Tech: cold fusion [coldfus], helium storage
+>>       [helstor].
+>>          week 1: consumed 3 helium3 [hel3]
+>>     + Starship drives [d8112], 2 reaction drives [rdrive], has: 200 oxyhydro
+>>       [h2o2]. Size:1200, crew:2, mass:1600/20000, energy:80, upkeep:$200,
+>>       tech:0/2.
+
+In a similar manner, fusion reactors provide fusion power and energy to the
+spaceship, and drives provide propulsion.  A large variety of modules may be
+added to the ship, such as cargo bays, research laboratories, mobile factories,
+and so on, making each spaceship truly unique.
+
+The fusion reactor has two technologies used.  Fusion power is an intrinsic
+technology of the fusion reactor ; it cannot be erased from the reactor to make
+room for another.  If somebody captures a fusion reactor, the interest will be
+able to duplicate the technology and enjoy its benefits.  The other is an
+optional technology: it enables helium3 to be stored in the fusion reactors
+areas.  Otherwise, you would have to put special storage modules in the ship,
+which would take room, energy and crew, and store helium3 in those modules to
+fuel the ship reactor.
+
+Each module may report events.  The starship, for example, reported on the
+last week of the game turn the payment of the upkeep of the starship.  This
+upkeep represents the cost of maintenance over the starship. If the costs
+cannot be met, ship performance may suffer and degrade, requiring costly
+refits at orbital yards.  The cost paid are higher than the cost indicated on
+your report.  This happens because being in space increase the wear of your
+equipment.
+
+Other costs may be paid.  Each module reports on these.  The crew, for example,
+consumed 1 ration per crew member, and required $15 per crew member.  In the
+same manner, the fusion generator requires 1 helium3 per reactor to function.
+If no helium3 is provided, the reactor shuts down, leaving your ship derelict
+in space.  If no energy is provided to the crew quarters, your crew may die!
+Your space drives, however, did not consume anything.  You did not move this
+turn.
+
+Each module may be given separate orders (we'll see later).  Typically, the
+starship module will be given orders to move around, the crew will be ordered
+to eat specific rations, and items may be moved around.
+
+
+2.2.5. Colonies
+
+>> * Beta Epsilon Mutorae II [S5578F], terran planet at UA 5
+>>   Resources: 31 iron [iron], 100 oxyhydro [h2o2], 50 carbon [carb], 911
+>>     food [food].
+
+The next planet is further inward.  This one is a terran planet, suitable for
+colonisation and living.  This one is not very rich in resources, but may be
+a good farming planet, as it can produce over 900 food per turn.  Oxyhydro
+and carbon sources also abound, as in most terran planets.
+
+>>   - Indiroma [201], Imperium [npc1], city. Size: 1000000.
+>>     Buy: 200 food [food] at $10, 50 iron [iron] at $30, 5 uranium [uran]
+>>          at $300
+>>     Sell: 40 crew [crew] at $100, 18 titanium [tita] at $100.
+
+There is already one city here, run by the imperium.  The Imperium is a NPC
+interest.  That planet provides a local market. You may sell food, iron ores
+or some uranium mined from the asteroid belts.  You may also recruit some local
+crew members, or buy some titanium.
+
+>>   + Colony [1756], Masarian Combine [mc54], 4 settlement [settlm].
+>>     Size:31000/40000, crew:65/155, energy:65/65, upkeep:$1567,
+>>     defence:32(20), attack:3(2), tech:0/4.
+>>        week 13: spared $2250 in maintenance costs
+>>     + Living quarters [l1756], 17 apartments [apartm], has: 155 crew
+>>       [crew], 155 food [food]. Size:22100, crew:0/155, energy:17,
+>>       upkeep:$1020, tech:1/17. Tech: advanced city planning [acitypl].
+>>          week 1: consumed 155 food [food]
+>>          week 13: got 155 food [food] from Farming concern [f1756]
+>>          week 13: paid $2325 wages
+>>          week 13: discovered advanced city planning [acitypl]!
+>>     + Farming concern [f1756], 5 farming complex [farms1], has: 40 food
+>>       [food]. Size: 5000, crew:25, energy:25, upkeep:$250, tech:0/5.
+>>          week 1: sold 40 food [food] at $10 each to Indiroma [201]
+>>          week 13: harvested 195 food [food]
+>>          week 13: handed 155 food [food] to Living quarters [l1756]
+>>          week 13: lent $800 to Living quarters [l1756]
+
+The colonies are similar to starships, except that they do not have a mass
+indicated, as they never move.  The same rules apply for the settlement, and
+the various parts of the city.  Your settlement is ok, except that it is now
+at energy saturation.  You will have to build another reactor soon...
+
+>>     + Mines [m1756], core drill [mines1], has: 70 iron [iron]. Size:1000,
+>>       crew:6, energy:5, upkeep:$40.
+>>          week 3: harvested 3 carbon [carb]
+>>          week 4: handed 3 carbon [carb] to Coal plant [p1756]
+>>          week 13: harvested 30 iron [iron]
+
+A mine (or any extraction facility) is very useful in any location.  The mine
+will enable you to extract carbon, iron and other raw materials to use in your
+industries.  A single mine may produce many different items.  In the example
+above, the mine produced some carbon and some iron.  It might also have been
+used to produce the third resource on this planet, oxyhydro (to fuel your
+ship).
+
+Note that this mine does not display a technology amount. Core drills cannot
+be loaded with additional technologies, and so are unsuitable for special
+resources extraction.
+
+>>     + Energy central [e1756], fission reactor [fisrec], has: 80 uranium
+>>       [uran], 17 wastes [wast]. Size:400, crew:20, energy:0/40, upkeep:$107,
+>>       attack:2, tech:0/1.
+>>          week 1: consumed 1 uranium [uran], produced 1 wastes [wast]
+>>     + Coal plant [p1756], coal-burning plant [cplant], has: 10 carbon
+>>       [carb]. Size:1000, crew:2, energy:0/25, upkeep:$50, attack:1,
+>>       tech:0/1.
+>>          week 1: consumed 1 carbon [carb]
+>>          week 4: got 3 carbon [carb] from Mines [m1756]
+>>     + Construction works [c1756], factory [factry]. Size:1000, crew:10,
+>>       energy:15, upkeep:$60, tech:0/1.
+
+You have two energy producing elements here. One is an old reactor, using
+fission power instead of cleaner fusion power.  It consumes uranium instead of
+helium, but produces wastes products.  Waste products require people to store
+and manage them, and accumulate, until disposed of... The other is a primitive
+coal plant, burning off carbon (but you do not have to worry about pollution).
+
+If one of the crew or energy requirements fall down, your various modules will
+work at reduced efficiency, in proportion of the missing crew part.  Even if
+your construction works are unused, they still require crew, energy and
+maintenance.  It is a lot better to shut down an unused module for the
+duration.
+
+
+2.2.6. Last planet
+
+>> * Beta Epsilon Mutorae I [S5578G], airless planet at UA 2
+
+The last planet indicated is lifeless. What's even worse, it is airless, which
+means that any settlement there will require oxygen at periodic intervals for
+the survival of the crew there.  In fact, no one has established any settlement
+there (yet).
+
+You notice that no report on resources appear.  You get a report on resources
+only if:
+
+- You have a unit or base present at the feature;
+- The feature is an asteroid field, or oort cloud, whose open natures allow
+  simple and easy spectroscopic scan.
+
+Some resources are advanced resources, which require special advanced
+technologies to harvest.  These resources do not appear on the report unless
+the unit present at the feature has the required technology to scan for them;
+usually the same technology as required for harvesting.  This is true even for
+asteroids and oort clouds.  You need a unit present at the feature to see the
+special resources, even if you can assay the normal, basic resources, from
+anywhere in the system.
+
+
+2.2.7. Knowledge reports
+
+Following the various systems in which you have an outpost, a knowledge report
+indicates what new technologies, modules or products you have discovered this
+turn.
+
+>> Technologies:
+>>
+>> advanced city planning [acitypl]: Experience in architecture and sociology
+>>   have led to better living quarters, housing more people per habitat. This
+>>   technology allows +1 crew per module. Technology works in habitation
+>>   modules. Tech level 2.
+
+You have discovered the advanced city planning this turn.  The technology will
+enable you to have 1 additional people in an habitat module.  Your living
+quarters that had previously 10 maximum crew per module may now hold 11 crew,
+for the same size and energy requirements.  This technology works only when in
+an habitation module.  It is also a level 2 technology, simple enough to store
+in most modules of a large enough size.
+
+>> Modules:
+>>
+>> hangar bays [cargo1]: Those huge cargo bays may be used to hold large
+>>   amount of cargo, or some ships or modules to be delivered to settlements.
+>>   Each module will store up to 3000 units of size. Storage module.
+>>   Size:3100/3000, crew:1, mass:400, energy:1, upkeep:$70, tech:0/1.
+
+Next comes modules.  The module described above is a basic module, accessible
+with any technology level.  It takes 3100 in size in a spaceship or settlement
+size, requires 1 crew to manage it, 1 energy to power it, and mass 400 units.
+Each turn, $70 is required for the maintenance of one hangar bay.  Finally, its
+technological level is 1, meaning it can hold only one technology.  Its
+capacity of 3000 also means it can be used to store items, or even other
+modules.  A module, built in a factory, may be delivered to an orbiting
+structure by a ship with large enough hangar bays.  A ship may also move into
+such a cargo bay, and be ferried anonymously across distances.
+
+>> research lab [reslab]: This special research laboratory enables you to store
+>>   many technologies, but also to drive research. If fully active, it adds 5%
+>>   to your technology discover chance. Use the RESEARCH order to select a
+>>   specific research direction. This is a research module. Size:500, crew:8,
+>>   mass:400, energy:5, upkeep: $200, tech:0/10. Requires tech: advanced
+>>   computing [advcomp].
+
+This other module is very different. Again, it is a generic module which can be
+installed in any settlement, outpost or spaceship.  The research lab works
+automatically when powered, but you can direct its research to specific field.
+It requires more crew, and stores up to 10 levels of technology in its computer
+banks, i.e. 10 level 1 technologies, or 2 level 5 technologies.  It always
+requires the advanced computing technology to build, so that level 1 technology
+is automatically stored in the lab. You cannot choose to erase it.
+
+>> Items:
+>>
+>> crew [crew]: This is the basic employee, which inhabits and works in your
+>>   factories, spaceships and similar. A crew member requires 1 nutritive
+>>   ration per month or runs the risk of falling dangerously ill. 10 stored in
+>>   habitation modules. Weight:40, crew:0/1, upkeep: $15.
+
+Finally, you have "items", which are in various modules. Unlike modules, items
+are freely exchanged between modules, subject to their housing restrictions.
+Most items can be stored in their respective module types, or in cargo modules.
+Crew is an exception: crew members can be "stored" only in habitation modules,
+never as cargo.
+
+
+3. Detailed rules
+
+The following chapters explain the various rules of Alderson in full detail.
+
+
+3.1. Interests
+
+Each player in Alderson controls an interest, which may represent a
+corporation, a shipful of explorers, a huge military arm, or all of the above.
+Each module (see below) belongs to a specific concern, and you will receive a
+full detailed report on all your modules.  As long as one single module belongs
+to your interest, you are active within the game.  If all your modules are
+destroyed, you may opt to use your credit line to build another starting
+position from somewhere, or to erase your existing interest and start afresh as
+a new player.
+
+Interests begin with a credit line.  That credit line may be spent before the
+beginning of the game, to purchase modules that will make an initial interest,
+select a more specific starting position, and acquire some basic technologies.
+See the companion startup kit document for a list of these pre-game purchases.
+The amount of your pre-game purchases is deduced from your initial credit.
+Beware; overspending in the pre-game is a sure road to bankruptcy when you
+start playing.
+
+3.1.1. Interest characteristics
+
+Each interest has the following characteristics:
+
+- A unique game id, typically two letter and two digits.
+- A full name, which appears before your interest ID in all reports.
+- An email name, to which all reports are posted.
+- A password, which is used to validate the orders received for the interest.
+
+Except for the game ID, all these characteristics may be changed at all times,
+using global orders.
+
+3.1.2. Interest diplomacy
+
+Interests may hold specific diplomatic stances toward other interests.  There
+are five separate diplomatic stances, ranking from the worst to the most
+friendly:
+
+- Enemy. If you declare someone enemy, all your attack-capable ships, stations
+  and settlements will open fire on all identifiable enemy units. Enemy also
+  covers the interdictions of hostile stance.
+
+- Hostile. If you declare someone hostile, you will prevent him from using any
+  available resources, short of firing on it. The owner of an area will always
+  prevent the construction of units and the exploitation of resources.
+
+- Neutral. Neutral means neither enemy, nor specially authorised units.  You
+  will allow a neutral unit to be built in areas you control, and will prevent
+  the exploitation of resources only in non-terran, non-gas giant planets you
+  control.  Exploitation is allowed in terran planets, or space.
+
+- Friendly. Friendly means that you will allow all actions from other units,
+  including the exploitation of resources.  You will also allow docking of any
+  friendly unit into cargo ferries, bases and the landing in settlements you
+  control.  You will defend any attack on friendly units in areas you control.
+  Transfer of items between friends is allowed.
+
+- Ally. Ally includes all that friendly supposes, and more.  Ally allows you to
+  accept specific modules from another player into your units.  Also, in the
+  event of an attack, your units will always defend or join in the attack at
+  the side of allies, depending on their combat status.
+
+In all stances, another unit is allowed to transfer you a technology, unless an
+enemy.
+
+Note that stances may be declared against an interest in general, or against
+a specific unit in particular.  Stances apply to all your units, regardless of
+their position in the galaxy.
+
+Two specific stances, called the default stance, and the unknown stance, apply
+respectively to all units for which no specific stance has been declared,
+either for the unit itself or its interest, or whose affiliation is unknown.
+Most interests start with a friendly or neutral default, and an hostile stance
+against unknown units.
+
+
+3.2. Units and modules
+
+3.2.1. Units
+
+A unit is a group of modules, built upon the umbrella of a starting module type
+called a core.  Units constitute a complete whole, sharing automatically all
+resources required by each component of the unit.
+
+Units are what are visible on reports.  You do not know the details on a unit
+separate modules, unless you have informers aboard, have a module aboard, a
+unit of your own docked inside the structure, or a special technology that
+allows you to get additional information.  In normal situations, the following
+elements will be shown on a unit:
+
+- The unique game ID of the unit
+- A visual name for the unit
+- The affiliation of the unit to the interest
+- The unit's core module type
+- The unit overall maximum size
+
+Most core modules that make units are "opaque". You see the core module, and
+nothing else.  Some modules are transparent and allow anyone to see all other
+modules inside the unit as if they were core modules themselves.  These modules
+are:
+
+- The orbital complex (basic space station technology)
+- The city (basic colonisation technology)
+- all fleet models
+
+A fleet is a specific type of unit.  It consumes no goods, requires no crew, no
+energy, does not take space or mass.  It serves as a placeholder for other
+space and starships that may join or leave the fleet at will.  A fleet will
+move as a whole, and enjoy specific bonuses.  Typically, each ship in a fleet
+adds 5% of its attack and defence factors to all the other ships in the fleet.
+It is possible to declare a fleet between space stations and spaceships,  which
+represents the spaceships standing patrol around the stations.  Such a fleet
+will be unable to move, due to the space station presence.  It is also possible
+to make a fleet with only space stations.  It is not possible to make a fleet
+with a single unit; such a fleet automatically disappears at end of turn.
+
+The affiliation announcement is a default setting, and any unit or module can
+set a flag to shut down its transponder and hide its identity.  Doing so is a
+mark of shady dealings and piracy, however, so most player will shoot down any
+ship that disguises its affiliation, or invade any unchartered colony.
+
+
+3.2.2. Modules
+
+The term "module" alone, or "module template" is used to designate a module
+type.  A "module copy" is any module constructed.  A "module slot" is a set of
+identical module copies inside a unit.  For simplification purposes, when a
+number of modules copies are put in a unit, these module copies are joined
+together in a single module slot.
+
+Modules slots in a unit represent the elementary piece of construction in your
+interest domain.  Each performs a specific function, and has the following
+characteristics:
+
+- Name of the module. For the core module, this is the name of the unit.
+  This is a visual name, and is used only in reports.
+- Module unique game ID.  Core modules typically have a unique module ID that
+  consists of digits only, while internal modules have a single letter,
+  followed by digits.  When possible, the internal modules will pick the local
+  core module number as part of their ID.
+- Module affiliation.  This is the interest the module belongs to.  Upkeep of
+  the module must be paid by the owner.
+- Type of module.  There are many different modules that can be built.  Each
+  will offer different base characteristics and allow different technologies to
+  work.
+- Number of modules.  For game purposes, all modules are strictly identical
+  when installed, and the same unit may use a number of these modules.  The
+  game will not allow the creation of a separate module slot if a module of the
+  same type and interest affiliation already exists.  New modules copies are
+  always added to the existing set.
+- Items stored in the module.  Most modules have restrictions on the number and
+  types of items that may be stored in them.
+- Technologies stored in the module.  Most modules have restrictions on the
+  total level of technologies they can hold, and sometimes requires a
+  technology to be stored in them to work.  A module that lacks the required
+  technology will not provide any benefit, but still require maintenance,
+  energy, and crew.
+
+Modules and module slots also have the following characteristics:
+
+- Size, and capacity if any.  Core modules typically have a capacity, while
+  most other modules have a size.  It is not possible to fit a total size
+  greater than the core modules capacity.  Storage modules have both an
+  external size and an internal capacity ; they occupy their external size,
+  and may store up to their internal capacity.
+- Crew requirements, and staff.  Habitat modules are used to host crew members,
+  which in turn provide additional staff for the various tasks.  If you do not
+  have enough crew members to fully staff a unit, performance will degrade
+  quickly.  Most other modules require crew.
+- Mass, and propulsion for ships.  All modules, except the fleet, have mass.
+  Mass is irrelevant when a module is on ground, and mostly irrelevant in an
+  orbital complex.  However, all modules have mass, which is counted when they
+  are transported.  Propulsion modules are used to allow mass to move.
+- Energy.  Most modules require some energy to power them.  Energy modules
+  will consume fuel and provide energy.
+- Technology level.  Each module may store a number of technology levels up to
+  the indicated level.
+
+Typically, these five numbers are specified for one module template.  Multiply
+by the number of modules to get the final values for a slot.  The only
+modification is for technology levels.  Additional module copies increase the
+overall technology level by 1 or 1/3rd of their normal template value,
+whichever is greater.
+
+The following module types may be encountered:
+
+- Station modules (core module).  These provide the base of space station.  A
+  station module may be placed at any location within a system (it makes
+  orbital stations around planets, asteroids, or in deep space).
+- Spaceship modules (core module).  These provide the base of a space ship.
+  A spaceship module may use the MOVE or JUMP orders to go from a location to
+  another within a system or go thru alderson points.
+- Settlement modules (core module).  These provide the base of a settlement,
+  colony or outpost.  A settlement module may be placed only on a planet, or
+  planetoid and never on a gas giant.
+- Command modules.  These activate some functions within a station, ship or
+  settlement.
+- Habitat modules.  These provide room for crew members.
+- Energy modules.  These provide energy for units.
+- Propulsion modules.  These provide propulsion for star and space ships.
+- Storage modules.  These provide either a place for storage of items, or a
+  holding place for other units.
+- Harvesting modules.  These allow a unit to harvest a resource.
+- Manufacturing modules.  These allow a unit to transform one or more
+  items into other items, or modules.
+- Information modules.  These allow technologies to be stored in large
+  amount, or to be researched.
+- Fleet modules (core module).  A fleet module allow a number of space units to
+  group under a single leadership.  The fleet module switches automatically its
+  interest affiliation to the same interest affiliation as the first unit in
+  the group, and disappear if no units are in the fleet.  Fleet may issue the
+  order MOVE if it comprises space ships.
+
+Other modules may appear, if you have special technologies to build them.  Some
+module may contradict those rules, in which case the module description takes
+precedence over the rule.
+
+
+3.3. Technology
+
+Technologies drive the game.  They are the key to success and progress.  Each
+technology you master increase your possibilities, and allows you to develop
+better units.  But this may cause you costly refits, to upgrade to the latest
+and best technology can buy!
+
+3.3.1. Technology categorisation
+
+There are three broad categories of technologies:
+
+- Basic technology.  All interests have mastery of these basic technologies.
+  For simplicity's purpose, these do not occupy any storage in modules, and may
+  be used any time, any place.  See the companion document for the list of
+  these basic technologies.  All basics indicate a technology level of 0.
+
+- New technologies.  These technologies may be used immediately once discovered
+  and applied in the appropriate areas.
+
+- Improved technologies.  These technologies improve on another technology, and
+  may only be used if you have the appropriate, more basic technology available
+  somewhere in the unit.  It is not required to have the technology in the
+  same module slot, only in a module slot of the same interest within the unit.
+
+Technologies come in three different flavours:
+
+- Building technologies allow you to build a specific type of module.
+
+- Manufacturing technologies allow you to transform a specific item into a
+  different item, or to harvest a specific item.
+
+- Enabling technologies allow a specific benefit when in a specific type of
+  module.
+
+A given technology always offers one of these flavours.  Some of the best
+technologies offer two at the same time.  Each technology description indicates
+how it is used.  Enabling technologies typically says "... If loaded in a X
+module,...". Other technologies are simply USEd (see USE order).
+
+Finally, each technology has a technology level, which indicates its overall
+complexity.  There is no specific relationship between a technology level and
+its being a new, improved, building or enabling technology; the level reflects
+the amount of computing power required to use the technology.  Some
+improvements are very simple, while some new technologies may be hideously
+complex to implement.  Some technologies may rise to tech level 15 or greater!
+
+A technology too large to fit within a module will not provide enabling
+benefits.  In the same manner, a building or manufacturing technology cannot
+be USEd if it does not fit.  This kind of storage is considered an emergency
+and temporary measure.
+
+
+3.3.2. Technology transfer
+
+Technologies may be transferred from one module slot to another using the order
+COPY.  A module slot may always store one technology, regardless of the
+module's level and the technology level, unless it has no technology level
+(such as some core modules).  However, if the technology stored does not fit
+within the module, a COPY will perform a transfer; the existing copy will be
+erased as soon as the order is processed.
+
+A technology can be ERASEd from a module at will.  A ship, colony or station
+in a dangerous position may thus attempt to wipe all its files prior to a raid
+to avoid dangerous technologies falling into the hand of pirates or enemy
+military.  Of course, if the attack finally fails, the hapless unit may find
+itself with big problems as most of its instrumentation fails.
+
+There is no limit to the total amount of technologies you may store in a unit,
+subject to the individual module limitations.  There is also no limit to the
+amount of technologies your interest knows overall.  The number of available
+technologies is rather large.
+
+At some level, you will approach Transcendence.  Transcendence isn't covered in
+these rules; the game master will forward you the specific rules covering the
+Transcendence if you get the message "You are approaching Transcendence" in
+your report...  Transcendence occurs when you start mastering almost all
+technologies, and discover new technologies faster than you can put them to
+use.
+
+
+3.3.3. Technology acquisition
+
+There are different ways of getting technologies.
+
+You may start with some technologies purchased from the initial list of
+technologies available at startup.
+
+You may trade with another player for technologies of interest.  The EXCHANGE
+order allows you to trade technologies, i.e. give a technology if another
+technology is received in trade.  This works only if the technology being
+received is not already stored in the unit, so it is impossible to slip in a
+tech you already have.  It is perfectly possible to give a technology that is
+very different from the one you expected.
+
+You may purchase technologies at locations that sell them.  The SELL and BUY
+orders allow you to specify a technology for sale.  The default for selling
+and buying is 1 copy of the technology, and cannot be changed.  However, one
+can sell repeatedly the same technology to multiple players, as the sold
+technology remains in storage.  If a purchase occurs, the technology is
+downloaded as in an EXCHANGE order.
+
+You may discover technologies in modules.  If you manage to acquire a module
+which contains a technology, you may then copy and disseminate this technology
+to all your units.  Rumors exist about ruins of pre-historic galactic
+civilisations and the technologies they mastered before mankind accessed the
+star lanes.
+
+Finally, you may receive reports on technologies you have not mastered, because
+you have information about the technology.  This is more likely to occur if
+you have a module slot in a shared unit, and gain information on the other
+interests' technologies.
+
+
+3.3.4. Research
+
+Finally, you may discover technologies through research.  Research occurs
+automatically each turn, and contributes to the technology advancement.  Each
+settlement with enough space to store a technology and a population of at least
+100 crew may find one.  You may only discover at most one technology each turn,
+no matter how many research-capable units you have.  The discovered technology
+will be stored in a random location within the unit.
+
+Each research module also offers a chance to find a technology, if that module
+has enough space to store new technologies.  Unlike settlements, discoveries
+are made by the module itself, and are not stored anywhere else, hence the
+space requirements.  Research module will enable a space-based unit to find
+technologies.  A research module does not require a minimum crew in the unit.
+
+Each type of module and location present will contribute differently to the
+possibility of finding a specific technology.  Thus, if you have large
+factories, you will have a higher probability of finding processing techniques;
+if you have lots of farming settlements, you may find food-related improvement,
+and if you are lots of military defence and weapons in your habitats, you will
+find newer ways of doing warfare.  Habitat modules contribute only 1/2 their
+size to the technology type random selection.
+
+Each module contributes 1% to the probability of finding a technology at that
+location. Each 20 unoccupied crew will also add 1%, up to a total limit of 70%
+per turn at each location.  Research modules will add a larger % to that
+chance, and their bonus may rise the overall probability up to 80%.  No matter
+how much effort you put in research, you cannot have more than 80% chance of
+finding a new technology in any given unit.
+
+A research module may use the RESEARCH order to skew this distribution.  If
+used for RESEARCH, the module adds only half its normal % of chances of
+discovery, but will modify the distribution of technologies that can be found.
+If you RESEARCH, you have 50% chance of finding a technology in the area you
+directed your research to.
+
+You may only RESEARCH on locally available items, structures, modules, or known
+technologies.  RESEARCH requires you to specify:
+
+- An item; research will find a way to produce, use, or affect that item (crews
+  are in the item category).
+- A module; research will find a way to manufacture that module, a technology
+  that can be used in it, or failing that, a technology related to the same
+  module category (manufacturing a module of the same category, typically).
+- A technology; research will find an improvement on that technology.  This
+  produce only 33% chances of finding an improvement, should any exist, instead
+  of the 50% for other types of research.
+- A feature; research will find a technology related to that feature, typically
+  a module that works at that feature, or can be installed at a base at that
+  feature.  The unit containing the research module must remain in location for
+  the full quarter to make use of this.
+
+You may also set the flag MUTE to avoid having a module contributing to the
+research effort.  Such a muted module will not add any % of chance of finding
+a technology, nor contribute to the distribution of technologies.
+
+
+3.3.5. Unexplored features
+
+If scouting far from the known star lanes, you will find unexplored features.
+An unexplored feature yield a 10% research bonus the first time it is targeted
+for research, which adds to the research module normal bonuses (it is subject
+to the 80% cap).  If a starship has spent a full turn at the feature, it will
+no longer be unexplored, regardless of RESEARCH.  The same occurs after a
+station or settlement has been built at that feature.
+
+Unexplored features are denoted by a "unexplored" mention on the report.
+
+Sometimes, instead of yielding RESEARCH results, the feature will reveal a
+derelict module, left by a "somebody".  That module may have one or more
+technologies loaded in it.  These technologies can be copied to the exploring
+ship, or the module loaded.  If the module is loaded or installed in the ship,
+it will switch its interest to you.  The module description will always be
+included in your report when you discover it.
+
+
+3.4. Working units
+
+3.4.1. Starting a unit
+
+A unit is started by making, or ferrying core modules to an assembly place.
+All modules copies are built in a factory, loaded with the proper technology,
+and from the specified building materials.  That factory delivers the module
+copy at a target.  You may specify the following targets as an argument to the
+"USE technology" instruction by a factory:
+
+- No argument: the module will be stored in a hangar bay or any storage
+  facility within the same unit as the producing factory.  If there is no room
+  available, the module production will be deferred, except for core modules.
+  Core modules will then be placed at the same location as the producing unit,
+  i.e. in orbit for space cores, or on ground for settlement cores.  If a core
+  module is built, the unit uses that core module type, and the core allows
+  additional copies to be added, then the core module is added to the unit by
+  default.
+
+- An existing module ID: one module will be added to the amount of modules that
+  is specified.  If the module being built is different, or if you are adding a
+  core module to a unit that cannot accept core modules, production will be
+  deferred.
+
+  If you specify a core module ID, and produce a module that can fit within the
+  core type, the module copy will be added inside the core module, to the given
+  module slot if any exists, or making a new group of modules.
+
+  If you specify a storage module ID, the module will be stored inside the
+  storage module.
+
+- A new module ID: such an ID is made using your interest ID, followed by the
+  letter 'N', then by a two-digit number.  That module ID may be used in all
+  instructions to refer to the newly made module.  The special command RECEIVE
+  can be used by a core or storage module to specify where the module will be
+  added.  This is similar to the previous behaviour, except that you can
+  immediately refer to the module created, for example to place crew inside
+  newly added crew quarters, or place fuel in energy modules.
+
+  You may also use that new ID in your order form to start immediately giving
+  orders to your new unit ID.
+
+
+3.4.2. Building multiple modules
+
+The technology description indicates what is required to build a module, and
+the time required to build it.  This time refers to the work done by a single
+factory loaded with the proper program.  That time may be reduced by placing
+multiple factories in parallel.  For simplification purposes, adding four new
+factory modules to the existing single module copy will divide by five the time
+needed to build any module; there is no efficiency lost or gained for larger
+structures.
+
+If the time required to build a module is less than a full turn, the same
+factory complex may build one or more modules of the same type, or many modules
+of differing types.  If production switches, any partially completed module
+copy will remain on the factory ground.  Such a partial module takes a mass
+that is proportional to the amount of work done, but does not require upkeep to
+be paid.
+
+Producing a number of modules that is not a common multiple of the number of
+your factory modules may lead to inefficiency.  If, for example, you have four
+factories linked together, and want to produce a single module that requires
+three weeks for a single factory to assemble, one module will be produced in a
+week, and the fourth factory will remain idle.  The idle factory still require
+its crew and power.
+
+
+3.4.3. Towing modules
+
+When a module is built in a storage module, it remains inactive and unpowered.
+It does not require crew, power and the maintenance upkeep of the module is
+minimal : a flat $5 is required for all inactive modules.  The module may then
+be TRANSFERred from one storage module to another - this is the equivalent of
+placing the module in orbit, or bringing it down using shuttles.  A spaceship
+with its hold containing modules may then move, and bring them along,
+delivering the module to the final assembly place.
+
+The module may then be TRANSFERed to a core module for insertion, or into an
+existing module of the same type.  It will then be added in a manner similar to
+the direct construction of the module in place.
+
+Note that placing and towing storage modules in storage modules of the same
+type poses a specific problem.  It is not possible to tow modules by
+specifying the storage module as a target for either building (USE tech) or
+TRANSFER commands, since it can be interpreted as either placing the module in
+storage, or adding to the existing structure.  For this reason, the ambiguity
+is cleared by the following rules:
+
+- If a module of the same type is TRANSFERed or built directly on a module of
+  the same type, it is added to the group of modules if there is enough room
+  in the unit for it, or added inside the storage module if there is not enough
+  room in the unit to add one.
+
+- To ensure the storage of the module, the storing module may issue the RECEIVE
+  command, specifying a new unit ID.  TRANSFER or construction may then be done
+  into the newly created storage place.
+
+A module automatically activates once placed below a core unit.  To keep it
+inactive, it must be kept in storage.  The core also automatically activates
+once a module is placed inside it.
+
+
+3.4.4. Making a working unit
+
+A working unit requires only that its three main requirements are satisfied:
+
+- There must be enough space in the core module to support all modules stored
+  inside, and all items stored in these modules.  If the core module does not
+  satisfy these requirements, adding a new module or item will fail.
+
+- There must be enough crew to satisfy all crew requirements of modules.  Any
+  extra crew will work on maintenance, lowering the maintenance costs of the
+  unit, and will be available, should a problem cause the death of a crew
+  member.  Crew members may be supplied by modules belonging to differing
+  interests.
+
+- There must be enough energy to power all modules.  Any extra energy will be
+  wasted and lost.
+
+If not enough energy is available in a space unit, the following modules
+will be shut down, in order:
+
+- all other modules
+- factory modules
+- extraction modules
+- military modules
+- propulsion modules
+- command modules
+- farming modules
+- crew modules
+
+You can also issue the SHUT order to shut down a module and preserve energy.
+If energy cannot be supplied to crew modules, each crew module unpowered will
+risk the death of each crew member in 33% of the time, crew members being
+rolled separately.
+
+If two ships of the same interest, or whose interests are allied to each other
+are in a formation (fleet), a fully powered ship will be able to supply energy
+to an unpowered one if none are moving.
+
+If not enough crew is available, all modules will work with an efficiency that
+is lowered by double the percentage of missing crew members.  Thus, a ship
+staffed at 90% will have all its modules working at only 80% efficiency.
+Modules working at lower efficiency will do exactly that: attack and defence
+will be lowered by the appropriate factor, energy will be supplied only
+according to the appropriate factor, the engine will be slower...
+
+
+For settlements, the same rules apply if the settlement is one on an hostile
+(non-terran) planet.  For terran planets (settlements and cities), death in
+unpowered habitation quarters do not occur.  Crew members living in unpowered
+crew quarters will instead require a 50% higher pay.
+
+
+3.4.5. Activating units
+
+Unlike ground-based settlements, space-based units, such as starships or space
+stations, require command modules to work.  There must be at least 1 command
+module in a space unit, and 1 command module is required for each 15 modules
+in the unit, rounded down (so, only 1 command module is required up to 29
+modules in a unit).  If the unit lacks command modules, it will work only at
+half efficiency: energy production is halved, crew requirements are doubled,
+and all factory or extraction modules produce only at half speed.
+
+For spaceships, the first command module must be a command bridge module.  If
+the unit lacks a command bridge, it will be unable to move at all.  Other
+command modules for very large ships may be of any command type.
+
+Ground-based units have no module requirements.
+
+
+3.4.6. Shared units
+
+A unit is said to be "shared" if it contains active modules from different
+interests.  In that case, it is possible to have separate module slots that
+appear for the same module templates; each belonging to a different interest.
+
+The following additional rules apply to such shared units:
+
+- There can be only one core slot. It is not possible to have multiple core
+  module slots from different interests.
+
+- Your modules will draw upon crew members staying in your own crew quarters
+  first, then upon any remaining free crew quarters.  This may cause different
+  modules to function at different efficiency rates.
+
+- Any free crew members will reduce the upkeep of your own modules first, then
+  the upkeep of the rest of the unit in normal order.
+
+- You pay for your own module upkeep and the crew members staying in your own
+  quarters.
+
+- Your modules will automatically draw from modules of your interest only.  A
+  power plant will not draw upon a different interest production stored in an
+  extraction, factory or storage module for example.
+
+- You always see the interior of a shared unit, including all modules and their
+  contents, as long as you have one module slot belong to your interest.  This
+  include all items, power/crew/weight requirements, but does not include the
+  loaded technologies in each module.
+
+- You always get a report on the location of the unit and its moves, regardless
+  of your position or contribution within the unit.
+
+- If an interest in the unit has a technology loaded in one of its module slots
+  you do not know about, you have 80% chances, divided by the technology level,
+  of getting a report on that technology.  You do not acquire that technology,
+  nor its origin within the shared unit, only knowledge of its existence and
+  purpose.  You may derive rumors on one technology per shared unit at most.
+
+- If the overall unit satisfies the criteria for finding new technologies, each
+  interest within the shared unit has a separate chance of finding a
+  technology.  The chances of finding a technology are equal to the normal
+  contribution of your modules and idle crew, plus 10% of the other interests'
+  individual technology contribution.  Each interest represented in the shared
+  unit may find a technology, provided it has enough memory to store the
+  technology.  It is possible that all interests will each find a different
+  technology.
+
+  The use of the RESEARCH order to orient technology research applies only to
+  the interest using the RESEARCH.
+
+- The diplomatic status will not interefere with the working of the unit,
+  except in the following cases:
+  * Exchange of items and technologies is still subject to restrictions.
+  * The ship engines will refuse to provide propulsion if the core of the ship
+    is considered hostile or worse.  This prevents any use of the MOVE or JUMP
+    orders.
+  * Any active (i.e. requiring power and crew) military module and command
+    modules will not contribute to the defense or offense rating of a ship if
+    the core module slot is considered hostile or worse.
+
+  No attacks are ever made within the same unit.
+
+3.4.7. Docked units
+
+Units are considered docked if an active unit is stored in a storage module
+large enough to contain its current size.  Docked units are still considered
+separate units, except that:
+
+- Excess power will be provided by the units, containing or docked, that have
+  a surplus to the units that do not have enough.  Excess energy will not be
+  added to the containing unit if it does not require it.
+
+  Other contributions do not apply, except that the mass of the docked unit is,
+  of course, added to the containing unit.
+
+- In the event of a battle, the docked units will detach themselves from the
+  dock and join the fight.  They will lose their first round, during which they
+  cannot fire nor be fired upon, and will have an effective maneuverability of
+  0.01 during the second round of the battle.
+
+  If the containing unit is entirely destroyed during the first round of fire,
+  any excess damage will be applied to the docked ships, randomly.
+
+- Docked units do not require an extra upkeep; they pay the normal 100% upkeep
+  indicated on the report for the duration of their stay in the docks (see
+  3.6).
+
+
+3.5. Movement
+
+There are three ways of moving a unit within the Alderson universe.
+
+3.5.1. Cargo
+
+The easiest way is to place a unit within another, larger unit.  This is
+possible for any space unit, be it a ship or station, provided the unit has
+cargo bays large enough.  The other unit may then move normally.  Ground-based
+settlements cannot be uprooted and moved in that manner.
+
+3.5.2. Intra-system movement
+
+Intra-system movement is available only for ships (spaceships and starships),
+provided they have working engines and fuel if required.  A ship engine are
+capable of moving a specific mass, which is compared to the mass of the ship.
+Ships with a larger engine capacity than their total mass will move faster,
+in proportion of the engine overcapacity.  Ships with too much mass will move
+slower, in proportion of the over-mass.  The following formula is simple:
+
+- Effective speed = normal speed times engine capacity divided by mass
+
+Thus, if you have a capacity for 10000 mass, but your ship mass only 5000,
+it will move twice faster.  Conversely, a 20000 mass ship with 10000 engines
+would move twice slower.
+
+Movement occurs between any two points of a solar system using the MOVE
+command.  The time for travel is normally complex, depending on relative
+orbital points.  For simplicity's sake, the time for travel between any two
+points located at N U.A. and M U.A. respectively would be:
+
+       N - M   N + M
+Time = ----- + -----  (assuming that N is greater than M)
+        2.5     30
+
+The first factor represents the difference between orbits, while the second
+factor represents the differing positions on the same orbit.  This is not
+supposed to be an exact representation of celestial mechanics.
+
+After multiplying by the effective speed, the overall result is rounded to the
+nearest integer value.  If the value ends up being exactly X.5, then X is
+assumed.  The travel time can never be less than 1.
+
+In the sample turn, movement between the various alderson points would require
+2 weeks, while movement from the outer system to Mutorae II would require about
+9 weeks.  A faster ship could cover this distance in a shorter time, but a
+slow-moving cargo towing might require two or three turns to ferry something
+toward Birgon station.  Its position is also now clearer: a trade station is
+better positioned at the fringe of a system rather than inward, as merchant
+will be leery of having to move to and from planets.
+
+Systems with Alderson points in the inner system are rare and highly prized as
+hubs for commerce.
+
+3.5.3. Inter-system movement
+
+Inter-system movement is done by moving through Alderson points.  You start
+first by moving to a given Alderson point.  You may then use the JUMP command
+to move from that point to the matching Alderson point in the destination
+system.
+
+JUMP lasts a fixed single week (it is considered including the last
+calculations to find the exact point position in the jump zone, placing the
+ship on an intersecting trajectory and manoevering around).
+
+
+3.6. Upkeep
+
+There are various forms of upkeep, or regular expenses, within Alderson.  Your
+modules will all require maintenance, or may suffer degradation of performance.
+Your crew will also expect to be paid.  Finally, your crew and population will
+also expect to be fed, and engines fuelled.
+
+3.6.1. Cash
+
+You have galactic credits in two forms.  The first is your credit line, which
+is immaterial and available at any imperial location or any location with the
+appropriate technologies.  The second is by using "cash" items (tag "cash")
+wherever you go.
+
+Two categories of entities in the game require a payment of cash every turn.
+Crew members require $15 per turn and per crew member.  That cash can come
+from either the local cash or the credit line, even if the crew member is out
+of civilised space.  It is assumed that the transfer between bank accounts
+accumulate back pay, and the crew will get back its salary when back in the
+civilised areas.
+
+Modules also require an upkeep in cash, which represents work done and spare
+parts required for the unit.  Unlike crew salaries, the cash must be accessible
+from the system the unit is located in at the end of turn.  Access to the
+credit line is granted if any imperial unit exists in the current system, or
+one of your modules has the appropriate technology.  If the credit line is
+unavailable, local cash is required.  Cash will be shared by all your units at
+the same location.
+
+It is possible to control from which source the upkeep comes by using the flag
+SUPPORT which selects the credit line upkeep first over the hard cash for
+module upkeep, and WIRE_SALARY which selects the credit line upkeep first over
+the hard cash for crew.  The WIRE_SALARY must be set in the crew quarter
+modules.  The default, if these flags are not set, is to use the local cash
+first, then the credit line.
+
+3.6.2. Maintenance
+
+If a unit has more crew than the number required for all its modules, that crew
+will contribute its work force by assuring some additional maintenance in the
+unit.  Each extra crew member will reduce by $25 the upkeep of the unit, in
+the order of modules in the unit.
+
+Space-based units are more expensive than ground-based ones.  Any structure
+in space costs an extra 25% over its indicated upkeep.  This is valid for all
+modules that can be built in either space or planetary surfaces ; the upkeep of
+the module is higher if based in a space base or ship.  The indicated upkeep of
+space-only modules does not take these 25% into account, to avoid confusion.
+Thus the upkeep of a space-based unit is 125% of the total of the sum of the
+indicated upkeep of all modules.
+
+A moving unit (ship) is also increased by another 25% for the time it spends
+moving around.  If a ship is always moving for the full quarter, its effective
+upkeep will then be 150% of the computed upkeep.  If it moves only 5 weeks
+during the quarter the upkeep would be in proportion, i.e. 134.6% of the
+standard upkeep.
+
+A ship or structure that is docked (i.e. located in a hangar bay) pays normal
+upkeep for that time, as the docking protect it from premature wear and tear
+in space (no micro-meteorite pitting).
+
+Finally, unconnected modules (i.e. modules that are not part of a unit) cost
+only $5 per turn in upkeep.  This is valid for any unconnected module, or for
+core modules who do not hold any other module yet.  As soon as two modules are
+connected together, the normal upkeep (including space penalties) applies.  If
+a unit begins the turn as a collection of loose, unconnected modules, and is
+assembled during a turn, upkeep will be in proportion of the time as separate
+modules and as functional units.
+
+Note that crew members do not require extra salary while in space; their upkeep
+remains what is indicated.
+
+3.6.3. Lack of upkeep
+
+Lack of upkeep cash affect crew and modules differently.  If cash is lacking to
+pay the salaries, a random number of crew members, up to the amount that lacked
+some cash (if $150 was available for example, at least 10 crew members will
+never desert), may desert.  The probability of their desertion is equal to the
+ratio between paid salary and required salaries.
+
+If cash is lacking to maintain the various modules, damage will occur.  Each
+damage indicator reduces the efficiency of one module copy by 5% (if 100%
+damage accumulate in a single module, that module is shut down), and increase
+the upkeep of the module by $10.
+
+The probability of breakdown and damage is equal to the ratio between unpaid
+maintenance and paid maintenance, and occurs for each module copy separately.
+If breakdown occurs, one damage indicator is added to the module that turn.
+This occur for each module copy (a crew quarter of 5 modules may have up to 5
+damage occurring) separately.
+
+If full maintenance is paid, one damage indicator will be removed from the unit
+per core module each turn.  The only way to repair faster is to use the repair
+technology at a suitable location.
+
+3.6.4. Item upkeep
+
+Unlike cash upkeep, items are consumed at the start of each turn.  If the
+required items are available, they are consumed.  If they cannot be, the module
+usually shuts down for the turn.
+
+Food upkeep for crew members is different.  If not enough food is available,
+the crew will not work (it will not contribute to the unit's function, nor
+contribute to maintenance), require an additional $5 in salary, and may die if
+not in a terran planet.  On settlement on terran planets, each starving crew
+member has 5% chance of deserting.  Out of terran planets, or in orbital bases
+or ships around terran planets, each starving crew has 25% chance of dying.
+
+If not enough food is available in a given unit, all units of the same interest
+at the same location will attempt to transfer enough food to satisfy all crews.
+
+3.6.5. Reaction requirements
+
+Finally, reaction drives require some reaction mass to work.  All reaction
+drives indicate how many items are required per week of function and copy of
+the module.  Movement require the amount of items.  If not enough items are
+available, the movement will be impossible.  If movement has started, and the
+reaction mass isn't available anymore, movement continues, but the ship will be
+unable to decelerate and stop at the destination.
+
+
+3.7. Credit line
+
+Your credit line is very important.  It represents the cash that is managed by
+the various banking concerns across all civilisations.  Unlike cash objects,
+which may be taken during raids, your credit line cannot be hacked - or so
+assure all banks.
+
+The credit line may be used instead of liquid cash at any system where an
+imperial structure exists.  These locations are supposed to provide elementary
+banking services.  The WITHDRAW order allows you to convert cash from the
+credit line into cash items at a $1 for $1 rate.  Also, when buying from an
+imperial unit, an automatic withdraw will be performed if you do not have
+enough cash to pay for your purchase.
+
+For security reasons, the bank will not allow you to deposit cash back onto
+your credit line.  Once you have emptied your credit, you must do without the
+bank.  To compensate for this, an automatic amount of cash is wired to your
+credit line each turn, which represents your day-to-day finantial activities
+within the imperium.  You get an automatic $3000 each turn, which is enough to
+cover a basic settlement and a ship upkeep and crew requirements.  Any
+additional cash will have to come from other sources.
+
+Some technologies allow you to build your own bank terminal, and withdraw
+anywhere, even if no imperial unit is present in the system.  Others even
+allow you to store cash in a bank, or to wire directly between player credit
+lines.
+
+
+3.8. Battle
+
+There are different kinds of battle, depending on your objectives.  You may
+order an attack on an enemy unit or fleet using the following orders:
+
+- DESTROY.  Your objective is the total destruction of the enemy unit.  Should
+  you win, nothing will remain of the enemy.  This is the easiest battle.
+- CAPTURE.  Your objective is the capture of the enemy ship with the least
+  possible damage.  If all goes well, you might end up with the ship under
+  control.
+- PLUNDER.  An intermediate form.  You will try to salvage as many modules as
+  possible, but will not consider yourself very concerned about overall
+  integrity; your objective is parts, not working unit.
+
+These apply to explicit orders.  Implicit attacks may also occur, when you
+identify an enemy unit.  Your combat setting (see TACTICS) determine which type
+of attack you'll attempt: DESTROY or CAPTURE.  It is not possible to select a
+PLUNDER attack for automatic attacks.  All attacking units use the same type of
+combat.
+
+The defenders in a battle each have a separate objective, according to their
+tactical settings.  If no special attack setting has been selected, the
+defender will do a DESTROY battle.
+
+
+3.8.1. Military factors
+
+Each ship has an attack and defence factor, as reported overall.  Your attack
+and defence are simply the sum of all the factors from your various modules,
+plus 10% of the unused energy supply for the attack, over your ship potential
+and actual size.  For better understanding, each factor is described by the
+formula:
+
+                                      10000
+factor = sum of module factors * --------------- + fleet bonus
+                                 max size + size
+
+The fleet bonus is the sum of the cooperating factors from the rest of the
+fleet.  Those cooperating factors are the factors from each other ship, fleet
+bonus excluded, times the fleet percentage factor.  The numbers indicated in
+parentheses for each unit on the core module are the final factors with all
+contributions factored in.
+
+For a ground location, the factor is equal to:
+
+                                  25000
+factor = sum of module factors * --------
+                                 max size
+
+There is no possibility of a fleet bonus, and the current size of the unit is
+not taken into account, only its maximum size.
+
+This decides a ship, station or ground city defence and attack factors.  To
+these factors is added a manoeuverability factor, which is equal to the ratio
+of your engine power over your mass, times the ratio of your energy supply
+over your energy requirements.
+
+             Engines   Power supply           Damage
+Maneuvers =  ------- * ------------ * ( 1 - --------- )
+              Mass        Energy            Structure
+
+Fixed units (stations, ground sites) have an arbitrary ratio of engine/mass
+of 0.1 only.  Moving ships with a ratio of engine over mass inferior to 0.1
+are considered to have 0.1 too.  There is also an upper limit of 10 to the
+ratio of engine over mass.  The same 0.1 and 10 limits apply to the power
+supply available over energy consumed ratios.  Some technologies may alter this
+factor.
+
+The battle is then resolved until the objective specified in the attack is
+achieved, all units on one side are destroyed, the attacking units are routed,
+or the defending units escape.
+
+All ships have a structure factor, which is equal to the current size.
+
+3.8.2. Engagement
+
+The battle proper is divided into rounds.  Each round, all the ships involved
+will act in the order of decreasing manoeuverability.  Each ship has the
+opportunity to first attempt to escape the battle, if this is selected as its
+tactical setting.  A ship rolls on the sum of its manoeuverability plus 20% of
+all its own side manoeuverability, against the sum of all the enemy side
+manoeuverability.  If the roll is successful, the ship escapes battle and can
+no longer be hit.  A single ship against a whole fleet will have a hard time to
+escape.
+
+If a ship fails to escape or does not try to escape, it will then attempt to
+fire.  It selects a target using its tactical setting and fires on it.  It
+then rolls on the sum of its attack plus the target ship defence.  If the roll
+is less or equal to the defence, this attack has failed.  If not, the enemy
+ship hits.  Each point above the defence factor counts as one damage.  This
+damage is multiplied by 500, and is recorded.
+
+All ships thus escape or fire in order.  At the end of the round, all ships add
+any damage they suffered to their damage total.  A ship is destroyed and can no
+longer fight or act in any way once it has accumulated more damage than its
+structure.
+
+If ships remain on both sides of the battle, the manoeuver factor is readjusted
+according to the damage suffered, and the battle proceed anew.
+
+3.8.3. Special objectives
+
+The rules of engagement above are for the most basic battle, i.e. a battle to
+DESTROY.  PLUNDER and CAPTURE battles have small variations to this model.
+
+3.8.3.1. Plunder ship, settlement or bases
+
+In a PLUNDER battle, the damage hits are 350 in size instead of 500.  However,
+each block of 350 damage is applied not to the target as a whole, but to one
+random module for each lump of damage.  The modules slots are chosen at random
+in proportion to their size.  A module is destroyed once it has accumulated
+more damage than its own size, and will not accumulate more damage.
+
+The target is disabled and stops fighting once the core modules are fully
+destroyed and the command modules have sustained at least 50% damage, or the
+power modules are fully destroyed.  If the opposing unit had no command
+modules, the destruction of the core suffices.  A unit without command modules
+will be disabled once its core or power modules are destroyed.
+
+Once a target is disabled, it will no longer be the target of any ships in
+battle, nor attack any other.
+
+All remaining modules then roll for destruction.  A module has a probability
+equal to its damage over its size to suffer fatal destruction.  If that
+destruction happen, one copy of the module is removed, along with the
+appropriate amount of damage, and the process repeats if any copies of the
+module remain.
+
+Any surviving modules will be loaded in cargo bays of surviving units of the
+winning side.  All extra modules that could not be loaded will either remain in
+their core module, if any module survived, or in a special "wreck" core module
+that replaces the destroyed core (keeping the same ID).  Modules loaded in
+cargo bays will belong to the unit's owner, while modules in the wreck will
+belong to no interest at all.
+
+3.8.3.2. Capture ship, settlement or bases
+
+Static units (settlements and bases) cannot attempt a CAPTURE.
+
+In a CAPTURE battle, the damage hits are 100 in size instead of 500.  Each
+block of damage is applied to a module, as in a PLUNDER battle.  Command
+modules have a double probability of getting hit.
+
+The target is disabled and stops fighting once the command modules have
+sustained 60% damage or higher, or the core modules are fully destroyed, or
+the power modules are fully destroyed.  For units without a command module,
+the capture occurs when 30% damage has been inflicted overall.
+
+If the target had its core modules fully destroyed, it is a wreck, and the
+process of PLUNDER described above will occur.  If the target was not wrecked,
+any fully destroyed module is erased, and all surviving modules get damage
+indicators in proportion of their damage.
+
+If the target was not wrecked, the core, command and crew quarters will be
+converted to the interest of one of the winning units.  A random amount of
+25-75% of the crew members will survive and belong to the new owner.  All
+remaining modules remain owned by the previous owner, which will not pay upkeep
+for the captured module.  Other modules must be individually converted using
+the CONVERT order, otherwise, the module will remain connected using ansible
+links through the Alderson wormholes and its interest get reports.  Crew must
+be filled, if necessary, and repair effected if possible.  Captured modules
+cannot execute orders, but still report to their original interest until
+converted.
+
+
+3.9. Outlaws
+
+In some circumstances, the Imperium may decide to declare your interest a Rogue
+Interest, or outlawed interest, and calls for your disband.  A reward of $1500
+is given for the destruction of any rogue unit, be it ship or settlement.
+
+If you are declared rogue, the Imperium will seize your assets, and cancel your
+credit line.  You cannot access the credit line anymore, nor can you receive
+the fixed $3000 quarterly funds.  The Imperium will also declare you enemy,
+and will attempt to destroy any of your units it may.
+
+The Imperium always issue a proclamation of this declaration one turn in
+advance.  You, and every player in the game (except rogues) gets the
+notification on the report.  Your credit line is then liquidated at the end of
+the first week on the next quarter, and you are declared enemy the next week
+(you just have time to liquidate your assets).  Once declared enemy, you can't
+ever go back.
+
+After this happens, you have to find out a way of getting supporting upkeep.
+The reason for your classification in Rogue Interests is reported.
+
+Interest may DECLARE an attitude over ROGUE, which is basically an up-to-date
+copy of the rogue list.  If you are rogue yourself, your attitude vs rogues is
+meaningless, as you no longer have access to the rogue list.
+
+If you declare an attitude against an interest that is declared rogue, and a
+default attitude against rogues, the specific attitude takes precedence over
+the more general one.
+
+3.9.1. Piracy conviction
+
+The first way of being declared rogue is being convicted of piracy.  There is
+different ways of being convicted of piracy:
+
+- Having one of your ships captured after an attack
+- Having one of your ships doing an attack while not under transponder silence
+- Having one of your ships doing an attack, having one unit escape the attack
+  or survive the attack, and having that ship being later identified as
+  belonging to your interest
+
+Being attacked never counts as piracy.  Attacking a declared rogue ship or
+interest never counts as piracy.
+
+If only some units are being suspected of piracy, but your interest could not
+be identified, you will escape piracy conviction.  The Imperium will publish
+a list of individual rogue ships.
+
+3.9.2. Rogue complicity
+
+Once an interest is declared rogue, the Imperium expects you to consider that
+interest as at least unfriendly.  If the Imperium can see an interest dealing
+with a known rogue (either a rogue ship or a rogue interest) in a manner that
+indicate a neutral or better attitude, the Imperium will inflict you a penalty
+of $6000 the first time (your automated subsidy is withdrawn for two turns).
+If you are caught dealing with rogues a second time, you are declared rogue
+yourself.
+
+Again, a silent ship dealing with rogues will simply be declared rogue itself
+if its controlling interest remains unknown.
+
+3.9.3. Outlaw technology
+
+The third way of being declared rogue is to harbor or use outlawed techs.  Some
+technologies are declared outlawed technologies by the Imperium.  When you
+discover such a technology, its description will indicate an outlaw index.
+Your faction, as long as it knows an outlawed technology, has an outlaw factor,
+which is the sum of the outlaw indexes.  When that outlaw factor goes over a
+certain limit, the Imperium will declare you a rogue.  When you go over 80% of
+that limit, the Imperium will address you a notice that you are treading on
+dangerous grounds.
+
+When you not only master these technologies, but apply them (load them into the
+proper modules, produce the modules they allow to build, or produce the items
+they allow to produce) in public, you get a double amount of outlaw points for
+that technology.  Wiping out the technology from your databases does not wipe
+out those added outlaw points; you also need to destroy the outlawed items or
+modules.
+
+Loading outlawed technologies in a spaceship, or storing outlawed items in a
+spaceship does not constitute the use of the technology in public, unless the
+spaceship is a shared unit with an Imperial module present.  Using an outlawed
+module consists a public use of the technology in any unit.
+
+Unsurprisingly, the more interesting a technology, the higher its outlaw
+factor potential.
+
+
+4. Orders
+
+The report includes a template for your instructions. You may simply use the
+reply command of your mail tool to send back this template, properly filled.
+
+The email address is <server@alderson.frmug.org>.  Various commands may be sent
+to the server.  All commands have the following form:
+	#xxxxxxx interest-id interest-password ...
+
+The first two parameters of the command are fixed, and represent your unique
+interest ID, as assigned by the game server, and your own password.  The
+initial password is selected when you register, but may be changed at any time.
+Alternatively, any valid unit-ID of your interest may be used as a replacement
+for the interest ID.
+
+The following commands are available:
+
+- #GAME
+  Indicates a turn instructions submission.  This cancels and replaces any
+  previously submitted instruction list.  This is valid for the current turn.
+  A simple, generic turn checker will evaluate your instructions, and report on
+  their syntax and possible consequences.  Do not put too much faith in the
+  effects reported, as the checker does not simulate a full turn.
+
+- #PRESS
+  Indicates a turn press submission.  This adds an article, signed in a
+  non-forgeable manner to the player-published turn newspaper.  Multiple
+  submissions are individually added.  The article is signed by the submittor,
+  i.e. your interest overall, or the specific unit referred to.  If a unit has
+  submitted press, its interest is not disclosed.
+
+- #RUMOR
+  Indicates a turn press submission.  This adds a completely anonymous article
+  to the player-published turn newspaper.  Multiple submissions are
+  individually added.
+
+- #TURN
+  Ask for a turn report.  A third argument is required; the turn number must be
+  specified.  The server will return you the report for your interest on the
+  given turn, if any remains archived.
+
+  Alternatively, it is possible to check the WWW site for reports:
+	http://alderson.frmug.org/pbm/Alderson/xxxxx/
+  where xxxxx is your interest ID.  This site requires authentication.  Simply
+  specify your interest ID and password to access information.  Each player
+  entry contains the turn reports, the lastest instruction list received, and
+  the checker's output for that instruction list.
+
+Alternatively, it is possible to send a message to xxxxx@alderson.frmug.org,
+where xxxxx is any entity, interest, unit or individual module, within the
+Alderson game universe.  The entire content of the message is forwarded, along
+with your email address, unless the first non-blank line of the message is the
+specific command #FROM.  In that case, the From: line of your message will be
+replaced by the appropriate address thru the alderson server, providing a good
+anonymous forwarding service. The syntax of the #FROM is:
+
+- #FROM interest-id|unit-id interest-password
+
+Anonymous senders are advised to check carefully their message for any
+signature, or specific information, that could be used to identify themselves.
+
+All commands forwarded to the game server end at a line with #END.
+
+
+4.1. Turn instructions
+
+Instructions are divided by categories. You have roughly three categories:
+
+- Immediate instructions.  These instructions happen immediately, as soon as
+  the conditions required for their execution are fulfilled.  As many
+  instructions as can be executed will be considered each game week.
+
+- Long instructions.  One long instruction will be executed each week.  The
+  first instruction occurring in the instruction list that has all the
+  conditions required for its execution satisfied will be selected.  If an
+  instruction lasts more than one week, it will last the required amount of
+  time, unless otherwise specified.  Movement instructions cannot be
+  interrupted, but any other instruction may be, if another long instruction
+  located before it in the instruction list becomes valid during the turn.
+
+- Turn instructions.  A special case of the long instruction.  Turn
+  instructions fill an entire game quarter.  These instructions will start only
+  on the 1st week of the game quarter, and fill all 13 weeks.  Turn
+  instructions cannot be interrupted.
+
+Immediate instructions on one side, and long/turn instructions on the other
+side are considered independently.  Immediate instructions located well after
+an unexecuted long instruction will still considered.  Only conditionals will
+cause immediate and long instructions to depend on each other.
+
+Any space at the beginning of a line is ignored.  Anything prefixed by either
+the `#', `;' or `>' characters is considered a comment, and the entire line
+ignored.  Comment lines must begin with these characters (after any leading
+space).
+
+
+4.2. Instruction execution
+
+All instructions are ordered for each unit.  All instructions are considered in
+the given order, except immediate instructions.  Immediate instructions may
+execute in any order.  Long instructions are considered in the order they were
+given, and the first allowed one is executed.
+
+If an instruction was not fully executed that turn, it remains in the list for
+that module for the next turn, and is reported in the template.  If the module
+doesn't receive a new instruction list, even an empty one, it will keep those
+instructions.  Any UNIT instruction for that module erases the pending list,
+and replaces it with the specified instructions, if any.
+
+An instruction may be completed by various conditionals.  These conditions
+further specify under which circumstances an instruction may be considered for
+execution.  There are three forms of conditionals:
+
+- The 'wN' condition.  This conditional indicates that the given instruction is
+  valid only on the specified week, as numbered from 1 to 13.  This applies to
+  immediate instructions as well as long instructions.  Note that, if a long
+  instruction is prefixed with a wN, it will execute only that week, regardless
+  of the other conditions, but a move instruction will *begin* that week, and
+  keep on executing until finished, even if it takes more than a game week to
+  execute.
+
+- One or more '-' (dash) conditions.  This conditional indicates that the given
+  instruction must be skipped.  When an instruction is completed and removed
+  from the instruction list, all instructions that follow have one dash removed
+  from them, until the first instruction without a dash prefix.  If an
+  instruction cannot execute because it is in error (invalid arguments), all
+  instructions with a dash that follows are also removed instead of being
+  enabled.  Note that, if the first instruction following an executing
+  instruction has two or more dashes, the appropriate amount of dashes will
+  be dropped from subsequent instructions.
+
+- The '+' (plus) condition.  This conditional indicates that the given
+  instruction is valid, but only as long as the previous instruction has not
+  executed.  This is the reverse condition of the dash.  Once the previous
+  instruction completes, all instructions having a plus will be removed, up to
+  the first one without a plus condition indicator.  If an instruction cannot
+  execute and is removed because it is in error (invalid arguments), all dashes
+  that follows are simply removed, making the instructions permanent.
+
+- The 'N' duration.  This conditional indicates that the given instruction
+  should execute N times, and no more, regardless of other conditions.  If
+  there is a condition in the instruction itself, the first condition, either
+  duration, or the specified stopping point that occurs will complete the
+  instruction.
+
+- The '@' infinite duration.  This conditional indicates that the given
+  instruction should never complete.  If a stop condition is specified within
+  the given instruction, the instruction will end at that point, and will not
+  execute again during that turn, but will be retained for next turn's
+  instructions, making automated orders easier to write. `@' and `N' durations
+  are mutually exclusive.
+
+The order to specify conditionals is:
+	'-' conditions
+	'+' condition
+	durations
+	'wN' condition
+followed by the instruction itself.
+
+
+4.3. Interest instructions
+
+The following are interest-wide instructions, and must be given before the
+first UNIT instruction.  They apply to your interest overall, and cannot have
+a conditional.
+
+- EMAIL new-email-address
+  Change your email address for the next turn.  Note that, to prevent hijacking
+  of turn reports by someone who got your interest password, the report for the
+  current turn is still sent to your old email address, but will indicate the
+  new email address.  Thus, a password change will always be noticeable.
+
+- PASSWORD password
+  Change your password for the next turns.  Note that the password change takes
+  effect only after the current turn has been executed.
+
+- REGISTER interest-name
+  Change your interest name for reports.  Interest names may include letters,
+  digits, dashes, dots, but may not include commas or square brackets.
+
+- RESHOW item-tag|tech-tag|module-tag|ALL
+  Include in your next report the description of the specified item, technology
+  or module. You must have had a descripion of the specified element to use
+  a RESHOW. RESHOW ALL re-includes all your knowledge base.
+
+- RESIGN CONFIRM
+  Resign from your current position.  All your units revert to the Imperium at
+  the end of the turn, or are disbanded.  No unit instructions will be executed
+  this turn.
+
+- UNIT unit-or-module-id
+  Start giving instructions specific to a unit or module within a unit.  Most
+  modules do not require any instruction to function.
+
+  If a module has a set of instructions pending (as indicated in the report
+  template), that set of instruction remains valid if no UNIT instruction is
+  received.  To cancel a unit's instructions, specify UNIT, with no valid
+  instructions until the next UNIT instruction.
+
+4.4. Unit and module instructions
+
+The following are module-specific instructions, and must be given after a UNIT
+instruction.  UNIT refers both to a unit as a whole (the core) or a specific
+module.
+
+- AT feature-id
+  Any.  Immediate condition.  Executes when the module's unit is located in
+  orbit of the specified feature (or has been implanted at the specified
+  location).  Instead of a feature, a system ID may be specified, and the
+  instruction then executes when the module is in the appropriate system,
+  regardless of its position within the system.
+
+- BUY amount item-tag|technology-tag|module-tag price
+  Any.  Immediate, end of week.  Buys the specified amount of items, modules or
+  one copy of a technology that is on sale at the location.  The lowest priced
+  offer will be selected first, as long as it doesn't exceed the price
+  specified.  The price of the transaction will be the average of the buyer and
+  seller prices.
+
+  The purchase fails if the unit lack cash or room to store the purchase.  If a
+  core module tries to purchase a module, the module will be added to the unit
+  if possible, or the purchase fail.  If a storage module tries to purchase a
+  module, the module will be added into the storage.
+
+  If the selling does not complete before the end of the turn, and the
+  instruction has a repeat factor (numbered, or infinite), the sale will be
+  advertised by the core module in the turn report for every present faction.
+  If not, the order will remain in the order stack, but the purchase intention
+  will not be advertised.
+
+- CHRISTEN string
+  Core module.  Immediate.  Sets the name of the current planet.  You can set
+  the name of planet only if the unit is the first unit at that location.
+
+  Christening is impossible for alderson points, oort clouds, or asteroid
+  belts.
+
+- CONSUME amount items
+  Any.  Immediate at start of turn.  Indicate which items and their amount must
+  be consumed for upkeep, if multiple options are possible.  If no CONSUME is
+  specified, the upkeep is automatically done after all first week immediate
+  orders have been processed.
+
+- CONVERT [sub-module-id]
+  Core only.  Long.  Effects a conversion of the given module to the core
+  interest.  The module must be inside the core module.  Conversion requires
+  5 extra crew member per module copy per week (so if the unit has 1 idle crew,
+  the conversion of a single module takes 5 weeks).  If not specified, all
+  modules that do not belong to your interest are converted in order.
+  If a cargo is converted, all its contents are also converted immediately.
+  A module slot is not converted until all the copies in it are converted.
+
+- COPY technology module-id
+  Any.  Immediate.  Copies the technology into the specified module, if the
+  module has enough memory to hold it, and the current module contains it.  The
+  specified module has enough memory if it is currently empty of technologies,
+  or has enough technology room to hold the file.
+
+  If the executing module has less technology space than the copied technology
+  requires, the COPY also ERASE the technology from its current space.
+
+- ERASE technology
+  Any.  Immediate.  Erases the technology from the current module, if the
+  module contains it.  Otherwise, executes and does nothing.
+
+- EXCHANGE amount item-tag|module-tag|tech-tag unit-id amount target-tag
+  Any.  Immediate.  Execute a trade of the given amount of items, pre-built
+  modules, or one technology, as specified in the first part of the
+  instruction, with the given amount of itmes, modules or one copy of a
+  technology, as specified in the last part of the instruction, from the
+  specified unit or module.  The targeted module must be either the module
+  giving the matching EXCHANGE, or its core module.
+
+  The instruction will execute only if both interests issue the same
+  instructions with the arguments reversed.
+
+- EXPLORE ua-value
+  Spaceship/Fleet only.  Long.  Explore the system at the given U.A. range for
+  interesting and uncharted features.  May uncover an asteroid belt, or a
+  planetoid, in the inner system, or an oort cloud or planetoid on the outer
+  system.
+
+  Each week spent in the explore has a 15% chance of uncovering a feature if
+  one exists at the indicated range.  If uncharted features exist, but not at
+  the given U.A., each unit of difference in U.A. will reduce the chance of
+  discovery by 3% for inner system, or by 1% for the outer system.
+
+  Inner system is defined as anything from U.A. 0 to the highest U.A. reported.
+  Outer system is defined as anything from the highest U.A. reported outward.
+
+  Anything discovered will be flagged as unexplored.
+
+- GET module-id amount item-tag [remain]
+  Any.  Immediate.  Get the appropriate amount of items from the indicated
+  module, and store them.  If issued by a core module, the items are stored in
+  the first module that can hold them.  Otherwise, the ordering module must be
+  able to receive the items, as indicated by the item description.  Storage
+  modules can always hold any number of items, up to the size (except crew
+  members, which can be stored only in habitat modules). If indicating a core
+  module, the items will be received from the first module in that unit that
+  has any.
+
+  The instruction is deferred if the indicated module does not hold enough
+  items to satisfy the amount to transfer and the optional amount to leave.
+  The instruction is impossible if the module does not belong to your interest.
+
+  An amount of zero indicates the maximum possible of items.  An amount to
+  remain of zero is ignored.
+
+- GIVE module-id amount item-tag [remain]
+  Any.  Immediate.  Give the appropriate amount of items to the indicated
+  module, which will store them.  If indicating a core module, the items are
+  stored in the first module that can hold them.  Otherwise, the indicated
+  module must be able to receive the items (see GET).  If issued by a core
+  module, the items will be picked from the first module in that unit that has
+  any.
+
+  The instruction is deferred if the indicated module does not hold enough room
+  to hold the amount transferred, or the issuing module lacks the items to
+  satisfy the amount to transfer and the optional amount to leave.  The
+  instruction is impossible if the receiving module does not consider you as
+  friendly, or is not allowed store the specified items.
+
+  An amount of zero indicates the maximum possible of items.  An amount to
+  remain of zero is ignored.
+
+- HAS amount item-tag|module-tag
+  Any.  Immediate condition.  The instruction becomes valid and executes
+  (regardless of duration) if the specified amount of items is available in the
+  module, or the module slot is composed of the specified number of copies.
+  If executed by a core module, the condition looks over all the unit
+  (regardless of how many modules are required to satisfy the condition).
+
+- JUMP [feature-id]
+  Spaceship/Fleet only.  Long, 1 week.  Jumps through the current or specified
+  Alderson point.  A fleet may jump only if it is composed only of ships.  A
+  ship does not need to have working engines to jump, but a fixed space station
+  cannot issue a jump.
+
+- MOVE feature-id|unit-id
+  Spaceship/Fleet only.  Long.  Executes when the appropriate feature-id or
+  unit-id is in the system you are in, and you have working engines.  The
+  spaceship will break out of the fleet it is in, or undock, and move toward
+  the given feature or unit, at a speed proportional to its engine/mass ratio.
+  For fleets, the fleet will move as a whole at the speed of the slowest ship
+  inside.
+
+  For a ratio of 1, the time for MOVE is equal to (N-M)/2.5+(N+M)/30, where N
+  is the U.A. number of the farthest feature, and M the U.A. number of the
+  innermost feature.
+
+  If the engine shut down for lack of fuel, the ship or fleet will drift, at
+  a third of its original speed.  Another ship must rendezvous with the
+  drifting ship, and bring it fuel, or the ship will move inward the system,
+  till it hits the sun (U.A. 0), or outward, till it is lost in interstellar
+  space (at a U.A. value equals to twice the highest U.A. in the system).
+
+  If a fleet is drifting because one of its ship lacks fuel, it is possible to
+  transfer fuel between ships to restore drive.  If this isn't done, it is also
+  possible to move the ship out of the fleet, and resume movement.  When
+  movement resumes, the pending MOVE is executed again.
+
+  If moving toward a moving unit, will track the unit until a position match is
+  possible, or the unit leaves the system.  The positions and movement are
+  interpolated, and the meeting is possible in space, in which case the
+  tracking fleet or unit will match speeds, and keep on moving at the same
+  speed, if possible.  If the tracked target is faster, it is possible that an
+  intercept is possible in space, then the unit will be left behind by the
+  tracked unit.
+
+- NAME string
+  Any.  Immediate.  Sets the visible name for a module.  See the REGISTER rules
+  for valid names.
+
+- OATH interest-id
+  Any.  Immediate, end of turn.  Changes the loyalty of the module to the new
+  interest.  It is valid only if at least one module slot of the specified
+  interest is present at the feature or in the same unit as the ordering
+  module, and is visible.
+
+  It is always possible to OATH to the Imperium, regardless of the Imperium's
+  presence.  Oathing the first city on a terran planet turns the system into
+  an Imperial system.
+
+- PATROL CAPTURE|DESTROY [ua-range]
+  Spaceship/Fleet only.  Long.  Stay in patrol at a location, interdicting the
+  feature to any vessels at a hostile or enemy level.  If such a vessel is
+  spotted within the specified UA range, the ship ordering ship will
+  automatically MOVE toward the ship and proceed to attack it using the
+  specified type of attack.
+
+  If the range is unspecified, the ship will remain at its present location,
+  and only attack if the ship arrives at the location.
+
+- RECEIVE new-module-id [interest-id]
+  Core/Storage only.  Immediate.  Indicates a placeholder for the transfer or
+  creation of a new module.  If an interest is specified, the module
+  placeholder will be created for the specified interest, allowing the
+  construction of shared units.  In all cases, the new-module-id must include
+  your interest ID, not the other interest.  Valid for inactive modules.
+
+- REROUTE feature-id|unit-id
+  Spaceship/Fleet only.  Long.  Use only if the first instruction in a turn.
+  Cancels any executing MOVE instruction, then redirects the ship toward the
+  new feature ID or unit, as in a MOVE.  The duration is computed between the
+  ship current position and the new destination, with 1 U.A. added to the
+  movement (in both additive and difference factors of the formula).
+
+- RESEARCH module-id|item-tag|technology-tag|location-id
+  Research only.  Full turn.  Add a number of research point to the current
+  unit and make any technology discovered in that unit having 50% chance of
+  being related the specified module, item, location type, or an advance to an
+  existing technology.  The subject of the research must be present within the
+  unit to use the RESEARCH order, or the unit must be at the given location and
+  remain at that location for the entire turn.
+
+- RESET flag-name
+  Any.  Immediate.  Clears the specified flag.  See the SET order for the
+  various allowed flags.
+
+- ROUTE feature-ids...
+  Spaceship/Fleet only.  Long.  Proceed along a route, for periodic movement.
+  After a move has completed, the ship will check on the route instruction.
+  The first occurrence of the feature ID that is found indicates the starting
+  point, the next occurrence being the intended destination for a MOVE order.
+
+  If the current feature is an Alderson point, and the next destination isn't
+  in the same system, a JUMP is assumed.
+
+  If the first occurrence of the current location is the last feature in the
+  list, the instruction either completes (if unrepeated) or the entire list
+  will be reversed, allowing the ship to trace its route back to its original
+  starting point.
+
+- SEE module-id
+  Any.  Immediate condition.  Executes when the specified module is located at
+  the same location (either in transit, orbit, or landed) as the ordering
+  module.
+
+- SELL amount item-tag|technology-tag|module-tag price
+  Any.  Immediate at end of week.  Sells the specified amount of items, modules
+  or one copy of a technology at the location.  The highest priced request will
+  be selected first, as long as it doesn't stay below the price specified.  The
+  price of the transaction will be the average of the seller and buyer prices.
+
+  The selling fails if the unit lack the module or item, or has no technology.
+  If a storage module tries to sell a module, the module will be picked from
+  its storage.
+
+  If the selling does not complete before the end of the turn, and the
+  instruction has a repeat factor, the sale will be advertised by the core
+  module in the turn report for every present faction.
+
+- SET flag-name
+  Any.  Immediate.  Sets the specified flag.  The following flags are
+  available:
+  * MUTE.  If set, this module does not contribute in any way to the
+    technological research of the unit.
+  * SHUT.  If set, this module is not working, and does not provide or require
+    crew, energy or consume anything.  If the core is SHUT, all the unit will
+    be considered shut down as well.
+  * SILENCE.  If set, unit stops broadcasting its interest identifier for all
+    other units.
+  * SUPPORT.  If set, indicates that the unit's upkeep must be wired from the
+    credit line rather than local cash, if possible (Imperial station presence
+    in the system).
+  * WIRE_SALARY.  If set, indicates that the crew salary must be wired from the
+    credit line rather than local cash.
+
+- SHUTDOWN
+  Any.  Immediate.  The ordering module is temporarily shut down (equivalent to
+  the setting of the SHUT flag) for the week. The duration of the order allows
+  to specify the shutdown time.  The SHUTDOWN order is parallel to the SHUT
+  flag; the end of the SHUTDOWN command does not reactivate a module whose SHUT
+  flag has been set.
+
+- STORE module-target-id
+  Any.  Immediate.  The ordering module will be moved from their current
+  storage to the new storage.  If this is an inactive module, it is equivalent
+  to a TRANSFER of the whole module.  If this is the core module of a unit, the
+  target module must be a storage or unit identifier, and the unit is stored
+  inside the unit.  Use this to dock to a base, or place a space base in a
+  mass transportation ship.  Valid for inactive modules.
+
+  Ground-based units and non-core active modules cannot use the STORE command.
+
+- SYNCHRO module-id [synchronisation-point-name]
+  Any.  Immediate condition.  Execute only when the designated module executes
+  the matching SYNCHRO specifying the executing module, and the optional name.
+  If the name is omitted, the other SYNCHRO order must also omit a name.
+  Valid for inactive modules.
+
+- TRANSFER amount module-target-id
+  Any.  Immediate.  The amount of modules in the current module is transfered
+  and added to the target.  The target may be an empty module ID, or a module
+  of the same type, in which case the modules are added to the given target, or
+  a core or storage module, in which case the modules will be added inside the
+  module, either to the modules of the same type and interest, or creating a
+  new module.  Valid for inactive modules.
+  It is not possible to transfer modules out of a working module.
+
+- USE tech [amount [module-target-id]]
+  Any.  Long.  Make use of the specified technology, producing effects or
+  products, and consuming, if required, any raw materials.  The optional
+  module target indicates where the resulting product, module or item, should
+  be placed, or what the focus of the technology is.  The optional amount
+  indicates the number of times the technology should be used; the default of 0
+  being to use the technology for as long as possible.
+
+  If a non-zero amount is specified, the order does not complete until the
+  amount of goods produced is done.  If the order also has a repetition factor,
+  it will then be skipped for the rest of the turn, but will restart on the
+  next game quarter.
+
+  Note: It is not possible to skip the amount, and specify a target module.
+  Use 0 as the amount to specify as many results as possible.
+
+- WAIT
+  Any.  Immediate condition.  Execute only when the duration has elapsed.
+  Note that, to achieve the expected effect (the next instruction executes
+  after N weeks have passed), the instruction executes only after one
+  additional week has elapsed (so, the effective duration is N+1, but the
+  conditionals are triggered also at week N+1).  Valid for inactive modules.
+
+- WITHDRAW amount [item-tag]
+  Any.  Immediate.  Extract cash from the interest fund and store it in the
+  ordering module.  Requires an Imperium unit in the same system, or the
+  appropriate technology or specific module.
+
+  During your first turn, you may withdraw from any location in the game, not
+  just the Imperium, to facilitate your startup. You may also withdraw a
+  number of extra food items, which will be purchased using the basic price,
+  by adding the `food' tag to the command.
+
+4.5. Sample actions
+
+4.5.1. Creating a new spaceship
+
+The simplest spaceship consists of one core (a shull1 module built using the
+sassemb technology), one command bridge (a cbridg module, built using the
+spcntrl technology), two crew quarters (crewq1 module, crewhsn technology), two
+fission reactors (fisrec module, urfissi technology), and one reaction engine
+(rdrive module, reactio technology).  All of these technologies are available
+without requiring the download of a technology.
+
+- Step 1: The core of the building unit specifies a target for the construction
+	UNIT 1234
+	RECEIVE mc54N01
+
+- Step 2: Build the core and command bridge
+	UNIT f1234
+	USE sassemb 1 mc54N01
+	USE spcntrl 1 mc54N01
+	USE crewhsn 2 mc54N01
+	USE urfissi 2 mc54N01
+	USE reactio 1 mc54N01
+
+Then, after the ship completion, crew may be transferred, supplies loaded, and
+the ship sent out on its first mission. We have enough for about 10 turns:
+
+- Step 3: Crew the ship
+	UNIT mc54N01
+	-GET p1234 20 uran
+	--GET c1234 200 food
+	--GET c1234 20 crew
+	-GET m1234 100 h2o2
+	-GET 1234 2000 cash
+
+Note that we had the loading of the crew conditional to the loading of reactor
+supplies.  This is because the loading proceeds immediately as a module can
+receive the appropriate item (i.e. uranium as soon as power is established,
+food as soon as crew quarters are added).  If we had the crew settle in the
+ship before energy became available, we would run the risk of death from the
+unpowered and unpressurised ship.
+
+4.5.2. Maintaining a city
+
+A city requires, in order: fuel for its power supplies, food for its inhabitant
+and cash for the maintenance of the city and payment of your employees.
+Typically, a sample city would look like:
+
+- City [1234], city.
+  - Condo [h1234], 5 habitat units.
+  - Farms [f1234], 2 farm.
+  - Mines [m1234], 1 mine.
+  - Coal burner [e1234], 1 power station.
+
+The first step is to ensure that farms are delivering a steady supply of
+goods to the condo:
+
+- Step 1: Farm and feed the population
+	UNIT f1234
+	@USE farming
+	@GIVE h1234 0 food
+
+The "@" character ensures automated repetition.  Unless you change ideas, the
+farm will then work automatically, delivering its supplies to the habitat units
+each week.
+
+	UNIT h1234
+	@CONSUME 50 food
+
+The same apply here.  Food is consumed at the beginning of the turn, and the
+"@" ensures repetition of the order.  In fact, since only 1 type of food is
+delivered by the farming concern, CONSUME is unnecessary; the default item will
+automatically be used by the condo.
+
+- Step 2: Mine coal, and power the city
+
+	UNIT m1234
+	@USE hcarbon 1
+	@GIVE e1234 1 carb
+
+The mine will work, and produce 1 unit of hydrocarbon.  Once this production is
+done, the mine will ignore the order for the rest of the turn, and the "@" will
+keep the order for next turn automation.  Once produced, the carbon (coal) is
+handed off the coal burner.  The coal burner can also use the CONSUME, or burn
+off automatically its coal supply.
+
+- Step 3: Provide a steady income
+
+	UNIT m1234
+	@USE hcarbon 1
+	@GIVE e1234 1 carb
+	@USE imining
+	@SELL 0 iron 0
+
+The previous orders are completed.  Once coal extraction for the quarter has
+finished, iron is mined and sold on the local market.  This will bring in cash
+(assuming there's a local market for iron), which will automatically be picked
+up by the core module to pay for the upkeep.
+
+4.5.3. Shipping supplies across distances
+
+Let's assume you have a powerful mining concern in an asteroid belt, mining
+transuranics there, and your industrial base is located on the system next
+door.  You thus have various things to move to and from:
+
+- Getting food from the base to the mining station
+- Getting upkeep cash (supplies) from the base to the mining station
+- Getting transuranics back to your industrial base
+
+Three units must be involved:
+
+- Your mining base (1234)
+- Your operational base (2345)
+- One supply ship (3456)
+
+All this can be done with a single unit orders:
+
+	UNIT 3456
+	@ROUTE S7890D S7890A S6789B S6789E
+	@GET 2345 60 food
+	@GET 2345 2000 cash
+	@GIVE 1234 0 food 20
+	@GIVE 1234 0 cash 800
+	@GET 1234 0 brkl 3
+	@GIVE 2345 0 brkl
+
+The order unit is the ship (using the core).  First, we set up a route.  The
+route starts at your operational base (S7890D), and moves out to the 1st
+alderson point in the system (S7890A).  The next hop along the route is in a
+different system (S6789B), so the ship will then jump.  Once at the 2nd
+alderson point in the system, the ship then proceeds toward the belt (S6789E)
+to rendezvous with your mining base.
+
+The rest of the orders concern themselves with the loading and unloading of all
+the supplies.  60 food (enough for a little over a turn) are loaded into the
+ship, and all but 20 food (to feed the ship's crew!) will be unloaded once at
+destination.  Similarly, cash will be loaded, and enough cash to pay for the
+ship's upkeep will be retained.
+
+Finally, berkelium (a good transuranic) is loaded for transfer back.  3 units
+are left on site, to fuel (using the appropriate technology) the local power
+station.
+
+4.5.4. A short guide to viable units
+
+When planning a new unit, ask yourself the following questions:
+
+- What will I use this unit for?
+- How will I upgrade/expand it later?
+
+The answers to the first question usually indicate a set of modules you will
+require.  For example, a good space-station usually requires docking bays and
+factory modules.  A planetary university requires lots of research modules.
+Spaceships will require engine.  Raiding ships require that and lots of
+attack and defence.
+
+When planning a new unit you must satisfy the following constraints:
+
+1) The total of supplied energy (energy:0/X modules) in the unit must be
+   greater or equal to the required energy in the unit (energy:X modules).
+
+2) The total of the crew manning the unit (crew:0/1 items) in the unit must be
+   greater or equal to the required workforce in the unit (crew:X modules).
+   This leads to the minimum number of habitat modules.
+
+3) In a spaceship, the total of the engines (mass:0/X modules) must be
+   adequate compared to the sum of the mass of the unit.  You can do with
+   smaller engines, but your unit will be slower.  Note that this may cause
+   an increase in the required energy.
+
+4) Finally, your core size (size:N/X modules) must be large enough to hold all
+   the standard modules (size:X modules) that comprise it.  This is where the
+   2nd question occurs: unless you use an open core which can be expanded, a
+   core will limit the expansion after a period of use.
+
+Usually, when you add the 2nd constraint, you may have to increase the energy
+supply. Similarly, the adding of the engines increases the energy required,
+which in turn may increase the amount of crew needed.  Fitting cores over the
+rest of the unit is best left to the last, since most cores have low mass and
+few energy or crew requirements.
+
+
+5. Report description
+
+The report format has been presented in the sample report description.  The
+following chapters describe more formally how the report is formatted, and how
+to read the various elements within.
+
+5.1. Heading
+
+The heading contains two separate sections.  The general information summarises
+your game information.  This section is always present, and includes:
+- The game name, game date, and the deadline for the next turn.
+- Your faction info: name, identifier, email address for reports, credit line.
+- Optionally, a summary showing how many units you own, how many technologies
+  you know of, and how many technologies you master (see later).
+
+The second part of the heading contains in-game announcements that concern your
+interest and no one else.  Generic game announcements are placed in the game
+newspaper.  Very important notices are also duplicated in this section to be
+sure you get them.
+
+5.2. The system reports
+
+This section contains system reports, one per system.  The report begins with
+the single line "Star systems:", then proceed to detail each system, in their
+system ID order.
+
+System description has two separate parts: The system header, then the feature
+list.  The system header indicates the system name, the system ID, and then the
+system star type and coordinates relative to the center of the Galaxy.
+
+5.2.1. Adjacent systems
+
+If you have the requisite technologies for inter-stellar travel without using
+Alderson point jumps, the system header continues then with a section titled
+"Adjacent systems:", which is followed by all systems in range of your
+technology, indicating their name, their ID, type, coordinates and travel
+duration in game years or weeks.  Each system in range is on a separate line:
+
+> Adjacent systems:
+> - sysname name [id], system type (coordinates), N years M weeks.
+
+The duration indicated indicates how fast a ship might travel at the speed of
+light between the two systems.  Most ships will not be able to approach this
+limit.
+
+The game will not indicate systems for which the best travel time, given your
+technology, is greater than 10 years.
+
+5.3. Feature reports
+
+Each feature appear as a separate section.  A feature is separated from the
+previous feature by two empty lines.
+
+Each feature starts with a star character `*', followed by the following:
+
+- The feature name.
+- The feature ID enclosed in square brackets.
+- If the feature is an alderson point, the "to" indication, followed by the
+  destination star system name, and the destination star system feature ID.
+- A comma character.
+- The feature type. The most common feature types are:
+  + "gas giant"
+  + "brown dwarf" (a sub-type of gas giant of great mass)
+  + "ringed giant" (a sub-type of gas giant combined with a belt)
+  + "terran planet"
+  + "desert terran planet"
+  + "jungle terran planet"
+  + "ocean terran planet"
+  + "icy terran planet"
+  + "airless planet" (non-terran planet)
+  + "carbon-heated planet" (non-terran planet)
+  + "radioactive planet" (non-terran planet)
+  + "methane planet" (non-terran planet)
+  + "chlorine planet" (non-terran planet)
+  + "volcanic planet" (non-terran planet)
+  + "alien planet" (non-terran planet)
+  + "asteroid belt"
+  + "planetoid"
+  + "comet" (mobile planetoid)
+  + "oort cloud"
+  + "alderson point"
+  + "XX star" (secondary star in binary systems)
+- The location within the star system, specified in U.A. All features are
+  sorted within a system from the farther out (higher UA) to the innermost
+  feature (lower UA).
+- If the location has never been explored, it has the notice: ", unexplored".
+
+See the feature guide for more details on the various features.
+
+5.3.1. Feature resources
+
+Most of the features are used as a source for resources.  Any feature that
+provide resources will automatically report if any of your units is located on
+or in orbit of that location.
+
+The resources are reported as "Resources:", followed by a comma-separated list
+of an amount, a resource type name, and the resource tag, enclosed in square
+brackets.
+
+5.4. Module reports
+
+Modules are prefixed by a '+' if they belong to you, or a '-' if they belong to
+another interest.  The entire module description is always folded over two
+columns after this sign:
+
+> + a very long module description may follow, which, if too long, will result
+>   in folding to the column as show.
+
+Core modules are shown starting on column 0, and all internal modules are
+indented two characters starting from that.  Inactive, stored modules are
+indented four characters from their core (two from their storage module).
+Units docked into cargo or hanger bays are also indented four characters from
+the dock unit's core, recursively (you may have units docked into docked units
+and storage facilities in these units).
+
+All units at the same feature are displayed with an intervening blank line.
+All units in transit are displayed at the nearest feature, and have a blank
+line separating them from the feature itself, or the previous unit.
+
+5.4.1. Generic info
+
+A module line may contain some or all of:
+
+- The module visual name (always)
+
+- The module unique id, enclosed in square brackets (always)
+
+- A comma, followed by the interest visual name and unique id enclosed in
+  square brackets, unless the module has shut down its transponder (set the
+  silence flag) and the module does not belong to you.
+
+- A comma, followed by the number of copies in the module slot, followed by
+  the module type name and module type tag enclosed in square brackets, if the
+  module belongs to you,
+- or a comma, followed by the module type name, if the module is a core of
+  a different interest, and you do not have a module inside that core
+- or a comma, followed by the number of copies in the module slot, followed
+  by the module type name, if the module belongs to a different interest, and
+  is either in an open core module, or you have a module inside that core.
+
+- A comma-separated list of flags set for that module, if the module belongs
+  to your interest.  The flags may be the following:
+  * "inactive" (the module is not in a working unit)
+  * "muted" (the module has the MUTE flag set)
+  * "shut down" (the module has the SHUT flag set)
+  * "silent id" (the module has the SILENT flag set)
+  * "supported" (the module has the SUPPORT flag set)
+  * "wired salaries" (the module has the WIRE_SALARY flag set)
+
+- A comma, the keyword "contains:", then a list of items stored inside the
+  module.  That list is a comma-separated repetition of a number, visual item
+  name, and bracket-enclosed item tag.  This is list is visible only if the
+  module belongs to your interest.
+
+- A period, ending this first part.
+
+5.4.2. Module statistics
+
+If the module does not belong to your interest, you only have access to the
+"Size" attribute.  Core modules report their maximum size, unless they are
+open modules.  If the module is in a shared unit, and you are the owner of the
+core module, you also have access to the mass, crew and energy, attack and
+defense values.
+
+The statistics is given as a list of comma-separated elements, and ends with a
+period.
+
+- "Size:", followed by the size actually used, and an optional `/' character
+  and the size available.  For storage modules, the size used is the size the
+  module uses in its unit, not the size of the modules stored in it.
+
+- "Mass:", followed by the mass of the module and contents, and an optional `/'
+  character and the mass propulsion capacity.
+
+- "Speed:", followed by the effective speed, up to 3 decimal places. This appear
+  only on mobile core modules, such as ships and fleets.
+
+- "Crew:", followed by the number of crew members required, and an optional `/'
+  character and the number of crew members provided.
+
+- "Energy:", followed by the amount of energy required, and an optional `/'
+  character and the amount of energy available.
+
+- "Upkeep:", followed by the `$' character, and the amount of upkeep required
+  for the module and contents.  Crew upkeep is never included in this.
+
+- "Attack:", followed by the base attack factor, and an optional effective
+  attack factor enclosed in parentheses.
+
+- "Defense:", followed by the base defense factor, and an optional effective
+  defense factor enclosed in parentheses.
+
+- "Tech:", followed by the total storage used by technologies in this module,
+  followed by a `/' character, and the maximum storage available.
+
+The period ends the list of elements.  Elements with a value of zero are not
+reported.  A core module slot will report the sum of all the factors from its
+active containing modules, except for the Tech value, which is the contribution
+from the core unit itself.  A storage module slot will report its own values,
+except for the mass value, which is the sum of of the storage module copies and
+the modules or units stored within the storage area.
+
+A fleet reports usually only the Speed characteristic, which is the smallest of
+all its ships, or nothing if the fleet orbits around an immobile space unit such
+as a station.
+
+5.4.3. Module technologies
+
+If the module slot has a technology loaded, and belongs to your interest, the
+contents of the technology is listed after the statistics.  This list begins
+with a "Tech:" indicator, followed by a comma-separated list of technology
+names and bracket-enclosed technology tags.
+
+5.4.4. Module reports
+
+If the module slot belongs to you, the next and following lines may comprise a
+module report.  Each line is indented 4 spaces from the starting character of
+the module slot.
+
+A report line indicates the "week" keyword, the week number within the quarter
+(from 1 to 13), a colon `:' character, a space separator, and a free-form
+report line.  If the line is too large for your display size, it will be folded
+and continue after the initial "week X: " display.
+
+5.4.5. Travel indication
+
+If the unit is moving at the time of the report, its core is separated from the
+previous elements (feature or unit) by a blank line.  The moving unit also has
+a line indicating its movement.  The line is indented 4 spaces from the start
+of the core slot description, and has the following format :
+
+"Moving to XXX [xxx], at U.A. n, W weeks remaining."
+
+where "XXX" is the targeted feature name, "[xxx]" the feature ID, "n" the
+current value of the U.A., and "W" the time required to complete the journey.
+
+If the unit is tracking another unit, the feature name and ID are replaced by
+those of the target unit name and ID.
+
+If the unit is drifting and lacks propulsion, the display will change once the
+destination has been reached, and will show either
+
+"Moving inward, at U.A. n, W weeks before zero.".
+	or
+"Moving outward, at U.A. n, W weeks before system escape."
+
+depending on the direction of the drift.
+
+5.4.6. Market indications
+
+If the unit is not moving, it may have uncompleted transactions waiting for
+prospective customers.  In that case, the unit has a line indicating its
+market status.  The line is indented 4 spaces from the start of the core slot
+description, and either indicates "Buying:" or "Selling:", followed by a
+comma-separated list of an amount, an item, module or technology name, the
+bracket-enclosed appropriate tag, a `@' character, and an indicated price.
+
+The price is either the minimum required (for selling), or the maximum at
+which the core module will purchase (for buying).
+
+If the same core indicated two or more purchase or sell orders for the same
+items, only the last one is advertised.  Note that all tags indicated in a sale
+or purchase advertised are automatically added to your knowledge base.
+
+5.5. Knowledge reports
+
+Knowledge reports appear in a separate section.  Each section begins with a
+"New XXXX knowledge:" line.  Items, modules and technologies are reported
+individually in their own sections.
+
+5.5.1. Item knowledge
+
+The knowledge entry for an item is split as follows:
+
+* The item name.
+* The item tag, enclosed in square brackets.
+* A colon `:' character.
+* A free-form text, indicating the use of the item.  This part is not
+  significant.
+* The maximum amount of items that can be stored in a module copy.  A module
+  slot may carry this number times the nomber of copies in the slot for each
+  item type.  The sentence used is "May store NN per module."
+* The type of modules in which the item may be stored, if any.  The module
+  types indicated are either a specific module name, or one of the module types
+  reported in the module knowledge entry.  The sentence used is "May store in
+  xxxxxx modules".  If multiple modules are allowed, the sentence has a
+  comma-separated list of module types.  All items, except crew members, may
+  be stored in a storage module, or a module whose description indicates it may
+  accept that item type.
+* If the item has modifier statistics, these statistics are displayed, in a
+  manner similar to a module report.  The indicated statistics are for a single
+  item.  Multiplied by the number of items presents, they are added to the
+  module slot statistics.
+
+  An exception is crew members.  Their upkeep is not added to the module slot,
+  but paid separately.
+* Outlaw index.  If the item is a product of an outlawed technology, the
+  technology outlaw factor is reported here again.  Possession of the item in
+  any unit shared with the Imperium, or any non-ship unit will add the outlaw
+  index to your interest outlaw risk (only once per item type).
+
+5.5.2. Module knowledge
+
+The knowledge entry for a module is split as follows:
+
+* The module name
+* The module tag, enclosed in square brackets
+* A colon `:' character.
+* A free-form text, indicates the use of the module.  This part is not
+  significant.
+* A location restriction indicator.  This specify in which core modules or on
+  which type of locations the module may be located.  If a module indicates it
+  may be only placed at a certain feature type, it cannot be built in a mobile
+  unit.
+* A module type.  If a module belongs to different categories, all categories
+  are listed separated by `/' characters.
+* A function restriction indicator.  This specify in which environment the
+  module may function.  The module may be built or located at a different
+  feature type, but will only work if the containing unit is located at that a
+  feature of that type.
+* The module base statistics.  These statistics must be multiplied by the
+  number of copies in a slot to yield the overall slot statistics, except for
+  the tech statistics (see the chapter on technology).
+* An optional technology requirement.  The sentence used is "Requires xxxxx
+  [xxxx] to function."  The name and tag of a technology are indicated.  The
+  described module always has the indicated technology loaded, unless something
+  wipes the technology from it, shutting down the module until a new copy is
+  loaded.
+* Outlaw index.  If the module is a product of an outlawed technology, the
+  technology outlaw factor is reported here again.  Storage or use of the
+  module type in any unit shared with the Imperium, any non-ship unit, or as a
+  core unit for a ship will add the outlaw index to your interest outlaw risk
+  (only once per module type).
+
+5.5.3. Technology knowledge
+
+The knowledge entry for a technology is split as follows:
+
+* The technology name
+* The technology tag, enclosed in square brackets
+* A colon `:' character.
+* A free-form text, indicates the use of the technology.  This part is not
+  significant.
+* A module usage restriction.  The technology must be uploaded in the specified
+  module type before being applicable.  If a restriction is specified, the
+  technology will produce no effects, or will not be allowed a the argument of
+  the USE command until placed in a module of the named category.
+* An optional technology requirement, of the form "Requires xxxxx [xxxx]."
+  The technology will be useable only in modules that already have the
+  specified technology loaded and active.
+* A raw materials requirements.  This indication begins with "Use consumes:",
+  and is followed by a comma-separated list of amount, item names, and item
+  tags enclosed in square brackets.  Each product of the technology will
+  require the amount of materials indicated from within the unit.
+* A production.  This production may either be reported as:
+  - "Use builds:" for modules;
+  - "Use produces:" for manufactured items;
+  - "Use harvests:" for harvested items.
+  followed by the amount of production, the production name and tag, and the
+  required duration, in weeks, for the production.
+* The tech modifier statistics.  These statistics modify the statistics of the
+  module slot in which they are loaded, unless the technology is inactive.
+  The modification is applied once, regardless of the number of copies in the
+  module slot, unless the technology description includes the words "for each
+  module copy".
+* A technology level.  That technology level indicates how much storage is
+  required for the technology to function.
+* Outlaw index.  If the technology is outlawed by the Imperium, the seriousness
+  of the ban is indicated here.  The storage of the technology in any module
+  in a unit shared with the Imperium, or any non-ship unit will add the outlaw
+  index to your interest outlaw risk, even if the technology is inactive (only
+  once per technology copy).
+
+
+6. Features guide
+
+A sample guide to features you may encounter shows you what to expect at any
+given location.
+
+6.1. Alderson points
+
+This is the simplest feature, as it is "featureless".  Alderson points are
+simply mathematical loci in space, where inter-stellar transit may occur.
+Alderson points are moving according to local space-time rules, so anything may
+be built at the location and will remain in orbit in the vicinity of the point
+itself.
+
+6.2. Stars
+
+Stars are located at U.A. 0, by convention, and do not rate a specific feature
+line, being already mentioned in the system header line.  Any unit reaching
+U.A. 0 will be destroyed by the star's energy output. Rumors exist about
+technologies (anyone heard of using a laser for... cooling?) to allow one to
+survive this.  Note that Alderson points open mainly in singleton star systems.
+A few systems will have a binary star, typically when the star is a lot smaller
+and less active than the primary.  The secondary star rates a specific feature
+entry.
+
+Moving to a secondary star is equivalent to moving to the primary, and causes
+destruction unless you are protected.
+
+
+6.3. Terran planets
+
+The most useful of the planets, by far, but also a relatively rare occurrence.
+Terran planets present an abundance of free water (oxyhydro [h2o2] resources)
+and carbonaceous matters (carbon [carb]), over a core of various levels in
+minerals (iron [iron], copper [copp], titanium [tita], silicium [sili] and
+uranium [uran]).  These planets may accept any form of settlement, and can
+harvest food in variable quantities (desert planets have usually a lower amount
+of oxyhydro and food).
+
+Sub-types include: basic terran planets, desert planets (more minerals, fewer
+food), ocean terran planets (lots of oxyhydro and food, low carbon and
+minerals), jungle terran planets (lots of food and carbon, less minerals).
+
+6.4. Non-terran planets
+
+These solid planetary bodies are usually very rich in minerals, and often have
+special resources, but lack oxyhydro and usually carbon, and never allow simple
+food harvesting.
+
+These planets can accept only special outpost settlements.
+
+Sub-types include: airless planets, carbon-heated planets (carbon, sometimes
+oxyhydro), rocky planets (more iron), radioactive planets (more uranium), alien
+planets (who harbor a form of life, but one that is incompatible with ours) and
+others...
+
+6.5. Gas giants
+
+These planets are usually composed of a main mix of very volatile elements, and
+lack a solid ground at an accessible pressure and gravity combination.  It is
+normally impossible to build any settlement there.
+
+Gas giants are very rich in tritium [hel3] and often in oxyhydro [h2o2] as
+well. Ringed giants may combine those resources with minerals, extracted from
+the rings themselves.  Ringed giants are considered a combination of gas giant
+and asteroid belt.  Brown dwarves are gas giants of very high mass (several
+times that of Jupiter in the earth system).  Brown dwarves present difficulties
+in resource harvesting, being also a source of high energies.
+
+It is not possible to build a settlement over gas giants.
+
+6.6. Asteroid belts
+
+These represent failed planets; debris left from the formation of the system
+that failed to agglomerate into a planet.  Asteroid belts offer a very wide
+variety of minerals, often in larger accessible quantities than any planetary
+body.
+
+It is not possible to build a settlement in asteroid belts.
+
+6.7. Planetoids
+
+Most planetoids are undiscovered.  These represent an intermediate step between
+planets (non-terran ones) and asteroid belts.  One finds unusual mixes of
+minerals and resources, sometimes combining oxyhydro, carbon and minerals (but
+never food) at a planetoid.
+
+It is not possible to build more than one settlement on a planetoid.
+
+Cometary bodies are an intermediate between an oort cloud and a planetoid.
+They follow the rules for planetoids, but always have volatiles in great
+amounts.  Unlike other features, cometary bodies will move from UA to UA,
+typically moving down toward UA 1, then back up toward the maximum UA known for
+the system.  Most comets change by 1 UA per quarter.  The feature report will
+include a "heading out at UA n" or "heading in at UA n" mention to indicate the
+direction of the comet.
+
+6.8. Oort cloud
+
+Oort cloud represent a diffuse and nebulous area, far from the star, where
+cometary bodies orbit the system.  Oort cloud are usually very poor in minerals
+except some exceptional ones, but are usually very rich in carbon [carb] and
+oxyhydro [h2o2] resources, often more than any planet, making possible
+self-supporting bases in an otherwise lifeless area.
+
+The Oort cloud is usually located father than the alderson zone, typically
+between 200% and 400% of the distance to the farthest alderson point or
+planet in the system.  There is only one Oort cloud per system, and it is
+usually undiscovered.
+
+6.9. Other features
+
+There might be exotic features in some star systems.  Rumors exist about some
+systems with planet-sized artefacts left by ancient civilisations, black holes
+orbiting suns and causing all kind of strange phenomena or other, stranger
+products of unknown physics.  These features may or may not be undiscovered
+in systems, and their effects will remain unknown until effectively
+encountered.
+
+The exotic features are often source of technologies.  Doing a RESEARCH over
+such an exotic feature will always yield a technology (i.e. it raises your
+chance of technology discovery to 100%, unless you are trying to RESEARCH two
+such feature on the same turn) that is specifically placed at the feature by
+the game.  These technologies are often very large (level 5 to 15)!
+
+A good suggestion: it is considered unwise to try approaching a black hole at
+close range, unless you know what you are doing :)
