@@ -19,10 +19,10 @@ namespace IntegrationTests
 		[SetUp]
 		public void setupReport()
 		{
-			this.datafile = new DataFile(Directory.GetCurrentDirectory());
-			this.datafile.LoadConfiguration();
-			this.datafile.LoadGame();
-			this.game = this.datafile.Game;
+			this.dataFile = new DataFile(Directory.GetCurrentDirectory());
+			this.dataFile.LoadConfiguration();
+			this.dataFile.LoadGame();
+			this.game = this.dataFile.Game;
 		}
 
 		[TearDown]
@@ -31,7 +31,7 @@ namespace IntegrationTests
 			this.game.Week = 1;
 			this.game.ClearDictionaries();
 			this.game = null;
-			this.datafile = null;			
+			this.dataFile = null;			
 		}
 
 		[Test]
@@ -916,19 +916,19 @@ namespace IntegrationTests
                 Assert.That(lines[i], Is.EqualTo(testlines[i]), "error in line " + i);
             }
 
-            this.datafile.SaveGame(Directory.GetCurrentDirectory(), "gameout.marketsequence.xml");
+            this.dataFile.SaveGame(Directory.GetCurrentDirectory(), "gameout.marketsequence.xml");
 
             this.game.Week = 1;
             this.game.ClearDictionaries();
             this.game = null;
-            this.datafile = null;			
+            this.dataFile = null;			
 
-			this.datafile = new DataFile(Directory.GetCurrentDirectory());
-            this.datafile.LoadGameDocument(Directory.GetCurrentDirectory(), "gameout.marketsequence.xml");
-            this.datafile.LoadConfiguration(Directory.GetCurrentDirectory());
-            this.datafile.LoadFactions();
-            this.datafile.LoadGalaxy();
-            this.game = this.datafile.Game;
+			this.dataFile = new DataFile(Directory.GetCurrentDirectory());
+            this.dataFile.LoadGameDocument(Directory.GetCurrentDirectory(), "gameout.marketsequence.xml");
+            this.dataFile.LoadConfiguration(Directory.GetCurrentDirectory());
+            this.dataFile.LoadFactions();
+            this.dataFile.LoadGalaxy();
+            this.game = this.dataFile.Game;
 
             // restart variables
             faction = this.game.Factions["2"];

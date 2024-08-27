@@ -18,10 +18,10 @@ namespace UnitTests
 		[SetUp]
 		public void SetupOrder()
 		{
-			this.datafile = new DataFile(Directory.GetCurrentDirectory());
-			this.datafile.LoadConfiguration();
-			this.datafile.LoadGame();
-			this.game = this.datafile.Game;
+			this.dataFile = new DataFile(Directory.GetCurrentDirectory());
+			this.dataFile.LoadConfiguration();
+			this.dataFile.LoadGame();
+			this.game = this.dataFile.Game;
 		}
 
 		[TearDown]
@@ -29,7 +29,7 @@ namespace UnitTests
 		{
 			this.game.ClearDictionaries();
 			this.game = null;
-			this.datafile = null;
+			this.dataFile = null;
 		}
 
 		[Test]
@@ -103,7 +103,7 @@ namespace UnitTests
             Offer sellOffer = this.game.Offers[EOfferType.SellItems][food][seller].GetIndex(0);
             Assert.That(sellOffer.Quantity, Is.EqualTo(40));
 
-            ClassicAssert.IsFalse(market.PriceList.ContainsKey(food), "without prior transaction, pricelist should be empty");
+            Assert.That(market.PriceList.ContainsKey(food), Is.False, "without prior transaction, pricelist should be empty");
             Assert.That(market.GetPrice(food), Is.EqualTo(0), "with getPrice initiated and no other prices on other markets, price should be set to 0 - any price");
 
             // market.process
@@ -198,8 +198,8 @@ namespace UnitTests
 
             // assert existing offers
             this.consoleOutReport("Existing offers", Offer.All, buyerFaction);
-            ClassicAssert.IsFalse(seller1.ItemStacks.ContainsKey(terran));
-            ClassicAssert.IsFalse(seller2.ItemStacks.ContainsKey(terran));
+            Assert.That(seller1.ItemStacks.ContainsKey(terran), Is.False);
+            Assert.That(seller2.ItemStacks.ContainsKey(terran), Is.False);
 
             // there are still only 20 terrans in place (10 already received), the rest is in effects (transferring)
             Assert.That(buyer.ItemStacks[terran].Quantity, Is.EqualTo(20));
@@ -265,7 +265,7 @@ namespace UnitTests
 
             // there should be 10 existing windplants in seller and buyer shouldn't (yet) have any windplants for sale
             Assert.That(buyer.Modules.Count, Is.EqualTo(10));
-            ClassicAssert.IsFalse(seller.HasModuleStacks(windplant));
+            Assert.That(seller.HasModuleStacks(windplant), Is.False);
 
             // setup sell order
             List<string> testcommands = new List<string>
@@ -281,7 +281,7 @@ namespace UnitTests
 
             // execute order - should fail, because seller has no windplants
             seller.Orders[0].Execute(this.game.Week);
-            ClassicAssert.IsFalse(seller.Orders[0].Executed);
+            Assert.That(seller.Orders[0].Executed, Is.False);
 
             // add the windplant and execute again, should go, but no sell done, since there is no matching order/offer
             ModuleStack windplantStack = new ModuleStack(seller, seller.Owner, windplant);
@@ -293,7 +293,7 @@ namespace UnitTests
             // check if an offer appeared
             Offer sellOffer = this.game.Offers[EOfferType.SellModules][windplant][seller].GetIndex(0);
             Assert.That(sellOffer.AllQuantity);
-            ClassicAssert.IsFalse(seller.Orders[0].Executed);
+            Assert.That(seller.Orders[0].Executed, Is.False);
 
             // setup buy order
             testcommands = new List<string>
@@ -326,12 +326,12 @@ namespace UnitTests
             Assert.That(buyer.Orders[0].Executed);
 
             // check if pricelist got updated
-            ClassicAssert.IsFalse(market.PriceList.ContainsKey(windplant), "without prior transaction, pricelist should be empty");
+            Assert.That(market.PriceList.ContainsKey(windplant), Is.False, "without prior transaction, pricelist should be empty");
             Assert.That(market.GetPrice(windplant), Is.EqualTo(-1), "with getPrice initiated and no other prices on other markets, price should be set to 0 - any price");
 
             // received, factory again has no modulestack
             Assert.That(buyer.Modules.Count, Is.EqualTo(11));
-            ClassicAssert.IsFalse(seller.HasModuleStacks(windplant));
+            Assert.That(seller.HasModuleStacks(windplant), Is.False);
         }
 
         [Test]
@@ -360,7 +360,7 @@ namespace UnitTests
             Assert.That(buyer1.Technologies.Count, Is.EqualTo(0));
             Assert.That(buyer2.Technologies.Count, Is.EqualTo(0));
             Assert.That(seller.Technologies.Count, Is.EqualTo(0));
-            ClassicAssert.IsFalse(seller.HasTechnology(cityPlanning));
+            Assert.That(seller.HasTechnology(cityPlanning), Is.False);
 
             // setup sell order
             List<string> testcommands = new List<string>
@@ -376,7 +376,7 @@ namespace UnitTests
 
             // execute order - should fail, because seller has no technology
             seller.Orders[0].Execute(this.game.Week);
-            ClassicAssert.IsFalse(seller.Orders[0].Executed);
+            Assert.That(seller.Orders[0].Executed, Is.False);
 
             // add the technology and execute again, should go, but no sell done, since there is no matching order/offer
             // the existing one is too low and in bad region
@@ -390,7 +390,7 @@ namespace UnitTests
             this.consoleOutReport("Existing offers", Offer.All, seller.Owner);
             Offer sellOffer = this.game.Offers[EOfferType.SellTechnologies][cityPlanning][seller].GetIndex(0);
             Assert.That(sellOffer.Technology.Name, Is.EqualTo(cityPlanning.Name));
-            ClassicAssert.IsFalse(seller.Orders[0].Executed);
+            Assert.That(seller.Orders[0].Executed, Is.False);
 
             // change the external buyer to increase the price
             Offer buyer2Offer = this.game.Offers[EOfferType.BuyTechnologies][cityPlanning][buyer2].GetIndex(0);
@@ -447,7 +447,7 @@ namespace UnitTests
 
             // received, we have technology in two places now
             Assert.That(buyer1.HasTechnology(cityPlanning));
-            ClassicAssert.IsFalse(buyer2.HasTechnology(cityPlanning));
+            Assert.That(buyer2.HasTechnology(cityPlanning), Is.False);
             Assert.That(seller.HasTechnology(cityPlanning));
         }
 

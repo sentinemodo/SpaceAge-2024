@@ -7,21 +7,13 @@ using NUnit.Framework;
 using SpaceAge;
 using System.Xml;
 using NUnit.Framework.Legacy;
+using System.Threading;
 
 namespace UnitTests
 {
 	[TestFixture]
 	public class TDataFile : TTest, IDisposable
 	{
-
-		private DataFile dataFile;
-
-        public TextReader TextReader { get; set; }
-        public void Dispose()
-        {
-            if (this.TextReader != null)
-                this.TextReader.Dispose();
-        }
 
         public TDataFile()
 		{
@@ -112,8 +104,8 @@ namespace UnitTests
 			SpaceSystem system = this.game.Galaxy.SpaceSystems[0];
             Assert.That(system.Objects, Is.Not.Null);
             Assert.That(system.Objects.Count, Is.EqualTo(3));
-			ClassicAssert.IsInstanceOf(typeof(Star), system.Objects["S00001"]);
-			ClassicAssert.IsInstanceOf(typeof(Planet), system.Objects["P00001"]);
+            Assert.That(system.Objects["S00001"], Is.InstanceOf(typeof(Star)));
+            Assert.That(system.Objects["P00001"], Is.InstanceOf(typeof(Planet)));
 		}
 
 		[Test]
@@ -618,6 +610,65 @@ namespace UnitTests
                 Assert.That(generatedReport[i], Is.EqualTo(testlinesReport[i]));
             }
             Assert.That(generatedReport.Count, Is.EqualTo(testlinesReport.Count));
+
+        }
+        [Test]
+        public void SaveConditionOrder()
+        {
+            this.LoadGameDocument();
+            this.dataFile.LoadConfiguration();
+            this.dataFile.LoadFactions();
+            this.dataFile.LoadGalaxy();
+            this.game = this.dataFile.Game;
+
+            ModuleStack moduleStack = ModuleStack.All["100002"];
+            Assert.That(moduleStack, Is.Not.Null);
+            Assert.That(moduleStack.Orders.Count, Is.EqualTo(0));
+
+            Faction testFaction = this.game.Factions["2"];
+
+            List<string> testcommands = new List<string>
+            {
+                "#faction 2",
+                "#modulestack 100002",
+                "move R00001",
+                "+use ssassm as new101",
+                "+-use crewhs as new105",
+                "+--give -20 terran to new105",
+                "+-use strans as new106",
+                "+--give all iron to new106",
+                "#end"
+            };
+
+            Sequence.Ints.Clear();
+            Sequence.Ints.Push(102);
+            Sequence.Ints.Push(101);
+            Sequence.Ints.Push(100);
+
+            OrdersReader ordersReader = new OrdersReader(game);
+            ordersReader.AssignOrders(testcommands);
+
+            MoveOrder order = (MoveOrder)moduleStack.Orders[0];
+            Assert.That(order, Is.Not.Null);
+
+            XmlDocument doc = new XmlDocument();
+            doc.LoadXml("<game/>");
+            this.dataFile.SaveOrders(doc);
+
+            string testdir = Directory.GetCurrentDirectory();
+            string testfile = "gameout.saved_conditionOrders.xml";
+            XmlTextWriter xmlWriter = new XmlTextWriter(
+                Path.Combine(testdir, testfile),
+                System.Text.Encoding.GetEncoding(1251));
+            xmlWriter.Formatting = Formatting.Indented;
+            xmlWriter.IndentChar = '\t';
+            xmlWriter.Indentation = 1;
+            xmlWriter.WriteStartDocument();
+            doc.WriteContentTo(xmlWriter);
+            xmlWriter.Close();
+
+            this.consoleOutFile("gameout.saved_conditionOrders.xml");
+            this.compareFiles("gameout.conditionOrders.xml", "gameout.saved_conditionOrders.xml");
 
         }
     }

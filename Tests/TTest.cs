@@ -4,15 +4,25 @@ using System.Text;
 using NUnit.Framework;
 using NUnit.Core;
 using SpaceAge;
+using System.IO;
 
 namespace UnitTests
 {
-	public class TTest
+	public class TTest : IDisposable
 	{
-		protected DataFile datafile;
-		protected Game game;
+        protected string testDir = Directory.GetCurrentDirectory();
+        protected string confDir = Directory.GetCurrentDirectory();
 
-		protected void consoleOutReport(string title, IReporting reporting, Faction faction)
+        protected DataFile dataFile;
+
+		protected Game game;
+        public void Dispose()
+        {
+            if (this.TextReader != null)
+                this.TextReader.Dispose();
+        }
+
+        protected void consoleOutReport(string title, IReporting reporting, Faction faction)
 		{
 			List<string> report = reporting.Report(faction);
 			Console.WriteLine(title);
@@ -23,7 +33,55 @@ namespace UnitTests
 			Console.WriteLine();
 		}
 
-		protected void executeOrder(ModuleStack moduleStack, Order order, int week)
+        public TextReader TextReader { get; set; }
+
+        private List<string> loadTextFile(string filename)
+        {
+            if (this.TextReader != null)
+            {
+                this.Dispose();
+                this.TextReader = null;
+            }
+
+            this.TextReader = new StreamReader(Path.Combine(this.testDir, filename), System.Text.Encoding.GetEncoding(1251));
+            List<string> lines = new List<string>();
+            string line;
+            while ((line = this.TextReader.ReadLine()) != null)
+                lines.Add(line);
+            return lines;
+        }
+
+        protected void consoleOutFile(string generated)
+        {
+            List<string> reportLines = this.loadTextFile(generated);
+
+            Console.WriteLine("Generated file " + generated);
+            for (int i = 0; i < reportLines.Count; i++)
+            {
+                Console.WriteLine(reportLines[i]);
+            }
+        }
+
+        protected void compareFiles(string expected, string generated, bool allToConsole = true)
+        {
+
+            List<string> testLines = this.loadTextFile(expected);
+            List<string> reportLines = this.loadTextFile(generated);
+
+            Console.WriteLine("Generated file " + generated + " expected file " + expected);
+            for (int i = 0; i < reportLines.Count; i++)
+            {
+                if (allToConsole)
+                {
+                    Console.WriteLine(reportLines[i]);
+                }
+                Assert.That(reportLines[i], Is.EqualTo(testLines[i]), "error in file " + generated + " in line " + i + ": " + reportLines[i]);
+            }
+            Assert.That(reportLines.Count, Is.EqualTo(testLines.Count), "error in file " + generated + " files are differing in lenght");
+        }
+
+
+        protected void executeOrder(ModuleStack moduleStack, Order order, int week)
 		{
 			moduleStack.ExecutedLongOrder = false;
 			order.Execute(this.game.Week + week);

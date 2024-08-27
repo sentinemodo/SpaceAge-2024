@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<game>
+	<orders>
+		<order subject="modulestack" name="100002">
+			<move>
+				<destination destination="R00001" />
+			</move>
+			<order conditions="+">
+				<use technology="ssassm" receiver="100" receiver-parent="100002" />
+				<order conditions="+-">
+					<use technology="crewhs" receiver="101" receiver-parent="100002" />
+					<order conditions="+--">
+						<give receiver="101" item="terran" quantity="-20" />
+					</order>
+				</order>
+				<order conditions="+--">
+					<give receiver="101" item="terran" quantity="-20" />
+				</order>
+				<order conditions="+-">
+					<use technology="strans" receiver="102" receiver-parent="100002" />
+					<order conditions="+--">
+						<give receiver="102" item="iron" quantity="all" />
+					</order>
+				</order>
+				<order conditions="+--">
+					<give receiver="102" item="iron" quantity="all" />
+				</order>
+			</order>
+			<order conditions="+-">
+				<use technology="crewhs" receiver="101" receiver-parent="100002" />
+				<order conditions="+--">
+					<give receiver="101" item="terran" quantity="-20" />
+				</order>
+			</order>
+			<order conditions="+--">
+				<give receiver="101" item="terran" quantity="-20" />
+			</order>
+			<order conditions="+-">
+				<use technology="strans" receiver="102" receiver-parent="100002" />
+				<order conditions="+--">
+					<give receiver="102" item="iron" quantity="all" />
+				</order>
+			</order>
+			<order conditions="+--">
+				<give receiver="102" item="iron" quantity="all" />
+			</order>
+		</order>
+	</orders>
+</game>

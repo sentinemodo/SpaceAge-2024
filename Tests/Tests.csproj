@@ -105,6 +105,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="gameout.marketsequence.xml" />
+    <Content Include="gameout.conditionOrders.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="gameout.saved_getorders.xml" />
     <Content Include="SampleGame\gamein.1_saved.xml" />
     <Content Include="SampleGame\gamein.1_saved_orders.xml" />

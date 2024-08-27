@@ -95,9 +95,9 @@ namespace UnitTests
 		[Test]
 		public void AlltheSame()
 		{
-			ClassicAssert.AreSame(this.moduleStack, ModuleStack.All[this.region][this.moduleStack.Name]);
-			ClassicAssert.AreSame(this.moduleStack, ModuleStack.All[this.faction][this.moduleStack.Name]);
-			ClassicAssert.AreSame(this.moduleStack, ModuleStack.All[this.moduleStack.Name]);
+            Assert.That(ModuleStack.All[this.region][this.moduleStack.Name], Is.SameAs(this.moduleStack));
+            Assert.That(ModuleStack.All[this.faction][this.moduleStack.Name], Is.SameAs(this.moduleStack));
+            Assert.That(ModuleStack.All[this.moduleStack.Name], Is.SameAs(this.moduleStack));
 			this.moduleStack.AddModule();
 			this.moduleStack.AddModule();
             Assert.That(ModuleStack.All[this.region][this.moduleStack.Name].Quantity, Is.EqualTo(2));
@@ -137,7 +137,7 @@ namespace UnitTests
 		public void ModuleStackVisibleByOwnerFaction()
 		{
             Assert.That(this.moduleStack.Location.Name, Is.EqualTo(this.region.Name), "this are not the same locations");
-            Assert.That(1, Is.EqualTo(this.region.ModuleStacks.Count), "more than 1 modulestack");
+            Assert.That(this.region.ModuleStacks.Count, Is.EqualTo(1), "more than 1 modulestack");
             Assert.That(this.moduleStack.Visible(this.faction));
 		}
 
@@ -145,7 +145,7 @@ namespace UnitTests
 		public void ModuleStackNotVisibleByFaction()
 		{
 			Faction otherFaction = new Faction("2", "otherFaction");
-			ClassicAssert.IsFalse(this.moduleStack.Visible(otherFaction));
+            Assert.That(this.moduleStack.Visible(otherFaction), Is.False);
 		}
 
 		[Test]
@@ -156,5 +156,23 @@ namespace UnitTests
             Assert.That(this.moduleStack.Visible(otherFaction));
 		}
 
-	}
+        [Test]
+        public void RandomId_DoubleException()
+        {
+            Sequence.Ints.Push(100);
+            Sequence.Ints.Push(100);
+
+            ModuleStack moduleStack1;
+            ModuleStack moduleStack2;
+			Faction testFaction = new Faction("2", "CastePrime");
+
+            Assert.Throws<Exception>(
+                delegate
+                {
+                    moduleStack1 = new ModuleStack(testFaction, "new1");
+                    moduleStack2 = new ModuleStack(testFaction, "new2");
+                });
+        }
+
+    }
 }

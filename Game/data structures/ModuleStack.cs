@@ -72,8 +72,13 @@ namespace SpaceAge
 		{
             if (name.StartsWith("new"))
             {
-                // okay if it's a new alias we need to create new identifier            
-                this.name = this.GenerateRandomIdentifier();
+                // okay if it's a new alias we need to create new identifier
+				string generatedRandomIdentifier = this.GenerateRandomIdentifier();
+
+				// now we need to check if we by accident didn't randomly created the non-unique identifier
+                if (ModuleStack.All.ContainsKey(generatedRandomIdentifier))
+                    throw new Exception("Randomly generated modulestack name of [" + generatedRandomIdentifier + "] already existed.");
+				this.name = generatedRandomIdentifier;
             } else
             {
                 // if it's not a new alias we need to check if we don't try to create a duplicate

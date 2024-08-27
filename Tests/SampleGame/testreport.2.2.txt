@@ -347,10 +347,11 @@ move R00001
 +--give -10 uraniu to new106
 +--give -10 h2o2 to new106
 
+#modulestack 101
+; + empty stack, 101, disabled, immobile.
+
 #person 000001
 ; + Caste Prime CEO [000001], terran [terran].
-active new101
--stack new102
 
 #end
 

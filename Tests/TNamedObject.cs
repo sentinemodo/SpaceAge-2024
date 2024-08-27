@@ -40,8 +40,10 @@ namespace UnitTests
 		[Test]
 		public void RandomId()
 		{
-			ClassicAssert.AreNotEqual(this.named.GenerateRandomIdentifier(), this.named.GenerateRandomIdentifier());
+			string name1 = this.named.GenerateRandomIdentifier();
+			string name2 = this.named.GenerateRandomIdentifier();
+            Assert.That(name1, Is.Not.EqualTo(name2));
 		}
 
-	}
+    }
 }

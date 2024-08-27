@@ -12,21 +12,15 @@ namespace IntegrationTests
 	[TestFixture]
     public class SampleGame : TTest, IDisposable
 	{
-		private string testDir;
-		private string confDir;
-		private DataFile dataFile;
-
-        public TextReader TextReader { get; set; }
-        public void Dispose()
-        {
-            this.TextReader.Dispose();
+		
+        public SampleGame()
+		{
+            this.testDir = string.Concat(Directory.GetCurrentDirectory(), "/SampleGame");
+            this.confDir = Directory.GetCurrentDirectory();
+            this.dataFile = new DataFile(this.testDir);
         }
 
-        public SampleGame()
-		{			
-		}
-
-		[SetUp]
+        [SetUp]
 		public void SetupGame()
 		{
 			this.testDir = string.Concat(Directory.GetCurrentDirectory(), "/SampleGame");
@@ -65,8 +59,8 @@ namespace IntegrationTests
 			SpaceSystem system = this.game.Galaxy.SpaceSystems[0];
             Assert.That(system.Objects, Is.Not.Null);
             Assert.That(system.Objects.Count, Is.EqualTo(2));
-			ClassicAssert.IsInstanceOf(typeof(Star), system.Objects["S00001"]);
-			ClassicAssert.IsInstanceOf(typeof(Planet), system.Objects["P00001"]);
+            Assert.That(system.Objects["S00001"], Is.InstanceOf(typeof(Star)));
+            Assert.That(system.Objects["P00001"], Is.InstanceOf(typeof(Planet)));
 		}
 
 
@@ -155,7 +149,7 @@ namespace IntegrationTests
 			Sequence.Ints.Push(101);
 			Sequence.Ints.Push(100);
 
-			this.LoadGalaxy("gamein.1.xml");
+            this.LoadGalaxy("gamein.1.xml");
 
 			// story:
 			// one faction build ship
@@ -466,51 +460,6 @@ namespace IntegrationTests
             // overwrite the destination file if it already exists.
             File.Copy(sourceFile, destinationFile, true);
         }
-
-		private List<string> loadTextFile(string filename)
-		{
-            if (this.TextReader != null)
-            {
-                this.Dispose();
-                this.TextReader = null;
-            }
-
-			this.TextReader = new StreamReader(Path.Combine(this.testDir, filename), System.Text.Encoding.GetEncoding(1251));
-			List<string> lines = new List<string>();
-			string line;
-			while ((line = this.TextReader.ReadLine()) != null)
-				lines.Add(line);
-			return lines;
-		}
-
-        private void consoleOutFile(string generated)
-        {
-            List<string> reportLines = this.loadTextFile(generated);
-
-            Console.WriteLine("Generated file " + generated);
-            for (int i = 0; i < reportLines.Count; i++)
-            {
-                Console.WriteLine(reportLines[i]);
-            }
-        }
-
-		private void compareFiles(string expected, string generated, bool allToConsole = true)
-		{
-
-			List<string> testLines = this.loadTextFile(expected);
-			List<string> reportLines = this.loadTextFile(generated);
-
-			Console.WriteLine("Generated file " + generated + " expected file " + expected);			
-			for (int i = 0; i < reportLines.Count; i++)
-			{
-                if (allToConsole)
-                {
-                    Console.WriteLine(reportLines[i]);
-                }
-				Assert.That(reportLines[i], Is.EqualTo(testLines[i]), "error in file " + generated + " in line " + i + ": " + reportLines[i]);
-			}
-			Assert.That(reportLines.Count, Is.EqualTo(testLines.Count), "error in file " + generated + " files are differing in lenght");
-		}
 
 		private void parseOrders(string filename)
 		{

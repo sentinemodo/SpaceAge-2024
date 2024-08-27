@@ -19,10 +19,10 @@ namespace UnitTests
 		[SetUp]
 		public void setupOrder()
 		{
-			this.datafile = new DataFile(Directory.GetCurrentDirectory());
-			this.datafile.LoadConfiguration();
-			this.datafile.LoadGame();
-			this.game = this.datafile.Game;
+			this.dataFile = new DataFile(Directory.GetCurrentDirectory());
+			this.dataFile.LoadConfiguration();
+			this.dataFile.LoadGame();
+			this.game = this.dataFile.Game;
 		}
 
 		[TearDown]
@@ -30,7 +30,7 @@ namespace UnitTests
 		{
 			this.game.ClearDictionaries();
 			this.game = null;
-			this.datafile = null;
+			this.dataFile = null;
 		}
 
 		[Test]
@@ -801,7 +801,7 @@ namespace UnitTests
 			HasOrder order1 = (HasOrder)testModuleStack.Orders[0];
 			UseOrder order2 = (UseOrder)testModuleStack.Orders[1];
             Assert.That(order2.ConditionalOrders.Count, Is.EqualTo(1));
-			ClassicAssert.AreSame(order1, order2.ConditionalOrders[0]);
+            Assert.That(order2.ConditionalOrders[0], Is.SameAs(order1));
 		}
 
 		[Test]
@@ -827,9 +827,9 @@ namespace UnitTests
 			HasOrder order2 = (HasOrder)testModuleStack.Orders[1];
 			UseOrder order3 = (UseOrder)testModuleStack.Orders[2];
             Assert.That(order3.ConditionalOrders.Count, Is.EqualTo(1));
-			ClassicAssert.AreSame(order2, order3.ConditionalOrders[0]);
+            Assert.That(order3.ConditionalOrders[0], Is.SameAs(order2));
             Assert.That(order2.ConditionedOrders.Count, Is.EqualTo(1));
-			ClassicAssert.AreSame(order3, order2.ConditionedOrders[0]);
+            Assert.That(order2.ConditionedOrders[0], Is.SameAs(order3));
 		}
 
 		[Test]
@@ -855,9 +855,9 @@ namespace UnitTests
 			HasOrder order2 = (HasOrder)testModuleStack.Orders[1];
 			UseOrder order3 = (UseOrder)testModuleStack.Orders[2];
             Assert.That(order3.ConditionalOrders.Count, Is.EqualTo(1));
-			ClassicAssert.AreSame(order2, order3.ConditionalOrders[0]);
+            Assert.That(order3.ConditionalOrders[0], Is.SameAs(order2));
             Assert.That(order2.ConditionedOrders.Count, Is.EqualTo(1));
-			ClassicAssert.AreSame(order3, order2.ConditionedOrders[0]);
+            Assert.That(order2.ConditionedOrders[0], Is.SameAs(order3));
 		}
 
 		[Test]
@@ -931,7 +931,7 @@ namespace UnitTests
 			UseOrder order1 = (UseOrder)testModuleStack.Orders[0];
 			HasOrder order2 = (HasOrder)testModuleStack.Orders[1];
             Assert.That(order1.ConditionalOrders.Count, Is.EqualTo(1));
-			ClassicAssert.AreSame(order2, order1.ConditionalOrders[0]);
+            Assert.That(order1.ConditionalOrders[0], Is.SameAs(order2));
 		}
 
 		[Test]
@@ -1043,7 +1043,7 @@ namespace UnitTests
             Assert.That(testModuleStack.Alias, Is.EqualTo("2_000004"));
 			testModuleStack.Execute(this.game.Week);
             Assert.That(testModuleStack.Alias, Is.EqualTo("2_new1"));
-			ClassicAssert.AreSame(testModuleStack, this.game.ModuleStacks[testFaction, "new1", true]);
+            Assert.That(this.game.ModuleStacks[testFaction, "new1", true], Is.SameAs(testModuleStack));
 
 		}
 
@@ -1098,7 +1098,7 @@ namespace UnitTests
 			producedModuleStack = this.game.ModuleStacks[testFaction, "new1", true];
             Assert.That(producedModuleStack, Is.Not.Null);
 
-			ClassicAssert.AreSame(effect.Produced, producedModuleStack);
+            Assert.That(producedModuleStack, Is.SameAs(effect.Produced));
 		}
 
 		[Test]
@@ -1235,8 +1235,8 @@ namespace UnitTests
 			ModuleStack testModuleStack = this.game.ModuleStacks[testFaction, "new1", true];
             Assert.That(testModuleStack, Is.Not.Null, "should find it");
             Console.WriteLine("Name: " + testModuleStack.Name + " Alias: " + testModuleStack.Alias);
-			
-			ClassicAssert.AreNotEqual("new1", testModuleStack.Name);
+
+            Assert.That(testModuleStack.Name, Is.Not.EqualTo("new1"));
             Assert.That(testModuleStack.Alias, Is.EqualTo("2_new1"));
             Assert.That(testModuleStack.IsFormed, Is.False, testModuleStack.ReportName + " is formed and it should not since this is new test.");
 
@@ -1379,7 +1379,7 @@ namespace UnitTests
 			OrdersReader ordersReader = new OrdersReader(game);
 			ordersReader.AssignOrders(testcommands);
 			ModuleStack testModuleStack = this.game.ModuleStacks[testFaction, "new1", true];
-			ClassicAssert.AreNotEqual("new1", testModuleStack.Name);
+            Assert.That(testModuleStack.Name, Is.Not.EqualTo("new1"));
             Assert.That(testModuleStack.Alias, Is.EqualTo("2_new1"));
             Assert.That(testModuleStack.IsFormed, Is.False);
 
@@ -1852,7 +1852,7 @@ namespace UnitTests
 			UseOrder useOrder = (UseOrder)testModuleStack.Orders[0];
 
             Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
-			ClassicAssert.AreSame(testModuleStack, useOrder.Subject);
+            Assert.That(useOrder.Subject, Is.SameAs(testModuleStack));
             Assert.That(useOrder.Subject.ExecutedLongOrder, Is.False);
             Assert.That(testModuleStack.ExecutedLongOrder, Is.False);
 
@@ -1860,7 +1860,7 @@ namespace UnitTests
 
 			int week = this.game.Week;
 			testModuleStack.Execute(week++);
-			ClassicAssert.AreSame(testModuleStack, useOrder.Subject);
+            Assert.That(useOrder.Subject, Is.SameAs(testModuleStack));
             Assert.That(useOrder.Subject.ExecutedLongOrder);
             Assert.That(testModuleStack.ExecutedLongOrder);
 		}
@@ -1932,7 +1932,7 @@ namespace UnitTests
 			producedModuleStack = this.game.ModuleStacks[testFaction, "new1", true];
             Assert.That(producedModuleStack, Is.Not.Null);
 
-			ClassicAssert.AreSame(effect.Produced, producedModuleStack);
+            Assert.That(producedModuleStack, Is.SameAs(effect.Produced));
 
 			testModuleStack1.Execute(this.game.Week);
             Assert.That(giveOrder.Executed);
@@ -2315,7 +2315,7 @@ namespace UnitTests
             this.consoleOutReport("Formed stack:", order.Formed, testFaction);
             ModuleStack testModuleStack_formed = this.game.ModuleStacks["100"];
 
-            ClassicAssert.AreNotEqual(testModuleStack_formed, testPerson.Parent);
+            Assert.That(testPerson.Parent, Is.Not.EqualTo(testModuleStack_formed));
             testPerson.Orders[0].Execute(this.game.Week);
             Assert.That(testPerson.Parent, Is.EqualTo(testModuleStack_formed));
         }
