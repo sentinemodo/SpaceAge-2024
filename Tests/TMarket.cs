@@ -63,7 +63,7 @@ namespace UnitTests
             Assert.That(sellOffer.Quantity, Is.EqualTo(40));
 
             Offer foundOffer = market.FindMatch(buyOffer);
-            ClassicAssert.IsNull(foundOffer);
+            Assert.That(foundOffer, Is.Null);
 
             seller.Owner = Faction.All["2"];
             foundOffer = market.FindMatch(buyOffer);
@@ -487,7 +487,7 @@ namespace UnitTests
             seller.Owner = buyer.Owner;
 
             Offer foundOffer = market.FindMatch(buyOffer);
-            ClassicAssert.IsNull(foundOffer);
+            Assert.That(foundOffer, Is.Null);
         }
         // prices changes
 	}

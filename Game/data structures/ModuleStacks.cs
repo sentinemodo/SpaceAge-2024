@@ -577,25 +577,27 @@ namespace SpaceAge
 			}
 		}
 
-		private ModuleStack getUnformed()
+		private ModuleStack getNonReporting()
 		{
 			foreach (ModuleStack moduleStack in this.Values)
 			{
-				if (!moduleStack.IsFormed)
-				{
+                // this should be simplified by using <predicate>
+                //if (!moduleStack.IsFormed & (moduleStack.Effects.Count == 0))
+                if (!moduleStack.IsFormed)
+                {
 					return moduleStack;
 				}
 			}
 			return null;
 		}
 
-		public void RemoveUnformed()
+		public void RemoveNonReporting()
 		{	
-			ModuleStack modulestack = this.getUnformed();
+			ModuleStack modulestack = this.getNonReporting();
 			while (modulestack != null)
 			{
 				this.Remove(modulestack);
-				modulestack = this.getUnformed();
+				modulestack = this.getNonReporting();
 			}
 		}
 

@@ -66,6 +66,10 @@
 						<event week="11" description="arrived at orbit [O00002] from Northern Hemisphere [R00002] (0,0)." />
 						<event week="12" description="consumed 4 units of titanium [titani] to produce spaceship hull [sshull] module." />
 					</modulestack>
+					<modulestack name="101" type="sshull" quantity="0" faction="2">
+						<upkeep type="cash" quantity="0" />
+						<event week="12" description="formed by space shuttle [100] with spaceship hull [sshull]." />
+					</modulestack>
 				</orbit>
 				<region name="R00002" name-en="Northern Hemisphere" X="0" Y="0" type="grassl">
 					<capacity group="settlement" quantity="8" />
@@ -273,7 +277,7 @@
 						<itemstack type="food" quantity="32" />
 						<upkeep type="cash" quantity="40" />
 						<effect duration="7" type="fuelled" />
-						<event week="4" description="formed by factory [000023] with tanks [tanks]." />
+						<event week="1" description="formed by factory [000023] with tanks [tanks]." />
 						<event week="4" description="received tanks [tanks] produced by factory [000023]." />
 						<event week="4" description="has modules in stack." />
 						<event week="4" description="got 16 terrans [terran] from Gelvaren Headquarters [000018]." />
@@ -492,11 +496,11 @@
 									<event week="1" description="stacked under military barrack [000025]." />
 									<event week="1" description="started training of armor platoon leader [arpldr] skill." />
 									<event week="4" description="trained armor platoon leader [arpldr] skill." />
-									<event week="8" description="saw tanks [109] in Southern Hemisphere [R00003] (1,0)." />
-									<event week="8" description="stacked under tanks [109]." />
+									<event week="5" description="saw tanks [109] in Southern Hemisphere [R00003] (1,0)." />
+									<event week="5" description="stacked under tanks [109]." />
 								</person>
 								<upkeep type="cash" quantity="58" />
-								<event week="8" description="formed by factory [000023] with tanks [tanks]." />
+								<event week="5" description="formed by factory [000023] with tanks [tanks]." />
 								<event week="8" description="received tanks [tanks] produced by factory [000023]." />
 								<event week="8" description="stacked under military barrack [000025]." />
 								<event week="12" description="received tanks [tanks] produced by factory [000023]." />
@@ -511,11 +515,11 @@
 								<event week="6" description="stacked under military barrack [000025]." />
 								<event week="6" description="started training of infantry battalion commander [inbtcm] skill." />
 								<event week="9" description="trained infantry battalion commander [inbtcm] skill." />
-								<event week="13" description="saw infantry battalion [110] in Southern Hemisphere [R00003] (1,0)." />
-								<event week="13" description="stacked under infantry battalion [110]." />
+								<event week="9" description="saw infantry battalion [110] in Southern Hemisphere [R00003] (1,0)." />
+								<event week="9" description="stacked under infantry battalion [110]." />
 							</person>
 							<upkeep type="cash" quantity="15" />
-							<event week="13" description="formed by military barrack [000025] with infantry battalion [inftry]." />
+							<event week="1" description="formed by military barrack [000025] with infantry battalion [inftry]." />
 							<event week="13" description="received infantry battalion [inftry] produced by military barrack [000025]." />
 						</modulestack>
 					</modulestack>
@@ -571,6 +575,12 @@
 		</order>
 		<order subject="modulestack" name="000022" repeat="unlimited">
 			<use technology="oildwe" />
+		</order>
+		<order subject="modulestack" name="101">
+			<active observed="101" />
+			<order conditions="-">
+				<name description="Caste Prime valiant explorer" />
+			</order>
 		</order>
 	</orders>
 </game>

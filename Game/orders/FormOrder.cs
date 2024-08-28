@@ -13,7 +13,13 @@ namespace SpaceAge
 			this.type = EOrderType.form;
 		}
 
-		public ModuleStack Former
+        public FormOrder(IOrderable subject, ModuleStack formed)
+            : base(subject)
+        {
+			this.Formed = formed;
+            this.type = EOrderType.form;
+        }
+        public ModuleStack Former
 		{
 			get { return (ModuleStack)this.Subject; }
 		}

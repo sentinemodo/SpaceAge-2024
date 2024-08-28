@@ -83,7 +83,7 @@ namespace SpaceAge
 		public override void Execute(int week)
 		{
 			this.Executed = false;
-			if (this.observed.IsFormed & this.observed.IsActive)
+			if (this.observed.IsActive)
 			{
 				this.Executed = true;			
 			}

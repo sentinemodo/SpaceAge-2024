@@ -96,7 +96,7 @@ Galaxy report:
     effects:
       can operate for another 7 weeks without refueling.
     events:
-      week 4: formed by factory [000023] with tanks [tanks].
+      week 1: formed by factory [000023] with tanks [tanks].
       week 4: received tanks [tanks] produced by factory [000023].
       week 4: has modules in stack.
       week 4: got 16 terrans [terran] from Gelvaren Headquarters
@@ -389,7 +389,7 @@ Galaxy report:
         movement speed: 0.5 on ground.
         fuel requirements: 8 units of oil [oil] per 13 weeks.
         events:
-          week 8: formed by factory [000023] with tanks [tanks].
+          week 5: formed by factory [000023] with tanks [tanks].
           week 8: received tanks [tanks] produced by factory [000023].
           week 8: stacked under military barrack [000025].
           week 12: received tanks [tanks] produced by factory [000023].
@@ -403,16 +403,16 @@ Galaxy report:
             week 1: started training of armor platoon leader [arpldr]
             skill.
             week 4: trained armor platoon leader [arpldr] skill.
-            week 8: saw tanks [109] in Southern Hemisphere [R00003]
+            week 5: saw tanks [109] in Southern Hemisphere [R00003]
             (1,0).
-            week 8: stacked under tanks [109].
+            week 5: stacked under tanks [109].
     + infantry battalion [110], infantry battalion [inftry].
       size: 500, mass: 504 (500), capacity: 300/4, upkeep: 15 (5) cash
       [cash], consume: 101 (100) units of food [food], 101 (100) units
       of terran breathing gas mixture [terair].
       movement speed: 0.1 on ground.
       events:
-        week 13: formed by military barrack [000025] with infantry
+        week 1: formed by military barrack [000025] with infantry
         battalion [inftry].
         week 13: received infantry battalion [inftry] produced by
         military barrack [000025].
@@ -428,9 +428,9 @@ Galaxy report:
           week 6: started training of infantry battalion commander
           [inbtcm] skill.
           week 9: trained infantry battalion commander [inbtcm] skill.
-          week 13: saw infantry battalion [110] in Southern Hemisphere
+          week 9: saw infantry battalion [110] in Southern Hemisphere
           [R00003] (1,0).
-          week 13: stacked under infantry battalion [110].
+          week 9: stacked under infantry battalion [110].
 ------------------------------------------------------------
   * Luna [P00003] (1, 0, 0), moon, unexplored.
 ------------------------------------------------------------

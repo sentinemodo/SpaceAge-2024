@@ -223,7 +223,7 @@ namespace SpaceAge
 		public void ClearUnformed()
 		{
 			//Person.All.RemoveUnformed();
-			ModuleStack.All.RemoveUnformed();
+			ModuleStack.All.RemoveNonReporting();
 		}
 
 		public void ClearExecutedLongOrder()

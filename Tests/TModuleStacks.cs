@@ -86,5 +86,5 @@ namespace UnitTests
             Assert.That(this.moduleStacks.Owners[1].Name, Is.EqualTo("testFaction2"));
 		}
 
-	}
+    }
 }

@@ -109,9 +109,9 @@ namespace UnitTests
 			Region region1 = Region.All["R00001"];
 			Region region2 = Region.All["R00002"];
             Assert.That(region1.Exits[0].ExitModes[EMoveMode.ground].Duration, Is.EqualTo(3));
- 
-			// check if the world state changes corretly	
-			ClassicAssert.IsNull(testModuleStack.MovingTo);
+
+            // check if the world state changes corretly	
+            Assert.That(testModuleStack.MovingTo, Is.Null);
             Assert.That(testModuleStack.Parent, Is.EqualTo(region1));
             Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
             Assert.That(order.Executing, Is.False);
@@ -164,7 +164,7 @@ namespace UnitTests
 
 			testModuleStack.ExecutedLongOrder = false; 
 			testModuleStack.Orders.Execute(this.game.Week);
-			ClassicAssert.IsNull (testModuleStack.MovingTo);
+            Assert.That(testModuleStack.MovingTo, Is.Null);
             Assert.That(testModuleStack.Parent, Is.EqualTo(region2));
             Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
             Assert.That(order.Executing, Is.False);
@@ -202,7 +202,7 @@ namespace UnitTests
 		public void AgrplxSpike()
 		{
 			Technology technology = Technology.All["agrplx"];
-			ClassicAssert.IsNull(technology.UseProduceItems);
+            Assert.That(technology.UseProduceItems, Is.Null);
             Assert.That(technology.UseProduceModules, Is.Not.Null);
             Assert.That(technology.UseTime, Is.EqualTo(4));
 		}
@@ -231,7 +231,7 @@ namespace UnitTests
 			testModuleStack.Execute(this.game.Week);
             Assert.That(testModuleStack.Effects.IsProducing);
             Assert.That(testModuleStack.ItemStacks[iron].Quantity, Is.EqualTo(10));
-            Assert.That(testModuleStack.Parent.ModuleStacks.Count, Is.EqualTo(7));
+            Assert.That(testModuleStack.Parent.ModuleStacks.Count, Is.EqualTo(8));
             Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
 
             Assert.That(order.DurationLeft, Is.EqualTo(3), "Producer is having " + testModuleStack.Quantity.ToString() + " modules");
@@ -241,7 +241,7 @@ namespace UnitTests
 			testModuleStack.ExecutedLongOrder = false;
 			testModuleStack.Execute(this.game.Week);
             Assert.That(testModuleStack.ItemStacks[iron].Quantity, Is.EqualTo(10));
-            Assert.That(testModuleStack.Parent.ModuleStacks.Count, Is.EqualTo(7));
+            Assert.That(testModuleStack.Parent.ModuleStacks.Count, Is.EqualTo(8));
             Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
 			this.consoleOutReport("producer: ", testModuleStack, Faction.All["2"]);
 
@@ -261,7 +261,7 @@ namespace UnitTests
             //ClassicAssert.AreEqual(0, order.DurationLeft);
             Assert.That(testModuleStack.Effects.IsProducing, Is.False);
             Assert.That(testModuleStack.ItemStacks[iron].Quantity, Is.EqualTo(10));
-            Assert.That(testModuleStack.Parent.ModuleStacks.Count, Is.EqualTo(7 + 1));
+            Assert.That(testModuleStack.Parent.ModuleStacks.Count, Is.EqualTo(8));
 
             Assert.That(order.Executing, Is.False);
             Assert.That(order.Executed);
@@ -734,7 +734,7 @@ namespace UnitTests
 			testModuleStack.Execute(this.game.Week);
             Assert.That(testModuleStack.Effects.IsProducing);
             Assert.That(testModuleStack.ItemStacks[iron].Quantity, Is.EqualTo(10));
-            Assert.That(testModuleStack.Parent.ModuleStacks.Count, Is.EqualTo(7));
+            Assert.That(testModuleStack.Parent.ModuleStacks.Count, Is.EqualTo(7 + 1));
             Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
             Assert.That(order.DurationLeft, Is.EqualTo(3));
             Assert.That(order.Repeat, Is.EqualTo(2));
@@ -758,7 +758,7 @@ namespace UnitTests
 			testModuleStack.Execute(this.game.Week);
             Assert.That(testModuleStack.Effects.IsProducing);
             Assert.That(testModuleStack.ItemStacks.ContainsKey(iron), Is.False);
-            Assert.That(testModuleStack.Parent.ModuleStacks.Count, Is.EqualTo(7 + 1));
+            Assert.That(testModuleStack.Parent.ModuleStacks.Count, Is.EqualTo(8));
             Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
             Assert.That(order.DurationLeft, Is.EqualTo(3));
             Assert.That(order.Repeat, Is.EqualTo(1));
@@ -890,7 +890,7 @@ namespace UnitTests
 			testModuleStack.Execute(this.game.Week);
             Assert.That(testModuleStack.Effects.IsProducing);
             Assert.That(testModuleStack.ItemStacks[iron].Quantity, Is.EqualTo(20));
-            Assert.That(testModuleStack.Parent.ModuleStacks.Count, Is.EqualTo(7));
+            Assert.That(testModuleStack.Parent.ModuleStacks.Count, Is.EqualTo(7 + 1));
             Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
             Assert.That(order2.DurationLeft, Is.EqualTo(3));
             Assert.That(order1.Executed);
@@ -963,7 +963,7 @@ namespace UnitTests
 			testModuleStack.Execute(this.game.Week);
             Assert.That(testModuleStack.Effects.IsProducing);
             Assert.That(testModuleStack.ItemStacks[iron].Quantity, Is.EqualTo(20));
-            Assert.That(testModuleStack.Parent.ModuleStacks.Count, Is.EqualTo(7));
+            Assert.That(testModuleStack.Parent.ModuleStacks.Count, Is.EqualTo(7 + 1));
             Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
             Assert.That(order2.DurationLeft, Is.EqualTo(3));
             Assert.That(order1.Executed);
@@ -1038,8 +1038,8 @@ namespace UnitTests
 
 			AliasOrder order = (AliasOrder)testModuleStack.Orders[0];
 
-			// check if the world state changes correctly				
-			ClassicAssert.IsNull(this.game.ModuleStacks["2_new1"]);
+            // check if the world state changes correctly				
+            Assert.That(this.game.ModuleStacks["2_new1"], Is.Null);
             Assert.That(testModuleStack.Alias, Is.EqualTo("2_000004"));
 			testModuleStack.Execute(this.game.Week);
             Assert.That(testModuleStack.Alias, Is.EqualTo("2_new1"));
@@ -1226,8 +1226,8 @@ namespace UnitTests
 				Console.WriteLine(stack.ReportName);
 			}
             Assert.That(ModuleStack.All.Count, Is.EqualTo(25));
-			
-			ClassicAssert.IsNull(ModuleStack.All[testFaction, "new1", true]);
+
+            Assert.That(ModuleStack.All[testFaction, "new1", true], Is.Null);
 
 			OrdersReader ordersReader = new OrdersReader(game);
 			ordersReader.AssignOrders(testcommands);
@@ -1253,7 +1253,10 @@ namespace UnitTests
 		[Test]
 		public void CleanUpVirtualModulestacksAndPeople()
 		{
-			//Assert.Fail("I don't know why, but this stuck");
+            Sequence.Ints.Push(101);
+            Sequence.Ints.Push(100);
+
+            //Assert.Fail("I don't know why, but this stuck");
 			Faction testFaction = this.game.Factions["1"];
 			ModuleStack testModuleStack = this.game.ModuleStacks["000009"];
 
@@ -1296,7 +1299,7 @@ namespace UnitTests
             Assert.That(formedModuleStack1, Is.Not.Null);
             Assert.That(formedModuleStack1.IsFormed);
 			formedModuleStack2 = this.game.ModuleStacks[testFaction, "new2", true];
-			ClassicAssert.IsNull(formedModuleStack2);
+            Assert.That(formedModuleStack2, Is.Null);
 		}
 
 		[Test]
@@ -2061,6 +2064,48 @@ namespace UnitTests
         }
 
         [Test]
+        public void ExecuteUseOrder_RepeatableEffects_UnformedRemoval()
+        {
+            // duirng the turn end reporting the unformed modulestacks are removed
+            // the stack underproduction is already defined and can be given orders so it should not be removed
+
+            Sequence.Ints.Push(100);
+
+            List<string> testcommands = new List<string>
+            {
+                "#faction 2",
+                "#modulestack 000004",
+                "2 use agrplx as new1",
+                "#end"
+            };
+
+            OrdersReader ordersReader = new OrdersReader(game);
+            ordersReader.AssignOrders(testcommands);
+
+            Faction testFaction = this.game.Factions["2"];
+            ModuleStack testModuleStack1 = this.game.ModuleStacks["000004"];
+            ModuleStack testModuleStack2 = this.game.ModuleStacks["100"];
+
+            Assert.That(testModuleStack1.Orders[0] is UseOrder);
+            UseOrder useOrder = (UseOrder)testModuleStack1.Orders[0];
+
+            // check if the world state changes correctly				
+            // execute only one turn to initiate producing modulestack effect
+            for (int i = 1; i <= 1; i++)
+            {
+                testModuleStack1.ExecutedLongOrder = false;
+                testModuleStack1.Execute(i);
+                testModuleStack2.Execute(i);
+            }
+
+            Assert.That(ModuleStack.All.ContainsKey(testModuleStack2.Name), Is.True, "It should be there as it was created during order parsing and executing.");
+
+            ModuleStack.All.RemoveNonReporting();
+
+            Assert.That(ModuleStack.All.ContainsKey(testModuleStack2.Name), Is.True, "It should still be there");
+        }
+
+        [Test]
         public void AssignSeeOrder()
         {
             Faction testFaction = this.game.Factions["2"];
@@ -2349,7 +2394,7 @@ namespace UnitTests
 
             // check if the world state changes correctly	
             Assert.That(testModuleStack.Effects.IsMoving, Is.False);
-            ClassicAssert.IsNull(testModuleStack.MovingTo);
+            Assert.That(testModuleStack.MovingTo, Is.Null);
             Assert.That(testModuleStack.Parent, Is.EqualTo(orbit1));
             Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
             Assert.That(order.Executing, Is.False);
@@ -2367,7 +2412,7 @@ namespace UnitTests
             testModuleStack.ExecutedLongOrder = false;
             testModuleStack.Execute(this.game.Week + 1);
             Assert.That(testModuleStack.Effects.IsMoving, Is.False);
-            ClassicAssert.IsNull(testModuleStack.MovingTo);
+            Assert.That(testModuleStack.MovingTo, Is.Null);
             Assert.That(testModuleStack.Parent, Is.EqualTo(orbit2));
             Assert.That(testModuleStack.Orders.Count, Is.EqualTo(0));
             Assert.That(order.Executing, Is.False);

@@ -287,16 +287,17 @@ namespace SpaceAge
 							{
 								this.durationLeft = this.DurationInitial;
 							}
-							this.Producing = new ProducingModule(this);
-							break;
+                            this.Producing = new ProducingModule(this);
+
+                            break;
 						case EProductionType.Effects:
 							throw new Exception("Not implemented");
 					}
 					this.durationLeft--;
 					this.Producing.Execute(week);
 					this.Executing = true;
-				}
-				else if (this.Producing == null && !this.HasResources)
+                }
+                else if (this.Producing == null && !this.HasResources)
 				{
 					switch (this.Technology.ProductionType)
 					{
@@ -338,9 +339,9 @@ namespace SpaceAge
 				if (this.Producing is ProducingModule)
 				{
 					this.Receiver = ((ProducingModule)this.Producing).Receiver;
-				}
+                }
 
-				this.Producing = null;
+                this.Producing = null;
 			}
 			base.Execute(week);
 		}

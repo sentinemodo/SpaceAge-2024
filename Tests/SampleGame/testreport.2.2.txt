@@ -41,8 +41,8 @@ Galaxy report:
     (size: 150, mass: 150).
     effects:
       can operate for another 10 weeks without refueling.
-      producing spaceship hull [sshull] into empty stack [101], 3 weeks to complete (x10 efficiency
-      multiplier).
+      producing spaceship hull [sshull] into spaceship hull [101], 3 weeks to complete (x10
+      efficiency multiplier).
     events:
       week 1: formed by factory [000017] with space shuttle [shuttl].
       week 1: received space shuttle [shuttl] produced by factory [000017].
@@ -76,6 +76,10 @@ Galaxy report:
       events:
         week 1: saw space shuttle [100] in Northern Hemisphere [R00002] (0,0).
         week 1: stacked under space shuttle [100].
+  + spaceship hull [101], spaceship hull [sshull], disabled, immobile.
+    size: 0, mass: 0.
+    events:
+      week 12: formed by space shuttle [100] with spaceship hull [sshull].
 
   Northern Hemisphere [R00002] (0,0), grassland region, settlement capacity 8/3.
   Exits:
@@ -328,10 +332,10 @@ Orders Template:
 ; [food], 90 units of oxyhydro [h2o2], 150 units of terran breathing gas mixture [terair].
 ; effects:
 ;   can operate for another 10 weeks without refueling.
-;   producing spaceship hull [sshull] into empty stack [101], 3 weeks to complete (x10 efficiency
+;   producing spaceship hull [sshull] into spaceship hull [101], 3 weeks to complete (x10 efficiency
 ;   multiplier).
 move R00001
-+use ssassm as new101
++use ssassm as 101
 +-use spctrl as new102
 +-use urfiss as new103
 +-use areact as new104
@@ -348,10 +352,14 @@ move R00001
 +--give -10 h2o2 to new106
 
 #modulestack 101
-; + empty stack, 101, disabled, immobile.
+; + spaceship hull [101], spaceship hull [sshull], disabled, immobile.
+active 101
+-name "Caste Prime valiant explorer"
 
 #person 000001
 ; + Caste Prime CEO [000001], terran [terran].
+active 101
+-stack new102
 
 #end
 

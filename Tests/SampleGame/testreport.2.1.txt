@@ -30,6 +30,8 @@ Galaxy report:
     size: 2000.
     - Caste Prime CEO [000001], terran [terran], working for Caste Prime [2].
       size: 4.
+  - spaceship hull [101], spaceship hull [sshull], disabled, immobile, owned by Caste Prime [2].
+    size: 0.
 
   Northern Hemisphere [R00002] (0,0), grassland region, settlement capacity 8/3.
   Exits:

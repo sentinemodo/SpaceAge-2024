@@ -114,37 +114,37 @@ namespace SpaceAge
 					this.maxLineLength = faction.Options.ReportLineLength;
 				}
 
-				private void WriteOrdersTemplate(Faction faction)
-				{
-					this.Write("Orders Template:");
-					this.Write(String.Format("#faction {0} \"{1}\"", faction.Name, faction.Password));
-					this.Write(faction.Orders, faction);
+		private void WriteOrdersTemplate(Faction faction)
+		{
+			this.Write("Orders Template:");
+			this.Write(String.Format("#faction {0} \"{1}\"", faction.Name, faction.Password));
+			this.Write(faction.Orders, faction);
 
-					ModuleStacks moduleStacks = ModuleStack.All[faction];
-            List<ModuleStack> moduleStackSorted = new List<ModuleStack>(moduleStacks.Values);
-            moduleStackSorted.Sort(ModuleStacks.CompareByNames);
+			ModuleStacks moduleStacks = ModuleStack.All[faction];
+			List<ModuleStack> moduleStackSorted = new List<ModuleStack>(moduleStacks.Values);
+			moduleStackSorted.Sort(ModuleStacks.CompareByNames);
 
-            foreach (ModuleStack moduleStack in moduleStackSorted)
-					{
-                        this.Write(string.Concat("#modulestack ", moduleStack.Name));
-						this.Write(moduleStack.ReportOrdersTemplateHeader(faction), false, true);
-						this.Write(moduleStack.Orders, faction, false);
-						this.Write();
-					}
+			foreach (ModuleStack moduleStack in moduleStackSorted)
+			{
+				this.Write(string.Concat("#modulestack ", moduleStack.Name));
+				this.Write(moduleStack.ReportOrdersTemplateHeader(faction), false, true);
+				this.Write(moduleStack.Orders, faction, false);
+				this.Write();
+			}
 
-            People people = Person.All[faction];
-            List<Person> peopleSorted = new List<Person>(people.Values);
-            peopleSorted.Sort(People.CompareByNames);
+			People people = Person.All[faction];
+			List<Person> peopleSorted = new List<Person>(people.Values);
+			peopleSorted.Sort(People.CompareByNames);
 
-					foreach (Person person in peopleSorted)
-					{
-                        this.Write(string.Concat("#person ", person.Name));
-                        this.Write(person.ReportOrdersTemplateHeader(faction), false, true);
-						this.Write(person.Orders, faction, false);
-						this.Write();
-					}
-					this.Write("#end");
-				}
+			foreach (Person person in peopleSorted)
+			{
+				this.Write(string.Concat("#person ", person.Name));
+				this.Write(person.ReportOrdersTemplateHeader(faction), false, true);
+				this.Write(person.Orders, faction, false);
+				this.Write();
+			}
+			this.Write("#end");
+		}
 
         public void Write(Faction faction)
         {

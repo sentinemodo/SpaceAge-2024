@@ -282,7 +282,7 @@ namespace IntegrationTests
                 string.Format("+ farming complex [{0}], farming complex [farms], disabled.", farmsStack.Name),
                 "  size: 1000, mass: 100 (100), capacity: 500/0, energy: 5, crew: 5/0, upkeep: 50 cash [cash].",
                 "  events:",
-                "    week 4: formed by factory [000004] with farming complex [farms].",
+                "    week 1: formed by factory [000004] with farming complex [farms].",
                 "    week 4: received farming complex [farms] produced by factory [000004]."
             };			
 
@@ -736,7 +736,7 @@ namespace IntegrationTests
                 "technologies: agricultural complex [agrplx], armored combat [armcbt].",
                 "items: 10 terrans [terran], 10 units of iron [iron], 300 cash [cash].",
                 "effects:",
-                "  producing farming complex [farms] into empty stack [100], 3 weeks to complete.",
+                "  producing farming complex [farms] into farming complex [100], 3 weeks to complete.",
                 ""
             };
 

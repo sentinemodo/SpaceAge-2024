@@ -91,6 +91,16 @@ namespace SpaceAge
 
 		}
 
+        public override List<string> Report(Faction owner)
+        {
+            List<string> lines = new List<string>();
+            string line = string.Format("{0}name \"{1}\"",
+                this.Conditions,
+                this.Description);
+            lines.Add(line);
+            return lines;
+        }
+
         public override void LoadXml(XmlElement elOrder)
         {
             XmlElement elName = (XmlElement)elOrder.SelectNodes("name")[0];

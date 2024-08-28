@@ -82,18 +82,6 @@ namespace SpaceAge
 				// production starting
 				if (this.Duration == this.UseOrder.DurationInitial)
 				{
-					this.Producer.EventReports.Add(week, string.Format("consumed {0} to produce {1} module.",
-						this.Technology.UseConsumeItems.ReportList,
-						this.Technology.UseProduceModules.ReportName));
-				}
-
-				// production
-				this.Duration--; 
-
-				// production complete
-				if (this.Duration == 0)
-				{
-					// producing modules for something that exists already (ie. we want to add modules to the existing stack
                     if (this.Receiver is ModuleStack)
                     {
                         if (((ModuleStack)this.Receiver).ModuleType == null)
@@ -112,21 +100,33 @@ namespace SpaceAge
                         {
                             this.produced = (ModuleStack)this.Receiver;
                         }
-
-                        this.produced.AddModule();
-                        this.produced.ExecutedLongOrder = true;
-
-                        this.Producer.EventReports.Add(
-                            week,
-                            string.Format("produced {0} into {1}.",
-                            this.Technology.UseProduceModules.ReportName,
-                            this.produced.ReportName));
-                        this.produced.EventReports.Add(
-                            week,
-                            string.Format("received {0} produced by {1}.",
-                                this.Technology.UseProduceModules.ReportName,
-                                this.Producer.ReportName));
                     }
+
+                    this.Producer.EventReports.Add(week, string.Format("consumed {0} to produce {1} module.",
+						this.Technology.UseConsumeItems.ReportList,
+						this.Technology.UseProduceModules.ReportName));
+				}
+
+				// production
+				this.Duration--; 
+
+				// production complete
+				if (this.Duration == 0)
+				{
+					// producing modules for something that exists already (ie. we want to add modules to the existing stack
+                    this.produced.AddModule();
+                    this.produced.ExecutedLongOrder = true;
+
+                    this.Producer.EventReports.Add(
+                        week,
+                        string.Format("produced {0} into {1}.",
+                        this.Technology.UseProduceModules.ReportName,
+                        this.produced.ReportName));
+                    this.produced.EventReports.Add(
+                        week,
+                        string.Format("received {0} produced by {1}.",
+                            this.Technology.UseProduceModules.ReportName,
+                            this.Producer.ReportName));
 
 					// if there is a parent specified and it is not producer and the produced stack isn't already stacked under specified parent - stack under it
                     if (this.ReceiverParent != null 

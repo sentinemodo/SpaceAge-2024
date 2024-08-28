@@ -473,6 +473,8 @@ namespace SpaceAge
 				// TODO: autotransfers of crew
                 if (!this.IsFormed)
 					return false;
+                if (this.Modules.Count == 0)
+                    return false;
                 if (this.CrewRequired > this.CrewCurrent)
                     return false;
                 //if (this.CrewRequired + this.ModuleStacks.CrewRequired() > this.CrewCurrent + this.ModuleStacks.CrewCurrent() )
@@ -1134,7 +1136,7 @@ namespace SpaceAge
         
         private string reportUpkeep(Faction faction, string line)
 		{
-			if (this.owner == faction && this.Upkeep.Count > 0)
+			if (this.owner == faction && this.modules.Count > 0 && this.Upkeep.Count > 0)
 			{
 				line = string.Format("{0}upkeep:",
 					(line == string.Empty) ? string.Empty : string.Concat(line, ", "));
@@ -1281,7 +1283,15 @@ namespace SpaceAge
             {
                 return true;
             }
-            return this.Location.HasPresence(faction);
+			if (this.Owner == faction)
+			{
+				return true;
+			}
+			if (this.Size > 0)
+			{
+				return this.Location.HasPresence(faction);
+			}
+			return false;
 		}
 
 		#endregion
