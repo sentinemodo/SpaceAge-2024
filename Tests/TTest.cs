@@ -62,14 +62,14 @@ namespace UnitTests
             }
         }
 
-        protected void compareFiles(string expected, string generated, bool allToConsole = true)
+        protected void compareFiles(string expected, string generated, bool allToConsole = true, int maxLines = int.MaxValue)
         {
 
             List<string> testLines = this.loadTextFile(expected);
             List<string> reportLines = this.loadTextFile(generated);
 
             Console.WriteLine("Generated file " + generated + " expected file " + expected);
-            for (int i = 0; i < reportLines.Count; i++)
+            for (int i = 0; i < Math.Min(reportLines.Count, maxLines); i++)
             {
                 if (allToConsole)
                 {
@@ -77,7 +77,10 @@ namespace UnitTests
                 }
                 Assert.That(reportLines[i], Is.EqualTo(testLines[i]), "error in file " + generated + " in line " + i + ": " + reportLines[i]);
             }
-            Assert.That(reportLines.Count, Is.EqualTo(testLines.Count), "error in file " + generated + " files are differing in lenght");
+            if (maxLines == int.MaxValue)
+            {
+                Assert.That(reportLines.Count, Is.EqualTo(testLines.Count), "error in file " + generated + " files are differing in lenght");
+            }
         }
 
 

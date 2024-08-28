@@ -477,13 +477,14 @@ namespace IntegrationTests
             ReportWriter reportsWriter = new ReportWriter(this.game, this.dataFile, this.testDir);
             reportsWriter.GenerateReports(this.testDir);
 
-            // reports delviered from gamein2 should be the same as made during turn 1 execution
+            // reports delviered from gamein2 should be the same as made during turn 1 execution minus orders template
+			// so we compare only up to the orders template
 
             this.consoleOutFile("report.2.1.txt");
 
             this.compareFiles("testreport.2.1.txt", "report.2.1.txt");
-            this.compareFiles("testreport.2.2.txt", "report.2.2.txt");
-            this.compareFiles("testreport.2.3.txt", "report.2.3.txt");
+            this.compareFiles("testreport.2.2.txt", "report.2.2.txt", true, 292);
+            this.compareFiles("testreport.2.3.txt", "report.2.3.txt", true, 435);
         }
 
         [Test]
