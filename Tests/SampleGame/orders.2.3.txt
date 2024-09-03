@@ -11,7 +11,7 @@
 ; + small cargo bay [000019], small cargo bay [cargob].
 ; items: 1088 units of food [food], 2 terrans [terran], 3 units of iron
 ; [iron], 18 units of oil [oil].
-sell 300 food to 000006
+sell 300 food
 @get all food from 000020
 @get all oil from 000022
 
@@ -23,7 +23,7 @@ sell 300 food to 000006
 #modulestack 000021
 ; + wind powerplant [000021], 20 wind powerplants [wnplnt].
 has 21 wnplnt
--sell 1 wnplnt to 000006
+-sell 1 wnplnt
 @produce energy
 
 #modulestack 000022

@@ -68,9 +68,10 @@ namespace UnitTests
             Assert.That(this.game.Factions["1"].FullName, Is.EqualTo("NPC"));
             Assert.That(this.game.Factions["2"].Name, Is.EqualTo("2"));
             Assert.That(this.game.Factions["2"].FullName, Is.EqualTo("Caste Prime"));
-		}
+            Assert.That(this.game.Factions["2"].Password, Is.EqualTo(""));
+        }
 
-		[Test]
+        [Test]
 		public void LoadConfDocument()
 		{
 			// method changes private element, should pass without assertions			

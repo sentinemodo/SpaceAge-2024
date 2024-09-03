@@ -10,7 +10,7 @@
 ; oxyhydro [h2o2], 70 units of iron [iron], 70 units of titanium [titani], 80 units of silicium
 ; [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 97 units
 ; of carbon [carbon].
-sell 300 food to 000001
+sell 300 food
 @get all food from 000014
 @get all carbon from 000016
 

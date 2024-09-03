@@ -3654,33 +3654,83 @@ namespace UnitTests
             Assert.That(producedModuleStack.Parent.Name, Is.EqualTo("000112"));
         }
 
+        [Test] 
+        public void FactionPassword()
+        {
+            Faction testFaction = this.game.Factions["2"];
+            testFaction.Password = "xyzzy";
+            Assert.That(testFaction.Password, Is.EqualTo("xyzzy"));
+
+            List<string> testcommands = new List<string>
+            {
+                "#faction 2 \"xyzzy\"",
+                "#modulestack 000004",
+                "use agrplx",
+                "#end"
+            };
+
+            OrdersReader ordersReader = new OrdersReader(game);
+            ordersReader.AssignOrders(testcommands);
+
+            // should go fine
+            ModuleStack testModuleStack = this.game.ModuleStacks["000004"];
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
+        }
+
+        [Test]
+        public void FactionPasswordWrong()
+        {
+            Faction testFaction = this.game.Factions["2"];
+            testFaction.Password = "xyzzy";
+            Assert.That(testFaction.Password, Is.EqualTo("xyzzy"));
+
+            List<string> testcommands = new List<string>
+            {
+                "#faction 2 \"wrong password\"",
+                "#modulestack 000004",
+                "use agrplx",
+                "#end"
+            };
+
+            Assert.Throws<Exception>(
+                delegate
+                {
+                    OrdersReader ordersReader = new OrdersReader(game);
+                    ordersReader.AssignOrders(testcommands);
+                }, "Should throw exception due to wrong password: ");
+
+            // shouldn't go fine
+            ModuleStack testModuleStack = this.game.ModuleStacks["000004"];
+            Assert.That(testModuleStack.Orders.Count, Is.EqualTo(0));
+        }
+
         // research
-		// upkeep
-		// cash in | out437
-		// bank operations
-		// at
-		// describe
-		// register
-		// email
-		// password
-		// resign
-		// convert
-		// erase technology
-		// launch (alias for move)
-		// land	 (alias for move)
+        // upkeep
+        // cash in | out437
+        // bank operations
+        // at
+        // describe
+        // register
+        // email
+        // password
+        // resign
+        // convert
+        // erase technology
+        // launch (alias for move)
+        // land	 (alias for move)
         // enter (alias for stack)
         // eject (alias for stack)
         // leave (alias for stack)
-		// shutdown
-		// activate
-		// * transfer (split & join)
-		// synchro
-		// receive
-		// wait
-		// attack
+        // shutdown
+        // activate
+        // * transfer (split & join)
+        // synchro
+        // receive
+        // wait
+        // attack
         // hack (view, disrupt, control)
-		// show technologies, modules, skills, races, items, all
+        // show technologies, modules, skills, races, items, all
         // embargo - block possibility to execute market offers
-	}
+    }
 }
 				

@@ -83,7 +83,7 @@ Galaxy report:
     - factory [000017], 5 factories [factry], owned by Caste Prime [2].
       size: 5000.
   + peaceful scout [108], tanks [tanks].
-    size: 250, mass: 406 (250), capacity: 200/144, crew: 16/16, upkeep:
+    size: 240, mass: 396 (240), capacity: 200/144, crew: 16/16, upkeep:
     40 (24) cash [cash], consume: 32 (16) units of food [food], 32 (16)
     units of terran breathing gas mixture [terair].
     movement speed: 0.5 on ground.
@@ -167,7 +167,7 @@ Galaxy report:
       [1].
       size: 2000.
   + Gelvaren complex [000026], city [city], immobile.
-    size: 25000, mass: 6934, capacity: 15000/10200, energy: 80/75 (10),
+    size: 25000, mass: 6894, capacity: 15000/10180, energy: 80/75 (10),
     crew: 80/88, upkeep: 100 units of food [food], 889 (0) cash [cash],
     consume: 220 (0) units of food [food], 220 (0) units of terran
     breathing gas mixture [terair].
@@ -368,7 +368,7 @@ Galaxy report:
         week 13: consumed 4 units of iron [iron] to produce tanks
         [tanks] module.
     + military barrack [000025], military barrack [barrck].
-      size: 2000, mass: 1044 (500), capacity: 1800/540, energy: 5, crew:
+      size: 2000, mass: 1024 (500), capacity: 1800/520, energy: 5, crew:
       34/11 (2/10), upkeep: 268 (200) cash [cash], consume: 43 (0) units
       of food [food], 43 (0) units of terran breathing gas mixture
       [terair].
@@ -383,7 +383,7 @@ Galaxy report:
         week 13: produced infantry battalion [inftry] into infantry
         battalion [110].
       + tanks [109], 2 tanks [tanks], disabled.
-        size: 500, mass: 504 (500), capacity: 400/4, crew: 32/1, upkeep:
+        size: 480, mass: 484 (480), capacity: 400/4, crew: 32/1, upkeep:
         58 (48) cash [cash], consume: 33 (32) units of food [food], 33
         (32) units of terran breathing gas mixture [terair].
         movement speed: 0.5 on ground.

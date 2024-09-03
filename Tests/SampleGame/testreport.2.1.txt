@@ -98,7 +98,7 @@ Galaxy report:
     - factory [000017], 5 factories [factry], owned by Caste Prime [2].
       size: 5000.
   - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
-    size: 250.
+    size: 240.
 
   Southern Hemisphere [R00003] (1,0), grassland region, settlement capacity 8/3.
   Exits:
@@ -173,7 +173,7 @@ Galaxy report:
     - military barrack [000025], military barrack [barrck], owned by Gelvaren [3].
       size: 2000.
       - tanks [109], 2 tanks [tanks], disabled, owned by Gelvaren [3].
-        size: 500.
+        size: 480.
         - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
           size: 4.
     - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].

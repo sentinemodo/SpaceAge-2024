@@ -130,9 +130,13 @@ namespace SpaceAge
 									faction = Faction.All[token2];
 									subject = faction;
 
-									// TODO: check password
-								}
-								else
+                                    token2 = LineParser.GetQuotedToken(ref tokens);
+									if (token2 != faction.Password)
+									{
+                                        throw new Exception("wrong password: " + token2 + " given");
+                                    }
+                                }
+                                else
 								{
 									throw new Exception("bad syntax or unknown faction" + token2);
 								}

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="windows-1251"?>
 <game turn="36">
 	<faction name="1" name-en="NPC" password="" email="" default-attitude="2" text-report="True" xml-report="True" balance="0" credit-line="1000000" credit-rate="0" deposit-rate="0"/>
-	<faction name="2" name-en="Caste Prime" password="xyzzy" email="mail@mail.pl" default-attitude="2" text-report="True" xml-report="True" balance="10000" credit-line="10000" credit-rate="0.2" deposit-rate="0.05">
+	<faction name="2" name-en="Caste Prime" password="" email="mail@mail.pl" default-attitude="2" text-report="True" xml-report="True" balance="10000" credit-line="10000" credit-rate="0.2" deposit-rate="0.05">
 	</faction>
 	<galaxy>
 		<system name="SS0001" name-en="Sol" X="0" Y="0" Z="0">

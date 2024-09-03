@@ -153,7 +153,7 @@ namespace UnitTests
 		{
 			Faction otherFaction = new Faction("2", "otherFaction");
 			ModuleStack otherModuleStack = new ModuleStack(this.region, otherFaction, this.moduleType, "otherModuleStack");
-            Assert.That(this.moduleStack.Visible(otherFaction));
+            Assert.That(this.moduleStack.Visible(otherFaction), Is.False);
 		}
 
         [Test]

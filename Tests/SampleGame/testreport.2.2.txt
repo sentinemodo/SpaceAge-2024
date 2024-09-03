@@ -284,7 +284,7 @@ Galaxy report:
         week 10: consumed unit of silicium [silici] to produce space shuttle [shuttl] module.
         week 10: produced space shuttle [shuttl] into space shuttle [100].
   - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
-    size: 250.
+    size: 240.
 ------------------------------------------------------------
   * Luna [P00003] (1, 0, 0), moon, unexplored.
 ------------------------------------------------------------
