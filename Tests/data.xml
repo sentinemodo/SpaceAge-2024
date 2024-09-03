@@ -447,16 +447,27 @@
 			<use-produce module="trucks"/>
 		</entry>
 		<entry
+			name="stnrdf"
+			name-en="stationary defense"
+			level="1"
+			description="The basic stationary defense. Gun emplacement and fortification to protect against ground based military."
+			use-time="4">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="2"/>
+      <use-consume item="titani" quantity="2"/>
+      <use-produce module="gunplc"/>
+		</entry>
+    <entry
 			name="armcbt"
 			name-en="armored combat"
 			level="1"
 			description="The basic mobile armor, powered by oil consuming engines."
 			use-time="4">
-			<use-allowed-in module-type-group="production"/>
-			<use-consume item="iron" quantity="4"/>			
-			<use-produce module="tanks"/>
-		</entry>
-		<entry
+      <use-allowed-in module-type-group="production"/>
+      <use-consume item="iron" quantity="4"/>
+      <use-produce module="tanks"/>
+    </entry>
+    <entry
 			name="frminf"
 			name-en="form infantry battalion"
 			level="1"
@@ -500,7 +511,12 @@
 			name="ssassm" 
 			name-en="space ship assembly"
 			level="0"
-			description="The assembly of space-based ships' hull."
+			description="Construction of spacecraft hulls is a marvel of advanced engineering and precision. Floating serenely in the vacuum of space, is a hub of activity, with robotic arms and drones tirelessly working to assemble the skeletal frameworks of future starships.
+The process begins with the creation of the hull, a robust and versatile structure designed to withstand the rigors of space travel. Advanced materials, lightweight yet incredibly strong, are meticulously welded and fused together by automated systems. These materials are chosen for their durability, resistance to cosmic radiation, and ability to endure extreme temperature fluctuations.
+The hulls are constructed in modular sections, each piece fitting together with the precision of a jigsaw puzzle. This modular approach allows for flexibility in design, enabling the shipyard to produce a variety of hull configurations tailored to different mission profiles. Whether it's a sleek exploration vessel, a formidable warship, or a massive cargo freighter, the basic hull can be adapted to meet the specific needs of the mission.
+Once the hull is complete, it is moved to the next stage of assembly, where it will be outfitted with various modules. These modules, pre-fabricated and tested, are designed for a range of uses: living quarters [crwqrt], command bridges [cbridg], cargo bays [cargob], and more. Each module is equipped with standardized interfaces, allowing them to be easily connected and integrated into the hull.
+Robotic arms and drones carefully maneuver the modules into place, securing them with precision and ensuring all connections are airtight and functional. The interior of the ship begins to take shape, with corridors, rooms, and systems coming together to form a cohesive whole. Advanced AI oversees the entire process, monitoring for any anomalies and ensuring that every component meets stringent quality standards.
+This assembly technology represents the pinnacle of human ingenuity and collaboration, a testament to our ability to create complex, adaptable, and resilient spacecraft. Each hull, filled with its specialized modules, is a blank canvas, ready to be transformed into a vessel capable of exploring the farthest reaches of the cosmos."
 			use-time="5">
 			<use-allowed-in module-type-group="production" location-type="orbit"/>
 			<use-consume item="iron" quantity="6"/>
@@ -658,7 +674,10 @@
 			name="filidx"
 			name-en="file indexing"
 			level="0"
-			description="How to organise computer files in an efficient and centralised manner."
+			description="Imagine a cutting-edge digital library, where advanced file indexing technology forms the backbone of a vast repository of knowledge. This system, designed to support researchers, operates with the precision and efficiency, ensuring that every piece of information is easily accessible and meticulously organized.
+The process begins with the ingestion of data from a multitude of sources: academic journals, books, research papers and multimedia files. These content of the digital files analyzed by sophisticated algorithms that can recognize text, images, videos and both complex data structures and unorganized raw data. Each file is then tagged creating a rich, searchable index.
+At the heart of this technology is a powerful indexing engine, capable of processing vast amounts of data in real-time. This engine uses advanced techniques such as natural language processing and machine learning to understand the context and relevance of each document. It can identify relationships between different pieces of information, linking related documents and creating a web of interconnected knowledge.
+Researchers can query the library. The system can handle natural language questions, returning results that are not only relevant but also ranked by their significance and reliability."
 			use-time="2">
 			<use-allowed-in module-type-group="production"/>
 			<use-consume item="iron"  quantity="1"/>
@@ -1041,7 +1060,26 @@
 			<upkeep type="cash" quantity="100"/>
 			<require technology="lasopt"/>
 		</entry>
-		<entry
+    <entry
+			name="gunplc"
+			name-en="gun placement"
+			name-en2="gun placements"
+			group="military"
+			description="The gun placements are primary means of defense for the short range ground combat."
+			size="100"
+			mass="500"
+			crew="2"
+			capacity="100"
+			technology-capacity="1"
+			hit-points="100"
+			attack="10"
+			defense="10"
+			damage="5">
+      <operation-allowed-in region-surface="solid"/>
+      <upkeep type="cash" quantity="10"/>
+      <no-upkeep effect="damage" chance="25"/>
+    </entry>
+    <entry
 			name="cargob" 
 			name-en="small cargo bay"
 			name-en2="small cargo bays"
@@ -1192,15 +1230,15 @@
 			name="tanks"
 			name-en="tanks" 
 			group="vehicle" 
-			description="Platoon of armored vehicles suitable for destroying ground modules and infantry battalions."
-			size="250"			
-			mass="250" 
+			description="Platoon of 4 armored vehicles suitable for destroying ground modules and infantry battalions."
+			size="240"			
+			mass="240" 
 			capacity="200"
-			hit-points="50"
+			hit-points="60"
 			crew="16"
-			attack="5"
-			defense="5"
-			damage="5">
+			attack="4"
+			defense="4"
+			damage="4">
 			<operation-allowed-in planet-atmosphere="terair"/>
 			<operation-allowed-in region-surface="solid"/>
 			<upkeep type="cash" quantity="24"/>

@@ -116,6 +116,9 @@
     <Content Include="SampleGame\gameout.2.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="SampleGame\orders.2.3.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="SampleGame\orders.2.2.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

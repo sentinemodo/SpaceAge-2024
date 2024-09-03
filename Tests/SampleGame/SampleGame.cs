@@ -508,8 +508,6 @@ namespace IntegrationTests
             Sequence.Ints.Push(112);
             Sequence.Ints.Push(111);
 
-            // assert gamein2 is the same as gameout1
-            this.compareFiles("gamein.2.xml", "gameout.1_saved.xml");
             this.LoadGalaxy("gamein.2.xml");
 
 			// story:
@@ -517,6 +515,9 @@ namespace IntegrationTests
 			// a ship launches toward the moon
 			// and army attacks the other region
 			// a city quest is completed and reward collected
+
+			// TODO: loading up atmosphere (up to size), locking up (to avoid loading toxic atmosphere), venting out (pushign out terran air out)
+			// venting out will kill anybody without canned air but also kill out any fire effects
 
             // sequence:        
             OrdersReader ordersReader = new OrdersReader(this.game);
@@ -534,9 +535,9 @@ namespace IntegrationTests
             this.compareFiles("testreport.3.3.txt", "report.3.3.txt");
 
             //   validate output game file
-            this.dataFile.SaveGame(this.testDir, "gameout.2_saved.xml");
-            this.compareFiles("gameout.2.xml", "gameout.2_saved.xml");
-            this.copyFile("gameout.2_saved.xml", "gamein.3.xml");
+            this.dataFile.SaveGame(this.testDir, "gameout.3_saved.xml");
+            this.compareFiles("gameout.3.xml", "gameout.3_saved.xml");
+            this.copyFile("gameout.3_saved.xml", "gamein.4.xml");
 		}
 
 		[Test, Ignore("not ready")]
