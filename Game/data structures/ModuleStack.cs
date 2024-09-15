@@ -1090,7 +1090,8 @@ namespace SpaceAge
 			line = this.reportSize(line);
 			line = this.reportMass(faction, line);
 			line = this.reportCapacity(faction, line);
-			line = this.reportEnergyUsage(faction, line);
+            line = this.reportResearchPoints(faction, line);
+            line = this.reportEnergyUsage(faction, line);
 			line = this.reportCrew(faction, line);
 			line = this.reportUpkeep(faction, line);
 			line = this.reportConsume(faction, line);
@@ -1216,7 +1217,19 @@ namespace SpaceAge
             return line;
         }
 
-		public List<string> Report(Faction faction, int level)
+        private string reportResearchPoints(Faction faction, string line)
+        {
+            if (this.ResearchPoints > 0)
+            {
+                if (this.owner == faction)
+                {
+                    line = string.Format("{0}, research points: {1}", line, this.ResearchPoints);
+                }
+            }
+            return line;
+        }
+
+        public List<string> Report(Faction faction, int level)
 		{
 			ReportLines reportLines = new ReportLines
             {
@@ -1308,11 +1321,20 @@ namespace SpaceAge
             get { return Offer.All[this];  }
         }
 
-		#endregion
-		
-		#region IEffectable Members
+        #endregion
 
-		private Effects effects = new Effects();
+        #region research
+        private int researchPoints = 0;
+        public int ResearchPoints
+        {
+            get { return this.researchPoints; }
+            set { this.researchPoints = value; }
+        }
+        #endregion
+
+        #region IEffectable Members
+
+        private Effects effects = new Effects();
 		public Effects Effects
 		{
 			get { return this.effects; }
@@ -1693,6 +1715,7 @@ namespace SpaceAge
 
             this.ModuleStacks.LoadXml(elModuleStack, this);
             this.Technologies.LoadXml(elModuleStack, this);
+			this.ResearchPoints = this.XMLAssignInteger(elModuleStack.GetAttribute("research-points"), 0);
 
             this.Tactics.LoadXml(elModuleStack, this);
 
@@ -1717,6 +1740,10 @@ namespace SpaceAge
 
             this.People.SaveXml(doc, this.xmlElement, faction);
             this.Technologies.SaveXml(doc, this.xmlElement);
+			if (this.ResearchPoints > 0)
+			{
+				this.xmlElement.SetAttribute("research-points", this.ResearchPoints.ToString());
+			}
             this.ItemStacks.SaveXml(doc, this.xmlElement, faction);
             this.Upkeep.SaveXml(doc, this.xmlElement, faction, "upkeep");
             this.Tactics.SaveXml(doc, this.xmlElement);

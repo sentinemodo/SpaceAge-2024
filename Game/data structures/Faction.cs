@@ -201,9 +201,18 @@ namespace SpaceAge
 			get { return this.bank; }
 			set { this.bank = value; }
 		}
-		#endregion
+        #endregion
 
-		#region IOrderable Members
+        #region research
+        
+        public int MaxTechnologyLevel
+        {
+            get { return this.TechnologiesSeen.MaxTechnologyLevel; }
+        }
+
+        #endregion
+
+        #region IOrderable Members
 
         public bool HasOrders
         {

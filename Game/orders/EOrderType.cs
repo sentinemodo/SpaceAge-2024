@@ -17,6 +17,7 @@ namespace SpaceAge
 		move,
 		name,
         produce,
+		research,
 		set,
 		see,
         sell,

@@ -33,6 +33,16 @@ namespace UnitTests
 			Console.WriteLine();
 		}
 
+        protected void consoleOutReport(string title, List<string> report, Faction faction)
+        {
+            Console.WriteLine(title);
+            for (int i = 0; i < report.Count; i++)
+            {
+                Console.WriteLine(report[i]);
+            }
+            Console.WriteLine();
+        }
+
         public TextReader TextReader { get; set; }
 
         private List<string> loadTextFile(string filename)

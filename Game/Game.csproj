@@ -90,6 +90,8 @@
     <Compile Include="effects\ProducingEnergy.cs" />
     <Compile Include="game\Bank.cs" />
     <Compile Include="game\XMLProcessing.cs" />
+    <Compile Include="orders\EResearchType.cs" />
+    <Compile Include="orders\ResearchOrder.cs" />
     <Compile Include="orders\SellOrder.cs" />
     <Compile Include="orders\EHasType.cs" />
     <Compile Include="orders\EProduceType.cs" />

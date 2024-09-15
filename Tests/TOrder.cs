@@ -3704,7 +3704,78 @@ namespace UnitTests
             Assert.That(testModuleStack.Orders.Count, Is.EqualTo(0));
         }
 
-        // research
+
+        [Test]
+        public void AssignResearchOrder()
+        {
+            Faction testFaction = this.game.Factions["2"];
+            ModuleType computerLibrary = ModuleType.All["cmplib"];
+
+            ModuleStack researchModuleStack = ModuleStack.All.GetOrCreateNewModuleStack(testFaction, "100000");
+            researchModuleStack.ModuleType = computerLibrary;
+            researchModuleStack.AddModule();
+
+            List<string> testcommands = new List<string>
+            {
+                "#faction 2",
+                "#modulestack 100000",
+                "research group military",
+                "#end"
+            };
+
+            OrdersReader ordersReader = new OrdersReader(game);
+            ordersReader.AssignOrders(testcommands);
+            Assert.That(researchModuleStack.Orders.Count, Is.EqualTo(1));
+
+            Assert.That(researchModuleStack.Orders[0] is ResearchOrder);
+            ResearchOrder researchOrder = (ResearchOrder)researchModuleStack.Orders[0];
+            Assert.That(researchOrder.ResearchType, Is.EqualTo(EResearchType.Group));
+            Assert.That(researchOrder.ResearchToken, Is.EqualTo("military"));
+            Assert.That(researchOrder.Repeat, Is.EqualTo(1));
+        }
+
+        [Test]
+        public void ExecuteResearchOrder()
+        {
+            Sequence.Ints.Push(50);
+            Sequence.Ints.Push(1);
+            Sequence.Ints.Push(100);
+
+            Faction testFaction = this.game.Factions["2"];
+            ModuleType computerLibrary = ModuleType.All["cmplib"];
+
+            ModuleStack researchModuleStack = ModuleStack.All.GetOrCreateNewModuleStack(testFaction, "100000");
+            researchModuleStack.Parent = ModuleStack.All["000005"];
+            researchModuleStack.ModuleType = computerLibrary;
+            researchModuleStack.AddModule();
+
+            List<string> testcommands = new List<string>
+            {
+                "#faction 2",
+                "#modulestack 100000",
+                "research group military",
+                "#end"
+            };
+
+            OrdersReader ordersReader = new OrdersReader(game);
+            ordersReader.AssignOrders(testcommands);
+            ResearchOrder researchOrder = (ResearchOrder)researchModuleStack.Orders[0];
+
+            int week = this.game.Week;
+            for (int i = 1; i <= 3; i++)
+            {
+                researchModuleStack.ExecutedLongOrder = false;
+                researchModuleStack.Execute(week++);
+            }
+
+            // there should be breakthrough on the second week and on the third week there should be a 1 RP generated
+            this.consoleOutReport("research progress report", researchModuleStack, researchModuleStack.Owner);
+
+            // there should be a new technology seen 
+            this.consoleOutReport("technologies seen", testFaction.TechnologiesToShow.ReportDescriptions(testFaction, 1), researchModuleStack.Owner);
+
+        }
+
         // upkeep
         // cash in | out437
         // bank operations

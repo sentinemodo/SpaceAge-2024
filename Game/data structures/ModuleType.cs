@@ -75,7 +75,23 @@ namespace SpaceAge
 			}
 		}
 
-		private int technologyCapacity;
+        #region research
+
+        private int researchOutput = 0;
+        public int ResearchOutput
+        {
+            get { return this.researchOutput; }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
+                this.researchOutput = value;
+            }
+        }
+
+        private int technologyCapacity;
 		public int TechnologyCapacity
 		{
 			get { return this.technologyCapacity; }
@@ -89,8 +105,10 @@ namespace SpaceAge
 			}
 		}
 
-		#region requirements
-		private int crewRequired;
+        #endregion
+
+        #region requirements
+        private int crewRequired;
 		public int CrewRequired
 		{
 			get { return this.crewRequired; }

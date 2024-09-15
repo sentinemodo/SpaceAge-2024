@@ -1286,9 +1286,9 @@ Researchers can query the library. The system can handle natural language questi
 			hit-points="50"
 			energy="5"			
 			technology-capacity="4"
+      research-output="1"
 			value="1000">
 			<upkeep type="cash" quanity="100"/>
-			<effect type="research" value="0.01" target="stacked"/>
 		</entry>
 	</module>
 	<race>

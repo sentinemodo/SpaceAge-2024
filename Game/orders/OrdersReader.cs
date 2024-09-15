@@ -325,6 +325,9 @@ namespace SpaceAge
                 case "produce":
                     order = new ProduceOrder(subject);
                     break;
+                case "research":
+                    order = new ResearchOrder(subject);
+                    break;
                 case "set":
 					order = new SetOrder(subject);
 					break;

@@ -35,6 +35,22 @@ namespace SpaceAge
             }
         }
 
+		public int MaxTechnologyLevel
+		{
+			get
+			{
+                int maxTechnologyLevel = 0;
+                foreach (Technology technology in this)
+                {
+					if (technology.Level > maxTechnologyLevel)
+					{
+						maxTechnologyLevel = technology.Level;
+					}
+                }
+                return maxTechnologyLevel;
+            }
+        }
+
 
 		public int Attack
 		{
@@ -139,7 +155,18 @@ namespace SpaceAge
 			return reportLine.IndentedLines;
 		}
 
-		#endregion
+        public List<string> ReportDescriptions(Faction faction, int level)
+        {
+            ReportLines reportLines = new ReportLines();
+			foreach (Technology technology in this)
+			{
+                reportLines.Add(string.Format("{0}: {1}.", technology.ReportName, technology.Description), level);
+                reportLines.Add(string.Empty, level);
+            }
+            return reportLines.IndentedLines;
+        }
+
+        #endregion
 
         public void LoadXml(XmlElement elHolder, ModuleStack holder)
         {

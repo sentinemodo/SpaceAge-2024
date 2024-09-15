@@ -455,6 +455,7 @@ namespace SpaceAge
 						moduleType.Mass = this.XMLAssignDouble(el.GetAttribute("mass"), 0);
 						moduleType.Size = this.XMLAssignDouble(el.GetAttribute("size"), 0);
 						moduleType.Capacity = this.XMLAssignDouble(el.GetAttribute("capacity"), 0);
+                        moduleType.ResearchOutput = this.XMLAssignInteger(el.GetAttribute("research-output"), 0); 
 						moduleType.TechnologyCapacity = this.XMLAssignInteger(el.GetAttribute("technology-capacity"), 0);
 
 						moduleType.CrewRequired = this.XMLAssignInteger(el.GetAttribute("crew"), 0);
