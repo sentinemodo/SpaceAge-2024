@@ -461,7 +461,7 @@ namespace SpaceAge
 						moduleType.CrewRequired = this.XMLAssignInteger(el.GetAttribute("crew"), 0);
 						moduleType.EnergyRequired = this.XMLAssignInteger(el.GetAttribute("energy"), 0);
 
-						moduleType.HitPoints = this.XMLAssignInteger(el.GetAttribute("hit-points"), System.Convert.ToInt32((moduleType.Mass + moduleType.Size) / 20));
+						moduleType.DamageCapacity = this.XMLAssignInteger(el.GetAttribute("hit-points"), System.Convert.ToInt32((moduleType.Mass + moduleType.Size) / 20));
 						moduleType.Attack = this.XMLAssignInteger(el.GetAttribute("attack"), 0);
 						moduleType.Defense = this.XMLAssignInteger(el.GetAttribute("defense"), 0);
 						moduleType.Damage = this.XMLAssignInteger(el.GetAttribute("damage"), 0);

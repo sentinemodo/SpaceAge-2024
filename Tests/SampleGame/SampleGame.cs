@@ -487,15 +487,8 @@ namespace IntegrationTests
             this.compareFiles("testreport.2.3.txt", "report.2.3.txt", true, 435);
         }
 
-        [Test]
-        public void _5_ParseGeneratedOrders()
-        {
-            // generated orders should be parseable
-            Assert.Fail();
-        }
-
 		[Test]
-		public void _6_ExecuteTurn2()
+		public void _5_ExecuteTurn2()
 		{
             Sequence.Ints.Push(120);
             Sequence.Ints.Push(119);

@@ -219,11 +219,11 @@ namespace SpaceAge
 		#endregion
 
 		#region combat
-		private int hitPoints;
-		public int HitPoints
+		private int damageCapacity;
+		public int DamageCapacity
 		{
-			get { return this.hitPoints; }
-			set { this.hitPoints = value; }
+			get { return this.damageCapacity; }
+			set { this.damageCapacity = value; }
 		}
 
 		private int damage;

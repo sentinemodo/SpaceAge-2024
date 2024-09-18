@@ -303,14 +303,19 @@ namespace IntegrationTests
 		[Test]
 		public void BattleReport_ShipVsStation_ShipPerspective()
 		{
-			Faction faction = this.game.Factions["2"];
+
+            Faction faction = this.game.Factions["2"];
 			Battles battles = this.game.Battles;
 			ModuleStack frigate = ModuleStack.All["100011"];
 			ModuleStack station = ModuleStack.All["100021"];
 
-			Sequence.Ints.Push(1);
-			Sequence.Ints.Push(1);
-			Sequence.Ints.Push(1);
+            Sequence.Rolls.Clear();
+            Sequence.Ints.Push(120);
+            Sequence.Ints.Push(1);
+            Sequence.Ints.Push(120);
+            Sequence.Ints.Push(1);
+            Sequence.Ints.Push(120);
+            Sequence.Ints.Push(1);
 			Sequence.Ints.Push(13);
 
 			Battle battle = new Battle(frigate, station);
@@ -476,7 +481,14 @@ namespace IntegrationTests
                 "  Battle won by attackers.",
                 ""
             };
-			List<string> lines = battles.Report(faction);
+
+            Console.WriteLine("Random generator log: ");
+            foreach (Sequence.RollDescription roll in Sequence.Rolls)
+            {
+                Console.WriteLine(string.Format("roll: {0} description: {1}", roll.Roll.ToString(), roll.Description));
+            }
+
+            List<string> lines = battles.Report(faction);
 			for (int i = 0; i < lines.Count; i++)
 			{
 				Console.WriteLine(lines[i]);
@@ -497,12 +509,16 @@ namespace IntegrationTests
 			ModuleStack frigate = ModuleStack.All["100011"];
 			ModuleStack station = ModuleStack.All["100021"];
 
-			Sequence.Ints.Push(1);
-			Sequence.Ints.Push(1);
-			Sequence.Ints.Push(1);
-			Sequence.Ints.Push(13);
+            Sequence.Rolls.Clear();
+            Sequence.Ints.Push(120);
+            Sequence.Ints.Push(1);
+            Sequence.Ints.Push(120);
+            Sequence.Ints.Push(1);
+            Sequence.Ints.Push(120);
+            Sequence.Ints.Push(1);
+            Sequence.Ints.Push(13);
 
-			Battle battle = new Battle(frigate, station);
+            Battle battle = new Battle(frigate, station);
 			battle.Execute(this.game.Week);
 
 			List<string> testlines = new List<string>

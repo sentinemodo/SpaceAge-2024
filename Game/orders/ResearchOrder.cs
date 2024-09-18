@@ -272,22 +272,12 @@ namespace SpaceAge
 			return this.xmlElement;
 		}
 
-        private Random randomGenerator = new Random();
         public bool Breakthrough(int week)
         {
             // TODO: seed for turn reruns;
-            int roll;
             for (int i = this.Researcher.Owner.MaxTechnologyLevel + 1; i > 0; i--)
             {
-                if (Sequence.Ints.Count == 0)
-                {
-                    roll = this.randomGenerator.Next(0, i * 100);
-                }
-                else
-                {
-                    roll = Sequence.Ints.Pop();
-                }
-                if (roll <= this.Researcher.ResearchPoints)
+                if (Sequence.GenerateRandomInt(0, i * 100) <= this.Researcher.ResearchPoints)
                 {
                     return true;
                 }
@@ -307,7 +297,6 @@ namespace SpaceAge
                 // research
                 // check breakthrough
                 // if no breakthrough accumulate researchpoints
-                int roll;
 
                 if (this.Breakthrough(week))
                 {
@@ -323,28 +312,21 @@ namespace SpaceAge
                     {
                         // find targetted techs
                         this.getTargettedTechnologies();
-                        if (Sequence.Ints.Count == 0)
-                        {
-                            roll = this.randomGenerator.Next(0, 100);
-                        }
-                        else
-                        {
-                            roll = Sequence.Ints.Pop();
-                        }
-                        if (roll <= 50 && this.targettedTechnologies.Count > 0)
+
+                        if (Sequence.GenerateRandomInt(0, 100) <= 50 && this.targettedTechnologies.Count > 0)
                         {
                             // TODO: battlelike hitting into random tech
-                            this.researchedTechnology = this.targettedTechnologies[0];
+                            this.researchedTechnology = this.getRandomTechnology(this.targettedTechnologies);
                         }
                         else
                         {
-                            this.researchedTechnology = this.availableTechnologies[0];
+                            this.researchedTechnology = this.getRandomTechnology(this.availableTechnologies);
                         }
                     }
                     else
                     {
                         // no targetted techs
-                        this.researchedTechnology = this.availableTechnologies[0];
+                        this.researchedTechnology = this.getRandomTechnology(this.availableTechnologies);
                     }
                     // use researchpoints
                     this.Researcher.EventReports.Add(
@@ -361,6 +343,7 @@ namespace SpaceAge
                     // base research output
                     researchOutput += this.Researcher.ModuleType.ResearchOutput * this.Researcher.Modules.Count;
                     // TODO: add effect impact
+                    // TODO: add race impact
                     // TODO: add officer impact
                     this.Researcher.ResearchPoints += researchOutput;
                 }
@@ -370,6 +353,25 @@ namespace SpaceAge
                 // finish order execution
                 base.Execute(week);
             }
+        }
+
+        public Technology getRandomTechnology(Technologies technologies)
+        {
+            int totalArea = 0;
+            foreach (Technology technology in technologies)
+            {
+                totalArea += Convert.ToInt32(100 / technology.Level);
+            }
+            int roll = Sequence.GenerateRandomInt(0, totalArea);
+            foreach (Technology technology in technologies)
+            {
+                roll -= Convert.ToInt32(100 / technology.Level);
+                if (roll <= 0)
+                {
+                    return technology;
+                }
+            }
+            return null;
         }
 
         private void getTargettedTechnologies()

@@ -72,7 +72,7 @@ namespace SpaceAge
 
 		private int hitPoints
 		{
-			get { return this.parent.ModuleType.HitPoints; }
+			get { return this.parent.ModuleType.DamageCapacity; }
 		}
 
 		public EDamageStatus DamageStatus

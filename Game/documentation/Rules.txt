@@ -911,7 +911,8 @@ automatically each turn, and contributes to the technology advancement.  Each
 settlement with enough space to store a technology and a population of at least
 100 crew may find one.  You may only discover at most one technology each turn,
 no matter how many research-capable units you have.  The discovered technology
-will be stored in a random location within the unit.
+will be stored in a 
+location within the unit.
 
 Each research module also offers a chance to find a technology, if that module
 has enough space to store new technologies.  Unlike settlements, discoveries

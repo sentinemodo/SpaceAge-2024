@@ -23,8 +23,8 @@ namespace SpaceAge
 				index ++;
 				line = string.Format("#{0} hit points: {1}/{2}",
 					index,
-					module.Parent.ModuleType.HitPoints,
-					module.Parent.ModuleType.HitPoints - module.Damage);
+					module.Parent.ModuleType.DamageCapacity,
+					module.Parent.ModuleType.DamageCapacity - module.Damage);
 				firstAdded = false;
 				if (module.Effects.Count > 0 | module.IsActive == false)
 				{

@@ -33,25 +33,9 @@ namespace SpaceAge
 
 		public string Description { get; set; }
 
-		private Random randomGenerator = new Random();
         public string GenerateRandomIdentifier(string prefix, int length = NamedObject.MaxNameLength)
 		{
-			string id = prefix;
-			
-			// TODO: seed for turn reruns;
-			if (Sequence.Ints.Count == 0)
-			{
-				for (int i = 0; i < length; i++)
-				{
-					id = string.Concat(id + this.randomGenerator.Next(0, 10));
-				}
-			}
-			else
-			{
-				id = Sequence.Ints.Pop().ToString();
-			}
-
-			return id;
+			return string.Concat(prefix + Sequence.GenerateRandomString(length, "Random identifier"));
 		}
 
 		public string GenerateRandomIdentifier()

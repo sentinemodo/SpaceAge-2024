@@ -699,7 +699,7 @@ namespace SpaceAge
 			{
                 if (this.IsFormed)
                 {
-                    return this.Quantity * this.moduleType.HitPoints;
+                    return this.Quantity * this.moduleType.DamageCapacity;
                 }
                 return 0;
 			}

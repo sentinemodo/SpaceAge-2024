@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace SpaceAge
@@ -7,11 +8,62 @@ namespace SpaceAge
 
 	public class Sequence
 	{
-		// TODO: add random class to the game, to have a single randomizer and a single method to call a seqeuncer and turn rerun seeds
-		private static Stack<int> ints = new Stack<int>();
+        public class RollDescription
+        {
+            public int Roll { get; set; }
+            public string Description { get; set; }
+
+            public RollDescription(int roll, string description)
+            { this.Roll = roll; this.Description = description; }
+
+        }
+
+        public static List<RollDescription> Rolls = new List<RollDescription>();
+
+        private static Stack<int> ints = new Stack<int>();
 		public static Stack<int> Ints
 		{
 			get { return Sequence.ints; }
 		}
-	}	
+
+        private static Random randomGenerator = new Random();
+
+        public static string GenerateRandomString(int length, string description = "")
+        {
+            string randomName = string.Empty;
+            if (Sequence.Ints.Count == 0)
+            {
+                for (int i = 0; i < length; i++)
+                {
+                    randomName = string.Concat(randomName + Sequence.randomGenerator.Next(0, 10));
+                }
+            }
+            else
+            {
+                randomName = Sequence.Ints.Pop().ToString();
+            }
+
+            Sequence.Rolls.Add(new RollDescription(Convert.ToInt32(randomName), description));
+
+            return randomName;
+        }
+
+        public static int GenerateRandomInt(int minimum, int maximum, string description = "")
+        {
+            int randomInt = 0;
+            if (Sequence.Ints.Count == 0)
+            {
+                randomInt = Sequence.randomGenerator.Next(minimum, maximum);
+            }
+            else
+            {
+                randomInt = Sequence.Ints.Pop();
+            }
+
+            Sequence.Rolls.Add(new RollDescription(randomInt, description));
+
+            return randomInt;
+        }
+
+    }
 }

@@ -198,13 +198,14 @@ namespace SpaceAge
 					int chance = this.getChance(modulestack, ETactic.disable);
 
 					int dice = modulestack.Attack + modulestack.ModuleStacks.Attack() + target.Defense + target.ModuleStacks.Defense();
-					int roll = this.getRoll(dice);
 					line = string.Format("{0} (chance: {1}/{2}) and",
 						line,
 						chance,
 						dice);
 
-					if (roll <= chance)
+                    int roll = this.getRoll(dice, line);
+
+                    if (roll <= chance)
 					{
 						// hit
 						Module targetModule = this.getModule(target, roll, ETactic.disable);
@@ -267,21 +268,9 @@ namespace SpaceAge
 			}
 		}
 
-		private int getRoll(int dice)
+		private int getRoll(int dice, string description)
 		{
-			// TODO: seed for turn reruns;
-			int roll = 0;
-			if (Sequence.Ints.Count == 0)
-			{
-
-				Random random = new Random();
-				roll = random.Next(dice) + 1;
-			}
-			else
-			{
-				roll = Sequence.Ints.Pop();
-			}
-			return roll;
+			return Sequence.GenerateRandomInt(1, dice + 1, description);
 		}
 
 		private int getChance(ModuleStack modulestack, ETactic eTactic)
@@ -289,9 +278,58 @@ namespace SpaceAge
 			return System.Convert.ToInt32((modulestack.Attack + modulestack.ModuleStacks.Attack()) / 2);
 		}
 
-		private Module getModule(ModuleStack moduleStack, int location, ETactic eTactic)
+		private int getDamageArea(ModuleStack moduleStack)
 		{
-			return moduleStack.ModuleStacks["100023"].Modules[0];
+            int totalArea = moduleStack.ModuleType.DamageCapacity * moduleStack.Modules.Count;
+            foreach (ModuleStack subModuleStack in moduleStack.ModuleStacks.Values)
+            {
+				totalArea += this.getDamageArea(subModuleStack);
+            }
+			return totalArea;
+        }
+
+		private Module getModule(ModuleStack moduleStack, int target)
+		{
+			Module targetModule = null;
+			foreach (Module module in moduleStack.Modules)
+			{
+				//target -= moduleStack.ModuleType.Damage;
+				target -= moduleStack.ModuleType.DamageCapacity;
+				if (target <= 0)
+				{
+                    targetModule = module;
+				}
+			}
+			if (targetModule == null)
+			{
+				foreach (ModuleStack subModuleStack in moduleStack.ModuleStacks.Values)
+				{
+					if (targetModule == null)
+					{
+						targetModule = this.getModule(subModuleStack, target);
+					}
+					if (targetModule == null)
+					{
+						target -= getDamageArea(subModuleStack);
+					}
+				}
+			}
+			return targetModule;
+		}
+
+        private Module getModule(ModuleStack moduleStack, int location, ETactic eTactic)
+		{
+			int damageArea = this.getDamageArea(moduleStack);
+            int roll = Sequence.GenerateRandomInt(0, damageArea, string.Concat("Hit location 0 to ", damageArea.ToString()));
+			return this.getModule(moduleStack, roll);
+            
+//            return moduleStack.ModuleStacks["100023"].Modules[0];
+
+			// ms 1 - 1000; ms 1.1 - 1001-2000; ms 1.1.1 - 2001 - 3000; ms 1.2 - 3001 - 4000
+			// roll 1 - > ms1.m[0];
+			// roll 1501 -> ms 1.1.m[1];
+			// roll 2001 -> ms 1.1.1.m[0]; 
+
 		}
 
 		public void executeMovement()
