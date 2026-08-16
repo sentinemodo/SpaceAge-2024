@@ -3934,10 +3934,108 @@ namespace UnitTests
 
             Assert.That(lab.Technologies.Count, Is.EqualTo(1));
             Assert.That(lab.Owner.TechnologiesToShow.Count, Is.GreaterThanOrEqualTo(1));
-            Assert.That(lab.ResearchPoints, Is.EqualTo(0)); // zeroed on breakthrough
-        }
+			Assert.That(lab.ResearchPoints, Is.EqualTo(0)); // zeroed on breakthrough
+		}
 
-        // upkeep
+		private Technologies allTechnologies()
+		{
+			Technologies all = new Technologies();
+			foreach (Technology technology in Technology.All)
+			{
+				all.Add(technology);
+			}
+			return all;
+		}
+
+		private EResearchType parseResearch(string parameter)
+		{
+			ResearchOrder order = new ResearchOrder(this.game.ModuleStacks["100001"]);
+			order.Parse(parameter);
+			return order.ResearchType;
+		}
+
+		[Test]
+		public void ResearchParse_ResolvesBareParameterKinds()
+		{
+			Assert.That(this.parseResearch("military"), Is.EqualTo(EResearchType.Tag));
+			Assert.That(this.parseResearch("he3min"), Is.EqualTo(EResearchType.Technology));
+			Assert.That(this.parseResearch("heliu3"), Is.EqualTo(EResearchType.ItemType));
+			Assert.That(this.parseResearch("fusrec"), Is.EqualTo(EResearchType.ModuleType));
+			Assert.That(this.parseResearch("R00001"), Is.EqualTo(EResearchType.SpaceObject));
+		}
+
+		[Test]
+		public void ResearchPreference_TagResolvesTaggedTechnologies()
+		{
+			Technologies all = this.allTechnologies();
+			ResearchOrder order = new ResearchOrder(this.game.ModuleStacks["100001"]);
+			order.ResearchType = EResearchType.Tag;
+			order.ResearchToken = "military";
+
+			Technologies preferred = Research.PreferredTechnologies(order, all);
+			Assert.That(preferred["stnrdf"], Is.Not.Null);
+			Assert.That(preferred["miltac"], Is.Not.Null);
+			Assert.That(preferred["fossil"], Is.Null); // production-tagged, not military
+		}
+
+		[Test]
+		public void ResearchPreference_TechnologyResolvesEnabledBy()
+		{
+			Technologies all = this.allTechnologies();
+			ResearchOrder order = new ResearchOrder(this.game.ModuleStacks["100001"]);
+			order.ResearchType = EResearchType.Technology;
+			order.Technology = Technology.All["he3min"];
+
+			Technologies preferred = Research.PreferredTechnologies(order, all);
+			Assert.That(preferred["he3fus"], Is.Not.Null); // requires he3min
+			Assert.That(preferred["he3drl"], Is.Not.Null); // requires he3min
+			Assert.That(preferred["fossil"], Is.Null);
+		}
+
+		[Test]
+		public void ResearchPreference_ItemModuleAndSpaceObject()
+		{
+			Technologies all = this.allTechnologies();
+
+			ResearchOrder itemOrder = new ResearchOrder(this.game.ModuleStacks["100001"]);
+			itemOrder.ResearchType = EResearchType.ItemType;
+			itemOrder.ItemType = ItemType.All["heliu3"];
+			Technologies byItem = Research.PreferredTechnologies(itemOrder, all);
+			Assert.That(byItem["he3min"], Is.Not.Null); // produces heliu3
+			Assert.That(byItem["he3fus"], Is.Not.Null); // consumes heliu3
+
+			ResearchOrder moduleOrder = new ResearchOrder(this.game.ModuleStacks["100001"]);
+			moduleOrder.ResearchType = EResearchType.ModuleType;
+			moduleOrder.ModuleType = ModuleType.All["fusrec"];
+			Technologies byModule = Research.PreferredTechnologies(moduleOrder, all);
+			Assert.That(byModule["he3fus"], Is.Not.Null); // produces fusrec
+
+			ResearchOrder objectOrder = new ResearchOrder(this.game.ModuleStacks["100001"]);
+			objectOrder.ResearchType = EResearchType.SpaceObject;
+			objectOrder.ResearchToken = "R00001"; // region holding iron + food
+			Technologies byObject = Research.PreferredTechnologies(objectOrder, all);
+			Assert.That(byObject["fossil"], Is.Not.Null); // consumes iron present on R00001
+		}
+
+		[Test]
+		public void Research_Preference_TagAwardsMilitaryTechnology()
+		{
+			ModuleStack lab = this.createResearchLab();
+			ResearchOrder order = this.assignResearch(lab, "research military");
+
+			Sequence.Ints.Push(50); // technology selection roll (weighted)
+			Sequence.Ints.Push(10); // preference roll <= 50 -> pick from preferred pool
+			Sequence.Ints.Push(0);  // breakthrough roll == 0 (popped first)
+			order.Execute(this.game.Week);
+
+			Assert.That(lab.Technologies.Count, Is.EqualTo(1));
+			foreach (Technology technology in lab.Technologies)
+			{
+				Assert.That(technology.HasTag("military"), "awarded technology should be military-tagged");
+			}
+		}
+
+		// upkeep
         // cash in | out437
         // bank operations
         // at
