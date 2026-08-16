@@ -56,6 +56,32 @@ namespace UnitTests
             Assert.That(battle.Defenders.Contains("100021"));
 		}
 
+		[Test]
+		public void AttackOrder_DeclaresTargetUnitEnemy()
+		{
+			ModuleStack attacker = this.game.ModuleStacks["100011"]; // faction 2
+			ModuleStack target = this.game.ModuleStacks["100021"];   // faction 1
 
+			List<string> testcommands = new List<string>
+            {
+                "#faction 2",
+                "#modulestack 100011",
+                "attack 100021",
+                "#end"
+            };
+			OrdersReader ordersReader = new OrdersReader(game);
+			ordersReader.AssignOrders(testcommands);
+
+			AttackOrder order = (AttackOrder)attacker.Orders[0];
+			Assert.That(order.TargetName, Is.EqualTo("100021"));
+
+			order.Execute(this.game.Week);
+
+			Faction faction = this.game.Factions["2"];
+			Assert.That(faction.UnitAttitudes.ContainsKey("100021"));
+			Assert.That(faction.UnitAttitudes["100021"], Is.EqualTo(FactionAttitude.Enemy));
+			// a one-way enemy declaration toward the specific unit
+			Assert.That(faction.AttitudeTowardUnit(target), Is.EqualTo(FactionAttitude.Enemy));
+		}
 	}
 }

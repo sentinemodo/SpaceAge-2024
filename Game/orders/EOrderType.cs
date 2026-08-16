@@ -8,6 +8,7 @@ namespace SpaceAge
 	{
 		active,
 		alias,
+		attack,
 		buy,
         copy,
 		form, 

@@ -299,6 +299,9 @@ namespace SpaceAge
 				case "alias":
 					order = new AliasOrder(subject);
 					break;
+				case "attack":
+					order = new AttackOrder(subject);
+					break;
 				case "buy":
 					order = new BuyOrder(subject);
 					break;
