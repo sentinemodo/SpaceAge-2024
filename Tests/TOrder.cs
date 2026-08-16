@@ -1208,6 +1208,45 @@ namespace UnitTests
 		}
 
 		[Test]
+		public void RemoveCommentsAndEmptyLines_DoubleSlashComments()
+		{
+			OrdersReader ordersReader = new OrdersReader(game);
+			List<string> testlines = new List<string>
+            {
+                "#faction 2",
+                "// full-line double-slash comment",
+                "#modulestack 100001",
+                "move R00002 // trailing double-slash comment",
+                "; full-line semicolon comment",
+                "move R00003 ; trailing semicolon comment",
+                "use filidx // build research lab // second slash run",
+                "#end"
+            };
+
+			List<string> expected = new List<string>
+            {
+                "#faction 2",
+                "#modulestack 100001",
+                "move R00002",
+                "move R00003",
+                "use filidx",
+                "#end"
+            };
+
+			List<string> lines = ordersReader.RemoveCommentsAndEmptyLines(testlines);
+			for (int i = 0; i < lines.Count; i++)
+			{
+				Console.WriteLine(lines[i]);
+			}
+
+			Assert.That(lines.Count, Is.EqualTo(expected.Count));
+			for (int i = 0; i < lines.Count; i++)
+			{
+				Assert.That(lines[i], Is.EqualTo(expected[i]));
+			}
+		}
+
+		[Test]
 		public void AssignOrder_UnFormed()
 		{
 			Faction testFaction = this.game.Factions["2"];

@@ -65,10 +65,25 @@ namespace SpaceAge
 			}
 		}
 
+		// Index of the first comment marker in the line, or -1 if none.
+		// Both ';' and '//' start a comment; the earliest one wins.
+		public static int CommentIndex(string s)
+		{
+			int semicolon = s.IndexOf(';');
+			int doubleSlash = s.IndexOf("//");
+
+			if (semicolon >= 0 && doubleSlash >= 0)
+				return Math.Min(semicolon, doubleSlash);
+			if (semicolon >= 0)
+				return semicolon;
+			return doubleSlash;
+		}
+
 		public static string Uncomment(string s)
 		{
-			if (s.IndexOf(';') >= 0)
-				return s.Substring(0, s.IndexOf(';'));
+			int commentStart = CommentIndex(s);
+			if (commentStart >= 0)
+				return s.Substring(0, commentStart);
 			else
 				return s;
 		}

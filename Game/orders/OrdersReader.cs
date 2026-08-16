@@ -85,9 +85,10 @@ namespace SpaceAge
 				if (string.IsNullOrEmpty(line))
 					continue;
 
-				// ignore comments and trailing, leading spaces
-				if (line.IndexOf(';') >= 0)
-					command = line.Substring(0, line.IndexOf(';')).Trim();
+				// ignore comments (';' or '//', whichever comes first) and trailing, leading spaces
+				int commentStart = LineParser.CommentIndex(line);
+				if (commentStart >= 0)
+					command = line.Substring(0, commentStart).Trim();
 				else
 					command = line.Trim();
 
