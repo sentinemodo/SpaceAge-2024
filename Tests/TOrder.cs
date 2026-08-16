@@ -1285,6 +1285,29 @@ namespace UnitTests
 		}
 
 		[Test]
+		public void AssignUseOrder_ForClauseWithoutAs()
+		{
+			// "use <tech> for <id>" produces the module into an existing stack without
+			// naming a new receiver alias (the 'as' clause is optional).
+			ModuleStack factory = this.game.ModuleStacks["100001"];
+			List<string> testcommands = new List<string>
+            {
+                "#faction 2",
+                "#modulestack 100001",
+                "use wndtrb for 000021",
+                "#end"
+            };
+			OrdersReader ordersReader = new OrdersReader(game);
+			ordersReader.AssignOrders(testcommands);
+
+			UseOrder order = (UseOrder)factory.Orders[0];
+			Assert.That(order.Technology.Name, Is.EqualTo("wndtrb"));
+			Assert.That(order.Receiver, Is.Not.Null); // auto-generated receiver
+			Assert.That(order.ReceiverParent, Is.Not.Null);
+			Assert.That(((ModuleStack)order.ReceiverParent).Name, Is.EqualTo("000021"));
+		}
+
+		[Test]
 		public void AssignOrder_UnFormed()
 		{
 			Faction testFaction = this.game.Factions["2"];

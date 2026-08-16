@@ -46,59 +46,48 @@ namespace SpaceAge
 			}
 			if (this.Technology.ProductionType == EProductionType.Modules)
 			{
+				// grammar: USE tech [AS alias] [FOR id]. Both AS and FOR are optional and
+				// independent, so "use tech for id" (no alias) is valid.
 				token = LineParser.GetToken(ref command);
-				if (token != string.Empty && token != "as")
+
+				if (token == "as")
 				{
-					throw new Exception("Bad syntax, AS expected. Received: " + token);
+					string alias = LineParser.GetQuotedToken(ref command);
+					if (alias == string.Empty)
+					{
+						throw new Exception("Bad syntax receiver modulestack id expected or alias. Received: " + alias);
+					}
+					this.Receiver = ModuleStack.All.GetOrCreateNewModuleStack(this.Producer.Owner, alias);
+					token = LineParser.GetToken(ref command);
 				}
 				else
 				{
-					if (token == "as")
+					// no explicit alias: generate a receiver name
+					string randomName = this.Producer.GenerateRandomIdentifier();
+					while (ModuleStack.All.ContainsKey(randomName))
 					{
-						token = LineParser.GetQuotedToken(ref command);
-						if (token != string.Empty)
-						{
-							this.Receiver = ModuleStack.All.GetOrCreateNewModuleStack(this.Producer.Owner, token);
-						}
-						else
-						{
-							throw new Exception("Bad syntax receiver modulestack id expected or alias. Received: " + token);
-						}
-					} else
-                    {
-                        string randomName = this.Producer.GenerateRandomIdentifier();
-                        while (ModuleStack.All.ContainsKey(randomName))
-                        {
-                            randomName = this.Producer.GenerateRandomIdentifier();
-                        }
-                        this.Receiver = ModuleStack.All.GetOrCreateNewModuleStack(this.Producer.Owner, randomName);
-                    }
+						randomName = this.Producer.GenerateRandomIdentifier();
+					}
+					this.Receiver = ModuleStack.All.GetOrCreateNewModuleStack(this.Producer.Owner, randomName);
 				}
 
-				token = LineParser.GetQuotedToken(ref command);
-				if (token != string.Empty && token != "for")
+				if (token == "for")
 				{
-					throw new Exception("Bad syntax an FOR expected. Received: " + token);
+					string parent = LineParser.GetQuotedToken(ref command);
+					if (parent == string.Empty)
+					{
+						throw new Exception("Bad syntax receiver parent modulestack id expected or alias. Received: " + parent);
+					}
+					// TODO: possible error here - if we give specific modulestack AS target, put FOR moduleStack that isn't it's current parent
+					this.ReceiverParent = ModuleStack.All.GetOrCreateNewModuleStack(this.Producer.Owner, parent);
+				}
+				else if (token == string.Empty)
+				{
+					this.ReceiverParent = this.Producer;
 				}
 				else
 				{
-					if (token == "for")
-					{
-						token = LineParser.GetQuotedToken(ref command);
-						if (token != string.Empty)
-						{
-                            // TODO: possible error here - if we give specific modulestack AS target, put FOR moduleStack that isn't it's current parent
-							this.ReceiverParent = ModuleStack.All.GetOrCreateNewModuleStack(this.Producer.Owner, token);
-						}
-						else
-						{
-							throw new Exception("Bad syntax receiver parent modulestack id expected or alias. Received: " + token);
-						}
-					}
-                    else
-                    {
-                        this.ReceiverParent = this.Producer;
-                    }
+					throw new Exception("Bad syntax, AS or FOR expected. Received: " + token);
 				}
 			}
 		}
