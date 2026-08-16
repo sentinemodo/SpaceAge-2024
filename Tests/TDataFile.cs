@@ -39,6 +39,22 @@ namespace UnitTests
 		}
 
 		[Test]
+		public void ValidateTypeNameUniqueness_ThrowsWhenItemAndModuleShareName()
+		{
+			new ItemType("collide");
+			new ModuleType("collide");
+			Assert.Throws<FileLoadException>(() => this.dataFile.ValidateTypeNameUniqueness());
+		}
+
+		[Test]
+		public void ValidateTypeNameUniqueness_PassesWhenNamesAreDistinct()
+		{
+			new ItemType("someitem");
+			new ModuleType("somemodule");
+			Assert.DoesNotThrow(() => this.dataFile.ValidateTypeNameUniqueness());
+		}
+
+		[Test]
 		public void LoadGameData_nullparameter()
 		{
 			Assert.Throws<ArgumentNullException>(

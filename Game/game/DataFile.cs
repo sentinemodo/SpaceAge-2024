@@ -82,7 +82,30 @@ namespace SpaceAge
 
 			this.LoadConfigurationItems(true);
 			this.LoadConfigurationItems(false);
+			this.ValidateTypeNameUniqueness();
 			this.configurationLoaded = true;
+		}
+
+		// A name resolved by orders like `has <qty> <name>` must be unambiguous: it may
+		// belong to an item/race (ItemType.All) or a module (ModuleType.All), never both.
+		public void ValidateTypeNameUniqueness()
+		{
+			List<string> collisions = new List<string>();
+			foreach (string name in ItemType.All.Keys)
+			{
+				if (ModuleType.All.ContainsKey(name))
+				{
+					collisions.Add(name);
+				}
+			}
+
+			if (collisions.Count > 0)
+			{
+				collisions.Sort();
+				throw new FileLoadException(
+					"Ambiguous type name(s) defined as both an item/race and a module: "
+					+ string.Join(", ", collisions.ToArray()));
+			}
 		}
 
 		public void LoadConfDocument(string confDir, string dataFile = "data.xml")
