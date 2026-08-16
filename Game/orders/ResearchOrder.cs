@@ -272,19 +272,6 @@ namespace SpaceAge
 			return this.xmlElement;
 		}
 
-        public bool Breakthrough(int week)
-        {
-            // TODO: seed for turn reruns;
-            for (int i = this.Researcher.Owner.MaxTechnologyLevel + 1; i > 0; i--)
-            {
-                if (Sequence.GenerateRandomInt(0, i * 100) <= this.Researcher.ResearchPoints)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
         Technologies targettedTechnologies = new Technologies();
         Technologies availableTechnologies = new Technologies();
         Technology researchedTechnology;
@@ -294,15 +281,12 @@ namespace SpaceAge
             // check if can research at all
             if (this.CanOperate(week) && this.CanResearch(week))
             {
-                // research
-                // check breakthrough
-                // if no breakthrough accumulate researchpoints
+                // research: roll a breakthrough; if none, accumulate research points
+                this.getAvailableTechnologies();
+                int output = Research.WeeklyOutput(this.Researcher);
 
-                if (this.Breakthrough(week))
+                if (this.availableTechnologies.Count > 0 && Research.RollBreakthrough(this.availableTechnologies, output))
                 {
-                    // check if targetted was sought and hit (50%)
-                    this.getAvailableTechnologies();
-
                     if (this.ResearchType == EResearchType.Feature)
                     {
                         // guaranteed getting feature technology
@@ -310,7 +294,7 @@ namespace SpaceAge
                     }
                     else if (this.ResearchType != EResearchType.Any)
                     {
-                        // find targetted techs
+                        // check if targetted was sought and hit (50%)
                         this.getTargettedTechnologies();
 
                         if (Sequence.GenerateRandomInt(0, 100) <= 50 && this.targettedTechnologies.Count > 0)
@@ -328,7 +312,7 @@ namespace SpaceAge
                         // no targetted techs
                         this.researchedTechnology = this.getRandomTechnology(this.availableTechnologies);
                     }
-                    // use researchpoints
+                    // breakthrough consumes the accumulated research points
                     this.Researcher.EventReports.Add(
                         week,
                         string.Format("Breakthough!!! Researched {0} technology.",
@@ -339,13 +323,8 @@ namespace SpaceAge
                 }
                 else
                 {
-                    int researchOutput = 0;
-                    // base research output
-                    researchOutput += this.Researcher.ModuleType.ResearchOutput * this.Researcher.Modules.Count;
-                    // TODO: add effect impact
-                    // TODO: add race impact
-                    // TODO: add officer impact
-                    this.Researcher.ResearchPoints += researchOutput;
+                    // TODO: add effect / race / officer impact to weekly output
+                    this.Researcher.ResearchPoints += output;
                 }
 
                 this.Executing = true;
@@ -444,7 +423,8 @@ namespace SpaceAge
                // TODO: add validation for technoligies owned
                // eliminate technologies owned by faction
                // eliminate technologies requiring prerequisites
-               if (technology.Level <= this.Researcher.Owner.MaxTechnologyLevel + 1
+               if (technology.Level >= 1
+                    && technology.Level <= this.Researcher.Owner.MaxTechnologyLevel + 1
                     && technology.Level <= this.Researcher.TechnologyCapacity - this.Researcher.TechnologyCapacityUsed
                     && this.Researcher.Technologies[technology.Name] == null)
                 {

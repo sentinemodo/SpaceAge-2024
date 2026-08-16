@@ -26,6 +26,42 @@ namespace SpaceAge
 		public int Level { get; set; }
 		public int UseTime { get; set; }
 
+		// Research point cost for a breakthrough. Defaults to a per-level value
+		// (see Research.DefaultCostForLevel) unless explicitly overridden in the datafile.
+		private int? costOverride = null;
+		public int Cost
+		{
+			get { return this.costOverride ?? Research.DefaultCostForLevel(this.Level); }
+			set { this.costOverride = value; }
+		}
+
+		// Free-form tags (e.g. "military", "production", "research") used to target research.
+		private List<string> tags = new List<string>();
+		public List<string> Tags
+		{
+			get { return this.tags; }
+		}
+
+		public bool HasTag(string tag)
+		{
+			return this.tags.Contains(tag);
+		}
+
+		public void LoadTags(string raw)
+		{
+			this.tags.Clear();
+			if (!string.IsNullOrEmpty(raw))
+			{
+				foreach (string tag in raw.Split(new char[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries))
+				{
+					this.tags.Add(tag);
+				}
+			}
+		}
+
+		// Single prerequisite technology (this technology is "enabled by" Requires).
+		public Technology Requires { get; set; }
+
         public ItemStacks UseConsumeItems { get; set; }
         public ItemStacks UseProduceItems { get; set; }
 

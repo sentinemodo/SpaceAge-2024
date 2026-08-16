@@ -214,6 +214,7 @@
     <Compile Include="reports\IEventReporting.cs" />
     <Compile Include="reports\IReporting.cs" />
     <Compile Include="LineParser.cs" />
+    <Compile Include="Research.cs" />
     <Compile Include="orders\LongOrder.cs" />
     <Compile Include="orders\Order.cs" />
     <Compile Include="orders\Orders.cs" />

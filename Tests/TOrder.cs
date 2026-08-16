@@ -3853,6 +3853,90 @@ namespace UnitTests
 
         }
 
+        [Test]
+        public void Research_CostDefaultsDoublePerLevelAndOverride()
+        {
+            Technology t1 = new Technology("test_l1"); t1.Level = 1;
+            Technology t2 = new Technology("test_l2"); t2.Level = 2;
+            Technology t3 = new Technology("test_l3"); t3.Level = 3;
+            Assert.That(t1.Cost, Is.EqualTo(8));
+            Assert.That(t2.Cost, Is.EqualTo(16));
+            Assert.That(t3.Cost, Is.EqualTo(32));
+
+            Technology overridden = new Technology("test_override"); overridden.Level = 1; overridden.Cost = 5;
+            Assert.That(overridden.Cost, Is.EqualTo(5));
+
+            Assert.That(Research.DefaultCostForLevel(0), Is.EqualTo(0));
+            Assert.That(Research.DefaultCostForLevel(1), Is.EqualTo(8));
+            Assert.That(Research.DefaultCostForLevel(2), Is.EqualTo(16));
+            Assert.That(Research.DefaultCostForLevel(3), Is.EqualTo(32));
+        }
+
+        [Test]
+        public void Research_CostsMeetQuarterlyBreakthroughTargets()
+        {
+            // constant weekly hazard p = 1 - (1 - 1/cost)^output, single base lab output = 1
+            double l1 = 1 - Math.Pow(1.0 - 1.0 / Research.DefaultCostForLevel(1), 13); // 1 quarter
+            double l2 = 1 - Math.Pow(1.0 - 1.0 / Research.DefaultCostForLevel(2), 26); // 2 quarters
+            double l3 = 1 - Math.Pow(1.0 - 1.0 / Research.DefaultCostForLevel(3), 52); // 4 quarters
+            Assert.That(l1, Is.InRange(0.78, 0.84));
+            Assert.That(l2, Is.InRange(0.78, 0.84));
+            Assert.That(l3, Is.InRange(0.78, 0.84));
+        }
+
+        private ModuleStack createResearchLab()
+        {
+            Faction testFaction = this.game.Factions["2"];
+            ModuleStack lab = ModuleStack.All.GetOrCreateNewModuleStack(testFaction, "100000");
+            lab.Parent = ModuleStack.All["000005"]; // nested so it is active without its own energy source
+            lab.ModuleType = ModuleType.All["cmplib"];
+            lab.AddModule();
+            return lab;
+        }
+
+        private ResearchOrder assignResearch(ModuleStack lab, string command)
+        {
+            List<string> testcommands = new List<string>
+            {
+                "#faction 2",
+                "#modulestack " + lab.Name,
+                command,
+                "#end"
+            };
+            OrdersReader ordersReader = new OrdersReader(game);
+            ordersReader.AssignOrders(testcommands);
+            return (ResearchOrder)lab.Orders[0];
+        }
+
+        [Test]
+        public void Research_AccruesResearchPointsWhenNoBreakthrough()
+        {
+            ModuleStack lab = this.createResearchLab();
+            ResearchOrder order = this.assignResearch(lab, "research");
+
+            Sequence.Ints.Push(5); // breakthrough roll != 0 -> no breakthrough
+            order.Execute(this.game.Week);
+
+            Assert.That(lab.ResearchPoints, Is.EqualTo(1)); // research-output 1 x 1 module
+            Assert.That(lab.Technologies.Count, Is.EqualTo(0));
+        }
+
+        [Test]
+        public void Research_BreakthroughAwardsTechnologyAndZeroesResearchPoints()
+        {
+            ModuleStack lab = this.createResearchLab();
+            lab.ResearchPoints = 7; // accumulated progress from earlier weeks
+            ResearchOrder order = this.assignResearch(lab, "research");
+
+            Sequence.Ints.Push(1); // technology selection roll
+            Sequence.Ints.Push(0); // breakthrough roll == 0 -> breakthrough (popped first)
+            order.Execute(this.game.Week);
+
+            Assert.That(lab.Technologies.Count, Is.EqualTo(1));
+            Assert.That(lab.Owner.TechnologiesToShow.Count, Is.GreaterThanOrEqualTo(1));
+            Assert.That(lab.ResearchPoints, Is.EqualTo(0)); // zeroed on breakthrough
+        }
+
         // upkeep
         // cash in | out437
         // bank operations

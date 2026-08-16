@@ -354,6 +354,16 @@ namespace SpaceAge
 					technology.Level = this.XMLAssignInteger(el.GetAttribute("level"), 0);
 					technology.UseTime = this.XMLAssignInteger(el.GetAttribute("use-time"), 1);
 
+					if (el.HasAttribute("cost"))
+					{
+						technology.Cost = this.XMLAssignInteger(el.GetAttribute("cost"), technology.Cost);
+					}
+					technology.LoadTags(el.GetAttribute("tags"));
+					if (el.HasAttribute("requires"))
+					{
+						technology.Requires = this.game.Technologies[el.GetAttribute("requires")];
+					}
+
 					technology.Attack = this.XMLAssignInteger(el.GetAttribute("attack"), 0);
 					technology.Defense = this.XMLAssignInteger(el.GetAttribute("defense"), 0);
 					technology.Initiative = this.XMLAssignInteger(el.GetAttribute("initiative"), 0);
