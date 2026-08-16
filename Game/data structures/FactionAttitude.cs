@@ -6,8 +6,10 @@ namespace SpaceAge
 {
 	public enum FactionAttitude
 	{
-		Hostile = 0,
-		Unfriendly = 1,
+		// Enemy: fire on identifiable enemy units (also covers hostile interdictions).
+		Enemy = 0,
+		// Hostile: interdict resource use/construction, but do not fire.
+		Hostile = 1,
 		Neutral = 2,
 		Friendly = 3,
 		Ally = 4

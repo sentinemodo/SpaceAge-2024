@@ -44,8 +44,73 @@ namespace SpaceAge
 		public FactionOptions Options = new FactionOptions();
 		
 		// diplomatic settings
+		// Baseline stances: neutral toward unspecified interests, hostile toward unknown affiliation.
 		public FactionAttitude DefaultAttitude = FactionAttitude.Neutral;
-		public FactionAttitudes Attitudes = new FactionAttitudes();
+		public FactionAttitude UnknownAttitude = FactionAttitude.Hostile;
+		public FactionAttitudes Attitudes = new FactionAttitudes();     // per-faction declared stances (keyed by faction name)
+		public FactionAttitudes UnitAttitudes = new FactionAttitudes(); // per-unit declared stances (keyed by modulestack name)
+
+		// Stance toward a faction: an explicit declaration, else the default stance.
+		public FactionAttitude AttitudeToward(Faction faction)
+		{
+			if (faction == null)
+			{
+				return this.UnknownAttitude;
+			}
+			if (this.Attitudes.ContainsKey(faction.Name))
+			{
+				return this.Attitudes[faction.Name];
+			}
+			return this.DefaultAttitude;
+		}
+
+		// Stance toward a specific unit: an explicit per-unit declaration, else the stance toward its owner.
+		public FactionAttitude AttitudeTowardUnit(ModuleStack unit)
+		{
+			if (unit == null)
+			{
+				return this.UnknownAttitude;
+			}
+			if (this.UnitAttitudes.ContainsKey(unit.Name))
+			{
+				return this.UnitAttitudes[unit.Name];
+			}
+			return this.AttitudeToward(unit.Owner);
+		}
+
+		// Report of this faction's declared stances. Empty at the baseline (neutral
+		// default, hostile unknown, no explicit declarations) so unchanged games are unaffected.
+		public List<string> ReportDeclarations()
+		{
+			List<string> lines = new List<string>();
+			if (this.Attitudes.Count == 0 && this.UnitAttitudes.Count == 0
+				&& this.DefaultAttitude == FactionAttitude.Neutral
+				&& this.UnknownAttitude == FactionAttitude.Hostile)
+			{
+				return lines;
+			}
+
+			lines.Add("Declared stances:");
+			lines.Add(string.Format("  default: {0}, unknown: {1}.",
+				this.DefaultAttitude.ToString().ToLower(),
+				this.UnknownAttitude.ToString().ToLower()));
+
+			foreach (KeyValuePair<string, FactionAttitude> declaration in this.Attitudes)
+			{
+				string target = Faction.All.ContainsKey(declaration.Key)
+					? Faction.All[declaration.Key].ReportName
+					: string.Concat("faction ", declaration.Key);
+				lines.Add(string.Format("  {0} toward {1}.", declaration.Value.ToString().ToLower(), target));
+			}
+			foreach (KeyValuePair<string, FactionAttitude> declaration in this.UnitAttitudes)
+			{
+				string target = ModuleStack.All.ContainsKey(declaration.Key)
+					? ModuleStack.All[declaration.Key].ReportName
+					: string.Concat("unit ", declaration.Key);
+				lines.Add(string.Format("  {0} toward {1}.", declaration.Value.ToString().ToLower(), target));
+			}
+			return lines;
+		}
 
 		// property settings
 		//public PersonList Persons = new PersonList();
@@ -148,6 +213,9 @@ namespace SpaceAge
 			// item types report
 			// skill types report
 			// space objects types report
+
+			// declared diplomatic stances (before the bank report)
+			reportLines.AddRange(this.ReportDeclarations());
 
 			reportLines.AddRange(this.Bank.Report(this));
 
