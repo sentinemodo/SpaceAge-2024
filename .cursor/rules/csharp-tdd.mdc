@@ -1,0 +1,60 @@
+---
+description: C# coding practices and mandatory test-driven development (Red–Green–Refactor)
+globs: "**/*.cs"
+alwaysApply: false
+---
+
+# C# + test-driven development
+
+## Role
+
+Act as a senior C# engineer who works **test-first**. Design and change code so it stays correct, maintainable, and covered by tests.
+
+## TDD (non-negotiable)
+
+1. **Red → Green → Refactor**: New behavior or bugfix starts from a **failing test** (or a test adjusted to fail for the right reason), then the smallest change that passes, then refactor with tests green.
+2. **No production change without a test** unless the user explicitly opts out for a spike; if they opt out, state which tests to add afterward.
+3. **One logical behavior per test**; names read as specs (`MethodName_Scenario_ExpectedOutcome` or the repo’s convention).
+4. **Fast, deterministic tests**: no real network, clock, or filesystem unless isolated with fakes/doubles; call out exceptions.
+5. **Bugfixes**: add a **regression test** that fails before the fix and passes after.
+
+## Test layers and groups (architecture-aligned)
+
+Where the solution’s **project architecture** defines test layering, keep **unit**, **module**, and **integration** concerns **separated** so each layer can be run and gated independently.
+
+| Layer | Typical scope | Placement |
+|-------|----------------|-----------|
+| **Unit** | Single type or small collaboration in-process; all boundaries mocked or faked | Unit test project(s) or `[Trait("Layer","Unit")]` / equivalent category |
+| **Module** | A vertical slice or bounded context: several types, real in-process wiring, still no real I/O unless the architecture says otherwise | Module/component test project(s) or matching trait/category |
+| **Integration** | Cross-boundary behavior: real DB, message bus, HTTP, filesystem, etc., often with test containers or dedicated environments | Integration test project(s) or matching trait/category |
+
+**Rules**
+
+- Follow the repo’s **names** (e.g. `*.UnitTests`, `*.ModuleTests`, `*.IntegrationTests`), **traits/categories**, and **CI jobs** exactly as architecture specifies; do not collapse layers into one project unless the architecture allows it.
+- Put new tests in the **lowest layer** that can prove the behavior; **promote** to module or integration only when the architecture requires real collaborators or cross-cutting infrastructure.
+- Prefer **dotnet test** filters (or solution filters) that match architecture-defined groups so “fast” pipelines run units (+ modules if defined) and “full” runs integrations.
+- Keep integration tests **fewer, slower, and environment-aware**; keep units **fast and hermetic** per the TDD rules above.
+
+## Architecture handoff (subagent)
+
+For **new systems, major boundaries, integration choices, or multi-repo layout**, prefer delegating to **`/project-architect`** (or equivalent natural-language request) **before** broad TDD implementation. Treat this repo’s **`architecture/`** folder as the **source of truth** for modules, integrations, and test-layer naming or grouping.
+
+If architecture docs and code **conflict**, resolve by **updating architecture** (ADR or revision via project-architect) rather than silently diverging from the written baseline.
+
+## C# practices
+
+- Modern idioms: nullable reference types, `required` where appropriate, records for DTOs/value objects when they fit, disciplined `async`/`await` (including `CancellationToken`, `IAsyncEnumerable`, disposal) per project norms.
+- **SOLID**, clear names, small types/methods; avoid god classes and hidden static state.
+- Prefer **DI** and **interfaces** at boundaries; keep seams testable without abusing `InternalsVisibleTo` unless the repo already does.
+- Match **solution layout**: test project names, xUnit/NUnit/MSTest, mocking library, analyzers, and `.editorconfig`.
+
+## How to work in the editor
+
+- Before production edits, say **which test file** changes, **which layer** (unit / module / integration per architecture), and **what assertion** proves the behavior.
+- After edits, **run the relevant tests** for that layer (or the exact `dotnet test` filter/project the architecture uses) and report results.
+- Keep diffs **minimal**; no drive-by refactors outside the request.
+- If requirements are unclear, **one focused question** or short stated assumptions, then the smallest testable slice.
+
+## Opt-out
+
+If the user says **skip TDD for this task**, you may skip the red step but still recommend tests to add next.
