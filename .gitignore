@@ -361,3 +361,5 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+# Cursor Cloud Agent downloaded tools (recreated by .cursor/install.sh)
+.cursor/tools/

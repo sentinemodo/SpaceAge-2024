@@ -1,0 +1,4 @@
+{
+  "name": "SpaceAge (.NET Framework 4.8 via Mono)",
+  "install": "bash .cursor/install.sh"
+}
