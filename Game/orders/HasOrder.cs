@@ -48,6 +48,13 @@ namespace SpaceAge
 			set { this.itemType = value; }
 		}
 
+		private ModuleType moduleType = null;
+		public ModuleType ModuleType
+		{
+			get { return this.moduleType; }
+			set { this.moduleType = value; }
+		}
+
 		private int quantity = 0;
 		public int Quantity
 		{
@@ -118,7 +125,6 @@ namespace SpaceAge
                 }
             } else
 			{
-                this.hasType = EHasType.Itemstack;
                 try
 				{
 					this.quantity = Convert.ToInt32(token);
@@ -131,11 +137,17 @@ namespace SpaceAge
 				token = LineParser.GetToken(ref command);
 				if (ItemType.All.ContainsKey(token))
 				{
+					this.hasType = EHasType.Itemstack;
 					this.itemType = ItemType.All[token];
+				}
+				else if (ModuleType.All.ContainsKey(token))
+				{
+					this.hasType = EHasType.ModuleType;
+					this.moduleType = ModuleType.All[token];
 				}
 				else
 				{
-					throw new Exception("bad syntax, item type expected. Received: " + token);
+					throw new Exception("bad syntax, item type or module type expected. Received: " + token);
 				}
 			}
 		}
@@ -159,6 +171,11 @@ namespace SpaceAge
                     case "modules":
                         this.HasType = EHasType.Modules;
                         this.Quantity = this.XMLAssignInteger(elHasType.GetAttribute("quantity"), -1);
+                        break;
+                    case "moduletype":
+                        this.HasType = EHasType.ModuleType;
+                        this.Quantity = this.XMLAssignInteger(elHasType.GetAttribute("quantity"), 0);
+                        this.ModuleType = ModuleType.All[elHasType.GetAttribute("module")];
                         break;
                     default:
                         throw new Exception("Unknown type for HAS");
@@ -191,6 +208,13 @@ namespace SpaceAge
 				    elModules.SetAttribute("quantity", this.quantity.ToString());
                     elHas.AppendChild(elModules);
                     break;
+                case EHasType.ModuleType:
+				    XmlElement elModuleType;
+				    elModuleType = doc.CreateElement("moduletype");
+				    elModuleType.SetAttribute("module", this.moduleType.Name);
+				    elModuleType.SetAttribute("quantity", this.quantity.ToString());
+                    elHas.AppendChild(elModuleType);
+                    break;
                 default:
                     throw new Exception("Unknown type for HAS");
             }
@@ -222,6 +246,12 @@ namespace SpaceAge
                         this.Conditions,
                         (this.Repeat == 1) ? string.Empty : ((this.Repeat < 0) ? "@" : string.Concat(this.Repeat.ToString(), " ")),
                         string.Concat("modules ", this.quantity.ToString()));
+                    break;
+                case EHasType.ModuleType:
+                    line = string.Format("{0}{1}has {2}",
+                        this.Conditions,
+                        (this.Repeat == 1) ? string.Empty : ((this.Repeat < 0) ? "@" : string.Concat(this.Repeat.ToString(), " ")),
+                        string.Concat(this.quantity.ToString(), " ", this.moduleType.Name));
                     break;
             }
             lines.Add(line);
@@ -265,6 +295,19 @@ namespace SpaceAge
                             week,
                             string.Format("has {0}modules in stack.",
                             (this.quantity == -1) ? string.Empty : string.Concat(this.Quantity, " ")));
+                    }
+                    break;
+                case EHasType.ModuleType:
+                    int moduleCount = ((ModuleStack)this.Observer).ModuleCountRecursive(this.moduleType);
+                    if (moduleCount >= this.quantity)
+                    {
+                        this.Executed = true;
+                        this.Observer.EventReports.Add(
+                            week,
+                            string.Format("has {0} {1} modules (needed {2}).",
+                                moduleCount,
+                                this.moduleType.Name,
+                                this.quantity));
                     }
                     break;
             }

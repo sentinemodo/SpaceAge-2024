@@ -886,6 +886,22 @@ namespace SpaceAge
             return stack;
         }
 
+        // Number of modules of a given module type held by this stack and, recursively,
+        // its nested sub-stacks. Mirrors ItemStackSumRecursive for modules.
+        public int ModuleCountRecursive(ModuleType moduleType)
+        {
+            int count = 0;
+            if (this.moduleType == moduleType)
+            {
+                count += this.Quantity;
+            }
+            foreach (ModuleStack moduleStack in this.ModuleStacks.Values)
+            {
+                count += moduleStack.ModuleCountRecursive(moduleType);
+            }
+            return count;
+        }
+
         public ItemStacks ItemStacksSumRecursive
         {
             get

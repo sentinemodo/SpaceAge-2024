@@ -692,6 +692,44 @@ namespace UnitTests
 		}
 
 		[Test]
+		public void AssignAndExecuteHasOrder_ModuleType_Recursive()
+		{
+			// Frigate 100011 (type sshull) contains a nested stack 100013 of 2 'fisrec' modules.
+			// 'has <qty> <moduletype>' counts modules of that type across the stack and its
+			// nested sub-stacks (semantics B: recursive containment).
+			ModuleStack frigate = this.game.ModuleStacks["100011"];
+
+			List<string> testcommands = new List<string>
+            {
+                "#faction 2",
+                "#modulestack 100011",
+                "has 2 fisrec", // 2 fisrec modules live in nested stack 100013
+                "has 3 fisrec", // one more than exist -> should not execute
+                "has 1 sshull", // the observed stack itself is 1 sshull module
+                "#end"
+            };
+
+			OrdersReader ordersReader = new OrdersReader(game);
+			ordersReader.AssignOrders(testcommands);
+			Assert.That(frigate.Orders.Count, Is.EqualTo(3));
+
+			HasOrder has2fisrec = (HasOrder)frigate.Orders[0];
+			HasOrder has3fisrec = (HasOrder)frigate.Orders[1];
+			HasOrder has1sshull = (HasOrder)frigate.Orders[2];
+
+			Assert.That(has2fisrec.Quantity, Is.EqualTo(2));
+
+			has2fisrec.Execute(this.game.Week);
+			Assert.That(has2fisrec.Executed, "has 2 fisrec should execute (2 fisrec modules in nested stack 100013)");
+
+			has3fisrec.Execute(this.game.Week);
+			Assert.That(has3fisrec.Executed, Is.False, "has 3 fisrec should not execute (only 2 exist)");
+
+			has1sshull.Execute(this.game.Week);
+			Assert.That(has1sshull.Executed, "has 1 sshull should execute (the stack itself is 1 sshull module)");
+		}
+
+		[Test]
 		public void AssignRepeatableOrder()
 		{
 			Faction testFaction = this.game.Factions["2"];

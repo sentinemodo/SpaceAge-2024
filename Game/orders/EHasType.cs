@@ -8,6 +8,7 @@ namespace SpaceAge
 	{
 		Itemstack,
         Modules,
+        ModuleType,
 		Person
 	}
 }
