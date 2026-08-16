@@ -132,16 +132,7 @@ namespace SpaceAge
 				//Write("");
 
 			
-			// Technology reports
-			if (this.technologiesToShow.Count > 0) 
-			{
-				reportLines.Add("Technology reports:");
-				reportLines.Add("");
-				foreach (Technology technology in this.TechnologiesToShow) 
-				{
-					//this.WriteTechnologyReport(technology);
-				}
-			}
+			// Technology reports are written after the market section (see ReportWriter).
 
 			// ModuleTypes reports
 			if (this.moduleTypesToShow.Count > 0) 

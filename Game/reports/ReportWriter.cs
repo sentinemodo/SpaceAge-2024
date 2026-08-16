@@ -59,6 +59,8 @@ namespace SpaceAge
 					foreach (Faction faction in this.game.Factions.Values)
 					{
 						this.GenerateFactionReport(faction, turnDir, String.Format("report.{0}.{1}", this.game.Turn, faction.Name));
+						// promote technologies shown this turn to the faction's known set
+						faction.AllShown();
 					}
 				}
 
@@ -86,12 +88,20 @@ namespace SpaceAge
 					this.Write("  none.");
 					this.Write();
 
-					// faction events and data
+					// faction events and data (ends with the bank report)
 					this.Write(faction);
+
+					// technology reports (between the bank report and the galaxy report)
+					if (faction.TechnologiesToShow.Count > 0)
+					{
+						this.Write();
+						this.Write("Technology reports:");
+						this.Write(faction.TechnologiesToShow.ReportDescriptions(faction, 0));
+					}
 
 					// battles reports
 
-					// galaxy reports
+					// galaxy reports (includes the per-location market section)
 					this.Write(this.game.Galaxy, faction);
 
 					// Orders template

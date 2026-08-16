@@ -761,6 +761,16 @@ namespace SpaceAge
 				faction.Bank.CreditRate = this.XMLAssignDouble(elFaction.GetAttribute("credit-rate"), 0);
 				faction.Bank.DepositRate = this.XMLAssignDouble(elFaction.GetAttribute("deposit-rate"), 0);
 
+				// known (seen) technologies tracked at faction level
+				foreach (XmlElement elTechnology in elFaction.SelectNodes("technology"))
+				{
+					string technologyName = elTechnology.GetAttribute("name");
+					if (Technology.All.Contains(technologyName))
+					{
+						faction.TechnologiesSeen.Add(Technology.All[technologyName]);
+					}
+				}
+
 				//foreach (XmlElement el in elFaction.SelectNodes("shown-item"))
 				//    f.ShownItems.Add(ItemType.Get(el.GetAttribute("name")));
 				//foreach (XmlElement el in elFaction.SelectNodes("shown-skill"))
@@ -1234,6 +1244,14 @@ namespace SpaceAge
 				elFaction.SetAttribute("credit-line", faction.Bank.CreditLine.ToString());
 				elFaction.SetAttribute("credit-rate", faction.Bank.CreditRate.ToString());
 				elFaction.SetAttribute("deposit-rate", faction.Bank.DepositRate.ToString());
+
+				// persist known (seen) technologies
+				foreach (Technology technology in faction.TechnologiesSeen)
+				{
+					XmlElement elTechnology = doc.CreateElement("technology");
+					elTechnology.SetAttribute("name", technology.Name);
+					elFaction.AppendChild(elTechnology);
+				}
 
 				//foreach (ItemType it in f.ShownItems)
 				//    SaveItemType(it, elFaction, "shown-item");

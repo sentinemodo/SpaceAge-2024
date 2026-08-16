@@ -277,5 +277,86 @@ namespace UnitTests
 				Assert.That(technology.HasTag("military"), "awarded technology should be military-tagged");
 			}
 		}
+
+		[Test]
+		public void TechnologyReportDescriptions_MatchExpected()
+		{
+			Faction faction = this.game.Factions["2"];
+			Technologies techs = new Technologies();
+			techs.Add(Technology.All["miltac"]); // no product
+			techs.Add(Technology.All["he3min"]); // produces the heliu3 item
+			techs.Add(Technology.All["advres"]); // produces the advlib module
+
+			List<string> expected = new List<string>
+			{
+				"+ military tactics [miltac]: Elementary military tactics, which enable a higher level of combat proficiency.",
+				"+ helium-3 mining [he3min]: The extraction and refining of helium-3 from regolith and gas. Helium-3 mining can be carried out by any extraction module that has this technology loaded.",
+				"  - unit of helium-3 [heliu3]: A light, non-radioactive helium isotope prized as clean fusion fuel; scarce on planets but abundant in lunar regolith.",
+				"+ advanced computing [advres]: Next-generation computing enabling far larger research complexes.",
+				"  - advanced research complex [advlib]: A large, high-throughput research facility building on computer-library methods."
+			};
+
+			List<string> actual = techs.ReportDescriptions(faction, 0);
+			Assert.That(actual.Count, Is.EqualTo(expected.Count));
+			for (int i = 0; i < expected.Count; i++)
+			{
+				Assert.That(actual[i], Is.EqualTo(expected[i]));
+			}
+		}
+
+		[Test]
+		public void TechnologyReport_AppearsBetweenBankAndGalaxy()
+		{
+			Faction faction = this.game.Factions["2"];
+			faction.TechnologiesToShow.Add(Technology.All["advres"]);
+			foreach (Faction f in this.game.Factions.Values)
+			{
+				f.Options.XmlReport = false;
+			}
+
+			ReportWriter writer = new ReportWriter(this.game, this.dataFile, Directory.GetCurrentDirectory());
+			writer.GenerateReports(Directory.GetCurrentDirectory());
+
+			string[] lines = File.ReadAllLines(
+				Path.Combine(Directory.GetCurrentDirectory(), string.Format("report.{0}.2.txt", this.game.Turn)),
+				System.Text.Encoding.GetEncoding(1251));
+
+			int bankIndex = Array.FindIndex(lines, l => l.StartsWith("Bank report:"));
+			int galaxyIndex = Array.FindIndex(lines, l => l.StartsWith("Galaxy report:"));
+			int technologyIndex = Array.FindIndex(lines, l => l == "Technology reports:");
+
+			Assert.That(technologyIndex, Is.GreaterThanOrEqualTo(0), "technology report present");
+			Assert.That(technologyIndex, Is.GreaterThan(bankIndex), "technology report after the bank report");
+			Assert.That(technologyIndex, Is.LessThan(galaxyIndex), "technology report before the galaxy report");
+		}
+
+		[Test]
+		public void FactionKnownTechnologies_PersistThroughSaveAndLoad()
+		{
+			Faction faction = this.game.Factions["2"];
+			faction.TechnologiesSeen.Add(Technology.All["stnrdf"]);
+			this.dataFile.SaveGame(Directory.GetCurrentDirectory(), "gameout.knowntech.test.xml");
+
+			this.game.ClearDictionaries();
+
+			DataFile reloaded = new DataFile(Directory.GetCurrentDirectory());
+			reloaded.LoadConfiguration();
+			reloaded.LoadGameDocument(Directory.GetCurrentDirectory(), "gameout.knowntech.test.xml");
+			reloaded.LoadFactions();
+
+			Assert.That(Faction.All["2"].TechnologiesSeen.Contains("stnrdf"));
+		}
+
+		[Test]
+		public void FactionAllShown_PromotesShownTechnologiesToSeen()
+		{
+			Faction faction = this.game.Factions["2"];
+			faction.TechnologiesToShow.Add(Technology.All["stnrdf"]);
+
+			faction.AllShown();
+
+			Assert.That(faction.TechnologiesToShow.Count, Is.EqualTo(0));
+			Assert.That(faction.TechnologiesSeen.Contains("stnrdf"));
+		}
 	}
 }
