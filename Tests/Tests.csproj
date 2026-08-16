@@ -89,6 +89,7 @@
     <Compile Include="TNamedObject.cs" />
     <Compile Include="TModuleStack.cs" />
     <Compile Include="TOrder.cs" />
+    <Compile Include="TResearch.cs" />
     <Compile Include="TPoint3D.cs" />
     <Compile Include="TDataFile.cs" />
     <Compile Include="TPoint2D.cs" />
