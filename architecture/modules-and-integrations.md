@@ -85,7 +85,7 @@ Encoding: **Windows-1251** for all of the following. XML declaration: `encoding=
 | `order.*` | `/turn-dir` | in | Text orders (`#faction`, `#modulestack`, `#person`, `#end`; `;` comments) |
 | `gameout.{turn}.xml` | game dir | out | Full state after the turn |
 | `report.{turn}.{faction}.txt` | turn dir | out | Player report (To/Subject headers for an external mailer) |
-| `report.{turn}.{faction}.txt.xml` | turn dir | out | Faction-visible XML subset (when generated) |
+| `report.{turn}.{faction}.xml` | turn dir | out | Faction-visible XML subset (when `xml-report` is enabled) |
 | `error.log` | CWD | out | RELEASE-only uncaught exceptions (1251) |
 
 There is **no** network, message bus, or shared database. Faction `email` is metadata for the GM mailer.

@@ -42,7 +42,7 @@ Domain code lives under `Game/` in a **single namespace** `SpaceAge` (folders ar
 
 | Term | Meaning |
 |------|---------|
-| **Turn** | One engine run; calendar quarter (Jan/Apr/Jul/Sep); `startingYear` 2020 + `Turn` |
+| **Turn** | One engine run; calendar quarter. `Game.Date` = year `startingYear` (2020) + `Turn`/4 (integer division), month from `Turn` % 4 (1→January, 2→April, 3→July, 0→September) |
 | **Week** | Inner loop 1..13 inside `Game.Execute()` |
 | **Faction** | Player corporation: password, email, bank, orders, attitudes |
 | **Module stack** | Primary game unit (ship, base, army); nested stacks; owns orders and effects |
