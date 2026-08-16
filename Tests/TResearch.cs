@@ -358,5 +358,52 @@ namespace UnitTests
 			Assert.That(faction.TechnologiesToShow.Count, Is.EqualTo(0));
 			Assert.That(faction.TechnologiesSeen.Contains("stnrdf"));
 		}
+
+		[Test]
+		public void ResearchPoints_PersistThroughSaveAndLoad()
+		{
+			ModuleStack stack = this.game.ModuleStacks["100011"];
+			stack.ResearchPoints = 5;
+			this.dataFile.SaveGame(Directory.GetCurrentDirectory(), "gameout.rp.test.xml");
+
+			this.game.ClearDictionaries();
+
+			DataFile reloaded = new DataFile(Directory.GetCurrentDirectory());
+			reloaded.LoadConfiguration();
+			reloaded.LoadGameDocument(Directory.GetCurrentDirectory(), "gameout.rp.test.xml");
+			reloaded.LoadFactions();
+			reloaded.LoadGalaxy();
+
+			Assert.That(ModuleStack.All["100011"].ResearchPoints, Is.EqualTo(5));
+		}
+
+		[Test]
+		public void ResearchPoints_AppearInModuleStackReport()
+		{
+			Faction faction = this.game.Factions["2"];
+			ModuleStack stack = this.game.ModuleStacks["100011"]; // owned by faction 2
+			stack.ResearchPoints = 7;
+
+			string report = string.Join("\n", stack.Report(faction).ToArray());
+			Assert.That(report, Does.Contain("research points: 7"));
+		}
+
+		[Test]
+		public void ResearchPoints_ZeroedOnBreakthroughButAccrueOtherwise()
+		{
+			// no breakthrough -> accrue this week's output
+			ModuleStack accruing = this.createResearchLab();
+			ResearchOrder accrueOrder = this.assignResearch(accruing, "research");
+			Sequence.Ints.Push(5); // breakthrough roll != 0
+			accrueOrder.Execute(this.game.Week);
+			Assert.That(accruing.ResearchPoints, Is.EqualTo(1));
+
+			// breakthrough -> research points reset to zero
+			accruing.ResearchPoints = 9;
+			Sequence.Ints.Push(1); // technology selection
+			Sequence.Ints.Push(0); // breakthrough roll == 0
+			accrueOrder.Execute(this.game.Week);
+			Assert.That(accruing.ResearchPoints, Is.EqualTo(0));
+		}
 	}
 }
