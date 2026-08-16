@@ -55,6 +55,46 @@ namespace UnitTests
 		}
 
 		[Test]
+		public void LoadConfiguration_LoadsResearchContent()
+		{
+			this.dataFile.LoadConfiguration(Directory.GetCurrentDirectory());
+
+			// helium-3 resource item
+			Assert.That(ItemType.All.ContainsKey("heliu3"));
+
+			// advanced research complex module (stronger cmplib)
+			ModuleType advlib = ModuleType.All["advlib"];
+			Assert.That(advlib.Group, Is.EqualTo(EModuleTypesGroup.research));
+			Assert.That(advlib.ResearchOutput, Is.EqualTo(2));
+
+			// helium-3 mining: mirrors uminng - an extraction tech that yields the heliu3 item
+			Technology he3min = Technology.All["he3min"];
+			Assert.That(he3min.Level, Is.EqualTo(2));
+			Assert.That(he3min.Cost, Is.EqualTo(16));
+			Assert.That(he3min.HasTag("production"));
+			Assert.That(he3min.Requires, Is.EqualTo(Technology.All["uminng"]));
+			Assert.That(he3min.UseProduceItems.ContainsKey(ItemType.All["heliu3"]));
+
+			// dedicated helium-3 extractor (a costlier, he3-only core drill) built by an L3 tech
+			Assert.That(ModuleType.All["he3ext"].Group, Is.EqualTo(EModuleTypesGroup.extraction));
+			Technology he3drl = Technology.All["he3drl"];
+			Assert.That(he3drl.Level, Is.EqualTo(3));
+			Assert.That(he3drl.Cost, Is.EqualTo(32));
+			Assert.That(he3drl.HasTag("production"));
+			Assert.That(he3drl.Requires, Is.EqualTo(Technology.All["he3min"]));
+			Assert.That(he3drl.UseProduceModules.Name, Is.EqualTo("he3ext"));
+
+			Technology advres = Technology.All["advres"];
+			Assert.That(advres.Level, Is.EqualTo(3));
+			Assert.That(advres.Cost, Is.EqualTo(32));
+			Assert.That(advres.HasTag("research"));
+			Assert.That(advres.Requires, Is.EqualTo(Technology.All["filidx"]));
+
+			// tag added to an existing technology
+			Assert.That(Technology.All["stnrdf"].HasTag("military"));
+		}
+
+		[Test]
 		public void LoadGameData_nullparameter()
 		{
 			Assert.Throws<ArgumentNullException>(

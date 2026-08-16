@@ -251,6 +251,7 @@
 			<use-allowed-by officer="terran"/>
 			<use-allowed-by crew="terran"/>
 		</entry>
+		<entry name="heliu3" name-en="unit of helium-3" name-en2="units of helium-3" size="1" mass="1" description="A light, non-radioactive helium isotope prized as clean fusion fuel; scarce on planets but abundant in lunar regolith."/>
 	</item>
 
 	<technology>
@@ -267,6 +268,7 @@
 		</entry>
 		<entry 
 			name="fossil" 
+			tags="production" 
 			name-en="fossil use" 
 			level="0"
 			description="Use of fossil fuels allows one to produce huge and dirty plants that transform carbon-based resources into energy." 
@@ -305,6 +307,7 @@
 		</entry>
 		<entry 
 			name="indust" 
+			tags="production" 
 			name-en="industrial automation" 
 			level="0"
 			description="Use of automated production management to reduce the workforce requirements." 
@@ -372,6 +375,7 @@
 		</entry>
 		<entry 
 			name="corpmg" 
+			tags="production" 
 			name-en="corporate management" 
 			level="0"
 			description="Corporate governance and centralized assets management allow increase in cost-effectiveness of the entire branch and a knowledge sharing centre."
@@ -448,6 +452,7 @@
 		</entry>
 		<entry
 			name="stnrdf"
+			tags="military"
 			name-en="stationary defense"
 			level="1"
 			description="The basic stationary defense. Gun emplacement and fortification to protect against ground based military."
@@ -459,6 +464,7 @@
 		</entry>
     <entry
 			name="armcbt"
+			tags="military"
 			name-en="armored combat"
 			level="1"
 			description="The basic mobile armor, powered by oil consuming engines."
@@ -469,6 +475,7 @@
     </entry>
     <entry
 			name="frminf"
+			tags="military"
 			name-en="form infantry battalion"
 			level="1"
 			description="The basic infantry unit. Equipped with standard rifles."
@@ -611,6 +618,7 @@ This assembly technology represents the pinnacle of human ingenuity and collabor
 		</entry>
 		<entry 
 			name="miltac"
+			tags="military"
 			name-en="military tactics"
 			level="1"
 			description="Elementary military tactics, which enable a higher level of combat proficiency."
@@ -672,6 +680,7 @@ This assembly technology represents the pinnacle of human ingenuity and collabor
 		</entry>
 		<entry
 			name="filidx"
+			tags="research"
 			name-en="file indexing"
 			level="0"
 			description="Imagine a cutting-edge digital library, where advanced file indexing technology forms the backbone of a vast repository of knowledge. This system, designed to support researchers, operates with the precision and efficiency, ensuring that every piece of information is easily accessible and meticulously organized.
@@ -683,6 +692,41 @@ Researchers can query the library. The system can handle natural language questi
 			<use-consume item="iron"  quantity="1"/>
 			<use-consume item="silici" quantity="3"/>		
 			<use-produce module="cmplib"/>
+		</entry>
+		<entry
+			name="he3min"
+			name-en="helium-3 mining"
+			level="2"
+			tags="production"
+			requires="uminng"
+			description="The extraction and refining of helium-3 from regolith and gas. Helium-3 mining can be carried out by any extraction module that has this technology loaded."
+			usable-in="extraction"
+			use-time="8">
+			<use-allowed-in module-type-group="extraction"/>
+			<use-produce item="heliu3"/>
+		</entry>
+		<entry name="he3fus" name-en="helium-3 fusion" level="2" tags="production" requires="he3min" description="Controlled fusion of helium-3 for clean, abundant energy.">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="heliu3" quantity="1"/>
+			<use-produce module="fusrec"/>
+		</entry>
+		<entry
+			name="he3drl"
+			name-en="dedicated helium-3 drilling"
+			level="3"
+			tags="production"
+			requires="he3min"
+			description="Purpose-built helium-3 core drills that double extraction efficiency at the cost of versatility and price.">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="30"/>
+			<use-consume item="titani" quantity="10"/>
+			<use-produce module="he3ext"/>
+		</entry>
+		<entry name="advres" name-en="advanced computing" level="3" tags="research" requires="filidx" description="Next-generation computing enabling far larger research complexes.">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="4"/>
+			<use-consume item="silici" quantity="12"/>
+			<use-produce module="advlib"/>
 		</entry>
 	</technology>
 
@@ -1289,6 +1333,25 @@ Researchers can query the library. The system can handle natural language questi
       research-output="1"
 			value="1000">
 			<upkeep type="cash" quanity="100"/>
+		</entry>
+		<entry name="he3ext" name-en="helium-3 core drill" name-en2="helium-3 core drills" group="extraction" description="A specialised, costlier core drill dedicated to helium-3. It extracts helium-3 at twice the efficiency of a general core drill but cannot mine anything else." size="1200" capacity="750" mass="1200" crew="6" energy="6" hit-points="100">
+			<produce item="heliu3" quantity="20" duration="13"/>
+			<upkeep type="cash" quantity="60"/>
+			<operation-allowed-in location-type="solid-surface"/>
+			<operation-allowed-in module-group="settlement"/>
+			<operation-allowed-in module-group="frigate"/>
+		</entry>
+		<entry name="fusrec" name-en="fusion reactor" name-en2="fusion reactors" group="energy" description="Fuses helium-3 to deliver clean, abundant power." size="1200" mass="1200" crew="3" energy="5" hit-points="120">
+			<produce energy="120" duration="13"/>
+			<energy-consume type="heliu3" quantity="3"/>
+			<operation-allowed-in location-type="solid-surface"/>
+			<upkeep type="cash" quantity="150"/>
+			<fuel duration="13">
+				<item type="heliu3" quantity="3"/>
+			</fuel>
+		</entry>
+		<entry name="advlib" name-en="advanced research complex" name-en2="advanced research complexes" group="research" description="A large, high-throughput research facility building on computer-library methods." size="400" mass="100" energy="10" hit-points="80" technology-capacity="8" research-output="2">
+			<upkeep type="cash" quantity="200"/>
 		</entry>
 	</module>
 	<race>
