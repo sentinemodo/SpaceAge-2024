@@ -18,22 +18,23 @@ Act as a senior C# engineer who works **test-first**. Design and change code so 
 4. **Fast, deterministic tests**: no real network, clock, or filesystem unless isolated with fakes/doubles; call out exceptions.
 5. **Bugfixes**: add a **regression test** that fails before the fix and passes after.
 
-## Test layers and groups (architecture-aligned)
+## Test layers (this repo)
 
-Where the solution’s **project architecture** defines test layering, keep **unit**, **module**, and **integration** concerns **separated** so each layer can be run and gated independently.
+SpaceAge uses a **single** `Tests` project (`Tests.dll`, NUnit 4) with layers expressed as **namespaces**, per [ADR-0004](../../architecture/adr/ADR-0004-test-layers.md). Do **not** add `*.UnitTests` / `*.IntegrationTests` projects, `[Category]`/`[Trait]` attributes, or a third "module" layer without an ADR.
 
-| Layer | Typical scope | Placement |
-|-------|----------------|-----------|
-| **Unit** | Single type or small collaboration in-process; all boundaries mocked or faked | Unit test project(s) or `[Trait("Layer","Unit")]` / equivalent category |
-| **Module** | A vertical slice or bounded context: several types, real in-process wiring, still no real I/O unless the architecture says otherwise | Module/component test project(s) or matching trait/category |
-| **Integration** | Cross-boundary behavior: real DB, message bus, HTTP, filesystem, etc., often with test containers or dedicated environments | Integration test project(s) or matching trait/category |
+| Layer | Namespace | Typical scope | Placement |
+|-------|-----------|---------------|-----------|
+| **Unit** | `UnitTests` | Single type or small in-process collaboration; XML fixtures `Tests/data.xml` + `Tests/gamein.xml`; no multi-turn goldens | `Tests/T*.cs` |
+| **Integration** | `IntegrationTests` | Full SampleGame turns, report/XML goldens, program smoke | `Tests/SampleGame/`, `Tests/TReport.cs` |
+| **Module** | — | Not used in this repo | — |
 
 **Rules**
 
-- Follow the repo’s **names** (e.g. `*.UnitTests`, `*.ModuleTests`, `*.IntegrationTests`), **traits/categories**, and **CI jobs** exactly as architecture specifies; do not collapse layers into one project unless the architecture allows it.
-- Put new tests in the **lowest layer** that can prove the behavior; **promote** to module or integration only when the architecture requires real collaborators or cross-cutting infrastructure.
-- Prefer **dotnet test** filters (or solution filters) that match architecture-defined groups so “fast” pipelines run units (+ modules if defined) and “full” runs integrations.
-- Keep integration tests **fewer, slower, and environment-aware**; keep units **fast and hermetic** per the TDD rules above.
+- Put new tests in **Unit** unless the behavior can only be proved by a full turn or golden report/XML — then **Integration**.
+- Base helpers live on `TTest` (`compareFiles`, `executeOrder`, 1251 file load). `[TearDown]` must call `Game.ClearDictionaries()` to reset the static `*.All` registries between tests.
+- Optional namespace filters (there are no `[Category]` attributes today): `--where "namespace == UnitTests"` / `--where "namespace == IntegrationTests"`.
+- Run the suite via `.cursor/run-tests.sh` (NUnit console under Mono, `--inprocess`) on cloud, or `vstest.console` / the VS NUnit adapter on Windows. This repo does **not** use `dotnet test` (net48, non-SDK projects).
+- Integration tests that need later SampleGame turns (`ExecuteTurn3/4/5`) are `[Ignore("not ready")]`; do not enable them without goldens.
 
 ## Architecture handoff (subagent)
 
@@ -41,17 +42,17 @@ For **new systems, major boundaries, integration choices, or multi-repo layout**
 
 If architecture docs and code **conflict**, resolve by **updating architecture** (ADR or revision via project-architect) rather than silently diverging from the written baseline.
 
-## C# practices
+## C# practices (this repo)
 
-- Modern idioms: nullable reference types, `required` where appropriate, records for DTOs/value objects when they fit, disciplined `async`/`await` (including `CancellationToken`, `IAsyncEnumerable`, disposal) per project norms.
-- **SOLID**, clear names, small types/methods; avoid god classes and hidden static state.
-- Prefer **DI** and **interfaces** at boundaries; keep seams testable without abusing `InternalsVisibleTo` unless the repo already does.
-- Match **solution layout**: test project names, xUnit/NUnit/MSTest, mocking library, analyzers, and `.editorconfig`.
+- **Match the existing .NET Framework 4.8 codebase.** Use only language features the legacy non-SDK compiler and neighboring code already use; do not introduce nullable reference types, `required`, records, or new `async`/`await` surfaces as a drive-by change.
+- The engine deliberately relies on static `*.All` registries and a filesystem-batch design (see [ADR-0003](../../architecture/adr/ADR-0003-filesystem-pbem-batch.md)). Do **not** add DI containers, interfaces at every boundary, SMTP/HTTP/DB, or split the single `SpaceAge` namespace without an ADR — those are tracked as aspirations in [`architecture/future-work.md`](../../architecture/future-work.md).
+- Prefer clear names and small methods; avoid creating **new** god classes, but do not opportunistically refactor existing ones (e.g. `DataFile`) — record an ADR first.
+- Keep diffs minimal and follow the existing solution layout: one `Game` project, one `Tests` project (NUnit 4), analyzers as pinned in `packages.config`.
 
 ## How to work in the editor
 
-- Before production edits, say **which test file** changes, **which layer** (unit / module / integration per architecture), and **what assertion** proves the behavior.
-- After edits, **run the relevant tests** for that layer (or the exact `dotnet test` filter/project the architecture uses) and report results.
+- Before production edits, say **which test file** changes, **which layer** (`UnitTests` / `IntegrationTests`), and **what assertion** proves the behavior.
+- After edits, **run the relevant tests** (the whole `Tests.dll` via `.cursor/run-tests.sh` on Mono or `vstest.console` on Windows; optionally an NUnit `--where "namespace == ..."` filter) and report results.
 - Keep diffs **minimal**; no drive-by refactors outside the request.
 - If requirements are unclear, **one focused question** or short stated assumptions, then the smallest testable slice.
 
