@@ -57,8 +57,8 @@ Domain code lives under `Game/` in a **single namespace** `SpaceAge` (folders ar
 | Risk | Mitigation in this architecture |
 |------|----------------------------------|
 | Global `*.All` registries leak between tests | `Game.ClearDictionaries()` in fixture teardown; one game at a time |
-| Mono vs real .NET 4.8 CLR differences | Cloud uses Mono; Windows worker for CLR-only issues (`AGENTS.md`) |
-| Encoding bugs on non-Windows | `libmono-i18n4.0-all` in the cloud image; never drop 1251 |
+| Mono vs real .NET 4.8 CLR differences | Cloud runs the solution under Mono (`.cursor/install.sh`); use a Windows Visual Studio / real-CLR pass for issues that only reproduce there |
+| Encoding bugs on non-Windows | `mono-complete` provides code page 1251 on the cloud image; never drop 1251 |
 | `DataFile` as a god class | Do not split it opportunistically; record an ADR before extracting loaders |
 | Stub pipeline steps (`Request`, `Events`) | Leave no-ops unless a feature requires them; cover with tests when activating |
 

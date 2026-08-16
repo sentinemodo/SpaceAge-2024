@@ -118,7 +118,7 @@ One test assembly: `Tests.dll`. Layers are **namespaces**, not extra `.csproj` f
 - There are **no** NUnit `[Category]` / `[Trait]` attributes today. Optional filters:
   - Unit: `--where "namespace == UnitTests"`
   - Integration: `--where "namespace == IntegrationTests"`
-- Fast local/cloud default: **entire** `Tests.dll` (`scripts/run-tests.sh` / `vstest.console`).
+- Fast local/cloud default: **entire** `Tests.dll` (`.cursor/run-tests.sh` on Mono / `vstest.console` on Windows).
 - Integration tests that need later SampleGame turns (`ExecuteTurn3/4/5`) are `[Ignore("not ready")]` — do not enable them without goldens.
 
 ## Stub / incomplete boundaries

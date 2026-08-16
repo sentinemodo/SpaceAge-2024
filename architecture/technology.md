@@ -14,26 +14,26 @@ This is a **legacy console engine**, not a service stack. Choices below describe
 | Language | C# | Existing idioms; nullable/`required`/records only where the net48 compiler and neighboring code already allow it |
 | Runtime (Windows) | **.NET Framework 4.8** (`TargetFrameworkVersion` v4.8) | Do not retarget to net8 / SDK-style unless asked |
 | Project files | Legacy non-SDK `.csproj` (ToolsVersion 12.0) | Do not convert |
-| Runtime (Cursor Cloud) | **Mono** on Ubuntu 24.04 | `.cursor/Dockerfile` + `.cursor/environment.json` |
-| I18n on Mono | `libmono-i18n4.0-all` | Required for `Encoding.GetEncoding(1251)` |
+| Runtime (Cursor Cloud) | **Mono** on Ubuntu 24.04 | `.cursor/environment.json` → `.cursor/install.sh` (default Ubuntu image; Mono installed by the script, no custom Dockerfile) |
+| I18n on Mono | `mono-complete` | Provides code page 1251 for `Encoding.GetEncoding(1251)` (verified end-to-end); no separate i18n package needed |
 | Persistence | XML + text files | No SQL, no ORM |
 | Encoding | Windows-1251 (code page 1251) | All game XML, orders, reports, `error.log` |
 
 Why stay on net48 / non-SDK:
 
 - Matches the historical engine and Visual Studio workflow.
-- Cloud agents already have a Mono image and `scripts/cloud-install.sh`.
-- A framework jump is a product-wide migration, not a local refactor.
+- Cloud agents build the same solution under Mono via `.cursor/install.sh`.
+- A framework jump is a product-wide migration, not a local refactor (tracked in [`future-work.md`](future-work.md)).
 
 ### Build and packages
 
 | Tool | Version / source |
 |------|------------------|
-| NuGet restore | `nuget restore SpaceAge.sln`; `nuget.config` → nuget.org only |
+| NuGet restore | `nuget.exe restore SpaceAge.sln` under Mono (packages.config); default nuget.org feed, no committed `nuget.config` |
 | Windows build | `msbuild SpaceAge.sln /p:Configuration=Debug` |
-| Cloud build | `msbuild` or `xbuild` via `scripts/cloud-install.sh` |
+| Cloud build | `xbuild` via `.cursor/install.sh` |
 | Test runner (Windows) | Visual Studio NUnit 3 adapter or `vstest.console Tests\bin\Debug\Tests.dll` |
-| Test runner (Cloud) | NUnit Console **3.19.2** under `.tools/`, invoked with `mono` (`scripts/run-tests.sh`) |
+| Test runner (Cloud) | NUnit Console **3.18.3** under `.cursor/tools/`, invoked with `mono --inprocess` (`.cursor/run-tests.sh`) |
 
 ### NuGet packages (both `Game` and `Tests`)
 
@@ -71,6 +71,6 @@ SonarQube helper scripts (`Sonar.bat`, `sonar-project.properties`) exist locally
 ## Version guidance
 
 - Engine string: bump `Program.EngineVersion` when behavior visible to players/GMs changes; echo it in reports.
-- NUnit: stay on **4.1.x** until an ADR + full `run-tests.sh` pass on Mono.
-- NUnit Console runner: **3.19.2** as installed by `cloud-install.sh`.
-- Mono: whatever `mono-complete` / `mono-devel` on Ubuntu 24.04 provides in the Dockerfile; do not add a second CLR in the cloud image.
+- NUnit: stay on **4.1.x** until an ADR + full `.cursor/run-tests.sh` pass on Mono.
+- NUnit Console runner: **3.18.3** as installed by `.cursor/install.sh`.
+- Mono: whatever `mono-complete` on Ubuntu 24.04 provides (installed by `.cursor/install.sh`); do not add a second CLR in the cloud image.

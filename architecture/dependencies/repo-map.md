@@ -20,7 +20,7 @@ flowchart LR
 |------|----|----------|
 | `Tests` | `Game` | Compile-time project reference; tests construct `DataFile` / `Game` in-process |
 | GM / mailer (external, not in repo) | `Game.exe` | CLI + files: `/data`, `/turn-dir`, reports with `To:` headers |
-| Cursor Cloud | this repo | Checkout + `scripts/cloud-install.sh` |
+| Cursor Cloud | this repo | Checkout + `.cursor/install.sh` |
 
 Do not add a second engine repo or a shared “core” library unless an ADR splits the solution.
 

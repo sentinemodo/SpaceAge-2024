@@ -14,6 +14,6 @@ Keep **.NET Framework 4.8** and **legacy csproj**. Cloud uses Mono (`mono-comple
 ## Consequences
 
 - Windows Visual Studio and `vstest.console` remain the native CLR path.
-- Cloud tests go through `scripts/cloud-install.sh` and `scripts/run-tests.sh`.
+- Cloud tests go through `.cursor/install.sh` (restore + `xbuild`) and `.cursor/run-tests.sh` (NUnit console under Mono).
 - If a change only works on the real Framework CLR, document it and keep tests for a Windows worker — do not silently retarget.
-- A future SDK/.NET (Core) migration needs a new ADR, a rewritten install image, and a full test pass.
+- A future SDK/.NET (Core) migration needs a new ADR, a rewritten install image, and a full test pass (see [`../future-work.md`](../future-work.md)).

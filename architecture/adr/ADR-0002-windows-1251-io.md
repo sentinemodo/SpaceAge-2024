@@ -11,7 +11,7 @@ Catalog XML, game snapshots, orders, and faction reports historically use Cyrill
 
 Read and write game XML, order files, reports, and RELEASE `error.log` with `Encoding.GetEncoding(1251)`. XML declarations use `encoding="windows-1251"`.
 
-Cloud images must install **`libmono-i18n4.0-all`** so code page 1251 is available on Mono.
+The cloud image installs **`mono-complete`**, which provides code page 1251 on Mono (verified end-to-end: a full turn writes 1251-encoded reports and the suite passes). No separate i18n package is required.
 
 ## Consequences
 
