@@ -1,0 +1,32 @@
+# SpaceAge-2024 — future development backlog
+
+Last updated: 2026-08-16
+
+This file tracks **deferred modernization** — good practices that are intentionally **out of scope** for day-to-day work on the current engine. They are recorded here (not enforced by the TDD rule or coding guidance) so the running net48 engine stays stable and diffs stay small.
+
+Each item requires a numbered **ADR** in [`adr/`](adr/) plus a full test pass on Mono (`.cursor/run-tests.sh`) before it is adopted. Nothing here is a commitment or a schedule; it is a menu of improvements to weigh when a change is explicitly requested.
+
+## Modern C# / language
+
+- **Nullable reference types**, `required` members, and `record` value objects where they clarify intent — gated by what the non-SDK net48 compiler and neighboring code allow.
+- Disciplined `async`/`await` (`CancellationToken`, `IAsyncEnumerable`, deterministic disposal) *if* any I/O ever becomes async. The current engine is synchronous and file-based; do not add async speculatively.
+
+## Structure and design
+
+- **Dependency injection / interfaces at boundaries** to replace the pervasive static `*.All` registries, enabling parallel tests and multiple in-process games. Today [ADR-0003](adr/ADR-0003-filesystem-pbem-batch.md) and the `*.All` pattern are load-bearing.
+- **Split the single `SpaceAge` namespace** into folder-aligned namespaces (currently folders are organizational only).
+- **Extract loaders from `DataFile`** (a large god class) once an ADR defines the seams.
+- **Remove NUnit from `Game.csproj`** so the engine assembly has no test-only references (keep NUnit in `Tests` only).
+
+## Build, test, and delivery
+
+- **Migrate to SDK-style projects / .NET 8** (`dotnet build` / `dotnet test`) — a product-wide migration, not a local refactor (see [ADR-0001](adr/ADR-0001-net48-legacy-csproj.md)). Would replace the Mono `xbuild` + NUnit-console path.
+- **Test categories / filters** (`[Category]` or split projects) so "fast" vs "full" pipelines can be gated independently. Today layering is by namespace only ([ADR-0004](adr/ADR-0004-test-layers.md)).
+- **Hosted CI** (e.g. GitHub Actions) around restore → build → test. Today "CI" is the Cursor Cloud environment running `.cursor/install.sh` then `.cursor/run-tests.sh`.
+
+## Engine completeness (currently stubbed / partial)
+
+- Implement the stub pipeline hooks `Request.Load`, `EventsReaders.Load` / `Events.Execute`, and `OrdersReader.Check` (with tests) when a feature needs them.
+- Finish the economy methods `Game.GenerateOffers` / `UpdateRates` (currently TODO/partial).
+- Add goldens and enable the `[Ignore("not ready")]` SampleGame turns 3–5.
+- Fix known data/parse gaps, e.g. the `//`-vs-`;` order-comment bug that fails `IntegrationTests.SampleGame._5_ExecuteTurn2`, and the `research`/`see` order divergence between `OrdersReader` and `DataFile`.

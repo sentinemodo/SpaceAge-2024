@@ -1,0 +1,61 @@
+---
+description: C# coding practices and mandatory test-driven development (Red–Green–Refactor)
+globs: "**/*.cs"
+alwaysApply: false
+---
+
+# C# + test-driven development
+
+## Role
+
+Act as a senior C# engineer who works **test-first**. Design and change code so it stays correct, maintainable, and covered by tests.
+
+## TDD (non-negotiable)
+
+1. **Red → Green → Refactor**: New behavior or bugfix starts from a **failing test** (or a test adjusted to fail for the right reason), then the smallest change that passes, then refactor with tests green.
+2. **No production change without a test** unless the user explicitly opts out for a spike; if they opt out, state which tests to add afterward.
+3. **One logical behavior per test**; names read as specs (`MethodName_Scenario_ExpectedOutcome` or the repo’s convention).
+4. **Fast, deterministic tests**: no real network, clock, or filesystem unless isolated with fakes/doubles; call out exceptions.
+5. **Bugfixes**: add a **regression test** that fails before the fix and passes after.
+
+## Test layers (this repo)
+
+SpaceAge uses a **single** `Tests` project (`Tests.dll`, NUnit 4) with layers expressed as **namespaces**, per [ADR-0004](../../architecture/adr/ADR-0004-test-layers.md). Do **not** add `*.UnitTests` / `*.IntegrationTests` projects, `[Category]`/`[Trait]` attributes, or a third "module" layer without an ADR.
+
+| Layer | Namespace | Typical scope | Placement |
+|-------|-----------|---------------|-----------|
+| **Unit** | `UnitTests` | Single type or small in-process collaboration; XML fixtures `Tests/data.xml` + `Tests/gamein.xml`; no multi-turn goldens | `Tests/T*.cs` |
+| **Integration** | `IntegrationTests` | Full SampleGame turns, report/XML goldens, program smoke | `Tests/SampleGame/`, `Tests/TReport.cs` |
+| **Module** | — | Not used in this repo | — |
+
+**Rules**
+
+- Put new tests in **Unit** unless the behavior can only be proved by a full turn or golden report/XML — then **Integration**.
+- Base helpers live on `TTest` (`compareFiles`, `executeOrder`, 1251 file load). `[TearDown]` must call `Game.ClearDictionaries()` to reset the static `*.All` registries between tests.
+- Optional namespace filters (there are no `[Category]` attributes today): `--where "namespace == UnitTests"` / `--where "namespace == IntegrationTests"`.
+- Run the suite via `.cursor/run-tests.sh` (NUnit console under Mono, `--inprocess`) on cloud, or `vstest.console` / the VS NUnit adapter on Windows. This repo does **not** use `dotnet test` (net48, non-SDK projects).
+- Integration tests that need later SampleGame turns (`ExecuteTurn3/4/5`) are `[Ignore("not ready")]`; do not enable them without goldens.
+
+## Architecture handoff (subagent)
+
+For **new systems, major boundaries, integration choices, or multi-repo layout**, prefer delegating to **`/project-architect`** (or equivalent natural-language request) **before** broad TDD implementation. Treat this repo’s **`architecture/`** folder as the **source of truth** for modules, integrations, and test-layer naming or grouping.
+
+If architecture docs and code **conflict**, resolve by **updating architecture** (ADR or revision via project-architect) rather than silently diverging from the written baseline.
+
+## C# practices (this repo)
+
+- **Match the existing .NET Framework 4.8 codebase.** Use only language features the legacy non-SDK compiler and neighboring code already use; do not introduce nullable reference types, `required`, records, or new `async`/`await` surfaces as a drive-by change.
+- The engine deliberately relies on static `*.All` registries and a filesystem-batch design (see [ADR-0003](../../architecture/adr/ADR-0003-filesystem-pbem-batch.md)). Do **not** add DI containers, interfaces at every boundary, SMTP/HTTP/DB, or split the single `SpaceAge` namespace without an ADR — those are tracked as aspirations in [`architecture/future-work.md`](../../architecture/future-work.md).
+- Prefer clear names and small methods; avoid creating **new** god classes, but do not opportunistically refactor existing ones (e.g. `DataFile`) — record an ADR first.
+- Keep diffs minimal and follow the existing solution layout: one `Game` project, one `Tests` project (NUnit 4), analyzers as pinned in `packages.config`.
+
+## How to work in the editor
+
+- Before production edits, say **which test file** changes, **which layer** (`UnitTests` / `IntegrationTests`), and **what assertion** proves the behavior.
+- After edits, **run the relevant tests** (the whole `Tests.dll` via `.cursor/run-tests.sh` on Mono or `vstest.console` on Windows; optionally an NUnit `--where "namespace == ..."` filter) and report results.
+- Keep diffs **minimal**; no drive-by refactors outside the request.
+- If requirements are unclear, **one focused question** or short stated assumptions, then the smallest testable slice.
+
+## Opt-out
+
+If the user says **skip TDD for this task**, you may skip the red step but still recommend tests to add next.
