@@ -60,7 +60,7 @@ get 1 iron from 000019
 ; effects:
 ;   can operate for another 7 weeks without refueling.
 see 109
--declare war on faction 2
+-declare faction 2 enemy
 
 #modulestack 109
 ; + tanks [109], 2 tanks [tanks], disabled.

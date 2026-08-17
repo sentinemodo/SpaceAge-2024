@@ -314,6 +314,9 @@ namespace SpaceAge
 				case "contract":
 					order = new ContractOrder(subject);
 					break;
+				case "declare":
+					order = new DeclareOrder(subject);
+					break;
                 case "has":
 					order = new HasOrder(subject);
 					break;

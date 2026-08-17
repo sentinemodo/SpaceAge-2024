@@ -753,6 +753,8 @@ namespace SpaceAge
 				faction.Email = elFaction.GetAttribute("email");
 				if (elFaction.HasAttribute("default-attitude"))
 					faction.DefaultAttitude = (FactionAttitude)Convert.ToInt32(elFaction.GetAttribute("default-attitude"));
+				if (elFaction.HasAttribute("unknown-attitude"))
+					faction.UnknownAttitude = (FactionAttitude)Convert.ToInt32(elFaction.GetAttribute("unknown-attitude"));
 				faction.Options.TextReport = this.XMLAssignBoolean(elFaction.GetAttribute("text-report"), true);
 				faction.Options.ReportLineLength = this.XMLAssignInteger(elFaction.GetAttribute("text-report-line-length"), ReportLine.LineLength);
 				faction.Options.XmlReport = this.XMLAssignBoolean(elFaction.GetAttribute("xml-report"), true);
@@ -779,13 +781,18 @@ namespace SpaceAge
 				//foreach (XmlElement el in elFaction.SelectNodes("shown-building"))
 				//    f.ShownBuildings.Add(BuildingType.Get(el.GetAttribute("name")));
 
-				// Attitudes
-				//foreach (XmlElement elAttitude in elFaction.SelectNodes("attitude"))
-				//{
-				//    Attitude a = (Attitude)Convert.ToInt32(elAttitude.GetAttribute("level"));
-				//    int fnum = Convert.ToInt32(elAttitude.GetAttribute("faction"));
-				//    f.Attitudes.Add(fnum, a);
-				//}
+				foreach (XmlElement elAttitude in elFaction.SelectNodes("attitude"))
+				{
+					FactionAttitude attitude = FactionAttitudeParser.Parse(elAttitude.GetAttribute("attitude"));
+					if (elAttitude.HasAttribute("faction"))
+					{
+						faction.Attitudes[elAttitude.GetAttribute("faction")] = attitude;
+					}
+					else if (elAttitude.HasAttribute("unit"))
+					{
+						faction.UnitAttitudes[elAttitude.GetAttribute("unit")] = attitude;
+					}
+				}
 			}
 		}
 
@@ -859,6 +866,9 @@ namespace SpaceAge
                         break;
 					case "contract":
 						order = new ContractOrder(subject);
+						break;
+					case "declare":
+						order = new DeclareOrder(subject);
 						break;
 					case "form":
                         order = new FormOrder(subject);
@@ -1259,6 +1269,10 @@ namespace SpaceAge
 				elFaction.SetAttribute("password", faction.Password);
 				elFaction.SetAttribute("email", faction.Email);
 				elFaction.SetAttribute("default-attitude", ((int)faction.DefaultAttitude).ToString());
+				if (faction.UnknownAttitude != FactionAttitude.Hostile)
+				{
+					elFaction.SetAttribute("unknown-attitude", ((int)faction.UnknownAttitude).ToString());
+				}
 				elFaction.SetAttribute("text-report", faction.Options.TextReport.ToString());
 				elFaction.SetAttribute("text-report-line-length", faction.Options.ReportLineLength.ToString());
 				elFaction.SetAttribute("xml-report", faction.Options.XmlReport.ToString());
@@ -1283,16 +1297,20 @@ namespace SpaceAge
 				//    SaveBuildingType(bt, elFaction, "shown-building");
 
 
-				// Attitudes
-				//foreach (int num in f.Attitudes.Keys)
-				//{
-				//    if (Faction.Get(num) == null)
-				//        continue;
-				//    XmlElement elAttitude = (XmlElement)doc.CreateElement("attitude");
-				//    elFaction.AppendChild(elAttitude);
-				//    elAttitude.SetAttribute("level", ((int)f.Attitudes[num]).ToString());
-				//    elAttitude.SetAttribute("faction", num.ToString());
-				//}
+				foreach (KeyValuePair<string, FactionAttitude> declaration in faction.Attitudes)
+				{
+					XmlElement elAttitude = doc.CreateElement("attitude");
+					elAttitude.SetAttribute("faction", declaration.Key);
+					elAttitude.SetAttribute("attitude", FactionAttitudeParser.ToToken(declaration.Value));
+					elFaction.AppendChild(elAttitude);
+				}
+				foreach (KeyValuePair<string, FactionAttitude> declaration in faction.UnitAttitudes)
+				{
+					XmlElement elAttitude = doc.CreateElement("attitude");
+					elAttitude.SetAttribute("unit", declaration.Key);
+					elAttitude.SetAttribute("attitude", FactionAttitudeParser.ToToken(declaration.Value));
+					elFaction.AppendChild(elAttitude);
+				}
 			}
 			#endregion
 

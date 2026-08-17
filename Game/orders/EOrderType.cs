@@ -13,6 +13,7 @@ namespace SpaceAge
 		buy,
         copy,
 		contract,
+		declare,
 		form, 
 		get,
 		give,
