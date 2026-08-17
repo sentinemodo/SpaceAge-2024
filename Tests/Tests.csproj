@@ -86,6 +86,7 @@
     <Compile Include="TRepair.cs" />
     <Compile Include="TResearch.cs" />
     <Compile Include="TDiplomacy.cs" />
+    <Compile Include="TContract.cs" />
     <Compile Include="TPoint3D.cs" />
     <Compile Include="TDataFile.cs" />
     <Compile Include="TPoint2D.cs" />

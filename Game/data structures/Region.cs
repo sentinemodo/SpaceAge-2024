@@ -103,6 +103,12 @@ namespace SpaceAge
 				reportLines.Add(this.Resources.Report, level);
 			}
 
+			List<string> contractLines = Contract.All.Report(this);
+			if (contractLines.Count > 0)
+			{
+				reportLines.Add(contractLines, level);
+			}
+
 			// market report
 			reportLines.Add(this.Market.Report(faction), level);
 

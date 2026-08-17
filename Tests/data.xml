@@ -484,6 +484,18 @@
 			<use-consume item="iron" quantity="1"/>
 			<use-produce module="inftry"/>
 		</entry>
+    <entry
+			name="rckter"
+			tags="military"
+			name-en="rocket launcher production"
+			level="1"
+			cost="4"
+			description="Manufacture of portable rocket launchers issued to infantry battalions."
+			use-time="2">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="1"/>
+			<use-produce item="rctlnc"/>
+		</entry>
 		<entry
 			name="wtrdst" 
 			name-en="water distillation" 

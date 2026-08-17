@@ -197,6 +197,7 @@ namespace SpaceAge
 					}                   
 
 					this.Executed = true;
+					Contract.All.NotifyTransfer(this.Transferer.Owner, this.Receiver, this.ModuleType, this.Quantity);
 				}
 				else
 				{

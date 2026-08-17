@@ -14,6 +14,11 @@ namespace SpaceAge
 
         public bool FailedToExecute { get; set; }
 
+		public virtual bool AllowedBetweenTurns
+		{
+			get { return false; }
+		}
+
 		public override void Parse(string command)
 		{
 			throw new Exception("The method or operation is not implemented.");

@@ -55,6 +55,7 @@ namespace SpaceAge
 			this.LoadTurnNumber();
 			this.LoadFactions();
 			this.LoadGalaxy();
+			this.LoadContracts();
 			this.LoadOrders();
 			return game;
 		}
@@ -794,6 +795,12 @@ namespace SpaceAge
 			Game.Turn = Convert.ToInt32(el.GetAttribute("turn"));
 		}
 
+		public void LoadContracts()
+		{
+			XmlElement elContracts = (XmlElement)this.gameDocument.SelectSingleNode("/game/contracts");
+			Contract.All.LoadXml(elContracts);
+		}
+
 
 		public void LoadOrders()
 		{
@@ -850,6 +857,9 @@ namespace SpaceAge
                     case "copy":
                         order = new CopyOrder(subject);
                         break;
+					case "contract":
+						order = new ContractOrder(subject);
+						break;
 					case "form":
                         order = new FormOrder(subject);
 						break;
@@ -1283,6 +1293,13 @@ namespace SpaceAge
 				//    elAttitude.SetAttribute("level", ((int)f.Attitudes[num]).ToString());
 				//    elAttitude.SetAttribute("faction", num.ToString());
 				//}
+			}
+			#endregion
+
+			#region contracts
+			if (Contract.All.Count > 0)
+			{
+				doc.DocumentElement.AppendChild(Contract.All.SaveXml(doc));
 			}
 			#endregion
 

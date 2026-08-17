@@ -158,6 +158,7 @@ namespace SpaceAge
 				//this.ClearFailedToExecuteImmediateOrders();
 				this.ClearExecutedImmediateOrders();
 				this.ExecuteOrders();
+				Contract.All.Evaluate(this.week);
                 this.ProcessBuyOffers();
 				this.ExecuteBattles();
 			}
@@ -241,6 +242,21 @@ namespace SpaceAge
 			foreach (Person person in this.People.Values)
 			{
 				person.ExecutedLongOrder = false;
+			}
+		}
+
+		public void ExecuteBetweenTurnOrders()
+		{
+			foreach (Faction faction in this.Factions.Values)
+			{
+				foreach (ImmediateOrder order in faction.Orders.Immediate)
+				{
+					if (order.AllowedBetweenTurns && !order.Executed)
+					{
+						order.Execute(this.week);
+					}
+				}
+				faction.Orders.RemoveExecuted();
 			}
 		}
 
@@ -377,6 +393,7 @@ namespace SpaceAge
 		{
 			Battle.All.Clear();
 			Offer.All.Clear();
+			Contract.All.Clear();
 			Technology.All.Clear();
 			Race.All.Clear();
 			ItemType.All.Clear();

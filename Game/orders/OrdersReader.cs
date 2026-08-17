@@ -291,7 +291,7 @@ namespace SpaceAge
 			{
 				repeat = -1;
 			}
-			switch (token.TrimStart('@','+','-'))
+			switch (token.TrimStart('@','+','-').ToLowerInvariant())
 			{
 				case "active":
 					order = new ActiveOrder(subject);
@@ -311,6 +311,9 @@ namespace SpaceAge
                 case "copy":
                     order = new CopyOrder(subject);
                     break;
+				case "contract":
+					order = new ContractOrder(subject);
+					break;
                 case "has":
 					order = new HasOrder(subject);
 					break;

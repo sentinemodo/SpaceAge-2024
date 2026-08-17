@@ -102,6 +102,14 @@ namespace UnitTests
 			Assert.That(engshpTech.Cost, Is.EqualTo(4));
 			Assert.That(engshpTech.HasTag("production"));
 			Assert.That(engshpTech.UseProduceModules.Name, Is.EqualTo("engshp"));
+
+			Technology rckter = Technology.All["rckter"];
+			Assert.That(rckter.Level, Is.EqualTo(1));
+			Assert.That(rckter.Cost, Is.EqualTo(4));
+			Assert.That(rckter.HasTag("military"));
+			Assert.That(rckter.UseCondition_ModuleTypesGroup, Is.EqualTo(EModuleTypesGroup.production));
+			Assert.That(rckter.UseProduceItems.ContainsKey(ItemType.All["rctlnc"]));
+			Assert.That(rckter.UseProduceModules, Is.Null);
 		}
 
 		[Test]
