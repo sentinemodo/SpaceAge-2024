@@ -728,5 +728,66 @@ namespace UnitTests
             this.compareFiles("gameout.conditionOrders.xml", "gameout.saved_conditionOrders.xml");
 
         }
+
+		[Test]
+		public void SaveLoad_PersistsModuleDamageBetweenTurns()
+		{
+			this.LoadGameDocument();
+			this.dataFile.LoadConfiguration();
+			this.dataFile.LoadFactions();
+			this.dataFile.LoadGalaxy();
+			this.game = this.dataFile.Game;
+
+			ModuleStack stack = ModuleStack.All["000006"];
+			Assert.That(stack.Quantity, Is.EqualTo(2));
+			Assert.That(stack.Modules[0].Damage, Is.EqualTo(0));
+			Assert.That(stack.Modules[0].CaptureDamage, Is.EqualTo(0));
+			Assert.That(stack.Modules[0].Online, Is.True);
+
+			stack.Modules[0].Damage = 26;
+			stack.Modules[0].CaptureDamage = 9;
+			stack.Modules[1].Online = false;
+
+			string testdir = Directory.GetCurrentDirectory();
+			string testfile = "gameout.moduleDamage.xml";
+			this.dataFile.SaveGame(testdir, testfile);
+
+			XmlDocument saved = new XmlDocument();
+			saved.Load(Path.Combine(testdir, testfile));
+			XmlElement elStack = (XmlElement)saved.SelectSingleNode("//modulestack[@name='000006']");
+			Assert.That(elStack, Is.Not.Null);
+			XmlNodeList moduleNodes = elStack.SelectNodes("module");
+			Assert.That(moduleNodes.Count, Is.EqualTo(2));
+			Assert.That(((XmlElement)moduleNodes[0]).GetAttribute("damage"), Is.EqualTo("26"));
+			Assert.That(((XmlElement)moduleNodes[0]).GetAttribute("capture"), Is.EqualTo("9"));
+			Assert.That(((XmlElement)moduleNodes[0]).HasAttribute("online"), Is.False);
+			Assert.That(((XmlElement)moduleNodes[1]).HasAttribute("damage"), Is.False);
+			Assert.That(((XmlElement)moduleNodes[1]).HasAttribute("capture"), Is.False);
+			Assert.That(((XmlElement)moduleNodes[1]).GetAttribute("online"), Is.EqualTo("false"));
+
+			XmlElement elUndamaged = (XmlElement)saved.SelectSingleNode("//modulestack[@name='100001']");
+			Assert.That(elUndamaged, Is.Not.Null);
+			Assert.That(elUndamaged.SelectNodes("module").Count, Is.EqualTo(0));
+
+			this.game.ClearDictionaries();
+			this.game = null;
+			this.dataFile = null;
+
+			this.dataFile = new DataFile(testdir);
+			this.dataFile.LoadGameDocument(testdir, testfile);
+			this.dataFile.LoadConfiguration(testdir);
+			this.dataFile.LoadFactions();
+			this.dataFile.LoadGalaxy();
+			this.game = this.dataFile.Game;
+
+			stack = ModuleStack.All["000006"];
+			Assert.That(stack.Quantity, Is.EqualTo(2));
+			Assert.That(stack.Modules[0].Damage, Is.EqualTo(26));
+			Assert.That(stack.Modules[0].CaptureDamage, Is.EqualTo(9));
+			Assert.That(stack.Modules[0].Online, Is.True);
+			Assert.That(stack.Modules[1].Damage, Is.EqualTo(0));
+			Assert.That(stack.Modules[1].CaptureDamage, Is.EqualTo(0));
+			Assert.That(stack.Modules[1].Online, Is.False);
+		}
     }
 }

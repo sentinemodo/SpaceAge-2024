@@ -301,6 +301,38 @@ namespace IntegrationTests
 		}
 
 		[Test]
+		public void UnitReport_ModuleDamage()
+		{
+			Faction faction = this.game.Factions["2"];
+			ModuleStack moduleStack = ModuleStack.All["000006"];
+			moduleStack.Modules[0].Damage = 26;
+			moduleStack.Modules[0].CaptureDamage = 9;
+
+			List<string> testlines = new List<string>
+			{
+				"+ core drill [000006], 2 core drills [cdrill].",
+				"  size: 2000, mass: 2148 (2000), capacity: 1500/98, energy: 10, crew: 12/12, upkeep: 92 (80) cash [cash], consume: 12 (0) units of food [food], 12 (0) units of terran breathing gas mixture [terair].",
+				"  hit points: 200/174, capture: 9.",
+				"    #1 hit points: 100/74, capture: 9, lightly damaged.",
+				"    #2 hit points: 100/100.",
+				"  technologies: hydrocarbons drilling [hcdril].",
+				"  items: 10 units of iron [iron] (size: 50, mass: 100), 12 terrans [terran] (size: 48, mass: 48, upkeep: 12 cash [cash], consume: 12 units of food [food], 12 units of terran breathing gas mixture [terair])."
+			};
+
+			List<string> lines = moduleStack.Report(faction);
+			for (int i = 0; i < lines.Count; i++)
+			{
+				Console.WriteLine(lines[i]);
+			}
+
+			for (int i = 0; i < testlines.Count; i++)
+			{
+				Assert.That(lines[i], Is.EqualTo(testlines[i]), "line number " + i);
+			}
+			Assert.That(lines.Count, Is.EqualTo(testlines.Count));
+		}
+
+		[Test]
 		public void BattleReport_ShipVsStation_ShipPerspective()
 		{
 
@@ -516,7 +548,11 @@ namespace IntegrationTests
 					|| trimmed.Contains("unarmed")
 					|| trimmed.Contains("immobile and cannot escape")
 					|| trimmed.Contains("disabled (capture)")
-					|| trimmed.Contains("module captured by")
+					|| trimmed.Contains("captured")
+					|| trimmed.Contains("killed")
+					|| trimmed.Contains("wounded")
+					|| trimmed.Contains("items:")
+					|| trimmed.Contains("[c100024]")
 					|| trimmed.Contains("is wrecked")
 					|| trimmed.Contains("lost it's")
 					|| trimmed.Contains("Battle won")
@@ -541,11 +577,11 @@ namespace IntegrationTests
 
 			Sequence.Rolls.Clear();
 			Sequence.Ints.Clear();
-			// LIFO: last push is consumed first. Same miss-then-hits pattern as the destroy
-			// golden, then enough hit/location pairs for the remaining rounds.
+			// LIFO: last push is consumed first. Location 250 is past hull/command/reactor
+			// on the capture-weighted station and lands on cargo [100024].
 			for (int i = 0; i < 20; i++)
 			{
-				Sequence.Ints.Push(120); // capture-weighted location lands on the command bridge
+				Sequence.Ints.Push(250);
 				Sequence.Ints.Push(1);   // hit
 			}
 			Sequence.Ints.Push(13); // first shot misses (13 > chance 12)
@@ -565,11 +601,123 @@ namespace IntegrationTests
 			Assert.That(battle.Round, Is.LessThanOrEqualTo(Battle.MaxRounds));
 			Assert.That(string.Join("\n", lines.ToArray()), Does.Not.Contain("Round 11"));
 
-			ModuleStack captured = ModuleStack.All["c100022"];
-			Assert.That(captured.Owner.Name, Is.EqualTo("2"));
-			Assert.That(captured.ModuleType.Name, Is.EqualTo("cbridg"));
-			Assert.That(captured.Quantity, Is.EqualTo(1));
-			Assert.That(ModuleStack.All["100022"].Quantity, Is.EqualTo(0));
+			ModuleStack capturedCargo = ModuleStack.All["c100024"];
+			Assert.That(capturedCargo.Owner.Name, Is.EqualTo("2"));
+			Assert.That(capturedCargo.ModuleType.Name, Is.EqualTo("cargob"));
+			Assert.That(capturedCargo.Quantity, Is.EqualTo(1));
+			Assert.That(capturedCargo.ItemStacks.Quantity("iron"), Is.EqualTo(50));
+			Assert.That(capturedCargo.ItemStacks.Quantity("titani"), Is.EqualTo(50));
+			Assert.That(capturedCargo.ItemStacks.Quantity("copper"), Is.EqualTo(50));
+			Assert.That(capturedCargo.ItemStacks.Quantity("silici"), Is.EqualTo(50));
+			Assert.That(capturedCargo.ItemStacks.Quantity("h2o2"), Is.EqualTo(500));
+			Assert.That(capturedCargo.ItemStacks.Quantity("terran"), Is.EqualTo(2));
+
+			List<string> expected = new List<string>
+            {
+                "  Week 1.",
+                "  Battle has commenced at orbit [O00003] of Earth [P00002] at AU 1, ocean planet [ocean] in system Sol [SS0001] (0, 0, 0).",
+                "  ------------------------------------------------------------",
+                "  Round 1:",
+                "  ------------------------------------------------------------",
+                "    tactics: capture.",
+                "  ------------------------------------------------------------",
+                "  Station [100021] is unarmed and cannot attack.",
+                "  Station [100021] is immobile and cannot escape.",
+                "  Frigate [100011] fires x-ray laser [100015] on Station [100021] (chance: 12/29) and misses.",
+                "  Frigate [100011] fires x-ray laser [100015] on Station [100021] (chance: 12/29) and hits #1 small cargo bay [100024] doing 1 damage.",
+                "  ------------------------------------------------------------",
+                "  Round 2:",
+                "  ------------------------------------------------------------",
+                "    tactics: capture.",
+                "  ------------------------------------------------------------",
+                "  Station [100021] is unarmed and cannot attack.",
+                "  Station [100021] is immobile and cannot escape.",
+                "  Frigate [100011] fires x-ray laser [100015] on Station [100021] (chance: 12/29) and hits #1 small cargo bay [100024] doing 1 damage.",
+                "  Frigate [100011] fires x-ray laser [100015] on Station [100021] (chance: 12/29) and hits #1 small cargo bay [100024] doing 1 damage.",
+                "  ------------------------------------------------------------",
+                "  Round 3:",
+                "  ------------------------------------------------------------",
+                "    tactics: capture.",
+                "  ------------------------------------------------------------",
+                "  Station [100021] is unarmed and cannot attack.",
+                "  Station [100021] is immobile and cannot escape.",
+                "  Frigate [100011] fires x-ray laser [100015] on Station [100021] (chance: 12/29) and hits #1 small cargo bay [100024] doing 1 damage.",
+                "  Frigate [100011] fires x-ray laser [100015] on Station [100021] (chance: 12/29) and hits #1 small cargo bay [100024] doing 1 damage.",
+                "  ------------------------------------------------------------",
+                "  Round 4:",
+                "  ------------------------------------------------------------",
+                "    tactics: capture.",
+                "  ------------------------------------------------------------",
+                "  Station [100021] is unarmed and cannot attack.",
+                "  Station [100021] is immobile and cannot escape.",
+                "  Frigate [100011] fires x-ray laser [100015] on Station [100021] (chance: 12/29) and hits #1 small cargo bay [100024] doing 1 damage.",
+                "    #1 small cargo bay [cargob] module captured by Caste Prime [2].",
+                "  Frigate [100011] fires x-ray laser [100015] on Station [100021] (chance: 12/29) and hits #1 small cargo bay [100024] doing 1 damage.",
+                "  ------------------------------------------------------------",
+                "  Round 5:",
+                "  ------------------------------------------------------------",
+                "    tactics: capture.",
+                "    + small cargo bay [c100024], small cargo bay [cargob].",
+                "      items: 50 units of iron [iron], 50 units of titanium [titani], 50 units of copper [copper], 50 units of silicium [silici], 500 units of oxyhydro [h2o2], 2 terrans [terran].",
+            };
+			for (int i = 0; i < expected.Count; i++)
+			{
+				Assert.That(narrative[i], Is.EqualTo(expected[i]), "narrative line " + i);
+			}
+			Assert.That(narrative.Count, Is.GreaterThanOrEqualTo(expected.Count));
+		}
+
+		[Test]
+		public void CaptureBattleReport_LastCommandCapturesParent_ShipPerspective()
+		{
+			Faction faction = this.game.Factions["2"];
+			Battles battles = this.game.Battles;
+			ModuleStack frigate = ModuleStack.All["100011"];
+			ModuleStack station = ModuleStack.All["100021"];
+			ModuleStack command = ModuleStack.All["100022"];
+			ModuleStack cargo = ModuleStack.All["100024"];
+
+			frigate.ApplyTactic("capture");
+
+			new Person(command, command.Owner, Race.All["terran"], "200010");
+			new Person(command, command.Owner, Race.All["terran"], "200011");
+			new Person(command, command.Owner, Race.All["terran"], "200012");
+
+			Sequence.Rolls.Clear();
+			Sequence.Ints.Clear();
+			for (int i = 0; i < 10; i++)
+			{
+				Sequence.Ints.Push(120);
+				Sequence.Ints.Push(1);
+			}
+			Sequence.Ints.Push(13);
+
+			Battle battle = new Battle(frigate, station);
+			battle.Execute(this.game.Week);
+
+			List<string> lines = battles.Report(faction);
+			List<string> narrative = captureCombatNarrative(lines);
+
+			Console.WriteLine("Last-command parent capture narrative:");
+			foreach (string line in narrative)
+			{
+				Console.WriteLine(line);
+			}
+
+			Assert.That(station.Owner.Name, Is.EqualTo("2"));
+			Assert.That(station.Name, Is.EqualTo("100021"));
+			Assert.That(cargo.Name, Is.EqualTo("100024"));
+			Assert.That(cargo.Owner.Name, Is.EqualTo("2"));
+			ModuleStack capturedCommand = ModuleStack.All["c100022"];
+			Assert.That(capturedCommand.Owner.Name, Is.EqualTo("2"));
+			Assert.That(capturedCommand.Quantity, Is.EqualTo(1));
+			Assert.That(Person.All.Contains("200003"), Is.False);
+			Assert.That(Person.All["200010"].Race.Name, Is.EqualTo("wndtrn"));
+			Assert.That(Person.All["200011"].Race.Name, Is.EqualTo("wndtrn"));
+			Assert.That(Person.All["200012"].Race.Name, Is.EqualTo("terran"));
+			Assert.That(Person.All["200012"].Parent, Is.EqualTo(capturedCommand));
+			Assert.That(capturedCommand.ItemStacks.Quantity("terran"), Is.EqualTo(3));
+			Assert.That(capturedCommand.ItemStacks.Quantity("wndtrn"), Is.EqualTo(4));
 
 			List<string> expected = new List<string>
             {
@@ -611,13 +759,22 @@ namespace IntegrationTests
                 "  Station [100021] is immobile and cannot escape.",
                 "  Frigate [100011] fires x-ray laser [100015] on Station [100021] (chance: 12/29) and hits #1 command bridge [100022] doing 1 damage.",
                 "    #1 command bridge [cbridg] module captured by Caste Prime [2].",
-                "  Frigate [100011] fires x-ray laser [100015] on Station [100021] (chance: 12/29) and hits #1 small cargo bay [100024] doing 1 damage.",
+                "    2 terrans [terran] killed.",
+                "    4 terrans [terran] wounded.",
+                "    3 terrans [terran] captured.",
+                "    terran officer [200003] is killed.",
+                "    terran officer [200010] is wounded.",
+                "    terran officer [200011] is wounded.",
+                "    terran officer [200012] is captured.",
+                "    Station [100021] captured by Caste Prime [2].",
+                "  ------------------------------------------------------------",
+                "  Battle won by attackers.",
             };
 			for (int i = 0; i < expected.Count; i++)
 			{
 				Assert.That(narrative[i], Is.EqualTo(expected[i]), "narrative line " + i);
 			}
-			Assert.That(narrative.Count, Is.GreaterThanOrEqualTo(expected.Count));
+			Assert.That(narrative.Count, Is.EqualTo(expected.Count));
 		}
 
 		[Test]

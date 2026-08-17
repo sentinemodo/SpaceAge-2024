@@ -371,6 +371,10 @@ namespace SpaceAge
 				Modules militaryModules = modulestack.GetModules(EModuleTypesGroup.military);
 				foreach (Module module in militaryModules)
 				{
+					if (!this.defenders.Contains(target.Name) && !this.attackers.Contains(target.Name))
+					{
+						break;
+					}
 					line = string.Concat(
 						modulestack.ReportName,
 						" fires ",
@@ -542,18 +546,26 @@ namespace SpaceAge
 			return size;
 		}
 
-		private int getDamageArea(ModuleStack moduleStack, ETactic firing, bool targetEvade)
+		private int getDamageArea(ModuleStack moduleStack, ETactic firing, bool targetEvade, Faction targetOwner)
 		{
+			if (targetOwner != null && moduleStack.Owner != targetOwner)
+			{
+				return 0;
+			}
             int totalArea = this.hitWeight(moduleStack, firing, targetEvade);
             foreach (ModuleStack subModuleStack in moduleStack.ModuleStacks.Values)
             {
-				totalArea += this.getDamageArea(subModuleStack, firing, targetEvade);
+				totalArea += this.getDamageArea(subModuleStack, firing, targetEvade, targetOwner);
             }
 			return totalArea;
         }
 
-		private Module getModule(ModuleStack moduleStack, int target, ETactic firing, bool targetEvade)
+		private Module getModule(ModuleStack moduleStack, int target, ETactic firing, bool targetEvade, Faction targetOwner)
 		{
+			if (targetOwner != null && moduleStack.Owner != targetOwner)
+			{
+				return null;
+			}
 			Module targetModule = null;
 			int perModule = 0;
 			if (moduleStack.Modules.Count > 0)
@@ -574,11 +586,11 @@ namespace SpaceAge
 				{
 					if (targetModule == null)
 					{
-						targetModule = this.getModule(subModuleStack, target, firing, targetEvade);
+						targetModule = this.getModule(subModuleStack, target, firing, targetEvade, targetOwner);
 					}
 					if (targetModule == null)
 					{
-						target -= getDamageArea(subModuleStack, firing, targetEvade);
+						target -= getDamageArea(subModuleStack, firing, targetEvade, targetOwner);
 					}
 				}
 			}
@@ -587,13 +599,14 @@ namespace SpaceAge
 
         private Module resolveHitLocation(ModuleStack moduleStack, ETactic eTactic, bool targetEvade)
 		{
-			int damageArea = this.getDamageArea(moduleStack, eTactic, targetEvade);
+			Faction targetOwner = moduleStack.Owner;
+			int damageArea = this.getDamageArea(moduleStack, eTactic, targetEvade, targetOwner);
 			if (damageArea < 1)
 			{
 				damageArea = 1;
 			}
             int roll = Sequence.GenerateRandomInt(0, damageArea, string.Concat("Hit location 0 to ", damageArea.ToString()));
-			return this.getModule(moduleStack, roll, eTactic, targetEvade);
+			return this.getModule(moduleStack, roll, eTactic, targetEvade, targetOwner);
 		}
 
 		public void executeMovement()
@@ -607,6 +620,7 @@ namespace SpaceAge
 		{
 			this.concluded = false;
 			this.week = week;
+			this.resetCaptureDamage();
 
 			this.prepareBattleReports();
 			this.announceLocationEvent(week);
@@ -698,6 +712,40 @@ namespace SpaceAge
 			this.ApplyCaptures(week);
 		}
 
+		private void resetCaptureDamage()
+		{
+			this.resetCaptureDamage(this.attackers);
+			this.resetCaptureDamage(this.defenders);
+		}
+
+		private void resetCaptureDamage(ModuleStacks stacks)
+		{
+			if (stacks == null)
+			{
+				return;
+			}
+			foreach (ModuleStack stack in stacks.Values)
+			{
+				this.resetCaptureDamage(stack);
+			}
+		}
+
+		private void resetCaptureDamage(ModuleStack stack)
+		{
+			if (stack == null)
+			{
+				return;
+			}
+			foreach (Module module in stack.Modules)
+			{
+				module.CaptureDamage = 0;
+			}
+			foreach (ModuleStack nested in stack.ModuleStacks.Values)
+			{
+				this.resetCaptureDamage(nested);
+			}
+		}
+
 		private void processEvadeLeaves()
 		{
 			List<ModuleStack> combatants = new List<ModuleStack>();
@@ -754,7 +802,12 @@ namespace SpaceAge
 		{
 			ModuleStack source = module.Parent;
 			int originalCount = source.Quantity;
+			Faction originalOwner = source.Owner;
 			if (originalCount < 1)
+			{
+				return;
+			}
+			if (originalOwner == this.attacker.Owner)
 			{
 				return;
 			}
@@ -769,12 +822,60 @@ namespace SpaceAge
 			source.RemoveModule(index);
 			captured.AddModule(module);
 
-			this.transferProportionalItems(source, captured, 1, originalCount);
+			this.transferProportionalItems(source, captured, 1, originalCount, source.ModuleType.Group == EModuleTypesGroup.command);
 			this.transferProportionalNested(source, captured, 1, originalCount);
 			this.transferProportionalPeople(source, captured, 1, originalCount);
 
 			source.EventReports.Add(week, string.Format("lost {0} to capture.", module.ReportName));
 			captured.EventReports.Add(week, string.Format("captured {0} from {1}.", captured.ModuleType.ReportName, source.ReportName));
+
+			if (source.ModuleType.Group == EModuleTypesGroup.command)
+			{
+				ModuleStack root = source.RootModuleStack;
+				if (this.countCommandModules(root, originalOwner) == 0)
+				{
+					this.captureParentByOwnership(root);
+				}
+			}
+		}
+
+		private int countCommandModules(ModuleStack stack, Faction owner)
+		{
+			int count = 0;
+			if (stack.Owner == owner && stack.ModuleType != null
+				&& stack.ModuleType.Group == EModuleTypesGroup.command)
+			{
+				count += stack.Modules.Count;
+			}
+			foreach (ModuleStack child in stack.ModuleStacks.Values)
+			{
+				count += this.countCommandModules(child, owner);
+			}
+			return count;
+		}
+
+		private void captureParentByOwnership(ModuleStack root)
+		{
+			this.changeOwnerRecursive(root, this.attacker.Owner);
+			string line = string.Format("  {0} captured by {1}.",
+				root.ReportName,
+				this.attacker.Owner.ReportName);
+			this.report(line);
+			this.reportObserver(line);
+			this.removeFromBattle(root);
+		}
+
+		private void changeOwnerRecursive(ModuleStack stack, Faction owner)
+		{
+			stack.Owner = owner;
+			foreach (Person person in stack.People.Values)
+			{
+				person.Owner = owner;
+			}
+			foreach (ModuleStack child in stack.ModuleStacks.Values)
+			{
+				this.changeOwnerRecursive(child, owner);
+			}
 		}
 
 		private string capturedStackName(ModuleStack source)
@@ -789,7 +890,7 @@ namespace SpaceAge
 			return name;
 		}
 
-		private void transferProportionalItems(ModuleStack source, ModuleStack dest, int taken, int originalCount)
+		private void transferProportionalItems(ModuleStack source, ModuleStack dest, int taken, int originalCount, bool crewCasualties)
 		{
 			List<ItemStack> snapshot = new List<ItemStack>();
 			foreach (ItemStack itemStack in source.ItemStacks.Values)
@@ -803,8 +904,36 @@ namespace SpaceAge
 				{
 					continue;
 				}
+				if (crewCasualties && itemStack.ItemType.Group == EItemTypesGroup.crew)
+				{
+					this.transferCrewCasualties(source, dest, itemStack.ItemType, move);
+					continue;
+				}
 				source.ItemStacks.Remove(new ItemStack(itemStack.ItemType, move));
 				dest.ItemStacks.Add(new ItemStack(itemStack.ItemType, move));
+			}
+		}
+
+		private void transferCrewCasualties(ModuleStack source, ModuleStack dest, ItemType crewType, int move)
+		{
+			int killed = move / 4;
+			int wounded = move / 2;
+			int healthy = move - killed - wounded;
+			source.ItemStacks.Remove(new ItemStack(crewType, move));
+			if (killed > 0)
+			{
+				this.report(string.Format("  {0} killed.", new ItemStack(crewType, killed).ReportName));
+			}
+			if (wounded > 0)
+			{
+				ItemType woundedType = ItemType.All.ContainsKey("wndtrn") ? ItemType.All["wndtrn"] : crewType;
+				dest.ItemStacks.Add(new ItemStack(woundedType, wounded));
+				this.report(string.Format("  {0} wounded.", new ItemStack(crewType, wounded).ReportName));
+			}
+			if (healthy > 0)
+			{
+				dest.ItemStacks.Add(new ItemStack(crewType, healthy));
+				this.report(string.Format("  {0} captured.", new ItemStack(crewType, healthy).ReportName));
 			}
 		}
 
@@ -853,6 +982,7 @@ namespace SpaceAge
 				}
 				toMove.Add(person);
 			}
+			toMove.Sort(People.CompareByNames);
 
 			int killed = moveCount / 4;
 			int wounded = moveCount / 2;
@@ -860,8 +990,10 @@ namespace SpaceAge
 			int index = 0;
 			foreach (Person person in toMove)
 			{
+				string personName = person.ReportName;
 				if (index < killed)
 				{
+					this.report(string.Format("  {0} is killed.", personName));
 					Person.All.Remove(person);
 				}
 				else
@@ -871,6 +1003,11 @@ namespace SpaceAge
 					if (index < killed + wounded && woundedRace != null)
 					{
 						person.Race = woundedRace;
+						this.report(string.Format("  {0} is wounded.", personName));
+					}
+					else
+					{
+						this.report(string.Format("  {0} is captured.", personName));
 					}
 				}
 				index++;

@@ -250,7 +250,7 @@ namespace UnitTests
 			Sequence.Ints.Clear();
 			for (int i = 0; i < 30; i++)
 			{
-				Sequence.Ints.Push(120);
+				Sequence.Ints.Push(250);
 				Sequence.Ints.Push(1);
 			}
 			Sequence.Ints.Push(13);
@@ -264,6 +264,40 @@ namespace UnitTests
 			string report = string.Join("\n", this.game.Battles.Report(frigate.Owner).ToArray());
 			Assert.That(report, Does.Not.Contain("Round 11"));
 			Assert.That(report, Does.Contain("Round 10:"));
+		}
+
+		[Test]
+		public void Execute_ZerosCaptureDamageAtBattleStart()
+		{
+			ModuleStack frigate = this.game.ModuleStacks["100011"];
+			ModuleStack station = this.game.ModuleStacks["100021"];
+			ModuleStack reactor = this.game.ModuleStacks["100023"];
+			ModuleStack cargo = this.game.ModuleStacks["100024"];
+
+			station.Modules[0].CaptureDamage = 12;
+			reactor.Modules[0].CaptureDamage = 8;
+			cargo.Modules[0].CaptureDamage = 20;
+			cargo.Modules[1].CaptureDamage = 5;
+			frigate.Modules[0].CaptureDamage = 3;
+
+			Sequence.Rolls.Clear();
+			Sequence.Ints.Clear();
+			for (int i = 0; i < 40; i++)
+			{
+				Sequence.Ints.Push(13);
+			}
+
+			Battle battle = new Battle(frigate, station);
+			Assert.That(station.Modules[0].CaptureDamage, Is.EqualTo(12));
+			Assert.That(reactor.Modules[0].CaptureDamage, Is.EqualTo(8));
+
+			battle.Execute(this.game.Week);
+
+			Assert.That(station.Modules[0].CaptureDamage, Is.EqualTo(0));
+			Assert.That(reactor.Modules[0].CaptureDamage, Is.EqualTo(0));
+			Assert.That(cargo.Modules[0].CaptureDamage, Is.EqualTo(0));
+			Assert.That(cargo.Modules[1].CaptureDamage, Is.EqualTo(0));
+			Assert.That(frigate.Modules[0].CaptureDamage, Is.EqualTo(0));
 		}
 	}
 }

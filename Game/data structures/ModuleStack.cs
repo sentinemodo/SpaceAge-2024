@@ -1294,6 +1294,14 @@ namespace SpaceAge
                 { this.reportDetails(faction), level + 1 }
             };
 
+            if (this.owner == faction && this.modules.HasPersistedState)
+            {
+                string hitPoints = string.Empty;
+                hitPoints = this.reportOwnHitPoints(hitPoints);
+                reportLines.Add(string.Concat(hitPoints, "."), level + 1);
+                reportLines.Add(this.modules.Report(faction), level + 2);
+            }
+
             if (this.IsFormed)
             {
                 if (this.owner == faction && this.moduleType.MoveModes.Count > 0)
@@ -1477,6 +1485,13 @@ namespace SpaceAge
 				lines.Add(string.Concat(line, "."));
 			}
 
+			ModuleStack parentStack = this.parent as ModuleStack;
+			if (this.owner == faction && this.itemStacks.Count > 0
+				&& parentStack != null && parentStack.Owner != faction)
+			{
+				lines.Add(string.Concat("items: ", this.ItemStacks.ReportList, "."));
+			}
+
 			//if (this.owner == faction && this.effects.Count > 0)
 			//{
 			//    reportLines.Add(this.effects.Report(faction, level + 1));
@@ -1530,6 +1545,24 @@ namespace SpaceAge
 						line,	
 						this.InitiativeBonus - this.People.Initiative);
 				}
+			}
+			return line;
+		}
+
+		private string reportOwnHitPoints(string line)
+		{
+			line = string.Format("{0}hit points: {1}/{2}",
+				(line == string.Empty) ? string.Empty : string.Concat(line, ", "),
+				this.HitPoints,
+				this.HitPoints - this.Damage);
+			int capture = 0;
+			foreach (Module module in this.modules)
+			{
+				capture += module.CaptureDamage;
+			}
+			if (capture > 0)
+			{
+				line = string.Format("{0}, capture: {1}", line, capture);
 			}
 			return line;
 		}
@@ -1758,12 +1791,18 @@ namespace SpaceAge
                 this.Description = elModuleStack.GetAttribute("description");
             }
 
-            int modules = this.XMLAssignInteger(elModuleStack.GetAttribute("quantity"), 1); 
-            
-            // TODO: here need to implement damage that currently does not transfers between turns
-            for (int i = 0; i < modules; i++)
+            int modules = this.XMLAssignInteger(elModuleStack.GetAttribute("quantity"), 1);
+            XmlNodeList moduleNodes = elModuleStack.SelectNodes("module");
+            if (moduleNodes.Count > 0)
             {
-                this.AddModule();
+                this.Modules.LoadXml(elModuleStack, this);
+            }
+            else
+            {
+                for (int i = 0; i < modules; i++)
+                {
+                    this.AddModule();
+                }
             }
 
             this.People.LoadXml(elModuleStack, this);                
@@ -1794,6 +1833,8 @@ namespace SpaceAge
             {
                 this.xmlElement.SetAttribute("description", this.Description);
             }
+
+            this.Modules.SaveXml(doc, this.xmlElement);
 
             this.People.SaveXml(doc, this.xmlElement, faction);
             this.Technologies.SaveXml(doc, this.xmlElement);
