@@ -100,6 +100,11 @@ namespace SpaceAge
 					}
 
 					// battles reports
+					if (this.game.Battles.Count > 0)
+					{
+						this.Write();
+						this.Write(this.game.Battles, faction);
+					}
 
 					// galaxy reports (includes the per-location market section)
 					this.Write(this.game.Galaxy, faction);

@@ -75,6 +75,28 @@ namespace SpaceAge
 			get { return this.parent.ModuleType.DamageCapacity; }
 		}
 
+		public int HitPoints
+		{
+			get { return this.hitPoints; }
+		}
+
+		private int captureDamage;
+		public int CaptureDamage
+		{
+			get { return this.captureDamage; }
+			set { this.captureDamage = value; }
+		}
+
+		public bool IsWrecked
+		{
+			get { return this.Damage >= this.HitPoints; }
+		}
+
+		public bool IsCaptureComplete
+		{
+			get { return !this.IsWrecked && (this.Damage + this.CaptureDamage) >= this.HitPoints; }
+		}
+
 		public EDamageStatus DamageStatus
 		{
 			get

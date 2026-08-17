@@ -302,6 +302,9 @@ namespace SpaceAge
 				case "attack":
 					order = new AttackOrder(subject);
 					break;
+				case "capture":
+					order = new CaptureOrder(subject);
+					break;
 				case "buy":
 					order = new BuyOrder(subject);
 					break;
@@ -343,6 +346,9 @@ namespace SpaceAge
                     break;
                 case "stack":
 					order = new StackOrder(subject);
+					break;
+				case "tactic":
+					order = new TacticOrder(subject);
 					break;
 				case "train":
 					order = new TrainOrder(subject);

@@ -15,7 +15,9 @@ namespace SpaceAge
                 "Battles report:",
                 ""
             };
-			foreach (Battle battle in this)
+			List<Battle> sorted = new List<Battle>(this);
+			sorted.Sort(delegate(Battle a, Battle b) { return a.Week.CompareTo(b.Week); });
+			foreach (Battle battle in sorted)
 			{
 				reportLines.AddRange(battle.Report(faction));
 			}

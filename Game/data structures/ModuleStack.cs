@@ -810,6 +810,47 @@ namespace SpaceAge
 			get { return this.tactics; }
 		}
 
+		public string PreferredTargetName { get; set; }
+
+		public bool HasEvade
+		{
+			get { return this.Tactics.ContainsName("evade"); }
+		}
+
+		public bool HasCapture
+		{
+			get { return this.Tactics.ContainsName("capture"); }
+		}
+
+		public ETactic FiringTactic
+		{
+			get { return this.HasCapture ? ETactic.capture : ETactic.destroy; }
+		}
+
+		public void ApplyTactic(string tacticName)
+		{
+			if (tacticName == "evade")
+			{
+				if (!this.Tactics.ContainsName("evade"))
+				{
+					this.Tactics.Add(new EvadeTactic(this));
+				}
+				return;
+			}
+
+			this.Tactics.RemoveByName("destroy");
+			this.Tactics.RemoveByName("capture");
+			this.Tactics.RemoveByName("disable");
+			if (tacticName == "capture")
+			{
+				this.Tactics.Add(new CaptureTactic(this));
+			}
+			else
+			{
+				this.Tactics.Add(new DestroyTactic(this));
+			}
+		}
+
 		#endregion
 
 

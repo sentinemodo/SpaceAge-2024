@@ -159,6 +159,7 @@ namespace SpaceAge
 				this.ClearExecutedImmediateOrders();
 				this.ExecuteOrders();
                 this.ProcessBuyOffers();
+				this.ExecuteBattles();
 			}
 			this.ClearExecutedLongOrder();
 			//this.ClearFailedToExecuteImmediateOrders();
@@ -360,6 +361,15 @@ namespace SpaceAge
 		public Battles Battles
 		{
 			get { return Battle.All; }
+		}
+
+		public void ExecuteBattles()
+		{
+			List<Battle> started = Battle.StartAtLocations(this.week);
+			foreach (Battle battle in started)
+			{
+				battle.Execute(this.week);
+			}
 		}
 		#endregion
 

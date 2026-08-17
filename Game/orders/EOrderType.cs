@@ -9,6 +9,7 @@ namespace SpaceAge
 		active,
 		alias,
 		attack,
+		capture,
 		buy,
         copy,
 		form, 
@@ -23,6 +24,7 @@ namespace SpaceAge
 		see,
         sell,
 		stack,
+		tactic,
         transfer,
 		train,
         use

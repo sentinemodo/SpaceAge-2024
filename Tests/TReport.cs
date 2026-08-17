@@ -501,6 +501,125 @@ namespace IntegrationTests
             Assert.That(lines.Count, Is.EqualTo(testlines.Count));
 		}
 
+		private static List<string> captureCombatNarrative(List<string> lines)
+		{
+			List<string> narrative = new List<string>();
+			foreach (string line in lines)
+			{
+				string trimmed = line.Trim();
+				if (trimmed.StartsWith("Week ")
+					|| trimmed.StartsWith("Battle has commenced")
+					|| trimmed.StartsWith("Round ")
+					|| trimmed.StartsWith("----")
+					|| trimmed.Contains("tactics: capture")
+					|| trimmed.Contains("fires ")
+					|| trimmed.Contains("unarmed")
+					|| trimmed.Contains("immobile and cannot escape")
+					|| trimmed.Contains("disabled (capture)")
+					|| trimmed.Contains("module captured by")
+					|| trimmed.Contains("is wrecked")
+					|| trimmed.Contains("lost it's")
+					|| trimmed.Contains("Battle won")
+					|| trimmed.Contains("Battle ended")
+					|| trimmed.Contains("evades and leaves"))
+				{
+					narrative.Add(line);
+				}
+			}
+			return narrative;
+		}
+
+		[Test]
+		public void CaptureBattleReport_ShipVsStation_ShipPerspective()
+		{
+			Faction faction = this.game.Factions["2"];
+			Battles battles = this.game.Battles;
+			ModuleStack frigate = ModuleStack.All["100011"];
+			ModuleStack station = ModuleStack.All["100021"];
+
+			frigate.ApplyTactic("capture");
+
+			Sequence.Rolls.Clear();
+			Sequence.Ints.Clear();
+			// LIFO: last push is consumed first. Same miss-then-hits pattern as the destroy
+			// golden, then enough hit/location pairs for the remaining rounds.
+			for (int i = 0; i < 20; i++)
+			{
+				Sequence.Ints.Push(120); // capture-weighted location lands on the command bridge
+				Sequence.Ints.Push(1);   // hit
+			}
+			Sequence.Ints.Push(13); // first shot misses (13 > chance 12)
+
+			Battle battle = new Battle(frigate, station);
+			battle.Execute(this.game.Week);
+
+			List<string> lines = battles.Report(faction);
+			List<string> narrative = captureCombatNarrative(lines);
+
+			Console.WriteLine("Capture battle narrative:");
+			foreach (string line in narrative)
+			{
+				Console.WriteLine(line);
+			}
+
+			Assert.That(battle.Round, Is.LessThanOrEqualTo(Battle.MaxRounds));
+			Assert.That(string.Join("\n", lines.ToArray()), Does.Not.Contain("Round 11"));
+
+			ModuleStack captured = ModuleStack.All["c100022"];
+			Assert.That(captured.Owner.Name, Is.EqualTo("2"));
+			Assert.That(captured.ModuleType.Name, Is.EqualTo("cbridg"));
+			Assert.That(captured.Quantity, Is.EqualTo(1));
+			Assert.That(ModuleStack.All["100022"].Quantity, Is.EqualTo(0));
+
+			List<string> expected = new List<string>
+            {
+                "  Week 1.",
+                "  Battle has commenced at orbit [O00003] of Earth [P00002] at AU 1, ocean planet [ocean] in system Sol [SS0001] (0, 0, 0).",
+                "  ------------------------------------------------------------",
+                "  Round 1:",
+                "  ------------------------------------------------------------",
+                "    tactics: capture.",
+                "  ------------------------------------------------------------",
+                "  Station [100021] is unarmed and cannot attack.",
+                "  Station [100021] is immobile and cannot escape.",
+                "  Frigate [100011] fires x-ray laser [100015] on Station [100021] (chance: 12/29) and misses.",
+                "  Frigate [100011] fires x-ray laser [100015] on Station [100021] (chance: 12/29) and hits #1 command bridge [100022] doing 1 damage.",
+                "  ------------------------------------------------------------",
+                "  Round 2:",
+                "  ------------------------------------------------------------",
+                "    tactics: capture.",
+                "  ------------------------------------------------------------",
+                "  Station [100021] is unarmed and cannot attack.",
+                "  Station [100021] is immobile and cannot escape.",
+                "  Frigate [100011] fires x-ray laser [100015] on Station [100021] (chance: 12/29) and hits #1 command bridge [100022] doing 1 damage.",
+                "  Frigate [100011] fires x-ray laser [100015] on Station [100021] (chance: 12/29) and hits #1 command bridge [100022] doing 1 damage.",
+                "  ------------------------------------------------------------",
+                "  Round 3:",
+                "  ------------------------------------------------------------",
+                "    tactics: capture.",
+                "  ------------------------------------------------------------",
+                "  Station [100021] is unarmed and cannot attack.",
+                "  Station [100021] is immobile and cannot escape.",
+                "  Frigate [100011] fires x-ray laser [100015] on Station [100021] (chance: 12/29) and hits #1 command bridge [100022] doing 1 damage.",
+                "  Frigate [100011] fires x-ray laser [100015] on Station [100021] (chance: 12/29) and hits #1 command bridge [100022] doing 1 damage.",
+                "  ------------------------------------------------------------",
+                "  Round 4:",
+                "  ------------------------------------------------------------",
+                "    tactics: capture.",
+                "  ------------------------------------------------------------",
+                "  Station [100021] is unarmed and cannot attack.",
+                "  Station [100021] is immobile and cannot escape.",
+                "  Frigate [100011] fires x-ray laser [100015] on Station [100021] (chance: 12/29) and hits #1 command bridge [100022] doing 1 damage.",
+                "    #1 command bridge [cbridg] module captured by Caste Prime [2].",
+                "  Frigate [100011] fires x-ray laser [100015] on Station [100021] (chance: 12/29) and hits #1 small cargo bay [100024] doing 1 damage.",
+            };
+			for (int i = 0; i < expected.Count; i++)
+			{
+				Assert.That(narrative[i], Is.EqualTo(expected[i]), "narrative line " + i);
+			}
+			Assert.That(narrative.Count, Is.GreaterThanOrEqualTo(expected.Count));
+		}
+
 		[Test]
 		public void BattleReport_ShipVsStation_StationPerspective()
 		{
