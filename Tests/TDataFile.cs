@@ -92,6 +92,16 @@ namespace UnitTests
 
 			// tag added to an existing technology
 			Assert.That(Technology.All["stnrdf"].HasTag("military"));
+
+			ModuleType engshp = ModuleType.All["engshp"];
+			Assert.That(engshp.Group, Is.EqualTo(EModuleTypesGroup.production));
+			Assert.That(engshp.Size, Is.EqualTo(25));
+			Assert.That(engshp.CrewRequired, Is.EqualTo(2));
+			Technology engshpTech = Technology.All["engshp"];
+			Assert.That(engshpTech.Level, Is.EqualTo(1));
+			Assert.That(engshpTech.Cost, Is.EqualTo(4));
+			Assert.That(engshpTech.HasTag("production"));
+			Assert.That(engshpTech.UseProduceModules.Name, Is.EqualTo("engshp"));
 		}
 
 		[Test]

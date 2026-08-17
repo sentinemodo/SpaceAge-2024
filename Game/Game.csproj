@@ -201,6 +201,7 @@
     <Compile Include="orders\AliasOrder.cs" />
     <Compile Include="orders\AttackOrder.cs" />
     <Compile Include="orders\CaptureOrder.cs" />
+    <Compile Include="orders\RepairOrder.cs" />
     <Compile Include="orders\TacticOrder.cs" />
     <Compile Include="orders\EOrderType.cs" />
     <Compile Include="orders\HasOrder.cs" />

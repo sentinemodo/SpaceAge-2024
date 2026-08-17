@@ -19,6 +19,7 @@ namespace SpaceAge
 		move,
 		name,
         produce,
+		repair,
 		research,
 		set,
 		see,

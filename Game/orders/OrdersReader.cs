@@ -329,8 +329,11 @@ namespace SpaceAge
 				case "move":
 					order = new MoveOrder(subject);
 					break;
-                case "produce":
+				case "produce":
                     order = new ProduceOrder(subject);
+                    break;
+                case "repair":
+                    order = new RepairOrder(subject);
                     break;
                 case "research":
                     order = new ResearchOrder(subject);

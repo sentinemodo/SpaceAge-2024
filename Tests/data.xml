@@ -648,6 +648,18 @@ This assembly technology represents the pinnacle of human ingenuity and collabor
 			<use-produce effect="repair" target="module-damage" change="-1"/>
 		</entry>
 		<entry
+			name="engshp"
+			tags="production"
+			name-en="engineering shop"
+			level="1"
+			cost="4"
+			description="Construction of a compact engineering shop that patches battle and maintenance damage using spare parts."
+			use-time="2">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="5"/>
+			<use-produce module="engshp"/>
+		</entry>
+		<entry
 			name="medtec"
 			name-en="medical services"
 			level="2"
@@ -1256,6 +1268,25 @@ Researchers can query the library. The system can handle natural language questi
 			technology-capacity="1"
 			hit-points="10">
 			<upkeep type="cash" quanity="10"/>
+		</entry>
+		<entry
+			name="engshp"
+			name-en="engineering shop"
+			name-en2="engineering shops"
+			group="production"
+			description="A small workshop that repairs the parent module stack and nested stacks. REPAIR restores 20 hit points per week and consumes 1 spare part, or 1 hit point with no parts."
+			size="25"
+			capacity="10"
+			mass="20"
+			crew="2"
+			energy="1"
+			technology-capacity="1"
+			hit-points="15">
+			<upkeep type="cash" quantity="5"/>
+			<operation-allowed-in module-group="settlement"/>
+			<operation-allowed-in module-group="frigate"/>
+			<operation-allowed-in module-group="spacecraft"/>
+			<operation-allowed-in module-group="space station"/>
 		</entry>
 		<entry
 			name="landpd"

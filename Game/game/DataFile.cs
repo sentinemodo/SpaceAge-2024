@@ -871,6 +871,9 @@ namespace SpaceAge
                     case "produce":
                         order = new ProduceOrder(subject);
                         break;
+                    case "repair":
+                        order = new RepairOrder(subject);
+                        break;
                     case "sell":
                         order = new SellOrder(subject);
                         break;
