@@ -260,7 +260,7 @@
 			name-en="action and reaction" 
 			level="0"
 			description="The construction of reaction-based drives, using cheap reaction mass heated by large energy systems." 
-			use-time="3">
+			use-time="2">
 			<use-allowed-in module-type-group="production"/>
 			<use-consume item="iron" quantity="10" />
 			<use-consume item="titani" quantity="10" />
@@ -311,7 +311,7 @@
 			name-en="industrial automation" 
 			level="0"
 			description="Use of automated production management to reduce the workforce requirements." 
-			use-time="6">
+			use-time="4">
 			<use-allowed-in module-type-group="production"/>
 			<use-consume item="iron" quantity="15" />
 			<use-consume item="titani" quantity="10" />
@@ -536,7 +536,7 @@ The hulls are constructed in modular sections, each piece fitting together with 
 Once the hull is complete, it is moved to the next stage of assembly, where it will be outfitted with various modules. These modules, pre-fabricated and tested, are designed for a range of uses: living quarters [crwqrt], command bridges [cbridg], cargo bays [cargob], and more. Each module is equipped with standardized interfaces, allowing them to be easily connected and integrated into the hull.
 Robotic arms and drones carefully maneuver the modules into place, securing them with precision and ensuring all connections are airtight and functional. The interior of the ship begins to take shape, with corridors, rooms, and systems coming together to form a cohesive whole. Advanced AI oversees the entire process, monitoring for any anomalies and ensuring that every component meets stringent quality standards.
 This assembly technology represents the pinnacle of human ingenuity and collaboration, a testament to our ability to create complex, adaptable, and resilient spacecraft. Each hull, filled with its specialized modules, is a blank canvas, ready to be transformed into a vessel capable of exploring the farthest reaches of the cosmos."
-			use-time="5">
+			use-time="4">
 			<use-allowed-in module-type-group="production" location-type="orbit"/>
 			<use-consume item="iron" quantity="6"/>
 			<use-consume item="titani" quantity="4"/>
@@ -547,7 +547,7 @@ This assembly technology represents the pinnacle of human ingenuity and collabor
 			name-en="space control"
 			level="0" 
 			description="Any self-respecting space vessel requires a command structure to navigate and direct a ship."
-			use-time="4">
+			use-time="3">
 			<use-allowed-in module-type-group="production"/>
 			<use-consume item="iron"  quantity="1"/>
 			<use-consume item="titani" quantity="4"/>
@@ -559,7 +559,7 @@ This assembly technology represents the pinnacle of human ingenuity and collabor
 			name-en="uranium fission"
 			level="0" 
 			description="Heavy elements can be made to fission faster using heavy shielded structures to provide lasting power."
-			use-time="8">
+			use-time="6">
 			<use-allowed-in module-type-group="production"/>
 			<use-consume item="iron"  quantity="2"/>
 			<use-consume item="titani" quantity="8"/>
@@ -601,7 +601,7 @@ This assembly technology represents the pinnacle of human ingenuity and collabor
 			name-en="crew housing"
 			level="0"
 			description="Habitations for crew members in hostile environment require careful design to avoid cohabitation problems."
-			use-time="3">
+			use-time="2">
 			<use-allowed-in module-type-group="production"/>
 			<use-consume item="iron"  quantity="3"/>
 			<use-consume item="titani" quantity="2"/>

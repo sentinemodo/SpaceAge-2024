@@ -598,7 +598,9 @@ Galaxy report:
   - command bridge [112], command bridge [cbridg], disabled, immobile, owned by Caste Prime [2].
     size: 800.
   - fission reactor [113], fission reactor [fisrec], disabled, immobile, owned by Caste Prime [2].
-    size: 0.
+    size: 400.
+  - reaction drive [114], reaction drive [rctdrv], disabled, owned by Caste Prime [2].
+    size: 600.
 
   Northern Hemisphere [R00002] (0,0), grassland region, settlement capacity 8/3.
   Exits:

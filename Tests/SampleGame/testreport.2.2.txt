@@ -40,7 +40,7 @@ Galaxy report:
     (size: 150, mass: 150).
     effects:
       can operate for another 10 weeks without refueling.
-      producing spaceship hull [sshull] into spaceship hull [101], 3 weeks to complete (x10
+      producing spaceship hull [sshull] into spaceship hull [101], 2 weeks to complete (x10
       efficiency multiplier).
     events:
       week 1: formed by factory [000017] with space shuttle [shuttl].
@@ -331,7 +331,7 @@ Orders Template:
 ; [food], 90 units of oxyhydro [h2o2], 150 units of terran breathing gas mixture [terair].
 ; effects:
 ;   can operate for another 10 weeks without refueling.
-;   producing spaceship hull [sshull] into spaceship hull [101], 3 weeks to complete (x10 efficiency
+;   producing spaceship hull [sshull] into spaceship hull [101], 2 weeks to complete (x10 efficiency
 ;   multiplier).
 move R00001
 +use ssassm as 101

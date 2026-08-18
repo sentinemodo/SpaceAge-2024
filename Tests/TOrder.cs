@@ -2847,9 +2847,9 @@ namespace UnitTests
             shuttles.ItemStacks.Add(new ItemStack(ItemType.All["copper"], 5));
             this.consoleOutReport("shuttles", shuttles, faction);
 
-            // this would execute in 8 weeks using single factory, or in two weeks using 5 factories
+            // this would execute in 6 weeks using single factory, or in two weeks using 5 factories
             // this shouldn't execute in region, without fuel
-            // with the above provided it should take 8 * 10 -> 80 / 5 -> 16 weeks
+            // with the above provided it should take 6 * 10 -> 60 / 5 -> 12 weeks
             List<string> testcommands = new List<string>
             {
                 "#faction 2",
@@ -2893,7 +2893,7 @@ namespace UnitTests
             Assert.That(shuttles.Effects.IsProducing);
             Assert.That(shuttles.Effects.IsFuelled);
 
-            Assert.That(shuttles.Effects.Producing.Duration, Is.EqualTo(15));
+            Assert.That(shuttles.Effects.Producing.Duration, Is.EqualTo(11));
             Assert.That(shuttles.Effects.Fuelled.Duration, Is.EqualTo(13));
             this.consoleOutReport("shuttles", shuttles, faction);
 
@@ -2909,7 +2909,7 @@ namespace UnitTests
             Assert.That(shuttles.Effects.IsProducing);
             Assert.That(shuttles.Effects.IsFuelled);
 
-            Assert.That(shuttles.Effects.Producing.Duration, Is.EqualTo(14));
+            Assert.That(shuttles.Effects.Producing.Duration, Is.EqualTo(10));
             Assert.That(shuttles.Effects.Fuelled.Duration, Is.EqualTo(12));
             this.consoleOutReport("shuttles", shuttles, faction);            
         }

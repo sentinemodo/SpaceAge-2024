@@ -4123,44 +4123,55 @@ Galaxy report:
 ------------------------------------------------------------
   orbit [O00002], has atmosphere suitable for terran [terran].
   + space shuttle [100], 10 space shuttle [shuttl].
-    size: 2000, mass: 7500/1581 (300), capacity: 1250/1124, crew: 20/41, upkeep: 1050 (1000) cash
+    size: 2000, mass: 7500/1481 (300), capacity: 1250/1024, crew: 20/41, upkeep: 1050 (1000) cash
     [cash], consume: 41 (0) units of food [food], 41 (0) units of terran breathing gas mixture
     [terair].
     movement speed: 0.5 in space.
     fuel requirements: 10 units of uranium [uraniu] , 10 units of oxyhydro [h2o2] per 13 weeks.
     items: 40 terrans [terran] (size: 160, mass: 160, upkeep: 40 cash [cash], consume: 40 units of
     food [food], 40 units of terran breathing gas mixture [terair]), 30 units of iron [iron] (size:
-    150, mass: 300), 26 units of titanium [titani] (size: 260, mass: 260), 19 units of silicium
+    150, mass: 300), 16 units of titanium [titani] (size: 160, mass: 160), 19 units of silicium
     [silici] (size: 95, mass: 57), 15 units of copper [copper] (size: 75, mass: 120), 150 units of
     food [food] (size: 150, mass: 150), 80 units of oxyhydro [h2o2] (size: 80, mass: 80), 150 units
     of terran breathing gas mixture [terair] (size: 150, mass: 150).
     effects:
-      producing fission reactor [fisrec] into fission reactor [113], 2 weeks to complete (x10
-      efficiency multiplier).
       can operate for another 10 weeks without refueling.
     events:
-      week 3: produced spaceship hull [sshull] into spaceship hull [101].
-      week 4: consumed unit of silicium [silici] to produce command bridge [cbridg] module.
-      week 7: produced command bridge [cbridg] into command bridge [112].
-      week 8: consumed 5 units of copper [copper] to produce fission reactor [fisrec] module.
+      week 2: produced spaceship hull [sshull] into spaceship hull [101].
+      week 3: consumed unit of silicium [silici] to produce command bridge [cbridg] module.
+      week 5: produced command bridge [cbridg] into command bridge [112].
+      week 6: consumed 5 units of copper [copper] to produce fission reactor [fisrec] module.
       week 11: consumed 10 units of uranium [uraniu], 10 units of oxyhydro [h2o2] as fuel.
+      week 11: produced fission reactor [fisrec] into fission reactor [113].
+      week 12: consumed 10 units of titanium [titani] to produce reaction drive [rctdrv] module.
+      week 13: produced reaction drive [rctdrv] into reaction drive [114].
     + Caste Prime CEO [000001], terran [terran].
       size: 4, mass: 4, capacity: 3/0, upkeep: 10 cash [cash], consume: unit of food [food], unit of
       terran breathing gas mixture [terair].
   + spaceship hull [101], spaceship hull [sshull], disabled, immobile.
     size: 5000, mass: 100 (100), capacity: 4500/0, energy: 1, upkeep: 20 cash [cash].
     events:
-      week 3: received spaceship hull [sshull] produced by space shuttle [100].
+      week 2: received spaceship hull [sshull] produced by space shuttle [100].
   + command bridge [112], command bridge [cbridg], disabled, immobile.
     size: 800, mass: 300 (300), capacity: 200/0, energy: 5, crew: 1/0, upkeep: 100 cash [cash].
     events:
-      week 4: formed by space shuttle [100] with command bridge [cbridg].
-      week 7: received command bridge [cbridg] produced by space shuttle [100].
+      week 3: formed by space shuttle [100] with command bridge [cbridg].
+      week 5: received command bridge [cbridg] produced by space shuttle [100].
   + fission reactor [113], fission reactor [fisrec], disabled, immobile.
-    size: 0, mass: 0.
+    size: 400, mass: 140 (140), capacity: 100/0, energy: 60/10 (consume: unit of uranium [uraniu]
+    for 13 weeks), crew: 1/0, upkeep: 90 cash [cash].
     fuel requirements:  unit of uranium [uraniu] per 13 weeks.
     events:
-      week 8: formed by space shuttle [100] with fission reactor [fisrec].
+      week 6: formed by space shuttle [100] with fission reactor [fisrec].
+      week 11: received fission reactor [fisrec] produced by space shuttle [100].
+  + reaction drive [114], reaction drive [rctdrv], disabled.
+    size: 600, mass: 10000/700 (700), capacity: 150/0, energy: 30, crew: 1/0, upkeep: 100 cash
+    [cash].
+    movement speed: 14.3 in space.
+    fuel requirements:  unit of oxyhydro [h2o2] per week.
+    events:
+      week 12: formed by space shuttle [100] with reaction drive [rctdrv].
+      week 13: received reaction drive [rctdrv] produced by space shuttle [100].
 
   Northern Hemisphere [R00002] (0,0), grassland region, settlement capacity 8/3.
   Exits:
@@ -4452,16 +4463,12 @@ sell 300 food
 
 #modulestack 100
 ; + space shuttle [100], 10 space shuttle [shuttl].
-; items: 40 terrans [terran], 30 units of iron [iron], 26 units of titanium [titani], 19 units of
+; items: 40 terrans [terran], 30 units of iron [iron], 16 units of titanium [titani], 19 units of
 ; silicium [silici], 15 units of copper [copper], 150 units of food [food], 80 units of oxyhydro
 ; [h2o2], 150 units of terran breathing gas mixture [terair].
 ; effects:
-;   producing fission reactor [fisrec] into fission reactor [113], 2 weeks to complete (x10 efficiency
-;   multiplier).
 ;   can operate for another 10 weeks without refueling.
 move R00001
-+use urfiss as 113
-+use areact as new114
 +use crewhs as new115
 +-give -20 terran to new115
 +-give -20 terair to new115
@@ -4491,6 +4498,9 @@ active 101
 
 #modulestack 113
 ; + fission reactor [113], fission reactor [fisrec], disabled, immobile.
+
+#modulestack 114
+; + reaction drive [114], reaction drive [rctdrv], disabled.
 
 #person 000001
 ; + Caste Prime CEO [000001], terran [terran].

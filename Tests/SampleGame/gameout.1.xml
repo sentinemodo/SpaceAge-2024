@@ -38,7 +38,7 @@
 						<itemstack type="terair" quantity="150" />
 						<upkeep type="cash" quantity="1050" />
 						<effect duration="10" type="fuelled" />
-						<effect duration="3" technology="ssassm" type="producing-modules" module="sshull" receiver-parent="100" receiver="101" />
+						<effect duration="2" technology="ssassm" type="producing-modules" module="sshull" receiver-parent="100" receiver="101" />
 						<event week="1" description="formed by factory [000017] with space shuttle [shuttl]." />
 						<event week="1" description="received space shuttle [shuttl] produced by factory [000017]." />
 						<event week="2" description="received space shuttle [shuttl] produced by factory [000017]." />

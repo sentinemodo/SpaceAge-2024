@@ -30,33 +30,41 @@
 						</person>
 						<itemstack type="terran" quantity="40" />
 						<itemstack type="iron" quantity="30" />
-						<itemstack type="titani" quantity="26" />
+						<itemstack type="titani" quantity="16" />
 						<itemstack type="silici" quantity="19" />
 						<itemstack type="copper" quantity="15" />
 						<itemstack type="food" quantity="150" />
 						<itemstack type="h2o2" quantity="80" />
 						<itemstack type="terair" quantity="150" />
 						<upkeep type="cash" quantity="1050" />
-						<effect duration="2" technology="urfiss" type="producing-modules" module="fisrec" receiver-parent="100" receiver="113" />
 						<effect duration="10" type="fuelled" />
-						<event week="3" description="produced spaceship hull [sshull] into spaceship hull [101]." />
-						<event week="4" description="consumed unit of silicium [silici] to produce command bridge [cbridg] module." />
-						<event week="7" description="produced command bridge [cbridg] into command bridge [112]." />
-						<event week="8" description="consumed 5 units of copper [copper] to produce fission reactor [fisrec] module." />
+						<event week="2" description="produced spaceship hull [sshull] into spaceship hull [101]." />
+						<event week="3" description="consumed unit of silicium [silici] to produce command bridge [cbridg] module." />
+						<event week="5" description="produced command bridge [cbridg] into command bridge [112]." />
+						<event week="6" description="consumed 5 units of copper [copper] to produce fission reactor [fisrec] module." />
 						<event week="11" description="consumed 10 units of uranium [uraniu], 10 units of oxyhydro [h2o2] as fuel." />
+						<event week="11" description="produced fission reactor [fisrec] into fission reactor [113]." />
+						<event week="12" description="consumed 10 units of titanium [titani] to produce reaction drive [rctdrv] module." />
+						<event week="13" description="produced reaction drive [rctdrv] into reaction drive [114]." />
 					</modulestack>
 					<modulestack name="101" type="sshull" quantity="1" faction="2">
 						<upkeep type="cash" quantity="20" />
-						<event week="3" description="received spaceship hull [sshull] produced by space shuttle [100]." />
+						<event week="2" description="received spaceship hull [sshull] produced by space shuttle [100]." />
 					</modulestack>
 					<modulestack name="112" type="cbridg" quantity="1" faction="2">
 						<upkeep type="cash" quantity="100" />
-						<event week="4" description="formed by space shuttle [100] with command bridge [cbridg]." />
-						<event week="7" description="received command bridge [cbridg] produced by space shuttle [100]." />
+						<event week="3" description="formed by space shuttle [100] with command bridge [cbridg]." />
+						<event week="5" description="received command bridge [cbridg] produced by space shuttle [100]." />
 					</modulestack>
-					<modulestack name="113" type="fisrec" quantity="0" faction="2">
-						<upkeep type="cash" quantity="0" />
-						<event week="8" description="formed by space shuttle [100] with fission reactor [fisrec]." />
+					<modulestack name="113" type="fisrec" quantity="1" faction="2">
+						<upkeep type="cash" quantity="90" />
+						<event week="6" description="formed by space shuttle [100] with fission reactor [fisrec]." />
+						<event week="11" description="received fission reactor [fisrec] produced by space shuttle [100]." />
+					</modulestack>
+					<modulestack name="114" type="rctdrv" quantity="1" faction="2">
+						<upkeep type="cash" quantity="100" />
+						<event week="12" description="formed by space shuttle [100] with reaction drive [rctdrv]." />
+						<event week="13" description="received reaction drive [rctdrv] produced by space shuttle [100]." />
 					</modulestack>
 				</orbit>
 				<region name="R00002" name-en="Northern Hemisphere" X="0" Y="0" type="grassl">
@@ -605,12 +613,6 @@
 			<move>
 				<destination destination="R00001" />
 			</move>
-			<order conditions="+">
-				<use technology="urfiss" receiver="113" receiver-parent="100" />
-			</order>
-			<order conditions="+">
-				<use technology="areact" receiver="114" receiver-parent="100" />
-			</order>
 			<order conditions="+">
 				<use technology="crewhs" receiver="115" receiver-parent="100" />
 				<order conditions="+-">
