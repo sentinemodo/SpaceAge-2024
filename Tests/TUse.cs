@@ -1403,5 +1403,44 @@ namespace UnitTests
             Assert.That(producedModuleStack.Parent.Name, Is.EqualTo("000112"));
         }
 
+		[Test]
+		public void ExecuteUseOrder_PharmsOnSickBay_IsUsable()
+		{
+			ModuleStack bay = new ModuleStack(
+				Region.All["R00002"],
+				this.game.Factions["2"],
+				ModuleType.All["sckbay"],
+				"100410");
+			bay.AddModule();
+
+			UseOrder order = new UseOrder(bay);
+			order.Technology = Technology.All["pharms"];
+
+			Assert.That(order.Usable(1), Is.True);
+		}
+
+		[Test]
+		public void ExecuteUseOrder_PharmsOnCrewQuarters_Fails()
+		{
+			ModuleStack quarters = this.game.ModuleStacks["100016"];
+			int foodBefore = quarters.ItemStacks[ItemType.All["food"]].Quantity;
+			quarters.Technologies.Add(Technology.All["pharms"]);
+			quarters.ItemStacks.Add(new ItemStack(ItemType.All["food"], 1));
+
+			List<string> commands = new List<string>
+			{
+				"#faction 2",
+				"#modulestack 100016",
+				"use pharms",
+				"#end"
+			};
+			new OrdersReader(this.game).AssignOrders(commands);
+
+			quarters.Execute(this.game.Week);
+
+			Assert.That(quarters.Effects.IsProducing, Is.False);
+			Assert.That(quarters.ItemStacks[ItemType.All["food"]].Quantity, Is.EqualTo(foodBefore + 1));
+		}
+
 	}
 }

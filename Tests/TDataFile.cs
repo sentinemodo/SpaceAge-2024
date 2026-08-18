@@ -93,6 +93,12 @@ namespace UnitTests
 			// tag added to an existing technology
 			Assert.That(Technology.All["stnrdf"].HasTag("military"));
 			Assert.That(Technology.All["stnrdf"].Level, Is.EqualTo(0));
+			Assert.That(Technology.All["servic"].HasTag("repair"));
+			Assert.That(Technology.All["servic"].UseProduceItems.ContainsKey(ItemType.All["spare"]));
+			Assert.That(Technology.All["engshp"].HasTag("repair"));
+			Assert.That(Technology.All["engshp"].HasTag("production"));
+			Assert.That(Technology.All["medtec"].HasTag("repair"));
+			Assert.That(Technology.All["medirf"].HasTag("repair"));
 
 			Technology lasopt = Technology.All["lasopt"];
 			Assert.That(lasopt.UseProduceModules.Name, Is.EqualTo("bltlas"));
@@ -144,6 +150,95 @@ namespace UnitTests
 			Assert.That(rckter.UseCondition_ModuleTypesGroup, Is.EqualTo(EModuleTypesGroup.production));
 			Assert.That(rckter.UseProduceItems.ContainsKey(ItemType.All["rctlnc"]));
 			Assert.That(rckter.UseProduceModules, Is.Null);
+
+			Technology airgen = Technology.All["airgen"];
+			Assert.That(airgen.Level, Is.EqualTo(0));
+			Assert.That(airgen.Name, Is.Not.EqualTo("lifsys"));
+			Assert.That(airgen.UseProduceModules.Name, Is.EqualTo("lifsys"));
+			ModuleType lifsysModule = ModuleType.All["lifsys"];
+			Assert.That(lifsysModule.Group, Is.EqualTo(EModuleTypesGroup.habitat));
+			Assert.That(lifsysModule.Size, Is.EqualTo(100));
+			Assert.That(lifsysModule.CrewRequired, Is.EqualTo(0));
+			Assert.That(lifsysModule.ItemsProduction.ContainsKey(ItemType.All["terair"]));
+
+			Technology habcns = Technology.All["habcns"];
+			Assert.That(habcns.Level, Is.EqualTo(2));
+			Assert.That(habcns.Cost, Is.EqualTo(16));
+			Assert.That(habcns.Name, Is.Not.EqualTo("smhabi"));
+			Assert.That(habcns.UseProduceModules.Name, Is.EqualTo("smhabi"));
+			ModuleType smhabiModule = ModuleType.All["smhabi"];
+			Assert.That(smhabiModule.Group, Is.EqualTo(EModuleTypesGroup.habitat));
+			Assert.That(smhabiModule.Size, Is.EqualTo(1000));
+			Assert.That(smhabiModule.Capacity, Is.EqualTo(250));
+			Assert.That(smhabiModule.CrewRequired, Is.EqualTo(0));
+
+			Technology dmecns = Technology.All["dmecns"];
+			Assert.That(dmecns.Level, Is.EqualTo(3));
+			Assert.That(dmecns.Cost, Is.EqualTo(32));
+			Assert.That(dmecns.Name, Is.Not.EqualTo("dmdcty"));
+			Assert.That(dmecns.UseProduceModules.Name, Is.EqualTo("dmdcty"));
+			ModuleType dmdctyModule = ModuleType.All["dmdcty"];
+			Assert.That(dmdctyModule.Group, Is.EqualTo(EModuleTypesGroup.settlement));
+			Assert.That(dmdctyModule.Size, Is.EqualTo(5000));
+
+			Technology alnfgh = Technology.All["alnfgh"];
+			Assert.That(alnfgh.Level, Is.EqualTo(4));
+			Assert.That(alnfgh.Cost, Is.EqualTo(64));
+			Assert.That(alnfgh.HasTag("military"));
+			Assert.That(alnfgh.Name, Is.Not.EqualTo("alndrn"));
+			Assert.That(alnfgh.UseProduceModules.Name, Is.EqualTo("alndrn"));
+			ModuleType alndrnModule = ModuleType.All["alndrn"];
+			Assert.That(alndrnModule.CrewRequired, Is.EqualTo(0));
+			Assert.That(alndrnModule.Attack, Is.EqualTo(6));
+
+			Assert.That(Technology.All["autfab"].Level, Is.EqualTo(2));
+			Assert.That(Technology.All["autfab"].UseProduceModules.Name, Is.EqualTo("robofc"));
+			Assert.That(ModuleType.All["robofc"].CrewRequired, Is.EqualTo(0));
+			Assert.That(Technology.All["autctl"].Level, Is.EqualTo(3));
+			Assert.That(Technology.All["autctl"].UseProduceModules.Name, Is.EqualTo("autcmd"));
+			Assert.That(ModuleType.All["autcmd"].CrewRequired, Is.EqualTo(0));
+			Assert.That(Technology.All["autprp"].Level, Is.EqualTo(3));
+			Assert.That(Technology.All["autprp"].UseProduceModules.Name, Is.EqualTo("autdrv"));
+			Assert.That(Technology.All["he3unc"].Level, Is.EqualTo(3));
+			Assert.That(Technology.All["he3unc"].UseProduceModules.Name, Is.EqualTo("he3aut"));
+			Assert.That(ModuleType.All["he3aut"].CrewRequired, Is.EqualTo(0));
+			Assert.That(Technology.All["drnhng"].Level, Is.EqualTo(3));
+			Assert.That(Technology.All["drnhng"].UseProduceModules.Name, Is.EqualTo("drnbay"));
+			Assert.That(Technology.All["ahlcns"].Name, Is.Not.EqualTo("alnhul"));
+			Assert.That(Technology.All["ahlcns"].UseProduceModules.Name, Is.EqualTo("alnhul"));
+			Assert.That(ModuleType.All["alnhul"].Group, Is.EqualTo(EModuleTypesGroup.frigate));
+			Assert.That(ModuleType.All["alnhul"].Capacity, Is.EqualTo(6000));
+		}
+
+		[Test]
+		public void LoadConfiguration_LoadsSickBay()
+		{
+			this.dataFile.LoadConfiguration(Directory.GetCurrentDirectory());
+
+			Technology sckcns = Technology.All["sckcns"];
+			Assert.That(sckcns.Level, Is.EqualTo(3));
+			Assert.That(sckcns.Cost, Is.EqualTo(32));
+			Assert.That(sckcns.HasTag("research"));
+			Assert.That(sckcns.Requires, Is.EqualTo(Technology.All["medtec"]));
+			Assert.That(sckcns.UseProduceModules.Name, Is.EqualTo("sckbay"));
+
+			Technology pharms = Technology.All["pharms"];
+			Assert.That(pharms.Level, Is.EqualTo(3));
+			Assert.That(pharms.UseCondition_ModuleTypesGroup, Is.EqualTo(EModuleTypesGroup.habitat));
+			Assert.That(pharms.UseCondition_ModuleType, Is.EqualTo("sckbay"));
+			Assert.That(pharms.UseConsumeItems.ContainsKey(ItemType.All["food"]));
+			Assert.That(pharms.UseProduceItems.ContainsKey(ItemType.All["medici"]));
+
+			ModuleType sickBay = ModuleType.All["sckbay"];
+			Assert.That(sickBay.Group, Is.EqualTo(EModuleTypesGroup.habitat));
+			Assert.That(sickBay.Size, Is.EqualTo(380));
+			Assert.That(sickBay.HealTarget, Is.EqualTo("wndtrn"));
+			Assert.That(sickBay.HealQuantity, Is.EqualTo(2));
+			Assert.That(sickBay.HealWeeks, Is.EqualTo(4));
+			Assert.That(sickBay.HealQuantityWithItem, Is.EqualTo(4));
+			Assert.That(sickBay.HealWeeksWithItem, Is.EqualTo(1));
+			Assert.That(sickBay.HealConsumeItem, Is.EqualTo("medici"));
+			Assert.That(sickBay.HealConsumeQuantity, Is.EqualTo(1));
 		}
 
 		[Test]

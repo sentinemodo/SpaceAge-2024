@@ -668,6 +668,7 @@ This assembly technology represents the pinnacle of human ingenuity and collabor
 			name="servic"
 			name-en="preventive servicing"
 			level="1"
+			tags="repair"
 			description="Maintenance and repairs are best done in advance.">
 			<use-allowed-in module-type-group="production"/>
 			<use-consume item="titani" quantity="1"/>
@@ -688,7 +689,7 @@ This assembly technology represents the pinnacle of human ingenuity and collabor
 		</entry>
 		<entry
 			name="engshp"
-			tags="production"
+			tags="production repair"
 			name-en="engineering shop"
 			level="1"
 			cost="4"
@@ -702,6 +703,7 @@ This assembly technology represents the pinnacle of human ingenuity and collabor
 			name="medtec"
 			name-en="medical services"
 			level="2"
+			tags="repair"
 			description="The organized provision of medical services greatly increase the survival chances of the casualties."
 			use-time="6">
 			<use-allowed-in module-type-group="production"/>
@@ -714,9 +716,37 @@ This assembly technology represents the pinnacle of human ingenuity and collabor
 			name="medirf"
 			name-en="medicines refining"
 			level="2"
+			tags="repair"
 			description="Without the medicines, even the best doctor can only watch his patient dies. The medicines are composed of small bits of different ingredients that can be bought on habitable planets."
 			usable-in="production">
 			<use-allowed-in module-type-group="production" planet-type="ocean"/>
+			<use-produce item="medici" quantity="1"/>
+		</entry>
+		<entry
+			name="sckcns"
+			name-en="sick bay construction"
+			level="3"
+			tags="research"
+			requires="medtec"
+			description="A pressurized recovery ward: isolation beds, an autoclave, filtered air, and a surgical table. Trauma care is heat, sterility, fluids, and time. Without pharmaceuticals, two casualties still granulate over a four-week rest; with packed doses, infection drops fast enough that four patients can leave the ward each week."
+			use-time="8">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="8"/>
+			<use-consume item="titani" quantity="4"/>
+			<use-consume item="copper" quantity="4"/>
+			<use-consume item="silici" quantity="3"/>
+			<use-produce module="sckbay"/>
+		</entry>
+		<entry
+			name="pharms"
+			name-en="shipboard pharmacy"
+			level="3"
+			tags="research"
+			requires="sckcns"
+			description="Fermentation and sterile fill inside a sick bay. Sugars and amino acids from food grow antibiotic cultures; the ward energy budget runs a still for saline and antiseptic. No ocean harvest required. The feedstock is cargo rations, the constraint is sterility."
+			use-time="1">
+			<use-allowed-in module-type-group="habitat" module="sckbay"/>
+			<use-consume item="food" quantity="1"/>
 			<use-produce item="medici" quantity="1"/>
 		</entry>
 		<entry
@@ -778,6 +808,114 @@ Researchers can query the library. The system can handle natural language questi
 			<use-consume item="iron" quantity="4"/>
 			<use-consume item="silici" quantity="12"/>
 			<use-produce module="advlib"/>
+		</entry>
+		<entry
+			name="airgen"
+			name-en="breathing-gas generation"
+			level="0"
+			description="Engineering for compact recyclers that produce canned terran breathing gas for habitats, ships and vacuum work."
+			use-time="2">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="2"/>
+			<use-consume item="copper" quantity="1"/>
+			<use-produce module="lifsys"/>
+		</entry>
+		<entry
+			name="habcns"
+			name-en="small habitat construction"
+			level="2"
+			description="Methods for raising a root-level pressure shell sized to hold one or two support modules. It is not crew quarters."
+			use-time="6">
+			<use-allowed-in module-type-group="production" location-type="solid-surface"/>
+			<use-consume item="iron" quantity="20"/>
+			<use-consume item="titani" quantity="8"/>
+			<use-produce module="smhabi"/>
+		</entry>
+		<entry
+			name="dmecns"
+			name-en="dome city construction"
+			level="3"
+			description="Construction of a compact domed settlement that can operate on airless rock if it is supplied with breathing gas and food."
+			use-time="10">
+			<use-allowed-in module-type-group="production" location-type="solid-surface"/>
+			<use-consume item="iron" quantity="40"/>
+			<use-consume item="titani" quantity="20"/>
+			<use-produce module="dmdcty"/>
+		</entry>
+		<entry
+			name="ahlcns"
+			name-en="advanced hull construction"
+			level="3"
+			description="Recovered alien hull geometry. Automated internals need no crew and no life support."
+			use-time="8">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="titani" quantity="20"/>
+			<use-produce module="alnhul"/>
+		</entry>
+		<entry
+			name="autfab"
+			tags="production"
+			name-en="automated fabrication"
+			level="2"
+			description="An unmanned alien fabrication plant. It has no crew requirement."
+			use-time="6">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="15"/>
+			<use-consume item="silici" quantity="10"/>
+			<use-produce module="robofc"/>
+		</entry>
+		<entry
+			name="autctl"
+			name-en="automated command systems"
+			level="3"
+			description="A crewless command core that can wake nested alien systems."
+			use-time="5">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="silici" quantity="8"/>
+			<use-produce module="autcmd"/>
+		</entry>
+		<entry
+			name="autprp"
+			name-en="automated propulsion"
+			level="3"
+			description="A crewless reaction drive sized for an alien hull."
+			use-time="5">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="titani" quantity="10"/>
+			<use-produce module="autdrv"/>
+		</entry>
+		<entry
+			name="he3unc"
+			name-en="unmanned helium plant"
+			level="3"
+			description="An unmanned helium-3 fusion plant with no crew stations."
+			use-time="6">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="titani" quantity="12"/>
+			<use-produce module="he3aut"/>
+		</entry>
+		<entry
+			name="drnhng"
+			tags="military"
+			name-en="drone hangar construction"
+			level="3"
+			description="A hangar that stores and launches a squad of fighter drones."
+			use-time="6">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="titani" quantity="8"/>
+			<use-produce module="drnbay"/>
+		</entry>
+		<entry
+			name="alnfgh"
+			tags="military"
+			name-en="alien fighter construction"
+			level="4"
+			description="A crewless alien fighter. It needs no life support."
+			use-time="4">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="titani" quantity="4"/>
+			<use-consume item="silici" quantity="4"/>
+			<use-produce module="alndrn"/>
 		</entry>
 	</technology>
 
@@ -1264,6 +1402,24 @@ Researchers can query the library. The system can handle natural language questi
 			<effect type="heal" value="1.0" target="stacked"/>
 		</entry>
 		<entry
+			name="sckbay"
+			name-en="sick bay"
+			name-en2="sick bays"
+			group="habitat"
+			description="Inpatient surgical and recovery ward. Isolation beds, autoclave, filtered air. Without medicines, two casualties still granulate over four weeks; with packed doses, four can return to duty each week. The ward can ferment medicines when pharmacy knowledge and food are present."
+			size="380"
+			capacity="180"
+			mass="250"
+			crew="3"
+			habitat="8"
+			energy="4"
+			technology-capacity="2"
+			radiation="-120"
+			hit-points="32">
+			<upkeep type="cash" quantity="40"/>
+			<effect type="heal" value="2" target="wndtrn" weeks="4" weeks-with-item="1" with-item-value="4" consume-item="medici" consume-quantity="1"/>
+		</entry>
+		<entry
 			name="jail"
 			name-en="jail block"
 			name-en2="jail blocks"
@@ -1461,6 +1617,186 @@ Researchers can query the library. The system can handle natural language questi
 		</entry>
 		<entry name="advlib" name-en="advanced research complex" name-en2="advanced research complexes" group="research" description="A large, high-throughput research facility building on computer-library methods." size="400" mass="100" energy="10" hit-points="80" technology-capacity="8" research-output="2">
 			<upkeep type="cash" quantity="200"/>
+		</entry>
+		<entry
+			name="lifsys"
+			name-en="life support system"
+			name-en2="life support systems"
+			group="habitat"
+			description="Generates canned terran breathing gas for people and vehicles that cannot breathe the local atmosphere."
+			size="100"
+			capacity="40"
+			mass="80"
+			crew="0"
+			energy="2"
+			technology-capacity="1"
+			hit-points="20">
+			<produce item="terair" quantity="10" duration="1"/>
+			<upkeep type="cash" quantity="10"/>
+			<operation-allowed-in module-group="habitat"/>
+			<operation-allowed-in module-group="settlement"/>
+			<operation-allowed-in module-group="frigate"/>
+		</entry>
+		<entry
+			name="smhabi"
+			name-en="small habitat"
+			name-en2="small habitats"
+			group="habitat"
+			description="A root-level pressure vessel that holds one or two nested modules such as a life support system."
+			size="1000"
+			capacity="250"
+			mass="800"
+			crew="0"
+			energy="5"
+			technology-capacity="1"
+			hit-points="80">
+			<upkeep type="cash" quantity="40"/>
+			<operation-allowed-in location-type="solid-surface"/>
+			<operation-allowed-in location-type="orbit"/>
+		</entry>
+		<entry
+			name="dmdcty"
+			name-en="small dome city"
+			name-en2="small dome cities"
+			group="settlement"
+			description="A compact ownable dome for airless worlds. It must be supplied with food and terran breathing gas."
+			size="5000"
+			capacity="3500"
+			population-maximum="2000"
+			energy="10"
+			technology-capacity="2"
+			hit-points="250">
+			<upkeep type="food" quantity="20"/>
+			<upkeep type="terair" quantity="20"/>
+			<upkeep type="cash" quantity="80"/>
+			<produce item="cash" quantity="200" duration="13"/>
+			<operation-allowed-in location-type="solid-surface"/>
+		</entry>
+		<entry
+			name="alnhul"
+			name-en="alien vessel hull"
+			name-en2="alien vessel hulls"
+			group="frigate"
+			description="Crashed alien hull. Automated internals need no crew and no life support."
+			size="6500"
+			mass="200"
+			capacity="6000"
+			energy="1"
+			technology-capacity="4"
+			hit-points="120"
+			defense="8"
+			cannot-hold-itemstacks="yes">
+			<upkeep type="cash" quantity="20"/>
+			<operation-allowed-in location-type="solid-surface"/>
+			<operation-allowed-in location-type="orbit"/>
+		</entry>
+		<entry
+			name="robofc"
+			name-en="advanced robo-factory"
+			name-en2="advanced robo-factories"
+			group="production"
+			description="Unmanned alien fabrication plant. No crew and no life support."
+			size="1000"
+			capacity="500"
+			mass="750"
+			crew="0"
+			energy="15"
+			technology-capacity="4"
+			hit-points="100">
+			<upkeep type="cash" quantity="60"/>
+			<operation-allowed-in module-group="frigate"/>
+			<operation-allowed-in module-group="settlement"/>
+		</entry>
+		<entry
+			name="autcmd"
+			name-en="automated command module"
+			name-en2="automated command modules"
+			group="command"
+			description="Crewless alien command core."
+			size="800"
+			mass="300"
+			energy="5"
+			crew="0"
+			capacity="200"
+			technology-capacity="2"
+			hit-points="55">
+			<upkeep type="cash" quantity="80"/>
+			<operation-allowed-in module-group="frigate"/>
+		</entry>
+		<entry
+			name="autdrv"
+			name-en="automated propulsion module"
+			name-en2="automated propulsion modules"
+			group="propulsion"
+			description="Crewless alien drive. No life support."
+			size="600"
+			mass="700"
+			crew="0"
+			energy="30"
+			capacity="150"
+			technology-capacity="1"
+			hit-points="65">
+			<operation-allowed-in module-group="frigate"/>
+			<upkeep type="cash" quantity="80"/>
+			<move mode="space" mass-capacity="10000"/>
+			<fuel duration="1">
+				<item type="h2o2" quantity="1"/>
+			</fuel>
+		</entry>
+		<entry
+			name="he3aut"
+			name-en="automated helium powerplant"
+			name-en2="automated helium powerplants"
+			group="energy"
+			description="Unmanned helium-3 fusion plant. No crew."
+			size="400"
+			mass="400"
+			crew="0"
+			energy="5"
+			hit-points="80">
+			<produce energy="80" duration="13"/>
+			<energy-consume type="heliu3" quantity="2"/>
+			<operation-allowed-in module-group="frigate"/>
+			<operation-allowed-in location-type="solid-surface"/>
+			<upkeep type="cash" quantity="80"/>
+			<fuel duration="13">
+				<item type="heliu3" quantity="2"/>
+			</fuel>
+		</entry>
+		<entry
+			name="drnbay"
+			name-en="fighter drone bay"
+			name-en2="fighter drone bays"
+			group="military"
+			description="Hangar for a squad of crewless fighter drones."
+			size="400"
+			capacity="400"
+			mass="300"
+			crew="0"
+			energy="5"
+			technology-capacity="2"
+			hit-points="60">
+			<upkeep type="cash" quantity="40"/>
+			<operation-allowed-in module-group="frigate"/>
+		</entry>
+		<entry
+			name="alndrn"
+			name-en="alien fighter drone"
+			name-en2="alien fighter drones"
+			group="military"
+			description="Crewless alien fighter. No life support."
+			size="80"
+			mass="80"
+			capacity="20"
+			crew="0"
+			hit-points="25"
+			attack="6"
+			defense="2"
+			damage="6">
+			<upkeep type="cash" quantity="20"/>
+			<move mode="space" mass-capacity="80"/>
+			<operation-allowed-in module-group="military"/>
+			<operation-allowed-in module-group="frigate"/>
 		</entry>
 	</module>
 	<race>

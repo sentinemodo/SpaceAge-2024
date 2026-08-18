@@ -1,7 +1,7 @@
 # SpaceAge-2024 — architecture overview
 
-Status: Current-state description (engine `0.1.137`)  
-Last updated: 2026-08-16
+Status: Current-state description (engine `0.1.141`)  
+Last updated: 2026-08-18
 
 ## Purpose
 
@@ -36,7 +36,7 @@ Domain code lives under `Game/` in a **single namespace** `SpaceAge` (folders ar
 
 ## Current vs design notes
 
-`Game/documentation/Concepts.txt` and `Rules.txt` describe a richer design (officer types, market delivery times, combat superiorities) than the running code. Treat those files as **design intent**. Treat this folder plus the C# as **what the engine actually does**. Gaps (stub `Events`/`Request`, incomplete SampleGame turns 3–5, economy TODOs) are documented as constraints, not as unimplemented product backlog unless an ADR promotes them.
+`Game/documentation/Concepts.txt` and `Rules.txt` describe a richer design (officer types, market delivery times, combat superiorities) than the running code. Treat those files as **design intent**. Treat this folder plus the C# as **what the engine actually does**. Gaps (stub `Events`/`Request`, incomplete SampleGame turns 4–5, economy TODOs) are documented as constraints, not as unimplemented product backlog unless an ADR promotes them.
 
 ## Glossary
 
@@ -59,7 +59,7 @@ Domain code lives under `Game/` in a **single namespace** `SpaceAge` (folders ar
 | Global `*.All` registries leak between tests | `Game.ClearDictionaries()` in fixture teardown; one game at a time |
 | Mono vs real .NET 4.8 CLR differences | Cloud runs the solution under Mono (`.cursor/install.sh`); use a Windows Visual Studio / real-CLR pass for issues that only reproduce there |
 | Encoding bugs on non-Windows | `mono-complete` provides code page 1251 on the cloud image; never drop 1251 |
-| `DataFile` as a god class | Do not split it opportunistically; record an ADR before extracting loaders |
+| `DataFile` as a god class | Seams named in [ADR-0006](adr/ADR-0006-datafile-facade-and-xml-seams.md); extract only along those phases. `DataFile` stays the host/test facade |
 | Stub pipeline steps (`Request`, `Events`) | Leave no-ops unless a feature requires them; cover with tests when activating |
 
 ## What implementers should read first
@@ -68,3 +68,4 @@ Domain code lives under `Game/` in a **single namespace** `SpaceAge` (folders ar
 2. [`modules-and-integrations.md`](modules-and-integrations.md) — turn pipeline, module boundaries, **test layers**.
 3. [`technology.md`](technology.md) — versions and “do not upgrade unless asked”.
 4. [`delivery/cicd-conventions.md`](delivery/cicd-conventions.md) — how to restore, build, and run tests.
+5. Persistence / `DataFile` work: [ADR-0006](adr/ADR-0006-datafile-facade-and-xml-seams.md) before any extract.

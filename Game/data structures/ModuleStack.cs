@@ -5,7 +5,7 @@ using System.Xml;
 
 namespace SpaceAge
 {
-	public class ModuleStack : NamedObject, IHolder, IItemStacksHolder, IOfferent, IReporting, IEventReporting, IEffectable, IMoveable
+	public partial class ModuleStack : NamedObject, IHolder, IItemStacksHolder, IOfferent, IReporting, IEventReporting, IEffectable, IMoveable
 	{
 		public const int NameLength = NamedObject.MaxNameLength;
 
@@ -2117,6 +2117,7 @@ namespace SpaceAge
             this.Offers.LoadXml(elModuleStack, this.Location.Market, this);
             this.Effects.LoadXml(elModuleStack, this);
             this.EventReports.LoadXml(elModuleStack, this);
+			this.SickBayUnmedicatedWeeks = this.XMLAssignInteger(elModuleStack.GetAttribute("sick-bay-weeks"), 0);
 
         }
 
@@ -2148,6 +2149,10 @@ namespace SpaceAge
             this.Offers.SaveXml(doc, this.xmlElement);
             this.Effects.SaveXml(doc, this.xmlElement, faction);
             this.EventReports.SaveXml(doc, this.xmlElement, faction);
+			if (this.SickBayUnmedicatedWeeks > 0)
+			{
+				this.xmlElement.SetAttribute("sick-bay-weeks", this.SickBayUnmedicatedWeeks.ToString());
+			}
             return this.xmlElement;
         }
 	}

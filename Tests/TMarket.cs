@@ -578,6 +578,118 @@ namespace UnitTests
             Assert.That(Offer.All[market].Count, Is.EqualTo(4));
 		}
 
+		[Test]
+		public void Execute_RepeatedIdenticalBuy_DoesNotDuplicateOffer()
+		{
+			ModuleStack buyer = this.game.ModuleStacks["000004"];
+			ItemType terran = ItemType.All["terran"];
+			int before = Offer.All[buyer][EOfferType.BuyItems][terran].Count;
+
+			BuyOrder first = new BuyOrder(buyer);
+			first.Parse("all terran");
+			first.Repeat = -1;
+			first.Execute(1);
+
+			BuyOrder second = new BuyOrder(buyer);
+			second.Parse("all terran");
+			second.Repeat = -1;
+			second.Execute(1);
+
+			Assert.That(Offer.All[buyer][EOfferType.BuyItems][terran].Count, Is.EqualTo(before + 1));
+			Assert.That(second.Buy, Is.SameAs(first.Buy));
+		}
+
+		[Test]
+		public void Execute_RepeatedIdenticalSell_DoesNotDuplicateOffer()
+		{
+			ModuleStack seller = this.game.ModuleStacks["000004"];
+			ItemType terran = ItemType.All["terran"];
+			int before = Offer.All[seller][EOfferType.SellItems][terran].Count;
+
+			SellOrder first = new SellOrder(seller);
+			first.Parse("5 terran at 50");
+			first.Execute(1);
+
+			SellOrder second = new SellOrder(seller);
+			second.Parse("5 terran at 50");
+			second.Execute(1);
+
+			Assert.That(Offer.All[seller][EOfferType.SellItems][terran].Count, Is.EqualTo(before + 1));
+			Assert.That(second.Sell, Is.SameAs(first.Sell));
+		}
+
+		[Test]
+		public void LoadXml_DuplicateBuyingNodes_CollapsesToOneOffer()
+		{
+			ModuleStack buyer = this.game.ModuleStacks["000004"];
+			ItemType terran = ItemType.All["terran"];
+			int before = Offer.All[buyer][EOfferType.BuyItems][terran].Count;
+
+			XmlDocument doc = new XmlDocument();
+			XmlElement holder = doc.CreateElement("modulestack");
+			for (int i = 0; i < 3; i++)
+			{
+				XmlElement buying = doc.CreateElement("buying");
+				buying.SetAttribute("item", "terran");
+				buying.SetAttribute("quantity", "all");
+				buying.SetAttribute("price", "any");
+				holder.AppendChild(buying);
+			}
+
+			new Offers().LoadXml(holder, buyer.Location.Market, buyer);
+
+			Assert.That(Offer.All[buyer][EOfferType.BuyItems][terran].Count, Is.EqualTo(before + 1));
+		}
+
+		[Test]
+		public void Execute_LoadedBuyingNodesAndTwoLeftoverBuys_DoesNotDuplicateOffer()
+		{
+			ModuleStack buyer = this.game.ModuleStacks["000004"];
+			ItemType terran = ItemType.All["terran"];
+			int before = Offer.All[buyer][EOfferType.BuyItems][terran].Count;
+
+			XmlDocument doc = new XmlDocument();
+			XmlElement holder = doc.CreateElement("modulestack");
+			for (int i = 0; i < 3; i++)
+			{
+				XmlElement buying = doc.CreateElement("buying");
+				buying.SetAttribute("item", "terran");
+				buying.SetAttribute("quantity", "all");
+				buying.SetAttribute("price", "any");
+				holder.AppendChild(buying);
+			}
+			new Offers().LoadXml(holder, buyer.Location.Market, buyer);
+
+			for (int i = 0; i < 2; i++)
+			{
+				BuyOrder leftover = new BuyOrder(buyer);
+				leftover.Parse("all terran");
+				leftover.Repeat = -1;
+			}
+
+			for (int week = 1; week <= 13; week++)
+			{
+				foreach (Order order in new List<Order>(buyer.Orders))
+				{
+					BuyOrder buy = order as BuyOrder;
+					if (buy != null)
+					{
+						buy.Execute(week);
+					}
+				}
+			}
+
+			Assert.That(Offer.All[buyer][EOfferType.BuyItems][terran].Count, Is.EqualTo(before + 1));
+			int listed = 0;
+			foreach (string line in buyer.Location.Market.Report(buyer.Owner))
+			{
+				if (line.IndexOf("buy all terrans") >= 0 && line.IndexOf(buyer.ReportName) >= 0)
+				{
+					listed++;
+				}
+			}
+			Assert.That(listed, Is.EqualTo(1), "the same standing buy must appear once on the market");
+		}
 
         [Test]
         public void AssignSellOrder()
@@ -960,6 +1072,89 @@ namespace UnitTests
 			{
 				File.Delete(npcFile);
 			}
+		}
+
+		[Test]
+		public void Parse_ResearchWreckage_UnitRewardTitleFlavour()
+		{
+			ModuleStack wreck = new ModuleStack(Region.All["R00002"], Faction.All["1"], ModuleType.All["alnhul"], "200");
+			wreck.AddModule();
+			List<string> commands = new List<string>
+			{
+				"#faction 1",
+				"CONTRACT R00002 research 200 points 5 REWARD 200 unit TITLE \"Wake the wreck\" FLAVOUR \"Activating the systems.\"",
+				"#end"
+			};
+			OrdersReader reader = new OrdersReader(this.game);
+			reader.AssignOrders(commands);
+
+			ContractOrder create = (ContractOrder)Faction.All["1"].Orders[0];
+			Assert.That(create.ResearchTarget.Name, Is.EqualTo("200"));
+			Assert.That(create.ResearchPoints, Is.EqualTo(5));
+			Assert.That(create.RewardStack.Name, Is.EqualTo("200"));
+			Assert.That(create.Title, Is.EqualTo("Wake the wreck"));
+			Assert.That(create.Flavour, Is.EqualTo("Activating the systems."));
+			create.Execute(1);
+
+			Assert.That(Contract.All.Count, Is.EqualTo(1));
+			Contract published = Contract.All[0];
+			Assert.That(published.Title, Is.EqualTo("Wake the wreck"));
+			Assert.That(published.RewardStack.Name, Is.EqualTo("200"));
+			Assert.That(published.Trigger, Is.InstanceOf<ResearchWreckageTrigger>());
+		}
+
+		[Test]
+		public void Parse_Press_BetweenTurns()
+		{
+			List<string> commands = new List<string>
+			{
+				"#faction 2",
+				"PRESS TITLE \"Moon shot\" FLAVOUR \"We go to Luna.\"",
+				"#end"
+			};
+			OrdersReader reader = new OrdersReader(this.game);
+			reader.AssignOrders(commands);
+			PressOrder press = (PressOrder)Faction.All["2"].Orders[Faction.All["2"].Orders.Count - 1];
+			Assert.That(press.AllowedBetweenTurns, Is.True);
+			Assert.That(press.Title, Is.EqualTo("Moon shot"));
+			this.game.ExecuteBetweenTurnOrders();
+			Assert.That(PressRelease.All.Count, Is.EqualTo(1));
+			Assert.That(PressRelease.All[0].Issuer.Name, Is.EqualTo("2"));
+		}
+
+		[Test]
+		public void XmlRoundTrip_PersistsResearchUnitContract()
+		{
+			ModuleStack wreck = new ModuleStack(Region.All["R00002"], Faction.All["1"], ModuleType.All["alnhul"], "200");
+			wreck.AddModule();
+			ResearchWreckageTrigger trigger = new ResearchWreckageTrigger(wreck, 5);
+			Contract published = new Contract("CT0200", Region.All["R00002"], Faction.All["1"], trigger, wreck);
+			published.Title = "Wake the wreck";
+			published.Flavour = "Activating the systems.";
+
+			string testdir = Directory.GetCurrentDirectory();
+			string testfile = "gameout.researchcontract.xml";
+			this.dataFile.SaveGame(testdir, testfile);
+
+			this.game.ClearDictionaries();
+			this.game = null;
+			this.dataFile = null;
+
+			this.dataFile = new DataFile(testdir);
+			this.dataFile.LoadGameDocument(testdir, testfile);
+			this.dataFile.LoadConfiguration(testdir);
+			this.dataFile.LoadFactions();
+			this.dataFile.LoadGalaxy();
+			this.dataFile.LoadContracts();
+			this.game = this.dataFile.Game;
+
+			Contract loaded = Contract.All["CT0200"];
+			Assert.That(loaded, Is.Not.Null);
+			Assert.That(loaded.Title, Is.EqualTo("Wake the wreck"));
+			Assert.That(loaded.RewardStack.Name, Is.EqualTo("200"));
+			ResearchWreckageTrigger loadedTrigger = (ResearchWreckageTrigger)loaded.Trigger;
+			Assert.That(loadedTrigger.RequiredPoints, Is.EqualTo(5));
+			Assert.That(loadedTrigger.Target.Name, Is.EqualTo("200"));
 		}
 	}
 }

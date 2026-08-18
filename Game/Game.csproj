@@ -131,7 +131,9 @@
     <Compile Include="data structures\Contract.cs" />
     <Compile Include="data structures\Contracts.cs" />
     <Compile Include="data structures\GiveModuleTrigger.cs" />
+    <Compile Include="data structures\ResearchWreckageTrigger.cs" />
     <Compile Include="data structures\IContractTrigger.cs" />
+    <Compile Include="data structures\PressRelease.cs" />
     <Compile Include="data structures\Races.cs" />
     <Compile Include="data structures\ISingular.cs" />
     <Compile Include="data structures\IMultiple.cs" />
@@ -168,6 +170,8 @@
     <Compile Include="data structures\ItemType.cs" />
     <Compile Include="data structures\ItemTypes.cs" />
     <Compile Include="data structures\ModuleStack.cs" />
+    <Compile Include="data structures\ModuleStack.Ownership.cs" />
+    <Compile Include="data structures\ModuleStack.Upkeep.cs" />
     <Compile Include="data structures\ModuleStacks.cs" />
     <Compile Include="data structures\ModuleType.cs" />
     <Compile Include="data structures\ModuleTypes.cs" />
@@ -199,6 +203,7 @@
     <Compile Include="orders\GetOrder.cs" />
     <Compile Include="orders\CopyOrder.cs" />
     <Compile Include="orders\ContractOrder.cs" />
+    <Compile Include="orders\PressOrder.cs" />
     <Compile Include="orders\DeclareOrder.cs" />
     <Compile Include="orders\TransferOrder.cs" />
     <Compile Include="orders\FormOrder.cs" />

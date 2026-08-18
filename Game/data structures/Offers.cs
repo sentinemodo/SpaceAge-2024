@@ -319,6 +319,32 @@ namespace SpaceAge
             return base.Remove(offer);
         }
 
+		public Offer FindEquivalent(Offer candidate)
+		{
+			foreach (Offer offer in this)
+			{
+				if (!object.ReferenceEquals(offer, candidate) && offer.SameMarketPosition(candidate))
+				{
+					return offer;
+				}
+			}
+			return null;
+		}
+
+		public Offer ReuseEquivalent(Offer offer)
+		{
+			Offer existing = this.FindEquivalent(offer);
+			if (existing == null)
+			{
+				return offer;
+			}
+
+			offer.BuyOrder = null;
+			offer.SellOrder = null;
+			base.Remove(offer);
+			return existing;
+		}
+
         public void LoadXml(XmlElement elHolder, Market market, IOfferent offerent)
         {
             Offer offer;
@@ -340,6 +366,7 @@ namespace SpaceAge
                 }
                 offer = new Offer(market, offerent, offerType);
                 offer.LoadXml(elOffer);
+				Offer.All.ReuseEquivalent(offer);
             }
 
             foreach (XmlElement elOffer in elHolder.SelectNodes("selling"))
@@ -358,6 +385,7 @@ namespace SpaceAge
                 }
                 offer = new Offer(market, offerent, offerType);
                 offer.LoadXml(elOffer);
+				Offer.All.ReuseEquivalent(offer);
             }
         }
         

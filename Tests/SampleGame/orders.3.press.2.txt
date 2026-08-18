@@ -1,0 +1,3 @@
+#faction 2 "xyzzy"
+PRESS TITLE "Expedition to Luna" FLAVOUR "Caste Prime shuttles leave Earth orbit for the dusty lunar field."
+#end

@@ -184,15 +184,15 @@ namespace SpaceAge
             switch (elSell.GetAttribute("sell-type"))
             {
                 case "items":
-                    this.SellType = EOfferType.BuyItems;
+                    this.SellType = EOfferType.SellItems;
                     this.ItemType = ItemType.All[elSell.GetAttribute("item")];
                     break;
                 case "modules":
-                    this.SellType = EOfferType.BuyModules;
+                    this.SellType = EOfferType.SellModules;
                     this.ModuleType = ModuleType.All[elSell.GetAttribute("module")];
                     break;
                 case "technology":
-                    this.SellType = EOfferType.BuyTechnologies;
+                    this.SellType = EOfferType.SellTechnologies;
                     this.Technology = Technology.All[elSell.GetAttribute("technology")];
                     break;
                 default:
@@ -245,7 +245,7 @@ namespace SpaceAge
 
             if (this.Sell == null)
 			{
-				// create an offer
+				// create an offer, or keep a standing identical one
 				this.Sell = new Offer(this.Seller.Location.Market, this.Seller, this.SellType);
                 this.Sell.SellOrder = this; 
                 this.Sell.Quantity = this.Quantity;
@@ -254,6 +254,8 @@ namespace SpaceAge
 				this.Sell.Technology = this.Technology;
 				this.Sell.ModuleType = this.ModuleType;
 				this.Sell.ItemType = this.ItemType;
+				this.Sell = Offer.All.ReuseEquivalent(this.Sell);
+				this.Sell.SellOrder = this;
             }
 
 			// List the offer and leave it standing. Matching is driven from the buy side

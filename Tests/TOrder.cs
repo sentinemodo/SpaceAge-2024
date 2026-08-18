@@ -111,6 +111,51 @@ namespace UnitTests
             Assert.That(order.Description, Is.EqualTo("test name"));
 		}
 
+		[Test]
+		public void AssignOrders_UnlimitedLeftover_DoesNotDuplicateWhenReissuedFromFile()
+		{
+			ModuleStack stack = this.game.ModuleStacks["000004"];
+			List<string> leftover = new List<string>
+			{
+				"#faction 2",
+				"#modulestack 000004",
+				"@produce cash",
+				"#end"
+			};
+			OrdersReader ordersReader = new OrdersReader(this.game);
+			ordersReader.AssignOrders(leftover);
+			Assert.That(stack.Orders.Count, Is.EqualTo(1));
+
+			List<string> copiedTemplate = new List<string>
+			{
+				"#faction 2",
+				"#modulestack 000004",
+				"@produce cash",
+				"@produce energy",
+				"#end"
+			};
+			ordersReader.AssignOrders(copiedTemplate);
+
+			Assert.That(stack.Orders.Count, Is.EqualTo(2));
+			int produceCash = 0;
+			int produceEnergy = 0;
+			foreach (Order order in stack.Orders)
+			{
+				ProduceOrder produce = order as ProduceOrder;
+				Assert.That(produce, Is.Not.Null);
+				if (produce.ProduceType == EProduceType.Items && produce.ItemType.Name == "cash")
+				{
+					produceCash++;
+				}
+				if (produce.ProduceType == EProduceType.Energy)
+				{
+					produceEnergy++;
+				}
+			}
+			Assert.That(produceCash, Is.EqualTo(1));
+			Assert.That(produceEnergy, Is.EqualTo(1));
+		}
+
 
 		[Test]
 		public void ExecuteNameOrder()

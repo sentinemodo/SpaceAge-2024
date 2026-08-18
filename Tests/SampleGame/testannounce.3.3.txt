@@ -1,0 +1,9 @@
+To: mail2@mail.pl
+Subject: [SpaceAge] Report for turn 3
+Content-Disposition: attachment
+
+Press releases:
+  Caste Prime [2]: Expedition to Luna.
+    Caste Prime shuttles leave Earth orbit for the dusty lunar field.
+  Gelvaren [3]: Berlin secured.
+    Gelvaren consolidates captured ground and begins repairing the wounded city.

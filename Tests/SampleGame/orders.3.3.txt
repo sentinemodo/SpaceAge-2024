@@ -1,0 +1,46 @@
+#faction 3 "abccb"
+; Gelvaren turn 3 — library first at factory 000023, then shuttle, research
+; TAG repair on the new lab. Cargo 000019 has 8 iron, 8 silici, 3 titani
+; (plus food/oil/terran). filidx needs 1 iron + 3 silici; shtlas needs 2 iron
+; + 1 titani + 1 silici. GET metals onto the factory (USE consumes there);
+; leftover on the factory is fine. USE waits on GET / prior long. No Caste loot.
+
+#modulestack 108
+; + peaceful scout [108], tanks [tanks], disabled.
+; items: 16 terrans [terran], 42 cash [cash], 12 units of oil [oil], 32
+; units of food [food].
+tactic prioritize armed
+-capture all
+@repair
+
+#modulestack 109
+; + Surrender or die! [109], 3 tanks [tanks].
+; items: 48 terrans [terran], 6 units of oil [oil], 100 units of food
+; [food].
+tactic capture
+-capture all
+
+#modulestack c000012
+; + corporate headquarters [c000012], corporate headquarters [corphq],
+;   disabled, immobile. hit points 100/75. items: wndtrn, 15 terran, 2200 cash.
+repair
+
+#modulestack 000023
+; + factory [000023], factory [factry], immobile. Nested under city 000026.
+; technologies: armored combat [armcbt].
+; items: 10 terrans [terran].
+; new123 = computer library [cmplib] nested here for energy 5.
+; new124 = space shuttle [shuttl] after the library long finishes.
+get 8 iron from 000019
+get 8 silici from 000019
+get 3 titani from 000019
+-use filidx as new123 for 000023
+--use shtlas as new124
+
+#modulestack new123
+; formed under 000023 when filidx completes. @research retries until then.
+; TAG repair prefers medtec, medirf, servic, engshp (engshp also production);
+; bare repair is the other tech id.
+@research tag repair
+
+#end

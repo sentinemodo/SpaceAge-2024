@@ -39,6 +39,7 @@ namespace SpaceAge
             // RESEARCH MODULE moduletype
             // RESEARCH GROUP [agricultural|command|spacecraft|energy|extraction|frigate|habitat|infantry|
             // military|production|propulsion|research|settlement|spacestation|storage|vehicle]
+            // RESEARCH TAG tag
             // RESEARCH id
             // RESEARCH
 
@@ -103,10 +104,21 @@ namespace SpaceAge
                 token = LineParser.GetQuotedToken(ref command);
                 this.parseModuleTypeGroup(token);
             }
+            else if (token == "tag")
+            {
+                token = LineParser.GetQuotedToken(ref command);
+                this.ResearchType = EResearchType.Tag;
+                this.ResearchToken = token;
+            }
             else if (token != string.Empty)
             {
                 // bare parameter: resolve to the most specific preference it matches
-                if (Technology.All.Contains(token))
+                if (ModuleStack.All.ContainsKey(token))
+                {
+                    this.ResearchType = EResearchType.ModuleStack;
+                    this.ResearchToken = token;
+                }
+                else if (Technology.All.Contains(token))
                 {
                     // a known technology -> prefer technologies it enables
                     this.ResearchType = EResearchType.Technology;
@@ -224,7 +236,14 @@ namespace SpaceAge
                     line = string.Concat(line, " group ", this.ModuleTypesGroup.ToString());
                     break;
                 default:
-                    line = string.Concat(line, " ", this.ResearchToken);
+                    if (this.ResearchType == EResearchType.ModuleStack)
+                    {
+                        line = string.Concat(line, " ", this.ResearchToken);
+                    }
+                    else
+                    {
+                        line = string.Concat(line, " ", this.ResearchToken);
+                    }
                     break;
             }
             lines.Add(line);
@@ -265,6 +284,10 @@ namespace SpaceAge
                     this.ResearchType = EResearchType.SpaceObject;
                     this.ResearchToken = elResearch.GetAttribute("object");
                     break;
+                case "stack":
+                    this.ResearchType = EResearchType.ModuleStack;
+                    this.ResearchToken = elResearch.GetAttribute("stack");
+                    break;
                 default:
                     this.ResearchType = EResearchType.Any;
                     break;
@@ -301,6 +324,10 @@ namespace SpaceAge
                     elResearch.SetAttribute("research-type", "object");
                     elResearch.SetAttribute("object", this.ResearchToken);
                     break;
+                case EResearchType.ModuleStack:
+                    elResearch.SetAttribute("research-type", "stack");
+                    elResearch.SetAttribute("stack", this.ResearchToken);
+                    break;
                 default:
                     if (this.ResearchToken != string.Empty)
                     {
@@ -321,6 +348,14 @@ namespace SpaceAge
             // check if can research at all
             if (this.CanOperate(week) && this.CanResearch(week))
             {
+                if (this.ResearchType == EResearchType.ModuleStack)
+                {
+                    this.researchWreckage(week);
+                    this.Executing = true;
+                    base.Execute(week);
+                    return;
+                }
+
                 // research: roll a breakthrough; if none, accumulate research points
                 Technologies available = Research.AvailableTechnologies(this.Researcher);
                 int output = Research.WeeklyOutput(this.Researcher);
@@ -347,6 +382,77 @@ namespace SpaceAge
 
                 // finish order execution
                 base.Execute(week);
+            }
+        }
+
+        private void researchWreckage(int week)
+        {
+            if (!ModuleStack.All.ContainsKey(this.ResearchToken))
+            {
+                this.Researcher.EventReports.Add(
+                    week,
+                    string.Format("RESEARCH failed: unknown stack {0}.", this.ResearchToken));
+                return;
+            }
+
+            ModuleStack target = ModuleStack.All[this.ResearchToken];
+            if (this.Researcher.Location != target.Location)
+            {
+                this.Researcher.EventReports.Add(
+                    week,
+                    string.Format("RESEARCH failed: {0} is not at {1}.",
+                        this.Researcher.ReportName,
+                        target.ReportName));
+                return;
+            }
+
+            int output = Research.WeeklyOutput(this.Researcher);
+            if (output < 1)
+            {
+                return;
+            }
+
+            if (!this.hasOpenWreckageContract(target))
+            {
+                return;
+            }
+
+            this.Researcher.ResearchPoints += output;
+            Contract.All.NotifyResearch(this.Researcher.Owner, this.Researcher, target, output);
+            this.Researcher.EventReports.Add(
+                week,
+                string.Format("researched {0}.", target.ReportName));
+
+            if (!this.hasOpenWreckageContract(target))
+            {
+                this.Researcher.ResearchPoints = 0;
+                this.awardCompletedWreckageContracts(week, target);
+            }
+        }
+
+        private bool hasOpenWreckageContract(ModuleStack target)
+        {
+            foreach (Contract contract in Contract.All)
+            {
+                ResearchWreckageTrigger trigger = contract.Trigger as ResearchWreckageTrigger;
+                if (trigger != null && trigger.Target == target && !trigger.IsComplete())
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private void awardCompletedWreckageContracts(int week, ModuleStack target)
+        {
+            List<Contract> snapshot = new List<Contract>(Contract.All);
+            foreach (Contract contract in snapshot)
+            {
+                ResearchWreckageTrigger trigger = contract.Trigger as ResearchWreckageTrigger;
+                if (trigger != null && trigger.Target == target && contract.Evaluate(week))
+                {
+                    Contract.All.Remove(contract);
+                }
             }
         }
 

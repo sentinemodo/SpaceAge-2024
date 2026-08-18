@@ -266,6 +266,18 @@ namespace SpaceAge
 			}
 		}
 
+		private Order findEquivalentLeftover(IOrderable subject, Order order)
+		{
+			foreach (Order existing in subject.Orders)
+			{
+				if (existing != order && order.IsEquivalentTo(existing))
+				{
+					return existing;
+				}
+			}
+			return null;
+		}
+
 		public Order AssignOrder(IOrderable subject, string command)
 		{
 			Order order;
@@ -313,6 +325,9 @@ namespace SpaceAge
                     break;
 				case "contract":
 					order = new ContractOrder(subject);
+					break;
+				case "press":
+					order = new PressOrder(subject);
 					break;
 				case "declare":
 					order = new DeclareOrder(subject);
@@ -370,7 +385,16 @@ namespace SpaceAge
 			}
 			order.Parse(tokens);
 			order.Repeat = repeat;
-			order.Level = orderLevel;            
+			order.Level = orderLevel;
+			if (orderLevel == 0 && order.IsUnlimited)
+			{
+				Order existing = this.findEquivalentLeftover(subject, order);
+				if (existing != null)
+				{
+					subject.Orders.Remove(order);
+					return existing;
+				}
+			}
 			while (orderLevel > 0)
 			{
 				Order parentOrder = this.getParentOrder(subject, order, orderLevel);

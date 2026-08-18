@@ -1,0 +1,15 @@
+To: 
+Subject: [SpaceAge] Report for turn 3
+Content-Disposition: attachment
+
+Press releases:
+  Caste Prime [2]: Expedition to Luna.
+    Caste Prime shuttles leave Earth orbit for the dusty lunar field.
+  Gelvaren [3]: Berlin secured.
+    Gelvaren consolidates captured ground and begins repairing the wounded city.
+
+A new contract has been published:
+  CT0122: Wake the crashed ship.
+    Research crashed alien vessel [200] (0/5 research points).
+    Research the wreckage until its systems can be activated and the vessel claimed.
+    Reward: crashed alien vessel [200].

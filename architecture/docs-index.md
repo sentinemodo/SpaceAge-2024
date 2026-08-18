@@ -1,6 +1,6 @@
 # Documentation index
 
-Last updated: 2026-08-16  
+Last updated: 2026-08-18  
 Purpose: canonical vendor/spec links for implementers. Summaries only — do not paste manuals into architecture docs.
 
 | Resource | Version / band | Purpose | Date retrieved |
@@ -26,5 +26,18 @@ Purpose: canonical vendor/spec links for implementers. Summaries only — do not
 | `Game/documentation/links.txt` | External astronomy/spaceflight primers |
 | `.cursor/install.sh` / `.cursor/run-tests.sh` | Cloud restore/build and test entrypoints (Mono) |
 | `architecture/future-work.md` | Deferred modernization backlog (ADR-gated) |
+| `designer/` | Game-designer specs: galaxy scale, tech tree, catalog, contracts (not engine) |
+| `campaign/` | Live PBEM `data.xml` / `gamein.xml` (not NUnit fixtures) |
+
+## In-repo ADRs
+
+| File | Purpose | Date retrieved |
+|------|---------|----------------|
+| [`adr/ADR-0001-net48-legacy-csproj.md`](adr/ADR-0001-net48-legacy-csproj.md) | Stay on net48 + legacy csproj | 2026-08-18 |
+| [`adr/ADR-0002-windows-1251-io.md`](adr/ADR-0002-windows-1251-io.md) | Windows-1251 for game XML/orders/reports | 2026-08-18 |
+| [`adr/ADR-0003-filesystem-pbem-batch.md`](adr/ADR-0003-filesystem-pbem-batch.md) | Offline file-in / file-out host | 2026-08-18 |
+| [`adr/ADR-0004-test-layers.md`](adr/ADR-0004-test-layers.md) | Unit = `UnitTests` / `T*.cs`; Integration = `IntegrationTests`; no module layer | 2026-08-18 |
+| [`adr/ADR-0005-modulestack-partials.md`](adr/ADR-0005-modulestack-partials.md) | `ModuleStack` stays one type; limited `partial` files | 2026-08-18 |
+| [`adr/ADR-0006-datafile-facade-and-xml-seams.md`](adr/ADR-0006-datafile-facade-and-xml-seams.md) | `DataFile` facade; catalog / order factory / domain XML phases | 2026-08-18 |
 
 Prefer Microsoft Learn / NUnit docs over blog posts when versions matter.

@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
+using System.Xml;
 using NUnit.Framework;
 using NUnit.Framework.Legacy;
 using SpaceAge;
@@ -229,6 +229,68 @@ namespace UnitTests
             Assert.That(order.Executing, Is.False);
             Assert.That(order.Executed);
         }
+
+
+		[Test]
+		public void ExecuteMoveOrder_InProgress_ReportAndSaveHaveSingleDestination()
+		{
+			this.AssignMoveOrder();
+			ModuleStack testModuleStack = this.game.ModuleStacks["100001"];
+			MoveOrder order = (MoveOrder)testModuleStack.Orders[0];
+			Faction faction = this.game.Factions["2"];
+
+			for (int week = 0; week < 3; week++)
+			{
+				testModuleStack.ExecutedLongOrder = false;
+				testModuleStack.Orders.Execute(this.game.Week);
+				testModuleStack.Effects.Execute(this.game.Week);
+			}
+
+			Assert.That(order.Route.Count, Is.EqualTo(0));
+			Assert.That(order.Report(faction)[0], Is.EqualTo("move R00002"));
+			Assert.That(order.DurationLeft, Is.EqualTo(3));
+
+			XmlDocument doc = new XmlDocument();
+			XmlElement elOrder = order.SaveXml(doc, "modulestack");
+			Assert.That(elOrder.GetAttribute("duration-left"), Is.EqualTo("3"));
+			Assert.That(elOrder.SelectNodes("move/destination").Count, Is.EqualTo(1));
+			Assert.That(((XmlElement)elOrder.SelectNodes("move/destination")[0]).GetAttribute("destination"), Is.EqualTo("R00002"));
+		}
+
+
+		[Test]
+		public void ExecuteMoveOrder_Reload_ContinuesDurationWithoutDeparting()
+		{
+			this.AssignMoveOrder();
+			ModuleStack testModuleStack = this.game.ModuleStacks["100001"];
+			MoveOrder order = (MoveOrder)testModuleStack.Orders[0];
+
+			for (int week = 0; week < 3; week++)
+			{
+				testModuleStack.ExecutedLongOrder = false;
+				testModuleStack.Orders.Execute(this.game.Week);
+				testModuleStack.Effects.Execute(this.game.Week);
+			}
+
+			XmlDocument doc = new XmlDocument();
+			XmlElement elOrder = order.SaveXml(doc, "modulestack");
+
+			testModuleStack.MovingTo = null;
+			testModuleStack.Orders.Clear();
+			testModuleStack.ExecutedLongOrder = false;
+			testModuleStack.EventReports.Clear();
+
+			MoveOrder loaded = new MoveOrder(testModuleStack);
+			loaded.LoadXml(elOrder);
+
+			Assert.That(loaded.DurationLeft, Is.EqualTo(3));
+
+			loaded.Execute(this.game.Week);
+			Assert.That(loaded.DurationLeft, Is.EqualTo(2));
+			Assert.That(testModuleStack.EventReports.Exists(eventReport => eventReport.Description.IndexOf("departed from") >= 0), Is.False);
+			Assert.That(testModuleStack.EventReports.Exists(eventReport => eventReport.Description.IndexOf("moving from") >= 0), Is.True);
+			Assert.That(testModuleStack.EventReports.Exists(eventReport => eventReport.Description.IndexOf("ETA 2") >= 0), Is.True);
+		}
 
 	}
 }

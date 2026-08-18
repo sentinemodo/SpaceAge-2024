@@ -1,0 +1,52 @@
+#faction 2 "xyzzy"
+; Caste Prime turn 3 — nest command/reactor/drive under hull 101, ride the HULL to Luna,
+; and USE filidx on the ship while the hull’s long slot is MOVE.
+; gamein.3.xml leftover on shuttle 100: move O00001 (illegal leftover dest R00001 was already
+; rewritten to Luna orbit). +use must be the FIRST new shuttle line so it parents onto that
+; leftover MOVE and occupies the shuttle’s long slot (do not put GIVE/STACK in between).
+; Shuttle USE is orbit-only. Location stays at origin until MOVE arrives, then follows the hull
+; if the shuttle is nested. Earth orbit -> Luna region is illegal; hop O00001 then R00001.
+; Keep 1 iron + 3 silici on the shuttle for filidx. Do not build indust/new107 this turn:
+; nested factory energy 15 plus hull 1 + bridge 5 + reactor 10 + drive 30 is 61 > reactor 60.
+
+#modulestack 112
+; command bridge — nest under hull
+stack 101
+
+#modulestack 113
+; fission reactor
+stack 101
+
+#modulestack 114
+; reaction drive
+stack 101
+
+#modulestack 100
+; +use first: blocks leftover move O00001 until filidx finishes, then leftover hop may unstack
++use filidx as new108 for 101
+; crew and drive fuel (immediates; hull cannot hold cargo)
+give 1 terran to 112
+give 1 terran to 113
+give 1 terran to 114
+give 20 h2o2 to 114
+give 20 food to 112
+give 20 terair to 112
+; ride the hull so FOR 101 stays same-location while the hull MOVEs
+stack 101
+
+#modulestack 101
+; leftover active 101 must succeed (nested command/reactor/drive) before the hull hops
+-move O00001
+--has 1 cmplib
+---move R00001
+
+#modulestack new108
+; formed under 101 (producer parent is the nested shuttle). @research retries until wreck 200
+; is at this location (fails in orbit; starts after landing on R00001).
+@research 200
+
+#person 000001
+; leftover active 101 / -stack 112: CEO boards the bridge once the hull is active
+see 112
+
+#end

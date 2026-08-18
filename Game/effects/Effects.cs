@@ -240,6 +240,9 @@ namespace SpaceAge
                     case "fuelled": 
                         effect = new Fuelled(holder);
                         break;
+                    case "moving":
+                        effect = new Moving(holder);
+                        break;
                     case "producing-modules":
                         effect = new ProducingModule(holder);
                         break;

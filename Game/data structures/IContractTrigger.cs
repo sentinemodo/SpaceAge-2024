@@ -10,6 +10,7 @@ namespace SpaceAge
 		Faction Winner { get; }
 
 		void NotifyTransfer(Faction giver, ModuleStack giverStack, ModuleStack receiver, ModuleType moduleType, int quantity, Faction issuer);
+		void NotifyResearch(Faction researcher, ModuleStack researcherStack, ModuleStack target, int points);
 		bool IsComplete();
 		void SaveAttributes(XmlElement elContract);
 	}

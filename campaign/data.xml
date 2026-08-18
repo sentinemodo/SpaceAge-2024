@@ -1,0 +1,1908 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<data>
+	
+	<star>
+		<entry 
+			name="M4" 
+			name-en="M4 class star"
+			description="M4 class, yellow stars are similiar to our Sun." />
+	</star>
+	
+	<planet>
+		<entry 
+			name="ocean" 
+			name-en="ocean planet"
+			description="Planet similiar to our Earth. Majority of its surface is covered with water." />
+		<entry 
+			name="gasgnt" 
+			name-en="gas giant planet"
+			description="Planet similiar to our Jupiter. It is composed of the gas with no solid surface. Gas giant planets are substantially larger then any other planet types." />
+		<entry 
+			name="dust" 
+			name-en="dust planet"
+			description="Planet similiar to our Mars. It has rocky surface with minimal amount of water." />
+		<entry
+			name="abelt"
+			name-en="asteroids belt"
+			description="Asteroids belt." />
+	</planet>
+
+	<moon>
+		<entry 
+			name="ice" 
+			name-en="ice moon"
+			description="..." />
+		<entry 
+			name="rock" 
+			name-en="rocky moon"
+			description="..." />
+		<entry
+			name="vulcan"
+			name-en="vulcanic moon"
+			description="..." />
+		<entry
+			name="ring"
+			name-en="a ring cosisting of small space debris."
+			description="..." />
+	</moon>
+	
+	<region>
+		<entry
+			name="orbit"
+			name-en="orbit"
+			description="solar space around the star, planet or any other celestial body."
+			location-type="orbit"/>
+		<entry 
+			name="ocean" 
+			name-en="ocean region"
+			description="Ocean regions are covered with liquid of several kilometers deep."
+			location-type="liquid-surface"/>
+		<entry 
+			name="sea" 
+			name-en="sea region"
+			description="Sea regions are covered with liquid of several hundreds meters deep."
+			location-type="liquid-surface"/>
+		<entry 
+			name="grassl" 
+			name-en="grassland region"
+			description="Grassland regions are covered with green areas suitable for food production."
+			location-type="solid-surface"/>
+		<entry 
+			name="dust" 
+			name-en="dusty region"
+			description="Dusty regions are covered sand and rocks. Usually they are minerally rich lifeless region."
+			location-type="solid-surface"/>
+		<entry 
+			name="mountn" 
+			name-en="mountain region"
+			description="Mountain regions are difficult to cross on ground and are covered with high latitude mountains."
+			location-type="solid-surface"/>
+		<entry 
+			name="barren" 
+			name-en="barren region"
+			description="Flat lifeless regions."
+			location-type="solid-surface"/>
+		<entry
+			name="smmast"
+			name-en="small metal asteroid"
+			description="Small metal asteroid."
+			location-type="solid-surface"/>
+		<entry
+			name="smcast"
+			name-en="small carbon asteroid"
+			description="Small carbon asteroid."
+			location-type="solid-surface"/>		
+		<entry
+			name="lrmast"
+			name-en="large metal asteroid"
+			description="Large metal asteroid."
+			location-type="solid-surface"/>
+		<entry
+			name="lrcast"
+			name-en="large carbon asteroid"
+			description="Large carbon asteroid."
+			location-type="solid-surface"/>
+	</region>
+	
+	<item>
+		<entry
+			name="*" 
+			name-en="anything" 
+			description="All or anything."/>
+		<entry
+			name="cash" 
+			name-en="cash" 
+			description="The material token of wealth."/>
+		<entry 
+			name="deadtn"
+			name-en="dead terran"
+			name-en2="dead terrans" 
+			description="Typical human but ... dead. Might have been a man or woman, two arms, two legs, one head (some of those could be missing). Usable as food."
+			size="4"
+			mass="4">
+		</entry>
+		<entry
+			name="medici"
+			name-en="medicines"
+			description="Packed sterile doses: antibiotics, saline, antiseptics. Harvested from ocean biomass or fermented from food in a sick bay. Used to treat wounded crew."
+			size="1"
+			mass="1">			
+		</entry>
+		<entry
+			name="iron" 
+			name-en="unit of iron" 
+			name-en2="units of iron" 
+			description="Extracted, refined, and purified into industrial steels, iron is a basic construction material widely used in most structures." 
+			size="5" 
+			mass="10"/>
+		<entry
+			name="titani" 
+			name-en="unit of titanium" 
+			name-en2="units of titanium" 
+			description="Due to its resistance to wear, titanium is a good construction material." 
+			size="10" 
+			mass="10"/>
+		<entry
+			name="food" 
+			name-en="unit of food" 
+			name-en2="units of food" 
+			description="An carefully designed set of pastes, liquids and solids, lending itself to taste-satisfying preparations, yet a source of all essential minerals, vitamins and calories for human consumption." 
+			size="1" 
+			mass="1"/>
+		<entry
+			name="carbon" 
+			name-en="unit of carbon" 
+			name-en2="units of carbon" 
+			description="In solid form or combined with hydrogen for organic basics, the carbon is used as a good source of both fuel and food enrichments." 
+			size="5" 
+			mass="5"/>
+		<entry
+			name="silici" 
+			name-en="unit of silicium" 
+			name-en2="units of silicium" 
+			description="The silicium is a very common material in most areas, but high-grade siliciums are base components for smart systems and modules." 
+			size="5" 
+			mass="3"/>
+		<entry
+			name="uraniu" 
+			name-en="unit of uranium" 
+			name-en2="units of uranium" 
+			description="With a half-life of million of years, this is one of the most stable of the radio-active elements, and one very easy to use in energy power modules." 
+			size="1" 
+			mass="8"/>
+		<entry
+			name="terair" 
+			name-en="unit of terran breathing gas mixture"
+			name-en2="units of terran breathing gas mixture"
+			description="The basic gas mixture required for human to breathe." 
+			size="1" 
+			mass="1"/>
+		<entry
+			name="oil"
+			name-en="unit of oil"
+			name-en2="units of oil" 
+			description="Black liquid carbon based used as fuel."
+			size="4"
+			mass="5"/>
+		<entry
+			name="water"
+			name-en="unit of water"
+			name-en2="units of water"
+			description="A liquid required for terran species."
+			mass="1"
+			size="1"/>
+		<entry
+			name="h2o2" 
+			name-en="unit of oxyhydro" 
+			name-en2="units of oxyhydro" 
+			description="A very useful combination of two volatiles that react strongly."
+			mass="1"
+			size="1"/>
+		<entry
+			name="copper" 
+			name-en="unit of copper" 
+			name-en2="units of copper" 
+			description="This very useful metal is the basis of most energy based or energy intensive structures."
+			mass="8"
+			size="5"/>
+		<entry
+			name="gold"
+			name-en="unit of gold"
+			name-en2="units of gold"
+			description="This very valuable metal usable in energy based or energy intensive structures."
+			mass="9"
+			size="5"/>
+		<entry
+			name="wastes" 
+			name-en="waste product" 
+			name-en2="waste products" 
+			description="Industral wastes and radioactive decay products cause problems as they accumulate in modules."
+			radiation="1" 
+			mass="5"
+			size="5">
+			<upkeep type="cash" quantity="1"/>
+			<no-upkeep effect="radiation" chance="10"/>
+		</entry>
+		<entry
+			name="spare" 
+			name-en="spare part" 
+			name-en2="spare parts" 
+			description="Spare part can be used to remove 10 points of damage."
+			mass="2"
+			size="2"/>
+		<entry
+			name="rctlnc" 
+			name-en="rocket launchers" 
+			description="Infantry equipment."
+			mass="100"
+			size="100"
+			attack="2"
+			damage="2">
+			<use-allowed-by module-type-group="infantry"/>
+		</entry>
+		<entry
+			name="spcsut"
+			name-en="space suit"
+			name-en2="space suits"
+			description="crew and officers equipment. equipped crewmen survive decompression of the modules if there is another module they could retreat onto. Required to activate constructed spaceship."
+			mass="10"
+			size="2"
+			radiation="-75">
+			<use-allowed-by officer="terran"/>
+			<use-allowed-by crew="terran"/>
+		</entry>
+		<entry name="heliu3" name-en="unit of helium-3" name-en2="units of helium-3" size="1" mass="1" description="A light, non-radioactive helium isotope prized as clean fusion fuel; scarce on planets but abundant in lunar regolith."/>
+	</item>
+
+	<technology>
+		<entry 
+			name="areact" 
+			name-en="action and reaction" 
+			level="0"
+			description="The construction of reaction-based drives, using cheap reaction mass heated by large energy systems." 
+			use-time="2">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="10" />
+			<use-consume item="titani" quantity="10" />
+			<use-produce module="rctdrv"/>
+		</entry>
+		<entry 
+			name="fossil" 
+			tags="production" 
+			name-en="fossil use" 
+			level="0"
+			description="Use of fossil fuels allows one to produce huge and dirty plants that transform carbon-based resources into energy." 
+			use-time="8">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="100" />
+			<use-produce module="cplant"/>
+		</entry>
+		<entry 
+			name="oilbrn" 
+			name-en="oil burning" 
+			level="0"
+			description="Use of oil fuels allows one to produce smaller plants that transform oil-based resources into energy." 
+			use-time="10">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="80" />
+			<use-produce module="oplant"/>
+		</entry>
+		<entry 
+			name="wndtrb" 
+			name-en="wind turbines" 
+			level="0"
+			description="Use the power of the wind as a method of generating power." 
+			use-time="2">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="1" />
+			<use-produce module="wnplnt"/>
+		</entry>
+		<entry 
+			name="hcdril" 
+			name-en="hydrocarbons drilling" 
+			level="0"
+			description="The extraction and refining of hydrocarbons, or fossil fuels, from a planetary surface.">
+			<use-allowed-in module-type-group="extraction" location-type="solid-surface"/>
+			<use-produce item="carbon"/>
+		</entry>
+		<entry 
+			name="indust" 
+			tags="production" 
+			name-en="industrial automation" 
+			level="0"
+			description="Use of automated production management to reduce the workforce requirements." 
+			use-time="4">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="15" />
+			<use-consume item="titani" quantity="10" />
+			<use-produce module="factry"/>
+		</entry>
+		<entry 
+			name="popcnt" 
+			name-en="population center" 
+			level="0"
+			description="Creation of basic infrastructure and housing for population." 
+			use-time="26">
+			<use-allowed-in module-type-group="production" location-type="solid-surface" planet-atmosphere="terair"/>
+			<use-consume item="iron" quantity="100" />
+			<use-produce module="city"/>
+		</entry>
+		<entry
+			name="ctypln"
+			name-en="city planning"
+			level="1"
+			description="Planning the area of the city allows more eficient use of the area."
+			use-time="26">
+			<use-allowed-in module-type-group="settlement" location-type="solid-surface" planet-atmosphere="terair"/>
+			<use-consume item="cash" quantity="500"/>
+			<use-consume item="iron" quantity="26"/>
+			<use-consume module="city" quantity="1"/>
+			<use-produce module="mtrply"/>
+		</entry>
+		<entry 
+			name="agrplx" 
+			name-en="agricultural complex" 
+			level="0"
+			description="The placing of farms and others complexes on a planet for farming and ranching." 
+			use-time="4">
+			<use-allowed-in module-type-group="production" location-type="solid-surface" planet-atmosphere="terair"/>
+			<use-consume item="iron" quantity="10" />
+			<use-produce module="farms"/>			
+		</entry>
+		<entry 
+			name="farmng" 
+			name-en="intensive farming" 
+			level="0"
+			description="Long experience in exploitation techniques and breeds selection makes for intensive farming.">
+			<use-allowed-in 
+				module-type-group="agricultural" 
+				planet-type="ocean" 
+				planet-atmosphere="terair" 
+				location-type="solid-surface"/>			
+			<use-produce item="food" quantity="5"/>
+		</entry>
+		<entry
+			name="afrmng"
+			name-en="advanced farming"
+			level="1"
+			description="Advancing techniques and breeds selection allows increase of farms the output.">
+			<use-allowed-in 
+				module-type-group="agricultural" 
+				planet-type="ocean" 
+				planet-atmosphere="terair" 
+				location-type="solid-surface"/>
+			<use-produce item="food" quantity="8"/>
+		</entry>
+		<entry 
+			name="corpmg" 
+			tags="production" 
+			name-en="corporate management" 
+			level="0"
+			description="Corporate governance and centralized assets management allow increase in cost-effectiveness of the entire branch and a knowledge sharing centre."
+			use-time="6">
+			<use-allowed-in module-type-group="production"/>
+			<use-produce module="corphq"/>
+			<use-consume item="iron" quantity="10" />
+			<use-consume item="copper" quantity="2" />
+			<use-consume item="silici" quantity="5" />
+		</entry>
+		<entry 
+			name="iminng" 
+			name-en="iron mining" 
+			level="0"
+			description="The extraction, purification and refining of iron ores from a variety of locations.">
+			<use-allowed-in module-type-group="extraction" location-type="solid-surface"/>
+			<use-produce item="iron" quantity="3"/>
+		</entry>
+		<entry 
+			name="sdrill" 
+			name-en="mineral surface drilling" 
+			level="0"
+			description="Mineral exploitation." 
+			use-time="3">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="25"/>
+			<use-produce module="sdrill"/>
+		</entry>
+		<entry
+			name="cdrill"
+			name-en="mineral core drilling"
+			level="1"
+			description="Mineral exploitation."
+			use-time="3">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="25"/>
+			<use-consume item="titani" quantity="10"/>
+			<use-produce module="cdrill"/>
+		</entry>
+		<entry 
+			name="slcmlt" 
+			name-en="silicium melting" 
+			level="0"
+			description="The extraction and refining of silicates into electronic-grade silicium for hi-tech elements." 
+			use-time="2">
+			<use-allowed-in module-type-group="extraction" location-type="solid-surface"/>
+			<use-produce item="silici"/>
+		</entry>
+		<entry 
+			name="tminng" 
+			name-en="titanium mining" 
+			level="0"
+			description="The extraction, purification and refining of titanium ores from a variety of locations.">
+			<use-allowed-in module-type-group="extraction" location-type="solid-surface"/>
+			<use-produce item="titani" quantity="2"/>
+		</entry>
+		<entry 
+			name="oildwe"
+			name-en="oil dwelling"
+			level="0"
+			description="The extraction, purification and refining of oil from variety of locations.">
+			<use-allowed-in module-type-group="extraction"/>
+			<use-produce item="oil" quantity="2"/>
+		</entry>
+		<entry
+			name="grndtr"
+			name-en="ground transport"
+			level="0"
+			description="The most basic transportation means are large trucks, powered by oil consuming engines."
+			use-time="2">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="2"/>
+			<use-produce module="trucks"/>
+		</entry>
+		<entry
+			name="stnrdf"
+			tags="military"
+			name-en="stationary defense"
+			level="0"
+			description="The basic stationary defense. Gun emplacement and fortification to protect against ground based military."
+			use-time="4">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="2"/>
+      <use-consume item="titani" quantity="2"/>
+      <use-produce module="gunplc"/>
+		</entry>
+    <entry
+			name="armcbt"
+			tags="military"
+			name-en="armored combat"
+			level="1"
+			description="The basic mobile armor, powered by oil consuming engines."
+			use-time="4">
+      <use-allowed-in module-type-group="production"/>
+      <use-consume item="iron" quantity="4"/>
+      <use-produce module="tanks"/>
+    </entry>
+    <entry
+			name="frminf"
+			tags="military"
+			name-en="form infantry battalion"
+			level="1"
+			description="The basic infantry unit. Equipped with standard rifles."
+			use-time="13">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="1"/>
+			<use-produce module="inftry"/>
+		</entry>
+    <entry
+			name="rckter"
+			tags="military"
+			name-en="rocket launcher production"
+			level="1"
+			cost="4"
+			description="Manufacture of portable rocket launchers issued to infantry battalions."
+			use-time="2">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="1"/>
+			<use-produce item="rctlnc"/>
+		</entry>
+		<entry
+			name="wtrdst" 
+			name-en="water distillation" 
+			level="0" 
+			description="The extraction of salts and minerals from water, making it suitable for industrial uses.">
+			<use-allowed-in module-type-group="extraction"/>
+			<use-produce item="h2o2" quantity="3"/>
+		</entry>
+		<entry
+			name="shtlas"
+			name-en="shuttles assembly"
+			level="0" 
+			description="Most ships can never land, and rely on orbital shuttles for exploration, ferrying and construction. The construction of space-based hulls, bases and any other large objects is usually done in solar space above the planet surface."
+			use-time="4">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron"  quantity="2"/>
+			<use-consume item="titani" quantity="1"/>
+			<use-consume item="silici" quantity="1"/>
+			<use-produce module="shuttl"/>
+		</entry>
+		<entry
+			name="orassm" 
+			name-en="orbital complexes assembly"
+			level="0"
+			description="The putting together of frames for basic orbital complexes."
+			use-time="5">
+			<use-allowed-in module-type-group="production" location-type="orbit"/>
+			<use-consume item="iron" quantity="2"/>
+			<use-produce module="orcmpx"/>
+		</entry>
+		<entry
+			name="ssassm" 
+			name-en="space ship assembly"
+			level="0"
+			description="Construction of spacecraft hulls is a marvel of advanced engineering and precision. Floating serenely in the vacuum of space, is a hub of activity, with robotic arms and drones tirelessly working to assemble the skeletal frameworks of future starships.
+The process begins with the creation of the hull, a robust and versatile structure designed to withstand the rigors of space travel. Advanced materials, lightweight yet incredibly strong, are meticulously welded and fused together by automated systems. These materials are chosen for their durability, resistance to cosmic radiation, and ability to endure extreme temperature fluctuations.
+The hulls are constructed in modular sections, each piece fitting together with the precision of a jigsaw puzzle. This modular approach allows for flexibility in design, enabling the shipyard to produce a variety of hull configurations tailored to different mission profiles. Whether it's a sleek exploration vessel, a formidable warship, or a massive cargo freighter, the basic hull can be adapted to meet the specific needs of the mission.
+Once the hull is complete, it is moved to the next stage of assembly, where it will be outfitted with various modules. These modules, pre-fabricated and tested, are designed for a range of uses: living quarters [crwqrt], command bridges [cbridg], cargo bays [cargob], and more. Each module is equipped with standardized interfaces, allowing them to be easily connected and integrated into the hull.
+Robotic arms and drones carefully maneuver the modules into place, securing them with precision and ensuring all connections are airtight and functional. The interior of the ship begins to take shape, with corridors, rooms, and systems coming together to form a cohesive whole. Advanced AI oversees the entire process, monitoring for any anomalies and ensuring that every component meets stringent quality standards.
+This assembly technology represents the pinnacle of human ingenuity and collaboration, a testament to our ability to create complex, adaptable, and resilient spacecraft. Each hull, filled with its specialized modules, is a blank canvas, ready to be transformed into a vessel capable of exploring the farthest reaches of the cosmos."
+			use-time="4">
+			<use-allowed-in module-type-group="production" location-type="orbit"/>
+			<use-consume item="iron" quantity="6"/>
+			<use-consume item="titani" quantity="4"/>
+			<use-produce module="sshull"/>
+		</entry>
+		<entry
+			name="spctrl"
+			name-en="space control"
+			level="0" 
+			description="Any self-respecting space vessel requires a command structure to navigate and direct a ship."
+			use-time="3">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron"  quantity="1"/>
+			<use-consume item="titani" quantity="4"/>
+			<use-consume item="silici" quantity="1"/>
+			<use-produce module="cbridg"/>
+		</entry>	
+		<entry
+			name="urfiss"
+			name-en="uranium fission"
+			level="0" 
+			description="Heavy elements can be made to fission faster using heavy shielded structures to provide lasting power."
+			use-time="6">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron"  quantity="2"/>
+			<use-consume item="titani" quantity="8"/>
+			<use-consume item="copper" quantity="5"/>
+			<use-produce module="fisrec"/>
+		</entry>
+		<entry
+			name="uminng"
+			name-en="uranium mining"
+			level="0" 
+			description="The extraction, purification and refining of pechblend, the basic uranium ore from a variety of locations. Uranium mining is used on planetary surfaces and asteroids."
+			usable-in="extraction" 
+			use-time="8">
+			<use-allowed-in module-type-group="extraction"/>
+			<use-produce item="uraniu"/>
+		</entry>
+		<entry
+			name="cminng"
+			name-en="copper mining"
+			level="0" 
+			description="The extraction, purification and refining of copper ores from a variety of locations. Copper mining is used on planetary surfaces and asteroids."
+			use-time="1">
+			<use-allowed-in module-type-group="extraction"/>
+			<use-produce item="copper" quantity="2"/>
+		</entry>
+		<entry
+			name="strans"
+			name-en="small scale transportation"
+			level="0"
+			description="Transport over interstellar distances and storage of freight poses logistics problems."
+			use-time="2">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron"  quantity="2"/>
+			<use-consume item="titani" quantity="2"/>
+			<use-produce module="cargob"/>
+		</entry>
+		<entry
+			name="crewhs"
+			name-en="crew housing"
+			level="0"
+			description="Habitations for crew members in hostile environment require careful design to avoid cohabitation problems."
+			use-time="2">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron"  quantity="3"/>
+			<use-consume item="titani" quantity="2"/>
+			<use-produce module="crwqrt"/>
+		</entry>
+		<entry
+			name="lasopt"
+			name-en="laser optics"
+			level="1" 
+			description="The working of high-frequency lasers."
+			use-time="4">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="titani"  quantity="1"/>
+			<use-consume item="copper" quantity="4"/>
+			<use-consume item="silici" quantity="1"/>
+			<use-produce module="bltlas"/>
+		</entry>
+		<entry
+			name="xraylo"
+			name-en="x-ray laser optics"
+			level="2"
+			requires="lasopt"
+			description="Advanced optics for penetrating x-ray lasers."
+			use-time="4">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="titani" quantity="2"/>
+			<use-consume item="copper" quantity="4"/>
+			<use-consume item="silici" quantity="2"/>
+			<use-produce module="xraylz"/>
+		</entry>
+		<entry
+			name="lstrrt"
+			tags="military"
+			name-en="laser turret"
+			level="1"
+			requires="lasopt"
+			description="A fixed laser emplacement for ground defense. Requires a power supply."
+			use-time="4">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="2"/>
+			<use-consume item="titani" quantity="2"/>
+			<use-consume item="copper" quantity="2"/>
+			<use-produce module="laztrt"/>
+		</entry>
+		<entry
+			name="wastdp"
+			name-en="waste disposal"
+			level="1" 
+			description="This simple yet effective technique sends wastes into a sun, preventing accumulation of radio-active or unbreakable toxic wastes."
+			use-time="1">
+			<use-allowed-in module-type-group="spacecraft"/>
+			<use-consume item="wastes"  quantity="2"/>			
+		</entry>
+		<entry 
+			name="miltac"
+			tags="military"
+			name-en="military tactics"
+			level="1"
+			description="Elementary military tactics, which enable a higher level of combat proficiency."
+			initiative="5">
+			<use-allowed-in module-type-group="command"/>
+		</entry>
+		<entry
+			name="servic"
+			name-en="preventive servicing"
+			level="1"
+			tags="repair"
+			description="Maintenance and repairs are best done in advance.">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="titani" quantity="1"/>
+			<use-consume item="iron" quantity="1"/>
+			<use-consume item="copper" quantity="1"/>
+			<use-consume item="silici" quantity="1"/>
+			<use-produce item="spare" quantity="10"/>
+		</entry>
+		<entry 
+			name="repair"
+			name-en="repair and maintenance"
+			level="1"
+			description="Repair and maintenance allows you to recover from ship damage, either from military actions or neglect."
+			use-time="2">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="spare" quantity="1"/>
+			<use-produce effect="repair" target="module-damage" change="-1"/>
+		</entry>
+		<entry
+			name="engshp"
+			tags="production repair"
+			name-en="engineering shop"
+			level="1"
+			cost="4"
+			description="Construction of a compact engineering shop that patches battle and maintenance damage using spare parts."
+			use-time="2">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="5"/>
+			<use-produce module="engshp"/>
+		</entry>
+		<entry
+			name="medtec"
+			name-en="medical services"
+			level="2"
+			tags="research"
+			description="Organized triage, isolation, and first aid. Sterile volume, filtered air, and trained crew raise the odds that casualties survive long enough to reach a ward. This builds a clinic, not an inpatient surgical bay."
+			use-time="6">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron"  quantity="1"/>
+			<use-consume item="copper" quantity="2"/>
+			<use-consume item="silici" quantity="2"/>
+			<use-produce module="medfac"/>
+		</entry>
+		<entry
+			name="medirf"
+			name-en="medicines refining"
+			level="2"
+			tags="research"
+			requires="medtec"
+			description="On ocean worlds, coastal and pelagic biomass, iodine, and dissolved organics are harvested and refined into sterile doses. No cargo feedstock: the water column is the resource. Without pharmaceuticals, infection and fluid loss kill even when a surgeon is present."
+			use-time="1">
+			<use-allowed-in module-type-group="production" planet-type="ocean"/>
+			<use-produce item="medici" quantity="1"/>
+		</entry>
+		<entry
+			name="sckcns"
+			name-en="sick bay construction"
+			level="3"
+			tags="research"
+			requires="medtec"
+			description="A pressurized recovery ward: isolation beds, an autoclave, filtered air, and a surgical table. Trauma care is heat, sterility, fluids, and time. Without pharmaceuticals, two casualties still granulate over a four-week rest; with packed doses, infection drops fast enough that four patients can leave the ward each week."
+			use-time="8">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="8"/>
+			<use-consume item="titani" quantity="4"/>
+			<use-consume item="copper" quantity="4"/>
+			<use-consume item="silici" quantity="3"/>
+			<use-produce module="sckbay"/>
+		</entry>
+		<entry
+			name="pharms"
+			name-en="shipboard pharmacy"
+			level="3"
+			tags="research"
+			requires="sckcns"
+			description="Fermentation and sterile fill inside a sick bay. Sugars and amino acids from food grow antibiotic cultures; the ward energy budget runs a still for saline and antiseptic. No ocean harvest required. The feedstock is cargo rations, the constraint is sterility."
+			use-time="1">
+			<use-allowed-in module-type-group="habitat" module="sckbay"/>
+			<use-consume item="food" quantity="1"/>
+			<use-produce item="medici" quantity="1"/>
+		</entry>
+		<entry
+			name="lawenf"
+			name-en="law enforcement"
+			level="1"
+			description="The popular punishment for committed fellonies is to restrict ones' freedom of move. The question is to make the container durable and secure."
+			use-time="4">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron"  quantity="6"/>
+			<use-produce module="jail"/>
+		</entry>
+		<entry
+			name="filidx"
+			tags="research"
+			name-en="file indexing"
+			level="0"
+			description="Imagine a cutting-edge digital library, where advanced file indexing technology forms the backbone of a vast repository of knowledge. This system, designed to support researchers, operates with the precision and efficiency, ensuring that every piece of information is easily accessible and meticulously organized.
+The process begins with the ingestion of data from a multitude of sources: academic journals, books, research papers and multimedia files. These content of the digital files analyzed by sophisticated algorithms that can recognize text, images, videos and both complex data structures and unorganized raw data. Each file is then tagged creating a rich, searchable index.
+At the heart of this technology is a powerful indexing engine, capable of processing vast amounts of data in real-time. This engine uses advanced techniques such as natural language processing and machine learning to understand the context and relevance of each document. It can identify relationships between different pieces of information, linking related documents and creating a web of interconnected knowledge.
+Researchers can query the library. The system can handle natural language questions, returning results that are not only relevant but also ranked by their significance and reliability."
+			use-time="2">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron"  quantity="1"/>
+			<use-consume item="silici" quantity="3"/>		
+			<use-produce module="cmplib"/>
+		</entry>
+		<entry
+			name="he3min"
+			name-en="helium-3 mining"
+			level="2"
+			tags="production"
+			requires="uminng"
+			description="The extraction and refining of helium-3 from regolith and gas. Helium-3 mining can be carried out by any extraction module that has this technology loaded."
+			usable-in="extraction"
+			use-time="8">
+			<use-allowed-in module-type-group="extraction"/>
+			<use-produce item="heliu3"/>
+		</entry>
+		<entry name="he3fus" name-en="helium-3 fusion" level="2" tags="production" requires="he3min" description="Controlled fusion of helium-3 for clean, abundant energy.">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="heliu3" quantity="1"/>
+			<use-produce module="fusrec"/>
+		</entry>
+		<entry
+			name="he3drl"
+			name-en="dedicated helium-3 drilling"
+			level="3"
+			tags="production"
+			requires="he3min"
+			description="Purpose-built helium-3 core drills that double extraction efficiency at the cost of versatility and price.">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="30"/>
+			<use-consume item="titani" quantity="10"/>
+			<use-produce module="he3ext"/>
+		</entry>
+		<entry name="advres" name-en="advanced computing" level="3" tags="research" requires="filidx" description="Next-generation computing enabling far larger research complexes.">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="4"/>
+			<use-consume item="silici" quantity="12"/>
+			<use-produce module="advlib"/>
+		</entry>
+		<entry
+			name="airgen"
+			name-en="breathing-gas generation"
+			level="0"
+			description="Engineering for compact recyclers that produce canned terran breathing gas for habitats, ships and vacuum work."
+			use-time="2">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="2"/>
+			<use-consume item="copper" quantity="1"/>
+			<use-produce module="lifsys"/>
+		</entry>
+		<entry
+			name="habcns"
+			name-en="small habitat construction"
+			level="2"
+			description="Methods for raising a root-level pressure shell sized to hold one or two support modules. It is not crew quarters."
+			use-time="6">
+			<use-allowed-in module-type-group="production" location-type="solid-surface"/>
+			<use-consume item="iron" quantity="20"/>
+			<use-consume item="titani" quantity="8"/>
+			<use-produce module="smhabi"/>
+		</entry>
+		<entry
+			name="dmecns"
+			name-en="dome city construction"
+			level="3"
+			description="Construction of a compact domed settlement that can operate on airless rock if it is supplied with breathing gas and food."
+			use-time="10">
+			<use-allowed-in module-type-group="production" location-type="solid-surface"/>
+			<use-consume item="iron" quantity="40"/>
+			<use-consume item="titani" quantity="20"/>
+			<use-produce module="dmdcty"/>
+		</entry>
+		<entry
+			name="ahlcns"
+			name-en="advanced hull construction"
+			level="3"
+			description="Recovered alien hull geometry. Automated internals need no crew and no life support."
+			use-time="8">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="titani" quantity="20"/>
+			<use-produce module="alnhul"/>
+		</entry>
+		<entry
+			name="autfab"
+			tags="production"
+			name-en="automated fabrication"
+			level="2"
+			description="An unmanned alien fabrication plant. It has no crew requirement."
+			use-time="6">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="15"/>
+			<use-consume item="silici" quantity="10"/>
+			<use-produce module="robofc"/>
+		</entry>
+		<entry
+			name="autctl"
+			name-en="automated command systems"
+			level="3"
+			description="A crewless command core that can wake nested alien systems."
+			use-time="5">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="silici" quantity="8"/>
+			<use-produce module="autcmd"/>
+		</entry>
+		<entry
+			name="autprp"
+			name-en="automated propulsion"
+			level="3"
+			description="A crewless reaction drive sized for an alien hull."
+			use-time="5">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="titani" quantity="10"/>
+			<use-produce module="autdrv"/>
+		</entry>
+		<entry
+			name="he3unc"
+			name-en="unmanned helium plant"
+			level="3"
+			description="An unmanned helium-3 fusion plant with no crew stations."
+			use-time="6">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="titani" quantity="12"/>
+			<use-produce module="he3aut"/>
+		</entry>
+		<entry
+			name="drnhng"
+			tags="military"
+			name-en="drone hangar construction"
+			level="3"
+			description="A hangar that stores and launches a squad of fighter drones."
+			use-time="6">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="titani" quantity="8"/>
+			<use-produce module="drnbay"/>
+		</entry>
+		<entry
+			name="alnfgh"
+			tags="military"
+			name-en="alien fighter construction"
+			level="4"
+			description="A crewless alien fighter. It needs no life support."
+			use-time="4">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="titani" quantity="4"/>
+			<use-consume item="silici" quantity="4"/>
+			<use-produce module="alndrn"/>
+		</entry>
+	</technology>
+
+	<module>
+		<entry 
+			name="city" 
+			name-en="city"
+			name-en2="cities"
+			group="settlement" 
+			description="The city with basic infrastructure, underlying a settlement."
+			size="25000"
+			capacity="15000"
+			population-maximum="10000"
+			energy="10"
+			technology-capacity="1"
+			hit-points="1250" 
+			cannot-be-owned="yes"
+			cannot-hold-itemstacks="yes">
+			<upkeep type="food" quantity="100"/>
+			<no-upkeep effect="riot" chance="25"/>
+			<produce item="cash" quantity="1000" duration="13"/>
+			<produce item="terran" quantity="10" duration="13"/>
+			<operation-allowed-in planet-atmosphere="terair"/>
+			<operation-allowed-in location-type="solid-surface"/>
+		</entry>
+		<entry 
+			name="mtrply" 
+			name-en="metropoly"
+			name-en2="metropolies"
+			group="settlement" 
+			description="Well designed city with advanced infrastructure, that allows building tall buildings and effective public transport."
+			size="25000"
+			capacity="20000"
+			population-maximum="15000" 			
+			energy="20"
+			technology-capacity="2"
+			hit-points="1250" 
+			cannot-be-owned="yes"
+			cannot-hold-itemstacks="yes">
+			<upkeep type="food" quantity="150"/>
+			<no-upkeep effect="riot" chance="25"/>
+			<produce item="cash" quantity="1500" duration="13"/>
+			<produce item="terran" quantity="15" duration="13"/>
+			<operation-allowed-in planet-atmosphere="terair"/>
+			<operation-allowed-in location-type="solid-surface"/>
+		</entry>
+		<entry 
+			name="factry" 
+			name-en="factory"
+			name-en2="factories"
+			group="production" 
+			description="Factories are everywhere since the dawn of Industral age, and even the Space age couldn't change the fact."
+			size="1000"
+			capacity="500"
+			mass="750" 
+			crew="10"
+			energy="15"
+			technology-capacity="1"
+			hit-points="100">
+			<upkeep type="cash" quantity="60"/>
+			<operation-allowed-in module-group="settlement"/>
+			<operation-allowed-in module-group="frigate"/>
+			<operation-allowed-in module-group="space station"/>
+		</entry>
+		<entry
+			name="sdrill"
+			name-en="surface drill" 
+			name-en2="surface drills" 
+			group="extraction" 
+			description="Efficient mining system. A surface drill allows you to strip minerals and various resources out of the surface of any solid body."
+			size="500"
+			capacity="250"
+			mass="500" 
+			crew="6"
+			energy="5"
+			hit-points="50">
+			<upkeep type="cash" quantity="20"/>
+			<operation-allowed-in location-type="solid-surface"/>
+			<operation-allowed-in module-group="settlement"/>
+			<operation-allowed-in module-group="frigate"/>
+		</entry>
+		<entry
+			name="cdrill"
+			name-en="core drill"
+			name-en2="core drills"
+			group="extraction"
+			description="Advanced mining system. A core drill allows you to strip minerals and various resources out of the core of any solid body."
+			size="1000"
+			capacity="750"
+			mass="1000"
+			crew="6"
+			energy="5"
+			hit-points="100">
+			<upkeep type="cash" quantity="40"/>
+			<operation-allowed-in location-type="solid-surface"/>
+			<operation-allowed-in module-group="settlement"/>
+			<operation-allowed-in module-group="frigate"/>
+			<effect type="faster extraction" value="1" target="self"/>
+		</entry>
+		<entry
+			name="wnplnt"
+			name-en="wind powerplant" 
+			name-en2="wind powerplants" 
+			group="energy" 
+			description="Small serviceless energy system, utilising power of the wind."
+			size="10"
+			mass="10" 
+			energy="1"
+			hit-points="1">
+			<produce energy="4" duration="13"/>
+			<operation-allowed-in planet-atmosphere="terair"/>
+			<operation-allowed-in module-group="settlement"/>
+			<upkeep type="cash" quantity="10"/>
+		</entry>
+		<entry
+			name="slrpnl"
+			name-en="solar panel"
+			name-en2="solar panels"
+			group="energy"
+			description="Small serviceless energy system, utilising power of the sun. Their efficiency depends on distance from the star."
+			size="10"
+			mass="10"
+			hit-points="1">
+			<produce energy="1" duration="13"/>
+			<upkeep type="cash" quantity="1"/>			
+		</entry>
+		<entry
+			name="collec"
+			name-en="energy collector"
+			name-en2="energy collectors"
+			group="energy"
+			description="Small serviceless backup energy system, automaticaly charging up with surplus energy, and providing necessary energy during downtime."
+			energy="5"
+			energy-capacity="100" 
+			size="300"
+			mass="500"
+			hit-points="30">
+			<upkeep type="cash" quantity="5"/>
+			<effect type="charge" value="0" target="region"/>
+		</entry>
+		<entry
+			name="cplant"
+			name-en="coal-burning plant" 
+			name-en2="coal-burning plants" 
+			group="energy" 
+			description="Provide energy by burining carbon."
+			size="1000"
+			capacity="500"
+			mass="1000" 
+			crew="2"
+			energy="10"
+			hit-points="100"
+			attack="1">
+			<produce energy="40" duration="13"/>
+			<energy-consume type="carbon" quantity="5"/>
+			<operation-allowed-in planet-atmosphere="terair"/>
+			<operation-allowed-in location-type="solid-surface"/>
+			<operation-allowed-in module-group="settlement"/>
+			<upkeep type="cash" quantity="50"/>
+			<fuel duration="13">
+				<item type="carbon" quantity="5"/>
+			</fuel>
+		</entry>
+		<entry
+			name="oplant"
+			name-en="oil-burning plant" 
+			name-en2="oil-burning plants" 
+			group="energy" 
+			description="Provide energy by burning oil."
+			size="800"
+			capacity="500"
+			mass="800" 
+			crew="2"
+			energy="10"
+			hit-points="80"
+			attack="1">
+			<produce energy="30" duration="13"/>
+			<energy-consume type="oil" quantity="5"/>
+			<operation-allowed-in planet-atmosphere="terair"/>
+			<operation-allowed-in location-type="solid-surface"/>
+			<operation-allowed-in module-group="settlement"/>
+			<upkeep type="cash" quantity="60"/>
+			<fuel duration="13">
+				<item type="oil" quantity="5"/>
+			</fuel>
+		</entry>
+		<entry
+			name="farms"
+			name-en="farming complex" 
+			name-en2="farming complexes" 
+			group="agricultural" 
+			description="A low-energy, low-technology food producing and harvesting complex."
+			size="1000"
+			capacity="500"
+			mass="100" 
+			crew="5"
+			energy="5"
+			technology-capacity="1"
+			hit-points="55">
+			<operation-allowed-in planet-atmosphere="terair"/>
+			<operation-allowed-in location-type="solid-surface"/>
+			<operation-allowed-in module-group="settlement"/>
+			<upkeep type="cash" quantity="50"/>
+		</entry>
+		<entry
+			name="trucks"
+			name-en="trucks" 
+			group="vehicle" 
+			description="Group of large and slow ground moving trucks."
+			size="250"			
+			mass="100" 
+			capacity="150"
+			crew="1"
+			hit-points="17">
+			<operation-allowed-in planet-atmosphere="terair"/>
+			<operation-allowed-in location-type="solid-surface"/>
+			<upkeep type="cash" quantity="10"/>
+			<consume type="food" quantity="4"/>
+			<consume type="terair" quantity="4"/>
+			<no-consume effect="damage" chance="25"/>
+			<move mode="ground" speed="0.5"/>
+			<fuel duration="13">
+				<item type="oil" quantity="1"/>
+			</fuel>
+		</entry>
+		<entry
+			name="rctdrv"
+			name-en="reaction drive"
+			name-en2="reaction drives"
+			group="propulsion"
+			description="A long experience in fluid dynamics and combustion has gone into these drives."
+			size="600" 
+			mass="700" 
+			crew="1" 
+			energy="30"
+			capacity="150" 
+			technology-capacity="1"
+			hit-points="65">
+			<operation-allowed-in module-group="frigate"/>
+			<upkeep type="cash" quantity="100"/>
+			<move mode="space" mass-capacity="10000"/>
+			<fuel duration="1">
+				<item type="h2o2" quantity="1"/>
+			</fuel>
+		</entry>
+		<entry
+			name="fisrec"
+			name-en="fission reactor" 
+			name-en2="fission reactors" 
+			group="energy" 
+			description="The basic nuclear power reactors, which works using heavy fissile elements to produce energy."
+			size="400"
+			mass="140" 
+			crew="1" 
+			energy="10"
+			capacity="100" 
+			technology-capacity="1"
+			hit-points="45"
+			attack="2">
+			<produce energy="60" duration="13"/>
+			<energy-consume type="uraniu" quantity="1"/>
+			<energy-produce item="wastes" quantity="1"/>
+			<upkeep type="cash" quantity="90"/>
+			<no-upkeep effect="radiation" quantity="250" chance="25"/>
+			<fuel duration="13">
+				<item type="uraniu" quantity="1"/>
+			</fuel>
+		</entry>
+		<entry
+			name="shuttl"
+			name-en="space shuttle"
+			group="production" 
+			description="Basic shuttle used for orbital constructions. It has basic construction facitilites, small fission reactor and is propelled by a small reaction drive." 
+			size="200"			
+			mass="30" 
+			capacity="125"
+			crew="2"
+			technology-capacity="1"
+			hit-points="17">
+			<upkeep type="cash" quantity="100"/>
+			<use location-type="orbit" efficiency-multiplier="10" require-fuel="true"/>
+			<move mode="space" mass-capacity="750">
+			</move>
+			<fuel duration="13">
+				<item type="uraniu" quantity="1"/>
+				<item type="h2o2" quantity="1"/>
+			</fuel>
+			<operation-allowed-in location-type="solid-surface"/>
+			<operation-allowed-in location-type="liquid-surface"/>
+			<operation-allowed-in location-type="orbit"/>
+		</entry>
+		<entry
+			name="orcmpx" 
+			name-en="orbital complex"
+			group="space station" 
+			description="An elongated set of struts, cables, frames and other interconnecting parts assembling modules in orbit. The orbital complex is	cheap, simple and easy to build, but lacks sophistication."
+			size="5000"
+			mass="100" 
+			capacity="4500"
+			energy="1"
+			hit-points="50"
+			radiation="-50"
+			cannot-hold-itemstacks="yes">
+			<upkeep type="cash" quantity="10"/>
+			<operation-allowed-in location-type="orbit"/>
+		</entry>
+		<entry
+			name="sshull" 
+			name-en="spaceship hull"
+			group="frigate" 
+			description="The basic spaceship hull, it embodies the technology and experience in space travel."
+			size="5000"
+			mass="100" 
+			capacity="4500"
+			energy="1"
+			hit-points="50"
+			defense="10" 
+			radiation="-50"
+			cannot-hold-itemstacks="yes">
+			<upkeep type="cash" quantity="20"/>
+			<operation-allowed-in location-type="orbit"/>
+			<operation-allowed-in location-type="space"/>
+		</entry>
+		<entry
+			name="cbridg" 
+			name-en="command bridge"
+			group="command" 
+			description="A command bridge is mandated for the control of any spaceship."
+			size="800"
+			mass="300" 
+			energy="5"
+			crew="1"
+			capacity="200" 
+			technology-capacity="1"
+			hit-points="55">
+			<upkeep type="cash" quantity="100"/>
+			<operation-allowed-in module-group="frigate"/>
+			<operation-allowed-in module-group="space station"/>
+		</entry>
+		<entry
+			name="corphq" 
+			name-en="corporate headquarters"
+			group="command" 
+			description="A corporate headquarters allow centralized control of the corporation."
+			size="1000"
+			mass="1000"
+			energy="10"
+			crew="20"
+			capacity="750" 
+			technology-capacity="2"
+			hit-points="100"
+			defense="5">
+			<produce item="cash" quantity="100" duration="1"/>
+			<upkeep type="cash" quantity="100"/>
+			<effect type="upkeep reduction" value="0.1" target="region"/>
+			<effect type="fast construction" value="1.0" target="region"/>
+			<operation-allowed-in module-group="settlement"/>
+		</entry>
+		<entry
+			name="bltlas"
+			name-en="blue laser"
+			name-en2="blue lasers"
+			group="military"
+			description="A compact high-frequency laser suitable for ground combat."
+			size="100"
+			mass="100"
+			energy="5"
+			crew="1"
+			capacity="50"
+			technology-capacity="2"
+			hit-points="40"
+			attack="6"
+			defense="1"
+			damage="6">
+			<upkeep type="cash" quantity="50"/>
+			<require technology="lasopt"/>
+		</entry>
+		<entry
+			name="xraylz" 
+			name-en="x-ray laser"
+			name-en2="x-ray lasers"
+			group="military" 
+			description="The penetrating x-ray lasers are efficient weapons over large distances."
+			size="100"
+			mass="100" 
+			energy="10"
+			crew="1"
+			capacity="50" 
+			technology-capacity="2"
+			hit-points="10"
+			attack="10"
+			defense="1"
+			damage="10">
+			<upkeep type="cash" quantity="100"/>
+			<require technology="xraylo"/>
+		</entry>
+    <entry
+			name="gunplc"
+			name-en="gun placement"
+			name-en2="gun placements"
+			group="military"
+			description="The gun placements are primary means of defense for the short range ground combat."
+			size="100"
+			mass="500"
+			crew="2"
+			capacity="100"
+			technology-capacity="1"
+			hit-points="100"
+			attack="1"
+			defense="1"
+			damage="1">
+      <operation-allowed-in region-surface="solid"/>
+      <upkeep type="cash" quantity="10"/>
+      <no-upkeep effect="damage" chance="25"/>
+    </entry>
+		<entry
+			name="laztrt"
+			name-en="laser turret"
+			name-en2="laser turrets"
+			group="military"
+			description="A fixed laser emplacement for ground defense. Requires a power supply."
+			size="100"
+			mass="500"
+			crew="2"
+			capacity="100"
+			technology-capacity="1"
+			energy="5"
+			hit-points="100"
+			attack="6"
+			defense="1"
+			damage="6">
+			<operation-allowed-in region-surface="solid"/>
+			<upkeep type="cash" quantity="20"/>
+			<require technology="lasopt"/>
+		</entry>
+    <entry
+			name="cargob" 
+			name-en="small cargo bay"
+			name-en2="small cargo bays"
+			group="storage" 
+			description="The cargo bays may hold a wide variety of cargo for bulk transportations."
+			size="2000"
+			capacity="1800" 
+			mass="200" 
+			crew="0"
+			technology-capacity="1"
+			hit-points="55">
+			<upkeep type="cash" quantity="30"/>
+		</entry>
+		<entry
+			name="crwqrt" 
+			name-en="crew quarters"
+			group="habitat" 
+			description="These sealed and protected quarters house crew in the most hostile of the areas. They also allow slow recuperation of wounded crew members."
+			size="500"
+			capacity="250" 
+			mass="400" 
+			crew="0"
+			habitat="20" 
+			energy="1"
+			technology-capacity="1"
+			radiation="-200" 
+			hit-points="45">
+			<upkeep type="cash" quantity="20"/>
+			<effect type="heal" value="0.1" target="stacked"/>
+		</entry>
+		<entry
+			name="medfac"
+			name-en="medical facility"
+			name-en2="medical facilities"
+			group="habitat"
+			description="Outpatient clinic and quarantine: isolation volume, first aid, and containment of infection. Not a surgical recovery ward; that is the sick bay."
+			size="300"
+			capacity="150"
+			mass="200"
+			crew="2"
+			habitat="5"
+			energy="2"
+			technology-capacity="3"
+			radiation="-100"
+			hit-points="25"
+			cure-chance="25">
+			<upkeep type="cash" quantity="100"/>
+			<effect type="heal" value="1.0" target="stacked"/>
+		</entry>
+		<entry
+			name="sckbay"
+			name-en="sick bay"
+			name-en2="sick bays"
+			group="habitat"
+			description="Inpatient surgical and recovery ward. Isolation beds, autoclave, filtered air. Without medicines, two casualties still granulate over four weeks; with packed doses, four can return to duty each week. The ward can ferment medicines when pharmacy knowledge and food are present."
+			size="380"
+			capacity="180"
+			mass="250"
+			crew="3"
+			habitat="8"
+			energy="4"
+			technology-capacity="2"
+			radiation="-120"
+			hit-points="32">
+			<upkeep type="cash" quantity="40"/>
+			<effect type="heal" value="2" target="wndtrn" weeks="4" weeks-with-item="1" with-item-value="4" consume-item="medici" consume-quantity="1"/>
+		</entry>
+		<entry
+			name="jail"
+			name-en="jail block"
+			name-en2="jail blocks"
+			group="habitat"
+			description="Secure and durable - cells you want to be when the criminals and prisoners are put there for containment."
+			size="500"
+			capacity="250"
+			mass="800" 
+			crew="5"
+			habitat="40" 
+			energy="2"
+			technology-capacity="1"
+			hit-points="65">
+			<upkeep type="cash" quantity="60"/>
+			<effect type="immobile" target="stacked"/>
+		</entry>
+		<entry
+			name="barrck"
+			name-en="military barrack"
+			name-en2="military barracks"
+			group="production"
+			description="Infantry barracks and military vehicles barracks allow repairs and reduce upkeep costs of the units."
+			size="2000"
+			capacity="1800" 
+			mass="500" 
+			crew="2"
+			energy="5"
+			technology-capacity="1"
+			radiation="-100"
+			hit-points="125">			
+			<upkeep type="cash" quantity="200"/>
+			<effect type="fast training" value="1" target="region"/>
+			<effect type="repair" value="0.1" target="stacked"/>
+			<effect type="upkeep reduction" value="0.1" target="stacked"/>
+		</entry>
+		<entry
+			name="tunnls"
+			name-en="underground shelter"
+			name-en2="underground shelters"
+			group="settlement"
+			description="This is a basic habitat structure. Providing basic protection from radiation and micrometeors. They are too small to protect general population."
+			size="1200"
+			capacity="1000"
+			energy="1"
+			technology-capacity="0"
+			radiation="-100"
+			hit-points="100">
+			<upkeep type="cash" quanity="10"/>
+		</entry>
+		<entry
+			name="senvdm"
+			name-en="small enviromental dome"
+			name-en2="small enviromental domes"
+			group="settlement"
+			description="This is a basic dome-like habitat structure. Providing limited protection from radiation and are voulnerable to micrometeor bombardment."
+			size="10000"
+			capacity="8000"
+			population-maximum="15000"
+			energy="10"
+			technology-capacity="2"
+			hit-points="100"
+			cannot-hold-itemstacks="yes"
+			radiation="-50">
+			<upkeep type="terair" quantity="10"/>
+			<upkeep type="food" quantity="10"/>
+			<upkeep type="cash" quanity="100"/>
+			<no-upkeep effect="riot" chance="10"/>
+			<produce item="terran" quantity="1" duration="13"/>
+			<operation-allowed-in location-type="orbit"/>
+		</entry>
+		<entry
+			name="airreg"
+			name-en="air regeneration facility"
+			name-en2="air regeneration facilities"
+			group="habitat"
+			description="These facility removes oxycarbon from the air for further use by humans."
+			size="100"
+			capacity="80"
+			energy="2"			
+			technology-capacity="1"
+			hit-points="10">
+			<upkeep type="cash" quanity="10"/>
+		</entry>
+		<entry
+			name="engshp"
+			name-en="engineering shop"
+			name-en2="engineering shops"
+			group="production"
+			description="A small workshop that repairs the parent module stack and nested stacks. REPAIR restores 20 hit points per week and consumes 1 spare part, or 1 hit point with no parts."
+			size="25"
+			capacity="10"
+			mass="20"
+			crew="2"
+			energy="1"
+			technology-capacity="1"
+			hit-points="15">
+			<upkeep type="cash" quantity="5"/>
+			<operation-allowed-in module-group="settlement"/>
+			<operation-allowed-in module-group="frigate"/>
+			<operation-allowed-in module-group="spacecraft"/>
+			<operation-allowed-in module-group="space station"/>
+		</entry>
+		<entry
+			name="landpd"
+			name-en="landing pad"
+			name-en2="landing pads"
+			group="habitat"
+			description="The concrete hardened surface allow for safe landing of air and space vessels."
+			size="1000"
+			capacity="1000"
+			energy="1"
+			technology-capacity="1"
+			hit-points="100">
+			<upkeep type="cash" quanity="10"/>
+		</entry>
+		<entry
+			name="tanks"
+			name-en="tanks" 
+			group="vehicle" 
+			description="Platoon of 4 armored vehicles suitable for destroying ground modules and infantry battalions."
+			size="240"			
+			mass="240" 
+			capacity="200"
+			hit-points="100"
+			crew="16"
+			attack="4"
+			defense="4"
+			damage="4">
+			<operation-allowed-in planet-atmosphere="terair"/>
+			<operation-allowed-in region-surface="solid"/>
+			<upkeep type="cash" quantity="24"/>
+			<no-upkeep effect="rebel" chance="10"/>
+			<consume type="food" quantity="16"/>
+			<consume type="terair" quantity="16"/>
+			<no-consume effect="damage" chance="25"/>
+			<move mode="ground" speed="0.5"/>
+			<fuel duration="13">
+				<item type="oil" quantity="4"/>
+			</fuel>
+		</entry>
+		<entry
+			name="inftry"
+			name-en="infantry battalion" 
+			name-en2="infantry battalions" 
+			group="infantry" 
+			description="Infantry battalion used for claiming cities, and taking over hostile modules."
+			size="500"			
+			mass="500" 
+			capacity="300"
+			hit-points="50"
+			attack="1"
+			defense="1"
+			damage="1"
+			can-convert="yes"
+			value="50">
+			<operation-allowed-in planet-atmosphere="terair"/>
+			<operation-allowed-in region-surface="solid"/>
+			<upkeep type="cash" quantity="5"/>
+			<no-upkeep effect="rebel" chance="10"/>
+			<consume type="food" quantity="100"/>
+			<consume type="terair" quantity="100"/>
+			<no-consume effect="damage" chance="25"/>
+			<move mode="ground" speed="0.1"/>
+		</entry>
+		<entry
+			name="cmplib"
+			name-en="computer library"
+			name-en2="computer libraries"
+			group="research"
+			description="The efficiency of the computer library allows on to store and manipulate larger than usual files and technological reference documents."
+			size="200"
+			mass="50"
+			hit-points="50"
+			energy="5"			
+			technology-capacity="4"
+      research-output="1"
+			value="1000">
+			<upkeep type="cash" quanity="100"/>
+		</entry>
+		<entry name="he3ext" name-en="helium-3 core drill" name-en2="helium-3 core drills" group="extraction" description="A specialised, costlier core drill dedicated to helium-3. It extracts helium-3 at twice the efficiency of a general core drill but cannot mine anything else." size="1200" capacity="750" mass="1200" crew="6" energy="6" hit-points="100">
+			<produce item="heliu3" quantity="20" duration="13"/>
+			<upkeep type="cash" quantity="60"/>
+			<operation-allowed-in location-type="solid-surface"/>
+			<operation-allowed-in module-group="settlement"/>
+			<operation-allowed-in module-group="frigate"/>
+		</entry>
+		<entry name="fusrec" name-en="fusion reactor" name-en2="fusion reactors" group="energy" description="Fuses helium-3 to deliver clean, abundant power." size="1200" mass="1200" crew="3" energy="5" hit-points="120">
+			<produce energy="120" duration="13"/>
+			<energy-consume type="heliu3" quantity="3"/>
+			<operation-allowed-in location-type="solid-surface"/>
+			<upkeep type="cash" quantity="150"/>
+			<fuel duration="13">
+				<item type="heliu3" quantity="3"/>
+			</fuel>
+		</entry>
+		<entry name="advlib" name-en="advanced research complex" name-en2="advanced research complexes" group="research" description="A large, high-throughput research facility building on computer-library methods." size="400" mass="100" energy="10" hit-points="80" technology-capacity="8" research-output="2">
+			<upkeep type="cash" quantity="200"/>
+		</entry>
+		<entry
+			name="lifsys"
+			name-en="life support system"
+			name-en2="life support systems"
+			group="habitat"
+			description="Generates canned terran breathing gas for people and vehicles that cannot breathe the local atmosphere."
+			size="100"
+			capacity="40"
+			mass="80"
+			crew="0"
+			energy="2"
+			technology-capacity="1"
+			hit-points="20">
+			<produce item="terair" quantity="10" duration="1"/>
+			<upkeep type="cash" quantity="10"/>
+			<operation-allowed-in module-group="habitat"/>
+			<operation-allowed-in module-group="settlement"/>
+			<operation-allowed-in module-group="frigate"/>
+		</entry>
+		<entry
+			name="smhabi"
+			name-en="small habitat"
+			name-en2="small habitats"
+			group="habitat"
+			description="A root-level pressure vessel that holds one or two nested modules such as a life support system."
+			size="1000"
+			capacity="250"
+			mass="800"
+			crew="0"
+			energy="5"
+			technology-capacity="1"
+			hit-points="80">
+			<upkeep type="cash" quantity="40"/>
+			<operation-allowed-in location-type="solid-surface"/>
+			<operation-allowed-in location-type="orbit"/>
+		</entry>
+		<entry
+			name="dmdcty"
+			name-en="small dome city"
+			name-en2="small dome cities"
+			group="settlement"
+			description="A compact ownable dome for airless worlds. It must be supplied with food and terran breathing gas."
+			size="5000"
+			capacity="3500"
+			population-maximum="2000"
+			energy="10"
+			technology-capacity="2"
+			hit-points="250">
+			<upkeep type="food" quantity="20"/>
+			<upkeep type="terair" quantity="20"/>
+			<upkeep type="cash" quantity="80"/>
+			<produce item="cash" quantity="200" duration="13"/>
+			<operation-allowed-in location-type="solid-surface"/>
+		</entry>
+		<entry
+			name="alnhul"
+			name-en="alien vessel hull"
+			name-en2="alien vessel hulls"
+			group="frigate"
+			description="Crashed alien hull. Automated internals need no crew and no life support."
+			size="6500"
+			mass="200"
+			capacity="6000"
+			energy="1"
+			technology-capacity="4"
+			hit-points="120"
+			defense="8"
+			cannot-hold-itemstacks="yes">
+			<upkeep type="cash" quantity="20"/>
+			<operation-allowed-in location-type="solid-surface"/>
+			<operation-allowed-in location-type="orbit"/>
+		</entry>
+		<entry
+			name="robofc"
+			name-en="advanced robo-factory"
+			name-en2="advanced robo-factories"
+			group="production"
+			description="Unmanned alien fabrication plant. No crew and no life support."
+			size="1000"
+			capacity="500"
+			mass="750"
+			crew="0"
+			energy="15"
+			technology-capacity="4"
+			hit-points="100">
+			<upkeep type="cash" quantity="60"/>
+			<operation-allowed-in module-group="frigate"/>
+			<operation-allowed-in module-group="settlement"/>
+		</entry>
+		<entry
+			name="autcmd"
+			name-en="automated command module"
+			name-en2="automated command modules"
+			group="command"
+			description="Crewless alien command core."
+			size="800"
+			mass="300"
+			energy="5"
+			crew="0"
+			capacity="200"
+			technology-capacity="2"
+			hit-points="55">
+			<upkeep type="cash" quantity="80"/>
+			<operation-allowed-in module-group="frigate"/>
+		</entry>
+		<entry
+			name="autdrv"
+			name-en="automated propulsion module"
+			name-en2="automated propulsion modules"
+			group="propulsion"
+			description="Crewless alien drive. No life support."
+			size="600"
+			mass="700"
+			crew="0"
+			energy="30"
+			capacity="150"
+			technology-capacity="1"
+			hit-points="65">
+			<operation-allowed-in module-group="frigate"/>
+			<upkeep type="cash" quantity="80"/>
+			<move mode="space" mass-capacity="10000"/>
+			<fuel duration="1">
+				<item type="h2o2" quantity="1"/>
+			</fuel>
+		</entry>
+		<entry
+			name="he3aut"
+			name-en="automated helium powerplant"
+			name-en2="automated helium powerplants"
+			group="energy"
+			description="Unmanned helium-3 fusion plant. No crew."
+			size="400"
+			mass="400"
+			crew="0"
+			energy="5"
+			hit-points="80">
+			<produce energy="80" duration="13"/>
+			<energy-consume type="heliu3" quantity="2"/>
+			<operation-allowed-in module-group="frigate"/>
+			<operation-allowed-in location-type="solid-surface"/>
+			<upkeep type="cash" quantity="80"/>
+			<fuel duration="13">
+				<item type="heliu3" quantity="2"/>
+			</fuel>
+		</entry>
+		<entry
+			name="drnbay"
+			name-en="fighter drone bay"
+			name-en2="fighter drone bays"
+			group="military"
+			description="Hangar for a squad of crewless fighter drones."
+			size="400"
+			capacity="400"
+			mass="300"
+			crew="0"
+			energy="5"
+			technology-capacity="2"
+			hit-points="60">
+			<upkeep type="cash" quantity="40"/>
+			<operation-allowed-in module-group="frigate"/>
+		</entry>
+		<entry
+			name="alndrn"
+			name-en="alien fighter drone"
+			name-en2="alien fighter drones"
+			group="military"
+			description="Crewless alien fighter. No life support."
+			size="80"
+			mass="80"
+			capacity="20"
+			crew="0"
+			hit-points="25"
+			attack="6"
+			defense="2"
+			damage="6">
+			<upkeep type="cash" quantity="20"/>
+			<move mode="space" mass-capacity="80"/>
+			<operation-allowed-in module-group="military"/>
+			<operation-allowed-in module-group="frigate"/>
+		</entry>
+	</module>
+	<race>
+		<entry 
+			name="terran"
+			name-en="terran"
+			name-en2="terrans" 
+			group="human"
+			description="Typical human, man or woman, two arms, two legs, one head, on average 150 to 200 cm tall, originating from medium gravity world, skin color rouge, yellowish, brownish or black. Highly intelligent."
+			size="4"
+			mass="4"
+			capacity="3"
+			officer-training-duration="6">
+			<consume type="food" quantity="1"/>
+			<consume type="terair" quantity="1"/>
+			<no-consume effect="wound" chance="25"/>
+			<upkeep crew-type="crew" type="cash" quantity="1"/>
+			<upkeep crew-type="officer" type="cash" quantity="10"/>
+			<no-upkeep effect="off-duty" chance="50"/>
+			<move mode="ground" speed="0.1"/>
+		</entry>
+		<entry 
+			name="wndtrn"
+			name-en="wounded terran"
+			name-en2="wounded terrans" 
+			group="human"
+			description="Incapacitated human. Is unable to work and require medical attention"
+			size="4"
+			mass="4"
+			capacity="3"
+			officer-training-duration="-1">
+			<consume type="food" quantity="1"/>
+			<consume type="terair" quantity="1"/>
+			<consume type="medici" quantity="1"/>
+			<no-consume effect="death" chance="25"/>
+			<upkeep crew-type="crew" type="cash" quantity="1"/>
+			<upkeep crew-type="officer" type="cash" quantity="10"/>
+			<no-upkeep effect="off-duty" chance="50"/>
+			<random-effect effect="cure" chance="25"/>
+			<random-effect effect="off-duty" chance="50"/>
+			</entry>
+		<entry
+			name="madtrn"
+			name-en="mad terran"
+			name-en2="mad terrans"
+			group="human"
+			description="Human who have seen to much. An unstable mind can lead to agression. Is unable to work and require medical attention"
+			size="4"
+			mass="4"
+			capacity="3"
+			officer-training-duration="-1">
+			<consume type="food" quantity="1"/>
+			<consume type="terair" quantity="1"/>
+			<consume type="medici" quantity="1"/>
+			<no-consume effect="death" chance="25"/>
+			<random-effect effect="off-duty" chance="100"/>
+			<random-effect effect="cure" chance="10"/>
+			<random-effect effect="death" chance="10"/>
+			<random-effect effect="berserk" chance="10"/>
+		</entry>
+	</race>
+	<skill>
+		<entry 
+			name="frgplt"
+			name-en="frigate pilot"
+			training-duration="6"
+			description="A succesful dodge can make a life or death difference in a small space vessels, and you shouldn't pilot a frigate if you can't make it to shoot first."
+			defense="5"
+			initiative="5">
+			<usable-in module-group="frigate" modulestack-size="1"/>
+		</entry>
+		<entry 
+			name="sscmnd"
+			name-en="space station command"
+			training-duration="6"
+			description="Space stations have not much of dodge possibilites, but still they do have small manouver engines that can present stronger points or deflectors."
+			defense="5">
+			<usable-in module-group="space station"/>
+		</entry>
+		<entry
+			name="hmedic"
+			name-en="human physiology"
+			training-duration="6"
+			description="Mending the human body is not simple, yet when mastered it is a life saving ability."
+			cure-chance="25">
+		</entry>
+		<entry
+			name="arpldr"
+			name-en="armor platoon leader"
+			training-duration="4"
+			description="Experience in leading an attack of platoon of tanks can be learnt in simulator or on the battlefield."
+			attack="5"
+			initiative="5">
+			<usable-in module-type-group="vehicle"/>
+			<produce effect="effective attack" target="units" value="1"/>
+		</entry>
+		<entry
+			name="inbtcm"
+			name-en="infantry battalion commander"
+			training-duration="4"
+			description="Experience in leading a infantry battalion need a good mixture of tactical and personal skills. The point is on preserving lives."
+			attack="5"
+			initiative="5">
+			<usable-in module-type-group="infantry"/>
+			<produce effect="effective defence" target="units" value="1"/>
+		</entry>
+	</skill>
+</data>

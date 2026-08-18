@@ -141,6 +141,19 @@ namespace SpaceAge
 		{
 			get { return this.upkeep; }
 		}
+
+		public string NoUpkeepEffect { get; set; }
+		public int NoUpkeepChance { get; set; }
+		public string NoConsumeEffect { get; set; }
+		public int NoConsumeChance { get; set; }
+
+		public string HealTarget { get; set; }
+		public int HealQuantity { get; set; }
+		public int HealWeeks { get; set; }
+		public int HealQuantityWithItem { get; set; }
+		public int HealWeeksWithItem { get; set; }
+		public string HealConsumeItem { get; set; }
+		public int HealConsumeQuantity { get; set; }
 		#endregion
 
 		#region movement
