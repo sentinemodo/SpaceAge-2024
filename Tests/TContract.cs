@@ -85,7 +85,8 @@ namespace UnitTests
 			Assert.That(create.Executed, Is.True);
 			Assert.That(Contract.All.Count, Is.EqualTo(1));
 			string contractName = Contract.All[0].Name;
-			Assert.That(contractName.StartsWith("c"), Is.True);
+			Assert.That(contractName.StartsWith(Contract.NamePrefix), Is.True);
+			Assert.That(contractName.Length, Is.EqualTo(NamedObject.MaxNameLength));
 			Assert.That(Contract.All[0].CreatedThisSession, Is.True);
 
 			List<string> withdrawCommands = new List<string>
@@ -120,8 +121,8 @@ namespace UnitTests
 		[Test]
 		public void XmlRoundTrip_PersistsOpenContract()
 		{
-			this.Publish("c00001", "R00002", "000001");
-			GiveModuleTrigger trigger = (GiveModuleTrigger)Contract.All["c00001"].Trigger;
+			this.Publish("CT0001", "R00002", "000001");
+			GiveModuleTrigger trigger = (GiveModuleTrigger)Contract.All["CT0001"].Trigger;
 			int baseline = trigger.Baseline;
 
 			string testdir = Directory.GetCurrentDirectory();
@@ -130,7 +131,7 @@ namespace UnitTests
 
 			XmlDocument saved = new XmlDocument();
 			saved.Load(Path.Combine(testdir, testfile));
-			XmlElement elContract = (XmlElement)saved.SelectSingleNode("/game/contracts/contract[@name='c00001']");
+			XmlElement elContract = (XmlElement)saved.SelectSingleNode("/game/contracts/contract[@name='CT0001']");
 			Assert.That(elContract, Is.Not.Null);
 			Assert.That(elContract.GetAttribute("location"), Is.EqualTo("R00002"));
 			Assert.That(elContract.GetAttribute("issuer"), Is.EqualTo("1"));
@@ -155,7 +156,7 @@ namespace UnitTests
 			this.game = this.dataFile.Game;
 
 			Assert.That(Contract.All.Count, Is.EqualTo(1));
-			Contract loaded = Contract.All["c00001"];
+			Contract loaded = Contract.All["CT0001"];
 			Assert.That(loaded, Is.Not.Null);
 			Assert.That(loaded.Location.Name, Is.EqualTo("R00002"));
 			Assert.That(loaded.Issuer.Name, Is.EqualTo("1"));
@@ -171,7 +172,7 @@ namespace UnitTests
 		[Test]
 		public void Transfer_FirstGiverReceivesRckterAndRemovesContract()
 		{
-			this.Publish("c00001", "R00002", "000001");
+			this.Publish("CT0001", "R00002", "000001");
 			Faction player = Faction.All["2"];
 			ModuleStack infantry = this.CreateInfantry("i99901", player, Region.All["R00002"], 2);
 			ModuleStack city = ModuleStack.All["000001"];
@@ -182,20 +183,23 @@ namespace UnitTests
 
 			Contract.All.Evaluate(1);
 			Assert.That(Contract.All.Count, Is.EqualTo(0));
-			Assert.That(player.TechnologiesSeen.Contains("rckter"), Is.True);
+			Assert.That(infantry.Technologies.Contains("rckter"), Is.False, "inftry has no technology capacity");
+			Assert.That(ModuleStack.All["000112"].Technologies.Contains("rckter"), Is.True);
 			Assert.That(player.TechnologiesToShow.Contains("rckter"), Is.True);
+			Assert.That(player.TechnologiesSeen.Contains("rckter"), Is.False);
 
 			TransferOrder second = new TransferOrder(infantry, city, ModuleType.All["inftry"], 1, 0);
 			second.Execute(1);
 			Contract.All.Evaluate(1);
 			Assert.That(Contract.All.Count, Is.EqualTo(0));
-			Assert.That(player.TechnologiesSeen.Count, Is.EqualTo(1));
+			Assert.That(player.TechnologiesToShow.Count, Is.EqualTo(1));
+			Assert.That(player.TechnologiesSeen.Count, Is.EqualTo(0));
 		}
 
 		[Test]
 		public void Evaluate_DoesNothingWhenCountUnchanged()
 		{
-			this.Publish("c00001", "R00002", "000001");
+			this.Publish("CT0001", "R00002", "000001");
 			Faction player = Faction.All["2"];
 
 			Contract.All.Evaluate(1);
@@ -208,7 +212,7 @@ namespace UnitTests
 		[Test]
 		public void Transfer_IgnoresIssuerSelfMove()
 		{
-			this.Publish("c00001", "R00002", "000001");
+			this.Publish("CT0001", "R00002", "000001");
 			Faction npc = Faction.All["1"];
 			ModuleStack infantry = this.CreateInfantry("i99902", npc, Region.All["R00002"], 1);
 
@@ -218,6 +222,84 @@ namespace UnitTests
 
 			Assert.That(Contract.All.Count, Is.EqualTo(1));
 			Assert.That(npc.TechnologiesSeen.Contains("rckter"), Is.False);
+		}
+
+		[Test]
+		public void UseFor_SameTypeParentTransfersAndCompletesContract()
+		{
+			Sequence.Ints.Push(201);
+			Sequence.Ints.Push(200);
+
+			ModuleStack factory = ModuleStack.All["000004"];
+			factory.Technologies.Add(Technology.All["frminf"]);
+			ModuleStack garrison = this.CreateInfantry("g99902", Faction.All["1"], Region.All["R00002"], 1);
+			this.Publish("CT0002", "R00002", "g99902");
+
+			UseOrder use = new UseOrder(factory);
+			use.Parse("frminf for g99902");
+			use.DurationInitial = 1;
+			use.Execute(1);
+
+			Assert.That(use.Executed, Is.True);
+			Assert.That(garrison.Quantity, Is.EqualTo(2));
+			Assert.That(ModuleStack.All.ContainsKey(((ModuleStack)use.Receiver).Name), Is.False);
+
+			Contract.All.Evaluate(1);
+			Assert.That(Contract.All.Count, Is.EqualTo(0));
+			Assert.That(factory.Technologies.Contains("rckter"), Is.False, "factory is already over technology capacity");
+			Assert.That(ModuleStack.All["000112"].Technologies.Contains("rckter"), Is.True, "overflow copy lands on Caste Prime Headquarters");
+			Assert.That(garrison.Technologies.Contains("rckter"), Is.False);
+			Assert.That(Faction.All["2"].TechnologiesToShow.Contains("rckter"), Is.True);
+			Assert.That(Faction.All["2"].TechnologiesSeen.Contains("rckter"), Is.False);
+		}
+
+		[Test]
+		public void ReceiveTechnologyCopy_WhenStartIsFull_HostsOnSameOwnerCityBeforeNestedHeadquarters()
+		{
+			Faction owner = Faction.All["2"];
+			Region region = Region.All["R10009"];
+			ModuleStack city = new ModuleStack(region, owner, ModuleType.All["city"], "c90001");
+			city.AddModule();
+			ModuleStack headquarters = new ModuleStack(city, owner, ModuleType.All["corphq"], "h90001");
+			headquarters.AddModule();
+			ModuleStack barracks = new ModuleStack(city, owner, ModuleType.All["barrck"], "b90001");
+			barracks.AddModule();
+			barracks.Technologies.Add(Technology.All["frminf"]);
+
+			barracks.ReceiveTechnologyCopy(
+				Technology.All["rckter"],
+				1,
+				"received copy of rocket launcher production [rckter] technology.");
+
+			Assert.That(barracks.Technologies.Contains("rckter"), Is.False);
+			Assert.That(headquarters.Technologies.Contains("rckter"), Is.False);
+			Assert.That(city.Technologies.Contains("rckter"), Is.True);
+			Assert.That(owner.TechnologiesToShow.Contains("rckter"), Is.True);
+		}
+
+		[Test]
+		public void UseFor_DifferentLocationDoesNotDeliver()
+		{
+			Sequence.Ints.Push(203);
+			Sequence.Ints.Push(202);
+
+			ModuleStack factory = ModuleStack.All["000004"];
+			factory.Technologies.Add(Technology.All["frminf"]);
+			ModuleStack garrison = this.CreateInfantry("g10009", Faction.All["1"], Region.All["R10009"], 1);
+			this.Publish("CT1009", "R10009", "g10009");
+
+			UseOrder use = new UseOrder(factory);
+			use.Parse("frminf for g10009");
+			use.DurationInitial = 1;
+			use.Execute(1);
+
+			Assert.That(use.Executed, Is.True);
+			Assert.That(garrison.Quantity, Is.EqualTo(1));
+			Contract.All.Evaluate(1);
+			Assert.That(Contract.All.Count, Is.EqualTo(1));
+			Assert.That(factory.Technologies.Contains("rckter"), Is.False);
+			Assert.That(ModuleStack.All["000112"].Technologies.Contains("rckter"), Is.False);
+			Assert.That(Faction.All["2"].TechnologiesToShow.Contains("rckter"), Is.False);
 		}
 
 		[Test]
@@ -250,7 +332,7 @@ namespace UnitTests
 				File.Delete(presentFile);
 			}
 
-			Contract open = this.Publish("c00001", "R00002", "000001");
+			Contract open = this.Publish("CT0001", "R00002", "000001");
 			open.CreatedThisSession = true;
 			Contract.All.WriteAnnouncements(turnDir, this.game);
 
@@ -258,7 +340,7 @@ namespace UnitTests
 			string announcement = File.ReadAllText(presentFile, Encoding.GetEncoding(1251));
 			Assert.That(announcement.Contains("To: mail@mail.pl"), Is.True);
 			Assert.That(announcement.Contains("Subject: [SpaceAge] Report for turn " + this.game.Turn), Is.True);
-			Assert.That(announcement.Contains("c00001"), Is.True);
+			Assert.That(announcement.Contains("CT0001"), Is.True);
 			Assert.That(announcement.Contains("infantry battalion [inftry]"), Is.True);
 			Assert.That(announcement.Contains("rocket launcher production [rckter]"), Is.True);
 			File.Delete(presentFile);
@@ -275,7 +357,7 @@ namespace UnitTests
 			}
 
 			ModuleStack remote = this.CreateInfantry("i10009", Faction.All["1"], Region.All["R10009"], 1);
-			Contract remoteContract = this.Publish("c10009", "R10009", remote.Name);
+			Contract remoteContract = this.Publish("CT1009", "R10009", remote.Name);
 			remoteContract.CreatedThisSession = true;
 			Contract.All.WriteAnnouncements(turnDir, this.game);
 

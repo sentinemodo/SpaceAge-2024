@@ -92,6 +92,40 @@ namespace UnitTests
 
 			// tag added to an existing technology
 			Assert.That(Technology.All["stnrdf"].HasTag("military"));
+			Assert.That(Technology.All["stnrdf"].Level, Is.EqualTo(0));
+
+			Technology lasopt = Technology.All["lasopt"];
+			Assert.That(lasopt.UseProduceModules.Name, Is.EqualTo("bltlas"));
+			ModuleType bltlas = ModuleType.All["bltlas"];
+			Assert.That(bltlas.Attack, Is.EqualTo(6));
+			Assert.That(bltlas.Damage, Is.EqualTo(6));
+			Assert.That(bltlas.DamageCapacity, Is.EqualTo(40));
+			Assert.That(bltlas.EnergyRequired, Is.EqualTo(5));
+
+			Technology xraylo = Technology.All["xraylo"];
+			Assert.That(xraylo.Level, Is.EqualTo(2));
+			Assert.That(xraylo.Requires, Is.EqualTo(Technology.All["lasopt"]));
+			Assert.That(xraylo.UseProduceModules.Name, Is.EqualTo("xraylz"));
+
+			Technology lstrrt = Technology.All["lstrrt"];
+			Assert.That(lstrrt.Level, Is.EqualTo(1));
+			Assert.That(lstrrt.HasTag("military"));
+			Assert.That(lstrrt.Requires, Is.EqualTo(Technology.All["lasopt"]));
+			Assert.That(lstrrt.UseProduceModules.Name, Is.EqualTo("laztrt"));
+			ModuleType laztrt = ModuleType.All["laztrt"];
+			Assert.That(laztrt.Attack, Is.EqualTo(6));
+			Assert.That(laztrt.Damage, Is.EqualTo(6));
+			Assert.That(laztrt.DamageCapacity, Is.EqualTo(100));
+			Assert.That(laztrt.EnergyRequired, Is.EqualTo(5));
+
+			ModuleType gunplc = ModuleType.All["gunplc"];
+			Assert.That(gunplc.Attack, Is.EqualTo(1));
+			Assert.That(gunplc.Damage, Is.EqualTo(1));
+			Assert.That(gunplc.DamageCapacity, Is.EqualTo(100));
+
+			ModuleType tanks = ModuleType.All["tanks"];
+			Assert.That(tanks.Attack, Is.EqualTo(4));
+			Assert.That(tanks.DamageCapacity, Is.EqualTo(100));
 
 			ModuleType engshp = ModuleType.All["engshp"];
 			Assert.That(engshp.Group, Is.EqualTo(EModuleTypesGroup.production));

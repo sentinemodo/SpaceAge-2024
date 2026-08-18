@@ -8,7 +8,7 @@ namespace SpaceAge
 	{
 		avoid,
 		destroy,  // basic tactic, random damage
-		capture, // 10% HP / 90% capture pool; command+propulsion double size
+		capture, // 25% HP / 75% capture pool; command+propulsion double size
 		evade, // 50% to-hit; command+propulsion half size; leave after two unhit rounds
 		disable, // legacy XML name; treated as destroy when firing
 		split, // split modules from target modulestacks (in space this usually causes death of the crew)

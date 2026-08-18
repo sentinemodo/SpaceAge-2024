@@ -4,8 +4,9 @@ using System.Xml;
 
 namespace SpaceAge
 {
-	// TACTIC destroy|capture|evade — modulestack only. Destroy and capture are exclusive.
-	// Evade may coexist with either. Immobile stacks may only use destroy.
+	// TACTIC destroy|capture|evade|prioritize armed|prioritize command — modulestack only.
+	// Destroy and capture are exclusive. Evade and prioritize may coexist with firing tactics.
+	// Immobile stacks may only use destroy.
 	public class TacticOrder : ImmediateOrder
 	{
 		public TacticOrder(IOrderable subject)
@@ -29,6 +30,16 @@ namespace SpaceAge
 				throw new Exception("Bad syntax, tactic name expected.");
 			}
 			this.TacticName = token.ToLowerInvariant();
+			if (this.TacticName == "prioritize")
+			{
+				string kind = LineParser.GetToken(ref command);
+				if (kind != "armed" && kind != "command")
+				{
+					throw new Exception("Unknown prioritize tactic. Received: " + kind);
+				}
+				this.TacticName = string.Concat("prioritize ", kind);
+				return;
+			}
 			if (this.TacticName != "destroy" && this.TacticName != "capture" && this.TacticName != "evade")
 			{
 				throw new Exception("Unknown tactic. Received: " + token);
@@ -38,6 +49,14 @@ namespace SpaceAge
 		public override void Execute(int week)
 		{
 			this.Executed = false;
+			if (this.TacticName.StartsWith("prioritize "))
+			{
+				this.Unit.ApplyPrioritizeTactic(this.TacticName);
+				this.Unit.EventReports.Add(week, string.Format("set tactic to {0}.", this.TacticName));
+				this.Executed = true;
+				base.Execute(week);
+				return;
+			}
 			if (this.Unit.IsImmobile && this.TacticName != "destroy")
 			{
 				this.Unit.EventReports.Add(week, "TACTIC failed. Immobile units may only use destroy.");

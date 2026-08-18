@@ -50,11 +50,16 @@ namespace SpaceAge
 
 		public void NotifyTransfer(Faction giver, ModuleStack receiver, ModuleType moduleType, int quantity)
 		{
+			this.NotifyTransfer(giver, null, receiver, moduleType, quantity);
+		}
+
+		public void NotifyTransfer(Faction giver, ModuleStack giverStack, ModuleStack receiver, ModuleType moduleType, int quantity)
+		{
 			foreach (Contract contract in this)
 			{
 				if (contract.Trigger != null)
 				{
-					contract.Trigger.NotifyTransfer(giver, receiver, moduleType, quantity, contract.Issuer);
+					contract.Trigger.NotifyTransfer(giver, giverStack, receiver, moduleType, quantity, contract.Issuer);
 				}
 			}
 		}

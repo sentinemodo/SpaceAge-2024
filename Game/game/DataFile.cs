@@ -210,6 +210,16 @@ namespace SpaceAge
 
 					itemType.Mass = this.XMLAssignDouble(el.GetAttribute("mass"), 0);
 					itemType.Size = this.XMLAssignDouble(el.GetAttribute("size"), 0);
+					itemType.Attack = this.XMLAssignInteger(el.GetAttribute("attack"), 0);
+					itemType.Damage = this.XMLAssignInteger(el.GetAttribute("damage"), 0);
+
+					foreach (XmlElement elAllowedBy in el.SelectNodes("use-allowed-by"))
+					{
+						if (elAllowedBy.HasAttribute("module-type-group"))
+						{
+							itemType.UseAllowedModuleTypesGroup = this.getModuleTypeGroup(elAllowedBy.GetAttribute("module-type-group"));
+						}
+					}
 
 					#region upkeep
 					ItemStack item = null;

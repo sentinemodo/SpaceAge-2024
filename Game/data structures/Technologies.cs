@@ -169,7 +169,7 @@ namespace SpaceAge
                 {
                     foreach (ItemType itemType in technology.UseProduceItems.Keys)
                     {
-                        reportLines.Add(string.Format("- {0}: {1}", itemType.ReportName, itemType.Description), level + 1);
+                        reportLines.Add(string.Format("- {0}: {1}", itemType.ReportName, itemType.ReportDescriptionForTechnology()), level + 1);
                     }
                 }
             }

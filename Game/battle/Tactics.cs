@@ -67,6 +67,12 @@ namespace SpaceAge
                     case "evade":
                         tactic = new EvadeTactic(holder);
                         break;
+                    case "prioritize armed":
+                        tactic = new PrioritizeArmedTactic(holder);
+                        break;
+                    case "prioritize command":
+                        tactic = new PrioritizeCommandTactic(holder);
+                        break;
                     default:
                         throw new Exception("Unknown tactics. Received: " + elTactic.GetAttribute("name"));
                 }

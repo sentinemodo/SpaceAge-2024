@@ -1,0 +1,3666 @@
+To: mail1@mail.pl
+Subject: [SpaceAge] Report for turn 3
+Content-Disposition: attachment
+
+SpaceAge report for Caste Prime [2].
+Turn 3, Year 2020, July 1.
+
+SpaceAge Engine Version: 0.1.141.
+
+Events during turn:
+  none.
+
+Bank report:
+  Bank account balance: 9821.25.
+  Credit line maximum: 10000.
+  Credit rate: 20%, Deposit rate: 5%.
+
+Battles report:
+
+  Week 9.
+  Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
+  [ocean] in system Sol [SS0001] (0, 0, 0).
+  ------------------------------------------------------------
+  Round 1:
+  ------------------------------------------------------------
+  Attackers:
+  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+    size: 240.
+    hit points: 100/100, attack: 4, defense: 4.
+      #1 hit points: 100/100.
+  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  Defenders:
+  + Caste Prime Headquarters [000012], corporate headquarters [corphq].
+    size: 1000, mass: 1240 (1000), energy: 10, crew: 20/60.
+    hit points: 100/100, defense: 5.
+    items: 60 terrans [terran], 2200 cash [cash].
+      #1 hit points: 100/100.
+  + small cargo bay [000013], 5 small cargo bays [cargob].
+    size: 10000, mass: 7050 (1000).
+    hit points: 275/275.
+    items: 880 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    of oxyhydro [h2o2], 70 units of iron [iron], 70 units of titanium [titani], 80 units of silicium
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 92
+    units of carbon [carbon].
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
+      #4 hit points: 55/55.
+      #5 hit points: 55/55.
+  + farming complex [000014], 3 farming complexes [farms].
+    size: 3000, mass: 360 (300), energy: 15, crew: 15/15.
+    hit points: 165/165.
+    items: 15 terrans [terran].
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
+  + coal-burning plant [000015], 3 coal-burning plants [cplant].
+    size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
+    hit points: 300/300, attack: 3.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  + core drill [000016], core drill [cdrill].
+    size: 1000, mass: 1024 (1000), energy: 5, crew: 6/6.
+    hit points: 100/100.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+  + factory [000017], 5 factories [factry].
+    size: 5000, mass: 4150 (3750), energy: 75, crew: 50/50.
+    hit points: 500/500.
+    items: 50 terrans [terran], 20 units of iron [iron].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100.
+  + gun placement [111], 5 gun placements [gunplc], disabled.
+    size: 500, mass: 2500 (2500), crew: 10/0.
+    hit points: 500/500, attack: 5, defense: 5.
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100.
+  ------------------------------------------------------------
+  peaceful scout [108] fires tanks [tanks] on gun placement [111] (chance: 3/9) and hits #1 gun
+  placement [111] doing 4 damage.
+  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 12/22)
+  and hits #1 Caste Prime Headquarters [000012] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 12/22)
+  and hits #1 Caste Prime Headquarters [000012] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 12/22)
+  and hits #1 Caste Prime Headquarters [000012] doing 1 damage and 3 capture damage.
+  ------------------------------------------------------------
+  Round 2:
+  ------------------------------------------------------------
+  Attackers:
+  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+    size: 240.
+    hit points: 100/100, attack: 4, defense: 4.
+      #1 hit points: 100/100.
+  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  Defenders:
+  + Caste Prime Headquarters [000012], corporate headquarters [corphq].
+    size: 1000, mass: 1240 (1000), energy: 10, crew: 20/60.
+    hit points: 100/97, capture: 9, defense: 5.
+    items: 60 terrans [terran], 2200 cash [cash].
+      #1 hit points: 100/97, capture: 9.
+  + small cargo bay [000013], 5 small cargo bays [cargob].
+    size: 10000, mass: 7050 (1000).
+    hit points: 275/275.
+    items: 880 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    of oxyhydro [h2o2], 70 units of iron [iron], 70 units of titanium [titani], 80 units of silicium
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 92
+    units of carbon [carbon].
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
+      #4 hit points: 55/55.
+      #5 hit points: 55/55.
+  + farming complex [000014], 3 farming complexes [farms].
+    size: 3000, mass: 360 (300), energy: 15, crew: 15/15.
+    hit points: 165/165.
+    items: 15 terrans [terran].
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
+  + coal-burning plant [000015], 3 coal-burning plants [cplant].
+    size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
+    hit points: 300/300, attack: 3.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  + core drill [000016], core drill [cdrill].
+    size: 1000, mass: 1024 (1000), energy: 5, crew: 6/6.
+    hit points: 100/100.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+  + factory [000017], 5 factories [factry].
+    size: 5000, mass: 4150 (3750), energy: 75, crew: 50/50.
+    hit points: 500/500.
+    items: 50 terrans [terran], 20 units of iron [iron].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100.
+  + gun placement [111], 5 gun placements [gunplc], disabled.
+    size: 500, mass: 2500 (2500), crew: 10/0.
+    hit points: 500/496, attack: 5, defense: 5.
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/96.
+  ------------------------------------------------------------
+  peaceful scout [108] fires tanks [tanks] on gun placement [111] (chance: 3/9) and hits #1 gun
+  placement [111] doing 4 damage.
+  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 12/22)
+  and hits #1 Caste Prime Headquarters [000012] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 12/22)
+  and hits #1 Caste Prime Headquarters [000012] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 12/22)
+  and hits #1 Caste Prime Headquarters [000012] doing 1 damage and 3 capture damage.
+  ------------------------------------------------------------
+  Round 3:
+  ------------------------------------------------------------
+  Attackers:
+  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+    size: 240.
+    hit points: 100/100, attack: 4, defense: 4.
+      #1 hit points: 100/100.
+  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  Defenders:
+  + Caste Prime Headquarters [000012], corporate headquarters [corphq].
+    size: 1000, mass: 1240 (1000), energy: 10, crew: 20/60.
+    hit points: 100/94, capture: 18, defense: 5.
+    items: 60 terrans [terran], 2200 cash [cash].
+      #1 hit points: 100/94, capture: 18.
+  + small cargo bay [000013], 5 small cargo bays [cargob].
+    size: 10000, mass: 7050 (1000).
+    hit points: 275/275.
+    items: 880 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    of oxyhydro [h2o2], 70 units of iron [iron], 70 units of titanium [titani], 80 units of silicium
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 92
+    units of carbon [carbon].
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
+      #4 hit points: 55/55.
+      #5 hit points: 55/55.
+  + farming complex [000014], 3 farming complexes [farms].
+    size: 3000, mass: 360 (300), energy: 15, crew: 15/15.
+    hit points: 165/165.
+    items: 15 terrans [terran].
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
+  + coal-burning plant [000015], 3 coal-burning plants [cplant].
+    size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
+    hit points: 300/300, attack: 3.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  + core drill [000016], core drill [cdrill].
+    size: 1000, mass: 1024 (1000), energy: 5, crew: 6/6.
+    hit points: 100/100.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+  + factory [000017], 5 factories [factry].
+    size: 5000, mass: 4150 (3750), energy: 75, crew: 50/50.
+    hit points: 500/500.
+    items: 50 terrans [terran], 20 units of iron [iron].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100.
+  + gun placement [111], 5 gun placements [gunplc], disabled.
+    size: 500, mass: 2500 (2500), crew: 10/0.
+    hit points: 500/492, attack: 5, defense: 5.
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/92.
+  ------------------------------------------------------------
+  peaceful scout [108] fires tanks [tanks] on gun placement [111] (chance: 3/9) and hits #1 gun
+  placement [111] doing 4 damage.
+  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 12/22)
+  and hits #1 Caste Prime Headquarters [000012] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 12/22)
+  and hits #1 Caste Prime Headquarters [000012] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 12/22)
+  and hits #1 Caste Prime Headquarters [000012] doing 1 damage and 3 capture damage.
+  ------------------------------------------------------------
+  Round 4:
+  ------------------------------------------------------------
+  Attackers:
+  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+    size: 240.
+    hit points: 100/100, attack: 4, defense: 4.
+      #1 hit points: 100/100.
+  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  Defenders:
+  + Caste Prime Headquarters [000012], corporate headquarters [corphq].
+    size: 1000, mass: 1240 (1000), energy: 10, crew: 20/60.
+    hit points: 100/91, capture: 27, defense: 5.
+    items: 60 terrans [terran], 2200 cash [cash].
+      #1 hit points: 100/91, capture: 27.
+  + small cargo bay [000013], 5 small cargo bays [cargob].
+    size: 10000, mass: 7050 (1000).
+    hit points: 275/275.
+    items: 880 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    of oxyhydro [h2o2], 70 units of iron [iron], 70 units of titanium [titani], 80 units of silicium
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 92
+    units of carbon [carbon].
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
+      #4 hit points: 55/55.
+      #5 hit points: 55/55.
+  + farming complex [000014], 3 farming complexes [farms].
+    size: 3000, mass: 360 (300), energy: 15, crew: 15/15.
+    hit points: 165/165.
+    items: 15 terrans [terran].
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
+  + coal-burning plant [000015], 3 coal-burning plants [cplant].
+    size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
+    hit points: 300/300, attack: 3.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  + core drill [000016], core drill [cdrill].
+    size: 1000, mass: 1024 (1000), energy: 5, crew: 6/6.
+    hit points: 100/100.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+  + factory [000017], 5 factories [factry].
+    size: 5000, mass: 4150 (3750), energy: 75, crew: 50/50.
+    hit points: 500/500.
+    items: 50 terrans [terran], 20 units of iron [iron].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100.
+  + gun placement [111], 5 gun placements [gunplc], disabled.
+    size: 500, mass: 2500 (2500), crew: 10/0.
+    hit points: 500/488, attack: 5, defense: 5.
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/88.
+  ------------------------------------------------------------
+  peaceful scout [108] fires tanks [tanks] on gun placement [111] (chance: 3/9) and hits #1 gun
+  placement [111] doing 4 damage.
+  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 12/22)
+  and hits #1 Caste Prime Headquarters [000012] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 12/22)
+  and hits #1 Caste Prime Headquarters [000012] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 12/22)
+  and hits #1 Caste Prime Headquarters [000012] doing 1 damage and 3 capture damage.
+  ------------------------------------------------------------
+  Round 5:
+  ------------------------------------------------------------
+  Attackers:
+  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+    size: 240.
+    hit points: 100/100, attack: 4, defense: 4.
+      #1 hit points: 100/100.
+  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  Defenders:
+  + Caste Prime Headquarters [000012], corporate headquarters [corphq].
+    size: 1000, mass: 1240 (1000), energy: 10, crew: 20/60.
+    hit points: 100/88, capture: 36, defense: 5.
+    items: 60 terrans [terran], 2200 cash [cash].
+      #1 hit points: 100/88, capture: 36.
+  + small cargo bay [000013], 5 small cargo bays [cargob].
+    size: 10000, mass: 7050 (1000).
+    hit points: 275/275.
+    items: 880 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    of oxyhydro [h2o2], 70 units of iron [iron], 70 units of titanium [titani], 80 units of silicium
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 92
+    units of carbon [carbon].
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
+      #4 hit points: 55/55.
+      #5 hit points: 55/55.
+  + farming complex [000014], 3 farming complexes [farms].
+    size: 3000, mass: 360 (300), energy: 15, crew: 15/15.
+    hit points: 165/165.
+    items: 15 terrans [terran].
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
+  + coal-burning plant [000015], 3 coal-burning plants [cplant].
+    size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
+    hit points: 300/300, attack: 3.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  + core drill [000016], core drill [cdrill].
+    size: 1000, mass: 1024 (1000), energy: 5, crew: 6/6.
+    hit points: 100/100.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+  + factory [000017], 5 factories [factry].
+    size: 5000, mass: 4150 (3750), energy: 75, crew: 50/50.
+    hit points: 500/500.
+    items: 50 terrans [terran], 20 units of iron [iron].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100.
+  + gun placement [111], 5 gun placements [gunplc], disabled.
+    size: 500, mass: 2500 (2500), crew: 10/0.
+    hit points: 500/484, attack: 5, defense: 5.
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/84.
+  ------------------------------------------------------------
+  peaceful scout [108] fires tanks [tanks] on gun placement [111] (chance: 3/9) and hits #1 gun
+  placement [111] doing 4 damage.
+  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 12/22)
+  and hits #1 Caste Prime Headquarters [000012] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 12/22)
+  and hits #1 Caste Prime Headquarters [000012] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 12/22)
+  and hits #1 Caste Prime Headquarters [000012] doing 1 damage and 3 capture damage.
+  ------------------------------------------------------------
+  Round 6:
+  ------------------------------------------------------------
+  Attackers:
+  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+    size: 240.
+    hit points: 100/100, attack: 4, defense: 4.
+      #1 hit points: 100/100.
+  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  Defenders:
+  + Caste Prime Headquarters [000012], corporate headquarters [corphq].
+    size: 1000, mass: 1240 (1000), energy: 10, crew: 20/60.
+    hit points: 100/85, capture: 45, defense: 5.
+    items: 60 terrans [terran], 2200 cash [cash].
+      #1 hit points: 100/85, capture: 45.
+  + small cargo bay [000013], 5 small cargo bays [cargob].
+    size: 10000, mass: 7050 (1000).
+    hit points: 275/275.
+    items: 880 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    of oxyhydro [h2o2], 70 units of iron [iron], 70 units of titanium [titani], 80 units of silicium
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 92
+    units of carbon [carbon].
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
+      #4 hit points: 55/55.
+      #5 hit points: 55/55.
+  + farming complex [000014], 3 farming complexes [farms].
+    size: 3000, mass: 360 (300), energy: 15, crew: 15/15.
+    hit points: 165/165.
+    items: 15 terrans [terran].
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
+  + coal-burning plant [000015], 3 coal-burning plants [cplant].
+    size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
+    hit points: 300/300, attack: 3.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  + core drill [000016], core drill [cdrill].
+    size: 1000, mass: 1024 (1000), energy: 5, crew: 6/6.
+    hit points: 100/100.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+  + factory [000017], 5 factories [factry].
+    size: 5000, mass: 4150 (3750), energy: 75, crew: 50/50.
+    hit points: 500/500.
+    items: 50 terrans [terran], 20 units of iron [iron].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100.
+  + gun placement [111], 5 gun placements [gunplc], disabled.
+    size: 500, mass: 2500 (2500), crew: 10/0.
+    hit points: 500/480, attack: 5, defense: 5.
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/80.
+  ------------------------------------------------------------
+  peaceful scout [108] fires tanks [tanks] on gun placement [111] (chance: 3/9) and hits #1 gun
+  placement [111] doing 4 damage.
+  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 12/22)
+  and hits #1 Caste Prime Headquarters [000012] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 12/22)
+  and hits #1 Caste Prime Headquarters [000012] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 12/22)
+  and hits #1 Caste Prime Headquarters [000012] doing 1 damage and 3 capture damage.
+  ------------------------------------------------------------
+  Round 7:
+  ------------------------------------------------------------
+  Attackers:
+  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+    size: 240.
+    hit points: 100/100, attack: 4, defense: 4.
+      #1 hit points: 100/100.
+  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  Defenders:
+  + Caste Prime Headquarters [000012], corporate headquarters [corphq].
+    size: 1000, mass: 1240 (1000), energy: 10, crew: 20/60.
+    hit points: 100/82, capture: 54, defense: 5.
+    items: 60 terrans [terran], 2200 cash [cash].
+      #1 hit points: 100/82, capture: 54.
+  + small cargo bay [000013], 5 small cargo bays [cargob].
+    size: 10000, mass: 7050 (1000).
+    hit points: 275/275.
+    items: 880 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    of oxyhydro [h2o2], 70 units of iron [iron], 70 units of titanium [titani], 80 units of silicium
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 92
+    units of carbon [carbon].
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
+      #4 hit points: 55/55.
+      #5 hit points: 55/55.
+  + farming complex [000014], 3 farming complexes [farms].
+    size: 3000, mass: 360 (300), energy: 15, crew: 15/15.
+    hit points: 165/165.
+    items: 15 terrans [terran].
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
+  + coal-burning plant [000015], 3 coal-burning plants [cplant].
+    size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
+    hit points: 300/300, attack: 3.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  + core drill [000016], core drill [cdrill].
+    size: 1000, mass: 1024 (1000), energy: 5, crew: 6/6.
+    hit points: 100/100.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+  + factory [000017], 5 factories [factry].
+    size: 5000, mass: 4150 (3750), energy: 75, crew: 50/50.
+    hit points: 500/500.
+    items: 50 terrans [terran], 20 units of iron [iron].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100.
+  + gun placement [111], 5 gun placements [gunplc], disabled.
+    size: 500, mass: 2500 (2500), crew: 10/0.
+    hit points: 500/476, attack: 5, defense: 5.
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/76.
+  ------------------------------------------------------------
+  peaceful scout [108] fires tanks [tanks] on gun placement [111] (chance: 3/9) and hits #1 gun
+  placement [111] doing 4 damage.
+    #1 gun placement [gunplc] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 12/22)
+  and hits #1 Caste Prime Headquarters [000012] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 12/22)
+  and hits #1 Caste Prime Headquarters [000012] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 12/22)
+  and hits #1 Caste Prime Headquarters [000012] doing 1 damage and 3 capture damage.
+  ------------------------------------------------------------
+  Round 8:
+  ------------------------------------------------------------
+  Attackers:
+  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+    size: 240.
+    hit points: 100/100, attack: 4, defense: 4.
+      #1 hit points: 100/100.
+  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  Defenders:
+  + Caste Prime Headquarters [000012], corporate headquarters [corphq].
+    size: 1000, mass: 1240 (1000), energy: 10, crew: 20/60.
+    hit points: 100/79, capture: 63, defense: 5.
+    items: 60 terrans [terran], 2200 cash [cash].
+      #1 hit points: 100/79, capture: 63.
+  + small cargo bay [000013], 5 small cargo bays [cargob].
+    size: 10000, mass: 7050 (1000).
+    hit points: 275/275.
+    items: 880 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    of oxyhydro [h2o2], 70 units of iron [iron], 70 units of titanium [titani], 80 units of silicium
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 92
+    units of carbon [carbon].
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
+      #4 hit points: 55/55.
+      #5 hit points: 55/55.
+  + farming complex [000014], 3 farming complexes [farms].
+    size: 3000, mass: 360 (300), energy: 15, crew: 15/15.
+    hit points: 165/165.
+    items: 15 terrans [terran].
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
+  + coal-burning plant [000015], 3 coal-burning plants [cplant].
+    size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
+    hit points: 300/300, attack: 3.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  + core drill [000016], core drill [cdrill].
+    size: 1000, mass: 1024 (1000), energy: 5, crew: 6/6.
+    hit points: 100/100.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+  + factory [000017], 5 factories [factry].
+    size: 5000, mass: 4150 (3750), energy: 75, crew: 50/50.
+    hit points: 500/500.
+    items: 50 terrans [terran], 20 units of iron [iron].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100.
+  + gun placement [111], 5 gun placements [gunplc], disabled.
+    size: 500, mass: 2500 (2500), crew: 10/0.
+    hit points: 500/472, attack: 5, defense: 5.
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/72.
+  ------------------------------------------------------------
+  peaceful scout [108] fires tanks [tanks] on gun placement [111] (chance: 3/9) and hits #1 gun
+  placement [111] doing 4 damage.
+    #1 gun placement [gunplc] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 12/22)
+  and hits #1 Caste Prime Headquarters [000012] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 12/22)
+  and hits #1 Caste Prime Headquarters [000012] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 12/22)
+  and hits #1 Caste Prime Headquarters [000012] doing 1 damage and 3 capture damage.
+  ------------------------------------------------------------
+  Round 9:
+  ------------------------------------------------------------
+  Attackers:
+  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+    size: 240.
+    hit points: 100/100, attack: 4, defense: 4.
+      #1 hit points: 100/100.
+  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  Defenders:
+  + Caste Prime Headquarters [000012], corporate headquarters [corphq].
+    size: 1000, mass: 1240 (1000), energy: 10, crew: 20/60.
+    hit points: 100/76, capture: 72, defense: 5.
+    items: 60 terrans [terran], 2200 cash [cash].
+      #1 hit points: 100/76, capture: 72.
+  + small cargo bay [000013], 5 small cargo bays [cargob].
+    size: 10000, mass: 7050 (1000).
+    hit points: 275/275.
+    items: 880 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    of oxyhydro [h2o2], 70 units of iron [iron], 70 units of titanium [titani], 80 units of silicium
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 92
+    units of carbon [carbon].
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
+      #4 hit points: 55/55.
+      #5 hit points: 55/55.
+  + farming complex [000014], 3 farming complexes [farms].
+    size: 3000, mass: 360 (300), energy: 15, crew: 15/15.
+    hit points: 165/165.
+    items: 15 terrans [terran].
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
+  + coal-burning plant [000015], 3 coal-burning plants [cplant].
+    size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
+    hit points: 300/300, attack: 3.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  + core drill [000016], core drill [cdrill].
+    size: 1000, mass: 1024 (1000), energy: 5, crew: 6/6.
+    hit points: 100/100.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+  + factory [000017], 5 factories [factry].
+    size: 5000, mass: 4150 (3750), energy: 75, crew: 50/50.
+    hit points: 500/500.
+    items: 50 terrans [terran], 20 units of iron [iron].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100.
+  + gun placement [111], 5 gun placements [gunplc], disabled.
+    size: 500, mass: 2500 (2500), crew: 10/0.
+    hit points: 500/468, attack: 5, defense: 5.
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/68.
+  ------------------------------------------------------------
+  peaceful scout [108] fires tanks [tanks] on gun placement [111] (chance: 3/9) and hits #1 gun
+  placement [111] doing 4 damage.
+    #1 gun placement [gunplc] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 12/22)
+  and hits #1 Caste Prime Headquarters [000012] doing 1 damage and 3 capture damage.
+    #1 corporate headquarters [corphq] module captured by Gelvaren [3].
+    15 terrans [terran] killed.
+    30 terrans [terran] wounded.
+    15 terrans [terran] captured.
+  ------------------------------------------------------------
+  Round 10:
+  ------------------------------------------------------------
+  Attackers:
+  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+    size: 240.
+    hit points: 100/100, attack: 4, defense: 4.
+      #1 hit points: 100/100.
+  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  Defenders:
+  + small cargo bay [000013], 5 small cargo bays [cargob].
+    size: 10000, mass: 7050 (1000).
+    hit points: 275/275.
+    items: 880 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    of oxyhydro [h2o2], 70 units of iron [iron], 70 units of titanium [titani], 80 units of silicium
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 92
+    units of carbon [carbon].
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
+      #4 hit points: 55/55.
+      #5 hit points: 55/55.
+  + farming complex [000014], 3 farming complexes [farms].
+    size: 3000, mass: 360 (300), energy: 15, crew: 15/15.
+    hit points: 165/165.
+    items: 15 terrans [terran].
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
+  + coal-burning plant [000015], 3 coal-burning plants [cplant].
+    size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
+    hit points: 300/300, attack: 3.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  + core drill [000016], core drill [cdrill].
+    size: 1000, mass: 1024 (1000), energy: 5, crew: 6/6.
+    hit points: 100/100.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+  + factory [000017], 5 factories [factry].
+    size: 5000, mass: 4150 (3750), energy: 75, crew: 50/50.
+    hit points: 500/500.
+    items: 50 terrans [terran], 20 units of iron [iron].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100.
+  + gun placement [111], 5 gun placements [gunplc], disabled.
+    size: 500, mass: 2500 (2500), crew: 10/0.
+    hit points: 500/464, attack: 5, defense: 5.
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/64.
+  ------------------------------------------------------------
+  peaceful scout [108] fires tanks [tanks] on gun placement [111] (chance: 3/9) and hits #1 gun
+  placement [111] doing 4 damage.
+    #1 gun placement [gunplc] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  #1 small cargo bay [000013] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  #1 small cargo bay [000013] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  #1 small cargo bay [000013] doing 1 damage and 3 capture damage.
+  ------------------------------------------------------------
+  Battle ended indecisively.
+  Week 10.
+  Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
+  [ocean] in system Sol [SS0001] (0, 0, 0).
+  ------------------------------------------------------------
+  Round 1:
+  ------------------------------------------------------------
+  Attackers:
+  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+    size: 240.
+    hit points: 100/100, attack: 4, defense: 4.
+      #1 hit points: 100/100.
+  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  Defenders:
+  + small cargo bay [000013], 5 small cargo bays [cargob].
+    size: 10000, mass: 7070 (1000).
+    hit points: 275/272.
+    items: 895 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    of oxyhydro [h2o2], 70 units of iron [iron], 70 units of titanium [titani], 80 units of silicium
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 93
+    units of carbon [carbon].
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
+      #4 hit points: 55/55.
+      #5 hit points: 55/52.
+  + farming complex [000014], 3 farming complexes [farms].
+    size: 3000, mass: 360 (300), energy: 15, crew: 15/15.
+    hit points: 165/165.
+    items: 15 terrans [terran].
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
+  + coal-burning plant [000015], 3 coal-burning plants [cplant].
+    size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
+    hit points: 300/300, attack: 3.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  + core drill [000016], core drill [cdrill].
+    size: 1000, mass: 1024 (1000), energy: 5, crew: 6/6.
+    hit points: 100/100.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+  + factory [000017], 5 factories [factry].
+    size: 5000, mass: 4150 (3750), energy: 75, crew: 50/50.
+    hit points: 500/500.
+    items: 50 terrans [terran], 20 units of iron [iron].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100.
+  + gun placement [111], 5 gun placements [gunplc], disabled.
+    size: 500, mass: 2500 (2500), crew: 10/0.
+    hit points: 500/460, attack: 5, defense: 5.
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/60.
+  ------------------------------------------------------------
+  peaceful scout [108] fires tanks [tanks] on gun placement [111] (chance: 3/9) and hits #1 gun
+  placement [111] doing 4 damage.
+    #1 gun placement [gunplc] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  #1 small cargo bay [000013] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  #1 small cargo bay [000013] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  #1 small cargo bay [000013] doing 1 damage and 3 capture damage.
+  ------------------------------------------------------------
+  Round 2:
+  ------------------------------------------------------------
+  Attackers:
+  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+    size: 240.
+    hit points: 100/100, attack: 4, defense: 4.
+      #1 hit points: 100/100.
+  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  Defenders:
+  + small cargo bay [000013], 5 small cargo bays [cargob].
+    size: 10000, mass: 7070 (1000).
+    hit points: 275/269, capture: 9.
+    items: 895 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    of oxyhydro [h2o2], 70 units of iron [iron], 70 units of titanium [titani], 80 units of silicium
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 93
+    units of carbon [carbon].
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
+      #4 hit points: 55/55.
+      #5 hit points: 55/49, capture: 9.
+  + farming complex [000014], 3 farming complexes [farms].
+    size: 3000, mass: 360 (300), energy: 15, crew: 15/15.
+    hit points: 165/165.
+    items: 15 terrans [terran].
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
+  + coal-burning plant [000015], 3 coal-burning plants [cplant].
+    size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
+    hit points: 300/300, attack: 3.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  + core drill [000016], core drill [cdrill].
+    size: 1000, mass: 1024 (1000), energy: 5, crew: 6/6.
+    hit points: 100/100.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+  + factory [000017], 5 factories [factry].
+    size: 5000, mass: 4150 (3750), energy: 75, crew: 50/50.
+    hit points: 500/500.
+    items: 50 terrans [terran], 20 units of iron [iron].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100.
+  + gun placement [111], 5 gun placements [gunplc], disabled.
+    size: 500, mass: 2500 (2500), crew: 10/0.
+    hit points: 500/456, attack: 5, defense: 5.
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/56.
+  ------------------------------------------------------------
+  peaceful scout [108] fires tanks [tanks] on gun placement [111] (chance: 3/9) and hits #1 gun
+  placement [111] doing 4 damage.
+    #1 gun placement [gunplc] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  #1 small cargo bay [000013] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  #1 small cargo bay [000013] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  #1 small cargo bay [000013] doing 1 damage and 3 capture damage.
+  ------------------------------------------------------------
+  Round 3:
+  ------------------------------------------------------------
+  Attackers:
+  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+    size: 240.
+    hit points: 100/100, attack: 4, defense: 4.
+      #1 hit points: 100/100.
+  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  Defenders:
+  + small cargo bay [000013], 5 small cargo bays [cargob].
+    size: 10000, mass: 7070 (1000).
+    hit points: 275/266, capture: 18.
+    items: 895 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    of oxyhydro [h2o2], 70 units of iron [iron], 70 units of titanium [titani], 80 units of silicium
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 93
+    units of carbon [carbon].
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
+      #4 hit points: 55/55.
+      #5 hit points: 55/46, capture: 18.
+  + farming complex [000014], 3 farming complexes [farms].
+    size: 3000, mass: 360 (300), energy: 15, crew: 15/15.
+    hit points: 165/165.
+    items: 15 terrans [terran].
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
+  + coal-burning plant [000015], 3 coal-burning plants [cplant].
+    size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
+    hit points: 300/300, attack: 3.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  + core drill [000016], core drill [cdrill].
+    size: 1000, mass: 1024 (1000), energy: 5, crew: 6/6.
+    hit points: 100/100.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+  + factory [000017], 5 factories [factry].
+    size: 5000, mass: 4150 (3750), energy: 75, crew: 50/50.
+    hit points: 500/500.
+    items: 50 terrans [terran], 20 units of iron [iron].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100.
+  + gun placement [111], 5 gun placements [gunplc], disabled.
+    size: 500, mass: 2500 (2500), crew: 10/0.
+    hit points: 500/452, attack: 5, defense: 5.
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/52.
+  ------------------------------------------------------------
+  peaceful scout [108] fires tanks [tanks] on gun placement [111] (chance: 3/9) and hits #1 gun
+  placement [111] doing 4 damage.
+    #1 gun placement [gunplc] is heavily damaged.
+    #1 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  #1 small cargo bay [000013] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  #1 small cargo bay [000013] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  #1 small cargo bay [000013] doing 1 damage and 3 capture damage.
+  ------------------------------------------------------------
+  Round 4:
+  ------------------------------------------------------------
+  Attackers:
+  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+    size: 240.
+    hit points: 100/100, attack: 4, defense: 4.
+      #1 hit points: 100/100.
+  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  Defenders:
+  + small cargo bay [000013], 5 small cargo bays [cargob].
+    size: 10000, mass: 7070 (1000).
+    hit points: 275/263, capture: 27.
+    items: 895 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    of oxyhydro [h2o2], 70 units of iron [iron], 70 units of titanium [titani], 80 units of silicium
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 93
+    units of carbon [carbon].
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
+      #4 hit points: 55/55.
+      #5 hit points: 55/43, capture: 27.
+  + farming complex [000014], 3 farming complexes [farms].
+    size: 3000, mass: 360 (300), energy: 15, crew: 15/15.
+    hit points: 165/165.
+    items: 15 terrans [terran].
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
+  + coal-burning plant [000015], 3 coal-burning plants [cplant].
+    size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
+    hit points: 300/300, attack: 3.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  + core drill [000016], core drill [cdrill].
+    size: 1000, mass: 1024 (1000), energy: 5, crew: 6/6.
+    hit points: 100/100.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+  + factory [000017], 5 factories [factry].
+    size: 5000, mass: 4150 (3750), energy: 75, crew: 50/50.
+    hit points: 500/500.
+    items: 50 terrans [terran], 20 units of iron [iron].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100.
+  ------------------------------------------------------------
+  peaceful scout [108] fires tanks [tanks] on small cargo bay [000013] (chance: 3/4) and hits #1
+  small cargo bay [000013] doing 4 damage.
+    #1 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  #1 small cargo bay [000013] doing 1 damage and 3 capture damage.
+    #1 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  #1 small cargo bay [000013] doing 1 damage and 3 capture damage.
+    #1 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  #1 small cargo bay [000013] doing 1 damage and 3 capture damage.
+    #1 small cargo bay [cargob] module captured by Gelvaren [3].
+  ------------------------------------------------------------
+  Round 5:
+  ------------------------------------------------------------
+  Attackers:
+  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+    size: 240.
+    hit points: 100/100, attack: 4, defense: 4.
+      #1 hit points: 100/100.
+  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  Defenders:
+  + small cargo bay [000013], 4 small cargo bays [cargob].
+    size: 8000, mass: 5659 (800).
+    hit points: 220/220.
+    items: 716 units of food [food], 680 units of terran breathing gas mixture [terair], 720 units
+    of oxyhydro [h2o2], 56 units of iron [iron], 56 units of titanium [titani], 64 units of silicium
+    [silici], 64 units of copper [copper], 64 units of uranium [uraniu], 8 terrans [terran], 75
+    units of carbon [carbon].
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
+      #4 hit points: 55/55.
+  + farming complex [000014], 3 farming complexes [farms].
+    size: 3000, mass: 360 (300), energy: 15, crew: 15/15.
+    hit points: 165/165.
+    items: 15 terrans [terran].
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
+  + coal-burning plant [000015], 3 coal-burning plants [cplant].
+    size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
+    hit points: 300/300, attack: 3.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  + core drill [000016], core drill [cdrill].
+    size: 1000, mass: 1024 (1000), energy: 5, crew: 6/6.
+    hit points: 100/100.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+  + factory [000017], 5 factories [factry].
+    size: 5000, mass: 4150 (3750), energy: 75, crew: 50/50.
+    hit points: 500/500.
+    items: 50 terrans [terran], 20 units of iron [iron].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100.
+  ------------------------------------------------------------
+  peaceful scout [108] fires tanks [tanks] on small cargo bay [000013] (chance: 3/4) and hits #1
+  small cargo bay [000013] doing 4 damage.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  #1 small cargo bay [000013] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  #1 small cargo bay [000013] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  #1 small cargo bay [000013] doing 1 damage and 3 capture damage.
+  ------------------------------------------------------------
+  Round 6:
+  ------------------------------------------------------------
+  Attackers:
+  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+    size: 240.
+    hit points: 100/100, attack: 4, defense: 4.
+      #1 hit points: 100/100.
+  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  Defenders:
+  + small cargo bay [000013], 4 small cargo bays [cargob].
+    size: 8000, mass: 5659 (800).
+    hit points: 220/213, capture: 9.
+    items: 716 units of food [food], 680 units of terran breathing gas mixture [terair], 720 units
+    of oxyhydro [h2o2], 56 units of iron [iron], 56 units of titanium [titani], 64 units of silicium
+    [silici], 64 units of copper [copper], 64 units of uranium [uraniu], 8 terrans [terran], 75
+    units of carbon [carbon].
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
+      #4 hit points: 55/48, capture: 9.
+  + farming complex [000014], 3 farming complexes [farms].
+    size: 3000, mass: 360 (300), energy: 15, crew: 15/15.
+    hit points: 165/165.
+    items: 15 terrans [terran].
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
+  + coal-burning plant [000015], 3 coal-burning plants [cplant].
+    size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
+    hit points: 300/300, attack: 3.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  + core drill [000016], core drill [cdrill].
+    size: 1000, mass: 1024 (1000), energy: 5, crew: 6/6.
+    hit points: 100/100.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+  + factory [000017], 5 factories [factry].
+    size: 5000, mass: 4150 (3750), energy: 75, crew: 50/50.
+    hit points: 500/500.
+    items: 50 terrans [terran], 20 units of iron [iron].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100.
+  ------------------------------------------------------------
+  peaceful scout [108] fires tanks [tanks] on small cargo bay [000013] (chance: 3/4) and hits #1
+  small cargo bay [000013] doing 4 damage.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  #1 small cargo bay [000013] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  #1 small cargo bay [000013] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  #1 small cargo bay [000013] doing 1 damage and 3 capture damage.
+    #1 small cargo bay [cargob] is lightly damaged.
+  ------------------------------------------------------------
+  Round 7:
+  ------------------------------------------------------------
+  Attackers:
+  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+    size: 240.
+    hit points: 100/100, attack: 4, defense: 4.
+      #1 hit points: 100/100.
+  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  Defenders:
+  + small cargo bay [000013], 4 small cargo bays [cargob].
+    size: 8000, mass: 5659 (800).
+    hit points: 220/206, capture: 18.
+    items: 716 units of food [food], 680 units of terran breathing gas mixture [terair], 720 units
+    of oxyhydro [h2o2], 56 units of iron [iron], 56 units of titanium [titani], 64 units of silicium
+    [silici], 64 units of copper [copper], 64 units of uranium [uraniu], 8 terrans [terran], 75
+    units of carbon [carbon].
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
+      #4 hit points: 55/41, capture: 18.
+  + farming complex [000014], 3 farming complexes [farms].
+    size: 3000, mass: 360 (300), energy: 15, crew: 15/15.
+    hit points: 165/165.
+    items: 15 terrans [terran].
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
+  + coal-burning plant [000015], 3 coal-burning plants [cplant].
+    size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
+    hit points: 300/300, attack: 3.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  + core drill [000016], core drill [cdrill].
+    size: 1000, mass: 1024 (1000), energy: 5, crew: 6/6.
+    hit points: 100/100.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+  + factory [000017], 5 factories [factry].
+    size: 5000, mass: 4150 (3750), energy: 75, crew: 50/50.
+    hit points: 500/500.
+    items: 50 terrans [terran], 20 units of iron [iron].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100.
+  ------------------------------------------------------------
+  peaceful scout [108] fires tanks [tanks] on small cargo bay [000013] (chance: 3/4) and hits #1
+  small cargo bay [000013] doing 4 damage.
+    #1 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  #1 small cargo bay [000013] doing 1 damage and 3 capture damage.
+    #1 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  #1 small cargo bay [000013] doing 1 damage and 3 capture damage.
+    #1 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  #1 small cargo bay [000013] doing 1 damage and 3 capture damage.
+    #1 small cargo bay [cargob] is lightly damaged.
+  ------------------------------------------------------------
+  Round 8:
+  ------------------------------------------------------------
+  Attackers:
+  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+    size: 240.
+    hit points: 100/100, attack: 4, defense: 4.
+      #1 hit points: 100/100.
+  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  Defenders:
+  + small cargo bay [000013], 4 small cargo bays [cargob].
+    size: 8000, mass: 5659 (800).
+    hit points: 220/199, capture: 27.
+    items: 716 units of food [food], 680 units of terran breathing gas mixture [terair], 720 units
+    of oxyhydro [h2o2], 56 units of iron [iron], 56 units of titanium [titani], 64 units of silicium
+    [silici], 64 units of copper [copper], 64 units of uranium [uraniu], 8 terrans [terran], 75
+    units of carbon [carbon].
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
+      #4 hit points: 55/34, capture: 27.
+  + farming complex [000014], 3 farming complexes [farms].
+    size: 3000, mass: 360 (300), energy: 15, crew: 15/15.
+    hit points: 165/165.
+    items: 15 terrans [terran].
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
+  + coal-burning plant [000015], 3 coal-burning plants [cplant].
+    size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
+    hit points: 300/300, attack: 3.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  + core drill [000016], core drill [cdrill].
+    size: 1000, mass: 1024 (1000), energy: 5, crew: 6/6.
+    hit points: 100/100.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+  + factory [000017], 5 factories [factry].
+    size: 5000, mass: 4150 (3750), energy: 75, crew: 50/50.
+    hit points: 500/500.
+    items: 50 terrans [terran], 20 units of iron [iron].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100.
+  ------------------------------------------------------------
+  peaceful scout [108] fires tanks [tanks] on small cargo bay [000013] (chance: 3/4) and hits #1
+  small cargo bay [000013] doing 4 damage.
+    #1 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  #1 small cargo bay [000013] doing 1 damage and 2 capture damage.
+    #1 small cargo bay [cargob] module captured by Gelvaren [3].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  #1 small cargo bay [000013] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  #1 small cargo bay [000013] doing 1 damage and 3 capture damage.
+  ------------------------------------------------------------
+  Round 9:
+  ------------------------------------------------------------
+  Attackers:
+  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+    size: 240.
+    hit points: 100/100, attack: 4, defense: 4.
+      #1 hit points: 100/100.
+  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  Defenders:
+  + small cargo bay [000013], 3 small cargo bays [cargob].
+    size: 6000, mass: 4248 (600).
+    hit points: 165/163, capture: 6.
+    items: 537 units of food [food], 510 units of terran breathing gas mixture [terair], 540 units
+    of oxyhydro [h2o2], 42 units of iron [iron], 42 units of titanium [titani], 48 units of silicium
+    [silici], 48 units of copper [copper], 48 units of uranium [uraniu], 6 terrans [terran], 57
+    units of carbon [carbon].
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/53, capture: 6.
+  + farming complex [000014], 3 farming complexes [farms].
+    size: 3000, mass: 360 (300), energy: 15, crew: 15/15.
+    hit points: 165/165.
+    items: 15 terrans [terran].
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
+  + coal-burning plant [000015], 3 coal-burning plants [cplant].
+    size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
+    hit points: 300/300, attack: 3.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  + core drill [000016], core drill [cdrill].
+    size: 1000, mass: 1024 (1000), energy: 5, crew: 6/6.
+    hit points: 100/100.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+  + factory [000017], 5 factories [factry].
+    size: 5000, mass: 4150 (3750), energy: 75, crew: 50/50.
+    hit points: 500/500.
+    items: 50 terrans [terran], 20 units of iron [iron].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100.
+  ------------------------------------------------------------
+  peaceful scout [108] fires tanks [tanks] on small cargo bay [000013] (chance: 3/4) and hits #1
+  small cargo bay [000013] doing 4 damage.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  #1 small cargo bay [000013] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  #1 small cargo bay [000013] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  #1 small cargo bay [000013] doing 1 damage and 3 capture damage.
+  ------------------------------------------------------------
+  Round 10:
+  ------------------------------------------------------------
+  Attackers:
+  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+    size: 240.
+    hit points: 100/100, attack: 4, defense: 4.
+      #1 hit points: 100/100.
+  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  Defenders:
+  + small cargo bay [000013], 3 small cargo bays [cargob].
+    size: 6000, mass: 4248 (600).
+    hit points: 165/156, capture: 15.
+    items: 537 units of food [food], 510 units of terran breathing gas mixture [terair], 540 units
+    of oxyhydro [h2o2], 42 units of iron [iron], 42 units of titanium [titani], 48 units of silicium
+    [silici], 48 units of copper [copper], 48 units of uranium [uraniu], 6 terrans [terran], 57
+    units of carbon [carbon].
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/46, capture: 15.
+  + farming complex [000014], 3 farming complexes [farms].
+    size: 3000, mass: 360 (300), energy: 15, crew: 15/15.
+    hit points: 165/165.
+    items: 15 terrans [terran].
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
+  + coal-burning plant [000015], 3 coal-burning plants [cplant].
+    size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
+    hit points: 300/300, attack: 3.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  + core drill [000016], core drill [cdrill].
+    size: 1000, mass: 1024 (1000), energy: 5, crew: 6/6.
+    hit points: 100/100.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+  + factory [000017], 5 factories [factry].
+    size: 5000, mass: 4150 (3750), energy: 75, crew: 50/50.
+    hit points: 500/500.
+    items: 50 terrans [terran], 20 units of iron [iron].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100.
+  ------------------------------------------------------------
+  peaceful scout [108] fires tanks [tanks] on small cargo bay [000013] (chance: 3/4) and hits #1
+  small cargo bay [000013] doing 4 damage.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  #1 small cargo bay [000013] doing 1 damage and 3 capture damage.
+    #1 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  #1 small cargo bay [000013] doing 1 damage and 3 capture damage.
+    #1 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  #1 small cargo bay [000013] doing 1 damage and 3 capture damage.
+    #1 small cargo bay [cargob] is lightly damaged.
+  ------------------------------------------------------------
+  Battle ended indecisively.
+  Week 11.
+  Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
+  [ocean] in system Sol [SS0001] (0, 0, 0).
+  ------------------------------------------------------------
+  Round 1:
+  ------------------------------------------------------------
+  Attackers:
+  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+    size: 240.
+    hit points: 100/100, attack: 4, defense: 4.
+      #1 hit points: 100/100.
+  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  Defenders:
+  + small cargo bay [000013], 3 small cargo bays [cargob].
+    size: 6000, mass: 4268 (600).
+    hit points: 165/149.
+    items: 552 units of food [food], 510 units of terran breathing gas mixture [terair], 540 units
+    of oxyhydro [h2o2], 42 units of iron [iron], 42 units of titanium [titani], 48 units of silicium
+    [silici], 48 units of copper [copper], 48 units of uranium [uraniu], 6 terrans [terran], 58
+    units of carbon [carbon].
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/39.
+  + farming complex [000014], 3 farming complexes [farms].
+    size: 3000, mass: 360 (300), energy: 15, crew: 15/15.
+    hit points: 165/165.
+    items: 15 terrans [terran].
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
+  + coal-burning plant [000015], 3 coal-burning plants [cplant].
+    size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
+    hit points: 300/300, attack: 3.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  + core drill [000016], core drill [cdrill].
+    size: 1000, mass: 1024 (1000), energy: 5, crew: 6/6.
+    hit points: 100/100.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+  + factory [000017], 5 factories [factry].
+    size: 5000, mass: 4150 (3750), energy: 75, crew: 50/50.
+    hit points: 500/500.
+    items: 50 terrans [terran], 20 units of iron [iron].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100.
+  + gun placement [111], 5 gun placements [gunplc], disabled.
+    size: 500, mass: 2500 (2500), crew: 8/0.
+    hit points: 500/448, attack: 4, defense: 4.
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/48, effects: disabled.
+  ------------------------------------------------------------
+  peaceful scout [108] fires tanks [tanks] on gun placement [111] (chance: 3/8) and hits #1 gun
+  placement [111] doing 4 damage.
+    #1 gun placement [gunplc] is heavily damaged.
+    #1 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  #1 small cargo bay [000013] doing 1 damage and 3 capture damage.
+    #1 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  #1 small cargo bay [000013] doing 1 damage and 3 capture damage.
+    #1 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  #1 small cargo bay [000013] doing 1 damage and 3 capture damage.
+    #1 small cargo bay [cargob] is lightly damaged.
+  ------------------------------------------------------------
+  Round 2:
+  ------------------------------------------------------------
+  Attackers:
+  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+    size: 240.
+    hit points: 100/100, attack: 4, defense: 4.
+      #1 hit points: 100/100.
+  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  Defenders:
+  + small cargo bay [000013], 3 small cargo bays [cargob].
+    size: 6000, mass: 4268 (600).
+    hit points: 165/146, capture: 9.
+    items: 552 units of food [food], 510 units of terran breathing gas mixture [terair], 540 units
+    of oxyhydro [h2o2], 42 units of iron [iron], 42 units of titanium [titani], 48 units of silicium
+    [silici], 48 units of copper [copper], 48 units of uranium [uraniu], 6 terrans [terran], 58
+    units of carbon [carbon].
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/36, capture: 9.
+  + farming complex [000014], 3 farming complexes [farms].
+    size: 3000, mass: 360 (300), energy: 15, crew: 15/15.
+    hit points: 165/165.
+    items: 15 terrans [terran].
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
+  + coal-burning plant [000015], 3 coal-burning plants [cplant].
+    size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
+    hit points: 300/300, attack: 3.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  + core drill [000016], core drill [cdrill].
+    size: 1000, mass: 1024 (1000), energy: 5, crew: 6/6.
+    hit points: 100/100.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+  + factory [000017], 5 factories [factry].
+    size: 5000, mass: 4150 (3750), energy: 75, crew: 50/50.
+    hit points: 500/500.
+    items: 50 terrans [terran], 20 units of iron [iron].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100.
+  ------------------------------------------------------------
+  peaceful scout [108] fires tanks [tanks] on small cargo bay [000013] (chance: 3/4) and hits #1
+  small cargo bay [000013] doing 4 damage.
+    #1 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  #1 small cargo bay [000013] doing 1 damage and 3 capture damage.
+    #1 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  #1 small cargo bay [000013] doing 1 damage and 3 capture damage.
+    #1 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  #1 small cargo bay [000013] doing 1 damage and 3 capture damage.
+    #1 small cargo bay [cargob] is lightly damaged.
+  ------------------------------------------------------------
+  Round 3:
+  ------------------------------------------------------------
+  Attackers:
+  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+    size: 240.
+    hit points: 100/100, attack: 4, defense: 4.
+      #1 hit points: 100/100.
+  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  Defenders:
+  + small cargo bay [000013], 3 small cargo bays [cargob].
+    size: 6000, mass: 4268 (600).
+    hit points: 165/139, capture: 18.
+    items: 552 units of food [food], 510 units of terran breathing gas mixture [terair], 540 units
+    of oxyhydro [h2o2], 42 units of iron [iron], 42 units of titanium [titani], 48 units of silicium
+    [silici], 48 units of copper [copper], 48 units of uranium [uraniu], 6 terrans [terran], 58
+    units of carbon [carbon].
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/29, capture: 18.
+  + farming complex [000014], 3 farming complexes [farms].
+    size: 3000, mass: 360 (300), energy: 15, crew: 15/15.
+    hit points: 165/165.
+    items: 15 terrans [terran].
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
+  + coal-burning plant [000015], 3 coal-burning plants [cplant].
+    size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
+    hit points: 300/300, attack: 3.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  + core drill [000016], core drill [cdrill].
+    size: 1000, mass: 1024 (1000), energy: 5, crew: 6/6.
+    hit points: 100/100.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+  + factory [000017], 5 factories [factry].
+    size: 5000, mass: 4150 (3750), energy: 75, crew: 50/50.
+    hit points: 500/500.
+    items: 50 terrans [terran], 20 units of iron [iron].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100.
+  ------------------------------------------------------------
+  peaceful scout [108] fires tanks [tanks] on small cargo bay [000013] (chance: 3/4) and hits #1
+  small cargo bay [000013] doing 4 damage.
+    #1 small cargo bay [cargob] is heavily damaged.
+    #1 small cargo bay [cargob] is disabled.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  #1 small cargo bay [000013] doing 1 damage and 3 capture damage.
+    #1 small cargo bay [cargob] is heavily damaged.
+    #1 small cargo bay [cargob] is disabled.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  #1 small cargo bay [000013] doing 1 damage and 2 capture damage.
+    #1 small cargo bay [cargob] module captured by Gelvaren [3].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  #1 small cargo bay [000013] doing 1 damage and 3 capture damage.
+  ------------------------------------------------------------
+  Round 4:
+  ------------------------------------------------------------
+  Attackers:
+  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+    size: 240.
+    hit points: 100/100, attack: 4, defense: 4.
+      #1 hit points: 100/100.
+  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  Defenders:
+  + small cargo bay [000013], 2 small cargo bays [cargob].
+    size: 4000, mass: 2847 (400).
+    hit points: 110/109, capture: 3.
+    items: 368 units of food [food], 340 units of terran breathing gas mixture [terair], 360 units
+    of oxyhydro [h2o2], 28 units of iron [iron], 28 units of titanium [titani], 32 units of silicium
+    [silici], 32 units of copper [copper], 32 units of uranium [uraniu], 4 terrans [terran], 39
+    units of carbon [carbon].
+      #1 hit points: 55/55.
+      #2 hit points: 55/54, capture: 3.
+  + farming complex [000014], 3 farming complexes [farms].
+    size: 3000, mass: 360 (300), energy: 15, crew: 15/15.
+    hit points: 165/165.
+    items: 15 terrans [terran].
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
+  + coal-burning plant [000015], 3 coal-burning plants [cplant].
+    size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
+    hit points: 300/300, attack: 3.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  + core drill [000016], core drill [cdrill].
+    size: 1000, mass: 1024 (1000), energy: 5, crew: 6/6.
+    hit points: 100/100.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+  + factory [000017], 5 factories [factry].
+    size: 5000, mass: 4150 (3750), energy: 75, crew: 50/50.
+    hit points: 500/500.
+    items: 50 terrans [terran], 20 units of iron [iron].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100.
+  ------------------------------------------------------------
+  peaceful scout [108] fires tanks [tanks] on small cargo bay [000013] (chance: 3/4) and hits #1
+  small cargo bay [000013] doing 4 damage.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  #1 small cargo bay [000013] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  #1 small cargo bay [000013] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  #1 small cargo bay [000013] doing 1 damage and 3 capture damage.
+  ------------------------------------------------------------
+  Round 5:
+  ------------------------------------------------------------
+  Attackers:
+  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+    size: 240.
+    hit points: 100/100, attack: 4, defense: 4.
+      #1 hit points: 100/100.
+  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  Defenders:
+  + small cargo bay [000013], 2 small cargo bays [cargob].
+    size: 4000, mass: 2847 (400).
+    hit points: 110/102, capture: 12.
+    items: 368 units of food [food], 340 units of terran breathing gas mixture [terair], 360 units
+    of oxyhydro [h2o2], 28 units of iron [iron], 28 units of titanium [titani], 32 units of silicium
+    [silici], 32 units of copper [copper], 32 units of uranium [uraniu], 4 terrans [terran], 39
+    units of carbon [carbon].
+      #1 hit points: 55/55.
+      #2 hit points: 55/47, capture: 12.
+  + farming complex [000014], 3 farming complexes [farms].
+    size: 3000, mass: 360 (300), energy: 15, crew: 15/15.
+    hit points: 165/165.
+    items: 15 terrans [terran].
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
+  + coal-burning plant [000015], 3 coal-burning plants [cplant].
+    size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
+    hit points: 300/300, attack: 3.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  + core drill [000016], core drill [cdrill].
+    size: 1000, mass: 1024 (1000), energy: 5, crew: 6/6.
+    hit points: 100/100.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+  + factory [000017], 5 factories [factry].
+    size: 5000, mass: 4150 (3750), energy: 75, crew: 50/50.
+    hit points: 500/500.
+    items: 50 terrans [terran], 20 units of iron [iron].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100.
+  ------------------------------------------------------------
+  peaceful scout [108] fires tanks [tanks] on small cargo bay [000013] (chance: 3/4) and hits #1
+  small cargo bay [000013] doing 4 damage.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  #1 small cargo bay [000013] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  #1 small cargo bay [000013] doing 1 damage and 3 capture damage.
+    #1 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  #1 small cargo bay [000013] doing 1 damage and 3 capture damage.
+    #1 small cargo bay [cargob] is lightly damaged.
+  ------------------------------------------------------------
+  Round 6:
+  ------------------------------------------------------------
+  Attackers:
+  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+    size: 240.
+    hit points: 100/100, attack: 4, defense: 4.
+      #1 hit points: 100/100.
+  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  Defenders:
+  + small cargo bay [000013], 2 small cargo bays [cargob].
+    size: 4000, mass: 2847 (400).
+    hit points: 110/95, capture: 21.
+    items: 368 units of food [food], 340 units of terran breathing gas mixture [terair], 360 units
+    of oxyhydro [h2o2], 28 units of iron [iron], 28 units of titanium [titani], 32 units of silicium
+    [silici], 32 units of copper [copper], 32 units of uranium [uraniu], 4 terrans [terran], 39
+    units of carbon [carbon].
+      #1 hit points: 55/55.
+      #2 hit points: 55/40, capture: 21.
+  + farming complex [000014], 3 farming complexes [farms].
+    size: 3000, mass: 360 (300), energy: 15, crew: 15/15.
+    hit points: 165/165.
+    items: 15 terrans [terran].
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
+  + coal-burning plant [000015], 3 coal-burning plants [cplant].
+    size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
+    hit points: 300/300, attack: 3.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  + core drill [000016], core drill [cdrill].
+    size: 1000, mass: 1024 (1000), energy: 5, crew: 6/6.
+    hit points: 100/100.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+  + factory [000017], 5 factories [factry].
+    size: 5000, mass: 4150 (3750), energy: 75, crew: 50/50.
+    hit points: 500/500.
+    items: 50 terrans [terran], 20 units of iron [iron].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100.
+  ------------------------------------------------------------
+  peaceful scout [108] fires tanks [tanks] on small cargo bay [000013] (chance: 3/4) and hits #1
+  small cargo bay [000013] doing 4 damage.
+    #1 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  #1 small cargo bay [000013] doing 1 damage and 3 capture damage.
+    #1 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  #1 small cargo bay [000013] doing 1 damage and 3 capture damage.
+    #1 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  #1 small cargo bay [000013] doing 1 damage and 3 capture damage.
+    #1 small cargo bay [cargob] is lightly damaged.
+  ------------------------------------------------------------
+  Round 7:
+  ------------------------------------------------------------
+  Attackers:
+  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+    size: 240.
+    hit points: 100/100, attack: 4, defense: 4.
+      #1 hit points: 100/100.
+  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  Defenders:
+  + small cargo bay [000013], 2 small cargo bays [cargob].
+    size: 4000, mass: 2847 (400).
+    hit points: 110/88, capture: 30.
+    items: 368 units of food [food], 340 units of terran breathing gas mixture [terair], 360 units
+    of oxyhydro [h2o2], 28 units of iron [iron], 28 units of titanium [titani], 32 units of silicium
+    [silici], 32 units of copper [copper], 32 units of uranium [uraniu], 4 terrans [terran], 39
+    units of carbon [carbon].
+      #1 hit points: 55/55.
+      #2 hit points: 55/33, capture: 30.
+  + farming complex [000014], 3 farming complexes [farms].
+    size: 3000, mass: 360 (300), energy: 15, crew: 15/15.
+    hit points: 165/165.
+    items: 15 terrans [terran].
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
+  + coal-burning plant [000015], 3 coal-burning plants [cplant].
+    size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
+    hit points: 300/300, attack: 3.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  + core drill [000016], core drill [cdrill].
+    size: 1000, mass: 1024 (1000), energy: 5, crew: 6/6.
+    hit points: 100/100.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+  + factory [000017], 5 factories [factry].
+    size: 5000, mass: 4150 (3750), energy: 75, crew: 50/50.
+    hit points: 500/500.
+    items: 50 terrans [terran], 20 units of iron [iron].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100.
+  ------------------------------------------------------------
+  peaceful scout [108] fires tanks [tanks] on small cargo bay [000013] (chance: 3/4) and hits #1
+  small cargo bay [000013] doing 3 damage.
+    #1 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  #1 small cargo bay [000013] doing 0 damage.
+    #1 small cargo bay [cargob] module captured by Gelvaren [3].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  #1 small cargo bay [000013] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  #1 small cargo bay [000013] doing 1 damage and 3 capture damage.
+  ------------------------------------------------------------
+  Round 8:
+  ------------------------------------------------------------
+  Attackers:
+  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+    size: 240.
+    hit points: 100/100, attack: 4, defense: 4.
+      #1 hit points: 100/100.
+  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  Defenders:
+  + small cargo bay [000013], small cargo bay [cargob].
+    size: 2000, mass: 1426 (200).
+    hit points: 55/53, capture: 6.
+    items: 184 units of food [food], 170 units of terran breathing gas mixture [terair], 180 units
+    of oxyhydro [h2o2], 14 units of iron [iron], 14 units of titanium [titani], 16 units of silicium
+    [silici], 16 units of copper [copper], 16 units of uranium [uraniu], 2 terrans [terran], 20
+    units of carbon [carbon].
+      #1 hit points: 55/53, capture: 6.
+  + farming complex [000014], 3 farming complexes [farms].
+    size: 3000, mass: 360 (300), energy: 15, crew: 15/15.
+    hit points: 165/165.
+    items: 15 terrans [terran].
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
+  + coal-burning plant [000015], 3 coal-burning plants [cplant].
+    size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
+    hit points: 300/300, attack: 3.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  + core drill [000016], core drill [cdrill].
+    size: 1000, mass: 1024 (1000), energy: 5, crew: 6/6.
+    hit points: 100/100.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+  + factory [000017], 5 factories [factry].
+    size: 5000, mass: 4150 (3750), energy: 75, crew: 50/50.
+    hit points: 500/500.
+    items: 50 terrans [terran], 20 units of iron [iron].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100.
+  ------------------------------------------------------------
+  peaceful scout [108] fires tanks [tanks] on small cargo bay [000013] (chance: 3/4) and hits #1
+  small cargo bay [000013] doing 4 damage.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  #1 small cargo bay [000013] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  #1 small cargo bay [000013] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  #1 small cargo bay [000013] doing 1 damage and 3 capture damage.
+  ------------------------------------------------------------
+  Round 9:
+  ------------------------------------------------------------
+  Attackers:
+  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+    size: 240.
+    hit points: 100/100, attack: 4, defense: 4.
+      #1 hit points: 100/100.
+  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  Defenders:
+  + small cargo bay [000013], small cargo bay [cargob].
+    size: 2000, mass: 1426 (200).
+    hit points: 55/46, capture: 15.
+    items: 184 units of food [food], 170 units of terran breathing gas mixture [terair], 180 units
+    of oxyhydro [h2o2], 14 units of iron [iron], 14 units of titanium [titani], 16 units of silicium
+    [silici], 16 units of copper [copper], 16 units of uranium [uraniu], 2 terrans [terran], 20
+    units of carbon [carbon].
+      #1 hit points: 55/46, capture: 15.
+  + farming complex [000014], 3 farming complexes [farms].
+    size: 3000, mass: 360 (300), energy: 15, crew: 15/15.
+    hit points: 165/165.
+    items: 15 terrans [terran].
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
+  + coal-burning plant [000015], 3 coal-burning plants [cplant].
+    size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
+    hit points: 300/300, attack: 3.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  + core drill [000016], core drill [cdrill].
+    size: 1000, mass: 1024 (1000), energy: 5, crew: 6/6.
+    hit points: 100/100.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+  + factory [000017], 5 factories [factry].
+    size: 5000, mass: 4150 (3750), energy: 75, crew: 50/50.
+    hit points: 500/500.
+    items: 50 terrans [terran], 20 units of iron [iron].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100.
+  ------------------------------------------------------------
+  peaceful scout [108] fires tanks [tanks] on small cargo bay [000013] (chance: 3/4) and hits #1
+  small cargo bay [000013] doing 4 damage.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  #1 small cargo bay [000013] doing 1 damage and 3 capture damage.
+    #1 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  #1 small cargo bay [000013] doing 1 damage and 3 capture damage.
+    #1 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  #1 small cargo bay [000013] doing 1 damage and 3 capture damage.
+    #1 small cargo bay [cargob] is lightly damaged.
+  ------------------------------------------------------------
+  Round 10:
+  ------------------------------------------------------------
+  Attackers:
+  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+    size: 240.
+    hit points: 100/100, attack: 4, defense: 4.
+      #1 hit points: 100/100.
+  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  Defenders:
+  + small cargo bay [000013], small cargo bay [cargob].
+    size: 2000, mass: 1426 (200).
+    hit points: 55/39, capture: 24.
+    items: 184 units of food [food], 170 units of terran breathing gas mixture [terair], 180 units
+    of oxyhydro [h2o2], 14 units of iron [iron], 14 units of titanium [titani], 16 units of silicium
+    [silici], 16 units of copper [copper], 16 units of uranium [uraniu], 2 terrans [terran], 20
+    units of carbon [carbon].
+      #1 hit points: 55/39, capture: 24.
+  + farming complex [000014], 3 farming complexes [farms].
+    size: 3000, mass: 360 (300), energy: 15, crew: 15/15.
+    hit points: 165/165.
+    items: 15 terrans [terran].
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
+  + coal-burning plant [000015], 3 coal-burning plants [cplant].
+    size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
+    hit points: 300/300, attack: 3.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  + core drill [000016], core drill [cdrill].
+    size: 1000, mass: 1024 (1000), energy: 5, crew: 6/6.
+    hit points: 100/100.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+  + factory [000017], 5 factories [factry].
+    size: 5000, mass: 4150 (3750), energy: 75, crew: 50/50.
+    hit points: 500/500.
+    items: 50 terrans [terran], 20 units of iron [iron].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100.
+  ------------------------------------------------------------
+  peaceful scout [108] fires tanks [tanks] on small cargo bay [000013] (chance: 3/4) and hits #1
+  small cargo bay [000013] doing 4 damage.
+    #1 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  #1 small cargo bay [000013] doing 1 damage and 3 capture damage.
+    #1 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  #1 small cargo bay [000013] doing 1 damage and 3 capture damage.
+    #1 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  #1 small cargo bay [000013] doing 1 damage and 2 capture damage.
+    #1 small cargo bay [cargob] module captured by Gelvaren [3].
+  ------------------------------------------------------------
+  Battle ended indecisively.
+  Week 12.
+  Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
+  [ocean] in system Sol [SS0001] (0, 0, 0).
+  ------------------------------------------------------------
+  Round 1:
+  ------------------------------------------------------------
+  Attackers:
+  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+    size: 240.
+    hit points: 100/100, attack: 4, defense: 4.
+      #1 hit points: 100/100.
+  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  Defenders:
+  + farming complex [000014], 3 farming complexes [farms].
+    size: 3000, mass: 375 (300), energy: 15, crew: 15/15.
+    hit points: 165/165.
+    items: 15 terrans [terran], 15 units of food [food].
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
+  + coal-burning plant [000015], 3 coal-burning plants [cplant].
+    size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
+    hit points: 300/300, attack: 3.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  + core drill [000016], core drill [cdrill].
+    size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
+    hit points: 100/100.
+    items: 6 terrans [terran], unit of carbon [carbon].
+      #1 hit points: 100/100.
+  + factory [000017], 5 factories [factry].
+    size: 5000, mass: 4150 (3750), energy: 75, crew: 50/50.
+    hit points: 500/500.
+    items: 50 terrans [terran], 20 units of iron [iron].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100.
+  + gun placement [111], 5 gun placements [gunplc], disabled.
+    size: 500, mass: 2500 (2500), crew: 8/0.
+    hit points: 500/444, attack: 4, defense: 4.
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/44, effects: disabled.
+  ------------------------------------------------------------
+  peaceful scout [108] fires tanks [tanks] on gun placement [111] (chance: 3/8) and hits #1 gun
+  placement [111] doing 4 damage.
+    #1 gun placement [gunplc] is heavily damaged.
+    #1 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  #1 farming complex [000014] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  #1 farming complex [000014] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  #1 farming complex [000014] doing 1 damage and 3 capture damage.
+  ------------------------------------------------------------
+  Round 2:
+  ------------------------------------------------------------
+  Attackers:
+  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+    size: 240.
+    hit points: 100/100, attack: 4, defense: 4.
+      #1 hit points: 100/100.
+  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  Defenders:
+  + farming complex [000014], 3 farming complexes [farms].
+    size: 3000, mass: 375 (300), energy: 15, crew: 15/15.
+    hit points: 165/162, capture: 9.
+    items: 15 terrans [terran], 15 units of food [food].
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/52, capture: 9.
+  + coal-burning plant [000015], 3 coal-burning plants [cplant].
+    size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
+    hit points: 300/300, attack: 3.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  + core drill [000016], core drill [cdrill].
+    size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
+    hit points: 100/100.
+    items: 6 terrans [terran], unit of carbon [carbon].
+      #1 hit points: 100/100.
+  + factory [000017], 5 factories [factry].
+    size: 5000, mass: 4150 (3750), energy: 75, crew: 50/50.
+    hit points: 500/500.
+    items: 50 terrans [terran], 20 units of iron [iron].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100.
+  ------------------------------------------------------------
+  peaceful scout [108] fires tanks [tanks] on farming complex [000014] (chance: 3/4) and hits #1
+  farming complex [000014] doing 4 damage.
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  #1 farming complex [000014] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  #1 farming complex [000014] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  #1 farming complex [000014] doing 1 damage and 3 capture damage.
+  ------------------------------------------------------------
+  Round 3:
+  ------------------------------------------------------------
+  Attackers:
+  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+    size: 240.
+    hit points: 100/100, attack: 4, defense: 4.
+      #1 hit points: 100/100.
+  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  Defenders:
+  + farming complex [000014], 3 farming complexes [farms].
+    size: 3000, mass: 375 (300), energy: 15, crew: 15/15.
+    hit points: 165/155, capture: 18.
+    items: 15 terrans [terran], 15 units of food [food].
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/45, capture: 18.
+  + coal-burning plant [000015], 3 coal-burning plants [cplant].
+    size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
+    hit points: 300/300, attack: 3.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  + core drill [000016], core drill [cdrill].
+    size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
+    hit points: 100/100.
+    items: 6 terrans [terran], unit of carbon [carbon].
+      #1 hit points: 100/100.
+  + factory [000017], 5 factories [factry].
+    size: 5000, mass: 4150 (3750), energy: 75, crew: 50/50.
+    hit points: 500/500.
+    items: 50 terrans [terran], 20 units of iron [iron].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100.
+  ------------------------------------------------------------
+  peaceful scout [108] fires tanks [tanks] on farming complex [000014] (chance: 3/4) and hits #1
+  farming complex [000014] doing 4 damage.
+    #1 farming complex [farms] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  #1 farming complex [000014] doing 1 damage and 3 capture damage.
+    #1 farming complex [farms] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  #1 farming complex [000014] doing 1 damage and 3 capture damage.
+    #1 farming complex [farms] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  #1 farming complex [000014] doing 1 damage and 3 capture damage.
+    #1 farming complex [farms] is lightly damaged.
+  ------------------------------------------------------------
+  Round 4:
+  ------------------------------------------------------------
+  Attackers:
+  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+    size: 240.
+    hit points: 100/100, attack: 4, defense: 4.
+      #1 hit points: 100/100.
+  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  Defenders:
+  + farming complex [000014], 3 farming complexes [farms].
+    size: 3000, mass: 375 (300), energy: 15, crew: 15/15.
+    hit points: 165/148, capture: 27.
+    items: 15 terrans [terran], 15 units of food [food].
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/38, capture: 27.
+  + coal-burning plant [000015], 3 coal-burning plants [cplant].
+    size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
+    hit points: 300/300, attack: 3.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  + core drill [000016], core drill [cdrill].
+    size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
+    hit points: 100/100.
+    items: 6 terrans [terran], unit of carbon [carbon].
+      #1 hit points: 100/100.
+  + factory [000017], 5 factories [factry].
+    size: 5000, mass: 4150 (3750), energy: 75, crew: 50/50.
+    hit points: 500/500.
+    items: 50 terrans [terran], 20 units of iron [iron].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100.
+  ------------------------------------------------------------
+  peaceful scout [108] fires tanks [tanks] on farming complex [000014] (chance: 3/4) and hits #1
+  farming complex [000014] doing 4 damage.
+    #1 farming complex [farms] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  #1 farming complex [000014] doing 1 damage and 3 capture damage.
+    #1 farming complex [farms] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  #1 farming complex [000014] doing 1 damage and 2 capture damage.
+    #1 farming complex [farms] module captured by Gelvaren [3].
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  #1 farming complex [000014] doing 1 damage and 3 capture damage.
+  ------------------------------------------------------------
+  Round 5:
+  ------------------------------------------------------------
+  Attackers:
+  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+    size: 240.
+    hit points: 100/100, attack: 4, defense: 4.
+      #1 hit points: 100/100.
+  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  Defenders:
+  + farming complex [000014], 2 farming complexes [farms].
+    size: 2000, mass: 250 (200), energy: 10, crew: 10/10.
+    hit points: 110/109, capture: 3.
+    items: 10 terrans [terran], 10 units of food [food].
+      #1 hit points: 55/55.
+      #2 hit points: 55/54, capture: 3.
+  + coal-burning plant [000015], 3 coal-burning plants [cplant].
+    size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
+    hit points: 300/300, attack: 3.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  + core drill [000016], core drill [cdrill].
+    size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
+    hit points: 100/100.
+    items: 6 terrans [terran], unit of carbon [carbon].
+      #1 hit points: 100/100.
+  + factory [000017], 5 factories [factry].
+    size: 5000, mass: 4150 (3750), energy: 75, crew: 50/50.
+    hit points: 500/500.
+    items: 50 terrans [terran], 20 units of iron [iron].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100.
+  ------------------------------------------------------------
+  peaceful scout [108] fires tanks [tanks] on farming complex [000014] (chance: 3/4) and hits #1
+  farming complex [000014] doing 4 damage.
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  #1 farming complex [000014] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  #1 farming complex [000014] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  #1 farming complex [000014] doing 1 damage and 3 capture damage.
+  ------------------------------------------------------------
+  Round 6:
+  ------------------------------------------------------------
+  Attackers:
+  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+    size: 240.
+    hit points: 100/100, attack: 4, defense: 4.
+      #1 hit points: 100/100.
+  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  Defenders:
+  + farming complex [000014], 2 farming complexes [farms].
+    size: 2000, mass: 250 (200), energy: 10, crew: 10/10.
+    hit points: 110/102, capture: 12.
+    items: 10 terrans [terran], 10 units of food [food].
+      #1 hit points: 55/55.
+      #2 hit points: 55/47, capture: 12.
+  + coal-burning plant [000015], 3 coal-burning plants [cplant].
+    size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
+    hit points: 300/300, attack: 3.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  + core drill [000016], core drill [cdrill].
+    size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
+    hit points: 100/100.
+    items: 6 terrans [terran], unit of carbon [carbon].
+      #1 hit points: 100/100.
+  + factory [000017], 5 factories [factry].
+    size: 5000, mass: 4150 (3750), energy: 75, crew: 50/50.
+    hit points: 500/500.
+    items: 50 terrans [terran], 20 units of iron [iron].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100.
+  ------------------------------------------------------------
+  peaceful scout [108] fires tanks [tanks] on farming complex [000014] (chance: 3/4) and hits #1
+  farming complex [000014] doing 4 damage.
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  #1 farming complex [000014] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  #1 farming complex [000014] doing 1 damage and 3 capture damage.
+    #1 farming complex [farms] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  #1 farming complex [000014] doing 1 damage and 3 capture damage.
+    #1 farming complex [farms] is lightly damaged.
+  ------------------------------------------------------------
+  Round 7:
+  ------------------------------------------------------------
+  Attackers:
+  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+    size: 240.
+    hit points: 100/100, attack: 4, defense: 4.
+      #1 hit points: 100/100.
+  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  Defenders:
+  + farming complex [000014], 2 farming complexes [farms].
+    size: 2000, mass: 250 (200), energy: 10, crew: 10/10.
+    hit points: 110/95, capture: 21.
+    items: 10 terrans [terran], 10 units of food [food].
+      #1 hit points: 55/55.
+      #2 hit points: 55/40, capture: 21.
+  + coal-burning plant [000015], 3 coal-burning plants [cplant].
+    size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
+    hit points: 300/300, attack: 3.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  + core drill [000016], core drill [cdrill].
+    size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
+    hit points: 100/100.
+    items: 6 terrans [terran], unit of carbon [carbon].
+      #1 hit points: 100/100.
+  + factory [000017], 5 factories [factry].
+    size: 5000, mass: 4150 (3750), energy: 75, crew: 50/50.
+    hit points: 500/500.
+    items: 50 terrans [terran], 20 units of iron [iron].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100.
+  ------------------------------------------------------------
+  peaceful scout [108] fires tanks [tanks] on farming complex [000014] (chance: 3/4) and hits #1
+  farming complex [000014] doing 4 damage.
+    #1 farming complex [farms] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  #1 farming complex [000014] doing 1 damage and 3 capture damage.
+    #1 farming complex [farms] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  #1 farming complex [000014] doing 1 damage and 3 capture damage.
+    #1 farming complex [farms] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  #1 farming complex [000014] doing 1 damage and 3 capture damage.
+    #1 farming complex [farms] is lightly damaged.
+  ------------------------------------------------------------
+  Round 8:
+  ------------------------------------------------------------
+  Attackers:
+  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+    size: 240.
+    hit points: 100/100, attack: 4, defense: 4.
+      #1 hit points: 100/100.
+  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  Defenders:
+  + farming complex [000014], 2 farming complexes [farms].
+    size: 2000, mass: 250 (200), energy: 10, crew: 10/10.
+    hit points: 110/88, capture: 30.
+    items: 10 terrans [terran], 10 units of food [food].
+      #1 hit points: 55/55.
+      #2 hit points: 55/33, capture: 30.
+  + coal-burning plant [000015], 3 coal-burning plants [cplant].
+    size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
+    hit points: 300/300, attack: 3.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  + core drill [000016], core drill [cdrill].
+    size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
+    hit points: 100/100.
+    items: 6 terrans [terran], unit of carbon [carbon].
+      #1 hit points: 100/100.
+  + factory [000017], 5 factories [factry].
+    size: 5000, mass: 4150 (3750), energy: 75, crew: 50/50.
+    hit points: 500/500.
+    items: 50 terrans [terran], 20 units of iron [iron].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100.
+  ------------------------------------------------------------
+  peaceful scout [108] fires tanks [tanks] on farming complex [000014] (chance: 3/4) and hits #1
+  farming complex [000014] doing 3 damage.
+    #1 farming complex [farms] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  #1 farming complex [000014] doing 0 damage.
+    #1 farming complex [farms] module captured by Gelvaren [3].
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  #1 farming complex [000014] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  #1 farming complex [000014] doing 1 damage and 3 capture damage.
+  ------------------------------------------------------------
+  Round 9:
+  ------------------------------------------------------------
+  Attackers:
+  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+    size: 240.
+    hit points: 100/100, attack: 4, defense: 4.
+      #1 hit points: 100/100.
+  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  Defenders:
+  + farming complex [000014], farming complex [farms].
+    size: 1000, mass: 125 (100), energy: 5, crew: 5/5.
+    hit points: 55/53, capture: 6.
+    items: 5 terrans [terran], 5 units of food [food].
+      #1 hit points: 55/53, capture: 6.
+  + coal-burning plant [000015], 3 coal-burning plants [cplant].
+    size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
+    hit points: 300/300, attack: 3.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  + core drill [000016], core drill [cdrill].
+    size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
+    hit points: 100/100.
+    items: 6 terrans [terran], unit of carbon [carbon].
+      #1 hit points: 100/100.
+  + factory [000017], 5 factories [factry].
+    size: 5000, mass: 4150 (3750), energy: 75, crew: 50/50.
+    hit points: 500/500.
+    items: 50 terrans [terran], 20 units of iron [iron].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100.
+  ------------------------------------------------------------
+  peaceful scout [108] fires tanks [tanks] on farming complex [000014] (chance: 3/4) and hits #1
+  farming complex [000014] doing 4 damage.
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  #1 farming complex [000014] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  #1 farming complex [000014] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  #1 farming complex [000014] doing 1 damage and 3 capture damage.
+  ------------------------------------------------------------
+  Round 10:
+  ------------------------------------------------------------
+  Attackers:
+  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+    size: 240.
+    hit points: 100/100, attack: 4, defense: 4.
+      #1 hit points: 100/100.
+  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  Defenders:
+  + farming complex [000014], farming complex [farms].
+    size: 1000, mass: 125 (100), energy: 5, crew: 5/5.
+    hit points: 55/46, capture: 15.
+    items: 5 terrans [terran], 5 units of food [food].
+      #1 hit points: 55/46, capture: 15.
+  + coal-burning plant [000015], 3 coal-burning plants [cplant].
+    size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
+    hit points: 300/300, attack: 3.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  + core drill [000016], core drill [cdrill].
+    size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
+    hit points: 100/100.
+    items: 6 terrans [terran], unit of carbon [carbon].
+      #1 hit points: 100/100.
+  + factory [000017], 5 factories [factry].
+    size: 5000, mass: 4150 (3750), energy: 75, crew: 50/50.
+    hit points: 500/500.
+    items: 50 terrans [terran], 20 units of iron [iron].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100.
+  ------------------------------------------------------------
+  peaceful scout [108] fires tanks [tanks] on farming complex [000014] (chance: 3/4) and hits #1
+  farming complex [000014] doing 4 damage.
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  #1 farming complex [000014] doing 1 damage and 3 capture damage.
+    #1 farming complex [farms] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  #1 farming complex [000014] doing 1 damage and 3 capture damage.
+    #1 farming complex [farms] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  #1 farming complex [000014] doing 1 damage and 3 capture damage.
+    #1 farming complex [farms] is lightly damaged.
+  ------------------------------------------------------------
+  Battle ended indecisively.
+  Week 13.
+  Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
+  [ocean] in system Sol [SS0001] (0, 0, 0).
+  ------------------------------------------------------------
+  Round 1:
+  ------------------------------------------------------------
+  Attackers:
+  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+    size: 240.
+    hit points: 100/100, attack: 4, defense: 4.
+      #1 hit points: 100/100.
+  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  Defenders:
+  + farming complex [000014], farming complex [farms].
+    size: 1000, mass: 130 (100), energy: 5, crew: 5/5.
+    hit points: 55/39.
+    items: 5 terrans [terran], 10 units of food [food].
+      #1 hit points: 55/39.
+  + coal-burning plant [000015], 3 coal-burning plants [cplant].
+    size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
+    hit points: 300/300, attack: 3.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  + core drill [000016], core drill [cdrill].
+    size: 1000, mass: 1034 (1000), energy: 5, crew: 6/6.
+    hit points: 100/100.
+    items: 6 terrans [terran], 2 units of carbon [carbon].
+      #1 hit points: 100/100.
+  + factory [000017], 5 factories [factry].
+    size: 5000, mass: 4150 (3750), energy: 75, crew: 50/50.
+    hit points: 500/500.
+    items: 50 terrans [terran], 20 units of iron [iron].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100.
+  + gun placement [111], 5 gun placements [gunplc], disabled.
+    size: 500, mass: 2500 (2500), crew: 8/0.
+    hit points: 500/440, attack: 4, defense: 4.
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/40, effects: disabled.
+  ------------------------------------------------------------
+  peaceful scout [108] fires tanks [tanks] on gun placement [111] (chance: 3/8) and hits #1 gun
+  placement [111] doing 4 damage.
+    #1 gun placement [gunplc] is heavily damaged.
+    #1 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  #1 farming complex [000014] doing 1 damage and 3 capture damage.
+    #1 farming complex [farms] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  #1 farming complex [000014] doing 1 damage and 3 capture damage.
+    #1 farming complex [farms] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  #1 farming complex [000014] doing 1 damage and 3 capture damage.
+    #1 farming complex [farms] is lightly damaged.
+  ------------------------------------------------------------
+  Round 2:
+  ------------------------------------------------------------
+  Attackers:
+  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+    size: 240.
+    hit points: 100/100, attack: 4, defense: 4.
+      #1 hit points: 100/100.
+  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  Defenders:
+  + farming complex [000014], farming complex [farms].
+    size: 1000, mass: 130 (100), energy: 5, crew: 5/5.
+    hit points: 55/36, capture: 9.
+    items: 5 terrans [terran], 10 units of food [food].
+      #1 hit points: 55/36, capture: 9.
+  + coal-burning plant [000015], 3 coal-burning plants [cplant].
+    size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
+    hit points: 300/300, attack: 3.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  + core drill [000016], core drill [cdrill].
+    size: 1000, mass: 1034 (1000), energy: 5, crew: 6/6.
+    hit points: 100/100.
+    items: 6 terrans [terran], 2 units of carbon [carbon].
+      #1 hit points: 100/100.
+  + factory [000017], 5 factories [factry].
+    size: 5000, mass: 4150 (3750), energy: 75, crew: 50/50.
+    hit points: 500/500.
+    items: 50 terrans [terran], 20 units of iron [iron].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100.
+  ------------------------------------------------------------
+  peaceful scout [108] fires tanks [tanks] on farming complex [000014] (chance: 3/4) and hits #1
+  farming complex [000014] doing 4 damage.
+    #1 farming complex [farms] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  #1 farming complex [000014] doing 1 damage and 3 capture damage.
+    #1 farming complex [farms] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  #1 farming complex [000014] doing 1 damage and 3 capture damage.
+    #1 farming complex [farms] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and
+  misses.
+  ------------------------------------------------------------
+  Round 3:
+  ------------------------------------------------------------
+  Attackers:
+  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+    size: 240.
+    hit points: 100/100, attack: 4, defense: 4.
+      #1 hit points: 100/100.
+  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  Defenders:
+  + farming complex [000014], farming complex [farms].
+    size: 1000, mass: 130 (100), energy: 5, crew: 5/5.
+    hit points: 55/30, capture: 15.
+    items: 5 terrans [terran], 10 units of food [food].
+      #1 hit points: 55/30, capture: 15.
+  + coal-burning plant [000015], 3 coal-burning plants [cplant].
+    size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
+    hit points: 300/300, attack: 3.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  + core drill [000016], core drill [cdrill].
+    size: 1000, mass: 1034 (1000), energy: 5, crew: 6/6.
+    hit points: 100/100.
+    items: 6 terrans [terran], 2 units of carbon [carbon].
+      #1 hit points: 100/100.
+  + factory [000017], 5 factories [factry].
+    size: 5000, mass: 4150 (3750), energy: 75, crew: 50/50.
+    hit points: 500/500.
+    items: 50 terrans [terran], 20 units of iron [iron].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100.
+  ------------------------------------------------------------
+  peaceful scout [108] fires tanks [tanks] on farming complex [000014] (chance: 3/4) and hits #1
+  farming complex [000014] doing 4 damage.
+    #1 farming complex [farms] is heavily damaged.
+    #1 farming complex [farms] is disabled.
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  #1 farming complex [000014] doing 1 damage and 3 capture damage.
+    #1 farming complex [farms] is heavily damaged.
+    #1 farming complex [farms] is disabled.
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  #1 farming complex [000014] doing 1 damage and 3 capture damage.
+    #1 farming complex [farms] is heavily damaged.
+    #1 farming complex [farms] is disabled.
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  #1 farming complex [000014] doing 1 damage and 2 capture damage.
+    #1 farming complex [farms] module captured by Gelvaren [3].
+  ------------------------------------------------------------
+  Round 4:
+  ------------------------------------------------------------
+  Attackers:
+  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+    size: 240.
+    hit points: 100/100, attack: 4, defense: 4.
+      #1 hit points: 100/100.
+  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  Defenders:
+  + coal-burning plant [000015], 3 coal-burning plants [cplant].
+    size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
+    hit points: 300/300, attack: 3.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  + core drill [000016], core drill [cdrill].
+    size: 1000, mass: 1034 (1000), energy: 5, crew: 6/6.
+    hit points: 100/100.
+    items: 6 terrans [terran], 2 units of carbon [carbon].
+      #1 hit points: 100/100.
+  + factory [000017], 5 factories [factry].
+    size: 5000, mass: 4150 (3750), energy: 75, crew: 50/50.
+    hit points: 500/500.
+    items: 50 terrans [terran], 20 units of iron [iron].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100.
+  ------------------------------------------------------------
+  peaceful scout [108] fires tanks [tanks] on coal-burning plant [000015] (chance: 3/4) and misses.
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 12/17) and
+  hits #1 coal-burning plant [000015] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 12/17) and
+  hits #1 coal-burning plant [000015] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 12/17) and
+  misses.
+  ------------------------------------------------------------
+  Round 5:
+  ------------------------------------------------------------
+  Attackers:
+  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+    size: 240.
+    hit points: 100/100, attack: 4, defense: 4.
+      #1 hit points: 100/100.
+  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  Defenders:
+  + coal-burning plant [000015], 3 coal-burning plants [cplant].
+    size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
+    hit points: 300/298, capture: 6, attack: 3.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/98, capture: 6.
+  + core drill [000016], core drill [cdrill].
+    size: 1000, mass: 1034 (1000), energy: 5, crew: 6/6.
+    hit points: 100/100.
+    items: 6 terrans [terran], 2 units of carbon [carbon].
+      #1 hit points: 100/100.
+  + factory [000017], 5 factories [factry].
+    size: 5000, mass: 4150 (3750), energy: 75, crew: 50/50.
+    hit points: 500/500.
+    items: 50 terrans [terran], 20 units of iron [iron].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100.
+  ------------------------------------------------------------
+  peaceful scout [108] fires tanks [tanks] on coal-burning plant [000015] (chance: 3/4) and misses.
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 12/17) and
+  misses.
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 12/17) and
+  hits #1 coal-burning plant [000015] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 12/17) and
+  hits #1 coal-burning plant [000015] doing 1 damage and 3 capture damage.
+  ------------------------------------------------------------
+  Round 6:
+  ------------------------------------------------------------
+  Attackers:
+  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+    size: 240.
+    hit points: 100/100, attack: 4, defense: 4.
+      #1 hit points: 100/100.
+  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  Defenders:
+  + coal-burning plant [000015], 3 coal-burning plants [cplant].
+    size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
+    hit points: 300/296, capture: 12, attack: 3.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/96, capture: 12.
+  + core drill [000016], core drill [cdrill].
+    size: 1000, mass: 1034 (1000), energy: 5, crew: 6/6.
+    hit points: 100/100.
+    items: 6 terrans [terran], 2 units of carbon [carbon].
+      #1 hit points: 100/100.
+  + factory [000017], 5 factories [factry].
+    size: 5000, mass: 4150 (3750), energy: 75, crew: 50/50.
+    hit points: 500/500.
+    items: 50 terrans [terran], 20 units of iron [iron].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100.
+  ------------------------------------------------------------
+  peaceful scout [108] fires tanks [tanks] on coal-burning plant [000015] (chance: 3/4) and misses.
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 12/17) and
+  hits #1 coal-burning plant [000015] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 12/17) and
+  hits #1 coal-burning plant [000015] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 12/17) and
+  hits #1 coal-burning plant [000015] doing 1 damage and 3 capture damage.
+  ------------------------------------------------------------
+  Round 7:
+  ------------------------------------------------------------
+  Attackers:
+  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+    size: 240.
+    hit points: 100/100, attack: 4, defense: 4.
+      #1 hit points: 100/100.
+  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  Defenders:
+  + coal-burning plant [000015], 3 coal-burning plants [cplant].
+    size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
+    hit points: 300/293, capture: 21, attack: 3.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/93, capture: 21.
+  + core drill [000016], core drill [cdrill].
+    size: 1000, mass: 1034 (1000), energy: 5, crew: 6/6.
+    hit points: 100/100.
+    items: 6 terrans [terran], 2 units of carbon [carbon].
+      #1 hit points: 100/100.
+  + factory [000017], 5 factories [factry].
+    size: 5000, mass: 4150 (3750), energy: 75, crew: 50/50.
+    hit points: 500/500.
+    items: 50 terrans [terran], 20 units of iron [iron].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100.
+  ------------------------------------------------------------
+  peaceful scout [108] fires tanks [tanks] on coal-burning plant [000015] (chance: 3/4) and hits #1
+  coal-burning plant [000015] doing 4 damage.
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 12/17) and
+  hits #1 coal-burning plant [000015] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 12/17) and
+  hits #1 coal-burning plant [000015] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 12/17) and
+  hits #1 coal-burning plant [000015] doing 1 damage and 3 capture damage.
+  ------------------------------------------------------------
+  Round 8:
+  ------------------------------------------------------------
+  Attackers:
+  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+    size: 240.
+    hit points: 100/100, attack: 4, defense: 4.
+      #1 hit points: 100/100.
+  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  Defenders:
+  + coal-burning plant [000015], 3 coal-burning plants [cplant].
+    size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
+    hit points: 300/286, capture: 30, attack: 3.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/86, capture: 30.
+  + core drill [000016], core drill [cdrill].
+    size: 1000, mass: 1034 (1000), energy: 5, crew: 6/6.
+    hit points: 100/100.
+    items: 6 terrans [terran], 2 units of carbon [carbon].
+      #1 hit points: 100/100.
+  + factory [000017], 5 factories [factry].
+    size: 5000, mass: 4150 (3750), energy: 75, crew: 50/50.
+    hit points: 500/500.
+    items: 50 terrans [terran], 20 units of iron [iron].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100.
+  ------------------------------------------------------------
+  peaceful scout [108] fires tanks [tanks] on coal-burning plant [000015] (chance: 3/4) and misses.
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 12/17) and
+  hits #1 coal-burning plant [000015] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 12/17) and
+  hits #1 coal-burning plant [000015] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 12/17) and
+  hits #1 coal-burning plant [000015] doing 1 damage and 3 capture damage.
+  ------------------------------------------------------------
+  Round 9:
+  ------------------------------------------------------------
+  Attackers:
+  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+    size: 240.
+    hit points: 100/100, attack: 4, defense: 4.
+      #1 hit points: 100/100.
+  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  Defenders:
+  + coal-burning plant [000015], 3 coal-burning plants [cplant].
+    size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
+    hit points: 300/283, capture: 39, attack: 3.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/83, capture: 39.
+  + core drill [000016], core drill [cdrill].
+    size: 1000, mass: 1034 (1000), energy: 5, crew: 6/6.
+    hit points: 100/100.
+    items: 6 terrans [terran], 2 units of carbon [carbon].
+      #1 hit points: 100/100.
+  + factory [000017], 5 factories [factry].
+    size: 5000, mass: 4150 (3750), energy: 75, crew: 50/50.
+    hit points: 500/500.
+    items: 50 terrans [terran], 20 units of iron [iron].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100.
+  ------------------------------------------------------------
+  peaceful scout [108] fires tanks [tanks] on coal-burning plant [000015] (chance: 3/4) and hits #1
+  coal-burning plant [000015] doing 4 damage.
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 12/17) and
+  hits #1 coal-burning plant [000015] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 12/17) and
+  hits #1 coal-burning plant [000015] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 12/17) and
+  misses.
+  ------------------------------------------------------------
+  Round 10:
+  ------------------------------------------------------------
+  Attackers:
+  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+    size: 240.
+    hit points: 100/100, attack: 4, defense: 4.
+      #1 hit points: 100/100.
+  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  Defenders:
+  + coal-burning plant [000015], 3 coal-burning plants [cplant].
+    size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
+    hit points: 300/277, capture: 45, attack: 3.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/77, capture: 45.
+  + core drill [000016], core drill [cdrill].
+    size: 1000, mass: 1034 (1000), energy: 5, crew: 6/6.
+    hit points: 100/100.
+    items: 6 terrans [terran], 2 units of carbon [carbon].
+      #1 hit points: 100/100.
+  + factory [000017], 5 factories [factry].
+    size: 5000, mass: 4150 (3750), energy: 75, crew: 50/50.
+    hit points: 500/500.
+    items: 50 terrans [terran], 20 units of iron [iron].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100.
+  ------------------------------------------------------------
+  peaceful scout [108] fires tanks [tanks] on coal-burning plant [000015] (chance: 3/4) and misses.
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 12/17) and
+  hits #1 coal-burning plant [000015] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 12/17) and
+  hits #1 coal-burning plant [000015] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 12/17) and
+  misses.
+  ------------------------------------------------------------
+  Battle ended indecisively.
+
+Galaxy report:
+------------------------------------------------------------
+* Sol [SS0001] (0, 0, 0), star system.
+------------------------------------------------------------
+
+  * Sol [S00001] (0, 0, 0), M4 star, unexplored.
+------------------------------------------------------------
+
+  * Earth [P00001] at AU 1, ocean planet [ocean].
+------------------------------------------------------------
+  orbit [O00002], has atmosphere suitable for terran [terran].
+  + space shuttle [100], 10 space shuttle [shuttl].
+    size: 2000, mass: 7500/1581 (300), capacity: 1250/1124, crew: 20/41, upkeep: 1050 (1000) cash
+    [cash], consume: 41 (0) units of food [food], 41 (0) units of terran breathing gas mixture
+    [terair].
+    movement speed: 0.5 in space.
+    fuel requirements: 10 units of uranium [uraniu] , 10 units of oxyhydro [h2o2] per 13 weeks.
+    items: 40 terrans [terran] (size: 160, mass: 160, upkeep: 40 cash [cash], consume: 40 units of
+    food [food], 40 units of terran breathing gas mixture [terair]), 30 units of iron [iron] (size:
+    150, mass: 300), 26 units of titanium [titani] (size: 260, mass: 260), 19 units of silicium
+    [silici] (size: 95, mass: 57), 15 units of copper [copper] (size: 75, mass: 120), 150 units of
+    food [food] (size: 150, mass: 150), 80 units of oxyhydro [h2o2] (size: 80, mass: 80), 150 units
+    of terran breathing gas mixture [terair] (size: 150, mass: 150).
+    effects:
+      producing fission reactor [fisrec] into fission reactor [114], 2 weeks to complete (x10
+      efficiency multiplier).
+      can operate for another 10 weeks without refueling.
+    events:
+      week 3: produced spaceship hull [sshull] into spaceship hull [101].
+      week 4: consumed unit of silicium [silici] to produce command bridge [cbridg] module.
+      week 7: produced command bridge [cbridg] into command bridge [113].
+      week 8: consumed 5 units of copper [copper] to produce fission reactor [fisrec] module.
+      week 11: consumed 10 units of uranium [uraniu], 10 units of oxyhydro [h2o2] as fuel.
+    + Caste Prime CEO [000001], terran [terran].
+      size: 4, mass: 4, capacity: 3/0, upkeep: 10 cash [cash], consume: unit of food [food], unit of
+      terran breathing gas mixture [terair].
+  + spaceship hull [101], spaceship hull [sshull], disabled, immobile.
+    size: 5000, mass: 100 (100), capacity: 4500/0, energy: 1, upkeep: 20 cash [cash].
+    events:
+      week 3: received spaceship hull [sshull] produced by space shuttle [100].
+  + command bridge [113], command bridge [cbridg], disabled, immobile.
+    size: 800, mass: 300 (300), capacity: 200/0, energy: 5, crew: 1/0, upkeep: 100 cash [cash].
+    events:
+      week 4: formed by space shuttle [100] with command bridge [cbridg].
+      week 7: received command bridge [cbridg] produced by space shuttle [100].
+  + fission reactor [114], fission reactor [fisrec], disabled, immobile.
+    size: 0, mass: 0.
+    fuel requirements:  unit of uranium [uraniu] per 13 weeks.
+    events:
+      week 8: formed by space shuttle [100] with fission reactor [fisrec].
+
+  Northern Hemisphere [R00002] (0,0), grassland region, settlement capacity 8/3.
+  Exits:
+    Southern Hemisphere [R00003] (1,0), grassland region, ground travel duration 3 weeks.
+  Resources: 20 units of iron [iron], 20 units of carbon [carbon], 20 units of titanium [titani], 20
+  units of uranium [uraniu], 20 units of copper [copper], 20 units of silicium [silici], 250 units
+  of oxyhydro [h2o2], 500 units of food [food].
+  Market report:
+    Offers of selling items:
+      sell 39 units of food [food] at 5 each from Berlin [000001].
+      sell 30 terrans [terran] at 50 each from Berlin [000001].
+    Offers of buying items:
+      none.
+    Offers of selling modules:
+      none.
+    Offers of buying modules:
+      buy farming complex [farms] at 100 by Berlin [000001].
+    Offers of selling technologies:
+      none.
+    Offers of buying technologies:
+      none.
+  
+  - Berlin [000001], 3 cities [city], immobile, military, owned by NPC [1].
+    size: 75000, capacity: 45000/41420, energy: 320/240 (30).
+    - Berlin garrison [000002], infantry battalion [inftry], owned by NPC [1].
+      size: 500.
+    - Berlin farms [000003], 10 farming complexes [farms], owned by NPC [1].
+      size: 10000.
+    - Berlin coal powerplants [000004], 5 coal-burning plants [cplant], owned by NPC [1].
+      size: 5000.
+    - Berlin granary [000005], small cargo bay [cargob], owned by NPC [1].
+      size: 2000.
+    + Caste Prime Headquarters [000012], corporate headquarters [corphq], disabled.
+      size: 0, mass: 0.
+      events:
+        week 1: produced 100 cash [cash].
+        week 2: produced 100 cash [cash].
+        week 3: produced 100 cash [cash].
+        week 4: produced 100 cash [cash].
+        week 5: produced 100 cash [cash].
+        week 6: produced 100 cash [cash].
+        week 7: produced 100 cash [cash].
+        week 8: produced 100 cash [cash].
+        week 9: produced 100 cash [cash].
+        week 9: engaged in battle
+        week 9: lost #1 corporate headquarters [corphq] to capture.
+    + small cargo bay [000013], small cargo bay [cargob], disabled.
+      size: 0, mass: 0.
+      events:
+        week 1: got 15 units of food [food] from farming complex [000014].
+        week 1: got unit of carbon [carbon] from core drill [000016].
+        week 1: given 15 units of carbon [carbon] to coal-burning plant [000015].
+        week 1: got 15 units of food [food] from farming complex [000014].
+        week 1: got unit of carbon [carbon] from core drill [000016].
+        week 2: got 15 units of food [food] from farming complex [000014].
+        week 2: got unit of carbon [carbon] from core drill [000016].
+        week 3: got 15 units of food [food] from farming complex [000014].
+        week 3: got unit of carbon [carbon] from core drill [000016].
+        week 4: got 15 units of food [food] from farming complex [000014].
+        week 4: got unit of carbon [carbon] from core drill [000016].
+        week 5: got 15 units of food [food] from farming complex [000014].
+        week 5: got unit of carbon [carbon] from core drill [000016].
+        week 6: got 15 units of food [food] from farming complex [000014].
+        week 6: got unit of carbon [carbon] from core drill [000016].
+        week 7: got 15 units of food [food] from farming complex [000014].
+        week 7: got unit of carbon [carbon] from core drill [000016].
+        week 8: got 15 units of food [food] from farming complex [000014].
+        week 8: got unit of carbon [carbon] from core drill [000016].
+        week 9: got 15 units of food [food] from farming complex [000014].
+        week 9: got unit of carbon [carbon] from core drill [000016].
+        week 9: engaged in battle
+        week 10: got 15 units of food [food] from farming complex [000014].
+        week 10: got unit of carbon [carbon] from core drill [000016].
+        week 10: engaged in battle
+        week 10: lost #1 small cargo bay [cargob] to capture.
+        week 10: lost #1 small cargo bay [cargob] to capture.
+        week 11: got 15 units of food [food] from farming complex [000014].
+        week 11: got unit of carbon [carbon] from core drill [000016].
+        week 11: engaged in battle
+        week 11: lost #1 small cargo bay [cargob] to capture.
+        week 11: lost #1 small cargo bay [cargob] to capture.
+        week 11: lost #1 small cargo bay [cargob] to capture.
+        week 12: GET failed, tried to get 15 units of food [food], but there is not enough capacity:
+        15 required, 0 available.
+        week 12: GET failed, tried to get unit of carbon [carbon], but there is not enough capacity:
+        5 required, 0 available.
+        week 12: GET failed, tried to get 15 units of food [food], but there is not enough capacity:
+        15 required, 0 available.
+        week 12: GET failed, tried to get unit of carbon [carbon], but there is not enough capacity:
+        5 required, 0 available.
+    + farming complex [000014], farming complex [farms], disabled.
+      size: 0, mass: 0.
+      events:
+        week 1: given 15 units of food [food] to small cargo bay [000013].
+        week 1: produced 15 units of food [food].
+        week 1: given 15 units of food [food] to small cargo bay [000013].
+        week 2: produced 15 units of food [food].
+        week 2: given 15 units of food [food] to small cargo bay [000013].
+        week 3: produced 15 units of food [food].
+        week 3: given 15 units of food [food] to small cargo bay [000013].
+        week 4: produced 15 units of food [food].
+        week 4: given 15 units of food [food] to small cargo bay [000013].
+        week 5: produced 15 units of food [food].
+        week 5: given 15 units of food [food] to small cargo bay [000013].
+        week 6: produced 15 units of food [food].
+        week 6: given 15 units of food [food] to small cargo bay [000013].
+        week 7: produced 15 units of food [food].
+        week 7: given 15 units of food [food] to small cargo bay [000013].
+        week 8: produced 15 units of food [food].
+        week 8: given 15 units of food [food] to small cargo bay [000013].
+        week 9: produced 15 units of food [food].
+        week 9: given 15 units of food [food] to small cargo bay [000013].
+        week 9: engaged in battle
+        week 10: produced 15 units of food [food].
+        week 10: given 15 units of food [food] to small cargo bay [000013].
+        week 10: engaged in battle
+        week 11: produced 15 units of food [food].
+        week 11: given 15 units of food [food] to small cargo bay [000013].
+        week 11: engaged in battle
+        week 12: produced 15 units of food [food].
+        week 12: engaged in battle
+        week 12: lost #1 farming complex [farms] to capture.
+        week 12: lost #1 farming complex [farms] to capture.
+        week 13: produced 5 units of food [food].
+        week 13: engaged in battle
+        week 13: lost #1 farming complex [farms] to capture.
+    + coal-burning plant [000015], 3 coal-burning plants [cplant].
+      size: 3000, mass: 3024 (3000), capacity: 1500/24, energy: 120/30 (consume: 15 units of carbon
+      [carbon] for 13 weeks), crew: 6/6, upkeep: 156 (150) cash [cash], consume: 6 (0) units of food
+      [food], 6 (0) units of terran breathing gas mixture [terair].
+      hit points: 300/275, capture: 51.
+        #1 hit points: 100/100.
+        #2 hit points: 100/100.
+        #3 hit points: 100/75, capture: 51.
+      fuel requirements: 15 units of carbon [carbon] per 13 weeks.
+      items: 6 terrans [terran] (size: 24, mass: 24, upkeep: 6 cash [cash], consume: 6 units of food
+      [food], 6 units of terran breathing gas mixture [terair]).
+      events:
+        week 1: got 15 units of carbon [carbon] from small cargo bay [000013].
+        week 1: consumed 15 units of carbon [carbon] as fuel.
+        week 1: started energy production for the next 13 weeks.
+        week 9: engaged in battle
+        week 10: engaged in battle
+        week 11: engaged in battle
+        week 12: engaged in battle
+        week 13: engaged in battle
+    + core drill [000016], core drill [cdrill].
+      size: 1000, mass: 1034 (1000), capacity: 750/34, energy: 5, crew: 6/6, upkeep: 46 (40) cash
+      [cash], consume: 6 (0) units of food [food], 6 (0) units of terran breathing gas mixture
+      [terair].
+      items: 6 terrans [terran] (size: 24, mass: 24, upkeep: 6 cash [cash], consume: 6 units of food
+      [food], 6 units of terran breathing gas mixture [terair]), 2 units of carbon [carbon] (size:
+      10, mass: 10).
+      events:
+        week 1: given unit of carbon [carbon] to small cargo bay [000013].
+        week 1: produced unit of carbon [carbon].
+        week 1: given unit of carbon [carbon] to small cargo bay [000013].
+        week 2: produced unit of carbon [carbon].
+        week 2: given unit of carbon [carbon] to small cargo bay [000013].
+        week 3: produced unit of carbon [carbon].
+        week 3: given unit of carbon [carbon] to small cargo bay [000013].
+        week 4: produced unit of carbon [carbon].
+        week 4: given unit of carbon [carbon] to small cargo bay [000013].
+        week 5: produced unit of carbon [carbon].
+        week 5: given unit of carbon [carbon] to small cargo bay [000013].
+        week 6: produced unit of carbon [carbon].
+        week 6: given unit of carbon [carbon] to small cargo bay [000013].
+        week 7: produced unit of carbon [carbon].
+        week 7: given unit of carbon [carbon] to small cargo bay [000013].
+        week 8: produced unit of carbon [carbon].
+        week 8: given unit of carbon [carbon] to small cargo bay [000013].
+        week 9: produced unit of carbon [carbon].
+        week 9: given unit of carbon [carbon] to small cargo bay [000013].
+        week 9: engaged in battle
+        week 10: produced unit of carbon [carbon].
+        week 10: given unit of carbon [carbon] to small cargo bay [000013].
+        week 10: engaged in battle
+        week 11: produced unit of carbon [carbon].
+        week 11: given unit of carbon [carbon] to small cargo bay [000013].
+        week 11: engaged in battle
+        week 12: produced unit of carbon [carbon].
+        week 12: engaged in battle
+        week 13: produced unit of carbon [carbon].
+        week 13: engaged in battle
+    + factory [000017], 5 factories [factry].
+      size: 5000, mass: 4150 (3750), capacity: 2500/300, energy: 75, crew: 50/50, upkeep: 350 (300)
+      cash [cash], consume: 50 (0) units of food [food], 50 (0) units of terran breathing gas
+      mixture [terair].
+      items: 50 terrans [terran] (size: 200, mass: 200, upkeep: 50 cash [cash], consume: 50 units of
+      food [food], 50 units of terran breathing gas mixture [terair]), 20 units of iron [iron]
+      (size: 100, mass: 200).
+      events:
+        week 1: consumed 2 units of titanium [titani] to produce gun placement [gunplc] module.
+        week 1: produced gun placement [gunplc] into gun placement [111].
+        week 2: consumed 2 units of titanium [titani] to produce gun placement [gunplc] module.
+        week 2: produced gun placement [gunplc] into gun placement [111].
+        week 3: consumed 2 units of titanium [titani] to produce gun placement [gunplc] module.
+        week 3: produced gun placement [gunplc] into gun placement [111].
+        week 4: consumed 2 units of titanium [titani] to produce gun placement [gunplc] module.
+        week 4: produced gun placement [gunplc] into gun placement [111].
+        week 5: consumed 2 units of titanium [titani] to produce gun placement [gunplc] module.
+        week 5: produced gun placement [gunplc] into gun placement [111].
+        week 6: USE failed, tried to produce gun placement [gunplc], but needed to consume 2 units
+        of titanium [titani].
+        week 7: USE failed, tried to produce gun placement [gunplc], but needed to consume 2 units
+        of titanium [titani].
+        week 8: USE failed, tried to produce gun placement [gunplc], but needed to consume 2 units
+        of titanium [titani].
+        week 9: USE failed, tried to produce gun placement [gunplc], but needed to consume 2 units
+        of titanium [titani].
+        week 9: engaged in battle
+        week 10: USE failed, tried to produce gun placement [gunplc], but needed to consume 2 units
+        of titanium [titani].
+        week 10: engaged in battle
+        week 11: USE failed, tried to produce gun placement [gunplc], but needed to consume 2 units
+        of titanium [titani].
+        week 11: engaged in battle
+        week 12: USE failed, tried to produce gun placement [gunplc], but needed to consume 2 units
+        of titanium [titani].
+        week 12: engaged in battle
+        week 13: USE failed, tried to produce gun placement [gunplc], but needed to consume 2 units
+        of titanium [titani].
+        week 13: engaged in battle
+    + gun placement [111], 5 gun placements [gunplc], disabled.
+      size: 500, mass: 2500 (2500), capacity: 500/0, crew: 8/0, upkeep: 50 cash [cash].
+      hit points: 500/436.
+        #1 hit points: 100/100.
+        #2 hit points: 100/100.
+        #3 hit points: 100/100.
+        #4 hit points: 100/100.
+        #5 hit points: 100/36, heavily damaged, disabled.
+      events:
+        week 1: formed by factory [000017] with gun placement [gunplc].
+        week 1: received gun placement [gunplc] produced by factory [000017].
+        week 2: received gun placement [gunplc] produced by factory [000017].
+        week 3: received gun placement [gunplc] produced by factory [000017].
+        week 4: received gun placement [gunplc] produced by factory [000017].
+        week 5: received gun placement [gunplc] produced by factory [000017].
+        week 9: engaged in battle
+        week 10: engaged in battle
+        week 11: engaged in battle
+        week 12: engaged in battle
+        week 13: engaged in battle
+    - farming complex [c2000014], farming complex [farms], owned by Gelvaren [3].
+      size: 1000.
+    - corporate headquarters [c000012], corporate headquarters [corphq], owned by Gelvaren [3].
+      size: 1000.
+    - small cargo bay [c000013], small cargo bay [cargob], owned by Gelvaren [3].
+      size: 2000.
+    - small cargo bay [c1000013], small cargo bay [cargob], owned by Gelvaren [3].
+      size: 2000.
+    - small cargo bay [c2000013], small cargo bay [cargob], owned by Gelvaren [3].
+      size: 2000.
+    - small cargo bay [c3000013], small cargo bay [cargob], owned by Gelvaren [3].
+      size: 2000.
+    - small cargo bay [c4000013], small cargo bay [cargob], owned by Gelvaren [3].
+      size: 2000.
+    - farming complex [c000014], farming complex [farms], owned by Gelvaren [3].
+      size: 1000.
+    - farming complex [c1000014], farming complex [farms], owned by Gelvaren [3].
+      size: 1000.
+  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+    size: 240.
+  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+    size: 720.
+    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
+      size: 4.
+------------------------------------------------------------
+  * Luna [P00003] (1, 0, 0), moon, unexplored.
+------------------------------------------------------------
+
+
+Orders Template:
+#faction 2 "xyzzy"
+#modulestack 000012
+; + Caste Prime Headquarters [000012], corporate headquarters [corphq], disabled.
+@produce cash
+@produce cash
+
+#modulestack 000013
+; + small cargo bay [000013], small cargo bay [cargob], disabled.
+@get all food from 000014
+@get all carbon from 000016
+sell 300 food
+@get all food from 000014
+@get all carbon from 000016
+
+#modulestack 000014
+; + farming complex [000014], farming complex [farms], disabled.
+@use farmng
+@use farmng
+
+#modulestack 000015
+; + coal-burning plant [000015], 3 coal-burning plants [cplant].
+; items: 6 terrans [terran].
+@produce energy
+@produce energy
+
+#modulestack 000016
+; + core drill [000016], core drill [cdrill].
+; items: 6 terrans [terran], 2 units of carbon [carbon].
+@use hcdril
+@use hcdril
+
+#modulestack 000017
+; + factory [000017], 5 factories [factry].
+; items: 50 terrans [terran], 20 units of iron [iron].
+5 use stnrdf as 111
+10 use frminf as new112
+
+#modulestack 100
+; + space shuttle [100], 10 space shuttle [shuttl].
+; items: 40 terrans [terran], 30 units of iron [iron], 26 units of titanium [titani], 19 units of
+; silicium [silici], 15 units of copper [copper], 150 units of food [food], 80 units of oxyhydro
+; [h2o2], 150 units of terran breathing gas mixture [terair].
+; effects:
+;   producing fission reactor [fisrec] into fission reactor [114], 2 weeks to complete (x10 efficiency
+;   multiplier).
+;   can operate for another 10 weeks without refueling.
+move R00001
++use urfiss as 114
++use areact as new115
++use crewhs as new116
++-give -20 terran to new116
++-give -20 terair to new116
++-give -20 food to new116
++use strans as new117
++-give all iron to new117
++-give all titani to new117
++-give all silici to new117
++-give all copper to new117
++-give -10 uraniu to new117
++-give -10 h2o2 to new117
++use indust as new118
++-get 10 terran from new116
+
+#modulestack 101
+; + spaceship hull [101], spaceship hull [sshull], disabled, immobile.
+active 101
+active 101
+-name "Caste Prime valiant explorer"
+
+#modulestack 111
+; + gun placement [111], 5 gun placements [gunplc], disabled.
+
+#modulestack 113
+; + command bridge [113], command bridge [cbridg], disabled, immobile.
+
+#modulestack 114
+; + fission reactor [114], fission reactor [fisrec], disabled, immobile.
+
+#person 000001
+; + Caste Prime CEO [000001], terran [terran].
+active 101
+-stack 113
+
+#end
+

@@ -194,6 +194,7 @@ namespace UnitTests
 
 			Assert.That(lab.Technologies.Count, Is.EqualTo(1));
 			Assert.That(lab.Owner.TechnologiesToShow.Count, Is.GreaterThanOrEqualTo(1));
+			Assert.That(lab.Technologies.Contains(lab.Owner.TechnologiesToShow[0].Name), Is.True);
 			Assert.That(lab.ResearchPoints, Is.EqualTo(0)); // zeroed on breakthrough
 		}
 
@@ -286,6 +287,7 @@ namespace UnitTests
 			techs.Add(Technology.All["miltac"]); // no product
 			techs.Add(Technology.All["he3min"]); // produces the heliu3 item
 			techs.Add(Technology.All["advres"]); // produces the advlib module
+			techs.Add(Technology.All["rckter"]); // produces infantry equipment item
 
 			List<string> expected = new List<string>
 			{
@@ -293,7 +295,9 @@ namespace UnitTests
 				"+ helium-3 mining [he3min]: The extraction and refining of helium-3 from regolith and gas. Helium-3 mining can be carried out by any extraction module that has this technology loaded.",
 				"  - unit of helium-3 [heliu3]: A light, non-radioactive helium isotope prized as clean fusion fuel; scarce on planets but abundant in lunar regolith.",
 				"+ advanced computing [advres]: Next-generation computing enabling far larger research complexes.",
-				"  - advanced research complex [advlib]: A large, high-throughput research facility building on computer-library methods."
+				"  - advanced research complex [advlib]: A large, high-throughput research facility building on computer-library methods.",
+				"+ rocket launcher production [rckter]: Manufacture of portable rocket launchers issued to infantry battalions.",
+				"  - rocket launchers [rctlnc]: Infantry equipment. Size: 100, mass: 100. Attack: 2, damage: 2. An infantry battalion carrying one gains +2 attack and +2 damage."
 			};
 
 			List<string> actual = techs.ReportDescriptions(faction, 0);
@@ -328,6 +332,10 @@ namespace UnitTests
 			Assert.That(technologyIndex, Is.GreaterThanOrEqualTo(0), "technology report present");
 			Assert.That(technologyIndex, Is.GreaterThan(bankIndex), "technology report after the bank report");
 			Assert.That(technologyIndex, Is.LessThan(galaxyIndex), "technology report before the galaxy report");
+			Assert.That(lines[technologyIndex - 1], Is.EqualTo(string.Empty), "single blank line before technology reports");
+			Assert.That(lines[technologyIndex - 2], Does.StartWith("  Credit rate:"), "bank report immediately precedes technology section");
+			Assert.That(lines[galaxyIndex - 1], Is.EqualTo(string.Empty), "single blank line before galaxy report");
+			Assert.That(galaxyIndex, Is.GreaterThan(technologyIndex + 1), "technology report content precedes galaxy report");
 		}
 
 		[Test]

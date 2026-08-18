@@ -91,7 +91,6 @@ namespace SpaceAge
 			List<string> reportLines = new List<string>();
 
 			reportLines.AddRange(this.reportHeader(faction));
-			reportLines.Add("");
 
 			return reportLines;
 		}

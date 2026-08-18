@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
   <Import Project="..\packages\NUnit3TestAdapter.4.6.0\build\net462\NUnit3TestAdapter.props" Condition="Exists('..\packages\NUnit3TestAdapter.4.6.0\build\net462\NUnit3TestAdapter.props')" />
   <Import Project="..\packages\NUnit.4.1.0\build\NUnit.props" Condition="Exists('..\packages\NUnit.4.1.0\build\NUnit.props')" />
@@ -109,7 +109,15 @@
     <Content Include="gameout.saved_getorders.xml" />
     <Content Include="SampleGame\gamein.1_saved.xml" />
     <Content Include="SampleGame\gamein.1_saved_orders.xml" />
-    <Content Include="SampleGame\gamein.2.xml" />
+    <Content Include="SampleGame\gamein.2.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SampleGame\gamein.2_contract.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SampleGame\orders.2.1.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="SampleGame\gameout.1_saved.xml" />
     <Content Include="SampleGame\gameout.2.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -150,6 +158,18 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="SampleGame\testreport.1.2.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SampleGame\testreport.3.1.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SampleGame\testreport.3.2.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SampleGame\testreport.3.3.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SampleGame\gameout.3.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="SampleGame\gamein.5.xml">

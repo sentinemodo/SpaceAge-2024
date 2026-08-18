@@ -24,6 +24,7 @@ namespace SpaceAge
 			: this()
 		{
 			this.attacker = attacker;
+			this.battleDefender = defender;
 			this.attackers = this.collectAttackers(attacker, defender);
 			this.defenders = this.collectDefenders(attacker, defender);
 
@@ -78,9 +79,13 @@ namespace SpaceAge
 				return side;
 			}
 
-			foreach (ModuleStack stack in initiator.Location.ModuleStacks.Values)
+			foreach (ModuleStack stack in stacksAtLocation(initiator.Location))
 			{
-				if (!stack.IsRootModuleStack || !stack.IsArmed)
+				if (!stack.IsArmed)
+				{
+					continue;
+				}
+				if (!stack.IsRootModuleStack && stack != initiator)
 				{
 					continue;
 				}
@@ -101,26 +106,57 @@ namespace SpaceAge
 			ModuleStacks side = new ModuleStacks();
 			if (target.Location == null)
 			{
-				side.Add(target.Name, target);
+				if (target.HasIntactModules())
+				{
+					side.Add(target.Name, target);
+				}
 				return side;
 			}
 
-			foreach (ModuleStack stack in target.Location.ModuleStacks.Values)
+			foreach (ModuleStack stack in stacksAtLocation(target.Location))
 			{
-				if (!stack.IsRootModuleStack)
+				if (!stack.HasIntactModules())
 				{
 					continue;
 				}
-				if (this.joinsDefense(stack.Owner, initiator.Owner, target.Owner))
+				if (stack.IsRootModuleStack)
 				{
-					side.Add(stack.Name, stack);
+					if (this.joinsDefense(stack.Owner, initiator.Owner, target.Owner))
+					{
+						side.Add(stack.Name, stack);
+					}
+				}
+				else if (this.isDefenderStack(stack, target, initiator))
+				{
+					if (this.joinsDefense(stack.Owner, initiator.Owner, target.Owner))
+					{
+						side.Add(stack.Name, stack);
+					}
 				}
 			}
-			if (!side.Contains(target.Name))
+			if (!side.Contains(target.Name) && target.HasIntactModules())
 			{
 				side.Add(target.Name, target);
 			}
 			return side;
+		}
+
+		private bool isDefenderStack(ModuleStack stack, ModuleStack target, ModuleStack initiator)
+		{
+			if (stack == target)
+			{
+				return true;
+			}
+			if (stack.IsArmed && stack.RootModuleStack != initiator.RootModuleStack)
+			{
+				return true;
+			}
+			ModuleStack targetParent = target.Parent as ModuleStack;
+			if (targetParent != null && stack.Parent == targetParent)
+			{
+				return true;
+			}
+			return false;
 		}
 
 		private bool joinsAttack(Faction owner, Faction attackerOwner, Faction defenderOwner)
@@ -179,23 +215,65 @@ namespace SpaceAge
 			return string.Concat(b.Name, "|", a.Name);
 		}
 
+		private static IEnumerable<ModuleStack> stacksAtLocation(Location location)
+		{
+			if (location == null)
+			{
+				yield break;
+			}
+
+			foreach (ModuleStack stack in ModuleStack.All.Values)
+			{
+				if (stack.Location == location)
+				{
+					yield return stack;
+				}
+			}
+		}
+
+		public static string FactionPairKey(Faction a, Faction b)
+		{
+			if (a == null || b == null)
+			{
+				return string.Empty;
+			}
+			if (string.CompareOrdinal(a.Name, b.Name) < 0)
+			{
+				return string.Concat(a.Name, "|", b.Name);
+			}
+			return string.Concat(b.Name, "|", a.Name);
+		}
+
 		public static List<Battle> StartAtLocations(int week)
 		{
 			List<Battle> started = new List<Battle>();
 			HashSet<string> paired = new HashSet<string>();
+			HashSet<string> factionPairs = new HashSet<string>();
 			foreach (ModuleStack stack in ModuleStack.All.Values)
 			{
-				if (!stack.IsRootModuleStack || !stack.IsArmed || stack.Location == null)
+				if (!stack.IsArmed || stack.Location == null || !stack.IsRootModuleStack)
 				{
 					continue;
 				}
-				foreach (ModuleStack other in stack.Location.ModuleStacks.Values)
+				foreach (ModuleStack other in stacksAtLocation(stack.Location))
 				{
-					if (other == stack || !other.IsRootModuleStack)
+					if (other == stack)
+					{
+						continue;
+					}
+					if (!other.HasIntactModules())
 					{
 						continue;
 					}
 					if (stack.Owner.AttitudeTowardUnit(other) != FactionAttitude.Enemy)
+					{
+						continue;
+					}
+					string factionKey = string.Concat(
+						stack.Location.Name,
+						"|",
+						FactionPairKey(stack.Owner, other.Owner));
+					if (factionPairs.Contains(factionKey))
 					{
 						continue;
 					}
@@ -205,6 +283,7 @@ namespace SpaceAge
 						continue;
 					}
 					paired.Add(key);
+					factionPairs.Add(factionKey);
 					started.Add(new Battle(stack, other));
 				}
 			}
@@ -213,7 +292,7 @@ namespace SpaceAge
 
 		public static int HpDamageFromShot(int weaponDamage)
 		{
-			return weaponDamage / 10;
+			return (weaponDamage * 25) / 100;
 		}
 
 		public static int CaptureDamageFromShot(int weaponDamage)
@@ -264,6 +343,7 @@ namespace SpaceAge
 		}
 
 		private ModuleStack attacker = null;
+		private ModuleStack battleDefender = null;
 		public ModuleStack Attacker
 		{
 			get { return this.attacker; }
@@ -296,11 +376,11 @@ namespace SpaceAge
 			ModuleStacks targets;
 			if (this.attackers.Contains(modulestack.Name))
 			{
-				targets = this.availableTargets(this.defenders);
+				targets = this.availableTargets(this.defenders, modulestack);
 			}
 			else
 			{
-				targets = this.availableTargets(this.attackers);			
+				targets = this.availableTargets(this.attackers, modulestack);
 			}
 
 			string preferred = modulestack.PreferredTargetName;
@@ -309,6 +389,28 @@ namespace SpaceAge
 				foreach (ModuleStack target in targets.Values)
 				{
 					if (target.Name == preferred)
+					{
+						return target;
+					}
+				}
+			}
+
+			if (modulestack.HasPrioritizeArmed)
+			{
+				foreach (ModuleStack target in targets.Values)
+				{
+					if (target.IsArmed)
+					{
+						return target;
+					}
+				}
+			}
+
+			if (modulestack.HasPrioritizeCommand)
+			{
+				foreach (ModuleStack target in targets.Values)
+				{
+					if (target.IsCommandStack())
 					{
 						return target;
 					}
@@ -337,15 +439,40 @@ namespace SpaceAge
 			{
 				this.attackers.Remove(moduleStack);
 			}
-			else
+			if (this.defenders.Contains(moduleStack.Name))
 			{
 				this.defenders.Remove(moduleStack);
-			}			
+			}
 		}
 
-		private ModuleStacks availableTargets(ModuleStacks allTargets)
+		private ModuleStacks availableTargets(ModuleStacks allTargets, ModuleStack attacker)
 		{
-			return allTargets;
+			ModuleStacks filtered = new ModuleStacks();
+			foreach (ModuleStack target in allTargets.Values)
+			{
+				if (!target.HasIntactModules())
+				{
+					continue;
+				}
+
+				bool includeDisabled = false;
+				if (attacker.HasPrioritizeArmed && target.IsArmed)
+				{
+					includeDisabled = true;
+				}
+				if (attacker.HasPrioritizeCommand && target.IsCommandStack())
+				{
+					includeDisabled = true;
+				}
+
+				if (!target.IsActive && !includeDisabled)
+				{
+					continue;
+				}
+
+				filtered.Add(target.Name, target);
+			}
+			return filtered;
 		}
 
 		private Dictionary<ModuleStack, int> unhitRounds = new Dictionary<ModuleStack, int>();
@@ -357,8 +484,7 @@ namespace SpaceAge
 			string line;
 			if (!modulestack.IsArmed)
 			{
-				line = string.Concat(modulestack.ReportName, " is unarmed and cannot attack.");
-				this.report(line);		
+				return;
 			}
 			else
 			{
@@ -368,17 +494,20 @@ namespace SpaceAge
 					return;
 				}
 				ETactic firing = modulestack.FiringTactic;
-				Modules militaryModules = modulestack.GetModules(EModuleTypesGroup.military);
-				foreach (Module module in militaryModules)
+				Modules firingModules = modulestack.GetFiringModules();
+				foreach (Module module in firingModules)
 				{
 					if (!this.defenders.Contains(target.Name) && !this.attackers.Contains(target.Name))
 					{
 						break;
 					}
+					string weaponName = module.Parent.ModuleType != null
+						? module.Parent.ModuleType.ReportName
+						: module.Parent.ReportName;
 					line = string.Concat(
 						modulestack.ReportName,
 						" fires ",
-						module.Parent.ReportName,
+						weaponName,
 						" on ",
 						target.ReportName);
 
@@ -409,18 +538,32 @@ namespace SpaceAge
 							hpDamage = HpDamageFromShot(weaponDamage);
 							captureDamage = CaptureDamageFromShot(weaponDamage);
 						}
+						int poolRemaining = targetModule.HitPoints - targetModule.Damage - targetModule.CaptureDamage;
+						if (poolRemaining < 0)
+						{
+							poolRemaining = 0;
+						}
+						if (hpDamage > poolRemaining)
+						{
+							hpDamage = poolRemaining;
+						}
+						poolRemaining -= hpDamage;
+						if (captureDamage > poolRemaining)
+						{
+							captureDamage = poolRemaining;
+						}
+						if (captureDamage < 0)
+						{
+							captureDamage = 0;
+						}
 						targetModule.Damage += hpDamage;
 						targetModule.CaptureDamage += captureDamage;
 
-						line = string.Format("{0} hits {1} {2} doing {3} damage.",
-							line,
-							targetModule.ReportID,
-							targetModule.Parent.ReportName,
-							hpDamage);
+						line = this.formatHitLine(line, targetModule, hpDamage, captureDamage);
 						this.report(line);
 						this.reportObserver(string.Format("{0} fires {1} on {2} and hits {3} {4}.",
 							modulestack.ReportName,
-							module.Parent.ReportName,
+							weaponName,
 							target.ReportName,
 							targetModule.ReportID,
 							targetModule.Parent.ReportName));
@@ -500,7 +643,7 @@ namespace SpaceAge
 						this.report(line);
 						this.reportObserver(string.Format("{0} fires {1} on {2} and misses.",
 							modulestack.ReportName,
-							module.Parent.ReportName,
+							weaponName,
 							target.ReportName));
 					}
 				}
@@ -515,9 +658,41 @@ namespace SpaceAge
 			}
 		}
 
+		private string formatHitLine(string line, Module targetModule, int hpDamage, int captureDamage)
+		{
+			if (captureDamage > 0)
+			{
+				return string.Format("{0} hits {1} {2} doing {3} damage and {4} capture damage.",
+					line,
+					targetModule.ReportID,
+					targetModule.Parent.ReportName,
+					hpDamage,
+					captureDamage);
+			}
+			return string.Format("{0} hits {1} {2} doing {3} damage.",
+				line,
+				targetModule.ReportID,
+				targetModule.Parent.ReportName,
+				hpDamage);
+		}
+
 		private int getRoll(int dice, string description)
 		{
-			return Sequence.GenerateRandomInt(1, dice + 1, description);
+			int maximum = dice + 1;
+			int roll = Sequence.GenerateRandomInt(1, maximum, description);
+			if (roll >= maximum || roll < 1)
+			{
+				int range = maximum - 1;
+				if (range > 0)
+				{
+					roll = 1 + (Math.Abs(roll) % range);
+				}
+				else
+				{
+					roll = 1;
+				}
+			}
+			return roll;
 		}
 
 		private int getChance(ModuleStack modulestack, ModuleStack target, ETactic eTactic)
@@ -527,12 +702,34 @@ namespace SpaceAge
 			{
 				chance = chance / 2;
 			}
+			if (target != null && target.IsImmobile)
+			{
+				chance = chance + (chance / 2);
+			}
 			return chance;
+		}
+
+		private int intactModuleCount(ModuleStack moduleStack)
+		{
+			int count = 0;
+			foreach (Module module in moduleStack.Modules)
+			{
+				if (!module.IsWrecked)
+				{
+					count++;
+				}
+			}
+			return count;
 		}
 
 		private int hitWeight(ModuleStack moduleStack, ETactic firing, bool targetEvade)
 		{
-			int size = moduleStack.ModuleType.DamageCapacity * moduleStack.Modules.Count;
+			int intactCount = this.intactModuleCount(moduleStack);
+			if (intactCount < 1)
+			{
+				return 0;
+			}
+			int size = moduleStack.ModuleType.DamageCapacity * intactCount;
 			bool commandOrPropulsion = moduleStack.ModuleType.Group == EModuleTypesGroup.command
 				|| moduleStack.ModuleType.Group == EModuleTypesGroup.propulsion;
 			if (firing == ETactic.capture && commandOrPropulsion)
@@ -568,12 +765,17 @@ namespace SpaceAge
 			}
 			Module targetModule = null;
 			int perModule = 0;
-			if (moduleStack.Modules.Count > 0)
+			int intactCount = this.intactModuleCount(moduleStack);
+			if (intactCount > 0)
 			{
-				perModule = this.hitWeight(moduleStack, firing, targetEvade) / moduleStack.Modules.Count;
+				perModule = this.hitWeight(moduleStack, firing, targetEvade) / intactCount;
 			}
 			foreach (Module module in moduleStack.Modules)
 			{
+				if (module.IsWrecked)
+				{
+					continue;
+				}
 				target -= perModule > 0 ? perModule : moduleStack.ModuleType.DamageCapacity;
 				if (target <= 0)
 				{
@@ -786,6 +988,8 @@ namespace SpaceAge
 
 		public void ApplyCaptures(int week)
 		{
+			this.applyCompleteCaptures(this.attackers, week);
+			this.applyCompleteCaptures(this.defenders, week);
 			List<Module> captures = new List<Module>(this.pendingCaptures);
 			foreach (Module module in captures)
 			{
@@ -796,6 +1000,36 @@ namespace SpaceAge
 				this.transferCapturedModule(module, week);
 			}
 			this.pendingCaptures.Clear();
+		}
+
+		private void applyCompleteCaptures(ModuleStacks stacks, int week)
+		{
+			if (stacks == null)
+			{
+				return;
+			}
+			List<ModuleStack> stackList = new List<ModuleStack>(stacks.Values);
+			foreach (ModuleStack stack in stackList)
+			{
+				this.applyCompleteCaptures(stack, week);
+			}
+		}
+
+		private void applyCompleteCaptures(ModuleStack stack, int week)
+		{
+			List<Module> modules = new List<Module>(stack.Modules);
+			foreach (Module module in modules)
+			{
+				if (module.IsWrecked || !module.IsCaptureComplete)
+				{
+					continue;
+				}
+				this.transferCapturedModule(module, week);
+			}
+			foreach (ModuleStack nested in stack.ModuleStacks.Values)
+			{
+				this.applyCompleteCaptures(nested, week);
+			}
 		}
 
 		private void transferCapturedModule(Module module, int week)
@@ -832,10 +1066,16 @@ namespace SpaceAge
 			if (source.ModuleType.Group == EModuleTypesGroup.command)
 			{
 				ModuleStack root = source.RootModuleStack;
-				if (this.countCommandModules(root, originalOwner) == 0)
+				if (root.Owner == originalOwner
+					&& this.countCommandModules(root, originalOwner) == 0)
 				{
 					this.captureParentByOwnership(root);
 				}
+			}
+
+			if (source.Modules.Count == 0 || source.Quantity < 1)
+			{
+				this.removeFromBattle(source);
 			}
 		}
 
@@ -1049,19 +1289,21 @@ namespace SpaceAge
 
 		private void considerRetreat(ModuleStack modulestack)
 		{
-			string line;
-			if (!modulestack.IsArmed | modulestack.IsAvoiding)
+			if (!modulestack.IsAvoiding)
 			{
-				if (modulestack.IsImmobile)
-				{
-					line = string.Concat(modulestack.ReportName, " is immobile and cannot escape.");
-				}
-				else
-				{
-					line = string.Concat(modulestack.ReportName, " tries to escape but failed.");
-				}
-				this.report(line);
+				return;
 			}
+
+			string line;
+			if (modulestack.IsImmobile)
+			{
+				line = string.Concat(modulestack.ReportName, " is immobile and cannot escape.");
+			}
+			else
+			{
+				line = string.Concat(modulestack.ReportName, " tries to escape but failed.");
+			}
+			this.report(line);
 		}
 
 		#region IReporting Members

@@ -47,7 +47,7 @@ get 1 iron from 000019
 ; technologies: form infantry battalion [frminf].
 ; items: 10 terrans [terran].
 get 1 iron from 000019
--use frminf as new100 for 000018
+-use frminf for 000007
 
 #modulestack 000026
 ; + Gelvaren complex [000026], city [city], immobile.
@@ -61,13 +61,16 @@ get 1 iron from 000019
 ;   can operate for another 7 weeks without refueling.
 see 109
 -declare faction 2 enemy
+-tactic prioritize armed
 
 #modulestack 109
 ; + tanks [109], 2 tanks [tanks], disabled.
 has 3 tanks
--get 48 terrans from 000018
+-get 48 terran from 000018
 -get 18 oil from 000019
 -get 100 food from 000019
+-tactic prioritize command
+-tactic capture
 -move R00002
 --name "Surrender or die!"
 

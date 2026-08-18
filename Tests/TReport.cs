@@ -19,6 +19,7 @@ namespace IntegrationTests
 		[SetUp]
 		public void setupReport()
 		{
+			Battle.All.Clear();
 			this.dataFile = new DataFile(Directory.GetCurrentDirectory());
 			this.dataFile.LoadConfiguration();
 			this.dataFile.LoadGame();
@@ -109,14 +110,14 @@ namespace IntegrationTests
 			Faction faction = this.game.Factions["2"];
 			Region region = this.game.Regions["R00001"];
 			GiveModuleTrigger trigger = new GiveModuleTrigger(1, ModuleType.All["inftry"], ModuleStack.All["000005"]);
-			new Contract("c00001", region, this.game.Factions["1"], trigger, Technology.All["rckter"]);
+			new Contract("CT0001", region, this.game.Factions["1"], trigger, Technology.All["rckter"]);
 
 			List<string> lines = region.Report(faction);
 			int contractsIndex = lines.IndexOf("Contracts:");
 			int marketIndex = lines.IndexOf("Market report:");
 			Assert.That(contractsIndex, Is.GreaterThanOrEqualTo(0));
 			Assert.That(marketIndex, Is.GreaterThan(contractsIndex));
-			Assert.That(lines[contractsIndex + 1], Is.EqualTo("  c00001: deliver 1 infantry battalion [inftry] to Berlin [000005]."));
+			Assert.That(lines[contractsIndex + 1], Is.EqualTo("  CT0001: deliver 1 infantry battalion [inftry] to Berlin [000005]."));
 			Assert.That(lines[contractsIndex + 2], Is.EqualTo("    Reward: rocket launcher production [rckter] technology."));
 			Assert.That(lines[contractsIndex + 3], Is.EqualTo("Market report:"));
 		}
@@ -366,7 +367,7 @@ namespace IntegrationTests
             Sequence.Ints.Push(1);
             Sequence.Ints.Push(120);
             Sequence.Ints.Push(1);
-			Sequence.Ints.Push(13);
+			Sequence.Ints.Push(20);
 
 			Battle battle = new Battle(frigate, station);
 			battle.Execute(this.game.Week);
@@ -447,16 +448,12 @@ namespace IntegrationTests
                 "      hit points: 45/45.",
                 "        #1 hit points: 45/45.",
                 "  ------------------------------------------------------------",
-                // Station won initiative but cannot attack
-                "  Station [100021] is unarmed and cannot attack.",
-                "  Station [100021] is immobile and cannot escape.",
-                // targets Station as it's the only target
                 // disable tactics reduces hit chances by half but treat command, energy and drive modulestacks as double size for hit resolution
                 // calculated with weapon attack + bonuses (technologies, skills, fleets): (24)/2 = 12, and attacker attak + defender defence: 11 + 5
-                "  Frigate [100011] fires x-ray laser [100015] on Station [100021] (chance: 12/29) and misses.",
+                "  Frigate [100011] fires x-ray laser [xraylz] on Station [100021] (chance: 18/29) and misses.",
                 // 1-50 complex, 51-66 bridge, 67-74 reactor, 75-95 cargo #1, 96-116 cargo #2
                 // damage is calculated with attack / 10;
-                "  Frigate [100011] fires x-ray laser [100015] on Station [100021] (chance: 12/29) and hits #1 fission reactor [100023] doing 10 damage.",
+                "  Frigate [100011] fires x-ray laser [xraylz] on Station [100021] (chance: 18/29) and hits #1 fission reactor [100023] doing 10 damage.",
                 "  ------------------------------------------------------------",
                 "  Round 2:",
                 "  ------------------------------------------------------------",
@@ -519,11 +516,9 @@ namespace IntegrationTests
                 "        #1 hit points: 45/45.",
                 "  ------------------------------------------------------------",
                 // Station won initiative but cannot attack
-                "  Station [100021] is unarmed and cannot attack.",
-                "  Station [100021] is immobile and cannot escape.",
-                "  Frigate [100011] fires x-ray laser [100015] on Station [100021] (chance: 12/29) and hits #1 fission reactor [100023] doing 10 damage.",
+                "  Frigate [100011] fires x-ray laser [xraylz] on Station [100021] (chance: 18/29) and hits #1 fission reactor [100023] doing 10 damage.",
                 "    #1 fission reactor [fisrec] is lightly damaged.",
-                "  Frigate [100011] fires x-ray laser [100015] on Station [100021] (chance: 12/29) and hits #1 fission reactor [100023] doing 10 damage.",
+                "  Frigate [100011] fires x-ray laser [xraylz] on Station [100021] (chance: 18/29) and hits #1 fission reactor [100023] doing 10 damage.",
                 "    #1 fission reactor [fisrec] is heavily damaged.",
                 "    #1 fission reactor [fisrec] is disabled.",
                 "    Station [100021] lost it's power supply and disables.",
@@ -563,8 +558,6 @@ namespace IntegrationTests
 					|| trimmed.StartsWith("----")
 					|| trimmed.Contains("tactics: capture")
 					|| trimmed.Contains("fires ")
-					|| trimmed.Contains("unarmed")
-					|| trimmed.Contains("immobile and cannot escape")
 					|| trimmed.Contains("disabled (capture)")
 					|| trimmed.Contains("captured")
 					|| trimmed.Contains("killed")
@@ -583,6 +576,19 @@ namespace IntegrationTests
 			return narrative;
 		}
 
+		private void resetModuleBattleDamage(ModuleStack stack)
+		{
+			foreach (Module module in stack.Modules)
+			{
+				module.Damage = 0;
+				module.CaptureDamage = 0;
+			}
+			foreach (ModuleStack nested in stack.ModuleStacks.Values)
+			{
+				this.resetModuleBattleDamage(nested);
+			}
+		}
+
 		[Test]
 		public void CaptureBattleReport_ShipVsStation_ShipPerspective()
 		{
@@ -592,6 +598,7 @@ namespace IntegrationTests
 			ModuleStack station = ModuleStack.All["100021"];
 
 			frigate.ApplyTactic("capture");
+			this.resetModuleBattleDamage(station);
 
 			Sequence.Rolls.Clear();
 			Sequence.Ints.Clear();
@@ -602,7 +609,7 @@ namespace IntegrationTests
 				Sequence.Ints.Push(250);
 				Sequence.Ints.Push(1);   // hit
 			}
-			Sequence.Ints.Push(13); // first shot misses (13 > chance 12)
+			Sequence.Ints.Push(20); // first shot misses (20 > chance 18)
 
 			Battle battle = new Battle(frigate, station);
 			battle.Execute(this.game.Week);
@@ -639,38 +646,30 @@ namespace IntegrationTests
                 "  ------------------------------------------------------------",
                 "    tactics: capture.",
                 "  ------------------------------------------------------------",
-                "  Station [100021] is unarmed and cannot attack.",
-                "  Station [100021] is immobile and cannot escape.",
-                "  Frigate [100011] fires x-ray laser [100015] on Station [100021] (chance: 12/29) and misses.",
-                "  Frigate [100011] fires x-ray laser [100015] on Station [100021] (chance: 12/29) and hits #1 small cargo bay [100024] doing 1 damage.",
+                "  Frigate [100011] fires x-ray laser [xraylz] on Station [100021] (chance: 18/29) and misses.",
+                "  Frigate [100011] fires x-ray laser [xraylz] on Station [100021] (chance: 18/29) and hits #1 small cargo bay [100024] doing 2 damage and 8 capture damage.",
                 "  ------------------------------------------------------------",
                 "  Round 2:",
                 "  ------------------------------------------------------------",
                 "    tactics: capture.",
                 "  ------------------------------------------------------------",
-                "  Station [100021] is unarmed and cannot attack.",
-                "  Station [100021] is immobile and cannot escape.",
-                "  Frigate [100011] fires x-ray laser [100015] on Station [100021] (chance: 12/29) and hits #1 small cargo bay [100024] doing 1 damage.",
-                "  Frigate [100011] fires x-ray laser [100015] on Station [100021] (chance: 12/29) and hits #1 small cargo bay [100024] doing 1 damage.",
+                "  Frigate [100011] fires x-ray laser [xraylz] on Station [100021] (chance: 18/29) and hits #1 small cargo bay [100024] doing 2 damage and 8 capture damage.",
+                "  Frigate [100011] fires x-ray laser [xraylz] on Station [100021] (chance: 18/29) and hits #1 small cargo bay [100024] doing 2 damage and 8 capture damage.",
                 "  ------------------------------------------------------------",
                 "  Round 3:",
                 "  ------------------------------------------------------------",
                 "    tactics: capture.",
                 "  ------------------------------------------------------------",
-                "  Station [100021] is unarmed and cannot attack.",
-                "  Station [100021] is immobile and cannot escape.",
-                "  Frigate [100011] fires x-ray laser [100015] on Station [100021] (chance: 12/29) and hits #1 small cargo bay [100024] doing 1 damage.",
-                "  Frigate [100011] fires x-ray laser [100015] on Station [100021] (chance: 12/29) and hits #1 small cargo bay [100024] doing 1 damage.",
+                "  Frigate [100011] fires x-ray laser [xraylz] on Station [100021] (chance: 18/29) and hits #1 small cargo bay [100024] doing 2 damage and 8 capture damage.",
+                "  Frigate [100011] fires x-ray laser [xraylz] on Station [100021] (chance: 18/29) and hits #1 small cargo bay [100024] doing 2 damage and 8 capture damage.",
                 "  ------------------------------------------------------------",
                 "  Round 4:",
                 "  ------------------------------------------------------------",
                 "    tactics: capture.",
                 "  ------------------------------------------------------------",
-                "  Station [100021] is unarmed and cannot attack.",
-                "  Station [100021] is immobile and cannot escape.",
-                "  Frigate [100011] fires x-ray laser [100015] on Station [100021] (chance: 12/29) and hits #1 small cargo bay [100024] doing 1 damage.",
+                "  Frigate [100011] fires x-ray laser [xraylz] on Station [100021] (chance: 18/29) and hits #1 small cargo bay [100024] doing 2 damage and 3 capture damage.",
                 "    #1 small cargo bay [cargob] module captured by Caste Prime [2].",
-                "  Frigate [100011] fires x-ray laser [100015] on Station [100021] (chance: 12/29) and hits #1 small cargo bay [100024] doing 1 damage.",
+                "  Frigate [100011] fires x-ray laser [xraylz] on Station [100021] (chance: 18/29) and hits #1 small cargo bay [100024] doing 2 damage and 8 capture damage.",
                 "  ------------------------------------------------------------",
                 "  Round 5:",
                 "  ------------------------------------------------------------",
@@ -696,6 +695,7 @@ namespace IntegrationTests
 			ModuleStack cargo = ModuleStack.All["100024"];
 
 			frigate.ApplyTactic("capture");
+			this.resetModuleBattleDamage(station);
 
 			new Person(command, command.Owner, Race.All["terran"], "200010");
 			new Person(command, command.Owner, Race.All["terran"], "200011");
@@ -708,7 +708,7 @@ namespace IntegrationTests
 				Sequence.Ints.Push(120);
 				Sequence.Ints.Push(1);
 			}
-			Sequence.Ints.Push(13);
+			Sequence.Ints.Push(20);
 
 			Battle battle = new Battle(frigate, station);
 			battle.Execute(this.game.Week);
@@ -746,36 +746,28 @@ namespace IntegrationTests
                 "  ------------------------------------------------------------",
                 "    tactics: capture.",
                 "  ------------------------------------------------------------",
-                "  Station [100021] is unarmed and cannot attack.",
-                "  Station [100021] is immobile and cannot escape.",
-                "  Frigate [100011] fires x-ray laser [100015] on Station [100021] (chance: 12/29) and misses.",
-                "  Frigate [100011] fires x-ray laser [100015] on Station [100021] (chance: 12/29) and hits #1 command bridge [100022] doing 1 damage.",
+                "  Frigate [100011] fires x-ray laser [xraylz] on Station [100021] (chance: 18/29) and misses.",
+                "  Frigate [100011] fires x-ray laser [xraylz] on Station [100021] (chance: 18/29) and hits #1 command bridge [100022] doing 2 damage and 8 capture damage.",
                 "  ------------------------------------------------------------",
                 "  Round 2:",
                 "  ------------------------------------------------------------",
                 "    tactics: capture.",
                 "  ------------------------------------------------------------",
-                "  Station [100021] is unarmed and cannot attack.",
-                "  Station [100021] is immobile and cannot escape.",
-                "  Frigate [100011] fires x-ray laser [100015] on Station [100021] (chance: 12/29) and hits #1 command bridge [100022] doing 1 damage.",
-                "  Frigate [100011] fires x-ray laser [100015] on Station [100021] (chance: 12/29) and hits #1 command bridge [100022] doing 1 damage.",
+                "  Frigate [100011] fires x-ray laser [xraylz] on Station [100021] (chance: 18/29) and hits #1 command bridge [100022] doing 2 damage and 8 capture damage.",
+                "  Frigate [100011] fires x-ray laser [xraylz] on Station [100021] (chance: 18/29) and hits #1 command bridge [100022] doing 2 damage and 8 capture damage.",
                 "  ------------------------------------------------------------",
                 "  Round 3:",
                 "  ------------------------------------------------------------",
                 "    tactics: capture.",
                 "  ------------------------------------------------------------",
-                "  Station [100021] is unarmed and cannot attack.",
-                "  Station [100021] is immobile and cannot escape.",
-                "  Frigate [100011] fires x-ray laser [100015] on Station [100021] (chance: 12/29) and hits #1 command bridge [100022] doing 1 damage.",
-                "  Frigate [100011] fires x-ray laser [100015] on Station [100021] (chance: 12/29) and hits #1 command bridge [100022] doing 1 damage.",
+                "  Frigate [100011] fires x-ray laser [xraylz] on Station [100021] (chance: 18/29) and hits #1 command bridge [100022] doing 2 damage and 8 capture damage.",
+                "  Frigate [100011] fires x-ray laser [xraylz] on Station [100021] (chance: 18/29) and hits #1 command bridge [100022] doing 2 damage and 8 capture damage.",
                 "  ------------------------------------------------------------",
                 "  Round 4:",
                 "  ------------------------------------------------------------",
                 "    tactics: capture.",
                 "  ------------------------------------------------------------",
-                "  Station [100021] is unarmed and cannot attack.",
-                "  Station [100021] is immobile and cannot escape.",
-                "  Frigate [100011] fires x-ray laser [100015] on Station [100021] (chance: 12/29) and hits #1 command bridge [100022] doing 1 damage.",
+                "  Frigate [100011] fires x-ray laser [xraylz] on Station [100021] (chance: 18/29) and hits #1 command bridge [100022] doing 2 damage and 3 capture damage.",
                 "    #1 command bridge [cbridg] module captured by Caste Prime [2].",
                 "    2 terrans [terran] killed.",
                 "    4 terrans [terran] wounded.",
@@ -810,7 +802,7 @@ namespace IntegrationTests
             Sequence.Ints.Push(1);
             Sequence.Ints.Push(120);
             Sequence.Ints.Push(1);
-            Sequence.Ints.Push(13);
+            Sequence.Ints.Push(20);
 
             Battle battle = new Battle(frigate, station);
 			battle.Execute(this.game.Week);
@@ -880,10 +872,8 @@ namespace IntegrationTests
                 "      hit points: 45/45.",
                 "        #1 hit points: 45/45.",
                 "  ------------------------------------------------------------",
-                "  Station [100021] is unarmed and cannot attack.",
-                "  Station [100021] is immobile and cannot escape.",
-                "  Frigate [100011] fires x-ray laser [100015] on Station [100021] (chance: 12/29) and misses.",
-                "  Frigate [100011] fires x-ray laser [100015] on Station [100021] (chance: 12/29) and hits #1 fission reactor [100023] doing 10 damage.",
+                "  Frigate [100011] fires x-ray laser [xraylz] on Station [100021] (chance: 18/29) and misses.",
+                "  Frigate [100011] fires x-ray laser [xraylz] on Station [100021] (chance: 18/29) and hits #1 fission reactor [100023] doing 10 damage.",
                 "  ------------------------------------------------------------",
                 "  Round 2:",
                 "  ------------------------------------------------------------",
@@ -943,11 +933,9 @@ namespace IntegrationTests
                 "      hit points: 45/45.",
                 "        #1 hit points: 45/45.",
                 "  ------------------------------------------------------------",
-                "  Station [100021] is unarmed and cannot attack.",
-                "  Station [100021] is immobile and cannot escape.",
-                "  Frigate [100011] fires x-ray laser [100015] on Station [100021] (chance: 12/29) and hits #1 fission reactor [100023] doing 10 damage.",
+                "  Frigate [100011] fires x-ray laser [xraylz] on Station [100021] (chance: 18/29) and hits #1 fission reactor [100023] doing 10 damage.",
                 "    #1 fission reactor [fisrec] is lightly damaged.",
-                "  Frigate [100011] fires x-ray laser [100015] on Station [100021] (chance: 12/29) and hits #1 fission reactor [100023] doing 10 damage.",
+                "  Frigate [100011] fires x-ray laser [xraylz] on Station [100021] (chance: 18/29) and hits #1 fission reactor [100023] doing 10 damage.",
                 "    #1 fission reactor [fisrec] is heavily damaged.",
                 "    #1 fission reactor [fisrec] is disabled.",
                 "    Station [100021] lost it's power supply and disables.",
@@ -978,8 +966,7 @@ namespace IntegrationTests
                 "Bank report:",
                 "  Bank account balance: 10000.",
                 "  Credit line maximum: 10000.",
-                "  Credit rate: 20%, Deposit rate: 5%.",
-                ""
+                "  Credit rate: 20%, Deposit rate: 5%."
             };
 			List<string> lines = bank.Report(faction);
 			for (int i = 0; i < lines.Count; i++)
@@ -1255,6 +1242,38 @@ namespace IntegrationTests
                 Assert.That(lines[i], Is.EqualTo(testlines[i]), "error in line " + i);
             }
         }
+
+		[Test]
+		public void Execute_ClearsPreviousTurnEventReports()
+		{
+			ModuleStack factory = ModuleStack.All["000004"];
+			Person ceo = Person.All["000101"];
+			Faction faction = Faction.All["2"];
+			Region region = Region.All["R00002"];
+			factory.EventReports.Add(1, "leftover from previous turn.");
+			ceo.EventReports.Add(1, "leftover from previous turn.");
+			faction.EventReports.Add(1, "leftover from previous turn.");
+			region.EventReports.Add(1, "leftover from previous turn.");
+
+			this.game.Execute();
+
+			Assert.That(this.containsEvent(factory.EventReports, "leftover from previous turn."), Is.False);
+			Assert.That(this.containsEvent(ceo.EventReports, "leftover from previous turn."), Is.False);
+			Assert.That(this.containsEvent(faction.EventReports, "leftover from previous turn."), Is.False);
+			Assert.That(this.containsEvent(region.EventReports, "leftover from previous turn."), Is.False);
+		}
+
+		private bool containsEvent(EventReports events, string description)
+		{
+			foreach (EventReport eventReport in events)
+			{
+				if (eventReport.Description == description)
+				{
+					return true;
+				}
+			}
+			return false;
+		}
 
 	}
 }

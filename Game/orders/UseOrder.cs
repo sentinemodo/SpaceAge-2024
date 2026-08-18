@@ -155,6 +155,11 @@ namespace SpaceAge
 
 		public bool Usable(int week)
 		{
+			if (this.Producer.ModuleType == null || this.Producer.Location == null)
+			{
+				return false;
+			}
+
 			// verify if moduletype is valid
 			// verify if resoruces are present on the planet
 			// verify if the atmosphere is valid
@@ -237,20 +242,62 @@ namespace SpaceAge
 
 		public Producing Producing { get; set; }
 
+		private void TryReconnectProducing()
+		{
+			if (this.Producing != null)
+			{
+				return;
+			}
+
+			Producing existing = this.Producer.Effects.Producing;
+			if (existing == null || existing.Executed || existing.Technology != this.Technology)
+			{
+				return;
+			}
+
+			if (existing is ProducingModule producingModule)
+			{
+				if (this.Technology.ProductionType != EProductionType.Modules)
+				{
+					return;
+				}
+
+				ModuleStack receiver = this.Receiver as ModuleStack;
+				ModuleStack existingReceiver = producingModule.Receiver as ModuleStack;
+				ModuleStack receiverParent = this.ReceiverParent as ModuleStack;
+				ModuleStack existingReceiverParent = producingModule.ReceiverParent as ModuleStack;
+				if (receiver == null || existingReceiver == null || receiver.Name != existingReceiver.Name)
+				{
+					return;
+				}
+				if (receiverParent == null || existingReceiverParent == null || receiverParent.Name != existingReceiverParent.Name)
+				{
+					return;
+				}
+
+				producingModule.UseOrder = this;
+			}
+
+			this.Producing = existing;
+			this.durationLeft = existing.Duration;
+		}
+
 		public override void Execute(int week)
 		{
 			//TODO: refactor order into effect based -> move methods such as hastechnology or has resources to the producing effect
 			if (this.Usable(week) && this.CanOperate(week) && this.HasTechnology)
 			{
+				this.TryReconnectProducing();
+
 				// assign production if not producing
 				if (this.Producing != null && !this.Producing.Executed)
 				{
+					this.durationLeft = this.Producing.Duration;
 					this.durationLeft--;
 					this.Producing.Use();
 					this.Executing = true;
 				}
-
-				if (this.Producing == null && this.HasResources)
+				else if (this.Producing == null && this.HasResources)
 				{
 					// start production, consume resources
 					this.Producer.ItemStacks.Minus(this.Technology.UseConsumeItems);
@@ -286,7 +333,7 @@ namespace SpaceAge
 					this.Producing.Execute(week);
 					this.Executing = true;
                 }
-                else if (this.Producing == null && !this.HasResources)
+				else if (this.Producing == null && !this.HasResources)
 				{
 					switch (this.Technology.ProductionType)
 					{

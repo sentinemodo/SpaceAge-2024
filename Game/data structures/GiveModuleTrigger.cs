@@ -17,6 +17,7 @@ namespace SpaceAge
 		public ModuleStack Receiver { get; set; }
 		public int Baseline { get; set; }
 		public Faction LastGiver { get; set; }
+		public ModuleStack LastGiverStack { get; set; }
 
 		public Faction Winner
 		{
@@ -57,7 +58,7 @@ namespace SpaceAge
 			return trigger;
 		}
 
-		public void NotifyTransfer(Faction giver, ModuleStack receiver, ModuleType moduleType, int quantity, Faction issuer)
+		public void NotifyTransfer(Faction giver, ModuleStack giverStack, ModuleStack receiver, ModuleType moduleType, int quantity, Faction issuer)
 		{
 			if (receiver != this.Receiver)
 			{
@@ -81,6 +82,10 @@ namespace SpaceAge
 			}
 
 			this.LastGiver = giver;
+			if (giverStack != null)
+			{
+				this.LastGiverStack = giverStack;
+			}
 		}
 
 		public bool IsComplete()

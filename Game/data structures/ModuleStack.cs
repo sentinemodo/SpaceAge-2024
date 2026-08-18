@@ -436,6 +436,109 @@ namespace SpaceAge
 			get { return this.technologies; }
 		}
 
+		// Grant a technology instance onto this stack, or onto the first
+		// same-owner stack in the location that has remaining technology
+		// capacity (this stack first, then a pre-order walk of the region).
+		// First time the owner sees it, queue the description for this turn's
+		// report (TechnologiesToShow). Not a player COPY order: overflow relocates
+		// instead of failing.
+		public void ReceiveTechnologyCopy(Technology technology, int week, string eventDescription)
+		{
+			if (technology == null)
+			{
+				return;
+			}
+
+			ModuleStack host = this.FindTechnologyCopyHost(technology);
+			if (host != this)
+			{
+				host.ReceiveTechnologyCopyOnThis(technology, week, eventDescription);
+				return;
+			}
+
+			this.ReceiveTechnologyCopyOnThis(technology, week, eventDescription);
+		}
+
+		public bool CanHostTechnologyCopy(Technology technology)
+		{
+			if (technology == null || this.ModuleType == null)
+			{
+				return false;
+			}
+			if (this.Technologies.Contains(technology.Name))
+			{
+				return true;
+			}
+			return this.TechnologyCapacity >= this.TechnologyCapacityUsed + technology.Level;
+		}
+
+		public ModuleStack FindTechnologyCopyHost(Technology technology)
+		{
+			if (this.CanHostTechnologyCopy(technology))
+			{
+				return this;
+			}
+
+			Location location = this.Location;
+			if (location != null)
+			{
+				foreach (ModuleStack root in location.ModuleStacks.Values)
+				{
+					ModuleStack found = this.findTechnologyCopyHostRecursive(root, this.Owner, technology);
+					if (found != null)
+					{
+						return found;
+					}
+				}
+			}
+
+			return this;
+		}
+
+		private ModuleStack findTechnologyCopyHostRecursive(ModuleStack stack, Faction owner, Technology technology)
+		{
+			if (stack == null)
+			{
+				return null;
+			}
+
+			if (stack.Owner == owner && stack.CanHostTechnologyCopy(technology))
+			{
+				return stack;
+			}
+
+			foreach (ModuleStack child in stack.ModuleStacks.Values)
+			{
+				ModuleStack nested = this.findTechnologyCopyHostRecursive(child, owner, technology);
+				if (nested != null)
+				{
+					return nested;
+				}
+			}
+
+			return null;
+		}
+
+		private void ReceiveTechnologyCopyOnThis(Technology technology, int week, string eventDescription)
+		{
+			if (!this.Technologies.Contains(technology.Name))
+			{
+				this.Technologies.Add(technology);
+			}
+
+			if (!string.IsNullOrEmpty(eventDescription))
+			{
+				this.EventReports.Add(week, eventDescription);
+			}
+
+			if (this.Owner != null
+				&& !this.Owner.TechnologiesSeen.Contains(technology.Name)
+				&& !this.Owner.TechnologiesToShow.Contains(technology.Name))
+			{
+				this.Owner.TechnologiesToShow.Add(technology);
+			}
+		}
+
 		// technology capacity limits older equipment usage.
 		// to use newer technologies one must build newer facilities 
 		// otherwise it would be possible to build ten factories to build level ten modules
@@ -552,18 +655,47 @@ namespace SpaceAge
 			return true;
 		}
 
+		private bool moduleTypeIsCombatArmed(ModuleType type)
+		{
+			if (type == null)
+			{
+				return false;
+			}
+			if (type.Group == EModuleTypesGroup.military)
+			{
+				return true;
+			}
+			if (type.Attack > 0
+				&& (type.Group == EModuleTypesGroup.vehicle
+					|| type.Group == EModuleTypesGroup.infantry))
+			{
+				return true;
+			}
+			return false;
+		}
+
 		public bool IsArmed
 		{
 			get
 			{
-                if (this.IsFormed)
+                if (!this.IsFormed)
                 {
-                    if (this.moduleType.Group == EModuleTypesGroup.military
-                        | this.ModuleStacks.Contains(EModuleTypesGroup.military))
+                    return false;
+                }
+
+                if (this.moduleTypeIsCombatArmed(this.moduleType))
+                {
+                    return true;
+                }
+
+                foreach (ModuleStack moduleStack in this.ModuleStacks.Values)
+                {
+                    if (moduleStack.IsArmed)
                     {
                         return true;
                     }
                 }
+
 				return false;
 			}
 		}
@@ -731,6 +863,19 @@ namespace SpaceAge
 			}
 		}
 
+		public int CaptureDamage
+		{
+			get
+			{
+				int captureDamage = 0;
+				foreach (Module module in this.modules)
+				{
+					captureDamage += module.CaptureDamage;
+				}
+				return captureDamage;
+			}
+		}
+
 		public int Attack
 		{
 			get
@@ -822,6 +967,16 @@ namespace SpaceAge
 			get { return this.Tactics.ContainsName("capture"); }
 		}
 
+		public bool HasPrioritizeArmed
+		{
+			get { return this.Tactics.ContainsName("prioritize armed"); }
+		}
+
+		public bool HasPrioritizeCommand
+		{
+			get { return this.Tactics.ContainsName("prioritize command"); }
+		}
+
 		public ETactic FiringTactic
 		{
 			get { return this.HasCapture ? ETactic.capture : ETactic.destroy; }
@@ -849,6 +1004,55 @@ namespace SpaceAge
 			{
 				this.Tactics.Add(new DestroyTactic(this));
 			}
+		}
+
+		public void ApplyPrioritizeTactic(string tacticName)
+		{
+			this.Tactics.RemoveByName("prioritize armed");
+			this.Tactics.RemoveByName("prioritize command");
+			if (tacticName == "prioritize armed")
+			{
+				this.Tactics.Add(new PrioritizeArmedTactic(this));
+			}
+			else if (tacticName == "prioritize command")
+			{
+				this.Tactics.Add(new PrioritizeCommandTactic(this));
+			}
+		}
+
+		public bool HasIntactModules()
+		{
+			foreach (Module module in this.Modules)
+			{
+				if (!module.IsWrecked)
+				{
+					return true;
+				}
+			}
+			foreach (ModuleStack moduleStack in this.ModuleStacks.Values)
+			{
+				if (moduleStack.HasIntactModules())
+				{
+					return true;
+				}
+			}
+			return false;
+		}
+
+		public bool IsCommandStack()
+		{
+			if (this.moduleType != null && this.moduleType.Group == EModuleTypesGroup.command)
+			{
+				return true;
+			}
+			foreach (ModuleStack moduleStack in this.ModuleStacks.Values)
+			{
+				if (moduleStack.IsCommandStack())
+				{
+					return true;
+				}
+			}
+			return false;
 		}
 
 		#endregion
@@ -1581,6 +1785,11 @@ namespace SpaceAge
 					this.HitPoints,
 					this.HitPoints - this.Damage);
 			}
+			int capture = this.CaptureDamage + this.ModuleStacks.CaptureDamage();
+			if (capture > 0)
+			{
+				line = string.Format("{0}, capture: {1}", line, capture);
+			}
 			return line;
 		}
 
@@ -1738,6 +1947,26 @@ namespace SpaceAge
 		}
 
 		# endregion
+
+		public Modules GetFiringModules()
+		{
+			Modules firingModules = new Modules();
+			if (this.IsFormed && this.moduleTypeIsCombatArmed(this.moduleType))
+			{
+				foreach (Module module in this.modules)
+				{
+					if (module.IsActive)
+					{
+						firingModules.Add(module);
+					}
+				}
+			}
+			foreach (ModuleStack modulestack in this.ModuleStacks.Values)
+			{
+				firingModules.AddRange(modulestack.GetFiringModules());
+			}
+			return firingModules;
+		}
 
 		public Modules GetModules(EModuleTypesGroup group)
 		{			

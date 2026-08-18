@@ -97,6 +97,7 @@ namespace SpaceAge
 						this.Write();
 						this.Write("Technology reports:");
 						this.Write(faction.TechnologiesToShow.ReportDescriptions(faction, 0));
+						this.Write();
 					}
 
 					// battles reports

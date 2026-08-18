@@ -6,6 +6,8 @@ namespace SpaceAge
 {
 	public class Contract : NamedObject, IReporting
 	{
+		public const string NamePrefix = "CT";
+
 		public static readonly Contracts All = new Contracts();
 
 		public new Region Location { get; set; }
@@ -19,10 +21,10 @@ namespace SpaceAge
 		{
 			if (string.IsNullOrEmpty(this.name))
 			{
-				this.name = this.GenerateRandomIdentifier("c");
+				this.name = Contract.GenerateName();
 				while (Contract.All.Contains(this.name))
 				{
-					this.name = this.GenerateRandomIdentifier("c");
+					this.name = Contract.GenerateName();
 				}
 			}
 			else if (Contract.All.Contains(this.name))
@@ -31,6 +33,13 @@ namespace SpaceAge
 			}
 
 			Contract.All.Add(this);
+		}
+
+		public static string GenerateName()
+		{
+			int numericLength = NamedObject.MaxNameLength - Contract.NamePrefix.Length;
+			string numeric = Sequence.GenerateRandomString(numericLength, "Random identifier");
+			return Contract.NamePrefix + numeric.PadLeft(numericLength, '0');
 		}
 
 		public Contract(string name, Region location, Faction issuer, IContractTrigger trigger, Technology reward)
@@ -110,18 +119,20 @@ namespace SpaceAge
 				return;
 			}
 
-			if (!winner.TechnologiesSeen.Contains(this.RewardTechnology.Name))
+			GiveModuleTrigger give = this.Trigger as GiveModuleTrigger;
+			ModuleStack rewardStack = (give != null) ? give.LastGiverStack : null;
+			if (rewardStack != null && ModuleStack.All.ContainsKey(rewardStack.Name))
 			{
-				winner.TechnologiesSeen.Add(this.RewardTechnology);
-			}
-			if (!winner.TechnologiesToShow.Contains(this.RewardTechnology.Name))
-			{
-				winner.TechnologiesToShow.Add(this.RewardTechnology);
+				rewardStack.ReceiveTechnologyCopy(
+					this.RewardTechnology,
+					week,
+					string.Format("received copy of {0} technology.",
+						this.RewardTechnology.ReportName));
 			}
 
 			winner.EventReports.Add(
 				week,
-				string.Format("completed contract {0} and received {1} technology.",
+				string.Format("completed contract {0} and received a copy of {1} technology.",
 					this.Name,
 					this.RewardTechnology.ReportName));
 

@@ -193,10 +193,12 @@ namespace UnitTests
 		}
 
 		[Test]
-		public void CaptureShot_SplitsTenPercentHitPoints()
+		public void CaptureShot_SplitsTwentyFivePercentHitPoints()
 		{
-			Assert.That(Battle.HpDamageFromShot(10), Is.EqualTo(1));
-			Assert.That(Battle.CaptureDamageFromShot(10), Is.EqualTo(9));
+			Assert.That(Battle.HpDamageFromShot(10), Is.EqualTo(2));
+			Assert.That(Battle.CaptureDamageFromShot(10), Is.EqualTo(8));
+			Assert.That(Battle.HpDamageFromShot(4), Is.EqualTo(1));
+			Assert.That(Battle.CaptureDamageFromShot(4), Is.EqualTo(3));
 			Assert.That(Battle.HpDamageFromShot(1), Is.EqualTo(0));
 			Assert.That(Battle.CaptureDamageFromShot(1), Is.EqualTo(1));
 		}
@@ -298,6 +300,230 @@ namespace UnitTests
 			Assert.That(cargo.Modules[0].CaptureDamage, Is.EqualTo(0));
 			Assert.That(cargo.Modules[1].CaptureDamage, Is.EqualTo(0));
 			Assert.That(frigate.Modules[0].CaptureDamage, Is.EqualTo(0));
+		}
+
+		[Test]
+		public void IsArmed_TrueForModuleTypesWithAttack()
+		{
+			Faction faction = this.game.Factions["2"];
+			ModuleStack tanks = new ModuleStack(Region.All["R00002"], faction, ModuleType.All["tanks"], "tanktest");
+			ModuleStack infantry = new ModuleStack(Region.All["R00002"], faction, ModuleType.All["inftry"], "inftrytest");
+
+			Assert.That(tanks.IsArmed, Is.True);
+			Assert.That(infantry.IsArmed, Is.True);
+		}
+
+		[Test]
+		public void Execute_TankStack_FiresInBattle()
+		{
+			Region region = new Region(Region.All["R00002"].RegionHolder, "tankregion");
+			Faction attackerOwner = this.game.Factions["2"];
+			Faction defenderOwner = this.game.Factions["1"];
+			ModuleStack tanks = new ModuleStack(region, attackerOwner, ModuleType.All["tanks"], "tankfire");
+			tanks.AddModule();
+			tanks.ItemStacks.Add(new ItemStack(ItemType.All["terran"], 16));
+			tanks.ApplyPrioritizeTactic("prioritize command");
+			ModuleStack target = new ModuleStack(region, defenderOwner, ModuleType.All["corphq"], "tanktgt");
+			target.AddModule();
+			target.ItemStacks.Add(new ItemStack(ItemType.All["terran"], 20));
+
+			Sequence.Rolls.Clear();
+			Sequence.Ints.Clear();
+			Sequence.Ints.Push(1);
+			Sequence.Ints.Push(1);
+
+			Battle battle = new Battle(tanks, target);
+			battle.Execute(this.game.Week);
+
+			string report = string.Join("\n", battle.Report(attackerOwner).ToArray());
+			Assert.That(report, Does.Contain("fires"));
+			Assert.That(report, Does.Contain("tanks [tanks]"));
+		}
+
+		[Test]
+		public void CollectDefenders_IncludesHeadquartersSiblings()
+		{
+			Region region = new Region(Region.All["R00002"].RegionHolder, "hqregion");
+			Faction gelvaren = new Faction("3", "Gelvaren");
+			ModuleStack city = new ModuleStack(region, Faction.All["1"], ModuleType.All["city"], "hqcity");
+			ModuleStack headquarters = new ModuleStack(city, Faction.All["2"], ModuleType.All["corphq"], "hqdef");
+			headquarters.AddModule();
+			ModuleStack cargoBay = new ModuleStack(city, Faction.All["2"], ModuleType.All["cargob"], "hqcargo");
+			cargoBay.AddModule();
+			ModuleStack attacker = new ModuleStack(region, gelvaren, ModuleType.All["tanks"], "hqatk");
+			attacker.AddModule();
+			attacker.ItemStacks.Add(new ItemStack(ItemType.All["terran"], 16));
+
+			gelvaren.Attitudes["2"] = FactionAttitude.Enemy;
+
+			Battle battle = new Battle(attacker, headquarters);
+
+			Assert.That(battle.Defenders.Contains(headquarters.Name), Is.True);
+			Assert.That(battle.Defenders.Contains(cargoBay.Name), Is.True);
+		}
+
+		[Test]
+		public void StartAtLocations_NestedEnemyStackCanBeDefender()
+		{
+			Faction gelvaren = new Faction("3", "Gelvaren");
+			Region region = Region.All["R00002"];
+			ModuleStack city = new ModuleStack(region, Faction.All["1"], ModuleType.All["city"], "citytest");
+			ModuleStack attacker = new ModuleStack(region, gelvaren, ModuleType.All["tanks"], "atktest");
+			ModuleStack nestedDefender = new ModuleStack(city, Faction.All["2"], ModuleType.All["corphq"], "deftest");
+			nestedDefender.AddModule();
+
+			gelvaren.Attitudes["2"] = FactionAttitude.Enemy;
+
+			Battle.All.Clear();
+			List<Battle> started = Battle.StartAtLocations(1);
+
+			Assert.That(started.Count, Is.GreaterThan(0));
+			bool foundNestedDefender = false;
+			foreach (Battle battle in started)
+			{
+				foreach (ModuleStack defender in battle.Defenders.Values)
+				{
+					if (!defender.IsRootModuleStack && defender.Owner == Faction.All["2"])
+					{
+						foundNestedDefender = true;
+						break;
+					}
+				}
+				if (foundNestedDefender)
+				{
+					break;
+				}
+			}
+			Assert.That(foundNestedDefender, Is.True);
+		}
+
+		[Test]
+		public void CaptureCommandModule_DoesNotCaptureParentWithDifferentOwner()
+		{
+			Region region = new Region(Region.All["R00002"].RegionHolder, "capregion");
+			Faction cityOwner = this.game.Factions["1"];
+			Faction hqOwner = this.game.Factions["2"];
+			Faction attackerOwner = new Faction("3", "Gelvaren");
+			ModuleStack city = new ModuleStack(region, cityOwner, ModuleType.All["city"], "capcity");
+			ModuleStack headquarters = new ModuleStack(city, hqOwner, ModuleType.All["corphq"], "caphq");
+			headquarters.AddModule();
+			ModuleStack attacker = new ModuleStack(region, attackerOwner, ModuleType.All["tanks"], "capatk");
+			attacker.AddModule();
+
+			Battle battle = new Battle(attacker, headquarters);
+			headquarters.Modules[0].CaptureDamage = headquarters.Modules[0].HitPoints;
+			Assert.That(battle.Defenders.Contains(headquarters.Name), Is.True);
+
+			battle.ApplyCaptures(this.game.Week);
+
+			Assert.That(city.Owner, Is.EqualTo(cityOwner));
+			Assert.That(battle.Defenders.Contains(headquarters.Name), Is.False);
+		}
+
+		[Test]
+		public void TacticOrder_PrioritizeArmedCoexistsWithDestroy()
+		{
+			ModuleStack tanks = this.game.ModuleStacks["100011"];
+			List<string> testcommands = new List<string>
+			{
+				"#faction 2",
+				"#modulestack 100011",
+				"tactic destroy",
+				"tactic prioritize armed",
+				"#end"
+			};
+			OrdersReader ordersReader = new OrdersReader(this.game);
+			ordersReader.AssignOrders(testcommands);
+			tanks.Orders[0].Execute(this.game.Week);
+			tanks.Orders[1].Execute(this.game.Week);
+
+			Assert.That(tanks.Tactics.ContainsName("destroy"));
+			Assert.That(tanks.HasPrioritizeArmed);
+		}
+
+		[Test]
+		public void Execute_PrioritizeArmed_TargetsDisabledGunPlacement()
+		{
+			Region region = new Region(Region.All["R00002"].RegionHolder, "prioregion");
+			Faction attackerOwner = this.game.Factions["2"];
+			Faction defenderOwner = this.game.Factions["1"];
+			ModuleStack attacker = new ModuleStack(region, attackerOwner, ModuleType.All["tanks"], "prioatk");
+			attacker.AddModule();
+			attacker.ItemStacks.Add(new ItemStack(ItemType.All["terran"], 16));
+			attacker.ApplyTactic("destroy");
+			attacker.ApplyPrioritizeTactic("prioritize armed");
+			ModuleStack headquarters = new ModuleStack(region, defenderOwner, ModuleType.All["corphq"], "priohq");
+			headquarters.AddModule();
+			headquarters.ItemStacks.Add(new ItemStack(ItemType.All["terran"], 20));
+			ModuleStack guns = new ModuleStack(region, defenderOwner, ModuleType.All["gunplc"], "priogun");
+			guns.AddModule();
+			Assert.That(guns.IsActive, Is.False);
+			Assert.That(guns.IsArmed, Is.True);
+
+			Sequence.Rolls.Clear();
+			Sequence.Ints.Clear();
+			Sequence.Ints.Push(1);
+			Sequence.Ints.Push(1);
+
+			Battle battle = new Battle(attacker, headquarters);
+			battle.Execute(this.game.Week);
+
+			string report = string.Join("\n", battle.Report(attackerOwner).ToArray());
+			Assert.That(report, Does.Contain("on gun placement [priogun]"));
+		}
+
+		[Test]
+		public void Execute_PrioritizeCommand_TargetsHeadquarters()
+		{
+			Region region = new Region(Region.All["R00002"].RegionHolder, "cmdregion");
+			Faction attackerOwner = this.game.Factions["2"];
+			Faction defenderOwner = this.game.Factions["1"];
+			ModuleStack attacker = new ModuleStack(region, attackerOwner, ModuleType.All["tanks"], "cmdatk");
+			attacker.AddModule();
+			attacker.ApplyTactic("capture");
+			attacker.ApplyPrioritizeTactic("prioritize command");
+			ModuleStack headquarters = new ModuleStack(region, defenderOwner, ModuleType.All["corphq"], "cmdhq");
+			headquarters.AddModule();
+			ModuleStack guns = new ModuleStack(region, defenderOwner, ModuleType.All["gunplc"], "cmdgun");
+			guns.AddModule();
+
+			Sequence.Rolls.Clear();
+			Sequence.Ints.Clear();
+			Sequence.Ints.Push(1);
+			Sequence.Ints.Push(1);
+
+			Battle battle = new Battle(attacker, headquarters);
+			battle.Execute(this.game.Week);
+
+			string report = string.Join("\n", battle.Report(attackerOwner).ToArray());
+			Assert.That(report, Does.Contain("cmdhq"));
+		}
+
+		[Test]
+		public void Execute_ImmobileTarget_HasHigherHitChance()
+		{
+			Region region = new Region(Region.All["R00002"].RegionHolder, "immregion");
+			Faction attackerOwner = this.game.Factions["2"];
+			Faction defenderOwner = this.game.Factions["1"];
+			ModuleStack attacker = new ModuleStack(region, attackerOwner, ModuleType.All["tanks"], "immatk");
+			attacker.AddModule();
+			attacker.ItemStacks.Add(new ItemStack(ItemType.All["terran"], 16));
+			attacker.ApplyPrioritizeTactic("prioritize command");
+			ModuleStack target = new ModuleStack(region, defenderOwner, ModuleType.All["corphq"], "immtgt");
+			target.AddModule();
+			target.ItemStacks.Add(new ItemStack(ItemType.All["terran"], 20));
+
+			Sequence.Rolls.Clear();
+			Sequence.Ints.Clear();
+			Sequence.Ints.Push(1);
+			Sequence.Ints.Push(1);
+
+			Battle battle = new Battle(attacker, target);
+			battle.Execute(this.game.Week);
+
+			string report = string.Join("\n", battle.Report(attackerOwner).ToArray());
+			Assert.That(report, Does.Match(@"chance: \d+/9\)"));
+			Assert.That(report, Does.Contain("(chance: 3/9)"));
 		}
 	}
 }

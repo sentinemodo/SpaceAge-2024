@@ -237,7 +237,7 @@
 			mass="100"
 			size="100"
 			attack="2"
-			damage="4">
+			damage="2">
 			<use-allowed-by module-type-group="infantry"/>
 		</entry>
 		<entry
@@ -454,7 +454,7 @@
 			name="stnrdf"
 			tags="military"
 			name-en="stationary defense"
-			level="1"
+			level="0"
 			description="The basic stationary defense. Gun emplacement and fortification to protect against ground based military."
 			use-time="4">
 			<use-allowed-in module-type-group="production"/>
@@ -617,7 +617,34 @@ This assembly technology represents the pinnacle of human ingenuity and collabor
 			<use-consume item="titani"  quantity="1"/>
 			<use-consume item="copper" quantity="4"/>
 			<use-consume item="silici" quantity="1"/>
+			<use-produce module="bltlas"/>
+		</entry>
+		<entry
+			name="xraylo"
+			name-en="x-ray laser optics"
+			level="2"
+			requires="lasopt"
+			description="Advanced optics for penetrating x-ray lasers."
+			use-time="4">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="titani" quantity="2"/>
+			<use-consume item="copper" quantity="4"/>
+			<use-consume item="silici" quantity="2"/>
 			<use-produce module="xraylz"/>
+		</entry>
+		<entry
+			name="lstrrt"
+			tags="military"
+			name-en="laser turret"
+			level="1"
+			requires="lasopt"
+			description="A fixed laser emplacement for ground defense. Requires a power supply."
+			use-time="4">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="2"/>
+			<use-consume item="titani" quantity="2"/>
+			<use-consume item="copper" quantity="2"/>
+			<use-produce module="laztrt"/>
 		</entry>
 		<entry
 			name="wastdp"
@@ -1110,6 +1137,25 @@ Researchers can query the library. The system can handle natural language questi
 			<operation-allowed-in module-group="settlement"/>
 		</entry>
 		<entry
+			name="bltlas"
+			name-en="blue laser"
+			name-en2="blue lasers"
+			group="military"
+			description="A compact high-frequency laser suitable for ground combat."
+			size="100"
+			mass="100"
+			energy="5"
+			crew="1"
+			capacity="50"
+			technology-capacity="2"
+			hit-points="40"
+			attack="6"
+			defense="1"
+			damage="6">
+			<upkeep type="cash" quantity="50"/>
+			<require technology="lasopt"/>
+		</entry>
+		<entry
 			name="xraylz" 
 			name-en="x-ray laser"
 			name-en2="x-ray lasers"
@@ -1126,7 +1172,7 @@ Researchers can query the library. The system can handle natural language questi
 			defense="1"
 			damage="10">
 			<upkeep type="cash" quantity="100"/>
-			<require technology="lasopt"/>
+			<require technology="xraylo"/>
 		</entry>
     <entry
 			name="gunplc"
@@ -1140,13 +1186,33 @@ Researchers can query the library. The system can handle natural language questi
 			capacity="100"
 			technology-capacity="1"
 			hit-points="100"
-			attack="10"
-			defense="10"
-			damage="5">
+			attack="1"
+			defense="1"
+			damage="1">
       <operation-allowed-in region-surface="solid"/>
       <upkeep type="cash" quantity="10"/>
       <no-upkeep effect="damage" chance="25"/>
     </entry>
+		<entry
+			name="laztrt"
+			name-en="laser turret"
+			name-en2="laser turrets"
+			group="military"
+			description="A fixed laser emplacement for ground defense. Requires a power supply."
+			size="100"
+			mass="500"
+			crew="2"
+			capacity="100"
+			technology-capacity="1"
+			energy="5"
+			hit-points="100"
+			attack="6"
+			defense="1"
+			damage="6">
+			<operation-allowed-in region-surface="solid"/>
+			<upkeep type="cash" quantity="20"/>
+			<require technology="lasopt"/>
+		</entry>
     <entry
 			name="cargob" 
 			name-en="small cargo bay"
@@ -1321,7 +1387,7 @@ Researchers can query the library. The system can handle natural language questi
 			size="240"			
 			mass="240" 
 			capacity="200"
-			hit-points="60"
+			hit-points="100"
 			crew="16"
 			attack="4"
 			defense="4"

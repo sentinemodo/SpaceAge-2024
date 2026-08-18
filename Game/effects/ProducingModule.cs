@@ -79,8 +79,13 @@ namespace SpaceAge
 		{
 			if (this.ExecuteCondition)
 			{
-				// production starting
-				if (this.Duration == this.UseOrder.DurationInitial)
+				if (this.produced == null && this.Receiver is ModuleStack)
+				{
+					this.produced = (ModuleStack)this.Receiver;
+				}
+
+				// production starting (skip when continuing a saved effect with no linked order)
+				if (this.UseOrder != null && this.Duration == this.UseOrder.DurationInitial)
 				{
                     if (this.Receiver is ModuleStack)
                     {
@@ -128,14 +133,41 @@ namespace SpaceAge
                             this.Technology.UseProduceModules.ReportName,
                             this.Producer.ReportName));
 
-					// if there is a parent specified and it is not producer and the produced stack isn't already stacked under specified parent - stack under it
-                    if (this.ReceiverParent != null 
-                        & this.ReceiverParent != this.Producer 
-                        & this.ReceiverParent != this.Produced.Parent)
-                    {
-                        StackOrder stackModule = new StackOrder(this.Produced, this.ReceiverParent);
-                        stackModule.Execute(week);
-                    }
+					// USE ... FOR <stack> of the same module type delivers into that stack
+					// (implicit transfer). Cross-faction is allowed; same location is required.
+					ModuleStack parentStack = this.ReceiverParent as ModuleStack;
+					if (parentStack != null
+						&& parentStack != this.Producer
+						&& parentStack.ModuleType == this.Technology.UseProduceModules)
+					{
+						if (this.Producer.Location != parentStack.Location)
+						{
+							this.Producer.EventReports.Add(week, "USE failed. Parent is in different location.");
+						}
+						else
+						{
+							TransferOrder transfer = new TransferOrder(
+								this.produced,
+								parentStack,
+								this.Technology.UseProduceModules,
+								this.produced.Quantity,
+								0);
+							transfer.Execute(week);
+							Contract.All.NotifyTransfer(
+								this.Producer.Owner,
+								this.Producer,
+								parentStack,
+								this.Technology.UseProduceModules,
+								1);
+						}
+					}
+					else if (this.ReceiverParent != null
+						&& this.ReceiverParent != this.Producer
+						&& this.ReceiverParent != this.produced.Parent)
+					{
+						StackOrder stackModule = new StackOrder(this.produced, this.ReceiverParent);
+						stackModule.Execute(week);
+					}
 
 					if (this.UseOrder != null)
 					{

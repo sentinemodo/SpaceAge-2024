@@ -41,7 +41,7 @@
 							<itemstack type="terran" quantity="1"/>
 						</modulestack>
 						<modulestack name="100015" faction="2" type="xraylz" quantity="2">
-							<technology name="lasopt"/>
+							<technology name="xraylo"/>
 							<itemstack type="terran" quantity="2"/>
 						</modulestack>
 						<modulestack name="100016" faction="2" type="crwqrt" quantity="2">

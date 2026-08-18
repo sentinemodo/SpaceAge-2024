@@ -335,8 +335,7 @@ namespace SpaceAge
                         week,
                         string.Format("Breakthough!!! Researched {0} technology.",
                             this.researchedTechnology.ReportName));
-                    this.Researcher.Owner.TechnologiesToShow.Add(this.researchedTechnology);
-                    this.Researcher.Technologies.Add(this.researchedTechnology);
+                    this.Researcher.ReceiveTechnologyCopy(this.researchedTechnology, week, null);
                     this.Researcher.ResearchPoints = 0;
                 }
                 else

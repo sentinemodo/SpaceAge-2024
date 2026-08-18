@@ -9,7 +9,7 @@ namespace SpaceAge
 		string TypeName { get; }
 		Faction Winner { get; }
 
-		void NotifyTransfer(Faction giver, ModuleStack receiver, ModuleType moduleType, int quantity, Faction issuer);
+		void NotifyTransfer(Faction giver, ModuleStack giverStack, ModuleStack receiver, ModuleType moduleType, int quantity, Faction issuer);
 		bool IsComplete();
 		void SaveAttributes(XmlElement elContract);
 	}

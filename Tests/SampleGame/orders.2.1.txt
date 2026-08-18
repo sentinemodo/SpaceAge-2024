@@ -1,0 +1,3 @@
+#faction 1 ""
+CONTRACT R00003 give 1 inftry to 000007 REWARD rckter technology
+#end

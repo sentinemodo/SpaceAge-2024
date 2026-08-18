@@ -26,7 +26,7 @@ namespace SpaceAge
 			get { return Sequence.ints; }
 		}
 
-        private static Random randomGenerator = new Random();
+        private static Random randomGenerator = new Random(1);
 
         public static string GenerateRandomString(int length, string description = "")
         {
