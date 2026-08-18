@@ -1,6 +1,6 @@
 # SpaceAge-2024 — technology choices
 
-Last updated: 2026-08-16  
+Last updated: 2026-08-18  
 Engine version: `Program.EngineVersion` = `0.1.137`
 
 This is a **legacy console engine**, not a service stack. Choices below describe what the repo already uses. Changing the runtime or project style requires an ADR.
@@ -35,21 +35,19 @@ Why stay on net48 / non-SDK:
 | Test runner (Windows) | Visual Studio NUnit 3 adapter or `vstest.console Tests\bin\Debug\Tests.dll` |
 | Test runner (Cloud) | NUnit Console **3.18.3** under `.cursor/tools/`, invoked with `mono --inprocess` (`.cursor/run-tests.sh`) |
 
-### NuGet packages (both `Game` and `Tests`)
+### NuGet packages (`Tests`; `Game` has none)
 
-Pinned in `packages.config`; HintPaths `..\packages\{id}.{version}\lib\net462\...`.
+Pinned in `Tests/packages.config`; HintPaths `..\packages\{id}.{version}\lib\net462\...`. `Game` restores an empty `packages.config` and must stay free of test-only references.
 
 | Package | Version | Role |
 |---------|---------|------|
-| NUnit | **4.1.0** | `NUnit.Framework` (and `nunit.framework.legacy` as pulled by 4.x) |
-| NUnit3TestAdapter | 4.6.0 | VS / vstest discovery |
-| NUnit.Analyzers | 4.3.0 | Dev-time analyzers |
+| NUnit | **4.1.0** | `NUnit.Framework` (and `nunit.framework.legacy` as pulled by 4.x) — `Tests` only |
+| NUnit3TestAdapter | 4.6.0 | VS / vstest discovery — `Tests` only |
+| NUnit.Analyzers | 4.3.0 | Dev-time analyzers — `Tests` only |
 | System.Runtime.CompilerServices.Unsafe | 6.0.0 | Transitive for NUnit 4 on net48 |
 | System.Threading.Tasks.Extensions | 4.5.4 | Transitive for NUnit 4 on net48 |
 
-**Quirk:** `Game.csproj` references NUnit. Do not add more test-only packages to the engine without an ADR. Prefer keeping production free of NUnit if a future cleanup is explicitly requested.
-
-**Never** restore NUnit 2 (`NUnit.Core`) or machine-local HintPaths.
+**Never** restore NUnit 2 (`NUnit.Core`) or machine-local HintPaths. Do not add test-only packages to `Game` without an ADR.
 
 ### Observability
 

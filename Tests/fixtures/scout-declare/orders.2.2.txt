@@ -1,0 +1,83 @@
+#faction 2 "xyzzy"
+#modulestack 000012
+; + Caste Prime Headquarters [000012], corporate headquarters [corphq].
+; items: 60 terrans [terran], 1300 cash [cash].
+@produce cash
+
+#modulestack 000013
+; + small cargo bay [000013], 5 small cargo bays [cargob].
+; items: 1030 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units of
+; oxyhydro [h2o2], 70 units of iron [iron], 70 units of titanium [titani], 80 units of silicium
+; [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 97 units
+; of carbon [carbon].
+sell 300 food
+@get all food from 000014
+@get all carbon from 000016
+
+#modulestack 000014
+; + farming complex [000014], 3 farming complexes [farms].
+; items: 15 terrans [terran], 15 units of food [food].
+@use farmng
+
+#modulestack 000015
+; + coal-burning plant [000015], 3 coal-burning plants [cplant].
+; items: 6 terrans [terran].
+@produce energy
+
+#modulestack 000016
+; + core drill [000016], core drill [cdrill].
+; items: 6 terrans [terran], unit of carbon [carbon].
+@use hcdril
+
+#modulestack 000017
+; + factory [000017], 5 factories [factry].
+; items: 50 terrans [terran], 20 units of iron [iron], 10 units of titanium [titani].
+5 use stnrdf as new109
+-give 4 terran to new109
+
+#modulestack 100
+; + space shuttle [100], 10 space shuttle [shuttl].
+; items: 40 terrans [terran], 30 units of iron [iron], 26 units of titanium [titani], 20 units of
+; silicium [silici], 20 units of copper [copper], 10 units of uranium [uraniu], 150 units of food
+; [food], 90 units of oxyhydro [h2o2], 150 units of terran breathing gas mixture [terair].
+; effects:
+;   can operate for another 10 weeks without refueling.
+;   producing spaceship hull [sshull] into spaceship hull [101], 3 weeks to complete (x10 efficiency
+;   multiplier).
+move R00001
++use ssassm as 101
++-use spctrl as new102
++-use urfiss as new103
++-use areact as new104
++-use crewhs as new105
++--give -20 terran to new105
++--give -20 terair to new105
++--give -20 food to new105
++-use strans as new106
++--give all iron to new106
++--give all titani to new106
++--give all silici to new106
++--give all copper to new106
++--give -10 uraniu to new106
++--give -10 h2o2 to new106
++-use indust as new107
++--get 10 terran from new105
+
+#modulestack new107
+// research lab is built on the way
+use filidx as new108
+
+#modulestack new108
+@research military
+
+#modulestack 101
+; + spaceship hull [101], spaceship hull [sshull], disabled, immobile.
+active 101
+-name "Caste Prime valiant explorer"
+
+#person 000001
+; + Caste Prime CEO [000001], terran [terran].
+active 101
+-stack new102
+
+#end

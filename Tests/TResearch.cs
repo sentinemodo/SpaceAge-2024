@@ -12,18 +12,13 @@ namespace UnitTests
 		[SetUp]
 		public void setupResearch()
 		{
-			this.dataFile = new DataFile(Directory.GetCurrentDirectory());
-			this.dataFile.LoadConfiguration();
-			this.dataFile.LoadGame();
-			this.game = this.dataFile.Game;
+			this.LoadDefaultGame();
 		}
 
 		[TearDown]
 		public void teardownResearch()
 		{
-			this.game.ClearDictionaries();
-			this.game = null;
-			this.dataFile = null;
+			this.ClearGame();
 		}
 
 		private ModuleStack createResearchLab()

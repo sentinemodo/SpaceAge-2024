@@ -83,10 +83,15 @@
     <Compile Include="TNamedObject.cs" />
     <Compile Include="TModuleStack.cs" />
     <Compile Include="TOrder.cs" />
+    <Compile Include="TUse.cs" />
+    <Compile Include="TMove.cs" />
+    <Compile Include="TGetGiveHas.cs" />
+    <Compile Include="TFormStack.cs" />
+    <Compile Include="TSee.cs" />
+    <Compile Include="TTrain.cs" />
     <Compile Include="TRepair.cs" />
     <Compile Include="TResearch.cs" />
     <Compile Include="TDiplomacy.cs" />
-    <Compile Include="TContract.cs" />
     <Compile Include="TPoint3D.cs" />
     <Compile Include="TDataFile.cs" />
     <Compile Include="TPoint2D.cs" />
@@ -196,6 +201,24 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="SampleGame\testreport.1.1.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="fixtures\scout-declare\gamein.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="fixtures\scout-declare\orders.2.2.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="fixtures\scout-declare\orders.2.3.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="fixtures\has-order-production\gamein.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="fixtures\has-order-production\orders.2.2.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="fixtures\has-order-production\orders.2.3.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

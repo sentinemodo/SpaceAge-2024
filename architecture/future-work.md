@@ -1,6 +1,6 @@
 # SpaceAge-2024 — future development backlog
 
-Last updated: 2026-08-16
+Last updated: 2026-08-18
 
 This file tracks **deferred modernization** — good practices that are intentionally **out of scope** for day-to-day work on the current engine. They are recorded here (not enforced by the TDD rule or coding guidance) so the running net48 engine stays stable and diffs stay small.
 
@@ -16,7 +16,6 @@ Each item requires a numbered **ADR** in [`adr/`](adr/) plus a full test pass on
 - **Dependency injection / interfaces at boundaries** to replace the pervasive static `*.All` registries, enabling parallel tests and multiple in-process games. Today [ADR-0003](adr/ADR-0003-filesystem-pbem-batch.md) and the `*.All` pattern are load-bearing.
 - **Split the single `SpaceAge` namespace** into folder-aligned namespaces (currently folders are organizational only).
 - **Extract loaders from `DataFile`** (a large god class) once an ADR defines the seams.
-- **Remove NUnit from `Game.csproj`** so the engine assembly has no test-only references (keep NUnit in `Tests` only).
 
 ## Build, test, and delivery
 
@@ -28,5 +27,5 @@ Each item requires a numbered **ADR** in [`adr/`](adr/) plus a full test pass on
 
 - Implement the stub pipeline hooks `Request.Load`, `EventsReaders.Load` / `Events.Execute`, and `OrdersReader.Check` (with tests) when a feature needs them.
 - Finish the economy methods `Game.GenerateOffers` / `UpdateRates` (currently TODO/partial).
-- Add goldens and enable the `[Ignore("not ready")]` SampleGame turns 3–5.
+- Add goldens and enable the `[Ignore("not ready")]` SampleGame turns 3–5. Turns 1–2 already load committed `gamein` files independently; do not reintroduce a `copyFile` daisy chain. Follow-ups: a `data.unit.xml` catalog for unit tests, `Tests/Stories/` scenario fixtures, and an optional `[Explicit]` chain-consistency test (`gameout.N` vs committed `gamein.N+1`).
 - Fix known data/parse gaps, e.g. the `//`-vs-`;` order-comment bug that fails `IntegrationTests.SampleGame._5_ExecuteTurn2`, and the `research`/`see` order divergence between `OrdersReader` and `DataFile`.

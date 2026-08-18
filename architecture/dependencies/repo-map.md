@@ -1,6 +1,6 @@
 # Dependency map
 
-Last updated: 2026-08-16
+Last updated: 2026-08-18
 
 SpaceAge-2024 is a **single repository**. There are no sibling application repos and no runtime package feeds other than nuget.org.
 
@@ -12,8 +12,7 @@ flowchart LR
   sln --> game[Game.exe SpaceAge]
   sln --> tests[Tests.dll]
   tests -->|project reference| game
-  game --> nunit[NUnit 4.1.0]
-  tests --> nunit
+  tests --> nunit[NUnit 4.1.0]
 ```
 
 | From | To | Contract |
@@ -26,7 +25,7 @@ Do not add a second engine repo or a shared “core” library unless an ADR spl
 
 ## NuGet (nuget.org)
 
-See [`../technology.md`](../technology.md) for pins. Both projects restore the same `packages.config` set. Transitive packages (`System.Runtime.CompilerServices.Unsafe`, `System.Threading.Tasks.Extensions`) exist only to run NUnit 4 on net48.
+See [`../technology.md`](../technology.md) for pins. NUnit and its net48 transitives (`System.Runtime.CompilerServices.Unsafe`, `System.Threading.Tasks.Extensions`) are restored from `Tests/packages.config` only. `Game` has an empty `packages.config`.
 
 ## Filesystem contracts (integration surface)
 
