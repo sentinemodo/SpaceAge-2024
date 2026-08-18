@@ -27,5 +27,5 @@ Each item requires a numbered **ADR** in [`adr/`](adr/) plus a full test pass on
 
 - Implement the stub pipeline hooks `Request.Load`, `EventsReaders.Load` / `Events.Execute`, and `OrdersReader.Check` (with tests) when a feature needs them.
 - Finish the economy methods `Game.GenerateOffers` / `UpdateRates` (currently TODO/partial).
-- Add goldens and enable the `[Ignore("not ready")]` SampleGame turns 3–5. Turns 1–2 already load committed `gamein` files independently; do not reintroduce a `copyFile` daisy chain. Follow-ups: a `data.unit.xml` catalog for unit tests, `Tests/Stories/` scenario fixtures, and an optional `[Explicit]` chain-consistency test (`gameout.N` vs committed `gamein.N+1`).
-- Fix known data/parse gaps, e.g. the `//`-vs-`;` order-comment bug that fails `IntegrationTests.SampleGame._5_ExecuteTurn2`, and the `research`/`see` order divergence between `OrdersReader` and `DataFile`.
+- Add goldens and enable the `[Ignore("not ready")]` SampleGame turns 4–5. Turns 1–3 already load committed `gamein` files independently; do not reintroduce a `copyFile` daisy chain. Follow-ups: a `data.unit.xml` catalog for unit tests, `Tests/Stories/` scenario fixtures, and an optional `[Explicit]` chain-consistency test (`gameout.N` vs committed `gamein.N+1`).
+- Fix known data/parse gaps, e.g. the `//`-vs-`;` order-comment bug that fails `IntegrationTests.SampleGame._5_ExecuteTurn2`.

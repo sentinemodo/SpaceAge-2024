@@ -36,7 +36,7 @@ Domain code lives under `Game/` in a **single namespace** `SpaceAge` (folders ar
 
 ## Current vs design notes
 
-`Game/documentation/Concepts.txt` and `Rules.txt` describe a richer design (officer types, market delivery times, combat superiorities) than the running code. Treat those files as **design intent**. Treat this folder plus the C# as **what the engine actually does**. Gaps (stub `Events`/`Request`, incomplete SampleGame turns 3–5, economy TODOs) are documented as constraints, not as unimplemented product backlog unless an ADR promotes them.
+`Game/documentation/Concepts.txt` and `Rules.txt` describe a richer design (officer types, market delivery times, combat superiorities) than the running code. Treat those files as **design intent**. Treat this folder plus the C# as **what the engine actually does**. Gaps (stub `Events`/`Request`, incomplete SampleGame turns 4–5, economy TODOs) are documented as constraints, not as unimplemented product backlog unless an ADR promotes them.
 
 ## Glossary
 

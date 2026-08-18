@@ -11,7 +11,7 @@ There is **no** GitHub Actions (or other hosted CI) workflow in this repository 
 | Windows (local) | `nuget restore SpaceAge.sln` then `msbuild SpaceAge.sln /p:Configuration=Debug` | `vstest.console Tests\bin\Debug\Tests.dll` or VS NUnit adapter |
 | Cursor Cloud (Mono) | `bash .cursor/install.sh` (also the `install` field in `.cursor/environment.json`) | `bash .cursor/run-tests.sh` |
 
-Do not open a PR until `.cursor/run-tests.sh` succeeds, unless the failure is a documented existing baseline (today: `SampleGame._5_ExecuteTurn2`, a `//`-vs-`;` order-comment data bug, and the six `[Ignore("not ready")]` tests).
+Do not open a PR until `.cursor/run-tests.sh` succeeds, unless the failure is a documented existing baseline (today: `SampleGame._5_ExecuteTurn2`, a `//`-vs-`;` order-comment data bug, and the five `[Ignore("not ready")]` tests).
 
 ## Branches and promotion
 

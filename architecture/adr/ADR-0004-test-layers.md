@@ -27,3 +27,4 @@ TDD guidance elsewhere splits unit / module / integration so CI can gate them in
 ## Revision
 
 - 2026-08-18: Record committed-fixture independence. SampleGame tests no longer `copyFile` turn N output onto turn N+1 input; `_4a` asserts against committed `gamein.2_contract.xml` instead of supplying `_5`’s input in the same run.
+- 2026-08-18: Turn 3 follows the same pattern (`gamein.3.xml`, `_6a` → `gamein.3_contract.xml`, `ExecuteTurn3` goldens). Turns 4–5 remain `[Ignore("not ready")]`.

@@ -107,7 +107,7 @@ One test assembly: `Tests.dll`. Layers are **namespaces**, not extra `.csproj` f
 
 | Layer | Namespace | Typical scope | Placement |
 |-------|-----------|---------------|-----------|
-| **Unit** | `UnitTests` | Single type or small in-process collaboration; XML fixtures `Tests/data.xml` + `Tests/gamein.xml`, or owned copies under `Tests/fixtures/`; no SampleGame goldens | `Tests/T*.cs` (`TOrder`, `TUse`, `TGetGiveHas`, `TMove`, `TFormStack`, `TSee`, `TTrain`, `TDataFile`, `TBattle`, `TMarket` (includes `TContract` fixture), `TResearch`, `TRepair`, `TDiplomacy`, `TModuleStack(s)`, `TPoint2D/3D`, `TNamedObject`, `TTests`) |
+| **Unit** | `UnitTests` | Single type or small in-process collaboration; XML fixtures `Tests/data.xml` + `Tests/gamein.xml`, or owned copies under `Tests/fixtures/`; no SampleGame goldens | `Tests/T*.cs` (`TOrder`, `TUse`, `TGetGiveHas`, `TMove`, `TFormStack`, `TSee`, `TTrain`, `TDataFile`, `TBattle`, `TMarket` (includes `TContract` fixture), `TResearch`, `TConsume`, `TRepair`, `TDiplomacy`, `TModuleStack(s)`, `TPoint2D/3D`, `TNamedObject`, `TTests`) |
 | **Module** | — | **Not used.** Do not invent a third layer. | — |
 | **Integration** | `IntegrationTests` | Multi-file SampleGame turns, report goldens, program smoke | `Tests/SampleGame/` (`SampleGame`, `TProgram`), `Tests/TReport.cs` |
 
@@ -115,13 +115,13 @@ One test assembly: `Tests.dll`. Layers are **namespaces**, not extra `.csproj` f
 
 - Put new tests in **Unit** unless the behavior can only be proved by a full turn or golden report/XML — then **Integration**.
 - Base helpers live on `TTest` (`compareFiles`, `executeOrder`, 1251 file load). Teardown must clear static registries.
-- Load **committed** files only. SampleGame tests must not `copyFile` (or otherwise write) the next turn’s `gamein`. `_4a` may save a generated contract XML and compare it to the checked-in `gamein.2_contract.xml`; it must not be `_5`’s runtime input unless that XML is already committed.
+- Load **committed** files only. SampleGame tests must not `copyFile` (or otherwise write) the next turn’s `gamein`. `_4a` / `_6a` may save a generated contract XML and compare it to the checked-in `gamein.2_contract.xml` / `gamein.3_contract.xml`; they must not be the next execute-turn’s runtime input unless that XML is already committed.
 - Unit tests must not load `Tests/SampleGame/` worlds. Campaign-shaped cases live under `Tests/fixtures/` (for example `scout-declare/`, `has-order-production/`).
 - There are **no** NUnit `[Category]` / `[Trait]` attributes today. Optional filters:
   - Unit: `--where "namespace == UnitTests"`
   - Integration: `--where "namespace == IntegrationTests"`
 - Fast local/cloud default: **entire** `Tests.dll` (`.cursor/run-tests.sh` on Mono / `vstest.console` on Windows).
-- Integration tests that need later SampleGame turns (`ExecuteTurn3/4/5`) are `[Ignore("not ready")]` — do not enable them without goldens. Each live campaign turn is independently runnable from its committed `gamein`.
+- Integration tests for SampleGame turns 4–5 are `[Ignore("not ready")]` — do not enable them without goldens. Turns 1–3 are independently runnable from committed `gamein` files.
 
 ## Stub / incomplete boundaries
 
@@ -133,4 +133,4 @@ Treat as **not live integrations** until implemented with tests:
 | `EventsReaders.Load` / `Events.Execute` | Stub |
 | `OrdersReader.Check` | Stub |
 | `Game.GenerateOffers` / `UpdateRates` | Partial / TODO |
-| SampleGame turns 3–5 | Ignored |
+| SampleGame turns 4–5 | Ignored |
