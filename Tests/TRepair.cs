@@ -11,18 +11,13 @@ namespace UnitTests
 		[SetUp]
 		public void setupRepair()
 		{
-			this.dataFile = new DataFile(Directory.GetCurrentDirectory());
-			this.dataFile.LoadConfiguration();
-			this.dataFile.LoadGame();
-			this.game = this.dataFile.Game;
+			this.LoadDefaultGame();
 		}
 
 		[TearDown]
 		public void teardownRepair()
 		{
-			this.game.ClearDictionaries();
-			this.game = null;
-			this.dataFile = null;
+			this.ClearGame();
 		}
 
 		[Test]

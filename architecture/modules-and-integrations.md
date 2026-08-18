@@ -107,7 +107,7 @@ One test assembly: `Tests.dll`. Layers are **namespaces**, not extra `.csproj` f
 
 | Layer | Namespace | Typical scope | Placement |
 |-------|-----------|---------------|-----------|
-| **Unit** | `UnitTests` | Single type or small in-process collaboration; XML fixtures `Tests/data.xml` + `Tests/gamein.xml`, or owned copies under `Tests/fixtures/`; no SampleGame goldens | `Tests/T*.cs` (`TOrder`, `TDataFile`, `TBattle`, `TMarket`, `TModuleStack(s)`, `TPoint2D/3D`, `TNamedObject`, `TTests`) |
+| **Unit** | `UnitTests` | Single type or small in-process collaboration; XML fixtures `Tests/data.xml` + `Tests/gamein.xml`, or owned copies under `Tests/fixtures/`; no SampleGame goldens | `Tests/T*.cs` (`TOrder`, `TUse`, `TGetGiveHas`, `TMove`, `TFormStack`, `TSee`, `TTrain`, `TDataFile`, `TBattle`, `TMarket` (includes `TContract` fixture), `TResearch`, `TRepair`, `TDiplomacy`, `TModuleStack(s)`, `TPoint2D/3D`, `TNamedObject`, `TTests`) |
 | **Module** | — | **Not used.** Do not invent a third layer. | — |
 | **Integration** | `IntegrationTests` | Multi-file SampleGame turns, report goldens, program smoke | `Tests/SampleGame/` (`SampleGame`, `TProgram`), `Tests/TReport.cs` |
 

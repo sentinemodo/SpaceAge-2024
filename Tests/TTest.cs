@@ -15,6 +15,23 @@ namespace UnitTests
         protected DataFile dataFile;
 
 		protected Game game;
+
+		protected void LoadDefaultGame()
+		{
+			this.dataFile = new DataFile(Directory.GetCurrentDirectory());
+			this.dataFile.LoadConfiguration();
+			this.dataFile.LoadGame();
+			this.game = this.dataFile.Game;
+		}
+
+		protected void ClearGame()
+		{
+			if (this.game != null)
+				this.game.ClearDictionaries();
+			this.game = null;
+			this.dataFile = null;
+		}
+
         public void Dispose()
         {
             if (this.TextReader != null)
