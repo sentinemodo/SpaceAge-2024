@@ -150,6 +150,7 @@ namespace SpaceAge
 
 		public void Execute()
 		{			
+			this.ClearEventReports();
 			this.turn++;
             #region execute orders
             for (this.week = 1; this.week <= 13; this.week++)
@@ -158,7 +159,9 @@ namespace SpaceAge
 				//this.ClearFailedToExecuteImmediateOrders();
 				this.ClearExecutedImmediateOrders();
 				this.ExecuteOrders();
+				Contract.All.Evaluate(this.week);
                 this.ProcessBuyOffers();
+				this.ExecuteBattles();
 			}
 			this.ClearExecutedLongOrder();
 			//this.ClearFailedToExecuteImmediateOrders();
@@ -170,7 +173,31 @@ namespace SpaceAge
             this.GenerateOffers();
         }
 
-        public void ClearExecutedImmediateOrders()
+		public void ClearEventReports()
+		{
+			foreach (Faction faction in this.Factions.Values)
+			{
+				faction.EventReports.Clear();
+			}
+			foreach (ModuleStack moduleStack in this.ModuleStacks.Values)
+			{
+				moduleStack.EventReports.Clear();
+			}
+			foreach (Person person in this.People.Values)
+			{
+				person.EventReports.Clear();
+			}
+			foreach (Region region in this.Regions.Values)
+			{
+				region.EventReports.Clear();
+			}
+			foreach (Orbit orbit in Orbit.All.Values)
+			{
+				orbit.EventReports.Clear();
+			}
+		}
+
+		public void ClearExecutedImmediateOrders()
         {
             foreach (Faction faction in this.Factions.Values)
             {
@@ -240,6 +267,21 @@ namespace SpaceAge
 			foreach (Person person in this.People.Values)
 			{
 				person.ExecutedLongOrder = false;
+			}
+		}
+
+		public void ExecuteBetweenTurnOrders()
+		{
+			foreach (Faction faction in this.Factions.Values)
+			{
+				foreach (ImmediateOrder order in faction.Orders.Immediate)
+				{
+					if (order.AllowedBetweenTurns && !order.Executed)
+					{
+						order.Execute(this.week);
+					}
+				}
+				faction.Orders.RemoveExecuted();
 			}
 		}
 
@@ -361,12 +403,22 @@ namespace SpaceAge
 		{
 			get { return Battle.All; }
 		}
+
+		public void ExecuteBattles()
+		{
+			List<Battle> started = Battle.StartAtLocations(this.week);
+			foreach (Battle battle in started)
+			{
+				battle.Execute(this.week);
+			}
+		}
 		#endregion
 
 		public void ClearDictionaries()
 		{
 			Battle.All.Clear();
 			Offer.All.Clear();
+			Contract.All.Clear();
 			Technology.All.Clear();
 			Race.All.Clear();
 			ItemType.All.Clear();

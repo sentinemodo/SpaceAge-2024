@@ -5,7 +5,7 @@ Content-Disposition: attachment
 SpaceAge report for Caste Prime [2].
 Turn 2, Year 2020, April 1.
 
-SpaceAge Engine Version: 0.1.137.
+SpaceAge Engine Version: 0.1.141.
 
 Events during turn:
   none.
@@ -14,7 +14,6 @@ Bank report:
   Bank account balance: 10000.
   Credit line maximum: 10000.
   Credit rate: 20%, Deposit rate: 5%.
-
 Galaxy report:
 ------------------------------------------------------------
 * Sol [SS0001] (0, 0, 0), star system.
@@ -41,7 +40,7 @@ Galaxy report:
     (size: 150, mass: 150).
     effects:
       can operate for another 10 weeks without refueling.
-      producing spaceship hull [sshull] into spaceship hull [101], 3 weeks to complete (x10
+      producing spaceship hull [sshull] into spaceship hull [101], 2 weeks to complete (x10
       efficiency multiplier).
     events:
       week 1: formed by factory [000017] with space shuttle [shuttl].
@@ -106,13 +105,13 @@ Galaxy report:
     size: 75000, capacity: 45000/40620, energy: 320/265 (30).
     - Berlin garrison [000002], infantry battalion [inftry], owned by NPC [1].
       size: 500.
-    - Berlin farms [000003], 10 farming complexes [farms], owned by NPC [1].
+    - Berlin farms [000003], 10 farming complexes [farms], immobile, owned by NPC [1].
       size: 10000.
-    - Berlin coal powerplants [000004], 5 coal-burning plants [cplant], owned by NPC [1].
+    - Berlin coal powerplants [000004], 5 coal-burning plants [cplant], immobile, owned by NPC [1].
       size: 5000.
-    - Berlin granary [000005], small cargo bay [cargob], owned by NPC [1].
+    - Berlin granary [000005], small cargo bay [cargob], immobile, owned by NPC [1].
       size: 2000.
-    + Caste Prime Headquarters [000012], corporate headquarters [corphq].
+    + Caste Prime Headquarters [000012], corporate headquarters [corphq], immobile.
       size: 1000, mass: 1240 (1000), capacity: 750/240, energy: 10, crew: 20/60, upkeep: 160 (100)
       cash [cash], consume: 60 (0) units of food [food], 60 (0) units of terran breathing gas
       mixture [terair].
@@ -133,7 +132,7 @@ Galaxy report:
         week 11: produced 100 cash [cash].
         week 12: produced 100 cash [cash].
         week 13: produced 100 cash [cash].
-    + small cargo bay [000013], 5 small cargo bays [cargob].
+    + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
       size: 10000, mass: 7225 (1000), capacity: 9000/5235, upkeep: 160 (150) cash [cash], consume:
       10 (0) units of food [food], 10 (0) units of terran breathing gas mixture [terair].
       items: 1030 units of food [food] (size: 1030, mass: 1030), 850 units of terran breathing gas
@@ -178,7 +177,7 @@ Galaxy report:
         week 12: got unit of carbon [carbon] from core drill [000016].
         week 13: got 15 units of food [food] from farming complex [000014].
         week 13: got unit of carbon [carbon] from core drill [000016].
-    + farming complex [000014], 3 farming complexes [farms].
+    + farming complex [000014], 3 farming complexes [farms], immobile.
       size: 3000, mass: 375 (300), capacity: 1500/75, energy: 15, crew: 15/15, upkeep: 165 (150)
       cash [cash], consume: 15 (0) units of food [food], 15 (0) units of terran breathing gas
       mixture [terair].
@@ -211,7 +210,7 @@ Galaxy report:
         week 12: produced 15 units of food [food].
         week 13: given 15 units of food [food] to small cargo bay [000013].
         week 13: produced 15 units of food [food].
-    + coal-burning plant [000015], 3 coal-burning plants [cplant].
+    + coal-burning plant [000015], 3 coal-burning plants [cplant], immobile.
       size: 3000, mass: 3024 (3000), capacity: 1500/24, energy: 120/30 (consume: 15 units of carbon
       [carbon] for 13 weeks), crew: 6/6, upkeep: 156 (150) cash [cash], consume: 6 (0) units of food
       [food], 6 (0) units of terran breathing gas mixture [terair].
@@ -222,7 +221,7 @@ Galaxy report:
         week 1: given 85 units of carbon [carbon] to small cargo bay [000013].
         week 1: consumed 15 units of carbon [carbon] as fuel.
         week 1: started energy production for the next 13 weeks.
-    + core drill [000016], core drill [cdrill].
+    + core drill [000016], core drill [cdrill], immobile.
       size: 1000, mass: 1029 (1000), capacity: 750/29, energy: 5, crew: 6/6, upkeep: 46 (40) cash
       [cash], consume: 6 (0) units of food [food], 6 (0) units of terran breathing gas mixture
       [terair].
@@ -255,7 +254,7 @@ Galaxy report:
         week 12: produced unit of carbon [carbon].
         week 13: given unit of carbon [carbon] to small cargo bay [000013].
         week 13: produced unit of carbon [carbon].
-    + factory [000017], 5 factories [factry].
+    + factory [000017], 5 factories [factry], immobile.
       size: 5000, mass: 4250 (3750), capacity: 2500/400, energy: 75, crew: 50/50, upkeep: 350 (300)
       cash [cash], consume: 50 (0) units of food [food], 50 (0) units of terran breathing gas
       mixture [terair].
@@ -293,12 +292,12 @@ Galaxy report:
 Orders Template:
 #faction 2 "xyzzy"
 #modulestack 000012
-; + Caste Prime Headquarters [000012], corporate headquarters [corphq].
+; + Caste Prime Headquarters [000012], corporate headquarters [corphq], immobile.
 ; items: 60 terrans [terran], 1300 cash [cash].
 @produce cash
 
 #modulestack 000013
-; + small cargo bay [000013], 5 small cargo bays [cargob].
+; + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
 ; items: 1030 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units of
 ; oxyhydro [h2o2], 70 units of iron [iron], 70 units of titanium [titani], 80 units of silicium
 ; [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 97 units
@@ -307,22 +306,22 @@ Orders Template:
 @get all carbon from 000016
 
 #modulestack 000014
-; + farming complex [000014], 3 farming complexes [farms].
+; + farming complex [000014], 3 farming complexes [farms], immobile.
 ; items: 15 terrans [terran], 15 units of food [food].
 @use farmng
 
 #modulestack 000015
-; + coal-burning plant [000015], 3 coal-burning plants [cplant].
+; + coal-burning plant [000015], 3 coal-burning plants [cplant], immobile.
 ; items: 6 terrans [terran].
 @produce energy
 
 #modulestack 000016
-; + core drill [000016], core drill [cdrill].
+; + core drill [000016], core drill [cdrill], immobile.
 ; items: 6 terrans [terran], unit of carbon [carbon].
 @use hcdril
 
 #modulestack 000017
-; + factory [000017], 5 factories [factry].
+; + factory [000017], 5 factories [factry], immobile.
 ; items: 50 terrans [terran], 20 units of iron [iron], 10 units of titanium [titani].
 
 #modulestack 100
@@ -332,7 +331,7 @@ Orders Template:
 ; [food], 90 units of oxyhydro [h2o2], 150 units of terran breathing gas mixture [terair].
 ; effects:
 ;   can operate for another 10 weeks without refueling.
-;   producing spaceship hull [sshull] into spaceship hull [101], 3 weeks to complete (x10 efficiency
+;   producing spaceship hull [sshull] into spaceship hull [101], 2 weeks to complete (x10 efficiency
 ;   multiplier).
 move R00001
 +use ssassm as 101

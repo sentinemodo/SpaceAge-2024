@@ -256,7 +256,10 @@ namespace SpaceAge
 				this.Sell.ItemType = this.ItemType;
             }
 
-			this.Executed = this.Sell.Process(week);
+			// List the offer and leave it standing. Matching is driven from the buy side
+			// (BuyOrder.Execute / Game.ProcessBuyOffers). Processing a sell as a buy
+			// throws when a standing buy already exists (SampleGame food sells).
+			this.Executed = false;
 			base.Execute(week);
 		}
 	}

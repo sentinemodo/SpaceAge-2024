@@ -55,6 +55,7 @@ namespace SpaceAge
 			this.LoadTurnNumber();
 			this.LoadFactions();
 			this.LoadGalaxy();
+			this.LoadContracts();
 			this.LoadOrders();
 			return game;
 		}
@@ -82,7 +83,30 @@ namespace SpaceAge
 
 			this.LoadConfigurationItems(true);
 			this.LoadConfigurationItems(false);
+			this.ValidateTypeNameUniqueness();
 			this.configurationLoaded = true;
+		}
+
+		// A name resolved by orders like `has <qty> <name>` must be unambiguous: it may
+		// belong to an item/race (ItemType.All) or a module (ModuleType.All), never both.
+		public void ValidateTypeNameUniqueness()
+		{
+			List<string> collisions = new List<string>();
+			foreach (string name in ItemType.All.Keys)
+			{
+				if (ModuleType.All.ContainsKey(name))
+				{
+					collisions.Add(name);
+				}
+			}
+
+			if (collisions.Count > 0)
+			{
+				collisions.Sort();
+				throw new FileLoadException(
+					"Ambiguous type name(s) defined as both an item/race and a module: "
+					+ string.Join(", ", collisions.ToArray()));
+			}
 		}
 
 		public void LoadConfDocument(string confDir, string dataFile = "data.xml")
@@ -186,6 +210,16 @@ namespace SpaceAge
 
 					itemType.Mass = this.XMLAssignDouble(el.GetAttribute("mass"), 0);
 					itemType.Size = this.XMLAssignDouble(el.GetAttribute("size"), 0);
+					itemType.Attack = this.XMLAssignInteger(el.GetAttribute("attack"), 0);
+					itemType.Damage = this.XMLAssignInteger(el.GetAttribute("damage"), 0);
+
+					foreach (XmlElement elAllowedBy in el.SelectNodes("use-allowed-by"))
+					{
+						if (elAllowedBy.HasAttribute("module-type-group"))
+						{
+							itemType.UseAllowedModuleTypesGroup = this.getModuleTypeGroup(elAllowedBy.GetAttribute("module-type-group"));
+						}
+					}
 
 					#region upkeep
 					ItemStack item = null;
@@ -330,6 +364,16 @@ namespace SpaceAge
 					this.assignNames(el, technology);
 					technology.Level = this.XMLAssignInteger(el.GetAttribute("level"), 0);
 					technology.UseTime = this.XMLAssignInteger(el.GetAttribute("use-time"), 1);
+
+					if (el.HasAttribute("cost"))
+					{
+						technology.Cost = this.XMLAssignInteger(el.GetAttribute("cost"), technology.Cost);
+					}
+					technology.LoadTags(el.GetAttribute("tags"));
+					if (el.HasAttribute("requires"))
+					{
+						technology.Requires = this.game.Technologies[el.GetAttribute("requires")];
+					}
 
 					technology.Attack = this.XMLAssignInteger(el.GetAttribute("attack"), 0);
 					technology.Defense = this.XMLAssignInteger(el.GetAttribute("defense"), 0);
@@ -719,6 +763,8 @@ namespace SpaceAge
 				faction.Email = elFaction.GetAttribute("email");
 				if (elFaction.HasAttribute("default-attitude"))
 					faction.DefaultAttitude = (FactionAttitude)Convert.ToInt32(elFaction.GetAttribute("default-attitude"));
+				if (elFaction.HasAttribute("unknown-attitude"))
+					faction.UnknownAttitude = (FactionAttitude)Convert.ToInt32(elFaction.GetAttribute("unknown-attitude"));
 				faction.Options.TextReport = this.XMLAssignBoolean(elFaction.GetAttribute("text-report"), true);
 				faction.Options.ReportLineLength = this.XMLAssignInteger(elFaction.GetAttribute("text-report-line-length"), ReportLine.LineLength);
 				faction.Options.XmlReport = this.XMLAssignBoolean(elFaction.GetAttribute("xml-report"), true);
@@ -728,6 +774,16 @@ namespace SpaceAge
 				faction.Bank.CreditRate = this.XMLAssignDouble(elFaction.GetAttribute("credit-rate"), 0);
 				faction.Bank.DepositRate = this.XMLAssignDouble(elFaction.GetAttribute("deposit-rate"), 0);
 
+				// known (seen) technologies tracked at faction level
+				foreach (XmlElement elTechnology in elFaction.SelectNodes("technology"))
+				{
+					string technologyName = elTechnology.GetAttribute("name");
+					if (Technology.All.Contains(technologyName))
+					{
+						faction.TechnologiesSeen.Add(Technology.All[technologyName]);
+					}
+				}
+
 				//foreach (XmlElement el in elFaction.SelectNodes("shown-item"))
 				//    f.ShownItems.Add(ItemType.Get(el.GetAttribute("name")));
 				//foreach (XmlElement el in elFaction.SelectNodes("shown-skill"))
@@ -735,13 +791,18 @@ namespace SpaceAge
 				//foreach (XmlElement el in elFaction.SelectNodes("shown-building"))
 				//    f.ShownBuildings.Add(BuildingType.Get(el.GetAttribute("name")));
 
-				// Attitudes
-				//foreach (XmlElement elAttitude in elFaction.SelectNodes("attitude"))
-				//{
-				//    Attitude a = (Attitude)Convert.ToInt32(elAttitude.GetAttribute("level"));
-				//    int fnum = Convert.ToInt32(elAttitude.GetAttribute("faction"));
-				//    f.Attitudes.Add(fnum, a);
-				//}
+				foreach (XmlElement elAttitude in elFaction.SelectNodes("attitude"))
+				{
+					FactionAttitude attitude = FactionAttitudeParser.Parse(elAttitude.GetAttribute("attitude"));
+					if (elAttitude.HasAttribute("faction"))
+					{
+						faction.Attitudes[elAttitude.GetAttribute("faction")] = attitude;
+					}
+					else if (elAttitude.HasAttribute("unit"))
+					{
+						faction.UnitAttitudes[elAttitude.GetAttribute("unit")] = attitude;
+					}
+				}
 			}
 		}
 
@@ -749,6 +810,12 @@ namespace SpaceAge
 		{
 			XmlElement el = (XmlElement)gameDocument.SelectSingleNode("/game");
 			Game.Turn = Convert.ToInt32(el.GetAttribute("turn"));
+		}
+
+		public void LoadContracts()
+		{
+			XmlElement elContracts = (XmlElement)this.gameDocument.SelectSingleNode("/game/contracts");
+			Contract.All.LoadXml(elContracts);
 		}
 
 
@@ -795,12 +862,24 @@ namespace SpaceAge
 					case "alias":
                         order = new AliasOrder(subject);
 						break;
+					case "attack":
+                        order = new AttackOrder(subject);
+						break;
+					case "capture":
+                        order = new CaptureOrder(subject);
+						break;
 					case "buy":
                         order = new BuyOrder(subject);
 						break;
                     case "copy":
                         order = new CopyOrder(subject);
                         break;
+					case "contract":
+						order = new ContractOrder(subject);
+						break;
+					case "declare":
+						order = new DeclareOrder(subject);
+						break;
 					case "form":
                         order = new FormOrder(subject);
 						break;
@@ -822,6 +901,9 @@ namespace SpaceAge
                     case "produce":
                         order = new ProduceOrder(subject);
                         break;
+                    case "repair":
+                        order = new RepairOrder(subject);
+                        break;
                     case "sell":
                         order = new SellOrder(subject);
                         break;
@@ -830,6 +912,9 @@ namespace SpaceAge
                         break;
                     case "stack":
                         order = new StackOrder(subject);
+                        break;
+                    case "tactic":
+                        order = new TacticOrder(subject);
                         break;
                     case "train":
                         order = new TrainOrder(subject);
@@ -1194,6 +1279,10 @@ namespace SpaceAge
 				elFaction.SetAttribute("password", faction.Password);
 				elFaction.SetAttribute("email", faction.Email);
 				elFaction.SetAttribute("default-attitude", ((int)faction.DefaultAttitude).ToString());
+				if (faction.UnknownAttitude != FactionAttitude.Hostile)
+				{
+					elFaction.SetAttribute("unknown-attitude", ((int)faction.UnknownAttitude).ToString());
+				}
 				elFaction.SetAttribute("text-report", faction.Options.TextReport.ToString());
 				elFaction.SetAttribute("text-report-line-length", faction.Options.ReportLineLength.ToString());
 				elFaction.SetAttribute("xml-report", faction.Options.XmlReport.ToString());
@@ -1201,6 +1290,14 @@ namespace SpaceAge
 				elFaction.SetAttribute("credit-line", faction.Bank.CreditLine.ToString());
 				elFaction.SetAttribute("credit-rate", faction.Bank.CreditRate.ToString());
 				elFaction.SetAttribute("deposit-rate", faction.Bank.DepositRate.ToString());
+
+				// persist known (seen) technologies
+				foreach (Technology technology in faction.TechnologiesSeen)
+				{
+					XmlElement elTechnology = doc.CreateElement("technology");
+					elTechnology.SetAttribute("name", technology.Name);
+					elFaction.AppendChild(elTechnology);
+				}
 
 				//foreach (ItemType it in f.ShownItems)
 				//    SaveItemType(it, elFaction, "shown-item");
@@ -1210,16 +1307,27 @@ namespace SpaceAge
 				//    SaveBuildingType(bt, elFaction, "shown-building");
 
 
-				// Attitudes
-				//foreach (int num in f.Attitudes.Keys)
-				//{
-				//    if (Faction.Get(num) == null)
-				//        continue;
-				//    XmlElement elAttitude = (XmlElement)doc.CreateElement("attitude");
-				//    elFaction.AppendChild(elAttitude);
-				//    elAttitude.SetAttribute("level", ((int)f.Attitudes[num]).ToString());
-				//    elAttitude.SetAttribute("faction", num.ToString());
-				//}
+				foreach (KeyValuePair<string, FactionAttitude> declaration in faction.Attitudes)
+				{
+					XmlElement elAttitude = doc.CreateElement("attitude");
+					elAttitude.SetAttribute("faction", declaration.Key);
+					elAttitude.SetAttribute("attitude", FactionAttitudeParser.ToToken(declaration.Value));
+					elFaction.AppendChild(elAttitude);
+				}
+				foreach (KeyValuePair<string, FactionAttitude> declaration in faction.UnitAttitudes)
+				{
+					XmlElement elAttitude = doc.CreateElement("attitude");
+					elAttitude.SetAttribute("unit", declaration.Key);
+					elAttitude.SetAttribute("attitude", FactionAttitudeParser.ToToken(declaration.Value));
+					elFaction.AppendChild(elAttitude);
+				}
+			}
+			#endregion
+
+			#region contracts
+			if (Contract.All.Count > 0)
+			{
+				doc.DocumentElement.AppendChild(Contract.All.SaveXml(doc));
 			}
 			#endregion
 

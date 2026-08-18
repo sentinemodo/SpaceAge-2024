@@ -39,6 +39,114 @@ namespace UnitTests
 		}
 
 		[Test]
+		public void ValidateTypeNameUniqueness_ThrowsWhenItemAndModuleShareName()
+		{
+			new ItemType("collide");
+			new ModuleType("collide");
+			Assert.Throws<FileLoadException>(() => this.dataFile.ValidateTypeNameUniqueness());
+		}
+
+		[Test]
+		public void ValidateTypeNameUniqueness_PassesWhenNamesAreDistinct()
+		{
+			new ItemType("someitem");
+			new ModuleType("somemodule");
+			Assert.DoesNotThrow(() => this.dataFile.ValidateTypeNameUniqueness());
+		}
+
+		[Test]
+		public void LoadConfiguration_LoadsResearchContent()
+		{
+			this.dataFile.LoadConfiguration(Directory.GetCurrentDirectory());
+
+			// helium-3 resource item
+			Assert.That(ItemType.All.ContainsKey("heliu3"));
+
+			// advanced research complex module (stronger cmplib)
+			ModuleType advlib = ModuleType.All["advlib"];
+			Assert.That(advlib.Group, Is.EqualTo(EModuleTypesGroup.research));
+			Assert.That(advlib.ResearchOutput, Is.EqualTo(2));
+
+			// helium-3 mining: mirrors uminng - an extraction tech that yields the heliu3 item
+			Technology he3min = Technology.All["he3min"];
+			Assert.That(he3min.Level, Is.EqualTo(2));
+			Assert.That(he3min.Cost, Is.EqualTo(16));
+			Assert.That(he3min.HasTag("production"));
+			Assert.That(he3min.Requires, Is.EqualTo(Technology.All["uminng"]));
+			Assert.That(he3min.UseProduceItems.ContainsKey(ItemType.All["heliu3"]));
+
+			// dedicated helium-3 extractor (a costlier, he3-only core drill) built by an L3 tech
+			Assert.That(ModuleType.All["he3ext"].Group, Is.EqualTo(EModuleTypesGroup.extraction));
+			Technology he3drl = Technology.All["he3drl"];
+			Assert.That(he3drl.Level, Is.EqualTo(3));
+			Assert.That(he3drl.Cost, Is.EqualTo(32));
+			Assert.That(he3drl.HasTag("production"));
+			Assert.That(he3drl.Requires, Is.EqualTo(Technology.All["he3min"]));
+			Assert.That(he3drl.UseProduceModules.Name, Is.EqualTo("he3ext"));
+
+			Technology advres = Technology.All["advres"];
+			Assert.That(advres.Level, Is.EqualTo(3));
+			Assert.That(advres.Cost, Is.EqualTo(32));
+			Assert.That(advres.HasTag("research"));
+			Assert.That(advres.Requires, Is.EqualTo(Technology.All["filidx"]));
+
+			// tag added to an existing technology
+			Assert.That(Technology.All["stnrdf"].HasTag("military"));
+			Assert.That(Technology.All["stnrdf"].Level, Is.EqualTo(0));
+
+			Technology lasopt = Technology.All["lasopt"];
+			Assert.That(lasopt.UseProduceModules.Name, Is.EqualTo("bltlas"));
+			ModuleType bltlas = ModuleType.All["bltlas"];
+			Assert.That(bltlas.Attack, Is.EqualTo(6));
+			Assert.That(bltlas.Damage, Is.EqualTo(6));
+			Assert.That(bltlas.DamageCapacity, Is.EqualTo(40));
+			Assert.That(bltlas.EnergyRequired, Is.EqualTo(5));
+
+			Technology xraylo = Technology.All["xraylo"];
+			Assert.That(xraylo.Level, Is.EqualTo(2));
+			Assert.That(xraylo.Requires, Is.EqualTo(Technology.All["lasopt"]));
+			Assert.That(xraylo.UseProduceModules.Name, Is.EqualTo("xraylz"));
+
+			Technology lstrrt = Technology.All["lstrrt"];
+			Assert.That(lstrrt.Level, Is.EqualTo(1));
+			Assert.That(lstrrt.HasTag("military"));
+			Assert.That(lstrrt.Requires, Is.EqualTo(Technology.All["lasopt"]));
+			Assert.That(lstrrt.UseProduceModules.Name, Is.EqualTo("laztrt"));
+			ModuleType laztrt = ModuleType.All["laztrt"];
+			Assert.That(laztrt.Attack, Is.EqualTo(6));
+			Assert.That(laztrt.Damage, Is.EqualTo(6));
+			Assert.That(laztrt.DamageCapacity, Is.EqualTo(100));
+			Assert.That(laztrt.EnergyRequired, Is.EqualTo(5));
+
+			ModuleType gunplc = ModuleType.All["gunplc"];
+			Assert.That(gunplc.Attack, Is.EqualTo(1));
+			Assert.That(gunplc.Damage, Is.EqualTo(1));
+			Assert.That(gunplc.DamageCapacity, Is.EqualTo(100));
+
+			ModuleType tanks = ModuleType.All["tanks"];
+			Assert.That(tanks.Attack, Is.EqualTo(4));
+			Assert.That(tanks.DamageCapacity, Is.EqualTo(100));
+
+			ModuleType engshp = ModuleType.All["engshp"];
+			Assert.That(engshp.Group, Is.EqualTo(EModuleTypesGroup.production));
+			Assert.That(engshp.Size, Is.EqualTo(25));
+			Assert.That(engshp.CrewRequired, Is.EqualTo(2));
+			Technology engshpTech = Technology.All["engshp"];
+			Assert.That(engshpTech.Level, Is.EqualTo(1));
+			Assert.That(engshpTech.Cost, Is.EqualTo(4));
+			Assert.That(engshpTech.HasTag("production"));
+			Assert.That(engshpTech.UseProduceModules.Name, Is.EqualTo("engshp"));
+
+			Technology rckter = Technology.All["rckter"];
+			Assert.That(rckter.Level, Is.EqualTo(1));
+			Assert.That(rckter.Cost, Is.EqualTo(4));
+			Assert.That(rckter.HasTag("military"));
+			Assert.That(rckter.UseCondition_ModuleTypesGroup, Is.EqualTo(EModuleTypesGroup.production));
+			Assert.That(rckter.UseProduceItems.ContainsKey(ItemType.All["rctlnc"]));
+			Assert.That(rckter.UseProduceModules, Is.Null);
+		}
+
+		[Test]
 		public void LoadGameData_nullparameter()
 		{
 			Assert.Throws<ArgumentNullException>(
@@ -672,5 +780,66 @@ namespace UnitTests
             this.compareFiles("gameout.conditionOrders.xml", "gameout.saved_conditionOrders.xml");
 
         }
+
+		[Test]
+		public void SaveLoad_PersistsModuleDamageBetweenTurns()
+		{
+			this.LoadGameDocument();
+			this.dataFile.LoadConfiguration();
+			this.dataFile.LoadFactions();
+			this.dataFile.LoadGalaxy();
+			this.game = this.dataFile.Game;
+
+			ModuleStack stack = ModuleStack.All["000006"];
+			Assert.That(stack.Quantity, Is.EqualTo(2));
+			Assert.That(stack.Modules[0].Damage, Is.EqualTo(0));
+			Assert.That(stack.Modules[0].CaptureDamage, Is.EqualTo(0));
+			Assert.That(stack.Modules[0].Online, Is.True);
+
+			stack.Modules[0].Damage = 26;
+			stack.Modules[0].CaptureDamage = 9;
+			stack.Modules[1].Online = false;
+
+			string testdir = Directory.GetCurrentDirectory();
+			string testfile = "gameout.moduleDamage.xml";
+			this.dataFile.SaveGame(testdir, testfile);
+
+			XmlDocument saved = new XmlDocument();
+			saved.Load(Path.Combine(testdir, testfile));
+			XmlElement elStack = (XmlElement)saved.SelectSingleNode("//modulestack[@name='000006']");
+			Assert.That(elStack, Is.Not.Null);
+			XmlNodeList moduleNodes = elStack.SelectNodes("module");
+			Assert.That(moduleNodes.Count, Is.EqualTo(2));
+			Assert.That(((XmlElement)moduleNodes[0]).GetAttribute("damage"), Is.EqualTo("26"));
+			Assert.That(((XmlElement)moduleNodes[0]).GetAttribute("capture"), Is.EqualTo("9"));
+			Assert.That(((XmlElement)moduleNodes[0]).HasAttribute("online"), Is.False);
+			Assert.That(((XmlElement)moduleNodes[1]).HasAttribute("damage"), Is.False);
+			Assert.That(((XmlElement)moduleNodes[1]).HasAttribute("capture"), Is.False);
+			Assert.That(((XmlElement)moduleNodes[1]).GetAttribute("online"), Is.EqualTo("false"));
+
+			XmlElement elUndamaged = (XmlElement)saved.SelectSingleNode("//modulestack[@name='100001']");
+			Assert.That(elUndamaged, Is.Not.Null);
+			Assert.That(elUndamaged.SelectNodes("module").Count, Is.EqualTo(0));
+
+			this.game.ClearDictionaries();
+			this.game = null;
+			this.dataFile = null;
+
+			this.dataFile = new DataFile(testdir);
+			this.dataFile.LoadGameDocument(testdir, testfile);
+			this.dataFile.LoadConfiguration(testdir);
+			this.dataFile.LoadFactions();
+			this.dataFile.LoadGalaxy();
+			this.game = this.dataFile.Game;
+
+			stack = ModuleStack.All["000006"];
+			Assert.That(stack.Quantity, Is.EqualTo(2));
+			Assert.That(stack.Modules[0].Damage, Is.EqualTo(26));
+			Assert.That(stack.Modules[0].CaptureDamage, Is.EqualTo(9));
+			Assert.That(stack.Modules[0].Online, Is.True);
+			Assert.That(stack.Modules[1].Damage, Is.EqualTo(0));
+			Assert.That(stack.Modules[1].CaptureDamage, Is.EqualTo(0));
+			Assert.That(stack.Modules[1].Online, Is.False);
+		}
     }
 }

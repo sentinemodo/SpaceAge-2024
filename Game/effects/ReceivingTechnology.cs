@@ -29,21 +29,18 @@ namespace SpaceAge
 
 		public override void Execute(int week)
 		{
-            this.Receiver.Technologies.Add(this.Technology);
-            this.Receiver.EventReports.Add(
-                week,
-                string.Format("received copy of {0} technology from {1}.",                    
-                    this.Technology.ReportName,
-                    this.Transferer.ReportName));
-            
-            // show new technology in raport
-            if (!this.Receiver.Owner.TechnologiesSeen.Contains(this.Technology))
-            {
-                this.Receiver.Owner.TechnologiesToShow.Add(this.Technology);
-            }
+			string from = (this.Transferer != null)
+				? string.Concat(" from ", this.Transferer.ReportName)
+				: string.Empty;
+			this.Receiver.ReceiveTechnologyCopy(
+				this.Technology,
+				week,
+				string.Format("received copy of {0} technology{1}.",
+					this.Technology.ReportName,
+					from));
 
-            this.Executed = true;
-            base.Execute(week);   
+			this.Executed = true;
+			base.Execute(week);
 		}
 
         public override XmlElement SaveXml(XmlDocument doc)

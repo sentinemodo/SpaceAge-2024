@@ -5,7 +5,7 @@ Content-Disposition: attachment
 SpaceAge report for Caste Prime [2].
 Turn 1, Year 2020, January 1.
 
-SpaceAge Engine Version: 0.1.137.
+SpaceAge Engine Version: 0.1.141.
 
 Events during turn:
   none.
@@ -14,7 +14,6 @@ Bank report:
   Bank account balance: 10000.
   Credit line maximum: 10000.
   Credit rate: 20%, Deposit rate: 5%.
-
 Galaxy report:
 ------------------------------------------------------------
 * Sol [SS0001] (0, 0, 0), star system.
@@ -52,13 +51,13 @@ Galaxy report:
     size: 75000, capacity: 45000/40620, energy: 320/265 (30).
     - Berlin garrison [000002], infantry battalion [inftry], owned by NPC [1].
       size: 500.
-    - Berlin farms [000003], 10 farming complexes [farms], owned by NPC [1].
+    - Berlin farms [000003], 10 farming complexes [farms], immobile, owned by NPC [1].
       size: 10000.
-    - Berlin coal powerplants [000004], 5 coal-burning plants [cplant], owned by NPC [1].
+    - Berlin coal powerplants [000004], 5 coal-burning plants [cplant], immobile, owned by NPC [1].
       size: 5000.
-    - Berlin granary [000005], small cargo bay [cargob], owned by NPC [1].
+    - Berlin granary [000005], small cargo bay [cargob], immobile, owned by NPC [1].
       size: 2000.
-    + Caste Prime Headquarters [000012], corporate headquarters [corphq].
+    + Caste Prime Headquarters [000012], corporate headquarters [corphq], immobile.
       size: 1000, mass: 1404 (1000), capacity: 750/404, energy: 10, crew: 20/101, upkeep: 210 (100)
       cash [cash], consume: 101 (0) units of food [food], 101 (0) units of terran breathing gas
       mixture [terair].
@@ -67,7 +66,7 @@ Galaxy report:
       + Caste Prime CEO [000001], terran [terran].
         size: 4, mass: 4, capacity: 3/0, upkeep: 10 cash [cash], consume: unit of food [food], unit
         of terran breathing gas mixture [terair].
-    + small cargo bay [000013], 5 small cargo bays [cargob].
+    + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
       size: 10000, mass: 7940 (1000), capacity: 9000/5640, upkeep: 160 (150) cash [cash], consume:
       10 (0) units of food [food], 10 (0) units of terran breathing gas mixture [terair].
       items: 1000 units of food [food] (size: 1000, mass: 1000), 1000 units of terran breathing gas
@@ -77,13 +76,13 @@ Galaxy report:
       [copper] (size: 500, mass: 800), 100 units of uranium [uraniu] (size: 100, mass: 800), 10
       terrans [terran] (size: 40, mass: 40, upkeep: 10 cash [cash], consume: 10 units of food
       [food], 10 units of terran breathing gas mixture [terair]).
-    + farming complex [000014], 3 farming complexes [farms].
+    + farming complex [000014], 3 farming complexes [farms], immobile.
       size: 3000, mass: 360 (300), capacity: 1500/60, energy: 15, crew: 15/15, upkeep: 165 (150)
       cash [cash], consume: 15 (0) units of food [food], 15 (0) units of terran breathing gas
       mixture [terair].
       items: 15 terrans [terran] (size: 60, mass: 60, upkeep: 15 cash [cash], consume: 15 units of
       food [food], 15 units of terran breathing gas mixture [terair]).
-    + coal-burning plant [000015], 3 coal-burning plants [cplant].
+    + coal-burning plant [000015], 3 coal-burning plants [cplant], immobile.
       size: 3000, mass: 3524 (3000), capacity: 1500/524, energy: 120/30 (consume: 15 units of carbon
       [carbon] for 13 weeks), crew: 6/6, upkeep: 156 (150) cash [cash], consume: 6 (0) units of food
       [food], 6 (0) units of terran breathing gas mixture [terair].
@@ -91,13 +90,13 @@ Galaxy report:
       items: 100 units of carbon [carbon] (size: 500, mass: 500), 6 terrans [terran] (size: 24,
       mass: 24, upkeep: 6 cash [cash], consume: 6 units of food [food], 6 units of terran breathing
       gas mixture [terair]).
-    + core drill [000016], core drill [cdrill].
+    + core drill [000016], core drill [cdrill], immobile.
       size: 1000, mass: 1024 (1000), capacity: 750/24, energy: 5, crew: 6/6, upkeep: 46 (40) cash
       [cash], consume: 6 (0) units of food [food], 6 (0) units of terran breathing gas mixture
       [terair].
       items: 6 terrans [terran] (size: 24, mass: 24, upkeep: 6 cash [cash], consume: 6 units of food
       [food], 6 units of terran breathing gas mixture [terair]).
-    + factory [000017], 5 factories [factry].
+    + factory [000017], 5 factories [factry], immobile.
       size: 5000, mass: 4280 (3750), capacity: 2500/450, energy: 75, crew: 50/50, upkeep: 350 (300)
       cash [cash], consume: 50 (0) units of food [food], 50 (0) units of terran breathing gas
       mixture [terair].
@@ -113,29 +112,29 @@ Galaxy report:
 Orders Template:
 #faction 2 "xyzzy"
 #modulestack 000012
-; + Caste Prime Headquarters [000012], corporate headquarters [corphq].
+; + Caste Prime Headquarters [000012], corporate headquarters [corphq], immobile.
 ; items: 100 terrans [terran].
 
 #modulestack 000013
-; + small cargo bay [000013], 5 small cargo bays [cargob].
+; + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
 ; items: 1000 units of food [food], 1000 units of terran breathing gas mixture [terair], 1000 units of
 ; oxyhydro [h2o2], 100 units of iron [iron], 100 units of titanium [titani], 100 units of silicium
 ; [silici], 100 units of copper [copper], 100 units of uranium [uraniu], 10 terrans [terran].
 
 #modulestack 000014
-; + farming complex [000014], 3 farming complexes [farms].
+; + farming complex [000014], 3 farming complexes [farms], immobile.
 ; items: 15 terrans [terran].
 
 #modulestack 000015
-; + coal-burning plant [000015], 3 coal-burning plants [cplant].
+; + coal-burning plant [000015], 3 coal-burning plants [cplant], immobile.
 ; items: 100 units of carbon [carbon], 6 terrans [terran].
 
 #modulestack 000016
-; + core drill [000016], core drill [cdrill].
+; + core drill [000016], core drill [cdrill], immobile.
 ; items: 6 terrans [terran].
 
 #modulestack 000017
-; + factory [000017], 5 factories [factry].
+; + factory [000017], 5 factories [factry], immobile.
 ; items: 50 terrans [terran], 20 units of iron [iron], 10 units of titanium [titani], 10 units of
 ; silicium [silici].
 

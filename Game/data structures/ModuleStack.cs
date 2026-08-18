@@ -256,6 +256,71 @@ namespace SpaceAge
 			}
 		}
 
+		public int QuantityOperational
+		{
+			get
+			{
+				if (!this.IsFormed || !this.online)
+				{
+					return 0;
+				}
+				int operable = this.QuantityActive;
+				if (operable <= 0)
+				{
+					return 0;
+				}
+				if (this.ModuleType.CrewRequired > 0)
+				{
+					operable = Math.Min(operable, this.CrewCurrent / this.ModuleType.CrewRequired);
+				}
+				if (this.IsRootModuleStack && this.ModuleType.EnergyRequired > 0)
+				{
+					int availableEnergy = this.EnergyProduction + this.ModuleStacks.EnergyProduction();
+					operable = Math.Min(operable, availableEnergy / this.ModuleType.EnergyRequired);
+				}
+				return Math.Max(operable, 0);
+			}
+		}
+
+		public bool HasOperationalModules
+		{
+			get { return this.QuantityOperational > 0; }
+		}
+
+		public bool IsPartiallyDisabled
+		{
+			get
+			{
+				return this.HasOperationalModules && this.QuantityOperational < this.QuantityActive;
+			}
+		}
+
+		public bool IsModuleOperational(Module module)
+		{
+			if (module == null || module.Parent != this || !module.IsActive || !this.IsFormed || !this.online)
+			{
+				return false;
+			}
+			int operationalLeft = this.QuantityOperational;
+			foreach (Module candidate in this.modules)
+			{
+				if (!candidate.IsActive)
+				{
+					continue;
+				}
+				if (operationalLeft <= 0)
+				{
+					return false;
+				}
+				if (candidate == module)
+				{
+					return true;
+				}
+				operationalLeft--;
+			}
+			return false;
+		}
+
 		public void AddModule()
 		{
 			this.AddModule(0);
@@ -436,6 +501,109 @@ namespace SpaceAge
 			get { return this.technologies; }
 		}
 
+		// Grant a technology instance onto this stack, or onto the first
+		// same-owner stack in the location that has remaining technology
+		// capacity (this stack first, then a pre-order walk of the region).
+		// First time the owner sees it, queue the description for this turn's
+		// report (TechnologiesToShow). Not a player COPY order: overflow relocates
+		// instead of failing.
+		public void ReceiveTechnologyCopy(Technology technology, int week, string eventDescription)
+		{
+			if (technology == null)
+			{
+				return;
+			}
+
+			ModuleStack host = this.FindTechnologyCopyHost(technology);
+			if (host != this)
+			{
+				host.ReceiveTechnologyCopyOnThis(technology, week, eventDescription);
+				return;
+			}
+
+			this.ReceiveTechnologyCopyOnThis(technology, week, eventDescription);
+		}
+
+		public bool CanHostTechnologyCopy(Technology technology)
+		{
+			if (technology == null || this.ModuleType == null)
+			{
+				return false;
+			}
+			if (this.Technologies.Contains(technology.Name))
+			{
+				return true;
+			}
+			return this.TechnologyCapacity >= this.TechnologyCapacityUsed + technology.Level;
+		}
+
+		public ModuleStack FindTechnologyCopyHost(Technology technology)
+		{
+			if (this.CanHostTechnologyCopy(technology))
+			{
+				return this;
+			}
+
+			Location location = this.Location;
+			if (location != null)
+			{
+				foreach (ModuleStack root in location.ModuleStacks.Values)
+				{
+					ModuleStack found = this.findTechnologyCopyHostRecursive(root, this.Owner, technology);
+					if (found != null)
+					{
+						return found;
+					}
+				}
+			}
+
+			return this;
+		}
+
+		private ModuleStack findTechnologyCopyHostRecursive(ModuleStack stack, Faction owner, Technology technology)
+		{
+			if (stack == null)
+			{
+				return null;
+			}
+
+			if (stack.Owner == owner && stack.CanHostTechnologyCopy(technology))
+			{
+				return stack;
+			}
+
+			foreach (ModuleStack child in stack.ModuleStacks.Values)
+			{
+				ModuleStack nested = this.findTechnologyCopyHostRecursive(child, owner, technology);
+				if (nested != null)
+				{
+					return nested;
+				}
+			}
+
+			return null;
+		}
+
+		private void ReceiveTechnologyCopyOnThis(Technology technology, int week, string eventDescription)
+		{
+			if (!this.Technologies.Contains(technology.Name))
+			{
+				this.Technologies.Add(technology);
+			}
+
+			if (!string.IsNullOrEmpty(eventDescription))
+			{
+				this.EventReports.Add(week, eventDescription);
+			}
+
+			if (this.Owner != null
+				&& !this.Owner.TechnologiesSeen.Contains(technology.Name)
+				&& !this.Owner.TechnologiesToShow.Contains(technology.Name))
+			{
+				this.Owner.TechnologiesToShow.Add(technology);
+			}
+		}
+
 		// technology capacity limits older equipment usage.
 		// to use newer technologies one must build newer facilities 
 		// otherwise it would be possible to build ten factories to build level ten modules
@@ -475,17 +643,21 @@ namespace SpaceAge
 					return false;
                 if (this.Modules.Count == 0)
                     return false;
-                if (this.CrewRequired > this.CrewCurrent)
+				if (this.QuantityOperational == 0)
                     return false;
                 //if (this.CrewRequired + this.ModuleStacks.CrewRequired() > this.CrewCurrent + this.ModuleStacks.CrewCurrent() )
                 //    return false;
 				// TODO: priorities of shutdown on lack of energy and lack of crew
-				if (this.IsRootModuleStack)
+				if (this.IsRootModuleStack && this.QuantityOperational < this.QuantityActive)
 				{
 					if (this.EnergyRequired + this.ModuleStacks.EnergyRequired() > this.EnergyProduction + this.ModuleStacks.EnergyProduction())
 					{
 						return false;
 					}
+				}
+				if (this.QuantityOperational < this.QuantityActive)
+				{
+					return false;
 				}
 				return true;
 			}
@@ -552,18 +724,47 @@ namespace SpaceAge
 			return true;
 		}
 
+		private bool moduleTypeIsCombatArmed(ModuleType type)
+		{
+			if (type == null)
+			{
+				return false;
+			}
+			if (type.Group == EModuleTypesGroup.military)
+			{
+				return true;
+			}
+			if (type.Attack > 0
+				&& (type.Group == EModuleTypesGroup.vehicle
+					|| type.Group == EModuleTypesGroup.infantry))
+			{
+				return true;
+			}
+			return false;
+		}
+
 		public bool IsArmed
 		{
 			get
 			{
-                if (this.IsFormed)
+                if (!this.IsFormed)
                 {
-                    if (this.moduleType.Group == EModuleTypesGroup.military
-                        | this.ModuleStacks.Contains(EModuleTypesGroup.military))
+                    return false;
+                }
+
+                if (this.moduleTypeIsCombatArmed(this.moduleType))
+                {
+                    return true;
+                }
+
+                foreach (ModuleStack moduleStack in this.ModuleStacks.Values)
+                {
+                    if (moduleStack.IsArmed)
                     {
                         return true;
                     }
                 }
+
 				return false;
 			}
 		}
@@ -731,6 +932,19 @@ namespace SpaceAge
 			}
 		}
 
+		public int CaptureDamage
+		{
+			get
+			{
+				int captureDamage = 0;
+				foreach (Module module in this.modules)
+				{
+					captureDamage += module.CaptureDamage;
+				}
+				return captureDamage;
+			}
+		}
+
 		public int Attack
 		{
 			get
@@ -810,6 +1024,106 @@ namespace SpaceAge
 			get { return this.tactics; }
 		}
 
+		public string PreferredTargetName { get; set; }
+
+		public bool HasEvade
+		{
+			get { return this.Tactics.ContainsName("evade"); }
+		}
+
+		public bool HasCapture
+		{
+			get { return this.Tactics.ContainsName("capture"); }
+		}
+
+		public bool HasPrioritizeArmed
+		{
+			get { return this.Tactics.ContainsName("prioritize armed"); }
+		}
+
+		public bool HasPrioritizeCommand
+		{
+			get { return this.Tactics.ContainsName("prioritize command"); }
+		}
+
+		public ETactic FiringTactic
+		{
+			get { return this.HasCapture ? ETactic.capture : ETactic.destroy; }
+		}
+
+		public void ApplyTactic(string tacticName)
+		{
+			if (tacticName == "evade")
+			{
+				if (!this.Tactics.ContainsName("evade"))
+				{
+					this.Tactics.Add(new EvadeTactic(this));
+				}
+				return;
+			}
+
+			this.Tactics.RemoveByName("destroy");
+			this.Tactics.RemoveByName("capture");
+			this.Tactics.RemoveByName("disable");
+			if (tacticName == "capture")
+			{
+				this.Tactics.Add(new CaptureTactic(this));
+			}
+			else
+			{
+				this.Tactics.Add(new DestroyTactic(this));
+			}
+		}
+
+		public void ApplyPrioritizeTactic(string tacticName)
+		{
+			this.Tactics.RemoveByName("prioritize armed");
+			this.Tactics.RemoveByName("prioritize command");
+			if (tacticName == "prioritize armed")
+			{
+				this.Tactics.Add(new PrioritizeArmedTactic(this));
+			}
+			else if (tacticName == "prioritize command")
+			{
+				this.Tactics.Add(new PrioritizeCommandTactic(this));
+			}
+		}
+
+		public bool HasIntactModules()
+		{
+			foreach (Module module in this.Modules)
+			{
+				if (!module.IsWrecked)
+				{
+					return true;
+				}
+			}
+			foreach (ModuleStack moduleStack in this.ModuleStacks.Values)
+			{
+				if (moduleStack.HasIntactModules())
+				{
+					return true;
+				}
+			}
+			return false;
+		}
+
+		public bool IsCommandStack()
+		{
+			if (this.moduleType != null && this.moduleType.Group == EModuleTypesGroup.command)
+			{
+				return true;
+			}
+			foreach (ModuleStack moduleStack in this.ModuleStacks.Values)
+			{
+				if (moduleStack.IsCommandStack())
+				{
+					return true;
+				}
+			}
+			return false;
+		}
+
 		#endregion
 
 
@@ -884,6 +1198,22 @@ namespace SpaceAge
                 }
             }
             return stack;
+        }
+
+        // Number of modules of a given module type held by this stack and, recursively,
+        // its nested sub-stacks. Mirrors ItemStackSumRecursive for modules.
+        public int ModuleCountRecursive(ModuleType moduleType)
+        {
+            int count = 0;
+            if (this.moduleType == moduleType)
+            {
+                count += this.Quantity;
+            }
+            foreach (ModuleStack moduleStack in this.ModuleStacks.Values)
+            {
+                count += moduleStack.ModuleCountRecursive(moduleType);
+            }
+            return count;
         }
 
         public ItemStacks ItemStacksSumRecursive
@@ -1069,11 +1399,8 @@ namespace SpaceAge
 			{
 				line = this.reportActive(line);
 			}
-			if (this.IsRootModuleStack)
-			{
-				line = string.Format("{0}{1}", line, this.IsImmobile ? ", immobile" : "");
-				line = string.Format("{0}{1}", line, this.IsArmed ? ", military" : "");
-			}
+			line = string.Format("{0}{1}", line, this.IsImmobile ? ", immobile" : "");
+			// IsArmed is used for combat logic but not shown in reports
 
             if (this.Owner != null & this.Owner != faction)
             {
@@ -1236,6 +1563,14 @@ namespace SpaceAge
                 { this.ReportHeader(faction), level },
                 { this.reportDetails(faction), level + 1 }
             };
+
+            if (this.owner == faction && this.modules.HasPersistedState)
+            {
+                string hitPoints = string.Empty;
+                hitPoints = this.reportOwnHitPoints(hitPoints);
+                reportLines.Add(string.Concat(hitPoints, "."), level + 1);
+                reportLines.Add(this.modules.Report(faction), level + 2);
+            }
 
             if (this.IsFormed)
             {
@@ -1420,6 +1755,13 @@ namespace SpaceAge
 				lines.Add(string.Concat(line, "."));
 			}
 
+			ModuleStack parentStack = this.parent as ModuleStack;
+			if (this.owner == faction && this.itemStacks.Count > 0
+				&& parentStack != null && parentStack.Owner != faction)
+			{
+				lines.Add(string.Concat("items: ", this.ItemStacks.ReportList, "."));
+			}
+
 			//if (this.owner == faction && this.effects.Count > 0)
 			//{
 			//    reportLines.Add(this.effects.Report(faction, level + 1));
@@ -1477,6 +1819,24 @@ namespace SpaceAge
 			return line;
 		}
 
+		private string reportOwnHitPoints(string line)
+		{
+			line = string.Format("{0}hit points: {1}/{2}",
+				(line == string.Empty) ? string.Empty : string.Concat(line, ", "),
+				this.HitPoints,
+				this.HitPoints - this.Damage);
+			int capture = 0;
+			foreach (Module module in this.modules)
+			{
+				capture += module.CaptureDamage;
+			}
+			if (capture > 0)
+			{
+				line = string.Format("{0}, capture: {1}", line, capture);
+			}
+			return line;
+		}
+
 		private string reportHitPoints(Faction faction, string line)
 		{
 			int totalHitPoints = this.HitPoints + this.ModuleStacks.HitPoints();
@@ -1490,6 +1850,11 @@ namespace SpaceAge
 					line,
 					this.HitPoints,
 					this.HitPoints - this.Damage);
+			}
+			int capture = this.CaptureDamage + this.ModuleStacks.CaptureDamage();
+			if (capture > 0)
+			{
+				line = string.Format("{0}, capture: {1}", line, capture);
 			}
 			return line;
 		}
@@ -1614,6 +1979,10 @@ namespace SpaceAge
 			{
 				line = string.Concat(line, "active");
 			}
+			else if (this.IsPartiallyDisabled)
+			{
+				line = string.Concat(line, "partially disabled");
+			}
 			else
 			{
 				line = string.Concat(line, "disabled");
@@ -1648,6 +2017,26 @@ namespace SpaceAge
 		}
 
 		# endregion
+
+		public Modules GetFiringModules()
+		{
+			Modules firingModules = new Modules();
+			if (this.IsFormed && this.moduleTypeIsCombatArmed(this.moduleType))
+			{
+				foreach (Module module in this.modules)
+				{
+					if (this.IsModuleOperational(module))
+					{
+						firingModules.Add(module);
+					}
+				}
+			}
+			foreach (ModuleStack modulestack in this.ModuleStacks.Values)
+			{
+				firingModules.AddRange(modulestack.GetFiringModules());
+			}
+			return firingModules;
+		}
 
 		public Modules GetModules(EModuleTypesGroup group)
 		{			
@@ -1701,12 +2090,18 @@ namespace SpaceAge
                 this.Description = elModuleStack.GetAttribute("description");
             }
 
-            int modules = this.XMLAssignInteger(elModuleStack.GetAttribute("quantity"), 1); 
-            
-            // TODO: here need to implement damage that currently does not transfers between turns
-            for (int i = 0; i < modules; i++)
+            int modules = this.XMLAssignInteger(elModuleStack.GetAttribute("quantity"), 1);
+            XmlNodeList moduleNodes = elModuleStack.SelectNodes("module");
+            if (moduleNodes.Count > 0)
             {
-                this.AddModule();
+                this.Modules.LoadXml(elModuleStack, this);
+            }
+            else
+            {
+                for (int i = 0; i < modules; i++)
+                {
+                    this.AddModule();
+                }
             }
 
             this.People.LoadXml(elModuleStack, this);                
@@ -1737,6 +2132,8 @@ namespace SpaceAge
             {
                 this.xmlElement.SetAttribute("description", this.Description);
             }
+
+            this.Modules.SaveXml(doc, this.xmlElement);
 
             this.People.SaveXml(doc, this.xmlElement, faction);
             this.Technologies.SaveXml(doc, this.xmlElement);

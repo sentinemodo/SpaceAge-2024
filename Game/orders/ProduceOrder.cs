@@ -126,6 +126,8 @@ namespace SpaceAge
 		{
 			if (!this.Producer.Effects.IsFuelled)
 			{
+				this.autoGetMissingFuel(week);
+
 				if (this.Producer.ItemStacksSumRecursive.Has(this.Producer.ProduceEnergyConsume))
 				{
 					IItemStacksHolder holder = this.findFuelHolder(this.Producer, this.Producer.ProduceEnergyConsume);
@@ -145,9 +147,7 @@ namespace SpaceAge
 				}
 				else
 				{
-					this.Producer.EventReports.Add(
-						week, 
-						string.Format("is out of fuel for {0}.", this.Producer.ReportName));
+					this.Producer.EventReports.Add(week, "out of fuel.");
 					return true;
 				}
 			}
@@ -156,6 +156,91 @@ namespace SpaceAge
 				this.Producer.Effects.Fuelled.Use();
 			}
 			return false;
+		}
+
+		private void autoGetMissingFuel(int week)
+		{
+			if (this.Producer.Location == null)
+			{
+				return;
+			}
+
+			foreach (ItemStack needed in this.Producer.ProduceEnergyConsume.Values)
+			{
+				int have = this.Producer.ItemStackSumRecursive(needed.ItemType).Quantity;
+				int missing = needed.Quantity - have;
+				if (missing <= 0)
+				{
+					continue;
+				}
+
+				ItemStack transfer = new ItemStack(needed.ItemType, missing);
+				if (this.Producer.Capacity - this.Producer.CapacityUsed < transfer.Size)
+				{
+					continue;
+				}
+
+				IItemStacksHolder source = this.findOwnedFuelInLocation(transfer);
+				if (source == null)
+				{
+					continue;
+				}
+
+				source.ItemStacks.Remove(transfer);
+				this.Producer.ItemStacks.Add(transfer);
+				source.EventReports.Add(
+					week,
+					string.Format("given {0} to {1}.",
+						transfer.ReportName,
+						this.Producer.ReportName));
+				this.Producer.EventReports.Add(
+					week,
+					string.Format("got {0} from {1}.",
+						transfer.ReportName,
+						source.ReportName));
+			}
+		}
+
+		private IItemStacksHolder findOwnedFuelInLocation(ItemStack need)
+		{
+			foreach (ModuleStack root in this.Producer.Location.ModuleStacks.Values)
+			{
+				IItemStacksHolder found = this.findOwnedFuelHolder(root, need);
+				if (found != null)
+				{
+					return found;
+				}
+			}
+			return null;
+		}
+
+		private IItemStacksHolder findOwnedFuelHolder(ModuleStack stack, ItemStack need)
+		{
+			if (stack.Owner == this.Producer.Owner
+				&& stack != this.Producer
+				&& stack.ItemStacks.Has(need))
+			{
+				return stack;
+			}
+
+			foreach (ModuleStack child in stack.ModuleStacks.Values)
+			{
+				IItemStacksHolder found = this.findOwnedFuelHolder(child, need);
+				if (found != null)
+				{
+					return found;
+				}
+			}
+
+			foreach (Person person in stack.People.Values)
+			{
+				if (person.Owner == this.Producer.Owner && person.ItemStacks.Has(need))
+				{
+					return person;
+				}
+			}
+
+			return null;
 		}
 
 		private IItemStacksHolder findFuelHolder(IItemStacksHolder holder, ItemStacks fuelItemStacks)

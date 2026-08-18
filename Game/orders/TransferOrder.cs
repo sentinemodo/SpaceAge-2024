@@ -197,6 +197,16 @@ namespace SpaceAge
 					}                   
 
 					this.Executed = true;
+					ModuleStack contractGiver = this.Transferer;
+					if (sourceStack.Quantity == 0)
+					{
+						ModuleStack parent = this.Transferer.Parent as ModuleStack;
+						if (parent != null && parent.Owner == this.Transferer.Owner)
+						{
+							contractGiver = parent;
+						}
+					}
+					Contract.All.NotifyTransfer(this.Transferer.Owner, contractGiver, this.Receiver, this.ModuleType, this.Quantity);
 				}
 				else
 				{

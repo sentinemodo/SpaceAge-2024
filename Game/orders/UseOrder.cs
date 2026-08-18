@@ -46,59 +46,48 @@ namespace SpaceAge
 			}
 			if (this.Technology.ProductionType == EProductionType.Modules)
 			{
+				// grammar: USE tech [AS alias] [FOR id]. Both AS and FOR are optional and
+				// independent, so "use tech for id" (no alias) is valid.
 				token = LineParser.GetToken(ref command);
-				if (token != string.Empty && token != "as")
+
+				if (token == "as")
 				{
-					throw new Exception("Bad syntax, AS expected. Received: " + token);
+					string alias = LineParser.GetQuotedToken(ref command);
+					if (alias == string.Empty)
+					{
+						throw new Exception("Bad syntax receiver modulestack id expected or alias. Received: " + alias);
+					}
+					this.Receiver = ModuleStack.All.GetOrCreateNewModuleStack(this.Producer.Owner, alias);
+					token = LineParser.GetToken(ref command);
 				}
 				else
 				{
-					if (token == "as")
+					// no explicit alias: generate a receiver name
+					string randomName = this.Producer.GenerateRandomIdentifier();
+					while (ModuleStack.All.ContainsKey(randomName))
 					{
-						token = LineParser.GetQuotedToken(ref command);
-						if (token != string.Empty)
-						{
-							this.Receiver = ModuleStack.All.GetOrCreateNewModuleStack(this.Producer.Owner, token);
-						}
-						else
-						{
-							throw new Exception("Bad syntax receiver modulestack id expected or alias. Received: " + token);
-						}
-					} else
-                    {
-                        string randomName = this.Producer.GenerateRandomIdentifier();
-                        while (ModuleStack.All.ContainsKey(randomName))
-                        {
-                            randomName = this.Producer.GenerateRandomIdentifier();
-                        }
-                        this.Receiver = ModuleStack.All.GetOrCreateNewModuleStack(this.Producer.Owner, randomName);
-                    }
+						randomName = this.Producer.GenerateRandomIdentifier();
+					}
+					this.Receiver = ModuleStack.All.GetOrCreateNewModuleStack(this.Producer.Owner, randomName);
 				}
 
-				token = LineParser.GetQuotedToken(ref command);
-				if (token != string.Empty && token != "for")
+				if (token == "for")
 				{
-					throw new Exception("Bad syntax an FOR expected. Received: " + token);
+					string parent = LineParser.GetQuotedToken(ref command);
+					if (parent == string.Empty)
+					{
+						throw new Exception("Bad syntax receiver parent modulestack id expected or alias. Received: " + parent);
+					}
+					// TODO: possible error here - if we give specific modulestack AS target, put FOR moduleStack that isn't it's current parent
+					this.ReceiverParent = ModuleStack.All.GetOrCreateNewModuleStack(this.Producer.Owner, parent);
+				}
+				else if (token == string.Empty)
+				{
+					this.ReceiverParent = this.Producer;
 				}
 				else
 				{
-					if (token == "for")
-					{
-						token = LineParser.GetQuotedToken(ref command);
-						if (token != string.Empty)
-						{
-                            // TODO: possible error here - if we give specific modulestack AS target, put FOR moduleStack that isn't it's current parent
-							this.ReceiverParent = ModuleStack.All.GetOrCreateNewModuleStack(this.Producer.Owner, token);
-						}
-						else
-						{
-							throw new Exception("Bad syntax receiver parent modulestack id expected or alias. Received: " + token);
-						}
-					}
-                    else
-                    {
-                        this.ReceiverParent = this.Producer;
-                    }
+					throw new Exception("Bad syntax, AS or FOR expected. Received: " + token);
 				}
 			}
 		}
@@ -166,6 +155,11 @@ namespace SpaceAge
 
 		public bool Usable(int week)
 		{
+			if (this.Producer.ModuleType == null || this.Producer.Location == null)
+			{
+				return false;
+			}
+
 			// verify if moduletype is valid
 			// verify if resoruces are present on the planet
 			// verify if the atmosphere is valid
@@ -248,20 +242,62 @@ namespace SpaceAge
 
 		public Producing Producing { get; set; }
 
+		private void TryReconnectProducing()
+		{
+			if (this.Producing != null)
+			{
+				return;
+			}
+
+			Producing existing = this.Producer.Effects.Producing;
+			if (existing == null || existing.Executed || existing.Technology != this.Technology)
+			{
+				return;
+			}
+
+			if (existing is ProducingModule producingModule)
+			{
+				if (this.Technology.ProductionType != EProductionType.Modules)
+				{
+					return;
+				}
+
+				ModuleStack receiver = this.Receiver as ModuleStack;
+				ModuleStack existingReceiver = producingModule.Receiver as ModuleStack;
+				ModuleStack receiverParent = this.ReceiverParent as ModuleStack;
+				ModuleStack existingReceiverParent = producingModule.ReceiverParent as ModuleStack;
+				if (receiver == null || existingReceiver == null || receiver.Name != existingReceiver.Name)
+				{
+					return;
+				}
+				if (receiverParent == null || existingReceiverParent == null || receiverParent.Name != existingReceiverParent.Name)
+				{
+					return;
+				}
+
+				producingModule.UseOrder = this;
+			}
+
+			this.Producing = existing;
+			this.durationLeft = existing.Duration;
+		}
+
 		public override void Execute(int week)
 		{
 			//TODO: refactor order into effect based -> move methods such as hastechnology or has resources to the producing effect
 			if (this.Usable(week) && this.CanOperate(week) && this.HasTechnology)
 			{
+				this.TryReconnectProducing();
+
 				// assign production if not producing
 				if (this.Producing != null && !this.Producing.Executed)
 				{
+					this.durationLeft = this.Producing.Duration;
 					this.durationLeft--;
 					this.Producing.Use();
 					this.Executing = true;
 				}
-
-				if (this.Producing == null && this.HasResources)
+				else if (this.Producing == null && this.HasResources)
 				{
 					// start production, consume resources
 					this.Producer.ItemStacks.Minus(this.Technology.UseConsumeItems);
@@ -297,7 +333,7 @@ namespace SpaceAge
 					this.Producing.Execute(week);
 					this.Executing = true;
                 }
-                else if (this.Producing == null && !this.HasResources)
+				else if (this.Producing == null && !this.HasResources)
 				{
 					switch (this.Technology.ProductionType)
 					{

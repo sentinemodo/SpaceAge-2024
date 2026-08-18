@@ -51,7 +51,7 @@ namespace SpaceAge
 				foreach (Module module in this.Parent.Modules)
 				{
 					i++;
-					if (this is Module)
+					if (module == this)
 					{
 						return i;
 					}
@@ -73,6 +73,33 @@ namespace SpaceAge
 		private int hitPoints
 		{
 			get { return this.parent.ModuleType.DamageCapacity; }
+		}
+
+		public int HitPoints
+		{
+			get { return this.hitPoints; }
+		}
+
+		private int captureDamage;
+		public int CaptureDamage
+		{
+			get { return this.captureDamage; }
+			set { this.captureDamage = value; }
+		}
+
+		public bool HasPersistedState
+		{
+			get { return this.damage > 0 || this.captureDamage > 0 || !this.online; }
+		}
+
+		public bool IsWrecked
+		{
+			get { return this.Damage >= this.HitPoints; }
+		}
+
+		public bool IsCaptureComplete
+		{
+			get { return !this.IsWrecked && (this.Damage + this.CaptureDamage) >= this.HitPoints; }
 		}
 
 		public EDamageStatus DamageStatus

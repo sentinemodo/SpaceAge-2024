@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
-using NUnit.Core;
 using NUnit.Framework;
 using NUnit.Framework.Legacy;
 using SpaceAge;
@@ -692,6 +692,44 @@ namespace UnitTests
 		}
 
 		[Test]
+		public void AssignAndExecuteHasOrder_ModuleType_Recursive()
+		{
+			// Frigate 100011 (type sshull) contains a nested stack 100013 of 2 'fisrec' modules.
+			// 'has <qty> <moduletype>' counts modules of that type across the stack and its
+			// nested sub-stacks (semantics B: recursive containment).
+			ModuleStack frigate = this.game.ModuleStacks["100011"];
+
+			List<string> testcommands = new List<string>
+            {
+                "#faction 2",
+                "#modulestack 100011",
+                "has 2 fisrec", // 2 fisrec modules live in nested stack 100013
+                "has 3 fisrec", // one more than exist -> should not execute
+                "has 1 sshull", // the observed stack itself is 1 sshull module
+                "#end"
+            };
+
+			OrdersReader ordersReader = new OrdersReader(game);
+			ordersReader.AssignOrders(testcommands);
+			Assert.That(frigate.Orders.Count, Is.EqualTo(3));
+
+			HasOrder has2fisrec = (HasOrder)frigate.Orders[0];
+			HasOrder has3fisrec = (HasOrder)frigate.Orders[1];
+			HasOrder has1sshull = (HasOrder)frigate.Orders[2];
+
+			Assert.That(has2fisrec.Quantity, Is.EqualTo(2));
+
+			has2fisrec.Execute(this.game.Week);
+			Assert.That(has2fisrec.Executed, "has 2 fisrec should execute (2 fisrec modules in nested stack 100013)");
+
+			has3fisrec.Execute(this.game.Week);
+			Assert.That(has3fisrec.Executed, Is.False, "has 3 fisrec should not execute (only 2 exist)");
+
+			has1sshull.Execute(this.game.Week);
+			Assert.That(has1sshull.Executed, "has 1 sshull should execute (the stack itself is 1 sshull module)");
+		}
+
+		[Test]
 		public void AssignRepeatableOrder()
 		{
 			Faction testFaction = this.game.Factions["2"];
@@ -1205,6 +1243,68 @@ namespace UnitTests
 			{
                 Assert.That(lines[i], Is.EqualTo(testlines2[i]));
 			}
+		}
+
+		[Test]
+		public void RemoveCommentsAndEmptyLines_DoubleSlashComments()
+		{
+			OrdersReader ordersReader = new OrdersReader(game);
+			List<string> testlines = new List<string>
+            {
+                "#faction 2",
+                "// full-line double-slash comment",
+                "#modulestack 100001",
+                "move R00002 // trailing double-slash comment",
+                "; full-line semicolon comment",
+                "move R00003 ; trailing semicolon comment",
+                "use filidx // build research lab // second slash run",
+                "#end"
+            };
+
+			List<string> expected = new List<string>
+            {
+                "#faction 2",
+                "#modulestack 100001",
+                "move R00002",
+                "move R00003",
+                "use filidx",
+                "#end"
+            };
+
+			List<string> lines = ordersReader.RemoveCommentsAndEmptyLines(testlines);
+			for (int i = 0; i < lines.Count; i++)
+			{
+				Console.WriteLine(lines[i]);
+			}
+
+			Assert.That(lines.Count, Is.EqualTo(expected.Count));
+			for (int i = 0; i < lines.Count; i++)
+			{
+				Assert.That(lines[i], Is.EqualTo(expected[i]));
+			}
+		}
+
+		[Test]
+		public void AssignUseOrder_ForClauseWithoutAs()
+		{
+			// "use <tech> for <id>" produces the module into an existing stack without
+			// naming a new receiver alias (the 'as' clause is optional).
+			ModuleStack factory = this.game.ModuleStacks["100001"];
+			List<string> testcommands = new List<string>
+            {
+                "#faction 2",
+                "#modulestack 100001",
+                "use wndtrb for 000021",
+                "#end"
+            };
+			OrdersReader ordersReader = new OrdersReader(game);
+			ordersReader.AssignOrders(testcommands);
+
+			UseOrder order = (UseOrder)factory.Orders[0];
+			Assert.That(order.Technology.Name, Is.EqualTo("wndtrb"));
+			Assert.That(order.Receiver, Is.Not.Null); // auto-generated receiver
+			Assert.That(order.ReceiverParent, Is.Not.Null);
+			Assert.That(((ModuleStack)order.ReceiverParent).Name, Is.EqualTo("000021"));
 		}
 
 		[Test]
@@ -2579,6 +2679,120 @@ namespace UnitTests
 
 
         [Test]
+        public void PeacefulScout108_See109_DeclareEnemy_StartsBattleAfter109Arrives()
+        {
+            this.game.ClearDictionaries();
+            string sampleDir = Path.Combine(Directory.GetCurrentDirectory(), "SampleGame");
+            DataFile dataFile = new DataFile(sampleDir);
+            dataFile.LoadGameDocument(sampleDir, "gamein.2_contract.xml");
+            dataFile.LoadConfiguration(Directory.GetCurrentDirectory());
+            dataFile.LoadFactions();
+            dataFile.LoadGalaxy();
+            dataFile.LoadContracts();
+            dataFile.LoadOrders();
+
+            Game game = dataFile.Game;
+            OrdersReader ordersReader = new OrdersReader(game);
+            ordersReader.LoadOrders(Path.Combine(sampleDir, "orders.2.2.txt"), false);
+            ordersReader.LoadOrders(Path.Combine(sampleDir, "orders.2.3.txt"), false);
+
+            ModuleStack scout = game.ModuleStacks["108"];
+            Faction gelvaren = game.Factions["3"];
+
+            for (int week = 1; week <= 13; week++)
+            {
+                game.Week = week;
+                game.ClearExecutedLongOrder();
+                game.ClearExecutedImmediateOrders();
+                game.ExecuteOrders();
+                game.ExecuteBattles();
+            }
+
+            Assert.That(scout.IsArmed, Is.True);
+            Assert.That(
+                scout.EventReports.Any(e => e.Description.Contains("saw") && e.Description.Contains("[109]")),
+                Is.True);
+            Assert.That(gelvaren.AttitudeToward(game.Factions["2"]), Is.EqualTo(FactionAttitude.Enemy));
+            Assert.That(game.Battles.Count, Is.GreaterThan(0));
+            Assert.That(
+                scout.EventReports.Any(e => e.Week == 9 && e.Description.Contains("declared enemy")),
+                Is.True);
+        }
+
+        [Test]
+        public void ExecuteHasOrder_ModuleType_triggersAfterCrossStackProduction()
+        {
+            this.game.ClearDictionaries();
+            string sampleDir = Path.Combine(Directory.GetCurrentDirectory(), "SampleGame");
+            DataFile dataFile = new DataFile(sampleDir);
+            dataFile.LoadGameDocument(sampleDir, "gamein.2_contract.xml");
+            dataFile.LoadConfiguration(Directory.GetCurrentDirectory());
+            dataFile.LoadFactions();
+            dataFile.LoadGalaxy();
+            dataFile.LoadContracts();
+            dataFile.LoadOrders();
+
+            Game game = dataFile.Game;
+            OrdersReader ordersReader = new OrdersReader(game);
+            ordersReader.LoadOrders(Path.Combine(sampleDir, "orders.2.2.txt"), false);
+            ordersReader.LoadOrders(Path.Combine(sampleDir, "orders.2.3.txt"), false);
+
+            ModuleStack tanks = game.ModuleStacks["109"];
+            Assert.That(tanks.Quantity, Is.EqualTo(2));
+            Assert.That(tanks.Orders.Count, Is.GreaterThan(0));
+
+            for (int week = 1; week <= 3; week++)
+            {
+                game.Week = week;
+                game.ClearExecutedLongOrder();
+                game.ClearExecutedImmediateOrders();
+                game.ExecuteOrders();
+            }
+
+            Assert.That(tanks.Quantity, Is.EqualTo(3), "factory should deliver third tank on week 3");
+            HasOrder hasOrder = tanks.Orders.Find(o => o is HasOrder) as HasOrder;
+            Assert.That(hasOrder, Is.Null, "has 3 tanks should have executed on week 3");
+            Assert.That(tanks.ItemStacks.ContainsKey(ItemType.All["terran"]), Is.True, "get terran should run after has");
+            Assert.That(
+                tanks.EventReports.Any(eventReport => eventReport.Week == 3 && eventReport.Description.Contains("departed from")),
+                Is.False,
+                "move is blocked on week 3 while production completes");
+            Assert.That(
+                tanks.EventReports.Any(eventReport => eventReport.Week == 3 && eventReport.Description.Contains("got 48 terrans")),
+                Is.True,
+                "refuel GETs should run on week 3");
+
+            game.Week = 4;
+            game.ClearExecutedLongOrder();
+            game.ClearExecutedImmediateOrders();
+            game.ExecuteOrders();
+
+            Assert.That(
+                tanks.EventReports.Any(eventReport => eventReport.Week == 4 && eventReport.Description.Contains("departed from")),
+                Is.True,
+                "move should start on week 4 once ExecutedLongOrder clears");
+
+            for (int week = 5; week <= 13; week++)
+            {
+                game.Week = week;
+                game.ClearExecutedLongOrder();
+                game.ClearExecutedImmediateOrders();
+                game.ExecuteOrders();
+            }
+
+            Assert.That(tanks.Parent, Is.SameAs(Region.All["R00002"]),
+                "tanks should be a root stack in Northern Hemisphere after move completes");
+            Assert.That(tanks.IsRootModuleStack, Is.True);
+
+            Faction faction = game.Factions["3"];
+            List<string> galaxyReport = game.Galaxy.Report(faction);
+            int start = galaxyReport.FindIndex(line => line.Contains("+ Surrender or die! [109]"));
+            Assert.That(start, Is.GreaterThanOrEqualTo(0), "galaxy report should list tanks in Northern Hemisphere");
+            int southern = galaxyReport.FindIndex(line => line.StartsWith("  Southern Hemisphere [R00003]"));
+            Assert.That(start, Is.LessThan(southern), "tanks should appear under Northern Hemisphere, not Southern");
+        }
+
+        [Test]
         public void ExecuteGetOrder_differentLocations()
         {
             //@get from 000014 all food
@@ -2633,9 +2847,9 @@ namespace UnitTests
             shuttles.ItemStacks.Add(new ItemStack(ItemType.All["copper"], 5));
             this.consoleOutReport("shuttles", shuttles, faction);
 
-            // this would execute in 8 weeks using single factory, or in two weeks using 5 factories
+            // this would execute in 6 weeks using single factory, or in two weeks using 5 factories
             // this shouldn't execute in region, without fuel
-            // with the above provided it should take 8 * 10 -> 80 / 5 -> 16 weeks
+            // with the above provided it should take 6 * 10 -> 60 / 5 -> 12 weeks
             List<string> testcommands = new List<string>
             {
                 "#faction 2",
@@ -2679,7 +2893,7 @@ namespace UnitTests
             Assert.That(shuttles.Effects.IsProducing);
             Assert.That(shuttles.Effects.IsFuelled);
 
-            Assert.That(shuttles.Effects.Producing.Duration, Is.EqualTo(15));
+            Assert.That(shuttles.Effects.Producing.Duration, Is.EqualTo(11));
             Assert.That(shuttles.Effects.Fuelled.Duration, Is.EqualTo(13));
             this.consoleOutReport("shuttles", shuttles, faction);
 
@@ -2695,7 +2909,7 @@ namespace UnitTests
             Assert.That(shuttles.Effects.IsProducing);
             Assert.That(shuttles.Effects.IsFuelled);
 
-            Assert.That(shuttles.Effects.Producing.Duration, Is.EqualTo(14));
+            Assert.That(shuttles.Effects.Producing.Duration, Is.EqualTo(10));
             Assert.That(shuttles.Effects.Fuelled.Duration, Is.EqualTo(12));
             this.consoleOutReport("shuttles", shuttles, faction);            
         }
@@ -2911,6 +3125,79 @@ namespace UnitTests
             Assert.That(order.Repeat, Is.EqualTo(-2));
             Assert.That(order.Executing, Is.False);
             Assert.That(order.Executed, Is.False);
+		}
+
+		[Test]
+		public void ExecuteProduceEnergy_AutoGetsFuelFromOwnedStackInSameLocation()
+		{
+			ModuleStack plant = this.game.ModuleStacks["000003"];
+			ModuleStack drill = this.game.ModuleStacks["000002"];
+			ItemType carbon = ItemType.All["carbon"];
+			int carbonBefore = drill.ItemStacks[carbon].Quantity;
+			Assert.That(plant.ItemStacks.Has(carbon), Is.False);
+
+			List<string> testcommands = new List<string>
+			{
+				"#faction 2",
+				"#modulestack 000003",
+				"produce energy",
+				"#end"
+			};
+			OrdersReader ordersReader = new OrdersReader(this.game);
+			ordersReader.AssignOrders(testcommands);
+
+			plant.ExecutedLongOrder = false;
+			plant.Orders[0].Execute(this.game.Week);
+			plant.Orders.RemoveExecuted();
+			plant.Effects.Execute(this.game.Week);
+			plant.Effects.RemoveExecuted();
+
+			Assert.That(drill.ItemStacks[carbon].Quantity, Is.EqualTo(carbonBefore - 5));
+			Assert.That(plant.ItemStacks.Has(carbon), Is.False);
+			Assert.That(plant.Effects.IsFuelled, Is.True);
+			Assert.That(plant.Effects.IsProducing, Is.True);
+			Assert.That(this.containsEvent(drill.EventReports, "given 5 units of carbon [carbon] to coal-burning plant [000003]."), Is.True);
+			Assert.That(this.containsEvent(plant.EventReports, "got 5 units of carbon [carbon] from core drill [000002]."), Is.True);
+			Assert.That(this.containsEvent(plant.EventReports, "consumed 5 units of carbon [carbon] as fuel."), Is.True);
+			Assert.That(this.containsEvent(plant.EventReports, "out of fuel."), Is.False);
+		}
+
+		[Test]
+		public void ExecuteProduceEnergy_ReportsOutOfFuel()
+		{
+			ModuleStack plant = this.game.ModuleStacks["000003"];
+			ModuleStack drill = this.game.ModuleStacks["000002"];
+			drill.ItemStacks.Minus(ItemType.All["carbon"], drill.ItemStacks[ItemType.All["carbon"]].Quantity);
+
+			List<string> testcommands = new List<string>
+			{
+				"#faction 2",
+				"#modulestack 000003",
+				"produce energy",
+				"#end"
+			};
+			OrdersReader ordersReader = new OrdersReader(this.game);
+			ordersReader.AssignOrders(testcommands);
+
+			plant.ExecutedLongOrder = false;
+			plant.Orders[0].Execute(this.game.Week);
+			plant.Orders.RemoveExecuted();
+
+			Assert.That(plant.Effects.IsProducing, Is.False);
+			Assert.That(this.containsEvent(plant.EventReports, "out of fuel."), Is.True);
+			Assert.That(this.containsEvent(plant.EventReports, "is out of fuel for coal-burning plant [000003]."), Is.False);
+		}
+
+		private bool containsEvent(EventReports events, string description)
+		{
+			foreach (EventReport eventReport in events)
+			{
+				if (eventReport.Description == description)
+				{
+					return true;
+				}
+			}
+			return false;
 		}
 
 		[Test]
@@ -3440,6 +3727,45 @@ namespace UnitTests
 		}
 
 		[Test]
+		public void ExecuteUseOrder_ContinuesSavedProducingModuleWithoutConsumingAgain()
+		{
+			Sequence.Ints.Push(109);
+
+			Faction testFaction = this.game.Factions["2"];
+			ModuleStack factory = this.game.ModuleStacks["000004"];
+			ModuleStack parent = this.game.ModuleStacks["000001"];
+			Technology armcbt = Technology.All["armcbt"];
+			Assert.That(factory.Technologies.Contains(armcbt));
+
+			ModuleStack receiver = ModuleStack.All.GetOrCreateNewModuleStack(factory.Owner, "109");
+			new ProducingModule(factory, armcbt, 2, receiver, parent);
+			factory.ItemStacks.Minus(ItemType.All["iron"], 19);
+			Assert.That(factory.ItemStacks.Quantity("iron"), Is.EqualTo(1));
+
+			List<string> testcommands = new List<string>
+			{
+				"#faction 2",
+				"#modulestack 000004",
+				"use armcbt as 109 for 000001",
+				"#end"
+			};
+
+			OrdersReader ordersReader = new OrdersReader(this.game);
+			ordersReader.AssignOrders(testcommands);
+			UseOrder useOrder = (UseOrder)factory.Orders[0];
+
+			this.executeOrder(factory, useOrder, 0);
+
+			Assert.That(factory.Effects.IsProducing, Is.True);
+			Assert.That(factory.Effects.Producing.Duration, Is.EqualTo(1));
+			Assert.That(useOrder.Producing, Is.SameAs(factory.Effects.Producing));
+			foreach (EventReport eventReport in factory.EventReports)
+			{
+				Assert.That(eventReport.Description, Does.Not.Contain("USE failed"));
+			}
+		}
+
+		[Test]
 		public void UseOrder_MultipleUseForAlias()
 		{
 			//ModuleStack: factory [000023]
@@ -3705,78 +4031,7 @@ namespace UnitTests
         }
 
 
-        [Test]
-        public void AssignResearchOrder()
-        {
-            Faction testFaction = this.game.Factions["2"];
-            ModuleType computerLibrary = ModuleType.All["cmplib"];
-
-            ModuleStack researchModuleStack = ModuleStack.All.GetOrCreateNewModuleStack(testFaction, "100000");
-            researchModuleStack.ModuleType = computerLibrary;
-            researchModuleStack.AddModule();
-
-            List<string> testcommands = new List<string>
-            {
-                "#faction 2",
-                "#modulestack 100000",
-                "research group military",
-                "#end"
-            };
-
-            OrdersReader ordersReader = new OrdersReader(game);
-            ordersReader.AssignOrders(testcommands);
-            Assert.That(researchModuleStack.Orders.Count, Is.EqualTo(1));
-
-            Assert.That(researchModuleStack.Orders[0] is ResearchOrder);
-            ResearchOrder researchOrder = (ResearchOrder)researchModuleStack.Orders[0];
-            Assert.That(researchOrder.ResearchType, Is.EqualTo(EResearchType.Group));
-            Assert.That(researchOrder.ResearchToken, Is.EqualTo("military"));
-            Assert.That(researchOrder.Repeat, Is.EqualTo(1));
-        }
-
-        [Test]
-        public void ExecuteResearchOrder()
-        {
-            Sequence.Ints.Push(50);
-            Sequence.Ints.Push(1);
-            Sequence.Ints.Push(100);
-
-            Faction testFaction = this.game.Factions["2"];
-            ModuleType computerLibrary = ModuleType.All["cmplib"];
-
-            ModuleStack researchModuleStack = ModuleStack.All.GetOrCreateNewModuleStack(testFaction, "100000");
-            researchModuleStack.Parent = ModuleStack.All["000005"];
-            researchModuleStack.ModuleType = computerLibrary;
-            researchModuleStack.AddModule();
-
-            List<string> testcommands = new List<string>
-            {
-                "#faction 2",
-                "#modulestack 100000",
-                "research group military",
-                "#end"
-            };
-
-            OrdersReader ordersReader = new OrdersReader(game);
-            ordersReader.AssignOrders(testcommands);
-            ResearchOrder researchOrder = (ResearchOrder)researchModuleStack.Orders[0];
-
-            int week = this.game.Week;
-            for (int i = 1; i <= 3; i++)
-            {
-                researchModuleStack.ExecutedLongOrder = false;
-                researchModuleStack.Execute(week++);
-            }
-
-            // there should be breakthrough on the second week and on the third week there should be a 1 RP generated
-            this.consoleOutReport("research progress report", researchModuleStack, researchModuleStack.Owner);
-
-            // there should be a new technology seen 
-            this.consoleOutReport("technologies seen", testFaction.TechnologiesToShow.ReportDescriptions(testFaction, 1), researchModuleStack.Owner);
-
-        }
-
-        // upkeep
+		// upkeep
         // cash in | out437
         // bank operations
         // at

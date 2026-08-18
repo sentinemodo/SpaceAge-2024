@@ -19,6 +19,7 @@ namespace IntegrationTests
 		[SetUp]
 		public void setupReport()
 		{
+			Battle.All.Clear();
 			this.dataFile = new DataFile(Directory.GetCurrentDirectory());
 			this.dataFile.LoadConfiguration();
 			this.dataFile.LoadGame();
@@ -69,15 +70,15 @@ namespace IntegrationTests
                 "",
                 "- Berlin [000005], 2 cities [city], immobile, owned by NPC [1].",
                 "  size: 50000, capacity: 30000/7230, energy: 140/80 (20).",
-                "  - Berlin farms [000008], 3 farming complexes [farms], owned by NPC [1].",
+                "  - Berlin farms [000008], 3 farming complexes [farms], immobile, owned by NPC [1].",
                 "    size: 3000.",
-                "  - Berlin wind powerplants [000011], 15 wind powerplants [wnplnt], owned by NPC [1].",
+                "  - Berlin wind powerplants [000011], 15 wind powerplants [wnplnt], immobile, owned by NPC [1].",
                 "    size: 150.",
-                "  + coal-burning plant [000007], 2 coal-burning plants [cplant].",
+                "  + coal-burning plant [000007], 2 coal-burning plants [cplant], immobile.",
                 "    size: 2000, mass: 2116 (2000), capacity: 1000/91, energy: 80/20 (consume: 10 units of carbon [carbon] for 13 weeks), crew: 4/4, upkeep: 104 (100) cash [cash], consume: 4 (0) units of food [food], 4 (0) units of terran breathing gas mixture [terair].",
                 "    fuel requirements: 10 units of carbon [carbon] per 13 weeks.",
                 "    items: 10 units of carbon [carbon] (size: 50, mass: 50), 5 units of iron [iron] (size: 25, mass: 50), 4 terrans [terran] (size: 16, mass: 16, upkeep: 4 cash [cash], consume: 4 units of food [food], 4 units of terran breathing gas mixture [terair]).",
-                "  + core drill [000006], 2 core drills [cdrill].",
+                "  + core drill [000006], 2 core drills [cdrill], immobile.",
                 "    size: 2000, mass: 2148 (2000), capacity: 1500/98, energy: 10, crew: 12/12, upkeep: 92 (80) cash [cash], consume: 12 (0) units of food [food], 12 (0) units of terran breathing gas mixture [terair].",
                 "    technologies: hydrocarbons drilling [hcdril].",
                 "    items: 10 units of iron [iron] (size: 50, mass: 100), 12 terrans [terran] (size: 48, mass: 48, upkeep: 12 cash [cash], consume: 12 units of food [food], 12 units of terran breathing gas mixture [terair]).",
@@ -101,6 +102,24 @@ namespace IntegrationTests
                 Assert.That(lines[i], Is.EqualTo(testlines[i]), "line number " + i);
 			}
             Assert.That(lines.Count, Is.EqualTo(testlines.Count));			
+		}
+
+		[Test]
+		public void RegionReport_ShowsContractAboveMarket()
+		{
+			Faction faction = this.game.Factions["2"];
+			Region region = this.game.Regions["R00001"];
+			GiveModuleTrigger trigger = new GiveModuleTrigger(1, ModuleType.All["inftry"], ModuleStack.All["000005"]);
+			new Contract("CT0001", region, this.game.Factions["1"], trigger, Technology.All["rckter"]);
+
+			List<string> lines = region.Report(faction);
+			int contractsIndex = lines.IndexOf("Contracts:");
+			int marketIndex = lines.IndexOf("Market report:");
+			Assert.That(contractsIndex, Is.GreaterThanOrEqualTo(0));
+			Assert.That(marketIndex, Is.GreaterThan(contractsIndex));
+			Assert.That(lines[contractsIndex + 1], Is.EqualTo("  CT0001: deliver 1 infantry battalion [inftry] to Berlin [000005]."));
+			Assert.That(lines[contractsIndex + 2], Is.EqualTo("    Reward: rocket launcher production [rckter] technology."));
+			Assert.That(lines[contractsIndex + 3], Is.EqualTo("Market report:"));
 		}
 
 		[Test]
@@ -255,7 +274,7 @@ namespace IntegrationTests
 
 			List<string> testlines1 = new List<string>
             {
-                "+ factory [000004], factory [factry].",
+                "+ factory [000004], factory [factry], immobile.",
                 "  size: 1000, mass: 890 (750), capacity: 500/90, energy: 15, crew: 10/10, upkeep: 70 (60) cash [cash], consume: 10 (0) units of food [food], 10 (0) units of terran breathing gas mixture [terair].",
                 "  technologies: agricultural complex [agrplx], armored combat [armcbt].",
                 "  items: 10 terrans [terran] (size: 40, mass: 40, upkeep: 10 cash [cash], consume: 10 units of food [food], 10 units of terran breathing gas mixture [terair]), 10 units of iron [iron] (size: 50, mass: 100), 300 cash [cash].",
@@ -279,7 +298,7 @@ namespace IntegrationTests
 
 			List<string> testlines2 = new List<string>
             {
-                string.Format("+ farming complex [{0}], farming complex [farms], disabled.", farmsStack.Name),
+                string.Format("+ farming complex [{0}], farming complex [farms], disabled, immobile.", farmsStack.Name),
                 "  size: 1000, mass: 100 (100), capacity: 500/0, energy: 5, crew: 5/0, upkeep: 50 cash [cash].",
                 "  events:",
                 "    week 1: formed by factory [000004] with farming complex [farms].",
@@ -301,6 +320,38 @@ namespace IntegrationTests
 		}
 
 		[Test]
+		public void UnitReport_ModuleDamage()
+		{
+			Faction faction = this.game.Factions["2"];
+			ModuleStack moduleStack = ModuleStack.All["000006"];
+			moduleStack.Modules[0].Damage = 26;
+			moduleStack.Modules[0].CaptureDamage = 9;
+
+			List<string> testlines = new List<string>
+			{
+				"+ core drill [000006], 2 core drills [cdrill], immobile.",
+				"  size: 2000, mass: 2148 (2000), capacity: 1500/98, energy: 10, crew: 12/12, upkeep: 92 (80) cash [cash], consume: 12 (0) units of food [food], 12 (0) units of terran breathing gas mixture [terair].",
+				"  hit points: 200/174, capture: 9.",
+				"    #1 hit points: 100/74, capture: 9, lightly damaged.",
+				"    #2 hit points: 100/100.",
+				"  technologies: hydrocarbons drilling [hcdril].",
+				"  items: 10 units of iron [iron] (size: 50, mass: 100), 12 terrans [terran] (size: 48, mass: 48, upkeep: 12 cash [cash], consume: 12 units of food [food], 12 units of terran breathing gas mixture [terair])."
+			};
+
+			List<string> lines = moduleStack.Report(faction);
+			for (int i = 0; i < lines.Count; i++)
+			{
+				Console.WriteLine(lines[i]);
+			}
+
+			for (int i = 0; i < testlines.Count; i++)
+			{
+				Assert.That(lines[i], Is.EqualTo(testlines[i]), "line number " + i);
+			}
+			Assert.That(lines.Count, Is.EqualTo(testlines.Count));
+		}
+
+		[Test]
 		public void BattleReport_ShipVsStation_ShipPerspective()
 		{
 
@@ -316,7 +367,7 @@ namespace IntegrationTests
             Sequence.Ints.Push(1);
             Sequence.Ints.Push(120);
             Sequence.Ints.Push(1);
-			Sequence.Ints.Push(13);
+			Sequence.Ints.Push(20);
 
 			Battle battle = new Battle(frigate, station);
 			battle.Execute(this.game.Week);
@@ -331,7 +382,7 @@ namespace IntegrationTests
                 "  Round 1:",
                 "  ------------------------------------------------------------",
                 "  Attackers:",
-                "  + Frigate [100011], spaceship hull [sshull], military.",
+                "  + Frigate [100011], spaceship hull [sshull].",
                 "    size: 5000, mass: 10000/4680 (100), energy: 120/78 (1), crew: 6/30.",
                 "    hit points: 370/370 (50/50), attack: 24 (0), defense: 17 (10), initiative: 50 (40).",
                 "    tactics: disable.",
@@ -342,7 +393,7 @@ namespace IntegrationTests
                 // inititive was calculated by the following formula ((energy supply / consumption) + (drive capacity / mass)) *10 + bonuses from technologies and skills
                 // power 120/78 = 1,53 * 10
                 // thrust 10000/5400 = 1,85 * 10  
-                "    + command bridge [100012], command bridge [cbridg].",
+                "    + command bridge [100012], command bridge [cbridg], immobile.",
                 "      size: 800, mass: 340 (300), energy: 5, crew: 1/10.",
                 "      hit points: 55/55, defense: 5, initiative: 10 (5).",
                 "      technologies: military tactics [miltac] (initiative: 5).",
@@ -350,7 +401,7 @@ namespace IntegrationTests
                 "      + terran officer [200002], terran [terran].",
                 "        mass: 4, defense: 5, initiative: 5.",
                 "        skills: frigate pilot [frgplt] (defense: 5, initiative: 5).",
-                "    + fission reactor [100013], 2 fission reactors [fisrec].",
+                "    + fission reactor [100013], 2 fission reactors [fisrec], immobile.",
                 "      size: 800, mass: 384 (280), energy: 120/20, crew: 2/6.",
                 "      hit points: 90/90, attack: 4.",
                 "        #1 hit points: 45/45.",
@@ -359,12 +410,12 @@ namespace IntegrationTests
                 "      size: 600, mass: 10000/804 (700), energy: 30, crew: 1/1.",
                 "      hit points: 65/65.",
                 "        #1 hit points: 65/65.",
-                "    + x-ray laser [100015], 2 x-ray lasers [xraylz].",
+                "    + x-ray laser [100015], 2 x-ray lasers [xraylz], immobile.",
                 "      size: 200, mass: 208 (200), energy: 20, crew: 2/2.",
                 "      hit points: 20/20, attack: 20, defense: 2.",
                 "        #1 hit points: 10/10.",
                 "        #2 hit points: 10/10.",
-                "    + crew quarters [100016], 2 crew quarters [crwqrt].",
+                "    + crew quarters [100016], 2 crew quarters [crwqrt], immobile.",
                 "      size: 1000, mass: 2844 (800), energy: 2.",
                 "      hit points: 90/90.",
                 "        #1 hit points: 45/45.",
@@ -377,46 +428,42 @@ namespace IntegrationTests
                 // power => 40/11 = 3 * 10 => 30 
                 // thrust => immobile => 0
                 "      #1 hit points: 50/50.",
-                "    - command bridge [100022], command bridge [cbridg], owned by NPC [1].",
+                "    - command bridge [100022], command bridge [cbridg], immobile, owned by NPC [1].",
                 "      size: 800.",
                 "      hit points: 55/55, defense: 5.",
                 "        #1 hit points: 55/55.",
                 "      - terran officer [200003], terran [terran], working for NPC [1].",
                 "        defense: 5.",
-                "    - fission reactor [100023], fission reactor [fisrec], owned by NPC [1].",
+                "    - fission reactor [100023], fission reactor [fisrec], immobile, owned by NPC [1].",
                 "      size: 400.",
                 "      hit points: 45/45, attack: 2.",
                 "        #1 hit points: 45/45.",
-                "    - small cargo bay [100024], 2 small cargo bays [cargob], owned by NPC [1].",
+                "    - small cargo bay [100024], 2 small cargo bays [cargob], immobile, owned by NPC [1].",
                 "      size: 4000.",
                 "      hit points: 110/110.",
                 "        #1 hit points: 55/55.",
                 "        #2 hit points: 55/55.",
-                "    - crew quarters [100025], crew quarters [crwqrt], owned by NPC [1].",
+                "    - crew quarters [100025], crew quarters [crwqrt], immobile, owned by NPC [1].",
                 "      size: 500.",
                 "      hit points: 45/45.",
                 "        #1 hit points: 45/45.",
                 "  ------------------------------------------------------------",
-                // Station won initiative but cannot attack
-                "  Station [100021] is unarmed and cannot attack.",
-                "  Station [100021] is immobile and cannot escape.",
-                // targets Station as it's the only target
                 // disable tactics reduces hit chances by half but treat command, energy and drive modulestacks as double size for hit resolution
                 // calculated with weapon attack + bonuses (technologies, skills, fleets): (24)/2 = 12, and attacker attak + defender defence: 11 + 5
-                "  Frigate [100011] fires x-ray laser [100015] on Station [100021] (chance: 12/29) and misses.",
+                "  Frigate [100011] fires x-ray laser [xraylz] on Station [100021] (chance: 18/29) and misses.",
                 // 1-50 complex, 51-66 bridge, 67-74 reactor, 75-95 cargo #1, 96-116 cargo #2
                 // damage is calculated with attack / 10;
-                "  Frigate [100011] fires x-ray laser [100015] on Station [100021] (chance: 12/29) and hits #1 fission reactor [100023] doing 10 damage.",
+                "  Frigate [100011] fires x-ray laser [xraylz] on Station [100021] (chance: 18/29) and hits #1 fission reactor [100023] doing 10 damage.",
                 "  ------------------------------------------------------------",
                 "  Round 2:",
                 "  ------------------------------------------------------------",
                 "  Attackers:",
-                "  + Frigate [100011], spaceship hull [sshull], military.",
+                "  + Frigate [100011], spaceship hull [sshull].",
                 "    size: 5000, mass: 10000/4680 (100), energy: 120/78 (1), crew: 6/30.",
                 "    hit points: 370/370 (50/50), attack: 24 (0), defense: 17 (10), initiative: 50 (40).",
                 "    tactics: disable.",
                 "      #1 hit points: 50/50.",
-                "    + command bridge [100012], command bridge [cbridg].",
+                "    + command bridge [100012], command bridge [cbridg], immobile.",
                 "      size: 800, mass: 340 (300), energy: 5, crew: 1/10.",
                 "      hit points: 55/55, defense: 5, initiative: 10 (5).",
                 "      technologies: military tactics [miltac] (initiative: 5).",
@@ -424,7 +471,7 @@ namespace IntegrationTests
                 "      + terran officer [200002], terran [terran].",
                 "        mass: 4, defense: 5, initiative: 5.",
                 "        skills: frigate pilot [frgplt] (defense: 5, initiative: 5).",
-                "    + fission reactor [100013], 2 fission reactors [fisrec].",
+                "    + fission reactor [100013], 2 fission reactors [fisrec], immobile.",
                 "      size: 800, mass: 384 (280), energy: 120/20, crew: 2/6.",
                 "      hit points: 90/90, attack: 4.",
                 "        #1 hit points: 45/45.",
@@ -433,12 +480,12 @@ namespace IntegrationTests
                 "      size: 600, mass: 10000/804 (700), energy: 30, crew: 1/1.",
                 "      hit points: 65/65.",
                 "        #1 hit points: 65/65.",
-                "    + x-ray laser [100015], 2 x-ray lasers [xraylz].",
+                "    + x-ray laser [100015], 2 x-ray lasers [xraylz], immobile.",
                 "      size: 200, mass: 208 (200), energy: 20, crew: 2/2.",
                 "      hit points: 20/20, attack: 20, defense: 2.",
                 "        #1 hit points: 10/10.",
                 "        #2 hit points: 10/10.",
-                "    + crew quarters [100016], 2 crew quarters [crwqrt].",
+                "    + crew quarters [100016], 2 crew quarters [crwqrt], immobile.",
                 "      size: 1000, mass: 2844 (800), energy: 2.",
                 "      hit points: 90/90.",
                 "        #1 hit points: 45/45.",
@@ -448,32 +495,30 @@ namespace IntegrationTests
                 "    size: 5000.",
                 "    hit points: 305/295 (50/50), attack: 2 (0), defense: 5 (0), initiative: 40.",
                 "      #1 hit points: 50/50.",
-                "    - command bridge [100022], command bridge [cbridg], owned by NPC [1].",
+                "    - command bridge [100022], command bridge [cbridg], immobile, owned by NPC [1].",
                 "      size: 800.",
                 "      hit points: 55/55, defense: 5.",
                 "        #1 hit points: 55/55.",
                 "      - terran officer [200003], terran [terran], working for NPC [1].",
                 "        defense: 5.",
-                "    - fission reactor [100023], fission reactor [fisrec], owned by NPC [1].",
+                "    - fission reactor [100023], fission reactor [fisrec], immobile, owned by NPC [1].",
                 "      size: 400.",
                 "      hit points: 45/35, attack: 2.",
                 "        #1 hit points: 45/35.",
-                "    - small cargo bay [100024], 2 small cargo bays [cargob], owned by NPC [1].",
+                "    - small cargo bay [100024], 2 small cargo bays [cargob], immobile, owned by NPC [1].",
                 "      size: 4000.",
                 "      hit points: 110/110.",
                 "        #1 hit points: 55/55.",
                 "        #2 hit points: 55/55.",
-                "    - crew quarters [100025], crew quarters [crwqrt], owned by NPC [1].",
+                "    - crew quarters [100025], crew quarters [crwqrt], immobile, owned by NPC [1].",
                 "      size: 500.",
                 "      hit points: 45/45.",
                 "        #1 hit points: 45/45.",
                 "  ------------------------------------------------------------",
                 // Station won initiative but cannot attack
-                "  Station [100021] is unarmed and cannot attack.",
-                "  Station [100021] is immobile and cannot escape.",
-                "  Frigate [100011] fires x-ray laser [100015] on Station [100021] (chance: 12/29) and hits #1 fission reactor [100023] doing 10 damage.",
+                "  Frigate [100011] fires x-ray laser [xraylz] on Station [100021] (chance: 18/29) and hits #1 fission reactor [100023] doing 10 damage.",
                 "    #1 fission reactor [fisrec] is lightly damaged.",
-                "  Frigate [100011] fires x-ray laser [100015] on Station [100021] (chance: 12/29) and hits #1 fission reactor [100023] doing 10 damage.",
+                "  Frigate [100011] fires x-ray laser [xraylz] on Station [100021] (chance: 18/29) and hits #1 fission reactor [100023] doing 10 damage.",
                 "    #1 fission reactor [fisrec] is heavily damaged.",
                 "    #1 fission reactor [fisrec] is disabled.",
                 "    Station [100021] lost it's power supply and disables.",
@@ -501,6 +546,247 @@ namespace IntegrationTests
             Assert.That(lines.Count, Is.EqualTo(testlines.Count));
 		}
 
+		private static List<string> captureCombatNarrative(List<string> lines)
+		{
+			List<string> narrative = new List<string>();
+			foreach (string line in lines)
+			{
+				string trimmed = line.Trim();
+				if (trimmed.StartsWith("Week ")
+					|| trimmed.StartsWith("Battle has commenced")
+					|| trimmed.StartsWith("Round ")
+					|| trimmed.StartsWith("----")
+					|| trimmed.Contains("tactics: capture")
+					|| trimmed.Contains("fires ")
+					|| trimmed.Contains("disabled (capture)")
+					|| trimmed.Contains("captured")
+					|| trimmed.Contains("killed")
+					|| trimmed.Contains("wounded")
+					|| trimmed.Contains("items:")
+					|| trimmed.Contains("[c100024]")
+					|| trimmed.Contains("is wrecked")
+					|| trimmed.Contains("lost it's")
+					|| trimmed.Contains("Battle won")
+					|| trimmed.Contains("Battle ended")
+					|| trimmed.Contains("evades and leaves"))
+				{
+					narrative.Add(line);
+				}
+			}
+			return narrative;
+		}
+
+		private void resetModuleBattleDamage(ModuleStack stack)
+		{
+			foreach (Module module in stack.Modules)
+			{
+				module.Damage = 0;
+				module.CaptureDamage = 0;
+			}
+			foreach (ModuleStack nested in stack.ModuleStacks.Values)
+			{
+				this.resetModuleBattleDamage(nested);
+			}
+		}
+
+		[Test]
+		public void CaptureBattleReport_ShipVsStation_ShipPerspective()
+		{
+			Faction faction = this.game.Factions["2"];
+			Battles battles = this.game.Battles;
+			ModuleStack frigate = ModuleStack.All["100011"];
+			ModuleStack station = ModuleStack.All["100021"];
+
+			frigate.ApplyTactic("capture");
+			this.resetModuleBattleDamage(station);
+
+			Sequence.Rolls.Clear();
+			Sequence.Ints.Clear();
+			// LIFO: last push is consumed first. Location 250 is past hull/command/reactor
+			// on the capture-weighted station and lands on cargo [100024].
+			for (int i = 0; i < 20; i++)
+			{
+				Sequence.Ints.Push(250);
+				Sequence.Ints.Push(1);   // hit
+			}
+			Sequence.Ints.Push(20); // first shot misses (20 > chance 18)
+
+			Battle battle = new Battle(frigate, station);
+			battle.Execute(this.game.Week);
+
+			List<string> lines = battles.Report(faction);
+			List<string> narrative = captureCombatNarrative(lines);
+
+			Console.WriteLine("Capture battle narrative:");
+			foreach (string line in narrative)
+			{
+				Console.WriteLine(line);
+			}
+
+			Assert.That(battle.Round, Is.LessThanOrEqualTo(Battle.MaxRounds));
+			Assert.That(string.Join("\n", lines.ToArray()), Does.Not.Contain("Round 11"));
+
+			ModuleStack capturedCargo = ModuleStack.All["c100024"];
+			Assert.That(capturedCargo.Owner.Name, Is.EqualTo("2"));
+			Assert.That(capturedCargo.ModuleType.Name, Is.EqualTo("cargob"));
+			Assert.That(capturedCargo.Quantity, Is.EqualTo(1));
+			Assert.That(capturedCargo.ItemStacks.Quantity("iron"), Is.EqualTo(50));
+			Assert.That(capturedCargo.ItemStacks.Quantity("titani"), Is.EqualTo(50));
+			Assert.That(capturedCargo.ItemStacks.Quantity("copper"), Is.EqualTo(50));
+			Assert.That(capturedCargo.ItemStacks.Quantity("silici"), Is.EqualTo(50));
+			Assert.That(capturedCargo.ItemStacks.Quantity("h2o2"), Is.EqualTo(500));
+			Assert.That(capturedCargo.ItemStacks.Quantity("terran"), Is.EqualTo(2));
+
+			List<string> expected = new List<string>
+            {
+                "  Week 1.",
+                "  Battle has commenced at orbit [O00003] of Earth [P00002] at AU 1, ocean planet [ocean] in system Sol [SS0001] (0, 0, 0).",
+                "  ------------------------------------------------------------",
+                "  Round 1:",
+                "  ------------------------------------------------------------",
+                "    tactics: capture.",
+                "  ------------------------------------------------------------",
+                "  Frigate [100011] fires x-ray laser [xraylz] on Station [100021] (chance: 18/29) and misses.",
+                "  Frigate [100011] fires x-ray laser [xraylz] on Station [100021] (chance: 18/29) and hits #1 small cargo bay [100024] doing 2 damage and 8 capture damage.",
+                "  ------------------------------------------------------------",
+                "  Round 2:",
+                "  ------------------------------------------------------------",
+                "    tactics: capture.",
+                "  ------------------------------------------------------------",
+                "  Frigate [100011] fires x-ray laser [xraylz] on Station [100021] (chance: 18/29) and hits #1 small cargo bay [100024] doing 2 damage and 8 capture damage.",
+                "  Frigate [100011] fires x-ray laser [xraylz] on Station [100021] (chance: 18/29) and hits #1 small cargo bay [100024] doing 2 damage and 8 capture damage.",
+                "  ------------------------------------------------------------",
+                "  Round 3:",
+                "  ------------------------------------------------------------",
+                "    tactics: capture.",
+                "  ------------------------------------------------------------",
+                "  Frigate [100011] fires x-ray laser [xraylz] on Station [100021] (chance: 18/29) and hits #1 small cargo bay [100024] doing 2 damage and 8 capture damage.",
+                "  Frigate [100011] fires x-ray laser [xraylz] on Station [100021] (chance: 18/29) and hits #1 small cargo bay [100024] doing 2 damage and 8 capture damage.",
+                "  ------------------------------------------------------------",
+                "  Round 4:",
+                "  ------------------------------------------------------------",
+                "    tactics: capture.",
+                "  ------------------------------------------------------------",
+                "  Frigate [100011] fires x-ray laser [xraylz] on Station [100021] (chance: 18/29) and hits #1 small cargo bay [100024] doing 2 damage and 3 capture damage.",
+                "    #1 small cargo bay [cargob] module captured by Caste Prime [2].",
+                "  Frigate [100011] fires x-ray laser [xraylz] on Station [100021] (chance: 18/29) and hits #1 small cargo bay [100024] doing 2 damage and 8 capture damage.",
+                "  ------------------------------------------------------------",
+                "  Round 5:",
+                "  ------------------------------------------------------------",
+                "    tactics: capture.",
+                "    + small cargo bay [c100024], small cargo bay [cargob], disabled, immobile.",
+                "      items: 50 units of iron [iron], 50 units of titanium [titani], 50 units of copper [copper], 50 units of silicium [silici], 500 units of oxyhydro [h2o2], 2 terrans [terran].",
+            };
+			for (int i = 0; i < expected.Count; i++)
+			{
+				Assert.That(narrative[i], Is.EqualTo(expected[i]), "narrative line " + i);
+			}
+			Assert.That(narrative.Count, Is.GreaterThanOrEqualTo(expected.Count));
+		}
+
+		[Test]
+		public void CaptureBattleReport_LastCommandCapturesParent_ShipPerspective()
+		{
+			Faction faction = this.game.Factions["2"];
+			Battles battles = this.game.Battles;
+			ModuleStack frigate = ModuleStack.All["100011"];
+			ModuleStack station = ModuleStack.All["100021"];
+			ModuleStack command = ModuleStack.All["100022"];
+			ModuleStack cargo = ModuleStack.All["100024"];
+
+			frigate.ApplyTactic("capture");
+			this.resetModuleBattleDamage(station);
+
+			new Person(command, command.Owner, Race.All["terran"], "200010");
+			new Person(command, command.Owner, Race.All["terran"], "200011");
+			new Person(command, command.Owner, Race.All["terran"], "200012");
+
+			Sequence.Rolls.Clear();
+			Sequence.Ints.Clear();
+			for (int i = 0; i < 10; i++)
+			{
+				Sequence.Ints.Push(120);
+				Sequence.Ints.Push(1);
+			}
+			Sequence.Ints.Push(20);
+
+			Battle battle = new Battle(frigate, station);
+			battle.Execute(this.game.Week);
+
+			List<string> lines = battles.Report(faction);
+			List<string> narrative = captureCombatNarrative(lines);
+
+			Console.WriteLine("Last-command parent capture narrative:");
+			foreach (string line in narrative)
+			{
+				Console.WriteLine(line);
+			}
+
+			Assert.That(station.Owner.Name, Is.EqualTo("2"));
+			Assert.That(station.Name, Is.EqualTo("100021"));
+			Assert.That(cargo.Name, Is.EqualTo("100024"));
+			Assert.That(cargo.Owner.Name, Is.EqualTo("2"));
+			ModuleStack capturedCommand = ModuleStack.All["c100022"];
+			Assert.That(capturedCommand.Owner.Name, Is.EqualTo("2"));
+			Assert.That(capturedCommand.Quantity, Is.EqualTo(1));
+			Assert.That(Person.All.Contains("200003"), Is.False);
+			Assert.That(Person.All["200010"].Race.Name, Is.EqualTo("wndtrn"));
+			Assert.That(Person.All["200011"].Race.Name, Is.EqualTo("wndtrn"));
+			Assert.That(Person.All["200012"].Race.Name, Is.EqualTo("terran"));
+			Assert.That(Person.All["200012"].Parent, Is.EqualTo(capturedCommand));
+			Assert.That(capturedCommand.ItemStacks.Quantity("terran"), Is.EqualTo(3));
+			Assert.That(capturedCommand.ItemStacks.Quantity("wndtrn"), Is.EqualTo(4));
+
+			List<string> expected = new List<string>
+            {
+                "  Week 1.",
+                "  Battle has commenced at orbit [O00003] of Earth [P00002] at AU 1, ocean planet [ocean] in system Sol [SS0001] (0, 0, 0).",
+                "  ------------------------------------------------------------",
+                "  Round 1:",
+                "  ------------------------------------------------------------",
+                "    tactics: capture.",
+                "  ------------------------------------------------------------",
+                "  Frigate [100011] fires x-ray laser [xraylz] on Station [100021] (chance: 18/29) and misses.",
+                "  Frigate [100011] fires x-ray laser [xraylz] on Station [100021] (chance: 18/29) and hits #1 command bridge [100022] doing 2 damage and 8 capture damage.",
+                "  ------------------------------------------------------------",
+                "  Round 2:",
+                "  ------------------------------------------------------------",
+                "    tactics: capture.",
+                "  ------------------------------------------------------------",
+                "  Frigate [100011] fires x-ray laser [xraylz] on Station [100021] (chance: 18/29) and hits #1 command bridge [100022] doing 2 damage and 8 capture damage.",
+                "  Frigate [100011] fires x-ray laser [xraylz] on Station [100021] (chance: 18/29) and hits #1 command bridge [100022] doing 2 damage and 8 capture damage.",
+                "  ------------------------------------------------------------",
+                "  Round 3:",
+                "  ------------------------------------------------------------",
+                "    tactics: capture.",
+                "  ------------------------------------------------------------",
+                "  Frigate [100011] fires x-ray laser [xraylz] on Station [100021] (chance: 18/29) and hits #1 command bridge [100022] doing 2 damage and 8 capture damage.",
+                "  Frigate [100011] fires x-ray laser [xraylz] on Station [100021] (chance: 18/29) and hits #1 command bridge [100022] doing 2 damage and 8 capture damage.",
+                "  ------------------------------------------------------------",
+                "  Round 4:",
+                "  ------------------------------------------------------------",
+                "    tactics: capture.",
+                "  ------------------------------------------------------------",
+                "  Frigate [100011] fires x-ray laser [xraylz] on Station [100021] (chance: 18/29) and hits #1 command bridge [100022] doing 2 damage and 3 capture damage.",
+                "    #1 command bridge [cbridg] module captured by Caste Prime [2].",
+                "    2 terrans [terran] killed.",
+                "    4 terrans [terran] wounded.",
+                "    3 terrans [terran] captured.",
+                "    terran officer [200003] is killed.",
+                "    terran officer [200010] is wounded.",
+                "    terran officer [200011] is wounded.",
+                "    terran officer [200012] is captured.",
+                "    Station [100021] captured by Caste Prime [2].",
+                "  ------------------------------------------------------------",
+                "  Battle won by attackers.",
+            };
+			for (int i = 0; i < expected.Count; i++)
+			{
+				Assert.That(narrative[i], Is.EqualTo(expected[i]), "narrative line " + i);
+			}
+			Assert.That(narrative.Count, Is.EqualTo(expected.Count));
+		}
+
 		[Test]
 		public void BattleReport_ShipVsStation_StationPerspective()
 		{
@@ -516,7 +802,7 @@ namespace IntegrationTests
             Sequence.Ints.Push(1);
             Sequence.Ints.Push(120);
             Sequence.Ints.Push(1);
-            Sequence.Ints.Push(13);
+            Sequence.Ints.Push(20);
 
             Battle battle = new Battle(frigate, station);
 			battle.Execute(this.game.Week);
@@ -531,17 +817,17 @@ namespace IntegrationTests
                 "  Round 1:",
                 "  ------------------------------------------------------------",
                 "  Attackers:",
-                "  - Frigate [100011], spaceship hull [sshull], military, owned by Caste Prime [2].",
+                "  - Frigate [100011], spaceship hull [sshull], owned by Caste Prime [2].",
                 "    size: 5000.",
                 "    hit points: 370/370 (50/50), attack: 24 (0), defense: 17 (10), initiative: 50 (40).",
                 "      #1 hit points: 50/50.",
-                "    - command bridge [100012], command bridge [cbridg], owned by Caste Prime [2].",
+                "    - command bridge [100012], command bridge [cbridg], immobile, owned by Caste Prime [2].",
                 "      size: 800.",
                 "      hit points: 55/55, defense: 5, initiative: 10 (5).",
                 "        #1 hit points: 55/55.",
                 "      - terran officer [200002], terran [terran], working for Caste Prime [2].",
                 "        defense: 5, initiative: 5.",
-                "    - fission reactor [100013], 2 fission reactors [fisrec], owned by Caste Prime [2].",
+                "    - fission reactor [100013], 2 fission reactors [fisrec], immobile, owned by Caste Prime [2].",
                 "      size: 800.",
                 "      hit points: 90/90, attack: 4.",
                 "        #1 hit points: 45/45.",
@@ -550,12 +836,12 @@ namespace IntegrationTests
                 "      size: 600.",
                 "      hit points: 65/65.",
                 "        #1 hit points: 65/65.",
-                "    - x-ray laser [100015], 2 x-ray lasers [xraylz], owned by Caste Prime [2].",
+                "    - x-ray laser [100015], 2 x-ray lasers [xraylz], immobile, owned by Caste Prime [2].",
                 "      size: 200.",
                 "      hit points: 20/20, attack: 20, defense: 2.",
                 "        #1 hit points: 10/10.",
                 "        #2 hit points: 10/10.",
-                "    - crew quarters [100016], 2 crew quarters [crwqrt], owned by Caste Prime [2].",
+                "    - crew quarters [100016], 2 crew quarters [crwqrt], immobile, owned by Caste Prime [2].",
                 "      size: 1000.",
                 "      hit points: 90/90.",
                 "        #1 hit points: 45/45.",
@@ -565,46 +851,44 @@ namespace IntegrationTests
                 "    size: 5000, mass: 6564 (100), energy: 60/17 (1), crew: 2/21.",
                 "    hit points: 305/305 (50/50), attack: 2 (0), defense: 5 (0), initiative: 40.",
                 "      #1 hit points: 50/50.",
-                "    + command bridge [100022], command bridge [cbridg].",
+                "    + command bridge [100022], command bridge [cbridg], immobile.",
                 "      size: 800, mass: 340 (300), energy: 5, crew: 1/10.",
                 "      hit points: 55/55, defense: 5.",
                 "        #1 hit points: 55/55.",
                 "      + terran officer [200003], terran [terran].",
                 "        mass: 4, defense: 5.",
                 "        skills: space station command [sscmnd] (defense: 5).",
-                "    + fission reactor [100023], fission reactor [fisrec].",
+                "    + fission reactor [100023], fission reactor [fisrec], immobile.",
                 "      size: 400, mass: 192 (140), energy: 60/10, crew: 1/3.",
                 "      hit points: 45/45, attack: 2.",
                 "        #1 hit points: 45/45.",
-                "    + small cargo bay [100024], 2 small cargo bays [cargob].",
+                "    + small cargo bay [100024], 2 small cargo bays [cargob], immobile.",
                 "      size: 4000, mass: 4516 (400).",
                 "      hit points: 110/110.",
                 "        #1 hit points: 55/55.",
                 "        #2 hit points: 55/55.",
-                "    + crew quarters [100025], crew quarters [crwqrt].",
+                "    + crew quarters [100025], crew quarters [crwqrt], immobile.",
                 "      size: 500, mass: 1416 (400), energy: 1.",
                 "      hit points: 45/45.",
                 "        #1 hit points: 45/45.",
                 "  ------------------------------------------------------------",
-                "  Station [100021] is unarmed and cannot attack.",
-                "  Station [100021] is immobile and cannot escape.",
-                "  Frigate [100011] fires x-ray laser [100015] on Station [100021] (chance: 12/29) and misses.",
-                "  Frigate [100011] fires x-ray laser [100015] on Station [100021] (chance: 12/29) and hits #1 fission reactor [100023] doing 10 damage.",
+                "  Frigate [100011] fires x-ray laser [xraylz] on Station [100021] (chance: 18/29) and misses.",
+                "  Frigate [100011] fires x-ray laser [xraylz] on Station [100021] (chance: 18/29) and hits #1 fission reactor [100023] doing 10 damage.",
                 "  ------------------------------------------------------------",
                 "  Round 2:",
                 "  ------------------------------------------------------------",
                 "  Attackers:",
-                "  - Frigate [100011], spaceship hull [sshull], military, owned by Caste Prime [2].",
+                "  - Frigate [100011], spaceship hull [sshull], owned by Caste Prime [2].",
                 "    size: 5000.",
                 "    hit points: 370/370 (50/50), attack: 24 (0), defense: 17 (10), initiative: 50 (40).",
                 "      #1 hit points: 50/50.",
-                "    - command bridge [100012], command bridge [cbridg], owned by Caste Prime [2].",
+                "    - command bridge [100012], command bridge [cbridg], immobile, owned by Caste Prime [2].",
                 "      size: 800.",
                 "      hit points: 55/55, defense: 5, initiative: 10 (5).",
                 "        #1 hit points: 55/55.",
                 "      - terran officer [200002], terran [terran], working for Caste Prime [2].",
                 "        defense: 5, initiative: 5.",
-                "    - fission reactor [100013], 2 fission reactors [fisrec], owned by Caste Prime [2].",
+                "    - fission reactor [100013], 2 fission reactors [fisrec], immobile, owned by Caste Prime [2].",
                 "      size: 800.",
                 "      hit points: 90/90, attack: 4.",
                 "        #1 hit points: 45/45.",
@@ -613,12 +897,12 @@ namespace IntegrationTests
                 "      size: 600.",
                 "      hit points: 65/65.",
                 "        #1 hit points: 65/65.",
-                "    - x-ray laser [100015], 2 x-ray lasers [xraylz], owned by Caste Prime [2].",
+                "    - x-ray laser [100015], 2 x-ray lasers [xraylz], immobile, owned by Caste Prime [2].",
                 "      size: 200.",
                 "      hit points: 20/20, attack: 20, defense: 2.",
                 "        #1 hit points: 10/10.",
                 "        #2 hit points: 10/10.",
-                "    - crew quarters [100016], 2 crew quarters [crwqrt], owned by Caste Prime [2].",
+                "    - crew quarters [100016], 2 crew quarters [crwqrt], immobile, owned by Caste Prime [2].",
                 "      size: 1000.",
                 "      hit points: 90/90.",
                 "        #1 hit points: 45/45.",
@@ -628,32 +912,30 @@ namespace IntegrationTests
                 "    size: 5000, mass: 6564 (100), energy: 60/17 (1), crew: 2/21.",
                 "    hit points: 305/295 (50/50), attack: 2 (0), defense: 5 (0), initiative: 40.",
                 "      #1 hit points: 50/50.",
-                "    + command bridge [100022], command bridge [cbridg].",
+                "    + command bridge [100022], command bridge [cbridg], immobile.",
                 "      size: 800, mass: 340 (300), energy: 5, crew: 1/10.",
                 "      hit points: 55/55, defense: 5.",
                 "        #1 hit points: 55/55.",
                 "      + terran officer [200003], terran [terran].",
                 "        mass: 4, defense: 5.",
                 "        skills: space station command [sscmnd] (defense: 5).",
-                "    + fission reactor [100023], fission reactor [fisrec].",
+                "    + fission reactor [100023], fission reactor [fisrec], immobile.",
                 "      size: 400, mass: 192 (140), energy: 60/10, crew: 1/3.",
                 "      hit points: 45/35, attack: 2.",
                 "        #1 hit points: 45/35.",
-                "    + small cargo bay [100024], 2 small cargo bays [cargob].",
+                "    + small cargo bay [100024], 2 small cargo bays [cargob], immobile.",
                 "      size: 4000, mass: 4516 (400).",
                 "      hit points: 110/110.",
                 "        #1 hit points: 55/55.",
                 "        #2 hit points: 55/55.",
-                "    + crew quarters [100025], crew quarters [crwqrt].",
+                "    + crew quarters [100025], crew quarters [crwqrt], immobile.",
                 "      size: 500, mass: 1416 (400), energy: 1.",
                 "      hit points: 45/45.",
                 "        #1 hit points: 45/45.",
                 "  ------------------------------------------------------------",
-                "  Station [100021] is unarmed and cannot attack.",
-                "  Station [100021] is immobile and cannot escape.",
-                "  Frigate [100011] fires x-ray laser [100015] on Station [100021] (chance: 12/29) and hits #1 fission reactor [100023] doing 10 damage.",
+                "  Frigate [100011] fires x-ray laser [xraylz] on Station [100021] (chance: 18/29) and hits #1 fission reactor [100023] doing 10 damage.",
                 "    #1 fission reactor [fisrec] is lightly damaged.",
-                "  Frigate [100011] fires x-ray laser [100015] on Station [100021] (chance: 12/29) and hits #1 fission reactor [100023] doing 10 damage.",
+                "  Frigate [100011] fires x-ray laser [xraylz] on Station [100021] (chance: 18/29) and hits #1 fission reactor [100023] doing 10 damage.",
                 "    #1 fission reactor [fisrec] is heavily damaged.",
                 "    #1 fission reactor [fisrec] is disabled.",
                 "    Station [100021] lost it's power supply and disables.",
@@ -684,8 +966,7 @@ namespace IntegrationTests
                 "Bank report:",
                 "  Bank account balance: 10000.",
                 "  Credit line maximum: 10000.",
-                "  Credit rate: 20%, Deposit rate: 5%.",
-                ""
+                "  Credit rate: 20%, Deposit rate: 5%."
             };
 			List<string> lines = bank.Report(faction);
 			for (int i = 0; i < lines.Count; i++)
@@ -748,7 +1029,7 @@ namespace IntegrationTests
 			List<string> testlines = new List<string>
             {
                 //testlines.Add("#modulestack 000004");
-                "+ factory [000004], factory [factry].",
+                "+ factory [000004], factory [factry], immobile.",
                 "technologies: agricultural complex [agrplx], armored combat [armcbt].",
                 "items: 10 terrans [terran], 10 units of iron [iron], 300 cash [cash].",
                 "effects:",
@@ -961,6 +1242,38 @@ namespace IntegrationTests
                 Assert.That(lines[i], Is.EqualTo(testlines[i]), "error in line " + i);
             }
         }
+
+		[Test]
+		public void Execute_ClearsPreviousTurnEventReports()
+		{
+			ModuleStack factory = ModuleStack.All["000004"];
+			Person ceo = Person.All["000101"];
+			Faction faction = Faction.All["2"];
+			Region region = Region.All["R00002"];
+			factory.EventReports.Add(1, "leftover from previous turn.");
+			ceo.EventReports.Add(1, "leftover from previous turn.");
+			faction.EventReports.Add(1, "leftover from previous turn.");
+			region.EventReports.Add(1, "leftover from previous turn.");
+
+			this.game.Execute();
+
+			Assert.That(this.containsEvent(factory.EventReports, "leftover from previous turn."), Is.False);
+			Assert.That(this.containsEvent(ceo.EventReports, "leftover from previous turn."), Is.False);
+			Assert.That(this.containsEvent(faction.EventReports, "leftover from previous turn."), Is.False);
+			Assert.That(this.containsEvent(region.EventReports, "leftover from previous turn."), Is.False);
+		}
+
+		private bool containsEvent(EventReports events, string description)
+		{
+			foreach (EventReport eventReport in events)
+			{
+				if (eventReport.Description == description)
+				{
+					return true;
+				}
+			}
+			return false;
+		}
 
 	}
 }

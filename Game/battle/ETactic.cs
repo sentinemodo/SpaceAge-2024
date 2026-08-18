@@ -8,7 +8,9 @@ namespace SpaceAge
 	{
 		avoid,
 		destroy,  // basic tactic, random damage
-		disable, // targets command, power and propulsion modulestacsk for taking over with limited damged to other module types
+		capture, // 25% HP / 75% capture pool; command+propulsion double size
+		evade, // 50% to-hit; command+propulsion half size; leave after two unhit rounds
+		disable, // legacy XML name; treated as destroy when firing
 		split, // split modules from target modulestacks (in space this usually causes death of the crew)
 		disarm,	 // targets military modules first to limit own losses
 		conquer, // transfer marines on the other modulestack, to claim ownership of the modulestack

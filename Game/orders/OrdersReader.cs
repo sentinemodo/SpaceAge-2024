@@ -85,9 +85,10 @@ namespace SpaceAge
 				if (string.IsNullOrEmpty(line))
 					continue;
 
-				// ignore comments and trailing, leading spaces
-				if (line.IndexOf(';') >= 0)
-					command = line.Substring(0, line.IndexOf(';')).Trim();
+				// ignore comments (';' or '//', whichever comes first) and trailing, leading spaces
+				int commentStart = LineParser.CommentIndex(line);
+				if (commentStart >= 0)
+					command = line.Substring(0, commentStart).Trim();
 				else
 					command = line.Trim();
 
@@ -290,7 +291,7 @@ namespace SpaceAge
 			{
 				repeat = -1;
 			}
-			switch (token.TrimStart('@','+','-'))
+			switch (token.TrimStart('@','+','-').ToLowerInvariant())
 			{
 				case "active":
 					order = new ActiveOrder(subject);
@@ -298,12 +299,24 @@ namespace SpaceAge
 				case "alias":
 					order = new AliasOrder(subject);
 					break;
+				case "attack":
+					order = new AttackOrder(subject);
+					break;
+				case "capture":
+					order = new CaptureOrder(subject);
+					break;
 				case "buy":
 					order = new BuyOrder(subject);
 					break;
                 case "copy":
                     order = new CopyOrder(subject);
                     break;
+				case "contract":
+					order = new ContractOrder(subject);
+					break;
+				case "declare":
+					order = new DeclareOrder(subject);
+					break;
                 case "has":
 					order = new HasOrder(subject);
 					break;
@@ -322,8 +335,11 @@ namespace SpaceAge
 				case "move":
 					order = new MoveOrder(subject);
 					break;
-                case "produce":
+				case "produce":
                     order = new ProduceOrder(subject);
+                    break;
+                case "repair":
+                    order = new RepairOrder(subject);
                     break;
                 case "research":
                     order = new ResearchOrder(subject);
@@ -339,6 +355,9 @@ namespace SpaceAge
                     break;
                 case "stack":
 					order = new StackOrder(subject);
+					break;
+				case "tactic":
+					order = new TacticOrder(subject);
 					break;
 				case "train":
 					order = new TrainOrder(subject);

@@ -65,7 +65,12 @@
   <ItemGroup>
     <Compile Include="battle\BattleField.cs" />
     <Compile Include="battle\EDamageStatus.cs" />
+    <Compile Include="battle\CaptureTactic.cs" />
+    <Compile Include="battle\DestroyTactic.cs" />
     <Compile Include="battle\DisableTactic.cs" />
+    <Compile Include="battle\EvadeTactic.cs" />
+    <Compile Include="battle\PrioritizeArmedTactic.cs" />
+    <Compile Include="battle\PrioritizeCommandTactic.cs" />
     <Compile Include="battle\ETactic.cs" />
     <Compile Include="battle\GroundUnit.cs" />
     <Compile Include="battle\IBattleReporting.cs" />
@@ -140,6 +145,10 @@
     <Compile Include="data structures\MoveMode.cs" />
     <Compile Include="data structures\EItemTypesGroup.cs" />
     <Compile Include="data structures\Offer.cs" />
+    <Compile Include="data structures\Contract.cs" />
+    <Compile Include="data structures\Contracts.cs" />
+    <Compile Include="data structures\GiveModuleTrigger.cs" />
+    <Compile Include="data structures\IContractTrigger.cs" />
     <Compile Include="data structures\Races.cs" />
     <Compile Include="data structures\ISingular.cs" />
     <Compile Include="data structures\IMultiple.cs" />
@@ -196,12 +205,18 @@
     <Compile Include="orders\SetOrder.cs" />
     <Compile Include="orders\ActiveOrder.cs" />
     <Compile Include="orders\AliasOrder.cs" />
+    <Compile Include="orders\AttackOrder.cs" />
+    <Compile Include="orders\CaptureOrder.cs" />
+    <Compile Include="orders\RepairOrder.cs" />
+    <Compile Include="orders\TacticOrder.cs" />
     <Compile Include="orders\EOrderType.cs" />
     <Compile Include="orders\HasOrder.cs" />
     <Compile Include="orders\NameOrder.cs" />
     <Compile Include="orders\GiveOrder.cs" />
     <Compile Include="orders\GetOrder.cs" />
     <Compile Include="orders\CopyOrder.cs" />
+    <Compile Include="orders\ContractOrder.cs" />
+    <Compile Include="orders\DeclareOrder.cs" />
     <Compile Include="orders\TransferOrder.cs" />
     <Compile Include="orders\FormOrder.cs" />
     <Compile Include="orders\ImmediateOrder.cs" />
@@ -214,6 +229,7 @@
     <Compile Include="reports\IEventReporting.cs" />
     <Compile Include="reports\IReporting.cs" />
     <Compile Include="LineParser.cs" />
+    <Compile Include="Research.cs" />
     <Compile Include="orders\LongOrder.cs" />
     <Compile Include="orders\Order.cs" />
     <Compile Include="orders\Orders.cs" />

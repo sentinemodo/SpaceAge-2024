@@ -11,6 +11,8 @@ namespace SpaceAge
 		Group,
 		ItemType,
 		ModuleType,
-		Feature
+		Feature,
+		Tag,
+		SpaceObject
 	}
 }

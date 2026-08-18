@@ -105,10 +105,37 @@ namespace SpaceAge
                 this.parseModuleTypeGroup(token);
             }
             else if (token != string.Empty)
-            { 
-                if (ModuleType.All.ContainsKey(token))
+            {
+                // bare parameter: resolve to the most specific preference it matches
+                if (Technology.All.Contains(token))
                 {
-                    this.ResearchType = EResearchType.Feature;
+                    // a known technology -> prefer technologies it enables
+                    this.ResearchType = EResearchType.Technology;
+                    this.Technology = Technology.All[token];
+                    this.ResearchToken = token;
+                }
+                else if (Research.IsTag(token))
+                {
+                    // a tag (e.g. military) -> prefer technologies carrying that tag
+                    this.ResearchType = EResearchType.Tag;
+                    this.ResearchToken = token;
+                }
+                else if (ItemType.All.ContainsKey(token))
+                {
+                    this.ResearchType = EResearchType.ItemType;
+                    this.ItemType = ItemType.All[token];
+                    this.ResearchToken = token;
+                }
+                else if (ModuleType.All.ContainsKey(token))
+                {
+                    this.ResearchType = EResearchType.ModuleType;
+                    this.ModuleType = ModuleType.All[token];
+                    this.ResearchToken = token;
+                }
+                else if (Research.IsSpaceObject(token))
+                {
+                    // a moon/planet/region/orbit -> prefer technologies tied to its resources
+                    this.ResearchType = EResearchType.SpaceObject;
                     this.ResearchToken = token;
                 }
                 else
@@ -231,6 +258,14 @@ namespace SpaceAge
                     this.ResearchType = EResearchType.Feature;
                     this.ResearchToken = elResearch.GetAttribute("feature");
                     break;
+                case "tag":
+                    this.ResearchType = EResearchType.Tag;
+                    this.ResearchToken = elResearch.GetAttribute("tag");
+                    break;
+                case "object":
+                    this.ResearchType = EResearchType.SpaceObject;
+                    this.ResearchToken = elResearch.GetAttribute("object");
+                    break;
                 default:
                     this.ResearchType = EResearchType.Any;
                     break;
@@ -259,6 +294,14 @@ namespace SpaceAge
                     elResearch.SetAttribute("research-type", "group");
                     elResearch.SetAttribute("group", this.ModuleTypesGroup.ToString()); 
                     break;
+                case EResearchType.Tag:
+                    elResearch.SetAttribute("research-type", "tag");
+                    elResearch.SetAttribute("tag", this.ResearchToken);
+                    break;
+                case EResearchType.SpaceObject:
+                    elResearch.SetAttribute("research-type", "object");
+                    elResearch.SetAttribute("object", this.ResearchToken);
+                    break;
                 default:
                     if (this.ResearchToken != string.Empty)
                     {
@@ -272,21 +315,6 @@ namespace SpaceAge
 			return this.xmlElement;
 		}
 
-        public bool Breakthrough(int week)
-        {
-            // TODO: seed for turn reruns;
-            for (int i = this.Researcher.Owner.MaxTechnologyLevel + 1; i > 0; i--)
-            {
-                if (Sequence.GenerateRandomInt(0, i * 100) <= this.Researcher.ResearchPoints)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        Technologies targettedTechnologies = new Technologies();
-        Technologies availableTechnologies = new Technologies();
         Technology researchedTechnology;
 
         public override void Execute(int week)
@@ -294,162 +322,32 @@ namespace SpaceAge
             // check if can research at all
             if (this.CanOperate(week) && this.CanResearch(week))
             {
-                // research
-                // check breakthrough
-                // if no breakthrough accumulate researchpoints
+                // research: roll a breakthrough; if none, accumulate research points
+                Technologies available = Research.AvailableTechnologies(this.Researcher);
+                int output = Research.WeeklyOutput(this.Researcher);
 
-                if (this.Breakthrough(week))
+                if (available.Count > 0 && Research.RollBreakthrough(available, output))
                 {
-                    // check if targetted was sought and hit (50%)
-                    this.getAvailableTechnologies();
+                    this.researchedTechnology = Research.SelectResearchedTechnology(this, available);
 
-                    if (this.ResearchType == EResearchType.Feature)
-                    {
-                        // guaranteed getting feature technology
-                        this.researchedTechnology = Technology.All[this.ResearchToken];
-                    }
-                    else if (this.ResearchType != EResearchType.Any)
-                    {
-                        // find targetted techs
-                        this.getTargettedTechnologies();
-
-                        if (Sequence.GenerateRandomInt(0, 100) <= 50 && this.targettedTechnologies.Count > 0)
-                        {
-                            // TODO: battlelike hitting into random tech
-                            this.researchedTechnology = this.getRandomTechnology(this.targettedTechnologies);
-                        }
-                        else
-                        {
-                            this.researchedTechnology = this.getRandomTechnology(this.availableTechnologies);
-                        }
-                    }
-                    else
-                    {
-                        // no targetted techs
-                        this.researchedTechnology = this.getRandomTechnology(this.availableTechnologies);
-                    }
-                    // use researchpoints
+                    // breakthrough consumes the accumulated research points
                     this.Researcher.EventReports.Add(
                         week,
                         string.Format("Breakthough!!! Researched {0} technology.",
                             this.researchedTechnology.ReportName));
-                    this.Researcher.Owner.TechnologiesToShow.Add(this.researchedTechnology);
-                    this.Researcher.Technologies.Add(this.researchedTechnology);
+                    this.Researcher.ReceiveTechnologyCopy(this.researchedTechnology, week, null);
                     this.Researcher.ResearchPoints = 0;
                 }
                 else
                 {
-                    int researchOutput = 0;
-                    // base research output
-                    researchOutput += this.Researcher.ModuleType.ResearchOutput * this.Researcher.Modules.Count;
-                    // TODO: add effect impact
-                    // TODO: add race impact
-                    // TODO: add officer impact
-                    this.Researcher.ResearchPoints += researchOutput;
+                    // TODO: add effect / race / officer impact to weekly output
+                    this.Researcher.ResearchPoints += output;
                 }
 
                 this.Executing = true;
 
                 // finish order execution
                 base.Execute(week);
-            }
-        }
-
-        public Technology getRandomTechnology(Technologies technologies)
-        {
-            int totalArea = 0;
-            foreach (Technology technology in technologies)
-            {
-                totalArea += Convert.ToInt32(100 / technology.Level);
-            }
-            int roll = Sequence.GenerateRandomInt(0, totalArea);
-            foreach (Technology technology in technologies)
-            {
-                roll -= Convert.ToInt32(100 / technology.Level);
-                if (roll <= 0)
-                {
-                    return technology;
-                }
-            }
-            return null;
-        }
-
-        private void getTargettedTechnologies()
-        {
-            this.targettedTechnologies.Clear();
-            bool addTechnology;
-            foreach (Technology technology in this.availableTechnologies)
-            {
-                addTechnology = false;
-                switch (this.ResearchType)
-                {
-                    case EResearchType.Technology:
-                        // TODO: add technologies that are requiring or required by the technology
-                        if (technology.Name == this.ResearchToken)
-                        {
-                            addTechnology = true;
-                        }
-                        break;
-                    case EResearchType.ItemType:
-                        if (technology.UseProduceItems != null)
-                        {
-                            if (technology.UseProduceItems.ContainsKey(ItemType.All[this.ResearchToken]))
-                            {
-                                addTechnology = true;
-                            }
-                        }
-                        if (technology.UseConsumeItems != null)
-                        {
-                            if (technology.UseConsumeItems.ContainsKey(ItemType.All[this.ResearchToken]))
-                            {
-                                addTechnology = true;
-                            }
-                        }                        
-                        break;
-                    case EResearchType.ModuleType:
-                        if (technology.UseProduceModules.Name == this.ResearchToken
-                            || technology.UseConsumeModules.Name == this.ResearchToken)
-                        {
-                            addTechnology = true;
-                        }
-                        break;
-                    case EResearchType.Group:
-                        if (technology.UseCondition_ModuleTypesGroup.ToString() == this.ResearchToken)
-                        {
-                            addTechnology = true;
-                        }
-                        if (technology.UseProduceModules != null)
-                        {
-                            if (technology.UseProduceModules.Group.ToString() == this.ResearchToken)
-                            {
-                                addTechnology = true;
-                            }
-                        }
-                        break;
-                    default:
-                        break;
-                }
-                if (addTechnology)
-                {
-                    this.targettedTechnologies.Add(technology);
-                }
-            }
-        }
-
-        private void getAvailableTechnologies()
-        {
-            this.availableTechnologies.Clear(); 
-            foreach (Technology technology in Technology.All)
-            {
-               // TODO: add validation for technoligies owned
-               // eliminate technologies owned by faction
-               // eliminate technologies requiring prerequisites
-               if (technology.Level <= this.Researcher.Owner.MaxTechnologyLevel + 1
-                    && technology.Level <= this.Researcher.TechnologyCapacity - this.Researcher.TechnologyCapacityUsed
-                    && this.Researcher.Technologies[technology.Name] == null)
-                {
-                    this.availableTechnologies.Add(technology);
-                }
             }
         }
 

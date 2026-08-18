@@ -237,7 +237,7 @@
 			mass="100"
 			size="100"
 			attack="2"
-			damage="4">
+			damage="2">
 			<use-allowed-by module-type-group="infantry"/>
 		</entry>
 		<entry
@@ -251,6 +251,7 @@
 			<use-allowed-by officer="terran"/>
 			<use-allowed-by crew="terran"/>
 		</entry>
+		<entry name="heliu3" name-en="unit of helium-3" name-en2="units of helium-3" size="1" mass="1" description="A light, non-radioactive helium isotope prized as clean fusion fuel; scarce on planets but abundant in lunar regolith."/>
 	</item>
 
 	<technology>
@@ -259,7 +260,7 @@
 			name-en="action and reaction" 
 			level="0"
 			description="The construction of reaction-based drives, using cheap reaction mass heated by large energy systems." 
-			use-time="3">
+			use-time="2">
 			<use-allowed-in module-type-group="production"/>
 			<use-consume item="iron" quantity="10" />
 			<use-consume item="titani" quantity="10" />
@@ -267,6 +268,7 @@
 		</entry>
 		<entry 
 			name="fossil" 
+			tags="production" 
 			name-en="fossil use" 
 			level="0"
 			description="Use of fossil fuels allows one to produce huge and dirty plants that transform carbon-based resources into energy." 
@@ -305,10 +307,11 @@
 		</entry>
 		<entry 
 			name="indust" 
+			tags="production" 
 			name-en="industrial automation" 
 			level="0"
 			description="Use of automated production management to reduce the workforce requirements." 
-			use-time="6">
+			use-time="4">
 			<use-allowed-in module-type-group="production"/>
 			<use-consume item="iron" quantity="15" />
 			<use-consume item="titani" quantity="10" />
@@ -372,6 +375,7 @@
 		</entry>
 		<entry 
 			name="corpmg" 
+			tags="production" 
 			name-en="corporate management" 
 			level="0"
 			description="Corporate governance and centralized assets management allow increase in cost-effectiveness of the entire branch and a knowledge sharing centre."
@@ -448,8 +452,9 @@
 		</entry>
 		<entry
 			name="stnrdf"
+			tags="military"
 			name-en="stationary defense"
-			level="1"
+			level="0"
 			description="The basic stationary defense. Gun emplacement and fortification to protect against ground based military."
 			use-time="4">
 			<use-allowed-in module-type-group="production"/>
@@ -459,6 +464,7 @@
 		</entry>
     <entry
 			name="armcbt"
+			tags="military"
 			name-en="armored combat"
 			level="1"
 			description="The basic mobile armor, powered by oil consuming engines."
@@ -469,6 +475,7 @@
     </entry>
     <entry
 			name="frminf"
+			tags="military"
 			name-en="form infantry battalion"
 			level="1"
 			description="The basic infantry unit. Equipped with standard rifles."
@@ -476,6 +483,18 @@
 			<use-allowed-in module-type-group="production"/>
 			<use-consume item="iron" quantity="1"/>
 			<use-produce module="inftry"/>
+		</entry>
+    <entry
+			name="rckter"
+			tags="military"
+			name-en="rocket launcher production"
+			level="1"
+			cost="4"
+			description="Manufacture of portable rocket launchers issued to infantry battalions."
+			use-time="2">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="1"/>
+			<use-produce item="rctlnc"/>
 		</entry>
 		<entry
 			name="wtrdst" 
@@ -517,7 +536,7 @@ The hulls are constructed in modular sections, each piece fitting together with 
 Once the hull is complete, it is moved to the next stage of assembly, where it will be outfitted with various modules. These modules, pre-fabricated and tested, are designed for a range of uses: living quarters [crwqrt], command bridges [cbridg], cargo bays [cargob], and more. Each module is equipped with standardized interfaces, allowing them to be easily connected and integrated into the hull.
 Robotic arms and drones carefully maneuver the modules into place, securing them with precision and ensuring all connections are airtight and functional. The interior of the ship begins to take shape, with corridors, rooms, and systems coming together to form a cohesive whole. Advanced AI oversees the entire process, monitoring for any anomalies and ensuring that every component meets stringent quality standards.
 This assembly technology represents the pinnacle of human ingenuity and collaboration, a testament to our ability to create complex, adaptable, and resilient spacecraft. Each hull, filled with its specialized modules, is a blank canvas, ready to be transformed into a vessel capable of exploring the farthest reaches of the cosmos."
-			use-time="5">
+			use-time="4">
 			<use-allowed-in module-type-group="production" location-type="orbit"/>
 			<use-consume item="iron" quantity="6"/>
 			<use-consume item="titani" quantity="4"/>
@@ -528,7 +547,7 @@ This assembly technology represents the pinnacle of human ingenuity and collabor
 			name-en="space control"
 			level="0" 
 			description="Any self-respecting space vessel requires a command structure to navigate and direct a ship."
-			use-time="4">
+			use-time="3">
 			<use-allowed-in module-type-group="production"/>
 			<use-consume item="iron"  quantity="1"/>
 			<use-consume item="titani" quantity="4"/>
@@ -540,7 +559,7 @@ This assembly technology represents the pinnacle of human ingenuity and collabor
 			name-en="uranium fission"
 			level="0" 
 			description="Heavy elements can be made to fission faster using heavy shielded structures to provide lasting power."
-			use-time="8">
+			use-time="6">
 			<use-allowed-in module-type-group="production"/>
 			<use-consume item="iron"  quantity="2"/>
 			<use-consume item="titani" quantity="8"/>
@@ -582,7 +601,7 @@ This assembly technology represents the pinnacle of human ingenuity and collabor
 			name-en="crew housing"
 			level="0"
 			description="Habitations for crew members in hostile environment require careful design to avoid cohabitation problems."
-			use-time="3">
+			use-time="2">
 			<use-allowed-in module-type-group="production"/>
 			<use-consume item="iron"  quantity="3"/>
 			<use-consume item="titani" quantity="2"/>
@@ -598,7 +617,34 @@ This assembly technology represents the pinnacle of human ingenuity and collabor
 			<use-consume item="titani"  quantity="1"/>
 			<use-consume item="copper" quantity="4"/>
 			<use-consume item="silici" quantity="1"/>
+			<use-produce module="bltlas"/>
+		</entry>
+		<entry
+			name="xraylo"
+			name-en="x-ray laser optics"
+			level="2"
+			requires="lasopt"
+			description="Advanced optics for penetrating x-ray lasers."
+			use-time="4">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="titani" quantity="2"/>
+			<use-consume item="copper" quantity="4"/>
+			<use-consume item="silici" quantity="2"/>
 			<use-produce module="xraylz"/>
+		</entry>
+		<entry
+			name="lstrrt"
+			tags="military"
+			name-en="laser turret"
+			level="1"
+			requires="lasopt"
+			description="A fixed laser emplacement for ground defense. Requires a power supply."
+			use-time="4">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="2"/>
+			<use-consume item="titani" quantity="2"/>
+			<use-consume item="copper" quantity="2"/>
+			<use-produce module="laztrt"/>
 		</entry>
 		<entry
 			name="wastdp"
@@ -611,6 +657,7 @@ This assembly technology represents the pinnacle of human ingenuity and collabor
 		</entry>
 		<entry 
 			name="miltac"
+			tags="military"
 			name-en="military tactics"
 			level="1"
 			description="Elementary military tactics, which enable a higher level of combat proficiency."
@@ -638,6 +685,18 @@ This assembly technology represents the pinnacle of human ingenuity and collabor
 			<use-allowed-in module-type-group="production"/>
 			<use-consume item="spare" quantity="1"/>
 			<use-produce effect="repair" target="module-damage" change="-1"/>
+		</entry>
+		<entry
+			name="engshp"
+			tags="production"
+			name-en="engineering shop"
+			level="1"
+			cost="4"
+			description="Construction of a compact engineering shop that patches battle and maintenance damage using spare parts."
+			use-time="2">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="5"/>
+			<use-produce module="engshp"/>
 		</entry>
 		<entry
 			name="medtec"
@@ -672,6 +731,7 @@ This assembly technology represents the pinnacle of human ingenuity and collabor
 		</entry>
 		<entry
 			name="filidx"
+			tags="research"
 			name-en="file indexing"
 			level="0"
 			description="Imagine a cutting-edge digital library, where advanced file indexing technology forms the backbone of a vast repository of knowledge. This system, designed to support researchers, operates with the precision and efficiency, ensuring that every piece of information is easily accessible and meticulously organized.
@@ -683,6 +743,41 @@ Researchers can query the library. The system can handle natural language questi
 			<use-consume item="iron"  quantity="1"/>
 			<use-consume item="silici" quantity="3"/>		
 			<use-produce module="cmplib"/>
+		</entry>
+		<entry
+			name="he3min"
+			name-en="helium-3 mining"
+			level="2"
+			tags="production"
+			requires="uminng"
+			description="The extraction and refining of helium-3 from regolith and gas. Helium-3 mining can be carried out by any extraction module that has this technology loaded."
+			usable-in="extraction"
+			use-time="8">
+			<use-allowed-in module-type-group="extraction"/>
+			<use-produce item="heliu3"/>
+		</entry>
+		<entry name="he3fus" name-en="helium-3 fusion" level="2" tags="production" requires="he3min" description="Controlled fusion of helium-3 for clean, abundant energy.">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="heliu3" quantity="1"/>
+			<use-produce module="fusrec"/>
+		</entry>
+		<entry
+			name="he3drl"
+			name-en="dedicated helium-3 drilling"
+			level="3"
+			tags="production"
+			requires="he3min"
+			description="Purpose-built helium-3 core drills that double extraction efficiency at the cost of versatility and price.">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="30"/>
+			<use-consume item="titani" quantity="10"/>
+			<use-produce module="he3ext"/>
+		</entry>
+		<entry name="advres" name-en="advanced computing" level="3" tags="research" requires="filidx" description="Next-generation computing enabling far larger research complexes.">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="4"/>
+			<use-consume item="silici" quantity="12"/>
+			<use-produce module="advlib"/>
 		</entry>
 	</technology>
 
@@ -1042,6 +1137,25 @@ Researchers can query the library. The system can handle natural language questi
 			<operation-allowed-in module-group="settlement"/>
 		</entry>
 		<entry
+			name="bltlas"
+			name-en="blue laser"
+			name-en2="blue lasers"
+			group="military"
+			description="A compact high-frequency laser suitable for ground combat."
+			size="100"
+			mass="100"
+			energy="5"
+			crew="1"
+			capacity="50"
+			technology-capacity="2"
+			hit-points="40"
+			attack="6"
+			defense="1"
+			damage="6">
+			<upkeep type="cash" quantity="50"/>
+			<require technology="lasopt"/>
+		</entry>
+		<entry
 			name="xraylz" 
 			name-en="x-ray laser"
 			name-en2="x-ray lasers"
@@ -1058,7 +1172,7 @@ Researchers can query the library. The system can handle natural language questi
 			defense="1"
 			damage="10">
 			<upkeep type="cash" quantity="100"/>
-			<require technology="lasopt"/>
+			<require technology="xraylo"/>
 		</entry>
     <entry
 			name="gunplc"
@@ -1072,13 +1186,33 @@ Researchers can query the library. The system can handle natural language questi
 			capacity="100"
 			technology-capacity="1"
 			hit-points="100"
-			attack="10"
-			defense="10"
-			damage="5">
+			attack="1"
+			defense="1"
+			damage="1">
       <operation-allowed-in region-surface="solid"/>
       <upkeep type="cash" quantity="10"/>
       <no-upkeep effect="damage" chance="25"/>
     </entry>
+		<entry
+			name="laztrt"
+			name-en="laser turret"
+			name-en2="laser turrets"
+			group="military"
+			description="A fixed laser emplacement for ground defense. Requires a power supply."
+			size="100"
+			mass="500"
+			crew="2"
+			capacity="100"
+			technology-capacity="1"
+			energy="5"
+			hit-points="100"
+			attack="6"
+			defense="1"
+			damage="6">
+			<operation-allowed-in region-surface="solid"/>
+			<upkeep type="cash" quantity="20"/>
+			<require technology="lasopt"/>
+		</entry>
     <entry
 			name="cargob" 
 			name-en="small cargo bay"
@@ -1214,6 +1348,25 @@ Researchers can query the library. The system can handle natural language questi
 			<upkeep type="cash" quanity="10"/>
 		</entry>
 		<entry
+			name="engshp"
+			name-en="engineering shop"
+			name-en2="engineering shops"
+			group="production"
+			description="A small workshop that repairs the parent module stack and nested stacks. REPAIR restores 20 hit points per week and consumes 1 spare part, or 1 hit point with no parts."
+			size="25"
+			capacity="10"
+			mass="20"
+			crew="2"
+			energy="1"
+			technology-capacity="1"
+			hit-points="15">
+			<upkeep type="cash" quantity="5"/>
+			<operation-allowed-in module-group="settlement"/>
+			<operation-allowed-in module-group="frigate"/>
+			<operation-allowed-in module-group="spacecraft"/>
+			<operation-allowed-in module-group="space station"/>
+		</entry>
+		<entry
 			name="landpd"
 			name-en="landing pad"
 			name-en2="landing pads"
@@ -1234,7 +1387,7 @@ Researchers can query the library. The system can handle natural language questi
 			size="240"			
 			mass="240" 
 			capacity="200"
-			hit-points="60"
+			hit-points="100"
 			crew="16"
 			attack="4"
 			defense="4"
@@ -1289,6 +1442,25 @@ Researchers can query the library. The system can handle natural language questi
       research-output="1"
 			value="1000">
 			<upkeep type="cash" quanity="100"/>
+		</entry>
+		<entry name="he3ext" name-en="helium-3 core drill" name-en2="helium-3 core drills" group="extraction" description="A specialised, costlier core drill dedicated to helium-3. It extracts helium-3 at twice the efficiency of a general core drill but cannot mine anything else." size="1200" capacity="750" mass="1200" crew="6" energy="6" hit-points="100">
+			<produce item="heliu3" quantity="20" duration="13"/>
+			<upkeep type="cash" quantity="60"/>
+			<operation-allowed-in location-type="solid-surface"/>
+			<operation-allowed-in module-group="settlement"/>
+			<operation-allowed-in module-group="frigate"/>
+		</entry>
+		<entry name="fusrec" name-en="fusion reactor" name-en2="fusion reactors" group="energy" description="Fuses helium-3 to deliver clean, abundant power." size="1200" mass="1200" crew="3" energy="5" hit-points="120">
+			<produce energy="120" duration="13"/>
+			<energy-consume type="heliu3" quantity="3"/>
+			<operation-allowed-in location-type="solid-surface"/>
+			<upkeep type="cash" quantity="150"/>
+			<fuel duration="13">
+				<item type="heliu3" quantity="3"/>
+			</fuel>
+		</entry>
+		<entry name="advlib" name-en="advanced research complex" name-en2="advanced research complexes" group="research" description="A large, high-throughput research facility building on computer-library methods." size="400" mass="100" energy="10" hit-points="80" technology-capacity="8" research-output="2">
+			<upkeep type="cash" quantity="200"/>
 		</entry>
 	</module>
 	<race>

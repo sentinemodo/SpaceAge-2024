@@ -24,6 +24,29 @@ namespace SpaceAge
 			}
 		}
 
+		public bool ContainsName(string tacticName)
+		{
+			foreach (Tactic tactic in this)
+			{
+				if (tactic.ReportName == tacticName)
+				{
+					return true;
+				}
+			}
+			return false;
+		}
+
+		public void RemoveByName(string tacticName)
+		{
+			for (int i = this.Count - 1; i >= 0; i--)
+			{
+				if (this[i].ReportName == tacticName)
+				{
+					this.RemoveAt(i);
+				}
+			}
+		}
+
         public void LoadXml(XmlElement elHolder, ModuleStack holder)
         {
             Tactic tactic;
@@ -34,6 +57,21 @@ namespace SpaceAge
                 {
                     case "disable":
                         tactic = new DisableTactic(holder);
+                        break;
+                    case "destroy":
+                        tactic = new DestroyTactic(holder);
+                        break;
+                    case "capture":
+                        tactic = new CaptureTactic(holder);
+                        break;
+                    case "evade":
+                        tactic = new EvadeTactic(holder);
+                        break;
+                    case "prioritize armed":
+                        tactic = new PrioritizeArmedTactic(holder);
+                        break;
+                    case "prioritize command":
+                        tactic = new PrioritizeCommandTactic(holder);
                         break;
                     default:
                         throw new Exception("Unknown tactics. Received: " + elTactic.GetAttribute("name"));

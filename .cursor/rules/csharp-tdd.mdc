@@ -54,7 +54,21 @@ If architecture docs and code **conflict**, resolve by **updating architecture**
 - Before production edits, say **which test file** changes, **which layer** (`UnitTests` / `IntegrationTests`), and **what assertion** proves the behavior.
 - After edits, **run the relevant tests** (the whole `Tests.dll` via `.cursor/run-tests.sh` on Mono or `vstest.console` on Windows; optionally an NUnit `--where "namespace == ..."` filter) and report results.
 - Keep diffs **minimal**; no drive-by refactors outside the request.
-- If requirements are unclear, **one focused question** or short stated assumptions, then the smallest testable slice.
+- If requirements are unclear, **one focused question** or short stated assumptions, then the smallest testable slice — except when the request **disagrees with observed data**; then stop (see below).
+
+## Pause on request vs data
+
+If the user's request **conflicts with, or is ambiguous against, what the fixtures/code actually show**, **do not pick a direction**. Stop and ask, presenting both readings so they can confirm.
+
+Treat as this kind of ambiguity (not as a silent design choice):
+
+- Named object vs observed location, owner, parent, or id (e.g. "deliver to Berlin garrison" but the intended receiver sits in another region).
+- Named host vs observed capacity/eligibility (e.g. "put the copy on headquarters" while a city in the same nest also has spare technology capacity).
+- Order/effect that would succeed under current rules vs a rule the user states as already true (e.g. "location checks were valid" while `USE … FOR` same-type delivery ignores location).
+
+Ask with the **concrete ids/values** you observed. Do not implement a workaround (skip the city, walk to HQ first, ignore location, retarget the receiver) until they confirm.
+
+Syntax or missing-test questions may still use one focused question or a stated assumption. **Data vs intent does not.**
 
 ## Opt-out
 

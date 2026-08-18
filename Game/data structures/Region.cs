@@ -54,6 +54,16 @@ namespace SpaceAge
             get { return this.RegionType.LocationType; }
         }
 
+        public override double Capacity
+        {
+            get { return double.MaxValue; }
+        }
+
+        public override double CapacityUsed
+        {
+            get { return this.ModuleStacks.Size(); }
+        }
+
 		#region IReporting Members
 		public override string  ReportName
 		{
@@ -67,7 +77,7 @@ namespace SpaceAge
 		{
 			get
 			{
-				return string.Format("{0} on {4}", this.ReportName, this.RegionHolder.BattleReportName);
+				return string.Format("{0} on {1}", this.ReportName, this.RegionHolder.BattleReportName);
 			}
 		}
 
@@ -101,6 +111,12 @@ namespace SpaceAge
 			if (this.resources.Count > 0)
 			{
 				reportLines.Add(this.Resources.Report, level);
+			}
+
+			List<string> contractLines = Contract.All.Report(this);
+			if (contractLines.Count > 0)
+			{
+				reportLines.Add(contractLines, level);
 			}
 
 			// market report

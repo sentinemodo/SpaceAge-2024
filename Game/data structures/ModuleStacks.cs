@@ -407,6 +407,17 @@ namespace SpaceAge
 			return damage;
 		}
 
+		public int CaptureDamage()
+		{
+			int captureDamage = 0;
+			foreach (ModuleStack moduleStack in this.Values)
+			{
+				captureDamage += moduleStack.CaptureDamage;
+				captureDamage += moduleStack.ModuleStacks.CaptureDamage();
+			}
+			return captureDamage;
+		}
+
 		public int Attack()
 		{
 			int attack = 0;

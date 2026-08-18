@@ -160,8 +160,18 @@ namespace SpaceAge
             ReportLines reportLines = new ReportLines();
 			foreach (Technology technology in this)
 			{
-                reportLines.Add(string.Format("{0}: {1}.", technology.ReportName, technology.Description), level);
-                reportLines.Add(string.Empty, level);
+                reportLines.Add(string.Format("+ {0}: {1}", technology.ReportName, technology.Description), level);
+                if (technology.UseProduceModules != null)
+                {
+                    reportLines.Add(string.Format("- {0}: {1}", technology.UseProduceModules.ReportName, technology.UseProduceModules.Description), level + 1);
+                }
+                if (technology.UseProduceItems != null)
+                {
+                    foreach (ItemType itemType in technology.UseProduceItems.Keys)
+                    {
+                        reportLines.Add(string.Format("- {0}: {1}", itemType.ReportName, itemType.ReportDescriptionForTechnology()), level + 1);
+                    }
+                }
             }
             return reportLines.IndentedLines;
         }

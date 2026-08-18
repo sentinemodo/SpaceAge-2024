@@ -8,7 +8,7 @@ namespace SpaceAge
 {
 	class Program
 	{
-		public const string EngineVersion = "0.1.137";
+		public const string EngineVersion = "0.1.141";
 
 		static void Main(string[] args)
 		{
@@ -19,15 +19,21 @@ namespace SpaceAge
 			string game_dir = Directory.GetCurrentDirectory();
 			string turn_dir = Directory.GetCurrentDirectory();
 			string order_to_check = null;
+			bool noTurn = false;
 
-			for (int i = 0; i < args.Length - 1; i++)
+			for (int i = 0; i < args.Length; i++)
 			{
-				if (args[i] == "/data")
-					game_dir = args[i + 1];
-				else if (args[i] == "/turn-dir")
-					turn_dir = args[i + 1];
-				else if (args[i] == "/check")
-					order_to_check = args[i + 1];
+				if (args[i] == "/no-turn")
+					noTurn = true;
+				else if (i < args.Length - 1)
+				{
+					if (args[i] == "/data")
+						game_dir = args[i + 1];
+					else if (args[i] == "/turn-dir")
+						turn_dir = args[i + 1];
+					else if (args[i] == "/check")
+						order_to_check = args[i + 1];
+				}
 			}
 
 			Console.WriteLine("SpaceAge " + EngineVersion);
@@ -42,23 +48,37 @@ namespace SpaceAge
 
 			if (order_to_check == null)
 			{
-				Console.WriteLine("Processing requests");
-				Request.Load(turn_dir);
-				Console.WriteLine("Loading game events");
-				EventsReaders.Load(game, turn_dir);
-				game.Events.Execute();
-				Console.WriteLine("Loading orders");
-				OrdersReader ordersReader = new OrdersReader(game);
-				ordersReader.Load(turn_dir);
-				Console.WriteLine("Processing game turn");
-				game.Execute();
-				Console.WriteLine("Generating reports");
+				if (noTurn)
+				{
+					Console.WriteLine("Loading orders");
+					OrdersReader ordersReader = new OrdersReader(game);
+					ordersReader.Load(turn_dir);
+					Console.WriteLine("Applying between-turn orders");
+					game.ExecuteBetweenTurnOrders();
+					Contract.All.WriteAnnouncements(turn_dir, game);
+					Console.WriteLine("Saving game");
+					dataFile.SaveGame();
+				}
+				else
+				{
+					Console.WriteLine("Processing requests");
+					Request.Load(turn_dir);
+					Console.WriteLine("Loading game events");
+					EventsReaders.Load(game, turn_dir);
+					game.Events.Execute();
+					Console.WriteLine("Loading orders");
+					OrdersReader ordersReader = new OrdersReader(game);
+					ordersReader.Load(turn_dir);
+					Console.WriteLine("Processing game turn");
+					game.Execute();
+					Console.WriteLine("Generating reports");
 
-				ReportWriter reportsWriter = new ReportWriter(game, dataFile, turn_dir);
-				reportsWriter.GenerateReports(turn_dir);
+					ReportWriter reportsWriter = new ReportWriter(game, dataFile, turn_dir);
+					reportsWriter.GenerateReports(turn_dir);
 
-				Console.WriteLine("Saving game");
-				dataFile.SaveGame();
+					Console.WriteLine("Saving game");
+					dataFile.SaveGame();
+				}
 			}
 			else
 			{

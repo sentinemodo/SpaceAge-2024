@@ -272,6 +272,14 @@ namespace SpaceAge
 
 		public bool ProcessOffer(int week, Offer buyOffer)
 		{
+			switch (buyOffer.OfferType)
+			{
+				case EOfferType.SellItems:
+				case EOfferType.SellModules:
+				case EOfferType.SellTechnologies:
+					return false;
+			}
+
 			this.Buy = buyOffer;
             this.Sell = this.FindMatch(buyOffer);
 

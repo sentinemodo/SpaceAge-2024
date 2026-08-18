@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Xml;
 using NUnit.Framework;
 using NUnit.Framework.Legacy;
 using SpaceAge;
@@ -49,6 +50,7 @@ namespace IntegrationTests
 			this.dataFile.LoadConfiguration(this.confDir);
 			this.dataFile.LoadFactions();
 			this.dataFile.LoadGalaxy();
+			this.dataFile.LoadContracts();
             this.dataFile.LoadOrders();
 
             this.game = this.dataFile.Game;
@@ -488,20 +490,81 @@ namespace IntegrationTests
         }
 
 		[Test]
+		public void _4a_InjectContractBetweenTurns()
+		{
+			Sequence.Ints.Push(121);
+
+			this.LoadGalaxy("gamein.2.xml");
+			int turnBefore = this.game.Turn;
+
+			OrdersReader ordersReader = new OrdersReader(this.game);
+			ordersReader.LoadOrders(Path.Combine(this.testDir, "orders.2.1.txt"), false);
+
+			this.game.ExecuteBetweenTurnOrders();
+
+			string announceNpc = Path.Combine(this.testDir, "announce.2.1.txt");
+			string announceCaste = Path.Combine(this.testDir, "announce.2.2.txt");
+			string announceGelvaren = Path.Combine(this.testDir, "announce.2.3.txt");
+			if (File.Exists(announceNpc)) { File.Delete(announceNpc); }
+			if (File.Exists(announceCaste)) { File.Delete(announceCaste); }
+			if (File.Exists(announceGelvaren)) { File.Delete(announceGelvaren); }
+
+			Contract.All.WriteAnnouncements(this.testDir, this.game);
+
+			Assert.That(this.game.Turn, Is.EqualTo(turnBefore));
+			Assert.That(this.game.Turn, Is.EqualTo(2));
+			Assert.That(Contract.All.Count, Is.EqualTo(1));
+			Contract contract = Contract.All[0];
+			Assert.That(contract.Name, Is.EqualTo("CT0121"));
+			Assert.That(contract.Location.Name, Is.EqualTo("R00003"));
+			Assert.That(contract.Issuer.Name, Is.EqualTo("1"));
+			Assert.That(contract.RewardTechnology.Name, Is.EqualTo("rckter"));
+			GiveModuleTrigger trigger = (GiveModuleTrigger)contract.Trigger;
+			Assert.That(trigger.Quantity, Is.EqualTo(1));
+			Assert.That(trigger.ModuleType.Name, Is.EqualTo("inftry"));
+			Assert.That(trigger.Receiver.Name, Is.EqualTo("000007"));
+			Assert.That(trigger.Baseline, Is.EqualTo(1));
+
+			Assert.That(File.Exists(announceNpc), Is.True);
+			Assert.That(File.Exists(announceCaste), Is.False, "Caste Prime is in R00002, not the Sydney contract location");
+			Assert.That(File.Exists(announceGelvaren), Is.True, "Gelvaren complex 000026 is in R00003");
+			string announcement = File.ReadAllText(announceGelvaren, Encoding.GetEncoding(1251));
+			Assert.That(announcement.Contains("CT0121"), Is.True);
+			Assert.That(announcement.Contains("infantry battalion [inftry]"), Is.True);
+			Assert.That(announcement.Contains("rocket launcher production [rckter]"), Is.True);
+
+			this.dataFile.SaveGame(this.testDir, "gamein.2_contract.xml");
+			this.consoleOutFile("gamein.2_contract.xml");
+
+			XmlDocument saved = new XmlDocument();
+			saved.Load(Path.Combine(this.testDir, "gamein.2_contract.xml"));
+			XmlElement elGame = saved.DocumentElement;
+			Assert.That(elGame.GetAttribute("turn"), Is.EqualTo("2"));
+			XmlElement elContract = (XmlElement)saved.SelectSingleNode("/game/contracts/contract[@name='CT0121']");
+			Assert.That(elContract, Is.Not.Null);
+			Assert.That(elContract.GetAttribute("location"), Is.EqualTo("R00003"));
+			Assert.That(elContract.GetAttribute("issuer"), Is.EqualTo("1"));
+			Assert.That(elContract.GetAttribute("receiver"), Is.EqualTo("000007"));
+			Assert.That(elContract.GetAttribute("reward"), Is.EqualTo("rckter"));
+			Assert.That(elContract.GetAttribute("baseline"), Is.EqualTo("1"));
+		}
+
+		[Test]
 		public void _5_ExecuteTurn2()
 		{
-            Sequence.Ints.Push(120);
-            Sequence.Ints.Push(119);
-            Sequence.Ints.Push(118);
-            Sequence.Ints.Push(117);
-            Sequence.Ints.Push(116);
-            Sequence.Ints.Push(115);
-            Sequence.Ints.Push(114);
-            Sequence.Ints.Push(113);
-            Sequence.Ints.Push(112);
-            Sequence.Ints.Push(111);
+			Sequence.Ints.Clear();
+			int[] hitLocations = { 50, 150, 250, 350, 450 };
+			for (int i = 0; i < 500; i++)
+			{
+				Sequence.Ints.Push(hitLocations[i % hitLocations.Length]);
+				Sequence.Ints.Push(1);
+			}
+			for (int sequenceValue = 122; sequenceValue >= 111; sequenceValue--)
+			{
+				Sequence.Ints.Push(sequenceValue);
+			}
 
-            this.LoadGalaxy("gamein.2.xml");
+            this.LoadGalaxy("gamein.2_contract.xml");
 
 			// story:
             // research lab is built
@@ -519,15 +582,26 @@ namespace IntegrationTests
 
             this.game.Execute();
 
-            // validate output reports
+            Assert.That(Contract.All.Count, Is.EqualTo(0), "USE for 000007 should complete the Sydney garrison contract");
+            Assert.That(ModuleStack.All["000007"].Quantity, Is.EqualTo(2));
+            Assert.That(ModuleStack.All["000002"].Quantity, Is.EqualTo(1));
+            Assert.That(ModuleStack.All["000007"].Technologies.Contains("rckter"), Is.False);
+            Assert.That(ModuleStack.All["000025"].Technologies.Contains("rckter"), Is.False, "barracks is already at technology capacity");
+            Assert.That(ModuleStack.All["000018"].Technologies.Contains("rckter"), Is.False, "headquarters is nested under the city");
+            Assert.That(ModuleStack.All["000026"].Technologies.Contains("rckter"), Is.True, "overflow copy lands on Gelvaren complex");
+            Assert.That(Faction.All["3"].TechnologiesToShow.Contains("rckter"), Is.True);
+            Assert.That(Faction.All["3"].TechnologiesSeen.Contains("rckter"), Is.False);
+
             ReportWriter reportsWriter = new ReportWriter(this.game, this.dataFile, this.testDir);
-            reportsWriter.GenerateReports(this.testDir);            
+            reportsWriter.GenerateReports(this.testDir);
 
             this.compareFiles("testreport.3.1.txt", "report.3.1.txt");
             this.compareFiles("testreport.3.2.txt", "report.3.2.txt");
             this.compareFiles("testreport.3.3.txt", "report.3.3.txt");
 
-            //   validate output game file
+            Assert.That(Faction.All["3"].TechnologiesSeen.Contains("rckter"), Is.True);
+            Assert.That(Faction.All["3"].TechnologiesToShow.Contains("rckter"), Is.False);
+
             this.dataFile.SaveGame(this.testDir, "gameout.3_saved.xml");
             this.compareFiles("gameout.3.xml", "gameout.3_saved.xml");
             this.copyFile("gameout.3_saved.xml", "gamein.4.xml");

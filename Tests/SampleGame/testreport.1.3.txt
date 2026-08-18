@@ -5,7 +5,7 @@ Content-Disposition: attachment
 SpaceAge report for Gelvaren [3].
 Turn 1, Year 2020, January 1.
 
-SpaceAge Engine Version: 0.1.137.
+SpaceAge Engine Version: 0.1.141.
 
 Events during turn:
   none.
@@ -14,7 +14,6 @@ Bank report:
   Bank account balance: 10000.
   Credit line maximum: 10000.
   Credit rate: 20%, Deposit rate: 5%.
-
 Galaxy report:
 ------------------------------------------------------------
 * Sol [SS0001] (0, 0, 0), star system.
@@ -62,17 +61,17 @@ Galaxy report:
     - Sydney garrison [000007], infantry battalion [inftry], owned by
       NPC [1].
       size: 500.
-    - Sydney farms [000008], 10 farming complexes [farms], owned by NPC
-      [1].
+    - Sydney farms [000008], 10 farming complexes [farms], immobile,
+      owned by NPC [1].
       size: 10000.
     - Sydney wind powerplants [000009], 10 wind powerplants [wnplnt],
-      owned by NPC [1].
+      immobile, owned by NPC [1].
       size: 100.
     - Sydney oil powerplants [000010], 5 oil-burning plants [oplant],
-      owned by NPC [1].
+      immobile, owned by NPC [1].
       size: 4000.
-    - Sydney granary [000011], small cargo bay [cargob], owned by NPC
-      [1].
+    - Sydney granary [000011], small cargo bay [cargob], immobile, owned
+      by NPC [1].
       size: 2000.
   + Gelvaren complex [000026], city [city], immobile.
     size: 25000, mass: 5396 (0), capacity: 15000/9240, energy: 80/75
@@ -82,7 +81,8 @@ Galaxy report:
     items: 1000 cash [cash], 10 terrans [terran] (size: 40, mass: 40,
     upkeep: 10 cash [cash], consume: 10 units of food [food], 10 units
     of terran breathing gas mixture [terair]).
-    + Gelvaren Headquarters [000018], corporate headquarters [corphq].
+    + Gelvaren Headquarters [000018], corporate headquarters [corphq],
+      immobile.
       size: 1000, mass: 1104 (1000), capacity: 750/104, energy: 10,
       crew: 20/26, upkeep: 135 (100) cash [cash], consume: 26 (0) units
       of food [food], 26 (0) units of terran breathing gas mixture
@@ -94,7 +94,7 @@ Galaxy report:
         size: 4, mass: 4, capacity: 3/0, upkeep: 10 cash [cash],
         consume: unit of food [food], unit of terran breathing gas
         mixture [terair].
-    + small cargo bay [000019], small cargo bay [cargob].
+    + small cargo bay [000019], small cargo bay [cargob], immobile.
       size: 2000, mass: 1458 (200), capacity: 1800/1148, upkeep: 32 (30)
       cash [cash], consume: 2 (0) units of food [food], 2 (0) units of
       terran breathing gas mixture [terair].
@@ -103,7 +103,7 @@ Galaxy report:
       consume: 2 units of food [food], 2 units of terran breathing gas
       mixture [terair]), 20 units of iron [iron] (size: 100, mass: 200),
       10 units of oil [oil] (size: 40, mass: 50).
-    + farming complex [000020], 2 farming complexes [farms].
+    + farming complex [000020], 2 farming complexes [farms], immobile.
       size: 2000, mass: 240 (200), capacity: 1000/40, energy: 10, crew:
       10/10, upkeep: 110 (100) cash [cash], consume: 10 (0) units of
       food [food], 10 (0) units of terran breathing gas mixture
@@ -111,17 +111,17 @@ Galaxy report:
       items: 10 terrans [terran] (size: 40, mass: 40, upkeep: 10 cash
       [cash], consume: 10 units of food [food], 10 units of terran
       breathing gas mixture [terair]).
-    + wind powerplant [000021], 20 wind powerplants [wnplnt].
+    + wind powerplant [000021], 20 wind powerplants [wnplnt], immobile.
       size: 200, mass: 200 (200), energy: 80/20, upkeep: 200 cash
       [cash].
-    + core drill [000022], core drill [cdrill].
+    + core drill [000022], core drill [cdrill], immobile.
       size: 1000, mass: 1024 (1000), capacity: 750/24, energy: 5, crew:
       6/6, upkeep: 46 (40) cash [cash], consume: 6 (0) units of food
       [food], 6 (0) units of terran breathing gas mixture [terair].
       items: 6 terrans [terran] (size: 24, mass: 24, upkeep: 6 cash
       [cash], consume: 6 units of food [food], 6 units of terran
       breathing gas mixture [terair]).
-    + factory [000023], factory [factry].
+    + factory [000023], factory [factry], immobile.
       size: 1000, mass: 790 (750), capacity: 500/40, energy: 15, crew:
       10/10, upkeep: 70 (60) cash [cash], consume: 10 (0) units of food
       [food], 10 (0) units of terran breathing gas mixture [terair].
@@ -129,7 +129,7 @@ Galaxy report:
       items: 10 terrans [terran] (size: 40, mass: 40, upkeep: 10 cash
       [cash], consume: 10 units of food [food], 10 units of terran
       breathing gas mixture [terair]).
-    + military barrack [000025], military barrack [barrck].
+    + military barrack [000025], military barrack [barrck], immobile.
       size: 2000, mass: 540 (500), capacity: 1800/40, energy: 5, crew:
       2/10, upkeep: 210 (200) cash [cash], consume: 10 (0) units of food
       [food], 10 (0) units of terran breathing gas mixture [terair].
@@ -145,32 +145,33 @@ Galaxy report:
 Orders Template:
 #faction 3 "abccb"
 #modulestack 000018
-; + Gelvaren Headquarters [000018], corporate headquarters [corphq].
+; + Gelvaren Headquarters [000018], corporate headquarters [corphq],
+;   immobile.
 ; items: 25 terrans [terran].
 
 #modulestack 000019
-; + small cargo bay [000019], small cargo bay [cargob].
+; + small cargo bay [000019], small cargo bay [cargob], immobile.
 ; items: 1000 units of food [food], 2 terrans [terran], 20 units of iron
 ; [iron], 10 units of oil [oil].
 
 #modulestack 000020
-; + farming complex [000020], 2 farming complexes [farms].
+; + farming complex [000020], 2 farming complexes [farms], immobile.
 ; items: 10 terrans [terran].
 
 #modulestack 000021
-; + wind powerplant [000021], 20 wind powerplants [wnplnt].
+; + wind powerplant [000021], 20 wind powerplants [wnplnt], immobile.
 
 #modulestack 000022
-; + core drill [000022], core drill [cdrill].
+; + core drill [000022], core drill [cdrill], immobile.
 ; items: 6 terrans [terran].
 
 #modulestack 000023
-; + factory [000023], factory [factry].
+; + factory [000023], factory [factry], immobile.
 ; technologies: armored combat [armcbt].
 ; items: 10 terrans [terran].
 
 #modulestack 000025
-; + military barrack [000025], military barrack [barrck].
+; + military barrack [000025], military barrack [barrck], immobile.
 ; technologies: form infantry battalion [frminf].
 ; items: 10 terrans [terran].
 

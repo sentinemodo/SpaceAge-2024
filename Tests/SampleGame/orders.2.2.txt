@@ -32,8 +32,8 @@ sell 300 food
 #modulestack 000017
 ; + factory [000017], 5 factories [factry].
 ; items: 50 terrans [terran], 20 units of iron [iron], 10 units of titanium [titani].
-10 use stnrdf
-10 use frminf
+5 use stnrdf as new109
+-give 4 terran to new109
 
 #modulestack 100
 ; + space shuttle [100], 10 space shuttle [shuttl].
