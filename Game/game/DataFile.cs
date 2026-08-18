@@ -77,9 +77,9 @@ namespace SpaceAge
 			this.LoadConfiguration(this.gameDir);
 		}
 
-		public void LoadConfiguration(string confDir)
+		public void LoadConfiguration(string confDir, string dataFile = "data.xml")
 		{
-			this.LoadConfDocument(confDir);
+			this.LoadConfDocument(confDir, dataFile);
 
 			this.LoadConfigurationItems(true);
 			this.LoadConfigurationItems(false);

@@ -2682,9 +2682,9 @@ namespace UnitTests
         public void PeacefulScout108_See109_DeclareEnemy_StartsBattleAfter109Arrives()
         {
             this.game.ClearDictionaries();
-            string sampleDir = Path.Combine(Directory.GetCurrentDirectory(), "SampleGame");
-            DataFile dataFile = new DataFile(sampleDir);
-            dataFile.LoadGameDocument(sampleDir, "gamein.2_contract.xml");
+            string fixtureDir = Path.Combine(Directory.GetCurrentDirectory(), "fixtures", "scout-declare");
+            DataFile dataFile = new DataFile(fixtureDir);
+            dataFile.LoadGameDocument(fixtureDir, "gamein.xml");
             dataFile.LoadConfiguration(Directory.GetCurrentDirectory());
             dataFile.LoadFactions();
             dataFile.LoadGalaxy();
@@ -2693,8 +2693,8 @@ namespace UnitTests
 
             Game game = dataFile.Game;
             OrdersReader ordersReader = new OrdersReader(game);
-            ordersReader.LoadOrders(Path.Combine(sampleDir, "orders.2.2.txt"), false);
-            ordersReader.LoadOrders(Path.Combine(sampleDir, "orders.2.3.txt"), false);
+            ordersReader.LoadOrders(Path.Combine(fixtureDir, "orders.2.2.txt"), false);
+            ordersReader.LoadOrders(Path.Combine(fixtureDir, "orders.2.3.txt"), false);
 
             ModuleStack scout = game.ModuleStacks["108"];
             Faction gelvaren = game.Factions["3"];
@@ -2723,9 +2723,9 @@ namespace UnitTests
         public void ExecuteHasOrder_ModuleType_triggersAfterCrossStackProduction()
         {
             this.game.ClearDictionaries();
-            string sampleDir = Path.Combine(Directory.GetCurrentDirectory(), "SampleGame");
-            DataFile dataFile = new DataFile(sampleDir);
-            dataFile.LoadGameDocument(sampleDir, "gamein.2_contract.xml");
+            string fixtureDir = Path.Combine(Directory.GetCurrentDirectory(), "fixtures", "has-order-production");
+            DataFile dataFile = new DataFile(fixtureDir);
+            dataFile.LoadGameDocument(fixtureDir, "gamein.xml");
             dataFile.LoadConfiguration(Directory.GetCurrentDirectory());
             dataFile.LoadFactions();
             dataFile.LoadGalaxy();
@@ -2734,8 +2734,8 @@ namespace UnitTests
 
             Game game = dataFile.Game;
             OrdersReader ordersReader = new OrdersReader(game);
-            ordersReader.LoadOrders(Path.Combine(sampleDir, "orders.2.2.txt"), false);
-            ordersReader.LoadOrders(Path.Combine(sampleDir, "orders.2.3.txt"), false);
+            ordersReader.LoadOrders(Path.Combine(fixtureDir, "orders.2.2.txt"), false);
+            ordersReader.LoadOrders(Path.Combine(fixtureDir, "orders.2.3.txt"), false);
 
             ModuleStack tanks = game.ModuleStacks["109"];
             Assert.That(tanks.Quantity, Is.EqualTo(2));

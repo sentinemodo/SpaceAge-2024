@@ -451,17 +451,7 @@ namespace IntegrationTests
             this.consoleOutFile("gameout.1_saved.xml");
 
 			this.compareFiles("gameout.1.xml", "gameout.1_saved.xml");
-            this.copyFile("gameout.1_saved.xml", "gamein.2.xml");
 		}
-
-        private void copyFile(string source, string destination)
-        {
-            string sourceFile = Path.Combine(this.testDir, source);
-            string destinationFile = Path.Combine(this.testDir, destination);
-
-            // overwrite the destination file if it already exists.
-            File.Copy(sourceFile, destinationFile, true);
-        }
 
 		private void parseOrders(string filename)
 		{
@@ -470,8 +460,8 @@ namespace IntegrationTests
         [Test]
         public void _4_LoadGameIn2()
         {
-            // assert gamein2 is the same as gameout1
-            this.compareFiles("gamein.2.xml", "gameout.1_saved.xml");
+            // committed turn-2 input matches committed turn-1 output (no runtime copy)
+            this.compareFiles("gamein.2.xml", "gameout.1.xml");
             this.LoadGalaxy("gamein.2.xml");
 
             // sequence:
@@ -533,11 +523,12 @@ namespace IntegrationTests
 			Assert.That(announcement.Contains("infantry battalion [inftry]"), Is.True);
 			Assert.That(announcement.Contains("rocket launcher production [rckter]"), Is.True);
 
-			this.dataFile.SaveGame(this.testDir, "gamein.2_contract.xml");
-			this.consoleOutFile("gamein.2_contract.xml");
+			this.dataFile.SaveGame(this.testDir, "gamein.2_contract_saved.xml");
+			this.consoleOutFile("gamein.2_contract_saved.xml");
+			this.compareFiles("gamein.2_contract.xml", "gamein.2_contract_saved.xml");
 
 			XmlDocument saved = new XmlDocument();
-			saved.Load(Path.Combine(this.testDir, "gamein.2_contract.xml"));
+			saved.Load(Path.Combine(this.testDir, "gamein.2_contract_saved.xml"));
 			XmlElement elGame = saved.DocumentElement;
 			Assert.That(elGame.GetAttribute("turn"), Is.EqualTo("2"));
 			XmlElement elContract = (XmlElement)saved.SelectSingleNode("/game/contracts/contract[@name='CT0121']");
@@ -604,7 +595,6 @@ namespace IntegrationTests
 
             this.dataFile.SaveGame(this.testDir, "gameout.3_saved.xml");
             this.compareFiles("gameout.3.xml", "gameout.3_saved.xml");
-            this.copyFile("gameout.3_saved.xml", "gamein.4.xml");
 		}
 
 		[Test, Ignore("not ready")]
