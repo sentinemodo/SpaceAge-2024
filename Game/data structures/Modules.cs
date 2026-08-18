@@ -78,6 +78,10 @@ namespace SpaceAge
 				{
 					line = string.Format("{0}, capture: {1}", line, module.CaptureDamage);
 				}
+				if (module.DamageStatus != EDamageStatus.undamaged)
+				{
+					line = string.Format("{0}, {1}", line, module.ReportDamage);
+				}
 				firstAdded = false;
 				if (module.Effects.Count > 0 | module.IsActive == false)
 				{

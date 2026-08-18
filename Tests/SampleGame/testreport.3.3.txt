@@ -103,7 +103,7 @@ Battles report:
       #5 hit points: 100/100.
   ------------------------------------------------------------
   peaceful scout [108] fires tanks [tanks] on gun placement [111]
-  (chance: 3/9) and hits #1 gun placement [111] doing 4 damage.
+  (chance: 3/9) and hits #4 gun placement [111] doing 4 damage.
   Surrender or die! [109] fires tanks [tanks] on Caste Prime
   Headquarters [000012] (chance: 12/22) and hits #1 Caste Prime
   Headquarters [000012] doing 1 damage and 3 capture damage.
@@ -180,11 +180,11 @@ Battles report:
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
-      #4 hit points: 100/100.
-      #5 hit points: 100/96.
+      #4 hit points: 100/96.
+      #5 hit points: 100/100.
   ------------------------------------------------------------
   peaceful scout [108] fires tanks [tanks] on gun placement [111]
-  (chance: 3/9) and hits #1 gun placement [111] doing 4 damage.
+  (chance: 3/9) and hits #5 gun placement [111] doing 4 damage.
   Surrender or die! [109] fires tanks [tanks] on Caste Prime
   Headquarters [000012] (chance: 12/22) and hits #1 Caste Prime
   Headquarters [000012] doing 1 damage and 3 capture damage.
@@ -261,8 +261,8 @@ Battles report:
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
-      #4 hit points: 100/100.
-      #5 hit points: 100/92.
+      #4 hit points: 100/96.
+      #5 hit points: 100/96.
   ------------------------------------------------------------
   peaceful scout [108] fires tanks [tanks] on gun placement [111]
   (chance: 3/9) and hits #1 gun placement [111] doing 4 damage.
@@ -339,14 +339,14 @@ Battles report:
     Caste Prime [2].
     size: 500.
     hit points: 500/488, attack: 5, defense: 5.
-      #1 hit points: 100/100.
+      #1 hit points: 100/96.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
-      #4 hit points: 100/100.
-      #5 hit points: 100/88.
+      #4 hit points: 100/96.
+      #5 hit points: 100/96.
   ------------------------------------------------------------
   peaceful scout [108] fires tanks [tanks] on gun placement [111]
-  (chance: 3/9) and hits #1 gun placement [111] doing 4 damage.
+  (chance: 3/9) and hits #2 gun placement [111] doing 4 damage.
   Surrender or die! [109] fires tanks [tanks] on Caste Prime
   Headquarters [000012] (chance: 12/22) and hits #1 Caste Prime
   Headquarters [000012] doing 1 damage and 3 capture damage.
@@ -420,14 +420,14 @@ Battles report:
     Caste Prime [2].
     size: 500.
     hit points: 500/484, attack: 5, defense: 5.
-      #1 hit points: 100/100.
-      #2 hit points: 100/100.
+      #1 hit points: 100/96.
+      #2 hit points: 100/96.
       #3 hit points: 100/100.
-      #4 hit points: 100/100.
-      #5 hit points: 100/84.
+      #4 hit points: 100/96.
+      #5 hit points: 100/96.
   ------------------------------------------------------------
   peaceful scout [108] fires tanks [tanks] on gun placement [111]
-  (chance: 3/9) and hits #1 gun placement [111] doing 4 damage.
+  (chance: 3/9) and hits #3 gun placement [111] doing 4 damage.
   Surrender or die! [109] fires tanks [tanks] on Caste Prime
   Headquarters [000012] (chance: 12/22) and hits #1 Caste Prime
   Headquarters [000012] doing 1 damage and 3 capture damage.
@@ -501,14 +501,14 @@ Battles report:
     Caste Prime [2].
     size: 500.
     hit points: 500/480, attack: 5, defense: 5.
-      #1 hit points: 100/100.
-      #2 hit points: 100/100.
-      #3 hit points: 100/100.
-      #4 hit points: 100/100.
-      #5 hit points: 100/80.
+      #1 hit points: 100/96.
+      #2 hit points: 100/96.
+      #3 hit points: 100/96.
+      #4 hit points: 100/96.
+      #5 hit points: 100/96.
   ------------------------------------------------------------
   peaceful scout [108] fires tanks [tanks] on gun placement [111]
-  (chance: 3/9) and hits #1 gun placement [111] doing 4 damage.
+  (chance: 3/9) and hits #4 gun placement [111] doing 4 damage.
   Surrender or die! [109] fires tanks [tanks] on Caste Prime
   Headquarters [000012] (chance: 12/22) and hits #1 Caste Prime
   Headquarters [000012] doing 1 damage and 3 capture damage.
@@ -582,15 +582,14 @@ Battles report:
     Caste Prime [2].
     size: 500.
     hit points: 500/476, attack: 5, defense: 5.
-      #1 hit points: 100/100.
-      #2 hit points: 100/100.
-      #3 hit points: 100/100.
-      #4 hit points: 100/100.
-      #5 hit points: 100/76.
+      #1 hit points: 100/96.
+      #2 hit points: 100/96.
+      #3 hit points: 100/96.
+      #4 hit points: 100/92.
+      #5 hit points: 100/96.
   ------------------------------------------------------------
   peaceful scout [108] fires tanks [tanks] on gun placement [111]
-  (chance: 3/9) and hits #1 gun placement [111] doing 4 damage.
-    #1 gun placement [gunplc] is lightly damaged.
+  (chance: 3/9) and hits #5 gun placement [111] doing 4 damage.
   Surrender or die! [109] fires tanks [tanks] on Caste Prime
   Headquarters [000012] (chance: 12/22) and hits #1 Caste Prime
   Headquarters [000012] doing 1 damage and 3 capture damage.
@@ -664,15 +663,14 @@ Battles report:
     Caste Prime [2].
     size: 500.
     hit points: 500/472, attack: 5, defense: 5.
-      #1 hit points: 100/100.
-      #2 hit points: 100/100.
-      #3 hit points: 100/100.
-      #4 hit points: 100/100.
-      #5 hit points: 100/72.
+      #1 hit points: 100/96.
+      #2 hit points: 100/96.
+      #3 hit points: 100/96.
+      #4 hit points: 100/92.
+      #5 hit points: 100/92.
   ------------------------------------------------------------
   peaceful scout [108] fires tanks [tanks] on gun placement [111]
   (chance: 3/9) and hits #1 gun placement [111] doing 4 damage.
-    #1 gun placement [gunplc] is lightly damaged.
   Surrender or die! [109] fires tanks [tanks] on Caste Prime
   Headquarters [000012] (chance: 12/22) and hits #1 Caste Prime
   Headquarters [000012] doing 1 damage and 3 capture damage.
@@ -746,15 +744,14 @@ Battles report:
     Caste Prime [2].
     size: 500.
     hit points: 500/468, attack: 5, defense: 5.
-      #1 hit points: 100/100.
-      #2 hit points: 100/100.
-      #3 hit points: 100/100.
-      #4 hit points: 100/100.
-      #5 hit points: 100/68.
+      #1 hit points: 100/92.
+      #2 hit points: 100/96.
+      #3 hit points: 100/96.
+      #4 hit points: 100/92.
+      #5 hit points: 100/92.
   ------------------------------------------------------------
   peaceful scout [108] fires tanks [tanks] on gun placement [111]
-  (chance: 3/9) and hits #1 gun placement [111] doing 4 damage.
-    #1 gun placement [gunplc] is lightly damaged.
+  (chance: 3/9) and hits #2 gun placement [111] doing 4 damage.
   Surrender or die! [109] fires tanks [tanks] on Caste Prime
   Headquarters [000012] (chance: 12/22) and hits #1 Caste Prime
   Headquarters [000012] doing 1 damage and 3 capture damage.
@@ -821,23 +818,22 @@ Battles report:
     Caste Prime [2].
     size: 500.
     hit points: 500/464, attack: 5, defense: 5.
-      #1 hit points: 100/100.
-      #2 hit points: 100/100.
-      #3 hit points: 100/100.
-      #4 hit points: 100/100.
-      #5 hit points: 100/64.
+      #1 hit points: 100/92.
+      #2 hit points: 100/92.
+      #3 hit points: 100/96.
+      #4 hit points: 100/92.
+      #5 hit points: 100/92.
   ------------------------------------------------------------
   peaceful scout [108] fires tanks [tanks] on gun placement [111]
-  (chance: 3/9) and hits #1 gun placement [111] doing 4 damage.
-    #1 gun placement [gunplc] is lightly damaged.
+  (chance: 3/9) and hits #5 gun placement [111] doing 4 damage.
   Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
+  [000013] (chance: 12/17) and hits #2 small cargo bay [000013] doing 1
   damage and 3 capture damage.
   Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
+  [000013] (chance: 12/17) and hits #5 small cargo bay [000013] doing 1
   damage and 3 capture damage.
   Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
+  [000013] (chance: 12/17) and hits #3 small cargo bay [000013] doing 1
   damage and 3 capture damage.
   ------------------------------------------------------------
   Battle ended indecisively.
@@ -870,10 +866,10 @@ Battles report:
     size: 10000.
     hit points: 275/272.
       #1 hit points: 55/55.
-      #2 hit points: 55/55.
-      #3 hit points: 55/55.
+      #2 hit points: 55/54.
+      #3 hit points: 55/54.
       #4 hit points: 55/55.
-      #5 hit points: 55/52.
+      #5 hit points: 55/54.
   - farming complex [000014], 3 farming complexes [farms], owned by
     Caste Prime [2].
     size: 3000.
@@ -904,23 +900,22 @@ Battles report:
     Caste Prime [2].
     size: 500.
     hit points: 500/460, attack: 5, defense: 5.
-      #1 hit points: 100/100.
-      #2 hit points: 100/100.
-      #3 hit points: 100/100.
-      #4 hit points: 100/100.
-      #5 hit points: 100/60.
+      #1 hit points: 100/92.
+      #2 hit points: 100/92.
+      #3 hit points: 100/96.
+      #4 hit points: 100/92.
+      #5 hit points: 100/88.
   ------------------------------------------------------------
   peaceful scout [108] fires tanks [tanks] on gun placement [111]
   (chance: 3/9) and hits #1 gun placement [111] doing 4 damage.
-    #1 gun placement [gunplc] is lightly damaged.
   Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
+  [000013] (chance: 12/17) and hits #4 small cargo bay [000013] doing 1
   damage and 3 capture damage.
   Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
+  [000013] (chance: 12/17) and hits #2 small cargo bay [000013] doing 1
   damage and 3 capture damage.
   Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
+  [000013] (chance: 12/17) and hits #5 small cargo bay [000013] doing 1
   damage and 3 capture damage.
   ------------------------------------------------------------
   Round 2:
@@ -947,10 +942,10 @@ Battles report:
     size: 10000.
     hit points: 275/269, capture: 9.
       #1 hit points: 55/55.
-      #2 hit points: 55/55.
-      #3 hit points: 55/55.
-      #4 hit points: 55/55.
-      #5 hit points: 55/49, capture: 9.
+      #2 hit points: 55/53, capture: 3.
+      #3 hit points: 55/54.
+      #4 hit points: 55/54, capture: 3.
+      #5 hit points: 55/53, capture: 3.
   - farming complex [000014], 3 farming complexes [farms], owned by
     Caste Prime [2].
     size: 3000.
@@ -981,23 +976,22 @@ Battles report:
     Caste Prime [2].
     size: 500.
     hit points: 500/456, attack: 5, defense: 5.
-      #1 hit points: 100/100.
-      #2 hit points: 100/100.
-      #3 hit points: 100/100.
-      #4 hit points: 100/100.
-      #5 hit points: 100/56.
+      #1 hit points: 100/88.
+      #2 hit points: 100/92.
+      #3 hit points: 100/96.
+      #4 hit points: 100/92.
+      #5 hit points: 100/88.
   ------------------------------------------------------------
   peaceful scout [108] fires tanks [tanks] on gun placement [111]
-  (chance: 3/9) and hits #1 gun placement [111] doing 4 damage.
-    #1 gun placement [gunplc] is lightly damaged.
+  (chance: 3/9) and hits #2 gun placement [111] doing 4 damage.
   Surrender or die! [109] fires tanks [tanks] on small cargo bay
   [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
   damage and 3 capture damage.
   Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
+  [000013] (chance: 12/17) and hits #4 small cargo bay [000013] doing 1
   damage and 3 capture damage.
   Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
+  [000013] (chance: 12/17) and hits #2 small cargo bay [000013] doing 1
   damage and 3 capture damage.
   ------------------------------------------------------------
   Round 3:
@@ -1023,11 +1017,11 @@ Battles report:
     Caste Prime [2].
     size: 10000.
     hit points: 275/266, capture: 18.
-      #1 hit points: 55/55.
-      #2 hit points: 55/55.
-      #3 hit points: 55/55.
-      #4 hit points: 55/55.
-      #5 hit points: 55/46, capture: 18.
+      #1 hit points: 55/54, capture: 3.
+      #2 hit points: 55/52, capture: 6.
+      #3 hit points: 55/54.
+      #4 hit points: 55/53, capture: 6.
+      #5 hit points: 55/53, capture: 3.
   - farming complex [000014], 3 farming complexes [farms], owned by
     Caste Prime [2].
     size: 3000.
@@ -1058,24 +1052,22 @@ Battles report:
     Caste Prime [2].
     size: 500.
     hit points: 500/452, attack: 5, defense: 5.
-      #1 hit points: 100/100.
-      #2 hit points: 100/100.
-      #3 hit points: 100/100.
-      #4 hit points: 100/100.
-      #5 hit points: 100/52.
+      #1 hit points: 100/88.
+      #2 hit points: 100/88.
+      #3 hit points: 100/96.
+      #4 hit points: 100/92.
+      #5 hit points: 100/88.
   ------------------------------------------------------------
   peaceful scout [108] fires tanks [tanks] on gun placement [111]
-  (chance: 3/9) and hits #1 gun placement [111] doing 4 damage.
-    #1 gun placement [gunplc] is heavily damaged.
-    #1 gun placement [gunplc] is disabled.
+  (chance: 3/9) and hits #3 gun placement [111] doing 4 damage.
   Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
+  [000013] (chance: 12/17) and hits #3 small cargo bay [000013] doing 1
   damage and 3 capture damage.
   Surrender or die! [109] fires tanks [tanks] on small cargo bay
   [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
   damage and 3 capture damage.
   Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
+  [000013] (chance: 12/17) and hits #4 small cargo bay [000013] doing 1
   damage and 3 capture damage.
   ------------------------------------------------------------
   Round 4:
@@ -1101,11 +1093,11 @@ Battles report:
     Caste Prime [2].
     size: 10000.
     hit points: 275/263, capture: 27.
-      #1 hit points: 55/55.
-      #2 hit points: 55/55.
-      #3 hit points: 55/55.
-      #4 hit points: 55/55.
-      #5 hit points: 55/43, capture: 27.
+      #1 hit points: 55/53, capture: 6.
+      #2 hit points: 55/52, capture: 6.
+      #3 hit points: 55/53, capture: 3.
+      #4 hit points: 55/52, capture: 9.
+      #5 hit points: 55/53, capture: 3.
   - farming complex [000014], 3 farming complexes [farms], owned by
     Caste Prime [2].
     size: 3000.
@@ -1132,22 +1124,27 @@ Battles report:
       #3 hit points: 100/100.
       #4 hit points: 100/100.
       #5 hit points: 100/100.
+  - gun placement [111], 5 gun placements [gunplc], disabled, owned by
+    Caste Prime [2].
+    size: 500.
+    hit points: 500/448, attack: 5, defense: 5.
+      #1 hit points: 100/88.
+      #2 hit points: 100/88.
+      #3 hit points: 100/92.
+      #4 hit points: 100/92.
+      #5 hit points: 100/88.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on small cargo bay [000013]
-  (chance: 3/4) and hits #1 small cargo bay [000013] doing 4 damage.
-    #1 small cargo bay [cargob] is lightly damaged.
+  peaceful scout [108] fires tanks [tanks] on gun placement [111]
+  (chance: 3/9) and hits #4 gun placement [111] doing 4 damage.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay
+  [000013] (chance: 12/17) and hits #5 small cargo bay [000013] doing 1
+  damage and 3 capture damage.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay
+  [000013] (chance: 12/17) and hits #3 small cargo bay [000013] doing 1
+  damage and 3 capture damage.
   Surrender or die! [109] fires tanks [tanks] on small cargo bay
   [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
   damage and 3 capture damage.
-    #1 small cargo bay [cargob] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
-  damage and 3 capture damage.
-    #1 small cargo bay [cargob] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
-  damage and 3 capture damage.
-    #1 small cargo bay [cargob] module captured by Gelvaren [3].
   ------------------------------------------------------------
   Round 5:
   ------------------------------------------------------------
@@ -1168,14 +1165,15 @@ Battles report:
       mass: 4, attack: 5, initiative: 5.
       skills: armor platoon leader [arpldr] (attack: 5, initiative: 5).
   Defenders:
-  - small cargo bay [000013], 4 small cargo bays [cargob], owned by
+  - small cargo bay [000013], 5 small cargo bays [cargob], owned by
     Caste Prime [2].
-    size: 8000.
-    hit points: 220/220.
-      #1 hit points: 55/55.
-      #2 hit points: 55/55.
-      #3 hit points: 55/55.
-      #4 hit points: 55/55.
+    size: 10000.
+    hit points: 275/260, capture: 36.
+      #1 hit points: 55/52, capture: 9.
+      #2 hit points: 55/52, capture: 6.
+      #3 hit points: 55/52, capture: 6.
+      #4 hit points: 55/52, capture: 9.
+      #5 hit points: 55/52, capture: 6.
   - farming complex [000014], 3 farming complexes [farms], owned by
     Caste Prime [2].
     size: 3000.
@@ -1202,17 +1200,26 @@ Battles report:
       #3 hit points: 100/100.
       #4 hit points: 100/100.
       #5 hit points: 100/100.
+  - gun placement [111], 5 gun placements [gunplc], disabled, owned by
+    Caste Prime [2].
+    size: 500.
+    hit points: 500/444, attack: 5, defense: 5.
+      #1 hit points: 100/88.
+      #2 hit points: 100/88.
+      #3 hit points: 100/92.
+      #4 hit points: 100/88.
+      #5 hit points: 100/88.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on small cargo bay [000013]
-  (chance: 3/4) and hits #1 small cargo bay [000013] doing 4 damage.
+  peaceful scout [108] fires tanks [tanks] on gun placement [111]
+  (chance: 3/9) and hits #5 gun placement [111] doing 4 damage.
   Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
+  [000013] (chance: 12/17) and hits #2 small cargo bay [000013] doing 1
   damage and 3 capture damage.
   Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
+  [000013] (chance: 12/17) and hits #5 small cargo bay [000013] doing 1
   damage and 3 capture damage.
   Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
+  [000013] (chance: 12/17) and hits #3 small cargo bay [000013] doing 1
   damage and 3 capture damage.
   ------------------------------------------------------------
   Round 6:
@@ -1234,14 +1241,15 @@ Battles report:
       mass: 4, attack: 5, initiative: 5.
       skills: armor platoon leader [arpldr] (attack: 5, initiative: 5).
   Defenders:
-  - small cargo bay [000013], 4 small cargo bays [cargob], owned by
+  - small cargo bay [000013], 5 small cargo bays [cargob], owned by
     Caste Prime [2].
-    size: 8000.
-    hit points: 220/213, capture: 9.
-      #1 hit points: 55/55.
-      #2 hit points: 55/55.
-      #3 hit points: 55/55.
-      #4 hit points: 55/48, capture: 9.
+    size: 10000.
+    hit points: 275/257, capture: 45.
+      #1 hit points: 55/52, capture: 9.
+      #2 hit points: 55/51, capture: 9.
+      #3 hit points: 55/51, capture: 9.
+      #4 hit points: 55/52, capture: 9.
+      #5 hit points: 55/51, capture: 9.
   - farming complex [000014], 3 farming complexes [farms], owned by
     Caste Prime [2].
     size: 3000.
@@ -1268,19 +1276,27 @@ Battles report:
       #3 hit points: 100/100.
       #4 hit points: 100/100.
       #5 hit points: 100/100.
+  - gun placement [111], 5 gun placements [gunplc], disabled, owned by
+    Caste Prime [2].
+    size: 500.
+    hit points: 500/440, attack: 5, defense: 5.
+      #1 hit points: 100/88.
+      #2 hit points: 100/88.
+      #3 hit points: 100/92.
+      #4 hit points: 100/88.
+      #5 hit points: 100/84.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on small cargo bay [000013]
-  (chance: 3/4) and hits #1 small cargo bay [000013] doing 4 damage.
+  peaceful scout [108] fires tanks [tanks] on gun placement [111]
+  (chance: 3/9) and hits #1 gun placement [111] doing 4 damage.
   Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
+  [000013] (chance: 12/17) and hits #4 small cargo bay [000013] doing 1
   damage and 3 capture damage.
   Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
+  [000013] (chance: 12/17) and hits #2 small cargo bay [000013] doing 1
   damage and 3 capture damage.
   Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
+  [000013] (chance: 12/17) and hits #5 small cargo bay [000013] doing 1
   damage and 3 capture damage.
-    #1 small cargo bay [cargob] is lightly damaged.
   ------------------------------------------------------------
   Round 7:
   ------------------------------------------------------------
@@ -1301,14 +1317,15 @@ Battles report:
       mass: 4, attack: 5, initiative: 5.
       skills: armor platoon leader [arpldr] (attack: 5, initiative: 5).
   Defenders:
-  - small cargo bay [000013], 4 small cargo bays [cargob], owned by
+  - small cargo bay [000013], 5 small cargo bays [cargob], owned by
     Caste Prime [2].
-    size: 8000.
-    hit points: 220/206, capture: 18.
-      #1 hit points: 55/55.
-      #2 hit points: 55/55.
-      #3 hit points: 55/55.
-      #4 hit points: 55/41, capture: 18.
+    size: 10000.
+    hit points: 275/254, capture: 54.
+      #1 hit points: 55/52, capture: 9.
+      #2 hit points: 55/50, capture: 12.
+      #3 hit points: 55/51, capture: 9.
+      #4 hit points: 55/51, capture: 12.
+      #5 hit points: 55/50, capture: 12.
   - farming complex [000014], 3 farming complexes [farms], owned by
     Caste Prime [2].
     size: 3000.
@@ -1335,22 +1352,27 @@ Battles report:
       #3 hit points: 100/100.
       #4 hit points: 100/100.
       #5 hit points: 100/100.
+  - gun placement [111], 5 gun placements [gunplc], disabled, owned by
+    Caste Prime [2].
+    size: 500.
+    hit points: 500/436, attack: 5, defense: 5.
+      #1 hit points: 100/84.
+      #2 hit points: 100/88.
+      #3 hit points: 100/92.
+      #4 hit points: 100/88.
+      #5 hit points: 100/84.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on small cargo bay [000013]
-  (chance: 3/4) and hits #1 small cargo bay [000013] doing 4 damage.
-    #1 small cargo bay [cargob] is lightly damaged.
+  peaceful scout [108] fires tanks [tanks] on gun placement [111]
+  (chance: 3/9) and hits #2 gun placement [111] doing 4 damage.
   Surrender or die! [109] fires tanks [tanks] on small cargo bay
   [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
   damage and 3 capture damage.
-    #1 small cargo bay [cargob] is lightly damaged.
   Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
+  [000013] (chance: 12/17) and hits #4 small cargo bay [000013] doing 1
   damage and 3 capture damage.
-    #1 small cargo bay [cargob] is lightly damaged.
   Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
+  [000013] (chance: 12/17) and hits #2 small cargo bay [000013] doing 1
   damage and 3 capture damage.
-    #1 small cargo bay [cargob] is lightly damaged.
   ------------------------------------------------------------
   Round 8:
   ------------------------------------------------------------
@@ -1371,14 +1393,15 @@ Battles report:
       mass: 4, attack: 5, initiative: 5.
       skills: armor platoon leader [arpldr] (attack: 5, initiative: 5).
   Defenders:
-  - small cargo bay [000013], 4 small cargo bays [cargob], owned by
+  - small cargo bay [000013], 5 small cargo bays [cargob], owned by
     Caste Prime [2].
-    size: 8000.
-    hit points: 220/199, capture: 27.
-      #1 hit points: 55/55.
-      #2 hit points: 55/55.
-      #3 hit points: 55/55.
-      #4 hit points: 55/34, capture: 27.
+    size: 10000.
+    hit points: 275/251, capture: 63.
+      #1 hit points: 55/51, capture: 12.
+      #2 hit points: 55/49, capture: 15.
+      #3 hit points: 55/51, capture: 9.
+      #4 hit points: 55/50, capture: 15.
+      #5 hit points: 55/50, capture: 12.
   - farming complex [000014], 3 farming complexes [farms], owned by
     Caste Prime [2].
     size: 3000.
@@ -1405,19 +1428,26 @@ Battles report:
       #3 hit points: 100/100.
       #4 hit points: 100/100.
       #5 hit points: 100/100.
+  - gun placement [111], 5 gun placements [gunplc], disabled, owned by
+    Caste Prime [2].
+    size: 500.
+    hit points: 500/432, attack: 5, defense: 5.
+      #1 hit points: 100/84.
+      #2 hit points: 100/84.
+      #3 hit points: 100/92.
+      #4 hit points: 100/88.
+      #5 hit points: 100/84.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on small cargo bay [000013]
-  (chance: 3/4) and hits #1 small cargo bay [000013] doing 4 damage.
-    #1 small cargo bay [cargob] is lightly damaged.
+  peaceful scout [108] fires tanks [tanks] on gun placement [111]
+  (chance: 3/9) and hits #3 gun placement [111] doing 4 damage.
   Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
-  damage and 2 capture damage.
-    #1 small cargo bay [cargob] module captured by Gelvaren [3].
+  [000013] (chance: 12/17) and hits #3 small cargo bay [000013] doing 1
+  damage and 3 capture damage.
   Surrender or die! [109] fires tanks [tanks] on small cargo bay
   [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
   damage and 3 capture damage.
   Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
+  [000013] (chance: 12/17) and hits #4 small cargo bay [000013] doing 1
   damage and 3 capture damage.
   ------------------------------------------------------------
   Round 9:
@@ -1439,13 +1469,15 @@ Battles report:
       mass: 4, attack: 5, initiative: 5.
       skills: armor platoon leader [arpldr] (attack: 5, initiative: 5).
   Defenders:
-  - small cargo bay [000013], 3 small cargo bays [cargob], owned by
+  - small cargo bay [000013], 5 small cargo bays [cargob], owned by
     Caste Prime [2].
-    size: 6000.
-    hit points: 165/163, capture: 6.
-      #1 hit points: 55/55.
-      #2 hit points: 55/55.
-      #3 hit points: 55/53, capture: 6.
+    size: 10000.
+    hit points: 275/248, capture: 72.
+      #1 hit points: 55/50, capture: 15.
+      #2 hit points: 55/49, capture: 15.
+      #3 hit points: 55/50, capture: 12.
+      #4 hit points: 55/49, capture: 18.
+      #5 hit points: 55/50, capture: 12.
   - farming complex [000014], 3 farming complexes [farms], owned by
     Caste Prime [2].
     size: 3000.
@@ -1472,14 +1504,23 @@ Battles report:
       #3 hit points: 100/100.
       #4 hit points: 100/100.
       #5 hit points: 100/100.
+  - gun placement [111], 5 gun placements [gunplc], disabled, owned by
+    Caste Prime [2].
+    size: 500.
+    hit points: 500/428, attack: 5, defense: 5.
+      #1 hit points: 100/84.
+      #2 hit points: 100/84.
+      #3 hit points: 100/88.
+      #4 hit points: 100/88.
+      #5 hit points: 100/84.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on small cargo bay [000013]
-  (chance: 3/4) and hits #1 small cargo bay [000013] doing 4 damage.
+  peaceful scout [108] fires tanks [tanks] on gun placement [111]
+  (chance: 3/9) and hits #4 gun placement [111] doing 4 damage.
   Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
+  [000013] (chance: 12/17) and hits #5 small cargo bay [000013] doing 1
   damage and 3 capture damage.
   Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
+  [000013] (chance: 12/17) and hits #3 small cargo bay [000013] doing 1
   damage and 3 capture damage.
   Surrender or die! [109] fires tanks [tanks] on small cargo bay
   [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
@@ -1504,13 +1545,15 @@ Battles report:
       mass: 4, attack: 5, initiative: 5.
       skills: armor platoon leader [arpldr] (attack: 5, initiative: 5).
   Defenders:
-  - small cargo bay [000013], 3 small cargo bays [cargob], owned by
+  - small cargo bay [000013], 5 small cargo bays [cargob], owned by
     Caste Prime [2].
-    size: 6000.
-    hit points: 165/156, capture: 15.
-      #1 hit points: 55/55.
-      #2 hit points: 55/55.
-      #3 hit points: 55/46, capture: 15.
+    size: 10000.
+    hit points: 275/245, capture: 81.
+      #1 hit points: 55/49, capture: 18.
+      #2 hit points: 55/49, capture: 15.
+      #3 hit points: 55/49, capture: 15.
+      #4 hit points: 55/49, capture: 18.
+      #5 hit points: 55/49, capture: 15.
   - farming complex [000014], 3 farming complexes [farms], owned by
     Caste Prime [2].
     size: 3000.
@@ -1537,21 +1580,27 @@ Battles report:
       #3 hit points: 100/100.
       #4 hit points: 100/100.
       #5 hit points: 100/100.
+  - gun placement [111], 5 gun placements [gunplc], disabled, owned by
+    Caste Prime [2].
+    size: 500.
+    hit points: 500/424, attack: 5, defense: 5.
+      #1 hit points: 100/84.
+      #2 hit points: 100/84.
+      #3 hit points: 100/88.
+      #4 hit points: 100/84.
+      #5 hit points: 100/84.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on small cargo bay [000013]
-  (chance: 3/4) and hits #1 small cargo bay [000013] doing 4 damage.
+  peaceful scout [108] fires tanks [tanks] on gun placement [111]
+  (chance: 3/9) and hits #5 gun placement [111] doing 4 damage.
   Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
+  [000013] (chance: 12/17) and hits #2 small cargo bay [000013] doing 1
   damage and 3 capture damage.
-    #1 small cargo bay [cargob] is lightly damaged.
   Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
+  [000013] (chance: 12/17) and hits #5 small cargo bay [000013] doing 1
   damage and 3 capture damage.
-    #1 small cargo bay [cargob] is lightly damaged.
   Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
+  [000013] (chance: 12/17) and hits #3 small cargo bay [000013] doing 1
   damage and 3 capture damage.
-    #1 small cargo bay [cargob] is lightly damaged.
   ------------------------------------------------------------
   Battle ended indecisively.
   Week 11.
@@ -1578,13 +1627,15 @@ Battles report:
       mass: 4, attack: 5, initiative: 5.
       skills: armor platoon leader [arpldr] (attack: 5, initiative: 5).
   Defenders:
-  - small cargo bay [000013], 3 small cargo bays [cargob], owned by
+  - small cargo bay [000013], 5 small cargo bays [cargob], owned by
     Caste Prime [2].
-    size: 6000.
-    hit points: 165/149.
-      #1 hit points: 55/55.
-      #2 hit points: 55/55.
-      #3 hit points: 55/39.
+    size: 10000.
+    hit points: 275/242.
+      #1 hit points: 55/49.
+      #2 hit points: 55/48.
+      #3 hit points: 55/48.
+      #4 hit points: 55/49.
+      #5 hit points: 55/48.
   - farming complex [000014], 3 farming complexes [farms], owned by
     Caste Prime [2].
     size: 3000.
@@ -1614,29 +1665,24 @@ Battles report:
   - gun placement [111], 5 gun placements [gunplc], disabled, owned by
     Caste Prime [2].
     size: 500.
-    hit points: 500/448, attack: 4, defense: 4.
-      #1 hit points: 100/100.
-      #2 hit points: 100/100.
-      #3 hit points: 100/100.
-      #4 hit points: 100/100.
-      #5 hit points: 100/48, effects: disabled.
+    hit points: 500/420, attack: 5, defense: 5.
+      #1 hit points: 100/84.
+      #2 hit points: 100/84.
+      #3 hit points: 100/88.
+      #4 hit points: 100/84.
+      #5 hit points: 100/80.
   ------------------------------------------------------------
   peaceful scout [108] fires tanks [tanks] on gun placement [111]
-  (chance: 3/8) and hits #1 gun placement [111] doing 4 damage.
-    #1 gun placement [gunplc] is heavily damaged.
-    #1 gun placement [gunplc] is disabled.
+  (chance: 3/9) and hits #1 gun placement [111] doing 4 damage.
   Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
+  [000013] (chance: 12/17) and hits #4 small cargo bay [000013] doing 1
   damage and 3 capture damage.
-    #1 small cargo bay [cargob] is lightly damaged.
   Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
+  [000013] (chance: 12/17) and hits #2 small cargo bay [000013] doing 1
   damage and 3 capture damage.
-    #1 small cargo bay [cargob] is lightly damaged.
   Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
+  [000013] (chance: 12/17) and hits #5 small cargo bay [000013] doing 1
   damage and 3 capture damage.
-    #1 small cargo bay [cargob] is lightly damaged.
   ------------------------------------------------------------
   Round 2:
   ------------------------------------------------------------
@@ -1657,13 +1703,15 @@ Battles report:
       mass: 4, attack: 5, initiative: 5.
       skills: armor platoon leader [arpldr] (attack: 5, initiative: 5).
   Defenders:
-  - small cargo bay [000013], 3 small cargo bays [cargob], owned by
+  - small cargo bay [000013], 5 small cargo bays [cargob], owned by
     Caste Prime [2].
-    size: 6000.
-    hit points: 165/146, capture: 9.
-      #1 hit points: 55/55.
-      #2 hit points: 55/55.
-      #3 hit points: 55/36, capture: 9.
+    size: 10000.
+    hit points: 275/239, capture: 9.
+      #1 hit points: 55/49.
+      #2 hit points: 55/47, capture: 3.
+      #3 hit points: 55/48.
+      #4 hit points: 55/48, capture: 3.
+      #5 hit points: 55/47, capture: 3.
   - farming complex [000014], 3 farming complexes [farms], owned by
     Caste Prime [2].
     size: 3000.
@@ -1690,22 +1738,27 @@ Battles report:
       #3 hit points: 100/100.
       #4 hit points: 100/100.
       #5 hit points: 100/100.
+  - gun placement [111], 5 gun placements [gunplc], disabled, owned by
+    Caste Prime [2].
+    size: 500.
+    hit points: 500/416, attack: 5, defense: 5.
+      #1 hit points: 100/80.
+      #2 hit points: 100/84.
+      #3 hit points: 100/88.
+      #4 hit points: 100/84.
+      #5 hit points: 100/80.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on small cargo bay [000013]
-  (chance: 3/4) and hits #1 small cargo bay [000013] doing 4 damage.
-    #1 small cargo bay [cargob] is lightly damaged.
+  peaceful scout [108] fires tanks [tanks] on gun placement [111]
+  (chance: 3/9) and hits #2 gun placement [111] doing 4 damage.
   Surrender or die! [109] fires tanks [tanks] on small cargo bay
   [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
   damage and 3 capture damage.
-    #1 small cargo bay [cargob] is lightly damaged.
   Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
+  [000013] (chance: 12/17) and hits #4 small cargo bay [000013] doing 1
   damage and 3 capture damage.
-    #1 small cargo bay [cargob] is lightly damaged.
   Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
+  [000013] (chance: 12/17) and hits #2 small cargo bay [000013] doing 1
   damage and 3 capture damage.
-    #1 small cargo bay [cargob] is lightly damaged.
   ------------------------------------------------------------
   Round 3:
   ------------------------------------------------------------
@@ -1726,13 +1779,15 @@ Battles report:
       mass: 4, attack: 5, initiative: 5.
       skills: armor platoon leader [arpldr] (attack: 5, initiative: 5).
   Defenders:
-  - small cargo bay [000013], 3 small cargo bays [cargob], owned by
+  - small cargo bay [000013], 5 small cargo bays [cargob], owned by
     Caste Prime [2].
-    size: 6000.
-    hit points: 165/139, capture: 18.
-      #1 hit points: 55/55.
-      #2 hit points: 55/55.
-      #3 hit points: 55/29, capture: 18.
+    size: 10000.
+    hit points: 275/236, capture: 18.
+      #1 hit points: 55/48, capture: 3.
+      #2 hit points: 55/46, capture: 6.
+      #3 hit points: 55/48.
+      #4 hit points: 55/47, capture: 6.
+      #5 hit points: 55/47, capture: 3.
   - farming complex [000014], 3 farming complexes [farms], owned by
     Caste Prime [2].
     size: 3000.
@@ -1759,22 +1814,26 @@ Battles report:
       #3 hit points: 100/100.
       #4 hit points: 100/100.
       #5 hit points: 100/100.
+  - gun placement [111], 5 gun placements [gunplc], disabled, owned by
+    Caste Prime [2].
+    size: 500.
+    hit points: 500/412, attack: 5, defense: 5.
+      #1 hit points: 100/80.
+      #2 hit points: 100/80.
+      #3 hit points: 100/88.
+      #4 hit points: 100/84.
+      #5 hit points: 100/80.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on small cargo bay [000013]
-  (chance: 3/4) and hits #1 small cargo bay [000013] doing 4 damage.
-    #1 small cargo bay [cargob] is heavily damaged.
-    #1 small cargo bay [cargob] is disabled.
+  peaceful scout [108] fires tanks [tanks] on gun placement [111]
+  (chance: 3/9) and hits #3 gun placement [111] doing 4 damage.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay
+  [000013] (chance: 12/17) and hits #3 small cargo bay [000013] doing 1
+  damage and 3 capture damage.
   Surrender or die! [109] fires tanks [tanks] on small cargo bay
   [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
   damage and 3 capture damage.
-    #1 small cargo bay [cargob] is heavily damaged.
-    #1 small cargo bay [cargob] is disabled.
   Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
-  damage and 2 capture damage.
-    #1 small cargo bay [cargob] module captured by Gelvaren [3].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
+  [000013] (chance: 12/17) and hits #4 small cargo bay [000013] doing 1
   damage and 3 capture damage.
   ------------------------------------------------------------
   Round 4:
@@ -1796,12 +1855,15 @@ Battles report:
       mass: 4, attack: 5, initiative: 5.
       skills: armor platoon leader [arpldr] (attack: 5, initiative: 5).
   Defenders:
-  - small cargo bay [000013], 2 small cargo bays [cargob], owned by
+  - small cargo bay [000013], 5 small cargo bays [cargob], owned by
     Caste Prime [2].
-    size: 4000.
-    hit points: 110/109, capture: 3.
-      #1 hit points: 55/55.
-      #2 hit points: 55/54, capture: 3.
+    size: 10000.
+    hit points: 275/233, capture: 27.
+      #1 hit points: 55/47, capture: 6.
+      #2 hit points: 55/46, capture: 6.
+      #3 hit points: 55/47, capture: 3.
+      #4 hit points: 55/46, capture: 9.
+      #5 hit points: 55/47, capture: 3.
   - farming complex [000014], 3 farming complexes [farms], owned by
     Caste Prime [2].
     size: 3000.
@@ -1828,14 +1890,23 @@ Battles report:
       #3 hit points: 100/100.
       #4 hit points: 100/100.
       #5 hit points: 100/100.
+  - gun placement [111], 5 gun placements [gunplc], disabled, owned by
+    Caste Prime [2].
+    size: 500.
+    hit points: 500/408, attack: 5, defense: 5.
+      #1 hit points: 100/80.
+      #2 hit points: 100/80.
+      #3 hit points: 100/84.
+      #4 hit points: 100/84.
+      #5 hit points: 100/80.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on small cargo bay [000013]
-  (chance: 3/4) and hits #1 small cargo bay [000013] doing 4 damage.
+  peaceful scout [108] fires tanks [tanks] on gun placement [111]
+  (chance: 3/9) and hits #4 gun placement [111] doing 4 damage.
   Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
+  [000013] (chance: 12/17) and hits #5 small cargo bay [000013] doing 1
   damage and 3 capture damage.
   Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
+  [000013] (chance: 12/17) and hits #3 small cargo bay [000013] doing 1
   damage and 3 capture damage.
   Surrender or die! [109] fires tanks [tanks] on small cargo bay
   [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
@@ -1860,12 +1931,15 @@ Battles report:
       mass: 4, attack: 5, initiative: 5.
       skills: armor platoon leader [arpldr] (attack: 5, initiative: 5).
   Defenders:
-  - small cargo bay [000013], 2 small cargo bays [cargob], owned by
+  - small cargo bay [000013], 5 small cargo bays [cargob], owned by
     Caste Prime [2].
-    size: 4000.
-    hit points: 110/102, capture: 12.
-      #1 hit points: 55/55.
-      #2 hit points: 55/47, capture: 12.
+    size: 10000.
+    hit points: 275/230, capture: 36.
+      #1 hit points: 55/46, capture: 9.
+      #2 hit points: 55/46, capture: 6.
+      #3 hit points: 55/46, capture: 6.
+      #4 hit points: 55/46, capture: 9.
+      #5 hit points: 55/46, capture: 6.
   - farming complex [000014], 3 farming complexes [farms], owned by
     Caste Prime [2].
     size: 3000.
@@ -1892,20 +1966,27 @@ Battles report:
       #3 hit points: 100/100.
       #4 hit points: 100/100.
       #5 hit points: 100/100.
+  - gun placement [111], 5 gun placements [gunplc], disabled, owned by
+    Caste Prime [2].
+    size: 500.
+    hit points: 500/404, attack: 5, defense: 5.
+      #1 hit points: 100/80.
+      #2 hit points: 100/80.
+      #3 hit points: 100/84.
+      #4 hit points: 100/80.
+      #5 hit points: 100/80.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on small cargo bay [000013]
-  (chance: 3/4) and hits #1 small cargo bay [000013] doing 4 damage.
+  peaceful scout [108] fires tanks [tanks] on gun placement [111]
+  (chance: 3/9) and hits #5 gun placement [111] doing 4 damage.
   Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
+  [000013] (chance: 12/17) and hits #2 small cargo bay [000013] doing 1
   damage and 3 capture damage.
   Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
+  [000013] (chance: 12/17) and hits #5 small cargo bay [000013] doing 1
   damage and 3 capture damage.
-    #1 small cargo bay [cargob] is lightly damaged.
   Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
+  [000013] (chance: 12/17) and hits #3 small cargo bay [000013] doing 1
   damage and 3 capture damage.
-    #1 small cargo bay [cargob] is lightly damaged.
   ------------------------------------------------------------
   Round 6:
   ------------------------------------------------------------
@@ -1926,12 +2007,15 @@ Battles report:
       mass: 4, attack: 5, initiative: 5.
       skills: armor platoon leader [arpldr] (attack: 5, initiative: 5).
   Defenders:
-  - small cargo bay [000013], 2 small cargo bays [cargob], owned by
+  - small cargo bay [000013], 5 small cargo bays [cargob], owned by
     Caste Prime [2].
-    size: 4000.
-    hit points: 110/95, capture: 21.
-      #1 hit points: 55/55.
-      #2 hit points: 55/40, capture: 21.
+    size: 10000.
+    hit points: 275/227, capture: 45.
+      #1 hit points: 55/46, capture: 9.
+      #2 hit points: 55/45, capture: 9.
+      #3 hit points: 55/45, capture: 9.
+      #4 hit points: 55/46, capture: 9.
+      #5 hit points: 55/45, capture: 9.
   - farming complex [000014], 3 farming complexes [farms], owned by
     Caste Prime [2].
     size: 3000.
@@ -1958,22 +2042,27 @@ Battles report:
       #3 hit points: 100/100.
       #4 hit points: 100/100.
       #5 hit points: 100/100.
+  - gun placement [111], 5 gun placements [gunplc], disabled, owned by
+    Caste Prime [2].
+    size: 500.
+    hit points: 500/400, attack: 5, defense: 5.
+      #1 hit points: 100/80.
+      #2 hit points: 100/80.
+      #3 hit points: 100/84.
+      #4 hit points: 100/80.
+      #5 hit points: 100/76.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on small cargo bay [000013]
-  (chance: 3/4) and hits #1 small cargo bay [000013] doing 4 damage.
-    #1 small cargo bay [cargob] is lightly damaged.
+  peaceful scout [108] fires tanks [tanks] on gun placement [111]
+  (chance: 3/9) and hits #1 gun placement [111] doing 4 damage.
   Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
+  [000013] (chance: 12/17) and hits #4 small cargo bay [000013] doing 1
   damage and 3 capture damage.
-    #1 small cargo bay [cargob] is lightly damaged.
   Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
+  [000013] (chance: 12/17) and hits #2 small cargo bay [000013] doing 1
   damage and 3 capture damage.
-    #1 small cargo bay [cargob] is lightly damaged.
   Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
+  [000013] (chance: 12/17) and hits #5 small cargo bay [000013] doing 1
   damage and 3 capture damage.
-    #1 small cargo bay [cargob] is lightly damaged.
   ------------------------------------------------------------
   Round 7:
   ------------------------------------------------------------
@@ -1994,12 +2083,15 @@ Battles report:
       mass: 4, attack: 5, initiative: 5.
       skills: armor platoon leader [arpldr] (attack: 5, initiative: 5).
   Defenders:
-  - small cargo bay [000013], 2 small cargo bays [cargob], owned by
+  - small cargo bay [000013], 5 small cargo bays [cargob], owned by
     Caste Prime [2].
-    size: 4000.
-    hit points: 110/88, capture: 30.
-      #1 hit points: 55/55.
-      #2 hit points: 55/33, capture: 30.
+    size: 10000.
+    hit points: 275/224, capture: 54.
+      #1 hit points: 55/46, capture: 9.
+      #2 hit points: 55/44, capture: 12.
+      #3 hit points: 55/45, capture: 9.
+      #4 hit points: 55/45, capture: 12.
+      #5 hit points: 55/44, capture: 12.
   - farming complex [000014], 3 farming complexes [farms], owned by
     Caste Prime [2].
     size: 3000.
@@ -2026,19 +2118,26 @@ Battles report:
       #3 hit points: 100/100.
       #4 hit points: 100/100.
       #5 hit points: 100/100.
+  - gun placement [111], 5 gun placements [gunplc], disabled, owned by
+    Caste Prime [2].
+    size: 500.
+    hit points: 500/396, attack: 5, defense: 5.
+      #1 hit points: 100/76.
+      #2 hit points: 100/80.
+      #3 hit points: 100/84.
+      #4 hit points: 100/80.
+      #5 hit points: 100/76.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on small cargo bay [000013]
-  (chance: 3/4) and hits #1 small cargo bay [000013] doing 3 damage.
-    #1 small cargo bay [cargob] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 0
-  damage.
-    #1 small cargo bay [cargob] module captured by Gelvaren [3].
+  peaceful scout [108] fires tanks [tanks] on gun placement [111]
+  (chance: 3/9) and hits #2 gun placement [111] doing 4 damage.
   Surrender or die! [109] fires tanks [tanks] on small cargo bay
   [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
   damage and 3 capture damage.
   Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
+  [000013] (chance: 12/17) and hits #4 small cargo bay [000013] doing 1
+  damage and 3 capture damage.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay
+  [000013] (chance: 12/17) and hits #2 small cargo bay [000013] doing 1
   damage and 3 capture damage.
   ------------------------------------------------------------
   Round 8:
@@ -2060,11 +2159,15 @@ Battles report:
       mass: 4, attack: 5, initiative: 5.
       skills: armor platoon leader [arpldr] (attack: 5, initiative: 5).
   Defenders:
-  - small cargo bay [000013], small cargo bay [cargob], owned by Caste
-    Prime [2].
-    size: 2000.
-    hit points: 55/53, capture: 6.
-      #1 hit points: 55/53, capture: 6.
+  - small cargo bay [000013], 5 small cargo bays [cargob], owned by
+    Caste Prime [2].
+    size: 10000.
+    hit points: 275/221, capture: 63.
+      #1 hit points: 55/45, capture: 12.
+      #2 hit points: 55/43, capture: 15.
+      #3 hit points: 55/45, capture: 9.
+      #4 hit points: 55/44, capture: 15.
+      #5 hit points: 55/44, capture: 12.
   - farming complex [000014], 3 farming complexes [farms], owned by
     Caste Prime [2].
     size: 3000.
@@ -2091,17 +2194,26 @@ Battles report:
       #3 hit points: 100/100.
       #4 hit points: 100/100.
       #5 hit points: 100/100.
+  - gun placement [111], 5 gun placements [gunplc], disabled, owned by
+    Caste Prime [2].
+    size: 500.
+    hit points: 500/392, attack: 5, defense: 5.
+      #1 hit points: 100/76.
+      #2 hit points: 100/76.
+      #3 hit points: 100/84.
+      #4 hit points: 100/80.
+      #5 hit points: 100/76.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on small cargo bay [000013]
-  (chance: 3/4) and hits #1 small cargo bay [000013] doing 4 damage.
+  peaceful scout [108] fires tanks [tanks] on gun placement [111]
+  (chance: 3/9) and hits #3 gun placement [111] doing 4 damage.
   Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
+  [000013] (chance: 12/17) and hits #3 small cargo bay [000013] doing 1
   damage and 3 capture damage.
   Surrender or die! [109] fires tanks [tanks] on small cargo bay
   [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
   damage and 3 capture damage.
   Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
+  [000013] (chance: 12/17) and hits #4 small cargo bay [000013] doing 1
   damage and 3 capture damage.
   ------------------------------------------------------------
   Round 9:
@@ -2123,11 +2235,15 @@ Battles report:
       mass: 4, attack: 5, initiative: 5.
       skills: armor platoon leader [arpldr] (attack: 5, initiative: 5).
   Defenders:
-  - small cargo bay [000013], small cargo bay [cargob], owned by Caste
-    Prime [2].
-    size: 2000.
-    hit points: 55/46, capture: 15.
-      #1 hit points: 55/46, capture: 15.
+  - small cargo bay [000013], 5 small cargo bays [cargob], owned by
+    Caste Prime [2].
+    size: 10000.
+    hit points: 275/218, capture: 72.
+      #1 hit points: 55/44, capture: 15.
+      #2 hit points: 55/43, capture: 15.
+      #3 hit points: 55/44, capture: 12.
+      #4 hit points: 55/43, capture: 18.
+      #5 hit points: 55/44, capture: 12.
   - farming complex [000014], 3 farming complexes [farms], owned by
     Caste Prime [2].
     size: 3000.
@@ -2154,21 +2270,27 @@ Battles report:
       #3 hit points: 100/100.
       #4 hit points: 100/100.
       #5 hit points: 100/100.
+  - gun placement [111], 5 gun placements [gunplc], disabled, owned by
+    Caste Prime [2].
+    size: 500.
+    hit points: 500/388, attack: 5, defense: 5.
+      #1 hit points: 100/76.
+      #2 hit points: 100/76.
+      #3 hit points: 100/80.
+      #4 hit points: 100/80.
+      #5 hit points: 100/76.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on small cargo bay [000013]
-  (chance: 3/4) and hits #1 small cargo bay [000013] doing 4 damage.
+  peaceful scout [108] fires tanks [tanks] on gun placement [111]
+  (chance: 3/9) and hits #4 gun placement [111] doing 4 damage.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay
+  [000013] (chance: 12/17) and hits #5 small cargo bay [000013] doing 1
+  damage and 3 capture damage.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay
+  [000013] (chance: 12/17) and hits #3 small cargo bay [000013] doing 1
+  damage and 3 capture damage.
   Surrender or die! [109] fires tanks [tanks] on small cargo bay
   [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
   damage and 3 capture damage.
-    #1 small cargo bay [cargob] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
-  damage and 3 capture damage.
-    #1 small cargo bay [cargob] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
-  damage and 3 capture damage.
-    #1 small cargo bay [cargob] is lightly damaged.
   ------------------------------------------------------------
   Round 10:
   ------------------------------------------------------------
@@ -2189,11 +2311,15 @@ Battles report:
       mass: 4, attack: 5, initiative: 5.
       skills: armor platoon leader [arpldr] (attack: 5, initiative: 5).
   Defenders:
-  - small cargo bay [000013], small cargo bay [cargob], owned by Caste
-    Prime [2].
-    size: 2000.
-    hit points: 55/39, capture: 24.
-      #1 hit points: 55/39, capture: 24.
+  - small cargo bay [000013], 5 small cargo bays [cargob], owned by
+    Caste Prime [2].
+    size: 10000.
+    hit points: 275/215, capture: 81.
+      #1 hit points: 55/43, capture: 18.
+      #2 hit points: 55/43, capture: 15.
+      #3 hit points: 55/43, capture: 15.
+      #4 hit points: 55/43, capture: 18.
+      #5 hit points: 55/43, capture: 15.
   - farming complex [000014], 3 farming complexes [farms], owned by
     Caste Prime [2].
     size: 3000.
@@ -2220,22 +2346,28 @@ Battles report:
       #3 hit points: 100/100.
       #4 hit points: 100/100.
       #5 hit points: 100/100.
+  - gun placement [111], 5 gun placements [gunplc], disabled, owned by
+    Caste Prime [2].
+    size: 500.
+    hit points: 500/384, attack: 5, defense: 5.
+      #1 hit points: 100/76.
+      #2 hit points: 100/76.
+      #3 hit points: 100/80.
+      #4 hit points: 100/76.
+      #5 hit points: 100/76.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on small cargo bay [000013]
-  (chance: 3/4) and hits #1 small cargo bay [000013] doing 4 damage.
-    #1 small cargo bay [cargob] is lightly damaged.
+  peaceful scout [108] fires tanks [tanks] on gun placement [111]
+  (chance: 3/9) and hits #5 gun placement [111] doing 4 damage.
+    #5 gun placement [gunplc] is lightly damaged.
   Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
+  [000013] (chance: 12/17) and hits #2 small cargo bay [000013] doing 1
   damage and 3 capture damage.
-    #1 small cargo bay [cargob] is lightly damaged.
   Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
+  [000013] (chance: 12/17) and hits #5 small cargo bay [000013] doing 1
   damage and 3 capture damage.
-    #1 small cargo bay [cargob] is lightly damaged.
   Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
-  damage and 2 capture damage.
-    #1 small cargo bay [cargob] module captured by Gelvaren [3].
+  [000013] (chance: 12/17) and hits #3 small cargo bay [000013] doing 1
+  damage and 3 capture damage.
   ------------------------------------------------------------
   Battle ended indecisively.
   Week 12.
@@ -2262,6 +2394,15 @@ Battles report:
       mass: 4, attack: 5, initiative: 5.
       skills: armor platoon leader [arpldr] (attack: 5, initiative: 5).
   Defenders:
+  - small cargo bay [000013], 5 small cargo bays [cargob], owned by
+    Caste Prime [2].
+    size: 10000.
+    hit points: 275/212.
+      #1 hit points: 55/43.
+      #2 hit points: 55/42.
+      #3 hit points: 55/42.
+      #4 hit points: 55/43.
+      #5 hit points: 55/42.
   - farming complex [000014], 3 farming complexes [farms], owned by
     Caste Prime [2].
     size: 3000.
@@ -2291,26 +2432,27 @@ Battles report:
   - gun placement [111], 5 gun placements [gunplc], disabled, owned by
     Caste Prime [2].
     size: 500.
-    hit points: 500/444, attack: 4, defense: 4.
-      #1 hit points: 100/100.
-      #2 hit points: 100/100.
-      #3 hit points: 100/100.
-      #4 hit points: 100/100.
-      #5 hit points: 100/44, effects: disabled.
+    hit points: 500/380, attack: 5, defense: 5.
+      #1 hit points: 100/76.
+      #2 hit points: 100/76.
+      #3 hit points: 100/80.
+      #4 hit points: 100/76.
+      #5 hit points: 100/72, lightly damaged.
   ------------------------------------------------------------
   peaceful scout [108] fires tanks [tanks] on gun placement [111]
-  (chance: 3/8) and hits #1 gun placement [111] doing 4 damage.
-    #1 gun placement [gunplc] is heavily damaged.
-    #1 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on farming complex
-  [000014] (chance: 12/17) and hits #1 farming complex [000014] doing 1
+  (chance: 3/9) and hits #1 gun placement [111] doing 4 damage.
+    #1 gun placement [gunplc] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay
+  [000013] (chance: 12/17) and hits #4 small cargo bay [000013] doing 1
   damage and 3 capture damage.
-  Surrender or die! [109] fires tanks [tanks] on farming complex
-  [000014] (chance: 12/17) and hits #1 farming complex [000014] doing 1
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay
+  [000013] (chance: 12/17) and hits #2 small cargo bay [000013] doing 1
   damage and 3 capture damage.
-  Surrender or die! [109] fires tanks [tanks] on farming complex
-  [000014] (chance: 12/17) and hits #1 farming complex [000014] doing 1
+    #2 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay
+  [000013] (chance: 12/17) and hits #5 small cargo bay [000013] doing 1
   damage and 3 capture damage.
+    #5 small cargo bay [cargob] is lightly damaged.
   ------------------------------------------------------------
   Round 2:
   ------------------------------------------------------------
@@ -2331,13 +2473,22 @@ Battles report:
       mass: 4, attack: 5, initiative: 5.
       skills: armor platoon leader [arpldr] (attack: 5, initiative: 5).
   Defenders:
+  - small cargo bay [000013], 5 small cargo bays [cargob], owned by
+    Caste Prime [2].
+    size: 10000.
+    hit points: 275/209, capture: 9.
+      #1 hit points: 55/43.
+      #2 hit points: 55/41, capture: 3, lightly damaged.
+      #3 hit points: 55/42.
+      #4 hit points: 55/42, capture: 3.
+      #5 hit points: 55/41, capture: 3, lightly damaged.
   - farming complex [000014], 3 farming complexes [farms], owned by
     Caste Prime [2].
     size: 3000.
-    hit points: 165/162, capture: 9.
+    hit points: 165/165.
       #1 hit points: 55/55.
       #2 hit points: 55/55.
-      #3 hit points: 55/52, capture: 9.
+      #3 hit points: 55/55.
   - coal-burning plant [000015], 3 coal-burning plants [cplant], owned
     by Caste Prime [2].
     size: 3000.
@@ -2357,18 +2508,30 @@ Battles report:
       #3 hit points: 100/100.
       #4 hit points: 100/100.
       #5 hit points: 100/100.
+  - gun placement [111], 5 gun placements [gunplc], disabled, owned by
+    Caste Prime [2].
+    size: 500.
+    hit points: 500/376, attack: 5, defense: 5.
+      #1 hit points: 100/72, lightly damaged.
+      #2 hit points: 100/76.
+      #3 hit points: 100/80.
+      #4 hit points: 100/76.
+      #5 hit points: 100/72, lightly damaged.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on farming complex [000014]
-  (chance: 3/4) and hits #1 farming complex [000014] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on farming complex
-  [000014] (chance: 12/17) and hits #1 farming complex [000014] doing 1
+  peaceful scout [108] fires tanks [tanks] on gun placement [111]
+  (chance: 3/9) and hits #2 gun placement [111] doing 4 damage.
+    #2 gun placement [gunplc] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay
+  [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
   damage and 3 capture damage.
-  Surrender or die! [109] fires tanks [tanks] on farming complex
-  [000014] (chance: 12/17) and hits #1 farming complex [000014] doing 1
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay
+  [000013] (chance: 12/17) and hits #4 small cargo bay [000013] doing 1
   damage and 3 capture damage.
-  Surrender or die! [109] fires tanks [tanks] on farming complex
-  [000014] (chance: 12/17) and hits #1 farming complex [000014] doing 1
+    #4 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay
+  [000013] (chance: 12/17) and hits #2 small cargo bay [000013] doing 1
   damage and 3 capture damage.
+    #2 small cargo bay [cargob] is lightly damaged.
   ------------------------------------------------------------
   Round 3:
   ------------------------------------------------------------
@@ -2389,13 +2552,22 @@ Battles report:
       mass: 4, attack: 5, initiative: 5.
       skills: armor platoon leader [arpldr] (attack: 5, initiative: 5).
   Defenders:
+  - small cargo bay [000013], 5 small cargo bays [cargob], owned by
+    Caste Prime [2].
+    size: 10000.
+    hit points: 275/206, capture: 18.
+      #1 hit points: 55/42, capture: 3.
+      #2 hit points: 55/40, capture: 6, lightly damaged.
+      #3 hit points: 55/42.
+      #4 hit points: 55/41, capture: 6, lightly damaged.
+      #5 hit points: 55/41, capture: 3, lightly damaged.
   - farming complex [000014], 3 farming complexes [farms], owned by
     Caste Prime [2].
     size: 3000.
-    hit points: 165/155, capture: 18.
+    hit points: 165/165.
       #1 hit points: 55/55.
       #2 hit points: 55/55.
-      #3 hit points: 55/45, capture: 18.
+      #3 hit points: 55/55.
   - coal-burning plant [000015], 3 coal-burning plants [cplant], owned
     by Caste Prime [2].
     size: 3000.
@@ -2415,22 +2587,30 @@ Battles report:
       #3 hit points: 100/100.
       #4 hit points: 100/100.
       #5 hit points: 100/100.
+  - gun placement [111], 5 gun placements [gunplc], disabled, owned by
+    Caste Prime [2].
+    size: 500.
+    hit points: 500/372, attack: 5, defense: 5.
+      #1 hit points: 100/72, lightly damaged.
+      #2 hit points: 100/72, lightly damaged.
+      #3 hit points: 100/80.
+      #4 hit points: 100/76.
+      #5 hit points: 100/72, lightly damaged.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on farming complex [000014]
-  (chance: 3/4) and hits #1 farming complex [000014] doing 4 damage.
-    #1 farming complex [farms] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on farming complex
-  [000014] (chance: 12/17) and hits #1 farming complex [000014] doing 1
+  peaceful scout [108] fires tanks [tanks] on gun placement [111]
+  (chance: 3/9) and hits #3 gun placement [111] doing 4 damage.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay
+  [000013] (chance: 12/17) and hits #3 small cargo bay [000013] doing 1
   damage and 3 capture damage.
-    #1 farming complex [farms] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on farming complex
-  [000014] (chance: 12/17) and hits #1 farming complex [000014] doing 1
+    #3 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay
+  [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
   damage and 3 capture damage.
-    #1 farming complex [farms] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on farming complex
-  [000014] (chance: 12/17) and hits #1 farming complex [000014] doing 1
+    #1 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay
+  [000013] (chance: 12/17) and hits #4 small cargo bay [000013] doing 1
   damage and 3 capture damage.
-    #1 farming complex [farms] is lightly damaged.
+    #4 small cargo bay [cargob] is lightly damaged.
   ------------------------------------------------------------
   Round 4:
   ------------------------------------------------------------
@@ -2451,13 +2631,22 @@ Battles report:
       mass: 4, attack: 5, initiative: 5.
       skills: armor platoon leader [arpldr] (attack: 5, initiative: 5).
   Defenders:
+  - small cargo bay [000013], 5 small cargo bays [cargob], owned by
+    Caste Prime [2].
+    size: 10000.
+    hit points: 275/203, capture: 27.
+      #1 hit points: 55/41, capture: 6, lightly damaged.
+      #2 hit points: 55/40, capture: 6, lightly damaged.
+      #3 hit points: 55/41, capture: 3, lightly damaged.
+      #4 hit points: 55/40, capture: 9, lightly damaged.
+      #5 hit points: 55/41, capture: 3, lightly damaged.
   - farming complex [000014], 3 farming complexes [farms], owned by
     Caste Prime [2].
     size: 3000.
-    hit points: 165/148, capture: 27.
+    hit points: 165/165.
       #1 hit points: 55/55.
       #2 hit points: 55/55.
-      #3 hit points: 55/38, capture: 27.
+      #3 hit points: 55/55.
   - coal-burning plant [000015], 3 coal-burning plants [cplant], owned
     by Caste Prime [2].
     size: 3000.
@@ -2477,21 +2666,31 @@ Battles report:
       #3 hit points: 100/100.
       #4 hit points: 100/100.
       #5 hit points: 100/100.
+  - gun placement [111], 5 gun placements [gunplc], disabled, owned by
+    Caste Prime [2].
+    size: 500.
+    hit points: 500/368, attack: 5, defense: 5.
+      #1 hit points: 100/72, lightly damaged.
+      #2 hit points: 100/72, lightly damaged.
+      #3 hit points: 100/76.
+      #4 hit points: 100/76.
+      #5 hit points: 100/72, lightly damaged.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on farming complex [000014]
-  (chance: 3/4) and hits #1 farming complex [000014] doing 4 damage.
-    #1 farming complex [farms] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on farming complex
-  [000014] (chance: 12/17) and hits #1 farming complex [000014] doing 1
+  peaceful scout [108] fires tanks [tanks] on gun placement [111]
+  (chance: 3/9) and hits #4 gun placement [111] doing 4 damage.
+    #4 gun placement [gunplc] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay
+  [000013] (chance: 12/17) and hits #5 small cargo bay [000013] doing 1
   damage and 3 capture damage.
-    #1 farming complex [farms] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on farming complex
-  [000014] (chance: 12/17) and hits #1 farming complex [000014] doing 1
-  damage and 2 capture damage.
-    #1 farming complex [farms] module captured by Gelvaren [3].
-  Surrender or die! [109] fires tanks [tanks] on farming complex
-  [000014] (chance: 12/17) and hits #1 farming complex [000014] doing 1
+    #5 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay
+  [000013] (chance: 12/17) and hits #3 small cargo bay [000013] doing 1
   damage and 3 capture damage.
+    #3 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay
+  [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
+  damage and 3 capture damage.
+    #1 small cargo bay [cargob] is lightly damaged.
   ------------------------------------------------------------
   Round 5:
   ------------------------------------------------------------
@@ -2512,12 +2711,22 @@ Battles report:
       mass: 4, attack: 5, initiative: 5.
       skills: armor platoon leader [arpldr] (attack: 5, initiative: 5).
   Defenders:
-  - farming complex [000014], 2 farming complexes [farms], owned by
+  - small cargo bay [000013], 5 small cargo bays [cargob], owned by
     Caste Prime [2].
-    size: 2000.
-    hit points: 110/109, capture: 3.
+    size: 10000.
+    hit points: 275/200, capture: 36.
+      #1 hit points: 55/40, capture: 9, lightly damaged.
+      #2 hit points: 55/40, capture: 6, lightly damaged.
+      #3 hit points: 55/40, capture: 6, lightly damaged.
+      #4 hit points: 55/40, capture: 9, lightly damaged.
+      #5 hit points: 55/40, capture: 6, lightly damaged.
+  - farming complex [000014], 3 farming complexes [farms], owned by
+    Caste Prime [2].
+    size: 3000.
+    hit points: 165/165.
       #1 hit points: 55/55.
-      #2 hit points: 55/54, capture: 3.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
   - coal-burning plant [000015], 3 coal-burning plants [cplant], owned
     by Caste Prime [2].
     size: 3000.
@@ -2537,18 +2746,31 @@ Battles report:
       #3 hit points: 100/100.
       #4 hit points: 100/100.
       #5 hit points: 100/100.
+  - gun placement [111], 5 gun placements [gunplc], disabled, owned by
+    Caste Prime [2].
+    size: 500.
+    hit points: 500/364, attack: 5, defense: 5.
+      #1 hit points: 100/72, lightly damaged.
+      #2 hit points: 100/72, lightly damaged.
+      #3 hit points: 100/76.
+      #4 hit points: 100/72, lightly damaged.
+      #5 hit points: 100/72, lightly damaged.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on farming complex [000014]
-  (chance: 3/4) and hits #1 farming complex [000014] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on farming complex
-  [000014] (chance: 12/17) and hits #1 farming complex [000014] doing 1
+  peaceful scout [108] fires tanks [tanks] on gun placement [111]
+  (chance: 3/9) and hits #5 gun placement [111] doing 4 damage.
+    #5 gun placement [gunplc] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay
+  [000013] (chance: 12/17) and hits #2 small cargo bay [000013] doing 1
   damage and 3 capture damage.
-  Surrender or die! [109] fires tanks [tanks] on farming complex
-  [000014] (chance: 12/17) and hits #1 farming complex [000014] doing 1
+    #2 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay
+  [000013] (chance: 12/17) and hits #5 small cargo bay [000013] doing 1
   damage and 3 capture damage.
-  Surrender or die! [109] fires tanks [tanks] on farming complex
-  [000014] (chance: 12/17) and hits #1 farming complex [000014] doing 1
+    #5 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay
+  [000013] (chance: 12/17) and hits #3 small cargo bay [000013] doing 1
   damage and 3 capture damage.
+    #3 small cargo bay [cargob] is lightly damaged.
   ------------------------------------------------------------
   Round 6:
   ------------------------------------------------------------
@@ -2569,12 +2791,22 @@ Battles report:
       mass: 4, attack: 5, initiative: 5.
       skills: armor platoon leader [arpldr] (attack: 5, initiative: 5).
   Defenders:
-  - farming complex [000014], 2 farming complexes [farms], owned by
+  - small cargo bay [000013], 5 small cargo bays [cargob], owned by
     Caste Prime [2].
-    size: 2000.
-    hit points: 110/102, capture: 12.
+    size: 10000.
+    hit points: 275/197, capture: 45.
+      #1 hit points: 55/40, capture: 9, lightly damaged.
+      #2 hit points: 55/39, capture: 9, lightly damaged.
+      #3 hit points: 55/39, capture: 9, lightly damaged.
+      #4 hit points: 55/40, capture: 9, lightly damaged.
+      #5 hit points: 55/39, capture: 9, lightly damaged.
+  - farming complex [000014], 3 farming complexes [farms], owned by
+    Caste Prime [2].
+    size: 3000.
+    hit points: 165/165.
       #1 hit points: 55/55.
-      #2 hit points: 55/47, capture: 12.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
   - coal-burning plant [000015], 3 coal-burning plants [cplant], owned
     by Caste Prime [2].
     size: 3000.
@@ -2594,20 +2826,31 @@ Battles report:
       #3 hit points: 100/100.
       #4 hit points: 100/100.
       #5 hit points: 100/100.
+  - gun placement [111], 5 gun placements [gunplc], disabled, owned by
+    Caste Prime [2].
+    size: 500.
+    hit points: 500/360, attack: 5, defense: 5.
+      #1 hit points: 100/72, lightly damaged.
+      #2 hit points: 100/72, lightly damaged.
+      #3 hit points: 100/76.
+      #4 hit points: 100/72, lightly damaged.
+      #5 hit points: 100/68, lightly damaged.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on farming complex [000014]
-  (chance: 3/4) and hits #1 farming complex [000014] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on farming complex
-  [000014] (chance: 12/17) and hits #1 farming complex [000014] doing 1
+  peaceful scout [108] fires tanks [tanks] on gun placement [111]
+  (chance: 3/9) and hits #1 gun placement [111] doing 4 damage.
+    #1 gun placement [gunplc] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay
+  [000013] (chance: 12/17) and hits #4 small cargo bay [000013] doing 1
   damage and 3 capture damage.
-  Surrender or die! [109] fires tanks [tanks] on farming complex
-  [000014] (chance: 12/17) and hits #1 farming complex [000014] doing 1
+    #4 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay
+  [000013] (chance: 12/17) and hits #2 small cargo bay [000013] doing 1
   damage and 3 capture damage.
-    #1 farming complex [farms] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on farming complex
-  [000014] (chance: 12/17) and hits #1 farming complex [000014] doing 1
+    #2 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay
+  [000013] (chance: 12/17) and hits #5 small cargo bay [000013] doing 1
   damage and 3 capture damage.
-    #1 farming complex [farms] is lightly damaged.
+    #5 small cargo bay [cargob] is lightly damaged.
   ------------------------------------------------------------
   Round 7:
   ------------------------------------------------------------
@@ -2628,12 +2871,22 @@ Battles report:
       mass: 4, attack: 5, initiative: 5.
       skills: armor platoon leader [arpldr] (attack: 5, initiative: 5).
   Defenders:
-  - farming complex [000014], 2 farming complexes [farms], owned by
+  - small cargo bay [000013], 5 small cargo bays [cargob], owned by
     Caste Prime [2].
-    size: 2000.
-    hit points: 110/95, capture: 21.
+    size: 10000.
+    hit points: 275/194, capture: 54.
+      #1 hit points: 55/40, capture: 9, lightly damaged.
+      #2 hit points: 55/38, capture: 12, lightly damaged.
+      #3 hit points: 55/39, capture: 9, lightly damaged.
+      #4 hit points: 55/39, capture: 12, lightly damaged.
+      #5 hit points: 55/38, capture: 12, lightly damaged.
+  - farming complex [000014], 3 farming complexes [farms], owned by
+    Caste Prime [2].
+    size: 3000.
+    hit points: 165/165.
       #1 hit points: 55/55.
-      #2 hit points: 55/40, capture: 21.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
   - coal-burning plant [000015], 3 coal-burning plants [cplant], owned
     by Caste Prime [2].
     size: 3000.
@@ -2653,22 +2906,31 @@ Battles report:
       #3 hit points: 100/100.
       #4 hit points: 100/100.
       #5 hit points: 100/100.
+  - gun placement [111], 5 gun placements [gunplc], disabled, owned by
+    Caste Prime [2].
+    size: 500.
+    hit points: 500/356, attack: 5, defense: 5.
+      #1 hit points: 100/68, lightly damaged.
+      #2 hit points: 100/72, lightly damaged.
+      #3 hit points: 100/76.
+      #4 hit points: 100/72, lightly damaged.
+      #5 hit points: 100/68, lightly damaged.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on farming complex [000014]
-  (chance: 3/4) and hits #1 farming complex [000014] doing 4 damage.
-    #1 farming complex [farms] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on farming complex
-  [000014] (chance: 12/17) and hits #1 farming complex [000014] doing 1
+  peaceful scout [108] fires tanks [tanks] on gun placement [111]
+  (chance: 3/9) and hits #2 gun placement [111] doing 4 damage.
+    #2 gun placement [gunplc] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay
+  [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
   damage and 3 capture damage.
-    #1 farming complex [farms] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on farming complex
-  [000014] (chance: 12/17) and hits #1 farming complex [000014] doing 1
+    #1 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay
+  [000013] (chance: 12/17) and hits #4 small cargo bay [000013] doing 1
   damage and 3 capture damage.
-    #1 farming complex [farms] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on farming complex
-  [000014] (chance: 12/17) and hits #1 farming complex [000014] doing 1
+    #4 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay
+  [000013] (chance: 12/17) and hits #2 small cargo bay [000013] doing 1
   damage and 3 capture damage.
-    #1 farming complex [farms] is lightly damaged.
+    #2 small cargo bay [cargob] is lightly damaged.
   ------------------------------------------------------------
   Round 8:
   ------------------------------------------------------------
@@ -2689,12 +2951,22 @@ Battles report:
       mass: 4, attack: 5, initiative: 5.
       skills: armor platoon leader [arpldr] (attack: 5, initiative: 5).
   Defenders:
-  - farming complex [000014], 2 farming complexes [farms], owned by
+  - small cargo bay [000013], 5 small cargo bays [cargob], owned by
     Caste Prime [2].
-    size: 2000.
-    hit points: 110/88, capture: 30.
+    size: 10000.
+    hit points: 275/191, capture: 63.
+      #1 hit points: 55/39, capture: 12, lightly damaged.
+      #2 hit points: 55/37, capture: 15, lightly damaged.
+      #3 hit points: 55/39, capture: 9, lightly damaged.
+      #4 hit points: 55/38, capture: 15, lightly damaged.
+      #5 hit points: 55/38, capture: 12, lightly damaged.
+  - farming complex [000014], 3 farming complexes [farms], owned by
+    Caste Prime [2].
+    size: 3000.
+    hit points: 165/165.
       #1 hit points: 55/55.
-      #2 hit points: 55/33, capture: 30.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
   - coal-burning plant [000015], 3 coal-burning plants [cplant], owned
     by Caste Prime [2].
     size: 3000.
@@ -2714,20 +2986,31 @@ Battles report:
       #3 hit points: 100/100.
       #4 hit points: 100/100.
       #5 hit points: 100/100.
+  - gun placement [111], 5 gun placements [gunplc], disabled, owned by
+    Caste Prime [2].
+    size: 500.
+    hit points: 500/352, attack: 5, defense: 5.
+      #1 hit points: 100/68, lightly damaged.
+      #2 hit points: 100/68, lightly damaged.
+      #3 hit points: 100/76.
+      #4 hit points: 100/72, lightly damaged.
+      #5 hit points: 100/68, lightly damaged.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on farming complex [000014]
-  (chance: 3/4) and hits #1 farming complex [000014] doing 3 damage.
-    #1 farming complex [farms] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on farming complex
-  [000014] (chance: 12/17) and hits #1 farming complex [000014] doing 0
-  damage.
-    #1 farming complex [farms] module captured by Gelvaren [3].
-  Surrender or die! [109] fires tanks [tanks] on farming complex
-  [000014] (chance: 12/17) and hits #1 farming complex [000014] doing 1
+  peaceful scout [108] fires tanks [tanks] on gun placement [111]
+  (chance: 3/9) and hits #3 gun placement [111] doing 4 damage.
+    #3 gun placement [gunplc] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay
+  [000013] (chance: 12/17) and hits #3 small cargo bay [000013] doing 1
   damage and 3 capture damage.
-  Surrender or die! [109] fires tanks [tanks] on farming complex
-  [000014] (chance: 12/17) and hits #1 farming complex [000014] doing 1
+    #3 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay
+  [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
   damage and 3 capture damage.
+    #1 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay
+  [000013] (chance: 12/17) and hits #4 small cargo bay [000013] doing 1
+  damage and 3 capture damage.
+    #4 small cargo bay [cargob] is lightly damaged.
   ------------------------------------------------------------
   Round 9:
   ------------------------------------------------------------
@@ -2748,11 +3031,22 @@ Battles report:
       mass: 4, attack: 5, initiative: 5.
       skills: armor platoon leader [arpldr] (attack: 5, initiative: 5).
   Defenders:
-  - farming complex [000014], farming complex [farms], owned by Caste
-    Prime [2].
-    size: 1000.
-    hit points: 55/53, capture: 6.
-      #1 hit points: 55/53, capture: 6.
+  - small cargo bay [000013], 5 small cargo bays [cargob], owned by
+    Caste Prime [2].
+    size: 10000.
+    hit points: 275/188, capture: 72.
+      #1 hit points: 55/38, capture: 15, lightly damaged.
+      #2 hit points: 55/37, capture: 15, lightly damaged.
+      #3 hit points: 55/38, capture: 12, lightly damaged.
+      #4 hit points: 55/37, capture: 18, lightly damaged.
+      #5 hit points: 55/38, capture: 12, lightly damaged.
+  - farming complex [000014], 3 farming complexes [farms], owned by
+    Caste Prime [2].
+    size: 3000.
+    hit points: 165/165.
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
   - coal-burning plant [000015], 3 coal-burning plants [cplant], owned
     by Caste Prime [2].
     size: 3000.
@@ -2772,18 +3066,31 @@ Battles report:
       #3 hit points: 100/100.
       #4 hit points: 100/100.
       #5 hit points: 100/100.
+  - gun placement [111], 5 gun placements [gunplc], disabled, owned by
+    Caste Prime [2].
+    size: 500.
+    hit points: 500/348, attack: 5, defense: 5.
+      #1 hit points: 100/68, lightly damaged.
+      #2 hit points: 100/68, lightly damaged.
+      #3 hit points: 100/72, lightly damaged.
+      #4 hit points: 100/72, lightly damaged.
+      #5 hit points: 100/68, lightly damaged.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on farming complex [000014]
-  (chance: 3/4) and hits #1 farming complex [000014] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on farming complex
-  [000014] (chance: 12/17) and hits #1 farming complex [000014] doing 1
+  peaceful scout [108] fires tanks [tanks] on gun placement [111]
+  (chance: 3/9) and hits #4 gun placement [111] doing 4 damage.
+    #4 gun placement [gunplc] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay
+  [000013] (chance: 12/17) and hits #5 small cargo bay [000013] doing 1
   damage and 3 capture damage.
-  Surrender or die! [109] fires tanks [tanks] on farming complex
-  [000014] (chance: 12/17) and hits #1 farming complex [000014] doing 1
+    #5 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay
+  [000013] (chance: 12/17) and hits #3 small cargo bay [000013] doing 1
   damage and 3 capture damage.
-  Surrender or die! [109] fires tanks [tanks] on farming complex
-  [000014] (chance: 12/17) and hits #1 farming complex [000014] doing 1
+    #3 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay
+  [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
   damage and 3 capture damage.
+    #1 small cargo bay [cargob] is lightly damaged.
   ------------------------------------------------------------
   Round 10:
   ------------------------------------------------------------
@@ -2804,11 +3111,22 @@ Battles report:
       mass: 4, attack: 5, initiative: 5.
       skills: armor platoon leader [arpldr] (attack: 5, initiative: 5).
   Defenders:
-  - farming complex [000014], farming complex [farms], owned by Caste
-    Prime [2].
-    size: 1000.
-    hit points: 55/46, capture: 15.
-      #1 hit points: 55/46, capture: 15.
+  - small cargo bay [000013], 5 small cargo bays [cargob], owned by
+    Caste Prime [2].
+    size: 10000.
+    hit points: 275/185, capture: 81.
+      #1 hit points: 55/37, capture: 18, lightly damaged.
+      #2 hit points: 55/37, capture: 15, lightly damaged.
+      #3 hit points: 55/37, capture: 15, lightly damaged.
+      #4 hit points: 55/37, capture: 18, lightly damaged.
+      #5 hit points: 55/37, capture: 15, lightly damaged.
+  - farming complex [000014], 3 farming complexes [farms], owned by
+    Caste Prime [2].
+    size: 3000.
+    hit points: 165/165.
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
   - coal-burning plant [000015], 3 coal-burning plants [cplant], owned
     by Caste Prime [2].
     size: 3000.
@@ -2828,21 +3146,31 @@ Battles report:
       #3 hit points: 100/100.
       #4 hit points: 100/100.
       #5 hit points: 100/100.
+  - gun placement [111], 5 gun placements [gunplc], disabled, owned by
+    Caste Prime [2].
+    size: 500.
+    hit points: 500/344, attack: 5, defense: 5.
+      #1 hit points: 100/68, lightly damaged.
+      #2 hit points: 100/68, lightly damaged.
+      #3 hit points: 100/72, lightly damaged.
+      #4 hit points: 100/68, lightly damaged.
+      #5 hit points: 100/68, lightly damaged.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on farming complex [000014]
-  (chance: 3/4) and hits #1 farming complex [000014] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on farming complex
-  [000014] (chance: 12/17) and hits #1 farming complex [000014] doing 1
+  peaceful scout [108] fires tanks [tanks] on gun placement [111]
+  (chance: 3/9) and hits #5 gun placement [111] doing 4 damage.
+    #5 gun placement [gunplc] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay
+  [000013] (chance: 12/17) and hits #2 small cargo bay [000013] doing 1
   damage and 3 capture damage.
-    #1 farming complex [farms] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on farming complex
-  [000014] (chance: 12/17) and hits #1 farming complex [000014] doing 1
+    #2 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay
+  [000013] (chance: 12/17) and hits #5 small cargo bay [000013] doing 1
   damage and 3 capture damage.
-    #1 farming complex [farms] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on farming complex
-  [000014] (chance: 12/17) and hits #1 farming complex [000014] doing 1
+    #5 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay
+  [000013] (chance: 12/17) and hits #3 small cargo bay [000013] doing 1
   damage and 3 capture damage.
-    #1 farming complex [farms] is lightly damaged.
+    #3 small cargo bay [cargob] is lightly damaged.
   ------------------------------------------------------------
   Battle ended indecisively.
   Week 13.
@@ -2869,11 +3197,22 @@ Battles report:
       mass: 4, attack: 5, initiative: 5.
       skills: armor platoon leader [arpldr] (attack: 5, initiative: 5).
   Defenders:
-  - farming complex [000014], farming complex [farms], owned by Caste
-    Prime [2].
-    size: 1000.
-    hit points: 55/39.
-      #1 hit points: 55/39.
+  - small cargo bay [000013], 5 small cargo bays [cargob], owned by
+    Caste Prime [2].
+    size: 10000.
+    hit points: 275/182.
+      #1 hit points: 55/37, lightly damaged.
+      #2 hit points: 55/36, lightly damaged.
+      #3 hit points: 55/36, lightly damaged.
+      #4 hit points: 55/37, lightly damaged.
+      #5 hit points: 55/36, lightly damaged.
+  - farming complex [000014], 3 farming complexes [farms], owned by
+    Caste Prime [2].
+    size: 3000.
+    hit points: 165/165.
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
   - coal-burning plant [000015], 3 coal-burning plants [cplant], owned
     by Caste Prime [2].
     size: 3000.
@@ -2896,29 +3235,28 @@ Battles report:
   - gun placement [111], 5 gun placements [gunplc], disabled, owned by
     Caste Prime [2].
     size: 500.
-    hit points: 500/440, attack: 4, defense: 4.
-      #1 hit points: 100/100.
-      #2 hit points: 100/100.
-      #3 hit points: 100/100.
-      #4 hit points: 100/100.
-      #5 hit points: 100/40, effects: disabled.
+    hit points: 500/340, attack: 5, defense: 5.
+      #1 hit points: 100/68, lightly damaged.
+      #2 hit points: 100/68, lightly damaged.
+      #3 hit points: 100/72, lightly damaged.
+      #4 hit points: 100/68, lightly damaged.
+      #5 hit points: 100/64, lightly damaged.
   ------------------------------------------------------------
   peaceful scout [108] fires tanks [tanks] on gun placement [111]
-  (chance: 3/8) and hits #1 gun placement [111] doing 4 damage.
-    #1 gun placement [gunplc] is heavily damaged.
-    #1 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on farming complex
-  [000014] (chance: 12/17) and hits #1 farming complex [000014] doing 1
+  (chance: 3/9) and hits #5 gun placement [111] doing 4 damage.
+    #5 gun placement [gunplc] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay
+  [000013] (chance: 12/17) and hits #2 small cargo bay [000013] doing 1
   damage and 3 capture damage.
-    #1 farming complex [farms] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on farming complex
-  [000014] (chance: 12/17) and hits #1 farming complex [000014] doing 1
+    #2 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay
+  [000013] (chance: 12/17) and hits #5 small cargo bay [000013] doing 1
   damage and 3 capture damage.
-    #1 farming complex [farms] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on farming complex
-  [000014] (chance: 12/17) and hits #1 farming complex [000014] doing 1
+    #5 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay
+  [000013] (chance: 12/17) and hits #3 small cargo bay [000013] doing 1
   damage and 3 capture damage.
-    #1 farming complex [farms] is lightly damaged.
+    #3 small cargo bay [cargob] is lightly damaged.
   ------------------------------------------------------------
   Round 2:
   ------------------------------------------------------------
@@ -2939,11 +3277,22 @@ Battles report:
       mass: 4, attack: 5, initiative: 5.
       skills: armor platoon leader [arpldr] (attack: 5, initiative: 5).
   Defenders:
-  - farming complex [000014], farming complex [farms], owned by Caste
-    Prime [2].
-    size: 1000.
-    hit points: 55/36, capture: 9.
-      #1 hit points: 55/36, capture: 9.
+  - small cargo bay [000013], 5 small cargo bays [cargob], owned by
+    Caste Prime [2].
+    size: 10000.
+    hit points: 275/179, capture: 9.
+      #1 hit points: 55/37, lightly damaged.
+      #2 hit points: 55/35, capture: 3, lightly damaged.
+      #3 hit points: 55/35, capture: 3, lightly damaged.
+      #4 hit points: 55/37, lightly damaged.
+      #5 hit points: 55/35, capture: 3, lightly damaged.
+  - farming complex [000014], 3 farming complexes [farms], owned by
+    Caste Prime [2].
+    size: 3000.
+    hit points: 165/165.
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
   - coal-burning plant [000015], 3 coal-burning plants [cplant], owned
     by Caste Prime [2].
     size: 3000.
@@ -2963,20 +3312,31 @@ Battles report:
       #3 hit points: 100/100.
       #4 hit points: 100/100.
       #5 hit points: 100/100.
+  - gun placement [111], 5 gun placements [gunplc], disabled, owned by
+    Caste Prime [2].
+    size: 500.
+    hit points: 500/336, attack: 5, defense: 5.
+      #1 hit points: 100/68, lightly damaged.
+      #2 hit points: 100/68, lightly damaged.
+      #3 hit points: 100/72, lightly damaged.
+      #4 hit points: 100/68, lightly damaged.
+      #5 hit points: 100/60, lightly damaged.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on farming complex [000014]
-  (chance: 3/4) and hits #1 farming complex [000014] doing 4 damage.
-    #1 farming complex [farms] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on farming complex
-  [000014] (chance: 12/17) and hits #1 farming complex [000014] doing 1
+  peaceful scout [108] fires tanks [tanks] on gun placement [111]
+  (chance: 3/9) and hits #1 gun placement [111] doing 4 damage.
+    #1 gun placement [gunplc] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay
+  [000013] (chance: 12/17) and hits #4 small cargo bay [000013] doing 1
   damage and 3 capture damage.
-    #1 farming complex [farms] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on farming complex
-  [000014] (chance: 12/17) and hits #1 farming complex [000014] doing 1
+    #4 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay
+  [000013] (chance: 12/17) and hits #2 small cargo bay [000013] doing 1
   damage and 3 capture damage.
-    #1 farming complex [farms] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on farming complex
-  [000014] (chance: 12/17) and misses.
+    #2 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay
+  [000013] (chance: 12/17) and hits #5 small cargo bay [000013] doing 1
+  damage and 3 capture damage.
+    #5 small cargo bay [cargob] is lightly damaged.
   ------------------------------------------------------------
   Round 3:
   ------------------------------------------------------------
@@ -2997,11 +3357,22 @@ Battles report:
       mass: 4, attack: 5, initiative: 5.
       skills: armor platoon leader [arpldr] (attack: 5, initiative: 5).
   Defenders:
-  - farming complex [000014], farming complex [farms], owned by Caste
-    Prime [2].
-    size: 1000.
-    hit points: 55/30, capture: 15.
-      #1 hit points: 55/30, capture: 15.
+  - small cargo bay [000013], 5 small cargo bays [cargob], owned by
+    Caste Prime [2].
+    size: 10000.
+    hit points: 275/176, capture: 18.
+      #1 hit points: 55/37, lightly damaged.
+      #2 hit points: 55/34, capture: 6, lightly damaged.
+      #3 hit points: 55/35, capture: 3, lightly damaged.
+      #4 hit points: 55/36, capture: 3, lightly damaged.
+      #5 hit points: 55/34, capture: 6, lightly damaged.
+  - farming complex [000014], 3 farming complexes [farms], owned by
+    Caste Prime [2].
+    size: 3000.
+    hit points: 165/165.
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
   - coal-burning plant [000015], 3 coal-burning plants [cplant], owned
     by Caste Prime [2].
     size: 3000.
@@ -3021,25 +3392,31 @@ Battles report:
       #3 hit points: 100/100.
       #4 hit points: 100/100.
       #5 hit points: 100/100.
+  - gun placement [111], 5 gun placements [gunplc], disabled, owned by
+    Caste Prime [2].
+    size: 500.
+    hit points: 500/332, attack: 5, defense: 5.
+      #1 hit points: 100/64, lightly damaged.
+      #2 hit points: 100/68, lightly damaged.
+      #3 hit points: 100/72, lightly damaged.
+      #4 hit points: 100/68, lightly damaged.
+      #5 hit points: 100/60, lightly damaged.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on farming complex [000014]
-  (chance: 3/4) and hits #1 farming complex [000014] doing 4 damage.
-    #1 farming complex [farms] is heavily damaged.
-    #1 farming complex [farms] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on farming complex
-  [000014] (chance: 12/17) and hits #1 farming complex [000014] doing 1
+  peaceful scout [108] fires tanks [tanks] on gun placement [111]
+  (chance: 3/9) and hits #2 gun placement [111] doing 4 damage.
+    #2 gun placement [gunplc] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay
+  [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
   damage and 3 capture damage.
-    #1 farming complex [farms] is heavily damaged.
-    #1 farming complex [farms] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on farming complex
-  [000014] (chance: 12/17) and hits #1 farming complex [000014] doing 1
+    #1 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay
+  [000013] (chance: 12/17) and hits #4 small cargo bay [000013] doing 1
   damage and 3 capture damage.
-    #1 farming complex [farms] is heavily damaged.
-    #1 farming complex [farms] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on farming complex
-  [000014] (chance: 12/17) and hits #1 farming complex [000014] doing 1
-  damage and 2 capture damage.
-    #1 farming complex [farms] module captured by Gelvaren [3].
+    #4 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay
+  [000013] (chance: 12/17) and hits #2 small cargo bay [000013] doing 1
+  damage and 3 capture damage.
+    #2 small cargo bay [cargob] is lightly damaged.
   ------------------------------------------------------------
   Round 4:
   ------------------------------------------------------------
@@ -3060,6 +3437,22 @@ Battles report:
       mass: 4, attack: 5, initiative: 5.
       skills: armor platoon leader [arpldr] (attack: 5, initiative: 5).
   Defenders:
+  - small cargo bay [000013], 5 small cargo bays [cargob], owned by
+    Caste Prime [2].
+    size: 10000.
+    hit points: 275/173, capture: 27.
+      #1 hit points: 55/36, capture: 3, lightly damaged.
+      #2 hit points: 55/33, capture: 9, lightly damaged.
+      #3 hit points: 55/35, capture: 3, lightly damaged.
+      #4 hit points: 55/35, capture: 6, lightly damaged.
+      #5 hit points: 55/34, capture: 6, lightly damaged.
+  - farming complex [000014], 3 farming complexes [farms], owned by
+    Caste Prime [2].
+    size: 3000.
+    hit points: 165/165.
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
   - coal-burning plant [000015], 3 coal-burning plants [cplant], owned
     by Caste Prime [2].
     size: 3000.
@@ -3079,17 +3472,31 @@ Battles report:
       #3 hit points: 100/100.
       #4 hit points: 100/100.
       #5 hit points: 100/100.
+  - gun placement [111], 5 gun placements [gunplc], disabled, owned by
+    Caste Prime [2].
+    size: 500.
+    hit points: 500/328, attack: 5, defense: 5.
+      #1 hit points: 100/64, lightly damaged.
+      #2 hit points: 100/64, lightly damaged.
+      #3 hit points: 100/72, lightly damaged.
+      #4 hit points: 100/68, lightly damaged.
+      #5 hit points: 100/60, lightly damaged.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on coal-burning plant
-  [000015] (chance: 3/4) and misses.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant
-  [000015] (chance: 12/17) and hits #1 coal-burning plant [000015] doing
-  1 damage and 3 capture damage.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant
-  [000015] (chance: 12/17) and hits #1 coal-burning plant [000015] doing
-  1 damage and 3 capture damage.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant
-  [000015] (chance: 12/17) and misses.
+  peaceful scout [108] fires tanks [tanks] on gun placement [111]
+  (chance: 3/9) and hits #3 gun placement [111] doing 4 damage.
+    #3 gun placement [gunplc] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay
+  [000013] (chance: 12/17) and hits #3 small cargo bay [000013] doing 1
+  damage and 3 capture damage.
+    #3 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay
+  [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
+  damage and 3 capture damage.
+    #1 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay
+  [000013] (chance: 12/17) and hits #4 small cargo bay [000013] doing 1
+  damage and 3 capture damage.
+    #4 small cargo bay [cargob] is lightly damaged.
   ------------------------------------------------------------
   Round 5:
   ------------------------------------------------------------
@@ -3110,13 +3517,29 @@ Battles report:
       mass: 4, attack: 5, initiative: 5.
       skills: armor platoon leader [arpldr] (attack: 5, initiative: 5).
   Defenders:
+  - small cargo bay [000013], 5 small cargo bays [cargob], owned by
+    Caste Prime [2].
+    size: 10000.
+    hit points: 275/170, capture: 36.
+      #1 hit points: 55/35, capture: 6, lightly damaged.
+      #2 hit points: 55/33, capture: 9, lightly damaged.
+      #3 hit points: 55/34, capture: 6, lightly damaged.
+      #4 hit points: 55/34, capture: 9, lightly damaged.
+      #5 hit points: 55/34, capture: 6, lightly damaged.
+  - farming complex [000014], 3 farming complexes [farms], owned by
+    Caste Prime [2].
+    size: 3000.
+    hit points: 165/165.
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
   - coal-burning plant [000015], 3 coal-burning plants [cplant], owned
     by Caste Prime [2].
     size: 3000.
-    hit points: 300/298, capture: 6, attack: 3.
+    hit points: 300/300, attack: 3.
       #1 hit points: 100/100.
       #2 hit points: 100/100.
-      #3 hit points: 100/98, capture: 6.
+      #3 hit points: 100/100.
   - core drill [000016], core drill [cdrill], owned by Caste Prime [2].
     size: 1000.
     hit points: 100/100.
@@ -3129,17 +3552,31 @@ Battles report:
       #3 hit points: 100/100.
       #4 hit points: 100/100.
       #5 hit points: 100/100.
+  - gun placement [111], 5 gun placements [gunplc], disabled, owned by
+    Caste Prime [2].
+    size: 500.
+    hit points: 500/324, attack: 5, defense: 5.
+      #1 hit points: 100/64, lightly damaged.
+      #2 hit points: 100/64, lightly damaged.
+      #3 hit points: 100/68, lightly damaged.
+      #4 hit points: 100/68, lightly damaged.
+      #5 hit points: 100/60, lightly damaged.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on coal-burning plant
-  [000015] (chance: 3/4) and misses.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant
-  [000015] (chance: 12/17) and misses.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant
-  [000015] (chance: 12/17) and hits #1 coal-burning plant [000015] doing
-  1 damage and 3 capture damage.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant
-  [000015] (chance: 12/17) and hits #1 coal-burning plant [000015] doing
-  1 damage and 3 capture damage.
+  peaceful scout [108] fires tanks [tanks] on gun placement [111]
+  (chance: 3/9) and hits #4 gun placement [111] doing 4 damage.
+    #4 gun placement [gunplc] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay
+  [000013] (chance: 12/17) and hits #5 small cargo bay [000013] doing 1
+  damage and 3 capture damage.
+    #5 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay
+  [000013] (chance: 12/17) and hits #3 small cargo bay [000013] doing 1
+  damage and 3 capture damage.
+    #3 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay
+  [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
+  damage and 3 capture damage.
+    #1 small cargo bay [cargob] is lightly damaged.
   ------------------------------------------------------------
   Round 6:
   ------------------------------------------------------------
@@ -3160,13 +3597,29 @@ Battles report:
       mass: 4, attack: 5, initiative: 5.
       skills: armor platoon leader [arpldr] (attack: 5, initiative: 5).
   Defenders:
+  - small cargo bay [000013], 5 small cargo bays [cargob], owned by
+    Caste Prime [2].
+    size: 10000.
+    hit points: 275/167, capture: 45.
+      #1 hit points: 55/34, capture: 9, lightly damaged.
+      #2 hit points: 55/33, capture: 9, lightly damaged.
+      #3 hit points: 55/33, capture: 9, lightly damaged.
+      #4 hit points: 55/34, capture: 9, lightly damaged.
+      #5 hit points: 55/33, capture: 9, lightly damaged.
+  - farming complex [000014], 3 farming complexes [farms], owned by
+    Caste Prime [2].
+    size: 3000.
+    hit points: 165/165.
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
   - coal-burning plant [000015], 3 coal-burning plants [cplant], owned
     by Caste Prime [2].
     size: 3000.
-    hit points: 300/296, capture: 12, attack: 3.
+    hit points: 300/300, attack: 3.
       #1 hit points: 100/100.
       #2 hit points: 100/100.
-      #3 hit points: 100/96, capture: 12.
+      #3 hit points: 100/100.
   - core drill [000016], core drill [cdrill], owned by Caste Prime [2].
     size: 1000.
     hit points: 100/100.
@@ -3179,18 +3632,31 @@ Battles report:
       #3 hit points: 100/100.
       #4 hit points: 100/100.
       #5 hit points: 100/100.
+  - gun placement [111], 5 gun placements [gunplc], disabled, owned by
+    Caste Prime [2].
+    size: 500.
+    hit points: 500/320, attack: 5, defense: 5.
+      #1 hit points: 100/64, lightly damaged.
+      #2 hit points: 100/64, lightly damaged.
+      #3 hit points: 100/68, lightly damaged.
+      #4 hit points: 100/64, lightly damaged.
+      #5 hit points: 100/60, lightly damaged.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on coal-burning plant
-  [000015] (chance: 3/4) and misses.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant
-  [000015] (chance: 12/17) and hits #1 coal-burning plant [000015] doing
-  1 damage and 3 capture damage.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant
-  [000015] (chance: 12/17) and hits #1 coal-burning plant [000015] doing
-  1 damage and 3 capture damage.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant
-  [000015] (chance: 12/17) and hits #1 coal-burning plant [000015] doing
-  1 damage and 3 capture damage.
+  peaceful scout [108] fires tanks [tanks] on gun placement [111]
+  (chance: 3/9) and hits #5 gun placement [111] doing 4 damage.
+    #5 gun placement [gunplc] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay
+  [000013] (chance: 12/17) and hits #2 small cargo bay [000013] doing 1
+  damage and 3 capture damage.
+    #2 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay
+  [000013] (chance: 12/17) and hits #5 small cargo bay [000013] doing 1
+  damage and 3 capture damage.
+    #5 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay
+  [000013] (chance: 12/17) and hits #3 small cargo bay [000013] doing 1
+  damage and 3 capture damage.
+    #3 small cargo bay [cargob] is lightly damaged.
   ------------------------------------------------------------
   Round 7:
   ------------------------------------------------------------
@@ -3211,13 +3677,29 @@ Battles report:
       mass: 4, attack: 5, initiative: 5.
       skills: armor platoon leader [arpldr] (attack: 5, initiative: 5).
   Defenders:
+  - small cargo bay [000013], 5 small cargo bays [cargob], owned by
+    Caste Prime [2].
+    size: 10000.
+    hit points: 275/164, capture: 54.
+      #1 hit points: 55/34, capture: 9, lightly damaged.
+      #2 hit points: 55/32, capture: 12, lightly damaged.
+      #3 hit points: 55/32, capture: 12, lightly damaged.
+      #4 hit points: 55/34, capture: 9, lightly damaged.
+      #5 hit points: 55/32, capture: 12, lightly damaged.
+  - farming complex [000014], 3 farming complexes [farms], owned by
+    Caste Prime [2].
+    size: 3000.
+    hit points: 165/165.
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
   - coal-burning plant [000015], 3 coal-burning plants [cplant], owned
     by Caste Prime [2].
     size: 3000.
-    hit points: 300/293, capture: 21, attack: 3.
+    hit points: 300/300, attack: 3.
       #1 hit points: 100/100.
       #2 hit points: 100/100.
-      #3 hit points: 100/93, capture: 21.
+      #3 hit points: 100/100.
   - core drill [000016], core drill [cdrill], owned by Caste Prime [2].
     size: 1000.
     hit points: 100/100.
@@ -3230,19 +3712,31 @@ Battles report:
       #3 hit points: 100/100.
       #4 hit points: 100/100.
       #5 hit points: 100/100.
+  - gun placement [111], 5 gun placements [gunplc], disabled, owned by
+    Caste Prime [2].
+    size: 500.
+    hit points: 500/316, attack: 5, defense: 5.
+      #1 hit points: 100/64, lightly damaged.
+      #2 hit points: 100/64, lightly damaged.
+      #3 hit points: 100/68, lightly damaged.
+      #4 hit points: 100/64, lightly damaged.
+      #5 hit points: 100/56, lightly damaged.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on coal-burning plant
-  [000015] (chance: 3/4) and hits #1 coal-burning plant [000015] doing 4
-  damage.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant
-  [000015] (chance: 12/17) and hits #1 coal-burning plant [000015] doing
-  1 damage and 3 capture damage.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant
-  [000015] (chance: 12/17) and hits #1 coal-burning plant [000015] doing
-  1 damage and 3 capture damage.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant
-  [000015] (chance: 12/17) and hits #1 coal-burning plant [000015] doing
-  1 damage and 3 capture damage.
+  peaceful scout [108] fires tanks [tanks] on gun placement [111]
+  (chance: 3/9) and hits #1 gun placement [111] doing 4 damage.
+    #1 gun placement [gunplc] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay
+  [000013] (chance: 12/17) and hits #4 small cargo bay [000013] doing 1
+  damage and 3 capture damage.
+    #4 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay
+  [000013] (chance: 12/17) and hits #2 small cargo bay [000013] doing 1
+  damage and 3 capture damage.
+    #2 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay
+  [000013] (chance: 12/17) and hits #5 small cargo bay [000013] doing 1
+  damage and 3 capture damage.
+    #5 small cargo bay [cargob] is lightly damaged.
   ------------------------------------------------------------
   Round 8:
   ------------------------------------------------------------
@@ -3263,13 +3757,29 @@ Battles report:
       mass: 4, attack: 5, initiative: 5.
       skills: armor platoon leader [arpldr] (attack: 5, initiative: 5).
   Defenders:
+  - small cargo bay [000013], 5 small cargo bays [cargob], owned by
+    Caste Prime [2].
+    size: 10000.
+    hit points: 275/161, capture: 63.
+      #1 hit points: 55/34, capture: 9, lightly damaged.
+      #2 hit points: 55/31, capture: 15, lightly damaged.
+      #3 hit points: 55/32, capture: 12, lightly damaged.
+      #4 hit points: 55/33, capture: 12, lightly damaged.
+      #5 hit points: 55/31, capture: 15, lightly damaged.
+  - farming complex [000014], 3 farming complexes [farms], owned by
+    Caste Prime [2].
+    size: 3000.
+    hit points: 165/165.
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
   - coal-burning plant [000015], 3 coal-burning plants [cplant], owned
     by Caste Prime [2].
     size: 3000.
-    hit points: 300/286, capture: 30, attack: 3.
+    hit points: 300/300, attack: 3.
       #1 hit points: 100/100.
       #2 hit points: 100/100.
-      #3 hit points: 100/86, capture: 30.
+      #3 hit points: 100/100.
   - core drill [000016], core drill [cdrill], owned by Caste Prime [2].
     size: 1000.
     hit points: 100/100.
@@ -3282,18 +3792,31 @@ Battles report:
       #3 hit points: 100/100.
       #4 hit points: 100/100.
       #5 hit points: 100/100.
+  - gun placement [111], 5 gun placements [gunplc], disabled, owned by
+    Caste Prime [2].
+    size: 500.
+    hit points: 500/312, attack: 5, defense: 5.
+      #1 hit points: 100/60, lightly damaged.
+      #2 hit points: 100/64, lightly damaged.
+      #3 hit points: 100/68, lightly damaged.
+      #4 hit points: 100/64, lightly damaged.
+      #5 hit points: 100/56, lightly damaged.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on coal-burning plant
-  [000015] (chance: 3/4) and misses.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant
-  [000015] (chance: 12/17) and hits #1 coal-burning plant [000015] doing
-  1 damage and 3 capture damage.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant
-  [000015] (chance: 12/17) and hits #1 coal-burning plant [000015] doing
-  1 damage and 3 capture damage.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant
-  [000015] (chance: 12/17) and hits #1 coal-burning plant [000015] doing
-  1 damage and 3 capture damage.
+  peaceful scout [108] fires tanks [tanks] on gun placement [111]
+  (chance: 3/9) and hits #2 gun placement [111] doing 4 damage.
+    #2 gun placement [gunplc] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay
+  [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
+  damage and 3 capture damage.
+    #1 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay
+  [000013] (chance: 12/17) and hits #4 small cargo bay [000013] doing 1
+  damage and 3 capture damage.
+    #4 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay
+  [000013] (chance: 12/17) and hits #2 small cargo bay [000013] doing 1
+  damage and 3 capture damage.
+    #2 small cargo bay [cargob] is lightly damaged.
   ------------------------------------------------------------
   Round 9:
   ------------------------------------------------------------
@@ -3314,13 +3837,29 @@ Battles report:
       mass: 4, attack: 5, initiative: 5.
       skills: armor platoon leader [arpldr] (attack: 5, initiative: 5).
   Defenders:
+  - small cargo bay [000013], 5 small cargo bays [cargob], owned by
+    Caste Prime [2].
+    size: 10000.
+    hit points: 275/158, capture: 72.
+      #1 hit points: 55/33, capture: 12, lightly damaged.
+      #2 hit points: 55/30, capture: 18, lightly damaged.
+      #3 hit points: 55/32, capture: 12, lightly damaged.
+      #4 hit points: 55/32, capture: 15, lightly damaged.
+      #5 hit points: 55/31, capture: 15, lightly damaged.
+  - farming complex [000014], 3 farming complexes [farms], owned by
+    Caste Prime [2].
+    size: 3000.
+    hit points: 165/165.
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
   - coal-burning plant [000015], 3 coal-burning plants [cplant], owned
     by Caste Prime [2].
     size: 3000.
-    hit points: 300/283, capture: 39, attack: 3.
+    hit points: 300/300, attack: 3.
       #1 hit points: 100/100.
       #2 hit points: 100/100.
-      #3 hit points: 100/83, capture: 39.
+      #3 hit points: 100/100.
   - core drill [000016], core drill [cdrill], owned by Caste Prime [2].
     size: 1000.
     hit points: 100/100.
@@ -3333,18 +3872,31 @@ Battles report:
       #3 hit points: 100/100.
       #4 hit points: 100/100.
       #5 hit points: 100/100.
+  - gun placement [111], 5 gun placements [gunplc], disabled, owned by
+    Caste Prime [2].
+    size: 500.
+    hit points: 500/308, attack: 5, defense: 5.
+      #1 hit points: 100/60, lightly damaged.
+      #2 hit points: 100/60, lightly damaged.
+      #3 hit points: 100/68, lightly damaged.
+      #4 hit points: 100/64, lightly damaged.
+      #5 hit points: 100/56, lightly damaged.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on coal-burning plant
-  [000015] (chance: 3/4) and hits #1 coal-burning plant [000015] doing 4
-  damage.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant
-  [000015] (chance: 12/17) and hits #1 coal-burning plant [000015] doing
-  1 damage and 3 capture damage.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant
-  [000015] (chance: 12/17) and hits #1 coal-burning plant [000015] doing
-  1 damage and 3 capture damage.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant
-  [000015] (chance: 12/17) and misses.
+  peaceful scout [108] fires tanks [tanks] on gun placement [111]
+  (chance: 3/9) and hits #3 gun placement [111] doing 4 damage.
+    #3 gun placement [gunplc] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay
+  [000013] (chance: 12/17) and hits #3 small cargo bay [000013] doing 1
+  damage and 3 capture damage.
+    #3 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay
+  [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
+  damage and 3 capture damage.
+    #1 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay
+  [000013] (chance: 12/17) and hits #4 small cargo bay [000013] doing 1
+  damage and 3 capture damage.
+    #4 small cargo bay [cargob] is lightly damaged.
   ------------------------------------------------------------
   Round 10:
   ------------------------------------------------------------
@@ -3365,13 +3917,29 @@ Battles report:
       mass: 4, attack: 5, initiative: 5.
       skills: armor platoon leader [arpldr] (attack: 5, initiative: 5).
   Defenders:
+  - small cargo bay [000013], 5 small cargo bays [cargob], owned by
+    Caste Prime [2].
+    size: 10000.
+    hit points: 275/155, capture: 81.
+      #1 hit points: 55/32, capture: 15, lightly damaged.
+      #2 hit points: 55/30, capture: 18, lightly damaged.
+      #3 hit points: 55/31, capture: 15, lightly damaged.
+      #4 hit points: 55/31, capture: 18, lightly damaged.
+      #5 hit points: 55/31, capture: 15, lightly damaged.
+  - farming complex [000014], 3 farming complexes [farms], owned by
+    Caste Prime [2].
+    size: 3000.
+    hit points: 165/165.
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
   - coal-burning plant [000015], 3 coal-burning plants [cplant], owned
     by Caste Prime [2].
     size: 3000.
-    hit points: 300/277, capture: 45, attack: 3.
+    hit points: 300/300, attack: 3.
       #1 hit points: 100/100.
       #2 hit points: 100/100.
-      #3 hit points: 100/77, capture: 45.
+      #3 hit points: 100/100.
   - core drill [000016], core drill [cdrill], owned by Caste Prime [2].
     size: 1000.
     hit points: 100/100.
@@ -3384,17 +3952,31 @@ Battles report:
       #3 hit points: 100/100.
       #4 hit points: 100/100.
       #5 hit points: 100/100.
+  - gun placement [111], 5 gun placements [gunplc], disabled, owned by
+    Caste Prime [2].
+    size: 500.
+    hit points: 500/304, attack: 5, defense: 5.
+      #1 hit points: 100/60, lightly damaged.
+      #2 hit points: 100/60, lightly damaged.
+      #3 hit points: 100/64, lightly damaged.
+      #4 hit points: 100/64, lightly damaged.
+      #5 hit points: 100/56, lightly damaged.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on coal-burning plant
-  [000015] (chance: 3/4) and misses.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant
-  [000015] (chance: 12/17) and hits #1 coal-burning plant [000015] doing
-  1 damage and 3 capture damage.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant
-  [000015] (chance: 12/17) and hits #1 coal-burning plant [000015] doing
-  1 damage and 3 capture damage.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant
-  [000015] (chance: 12/17) and misses.
+  peaceful scout [108] fires tanks [tanks] on gun placement [111]
+  (chance: 3/9) and hits #4 gun placement [111] doing 4 damage.
+    #4 gun placement [gunplc] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay
+  [000013] (chance: 12/17) and hits #5 small cargo bay [000013] doing 1
+  damage and 3 capture damage.
+    #5 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay
+  [000013] (chance: 12/17) and hits #3 small cargo bay [000013] doing 1
+  damage and 3 capture damage.
+    #3 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay
+  [000013] (chance: 12/17) and hits #1 small cargo bay [000013] doing 1
+  damage and 3 capture damage.
+    #1 small cargo bay [cargob] is lightly damaged.
   ------------------------------------------------------------
   Battle ended indecisively.
 
@@ -3436,7 +4018,7 @@ Galaxy report:
   
   - Berlin [000001], 3 cities [city], immobile, military, owned by NPC
     [1].
-    size: 75000, capacity: 45000/41420, energy: 320/240 (30).
+    size: 75000, capacity: 45000/41420, energy: 320/255 (30).
     - Berlin garrison [000002], infantry battalion [inftry], owned by
       NPC [1].
       size: 500.
@@ -3452,12 +4034,12 @@ Galaxy report:
     - Caste Prime Headquarters [000012], corporate headquarters
       [corphq], disabled, owned by Caste Prime [2].
       size: 0.
-    - small cargo bay [000013], small cargo bay [cargob], disabled,
-      owned by Caste Prime [2].
-      size: 0.
-    - farming complex [000014], farming complex [farms], disabled, owned
-      by Caste Prime [2].
-      size: 0.
+    - small cargo bay [000013], 5 small cargo bays [cargob], owned by
+      Caste Prime [2].
+      size: 10000.
+    - farming complex [000014], 3 farming complexes [farms], owned by
+      Caste Prime [2].
+      size: 3000.
     - coal-burning plant [000015], 3 coal-burning plants [cplant], owned
       by Caste Prime [2].
       size: 3000.
@@ -3469,19 +4051,6 @@ Galaxy report:
     - gun placement [111], 5 gun placements [gunplc], disabled, owned by
       Caste Prime [2].
       size: 500.
-    + farming complex [c2000014], farming complex [farms].
-      size: 1000, mass: 130 (100), capacity: 500/30, upkeep: 55 (50)
-      cash [cash], consume: 5 (0) units of food [food], 5 (0) units of
-      terran breathing gas mixture [terair].
-      hit points: 55/23, capture: 23.
-        #1 hit points: 55/23, capture: 23, heavily damaged, deactivated.
-      items: 5 terrans [terran] (size: 20, mass: 20, upkeep: 5 cash
-      [cash], consume: 5 units of food [food], 5 units of terran
-      breathing gas mixture [terair]), 10 units of food [food] (size:
-      10, mass: 10).
-      events:
-        week 13: captured farming complex [farms] from farming complex
-        [000014].
     + corporate headquarters [c000012], corporate headquarters [corphq].
       size: 1000, mass: 1180 (1000), capacity: 750/180, upkeep: 145
       (100) cash [cash], consume: 45 (0) units of food [food], 45 (0)
@@ -3498,127 +4067,6 @@ Galaxy report:
       events:
         week 9: captured corporate headquarters [corphq] from Caste
         Prime Headquarters [000012].
-    + small cargo bay [c000013], small cargo bay [cargob].
-      size: 2000, mass: 1411 (200), capacity: 1800/1013, upkeep: 32 (30)
-      cash [cash], consume: 2 (0) units of food [food], 2 (0) units of
-      terran breathing gas mixture [terair].
-      hit points: 55/36, capture: 36.
-        #1 hit points: 55/36, capture: 36, lightly damaged, deactivated.
-      items: 179 units of food [food] (size: 179, mass: 179), 170 units
-      of terran breathing gas mixture [terair] (size: 170, mass: 170),
-      180 units of oxyhydro [h2o2] (size: 180, mass: 180), 14 units of
-      iron [iron] (size: 70, mass: 140), 14 units of titanium [titani]
-      (size: 140, mass: 140), 16 units of silicium [silici] (size: 80,
-      mass: 48), 16 units of copper [copper] (size: 80, mass: 128), 16
-      units of uranium [uraniu] (size: 16, mass: 128), 2 terrans
-      [terran] (size: 8, mass: 8, upkeep: 2 cash [cash], consume: 2
-      units of food [food], 2 units of terran breathing gas mixture
-      [terair]), 18 units of carbon [carbon] (size: 90, mass: 90).
-      events:
-        week 10: captured small cargo bay [cargob] from small cargo bay
-        [000013].
-    + small cargo bay [c1000013], small cargo bay [cargob].
-      size: 2000, mass: 1411 (200), capacity: 1800/1013, upkeep: 32 (30)
-      cash [cash], consume: 2 (0) units of food [food], 2 (0) units of
-      terran breathing gas mixture [terair].
-      hit points: 55/29, capture: 29.
-        #1 hit points: 55/29, capture: 29, lightly damaged, deactivated.
-      items: 179 units of food [food] (size: 179, mass: 179), 170 units
-      of terran breathing gas mixture [terair] (size: 170, mass: 170),
-      180 units of oxyhydro [h2o2] (size: 180, mass: 180), 14 units of
-      iron [iron] (size: 70, mass: 140), 14 units of titanium [titani]
-      (size: 140, mass: 140), 16 units of silicium [silici] (size: 80,
-      mass: 48), 16 units of copper [copper] (size: 80, mass: 128), 16
-      units of uranium [uraniu] (size: 16, mass: 128), 2 terrans
-      [terran] (size: 8, mass: 8, upkeep: 2 cash [cash], consume: 2
-      units of food [food], 2 units of terran breathing gas mixture
-      [terair]), 18 units of carbon [carbon] (size: 90, mass: 90).
-      events:
-        week 10: captured small cargo bay [cargob] from small cargo bay
-        [000013].
-    + small cargo bay [c2000013], small cargo bay [cargob].
-      size: 2000, mass: 1421 (200), capacity: 1800/1023, upkeep: 32 (30)
-      cash [cash], consume: 2 (0) units of food [food], 2 (0) units of
-      terran breathing gas mixture [terair].
-      hit points: 55/23, capture: 23.
-        #1 hit points: 55/23, capture: 23, heavily damaged, deactivated.
-      items: 184 units of food [food] (size: 184, mass: 184), 170 units
-      of terran breathing gas mixture [terair] (size: 170, mass: 170),
-      180 units of oxyhydro [h2o2] (size: 180, mass: 180), 14 units of
-      iron [iron] (size: 70, mass: 140), 14 units of titanium [titani]
-      (size: 140, mass: 140), 16 units of silicium [silici] (size: 80,
-      mass: 48), 16 units of copper [copper] (size: 80, mass: 128), 16
-      units of uranium [uraniu] (size: 16, mass: 128), 2 terrans
-      [terran] (size: 8, mass: 8, upkeep: 2 cash [cash], consume: 2
-      units of food [food], 2 units of terran breathing gas mixture
-      [terair]), 19 units of carbon [carbon] (size: 95, mass: 95).
-      events:
-        week 11: captured small cargo bay [cargob] from small cargo bay
-        [000013].
-    + small cargo bay [c3000013], small cargo bay [cargob].
-      size: 2000, mass: 1421 (200), capacity: 1800/1023, upkeep: 32 (30)
-      cash [cash], consume: 2 (0) units of food [food], 2 (0) units of
-      terran breathing gas mixture [terair].
-      hit points: 55/30, capture: 30.
-        #1 hit points: 55/30, capture: 30, lightly damaged, deactivated.
-      items: 184 units of food [food] (size: 184, mass: 184), 170 units
-      of terran breathing gas mixture [terair] (size: 170, mass: 170),
-      180 units of oxyhydro [h2o2] (size: 180, mass: 180), 14 units of
-      iron [iron] (size: 70, mass: 140), 14 units of titanium [titani]
-      (size: 140, mass: 140), 16 units of silicium [silici] (size: 80,
-      mass: 48), 16 units of copper [copper] (size: 80, mass: 128), 16
-      units of uranium [uraniu] (size: 16, mass: 128), 2 terrans
-      [terran] (size: 8, mass: 8, upkeep: 2 cash [cash], consume: 2
-      units of food [food], 2 units of terran breathing gas mixture
-      [terair]), 19 units of carbon [carbon] (size: 95, mass: 95).
-      events:
-        week 11: captured small cargo bay [cargob] from small cargo bay
-        [000013].
-    + small cargo bay [c4000013], small cargo bay [cargob].
-      size: 2000, mass: 1426 (200), capacity: 1800/1028, upkeep: 32 (30)
-      cash [cash], consume: 2 (0) units of food [food], 2 (0) units of
-      terran breathing gas mixture [terair].
-      hit points: 55/32, capture: 32.
-        #1 hit points: 55/32, capture: 32, lightly damaged, deactivated.
-      items: 184 units of food [food] (size: 184, mass: 184), 170 units
-      of terran breathing gas mixture [terair] (size: 170, mass: 170),
-      180 units of oxyhydro [h2o2] (size: 180, mass: 180), 14 units of
-      iron [iron] (size: 70, mass: 140), 14 units of titanium [titani]
-      (size: 140, mass: 140), 16 units of silicium [silici] (size: 80,
-      mass: 48), 16 units of copper [copper] (size: 80, mass: 128), 16
-      units of uranium [uraniu] (size: 16, mass: 128), 2 terrans
-      [terran] (size: 8, mass: 8, upkeep: 2 cash [cash], consume: 2
-      units of food [food], 2 units of terran breathing gas mixture
-      [terair]), 20 units of carbon [carbon] (size: 100, mass: 100).
-      events:
-        week 11: captured small cargo bay [cargob] from small cargo bay
-        [000013].
-    + farming complex [c000014], farming complex [farms].
-      size: 1000, mass: 125 (100), capacity: 500/25, upkeep: 55 (50)
-      cash [cash], consume: 5 (0) units of food [food], 5 (0) units of
-      terran breathing gas mixture [terair].
-      hit points: 55/32, capture: 32.
-        #1 hit points: 55/32, capture: 32, lightly damaged, deactivated.
-      items: 5 terrans [terran] (size: 20, mass: 20, upkeep: 5 cash
-      [cash], consume: 5 units of food [food], 5 units of terran
-      breathing gas mixture [terair]), 5 units of food [food] (size: 5,
-      mass: 5).
-      events:
-        week 12: captured farming complex [farms] from farming complex
-        [000014].
-    + farming complex [c1000014], farming complex [farms].
-      size: 1000, mass: 125 (100), capacity: 500/25, upkeep: 55 (50)
-      cash [cash], consume: 5 (0) units of food [food], 5 (0) units of
-      terran breathing gas mixture [terair].
-      hit points: 55/30, capture: 30.
-        #1 hit points: 55/30, capture: 30, lightly damaged, deactivated.
-      items: 5 terrans [terran] (size: 20, mass: 20, upkeep: 5 cash
-      [cash], consume: 5 units of food [food], 5 units of terran
-      breathing gas mixture [terair]), 5 units of food [food] (size: 5,
-      mass: 5).
-      events:
-        week 12: captured farming complex [farms] from farming complex
-        [000014].
   + peaceful scout [108], tanks [tanks], military.
     size: 240, mass: 396 (240), capacity: 200/144, crew: 16/16, upkeep:
     40 (24) cash [cash], consume: 32 (16) units of food [food], 32 (16)
@@ -3650,13 +4098,13 @@ Galaxy report:
       farming complex [000014], coal-burning plant [000015], core drill
       [000016], factory [000017], gun placement [111]
       week 11: engaged in battle
-      week 12: initiated battle against farming complex [000014],
-      coal-burning plant [000015], core drill [000016], factory
-      [000017], gun placement [111]
+      week 12: initiated battle against small cargo bay [000013],
+      farming complex [000014], coal-burning plant [000015], core drill
+      [000016], factory [000017], gun placement [111]
       week 12: engaged in battle
-      week 13: initiated battle against farming complex [000014],
-      coal-burning plant [000015], core drill [000016], factory
-      [000017], gun placement [111]
+      week 13: initiated battle against small cargo bay [000013],
+      farming complex [000014], coal-burning plant [000015], core drill
+      [000016], factory [000017], gun placement [111]
       week 13: engaged in battle
   + Surrender or die! [109], 3 tanks [tanks], military.
     size: 720, mass: 1046 (720), capacity: 600/320, crew: 48/49, upkeep:
@@ -3760,7 +4208,7 @@ Galaxy report:
       size: 2000.
     - wind powerplant [1], wind powerplant [wnplnt], owned by NPC [1].
       size: 10.
-    - wind powerplant [50], wind powerplant [wnplnt], owned by NPC [1].
+    - wind powerplant [450], wind powerplant [wnplnt], owned by NPC [1].
       size: 10.
   + Gelvaren complex [000026], city [city], immobile, military.
     size: 25000, mass: 5614, capacity: 15000/9690, energy: 76/74 (10),
@@ -4127,58 +4575,6 @@ R00002 R00002 R00002 R00002
 ; + corporate headquarters [c000012], corporate headquarters [corphq].
 ; items: 30 wounded terrans [wndtrn], 15 terrans [terran], 2200 cash
 ; [cash].
-
-#modulestack c000013
-; + small cargo bay [c000013], small cargo bay [cargob].
-; items: 179 units of food [food], 170 units of terran breathing gas
-; mixture [terair], 180 units of oxyhydro [h2o2], 14 units of iron [iron],
-; 14 units of titanium [titani], 16 units of silicium [silici], 16 units
-; of copper [copper], 16 units of uranium [uraniu], 2 terrans [terran], 18
-; units of carbon [carbon].
-
-#modulestack c000014
-; + farming complex [c000014], farming complex [farms].
-; items: 5 terrans [terran], 5 units of food [food].
-
-#modulestack c1000013
-; + small cargo bay [c1000013], small cargo bay [cargob].
-; items: 179 units of food [food], 170 units of terran breathing gas
-; mixture [terair], 180 units of oxyhydro [h2o2], 14 units of iron [iron],
-; 14 units of titanium [titani], 16 units of silicium [silici], 16 units
-; of copper [copper], 16 units of uranium [uraniu], 2 terrans [terran], 18
-; units of carbon [carbon].
-
-#modulestack c1000014
-; + farming complex [c1000014], farming complex [farms].
-; items: 5 terrans [terran], 5 units of food [food].
-
-#modulestack c2000013
-; + small cargo bay [c2000013], small cargo bay [cargob].
-; items: 184 units of food [food], 170 units of terran breathing gas
-; mixture [terair], 180 units of oxyhydro [h2o2], 14 units of iron [iron],
-; 14 units of titanium [titani], 16 units of silicium [silici], 16 units
-; of copper [copper], 16 units of uranium [uraniu], 2 terrans [terran], 19
-; units of carbon [carbon].
-
-#modulestack c2000014
-; + farming complex [c2000014], farming complex [farms].
-; items: 5 terrans [terran], 10 units of food [food].
-
-#modulestack c3000013
-; + small cargo bay [c3000013], small cargo bay [cargob].
-; items: 184 units of food [food], 170 units of terran breathing gas
-; mixture [terair], 180 units of oxyhydro [h2o2], 14 units of iron [iron],
-; 14 units of titanium [titani], 16 units of silicium [silici], 16 units
-; of copper [copper], 16 units of uranium [uraniu], 2 terrans [terran], 19
-; units of carbon [carbon].
-
-#modulestack c4000013
-; + small cargo bay [c4000013], small cargo bay [cargob].
-; items: 184 units of food [food], 170 units of terran breathing gas
-; mixture [terair], 180 units of oxyhydro [h2o2], 14 units of iron [iron],
-; 14 units of titanium [titani], 16 units of silicium [silici], 16 units
-; of copper [copper], 16 units of uranium [uraniu], 2 terrans [terran], 20
-; units of carbon [carbon].
 
 #person 000002
 ; + Gelvaren CEO [000002], terran [terran].

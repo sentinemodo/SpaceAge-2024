@@ -114,8 +114,23 @@
 							<event week="9" description="engaged in battle" />
 							<event week="9" description="lost #1 corporate headquarters [corphq] to capture." />
 						</modulestack>
-						<modulestack name="000013" type="cargob" quantity="0" faction="2">
-							<upkeep type="cash" quantity="0" />
+						<modulestack name="000013" type="cargob" quantity="5" faction="2">
+							<module damage="24" capture="18" />
+							<module damage="25" capture="18" />
+							<module damage="25" capture="18" />
+							<module damage="24" capture="18" />
+							<module damage="25" capture="18" />
+							<itemstack type="food" quantity="940" />
+							<itemstack type="terair" quantity="850" />
+							<itemstack type="h2o2" quantity="900" />
+							<itemstack type="iron" quantity="70" />
+							<itemstack type="titani" quantity="70" />
+							<itemstack type="silici" quantity="80" />
+							<itemstack type="copper" quantity="80" />
+							<itemstack type="uraniu" quantity="80" />
+							<itemstack type="terran" quantity="10" />
+							<itemstack type="carbon" quantity="96" />
+							<upkeep type="cash" quantity="160" />
 							<event week="1" description="got 15 units of food [food] from farming complex [000014]." />
 							<event week="1" description="got unit of carbon [carbon] from core drill [000016]." />
 							<event week="1" description="given 15 units of carbon [carbon] to coal-burning plant [000015]." />
@@ -141,21 +156,19 @@
 							<event week="10" description="got 15 units of food [food] from farming complex [000014]." />
 							<event week="10" description="got unit of carbon [carbon] from core drill [000016]." />
 							<event week="10" description="engaged in battle" />
-							<event week="10" description="lost #1 small cargo bay [cargob] to capture." />
-							<event week="10" description="lost #1 small cargo bay [cargob] to capture." />
 							<event week="11" description="got 15 units of food [food] from farming complex [000014]." />
 							<event week="11" description="got unit of carbon [carbon] from core drill [000016]." />
 							<event week="11" description="engaged in battle" />
-							<event week="11" description="lost #1 small cargo bay [cargob] to capture." />
-							<event week="11" description="lost #1 small cargo bay [cargob] to capture." />
-							<event week="11" description="lost #1 small cargo bay [cargob] to capture." />
-							<event week="12" description="GET failed, tried to get 15 units of food [food], but there is not enough capacity: 15 required, 0 available." />
-							<event week="12" description="GET failed, tried to get unit of carbon [carbon], but there is not enough capacity: 5 required, 0 available." />
-							<event week="12" description="GET failed, tried to get 15 units of food [food], but there is not enough capacity: 15 required, 0 available." />
-							<event week="12" description="GET failed, tried to get unit of carbon [carbon], but there is not enough capacity: 5 required, 0 available." />
+							<event week="12" description="got 15 units of food [food] from farming complex [000014]." />
+							<event week="12" description="got unit of carbon [carbon] from core drill [000016]." />
+							<event week="12" description="engaged in battle" />
+							<event week="13" description="got 15 units of food [food] from farming complex [000014]." />
+							<event week="13" description="got unit of carbon [carbon] from core drill [000016]." />
+							<event week="13" description="engaged in battle" />
 						</modulestack>
-						<modulestack name="000014" type="farms" quantity="0" faction="2">
-							<upkeep type="cash" quantity="0" />
+						<modulestack name="000014" type="farms" quantity="3" faction="2">
+							<itemstack type="terran" quantity="15" />
+							<upkeep type="cash" quantity="165" />
 							<event week="1" description="given 15 units of food [food] to small cargo bay [000013]." />
 							<event week="1" description="produced 15 units of food [food]." />
 							<event week="1" description="given 15 units of food [food] to small cargo bay [000013]." />
@@ -183,17 +196,13 @@
 							<event week="11" description="given 15 units of food [food] to small cargo bay [000013]." />
 							<event week="11" description="engaged in battle" />
 							<event week="12" description="produced 15 units of food [food]." />
+							<event week="12" description="given 15 units of food [food] to small cargo bay [000013]." />
 							<event week="12" description="engaged in battle" />
-							<event week="12" description="lost #1 farming complex [farms] to capture." />
-							<event week="12" description="lost #1 farming complex [farms] to capture." />
-							<event week="13" description="produced 5 units of food [food]." />
+							<event week="13" description="produced 15 units of food [food]." />
+							<event week="13" description="given 15 units of food [food] to small cargo bay [000013]." />
 							<event week="13" description="engaged in battle" />
-							<event week="13" description="lost #1 farming complex [farms] to capture." />
 						</modulestack>
 						<modulestack name="000015" type="cplant" quantity="3" faction="2">
-							<module />
-							<module />
-							<module damage="25" capture="51" />
 							<itemstack type="terran" quantity="6" />
 							<upkeep type="cash" quantity="156" />
 							<event week="1" description="got 15 units of carbon [carbon] from small cargo bay [000013]." />
@@ -207,7 +216,6 @@
 						</modulestack>
 						<modulestack name="000016" type="cdrill" quantity="1" faction="2">
 							<itemstack type="terran" quantity="6" />
-							<itemstack type="carbon" quantity="2" />
 							<upkeep type="cash" quantity="46" />
 							<event week="1" description="given unit of carbon [carbon] to small cargo bay [000013]." />
 							<event week="1" description="produced unit of carbon [carbon]." />
@@ -236,8 +244,10 @@
 							<event week="11" description="given unit of carbon [carbon] to small cargo bay [000013]." />
 							<event week="11" description="engaged in battle" />
 							<event week="12" description="produced unit of carbon [carbon]." />
+							<event week="12" description="given unit of carbon [carbon] to small cargo bay [000013]." />
 							<event week="12" description="engaged in battle" />
 							<event week="13" description="produced unit of carbon [carbon]." />
+							<event week="13" description="given unit of carbon [carbon] to small cargo bay [000013]." />
 							<event week="13" description="engaged in battle" />
 						</modulestack>
 						<modulestack name="000017" type="factry" quantity="5" faction="2">
@@ -269,11 +279,11 @@
 							<event week="13" description="engaged in battle" />
 						</modulestack>
 						<modulestack name="111" type="gunplc" quantity="5" faction="2">
-							<module />
-							<module />
-							<module />
-							<module />
-							<module damage="64" />
+							<module damage="40" />
+							<module damage="40" />
+							<module damage="36" />
+							<module damage="40" />
+							<module damage="44" />
 							<upkeep type="cash" quantity="50" />
 							<event week="1" description="formed by factory [000017] with gun placement [gunplc]." />
 							<event week="1" description="received gun placement [gunplc] produced by factory [000017]." />
@@ -287,13 +297,6 @@
 							<event week="12" description="engaged in battle" />
 							<event week="13" description="engaged in battle" />
 						</modulestack>
-						<modulestack name="c2000014" type="farms" quantity="1" faction="3">
-							<module damage="32" capture="23" online="false" />
-							<itemstack type="terran" quantity="5" />
-							<itemstack type="food" quantity="10" />
-							<upkeep type="cash" quantity="55" />
-							<event week="13" description="captured farming complex [farms] from farming complex [000014]." />
-						</modulestack>
 						<modulestack name="c000012" type="corphq" quantity="1" faction="3">
 							<module damage="25" capture="75" online="false" />
 							<itemstack type="wndtrn" quantity="30" />
@@ -301,95 +304,6 @@
 							<itemstack type="cash" quantity="2200" />
 							<upkeep type="cash" quantity="145" />
 							<event week="9" description="captured corporate headquarters [corphq] from Caste Prime Headquarters [000012]." />
-						</modulestack>
-						<modulestack name="c000013" type="cargob" quantity="1" faction="3">
-							<module damage="19" capture="36" online="false" />
-							<itemstack type="food" quantity="179" />
-							<itemstack type="terair" quantity="170" />
-							<itemstack type="h2o2" quantity="180" />
-							<itemstack type="iron" quantity="14" />
-							<itemstack type="titani" quantity="14" />
-							<itemstack type="silici" quantity="16" />
-							<itemstack type="copper" quantity="16" />
-							<itemstack type="uraniu" quantity="16" />
-							<itemstack type="terran" quantity="2" />
-							<itemstack type="carbon" quantity="18" />
-							<upkeep type="cash" quantity="32" />
-							<event week="10" description="captured small cargo bay [cargob] from small cargo bay [000013]." />
-						</modulestack>
-						<modulestack name="c1000013" type="cargob" quantity="1" faction="3">
-							<module damage="26" capture="29" online="false" />
-							<itemstack type="food" quantity="179" />
-							<itemstack type="terair" quantity="170" />
-							<itemstack type="h2o2" quantity="180" />
-							<itemstack type="iron" quantity="14" />
-							<itemstack type="titani" quantity="14" />
-							<itemstack type="silici" quantity="16" />
-							<itemstack type="copper" quantity="16" />
-							<itemstack type="uraniu" quantity="16" />
-							<itemstack type="terran" quantity="2" />
-							<itemstack type="carbon" quantity="18" />
-							<upkeep type="cash" quantity="32" />
-							<event week="10" description="captured small cargo bay [cargob] from small cargo bay [000013]." />
-						</modulestack>
-						<modulestack name="c2000013" type="cargob" quantity="1" faction="3">
-							<module damage="32" capture="23" online="false" />
-							<itemstack type="food" quantity="184" />
-							<itemstack type="terair" quantity="170" />
-							<itemstack type="h2o2" quantity="180" />
-							<itemstack type="iron" quantity="14" />
-							<itemstack type="titani" quantity="14" />
-							<itemstack type="silici" quantity="16" />
-							<itemstack type="copper" quantity="16" />
-							<itemstack type="uraniu" quantity="16" />
-							<itemstack type="terran" quantity="2" />
-							<itemstack type="carbon" quantity="19" />
-							<upkeep type="cash" quantity="32" />
-							<event week="11" description="captured small cargo bay [cargob] from small cargo bay [000013]." />
-						</modulestack>
-						<modulestack name="c3000013" type="cargob" quantity="1" faction="3">
-							<module damage="25" capture="30" online="false" />
-							<itemstack type="food" quantity="184" />
-							<itemstack type="terair" quantity="170" />
-							<itemstack type="h2o2" quantity="180" />
-							<itemstack type="iron" quantity="14" />
-							<itemstack type="titani" quantity="14" />
-							<itemstack type="silici" quantity="16" />
-							<itemstack type="copper" quantity="16" />
-							<itemstack type="uraniu" quantity="16" />
-							<itemstack type="terran" quantity="2" />
-							<itemstack type="carbon" quantity="19" />
-							<upkeep type="cash" quantity="32" />
-							<event week="11" description="captured small cargo bay [cargob] from small cargo bay [000013]." />
-						</modulestack>
-						<modulestack name="c4000013" type="cargob" quantity="1" faction="3">
-							<module damage="23" capture="32" online="false" />
-							<itemstack type="food" quantity="184" />
-							<itemstack type="terair" quantity="170" />
-							<itemstack type="h2o2" quantity="180" />
-							<itemstack type="iron" quantity="14" />
-							<itemstack type="titani" quantity="14" />
-							<itemstack type="silici" quantity="16" />
-							<itemstack type="copper" quantity="16" />
-							<itemstack type="uraniu" quantity="16" />
-							<itemstack type="terran" quantity="2" />
-							<itemstack type="carbon" quantity="20" />
-							<upkeep type="cash" quantity="32" />
-							<event week="11" description="captured small cargo bay [cargob] from small cargo bay [000013]." />
-						</modulestack>
-						<modulestack name="c000014" type="farms" quantity="1" faction="3">
-							<module damage="23" capture="32" online="false" />
-							<itemstack type="terran" quantity="5" />
-							<itemstack type="food" quantity="5" />
-							<upkeep type="cash" quantity="55" />
-							<event week="12" description="captured farming complex [farms] from farming complex [000014]." />
-						</modulestack>
-						<modulestack name="c1000014" type="farms" quantity="1" faction="3">
-							<module damage="25" capture="30" online="false" />
-							<itemstack type="terran" quantity="5" />
-							<itemstack type="food" quantity="5" />
-							<upkeep type="cash" quantity="55" />
-							<event week="12" description="captured farming complex [farms] from farming complex [000014]." />
 						</modulestack>
 					</modulestack>
 					<modulestack name="108" name-en="peaceful scout" type="tanks" quantity="1" faction="3">
@@ -409,9 +323,9 @@
 						<event week="10" description="engaged in battle" />
 						<event week="11" description="initiated battle against small cargo bay [000013], farming complex [000014], coal-burning plant [000015], core drill [000016], factory [000017], gun placement [111]" />
 						<event week="11" description="engaged in battle" />
-						<event week="12" description="initiated battle against farming complex [000014], coal-burning plant [000015], core drill [000016], factory [000017], gun placement [111]" />
+						<event week="12" description="initiated battle against small cargo bay [000013], farming complex [000014], coal-burning plant [000015], core drill [000016], factory [000017], gun placement [111]" />
 						<event week="12" description="engaged in battle" />
-						<event week="13" description="initiated battle against farming complex [000014], coal-burning plant [000015], core drill [000016], factory [000017], gun placement [111]" />
+						<event week="13" description="initiated battle against small cargo bay [000013], farming complex [000014], coal-burning plant [000015], core drill [000016], factory [000017], gun placement [111]" />
 						<event week="13" description="engaged in battle" />
 					</modulestack>
 					<modulestack name="109" name-en="Surrender or die!" type="tanks" quantity="3" faction="3">
@@ -494,7 +408,7 @@
 						<modulestack name="1" type="wnplnt" quantity="1" faction="1">
 							<upkeep type="cash" quantity="10" />
 						</modulestack>
-						<modulestack name="50" type="wnplnt" quantity="1" faction="1">
+						<modulestack name="450" type="wnplnt" quantity="1" faction="1">
 							<upkeep type="cash" quantity="10" />
 						</modulestack>
 					</modulestack>

@@ -51,7 +51,7 @@ namespace SpaceAge
 				foreach (Module module in this.Parent.Modules)
 				{
 					i++;
-					if (this is Module)
+					if (module == this)
 					{
 						return i;
 					}

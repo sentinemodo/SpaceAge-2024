@@ -521,9 +521,10 @@ namespace SpaceAge
 
                     int roll = this.getRoll(dice, line);
 
-                    if (roll <= chance)
+					if (roll <= chance)
 					{
 						this.markHit(target);
+						bool targetWasActive = target.IsActive;
 						Module targetModule = this.resolveHitLocation(target, firing, target.HasEvade);
 						if (targetModule == null)
 						{
@@ -605,7 +606,7 @@ namespace SpaceAge
 									targetModule.ReportName,
 									targetModule.ReportActive));
 
-								if (!target.IsActive)
+								if (targetWasActive && !target.IsActive)
 								{
 									this.removeFromBattle(target);
 									switch (targetModule.Parent.ModuleType.Group)
@@ -780,6 +781,7 @@ namespace SpaceAge
 				if (target <= 0)
 				{
                     targetModule = module;
+					break;
 				}
 			}
 			if (targetModule == null)
@@ -807,7 +809,7 @@ namespace SpaceAge
 			{
 				damageArea = 1;
 			}
-            int roll = Sequence.GenerateRandomInt(0, damageArea, string.Concat("Hit location 0 to ", damageArea.ToString()));
+            int roll = this.getRoll(damageArea, string.Concat("Hit location 1 to ", damageArea.ToString()));
 			return this.getModule(moduleStack, roll, eTactic, targetEvade, targetOwner);
 		}
 

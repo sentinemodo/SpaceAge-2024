@@ -553,9 +553,10 @@ namespace IntegrationTests
 		public void _5_ExecuteTurn2()
 		{
 			Sequence.Ints.Clear();
+			int[] hitLocations = { 50, 150, 250, 350, 450 };
 			for (int i = 0; i < 500; i++)
 			{
-				Sequence.Ints.Push(50);
+				Sequence.Ints.Push(hitLocations[i % hitLocations.Length]);
 				Sequence.Ints.Push(1);
 			}
 			for (int sequenceValue = 122; sequenceValue >= 111; sequenceValue--)
