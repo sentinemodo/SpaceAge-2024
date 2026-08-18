@@ -961,5 +961,88 @@ namespace UnitTests
 				File.Delete(npcFile);
 			}
 		}
+
+		[Test]
+		public void Parse_ResearchWreckage_UnitRewardTitleFlavour()
+		{
+			ModuleStack wreck = new ModuleStack(Region.All["R00002"], Faction.All["1"], ModuleType.All["alnhul"], "200");
+			wreck.AddModule();
+			List<string> commands = new List<string>
+			{
+				"#faction 1",
+				"CONTRACT R00002 research 200 points 5 REWARD 200 unit TITLE \"Wake the wreck\" FLAVOUR \"Activating the systems.\"",
+				"#end"
+			};
+			OrdersReader reader = new OrdersReader(this.game);
+			reader.AssignOrders(commands);
+
+			ContractOrder create = (ContractOrder)Faction.All["1"].Orders[0];
+			Assert.That(create.ResearchTarget.Name, Is.EqualTo("200"));
+			Assert.That(create.ResearchPoints, Is.EqualTo(5));
+			Assert.That(create.RewardStack.Name, Is.EqualTo("200"));
+			Assert.That(create.Title, Is.EqualTo("Wake the wreck"));
+			Assert.That(create.Flavour, Is.EqualTo("Activating the systems."));
+			create.Execute(1);
+
+			Assert.That(Contract.All.Count, Is.EqualTo(1));
+			Contract published = Contract.All[0];
+			Assert.That(published.Title, Is.EqualTo("Wake the wreck"));
+			Assert.That(published.RewardStack.Name, Is.EqualTo("200"));
+			Assert.That(published.Trigger, Is.InstanceOf<ResearchWreckageTrigger>());
+		}
+
+		[Test]
+		public void Parse_Press_BetweenTurns()
+		{
+			List<string> commands = new List<string>
+			{
+				"#faction 2",
+				"PRESS TITLE \"Moon shot\" FLAVOUR \"We go to Luna.\"",
+				"#end"
+			};
+			OrdersReader reader = new OrdersReader(this.game);
+			reader.AssignOrders(commands);
+			PressOrder press = (PressOrder)Faction.All["2"].Orders[Faction.All["2"].Orders.Count - 1];
+			Assert.That(press.AllowedBetweenTurns, Is.True);
+			Assert.That(press.Title, Is.EqualTo("Moon shot"));
+			this.game.ExecuteBetweenTurnOrders();
+			Assert.That(PressRelease.All.Count, Is.EqualTo(1));
+			Assert.That(PressRelease.All[0].Issuer.Name, Is.EqualTo("2"));
+		}
+
+		[Test]
+		public void XmlRoundTrip_PersistsResearchUnitContract()
+		{
+			ModuleStack wreck = new ModuleStack(Region.All["R00002"], Faction.All["1"], ModuleType.All["alnhul"], "200");
+			wreck.AddModule();
+			ResearchWreckageTrigger trigger = new ResearchWreckageTrigger(wreck, 5);
+			Contract published = new Contract("CT0200", Region.All["R00002"], Faction.All["1"], trigger, wreck);
+			published.Title = "Wake the wreck";
+			published.Flavour = "Activating the systems.";
+
+			string testdir = Directory.GetCurrentDirectory();
+			string testfile = "gameout.researchcontract.xml";
+			this.dataFile.SaveGame(testdir, testfile);
+
+			this.game.ClearDictionaries();
+			this.game = null;
+			this.dataFile = null;
+
+			this.dataFile = new DataFile(testdir);
+			this.dataFile.LoadGameDocument(testdir, testfile);
+			this.dataFile.LoadConfiguration(testdir);
+			this.dataFile.LoadFactions();
+			this.dataFile.LoadGalaxy();
+			this.dataFile.LoadContracts();
+			this.game = this.dataFile.Game;
+
+			Contract loaded = Contract.All["CT0200"];
+			Assert.That(loaded, Is.Not.Null);
+			Assert.That(loaded.Title, Is.EqualTo("Wake the wreck"));
+			Assert.That(loaded.RewardStack.Name, Is.EqualTo("200"));
+			ResearchWreckageTrigger loadedTrigger = (ResearchWreckageTrigger)loaded.Trigger;
+			Assert.That(loadedTrigger.RequiredPoints, Is.EqualTo(5));
+			Assert.That(loadedTrigger.Target.Name, Is.EqualTo("200"));
+		}
 	}
 }

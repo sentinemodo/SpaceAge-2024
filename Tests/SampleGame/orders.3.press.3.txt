@@ -1,0 +1,3 @@
+#faction 3 "abccb"
+PRESS TITLE "Berlin secured" FLAVOUR "Gelvaren consolidates captured ground and begins repairing the wounded city."
+#end

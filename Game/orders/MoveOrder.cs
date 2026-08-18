@@ -99,10 +99,10 @@ namespace SpaceAge
 		{
             XmlElement elMove = (XmlElement)elOrder.SelectNodes("move")[0];
 			
-            foreach (XmlElement elDestination in elMove.SelectNodes("destination"))
+			foreach (XmlElement elDestination in elMove.SelectNodes("destination"))
 			{
-				this.route.Add(Region.All[elDestination.GetAttribute("destination")]);
-			}								
+				this.route.Add(this.FindDestination(elDestination.GetAttribute("destination")));
+			}
 		}
 
 		public override XmlElement SaveXml_core(XmlDocument doc, string subject)

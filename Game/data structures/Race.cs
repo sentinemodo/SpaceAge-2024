@@ -84,6 +84,9 @@ namespace SpaceAge
 			get { return this.consume; }
 		}
 
+		public string NoConsumeEffect { get; set; }
+		public int NoConsumeChance { get; set; }
+
 		protected string fullNameMultiple = string.Empty;
 		public string FullNameMultiple
 		{

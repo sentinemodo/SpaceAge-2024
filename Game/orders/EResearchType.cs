@@ -13,6 +13,7 @@ namespace SpaceAge
 		ModuleType,
 		Feature,
 		Tag,
-		SpaceObject
+		SpaceObject,
+		ModuleStack
 	}
 }

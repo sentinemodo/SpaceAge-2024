@@ -322,6 +322,13 @@ namespace SpaceAge
 						race.Consume.Add(item);
 					}
 					#endregion
+					#region no-consume
+					foreach (XmlElement elNoConsume in el.SelectNodes("no-consume"))
+					{
+						race.NoConsumeEffect = elNoConsume.GetAttribute("effect");
+						race.NoConsumeChance = this.XMLAssignInteger(elNoConsume.GetAttribute("chance"), 0);
+					}
+					#endregion
 				}
 
 			}
@@ -769,7 +776,7 @@ namespace SpaceAge
 				faction.Options.ReportLineLength = this.XMLAssignInteger(elFaction.GetAttribute("text-report-line-length"), ReportLine.LineLength);
 				faction.Options.XmlReport = this.XMLAssignBoolean(elFaction.GetAttribute("xml-report"), true);
 
-				faction.Bank.Balance = this.XMLAssignInteger(elFaction.GetAttribute("balance"), 0);
+				faction.Bank.Balance = this.XMLAssignDouble(elFaction.GetAttribute("balance"), 0);
 				faction.Bank.CreditLine = this.XMLAssignInteger(elFaction.GetAttribute("credit-line"), 0);
 				faction.Bank.CreditRate = this.XMLAssignDouble(elFaction.GetAttribute("credit-rate"), 0);
 				faction.Bank.DepositRate = this.XMLAssignDouble(elFaction.GetAttribute("deposit-rate"), 0);
@@ -877,6 +884,9 @@ namespace SpaceAge
 					case "contract":
 						order = new ContractOrder(subject);
 						break;
+					case "press":
+						order = new PressOrder(subject);
+						break;
 					case "declare":
 						order = new DeclareOrder(subject);
 						break;
@@ -903,6 +913,12 @@ namespace SpaceAge
                         break;
                     case "repair":
                         order = new RepairOrder(subject);
+                        break;
+                    case "research":
+                        order = new ResearchOrder(subject);
+                        break;
+                    case "see":
+                        order = new SeeOrder(subject);
                         break;
                     case "sell":
                         order = new SellOrder(subject);

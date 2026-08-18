@@ -597,19 +597,128 @@ namespace IntegrationTests
             this.compareFiles("gameout.3.xml", "gameout.3_saved.xml");
 		}
 
-		[Test, Ignore("not ready")]
+		[Test]
+		public void _6_LoadGameIn3()
+		{
+			this.LoadGalaxy("gamein.3.xml");
+
+			Assert.That(this.game.Turn, Is.EqualTo(3));
+			Assert.That(ModuleStack.All.ContainsKey("200"), Is.True);
+			Assert.That(ModuleStack.All["200"].ModuleType.Name, Is.EqualTo("alnhul"));
+			Assert.That(ModuleStack.All["200"].Owner.Name, Is.EqualTo("1"));
+			Assert.That(ModuleStack.All["200"].Location.Name, Is.EqualTo("R00001"));
+			Assert.That(ModuleStack.All.ContainsKey("207"), Is.True);
+			Assert.That(ModuleStack.All["207"].Quantity, Is.EqualTo(4));
+			Assert.That(ModuleStack.All["200"].Technologies.Contains("alnhul"), Is.True);
+		}
+
+		[Test]
+		public void _6a_InjectContractAndPress()
+		{
+			Sequence.Ints.Clear();
+			Sequence.Ints.Push(122);
+
+			this.LoadGalaxy("gamein.3.xml");
+			int turnBefore = this.game.Turn;
+
+			OrdersReader ordersReader = new OrdersReader(this.game);
+			ordersReader.LoadOrders(Path.Combine(this.testDir, "orders.3.1.txt"), false);
+			ordersReader.LoadOrders(Path.Combine(this.testDir, "orders.3.press.2.txt"), false);
+			ordersReader.LoadOrders(Path.Combine(this.testDir, "orders.3.press.3.txt"), false);
+
+			this.game.ExecuteBetweenTurnOrders();
+
+			string announceNpc = Path.Combine(this.testDir, "announce.3.1.txt");
+			string announceCaste = Path.Combine(this.testDir, "announce.3.2.txt");
+			string announceGelvaren = Path.Combine(this.testDir, "announce.3.3.txt");
+			if (File.Exists(announceNpc)) { File.Delete(announceNpc); }
+			if (File.Exists(announceCaste)) { File.Delete(announceCaste); }
+			if (File.Exists(announceGelvaren)) { File.Delete(announceGelvaren); }
+
+			Contract.All.WriteAnnouncements(this.testDir, this.game);
+
+			Assert.That(this.game.Turn, Is.EqualTo(turnBefore));
+			Assert.That(this.game.Turn, Is.EqualTo(3));
+			Assert.That(Contract.All.Count, Is.EqualTo(1));
+			Contract contract = Contract.All[0];
+			Assert.That(contract.Name, Is.EqualTo("CT0122"));
+			Assert.That(contract.Location.Name, Is.EqualTo("R00001"));
+			Assert.That(contract.RewardStack.Name, Is.EqualTo("200"));
+			Assert.That(contract.Title, Is.EqualTo("Wake the crashed ship"));
+			ResearchWreckageTrigger trigger = (ResearchWreckageTrigger)contract.Trigger;
+			Assert.That(trigger.Target.Name, Is.EqualTo("200"));
+			Assert.That(trigger.RequiredPoints, Is.EqualTo(5));
+
+			Assert.That(File.Exists(announceNpc), Is.True);
+			Assert.That(File.Exists(announceCaste), Is.True);
+			Assert.That(File.Exists(announceGelvaren), Is.True);
+			string castePress = File.ReadAllText(announceCaste, Encoding.GetEncoding(1251));
+			Assert.That(castePress.Contains("Expedition to Luna"), Is.True);
+			string gelvarenPress = File.ReadAllText(announceGelvaren, Encoding.GetEncoding(1251));
+			Assert.That(gelvarenPress.Contains("Berlin secured"), Is.True);
+
+			this.compareFiles("testannounce.3.1.txt", "announce.3.1.txt");
+			this.compareFiles("testannounce.3.2.txt", "announce.3.2.txt");
+			this.compareFiles("testannounce.3.3.txt", "announce.3.3.txt");
+
+			this.dataFile.SaveGame(this.testDir, "gamein.3_contract_saved.xml");
+			this.compareFiles("gamein.3_contract.xml", "gamein.3_contract_saved.xml");
+		}
+
+		[Test]
 		public void ExecuteTurn3()
 		{
-			this.dataFile.LoadGameDocument(Directory.GetCurrentDirectory(), "SampleGame/gamein.3.xml");
-			this.dataFile.LoadConfiguration();
-			this.dataFile.LoadFactions();
-			this.dataFile.LoadGalaxy();
+			Sequence.Ints.Clear();
+			int[] hitLocations = { 50, 150, 250, 350, 450 };
+			for (int i = 0; i < 2000; i++)
+			{
+				Sequence.Ints.Push(hitLocations[i % hitLocations.Length]);
+				Sequence.Ints.Push(1);
+			}
+			for (int i = 0; i < 400; i++)
+			{
+				Sequence.Ints.Push((i % 4 == 0) ? 0 : 50);
+			}
+			for (int sequenceValue = 125; sequenceValue >= 115; sequenceValue--)
+			{
+				Sequence.Ints.Push(sequenceValue);
+			}
+
+			this.LoadGalaxy("gamein.3_contract.xml");
 
 			// story:
-            // research is commenced in the lab built
+			// research is commenced in the lab built
 			// a ship reaches moon and explore it, crashed alien ship is found
-            // quest is created to take over the crashed ship with an ability to communicate and control alien units as a reward
+			// quest is created to take over the crashed ship with an ability to communicate and control alien units as a reward
 			// city build a ship
+
+			OrdersReader ordersReader = new OrdersReader(this.game);
+			ordersReader.LoadOrders(Path.Combine(this.testDir, "orders.3.2.txt"), false);
+			ordersReader.LoadOrders(Path.Combine(this.testDir, "orders.3.3.txt"), false);
+
+			this.game.Execute();
+
+			Assert.That(Contract.All.Count, Is.EqualTo(0), "researching the wreck should complete the Luna contract");
+			Assert.That(ModuleStack.All["200"].Owner.Name, Is.EqualTo("2"));
+			Assert.That(Faction.All["2"].TechnologiesToShow.Contains("alndrn")
+				|| Faction.All["2"].TechnologiesSeen.Contains("alndrn")
+				|| ModuleStack.All["200"].Technologies.Contains("alndrn"), Is.True);
+			int woundedLeft = 0;
+			if (ModuleStack.All["c000012"].ItemStacks.ContainsKey(ItemType.All["wndtrn"]))
+			{
+				woundedLeft = ModuleStack.All["c000012"].ItemStacks[ItemType.All["wndtrn"]].Quantity;
+			}
+			Assert.That(woundedLeft, Is.LessThan(30), "unsupplied wounded should die without medici");
+
+			ReportWriter reportsWriter = new ReportWriter(this.game, this.dataFile, this.testDir);
+			reportsWriter.GenerateReports(this.testDir);
+
+			this.compareFiles("testreport.4.1.txt", "report.4.1.txt");
+			this.compareFiles("testreport.4.2.txt", "report.4.2.txt");
+			this.compareFiles("testreport.4.3.txt", "report.4.3.txt");
+
+			this.dataFile.SaveGame(this.testDir, "gameout.4_saved.xml");
+			this.compareFiles("gameout.4.xml", "gameout.4_saved.xml");
 		}
 
 		[Test, Ignore("not ready")]

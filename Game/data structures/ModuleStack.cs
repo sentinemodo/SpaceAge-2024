@@ -5,7 +5,7 @@ using System.Xml;
 
 namespace SpaceAge
 {
-	public class ModuleStack : NamedObject, IHolder, IItemStacksHolder, IOfferent, IReporting, IEventReporting, IEffectable, IMoveable
+	public partial class ModuleStack : NamedObject, IHolder, IItemStacksHolder, IOfferent, IReporting, IEventReporting, IEffectable, IMoveable
 	{
 		public const int NameLength = NamedObject.MaxNameLength;
 

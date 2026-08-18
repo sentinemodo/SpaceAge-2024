@@ -1,0 +1,16 @@
+#faction 3 "abccb"
+#modulestack 108
+tactic prioritize armed
+-capture all
+
+#modulestack 109
+tactic capture
+-capture all
+
+#modulestack c000012
+repair
+
+#modulestack 000023
+use shtlas as new120
+
+#end

@@ -58,6 +58,10 @@ namespace SpaceAge
 			return trigger;
 		}
 
+		public void NotifyResearch(Faction researcher, ModuleStack researcherStack, ModuleStack target, int points)
+		{
+		}
+
 		public void NotifyTransfer(Faction giver, ModuleStack giverStack, ModuleStack receiver, ModuleType moduleType, int quantity, Faction issuer)
 		{
 			if (receiver != this.Receiver)

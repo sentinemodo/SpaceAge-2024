@@ -6,6 +6,9 @@
 		<technology name="rckter" />
 		<attitude faction="2" attitude="enemy" />
 	</faction>
+	<contracts>
+		<contract name="CT0122" location="R00001" issuer="1" trigger="research" title="Wake the crashed ship" flavour="Research the wreckage until its systems can be activated and the vessel claimed." reward-type="unit" reward="200" target="200" points="5" progress="0" />
+	</contracts>
 	<galaxy>
 		<system name="SS0001" name-en="Sol" X="0" Y="0" Z="0">
 			<star name="S00001" name-en="Sol" />
@@ -21,26 +24,34 @@
 						<resource type="copper" quantity="100" />
 						<resource type="silici" quantity="100" />
 						<modulestack name="200" name-en="crashed alien vessel" type="alnhul" quantity="1" faction="1">
-							<technology name="alnhul" />
+							<technology name="alnhul" name-en="alien vessel hull" />
+							<upkeep type="cash" quantity="470" />
 							<modulestack name="201" type="robofc" quantity="1" faction="1">
-								<technology name="robofc" />
+								<technology name="robofc" name-en="advanced robo-factory" />
+								<upkeep type="cash" quantity="60" />
 							</modulestack>
 							<modulestack name="202" type="autcmd" quantity="1" faction="1">
-								<technology name="autcmd" />
+								<technology name="autcmd" name-en="automated command module" />
+								<upkeep type="cash" quantity="80" />
 							</modulestack>
 							<modulestack name="203" type="autdrv" quantity="1" faction="1">
-								<technology name="autdrv" />
+								<technology name="autdrv" name-en="automated propulsion module" />
+								<upkeep type="cash" quantity="80" />
 							</modulestack>
 							<modulestack name="204" type="he3aut" quantity="1" faction="1">
-								<technology name="he3aut" />
+								<technology name="he3aut" name-en="automated helium powerplant" />
+								<upkeep type="cash" quantity="80" />
 							</modulestack>
 							<modulestack name="205" type="cargob" quantity="1" faction="1">
-								<technology name="strans" />
+								<technology name="strans" name-en="small scale transportation" />
+								<upkeep type="cash" quantity="30" />
 							</modulestack>
 							<modulestack name="206" type="drnbay" quantity="1" faction="1">
-								<technology name="drnbay" />
+								<technology name="drnbay" name-en="fighter drone bay" />
+								<upkeep type="cash" quantity="120" />
 								<modulestack name="207" type="alndrn" quantity="4" faction="1">
-									<technology name="alndrn" />
+									<technology name="alndrn" name-en="alien fighter drone" />
+									<upkeep type="cash" quantity="80" />
 								</modulestack>
 							</modulestack>
 						</modulestack>
@@ -641,9 +652,6 @@
 		</order>
 		<order subject="modulestack" name="101">
 			<active observed="101" />
-			<order conditions="-">
-				<name description="Caste Prime valiant explorer" />
-			</order>
 		</order>
 		<order subject="modulestack" name="000012" repeat="unlimited">
 			<produce produce-type="item" item="cash" />
@@ -763,18 +771,9 @@
 				<destination destination="R00002" />
 				<destination destination="R00002" />
 			</move>
-			<order conditions="-">
-				<capture unit="000012" />
-			</order>
-			<order conditions="-">
-				<capture unit="all" />
-			</order>
 		</order>
 		<order subject="person" name="000001">
 			<active observed="101" />
-			<order conditions="-">
-				<stack parent="112" />
-			</order>
 		</order>
 	</orders>
 </game>

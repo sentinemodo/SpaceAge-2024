@@ -184,15 +184,15 @@ namespace SpaceAge
             switch (elSell.GetAttribute("sell-type"))
             {
                 case "items":
-                    this.SellType = EOfferType.BuyItems;
+                    this.SellType = EOfferType.SellItems;
                     this.ItemType = ItemType.All[elSell.GetAttribute("item")];
                     break;
                 case "modules":
-                    this.SellType = EOfferType.BuyModules;
+                    this.SellType = EOfferType.SellModules;
                     this.ModuleType = ModuleType.All[elSell.GetAttribute("module")];
                     break;
                 case "technology":
-                    this.SellType = EOfferType.BuyTechnologies;
+                    this.SellType = EOfferType.SellTechnologies;
                     this.Technology = Technology.All[elSell.GetAttribute("technology")];
                     break;
                 default:

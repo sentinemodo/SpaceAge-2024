@@ -64,6 +64,17 @@ namespace SpaceAge
 			}
 		}
 
+		public void NotifyResearch(Faction researcher, ModuleStack researcherStack, ModuleStack target, int points)
+		{
+			foreach (Contract contract in this)
+			{
+				if (contract.Trigger != null)
+				{
+					contract.Trigger.NotifyResearch(researcher, researcherStack, target, points);
+				}
+			}
+		}
+
 		public void Evaluate(int week)
 		{
 			List<Contract> snapshot = new List<Contract>(this);
@@ -127,7 +138,17 @@ namespace SpaceAge
 					created.Add(contract);
 				}
 			}
-			if (created.Count == 0)
+
+			List<PressRelease> press = new List<PressRelease>();
+			foreach (PressRelease release in PressRelease.All)
+			{
+				if (release.CreatedThisSession)
+				{
+					press.Add(release);
+				}
+			}
+
+			if (created.Count == 0 && press.Count == 0)
 			{
 				return;
 			}
@@ -142,7 +163,7 @@ namespace SpaceAge
 						visible.Add(contract);
 					}
 				}
-				if (visible.Count == 0)
+				if (visible.Count == 0 && press.Count == 0)
 				{
 					continue;
 				}
@@ -154,12 +175,33 @@ namespace SpaceAge
 				writer.WriteLine(string.Format("Subject: [SpaceAge] Report for turn {0}", game.Turn));
 				writer.WriteLine("Content-Disposition: attachment");
 				writer.WriteLine();
-				writer.WriteLine("A new contract has been published:");
-				foreach (Contract contract in visible)
+				if (press.Count > 0)
 				{
-					foreach (string line in contract.Report())
+					writer.WriteLine("Press releases:");
+					foreach (PressRelease release in press)
 					{
-						writer.WriteLine(line);
+						writer.WriteLine(string.Format("  {0}: {1}.",
+							release.Issuer.ReportName,
+							release.Title));
+						if (!string.IsNullOrEmpty(release.Flavour))
+						{
+							writer.WriteLine(string.Format("    {0}", release.Flavour));
+						}
+					}
+					if (visible.Count > 0)
+					{
+						writer.WriteLine();
+					}
+				}
+				if (visible.Count > 0)
+				{
+					writer.WriteLine("A new contract has been published:");
+					foreach (Contract contract in visible)
+					{
+						foreach (string line in contract.Report())
+						{
+							writer.WriteLine(line);
+						}
 					}
 				}
 				writer.Close();

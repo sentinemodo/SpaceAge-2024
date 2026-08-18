@@ -159,6 +159,7 @@ namespace SpaceAge
 				//this.ClearFailedToExecuteImmediateOrders();
 				this.ClearExecutedImmediateOrders();
 				this.ExecuteOrders();
+				this.ExecuteMedicalConsume();
 				Contract.All.Evaluate(this.week);
                 this.ProcessBuyOffers();
 				this.ExecuteBattles();
@@ -282,6 +283,15 @@ namespace SpaceAge
 					}
 				}
 				faction.Orders.RemoveExecuted();
+			}
+		}
+
+		public void ExecuteMedicalConsume()
+		{
+			List<ModuleStack> snapshot = new List<ModuleStack>(this.ModuleStacks.Values);
+			foreach (ModuleStack moduleStack in snapshot)
+			{
+				moduleStack.ExecuteMedicalConsume(this.week);
 			}
 		}
 
@@ -419,6 +429,7 @@ namespace SpaceAge
 			Battle.All.Clear();
 			Offer.All.Clear();
 			Contract.All.Clear();
+			PressRelease.All.Clear();
 			Technology.All.Clear();
 			Race.All.Clear();
 			ItemType.All.Clear();

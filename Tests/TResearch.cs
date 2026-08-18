@@ -149,6 +149,7 @@ namespace UnitTests
 			Assert.That(Research.DefaultCostForLevel(1), Is.EqualTo(8));
 			Assert.That(Research.DefaultCostForLevel(2), Is.EqualTo(16));
 			Assert.That(Research.DefaultCostForLevel(3), Is.EqualTo(32));
+			Assert.That(Research.DefaultCostForLevel(4), Is.EqualTo(64));
 		}
 
 		[Test]
@@ -407,6 +408,39 @@ namespace UnitTests
 			Sequence.Ints.Push(0); // breakthrough roll == 0
 			accrueOrder.Execute(this.game.Week);
 			Assert.That(accruing.ResearchPoints, Is.EqualTo(0));
+		}
+
+		[Test]
+		public void Parse_StackId_IsModuleStackResearch()
+		{
+			ModuleStack wreck = new ModuleStack(Region.All["R00002"], Faction.All["1"], ModuleType.All["alnhul"], "200");
+			wreck.AddModule();
+			Assert.That(this.parseResearch("200"), Is.EqualTo(EResearchType.ModuleStack));
+		}
+
+		[Test]
+		public void Execute_StackResearch_CreditsContractAndTransfersUnit()
+		{
+			ModuleStack wreck = new ModuleStack(Region.All["R00001"], Faction.All["1"], ModuleType.All["alnhul"], "200");
+			wreck.AddModule();
+			wreck.Technologies.Add(Technology.All["alndrn"]);
+			ResearchWreckageTrigger trigger = new ResearchWreckageTrigger(wreck, 5);
+			new Contract("CT0200", Region.All["R00001"], Faction.All["1"], trigger, wreck);
+
+			ModuleStack lab = this.createResearchLab();
+			ResearchOrder order = this.assignResearch(lab, "research 200");
+			Assert.That(order.ResearchType, Is.EqualTo(EResearchType.ModuleStack));
+
+			for (int week = 1; week <= 5; week++)
+			{
+				lab.ExecutedLongOrder = false;
+				lab.Execute(week);
+				Contract.All.Evaluate(week);
+			}
+
+			Assert.That(Contract.All.Count, Is.EqualTo(0));
+			Assert.That(wreck.Owner.Name, Is.EqualTo("2"));
+			Assert.That(Faction.All["2"].TechnologiesToShow.Contains("alndrn"), Is.True);
 		}
 	}
 }

@@ -1,0 +1,11 @@
+#faction 2 "xyzzy"
+#modulestack 100
+; leftover hop to Luna orbit runs first; shuttles can only USE in orbit
+use filidx as new108
+-move R00001
+
+#modulestack new108
+stack 100
+@research 200
+
+#end

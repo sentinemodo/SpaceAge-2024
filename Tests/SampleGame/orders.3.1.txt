@@ -1,0 +1,3 @@
+#faction 1 ""
+CONTRACT R00001 research 200 points 5 REWARD 200 unit TITLE "Wake the crashed ship" FLAVOUR "Research the wreckage until its systems can be activated and the vessel claimed."
+#end
