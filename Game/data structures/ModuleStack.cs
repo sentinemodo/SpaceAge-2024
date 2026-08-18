@@ -256,6 +256,71 @@ namespace SpaceAge
 			}
 		}
 
+		public int QuantityOperational
+		{
+			get
+			{
+				if (!this.IsFormed || !this.online)
+				{
+					return 0;
+				}
+				int operable = this.QuantityActive;
+				if (operable <= 0)
+				{
+					return 0;
+				}
+				if (this.ModuleType.CrewRequired > 0)
+				{
+					operable = Math.Min(operable, this.CrewCurrent / this.ModuleType.CrewRequired);
+				}
+				if (this.IsRootModuleStack && this.ModuleType.EnergyRequired > 0)
+				{
+					int availableEnergy = this.EnergyProduction + this.ModuleStacks.EnergyProduction();
+					operable = Math.Min(operable, availableEnergy / this.ModuleType.EnergyRequired);
+				}
+				return Math.Max(operable, 0);
+			}
+		}
+
+		public bool HasOperationalModules
+		{
+			get { return this.QuantityOperational > 0; }
+		}
+
+		public bool IsPartiallyDisabled
+		{
+			get
+			{
+				return this.HasOperationalModules && this.QuantityOperational < this.QuantityActive;
+			}
+		}
+
+		public bool IsModuleOperational(Module module)
+		{
+			if (module == null || module.Parent != this || !module.IsActive || !this.IsFormed || !this.online)
+			{
+				return false;
+			}
+			int operationalLeft = this.QuantityOperational;
+			foreach (Module candidate in this.modules)
+			{
+				if (!candidate.IsActive)
+				{
+					continue;
+				}
+				if (operationalLeft <= 0)
+				{
+					return false;
+				}
+				if (candidate == module)
+				{
+					return true;
+				}
+				operationalLeft--;
+			}
+			return false;
+		}
+
 		public void AddModule()
 		{
 			this.AddModule(0);
@@ -578,17 +643,21 @@ namespace SpaceAge
 					return false;
                 if (this.Modules.Count == 0)
                     return false;
-                if (this.CrewRequired > this.CrewCurrent)
+				if (this.QuantityOperational == 0)
                     return false;
                 //if (this.CrewRequired + this.ModuleStacks.CrewRequired() > this.CrewCurrent + this.ModuleStacks.CrewCurrent() )
                 //    return false;
 				// TODO: priorities of shutdown on lack of energy and lack of crew
-				if (this.IsRootModuleStack)
+				if (this.IsRootModuleStack && this.QuantityOperational < this.QuantityActive)
 				{
 					if (this.EnergyRequired + this.ModuleStacks.EnergyRequired() > this.EnergyProduction + this.ModuleStacks.EnergyProduction())
 					{
 						return false;
 					}
+				}
+				if (this.QuantityOperational < this.QuantityActive)
+				{
+					return false;
 				}
 				return true;
 			}
@@ -1330,11 +1399,8 @@ namespace SpaceAge
 			{
 				line = this.reportActive(line);
 			}
-			if (this.IsRootModuleStack)
-			{
-				line = string.Format("{0}{1}", line, this.IsImmobile ? ", immobile" : "");
-				// IsArmed is used for combat logic but not shown in reports
-			}
+			line = string.Format("{0}{1}", line, this.IsImmobile ? ", immobile" : "");
+			// IsArmed is used for combat logic but not shown in reports
 
             if (this.Owner != null & this.Owner != faction)
             {
@@ -1913,6 +1979,10 @@ namespace SpaceAge
 			{
 				line = string.Concat(line, "active");
 			}
+			else if (this.IsPartiallyDisabled)
+			{
+				line = string.Concat(line, "partially disabled");
+			}
 			else
 			{
 				line = string.Concat(line, "disabled");
@@ -1955,7 +2025,7 @@ namespace SpaceAge
 			{
 				foreach (Module module in this.modules)
 				{
-					if (module.IsActive)
+					if (this.IsModuleOperational(module))
 					{
 						firingModules.Add(module);
 					}

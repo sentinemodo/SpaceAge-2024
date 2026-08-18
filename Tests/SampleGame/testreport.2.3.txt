@@ -55,31 +55,32 @@ Galaxy report:
     - Berlin garrison [000002], infantry battalion [inftry], owned by
       NPC [1].
       size: 500.
-    - Berlin farms [000003], 10 farming complexes [farms], owned by NPC
-      [1].
+    - Berlin farms [000003], 10 farming complexes [farms], immobile,
+      owned by NPC [1].
       size: 10000.
     - Berlin coal powerplants [000004], 5 coal-burning plants [cplant],
-      owned by NPC [1].
+      immobile, owned by NPC [1].
       size: 5000.
-    - Berlin granary [000005], small cargo bay [cargob], owned by NPC
-      [1].
+    - Berlin granary [000005], small cargo bay [cargob], immobile, owned
+      by NPC [1].
       size: 2000.
     - Caste Prime Headquarters [000012], corporate headquarters
-      [corphq], owned by Caste Prime [2].
+      [corphq], immobile, owned by Caste Prime [2].
       size: 1000.
-    - small cargo bay [000013], 5 small cargo bays [cargob], owned by
-      Caste Prime [2].
+    - small cargo bay [000013], 5 small cargo bays [cargob], immobile,
+      owned by Caste Prime [2].
       size: 10000.
-    - farming complex [000014], 3 farming complexes [farms], owned by
-      Caste Prime [2].
+    - farming complex [000014], 3 farming complexes [farms], immobile,
+      owned by Caste Prime [2].
       size: 3000.
-    - coal-burning plant [000015], 3 coal-burning plants [cplant], owned
-      by Caste Prime [2].
+    - coal-burning plant [000015], 3 coal-burning plants [cplant],
+      immobile, owned by Caste Prime [2].
       size: 3000.
-    - core drill [000016], core drill [cdrill], owned by Caste Prime
-      [2].
+    - core drill [000016], core drill [cdrill], immobile, owned by Caste
+      Prime [2].
       size: 1000.
-    - factory [000017], 5 factories [factry], owned by Caste Prime [2].
+    - factory [000017], 5 factories [factry], immobile, owned by Caste
+      Prime [2].
       size: 5000.
   + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), capacity: 200/144, crew: 16/16, upkeep:
@@ -153,17 +154,17 @@ Galaxy report:
     - Sydney garrison [000007], infantry battalion [inftry], owned by
       NPC [1].
       size: 500.
-    - Sydney farms [000008], 10 farming complexes [farms], owned by NPC
-      [1].
+    - Sydney farms [000008], 10 farming complexes [farms], immobile,
+      owned by NPC [1].
       size: 10000.
     - Sydney wind powerplants [000009], 10 wind powerplants [wnplnt],
-      owned by NPC [1].
+      immobile, owned by NPC [1].
       size: 100.
     - Sydney oil powerplants [000010], 5 oil-burning plants [oplant],
-      owned by NPC [1].
+      immobile, owned by NPC [1].
       size: 4000.
-    - Sydney granary [000011], small cargo bay [cargob], owned by NPC
-      [1].
+    - Sydney granary [000011], small cargo bay [cargob], immobile, owned
+      by NPC [1].
       size: 2000.
   + Gelvaren complex [000026], city [city], immobile.
     size: 25000, mass: 6894, capacity: 15000/10180, energy: 80/75 (10),
@@ -179,7 +180,8 @@ Galaxy report:
       week 13: given 1000 cash [cash] to Gelvaren Headquarters [000018].
       week 13: given 10 terrans [terran] to Gelvaren Headquarters
       [000018].
-    + Gelvaren Headquarters [000018], corporate headquarters [corphq].
+    + Gelvaren Headquarters [000018], corporate headquarters [corphq],
+      immobile.
       size: 1000, mass: 1192 (1000), capacity: 750/192, energy: 10,
       crew: 20/48, upkeep: 148 (100) cash [cash], consume: 48 (0) units
       of food [food], 48 (0) units of terran breathing gas mixture
@@ -202,7 +204,7 @@ Galaxy report:
         week 13: got 1000 cash [cash] from Gelvaren complex [000026].
         week 13: got 10 terrans [terran] from Gelvaren complex [000026].
         week 13: produced 100 cash [cash].
-    + small cargo bay [000019], small cargo bay [cargob].
+    + small cargo bay [000019], small cargo bay [cargob], immobile.
       size: 2000, mass: 1416 (200), capacity: 1800/1183, upkeep: 32 (30)
       cash [cash], consume: 2 (0) units of food [food], 2 (0) units of
       terran breathing gas mixture [terair].
@@ -253,7 +255,7 @@ Galaxy report:
         week 13: got 10 units of food [food] from farming complex
         [000020].
         week 13: got 2 units of oil [oil] from core drill [000022].
-    + farming complex [000020], 2 farming complexes [farms].
+    + farming complex [000020], 2 farming complexes [farms], immobile.
       size: 2000, mass: 250 (200), capacity: 1000/50, energy: 10, crew:
       10/10, upkeep: 110 (100) cash [cash], consume: 10 (0) units of
       food [food], 10 (0) units of terran breathing gas mixture
@@ -300,12 +302,12 @@ Galaxy report:
         week 13: given 10 units of food [food] to small cargo bay
         [000019].
         week 13: produced 10 units of food [food].
-    + wind powerplant [000021], 20 wind powerplants [wnplnt].
+    + wind powerplant [000021], 20 wind powerplants [wnplnt], immobile.
       size: 200, mass: 200 (200), energy: 80/20, upkeep: 200 cash
       [cash].
       events:
         week 1: started energy production for the next 13 weeks.
-    + core drill [000022], core drill [cdrill].
+    + core drill [000022], core drill [cdrill], immobile.
       size: 1000, mass: 1034 (1000), capacity: 750/32, energy: 5, crew:
       6/6, upkeep: 46 (40) cash [cash], consume: 6 (0) units of food
       [food], 6 (0) units of terran breathing gas mixture [terair].
@@ -339,7 +341,7 @@ Galaxy report:
         week 12: produced 2 units of oil [oil].
         week 13: given 2 units of oil [oil] to small cargo bay [000019].
         week 13: produced 2 units of oil [oil].
-    + factory [000023], factory [factry].
+    + factory [000023], factory [factry], immobile.
       size: 1000, mass: 790 (750), capacity: 500/40, energy: 15, crew:
       10/10, upkeep: 70 (60) cash [cash], consume: 10 (0) units of food
       [food], 10 (0) units of terran breathing gas mixture [terair].
@@ -366,7 +368,7 @@ Galaxy report:
         week 12: produced tanks [tanks] into tanks [109].
         week 13: consumed 4 units of iron [iron] to produce tanks
         [tanks] module.
-    + military barrack [000025], military barrack [barrck].
+    + military barrack [000025], military barrack [barrck], immobile.
       size: 2000, mass: 1024 (500), capacity: 1800/520, energy: 5, crew:
       34/11 (2/10), upkeep: 268 (200) cash [cash], consume: 43 (0) units
       of food [food], 43 (0) units of terran breathing gas mixture
@@ -438,7 +440,8 @@ Galaxy report:
 Orders Template:
 #faction 3 "abccb"
 #modulestack 000018
-; + Gelvaren Headquarters [000018], corporate headquarters [corphq].
+; + Gelvaren Headquarters [000018], corporate headquarters [corphq],
+;   immobile.
 ; items: 48 terrans [terran], 2658 cash [cash].
 @get all cash from 000026
 @get all terran from 000026
@@ -446,28 +449,28 @@ Orders Template:
 @produce cash
 
 #modulestack 000019
-; + small cargo bay [000019], small cargo bay [cargob].
+; + small cargo bay [000019], small cargo bay [cargob], immobile.
 ; items: 1088 units of food [food], 2 terrans [terran], 3 units of iron
 ; [iron], 18 units of oil [oil].
 @get all food from 000020
 @get all oil from 000022
 
 #modulestack 000020
-; + farming complex [000020], 2 farming complexes [farms].
+; + farming complex [000020], 2 farming complexes [farms], immobile.
 ; items: 10 terrans [terran], 10 units of food [food].
 @use farmng
 
 #modulestack 000021
-; + wind powerplant [000021], 20 wind powerplants [wnplnt].
+; + wind powerplant [000021], 20 wind powerplants [wnplnt], immobile.
 @produce energy
 
 #modulestack 000022
-; + core drill [000022], core drill [cdrill].
+; + core drill [000022], core drill [cdrill], immobile.
 ; items: 6 terrans [terran], 2 units of oil [oil].
 @use oildwe
 
 #modulestack 000023
-; + factory [000023], factory [factry].
+; + factory [000023], factory [factry], immobile.
 ; technologies: armored combat [armcbt].
 ; items: 10 terrans [terran].
 ; effects:
@@ -476,7 +479,7 @@ Orders Template:
 use armcbt as 109 for 000025
 
 #modulestack 000025
-; + military barrack [000025], military barrack [barrck].
+; + military barrack [000025], military barrack [barrck], immobile.
 ; technologies: form infantry battalion [frminf].
 ; items: 10 terrans [terran].
 

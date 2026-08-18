@@ -294,6 +294,16 @@ namespace SpaceAge
 
 		private bool canMove(int week)
 		{          
+			if (!this.Mover.IsActive)
+			{
+				this.Mover.EventReports.Add(
+					week,
+					string.Format("MOVE failed. {0} is {1}.",
+						this.Mover.ReportName,
+						this.Mover.IsPartiallyDisabled ? "partially disabled" : "disabled"));
+				return false;
+			}
+
 			if (!this.moveModesRecursive.ContainsKey(this.moveMode))
             {
                 if (this.moveMode == EMoveMode.ground)

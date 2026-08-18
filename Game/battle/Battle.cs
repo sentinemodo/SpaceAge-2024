@@ -465,7 +465,7 @@ namespace SpaceAge
 					includeDisabled = true;
 				}
 
-				if (!target.IsActive && !includeDisabled)
+				if (!target.HasOperationalModules && !includeDisabled)
 				{
 					continue;
 				}
@@ -524,7 +524,7 @@ namespace SpaceAge
 					if (roll <= chance)
 					{
 						this.markHit(target);
-						bool targetWasActive = target.IsActive;
+						bool targetWasOperational = target.HasOperationalModules;
 						Module targetModule = this.resolveHitLocation(target, firing, target.HasEvade);
 						if (targetModule == null)
 						{
@@ -606,7 +606,7 @@ namespace SpaceAge
 									targetModule.ReportName,
 									targetModule.ReportActive));
 
-								if (targetWasActive && !target.IsActive)
+								if (targetWasOperational && !target.HasOperationalModules)
 								{
 									this.removeFromBattle(target);
 									switch (targetModule.Parent.ModuleType.Group)
@@ -884,7 +884,7 @@ namespace SpaceAge
 					// resolve individual modulestacks initiative
 					foreach (ModuleStack modulestack in modulestacks)
 					{
-						if (modulestack.IsActive)
+						if (modulestack.HasOperationalModules)
 						{
 							this.executeAttack(modulestack);
 							this.considerRetreat(modulestack);

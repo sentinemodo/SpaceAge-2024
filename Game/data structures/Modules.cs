@@ -50,6 +50,10 @@ namespace SpaceAge
 				{
 					line = string.Format("{0}, {1}", line, module.ReportActive);
 				}
+				else if (!module.Parent.IsModuleOperational(module))
+				{
+					line = string.Format("{0}, inactive", line);
+				}
 				lines.Add(string.Concat(line, "."), level);
 			}
 			return lines.IndentedLines;
@@ -83,7 +87,7 @@ namespace SpaceAge
 					line = string.Format("{0}, {1}", line, module.ReportDamage);
 				}
 				firstAdded = false;
-				if (module.Effects.Count > 0 | module.IsActive == false)
+				if (module.Effects.Count > 0 | module.IsActive == false || !module.Parent.IsModuleOperational(module))
 				{
 					line = string.Concat(line, ", effects: ");
 					if (module.Effects.Count > 0)
@@ -103,6 +107,14 @@ namespace SpaceAge
 							line,
 							(firstAdded == true) ? ", " : "",
 							module.ReportActive);
+						firstAdded = true;
+					}
+					else if (!module.Parent.IsModuleOperational(module))
+					{
+						line = string.Format("{0}{1}{2}",
+							line,
+							(firstAdded == true) ? ", " : "",
+							"inactive");
 					}
 				}
 				lines.Add(string.Concat(line, "."), level);

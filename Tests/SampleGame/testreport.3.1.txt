@@ -21,28 +21,21 @@ Battles report:
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] and hits #4 gun placement [111].
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] and hits #1 Caste
-  Prime Headquarters [000012].
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] and hits #1 Caste
-  Prime Headquarters [000012].
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] and hits #1 Caste
-  Prime Headquarters [000012].
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] and hits #5 gun placement [111].
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] and hits #1 Caste
-  Prime Headquarters [000012].
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] and hits #1 Caste
-  Prime Headquarters [000012].
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] and hits #1 Caste
-  Prime Headquarters [000012].
   peaceful scout [108] fires tanks [tanks] on gun placement [111] and hits #1 gun placement [111].
+  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] and misses.
+  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] and hits #1 peaceful
+  scout [108].
   Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] and hits #1 Caste
   Prime Headquarters [000012].
   Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] and hits #1 Caste
   Prime Headquarters [000012].
   Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] and hits #1 Caste
   Prime Headquarters [000012].
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] and hits #2 gun placement [111].
+  peaceful scout [108] fires tanks [tanks] on gun placement [111] and hits #4 gun placement [111].
+  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] and hits #1 peaceful
+  scout [108].
+  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] and hits #1 peaceful
+  scout [108].
   Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] and hits #1 Caste
   Prime Headquarters [000012].
   Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] and hits #1 Caste
@@ -50,27 +43,10 @@ Battles report:
   Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] and hits #1 Caste
   Prime Headquarters [000012].
   peaceful scout [108] fires tanks [tanks] on gun placement [111] and hits #3 gun placement [111].
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] and hits #1 Caste
-  Prime Headquarters [000012].
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] and hits #1 Caste
-  Prime Headquarters [000012].
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] and hits #1 Caste
-  Prime Headquarters [000012].
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] and hits #4 gun placement [111].
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] and hits #1 Caste
-  Prime Headquarters [000012].
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] and hits #1 Caste
-  Prime Headquarters [000012].
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] and hits #1 Caste
-  Prime Headquarters [000012].
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] and hits #5 gun placement [111].
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] and hits #1 Caste
-  Prime Headquarters [000012].
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] and hits #1 Caste
-  Prime Headquarters [000012].
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] and hits #1 Caste
-  Prime Headquarters [000012].
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] and hits #1 gun placement [111].
+  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] and hits #1 peaceful
+  scout [108].
+  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] and hits #1 peaceful
+  scout [108].
   Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] and hits #1 Caste
   Prime Headquarters [000012].
   Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] and hits #1 Caste
@@ -78,312 +54,529 @@ Battles report:
   Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] and hits #1 Caste
   Prime Headquarters [000012].
   peaceful scout [108] fires tanks [tanks] on gun placement [111] and hits #2 gun placement [111].
+  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] and hits #1 peaceful
+  scout [108].
+  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] and hits #1 peaceful
+  scout [108].
+  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] and hits #1 Caste
+  Prime Headquarters [000012].
+  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] and hits #1 Caste
+  Prime Headquarters [000012].
+  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] and hits #1 Caste
+  Prime Headquarters [000012].
+  peaceful scout [108] fires tanks [tanks] on gun placement [111] and hits #1 gun placement [111].
+  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] and hits #1 peaceful
+  scout [108].
+  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] and hits #1 peaceful
+  scout [108].
+  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] and hits #1 Caste
+  Prime Headquarters [000012].
+  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] and hits #1 Caste
+  Prime Headquarters [000012].
+  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] and hits #1 Caste
+  Prime Headquarters [000012].
+  peaceful scout [108] fires tanks [tanks] on gun placement [111] and hits #5 gun placement [111].
+  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] and hits #1 peaceful
+  scout [108].
+  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] and hits #1 peaceful
+  scout [108].
+  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] and hits #1 Caste
+  Prime Headquarters [000012].
+  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] and hits #1 Caste
+  Prime Headquarters [000012].
+  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] and hits #1 Caste
+  Prime Headquarters [000012].
+  peaceful scout [108] fires tanks [tanks] on gun placement [111] and hits #4 gun placement [111].
+  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] and hits #1 peaceful
+  scout [108].
+  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] and hits #1 peaceful
+  scout [108].
+  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] and hits #1 Caste
+  Prime Headquarters [000012].
+  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] and hits #1 Caste
+  Prime Headquarters [000012].
+  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] and hits #1 Caste
+  Prime Headquarters [000012].
+  peaceful scout [108] fires tanks [tanks] on gun placement [111] and hits #3 gun placement [111].
+  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] and hits #1 peaceful
+  scout [108].
+  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] and hits #1 peaceful
+  scout [108].
+  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] and hits #1 Caste
+  Prime Headquarters [000012].
+  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] and hits #1 Caste
+  Prime Headquarters [000012].
+  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] and hits #1 Caste
+  Prime Headquarters [000012].
+  peaceful scout [108] fires tanks [tanks] on gun placement [111] and hits #2 gun placement [111].
+  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] and hits #1 peaceful
+  scout [108].
+  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] and hits #1 peaceful
+  scout [108].
   Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] and hits #1 Caste
   Prime Headquarters [000012].
     #1 corporate headquarters [corphq] module captured by Gelvaren [3].
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] and hits #5 gun placement [111].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
-  bay [000013].
+  peaceful scout [108] fires tanks [tanks] on gun placement [111] and hits #3 gun placement [111].
+  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] and hits #1 peaceful
+  scout [108].
+  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] and hits #1 peaceful
+  scout [108].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #5 gun placement
+  [111].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #4 gun placement
+  [111].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #3 gun placement
+  [111].
   Week 10.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] and hits #1 gun placement [111].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
-  bay [000013].
   peaceful scout [108] fires tanks [tanks] on gun placement [111] and hits #2 gun placement [111].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
-  bay [000013].
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] and hits #3 gun placement [111].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
-  bay [000013].
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] and hits #4 gun placement [111].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
-  bay [000013].
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] and hits #5 gun placement [111].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
-  bay [000013].
+  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] and hits #1 peaceful
+  scout [108].
+  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] and hits #1 peaceful
+  scout [108].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #4 gun placement
+  [111].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #3 gun placement
+  [111].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #2 gun placement
+  [111].
   peaceful scout [108] fires tanks [tanks] on gun placement [111] and hits #1 gun placement [111].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
-  bay [000013].
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] and hits #2 gun placement [111].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
-  bay [000013].
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] and hits #3 gun placement [111].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
-  bay [000013].
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] and hits #4 gun placement [111].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
-  bay [000013].
+  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] and hits #1 peaceful
+  scout [108].
+  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] and hits #1 peaceful
+  scout [108].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #3 gun placement
+  [111].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #2 gun placement
+  [111].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
+  [111].
   peaceful scout [108] fires tanks [tanks] on gun placement [111] and hits #5 gun placement [111].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
-  bay [000013].
+  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] and hits #1 peaceful
+  scout [108].
+  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] and hits #1 peaceful
+  scout [108].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #2 gun placement
+  [111].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
+  [111].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #5 gun placement
+  [111].
+  peaceful scout [108] fires tanks [tanks] on gun placement [111] and hits #4 gun placement [111].
+  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] and hits #1 peaceful
+  scout [108].
+  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] and hits #1 peaceful
+  scout [108].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
+  [111].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #5 gun placement
+  [111].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #4 gun placement
+  [111].
+  peaceful scout [108] fires tanks [tanks] on gun placement [111] and hits #3 gun placement [111].
+  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] and hits #1 peaceful
+  scout [108].
+  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] and hits #1 peaceful
+  scout [108].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #5 gun placement
+  [111].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #4 gun placement
+  [111].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #3 gun placement
+  [111].
+  peaceful scout [108] fires tanks [tanks] on gun placement [111] and hits #2 gun placement [111].
+  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] and hits #1 peaceful
+  scout [108].
+  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] and hits #1 peaceful
+  scout [108].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #4 gun placement
+  [111].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #3 gun placement
+  [111].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #2 gun placement
+  [111].
+  peaceful scout [108] fires tanks [tanks] on gun placement [111] and hits #1 gun placement [111].
+  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] and hits #1 peaceful
+  scout [108].
+  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] and hits #1 peaceful
+  scout [108].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #3 gun placement
+  [111].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #2 gun placement
+  [111].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
+  [111].
+  peaceful scout [108] fires tanks [tanks] on gun placement [111] and hits #5 gun placement [111].
+  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] and hits #1 peaceful
+  scout [108].
+  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] and hits #1 peaceful
+  scout [108].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #2 gun placement
+  [111].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
+  [111].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #5 gun placement
+  [111].
+  peaceful scout [108] fires tanks [tanks] on gun placement [111] and hits #4 gun placement [111].
+  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] and hits #1 peaceful
+  scout [108].
+  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] and hits #1 peaceful
+  scout [108].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
+  [111].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #5 gun placement
+  [111].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #4 gun placement
+  [111].
+  peaceful scout [108] fires tanks [tanks] on gun placement [111] and hits #3 gun placement [111].
+  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] and hits #1 peaceful
+  scout [108].
+  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] and hits #1 peaceful
+  scout [108].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #5 gun placement
+  [111].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #4 gun placement
+  [111].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #3 gun placement
+  [111].
   Week 11.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] and hits #1 gun placement [111].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
-  bay [000013].
   peaceful scout [108] fires tanks [tanks] on gun placement [111] and hits #2 gun placement [111].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
-  bay [000013].
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] and hits #3 gun placement [111].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
-  bay [000013].
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] and hits #4 gun placement [111].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
-  bay [000013].
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] and hits #5 gun placement [111].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
-  bay [000013].
+  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] and hits #1 peaceful
+  scout [108].
+  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] and hits #1 peaceful
+  scout [108].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #4 gun placement
+  [111].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #3 gun placement
+  [111].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #2 gun placement
+  [111].
   peaceful scout [108] fires tanks [tanks] on gun placement [111] and hits #1 gun placement [111].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
-  bay [000013].
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] and hits #2 gun placement [111].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
-  bay [000013].
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] and hits #3 gun placement [111].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
-  bay [000013].
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] and hits #4 gun placement [111].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
-  bay [000013].
+  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] and hits #1 peaceful
+  scout [108].
+  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] and hits #1 peaceful
+  scout [108].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #3 gun placement
+  [111].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #2 gun placement
+  [111].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
+  [111].
   peaceful scout [108] fires tanks [tanks] on gun placement [111] and hits #5 gun placement [111].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
-  bay [000013].
+  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] and hits #1 peaceful
+  scout [108].
+  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] and hits #1 peaceful
+  scout [108].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #2 gun placement
+  [111].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
+  [111].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #5 gun placement
+  [111].
+  peaceful scout [108] fires tanks [tanks] on gun placement [111] and hits #4 gun placement [111].
+  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] and hits #1 peaceful
+  scout [108].
+  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] and hits #1 peaceful
+  scout [108].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
+  [111].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #5 gun placement
+  [111].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #4 gun placement
+  [111].
+  peaceful scout [108] fires tanks [tanks] on gun placement [111] and hits #3 gun placement [111].
+  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] and hits #1 peaceful
+  scout [108].
+  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] and hits #1 peaceful
+  scout [108].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #5 gun placement
+  [111].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #4 gun placement
+  [111].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #3 gun placement
+  [111].
+  peaceful scout [108] fires tanks [tanks] on gun placement [111] and hits #2 gun placement [111].
+  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] and hits #1 peaceful
+  scout [108].
+  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] and hits #1 peaceful
+  scout [108].
+    #1 tanks [tanks] is disabled.
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #4 gun placement
+  [111].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #3 gun placement
+  [111].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #2 gun placement
+  [111].
+  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and hits #1 Surrender
+  or die! [109].
+  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and hits #2 Surrender
+  or die! [109].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #4 gun placement
+  [111].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #3 gun placement
+  [111].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #2 gun placement
+  [111].
+  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and hits #1 Surrender
+  or die! [109].
+  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and hits #2 Surrender
+  or die! [109].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #4 gun placement
+  [111].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #3 gun placement
+  [111].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #2 gun placement
+  [111].
+  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and hits #1 Surrender
+  or die! [109].
+  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and hits #2 Surrender
+  or die! [109].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #4 gun placement
+  [111].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #3 gun placement
+  [111].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #2 gun placement
+  [111].
+  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and hits #1 Surrender
+  or die! [109].
+  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and hits #2 Surrender
+  or die! [109].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #4 gun placement
+  [111].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #3 gun placement
+  [111].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #2 gun placement
+  [111].
   Week 12.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] and hits #1 gun placement [111].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
-  bay [000013].
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] and hits #2 gun placement [111].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
-  bay [000013].
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] and hits #3 gun placement [111].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
-  bay [000013].
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] and hits #4 gun placement [111].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
-  bay [000013].
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] and hits #5 gun placement [111].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
-  bay [000013].
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] and hits #1 gun placement [111].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
-  bay [000013].
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] and hits #2 gun placement [111].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
-  bay [000013].
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] and hits #3 gun placement [111].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
-  bay [000013].
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] and hits #4 gun placement [111].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
-  bay [000013].
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] and hits #5 gun placement [111].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
-  bay [000013].
+  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and hits #1 Surrender
+  or die! [109].
+  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and hits #2 Surrender
+  or die! [109].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #4 gun placement
+  [111].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #3 gun placement
+  [111].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #2 gun placement
+  [111].
+  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and hits #1 Surrender
+  or die! [109].
+  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and hits #2 Surrender
+  or die! [109].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #4 gun placement
+  [111].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #3 gun placement
+  [111].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #2 gun placement
+  [111].
+  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and hits #1 Surrender
+  or die! [109].
+  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and hits #2 Surrender
+  or die! [109].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #4 gun placement
+  [111].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #3 gun placement
+  [111].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #2 gun placement
+  [111].
+  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and hits #1 Surrender
+  or die! [109].
+  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and hits #2 Surrender
+  or die! [109].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #4 gun placement
+  [111].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #3 gun placement
+  [111].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #2 gun placement
+  [111].
+  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and hits #1 Surrender
+  or die! [109].
+  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and hits #2 Surrender
+  or die! [109].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #4 gun placement
+  [111].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #3 gun placement
+  [111].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #2 gun placement
+  [111].
+  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and hits #1 Surrender
+  or die! [109].
+  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and hits #2 Surrender
+  or die! [109].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #4 gun placement
+  [111].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #3 gun placement
+  [111].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #2 gun placement
+  [111].
+  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and hits #1 Surrender
+  or die! [109].
+  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and hits #2 Surrender
+  or die! [109].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #4 gun placement
+  [111].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #3 gun placement
+  [111].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #2 gun placement
+  [111].
+  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and hits #1 Surrender
+  or die! [109].
+  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and hits #2 Surrender
+  or die! [109].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #4 gun placement
+  [111].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #3 gun placement
+  [111].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #2 gun placement
+  [111].
+  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and hits #1 Surrender
+  or die! [109].
+  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and hits #2 Surrender
+  or die! [109].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #4 gun placement
+  [111].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #3 gun placement
+  [111].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #2 gun placement
+  [111].
+  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and hits #1 Surrender
+  or die! [109].
+  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and hits #2 Surrender
+  or die! [109].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #4 gun placement
+  [111].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #3 gun placement
+  [111].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #2 gun placement
+  [111].
   Week 13.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] and hits #5 gun placement [111].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
-  bay [000013].
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] and hits #1 gun placement [111].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
-  bay [000013].
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] and hits #2 gun placement [111].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
-  bay [000013].
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] and hits #3 gun placement [111].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
-  bay [000013].
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] and hits #4 gun placement [111].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
-  bay [000013].
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] and hits #5 gun placement [111].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
-  bay [000013].
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] and hits #1 gun placement [111].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
-  bay [000013].
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] and hits #2 gun placement [111].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
-  bay [000013].
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] and hits #3 gun placement [111].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
-  bay [000013].
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] and hits #4 gun placement [111].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
-  bay [000013].
+  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and hits #2 Surrender
+  or die! [109].
+  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and hits #1 Surrender
+  or die! [109].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #3 gun placement
+  [111].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #2 gun placement
+  [111].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
+  [111].
+  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and hits #2 Surrender
+  or die! [109].
+  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and hits #1 Surrender
+  or die! [109].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #3 gun placement
+  [111].
+    #3 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #2 gun placement
+  [111].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
+  [111].
+  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and hits #2 Surrender
+  or die! [109].
+  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and hits #1 Surrender
+  or die! [109].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #3 gun placement
+  [111].
+    #3 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #2 gun placement
+  [111].
+    #2 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
+  [111].
+  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and hits #2 Surrender
+  or die! [109].
+  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and hits #1 Surrender
+  or die! [109].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #3 gun placement
+  [111].
+    #3 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #2 gun placement
+  [111].
+    #2 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
+  [111].
+  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and hits #2 Surrender
+  or die! [109].
+  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and hits #1 Surrender
+  or die! [109].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #3 gun placement
+  [111].
+    #3 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #2 gun placement
+  [111].
+    #2 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
+  [111].
+  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and hits #2 Surrender
+  or die! [109].
+  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and hits #1 Surrender
+  or die! [109].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #3 gun placement
+  [111].
+    #3 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #2 gun placement
+  [111].
+    #2 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
+  [111].
+  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and hits #2 Surrender
+  or die! [109].
+  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and hits #1 Surrender
+  or die! [109].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #3 gun placement
+  [111].
+    #3 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #2 gun placement
+  [111].
+    #2 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
+  [111].
+  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and hits #2 Surrender
+  or die! [109].
+  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and hits #1 Surrender
+  or die! [109].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #3 gun placement
+  [111].
+    #3 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #2 gun placement
+  [111].
+    #2 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
+  [111].
+  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and hits #2 Surrender
+  or die! [109].
+  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and hits #1 Surrender
+  or die! [109].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #3 gun placement
+  [111].
+    #3 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #2 gun placement
+  [111].
+    #2 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
+  [111].
+  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and hits #2 Surrender
+  or die! [109].
+  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and hits #1 Surrender
+  or die! [109].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #3 gun placement
+  [111].
+    #3 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #2 gun placement
+  [111].
+    #2 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
+  [111].
 
 Galaxy report:
 ------------------------------------------------------------
@@ -402,9 +595,9 @@ Galaxy report:
       size: 4.
   - spaceship hull [101], spaceship hull [sshull], disabled, immobile, owned by Caste Prime [2].
     size: 5000.
-  - command bridge [113], command bridge [cbridg], disabled, immobile, owned by Caste Prime [2].
+  - command bridge [112], command bridge [cbridg], disabled, immobile, owned by Caste Prime [2].
     size: 800.
-  - fission reactor [114], fission reactor [fisrec], disabled, immobile, owned by Caste Prime [2].
+  - fission reactor [113], fission reactor [fisrec], disabled, immobile, owned by Caste Prime [2].
     size: 0.
 
   Northern Hemisphere [R00002] (0,0), grassland region, settlement capacity 8/3.
@@ -429,7 +622,7 @@ Galaxy report:
       none.
   
   + Berlin [000001], 3 cities [city], immobile.
-    size: 75000, mass: 28460 (0), capacity: 45000/41420, energy: 320/255 (30), crew: 147/255 (0/30),
+    size: 75000, mass: 28460 (0), capacity: 45000/41420, energy: 320/255 (30), crew: 143/255 (0/30),
     upkeep: 300 units of food [food], 1980 (0) cash [cash], consume: 355 (0) units of food [food],
     355 (0) units of terran breathing gas mixture [terair], 30 (0) medicines [medici].
     items: 3000 cash [cash], 30 terrans [terran] (size: 120, mass: 120, upkeep: 30 cash [cash],
@@ -442,13 +635,13 @@ Galaxy report:
       food [food], 100 units of terran breathing gas mixture [terair].
       movement speed: 0.1 on ground.
       items: rocket launchers [rctlnc] (size: 100, mass: 100).
-    + Berlin farms [000003], 10 farming complexes [farms].
+    + Berlin farms [000003], 10 farming complexes [farms], immobile.
       size: 10000, mass: 1300 (1000), capacity: 5000/300, energy: 50, crew: 50/75, upkeep: 575 (500)
       cash [cash], consume: 75 (0) units of food [food], 75 (0) units of terran breathing gas
       mixture [terair].
       items: 75 terrans [terran] (size: 300, mass: 300, upkeep: 75 cash [cash], consume: 75 units of
       food [food], 75 units of terran breathing gas mixture [terair]).
-    + Berlin coal powerplants [000004], 5 coal-burning plants [cplant].
+    + Berlin coal powerplants [000004], 5 coal-burning plants [cplant], immobile.
       size: 5000, mass: 5560 (5000), capacity: 2500/560, energy: 200/50 (consume: 25 units of carbon
       [carbon] for 13 weeks), crew: 10/15, upkeep: 265 (250) cash [cash], consume: 15 (0) units of
       food [food], 15 (0) units of terran breathing gas mixture [terair].
@@ -456,30 +649,34 @@ Galaxy report:
       items: 100 units of carbon [carbon] (size: 500, mass: 500), 15 terrans [terran] (size: 60,
       mass: 60, upkeep: 15 cash [cash], consume: 15 units of food [food], 15 units of terran
       breathing gas mixture [terair]).
-    + Berlin granary [000005], small cargo bay [cargob].
+    + Berlin granary [000005], small cargo bay [cargob], immobile.
       size: 2000, mass: 1212 (200), capacity: 1800/1012, upkeep: 33 (30) cash [cash], consume: 3 (0)
       units of food [food], 3 (0) units of terran breathing gas mixture [terair].
       items: 1000 units of food [food] (size: 1000, mass: 1000), 3 terrans [terran] (size: 12, mass:
       12, upkeep: 3 cash [cash], consume: 3 units of food [food], 3 units of terran breathing gas
       mixture [terair]).
-    - Caste Prime Headquarters [000012], corporate headquarters [corphq], disabled, owned by Caste
-      Prime [2].
+    - Caste Prime Headquarters [000012], corporate headquarters [corphq], disabled, immobile, owned
+      by Caste Prime [2].
       size: 0.
-    - small cargo bay [000013], 5 small cargo bays [cargob], owned by Caste Prime [2].
+    - small cargo bay [000013], 5 small cargo bays [cargob], immobile, owned by Caste Prime [2].
       size: 10000.
-    - farming complex [000014], 3 farming complexes [farms], owned by Caste Prime [2].
+    - farming complex [000014], 3 farming complexes [farms], immobile, owned by Caste Prime [2].
       size: 3000.
-    - coal-burning plant [000015], 3 coal-burning plants [cplant], owned by Caste Prime [2].
+    - coal-burning plant [000015], 3 coal-burning plants [cplant], immobile, owned by Caste Prime
+      [2].
       size: 3000.
-    - core drill [000016], core drill [cdrill], owned by Caste Prime [2].
+    - core drill [000016], core drill [cdrill], immobile, owned by Caste Prime [2].
       size: 1000.
-    - factory [000017], 5 factories [factry], owned by Caste Prime [2].
+    - factory [000017], 5 factories [factry], partially disabled, immobile, owned by Caste Prime
+      [2].
       size: 5000.
-    - gun placement [111], 5 gun placements [gunplc], disabled, owned by Caste Prime [2].
+    - gun placement [111], 5 gun placements [gunplc], partially disabled, immobile, owned by Caste
+      Prime [2].
       size: 500.
-    - corporate headquarters [c000012], corporate headquarters [corphq], owned by Gelvaren [3].
+    - corporate headquarters [c000012], corporate headquarters [corphq], disabled, immobile, owned
+      by Gelvaren [3].
       size: 1000.
-  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
+  - peaceful scout [108], tanks [tanks], disabled, owned by Gelvaren [3].
     size: 240.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
@@ -528,16 +725,16 @@ Galaxy report:
       movement speed: 0.1 on ground.
       items: rocket launchers [rctlnc] (size: 100, mass: 100).
       events:
-        week 13: received infantry battalion [inftry] from infantry battalion [121].
-    + Sydney farms [000008], 10 farming complexes [farms].
+        week 13: received infantry battalion [inftry] from infantry battalion [120].
+    + Sydney farms [000008], 10 farming complexes [farms], immobile.
       size: 10000, mass: 1300 (1000), capacity: 5000/300, energy: 50, crew: 50/75, upkeep: 575 (500)
       cash [cash], consume: 75 (0) units of food [food], 75 (0) units of terran breathing gas
       mixture [terair].
       items: 75 terrans [terran] (size: 300, mass: 300, upkeep: 75 cash [cash], consume: 75 units of
       food [food], 75 units of terran breathing gas mixture [terair]).
-    + Sydney wind powerplants [000009], 10 wind powerplants [wnplnt].
+    + Sydney wind powerplants [000009], 10 wind powerplants [wnplnt], immobile.
       size: 100, mass: 100 (100), energy: 40/10, upkeep: 100 cash [cash].
-    + Sydney oil powerplants [000010], 5 oil-burning plants [oplant].
+    + Sydney oil powerplants [000010], 5 oil-burning plants [oplant], immobile.
       size: 4000, mass: 4560 (4000), capacity: 2500/460, energy: 150/50 (consume: 25 units of oil
       [oil] for 13 weeks), crew: 10/15, upkeep: 315 (300) cash [cash], consume: 15 (0) units of food
       [food], 15 (0) units of terran breathing gas mixture [terair].
@@ -545,32 +742,32 @@ Galaxy report:
       items: 100 units of oil [oil] (size: 400, mass: 500), 15 terrans [terran] (size: 60, mass: 60,
       upkeep: 15 cash [cash], consume: 15 units of food [food], 15 units of terran breathing gas
       mixture [terair]).
-    + Sydney granary [000011], small cargo bay [cargob].
+    + Sydney granary [000011], small cargo bay [cargob], immobile.
       size: 2000, mass: 1212 (200), capacity: 1800/1012, upkeep: 33 (30) cash [cash], consume: 3 (0)
       units of food [food], 3 (0) units of terran breathing gas mixture [terair].
       items: 1000 units of food [food] (size: 1000, mass: 1000), 3 terrans [terran] (size: 12, mass:
       12, upkeep: 3 cash [cash], consume: 3 units of food [food], 3 units of terran breathing gas
       mixture [terair]).
-    + wind powerplant [1], wind powerplant [wnplnt].
+    + wind powerplant [122], wind powerplant [wnplnt], immobile.
       size: 10, mass: 10 (10), energy: 4/1, upkeep: 10 cash [cash].
-    + wind powerplant [450], wind powerplant [wnplnt].
+    + wind powerplant [1], wind powerplant [wnplnt], immobile.
       size: 10, mass: 10 (10), energy: 4/1, upkeep: 10 cash [cash].
   - Gelvaren complex [000026], city [city], immobile, owned by Gelvaren [3].
     size: 25000.
-    - Gelvaren Headquarters [000018], corporate headquarters [corphq], disabled, owned by Gelvaren
-      [3].
+    - Gelvaren Headquarters [000018], corporate headquarters [corphq], disabled, immobile, owned by
+      Gelvaren [3].
       size: 1000.
-    - small cargo bay [000019], small cargo bay [cargob], owned by Gelvaren [3].
+    - small cargo bay [000019], small cargo bay [cargob], immobile, owned by Gelvaren [3].
       size: 2000.
-    - farming complex [000020], 2 farming complexes [farms], owned by Gelvaren [3].
+    - farming complex [000020], 2 farming complexes [farms], immobile, owned by Gelvaren [3].
       size: 2000.
-    - wind powerplant [000021], 19 wind powerplants [wnplnt], owned by Gelvaren [3].
+    - wind powerplant [000021], 19 wind powerplants [wnplnt], immobile, owned by Gelvaren [3].
       size: 190.
-    - core drill [000022], core drill [cdrill], owned by Gelvaren [3].
+    - core drill [000022], core drill [cdrill], immobile, owned by Gelvaren [3].
       size: 1000.
-    - factory [000023], factory [factry], owned by Gelvaren [3].
+    - factory [000023], factory [factry], immobile, owned by Gelvaren [3].
       size: 1000.
-    - military barrack [000025], military barrack [barrck], owned by Gelvaren [3].
+    - military barrack [000025], military barrack [barrck], immobile, owned by Gelvaren [3].
       size: 2000.
     - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
       size: 500.
@@ -600,15 +797,15 @@ Orders Template:
 ; items: rocket launchers [rctlnc].
 
 #modulestack 000003
-; + Berlin farms [000003], 10 farming complexes [farms].
+; + Berlin farms [000003], 10 farming complexes [farms], immobile.
 ; items: 75 terrans [terran].
 
 #modulestack 000004
-; + Berlin coal powerplants [000004], 5 coal-burning plants [cplant].
+; + Berlin coal powerplants [000004], 5 coal-burning plants [cplant], immobile.
 ; items: 100 units of carbon [carbon], 15 terrans [terran].
 
 #modulestack 000005
-; + Berlin granary [000005], small cargo bay [cargob].
+; + Berlin granary [000005], small cargo bay [cargob], immobile.
 ; items: 1000 units of food [food], 3 terrans [terran].
 
 #modulestack 000006
@@ -622,25 +819,25 @@ Orders Template:
 ; items: rocket launchers [rctlnc].
 
 #modulestack 000008
-; + Sydney farms [000008], 10 farming complexes [farms].
+; + Sydney farms [000008], 10 farming complexes [farms], immobile.
 ; items: 75 terrans [terran].
 
 #modulestack 000009
-; + Sydney wind powerplants [000009], 10 wind powerplants [wnplnt].
+; + Sydney wind powerplants [000009], 10 wind powerplants [wnplnt], immobile.
 
 #modulestack 000010
-; + Sydney oil powerplants [000010], 5 oil-burning plants [oplant].
+; + Sydney oil powerplants [000010], 5 oil-burning plants [oplant], immobile.
 ; items: 100 units of oil [oil], 15 terrans [terran].
 
 #modulestack 000011
-; + Sydney granary [000011], small cargo bay [cargob].
+; + Sydney granary [000011], small cargo bay [cargob], immobile.
 ; items: 1000 units of food [food], 3 terrans [terran].
 
 #modulestack 1
-; + wind powerplant [1], wind powerplant [wnplnt].
+; + wind powerplant [1], wind powerplant [wnplnt], immobile.
 
-#modulestack 450
-; + wind powerplant [450], wind powerplant [wnplnt].
+#modulestack 122
+; + wind powerplant [122], wind powerplant [wnplnt], immobile.
 
 #end
 

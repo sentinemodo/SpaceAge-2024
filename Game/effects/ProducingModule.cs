@@ -94,6 +94,9 @@ namespace SpaceAge
                             this.produced = (ModuleStack)this.Receiver;
                             this.produced.Parent = this.Producer.Parent;
                             this.produced.ModuleType = this.Technology.UseProduceModules;
+							// Receiver placeholders may be reused by alias; reset tactics
+							// so new produced units start with default destroy behavior.
+							this.produced.Tactics.Clear();
 
                             this.produced.EventReports.Add(
                                 week,
