@@ -1333,7 +1333,7 @@ namespace SpaceAge
 			if (this.IsRootModuleStack)
 			{
 				line = string.Format("{0}{1}", line, this.IsImmobile ? ", immobile" : "");
-				line = string.Format("{0}{1}", line, this.IsArmed ? ", military" : "");
+				// IsArmed is used for combat logic but not shown in reports
 			}
 
             if (this.Owner != null & this.Owner != faction)

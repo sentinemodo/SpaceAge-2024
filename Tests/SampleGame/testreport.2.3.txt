@@ -14,7 +14,6 @@ Bank report:
   Bank account balance: 9000.
   Credit line maximum: 10000.
   Credit rate: 20%, Deposit rate: 5%.
-
 Galaxy report:
 ------------------------------------------------------------
 * Sol [SS0001] (0, 0, 0), star system.

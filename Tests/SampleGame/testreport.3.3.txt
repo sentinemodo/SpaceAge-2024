@@ -36,12 +36,12 @@ Battles report:
   Round 1:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], military.
+  + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
     hit points: 100/100, attack: 4, defense: 4.
     tactics: prioritize armed.
       #1 hit points: 100/100.
-  + Surrender or die! [109], 3 tanks [tanks], military.
+  + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
@@ -117,12 +117,12 @@ Battles report:
   Round 2:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], military.
+  + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
     hit points: 100/100, attack: 4, defense: 4.
     tactics: prioritize armed.
       #1 hit points: 100/100.
-  + Surrender or die! [109], 3 tanks [tanks], military.
+  + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
@@ -198,12 +198,12 @@ Battles report:
   Round 3:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], military.
+  + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
     hit points: 100/100, attack: 4, defense: 4.
     tactics: prioritize armed.
       #1 hit points: 100/100.
-  + Surrender or die! [109], 3 tanks [tanks], military.
+  + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
@@ -279,12 +279,12 @@ Battles report:
   Round 4:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], military.
+  + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
     hit points: 100/100, attack: 4, defense: 4.
     tactics: prioritize armed.
       #1 hit points: 100/100.
-  + Surrender or die! [109], 3 tanks [tanks], military.
+  + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
@@ -360,12 +360,12 @@ Battles report:
   Round 5:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], military.
+  + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
     hit points: 100/100, attack: 4, defense: 4.
     tactics: prioritize armed.
       #1 hit points: 100/100.
-  + Surrender or die! [109], 3 tanks [tanks], military.
+  + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
@@ -441,12 +441,12 @@ Battles report:
   Round 6:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], military.
+  + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
     hit points: 100/100, attack: 4, defense: 4.
     tactics: prioritize armed.
       #1 hit points: 100/100.
-  + Surrender or die! [109], 3 tanks [tanks], military.
+  + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
@@ -522,12 +522,12 @@ Battles report:
   Round 7:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], military.
+  + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
     hit points: 100/100, attack: 4, defense: 4.
     tactics: prioritize armed.
       #1 hit points: 100/100.
-  + Surrender or die! [109], 3 tanks [tanks], military.
+  + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
@@ -603,12 +603,12 @@ Battles report:
   Round 8:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], military.
+  + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
     hit points: 100/100, attack: 4, defense: 4.
     tactics: prioritize armed.
       #1 hit points: 100/100.
-  + Surrender or die! [109], 3 tanks [tanks], military.
+  + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
@@ -684,12 +684,12 @@ Battles report:
   Round 9:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], military.
+  + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
     hit points: 100/100, attack: 4, defense: 4.
     tactics: prioritize armed.
       #1 hit points: 100/100.
-  + Surrender or die! [109], 3 tanks [tanks], military.
+  + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
@@ -763,12 +763,12 @@ Battles report:
   Round 10:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], military.
+  + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
     hit points: 100/100, attack: 4, defense: 4.
     tactics: prioritize armed.
       #1 hit points: 100/100.
-  + Surrender or die! [109], 3 tanks [tanks], military.
+  + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
@@ -845,12 +845,12 @@ Battles report:
   Round 1:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], military.
+  + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
     hit points: 100/100, attack: 4, defense: 4.
     tactics: prioritize armed.
       #1 hit points: 100/100.
-  + Surrender or die! [109], 3 tanks [tanks], military.
+  + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
@@ -921,12 +921,12 @@ Battles report:
   Round 2:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], military.
+  + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
     hit points: 100/100, attack: 4, defense: 4.
     tactics: prioritize armed.
       #1 hit points: 100/100.
-  + Surrender or die! [109], 3 tanks [tanks], military.
+  + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
@@ -997,12 +997,12 @@ Battles report:
   Round 3:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], military.
+  + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
     hit points: 100/100, attack: 4, defense: 4.
     tactics: prioritize armed.
       #1 hit points: 100/100.
-  + Surrender or die! [109], 3 tanks [tanks], military.
+  + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
@@ -1073,12 +1073,12 @@ Battles report:
   Round 4:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], military.
+  + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
     hit points: 100/100, attack: 4, defense: 4.
     tactics: prioritize armed.
       #1 hit points: 100/100.
-  + Surrender or die! [109], 3 tanks [tanks], military.
+  + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
@@ -1149,12 +1149,12 @@ Battles report:
   Round 5:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], military.
+  + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
     hit points: 100/100, attack: 4, defense: 4.
     tactics: prioritize armed.
       #1 hit points: 100/100.
-  + Surrender or die! [109], 3 tanks [tanks], military.
+  + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
@@ -1225,12 +1225,12 @@ Battles report:
   Round 6:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], military.
+  + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
     hit points: 100/100, attack: 4, defense: 4.
     tactics: prioritize armed.
       #1 hit points: 100/100.
-  + Surrender or die! [109], 3 tanks [tanks], military.
+  + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
@@ -1301,12 +1301,12 @@ Battles report:
   Round 7:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], military.
+  + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
     hit points: 100/100, attack: 4, defense: 4.
     tactics: prioritize armed.
       #1 hit points: 100/100.
-  + Surrender or die! [109], 3 tanks [tanks], military.
+  + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
@@ -1377,12 +1377,12 @@ Battles report:
   Round 8:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], military.
+  + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
     hit points: 100/100, attack: 4, defense: 4.
     tactics: prioritize armed.
       #1 hit points: 100/100.
-  + Surrender or die! [109], 3 tanks [tanks], military.
+  + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
@@ -1453,12 +1453,12 @@ Battles report:
   Round 9:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], military.
+  + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
     hit points: 100/100, attack: 4, defense: 4.
     tactics: prioritize armed.
       #1 hit points: 100/100.
-  + Surrender or die! [109], 3 tanks [tanks], military.
+  + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
@@ -1529,12 +1529,12 @@ Battles report:
   Round 10:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], military.
+  + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
     hit points: 100/100, attack: 4, defense: 4.
     tactics: prioritize armed.
       #1 hit points: 100/100.
-  + Surrender or die! [109], 3 tanks [tanks], military.
+  + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
@@ -1611,12 +1611,12 @@ Battles report:
   Round 1:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], military.
+  + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
     hit points: 100/100, attack: 4, defense: 4.
     tactics: prioritize armed.
       #1 hit points: 100/100.
-  + Surrender or die! [109], 3 tanks [tanks], military.
+  + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
@@ -1687,12 +1687,12 @@ Battles report:
   Round 2:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], military.
+  + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
     hit points: 100/100, attack: 4, defense: 4.
     tactics: prioritize armed.
       #1 hit points: 100/100.
-  + Surrender or die! [109], 3 tanks [tanks], military.
+  + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
@@ -1763,12 +1763,12 @@ Battles report:
   Round 3:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], military.
+  + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
     hit points: 100/100, attack: 4, defense: 4.
     tactics: prioritize armed.
       #1 hit points: 100/100.
-  + Surrender or die! [109], 3 tanks [tanks], military.
+  + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
@@ -1839,12 +1839,12 @@ Battles report:
   Round 4:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], military.
+  + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
     hit points: 100/100, attack: 4, defense: 4.
     tactics: prioritize armed.
       #1 hit points: 100/100.
-  + Surrender or die! [109], 3 tanks [tanks], military.
+  + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
@@ -1915,12 +1915,12 @@ Battles report:
   Round 5:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], military.
+  + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
     hit points: 100/100, attack: 4, defense: 4.
     tactics: prioritize armed.
       #1 hit points: 100/100.
-  + Surrender or die! [109], 3 tanks [tanks], military.
+  + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
@@ -1991,12 +1991,12 @@ Battles report:
   Round 6:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], military.
+  + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
     hit points: 100/100, attack: 4, defense: 4.
     tactics: prioritize armed.
       #1 hit points: 100/100.
-  + Surrender or die! [109], 3 tanks [tanks], military.
+  + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
@@ -2067,12 +2067,12 @@ Battles report:
   Round 7:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], military.
+  + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
     hit points: 100/100, attack: 4, defense: 4.
     tactics: prioritize armed.
       #1 hit points: 100/100.
-  + Surrender or die! [109], 3 tanks [tanks], military.
+  + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
@@ -2143,12 +2143,12 @@ Battles report:
   Round 8:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], military.
+  + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
     hit points: 100/100, attack: 4, defense: 4.
     tactics: prioritize armed.
       #1 hit points: 100/100.
-  + Surrender or die! [109], 3 tanks [tanks], military.
+  + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
@@ -2219,12 +2219,12 @@ Battles report:
   Round 9:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], military.
+  + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
     hit points: 100/100, attack: 4, defense: 4.
     tactics: prioritize armed.
       #1 hit points: 100/100.
-  + Surrender or die! [109], 3 tanks [tanks], military.
+  + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
@@ -2295,12 +2295,12 @@ Battles report:
   Round 10:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], military.
+  + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
     hit points: 100/100, attack: 4, defense: 4.
     tactics: prioritize armed.
       #1 hit points: 100/100.
-  + Surrender or die! [109], 3 tanks [tanks], military.
+  + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
@@ -2378,12 +2378,12 @@ Battles report:
   Round 1:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], military.
+  + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
     hit points: 100/100, attack: 4, defense: 4.
     tactics: prioritize armed.
       #1 hit points: 100/100.
-  + Surrender or die! [109], 3 tanks [tanks], military.
+  + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
@@ -2457,12 +2457,12 @@ Battles report:
   Round 2:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], military.
+  + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
     hit points: 100/100, attack: 4, defense: 4.
     tactics: prioritize armed.
       #1 hit points: 100/100.
-  + Surrender or die! [109], 3 tanks [tanks], military.
+  + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
@@ -2536,12 +2536,12 @@ Battles report:
   Round 3:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], military.
+  + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
     hit points: 100/100, attack: 4, defense: 4.
     tactics: prioritize armed.
       #1 hit points: 100/100.
-  + Surrender or die! [109], 3 tanks [tanks], military.
+  + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
@@ -2615,12 +2615,12 @@ Battles report:
   Round 4:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], military.
+  + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
     hit points: 100/100, attack: 4, defense: 4.
     tactics: prioritize armed.
       #1 hit points: 100/100.
-  + Surrender or die! [109], 3 tanks [tanks], military.
+  + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
@@ -2695,12 +2695,12 @@ Battles report:
   Round 5:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], military.
+  + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
     hit points: 100/100, attack: 4, defense: 4.
     tactics: prioritize armed.
       #1 hit points: 100/100.
-  + Surrender or die! [109], 3 tanks [tanks], military.
+  + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
@@ -2775,12 +2775,12 @@ Battles report:
   Round 6:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], military.
+  + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
     hit points: 100/100, attack: 4, defense: 4.
     tactics: prioritize armed.
       #1 hit points: 100/100.
-  + Surrender or die! [109], 3 tanks [tanks], military.
+  + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
@@ -2855,12 +2855,12 @@ Battles report:
   Round 7:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], military.
+  + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
     hit points: 100/100, attack: 4, defense: 4.
     tactics: prioritize armed.
       #1 hit points: 100/100.
-  + Surrender or die! [109], 3 tanks [tanks], military.
+  + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
@@ -2935,12 +2935,12 @@ Battles report:
   Round 8:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], military.
+  + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
     hit points: 100/100, attack: 4, defense: 4.
     tactics: prioritize armed.
       #1 hit points: 100/100.
-  + Surrender or die! [109], 3 tanks [tanks], military.
+  + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
@@ -3015,12 +3015,12 @@ Battles report:
   Round 9:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], military.
+  + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
     hit points: 100/100, attack: 4, defense: 4.
     tactics: prioritize armed.
       #1 hit points: 100/100.
-  + Surrender or die! [109], 3 tanks [tanks], military.
+  + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
@@ -3095,12 +3095,12 @@ Battles report:
   Round 10:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], military.
+  + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
     hit points: 100/100, attack: 4, defense: 4.
     tactics: prioritize armed.
       #1 hit points: 100/100.
-  + Surrender or die! [109], 3 tanks [tanks], military.
+  + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
@@ -3181,12 +3181,12 @@ Battles report:
   Round 1:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], military.
+  + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
     hit points: 100/100, attack: 4, defense: 4.
     tactics: prioritize armed.
       #1 hit points: 100/100.
-  + Surrender or die! [109], 3 tanks [tanks], military.
+  + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
@@ -3261,12 +3261,12 @@ Battles report:
   Round 2:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], military.
+  + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
     hit points: 100/100, attack: 4, defense: 4.
     tactics: prioritize armed.
       #1 hit points: 100/100.
-  + Surrender or die! [109], 3 tanks [tanks], military.
+  + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
@@ -3341,12 +3341,12 @@ Battles report:
   Round 3:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], military.
+  + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
     hit points: 100/100, attack: 4, defense: 4.
     tactics: prioritize armed.
       #1 hit points: 100/100.
-  + Surrender or die! [109], 3 tanks [tanks], military.
+  + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
@@ -3421,12 +3421,12 @@ Battles report:
   Round 4:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], military.
+  + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
     hit points: 100/100, attack: 4, defense: 4.
     tactics: prioritize armed.
       #1 hit points: 100/100.
-  + Surrender or die! [109], 3 tanks [tanks], military.
+  + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
@@ -3501,12 +3501,12 @@ Battles report:
   Round 5:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], military.
+  + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
     hit points: 100/100, attack: 4, defense: 4.
     tactics: prioritize armed.
       #1 hit points: 100/100.
-  + Surrender or die! [109], 3 tanks [tanks], military.
+  + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
@@ -3581,12 +3581,12 @@ Battles report:
   Round 6:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], military.
+  + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
     hit points: 100/100, attack: 4, defense: 4.
     tactics: prioritize armed.
       #1 hit points: 100/100.
-  + Surrender or die! [109], 3 tanks [tanks], military.
+  + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
@@ -3661,12 +3661,12 @@ Battles report:
   Round 7:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], military.
+  + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
     hit points: 100/100, attack: 4, defense: 4.
     tactics: prioritize armed.
       #1 hit points: 100/100.
-  + Surrender or die! [109], 3 tanks [tanks], military.
+  + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
@@ -3741,12 +3741,12 @@ Battles report:
   Round 8:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], military.
+  + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
     hit points: 100/100, attack: 4, defense: 4.
     tactics: prioritize armed.
       #1 hit points: 100/100.
-  + Surrender or die! [109], 3 tanks [tanks], military.
+  + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
@@ -3821,12 +3821,12 @@ Battles report:
   Round 9:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], military.
+  + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
     hit points: 100/100, attack: 4, defense: 4.
     tactics: prioritize armed.
       #1 hit points: 100/100.
-  + Surrender or die! [109], 3 tanks [tanks], military.
+  + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
@@ -3901,12 +3901,12 @@ Battles report:
   Round 10:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], military.
+  + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
     hit points: 100/100, attack: 4, defense: 4.
     tactics: prioritize armed.
       #1 hit points: 100/100.
-  + Surrender or die! [109], 3 tanks [tanks], military.
+  + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
@@ -4016,8 +4016,7 @@ Galaxy report:
     Offers of buying technologies:
       none.
   
-  - Berlin [000001], 3 cities [city], immobile, military, owned by NPC
-    [1].
+  - Berlin [000001], 3 cities [city], immobile, owned by NPC [1].
     size: 75000, capacity: 45000/41420, energy: 320/255 (30).
     - Berlin garrison [000002], infantry battalion [inftry], owned by
       NPC [1].
@@ -4067,7 +4066,7 @@ Galaxy report:
       events:
         week 9: captured corporate headquarters [corphq] from Caste
         Prime Headquarters [000012].
-  + peaceful scout [108], tanks [tanks], military.
+  + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), capacity: 200/144, crew: 16/16, upkeep:
     40 (24) cash [cash], consume: 32 (16) units of food [food], 32 (16)
     units of terran breathing gas mixture [terair].
@@ -4106,7 +4105,7 @@ Galaxy report:
       farming complex [000014], coal-burning plant [000015], core drill
       [000016], factory [000017], gun placement [111]
       week 13: engaged in battle
-  + Surrender or die! [109], 3 tanks [tanks], military.
+  + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), capacity: 600/320, crew: 48/49, upkeep:
     130 (72) cash [cash], consume: 97 (48) units of food [food], 97 (48)
     units of terran breathing gas mixture [terair].
@@ -4188,8 +4187,7 @@ Galaxy report:
     Offers of buying technologies:
       none.
   
-  - Sydney [000006], 2 cities [city], immobile, military, owned by NPC
-    [1].
+  - Sydney [000006], 2 cities [city], immobile, owned by NPC [1].
     size: 50000.
     - Sydney garrison [000007], 2 infantry battalions [inftry], owned by
       NPC [1].
@@ -4210,7 +4208,7 @@ Galaxy report:
       size: 10.
     - wind powerplant [450], wind powerplant [wnplnt], owned by NPC [1].
       size: 10.
-  + Gelvaren complex [000026], city [city], immobile, military.
+  + Gelvaren complex [000026], city [city], immobile.
     size: 25000, mass: 5614, capacity: 15000/9690, energy: 76/74 (10),
     crew: 48/49, upkeep: 100 units of food [food], 783 (0) cash [cash],
     consume: 149 (0) units of food [food], 149 (0) units of terran
@@ -4544,20 +4542,20 @@ sell 1 wnplnt
 ; items: 10 terrans [terran].
 
 #modulestack 000026
-; + Gelvaren complex [000026], city [city], immobile, military.
+; + Gelvaren complex [000026], city [city], immobile.
 ; technologies: rocket launcher production [rckter].
 @produce terran
 @produce terran
 
 #modulestack 108
-; + peaceful scout [108], tanks [tanks], military.
+; + peaceful scout [108], tanks [tanks].
 ; items: 16 terrans [terran], 42 cash [cash], 12 units of oil [oil], 32
 ; units of food [food].
 ; effects:
 ;   can operate for another 6 weeks without refueling.
 
 #modulestack 109
-; + Surrender or die! [109], 3 tanks [tanks], military.
+; + Surrender or die! [109], 3 tanks [tanks].
 ; items: 48 terrans [terran], 6 units of oil [oil], 100 units of food
 ; [food].
 ; effects:

@@ -428,7 +428,7 @@ Galaxy report:
     Offers of buying technologies:
       none.
   
-  + Berlin [000001], 3 cities [city], immobile, military.
+  + Berlin [000001], 3 cities [city], immobile.
     size: 75000, mass: 28460 (0), capacity: 45000/41420, energy: 320/255 (30), crew: 147/255 (0/30),
     upkeep: 300 units of food [food], 1980 (0) cash [cash], consume: 355 (0) units of food [food],
     355 (0) units of terran breathing gas mixture [terair], 30 (0) medicines [medici].
@@ -479,9 +479,9 @@ Galaxy report:
       size: 500.
     - corporate headquarters [c000012], corporate headquarters [corphq], owned by Gelvaren [3].
       size: 1000.
-  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
-  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       size: 4.
@@ -512,7 +512,7 @@ Galaxy report:
     Offers of buying technologies:
       none.
   
-  + Sydney [000006], 2 cities [city], immobile, military.
+  + Sydney [000006], 2 cities [city], immobile.
     size: 50000, mass: 8492 (0), capacity: 30000/17320, energy: 198/132 (20), crew: 60/93, upkeep:
     200 units of food [food], 1053 (0) cash [cash], consume: 293 (0) units of food [food], 293 (0)
     units of terran breathing gas mixture [terair].
@@ -555,7 +555,7 @@ Galaxy report:
       size: 10, mass: 10 (10), energy: 4/1, upkeep: 10 cash [cash].
     + wind powerplant [450], wind powerplant [wnplnt].
       size: 10, mass: 10 (10), energy: 4/1, upkeep: 10 cash [cash].
-  - Gelvaren complex [000026], city [city], immobile, military, owned by Gelvaren [3].
+  - Gelvaren complex [000026], city [city], immobile, owned by Gelvaren [3].
     size: 25000.
     - Gelvaren Headquarters [000018], corporate headquarters [corphq], disabled, owned by Gelvaren
       [3].
@@ -590,7 +590,7 @@ Galaxy report:
 Orders Template:
 #faction 1 ""
 #modulestack 000001
-; + Berlin [000001], 3 cities [city], immobile, military.
+; + Berlin [000001], 3 cities [city], immobile.
 ; items: 3000 cash [cash], 30 terrans [terran], 300 units of food [food].
 ; effects:
 ;   receiving 300 units of food [food] from small cargo bay [000013], 0 weeks to complete.
@@ -612,7 +612,7 @@ Orders Template:
 ; items: 1000 units of food [food], 3 terrans [terran].
 
 #modulestack 000006
-; + Sydney [000006], 2 cities [city], immobile, military.
+; + Sydney [000006], 2 cities [city], immobile.
 ; items: 2000 cash [cash], 200 units of food [food].
 ; effects:
 ;   receiving 200 units of food [food] from small cargo bay [000019], 0 weeks to complete.

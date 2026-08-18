@@ -36,14 +36,14 @@
 					<resource type="h2o2" quantity="250" />
 					<resource type="food" quantity="500" />
 					<modulestack name="000001" name-en="Berlin" type="city" quantity="3" faction="1">
-						<buying item="food" quantity="300" price="1" />
-						<buying module="farms" quantity="1" price="100" />
-						<selling item="food" quantity="39" price="5" />
-						<selling item="terran" quantity="30" price="50" />
 						<itemstack type="cash" quantity="3000" />
 						<itemstack type="terran" quantity="30" />
 						<upkeep type="food" quantity="300" />
 						<upkeep type="cash" quantity="1995" />
+						<buying item="food" quantity="300" price="1" />
+						<buying module="farms" quantity="1" price="100" />
+						<selling item="food" quantity="39" price="5" />
+						<selling item="terran" quantity="30" price="50" />
 						<modulestack name="000002" name-en="Berlin garrison" type="inftry" quantity="1" faction="1">
 							<itemstack type="rctlnc" quantity="1" />
 							<upkeep type="cash" quantity="5" />
@@ -117,14 +117,14 @@
 					<resource type="h2o2" quantity="250" />
 					<resource type="food" quantity="500" />
 					<modulestack name="000006" name-en="Sydney" type="city" quantity="2" faction="1">
-						<buying item="food" quantity="200" price="1" />
-						<buying module="wnplnt" quantity="1" price="50" />
-						<selling item="food" quantity="59" price="5" />
-						<selling item="terran" quantity="20" price="50" />
 						<itemstack type="cash" quantity="2000" />
 						<itemstack type="terran" quantity="20" />
 						<upkeep type="food" quantity="200" />
 						<upkeep type="cash" quantity="1048" />
+						<buying item="food" quantity="200" price="1" />
+						<buying module="wnplnt" quantity="1" price="50" />
+						<selling item="food" quantity="59" price="5" />
+						<selling item="terran" quantity="20" price="50" />
 						<modulestack name="000007" name-en="Sydney garrison" type="inftry" quantity="1" faction="1">
 							<itemstack type="rctlnc" quantity="1" />
 							<upkeep type="cash" quantity="5" />
@@ -148,13 +148,13 @@
 						</modulestack>
 					</modulestack>
 					<modulestack name="000026" name-en="Gelvaren complex" type="city" quantity="1" faction="3">
-						<buying item="food" quantity="100" price="1" />
-						<selling item="food" quantity="25" price="5" />
-						<selling item="terran" quantity="10" price="50" />
 						<itemstack type="cash" quantity="1000" />
 						<itemstack type="terran" quantity="10" />
 						<upkeep type="food" quantity="100" />
 						<upkeep type="cash" quantity="813" />
+						<buying item="food" quantity="100" price="1" />
+						<selling item="food" quantity="25" price="5" />
+						<selling item="terran" quantity="10" price="50" />
 						<modulestack name="000018" name-en="Gelvaren Headquarters" type="corphq" quantity="1" faction="3">
 							<person name="000002" name-en="Gelvaren CEO" race="terran" faction="3">
 								<upkeep type="cash" quantity="10" />

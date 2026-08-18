@@ -14,7 +14,6 @@ Bank report:
   Bank account balance: 0.
   Credit line maximum: 0.
   Credit rate: 0%, Deposit rate: 0%.
-
 Galaxy report:
 ------------------------------------------------------------
 * Sol [SS0001] (0, 0, 0), star system.

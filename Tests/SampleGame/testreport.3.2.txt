@@ -24,11 +24,11 @@ Battles report:
   Round 1:
   ------------------------------------------------------------
   Attackers:
-  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
     hit points: 100/100, attack: 4, defense: 4.
       #1 hit points: 100/100.
-  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
@@ -103,11 +103,11 @@ Battles report:
   Round 2:
   ------------------------------------------------------------
   Attackers:
-  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
     hit points: 100/100, attack: 4, defense: 4.
       #1 hit points: 100/100.
-  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
@@ -182,11 +182,11 @@ Battles report:
   Round 3:
   ------------------------------------------------------------
   Attackers:
-  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
     hit points: 100/100, attack: 4, defense: 4.
       #1 hit points: 100/100.
-  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
@@ -261,11 +261,11 @@ Battles report:
   Round 4:
   ------------------------------------------------------------
   Attackers:
-  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
     hit points: 100/100, attack: 4, defense: 4.
       #1 hit points: 100/100.
-  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
@@ -340,11 +340,11 @@ Battles report:
   Round 5:
   ------------------------------------------------------------
   Attackers:
-  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
     hit points: 100/100, attack: 4, defense: 4.
       #1 hit points: 100/100.
-  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
@@ -419,11 +419,11 @@ Battles report:
   Round 6:
   ------------------------------------------------------------
   Attackers:
-  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
     hit points: 100/100, attack: 4, defense: 4.
       #1 hit points: 100/100.
-  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
@@ -498,11 +498,11 @@ Battles report:
   Round 7:
   ------------------------------------------------------------
   Attackers:
-  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
     hit points: 100/100, attack: 4, defense: 4.
       #1 hit points: 100/100.
-  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
@@ -577,11 +577,11 @@ Battles report:
   Round 8:
   ------------------------------------------------------------
   Attackers:
-  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
     hit points: 100/100, attack: 4, defense: 4.
       #1 hit points: 100/100.
-  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
@@ -656,11 +656,11 @@ Battles report:
   Round 9:
   ------------------------------------------------------------
   Attackers:
-  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
     hit points: 100/100, attack: 4, defense: 4.
       #1 hit points: 100/100.
-  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
@@ -735,11 +735,11 @@ Battles report:
   Round 10:
   ------------------------------------------------------------
   Attackers:
-  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
     hit points: 100/100, attack: 4, defense: 4.
       #1 hit points: 100/100.
-  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
@@ -814,11 +814,11 @@ Battles report:
   Round 1:
   ------------------------------------------------------------
   Attackers:
-  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
     hit points: 100/100, attack: 4, defense: 4.
       #1 hit points: 100/100.
-  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
@@ -888,11 +888,11 @@ Battles report:
   Round 2:
   ------------------------------------------------------------
   Attackers:
-  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
     hit points: 100/100, attack: 4, defense: 4.
       #1 hit points: 100/100.
-  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
@@ -962,11 +962,11 @@ Battles report:
   Round 3:
   ------------------------------------------------------------
   Attackers:
-  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
     hit points: 100/100, attack: 4, defense: 4.
       #1 hit points: 100/100.
-  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
@@ -1036,11 +1036,11 @@ Battles report:
   Round 4:
   ------------------------------------------------------------
   Attackers:
-  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
     hit points: 100/100, attack: 4, defense: 4.
       #1 hit points: 100/100.
-  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
@@ -1110,11 +1110,11 @@ Battles report:
   Round 5:
   ------------------------------------------------------------
   Attackers:
-  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
     hit points: 100/100, attack: 4, defense: 4.
       #1 hit points: 100/100.
-  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
@@ -1184,11 +1184,11 @@ Battles report:
   Round 6:
   ------------------------------------------------------------
   Attackers:
-  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
     hit points: 100/100, attack: 4, defense: 4.
       #1 hit points: 100/100.
-  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
@@ -1258,11 +1258,11 @@ Battles report:
   Round 7:
   ------------------------------------------------------------
   Attackers:
-  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
     hit points: 100/100, attack: 4, defense: 4.
       #1 hit points: 100/100.
-  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
@@ -1332,11 +1332,11 @@ Battles report:
   Round 8:
   ------------------------------------------------------------
   Attackers:
-  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
     hit points: 100/100, attack: 4, defense: 4.
       #1 hit points: 100/100.
-  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
@@ -1406,11 +1406,11 @@ Battles report:
   Round 9:
   ------------------------------------------------------------
   Attackers:
-  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
     hit points: 100/100, attack: 4, defense: 4.
       #1 hit points: 100/100.
-  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
@@ -1480,11 +1480,11 @@ Battles report:
   Round 10:
   ------------------------------------------------------------
   Attackers:
-  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
     hit points: 100/100, attack: 4, defense: 4.
       #1 hit points: 100/100.
-  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
@@ -1559,11 +1559,11 @@ Battles report:
   Round 1:
   ------------------------------------------------------------
   Attackers:
-  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
     hit points: 100/100, attack: 4, defense: 4.
       #1 hit points: 100/100.
-  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
@@ -1633,11 +1633,11 @@ Battles report:
   Round 2:
   ------------------------------------------------------------
   Attackers:
-  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
     hit points: 100/100, attack: 4, defense: 4.
       #1 hit points: 100/100.
-  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
@@ -1707,11 +1707,11 @@ Battles report:
   Round 3:
   ------------------------------------------------------------
   Attackers:
-  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
     hit points: 100/100, attack: 4, defense: 4.
       #1 hit points: 100/100.
-  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
@@ -1781,11 +1781,11 @@ Battles report:
   Round 4:
   ------------------------------------------------------------
   Attackers:
-  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
     hit points: 100/100, attack: 4, defense: 4.
       #1 hit points: 100/100.
-  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
@@ -1855,11 +1855,11 @@ Battles report:
   Round 5:
   ------------------------------------------------------------
   Attackers:
-  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
     hit points: 100/100, attack: 4, defense: 4.
       #1 hit points: 100/100.
-  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
@@ -1929,11 +1929,11 @@ Battles report:
   Round 6:
   ------------------------------------------------------------
   Attackers:
-  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
     hit points: 100/100, attack: 4, defense: 4.
       #1 hit points: 100/100.
-  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
@@ -2003,11 +2003,11 @@ Battles report:
   Round 7:
   ------------------------------------------------------------
   Attackers:
-  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
     hit points: 100/100, attack: 4, defense: 4.
       #1 hit points: 100/100.
-  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
@@ -2077,11 +2077,11 @@ Battles report:
   Round 8:
   ------------------------------------------------------------
   Attackers:
-  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
     hit points: 100/100, attack: 4, defense: 4.
       #1 hit points: 100/100.
-  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
@@ -2151,11 +2151,11 @@ Battles report:
   Round 9:
   ------------------------------------------------------------
   Attackers:
-  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
     hit points: 100/100, attack: 4, defense: 4.
       #1 hit points: 100/100.
-  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
@@ -2225,11 +2225,11 @@ Battles report:
   Round 10:
   ------------------------------------------------------------
   Attackers:
-  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
     hit points: 100/100, attack: 4, defense: 4.
       #1 hit points: 100/100.
-  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
@@ -2305,11 +2305,11 @@ Battles report:
   Round 1:
   ------------------------------------------------------------
   Attackers:
-  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
     hit points: 100/100, attack: 4, defense: 4.
       #1 hit points: 100/100.
-  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
@@ -2382,11 +2382,11 @@ Battles report:
   Round 2:
   ------------------------------------------------------------
   Attackers:
-  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
     hit points: 100/100, attack: 4, defense: 4.
       #1 hit points: 100/100.
-  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
@@ -2459,11 +2459,11 @@ Battles report:
   Round 3:
   ------------------------------------------------------------
   Attackers:
-  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
     hit points: 100/100, attack: 4, defense: 4.
       #1 hit points: 100/100.
-  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
@@ -2536,11 +2536,11 @@ Battles report:
   Round 4:
   ------------------------------------------------------------
   Attackers:
-  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
     hit points: 100/100, attack: 4, defense: 4.
       #1 hit points: 100/100.
-  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
@@ -2614,11 +2614,11 @@ Battles report:
   Round 5:
   ------------------------------------------------------------
   Attackers:
-  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
     hit points: 100/100, attack: 4, defense: 4.
       #1 hit points: 100/100.
-  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
@@ -2692,11 +2692,11 @@ Battles report:
   Round 6:
   ------------------------------------------------------------
   Attackers:
-  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
     hit points: 100/100, attack: 4, defense: 4.
       #1 hit points: 100/100.
-  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
@@ -2770,11 +2770,11 @@ Battles report:
   Round 7:
   ------------------------------------------------------------
   Attackers:
-  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
     hit points: 100/100, attack: 4, defense: 4.
       #1 hit points: 100/100.
-  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
@@ -2848,11 +2848,11 @@ Battles report:
   Round 8:
   ------------------------------------------------------------
   Attackers:
-  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
     hit points: 100/100, attack: 4, defense: 4.
       #1 hit points: 100/100.
-  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
@@ -2926,11 +2926,11 @@ Battles report:
   Round 9:
   ------------------------------------------------------------
   Attackers:
-  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
     hit points: 100/100, attack: 4, defense: 4.
       #1 hit points: 100/100.
-  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
@@ -3004,11 +3004,11 @@ Battles report:
   Round 10:
   ------------------------------------------------------------
   Attackers:
-  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
     hit points: 100/100, attack: 4, defense: 4.
       #1 hit points: 100/100.
-  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
@@ -3087,11 +3087,11 @@ Battles report:
   Round 1:
   ------------------------------------------------------------
   Attackers:
-  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
     hit points: 100/100, attack: 4, defense: 4.
       #1 hit points: 100/100.
-  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
@@ -3165,11 +3165,11 @@ Battles report:
   Round 2:
   ------------------------------------------------------------
   Attackers:
-  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
     hit points: 100/100, attack: 4, defense: 4.
       #1 hit points: 100/100.
-  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
@@ -3243,11 +3243,11 @@ Battles report:
   Round 3:
   ------------------------------------------------------------
   Attackers:
-  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
     hit points: 100/100, attack: 4, defense: 4.
       #1 hit points: 100/100.
-  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
@@ -3321,11 +3321,11 @@ Battles report:
   Round 4:
   ------------------------------------------------------------
   Attackers:
-  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
     hit points: 100/100, attack: 4, defense: 4.
       #1 hit points: 100/100.
-  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
@@ -3399,11 +3399,11 @@ Battles report:
   Round 5:
   ------------------------------------------------------------
   Attackers:
-  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
     hit points: 100/100, attack: 4, defense: 4.
       #1 hit points: 100/100.
-  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
@@ -3477,11 +3477,11 @@ Battles report:
   Round 6:
   ------------------------------------------------------------
   Attackers:
-  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
     hit points: 100/100, attack: 4, defense: 4.
       #1 hit points: 100/100.
-  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
@@ -3555,11 +3555,11 @@ Battles report:
   Round 7:
   ------------------------------------------------------------
   Attackers:
-  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
     hit points: 100/100, attack: 4, defense: 4.
       #1 hit points: 100/100.
-  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
@@ -3633,11 +3633,11 @@ Battles report:
   Round 8:
   ------------------------------------------------------------
   Attackers:
-  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
     hit points: 100/100, attack: 4, defense: 4.
       #1 hit points: 100/100.
-  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
@@ -3711,11 +3711,11 @@ Battles report:
   Round 9:
   ------------------------------------------------------------
   Attackers:
-  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
     hit points: 100/100, attack: 4, defense: 4.
       #1 hit points: 100/100.
-  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
@@ -3789,11 +3789,11 @@ Battles report:
   Round 10:
   ------------------------------------------------------------
   Attackers:
-  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
     hit points: 100/100, attack: 4, defense: 4.
       #1 hit points: 100/100.
-  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
@@ -3938,7 +3938,7 @@ Galaxy report:
     Offers of buying technologies:
       none.
   
-  - Berlin [000001], 3 cities [city], immobile, military, owned by NPC [1].
+  - Berlin [000001], 3 cities [city], immobile, owned by NPC [1].
     size: 75000, capacity: 45000/41420, energy: 320/255 (30).
     - Berlin garrison [000002], infantry battalion [inftry], owned by NPC [1].
       size: 500.
@@ -4169,9 +4169,9 @@ Galaxy report:
         week 13: engaged in battle
     - corporate headquarters [c000012], corporate headquarters [corphq], owned by Gelvaren [3].
       size: 1000.
-  - peaceful scout [108], tanks [tanks], military, owned by Gelvaren [3].
+  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
-  - Surrender or die! [109], 3 tanks [tanks], military, owned by Gelvaren [3].
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       size: 4.

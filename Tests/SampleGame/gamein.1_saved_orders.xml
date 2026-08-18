@@ -35,43 +35,41 @@
 					<resource type="silici" quantity="20" />
 					<resource type="h2o2" quantity="250" />
 					<resource type="food" quantity="500" />
-					<moduleStack name="000001" name-en="Berlin" type="city" quantity="3" faction="1">
+					<modulestack name="000001" name-en="Berlin" type="city" quantity="3" faction="1">
 						<itemstack type="cash" quantity="3000" />
 						<itemstack type="terran" quantity="30" />
+						<upkeep type="food" quantity="300" />
+						<upkeep type="cash" quantity="1995" />
 						<buying item="food" quantity="300" price="1" />
 						<buying module="farms" quantity="1" price="100" />
 						<selling item="food" quantity="39" price="5" />
 						<selling item="terran" quantity="30" price="50" />
-						<itemstack type="cash" quantity="3000" />
-						<itemstack type="terran" quantity="30" />
-						<moduleStack name="000002" name-en="Berlin garrison" type="inftry" quantity="1" faction="1">
+						<modulestack name="000002" name-en="Berlin garrison" type="inftry" quantity="1" faction="1">
 							<itemstack type="rctlnc" quantity="1" />
-							<itemstack type="rctlnc" quantity="1" />
-						</moduleStack>
-						<moduleStack name="000003" name-en="Berlin farms" type="farms" quantity="10" faction="1">
+							<upkeep type="cash" quantity="5" />
+						</modulestack>
+						<modulestack name="000003" name-en="Berlin farms" type="farms" quantity="10" faction="1">
 							<itemstack type="terran" quantity="75" />
-							<itemstack type="terran" quantity="75" />
-						</moduleStack>
-						<moduleStack name="000004" name-en="Berlin coal powerplants" type="cplant" quantity="5" faction="1">
+							<upkeep type="cash" quantity="575" />
+						</modulestack>
+						<modulestack name="000004" name-en="Berlin coal powerplants" type="cplant" quantity="5" faction="1">
 							<itemstack type="carbon" quantity="100" />
 							<itemstack type="terran" quantity="15" />
-							<itemstack type="carbon" quantity="100" />
-							<itemstack type="terran" quantity="15" />
-						</moduleStack>
-						<moduleStack name="000005" name-en="Berlin granary" type="cargob" quantity="1" faction="1">
+							<upkeep type="cash" quantity="265" />
+						</modulestack>
+						<modulestack name="000005" name-en="Berlin granary" type="cargob" quantity="1" faction="1">
 							<itemstack type="food" quantity="1000" />
 							<itemstack type="terran" quantity="3" />
-							<itemstack type="food" quantity="1000" />
-							<itemstack type="terran" quantity="3" />
-						</moduleStack>
-						<moduleStack name="000012" name-en="Caste Prime Headquarters" type="corphq" quantity="1" faction="2">
-							<itemstack type="terran" quantity="100" />
+							<upkeep type="cash" quantity="33" />
+						</modulestack>
+						<modulestack name="000012" name-en="Caste Prime Headquarters" type="corphq" quantity="1" faction="2">
 							<person name="000001" name-en="Caste Prime CEO" race="terran" faction="2">
 								<upkeep type="cash" quantity="10" />
 							</person>
 							<itemstack type="terran" quantity="100" />
-						</moduleStack>
-						<moduleStack name="000013" name-en="" type="cargob" quantity="5" faction="2">
+							<upkeep type="cash" quantity="210" />
+						</modulestack>
+						<modulestack name="000013" type="cargob" quantity="5" faction="2">
 							<itemstack type="food" quantity="1000" />
 							<itemstack type="terair" quantity="1000" />
 							<itemstack type="h2o2" quantity="1000" />
@@ -81,41 +79,29 @@
 							<itemstack type="copper" quantity="100" />
 							<itemstack type="uraniu" quantity="100" />
 							<itemstack type="terran" quantity="10" />
-							<itemstack type="food" quantity="1000" />
-							<itemstack type="terair" quantity="1000" />
-							<itemstack type="h2o2" quantity="1000" />
-							<itemstack type="iron" quantity="100" />
-							<itemstack type="titani" quantity="100" />
-							<itemstack type="silici" quantity="100" />
-							<itemstack type="copper" quantity="100" />
-							<itemstack type="uraniu" quantity="100" />
-							<itemstack type="terran" quantity="10" />
-						</moduleStack>
-						<moduleStack name="000014" name-en="" type="farms" quantity="3" faction="2">
+							<upkeep type="cash" quantity="160" />
+						</modulestack>
+						<modulestack name="000014" type="farms" quantity="3" faction="2">
 							<itemstack type="terran" quantity="15" />
-							<itemstack type="terran" quantity="15" />
-						</moduleStack>
-						<moduleStack name="000015" name-en="" type="cplant" quantity="3" faction="2">
+							<upkeep type="cash" quantity="165" />
+						</modulestack>
+						<modulestack name="000015" type="cplant" quantity="3" faction="2">
 							<itemstack type="carbon" quantity="100" />
 							<itemstack type="terran" quantity="6" />
-							<itemstack type="carbon" quantity="100" />
+							<upkeep type="cash" quantity="156" />
+						</modulestack>
+						<modulestack name="000016" type="cdrill" quantity="1" faction="2">
 							<itemstack type="terran" quantity="6" />
-						</moduleStack>
-						<moduleStack name="000016" name-en="" type="cdrill" quantity="1" faction="2">
-							<itemstack type="terran" quantity="6" />
-							<itemstack type="terran" quantity="6" />
-						</moduleStack>
-						<moduleStack name="000017" name-en="" type="factry" quantity="5" faction="2">
+							<upkeep type="cash" quantity="46" />
+						</modulestack>
+						<modulestack name="000017" type="factry" quantity="5" faction="2">
 							<itemstack type="terran" quantity="50" />
 							<itemstack type="iron" quantity="20" />
 							<itemstack type="titani" quantity="10" />
 							<itemstack type="silici" quantity="10" />
-							<itemstack type="terran" quantity="50" />
-							<itemstack type="iron" quantity="20" />
-							<itemstack type="titani" quantity="10" />
-							<itemstack type="silici" quantity="10" />
-						</moduleStack>
-					</moduleStack>
+							<upkeep type="cash" quantity="350" />
+						</modulestack>
+					</modulestack>
 				</region>
 				<region name="R00003" name-en="Southern Hemisphere" X="1" Y="0" type="grassl">
 					<capacity group="settlement" quantity="8" />
@@ -130,82 +116,81 @@
 					<resource type="silici" quantity="20" />
 					<resource type="h2o2" quantity="250" />
 					<resource type="food" quantity="500" />
-					<moduleStack name="000006" name-en="Sydney" type="city" quantity="2" faction="1">
+					<modulestack name="000006" name-en="Sydney" type="city" quantity="2" faction="1">
 						<itemstack type="cash" quantity="2000" />
 						<itemstack type="terran" quantity="20" />
+						<upkeep type="food" quantity="200" />
+						<upkeep type="cash" quantity="1048" />
 						<buying item="food" quantity="200" price="1" />
 						<buying module="wnplnt" quantity="1" price="50" />
 						<selling item="food" quantity="59" price="5" />
 						<selling item="terran" quantity="20" price="50" />
-						<itemstack type="cash" quantity="2000" />
-						<itemstack type="terran" quantity="20" />
-						<moduleStack name="000007" name-en="Sydney garrison" type="inftry" quantity="1" faction="1">
+						<modulestack name="000007" name-en="Sydney garrison" type="inftry" quantity="1" faction="1">
 							<itemstack type="rctlnc" quantity="1" />
-							<itemstack type="rctlnc" quantity="1" />
-						</moduleStack>
-						<moduleStack name="000008" name-en="Sydney farms" type="farms" quantity="10" faction="1">
+							<upkeep type="cash" quantity="5" />
+						</modulestack>
+						<modulestack name="000008" name-en="Sydney farms" type="farms" quantity="10" faction="1">
 							<itemstack type="terran" quantity="75" />
-							<itemstack type="terran" quantity="75" />
-						</moduleStack>
-						<moduleStack name="000009" name-en="Sydney wind powerplants" type="wnplnt" quantity="10" faction="1" />
-						<moduleStack name="000010" name-en="Sydney oil powerplants" type="oplant" quantity="5" faction="1">
+							<upkeep type="cash" quantity="575" />
+						</modulestack>
+						<modulestack name="000009" name-en="Sydney wind powerplants" type="wnplnt" quantity="10" faction="1">
+							<upkeep type="cash" quantity="100" />
+						</modulestack>
+						<modulestack name="000010" name-en="Sydney oil powerplants" type="oplant" quantity="5" faction="1">
 							<itemstack type="oil" quantity="100" />
 							<itemstack type="terran" quantity="15" />
-							<itemstack type="oil" quantity="100" />
-							<itemstack type="terran" quantity="15" />
-						</moduleStack>
-						<moduleStack name="000011" name-en="Sydney granary" type="cargob" quantity="1" faction="1">
+							<upkeep type="cash" quantity="315" />
+						</modulestack>
+						<modulestack name="000011" name-en="Sydney granary" type="cargob" quantity="1" faction="1">
 							<itemstack type="food" quantity="1000" />
 							<itemstack type="terran" quantity="3" />
-							<itemstack type="food" quantity="1000" />
-							<itemstack type="terran" quantity="3" />
-						</moduleStack>
-					</moduleStack>
-					<moduleStack name="000026" name-en="Gelvaren complex" type="city" quantity="1" faction="3">
+							<upkeep type="cash" quantity="33" />
+						</modulestack>
+					</modulestack>
+					<modulestack name="000026" name-en="Gelvaren complex" type="city" quantity="1" faction="3">
 						<itemstack type="cash" quantity="1000" />
 						<itemstack type="terran" quantity="10" />
+						<upkeep type="food" quantity="100" />
+						<upkeep type="cash" quantity="813" />
 						<buying item="food" quantity="100" price="1" />
 						<selling item="food" quantity="25" price="5" />
 						<selling item="terran" quantity="10" price="50" />
-						<itemstack type="cash" quantity="1000" />
-						<itemstack type="terran" quantity="10" />
-						<moduleStack name="000018" name-en="Gelvaren Headquarters" type="corphq" quantity="1" faction="3">
-							<itemstack type="terran" quantity="25" />
+						<modulestack name="000018" name-en="Gelvaren Headquarters" type="corphq" quantity="1" faction="3">
 							<person name="000002" name-en="Gelvaren CEO" race="terran" faction="3">
 								<upkeep type="cash" quantity="10" />
 							</person>
 							<itemstack type="terran" quantity="25" />
-						</moduleStack>
-						<moduleStack name="000019" name-en="" type="cargob" quantity="1" faction="3">
+							<upkeep type="cash" quantity="135" />
+						</modulestack>
+						<modulestack name="000019" type="cargob" quantity="1" faction="3">
 							<itemstack type="food" quantity="1000" />
 							<itemstack type="terran" quantity="2" />
 							<itemstack type="iron" quantity="20" />
 							<itemstack type="oil" quantity="10" />
-							<itemstack type="food" quantity="1000" />
-							<itemstack type="terran" quantity="2" />
-							<itemstack type="iron" quantity="20" />
-							<itemstack type="oil" quantity="10" />
-						</moduleStack>
-						<moduleStack name="000020" name-en="" type="farms" quantity="2" faction="3">
+							<upkeep type="cash" quantity="32" />
+						</modulestack>
+						<modulestack name="000020" type="farms" quantity="2" faction="3">
 							<itemstack type="terran" quantity="10" />
-							<itemstack type="terran" quantity="10" />
-						</moduleStack>
-						<moduleStack name="000021" name-en="" type="wnplnt" quantity="20" faction="3" />
-						<moduleStack name="000022" name-en="" type="cdrill" quantity="1" faction="3">
+							<upkeep type="cash" quantity="110" />
+						</modulestack>
+						<modulestack name="000021" type="wnplnt" quantity="20" faction="3">
+							<upkeep type="cash" quantity="200" />
+						</modulestack>
+						<modulestack name="000022" type="cdrill" quantity="1" faction="3">
 							<itemstack type="terran" quantity="6" />
-							<itemstack type="terran" quantity="6" />
-						</moduleStack>
-						<moduleStack name="000023" name-en="" type="factry" quantity="1" faction="3">
+							<upkeep type="cash" quantity="46" />
+						</modulestack>
+						<modulestack name="000023" type="factry" quantity="1" faction="3">
+							<technology name="armcbt" name-en="armored combat" />
 							<itemstack type="terran" quantity="10" />
-							<technology name="armcbt" />
+							<upkeep type="cash" quantity="70" />
+						</modulestack>
+						<modulestack name="000025" type="barrck" quantity="1" faction="3">
+							<technology name="frminf" name-en="form infantry battalion" />
 							<itemstack type="terran" quantity="10" />
-						</moduleStack>
-						<moduleStack name="000025" name-en="" type="barrck" quantity="1" faction="3">
-							<itemstack type="terran" quantity="10" />
-							<technology name="frminf" />
-							<itemstack type="terran" quantity="10" />
-						</moduleStack>
-					</moduleStack>
+							<upkeep type="cash" quantity="210" />
+						</modulestack>
+					</modulestack>
 				</region>
 			</planet>
 		</system>
@@ -227,13 +212,13 @@
 			<use technology="farmng" />
 		</order>
 		<order subject="modulestack" name="000015" repeat="unlimited">
-			<produce produce-type="energy" energy="True" />
+			<produce produce-type="energy" />
 		</order>
 		<order subject="modulestack" name="000016" repeat="unlimited">
 			<use technology="hcdril" />
 		</order>
 		<order subject="modulestack" name="000017" repeat="10">
-			<use technology="shtlas" receiver="100" />
+			<use technology="shtlas" receiver="100" receiver-parent="000017" />
 		</order>
 		<order subject="modulestack" name="000026" repeat="unlimited">
 			<produce produce-type="item" item="terran" />
@@ -265,7 +250,7 @@
 			<use technology="farmng" />
 		</order>
 		<order subject="modulestack" name="000021" repeat="unlimited">
-			<produce produce-type="energy" energy="True" />
+			<produce produce-type="energy" />
 		</order>
 		<order subject="modulestack" name="000022" repeat="unlimited">
 			<use technology="oildwe" />
@@ -273,7 +258,7 @@
 		<order subject="modulestack" name="000023">
 			<get item="iron" quantity="4" transferer="000019" />
 			<order conditions="-">
-				<use technology="armcbt" receiver="108" />
+				<use technology="armcbt" receiver="108" receiver-parent="000023" />
 			</order>
 		</order>
 		<order subject="modulestack" name="000023">
@@ -302,18 +287,18 @@
 					</move>
 				</order>
 				<order conditions="--+">
-					<use technology="ssassm" receiver="101" />
+					<use technology="ssassm" receiver="101" receiver-parent="100" />
 					<order conditions="--+-">
-						<use technology="spctrl" receiver="102" />
+						<use technology="spctrl" receiver="102" receiver-parent="100" />
 					</order>
 					<order conditions="--+-">
-						<use technology="urfiss" receiver="103" />
+						<use technology="urfiss" receiver="103" receiver-parent="100" />
 					</order>
 					<order conditions="--+-">
-						<use technology="areact" receiver="104" />
+						<use technology="areact" receiver="104" receiver-parent="100" />
 					</order>
 					<order conditions="--+-">
-						<use technology="crewhs" receiver="105" />
+						<use technology="crewhs" receiver="105" receiver-parent="100" />
 						<order conditions="--+--">
 							<give receiver="105" item="terran" quantity="-20" />
 						</order>
@@ -334,7 +319,7 @@
 						<give receiver="105" item="food" quantity="-20" />
 					</order>
 					<order conditions="--+-">
-						<use technology="strans" receiver="106" />
+						<use technology="strans" receiver="106" receiver-parent="100" />
 						<order conditions="--+--">
 							<give receiver="106" item="iron" quantity="all" />
 						</order>
@@ -374,16 +359,16 @@
 					</order>
 				</order>
 				<order conditions="--+-">
-					<use technology="spctrl" receiver="102" />
+					<use technology="spctrl" receiver="102" receiver-parent="100" />
 				</order>
 				<order conditions="--+-">
-					<use technology="urfiss" receiver="103" />
+					<use technology="urfiss" receiver="103" receiver-parent="100" />
 				</order>
 				<order conditions="--+-">
-					<use technology="areact" receiver="104" />
+					<use technology="areact" receiver="104" receiver-parent="100" />
 				</order>
 				<order conditions="--+-">
-					<use technology="crewhs" receiver="105" />
+					<use technology="crewhs" receiver="105" receiver-parent="100" />
 					<order conditions="--+--">
 						<give receiver="105" item="terran" quantity="-20" />
 					</order>
@@ -404,7 +389,7 @@
 					<give receiver="105" item="food" quantity="-20" />
 				</order>
 				<order conditions="--+-">
-					<use technology="strans" receiver="106" />
+					<use technology="strans" receiver="106" receiver-parent="100" />
 					<order conditions="--+--">
 						<give receiver="106" item="iron" quantity="all" />
 					</order>
@@ -481,18 +466,18 @@
 				</move>
 			</order>
 			<order conditions="--+">
-				<use technology="ssassm" receiver="101" />
+				<use technology="ssassm" receiver="101" receiver-parent="100" />
 				<order conditions="--+-">
-					<use technology="spctrl" receiver="102" />
+					<use technology="spctrl" receiver="102" receiver-parent="100" />
 				</order>
 				<order conditions="--+-">
-					<use technology="urfiss" receiver="103" />
+					<use technology="urfiss" receiver="103" receiver-parent="100" />
 				</order>
 				<order conditions="--+-">
-					<use technology="areact" receiver="104" />
+					<use technology="areact" receiver="104" receiver-parent="100" />
 				</order>
 				<order conditions="--+-">
-					<use technology="crewhs" receiver="105" />
+					<use technology="crewhs" receiver="105" receiver-parent="100" />
 					<order conditions="--+--">
 						<give receiver="105" item="terran" quantity="-20" />
 					</order>
@@ -513,7 +498,7 @@
 					<give receiver="105" item="food" quantity="-20" />
 				</order>
 				<order conditions="--+-">
-					<use technology="strans" receiver="106" />
+					<use technology="strans" receiver="106" receiver-parent="100" />
 					<order conditions="--+--">
 						<give receiver="106" item="iron" quantity="all" />
 					</order>
@@ -553,16 +538,16 @@
 				</order>
 			</order>
 			<order conditions="--+-">
-				<use technology="spctrl" receiver="102" />
+				<use technology="spctrl" receiver="102" receiver-parent="100" />
 			</order>
 			<order conditions="--+-">
-				<use technology="urfiss" receiver="103" />
+				<use technology="urfiss" receiver="103" receiver-parent="100" />
 			</order>
 			<order conditions="--+-">
-				<use technology="areact" receiver="104" />
+				<use technology="areact" receiver="104" receiver-parent="100" />
 			</order>
 			<order conditions="--+-">
-				<use technology="crewhs" receiver="105" />
+				<use technology="crewhs" receiver="105" receiver-parent="100" />
 				<order conditions="--+--">
 					<give receiver="105" item="terran" quantity="-20" />
 				</order>
@@ -583,7 +568,7 @@
 				<give receiver="105" item="food" quantity="-20" />
 			</order>
 			<order conditions="--+-">
-				<use technology="strans" receiver="106" />
+				<use technology="strans" receiver="106" receiver-parent="100" />
 				<order conditions="--+--">
 					<give receiver="106" item="iron" quantity="all" />
 				</order>
