@@ -67,12 +67,17 @@ namespace SpaceAge
 		}
 
 
+		private bool canJoinAsAttacker(ModuleStack stack)
+		{
+			return stack != null && stack.IsArmed && stack.HasOperationalModules;
+		}
+
 		private ModuleStacks collectAttackers(ModuleStack initiator, ModuleStack target)
 		{
 			ModuleStacks side = new ModuleStacks();
 			if (initiator.Location == null)
 			{
-				if (initiator.IsArmed)
+				if (this.canJoinAsAttacker(initiator))
 				{
 					side.Add(initiator.Name, initiator);
 				}
@@ -81,7 +86,7 @@ namespace SpaceAge
 
 			foreach (ModuleStack stack in stacksAtLocation(initiator.Location))
 			{
-				if (!stack.IsArmed)
+				if (!this.canJoinAsAttacker(stack))
 				{
 					continue;
 				}
@@ -94,7 +99,7 @@ namespace SpaceAge
 					side.Add(stack.Name, stack);
 				}
 			}
-			if (!side.Contains(initiator.Name) && initiator.IsArmed)
+			if (!side.Contains(initiator.Name) && this.canJoinAsAttacker(initiator))
 			{
 				side.Add(initiator.Name, initiator);
 			}
@@ -252,6 +257,10 @@ namespace SpaceAge
 			foreach (ModuleStack stack in ModuleStack.All.Values)
 			{
 				if (!stack.IsArmed || stack.Location == null || !stack.IsRootModuleStack)
+				{
+					continue;
+				}
+				if (!stack.HasOperationalModules)
 				{
 					continue;
 				}

@@ -982,6 +982,36 @@ namespace IntegrationTests
 		}
 
 		[Test]
+		public void MoonReport_IncludesOrbitStacks()
+		{
+			Orbit lunaOrbit = Orbit.All["O00004"];
+			Moon luna = (Moon)lunaOrbit.OrbitHolder;
+			Faction faction = this.game.Factions["2"];
+			ModuleStack shuttle = ModuleStack.All.GetOrCreateNewModuleStack(faction, "100100");
+			shuttle.Parent = lunaOrbit;
+			shuttle.ModuleType = ModuleType.All["shuttl"];
+			shuttle.AddModule();
+
+			List<string> lines = luna.Report(faction);
+			bool foundOrbit = false;
+			bool foundShuttle = false;
+			foreach (string line in lines)
+			{
+				if (line.IndexOf("orbit [O00004]") >= 0)
+				{
+					foundOrbit = true;
+				}
+				if (line.IndexOf("[100100]") >= 0)
+				{
+					foundShuttle = true;
+				}
+			}
+
+			Assert.That(foundOrbit, Is.True, "moon report should include its orbit");
+			Assert.That(foundShuttle, Is.True, "owned stacks in moon orbit should appear in the moon report");
+		}
+
+		[Test]
 		public void OrdersTemplate_producingEffect()
 		{
             Sequence.Ints.Push(100);

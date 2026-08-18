@@ -578,6 +578,118 @@ namespace UnitTests
             Assert.That(Offer.All[market].Count, Is.EqualTo(4));
 		}
 
+		[Test]
+		public void Execute_RepeatedIdenticalBuy_DoesNotDuplicateOffer()
+		{
+			ModuleStack buyer = this.game.ModuleStacks["000004"];
+			ItemType terran = ItemType.All["terran"];
+			int before = Offer.All[buyer][EOfferType.BuyItems][terran].Count;
+
+			BuyOrder first = new BuyOrder(buyer);
+			first.Parse("all terran");
+			first.Repeat = -1;
+			first.Execute(1);
+
+			BuyOrder second = new BuyOrder(buyer);
+			second.Parse("all terran");
+			second.Repeat = -1;
+			second.Execute(1);
+
+			Assert.That(Offer.All[buyer][EOfferType.BuyItems][terran].Count, Is.EqualTo(before + 1));
+			Assert.That(second.Buy, Is.SameAs(first.Buy));
+		}
+
+		[Test]
+		public void Execute_RepeatedIdenticalSell_DoesNotDuplicateOffer()
+		{
+			ModuleStack seller = this.game.ModuleStacks["000004"];
+			ItemType terran = ItemType.All["terran"];
+			int before = Offer.All[seller][EOfferType.SellItems][terran].Count;
+
+			SellOrder first = new SellOrder(seller);
+			first.Parse("5 terran at 50");
+			first.Execute(1);
+
+			SellOrder second = new SellOrder(seller);
+			second.Parse("5 terran at 50");
+			second.Execute(1);
+
+			Assert.That(Offer.All[seller][EOfferType.SellItems][terran].Count, Is.EqualTo(before + 1));
+			Assert.That(second.Sell, Is.SameAs(first.Sell));
+		}
+
+		[Test]
+		public void LoadXml_DuplicateBuyingNodes_CollapsesToOneOffer()
+		{
+			ModuleStack buyer = this.game.ModuleStacks["000004"];
+			ItemType terran = ItemType.All["terran"];
+			int before = Offer.All[buyer][EOfferType.BuyItems][terran].Count;
+
+			XmlDocument doc = new XmlDocument();
+			XmlElement holder = doc.CreateElement("modulestack");
+			for (int i = 0; i < 3; i++)
+			{
+				XmlElement buying = doc.CreateElement("buying");
+				buying.SetAttribute("item", "terran");
+				buying.SetAttribute("quantity", "all");
+				buying.SetAttribute("price", "any");
+				holder.AppendChild(buying);
+			}
+
+			new Offers().LoadXml(holder, buyer.Location.Market, buyer);
+
+			Assert.That(Offer.All[buyer][EOfferType.BuyItems][terran].Count, Is.EqualTo(before + 1));
+		}
+
+		[Test]
+		public void Execute_LoadedBuyingNodesAndTwoLeftoverBuys_DoesNotDuplicateOffer()
+		{
+			ModuleStack buyer = this.game.ModuleStacks["000004"];
+			ItemType terran = ItemType.All["terran"];
+			int before = Offer.All[buyer][EOfferType.BuyItems][terran].Count;
+
+			XmlDocument doc = new XmlDocument();
+			XmlElement holder = doc.CreateElement("modulestack");
+			for (int i = 0; i < 3; i++)
+			{
+				XmlElement buying = doc.CreateElement("buying");
+				buying.SetAttribute("item", "terran");
+				buying.SetAttribute("quantity", "all");
+				buying.SetAttribute("price", "any");
+				holder.AppendChild(buying);
+			}
+			new Offers().LoadXml(holder, buyer.Location.Market, buyer);
+
+			for (int i = 0; i < 2; i++)
+			{
+				BuyOrder leftover = new BuyOrder(buyer);
+				leftover.Parse("all terran");
+				leftover.Repeat = -1;
+			}
+
+			for (int week = 1; week <= 13; week++)
+			{
+				foreach (Order order in new List<Order>(buyer.Orders))
+				{
+					BuyOrder buy = order as BuyOrder;
+					if (buy != null)
+					{
+						buy.Execute(week);
+					}
+				}
+			}
+
+			Assert.That(Offer.All[buyer][EOfferType.BuyItems][terran].Count, Is.EqualTo(before + 1));
+			int listed = 0;
+			foreach (string line in buyer.Location.Market.Report(buyer.Owner))
+			{
+				if (line.IndexOf("buy all terrans") >= 0 && line.IndexOf(buyer.ReportName) >= 0)
+				{
+					listed++;
+				}
+			}
+			Assert.That(listed, Is.EqualTo(1), "the same standing buy must appear once on the market");
+		}
 
         [Test]
         public void AssignSellOrder()

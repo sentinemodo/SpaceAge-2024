@@ -245,7 +245,7 @@ namespace SpaceAge
 
             if (this.Sell == null)
 			{
-				// create an offer
+				// create an offer, or keep a standing identical one
 				this.Sell = new Offer(this.Seller.Location.Market, this.Seller, this.SellType);
                 this.Sell.SellOrder = this; 
                 this.Sell.Quantity = this.Quantity;
@@ -254,6 +254,8 @@ namespace SpaceAge
 				this.Sell.Technology = this.Technology;
 				this.Sell.ModuleType = this.ModuleType;
 				this.Sell.ItemType = this.ItemType;
+				this.Sell = Offer.All.ReuseEquivalent(this.Sell);
+				this.Sell.SellOrder = this;
             }
 
 			// List the offer and leave it standing. Matching is driven from the buy side

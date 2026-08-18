@@ -24,22 +24,22 @@
 						<resource type="copper" quantity="100" />
 						<resource type="silici" quantity="100" />
 						<modulestack name="200" name-en="crashed alien vessel" type="alnhul" quantity="1" faction="1">
-							<technology name="alnhul" name-en="alien vessel hull" />
+							<technology name="ahlcns" name-en="advanced hull construction" />
 							<upkeep type="cash" quantity="470" />
 							<modulestack name="201" type="robofc" quantity="1" faction="1">
-								<technology name="robofc" name-en="advanced robo-factory" />
+								<technology name="autfab" name-en="automated fabrication" />
 								<upkeep type="cash" quantity="60" />
 							</modulestack>
 							<modulestack name="202" type="autcmd" quantity="1" faction="1">
-								<technology name="autcmd" name-en="automated command module" />
+								<technology name="autctl" name-en="automated command systems" />
 								<upkeep type="cash" quantity="80" />
 							</modulestack>
 							<modulestack name="203" type="autdrv" quantity="1" faction="1">
-								<technology name="autdrv" name-en="automated propulsion module" />
+								<technology name="autprp" name-en="automated propulsion" />
 								<upkeep type="cash" quantity="80" />
 							</modulestack>
 							<modulestack name="204" type="he3aut" quantity="1" faction="1">
-								<technology name="he3aut" name-en="automated helium powerplant" />
+								<technology name="he3unc" name-en="unmanned helium plant" />
 								<upkeep type="cash" quantity="80" />
 							</modulestack>
 							<modulestack name="205" type="cargob" quantity="1" faction="1">
@@ -47,10 +47,10 @@
 								<upkeep type="cash" quantity="30" />
 							</modulestack>
 							<modulestack name="206" type="drnbay" quantity="1" faction="1">
-								<technology name="drnbay" name-en="fighter drone bay" />
+								<technology name="drnhng" name-en="drone hangar construction" />
 								<upkeep type="cash" quantity="120" />
 								<modulestack name="207" type="alndrn" quantity="4" faction="1">
-									<technology name="alndrn" name-en="alien fighter drone" />
+									<technology name="alnfgh" name-en="alien fighter construction" />
 									<upkeep type="cash" quantity="80" />
 								</modulestack>
 							</modulestack>
@@ -464,8 +464,6 @@
 							<itemstack type="cash" quantity="3948" />
 							<upkeep type="cash" quantity="110" />
 							<buying item="terran" quantity="all" price="any" />
-							<buying item="terran" quantity="all" price="any" />
-							<buying item="terran" quantity="all" price="any" />
 							<event week="1" description="produced 100 cash [cash]." />
 							<event week="1" description="given 10 cash [cash] to infantry battalion [110]." />
 							<event week="2" description="produced 100 cash [cash]." />
@@ -487,7 +485,9 @@
 						<modulestack name="000019" type="cargob" quantity="1" faction="3">
 							<itemstack type="food" quantity="728" />
 							<itemstack type="terran" quantity="2" />
-							<itemstack type="iron" quantity="1" />
+							<itemstack type="iron" quantity="8" />
+							<itemstack type="silici" quantity="8" />
+							<itemstack type="titani" quantity="3" />
 							<itemstack type="oil" quantity="28" />
 							<upkeep type="cash" quantity="32" />
 							<selling item="food" quantity="100" price="any" />
@@ -620,6 +620,7 @@
 							<itemstack type="cash" quantity="10" />
 							<itemstack type="food" quantity="200" />
 							<upkeep type="cash" quantity="15" />
+							<effect duration="17" type="moving" destination="R00002" move-mode="ground" />
 							<event week="1" description="got 10 cash [cash] from Gelvaren Headquarters [000018]." />
 							<event week="1" description="got 200 units of food [food] from small cargo bay [000019]." />
 							<event week="1" description="departed from Southern Hemisphere [R00003] (1,0) to Northern Hemisphere [R00002] (0,0), ETA 29." />
@@ -656,9 +657,6 @@
 		<order subject="modulestack" name="000012" repeat="unlimited">
 			<produce produce-type="item" item="cash" />
 		</order>
-		<order subject="modulestack" name="000012" repeat="unlimited">
-			<produce produce-type="item" item="cash" />
-		</order>
 		<order subject="modulestack" name="000013" repeat="unlimited">
 			<get item="food" quantity="all" transferer="000014" />
 		</order>
@@ -668,20 +666,8 @@
 		<order subject="modulestack" name="000013">
 			<sell price="-1" quantity="300" sell-type="items" item="food" />
 		</order>
-		<order subject="modulestack" name="000013" repeat="unlimited">
-			<get item="food" quantity="all" transferer="000014" />
-		</order>
-		<order subject="modulestack" name="000013" repeat="unlimited">
-			<get item="carbon" quantity="all" transferer="000016" />
-		</order>
 		<order subject="modulestack" name="000014" repeat="unlimited">
 			<use technology="farmng" />
-		</order>
-		<order subject="modulestack" name="000014" repeat="unlimited">
-			<use technology="farmng" />
-		</order>
-		<order subject="modulestack" name="000015" repeat="unlimited">
-			<produce produce-type="energy" />
 		</order>
 		<order subject="modulestack" name="000015" repeat="unlimited">
 			<produce produce-type="energy" />
@@ -689,26 +675,8 @@
 		<order subject="modulestack" name="000016" repeat="unlimited">
 			<use technology="hcdril" />
 		</order>
-		<order subject="modulestack" name="000016" repeat="unlimited">
-			<use technology="hcdril" />
-		</order>
 		<order subject="modulestack" name="000026" repeat="unlimited">
 			<produce produce-type="item" item="terran" />
-		</order>
-		<order subject="modulestack" name="000026" repeat="unlimited">
-			<produce produce-type="item" item="terran" />
-		</order>
-		<order subject="modulestack" name="000018" repeat="unlimited">
-			<get item="cash" quantity="all" transferer="000026" />
-		</order>
-		<order subject="modulestack" name="000018" repeat="unlimited">
-			<get item="terran" quantity="all" transferer="000026" />
-		</order>
-		<order subject="modulestack" name="000018" repeat="unlimited">
-			<buy price="-1" everywhere="False" quantity="all" buy-type="items" item="terran" />
-		</order>
-		<order subject="modulestack" name="000018" repeat="unlimited">
-			<produce produce-type="item" item="cash" />
 		</order>
 		<order subject="modulestack" name="000018" repeat="unlimited">
 			<get item="cash" quantity="all" transferer="000026" />
@@ -731,20 +699,8 @@
 		<order subject="modulestack" name="000019">
 			<sell price="-1" quantity="100" sell-type="items" item="food" />
 		</order>
-		<order subject="modulestack" name="000019" repeat="unlimited">
-			<get item="food" quantity="all" transferer="000020" />
-		</order>
-		<order subject="modulestack" name="000019" repeat="unlimited">
-			<get item="oil" quantity="all" transferer="000022" />
-		</order>
 		<order subject="modulestack" name="000020" repeat="unlimited">
 			<use technology="farmng" />
-		</order>
-		<order subject="modulestack" name="000020" repeat="unlimited">
-			<use technology="farmng" />
-		</order>
-		<order subject="modulestack" name="000021" repeat="unlimited">
-			<produce produce-type="energy" />
 		</order>
 		<order subject="modulestack" name="000021" repeat="unlimited">
 			<produce produce-type="energy" />
@@ -752,23 +708,8 @@
 		<order subject="modulestack" name="000022" repeat="unlimited">
 			<use technology="oildwe" />
 		</order>
-		<order subject="modulestack" name="000022" repeat="unlimited">
-			<use technology="oildwe" />
-		</order>
-		<order subject="modulestack" name="110">
+		<order subject="modulestack" name="110" duration-left="17">
 			<move>
-				<destination destination="R00002" />
-				<destination destination="R00002" />
-				<destination destination="R00002" />
-				<destination destination="R00002" />
-				<destination destination="R00002" />
-				<destination destination="R00002" />
-				<destination destination="R00002" />
-				<destination destination="R00002" />
-				<destination destination="R00002" />
-				<destination destination="R00002" />
-				<destination destination="R00002" />
-				<destination destination="R00002" />
 				<destination destination="R00002" />
 			</move>
 		</order>

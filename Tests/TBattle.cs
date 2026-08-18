@@ -369,6 +369,8 @@ namespace UnitTests
 			Region region = Region.All["R00002"];
 			ModuleStack city = new ModuleStack(region, Faction.All["1"], ModuleType.All["city"], "citytest");
 			ModuleStack attacker = new ModuleStack(region, gelvaren, ModuleType.All["tanks"], "atktest");
+			attacker.AddModule();
+			attacker.ItemStacks.Add(new ItemStack(ItemType.All["terran"], 16));
 			ModuleStack nestedDefender = new ModuleStack(city, Faction.All["2"], ModuleType.All["corphq"], "deftest");
 			nestedDefender.AddModule();
 
@@ -480,6 +482,7 @@ namespace UnitTests
 			Faction defenderOwner = this.game.Factions["1"];
 			ModuleStack attacker = new ModuleStack(region, attackerOwner, ModuleType.All["tanks"], "cmdatk");
 			attacker.AddModule();
+			attacker.ItemStacks.Add(new ItemStack(ItemType.All["terran"], 16));
 			attacker.ApplyTactic("capture");
 			attacker.ApplyPrioritizeTactic("prioritize command");
 			ModuleStack headquarters = new ModuleStack(region, defenderOwner, ModuleType.All["corphq"], "cmdhq");
@@ -524,6 +527,80 @@ namespace UnitTests
 			string report = string.Join("\n", battle.Report(attackerOwner).ToArray());
 			Assert.That(report, Does.Match(@"chance: \d+/9\)"));
 			Assert.That(report, Does.Contain("(chance: 3/9)"));
+		}
+
+		private void disableByHeavyDamage(ModuleStack stack)
+		{
+			stack.Modules[0].Damage = (stack.Modules[0].HitPoints / 2) + 1;
+			Assert.That(stack.IsArmed, Is.True);
+			Assert.That(stack.HasOperationalModules, Is.False);
+		}
+
+		[Test]
+		public void CollectAttackers_DisabledStack_IsNotIncluded()
+		{
+			Region region = new Region(Region.All["R00002"].RegionHolder, "disatkregion");
+			Faction attackerOwner = this.game.Factions["2"];
+			Faction defenderOwner = this.game.Factions["1"];
+			ModuleStack active = new ModuleStack(region, attackerOwner, ModuleType.All["tanks"], "disatkactive");
+			active.AddModule();
+			active.ItemStacks.Add(new ItemStack(ItemType.All["terran"], 16));
+			ModuleStack disabled = new ModuleStack(region, attackerOwner, ModuleType.All["tanks"], "disatkdisabled");
+			disabled.AddModule();
+			disabled.ItemStacks.Add(new ItemStack(ItemType.All["terran"], 16));
+			this.disableByHeavyDamage(disabled);
+			ModuleStack target = new ModuleStack(region, defenderOwner, ModuleType.All["corphq"], "disatktgt");
+			target.AddModule();
+			target.ItemStacks.Add(new ItemStack(ItemType.All["terran"], 20));
+
+			Battle battle = new Battle(active, target);
+
+			Assert.That(battle.Attackers.Contains(active.Name), Is.True);
+			Assert.That(battle.Attackers.Contains(disabled.Name), Is.False);
+		}
+
+		[Test]
+		public void CollectAttackers_DisabledInitiator_IsNotIncluded()
+		{
+			Region region = new Region(Region.All["R00002"].RegionHolder, "disinitregion");
+			Faction attackerOwner = this.game.Factions["2"];
+			Faction defenderOwner = this.game.Factions["1"];
+			ModuleStack disabled = new ModuleStack(region, attackerOwner, ModuleType.All["tanks"], "disinit");
+			disabled.AddModule();
+			disabled.ItemStacks.Add(new ItemStack(ItemType.All["terran"], 16));
+			this.disableByHeavyDamage(disabled);
+			ModuleStack target = new ModuleStack(region, defenderOwner, ModuleType.All["corphq"], "disinittgt");
+			target.AddModule();
+			target.ItemStacks.Add(new ItemStack(ItemType.All["terran"], 20));
+
+			Battle battle = new Battle(disabled, target);
+
+			Assert.That(battle.Attackers.Contains(disabled.Name), Is.False);
+		}
+
+		[Test]
+		public void StartAtLocations_DisabledArmedStack_DoesNotInitiateBattle()
+		{
+			Region region = new Region(Region.All["R00002"].RegionHolder, "disstartregion");
+			Faction attackerOwner = this.game.Factions["2"];
+			Faction defenderOwner = this.game.Factions["1"];
+			ModuleStack disabled = new ModuleStack(region, attackerOwner, ModuleType.All["tanks"], "disstart");
+			disabled.AddModule();
+			disabled.ItemStacks.Add(new ItemStack(ItemType.All["terran"], 16));
+			this.disableByHeavyDamage(disabled);
+			ModuleStack target = new ModuleStack(region, defenderOwner, ModuleType.All["corphq"], "disstarttgt");
+			target.AddModule();
+			target.ItemStacks.Add(new ItemStack(ItemType.All["terran"], 20));
+			attackerOwner.Attitudes["1"] = FactionAttitude.Enemy;
+
+			Battle.All.Clear();
+			List<Battle> started = Battle.StartAtLocations(1);
+
+			foreach (Battle battle in started)
+			{
+				Assert.That(battle.Attacker.Name, Is.Not.EqualTo(disabled.Name));
+				Assert.That(battle.Attackers.Contains(disabled.Name), Is.False);
+			}
 		}
 	}
 }

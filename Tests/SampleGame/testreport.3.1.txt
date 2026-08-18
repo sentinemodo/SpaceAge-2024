@@ -624,9 +624,9 @@ Galaxy report:
       none.
   
   + Berlin [000001], 3 cities [city], immobile.
-    size: 75000, mass: 28460 (0), capacity: 45000/41420, energy: 320/255 (30), crew: 143/255 (0/30),
-    upkeep: 300 units of food [food], 1980 (0) cash [cash], consume: 355 (0) units of food [food],
-    355 (0) units of terran breathing gas mixture [terair], 30 (0) medicines [medici].
+    size: 75000, mass: 28400 (0), capacity: 45000/41420, energy: 320/255 (30), crew: 143/240 (0/30),
+    upkeep: 300 units of food [food], 1965 (0) cash [cash], consume: 340 (0) units of food [food],
+    340 (0) units of terran breathing gas mixture [terair], 3 (0) medicines [medici].
     items: 3000 cash [cash], 30 terrans [terran] (size: 120, mass: 120, upkeep: 30 cash [cash],
     consume: 30 units of food [food], 30 units of terran breathing gas mixture [terair]), 300 units
     of food [food] (size: 300, mass: 300).
@@ -698,8 +698,6 @@ Galaxy report:
       sell 25 units of food [food] at 5 each from Gelvaren complex [000026].
       sell 10 terrans [terran] at 50 each from Gelvaren complex [000026].
     Offers of buying items:
-      buy all terrans [terran] at any price by Gelvaren Headquarters [000018].
-      buy all terrans [terran] at any price by Gelvaren Headquarters [000018].
       buy all terrans [terran] at any price by Gelvaren Headquarters [000018].
       buy 100 units of food [food] at 1 each by Gelvaren complex [000026].
     Offers of selling modules:
@@ -778,6 +776,7 @@ Galaxy report:
 ------------------------------------------------------------
   * Luna [P00003] (1, 0, 0), moon, unexplored.
 ------------------------------------------------------------
+    orbit [O00001], has no atmosphere.
 
     Dusty field [R00001] (0,0), dusty region, settlement capacity 4/0.
     Exits:

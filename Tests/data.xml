@@ -668,6 +668,7 @@ This assembly technology represents the pinnacle of human ingenuity and collabor
 			name="servic"
 			name-en="preventive servicing"
 			level="1"
+			tags="repair"
 			description="Maintenance and repairs are best done in advance.">
 			<use-allowed-in module-type-group="production"/>
 			<use-consume item="titani" quantity="1"/>
@@ -688,7 +689,7 @@ This assembly technology represents the pinnacle of human ingenuity and collabor
 		</entry>
 		<entry
 			name="engshp"
-			tags="production"
+			tags="production repair"
 			name-en="engineering shop"
 			level="1"
 			cost="4"
@@ -702,6 +703,7 @@ This assembly technology represents the pinnacle of human ingenuity and collabor
 			name="medtec"
 			name-en="medical services"
 			level="2"
+			tags="repair"
 			description="The organized provision of medical services greatly increase the survival chances of the casualties."
 			use-time="6">
 			<use-allowed-in module-type-group="production"/>
@@ -714,6 +716,7 @@ This assembly technology represents the pinnacle of human ingenuity and collabor
 			name="medirf"
 			name-en="medicines refining"
 			level="2"
+			tags="repair"
 			description="Without the medicines, even the best doctor can only watch his patient dies. The medicines are composed of small bits of different ingredients that can be bought on habitable planets."
 			usable-in="production">
 			<use-allowed-in module-type-group="production" planet-type="ocean"/>
@@ -780,10 +783,10 @@ Researchers can query the library. The system can handle natural language questi
 			<use-produce module="advlib"/>
 		</entry>
 		<entry
-			name="lifsys"
-			name-en="life support system"
+			name="airgen"
+			name-en="breathing-gas generation"
 			level="0"
-			description="A compact recycler that produces canned terran breathing gas for habitats, ships and vacuum work."
+			description="Engineering for compact recyclers that produce canned terran breathing gas for habitats, ships and vacuum work."
 			use-time="2">
 			<use-allowed-in module-type-group="production"/>
 			<use-consume item="iron" quantity="2"/>
@@ -791,10 +794,10 @@ Researchers can query the library. The system can handle natural language questi
 			<use-produce module="lifsys"/>
 		</entry>
 		<entry
-			name="smhabi"
-			name-en="small habitat"
+			name="habcns"
+			name-en="small habitat construction"
 			level="2"
-			description="A root-level pressure shell sized to hold one or two support modules. It is not crew quarters."
+			description="Methods for raising a root-level pressure shell sized to hold one or two support modules. It is not crew quarters."
 			use-time="6">
 			<use-allowed-in module-type-group="production" location-type="solid-surface"/>
 			<use-consume item="iron" quantity="20"/>
@@ -802,10 +805,10 @@ Researchers can query the library. The system can handle natural language questi
 			<use-produce module="smhabi"/>
 		</entry>
 		<entry
-			name="dmdcty"
-			name-en="small dome city"
+			name="dmecns"
+			name-en="dome city construction"
 			level="3"
-			description="A compact domed settlement that can operate on airless rock if it is supplied with breathing gas and food."
+			description="Construction of a compact domed settlement that can operate on airless rock if it is supplied with breathing gas and food."
 			use-time="10">
 			<use-allowed-in module-type-group="production" location-type="solid-surface"/>
 			<use-consume item="iron" quantity="40"/>
@@ -813,8 +816,8 @@ Researchers can query the library. The system can handle natural language questi
 			<use-produce module="dmdcty"/>
 		</entry>
 		<entry
-			name="alnhul"
-			name-en="alien vessel hull"
+			name="ahlcns"
+			name-en="advanced hull construction"
 			level="3"
 			description="Recovered alien hull geometry. Automated internals need no crew and no life support."
 			use-time="8">
@@ -823,9 +826,9 @@ Researchers can query the library. The system can handle natural language questi
 			<use-produce module="alnhul"/>
 		</entry>
 		<entry
-			name="robofc"
+			name="autfab"
 			tags="production"
-			name-en="advanced robo-factory"
+			name-en="automated fabrication"
 			level="2"
 			description="An unmanned alien fabrication plant. It has no crew requirement."
 			use-time="6">
@@ -835,8 +838,8 @@ Researchers can query the library. The system can handle natural language questi
 			<use-produce module="robofc"/>
 		</entry>
 		<entry
-			name="autcmd"
-			name-en="automated command module"
+			name="autctl"
+			name-en="automated command systems"
 			level="3"
 			description="A crewless command core that can wake nested alien systems."
 			use-time="5">
@@ -845,8 +848,8 @@ Researchers can query the library. The system can handle natural language questi
 			<use-produce module="autcmd"/>
 		</entry>
 		<entry
-			name="autdrv"
-			name-en="automated propulsion module"
+			name="autprp"
+			name-en="automated propulsion"
 			level="3"
 			description="A crewless reaction drive sized for an alien hull."
 			use-time="5">
@@ -855,8 +858,8 @@ Researchers can query the library. The system can handle natural language questi
 			<use-produce module="autdrv"/>
 		</entry>
 		<entry
-			name="he3aut"
-			name-en="automated helium powerplant"
+			name="he3unc"
+			name-en="unmanned helium plant"
 			level="3"
 			description="An unmanned helium-3 fusion plant with no crew stations."
 			use-time="6">
@@ -865,9 +868,9 @@ Researchers can query the library. The system can handle natural language questi
 			<use-produce module="he3aut"/>
 		</entry>
 		<entry
-			name="drnbay"
+			name="drnhng"
 			tags="military"
-			name-en="fighter drone bay"
+			name-en="drone hangar construction"
 			level="3"
 			description="A hangar that stores and launches a squad of fighter drones."
 			use-time="6">
@@ -876,9 +879,9 @@ Researchers can query the library. The system can handle natural language questi
 			<use-produce module="drnbay"/>
 		</entry>
 		<entry
-			name="alndrn"
+			name="alnfgh"
 			tags="military"
-			name-en="alien fighter drone"
+			name-en="alien fighter construction"
 			level="4"
 			description="A crewless alien fighter. It needs no life support."
 			use-time="4">

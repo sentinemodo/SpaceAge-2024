@@ -68,6 +68,57 @@ namespace SpaceAge
 			Offer.All.Add(this);
 		}
 
+		public bool SameMarketPosition(Offer other)
+		{
+			if (other == null)
+			{
+				return false;
+			}
+			if (this.Offerent != other.Offerent)
+			{
+				return false;
+			}
+			if (this.OfferType != other.OfferType)
+			{
+				return false;
+			}
+			if (this.Everywhere != other.Everywhere)
+			{
+				return false;
+			}
+			if (this.listedPrice() != other.listedPrice())
+			{
+				return false;
+			}
+			if (this.AllQuantity != other.AllQuantity)
+			{
+				return false;
+			}
+			if (!this.AllQuantity && this.Quantity != other.Quantity)
+			{
+				return false;
+			}
+			switch (this.OfferType)
+			{
+				case EOfferType.BuyItems:
+				case EOfferType.SellItems:
+					return this.ItemType == other.ItemType;
+				case EOfferType.BuyModules:
+				case EOfferType.SellModules:
+					return this.ModuleType == other.ModuleType;
+				case EOfferType.BuyTechnologies:
+				case EOfferType.SellTechnologies:
+					return this.Technology == other.Technology;
+				default:
+					return false;
+			}
+		}
+
+		private int listedPrice()
+		{
+			return (this.Price > 0) ? this.Price : 0;
+		}
+
 		public bool Process(int week)
 		{
 			bool processed = this.Market.ProcessOffer(week, this);

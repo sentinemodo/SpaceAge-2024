@@ -2618,11 +2618,6 @@ Battles report:
   Round 1:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], disabled.
-    size: 240, mass: 396 (240).
-    hit points: 100/49.
-    tactics: prioritize armed.
-      #1 hit points: 100/49, heavily damaged, effects: disabled.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/292, attack: 17, defense: 12, initiative: 5 (0).
@@ -2703,11 +2698,6 @@ Battles report:
   Round 2:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], disabled.
-    size: 240, mass: 396 (240).
-    hit points: 100/49.
-    tactics: prioritize armed.
-      #1 hit points: 100/49, heavily damaged, effects: disabled.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/290, attack: 17, defense: 12, initiative: 5 (0).
@@ -2790,11 +2780,6 @@ Battles report:
   Round 3:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], disabled.
-    size: 240, mass: 396 (240).
-    hit points: 100/49.
-    tactics: prioritize armed.
-      #1 hit points: 100/49, heavily damaged, effects: disabled.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/288, attack: 17, defense: 12, initiative: 5 (0).
@@ -2877,11 +2862,6 @@ Battles report:
   Round 4:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], disabled.
-    size: 240, mass: 396 (240).
-    hit points: 100/49.
-    tactics: prioritize armed.
-      #1 hit points: 100/49, heavily damaged, effects: disabled.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/286, attack: 17, defense: 12, initiative: 5 (0).
@@ -2964,11 +2944,6 @@ Battles report:
   Round 5:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], disabled.
-    size: 240, mass: 396 (240).
-    hit points: 100/49.
-    tactics: prioritize armed.
-      #1 hit points: 100/49, heavily damaged, effects: disabled.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/284, attack: 17, defense: 12, initiative: 5 (0).
@@ -3051,11 +3026,6 @@ Battles report:
   Round 6:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], disabled.
-    size: 240, mass: 396 (240).
-    hit points: 100/49.
-    tactics: prioritize armed.
-      #1 hit points: 100/49, heavily damaged, effects: disabled.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/282, attack: 17, defense: 12, initiative: 5 (0).
@@ -3138,11 +3108,6 @@ Battles report:
   Round 7:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], disabled.
-    size: 240, mass: 396 (240).
-    hit points: 100/49.
-    tactics: prioritize armed.
-      #1 hit points: 100/49, heavily damaged, effects: disabled.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/280, attack: 17, defense: 12, initiative: 5 (0).
@@ -3225,11 +3190,6 @@ Battles report:
   Round 8:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], disabled.
-    size: 240, mass: 396 (240).
-    hit points: 100/49.
-    tactics: prioritize armed.
-      #1 hit points: 100/49, heavily damaged, effects: disabled.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/278, attack: 17, defense: 12, initiative: 5 (0).
@@ -3312,11 +3272,6 @@ Battles report:
   Round 9:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], disabled.
-    size: 240, mass: 396 (240).
-    hit points: 100/49.
-    tactics: prioritize armed.
-      #1 hit points: 100/49, heavily damaged, effects: disabled.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/276, attack: 17, defense: 12, initiative: 5 (0).
@@ -3399,11 +3354,6 @@ Battles report:
   Round 10:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], disabled.
-    size: 240, mass: 396 (240).
-    hit points: 100/49.
-    tactics: prioritize armed.
-      #1 hit points: 100/49, heavily damaged, effects: disabled.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/274, attack: 17, defense: 12, initiative: 5 (0).
@@ -3492,11 +3442,6 @@ Battles report:
   Round 1:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], disabled.
-    size: 240, mass: 396 (240).
-    hit points: 100/49.
-    tactics: prioritize armed.
-      #1 hit points: 100/49, heavily damaged, effects: disabled.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/272, attack: 17, defense: 12, initiative: 5 (0).
@@ -3577,11 +3522,6 @@ Battles report:
   Round 2:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], disabled.
-    size: 240, mass: 396 (240).
-    hit points: 100/49.
-    tactics: prioritize armed.
-      #1 hit points: 100/49, heavily damaged, effects: disabled.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/270, attack: 17, defense: 12, initiative: 5 (0).
@@ -3664,11 +3604,6 @@ Battles report:
   Round 3:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], disabled.
-    size: 240, mass: 396 (240).
-    hit points: 100/49.
-    tactics: prioritize armed.
-      #1 hit points: 100/49, heavily damaged, effects: disabled.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/268, attack: 17, defense: 12, initiative: 5 (0).
@@ -3752,11 +3687,6 @@ Battles report:
   Round 4:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], disabled.
-    size: 240, mass: 396 (240).
-    hit points: 100/49.
-    tactics: prioritize armed.
-      #1 hit points: 100/49, heavily damaged, effects: disabled.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/266, attack: 17, defense: 12, initiative: 5 (0).
@@ -3841,11 +3771,6 @@ Battles report:
   Round 5:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], disabled.
-    size: 240, mass: 396 (240).
-    hit points: 100/49.
-    tactics: prioritize armed.
-      #1 hit points: 100/49, heavily damaged, effects: disabled.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/264, attack: 17, defense: 12, initiative: 5 (0).
@@ -3930,11 +3855,6 @@ Battles report:
   Round 6:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], disabled.
-    size: 240, mass: 396 (240).
-    hit points: 100/49.
-    tactics: prioritize armed.
-      #1 hit points: 100/49, heavily damaged, effects: disabled.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/262, attack: 17, defense: 12, initiative: 5 (0).
@@ -4019,11 +3939,6 @@ Battles report:
   Round 7:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], disabled.
-    size: 240, mass: 396 (240).
-    hit points: 100/49.
-    tactics: prioritize armed.
-      #1 hit points: 100/49, heavily damaged, effects: disabled.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/260, attack: 17, defense: 12, initiative: 5 (0).
@@ -4108,11 +4023,6 @@ Battles report:
   Round 8:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], disabled.
-    size: 240, mass: 396 (240).
-    hit points: 100/49.
-    tactics: prioritize armed.
-      #1 hit points: 100/49, heavily damaged, effects: disabled.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/258, attack: 17, defense: 12, initiative: 5 (0).
@@ -4197,11 +4107,6 @@ Battles report:
   Round 9:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], disabled.
-    size: 240, mass: 396 (240).
-    hit points: 100/49.
-    tactics: prioritize armed.
-      #1 hit points: 100/49, heavily damaged, effects: disabled.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/256, attack: 17, defense: 12, initiative: 5 (0).
@@ -4286,11 +4191,6 @@ Battles report:
   Round 10:
   ------------------------------------------------------------
   Attackers:
-  + peaceful scout [108], tanks [tanks], disabled.
-    size: 240, mass: 396 (240).
-    hit points: 100/49.
-    tactics: prioritize armed.
-      #1 hit points: 100/49, heavily damaged, effects: disabled.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
     hit points: 300/254, attack: 17, defense: 12, initiative: 5 (0).
@@ -4447,21 +4347,23 @@ Galaxy report:
       size: 500.
     + corporate headquarters [c000012], corporate headquarters [corphq],
       disabled, immobile.
-      size: 1000, mass: 1180 (1000), capacity: 750/180, upkeep: 145
-      (100) cash [cash], consume: 45 (0) units of food [food], 45 (0)
-      units of terran breathing gas mixture [terair], 30 (0) medicines
+      size: 1000, mass: 1120 (1000), capacity: 750/120, upkeep: 130
+      (100) cash [cash], consume: 30 (0) units of food [food], 30 (0)
+      units of terran breathing gas mixture [terair], 3 (0) medicines
       [medici].
       hit points: 100/75, capture: 75.
         #1 hit points: 100/75, capture: 75, deactivated.
-      items: 30 wounded terrans [wndtrn] (size: 120, mass: 120, upkeep:
-      30 cash [cash], consume: 30 units of food [food], 30 units of
-      terran breathing gas mixture [terair], 30 medicines [medici]), 15
-      terrans [terran] (size: 60, mass: 60, upkeep: 15 cash [cash],
-      consume: 15 units of food [food], 15 units of terran breathing gas
-      mixture [terair]), 2200 cash [cash].
+      items: 3 wounded terrans [wndtrn] (size: 12, mass: 12, upkeep: 3
+      cash [cash], consume: 3 units of food [food], 3 units of terran
+      breathing gas mixture [terair], 3 medicines [medici]), 27 terrans
+      [terran] (size: 108, mass: 108, upkeep: 27 cash [cash], consume:
+      27 units of food [food], 27 units of terran breathing gas mixture
+      [terair]), 2200 cash [cash].
       events:
         week 9: captured corporate headquarters [corphq] from Caste
         Prime Headquarters [000012].
+        week 13: 15  [wndtrn] died of their wounds.
+        week 13: 12  [wndtrn] recovered from their wounds.
   + peaceful scout [108], tanks [tanks], disabled.
     size: 240, mass: 396 (240), capacity: 200/144, upkeep: 40 (24) cash
     [cash], consume: 32 (16) units of food [food], 32 (16) units of
@@ -4495,14 +4397,6 @@ Galaxy report:
       farming complex [000014], coal-burning plant [000015], core drill
       [000016], factory [000017], gun placement [111]
       week 11: engaged in battle
-      week 12: initiated battle against small cargo bay [000013],
-      farming complex [000014], coal-burning plant [000015], core drill
-      [000016], factory [000017], gun placement [111]
-      week 12: engaged in battle
-      week 13: initiated battle against small cargo bay [000013],
-      farming complex [000014], coal-burning plant [000015], core drill
-      [000016], factory [000017], gun placement [111]
-      week 13: engaged in battle
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), capacity: 600/320, crew: 48/49, upkeep:
     130 (72) cash [cash], consume: 97 (48) units of food [food], 97 (48)
@@ -4545,7 +4439,13 @@ Galaxy report:
       week 9: engaged in battle
       week 10: engaged in battle
       week 11: engaged in battle
+      week 12: initiated battle against small cargo bay [000013],
+      farming complex [000014], coal-burning plant [000015], core drill
+      [000016], factory [000017], gun placement [111]
       week 12: engaged in battle
+      week 13: initiated battle against small cargo bay [000013],
+      farming complex [000014], coal-burning plant [000015], core drill
+      [000016], factory [000017], gun placement [111]
       week 13: engaged in battle
     + Gelvaren CEO [000002], terran [terran].
       size: 4, mass: 4, capacity: 3/0, upkeep: 10 cash [cash], consume:
@@ -4572,10 +4472,6 @@ Galaxy report:
       sell 10 terrans [terran] at 50 each from Gelvaren complex
       [000026].
     Offers of buying items:
-      buy all terrans [terran] at any price by Gelvaren Headquarters
-      [000018].
-      buy all terrans [terran] at any price by Gelvaren Headquarters
-      [000018].
       buy all terrans [terran] at any price by Gelvaren Headquarters
       [000018].
       buy 100 units of food [food] at 1 each by Gelvaren complex
@@ -4664,14 +4560,14 @@ Galaxy report:
         week 13: PRODUCE failed: Gelvaren Headquarters [000018] has not
         enough crew to operate - 20 required, 10 available.
     + small cargo bay [000019], small cargo bay [cargob], immobile.
-      size: 2000, mass: 1086 (200), capacity: 1800/853, upkeep: 32 (30)
+      size: 2000, mass: 1066 (200), capacity: 1800/835, upkeep: 32 (30)
       cash [cash], consume: 2 (0) units of food [food], 2 (0) units of
       terran breathing gas mixture [terair].
-      items: 728 units of food [food] (size: 728, mass: 728), 2 terrans
+      items: 718 units of food [food] (size: 718, mass: 718), 2 terrans
       [terran] (size: 8, mass: 8, upkeep: 2 cash [cash], consume: 2
       units of food [food], 2 units of terran breathing gas mixture
-      [terair]), unit of iron [iron] (size: 5, mass: 10), 28 units of
-      oil [oil] (size: 112, mass: 140).
+      [terair]), unit of iron [iron] (size: 5, mass: 10), 26 units of
+      oil [oil] (size: 104, mass: 130).
       events:
         week 1: got 10 units of food [food] from farming complex
         [000020].
@@ -4680,17 +4576,14 @@ Galaxy report:
         week 1: given unit of iron [iron] to military barrack [000025].
         week 1: given 200 units of food [food] to infantry battalion
         [110].
-        week 1: got 10 units of food [food] from farming complex
-        [000020].
-        week 1: got 2 units of oil [oil] from core drill [000022].
         week 2: got 10 units of food [food] from farming complex
         [000020].
         week 2: got 2 units of oil [oil] from core drill [000022].
-        week 3: given 18 units of oil [oil] to tanks [109].
-        week 3: given 100 units of food [food] to tanks [109].
         week 3: got 10 units of food [food] from farming complex
         [000020].
         week 3: got 2 units of oil [oil] from core drill [000022].
+        week 3: given 18 units of oil [oil] to tanks [109].
+        week 3: given 100 units of food [food] to tanks [109].
         week 4: got 10 units of food [food] from farming complex
         [000020].
         week 4: got 2 units of oil [oil] from core drill [000022].
@@ -4722,55 +4615,54 @@ Galaxy report:
         [000020].
         week 13: got 2 units of oil [oil] from core drill [000022].
     + farming complex [000020], 2 farming complexes [farms], immobile.
-      size: 2000, mass: 240 (200), capacity: 1000/40, energy: 10, crew:
+      size: 2000, mass: 250 (200), capacity: 1000/50, energy: 10, crew:
       10/10, upkeep: 110 (100) cash [cash], consume: 10 (0) units of
       food [food], 10 (0) units of terran breathing gas mixture
       [terair].
       items: 10 terrans [terran] (size: 40, mass: 40, upkeep: 10 cash
       [cash], consume: 10 units of food [food], 10 units of terran
-      breathing gas mixture [terair]).
+      breathing gas mixture [terair]), 10 units of food [food] (size:
+      10, mass: 10).
       events:
         week 1: given 10 units of food [food] to small cargo bay
         [000019].
         week 1: produced 10 units of food [food].
-        week 1: given 10 units of food [food] to small cargo bay
-        [000019].
-        week 2: produced 10 units of food [food].
         week 2: given 10 units of food [food] to small cargo bay
         [000019].
-        week 3: produced 10 units of food [food].
+        week 2: produced 10 units of food [food].
         week 3: given 10 units of food [food] to small cargo bay
         [000019].
-        week 4: produced 10 units of food [food].
+        week 3: produced 10 units of food [food].
         week 4: given 10 units of food [food] to small cargo bay
         [000019].
-        week 5: produced 10 units of food [food].
+        week 4: produced 10 units of food [food].
         week 5: given 10 units of food [food] to small cargo bay
         [000019].
-        week 6: produced 10 units of food [food].
+        week 5: produced 10 units of food [food].
         week 6: given 10 units of food [food] to small cargo bay
         [000019].
-        week 7: produced 10 units of food [food].
+        week 6: produced 10 units of food [food].
         week 7: given 10 units of food [food] to small cargo bay
         [000019].
-        week 8: produced 10 units of food [food].
+        week 7: produced 10 units of food [food].
         week 8: given 10 units of food [food] to small cargo bay
         [000019].
-        week 9: produced 10 units of food [food].
+        week 8: produced 10 units of food [food].
         week 9: given 10 units of food [food] to small cargo bay
         [000019].
-        week 10: produced 10 units of food [food].
+        week 9: produced 10 units of food [food].
         week 10: given 10 units of food [food] to small cargo bay
         [000019].
-        week 11: produced 10 units of food [food].
+        week 10: produced 10 units of food [food].
         week 11: given 10 units of food [food] to small cargo bay
         [000019].
-        week 12: produced 10 units of food [food].
+        week 11: produced 10 units of food [food].
         week 12: given 10 units of food [food] to small cargo bay
         [000019].
-        week 13: produced 10 units of food [food].
+        week 12: produced 10 units of food [food].
         week 13: given 10 units of food [food] to small cargo bay
         [000019].
+        week 13: produced 10 units of food [food].
     + wind powerplant [000021], 19 wind powerplants [wnplnt], immobile.
       size: 190, mass: 190 (190), energy: 76/19, upkeep: 190 cash
       [cash].
@@ -4782,40 +4674,40 @@ Galaxy report:
         week 5: transferred wind powerplant [wnplnt] to Sydney [000006].
         week 6: transferred wind powerplant [wnplnt] to Sydney [000006].
     + core drill [000022], core drill [cdrill], immobile.
-      size: 1000, mass: 1024 (1000), capacity: 750/24, energy: 5, crew:
+      size: 1000, mass: 1034 (1000), capacity: 750/32, energy: 5, crew:
       6/6, upkeep: 46 (40) cash [cash], consume: 6 (0) units of food
       [food], 6 (0) units of terran breathing gas mixture [terair].
       items: 6 terrans [terran] (size: 24, mass: 24, upkeep: 6 cash
       [cash], consume: 6 units of food [food], 6 units of terran
-      breathing gas mixture [terair]).
+      breathing gas mixture [terair]), 2 units of oil [oil] (size: 8,
+      mass: 10).
       events:
         week 1: given 2 units of oil [oil] to small cargo bay [000019].
         week 1: produced 2 units of oil [oil].
-        week 1: given 2 units of oil [oil] to small cargo bay [000019].
-        week 2: produced 2 units of oil [oil].
         week 2: given 2 units of oil [oil] to small cargo bay [000019].
-        week 3: produced 2 units of oil [oil].
+        week 2: produced 2 units of oil [oil].
         week 3: given 2 units of oil [oil] to small cargo bay [000019].
-        week 4: produced 2 units of oil [oil].
+        week 3: produced 2 units of oil [oil].
         week 4: given 2 units of oil [oil] to small cargo bay [000019].
-        week 5: produced 2 units of oil [oil].
+        week 4: produced 2 units of oil [oil].
         week 5: given 2 units of oil [oil] to small cargo bay [000019].
-        week 6: produced 2 units of oil [oil].
+        week 5: produced 2 units of oil [oil].
         week 6: given 2 units of oil [oil] to small cargo bay [000019].
-        week 7: produced 2 units of oil [oil].
+        week 6: produced 2 units of oil [oil].
         week 7: given 2 units of oil [oil] to small cargo bay [000019].
-        week 8: produced 2 units of oil [oil].
+        week 7: produced 2 units of oil [oil].
         week 8: given 2 units of oil [oil] to small cargo bay [000019].
-        week 9: produced 2 units of oil [oil].
+        week 8: produced 2 units of oil [oil].
         week 9: given 2 units of oil [oil] to small cargo bay [000019].
-        week 10: produced 2 units of oil [oil].
+        week 9: produced 2 units of oil [oil].
         week 10: given 2 units of oil [oil] to small cargo bay [000019].
-        week 11: produced 2 units of oil [oil].
+        week 10: produced 2 units of oil [oil].
         week 11: given 2 units of oil [oil] to small cargo bay [000019].
-        week 12: produced 2 units of oil [oil].
+        week 11: produced 2 units of oil [oil].
         week 12: given 2 units of oil [oil] to small cargo bay [000019].
-        week 13: produced 2 units of oil [oil].
+        week 12: produced 2 units of oil [oil].
         week 13: given 2 units of oil [oil] to small cargo bay [000019].
+        week 13: produced 2 units of oil [oil].
     + factory [000023], factory [factry], immobile.
       size: 1000, mass: 790 (750), capacity: 500/40, energy: 15, crew:
       10/10, upkeep: 70 (60) cash [cash], consume: 10 (0) units of food
@@ -4852,6 +4744,8 @@ Galaxy report:
       movement speed: 0.1 on ground.
       items: 10 cash [cash], 200 units of food [food] (size: 200, mass:
       200).
+      effects:
+        will move for another 17 weeks before next destination.
       events:
         week 1: got 10 cash [cash] from Gelvaren Headquarters [000018].
         week 1: got 200 units of food [food] from small cargo bay
@@ -4890,6 +4784,7 @@ Galaxy report:
 ------------------------------------------------------------
   * Luna [P00003] (1, 0, 0), moon, unexplored.
 ------------------------------------------------------------
+    orbit [O00001], has no atmosphere.
 
 
 Orders Template:
@@ -4902,37 +4797,28 @@ Orders Template:
 @get all terran from 000026
 @buy all terran
 @produce cash
-@get all cash from 000026
-@get all terran from 000026
-@buy all terran
-@produce cash
 
 #modulestack 000019
 ; + small cargo bay [000019], small cargo bay [cargob], immobile.
-; items: 728 units of food [food], 2 terrans [terran], unit of iron
-; [iron], 28 units of oil [oil].
+; items: 718 units of food [food], 2 terrans [terran], unit of iron
+; [iron], 26 units of oil [oil].
 @get all food from 000020
 @get all oil from 000022
 sell 100 food
-@get all food from 000020
-@get all oil from 000022
 
 #modulestack 000020
 ; + farming complex [000020], 2 farming complexes [farms], immobile.
-; items: 10 terrans [terran].
-@use farmng
+; items: 10 terrans [terran], 10 units of food [food].
 @use farmng
 
 #modulestack 000021
 ; + wind powerplant [000021], 19 wind powerplants [wnplnt], immobile.
 @produce energy
 sell 1 wnplnt
-@produce energy
 
 #modulestack 000022
 ; + core drill [000022], core drill [cdrill], immobile.
-; items: 6 terrans [terran].
-@use oildwe
+; items: 6 terrans [terran], 2 units of oil [oil].
 @use oildwe
 
 #modulestack 000023
@@ -4948,7 +4834,6 @@ sell 1 wnplnt
 #modulestack 000026
 ; + Gelvaren complex [000026], city [city], immobile.
 ; technologies: rocket launcher production [rckter].
-@produce terran
 @produce terran
 
 #modulestack 108
@@ -4968,15 +4853,16 @@ sell 1 wnplnt
 #modulestack 110
 ; + infantry battalion [110], infantry battalion [inftry].
 ; items: 10 cash [cash], 200 units of food [food].
-move R00002 R00002 R00002 R00002 R00002 R00002 R00002 R00002 R00002
-R00002 R00002 R00002 R00002
+; effects:
+;   will move for another 17 weeks before next destination.
+move R00002
 -capture 000012
 -capture all
 
 #modulestack c000012
 ; + corporate headquarters [c000012], corporate headquarters [corphq],
 ;   disabled, immobile.
-; items: 30 wounded terrans [wndtrn], 15 terrans [terran], 2200 cash
+; items: 3 wounded terrans [wndtrn], 27 terrans [terran], 2200 cash
 ; [cash].
 
 #person 000002

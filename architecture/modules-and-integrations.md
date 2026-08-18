@@ -9,7 +9,7 @@ All engine types live in namespace `SpaceAge`. Folders below are **bounded conte
 | Module | Path | Owns | Talks to |
 |--------|------|------|----------|
 | **Host** | `Game/Program.cs`, `Game.cs` | CLI (`/data`, `/turn-dir`, `/check`), turn orchestration, `EngineVersion` | DataFile, OrdersReader, ReportWriter, stub Events/Request |
-| **Persistence** | `Game/game/` | `DataFile`, `XMLProcessing` (1251 XML), `Sequence` RNG, `Market`, `Bank` | Catalog + game XML; fills static `*.All` registries |
+| **Persistence** | `Game/game/` | `DataFile` (host/test facade), `XMLProcessing` (1251 XML), `Sequence` RNG, `Market`, `Bank`. Target collaborators per [ADR-0006](adr/ADR-0006-datafile-facade-and-xml-seams.md): `CatalogLoader`, `OrderXml`, `ModuleTypeGroupXml`; faction/galaxy instance XML on those types | Catalog + game XML; fills static `*.All` registries. Host and tests talk to `DataFile` only |
 | **Orders** | `Game/orders/` | Parse `order.*`, condition graph, weekly execute (immediate then one long) | `IOrderable` subjects (`Faction`, `ModuleStack`, `Person`); spawns **Effects** |
 | **Effects** | `Game/effects/` | Timed activities (`Producing*`, `Moving`, `Training*`, `Receiving*`, damage/fuel) | `IEffectable` on stacks/persons; runs after orders in the week |
 | **Battle** | `Game/battle/` | Combat instance, field, units, tactics | Triggered from movement/attack; reports via `IBattleReporting` |
@@ -44,12 +44,60 @@ flowchart TD
 - **Do not** add a database, HTTP API, or SMTP sender without an ADR — the integration surface is files.
 - **Do not** collapse unit and SampleGame tests into one fixture style; keep golden files in `Tests/SampleGame/`.
 - **Do not** parse orders with a different encoding than 1251.
-- **Do not** silently add order types to `OrdersReader` without the matching XML load/save path in `DataFile` (today `research` / `see` already diverge — fix both sides together).
+- **Do not** silently add order types to `OrdersReader` without the matching XML load/save path in `DataFile` / `OrderXml` (today `research` / `see` already diverge — fix both sides together).
 - **Do not** convert folders into C# namespaces as a drive-by refactor.
+- **Do not** bypass the `DataFile` facade from `Program`, `ReportWriter`, or tests (`new CatalogLoader()` / `Galaxy.LoadXml` as a second public persistence API). Extracts construct collaborators inside `DataFile`.
+- **Do not** change Windows-1251 (`loadXmlDocument` / `XmlTextWriter` with `Encoding.GetEncoding(1251)`).
+- **Do not** collapse catalog two-pass (`LoadConfigurationItems(true)` then `(false)`); stubs must exist before `requires` / `use-produce`.
+- **Do not** change faction XML-report filter semantics: name `"1"` is NPC (unfiltered); skip factions with no stacks; visibility uses existing `Visible(faction)`.
+- **Do not** opportunistic-split `DataFile` outside [ADR-0006](adr/ADR-0006-datafile-facade-and-xml-seams.md) phases, and do not split the rest of `ModuleStack` (ADR-0005).
+- **Do not** “complete” the capacity save switch (`research` group) or rewrite moon/exit save quirks in the same PR as an extract.
+
+## Persistence (`DataFile`)
+
+Dated: 2026-08-18, engine `0.1.141`. Seams: [ADR-0006](adr/ADR-0006-datafile-facade-and-xml-seams.md).
+
+`DataFile` is the **only** persistence entry point for the host and tests: `new DataFile(dir)`, `LoadConfiguration()`, `LoadGame()`, `SaveGame()` / `SaveGame(dir, file, faction)`, plus the granular methods tests already call. Encoding stays 1251.
+
+Catalog load is two-pass because types cross-reference. Game load is ordered: factions → galaxy (objects, then exits) → contracts → orders. Save applies an optional faction filter for XML reports (`ReportWriter`); faction name `"1"` clears the filter.
+
+### Interim (current code, and after catalog/order extracts)
+
+```mermaid
+flowchart LR
+  host[Program / ReportWriter / tests] --> df[DataFile facade]
+  df --> cfg[LoadConfiguration two-pass]
+  cfg --> cat[CatalogLoader or DataFile catalog methods]
+  df --> game[LoadGame]
+  game --> fac[LoadFactions]
+  game --> gal[LoadGalaxy then loadGalaxyExits]
+  game --> con[Contract.All.LoadXml]
+  game --> ord[LoadOrders factory then Order.LoadXml]
+  df --> save[SaveGame 1251 XmlTextWriter]
+  save --> vis[faction filter NPC 1 / Visible]
+```
+
+### Target (after ADR-0006 phases)
+
+```mermaid
+flowchart LR
+  host[Program / ReportWriter / tests] --> df[DataFile facade]
+  df --> io[1251 LoadDocument / XmlTextWriter]
+  df --> cat[CatalogLoader stub then fill]
+  df --> fac[Faction.LoadXml / SaveXml]
+  df --> gal[Galaxy.LoadXml then LoadExits / SaveXml]
+  df --> con[Contract.All]
+  df --> ord[OrderXml factory then Order.LoadXml]
+  cat --> all[static *.All registries]
+  fac --> all
+  gal --> stacks[ModuleStack.All.LoadXml]
+```
+
+`CatalogLoader` and `OrderXml` are internal collaborators, not a second API. `Galaxy` stays a domain type with collection-style XML (like `Contracts`), not a new `GalaxyLoader` god class.
 
 ## Turn pipeline (current)
 
-Dated: 2026-08-16, engine `0.1.137`.
+Dated: 2026-08-18, engine `0.1.141`.
 
 ```mermaid
 flowchart TD
@@ -122,6 +170,7 @@ One test assembly: `Tests.dll`. Layers are **namespaces**, not extra `.csproj` f
   - Integration: `--where "namespace == IntegrationTests"`
 - Fast local/cloud default: **entire** `Tests.dll` (`.cursor/run-tests.sh` on Mono / `vstest.console` on Windows).
 - Integration tests for SampleGame turns 4–5 are `[Ignore("not ready")]` — do not enable them without goldens. Turns 1–3 are independently runnable from committed `gamein` files.
+- `DataFile` extracts (ADR-0006): characterize with `TDataFile` (unit) and SampleGame load/save goldens (integration). Do not add a third test layer.
 
 ## Stub / incomplete boundaries
 
@@ -134,3 +183,7 @@ Treat as **not live integrations** until implemented with tests:
 | `OrdersReader.Check` | Stub |
 | `Game.GenerateOffers` / `UpdateRates` | Partial / TODO |
 | SampleGame turns 4–5 | Ignored |
+
+## Revision
+
+- 2026-08-18: Persistence seams for `DataFile` (ADR-0006). Interim/target diagrams; anti-patterns for facade, 1251, two-pass catalog, faction XML-report filter. Engine citation `0.1.141`.

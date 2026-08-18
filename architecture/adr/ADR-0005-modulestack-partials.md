@@ -20,3 +20,4 @@ This is the first use of `partial` in the engine. It is a file split only; names
 
 - Do not split the rest of `ModuleStack` (orders, combat, XML, movement) without a new ADR that names the seams.
 - New consume or ownership helpers belong in these partials when they are the same concern.
+- `DataFile` is a different god class; its seams are [ADR-0006](ADR-0006-datafile-facade-and-xml-seams.md), not this partial-file pattern as the destination.

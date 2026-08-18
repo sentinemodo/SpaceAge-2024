@@ -42,6 +42,45 @@ For **new systems, major boundaries, integration choices, or multi-repo layout**
 
 If architecture docs and code **conflict**, resolve by **updating architecture** (ADR or revision via project-architect) rather than silently diverging from the written baseline.
 
+## Player agent (subagent)
+
+TDD does **not** play the game. Do not draft or edit player order files (`player/drafts/`, SampleGame `orders.*.txt`, report-template order blocks) and do not judge whether a **report** matches the intended story. Launch **`/player`** (Task `subagent_type="player"`), **wait**, then use the handoff. TDD writes C# and tests; player writes orders and reads reports. **Goldens** are replaced only after `/player` validation **and** explicit human approval (below).
+
+Call `/player` when:
+
+| Trigger | Prompt the player agent | TDD does not |
+|---------|-------------------------|--------------|
+| **Orders needed** — new or changed turn orders, fixtures, or drafts so a test/story can run | Faction, paths, objective, and where to write (`player/drafts/` or the fixture path). Live syntax only. | Invent `USE`/`MOVE`/… lines or paste orders into C# comments as the source of truth |
+| **Report vs expectation** — after a turn, golden, or `Game.exe` run, check the **player-facing** report | Report path(s) (txt and xml), the expected beats, and “match or mismatch, cite ids/lines.” | Narrate the report or decide the story succeeded by reading it yourself |
+| **Golden change** — new or replaced `compareFiles` expected file, SampleGame `report.*` / `gameout.*` / frozen `gamein.*` | Candidate path(s), previous golden if it exists, expected beats. Handoff: match or mismatch. Then **stop for the human** (below). | Copy generated output over a committed golden, or commit that diff, without player + human |
+| **Commit** — user asked to commit (see below) | Docs-only manuals refresh | Write `player/rules.md`, `player/basic_technologies.md`, `player/advanced_technologies.md`, or `player/battle.md` |
+
+If player reports a syntax/catalog gap, take the one-sentence engine note; do not implement wishlist verbs in that same step unless the user asked.
+
+### Golden changes — `/player` then human
+
+Do **not** overwrite or commit a golden until both gates pass.
+
+1. Keep the generated output as a **candidate** (test output, `*_saved`, or a clearly named temp). Do not replace the committed golden yet.
+2. Launch `/player` with candidate path(s), the current golden if any, and the expected beats. Wait for **match** or **mismatch**.
+3. If **mismatch**, do not update the golden. Fix engine/tests or ask; pause (plan step).
+4. If **match**, **stop**. Show the golden path(s) and the player handoff. Ask the human to approve replacing the golden.
+5. Replace the committed file **only** after an explicit yes to **this golden** (e.g. “approve golden”, “replace report.2.1.txt”). **Plan “next” / “continue” / “lgtm” on a different step is not golden approval.**
+
+Same rule when adding a **new** golden (first check-in of a report/XML the test will compare to).
+
+Do not `git commit` golden diffs that skipped this pair of gates.
+
+### Before every commit
+
+When the user asks to **commit**, do **not** `git commit` until **`/player`** has refreshed the live manuals.
+
+1. Docs-only prompt (no turn, no `player/drafts/`): update `player/rules.md` from `EOrderType` / `OrdersReader` / `*Order.Parse`–`Execute` (immediate vs long); update `player/basic_technologies.md` from catalog `level="0"` and `level="1"` (grouped by level); update `player/advanced_technologies.md` from catalog `level>=2` (grouped by level, mermaid `requires` graph); update `player/battle.md` from `Battle.cs` / tactics / attitudes / combat stats. Handoff: files changed, or already current.
+2. Stage any player-manual diffs **with the same commit**.
+3. Wishlist-only rows from player go in that commit too; do not implement them in C# there.
+
+Skip the commit refresh only if the commit is **nothing but** already-refreshed `player/*.md` (no `Game/`, `Tests/`, or `data.xml` in the diff).
+
 ## C# practices (this repo)
 
 - **Match the existing .NET Framework 4.8 codebase.** Use only language features the legacy non-SDK compiler and neighboring code already use; do not introduce nullable reference types, `required`, records, or new `async`/`await` surfaces as a drive-by change.
@@ -55,6 +94,26 @@ If architecture docs and code **conflict**, resolve by **updating architecture**
 - After edits, **run the relevant tests** (the whole `Tests.dll` via `.cursor/run-tests.sh` on Mono or `vstest.console` on Windows; optionally an NUnit `--where "namespace == ..."` filter) and report results.
 - Keep diffs **minimal**; no drive-by refactors outside the request.
 - If requirements are unclear, **one focused question** or short stated assumptions, then the smallest testable slice — except when the request **disagrees with observed data**; then stop (see below).
+- **Commits:** user must ask; then run the **player** docs-only refresh (above) before `git commit`.
+- **Orders and reports:** call `/player` (above). Do not write order files or interpret reports as the player yourself.
+- **Goldens:** `/player` validates the candidate, then the human must approve the replace. Do not treat plan “continue” as golden approval.
+- **Plans:** one planned step, then pause (see below). Do not run a multi-step plan to completion in one go.
+
+## Execute plans one step at a time
+
+When working from a **plan** (chat plan, canvas actions, numbered sequence, or todo list with more than one item), do **only the current step**.
+
+After that step:
+
+1. Say what was done (tests, files, result).
+2. Name the **next** planned step in one or two sentences.
+3. **Stop.** Ask for review, questions, or go-ahead. Do not start the next step in the same turn.
+
+Red → green → refactor **inside** the current step is fine without pausing. Pausing is between **planned** steps, not between writing a failing test and the production change that makes it pass.
+
+Continue to the next step only when the user says to (e.g. “next”, “continue”, “lgtm”). If they ask to run the rest of the plan without pauses, follow that for that plan only.
+
+Do not batch “obvious” follow-ups from later steps (extra refactors, later todos, SampleGame turns after a unit step) unless they asked for them.
 
 ## Pause on request vs data
 

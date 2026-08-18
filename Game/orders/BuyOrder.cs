@@ -241,7 +241,7 @@ namespace SpaceAge
 
 			if (this.Buy == null)
 			{
-				// create an offer
+				// create an offer, or keep a standing identical one
 				this.Buy = new Offer(this.Buyer.Location.Market, this.Buyer, this.BuyType);
                 this.Buy.BuyOrder = this; 
                 this.Buy.Quantity = this.Quantity;
@@ -251,6 +251,8 @@ namespace SpaceAge
 				this.Buy.ModuleType = this.ModuleType;
 				this.Buy.ItemType = this.ItemType;
                 this.Buy.Everywhere = this.Everywhere;
+				this.Buy = Offer.All.ReuseEquivalent(this.Buy);
+				this.Buy.BuyOrder = this;
             }
 
 			this.Executed = this.Buy.Process(week);

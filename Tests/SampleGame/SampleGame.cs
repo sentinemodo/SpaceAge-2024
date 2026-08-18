@@ -585,6 +585,7 @@ namespace IntegrationTests
 
             ReportWriter reportsWriter = new ReportWriter(this.game, this.dataFile, this.testDir);
             reportsWriter.GenerateReports(this.testDir);
+            this.dataFile.SaveGame(this.testDir, "gameout.3_saved.xml");
 
             this.compareFiles("testreport.3.1.txt", "report.3.1.txt");
             this.compareFiles("testreport.3.2.txt", "report.3.2.txt");
@@ -593,7 +594,6 @@ namespace IntegrationTests
             Assert.That(Faction.All["3"].TechnologiesSeen.Contains("rckter"), Is.True);
             Assert.That(Faction.All["3"].TechnologiesToShow.Contains("rckter"), Is.False);
 
-            this.dataFile.SaveGame(this.testDir, "gameout.3_saved.xml");
             this.compareFiles("gameout.3.xml", "gameout.3_saved.xml");
 		}
 
@@ -609,7 +609,7 @@ namespace IntegrationTests
 			Assert.That(ModuleStack.All["200"].Location.Name, Is.EqualTo("R00001"));
 			Assert.That(ModuleStack.All.ContainsKey("207"), Is.True);
 			Assert.That(ModuleStack.All["207"].Quantity, Is.EqualTo(4));
-			Assert.That(ModuleStack.All["200"].Technologies.Contains("alnhul"), Is.True);
+			Assert.That(ModuleStack.All["200"].Technologies.Contains("ahlcns"), Is.True);
 		}
 
 		[Test]
@@ -675,10 +675,6 @@ namespace IntegrationTests
 				Sequence.Ints.Push(hitLocations[i % hitLocations.Length]);
 				Sequence.Ints.Push(1);
 			}
-			for (int i = 0; i < 400; i++)
-			{
-				Sequence.Ints.Push((i % 4 == 0) ? 0 : 50);
-			}
 			for (int sequenceValue = 125; sequenceValue >= 115; sequenceValue--)
 			{
 				Sequence.Ints.Push(sequenceValue);
@@ -700,24 +696,45 @@ namespace IntegrationTests
 
 			Assert.That(Contract.All.Count, Is.EqualTo(0), "researching the wreck should complete the Luna contract");
 			Assert.That(ModuleStack.All["200"].Owner.Name, Is.EqualTo("2"));
-			Assert.That(Faction.All["2"].TechnologiesToShow.Contains("alndrn")
-				|| Faction.All["2"].TechnologiesSeen.Contains("alndrn")
-				|| ModuleStack.All["200"].Technologies.Contains("alndrn"), Is.True);
+			Assert.That(ModuleStack.All["115"].ResearchPoints, Is.EqualTo(0),
+				"wreckage contract consumes research points the week the threshold is reached");
+			int lastResearchedWeek = -1;
+			int activatedWeek = -1;
+			foreach (EventReport eventReport in ModuleStack.All["115"].EventReports)
+			{
+				if (eventReport.Description.IndexOf("researched crashed alien vessel") >= 0)
+				{
+					lastResearchedWeek = eventReport.Week;
+				}
+			}
+			foreach (EventReport eventReport in ModuleStack.All["200"].EventReports)
+			{
+				if (eventReport.Description.IndexOf("activated onboard systems") >= 0)
+				{
+					activatedWeek = eventReport.Week;
+				}
+			}
+			Assert.That(lastResearchedWeek, Is.GreaterThan(0),
+				"lab should apply research points until the wreckage threshold");
+			Assert.That(activatedWeek, Is.EqualTo(lastResearchedWeek),
+				"unit reward is granted the same week the fifth research point is applied");
+			Assert.That(Faction.All["2"].TechnologiesToShow.Contains("alnfgh")
+				|| Faction.All["2"].TechnologiesSeen.Contains("alnfgh")
+				|| ModuleStack.All["200"].Technologies.Contains("alnfgh"), Is.True);
 			int woundedLeft = 0;
 			if (ModuleStack.All["c000012"].ItemStacks.ContainsKey(ItemType.All["wndtrn"]))
 			{
 				woundedLeft = ModuleStack.All["c000012"].ItemStacks[ItemType.All["wndtrn"]].Quantity;
 			}
-			Assert.That(woundedLeft, Is.LessThan(30), "unsupplied wounded should die without medici");
+			Assert.That(woundedLeft, Is.LessThan(30), "quarterly wounded outcome should reduce unsupplied wndtrn");
 
 			ReportWriter reportsWriter = new ReportWriter(this.game, this.dataFile, this.testDir);
 			reportsWriter.GenerateReports(this.testDir);
+			this.dataFile.SaveGame(this.testDir, "gameout.4_saved.xml");
 
 			this.compareFiles("testreport.4.1.txt", "report.4.1.txt");
 			this.compareFiles("testreport.4.2.txt", "report.4.2.txt");
 			this.compareFiles("testreport.4.3.txt", "report.4.3.txt");
-
-			this.dataFile.SaveGame(this.testDir, "gameout.4_saved.xml");
 			this.compareFiles("gameout.4.xml", "gameout.4_saved.xml");
 		}
 

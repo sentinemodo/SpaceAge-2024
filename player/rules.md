@@ -1,0 +1,399 @@
+# Player order syntax
+
+Checked **18 Aug 2026** against engine **0.1.141** (`Game/Program.cs`).
+
+Sources: `Game/orders/EOrderType.cs`, `Game/orders/OrdersReader.cs`, `Game/orders/Orders.cs`, `Game/Game.cs` (week loop), `Game/game/DataFile.cs` (`LoadOrders` XML switch), each `Game/orders/*Order.Parse` / `Execute`. Sample prefix usage: `Tests/SampleGame/orders.*.txt`.
+
+Not source of truth: `Game/documentation/Rules.txt`. Turn order files are **Windows-1251** (same as reports). Verbs are case-insensitive; most arguments are not.
+
+**24** verbs parse from text (`OrdersReader` switch): **18 immediate**, **6 long**. See [Turn sequence](#turn-sequence), [Immediate vs long](#immediate-vs-long), and [Text vs XML](#text-vs-xml). `PRESS` has a class but is not in the text switch or the XML switch — omit it. `TRANSFER` loads from XML only.
+
+## Prefixes and subjects
+
+Order of a line after comments are stripped: **leading `-`/`+` conditions**, then **duration** (`N` on its own token, or `@` glued to the verb), then the **verb**. `OrdersReader` counts leading `+`/`-` on the first token as condition depth, then tries to read that token as a repeat count, then strips `@`/`+`/`-` from the verb.
+
+### File headers
+
+
+| Line                         | Meaning                                                                                                                             |
+| ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| `#faction <id> "<password>"` | Selects the faction and sets it as subject. Password must match (`GetQuotedToken`). Must appear before stacks/people.               |
+| `#modulestack <id|newN>`     | Subject becomes that stack. Faction must already be set and must own it. Unknown ids may be created as unformed `newN` aliases.     |
+| `#person <id|newN>`          | Subject becomes that person. Same ownership rules.                                                                                  |
+| `#end`                       | Recognized header, not an order. `finished` is reset every line, so later lines are still read — put `#end` last, as in SampleGame. |
+
+
+Orders after a failed `#modulestack` / `#person` (wrong owner) are ignored until a valid subject is set.
+
+### Comments and blanks
+
+Empty lines are dropped. `;` and `//` start a comment; **whichever appears first** wins (`LineParser.CommentIndex`). The rest of the line is discarded.
+
+```
+#modulestack 000012
+; Caste Prime Headquarters [000012]
+@produce cash   // also a comment
+```
+
+### Repeat
+
+- Default repeat is **1**.
+- `N verb …` — first token is an integer: repeat **N** times (`5 use shtlas as new1`).
+- `@verb …` — unlimited (`Repeat = -1`), e.g. `@produce cash`, `@use farmng`.
+- A leading minus on a numeric first token is both a **condition dash** and a repeat: `-3 use armcbt as new4 for 000025` means “if the parent failed, USE three times”.
+
+On **immediate** orders, `N` / `@` is how many **weeks** the order may succeed (once per week while it stays on the list). On **long** orders, `N` / `@` is how many **durations** to complete (`5 use` is five builds; `@produce cash` never finishes).
+
+### Conditions (`-` / `+`)
+
+Leading `-` and `+` on the first token nest against **earlier orders on the same subject**. Depth is the count of those characters. Condition characters must sit on the **same token** as the verb (`-stack new1`, not `-` on its own line).
+
+`ExecuteList` only starts an order whose `ConditionalOrders` list is **empty**. That makes the two signs opposite in practice:
+
+
+| Prefix   | Stored on                                            | Effect                                                                                                                                                                                                                      |
+| -------- | ---------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `-child` | parent goes into the **child’s** `ConditionalOrders` | Child is skipped until the parent **finishes** (`Executed`). Then `RemoveConditions` clears the wait. Use this to hop then build: `move O00001` then `-use filidx as new108 for 101`.                                       |
+| `+child` | child goes into the **parent’s** `ConditionalOrders` | **Parent is skipped** (its list is no longer empty). The child runs on its own if it has no further `+` grandchildren. `move R00001` then `+use ssassm` does **not** move — the USE chain runs and the MOVE stays leftover. |
+
+
+Immediate and long orders share one list. A `-` under a long parent waits until that long **finishes** (`Executed`), not merely starts (`Executing`). Stack them: `--+-use`, `-+get`, `--+--give`.
+
+## Turn sequence
+
+From `Game.exe` (`Program.Main`) and `Game.Execute`. A turn is **13 weeks**. Combat details: `player/battle.md`.
+
+### Host pipeline
+
+1. Load catalog (`data.xml`) and the saved game.
+2. Load requests and GM events; run `Events.Execute` (not player orders).
+3. Load `order.*` files (`OrdersReader`).
+4. `Game.Execute` (below).
+5. Write faction reports, then save the game.
+
+`/no-turn` skips the 13 weeks: load orders, run **between-turn** immediates only (`AllowedBetweenTurns` — live text verb: `CONTRACT`), write contract announcements, save.
+
+`/check` parses an order file and does not execute.
+
+### Each turn (`Game.Execute`)
+
+Clear last turn’s event reports, then `turn++`.
+
+**Weeks 1–13**, in order:
+
+1. Clear each subject’s “already did a long order” flag and each immediate’s `Executed` flag.
+2. **Orders** (`ExecuteOrders`):
+  - Every **faction** (e.g. `CONTRACT`).
+  - **Module stacks that still have orders** (`HasOrders`), looping until a pass does nothing. Each stack: immediate loop → one long → immediate loop, drop finished non-repeating orders, then tick **effects** (`Moving`, `Producing*`, `Training*`).
+  - **People that still have orders**, same loop (person effects are commented out and do not tick here).
+3. **Medical consume** — `medici` for wounded/mad crew on each stack (`wndtrn` / `madtrn`). Food and breathing gas are not deducted here.
+4. **Contracts** — evaluate triggers and pay rewards.
+5. **Buy offers** — each standing `BUY` tries to match a sell (`Offer.Process`). `SELL` only lists; matching is from the buy side.
+6. **Battles** — `Battle.StartAtLocations` then `Execute` (see `player/battle.md`).
+
+After week 13: clear long/immediate flags again; drop unformed stacks that should not report (`RemoveNonReporting`).
+
+**End of turn (once):**
+
+- Bank: quarterly interest (`AddQuarterlyInterest`).
+- `UpdateRates` — empty (comments only).
+- `GenerateOffers` — empty (no NPC auto-offers).
+
+Standing `@buy` / `@sell` stay on the order list and retry each week at step 5. `ATTACK` / `TACTIC` / `DECLARE` during step 2 only set stance; shooting is step 6.
+
+## Immediate vs long
+
+A turn is **13 weeks**. Each week, for each faction / stack / person, the engine:
+
+1. Runs **immediate** orders in a loop until a pass does nothing.
+2. Runs **at most one long** order (the first ready one on that subject).
+3. Runs **immediate** again, so `GET` / `STACK` / `SEE` can fire the same week after a move or a finished build.
+
+The two kinds are independent except where you chain them with `-` / `+`. An immediate line after an unfinished long still runs if it has no pending conditions.
+
+
+|                       | Immediate                                                                      | Long                                                                                     |
+| --------------------- | ------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------- |
+| How many per week     | As many as can succeed (loop until idle)                                       | **One** per subject                                                                      |
+| Duration              | Finishes in the week it succeeds (or retries later)                            | Occupies the long slot for `Duration` weeks (`use-time`, produce duration, move legs, …) |
+| Needs an active stack | No (probes and cargo still have their own checks)                              | Yes: formed, enough crew and energy (`CanOperate`)                                       |
+| Repeat `N` / `@`      | Succeed up to N weeks, or every week forever                                   | Complete N full durations, or never stop                                                 |
+| After a turn          | Dropped when `Executed` and repeat is used up; otherwise stays on the template | Same; in-progress work is kept as an effect (`Moving`, `Producing*`, `Training*`)        |
+
+
+**Immediate** orders are setup, probes, cargo, stance, and stacking. They do not consume the week’s long slot. `FORM`, `GET`, and `GIVE` can all fire the same week as a `USE` or `MOVE`.
+
+**Long** orders are the week’s work: move, produce, repair, research, train, use. A second long on the same subject waits until the first completes (or until its conditions clear). Accepting modules mid-week can mark the receiver as having already used its long slot.
+
+`CONTRACT` is immediate and also **allowed between turns** (`/no-turn`). No other live text verb is.
+
+## Text vs XML
+
+`DataFile.LoadOrders` builds orders from `<order>` XML when loading a game. Divergences:
+
+
+| Verb                                    | Text (`OrdersReader`)                                    | XML (`DataFile` switch)                                                          |
+| --------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `RESEARCH`                              | parses                                                   | **missing** — `ResearchOrder.LoadXml` exists but XML load throws “Unknown order” |
+| `SEE`                                   | parses                                                   | **missing** — same pattern                                                       |
+| `TRANSFER`                              | **missing** — “Unknown order”                            | loads (`TransferOrder`)                                                          |
+| `PRESS`                                 | missing                                                  | missing                                                                          |
+| `MOVE`                                  | destinations: region, star, planet, moon, anomaly, orbit | XML destinations are looked up in `Region.All` only                              |
+| `COPY` comments mention `COPY all TO …` | **not parsed** — technology id required                  | technology + receiver attributes                                                 |
+
+
+Player turn files use **text**. XML matters for saved games, not for `order.*` drafts.
+
+---
+
+## Immediate orders
+
+ACTIVE, ALIAS, ATTACK, BUY, CAPTURE, CONTRACT, COPY, DECLARE, FORM, GET, GIVE, HAS, NAME, SEE, SELL, SET, STACK, TACTIC.
+
+### ACTIVE
+
+**Syntax:** `ACTIVE <modulestack-id|newN>`
+
+**Subject:** any orderable (observer).
+
+Succeeds if the named stack is already active (`IsActive`). Used as a condition parent (SampleGame: `active new2` then `--stack new3`).
+
+### ALIAS
+
+**Syntax:** `ALIAS "<alias>"`
+
+**Subject:** modulestack.
+
+Sets the stack’s `Alias` string.
+
+### ATTACK
+
+**Syntax:** `ATTACK <unit-id>`
+
+**Subject:** a holder (stack).
+
+Sets the owner’s attitude toward that unit id to **enemy**. Combat itself is resolved later from tactics (`destroy` / `capture`).
+
+### BUY
+
+**Syntax:**
+
+- `BUY <quantity\|ALL> <item-id\|module-id> [AT <price>] [EVERYWHERE]`
+- `BUY <technology-id> [AT <price>] [EVERYWHERE]`
+
+**Subject:** an offerent (trading stack).
+
+Posts a standing buy on the local market (`Offer.Process`). Quantity `ALL` sets `AllQuantity`. Omitted `AT` leaves price unrestricted (`Price = -1`). First token is treated as a **technology id** if it is in the catalog (do not write a trailing `technology` word — Parse would reject it). Sample: `@buy all terran`.
+
+### CAPTURE
+
+**Syntax:** `CAPTURE <unit-id>|ALL`
+
+**Subject:** modulestack.
+
+Sets tactic to **capture**. A specific id is the preferred target and is marked enemy if that stack exists. `ALL` prefers every enemy at the location. Immobile stacks cannot capture (destroy only).
+
+### CONTRACT
+
+**Syntax:**
+
+- `CONTRACT <location> GIVE <quantity> <module-id> TO <stack-id> REWARD <technology-id>`
+- `CONTRACT <contract-id> WITHDRAW`
+
+**Subject:** **faction** (`#faction` as subject). Also allowed **between turns**.
+
+Publishes a location contract that pays the technology when the give-module trigger completes, or withdraws an existing contract by id. If the subject is not a faction, Execute does nothing.
+
+### COPY
+
+**Syntax:** `COPY <technology-id> TO <stack-id>`
+
+**Subject:** modulestack (source).
+
+Copies a technology the source holds onto a **pre-existing** receiver at the **same location**, if the receiver has remaining technology capacity. `COPY all` is not implemented.
+
+### DECLARE
+
+**Syntax:**
+
+- `DECLARE FACTION <id> <attitude>`
+- `DECLARE UNIT <id> <attitude>`
+- `DECLARE DEFAULT <attitude>`
+- `DECLARE UNKNOWN <attitude>`
+
+**Subject:** any orderable (applies to its owner).
+
+One-way stance. Attitudes (case-insensitive): `enemy`, `hostile`, `neutral`, `friendly`, `ally`. `enemy` is the combat stance (faction-wide when targeting a faction). Sample: `-declare faction 2 enemy`.
+
+### FORM
+
+**Syntax:** `FORM NEW [WITH <n>] [AS "<alias>"|newN]`
+
+**Subject:** modulestack.
+
+Creates an empty stack as a sibling of the former. `WITH n` immediately transfers `n` modules into it (internal `TransferOrder`). `AS` names/aliases the new stack via `GetOrCreateNewModuleStack`. Execute always uses the formed stack — **include `AS`** so the new unit exists.
+
+### GET
+
+**Syntax:**
+
+- `GET <quantity\|ALL> <item-id> FROM <stack-or-person>`
+- `GET ALL FROM <stack-or-person>` — all item types from one holder
+- `GET <quantity\|ALL> <item-id>` — that item from all friendly holders here
+- `GET ALL` — all items from all friendly holders here
+- Negative quantity: leave that many behind (`get -15 carbon from 000015`)
+
+**Subject:** item holder (stack or person).
+
+Moves cargo from a same-location holder into the subject if capacity allows. `newN` transferers are created if needed.
+
+### GIVE
+
+**Syntax:**
+
+- `GIVE <quantity\|ALL> <item-id> TO <stack-or-person|newN>`
+- `GIVE ALL TO <stack-or-person|newN>`
+- Negative quantity: leave that many behind (`give -20 terran to new6`)
+
+**Subject:** item holder.
+
+Moves cargo to a receiver (same-location capacity check). Receiver may be an unformed `newN`.
+
+### HAS
+
+**Syntax:**
+
+- `HAS <quantity> <item-id\|module-type-id>`
+- `HAS PERSON <person-id|newN>`
+- `HAS MODULES [<quantity>]` — omit quantity to mean “any modules” (`quantity = -1`)
+
+**Subject:** holder / stack (module counts require a stack).
+
+Condition probe: succeeds if recursive cargo / nested module count / person presence meets the threshold. Sample: `-+has person 000001`.
+
+### NAME
+
+**Syntax:**
+
+- `NAME "<new name>"` — rename this stack
+- `NAME <planet|moon|orbit|region> "<new name>"` — rename that map object; the stack must be **in that location**
+
+**Subject:** modulestack.
+
+### SEE
+
+**Syntax:** `SEE <stack-id|newN>` or `SEE PERSON <person-id|newN>`
+
+**Subject:** holder.
+
+Succeeds if that stack or person is at the observer’s location. Template/report may print `see id person`; **Parse expects `SEE PERSON id`**.
+
+**XML:** not in `DataFile` order switch.
+
+### SELL
+
+**Syntax:**
+
+- `SELL <quantity\|ALL> <item-id\|module-id> [AT <price>|AVERAGE]`
+- `SELL <technology-id> [AT <price>|AVERAGE]`
+
+**Subject:** offerent.
+
+Lists a standing sell (`Offer`). Matching is driven from the buy side; Execute does not complete the trade itself. `AT AVERAGE` uses the local market price. Sample: `-sell 1 wnplnt`. Same technology-id rule as BUY (no trailing `technology` word).
+
+### SET
+
+**Syntax:** `SET AVOID TRUE` or `SET AVOID FALSE`
+
+**Subject:** modulestack.
+
+Sets `IsAvoiding`. `**AVOID`, `TRUE`, and `FALSE` must be uppercase** (Parse does not fold case).
+
+### STACK
+
+**Syntax:** `STACK <parent-id|newN>` or `STACK TOP` or `STACK OUT`
+
+**Subject:** stack (or person as item holder).
+
+Nests the subject under another stack (same location, same faction, not self), under the root parent (`TOP`), or out into the location (`OUT`). `**top` and `out` must be lowercase.**
+
+### TACTIC
+
+**Syntax:** `TACTIC destroy|capture|evade` or `TACTIC prioritize armed|command`
+
+**Subject:** modulestack.
+
+Persists firing/evade/priority tactics. Destroy and capture are exclusive. Immobile stacks may only `destroy`. Sample: `-tactic prioritize armed`, `-tactic capture`.
+
+---
+
+## Long orders
+
+MOVE, PRODUCE, REPAIR, RESEARCH, TRAIN, USE.
+
+### MOVE
+
+**Syntax:** `MOVE <dest> [<dest2> …]`
+
+**Subject:** modulestack.
+
+Walks a route. Each dest token is a **region**, **star**, **planet**, **moon**, **anomaly**, or **orbit** id (stars/planets/moons/anomalies resolve to their orbit). Starts a `Moving` effect, consumes fuel when required, changes parent on arrival. XML load of this order only accepts **region** ids.
+
+### PRODUCE
+
+**Syntax:** `PRODUCE ENERGY` or `PRODUCE <item-id>`
+
+**Subject:** modulestack.
+
+Starts energy or item production using the stack’s module type (`ProducingEnergy` / `ProducingItems`), duration from `ProduceDuration`. Sample: `@produce cash`, `@produce energy`, `@produce terran`.
+
+### REPAIR
+
+**Syntax:** `REPAIR`
+
+**Subject:** modulestack only.
+
+Spends spare parts (`spare`) and restores hit points on the stack (or its parent scope). Engineering shop `[engshp]` repairs 20 HP per active copy and consumes that many spares; otherwise 10 HP for 1 spare; 1 HP if unsupplied.
+
+### RESEARCH
+
+**Syntax:**
+
+- `RESEARCH`
+- `RESEARCH <technology-id|tag|item-id|module-id|space-object>`
+- `RESEARCH TECHNOLOGY <id>`
+- `RESEARCH ITEM <id>`
+- `RESEARCH MODULE <id>`
+- `RESEARCH GROUP <group>`
+- `RESEARCH TAG <tag>`
+
+**Subject:** modulestack (must be group **research**).
+
+Weekly research output; chance of a breakthrough, else points accumulate. Bare tokens prefer the most specific match (known tech, then tag such as `military`, then item, module, or map object). `TAG` forces a tag preference even when the token is also a technology id. `RESEARCH TAG repair` prefers catalog techs whose `tags` include `repair`: medical services `[medtec]`, medicines refining `[medirf]`, preventive servicing `[servic]`, and engineering shop `[engshp]` (`engshp` also keeps `production`). Bare `research repair` still matches technology **repair and maintenance** `[repair]` (that id has no `repair` tag). `GROUP` accepts: `agricultural`, `command`, `spacecraft`, `energy`, `extraction`, `habitat`, `infantry`, `military`, `production`, `propulsion`, `research`, `vehicle`. Other group names (including `frigate`, `settlement`, `storage`) are stored as an untyped token.
+
+**XML:** not in `DataFile` order switch.
+
+### TRAIN
+
+**Syntax:**
+
+- On a **person:** `TRAIN SKILL <skill-id>`
+- On a **modulestack:** `TRAIN <race-id> OFFICER AS "<alias>"|newN [FOR <parent-stack>]`
+
+**Subject:** person (skill) or stack (officer).
+
+Starts `TrainingSkill` or `TrainingOfficer` (officer requires matching crew of that race). `AS` is required for officer training.
+
+### USE
+
+**Syntax:** `USE <technology-id> [AS <alias|newN>] [FOR <parent-id>]`
+
+**Subject:** modulestack.
+
+Uses a loaded (or level-0) technology: consumes catalog inputs and after `use-time` produces items or a module. `AS` names the new module stack; `FOR` is the nest parent. `AS` and `FOR` are independent (`use wndtrb for 000021` is valid). Level 0 techs do not need to be copied onto the stack. Duration scales with `UseTime`, efficiency, and active quantity.
+
+Omit `FOR`: `ReceiverParent` defaults to the **producer**. `ProducingModule` treats that as “no extra nest”: the product is **formed as a sibling** (`produced.Parent = Producer.Parent`, same orbit/region). At complete it does **not** stack under the producer. `use spctrl as new102` therefore leaves a command bridge sitting next to the shuttle.
+
+`use TECH as newX for 101` stacks the product under hull `101` when production **completes**, same location required (`STACK failed. Parent is in different location.` if the hull has already left). Alternative: `#modulestack new102` then `stack 101` (immediate, also same location). A nested factory can `USE` while the hull’s long slot is a `MOVE` (one long **per subject**). The shuttle itself may only `USE` in **orbit**.
+
+Effect-producing techs (catalog `use-produce effect=…`) hit “Not implemented” in Execute — use `REPAIR` for repairs.

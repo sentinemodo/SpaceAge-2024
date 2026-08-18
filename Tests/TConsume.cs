@@ -29,23 +29,23 @@ namespace UnitTests
 		}
 
 		[Test]
-		public void ExecuteMedicalConsume_WithoutMedicines_KillsUnsuppliedWounded()
+		public void ExecuteMedicalConsume_WithoutMedicines_DoesNotKillDuringWeek()
 		{
 			ModuleStack stack = ModuleStack.All["000005"];
 			stack.ItemStacks.Add(new ItemStack(ItemType.All["wndtrn"], 4));
-			Sequence.Ints.Push(50);
 			Sequence.Ints.Push(0);
-			Sequence.Ints.Push(50);
+			Sequence.Ints.Push(0);
+			Sequence.Ints.Push(0);
 			Sequence.Ints.Push(0);
 
 			this.game.Week = 1;
 			this.game.ExecuteMedicalConsume();
 
-			Assert.That(stack.ItemStacks[ItemType.All["wndtrn"]].Quantity, Is.EqualTo(2));
+			Assert.That(stack.ItemStacks[ItemType.All["wndtrn"]].Quantity, Is.EqualTo(4));
 		}
 
 		[Test]
-		public void ExecuteMedicalConsume_WithMedicines_OnlyUnsuppliedRollDeath()
+		public void ExecuteMedicalConsume_WithMedicines_ConsumesMedicinesWithoutWeeklyDeath()
 		{
 			ModuleStack stack = ModuleStack.All["000005"];
 			stack.ItemStacks.Add(new ItemStack(ItemType.All["wndtrn"], 4));
@@ -57,7 +57,40 @@ namespace UnitTests
 			this.game.ExecuteMedicalConsume();
 
 			Assert.That(stack.ItemStacks.Has(ItemType.All["medici"]), Is.False);
+			Assert.That(stack.ItemStacks[ItemType.All["wndtrn"]].Quantity, Is.EqualTo(4));
+		}
+
+		[Test]
+		public void ExecuteQuarterlyWoundedOutcome_RollsDeathStayAndRecover()
+		{
+			ModuleStack stack = ModuleStack.All["000005"];
+			int terranBefore = stack.ItemStacks.Quantity(ItemType.All["terran"]);
+			stack.ItemStacks.Add(new ItemStack(ItemType.All["wndtrn"], 4));
+			// LIFO: first pop dies (<25), next two stay (25-74), last recovers (>=75)
+			Sequence.Ints.Push(80);
+			Sequence.Ints.Push(50);
+			Sequence.Ints.Push(50);
+			Sequence.Ints.Push(0);
+
+			this.game.ExecuteQuarterlyWoundedOutcome();
+
 			Assert.That(stack.ItemStacks[ItemType.All["wndtrn"]].Quantity, Is.EqualTo(2));
+			Assert.That(stack.ItemStacks.Quantity(ItemType.All["terran"]), Is.EqualTo(terranBefore + 1));
+			bool diedEvent = false;
+			bool recoveredEvent = false;
+			foreach (EventReport eventReport in stack.EventReports)
+			{
+				if (eventReport.Week == 13 && eventReport.Description.IndexOf("died of their wounds") >= 0)
+				{
+					diedEvent = true;
+				}
+				if (eventReport.Week == 13 && eventReport.Description.IndexOf("recovered from their wounds") >= 0)
+				{
+					recoveredEvent = true;
+				}
+			}
+			Assert.That(diedEvent, Is.True);
+			Assert.That(recoveredEvent, Is.True);
 		}
 
 		[Test]

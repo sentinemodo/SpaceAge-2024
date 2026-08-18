@@ -164,6 +164,7 @@ namespace SpaceAge
                 this.ProcessBuyOffers();
 				this.ExecuteBattles();
 			}
+			this.ExecuteQuarterlyWoundedOutcome();
 			this.ClearExecutedLongOrder();
 			//this.ClearFailedToExecuteImmediateOrders();
 			this.ClearExecutedImmediateOrders();
@@ -292,6 +293,15 @@ namespace SpaceAge
 			foreach (ModuleStack moduleStack in snapshot)
 			{
 				moduleStack.ExecuteMedicalConsume(this.week);
+			}
+		}
+
+		public void ExecuteQuarterlyWoundedOutcome()
+		{
+			List<ModuleStack> snapshot = new List<ModuleStack>(this.ModuleStacks.Values);
+			foreach (ModuleStack moduleStack in snapshot)
+			{
+				moduleStack.ExecuteQuarterlyWoundedOutcome(13);
 			}
 		}
 

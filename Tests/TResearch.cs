@@ -25,7 +25,7 @@ namespace UnitTests
 		{
 			Faction testFaction = this.game.Factions["2"];
 			ModuleStack lab = ModuleStack.All.GetOrCreateNewModuleStack(testFaction, "100000");
-			lab.Parent = ModuleStack.All["000005"]; // nested so it is active without its own energy source
+			lab.Parent = ModuleStack.All["000005"]; // Berlin nest has wind plants to power the lab
 			lab.ModuleType = ModuleType.All["cmplib"];
 			lab.AddModule();
 			return lab;
@@ -202,6 +202,25 @@ namespace UnitTests
 			Assert.That(this.parseResearch("heliu3"), Is.EqualTo(EResearchType.ItemType));
 			Assert.That(this.parseResearch("fusrec"), Is.EqualTo(EResearchType.ModuleType));
 			Assert.That(this.parseResearch("R00001"), Is.EqualTo(EResearchType.SpaceObject));
+			Assert.That(this.parseResearch("repair"), Is.EqualTo(EResearchType.Technology),
+				"bare repair is the repair-and-maintenance technology id");
+			Assert.That(this.parseResearch("tag repair"), Is.EqualTo(EResearchType.Tag));
+		}
+
+		[Test]
+		public void ResearchPreference_TagRepairPrefersMedicalServiceAndShopTechs()
+		{
+			Technologies all = this.allTechnologies();
+			ResearchOrder order = new ResearchOrder(this.game.ModuleStacks["100001"]);
+			order.ResearchType = EResearchType.Tag;
+			order.ResearchToken = "repair";
+
+			Technologies preferred = Research.PreferredTechnologies(order, all);
+			Assert.That(preferred["medtec"], Is.Not.Null);
+			Assert.That(preferred["medirf"], Is.Not.Null);
+			Assert.That(preferred["servic"], Is.Not.Null);
+			Assert.That(preferred["engshp"], Is.Not.Null);
+			Assert.That(preferred["repair"], Is.Null);
 		}
 
 		[Test]
@@ -423,7 +442,7 @@ namespace UnitTests
 		{
 			ModuleStack wreck = new ModuleStack(Region.All["R00001"], Faction.All["1"], ModuleType.All["alnhul"], "200");
 			wreck.AddModule();
-			wreck.Technologies.Add(Technology.All["alndrn"]);
+			wreck.Technologies.Add(Technology.All["alnfgh"]);
 			ResearchWreckageTrigger trigger = new ResearchWreckageTrigger(wreck, 5);
 			new Contract("CT0200", Region.All["R00001"], Faction.All["1"], trigger, wreck);
 
@@ -440,7 +459,30 @@ namespace UnitTests
 
 			Assert.That(Contract.All.Count, Is.EqualTo(0));
 			Assert.That(wreck.Owner.Name, Is.EqualTo("2"));
-			Assert.That(Faction.All["2"].TechnologiesToShow.Contains("alndrn"), Is.True);
+			Assert.That(Faction.All["2"].TechnologiesToShow.Contains("alnfgh"), Is.True);
+			Assert.That(lab.ResearchPoints, Is.EqualTo(0), "threshold week consumes the accumulated research points");
+			Assert.That(this.eventWeek(wreck.EventReports, "activated onboard systems."), Is.EqualTo(5));
+			Assert.That(this.eventWeek(lab.EventReports, "researched"), Is.EqualTo(5));
+
+			lab.ExecutedLongOrder = false;
+			lab.Execute(6);
+			Contract.All.Evaluate(6);
+			Assert.That(lab.ResearchPoints, Is.EqualTo(0), "further wreckage research does not accrue after the reward");
+			Assert.That(wreck.Owner.Name, Is.EqualTo("2"));
+			Assert.That(this.eventWeek(lab.EventReports, "researched"), Is.EqualTo(5));
+		}
+
+		private int eventWeek(EventReports events, string descriptionFragment)
+		{
+			int week = -1;
+			foreach (EventReport eventReport in events)
+			{
+				if (eventReport.Description.IndexOf(descriptionFragment) >= 0)
+				{
+					week = eventReport.Week;
+				}
+			}
+			return week;
 		}
 	}
 }

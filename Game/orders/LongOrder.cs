@@ -69,18 +69,18 @@ namespace SpaceAge
 										moduleStack.ReportName,
 										moduleStack.CrewRequired + moduleStack.ModuleStacks.CrewRequired(),
 										moduleStack.CrewCurrent + moduleStack.ModuleStacks.CrewCurrent()));
-					if (moduleStack.IsRootModuleStack)
+					ModuleStack energyRoot = moduleStack.RootModuleStack;
+					int energyRequired = moduleStack.EnergyRequired + moduleStack.ModuleStacks.EnergyRequired();
+					int energyAvailable = energyRoot.EnergyProduction + energyRoot.ModuleStacks.EnergyProduction();
+					if (energyRequired > energyAvailable)
 					{
-						if (moduleStack.EnergyRequired + moduleStack.ModuleStacks.EnergyRequired() > moduleStack.EnergyProduction + moduleStack.ModuleStacks.EnergyProduction())
-						{
-							moduleStack.EventReports.Add(
-									week,
-									string.Format("{0} failed: {1} has not enough energy to operate - {2} required, {3} available.",
-											this.type.ToString().ToUpper(),
-											moduleStack.ReportName,
-											moduleStack.EnergyRequired + moduleStack.ModuleStacks.EnergyRequired(),
-											moduleStack.EnergyProduction + moduleStack.ModuleStacks.EnergyProduction()));
-						}
+						moduleStack.EventReports.Add(
+								week,
+								string.Format("{0} failed: {1} has not enough energy to operate - {2} required, {3} available.",
+										this.type.ToString().ToUpper(),
+										moduleStack.ReportName,
+										energyRequired,
+										energyAvailable));
 					}
 					return false;
 				}

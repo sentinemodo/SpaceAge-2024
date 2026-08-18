@@ -39,6 +39,7 @@ namespace SpaceAge
             // RESEARCH MODULE moduletype
             // RESEARCH GROUP [agricultural|command|spacecraft|energy|extraction|frigate|habitat|infantry|
             // military|production|propulsion|research|settlement|spacestation|storage|vehicle]
+            // RESEARCH TAG tag
             // RESEARCH id
             // RESEARCH
 
@@ -102,6 +103,12 @@ namespace SpaceAge
             {
                 token = LineParser.GetQuotedToken(ref command);
                 this.parseModuleTypeGroup(token);
+            }
+            else if (token == "tag")
+            {
+                token = LineParser.GetQuotedToken(ref command);
+                this.ResearchType = EResearchType.Tag;
+                this.ResearchToken = token;
             }
             else if (token != string.Empty)
             {
@@ -405,11 +412,48 @@ namespace SpaceAge
                 return;
             }
 
+            if (!this.hasOpenWreckageContract(target))
+            {
+                return;
+            }
+
             this.Researcher.ResearchPoints += output;
             Contract.All.NotifyResearch(this.Researcher.Owner, this.Researcher, target, output);
             this.Researcher.EventReports.Add(
                 week,
                 string.Format("researched {0}.", target.ReportName));
+
+            if (!this.hasOpenWreckageContract(target))
+            {
+                this.Researcher.ResearchPoints = 0;
+                this.awardCompletedWreckageContracts(week, target);
+            }
+        }
+
+        private bool hasOpenWreckageContract(ModuleStack target)
+        {
+            foreach (Contract contract in Contract.All)
+            {
+                ResearchWreckageTrigger trigger = contract.Trigger as ResearchWreckageTrigger;
+                if (trigger != null && trigger.Target == target && !trigger.IsComplete())
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private void awardCompletedWreckageContracts(int week, ModuleStack target)
+        {
+            List<Contract> snapshot = new List<Contract>(Contract.All);
+            foreach (Contract contract in snapshot)
+            {
+                ResearchWreckageTrigger trigger = contract.Trigger as ResearchWreckageTrigger;
+                if (trigger != null && trigger.Target == target && contract.Evaluate(week))
+                {
+                    Contract.All.Remove(contract);
+                }
+            }
         }
 
         private bool CanResearch(int week)

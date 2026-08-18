@@ -131,6 +131,33 @@ namespace SpaceAge
 			}
 		}
 
+		public bool IsEquivalentTo(Order other)
+		{
+			if (other == null || other == this)
+			{
+				return false;
+			}
+			if (this.Type != other.Type || this.Repeat != other.Repeat || this.Level != other.Level)
+			{
+				return false;
+			}
+			Faction owner = this.Subject != null ? this.Subject.Owner : null;
+			List<string> thisReport = this.Report(owner);
+			List<string> otherReport = other.Report(owner);
+			if (thisReport.Count != otherReport.Count)
+			{
+				return false;
+			}
+			for (int i = 0; i < thisReport.Count; i++)
+			{
+				if (thisReport[i] != otherReport[i])
+				{
+					return false;
+				}
+			}
+			return true;
+		}
+
         virtual public void Execute(int week)
 		{
 			foreach (Order order in this.conditionalOrders)

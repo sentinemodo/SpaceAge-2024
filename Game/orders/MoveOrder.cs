@@ -103,14 +103,24 @@ namespace SpaceAge
 			{
 				this.route.Add(this.FindDestination(elDestination.GetAttribute("destination")));
 			}
+			this.compactConsecutiveRouteDuplicates();
+			if (elOrder.HasAttribute("duration-left"))
+			{
+				this.DurationLeft = this.XMLAssignInteger(elOrder.GetAttribute("duration-left"), this.DurationLeft);
+			}
 		}
 
 		public override XmlElement SaveXml_core(XmlDocument doc, string subject)
 		{
+			if (this.DurationLeft > 0 && this.DurationLeft < Int32.MaxValue)
+			{
+				this.xmlElement.SetAttribute("duration-left", this.DurationLeft.ToString());
+			}
+
             XmlElement elMove = doc.CreateElement("move");   
 			
             XmlElement elDestination;
-			foreach (IHolder destination in this.route)
+			foreach (IHolder destination in this.destinationsForPersistence())
 			{
                 elDestination = doc.CreateElement("destination");   
 				elDestination.SetAttribute("destination", destination.Name);
@@ -128,13 +138,43 @@ namespace SpaceAge
                 this.Conditions,
                 (this.Repeat > 1) ? string.Concat(this.Repeat.ToString(), " ") : ((this.Repeat < 0) ? "@" : string.Empty));
             
-            foreach (IHolder destination in this.route)
+            foreach (IHolder destination in this.destinationsForPersistence())
             {
                 line = string.Concat(line, " ", destination.Name);
             }
             lines.Add(line);
             return lines;
         }
+
+		private List<Location> destinationsForPersistence()
+		{
+			List<Location> destinations = new List<Location>();
+			if (this.destination != null)
+			{
+				destinations.Add(this.destination);
+			}
+			foreach (Location location in this.route)
+			{
+				if (destinations.Count == 0 || destinations[destinations.Count - 1] != location)
+				{
+					destinations.Add(location);
+				}
+			}
+			return destinations;
+		}
+
+		private void compactConsecutiveRouteDuplicates()
+		{
+			List<Location> compacted = new List<Location>();
+			foreach (Location location in this.route)
+			{
+				if (compacted.Count == 0 || compacted[compacted.Count - 1] != location)
+				{
+					compacted.Add(location);
+				}
+			}
+			this.route = compacted;
+		}
 
         private Dictionary<EMoveMode, List<IMoveable>> moveModesRecursive
         {
@@ -434,29 +474,60 @@ namespace SpaceAge
 				{                    
 					this.destination = this.route[0];
 					this.route.RemoveAt(0);
-				}
-
-				if (this.Repeat != 0)
-				{
-					this.route.Add(destination);
+					while (this.route.Count > 0 && this.route[0] == this.destination)
+					{
+						this.route.RemoveAt(0);
+					}
+					if (this.IsUnlimited || this.Repeat > 1)
+					{
+						this.route.Add(this.destination);
+					}
 				}
 
 				if (this.isWay(week))
 				{
+					if (this.moving == null)
+					{
+						this.moving = this.Mover.Effects.Moving;
+					}
+					if ((this.DurationLeft <= 0 || this.DurationLeft >= Int32.MaxValue)
+						&& this.moving != null && this.moving.Duration > 0)
+					{
+						this.DurationLeft = this.moving.Duration;
+					}
+
 					// assign destination if not moving
 					if (this.Mover.MovingTo == null)
 					{
 						this.Executing = true;
 						this.Mover.MovingTo = this.destination;
-						this.DurationLeft = this.movementDuration();
-                        this.moving = new Moving(this.Mover, this.MoveMode, this.Destination, this.DurationLeft);
-                        this.Mover.EventReports.Add(
-                            week,
-                            string.Format(
-                                "departed from {0} to {1}, ETA {2}.",
-                                this.Mover.Location.ReportName,
-                                this.destination.ReportName,
-                                this.DurationLeft - 1));
+						bool resume = this.DurationLeft > 0 && this.DurationLeft < Int32.MaxValue;
+						if (!resume)
+						{
+							this.DurationLeft = this.movementDuration();
+						}
+						else
+						{
+							this.movementDuration();
+						}
+						if (this.moving == null)
+						{
+							this.moving = new Moving(this.Mover, this.MoveMode, this.Destination, this.DurationLeft);
+						}
+						if (!resume)
+						{
+							this.Mover.EventReports.Add(
+								week,
+								string.Format(
+									"departed from {0} to {1}, ETA {2}.",
+									this.Mover.Location.ReportName,
+									this.destination.ReportName,
+									this.DurationLeft - 1));
+						}
+					}
+					else
+					{
+						this.movementDuration();
 					}
 
 					// move
@@ -474,6 +545,10 @@ namespace SpaceAge
                                     this.destination.ReportName,
                                     this.DurationLeft));
                         }
+						if (this.moving == null)
+						{
+							this.moving = this.Mover.Effects.Moving;
+						}
                         this.moving.Use();
                         //this.moving.Execute(week);
                     }
