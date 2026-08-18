@@ -159,11 +159,14 @@ namespace SpaceAge
 				//this.ClearFailedToExecuteImmediateOrders();
 				this.ClearExecutedImmediateOrders();
 				this.ExecuteOrders();
+				this.ExecuteSickBayHeal();
 				this.ExecuteMedicalConsume();
 				Contract.All.Evaluate(this.week);
                 this.ProcessBuyOffers();
 				this.ExecuteBattles();
 			}
+			this.week = 13;
+			this.ExecuteMaintenance();
 			this.ExecuteQuarterlyWoundedOutcome();
 			this.ClearExecutedLongOrder();
 			//this.ClearFailedToExecuteImmediateOrders();
@@ -287,12 +290,30 @@ namespace SpaceAge
 			}
 		}
 
+		public void ExecuteSickBayHeal()
+		{
+			List<ModuleStack> snapshot = new List<ModuleStack>(this.ModuleStacks.Values);
+			foreach (ModuleStack moduleStack in snapshot)
+			{
+				moduleStack.ExecuteSickBayHeal(this.week);
+			}
+		}
+
 		public void ExecuteMedicalConsume()
 		{
 			List<ModuleStack> snapshot = new List<ModuleStack>(this.ModuleStacks.Values);
 			foreach (ModuleStack moduleStack in snapshot)
 			{
 				moduleStack.ExecuteMedicalConsume(this.week);
+			}
+		}
+
+		public void ExecuteMaintenance()
+		{
+			List<ModuleStack> snapshot = new List<ModuleStack>(this.ModuleStacks.Values);
+			foreach (ModuleStack moduleStack in snapshot)
+			{
+				moduleStack.ExecuteMaintenance(this.week);
 			}
 		}
 

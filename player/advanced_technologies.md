@@ -1,6 +1,6 @@
 # Level 2 and above technologies
 
-Catalog: `Tests/data.xml`. Checked **18 Aug 2026**. Level 0–1: `player/basic_technologies.md`.
+Catalog: `Tests/data.xml`. Checked **19 Aug 2026**. Level 0–1: `player/basic_technologies.md`.
 
 This file lists **level 2, 3, and 4** technologies, then the **module types** and **item types** those technologies produce or consume. Alphabetical by English `name-en` inside each level.
 
@@ -43,6 +43,8 @@ flowchart TB
     autprp["automated propulsion"]
     he3unc["unmanned helium plant"]
     drnhng["drone hangar construction"]
+    sckcns["sick bay construction"]
+    pharms["shipboard pharmacy"]
   end
   subgraph L4["Level 4"]
     alnfgh["alien fighter construction"]
@@ -52,6 +54,8 @@ flowchart TB
   he3min --> he3fus
   he3min --> he3drl
   filidx --> advres
+  medtec --> sckcns
+  sckcns --> pharms
 ```
 
 | Tech | Requires |
@@ -61,6 +65,8 @@ flowchart TB
 | helium-3 fusion `[he3fus]` | helium-3 mining `[he3min]` |
 | dedicated helium-3 drilling `[he3drl]` | helium-3 mining `[he3min]` |
 | advanced computing `[advres]` | file indexing `[filidx]` (level 0) |
+| sick bay construction `[sckcns]` | medical services `[medtec]` |
+| shipboard pharmacy `[pharms]` | sick bay construction `[sckcns]` |
 
 ---
 
@@ -130,6 +136,14 @@ Works in: production, solid-surface. Use consumes: 40 iron `[iron]`, 20 titanium
 A hangar that stores and launches a squad of fighter drones. Tag: `military`.  
 Works in: production. Use consumes: 8 titanium `[titani]`. Use produces: fighter drone bay `[drnbay]`. Use-time: 6 weeks.
 
+**shipboard pharmacy [pharms]**  
+Fermentation and sterile fill inside a sick bay. Sugars and amino acids from food grow antibiotic cultures; the ward energy budget runs a still for saline and antiseptic. No ocean harvest required. The feedstock is cargo rations, the constraint is sterility. Tag: `research`. **Requires:** sick bay construction `[sckcns]`.  
+Works in: habitat, **module sick bay `[sckbay]`**. Use consumes: 1 food `[food]`. Use produces: 1 medicines `[medici]`. Use-time: 1 week.
+
+**sick bay construction [sckcns]**  
+A pressurized recovery ward: isolation beds, an autoclave, filtered air, and a surgical table. Trauma care is heat, sterility, fluids, and time. Without pharmaceuticals, two casualties still granulate over a four-week rest; with packed doses, infection drops fast enough that four patients can leave the ward each week. Tag: `research`. **Requires:** medical services `[medtec]`.  
+Works in: production. Use consumes: 8 iron `[iron]`, 4 titanium `[titani]`, 4 copper `[copper]`, 3 silicium `[silici]`. Use produces: sick bay `[sckbay]`. Use-time: 8 weeks.
+
 **unmanned helium plant [he3unc]**  
 An unmanned helium-3 fusion plant with no crew stations.  
 Works in: production. Use consumes: 12 titanium `[titani]`. Use produces: automated helium powerplant `[he3aut]`. Use-time: 6 weeks.
@@ -162,7 +176,7 @@ Group `energy`. Built by helium-3 fusion `[he3fus]`. Size 1200, mass 1200, crew 
 
 **medical facility [medfac]**  
 These sealed modules house crew members that need medical attention. They increase their chances of cure and contain undesired effects.  
-Group `habitat`. Built by medical services `[medtec]`. Size 300, mass 200, crew 2, energy 2, capacity 150, HP 25, tech-cap 3. Upkeep 100 cash (catalog `quanity`). Heal 1.0 on stacked.
+Group `habitat`. Built by medical services `[medtec]`. Size 300, mass 200, crew 2, energy 2, capacity 150, HP 25, tech-cap 3. Upkeep 100 cash (catalog `quanity`). Catalog heal `target="stacked"` is **not** loaded; weekly wounded conversion is sick bay `[sckbay]` only.
 
 **small habitat [smhabi]**  
 A root-level pressure vessel that holds one or two nested modules such as a life support system.  
@@ -202,6 +216,10 @@ Group `military`. Built by drone hangar construction `[drnhng]`. Size 400, mass 
 A specialised, costlier core drill dedicated to helium-3. It extracts helium-3 at twice the efficiency of a general core drill but cannot mine anything else.  
 Group `extraction`. Built by dedicated helium-3 drilling `[he3drl]`. Size 1200, mass 1200, crew 6, energy 6, capacity 750, HP 100. Upkeep 60 cash. Produces 20 helium-3 / 13 weeks. Operates on solid-surface, in settlement or frigate.
 
+**sick bay [sckbay]**  
+Inpatient surgical and recovery ward. Isolation beds, autoclave, filtered air. Without medicines, two casualties still granulate over four weeks; with packed doses, four can return to duty each week. The ward can ferment medicines when pharmacy knowledge and food are present.  
+Group `habitat`. Built by sick bay construction `[sckcns]`. Size 380, mass 250, crew 3, energy 4, capacity 180, HP 32, tech-cap 2, habitat 8, radiation −120. Upkeep 40 cash. Weekly heal (`ExecuteSickBayHeal`): with 1 medicines `[medici]` each, convert up to 4 `wndtrn` per bay to terran; without medicines, convert 2 per bay every 4 unmedicated weeks. `USE pharms` is restricted to this module type.
+
 **small dome city [dmdcty]**  
 A compact ownable dome for airless worlds. It must be supplied with food and terran breathing gas.  
 Group `settlement`. Built by dome city construction `[dmecns]`. Size 5000, capacity 3500, energy 10, HP 250, tech-cap 2, population max 2000. Upkeep 20 food, 20 terran air, 80 cash. Produces 200 cash / 13 weeks. Operates on solid-surface.
@@ -222,20 +240,25 @@ Catalog `<item><entry>` that a level 2+ technology **produces** or **consumes**.
 
 **medicines [medici]**  
 Assorted medical supplies need to treat the wounded.  
-Size 1, mass 1. Produced by medicines refining `[medirf]` (1). Weekly medical consume for wounded/mad crew uses this item (`Game.ExecuteMedicalConsume`).
+Size 1, mass 1. Produced by medicines refining `[medirf]` (1) and shipboard pharmacy `[pharms]` (1). Weekly sick-bay heal and medical consume use this item (`Game.ExecuteSickBayHeal` then `ExecuteMedicalConsume`).
 
 **unit of copper [copper]**  
-See `basic_technologies.md`. Consumed by L2: medical services `[medtec]` (2), x-ray laser optics `[xraylo]` (4).
+See `basic_technologies.md`. Consumed by L2: medical services `[medtec]` (2), x-ray laser optics `[xraylo]` (4). Also L3: sick bay construction `[sckcns]` (4).
 
 **unit of helium-3 [heliu3]**  
 A light, non-radioactive helium isotope prized as clean fusion fuel; scarce on planets but abundant in lunar regolith.  
 Size 1, mass 1. Produced by helium-3 mining `[he3min]` (1). Consumed by helium-3 fusion `[he3fus]` (1). Fusion reactors and automated helium plants also burn it as fuel (module, not a tech consume). Helium-3 core drill `[he3ext]` produces 20 per 13 weeks.
 
 **unit of iron [iron]**  
-See `basic_technologies.md`. Consumed by L2: automated fabrication `[autfab]` (15), medical services `[medtec]` (1), small habitat construction `[habcns]` (20). Also L3: advanced computing `[advres]` (4), dedicated helium-3 drilling `[he3drl]` (30), dome city construction `[dmecns]` (40).
+See `basic_technologies.md`. Consumed by L2: automated fabrication `[autfab]` (15), medical services `[medtec]` (1), small habitat construction `[habcns]` (20). Also L3: advanced computing `[advres]` (4), dedicated helium-3 drilling `[he3drl]` (30), dome city construction `[dmecns]` (40), sick bay construction `[sckcns]` (8).
 
 **unit of silicium [silici]**  
-See `basic_technologies.md`. Consumed by L2: automated fabrication `[autfab]` (10), medical services `[medtec]` (2), x-ray laser optics `[xraylo]` (2). Also L3: advanced computing `[advres]` (12), automated command systems `[autctl]` (8). Also L4: alien fighter construction `[alnfgh]` (4).
+See `basic_technologies.md`. Consumed by L2: automated fabrication `[autfab]` (10), medical services `[medtec]` (2), x-ray laser optics `[xraylo]` (2). Also L3: advanced computing `[advres]` (12), automated command systems `[autctl]` (8), sick bay construction `[sckcns]` (3). Also L4: alien fighter construction `[alnfgh]` (4).
 
 **unit of titanium [titani]**  
-See `basic_technologies.md`. Consumed by L2: small habitat construction `[habcns]` (8), x-ray laser optics `[xraylo]` (2). Also L3: advanced hull construction `[ahlcns]` (20), automated propulsion `[autprp]` (10), dedicated helium-3 drilling `[he3drl]` (10), dome city construction `[dmecns]` (20), drone hangar construction `[drnhng]` (8), unmanned helium plant `[he3unc]` (12). Also L4: alien fighter construction `[alnfgh]` (4).
+See `basic_technologies.md`. Consumed by L2: small habitat construction `[habcns]` (8), x-ray laser optics `[xraylo]` (2). Also L3: advanced hull construction `[ahlcns]` (20), automated propulsion `[autprp]` (10), dedicated helium-3 drilling `[he3drl]` (10), dome city construction `[dmecns]` (20), drone hangar construction `[drnhng]` (8), sick bay construction `[sckcns]` (4), unmanned helium plant `[he3unc]` (12). Also L4: alien fighter construction `[alnfgh]` (4).
+
+### Level 3
+
+**unit of food [food]**  
+See `basic_technologies.md`. Consumed by shipboard pharmacy `[pharms]` (1). Not produced by a level 2+ technology.

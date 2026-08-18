@@ -189,6 +189,18 @@ namespace SpaceAge
 				return false;
 			}
 
+			if (!string.IsNullOrEmpty(this.Technology.UseCondition_ModuleType)
+				&& this.Producer.ModuleType.Name != this.Technology.UseCondition_ModuleType)
+			{
+				this.Producer.EventReports.Add(
+						week,
+						string.Format("USE failed: {0} cannot be used in {1}, this technology is only usable in {2}.",
+								this.Technology.ReportName,
+								this.Producer.ReportName,
+								this.Technology.UseCondition_ModuleType));
+				return false;
+			}
+
 			if (this.Producer.ModuleType.UseCondition_RequireFuel)
 			{
 				if (!this.Producer.Effects.IsFuelled)

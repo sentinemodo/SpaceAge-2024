@@ -86,6 +86,8 @@ namespace SpaceAge
 
 		public string NoConsumeEffect { get; set; }
 		public int NoConsumeChance { get; set; }
+		public string NoUpkeepEffect { get; set; }
+		public int NoUpkeepChance { get; set; }
 
 		protected string fullNameMultiple = string.Empty;
 		public string FullNameMultiple

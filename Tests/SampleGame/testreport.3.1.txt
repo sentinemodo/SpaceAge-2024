@@ -624,37 +624,62 @@ Galaxy report:
       none.
   
   + Berlin [000001], 3 cities [city], immobile.
-    size: 75000, mass: 28400 (0), capacity: 45000/41420, energy: 320/255 (30), crew: 143/240 (0/30),
-    upkeep: 300 units of food [food], 1965 (0) cash [cash], consume: 340 (0) units of food [food],
-    340 (0) units of terran breathing gas mixture [terair], 3 (0) medicines [medici].
-    items: 3000 cash [cash], 30 terrans [terran] (size: 120, mass: 120, upkeep: 30 cash [cash],
-    consume: 30 units of food [food], 30 units of terran breathing gas mixture [terair]), 300 units
-    of food [food] (size: 300, mass: 300).
+    size: 75000, mass: 27912 (0), capacity: 45000/41088, energy: 320/255 (30), crew: 143/200 (0/22),
+    upkeep: 300 units of food [food], 1925 (0) cash [cash], consume: 300 (0) units of food [food],
+    300 (0) units of terran breathing gas mixture [terair], 30 (0) medicines [medici].
+    items: 1165 cash [cash], 20 terrans [terran] (size: 80, mass: 80, upkeep: 20 cash [cash],
+    consume: 20 units of food [food], 20 units of terran breathing gas mixture [terair]), 2 wounded
+    terrans [wndtrn] (size: 8, mass: 8, upkeep: 2 cash [cash], consume: 2 units of food [food], 2
+    units of terran breathing gas mixture [terair], 2 medicines [medici]).
     effects:
       receiving 300 units of food [food] from small cargo bay [000013], 0 weeks to complete.
+    events:
+      week 13: Lack of supplies: 30 unit of food [food].
+      week 13: 15 terrans [terran] wounded from lack of supplies.
+      week 13: 8 wounded terrans [wndtrn] died of their wounds.
+      week 13: 5 wounded terrans [wndtrn] recovered from their wounds.
     + Berlin garrison [000002], infantry battalion [inftry].
       size: 500, mass: 600 (500), capacity: 300/100, upkeep: 5 cash [cash], consume: 100 units of
       food [food], 100 units of terran breathing gas mixture [terair].
+      hit points: 50/49.
+        #1 hit points: 50/49.
       movement speed: 0.1 on ground.
       items: rocket launchers [rctlnc] (size: 100, mass: 100).
+      events:
+        week 13: Lack of supplies: 100 unit of food [food].
+        week 13: Damaged from lack of supplies.
     + Berlin farms [000003], 10 farming complexes [farms], immobile.
-      size: 10000, mass: 1300 (1000), capacity: 5000/300, energy: 50, crew: 50/75, upkeep: 575 (500)
-      cash [cash], consume: 75 (0) units of food [food], 75 (0) units of terran breathing gas
-      mixture [terair].
-      items: 75 terrans [terran] (size: 300, mass: 300, upkeep: 75 cash [cash], consume: 75 units of
-      food [food], 75 units of terran breathing gas mixture [terair]).
+      size: 10000, mass: 1228 (1000), capacity: 5000/228, energy: 50, crew: 50/57, upkeep: 557 (500)
+      cash [cash], consume: 57 (0) units of food [food], 57 (0) units of terran breathing gas
+      mixture [terair], 3 (0) medicines [medici].
+      items: 54 terrans [terran] (size: 216, mass: 216, upkeep: 54 cash [cash], consume: 54 units of
+      food [food], 54 units of terran breathing gas mixture [terair]), 3 wounded terrans [wndtrn]
+      (size: 12, mass: 12, upkeep: 3 cash [cash], consume: 3 units of food [food], 3 units of terran
+      breathing gas mixture [terair], 3 medicines [medici]).
+      events:
+        week 13: Lack of supplies: 75 unit of food [food].
+        week 13: 37 terrans [terran] wounded from lack of supplies.
+        week 13: 18 wounded terrans [wndtrn] died of their wounds.
+        week 13: 16 wounded terrans [wndtrn] recovered from their wounds.
     + Berlin coal powerplants [000004], 5 coal-burning plants [cplant], immobile.
-      size: 5000, mass: 5560 (5000), capacity: 2500/560, energy: 200/50 (consume: 25 units of carbon
-      [carbon] for 13 weeks), crew: 10/15, upkeep: 265 (250) cash [cash], consume: 15 (0) units of
-      food [food], 15 (0) units of terran breathing gas mixture [terair].
+      size: 5000, mass: 5544 (5000), capacity: 2500/544, energy: 200/50 (consume: 25 units of carbon
+      [carbon] for 13 weeks), crew: 10/11, upkeep: 261 (250) cash [cash], consume: 11 (0) units of
+      food [food], 11 (0) units of terran breathing gas mixture [terair], (0) medicines [medici].
       fuel requirements: 25 units of carbon [carbon] per 13 weeks.
-      items: 100 units of carbon [carbon] (size: 500, mass: 500), 15 terrans [terran] (size: 60,
-      mass: 60, upkeep: 15 cash [cash], consume: 15 units of food [food], 15 units of terran
-      breathing gas mixture [terair]).
+      items: 100 units of carbon [carbon] (size: 500, mass: 500), 10 terrans [terran] (size: 40,
+      mass: 40, upkeep: 10 cash [cash], consume: 10 units of food [food], 10 units of terran
+      breathing gas mixture [terair]), wounded terran [wndtrn] (size: 4, mass: 4, upkeep: cash
+      [cash], consume: unit of food [food], unit of terran breathing gas mixture [terair], medicines
+      [medici]).
+      events:
+        week 13: Lack of supplies: 15 unit of food [food].
+        week 13: 8 terrans [terran] wounded from lack of supplies.
+        week 13: 4 wounded terrans [wndtrn] died of their wounds.
+        week 13: 3 wounded terrans [wndtrn] recovered from their wounds.
     + Berlin granary [000005], small cargo bay [cargob], immobile.
-      size: 2000, mass: 1212 (200), capacity: 1800/1012, upkeep: 33 (30) cash [cash], consume: 3 (0)
+      size: 2000, mass: 1209 (200), capacity: 1800/1009, upkeep: 33 (30) cash [cash], consume: 3 (0)
       units of food [food], 3 (0) units of terran breathing gas mixture [terair].
-      items: 1000 units of food [food] (size: 1000, mass: 1000), 3 terrans [terran] (size: 12, mass:
+      items: 997 units of food [food] (size: 997, mass: 997), 3 terrans [terran] (size: 12, mass:
       12, upkeep: 3 cash [cash], consume: 3 units of food [food], 3 units of terran breathing gas
       mixture [terair]).
     - Caste Prime Headquarters [000012], corporate headquarters [corphq], disabled, immobile, owned
@@ -664,10 +689,10 @@ Galaxy report:
       size: 10000.
     - farming complex [000014], 3 farming complexes [farms], immobile, owned by Caste Prime [2].
       size: 3000.
-    - coal-burning plant [000015], 3 coal-burning plants [cplant], immobile, owned by Caste Prime
-      [2].
+    - coal-burning plant [000015], 3 coal-burning plants [cplant], partially disabled, immobile,
+      owned by Caste Prime [2].
       size: 3000.
-    - core drill [000016], core drill [cdrill], immobile, owned by Caste Prime [2].
+    - core drill [000016], core drill [cdrill], disabled, immobile, owned by Caste Prime [2].
       size: 1000.
     - factory [000017], 5 factories [factry], partially disabled, immobile, owned by Caste Prime
       [2].
@@ -710,10 +735,10 @@ Galaxy report:
       none.
   
   + Sydney [000006], 2 cities [city], immobile.
-    size: 50000, mass: 8492 (0), capacity: 30000/17320, energy: 198/132 (20), crew: 60/93, upkeep:
-    200 units of food [food], 1053 (0) cash [cash], consume: 293 (0) units of food [food], 293 (0)
-    units of terran breathing gas mixture [terair].
-    items: 2000 cash [cash], 200 units of food [food] (size: 200, mass: 200).
+    size: 50000, mass: 8209, capacity: 30000/17120, energy: 198/132 (20), crew: 60/73, upkeep: 200
+    units of food [food], 1033 (0) cash [cash], consume: 273 (0) units of food [food], 273 (0) units
+    of terran breathing gas mixture [terair], 9 (0) medicines [medici].
+    items: 947 cash [cash].
     effects:
       receiving 200 units of food [food] from small cargo bay [000019], 0 weeks to complete.
     events:
@@ -726,26 +751,41 @@ Galaxy report:
       items: rocket launchers [rctlnc] (size: 100, mass: 100).
       events:
         week 13: received infantry battalion [inftry] from infantry battalion [120].
+        week 13: Lack of supplies: 200 unit of food [food].
     + Sydney farms [000008], 10 farming complexes [farms], immobile.
-      size: 10000, mass: 1300 (1000), capacity: 5000/300, energy: 50, crew: 50/75, upkeep: 575 (500)
-      cash [cash], consume: 75 (0) units of food [food], 75 (0) units of terran breathing gas
-      mixture [terair].
-      items: 75 terrans [terran] (size: 300, mass: 300, upkeep: 75 cash [cash], consume: 75 units of
-      food [food], 75 units of terran breathing gas mixture [terair]).
+      size: 10000, mass: 1224 (1000), capacity: 5000/224, energy: 50, crew: 50/56, upkeep: 556 (500)
+      cash [cash], consume: 56 (0) units of food [food], 56 (0) units of terran breathing gas
+      mixture [terair], 5 (0) medicines [medici].
+      items: 51 terrans [terran] (size: 204, mass: 204, upkeep: 51 cash [cash], consume: 51 units of
+      food [food], 51 units of terran breathing gas mixture [terair]), 5 wounded terrans [wndtrn]
+      (size: 20, mass: 20, upkeep: 5 cash [cash], consume: 5 units of food [food], 5 units of terran
+      breathing gas mixture [terair], 5 medicines [medici]).
+      events:
+        week 13: Lack of supplies: 75 unit of food [food].
+        week 13: 38 terrans [terran] wounded from lack of supplies.
+        week 13: 19 wounded terrans [wndtrn] died of their wounds.
+        week 13: 14 wounded terrans [wndtrn] recovered from their wounds.
     + Sydney wind powerplants [000009], 10 wind powerplants [wnplnt], immobile.
       size: 100, mass: 100 (100), energy: 40/10, upkeep: 100 cash [cash].
     + Sydney oil powerplants [000010], 5 oil-burning plants [oplant], immobile.
-      size: 4000, mass: 4560 (4000), capacity: 2500/460, energy: 150/50 (consume: 25 units of oil
-      [oil] for 13 weeks), crew: 10/15, upkeep: 315 (300) cash [cash], consume: 15 (0) units of food
-      [food], 15 (0) units of terran breathing gas mixture [terair].
+      size: 4000, mass: 4556 (4000), capacity: 2500/456, energy: 150/50 (consume: 25 units of oil
+      [oil] for 13 weeks), crew: 10/14, upkeep: 314 (300) cash [cash], consume: 14 (0) units of food
+      [food], 14 (0) units of terran breathing gas mixture [terair], 4 (0) medicines [medici].
       fuel requirements: 25 units of oil [oil] per 13 weeks.
-      items: 100 units of oil [oil] (size: 400, mass: 500), 15 terrans [terran] (size: 60, mass: 60,
-      upkeep: 15 cash [cash], consume: 15 units of food [food], 15 units of terran breathing gas
-      mixture [terair]).
+      items: 100 units of oil [oil] (size: 400, mass: 500), 10 terrans [terran] (size: 40, mass: 40,
+      upkeep: 10 cash [cash], consume: 10 units of food [food], 10 units of terran breathing gas
+      mixture [terair]), 4 wounded terrans [wndtrn] (size: 16, mass: 16, upkeep: 4 cash [cash],
+      consume: 4 units of food [food], 4 units of terran breathing gas mixture [terair], 4 medicines
+      [medici]).
+      events:
+        week 13: Lack of supplies: 15 unit of food [food].
+        week 13: 7 terrans [terran] wounded from lack of supplies.
+        week 13: 1 wounded terran [wndtrn] died of their wounds.
+        week 13: 2 wounded terrans [wndtrn] recovered from their wounds.
     + Sydney granary [000011], small cargo bay [cargob], immobile.
-      size: 2000, mass: 1212 (200), capacity: 1800/1012, upkeep: 33 (30) cash [cash], consume: 3 (0)
+      size: 2000, mass: 1209 (200), capacity: 1800/1009, upkeep: 33 (30) cash [cash], consume: 3 (0)
       units of food [food], 3 (0) units of terran breathing gas mixture [terair].
-      items: 1000 units of food [food] (size: 1000, mass: 1000), 3 terrans [terran] (size: 12, mass:
+      items: 997 units of food [food] (size: 997, mass: 997), 3 terrans [terran] (size: 12, mass:
       12, upkeep: 3 cash [cash], consume: 3 units of food [food], 3 units of terran breathing gas
       mixture [terair]).
     + wind powerplant [122], wind powerplant [wnplnt], immobile.
@@ -765,7 +805,7 @@ Galaxy report:
       size: 190.
     - core drill [000022], core drill [cdrill], immobile, owned by Gelvaren [3].
       size: 1000.
-    - factory [000023], factory [factry], immobile, owned by Gelvaren [3].
+    - factory [000023], factory [factry], disabled, immobile, owned by Gelvaren [3].
       size: 1000.
     - military barrack [000025], military barrack [barrck], immobile, owned by Gelvaren [3].
       size: 2000.
@@ -789,7 +829,7 @@ Orders Template:
 #faction 1 ""
 #modulestack 000001
 ; + Berlin [000001], 3 cities [city], immobile.
-; items: 3000 cash [cash], 30 terrans [terran], 300 units of food [food].
+; items: 1165 cash [cash], 20 terrans [terran], 2 wounded terrans [wndtrn].
 ; effects:
 ;   receiving 300 units of food [food] from small cargo bay [000013], 0 weeks to complete.
 
@@ -799,19 +839,19 @@ Orders Template:
 
 #modulestack 000003
 ; + Berlin farms [000003], 10 farming complexes [farms], immobile.
-; items: 75 terrans [terran].
+; items: 54 terrans [terran], 3 wounded terrans [wndtrn].
 
 #modulestack 000004
 ; + Berlin coal powerplants [000004], 5 coal-burning plants [cplant], immobile.
-; items: 100 units of carbon [carbon], 15 terrans [terran].
+; items: 100 units of carbon [carbon], 10 terrans [terran], wounded terran [wndtrn].
 
 #modulestack 000005
 ; + Berlin granary [000005], small cargo bay [cargob], immobile.
-; items: 1000 units of food [food], 3 terrans [terran].
+; items: 997 units of food [food], 3 terrans [terran].
 
 #modulestack 000006
 ; + Sydney [000006], 2 cities [city], immobile.
-; items: 2000 cash [cash], 200 units of food [food].
+; items: 947 cash [cash].
 ; effects:
 ;   receiving 200 units of food [food] from small cargo bay [000019], 0 weeks to complete.
 
@@ -821,18 +861,18 @@ Orders Template:
 
 #modulestack 000008
 ; + Sydney farms [000008], 10 farming complexes [farms], immobile.
-; items: 75 terrans [terran].
+; items: 51 terrans [terran], 5 wounded terrans [wndtrn].
 
 #modulestack 000009
 ; + Sydney wind powerplants [000009], 10 wind powerplants [wnplnt], immobile.
 
 #modulestack 000010
 ; + Sydney oil powerplants [000010], 5 oil-burning plants [oplant], immobile.
-; items: 100 units of oil [oil], 15 terrans [terran].
+; items: 100 units of oil [oil], 10 terrans [terran], 4 wounded terrans [wndtrn].
 
 #modulestack 000011
 ; + Sydney granary [000011], small cargo bay [cargob], immobile.
-; items: 1000 units of food [food], 3 terrans [terran].
+; items: 997 units of food [food], 3 terrans [terran].
 
 #modulestack 1
 ; + wind powerplant [1], wind powerplant [wnplnt], immobile.

@@ -76,6 +76,7 @@ namespace SpaceAge
 		public LocationTypes        UseCondition_LocationTypes          { get; set; }
         public ItemTypes            UseCondition_AtmosphereResources    { get; set; }        
         public EModuleTypesGroup    UseCondition_ModuleTypesGroup       { get; set; }
+		public string               UseCondition_ModuleType             { get; set; }
 
         #endregion
 

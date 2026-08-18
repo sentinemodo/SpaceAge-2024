@@ -124,7 +124,7 @@
 		<entry
 			name="medici"
 			name-en="medicines"
-			description="Assorted medical supplies need to treat the wounded."
+			description="Packed sterile doses: antibiotics, saline, antiseptics. Harvested from ocean biomass or fermented from food in a sick bay. Used to treat wounded crew."
 			size="1"
 			mass="1">			
 		</entry>
@@ -703,8 +703,8 @@ This assembly technology represents the pinnacle of human ingenuity and collabor
 			name="medtec"
 			name-en="medical services"
 			level="2"
-			tags="repair"
-			description="The organized provision of medical services greatly increase the survival chances of the casualties."
+			tags="research"
+			description="Organized triage, isolation, and first aid. Sterile volume, filtered air, and trained crew raise the odds that casualties survive long enough to reach a ward. This builds a clinic, not an inpatient surgical bay."
 			use-time="6">
 			<use-allowed-in module-type-group="production"/>
 			<use-consume item="iron"  quantity="1"/>
@@ -716,9 +716,10 @@ This assembly technology represents the pinnacle of human ingenuity and collabor
 			name="medirf"
 			name-en="medicines refining"
 			level="2"
-			tags="repair"
-			description="Without the medicines, even the best doctor can only watch his patient dies. The medicines are composed of small bits of different ingredients that can be bought on habitable planets."
-			usable-in="production">
+			tags="research"
+			requires="medtec"
+			description="On ocean worlds, coastal and pelagic biomass, iodine, and dissolved organics are harvested and refined into sterile doses. No cargo feedstock: the water column is the resource. Without pharmaceuticals, infection and fluid loss kill even when a surgeon is present."
+			use-time="1">
 			<use-allowed-in module-type-group="production" planet-type="ocean"/>
 			<use-produce item="medici" quantity="1"/>
 		</entry>
@@ -1385,9 +1386,9 @@ Researchers can query the library. The system can handle natural language questi
 		<entry
 			name="medfac"
 			name-en="medical facility"
-			name-en2="medical facilites"
+			name-en2="medical facilities"
 			group="habitat"
-			description="These sealed modules house crew members that need medical attention. They increase their chances of cure and contain undesired effects."
+			description="Outpatient clinic and quarantine: isolation volume, first aid, and containment of infection. Not a surgical recovery ward; that is the sick bay."
 			size="300"
 			capacity="150"
 			mass="200"
@@ -1398,7 +1399,7 @@ Researchers can query the library. The system can handle natural language questi
 			radiation="-100"
 			hit-points="25"
 			cure-chance="25">
-			<upkeep type="cash" quanity="100"/>
+			<upkeep type="cash" quantity="100"/>
 			<effect type="heal" value="1.0" target="stacked"/>
 		</entry>
 		<entry

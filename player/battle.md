@@ -1,6 +1,6 @@
 # Battle (rules of engagement)
 
-Checked **18 Aug 2026** against engine **0.1.141**.
+Checked **19 Aug 2026** against engine **0.1.141**.
 
 Sources: `Game/battle/Battle.cs`, `Game/battle/ETactic.cs`, `Game/Game.cs` (`ExecuteBattles`), `Game/data structures/ModuleStack.cs` (attack, defense, initiative, tactics, `IsArmed`, `HasOperationalModules`, `GetFiringModules`), `Game/data structures/Faction.cs` / `FactionAttitude.cs`, `Game/orders/AttackOrder.cs`, `CaptureOrder.cs`, `DeclareOrder.cs`, `TacticOrder.cs`, `SetOrder.cs`. Catalog bonuses: `Tests/data.xml` (`attack`, `defense`, `damage`, `initiative` on modules, techs, skills, items).
 
@@ -8,7 +8,7 @@ Not source of truth: `Game/documentation/Rules.txt` combat chapters (Alderson CO
 
 ## When a battle starts
 
-Each of the **13 weeks**, after orders, medical consume, contracts, and buy offers, `Game.ExecuteBattles` calls `Battle.StartAtLocations`.
+Each of the **13 weeks**, after orders, sick-bay heal, medical consume, contracts, and buy offers, `Game.ExecuteBattles` calls `Battle.StartAtLocations`.
 
 A battle starts when:
 

@@ -1,6 +1,6 @@
 # Level 0 and 1 technologies
 
-Catalog: `Tests/data.xml`. Checked **18 Aug 2026**.
+Catalog: `Tests/data.xml`. Checked **19 Aug 2026**.
 
 This file lists **level 0 and level 1** technologies, then the **module types** and **item types** those technologies produce or consume. Level 2 and above: `player/advanced_technologies.md`. Alphabetical by English `name-en` inside each level.
 
@@ -27,6 +27,10 @@ Works in: production. Use consumes: 10 iron `[iron]`, 10 titanium `[titani]`. Us
 **agricultural complex [agrplx]**  
 The placing of farms and others complexes on a planet for farming and ranching.  
 Works in: production, solid-surface, terran atmosphere `[terair]`. Use consumes: 10 iron `[iron]`. Use produces: farming complex `[farms]`. Use-time: 4 weeks.
+
+**breathing-gas generation [airgen]**  
+Engineering for compact recyclers that produce canned terran breathing gas for habitats, ships and vacuum work.  
+Works in: production. Use consumes: 2 iron `[iron]`, 1 copper `[copper]`. Use produces: life support system `[lifsys]`. Use-time: 2 weeks.
 
 **copper mining [cminng]**  
 The extraction, purification and refining of copper ores from a variety of locations. Copper mining is used on planetary surfaces and asteroids.  
@@ -67,10 +71,6 @@ Works in: agricultural, on ocean worlds with terran atmosphere `[terair]`, solid
 **iron mining [iminng]**  
 The extraction, purification and refining of iron ores from a variety of locations.  
 Works in: extraction, solid-surface. Use produces: 3 iron `[iron]`. Use-time: 1 week (default).
-
-**life support system [lifsys]**  
-A compact recycler that produces canned terran breathing gas for habitats, ships and vacuum work.  
-Works in: production. Use consumes: 2 iron `[iron]`, 1 copper `[copper]`. Use produces: life support system `[lifsys]`. Use-time: 2 weeks.
 
 **mineral surface drilling [sdrill]**  
 Mineral exploitation.  
@@ -249,7 +249,7 @@ Group `military`. Built by stationary defense `[stnrdf]`. Size 100, mass 500, cr
 
 **life support system [lifsys]**  
 Generates canned terran breathing gas for people and vehicles that cannot breathe the local atmosphere.  
-Group `habitat`. Built by life support system `[lifsys]`. Size 100, mass 80, crew 0, energy 2, capacity 40, HP 20, tech-cap 1. Upkeep 10 cash. Produces 10 terran breathing gas `[terair]` / week. Operates in habitat, settlement, frigate.
+Group `habitat`. Built by breathing-gas generation `[airgen]`. Size 100, mass 80, crew 0, energy 2, capacity 40, HP 20, tech-cap 1. Upkeep 10 cash. Produces 10 terran breathing gas `[terair]` / week. Operates in habitat, settlement, frigate.
 
 **oil-burning plant [oplant]**  
 Provide energy by burning oil.  
@@ -335,7 +335,7 @@ Size 5, mass 5. Produced by hydrocarbons drilling `[hcdril]` (1). Coal plants bu
 
 **unit of copper [copper]**  
 This very useful metal is the basis of most energy based or energy intensive structures.  
-Size 5, mass 8. Produced by copper mining `[cminng]` (2). Consumed by L0: corporate management `[corpmg]` (2), uranium fission `[urfiss]` (5), life support system `[lifsys]` (1). Also L1: laser optics `[lasopt]` (4), laser turret `[lstrrt]` (2), preventive servicing `[servic]` (1).
+Size 5, mass 8. Produced by copper mining `[cminng]` (2). Consumed by L0: breathing-gas generation `[airgen]` (1), corporate management `[corpmg]` (2), uranium fission `[urfiss]` (5). Also L1: laser optics `[lasopt]` (4), laser turret `[lstrrt]` (2), preventive servicing `[servic]` (1).
 
 **unit of food [food]**  
 An carefully designed set of pastes, liquids and solids, lending itself to taste-satisfying preparations, yet a source of all essential minerals, vitamins and calories for human consumption.  

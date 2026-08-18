@@ -26,6 +26,8 @@ Purpose: canonical vendor/spec links for implementers. Summaries only — do not
 | `Game/documentation/links.txt` | External astronomy/spaceflight primers |
 | `.cursor/install.sh` / `.cursor/run-tests.sh` | Cloud restore/build and test entrypoints (Mono) |
 | `architecture/future-work.md` | Deferred modernization backlog (ADR-gated) |
+| `designer/` | Game-designer specs: galaxy scale, tech tree, catalog, contracts (not engine) |
+| `campaign/` | Live PBEM `data.xml` / `gamein.xml` (not NUnit fixtures) |
 
 ## In-repo ADRs
 

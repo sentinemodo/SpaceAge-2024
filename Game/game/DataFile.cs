@@ -329,6 +329,13 @@ namespace SpaceAge
 						race.NoConsumeChance = this.XMLAssignInteger(elNoConsume.GetAttribute("chance"), 0);
 					}
 					#endregion
+					#region no-upkeep
+					foreach (XmlElement elNoUpkeep in el.SelectNodes("no-upkeep"))
+					{
+						race.NoUpkeepEffect = elNoUpkeep.GetAttribute("effect");
+						race.NoUpkeepChance = this.XMLAssignInteger(elNoUpkeep.GetAttribute("chance"), 0);
+					}
+					#endregion
 				}
 
 			}
@@ -477,6 +484,10 @@ namespace SpaceAge
                             {                                
                                 technology.UseCondition_ModuleTypesGroup = this.getModuleTypeGroup(elAllowed.GetAttribute("module-type-group"));
                             }
+							if (elAllowed.HasAttribute("module"))
+							{
+								technology.UseCondition_ModuleType = elAllowed.GetAttribute("module");
+							}
 					    }
                     }
                     catch (KeyNotFoundException ex)
@@ -518,6 +529,11 @@ namespace SpaceAge
 						moduleType.Damage = this.XMLAssignInteger(el.GetAttribute("damage"), 0);
 
 						this.assignItemStacks(el.SelectNodes("upkeep"), moduleType.Upkeep);
+						foreach (XmlElement elNoUpkeep in el.SelectNodes("no-upkeep"))
+						{
+							moduleType.NoUpkeepEffect = elNoUpkeep.GetAttribute("effect");
+							moduleType.NoUpkeepChance = this.XMLAssignInteger(elNoUpkeep.GetAttribute("chance"), 0);
+						}
 
                         #region fuel
                         foreach (XmlElement elFuel in el.SelectNodes("fuel"))
@@ -569,6 +585,29 @@ namespace SpaceAge
                         this.assignItemStacks(el.SelectNodes("energy-consume"), moduleType.ProduceEnergyConsume);
 
 						this.assignItemStacks(el.SelectNodes("consume"), moduleType.Consume);
+						foreach (XmlElement elNoConsume in el.SelectNodes("no-consume"))
+						{
+							moduleType.NoConsumeEffect = elNoConsume.GetAttribute("effect");
+							moduleType.NoConsumeChance = this.XMLAssignInteger(elNoConsume.GetAttribute("chance"), 0);
+						}
+						foreach (XmlElement elEffect in el.SelectNodes("effect"))
+						{
+							if (elEffect.GetAttribute("type") != "heal")
+							{
+								continue;
+							}
+							if (elEffect.GetAttribute("target") != "wndtrn")
+							{
+								continue;
+							}
+							moduleType.HealTarget = elEffect.GetAttribute("target");
+							moduleType.HealQuantity = this.XMLAssignInteger(elEffect.GetAttribute("value"), 0);
+							moduleType.HealWeeks = this.XMLAssignInteger(elEffect.GetAttribute("weeks"), 0);
+							moduleType.HealQuantityWithItem = this.XMLAssignInteger(elEffect.GetAttribute("with-item-value"), 0);
+							moduleType.HealWeeksWithItem = this.XMLAssignInteger(elEffect.GetAttribute("weeks-with-item"), 0);
+							moduleType.HealConsumeItem = elEffect.GetAttribute("consume-item");
+							moduleType.HealConsumeQuantity = this.XMLAssignInteger(elEffect.GetAttribute("consume-quantity"), 1);
+						}
 						ItemStack item = null;
 						foreach (XmlElement elProduce in el.SelectNodes("produce"))
 						{

@@ -1,12 +1,12 @@
 # Player order syntax
 
-Checked **18 Aug 2026** against engine **0.1.141** (`Game/Program.cs`).
+Checked **19 Aug 2026** against engine **0.1.141** (`Game/Program.cs`).
 
-Sources: `Game/orders/EOrderType.cs`, `Game/orders/OrdersReader.cs`, `Game/orders/Orders.cs`, `Game/Game.cs` (week loop), `Game/game/DataFile.cs` (`LoadOrders` XML switch), each `Game/orders/*Order.Parse` / `Execute`. Sample prefix usage: `Tests/SampleGame/orders.*.txt`.
+Sources: `Game/orders/EOrderType.cs`, `Game/orders/OrdersReader.cs`, `Game/orders/Orders.cs`, `Game/Game.cs` (week loop), `Game/data structures/ModuleStack.Upkeep.cs` (sick bay, medical consume, quarterly maintenance), `Game/game/DataFile.cs` (`LoadOrders` XML switch), each `Game/orders/*Order.Parse` / `Execute`. Sample prefix usage: `Tests/SampleGame/orders.*.txt`.
 
 Not source of truth: `Game/documentation/Rules.txt`. Turn order files are **Windows-1251** (same as reports). Verbs are case-insensitive; most arguments are not.
 
-**24** verbs parse from text (`OrdersReader` switch): **18 immediate**, **6 long**. See [Turn sequence](#turn-sequence), [Immediate vs long](#immediate-vs-long), and [Text vs XML](#text-vs-xml). `PRESS` has a class but is not in the text switch or the XML switch — omit it. `TRANSFER` loads from XML only.
+**25** verbs parse from text (`OrdersReader` switch): **19 immediate**, **6 long**. See [Turn sequence](#turn-sequence), [Immediate vs long](#immediate-vs-long), and [Text vs XML](#text-vs-xml). `TRANSFER` loads from XML only.
 
 ## Prefixes and subjects
 
@@ -71,7 +71,7 @@ From `Game.exe` (`Program.Main`) and `Game.Execute`. A turn is **13 weeks**. Com
 4. `Game.Execute` (below).
 5. Write faction reports, then save the game.
 
-`/no-turn` skips the 13 weeks: load orders, run **between-turn** immediates only (`AllowedBetweenTurns` — live text verb: `CONTRACT`), write contract announcements, save.
+`/no-turn` skips the 13 weeks: load orders, run **between-turn** immediates only (`AllowedBetweenTurns` — live text verbs: `CONTRACT`, `PRESS`), write announcements (`announce.{turn}.{faction}.txt` for new contracts at that location and for press releases), save.
 
 `/check` parses an order file and does not execute.
 
@@ -83,15 +83,20 @@ Clear last turn’s event reports, then `turn++`.
 
 1. Clear each subject’s “already did a long order” flag and each immediate’s `Executed` flag.
 2. **Orders** (`ExecuteOrders`):
-  - Every **faction** (e.g. `CONTRACT`).
+  - Every **faction** (e.g. `CONTRACT`, `PRESS`).
   - **Module stacks that still have orders** (`HasOrders`), looping until a pass does nothing. Each stack: immediate loop → one long → immediate loop, drop finished non-repeating orders, then tick **effects** (`Moving`, `Producing*`, `Training*`).
   - **People that still have orders**, same loop (person effects are commented out and do not tick here).
-3. **Medical consume** — `medici` for wounded/mad crew on each stack (`wndtrn` / `madtrn`). Food and breathing gas are not deducted here.
-4. **Contracts** — evaluate triggers and pay rewards.
-5. **Buy offers** — each standing `BUY` tries to match a sell (`Offer.Process`). `SELL` only lists; matching is from the buy side.
-6. **Battles** — `Battle.StartAtLocations` then `Execute` (see `player/battle.md`).
+3. **Sick-bay heal** — stacks whose module type heals `wndtrn` (catalog: sick bay `[sckbay]`). With medicines `[medici]` on the stack, convert up to **4 wounded per bay** into terran `[terran]` this week and consume 1 medici each. Without medicines, count unmedicated weeks and every **4 weeks** convert **2 wounded per bay**. Medical facility `[medfac]` heal is catalog-only (`target="stacked"`) and does not run here.
+4. **Medical consume** — `medici` for remaining wounded/mad crew on each stack (`wndtrn` / `madtrn`). Food and breathing gas are not deducted here.
+5. **Contracts** — evaluate triggers and pay rewards.
+6. **Buy offers** — each standing `BUY` tries to match a sell (`Offer.Process`). `SELL` only lists; matching is from the buy side.
+7. **Battles** — `Battle.StartAtLocations` then `Execute` (see `player/battle.md`).
 
-After week 13: clear long/immediate flags again; drop unformed stacks that should not report (`RemoveNonReporting`).
+After week 13: **quarterly maintenance**, then **quarterly wounded outcome**, then clear long/immediate flags; drop unformed stacks that should not report (`RemoveNonReporting`).
+
+**Quarterly maintenance** (`ExecuteMaintenance`, once, week 13): cash upkeep, then food, then terran air `[terair]` if the stack needs canned air (orbit, space, or a moon region). Bills pull from this stack then parent nests; cash shortfall can also debit the faction bank. Unpaid food/air can wound healthy terrans (catalog 25%). Unpaid cash can damage the module or print race off-duty. `medici` is skipped here (already weekly).
+
+**Quarterly wounded outcome** (once, week 13): each remaining `wndtrn` rolls independently — **25%** die of wounds, **25%** recover to terran, **50%** stay wounded. Not gated on medici. `madtrn` is not rolled here.
 
 **End of turn (once):**
 
@@ -99,7 +104,7 @@ After week 13: clear long/immediate flags again; drop unformed stacks that shoul
 - `UpdateRates` — empty (comments only).
 - `GenerateOffers` — empty (no NPC auto-offers).
 
-Standing `@buy` / `@sell` stay on the order list and retry each week at step 5. `ATTACK` / `TACTIC` / `DECLARE` during step 2 only set stance; shooting is step 6.
+Standing `@buy` / `@sell` stay on the order list and retry each week at step 6. `ATTACK` / `TACTIC` / `DECLARE` during step 2 only set stance; shooting is step 7.
 
 ## Immediate vs long
 
@@ -125,21 +130,18 @@ The two kinds are independent except where you chain them with `-` / `+`. An imm
 
 **Long** orders are the week’s work: move, produce, repair, research, train, use. A second long on the same subject waits until the first completes (or until its conditions clear). Accepting modules mid-week can mark the receiver as having already used its long slot.
 
-`CONTRACT` is immediate and also **allowed between turns** (`/no-turn`). No other live text verb is.
+`CONTRACT` and `PRESS` are immediate and also **allowed between turns** (`/no-turn`). No other live text verb is.
 
 ## Text vs XML
 
 `DataFile.LoadOrders` builds orders from `<order>` XML when loading a game. Divergences:
 
 
-| Verb                                    | Text (`OrdersReader`)                                    | XML (`DataFile` switch)                                                          |
-| --------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `RESEARCH`                              | parses                                                   | **missing** — `ResearchOrder.LoadXml` exists but XML load throws “Unknown order” |
-| `SEE`                                   | parses                                                   | **missing** — same pattern                                                       |
-| `TRANSFER`                              | **missing** — “Unknown order”                            | loads (`TransferOrder`)                                                          |
-| `PRESS`                                 | missing                                                  | missing                                                                          |
-| `MOVE`                                  | destinations: region, star, planet, moon, anomaly, orbit | XML destinations are looked up in `Region.All` only                              |
-| `COPY` comments mention `COPY all TO …` | **not parsed** — technology id required                  | technology + receiver attributes                                                 |
+| Verb                                    | Text (`OrdersReader`)                                    | XML (`DataFile` switch)                             |
+| --------------------------------------- | -------------------------------------------------------- | --------------------------------------------------- |
+| `TRANSFER`                              | **missing** — “Unknown order”                            | loads (`TransferOrder`)                             |
+| `MOVE`                                  | destinations: region, star, planet, moon, anomaly, orbit | XML destinations are looked up in `Region.All` only |
+| `COPY` comments mention `COPY all TO …` | **not parsed** — technology id required                  | technology + receiver attributes                    |
 
 
 Player turn files use **text**. XML matters for saved games, not for `order.*` drafts.
@@ -148,7 +150,7 @@ Player turn files use **text**. XML matters for saved games, not for `order.*` d
 
 ## Immediate orders
 
-ACTIVE, ALIAS, ATTACK, BUY, CAPTURE, CONTRACT, COPY, DECLARE, FORM, GET, GIVE, HAS, NAME, SEE, SELL, SET, STACK, TACTIC.
+ACTIVE, ALIAS, ATTACK, BUY, CAPTURE, CONTRACT, COPY, DECLARE, FORM, GET, GIVE, HAS, NAME, PRESS, SEE, SELL, SET, STACK, TACTIC.
 
 ### ACTIVE
 
@@ -280,6 +282,17 @@ Condition probe: succeeds if recursive cargo / nested module count / person pres
 
 **Subject:** modulestack.
 
+### PRESS
+
+**Syntax:**
+
+- `PRESS TITLE "<title>" [FLAVOUR|FLAVOR "<text>"]`
+- Bare tokens: first unused token is the title, the next is flavour. Title or flavour is required.
+
+**Subject:** **faction** (`#faction` as subject). Also allowed **between turns**.
+
+Creates a `PressRelease` and reports `issued press release {title}.` on the issuer. If the subject is not a faction, Execute does nothing. `/no-turn` writes title and flavour into `announce.{turn}.{faction}.txt` for every faction (`Contract.All.WriteAnnouncements`).
+
 ### SEE
 
 **Syntax:** `SEE <stack-id|newN>` or `SEE PERSON <person-id|newN>`
@@ -287,8 +300,6 @@ Condition probe: succeeds if recursive cargo / nested module count / person pres
 **Subject:** holder.
 
 Succeeds if that stack or person is at the observer’s location. Template/report may print `see id person`; **Parse expects `SEE PERSON id`**.
-
-**XML:** not in `DataFile` order switch.
 
 ### SELL
 
@@ -369,9 +380,7 @@ Spends spare parts (`spare`) and restores hit points on the stack (or its parent
 
 **Subject:** modulestack (must be group **research**).
 
-Weekly research output; chance of a breakthrough, else points accumulate. Bare tokens prefer the most specific match (known tech, then tag such as `military`, then item, module, or map object). `TAG` forces a tag preference even when the token is also a technology id. `RESEARCH TAG repair` prefers catalog techs whose `tags` include `repair`: medical services `[medtec]`, medicines refining `[medirf]`, preventive servicing `[servic]`, and engineering shop `[engshp]` (`engshp` also keeps `production`). Bare `research repair` still matches technology **repair and maintenance** `[repair]` (that id has no `repair` tag). `GROUP` accepts: `agricultural`, `command`, `spacecraft`, `energy`, `extraction`, `habitat`, `infantry`, `military`, `production`, `propulsion`, `research`, `vehicle`. Other group names (including `frigate`, `settlement`, `storage`) are stored as an untyped token.
-
-**XML:** not in `DataFile` order switch.
+Weekly research output; chance of a breakthrough, else points accumulate. Bare tokens prefer the most specific match (known tech, then tag such as `military`, then item, module, or map object). `TAG` forces a tag preference even when the token is also a technology id. `RESEARCH TAG repair` prefers catalog techs whose `tags` include `repair`: medical services `[medtec]`, medicines refining `[medirf]`, preventive servicing `[servic]`, and engineering shop `[engshp]` (`engshp` also keeps `production`). `RESEARCH TAG research` prefers file indexing `[filidx]`, advanced computing `[advres]`, sick bay construction `[sckcns]`, and shipboard pharmacy `[pharms]`. Bare `research repair` still matches technology **repair and maintenance** `[repair]` (that id has no `repair` tag). `GROUP` accepts: `agricultural`, `command`, `spacecraft`, `energy`, `extraction`, `habitat`, `infantry`, `military`, `production`, `propulsion`, `research`, `vehicle`. Other group names (including `frigate`, `settlement`, `storage`) are stored as an untyped token.
 
 ### TRAIN
 
@@ -390,7 +399,7 @@ Starts `TrainingSkill` or `TrainingOfficer` (officer requires matching crew of t
 
 **Subject:** modulestack.
 
-Uses a loaded (or level-0) technology: consumes catalog inputs and after `use-time` produces items or a module. `AS` names the new module stack; `FOR` is the nest parent. `AS` and `FOR` are independent (`use wndtrb for 000021` is valid). Level 0 techs do not need to be copied onto the stack. Duration scales with `UseTime`, efficiency, and active quantity.
+Uses a loaded (or level-0) technology: consumes catalog inputs and after `use-time` produces items or a module. `AS` names the new module stack; `FOR` is the nest parent. `AS` and `FOR` are independent (`use wndtrb for 000021` is valid). Level 0 techs do not need to be copied onto the stack. Duration scales with `UseTime`, efficiency, and active quantity. `use-allowed-in` can restrict both module **group** and a specific module type (`module="sckbay"` for shipboard pharmacy `[pharms]`).
 
 Omit `FOR`: `ReceiverParent` defaults to the **producer**. `ProducingModule` treats that as “no extra nest”: the product is **formed as a sibling** (`produced.Parent = Producer.Parent`, same orbit/region). At complete it does **not** stack under the producer. `use spctrl as new102` therefore leaves a command bridge sitting next to the shuttle.
 

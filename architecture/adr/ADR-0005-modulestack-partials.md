@@ -12,7 +12,7 @@ Status: Accepted
 Keep a **single** `ModuleStack` type. Split only the new turn-3 helpers into `partial` files:
 
 - `ModuleStack.Ownership.cs` — `SetOwnerRecursive`, `CollectTechnologiesRecursive`
-- `ModuleStack.Upkeep.cs` — `ExecuteMedicalConsume` and medical no-consume death
+- `ModuleStack.Upkeep.cs` — `ExecuteMedicalConsume`, weekly `ExecuteSickBayHeal`, quarterly `ExecuteMaintenance` (cash/food/terair at end of turn), and quarterly wounded outcome
 
 This is the first use of `partial` in the engine. It is a file split only; namespaces, accessibility, and call sites stay the same.
 

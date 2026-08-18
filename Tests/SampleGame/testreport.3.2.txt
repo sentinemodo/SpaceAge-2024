@@ -11,7 +11,7 @@ Events during turn:
   none.
 
 Bank report:
-  Bank account balance: 9821.25.
+  Bank account balance: 8444.25.
   Credit line maximum: 10000.
   Credit rate: 20%, Deposit rate: 5%.
 
@@ -4043,7 +4043,7 @@ Galaxy report:
 ------------------------------------------------------------
   orbit [O00002], has atmosphere suitable for terran [terran].
   + space shuttle [100], 10 space shuttle [shuttl].
-    size: 2000, mass: 7500/1481 (300), capacity: 1250/1024, crew: 20/41, upkeep: 1050 (1000) cash
+    size: 2000, mass: 7500/1399 (300), capacity: 1250/942, crew: 20/41, upkeep: 1050 (1000) cash
     [cash], consume: 41 (0) units of food [food], 41 (0) units of terran breathing gas mixture
     [terair].
     movement speed: 0.5 in space.
@@ -4051,9 +4051,9 @@ Galaxy report:
     items: 40 terrans [terran] (size: 160, mass: 160, upkeep: 40 cash [cash], consume: 40 units of
     food [food], 40 units of terran breathing gas mixture [terair]), 30 units of iron [iron] (size:
     150, mass: 300), 16 units of titanium [titani] (size: 160, mass: 160), 19 units of silicium
-    [silici] (size: 95, mass: 57), 15 units of copper [copper] (size: 75, mass: 120), 150 units of
-    food [food] (size: 150, mass: 150), 80 units of oxyhydro [h2o2] (size: 80, mass: 80), 150 units
-    of terran breathing gas mixture [terair] (size: 150, mass: 150).
+    [silici] (size: 95, mass: 57), 15 units of copper [copper] (size: 75, mass: 120), 109 units of
+    food [food] (size: 109, mass: 109), 80 units of oxyhydro [h2o2] (size: 80, mass: 80), 109 units
+    of terran breathing gas mixture [terair] (size: 109, mass: 109).
     effects:
       can operate for another 10 weeks without refueling.
     events:
@@ -4115,7 +4115,7 @@ Galaxy report:
       none.
   
   - Berlin [000001], 3 cities [city], immobile, owned by NPC [1].
-    size: 75000, capacity: 45000/41420, energy: 320/255 (30).
+    size: 75000, capacity: 45000/41088, energy: 320/255 (30).
     - Berlin garrison [000002], infantry battalion [inftry], owned by NPC [1].
       size: 500.
     - Berlin farms [000003], 10 farming complexes [farms], immobile, owned by NPC [1].
@@ -4139,9 +4139,9 @@ Galaxy report:
         week 9: engaged in battle
         week 9: lost #1 corporate headquarters [corphq] to capture.
     + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-      size: 10000, mass: 7110 (1000), capacity: 9000/5120, upkeep: 160 (150) cash [cash], consume:
+      size: 10000, mass: 7100 (1000), capacity: 9000/5110, upkeep: 160 (150) cash [cash], consume:
       10 (0) units of food [food], 10 (0) units of terran breathing gas mixture [terair].
-      items: 925 units of food [food] (size: 925, mass: 925), 850 units of terran breathing gas
+      items: 915 units of food [food] (size: 915, mass: 915), 850 units of terran breathing gas
       mixture [terair] (size: 850, mass: 850), 900 units of oxyhydro [h2o2] (size: 900, mass: 900),
       70 units of iron [iron] (size: 350, mass: 700), 70 units of titanium [titani] (size: 700,
       mass: 700), 80 units of silicium [silici] (size: 400, mass: 240), 80 units of copper [copper]
@@ -4183,12 +4183,11 @@ Galaxy report:
         week 13: got unit of carbon [carbon] from core drill [000016].
         week 13: engaged in battle
     + farming complex [000014], 3 farming complexes [farms], immobile.
-      size: 3000, mass: 375 (300), capacity: 1500/75, energy: 15, crew: 15/15, upkeep: 165 (150)
+      size: 3000, mass: 360 (300), capacity: 1500/60, energy: 15, crew: 15/15, upkeep: 165 (150)
       cash [cash], consume: 15 (0) units of food [food], 15 (0) units of terran breathing gas
       mixture [terair].
       items: 15 terrans [terran] (size: 60, mass: 60, upkeep: 15 cash [cash], consume: 15 units of
-      food [food], 15 units of terran breathing gas mixture [terair]), 15 units of food [food]
-      (size: 15, mass: 15).
+      food [food], 15 units of terran breathing gas mixture [terair]).
       events:
         week 1: given 15 units of food [food] to small cargo bay [000013].
         week 1: produced 15 units of food [food].
@@ -4221,13 +4220,13 @@ Galaxy report:
         week 13: given 15 units of food [food] to small cargo bay [000013].
         week 13: produced 15 units of food [food].
         week 13: engaged in battle
-    + coal-burning plant [000015], 3 coal-burning plants [cplant], immobile.
-      size: 3000, mass: 3024 (3000), capacity: 1500/24, energy: 120/30 (consume: 15 units of carbon
-      [carbon] for 13 weeks), crew: 6/6, upkeep: 156 (150) cash [cash], consume: 6 (0) units of food
-      [food], 6 (0) units of terran breathing gas mixture [terair].
+    + coal-burning plant [000015], 3 coal-burning plants [cplant], partially disabled, immobile.
+      size: 3000, mass: 3016 (3000), capacity: 1500/16, energy: 120/30 (consume: 15 units of carbon
+      [carbon] for 13 weeks), crew: 6/4, upkeep: 154 (150) cash [cash], consume: 4 (0) units of food
+      [food], 4 (0) units of terran breathing gas mixture [terair].
       fuel requirements: 15 units of carbon [carbon] per 13 weeks.
-      items: 6 terrans [terran] (size: 24, mass: 24, upkeep: 6 cash [cash], consume: 6 units of food
-      [food], 6 units of terran breathing gas mixture [terair]).
+      items: 4 terrans [terran] (size: 16, mass: 16, upkeep: 4 cash [cash], consume: 4 units of food
+      [food], 4 units of terran breathing gas mixture [terair]).
       events:
         week 1: got 15 units of carbon [carbon] from small cargo bay [000013].
         week 1: consumed 15 units of carbon [carbon] as fuel.
@@ -4237,13 +4236,18 @@ Galaxy report:
         week 11: engaged in battle
         week 12: engaged in battle
         week 13: engaged in battle
-    + core drill [000016], core drill [cdrill], immobile.
-      size: 1000, mass: 1029 (1000), capacity: 750/29, energy: 5, crew: 6/6, upkeep: 46 (40) cash
-      [cash], consume: 6 (0) units of food [food], 6 (0) units of terran breathing gas mixture
-      [terair].
-      items: 6 terrans [terran] (size: 24, mass: 24, upkeep: 6 cash [cash], consume: 6 units of food
-      [food], 6 units of terran breathing gas mixture [terair]), unit of carbon [carbon] (size: 5,
-      mass: 5).
+        week 13: Lack of supplies: 6 unit of food [food].
+        week 13: 3 terrans [terran] wounded from lack of supplies.
+        week 13: 2 wounded terrans [wndtrn] died of their wounds.
+        week 13: 1 wounded terran [wndtrn] recovered from their wounds.
+    + core drill [000016], core drill [cdrill], disabled, immobile.
+      size: 1000, mass: 1025 (1000), capacity: 750/25, energy: 5, crew: 6/5, upkeep: 45 (40) cash
+      [cash], consume: 5 (0) units of food [food], 5 (0) units of terran breathing gas mixture
+      [terair], (0) medicines [medici].
+      items: 4 terrans [terran] (size: 16, mass: 16, upkeep: 4 cash [cash], consume: 4 units of food
+      [food], 4 units of terran breathing gas mixture [terair]), unit of carbon [carbon] (size: 5,
+      mass: 5), wounded terran [wndtrn] (size: 4, mass: 4, upkeep: cash [cash], consume: unit of
+      food [food], unit of terran breathing gas mixture [terair], medicines [medici]).
       events:
         week 1: given unit of carbon [carbon] to small cargo bay [000013].
         week 1: produced unit of carbon [carbon].
@@ -4276,13 +4280,19 @@ Galaxy report:
         week 13: given unit of carbon [carbon] to small cargo bay [000013].
         week 13: produced unit of carbon [carbon].
         week 13: engaged in battle
+        week 13: Lack of supplies: 6 unit of food [food].
+        week 13: 3 terrans [terran] wounded from lack of supplies.
+        week 13: 1 wounded terran [wndtrn] died of their wounds.
+        week 13: 1 wounded terran [wndtrn] recovered from their wounds.
     + factory [000017], 5 factories [factry], partially disabled, immobile.
-      size: 5000, mass: 4134 (3750), capacity: 2500/284, energy: 75, crew: 50/46, upkeep: 346 (300)
-      cash [cash], consume: 46 (0) units of food [food], 46 (0) units of terran breathing gas
-      mixture [terair].
-      items: 46 terrans [terran] (size: 184, mass: 184, upkeep: 46 cash [cash], consume: 46 units of
-      food [food], 46 units of terran breathing gas mixture [terair]), 20 units of iron [iron]
-      (size: 100, mass: 200).
+      size: 5000, mass: 4086 (3750), capacity: 2500/236, energy: 75, crew: 50/34, upkeep: 334 (300)
+      cash [cash], consume: 34 (0) units of food [food], 34 (0) units of terran breathing gas
+      mixture [terair], 2 (0) medicines [medici].
+      items: 32 terrans [terran] (size: 128, mass: 128, upkeep: 32 cash [cash], consume: 32 units of
+      food [food], 32 units of terran breathing gas mixture [terair]), 20 units of iron [iron]
+      (size: 100, mass: 200), 2 wounded terrans [wndtrn] (size: 8, mass: 8, upkeep: 2 cash [cash],
+      consume: 2 units of food [food], 2 units of terran breathing gas mixture [terair], 2 medicines
+      [medici]).
       events:
         week 1: consumed 2 units of titanium [titani] to produce gun placement [gunplc] module.
         week 1: produced gun placement [gunplc] into gun placement [111].
@@ -4300,6 +4310,10 @@ Galaxy report:
         week 11: engaged in battle
         week 12: engaged in battle
         week 13: engaged in battle
+        week 13: Lack of supplies: 46 unit of food [food].
+        week 13: 23 terrans [terran] wounded from lack of supplies.
+        week 13: 12 wounded terrans [wndtrn] died of their wounds.
+        week 13: 9 wounded terrans [wndtrn] recovered from their wounds.
     + gun placement [111], 5 gun placements [gunplc], partially disabled, immobile.
       size: 500, mass: 2516 (2500), capacity: 500/16, crew: 6/4, upkeep: 54 (50) cash [cash],
       consume: 4 (0) units of food [food], 4 (0) units of terran breathing gas mixture [terair].
@@ -4324,6 +4338,9 @@ Galaxy report:
         week 11: engaged in battle
         week 12: engaged in battle
         week 13: engaged in battle
+        week 13: Lack of supplies: 4 unit of food [food].
+        week 13: 2 terrans [terran] wounded from lack of supplies.
+        week 13: 2 wounded terrans [wndtrn] recovered from their wounds.
     - corporate headquarters [c000012], corporate headquarters [corphq], disabled, immobile, owned
       by Gelvaren [3].
       size: 1000.
@@ -4347,7 +4364,7 @@ Orders Template:
 
 #modulestack 000013
 ; + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-; items: 925 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units of
+; items: 915 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units of
 ; oxyhydro [h2o2], 70 units of iron [iron], 70 units of titanium [titani], 80 units of silicium
 ; [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 95 units
 ; of carbon [carbon].
@@ -4357,28 +4374,28 @@ sell 300 food
 
 #modulestack 000014
 ; + farming complex [000014], 3 farming complexes [farms], immobile.
-; items: 15 terrans [terran], 15 units of food [food].
+; items: 15 terrans [terran].
 @use farmng
 
 #modulestack 000015
-; + coal-burning plant [000015], 3 coal-burning plants [cplant], immobile.
-; items: 6 terrans [terran].
+; + coal-burning plant [000015], 3 coal-burning plants [cplant], partially disabled, immobile.
+; items: 4 terrans [terran].
 @produce energy
 
 #modulestack 000016
-; + core drill [000016], core drill [cdrill], immobile.
-; items: 6 terrans [terran], unit of carbon [carbon].
+; + core drill [000016], core drill [cdrill], disabled, immobile.
+; items: 4 terrans [terran], unit of carbon [carbon], wounded terran [wndtrn].
 @use hcdril
 
 #modulestack 000017
 ; + factory [000017], 5 factories [factry], partially disabled, immobile.
-; items: 46 terrans [terran], 20 units of iron [iron].
+; items: 32 terrans [terran], 20 units of iron [iron], 2 wounded terrans [wndtrn].
 
 #modulestack 100
 ; + space shuttle [100], 10 space shuttle [shuttl].
 ; items: 40 terrans [terran], 30 units of iron [iron], 16 units of titanium [titani], 19 units of
-; silicium [silici], 15 units of copper [copper], 150 units of food [food], 80 units of oxyhydro
-; [h2o2], 150 units of terran breathing gas mixture [terair].
+; silicium [silici], 15 units of copper [copper], 109 units of food [food], 80 units of oxyhydro
+; [h2o2], 109 units of terran breathing gas mixture [terair].
 ; effects:
 ;   can operate for another 10 weeks without refueling.
 move R00001

@@ -211,6 +211,37 @@ namespace UnitTests
 		}
 
 		[Test]
+		public void LoadConfiguration_LoadsSickBay()
+		{
+			this.dataFile.LoadConfiguration(Directory.GetCurrentDirectory());
+
+			Technology sckcns = Technology.All["sckcns"];
+			Assert.That(sckcns.Level, Is.EqualTo(3));
+			Assert.That(sckcns.Cost, Is.EqualTo(32));
+			Assert.That(sckcns.HasTag("research"));
+			Assert.That(sckcns.Requires, Is.EqualTo(Technology.All["medtec"]));
+			Assert.That(sckcns.UseProduceModules.Name, Is.EqualTo("sckbay"));
+
+			Technology pharms = Technology.All["pharms"];
+			Assert.That(pharms.Level, Is.EqualTo(3));
+			Assert.That(pharms.UseCondition_ModuleTypesGroup, Is.EqualTo(EModuleTypesGroup.habitat));
+			Assert.That(pharms.UseCondition_ModuleType, Is.EqualTo("sckbay"));
+			Assert.That(pharms.UseConsumeItems.ContainsKey(ItemType.All["food"]));
+			Assert.That(pharms.UseProduceItems.ContainsKey(ItemType.All["medici"]));
+
+			ModuleType sickBay = ModuleType.All["sckbay"];
+			Assert.That(sickBay.Group, Is.EqualTo(EModuleTypesGroup.habitat));
+			Assert.That(sickBay.Size, Is.EqualTo(380));
+			Assert.That(sickBay.HealTarget, Is.EqualTo("wndtrn"));
+			Assert.That(sickBay.HealQuantity, Is.EqualTo(2));
+			Assert.That(sickBay.HealWeeks, Is.EqualTo(4));
+			Assert.That(sickBay.HealQuantityWithItem, Is.EqualTo(4));
+			Assert.That(sickBay.HealWeeksWithItem, Is.EqualTo(1));
+			Assert.That(sickBay.HealConsumeItem, Is.EqualTo("medici"));
+			Assert.That(sickBay.HealConsumeQuantity, Is.EqualTo(1));
+		}
+
+		[Test]
 		public void LoadGameData_nullparameter()
 		{
 			Assert.Throws<ArgumentNullException>(

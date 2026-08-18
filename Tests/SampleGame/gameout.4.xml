@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="windows-1251"?>
 <game turn="4">
 	<faction name="1" name-en="NPC" password="" email="" default-attitude="2" text-report="True" text-report-line-length="100" xml-report="True" balance="1501" credit-line="0" credit-rate="0" deposit-rate="0" />
-	<faction name="2" name-en="Caste Prime" password="xyzzy" email="mail1@mail.pl" default-attitude="2" text-report="True" text-report-line-length="100" xml-report="True" balance="9944.015625" credit-line="10000" credit-rate="0.2" deposit-rate="0.05">
+	<faction name="2" name-en="Caste Prime" password="xyzzy" email="mail1@mail.pl" default-attitude="2" text-report="True" text-report-line-length="100" xml-report="True" balance="8090.128125" credit-line="10000" credit-rate="0.2" deposit-rate="0.05">
 		<technology name="ahlcns" />
 		<technology name="autfab" />
 		<technology name="autctl" />
@@ -11,7 +11,7 @@
 		<technology name="drnhng" />
 		<technology name="alnfgh" />
 	</faction>
-	<faction name="3" name-en="Gelvaren" password="abccb" email="mail2@mail.pl" default-attitude="2" text-report="True" text-report-line-length="72" xml-report="True" balance="9020.34984375" credit-line="10000" credit-rate="0.2" deposit-rate="0.05">
+	<faction name="3" name-en="Gelvaren" password="abccb" email="mail2@mail.pl" default-attitude="2" text-report="True" text-report-line-length="72" xml-report="True" balance="8115.17484375" credit-line="10000" credit-rate="0.2" deposit-rate="0.05">
 		<technology name="rckter" />
 		<attitude faction="2" attitude="enemy" />
 	</faction>
@@ -31,9 +31,9 @@
 							<itemstack type="titani" quantity="16" />
 							<itemstack type="silici" quantity="16" />
 							<itemstack type="copper" quantity="15" />
-							<itemstack type="food" quantity="130" />
+							<itemstack type="food" quantity="92" />
 							<itemstack type="h2o2" quantity="59" />
-							<itemstack type="terair" quantity="130" />
+							<itemstack type="terair" quantity="92" />
 							<upkeep type="cash" quantity="1047" />
 							<effect duration="5" type="fuelled" />
 							<event week="1" description="given terran [terran] to command bridge [112]." />
@@ -100,8 +100,8 @@
 							<event week="2" description="arrived at Dusty field [R00001] (0,0) from orbit [O00001]." />
 							<modulestack name="112" type="cbridg" quantity="1" faction="2">
 								<itemstack type="terran" quantity="1" />
-								<itemstack type="food" quantity="20" />
-								<itemstack type="terair" quantity="20" />
+								<itemstack type="food" quantity="19" />
+								<itemstack type="terair" quantity="19" />
 								<upkeep type="cash" quantity="101" />
 								<event week="1" description="got terran [terran] from space shuttle [100]." />
 								<event week="1" description="got 20 units of food [food] from space shuttle [100]." />
@@ -113,6 +113,10 @@
 								<upkeep type="cash" quantity="91" />
 								<event week="1" description="got terran [terran] from space shuttle [100]." />
 								<event week="1" description="stacked under spaceship hull [101]." />
+								<event week="13" description="Lack of supplies: 1 unit of food [food]." />
+								<event week="13" description="Lack of supplies: 1 unit of terran breathing gas mixture [terair]." />
+								<event week="13" description="1 terran [terran] wounded from lack of supplies." />
+								<event week="13" description="1 wounded terran [wndtrn] recovered from their wounds." />
 							</modulestack>
 							<modulestack name="114" type="rctdrv" quantity="1" faction="2">
 								<itemstack type="terran" quantity="1" />
@@ -122,6 +126,8 @@
 								<event week="1" description="got terran [terran] from space shuttle [100]." />
 								<event week="1" description="got 20 units of oxyhydro [h2o2] from space shuttle [100]." />
 								<event week="1" description="stacked under spaceship hull [101]." />
+								<event week="13" description="Lack of supplies: 1 unit of food [food]." />
+								<event week="13" description="Lack of supplies: 1 unit of terran breathing gas mixture [terair]." />
 							</modulestack>
 							<modulestack name="115" type="cmplib" quantity="1" faction="2">
 								<upkeep type="cash" quantity="1" />
@@ -153,29 +159,46 @@
 					<resource type="h2o2" quantity="250" />
 					<resource type="food" quantity="500" />
 					<modulestack name="000001" name-en="Berlin" type="city" quantity="3" faction="1">
-						<itemstack type="cash" quantity="3000" />
-						<itemstack type="terran" quantity="30" />
-						<itemstack type="food" quantity="300" />
+						<itemstack type="cash" quantity="1165" />
+						<itemstack type="terran" quantity="21" />
+						<itemstack type="wndtrn" quantity="1" />
 						<upkeep type="food" quantity="300" />
-						<upkeep type="cash" quantity="1965" />
+						<upkeep type="cash" quantity="1911" />
 						<buying module="farms" quantity="1" price="100" />
 						<selling item="food" quantity="39" price="5" />
 						<selling item="terran" quantity="30" price="50" />
+						<event week="13" description="Lack of supplies: 30 unit of food [food]." />
+						<event week="13" description="15 terrans [terran] wounded from lack of supplies." />
+						<event week="13" description="8 wounded terrans [wndtrn] died of their wounds." />
+						<event week="13" description="6 wounded terrans [wndtrn] recovered from their wounds." />
 						<modulestack name="000002" name-en="Berlin garrison" type="inftry" quantity="1" faction="1">
+							<module damage="1" />
 							<itemstack type="rctlnc" quantity="1" />
 							<upkeep type="cash" quantity="5" />
+							<event week="13" description="Lack of supplies: 100 unit of food [food]." />
+							<event week="13" description="Damaged from lack of supplies." />
 						</modulestack>
 						<modulestack name="000003" name-en="Berlin farms" type="farms" quantity="10" faction="1">
-							<itemstack type="terran" quantity="75" />
-							<upkeep type="cash" quantity="575" />
+							<itemstack type="terran" quantity="53" />
+							<itemstack type="wndtrn" quantity="4" />
+							<upkeep type="cash" quantity="557" />
+							<event week="13" description="Lack of supplies: 75 unit of food [food]." />
+							<event week="13" description="37 terrans [terran] wounded from lack of supplies." />
+							<event week="13" description="18 wounded terrans [wndtrn] died of their wounds." />
+							<event week="13" description="15 wounded terrans [wndtrn] recovered from their wounds." />
 						</modulestack>
 						<modulestack name="000004" name-en="Berlin coal powerplants" type="cplant" quantity="5" faction="1">
 							<itemstack type="carbon" quantity="100" />
-							<itemstack type="terran" quantity="15" />
-							<upkeep type="cash" quantity="265" />
+							<itemstack type="terran" quantity="10" />
+							<itemstack type="wndtrn" quantity="1" />
+							<upkeep type="cash" quantity="261" />
+							<event week="13" description="Lack of supplies: 15 unit of food [food]." />
+							<event week="13" description="8 terrans [terran] wounded from lack of supplies." />
+							<event week="13" description="4 wounded terrans [wndtrn] died of their wounds." />
+							<event week="13" description="3 wounded terrans [wndtrn] recovered from their wounds." />
 						</modulestack>
 						<modulestack name="000005" name-en="Berlin granary" type="cargob" quantity="1" faction="1">
-							<itemstack type="food" quantity="1000" />
+							<itemstack type="food" quantity="997" />
 							<itemstack type="terran" quantity="3" />
 							<upkeep type="cash" quantity="33" />
 						</modulestack>
@@ -188,7 +211,7 @@
 							<module damage="28" />
 							<module damage="34" />
 							<module damage="34" />
-							<itemstack type="food" quantity="1125" />
+							<itemstack type="food" quantity="1115" />
 							<itemstack type="terair" quantity="850" />
 							<itemstack type="h2o2" quantity="900" />
 							<itemstack type="iron" quantity="70" />
@@ -290,8 +313,8 @@
 							<module damage="6" capture="18" />
 							<module damage="6" capture="18" />
 							<module damage="3" capture="9" />
-							<itemstack type="terran" quantity="6" />
-							<upkeep type="cash" quantity="156" />
+							<itemstack type="terran" quantity="4" />
+							<upkeep type="cash" quantity="154" />
 							<event week="1" description="got 15 units of carbon [carbon] from small cargo bay [000013]." />
 							<event week="1" description="consumed 15 units of carbon [carbon] as fuel." />
 							<event week="1" description="started energy production for the next 13 weeks." />
@@ -308,10 +331,15 @@
 							<event week="11" description="engaged in battle" />
 							<event week="12" description="engaged in battle" />
 							<event week="13" description="engaged in battle" />
+							<event week="13" description="Lack of supplies: 6 unit of food [food]." />
+							<event week="13" description="3 terrans [terran] wounded from lack of supplies." />
+							<event week="13" description="2 wounded terrans [wndtrn] died of their wounds." />
+							<event week="13" description="1 wounded terran [wndtrn] recovered from their wounds." />
 						</modulestack>
 						<modulestack name="000016" type="cdrill" quantity="1" faction="2">
-							<itemstack type="terran" quantity="6" />
-							<upkeep type="cash" quantity="46" />
+							<itemstack type="terran" quantity="4" />
+							<itemstack type="wndtrn" quantity="1" />
+							<upkeep type="cash" quantity="45" />
 							<event week="1" description="produced unit of carbon [carbon]." />
 							<event week="1" description="given unit of carbon [carbon] to small cargo bay [000013]." />
 							<event week="1" description="engaged in battle" />
@@ -351,11 +379,16 @@
 							<event week="13" description="produced unit of carbon [carbon]." />
 							<event week="13" description="given unit of carbon [carbon] to small cargo bay [000013]." />
 							<event week="13" description="engaged in battle" />
+							<event week="13" description="Lack of supplies: 6 unit of food [food]." />
+							<event week="13" description="3 terrans [terran] wounded from lack of supplies." />
+							<event week="13" description="1 wounded terran [wndtrn] died of their wounds." />
+							<event week="13" description="1 wounded terran [wndtrn] recovered from their wounds." />
 						</modulestack>
 						<modulestack name="000017" type="factry" quantity="5" faction="2">
-							<itemstack type="terran" quantity="46" />
+							<itemstack type="terran" quantity="32" />
 							<itemstack type="iron" quantity="20" />
-							<upkeep type="cash" quantity="346" />
+							<itemstack type="wndtrn" quantity="2" />
+							<upkeep type="cash" quantity="334" />
 							<event week="1" description="engaged in battle" />
 							<event week="2" description="engaged in battle" />
 							<event week="3" description="engaged in battle" />
@@ -369,6 +402,10 @@
 							<event week="11" description="engaged in battle" />
 							<event week="12" description="engaged in battle" />
 							<event week="13" description="engaged in battle" />
+							<event week="13" description="Lack of supplies: 46 unit of food [food]." />
+							<event week="13" description="23 terrans [terran] wounded from lack of supplies." />
+							<event week="13" description="12 wounded terrans [wndtrn] died of their wounds." />
+							<event week="13" description="9 wounded terrans [wndtrn] recovered from their wounds." />
 						</modulestack>
 						<modulestack name="111" type="gunplc" quantity="1" faction="2">
 							<module damage="41" />
@@ -391,15 +428,18 @@
 							<event week="11" description="engaged in battle" />
 							<event week="12" description="engaged in battle" />
 							<event week="13" description="engaged in battle" />
+							<event week="13" description="Lack of supplies: 1 unit of food [food]." />
 						</modulestack>
 						<modulestack name="c000012" type="corphq" quantity="1" faction="3">
 							<module damage="25" capture="75" online="false" />
-							<itemstack type="wndtrn" quantity="3" />
-							<itemstack type="terran" quantity="27" />
-							<itemstack type="cash" quantity="2200" />
-							<upkeep type="cash" quantity="130" />
-							<event week="13" description="15  [wndtrn] died of their wounds." />
-							<event week="13" description="12  [wndtrn] recovered from their wounds." />
+							<itemstack type="wndtrn" quantity="4" />
+							<itemstack type="terran" quantity="22" />
+							<itemstack type="cash" quantity="2055" />
+							<upkeep type="cash" quantity="126" />
+							<event week="13" description="Lack of supplies: 45 unit of food [food]." />
+							<event week="13" description="8 terrans [terran] wounded from lack of supplies." />
+							<event week="13" description="19 wounded terrans [wndtrn] died of their wounds." />
+							<event week="13" description="15 wounded terrans [wndtrn] recovered from their wounds." />
 						</modulestack>
 						<modulestack name="c111" type="gunplc" quantity="1" faction="3">
 							<module damage="69" capture="31" online="false" />
@@ -411,44 +451,59 @@
 							<itemstack type="terran" quantity="1" />
 							<upkeep type="cash" quantity="11" />
 							<event week="3" description="captured gun placement [gunplc] from gun placement [111]." />
+							<event week="13" description="Lack of supplies: 1 unit of food [food]." />
 						</modulestack>
 						<modulestack name="c2111" type="gunplc" quantity="1" faction="3">
 							<module damage="86" capture="14" online="false" />
-							<itemstack type="terran" quantity="1" />
-							<upkeep type="cash" quantity="11" />
+							<upkeep type="cash" quantity="10" />
 							<event week="4" description="captured gun placement [gunplc] from gun placement [111]." />
+							<event week="13" description="Lack of supplies: 1 unit of food [food]." />
+							<event week="13" description="1 terran [terran] wounded from lack of supplies." />
+							<event week="13" description="1 wounded terran [wndtrn] died of their wounds." />
 						</modulestack>
 						<modulestack name="c3111" type="gunplc" quantity="1" faction="3">
 							<module damage="73" capture="27" online="false" />
 							<itemstack type="terran" quantity="1" />
 							<upkeep type="cash" quantity="11" />
 							<event week="5" description="captured gun placement [gunplc] from gun placement [111]." />
+							<event week="13" description="Lack of supplies: 1 unit of food [food]." />
 						</modulestack>
 						<modulestack name="c000014" type="farms" quantity="1" faction="3">
 							<module damage="19" capture="36" online="false" />
-							<itemstack type="terran" quantity="5" />
-							<upkeep type="cash" quantity="55" />
+							<itemstack type="terran" quantity="4" />
+							<upkeep type="cash" quantity="54" />
 							<event week="12" description="captured farming complex [farms] from farming complex [000014]." />
+							<event week="13" description="Lack of supplies: 5 unit of food [food]." />
+							<event week="13" description="3 terrans [terran] wounded from lack of supplies." />
+							<event week="13" description="1 wounded terran [wndtrn] died of their wounds." />
+							<event week="13" description="2 wounded terrans [wndtrn] recovered from their wounds." />
 						</modulestack>
 						<modulestack name="c1000014" type="farms" quantity="1" faction="3">
 							<module damage="20" capture="35" online="false" />
-							<itemstack type="terran" quantity="5" />
-							<upkeep type="cash" quantity="55" />
+							<itemstack type="terran" quantity="3" />
+							<itemstack type="wndtrn" quantity="1" />
+							<upkeep type="cash" quantity="54" />
 							<event week="12" description="captured farming complex [farms] from farming complex [000014]." />
+							<event week="13" description="Lack of supplies: 5 unit of food [food]." />
+							<event week="13" description="2 terrans [terran] wounded from lack of supplies." />
+							<event week="13" description="1 wounded terran [wndtrn] died of their wounds." />
 						</modulestack>
 						<modulestack name="c2000014" type="farms" quantity="1" faction="3">
 							<module damage="20" capture="35" online="false" />
-							<itemstack type="terran" quantity="5" />
-							<upkeep type="cash" quantity="55" />
+							<itemstack type="terran" quantity="3" />
+							<upkeep type="cash" quantity="53" />
 							<event week="13" description="captured farming complex [farms] from farming complex [000014]." />
+							<event week="13" description="Lack of supplies: 5 unit of food [food]." />
+							<event week="13" description="3 terrans [terran] wounded from lack of supplies." />
+							<event week="13" description="2 wounded terrans [wndtrn] died of their wounds." />
+							<event week="13" description="1 wounded terran [wndtrn] recovered from their wounds." />
 						</modulestack>
 					</modulestack>
 					<modulestack name="108" name-en="peaceful scout" type="tanks" quantity="1" faction="3">
 						<module damage="51" />
 						<itemstack type="terran" quantity="16" />
-						<itemstack type="cash" quantity="42" />
+						<itemstack type="cash" quantity="2" />
 						<itemstack type="oil" quantity="12" />
-						<itemstack type="food" quantity="32" />
 						<upkeep type="cash" quantity="40" />
 						<tactic name="prioritize armed" />
 						<tactic name="capture" />
@@ -466,7 +521,7 @@
 						</person>
 						<itemstack type="terran" quantity="48" />
 						<itemstack type="oil" quantity="6" />
-						<itemstack type="food" quantity="100" />
+						<itemstack type="food" quantity="3" />
 						<upkeep type="cash" quantity="130" />
 						<tactic name="prioritize command" />
 						<tactic name="capture" />
@@ -515,29 +570,39 @@
 					<resource type="h2o2" quantity="250" />
 					<resource type="food" quantity="500" />
 					<modulestack name="000006" name-en="Sydney" type="city" quantity="2" faction="1">
-						<itemstack type="cash" quantity="2000" />
-						<itemstack type="food" quantity="200" />
+						<itemstack type="cash" quantity="947" />
 						<upkeep type="food" quantity="200" />
-						<upkeep type="cash" quantity="1053" />
+						<upkeep type="cash" quantity="1031" />
 						<selling item="food" quantity="59" price="5" />
 						<modulestack name="000007" name-en="Sydney garrison" type="inftry" quantity="2" faction="1">
 							<itemstack type="rctlnc" quantity="1" />
 							<upkeep type="cash" quantity="10" />
+							<event week="13" description="Lack of supplies: 200 unit of food [food]." />
 						</modulestack>
 						<modulestack name="000008" name-en="Sydney farms" type="farms" quantity="10" faction="1">
-							<itemstack type="terran" quantity="75" />
-							<upkeep type="cash" quantity="575" />
+							<itemstack type="terran" quantity="53" />
+							<itemstack type="wndtrn" quantity="3" />
+							<upkeep type="cash" quantity="556" />
+							<event week="13" description="Lack of supplies: 75 unit of food [food]." />
+							<event week="13" description="38 terrans [terran] wounded from lack of supplies." />
+							<event week="13" description="19 wounded terrans [wndtrn] died of their wounds." />
+							<event week="13" description="16 wounded terrans [wndtrn] recovered from their wounds." />
 						</modulestack>
 						<modulestack name="000009" name-en="Sydney wind powerplants" type="wnplnt" quantity="10" faction="1">
 							<upkeep type="cash" quantity="100" />
 						</modulestack>
 						<modulestack name="000010" name-en="Sydney oil powerplants" type="oplant" quantity="5" faction="1">
 							<itemstack type="oil" quantity="100" />
-							<itemstack type="terran" quantity="15" />
-							<upkeep type="cash" quantity="315" />
+							<itemstack type="terran" quantity="11" />
+							<itemstack type="wndtrn" quantity="1" />
+							<upkeep type="cash" quantity="312" />
+							<event week="13" description="Lack of supplies: 15 unit of food [food]." />
+							<event week="13" description="7 terrans [terran] wounded from lack of supplies." />
+							<event week="13" description="3 wounded terrans [wndtrn] died of their wounds." />
+							<event week="13" description="3 wounded terrans [wndtrn] recovered from their wounds." />
 						</modulestack>
 						<modulestack name="000011" name-en="Sydney granary" type="cargob" quantity="1" faction="1">
-							<itemstack type="food" quantity="1000" />
+							<itemstack type="food" quantity="997" />
 							<itemstack type="terran" quantity="3" />
 							<upkeep type="cash" quantity="33" />
 						</modulestack>
@@ -551,7 +616,7 @@
 					<modulestack name="000026" name-en="Gelvaren complex" type="city" quantity="1" faction="3">
 						<technology name="rckter" name-en="rocket launcher production" />
 						<upkeep type="food" quantity="100" />
-						<upkeep type="cash" quantity="894" />
+						<upkeep type="cash" quantity="880" />
 						<buying item="food" quantity="100" price="1" />
 						<selling item="food" quantity="25" price="5" />
 						<selling item="terran" quantity="10" price="50" />
@@ -559,10 +624,13 @@
 						<event week="13" description="produced 1000 cash [cash], 10 terrans [terran]." />
 						<event week="13" description="given 1000 cash [cash] to Gelvaren Headquarters [000018]." />
 						<event week="13" description="given 10 terrans [terran] to Gelvaren Headquarters [000018]." />
+						<event week="13" description="Lack of upkeep: 100 unit of food [food]." />
+						<event week="13" description="Riot from lack of upkeep." />
 						<modulestack name="000018" name-en="Gelvaren Headquarters" type="corphq" quantity="1" faction="3">
-							<itemstack type="terran" quantity="20" />
-							<itemstack type="cash" quantity="5048" />
-							<upkeep type="cash" quantity="120" />
+							<itemstack type="terran" quantity="14" />
+							<itemstack type="cash" quantity="4928" />
+							<itemstack type="wndtrn" quantity="1" />
+							<upkeep type="cash" quantity="115" />
 							<buying item="terran" quantity="all" price="any" />
 							<event week="1" description="PRODUCE failed: Gelvaren Headquarters [000018] has not enough crew to operate - 20 required, 10 available." />
 							<event week="2" description="PRODUCE failed: Gelvaren Headquarters [000018] has not enough crew to operate - 20 required, 10 available." />
@@ -579,9 +647,13 @@
 							<event week="13" description="got 1000 cash [cash] from Gelvaren complex [000026]." />
 							<event week="13" description="got 10 terrans [terran] from Gelvaren complex [000026]." />
 							<event week="13" description="produced 100 cash [cash]." />
+							<event week="13" description="Lack of supplies: 20 unit of food [food]." />
+							<event week="13" description="10 terrans [terran] wounded from lack of supplies." />
+							<event week="13" description="5 wounded terrans [wndtrn] died of their wounds." />
+							<event week="13" description="4 wounded terrans [wndtrn] recovered from their wounds." />
 						</modulestack>
 						<modulestack name="000019" type="cargob" quantity="1" faction="3">
-							<itemstack type="food" quantity="858" />
+							<itemstack type="food" quantity="856" />
 							<itemstack type="terran" quantity="2" />
 							<itemstack type="oil" quantity="54" />
 							<upkeep type="cash" quantity="32" />
@@ -617,8 +689,9 @@
 							<event week="13" description="got 2 units of oil [oil] from core drill [000022]." />
 						</modulestack>
 						<modulestack name="000020" type="farms" quantity="2" faction="3">
-							<itemstack type="terran" quantity="10" />
-							<upkeep type="cash" quantity="110" />
+							<itemstack type="terran" quantity="6" />
+							<itemstack type="wndtrn" quantity="1" />
+							<upkeep type="cash" quantity="107" />
 							<event week="1" description="produced 10 units of food [food]." />
 							<event week="1" description="given 10 units of food [food] to small cargo bay [000019]." />
 							<event week="2" description="produced 10 units of food [food]." />
@@ -645,14 +718,18 @@
 							<event week="12" description="given 10 units of food [food] to small cargo bay [000019]." />
 							<event week="13" description="produced 10 units of food [food]." />
 							<event week="13" description="given 10 units of food [food] to small cargo bay [000019]." />
+							<event week="13" description="Lack of supplies: 10 unit of food [food]." />
+							<event week="13" description="5 terrans [terran] wounded from lack of supplies." />
+							<event week="13" description="3 wounded terrans [wndtrn] died of their wounds." />
+							<event week="13" description="1 wounded terran [wndtrn] recovered from their wounds." />
 						</modulestack>
 						<modulestack name="000021" type="wnplnt" quantity="19" faction="3">
 							<upkeep type="cash" quantity="190" />
 							<event week="1" description="started energy production for the next 13 weeks." />
 						</modulestack>
 						<modulestack name="000022" type="cdrill" quantity="1" faction="3">
-							<itemstack type="terran" quantity="6" />
-							<upkeep type="cash" quantity="46" />
+							<itemstack type="terran" quantity="5" />
+							<upkeep type="cash" quantity="45" />
 							<event week="1" description="produced 2 units of oil [oil]." />
 							<event week="1" description="given 2 units of oil [oil] to small cargo bay [000019]." />
 							<event week="2" description="produced 2 units of oil [oil]." />
@@ -679,14 +756,18 @@
 							<event week="12" description="given 2 units of oil [oil] to small cargo bay [000019]." />
 							<event week="13" description="produced 2 units of oil [oil]." />
 							<event week="13" description="given 2 units of oil [oil] to small cargo bay [000019]." />
+							<event week="13" description="Lack of supplies: 6 unit of food [food]." />
+							<event week="13" description="3 terrans [terran] wounded from lack of supplies." />
+							<event week="13" description="1 wounded terran [wndtrn] died of their wounds." />
+							<event week="13" description="2 wounded terrans [wndtrn] recovered from their wounds." />
 						</modulestack>
 						<modulestack name="000023" type="factry" quantity="1" faction="3">
 							<technology name="armcbt" name-en="armored combat" />
-							<itemstack type="terran" quantity="10" />
+							<itemstack type="terran" quantity="7" />
 							<itemstack type="iron" quantity="8" />
 							<itemstack type="silici" quantity="4" />
 							<itemstack type="titani" quantity="3" />
-							<upkeep type="cash" quantity="70" />
+							<upkeep type="cash" quantity="67" />
 							<event week="1" description="got 8 units of iron [iron] from small cargo bay [000019]." />
 							<event week="1" description="got 8 units of silicium [silici] from small cargo bay [000019]." />
 							<event week="1" description="got 3 units of titanium [titani] from small cargo bay [000019]." />
@@ -694,19 +775,27 @@
 							<event week="2" description="produced computer library [cmplib] into computer library [116]." />
 							<event week="3" description="consumed unit of silicium [silici] to produce space shuttle [shuttl] module." />
 							<event week="6" description="produced space shuttle [shuttl] into space shuttle [117]." />
+							<event week="13" description="Lack of supplies: 10 unit of food [food]." />
+							<event week="13" description="5 terrans [terran] wounded from lack of supplies." />
+							<event week="13" description="3 wounded terrans [wndtrn] died of their wounds." />
+							<event week="13" description="2 wounded terrans [wndtrn] recovered from their wounds." />
 						</modulestack>
 						<modulestack name="000025" type="barrck" quantity="1" faction="3">
 							<technology name="frminf" name-en="form infantry battalion" />
-							<itemstack type="terran" quantity="10" />
-							<upkeep type="cash" quantity="210" />
+							<itemstack type="terran" quantity="7" />
+							<itemstack type="wndtrn" quantity="1" />
+							<upkeep type="cash" quantity="208" />
+							<event week="13" description="Lack of supplies: 10 unit of food [food]." />
+							<event week="13" description="5 terrans [terran] wounded from lack of supplies." />
+							<event week="13" description="2 wounded terrans [wndtrn] died of their wounds." />
+							<event week="13" description="2 wounded terrans [wndtrn] recovered from their wounds." />
 						</modulestack>
 						<modulestack name="110" type="inftry" quantity="1" faction="3">
 							<person name="107" race="terran" faction="3">
 								<skill name="inbtcm" experience="1" />
 								<upkeep type="cash" quantity="10" />
 							</person>
-							<itemstack type="cash" quantity="10" />
-							<itemstack type="food" quantity="200" />
+							<itemstack type="food" quantity="99" />
 							<upkeep type="cash" quantity="15" />
 							<effect duration="4" type="moving" destination="R00002" move-mode="ground" />
 							<event week="1" description="moving from Southern Hemisphere [R00003] (1,0) to Northern Hemisphere [R00002] (0,0), ETA 16." />
