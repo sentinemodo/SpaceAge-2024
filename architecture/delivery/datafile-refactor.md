@@ -41,9 +41,9 @@ Optional: ADR-0005-style `partial` files on `DataFile` **instead of** commit 4 o
 
 Optional later slice (still ADR-0006, not required to merge this PR): catalog fill-pass bodies on `ItemType` / `Technology` / `ModuleType` `LoadXml`, with `CatalogLoader` only looping stub-then-fill. Do not collapse the two passes.
 
-## Out of scope on this PR
+## Out of this PR
 
-Do not “fix” as drive-bys (ADR-0006):
+**Follow-up PR** (after this extract merges) will fix parse/save quirks, with failing tests first:
 
 - Conditional-order XML validation TODO
 - Moon constructor using the planet name
@@ -53,6 +53,11 @@ Do not “fix” as drive-bys (ADR-0006):
 - Tech `use-consume` module branch checking the parent element
 - `research` / `see` text vs XML divergence
 - Bitwise `&` in save visibility checks
+
+Copy those behaviors during extracts. Do not “complete” `ModuleTypeGroupXml.ToToken` with a `research` arm here.
+
+Still not this PR or the quirk PR:
+
 - Stub pipeline (`Request`, `Events`, `OrdersReader.Check`)
 - Runtime, encoding, namespace, or DI changes
 
