@@ -217,7 +217,7 @@ namespace SpaceAge
 					{
 						if (elAllowedBy.HasAttribute("module-type-group"))
 						{
-							itemType.UseAllowedModuleTypesGroup = this.getModuleTypeGroup(elAllowedBy.GetAttribute("module-type-group"));
+							itemType.UseAllowedModuleTypesGroup = ModuleTypeGroupXml.Parse(elAllowedBy.GetAttribute("module-type-group"));
 						}
 					}
 
@@ -482,7 +482,7 @@ namespace SpaceAge
 
                             if (elAllowed.HasAttribute("module-type-group"))
                             {                                
-                                technology.UseCondition_ModuleTypesGroup = this.getModuleTypeGroup(elAllowed.GetAttribute("module-type-group"));
+                                technology.UseCondition_ModuleTypesGroup = ModuleTypeGroupXml.Parse(elAllowed.GetAttribute("module-type-group"));
                             }
 							if (elAllowed.HasAttribute("module"))
 							{
@@ -513,7 +513,7 @@ namespace SpaceAge
 					this.assignNamesMultiple(el, moduleType);
 					try
 					{
-						moduleType.Group = this.getModuleTypeGroup(el.GetAttribute("group"));
+						moduleType.Group = ModuleTypeGroupXml.Parse(el.GetAttribute("group"));
 						moduleType.Mass = this.XMLAssignDouble(el.GetAttribute("mass"), 0);
 						moduleType.Size = this.XMLAssignDouble(el.GetAttribute("size"), 0);
 						moduleType.Capacity = this.XMLAssignDouble(el.GetAttribute("capacity"), 0);
@@ -708,65 +708,6 @@ namespace SpaceAge
 				itemStack.Quantity = this.XMLAssignInteger(element.GetAttribute("quantity"), 1);
 				itemStacks.Add(itemStack);
 			}
-		}
-
-		private EModuleTypesGroup getModuleTypeGroup(string groupName)
-		{
-			EModuleTypesGroup group;
-			switch (groupName)
-			{
-				case "agricultural":
-					group = EModuleTypesGroup.agricultural;
-					break;
-				case "command":
-					group = EModuleTypesGroup.command;
-					break;
-				case "energy":
-					group = EModuleTypesGroup.energy;
-					break;
-				case "extraction":
-					group = EModuleTypesGroup.extraction;
-					break;
-				case "frigate":
-					group = EModuleTypesGroup.frigate;
-					break;
-				case "habitat":
-					group = EModuleTypesGroup.habitat;
-					break;
-				case "infantry":
-					group = EModuleTypesGroup.infantry;
-					break;
-				case "military":
-					group = EModuleTypesGroup.military;
-					break;
-				case "production":
-					group = EModuleTypesGroup.production;
-					break;
-				case "propulsion":
-					group = EModuleTypesGroup.propulsion;
-					break;
-                case "research":
-                    group = EModuleTypesGroup.research;
-                    break;
-                case "settlement":
-					group = EModuleTypesGroup.settlement;
-					break;
-				case "spacecraft":
-					group = EModuleTypesGroup.spacecraft;
-					break;
-				case "space station":
-					group = EModuleTypesGroup.spaceStation;
-					break;
-				case "storage":
-					group = EModuleTypesGroup.storage;
-					break;
-				case "vehicle":
-					group = EModuleTypesGroup.vehicle;
-					break;
-				default:
-					throw new KeyNotFoundException("Unknown moduletype group " + groupName);
-			}
-			return group;
 		}
 
 		private void assignNames(XmlElement element, NamedObject namedObject)
@@ -1123,7 +1064,7 @@ namespace SpaceAge
 			foreach (XmlElement elCapacity in elRegion.SelectNodes("capacity"))
 			{
 				Capacity capacity = new Capacity();
-				capacity.Group = this.getModuleTypeGroup(elCapacity.GetAttribute("group"));
+				capacity.Group = ModuleTypeGroupXml.Parse(elCapacity.GetAttribute("group"));
 				capacity.Quantity = this.XMLAssignInteger(elCapacity.GetAttribute("quantity"), 1);
 				region.Capacities.Add(capacity);
 			}
@@ -1595,53 +1536,10 @@ namespace SpaceAge
 				{
 					elCapacity = doc.CreateElement("capacity");
 					elRegion.AppendChild(elCapacity);
-					switch (capacity.Group)
+					string groupToken = ModuleTypeGroupXml.ToToken(capacity.Group);
+					if (groupToken != null)
 					{
-						case EModuleTypesGroup.agricultural:
-							elCapacity.SetAttribute("group", "agricultural");
-							break;
-						case EModuleTypesGroup.command:
-							elCapacity.SetAttribute("group", "command");
-							break;
-						case EModuleTypesGroup.energy:
-							elCapacity.SetAttribute("group", "energy");
-							break;
-						case EModuleTypesGroup.extraction:
-							elCapacity.SetAttribute("group", "extraction");
-							break;
-						case EModuleTypesGroup.frigate:
-							elCapacity.SetAttribute("group", "frigate");
-							break;
-						case EModuleTypesGroup.habitat:
-							elCapacity.SetAttribute("group", "habitat");
-							break;
-						case EModuleTypesGroup.infantry:
-							elCapacity.SetAttribute("group", "infantry");
-							break;
-						case EModuleTypesGroup.military:
-							elCapacity.SetAttribute("group", "military");
-							break;
-						case EModuleTypesGroup.production:
-							elCapacity.SetAttribute("group", "production");
-							break;
-						case EModuleTypesGroup.propulsion:
-							elCapacity.SetAttribute("group", "propulsion");
-							break;
-						case EModuleTypesGroup.settlement:
-							elCapacity.SetAttribute("group", "settlement");
-							break;
-						case EModuleTypesGroup.spacecraft:
-							elCapacity.SetAttribute("group", "spacecraft");
-							break;
-						case EModuleTypesGroup.spaceStation:
-							elCapacity.SetAttribute("group", "space station");
-							break;
-						case EModuleTypesGroup.storage:
-							elCapacity.SetAttribute("group", "storage");
-							break;
-						case EModuleTypesGroup.vehicle:
-							elCapacity.SetAttribute("group", "vehicle");
-							break;
+						elCapacity.SetAttribute("group", groupToken);
 					}
 					
 					elCapacity.SetAttribute("quantity", capacity.Quantity.ToString());

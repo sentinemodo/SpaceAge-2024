@@ -156,6 +156,7 @@
     <Compile Include="battle\Battle.cs" />
     <Compile Include="game\Sequence.cs" />
     <Compile Include="game\DataFile.cs" />
+    <Compile Include="game\ModuleTypeGroupXml.cs" />
     <Compile Include="Events.cs" />
     <Compile Include="EventsReaders.cs" />
     <Compile Include="data structures\Faction.cs" />

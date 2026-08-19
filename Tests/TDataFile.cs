@@ -936,5 +936,27 @@ namespace UnitTests
 			Assert.That(stack.Modules[1].CaptureDamage, Is.EqualTo(0));
 			Assert.That(stack.Modules[1].Online, Is.False);
 		}
+
+		[Test]
+		public void ModuleTypeGroupXml_Parse_MapsCatalogTokensIncludingResearch()
+		{
+			Assert.That(ModuleTypeGroupXml.Parse("research"), Is.EqualTo(EModuleTypesGroup.research));
+			Assert.That(ModuleTypeGroupXml.Parse("space station"), Is.EqualTo(EModuleTypesGroup.spaceStation));
+			Assert.That(ModuleTypeGroupXml.Parse("settlement"), Is.EqualTo(EModuleTypesGroup.settlement));
+		}
+
+		[Test]
+		public void ModuleTypeGroupXml_Parse_UnknownToken_ThrowsKeyNotFound()
+		{
+			Assert.Throws<KeyNotFoundException>(() => ModuleTypeGroupXml.Parse("not-a-group"));
+		}
+
+		[Test]
+		public void ModuleTypeGroupXml_ToToken_OmitsResearchGroup()
+		{
+			Assert.That(ModuleTypeGroupXml.ToToken(EModuleTypesGroup.research), Is.Null);
+			Assert.That(ModuleTypeGroupXml.ToToken(EModuleTypesGroup.spaceStation), Is.EqualTo("space station"));
+			Assert.That(ModuleTypeGroupXml.ToToken(EModuleTypesGroup.settlement), Is.EqualTo("settlement"));
+		}
     }
 }

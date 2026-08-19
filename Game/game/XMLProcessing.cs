@@ -42,14 +42,14 @@ namespace SpaceAge
             }
         }
 
-        protected double XMLAssignDouble(string source, double defaultValue)
+        public double XMLAssignDouble(string source, double defaultValue)
         {
             if (string.IsNullOrEmpty(source))
                 return defaultValue;
             return Convert.ToDouble(source);
         }
 
-        protected string XMLAssignString(string source, string defaultValue)
+        public string XMLAssignString(string source, string defaultValue)
         {
             if (string.IsNullOrEmpty(source))
                 return defaultValue;
