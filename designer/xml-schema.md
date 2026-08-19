@@ -9,14 +9,25 @@ Unknown **attributes** are ignored. Unknown **module `group`**, **`location-type
 | Section | Required on `entry` | Children / notes |
 |---------|---------------------|------------------|
 | `star` | `name`, `name-en` | `description` |
-| `planet` | `name`, `name-en` | Live types: `ocean`, `gasgnt`, `dust`, `abelt` |
+| `planet` | `name`, `name-en` | Live types: `ocean`, `gasgnt`, `dust`, `abelt`. Campaign adds `adpnt` (Alderson corona; no habitable surface). `to-system` / `to-point` attrs ignored until JUMP |
 | `moon` | `name`, `name-en` | Live types: `ice`, `rock`, `vulcan`, `ring` |
 | `region` | `name`, `name-en`, `location-type` | `orbit` \| `solid-surface` \| `liquid-surface` \| `space` |
 | `item` | `name`, `name-en` | `name-en2`, `description`, `size`, `mass`, `attack`, `damage`; `upkeep`/`consume` `type`+`quantity`; `use-allowed-by` `module-type-group` |
 | `technology` | `name`, `name-en`, `level` | `tags`, `requires`, `use-time`, `cost`, combat bonuses; `use-allowed-in`; `use-consume` / `use-produce` (`item` \| `module` \| `effect`) |
 | `module` | `name`, `name-en`, `group` | size/mass/capacity/crew/energy/`hit-points`/`technology-capacity`/`research-output`; `upkeep`, `fuel`, `move`, `produce`, `operation-allowed-in`, `use` |
 | `race` | `name`, `name-en` | Also creates an `ItemType` (crew). `officer-training-duration`; upkeep `crew-type` crew\|officer |
-| `skill` | `name`, `name-en` | `training-duration`, `attack`, `defense`, `initiative` |
+| `skill` | `name`, `name-en` | `training-duration`, `attack`, `defense`, `initiative`, `requires-tech`, `replaces-skill`; children: `<usable-in>`, `<produce>`, `<consume>` |
+
+#### Skill attributes (new — engine wishlist)
+
+| Attribute | Type | Description |
+|-----------|------|-------------|
+| `requires-tech` | tech id | Skill rank only available after this technology is researched. Omit for skills available from start. Appears in "Known Skills" report once gate satisfied |
+| `replaces-skill` | skill id | On training completion, the named skill is removed from the officer. Used for rank upgrades (e.g. `engrA` replaces `engrB`) |
+| `training-duration` | int (weeks) | Time to train. Multiple research modules on the same stack provide parallel slots (1 officer/module) but do not reduce duration |
+| `<produce effect="..." target="stacked" value="0.XX"/>` | child element | Percentage bonus applied multiplicatively to the commanded stack's relevant stat. `value` is a decimal fraction (0.25 = +25%) |
+| `<consume type="..." quantity="N"/>` | child element | Resource consumed when training completes (Advanced/Expert ranks). Deducted from stack inventory |
+| `<usable-in module-group="..."/>` | child element | Restricts which module group benefits from the skill's produce effect. Officer must command a stack containing that group |
 
 Research cost if `cost` omitted: `8 * 2^(level-1)` (L1=8, L10=4096). Level 0 is never researched.
 
@@ -64,6 +75,7 @@ Attributes: `module-type-group`, `location-type`, `planet-type`, `planet-atmosph
 ```
 
 - Asteroid belts are **planets** with `type="abelt"` (no separate belt element).
+- Alderson points are **planets** with `type="adpnt"` at high AU; one `orbit` region. Pairing attrs ignored. `JUMP` is wishlist. Spaceport → corona uses planet-region `exit` `mode="space"`.
 - Gas giants: orbit + moons; no solid-surface regions.
 - `AU` is stored; system `X Y Z` are currently commented out in the loader — still set them for later.
 - Moon `name` must be unique. The loader currently constructs moons with the **planet** id (known bug); still emit unique moon ids and wishlist the fix.

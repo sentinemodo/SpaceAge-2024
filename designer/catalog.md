@@ -115,6 +115,20 @@ Use live **groups**. Intended future group in parentheses → wishlist.
 | `capshd` | military | 800/600 | 4 / 40 | **shield**; defense 16, attack 0 |
 | `arkshd` | military | 2500/1800 | 6 / 60 | **shield**; defense 20. Not habitat `arkshl` |
 | `arkpd` | military | 1800/1400 | 6 / 35 | **pbpd**; attack 8 damage 10 |
+| `lrmmod` | military | 1200/1400 | 4 / 30 | **LRM**; attack 20 damage 30. Strategic. `LAUNCH` order |
+| `lrmhvy` | military | 2000/2400 | 6 / 50 | **LRM**; attack 30 damage 50. Multi-warhead (3) |
+| `lrmark` | military | 4000/5000 | 8 / 80 | **LRM**; attack 40 damage 80. Ark strategic missile. 5 warheads |
+| `mnlayr` | military | 400/300 | 2 / 8 | **mine**; mine layer. Produces `spmine` items (1/cycle) |
+| `smnlay` | military | 600/500 | 3 / 12 | **mine**; smart mine layer. Produces `smmine` items |
+| `hvmlay` | military | 900/800 | 4 / 20 | **mine**; heavy mine layer. Produces `hvmine` items |
+| `sensor` | military | 200/100 | 1 / 6 | **detection**; basic sensor array. 1 AU visibility |
+| `advsns` | military | 400/200 | 2 / 10 | **detection**; advanced sensors. 5 AU visibility |
+| `syssns` | military | 800/400 | 3 / 20 | **detection**; system-wide sensors. Full system visibility |
+| `apsns` | military | 1200/600 | 4 / 30 | **detection**; AP-spanning sensors. Cross-system detection |
+| `clkdev` | military | 200/150 | 1 / 10 | **cloaking**; basic cloaking device. Counters L2 detection |
+| `advclk` | military | 400/300 | 2 / 20 | **cloaking**; advanced cloaking. Counters L4 detection |
+| `clkfld` | military | 600/500 | 3 / 35 | **cloaking**; cloaking field. Counters L6 detection. Covers stack |
+| `arkclk` | military | 1200/1000 | 4 / 60 | **cloaking**; ark cloaking. Counters L8 detection |
 
 Tune hit-points ≈ `(mass+size)/20` if omitted. Cash upkeep roughly `crew*10 + energy + size/200`.
 
@@ -179,25 +193,91 @@ Live: `rctlnc` (infantry rocket, **missile**), `spcsut` (EVA). Live `smlarm` is 
 | `evakit` | — | EVA tool kit | 3/4 | crew terran | wishlist: repair chance |
 | `dosim` | — | dosimeter | 1/1 | officer | flavour |
 | `vacshd` | — | deployable sunshade | 8/6 | spacecraft stacks as cargo | flavour until effect exists |
+| `spmine` | — | space mine | 50/80 | deployed at location | damage 15. Invisible. Stationary. Detonates on enemy entry |
+| `smmine` | — | smart mine | 80/120 | deployed at location | damage 25. IFF (skip friendly). Invisible. Stationary |
+| `hvmine` | — | heavy mine | 150/200 | deployed at location | damage 50. IFF. Invisible. Cracks small ships |
 
 ## Officer skills
 
-Live: `frgplt` `sscmnd` `hmedic` `arpldr` `inbtcm`. Loader stores `training-duration`, `attack`, `defense`, `initiative`. Extra children are ignored — still write `usable-in` for reports.
+### Design principles
 
-| Id | Name | Weeks | Bonuses | Usable with |
-|----|------|-------|---------|-------------|
-| `ntrplt` | nuclear thermal pilot | 6 | init 4 def 2 | propulsion / frigate |
-| `astrog` | astrogation | 6 | init 6 | command, spacecraft |
-| `chfeng` | chief engineer | 8 | def 3 | production, propulsion |
-| `gunnry` | gunnery director | 6 | attack 6 init 3 | military; flavour: pick a weapon group |
-| `arpldr` | armor platoon leader | live | attack 5 init 5 | vehicle; **kinetic**+**armour** |
-| `inbtcm` | infantry battalion commander | live | attack 5 init 5 | infantry; mixed four groups |
-| `snsroff` | sensor officer | 5 | init 4 | research, command |
-| `logoff` | logistics officer | 5 | — | storage, settlement |
-| `xenbio` | xenobiology | 8 | — | research (`xbiolb`) |
-| `radmed` | radiation medicine | 6 | (cure-chance wishlist) | medical / `hmedic` line |
-| `arkplt` | ark helm | 10 | def 8 init 4 | L10 hull / command |
-| `exoagr` | exoagriculture | 6 | — | agricultural in vacuum |
+1. **Percentage bonuses** — skills grant +X% to relevant stats, staying relevant as modules scale.
+2. **Three ranks** (Basic → Advanced → Expert) — each replaces the previous. Retraining costs time + resources.
+3. **Tech-gated availability** — ranks unlock when prerequisite technologies are researched. Unlocked skills appear in the player report (mirroring "Known Technologies").
+4. **Trained at any research module** — no per-module skill restrictions. Module tech tier gates which rank is trainable (L0-L2 module → Basic; L4-L6 → Advanced; L8-L10 → Expert).
+5. **Parallel slots, not speed** — multiple research modules on a stack increase simultaneous trainees (1 officer per module) but do NOT reduce training duration.
+6. **Some skills hidden until discovery** — xenobiology requires alien wreckage; exoagriculture requires non-terran colony; ark helm requires L10 propulsion.
+
+### Legacy skills (live, unchanged)
+
+`frgplt` `sscmnd` `hmedic` `arpldr` `inbtcm` — kept as-is for backward compatibility until engine supports percentage semantics.
+
+### Tiered skill catalog
+
+| Skill family | Branch | Basic (B) | Advanced (A) | Expert (E) |
+|---|---|---|---|---|
+| **Pilot** `piltB/A/E` | Propulsion | -10% travel time | -20% travel time | -30% travel time |
+| **Commander** `cmdrB/A/E` | Command | +10% stack defense | +20% stack defense | +30% stack defense |
+| **Engineer** `engrB/A/E` | Production | +15% build rate | +25% build rate | +35% build rate |
+| **Gunnery** `gnryB/A/E` | Military | +15% attack | +25% attack | +35% attack |
+| **Tactics** `taktB/A/E` | Military | +10% initiative | +20% initiative | +30% initiative |
+| **Medic** `medcB/A/E` | Medical | +15% cure chance | +25% cure chance | +35% cure chance |
+| **Scout** `scutB/A/E` | Research | +15% scan/prospect speed | +25% scan/prospect | +35% scan/prospect |
+| **Mining** `minrB/A/E` | Production | +10% extraction rate | +20% extraction | +30% extraction |
+| **Naval** `navlB/A/E` | Command | +10% fleet evasion | +20% fleet evasion | +30% fleet evasion |
+| **Farmer** `farmB/A/E` | Habitat | +15% food output | +25% food output | +35% food output |
+| **Xenobiology** `xenoB/A/E` | Research | +10% alien research | +20% alien research | +30% alien research |
+| **Ark Helm** `arkhB/A/E` | L10 Command | +10% ark defense | +20% ark defense | +30% ark defense |
+
+### Training details
+
+| Rank | Training weeks | Resource cost | Required research module tier |
+|------|---------------|--------------|-------------------------------|
+| Basic | 4–6 wk | none (opportunity cost only) | L0–L2 (`reslb1`) |
+| Advanced | 8–12 wk | 1 tier-appropriate resource | L4–L6 (`reslb2`) |
+| Expert | 14–20 wk | 2 tier-appropriate resources | L8–L10 (`reslb3`) |
+
+Training resource by branch:
+
+| Branch | Advanced consumes | Expert consumes |
+|--------|-------------------|-----------------|
+| Propulsion | 1 `h2o2` | 2 `deutrm` |
+| Command | 1 `silici` | 2 `reeox` |
+| Production | 1 `copper` | 2 `tungst` |
+| Military | 1 `uraniu` | 2 `nitrat` |
+| Medical | 1 `water` | 2 `ammoni` |
+| Research | 1 `silici` | 2 `berylm` |
+| Habitat | 1 `food` | 2 `alumin` |
+
+### Tech gates and discovery requirements
+
+| Skill | Basic gate | Advanced gate | Expert gate |
+|--------|-----------|---------------|-------------|
+| Pilot | — (start) | `jmpdvr` (L3) | `fusdrv` (L8) |
+| Commander | — (start) | `tacnet` (L4) | `arkcns` (L10) |
+| Engineer | — (start) | `indprs` (L4) | `arkfnd` (L9) |
+| Gunnery | — (start) | `kntcgn` (L4) | `spngun` (L8) |
+| Tactics | — (start) | `ewsens` (L4) | `arkew` (L9) |
+| Medic | — (start) | `pharms` (L4) | `crymed` (L8) |
+| Scout | — (start) | `astprp` (L3) | `bolsen` (L7) |
+| Mining | — (start) | `tminng` (L2) | `asttow` (L7) |
+| Naval | `hydstg` (L1) | `iondrv` (L5) | `plsdv` (L9) |
+| Farmer | — (start) | `afrmng` (L4) | `agrark` (L9) |
+| Xenobiology | *alien wreckage discovery* | `xbiolb` (L5) | `xnofrn` (L8) |
+| Ark Helm | `arkfnd` (L9) | `arkcns` (L10) | `arkeng` (L10) |
+
+### XML example
+
+```xml
+<entry name="engrA" name-en="advanced engineer"
+       training-duration="10"
+       requires-tech="indprs"
+       replaces-skill="engrB">
+  <usable-in module-group="production"/>
+  <produce effect="build rate" target="stacked" value="0.25"/>
+  <consume type="copper" quantity="1"/>
+</entry>
+```
 
 ## Naming collisions to avoid
 

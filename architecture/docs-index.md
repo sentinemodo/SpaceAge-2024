@@ -1,6 +1,6 @@
 # Documentation index
 
-Last updated: 2026-08-18  
+Last updated: 2026-08-19  
 Purpose: canonical vendor/spec links for implementers. Summaries only — do not paste manuals into architecture docs.
 
 | Resource | Version / band | Purpose | Date retrieved |
@@ -15,19 +15,25 @@ Purpose: canonical vendor/spec links for implementers. Summaries only — do not
 | [MSBuild](https://learn.microsoft.com/en-us/visualstudio/msbuild/msbuild) | VS `msbuild` (Windows) / Mono `xbuild` (cloud) | Compile `SpaceAge.sln` | 2026-08-16 |
 | [Mono](https://www.mono-project.com/docs/) | Ubuntu 24.04 `mono-complete` | Cloud CLR substitute for net48 | 2026-08-16 |
 | [Cursor environment.json](https://cursor.com/docs/cloud-agent/setup) | current Cursor Cloud | `.cursor/environment.json` → `.cursor/install.sh` (default image, no Dockerfile) | 2026-08-16 |
+| Visualization vendor docs | **TBD** | No presentation stack chosen. Target viz is out of `Game.exe`; see [`technology.md`](technology.md) and [ADR-0007](adr/ADR-0007-pbai-product-loop.md) | 2026-08-19 |
 
 ## In-repo design notes (not vendor docs)
 
 | File | Purpose |
 |------|---------|
-| `Game/documentation/Basics.txt` | Level-0 technologies always available to units |
+| `player/` | **Live** player manuals (`rules.md`, tech, battle), drafts, syntax/tech wishlists. Owned by `/player`. PBAI translator surface |
+| `designer/` | Game-designer specs: galaxy scale, tech tree, catalog, contracts, `engine-wishlist.md` (not engine C#) |
+| `campaign/` | Live campaign `data.xml` / `gamein.xml` (not NUnit fixtures). Owned by `/game-designer` |
+| `Game/documentation/Basics.txt` | Level-0 technologies always available to units (historical; prefer `player/basic_technologies.md`) |
 | `Game/documentation/Concepts.txt` | Design intent: movement, combat, officers, markets |
-| `Game/documentation/Rules.txt` | Player-facing rulebook (Alderson PBEM lineage) |
+| `Game/documentation/Rules.txt` | Historical player-facing rulebook (Alderson PBEM lineage); not live syntax |
 | `Game/documentation/links.txt` | External astronomy/spaceflight primers |
+| `.cursor/agents/player.md` | Player agent brief |
+| `.cursor/agents/game-designer.md` | Designer agent brief |
 | `.cursor/install.sh` / `.cursor/run-tests.sh` | Cloud restore/build and test entrypoints (Mono) |
 | `architecture/future-work.md` | Deferred modernization backlog (ADR-gated) |
-| `designer/` | Game-designer specs: galaxy scale, tech tree, catalog, contracts (not engine) |
-| `campaign/` | Live PBEM `data.xml` / `gamein.xml` (not NUnit fixtures) |
+
+Do not paste player manuals or designer catalogs into this index.
 
 ## In-repo ADRs
 
@@ -35,9 +41,10 @@ Purpose: canonical vendor/spec links for implementers. Summaries only — do not
 |------|---------|----------------|
 | [`adr/ADR-0001-net48-legacy-csproj.md`](adr/ADR-0001-net48-legacy-csproj.md) | Stay on net48 + legacy csproj | 2026-08-18 |
 | [`adr/ADR-0002-windows-1251-io.md`](adr/ADR-0002-windows-1251-io.md) | Windows-1251 for game XML/orders/reports | 2026-08-18 |
-| [`adr/ADR-0003-filesystem-pbem-batch.md`](adr/ADR-0003-filesystem-pbem-batch.md) | Offline file-in / file-out host | 2026-08-18 |
+| [`adr/ADR-0003-filesystem-pbem-batch.md`](adr/ADR-0003-filesystem-pbem-batch.md) | Offline file-in / file-out **engine** (amended by ADR-0007 for product wrapper) | 2026-08-19 |
 | [`adr/ADR-0004-test-layers.md`](adr/ADR-0004-test-layers.md) | Unit = `UnitTests` / `T*.cs`; Integration = `IntegrationTests`; no module layer | 2026-08-18 |
 | [`adr/ADR-0005-modulestack-partials.md`](adr/ADR-0005-modulestack-partials.md) | `ModuleStack` stays one type; limited `partial` files | 2026-08-18 |
 | [`adr/ADR-0006-datafile-facade-and-xml-seams.md`](adr/ADR-0006-datafile-facade-and-xml-seams.md) | `DataFile` facade; catalog / order factory / domain XML phases | 2026-08-18 |
+| [`adr/ADR-0007-pbai-product-loop.md`](adr/ADR-0007-pbai-product-loop.md) | PBAI product loop around the existing batch engine | 2026-08-19 |
 
 Prefer Microsoft Learn / NUnit docs over blog posts when versions matter.

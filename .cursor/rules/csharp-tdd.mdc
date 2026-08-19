@@ -42,20 +42,22 @@ For **new systems, major boundaries, integration choices, or multi-repo layout**
 
 If architecture docs and code **conflict**, resolve by **updating architecture** (ADR or revision via project-architect) rather than silently diverging from the written baseline.
 
+Product loop is **PBAI** wrapping the batch engine ([ADR-0007](../../architecture/adr/ADR-0007-pbai-product-loop.md); engine files still [ADR-0003](../../architecture/adr/ADR-0003-filesystem-pbem-batch.md)). Humans may give **intent**; `/player` translates. Tests and fixtures stay **precise syntax**. Agents never substitute for `Game.exe` (no hand-edited `gameout`). Do not implement `/check` for AI drafts until asked.
+
 ## Player agent (subagent)
 
-TDD does **not** play the game. Do not draft or edit player order files (`player/drafts/`, SampleGame `orders.*.txt`, report-template order blocks) and do not judge whether a **report** matches the intended story. Launch **`/player`** (Task `subagent_type="player"`), **wait**, then use the handoff. TDD writes C# and tests; player writes orders and reads reports. **Goldens** are replaced only after `/player` validation **and** explicit human approval (below).
+TDD does **not** play the game. Do not draft or edit player order files (`player/drafts/`, SampleGame `orders.*.txt`, report-template order blocks) and do not judge whether a **report** matches the intended story. Launch **`/player`** (Task `subagent_type="player"`), **wait**, then use the handoff. TDD writes C# and tests; player writes orders (from intent or precise verbs) and reads reports. **Goldens** are replaced only after `/player` validation **and** explicit human approval (below).
 
 Call `/player` when:
 
 | Trigger | Prompt the player agent | TDD does not |
 |---------|-------------------------|--------------|
-| **Orders needed** — new or changed turn orders, fixtures, or drafts so a test/story can run | Faction, paths, objective, and where to write (`player/drafts/` or the fixture path). Live syntax only. | Invent `USE`/`MOVE`/… lines or paste orders into C# comments as the source of truth |
+| **Orders needed** — new or changed turn orders, fixtures, or drafts so a test/story can run | Faction, paths, **intent or** objective, and where to write (`player/drafts/` or the fixture path). Live syntax only. | Invent `USE`/`MOVE`/… lines or paste orders into C# comments as the source of truth |
 | **Report vs expectation** — after a turn, golden, or `Game.exe` run, check the **player-facing** report | Report path(s) (txt and xml), the expected beats, and “match or mismatch, cite ids/lines.” | Narrate the report or decide the story succeeded by reading it yourself |
 | **Golden change** — new or replaced `compareFiles` expected file, SampleGame `report.*` / `gameout.*` / frozen `gamein.*` | Candidate path(s), previous golden if it exists, expected beats. Handoff: match or mismatch. Then **stop for the human** (below). | Copy generated output over a committed golden, or commit that diff, without player + human |
 | **Commit** — user asked to commit (see below) | Docs-only manuals refresh | Write `player/rules.md`, `player/basic_technologies.md`, `player/advanced_technologies.md`, or `player/battle.md` |
 
-If player reports a syntax/catalog gap, take the one-sentence engine note; do not implement wishlist verbs in that same step unless the user asked.
+If player reports a syntax/catalog gap, take the one-sentence engine note. Wishlist path: `/player` → `/game-designer` (catalog/balance) → `designer/engine-wishlist.md` → TDD **when asked**. Do not implement wishlist verbs in that same step unless the user asked.
 
 ### Golden changes — `/player` then human
 
@@ -64,7 +66,7 @@ Do **not** overwrite or commit a golden until both gates pass.
 1. Keep the generated output as a **candidate** (test output, `*_saved`, or a clearly named temp). Do not replace the committed golden yet.
 2. Launch `/player` with candidate path(s), the current golden if any, and the expected beats. Wait for **match** or **mismatch**.
 3. If **mismatch**, do not update the golden. Fix engine/tests or ask; pause (plan step).
-4. If **match**, **stop**. Show the golden path(s) and the player handoff. Ask the human to approve replacing the golden.
+4. If **match**, **stop**. Show the golden path(s) and the player handoff. Ask the human to approve replacing the golden. In that same chat message, paste a **unified diff hunk** of the candidate vs the committed golden with about **10 lines of context** on each side of the change (`git diff -U10 -- path`, or the equivalent). If there are many hunks, show the one (or two) that justify the replace — not the whole file.
 5. Replace the committed file **only** after an explicit yes to **this golden** (e.g. “approve golden”, “replace report.2.1.txt”). **Plan “next” / “continue” / “lgtm” on a different step is not golden approval.**
 
 Same rule when adding a **new** golden (first check-in of a report/XML the test will compare to).
@@ -81,22 +83,50 @@ When the user asks to **commit**, do **not** `git commit` until **`/player`** ha
 
 Skip the commit refresh only if the commit is **nothing but** already-refreshed `player/*.md` (no `Game/`, `Tests/`, or `data.xml` in the diff).
 
+## Game designer agent (subagent)
+
+TDD does **not** design the live galaxy or campaign catalog. Do not edit `campaign/**` or `designer/**` except to read them. Launch **`/game-designer`** (Task `subagent_type="game-designer"`) when the user wants planets/systems seeded, technologies/modules/items/skills proposed or written into campaign XML, balance changes, alien wreckage, mid-game contracts, or a **response to player wishlists**.
+
+| Trigger | Prompt the designer | TDD does not |
+|---------|---------------------|--------------|
+| **Campaign XML** — `campaign/data.xml` / `campaign/gamein.xml` | Scale, turn, and which systems/techs/contracts | Copy SampleGame into `campaign/`, or patch `Tests/data.xml` as if it were the live game |
+| **Player wishlist** — `player/order_wishlist.md` / `player/technologies_wishlist.md` | Which rows to answer; catalog/balance vs engine gap | Implement C# for a player-suggested verb in the same step |
+| **Engine gap** — designer `engine-wishlist.md` names a group, location-type, trigger, order, or effect | Implement **after** the user asks, with a failing unit test first | Implement wishlist rows in the same step as a catalog edit |
+
+Designer never writes C# or `Tests/**`. If campaign XML needs a new loader token, wait for an explicit implement request; do not “fix” `DataFile` as a drive-by while adding a tech.
+
 ## C# practices (this repo)
 
 - **Match the existing .NET Framework 4.8 codebase.** Use only language features the legacy non-SDK compiler and neighboring code already use; do not introduce nullable reference types, `required`, records, or new `async`/`await` surfaces as a drive-by change.
-- The engine deliberately relies on static `*.All` registries and a filesystem-batch design (see [ADR-0003](../../architecture/adr/ADR-0003-filesystem-pbem-batch.md)). Do **not** add DI containers, interfaces at every boundary, SMTP/HTTP/DB, or split the single `SpaceAge` namespace without an ADR — those are tracked as aspirations in [`architecture/future-work.md`](../../architecture/future-work.md).
+- The engine deliberately relies on static `*.All` registries and a filesystem-batch design (see [ADR-0003](../../architecture/adr/ADR-0003-filesystem-pbem-batch.md), product wrapper [ADR-0007](../../architecture/adr/ADR-0007-pbai-product-loop.md)). Do **not** add DI containers, interfaces at every boundary, SMTP/HTTP/DB, visualization inside `Game.exe`, or split the single `SpaceAge` namespace without an ADR — those are tracked as aspirations in [`architecture/future-work.md`](../../architecture/future-work.md).
 - Prefer clear names and small methods; avoid creating **new** god classes, but do not opportunistically refactor existing ones (e.g. `DataFile`) — record an ADR first.
 - Keep diffs minimal and follow the existing solution layout: one `Game` project, one `Tests` project (NUnit 4), analyzers as pinned in `packages.config`.
+
+## Test run reports
+
+When the user asks to run tests, or when you report a run after edits: do **not** stop at pass/fail counts.
+
+List every test that **failed**, is **`[Ignore]`**, or was **skipped**. For each, give the method name and a code citation of its `[Test]` (attribute line through the method signature) in `Tests/`. Include the `[Ignore("…")]` reason when present. Map runner output (including skipped/`Pominięto`) back to that source method.
+
+Do **not** list passing tests unless asked. If the run had no failures, ignores, or skips, say that in one sentence.
+
+Example shape (names and paths from the actual run):
+
+```543:544:Tests/TDataFile.cs
+        [Test, Ignore("not ready")]
+        public void SaveLoadUseOrder_withUseOrderInProgress_newOrder()
+```
 
 ## How to work in the editor
 
 - Before production edits, say **which test file** changes, **which layer** (`UnitTests` / `IntegrationTests`), and **what assertion** proves the behavior.
-- After edits, **run the relevant tests** (the whole `Tests.dll` via `.cursor/run-tests.sh` on Mono or `vstest.console` on Windows; optionally an NUnit `--where "namespace == ..."` filter) and report results.
+- After edits, **run the relevant tests** (the whole `Tests.dll` via `.cursor/run-tests.sh` on Mono or `vstest.console` on Windows; optionally an NUnit `--where "namespace == ..."` filter) and report results (see **Test run reports**).
 - Keep diffs **minimal**; no drive-by refactors outside the request.
 - If requirements are unclear, **one focused question** or short stated assumptions, then the smallest testable slice — except when the request **disagrees with observed data**; then stop (see below).
 - **Commits:** user must ask; then run the **player** docs-only refresh (above) before `git commit`.
 - **Orders and reports:** call `/player` (above). Do not write order files or interpret reports as the player yourself.
-- **Goldens:** `/player` validates the candidate, then the human must approve the replace. Do not treat plan “continue” as golden approval.
+- **Campaign galaxy/catalog:** call `/game-designer`. Do not edit `campaign/` or `designer/` yourself.
+- **Goldens:** `/player` validates the candidate, then the human must approve the replace. Ask with a **±10-line diff hunk** in chat (above). Do not treat plan “continue” as golden approval.
 - **Plans:** one planned step, then pause (see below). Do not run a multi-step plan to completion in one go.
 
 ## Execute plans one step at a time

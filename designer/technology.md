@@ -24,6 +24,7 @@ Four **weapon groups** and the defence that **resists** them:
 | **Drone** (autonomous vehicles as weapons) | **EW** (jamming, spoofing, datalink kill) | drone hangars, fighters used as drones, EW suites |
 | **Missile** (guided, standoff, magazines) | **Point-blank defence** (last-ditch PD: CIWS, proximity, nuclear/isotope burst) | missile pods, cruise, magazines, mines-as-missiles |
 | **Kinetic** (rails, guns, unguided mass, rams) | **Armour** (plates, Whipple, ceramics, composites) | railguns, gauss, gun placements, spinal kinetics |
+| **LRM** (long-range strategic missiles) | **Point-blank defence** + interception in transit | `lrmmod`, `lrmhvy`, `lrmark` — fired from AP orbits at immobile targets; sub-category of missile |
 
 **Same groups at every scale.** Fighters and drones mount the **same** four weapon groups (a fighter is a drone-scale platform that can carry laser, kinetic, missile, or be the drone-group weapon itself). Infantry and tanks mount the **same** four groups plus personal defences: rocket launchers (missile), rail guns (kinetic), lasers, personal armour, personal shields. Do not invent a fifth space-only damage type.
 
@@ -49,7 +50,9 @@ Until Battle grows typed resolution, encode intent as `attack`/`damage` on weapo
 | `shield` | `psnshd` `shplas` `capshd` `arkshd` | `shplas` `capshd` `arkshd`; item `psnshd` |
 | `drone` | live `drnhng` `alnfgh`; campaign `drnswm` | `drnbay` `alndrn` `drnctl` — `alndrn` **is** the drone-group weapon; a fighter may also **mount** the other three weapons |
 | `ew` | `psnew` `ewsens` `ewark` `arkew` | `ewantn` `ewark` `arkew`; item `psnew` |
-| `missile` | live `rckter`; campaign `mslpod` `misgde` `crumis` `magzin` `minelr` `arkmag` | `msltub` `crumis` `magzin` `knmine` `arkmag` `miscpu`; live item `rctlnc` |
+| `missile` | live `rckter`; campaign `mslpod` `misgde` `crumis` `magzin` `minelr` `arkmag`; mines `minbsc` `minsmt` `minhvy` | `msltub` `crumis` `magzin` `knmine` `arkmag` `miscpu`; mine-layers `mnlayr` `smnlay` `hvmlay`; mine items `spmine` `smmine` `hvmine`; live item `rctlnc` |
+| `lrm` | `lrmtec` `lrmhvy` `lrmark` | `lrmmod` `lrmhvy` `lrmark` — strategic standoff; sub-category of missile (isotope warheads, `LAUNCH` order) |
+| `detection/cloaking` | `detsns` `detadv` `detsys` `detap` (detection); `clkbsc` `clkadv` `clkfld` `clkark` (cloaking) | `sensor` `advsns` `syssns` `apsns` (detection); `clkdev` `advclk` `clkfld` `arkclk` (cloaking) — information warfare layer, not a damage type |
 | `pbpd` | `prxgrd` `proxpd` `ciwssy` `arkpd` | `proxpd` `ciwst` `arkpd`; item `prxgrd` |
 | `kinetic` | live `stnrdf`; campaign `prlgun` `kntcgn` `kpdgun` `gausgn` `spngun` | `gunplc` `railgn` `kpdtur` `coilgn` `spnknc`; item `prlgun`; live `smlarm` is L0 kinetic flavour |
 | `armour` | `psnarm` `armcml` `armhul` | `cermpl` `armplt`; item `psnarm` |
@@ -63,15 +66,15 @@ L3–L10 target: production 3–5, propulsion 2–3, research 2–3, military 2�
 |----|------------|------------|----------|----------|
 | 0 | dense live | `areact` | `filidx` | `stnrdf` **kinetic** |
 | 1 | live + `nminng` `gminng` | `hydstg` | `optins` | armour/infantry/lasers + **`prlgun` `prllsr` `psnarm`** |
-| 2 | live He3/autfab/habitat + `alminn` `krogen` | `ionthr` | `medtec` `medirf` | `xraylo` **laser** + **`psnshd` `psnew`** |
-| 3 | live He3/dome/hull + `amnext` `ch4min` `ntmine` `solth` `hydsyn` | `autprp` `nucthr` `slsail` | `advres` `sckcns` `pharms` | `drnhng` **drone** `mslpod` **missile** `ewsens` **ew** `prxgrd` **pbpd** |
-| 4 | `orbfnd` `d2ext` `volext` `fuelcl` `liming` `xeming` | `ntrdrv` `hypstg` `hlthrs` | `radtol` `cryres` `matcmp` | `alnfgh` **drone** `kntcgn` **kinetic** `shplas` **shield** |
-| 5 | `clslfe` `isrurf` `wminng` `o2isru` `ceramp` `bormin` `beming` | `mpdthr` `mpdlth` `ethtst` | `survts` `seisns` `bwinow` | `pdefls` **laser** `kpdgun` **kinetic** `armcml` **armour** |
-| 6 | `dhefus` `whlhbt` `ptminn` `reemin` `grmine` `cccomp` | `fusdrv` `magsail` `xengid` | `matlib` `magsns` `ntdiag` | `drnswm` **drone** `gausgn` **kinetic** `proxpd` **pbpd** |
-| 7 | `msdrvr` `cryost` `metrec` `biofab` | `vasimr` `orbins` `plsail` | `exobio` `navast` `fatlab` | `armhul` **armour** `crumis` **missile** `uvltur` **laser** |
-| 8 | `lghull` `radshc` `recyl2` `insltc` | `isptnk` `rcsblk` `trimth` | `deepsc` `bolsen` `crydet` | `spngun` **kinetic** `magzin` **missile** `capshd` **shield** `bmdir` **laser** |
-| 9 | `eclss2` `agrark` `shldsp` `wstprc` | `hiisp` `orbtug` `brakch` | `crewmd` `psysup` `navint` | `ciwssy` **pbpd** `ewark` **ew** `minelr` **missile** |
-| 10 | `arkcns` `arkshl` `arkrec` | `arkdrv` `arkrcs` `arksail` | `arkcmd` `arknav` `dosmtr` | `arkdef` **laser** `arkshd` **shield** `arkew` **ew** `arkpd` **pbpd** |
+| 2 | live He3/autfab/habitat + `alminn` `krogen` | `ionthr` | `medtec` `medirf` | `xraylo` **laser** + **`psnshd` `psnew`** + **`detsns` detection** |
+| 3 | live He3/dome/hull + `amnext` `ch4min` `ntmine` `solth` `hydsyn` | `autprp` `nucthr` `slsail` **`jmpdrv`** | `advres` `sckcns` `pharms` **`astprp`** | `drnhng` **drone** `mslpod` **missile** `ewsens` **ew** `prxgrd` **pbpd** |
+| 4 | `orbfnd` `d2ext` `volext` `fuelcl` `liming` `xeming` | `ntrdrv` `hypstg` `hlthrs` | `radtol` `cryres` `matcmp` | `alnfgh` **drone** `kntcgn` **kinetic** `shplas` **shield** + **`detadv` `clkbsc` detection/cloaking** + **`minbsc` mine** |
+| 5 | `clslfe` `isrurf` `wminng` `o2isru` `ceramp` `bormin` `beming` | `mpdthr` `mpdlth` `ethtst` **`ujpdrv`** | `survts` `seisns` `bwinow` | `pdefls` **laser** `kpdgun` **kinetic** `armcml` **armour** |
+| 6 | `dhefus` `whlhbt` `ptminn` `reemin` `grmine` `cccomp` **`atskim`** | `fusdrv` `magsail` `xengid` | `matlib` `magsns` `ntdiag` | `drnswm` **drone** `gausgn` **kinetic** `proxpd` **pbpd** + **`detsys` `clkadv` detection/cloaking** + **`minsmt` mine** + **`lrmtec` LRM** |
+| 7 | `msdrvr` `cryost` `metrec` `biofab` | `vasimr` `orbins` `plsail` **`asttow`** | `exobio` `navast` `fatlab` | `armhul` **armour** `crumis` **missile** `uvltur` **laser** |
+| 8 | `lghull` `radshc` `recyl2` `insltc` **`cldmin`** | `isptnk` `rcsblk` `trimth` | `deepsc` `bolsen` `crydet` | `spngun` **kinetic** `magzin` **missile** `capshd` **shield** `bmdir` **laser** **`impgde`** + **`detap` `clkfld` detection/cloaking** + **`minhvy` mine** + **`lrmhvy` LRM** |
+| 9 | `eclss2` `agrark` `shldsp` `wstprc` | `hiisp` `orbtug` `brakch` | `crewmd` `psysup` `navint` | `ciwssy` **pbpd** `ewark` **ew** `minelr` **missile (pursuit mines)** |
+| 10 | `arkcns` `arkshl` `arkrec` | `arkdrv` `arkrcs` `arksail` | `arkcmd` `arknav` `dosmtr` | `arkdef` **laser** `arkshd` **shield** `arkew` **ew** `arkpd` **pbpd** + **`clkark` cloaking** + **`lrmark` LRM** |
 
 **L0–L1 gaps:** filled at L1 (`hydstg`, `optins`). **L4** is not only `alnfgh`. **L10** ark hull/drive/bridge/grid plus shielding, recycling, RCS, sail abort, nav, dosimetry, magazines, EW.
 
@@ -116,6 +119,8 @@ flowchart TB
     clslfe --> wstprc
     lghull --> arkshl
     recyl2 --> arkrec
+    atskim --> cldmin
+    brakch["brakch L9 propulsion"] --> atskim
   end
 ```
 
@@ -138,8 +143,11 @@ flowchart TB
     magsail --> arksail
     hypstg --> arkrcs
     ionthr --> orbtug
+    orbtug --> asttow
     isptnk --> trimth
     hiisp --> brakch
+    nucthr --> jmpdrv
+    jmpdrv --> ujpdrv
   end
   autprp["autprp alien"]
 ```
@@ -153,6 +161,7 @@ flowchart TB
     optins --> cryres --> crydet
     survts --> seisns
     survts --> bolsen
+    optins --> astprp
     beming --> bwinow
     reemin --> magsns
     bwinow --> ntdiag
@@ -189,12 +198,30 @@ flowchart TB
     mslpod --> proxpd --> ciwssy --> arkpd
     drnhng --> alnfgh
     drnhng --> drnswm
+    drnhng --> drncrw
+    drncrw --> drnfac
+    drncrw --> advdrn --> drnark
     mslpod --> misgde
     optins --> ewsens --> ewark --> arkew
+    ewsens --> drncrw
     optins --> psnew
     ahlcns --> armhul
     ceramp --> armcml
+    asttow --> impgde
     stnrdf --> psnarm
+    optins --> detsns --> detadv --> detsys --> detap
+    detsns --> clkbsc --> clkadv --> clkfld --> clkark
+    mslpod --> minbsc --> minsmt --> minhvy
+    misgde -.-> minsmt
+    crumis --> lrmtec --> lrmhvy --> lrmark
+  end
+
+  subgraph energy_closeorbit [Energy / Close-Orbit]
+    he3fus --> soltap
+    capshd --> soltap
+    soltap --> lsrxmt
+    soltap --> corlab
+    corlab --> plsbio
   end
 ```
 
@@ -267,11 +294,21 @@ flowchart TB
 | `arkshd` | `capshd` |
 | `arkpd` | `ciwssy` |
 | `drnswm` | `drnhng` |
+| `drncrw` | `drnhng` + `ewsens` |
+| `drnfac` | `drncrw` |
+| `advdrn` | `drncrw` + `navint` |
+| `drnark` | `advdrn` + `arkcns` |
+| `soltap` | `he3fus` + `capshd` |
+| `lsrxmt` | `soltap` |
+| `corlab` | `soltap` + `reslb2` |
+| `plsbio` | `xnofrn` + `corlab` |
 | `armhul` | `ahlcns` |
 | `ntmine` | `oildwe` |
 | `solth` | `wndtrb` |
 | `hydsyn` | `amnext` |
 | `slsail` | `areact` |
+| `jmpdrv` | `nucthr` |
+| `ujpdrv` | `jmpdrv` |
 | `mslpod` | `ntmine` |
 | `ewsens` | `optins` |
 | `fuelcl` | `urfiss` |
@@ -288,11 +325,14 @@ flowchart TB
 | `mpdlth` | `mpdthr` |
 | `ethtst` | `ntrdrv` |
 | `seisns` | `survts` |
+| `astprp` | `optins` |
 | `bwinow` | `beming` |
 | `armcml` | `ceramp` |
 | `reemin` | `nminng` |
 | `grmine` | `hcdril` |
 | `cccomp` | `grmine` |
+| `atskim` | `brakch` |
+| `cldmin` | `atskim` |
 | `magsail` | `fusdrv` |
 | `xengid` | `hlthrs` |
 | `magsns` | `reemin` |
@@ -320,6 +360,8 @@ flowchart TB
 | `shldsp` | `radshc` |
 | `wstprc` | `clslfe` |
 | `orbtug` | `ionthr` |
+| `asttow` | `orbtug` |
+| `impgde` | `asttow` |
 | `brakch` | `hiisp` |
 | `psysup` | `crewmd` |
 | `navint` | `navast` |
@@ -333,6 +375,20 @@ flowchart TB
 | `dosmtr` | `crewmd` |
 | `arkmag` | `magzin` |
 | `arkew` | `ewark` |
+| `detsns` | `optins` |
+| `detadv` | `detsns` |
+| `detsys` | `detadv` |
+| `detap` | `detsys` |
+| `clkbsc` | `detsns` |
+| `clkadv` | `clkbsc` |
+| `clkfld` | `clkadv` |
+| `clkark` | `clkfld` |
+| `minbsc` | `mslpod` |
+| `minsmt` | `minbsc` + `misgde` |
+| `minhvy` | `minsmt` |
+| `lrmtec` | `crumis` |
+| `lrmhvy` | `lrmtec` |
+| `lrmark` | `lrmhvy` |
 
 ---
 
@@ -344,17 +400,17 @@ Primary tags assigned for campaign research targeting. Consume/produce are live 
 
 | Id | Name | Consume | Produce | Notes |
 |----|------|---------|---------|-------|
-| `fossil` | fossil use | 100 `iron` | `cplant` | Burns `carbon`. Use-time 8. Tag production |
-| `oilbrn` | oil burning | 80 `iron` | `oplant` | Burns `oil`. Use-time 10 |
+| `fossil` | fossil use | 40 `iron`, 15 `titani`, 10 `silici` | `cplant` | Burns `carbon`. Use-time 8. Tag production |
+| `oilbrn` | oil burning | 35 `iron`, 12 `titani`, 8 `silici` | `oplant` | Burns `oil`. Use-time 10 |
 | `wndtrb` | wind turbines | 1 `iron` | `wnplnt` | Needs `terair` world to operate. Use-time 2 |
 | `hcdril` | hydrocarbons drilling | — | 1 `carbon` | Extraction, solid-surface |
-| `indust` | industrial automation | 15 `iron`, 10 `titani` | `factry` | Use-time 4. Tag production |
-| `popcnt` | population center | 100 `iron` | `city` | Solid-surface + `terair`. Use-time 26 |
-| `agrplx` | agricultural complex | 10 `iron` | `farms` | Solid-surface + `terair`. Use-time 4 |
+| `indust` | industrial automation | 35 `iron`, 20 `titani`, 8 `silici` | `factry` | Use-time 4. Tag production |
+| `popcnt` | population center | 150 `iron`, 80 `titani`, 40 `copper`, 30 `silici` | `city` | Solid-surface + `terair`. Use-time 26 |
+| `agrplx` | agricultural complex | 15 `iron`, 5 `silici` | `farms` | Solid-surface + `terair`. Use-time 4 |
 | `farmng` | intensive farming | — | 5 `food` | Agricultural, ocean world, `terair` |
-| `corpmg` | corporate management | 10 `iron`, 2 `copper`, 5 `silici` | `corphq` | Use-time 6. Tag production |
+| `corpmg` | corporate management | 30 `iron`, 15 `titani`, 10 `copper`, 8 `silici` | `corphq` | Use-time 6. Tag production |
 | `iminng` | iron mining | — | 3 `iron` | Extraction, solid-surface |
-| `sdrill` | mineral surface drilling | 25 `iron` | `sdrill` | Use-time 3 |
+| `sdrill` | mineral surface drilling | 15 `iron`, 5 `silici` | `sdrill` | Use-time 3 |
 | `slcmlt` | silicium melting | — | 1 `silici` | Extraction, solid-surface. Use-time 2 |
 | `tminng` | titanium mining | — | 2 `titani` | Extraction, solid-surface |
 | `oildwe` | oil dwelling | — | 2 `oil` | Extraction |
@@ -362,32 +418,32 @@ Primary tags assigned for campaign research targeting. Consume/produce are live 
 | `cminng` | copper mining | — | 2 `copper` | Extraction |
 | `wtrdst` | water distillation | — | 3 `h2o2` | Extraction (electrolysis/distill of regional water/ice) |
 | `grndtr` | ground transport | 2 `iron` | `trucks` | Use-time 2 |
-| `strans` | small scale transportation | 2 `iron`, 2 `titani` | `cargob` | Use-time 2 |
-| `crewhs` | crew housing | 3 `iron`, 2 `titani` | `crwqrt` | Use-time 2 |
+| `strans` | small scale transportation | 10 `iron`, 8 `titani` | `cargob` | Use-time 2 |
+| `crewhs` | crew housing | 12 `iron`, 8 `titani`, 3 `silici` | `crwqrt` | Use-time 2 |
 | `airgen` | breathing-gas generation | 2 `iron`, 1 `copper` | `lifsys` | Produces `terair` in operation. Use-time 2 |
-| `orassm` | orbital complexes assembly | 2 `iron` | `orcmpx` | Orbit. Use-time 5 |
-| `ssassm` | space ship assembly | 6 `iron`, 4 `titani` | `sshull` | Orbit. Use-time 4 |
-| `shtlas` | shuttles assembly | 2 `iron`, 1 `titani`, 1 `silici` | `shuttl` | Use-time 4 |
-| `spctrl` | space control | 1 `iron`, 4 `titani`, 1 `silici` | `cbridg` | Use-time 3 |
-| `urfiss` | uranium fission | 2 `iron`, 8 `titani`, 5 `copper` | `fisrec` | Burns `uraniu`, produces `wastes`. Use-time 6 |
+| `orassm` | orbital complexes assembly | 8 `iron`, 4 `titani` | `orcmpx` | Orbit. Use-time 5 |
+| `ssassm` | space ship assembly | 50 `iron`, 30 `titani`, 15 `silici` | `sshull` | Orbit. Use-time 4 |
+| `shtlas` | shuttles assembly | 10 `iron`, 5 `titani`, 3 `silici` | `shuttl` | Use-time 4 |
+| `spctrl` | space control | 15 `iron`, 10 `titani`, 8 `silici`, 5 `copper` | `cbridg` | Use-time 3 |
+| `urfiss` | uranium fission | 30 `iron`, 20 `titani`, 15 `copper`, 8 `uraniu` | `fisrec` | Burns `uraniu`, produces `wastes`. Use-time 6 |
 
 ### Propulsion
 
 | Id | Name | Consume | Produce | Notes |
 |----|------|---------|---------|-------|
-| `areact` | action and reaction | 10 `iron`, 10 `titani` | `rctdrv` | Chemical/thermal rocket; **fuel `h2o2`**. Use-time 2. **Only live L0 propulsion** |
+| `areact` | action and reaction | 25 `iron`, 20 `titani`, 8 `copper` | `rctdrv` | Chemical/thermal rocket; **fuel `h2o2`**. Use-time 2. **Only live L0 propulsion** |
 
 ### Research
 
 | Id | Name | Consume | Produce | Notes |
 |----|------|---------|---------|-------|
-| `filidx` | file indexing | 1 `iron`, 3 `silici` | `cmplib` | Tag research. Use-time 2. **Only live L0 research** |
+| `filidx` | file indexing | 5 `iron`, 10 `silici`, 3 `copper` | `cmplib` | Tag research. Use-time 2. **Only live L0 research** |
 
 ### Military
 
 | Id | Name | Consume | Produce | Notes |
 |----|------|---------|---------|-------|
-| `stnrdf` | stationary defense | 2 `iron`, 2 `titani` | `gunplc` | Tag military. **kinetic**. Use-time 4 |
+| `stnrdf` | stationary defense | 8 `iron`, 5 `titani` | `gunplc` | Tag military. **kinetic**. Use-time 4 |
 
 ---
 
@@ -399,13 +455,13 @@ Copy required. Capacity 1. Cost 8 unless noted.
 
 | Id | Name | Requires | Use-time | Consume | Produce | Notes |
 |----|------|----------|----------|---------|---------|-------|
-| `ctypln` | city planning | — | 26 | 500 `cash`, 26 `iron`, 1 `city` | `mtrply` | Live |
+| `ctypln` | city planning | — | 26 | 250 `iron`, 120 `titani`, 60 `copper`, 50 `silici` | `mtrply` | Live |
 | `afrmng` | advanced farming | — | 1 | — | 8 `food` | Live; ocean + `terair` |
-| `cdrill` | mineral core drilling | — | 3 | 25 `iron`, 10 `titani` | `cdrill` | Live |
+| `cdrill` | mineral core drilling | — | 3 | 30 `iron`, 15 `titani`, 5 `silici` | `cdrill` | Live |
 | `servic` | preventive servicing | — | 1 | 1 `titani`, 1 `iron`, 1 `copper`, 1 `silici` | 10 `spare` | Tag repair |
 | `repair` | repair and maintenance | — | 2 | 1 `spare` | effect repair | USE of effect not executed; issue `REPAIR` |
 | `engshp` | engineering shop | — | 2 | 5 `iron` | `engshp` | Cost 4. Tags production, repair |
-| `lawenf` | law enforcement | — | 4 | 6 `iron` | `jail` | Live |
+| `lawenf` | law enforcement | — | 4 | 20 `iron`, 10 `titani` | `jail` | Live |
 | `wastdp` | waste disposal | — | 1 | 2 `wastes` | — | Spacecraft; solar disposal |
 | **`nminng`** | nickel-iron extraction | `iminng` | 1 | — | 2 `nickfe` | M-type metal: Fe-Ni alloy from `lrmast`/`smmast`. Extraction, solid-surface |
 | **`gminng`** | gold recovery | `cminng` | 2 | — | 1 `gold` | Cyanide-free gravity/amalgam analogue on hydrothermal veins. Extraction |
@@ -426,11 +482,11 @@ Copy required. Capacity 1. Cost 8 unless noted.
 
 | Id | Name | Requires | Use-time | Consume | Produce | Notes |
 |----|------|----------|----------|---------|---------|-------|
-| `armcbt` | armored combat | — | 4 | 6 `iron`, 2 `titani` | `tanks` | **kinetic**+**armour** platform (oil engines). Tag military |
+| `armcbt` | armored combat | — | 4 | 20 `iron`, 8 `titani`, 5 `copper` | `tanks` | **kinetic**+**armour** platform (oil engines). Tag military |
 | `frminf` | form infantry battalion | — | 13 | 1 `iron` | `inftry` | Mixed infantry; mount items below. Tag military |
 | `rckter` | rocket launcher production | — | 2 | 1 `iron` | item `rctlnc` | **missile**. Cost 4. Live consume; L3+ missiles pull `nitrat`/`uraniu` |
-| `lasopt` | laser optics | — | 4 | 2 `terair`, 2 `h2o2`, 2 `copper` | `bltlas` | **laser**. Campaign retune: working gas + electrodes. Tag military |
-| `lstrrt` | laser turret | `lasopt` | 4 | 2 `iron`, 4 `terair`, 2 `h2o2` | `laztrt` | **laser**. Campaign retune: gases |
+| `lasopt` | laser optics | — | 4 | 8 `titani`, 12 `copper`, 5 `silici` | `bltlas` | **laser**. Campaign retune: working gas + electrodes. Tag military |
+| `lstrrt` | laser turret | `lasopt` | 4 | 15 `iron`, 10 `titani`, 10 `copper` | `laztrt` | **laser**. Campaign retune: gases |
 | `miltac` | military tactics | — | 1 | — | — | Battle tech; initiative 5; command group |
 | **`prlgun`** | personal rail gun | `stnrdf` | 3 | 2 `iron`, 1 `titani` | item `prlgun` | **kinetic**. Infantry/tank/fighter item. `tungst` from L5 guns |
 | **`prllsr`** | personal laser | `lasopt` | 3 | 2 `terair`, 1 `copper`, 1 `h2o2` | item `prllsr` | **laser**. Same item at infantry and fighter scale |
@@ -448,8 +504,8 @@ Capacity 2. Cost 16.
 |----|------|----------|----------|---------|---------|-------|
 | `autfab` | automated fabrication | — | 6 | 15 `iron`, 10 `silici` | `robofc` | Alien; no crew. Tag production |
 | `he3min` | helium-3 mining | `uminng` | 8 | — | 1 `heliu3` | Extraction; regolith/ice, **not** habitable basins |
-| `he3fus` | helium-3 fusion | `he3min` | 1 | 1 `heliu3` | `fusrec` | Burns 3 `heliu3` / 13 wk |
-| `habcns` | small habitat construction | — | 6 | 20 `iron`, 8 `titani` | `smhabi` | Pressure shell, solid-surface |
+| `he3fus` | helium-3 fusion | `he3min` | 1 | 40 `iron`, 30 `titani`, 15 `copper`, 5 `heliu3` | `fusrec` | Burns 3 `heliu3` / 13 wk |
+| `habcns` | small habitat construction | — | 6 | 40 `iron`, 25 `titani`, 10 `silici` | `smhabi` | Pressure shell, solid-surface |
 | **`alminn`** | aluminium from anorthosite | `slcmlt` | 2 | — | 2 `alumin` | Hall–Héroult analogue on highlands. Extraction, solid-surface |
 | **`krogen`** | kerogen retorting | `hcdril` | 2 | — | 1 `kerogn` | Slow pyrolysis of carbonaceous chondrite organics. Extraction |
 
@@ -470,9 +526,10 @@ Capacity 2. Cost 16.
 
 | Id | Name | Requires | Use-time | Consume | Produce | Notes |
 |----|------|----------|----------|---------|---------|-------|
-| `xraylo` | x-ray laser optics | `lasopt` | 4 | 2 `terair`, 2 `volatl`, 2 `copper` | `xraylz` | **laser**. Campaign retune: gases. Tag military |
+| `xraylo` | x-ray laser optics | `lasopt` | 4 | 10 `titani`, 15 `copper`, 8 `silici` | `xraylz` | **laser**. Campaign retune: gases. Tag military |
 | **`psnshd`** | personal plasma shield | `airgen` | 4 | 3 `terair`, 2 `h2o2`, 1 `copper` | item `psnshd` | **shield**. Infantry/tank/fighter. Requires L2; campaign `requires` `airgen` until `shplas` exists |
 | **`psnew`** | personal EW pack | `optins` | 3 | 3 `silici`, 2 `copper` | item `psnew` | **ew**. Datalink spoof; infantry and fighter |
+| **`detsns`** | sensor array | `optins` | 4 | 6 `silici`, 4 `copper` | `sensor` | **detection**. See into nested stacks at same location + 1 AU visibility radius. Reveals mines at current location |
 
 ---
 
@@ -484,8 +541,8 @@ Capacity 3. Cost 32.
 
 | Id | Name | Requires | Use-time | Consume | Produce | Notes |
 |----|------|----------|----------|---------|---------|-------|
-| `he3drl` | dedicated helium-3 drilling | `he3min` | 1 | 30 `iron`, 10 `titani` | `he3ext` | 20 `heliu3` / 13 wk |
-| `dmecns` | dome city construction | — | 10 | 40 `iron`, 20 `titani` | `dmdcty` | Airless rock; upkeep `food`+`terair` |
+| `he3drl` | dedicated helium-3 drilling | `he3min` | 1 | 50 `iron`, 30 `titani`, 15 `copper` | `he3ext` | 20 `heliu3` / 13 wk |
+| `dmecns` | dome city construction | — | 10 | 120 `iron`, 60 `titani`, 30 `copper`, 20 `silici` | `dmdcty` | Airless rock; upkeep `food`+`terair` |
 | `ahlcns` | advanced hull construction | — | 8 | 20 `titani` | `alnhul` | Alien geometry; no crew |
 | `he3unc` | unmanned helium plant | — | 6 | 12 `titani` | `he3aut` | Burns `heliu3` |
 | `autctl` | automated command systems | — | 5 | 8 `silici` | `autcmd` | Alien; sits under **research** for `arkcmd` edge, production build |
@@ -501,17 +558,19 @@ Capacity 3. Cost 32.
 
 | Id | Name | Requires | Use-time | Consume | Produce | Notes |
 |----|------|----------|----------|---------|---------|-------|
-| `autprp` | automated propulsion | — | 5 | 10 `titani` | `autdrv` | Alien; fuel `h2o2`. **Alien propulsion seed** |
+| `autprp` | automated propulsion | — | 5 | 25 `iron`, 20 `titani`, 8 `copper` | `autdrv` | Alien; fuel `h2o2`. **Alien propulsion seed** |
 | **`nucthr`** | nuclear-electric propulsion | `ionthr` | 8 | 12 `titani`, 6 `uraniu`, 8 `copper` | `nepeng` | Fission heat → Brayton/Rankine → kV to ion/MPD. **Fuel `uraniu`** (reactor) and **`water`** (propellant). Human line to NTR |
 | **`slsail`** | solar sail | `areact` | 6 | 15 `alumin`, 4 `silici` | `slsmod` | Micron aluminium film, no reaction mass. Thrust falls as 1/r². Inner-system only. **No fuel** |
+| **`jmpdrv`** | Alderson jump drive | `nucthr` | 8 | 25 `titani`, 15 `copper`, 10 `silici` | `jmpdvr` | Resonance-coupled field coils tuned to stable Alderson-point curvature. Stack at a stable AP corona can `JUMP` to the paired point — instant transit, 0 weeks. **Fuel `h2o2`** (field-sustainer coolant). Does **not** work on unstable points |
 
 ### Research
 
 | Id | Name | Requires | Use-time | Consume | Produce | Notes |
 |----|------|----------|----------|---------|---------|-------|
-| `advres` | advanced computing | `filidx` | 1 | 4 `iron`, 12 `silici` | `advlib` | Live tag research. `autctl` stays a live production USE; `arkcmd` still `requires` it |
-| **`sckcns`** | sick bay construction | `medtec` | 8 | 8 `iron`, 4 `titani`, 4 `copper`, 3 `silici` | `sckbay` | Inpatient ward. Tag research. **Not** a re-role of `medfac` |
+| `advres` | advanced computing | `filidx` | 1 | 20 `iron`, 15 `titani`, 25 `silici`, 10 `copper` | `advlib` | Live tag research. `autctl` stays a live production USE; `arkcmd` still `requires` it |
+| **`sckcns`** | sick bay construction | `medtec` | 8 | 25 `iron`, 15 `titani`, 12 `copper`, 8 `silici` | `sckbay` | Inpatient ward. Tag research. **Not** a re-role of `medfac` |
 | **`pharms`** | shipboard pharmacy | `sckcns` | 1 | 1 `food` | 1 `medici` | USE on a `sckbay` (live gate: `module-type-group="habitat"` until wishlist `module=`). Fermentation + sterile fill; energy of the ward runs the still. Anywhere the bay is nested — not ocean-gated |
+| **`astprp`** | asteroid prospector | `optins` | 4 | 4 `silici`, 2 `copper` | `prspsc` | Laser-ablation mass spectrometer + lidar shape model. Reveals hidden resource quantities on `abelt` regions via `PROSPECT` order. Without this, belt deposits show only trace signatures — commit a prospector before a mining fleet. Research group. L3-cheap: early scouts should reach the belt before heavy miners |
 
 ### Sick bay vs medical facility (do not merge)
 
@@ -550,7 +609,7 @@ Intended module XML (extra attrs ignored until TDD):
 
 | Id | Name | Requires | Use-time | Consume | Produce | Notes |
 |----|------|----------|----------|---------|---------|-------|
-| `drnhng` | drone hangar construction | — | 6 | 8 `silici`, 6 `copper` | `drnbay` | **drone**. Campaign retune: silicons. `reeox` from L6 |
+| `drnhng` | drone hangar construction | — | 6 | 30 `iron`, 20 `titani`, 10 `silici`, 5 `copper` | `drnbay` | **drone**. Campaign retune: silicons. `reeox` from L6 |
 | **`mslpod`** | missile tube | `ntmine` | 5 | 6 `iron`, 6 `nitrat`, 2 `uraniu` | `msltub` | **missile**. Nitrate/U grain. Attack 6 damage 8 |
 | **`ewsens`** | electronic warfare suite | `optins` | 4 | 6 `silici`, 4 `copper` | `ewantn` | **ew**. Jamming as defense/initiative. No cartoon disable |
 | **`prxgrd`** | proximity grenades | `rckter` | 3 | 2 `nitrat`, 1 `uraniu`, 1 `iron` | item `prxgrd` | **pbpd**. Infantry/tank last-ditch burst; same item on fighters |
@@ -565,7 +624,7 @@ Capacity 4. Cost 64.
 
 | Id | Name | Requires | Use-time | Consume | Produce | Description |
 |----|------|----------|----------|---------|---------|-------------|
-| **`orbfnd`** | orbital foundry methods | `ssassm` | 8 | 40 `iron`, 20 `titani`, 15 `silici`, 8 `nickfe` | `orbfry` | Vacuum induction melting and electron-beam welding. Orbit `use`. Group production |
+| **`orbfnd`** | orbital foundry methods | `ssassm` | 8 | 150 `iron`, 80 `titani`, 40 `silici`, 20 `nickfe` | `orbfry` | Vacuum induction melting and electron-beam welding. Orbit `use`. Group production |
 | **`d2ext`** | deuterium from ices | `wtrdst` | 6 | — | 1 `deutrm` | Electrolysis + cryogenic distillation of D/H. Extraction. **Not** habitable basins |
 | **`volext`** | mixed-volatile ISRU | `krogen` | 4 | — | 2 `volatl` | Heat carbonaceous fines; capture H2O, CO2, N2. Extraction, `smcast`/`lrcast` |
 | **`fuelcl`** | alkaline fuel cell | `urfiss` | 5 | 10 `silici`, 8 `copper`, 6 `titani` | `h2cell` | H2/O2 from `water`/`h2o2`; no PGM required. Energy ~40 / 13 wk. **Fuel `h2o2`** |
@@ -593,8 +652,11 @@ Capacity 4. Cost 64.
 | Id | Name | Requires | Use-time | Consume | Produce | Description |
 |----|------|----------|----------|---------|---------|-------------|
 | `alnfgh` | alien fighter construction | — | 4 | 4 `silici`, 4 `copper` | `alndrn` | **drone**. Live alien seed. Campaign retune: silicons. The fighter **is** the drone-group weapon |
-| **`kntcgn`** | kinetic gunnery | `stnrdf` | 5 | 20 `iron`, 8 `tungst`, 6 `nickfe` | `railgn` | **kinetic**. Rails, not magnets-as-EW. Attack 8 / damage 8 |
+| **`kntcgn`** | kinetic gunnery | `stnrdf` | 5 | 20 `iron`, 10 `titani`, 6 `nickfe` | `railgn` | **kinetic**. Rails. `tungst` from L5. Attack 8 / damage 8 |
 | **`shplas`** | ship plasma shield | `lasopt` | 5 | 8 `xenon`, 6 `terair`, 4 `methn` | `shplas` | **shield**. Resists **laser**. Defense 12, attack 0. Gas-fed plasma/magnetic bottle. **Not** a laser battery |
+| **`detadv`** | advanced sensors | `detsns` | 6 | 12 `silici`, 8 `copper`, 4 `reeox` | `advsns` | **detection**. 5 AU visibility. Reveals mines within 5 AU |
+| **`clkbsc`** | basic cloaking | `detsns` | 6 | 10 `silici`, 6 `copper`, 4 `xenon` | `clkdev` | **cloaking**. Counters L2 detection (invisible to `sensor` within 1 AU; still seen at same location). Size 200/150 |
+| **`minbsc`** | basic mine deployment | `mslpod` | 4 | 8 `iron`, 6 `nitrat`, 2 `uraniu` | `mnlayr` | **mine** (missile-adjacent). Mine-layer module produces `spmine` items (1/cycle). Each mine: damage 15, invisible, stationary, detonates on enemy entry |
 
 ---
 
@@ -621,6 +683,7 @@ Capacity 5. Cost 128.
 | **`mpdthr`** | methane MPD | `ntrdrv` | 6 | 20 `titani`, 15 `copper`, 5 `silici` | `mpddrv` | J×B plasma. **Fuel `methn`** |
 | **`mpdlth`** | lithium MPD | `mpdthr` | 6 | 18 `titani`, 12 `copper`, 8 `lithia` | `limpd` | Li cathode, higher Isp than methane MPD. **Fuel `lithia`** (consumable electrode) |
 | **`ethtst`** | electrothermal arcjet | `ntrdrv` | 5 | 10 `titani`, 10 `copper` | `arcjet` | Arc-heats `water`. Between chemical and ion. **Fuel `water`** |
+| **`ujpdrv`** | unstable Alderson jump drive | `jmpdrv` | 10 | 35 `titani`, 20 `copper`, 15 `silici`, 10 `xenon` | `ujpdvr` | Tidal-shear stabiliser array for traversing unstable Alderson points. Adaptive field harmonics compensate for chaotic curvature oscillations at the unstable throat. Stack at an unstable AP corona can `JUMP`. **Fuel `xenon`** (plasma damper). Higher fuel cost than stable drive |
 
 ### Research
 
@@ -637,6 +700,8 @@ Capacity 5. Cost 128.
 | **`pdefls`** | point-defense lasers | `lstrrt` | 4 | 6 `xenon`, 6 `terair`, 4 `h2o2` | `pdltur` | **laser**. Short-range beam, not missile-PD. High initiative |
 | **`kpdgun`** | kinetic cannon | `kntcgn` | 4 | 12 `iron`, 6 `tungst`, 4 `nickfe` | `kpdtur` | **kinetic**. Rapid mass driver. Not pbpd |
 | **`armcml`** | ceramic applique armour | `ceramp` | 6 | 12 `boron`, 8 `titani`, 6 `alumin` | `cermpl` | **armour**. B4C tiles. Defense 12 |
+| **`drncrw`** | drone crew | `drnhng` + `ewsens` | 8 | 15 `silici`, 10 `copper`, 5 `iron` | `wrkdrn` item | Autonomous worker drone; 1 crew-equivalent per item. Requires energy not food/terair. Immune to radiation/vacuum. Cannot be wounded, only destroyed. Lower initiative than human crew |
+| **`drnfac`** | drone factory | `drncrw` | 6 | 20 `iron`, 15 `silici`, 10 `copper` | `drnfac` module | Produces `wrkdrn`; consumes 2 `silici` + 1 `copper` + 5 energy per drone per cycle |
 
 ---
 
@@ -654,6 +719,7 @@ Capacity 6. Cost 256.
 | **`reemin`** | rare-earth oxides | `nminng` | 8 | — | 1 `reeox` | Monazite/bastnäsite on metal asteroids. Signature **SS0004 Gleam** |
 | **`grmine`** | nuclear graphite | `hcdril` | 4 | — | 1 `grphit` | High-purity C, not coal. Extraction. Signature **SS0005 Cinder** (with boron) |
 | **`cccomp`** | carbon–carbon composites | `grmine` | 8 | 12 `grphit`, 6 `tungst`, 10 `carbon` | `ccplnk` | 3-D C-C for throats and heatshields. Production |
+| **`atskim`** | atmospheric ram skimmer | `brakch` | 8 | 25 `titani`, 15 `silici`, 10 `copper`, 8 `grphit` | `atskmr` | Lifting-body ram scoop with C-C leading edges and ablative thermal shield. Dives from gas-giant orbit into the upper troposphere (0.1–1 bar H2/He), ingests atmosphere, centrifuge-separates He-3/D/CH4/NH3 from bulk H2, climbs back to orbit on captured propellant. Use-time 10 (each cycle is a multi-week dip-and-climb). **Fuel `h2o2`** (attitude RCS during atmospheric pass). Extraction group. Operates in gas-giant **orbit** region; `atmosphere` location-type not required for skimmer (it returns to orbit). Produces `heliu3` 1, `deutrm` 1 per USE cycle. Slow but no permanent infrastructure |
 
 ### Propulsion
 
@@ -679,6 +745,10 @@ Capacity 6. Cost 256.
 | **`gausgn`** | coilgun | `kntcgn` | 8 | 20 `iron`, 10 `tungst`, 8 `nickfe` | `coilgn` | **kinetic**. Dense armature; a little copper in coils is structure, not signature. Attack 10 damage 10 |
 | **`misgde`** | missile guidance | `mslpod` | 4 | 8 `silici`, 4 `copper` | `miscpu` | **missile** seekers (silicon brains on isotope warheads). Command group |
 | **`proxpd`** | proximity burst PD | `mslpod` | 5 | 8 `nitrat`, 4 `uraniu`, 2 `deutrm` | `proxpd` | **pbpd**. Last-ditch isotope/frag bursts vs incoming missiles. Not a laser, not a rail |
+| **`detsys`** | system-wide sensors | `detadv` | 8 | 20 `silici`, 12 `copper`, 8 `reeox` | `syssns` | **detection**. Visibility covers entire solar system. Reveals `clkdev`-cloaked units |
+| **`clkadv`** | advanced cloaking | `clkbsc` | 8 | 15 `silici`, 10 `xenon`, 6 `copper`, 4 `reeox` | `advclk` | **cloaking**. Counters L4 detection. Invisible to `advsns`. Size 400/300 |
+| **`minsmt`** | smart mines | `minbsc` + `misgde` | 5 | 12 `iron`, 8 `nitrat`, 4 `uraniu`, 4 `silici` | `smnlay` | **mine**. Produces `smmine` items. Damage 25, IFF-capable (skip friendly), invisible |
+| **`lrmtec`** | long-range missile | `crumis` | 8 | 20 `nitrat`, 12 `uraniu`, 8 `hydzn`, 6 `silici` | `lrmmod` | **LRM**. Strategic weapon fired from AP orbit toward immobile targets. Attack 20, damage 30. Ion-level speed. Single warhead. Visible in transit, interceptable |
 
 ---
 
@@ -702,6 +772,7 @@ Capacity 7. Cost 512.
 | **`vasimr`** | variable-Isp plasma | `fusdrv` | 8 | 25 `titani`, 15 `copper`, 8 `silici` | `vasmdr` | RF plasma. **Fuel `water` or `methn`** |
 | **`orbins`** | chemical insertion stage | `hypstg` | 6 | 12 `iron`, 8 `titani` | `chmup2` | Restartable hypergolic for orbit capture. **Fuel `hydzn`**. Still useful next to fusion |
 | **`plsail`** | plasma magnet sail | `vasimr` | 8 | 15 `copper`, 6 `reeox`, 8 `titani` | `plsail` | Inflated magnetosphere vs solar wind. Larger than `mgsail`, still no onboard propellant |
+| **`asttow`** | asteroid tow rig | `orbtug` | 12 | 60 `iron`, 40 `titani`, 20 `copper`, 10 `nickfe` | `towmod` | Array of ion thrusters mounted on a scaffold that clamps to an asteroid surface. Gravity-tractor station-keeping plus direct thrust for ΔV. Tows a belt region (the whole rock) to a new orbit via `TOW` order — travel time scales with asteroid mass and distance (months to years). Stack is immobile during tow. **Fuel `xenon`** (continuous burn). Propulsion group. An industrial megaproject, not a casual move |
 
 ### Research
 
@@ -718,6 +789,14 @@ Capacity 7. Cost 512.
 | **`armhul`** | spaced armour | `ahlcns` | 6 | 40 `titani`, 10 `tungst`, 8 `nickfe` | `armplt` | **armour**. Whipple + W fibre. Defense 15 |
 | **`crumis`** | cruise missile | `mslpod` | 8 | 12 `iron`, 8 `nitrat`, 4 `uraniu`, 4 `hydzn` | `crumis` | **missile**. Flyout fuel `hydzn`; signature is nitrate/U. Attack 12 damage 14 |
 | **`uvltur`** | ultraviolet laser | `lstrrt` | 6 | 8 `xenon`, 6 `volatl`, 4 `terair`, 2 `silici` | `uvltur` | **laser**. Shorter wavelength; gases as working medium, a little Si for optics |
+| **`advdrn`** | advanced drone AI | `drncrw` + `navint` | 8 | 20 `silici`, 12 `copper`, 6 `reeox` | `advdrn` item | 2 crew-equivalent per item. +10% initiative vs basic `wrkdrn`. Adaptive heuristic swarm coordination |
+
+### Energy / close-orbit
+
+| Id | Name | Requires | Use-time | Consume | Produce | Description |
+|----|------|----------|----------|---------|---------|-------------|
+| **`soltap`** | solar energy tap | `he3fus` + `capshd` | 10 | 40 `iron`, 25 `titani`, 15 `copper`, 10 `silici` | `solgen` module | Massive solar collector at 0.1 AU. Energy output 50 (10x standard). Useless beyond 0.5 AU. Requires shield-equipped stack to deploy at close orbit (`radiation-damage="20"`) |
+| **`lsrxmt`** | laser power transmission | `soltap` | 8 | 25 `silici`, 15 `copper`, 10 `gold`, 8 `titani` | `lsrtx` + `lsrrx` modules (pair) | Transmitter beams energy to a paired receiver anywhere in-system. Loss 5%/AU. Enables solar energy at habitable distances without fuel logistics |
 
 ---
 
@@ -733,6 +812,7 @@ Capacity 8. Cost 1024.
 | **`radshc`** | radiation shelter construction | `bormin` | 8 | 15 `boron`, 8 `berylm`, 10 `grphit`, 20 `iron` | `radshd` | Boron + Be + graphite moderator/absorber stack. Habitat storm shelter |
 | **`recyl2`** | closed-loop recycling | `clslfe` | 8 | 20 `titani`, 10 `silici`, 8 `copper`, 4 `platnm` | `recylr` | Metals, water, air from `wastes`. Production |
 | **`insltc`** | silica aerogel insulation | `slcmlt` | 6 | 12 `silici`, 4 `alumin` | `insltn` | Supercritical-dried silica sol; habitat MLI analogue. No separate aerogel item |
+| **`cldmin`** | cloud mining platform | `atskim` | 12 | 80 `iron`, 60 `titani`, 30 `alumin`, 15 `copper`, 10 `grphit` | `cldplt` | Hot-hydrogen Montgolfiere aerostat at 0.5-2 bar altitude in a gas-giant atmosphere. Buoyant envelope of aluminised polymer, suspended processing gondola with cryogenic He-3/D centrifuge separator, and electrolysis cracker for NH3/CH4. Produces `heliu3` 2, `deutrm` 2, `ammoni` 1 per USE (use-time 6). Requires `atmosphere` location-type. Extraction group. Permanent; crew in pressure-sealed gondola habitat. **No fuel** (buoyancy free; intake H2 fuel cell for power) |
 
 ### Propulsion
 
@@ -758,6 +838,18 @@ Capacity 8. Cost 1024.
 | **`magzin`** | missile magazine | `mslpod` | 6 | 20 `nitrat`, 10 `uraniu`, 8 `iron` | `magzin` | **missile**. Nested isotope grain, not rail slugs. Group storage |
 | **`bmdir`** | beam director | `pdefls` | 8 | 10 `xenon`, 8 `terair`, 4 `h2o2`, 4 `silici` | `bmdir` | **laser**. Fast-steering optics; gases for the beam path, a little Si |
 | **`capshd`** | capital plasma shield | `shplas` | 8 | 12 `xenon`, 8 `methn`, 6 `volatl` | `capshd` | **shield**. Scale-up of `shplas`. Defense 16, attack 0 |
+| **`impgde`** | impact guidance system | `asttow` | 10 | 20 `silici`, 15 `copper`, 10 `iron`, 8 `reeox` | `impgds` |
+| **`detap`** | AP-spanning detection | `detsys` | 10 | 30 `silici`, 15 `copper`, 10 `reeox`, 8 `berylm` | `apsns` | **detection**. Sees through Alderson Points into neighbouring systems. Reveals `advclk`-cloaked units |
+| **`clkfld`** | cloaking field | `clkadv` | 10 | 25 `silici`, 15 `xenon`, 10 `copper`, 8 `reeox` | `clkfld` | **cloaking**. Counters L6 detection. Covers entire stack. Size 600/500 |
+| **`minhvy`** | heavy mine | `minsmt` | 8 | 20 `iron`, 15 `nitrat`, 8 `uraniu`, 6 `deutrm` | `hvmlay` | **mine**. Produces `hvmine` items. Damage 50, IFF, invisible. Cracks small ships |
+| **`lrmhvy`** | heavy LRM battery | `lrmtec` | 12 | 40 `nitrat`, 20 `uraniu`, 15 `hydzn`, 10 `silici`, 8 `deutrm` | `lrmhvy` | **LRM**. Attack 30, damage 50. Nuclear-electric speed. Multi-warhead (3 per launch, each independently targetable) | Autonomous terminal-guidance avionics for a towed asteroid turned kinetic impactor. Lidar terrain-matching, star-tracker attitude, and ion-beam deflection thrusters steer the body onto a planetary target via `IMPACT` order. Approach takes weeks (visible to all factions — interception window). On impact: catastrophic kinetic energy transfer destroys target region resources, capacity, and stacks. **Military group**. The strategic weapon of last resort — visible, slow, devastating, interceptable |
+| **`drnark`** | ark drone complement | `advdrn` + `arkcns` | 12 | 40 `silici`, 25 `copper`, 15 `reeox`, 10 `berylm` | — (enables full-drone ark) | Ark can be crewed entirely by `advdrn` drones — no food, terair, or medical modules needed. Radiation-immune deep-space configuration. Removes biological life-support dependency for interstellar arks |
+
+### Energy / close-orbit (continued)
+
+| Id | Name | Requires | Use-time | Consume | Produce | Description |
+|----|------|----------|----------|---------|---------|-------------|
+| **`corlab`** | coronal research laboratory | `soltap` + `reslb2` | 10 | 50 `iron`, 30 `titani`, 20 `silici`, 10 `berylm`, 8 `xenon` | `corlab` module | Hardened research facility operating at 0.1 AU. 3x research output when at a `radiation-damage` region. Shield-integrated hull with active cooling. Requires drone crew or shielded operators |
 
 ---
 
@@ -789,6 +881,7 @@ Capacity 9. Cost 2048.
 | **`crewmd`** | long-duration medicine | `exobio` | 6 | 10 `silici`, 8 `medici` | `arkmed` | Bone, radiation, isolation |
 | **`psysup`** | isolation psychology | `crewmd` | 6 | 6 `silici`, 4 `medici`, 8 `food` | `psybrd` | Lighting, circadian, not psionics. Research. Helps `madtrn` flavour |
 | **`navint`** | inertial/optical navigation | `navast` | 6 | 10 `silici`, 8 `copper`, 4 `reeox` | `insnav` | Star cameras + IMU. Not FTL |
+| **`plsbio`** | plasma biology | `xnofrn` + `corlab` | 10 | 15 `silici`, 10 `xenon`, 8 `berylm`, 5 `reeox` | — | Study of self-organising coronal plasma entities. Enables late xenobiology research chain. Prerequisite for alien-life applications |
 
 ### Military
 
@@ -796,7 +889,7 @@ Capacity 9. Cost 2048.
 |----|------|----------|----------|---------|---------|-------------|
 | **`ciwssy`** | close-in weapon system | `proxpd` | 5 | 12 `nitrat`, 8 `uraniu`, 4 `heliu3` | `ciwst` | **pbpd** only. Proximity/isotope burst. Not laser PD, not a rail CIWS |
 | **`ewark`** | area EW | `ewsens` | 6 | 12 `silici`, 8 `copper`, 4 `reeox` | `ewark` | **ew**. Fleet-scale jamming as defense/initiative |
-| **`minelr`** | missile mines | `crumis` | 6 | 10 `nitrat`, 6 `uraniu`, 4 `iron` | `knmine` | **missile**. Coast-then-burst; mines-as-missiles. Space/orbit |
+| **`minelr`** | missile mines (pursuit) | `crumis` | 6 | 10 `nitrat`, 6 `uraniu`, 4 `iron` | `knmine` | **missile**. Coast-then-burst **pursuit mines** that actively seek targets within range — distinct from stationary `spmine`/`smmine`/`hvmine` (passive detonation on entry). Space/orbit |
 
 ---
 
@@ -837,6 +930,8 @@ Capacity 10. Cost 4096. Capstone hull/drive/bridge/grid **plus** supporting syst
 | **`arkew`** | ark EW grid | `ewark` | 8 | 20 `silici`, 12 `copper`, 8 `reeox` | `arkew` | **ew**. Area jamming/defense stats |
 | **`arkpd`** | ark point-blank PD | `ciwssy` | 8 | 20 `nitrat`, 10 `uraniu`, 6 `heliu3` | `arkpd` | **pbpd**. Last-ditch isotope bursts around the hull |
 | **`arkmag`** | ark magazines | `magzin` | 8 | 40 `nitrat`, 20 `uraniu`, 10 `iron` | `arkmag` | **missile**. Deep grain wells. Storage |
+| **`clkark`** | ark cloaking | `clkfld` | 12 | 40 `silici`, 20 `xenon`, 15 `reeox`, 10 `berylm` | `arkclk` | **cloaking**. Counters L8 detection. Cloaks ark-scale vessels. Size 1200/1000 |
+| **`lrmark`** | ark strategic missile | `lrmhvy` | 16 | 80 `nitrat`, 40 `uraniu`, 20 `hydzn`, 15 `deutrm`, 10 `heliu3` | `lrmark` | **LRM**. Attack 40, damage 80. Fusion speed. Ark-mounted. 5 warheads per salvo |
 
 ---
 
@@ -874,6 +969,8 @@ Full stats: `designer/catalog.md`. Fuel/feedstock must match `resources.md`.
 | `mpddrv` | propulsion | `mpdthr` | `methn` |
 | `limpd` | propulsion | `mpdlth` | `lithia` |
 | `arcjet` | propulsion | `ethtst` | `water` |
+| `jmpdvr` | propulsion | `jmpdrv` | `h2o2` |
+| `ujpdvr` | propulsion | `ujpdrv` | `xenon` |
 | `pdltur` | military | `pdefls` | gases + energy |
 | `kpdtur` | military | `kpdgun` | minerals + energy |
 | `cermpl` | frigate | `armcml` | — |
@@ -883,6 +980,8 @@ Full stats: `designer/catalog.md`. Fuel/feedstock must match `resources.md`.
 | `dhefrc` | energy | `dhefus` | `heliu3`+`deutrm` |
 | `whlhul` | habitat | `whlhbt` | — |
 | `ccplnk` | production | `cccomp` | — |
+| `atskmr` | extraction | `atskim` | `h2o2` |
+| `cldplt` | extraction | `cldmin` | none |
 | `fuseng` | propulsion | `fusdrv` | `heliu3` |
 | `mgsail` | propulsion | `magsail` | none |
 | `xendrv` | propulsion | `xengid` | `xenon` |
@@ -924,6 +1023,9 @@ Full stats: `designer/catalog.md`. Fuel/feedstock must match `resources.md`.
 | `wstplt` | production | `wstprc` | `wastes` |
 | `plsdv` | propulsion | `hiisp` | `heliu3`+`deutrm` |
 | `orbtug` | spacecraft | `orbtug` | `xenon` or `water` |
+| `towmod` | propulsion | `asttow` | `xenon` |
+| `prspsc` | research | `astprp` | — |
+| `impgds` | military | `impgde` | — |
 | `hshld` | spacecraft | `brakch` | none |
 | `ciwst` | military | `ciwssy` | isotopes |
 | `ewark` | military | `ewark` | silicons |
@@ -945,6 +1047,20 @@ Full stats: `designer/catalog.md`. Fuel/feedstock must match `resources.md`.
 | `arkpd` | military | `arkpd` | isotopes |
 | `arkmag` | storage | `arkmag` | isotopes |
 | `arkew` | military | `arkew` | silicons |
+| `lrmmod` | military | `lrmtec` | isotopes; `LAUNCH` order |
+| `lrmhvy` | military | `lrmhvy` | isotopes; multi-warhead |
+| `lrmark` | military | `lrmark` | isotopes; ark-mounted |
+| `mnlayr` | military | `minbsc` | produces `spmine` items |
+| `smnlay` | military | `minsmt` | produces `smmine` items |
+| `hvmlay` | military | `minhvy` | produces `hvmine` items |
+| `sensor` | military | `detsns` | silicons; 1 AU detection |
+| `advsns` | military | `detadv` | silicons; 5 AU detection |
+| `syssns` | military | `detsys` | silicons; full system |
+| `apsns` | military | `detap` | silicons; cross-AP |
+| `clkdev` | military | `clkbsc` | silicons; counters L2 |
+| `advclk` | military | `clkadv` | silicons; counters L4 |
+| `clkfld` | military | `clkfld` | silicons; covers stack |
+| `arkclk` | military | `clkark` | silicons; ark-scale |
 
 Live fuels unchanged: `rctdrv`/`autdrv`/`shuttl` `h2o2`; `cplant` `carbon`; `oplant` `oil`; `fisrec` `uraniu`; `fusrec`/`he3aut` `heliu3`.
 

@@ -1,7 +1,7 @@
 # ADR-0003: Filesystem PBEM batch processor
 
 Date: 2026-08-16  
-Status: Accepted (documents existing practice)
+Status: **Accepted** (engine file-batch; documents existing practice). **Amended by [ADR-0007](ADR-0007-pbai-product-loop.md)** for the *product* wrapper only — PBAI is the product direction; this ADR’s *engine* decision is unchanged.
 
 ## Context
 
@@ -23,3 +23,7 @@ Stub hooks (`Request`, `EventsReaders`) may later add extra turn-dir files; they
 - Integrations are file-format contracts, not service contracts.
 - External automation (mailer, GM scripts) lives outside this repository.
 - Adding SMTP, a web UI, or a DB is a new product surface and needs a new ADR.
+
+## Revision
+
+- 2026-08-19: [ADR-0007](ADR-0007-pbai-product-loop.md) wraps this engine in a PBAI product loop. Encoding, file names, CLI, and “no SMTP in-process” remain as decided here. Do not read the “PBEM” in this title as the current **product** default — PBEM is a compatible mailer mode around the same files.

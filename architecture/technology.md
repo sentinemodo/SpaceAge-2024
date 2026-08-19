@@ -1,9 +1,9 @@
 # SpaceAge-2024 — technology choices
 
-Last updated: 2026-08-18  
-Engine version: `Program.EngineVersion` = `0.1.137`
+Last updated: 2026-08-19  
+Engine version: cited as `0.1.141` in [`overview.md`](overview.md) / modules (PBAI does not change the engine stack). `Program.EngineVersion` remains the runtime string.
 
-This is a **legacy console engine**, not a service stack. Choices below describe what the repo already uses. Changing the runtime or project style requires an ADR.
+This is a **legacy console engine**, not a service stack. Choices below describe what the repo already uses. Changing the runtime or project style requires an ADR. PBAI ([ADR-0007](adr/ADR-0007-pbai-product-loop.md)) wraps the engine with agents; it does not retarget net48, replace XML files, or put an LLM in `Game.exe`.
 
 ## Preferred stack (current)
 
@@ -18,6 +18,7 @@ This is a **legacy console engine**, not a service stack. Choices below describe
 | I18n on Mono | `mono-complete` | Provides code page 1251 for `Encoding.GetEncoding(1251)` (verified end-to-end); no separate i18n package needed |
 | Persistence | XML + text files | No SQL, no ORM |
 | Encoding | Windows-1251 (code page 1251) | All game XML, orders, reports, `error.log` |
+| Product loop | PBAI agents around `Game.exe` | Cursor `/player` and `/game-designer`; not an in-engine LLM |
 
 Why stay on net48 / non-SDK:
 
@@ -57,14 +58,31 @@ Pinned in `Tests/packages.config`; HintPaths `..\packages\{id}.{version}\lib\net
 
 SonarQube helper scripts (`Sonar.bat`, `sonar-project.properties`) exist locally; they are **not** the cloud CI path.
 
+## Target presentation (not in `Game.exe`)
+
+**Not chosen. Not implemented.** [ADR-0007](adr/ADR-0007-pbai-product-loop.md) names visualization as a new bounded context. Adding a UI or SMTP still needs **its own ADR** (ADR-0003).
+
+| Area | Target candidate | Constraint |
+|------|------------------|------------|
+| Role | Read-only (or near-read-only) view of the world for humans | Consume `report.*`, optional XML report, `gameout`, catalog. Do not reimplement movement, combat, or produce |
+| Process | Separate from `Game.exe` | No HTTP listener inside the engine; no LLM in the week loop |
+| Conservative candidate | Offline static presentation: Markdown and/or local HTML generated from those files (scripts or a tiny viewer) | Avoid SPA + API, ASP.NET/Kestrel in `Game`, Electron, or a hosted multiplayer server |
+| Order entry | None, or forward intent to `/player` | Viz must not emit invented `order.*` verbs |
+
+**Open:** exact generator, UI toolkit, and path (`viz/` vs a new csproj in this solution). Do not pick a heavy web stack that implies HTTP inside `Game.exe`.
+
+**Interim (2026-08-19):** humans and `/player` read txt/xml reports. No viz module.
+
 ## Alternatives and trade-offs (explicitly not chosen)
 
 | Area | Current | Alternative | Why not now |
 |------|---------|-------------|-------------|
 | Runtime | net48 + Mono | .NET 8 SDK-style | Large csproj/test/cloud rewrite; out of scope |
-| Persistence | XML files | SQLite / JSON | Breaks PBEM GM workflow and 1251 reports |
+| Persistence | XML files | SQLite / JSON | Breaks file-batch GM/PBAI workflow and 1251 reports |
 | Tests | One `Tests.dll`, NUnit 4 | xUnit + `dotnet test` | net48 + Mono console path already works |
 | Isolation | Static `*.All` | DI / per-game containers | Pervasive; needs a dedicated ADR and test rewrite |
+| Turn executor | `Game.exe` | LLM or online service as processor | Non-deterministic; breaks tests and file contracts ([ADR-0007](adr/ADR-0007-pbai-product-loop.md)) |
+| Presentation | Reports txt/xml | UI or HTTP **inside** `Game.exe` | Needs its own ADR; would couple the batch engine to a GUI |
 
 ## Version guidance
 
@@ -72,3 +90,7 @@ SonarQube helper scripts (`Sonar.bat`, `sonar-project.properties`) exist locally
 - NUnit: stay on **4.1.x** until an ADR + full `.cursor/run-tests.sh` pass on Mono.
 - NUnit Console runner: **3.18.3** as installed by `.cursor/install.sh`.
 - Mono: whatever `mono-complete` on Ubuntu 24.04 provides (installed by `.cursor/install.sh`); do not add a second CLR in the cloud image.
+
+## Revision
+
+- 2026-08-19: PBAI does not change the engine stack. Added target presentation section (not in `Game.exe`; stack TBD). Engine citation aligned with overview `0.1.141`.

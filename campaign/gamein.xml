@@ -1,0 +1,4473 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<game turn="1">
+	<faction name="1" name-en="United Star Nations" password="" email="" default-attitude="2" text-report="True" text-report-line-length="100" xml-report="True" balance="0" credit-line="0" credit-rate="0.2" deposit-rate="0.05" />
+	<faction name="2" name-en="Northwind" password="pass2" email="player2@example.invalid" default-attitude="2" text-report="True" text-report-line-length="100" xml-report="True" balance="10000" credit-line="10000" credit-rate="0.2" deposit-rate="0.05" />
+	<faction name="3" name-en="Greenwell" password="pass3" email="player3@example.invalid" default-attitude="2" text-report="True" text-report-line-length="100" xml-report="True" balance="10000" credit-line="10000" credit-rate="0.2" deposit-rate="0.05" />
+	<faction name="4" name-en="Rivermark" password="pass4" email="player4@example.invalid" default-attitude="2" text-report="True" text-report-line-length="100" xml-report="True" balance="10000" credit-line="10000" credit-rate="0.2" deposit-rate="0.05" />
+	<faction name="5" name-en="Sundock" password="pass5" email="player5@example.invalid" default-attitude="2" text-report="True" text-report-line-length="100" xml-report="True" balance="10000" credit-line="10000" credit-rate="0.2" deposit-rate="0.05" />
+	<faction name="6" name-en="Copse" password="pass6" email="player6@example.invalid" default-attitude="2" text-report="True" text-report-line-length="100" xml-report="True" balance="10000" credit-line="10000" credit-rate="0.2" deposit-rate="0.05" />
+	<faction name="7" name-en="Ironclad" password="pass7" email="player7@example.invalid" default-attitude="2" text-report="True" text-report-line-length="100" xml-report="True" balance="10000" credit-line="10000" credit-rate="0.2" deposit-rate="0.05" />
+	<faction name="8" name-en="Oreline" password="pass8" email="player8@example.invalid" default-attitude="2" text-report="True" text-report-line-length="100" xml-report="True" balance="10000" credit-line="10000" credit-rate="0.2" deposit-rate="0.05" />
+	<faction name="9" name-en="Basalt" password="pass9" email="player9@example.invalid" default-attitude="2" text-report="True" text-report-line-length="100" xml-report="True" balance="10000" credit-line="10000" credit-rate="0.2" deposit-rate="0.05" />
+	<faction name="10" name-en="Silicate" password="pass10" email="player10@example.invalid" default-attitude="2" text-report="True" text-report-line-length="100" xml-report="True" balance="10000" credit-line="10000" credit-rate="0.2" deposit-rate="0.05" />
+	<faction name="11" name-en="Fission" password="pass11" email="player11@example.invalid" default-attitude="2" text-report="True" text-report-line-length="100" xml-report="True" balance="10000" credit-line="10000" credit-rate="0.2" deposit-rate="0.05" />
+	<contracts />
+	<galaxy>
+		<system name="SS4034" name-en="Helios" X="0" Y="0" Z="0">
+			<star name="S09881" name-en="Helios" type="M4" mass="1" />
+		<planet name="P09288" name-en="Arbor" type="ocean" AU="1" surface-size-X="6" surface-size-Y="6">
+			<moon name="M14323" name-en="Selene" type="rock" AU="0.0026" surface-size-X="5" surface-size-Y="3">
+				<orbit name="O00283" />
+				<region name="R74342" name-en="Selene West" X="0" Y="0" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R94099">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R85910">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R65436">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R32099">
+						<exitmode mode="space" duration="4" />
+					</exit>
+					<resource type="titani" quantity="40" />
+					<resource type="silici" quantity="30" />
+					<resource type="iron" quantity="15" />
+				</region>
+				<region name="R94099" name-en="Selene Flats" X="1" Y="0" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R41246">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R74342">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R51857">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="titani" quantity="50" />
+					<resource type="silici" quantity="25" />
+					<resource type="iron" quantity="10" />
+				</region>
+				<region name="R41246" name-en="Selene Ridge" X="2" Y="0" type="mountn">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R27870">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R94099">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R84260">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<resource type="titani" quantity="80" />
+					<resource type="silici" quantity="40" />
+					<resource type="iron" quantity="25" />
+				</region>
+				<region name="R27870" name-en="Selene East" X="3" Y="0" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R85910">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R41246">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R60143">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="titani" quantity="35" />
+					<resource type="silici" quantity="30" />
+					<resource type="iron" quantity="15" />
+				</region>
+				<region name="R85910" name-en="Selene Scarp" X="4" Y="0" type="barren">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R74342">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R27870">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R18727">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="silici" quantity="20" />
+					<resource type="iron" quantity="10" />
+				</region>
+				<region name="R65436" name-en="Selene Polar S" X="0" Y="1" type="barren">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R51857">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R18727">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R34719">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R74342">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="silici" quantity="25" />
+					<resource type="iron" quantity="10" />
+				</region>
+				<region name="R51857" name-en="Selene Basin" X="1" Y="1" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R84260">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R65436">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R18302">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R94099">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="titani" quantity="60" />
+					<resource type="silici" quantity="35" />
+					<resource type="iron" quantity="20" />
+				</region>
+				<region name="R84260" name-en="Selene Peak" X="2" Y="1" type="mountn">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R60143">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R51857">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R32326">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R41246">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<resource type="titani" quantity="70" />
+					<resource type="silici" quantity="45" />
+					<resource type="iron" quantity="30" />
+				</region>
+				<region name="R60143" name-en="Selene Rill" X="3" Y="1" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R18727">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R84260">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R97648">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R27870">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="titani" quantity="45" />
+					<resource type="silici" quantity="30" />
+					<resource type="iron" quantity="15" />
+				</region>
+				<region name="R18727" name-en="Selene Rim" X="4" Y="1" type="barren">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R65436">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R60143">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R73580">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R85910">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="silici" quantity="20" />
+					<resource type="iron" quantity="10" />
+				</region>
+				<region name="R34719" name-en="Selene Polar N" X="0" Y="2" type="barren">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R18302">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R73580">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R65436">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="silici" quantity="20" />
+					<resource type="iron" quantity="10" />
+				</region>
+				<region name="R18302" name-en="Selene Trench" X="1" Y="2" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R32326">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R34719">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R51857">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="titani" quantity="55" />
+					<resource type="silici" quantity="30" />
+					<resource type="iron" quantity="15" />
+				</region>
+				<region name="R32326" name-en="Selene Caldera" X="2" Y="2" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R97648">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R18302">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R84260">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<resource type="titani" quantity="45" />
+					<resource type="silici" quantity="35" />
+					<resource type="iron" quantity="20" />
+				</region>
+				<region name="R97648" name-en="Selene Waste" X="3" Y="2" type="barren">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R73580">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R32326">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R60143">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="silici" quantity="25" />
+					<resource type="iron" quantity="10" />
+				</region>
+				<region name="R73580" name-en="Selene Far" X="4" Y="2" type="barren">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R34719">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R97648">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R18727">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="silici" quantity="15" />
+				</region>
+			</moon>
+			<orbit name="O53270" />
+			<region name="R83811" name-en="West Pelagic" X="0" Y="0" type="ocean">
+				<exit region="R14593">
+					<exitmode mode="ground" duration="7" />
+				</exit>
+				<exit region="R32099">
+					<exitmode mode="ground" duration="7" />
+				</exit>
+				<exit region="R29257">
+					<exitmode mode="ground" duration="7" />
+				</exit>
+				<resource type="terair" quantity="100" />
+				<resource type="water" quantity="600" />
+				<resource type="food" quantity="40" />
+			</region>
+			<region name="R14593" name-en="Shelf" X="1" Y="0" type="sea">
+				<exit region="R03279">
+					<exitmode mode="ground" duration="6" />
+				</exit>
+				<exit region="R83811">
+					<exitmode mode="ground" duration="7" />
+				</exit>
+				<exit region="R18290">
+					<exitmode mode="ground" duration="6" />
+				</exit>
+				<resource type="terair" quantity="100" />
+				<resource type="water" quantity="400" />
+				<resource type="food" quantity="80" />
+				<resource type="h2o2" quantity="100" />
+			</region>
+			<region name="R03279" name-en="Tidewatch Coast" X="2" Y="0" type="grassl">
+				<capacity group="settlement" quantity="8" />
+				<exit region="R97197">
+					<exitmode mode="ground" duration="2" />
+				</exit>
+				<exit region="R14593">
+					<exitmode mode="ground" duration="6" />
+				</exit>
+				<exit region="R96531">
+					<exitmode mode="ground" duration="2" />
+				</exit>
+				<resource type="terair" quantity="100" />
+				<resource type="food" quantity="500" />
+				<resource type="oil" quantity="30" />
+				<resource type="iron" quantity="15" />
+				<resource type="water" quantity="150" />
+				<modulestack name="STK444152" name-en="Tidewatch" type="city" quantity="2" faction="1">
+					<itemstack type="cash" quantity="2000" />
+					<itemstack type="terran" quantity="20" />
+					<upkeep type="food" quantity="200" />
+					<upkeep type="cash" quantity="700" />
+					<buying item="food" quantity="80" price="1" />
+					<selling item="food" quantity="20" price="5" />
+					<selling item="terran" quantity="10" price="50" />
+					<modulestack name="STK869635" name-en="Tidewatch garrison" type="inftry" quantity="1" faction="1">
+						<itemstack type="rctlnc" quantity="1" />
+						<upkeep type="cash" quantity="5" />
+					</modulestack>
+					<modulestack name="STK290121" name-en="Tidewatch farms" type="farms" quantity="6" faction="1">
+						<itemstack type="terran" quantity="30" />
+						<upkeep type="cash" quantity="330" />
+					</modulestack>
+					<modulestack name="STK046229" name-en="Tidewatch coal plants" type="cplant" quantity="2" faction="1">
+						<itemstack type="carbon" quantity="40" />
+						<itemstack type="terran" quantity="6" />
+						<upkeep type="cash" quantity="106" />
+					</modulestack>
+					<modulestack name="STK349760" name-en="Tidewatch granary" type="cargob" quantity="2" faction="1">
+						<itemstack type="food" quantity="800" />
+						<itemstack type="terran" quantity="4" />
+						<upkeep type="cash" quantity="66" />
+					</modulestack>
+				</modulestack>
+			</region>
+			<region name="R97197" name-en="South Vale" X="3" Y="0" type="grassl">
+				<capacity group="settlement" quantity="8" />
+				<exit region="R36049">
+					<exitmode mode="ground" duration="3" />
+				</exit>
+				<exit region="R03279">
+					<exitmode mode="ground" duration="2" />
+				</exit>
+				<exit region="R13435">
+					<exitmode mode="ground" duration="2" />
+				</exit>
+				<resource type="terair" quantity="100" />
+				<resource type="food" quantity="450" />
+				<resource type="carbon" quantity="25" />
+				<resource type="iron" quantity="20" />
+				<resource type="water" quantity="120" />
+			</region>
+			<region name="R36049" name-en="Launch Steppe" X="4" Y="0" type="dust">
+				<exit region="R32099">
+					<exitmode mode="ground" duration="3" />
+				</exit>
+				<exit region="R97197">
+					<exitmode mode="ground" duration="3" />
+				</exit>
+				<exit region="R88697">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<resource type="iron" quantity="30" />
+				<resource type="silici" quantity="25" />
+				<resource type="carbon" quantity="10" />
+			</region>
+			<region name="R32099" name-en="Cinder Flats" X="5" Y="0" type="barren">
+				<exit region="R83811">
+					<exitmode mode="ground" duration="7" />
+				</exit>
+				<exit region="R36049">
+					<exitmode mode="ground" duration="3" />
+				</exit>
+				<exit region="R97081">
+					<exitmode mode="ground" duration="3" />
+				</exit>
+				<exit region="R29872">
+					<exitmode mode="space" duration="8" />
+				</exit>
+				<exit region="R91507">
+					<exitmode mode="space" duration="26" />
+				</exit>
+				<exit region="R74342">
+					<exitmode mode="space" duration="4" />
+				</exit>
+				<exit region="R70645">
+					<exitmode mode="space" duration="8" />
+				</exit>
+				<exit region="R66785">
+					<exitmode mode="space" duration="8" />
+				</exit>
+				<exit region="R55334">
+					<exitmode mode="space" duration="8" />
+				</exit>
+				<exit region="R70382">
+					<exitmode mode="space" duration="8" />
+				</exit>
+				<resource type="iron" quantity="20" />
+				<resource type="silici" quantity="15" />
+			</region>
+			<region name="R29257" name-en="West Deep" X="0" Y="1" type="ocean">
+				<exit region="R18290">
+					<exitmode mode="ground" duration="7" />
+				</exit>
+				<exit region="R97081">
+					<exitmode mode="ground" duration="7" />
+				</exit>
+				<exit region="R71483">
+					<exitmode mode="ground" duration="7" />
+				</exit>
+				<exit region="R83811">
+					<exitmode mode="ground" duration="7" />
+				</exit>
+				<resource type="terair" quantity="100" />
+				<resource type="water" quantity="600" />
+				<resource type="food" quantity="40" />
+			</region>
+			<region name="R18290" name-en="Northwind Grant" X="1" Y="1" type="grassl">
+				<capacity group="settlement" quantity="10" />
+				<exit region="R96531">
+					<exitmode mode="ground" duration="2" />
+				</exit>
+				<exit region="R29257">
+					<exitmode mode="ground" duration="7" />
+				</exit>
+				<exit region="R11396">
+					<exitmode mode="ground" duration="2" />
+				</exit>
+				<exit region="R14593">
+					<exitmode mode="ground" duration="6" />
+				</exit>
+				<resource type="terair" quantity="100" />
+				<resource type="food" quantity="600" />
+				<resource type="carbon" quantity="30" />
+				<resource type="iron" quantity="20" />
+				<resource type="water" quantity="150" />
+				<modulestack name="STK579365" name-en="Northwind HQ" type="corphq" quantity="1" faction="2">
+					<person name="STK155288" name-en="Northwind CEO" race="terran" faction="2">
+						<upkeep type="cash" quantity="10" />
+					</person>
+					<itemstack type="terran" quantity="40" />
+					<upkeep type="cash" quantity="210" />
+					<modulestack name="STK450665" type="cargob" quantity="2" faction="2">
+						<itemstack type="food" quantity="400" />
+						<itemstack type="terair" quantity="200" />
+						<itemstack type="h2o2" quantity="200" />
+						<itemstack type="iron" quantity="40" />
+						<itemstack type="carbon" quantity="40" />
+						<itemstack type="silici" quantity="10" />
+						<itemstack type="terran" quantity="6" />
+						<upkeep type="cash" quantity="80" />
+					</modulestack>
+					<modulestack name="STK133637" type="farms" quantity="3" faction="2">
+						<itemstack type="terran" quantity="15" />
+						<upkeep type="cash" quantity="165" />
+					</modulestack>
+					<modulestack name="STK043861" type="cdrill" quantity="1" faction="2">
+						<itemstack type="terran" quantity="6" />
+						<upkeep type="cash" quantity="46" />
+					</modulestack>
+					<modulestack name="STK323233" type="factry" quantity="2" faction="2">
+						<itemstack type="terran" quantity="20" />
+						<itemstack type="iron" quantity="10" />
+						<upkeep type="cash" quantity="140" />
+					</modulestack>
+					<modulestack name="STK382365" type="cplant" quantity="2" faction="2">
+						<itemstack type="carbon" quantity="40" />
+						<itemstack type="terran" quantity="6" />
+						<upkeep type="cash" quantity="106" />
+					</modulestack>
+				</modulestack>
+			</region>
+			<region name="R96531" name-en="Mid Vale" X="2" Y="1" type="grassl">
+				<capacity group="settlement" quantity="8" />
+				<exit region="R13435">
+					<exitmode mode="ground" duration="2" />
+				</exit>
+				<exit region="R18290">
+					<exitmode mode="ground" duration="2" />
+				</exit>
+				<exit region="R77398">
+					<exitmode mode="ground" duration="2" />
+				</exit>
+				<exit region="R03279">
+					<exitmode mode="ground" duration="2" />
+				</exit>
+				<resource type="terair" quantity="100" />
+				<resource type="food" quantity="500" />
+				<resource type="carbon" quantity="20" />
+				<resource type="iron" quantity="15" />
+				<resource type="water" quantity="140" />
+			</region>
+			<region name="R13435" name-en="Greenwell Grant" X="3" Y="1" type="grassl">
+				<capacity group="settlement" quantity="10" />
+				<exit region="R88697">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<exit region="R96531">
+					<exitmode mode="ground" duration="2" />
+				</exit>
+				<exit region="R55303">
+					<exitmode mode="ground" duration="2" />
+				</exit>
+				<exit region="R97197">
+					<exitmode mode="ground" duration="2" />
+				</exit>
+				<resource type="terair" quantity="100" />
+				<resource type="food" quantity="600" />
+				<resource type="carbon" quantity="30" />
+				<resource type="iron" quantity="20" />
+				<resource type="water" quantity="150" />
+				<modulestack name="STK942651" name-en="Greenwell HQ" type="corphq" quantity="1" faction="3">
+					<person name="STK978414" name-en="Greenwell CEO" race="terran" faction="3">
+						<upkeep type="cash" quantity="10" />
+					</person>
+					<itemstack type="terran" quantity="40" />
+					<upkeep type="cash" quantity="210" />
+					<modulestack name="STK834795" type="cargob" quantity="2" faction="3">
+						<itemstack type="food" quantity="400" />
+						<itemstack type="terair" quantity="200" />
+						<itemstack type="h2o2" quantity="200" />
+						<itemstack type="iron" quantity="40" />
+						<itemstack type="carbon" quantity="40" />
+						<itemstack type="silici" quantity="10" />
+						<itemstack type="terran" quantity="6" />
+						<upkeep type="cash" quantity="80" />
+					</modulestack>
+					<modulestack name="STK902513" type="farms" quantity="3" faction="3">
+						<itemstack type="terran" quantity="15" />
+						<upkeep type="cash" quantity="165" />
+					</modulestack>
+					<modulestack name="STK041833" type="cdrill" quantity="1" faction="3">
+						<itemstack type="terran" quantity="6" />
+						<upkeep type="cash" quantity="46" />
+					</modulestack>
+					<modulestack name="STK942591" type="factry" quantity="2" faction="3">
+						<itemstack type="terran" quantity="20" />
+						<itemstack type="iron" quantity="10" />
+						<upkeep type="cash" quantity="140" />
+					</modulestack>
+					<modulestack name="STK375191" type="cplant" quantity="2" faction="3">
+						<itemstack type="carbon" quantity="40" />
+						<itemstack type="terran" quantity="6" />
+						<upkeep type="cash" quantity="106" />
+					</modulestack>
+				</modulestack>
+			</region>
+			<region name="R88697" name-en="South Ridge" X="4" Y="1" type="mountn">
+				<exit region="R97081">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<exit region="R13435">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<exit region="R04166">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<exit region="R36049">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<resource type="iron" quantity="70" />
+				<resource type="silici" quantity="20" />
+				<resource type="carbon" quantity="5" />
+			</region>
+			<region name="R97081" name-en="East Dune" X="5" Y="1" type="dust">
+				<exit region="R29257">
+					<exitmode mode="ground" duration="7" />
+				</exit>
+				<exit region="R88697">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<exit region="R03906">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<exit region="R32099">
+					<exitmode mode="ground" duration="3" />
+				</exit>
+				<resource type="iron" quantity="30" />
+				<resource type="silici" quantity="25" />
+				<resource type="carbon" quantity="10" />
+			</region>
+			<region name="R71483" name-en="West Coast" X="0" Y="2" type="sea">
+				<exit region="R11396">
+					<exitmode mode="ground" duration="6" />
+				</exit>
+				<exit region="R03906">
+					<exitmode mode="ground" duration="6" />
+				</exit>
+				<exit region="R12281">
+					<exitmode mode="ground" duration="7" />
+				</exit>
+				<exit region="R29257">
+					<exitmode mode="ground" duration="7" />
+				</exit>
+				<resource type="terair" quantity="100" />
+				<resource type="water" quantity="400" />
+				<resource type="food" quantity="80" />
+				<resource type="h2o2" quantity="80" />
+			</region>
+			<region name="R11396" name-en="Farm Belt" X="1" Y="2" type="grassl">
+				<capacity group="settlement" quantity="8" />
+				<exit region="R77398">
+					<exitmode mode="ground" duration="2" />
+				</exit>
+				<exit region="R71483">
+					<exitmode mode="ground" duration="6" />
+				</exit>
+				<exit region="R28658">
+					<exitmode mode="ground" duration="7" />
+				</exit>
+				<exit region="R18290">
+					<exitmode mode="ground" duration="2" />
+				</exit>
+				<resource type="terair" quantity="100" />
+				<resource type="food" quantity="700" />
+				<resource type="carbon" quantity="35" />
+				<resource type="iron" quantity="20" />
+				<resource type="water" quantity="160" />
+			</region>
+			<region name="R77398" name-en="Assembly Basin" X="2" Y="2" type="grassl">
+				<capacity group="settlement" quantity="16" />
+				<exit region="R55303">
+					<exitmode mode="ground" duration="2" />
+				</exit>
+				<exit region="R11396">
+					<exitmode mode="ground" duration="2" />
+				</exit>
+				<exit region="R30496">
+					<exitmode mode="ground" duration="2" />
+				</exit>
+				<exit region="R96531">
+					<exitmode mode="ground" duration="2" />
+				</exit>
+				<resource type="terair" quantity="100" />
+				<resource type="food" quantity="800" />
+				<resource type="carbon" quantity="40" />
+				<resource type="iron" quantity="25" />
+				<resource type="water" quantity="180" />
+				<modulestack name="STK949315" name-en="Assembly" type="city" quantity="6" faction="1">
+					<itemstack type="cash" quantity="8000" />
+					<itemstack type="terran" quantity="80" />
+					<upkeep type="food" quantity="600" />
+					<upkeep type="cash" quantity="2200" />
+					<buying item="food" quantity="500" price="1" />
+					<buying module="farms" quantity="2" price="100" />
+					<selling item="food" quantity="120" price="4" />
+					<selling item="terran" quantity="50" price="50" />
+					<modulestack name="STK952274" name-en="Assembly garrison" type="inftry" quantity="4" faction="1">
+						<itemstack type="rctlnc" quantity="4" />
+						<upkeep type="cash" quantity="20" />
+					</modulestack>
+					<modulestack name="STK887205" name-en="Assembly farms" type="farms" quantity="24" faction="1">
+						<itemstack type="terran" quantity="120" />
+						<upkeep type="cash" quantity="1320" />
+					</modulestack>
+					<modulestack name="STK053267" name-en="Assembly coal plants" type="cplant" quantity="10" faction="1">
+						<itemstack type="carbon" quantity="200" />
+						<itemstack type="terran" quantity="30" />
+						<upkeep type="cash" quantity="530" />
+					</modulestack>
+					<modulestack name="STK096782" name-en="Assembly wind plants" type="wnplnt" quantity="5" faction="1">
+						<upkeep type="cash" quantity="50" />
+					</modulestack>
+					<modulestack name="STK665096" name-en="Assembly granary" type="cargob" quantity="2" faction="1">
+						<itemstack type="food" quantity="4000" />
+						<itemstack type="terran" quantity="4" />
+						<upkeep type="cash" quantity="66" />
+					</modulestack>
+				</modulestack>
+			</region>
+			<region name="R55303" name-en="Central Basin" X="3" Y="2" type="grassl">
+				<capacity group="settlement" quantity="8" />
+				<exit region="R04166">
+					<exitmode mode="ground" duration="2" />
+				</exit>
+				<exit region="R77398">
+					<exitmode mode="ground" duration="2" />
+				</exit>
+				<exit region="R66238">
+					<exitmode mode="ground" duration="2" />
+				</exit>
+				<exit region="R13435">
+					<exitmode mode="ground" duration="2" />
+				</exit>
+				<resource type="terair" quantity="100" />
+				<resource type="food" quantity="550" />
+				<resource type="carbon" quantity="25" />
+				<resource type="iron" quantity="20" />
+				<resource type="water" quantity="150" />
+			</region>
+			<region name="R04166" name-en="Rivermark Grant" X="4" Y="2" type="grassl">
+				<capacity group="settlement" quantity="10" />
+				<exit region="R03906">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<exit region="R55303">
+					<exitmode mode="ground" duration="2" />
+				</exit>
+				<exit region="R78908">
+					<exitmode mode="ground" duration="2" />
+				</exit>
+				<exit region="R88697">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<resource type="terair" quantity="100" />
+				<resource type="food" quantity="600" />
+				<resource type="carbon" quantity="30" />
+				<resource type="iron" quantity="20" />
+				<resource type="water" quantity="150" />
+				<modulestack name="STK220282" name-en="Rivermark HQ" type="corphq" quantity="1" faction="4">
+					<person name="STK715199" name-en="Rivermark CEO" race="terran" faction="4">
+						<upkeep type="cash" quantity="10" />
+					</person>
+					<itemstack type="terran" quantity="40" />
+					<upkeep type="cash" quantity="210" />
+					<modulestack name="STK261651" type="cargob" quantity="2" faction="4">
+						<itemstack type="food" quantity="400" />
+						<itemstack type="terair" quantity="200" />
+						<itemstack type="h2o2" quantity="200" />
+						<itemstack type="iron" quantity="40" />
+						<itemstack type="carbon" quantity="40" />
+						<itemstack type="silici" quantity="10" />
+						<itemstack type="terran" quantity="6" />
+						<upkeep type="cash" quantity="80" />
+					</modulestack>
+					<modulestack name="STK699331" type="farms" quantity="3" faction="4">
+						<itemstack type="terran" quantity="15" />
+						<upkeep type="cash" quantity="165" />
+					</modulestack>
+					<modulestack name="STK107787" type="cdrill" quantity="1" faction="4">
+						<itemstack type="terran" quantity="6" />
+						<upkeep type="cash" quantity="46" />
+					</modulestack>
+					<modulestack name="STK370859" type="factry" quantity="2" faction="4">
+						<itemstack type="terran" quantity="20" />
+						<itemstack type="iron" quantity="10" />
+						<upkeep type="cash" quantity="140" />
+					</modulestack>
+					<modulestack name="STK818012" type="cplant" quantity="2" faction="4">
+						<itemstack type="carbon" quantity="40" />
+						<itemstack type="terran" quantity="6" />
+						<upkeep type="cash" quantity="106" />
+					</modulestack>
+				</modulestack>
+			</region>
+			<region name="R03906" name-en="East Peak" X="5" Y="2" type="mountn">
+				<exit region="R71483">
+					<exitmode mode="ground" duration="6" />
+				</exit>
+				<exit region="R04166">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<exit region="R03479">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<exit region="R97081">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<resource type="iron" quantity="80" />
+				<resource type="silici" quantity="25" />
+			</region>
+			<region name="R12281" name-en="Mid Pelagic" X="0" Y="3" type="ocean">
+				<exit region="R28658">
+					<exitmode mode="ground" duration="7" />
+				</exit>
+				<exit region="R03479">
+					<exitmode mode="ground" duration="7" />
+				</exit>
+				<exit region="R73564">
+					<exitmode mode="ground" duration="7" />
+				</exit>
+				<exit region="R71483">
+					<exitmode mode="ground" duration="7" />
+				</exit>
+				<resource type="terair" quantity="100" />
+				<resource type="water" quantity="600" />
+				<resource type="food" quantity="30" />
+			</region>
+			<region name="R28658" name-en="Inner Pelagic" X="1" Y="3" type="ocean">
+				<exit region="R30496">
+					<exitmode mode="ground" duration="7" />
+				</exit>
+				<exit region="R12281">
+					<exitmode mode="ground" duration="7" />
+				</exit>
+				<exit region="R26063">
+					<exitmode mode="ground" duration="7" />
+				</exit>
+				<exit region="R11396">
+					<exitmode mode="ground" duration="7" />
+				</exit>
+				<resource type="terair" quantity="100" />
+				<resource type="water" quantity="600" />
+				<resource type="food" quantity="30" />
+			</region>
+			<region name="R30496" name-en="Prairie" X="2" Y="3" type="grassl">
+				<capacity group="settlement" quantity="8" />
+				<exit region="R66238">
+					<exitmode mode="ground" duration="2" />
+				</exit>
+				<exit region="R28658">
+					<exitmode mode="ground" duration="7" />
+				</exit>
+				<exit region="R93851">
+					<exitmode mode="ground" duration="2" />
+				</exit>
+				<exit region="R77398">
+					<exitmode mode="ground" duration="2" />
+				</exit>
+				<resource type="terair" quantity="100" />
+				<resource type="food" quantity="500" />
+				<resource type="carbon" quantity="20" />
+				<resource type="iron" quantity="15" />
+				<resource type="water" quantity="140" />
+			</region>
+			<region name="R66238" name-en="Sundock Grant" X="3" Y="3" type="grassl">
+				<capacity group="settlement" quantity="10" />
+				<exit region="R78908">
+					<exitmode mode="ground" duration="2" />
+				</exit>
+				<exit region="R30496">
+					<exitmode mode="ground" duration="2" />
+				</exit>
+				<exit region="R85182">
+					<exitmode mode="ground" duration="2" />
+				</exit>
+				<exit region="R55303">
+					<exitmode mode="ground" duration="2" />
+				</exit>
+				<resource type="terair" quantity="100" />
+				<resource type="food" quantity="600" />
+				<resource type="oil" quantity="20" />
+				<resource type="iron" quantity="20" />
+				<resource type="water" quantity="150" />
+				<modulestack name="STK587081" name-en="Sundock HQ" type="corphq" quantity="1" faction="5">
+					<person name="STK927083" name-en="Sundock CEO" race="terran" faction="5">
+						<upkeep type="cash" quantity="10" />
+					</person>
+					<itemstack type="terran" quantity="40" />
+					<upkeep type="cash" quantity="210" />
+					<modulestack name="STK917203" type="cargob" quantity="2" faction="5">
+						<itemstack type="food" quantity="400" />
+						<itemstack type="terair" quantity="200" />
+						<itemstack type="h2o2" quantity="200" />
+						<itemstack type="iron" quantity="40" />
+						<itemstack type="carbon" quantity="40" />
+						<itemstack type="silici" quantity="10" />
+						<itemstack type="terran" quantity="6" />
+						<upkeep type="cash" quantity="80" />
+					</modulestack>
+					<modulestack name="STK426118" type="farms" quantity="3" faction="5">
+						<itemstack type="terran" quantity="15" />
+						<upkeep type="cash" quantity="165" />
+					</modulestack>
+					<modulestack name="STK650811" type="cdrill" quantity="1" faction="5">
+						<itemstack type="terran" quantity="6" />
+						<upkeep type="cash" quantity="46" />
+					</modulestack>
+					<modulestack name="STK785885" type="factry" quantity="2" faction="5">
+						<itemstack type="terran" quantity="20" />
+						<itemstack type="iron" quantity="10" />
+						<upkeep type="cash" quantity="140" />
+					</modulestack>
+					<modulestack name="STK162061" type="cplant" quantity="2" faction="5">
+						<itemstack type="carbon" quantity="40" />
+						<itemstack type="terran" quantity="6" />
+						<upkeep type="cash" quantity="106" />
+					</modulestack>
+				</modulestack>
+			</region>
+			<region name="R78908" name-en="East Steppe" X="4" Y="3" type="grassl">
+				<capacity group="settlement" quantity="8" />
+				<exit region="R03479">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<exit region="R66238">
+					<exitmode mode="ground" duration="2" />
+				</exit>
+				<exit region="R91925">
+					<exitmode mode="ground" duration="3" />
+				</exit>
+				<exit region="R04166">
+					<exitmode mode="ground" duration="2" />
+				</exit>
+				<resource type="terair" quantity="100" />
+				<resource type="food" quantity="480" />
+				<resource type="carbon" quantity="20" />
+				<resource type="iron" quantity="18" />
+				<resource type="water" quantity="130" />
+			</region>
+			<region name="R03479" name-en="East Crag" X="5" Y="3" type="mountn">
+				<exit region="R12281">
+					<exitmode mode="ground" duration="7" />
+				</exit>
+				<exit region="R78908">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<exit region="R71427">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<exit region="R03906">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<resource type="iron" quantity="75" />
+				<resource type="silici" quantity="20" />
+			</region>
+			<region name="R73564" name-en="North Pelagic" X="0" Y="4" type="ocean">
+				<exit region="R26063">
+					<exitmode mode="ground" duration="7" />
+				</exit>
+				<exit region="R71427">
+					<exitmode mode="ground" duration="7" />
+				</exit>
+				<exit region="R54988">
+					<exitmode mode="ground" duration="7" />
+				</exit>
+				<exit region="R12281">
+					<exitmode mode="ground" duration="7" />
+				</exit>
+				<resource type="terair" quantity="100" />
+				<resource type="water" quantity="600" />
+				<resource type="food" quantity="30" />
+			</region>
+			<region name="R26063" name-en="North Sound" X="1" Y="4" type="sea">
+				<exit region="R93851">
+					<exitmode mode="ground" duration="6" />
+				</exit>
+				<exit region="R73564">
+					<exitmode mode="ground" duration="7" />
+				</exit>
+				<exit region="R28894">
+					<exitmode mode="ground" duration="7" />
+				</exit>
+				<exit region="R28658">
+					<exitmode mode="ground" duration="7" />
+				</exit>
+				<resource type="terair" quantity="100" />
+				<resource type="water" quantity="400" />
+				<resource type="food" quantity="70" />
+				<resource type="h2o2" quantity="90" />
+			</region>
+			<region name="R93851" name-en="Copse Grant" X="2" Y="4" type="grassl">
+				<capacity group="settlement" quantity="10" />
+				<exit region="R85182">
+					<exitmode mode="ground" duration="2" />
+				</exit>
+				<exit region="R26063">
+					<exitmode mode="ground" duration="6" />
+				</exit>
+				<exit region="R58879">
+					<exitmode mode="ground" duration="6" />
+				</exit>
+				<exit region="R30496">
+					<exitmode mode="ground" duration="2" />
+				</exit>
+				<resource type="terair" quantity="100" />
+				<resource type="food" quantity="600" />
+				<resource type="carbon" quantity="30" />
+				<resource type="iron" quantity="20" />
+				<resource type="water" quantity="150" />
+				<modulestack name="STK970734" name-en="Copse HQ" type="corphq" quantity="1" faction="6">
+					<person name="STK975051" name-en="Copse CEO" race="terran" faction="6">
+						<upkeep type="cash" quantity="10" />
+					</person>
+					<itemstack type="terran" quantity="40" />
+					<upkeep type="cash" quantity="210" />
+					<modulestack name="STK248238" type="cargob" quantity="2" faction="6">
+						<itemstack type="food" quantity="400" />
+						<itemstack type="terair" quantity="200" />
+						<itemstack type="h2o2" quantity="200" />
+						<itemstack type="iron" quantity="40" />
+						<itemstack type="carbon" quantity="40" />
+						<itemstack type="silici" quantity="10" />
+						<itemstack type="terran" quantity="6" />
+						<upkeep type="cash" quantity="80" />
+					</modulestack>
+					<modulestack name="STK906605" type="farms" quantity="3" faction="6">
+						<itemstack type="terran" quantity="15" />
+						<upkeep type="cash" quantity="165" />
+					</modulestack>
+					<modulestack name="STK170396" type="cdrill" quantity="1" faction="6">
+						<itemstack type="terran" quantity="6" />
+						<upkeep type="cash" quantity="46" />
+					</modulestack>
+					<modulestack name="STK838743" type="factry" quantity="2" faction="6">
+						<itemstack type="terran" quantity="20" />
+						<itemstack type="iron" quantity="10" />
+						<upkeep type="cash" quantity="140" />
+					</modulestack>
+					<modulestack name="STK850156" type="cplant" quantity="2" faction="6">
+						<itemstack type="carbon" quantity="40" />
+						<itemstack type="terran" quantity="6" />
+						<upkeep type="cash" quantity="106" />
+					</modulestack>
+				</modulestack>
+			</region>
+			<region name="R85182" name-en="Windgap" X="3" Y="4" type="grassl">
+				<capacity group="settlement" quantity="8" />
+				<exit region="R91925">
+					<exitmode mode="ground" duration="3" />
+				</exit>
+				<exit region="R93851">
+					<exitmode mode="ground" duration="2" />
+				</exit>
+				<exit region="R77237">
+					<exitmode mode="ground" duration="2" />
+				</exit>
+				<exit region="R66238">
+					<exitmode mode="ground" duration="2" />
+				</exit>
+				<resource type="terair" quantity="100" />
+				<resource type="food" quantity="450" />
+				<resource type="carbon" quantity="20" />
+				<resource type="iron" quantity="15" />
+				<resource type="water" quantity="140" />
+				<modulestack name="STK808578" name-en="Windgap" type="city" quantity="1" faction="1">
+					<itemstack type="cash" quantity="1000" />
+					<itemstack type="terran" quantity="12" />
+					<upkeep type="food" quantity="100" />
+					<upkeep type="cash" quantity="450" />
+					<buying item="food" quantity="40" price="1" />
+					<selling item="food" quantity="10" price="5" />
+					<selling item="terran" quantity="8" price="50" />
+					<modulestack name="STK137175" name-en="Windgap garrison" type="inftry" quantity="1" faction="1">
+						<itemstack type="rctlnc" quantity="1" />
+						<upkeep type="cash" quantity="5" />
+					</modulestack>
+					<modulestack name="STK668062" name-en="Windgap farms" type="farms" quantity="4" faction="1">
+						<itemstack type="terran" quantity="20" />
+						<upkeep type="cash" quantity="220" />
+					</modulestack>
+					<modulestack name="STK169431" name-en="Windgap wind plants" type="wnplnt" quantity="6" faction="1">
+						<upkeep type="cash" quantity="60" />
+					</modulestack>
+					<modulestack name="STK777237" name-en="Windgap granary" type="cargob" quantity="2" faction="1">
+						<itemstack type="food" quantity="400" />
+						<itemstack type="terran" quantity="4" />
+						<upkeep type="cash" quantity="66" />
+					</modulestack>
+				</modulestack>
+			</region>
+			<region name="R91925" name-en="Loess" X="4" Y="4" type="dust">
+				<exit region="R71427">
+					<exitmode mode="ground" duration="3" />
+				</exit>
+				<exit region="R85182">
+					<exitmode mode="ground" duration="3" />
+				</exit>
+				<exit region="R36464">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<exit region="R78908">
+					<exitmode mode="ground" duration="3" />
+				</exit>
+				<resource type="iron" quantity="35" />
+				<resource type="silici" quantity="20" />
+				<resource type="carbon" quantity="15" />
+			</region>
+			<region name="R71427" name-en="East Flat" X="5" Y="4" type="barren">
+				<exit region="R73564">
+					<exitmode mode="ground" duration="7" />
+				</exit>
+				<exit region="R91925">
+					<exitmode mode="ground" duration="3" />
+				</exit>
+				<exit region="R00852">
+					<exitmode mode="ground" duration="3" />
+				</exit>
+				<exit region="R03479">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<resource type="iron" quantity="20" />
+				<resource type="silici" quantity="15" />
+			</region>
+			<region name="R54988" name-en="Polar Ocean" X="0" Y="5" type="ocean">
+				<exit region="R28894">
+					<exitmode mode="ground" duration="7" />
+				</exit>
+				<exit region="R00852">
+					<exitmode mode="ground" duration="7" />
+				</exit>
+				<exit region="R73564">
+					<exitmode mode="ground" duration="7" />
+				</exit>
+				<resource type="terair" quantity="100" />
+				<resource type="water" quantity="700" />
+				<resource type="food" quantity="20" />
+			</region>
+			<region name="R28894" name-en="Polar Ocean E" X="1" Y="5" type="ocean">
+				<exit region="R58879">
+					<exitmode mode="ground" duration="7" />
+				</exit>
+				<exit region="R54988">
+					<exitmode mode="ground" duration="7" />
+				</exit>
+				<exit region="R26063">
+					<exitmode mode="ground" duration="7" />
+				</exit>
+				<resource type="terair" quantity="100" />
+				<resource type="water" quantity="700" />
+				<resource type="food" quantity="20" />
+			</region>
+			<region name="R58879" name-en="Polar Sea" X="2" Y="5" type="sea">
+				<exit region="R77237">
+					<exitmode mode="ground" duration="6" />
+				</exit>
+				<exit region="R28894">
+					<exitmode mode="ground" duration="7" />
+				</exit>
+				<exit region="R93851">
+					<exitmode mode="ground" duration="6" />
+				</exit>
+				<resource type="terair" quantity="100" />
+				<resource type="water" quantity="500" />
+				<resource type="food" quantity="40" />
+				<resource type="h2o2" quantity="120" />
+			</region>
+			<region name="R77237" name-en="Tundra" X="3" Y="5" type="grassl">
+				<capacity group="settlement" quantity="8" />
+				<exit region="R36464">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<exit region="R58879">
+					<exitmode mode="ground" duration="6" />
+				</exit>
+				<exit region="R85182">
+					<exitmode mode="ground" duration="2" />
+				</exit>
+				<resource type="terair" quantity="100" />
+				<resource type="food" quantity="250" />
+				<resource type="carbon" quantity="10" />
+				<resource type="iron" quantity="10" />
+				<resource type="water" quantity="200" />
+			</region>
+			<region name="R36464" name-en="North Spine" X="4" Y="5" type="mountn">
+				<exit region="R00852">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<exit region="R77237">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<exit region="R91925">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<resource type="iron" quantity="60" />
+				<resource type="silici" quantity="20" />
+			</region>
+			<region name="R00852" name-en="Polar Dust" X="5" Y="5" type="dust">
+				<exit region="R54988">
+					<exitmode mode="ground" duration="7" />
+				</exit>
+				<exit region="R36464">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<exit region="R71427">
+					<exitmode mode="ground" duration="3" />
+				</exit>
+				<resource type="iron" quantity="25" />
+				<resource type="silici" quantity="20" />
+			</region>
+		</planet>
+		<planet name="P67392" name-en="Scoria" type="dust" AU="1.5" surface-size-X="6" surface-size-Y="4">
+			<orbit name="O63654" />
+				<region name="R29872" name-en="Scoria West" X="0" Y="0" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R37931">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R49824">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R36435">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R32099">
+						<exitmode mode="space" duration="8" />
+					</exit>
+					<resource type="titani" quantity="50" />
+					<resource type="copper" quantity="30" />
+					<resource type="silici" quantity="30" />
+					<resource type="iron" quantity="25" />
+				</region>
+				<region name="R37931" name-en="Scoria Flats" X="1" Y="0" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R10459">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R29872">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R59430">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="titani" quantity="60" />
+					<resource type="copper" quantity="40" />
+					<resource type="silici" quantity="40" />
+					<resource type="iron" quantity="30" />
+				</region>
+				<region name="R10459" name-en="Scoria Ridge" X="2" Y="0" type="mountn">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R30513">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R37931">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R83321">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<resource type="titani" quantity="80" />
+					<resource type="copper" quantity="50" />
+					<resource type="silici" quantity="35" />
+					<resource type="iron" quantity="40" />
+				</region>
+				<region name="R30513" name-en="Scoria Central" X="3" Y="0" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R13239">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R10459">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R47820">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="titani" quantity="55" />
+					<resource type="copper" quantity="35" />
+					<resource type="silici" quantity="30" />
+					<resource type="iron" quantity="25" />
+				</region>
+				<region name="R13239" name-en="Scoria East" X="4" Y="0" type="barren">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R49824">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R30513">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R21320">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="silici" quantity="20" />
+					<resource type="iron" quantity="15" />
+				</region>
+				<region name="R49824" name-en="Scoria Crater" X="5" Y="0" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R29872">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R13239">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R48521">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="titani" quantity="45" />
+					<resource type="copper" quantity="25" />
+					<resource type="silici" quantity="25" />
+					<resource type="iron" quantity="20" />
+				</region>
+				<region name="R36435" name-en="Scoria Polar S" X="0" Y="1" type="barren">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R59430">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R48521">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R46567">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R29872">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="silici" quantity="15" />
+					<resource type="iron" quantity="10" />
+				</region>
+				<region name="R59430" name-en="Scoria Basin" X="1" Y="1" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R83321">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R36435">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R27461">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R37931">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="titani" quantity="70" />
+					<resource type="copper" quantity="45" />
+					<resource type="silici" quantity="35" />
+					<resource type="iron" quantity="35" />
+				</region>
+				<region name="R83321" name-en="Scoria Peak" X="2" Y="1" type="mountn">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R47820">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R59430">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R87842">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R10459">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<resource type="titani" quantity="90" />
+					<resource type="copper" quantity="60" />
+					<resource type="silici" quantity="40" />
+					<resource type="iron" quantity="50" />
+				</region>
+				<region name="R47820" name-en="Scoria Rill" X="3" Y="1" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R21320">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R83321">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R34994">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R30513">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="titani" quantity="50" />
+					<resource type="copper" quantity="30" />
+					<resource type="silici" quantity="25" />
+					<resource type="iron" quantity="20" />
+				</region>
+				<region name="R21320" name-en="Scoria Dune" X="4" Y="1" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R48521">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R47820">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R91989">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R13239">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="titani" quantity="40" />
+					<resource type="copper" quantity="20" />
+					<resource type="silici" quantity="25" />
+					<resource type="iron" quantity="20" />
+				</region>
+				<region name="R48521" name-en="Scoria Rim E" X="5" Y="1" type="barren">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R36435">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R21320">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R89594">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R49824">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="silici" quantity="20" />
+					<resource type="iron" quantity="10" />
+				</region>
+				<region name="R46567" name-en="Scoria Trench" X="0" Y="2" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R27461">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R89594">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R84940">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R36435">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="titani" quantity="55" />
+					<resource type="copper" quantity="35" />
+					<resource type="silici" quantity="30" />
+					<resource type="iron" quantity="25" />
+				</region>
+				<region name="R27461" name-en="Scoria Vein" X="1" Y="2" type="mountn">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R87842">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R46567">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R09359">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R59430">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<resource type="titani" quantity="85" />
+					<resource type="copper" quantity="55" />
+					<resource type="silici" quantity="40" />
+					<resource type="iron" quantity="45" />
+				</region>
+				<region name="R87842" name-en="Scoria Plain" X="2" Y="2" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R34994">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R27461">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R79841">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R83321">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<resource type="titani" quantity="60" />
+					<resource type="copper" quantity="40" />
+					<resource type="silici" quantity="30" />
+					<resource type="iron" quantity="30" />
+				</region>
+				<region name="R34994" name-en="Scoria Waste" X="3" Y="2" type="barren">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R91989">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R87842">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R83228">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R47820">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="silici" quantity="20" />
+					<resource type="iron" quantity="15" />
+				</region>
+				<region name="R91989" name-en="Scoria Fan" X="4" Y="2" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R89594">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R34994">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R22432">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R21320">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="titani" quantity="45" />
+					<resource type="copper" quantity="25" />
+					<resource type="silici" quantity="25" />
+					<resource type="iron" quantity="20" />
+				</region>
+				<region name="R89594" name-en="Scoria Rim SE" X="5" Y="2" type="barren">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R46567">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R91989">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R70011">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R48521">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="silici" quantity="15" />
+					<resource type="iron" quantity="10" />
+				</region>
+				<region name="R84940" name-en="Scoria Polar N" X="0" Y="3" type="barren">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R09359">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R70011">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R46567">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="silici" quantity="15" />
+					<resource type="iron" quantity="10" />
+				</region>
+				<region name="R09359" name-en="Scoria North" X="1" Y="3" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R79841">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R84940">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R27461">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<resource type="titani" quantity="50" />
+					<resource type="copper" quantity="30" />
+					<resource type="silici" quantity="25" />
+					<resource type="iron" quantity="20" />
+				</region>
+				<region name="R79841" name-en="Scoria Shelf" X="2" Y="3" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R83228">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R09359">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R87842">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="titani" quantity="55" />
+					<resource type="copper" quantity="35" />
+					<resource type="silici" quantity="30" />
+					<resource type="iron" quantity="25" />
+				</region>
+				<region name="R83228" name-en="Scoria NE" X="3" Y="3" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R22432">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R79841">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R34994">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="titani" quantity="40" />
+					<resource type="copper" quantity="20" />
+					<resource type="silici" quantity="20" />
+					<resource type="iron" quantity="15" />
+				</region>
+				<region name="R22432" name-en="Scoria Far" X="4" Y="3" type="barren">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R70011">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R83228">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R91989">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="silici" quantity="15" />
+					<resource type="iron" quantity="10" />
+				</region>
+				<region name="R70011" name-en="Scoria Polar NE" X="5" Y="3" type="barren">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R84940">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R22432">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R89594">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="silici" quantity="10" />
+				</region>
+		</planet>
+		<planet name="P31196" name-en="Helios belt" type="abelt" AU="2.7" surface-size-X="8" surface-size-Y="4">
+			<orbit name="O63093" />
+		</planet>
+		<planet name="P36501" name-en="Aeolus" type="gasgnt" AU="5.2" surface-size-X="0" surface-size-Y="0">
+			<moon name="M24932" name-en="Boreas" type="ice" AU="0.01" surface-size-X="5" surface-size-Y="2">
+				<orbit name="O59639" />
+				<region name="R70645" name-en="Boreas West Ice" X="0" Y="0" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R34439">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R56156">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R76485">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R32099">
+						<exitmode mode="space" duration="8" />
+					</exit>
+					<resource type="heliu3" quantity="30" />
+					<resource type="h2o2" quantity="50" />
+					<resource type="water" quantity="40" />
+				</region>
+				<region name="R34439" name-en="Boreas Basin" X="1" Y="0" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R97913">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R70645">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R52351">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="heliu3" quantity="40" />
+					<resource type="h2o2" quantity="60" />
+					<resource type="water" quantity="50" />
+				</region>
+				<region name="R97913" name-en="Boreas Ridge" X="2" Y="0" type="barren">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R76623">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R34439">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R47448">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="heliu3" quantity="20" />
+					<resource type="h2o2" quantity="30" />
+				</region>
+				<region name="R76623" name-en="Boreas East Ice" X="3" Y="0" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R56156">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R97913">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R28747">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="heliu3" quantity="35" />
+					<resource type="h2o2" quantity="45" />
+					<resource type="water" quantity="40" />
+				</region>
+				<region name="R56156" name-en="Boreas Scarp" X="4" Y="0" type="barren">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R70645">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R76623">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R18132">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="heliu3" quantity="15" />
+					<resource type="h2o2" quantity="25" />
+				</region>
+				<region name="R76485" name-en="Boreas South" X="0" Y="1" type="barren">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R52351">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R18132">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R70645">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="heliu3" quantity="15" />
+					<resource type="h2o2" quantity="30" />
+				</region>
+				<region name="R52351" name-en="Boreas Deep Ice" X="1" Y="1" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R47448">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R76485">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R34439">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="heliu3" quantity="50" />
+					<resource type="h2o2" quantity="80" />
+					<resource type="water" quantity="60" />
+				</region>
+				<region name="R47448" name-en="Boreas Vent" X="2" Y="1" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R28747">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R52351">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R97913">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="heliu3" quantity="45" />
+					<resource type="h2o2" quantity="70" />
+					<resource type="water" quantity="50" />
+				</region>
+				<region name="R28747" name-en="Boreas Polar" X="3" Y="1" type="barren">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R18132">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R47448">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R76623">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="heliu3" quantity="20" />
+					<resource type="h2o2" quantity="35" />
+				</region>
+				<region name="R18132" name-en="Boreas Far" X="4" Y="1" type="barren">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R76485">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R28747">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R56156">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="heliu3" quantity="10" />
+					<resource type="h2o2" quantity="20" />
+				</region>
+			</moon>
+			<moon name="M70293" name-en="Zephyr" type="ice" AU="0.015" surface-size-X="5" surface-size-Y="2">
+				<orbit name="O37389" />
+				<region name="R66785" name-en="Zephyr West" X="0" Y="0" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R64687">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R06176">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R14372">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R32099">
+						<exitmode mode="space" duration="8" />
+					</exit>
+					<resource type="h2o2" quantity="80" />
+					<resource type="water" quantity="60" />
+				</region>
+				<region name="R64687" name-en="Zephyr Basin" X="1" Y="0" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R11916">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R66785">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R20034">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="h2o2" quantity="100" />
+					<resource type="water" quantity="80" />
+					<resource type="heliu3" quantity="10" />
+				</region>
+				<region name="R11916" name-en="Zephyr Crest" X="2" Y="0" type="barren">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R99062">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R64687">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R82241">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="h2o2" quantity="40" />
+					<resource type="water" quantity="30" />
+				</region>
+				<region name="R99062" name-en="Zephyr East" X="3" Y="0" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R06176">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R11916">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R20970">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="h2o2" quantity="70" />
+					<resource type="water" quantity="50" />
+				</region>
+				<region name="R06176" name-en="Zephyr Rim" X="4" Y="0" type="barren">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R66785">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R99062">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R89193">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="h2o2" quantity="30" />
+					<resource type="water" quantity="20" />
+				</region>
+				<region name="R14372" name-en="Zephyr Polar S" X="0" Y="1" type="barren">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R20034">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R89193">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R66785">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="h2o2" quantity="35" />
+					<resource type="water" quantity="25" />
+				</region>
+				<region name="R20034" name-en="Zephyr Deep" X="1" Y="1" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R82241">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R14372">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R64687">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="h2o2" quantity="120" />
+					<resource type="water" quantity="100" />
+					<resource type="heliu3" quantity="15" />
+				</region>
+				<region name="R82241" name-en="Zephyr Vent" X="2" Y="1" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R20970">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R20034">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R11916">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="h2o2" quantity="90" />
+					<resource type="water" quantity="70" />
+				</region>
+				<region name="R20970" name-en="Zephyr Shelf" X="3" Y="1" type="barren">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R89193">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R82241">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R99062">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="h2o2" quantity="40" />
+					<resource type="water" quantity="30" />
+				</region>
+				<region name="R89193" name-en="Zephyr Far" X="4" Y="1" type="barren">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R14372">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R20970">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R06176">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="h2o2" quantity="25" />
+				</region>
+			</moon>
+			<moon name="M58801" name-en="Notus" type="rock" AU="0.025" surface-size-X="5" surface-size-Y="3">
+				<orbit name="O55445" />
+				<region name="R55334" name-en="Notus West" X="0" Y="0" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R78173">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R50020">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R78105">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R32099">
+						<exitmode mode="space" duration="8" />
+					</exit>
+					<resource type="tungst" quantity="20" />
+					<resource type="iron" quantity="30" />
+					<resource type="silici" quantity="25" />
+				</region>
+				<region name="R78173" name-en="Notus Vein" X="1" Y="0" type="mountn">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R08327">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R55334">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R61349">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<resource type="tungst" quantity="60" />
+					<resource type="iron" quantity="40" />
+					<resource type="silici" quantity="30" />
+				</region>
+				<region name="R08327" name-en="Notus Central" X="2" Y="0" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R50433">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R78173">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R69353">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<resource type="tungst" quantity="30" />
+					<resource type="iron" quantity="35" />
+					<resource type="silici" quantity="25" />
+				</region>
+				<region name="R50433" name-en="Notus East Peak" X="3" Y="0" type="mountn">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R50020">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R08327">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R32954">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<resource type="tungst" quantity="50" />
+					<resource type="iron" quantity="45" />
+					<resource type="silici" quantity="35" />
+				</region>
+				<region name="R50020" name-en="Notus Scarp" X="4" Y="0" type="barren">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R55334">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R50433">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R72513">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="iron" quantity="15" />
+					<resource type="silici" quantity="20" />
+				</region>
+				<region name="R78105" name-en="Notus Polar S" X="0" Y="1" type="barren">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R61349">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R72513">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R01505">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R55334">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="iron" quantity="10" />
+					<resource type="silici" quantity="15" />
+				</region>
+				<region name="R61349" name-en="Notus Basin" X="1" Y="1" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R69353">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R78105">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R89167">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R78173">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<resource type="tungst" quantity="40" />
+					<resource type="iron" quantity="35" />
+					<resource type="silici" quantity="25" />
+				</region>
+				<region name="R69353" name-en="Notus Core" X="2" Y="1" type="mountn">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R32954">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R61349">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R94467">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R08327">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<resource type="tungst" quantity="80" />
+					<resource type="iron" quantity="50" />
+					<resource type="silici" quantity="40" />
+				</region>
+				<region name="R32954" name-en="Notus Rill" X="3" Y="1" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R72513">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R69353">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R15015">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R50433">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<resource type="tungst" quantity="25" />
+					<resource type="iron" quantity="30" />
+					<resource type="silici" quantity="20" />
+				</region>
+				<region name="R72513" name-en="Notus Rim" X="4" Y="1" type="barren">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R78105">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R32954">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R89354">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R50020">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="iron" quantity="15" />
+					<resource type="silici" quantity="15" />
+				</region>
+				<region name="R01505" name-en="Notus Far W" X="0" Y="2" type="barren">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R89167">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R89354">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R78105">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="iron" quantity="10" />
+					<resource type="silici" quantity="10" />
+				</region>
+				<region name="R89167" name-en="Notus Trench" X="1" Y="2" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R94467">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R01505">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R61349">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="tungst" quantity="35" />
+					<resource type="iron" quantity="30" />
+					<resource type="silici" quantity="20" />
+				</region>
+				<region name="R94467" name-en="Notus Shelf" X="2" Y="2" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R15015">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R89167">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R69353">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<resource type="tungst" quantity="25" />
+					<resource type="iron" quantity="25" />
+					<resource type="silici" quantity="20" />
+				</region>
+				<region name="R15015" name-en="Notus Waste" X="3" Y="2" type="barren">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R89354">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R94467">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R32954">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="iron" quantity="15" />
+					<resource type="silici" quantity="15" />
+				</region>
+				<region name="R89354" name-en="Notus Polar N" X="4" Y="2" type="barren">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R01505">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R15015">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R72513">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="iron" quantity="10" />
+					<resource type="silici" quantity="10" />
+				</region>
+			</moon>
+			<moon name="M18374" name-en="Eurus" type="vulcan" AU="0.04" surface-size-X="4" surface-size-Y="3">
+				<orbit name="O91304" />
+				<region name="R70382" name-en="Eurus Caldera" X="0" Y="0" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R98420">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R84013">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R44588">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R32099">
+						<exitmode mode="space" duration="8" />
+					</exit>
+					<resource type="silici" quantity="60" />
+					<resource type="iron" quantity="25" />
+					<resource type="titani" quantity="15" />
+				</region>
+				<region name="R98420" name-en="Eurus Flow" X="1" Y="0" type="mountn">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R34974">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R70382">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R14622">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<resource type="silici" quantity="80" />
+					<resource type="iron" quantity="40" />
+					<resource type="titani" quantity="25" />
+				</region>
+				<region name="R34974" name-en="Eurus Ash" X="2" Y="0" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R84013">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R98420">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R38470">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<resource type="silici" quantity="50" />
+					<resource type="iron" quantity="20" />
+					<resource type="titani" quantity="10" />
+				</region>
+				<region name="R84013" name-en="Eurus Scarp" X="3" Y="0" type="barren">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R70382">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R34974">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R56986">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="silici" quantity="30" />
+					<resource type="iron" quantity="15" />
+				</region>
+				<region name="R44588" name-en="Eurus Polar S" X="0" Y="1" type="barren">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R14622">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R56986">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R20731">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R70382">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="silici" quantity="25" />
+					<resource type="iron" quantity="10" />
+				</region>
+				<region name="R14622" name-en="Eurus Vent" X="1" Y="1" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R38470">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R44588">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R59471">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R98420">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<resource type="silici" quantity="70" />
+					<resource type="iron" quantity="35" />
+					<resource type="titani" quantity="20" />
+				</region>
+				<region name="R38470" name-en="Eurus Spine" X="2" Y="1" type="mountn">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R56986">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R14622">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R00426">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R34974">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<resource type="silici" quantity="90" />
+					<resource type="iron" quantity="45" />
+					<resource type="titani" quantity="30" />
+				</region>
+				<region name="R56986" name-en="Eurus Rim" X="3" Y="1" type="barren">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R44588">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R38470">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R94647">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R84013">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="silici" quantity="25" />
+					<resource type="iron" quantity="10" />
+				</region>
+				<region name="R20731" name-en="Eurus Far W" X="0" Y="2" type="barren">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R59471">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R94647">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R44588">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="silici" quantity="20" />
+					<resource type="iron" quantity="10" />
+				</region>
+				<region name="R59471" name-en="Eurus Plain" X="1" Y="2" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R00426">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R20731">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R14622">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="silici" quantity="50" />
+					<resource type="iron" quantity="25" />
+					<resource type="titani" quantity="15" />
+				</region>
+				<region name="R00426" name-en="Eurus Basin" X="2" Y="2" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R94647">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R59471">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R38470">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<resource type="silici" quantity="45" />
+					<resource type="iron" quantity="20" />
+					<resource type="titani" quantity="10" />
+				</region>
+				<region name="R94647" name-en="Eurus Polar N" X="3" Y="2" type="barren">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R20731">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R00426">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R56986">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="silici" quantity="20" />
+					<resource type="iron" quantity="10" />
+				</region>
+			</moon>
+			<orbit name="O28017" />
+		</planet>
+		<planet name="A87783" name-en="Helios-Cinder Alderson point" type="adpnt" AU="42" to-system="SS1344" to-point="A93873">
+			<orbit name="O0A271" />
+		</planet>
+		</system>
+		<system name="SS9486" name-en="Fomal" X="1" Y="0" Z="0">
+			<star name="S58083" name-en="Fomal" type="M4" mass="1.2" />
+		<planet name="P87685" name-en="Anvil" type="ocean" AU="1.4" surface-size-X="7" surface-size-Y="5">
+			<moon name="M32592" name-en="Crucible" type="rock" AU="0.002" surface-size-X="5" surface-size-Y="3">
+				<orbit name="O51174" />
+				<region name="R94330" name-en="Crucible West" X="0" Y="0" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R34523">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R23417">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R66543">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R91507">
+						<exitmode mode="space" duration="4" />
+					</exit>
+					<resource type="iron" quantity="40" />
+					<resource type="copper" quantity="25" />
+					<resource type="titani" quantity="20" />
+					<resource type="silici" quantity="15" />
+				</region>
+				<region name="R34523" name-en="Crucible Lode" X="1" Y="0" type="mountn">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R65613">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R94330">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R13948">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<resource type="iron" quantity="60" />
+					<resource type="copper" quantity="40" />
+					<resource type="titani" quantity="35" />
+					<resource type="silici" quantity="25" />
+				</region>
+				<region name="R65613" name-en="Crucible Central" X="2" Y="0" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R99872">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R34523">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R81960">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<resource type="iron" quantity="35" />
+					<resource type="copper" quantity="20" />
+					<resource type="titani" quantity="15" />
+					<resource type="silici" quantity="20" />
+				</region>
+				<region name="R99872" name-en="Crucible East Vein" X="3" Y="0" type="mountn">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R23417">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R65613">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R39118">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<resource type="iron" quantity="55" />
+					<resource type="copper" quantity="35" />
+					<resource type="titani" quantity="30" />
+					<resource type="silici" quantity="25" />
+				</region>
+				<region name="R23417" name-en="Crucible Scarp" X="4" Y="0" type="barren">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R94330">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R99872">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R83749">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="iron" quantity="15" />
+					<resource type="silici" quantity="15" />
+				</region>
+				<region name="R66543" name-en="Crucible Polar S" X="0" Y="1" type="barren">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R13948">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R83749">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R66541">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R94330">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="iron" quantity="10" />
+					<resource type="silici" quantity="10" />
+				</region>
+				<region name="R13948" name-en="Crucible Basin" X="1" Y="1" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R81960">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R66543">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R79819">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R34523">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<resource type="iron" quantity="50" />
+					<resource type="copper" quantity="30" />
+					<resource type="titani" quantity="25" />
+					<resource type="silici" quantity="20" />
+				</region>
+				<region name="R81960" name-en="Crucible Core" X="2" Y="1" type="mountn">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R39118">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R13948">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R26072">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R65613">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<resource type="iron" quantity="70" />
+					<resource type="copper" quantity="45" />
+					<resource type="titani" quantity="40" />
+					<resource type="silici" quantity="30" />
+				</region>
+				<region name="R39118" name-en="Crucible Rill" X="3" Y="1" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R83749">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R81960">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R20033">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R99872">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<resource type="iron" quantity="40" />
+					<resource type="copper" quantity="25" />
+					<resource type="titani" quantity="20" />
+					<resource type="silici" quantity="15" />
+				</region>
+				<region name="R83749" name-en="Crucible Rim" X="4" Y="1" type="barren">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R66543">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R39118">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R49010">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R23417">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="iron" quantity="15" />
+					<resource type="silici" quantity="10" />
+				</region>
+				<region name="R66541" name-en="Crucible Far W" X="0" Y="2" type="barren">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R79819">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R49010">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R66543">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="iron" quantity="10" />
+					<resource type="silici" quantity="10" />
+				</region>
+				<region name="R79819" name-en="Crucible Trench" X="1" Y="2" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R26072">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R66541">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R13948">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="iron" quantity="45" />
+					<resource type="copper" quantity="30" />
+					<resource type="titani" quantity="20" />
+					<resource type="silici" quantity="15" />
+				</region>
+				<region name="R26072" name-en="Crucible Shelf" X="2" Y="2" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R20033">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R79819">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R81960">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<resource type="iron" quantity="35" />
+					<resource type="copper" quantity="20" />
+					<resource type="titani" quantity="15" />
+					<resource type="silici" quantity="15" />
+				</region>
+				<region name="R20033" name-en="Crucible Waste" X="3" Y="2" type="barren">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R49010">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R26072">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R39118">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="iron" quantity="15" />
+					<resource type="silici" quantity="10" />
+				</region>
+				<region name="R49010" name-en="Crucible Polar N" X="4" Y="2" type="barren">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R66541">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R20033">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R83749">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="iron" quantity="10" />
+					<resource type="silici" quantity="10" />
+				</region>
+			</moon>
+			<moon name="M25113" name-en="Quench" type="ice" AU="0.003" surface-size-X="5" surface-size-Y="2">
+				<orbit name="O34761" />
+				<region name="R99944" name-en="Quench West" X="0" Y="0" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R21175">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R00075">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R78505">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R91507">
+						<exitmode mode="space" duration="4" />
+					</exit>
+					<resource type="water" quantity="80" />
+					<resource type="h2o2" quantity="50" />
+				</region>
+				<region name="R21175" name-en="Quench Basin" X="1" Y="0" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R70698">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R99944">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R42488">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="water" quantity="120" />
+					<resource type="h2o2" quantity="80" />
+				</region>
+				<region name="R70698" name-en="Quench Ridge" X="2" Y="0" type="barren">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R69515">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R21175">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R64043">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="water" quantity="40" />
+					<resource type="h2o2" quantity="30" />
+				</region>
+				<region name="R69515" name-en="Quench East" X="3" Y="0" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R00075">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R70698">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R02553">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="water" quantity="90" />
+					<resource type="h2o2" quantity="60" />
+				</region>
+				<region name="R00075" name-en="Quench Rim" X="4" Y="0" type="barren">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R99944">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R69515">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R14663">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="water" quantity="30" />
+					<resource type="h2o2" quantity="20" />
+				</region>
+				<region name="R78505" name-en="Quench Polar S" X="0" Y="1" type="barren">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R42488">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R14663">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R99944">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="water" quantity="30" />
+					<resource type="h2o2" quantity="20" />
+				</region>
+				<region name="R42488" name-en="Quench Deep" X="1" Y="1" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R64043">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R78505">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R21175">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="water" quantity="150" />
+					<resource type="h2o2" quantity="100" />
+				</region>
+				<region name="R64043" name-en="Quench Vent" X="2" Y="1" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R02553">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R42488">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R70698">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="water" quantity="100" />
+					<resource type="h2o2" quantity="70" />
+				</region>
+				<region name="R02553" name-en="Quench Shelf" X="3" Y="1" type="barren">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R14663">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R64043">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R69515">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="water" quantity="40" />
+					<resource type="h2o2" quantity="25" />
+				</region>
+				<region name="R14663" name-en="Quench Far" X="4" Y="1" type="barren">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R78505">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R02553">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R00075">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="water" quantity="20" />
+					<resource type="h2o2" quantity="15" />
+				</region>
+			</moon>
+			<orbit name="O52566" />
+			<region name="R99459" name-en="West Sea" X="0" Y="0" type="ocean">
+				<exit region="R20927">
+					<exitmode mode="ground" duration="7" />
+				</exit>
+				<exit region="R20380">
+					<exitmode mode="ground" duration="7" />
+				</exit>
+				<exit region="R28222">
+					<exitmode mode="ground" duration="7" />
+				</exit>
+				<resource type="terair" quantity="100" />
+				<resource type="water" quantity="350" />
+				<resource type="food" quantity="10" />
+			</region>
+			<region name="R20927" name-en="West Shelf" X="1" Y="0" type="sea">
+				<exit region="R91507">
+					<exitmode mode="ground" duration="6" />
+				</exit>
+				<exit region="R99459">
+					<exitmode mode="ground" duration="7" />
+				</exit>
+				<exit region="R44119">
+					<exitmode mode="ground" duration="6" />
+				</exit>
+				<resource type="terair" quantity="100" />
+				<resource type="water" quantity="200" />
+				<resource type="food" quantity="30" />
+			</region>
+			<region name="R91507" name-en="Copper Flat" X="2" Y="0" type="dust">
+				<exit region="R55393">
+					<exitmode mode="ground" duration="3" />
+				</exit>
+				<exit region="R20927">
+					<exitmode mode="ground" duration="6" />
+				</exit>
+				<exit region="R13397">
+					<exitmode mode="ground" duration="3" />
+				</exit>
+				<exit region="R32099">
+					<exitmode mode="space" duration="26" />
+				</exit>
+				<exit region="R95569">
+					<exitmode mode="space" duration="8" />
+				</exit>
+				<exit region="R94330">
+					<exitmode mode="space" duration="4" />
+				</exit>
+				<exit region="R99944">
+					<exitmode mode="space" duration="4" />
+				</exit>
+				<exit region="R47577">
+					<exitmode mode="space" duration="8" />
+				</exit>
+				<exit region="R09072">
+					<exitmode mode="space" duration="8" />
+				</exit>
+				<resource type="copper" quantity="25" />
+				<resource type="silici" quantity="40" />
+				<resource type="titani" quantity="20" />
+				<resource type="iron" quantity="25" />
+			</region>
+			<region name="R55393" name-en="Slagport" X="3" Y="0" type="grassl">
+				<capacity group="settlement" quantity="8" />
+				<exit region="R44598">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<exit region="R91507">
+					<exitmode mode="ground" duration="3" />
+				</exit>
+				<exit region="R12157">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<resource type="terair" quantity="100" />
+				<resource type="food" quantity="120" />
+				<resource type="water" quantity="80" />
+				<resource type="iron" quantity="20" />
+				<resource type="silici" quantity="30" />
+				<resource type="titani" quantity="20" />
+				<modulestack name="STK463299" name-en="Slagport" type="city" quantity="2" faction="1">
+					<itemstack type="cash" quantity="1500" />
+					<itemstack type="terran" quantity="18" />
+					<upkeep type="food" quantity="200" />
+					<upkeep type="cash" quantity="575" />
+					<buying item="food" quantity="200" price="2" />
+					<selling item="terran" quantity="12" price="50" />
+					<modulestack name="STK578479" name-en="Slagport garrison" type="inftry" quantity="1" faction="1">
+						<itemstack type="rctlnc" quantity="1" />
+						<upkeep type="cash" quantity="5" />
+					</modulestack>
+					<modulestack name="STK739946" name-en="Slagport farms" type="farms" quantity="6" faction="1">
+						<itemstack type="terran" quantity="30" />
+						<upkeep type="cash" quantity="330" />
+					</modulestack>
+					<modulestack name="STK588154" name-en="Slagport wind plants" type="wnplnt" quantity="10" faction="1">
+						<upkeep type="cash" quantity="100" />
+					</modulestack>
+					<modulestack name="STK010140" name-en="Slagport granary" type="cargob" quantity="2" faction="1">
+						<itemstack type="food" quantity="300" />
+						<itemstack type="titani" quantity="40" />
+						<itemstack type="copper" quantity="20" />
+						<itemstack type="terran" quantity="4" />
+						<upkeep type="cash" quantity="66" />
+					</modulestack>
+				</modulestack>
+			</region>
+			<region name="R44598" name-en="South Ore" X="4" Y="0" type="mountn">
+				<exit region="R36422">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<exit region="R55393">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<exit region="R49798">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<resource type="titani" quantity="60" />
+				<resource type="silici" quantity="40" />
+				<resource type="copper" quantity="30" />
+				<resource type="iron" quantity="30" />
+			</region>
+			<region name="R36422" name-en="South Dune" X="5" Y="0" type="dust">
+				<exit region="R20380">
+					<exitmode mode="ground" duration="3" />
+				</exit>
+				<exit region="R44598">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<exit region="R12677">
+					<exitmode mode="ground" duration="3" />
+				</exit>
+				<resource type="copper" quantity="20" />
+				<resource type="silici" quantity="40" />
+				<resource type="titani" quantity="15" />
+				<resource type="iron" quantity="25" />
+			</region>
+			<region name="R20380" name-en="South Scarp" X="6" Y="0" type="barren">
+				<exit region="R99459">
+					<exitmode mode="ground" duration="7" />
+				</exit>
+				<exit region="R36422">
+					<exitmode mode="ground" duration="3" />
+				</exit>
+				<exit region="R47053">
+					<exitmode mode="ground" duration="3" />
+				</exit>
+				<resource type="silici" quantity="50" />
+				<resource type="titani" quantity="20" />
+			</region>
+			<region name="R28222" name-en="Northwest Sea" X="0" Y="1" type="sea">
+				<exit region="R44119">
+					<exitmode mode="ground" duration="6" />
+				</exit>
+				<exit region="R47053">
+					<exitmode mode="ground" duration="6" />
+				</exit>
+				<exit region="R45083">
+					<exitmode mode="ground" duration="6" />
+				</exit>
+				<exit region="R99459">
+					<exitmode mode="ground" duration="7" />
+				</exit>
+				<resource type="terair" quantity="100" />
+				<resource type="water" quantity="200" />
+				<resource type="food" quantity="25" />
+			</region>
+			<region name="R44119" name-en="Ironclad Grant" X="1" Y="1" type="grassl">
+				<capacity group="settlement" quantity="10" />
+				<exit region="R13397">
+					<exitmode mode="ground" duration="2" />
+				</exit>
+				<exit region="R28222">
+					<exitmode mode="ground" duration="6" />
+				</exit>
+				<exit region="R79132">
+					<exitmode mode="ground" duration="2" />
+				</exit>
+				<exit region="R20927">
+					<exitmode mode="ground" duration="6" />
+				</exit>
+				<resource type="terair" quantity="100" />
+				<resource type="food" quantity="140" />
+				<resource type="water" quantity="80" />
+				<resource type="iron" quantity="20" />
+				<resource type="titani" quantity="25" />
+				<resource type="silici" quantity="30" />
+				<modulestack name="STK185653" name-en="Ironclad HQ" type="corphq" quantity="1" faction="7">
+					<person name="STK924232" name-en="Ironclad CEO" race="terran" faction="7">
+						<upkeep type="cash" quantity="10" />
+					</person>
+					<itemstack type="terran" quantity="40" />
+					<upkeep type="cash" quantity="210" />
+					<modulestack name="STK432323" type="cargob" quantity="2" faction="7">
+						<itemstack type="food" quantity="80" />
+						<itemstack type="terair" quantity="200" />
+						<itemstack type="h2o2" quantity="80" />
+						<itemstack type="iron" quantity="15" />
+						<itemstack type="titani" quantity="40" />
+						<itemstack type="silici" quantity="40" />
+						<itemstack type="copper" quantity="30" />
+						<itemstack type="uraniu" quantity="20" />
+						<itemstack type="terran" quantity="6" />
+						<upkeep type="cash" quantity="80" />
+					</modulestack>
+					<modulestack name="STK025991" type="farms" quantity="3" faction="7">
+						<itemstack type="terran" quantity="15" />
+						<upkeep type="cash" quantity="165" />
+					</modulestack>
+					<modulestack name="STK188074" type="cdrill" quantity="1" faction="7">
+						<itemstack type="terran" quantity="6" />
+						<upkeep type="cash" quantity="46" />
+					</modulestack>
+					<modulestack name="STK772344" type="factry" quantity="2" faction="7">
+						<itemstack type="terran" quantity="20" />
+						<itemstack type="iron" quantity="10" />
+						<upkeep type="cash" quantity="140" />
+					</modulestack>
+					<modulestack name="STK969396" type="wnplnt" quantity="8" faction="7">
+						<upkeep type="cash" quantity="80" />
+					</modulestack>
+				</modulestack>
+			</region>
+			<region name="R13397" name-en="Slope" X="2" Y="1" type="grassl">
+				<capacity group="settlement" quantity="8" />
+				<exit region="R12157">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<exit region="R44119">
+					<exitmode mode="ground" duration="2" />
+				</exit>
+				<exit region="R34672">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<exit region="R91507">
+					<exitmode mode="ground" duration="3" />
+				</exit>
+				<resource type="terair" quantity="100" />
+				<resource type="food" quantity="100" />
+				<resource type="water" quantity="70" />
+				<resource type="silici" quantity="25" />
+				<resource type="titani" quantity="15" />
+			</region>
+			<region name="R12157" name-en="West Spine" X="3" Y="1" type="mountn">
+				<exit region="R49798">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<exit region="R13397">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<exit region="R05696">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<exit region="R55393">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<resource type="titani" quantity="70" />
+				<resource type="copper" quantity="35" />
+				<resource type="silici" quantity="40" />
+				<resource type="iron" quantity="30" />
+			</region>
+			<region name="R49798" name-en="Mid Spine" X="4" Y="1" type="mountn">
+				<exit region="R12677">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<exit region="R12157">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<exit region="R95648">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<exit region="R44598">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<resource type="titani" quantity="50" />
+				<resource type="uraniu" quantity="80" />
+				<resource type="silici" quantity="30" />
+				<resource type="copper" quantity="20" />
+			</region>
+			<region name="R12677" name-en="Oreline Grant" X="5" Y="1" type="grassl">
+				<capacity group="settlement" quantity="10" />
+				<exit region="R47053">
+					<exitmode mode="ground" duration="3" />
+				</exit>
+				<exit region="R49798">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<exit region="R60218">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<exit region="R36422">
+					<exitmode mode="ground" duration="3" />
+				</exit>
+				<resource type="terair" quantity="100" />
+				<resource type="food" quantity="140" />
+				<resource type="water" quantity="80" />
+				<resource type="iron" quantity="20" />
+				<resource type="titani" quantity="25" />
+				<resource type="silici" quantity="30" />
+				<modulestack name="STK348322" name-en="Oreline HQ" type="corphq" quantity="1" faction="8">
+					<person name="STK820392" name-en="Oreline CEO" race="terran" faction="8">
+						<upkeep type="cash" quantity="10" />
+					</person>
+					<itemstack type="terran" quantity="40" />
+					<upkeep type="cash" quantity="210" />
+					<modulestack name="STK976032" type="cargob" quantity="2" faction="8">
+						<itemstack type="food" quantity="80" />
+						<itemstack type="terair" quantity="200" />
+						<itemstack type="h2o2" quantity="80" />
+						<itemstack type="iron" quantity="15" />
+						<itemstack type="titani" quantity="40" />
+						<itemstack type="silici" quantity="40" />
+						<itemstack type="copper" quantity="30" />
+						<itemstack type="uraniu" quantity="20" />
+						<itemstack type="terran" quantity="6" />
+						<upkeep type="cash" quantity="80" />
+					</modulestack>
+					<modulestack name="STK431713" type="farms" quantity="3" faction="8">
+						<itemstack type="terran" quantity="15" />
+						<upkeep type="cash" quantity="165" />
+					</modulestack>
+					<modulestack name="STK841205" type="cdrill" quantity="1" faction="8">
+						<itemstack type="terran" quantity="6" />
+						<upkeep type="cash" quantity="46" />
+					</modulestack>
+					<modulestack name="STK702449" type="factry" quantity="2" faction="8">
+						<itemstack type="terran" quantity="20" />
+						<itemstack type="iron" quantity="10" />
+						<upkeep type="cash" quantity="140" />
+					</modulestack>
+					<modulestack name="STK906037" type="wnplnt" quantity="8" faction="8">
+						<upkeep type="cash" quantity="80" />
+					</modulestack>
+				</modulestack>
+			</region>
+			<region name="R47053" name-en="East Talus" X="6" Y="1" type="dust">
+				<exit region="R28222">
+					<exitmode mode="ground" duration="6" />
+				</exit>
+				<exit region="R12677">
+					<exitmode mode="ground" duration="3" />
+				</exit>
+				<exit region="R70285">
+					<exitmode mode="ground" duration="3" />
+				</exit>
+				<exit region="R20380">
+					<exitmode mode="ground" duration="3" />
+				</exit>
+				<resource type="copper" quantity="25" />
+				<resource type="silici" quantity="40" />
+				<resource type="titani" quantity="20" />
+			</region>
+			<region name="R45083" name-en="Marsh" X="0" Y="2" type="grassl">
+				<capacity group="settlement" quantity="8" />
+				<exit region="R79132">
+					<exitmode mode="ground" duration="2" />
+				</exit>
+				<exit region="R70285">
+					<exitmode mode="ground" duration="2" />
+				</exit>
+				<exit region="R16362">
+					<exitmode mode="ground" duration="7" />
+				</exit>
+				<exit region="R28222">
+					<exitmode mode="ground" duration="6" />
+				</exit>
+				<resource type="terair" quantity="100" />
+				<resource type="food" quantity="150" />
+				<resource type="water" quantity="100" />
+				<resource type="iron" quantity="15" />
+				<resource type="silici" quantity="20" />
+			</region>
+			<region name="R79132" name-en="Bench" X="1" Y="2" type="grassl">
+				<capacity group="settlement" quantity="8" />
+				<exit region="R34672">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<exit region="R45083">
+					<exitmode mode="ground" duration="2" />
+				</exit>
+				<exit region="R49616">
+					<exitmode mode="ground" duration="2" />
+				</exit>
+				<exit region="R44119">
+					<exitmode mode="ground" duration="2" />
+				</exit>
+				<resource type="terair" quantity="100" />
+				<resource type="food" quantity="110" />
+				<resource type="water" quantity="70" />
+				<resource type="silici" quantity="25" />
+				<resource type="titani" quantity="15" />
+			</region>
+			<region name="R34672" name-en="Crag" X="2" Y="2" type="mountn">
+				<exit region="R05696">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<exit region="R79132">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<exit region="R10329">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<exit region="R13397">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<resource type="titani" quantity="80" />
+				<resource type="copper" quantity="40" />
+				<resource type="silici" quantity="45" />
+				<resource type="iron" quantity="35" />
+			</region>
+			<region name="R05696" name-en="Basalt Grant" X="3" Y="2" type="grassl">
+				<capacity group="settlement" quantity="10" />
+				<exit region="R95648">
+					<exitmode mode="ground" duration="3" />
+				</exit>
+				<exit region="R34672">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<exit region="R72358">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<exit region="R12157">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<resource type="terair" quantity="100" />
+				<resource type="food" quantity="140" />
+				<resource type="water" quantity="80" />
+				<resource type="iron" quantity="20" />
+				<resource type="copper" quantity="20" />
+				<resource type="silici" quantity="30" />
+				<modulestack name="STK770764" name-en="Basalt HQ" type="corphq" quantity="1" faction="9">
+					<person name="STK850133" name-en="Basalt CEO" race="terran" faction="9">
+						<upkeep type="cash" quantity="10" />
+					</person>
+					<itemstack type="terran" quantity="40" />
+					<upkeep type="cash" quantity="210" />
+					<modulestack name="STK260223" type="cargob" quantity="2" faction="9">
+						<itemstack type="food" quantity="80" />
+						<itemstack type="terair" quantity="200" />
+						<itemstack type="h2o2" quantity="80" />
+						<itemstack type="iron" quantity="15" />
+						<itemstack type="titani" quantity="40" />
+						<itemstack type="silici" quantity="40" />
+						<itemstack type="copper" quantity="30" />
+						<itemstack type="uraniu" quantity="20" />
+						<itemstack type="terran" quantity="6" />
+						<upkeep type="cash" quantity="80" />
+					</modulestack>
+					<modulestack name="STK279767" type="farms" quantity="3" faction="9">
+						<itemstack type="terran" quantity="15" />
+						<upkeep type="cash" quantity="165" />
+					</modulestack>
+					<modulestack name="STK166932" type="cdrill" quantity="1" faction="9">
+						<itemstack type="terran" quantity="6" />
+						<upkeep type="cash" quantity="46" />
+					</modulestack>
+					<modulestack name="STK825623" type="factry" quantity="2" faction="9">
+						<itemstack type="terran" quantity="20" />
+						<itemstack type="iron" quantity="10" />
+						<upkeep type="cash" quantity="140" />
+					</modulestack>
+					<modulestack name="STK735344" type="wnplnt" quantity="8" faction="9">
+						<upkeep type="cash" quantity="80" />
+					</modulestack>
+				</modulestack>
+			</region>
+			<region name="R95648" name-en="Scree" X="4" Y="2" type="dust">
+				<exit region="R60218">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<exit region="R05696">
+					<exitmode mode="ground" duration="3" />
+				</exit>
+				<exit region="R38428">
+					<exitmode mode="ground" duration="3" />
+				</exit>
+				<exit region="R49798">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<resource type="copper" quantity="30" />
+				<resource type="silici" quantity="40" />
+				<resource type="titani" quantity="25" />
+				<resource type="iron" quantity="20" />
+			</region>
+			<region name="R60218" name-en="East Peak" X="5" Y="2" type="mountn">
+				<exit region="R70285">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<exit region="R95648">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<exit region="R82398">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<exit region="R12677">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<resource type="titani" quantity="55" />
+				<resource type="uraniu" quantity="120" />
+				<resource type="silici" quantity="35" />
+				<resource type="copper" quantity="25" />
+			</region>
+			<region name="R70285" name-en="Ridge" X="6" Y="2" type="grassl">
+				<capacity group="settlement" quantity="8" />
+				<exit region="R45083">
+					<exitmode mode="ground" duration="2" />
+				</exit>
+				<exit region="R60218">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<exit region="R81071">
+					<exitmode mode="ground" duration="3" />
+				</exit>
+				<exit region="R47053">
+					<exitmode mode="ground" duration="3" />
+				</exit>
+				<resource type="terair" quantity="100" />
+				<resource type="food" quantity="100" />
+				<resource type="water" quantity="70" />
+				<resource type="silici" quantity="30" />
+				<resource type="titani" quantity="20" />
+				<resource type="iron" quantity="15" />
+				<modulestack name="STK117309" name-en="Ridge" type="city" quantity="1" faction="1">
+					<itemstack type="cash" quantity="800" />
+					<itemstack type="terran" quantity="10" />
+					<upkeep type="food" quantity="100" />
+					<upkeep type="cash" quantity="400" />
+					<buying item="food" quantity="40" price="2" />
+					<selling item="terran" quantity="6" price="50" />
+					<modulestack name="STK078899" name-en="Ridge garrison" type="inftry" quantity="1" faction="1">
+						<itemstack type="rctlnc" quantity="1" />
+						<upkeep type="cash" quantity="5" />
+					</modulestack>
+					<modulestack name="STK990958" name-en="Ridge farms" type="farms" quantity="4" faction="1">
+						<itemstack type="terran" quantity="20" />
+						<upkeep type="cash" quantity="220" />
+					</modulestack>
+					<modulestack name="STK724587" name-en="Ridge wind plants" type="wnplnt" quantity="6" faction="1">
+						<upkeep type="cash" quantity="60" />
+					</modulestack>
+					<modulestack name="STK947838" name-en="Ridge granary" type="cargob" quantity="2" faction="1">
+						<itemstack type="food" quantity="200" />
+						<itemstack type="titani" quantity="40" />
+						<itemstack type="copper" quantity="20" />
+						<itemstack type="terran" quantity="4" />
+						<upkeep type="cash" quantity="66" />
+					</modulestack>
+				</modulestack>
+			</region>
+			<region name="R16362" name-en="Gulf" X="0" Y="3" type="ocean">
+				<exit region="R49616">
+					<exitmode mode="ground" duration="7" />
+				</exit>
+				<exit region="R81071">
+					<exitmode mode="ground" duration="7" />
+				</exit>
+				<exit region="R47401">
+					<exitmode mode="ground" duration="7" />
+				</exit>
+				<exit region="R45083">
+					<exitmode mode="ground" duration="7" />
+				</exit>
+				<resource type="terair" quantity="100" />
+				<resource type="water" quantity="350" />
+				<resource type="food" quantity="10" />
+			</region>
+			<region name="R49616" name-en="Silicate Grant" X="1" Y="3" type="grassl">
+				<capacity group="settlement" quantity="10" />
+				<exit region="R10329">
+					<exitmode mode="ground" duration="2" />
+				</exit>
+				<exit region="R16362">
+					<exitmode mode="ground" duration="7" />
+				</exit>
+				<exit region="R75675">
+					<exitmode mode="ground" duration="6" />
+				</exit>
+				<exit region="R79132">
+					<exitmode mode="ground" duration="2" />
+				</exit>
+				<resource type="terair" quantity="100" />
+				<resource type="food" quantity="140" />
+				<resource type="water" quantity="80" />
+				<resource type="silici" quantity="40" />
+				<resource type="titani" quantity="20" />
+				<resource type="iron" quantity="15" />
+				<modulestack name="STK113347" name-en="Silicate HQ" type="corphq" quantity="1" faction="10">
+					<person name="STK401125" name-en="Silicate CEO" race="terran" faction="10">
+						<upkeep type="cash" quantity="10" />
+					</person>
+					<itemstack type="terran" quantity="40" />
+					<upkeep type="cash" quantity="210" />
+					<modulestack name="STK914534" type="cargob" quantity="2" faction="10">
+						<itemstack type="food" quantity="80" />
+						<itemstack type="terair" quantity="200" />
+						<itemstack type="h2o2" quantity="80" />
+						<itemstack type="iron" quantity="15" />
+						<itemstack type="titani" quantity="40" />
+						<itemstack type="silici" quantity="40" />
+						<itemstack type="copper" quantity="30" />
+						<itemstack type="uraniu" quantity="20" />
+						<itemstack type="terran" quantity="6" />
+						<upkeep type="cash" quantity="80" />
+					</modulestack>
+					<modulestack name="STK040606" type="farms" quantity="3" faction="10">
+						<itemstack type="terran" quantity="15" />
+						<upkeep type="cash" quantity="165" />
+					</modulestack>
+					<modulestack name="STK900301" type="cdrill" quantity="1" faction="10">
+						<itemstack type="terran" quantity="6" />
+						<upkeep type="cash" quantity="46" />
+					</modulestack>
+					<modulestack name="STK493555" type="factry" quantity="2" faction="10">
+						<itemstack type="terran" quantity="20" />
+						<itemstack type="iron" quantity="10" />
+						<upkeep type="cash" quantity="140" />
+					</modulestack>
+					<modulestack name="STK233239" type="wnplnt" quantity="8" faction="10">
+						<upkeep type="cash" quantity="80" />
+					</modulestack>
+				</modulestack>
+			</region>
+			<region name="R10329" name-en="Vale" X="2" Y="3" type="grassl">
+				<capacity group="settlement" quantity="8" />
+				<exit region="R72358">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<exit region="R49616">
+					<exitmode mode="ground" duration="2" />
+				</exit>
+				<exit region="R25204">
+					<exitmode mode="ground" duration="3" />
+				</exit>
+				<exit region="R34672">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<resource type="terair" quantity="100" />
+				<resource type="food" quantity="90" />
+				<resource type="water" quantity="70" />
+				<resource type="silici" quantity="25" />
+				<resource type="iron" quantity="15" />
+			</region>
+			<region name="R72358" name-en="Uraninite" X="3" Y="3" type="mountn">
+				<exit region="R38428">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<exit region="R10329">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<exit region="R92350">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<exit region="R05696">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<resource type="uraniu" quantity="150" />
+				<resource type="titani" quantity="40" />
+				<resource type="silici" quantity="30" />
+				<resource type="copper" quantity="20" />
+			</region>
+			<region name="R38428" name-en="Thin Soil" X="4" Y="3" type="grassl">
+				<capacity group="settlement" quantity="8" />
+				<exit region="R82398">
+					<exitmode mode="ground" duration="2" />
+				</exit>
+				<exit region="R72358">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<exit region="R09117">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<exit region="R95648">
+					<exitmode mode="ground" duration="3" />
+				</exit>
+				<resource type="terair" quantity="100" />
+				<resource type="food" quantity="80" />
+				<resource type="water" quantity="60" />
+				<resource type="silici" quantity="20" />
+				<resource type="titani" quantity="10" />
+			</region>
+			<region name="R82398" name-en="Fission Grant" X="5" Y="3" type="grassl">
+				<capacity group="settlement" quantity="10" />
+				<exit region="R81071">
+					<exitmode mode="ground" duration="3" />
+				</exit>
+				<exit region="R38428">
+					<exitmode mode="ground" duration="2" />
+				</exit>
+				<exit region="R06007">
+					<exitmode mode="ground" duration="3" />
+				</exit>
+				<exit region="R60218">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<resource type="terair" quantity="100" />
+				<resource type="food" quantity="140" />
+				<resource type="water" quantity="80" />
+				<resource type="uraniu" quantity="15" />
+				<resource type="titani" quantity="20" />
+				<resource type="silici" quantity="30" />
+				<modulestack name="STK209268" name-en="Fission HQ" type="corphq" quantity="1" faction="11">
+					<person name="STK856254" name-en="Fission CEO" race="terran" faction="11">
+						<upkeep type="cash" quantity="10" />
+					</person>
+					<itemstack type="terran" quantity="40" />
+					<upkeep type="cash" quantity="210" />
+					<modulestack name="STK963067" type="cargob" quantity="2" faction="11">
+						<itemstack type="food" quantity="80" />
+						<itemstack type="terair" quantity="200" />
+						<itemstack type="h2o2" quantity="80" />
+						<itemstack type="iron" quantity="15" />
+						<itemstack type="titani" quantity="40" />
+						<itemstack type="silici" quantity="40" />
+						<itemstack type="copper" quantity="30" />
+						<itemstack type="uraniu" quantity="20" />
+						<itemstack type="terran" quantity="6" />
+						<upkeep type="cash" quantity="80" />
+					</modulestack>
+					<modulestack name="STK482663" type="farms" quantity="3" faction="11">
+						<itemstack type="terran" quantity="15" />
+						<upkeep type="cash" quantity="165" />
+					</modulestack>
+					<modulestack name="STK366644" type="cdrill" quantity="1" faction="11">
+						<itemstack type="terran" quantity="6" />
+						<upkeep type="cash" quantity="46" />
+					</modulestack>
+					<modulestack name="STK320016" type="factry" quantity="2" faction="11">
+						<itemstack type="terran" quantity="20" />
+						<itemstack type="iron" quantity="10" />
+						<upkeep type="cash" quantity="140" />
+					</modulestack>
+					<modulestack name="STK860395" type="wnplnt" quantity="8" faction="11">
+						<upkeep type="cash" quantity="80" />
+					</modulestack>
+				</modulestack>
+			</region>
+			<region name="R81071" name-en="Fan" X="6" Y="3" type="dust">
+				<exit region="R16362">
+					<exitmode mode="ground" duration="7" />
+				</exit>
+				<exit region="R82398">
+					<exitmode mode="ground" duration="3" />
+				</exit>
+				<exit region="R86674">
+					<exitmode mode="ground" duration="3" />
+				</exit>
+				<exit region="R70285">
+					<exitmode mode="ground" duration="3" />
+				</exit>
+				<resource type="copper" quantity="20" />
+				<resource type="silici" quantity="45" />
+				<resource type="titani" quantity="15" />
+			</region>
+			<region name="R47401" name-en="North Sea" X="0" Y="4" type="ocean">
+				<exit region="R75675">
+					<exitmode mode="ground" duration="7" />
+				</exit>
+				<exit region="R86674">
+					<exitmode mode="ground" duration="7" />
+				</exit>
+				<exit region="R16362">
+					<exitmode mode="ground" duration="7" />
+				</exit>
+				<resource type="terair" quantity="100" />
+				<resource type="water" quantity="350" />
+				<resource type="food" quantity="8" />
+			</region>
+			<region name="R75675" name-en="North Shelf" X="1" Y="4" type="sea">
+				<exit region="R25204">
+					<exitmode mode="ground" duration="6" />
+				</exit>
+				<exit region="R47401">
+					<exitmode mode="ground" duration="7" />
+				</exit>
+				<exit region="R49616">
+					<exitmode mode="ground" duration="6" />
+				</exit>
+				<resource type="terair" quantity="100" />
+				<resource type="water" quantity="200" />
+				<resource type="food" quantity="20" />
+			</region>
+			<region name="R25204" name-en="Ash" X="2" Y="4" type="dust">
+				<exit region="R92350">
+					<exitmode mode="ground" duration="3" />
+				</exit>
+				<exit region="R75675">
+					<exitmode mode="ground" duration="6" />
+				</exit>
+				<exit region="R10329">
+					<exitmode mode="ground" duration="3" />
+				</exit>
+				<resource type="copper" quantity="15" />
+				<resource type="silici" quantity="35" />
+				<resource type="titani" quantity="15" />
+				<resource type="iron" quantity="20" />
+			</region>
+			<region name="R92350" name-en="Isotope" X="3" Y="4" type="grassl">
+				<capacity group="settlement" quantity="8" />
+				<exit region="R09117">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<exit region="R25204">
+					<exitmode mode="ground" duration="3" />
+				</exit>
+				<exit region="R72358">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<resource type="terair" quantity="100" />
+				<resource type="food" quantity="90" />
+				<resource type="water" quantity="70" />
+				<resource type="silici" quantity="25" />
+				<resource type="titani" quantity="15" />
+				<resource type="iron" quantity="15" />
+				<modulestack name="STK156295" name-en="Isotope" type="city" quantity="1" faction="1">
+					<itemstack type="cash" quantity="800" />
+					<itemstack type="terran" quantity="10" />
+					<upkeep type="food" quantity="100" />
+					<upkeep type="cash" quantity="400" />
+					<buying item="food" quantity="40" price="2" />
+					<selling item="terran" quantity="6" price="50" />
+					<modulestack name="STK572093" name-en="Isotope garrison" type="inftry" quantity="1" faction="1">
+						<itemstack type="rctlnc" quantity="1" />
+						<upkeep type="cash" quantity="5" />
+					</modulestack>
+					<modulestack name="STK037779" name-en="Isotope farms" type="farms" quantity="4" faction="1">
+						<itemstack type="terran" quantity="20" />
+						<upkeep type="cash" quantity="220" />
+					</modulestack>
+					<modulestack name="STK387152" name-en="Isotope wind plants" type="wnplnt" quantity="4" faction="1">
+						<upkeep type="cash" quantity="40" />
+					</modulestack>
+					<modulestack name="STK610806" name-en="Isotope granary" type="cargob" quantity="2" faction="1">
+						<itemstack type="food" quantity="200" />
+						<itemstack type="titani" quantity="40" />
+						<itemstack type="copper" quantity="20" />
+						<itemstack type="terran" quantity="4" />
+						<upkeep type="cash" quantity="66" />
+					</modulestack>
+				</modulestack>
+			</region>
+			<region name="R09117" name-en="Shield" X="4" Y="4" type="mountn">
+				<exit region="R06007">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<exit region="R92350">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<exit region="R38428">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<resource type="titani" quantity="65" />
+				<resource type="silici" quantity="40" />
+				<resource type="copper" quantity="30" />
+				<resource type="iron" quantity="30" />
+			</region>
+			<region name="R06007" name-en="Glass" X="5" Y="4" type="barren">
+				<exit region="R86674">
+					<exitmode mode="ground" duration="3" />
+				</exit>
+				<exit region="R09117">
+					<exitmode mode="ground" duration="5" />
+				</exit>
+				<exit region="R82398">
+					<exitmode mode="ground" duration="3" />
+				</exit>
+				<resource type="silici" quantity="50" />
+				<resource type="titani" quantity="15" />
+			</region>
+			<region name="R86674" name-en="North Reg" X="6" Y="4" type="dust">
+				<exit region="R47401">
+					<exitmode mode="ground" duration="7" />
+				</exit>
+				<exit region="R06007">
+					<exitmode mode="ground" duration="3" />
+				</exit>
+				<exit region="R81071">
+					<exitmode mode="ground" duration="3" />
+				</exit>
+				<resource type="copper" quantity="20" />
+				<resource type="silici" quantity="40" />
+				<resource type="iron" quantity="20" />
+			</region>
+		</planet>
+		<planet name="P63625" name-en="Pyre" type="dust" AU="0.6" surface-size-X="5" surface-size-Y="4">
+			<orbit name="O07686" />
+				<region name="R95569" name-en="Pyre West" X="0" Y="0" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R32088">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R49736">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R35383">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R91507">
+						<exitmode mode="space" duration="8" />
+					</exit>
+					<resource type="iron" quantity="50" />
+					<resource type="silici" quantity="35" />
+					<resource type="copper" quantity="15" />
+				</region>
+				<region name="R32088" name-en="Pyre Basin" X="1" Y="0" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R21418">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R95569">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R83887">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="iron" quantity="70" />
+					<resource type="silici" quantity="45" />
+					<resource type="copper" quantity="20" />
+					<resource type="titani" quantity="10" />
+				</region>
+				<region name="R21418" name-en="Pyre Ridge" X="2" Y="0" type="mountn">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R60590">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R32088">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R90199">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<resource type="iron" quantity="90" />
+					<resource type="silici" quantity="50" />
+					<resource type="copper" quantity="25" />
+					<resource type="titani" quantity="15" />
+				</region>
+				<region name="R60590" name-en="Pyre East" X="3" Y="0" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R49736">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R21418">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R73001">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="iron" quantity="55" />
+					<resource type="silici" quantity="35" />
+					<resource type="copper" quantity="15" />
+				</region>
+				<region name="R49736" name-en="Pyre Scarp" X="4" Y="0" type="barren">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R95569">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R60590">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R28786">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="silici" quantity="25" />
+					<resource type="iron" quantity="20" />
+				</region>
+				<region name="R35383" name-en="Pyre Polar S" X="0" Y="1" type="barren">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R83887">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R28786">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R89734">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R95569">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="silici" quantity="20" />
+					<resource type="iron" quantity="15" />
+				</region>
+				<region name="R83887" name-en="Pyre Crucible" X="1" Y="1" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R90199">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R35383">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R42505">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R32088">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="iron" quantity="80" />
+					<resource type="silici" quantity="50" />
+					<resource type="copper" quantity="25" />
+					<resource type="titani" quantity="12" />
+				</region>
+				<region name="R90199" name-en="Pyre Core" X="2" Y="1" type="mountn">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R73001">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R83887">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R07332">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R21418">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<resource type="iron" quantity="100" />
+					<resource type="silici" quantity="55" />
+					<resource type="copper" quantity="30" />
+					<resource type="titani" quantity="20" />
+				</region>
+				<region name="R73001" name-en="Pyre Vent" X="3" Y="1" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R28786">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R90199">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<exit region="R30022">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R60590">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="iron" quantity="60" />
+					<resource type="silici" quantity="40" />
+					<resource type="copper" quantity="18" />
+				</region>
+				<region name="R28786" name-en="Pyre Rim" X="4" Y="1" type="barren">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R35383">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R73001">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R04208">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R49736">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="silici" quantity="20" />
+					<resource type="iron" quantity="15" />
+				</region>
+				<region name="R89734" name-en="Pyre Trench" X="0" Y="2" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R42505">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R04208">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R41348">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R35383">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="iron" quantity="55" />
+					<resource type="silici" quantity="35" />
+					<resource type="copper" quantity="15" />
+				</region>
+				<region name="R42505" name-en="Pyre Flats" X="1" Y="2" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R07332">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R89734">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R52582">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R83887">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="iron" quantity="65" />
+					<resource type="silici" quantity="40" />
+					<resource type="copper" quantity="20" />
+				</region>
+				<region name="R07332" name-en="Pyre Central" X="2" Y="2" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R30022">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R42505">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R35094">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R90199">
+						<exitmode mode="ground" duration="5" />
+					</exit>
+					<resource type="iron" quantity="75" />
+					<resource type="silici" quantity="45" />
+					<resource type="copper" quantity="22" />
+					<resource type="titani" quantity="10" />
+				</region>
+				<region name="R30022" name-en="Pyre Waste" X="3" Y="2" type="barren">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R04208">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R07332">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R08676">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R73001">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="silici" quantity="25" />
+					<resource type="iron" quantity="20" />
+				</region>
+				<region name="R04208" name-en="Pyre Far E" X="4" Y="2" type="barren">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R89734">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R30022">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R27654">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R28786">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="silici" quantity="15" />
+					<resource type="iron" quantity="10" />
+				</region>
+				<region name="R41348" name-en="Pyre Polar N" X="0" Y="3" type="barren">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R52582">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R27654">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R89734">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="silici" quantity="15" />
+					<resource type="iron" quantity="10" />
+				</region>
+				<region name="R52582" name-en="Pyre North" X="1" Y="3" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R35094">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R41348">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R42505">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="iron" quantity="60" />
+					<resource type="silici" quantity="35" />
+					<resource type="copper" quantity="15" />
+				</region>
+				<region name="R35094" name-en="Pyre Shelf" X="2" Y="3" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R08676">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R52582">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R07332">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="iron" quantity="50" />
+					<resource type="silici" quantity="30" />
+					<resource type="copper" quantity="12" />
+				</region>
+				<region name="R08676" name-en="Pyre NE" X="3" Y="3" type="barren">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R27654">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R35094">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R30022">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="silici" quantity="20" />
+					<resource type="iron" quantity="15" />
+				</region>
+				<region name="R27654" name-en="Pyre Polar NE" X="4" Y="3" type="barren">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R41348">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R08676">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R04208">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="silici" quantity="10" />
+				</region>
+		</planet>
+		<planet name="P28081" name-en="Fomal belt" type="abelt" AU="2.5" surface-size-X="8" surface-size-Y="4">
+			<orbit name="O21580" />
+		</planet>
+		<planet name="P70679" name-en="Fomal giant" type="gasgnt" AU="6" surface-size-X="0" surface-size-Y="0">
+			<moon name="M55297" name-en="Nereid" type="ice" AU="0.02" surface-size-X="5" surface-size-Y="2">
+				<orbit name="O95749" />
+				<region name="R47577" name-en="Nereid West" X="0" Y="0" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R40307">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R31572">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R74365">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R91507">
+						<exitmode mode="space" duration="8" />
+					</exit>
+					<resource type="heliu3" quantity="35" />
+					<resource type="h2o2" quantity="50" />
+					<resource type="water" quantity="40" />
+				</region>
+				<region name="R40307" name-en="Nereid Basin" X="1" Y="0" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R31386">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R47577">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R10323">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="heliu3" quantity="45" />
+					<resource type="h2o2" quantity="70" />
+					<resource type="water" quantity="55" />
+				</region>
+				<region name="R31386" name-en="Nereid Crest" X="2" Y="0" type="barren">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R07593">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R40307">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R11227">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="heliu3" quantity="20" />
+					<resource type="h2o2" quantity="30" />
+				</region>
+				<region name="R07593" name-en="Nereid East" X="3" Y="0" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R31572">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R31386">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R95933">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="heliu3" quantity="40" />
+					<resource type="h2o2" quantity="55" />
+					<resource type="water" quantity="40" />
+				</region>
+				<region name="R31572" name-en="Nereid Rim" X="4" Y="0" type="barren">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R47577">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R07593">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R63700">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="heliu3" quantity="15" />
+					<resource type="h2o2" quantity="20" />
+				</region>
+				<region name="R74365" name-en="Nereid Polar S" X="0" Y="1" type="barren">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R10323">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R63700">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R47577">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="heliu3" quantity="15" />
+					<resource type="h2o2" quantity="25" />
+				</region>
+				<region name="R10323" name-en="Nereid Deep" X="1" Y="1" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R11227">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R74365">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R40307">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="heliu3" quantity="55" />
+					<resource type="h2o2" quantity="80" />
+					<resource type="water" quantity="65" />
+				</region>
+				<region name="R11227" name-en="Nereid Vent" X="2" Y="1" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R95933">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R10323">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R31386">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="heliu3" quantity="40" />
+					<resource type="h2o2" quantity="65" />
+					<resource type="water" quantity="50" />
+				</region>
+				<region name="R95933" name-en="Nereid Shelf" X="3" Y="1" type="barren">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R63700">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R11227">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R07593">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="heliu3" quantity="20" />
+					<resource type="h2o2" quantity="30" />
+				</region>
+				<region name="R63700" name-en="Nereid Far" X="4" Y="1" type="barren">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R74365">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R95933">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R31572">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="heliu3" quantity="10" />
+					<resource type="h2o2" quantity="15" />
+				</region>
+			</moon>
+			<moon name="M24051" name-en="Tethys" type="ice" AU="0.035" surface-size-X="5" surface-size-Y="2">
+				<orbit name="O72846" />
+				<region name="R09072" name-en="Tethys West" X="0" Y="0" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R99694">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R16829">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R86475">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R91507">
+						<exitmode mode="space" duration="8" />
+					</exit>
+					<resource type="ammoni" quantity="50" />
+					<resource type="water" quantity="40" />
+					<resource type="methn" quantity="10" />
+				</region>
+				<region name="R99694" name-en="Tethys Basin" X="1" Y="0" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R69823">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R09072">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R62297">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="ammoni" quantity="70" />
+					<resource type="water" quantity="60" />
+					<resource type="methn" quantity="15" />
+				</region>
+				<region name="R69823" name-en="Tethys Crest" X="2" Y="0" type="barren">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R16484">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R99694">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R72064">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="ammoni" quantity="25" />
+					<resource type="water" quantity="20" />
+				</region>
+				<region name="R16484" name-en="Tethys East" X="3" Y="0" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R16829">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R69823">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R21644">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="ammoni" quantity="55" />
+					<resource type="water" quantity="45" />
+					<resource type="methn" quantity="12" />
+				</region>
+				<region name="R16829" name-en="Tethys Rim" X="4" Y="0" type="barren">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R09072">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R16484">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R34742">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="ammoni" quantity="20" />
+					<resource type="water" quantity="15" />
+				</region>
+				<region name="R86475" name-en="Tethys Polar S" X="0" Y="1" type="barren">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R62297">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R34742">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R09072">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="ammoni" quantity="20" />
+					<resource type="water" quantity="15" />
+				</region>
+				<region name="R62297" name-en="Tethys Deep" X="1" Y="1" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R72064">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R86475">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R99694">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="ammoni" quantity="80" />
+					<resource type="water" quantity="70" />
+					<resource type="methn" quantity="20" />
+				</region>
+				<region name="R72064" name-en="Tethys Vent" X="2" Y="1" type="dust">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R21644">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R62297">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R69823">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="ammoni" quantity="60" />
+					<resource type="water" quantity="50" />
+					<resource type="methn" quantity="15" />
+				</region>
+				<region name="R21644" name-en="Tethys Shelf" X="3" Y="1" type="barren">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R34742">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R72064">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R16484">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="ammoni" quantity="25" />
+					<resource type="water" quantity="20" />
+				</region>
+				<region name="R34742" name-en="Tethys Far" X="4" Y="1" type="barren">
+					<capacity group="extraction" quantity="3" />
+					<exit region="R86475">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R21644">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R16829">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<resource type="ammoni" quantity="15" />
+					<resource type="water" quantity="10" />
+				</region>
+			</moon>
+			<orbit name="O49673" />
+		</planet>
+		<planet name="A84608" name-en="Fomal-Shards Alderson point" type="adpnt" AU="44" to-system="SS9563" to-point="A39322">
+			<orbit name="O0A289" />
+		</planet>
+		</system>
+		<system name="SS9741" name-en="Ember" X="-4" Y="1" Z="0">
+			<star name="S72133" name-en="Ember" type="M4" mass="1" />
+		<planet name="P17343" name-en="Ember dust" type="dust" AU="0.7" surface-size-X="4" surface-size-Y="3">
+			<orbit name="O86753" />
+			<region name="R69164" name-en="Ember brine" X="0" Y="0" type="dust">
+				<capacity group="extraction" quantity="4" />
+				<resource type="lithia" quantity="60" />
+				<resource type="titani" quantity="30" />
+				<resource type="silici" quantity="25" />
+			</region>
+		</planet>
+		<planet name="P94812" name-en="Ember belt" type="abelt" AU="2.2" surface-size-X="4" surface-size-Y="2">
+			<orbit name="O94164" />
+			<region name="R79508" name-en="Ember rock" X="0" Y="0" type="lrmast">
+				<capacity group="extraction" quantity="4" />
+				<resource type="iron" quantity="40" />
+				<resource type="titani" quantity="20" />
+			</region>
+		</planet>
+		<planet name="P74848" name-en="Ember giant" type="gasgnt" AU="4.1" surface-size-X="0" surface-size-Y="0">
+			<orbit name="O63789" />
+		</planet>
+		<planet name="A31286" name-en="Ember-Cinder Alderson point" type="adpnt" AU="40" to-system="SS1344" to-point="A41181">
+			<orbit name="O0A110" />
+		</planet>
+		</system>
+		<system name="SS0652" name-en="Gleam" X="-4" Y="0" Z="0">
+			<star name="S12834" name-en="Gleam" type="M4" mass="1" />
+		<planet name="P75526" name-en="Gleam inner" type="dust" AU="0.12" surface-size-X="3" surface-size-Y="2">
+			<orbit name="O20290" />
+			<region name="R55462" name-en="Gleam crust" X="0" Y="0" type="barren">
+				<capacity group="extraction" quantity="4" />
+				<resource type="silici" quantity="30" />
+				<resource type="copper" quantity="20" />
+			</region>
+		</planet>
+		<planet name="P61954" name-en="Gleam belt" type="abelt" AU="0.4" surface-size-X="4" surface-size-Y="2">
+			<orbit name="O24891" />
+			<region name="R27761" name-en="Gleam metal" X="0" Y="0" type="lrmast">
+				<capacity group="extraction" quantity="4" />
+				<resource type="reeox" quantity="50" />
+				<resource type="nickfe" quantity="40" />
+				<resource type="uraniu" quantity="40" />
+				<resource type="copper" quantity="25" />
+			</region>
+		</planet>
+		<planet name="P31851" name-en="Gleam ice" type="dust" AU="0.8" surface-size-X="3" surface-size-Y="2">
+			<orbit name="O38891" />
+			<region name="R70687" name-en="Gleam ice" X="0" Y="0" type="dust">
+				<capacity group="extraction" quantity="4" />
+				<resource type="h2o2" quantity="30" />
+			</region>
+		</planet>
+		<planet name="A51877" name-en="Gleam-Cinder Alderson point" type="adpnt" AU="38" to-system="SS1344" to-point="A34815">
+			<orbit name="O0A567" />
+		</planet>
+		</system>
+		<system name="SS1344" name-en="Cinder" X="-2" Y="0" Z="0">
+			<star name="S06631" name-en="Cinder" type="M4" mass="1" />
+		<planet name="P61994" name-en="Cinder dust" type="dust" AU="1.2" surface-size-X="5" surface-size-Y="3">
+			<orbit name="O28535" />
+			<region name="R98995" name-en="Cinder fumarole" X="0" Y="0" type="dust">
+				<capacity group="extraction" quantity="4" />
+				<resource type="boron" quantity="50" />
+				<resource type="carbon" quantity="30" />
+				<resource type="uraniu" quantity="20" />
+				<resource type="tungst" quantity="8" />
+			</region>
+		</planet>
+		<planet name="P53355" name-en="Cinder belt" type="abelt" AU="2.8" surface-size-X="4" surface-size-Y="2">
+			<orbit name="O07666" />
+			<region name="R95674" name-en="Cinder carbon" X="0" Y="0" type="lrcast">
+				<capacity group="extraction" quantity="4" />
+				<resource type="grphit" quantity="50" />
+				<resource type="carbon" quantity="40" />
+			</region>
+		</planet>
+		<planet name="P24958" name-en="Cinder giant" type="gasgnt" AU="8" surface-size-X="0" surface-size-Y="0">
+			<orbit name="O75915" />
+		</planet>
+		<planet name="A93873" name-en="Cinder-Helios Alderson point" type="adpnt" AU="45" to-system="SS4034" to-point="A87783">
+			<orbit name="O0A119" />
+		</planet>
+		<planet name="A41181" name-en="Cinder-Ember Alderson point" type="adpnt" AU="48" to-system="SS9741" to-point="A31286">
+			<orbit name="O0A912" />
+		</planet>
+		<planet name="A34815" name-en="Cinder-Gleam Alderson point" type="adpnt" AU="52" to-system="SS0652" to-point="A51877">
+			<orbit name="O0A761" />
+		</planet>
+		<planet name="A17155" name-en="Cinder-Ash Alderson point" type="adpnt" AU="58" to-system="SS6869" to-point="A88040">
+			<orbit name="O0A160" />
+		</planet>
+		<planet name="A81417" name-en="Cinder-Shards UAP" type="adpnt" AU="55" to-system="SS9563" to-point="A73793" unstable="true">
+			<orbit name="O0A874" />
+		</planet>
+		</system>
+		<system name="SS6869" name-en="Ash" X="-4" Y="-1" Z="0">
+			<star name="S85478" name-en="Ash" type="M4" mass="1" />
+		<planet name="P12364" name-en="Ash ice" type="dust" AU="20" surface-size-X="3" surface-size-Y="2">
+			<orbit name="O96435" />
+			<region name="R90423" name-en="Ash xenon ice" X="0" Y="0" type="dust">
+				<capacity group="extraction" quantity="4" />
+				<resource type="xenon" quantity="40" />
+				<resource type="heliu3" quantity="30" />
+				<resource type="ammoni" quantity="20" />
+				<resource type="volatl" quantity="20" />
+			</region>
+		</planet>
+		<planet name="P12705" name-en="Ash inner giant" type="gasgnt" AU="6" surface-size-X="0" surface-size-Y="0">
+			<orbit name="O71067" />
+		</planet>
+		<planet name="P86375" name-en="Ash outer giant" type="gasgnt" AU="18" surface-size-X="0" surface-size-Y="0">
+			<orbit name="O07990" />
+		</planet>
+		<planet name="A88040" name-en="Ash-Cinder Alderson point" type="adpnt" AU="70" to-system="SS1344" to-point="A17155">
+			<orbit name="O0A279" />
+		</planet>
+		</system>
+		<system name="SS9563" name-en="Shards" X="3" Y="0" Z="0">
+			<star name="S70856" name-en="Shards" type="M4" mass="1" />
+		<planet name="P56499" name-en="Shards dust" type="dust" AU="0.9" surface-size-X="4" surface-size-Y="3">
+			<orbit name="O98039" />
+			<region name="R26366" name-en="Shards evaporite" X="0" Y="0" type="dust">
+				<capacity group="extraction" quantity="4" />
+				<resource type="nitrat" quantity="60" />
+				<resource type="silici" quantity="25" />
+			</region>
+		</planet>
+		<planet name="P46439" name-en="Shards inner belt" type="abelt" AU="2.0" surface-size-X="4" surface-size-Y="2">
+			<orbit name="O41105" />
+			<region name="R93448" name-en="Shards organics" X="0" Y="0" type="lrcast">
+				<capacity group="extraction" quantity="4" />
+				<resource type="carbon" quantity="40" />
+				<resource type="kerogn" quantity="25" />
+				<resource type="oil" quantity="15" />
+			</region>
+		</planet>
+		<planet name="P55520" name-en="Shards outer belt" type="abelt" AU="3.1" surface-size-X="4" surface-size-Y="2">
+			<orbit name="O07493" />
+			<region name="R40858" name-en="Shards ice" X="0" Y="0" type="smcast">
+				<capacity group="extraction" quantity="4" />
+				<resource type="h2o2" quantity="30" />
+				<resource type="volatl" quantity="20" />
+			</region>
+		</planet>
+		<planet name="A39322" name-en="Shards-Fomal Alderson point" type="adpnt" AU="46" to-system="SS9486" to-point="A84608">
+			<orbit name="O0A620" />
+		</planet>
+		<planet name="A59930" name-en="Shards-Deep Alderson point" type="adpnt" AU="50" to-system="SS9261" to-point="A41442">
+			<orbit name="O0A216" />
+		</planet>
+		<planet name="A98549" name-en="Shards-Graph Alderson point" type="adpnt" AU="54" to-system="SS8566" to-point="A09509">
+			<orbit name="O0A352" />
+		</planet>
+		<planet name="A01221" name-en="Shards-Spare Alderson point" type="adpnt" AU="60" to-system="SS5184" to-point="A60069">
+			<orbit name="O0A704" />
+		</planet>
+		<planet name="A73793" name-en="Shards-Cinder UAP" type="adpnt" AU="58" to-system="SS1344" to-point="A81417" unstable="true">
+			<orbit name="O0A518" />
+		</planet>
+		</system>
+		<system name="SS9261" name-en="Deep" X="5" Y="1" Z="0">
+			<star name="S01935" name-en="Deep" type="M4" mass="1" />
+		<planet name="P53884" name-en="Deep dust" type="dust" AU="0.5" surface-size-X="4" surface-size-Y="3">
+			<orbit name="O06573" />
+			<region name="R52297" name-en="Deep methane ice" X="0" Y="0" type="dust">
+				<capacity group="extraction" quantity="4" />
+				<resource type="methn" quantity="50" />
+				<resource type="h2o2" quantity="30" />
+				<resource type="ammoni" quantity="15" />
+			</region>
+		</planet>
+		<planet name="P61214" name-en="Deep inner giant" type="gasgnt" AU="4.5" surface-size-X="0" surface-size-Y="0">
+			<orbit name="O76570" />
+		</planet>
+		<planet name="P95562" name-en="Deep outer giant" type="gasgnt" AU="9.2" surface-size-X="0" surface-size-Y="0">
+			<orbit name="O62494" />
+		</planet>
+		<planet name="A41442" name-en="Deep-Shards Alderson point" type="adpnt" AU="55" to-system="SS9563" to-point="A59930">
+			<orbit name="O0A735" />
+		</planet>
+		</system>
+		<system name="SS8566" name-en="Graph" X="5" Y="0" Z="0">
+			<star name="S12225" name-en="Graph" type="M4" mass="1" />
+		<planet name="P07101" name-en="Graph" type="ocean" AU="0.95" surface-size-X="4" surface-size-Y="3">
+			<orbit name="O65910" />
+			<region name="R88040" name-en="Graph prairie" X="0" Y="0" type="grassl">
+				<capacity group="settlement" quantity="8" />
+				<resource type="terair" quantity="100" />
+				<resource type="food" quantity="400" />
+				<resource type="water" quantity="200" />
+				<resource type="carbon" quantity="30" />
+				<resource type="silici" quantity="20" />
+				<resource type="iron" quantity="20" />
+			</region>
+		</planet>
+		<planet name="P88260" name-en="Graph dust" type="dust" AU="1.6" surface-size-X="3" surface-size-Y="2">
+			<orbit name="O69616" />
+			<region name="R85181" name-en="Graph highland" X="0" Y="0" type="dust">
+				<capacity group="extraction" quantity="4" />
+				<resource type="silici" quantity="30" />
+				<resource type="alumin" quantity="20" />
+				<resource type="gold" quantity="5" />
+			</region>
+		</planet>
+		<planet name="P85650" name-en="Graph belt" type="abelt" AU="2.5" surface-size-X="4" surface-size-Y="2">
+			<orbit name="O20636" />
+			<region name="R48945" name-en="Graph rock" X="0" Y="0" type="lrmast">
+				<capacity group="extraction" quantity="4" />
+				<resource type="iron" quantity="40" />
+				<resource type="silici" quantity="20" />
+			</region>
+		</planet>
+		<planet name="A09509" name-en="Graph-Shards Alderson point" type="adpnt" AU="42" to-system="SS9563" to-point="A98549">
+			<orbit name="O0A209" />
+		</planet>
+		</system>
+		<system name="SS5184" name-en="Spare" X="5" Y="-1" Z="0">
+			<star name="S98772" name-en="Spare" type="M4" mass="1" />
+		<planet name="P84697" name-en="Spare dust" type="dust" AU="1.1" surface-size-X="4" surface-size-Y="3">
+			<orbit name="O07456" />
+			<region name="R57423" name-en="Spare beryllium crust" X="0" Y="0" type="dust">
+				<capacity group="extraction" quantity="4" />
+				<resource type="berylm" quantity="50" />
+				<resource type="titani" quantity="30" />
+				<resource type="copper" quantity="20" />
+			</region>
+		</planet>
+		<planet name="P12900" name-en="Spare belt" type="abelt" AU="2.4" surface-size-X="4" surface-size-Y="2">
+			<orbit name="O66563" />
+			<region name="R67840" name-en="Spare ice" X="0" Y="0" type="smcast">
+				<capacity group="extraction" quantity="4" />
+				<resource type="h2o2" quantity="25" />
+			</region>
+		</planet>
+		<planet name="A60069" name-en="Spare-Shards Alderson point" type="adpnt" AU="40" to-system="SS9563" to-point="A01221">
+			<orbit name="O0A650" />
+		</planet>
+		</system>
+	</galaxy>
+	<orders />
+</game>

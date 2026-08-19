@@ -17,6 +17,12 @@ Do not invent a resource that no tech, module fuel, farm, or upkeep uses. Do not
 
 Never stack the same `type` twice on one region. `terair` only on habitable cells. `heliu3` and `deutrm` **not** on habitable basins.
 
+### Renewable vs finite
+
+All current region resource quantities are **renewable yield caps** (max extraction rate/turn, never depletes). **Finite deposits** (deplete to zero) will be added via GM events, contract rewards, or `PROSPECT` discoveries once the engine supports the `renewable` attribute.
+
+**Classification:** L0–L3 resources (`iron` through `terair`) are renewable everywhere. L4+ resources (`nickfe` through `volatl`) are renewable on moons and gas giants but finite on planets and asteroids. See `designer/engine-wishlist.md` for the `renewable` attr spec.
+
 ## Closed set
 
 **Seeded on regions (or orbits when the loader allows):**  
@@ -52,7 +58,7 @@ See `technology.md` Combat matchups for which techs sit in each group.
 |----|---------|-----------|--------------------|------------------------------|--------|-------------------|-------|-------|-------------------------------|
 | `iron` | unit of iron | 5/10 | `iminng` (3); region ore | L0 (`indust`, `fossil`, most builds) | common | `grassl` `dust` `mountn` `barren` `smmast` `lrmast`; `dust`/`ocean` planets | **present** common–rich | present, not signature | SS0009 Graph; SS0010 Spare; Pyre extra |
 | `titani` | unit of titanium | 10/10 | `tminng` (2); region ore | L0 (`areact`, `indust`, hulls) | uncommon–rich | `mountn` `dust` `lrmast`; ilmenite highlands | **absent** (pocket: Scoria, Selene) | **rich** highlands | SS0003 Ember; SS0010 Spare |
-| `silici` | unit of silicium | 5/3 | `slcmlt` (1); region ore | L0 (`corpmg`, `filidx`, `spctrl`) | common | `dust` `barren` `mountn` `grassl` (low); belts | **low** sediments | **rich** | SS0003 Ember; SS0009 Graph |
+| `silici` | unit of silicium | 5/3 | `slcmlt` (1); region ore; consume EW/drone `psnew` `drnhng` `ewsens` `alnfgh` `drnswm` `misgde` `ewark` `arkew` | L0 (`corpmg`, `filidx`, `spctrl`) | common | `dust` `barren` `mountn` `grassl` (low); belts | **low** sediments | **rich** | SS0003 Ember; SS0009 Graph |
 | `copper` | unit of copper | 5/8 | `cminng` (2); region ore | L0 (`corpmg`, `urfiss`, `airgen`) | uncommon–common | volcanic `dust` `mountn`; metal asteroids | **absent** (pocket: Scoria) | **common** arcs | SS0004 Gleam; SS0010 Spare |
 | `uraniu` | unit of uranium | 1/8 | `uminng` (1); `fisrec` fuel | L0 (`urfiss` fuel; mining) | rare / pocket | few `mountn`; `lrmast` | **absent** (pocket: Helios belt) | **pockets** 2–3 peaks 50–150 | SS0004 Gleam; SS0005 Cinder |
 | `carbon` | unit of carbon | 5/5 | `hcdril` (1); `cplant` fuel | L0 (`fossil` / plant fuel) | common on organics | `grassl` wetlands; `smcast` `lrcast` | **rich** peat/coal | **absent** (trace graphite only; pocket: Fomal belt) | SS0005 Cinder; SS0007 Shards; SS0009 Graph |
@@ -62,10 +68,10 @@ See `technology.md` Combat matchups for which techs sit in each group.
 | `h2o2` | unit of oxyhydro | 1/1 | `wtrdst` (3); `rctdrv`/`autdrv`/`tanker` fuel | L0 (`areact` fuel; distillation) | common on wet worlds | `ocean` `sea` ice `dust`; polar | **rich** | **modest** | SS0007 Shards ice; SS0008 Deep; SS0010 Spare ice |
 | `water` | unit of water | 1/1 | region hydrosphere; `clslss` produce; `hydnoz`/`iondrv`/`ntreng`/`nepeng`/`vasmdr` fuel | L1 (`hydstg` fuel) | common / modest | `ocean` `sea` ice; not vacuum dust | **rich** | **modest** | SS0008 Deep hab moon; ice moons generally |
 | `food` | unit of food | 1/1 | `farmng` (5), `afrmng` (8), `agrdek`; region biomass; city upkeep | L0 (`farmng`; city upkeep) | biosphere | `grassl` `sea` only (habitable) | **rich** 400–800 grassland | **poor** 80–150 | SS0008 Deep (tight); SS0009 Graph |
-| `terair` | terran breathing gas | 1/1 | region biosphere; `lifsys` produce 10/wk; `clslss` | L0 (`popcnt`/`agrplx`/`farmng` need atmosphere) | habitable only | habitable `grassl` `ocean` `sea` `mountn` (thin) | **present** habitable cells | **present** habitable cells | SS0008 Deep ice moon; SS0009 Graph. Never Scoria/Pyre/belts |
-| `nickfe` | nickel-iron | 6/12 | `nminng` (2); consume `orbfnd` `msdrvr` `lghull` `arkcns` | L1 (`nminng`); L4 foundry | uncommon | `lrmast` `smmast`; metal moons | absent on Arbor (pocket: Helios belt) | absent (Anvil has iron/titani instead) | SS0004 Gleam |
-| `tungst` | tungsten | 8/20 | `wminng` (1); consume `matlib` `armhul` `kntcgn` `kpdgun` `gausgn` `spngun` `hiisp` `arkcns` | L5 (`wminng` / L6 `matlib`) | trace | `vulcan` moon `mountn`/`dust` | absent (pocket: Aeolus vulcan) | absent | SS0005 Cinder vulcan moons |
-| `deutrm` | deuterium | 1/1 | `d2ext` (1); `dhefrc`/`plsdv`/`arkeng` fuel; consume `dhefus` | L4 (`d2ext`); L6 fusion | rare / pocket | ice `dust`/`barren`; **not** habitable basins. Orbit of `gasgnt` is flavour until `atmosphere` location-type | absent on Arbor (pocket: Aeolus ices) | absent on Anvil (pocket: Fomal ices) | SS0003 Ember ice-giant moons; SS0006 Ash |
+| `terair` | terran breathing gas | 1/1 | region biosphere; `lifsys` produce 10/wk; `clslss`; consume lasers/shields `lasopt` `lstrrt` `prllsr` `psnshd` `pdefls` `shplas` `uvltur` `bmdir` `arkdef` | L0 (`popcnt`/`agrplx`/`farmng` need atmosphere) | habitable only | habitable `grassl` `ocean` `sea` `mountn` (thin) | **present** habitable cells | **present** habitable cells | SS0008 Deep ice moon; SS0009 Graph. Never Scoria/Pyre/belts |
+| `nickfe` | nickel-iron | 6/12 | `nminng` (2); consume `orbfnd` `msdrvr` `lghull` `arkcns`; kinetics `kntcgn` `gausgn` `spngun` `armhul` | L1 (`nminng`); L4 foundry | uncommon | `lrmast` `smmast`; metal moons | absent on Arbor (pocket: Helios belt) | absent (Anvil has iron/titani instead) | SS0004 Gleam |
+| `tungst` | tungsten | 8/20 | `wminng` (1); consume `matlib` `armhul` `kpdgun` `gausgn` `spngun` `hiisp` `arkcns` | L5 (`wminng` / L6 `matlib`) | trace | `vulcan` moon `mountn`/`dust` | absent (pocket: Aeolus vulcan) | absent | SS0005 Cinder vulcan moons |
+| `deutrm` | deuterium | 1/1 | `d2ext` (1); `dhefrc`/`plsdv`/`arkeng` fuel; consume `dhefus`; pbpd `proxpd` | L4 (`d2ext`); L6 fusion | rare / pocket | ice `dust`/`barren`; **not** habitable basins. Orbit of `gasgnt` is flavour until `atmosphere` location-type | absent on Arbor (pocket: Aeolus ices) | absent on Anvil (pocket: Fomal ices) | SS0003 Ember ice-giant moons; SS0006 Ash |
 | `ammoni` | ammonia ice | 2/2 | `amnext` (2); consume `clslfe`; makeup `eclssx` | L5 (`clslfe`) | uncommon | outer ice moons `dust`/`barren` | absent (pocket: Aeolus ices) | absent (pocket: Fomal ices) | SS0006 Ash |
 | `methn` | methane ice | 2/1 | `ch4min` (2); `mpddrv`/`vasmdr` fuel | L3 (`ch4min`); L5 MPD | uncommon | outer ice moons; Titan-class | absent (pocket: Aeolus ices) | absent (pocket: Fomal ices) | SS0008 Deep |
 | `volatl` | mixed volatiles | 2/2 | `volext` (2); `isrplt` USE feedstock | L4 (`volext` / `isrurf`) | uncommon | `smcast` `lrcast` | absent (pocket: Helios belt `lrcast`) | absent (pocket: Fomal belt) | SS0006 Ash; SS0007 Shards |

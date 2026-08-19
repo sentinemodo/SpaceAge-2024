@@ -1,8 +1,8 @@
 # SpaceAge-2024 — modules and integrations
 
-Last updated: 2026-08-18
+Last updated: 2026-08-19
 
-All engine types live in namespace `SpaceAge`. Folders below are **bounded contexts by ownership**, not separate assemblies.
+Engine types live in namespace `SpaceAge`. Folders under `Game/` are **bounded contexts by ownership**, not separate assemblies. Agents and (target) visualization are **additional bounded contexts** in this repo; they are not extra C# projects yet.
 
 ## Modules
 
@@ -16,6 +16,9 @@ All engine types live in namespace `SpaceAge`. Folders below are **bounded conte
 | **Reports** | `Game/reports/` | `ReportWriter`, line wrapping, event lines | Reads world + `DataFile` for faction-filtered XML sidecar |
 | **World model** | `Game/data structures/` | Galaxy graph, factions, stacks, items, techs, offers | Used by every other module via `*.All` and object references |
 | **Tests** | `Tests/` | Unit and SampleGame integration | Project reference to `Game`; filesystem fixtures |
+| **Player agent** | `.cursor/agents/player.md`, `player/` | Live manuals, drafts, syntax/tech wishlists; translates **intent** → legal `order.*` | Reads `report.*` (txt/xml), manuals, parser/catalog as needed. Does not write C# or campaign XML |
+| **Game-designer agent** | `.cursor/agents/game-designer.md`, `designer/`, `campaign/` | Galaxy, tech tree, catalog, contracts; `designer/engine-wishlist.md` for engine gaps | Writes design docs then live XML when tokens exist. Does not write C# or `Tests/**` |
+| **Visualization (target)** | **Not present.** Future folder or project (open: `viz/` vs new csproj) | Read-only (or near-read-only) story of the world from engine artifacts | Consumes `report.*`, optional XML report, `gameout`, catalog. Must not reimplement rules. Must not write orders except forwarding intent to `/player` |
 
 ### World object graph
 
@@ -52,6 +55,84 @@ flowchart TD
 - **Do not** change faction XML-report filter semantics: name `"1"` is NPC (unfiltered); skip factions with no stacks; visibility uses existing `Visible(faction)`.
 - **Do not** opportunistic-split `DataFile` outside [ADR-0006](adr/ADR-0006-datafile-facade-and-xml-seams.md) phases, and do not split the rest of `ModuleStack` (ADR-0005).
 - **Do not** “complete” the capacity save switch (`research` group) or rewrite moon/exit save quirks in the same PR as an extract.
+- **Do not** let an LLM invent live order verbs or patch C# from a story beat — wishlist (`player/order_wishlist.md`) instead.
+- **Do not** put visualization or LLM logic in `Game.Execute` (or fold viz into `ReportWriter` as a second rules engine).
+- **Do not** have `/game-designer` write C# or `Tests/**`.
+- **Do not** have agents hand-edit `gameout.*` as a substitute for `Game.exe`.
+
+## Agent / orchestration (PBAI)
+
+Dated: 2026-08-19. Decision: [ADR-0007](adr/ADR-0007-pbai-product-loop.md). Engine pipeline below is unchanged.
+
+Humans may **skip** `/player` and drop `order.*` files directly (tests always do).
+
+### Interim (current, 2026-08-19)
+
+Agents exist; visualization does not. Humans and `/player` read txt/xml reports. Optional external mailer may still wrap the same files (PBEM-compatible).
+
+```mermaid
+flowchart TD
+  intent[Human story / intent]
+  precise[Human or tests drop order.*]
+  player["/player"]
+  wishP[player/order_wishlist.md and technologies_wishlist.md]
+  designer["/game-designer"]
+  campaign[designer/ then campaign/]
+  wishE[designer/engine-wishlist.md]
+  tdd[TDD]
+  engine[Game.exe]
+  reports[report.* txt/xml and gameout]
+  next[Next story]
+
+  intent --> player
+  precise --> engine
+  player -->|legal orders| engine
+  player -->|cannot express| wishP
+  wishP --> designer
+  designer -->|tokens exist| campaign
+  campaign --> engine
+  designer -->|engine gap| wishE
+  wishE --> tdd
+  tdd -->|tests first| engine
+  engine --> reports
+  reports --> player
+  player --> next
+```
+
+### Target (visualization added; engine still file-batch)
+
+Same loop. A **new** presentation context consumes engine artifacts. It does not execute turns. Optional: forward human intent to `/player`. PBEM mailer remains optional compatibility.
+
+```mermaid
+flowchart TD
+  intent[Human story / intent]
+  precise[Human or tests drop order.*]
+  player["/player"]
+  wishP[player wishlists]
+  designer["/game-designer"]
+  wishE[designer/engine-wishlist.md]
+  tdd[TDD]
+  engine[Game.exe]
+  artifacts[report.* gameout catalog]
+  viz[Visualization]
+  next[Next story]
+
+  intent --> player
+  precise --> engine
+  player -->|legal orders| engine
+  player --> wishP
+  wishP --> designer
+  designer --> engine
+  designer --> wishE
+  wishE --> tdd
+  tdd --> engine
+  engine --> artifacts
+  artifacts --> player
+  artifacts --> viz
+  viz -.->|forward intent| player
+  player --> next
+  viz --> next
+```
 
 ## Persistence (`DataFile`)
 
@@ -110,7 +191,7 @@ flowchart TD
   reports --> save[DataFile.SaveGame gameout.turn.xml]
 ```
 
-**`/check <file>`** skips the turn and calls `OrdersReader.Check` (currently a stub).
+**`/check <file>`** skips the turn and calls `OrdersReader.Check` (currently a stub). PBAI does not change this CLI. Promoting `/check` to validate AI-drafted orders is future work, not this pivot.
 
 ### `Game.Execute()` (inner)
 
@@ -124,7 +205,7 @@ Per subject per week: all pending **immediate** orders → at most one **long** 
 
 ## File contracts
 
-Encoding: **Windows-1251** for all of the following. XML declaration: `encoding="windows-1251"`.
+Encoding: **Windows-1251** for all of the following. XML declaration: `encoding="windows-1251"`. Unchanged by [ADR-0007](adr/ADR-0007-pbai-product-loop.md). PBAI, optional mailer, and target viz **consume or produce** these files; they do not add engine I/O.
 
 | File | Directory | Direction | Role |
 |------|-----------|-----------|------|
@@ -136,7 +217,7 @@ Encoding: **Windows-1251** for all of the following. XML declaration: `encoding=
 | `report.{turn}.{faction}.xml` | turn dir | out | Faction-visible XML subset (when `xml-report` is enabled) |
 | `error.log` | CWD | out | RELEASE-only uncaught exceptions (1251) |
 
-There is **no** network, message bus, or shared database. Faction `email` is metadata for the GM mailer.
+There is **no** network, message bus, or shared database. Faction `email` is metadata for an optional GM mailer. Product default is PBAI (intent → `/player` → these files), not SMTP.
 
 ### Order text sketch
 
@@ -171,6 +252,7 @@ One test assembly: `Tests.dll`. Layers are **namespaces**, not extra `.csproj` f
 - Fast local/cloud default: **entire** `Tests.dll` (`.cursor/run-tests.sh` on Mono / `vstest.console` on Windows).
 - Integration tests for SampleGame turns 4–5 are `[Ignore("not ready")]` — do not enable them without goldens. Turns 1–3 are independently runnable from committed `gamein` files.
 - `DataFile` extracts (ADR-0006): characterize with `TDataFile` (unit) and SampleGame load/save goldens (integration). Do not add a third test layer.
+- PBAI does not collapse layers. Tests continue to use **precise** order syntax. This ADR does not change SampleGame goldens.
 
 ## Stub / incomplete boundaries
 
@@ -181,9 +263,12 @@ Treat as **not live integrations** until implemented with tests:
 | `Request.Load` | Stub |
 | `EventsReaders.Load` / `Events.Execute` | Stub |
 | `OrdersReader.Check` | Stub |
-| `Game.GenerateOffers` / `UpdateRates` | Partial / TODO |
+| `Game.GenerateOffers` / `UpdateRates` | Stub (later market/economy PR) |
+| Market auto-offers / transfer XML | Incomplete; `ProcessGenerateAutoOffers` ignored |
 | SampleGame turns 4–5 | Ignored |
+| Visualization | Not present (target context) |
 
 ## Revision
 
 - 2026-08-18: Persistence seams for `DataFile` (ADR-0006). Interim/target diagrams; anti-patterns for facade, 1251, two-pass catalog, faction XML-report filter. Engine citation `0.1.141`.
+- 2026-08-19: PBAI agent loop ([ADR-0007](adr/ADR-0007-pbai-product-loop.md)). Rows for player agent, designer agent, visualization (target). Interim vs target orchestration diagrams. Anti-patterns: no invented verbs, no viz in `Game.Execute`, designer does not write C#.

@@ -1,0 +1,16 @@
+---
+description: Game designer owns campaign XML; never C# or Tests fixtures
+globs: designer/**,campaign/**
+alwaysApply: false
+---
+
+# Campaign and designer docs
+
+When these files are in scope, act as (or defer to) **`/game-designer`**. Campaign is the live **PBAI** world (same files remain PBEM-compatible). Answer `player/` wishlists here; engine gaps stay in `designer/engine-wishlist.md`.
+
+- Edit `campaign/data.xml` and `campaign/gamein.xml` only. Encoding Windows-1251. Ids ≤ 6 characters.
+- Do **not** write `*.cs` / `*.csproj`.
+- Do **not** change `Tests/**` (including `Tests/data.xml` and SampleGame goldens).
+- Unknown module `group` or `location-type` values crash load; park them in `designer/engine-wishlist.md`.
+- Descriptions stay hard-science. Scale: 10 players; **two occupied starting systems** (five corps each, exclusive regions, split resources); **eight empty** exploration systems; 1–4 planets/belts, 0–1 habitable, 0–2 exploitable, 0–4 moons, 10–50 regions per body. See `designer/galaxy.md`.
+- Level 10 enables a self-sufficient ark (thousands of crew, inner-system transit in weeks).

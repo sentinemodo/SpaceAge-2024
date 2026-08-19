@@ -25,6 +25,10 @@
 			name="abelt"
 			name-en="asteroids belt"
 			description="Asteroids belt." />
+		<entry
+			name="adpnt"
+			name-en="Alderson point"
+			description="A stable space-time anomaly in the stellar gravity-well corona, typically beyond the outermost planet. Points exist in pairs. Instant transit is only between matched points; reaching the corona is ordinary in-system flight." />
 	</planet>
 
 	<moon>
@@ -252,6 +256,64 @@
 			<use-allowed-by crew="terran"/>
 		</entry>
 		<entry name="heliu3" name-en="unit of helium-3" name-en2="units of helium-3" size="1" mass="1" description="A light, non-radioactive helium isotope prized as clean fusion fuel; scarce on planets but abundant in lunar regolith."/>
+		<entry name="nickfe" name-en="unit of nickel-iron" name-en2="units of nickel-iron" size="6" mass="12" description="Kamacite-taenite metal from differentiated asteroids; dense feedstock for rails and large hulls."/>
+		<entry name="tungst" name-en="unit of tungsten" name-en2="units of tungsten" size="8" mass="20" description="Refractory dense metal from fumarolic and vulcan provinces; penetrators and heat throats."/>
+		<entry name="deutrm" name-en="unit of deuterium" name-en2="units of deuterium" size="1" mass="1" description="Heavy hydrogen distilled from outer ices; fusion and energetic burst charges."/>
+		<entry name="ammoni" name-en="unit of ammonia ice" name-en2="units of ammonia ice" size="2" mass="2" description="NH3 ice from outer moons; nitrogen makeup and hypergolic precursor."/>
+		<entry name="methn" name-en="unit of methane ice" name-en2="units of methane ice" size="2" mass="1" description="CH4 ice; MPD reaction mass and Titan-class hydrospheres."/>
+		<entry name="volatl" name-en="unit of mixed volatiles" name-en2="units of mixed volatiles" size="2" mass="2" description="H2O, CO2, and N2 boiled from carbonaceous fines."/>
+		<entry name="kerogn" name-en="unit of kerogen organics" name-en2="units of kerogen organics" size="2" mass="2" description="Insoluble macromolecular organics in carbonaceous chondrite matrix."/>
+		<entry name="alumin" name-en="unit of aluminium" name-en2="units of aluminium" size="5" mass="8" description="Light metal from anorthosite highlands; hull skin and sails."/>
+		<entry name="platnm" name-en="unit of platinum-group metal" name-en2="units of platinum-group metal" size="1" mass="4" description="Trace siderophile with nickel-iron; catalysts."/>
+		<entry name="lithia" name-en="unit of lithium ore" name-en2="units of lithium ore" size="2" mass="2" description="Li salts in evaporite brines; Li-MPD propellant feedstock."/>
+		<entry name="boron" name-en="unit of boron" name-en2="units of boron" size="3" mass="4" description="Borates and fumarolic B; ceramic armour and neutron absorbers."/>
+		<entry name="berylm" name-en="unit of beryllium" name-en2="units of beryllium" size="4" mass="6" description="Light stiff metal from barren crust; windows and neutron diagnostics."/>
+		<entry name="xenon" name-en="unit of xenon" name-en2="units of xenon" size="1" mass="2" description="Noble gas adsorbed on outer ices; Hall and ion propellant, laser/shield working gas."/>
+		<entry name="reeox" name-en="unit of rare-earth oxides" name-en2="units of rare-earth oxides" size="3" mass="8" description="Lanthanide oxides with nickel-iron asteroids; magnets, sensors, processors."/>
+		<entry name="grphit" name-en="unit of nuclear graphite" name-en2="units of nuclear graphite" size="5" mass="5" description="High-purity carbon from baked high-T worlds, not peat; moderator and C-C layup."/>
+		<entry name="nitrat" name-en="unit of nitrate salts" name-en2="units of nitrate salts" size="2" mass="2" description="Evaporite oxidizer salts; solid-motor grain and proximity bursts."/>
+		<entry name="hydzn" name-en="unit of hydrazine" name-en2="units of hydrazine" size="2" mass="2" description="Storable hypergolic fuel synthesised from ammonia; bipropellant and attitude-control feedstock."/>
+		<entry name="wrkdrn" name-en="worker drone" name-en2="worker drones" size="2" mass="2" description="Autonomous worker drone; 1 crew-equivalent. Requires energy, not food or terair. Immune to radiation and vacuum. Cannot be wounded, only destroyed."/>
+		<entry name="advdrn" name-en="advanced drone AI" name-en2="advanced drone AIs" size="2" mass="2" description="Adaptive heuristic swarm coordinator; 2 crew-equivalent per unit. Higher initiative than basic worker drones."/>
+		<entry name="prllsr" name-en="personal laser" name-en2="personal lasers" size="2" mass="3" attack="2" damage="2" description="Compact CO2/diode sidearm sized for infantry, vehicle, and fighter mounts.">
+			<use-allowed-by module-type-group="infantry"/>
+			<use-allowed-by module-type-group="vehicle"/>
+			<use-allowed-by module-type-group="military"/>
+		</entry>
+		<entry name="prlgun" name-en="personal rail gun" name-en2="personal rail guns" size="3" mass="4" attack="2" damage="3" description="Portable electromagnetic launcher firing tungsten flechettes; infantry, vehicle, and fighter scale.">
+			<use-allowed-by module-type-group="infantry"/>
+			<use-allowed-by module-type-group="vehicle"/>
+			<use-allowed-by module-type-group="military"/>
+		</entry>
+		<entry name="psnarm" name-en="personal armour" name-en2="personal armour sets" size="4" mass="6" defense="3" description="Layered ceramic-composite plates for EVA and ground combat; resists kinetic impacts.">
+			<use-allowed-by module-type-group="infantry"/>
+			<use-allowed-by module-type-group="vehicle"/>
+			<use-allowed-by module-type-group="military"/>
+		</entry>
+		<entry name="psnshd" name-en="personal plasma shield" name-en2="personal plasma shields" size="3" mass="4" defense="3" description="Gas-fed plasma envelope that diffuses coherent light; resists laser weapons.">
+			<use-allowed-by module-type-group="infantry"/>
+			<use-allowed-by module-type-group="vehicle"/>
+			<use-allowed-by module-type-group="military"/>
+		</entry>
+		<entry name="psnew" name-en="personal EW pack" name-en2="personal EW packs" size="2" mass="2" defense="2" description="Broadband jammer and datalink spoofer; disrupts drone targeting at infantry and fighter scale.">
+			<use-allowed-by module-type-group="infantry"/>
+			<use-allowed-by module-type-group="vehicle"/>
+			<use-allowed-by module-type-group="military"/>
+		</entry>
+		<entry name="prxgrd" name-en="proximity grenades" name-en2="proximity grenades" size="3" mass="3" attack="2" damage="3" description="Isotope-seeded fragmentation burst; last-ditch point-blank defence against incoming missiles.">
+			<use-allowed-by module-type-group="infantry"/>
+			<use-allowed-by module-type-group="vehicle"/>
+			<use-allowed-by module-type-group="military"/>
+		</entry>
+		<entry name="spmine" name-en="space mine" name-en2="space mines" size="50" mass="80" damage="15" description="Proximity-fused explosive device; detonates on enemy entry. Invisible until detected. Stationary.">
+			<use-allowed-by module-type-group="military"/>
+		</entry>
+		<entry name="smmine" name-en="smart mine" name-en2="smart mines" size="80" mass="120" damage="25" description="IFF-enabled proximity mine; skips friendly signatures. Invisible until detected. Stationary.">
+			<use-allowed-by module-type-group="military"/>
+		</entry>
+		<entry name="hvmine" name-en="heavy mine" name-en2="heavy mines" size="150" mass="200" damage="50" description="Deuterium-boosted shaped-charge mine; cracks small hulls. IFF. Invisible until detected.">
+			<use-allowed-by module-type-group="military"/>
+		</entry>
 	</item>
 
 	<technology>
@@ -917,6 +979,1064 @@ Researchers can query the library. The system can handle natural language questi
 			<use-consume item="titani" quantity="4"/>
 			<use-consume item="silici" quantity="4"/>
 			<use-produce module="alndrn"/>
+		</entry>
+		<!-- L1 production -->
+		<entry name="nminng" name-en="nickel-iron extraction" level="1" requires="iminng" description="Gravity separation of kamacite-taenite metal from differentiated M-type asteroids." use-time="1">
+			<use-allowed-in module-type-group="extraction" location-type="solid-surface"/>
+			<use-produce item="nickfe" quantity="2"/>
+		</entry>
+		<entry name="gminng" name-en="gold recovery" level="1" requires="cminng" description="Cyanide-free gravity and amalgam analogue on hydrothermal veins." use-time="2">
+			<use-allowed-in module-type-group="extraction"/>
+			<use-produce item="gold" quantity="1"/>
+		</entry>
+		<!-- L1 propulsion -->
+		<entry name="hydstg" name-en="staged hydrolox" level="1" requires="areact" description="Regenerative-cooled nozzle with staged combustion of H2/O2. Vacuum Isp approximately 450 seconds." use-time="5">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="8"/>
+			<use-consume item="titani" quantity="4"/>
+			<use-consume item="copper" quantity="2"/>
+			<use-produce module="hydnoz"/>
+		</entry>
+		<!-- L1 research -->
+		<entry name="optins" name-en="optical and IR instruments" level="1" requires="filidx" description="Diffraction-limited telescopes, FTIR spectrometers, and gold-coated contacts for broadband infrared sensing." use-time="4">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="silici" quantity="6"/>
+			<use-consume item="copper" quantity="4"/>
+			<use-consume item="iron" quantity="2"/>
+			<use-consume item="gold" quantity="1"/>
+			<use-produce module="optlab"/>
+		</entry>
+		<!-- L1 military -->
+		<entry name="prlgun" name-en="personal rail gun production" level="1" tags="military" requires="stnrdf" description="Portable electromagnetic launcher firing tungsten flechettes." use-time="3">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="2"/>
+			<use-consume item="titani" quantity="1"/>
+			<use-produce item="prlgun"/>
+		</entry>
+		<entry name="prllsr" name-en="personal laser production" level="1" tags="military" requires="lasopt" description="Compact diode sidearm for infantry and fighter mounts." use-time="3">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="terair" quantity="2"/>
+			<use-consume item="copper" quantity="1"/>
+			<use-consume item="h2o2" quantity="1"/>
+			<use-produce item="prllsr"/>
+		</entry>
+		<entry name="psnarm" name-en="personal armour production" level="1" tags="military" requires="stnrdf" description="Layered ceramic-composite plates for EVA and ground combat." use-time="3">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="2"/>
+			<use-consume item="titani" quantity="1"/>
+			<use-produce item="psnarm"/>
+		</entry>
+		<!-- L2 production -->
+		<entry name="alminn" name-en="aluminium from anorthosite" level="2" requires="slcmlt" description="Hall-Heroult analogue smelting highland anorthosite into aluminium ingots." use-time="2">
+			<use-allowed-in module-type-group="extraction" location-type="solid-surface"/>
+			<use-produce item="alumin" quantity="2"/>
+		</entry>
+		<entry name="krogen" name-en="kerogen retorting" level="2" requires="hcdril" description="Slow pyrolysis of carbonaceous chondrite organics into industrial kerogen." use-time="2">
+			<use-allowed-in module-type-group="extraction"/>
+			<use-produce item="kerogn" quantity="1"/>
+		</entry>
+		<!-- L2 propulsion -->
+		<entry name="ionthr" name-en="electrostatic ion thrust" level="2" requires="hydstg" description="Gridded ion engine; water electrolysed to H+/OH- then electrostatically accelerated. High Isp, millinewton thrust." use-time="6">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="titani" quantity="8"/>
+			<use-consume item="copper" quantity="10"/>
+			<use-consume item="silici" quantity="6"/>
+			<use-produce module="iondrv"/>
+		</entry>
+		<!-- L2 military -->
+		<entry name="psnshd" name-en="personal plasma shield" level="2" tags="military" requires="airgen" description="Gas-fed plasma envelope that diffuses coherent light at infantry and fighter scale." use-time="4">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="terair" quantity="3"/>
+			<use-consume item="h2o2" quantity="2"/>
+			<use-consume item="copper" quantity="1"/>
+			<use-produce item="psnshd"/>
+		</entry>
+		<entry name="psnew" name-en="personal EW pack" level="2" tags="military" requires="optins" description="Broadband jammer and datalink spoofer; disrupts drone targeting." use-time="3">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="silici" quantity="3"/>
+			<use-consume item="copper" quantity="2"/>
+			<use-produce item="psnew"/>
+		</entry>
+		<!-- L3 production -->
+		<entry name="amnext" name-en="ammonia ice mining" level="3" requires="wtrdst" description="Extraction of NH3 ice from outer-system moons for nitrogen makeup and hypergolic precursor." use-time="2">
+			<use-allowed-in module-type-group="extraction" location-type="solid-surface"/>
+			<use-produce item="ammoni" quantity="2"/>
+		</entry>
+		<entry name="ch4min" name-en="methane ice mining" level="3" requires="oildwe" description="Extraction of CH4 ice from Titan-class hydrospheres and outer ices." use-time="2">
+			<use-allowed-in module-type-group="extraction" location-type="solid-surface"/>
+			<use-produce item="methn" quantity="2"/>
+		</entry>
+		<entry name="ntmine" name-en="nitrate evaporites" level="3" requires="oildwe" description="Dry-lake oxidiser salts from evaporite basins; solid-motor grain feedstock." use-time="2">
+			<use-allowed-in module-type-group="extraction"/>
+			<use-produce item="nitrat" quantity="2"/>
+		</entry>
+		<entry name="solth" name-en="solar thermal plant" level="3" requires="wndtrb" description="Concentrated-sunlight heat engine; no combustion, works in vacuum with radiators." use-time="6">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="silici" quantity="12"/>
+			<use-consume item="alumin" quantity="8"/>
+			<use-consume item="iron" quantity="4"/>
+			<use-produce module="solthp"/>
+		</entry>
+		<entry name="hydsyn" name-en="hydrazine synthesis" level="3" requires="amnext" description="Raschig-analogue process converting ammonia into storable hypergolic hydrazine fuel." use-time="4">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="ammoni" quantity="2"/>
+			<use-produce item="hydzn" quantity="2"/>
+		</entry>
+		<!-- L3 propulsion -->
+		<entry name="nucthr" name-en="nuclear-electric propulsion" level="3" requires="ionthr" description="Fission heat drives a Brayton/Rankine cycle to power ion or MPD thrusters." use-time="8">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="titani" quantity="12"/>
+			<use-consume item="uraniu" quantity="6"/>
+			<use-consume item="copper" quantity="8"/>
+			<use-produce module="nepeng"/>
+		</entry>
+		<entry name="slsail" name-en="solar sail" level="3" requires="areact" description="Micron-thick aluminium film propelled by solar radiation pressure. No reaction mass; thrust falls as 1/r-squared." use-time="6">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="alumin" quantity="15"/>
+			<use-consume item="silici" quantity="4"/>
+			<use-produce module="slsmod"/>
+		</entry>
+		<entry name="jmpdrv" name-en="Alderson jump drive" level="3" requires="nucthr" description="Resonance-coupled field coils tuned to stable Alderson-point curvature. Instant transit between matched stable points." use-time="8">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="titani" quantity="25"/>
+			<use-consume item="copper" quantity="15"/>
+			<use-consume item="silici" quantity="10"/>
+			<use-produce module="jmpdvr"/>
+		</entry>
+		<!-- L3 research -->
+		<entry name="astprp" name-en="asteroid prospector" level="3" requires="optins" description="Laser-ablation mass spectrometer and lidar shape model revealing hidden resource quantities on belt regions." use-time="4">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="silici" quantity="4"/>
+			<use-consume item="copper" quantity="2"/>
+			<use-produce module="prspsc"/>
+		</entry>
+		<!-- L3 military -->
+		<entry name="mslpod" name-en="missile tube" level="3" tags="military" requires="ntmine" description="Nitrate and uranium grain solid-motor missile launcher." use-time="5">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="6"/>
+			<use-consume item="nitrat" quantity="6"/>
+			<use-consume item="uraniu" quantity="2"/>
+			<use-produce module="msltub"/>
+		</entry>
+		<entry name="ewsens" name-en="electronic warfare suite" level="3" tags="military" requires="optins" description="Broadband jamming array; disrupts drone targeting and degrades enemy initiative." use-time="4">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="silici" quantity="6"/>
+			<use-consume item="copper" quantity="4"/>
+			<use-produce module="ewantn"/>
+		</entry>
+		<entry name="prxgrd" name-en="proximity grenades" level="3" tags="military" requires="rckter" description="Isotope-seeded fragmentation burst for last-ditch point-blank missile defence." use-time="3">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="nitrat" quantity="2"/>
+			<use-consume item="uraniu" quantity="1"/>
+			<use-consume item="iron" quantity="1"/>
+			<use-produce item="prxgrd"/>
+		</entry>
+		<!-- L4 production -->
+		<entry name="orbfnd" name-en="orbital foundry methods" level="4" requires="ssassm" description="Vacuum induction melting and electron-beam welding in orbit." use-time="8">
+			<use-allowed-in module-type-group="production" location-type="orbit"/>
+			<use-consume item="iron" quantity="150"/>
+			<use-consume item="titani" quantity="80"/>
+			<use-consume item="silici" quantity="40"/>
+			<use-consume item="nickfe" quantity="20"/>
+			<use-produce module="orbfry"/>
+		</entry>
+		<entry name="d2ext" name-en="deuterium from ices" level="4" requires="wtrdst" description="Electrolysis and cryogenic distillation of D/H from outer ices." use-time="6">
+			<use-allowed-in module-type-group="extraction"/>
+			<use-produce item="deutrm" quantity="1"/>
+		</entry>
+		<entry name="volext" name-en="mixed-volatile ISRU" level="4" requires="krogen" description="Heating carbonaceous fines to capture H2O, CO2, and N2 as mixed volatiles." use-time="4">
+			<use-allowed-in module-type-group="extraction"/>
+			<use-produce item="volatl" quantity="2"/>
+		</entry>
+		<entry name="fuelcl" name-en="alkaline fuel cell" level="4" requires="urfiss" description="H2/O2 from water or oxyhydro; no platinum-group metals required." use-time="5">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="silici" quantity="10"/>
+			<use-consume item="copper" quantity="8"/>
+			<use-consume item="titani" quantity="6"/>
+			<use-produce module="h2cell"/>
+		</entry>
+		<entry name="liming" name-en="lithium brines" level="4" requires="wtrdst" description="Spodumene and brine extraction of lithium for MPD cathodes and batteries." use-time="3">
+			<use-allowed-in module-type-group="extraction"/>
+			<use-produce item="lithia" quantity="1"/>
+		</entry>
+		<entry name="xeming" name-en="xenon from ices" level="4" requires="volext" description="Adsorbed noble gas recovery from outer ice; slow cryogenic process." use-time="8">
+			<use-allowed-in module-type-group="extraction"/>
+			<use-produce item="xenon" quantity="1"/>
+		</entry>
+		<!-- L4 propulsion -->
+		<entry name="ntrdrv" name-en="nuclear thermal propulsion" level="4" requires="nucthr" description="Solid-core UO2 heats hydrogen propellant. Isp 800-900 seconds." use-time="6">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="titani" quantity="20"/>
+			<use-consume item="uraniu" quantity="8"/>
+			<use-consume item="copper" quantity="10"/>
+			<use-produce module="ntreng"/>
+		</entry>
+		<entry name="hypstg" name-en="hypergolic upper stage" level="4" requires="hydsyn" description="Storable N2H4/NTO-class bipropellant for capture burns when primary drive is off." use-time="5">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="10"/>
+			<use-consume item="titani" quantity="6"/>
+			<use-consume item="copper" quantity="4"/>
+			<use-produce module="hypeng"/>
+		</entry>
+		<entry name="hlthrs" name-en="Hall-effect thruster" level="4" requires="ionthr" description="ExB plasma accelerator using xenon propellant; higher thrust than water-ion." use-time="6">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="titani" quantity="8"/>
+			<use-consume item="copper" quantity="12"/>
+			<use-consume item="silici" quantity="4"/>
+			<use-produce module="hlthst"/>
+		</entry>
+		<!-- L4 research -->
+		<entry name="radtol" name-en="radiation-tolerant computing" level="4" requires="optins" description="Shielded labs with ECC memory and silicon-on-insulator for deep-space computation." use-time="4">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="silici" quantity="8"/>
+			<use-consume item="copper" quantity="4"/>
+			<use-consume item="uraniu" quantity="2"/>
+			<use-produce module="radlab"/>
+		</entry>
+		<entry name="cryres" name-en="cryogenic instrumentation" level="4" requires="optins" description="LN2 and LHe3 cooled sensors and infrared detector arrays." use-time="5">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="copper" quantity="8"/>
+			<use-consume item="titani" quantity="6"/>
+			<use-consume item="silici" quantity="4"/>
+			<use-produce module="crylab"/>
+		</entry>
+		<entry name="matcmp" name-en="composite layup methods" level="4" requires="advres" description="Fibre and matrix characterisation for advanced structural composites." use-time="5">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="silici" quantity="10"/>
+			<use-consume item="carbon" quantity="8"/>
+			<use-consume item="alumin" quantity="4"/>
+			<use-produce module="cmplab"/>
+		</entry>
+		<!-- L4 military -->
+		<entry name="kntcgn" name-en="kinetic gunnery" level="4" tags="military" requires="stnrdf" description="Electromagnetic rail launcher firing dense armatures at high velocity." use-time="5">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="20"/>
+			<use-consume item="titani" quantity="10"/>
+			<use-consume item="nickfe" quantity="6"/>
+			<use-produce module="railgn"/>
+		</entry>
+		<entry name="shplas" name-en="ship plasma shield" level="4" tags="military" requires="lasopt" description="Gas-fed plasma and magnetic bottle that resists laser weapons. Defence only." use-time="5">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="xenon" quantity="8"/>
+			<use-consume item="terair" quantity="6"/>
+			<use-consume item="methn" quantity="4"/>
+			<use-produce module="shplas"/>
+		</entry>
+		<!-- L5 production -->
+		<entry name="clslfe" name-en="closed-loop life support" level="5" requires="airgen" description="Sabatier reactor plus electrolysis and amine CO2 scrubber; recycles wastes into breathing gas and water." use-time="6">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="titani" quantity="15"/>
+			<use-consume item="copper" quantity="10"/>
+			<use-consume item="silici" quantity="8"/>
+			<use-consume item="ammoni" quantity="4"/>
+			<use-produce module="clslss"/>
+		</entry>
+		<entry name="isrurf" name-en="ISRU metal refining" level="5" requires="he3min" description="In-situ regolith processing into structural metals and slag." use-time="8">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="30"/>
+			<use-consume item="titani" quantity="15"/>
+			<use-produce module="isrplt"/>
+		</entry>
+		<entry name="o2isru" name-en="oxygen ISRU" level="5" requires="krogen" description="Ilmenite and chondrite reduction producing O2 stored as oxyhydro or breathing gas." use-time="6">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="20"/>
+			<use-consume item="silici" quantity="10"/>
+			<use-consume item="volatl" quantity="8"/>
+			<use-produce module="o2plt"/>
+		</entry>
+		<entry name="wminng" name-en="tungsten extraction" level="5" requires="tminng" description="Scheelite recovery from vulcanic fumarole vents." use-time="8">
+			<use-allowed-in module-type-group="extraction"/>
+			<use-produce item="tungst" quantity="1"/>
+		</entry>
+		<entry name="bormin" name-en="boron extraction" level="5" requires="tminng" description="Borate extraction from fumarolic deposits on vulcanic moons." use-time="6">
+			<use-allowed-in module-type-group="extraction"/>
+			<use-produce item="boron" quantity="1"/>
+		</entry>
+		<entry name="beming" name-en="beryllium extraction" level="5" requires="tminng" description="Bertrandite and phenakite mineral processing for beryllium metal." use-time="8">
+			<use-allowed-in module-type-group="extraction"/>
+			<use-produce item="berylm" quantity="1"/>
+		</entry>
+		<entry name="ceramp" name-en="engineering ceramics" level="5" requires="bormin" description="B4C and SiC kiln producing armour-grade ceramic plates and heat-resistant components." use-time="8">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="boron" quantity="8"/>
+			<use-consume item="silici" quantity="12"/>
+			<use-consume item="alumin" quantity="6"/>
+			<use-produce module="cerkil"/>
+		</entry>
+		<!-- L5 propulsion -->
+		<entry name="mpdthr" name-en="methane MPD" level="5" requires="ntrdrv" description="J-cross-B plasma acceleration using methane propellant." use-time="6">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="titani" quantity="20"/>
+			<use-consume item="copper" quantity="15"/>
+			<use-consume item="silici" quantity="5"/>
+			<use-produce module="mpddrv"/>
+		</entry>
+		<entry name="mpdlth" name-en="lithium MPD" level="5" requires="mpdthr" description="Lithium cathode magnetoplasmadynamic thruster; higher Isp than methane MPD." use-time="6">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="titani" quantity="18"/>
+			<use-consume item="copper" quantity="12"/>
+			<use-consume item="lithia" quantity="8"/>
+			<use-produce module="limpd"/>
+		</entry>
+		<entry name="ethtst" name-en="electrothermal arcjet" level="5" requires="ntrdrv" description="Arc-heated water propellant; performance between chemical and ion drives." use-time="5">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="titani" quantity="10"/>
+			<use-consume item="copper" quantity="10"/>
+			<use-produce module="arcjet"/>
+		</entry>
+		<entry name="ujpdrv" name-en="unstable Alderson jump drive" level="5" requires="jmpdrv" description="Tidal-shear stabiliser array for traversing unstable Alderson points using adaptive field harmonics." use-time="10">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="titani" quantity="35"/>
+			<use-consume item="copper" quantity="20"/>
+			<use-consume item="silici" quantity="15"/>
+			<use-consume item="xenon" quantity="10"/>
+			<use-produce module="ujpdvr"/>
+		</entry>
+		<!-- L5 research -->
+		<entry name="survts" name-en="survey spectrometry" level="5" requires="radtol" description="Reflectance and emission spectra analysis for planetary and asteroid surveying." use-time="4">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="silici" quantity="6"/>
+			<use-consume item="copper" quantity="4"/>
+			<use-produce module="survsc"/>
+		</entry>
+		<entry name="seisns" name-en="gravimetry and seismics" level="5" requires="survts" description="Surface and asteroid interior mapping through seismic and gravimetric instruments." use-time="5">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="silici" quantity="8"/>
+			<use-consume item="iron" quantity="6"/>
+			<use-consume item="gold" quantity="2"/>
+			<use-produce module="seissc"/>
+		</entry>
+		<entry name="bwinow" name-en="beryllium x-ray windows" level="5" requires="beming" description="Beryllium windows transparent to soft x-rays with low neutron cross-section." use-time="4">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="berylm" quantity="4"/>
+			<use-consume item="silici" quantity="6"/>
+			<use-consume item="copper" quantity="2"/>
+			<use-produce module="bwinow"/>
+		</entry>
+		<!-- L5 military -->
+		<entry name="drncrw" name-en="drone crew" level="5" tags="military" requires="drnhng" description="Autonomous worker drone replacing one crew member. Requires energy, not food or terair. Immune to radiation and vacuum." use-time="8">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="silici" quantity="15"/>
+			<use-consume item="copper" quantity="10"/>
+			<use-consume item="iron" quantity="5"/>
+			<use-produce item="wrkdrn"/>
+		</entry>
+		<entry name="drnfac" name-en="drone factory" level="5" tags="military" requires="drncrw" description="Automated facility producing worker drones from silicon and copper feedstock." use-time="6">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="20"/>
+			<use-consume item="silici" quantity="15"/>
+			<use-consume item="copper" quantity="10"/>
+			<use-produce module="drnfac"/>
+		</entry>
+		<entry name="pdefls" name-en="point-defense lasers" level="5" tags="military" requires="lstrrt" description="Short-range beam turret for close-in laser defence; high initiative." use-time="4">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="xenon" quantity="6"/>
+			<use-consume item="terair" quantity="6"/>
+			<use-consume item="h2o2" quantity="4"/>
+			<use-produce module="pdltur"/>
+		</entry>
+		<entry name="kpdgun" name-en="kinetic cannon" level="5" tags="military" requires="kntcgn" description="Rapid-cycling mass driver firing dense penetrators." use-time="4">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="12"/>
+			<use-consume item="tungst" quantity="6"/>
+			<use-consume item="nickfe" quantity="4"/>
+			<use-produce module="kpdtur"/>
+		</entry>
+		<entry name="armcml" name-en="ceramic applique armour" level="5" tags="military" requires="ceramp" description="B4C tile applique providing superior kinetic resistance." use-time="6">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="boron" quantity="12"/>
+			<use-consume item="titani" quantity="8"/>
+			<use-consume item="alumin" quantity="6"/>
+			<use-produce module="cermpl"/>
+		</entry>
+		<!-- L6 production -->
+		<entry name="dhefus" name-en="deuterium-helium-3 fusion" level="6" requires="he3fus" description="D-He3 fusion for clean high-output energy; burns helium-3 and deuterium." use-time="8">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="deutrm" quantity="1"/>
+			<use-consume item="platnm" quantity="1"/>
+			<use-consume item="titani" quantity="8"/>
+			<use-consume item="silici" quantity="8"/>
+			<use-produce module="dhefrc"/>
+		</entry>
+		<entry name="whlhbt" name-en="centrifugal habitat" level="6" requires="dmecns" description="Rotating habitat producing approximately 1g at the rim for long-duration habitation." use-time="10">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="80"/>
+			<use-consume item="titani" quantity="40"/>
+			<use-consume item="alumin" quantity="20"/>
+			<use-produce module="whlhul"/>
+		</entry>
+		<entry name="ptminn" name-en="platinum-group recovery" level="6" requires="wminng" description="Trace platinum-group metal recovery from nickel-iron asteroid matrix." use-time="10">
+			<use-allowed-in module-type-group="extraction"/>
+			<use-produce item="platnm" quantity="1"/>
+		</entry>
+		<entry name="reemin" name-en="rare-earth oxides" level="6" requires="nminng" description="Monazite and bastnaesite processing for lanthanide oxides from metal asteroids." use-time="8">
+			<use-allowed-in module-type-group="extraction"/>
+			<use-produce item="reeox" quantity="1"/>
+		</entry>
+		<entry name="grmine" name-en="nuclear graphite" level="6" requires="hcdril" description="High-purity carbon processing for moderator and C-C composite layup." use-time="4">
+			<use-allowed-in module-type-group="extraction"/>
+			<use-produce item="grphit" quantity="1"/>
+		</entry>
+		<entry name="cccomp" name-en="carbon-carbon composites" level="6" requires="grmine" description="3D carbon-carbon weave for nozzle throats and heatshields." use-time="8">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="grphit" quantity="12"/>
+			<use-consume item="tungst" quantity="6"/>
+			<use-consume item="carbon" quantity="10"/>
+			<use-produce module="ccplnk"/>
+		</entry>
+		<entry name="atskim" name-en="atmospheric ram skimmer" level="6" requires="brakch" description="Lifting-body ram scoop that dives into gas-giant atmosphere to extract helium-3 and deuterium." use-time="10">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="titani" quantity="25"/>
+			<use-consume item="silici" quantity="15"/>
+			<use-consume item="copper" quantity="10"/>
+			<use-consume item="grphit" quantity="8"/>
+			<use-produce module="atskmr"/>
+		</entry>
+		<!-- L6 propulsion -->
+		<entry name="fusdrv" name-en="fusion drive" level="6" requires="mpdthr" description="Magnetic nozzle fusion engine burning helium-3." use-time="8">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="titani" quantity="30"/>
+			<use-consume item="silici" quantity="10"/>
+			<use-consume item="heliu3" quantity="5"/>
+			<use-produce module="fuseng"/>
+		</entry>
+		<entry name="magsail" name-en="magnetic sail" level="6" requires="fusdrv" description="Superconducting loop braking against solar wind; no onboard propellant." use-time="8">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="copper" quantity="20"/>
+			<use-consume item="reeox" quantity="8"/>
+			<use-consume item="titani" quantity="10"/>
+			<use-produce module="mgsail"/>
+		</entry>
+		<entry name="xengid" name-en="high-power xenon ion" level="6" requires="hlthrs" description="Gridded ion engine using xenon propellant; higher Isp than water-ion." use-time="7">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="titani" quantity="12"/>
+			<use-consume item="copper" quantity="15"/>
+			<use-consume item="silici" quantity="6"/>
+			<use-produce module="xendrv"/>
+		</entry>
+		<!-- L6 research -->
+		<entry name="matlib" name-en="materials characterisation" level="6" requires="advres" description="Diffraction, hardness, and fatigue testing for advanced structural materials." use-time="6">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="silici" quantity="12"/>
+			<use-consume item="tungst" quantity="6"/>
+			<use-produce module="matlab"/>
+		</entry>
+		<entry name="magsns" name-en="magnetometry" level="6" requires="reemin" description="SQUID and fluxgate magnetometers for subsurface and field mapping." use-time="5">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="reeox" quantity="6"/>
+			<use-consume item="silici" quantity="8"/>
+			<use-consume item="copper" quantity="4"/>
+			<use-produce module="maglab"/>
+		</entry>
+		<entry name="ntdiag" name-en="neutron diagnostics" level="6" requires="bwinow" description="Beryllium windows and helium-3 proportional tubes for fusion and NTR diagnostics." use-time="6">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="berylm" quantity="4"/>
+			<use-consume item="silici" quantity="6"/>
+			<use-consume item="uraniu" quantity="2"/>
+			<use-produce module="ntdiag"/>
+		</entry>
+		<!-- L6 military -->
+		<entry name="drnswm" name-en="coordinated drones" level="6" tags="military" requires="drnhng" description="Command and coordination system for fighter drone swarms." use-time="5">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="silici" quantity="10"/>
+			<use-consume item="copper" quantity="6"/>
+			<use-consume item="reeox" quantity="4"/>
+			<use-produce module="drnctl"/>
+		</entry>
+		<entry name="gausgn" name-en="coilgun" level="6" tags="military" requires="kntcgn" description="Dense armature electromagnetic launcher with superconducting coils." use-time="8">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="20"/>
+			<use-consume item="tungst" quantity="10"/>
+			<use-consume item="nickfe" quantity="8"/>
+			<use-produce module="coilgn"/>
+		</entry>
+		<entry name="misgde" name-en="missile guidance" level="6" tags="military" requires="mslpod" description="Silicon-brained seekers for guided missile warheads." use-time="4">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="silici" quantity="8"/>
+			<use-consume item="copper" quantity="4"/>
+			<use-produce module="miscpu"/>
+		</entry>
+		<entry name="proxpd" name-en="proximity burst PD" level="6" tags="military" requires="mslpod" description="Last-ditch isotope and fragmentation bursts against incoming missiles." use-time="5">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="nitrat" quantity="8"/>
+			<use-consume item="uraniu" quantity="4"/>
+			<use-consume item="deutrm" quantity="2"/>
+			<use-produce module="proxpd"/>
+		</entry>
+		<!-- L7 production -->
+		<entry name="msdrvr" name-en="electromagnetic mass driver" level="7" requires="orbfnd" description="Kiloampere rail launcher for surface-to-orbit bulk cargo transfer." use-time="10">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="60"/>
+			<use-consume item="copper" quantity="30"/>
+			<use-consume item="titani" quantity="20"/>
+			<use-consume item="nickfe" quantity="15"/>
+			<use-produce module="msdrst"/>
+		</entry>
+		<entry name="cryost" name-en="cryogenic bulk storage" level="7" requires="clslfe" description="Insulated tankage for LH2, LOX, LHe3, and LCH4 in vacuum." use-time="5">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="titani" quantity="20"/>
+			<use-consume item="copper" quantity="10"/>
+			<use-produce module="crytnk"/>
+		</entry>
+		<entry name="metrec" name-en="metals recycling" level="7" requires="orbfnd" description="Scrap and waste reprocessing into structural iron or spare parts." use-time="6">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="15"/>
+			<use-consume item="silici" quantity="8"/>
+			<use-consume item="copper" quantity="4"/>
+			<use-produce module="recykl"/>
+		</entry>
+		<entry name="biofab" name-en="cultured structural polymer" level="7" requires="krogen" description="Microbial cellulose and PHA polymer production for mass-light structural fittings." use-time="8">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="kerogn" quantity="10"/>
+			<use-consume item="food" quantity="8"/>
+			<use-consume item="silici" quantity="6"/>
+			<use-produce module="bioplt"/>
+		</entry>
+		<!-- L7 propulsion -->
+		<entry name="vasimr" name-en="variable-Isp plasma" level="7" requires="fusdrv" description="RF-heated plasma drive with variable specific impulse; fuel water or methane." use-time="8">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="titani" quantity="25"/>
+			<use-consume item="copper" quantity="15"/>
+			<use-consume item="silici" quantity="8"/>
+			<use-produce module="vasmdr"/>
+		</entry>
+		<entry name="orbins" name-en="chemical insertion stage" level="7" requires="hypstg" description="Restartable hypergolic stage for orbit capture alongside fusion primary drive." use-time="6">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="12"/>
+			<use-consume item="titani" quantity="8"/>
+			<use-produce module="chmup2"/>
+		</entry>
+		<entry name="plsail" name-en="plasma magnet sail" level="7" requires="vasimr" description="Inflated magnetosphere braking against solar wind; larger than magnetic sail, still no onboard propellant." use-time="8">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="copper" quantity="15"/>
+			<use-consume item="reeox" quantity="6"/>
+			<use-consume item="titani" quantity="8"/>
+			<use-produce module="plsail"/>
+		</entry>
+		<entry name="asttow" name-en="asteroid tow rig" level="7" requires="orbtug" description="Ion thruster scaffold clamped to an asteroid for gravity-tractor and direct-thrust relocation." use-time="12">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="60"/>
+			<use-consume item="titani" quantity="40"/>
+			<use-consume item="copper" quantity="20"/>
+			<use-consume item="nickfe" quantity="10"/>
+			<use-produce module="towmod"/>
+		</entry>
+		<!-- L7 research -->
+		<entry name="exobio" name-en="exobiology protocols" level="7" requires="medtec" description="Containment, PCR, and xenobiological sample analysis protocols." use-time="6">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="silici" quantity="8"/>
+			<use-consume item="medici" quantity="4"/>
+			<use-produce module="xbiolb"/>
+		</entry>
+		<entry name="navast" name-en="astrogation computers" level="7" requires="advres" description="N-body orbital integrators for precision interplanetary navigation." use-time="6">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="silici" quantity="12"/>
+			<use-consume item="copper" quantity="8"/>
+			<use-consume item="gold" quantity="2"/>
+			<use-produce module="navcmp"/>
+		</entry>
+		<entry name="fatlab" name-en="cryo-fatigue lab" level="7" requires="matlib" description="Thermal-cycle coupon testing for cryogenic structural materials." use-time="6">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="silici" quantity="8"/>
+			<use-consume item="tungst" quantity="6"/>
+			<use-consume item="alumin" quantity="4"/>
+			<use-produce module="fatlab"/>
+		</entry>
+		<!-- L7 military -->
+		<entry name="armhul" name-en="spaced armour" level="7" tags="military" requires="ahlcns" description="Whipple shield with tungsten fibre layers; resists kinetic penetrators." use-time="6">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="titani" quantity="40"/>
+			<use-consume item="tungst" quantity="10"/>
+			<use-consume item="nickfe" quantity="8"/>
+			<use-produce module="armplt"/>
+		</entry>
+		<entry name="crumis" name-en="cruise missile" level="7" tags="military" requires="mslpod" description="Standoff guided missile with hydrazine flyout motor and isotope warhead." use-time="8">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="12"/>
+			<use-consume item="nitrat" quantity="8"/>
+			<use-consume item="uraniu" quantity="4"/>
+			<use-consume item="hydzn" quantity="4"/>
+			<use-produce module="crumis"/>
+		</entry>
+		<entry name="uvltur" name-en="ultraviolet laser" level="7" tags="military" requires="lstrrt" description="Short-wavelength laser using gas working medium; higher damage than blue laser." use-time="6">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="xenon" quantity="8"/>
+			<use-consume item="volatl" quantity="6"/>
+			<use-consume item="terair" quantity="4"/>
+			<use-consume item="silici" quantity="2"/>
+			<use-produce module="uvltur"/>
+		</entry>
+		<entry name="advdrn" name-en="advanced drone AI" level="7" tags="military" requires="drncrw" description="Adaptive heuristic swarm coordinator; 2 crew-equivalent per unit with higher initiative." use-time="8">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="silici" quantity="20"/>
+			<use-consume item="copper" quantity="12"/>
+			<use-consume item="reeox" quantity="6"/>
+			<use-produce item="advdrn"/>
+		</entry>
+		<!-- L7 energy / close-orbit -->
+		<entry name="soltap" name-en="solar energy tap" level="7" requires="he3fus" description="Massive solar collector deployed at 0.1 AU; energy output 50 units. Requires shield-equipped stack for close-orbit radiation." use-time="10">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="40"/>
+			<use-consume item="titani" quantity="25"/>
+			<use-consume item="copper" quantity="15"/>
+			<use-consume item="silici" quantity="10"/>
+			<use-produce module="solgen"/>
+		</entry>
+		<entry name="lsrxmt" name-en="laser power transmission" level="7" requires="soltap" description="Paired transmitter and receiver beaming energy across AU distances with 5 percent loss per AU." use-time="8">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="silici" quantity="25"/>
+			<use-consume item="copper" quantity="15"/>
+			<use-consume item="gold" quantity="10"/>
+			<use-consume item="titani" quantity="8"/>
+			<use-produce module="lsrtx"/>
+		</entry>
+		<!-- L8 production -->
+		<entry name="lghull" name-en="large pressure hull" level="8" requires="whlhbt" description="Pressure hull for thousands of cubic metres; foundation for ark-class vessels." use-time="12">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="120"/>
+			<use-consume item="titani" quantity="80"/>
+			<use-consume item="silici" quantity="20"/>
+			<use-consume item="nickfe" quantity="20"/>
+			<use-produce module="lghul"/>
+		</entry>
+		<entry name="radshc" name-en="radiation shelter construction" level="8" requires="bormin" description="Boron, beryllium, and graphite moderator-absorber stack for habitat storm shielding." use-time="8">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="boron" quantity="15"/>
+			<use-consume item="berylm" quantity="8"/>
+			<use-consume item="grphit" quantity="10"/>
+			<use-consume item="iron" quantity="20"/>
+			<use-produce module="radshd"/>
+		</entry>
+		<entry name="recyl2" name-en="closed-loop recycling" level="8" requires="clslfe" description="Metals, water, and air recovery from industrial wastes using platinum catalysts." use-time="8">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="titani" quantity="20"/>
+			<use-consume item="silici" quantity="10"/>
+			<use-consume item="copper" quantity="8"/>
+			<use-consume item="platnm" quantity="4"/>
+			<use-produce module="recylr"/>
+		</entry>
+		<entry name="insltc" name-en="silica aerogel insulation" level="8" requires="slcmlt" description="Supercritical-dried silica sol for habitat multi-layer insulation." use-time="6">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="silici" quantity="12"/>
+			<use-consume item="alumin" quantity="4"/>
+			<use-produce module="insltn"/>
+		</entry>
+		<entry name="cldmin" name-en="cloud mining platform" level="8" requires="atskim" description="Hot-hydrogen aerostat at gas-giant altitude with cryogenic He-3/D separator and NH3/CH4 cracker." use-time="12">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="80"/>
+			<use-consume item="titani" quantity="60"/>
+			<use-consume item="alumin" quantity="30"/>
+			<use-consume item="copper" quantity="15"/>
+			<use-consume item="grphit" quantity="10"/>
+			<use-produce module="cldplt"/>
+		</entry>
+		<!-- L8 propulsion -->
+		<entry name="isptnk" name-en="interplanetary tanker" level="8" requires="cryost" description="Bulk volatile transport vessel with cryogenic tankage." use-time="8">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="titani" quantity="50"/>
+			<use-consume item="copper" quantity="20"/>
+			<use-produce module="tanker"/>
+		</entry>
+		<entry name="rcsblk" name-en="RCS cluster" level="8" requires="hypstg" description="Attitude and translation thruster cluster using storable hydrazine." use-time="4">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="titani" quantity="8"/>
+			<use-consume item="copper" quantity="6"/>
+			<use-produce module="rcspod"/>
+		</entry>
+		<entry name="trimth" name-en="trim and station-keeping" level="8" requires="isptnk" description="Low-thrust xenon or water thruster for station-keeping and fine manoeuvres." use-time="5">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="titani" quantity="10"/>
+			<use-consume item="silici" quantity="8"/>
+			<use-produce module="trimth"/>
+		</entry>
+		<!-- L8 research -->
+		<entry name="deepsc" name-en="long-baseline sensing" level="8" requires="survts" description="Multi-aperture interferometry for deep-space observation." use-time="6">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="silici" quantity="15"/>
+			<use-consume item="copper" quantity="10"/>
+			<use-consume item="gold" quantity="2"/>
+			<use-produce module="dpsens"/>
+		</entry>
+		<entry name="bolsen" name-en="bolometer arrays" level="8" requires="survts" description="Sub-millimetre thermal sensors for passive detection." use-time="5">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="silici" quantity="8"/>
+			<use-consume item="gold" quantity="4"/>
+			<use-consume item="reeox" quantity="4"/>
+			<use-produce module="bolsen"/>
+		</entry>
+		<entry name="crydet" name-en="cryogenic detectors" level="8" requires="cryres" description="Transition-edge sensors at kelvin temperatures for precision measurements." use-time="6">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="copper" quantity="8"/>
+			<use-consume item="berylm" quantity="4"/>
+			<use-consume item="silici" quantity="6"/>
+			<use-produce module="crydet"/>
+		</entry>
+		<!-- L8 military -->
+		<entry name="spngun" name-en="spinal kinetic" level="8" tags="military" requires="kntcgn" description="Ship-length electromagnetic rail for devastating kinetic strikes." use-time="10">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="80"/>
+			<use-consume item="tungst" quantity="20"/>
+			<use-consume item="nickfe" quantity="15"/>
+			<use-produce module="spnknc"/>
+		</entry>
+		<entry name="magzin" name-en="missile magazine" level="8" tags="military" requires="mslpod" description="Nested isotope grain wells for deep missile stores." use-time="6">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="nitrat" quantity="20"/>
+			<use-consume item="uraniu" quantity="10"/>
+			<use-consume item="iron" quantity="8"/>
+			<use-produce module="magzin"/>
+		</entry>
+		<entry name="bmdir" name-en="beam director" level="8" tags="military" requires="pdefls" description="Fast-steering optics with gas-fed beam path for precise laser strikes." use-time="8">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="xenon" quantity="10"/>
+			<use-consume item="terair" quantity="8"/>
+			<use-consume item="h2o2" quantity="4"/>
+			<use-consume item="silici" quantity="4"/>
+			<use-produce module="bmdir"/>
+		</entry>
+		<entry name="capshd" name-en="capital plasma shield" level="8" tags="military" requires="shplas" description="Scaled-up gas-fed plasma and magnetic bottle for capital-class laser defence." use-time="8">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="xenon" quantity="12"/>
+			<use-consume item="methn" quantity="8"/>
+			<use-consume item="volatl" quantity="6"/>
+			<use-produce module="capshd"/>
+		</entry>
+		<entry name="impgde" name-en="impact guidance system" level="8" tags="military" requires="asttow" description="Terminal-guidance avionics for asteroid kinetic impactor steering via lidar terrain-matching." use-time="10">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="silici" quantity="20"/>
+			<use-consume item="copper" quantity="15"/>
+			<use-consume item="iron" quantity="10"/>
+			<use-consume item="reeox" quantity="8"/>
+			<use-produce module="impgds"/>
+		</entry>
+		<entry name="drnark" name-en="ark drone complement" level="8" tags="military" requires="advdrn" description="Full-drone ark configuration removing biological life-support dependency for interstellar operations." use-time="12">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="silici" quantity="40"/>
+			<use-consume item="copper" quantity="25"/>
+			<use-consume item="reeox" quantity="15"/>
+			<use-consume item="berylm" quantity="10"/>
+		</entry>
+		<!-- L8 energy / close-orbit -->
+		<entry name="corlab" name-en="coronal research laboratory" level="8" requires="soltap" description="Hardened research facility operating at 0.1 AU with shield-integrated hull and active cooling. 3x research output at close orbit." use-time="10">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="50"/>
+			<use-consume item="titani" quantity="30"/>
+			<use-consume item="silici" quantity="20"/>
+			<use-consume item="berylm" quantity="10"/>
+			<use-consume item="xenon" quantity="8"/>
+			<use-produce module="corlab"/>
+		</entry>
+		<!-- L9 production -->
+		<entry name="eclss2" name-en="regenerative ECLSS" level="9" requires="clslfe" description="Near-closed carbon, nitrogen, and water loops with platinum catalysts for ark-duration habitation." use-time="8">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="titani" quantity="25"/>
+			<use-consume item="silici" quantity="15"/>
+			<use-consume item="copper" quantity="10"/>
+			<use-consume item="platnm" quantity="2"/>
+			<use-produce module="eclssx"/>
+		</entry>
+		<entry name="agrark" name-en="shipboard agriculture" level="9" requires="afrmng" description="LED-lit hydroponic decks producing food in orbit and deep space using greywater recycling." use-time="8">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="20"/>
+			<use-consume item="silici" quantity="10"/>
+			<use-consume item="alumin" quantity="8"/>
+			<use-produce module="agrdek"/>
+		</entry>
+		<entry name="shldsp" name-en="storm-particle shelter" level="9" requires="radshc" description="Dedicated solar particle event shelter nested in large hulls." use-time="8">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="boron" quantity="20"/>
+			<use-consume item="grphit" quantity="10"/>
+			<use-consume item="iron" quantity="15"/>
+			<use-produce module="stmshd"/>
+		</entry>
+		<entry name="wstprc" name-en="waste mineralisation" level="9" requires="clslfe" description="Wet oxidation of industrial wastes to inert slag and recoverable water." use-time="6">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="titani" quantity="12"/>
+			<use-consume item="silici" quantity="8"/>
+			<use-produce module="wstplt"/>
+		</entry>
+		<!-- L9 propulsion -->
+		<entry name="hiisp" name-en="high-Isp fusion pulse" level="9" requires="vasimr" description="Pellet-driven magnetic-nozzle fusion pulse drive for ark-class vessels." use-time="10">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="titani" quantity="40"/>
+			<use-consume item="heliu3" quantity="10"/>
+			<use-consume item="tungst" quantity="10"/>
+			<use-produce module="plsdv"/>
+		</entry>
+		<entry name="orbtug" name-en="orbital tug" level="9" requires="ionthr" description="Workhorse electric tug for station-to-station cargo and crew transfer." use-time="8">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="titani" quantity="25"/>
+			<use-consume item="copper" quantity="15"/>
+			<use-produce module="orbtug"/>
+		</entry>
+		<entry name="brakch" name-en="aerobrake heatshield" level="9" requires="hiisp" description="Ablative carbon-carbon heatshield for gas-giant or thick-atmosphere aerobraking." use-time="8">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="silici" quantity="20"/>
+			<use-consume item="carbon" quantity="15"/>
+			<use-consume item="grphit" quantity="8"/>
+			<use-produce module="hshld"/>
+		</entry>
+		<!-- L9 research -->
+		<entry name="crewmd" name-en="long-duration medicine" level="9" requires="exobio" description="Bone-density, radiation-damage, and isolation medicine for multi-year missions." use-time="6">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="silici" quantity="10"/>
+			<use-consume item="medici" quantity="8"/>
+			<use-produce module="arkmed"/>
+		</entry>
+		<entry name="psysup" name-en="isolation psychology" level="9" requires="crewmd" description="Circadian lighting, social dynamics, and morale support for deep-space isolation." use-time="6">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="silici" quantity="6"/>
+			<use-consume item="medici" quantity="4"/>
+			<use-consume item="food" quantity="8"/>
+			<use-produce module="psybrd"/>
+		</entry>
+		<entry name="navint" name-en="inertial/optical navigation" level="9" requires="navast" description="Star cameras and inertial measurement units for autonomous deep-space navigation." use-time="6">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="silici" quantity="10"/>
+			<use-consume item="copper" quantity="8"/>
+			<use-consume item="reeox" quantity="4"/>
+			<use-produce module="insnav"/>
+		</entry>
+		<entry name="plsbio" name-en="plasma biology" level="9" requires="corlab" description="Study of self-organising coronal plasma entities; prerequisite for alien-life applications." use-time="10">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="silici" quantity="15"/>
+			<use-consume item="xenon" quantity="10"/>
+			<use-consume item="berylm" quantity="8"/>
+			<use-consume item="reeox" quantity="5"/>
+		</entry>
+		<!-- L9 military -->
+		<entry name="ciwssy" name-en="close-in weapon system" level="9" tags="military" requires="proxpd" description="Proximity and isotope burst for last-ditch point-blank missile defence." use-time="5">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="nitrat" quantity="12"/>
+			<use-consume item="uraniu" quantity="8"/>
+			<use-consume item="heliu3" quantity="4"/>
+			<use-produce module="ciwst"/>
+		</entry>
+		<entry name="ewark" name-en="area EW" level="9" tags="military" requires="ewsens" description="Fleet-scale electronic warfare jamming as defence and initiative degradation." use-time="6">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="silici" quantity="12"/>
+			<use-consume item="copper" quantity="8"/>
+			<use-consume item="reeox" quantity="4"/>
+			<use-produce module="ewark"/>
+		</entry>
+		<entry name="minelr" name-en="missile mines" level="9" tags="military" requires="crumis" description="Coast-then-burst autonomous mines deployed in space and orbit." use-time="6">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="nitrat" quantity="10"/>
+			<use-consume item="uraniu" quantity="6"/>
+			<use-consume item="iron" quantity="4"/>
+			<use-produce module="knmine"/>
+		</entry>
+		<!-- L10 production -->
+		<entry name="arkcns" name-en="self-sufficient ark construction" level="10" requires="lghull" description="Pressure hull for thousands of crew; foundation of a self-sufficient interstellar ark." use-time="13">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="200"/>
+			<use-consume item="titani" quantity="120"/>
+			<use-consume item="silici" quantity="40"/>
+			<use-consume item="tungst" quantity="20"/>
+			<use-consume item="heliu3" quantity="10"/>
+			<use-consume item="nickfe" quantity="15"/>
+			<use-produce module="arkhul"/>
+		</entry>
+		<entry name="arkshl" name-en="ark storm shielding" level="10" requires="radshc" description="Scaled SPE and GCR shelter for a kilometre-class hull." use-time="10">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="boron" quantity="30"/>
+			<use-consume item="berylm" quantity="15"/>
+			<use-consume item="grphit" quantity="20"/>
+			<use-consume item="iron" quantity="40"/>
+			<use-produce module="arkshl"/>
+		</entry>
+		<entry name="arkrec" name-en="ark recycler" level="10" requires="recyl2" description="Near-closed mass loop for thousands of crew in deep space." use-time="10">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="titani" quantity="30"/>
+			<use-consume item="silici" quantity="15"/>
+			<use-consume item="platnm" quantity="10"/>
+			<use-produce module="arkrec"/>
+		</entry>
+		<!-- L10 propulsion -->
+		<entry name="arkdrv" name-en="ark propulsion integration" level="10" requires="hiisp" description="Fusion-pulse drive cluster for ark-class vessels; inner-system transit in weeks." use-time="13">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="titani" quantity="80"/>
+			<use-consume item="heliu3" quantity="20"/>
+			<use-consume item="copper" quantity="20"/>
+			<use-produce module="arkeng"/>
+		</entry>
+		<entry name="arkrcs" name-en="ark RCS" level="10" requires="rcsblk" description="Attitude thrusters for a high-inertia ark hull." use-time="8">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="titani" quantity="25"/>
+			<use-consume item="copper" quantity="15"/>
+			<use-produce module="arkrcs"/>
+		</entry>
+		<entry name="arksail" name-en="ark abort sail" level="10" requires="magsail" description="Magnetic sail for emergency braking if the pulse drive is dark; no onboard propellant." use-time="10">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="copper" quantity="40"/>
+			<use-consume item="reeox" quantity="15"/>
+			<use-consume item="titani" quantity="20"/>
+			<use-produce module="arksail"/>
+		</entry>
+		<!-- L10 research -->
+		<entry name="arkcmd" name-en="ark command and autonomy" level="10" requires="autctl" description="High-capacity command bridge with autonomous systems for ark-class operations." use-time="8">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="silici" quantity="20"/>
+			<use-consume item="copper" quantity="15"/>
+			<use-produce module="arkbrg"/>
+		</entry>
+		<entry name="arknav" name-en="ark navigation" level="10" requires="arkcmd" description="Long-baseline optical and inertial navigation for week-scale inner-system legs." use-time="8">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="silici" quantity="18"/>
+			<use-consume item="copper" quantity="12"/>
+			<use-consume item="reeox" quantity="6"/>
+			<use-produce module="arknav"/>
+		</entry>
+		<entry name="dosmtr" name-en="fleet dosimetry" level="10" requires="crewmd" description="Tissue-equivalent radiation detectors for fleet-wide dose monitoring." use-time="6">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="silici" quantity="8"/>
+			<use-consume item="berylm" quantity="4"/>
+			<use-consume item="medici" quantity="6"/>
+			<use-produce module="doslab"/>
+		</entry>
+		<!-- L10 military -->
+		<entry name="arkdef" name-en="ark laser grid" level="10" tags="military" requires="pdefls" description="Area beam grid for kilometre-scale target defence; nest other defence systems." use-time="10">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="xenon" quantity="20"/>
+			<use-consume item="terair" quantity="15"/>
+			<use-consume item="volatl" quantity="10"/>
+			<use-produce module="arkdfn"/>
+		</entry>
+		<entry name="arkshd" name-en="ark plasma shield" level="10" tags="military" requires="capshd" description="Gas-fed plasma and magnetic bottle scaled for ark-class laser defence." use-time="8">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="xenon" quantity="20"/>
+			<use-consume item="methn" quantity="12"/>
+			<use-consume item="volatl" quantity="8"/>
+			<use-produce module="arkshd"/>
+		</entry>
+		<entry name="arkew" name-en="ark EW grid" level="10" tags="military" requires="ewark" description="Area electronic warfare jamming and defence for ark-class vessels." use-time="8">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="silici" quantity="20"/>
+			<use-consume item="copper" quantity="12"/>
+			<use-consume item="reeox" quantity="8"/>
+			<use-produce module="arkew"/>
+		</entry>
+		<entry name="arkpd" name-en="ark point-blank PD" level="10" tags="military" requires="ciwssy" description="Last-ditch isotope bursts around the ark hull." use-time="8">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="nitrat" quantity="20"/>
+			<use-consume item="uraniu" quantity="10"/>
+			<use-consume item="heliu3" quantity="6"/>
+			<use-produce module="arkpd"/>
+		</entry>
+		<entry name="arkmag" name-en="ark magazines" level="10" tags="military" requires="magzin" description="Deep isotope grain wells for ark-class missile stores." use-time="8">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="nitrat" quantity="40"/>
+			<use-consume item="uraniu" quantity="20"/>
+			<use-consume item="iron" quantity="10"/>
+			<use-produce module="arkmag"/>
+		</entry>
+		<entry name="detsns" name-en="sensor array" level="2" tags="military" requires="optins" description="Phased-array passive sensor with baseline interferometry; detects thermal and radar signatures to 1 AU." use-time="4">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="silici" quantity="6"/>
+			<use-consume item="copper" quantity="4"/>
+			<use-produce module="sensor"/>
+		</entry>
+		<entry name="detadv" name-en="advanced sensors" level="4" tags="military" requires="detsns" description="Cooled focal-plane array and multi-spectral correlation; 5 AU detection range." use-time="6">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="silici" quantity="12"/>
+			<use-consume item="copper" quantity="8"/>
+			<use-consume item="reeox" quantity="4"/>
+			<use-produce module="advsns"/>
+		</entry>
+		<entry name="clkbsc" name-en="basic cloaking" level="4" tags="military" requires="detsns" description="Thermal radiator baffles and radar-absorbing metamaterial hull coating; counters L2 sensors." use-time="6">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="silici" quantity="10"/>
+			<use-consume item="copper" quantity="6"/>
+			<use-consume item="xenon" quantity="4"/>
+			<use-produce module="clkdev"/>
+		</entry>
+		<entry name="minbsc" name-en="basic mine deployment" level="4" tags="military" requires="mslpod" description="Automated dispenser laying proximity-fused explosive devices in orbit or at choke points." use-time="4">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="8"/>
+			<use-consume item="nitrat" quantity="6"/>
+			<use-consume item="uraniu" quantity="2"/>
+			<use-produce module="mnlayr"/>
+		</entry>
+		<entry name="detsys" name-en="system-wide sensors" level="6" tags="military" requires="detadv" description="Distributed aperture network with synthetic baseline spanning planetary orbits; full-system coverage." use-time="8">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="silici" quantity="20"/>
+			<use-consume item="copper" quantity="12"/>
+			<use-consume item="reeox" quantity="8"/>
+			<use-produce module="syssns"/>
+		</entry>
+		<entry name="clkadv" name-en="advanced cloaking" level="6" tags="military" requires="clkbsc" description="Active thermal management and adaptive metamaterial shell; counters L4 sensors." use-time="8">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="silici" quantity="15"/>
+			<use-consume item="xenon" quantity="10"/>
+			<use-consume item="copper" quantity="6"/>
+			<use-consume item="reeox" quantity="4"/>
+			<use-produce module="advclk"/>
+		</entry>
+		<entry name="minsmt" name-en="smart mines" level="6" tags="military" requires="minbsc" description="IFF-enabled proximity mine with silicon guidance; skips friendly signatures." use-time="5">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="12"/>
+			<use-consume item="nitrat" quantity="8"/>
+			<use-consume item="uraniu" quantity="4"/>
+			<use-consume item="silici" quantity="4"/>
+			<use-produce module="smnlay"/>
+		</entry>
+		<entry name="lrmtec" name-en="long-range missile" level="6" tags="military" requires="crumis" description="Strategic standoff weapon with ion-level cruise motor; fired from AP orbit toward immobile targets." use-time="8">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="nitrat" quantity="20"/>
+			<use-consume item="uraniu" quantity="12"/>
+			<use-consume item="hydzn" quantity="8"/>
+			<use-consume item="silici" quantity="6"/>
+			<use-produce module="lrmmod"/>
+		</entry>
+		<entry name="detap" name-en="AP-spanning detection" level="8" tags="military" requires="detsys" description="Gravitational-lens relay using Alderson point geometry to detect signatures in neighbouring systems." use-time="10">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="silici" quantity="30"/>
+			<use-consume item="copper" quantity="15"/>
+			<use-consume item="reeox" quantity="10"/>
+			<use-consume item="berylm" quantity="8"/>
+			<use-produce module="apsns"/>
+		</entry>
+		<entry name="clkfld" name-en="cloaking field" level="8" tags="military" requires="clkadv" description="Projected field envelope suppressing emissions for the entire stack; counters L6 sensors." use-time="10">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="silici" quantity="25"/>
+			<use-consume item="xenon" quantity="15"/>
+			<use-consume item="copper" quantity="10"/>
+			<use-consume item="reeox" quantity="8"/>
+			<use-produce module="clkfld"/>
+		</entry>
+		<entry name="minhvy" name-en="heavy mine" level="8" tags="military" requires="minsmt" description="High-yield shaped-charge mine with deuterium-boosted warhead; cracks small hulls." use-time="8">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="20"/>
+			<use-consume item="nitrat" quantity="15"/>
+			<use-consume item="uraniu" quantity="8"/>
+			<use-consume item="deutrm" quantity="6"/>
+			<use-produce module="hvmlay"/>
+		</entry>
+		<entry name="lrmhvy" name-en="heavy LRM battery" level="8" tags="military" requires="lrmtec" description="Multi-warhead strategic missile with nuclear-electric cruise stage; three independently targetable re-entry vehicles." use-time="12">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="nitrat" quantity="40"/>
+			<use-consume item="uraniu" quantity="20"/>
+			<use-consume item="hydzn" quantity="15"/>
+			<use-consume item="silici" quantity="10"/>
+			<use-consume item="deutrm" quantity="8"/>
+			<use-produce module="lrmhvy"/>
+		</entry>
+		<entry name="clkark" name-en="ark cloaking" level="10" tags="military" requires="clkfld" description="Capital-scale emission suppression using layered metamaterial hull and active cooling; counters L8 sensors." use-time="12">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="silici" quantity="40"/>
+			<use-consume item="xenon" quantity="20"/>
+			<use-consume item="reeox" quantity="15"/>
+			<use-consume item="berylm" quantity="10"/>
+			<use-produce module="arkclk"/>
+		</entry>
+		<entry name="lrmark" name-en="ark strategic missile" level="10" tags="military" requires="lrmhvy" description="Fusion-driven strategic missile with five independently guided warheads; ark-mounted strategic deterrent." use-time="16">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="nitrat" quantity="80"/>
+			<use-consume item="uraniu" quantity="40"/>
+			<use-consume item="hydzn" quantity="20"/>
+			<use-consume item="deutrm" quantity="15"/>
+			<use-consume item="heliu3" quantity="10"/>
+			<use-produce module="lrmark"/>
 		</entry>
 	</technology>
 
@@ -1799,6 +2919,535 @@ Researchers can query the library. The system can handle natural language questi
 			<operation-allowed-in module-group="military"/>
 			<operation-allowed-in module-group="frigate"/>
 		</entry>
+		<entry name="hydnoz" name-en="hydrolox nozzle" name-en2="hydrolox nozzles" group="propulsion" description="Regenerative-cooled staged combustion nozzle; vacuum Isp approximately 450 seconds." size="800" mass="900" crew="1" energy="40" capacity="200" technology-capacity="1" hit-points="85">
+			<upkeep type="cash" quantity="120"/>
+			<operation-allowed-in module-group="frigate"/>
+			<move mode="space" mass-capacity="20000"/>
+			<fuel duration="1">
+				<item type="h2o2" quantity="1"/>
+			</fuel>
+		</entry>
+		<entry name="iondrv" name-en="ion drive" name-en2="ion drives" group="propulsion" description="Gridded ion engine; high Isp, millinewton thrust. Water electrolysed as propellant." size="500" mass="400" crew="1" energy="50" capacity="100" technology-capacity="1" hit-points="45">
+			<upkeep type="cash" quantity="100"/>
+			<operation-allowed-in module-group="frigate"/>
+			<move mode="space" mass-capacity="25000"/>
+			<fuel duration="1">
+				<item type="water" quantity="1"/>
+			</fuel>
+		</entry>
+		<entry name="nepeng" name-en="nuclear-electric engine" name-en2="nuclear-electric engines" group="propulsion" description="Fission-powered electric propulsion combining reactor heat and ion acceleration." size="1400" mass="1600" crew="2" energy="70" capacity="300" technology-capacity="2" hit-points="150">
+			<upkeep type="cash" quantity="200"/>
+			<operation-allowed-in module-group="frigate"/>
+			<move mode="space" mass-capacity="35000"/>
+			<fuel duration="1">
+				<item type="uraniu" quantity="1"/>
+				<item type="water" quantity="1"/>
+			</fuel>
+		</entry>
+		<entry name="optlab" name-en="optical laboratory" name-en2="optical laboratories" group="research" description="Diffraction-limited telescopes and FTIR spectrometers for broadband infrared sensing." size="250" mass="60" crew="2" energy="6" technology-capacity="5" research-output="1" hit-points="15">
+			<upkeep type="cash" quantity="80"/>
+		</entry>
+		<entry name="solthp" name-en="solar thermal plant" name-en2="solar thermal plants" group="energy" description="Concentrated-sunlight heat engine; no combustion, works in vacuum with radiators." size="800" mass="600" crew="2" energy="4" hit-points="70">
+			<produce energy="30" duration="13"/>
+			<upkeep type="cash" quantity="40"/>
+		</entry>
+		<entry name="slsmod" name-en="solar sail" name-en2="solar sails" group="propulsion" description="Micron-thick aluminium film propelled by solar radiation pressure; no reaction mass." size="400" mass="80" crew="1" energy="2" capacity="50" technology-capacity="1" hit-points="10">
+			<upkeep type="cash" quantity="30"/>
+			<operation-allowed-in module-group="frigate"/>
+			<move mode="space" mass-capacity="15000"/>
+		</entry>
+		<entry name="jmpdvr" name-en="Alderson jump drive" name-en2="Alderson jump drives" group="propulsion" description="Resonance-coupled field coils for instant transit between matched stable Alderson points." size="1000" mass="1200" crew="2" energy="60" capacity="200" technology-capacity="2" hit-points="100">
+			<upkeep type="cash" quantity="150"/>
+			<operation-allowed-in module-group="frigate"/>
+			<fuel duration="1">
+				<item type="h2o2" quantity="2"/>
+			</fuel>
+		</entry>
+		<entry name="ujpdvr" name-en="unstable Alderson jump drive" name-en2="unstable Alderson jump drives" group="propulsion" description="Tidal-shear stabiliser array for traversing unstable Alderson points." size="1200" mass="1500" crew="2" energy="80" capacity="250" technology-capacity="2" hit-points="120">
+			<upkeep type="cash" quantity="200"/>
+			<operation-allowed-in module-group="frigate"/>
+			<fuel duration="1">
+				<item type="xenon" quantity="2"/>
+			</fuel>
+		</entry>
+		<entry name="prspsc" name-en="asteroid prospector" name-en2="asteroid prospectors" group="research" description="Laser-ablation mass spectrometer and lidar shape model for belt resource surveying." size="150" mass="40" crew="2" energy="4" technology-capacity="3" research-output="1" hit-points="10">
+			<upkeep type="cash" quantity="60"/>
+		</entry>
+		<entry name="msltub" name-en="missile tube" name-en2="missile tubes" group="military" description="Nitrate and uranium grain solid-motor missile launcher." size="300" mass="400" crew="2" energy="8" technology-capacity="1" hit-points="35" attack="6" damage="8">
+			<upkeep type="cash" quantity="40"/>
+		</entry>
+		<entry name="ewantn" name-en="EW antenna" name-en2="EW antennae" group="military" description="Broadband jamming array disrupting drone targeting and degrading enemy initiative." size="150" mass="80" crew="2" energy="10" technology-capacity="1" hit-points="12" defense="4" initiative="4">
+			<upkeep type="cash" quantity="30"/>
+		</entry>
+		<entry name="ntreng" name-en="nuclear thermal engine" name-en2="nuclear thermal engines" group="propulsion" description="Solid-core UO2 heats hydrogen propellant; Isp 800-900 seconds." size="1200" mass="1400" crew="2" energy="80" capacity="250" technology-capacity="2" hit-points="130">
+			<upkeep type="cash" quantity="180"/>
+			<operation-allowed-in module-group="frigate"/>
+			<move mode="space" mass-capacity="40000"/>
+			<fuel duration="1">
+				<item type="water" quantity="1"/>
+			</fuel>
+		</entry>
+		<entry name="hypeng" name-en="hypergolic engine" name-en2="hypergolic engines" group="propulsion" description="Storable bipropellant for capture burns when primary drive is off." size="700" mass="800" crew="1" energy="25" capacity="150" technology-capacity="1" hit-points="75">
+			<upkeep type="cash" quantity="100"/>
+			<operation-allowed-in module-group="frigate"/>
+			<move mode="space" mass-capacity="18000"/>
+			<fuel duration="1">
+				<item type="hydzn" quantity="1"/>
+			</fuel>
+		</entry>
+		<entry name="hlthst" name-en="Hall thruster" name-en2="Hall thrusters" group="propulsion" description="ExB plasma accelerator using xenon propellant; higher thrust than water-ion." size="600" mass="500" crew="1" energy="55" capacity="100" technology-capacity="1" hit-points="55">
+			<upkeep type="cash" quantity="110"/>
+			<operation-allowed-in module-group="frigate"/>
+			<move mode="space" mass-capacity="30000"/>
+			<fuel duration="1">
+				<item type="xenon" quantity="1"/>
+			</fuel>
+		</entry>
+		<entry name="orbfry" name-en="orbital foundry" name-en2="orbital foundries" group="production" description="Vacuum induction melting and electron-beam welding facility for orbital fabrication." size="4000" mass="800" crew="8" energy="40" capacity="2000" technology-capacity="4" hit-points="240">
+			<upkeep type="cash" quantity="200"/>
+			<operation-allowed-in location-type="orbit"/>
+			<operation-allowed-in module-group="space station"/>
+		</entry>
+		<entry name="h2cell" name-en="fuel cell" name-en2="fuel cells" group="energy" description="Alkaline H2/O2 fuel cell generating power from water or oxyhydro." size="400" mass="300" crew="2" energy="8" hit-points="35">
+			<produce energy="40" duration="13"/>
+			<energy-consume type="h2o2" quantity="2"/>
+			<upkeep type="cash" quantity="40"/>
+			<fuel duration="13">
+				<item type="h2o2" quantity="2"/>
+			</fuel>
+		</entry>
+		<entry name="radlab" name-en="radiation-hardened lab" name-en2="radiation-hardened labs" group="research" description="Shielded computational laboratory with ECC and SOI for deep-space research." size="300" mass="80" crew="4" energy="8" technology-capacity="6" research-output="2" hit-points="19">
+			<upkeep type="cash" quantity="120"/>
+		</entry>
+		<entry name="crylab" name-en="cryogenic laboratory" name-en2="cryogenic laboratories" group="research" description="LN2 and LHe3 cooled sensors and infrared detector arrays for precision measurements." size="280" mass="90" crew="3" energy="8" technology-capacity="5" research-output="2" hit-points="19">
+			<upkeep type="cash" quantity="100"/>
+		</entry>
+		<entry name="cmplab" name-en="composite materials lab" name-en2="composite materials labs" group="research" description="Fibre and matrix characterisation facility for advanced structural composites." size="300" mass="100" crew="4" energy="8" technology-capacity="6" research-output="2" hit-points="20">
+			<upkeep type="cash" quantity="120"/>
+		</entry>
+		<entry name="railgn" name-en="railgun" name-en2="railguns" group="military" description="Electromagnetic rail launcher firing dense armatures at high velocity." size="800" mass="900" crew="4" energy="20" technology-capacity="2" hit-points="85" attack="8" defense="2" damage="8">
+			<upkeep type="cash" quantity="80"/>
+		</entry>
+		<entry name="shplas" name-en="ship plasma shield" name-en2="ship plasma shields" group="military" description="Gas-fed plasma and magnetic bottle that resists laser weapons." size="400" mass="350" crew="3" energy="25" technology-capacity="2" hit-points="38" defense="12">
+			<upkeep type="cash" quantity="80"/>
+		</entry>
+		<entry name="clslss" name-en="closed-loop life support" name-en2="closed-loop life support systems" group="habitat" description="Sabatier reactor and amine scrubber recycling wastes into breathing gas and water." size="400" mass="200" crew="2" energy="12" technology-capacity="2" hit-points="30">
+			<upkeep type="cash" quantity="60"/>
+		</entry>
+		<entry name="isrplt" name-en="ISRU refinery" name-en2="ISRU refineries" group="extraction" description="In-situ regolith processing into structural metals and slag." size="1500" mass="1500" crew="8" energy="20" technology-capacity="2" hit-points="150">
+			<upkeep type="cash" quantity="120"/>
+			<operation-allowed-in location-type="solid-surface"/>
+		</entry>
+		<entry name="o2plt" name-en="oxygen ISRU plant" name-en2="oxygen ISRU plants" group="extraction" description="Ilmenite and chondrite reduction producing O2 stored as oxyhydro or breathing gas." size="1200" mass="1200" crew="6" energy="18" technology-capacity="2" hit-points="120">
+			<upkeep type="cash" quantity="100"/>
+			<operation-allowed-in location-type="solid-surface"/>
+		</entry>
+		<entry name="cerkil" name-en="ceramics kiln" name-en2="ceramics kilns" group="production" description="B4C and SiC kiln producing armour-grade ceramic plates." size="1500" mass="1200" crew="6" energy="30" technology-capacity="2" hit-points="135">
+			<upkeep type="cash" quantity="120"/>
+		</entry>
+		<entry name="mpddrv" name-en="MPD thruster" name-en2="MPD thrusters" group="propulsion" description="J-cross-B plasma acceleration using methane propellant." size="900" mass="800" crew="2" energy="60" capacity="180" technology-capacity="2" hit-points="85">
+			<upkeep type="cash" quantity="140"/>
+			<operation-allowed-in module-group="frigate"/>
+			<move mode="space" mass-capacity="80000"/>
+			<fuel duration="1">
+				<item type="methn" quantity="1"/>
+			</fuel>
+		</entry>
+		<entry name="limpd" name-en="lithium MPD" name-en2="lithium MPDs" group="propulsion" description="Lithium cathode magnetoplasmadynamic thruster; higher Isp than methane MPD." size="950" mass="850" crew="2" energy="70" capacity="180" technology-capacity="2" hit-points="90">
+			<upkeep type="cash" quantity="150"/>
+			<operation-allowed-in module-group="frigate"/>
+			<move mode="space" mass-capacity="90000"/>
+			<fuel duration="1">
+				<item type="lithia" quantity="1"/>
+			</fuel>
+		</entry>
+		<entry name="arcjet" name-en="electrothermal arcjet" name-en2="electrothermal arcjets" group="propulsion" description="Arc-heated water propellant; performance between chemical and ion drives." size="500" mass="450" crew="1" energy="45" capacity="100" technology-capacity="1" hit-points="48">
+			<upkeep type="cash" quantity="90"/>
+			<operation-allowed-in module-group="frigate"/>
+			<move mode="space" mass-capacity="22000"/>
+			<fuel duration="1">
+				<item type="water" quantity="1"/>
+			</fuel>
+		</entry>
+		<entry name="pdltur" name-en="point-defense laser turret" name-en2="point-defense laser turrets" group="military" description="Short-range beam turret for close-in laser defence." size="200" mass="150" crew="1" energy="15" technology-capacity="1" hit-points="18" attack="4" initiative="8">
+			<upkeep type="cash" quantity="30"/>
+		</entry>
+		<entry name="kpdtur" name-en="kinetic cannon turret" name-en2="kinetic cannon turrets" group="military" description="Rapid-cycling mass driver firing dense penetrators." size="250" mass="280" crew="2" energy="12" technology-capacity="1" hit-points="27" attack="5" initiative="6">
+			<upkeep type="cash" quantity="40"/>
+		</entry>
+		<entry name="cermpl" name-en="ceramic armour plate" name-en2="ceramic armour plates" group="frigate" description="B4C tile applique providing superior kinetic resistance." size="1200" mass="1800" crew="0" energy="0" hit-points="150" defense="12">
+			<upkeep type="cash" quantity="20"/>
+		</entry>
+		<entry name="survsc" name-en="survey scanner" name-en2="survey scanners" group="research" description="Reflectance and emission spectra analysis for planetary and asteroid surveying." size="150" mass="40" crew="2" energy="4" technology-capacity="4" research-output="1" hit-points="10">
+			<upkeep type="cash" quantity="50"/>
+		</entry>
+		<entry name="seissc" name-en="seismic scanner" name-en2="seismic scanners" group="research" description="Surface and asteroid interior mapping through seismic and gravimetric instruments." size="180" mass="80" crew="2" energy="6" technology-capacity="5" research-output="1" hit-points="13">
+			<upkeep type="cash" quantity="60"/>
+		</entry>
+		<entry name="bwinow" name-en="x-ray window array" name-en2="x-ray window arrays" group="research" description="Beryllium windows transparent to soft x-rays with low neutron cross-section." size="120" mass="40" crew="2" energy="4" technology-capacity="3" research-output="1" hit-points="8">
+			<upkeep type="cash" quantity="40"/>
+		</entry>
+		<entry name="drnfac" name-en="drone factory" name-en2="drone factories" group="production" description="Automated facility producing worker drones from silicon and copper feedstock." size="800" mass="800" crew="4" energy="20" capacity="400" technology-capacity="2" hit-points="80">
+			<upkeep type="cash" quantity="80"/>
+		</entry>
+		<entry name="dhefrc" name-en="D-He3 fusion reactor" name-en2="D-He3 fusion reactors" group="energy" description="Deuterium-helium-3 aneutronic fusion for clean high-output energy." size="2000" mass="1800" crew="6" energy="20" hit-points="190">
+			<produce energy="250" duration="13"/>
+			<energy-consume type="heliu3" quantity="3"/>
+			<energy-consume type="deutrm" quantity="2"/>
+			<upkeep type="cash" quantity="250"/>
+			<fuel duration="13">
+				<item type="heliu3" quantity="3"/>
+				<item type="deutrm" quantity="2"/>
+			</fuel>
+		</entry>
+		<entry name="whlhul" name-en="centrifugal habitat" name-en2="centrifugal habitats" group="habitat" description="Rotating habitat producing approximately 1g at the rim for long-duration habitation." size="20000" mass="8000" crew="20" energy="40" capacity="15000" population-maximum="2000" technology-capacity="4" hit-points="1400">
+			<upkeep type="cash" quantity="300"/>
+			<operation-allowed-in location-type="orbit"/>
+		</entry>
+		<entry name="ccplnk" name-en="C-C composite facility" name-en2="C-C composite facilities" group="production" description="3D carbon-carbon weave for nozzle throats and heatshields." size="2000" mass="1500" crew="8" energy="40" technology-capacity="2" hit-points="175">
+			<upkeep type="cash" quantity="160"/>
+		</entry>
+		<entry name="atskmr" name-en="atmospheric skimmer" name-en2="atmospheric skimmers" group="extraction" description="Ram scoop that dives into gas-giant atmosphere to extract helium-3 and deuterium." size="3000" mass="2000" crew="6" energy="30" technology-capacity="2" hit-points="250">
+			<upkeep type="cash" quantity="200"/>
+			<operation-allowed-in location-type="orbit"/>
+			<fuel duration="13">
+				<item type="h2o2" quantity="2"/>
+			</fuel>
+		</entry>
+		<entry name="fuseng" name-en="fusion engine" name-en2="fusion engines" group="propulsion" description="Magnetic nozzle fusion engine burning helium-3." size="2500" mass="2200" crew="4" energy="120" capacity="500" technology-capacity="3" hit-points="235">
+			<upkeep type="cash" quantity="250"/>
+			<operation-allowed-in module-group="frigate"/>
+			<move mode="space" mass-capacity="200000"/>
+			<fuel duration="1">
+				<item type="heliu3" quantity="2"/>
+			</fuel>
+		</entry>
+		<entry name="mgsail" name-en="magnetic sail" name-en2="magnetic sails" group="propulsion" description="Superconducting loop braking against solar wind; no onboard propellant." size="800" mass="400" crew="2" energy="20" capacity="100" technology-capacity="1" hit-points="60">
+			<upkeep type="cash" quantity="60"/>
+			<operation-allowed-in module-group="frigate"/>
+			<move mode="space" mass-capacity="100000"/>
+		</entry>
+		<entry name="xendrv" name-en="xenon ion drive" name-en2="xenon ion drives" group="propulsion" description="Gridded ion engine using xenon propellant; higher Isp than water-ion." size="700" mass="550" crew="2" energy="80" capacity="120" technology-capacity="2" hit-points="63">
+			<upkeep type="cash" quantity="120"/>
+			<operation-allowed-in module-group="frigate"/>
+			<move mode="space" mass-capacity="50000"/>
+			<fuel duration="1">
+				<item type="xenon" quantity="1"/>
+			</fuel>
+		</entry>
+		<entry name="drnctl" name-en="drone command module" name-en2="drone command modules" group="command" description="Command and coordination system for fighter drone swarms." size="300" mass="120" crew="2" energy="10" technology-capacity="4" hit-points="21">
+			<upkeep type="cash" quantity="50"/>
+			<operation-allowed-in module-group="frigate"/>
+		</entry>
+		<entry name="coilgn" name-en="coilgun" name-en2="coilguns" group="military" description="Dense armature electromagnetic launcher with superconducting coils." size="1200" mass="1400" crew="6" energy="35" technology-capacity="2" hit-points="130" attack="10" damage="10">
+			<upkeep type="cash" quantity="100"/>
+		</entry>
+		<entry name="miscpu" name-en="missile guidance computer" name-en2="missile guidance computers" group="command" description="Silicon-brained seekers for guided missile warheads." size="200" mass="80" crew="2" energy="8" technology-capacity="3" hit-points="14">
+			<upkeep type="cash" quantity="40"/>
+		</entry>
+		<entry name="matlab" name-en="materials lab" name-en2="materials labs" group="research" description="Diffraction, hardness, and fatigue testing for advanced structural materials." size="400" mass="100" crew="6" energy="12" technology-capacity="8" research-output="3" hit-points="25">
+			<upkeep type="cash" quantity="150"/>
+		</entry>
+		<entry name="maglab" name-en="magnetometry lab" name-en2="magnetometry labs" group="research" description="SQUID and fluxgate magnetometers for subsurface and field mapping." size="350" mass="120" crew="4" energy="10" technology-capacity="6" research-output="2" hit-points="24">
+			<upkeep type="cash" quantity="100"/>
+		</entry>
+		<entry name="ntdiag" name-en="neutron diagnostics lab" name-en2="neutron diagnostics labs" group="research" description="Beryllium windows and helium-3 proportional tubes for fusion and NTR diagnostics." size="300" mass="100" crew="4" energy="10" technology-capacity="5" research-output="2" hit-points="20">
+			<upkeep type="cash" quantity="100"/>
+		</entry>
+		<entry name="proxpd" name-en="proximity burst PD" name-en2="proximity burst PDs" group="military" description="Last-ditch isotope and fragmentation bursts against incoming missiles." size="250" mass="200" crew="2" energy="15" technology-capacity="1" hit-points="23" attack="4" damage="6" initiative="8">
+			<upkeep type="cash" quantity="40"/>
+		</entry>
+		<entry name="capshd" name-en="capital plasma shield" name-en2="capital plasma shields" group="military" description="Scaled-up gas-fed plasma and magnetic bottle for capital-class laser defence." size="800" mass="600" crew="4" energy="40" technology-capacity="2" hit-points="70" defense="16">
+			<upkeep type="cash" quantity="100"/>
+		</entry>
+		<entry name="msdrst" name-en="mass driver station" name-en2="mass driver stations" group="production" description="Kiloampere rail launcher for surface-to-orbit bulk cargo transfer." size="8000" mass="10000" crew="12" energy="80" technology-capacity="3" hit-points="900">
+			<upkeep type="cash" quantity="300"/>
+			<operation-allowed-in location-type="solid-surface"/>
+		</entry>
+		<entry name="crytnk" name-en="cryogenic tank" name-en2="cryogenic tanks" group="storage" description="Insulated tankage for LH2, LOX, LHe3, and LCH4 in vacuum." size="2000" capacity="5000" mass="400" crew="1" energy="8" hit-points="120">
+			<upkeep type="cash" quantity="30"/>
+		</entry>
+		<entry name="recykl" name-en="metals recycler" name-en2="metals recyclers" group="production" description="Scrap and waste reprocessing into structural iron or spare parts." size="1000" mass="800" crew="6" energy="20" technology-capacity="2" hit-points="90">
+			<upkeep type="cash" quantity="80"/>
+		</entry>
+		<entry name="bioplt" name-en="biopolymer plant" name-en2="biopolymer plants" group="production" description="Microbial cellulose and PHA polymer production for mass-light structural fittings." size="800" mass="400" crew="8" energy="15" technology-capacity="2" hit-points="60">
+			<upkeep type="cash" quantity="100"/>
+		</entry>
+		<entry name="vasmdr" name-en="VASIMR drive" name-en2="VASIMR drives" group="propulsion" description="RF-heated plasma drive with variable specific impulse." size="1800" mass="1600" crew="3" energy="100" capacity="350" technology-capacity="3" hit-points="170">
+			<upkeep type="cash" quantity="220"/>
+			<operation-allowed-in module-group="frigate"/>
+			<move mode="space" mass-capacity="150000"/>
+			<fuel duration="1">
+				<item type="water" quantity="1"/>
+			</fuel>
+		</entry>
+		<entry name="chmup2" name-en="insertion stage" name-en2="insertion stages" group="propulsion" description="Restartable hypergolic stage for orbit capture." size="900" mass="1000" crew="2" energy="30" capacity="180" technology-capacity="1" hit-points="95">
+			<upkeep type="cash" quantity="80"/>
+			<operation-allowed-in module-group="frigate"/>
+			<move mode="space" mass-capacity="18000"/>
+			<fuel duration="1">
+				<item type="hydzn" quantity="1"/>
+			</fuel>
+		</entry>
+		<entry name="plsail" name-en="plasma sail" name-en2="plasma sails" group="propulsion" description="Inflated magnetosphere braking against solar wind; no onboard propellant." size="1200" mass="600" crew="3" energy="25" capacity="150" technology-capacity="2" hit-points="90">
+			<upkeep type="cash" quantity="80"/>
+			<operation-allowed-in module-group="frigate"/>
+			<move mode="space" mass-capacity="150000"/>
+		</entry>
+		<entry name="towmod" name-en="asteroid tow rig" name-en2="asteroid tow rigs" group="propulsion" description="Ion thruster scaffold for gravity-tractor asteroid relocation." size="6000" mass="4000" crew="8" energy="60" technology-capacity="2" hit-points="500">
+			<upkeep type="cash" quantity="200"/>
+			<operation-allowed-in module-group="frigate"/>
+			<fuel duration="1">
+				<item type="xenon" quantity="2"/>
+			</fuel>
+		</entry>
+		<entry name="armplt" name-en="spaced armour plate" name-en2="spaced armour plates" group="frigate" description="Whipple shield with tungsten fibre layers; resists kinetic penetrators." size="2000" mass="3000" crew="0" energy="0" hit-points="200" defense="15">
+			<upkeep type="cash" quantity="30"/>
+		</entry>
+		<entry name="crumis" name-en="cruise missile launcher" name-en2="cruise missile launchers" group="military" description="Standoff guided missile with hydrazine flyout motor and isotope warhead." size="500" mass="600" crew="0" energy="10" technology-capacity="1" hit-points="55" attack="12" damage="14">
+			<upkeep type="cash" quantity="60"/>
+			<fuel duration="13">
+				<item type="hydzn" quantity="1"/>
+			</fuel>
+		</entry>
+		<entry name="uvltur" name-en="UV laser turret" name-en2="UV laser turrets" group="military" description="Short-wavelength laser using gas working medium." size="350" mass="400" crew="2" energy="20" technology-capacity="2" hit-points="38" attack="8" damage="7">
+			<upkeep type="cash" quantity="60"/>
+		</entry>
+		<entry name="xbiolb" name-en="xenobiology lab" name-en2="xenobiology labs" group="research" description="Containment and PCR analysis for xenobiological samples." size="250" mass="80" crew="4" energy="6" technology-capacity="4" research-output="1" hit-points="17">
+			<upkeep type="cash" quantity="100"/>
+		</entry>
+		<entry name="navcmp" name-en="astrogation computer" name-en2="astrogation computers" group="command" description="N-body orbital integrators for precision interplanetary navigation." size="400" mass="150" crew="4" energy="12" technology-capacity="6" hit-points="28">
+			<upkeep type="cash" quantity="80"/>
+			<operation-allowed-in module-group="frigate"/>
+		</entry>
+		<entry name="fatlab" name-en="cryo-fatigue lab" name-en2="cryo-fatigue labs" group="research" description="Thermal-cycle coupon testing for cryogenic structural materials." size="350" mass="120" crew="5" energy="10" technology-capacity="7" research-output="2" hit-points="24">
+			<upkeep type="cash" quantity="100"/>
+		</entry>
+		<entry name="solgen" name-en="solar energy tap" name-en2="solar energy taps" group="energy" description="Massive solar collector deployed at 0.1 AU; energy output scales with stellar proximity." size="6000" mass="4000" crew="6" energy="10" hit-points="500">
+			<produce energy="500" duration="13"/>
+			<upkeep type="cash" quantity="300"/>
+		</entry>
+		<entry name="lsrtx" name-en="laser transmitter" name-en2="laser transmitters" group="energy" description="Beams energy to a paired receiver anywhere in-system; 5 percent loss per AU." size="600" mass="600" crew="4" energy="20" technology-capacity="2" hit-points="60">
+			<upkeep type="cash" quantity="100"/>
+		</entry>
+		<entry name="lsrrx" name-en="laser receiver" name-en2="laser receivers" group="energy" description="Receives beamed energy from a paired transmitter." size="600" mass="600" crew="2" energy="4" hit-points="60">
+			<produce energy="100" duration="13"/>
+			<upkeep type="cash" quantity="60"/>
+		</entry>
+		<entry name="corlab" name-en="coronal research lab" name-en2="coronal research labs" group="research" description="Hardened research facility operating at 0.1 AU with shield-integrated hull and active cooling." size="3000" mass="2500" crew="8" energy="30" technology-capacity="10" research-output="3" hit-points="275">
+			<upkeep type="cash" quantity="250"/>
+		</entry>
+		<entry name="lghul" name-en="large pressure hull" name-en2="large pressure hulls" group="frigate" description="Pressure hull for thousands of cubic metres; foundation for ark-class vessels." size="25000" mass="8000" capacity="20000" energy="20" technology-capacity="6" hit-points="1650" defense="12" cannot-hold-itemstacks="yes">
+			<upkeep type="cash" quantity="100"/>
+			<operation-allowed-in location-type="orbit"/>
+			<operation-allowed-in location-type="space"/>
+		</entry>
+		<entry name="radshd" name-en="radiation shelter" name-en2="radiation shelters" group="habitat" description="Boron, beryllium, and graphite moderator-absorber stack for storm shielding." size="3000" mass="2500" crew="4" energy="15" radiation="-300" hit-points="275">
+			<upkeep type="cash" quantity="80"/>
+		</entry>
+		<entry name="recylr" name-en="closed-loop recycler" name-en2="closed-loop recyclers" group="production" description="Metals, water, and air recovery from industrial wastes using platinum catalysts." size="2500" mass="2000" crew="8" energy="40" technology-capacity="3" hit-points="225">
+			<upkeep type="cash" quantity="160"/>
+		</entry>
+		<entry name="insltn" name-en="aerogel insulation" name-en2="aerogel insulation panels" group="habitat" description="Supercritical-dried silica sol for habitat multi-layer insulation." size="400" mass="80" crew="0" energy="2" hit-points="24">
+			<upkeep type="cash" quantity="10"/>
+		</entry>
+		<entry name="cldplt" name-en="cloud mining platform" name-en2="cloud mining platforms" group="extraction" description="Hot-hydrogen aerostat with cryogenic separator at gas-giant altitude." size="8000" mass="6000" crew="12" energy="40" technology-capacity="3" hit-points="700">
+			<upkeep type="cash" quantity="300"/>
+		</entry>
+		<entry name="tanker" name-en="interplanetary tanker" name-en2="interplanetary tankers" group="spacecraft" description="Bulk volatile transport vessel with cryogenic tankage." size="6000" mass="2000" crew="6" energy="30" capacity="4000" hit-points="400">
+			<upkeep type="cash" quantity="100"/>
+			<move mode="space" mass-capacity="50000"/>
+			<fuel duration="1">
+				<item type="h2o2" quantity="2"/>
+			</fuel>
+		</entry>
+		<entry name="rcspod" name-en="RCS pod" name-en2="RCS pods" group="propulsion" description="Attitude and translation thruster cluster using storable hydrazine." size="200" mass="180" crew="1" energy="8" technology-capacity="1" hit-points="19">
+			<upkeep type="cash" quantity="20"/>
+			<operation-allowed-in module-group="frigate"/>
+			<fuel duration="1">
+				<item type="hydzn" quantity="1"/>
+			</fuel>
+		</entry>
+		<entry name="trimth" name-en="trim thruster" name-en2="trim thrusters" group="propulsion" description="Low-thrust xenon or water thruster for station-keeping." size="300" mass="250" crew="1" energy="20" technology-capacity="1" hit-points="28">
+			<upkeep type="cash" quantity="30"/>
+			<operation-allowed-in module-group="frigate"/>
+			<fuel duration="1">
+				<item type="xenon" quantity="1"/>
+			</fuel>
+		</entry>
+		<entry name="dpsens" name-en="deep sensor array" name-en2="deep sensor arrays" group="research" description="Multi-aperture interferometry for deep-space observation." size="600" mass="200" crew="4" energy="15" technology-capacity="6" research-output="2" hit-points="40">
+			<upkeep type="cash" quantity="120"/>
+		</entry>
+		<entry name="bolsen" name-en="bolometer array" name-en2="bolometer arrays" group="research" description="Sub-millimetre thermal sensors for passive detection." size="250" mass="80" crew="3" energy="8" technology-capacity="5" research-output="2" hit-points="17">
+			<upkeep type="cash" quantity="80"/>
+		</entry>
+		<entry name="crydet" name-en="cryogenic detector" name-en2="cryogenic detectors" group="research" description="Transition-edge sensors at kelvin temperatures for precision measurements." size="280" mass="90" crew="3" energy="10" technology-capacity="6" research-output="2" hit-points="19">
+			<upkeep type="cash" quantity="90"/>
+		</entry>
+		<entry name="spnknc" name-en="spinal kinetic weapon" name-en2="spinal kinetic weapons" group="military" description="Ship-length electromagnetic rail for devastating kinetic strikes." size="4000" mass="5000" crew="12" energy="40" technology-capacity="3" hit-points="450" attack="14" damage="16">
+			<upkeep type="cash" quantity="200"/>
+		</entry>
+		<entry name="magzin" name-en="missile magazine" name-en2="missile magazines" group="storage" description="Nested isotope grain wells for deep missile stores." size="4000" capacity="3000" mass="3000" crew="2" energy="5" hit-points="350">
+			<upkeep type="cash" quantity="40"/>
+		</entry>
+		<entry name="bmdir" name-en="beam director" name-en2="beam directors" group="military" description="Fast-steering optics with gas-fed beam path for precise laser strikes." size="600" mass="400" crew="4" energy="25" technology-capacity="2" hit-points="50" attack="6" damage="5" initiative="8">
+			<upkeep type="cash" quantity="80"/>
+		</entry>
+		<entry name="impgds" name-en="impact guidance system" name-en2="impact guidance systems" group="military" description="Terminal-guidance avionics for asteroid kinetic impactor steering." size="400" mass="300" crew="4" energy="15" technology-capacity="2" hit-points="35">
+			<upkeep type="cash" quantity="80"/>
+		</entry>
+		<entry name="eclssx" name-en="regenerative ECLSS" name-en2="regenerative ECLSS units" group="habitat" description="Near-closed carbon, nitrogen, and water loops with platinum catalysts." size="800" mass="400" crew="4" energy="20" technology-capacity="3" hit-points="60">
+			<upkeep type="cash" quantity="100"/>
+		</entry>
+		<entry name="agrdek" name-en="agricultural deck" name-en2="agricultural decks" group="agricultural" description="LED-lit hydroponic decks producing food in orbit and deep space." size="2000" mass="600" crew="15" energy="25" technology-capacity="2" hit-points="130">
+			<produce item="food" quantity="10" duration="13"/>
+			<upkeep type="cash" quantity="120"/>
+			<operation-allowed-in location-type="orbit"/>
+		</entry>
+		<entry name="stmshd" name-en="storm shelter" name-en2="storm shelters" group="habitat" description="Dedicated solar particle event shelter nested in large hulls." size="2500" mass="2000" crew="2" energy="10" radiation="-400" hit-points="225">
+			<upkeep type="cash" quantity="50"/>
+		</entry>
+		<entry name="wstplt" name-en="waste mineralisation plant" name-en2="waste mineralisation plants" group="production" description="Wet oxidation of industrial wastes to inert slag and recoverable water." size="1500" mass="1200" crew="6" energy="25" technology-capacity="2" hit-points="135">
+			<upkeep type="cash" quantity="80"/>
+		</entry>
+		<entry name="plsdv" name-en="fusion pulse drive" name-en2="fusion pulse drives" group="propulsion" description="Pellet-driven magnetic-nozzle fusion pulse drive for ark-class vessels." size="4000" mass="3500" crew="6" energy="180" capacity="800" technology-capacity="4" hit-points="375">
+			<upkeep type="cash" quantity="350"/>
+			<operation-allowed-in module-group="frigate"/>
+			<move mode="space" mass-capacity="800000"/>
+			<fuel duration="1">
+				<item type="heliu3" quantity="3"/>
+				<item type="deutrm" quantity="2"/>
+			</fuel>
+		</entry>
+		<entry name="orbtug" name-en="orbital tug" name-en2="orbital tugs" group="spacecraft" description="Workhorse electric tug for station-to-station cargo and crew transfer." size="4000" mass="2500" crew="4" energy="40" capacity="2000" hit-points="325">
+			<upkeep type="cash" quantity="80"/>
+			<move mode="space" mass-capacity="30000"/>
+			<fuel duration="1">
+				<item type="xenon" quantity="1"/>
+			</fuel>
+		</entry>
+		<entry name="hshld" name-en="aerobrake heatshield" name-en2="aerobrake heatshields" group="spacecraft" description="Ablative carbon-carbon heatshield for gas-giant or thick-atmosphere aerobraking." size="3000" mass="2000" crew="0" energy="0" hit-points="250">
+			<upkeep type="cash" quantity="20"/>
+		</entry>
+		<entry name="ciwst" name-en="CIWS turret" name-en2="CIWS turrets" group="military" description="Proximity and isotope burst for last-ditch point-blank missile defence." size="400" mass="300" crew="2" energy="20" technology-capacity="1" hit-points="35" attack="6" damage="8" initiative="10">
+			<upkeep type="cash" quantity="50"/>
+		</entry>
+		<entry name="ewark" name-en="area EW suite" name-en2="area EW suites" group="military" description="Fleet-scale electronic warfare jamming as defence and initiative degradation." size="500" mass="300" crew="4" energy="20" technology-capacity="2" hit-points="40" defense="8" initiative="6">
+			<upkeep type="cash" quantity="70"/>
+		</entry>
+		<entry name="knmine" name-en="missile mine" name-en2="missile mines" group="military" description="Coast-then-burst autonomous mines deployed in space and orbit." size="200" mass="400" crew="0" energy="0" hit-points="30" attack="8" damage="12">
+			<upkeep type="cash" quantity="10"/>
+		</entry>
+		<entry name="arkmed" name-en="long-duration medical bay" name-en2="long-duration medical bays" group="research" description="Bone-density, radiation-damage, and isolation medicine for multi-year missions." size="500" mass="150" crew="8" energy="10" technology-capacity="4" research-output="1" hit-points="33">
+			<upkeep type="cash" quantity="120"/>
+		</entry>
+		<entry name="psybrd" name-en="psychology ward" name-en2="psychology wards" group="research" description="Circadian lighting, social dynamics, and morale support for deep-space isolation." size="400" mass="150" crew="6" energy="8" technology-capacity="3" research-output="1" hit-points="28">
+			<upkeep type="cash" quantity="80"/>
+		</entry>
+		<entry name="insnav" name-en="inertial navigation system" name-en2="inertial navigation systems" group="command" description="Star cameras and inertial measurement units for autonomous deep-space navigation." size="500" mass="200" crew="4" energy="15" technology-capacity="8" hit-points="35">
+			<upkeep type="cash" quantity="80"/>
+			<operation-allowed-in module-group="frigate"/>
+		</entry>
+		<entry name="arkhul" name-en="ark hull" name-en2="ark hulls" group="frigate" description="Pressure hull for thousands of crew; self-sufficient interstellar ark foundation." size="80000" mass="25000" capacity="60000" energy="80" technology-capacity="10" hit-points="5250" defense="20" cannot-hold-itemstacks="yes">
+			<upkeep type="cash" quantity="500"/>
+			<operation-allowed-in location-type="orbit"/>
+			<operation-allowed-in location-type="space"/>
+		</entry>
+		<entry name="arkshl" name-en="ark storm shielding" name-en2="ark storm shielding units" group="habitat" description="Scaled SPE and GCR shelter for a kilometre-class hull." size="8000" mass="6000" crew="6" energy="25" radiation="-600" hit-points="700">
+			<upkeep type="cash" quantity="100"/>
+		</entry>
+		<entry name="arkrec" name-en="ark recycler" name-en2="ark recyclers" group="production" description="Near-closed mass loop for thousands of crew in deep space." size="6000" mass="5000" crew="10" energy="50" technology-capacity="4" hit-points="550">
+			<upkeep type="cash" quantity="200"/>
+		</entry>
+		<entry name="arkeng" name-en="ark engine" name-en2="ark engines" group="propulsion" description="Fusion-pulse drive cluster for ark-class vessels; inner-system transit in weeks." size="8000" mass="7000" crew="8" energy="200" capacity="1500" technology-capacity="4" hit-points="750">
+			<upkeep type="cash" quantity="400"/>
+			<operation-allowed-in module-group="frigate"/>
+			<move mode="space" mass-capacity="2000000"/>
+			<fuel duration="1">
+				<item type="heliu3" quantity="5"/>
+				<item type="deutrm" quantity="3"/>
+			</fuel>
+		</entry>
+		<entry name="arkrcs" name-en="ark RCS" name-en2="ark RCS clusters" group="propulsion" description="Attitude thrusters for a high-inertia ark hull." size="2000" mass="1800" crew="4" energy="40" technology-capacity="2" hit-points="190">
+			<upkeep type="cash" quantity="60"/>
+			<operation-allowed-in module-group="frigate"/>
+			<fuel duration="1">
+				<item type="hydzn" quantity="2"/>
+			</fuel>
+		</entry>
+		<entry name="arksail" name-en="ark abort sail" name-en2="ark abort sails" group="propulsion" description="Magnetic sail for emergency braking if the pulse drive is dark." size="4000" mass="2000" crew="4" energy="30" technology-capacity="2" hit-points="300">
+			<upkeep type="cash" quantity="80"/>
+			<operation-allowed-in module-group="frigate"/>
+			<move mode="space" mass-capacity="500000"/>
+		</entry>
+		<entry name="arkbrg" name-en="ark command bridge" name-en2="ark command bridges" group="command" description="High-capacity command bridge with autonomous systems for ark-class operations." size="2000" mass="800" crew="12" energy="30" technology-capacity="16" research-output="4" hit-points="140">
+			<upkeep type="cash" quantity="200"/>
+			<operation-allowed-in module-group="frigate"/>
+		</entry>
+		<entry name="arknav" name-en="ark navigation computer" name-en2="ark navigation computers" group="command" description="Long-baseline optical and inertial navigation for week-scale inner-system legs." size="2500" mass="1000" crew="8" energy="25" technology-capacity="12" hit-points="175">
+			<upkeep type="cash" quantity="120"/>
+			<operation-allowed-in module-group="frigate"/>
+		</entry>
+		<entry name="doslab" name-en="dosimetry laboratory" name-en2="dosimetry laboratories" group="research" description="Tissue-equivalent radiation detectors for fleet-wide dose monitoring." size="400" mass="150" crew="4" energy="8" technology-capacity="4" research-output="1" hit-points="28">
+			<upkeep type="cash" quantity="60"/>
+		</entry>
+		<entry name="arkdfn" name-en="ark laser grid" name-en2="ark laser grids" group="military" description="Area beam grid for kilometre-scale target defence." size="3000" mass="2500" crew="10" energy="50" technology-capacity="3" hit-points="275" attack="10" damage="8">
+			<upkeep type="cash" quantity="150"/>
+		</entry>
+		<entry name="arkshd" name-en="ark plasma shield" name-en2="ark plasma shields" group="military" description="Gas-fed plasma and magnetic bottle scaled for ark-class laser defence." size="2500" mass="1800" crew="6" energy="60" technology-capacity="2" hit-points="215" defense="20">
+			<upkeep type="cash" quantity="120"/>
+		</entry>
+		<entry name="arkew" name-en="ark EW grid" name-en2="ark EW grids" group="military" description="Area electronic warfare jamming and defence for ark-class vessels." size="2000" mass="1500" crew="8" energy="40" technology-capacity="2" hit-points="175" defense="12" initiative="8">
+			<upkeep type="cash" quantity="100"/>
+		</entry>
+		<entry name="arkpd" name-en="ark point-blank PD" name-en2="ark point-blank PDs" group="military" description="Last-ditch isotope bursts around the ark hull." size="1800" mass="1400" crew="6" energy="35" technology-capacity="2" hit-points="160" attack="8" damage="10">
+			<upkeep type="cash" quantity="80"/>
+		</entry>
+		<entry name="arkmag" name-en="ark magazine" name-en2="ark magazines" group="storage" description="Deep isotope grain wells for ark-class missile stores." size="12000" capacity="8000" mass="8000" crew="4" energy="10" hit-points="1000">
+			<upkeep type="cash" quantity="60"/>
+		</entry>
+		<entry name="sensor" name-en="sensor array" name-en2="sensor arrays" group="military" description="Phased-array passive sensor with baseline interferometry; detects thermal signatures to 1 AU and reveals nested stacks." size="200" mass="100" crew="1" energy="6" technology-capacity="1" hit-points="15" defense="2">
+			<upkeep type="cash" quantity="20"/>
+		</entry>
+		<entry name="advsns" name-en="advanced sensor array" name-en2="advanced sensor arrays" group="military" description="Cooled focal-plane array and multi-spectral correlation; 5 AU detection and mine reveal." size="400" mass="200" crew="2" energy="10" technology-capacity="2" hit-points="25" defense="3">
+			<upkeep type="cash" quantity="40"/>
+		</entry>
+		<entry name="syssns" name-en="system sensor network" name-en2="system sensor networks" group="military" description="Distributed aperture network spanning planetary orbits; full solar system visibility." size="800" mass="400" crew="3" energy="20" technology-capacity="3" hit-points="40" defense="4">
+			<upkeep type="cash" quantity="60"/>
+		</entry>
+		<entry name="apsns" name-en="AP-spanning sensor" name-en2="AP-spanning sensors" group="military" description="Gravitational-lens relay detecting signatures through Alderson points into neighbouring systems." size="1200" mass="600" crew="4" energy="30" technology-capacity="4" hit-points="60" defense="5">
+			<upkeep type="cash" quantity="80"/>
+		</entry>
+		<entry name="clkdev" name-en="cloaking device" name-en2="cloaking devices" group="military" description="Thermal baffles and radar-absorbing metamaterial coating; counters L2 detection." size="200" mass="150" crew="1" energy="10" technology-capacity="1" hit-points="10">
+			<upkeep type="cash" quantity="25"/>
+		</entry>
+		<entry name="advclk" name-en="advanced cloaking device" name-en2="advanced cloaking devices" group="military" description="Active thermal management and adaptive metamaterial shell; counters L4 detection." size="400" mass="300" crew="2" energy="20" technology-capacity="2" hit-points="20">
+			<upkeep type="cash" quantity="50"/>
+		</entry>
+		<entry name="clkfld" name-en="cloaking field generator" name-en2="cloaking field generators" group="military" description="Projected field envelope suppressing emissions for the entire stack; counters L6 detection." size="600" mass="500" crew="3" energy="35" technology-capacity="3" hit-points="35">
+			<upkeep type="cash" quantity="75"/>
+		</entry>
+		<entry name="arkclk" name-en="ark cloaking system" name-en2="ark cloaking systems" group="military" description="Capital-scale emission suppression with layered metamaterial hull; counters L8 detection." size="1200" mass="1000" crew="4" energy="60" technology-capacity="4" hit-points="80">
+			<upkeep type="cash" quantity="120"/>
+		</entry>
+		<entry name="mnlayr" name-en="mine layer" name-en2="mine layers" group="military" description="Automated dispenser deploying proximity-fused explosive devices; produces spmine items." size="400" mass="300" crew="2" energy="8" technology-capacity="1" hit-points="30">
+			<upkeep type="cash" quantity="30"/>
+		</entry>
+		<entry name="smnlay" name-en="smart mine layer" name-en2="smart mine layers" group="military" description="IFF-enabled mine dispenser with silicon guidance; produces smmine items." size="600" mass="500" crew="3" energy="12" technology-capacity="2" hit-points="40">
+			<upkeep type="cash" quantity="50"/>
+		</entry>
+		<entry name="hvmlay" name-en="heavy mine layer" name-en2="heavy mine layers" group="military" description="High-yield mine deployment system with deuterium-boosted warheads; produces hvmine items." size="900" mass="800" crew="4" energy="20" technology-capacity="3" hit-points="55">
+			<upkeep type="cash" quantity="70"/>
+		</entry>
+		<entry name="lrmmod" name-en="LRM launcher" name-en2="LRM launchers" group="military" description="Long-range strategic missile launcher with ion cruise motor; fires toward immobile targets from AP orbit." size="1200" mass="1400" crew="4" energy="30" technology-capacity="2" hit-points="70" attack="20" damage="30">
+			<upkeep type="cash" quantity="80"/>
+		</entry>
+		<entry name="lrmhvy" name-en="heavy LRM battery" name-en2="heavy LRM batteries" group="military" description="Multi-warhead strategic missile with nuclear-electric cruise; three independently targetable vehicles." size="2000" mass="2400" crew="6" energy="50" technology-capacity="3" hit-points="100" attack="30" damage="50">
+			<upkeep type="cash" quantity="120"/>
+		</entry>
+		<entry name="lrmark" name-en="ark strategic missile" name-en2="ark strategic missiles" group="military" description="Fusion-driven strategic deterrent with five independently guided warheads." size="4000" mass="5000" crew="8" energy="80" technology-capacity="4" hit-points="150" attack="40" damage="80">
+			<upkeep type="cash" quantity="200"/>
+		</entry>
 	</module>
 	<race>
 		<entry 
@@ -1903,6 +3552,177 @@ Researchers can query the library. The system can handle natural language questi
 			initiative="5">
 			<usable-in module-type-group="infantry"/>
 			<produce effect="effective defence" target="units" value="1"/>
+		</entry>
+		<entry name="piltB" name-en="basic pilot" training-duration="4" description="Elementary flight procedures reducing travel time through efficient trajectory planning." defense="3" initiative="3">
+			<usable-in module-group="frigate"/>
+			<produce effect="travel time" target="stacked" value="-0.10"/>
+		</entry>
+		<entry name="piltA" name-en="advanced pilot" training-duration="10" description="Advanced astrodynamic manoeuvres and gravity-assist sequences for faster interplanetary transit." defense="5" initiative="5">
+			<usable-in module-group="frigate"/>
+			<produce effect="travel time" target="stacked" value="-0.20"/>
+			<consume type="h2o2" quantity="1"/>
+		</entry>
+		<entry name="piltE" name-en="expert pilot" training-duration="18" description="Optimal multi-body trajectory computation and real-time correction for minimum-time deep-space legs." defense="8" initiative="8">
+			<usable-in module-group="frigate"/>
+			<produce effect="travel time" target="stacked" value="-0.30"/>
+			<consume type="deutrm" quantity="2"/>
+		</entry>
+		<entry name="cmdrB" name-en="basic commander" training-duration="6" description="Fundamental command and control doctrine improving stack defensive coordination." defense="3">
+			<usable-in module-group="frigate"/>
+			<usable-in module-group="space station"/>
+			<produce effect="stack defense" target="stacked" value="0.10"/>
+		</entry>
+		<entry name="cmdrA" name-en="advanced commander" training-duration="10" description="Fleet coordination and tactical awareness for improved defensive posture." defense="6">
+			<usable-in module-group="frigate"/>
+			<usable-in module-group="space station"/>
+			<produce effect="stack defense" target="stacked" value="0.20"/>
+			<consume type="silici" quantity="1"/>
+		</entry>
+		<entry name="cmdrE" name-en="expert commander" training-duration="16" description="Strategic command integration across ark-scale operations and multi-stack coordination." defense="10">
+			<usable-in module-group="frigate"/>
+			<usable-in module-group="space station"/>
+			<produce effect="stack defense" target="stacked" value="0.30"/>
+			<consume type="reeox" quantity="2"/>
+		</entry>
+		<entry name="engrB" name-en="basic engineer" training-duration="4" description="Production line optimisation and quality control improving build rates." initiative="2">
+			<usable-in module-type-group="production"/>
+			<produce effect="build rate" target="stacked" value="0.15"/>
+		</entry>
+		<entry name="engrA" name-en="advanced engineer" training-duration="10" description="Advanced manufacturing process control and automated fabrication supervision." initiative="4">
+			<usable-in module-type-group="production"/>
+			<produce effect="build rate" target="stacked" value="0.25"/>
+			<consume type="copper" quantity="1"/>
+		</entry>
+		<entry name="engrE" name-en="expert engineer" training-duration="16" description="Mastery of precision fabrication, vacuum welding, and large-hull assembly techniques." initiative="6">
+			<usable-in module-type-group="production"/>
+			<produce effect="build rate" target="stacked" value="0.35"/>
+			<consume type="tungst" quantity="2"/>
+		</entry>
+		<entry name="gnryB" name-en="basic gunnery" training-duration="4" description="Weapons systems operation and targeting fundamentals." attack="5">
+			<usable-in module-type-group="military"/>
+			<produce effect="effective attack" target="stacked" value="0.15"/>
+		</entry>
+		<entry name="gnryA" name-en="advanced gunnery" training-duration="10" description="Predictive targeting, counter-battery fire, and weapon system coordination." attack="8">
+			<usable-in module-type-group="military"/>
+			<produce effect="effective attack" target="stacked" value="0.25"/>
+			<consume type="uraniu" quantity="1"/>
+		</entry>
+		<entry name="gnryE" name-en="expert gunnery" training-duration="16" description="Multi-platform fire control, spinal weapon operation, and real-time ballistic computation." attack="12">
+			<usable-in module-type-group="military"/>
+			<produce effect="effective attack" target="stacked" value="0.35"/>
+			<consume type="nitrat" quantity="2"/>
+		</entry>
+		<entry name="taktB" name-en="basic tactics" training-duration="4" description="Elementary battle-space awareness and initiative doctrine." initiative="5">
+			<usable-in module-group="frigate"/>
+			<usable-in module-type-group="military"/>
+			<produce effect="initiative" target="stacked" value="0.10"/>
+		</entry>
+		<entry name="taktA" name-en="advanced tactics" training-duration="10" description="Electronic order-of-battle analysis and coordinated engagement sequencing." initiative="8">
+			<usable-in module-group="frigate"/>
+			<usable-in module-type-group="military"/>
+			<produce effect="initiative" target="stacked" value="0.20"/>
+			<consume type="uraniu" quantity="1"/>
+		</entry>
+		<entry name="taktE" name-en="expert tactics" training-duration="16" description="Fleet-scale strategic planning, EW integration, and multi-domain synchronisation." initiative="12">
+			<usable-in module-group="frigate"/>
+			<usable-in module-type-group="military"/>
+			<produce effect="initiative" target="stacked" value="0.30"/>
+			<consume type="nitrat" quantity="2"/>
+		</entry>
+		<entry name="medcB" name-en="basic medic" training-duration="6" description="First aid, triage, and pharmaceutical administration for crew casualties." cure-chance="15">
+			<produce effect="cure chance" target="stacked" value="0.15"/>
+		</entry>
+		<entry name="medcA" name-en="advanced medic" training-duration="10" description="Surgical procedures, radiation treatment, and long-duration crew health management." cure-chance="25">
+			<produce effect="cure chance" target="stacked" value="0.25"/>
+			<consume type="water" quantity="1"/>
+		</entry>
+		<entry name="medcE" name-en="expert medic" training-duration="16" description="Cryogenic medicine, bone-density intervention, and deep-space isolation treatment protocols." cure-chance="35">
+			<produce effect="cure chance" target="stacked" value="0.35"/>
+			<consume type="ammoni" quantity="2"/>
+		</entry>
+		<entry name="scutB" name-en="basic scout" training-duration="4" description="Survey instrument operation and planetary reconnaissance procedures." initiative="3">
+			<usable-in module-type-group="research"/>
+			<produce effect="scan speed" target="stacked" value="0.15"/>
+		</entry>
+		<entry name="scutA" name-en="advanced scout" training-duration="10" description="Spectrometric analysis, asteroid prospecting, and subsurface resource detection." initiative="5">
+			<usable-in module-type-group="research"/>
+			<produce effect="scan speed" target="stacked" value="0.25"/>
+			<consume type="silici" quantity="1"/>
+		</entry>
+		<entry name="scutE" name-en="expert scout" training-duration="16" description="Long-baseline interferometry, bolometric sensing, and deep-space survey coordination." initiative="8">
+			<usable-in module-type-group="research"/>
+			<produce effect="scan speed" target="stacked" value="0.35"/>
+			<consume type="berylm" quantity="2"/>
+		</entry>
+		<entry name="minrB" name-en="basic mining" training-duration="4" description="Surface and core drilling optimisation for improved extraction yields." initiative="2">
+			<usable-in module-type-group="extraction"/>
+			<produce effect="extraction rate" target="stacked" value="0.10"/>
+		</entry>
+		<entry name="minrA" name-en="advanced mining" training-duration="10" description="Deposit characterisation, blast pattern optimisation, and deep-bore management." initiative="4">
+			<usable-in module-type-group="extraction"/>
+			<produce effect="extraction rate" target="stacked" value="0.20"/>
+			<consume type="copper" quantity="1"/>
+		</entry>
+		<entry name="minrE" name-en="expert mining" training-duration="16" description="Asteroid tow coordination, cloud-mining operations, and mass-driver logistics." initiative="6">
+			<usable-in module-type-group="extraction"/>
+			<produce effect="extraction rate" target="stacked" value="0.30"/>
+			<consume type="tungst" quantity="2"/>
+		</entry>
+		<entry name="navlB" name-en="basic naval officer" training-duration="6" description="Fleet formation flying and collision avoidance improving fleet evasion." defense="3">
+			<usable-in module-group="frigate"/>
+			<produce effect="fleet evasion" target="stacked" value="0.10"/>
+		</entry>
+		<entry name="navlA" name-en="advanced naval officer" training-duration="10" description="Multi-ship coordination, formation manoeuvres, and fleet defensive doctrine." defense="5">
+			<usable-in module-group="frigate"/>
+			<produce effect="fleet evasion" target="stacked" value="0.20"/>
+			<consume type="silici" quantity="1"/>
+		</entry>
+		<entry name="navlE" name-en="expert naval officer" training-duration="16" description="Deep-space fleet operations, pulse-drive synchronisation, and long-duration fleet management." defense="8">
+			<usable-in module-group="frigate"/>
+			<produce effect="fleet evasion" target="stacked" value="0.30"/>
+			<consume type="reeox" quantity="2"/>
+		</entry>
+		<entry name="farmB" name-en="basic farmer" training-duration="4" description="Crop rotation and soil management improving food output." initiative="2">
+			<usable-in module-type-group="agricultural"/>
+			<produce effect="food output" target="stacked" value="0.15"/>
+		</entry>
+		<entry name="farmA" name-en="advanced farmer" training-duration="10" description="Hydroponic management, LED spectrum tuning, and greywater recycling for orbital agriculture." initiative="4">
+			<usable-in module-type-group="agricultural"/>
+			<produce effect="food output" target="stacked" value="0.25"/>
+			<consume type="food" quantity="1"/>
+		</entry>
+		<entry name="farmE" name-en="expert farmer" training-duration="16" description="Closed-loop ecosystem management and multi-deck crop scheduling for ark-scale food production." initiative="6">
+			<usable-in module-type-group="agricultural"/>
+			<produce effect="food output" target="stacked" value="0.35"/>
+			<consume type="alumin" quantity="2"/>
+		</entry>
+		<entry name="xenoB" name-en="basic xenobiologist" training-duration="6" description="Alien sample containment and preliminary biological analysis protocols." initiative="3">
+			<usable-in module-type-group="research"/>
+			<produce effect="alien research" target="stacked" value="0.10"/>
+		</entry>
+		<entry name="xenoA" name-en="advanced xenobiologist" training-duration="12" description="Alien genome sequencing, exobiology protocols, and cross-species biochemistry." initiative="5">
+			<usable-in module-type-group="research"/>
+			<produce effect="alien research" target="stacked" value="0.20"/>
+			<consume type="silici" quantity="1"/>
+		</entry>
+		<entry name="xenoE" name-en="expert xenobiologist" training-duration="18" description="Coronal plasma biology, alien ecology reconstruction, and xenobiological engineering." initiative="8">
+			<usable-in module-type-group="research"/>
+			<produce effect="alien research" target="stacked" value="0.30"/>
+			<consume type="berylm" quantity="2"/>
+		</entry>
+		<entry name="arkhB" name-en="basic ark helm" training-duration="8" description="Ark-scale navigation fundamentals and high-inertia hull manoeuvring." defense="3">
+			<usable-in module-group="frigate"/>
+			<produce effect="ark defense" target="stacked" value="0.10"/>
+		</entry>
+		<entry name="arkhA" name-en="advanced ark helm" training-duration="14" description="Multi-drive synchronisation, abort-sail deployment, and ark attitude control." defense="6">
+			<usable-in module-group="frigate"/>
+			<produce effect="ark defense" target="stacked" value="0.20"/>
+			<consume type="silici" quantity="1"/>
+		</entry>
+		<entry name="arkhE" name-en="expert ark helm" training-duration="20" description="Inner-system precision navigation, fleet dosimetry integration, and ark emergency procedures." defense="10">
+			<usable-in module-group="frigate"/>
+			<produce effect="ark defense" target="stacked" value="0.30"/>
+			<consume type="reeox" quantity="2"/>
 		</entry>
 	</skill>
 </data>

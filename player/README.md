@@ -1,6 +1,6 @@
 # Player agent workspace
 
-The **player** Cursor agent (`.cursor/agents/player.md`) reads turn reports and drafts orders. It does not change C#. Live **campaign** catalog and galaxy are owned by **game-designer** (`campaign/`, `designer/`); do not edit those from this agent. Manuals below track the catalog the humans are playing (`Tests/data.xml` until a campaign file exists).
+The **player** Cursor agent (`.cursor/agents/player.md`) is the **PBAI** translator: human story/intent → legal `order.*` (precise syntax still allowed). It reads turn reports and drafts orders. It does not change C# or hand-edit `gameout`. Live **campaign** catalog and galaxy are owned by **game-designer** (`campaign/`, `designer/`); do not edit those from this agent. Wishlists here are for `/game-designer` (catalog) and TDD (engine), not for this agent to implement. Manuals below track the catalog the humans are playing (`Tests/data.xml` until a campaign file exists).
 
 | File | Maintained by the player agent |
 |------|--------------------------------|

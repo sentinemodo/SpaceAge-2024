@@ -1,12 +1,12 @@
 # Campaign datafiles
 
-Live game XML for a 10-player PBEM (two starting systems, eight empty). Owned by the **game-designer** agent. Not used by NUnit.
+Live game XML for a 10-player **campaign** (PBAI default; same files remain PBEM-compatible). Two starting systems, eight empty, **Alderson chokepoints** at Cinder and Shards. Owned by the **game-designer** agent. Not used by NUnit.
 
 | File | Role |
 |------|------|
-| `data.xml` | Catalog (copy-extend from `Tests/data.xml`, never the reverse). Present: live baseline plus campaign medical (`sckcns` / `sckbay` / `pharms`; `medtec`/`medirf` tagged research) |
-| `gamein.xml` | Factions, galaxy, contracts, starting stacks |
+| `data.xml` | Live catalog plus `adpnt` planet type, campaign medical, and seed item ids (`nickfe` `lithia` `nitrat` …). L3–L10 campaign techs remain spec-only in `designer/technology.md` |
+| `gamein.xml` | Turn 1: factions 1–11, 10 systems, full Arbor+Anvil grids, 16 Alderson planet-objects, landing stubs, condensed empty systems |
 
-Run the engine against this directory (`Game.exe /data` pointing here) only after both files exist. Until `gamein.xml` exists, `designer/galaxy.md` is the seed spec (United Star Nations, Arbor + Anvil).
+Starmap and AP pair table: `designer/starmap.md`. Region maps: `designer/galaxy.md`.
 
-Encoding: Windows-1251. Do not replace these files with SampleGame goldens.
+Encoding: Windows-1251 (ASCII body). Do not replace these files with SampleGame goldens. Regenerator: `_gen_gamein.py`.
