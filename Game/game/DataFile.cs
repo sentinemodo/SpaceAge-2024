@@ -162,54 +162,7 @@ namespace SpaceAge
 			foreach (XmlElement elFaction in this.gameDocument.SelectNodes("/game/faction"))
 			{
 				Faction faction = new Faction(elFaction.GetAttribute("name"), elFaction.GetAttribute("name-en"));
-				if (elFaction.HasAttribute("description"))
-				{
-					faction.Description = elFaction.GetAttribute("description");
-				}
-				faction.Password = elFaction.GetAttribute("password");
-				faction.Email = elFaction.GetAttribute("email");
-				if (elFaction.HasAttribute("default-attitude"))
-					faction.DefaultAttitude = (FactionAttitude)Convert.ToInt32(elFaction.GetAttribute("default-attitude"));
-				if (elFaction.HasAttribute("unknown-attitude"))
-					faction.UnknownAttitude = (FactionAttitude)Convert.ToInt32(elFaction.GetAttribute("unknown-attitude"));
-				faction.Options.TextReport = this.XMLAssignBoolean(elFaction.GetAttribute("text-report"), true);
-				faction.Options.ReportLineLength = this.XMLAssignInteger(elFaction.GetAttribute("text-report-line-length"), ReportLine.LineLength);
-				faction.Options.XmlReport = this.XMLAssignBoolean(elFaction.GetAttribute("xml-report"), true);
-
-				faction.Bank.Balance = this.XMLAssignDouble(elFaction.GetAttribute("balance"), 0);
-				faction.Bank.CreditLine = this.XMLAssignInteger(elFaction.GetAttribute("credit-line"), 0);
-				faction.Bank.CreditRate = this.XMLAssignDouble(elFaction.GetAttribute("credit-rate"), 0);
-				faction.Bank.DepositRate = this.XMLAssignDouble(elFaction.GetAttribute("deposit-rate"), 0);
-
-				// known (seen) technologies tracked at faction level
-				foreach (XmlElement elTechnology in elFaction.SelectNodes("technology"))
-				{
-					string technologyName = elTechnology.GetAttribute("name");
-					if (Technology.All.Contains(technologyName))
-					{
-						faction.TechnologiesSeen.Add(Technology.All[technologyName]);
-					}
-				}
-
-				//foreach (XmlElement el in elFaction.SelectNodes("shown-item"))
-				//    f.ShownItems.Add(ItemType.Get(el.GetAttribute("name")));
-				//foreach (XmlElement el in elFaction.SelectNodes("shown-skill"))
-				//    f.ShownSkills.Add(SkillType.Get(el.GetAttribute("name")));
-				//foreach (XmlElement el in elFaction.SelectNodes("shown-building"))
-				//    f.ShownBuildings.Add(BuildingType.Get(el.GetAttribute("name")));
-
-				foreach (XmlElement elAttitude in elFaction.SelectNodes("attitude"))
-				{
-					FactionAttitude attitude = FactionAttitudeParser.Parse(elAttitude.GetAttribute("attitude"));
-					if (elAttitude.HasAttribute("faction"))
-					{
-						faction.Attitudes[elAttitude.GetAttribute("faction")] = attitude;
-					}
-					else if (elAttitude.HasAttribute("unit"))
-					{
-						faction.UnitAttitudes[elAttitude.GetAttribute("unit")] = attitude;
-					}
-				}
+				faction.LoadXml(elFaction);
 			}
 		}
 
@@ -561,55 +514,7 @@ namespace SpaceAge
 				if (ModuleStack.All[faction].Count == 0)
 					continue;
 
-				XmlElement elFaction = doc.CreateElement("faction");
-				doc.DocumentElement.AppendChild(elFaction);
-				elFaction.SetAttribute("name", faction.Name);
-				elFaction.SetAttribute("name-en", faction.FullName);
-				elFaction.SetAttribute("password", faction.Password);
-				elFaction.SetAttribute("email", faction.Email);
-				elFaction.SetAttribute("default-attitude", ((int)faction.DefaultAttitude).ToString());
-				if (faction.UnknownAttitude != FactionAttitude.Hostile)
-				{
-					elFaction.SetAttribute("unknown-attitude", ((int)faction.UnknownAttitude).ToString());
-				}
-				elFaction.SetAttribute("text-report", faction.Options.TextReport.ToString());
-				elFaction.SetAttribute("text-report-line-length", faction.Options.ReportLineLength.ToString());
-				elFaction.SetAttribute("xml-report", faction.Options.XmlReport.ToString());
-				elFaction.SetAttribute("balance", faction.Bank.Balance.ToString());
-				elFaction.SetAttribute("credit-line", faction.Bank.CreditLine.ToString());
-				elFaction.SetAttribute("credit-rate", faction.Bank.CreditRate.ToString());
-				elFaction.SetAttribute("deposit-rate", faction.Bank.DepositRate.ToString());
-
-				// persist known (seen) technologies
-				foreach (Technology technology in faction.TechnologiesSeen)
-				{
-					XmlElement elTechnology = doc.CreateElement("technology");
-					elTechnology.SetAttribute("name", technology.Name);
-					elFaction.AppendChild(elTechnology);
-				}
-
-				//foreach (ItemType it in f.ShownItems)
-				//    SaveItemType(it, elFaction, "shown-item");
-				//foreach (SkillType st in f.ShownSkills)
-				//    SaveSkillType(st, elFaction, "shown-skill");
-				//foreach (BuildingType bt in f.ShownBuildings)
-				//    SaveBuildingType(bt, elFaction, "shown-building");
-
-
-				foreach (KeyValuePair<string, FactionAttitude> declaration in faction.Attitudes)
-				{
-					XmlElement elAttitude = doc.CreateElement("attitude");
-					elAttitude.SetAttribute("faction", declaration.Key);
-					elAttitude.SetAttribute("attitude", FactionAttitudeParser.ToToken(declaration.Value));
-					elFaction.AppendChild(elAttitude);
-				}
-				foreach (KeyValuePair<string, FactionAttitude> declaration in faction.UnitAttitudes)
-				{
-					XmlElement elAttitude = doc.CreateElement("attitude");
-					elAttitude.SetAttribute("unit", declaration.Key);
-					elAttitude.SetAttribute("attitude", FactionAttitudeParser.ToToken(declaration.Value));
-					elFaction.AppendChild(elAttitude);
-				}
+				doc.DocumentElement.AppendChild(faction.SaveXml(doc));
 			}
 			#endregion
 

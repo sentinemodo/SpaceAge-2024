@@ -2,7 +2,7 @@
 
 Checked **19 Aug 2026** against engine **0.1.141** (`Game/Program.cs`).
 
-Sources: `Game/orders/EOrderType.cs`, `Game/orders/OrdersReader.cs`, `Game/orders/Orders.cs`, `Game/Game.cs` (week loop), `Game/data structures/ModuleStack.Upkeep.cs` (sick bay, medical consume, quarterly maintenance), `Game/game/DataFile.cs` (`LoadOrders` XML switch), each `Game/orders/*Order.Parse` / `Execute`. Sample prefix usage: `Tests/SampleGame/orders.*.txt`.
+Sources: `Game/orders/EOrderType.cs`, `Game/orders/OrdersReader.cs`, `Game/orders/Orders.cs`, `Game/Game.cs` (week loop), `Game/data structures/ModuleStack.Upkeep.cs` (sick bay, medical consume, quarterly maintenance), `Game/game/DataFile.cs` (`LoadOrders` delegates to `OrderXml`), `Game/game/OrderXml.cs` (XML switch), each `Game/orders/*Order.Parse` / `Execute`. Sample prefix usage: `Tests/SampleGame/orders.*.txt`.
 
 Not source of truth: `Game/documentation/Rules.txt`. Turn order files are **Windows-1251** (same as reports). Verbs are case-insensitive; most arguments are not.
 
@@ -134,10 +134,10 @@ The two kinds are independent except where you chain them with `-` / `+`. An imm
 
 ## Text vs XML
 
-`DataFile.LoadOrders` builds orders from `<order>` XML when loading a game. Divergences:
+`DataFile.LoadOrders` calls `OrderXml.LoadAll`, which builds orders from `<order>` XML when loading a game. Divergences:
 
 
-| Verb                                    | Text (`OrdersReader`)                                    | XML (`DataFile` switch)                             |
+| Verb                                    | Text (`OrdersReader`)                                    | XML (`OrderXml.LoadAll`)                            |
 | --------------------------------------- | -------------------------------------------------------- | --------------------------------------------------- |
 | `TRANSFER`                              | **missing** — “Unknown order”                            | loads (`TransferOrder`)                             |
 | `COPY` comments mention `COPY all TO …` | **not parsed** — technology id required                  | technology + receiver attributes                    |
