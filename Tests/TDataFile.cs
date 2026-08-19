@@ -1256,6 +1256,53 @@ namespace UnitTests
 		}
 
 		[Test]
+		public void SaveLoad_PersistsProducingModuleTechnology()
+		{
+			this.LoadGameDocument();
+			this.dataFile.LoadConfiguration();
+			this.dataFile.LoadFactions();
+			this.dataFile.LoadGalaxy();
+			this.game = this.dataFile.Game;
+
+			ModuleStack factory = ModuleStack.All["000004"];
+			Sequence.Ints.Push(100);
+			new OrdersReader(this.game).AssignOrders(new List<string>
+			{
+				"#faction 2",
+				"#modulestack 000004",
+				"use agrplx as \"farms1\"",
+				"#end"
+			});
+			this.executeFactoryWeek(factory, 0);
+			Assert.That(this.producingModule(factory, "agrplx"), Is.Not.Null);
+
+			string testdir = Directory.GetCurrentDirectory();
+			string testfile = "gameout.saved_producingModuleTech.xml";
+			this.dataFile.SaveGame(testdir, testfile);
+
+			XmlDocument saved = new XmlDocument();
+			saved.Load(Path.Combine(testdir, testfile));
+			XmlElement elEffect = (XmlElement)saved.SelectSingleNode("//modulestack[@name='000004']/effect[@type='producing-modules']");
+			Assert.That(elEffect, Is.Not.Null);
+			Assert.That(elEffect.GetAttribute("technology"), Is.EqualTo("agrplx"), "producing-modules save must keep the technology id");
+
+			this.game.ClearDictionaries();
+			this.game = null;
+			this.dataFile = null;
+			this.dataFile = new DataFile(testdir);
+			this.dataFile.LoadGameDocument(testdir, testfile);
+			this.dataFile.LoadConfiguration(testdir);
+			this.dataFile.LoadFactions();
+			this.dataFile.LoadGalaxy();
+			this.game = this.dataFile.Game;
+
+			factory = ModuleStack.All["000004"];
+			ProducingModule farms = this.producingModule(factory, "agrplx");
+			Assert.That(farms, Is.Not.Null);
+			Assert.That(farms.Technology.Name, Is.EqualTo("agrplx"));
+		}
+
+		[Test]
 		public void SaveLoad_PersistsProducingItemsEffect()
 		{
 			this.LoadGameDocument();

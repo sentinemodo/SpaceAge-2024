@@ -204,6 +204,7 @@ namespace SpaceAge
             // there might be an issue with no linked order
             base.SaveXml(doc);
             this.xmlElement.SetAttribute("type", "producing-modules");
+            this.xmlElement.SetAttribute("technology", this.Technology.Name);
             this.xmlElement.SetAttribute("module", this.Technology.UseProduceModules.Name);
             this.xmlElement.SetAttribute("receiver-parent", this.ReceiverParent.Name);
             this.xmlElement.SetAttribute("receiver", this.Receiver.Name);
