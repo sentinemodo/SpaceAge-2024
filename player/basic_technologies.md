@@ -221,7 +221,7 @@ Group `command`. Built by space control `[spctrl]`. Size 800, mass 300, crew 1, 
 
 **computer library [cmplib]**  
 The efficiency of the computer library allows on to store and manipulate larger than usual files and technological reference documents.  
-Group `research`. Built by file indexing `[filidx]`. Size 200, mass 50, energy 5, HP 50, tech-cap 4. Upkeep 100 cash (catalog attribute `quanity`).
+Group `research`. Built by file indexing `[filidx]`. Size 200, mass 50, energy 5, HP 50, tech-cap 4, research-output 1. Upkeep 100 cash (catalog attribute `quanity`).
 
 **corporate headquarters [corphq]**  
 A corporate headquarters allow centralized control of the corporation.  

@@ -2,7 +2,7 @@
 
 Checked **19 Aug 2026** against engine **0.1.141** (`Game/Program.cs`).
 
-Sources: `Game/orders/EOrderType.cs`, `Game/orders/OrdersReader.cs`, `Game/orders/Orders.cs`, `Game/Game.cs` (week loop), `Game/data structures/ModuleStack.Upkeep.cs` (sick bay, medical consume, quarterly maintenance), `Game/data structures/Exits.cs` / `ExitMode.cs` / `Region.cs` (region **Exits:** lines), `Game/game/DataFile.cs` (`LoadOrders` delegates to `OrderXml`), `Game/game/OrderXml.cs` (XML switch), `Game/game/ModuleTypeGroupXml.cs` (`RESEARCH GROUP` tokens), `Game/effects/Effects.cs` (`LoadXml` effect types), each `Game/orders/*Order.Parse` / `Execute`. Sample prefix usage: `Tests/SampleGame/orders.*.txt`.
+Sources: `Game/orders/EOrderType.cs`, `Game/orders/OrdersReader.cs`, `Game/orders/Orders.cs`, `Game/Game.cs` (week loop), `Game/Program.cs` (`/no-turn`, `/check`), `Game/Research.cs` (weekly output, breakthrough, preference), `Game/data structures/ModuleStack.Upkeep.cs` (sick bay, medical consume, quarterly maintenance), `Game/data structures/Galaxy.cs` (`LoadXml` / `LoadExits`), `Game/data structures/Exits.cs` / `ExitMode.cs` / `Region.cs` (region **Exits:** lines), `Game/game/DataFile.cs` (`LoadOrders` / `SaveOrders` delegate to `OrderXml`), `Game/game/OrderXml.cs` (XML switch), `Game/game/ModuleTypeGroupXml.cs` (`RESEARCH GROUP` tokens), `Game/effects/Effects.cs` (`LoadXml` effect types), each `Game/orders/*Order.Parse` / `Execute`. Sample prefix usage: `Tests/SampleGame/orders.*.txt`.
 
 Not source of truth: `Game/documentation/Rules.txt`. Turn order files are **Windows-1251** (same as reports). Verbs are case-insensitive; most arguments are not.
 
@@ -66,14 +66,14 @@ From `Game.exe` (`Program.Main`) and `Game.Execute`. A turn is **13 weeks**. Com
 ### Host pipeline
 
 1. Load catalog (`data.xml`) and the saved game.
-2. Load requests and GM events; run `Events.Execute` (not player orders).
+2. `Request.Load` and `EventsReaders.Load` are **stubs** (return 0 / null). `Game.Events.Execute` is also a stub (returns 0). No GM events run.
 3. Load `order.*` files (`OrdersReader`).
 4. `Game.Execute` (below).
 5. Write faction reports, then save the game.
 
 `/no-turn` skips the 13 weeks: load orders, run **between-turn** immediates only (`AllowedBetweenTurns` — live text verbs: `CONTRACT`, `PRESS`), write announcements (`announce.{turn}.{faction}.txt` for new contracts at that location and for press releases), save.
 
-`/check` parses an order file and does not execute.
+`/check` is a **stub** (`OrdersReader.Check` returns 0). The host stores the filename argument, then ignores it and does not parse or execute.
 
 ### Each turn (`Game.Execute`)
 
@@ -134,7 +134,7 @@ The two kinds are independent except where you chain them with `-` / `+`. An imm
 
 ## Text vs XML
 
-`DataFile.LoadOrders` calls `OrderXml.LoadAll`, which builds orders from `<order>` XML when loading a game. Divergences:
+`DataFile.LoadOrders` calls `OrderXml.LoadAll`; `DataFile.SaveOrders` calls `OrderXml.SaveAll`. XML builds leftover orders when loading a saved game. Divergences:
 
 
 | Verb                                    | Text (`OrdersReader`)                                    | XML (`OrderXml.LoadAll`)                            |
@@ -399,7 +399,7 @@ Spends spare parts (`spare`) and restores hit points on the stack (or its parent
 
 **Subject:** modulestack (must be group **research**).
 
-Weekly research output; chance of a breakthrough, else points accumulate. Bare tokens resolve in this order: existing **stack id**, known **technology**, **tag** (such as `military`), **item**, **module**, then **map object** (moon/planet/region/orbit). `TAG` forces a tag preference even when the token is also a technology id. `RESEARCH TAG repair` prefers catalog techs whose `tags` include `repair`: medical services `[medtec]`, medicines refining `[medirf]`, preventive servicing `[servic]`, and engineering shop `[engshp]` (`engshp` also keeps `production`). `RESEARCH TAG research` prefers file indexing `[filidx]`, advanced computing `[advres]`, sick bay construction `[sckcns]`, and shipboard pharmacy `[pharms]`. Bare `research repair` still matches technology **repair and maintenance** `[repair]` (that id has no `repair` tag). Bare `research military` is a **tag**; `research group military` is a **group**.
+Weekly output is catalog `research-output` × module count (`Research.WeeklyOutput`; computer library `[cmplib]` is 1). Breakthrough is a weekly hazard against the cheapest available tech cost (`Research.RollBreakthrough`; default cost 8, 16, 32… by level, catalog `cost` overrides). Else points accumulate. Preference (`RESEARCH TECHNOLOGY` / `GROUP` / `TAG` / …) is a ~50% pick from the matching subset (`PreferredTechnologies`). Bare tokens resolve in this order: existing **stack id**, known **technology**, **tag** (such as `military`), **item**, **module**, then **map object** (moon/planet/region/orbit). `TAG` forces a tag preference even when the token is also a technology id. `RESEARCH TAG repair` prefers catalog techs whose `tags` include `repair`: medical services `[medtec]`, medicines refining `[medirf]`, preventive servicing `[servic]`, and engineering shop `[engshp]` (`engshp` also keeps `production`). `RESEARCH TAG research` prefers file indexing `[filidx]`, advanced computing `[advres]`, sick bay construction `[sckcns]`, and shipboard pharmacy `[pharms]`. Bare `research repair` still matches technology **repair and maintenance** `[repair]` (that id has no `repair` tag). Bare `research military` is a **tag**; `research group military` is a **group**.
 
 `GROUP` uses `ModuleTypeGroupXml` tokens: `agricultural`, `command`, `energy`, `extraction`, `frigate`, `habitat`, `infantry`, `military`, `production`, `propulsion`, `research`, `settlement`, `spacecraft`, `space station`, `storage`, `vehicle`. Quote `"space station"` (`GetQuotedToken`); load also accepts aliases `spacestation` and `spaceStation`. Save writes `group="space station"`, not enum `spaceStation`. Unknown names fall back to untyped `Any`. GROUP prefers techs whose `usable-in` module group or produced module group matches the stored token: `research group settlement` / `frigate` / `storage` prefer those catalog groups. The stored `space station` token does not equal the engine name `spaceStation`, so that preference currently matches nothing.
 
