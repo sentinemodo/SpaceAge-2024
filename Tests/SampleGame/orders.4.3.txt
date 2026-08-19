@@ -1,0 +1,62 @@
+#faction 3 "abccb"
+; Gelvaren turn 4 — leftover RESEARCH TAG repair on library [116] (do not write
+; @research repair: that parses as technology [repair]). Sequence 0 breakthrough
+; this quarter; cheapest repair-tag pick is servic. COPY servic onto shuttle
+; [117] (capacity 1, nested with [116] under factory [000023]). COPY to the
+; factory would fail (armcbt already fills capacity 1). Continue Earth war on
+; infantry [110]; keep compound GET/BUY/produce and repairs.
+
+#modulestack 000018
+; + Gelvaren Headquarters [000018], corporate headquarters [corphq],
+;   disabled, immobile.
+@get all cash from 000026
+@get all terran from 000026
+@buy all terran
+@produce cash
+
+#modulestack 000019
+; + small cargo bay [000019], small cargo bay [cargob], immobile.
+@get all food from 000020
+@get all oil from 000022
+sell 100 food
+
+#modulestack 000020
+; + farming complex [000020], 2 farming complexes [farms], partially
+;   disabled, immobile.
+@use farmng
+
+#modulestack 000021
+; + wind powerplant [000021], 19 wind powerplants [wnplnt], immobile.
+@produce energy
+
+#modulestack 000022
+; + core drill [000022], core drill [cdrill], disabled, immobile.
+@use oildwe
+
+#modulestack 000026
+; + Gelvaren complex [000026], city [city], immobile.
+@produce terran
+
+#modulestack 108
+; + peaceful scout [108], tanks [tanks], disabled.
+@repair
+
+#modulestack 110
+; + infantry battalion [110], infantry battalion [inftry].
+; leftover move R00002 duration-left 4, then capture.
+move R00002
+-capture 000012
+-capture all
+
+#modulestack 116
+; leftover XML is research-type tag repair. TAG keyword reconnects; bare
+; repair would add a second RESEARCH for technology [repair].
+@research tag repair
+copy servic to 117
+
+#modulestack c000012
+; + corporate headquarters [c000012], corporate headquarters [corphq],
+;   disabled, immobile.
+repair
+
+#end

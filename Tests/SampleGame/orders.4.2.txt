@@ -1,0 +1,46 @@
+#faction 2 "xyzzy"
+; Caste Prime turn 4 — prove COPY / TRANSFER / TRAIN. Do not claim wreck 200.
+; Drones [207] and library [115] are both in Dusty field [R00001]. COPY alnfgh
+; (level 4) onto empty library (technology-capacity 4). TRANSFER the four drones
+; onto hull [101] in the same region (shuttle [100] is in Luna orbit). TRAIN the
+; CEO; leave [115] on leftover wreck research (do not TRAIN on the library).
+
+#modulestack 000012
+; + Caste Prime Headquarters [000012], corporate headquarters [corphq], disabled, immobile.
+@produce cash
+
+#modulestack 000013
+; + small cargo bay [000013], 5 small cargo bays [cargob], disabled, immobile.
+@get all food from 000014
+@get all carbon from 000016
+sell 300 food
+
+#modulestack 000014
+; + farming complex [000014], farming complex [farms], disabled, immobile.
+@use farmng
+
+#modulestack 000015
+; + coal-burning plant [000015], 3 coal-burning plants [cplant], partially disabled, immobile.
+@produce energy
+
+#modulestack 000016
+; + core drill [000016], core drill [cdrill], disabled, immobile.
+@use hcdril
+
+#modulestack 115
+; leftover @research 200 reconnects. Long slot stays research; COPY is immediate on 207.
+@research 200
+
+#modulestack 207
+; + alien fighter drone [207], 4 alien fighter drones [alndrn].
+; technologies: alien fighter construction [alnfgh].
+; COPY first: TRANSFER 4 empties this stack.
+copy alnfgh to 115
+transfer 4 to 101
+
+#person 000001
+; + Caste Prime CEO [000001], terran [terran].
+; armor platoon leader [arpldr], training-duration 4 weeks.
+train skill arpldr
+
+#end
