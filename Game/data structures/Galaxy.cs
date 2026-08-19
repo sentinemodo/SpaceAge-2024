@@ -495,7 +495,14 @@ namespace SpaceAge
 				{
 					elExit = doc.CreateElement("exit");
 					elRegion.AppendChild(elExit);
-					elExit.SetAttribute("region", exit.To.Name);
+					if (exit.To is Orbit)
+					{
+						elExit.SetAttribute("orbit", exit.To.Name);
+					}
+					else
+					{
+						elExit.SetAttribute("region", exit.To.Name);
+					}
 					foreach (ExitMode exitMode in exit.ExitModes.Values)
 					{
 						elExitMode = doc.CreateElement("exitmode");

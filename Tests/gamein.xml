@@ -21,6 +21,9 @@
 						</exit>
 					</region>
 					<region name="R00011" X="0" Y="1" name-en="Great Desert" type="dust" climate="void">
+						<exit orbit="O00004">
+							<exitmode mode="space" duration="2"/>
+						</exit>
 					</region>
 				</moon>
 				<orbit name="O00003">
