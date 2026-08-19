@@ -83,8 +83,19 @@ namespace SpaceAge
                 else
                 {
                     this.lookedForName = token;
-                    this.seeType = ESeeType.Modulestack; 
-                    this.lookedFor = ModuleStack.All.GetOrCreateNewModuleStack(this.Observer.Owner, this.lookedForName);
+                    string remaining = command;
+                    string suffix = LineParser.GetToken(ref remaining);
+                    if (suffix == "person")
+                    {
+                        command = remaining;
+                        this.seeType = ESeeType.Person;
+                        this.lookedFor = Person.All.GetOrCreateNewPerson(this.Observer.Owner, this.lookedForName);
+                    }
+                    else
+                    {
+                        this.seeType = ESeeType.Modulestack; 
+                        this.lookedFor = ModuleStack.All.GetOrCreateNewModuleStack(this.Observer.Owner, this.lookedForName);
+                    }
                 }
             }
 		}

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Xml;
 using NUnit.Framework;
 using SpaceAge;
 
@@ -60,6 +61,42 @@ namespace UnitTests
 			ResearchOrder order = new ResearchOrder(this.game.ModuleStacks["100001"]);
 			order.Parse(parameter);
 			return order.ResearchType;
+		}
+
+		private ResearchOrder roundTripResearch(string command, string saveFile)
+		{
+			ModuleStack lab = this.createResearchLab();
+			ResearchOrder parsed = this.assignResearch(lab, command);
+			string testdir = Directory.GetCurrentDirectory();
+			this.dataFile.SaveGame(testdir, saveFile);
+
+			XmlDocument saved = new XmlDocument();
+			saved.Load(Path.Combine(testdir, saveFile));
+			XmlElement elResearch = (XmlElement)saved.SelectSingleNode("/game/orders/order[@name='" + lab.Name + "']/research");
+			Assert.That(elResearch, Is.Not.Null, "saved research order XML");
+			if (parsed.ResearchType == EResearchType.Group)
+			{
+				Assert.That(elResearch.GetAttribute("research-type"), Is.EqualTo("group"));
+				Assert.That(elResearch.GetAttribute("group"), Is.EqualTo(ModuleTypeGroupXml.ToToken(parsed.ModuleTypesGroup)));
+			}
+			else if (parsed.ResearchType == EResearchType.Tag)
+			{
+				Assert.That(elResearch.GetAttribute("research-type"), Is.EqualTo("tag"));
+				Assert.That(elResearch.GetAttribute("tag"), Is.EqualTo(parsed.ResearchToken));
+			}
+
+			this.game.ClearDictionaries();
+			this.game = null;
+			this.dataFile = null;
+			this.dataFile = new DataFile(testdir);
+			this.dataFile.LoadConfiguration(testdir);
+			this.dataFile.LoadGameDocument(testdir, saveFile);
+			this.dataFile.LoadFactions();
+			this.dataFile.LoadGalaxy();
+			this.dataFile.LoadOrders();
+			this.game = this.dataFile.Game;
+
+			return (ResearchOrder)ModuleStack.All[lab.Name].Orders[0];
 		}
 
 		[Test]
@@ -205,6 +242,40 @@ namespace UnitTests
 			Assert.That(this.parseResearch("repair"), Is.EqualTo(EResearchType.Technology),
 				"bare repair is the repair-and-maintenance technology id");
 			Assert.That(this.parseResearch("tag repair"), Is.EqualTo(EResearchType.Tag));
+		}
+
+		[Test]
+		public void SaveLoad_ResearchGroupSettlement_RoundTripsXml()
+		{
+			ResearchOrder loaded = this.roundTripResearch("research group settlement", "gameout.saved_researchGroupSettlement.xml");
+			Assert.That(loaded.ResearchType, Is.EqualTo(EResearchType.Group));
+			Assert.That(loaded.ModuleTypesGroup, Is.EqualTo(EModuleTypesGroup.settlement));
+			Assert.That(loaded.ResearchToken, Is.EqualTo("settlement"));
+		}
+
+		[Test]
+		public void SaveLoad_ResearchGroupSpaceStation_RoundTripsXml()
+		{
+			ResearchOrder loaded = this.roundTripResearch("research group \"space station\"", "gameout.saved_researchGroupSpaceStation.xml");
+			Assert.That(loaded.ResearchType, Is.EqualTo(EResearchType.Group));
+			Assert.That(loaded.ModuleTypesGroup, Is.EqualTo(EModuleTypesGroup.spaceStation));
+			Assert.That(loaded.ResearchToken, Is.EqualTo("space station"));
+		}
+
+		[Test]
+		public void SaveLoad_ResearchMilitary_BareIsTagTypedIsGroup()
+		{
+			ResearchOrder bare = this.roundTripResearch("research military", "gameout.saved_researchBareMilitary.xml");
+			Assert.That(bare.ResearchType, Is.EqualTo(EResearchType.Tag));
+			Assert.That(bare.ResearchToken, Is.EqualTo("military"));
+
+			this.ClearGame();
+			this.LoadDefaultGame();
+
+			ResearchOrder typed = this.roundTripResearch("research group military", "gameout.saved_researchGroupMilitary.xml");
+			Assert.That(typed.ResearchType, Is.EqualTo(EResearchType.Group));
+			Assert.That(typed.ModuleTypesGroup, Is.EqualTo(EModuleTypesGroup.military));
+			Assert.That(typed.ResearchToken, Is.EqualTo("military"));
 		}
 
 		[Test]

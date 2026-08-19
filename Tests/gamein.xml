@@ -15,9 +15,15 @@
 				<moon name="P00003" name-en="Luna" AU="0.002" type="rock">
 					<orbit name="O00004">
 					</orbit>
-					<region X="0" Y="1" name-en="Great Desert" type="dust" climate="void">
+					<region name="R00010" X="0" Y="1" name-en="Great Desert" type="dust" climate="void">
+						<exit region="R00001">
+							<exitmode mode="ground" duration="5"/>
+						</exit>
 					</region>
-					<region X="0" Y="1" name-en="Great Desert" type="dust" climate="void">
+					<region name="R00011" X="0" Y="1" name-en="Great Desert" type="dust" climate="void">
+						<exit orbit="O00004">
+							<exitmode mode="space" duration="2"/>
+						</exit>
 					</region>
 				</moon>
 				<orbit name="O00003">

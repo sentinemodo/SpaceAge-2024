@@ -246,6 +246,34 @@ namespace SpaceAge
                     case "producing-modules":
                         effect = new ProducingModule(holder);
                         break;
+                    case "producing-items":
+                        effect = new ProducingItems(holder);
+                        break;
+                    case "producing-energy":
+                        effect = new ProducingEnergy(holder);
+                        break;
+                    case "receiving-items":
+                        effect = new ReceivingItems(holder);
+                        break;
+                    case "receiving-modules":
+                        effect = new ReceivingModules(holder);
+                        break;
+                    case "receiving-technology":
+                        effect = new ReceivingTechnology(holder);
+                        break;
+                    case "lightly-damaged":
+                        effect = new LightlyDamaged(holder);
+                        break;
+                    case "training-officer":
+                        if (elEffect.HasAttribute("skill"))
+                        {
+                            effect = new TrainingSkill((Person)holder);
+                        }
+                        else
+                        {
+                            effect = new TrainingOfficer((ModuleStack)holder);
+                        }
+                        break;
                     default:
                         throw new Exception("Unknown effect type " + elEffect.GetAttribute("type"));
                 }

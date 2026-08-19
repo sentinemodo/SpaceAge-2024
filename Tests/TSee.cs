@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Xml;
 using NUnit.Framework;
 using NUnit.Framework.Legacy;
 using SpaceAge;
@@ -53,6 +54,65 @@ namespace UnitTests
             SeeOrder order = (SeeOrder)testModuleStack.Orders[0];
         }
 
+        [Test]
+        public void Parse_SeeNameThenPerson_LooksUpPerson()
+        {
+            ModuleStack observer = this.game.ModuleStacks["100011"];
+            List<string> testcommands = new List<string>
+            {
+                "#faction 2",
+                "#modulestack 100011",
+                "see 200001 person",
+                "#end"
+            };
+            new OrdersReader(this.game).AssignOrders(testcommands);
+
+            SeeOrder order = (SeeOrder)observer.Orders[0];
+            Assert.That(order.SeeType, Is.EqualTo(ESeeType.Person));
+            Assert.That(order.LookedFor, Is.InstanceOf(typeof(Person)));
+            Assert.That(order.LookedFor.Name, Is.EqualTo("200001"));
+        }
+
+        [Test]
+        public void SaveLoad_SeePerson_TextMatchesXml()
+        {
+            ModuleStack observer = this.game.ModuleStacks["100011"];
+            new OrdersReader(this.game).AssignOrders(new List<string>
+            {
+                "#faction 2",
+                "#modulestack 100011",
+                "see 200001 person",
+                "#end"
+            });
+            SeeOrder parsed = (SeeOrder)observer.Orders[0];
+            Assert.That(parsed.SeeType, Is.EqualTo(ESeeType.Person));
+
+            string testdir = Directory.GetCurrentDirectory();
+            string saveFile = "gameout.saved_seePerson.xml";
+            this.dataFile.SaveGame(testdir, saveFile);
+
+            XmlDocument saved = new XmlDocument();
+            saved.Load(Path.Combine(testdir, saveFile));
+            XmlElement elSee = (XmlElement)saved.SelectSingleNode("/game/orders/order[@name='100011']/see");
+            Assert.That(elSee, Is.Not.Null);
+            Assert.That(elSee.GetAttribute("see-type"), Is.EqualTo("person"));
+            Assert.That(elSee.GetAttribute("person"), Is.EqualTo("200001"));
+
+            this.game.ClearDictionaries();
+            this.game = null;
+            this.dataFile = new DataFile(testdir);
+            this.dataFile.LoadConfiguration(testdir);
+            this.dataFile.LoadGameDocument(testdir, saveFile);
+            this.dataFile.LoadFactions();
+            this.dataFile.LoadGalaxy();
+            this.dataFile.LoadOrders();
+            this.game = this.dataFile.Game;
+
+            SeeOrder loaded = (SeeOrder)ModuleStack.All["100011"].Orders[0];
+            Assert.That(loaded.SeeType, Is.EqualTo(ESeeType.Person));
+            Assert.That(loaded.LookedFor, Is.InstanceOf(typeof(Person)));
+            Assert.That(loaded.LookedFor.Name, Is.EqualTo("200001"));
+        }
 
         [Test]
         public void ExecuteSeeOrder()

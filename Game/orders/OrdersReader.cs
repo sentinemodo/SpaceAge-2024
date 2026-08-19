@@ -105,9 +105,12 @@ namespace SpaceAge
 		{
 			Faction faction = null;
 			IOrderable subject = null;
+			this.preexistingOrders = this.SnapshotOrders();
 			
 			string tokens, token, token2;
 
+			try
+			{
 			foreach (string command in commands)
 			{
 				bool finished = false;
@@ -219,6 +222,40 @@ namespace SpaceAge
 					throw new Exception("bad command: " + command, ex);
 				}
 			}
+			}
+			finally
+			{
+				this.preexistingOrders = null;
+			}
+		}
+
+		private HashSet<Order> preexistingOrders;
+
+		private HashSet<Order> SnapshotOrders()
+		{
+			HashSet<Order> snapshot = new HashSet<Order>();
+			foreach (ModuleStack stack in ModuleStack.All.Values)
+			{
+				foreach (Order order in stack.Orders)
+				{
+					snapshot.Add(order);
+				}
+			}
+			foreach (Person person in Person.All.Values)
+			{
+				foreach (Order order in person.Orders)
+				{
+					snapshot.Add(order);
+				}
+			}
+			foreach (Faction faction in Faction.All.Values)
+			{
+				foreach (Order order in faction.Orders)
+				{
+					snapshot.Add(order);
+				}
+			}
+			return snapshot;
 		}
 
 		private void ParseReport(string p)
@@ -393,6 +430,30 @@ namespace SpaceAge
 				{
 					subject.Orders.Remove(order);
 					return existing;
+				}
+			}
+			UseOrder assignedUse = order as UseOrder;
+			if (assignedUse != null && orderLevel == 0 && this.preexistingOrders != null)
+			{
+				List<UseOrder> leftoverUses = new List<UseOrder>();
+				foreach (Order existing in subject.Orders)
+				{
+					UseOrder leftoverUse = existing as UseOrder;
+					if (leftoverUse != null && leftoverUse != assignedUse && this.preexistingOrders.Contains(leftoverUse))
+					{
+						leftoverUses.Add(leftoverUse);
+					}
+				}
+				foreach (UseOrder leftoverUse in leftoverUses)
+				{
+					if (leftoverUse.Technology == assignedUse.Technology)
+					{
+						leftoverUse.Receiver = assignedUse.Receiver;
+						leftoverUse.ReceiverParent = assignedUse.ReceiverParent;
+						subject.Orders.Remove(assignedUse);
+						return leftoverUse;
+					}
+					subject.Orders.Remove(leftoverUse);
 				}
 			}
 			while (orderLevel > 0)

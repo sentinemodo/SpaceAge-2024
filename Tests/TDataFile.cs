@@ -313,6 +313,22 @@ namespace UnitTests
 		}
 
 		[Test]
+		public void LoadGalaxy_MoonNameComesFromMoonElement()
+		{
+			this.LoadGameDocument();
+			this.dataFile.LoadConfiguration();
+			this.dataFile.LoadFactions();
+			this.dataFile.LoadGalaxy();
+			this.game = this.dataFile.Game;
+
+			Assert.That(Moon.All.ContainsKey("P00003"), Is.True);
+			Moon moon = Moon.All["P00003"];
+			Assert.That(moon.FullName, Is.EqualTo("Luna"));
+			Assert.That(moon.Planet.Name, Is.EqualTo("P00002"));
+			Assert.That(Moon.All.ContainsKey("P00002"), Is.False);
+		}
+
+		[Test]
 		public void LoadConfiguration()
 		{
 			this.dataFile.LoadConfiguration();
@@ -332,6 +348,79 @@ namespace UnitTests
             Assert.That(region.Exits[0].To, Is.EqualTo(Region.All["R00002"]));
             Assert.That(region.Exits[0].ExitModes[EMoveMode.ground], Is.Not.Null);
             Assert.That(region.Exits[0].ExitModes[EMoveMode.ground].Duration, Is.EqualTo(3));
+		}
+
+		[Test]
+		public void LoadExits_MoonRegion()
+		{
+			this.LoadGameDocument();
+			this.dataFile.LoadConfiguration();
+			this.dataFile.LoadFactions();
+			this.dataFile.LoadGalaxy();
+			this.game = this.dataFile.Game;
+
+			Region region = Region.All["R00010"];
+			Assert.That(region, Is.Not.Null);
+			Assert.That(region.RegionHolder, Is.InstanceOf(typeof(Moon)));
+			Assert.That(((Moon)region.RegionHolder).Name, Is.EqualTo("P00003"));
+			Assert.That(region.Exits.Count, Is.EqualTo(1));
+			Assert.That(region.Exits[0].To, Is.EqualTo(Region.All["R00001"]));
+			Assert.That(region.Exits[0].ExitModes[EMoveMode.ground], Is.Not.Null);
+			Assert.That(region.Exits[0].ExitModes[EMoveMode.ground].Duration, Is.EqualTo(5));
+		}
+
+		[Test]
+		public void SaveLoad_PersistsOrbitExitTarget()
+		{
+			this.LoadGameDocument();
+			this.dataFile.LoadConfiguration();
+			this.dataFile.LoadFactions();
+			this.dataFile.LoadGalaxy();
+			this.game = this.dataFile.Game;
+
+			string testdir = Directory.GetCurrentDirectory();
+			string testfile = "gameout.saved_orbitExit.xml";
+			this.dataFile.SaveGame(testdir, testfile);
+
+			XmlDocument saved = new XmlDocument();
+			saved.Load(Path.Combine(testdir, testfile));
+			XmlElement elExit = (XmlElement)saved.SelectSingleNode("//region[@name='R00011']/exit");
+			Assert.That(elExit, Is.Not.Null);
+			Assert.That(elExit.GetAttribute("orbit"), Is.EqualTo("O00004"));
+			Assert.That(elExit.HasAttribute("region"), Is.False);
+
+			this.game.ClearDictionaries();
+			this.game = null;
+			this.dataFile = null;
+
+			this.dataFile = new DataFile(testdir);
+			this.dataFile.LoadGameDocument(testdir, testfile);
+			this.dataFile.LoadConfiguration(testdir);
+			this.dataFile.LoadFactions();
+			this.dataFile.LoadGalaxy();
+			this.game = this.dataFile.Game;
+
+			Region region = Region.All["R00011"];
+			Assert.That(region.Exits.Count, Is.EqualTo(1));
+			Assert.That(region.Exits[0].To, Is.InstanceOf(typeof(Orbit)));
+			Assert.That(region.Exits[0].To.Name, Is.EqualTo("O00004"));
+			Assert.That(region.Exits[0].ExitModes[EMoveMode.space].Duration, Is.EqualTo(2));
+		}
+
+		[Test]
+		public void Report_OrbitExitTarget_ListsOrbitDestination()
+		{
+			this.LoadGameDocument();
+			this.dataFile.LoadConfiguration();
+			this.dataFile.LoadFactions();
+			this.dataFile.LoadGalaxy();
+			this.game = this.dataFile.Game;
+
+			Region region = Region.All["R00011"];
+			List<string> lines = region.Exits.Report;
+			Assert.That(lines, Does.Contain("Exits:"));
+			Assert.That(lines, Has.Some.Contains("orbit [O00004]"));
+			Assert.That(lines, Has.Some.Contains("space travel duration 2 weeks"));
 		}
 
 		[Test]
@@ -418,6 +507,17 @@ namespace UnitTests
 
             Assert.That(technology.UseConsumeItems.Count, Is.EqualTo(1));
             Assert.That(technology.UseConsumeItems[itemType].Quantity, Is.EqualTo(10));
+		}
+
+		[Test]
+		public void LoadTechnologyConsumeModules_CityPlanningConsumesCity()
+		{
+			this.LoadGameDocument();
+			this.dataFile.LoadConfiguration();
+			Technology technology = Technology.All["ctypln"];
+
+			Assert.That(technology, Is.Not.Null);
+			Assert.That(technology.UseConsumeModules, Is.SameAs(ModuleType.All["city"]));
 		}
 
 		[Test]
@@ -540,16 +640,129 @@ namespace UnitTests
             Assert.That(order.IsUnlimited, Is.True);
         }
 
-        [Test, Ignore("not ready")]
+        [Test]
 		public void SaveLoadUseOrder_withUseOrderInProgress_sameOrder()
 		{
-			Assert.Fail("don't know");
+			this.LoadGameDocument();
+			this.dataFile.LoadConfiguration();
+			this.dataFile.LoadFactions();
+			this.dataFile.LoadGalaxy();
+			this.game = this.dataFile.Game;
+
+			ModuleStack factory = ModuleStack.All["000004"];
+			ItemType iron = ItemType.All["iron"];
+			int ironBefore = factory.ItemStacks[iron].Quantity;
+
+			Sequence.Ints.Push(100);
+			new OrdersReader(this.game).AssignOrders(new List<string>
+			{
+				"#faction 2",
+				"#modulestack 000004",
+				"use agrplx as \"farms1\"",
+				"#end"
+			});
+
+			this.executeFactoryWeek(factory, 0);
+			ProducingModule farms = this.producingModule(factory, "agrplx");
+			Assert.That(farms, Is.Not.Null);
+			Assert.That(farms.Duration, Is.EqualTo(3));
+			Assert.That(factory.ItemStacks[iron].Quantity, Is.EqualTo(ironBefore - 10));
+			string originalReceiver = ((ModuleStack)farms.Receiver).Name;
+
+			this.reloadSavedGame("gameout.saved_useSame.xml");
+			factory = ModuleStack.All["000004"];
+			iron = ItemType.All["iron"];
+			farms = this.producingModule(factory, "agrplx");
+			Assert.That(farms, Is.Not.Null, "in-progress production must persist across save/load");
+			Assert.That(farms.Duration, Is.EqualTo(3));
+
+			this.executeFactoryWeek(factory, 1);
+			farms = this.producingModule(factory, "agrplx");
+			Assert.That(farms.Duration, Is.EqualTo(2));
+			Assert.That(factory.ItemStacks[iron].Quantity, Is.EqualTo(ironBefore - 10), "continuing the same USE must not consume again");
+
+			Sequence.Ints.Push(200);
+			new OrdersReader(this.game).AssignOrders(new List<string>
+			{
+				"#faction 2",
+				"#modulestack 000004",
+				"use agrplx as \"farms2\"",
+				"#end"
+			});
+			this.executeFactoryWeek(factory, 2);
+			farms = this.producingModule(factory, "agrplx");
+			Assert.That(farms.Duration, Is.EqualTo(1));
+			Assert.That(((ModuleStack)farms.Receiver).Name, Is.Not.EqualTo(originalReceiver), "same tech with a new target updates the producing effect");
+			Assert.That(factory.ItemStacks[iron].Quantity, Is.EqualTo(ironBefore - 10));
 		}
-		
-		[Test, Ignore("not ready")]
+
+		[Test]
 		public void SaveLoadUseOrder_withUseOrderInProgress_newOrder()
 		{
-			Assert.Fail("don't know");
+			this.LoadGameDocument();
+			this.dataFile.LoadConfiguration();
+			this.dataFile.LoadFactions();
+			this.dataFile.LoadGalaxy();
+			this.game = this.dataFile.Game;
+
+			ModuleStack factory = ModuleStack.All["000004"];
+			ItemType iron = ItemType.All["iron"];
+			int ironBefore = factory.ItemStacks[iron].Quantity;
+
+			Sequence.Ints.Push(100);
+			new OrdersReader(this.game).AssignOrders(new List<string>
+			{
+				"#faction 2",
+				"#modulestack 000004",
+				"use armcbt as \"tanks1\"",
+				"#end"
+			});
+			this.executeFactoryWeek(factory, 0);
+			ProducingModule tanks = this.producingModule(factory, "armcbt");
+			Assert.That(tanks, Is.Not.Null);
+			Assert.That(tanks.Duration, Is.EqualTo(3));
+			Assert.That(factory.ItemStacks[iron].Quantity, Is.EqualTo(ironBefore - 4));
+			string tanksReceiver = ((ModuleStack)tanks.Receiver).Name;
+
+			this.reloadSavedGame("gameout.saved_useNew.xml");
+			factory = ModuleStack.All["000004"];
+			iron = ItemType.All["iron"];
+			Assert.That(this.producingModule(factory, "armcbt").Duration, Is.EqualTo(3));
+
+			Sequence.Ints.Push(200);
+			new OrdersReader(this.game).AssignOrders(new List<string>
+			{
+				"#faction 2",
+				"#modulestack 000004",
+				"use wndtrb as \"wind1\"",
+				"#end"
+			});
+			this.executeFactoryWeek(factory, 1);
+			tanks = this.producingModule(factory, "armcbt");
+			ProducingModule windmills = this.producingModule(factory, "wndtrb");
+			Assert.That(windmills, Is.Not.Null, "a different USE starts a new production");
+			Assert.That(windmills.Duration, Is.EqualTo(1));
+			Assert.That(tanks, Is.Not.Null, "previous production stays frozen");
+			Assert.That(tanks.Duration, Is.EqualTo(3));
+			Assert.That(factory.ItemStacks[iron].Quantity, Is.EqualTo(ironBefore - 4 - 1));
+
+			this.executeFactoryWeek(factory, 2);
+			Assert.That(this.producingModule(factory, "wndtrb"), Is.Null, "windmills finish");
+			tanks = this.producingModule(factory, "armcbt");
+			Assert.That(tanks.Duration, Is.EqualTo(3), "frozen tanks must not tick while windmills run");
+
+			new OrdersReader(this.game).AssignOrders(new List<string>
+			{
+				"#faction 2",
+				"#modulestack 000004",
+				"use armcbt as \"" + tanksReceiver + "\"",
+				"#end"
+			});
+			this.executeFactoryWeek(factory, 3);
+			tanks = this.producingModule(factory, "armcbt");
+			Assert.That(tanks, Is.Not.Null);
+			Assert.That(tanks.Duration, Is.EqualTo(2), "resuming the original USE continues the frozen production");
+			Assert.That(factory.ItemStacks[iron].Quantity, Is.EqualTo(ironBefore - 4 - 1), "resume must not consume tanks resources again");
 		}
 
         [Test]
@@ -877,6 +1090,105 @@ namespace UnitTests
         }
 
 		[Test]
+		public void SaveConditionOrder_DoesNotDuplicateNestedXml()
+		{
+			this.LoadGameDocument();
+			this.dataFile.LoadConfiguration();
+			this.dataFile.LoadFactions();
+			this.dataFile.LoadGalaxy();
+			this.game = this.dataFile.Game;
+
+			List<string> testcommands = new List<string>
+			{
+				"#faction 2",
+				"#modulestack 100002",
+				"move R00001",
+				"+use ssassm as new101",
+				"+-use crewhs as new105",
+				"+--give -20 terran to new105",
+				"+-use strans as new106",
+				"+--give all iron to new106",
+				"#end"
+			};
+
+			Sequence.Ints.Clear();
+			Sequence.Ints.Push(102);
+			Sequence.Ints.Push(101);
+			Sequence.Ints.Push(100);
+
+			OrdersReader ordersReader = new OrdersReader(this.game);
+			ordersReader.AssignOrders(testcommands);
+
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml("<game/>");
+			this.dataFile.SaveOrders(doc);
+
+			Assert.That(doc.SelectNodes("//orders//order").Count, Is.EqualTo(6));
+		}
+
+		[Test]
+		public void SaveLoad_PersistsConditionalOrderGraph()
+		{
+			this.LoadGameDocument();
+			this.dataFile.LoadConfiguration();
+			this.dataFile.LoadFactions();
+			this.dataFile.LoadGalaxy();
+			this.game = this.dataFile.Game;
+
+			ModuleStack moduleStack = ModuleStack.All["100002"];
+			Assert.That(moduleStack.Orders.Count, Is.EqualTo(0));
+
+			List<string> testcommands = new List<string>
+			{
+				"#faction 2",
+				"#modulestack 100002",
+				"move R00001",
+				"+use ssassm as new101",
+				"+-use crewhs as new105",
+				"+--give -20 terran to new105",
+				"+-use strans as new106",
+				"+--give all iron to new106",
+				"#end"
+			};
+
+			Sequence.Ints.Clear();
+			Sequence.Ints.Push(102);
+			Sequence.Ints.Push(101);
+			Sequence.Ints.Push(100);
+
+			OrdersReader ordersReader = new OrdersReader(this.game);
+			ordersReader.AssignOrders(testcommands);
+
+			Assert.That(moduleStack.Orders.Count, Is.EqualTo(6));
+			MoveOrder move = (MoveOrder)moduleStack.Orders[0];
+			UseOrder assembly = (UseOrder)moduleStack.Orders[1];
+			Assert.That(assembly.Technology.Name, Is.EqualTo("ssassm"));
+			Assert.That(assembly.Level, Is.EqualTo(1));
+			Assert.That(move.ConditionalOrders.Count, Is.EqualTo(5));
+			Assert.That(move.ConditionalOrders.Contains(assembly));
+
+			this.reloadSavedGame("gameout.saved_conditionOrdersLoad.xml");
+
+			moduleStack = ModuleStack.All["100002"];
+			Assert.That(moduleStack.Orders.Count, Is.EqualTo(6));
+			move = (MoveOrder)moduleStack.Orders[0];
+			assembly = null;
+			foreach (Order order in moduleStack.Orders)
+			{
+				UseOrder use = order as UseOrder;
+				if (use != null && use.Technology != null && use.Technology.Name == "ssassm")
+				{
+					assembly = use;
+					break;
+				}
+			}
+			Assert.That(assembly, Is.Not.Null);
+			Assert.That(assembly.Level, Is.EqualTo(1));
+			Assert.That(move.ConditionalOrders.Count, Is.EqualTo(5));
+			Assert.That(move.ConditionalOrders.Contains(assembly));
+		}
+
+		[Test]
 		public void SaveLoad_PersistsModuleDamageBetweenTurns()
 		{
 			this.LoadGameDocument();
@@ -942,6 +1254,8 @@ namespace UnitTests
 		{
 			Assert.That(ModuleTypeGroupXml.Parse("research"), Is.EqualTo(EModuleTypesGroup.research));
 			Assert.That(ModuleTypeGroupXml.Parse("space station"), Is.EqualTo(EModuleTypesGroup.spaceStation));
+			Assert.That(ModuleTypeGroupXml.Parse("spacestation"), Is.EqualTo(EModuleTypesGroup.spaceStation));
+			Assert.That(ModuleTypeGroupXml.Parse("spaceStation"), Is.EqualTo(EModuleTypesGroup.spaceStation));
 			Assert.That(ModuleTypeGroupXml.Parse("settlement"), Is.EqualTo(EModuleTypesGroup.settlement));
 		}
 
@@ -952,11 +1266,387 @@ namespace UnitTests
 		}
 
 		[Test]
-		public void ModuleTypeGroupXml_ToToken_OmitsResearchGroup()
+		public void ModuleTypeGroupXml_ToToken_MapsResearchGroup()
 		{
-			Assert.That(ModuleTypeGroupXml.ToToken(EModuleTypesGroup.research), Is.Null);
+			Assert.That(ModuleTypeGroupXml.ToToken(EModuleTypesGroup.research), Is.EqualTo("research"));
 			Assert.That(ModuleTypeGroupXml.ToToken(EModuleTypesGroup.spaceStation), Is.EqualTo("space station"));
 			Assert.That(ModuleTypeGroupXml.ToToken(EModuleTypesGroup.settlement), Is.EqualTo("settlement"));
+		}
+
+		[Test]
+		public void SaveLoad_PersistsProducingModuleTechnology()
+		{
+			this.LoadGameDocument();
+			this.dataFile.LoadConfiguration();
+			this.dataFile.LoadFactions();
+			this.dataFile.LoadGalaxy();
+			this.game = this.dataFile.Game;
+
+			ModuleStack factory = ModuleStack.All["000004"];
+			Sequence.Ints.Push(100);
+			new OrdersReader(this.game).AssignOrders(new List<string>
+			{
+				"#faction 2",
+				"#modulestack 000004",
+				"use agrplx as \"farms1\"",
+				"#end"
+			});
+			this.executeFactoryWeek(factory, 0);
+			Assert.That(this.producingModule(factory, "agrplx"), Is.Not.Null);
+
+			string testdir = Directory.GetCurrentDirectory();
+			string testfile = "gameout.saved_producingModuleTech.xml";
+			this.dataFile.SaveGame(testdir, testfile);
+
+			XmlDocument saved = new XmlDocument();
+			saved.Load(Path.Combine(testdir, testfile));
+			XmlElement elEffect = (XmlElement)saved.SelectSingleNode("//modulestack[@name='000004']/effect[@type='producing-modules']");
+			Assert.That(elEffect, Is.Not.Null);
+			Assert.That(elEffect.GetAttribute("technology"), Is.EqualTo("agrplx"), "producing-modules save must keep the technology id");
+
+			this.game.ClearDictionaries();
+			this.game = null;
+			this.dataFile = null;
+			this.dataFile = new DataFile(testdir);
+			this.dataFile.LoadGameDocument(testdir, testfile);
+			this.dataFile.LoadConfiguration(testdir);
+			this.dataFile.LoadFactions();
+			this.dataFile.LoadGalaxy();
+			this.game = this.dataFile.Game;
+
+			factory = ModuleStack.All["000004"];
+			ProducingModule farms = this.producingModule(factory, "agrplx");
+			Assert.That(farms, Is.Not.Null);
+			Assert.That(farms.Technology.Name, Is.EqualTo("agrplx"));
+		}
+
+		[Test]
+		public void SaveLoad_PersistsProducingItemsEffect()
+		{
+			this.LoadGameDocument();
+			this.dataFile.LoadConfiguration();
+			this.dataFile.LoadFactions();
+			this.dataFile.LoadGalaxy();
+			this.game = this.dataFile.Game;
+
+			ModuleStack farms = ModuleStack.All["000008"];
+			Technology farming = Technology.All["farmng"];
+			new ProducingItems(farms, farming, 3);
+
+			this.reloadSavedGame("gameout.saved_producingItems.xml");
+			farms = ModuleStack.All["000008"];
+			ProducingItems producing = this.producingItems(farms, "farmng");
+			Assert.That(producing, Is.Not.Null, "in-progress producing-items must persist across save/load");
+			Assert.That(producing.Duration, Is.EqualTo(3));
+			Assert.That(producing.ProducedItemStacks[ItemType.All["food"]].Quantity, Is.EqualTo(15));
+		}
+
+		[Test]
+		public void SaveLoad_PersistsProducingEnergyEffect()
+		{
+			this.LoadGameDocument();
+			this.dataFile.LoadConfiguration();
+			this.dataFile.LoadFactions();
+			this.dataFile.LoadGalaxy();
+			this.game = this.dataFile.Game;
+
+			ModuleStack plants = ModuleStack.All["000011"];
+			new ProducingEnergy(plants, Technology.All["farmng"], 4);
+
+			this.reloadSavedGame("gameout.saved_producingEnergy.xml");
+			plants = ModuleStack.All["000011"];
+			ProducingEnergy producing = null;
+			foreach (Effect effect in plants.Effects)
+			{
+				producing = effect as ProducingEnergy;
+				if (producing != null)
+				{
+					break;
+				}
+			}
+			Assert.That(producing, Is.Not.Null, "in-progress producing-energy must persist across save/load");
+			Assert.That(producing.Duration, Is.EqualTo(4));
+			Assert.That(producing.Technology.Name, Is.EqualTo("farmng"));
+		}
+
+		[Test]
+		public void SaveLoad_PersistsReceivingItemsEffect()
+		{
+			this.LoadGameDocument();
+			this.dataFile.LoadConfiguration();
+			this.dataFile.LoadFactions();
+			this.dataFile.LoadGalaxy();
+			this.game = this.dataFile.Game;
+
+			ModuleStack factory = ModuleStack.All["000004"];
+			ModuleStack farms = ModuleStack.All["000008"];
+			new ReceivingItems(factory, farms, ItemStack.Cash(7), 2);
+
+			this.reloadSavedGame("gameout.saved_receivingItems.xml");
+			factory = ModuleStack.All["000004"];
+			ReceivingItems receiving = null;
+			foreach (Effect effect in factory.Effects)
+			{
+				receiving = effect as ReceivingItems;
+				if (receiving != null)
+				{
+					break;
+				}
+			}
+			Assert.That(receiving, Is.Not.Null, "in-progress receiving-items must persist across save/load");
+			Assert.That(receiving.Duration, Is.EqualTo(2));
+			Assert.That(receiving.Transferer.Name, Is.EqualTo("000008"));
+			Assert.That(receiving.ItemStack.ItemType.Name, Is.EqualTo("cash"));
+			Assert.That(receiving.ItemStack.Quantity, Is.EqualTo(7));
+		}
+
+		[Test]
+		public void SaveLoad_PersistsReceivingModulesEffect()
+		{
+			this.LoadGameDocument();
+			this.dataFile.LoadConfiguration();
+			this.dataFile.LoadFactions();
+			this.dataFile.LoadGalaxy();
+			this.game = this.dataFile.Game;
+
+			ModuleStack factory = ModuleStack.All["000004"];
+			new ReceivingModules(factory, ModuleStack.All["000007"], ModuleStack.All["000006"], 3);
+
+			this.reloadSavedGame("gameout.saved_receivingModules.xml");
+			factory = ModuleStack.All["000004"];
+			ReceivingModules receiving = null;
+			foreach (Effect effect in factory.Effects)
+			{
+				receiving = effect as ReceivingModules;
+				if (receiving != null)
+				{
+					break;
+				}
+			}
+			Assert.That(receiving, Is.Not.Null, "in-progress receiving-modules must persist across save/load");
+			Assert.That(receiving.Duration, Is.EqualTo(3));
+			Assert.That(receiving.Transferer.Name, Is.EqualTo("000007"));
+			Assert.That(receiving.ModuleStack.Name, Is.EqualTo("000006"));
+		}
+
+		[Test]
+		public void SaveLoad_PersistsReceivingTechnologyEffect()
+		{
+			this.LoadGameDocument();
+			this.dataFile.LoadConfiguration();
+			this.dataFile.LoadFactions();
+			this.dataFile.LoadGalaxy();
+			this.game = this.dataFile.Game;
+
+			ModuleStack factory = ModuleStack.All["000004"];
+			new ReceivingTechnology(factory, ModuleStack.All["000008"], Technology.All["farmng"], 2);
+
+			this.reloadSavedGame("gameout.saved_receivingTechnology.xml");
+			factory = ModuleStack.All["000004"];
+			ReceivingTechnology receiving = null;
+			foreach (Effect effect in factory.Effects)
+			{
+				receiving = effect as ReceivingTechnology;
+				if (receiving != null)
+				{
+					break;
+				}
+			}
+			Assert.That(receiving, Is.Not.Null, "in-progress receiving-technology must persist across save/load");
+			Assert.That(receiving.Duration, Is.EqualTo(2));
+			Assert.That(receiving.Transferer.Name, Is.EqualTo("000008"));
+			Assert.That(receiving.Technology.Name, Is.EqualTo("farmng"));
+		}
+
+		[Test]
+		public void SaveLoad_PersistsLightlyDamagedEffect()
+		{
+			this.LoadGameDocument();
+			this.dataFile.LoadConfiguration();
+			this.dataFile.LoadFactions();
+			this.dataFile.LoadGalaxy();
+			this.game = this.dataFile.Game;
+
+			ModuleStack drill = ModuleStack.All["000006"];
+			new LightlyDamaged(drill);
+
+			this.reloadSavedGame("gameout.saved_lightlyDamaged.xml");
+			drill = ModuleStack.All["000006"];
+			LightlyDamaged damaged = null;
+			foreach (Effect effect in drill.Effects)
+			{
+				damaged = effect as LightlyDamaged;
+				if (damaged != null)
+				{
+					break;
+				}
+			}
+			Assert.That(damaged, Is.Not.Null, "lightly-damaged must persist across save/load");
+		}
+
+		[Test]
+		public void SaveLoad_PersistsTrainingSkillEffect()
+		{
+			this.LoadGameDocument();
+			this.dataFile.LoadConfiguration();
+			this.dataFile.LoadFactions();
+			this.dataFile.LoadGalaxy();
+			this.game = this.dataFile.Game;
+
+			Person trainee = Person.All["200001"];
+			new TrainingSkill(trainee, 4, SkillType.All["arpldr"]);
+
+			this.reloadSavedGame("gameout.saved_trainingSkill.xml");
+			trainee = Person.All["200001"];
+			TrainingSkill training = null;
+			foreach (Effect effect in trainee.Effects)
+			{
+				training = effect as TrainingSkill;
+				if (training != null)
+				{
+					break;
+				}
+			}
+			Assert.That(training, Is.Not.Null, "in-progress training-skill must persist across save/load");
+			Assert.That(training.Duration, Is.EqualTo(4));
+			Assert.That(training.SkillType.Name, Is.EqualTo("arpldr"));
+		}
+
+		[Test]
+		public void SaveLoad_PersistsTrainingOfficerEffect()
+		{
+			this.LoadGameDocument();
+			this.dataFile.LoadConfiguration();
+			this.dataFile.LoadFactions();
+			this.dataFile.LoadGalaxy();
+			this.game = this.dataFile.Game;
+
+			ModuleStack hq = ModuleStack.All["000112"];
+			new TrainingOfficer(hq, 5, Race.All["terran"], Person.All["000101"], hq);
+
+			this.reloadSavedGame("gameout.saved_trainingOfficer.xml");
+			hq = ModuleStack.All["000112"];
+			TrainingOfficer training = null;
+			foreach (Effect effect in hq.Effects)
+			{
+				training = effect as TrainingOfficer;
+				if (training != null)
+				{
+					break;
+				}
+			}
+			Assert.That(training, Is.Not.Null, "in-progress training-officer must persist across save/load");
+			Assert.That(training.Duration, Is.EqualTo(5));
+			Assert.That(training.Race.Name, Is.EqualTo("terran"));
+			Assert.That(training.Officer.Name, Is.EqualTo("000101"));
+			Assert.That(training.OfficerParent.Name, Is.EqualTo("000112"));
+		}
+
+		[Test]
+		public void SaveLoad_PersistsResearchCapacityGroup()
+		{
+			this.LoadGameDocument();
+			this.dataFile.LoadConfiguration();
+			this.dataFile.LoadFactions();
+			this.dataFile.LoadGalaxy();
+			this.game = this.dataFile.Game;
+
+			Region region = Region.All["R00001"];
+			Capacity research = new Capacity();
+			research.Group = EModuleTypesGroup.research;
+			research.Quantity = 3;
+			region.Capacities.Add(research);
+
+			this.reloadSavedGame("gameout.saved_researchCapacity.xml");
+			region = Region.All["R00001"];
+			Capacity loaded = null;
+			foreach (Capacity capacity in region.Capacities)
+			{
+				if (capacity.Group == EModuleTypesGroup.research)
+				{
+					loaded = capacity;
+					break;
+				}
+			}
+			Assert.That(loaded, Is.Not.Null);
+			Assert.That(loaded.Quantity, Is.EqualTo(3));
+		}
+
+		[Test]
+		public void SaveGame_FactionXmlReport_OmitsOtherFactionsAndInvisibleRegions()
+		{
+			this.LoadGameDocument();
+			this.dataFile.LoadConfiguration();
+			this.dataFile.LoadFactions();
+			this.dataFile.LoadGalaxy();
+			this.dataFile.LoadOrders();
+			this.game = this.dataFile.Game;
+
+			Faction castePrime = this.game.Factions["2"];
+			string testdir = Directory.GetCurrentDirectory();
+			string testfile = "gameout.saved_factionXmlReport.xml";
+			this.dataFile.SaveGame(testdir, testfile, castePrime);
+
+			XmlDocument saved = new XmlDocument();
+			saved.Load(Path.Combine(testdir, testfile));
+			Assert.That(saved.SelectNodes("/game/faction[@name='2']").Count, Is.EqualTo(1));
+			Assert.That(saved.SelectNodes("/game/faction[@name='1']").Count, Is.EqualTo(0));
+			Assert.That(saved.SelectSingleNode("//region[@name='R00001']"), Is.Not.Null);
+			Assert.That(saved.SelectSingleNode("//region[@name='R10001']"), Is.Null);
+		}
+
+		private void executeFactoryWeek(ModuleStack factory, int weekOffset)
+		{
+			factory.ExecutedLongOrder = false;
+			factory.Execute(this.game.Week + weekOffset);
+		}
+
+		private void reloadSavedGame(string testfile)
+		{
+			string testdir = Directory.GetCurrentDirectory();
+			this.dataFile.SaveGame(testdir, testfile);
+			this.game.ClearDictionaries();
+			this.game = null;
+			this.dataFile = null;
+
+			this.dataFile = new DataFile(testdir);
+			this.dataFile.LoadGameDocument(testdir, testfile);
+			this.dataFile.LoadConfiguration(testdir);
+			this.dataFile.LoadFactions();
+			this.dataFile.LoadGalaxy();
+			this.dataFile.LoadOrders();
+			this.game = this.dataFile.Game;
+		}
+
+		private ProducingModule producingModule(ModuleStack factory, string technologyName)
+		{
+			foreach (Effect effect in factory.Effects)
+			{
+				ProducingModule producing = effect as ProducingModule;
+				if (producing != null
+					&& !producing.Executed
+					&& producing.Technology != null
+					&& producing.Technology.Name == technologyName)
+				{
+					return producing;
+				}
+			}
+			return null;
+		}
+
+		private ProducingItems producingItems(ModuleStack producer, string technologyName)
+		{
+			foreach (Effect effect in producer.Effects)
+			{
+				ProducingItems producing = effect as ProducingItems;
+				if (producing != null
+					&& producing.Technology != null
+					&& producing.Technology.Name == technologyName)
+				{
+					return producing;
+				}
+			}
+			return null;
 		}
     }
 }

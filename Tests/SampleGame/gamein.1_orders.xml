@@ -281,330 +281,88 @@
 				<move>
 					<destination destination="O00002" />
 				</move>
+				<order conditions="-+">
+					<get item="terran" quantity="40" transferer="000012" />
+				</order>
+				<order conditions="-+">
+					<get item="iron" quantity="30" transferer="000013" />
+				</order>
+				<order conditions="-+">
+					<get item="titani" quantity="30" transferer="000013" />
+				</order>
+				<order conditions="-+">
+					<get item="silici" quantity="20" transferer="000013" />
+				</order>
+				<order conditions="-+">
+					<get item="copper" quantity="20" transferer="000013" />
+				</order>
+				<order conditions="-+">
+					<get item="uraniu" quantity="20" transferer="000013" />
+				</order>
+				<order conditions="-+">
+					<get item="food" quantity="150" transferer="000013" />
+				</order>
+				<order conditions="-+">
+					<get item="h2o2" quantity="100" transferer="000013" />
+				</order>
+				<order conditions="-+">
+					<get item="terair" quantity="150" transferer="000013" />
+				</order>
+				<order conditions="-+">
+					<has>
+						<person name="000001" />
+					</has>
+				</order>
 				<order conditions="--">
 					<move>
 						<destination destination="R00001" />
 					</move>
-				</order>
-				<order conditions="--+">
-					<use technology="ssassm" receiver="101" receiver-parent="100" />
-					<order conditions="--+-">
-						<use technology="spctrl" receiver="102" receiver-parent="100" />
-					</order>
-					<order conditions="--+-">
-						<use technology="urfiss" receiver="103" receiver-parent="100" />
-					</order>
-					<order conditions="--+-">
-						<use technology="areact" receiver="104" receiver-parent="100" />
-					</order>
-					<order conditions="--+-">
-						<use technology="crewhs" receiver="105" receiver-parent="100" />
-						<order conditions="--+--">
-							<give receiver="105" item="terran" quantity="-20" />
+					<order conditions="--+">
+						<use technology="ssassm" receiver="101" receiver-parent="100" />
+						<order conditions="--+-">
+							<use technology="spctrl" receiver="102" receiver-parent="100" />
 						</order>
-						<order conditions="--+--">
-							<give receiver="105" item="terair" quantity="-20" />
+						<order conditions="--+-">
+							<use technology="urfiss" receiver="103" receiver-parent="100" />
 						</order>
-						<order conditions="--+--">
-							<give receiver="105" item="food" quantity="-20" />
+						<order conditions="--+-">
+							<use technology="areact" receiver="104" receiver-parent="100" />
 						</order>
-					</order>
-					<order conditions="--+--">
-						<give receiver="105" item="terran" quantity="-20" />
-					</order>
-					<order conditions="--+--">
-						<give receiver="105" item="terair" quantity="-20" />
-					</order>
-					<order conditions="--+--">
-						<give receiver="105" item="food" quantity="-20" />
-					</order>
-					<order conditions="--+-">
-						<use technology="strans" receiver="106" receiver-parent="100" />
-						<order conditions="--+--">
-							<give receiver="106" item="iron" quantity="all" />
+						<order conditions="--+-">
+							<use technology="crewhs" receiver="105" receiver-parent="100" />
+							<order conditions="--+--">
+								<give receiver="105" item="terran" quantity="-20" />
+							</order>
+							<order conditions="--+--">
+								<give receiver="105" item="terair" quantity="-20" />
+							</order>
+							<order conditions="--+--">
+								<give receiver="105" item="food" quantity="-20" />
+							</order>
 						</order>
-						<order conditions="--+--">
-							<give receiver="106" item="titani" quantity="all" />
-						</order>
-						<order conditions="--+--">
-							<give receiver="106" item="silici" quantity="all" />
-						</order>
-						<order conditions="--+--">
-							<give receiver="106" item="copper" quantity="all" />
-						</order>
-						<order conditions="--+--">
-							<give receiver="106" item="uraniu" quantity="-10" />
-						</order>
-						<order conditions="--+--">
-							<give receiver="106" item="h2o2" quantity="-10" />
+						<order conditions="--+-">
+							<use technology="strans" receiver="106" receiver-parent="100" />
+							<order conditions="--+--">
+								<give receiver="106" item="iron" quantity="all" />
+							</order>
+							<order conditions="--+--">
+								<give receiver="106" item="titani" quantity="all" />
+							</order>
+							<order conditions="--+--">
+								<give receiver="106" item="silici" quantity="all" />
+							</order>
+							<order conditions="--+--">
+								<give receiver="106" item="copper" quantity="all" />
+							</order>
+							<order conditions="--+--">
+								<give receiver="106" item="uraniu" quantity="-10" />
+							</order>
+							<order conditions="--+--">
+								<give receiver="106" item="h2o2" quantity="-10" />
+							</order>
 						</order>
 					</order>
-					<order conditions="--+--">
-						<give receiver="106" item="iron" quantity="all" />
-					</order>
-					<order conditions="--+--">
-						<give receiver="106" item="titani" quantity="all" />
-					</order>
-					<order conditions="--+--">
-						<give receiver="106" item="silici" quantity="all" />
-					</order>
-					<order conditions="--+--">
-						<give receiver="106" item="copper" quantity="all" />
-					</order>
-					<order conditions="--+--">
-						<give receiver="106" item="uraniu" quantity="-10" />
-					</order>
-					<order conditions="--+--">
-						<give receiver="106" item="h2o2" quantity="-10" />
-					</order>
 				</order>
-				<order conditions="--+-">
-					<use technology="spctrl" receiver="102" receiver-parent="100" />
-				</order>
-				<order conditions="--+-">
-					<use technology="urfiss" receiver="103" receiver-parent="100" />
-				</order>
-				<order conditions="--+-">
-					<use technology="areact" receiver="104" receiver-parent="100" />
-				</order>
-				<order conditions="--+-">
-					<use technology="crewhs" receiver="105" receiver-parent="100" />
-					<order conditions="--+--">
-						<give receiver="105" item="terran" quantity="-20" />
-					</order>
-					<order conditions="--+--">
-						<give receiver="105" item="terair" quantity="-20" />
-					</order>
-					<order conditions="--+--">
-						<give receiver="105" item="food" quantity="-20" />
-					</order>
-				</order>
-				<order conditions="--+--">
-					<give receiver="105" item="terran" quantity="-20" />
-				</order>
-				<order conditions="--+--">
-					<give receiver="105" item="terair" quantity="-20" />
-				</order>
-				<order conditions="--+--">
-					<give receiver="105" item="food" quantity="-20" />
-				</order>
-				<order conditions="--+-">
-					<use technology="strans" receiver="106" receiver-parent="100" />
-					<order conditions="--+--">
-						<give receiver="106" item="iron" quantity="all" />
-					</order>
-					<order conditions="--+--">
-						<give receiver="106" item="titani" quantity="all" />
-					</order>
-					<order conditions="--+--">
-						<give receiver="106" item="silici" quantity="all" />
-					</order>
-					<order conditions="--+--">
-						<give receiver="106" item="copper" quantity="all" />
-					</order>
-					<order conditions="--+--">
-						<give receiver="106" item="uraniu" quantity="-10" />
-					</order>
-					<order conditions="--+--">
-						<give receiver="106" item="h2o2" quantity="-10" />
-					</order>
-				</order>
-				<order conditions="--+--">
-					<give receiver="106" item="iron" quantity="all" />
-				</order>
-				<order conditions="--+--">
-					<give receiver="106" item="titani" quantity="all" />
-				</order>
-				<order conditions="--+--">
-					<give receiver="106" item="silici" quantity="all" />
-				</order>
-				<order conditions="--+--">
-					<give receiver="106" item="copper" quantity="all" />
-				</order>
-				<order conditions="--+--">
-					<give receiver="106" item="uraniu" quantity="-10" />
-				</order>
-				<order conditions="--+--">
-					<give receiver="106" item="h2o2" quantity="-10" />
-				</order>
-			</order>
-			<order conditions="-+">
-				<get item="terran" quantity="40" transferer="000012" />
-			</order>
-			<order conditions="-+">
-				<get item="iron" quantity="30" transferer="000013" />
-			</order>
-			<order conditions="-+">
-				<get item="titani" quantity="30" transferer="000013" />
-			</order>
-			<order conditions="-+">
-				<get item="silici" quantity="20" transferer="000013" />
-			</order>
-			<order conditions="-+">
-				<get item="copper" quantity="20" transferer="000013" />
-			</order>
-			<order conditions="-+">
-				<get item="uraniu" quantity="20" transferer="000013" />
-			</order>
-			<order conditions="-+">
-				<get item="food" quantity="150" transferer="000013" />
-			</order>
-			<order conditions="-+">
-				<get item="h2o2" quantity="100" transferer="000013" />
-			</order>
-			<order conditions="-+">
-				<get item="terair" quantity="150" transferer="000013" />
-			</order>
-			<order conditions="-+">
-				<has>
-					<person name="000001" />
-				</has>
-			</order>
-			<order conditions="--">
-				<move>
-					<destination destination="R00001" />
-				</move>
-			</order>
-			<order conditions="--+">
-				<use technology="ssassm" receiver="101" receiver-parent="100" />
-				<order conditions="--+-">
-					<use technology="spctrl" receiver="102" receiver-parent="100" />
-				</order>
-				<order conditions="--+-">
-					<use technology="urfiss" receiver="103" receiver-parent="100" />
-				</order>
-				<order conditions="--+-">
-					<use technology="areact" receiver="104" receiver-parent="100" />
-				</order>
-				<order conditions="--+-">
-					<use technology="crewhs" receiver="105" receiver-parent="100" />
-					<order conditions="--+--">
-						<give receiver="105" item="terran" quantity="-20" />
-					</order>
-					<order conditions="--+--">
-						<give receiver="105" item="terair" quantity="-20" />
-					</order>
-					<order conditions="--+--">
-						<give receiver="105" item="food" quantity="-20" />
-					</order>
-				</order>
-				<order conditions="--+--">
-					<give receiver="105" item="terran" quantity="-20" />
-				</order>
-				<order conditions="--+--">
-					<give receiver="105" item="terair" quantity="-20" />
-				</order>
-				<order conditions="--+--">
-					<give receiver="105" item="food" quantity="-20" />
-				</order>
-				<order conditions="--+-">
-					<use technology="strans" receiver="106" receiver-parent="100" />
-					<order conditions="--+--">
-						<give receiver="106" item="iron" quantity="all" />
-					</order>
-					<order conditions="--+--">
-						<give receiver="106" item="titani" quantity="all" />
-					</order>
-					<order conditions="--+--">
-						<give receiver="106" item="silici" quantity="all" />
-					</order>
-					<order conditions="--+--">
-						<give receiver="106" item="copper" quantity="all" />
-					</order>
-					<order conditions="--+--">
-						<give receiver="106" item="uraniu" quantity="-10" />
-					</order>
-					<order conditions="--+--">
-						<give receiver="106" item="h2o2" quantity="-10" />
-					</order>
-				</order>
-				<order conditions="--+--">
-					<give receiver="106" item="iron" quantity="all" />
-				</order>
-				<order conditions="--+--">
-					<give receiver="106" item="titani" quantity="all" />
-				</order>
-				<order conditions="--+--">
-					<give receiver="106" item="silici" quantity="all" />
-				</order>
-				<order conditions="--+--">
-					<give receiver="106" item="copper" quantity="all" />
-				</order>
-				<order conditions="--+--">
-					<give receiver="106" item="uraniu" quantity="-10" />
-				</order>
-				<order conditions="--+--">
-					<give receiver="106" item="h2o2" quantity="-10" />
-				</order>
-			</order>
-			<order conditions="--+-">
-				<use technology="spctrl" receiver="102" receiver-parent="100" />
-			</order>
-			<order conditions="--+-">
-				<use technology="urfiss" receiver="103" receiver-parent="100" />
-			</order>
-			<order conditions="--+-">
-				<use technology="areact" receiver="104" receiver-parent="100" />
-			</order>
-			<order conditions="--+-">
-				<use technology="crewhs" receiver="105" receiver-parent="100" />
-				<order conditions="--+--">
-					<give receiver="105" item="terran" quantity="-20" />
-				</order>
-				<order conditions="--+--">
-					<give receiver="105" item="terair" quantity="-20" />
-				</order>
-				<order conditions="--+--">
-					<give receiver="105" item="food" quantity="-20" />
-				</order>
-			</order>
-			<order conditions="--+--">
-				<give receiver="105" item="terran" quantity="-20" />
-			</order>
-			<order conditions="--+--">
-				<give receiver="105" item="terair" quantity="-20" />
-			</order>
-			<order conditions="--+--">
-				<give receiver="105" item="food" quantity="-20" />
-			</order>
-			<order conditions="--+-">
-				<use technology="strans" receiver="106" receiver-parent="100" />
-				<order conditions="--+--">
-					<give receiver="106" item="iron" quantity="all" />
-				</order>
-				<order conditions="--+--">
-					<give receiver="106" item="titani" quantity="all" />
-				</order>
-				<order conditions="--+--">
-					<give receiver="106" item="silici" quantity="all" />
-				</order>
-				<order conditions="--+--">
-					<give receiver="106" item="copper" quantity="all" />
-				</order>
-				<order conditions="--+--">
-					<give receiver="106" item="uraniu" quantity="-10" />
-				</order>
-				<order conditions="--+--">
-					<give receiver="106" item="h2o2" quantity="-10" />
-				</order>
-			</order>
-			<order conditions="--+--">
-				<give receiver="106" item="iron" quantity="all" />
-			</order>
-			<order conditions="--+--">
-				<give receiver="106" item="titani" quantity="all" />
-			</order>
-			<order conditions="--+--">
-				<give receiver="106" item="silici" quantity="all" />
-			</order>
-			<order conditions="--+--">
-				<give receiver="106" item="copper" quantity="all" />
-			</order>
-			<order conditions="--+--">
-				<give receiver="106" item="uraniu" quantity="-10" />
-			</order>
-			<order conditions="--+--">
-				<give receiver="106" item="h2o2" quantity="-10" />
 			</order>
 		</order>
 		<order subject="modulestack" name="101">
@@ -648,18 +406,18 @@
 				<move>
 					<destination destination="R00002" />
 				</move>
-			</order>
-			<order conditions="-+">
-				<get item="terran" quantity="16" transferer="000018" />
-			</order>
-			<order conditions="-+">
-				<get item="cash" quantity="42" transferer="000018" />
-			</order>
-			<order conditions="-+">
-				<get item="oil" quantity="16" transferer="000019" />
-			</order>
-			<order conditions="-+">
-				<get item="food" quantity="32" transferer="000019" />
+				<order conditions="-+">
+					<get item="terran" quantity="16" transferer="000018" />
+				</order>
+				<order conditions="-+">
+					<get item="cash" quantity="42" transferer="000018" />
+				</order>
+				<order conditions="-+">
+					<get item="oil" quantity="16" transferer="000019" />
+				</order>
+				<order conditions="-+">
+					<get item="food" quantity="32" transferer="000019" />
+				</order>
 			</order>
 		</order>
 		<order subject="person" name="000001">
@@ -672,9 +430,6 @@
 				<order conditions="--">
 					<stack parent="102" />
 				</order>
-			</order>
-			<order conditions="--">
-				<stack parent="102" />
 			</order>
 		</order>
 		<order subject="person" name="000002">
@@ -689,18 +444,6 @@
 						<stack parent="109" />
 					</order>
 				</order>
-				<order conditions="---">
-					<stack parent="109" />
-				</order>
-			</order>
-			<order conditions="--">
-				<see see-type="modulestack" modulestack="109" />
-				<order conditions="---">
-					<stack parent="109" />
-				</order>
-			</order>
-			<order conditions="---">
-				<stack parent="109" />
 			</order>
 		</order>
 		<order subject="person" name="107">
@@ -715,18 +458,6 @@
 						<stack parent="110" />
 					</order>
 				</order>
-				<order conditions="---">
-					<stack parent="110" />
-				</order>
-			</order>
-			<order conditions="--">
-				<see see-type="modulestack" modulestack="110" />
-				<order conditions="---">
-					<stack parent="110" />
-				</order>
-			</order>
-			<order conditions="---">
-				<stack parent="110" />
 			</order>
 		</order>
 	</orders>

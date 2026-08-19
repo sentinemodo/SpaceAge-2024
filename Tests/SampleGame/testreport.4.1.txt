@@ -1253,8 +1253,6 @@ Galaxy report:
     orbit [O00001], has no atmosphere.
     - space shuttle [100], 10 space shuttle [shuttl], owned by Caste Prime [2].
       size: 2000.
-      - Caste Prime CEO [000001], terran [terran], working for Caste Prime [2].
-        size: 4.
 
     Dusty field [R00001] (0,0), dusty region, settlement capacity 4/0.
     Exits:
@@ -1285,6 +1283,8 @@ Galaxy report:
       size: 5000.
       - command bridge [112], command bridge [cbridg], immobile, owned by Caste Prime [2].
         size: 800.
+        - Caste Prime CEO [000001], terran [terran], working for Caste Prime [2].
+          size: 4.
       - fission reactor [113], fission reactor [fisrec], immobile, owned by Caste Prime [2].
         size: 400.
       - reaction drive [114], reaction drive [rctdrv], owned by Caste Prime [2].

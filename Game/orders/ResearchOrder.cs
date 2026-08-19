@@ -164,53 +164,15 @@ namespace SpaceAge
         private void parseModuleTypeGroup(string token)
         {
             this.ResearchType = EResearchType.Group;
-
-            switch (token)
+            try
             {
-                case "agricultural":
-                    this.ModuleTypesGroup = EModuleTypesGroup.agricultural;
-                    break;
-                case "command":
-                    this.ModuleTypesGroup = EModuleTypesGroup.command;
-                    break;
-                case "spacecraft":
-                    this.ModuleTypesGroup = EModuleTypesGroup.spacecraft;
-                    break;
-                case "energy":
-                    this.ModuleTypesGroup = EModuleTypesGroup.energy;
-                    break;
-                case "extraction":
-                    this.ModuleTypesGroup = EModuleTypesGroup.extraction;
-                    break;
-                case "habitat":
-                    this.ModuleTypesGroup = EModuleTypesGroup.habitat;
-                    break;
-                case "infantry":
-                    this.ModuleTypesGroup = EModuleTypesGroup.infantry;
-                    break;
-                case "military":
-                    this.ModuleTypesGroup = EModuleTypesGroup.military;
-                    break;
-                case "production":
-                    this.ModuleTypesGroup = EModuleTypesGroup.production;
-                    break;
-                case "propulsion":
-                    this.ModuleTypesGroup = EModuleTypesGroup.propulsion;
-                    break;
-                case "research":
-                    this.ModuleTypesGroup = EModuleTypesGroup.research;
-                    break;
-                case "vehicle":
-                    this.ModuleTypesGroup = EModuleTypesGroup.vehicle;
-                    break;
-                default:
-                    this.ResearchType = EResearchType.Any;
-                    this.ResearchToken = token;
-                    break;
+                this.ModuleTypesGroup = ModuleTypeGroupXml.Parse(token);
+                this.ResearchToken = ModuleTypeGroupXml.ToToken(this.ModuleTypesGroup);
             }
-            if (this.ResearchType != EResearchType.Any)
+            catch (KeyNotFoundException)
             {
-                this.ResearchToken = this.ModuleTypesGroup.ToString();
+                this.ResearchType = EResearchType.Any;
+                this.ResearchToken = token;
             }
         }
 
@@ -233,7 +195,7 @@ namespace SpaceAge
                     line = string.Concat(line, " module ", this.ModuleType.Name);
                     break;
                 case EResearchType.Group:
-                    line = string.Concat(line, " group ", this.ModuleTypesGroup.ToString());
+                    line = string.Concat(line, " group ", ModuleTypeGroupXml.ToToken(this.ModuleTypesGroup));
                     break;
                 default:
                     if (this.ResearchType == EResearchType.ModuleStack)
@@ -314,7 +276,7 @@ namespace SpaceAge
                     break;
                 case EResearchType.Group:
                     elResearch.SetAttribute("research-type", "group");
-                    elResearch.SetAttribute("group", this.ModuleTypesGroup.ToString()); 
+                    elResearch.SetAttribute("group", ModuleTypeGroupXml.ToToken(this.ModuleTypesGroup)); 
                     break;
                 case EResearchType.Tag:
                     elResearch.SetAttribute("research-type", "tag");

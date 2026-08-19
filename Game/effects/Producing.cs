@@ -49,6 +49,7 @@ namespace SpaceAge
         {
             base.LoadXml(elProducingEffect);
             this.Technology = Technology.All[elProducingEffect.GetAttribute("technology")];
+            this.ExecuteCondition = false;
         }
     
         public override XmlElement SaveXml(XmlDocument doc)

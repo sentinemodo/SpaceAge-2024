@@ -35,6 +35,8 @@ namespace SpaceAge
 				case "spacecraft":
 					return EModuleTypesGroup.spacecraft;
 				case "space station":
+				case "spacestation":
+				case "spaceStation":
 					return EModuleTypesGroup.spaceStation;
 				case "storage":
 					return EModuleTypesGroup.storage;
@@ -69,6 +71,8 @@ namespace SpaceAge
 					return "production";
 				case EModuleTypesGroup.propulsion:
 					return "propulsion";
+				case EModuleTypesGroup.research:
+					return "research";
 				case EModuleTypesGroup.settlement:
 					return "settlement";
 				case EModuleTypesGroup.spacecraft:

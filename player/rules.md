@@ -2,7 +2,7 @@
 
 Checked **19 Aug 2026** against engine **0.1.141** (`Game/Program.cs`).
 
-Sources: `Game/orders/EOrderType.cs`, `Game/orders/OrdersReader.cs`, `Game/orders/Orders.cs`, `Game/Game.cs` (week loop), `Game/data structures/ModuleStack.Upkeep.cs` (sick bay, medical consume, quarterly maintenance), `Game/game/DataFile.cs` (`LoadOrders` delegates to `OrderXml`), `Game/game/OrderXml.cs` (XML switch), each `Game/orders/*Order.Parse` / `Execute`. Sample prefix usage: `Tests/SampleGame/orders.*.txt`.
+Sources: `Game/orders/EOrderType.cs`, `Game/orders/OrdersReader.cs`, `Game/orders/Orders.cs`, `Game/Game.cs` (week loop), `Game/data structures/ModuleStack.Upkeep.cs` (sick bay, medical consume, quarterly maintenance), `Game/data structures/Exits.cs` / `ExitMode.cs` / `Region.cs` (region **Exits:** lines), `Game/game/DataFile.cs` (`LoadOrders` delegates to `OrderXml`), `Game/game/OrderXml.cs` (XML switch), `Game/game/ModuleTypeGroupXml.cs` (`RESEARCH GROUP` tokens), `Game/effects/Effects.cs` (`LoadXml` effect types), each `Game/orders/*Order.Parse` / `Execute`. Sample prefix usage: `Tests/SampleGame/orders.*.txt`.
 
 Not source of truth: `Game/documentation/Rules.txt`. Turn order files are **Windows-1251** (same as reports). Verbs are case-insensitive; most arguments are not.
 
@@ -102,7 +102,7 @@ After week 13: **quarterly maintenance**, then **quarterly wounded outcome**, th
 
 - Bank: quarterly interest (`AddQuarterlyInterest`).
 - `UpdateRates` — empty (comments only).
-- `GenerateOffers` — empty (no NPC auto-offers).
+- `GenerateOffers` — empty (no NPC auto-offers). Duration-0 leftover `receiving-items` on cities (old market delivery) **persist** after save but **never complete**; there is no player verb that clears them.
 
 Standing `@buy` / `@sell` stay on the order list and retry each week at step 6. `ATTACK` / `TACTIC` / `DECLARE` during step 2 only set stance; shooting is step 7.
 
@@ -123,7 +123,7 @@ The two kinds are independent except where you chain them with `-` / `+`. An imm
 | Duration              | Finishes in the week it succeeds (or retries later)                            | Occupies the long slot for `Duration` weeks (`use-time`, produce duration, move legs, …) |
 | Needs an active stack | No (probes and cargo still have their own checks)                              | Yes: formed, enough crew and energy (`CanOperate`)                                       |
 | Repeat `N` / `@`      | Succeed up to N weeks, or every week forever                                   | Complete N full durations, or never stop                                                 |
-| After a turn          | Dropped when `Executed` and repeat is used up; otherwise stays on the template | Same; in-progress work is kept as an effect (`Moving`, `Producing*`, `Training*`)        |
+| After a turn          | Dropped when `Executed` and repeat is used up; otherwise stays on the template | Same; in-progress work is kept as an effect (`Moving`, `Producing*`, `Training*`, `Receiving*`, `Fuelled`; `lightly-damaged` is a module marker). Those types **load again** after save (`Effects.LoadXml`). |
 
 
 **Immediate** orders are setup, probes, cargo, stance, and stacking. They do not consume the week’s long slot. `FORM`, `GET`, and `GIVE` can all fire the same week as a `USE` or `MOVE`.
@@ -143,7 +143,11 @@ The two kinds are independent except where you chain them with `-` / `+`. An imm
 | `COPY` comments mention `COPY all TO …` | **not parsed** — technology id required                  | technology + receiver attributes                    |
 
 
-Player turn files use **text**. XML matters for saved games, not for `order.*` drafts.
+Player turn files use **text**. XML matters for saved games, not for `order.*` drafts. Text `-` / `+` syntax is unchanged.
+
+**Nested conditions:** `Order.SaveXml` writes leftover `-` / `+` children as nested `<order conditions="…">` under the parent (top-level save is `Level == 0` only). `saveXml_post` writes only the **next remaining condition level**, once (no duplicate nested siblings); recursion still persists leftover `+USE` trees. `LoadAll` walks those nested `<order>` elements and assigns the same `-` / `+` links as text (`AssignCondition`). Duplicate subject + conditions + verb XML is skipped. Frozen SampleGame `gamein.2_contract.xml` / `gamein.3_contract.xml` keep those leftovers; player-facing turn 2/3 reports are unchanged.
+
+**Saved effects:** `Effects.LoadXml` accepts `fuelled`, `moving`, `producing-modules`, `producing-items`, `producing-energy`, `receiving-items`, `receiving-modules`, `receiving-technology`, `lightly-damaged`, and `training-officer`. `producing-modules` writes `technology=` on save (`ProducingModule.SaveXml`; base `Producing.SaveXml` already did), so in-progress module `USE` round-trips the tech id and leftover `USE` can match after load. `receiving-items` now writes a nested `<receiving>` cargo payload. Skill training still saves as `type="training-officer"` with a `skill` attribute (not a player-facing verb — issue `TRAIN SKILL`). `USE` leftover reconnects to a matching `Producing*` effect; leftover `PRODUCE` / `TRAIN` do **not** (`Producing` / `Training` on the order is null after load, so they start a new duration while the loaded effect stays frozen). Duration-0 `receiving-items` leftovers do not deliver cargo.
 
 ---
 
@@ -295,11 +299,15 @@ Creates a `PressRelease` and reports `issued press release {title}.` on the issu
 
 ### SEE
 
-**Syntax:** `SEE <stack-id|newN>` or `SEE PERSON <person-id|newN>`
+**Syntax:**
+
+- `SEE <stack-id|newN>`
+- `SEE PERSON <person-id|newN>`
+- `SEE <person-id|newN> PERSON`
 
 **Subject:** holder.
 
-Succeeds if that stack or person is at the observer’s location. Template/report may print `see id person`; **Parse expects `SEE PERSON id`**.
+Succeeds if that stack or person is at the observer’s location. Both person word orders parse (`person` must be lowercase). Leftover/template (`SeeOrder.Report`) prints `see <id> person` (or `see newN person` if unformed). XML is unchanged: `see-type="person"` plus `person="<id>"` on the `<see>` element (`LoadXml` uses `GetOrCreateNewPerson`).
 
 ### SELL
 
@@ -350,13 +358,24 @@ MOVE, PRODUCE, REPAIR, RESEARCH, TRAIN, USE.
 
 Walks a route. Each dest token is a **region**, **star**, **planet**, **moon**, **anomaly**, or **orbit** id (stars/planets/moons/anomalies resolve to their orbit). Starts a `Moving` effect, consumes fuel when required, changes parent on arrival.
 
+**Exits on the report:** a **region** block includes `Exits:` (`Region.Report` → `Exits.Report`). A region destination prints `{name} [id] (x,y), {region type}, {ground|space} travel duration N week(s).` An **orbit** destination prints `orbit [id], space travel duration N week(s).` (no region-type clause). Orbit reports do not list exits. Maps without `orbit=` exits (SampleGame) never show that line.
+
+**Duration** (`movementDuration`) is not always the printed exit duration:
+
+- Same-planet **region → region**: ground; weeks = ceil(exit ground duration / mover Speed). Needs a ground exit from here.
+- Same-parent **region ↔ orbit** (e.g. Luna `R00011` → `O00004`): space; **1 week**, even if the exit lists 2. Needs a space-capable mover (or nested space stack).
+- Same-planet **planet orbit ↔ moon orbit**: space; weeks from AU distance / (mass capacity / mass).
+- Other hops are not implemented.
+
+A stack with a **space** move mode may attempt a hop even when the current location lists no matching exit. Ground-only stacks need an exit from here to the dest.
+
 ### PRODUCE
 
 **Syntax:** `PRODUCE ENERGY` or `PRODUCE <item-id>`
 
 **Subject:** modulestack.
 
-Starts energy or item production using the stack’s module type (`ProducingEnergy` / `ProducingItems`), duration from `ProduceDuration`. Sample: `@produce cash`, `@produce energy`, `@produce terran`.
+Starts energy or item production using the stack’s module type (`ProducingEnergy` / `ProducingItems`), duration from `ProduceDuration`. Those effects survive save/load; a leftover `@produce` does **not** reconnect to them (unlike leftover `USE`). Sample: `@produce cash`, `@produce energy`, `@produce terran`.
 
 ### REPAIR
 
@@ -364,23 +383,25 @@ Starts energy or item production using the stack’s module type (`ProducingEner
 
 **Subject:** modulestack only.
 
-Spends spare parts (`spare`) and restores hit points on the stack (or its parent scope). Engineering shop `[engshp]` repairs 20 HP per active copy and consumes that many spares; otherwise 10 HP for 1 spare; 1 HP if unsupplied.
+Spends spare parts (`spare`) and restores hit points on the stack (or its parent scope). Engineering shop `[engshp]` restores **20 HP per active copy** and consumes **1 spare per copy**; otherwise **10 HP for 1 spare**; **1 HP** if unsupplied.
 
 ### RESEARCH
 
 **Syntax:**
 
 - `RESEARCH`
-- `RESEARCH <technology-id|tag|item-id|module-id|space-object>`
+- `RESEARCH <stack-id|technology-id|tag|item-id|module-id|space-object>`
 - `RESEARCH TECHNOLOGY <id>`
 - `RESEARCH ITEM <id>`
 - `RESEARCH MODULE <id>`
-- `RESEARCH GROUP <group>`
+- `RESEARCH GROUP <group>` — quote `"space station"` (two words)
 - `RESEARCH TAG <tag>`
 
 **Subject:** modulestack (must be group **research**).
 
-Weekly research output; chance of a breakthrough, else points accumulate. Bare tokens prefer the most specific match (known tech, then tag such as `military`, then item, module, or map object). `TAG` forces a tag preference even when the token is also a technology id. `RESEARCH TAG repair` prefers catalog techs whose `tags` include `repair`: medical services `[medtec]`, medicines refining `[medirf]`, preventive servicing `[servic]`, and engineering shop `[engshp]` (`engshp` also keeps `production`). `RESEARCH TAG research` prefers file indexing `[filidx]`, advanced computing `[advres]`, sick bay construction `[sckcns]`, and shipboard pharmacy `[pharms]`. Bare `research repair` still matches technology **repair and maintenance** `[repair]` (that id has no `repair` tag). `GROUP` accepts: `agricultural`, `command`, `spacecraft`, `energy`, `extraction`, `habitat`, `infantry`, `military`, `production`, `propulsion`, `research`, `vehicle`. Other group names (including `frigate`, `settlement`, `storage`) are stored as an untyped token.
+Weekly research output; chance of a breakthrough, else points accumulate. Bare tokens resolve in this order: existing **stack id**, known **technology**, **tag** (such as `military`), **item**, **module**, then **map object** (moon/planet/region/orbit). `TAG` forces a tag preference even when the token is also a technology id. `RESEARCH TAG repair` prefers catalog techs whose `tags` include `repair`: medical services `[medtec]`, medicines refining `[medirf]`, preventive servicing `[servic]`, and engineering shop `[engshp]` (`engshp` also keeps `production`). `RESEARCH TAG research` prefers file indexing `[filidx]`, advanced computing `[advres]`, sick bay construction `[sckcns]`, and shipboard pharmacy `[pharms]`. Bare `research repair` still matches technology **repair and maintenance** `[repair]` (that id has no `repair` tag). Bare `research military` is a **tag**; `research group military` is a **group**.
+
+`GROUP` uses `ModuleTypeGroupXml` tokens: `agricultural`, `command`, `energy`, `extraction`, `frigate`, `habitat`, `infantry`, `military`, `production`, `propulsion`, `research`, `settlement`, `spacecraft`, `space station`, `storage`, `vehicle`. Quote `"space station"` (`GetQuotedToken`); load also accepts aliases `spacestation` and `spaceStation`. Save writes `group="space station"`, not enum `spaceStation`. Unknown names fall back to untyped `Any`. GROUP prefers techs whose `usable-in` module group or produced module group matches the stored token: `research group settlement` / `frigate` / `storage` prefer those catalog groups. The stored `space station` token does not equal the engine name `spaceStation`, so that preference currently matches nothing.
 
 ### TRAIN
 
@@ -391,7 +412,7 @@ Weekly research output; chance of a breakthrough, else points accumulate. Bare t
 
 **Subject:** person (skill) or stack (officer).
 
-Starts `TrainingSkill` or `TrainingOfficer` (officer requires matching crew of that race). `AS` is required for officer training.
+Starts `TrainingSkill` or `TrainingOfficer` (officer requires matching crew of that race). `AS` is required for officer training. Both effects survive save/load as `type="training-officer"` (skill training is the `skill` attribute). A leftover `TRAIN` does **not** reconnect to the loaded effect (unlike leftover `USE`).
 
 ### USE
 
@@ -400,6 +421,12 @@ Starts `TrainingSkill` or `TrainingOfficer` (officer requires matching crew of t
 **Subject:** modulestack.
 
 Uses a loaded (or level-0) technology: consumes catalog inputs and after `use-time` produces items or a module. `AS` names the new module stack; `FOR` is the nest parent. `AS` and `FOR` are independent (`use wndtrb for 000021` is valid). Level 0 techs do not need to be copied onto the stack. Duration scales with `UseTime`, efficiency, and active quantity. `use-allowed-in` can restrict both module **group** and a specific module type (`module="sckbay"` for shipboard pharmacy `[pharms]`).
+
+In-progress work is a `Producing*` effect. It only ticks when a matching unconditioned `USE` runs that week (`Use()`). After save/load, the leftover order reconnects to that effect (`producing-modules` persists `technology=`):
+
+- **Same technology** — production **continues**; inputs are not consumed again. A new `AS` / `FOR` **retargets** the producing effect’s receiver/parent.
+- **Different technology** — the leftover `USE` is dropped. The old producing effect **freezes** (stays on the stack, duration unchanged) while the new `USE` runs. Reissue the original tech to **resume** that frozen effect, still without consuming again.
+- Conditioned lines (`-use` / `+use`) do not merge or drop leftovers this way.
 
 Omit `FOR`: `ReceiverParent` defaults to the **producer**. `ProducingModule` treats that as “no extra nest”: the product is **formed as a sibling** (`produced.Parent = Producer.Parent`, same orbit/region). At complete it does **not** stack under the producer. `use spctrl as new102` therefore leaves a command bridge sitting next to the shuttle.
 

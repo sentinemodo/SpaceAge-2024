@@ -11,6 +11,11 @@ namespace SpaceAge
         public ModuleStack Transferer { get; set; }
         public ModuleStack ModuleStack { get; set; }
 
+		public ReceivingModules(IEffectable receiver)
+			: base(receiver, 0)
+		{
+		}
+
 		public ReceivingModules(IEffectable receiver, ModuleStack transferer, ModuleStack moduleStack, int duration)
 			: base(receiver, duration)
 		{
@@ -90,6 +95,13 @@ namespace SpaceAge
             this.Executed = true;
             base.Execute(week);           
 		}
+
+        public override void LoadXml(XmlElement elReceivingModules)
+        {
+            base.LoadXml(elReceivingModules);
+            this.ModuleStack = ModuleStack.All.GetOrCreateNewModuleStack(this.Receiver.Owner, elReceivingModules.GetAttribute("modulestack"));
+            this.Transferer = ModuleStack.All.GetOrCreateNewModuleStack(this.Receiver.Owner, elReceivingModules.GetAttribute("transferrer"));
+        }
 
         public override XmlElement SaveXml(XmlDocument doc)
         {

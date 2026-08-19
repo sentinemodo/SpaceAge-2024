@@ -100,7 +100,7 @@ namespace SpaceAge
 
 						foreach (XmlElement elMoon in elPlanet.SelectNodes("moon"))
 						{
-							Moon moon = new Moon(system, planet, elPlanet.GetAttribute("name"));
+							Moon moon = new Moon(system, planet, elMoon.GetAttribute("name"));
 							moon.LoadXml(elMoon);
 
 							try
@@ -178,7 +178,21 @@ namespace SpaceAge
 							{
 								throw new Exception("Tried to parse exits for planet " + elPlanet.GetAttribute("name"), ex);
 							}
-							// moons
+							foreach (XmlElement elMoon in elPlanet.SelectNodes("moon"))
+							{
+								foreach (XmlElement elRegion in elMoon.SelectNodes("region"))
+								{
+									try
+									{
+										Region region = Region.All[elRegion.GetAttribute("name")];
+										this.loadGalaxyExits(elRegion, region, dataFile);
+									}
+									catch (Exception ex)
+									{
+										throw new Exception("Tried to parse exits for region " + elRegion.GetAttribute("name"), ex);
+									}
+								}
+							}
 						}
 
 						// alderson points
@@ -333,7 +347,7 @@ namespace SpaceAge
 			{
 
 				// do nost save is the xml report is prepared for faction and faction is not observing the object
-				if (factionXMLreport != null & !system.Visible(factionXMLreport))
+				if (factionXMLreport != null && !system.Visible(factionXMLreport))
 					continue;
 
 				XmlElement elSystem = doc.CreateElement("system");
@@ -348,7 +362,7 @@ namespace SpaceAge
 				foreach (SpaceSystemObject systemObject in system.Objects.Values)
 				{
 					// do nost save is the xml report is prepared for faction and faction is not observing the object
-					if (factionXMLreport != null & !systemObject.Visible(factionXMLreport))
+					if (factionXMLreport != null && !systemObject.Visible(factionXMLreport))
 						continue;
 
 					XmlElement elObject;
@@ -375,7 +389,7 @@ namespace SpaceAge
 						foreach (Moon moon in planet.Moons.Values)
 						{
 							// do nost save is the xml report is prepared for faction and faction is not observing the object
-							if (factionXMLreport != null & !moon.Visible(factionXMLreport))
+							if (factionXMLreport != null && !moon.Visible(factionXMLreport))
 								continue;
 
 							XmlElement elMoon;
@@ -408,7 +422,7 @@ namespace SpaceAge
 			elOrbit.SetAttribute("name", orbitHolder.Orbit.Name);
 
 			// do nost save is the xml report is prepared for faction and faction is not observing the object
-			if (factionXMLreport != null & !orbitHolder.Orbit.Visible(factionXMLreport))
+			if (factionXMLreport != null && !orbitHolder.Orbit.Visible(factionXMLreport))
 			{
 			}
 			else
@@ -429,14 +443,14 @@ namespace SpaceAge
 		private void saveResources(XmlDocument doc, XmlElement elObject, IResourcesHolder resourcesHolder, Faction factionXMLreport = null)
 		{
 			XmlElement elResource;
-			if (factionXMLreport != null & !resourcesHolder.Visible(factionXMLreport))
+			if (factionXMLreport != null && !resourcesHolder.Visible(factionXMLreport))
 			{
 			}
 			else
 			{
 				foreach (Resource resource in resourcesHolder.Resources)
 				{
-					if (factionXMLreport != null & !resource.Visible(factionXMLreport))
+					if (factionXMLreport != null && !resource.Visible(factionXMLreport))
 						continue;
 
 					elResource = doc.CreateElement("resource");
@@ -453,7 +467,7 @@ namespace SpaceAge
 
 			foreach (Region region in regionHolder.Regions.Values)
 			{
-				if (factionXMLreport != null & !region.Visible(factionXMLreport))
+				if (factionXMLreport != null && !region.Visible(factionXMLreport))
 					    continue;
 
 				elRegion = doc.CreateElement("region");
@@ -481,7 +495,14 @@ namespace SpaceAge
 				{
 					elExit = doc.CreateElement("exit");
 					elRegion.AppendChild(elExit);
-					elExit.SetAttribute("region", exit.To.Name);
+					if (exit.To is Orbit)
+					{
+						elExit.SetAttribute("orbit", exit.To.Name);
+					}
+					else
+					{
+						elExit.SetAttribute("region", exit.To.Name);
+					}
 					foreach (ExitMode exitMode in exit.ExitModes.Values)
 					{
 						elExitMode = doc.CreateElement("exitmode");

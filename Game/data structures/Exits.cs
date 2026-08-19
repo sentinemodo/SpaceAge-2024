@@ -45,8 +45,15 @@ namespace SpaceAge
                 };
 				foreach (Exit exit in this)
 				{
-					Region destination = (Region)exit.To;
-					line = string.Format("  {0}, {1}", destination.ReportName, destination.RegionType.FullName);
+					Region region = exit.To as Region;
+					if (region != null)
+					{
+						line = string.Format("  {0}, {1}", region.ReportName, region.RegionType.FullName);
+					}
+					else
+					{
+						line = string.Format("  {0}", exit.To.ReportName);
+					}
 					foreach (ExitMode exitMode in exit.ExitModes.Values)
 					{
 						line = string.Format("{0}, {1}", line, exitMode.ReportName);

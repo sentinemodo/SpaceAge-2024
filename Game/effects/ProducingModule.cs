@@ -69,6 +69,16 @@ namespace SpaceAge
 
         public IHolder ReceiverParent { get; set; }
 
+		public void Retarget(IHolder receiver, IHolder receiverParent)
+		{
+			this.Receiver = receiver;
+			this.ReceiverParent = receiverParent;
+			if (receiver is ModuleStack)
+			{
+				this.produced = (ModuleStack)receiver;
+			}
+		}
+
 		private ModuleStack produced = null;
 		public ModuleStack Produced
 		{
@@ -194,6 +204,7 @@ namespace SpaceAge
             // there might be an issue with no linked order
             base.SaveXml(doc);
             this.xmlElement.SetAttribute("type", "producing-modules");
+            this.xmlElement.SetAttribute("technology", this.Technology.Name);
             this.xmlElement.SetAttribute("module", this.Technology.UseProduceModules.Name);
             this.xmlElement.SetAttribute("receiver-parent", this.ReceiverParent.Name);
             this.xmlElement.SetAttribute("receiver", this.Receiver.Name);
