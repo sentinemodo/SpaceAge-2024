@@ -2,7 +2,7 @@
 
 Checked **19 Aug 2026** against engine **0.1.141** (`Game/Program.cs`).
 
-Sources: `Game/orders/EOrderType.cs`, `Game/orders/OrdersReader.cs`, `Game/orders/Orders.cs`, `Game/Game.cs` (week loop), `Game/data structures/ModuleStack.Upkeep.cs` (sick bay, medical consume, quarterly maintenance), `Game/game/DataFile.cs` (`LoadOrders` XML switch), each `Game/orders/*Order.Parse` / `Execute`. Sample prefix usage: `Tests/SampleGame/orders.*.txt`.
+Sources: `Game/orders/EOrderType.cs`, `Game/orders/OrdersReader.cs`, `Game/orders/Orders.cs`, `Game/Game.cs` (week loop), `Game/data structures/ModuleStack.Upkeep.cs` (sick bay, medical consume, quarterly maintenance), `Game/game/DataFile.cs` (`LoadOrders` delegates to `OrderXml`), `Game/game/OrderXml.cs` (XML switch), each `Game/orders/*Order.Parse` / `Execute`. Sample prefix usage: `Tests/SampleGame/orders.*.txt`.
 
 Not source of truth: `Game/documentation/Rules.txt`. Turn order files are **Windows-1251** (same as reports). Verbs are case-insensitive; most arguments are not.
 
@@ -134,13 +134,12 @@ The two kinds are independent except where you chain them with `-` / `+`. An imm
 
 ## Text vs XML
 
-`DataFile.LoadOrders` builds orders from `<order>` XML when loading a game. Divergences:
+`DataFile.LoadOrders` calls `OrderXml.LoadAll`, which builds orders from `<order>` XML when loading a game. Divergences:
 
 
-| Verb                                    | Text (`OrdersReader`)                                    | XML (`DataFile` switch)                             |
+| Verb                                    | Text (`OrdersReader`)                                    | XML (`OrderXml.LoadAll`)                            |
 | --------------------------------------- | -------------------------------------------------------- | --------------------------------------------------- |
 | `TRANSFER`                              | **missing** — “Unknown order”                            | loads (`TransferOrder`)                             |
-| `MOVE`                                  | destinations: region, star, planet, moon, anomaly, orbit | XML destinations are looked up in `Region.All` only |
 | `COPY` comments mention `COPY all TO …` | **not parsed** — technology id required                  | technology + receiver attributes                    |
 
 
@@ -199,12 +198,13 @@ Sets tactic to **capture**. A specific id is the preferred target and is marked 
 
 **Syntax:**
 
-- `CONTRACT <location> GIVE <quantity> <module-id> TO <stack-id> REWARD <technology-id>`
+- `CONTRACT <location> GIVE <quantity> <module-id> TO <stack-id> REWARD <technology-id> [TITLE "<title>"] [FLAVOUR|FLAVOR "<text>"]`
+- `CONTRACT <location> RESEARCH <stack-id> [POINTS <n>] REWARD <stack-id> UNIT [TITLE "<title>"] [FLAVOUR|FLAVOR "<text>"]`
 - `CONTRACT <contract-id> WITHDRAW`
 
 **Subject:** **faction** (`#faction` as subject). Also allowed **between turns**.
 
-Publishes a location contract that pays the technology when the give-module trigger completes, or withdraws an existing contract by id. If the subject is not a faction, Execute does nothing.
+Publishes a location contract, or withdraws one by id. GIVE pays the technology when a non-issuer delivers that module quantity to the receiver. RESEARCH pays the **unit** when a same-location lab accumulates `POINTS` (default **5**) on the target wreckage stack. Execute requires a technology reward on GIVE and a unit reward on RESEARCH. Optional TITLE/FLAVOUR store on the contract. If the subject is not a faction, Execute does nothing.
 
 ### COPY
 
@@ -348,7 +348,7 @@ MOVE, PRODUCE, REPAIR, RESEARCH, TRAIN, USE.
 
 **Subject:** modulestack.
 
-Walks a route. Each dest token is a **region**, **star**, **planet**, **moon**, **anomaly**, or **orbit** id (stars/planets/moons/anomalies resolve to their orbit). Starts a `Moving` effect, consumes fuel when required, changes parent on arrival. XML load of this order only accepts **region** ids.
+Walks a route. Each dest token is a **region**, **star**, **planet**, **moon**, **anomaly**, or **orbit** id (stars/planets/moons/anomalies resolve to their orbit). Starts a `Moving` effect, consumes fuel when required, changes parent on arrival.
 
 ### PRODUCE
 

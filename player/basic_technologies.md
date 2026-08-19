@@ -1,10 +1,10 @@
 # Level 0 and 1 technologies
 
-Catalog: `Tests/data.xml`. Checked **19 Aug 2026**.
+Catalog: `Tests/data.xml`, loaded by `Game/game/CatalogLoader.cs` (`DataFile.LoadConfigurationItems` delegates). Checked **19 Aug 2026**.
 
 This file lists **level 0 and level 1** technologies, then the **module types** and **item types** those technologies produce or consume. Level 2 and above: `player/advanced_technologies.md`. Alphabetical by English `name-en` inside each level.
 
-Omitted `use-time` defaults to **1** week in `DataFile`. Omitted consume/produce `quantity` defaults to **1**.
+Omitted `use-time` defaults to **1** week in `CatalogLoader`. Omitted consume/produce `quantity` defaults to **1**.
 
 ## Levels
 

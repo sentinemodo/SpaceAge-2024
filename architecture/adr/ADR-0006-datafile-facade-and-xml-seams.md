@@ -31,7 +31,7 @@ Still centralized in `DataFile`:
 - Galaxy graph (systems, stars, planets, moons, regions, orbits, resources, capacities, **exits in a second pass** `loadGalaxyExits`)
 - Order **type factory** switch plus `repeat` attribute
 - Symmetric save for factions, galaxy, regions, capacities, exits, resources, orbits
-- Shared helpers: `assignNames`, `assignNamesMultiple`, `assignItemStacks`
+- Shared helpers: `assignItemStacks` (catalog fill-pass). Names go through `NamedObject.LoadXml` / `LoadMultipleNames`.
 
 Stable host/test API (must keep working without a mass call-site change):
 
@@ -105,7 +105,7 @@ All new types stay in namespace `SpaceAge`. Prefer folder `Game/game/` for loade
 
 | Seam | Type | Owns | `DataFile` keeps |
 |------|------|------|------------------|
-| Catalog two-pass | `CatalogLoader` | `LoadItems(XmlDocument conf, Game game, bool loadStub)` (today’s `LoadConfigurationItems` body), catalog use of `assignNames` / `assignNamesMultiple` / `assignItemStacks` | `LoadConfiguration` sequence, `LoadConfDocument`, `ValidateTypeNameUniqueness` (post-condition on `ItemType.All` vs `ModuleType.All`), public `LoadConfigurationItems` as a one-line delegate |
+| Catalog two-pass | `CatalogLoader` | `LoadItems(XmlDocument conf, Game game, bool loadStub)` (today’s `LoadConfigurationItems` body), catalog use of `NamedObject.LoadXml` / `LoadMultipleNames` / `DataFile.assignItemStacks` | `LoadConfiguration` sequence, `LoadConfDocument`, `ValidateTypeNameUniqueness` (post-condition on `ItemType.All` vs `ModuleType.All`), public `LoadConfigurationItems` as a one-line delegate |
 | Module-group tokens | `ModuleTypeGroupXml` (static) | `Parse(string)` / `ToToken(EModuleTypesGroup)` copied from `getModuleTypeGroup` and the capacity **save** switch | Call sites only |
 | Location tokens | stay on `DataFile.LoadLocationType` until catalog extract, then move next to `ModuleTypeGroupXml` or `RegionType` | `orbit` / `solid-surface` / `liquid-surface` / `space` | Public `LoadLocationType` delegate if tests call it |
 | Order factory | `OrderXml` (static) | Subject switch, `FirstChild.Name` factory, `order.LoadXml`, `repeat` (`unlimited` → `-1`) | Public `LoadOrders` / `SaveOrders` delegates; `SaveOrders` may move onto `OrderXml.SaveAll` in the same seam |
@@ -119,10 +119,12 @@ All new types stay in namespace `SpaceAge`. Prefer folder `Game/game/` for loade
 
 `Galaxy` does not need to become an `XMLProcessing` subclass; collection-style `LoadXml`/`SaveXml` (as on `Contracts` / `ModuleStacks`) is enough.
 
-### Preserve these behaviors exactly
+### Preserve these behaviors exactly (this PR)
+
+Copy current parse/save quirks during the extract. **Do not fix them here.** A follow-up PR will change them, with failing tests first.
 
 - Two-pass catalog. Do not load `requires` / `use-produce` on the stub pass.
-- Galaxy: construct all systems/planets/moons/regions/orbits, then `loadGalaxyExits`. Today that second pass walks **planet regions only**; keep that incompleteness.
+- Galaxy: construct all systems/planets/moons/regions/orbits, then `loadGalaxyExits`. Today that second pass walks **planet regions only**.
 - Encoding 1251 on read and write.
 - ReportWriter faction filter, including NPC `"1"`.
 - Capacity **save** switch as written (no `research` case even though load parses `research`).
@@ -143,12 +145,14 @@ Partials of `DataFile` are allowed **inside** a phase if the remaining file is s
 - TDD may extract along these seams one phase at a time. Opportunistic extra splits of `DataFile` without updating this ADR are still forbidden.
 - Call sites (`Program`, `ReportWriter`, `TTest`, `TDataFile`, granular unit tests) must keep compiling against the same `DataFile` methods.
 - New types are not a second persistence API: tests and host code go through `DataFile`.
-- Known parse/save quirks stay **out of scope** unless a later ADR or a dedicated bugfix PR (with a failing test first) scopes them.
+- Known parse/save quirks stay **out of this extract**. They are the subject of a **follow-up PR** (failing tests first), not drive-bys on extract commits.
 - DI, `*.All` replacement, namespace splits, SDK-style, async, and UTF-8 remain in [`../future-work.md`](../future-work.md).
 
-## Out of scope (do not “fix” as drive-bys)
+## Out of this extract
 
-Recorded so implementers do not treat them as implied by the refactor:
+### Follow-up PR (parse/save quirks)
+
+Do not fix these while extracting. The **next PR after this refactor** owns them (failing tests first):
 
 - `LoadOrders` TODO: validate conditional orders load in XML.
 - Moon constructor uses `elPlanet.GetAttribute("name")` rather than the moon element (possible bug).
@@ -158,14 +162,19 @@ Recorded so implementers do not treat them as implied by the refactor:
 - Catalog tech `use-consume` module branch checks `el.HasAttribute("module")` (parent) not `elConsume`.
 - `research` / `see` text vs XML divergence — fix both `OrdersReader` and XML together ([`../modules-and-integrations.md`](../modules-and-integrations.md) anti-pattern).
 - Bitwise `&` instead of `&&` in save visibility checks (works for `bool`; smell only).
+
+When extracting `ModuleTypeGroupXml.ToToken`, **copy the save switch including the missing `research` arm**. Completing the switch is the follow-up PR.
+
+### Still not this extract or the quirk PR
+
 - Activating stub pipeline steps (`Request`, `Events`, `OrdersReader.Check`).
 - Any encoding, runtime, or namespace change.
 
-When extracting `ModuleTypeGroupXml.ToToken`, **copy the save switch including the missing `research` arm**. Completing the switch would be a behavior change and needs its own test.
-
 ## Migration phases (TDD handoff)
 
-Each phase is one planned step (or one PR). Stay green on `UnitTests` + `IntegrationTests` before the next. Prefer characterizing existing load/save rather than a third test layer ([ADR-0004](ADR-0004-test-layers.md)).
+Each phase is **one planned TDD step**. It may land as its own GitHub PR **or** as a sequential commit on a single refactor PR (docs first). Stay green on `UnitTests` + `IntegrationTests` before the next phase. Prefer characterizing existing load/save rather than a third test layer ([ADR-0004](ADR-0004-test-layers.md)).
+
+Checklist and commit order for the current refactor PR: [`../delivery/datafile-refactor.md`](../delivery/datafile-refactor.md).
 
 ### Tests that must stay green (every phase)
 
@@ -194,7 +203,7 @@ Optional follow-on (still this ADR, later slice): catalog fill-pass bodies on `I
 
 ### What not to change in the same PRs
 
-Everything in **Out of scope**. Also: do not retarget call sites from `DataFile` to `CatalogLoader`/`OrderXml`/`Galaxy` in tests or `Program`. Do not bump `EngineVersion` for a behavior-neutral extract (docs/code-only). Do not regenerate SampleGame goldens “because whitespace”; 1251 `XmlTextWriter` formatting must stay identical.
+Everything in **Out of this extract** (quirks wait for the follow-up PR; stubs/encoding stay later still). Also: do not retarget call sites from `DataFile` to `CatalogLoader`/`OrderXml`/`Galaxy` in tests or `Program`. Do not bump `EngineVersion` for a behavior-neutral extract (docs/code-only). Do not regenerate SampleGame goldens “because whitespace”; 1251 `XmlTextWriter` formatting must stay identical.
 
 ### csproj / layout notes for implementers
 
@@ -205,3 +214,6 @@ Everything in **Out of scope**. Also: do not retarget call sites from `DataFile`
 ## Revision
 
 - 2026-08-18: Accepted. Names seams so TDD can extract without opportunistic god-class splits.
+- 2026-08-19: Implementation vehicle: sequential commits on one refactor PR (architecture docs first, then one phase per commit). Delivery checklist in [`../delivery/datafile-refactor.md`](../delivery/datafile-refactor.md).
+- 2026-08-19: Parse/save quirks are a **follow-up PR** after this extract, not drive-bys here.
+- 2026-08-19: Phase 6 — `assignNames` / `assignNamesMultiple` folded into `NamedObject.LoadXml` (including `description`) and `LoadMultipleNames`. `DataFile` keeps `assignItemStacks`.

@@ -70,6 +70,27 @@ namespace SpaceAge
             {
                 this.FullName = xmlObject.GetAttribute("name-en");
             }
+            if (xmlObject.HasAttribute("description"))
+            {
+                this.Description = xmlObject.GetAttribute("description");
+            }
+        }
+
+        public void LoadMultipleNames(XmlElement element)
+        {
+            IMultiple namedObject = this as IMultiple;
+            if (namedObject == null)
+            {
+                return;
+            }
+            if (element.HasAttribute("name-en2"))
+            {
+                namedObject.FullNameMultiple = element.GetAttribute("name-en2");
+            }
+            else
+            {
+                namedObject.FullNameMultiple = namedObject.FullName;
+            }
         }
 
         public XmlElement SaveXml(XmlDocument doc, string objectType)

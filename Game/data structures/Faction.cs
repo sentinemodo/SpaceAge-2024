@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Xml;
 
 namespace SpaceAge
 {
@@ -191,7 +192,7 @@ namespace SpaceAge
 			//    Write("");
 
 			// faction events reports
-				//            Write("Events during turn:|Ñîáûòèÿ ýòîãî õîäà:");
+				//            Write("Events during turn:|˜˜˜˜˜˜˜ ˜˜˜˜˜ ˜˜˜˜:");
 				//foreach (Event obj in f.Events) 
 				//    Write(obj.ToString(lng));
 				//Write("");
@@ -301,5 +302,91 @@ namespace SpaceAge
 		}
 
 		#endregion
+
+		public override void LoadXml(XmlElement elFaction)
+		{
+			base.LoadXml(elFaction);
+			this.Password = elFaction.GetAttribute("password");
+			this.Email = elFaction.GetAttribute("email");
+			if (elFaction.HasAttribute("default-attitude"))
+				this.DefaultAttitude = (FactionAttitude)Convert.ToInt32(elFaction.GetAttribute("default-attitude"));
+			if (elFaction.HasAttribute("unknown-attitude"))
+				this.UnknownAttitude = (FactionAttitude)Convert.ToInt32(elFaction.GetAttribute("unknown-attitude"));
+			this.Options.TextReport = this.XMLAssignBoolean(elFaction.GetAttribute("text-report"), true);
+			this.Options.ReportLineLength = this.XMLAssignInteger(elFaction.GetAttribute("text-report-line-length"), ReportLine.LineLength);
+			this.Options.XmlReport = this.XMLAssignBoolean(elFaction.GetAttribute("xml-report"), true);
+
+			this.Bank.Balance = this.XMLAssignDouble(elFaction.GetAttribute("balance"), 0);
+			this.Bank.CreditLine = this.XMLAssignInteger(elFaction.GetAttribute("credit-line"), 0);
+			this.Bank.CreditRate = this.XMLAssignDouble(elFaction.GetAttribute("credit-rate"), 0);
+			this.Bank.DepositRate = this.XMLAssignDouble(elFaction.GetAttribute("deposit-rate"), 0);
+
+			foreach (XmlElement elTechnology in elFaction.SelectNodes("technology"))
+			{
+				string technologyName = elTechnology.GetAttribute("name");
+				if (Technology.All.Contains(technologyName))
+				{
+					this.TechnologiesSeen.Add(Technology.All[technologyName]);
+				}
+			}
+
+			foreach (XmlElement elAttitude in elFaction.SelectNodes("attitude"))
+			{
+				FactionAttitude attitude = FactionAttitudeParser.Parse(elAttitude.GetAttribute("attitude"));
+				if (elAttitude.HasAttribute("faction"))
+				{
+					this.Attitudes[elAttitude.GetAttribute("faction")] = attitude;
+				}
+				else if (elAttitude.HasAttribute("unit"))
+				{
+					this.UnitAttitudes[elAttitude.GetAttribute("unit")] = attitude;
+				}
+			}
+		}
+
+		public override XmlElement SaveXml(XmlDocument doc)
+		{
+			XmlElement elFaction = doc.CreateElement("faction");
+			elFaction.SetAttribute("name", this.Name);
+			elFaction.SetAttribute("name-en", this.FullName);
+			elFaction.SetAttribute("password", this.Password);
+			elFaction.SetAttribute("email", this.Email);
+			elFaction.SetAttribute("default-attitude", ((int)this.DefaultAttitude).ToString());
+			if (this.UnknownAttitude != FactionAttitude.Hostile)
+			{
+				elFaction.SetAttribute("unknown-attitude", ((int)this.UnknownAttitude).ToString());
+			}
+			elFaction.SetAttribute("text-report", this.Options.TextReport.ToString());
+			elFaction.SetAttribute("text-report-line-length", this.Options.ReportLineLength.ToString());
+			elFaction.SetAttribute("xml-report", this.Options.XmlReport.ToString());
+			elFaction.SetAttribute("balance", this.Bank.Balance.ToString());
+			elFaction.SetAttribute("credit-line", this.Bank.CreditLine.ToString());
+			elFaction.SetAttribute("credit-rate", this.Bank.CreditRate.ToString());
+			elFaction.SetAttribute("deposit-rate", this.Bank.DepositRate.ToString());
+
+			foreach (Technology technology in this.TechnologiesSeen)
+			{
+				XmlElement elTechnology = doc.CreateElement("technology");
+				elTechnology.SetAttribute("name", technology.Name);
+				elFaction.AppendChild(elTechnology);
+			}
+
+			foreach (KeyValuePair<string, FactionAttitude> declaration in this.Attitudes)
+			{
+				XmlElement elAttitude = doc.CreateElement("attitude");
+				elAttitude.SetAttribute("faction", declaration.Key);
+				elAttitude.SetAttribute("attitude", FactionAttitudeParser.ToToken(declaration.Value));
+				elFaction.AppendChild(elAttitude);
+			}
+			foreach (KeyValuePair<string, FactionAttitude> declaration in this.UnitAttitudes)
+			{
+				XmlElement elAttitude = doc.CreateElement("attitude");
+				elAttitude.SetAttribute("unit", declaration.Key);
+				elAttitude.SetAttribute("attitude", FactionAttitudeParser.ToToken(declaration.Value));
+				elFaction.AppendChild(elAttitude);
+			}
+
+			return elFaction;
+		}
 	}
 }
