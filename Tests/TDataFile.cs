@@ -1238,6 +1238,8 @@ namespace UnitTests
 		{
 			Assert.That(ModuleTypeGroupXml.Parse("research"), Is.EqualTo(EModuleTypesGroup.research));
 			Assert.That(ModuleTypeGroupXml.Parse("space station"), Is.EqualTo(EModuleTypesGroup.spaceStation));
+			Assert.That(ModuleTypeGroupXml.Parse("spacestation"), Is.EqualTo(EModuleTypesGroup.spaceStation));
+			Assert.That(ModuleTypeGroupXml.Parse("spaceStation"), Is.EqualTo(EModuleTypesGroup.spaceStation));
 			Assert.That(ModuleTypeGroupXml.Parse("settlement"), Is.EqualTo(EModuleTypesGroup.settlement));
 		}
 
