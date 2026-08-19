@@ -613,6 +613,19 @@ namespace IntegrationTests
 		}
 
 		[Test]
+		public void _7_LoadGameIn4()
+		{
+			this.compareFiles("gamein.4.xml", "gameout.4.xml");
+			this.LoadGalaxy("gamein.4.xml");
+
+			Assert.That(this.game.Turn, Is.EqualTo(4));
+			Assert.That(ModuleStack.All["200"].Owner.Name, Is.EqualTo("2"));
+			Assert.That(ModuleStack.All.ContainsKey("207"), Is.True);
+			Assert.That(ModuleStack.All["207"].Quantity, Is.EqualTo(4));
+			Assert.That(ModuleStack.All["116"].ResearchPoints, Is.EqualTo(11));
+		}
+
+		[Test]
 		public void _6a_InjectContractAndPress()
 		{
 			Sequence.Ints.Clear();
