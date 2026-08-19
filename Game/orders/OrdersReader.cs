@@ -414,6 +414,9 @@ namespace SpaceAge
 				case "train":
 					order = new TrainOrder(subject);
 					break;
+				case "transfer":
+					order = new TransferOrder(subject);
+					break;
 				case "use":
 					order = new UseOrder(subject);
 					break;

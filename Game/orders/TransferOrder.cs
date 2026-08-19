@@ -96,6 +96,8 @@ namespace SpaceAge
 			{
 				throw new Exception("bad syntax or receiver does not exist", ex);
 			}
+
+			this.ModuleType = this.Transferer.ModuleType;
 		}
 
         public override void LoadXml(XmlElement elOrder)
@@ -110,6 +112,7 @@ namespace SpaceAge
                 this.Index = this.XMLAssignInteger(elTransfer.GetAttribute("index"), 0);
             }
             this.Receiver = ModuleStack.All[elTransfer.GetAttribute("receiver")];
+            this.ModuleType = this.Transferer.ModuleType;
         }
 
         public override XmlElement SaveXml_core(XmlDocument doc, string subject)

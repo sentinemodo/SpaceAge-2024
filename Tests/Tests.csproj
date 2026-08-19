@@ -89,6 +89,7 @@
     <Compile Include="TFormStack.cs" />
     <Compile Include="TSee.cs" />
     <Compile Include="TTrain.cs" />
+    <Compile Include="TTransfer.cs" />
     <Compile Include="TRepair.cs" />
     <Compile Include="TResearch.cs" />
     <Compile Include="TConsume.cs" />

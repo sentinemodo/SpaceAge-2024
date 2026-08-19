@@ -6,7 +6,7 @@ Sources: `Game/orders/EOrderType.cs`, `Game/orders/OrdersReader.cs`, `Game/order
 
 Not source of truth: `Game/documentation/Rules.txt`. Turn order files are **Windows-1251** (same as reports). Verbs are case-insensitive; most arguments are not.
 
-**25** verbs parse from text (`OrdersReader` switch): **19 immediate**, **6 long**. See [Turn sequence](#turn-sequence), [Immediate vs long](#immediate-vs-long), and [Text vs XML](#text-vs-xml). `TRANSFER` loads from XML only.
+**26** verbs parse from text (`OrdersReader` switch): **20 immediate**, **6 long**. See [Turn sequence](#turn-sequence), [Immediate vs long](#immediate-vs-long), and [Text vs XML](#text-vs-xml).
 
 ## Prefixes and subjects
 
@@ -126,7 +126,7 @@ The two kinds are independent except where you chain them with `-` / `+`. An imm
 | After a turn          | Dropped when `Executed` and repeat is used up; otherwise stays on the template | Same; in-progress work is kept as an effect (`Moving`, `Producing*`, `Training*`, `Receiving*`, `Fuelled`; `lightly-damaged` is a module marker). Those types **load again** after save (`Effects.LoadXml`). |
 
 
-**Immediate** orders are setup, probes, cargo, stance, and stacking. They do not consume the week’s long slot. `FORM`, `GET`, and `GIVE` can all fire the same week as a `USE` or `MOVE`.
+**Immediate** orders are setup, probes, cargo, module transfers, stance, and stacking. They do not consume the week’s long slot. `FORM`, `GET`, `GIVE`, and `TRANSFER` can all fire the same week as a `USE` or `MOVE`.
 
 **Long** orders are the week’s work: move, produce, repair, research, train, use. A second long on the same subject waits until the first completes (or until its conditions clear). Accepting modules mid-week can mark the receiver as having already used its long slot.
 
@@ -139,7 +139,6 @@ The two kinds are independent except where you chain them with `-` / `+`. An imm
 
 | Verb                                    | Text (`OrdersReader`)                                    | XML (`OrderXml.LoadAll`)                            |
 | --------------------------------------- | -------------------------------------------------------- | --------------------------------------------------- |
-| `TRANSFER`                              | **missing** — “Unknown order”                            | loads (`TransferOrder`)                             |
 | `COPY` comments mention `COPY all TO …` | **not parsed** — technology id required                  | technology + receiver attributes                    |
 
 
@@ -153,7 +152,7 @@ Player turn files use **text**. XML matters for saved games, not for `order.*` d
 
 ## Immediate orders
 
-ACTIVE, ALIAS, ATTACK, BUY, CAPTURE, CONTRACT, COPY, DECLARE, FORM, GET, GIVE, HAS, NAME, PRESS, SEE, SELL, SET, STACK, TACTIC.
+ACTIVE, ALIAS, ATTACK, BUY, CAPTURE, CONTRACT, COPY, DECLARE, FORM, GET, GIVE, HAS, NAME, PRESS, SEE, SELL, SET, STACK, TACTIC, TRANSFER.
 
 ### ACTIVE
 
@@ -343,6 +342,14 @@ Nests the subject under another stack (same location, same faction, not self), u
 **Subject:** modulestack.
 
 Persists firing/evade/priority tactics. Destroy and capture are exclusive. Immobile stacks may only `destroy`. Sample: `-tactic prioritize armed`, `-tactic capture`.
+
+### TRANSFER
+
+**Syntax:** `TRANSFER <n> TO <id>`
+
+**Subject:** modulestack (source).
+
+Moves `n` modules of this stack’s type onto an **existing** receiver. `n` must be a positive integer. The receiver id must already exist (no `newN` create). Module type is the transferer’s, same as XML load. Instantaneous: same type **merges** into the receiver; a different type **nests** under it. Copies the source’s long-order-used flag onto the package so the receiver cannot take a second long this week. Emptying the last module removes the source stack. Notifies GIVE contracts. Fails with `TRANSFER failed. tried to transfer more modules than having.` Execute does not check same location. `ALL`, damaged-only, and `MODULE <index>` are not parsed.
 
 ---
 
