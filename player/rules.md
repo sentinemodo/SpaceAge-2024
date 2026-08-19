@@ -299,11 +299,15 @@ Creates a `PressRelease` and reports `issued press release {title}.` on the issu
 
 ### SEE
 
-**Syntax:** `SEE <stack-id|newN>` or `SEE PERSON <person-id|newN>`
+**Syntax:**
+
+- `SEE <stack-id|newN>`
+- `SEE PERSON <person-id|newN>`
+- `SEE <person-id|newN> PERSON`
 
 **Subject:** holder.
 
-Succeeds if that stack or person is at the observer’s location. Template/report may print `see id person`; **Parse expects `SEE PERSON id`**.
+Succeeds if that stack or person is at the observer’s location. Both person word orders parse (`person` must be lowercase). Leftover/template (`SeeOrder.Report`) prints `see <id> person` (or `see newN person` if unformed). XML is unchanged: `see-type="person"` plus `person="<id>"` on the `<see>` element (`LoadXml` uses `GetOrCreateNewPerson`).
 
 ### SELL
 
