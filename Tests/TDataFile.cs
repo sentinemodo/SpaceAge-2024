@@ -351,6 +351,25 @@ namespace UnitTests
 		}
 
 		[Test]
+		public void LoadExits_MoonRegion()
+		{
+			this.LoadGameDocument();
+			this.dataFile.LoadConfiguration();
+			this.dataFile.LoadFactions();
+			this.dataFile.LoadGalaxy();
+			this.game = this.dataFile.Game;
+
+			Region region = Region.All["R00010"];
+			Assert.That(region, Is.Not.Null);
+			Assert.That(region.RegionHolder, Is.InstanceOf(typeof(Moon)));
+			Assert.That(((Moon)region.RegionHolder).Name, Is.EqualTo("P00003"));
+			Assert.That(region.Exits.Count, Is.EqualTo(1));
+			Assert.That(region.Exits[0].To, Is.EqualTo(Region.All["R00001"]));
+			Assert.That(region.Exits[0].ExitModes[EMoveMode.ground], Is.Not.Null);
+			Assert.That(region.Exits[0].ExitModes[EMoveMode.ground].Duration, Is.EqualTo(5));
+		}
+
+		[Test]
 		public void LoadItems()
 		{
 			this.LoadGameDocument();

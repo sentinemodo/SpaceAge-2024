@@ -178,7 +178,21 @@ namespace SpaceAge
 							{
 								throw new Exception("Tried to parse exits for planet " + elPlanet.GetAttribute("name"), ex);
 							}
-							// moons
+							foreach (XmlElement elMoon in elPlanet.SelectNodes("moon"))
+							{
+								foreach (XmlElement elRegion in elMoon.SelectNodes("region"))
+								{
+									try
+									{
+										Region region = Region.All[elRegion.GetAttribute("name")];
+										this.loadGalaxyExits(elRegion, region, dataFile);
+									}
+									catch (Exception ex)
+									{
+										throw new Exception("Tried to parse exits for region " + elRegion.GetAttribute("name"), ex);
+									}
+								}
+							}
 						}
 
 						// alderson points
