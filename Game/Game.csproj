@@ -158,6 +158,7 @@
     <Compile Include="game\DataFile.cs" />
     <Compile Include="game\ModuleTypeGroupXml.cs" />
     <Compile Include="game\CatalogLoader.cs" />
+    <Compile Include="game\OrderXml.cs" />
     <Compile Include="Events.cs" />
     <Compile Include="EventsReaders.cs" />
     <Compile Include="data structures\Faction.cs" />
