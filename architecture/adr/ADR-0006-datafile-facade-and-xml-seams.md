@@ -152,7 +152,9 @@ Partials of `DataFile` are allowed **inside** a phase if the remaining file is s
 
 ### Follow-up PR (parse/save quirks)
 
-Do not fix these while extracting. The **next PR after this refactor** owns them (failing tests first):
+The extract has merged ([PR #6](https://github.com/sentinemodo/SpaceAge-2024/pull/6)). Implementation of the deferred quirks is a **new PR**, failing tests first. Commit order: [`../delivery/saveload-quirks.md`](../delivery/saveload-quirks.md).
+
+Named in this ADR (still the core list):
 
 - `LoadOrders` TODO: validate conditional orders load in XML.
 - Moon constructor uses `elPlanet.GetAttribute("name")` rather than the moon element (possible bug).
@@ -163,7 +165,7 @@ Do not fix these while extracting. The **next PR after this refactor** owns them
 - `research` / `see` text vs XML divergence — fix both `OrdersReader` and XML together ([`../modules-and-integrations.md`](../modules-and-integrations.md) anti-pattern).
 - Bitwise `&` instead of `&&` in save visibility checks (works for `bool`; smell only).
 
-When extracting `ModuleTypeGroupXml.ToToken`, **copy the save switch including the missing `research` arm**. Completing the switch is the follow-up PR.
+Inventory after extract also includes in-progress **effect** save/load (types saved that `Effects.LoadXml` cannot reload) and `ProducingModule` dropping `technology` on save. Those are Wave B in the checklist. TRANSFER-as-text, stub pipeline, and SampleGame turns 4–5 stay **out**.
 
 ### Still not this extract or the quirk PR
 
@@ -217,3 +219,4 @@ Everything in **Out of this extract** (quirks wait for the follow-up PR; stubs/e
 - 2026-08-19: Implementation vehicle: sequential commits on one refactor PR (architecture docs first, then one phase per commit). Delivery checklist in [`../delivery/datafile-refactor.md`](../delivery/datafile-refactor.md).
 - 2026-08-19: Parse/save quirks are a **follow-up PR** after this extract, not drive-bys here.
 - 2026-08-19: Phase 6 — `assignNames` / `assignNamesMultiple` folded into `NamedObject.LoadXml` (including `description`) and `LoadMultipleNames`. `DataFile` keeps `assignItemStacks`.
+- 2026-08-19: Extract merged (PR #6). Parse/save quirk implementation: [`../delivery/saveload-quirks.md`](../delivery/saveload-quirks.md).

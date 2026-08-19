@@ -364,7 +364,7 @@ Starts energy or item production using the stack’s module type (`ProducingEner
 
 **Subject:** modulestack only.
 
-Spends spare parts (`spare`) and restores hit points on the stack (or its parent scope). Engineering shop `[engshp]` repairs 20 HP per active copy and consumes that many spares; otherwise 10 HP for 1 spare; 1 HP if unsupplied.
+Spends spare parts (`spare`) and restores hit points on the stack (or its parent scope). Engineering shop `[engshp]` restores **20 HP per active copy** and consumes **1 spare per copy**; otherwise **10 HP for 1 spare**; **1 HP** if unsupplied.
 
 ### RESEARCH
 

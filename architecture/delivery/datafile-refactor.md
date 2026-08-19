@@ -43,24 +43,8 @@ Optional later slice (still ADR-0006, not required to merge this PR): catalog fi
 
 ## Out of this PR
 
-**Follow-up PR** (after this extract merges) will fix parse/save quirks, with failing tests first:
-
-- Conditional-order XML validation TODO
-- Moon constructor using the planet name
-- `loadGalaxyExits` walking planet regions only
-- Capacity save omitting `research`
-- Exit save always `region=` (including orbit targets)
-- Tech `use-consume` module branch checking the parent element
-- `research` / `see` text vs XML divergence
-- Bitwise `&` in save visibility checks
-
-Copy those behaviors during extracts. Do not “complete” `ModuleTypeGroupXml.ToToken` with a `research` arm here.
-
-Still not this PR or the quirk PR:
-
-- Stub pipeline (`Request`, `Events`, `OrdersReader.Check`)
-- Runtime, encoding, namespace, or DI changes
+Parse/save quirks were copied, not fixed. After merge they live in [`saveload-quirks.md`](saveload-quirks.md).
 
 ## After merge
 
-`DataFile` is constructor + 1251 document I/O + orchestration + thin delegates. Remaining modernization (`*.All`, SDK-style, namespaces) stays in [`../future-work.md`](../future-work.md).
+Extract is on `master` (PR #6). Parse/save quirk fixes: [`saveload-quirks.md`](saveload-quirks.md). Remaining modernization (`*.All`, SDK-style, namespaces) stays in [`../future-work.md`](../future-work.md).
