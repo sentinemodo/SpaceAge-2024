@@ -408,6 +408,22 @@ namespace UnitTests
 		}
 
 		[Test]
+		public void Report_OrbitExitTarget_ListsOrbitDestination()
+		{
+			this.LoadGameDocument();
+			this.dataFile.LoadConfiguration();
+			this.dataFile.LoadFactions();
+			this.dataFile.LoadGalaxy();
+			this.game = this.dataFile.Game;
+
+			Region region = Region.All["R00011"];
+			List<string> lines = region.Exits.Report;
+			Assert.That(lines, Does.Contain("Exits:"));
+			Assert.That(lines, Has.Some.Contains("orbit [O00004]"));
+			Assert.That(lines, Has.Some.Contains("space travel duration 2 weeks"));
+		}
+
+		[Test]
 		public void LoadItems()
 		{
 			this.LoadGameDocument();

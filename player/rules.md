@@ -2,7 +2,7 @@
 
 Checked **19 Aug 2026** against engine **0.1.141** (`Game/Program.cs`).
 
-Sources: `Game/orders/EOrderType.cs`, `Game/orders/OrdersReader.cs`, `Game/orders/Orders.cs`, `Game/Game.cs` (week loop), `Game/data structures/ModuleStack.Upkeep.cs` (sick bay, medical consume, quarterly maintenance), `Game/game/DataFile.cs` (`LoadOrders` delegates to `OrderXml`), `Game/game/OrderXml.cs` (XML switch), `Game/game/ModuleTypeGroupXml.cs` (`RESEARCH GROUP` tokens), `Game/effects/Effects.cs` (`LoadXml` effect types), each `Game/orders/*Order.Parse` / `Execute`. Sample prefix usage: `Tests/SampleGame/orders.*.txt`.
+Sources: `Game/orders/EOrderType.cs`, `Game/orders/OrdersReader.cs`, `Game/orders/Orders.cs`, `Game/Game.cs` (week loop), `Game/data structures/ModuleStack.Upkeep.cs` (sick bay, medical consume, quarterly maintenance), `Game/data structures/Exits.cs` / `ExitMode.cs` / `Region.cs` (region **Exits:** lines), `Game/game/DataFile.cs` (`LoadOrders` delegates to `OrderXml`), `Game/game/OrderXml.cs` (XML switch), `Game/game/ModuleTypeGroupXml.cs` (`RESEARCH GROUP` tokens), `Game/effects/Effects.cs` (`LoadXml` effect types), each `Game/orders/*Order.Parse` / `Execute`. Sample prefix usage: `Tests/SampleGame/orders.*.txt`.
 
 Not source of truth: `Game/documentation/Rules.txt`. Turn order files are **Windows-1251** (same as reports). Verbs are case-insensitive; most arguments are not.
 
@@ -353,6 +353,17 @@ MOVE, PRODUCE, REPAIR, RESEARCH, TRAIN, USE.
 **Subject:** modulestack.
 
 Walks a route. Each dest token is a **region**, **star**, **planet**, **moon**, **anomaly**, or **orbit** id (stars/planets/moons/anomalies resolve to their orbit). Starts a `Moving` effect, consumes fuel when required, changes parent on arrival.
+
+**Exits on the report:** a **region** block includes `Exits:` (`Region.Report` → `Exits.Report`). A region destination prints `{name} [id] (x,y), {region type}, {ground|space} travel duration N week(s).` An **orbit** destination prints `orbit [id], space travel duration N week(s).` (no region-type clause). Orbit reports do not list exits. Maps without `orbit=` exits (SampleGame) never show that line.
+
+**Duration** (`movementDuration`) is not always the printed exit duration:
+
+- Same-planet **region → region**: ground; weeks = ceil(exit ground duration / mover Speed). Needs a ground exit from here.
+- Same-parent **region ↔ orbit** (e.g. Luna `R00011` → `O00004`): space; **1 week**, even if the exit lists 2. Needs a space-capable mover (or nested space stack).
+- Same-planet **planet orbit ↔ moon orbit**: space; weeks from AU distance / (mass capacity / mass).
+- Other hops are not implemented.
+
+A stack with a **space** move mode may attempt a hop even when the current location lists no matching exit. Ground-only stacks need an exit from here to the dest.
 
 ### PRODUCE
 
