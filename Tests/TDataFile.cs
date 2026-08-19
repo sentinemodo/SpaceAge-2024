@@ -313,6 +313,22 @@ namespace UnitTests
 		}
 
 		[Test]
+		public void LoadGalaxy_MoonNameComesFromMoonElement()
+		{
+			this.LoadGameDocument();
+			this.dataFile.LoadConfiguration();
+			this.dataFile.LoadFactions();
+			this.dataFile.LoadGalaxy();
+			this.game = this.dataFile.Game;
+
+			Assert.That(Moon.All.ContainsKey("P00003"), Is.True);
+			Moon moon = Moon.All["P00003"];
+			Assert.That(moon.FullName, Is.EqualTo("Luna"));
+			Assert.That(moon.Planet.Name, Is.EqualTo("P00002"));
+			Assert.That(Moon.All.ContainsKey("P00002"), Is.False);
+		}
+
+		[Test]
 		public void LoadConfiguration()
 		{
 			this.dataFile.LoadConfiguration();

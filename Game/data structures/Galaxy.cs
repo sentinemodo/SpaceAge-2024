@@ -100,7 +100,7 @@ namespace SpaceAge
 
 						foreach (XmlElement elMoon in elPlanet.SelectNodes("moon"))
 						{
-							Moon moon = new Moon(system, planet, elPlanet.GetAttribute("name"));
+							Moon moon = new Moon(system, planet, elMoon.GetAttribute("name"));
 							moon.LoadXml(elMoon);
 
 							try

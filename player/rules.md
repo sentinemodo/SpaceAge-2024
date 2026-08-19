@@ -371,7 +371,7 @@ Spends spare parts (`spare`) and restores hit points on the stack (or its parent
 **Syntax:**
 
 - `RESEARCH`
-- `RESEARCH <technology-id|tag|item-id|module-id|space-object>`
+- `RESEARCH <stack-id|technology-id|tag|item-id|module-id|space-object>`
 - `RESEARCH TECHNOLOGY <id>`
 - `RESEARCH ITEM <id>`
 - `RESEARCH MODULE <id>`
@@ -380,7 +380,7 @@ Spends spare parts (`spare`) and restores hit points on the stack (or its parent
 
 **Subject:** modulestack (must be group **research**).
 
-Weekly research output; chance of a breakthrough, else points accumulate. Bare tokens prefer the most specific match (known tech, then tag such as `military`, then item, module, or map object). `TAG` forces a tag preference even when the token is also a technology id. `RESEARCH TAG repair` prefers catalog techs whose `tags` include `repair`: medical services `[medtec]`, medicines refining `[medirf]`, preventive servicing `[servic]`, and engineering shop `[engshp]` (`engshp` also keeps `production`). `RESEARCH TAG research` prefers file indexing `[filidx]`, advanced computing `[advres]`, sick bay construction `[sckcns]`, and shipboard pharmacy `[pharms]`. Bare `research repair` still matches technology **repair and maintenance** `[repair]` (that id has no `repair` tag). `GROUP` accepts: `agricultural`, `command`, `spacecraft`, `energy`, `extraction`, `habitat`, `infantry`, `military`, `production`, `propulsion`, `research`, `vehicle`. Other group names (including `frigate`, `settlement`, `storage`) are stored as an untyped token.
+Weekly research output; chance of a breakthrough, else points accumulate. Bare tokens resolve in this order: existing **stack id**, known **technology**, **tag** (such as `military`), **item**, **module**, then **map object** (moon/planet/region/orbit). `TAG` forces a tag preference even when the token is also a technology id. `RESEARCH TAG repair` prefers catalog techs whose `tags` include `repair`: medical services `[medtec]`, medicines refining `[medirf]`, preventive servicing `[servic]`, and engineering shop `[engshp]` (`engshp` also keeps `production`). `RESEARCH TAG research` prefers file indexing `[filidx]`, advanced computing `[advres]`, sick bay construction `[sckcns]`, and shipboard pharmacy `[pharms]`. Bare `research repair` still matches technology **repair and maintenance** `[repair]` (that id has no `repair` tag). `GROUP` accepts: `agricultural`, `command`, `spacecraft`, `energy`, `extraction`, `habitat`, `infantry`, `military`, `production`, `propulsion`, `research`, `vehicle`. Other group names (including `frigate`, `settlement`, `storage`) are stored as an untyped token.
 
 ### TRAIN
 
