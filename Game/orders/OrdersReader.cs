@@ -459,6 +459,28 @@ namespace SpaceAge
 					subject.Orders.Remove(leftoverUse);
 				}
 			}
+			TrainOrder assignedTrain = order as TrainOrder;
+			if (assignedTrain != null && orderLevel == 0 && this.preexistingOrders != null)
+			{
+				List<TrainOrder> leftoverTrains = new List<TrainOrder>();
+				foreach (Order existing in subject.Orders)
+				{
+					TrainOrder leftoverTrain = existing as TrainOrder;
+					if (leftoverTrain != null && leftoverTrain != assignedTrain && this.preexistingOrders.Contains(leftoverTrain))
+					{
+						leftoverTrains.Add(leftoverTrain);
+					}
+				}
+				foreach (TrainOrder leftoverTrain in leftoverTrains)
+				{
+					if (leftoverTrain.MatchesTraining(assignedTrain))
+					{
+						subject.Orders.Remove(assignedTrain);
+						return leftoverTrain;
+					}
+					subject.Orders.Remove(leftoverTrain);
+				}
+			}
 			while (orderLevel > 0)
 			{
 				Order parentOrder = this.getParentOrder(subject, order, orderLevel);

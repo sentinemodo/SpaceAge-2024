@@ -294,5 +294,49 @@ namespace UnitTests
 			//this.consoleOutReport("trainee: ", this.game.People["100"], testFaction);
 		}
 
+		[Test]
+		public void AssignOrders_LeftoverTrain_ReconnectsDurationAfterSaveLoad()
+		{
+			this.AssignTrain_skill();
+			Person trainee = this.game.People["000101"];
+			TrainOrder order = (TrainOrder)trainee.Orders[0];
+			this.executeOrder(trainee, order, 0);
+			Assert.That(order.DurationLeft, Is.EqualTo(3));
+			Assert.That(trainee.Effects.IsTraining);
+
+			string testdir = Directory.GetCurrentDirectory();
+			string testfile = "gameout.saved_trainLeftover.xml";
+			this.dataFile.SaveGame(testdir, testfile);
+			this.ClearGame();
+
+			this.dataFile = new DataFile(testdir);
+			this.dataFile.LoadGameDocument(testdir, testfile);
+			this.dataFile.LoadConfiguration(testdir);
+			this.dataFile.LoadFactions();
+			this.dataFile.LoadGalaxy();
+			this.dataFile.LoadOrders();
+			this.game = this.dataFile.Game;
+
+			trainee = Person.All["000101"];
+			Assert.That(trainee.Effects.IsTraining);
+			Assert.That(trainee.Orders.Count, Is.EqualTo(1));
+
+			new OrdersReader(this.game).AssignOrders(new List<string>
+			{
+				"#faction 2",
+				"#person 000101",
+				"train skill arpldr",
+				"#end"
+			});
+
+			Assert.That(trainee.Orders.Count, Is.EqualTo(1), "reissued TRAIN must keep leftover, not duplicate");
+			order = (TrainOrder)trainee.Orders[0];
+			this.executeOrder(trainee, order, 1);
+
+			Assert.That(order.DurationLeft, Is.EqualTo(2));
+			Assert.That(trainee.Effects.IsTraining);
+			Assert.That(trainee.Skills.ContainsKey(SkillType.All["arpldr"]), Is.False);
+		}
+
 	}
 }

@@ -146,7 +146,7 @@ Player turn files use **text**. XML matters for saved games, not for `order.*` d
 
 **Nested conditions:** `Order.SaveXml` writes leftover `-` / `+` children as nested `<order conditions="…">` under the parent (top-level save is `Level == 0` only). `saveXml_post` writes only the **next remaining condition level**, once (no duplicate nested siblings); recursion still persists leftover `+USE` trees. `LoadAll` walks those nested `<order>` elements and assigns the same `-` / `+` links as text (`AssignCondition`). Duplicate subject + conditions + verb XML is skipped. Frozen SampleGame `gamein.2_contract.xml` / `gamein.3_contract.xml` keep those leftovers; player-facing turn 2/3 reports are unchanged.
 
-**Saved effects:** `Effects.LoadXml` accepts `fuelled`, `moving`, `producing-modules`, `producing-items`, `producing-energy`, `receiving-items`, `receiving-modules`, `receiving-technology`, `lightly-damaged`, and `training-officer`. `producing-modules` writes `technology=` on save (`ProducingModule.SaveXml`; base `Producing.SaveXml` already did), so in-progress module `USE` round-trips the tech id and leftover `USE` can match after load. `receiving-items` now writes a nested `<receiving>` cargo payload. Skill training still saves as `type="training-officer"` with a `skill` attribute (not a player-facing verb — issue `TRAIN SKILL`). `USE` leftover reconnects to a matching `Producing*` effect; leftover `PRODUCE` / `TRAIN` do **not** (`Producing` / `Training` on the order is null after load, so they start a new duration while the loaded effect stays frozen). Duration-0 `receiving-items` leftovers do not deliver cargo.
+**Saved effects:** `Effects.LoadXml` accepts `fuelled`, `moving`, `producing-modules`, `producing-items`, `producing-energy`, `receiving-items`, `receiving-modules`, `receiving-technology`, `lightly-damaged`, and `training-officer`. `producing-modules` writes `technology=` on save (`ProducingModule.SaveXml`; base `Producing.SaveXml` already did), so in-progress module `USE` round-trips the tech id and leftover `USE` can match after load. `receiving-items` now writes a nested `<receiving>` cargo payload. Skill training still saves as `type="training-officer"` with a `skill` attribute (not a player-facing verb — issue `TRAIN SKILL`). Leftover `TRAIN` XML uses a child `<officer>` element (`name` / `race` / optional `officer-parent`), not an attribute; `LoadXml` sets `TrainingOfficer` from that child. `USE` leftover reconnects to a matching `Producing*` effect; leftover `TRAIN` reconnects to a matching `TrainingOfficer` / `TrainingSkill` and continues `DurationLeft` from the effect. Leftover `PRODUCE` does **not** (`Producing` on the order is null after load, so it starts a new duration while the loaded effect stays frozen). Duration-0 `receiving-items` leftovers do not deliver cargo.
 
 ---
 
@@ -419,7 +419,11 @@ Weekly output is catalog `research-output` × module count (`Research.WeeklyOutp
 
 **Subject:** person (skill) or stack (officer).
 
-Starts `TrainingSkill` or `TrainingOfficer` (officer requires matching crew of that race). `AS` is required for officer training. Both effects survive save/load as `type="training-officer"` (skill training is the `skill` attribute). A leftover `TRAIN` does **not** reconnect to the loaded effect (unlike leftover `USE`).
+Starts `TrainingSkill` or `TrainingOfficer` (officer requires matching crew of that race). `AS` is required for officer training. Duration is catalog `officer-training-duration` / `training-duration`. Both effects survive save/load as `type="training-officer"` (skill training is the `skill` attribute). After save/load, leftover `TRAIN` reconnects to that effect and **continues** `DurationLeft` (does not restart), same idea as leftover `USE`:
+
+- **Same skill**, or **same officer race and person** — leftover `TRAIN` is kept (not duplicated). Training **continues**.
+- **Otherwise** — leftover `TRAIN` is dropped. The old training effect **freezes** while the new `TRAIN` runs. Reissue the original skill or officer to **resume**.
+- Conditioned lines (`-train` / `+train`) do not merge or drop leftovers this way.
 
 ### USE
 
