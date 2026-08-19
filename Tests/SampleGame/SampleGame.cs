@@ -754,18 +754,59 @@ namespace IntegrationTests
 		[Test, Ignore("not ready")]
 		public void ExecuteTurn4()
 		{
-			this.dataFile.LoadGameDocument(Directory.GetCurrentDirectory(), "SampleGame/gamein.4.xml");
-			this.dataFile.LoadConfiguration();
-			this.dataFile.LoadFactions();
-			this.dataFile.LoadGalaxy();
+			Sequence.Ints.Clear();
+			int[] hitLocations = { 50, 150, 250, 350, 450 };
+			for (int i = 0; i < 2000; i++)
+			{
+				Sequence.Ints.Push(hitLocations[i % hitLocations.Length]);
+				Sequence.Ints.Push(1);
+			}
+			for (int i = 0; i < 40; i++)
+			{
+				Sequence.Ints.Push(0);
+			}
+			Sequence.Ints.Push(208);
 
-			// story:
-			// a ship launches toward the moon
-			// ground regions make cash on market
-            // crashed ship is taken over
-            // crashed ships contain working fighter drones (tech 2) a hibernated seed of a colony, 
-            //   technology to build domed city (tech 2) and resources to build it
-            
+			this.LoadGalaxy("gamein.4.xml");
+
+			OrdersReader ordersReader = new OrdersReader(this.game);
+			ordersReader.LoadOrders(Path.Combine(this.testDir, "orders.4.2.txt"), false);
+			ordersReader.LoadOrders(Path.Combine(this.testDir, "orders.4.3.txt"), false);
+
+			this.game.Execute();
+
+			Assert.That(ModuleStack.All["200"].Owner.Name, Is.EqualTo("2"), "do not re-claim the wreck");
+			Assert.That(ModuleStack.All["115"].Technologies.Contains("alnfgh"), "COPY alnfgh onto library 115");
+
+			int dronesOnHull = 0;
+			foreach (ModuleStack nested in ModuleStack.All["101"].ModuleStacks.Values)
+			{
+				if (nested.ModuleType != null && nested.ModuleType.Name == "alndrn")
+				{
+					dronesOnHull += nested.Quantity;
+				}
+			}
+			Assert.That(dronesOnHull, Is.EqualTo(4), "TRANSFER drones 207 onto hull 101");
+
+			bool repairTechGranted = ModuleStack.All["116"].Technologies.Contains("servic")
+				|| ModuleStack.All["116"].Technologies.Contains("engshp")
+				|| ModuleStack.All["116"].Technologies.Contains("medtec")
+				|| ModuleStack.All["116"].Technologies.Contains("medirf")
+				|| Faction.All["3"].TechnologiesToShow.Contains("servic")
+				|| Faction.All["3"].TechnologiesToShow.Contains("engshp")
+				|| Faction.All["3"].TechnologiesToShow.Contains("medtec")
+				|| Faction.All["3"].TechnologiesToShow.Contains("medirf");
+			Assert.That(repairTechGranted, "RESEARCH tag repair breakthrough should grant a technology");
+
+			Assert.That(Person.All["000001"].Skills.ContainsKey(SkillType.All["arpldr"]),
+				"TRAIN leftover/skill should complete armor platoon leader this quarter");
+
+			Assert.That(this.game.Offers[EOfferType.SellItems][ItemType.All["terran"]].Count, Is.GreaterThan(0),
+				"NPC city auto-offers or standing sells remain after GenerateOffers");
+
+			ReportWriter reportsWriter = new ReportWriter(this.game, this.dataFile, this.testDir);
+			reportsWriter.GenerateReports(this.testDir);
+			this.dataFile.SaveGame(this.testDir, "gameout.5_saved.xml");
 		}
 
 		[Test, Ignore("not ready")]

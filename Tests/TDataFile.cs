@@ -1370,6 +1370,34 @@ namespace UnitTests
 		}
 
 		[Test]
+		public void SaveLoad_PersistsProducingEnergyEffect_WithoutTechnology()
+		{
+			this.LoadGameDocument();
+			this.dataFile.LoadConfiguration();
+			this.dataFile.LoadFactions();
+			this.dataFile.LoadGalaxy();
+			this.game = this.dataFile.Game;
+
+			ModuleStack plants = ModuleStack.All["000011"];
+			new ProducingEnergy(plants, null, 4);
+
+			this.reloadSavedGame("gameout.saved_producingEnergyNoTech.xml");
+			plants = ModuleStack.All["000011"];
+			ProducingEnergy producing = null;
+			foreach (Effect effect in plants.Effects)
+			{
+				producing = effect as ProducingEnergy;
+				if (producing != null)
+				{
+					break;
+				}
+			}
+			Assert.That(producing, Is.Not.Null, "in-progress producing-energy with no technology must persist across save/load");
+			Assert.That(producing.Duration, Is.EqualTo(4));
+			Assert.That(producing.Technology, Is.Null);
+		}
+
+		[Test]
 		public void SaveLoad_PersistsReceivingItemsEffect()
 		{
 			this.LoadGameDocument();

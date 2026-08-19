@@ -2,7 +2,7 @@
 
 Checked **19 Aug 2026** against engine **0.1.141** (`Game/Program.cs`).
 
-Sources: `Game/orders/EOrderType.cs`, `Game/orders/OrdersReader.cs`, `Game/orders/Orders.cs`, `Game/Game.cs` (week loop, `GenerateOffers`), `Game/Program.cs` (`/no-turn`, `/check`), `Game/Research.cs` (weekly output, breakthrough, preference), `Game/data structures/ModuleStack.Upkeep.cs` (sick bay, medical consume, quarterly maintenance), `Game/data structures/Galaxy.cs` (`LoadXml` / `LoadExits`), `Game/data structures/Exits.cs` / `ExitMode.cs` / `Region.cs` (region **Exits:** lines), `Game/game/DataFile.cs` (`LoadOrders` / `SaveOrders` delegate to `OrderXml`), `Game/game/OrderXml.cs` (XML switch), `Game/game/ModuleTypeGroupXml.cs` (`RESEARCH GROUP` tokens), `Game/effects/Effects.cs` (`LoadXml` effect types), each `Game/orders/*Order.Parse` / `Execute`. Sample prefix usage: `Tests/SampleGame/orders.*.txt`.
+Sources: `Game/orders/EOrderType.cs`, `Game/orders/OrdersReader.cs`, `Game/orders/Orders.cs`, `Game/Game.cs` (week loop, `GenerateOffers`), `Game/Program.cs` (`/no-turn`, `/check`), `Game/Research.cs` (weekly output, breakthrough, preference), `Game/data structures/ModuleStack.Upkeep.cs` (sick bay, medical consume, quarterly maintenance), `Game/data structures/Galaxy.cs` (`LoadXml` / `LoadExits`), `Game/data structures/Exits.cs` / `ExitMode.cs` / `Region.cs` (region **Exits:** lines), `Game/game/DataFile.cs` (`LoadOrders` / `SaveOrders` delegate to `OrderXml`), `Game/game/OrderXml.cs` (XML switch), `Game/game/ModuleTypeGroupXml.cs` (`RESEARCH GROUP` tokens), `Game/effects/Effects.cs` (`LoadXml` effect types), `Game/effects/Producing.cs` (omit empty `technology=`), each `Game/orders/*Order.Parse` / `Execute`. Sample prefix usage: `Tests/SampleGame/orders.*.txt`.
 
 Not source of truth: `Game/documentation/Rules.txt`. Turn order files are **Windows-1251** (same as reports). Verbs are case-insensitive; most arguments are not.
 
@@ -102,7 +102,7 @@ After week 13: **quarterly maintenance**, then **quarterly wounded outcome**, th
 
 - Bank: quarterly interest (`AddQuarterlyInterest`).
 - `UpdateRates` — empty (comments only).
-- `GenerateOffers` — NPC faction `[1]` stacks whose module type is `city` auto-list on-hand inventory as `SellItems` `Offer`s (same objects as XML `<selling>`; not leftover player `SELL` orders). Skips cash. Skips an item type if that city already has a **buy or sell** offer for it (no simultaneous buy+sell of the same type; standing offers are not rewritten). Quantity is on-hand; price is `Market.GetPrice`; skip if price ≤ 0. Farms and other non-city stacks are not auto-listed. Listings appear on this turn’s reports and save; weekly buy matching (step 6) can hit them from **next** turn. Duration-0 leftover `receiving-items` on cities (old market delivery) **persist** after save but **never complete**; there is no player verb that clears them.
+- `GenerateOffers` — NPC faction `[1]` stacks whose module type is `city` auto-list on-hand inventory as `SellItems` `Offer`s (same objects as XML `<selling>`; not leftover player `SELL` orders). Skips cash. Skips an item type if that city already has a **buy or sell** offer for it (no simultaneous buy+sell of the same type; standing offers are not rewritten, so existing NPC city sells **remain** at their saved quantity and price). Quantity for a **new** listing is on-hand; price is `Market.GetPrice`; skip if price ≤ 0. Farms and other non-city stacks are not auto-listed. Listings appear on this turn’s reports and save; weekly buy matching (step 6) can hit them from **next** turn. Duration-0 leftover `receiving-items` on cities (old market delivery) **persist** after save but **never complete**; there is no player verb that clears them.
 
 Standing `@buy` / `@sell` stay on the order list and retry each week at step 6. NPC city auto-listings have no leftover `SELL` and persist as market `Offer`s. `ATTACK` / `TACTIC` / `DECLARE` during step 2 only set stance; shooting is step 7.
 
@@ -146,7 +146,7 @@ Player turn files use **text**. XML matters for saved games, not for `order.*` d
 
 **Nested conditions:** `Order.SaveXml` writes leftover `-` / `+` children as nested `<order conditions="…">` under the parent (top-level save is `Level == 0` only). `saveXml_post` writes only the **next remaining condition level**, once (no duplicate nested siblings); recursion still persists leftover `+USE` trees. `LoadAll` walks those nested `<order>` elements and assigns the same `-` / `+` links as text (`AssignCondition`). Duplicate subject + conditions + verb XML is skipped. Frozen SampleGame `gamein.2_contract.xml` / `gamein.3_contract.xml` keep those leftovers; player-facing turn 2/3 reports are unchanged.
 
-**Saved effects:** `Effects.LoadXml` accepts `fuelled`, `moving`, `producing-modules`, `producing-items`, `producing-energy`, `receiving-items`, `receiving-modules`, `receiving-technology`, `lightly-damaged`, and `training-officer`. `producing-modules` writes `technology=` on save (`ProducingModule.SaveXml`; base `Producing.SaveXml` already did), so in-progress module `USE` round-trips the tech id and leftover `USE` can match after load. `receiving-items` now writes a nested `<receiving>` cargo payload. Skill training still saves as `type="training-officer"` with a `skill` attribute (not a player-facing verb — issue `TRAIN SKILL`). Leftover `TRAIN` XML uses a child `<officer>` element (`name` / `race` / optional `officer-parent`), not an attribute; `LoadXml` sets `TrainingOfficer` from that child. `USE` leftover reconnects to a matching `Producing*` effect; leftover `TRAIN` reconnects to a matching `TrainingOfficer` / `TrainingSkill` and continues `DurationLeft` from the effect. Leftover `PRODUCE` does **not** (`Producing` on the order is null after load, so it starts a new duration while the loaded effect stays frozen). Duration-0 `receiving-items` leftovers do not deliver cargo.
+**Saved effects:** `Effects.LoadXml` accepts `fuelled`, `moving`, `producing-modules`, `producing-items`, `producing-energy`, `receiving-items`, `receiving-modules`, `receiving-technology`, `lightly-damaged`, and `training-officer`. `Producing.SaveXml` writes `technology=` only when Technology is not null; `LoadXml` skips a missing or empty attribute, so `@produce energy` leftovers round-trip as `producing-energy` with no tech id. `producing-modules` still writes `technology=` (`ProducingModule.SaveXml`), so leftover `USE` can match after load. `receiving-items` now writes a nested `<receiving>` cargo payload. Skill training still saves as `type="training-officer"` with a `skill` attribute (not a player-facing verb — issue `TRAIN SKILL`). Leftover `TRAIN` XML uses a child `<officer>` element (`name` / `race` / optional `officer-parent`), not an attribute; `LoadXml` sets `TrainingOfficer` from that child. `USE` leftover reconnects to a matching `Producing*` effect; leftover `TRAIN` reconnects to a matching `TrainingOfficer` / `TrainingSkill` and continues `DurationLeft` from the effect. Leftover `PRODUCE` does **not** (`Producing` on the order is null after load, so it starts a new duration while the loaded effect stays frozen). Duration-0 `receiving-items` leftovers do not deliver cargo.
 
 ---
 
@@ -215,7 +215,7 @@ Publishes a location contract, or withdraws one by id. GIVE pays the technology 
 
 **Subject:** modulestack (source).
 
-Copies a technology the source holds onto a **pre-existing** receiver at the **same location**, if the receiver has remaining technology capacity. `COPY all` is not implemented.
+Copies the named catalog technology onto a **pre-existing** receiver at the **same location**, if that receiver has remaining technology capacity. Execute does **not** check that the source already holds it. `COPY all` is not implemented.
 
 ### DECLARE
 
@@ -382,7 +382,7 @@ A stack with a **space** move mode may attempt a hop even when the current locat
 
 **Subject:** modulestack.
 
-Starts energy or item production using the stack’s module type (`ProducingEnergy` / `ProducingItems`), duration from `ProduceDuration`. Those effects survive save/load; a leftover `@produce` does **not** reconnect to them (unlike leftover `USE`). Sample: `@produce cash`, `@produce energy`, `@produce terran`.
+Starts energy or item production using the stack’s module type (`ProducingEnergy` / `ProducingItems`), duration from `ProduceDuration`. Energy production has no catalog technology (null Technology); save omits empty `technology=` so the leftover `producing-energy` effect loads. Those effects survive save/load; a leftover `@produce` does **not** reconnect to them (unlike leftover `USE`). Sample: `@produce cash`, `@produce energy`, `@produce terran`.
 
 ### REPAIR
 
