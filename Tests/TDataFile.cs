@@ -1076,11 +1076,41 @@ namespace UnitTests
 		}
 
 		[Test]
-		public void ModuleTypeGroupXml_ToToken_OmitsResearchGroup()
+		public void ModuleTypeGroupXml_ToToken_MapsResearchGroup()
 		{
-			Assert.That(ModuleTypeGroupXml.ToToken(EModuleTypesGroup.research), Is.Null);
+			Assert.That(ModuleTypeGroupXml.ToToken(EModuleTypesGroup.research), Is.EqualTo("research"));
 			Assert.That(ModuleTypeGroupXml.ToToken(EModuleTypesGroup.spaceStation), Is.EqualTo("space station"));
 			Assert.That(ModuleTypeGroupXml.ToToken(EModuleTypesGroup.settlement), Is.EqualTo("settlement"));
+		}
+
+		[Test]
+		public void SaveLoad_PersistsResearchCapacityGroup()
+		{
+			this.LoadGameDocument();
+			this.dataFile.LoadConfiguration();
+			this.dataFile.LoadFactions();
+			this.dataFile.LoadGalaxy();
+			this.game = this.dataFile.Game;
+
+			Region region = Region.All["R00001"];
+			Capacity research = new Capacity();
+			research.Group = EModuleTypesGroup.research;
+			research.Quantity = 3;
+			region.Capacities.Add(research);
+
+			this.reloadSavedGame("gameout.saved_researchCapacity.xml");
+			region = Region.All["R00001"];
+			Capacity loaded = null;
+			foreach (Capacity capacity in region.Capacities)
+			{
+				if (capacity.Group == EModuleTypesGroup.research)
+				{
+					loaded = capacity;
+					break;
+				}
+			}
+			Assert.That(loaded, Is.Not.Null);
+			Assert.That(loaded.Quantity, Is.EqualTo(3));
 		}
 
 		private void executeFactoryWeek(ModuleStack factory, int weekOffset)
