@@ -682,15 +682,6 @@
 					<give receiver="115" item="food" quantity="-20" />
 				</order>
 			</order>
-			<order conditions="+-">
-				<give receiver="115" item="terran" quantity="-20" />
-			</order>
-			<order conditions="+-">
-				<give receiver="115" item="terair" quantity="-20" />
-			</order>
-			<order conditions="+-">
-				<give receiver="115" item="food" quantity="-20" />
-			</order>
 			<order conditions="+">
 				<use technology="strans" receiver="116" receiver-parent="100" />
 				<order conditions="+-">
@@ -712,32 +703,11 @@
 					<give receiver="116" item="h2o2" quantity="-10" />
 				</order>
 			</order>
-			<order conditions="+-">
-				<give receiver="116" item="iron" quantity="all" />
-			</order>
-			<order conditions="+-">
-				<give receiver="116" item="titani" quantity="all" />
-			</order>
-			<order conditions="+-">
-				<give receiver="116" item="silici" quantity="all" />
-			</order>
-			<order conditions="+-">
-				<give receiver="116" item="copper" quantity="all" />
-			</order>
-			<order conditions="+-">
-				<give receiver="116" item="uraniu" quantity="-10" />
-			</order>
-			<order conditions="+-">
-				<give receiver="116" item="h2o2" quantity="-10" />
-			</order>
 			<order conditions="+">
 				<use technology="indust" receiver="117" receiver-parent="100" />
 				<order conditions="+-">
 					<get item="terran" quantity="10" transferer="115" />
 				</order>
-			</order>
-			<order conditions="+-">
-				<get item="terran" quantity="10" transferer="115" />
 			</order>
 		</order>
 		<order subject="modulestack" name="101">

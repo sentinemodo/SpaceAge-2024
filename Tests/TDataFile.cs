@@ -1074,6 +1074,43 @@ namespace UnitTests
         }
 
 		[Test]
+		public void SaveConditionOrder_DoesNotDuplicateNestedXml()
+		{
+			this.LoadGameDocument();
+			this.dataFile.LoadConfiguration();
+			this.dataFile.LoadFactions();
+			this.dataFile.LoadGalaxy();
+			this.game = this.dataFile.Game;
+
+			List<string> testcommands = new List<string>
+			{
+				"#faction 2",
+				"#modulestack 100002",
+				"move R00001",
+				"+use ssassm as new101",
+				"+-use crewhs as new105",
+				"+--give -20 terran to new105",
+				"+-use strans as new106",
+				"+--give all iron to new106",
+				"#end"
+			};
+
+			Sequence.Ints.Clear();
+			Sequence.Ints.Push(102);
+			Sequence.Ints.Push(101);
+			Sequence.Ints.Push(100);
+
+			OrdersReader ordersReader = new OrdersReader(this.game);
+			ordersReader.AssignOrders(testcommands);
+
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml("<game/>");
+			this.dataFile.SaveOrders(doc);
+
+			Assert.That(doc.SelectNodes("//orders//order").Count, Is.EqualTo(6));
+		}
+
+		[Test]
 		public void SaveLoad_PersistsConditionalOrderGraph()
 		{
 			this.LoadGameDocument();

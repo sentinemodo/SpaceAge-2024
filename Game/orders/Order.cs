@@ -209,21 +209,44 @@ namespace SpaceAge
 
 		protected void saveXml_post(XmlDocument doc, string subject)
 		{
-			foreach (Order order in this.ConditionalOrders)
+			Orders remaining = new Orders();
+			this.addDeeperOrders(remaining, this.ConditionalOrders);
+			this.addDeeperOrders(remaining, this.ConditionedOrders);
+			if (remaining.Count == 0)
 			{
-				if (order.Level > this.level)
+				return;
+			}
+
+			int nextLevel = remaining[0].Level;
+			foreach (Order order in remaining)
+			{
+				if (order.Level < nextLevel)
 				{
-					if (order.Conditions[0] == '+')
-					{
-						this.xmlElement.AppendChild(order.SaveXml(doc, subject));
-					}
+					nextLevel = order.Level;
 				}
 			}
-			foreach (Order order in this.ConditionedOrders)
+
+			Orders children = new Orders();
+			foreach (Order order in remaining)
 			{
-				if (order.Level > this.level)
+				if (order.Level == nextLevel && !children.Contains(order))
 				{
-					this.xmlElement.AppendChild(order.SaveXml(doc, subject));
+					children.Add(order);
+				}
+			}
+			foreach (Order order in children)
+			{
+				this.xmlElement.AppendChild(order.SaveXml(doc, subject));
+			}
+		}
+
+		private void addDeeperOrders(Orders remaining, Orders source)
+		{
+			foreach (Order order in source)
+			{
+				if (order.Level > this.level && !remaining.Contains(order))
+				{
+					remaining.Add(order);
 				}
 			}
 		}
