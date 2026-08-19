@@ -31,7 +31,7 @@ Still centralized in `DataFile`:
 - Galaxy graph (systems, stars, planets, moons, regions, orbits, resources, capacities, **exits in a second pass** `loadGalaxyExits`)
 - Order **type factory** switch plus `repeat` attribute
 - Symmetric save for factions, galaxy, regions, capacities, exits, resources, orbits
-- Shared helpers: `assignNames`, `assignNamesMultiple`, `assignItemStacks`
+- Shared helpers: `assignItemStacks` (catalog fill-pass). Names go through `NamedObject.LoadXml` / `LoadMultipleNames`.
 
 Stable host/test API (must keep working without a mass call-site change):
 
@@ -105,7 +105,7 @@ All new types stay in namespace `SpaceAge`. Prefer folder `Game/game/` for loade
 
 | Seam | Type | Owns | `DataFile` keeps |
 |------|------|------|------------------|
-| Catalog two-pass | `CatalogLoader` | `LoadItems(XmlDocument conf, Game game, bool loadStub)` (today’s `LoadConfigurationItems` body), catalog use of `assignNames` / `assignNamesMultiple` / `assignItemStacks` | `LoadConfiguration` sequence, `LoadConfDocument`, `ValidateTypeNameUniqueness` (post-condition on `ItemType.All` vs `ModuleType.All`), public `LoadConfigurationItems` as a one-line delegate |
+| Catalog two-pass | `CatalogLoader` | `LoadItems(XmlDocument conf, Game game, bool loadStub)` (today’s `LoadConfigurationItems` body), catalog use of `NamedObject.LoadXml` / `LoadMultipleNames` / `DataFile.assignItemStacks` | `LoadConfiguration` sequence, `LoadConfDocument`, `ValidateTypeNameUniqueness` (post-condition on `ItemType.All` vs `ModuleType.All`), public `LoadConfigurationItems` as a one-line delegate |
 | Module-group tokens | `ModuleTypeGroupXml` (static) | `Parse(string)` / `ToToken(EModuleTypesGroup)` copied from `getModuleTypeGroup` and the capacity **save** switch | Call sites only |
 | Location tokens | stay on `DataFile.LoadLocationType` until catalog extract, then move next to `ModuleTypeGroupXml` or `RegionType` | `orbit` / `solid-surface` / `liquid-surface` / `space` | Public `LoadLocationType` delegate if tests call it |
 | Order factory | `OrderXml` (static) | Subject switch, `FirstChild.Name` factory, `order.LoadXml`, `repeat` (`unlimited` → `-1`) | Public `LoadOrders` / `SaveOrders` delegates; `SaveOrders` may move onto `OrderXml.SaveAll` in the same seam |
@@ -216,3 +216,4 @@ Everything in **Out of this extract** (quirks wait for the follow-up PR; stubs/e
 - 2026-08-18: Accepted. Names seams so TDD can extract without opportunistic god-class splits.
 - 2026-08-19: Implementation vehicle: sequential commits on one refactor PR (architecture docs first, then one phase per commit). Delivery checklist in [`../delivery/datafile-refactor.md`](../delivery/datafile-refactor.md).
 - 2026-08-19: Parse/save quirks are a **follow-up PR** after this extract, not drive-bys here.
+- 2026-08-19: Phase 6 — `assignNames` / `assignNamesMultiple` folded into `NamedObject.LoadXml` (including `description`) and `LoadMultipleNames`. `DataFile` keeps `assignItemStacks`.

@@ -59,7 +59,7 @@ namespace SpaceAge
 			foreach (XmlElement elSystem in elGalaxy.SelectNodes("system"))
 			{
 				SpaceSystem system = new SpaceSystem(elSystem.GetAttribute("name"));
-				dataFile.assignNames(elSystem, system);
+				system.LoadXml(elSystem);
                 //system.Coordinates.X = Convert.ToDouble(elSystem.GetAttribute("X"));
                 //system.Coordinates.Y = Convert.ToDouble(elSystem.GetAttribute("Y"));
                 //system.Coordinates.Z = Convert.ToDouble(elSystem.GetAttribute("Z"));
@@ -68,7 +68,7 @@ namespace SpaceAge
 				foreach (XmlElement elStar in elSystem.SelectNodes("star"))
 				{
 					Star star = new Star(system, elStar.GetAttribute("name"));
-					dataFile.assignNames(elStar, star);
+					star.LoadXml(elStar);
                     //star.Coordinates.X = this.assignDouble(elStar.GetAttribute("X"), 0);
                     //star.Coordinates.Y = this.assignDouble(elStar.GetAttribute("Y"), 0);
                     //star.Coordinates.Z = this.assignDouble(elStar.GetAttribute("Z"), 0);
@@ -87,7 +87,7 @@ namespace SpaceAge
 				foreach (XmlElement elPlanet in elSystem.SelectNodes("planet"))
 				{
 					Planet planet = new Planet(system, elPlanet.GetAttribute("name"));
-					dataFile.assignNames(elPlanet, planet);
+					planet.LoadXml(elPlanet);
 					try
 					{
 						planet.PlanetType = dataFile.Game.PlanetTypes[elPlanet.GetAttribute("type")];
@@ -101,7 +101,7 @@ namespace SpaceAge
 						foreach (XmlElement elMoon in elPlanet.SelectNodes("moon"))
 						{
 							Moon moon = new Moon(system, planet, elPlanet.GetAttribute("name"));
-							dataFile.assignNames(elMoon, moon);
+							moon.LoadXml(elMoon);
 
 							try
 							{
@@ -206,7 +206,7 @@ namespace SpaceAge
 			foreach (XmlElement elRegion in elRegionsHolder.SelectNodes("region"))
 			{
 				Region region = new Region(regionHolder, elRegion.GetAttribute("name"));
-				dataFile.assignNames(elRegion, region);
+				region.LoadXml(elRegion);
 
 				try
 				{

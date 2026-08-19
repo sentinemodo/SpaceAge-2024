@@ -306,10 +306,6 @@ namespace SpaceAge
 		public override void LoadXml(XmlElement elFaction)
 		{
 			base.LoadXml(elFaction);
-			if (elFaction.HasAttribute("description"))
-			{
-				this.Description = elFaction.GetAttribute("description");
-			}
 			this.Password = elFaction.GetAttribute("password");
 			this.Email = elFaction.GetAttribute("email");
 			if (elFaction.HasAttribute("default-attitude"))

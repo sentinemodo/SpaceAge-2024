@@ -130,27 +130,6 @@ namespace SpaceAge
 			}
 		}
 
-		internal void assignNames(XmlElement element, NamedObject namedObject)
-		{
-			namedObject.FullName = element.GetAttribute("name-en");
-			if (element.HasAttribute("description"))
-			{
-				namedObject.Description = element.GetAttribute("description");
-			}
-		}
-
-		internal void assignNamesMultiple(XmlElement element, IMultiple namedObject)
-		{
-			if (element.HasAttribute("name-en2"))
-			{
-				namedObject.FullNameMultiple = element.GetAttribute("name-en2");
-			}
-			else
-			{
-				namedObject.FullNameMultiple = namedObject.FullName;
-			}
-		}
-
 		public DataFile(string gameDir)
 		{
 			this.gameDir = gameDir;

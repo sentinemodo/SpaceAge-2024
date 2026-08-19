@@ -29,7 +29,7 @@ namespace SpaceAge
 				else
 				{
 					StarType star = game.StarTypes[el.GetAttribute("name")];
-					this.dataFile.assignNames(el, star);
+					star.LoadXml(el);
 				}
 			}
 
@@ -44,7 +44,7 @@ namespace SpaceAge
 				else
 				{
 					PlanetType planet = game.PlanetTypes[el.GetAttribute("name")];
-					this.dataFile.assignNames(el, planet);
+					planet.LoadXml(el);
 				}
 			}
 
@@ -59,7 +59,7 @@ namespace SpaceAge
 				else
 				{
 					MoonType moon = game.MoonTypes[el.GetAttribute("name")];
-					this.dataFile.assignNames(el, moon);
+					moon.LoadXml(el);
 				}
 			}
 
@@ -74,7 +74,7 @@ namespace SpaceAge
 				else
 				{
 					RegionType region = game.RegionTypes[el.GetAttribute("name")];
-					this.dataFile.assignNames(el, region);
+					region.LoadXml(el);
                     if (el.HasAttribute("location-type"))
                     {
                         region.LocationType = this.dataFile.LoadLocationType(el);
@@ -105,8 +105,8 @@ namespace SpaceAge
 				else
 				{
 					itemType = ItemType.All[el.GetAttribute("name")];
-					this.dataFile.assignNames(el, itemType);
-					this.dataFile.assignNamesMultiple(el, itemType);
+					itemType.LoadXml(el);
+					itemType.LoadMultipleNames(el);
 
 					itemType.Mass = this.dataFile.XMLAssignDouble(el.GetAttribute("mass"), 0);
 					itemType.Size = this.dataFile.XMLAssignDouble(el.GetAttribute("size"), 0);
@@ -155,8 +155,8 @@ namespace SpaceAge
 				else
 				{
 					itemType = ItemType.All[el.GetAttribute("name")];
-					this.dataFile.assignNames(el, itemType);
-					this.dataFile.assignNamesMultiple(el, itemType);
+					itemType.LoadXml(el);
+					itemType.LoadMultipleNames(el);
 					itemType.Group = EItemTypesGroup.crew;
 					itemType.Mass = this.dataFile.XMLAssignDouble(el.GetAttribute("mass"), 0);
 					itemType.Size = this.dataFile.XMLAssignDouble(el.GetAttribute("size"), 0);
@@ -194,7 +194,7 @@ namespace SpaceAge
 				else
 				{
 					race = Race.All[el.GetAttribute("name")];
-					this.dataFile.assignNames(el, race);
+					race.LoadXml(el);
 
 					race.Mass = this.dataFile.XMLAssignDouble(el.GetAttribute("mass"), 0);
 					race.Size = this.dataFile.XMLAssignDouble(el.GetAttribute("size"), 0);
@@ -253,7 +253,7 @@ namespace SpaceAge
 				else
 				{
 					skillType = SkillType.All[el.GetAttribute("name")];
-					this.dataFile.assignNames(el, skillType);
+					skillType.LoadXml(el);
 
 					skillType.TrainingDuration = this.dataFile.XMLAssignInteger(el.GetAttribute("training-duration"), 1);
 					skillType.Attack = this.dataFile.XMLAssignInteger(el.GetAttribute("attack"), 0);
@@ -275,7 +275,7 @@ namespace SpaceAge
 				else
 				{
 					technology = game.Technologies[el.GetAttribute("name")];
-					this.dataFile.assignNames(el, technology);
+					technology.LoadXml(el);
 					technology.Level = this.dataFile.XMLAssignInteger(el.GetAttribute("level"), 0);
 					technology.UseTime = this.dataFile.XMLAssignInteger(el.GetAttribute("use-time"), 1);
 
@@ -409,8 +409,8 @@ namespace SpaceAge
 				else
 				{
 					moduleType = game.ModuleTypes[el.GetAttribute("name")];
-					this.dataFile.assignNames(el, moduleType);
-					this.dataFile.assignNamesMultiple(el, moduleType);
+					moduleType.LoadXml(el);
+					moduleType.LoadMultipleNames(el);
 					try
 					{
 						moduleType.Group = ModuleTypeGroupXml.Parse(el.GetAttribute("group"));
