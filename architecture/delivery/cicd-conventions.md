@@ -1,6 +1,6 @@
 # CI/CD and delivery conventions
 
-Last updated: 2026-08-16
+Last updated: 2026-08-19
 
 There is **no** GitHub Actions (or other hosted CI) workflow in this repository today. “CI” for Cursor Cloud is: environment image → `install` (`.cursor/install.sh`) → `.cursor/run-tests.sh`.
 
@@ -19,6 +19,7 @@ No named `dev` / `test` / `prod` environments exist for this engine. Treat:
 
 - **Default branch** — playable engine + passing tests.
 - **Feature branches** — one behavior slice, test-first; merge when unit + SampleGame integration that is not `[Ignore]` are green.
+- **`DataFile` extract** — sequential commits on one refactor PR; checklist [`datafile-refactor.md`](datafile-refactor.md) ([ADR-0006](../adr/ADR-0006-datafile-facade-and-xml-seams.md)). Do not bump `EngineVersion` for a behavior-neutral extract.
 
 There is no production deploy artifact beyond `Game.exe` + `data.xml` shipped to the GM.
 
@@ -46,3 +47,7 @@ Do not bump `EngineVersion` for docs-only or test-only commits.
 | `Tests` | NUnit assembly |
 | `UnitTests` / `IntegrationTests` | Test-layer namespaces ([ADR-0004](../adr/ADR-0004-test-layers.md)) |
 | `turn` | Integer game turn; also substring in `gameout.{turn}.xml` and report filenames |
+
+## Revision
+
+- 2026-08-19: `DataFile` extract lands as sequential commits on one refactor PR ([`datafile-refactor.md`](datafile-refactor.md)).

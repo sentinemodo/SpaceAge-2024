@@ -165,7 +165,9 @@ When extracting `ModuleTypeGroupXml.ToToken`, **copy the save switch including t
 
 ## Migration phases (TDD handoff)
 
-Each phase is one planned step (or one PR). Stay green on `UnitTests` + `IntegrationTests` before the next. Prefer characterizing existing load/save rather than a third test layer ([ADR-0004](ADR-0004-test-layers.md)).
+Each phase is **one planned TDD step**. It may land as its own GitHub PR **or** as a sequential commit on a single refactor PR (docs first). Stay green on `UnitTests` + `IntegrationTests` before the next phase. Prefer characterizing existing load/save rather than a third test layer ([ADR-0004](ADR-0004-test-layers.md)).
+
+Checklist and commit order for the current refactor PR: [`../delivery/datafile-refactor.md`](../delivery/datafile-refactor.md).
 
 ### Tests that must stay green (every phase)
 
@@ -205,3 +207,4 @@ Everything in **Out of scope**. Also: do not retarget call sites from `DataFile`
 ## Revision
 
 - 2026-08-18: Accepted. Names seams so TDD can extract without opportunistic god-class splits.
+- 2026-08-19: Implementation vehicle: sequential commits on one refactor PR (architecture docs first, then one phase per commit). Delivery checklist in [`../delivery/datafile-refactor.md`](../delivery/datafile-refactor.md).
