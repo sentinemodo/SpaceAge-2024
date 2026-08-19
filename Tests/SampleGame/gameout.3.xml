@@ -742,6 +742,9 @@
 		</order>
 		<order subject="modulestack" name="101">
 			<active observed="101" />
+			<order conditions="-">
+				<name description="Caste Prime valiant explorer" />
+			</order>
 		</order>
 		<order subject="modulestack" name="101">
 			<active observed="101" />

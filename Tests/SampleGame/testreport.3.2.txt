@@ -4416,6 +4416,7 @@ move R00001
 #modulestack 101
 ; + spaceship hull [101], spaceship hull [sshull], disabled, immobile.
 active 101
+-name "Caste Prime valiant explorer"
 active 101
 -name "Caste Prime valiant explorer"
 

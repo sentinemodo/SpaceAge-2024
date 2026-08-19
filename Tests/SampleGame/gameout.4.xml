@@ -22,19 +22,15 @@
 				<moon name="P00001" name-en="Luna" AU="0.02" surface-size-X="1" surface-size-Y="1" type="rock">
 					<orbit name="O00001">
 						<modulestack name="100" type="shuttl" quantity="10" faction="2">
-							<person name="000001" name-en="Caste Prime CEO" race="terran" faction="2">
-								<upkeep type="cash" quantity="10" />
-								<event week="1" description="saw command bridge [112] in orbit [O00001]." />
-							</person>
 							<itemstack type="terran" quantity="37" />
 							<itemstack type="iron" quantity="30" />
 							<itemstack type="titani" quantity="16" />
 							<itemstack type="silici" quantity="16" />
 							<itemstack type="copper" quantity="15" />
-							<itemstack type="food" quantity="92" />
+							<itemstack type="food" quantity="93" />
 							<itemstack type="h2o2" quantity="59" />
-							<itemstack type="terair" quantity="92" />
-							<upkeep type="cash" quantity="1047" />
+							<itemstack type="terair" quantity="93" />
+							<upkeep type="cash" quantity="1037" />
 							<effect duration="5" type="fuelled" />
 							<event week="1" description="given terran [terran] to command bridge [112]." />
 							<event week="1" description="given terran [terran] to fission reactor [113]." />
@@ -92,17 +88,22 @@
 							</modulestack>
 						</modulestack>
 						<modulestack name="101" type="sshull" quantity="1" faction="2">
-							<upkeep type="cash" quantity="314" />
+							<upkeep type="cash" quantity="324" />
 							<event week="1" description="departed from orbit [O00002] to orbit [O00001], ETA 0." />
 							<event week="1" description="arrived at orbit [O00001] from orbit [O00002]." />
 							<event week="2" description="has 1 cmplib modules (needed 1)." />
 							<event week="2" description="departed from orbit [O00001] to Dusty field [R00001] (0,0), ETA 0." />
 							<event week="2" description="arrived at Dusty field [R00001] (0,0) from orbit [O00001]." />
 							<modulestack name="112" type="cbridg" quantity="1" faction="2">
+								<person name="000001" name-en="Caste Prime CEO" race="terran" faction="2">
+									<upkeep type="cash" quantity="10" />
+									<event week="1" description="stacked under command bridge [112]." />
+									<event week="1" description="saw command bridge [112] in orbit [O00001]." />
+								</person>
 								<itemstack type="terran" quantity="1" />
-								<itemstack type="food" quantity="19" />
-								<itemstack type="terair" quantity="19" />
-								<upkeep type="cash" quantity="101" />
+								<itemstack type="food" quantity="18" />
+								<itemstack type="terair" quantity="18" />
+								<upkeep type="cash" quantity="111" />
 								<event week="1" description="got terran [terran] from space shuttle [100]." />
 								<event week="1" description="got 20 units of food [food] from space shuttle [100]." />
 								<event week="1" description="got 20 units of terran breathing gas mixture [terair] from space shuttle [100]." />
@@ -892,6 +893,12 @@
 			<move>
 				<destination destination="R00002" />
 			</move>
+			<order conditions="-">
+				<capture unit="000012" />
+			</order>
+			<order conditions="-">
+				<capture unit="all" />
+			</order>
 		</order>
 		<order subject="modulestack" name="115" repeat="unlimited">
 			<research research-type="stack" stack="200" />

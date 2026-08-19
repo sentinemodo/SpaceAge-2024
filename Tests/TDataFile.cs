@@ -370,6 +370,44 @@ namespace UnitTests
 		}
 
 		[Test]
+		public void SaveLoad_PersistsOrbitExitTarget()
+		{
+			this.LoadGameDocument();
+			this.dataFile.LoadConfiguration();
+			this.dataFile.LoadFactions();
+			this.dataFile.LoadGalaxy();
+			this.game = this.dataFile.Game;
+
+			string testdir = Directory.GetCurrentDirectory();
+			string testfile = "gameout.saved_orbitExit.xml";
+			this.dataFile.SaveGame(testdir, testfile);
+
+			XmlDocument saved = new XmlDocument();
+			saved.Load(Path.Combine(testdir, testfile));
+			XmlElement elExit = (XmlElement)saved.SelectSingleNode("//region[@name='R00011']/exit");
+			Assert.That(elExit, Is.Not.Null);
+			Assert.That(elExit.GetAttribute("orbit"), Is.EqualTo("O00004"));
+			Assert.That(elExit.HasAttribute("region"), Is.False);
+
+			this.game.ClearDictionaries();
+			this.game = null;
+			this.dataFile = null;
+
+			this.dataFile = new DataFile(testdir);
+			this.dataFile.LoadGameDocument(testdir, testfile);
+			this.dataFile.LoadConfiguration(testdir);
+			this.dataFile.LoadFactions();
+			this.dataFile.LoadGalaxy();
+			this.game = this.dataFile.Game;
+
+			Region region = Region.All["R00011"];
+			Assert.That(region.Exits.Count, Is.EqualTo(1));
+			Assert.That(region.Exits[0].To, Is.InstanceOf(typeof(Orbit)));
+			Assert.That(region.Exits[0].To.Name, Is.EqualTo("O00004"));
+			Assert.That(region.Exits[0].ExitModes[EMoveMode.space].Duration, Is.EqualTo(2));
+		}
+
+		[Test]
 		public void LoadItems()
 		{
 			this.LoadGameDocument();
@@ -1034,6 +1072,68 @@ namespace UnitTests
             this.compareFiles("gameout.conditionOrders.xml", "gameout.saved_conditionOrders.xml");
 
         }
+
+		[Test]
+		public void SaveLoad_PersistsConditionalOrderGraph()
+		{
+			this.LoadGameDocument();
+			this.dataFile.LoadConfiguration();
+			this.dataFile.LoadFactions();
+			this.dataFile.LoadGalaxy();
+			this.game = this.dataFile.Game;
+
+			ModuleStack moduleStack = ModuleStack.All["100002"];
+			Assert.That(moduleStack.Orders.Count, Is.EqualTo(0));
+
+			List<string> testcommands = new List<string>
+			{
+				"#faction 2",
+				"#modulestack 100002",
+				"move R00001",
+				"+use ssassm as new101",
+				"+-use crewhs as new105",
+				"+--give -20 terran to new105",
+				"+-use strans as new106",
+				"+--give all iron to new106",
+				"#end"
+			};
+
+			Sequence.Ints.Clear();
+			Sequence.Ints.Push(102);
+			Sequence.Ints.Push(101);
+			Sequence.Ints.Push(100);
+
+			OrdersReader ordersReader = new OrdersReader(this.game);
+			ordersReader.AssignOrders(testcommands);
+
+			Assert.That(moduleStack.Orders.Count, Is.EqualTo(6));
+			MoveOrder move = (MoveOrder)moduleStack.Orders[0];
+			UseOrder assembly = (UseOrder)moduleStack.Orders[1];
+			Assert.That(assembly.Technology.Name, Is.EqualTo("ssassm"));
+			Assert.That(assembly.Level, Is.EqualTo(1));
+			Assert.That(move.ConditionalOrders.Count, Is.EqualTo(5));
+			Assert.That(move.ConditionalOrders.Contains(assembly));
+
+			this.reloadSavedGame("gameout.saved_conditionOrdersLoad.xml");
+
+			moduleStack = ModuleStack.All["100002"];
+			Assert.That(moduleStack.Orders.Count, Is.EqualTo(6));
+			move = (MoveOrder)moduleStack.Orders[0];
+			assembly = null;
+			foreach (Order order in moduleStack.Orders)
+			{
+				UseOrder use = order as UseOrder;
+				if (use != null && use.Technology != null && use.Technology.Name == "ssassm")
+				{
+					assembly = use;
+					break;
+				}
+			}
+			Assert.That(assembly, Is.Not.Null);
+			Assert.That(assembly.Level, Is.EqualTo(1));
+			Assert.That(move.ConditionalOrders.Count, Is.EqualTo(5));
+			Assert.That(move.ConditionalOrders.Contains(assembly));
+		}
 
 		[Test]
 		public void SaveLoad_PersistsModuleDamageBetweenTurns()

@@ -9326,17 +9326,17 @@ Galaxy report:
 ------------------------------------------------------------
     orbit [O00001], has no atmosphere.
     + space shuttle [100], 10 space shuttle [shuttl].
-      size: 2000, mass: 7500/1323 (300), capacity: 1250/860, crew: 20/38, upkeep: 1047 (1000) cash
-      [cash], consume: 38 (0) units of food [food], 38 (0) units of terran breathing gas mixture
+      size: 2000, mass: 7500/1321 (300), capacity: 1250/858, crew: 20/37, upkeep: 1037 (1000) cash
+      [cash], consume: 37 (0) units of food [food], 37 (0) units of terran breathing gas mixture
       [terair].
       movement speed: 0.6 in space.
       fuel requirements: 10 units of uranium [uraniu] , 10 units of oxyhydro [h2o2] per 13 weeks.
       items: 37 terrans [terran] (size: 148, mass: 148, upkeep: 37 cash [cash], consume: 37 units of
       food [food], 37 units of terran breathing gas mixture [terair]), 30 units of iron [iron]
       (size: 150, mass: 300), 16 units of titanium [titani] (size: 160, mass: 160), 16 units of
-      silicium [silici] (size: 80, mass: 48), 15 units of copper [copper] (size: 75, mass: 120), 92
-      units of food [food] (size: 92, mass: 92), 59 units of oxyhydro [h2o2] (size: 59, mass: 59),
-      92 units of terran breathing gas mixture [terair] (size: 92, mass: 92).
+      silicium [silici] (size: 80, mass: 48), 15 units of copper [copper] (size: 75, mass: 120), 93
+      units of food [food] (size: 93, mass: 93), 59 units of oxyhydro [h2o2] (size: 59, mass: 59),
+      93 units of terran breathing gas mixture [terair] (size: 93, mass: 93).
       effects:
         can operate for another 5 weeks without refueling.
       events:
@@ -9352,11 +9352,6 @@ Galaxy report:
         week 2: produced computer library [cmplib] into computer library [115].
         week 3: departed from Dusty field [R00001] (0,0) to orbit [O00001], ETA 0.
         week 3: arrived at orbit [O00001] from Dusty field [R00001] (0,0).
-      + Caste Prime CEO [000001], terran [terran].
-        size: 4, mass: 4, capacity: 3/0, upkeep: 10 cash [cash], consume: unit of food [food], unit
-        of terran breathing gas mixture [terair].
-        events:
-          week 1: saw command bridge [112] in orbit [O00001].
 
     Dusty field [R00001] (0,0), dusty region, settlement capacity 4/0.
     Exits:
@@ -9396,8 +9391,8 @@ Galaxy report:
           movement speed: 0.3 in space.
           technologies: alien fighter construction [alnfgh].
     + spaceship hull [101], spaceship hull [sshull].
-      size: 5000, mass: 10000/1360 (100), capacity: 4500/2000, energy: 60/51 (1), crew: 3/3, upkeep:
-      314 (20) cash [cash], consume: 3 (0) units of food [food], 3 (0) units of terran breathing gas
+      size: 5000, mass: 10000/1362 (100), capacity: 4500/2000, energy: 60/51 (1), crew: 3/4, upkeep:
+      324 (20) cash [cash], consume: 4 (0) units of food [food], 4 (0) units of terran breathing gas
       mixture [terair].
       events:
         week 1: departed from orbit [O00002] to orbit [O00001], ETA 0.
@@ -9406,16 +9401,23 @@ Galaxy report:
         week 2: departed from orbit [O00001] to Dusty field [R00001] (0,0), ETA 0.
         week 2: arrived at Dusty field [R00001] (0,0) from orbit [O00001].
       + command bridge [112], command bridge [cbridg], immobile.
-        size: 800, mass: 342 (300), capacity: 200/42, energy: 5, crew: 1/1, upkeep: 101 (100) cash
-        [cash], consume: (0) unit of food [food], (0) unit of terran breathing gas mixture [terair].
+        size: 800, mass: 344 (300), capacity: 200/44, energy: 5, crew: 1/2, upkeep: 111 (100) cash
+        [cash], consume: 2 (0) units of food [food], 2 (0) units of terran breathing gas mixture
+        [terair].
         items: terran [terran] (size: 4, mass: 4, upkeep: cash [cash], consume: unit of food [food],
-        unit of terran breathing gas mixture [terair]), 19 units of food [food] (size: 19, mass:
-        19), 19 units of terran breathing gas mixture [terair] (size: 19, mass: 19).
+        unit of terran breathing gas mixture [terair]), 18 units of food [food] (size: 18, mass:
+        18), 18 units of terran breathing gas mixture [terair] (size: 18, mass: 18).
         events:
           week 1: got terran [terran] from space shuttle [100].
           week 1: got 20 units of food [food] from space shuttle [100].
           week 1: got 20 units of terran breathing gas mixture [terair] from space shuttle [100].
           week 1: stacked under spaceship hull [101].
+        + Caste Prime CEO [000001], terran [terran].
+          size: 4, mass: 4, capacity: 3/0, upkeep: 10 cash [cash], consume: unit of food [food],
+          unit of terran breathing gas mixture [terair].
+          events:
+            week 1: stacked under command bridge [112].
+            week 1: saw command bridge [112] in orbit [O00001].
       + fission reactor [113], fission reactor [fisrec], immobile.
         size: 400, mass: 144 (140), capacity: 100/4, energy: 60/10 (consume: unit of uranium
         [uraniu] for 13 weeks), crew: 1/1, upkeep: 91 (90) cash [cash], consume: (0) unit of food
@@ -9496,8 +9498,8 @@ sell 300 food
 #modulestack 100
 ; + space shuttle [100], 10 space shuttle [shuttl].
 ; items: 37 terrans [terran], 30 units of iron [iron], 16 units of titanium [titani], 16 units of
-; silicium [silici], 15 units of copper [copper], 92 units of food [food], 59 units of oxyhydro
-; [h2o2], 92 units of terran breathing gas mixture [terair].
+; silicium [silici], 15 units of copper [copper], 93 units of food [food], 59 units of oxyhydro
+; [h2o2], 93 units of terran breathing gas mixture [terair].
 ; effects:
 ;   can operate for another 5 weeks without refueling.
 
@@ -9510,7 +9512,7 @@ sell 300 food
 
 #modulestack 112
 ; + command bridge [112], command bridge [cbridg], immobile.
-; items: terran [terran], 19 units of food [food], 19 units of terran breathing gas mixture [terair].
+; items: terran [terran], 18 units of food [food], 18 units of terran breathing gas mixture [terair].
 
 #modulestack 113
 ; + fission reactor [113], fission reactor [fisrec], immobile.

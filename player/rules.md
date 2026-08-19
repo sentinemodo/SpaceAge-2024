@@ -143,7 +143,9 @@ The two kinds are independent except where you chain them with `-` / `+`. An imm
 | `COPY` comments mention `COPY all TO …` | **not parsed** — technology id required                  | technology + receiver attributes                    |
 
 
-Player turn files use **text**. XML matters for saved games, not for `order.*` drafts.
+Player turn files use **text**. XML matters for saved games, not for `order.*` drafts. Text `-` / `+` syntax is unchanged.
+
+**Nested conditions:** `Order.SaveXml` writes leftover `-` / `+` children as nested `<order conditions="…">` under the parent (top-level save is `Level == 0` only). `LoadAll` walks those nested `<order>` elements and assigns the same `-` / `+` links as text (`AssignCondition`). Duplicate subject + conditions + verb XML is skipped. Frozen SampleGame `gamein.2_contract.xml` / `gamein.3_contract.xml` keep those leftovers; player-facing turn 2/3 reports are unchanged.
 
 ---
 

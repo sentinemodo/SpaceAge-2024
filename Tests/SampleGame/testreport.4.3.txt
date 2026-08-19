@@ -10146,6 +10146,8 @@ sell 100 food
 ; effects:
 ;   will move for another 4 weeks before next destination.
 move R00002
+-capture 000012
+-capture all
 
 #modulestack 116
 ; + computer library [116], computer library [cmplib], immobile.
