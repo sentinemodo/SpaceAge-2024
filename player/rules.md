@@ -401,6 +401,12 @@ Starts `TrainingSkill` or `TrainingOfficer` (officer requires matching crew of t
 
 Uses a loaded (or level-0) technology: consumes catalog inputs and after `use-time` produces items or a module. `AS` names the new module stack; `FOR` is the nest parent. `AS` and `FOR` are independent (`use wndtrb for 000021` is valid). Level 0 techs do not need to be copied onto the stack. Duration scales with `UseTime`, efficiency, and active quantity. `use-allowed-in` can restrict both module **group** and a specific module type (`module="sckbay"` for shipboard pharmacy `[pharms]`).
 
+In-progress work is a `Producing*` effect. It only ticks when a matching unconditioned `USE` runs that week (`Use()`). After save/load, the leftover order reconnects to that effect:
+
+- **Same technology** — production **continues**; inputs are not consumed again. A new `AS` / `FOR` **retargets** the producing effect’s receiver/parent.
+- **Different technology** — the leftover `USE` is dropped. The old producing effect **freezes** (stays on the stack, duration unchanged) while the new `USE` runs. Reissue the original tech to **resume** that frozen effect, still without consuming again.
+- Conditioned lines (`-use` / `+use`) do not merge or drop leftovers this way.
+
 Omit `FOR`: `ReceiverParent` defaults to the **producer**. `ProducingModule` treats that as “no extra nest”: the product is **formed as a sibling** (`produced.Parent = Producer.Parent`, same orbit/region). At complete it does **not** stack under the producer. `use spctrl as new102` therefore leaves a command bridge sitting next to the shuttle.
 
 `use TECH as newX for 101` stacks the product under hull `101` when production **completes**, same location required (`STACK failed. Parent is in different location.` if the hull has already left). Alternative: `#modulestack new102` then `stack 101` (immediate, also same location). A nested factory can `USE` while the hull’s long slot is a `MOVE` (one long **per subject**). The shuttle itself may only `USE` in **orbit**.

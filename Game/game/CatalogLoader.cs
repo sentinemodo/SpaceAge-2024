@@ -311,7 +311,7 @@ namespace SpaceAge
                                 items.Add(item);
                                 technology.UseConsumeItems = items;
 							}
-							else if (el.HasAttribute("module"))
+							else if (elConsume.HasAttribute("module"))
 							{
 								module = ModuleType.All[elConsume.GetAttribute("module")];
 								technology.UseConsumeModules = module;

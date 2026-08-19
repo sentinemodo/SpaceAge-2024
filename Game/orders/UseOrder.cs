@@ -254,6 +254,19 @@ namespace SpaceAge
 
 		public Producing Producing { get; set; }
 
+		private Producing FindMatchingProducing()
+		{
+			foreach (Effect effect in this.Producer.Effects)
+			{
+				Producing producing = effect as Producing;
+				if (producing != null && !producing.Executed && producing.Technology == this.Technology)
+				{
+					return producing;
+				}
+			}
+			return null;
+		}
+
 		private void TryReconnectProducing()
 		{
 			if (this.Producing != null)
@@ -261,37 +274,29 @@ namespace SpaceAge
 				return;
 			}
 
-			Producing existing = this.Producer.Effects.Producing;
-			if (existing == null || existing.Executed || existing.Technology != this.Technology)
+			Producing existing = this.FindMatchingProducing();
+			if (existing == null)
 			{
 				return;
 			}
 
-			if (existing is ProducingModule producingModule)
-			{
-				if (this.Technology.ProductionType != EProductionType.Modules)
-				{
-					return;
-				}
-
-				ModuleStack receiver = this.Receiver as ModuleStack;
-				ModuleStack existingReceiver = producingModule.Receiver as ModuleStack;
-				ModuleStack receiverParent = this.ReceiverParent as ModuleStack;
-				ModuleStack existingReceiverParent = producingModule.ReceiverParent as ModuleStack;
-				if (receiver == null || existingReceiver == null || receiver.Name != existingReceiver.Name)
-				{
-					return;
-				}
-				if (receiverParent == null || existingReceiverParent == null || receiverParent.Name != existingReceiverParent.Name)
-				{
-					return;
-				}
-
-				producingModule.UseOrder = this;
-			}
-
 			this.Producing = existing;
 			this.durationLeft = existing.Duration;
+		}
+
+		private void SyncProducingTarget()
+		{
+			ProducingModule producingModule = this.Producing as ProducingModule;
+			if (producingModule == null || this.Technology.ProductionType != EProductionType.Modules)
+			{
+				return;
+			}
+
+			producingModule.UseOrder = this;
+			if (this.Receiver != producingModule.Receiver || this.ReceiverParent != producingModule.ReceiverParent)
+			{
+				producingModule.Retarget(this.Receiver, this.ReceiverParent);
+			}
 		}
 
 		public override void Execute(int week)
@@ -300,6 +305,7 @@ namespace SpaceAge
 			if (this.Usable(week) && this.CanOperate(week) && this.HasTechnology)
 			{
 				this.TryReconnectProducing();
+				this.SyncProducingTarget();
 
 				// assign production if not producing
 				if (this.Producing != null && !this.Producing.Executed)

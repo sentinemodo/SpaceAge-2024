@@ -421,6 +421,17 @@ namespace UnitTests
 		}
 
 		[Test]
+		public void LoadTechnologyConsumeModules_CityPlanningConsumesCity()
+		{
+			this.LoadGameDocument();
+			this.dataFile.LoadConfiguration();
+			Technology technology = Technology.All["ctypln"];
+
+			Assert.That(technology, Is.Not.Null);
+			Assert.That(technology.UseConsumeModules, Is.SameAs(ModuleType.All["city"]));
+		}
+
+		[Test]
 		public void LoadModuleStackTechnology()
 		{
 			this.LoadGameDocument();
@@ -540,16 +551,129 @@ namespace UnitTests
             Assert.That(order.IsUnlimited, Is.True);
         }
 
-        [Test, Ignore("not ready")]
+        [Test]
 		public void SaveLoadUseOrder_withUseOrderInProgress_sameOrder()
 		{
-			Assert.Fail("don't know");
+			this.LoadGameDocument();
+			this.dataFile.LoadConfiguration();
+			this.dataFile.LoadFactions();
+			this.dataFile.LoadGalaxy();
+			this.game = this.dataFile.Game;
+
+			ModuleStack factory = ModuleStack.All["000004"];
+			ItemType iron = ItemType.All["iron"];
+			int ironBefore = factory.ItemStacks[iron].Quantity;
+
+			Sequence.Ints.Push(100);
+			new OrdersReader(this.game).AssignOrders(new List<string>
+			{
+				"#faction 2",
+				"#modulestack 000004",
+				"use agrplx as \"farms1\"",
+				"#end"
+			});
+
+			this.executeFactoryWeek(factory, 0);
+			ProducingModule farms = this.producingModule(factory, "agrplx");
+			Assert.That(farms, Is.Not.Null);
+			Assert.That(farms.Duration, Is.EqualTo(3));
+			Assert.That(factory.ItemStacks[iron].Quantity, Is.EqualTo(ironBefore - 10));
+			string originalReceiver = ((ModuleStack)farms.Receiver).Name;
+
+			this.reloadSavedGame("gameout.saved_useSame.xml");
+			factory = ModuleStack.All["000004"];
+			iron = ItemType.All["iron"];
+			farms = this.producingModule(factory, "agrplx");
+			Assert.That(farms, Is.Not.Null, "in-progress production must persist across save/load");
+			Assert.That(farms.Duration, Is.EqualTo(3));
+
+			this.executeFactoryWeek(factory, 1);
+			farms = this.producingModule(factory, "agrplx");
+			Assert.That(farms.Duration, Is.EqualTo(2));
+			Assert.That(factory.ItemStacks[iron].Quantity, Is.EqualTo(ironBefore - 10), "continuing the same USE must not consume again");
+
+			Sequence.Ints.Push(200);
+			new OrdersReader(this.game).AssignOrders(new List<string>
+			{
+				"#faction 2",
+				"#modulestack 000004",
+				"use agrplx as \"farms2\"",
+				"#end"
+			});
+			this.executeFactoryWeek(factory, 2);
+			farms = this.producingModule(factory, "agrplx");
+			Assert.That(farms.Duration, Is.EqualTo(1));
+			Assert.That(((ModuleStack)farms.Receiver).Name, Is.Not.EqualTo(originalReceiver), "same tech with a new target updates the producing effect");
+			Assert.That(factory.ItemStacks[iron].Quantity, Is.EqualTo(ironBefore - 10));
 		}
-		
-		[Test, Ignore("not ready")]
+
+		[Test]
 		public void SaveLoadUseOrder_withUseOrderInProgress_newOrder()
 		{
-			Assert.Fail("don't know");
+			this.LoadGameDocument();
+			this.dataFile.LoadConfiguration();
+			this.dataFile.LoadFactions();
+			this.dataFile.LoadGalaxy();
+			this.game = this.dataFile.Game;
+
+			ModuleStack factory = ModuleStack.All["000004"];
+			ItemType iron = ItemType.All["iron"];
+			int ironBefore = factory.ItemStacks[iron].Quantity;
+
+			Sequence.Ints.Push(100);
+			new OrdersReader(this.game).AssignOrders(new List<string>
+			{
+				"#faction 2",
+				"#modulestack 000004",
+				"use armcbt as \"tanks1\"",
+				"#end"
+			});
+			this.executeFactoryWeek(factory, 0);
+			ProducingModule tanks = this.producingModule(factory, "armcbt");
+			Assert.That(tanks, Is.Not.Null);
+			Assert.That(tanks.Duration, Is.EqualTo(3));
+			Assert.That(factory.ItemStacks[iron].Quantity, Is.EqualTo(ironBefore - 4));
+			string tanksReceiver = ((ModuleStack)tanks.Receiver).Name;
+
+			this.reloadSavedGame("gameout.saved_useNew.xml");
+			factory = ModuleStack.All["000004"];
+			iron = ItemType.All["iron"];
+			Assert.That(this.producingModule(factory, "armcbt").Duration, Is.EqualTo(3));
+
+			Sequence.Ints.Push(200);
+			new OrdersReader(this.game).AssignOrders(new List<string>
+			{
+				"#faction 2",
+				"#modulestack 000004",
+				"use wndtrb as \"wind1\"",
+				"#end"
+			});
+			this.executeFactoryWeek(factory, 1);
+			tanks = this.producingModule(factory, "armcbt");
+			ProducingModule windmills = this.producingModule(factory, "wndtrb");
+			Assert.That(windmills, Is.Not.Null, "a different USE starts a new production");
+			Assert.That(windmills.Duration, Is.EqualTo(1));
+			Assert.That(tanks, Is.Not.Null, "previous production stays frozen");
+			Assert.That(tanks.Duration, Is.EqualTo(3));
+			Assert.That(factory.ItemStacks[iron].Quantity, Is.EqualTo(ironBefore - 4 - 1));
+
+			this.executeFactoryWeek(factory, 2);
+			Assert.That(this.producingModule(factory, "wndtrb"), Is.Null, "windmills finish");
+			tanks = this.producingModule(factory, "armcbt");
+			Assert.That(tanks.Duration, Is.EqualTo(3), "frozen tanks must not tick while windmills run");
+
+			new OrdersReader(this.game).AssignOrders(new List<string>
+			{
+				"#faction 2",
+				"#modulestack 000004",
+				"use armcbt as \"" + tanksReceiver + "\"",
+				"#end"
+			});
+			this.executeFactoryWeek(factory, 3);
+			tanks = this.producingModule(factory, "armcbt");
+			Assert.That(tanks, Is.Not.Null);
+			Assert.That(tanks.Duration, Is.EqualTo(2), "resuming the original USE continues the frozen production");
+			Assert.That(factory.ItemStacks[iron].Quantity, Is.EqualTo(ironBefore - 4 - 1), "resume must not consume tanks resources again");
 		}
 
         [Test]
@@ -957,6 +1081,45 @@ namespace UnitTests
 			Assert.That(ModuleTypeGroupXml.ToToken(EModuleTypesGroup.research), Is.Null);
 			Assert.That(ModuleTypeGroupXml.ToToken(EModuleTypesGroup.spaceStation), Is.EqualTo("space station"));
 			Assert.That(ModuleTypeGroupXml.ToToken(EModuleTypesGroup.settlement), Is.EqualTo("settlement"));
+		}
+
+		private void executeFactoryWeek(ModuleStack factory, int weekOffset)
+		{
+			factory.ExecutedLongOrder = false;
+			factory.Execute(this.game.Week + weekOffset);
+		}
+
+		private void reloadSavedGame(string testfile)
+		{
+			string testdir = Directory.GetCurrentDirectory();
+			this.dataFile.SaveGame(testdir, testfile);
+			this.game.ClearDictionaries();
+			this.game = null;
+			this.dataFile = null;
+
+			this.dataFile = new DataFile(testdir);
+			this.dataFile.LoadGameDocument(testdir, testfile);
+			this.dataFile.LoadConfiguration(testdir);
+			this.dataFile.LoadFactions();
+			this.dataFile.LoadGalaxy();
+			this.dataFile.LoadOrders();
+			this.game = this.dataFile.Game;
+		}
+
+		private ProducingModule producingModule(ModuleStack factory, string technologyName)
+		{
+			foreach (Effect effect in factory.Effects)
+			{
+				ProducingModule producing = effect as ProducingModule;
+				if (producing != null
+					&& !producing.Executed
+					&& producing.Technology != null
+					&& producing.Technology.Name == technologyName)
+				{
+					return producing;
+				}
+			}
+			return null;
 		}
     }
 }

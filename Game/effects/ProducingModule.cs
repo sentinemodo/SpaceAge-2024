@@ -69,6 +69,16 @@ namespace SpaceAge
 
         public IHolder ReceiverParent { get; set; }
 
+		public void Retarget(IHolder receiver, IHolder receiverParent)
+		{
+			this.Receiver = receiver;
+			this.ReceiverParent = receiverParent;
+			if (receiver is ModuleStack)
+			{
+				this.produced = (ModuleStack)receiver;
+			}
+		}
+
 		private ModuleStack produced = null;
 		public ModuleStack Produced
 		{
