@@ -205,7 +205,7 @@ namespace SpaceAge
 			XmlElement elOrder;
 			foreach (Faction faction in Faction.All.Values)
 			{
-				if (factionXMLreport != null & faction != factionXMLreport)
+				if (factionXMLreport != null && faction != factionXMLreport)
 					continue;
 
 				foreach (Order order in faction.Orders)
@@ -220,7 +220,7 @@ namespace SpaceAge
 			
 			foreach (ModuleStack moduleStack in ModuleStack.All.Values)
 			{
-				if (factionXMLreport != null & moduleStack.Owner != factionXMLreport)
+				if (factionXMLreport != null && moduleStack.Owner != factionXMLreport)
 					continue;
 
 				foreach (Order order in moduleStack.Orders)
@@ -235,7 +235,7 @@ namespace SpaceAge
 
 			foreach (Person person in Person.All.Values)
 			{
-				if (factionXMLreport != null & person.Owner != factionXMLreport)
+				if (factionXMLreport != null && person.Owner != factionXMLreport)
 					continue;
 
 				foreach (Order order in person.Orders)

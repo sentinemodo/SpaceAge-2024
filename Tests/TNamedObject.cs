@@ -108,6 +108,24 @@ namespace UnitTests
 			Assert.That(multiple.FullNameMultiple, Is.EqualTo("Iron"));
 		}
 
+		[Test]
+		public void SaveXml_FullName_WritesNameEn()
+		{
+			this.named.FullName = "Iron";
+			XmlDocument doc = new XmlDocument();
+			XmlElement el = this.named.SaveXml(doc, "entry");
+			Assert.That(el.GetAttribute("name-en"), Is.EqualTo("Iron"));
+		}
+
+		[Test]
+		public void SaveXml_EmptyFullName_OmitsNameEn()
+		{
+			this.named.FullName = string.Empty;
+			XmlDocument doc = new XmlDocument();
+			XmlElement el = this.named.SaveXml(doc, "entry");
+			Assert.That(el.HasAttribute("name-en"), Is.False);
+		}
+
 		private static XmlElement Element(string xml)
 		{
 			XmlDocument doc = new XmlDocument();

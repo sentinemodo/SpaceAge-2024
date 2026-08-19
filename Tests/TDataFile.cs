@@ -1572,6 +1572,29 @@ namespace UnitTests
 			Assert.That(loaded.Quantity, Is.EqualTo(3));
 		}
 
+		[Test]
+		public void SaveGame_FactionXmlReport_OmitsOtherFactionsAndInvisibleRegions()
+		{
+			this.LoadGameDocument();
+			this.dataFile.LoadConfiguration();
+			this.dataFile.LoadFactions();
+			this.dataFile.LoadGalaxy();
+			this.dataFile.LoadOrders();
+			this.game = this.dataFile.Game;
+
+			Faction castePrime = this.game.Factions["2"];
+			string testdir = Directory.GetCurrentDirectory();
+			string testfile = "gameout.saved_factionXmlReport.xml";
+			this.dataFile.SaveGame(testdir, testfile, castePrime);
+
+			XmlDocument saved = new XmlDocument();
+			saved.Load(Path.Combine(testdir, testfile));
+			Assert.That(saved.SelectNodes("/game/faction[@name='2']").Count, Is.EqualTo(1));
+			Assert.That(saved.SelectNodes("/game/faction[@name='1']").Count, Is.EqualTo(0));
+			Assert.That(saved.SelectSingleNode("//region[@name='R00001']"), Is.Not.Null);
+			Assert.That(saved.SelectSingleNode("//region[@name='R10001']"), Is.Null);
+		}
+
 		private void executeFactoryWeek(ModuleStack factory, int weekOffset)
 		{
 			factory.ExecutedLongOrder = false;

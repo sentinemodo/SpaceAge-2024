@@ -97,7 +97,7 @@ namespace SpaceAge
         {
             this.xmlElement = doc.CreateElement(objectType);
             this.xmlElement.SetAttribute("name", this.Name);
-            if (this.FullName != null & this.FullName != string.Empty)
+            if (this.FullName != null && this.FullName != string.Empty)
             {
                 this.xmlElement.SetAttribute("name-en", this.FullName);
             } 

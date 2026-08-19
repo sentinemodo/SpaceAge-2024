@@ -216,7 +216,7 @@ namespace SpaceAge
 			foreach (Faction faction in Faction.All.Values)
 			{
 				// do nost save is the xml report is prepared for faction
-				if (factionXMLreport != null & faction != factionXMLreport)
+				if (factionXMLreport != null && faction != factionXMLreport)
 					continue;
 
 				// Do not save factions without modulestacks
