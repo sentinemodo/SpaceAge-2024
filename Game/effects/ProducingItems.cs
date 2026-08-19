@@ -31,6 +31,12 @@ namespace SpaceAge
 			}
 		}
 
+		public ProducingItems(IEffectable producer)
+			: base(producer, 0)
+		{
+			this.ProducedItemStacks = new ItemStacks();
+		}
+
 		public ProducingItems(IEffectable producer, Technology technology, int duration)
 			: base(producer, technology, duration)
 		{
@@ -69,6 +75,13 @@ namespace SpaceAge
 				base.Execute(week);
 			}
 		}
+
+        public override void LoadXml(XmlElement elProducingItemsEffect)
+        {
+            base.LoadXml(elProducingItemsEffect);
+            this.ProducedItemStacks = new ItemStacks();
+            this.ProducedItemStacks.LoadXml(elProducingItemsEffect, this.Producer, "in-production");
+        }
 
         public override XmlElement SaveXml(XmlDocument doc)
         {

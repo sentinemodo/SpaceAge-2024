@@ -1256,6 +1256,228 @@ namespace UnitTests
 		}
 
 		[Test]
+		public void SaveLoad_PersistsProducingItemsEffect()
+		{
+			this.LoadGameDocument();
+			this.dataFile.LoadConfiguration();
+			this.dataFile.LoadFactions();
+			this.dataFile.LoadGalaxy();
+			this.game = this.dataFile.Game;
+
+			ModuleStack farms = ModuleStack.All["000008"];
+			Technology farming = Technology.All["farmng"];
+			new ProducingItems(farms, farming, 3);
+
+			this.reloadSavedGame("gameout.saved_producingItems.xml");
+			farms = ModuleStack.All["000008"];
+			ProducingItems producing = this.producingItems(farms, "farmng");
+			Assert.That(producing, Is.Not.Null, "in-progress producing-items must persist across save/load");
+			Assert.That(producing.Duration, Is.EqualTo(3));
+			Assert.That(producing.ProducedItemStacks[ItemType.All["food"]].Quantity, Is.EqualTo(15));
+		}
+
+		[Test]
+		public void SaveLoad_PersistsProducingEnergyEffect()
+		{
+			this.LoadGameDocument();
+			this.dataFile.LoadConfiguration();
+			this.dataFile.LoadFactions();
+			this.dataFile.LoadGalaxy();
+			this.game = this.dataFile.Game;
+
+			ModuleStack plants = ModuleStack.All["000011"];
+			new ProducingEnergy(plants, Technology.All["farmng"], 4);
+
+			this.reloadSavedGame("gameout.saved_producingEnergy.xml");
+			plants = ModuleStack.All["000011"];
+			ProducingEnergy producing = null;
+			foreach (Effect effect in plants.Effects)
+			{
+				producing = effect as ProducingEnergy;
+				if (producing != null)
+				{
+					break;
+				}
+			}
+			Assert.That(producing, Is.Not.Null, "in-progress producing-energy must persist across save/load");
+			Assert.That(producing.Duration, Is.EqualTo(4));
+			Assert.That(producing.Technology.Name, Is.EqualTo("farmng"));
+		}
+
+		[Test]
+		public void SaveLoad_PersistsReceivingItemsEffect()
+		{
+			this.LoadGameDocument();
+			this.dataFile.LoadConfiguration();
+			this.dataFile.LoadFactions();
+			this.dataFile.LoadGalaxy();
+			this.game = this.dataFile.Game;
+
+			ModuleStack factory = ModuleStack.All["000004"];
+			ModuleStack farms = ModuleStack.All["000008"];
+			new ReceivingItems(factory, farms, ItemStack.Cash(7), 2);
+
+			this.reloadSavedGame("gameout.saved_receivingItems.xml");
+			factory = ModuleStack.All["000004"];
+			ReceivingItems receiving = null;
+			foreach (Effect effect in factory.Effects)
+			{
+				receiving = effect as ReceivingItems;
+				if (receiving != null)
+				{
+					break;
+				}
+			}
+			Assert.That(receiving, Is.Not.Null, "in-progress receiving-items must persist across save/load");
+			Assert.That(receiving.Duration, Is.EqualTo(2));
+			Assert.That(receiving.Transferer.Name, Is.EqualTo("000008"));
+			Assert.That(receiving.ItemStack.ItemType.Name, Is.EqualTo("cash"));
+			Assert.That(receiving.ItemStack.Quantity, Is.EqualTo(7));
+		}
+
+		[Test]
+		public void SaveLoad_PersistsReceivingModulesEffect()
+		{
+			this.LoadGameDocument();
+			this.dataFile.LoadConfiguration();
+			this.dataFile.LoadFactions();
+			this.dataFile.LoadGalaxy();
+			this.game = this.dataFile.Game;
+
+			ModuleStack factory = ModuleStack.All["000004"];
+			new ReceivingModules(factory, ModuleStack.All["000007"], ModuleStack.All["000006"], 3);
+
+			this.reloadSavedGame("gameout.saved_receivingModules.xml");
+			factory = ModuleStack.All["000004"];
+			ReceivingModules receiving = null;
+			foreach (Effect effect in factory.Effects)
+			{
+				receiving = effect as ReceivingModules;
+				if (receiving != null)
+				{
+					break;
+				}
+			}
+			Assert.That(receiving, Is.Not.Null, "in-progress receiving-modules must persist across save/load");
+			Assert.That(receiving.Duration, Is.EqualTo(3));
+			Assert.That(receiving.Transferer.Name, Is.EqualTo("000007"));
+			Assert.That(receiving.ModuleStack.Name, Is.EqualTo("000006"));
+		}
+
+		[Test]
+		public void SaveLoad_PersistsReceivingTechnologyEffect()
+		{
+			this.LoadGameDocument();
+			this.dataFile.LoadConfiguration();
+			this.dataFile.LoadFactions();
+			this.dataFile.LoadGalaxy();
+			this.game = this.dataFile.Game;
+
+			ModuleStack factory = ModuleStack.All["000004"];
+			new ReceivingTechnology(factory, ModuleStack.All["000008"], Technology.All["farmng"], 2);
+
+			this.reloadSavedGame("gameout.saved_receivingTechnology.xml");
+			factory = ModuleStack.All["000004"];
+			ReceivingTechnology receiving = null;
+			foreach (Effect effect in factory.Effects)
+			{
+				receiving = effect as ReceivingTechnology;
+				if (receiving != null)
+				{
+					break;
+				}
+			}
+			Assert.That(receiving, Is.Not.Null, "in-progress receiving-technology must persist across save/load");
+			Assert.That(receiving.Duration, Is.EqualTo(2));
+			Assert.That(receiving.Transferer.Name, Is.EqualTo("000008"));
+			Assert.That(receiving.Technology.Name, Is.EqualTo("farmng"));
+		}
+
+		[Test]
+		public void SaveLoad_PersistsLightlyDamagedEffect()
+		{
+			this.LoadGameDocument();
+			this.dataFile.LoadConfiguration();
+			this.dataFile.LoadFactions();
+			this.dataFile.LoadGalaxy();
+			this.game = this.dataFile.Game;
+
+			ModuleStack drill = ModuleStack.All["000006"];
+			new LightlyDamaged(drill);
+
+			this.reloadSavedGame("gameout.saved_lightlyDamaged.xml");
+			drill = ModuleStack.All["000006"];
+			LightlyDamaged damaged = null;
+			foreach (Effect effect in drill.Effects)
+			{
+				damaged = effect as LightlyDamaged;
+				if (damaged != null)
+				{
+					break;
+				}
+			}
+			Assert.That(damaged, Is.Not.Null, "lightly-damaged must persist across save/load");
+		}
+
+		[Test]
+		public void SaveLoad_PersistsTrainingSkillEffect()
+		{
+			this.LoadGameDocument();
+			this.dataFile.LoadConfiguration();
+			this.dataFile.LoadFactions();
+			this.dataFile.LoadGalaxy();
+			this.game = this.dataFile.Game;
+
+			Person trainee = Person.All["200001"];
+			new TrainingSkill(trainee, 4, SkillType.All["arpldr"]);
+
+			this.reloadSavedGame("gameout.saved_trainingSkill.xml");
+			trainee = Person.All["200001"];
+			TrainingSkill training = null;
+			foreach (Effect effect in trainee.Effects)
+			{
+				training = effect as TrainingSkill;
+				if (training != null)
+				{
+					break;
+				}
+			}
+			Assert.That(training, Is.Not.Null, "in-progress training-skill must persist across save/load");
+			Assert.That(training.Duration, Is.EqualTo(4));
+			Assert.That(training.SkillType.Name, Is.EqualTo("arpldr"));
+		}
+
+		[Test]
+		public void SaveLoad_PersistsTrainingOfficerEffect()
+		{
+			this.LoadGameDocument();
+			this.dataFile.LoadConfiguration();
+			this.dataFile.LoadFactions();
+			this.dataFile.LoadGalaxy();
+			this.game = this.dataFile.Game;
+
+			ModuleStack hq = ModuleStack.All["000112"];
+			new TrainingOfficer(hq, 5, Race.All["terran"], Person.All["000101"], hq);
+
+			this.reloadSavedGame("gameout.saved_trainingOfficer.xml");
+			hq = ModuleStack.All["000112"];
+			TrainingOfficer training = null;
+			foreach (Effect effect in hq.Effects)
+			{
+				training = effect as TrainingOfficer;
+				if (training != null)
+				{
+					break;
+				}
+			}
+			Assert.That(training, Is.Not.Null, "in-progress training-officer must persist across save/load");
+			Assert.That(training.Duration, Is.EqualTo(5));
+			Assert.That(training.Race.Name, Is.EqualTo("terran"));
+			Assert.That(training.Officer.Name, Is.EqualTo("000101"));
+			Assert.That(training.OfficerParent.Name, Is.EqualTo("000112"));
+		}
+
+		[Test]
 		public void SaveLoad_PersistsResearchCapacityGroup()
 		{
 			this.LoadGameDocument();
@@ -1315,6 +1537,21 @@ namespace UnitTests
 				ProducingModule producing = effect as ProducingModule;
 				if (producing != null
 					&& !producing.Executed
+					&& producing.Technology != null
+					&& producing.Technology.Name == technologyName)
+				{
+					return producing;
+				}
+			}
+			return null;
+		}
+
+		private ProducingItems producingItems(ModuleStack producer, string technologyName)
+		{
+			foreach (Effect effect in producer.Effects)
+			{
+				ProducingItems producing = effect as ProducingItems;
+				if (producing != null
 					&& producing.Technology != null
 					&& producing.Technology.Name == technologyName)
 				{

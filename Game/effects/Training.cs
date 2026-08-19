@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Xml;
 
 namespace SpaceAge
 {
@@ -27,5 +28,11 @@ namespace SpaceAge
 		{
 			this.ExecuteCondition = true;
 		}
+
+        public override void LoadXml(XmlElement elTraining)
+        {
+            base.LoadXml(elTraining);
+            this.ExecuteCondition = false;
+        }
 	}
 }

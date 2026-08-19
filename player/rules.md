@@ -2,7 +2,7 @@
 
 Checked **19 Aug 2026** against engine **0.1.141** (`Game/Program.cs`).
 
-Sources: `Game/orders/EOrderType.cs`, `Game/orders/OrdersReader.cs`, `Game/orders/Orders.cs`, `Game/Game.cs` (week loop), `Game/data structures/ModuleStack.Upkeep.cs` (sick bay, medical consume, quarterly maintenance), `Game/game/DataFile.cs` (`LoadOrders` delegates to `OrderXml`), `Game/game/OrderXml.cs` (XML switch), each `Game/orders/*Order.Parse` / `Execute`. Sample prefix usage: `Tests/SampleGame/orders.*.txt`.
+Sources: `Game/orders/EOrderType.cs`, `Game/orders/OrdersReader.cs`, `Game/orders/Orders.cs`, `Game/Game.cs` (week loop), `Game/data structures/ModuleStack.Upkeep.cs` (sick bay, medical consume, quarterly maintenance), `Game/game/DataFile.cs` (`LoadOrders` delegates to `OrderXml`), `Game/game/OrderXml.cs` (XML switch), `Game/effects/Effects.cs` (`LoadXml` effect types), each `Game/orders/*Order.Parse` / `Execute`. Sample prefix usage: `Tests/SampleGame/orders.*.txt`.
 
 Not source of truth: `Game/documentation/Rules.txt`. Turn order files are **Windows-1251** (same as reports). Verbs are case-insensitive; most arguments are not.
 
@@ -102,7 +102,7 @@ After week 13: **quarterly maintenance**, then **quarterly wounded outcome**, th
 
 - Bank: quarterly interest (`AddQuarterlyInterest`).
 - `UpdateRates` — empty (comments only).
-- `GenerateOffers` — empty (no NPC auto-offers).
+- `GenerateOffers` — empty (no NPC auto-offers). Duration-0 leftover `receiving-items` on cities (old market delivery) **persist** after save but **never complete**; there is no player verb that clears them.
 
 Standing `@buy` / `@sell` stay on the order list and retry each week at step 6. `ATTACK` / `TACTIC` / `DECLARE` during step 2 only set stance; shooting is step 7.
 
@@ -123,7 +123,7 @@ The two kinds are independent except where you chain them with `-` / `+`. An imm
 | Duration              | Finishes in the week it succeeds (or retries later)                            | Occupies the long slot for `Duration` weeks (`use-time`, produce duration, move legs, …) |
 | Needs an active stack | No (probes and cargo still have their own checks)                              | Yes: formed, enough crew and energy (`CanOperate`)                                       |
 | Repeat `N` / `@`      | Succeed up to N weeks, or every week forever                                   | Complete N full durations, or never stop                                                 |
-| After a turn          | Dropped when `Executed` and repeat is used up; otherwise stays on the template | Same; in-progress work is kept as an effect (`Moving`, `Producing*`, `Training*`)        |
+| After a turn          | Dropped when `Executed` and repeat is used up; otherwise stays on the template | Same; in-progress work is kept as an effect (`Moving`, `Producing*`, `Training*`, `Receiving*`, `Fuelled`; `lightly-damaged` is a module marker). Those types **load again** after save (`Effects.LoadXml`). |
 
 
 **Immediate** orders are setup, probes, cargo, stance, and stacking. They do not consume the week’s long slot. `FORM`, `GET`, and `GIVE` can all fire the same week as a `USE` or `MOVE`.
@@ -146,6 +146,8 @@ The two kinds are independent except where you chain them with `-` / `+`. An imm
 Player turn files use **text**. XML matters for saved games, not for `order.*` drafts. Text `-` / `+` syntax is unchanged.
 
 **Nested conditions:** `Order.SaveXml` writes leftover `-` / `+` children as nested `<order conditions="…">` under the parent (top-level save is `Level == 0` only). `saveXml_post` writes only the **next remaining condition level**, once (no duplicate nested siblings); recursion still persists leftover `+USE` trees. `LoadAll` walks those nested `<order>` elements and assigns the same `-` / `+` links as text (`AssignCondition`). Duplicate subject + conditions + verb XML is skipped. Frozen SampleGame `gamein.2_contract.xml` / `gamein.3_contract.xml` keep those leftovers; player-facing turn 2/3 reports are unchanged.
+
+**Saved effects:** `Effects.LoadXml` accepts `fuelled`, `moving`, `producing-modules`, `producing-items`, `producing-energy`, `receiving-items`, `receiving-modules`, `receiving-technology`, `lightly-damaged`, and `training-officer`. `receiving-items` now writes a nested `<receiving>` cargo payload. Skill training still saves as `type="training-officer"` with a `skill` attribute (not a player-facing verb — issue `TRAIN SKILL`). `USE` leftover reconnects to a matching `Producing*` effect; leftover `PRODUCE` / `TRAIN` do **not** (`Producing` / `Training` on the order is null after load, so they start a new duration while the loaded effect stays frozen). Duration-0 `receiving-items` leftovers do not deliver cargo.
 
 ---
 
@@ -358,7 +360,7 @@ Walks a route. Each dest token is a **region**, **star**, **planet**, **moon**, 
 
 **Subject:** modulestack.
 
-Starts energy or item production using the stack’s module type (`ProducingEnergy` / `ProducingItems`), duration from `ProduceDuration`. Sample: `@produce cash`, `@produce energy`, `@produce terran`.
+Starts energy or item production using the stack’s module type (`ProducingEnergy` / `ProducingItems`), duration from `ProduceDuration`. Those effects survive save/load; a leftover `@produce` does **not** reconnect to them (unlike leftover `USE`). Sample: `@produce cash`, `@produce energy`, `@produce terran`.
 
 ### REPAIR
 
@@ -393,7 +395,7 @@ Weekly research output; chance of a breakthrough, else points accumulate. Bare t
 
 **Subject:** person (skill) or stack (officer).
 
-Starts `TrainingSkill` or `TrainingOfficer` (officer requires matching crew of that race). `AS` is required for officer training.
+Starts `TrainingSkill` or `TrainingOfficer` (officer requires matching crew of that race). `AS` is required for officer training. Both effects survive save/load as `type="training-officer"` (skill training is the `skill` attribute). A leftover `TRAIN` does **not** reconnect to the loaded effect (unlike leftover `USE`).
 
 ### USE
 

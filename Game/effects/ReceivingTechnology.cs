@@ -10,6 +10,11 @@ namespace SpaceAge
         public ModuleStack Transferer   { get; set; }
         public Technology Technology    { get; set; }
 
+        public ReceivingTechnology(IEffectable receiver)
+			: base(receiver, 0)
+		{
+		}
+
         public ReceivingTechnology(IEffectable receiver, ModuleStack transferer, Technology technology, int duration)
 			: base(receiver, duration)
 		{
@@ -42,6 +47,13 @@ namespace SpaceAge
 			this.Executed = true;
 			base.Execute(week);
 		}
+
+        public override void LoadXml(XmlElement elReceivingTechnology)
+        {
+            base.LoadXml(elReceivingTechnology);
+            this.Technology = Technology.All[elReceivingTechnology.GetAttribute("technology")];
+            this.Transferer = ModuleStack.All.GetOrCreateNewModuleStack(this.Receiver.Owner, elReceivingTechnology.GetAttribute("transferrer"));
+        }
 
         public override XmlElement SaveXml(XmlDocument doc)
         {

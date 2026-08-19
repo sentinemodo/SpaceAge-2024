@@ -89,7 +89,9 @@
 						<buying module="farms" quantity="1" price="100" />
 						<selling item="food" quantity="39" price="5" />
 						<selling item="terran" quantity="30" price="50" />
-						<effect duration="0" type="receiving-items" transferrer="000013" />
+						<effect duration="0" type="receiving-items" transferrer="000013">
+							<receiving type="food" quantity="300" />
+						</effect>
 						<event week="13" description="Lack of supplies: 30 unit of food [food]." />
 						<event week="13" description="15 terrans [terran] wounded from lack of supplies." />
 						<event week="13" description="8 wounded terrans [wndtrn] died of their wounds." />
@@ -413,7 +415,9 @@
 						<upkeep type="food" quantity="200" />
 						<upkeep type="cash" quantity="1033" />
 						<selling item="food" quantity="59" price="5" />
-						<effect duration="0" type="receiving-items" transferrer="000019" />
+						<effect duration="0" type="receiving-items" transferrer="000019">
+							<receiving type="food" quantity="200" />
+						</effect>
 						<event week="5" description="received wind powerplant [wnplnt] from wind powerplant [000021]." />
 						<event week="6" description="received wind powerplant [wnplnt] from wind powerplant [000021]." />
 						<modulestack name="000007" name-en="Sydney garrison" type="inftry" quantity="2" faction="1">

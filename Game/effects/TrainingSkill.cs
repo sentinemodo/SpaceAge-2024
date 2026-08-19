@@ -29,6 +29,11 @@ namespace SpaceAge
 			}
 		}
 
+		public TrainingSkill(Person trainee)
+			: base(trainee, 0)
+		{
+		}
+
 		public TrainingSkill(Person trainee, int duration, SkillType skillType)
 			: base(trainee, duration)
 		{
@@ -71,6 +76,12 @@ namespace SpaceAge
 				base.Execute(week);
 			}
 		}
+
+        public override void LoadXml(XmlElement elTrainingSkill)
+        {
+            base.LoadXml(elTrainingSkill);
+            this.SkillType = SkillType.All[elTrainingSkill.GetAttribute("skill")];
+        }
 
         public override XmlElement SaveXml(XmlDocument doc)
         {

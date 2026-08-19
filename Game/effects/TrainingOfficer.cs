@@ -36,6 +36,11 @@ namespace SpaceAge
 			}
 		}
 
+		public TrainingOfficer(ModuleStack trainer)
+			: base(trainer, 0)
+		{
+		}
+
 		public TrainingOfficer(ModuleStack trainer, int duration, Race race, Person officer, IHolder officerParent)
 			: base(trainer, duration)
 		{
@@ -101,6 +106,14 @@ namespace SpaceAge
 				base.Execute(week);
 			}
 		}
+
+        public override void LoadXml(XmlElement elTrainingOfficer)
+        {
+            base.LoadXml(elTrainingOfficer);
+            this.Race = Race.All[elTrainingOfficer.GetAttribute("race")];
+            this.Officer = Person.All.GetOrCreateNewPerson(this.Trainer.Owner, elTrainingOfficer.GetAttribute("officer"));
+            this.OfficerParent = ModuleStack.All.GetOrCreateNewModuleStack(this.Trainer.Owner, elTrainingOfficer.GetAttribute("officer-parent"));
+        }
 
         public override XmlElement SaveXml(XmlDocument doc)
         {

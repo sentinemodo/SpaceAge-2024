@@ -17,6 +17,11 @@ namespace SpaceAge
 			}
 		}
 
+		public ProducingEnergy(IEffectable producer)
+			: base(producer, 0)
+		{
+		}
+
 		public ProducingEnergy(IEffectable producer, Technology technology, int duration)
 			: base(producer, technology, duration)
 		{

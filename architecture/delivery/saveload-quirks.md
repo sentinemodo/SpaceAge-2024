@@ -23,7 +23,7 @@ ADR-0006 forbade fixing parse/save quirks during the `DataFile` extract ([PR #6]
 | **Unit** other `Tests/T*.cs` | Existing granular load/save |
 | **Integration** `Tests/SampleGame/` | Load/save goldens. Do not enable ignored turns 4–5 |
 
-Five tests stay `[Ignore("not ready")]` (`ProcessGenerateAutoOffers`, two `SaveLoadUseOrder_*`, `ExecuteTurn4`, `ExecuteTurn5`). Do not enable them here.
+Three tests stay `[Ignore("not ready")]` (`ProcessGenerateAutoOffers`, `ExecuteTurn4`, `ExecuteTurn5`). Do not enable them here. Market/economy work that would un-ignore `ProcessGenerateAutoOffers` is out of this PR.
 
 ## Inventory
 
@@ -68,11 +68,11 @@ Anti-pattern already in [`modules-and-integrations.md`](../modules-and-integrati
 ## Out of this PR
 
 - **TRANSFER text path** — `OrderXml` has `transfer`; `OrdersReader` does not; `TransferOrder.Parse` is still a TODO stub. Player manuals already mark TRANSFER as XML-only. Separate feature, not a copy-quirk.
-- Stub pipeline (`Request`, `Events`, `OrdersReader.Check`), economy `GenerateOffers` / `UpdateRates`.
+- **Market and economy** — later feature work, not a parse/save quirk. `Game.GenerateOffers` / `UpdateRates` are empty stubs; `TMarket.ProcessGenerateAutoOffers` stays `[Ignore("not ready")]`. Hardcoded market transfer cost/time and skill thresholds still have “migrate to XML” TODOs (`Market.cs`, `Skill.cs`). SampleGame cities can keep duration-0 `receiving-items` leftovers from market delivery (payload now round-trips in B3; completing or clearing those transfers is economy, not this PR). Tracked in [`future-work.md`](../future-work.md).
+- Stub pipeline (`Request`, `Events`, `OrdersReader.Check`).
 - SampleGame turns 4–5 goldens / un-ignore.
 - `NamedObject.LoadXml` applying XML `name` (would change constructor semantics globally; moon fix is A3).
 - `loadOrbit` NRE if `<orbit>` is missing (fixtures always include it).
-- Market transfer cost/time and skill thresholds “migrate to XML” TODOs.
 - Encoding, runtime, namespaces, DI ([`future-work.md`](../future-work.md)).
 - Optional ADR-0006 leftover: catalog fill-pass bodies on `ItemType` / `Technology` / `ModuleType` (not a quirk).
 
