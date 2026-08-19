@@ -447,14 +447,42 @@ namespace UnitTests
             Assert.That(seller.HasTechnology(cityPlanning));
         }
 
-        [Test, Ignore("not ready")]
+        [Test]
         public void ProcessGenerateAutoOffers()
         {
-            // assert that buys sell orders are in place standing
-            // market.process
-            // assert that new buys sell orders are added
-            // assert prices are proper 
-            Assert.Fail();
+            ModuleStack berlin = this.game.ModuleStacks["000005"];
+            ModuleStack farms = this.game.ModuleStacks["000008"];
+            ItemType food = ItemType.All["food"];
+            ItemType terran = ItemType.All["terran"];
+            ItemType iron = ItemType.All["iron"];
+            ItemType cash = ItemType.All.Cash;
+
+            Offer standingBuyFood = this.game.Offers[EOfferType.BuyItems][food][berlin].GetIndex(0);
+            Assert.That(standingBuyFood.Quantity, Is.EqualTo(200));
+            Offer standingSellTerran = this.game.Offers[EOfferType.SellItems][terran][berlin].GetIndex(0);
+            Assert.That(standingSellTerran.Quantity, Is.EqualTo(20));
+            Assert.That(standingSellTerran.Price, Is.EqualTo(50));
+            Offer standingFarmFood = this.game.Offers[EOfferType.SellItems][food][farms].GetIndex(0);
+            Assert.That(standingFarmFood.Quantity, Is.EqualTo(40));
+
+            berlin.ItemStacks.Add(new ItemStack(iron, 15));
+            berlin.Location.Market.AddPrice(iron, 10);
+
+            this.game.GenerateOffers();
+
+            Assert.That(this.game.Offers[EOfferType.BuyItems][food][berlin].GetIndex(0).Quantity, Is.EqualTo(200));
+            Offer terranAfter = this.game.Offers[EOfferType.SellItems][terran][berlin].GetIndex(0);
+            Assert.That(terranAfter.Quantity, Is.EqualTo(20));
+            Assert.That(terranAfter.Price, Is.EqualTo(50));
+            Assert.That(this.game.Offers[EOfferType.SellItems][food][farms].GetIndex(0).Quantity, Is.EqualTo(40));
+            Assert.That(this.game.Offers[EOfferType.SellItems][food][berlin].Count, Is.EqualTo(0),
+                "city already buying food must not also auto-sell it");
+            Assert.That(this.game.Offers[EOfferType.SellItems][cash][berlin].Count, Is.EqualTo(0),
+                "cash is not listed for sale");
+
+            Offer ironOffer = this.game.Offers[EOfferType.SellItems][iron][berlin].GetIndex(0);
+            Assert.That(ironOffer.Quantity, Is.EqualTo(15));
+            Assert.That(ironOffer.Price, Is.EqualTo(10));
         }
 
         [Test]

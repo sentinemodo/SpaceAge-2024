@@ -2,7 +2,7 @@
 
 Checked **19 Aug 2026** against engine **0.1.141** (`Game/Program.cs`).
 
-Sources: `Game/orders/EOrderType.cs`, `Game/orders/OrdersReader.cs`, `Game/orders/Orders.cs`, `Game/Game.cs` (week loop), `Game/Program.cs` (`/no-turn`, `/check`), `Game/Research.cs` (weekly output, breakthrough, preference), `Game/data structures/ModuleStack.Upkeep.cs` (sick bay, medical consume, quarterly maintenance), `Game/data structures/Galaxy.cs` (`LoadXml` / `LoadExits`), `Game/data structures/Exits.cs` / `ExitMode.cs` / `Region.cs` (region **Exits:** lines), `Game/game/DataFile.cs` (`LoadOrders` / `SaveOrders` delegate to `OrderXml`), `Game/game/OrderXml.cs` (XML switch), `Game/game/ModuleTypeGroupXml.cs` (`RESEARCH GROUP` tokens), `Game/effects/Effects.cs` (`LoadXml` effect types), each `Game/orders/*Order.Parse` / `Execute`. Sample prefix usage: `Tests/SampleGame/orders.*.txt`.
+Sources: `Game/orders/EOrderType.cs`, `Game/orders/OrdersReader.cs`, `Game/orders/Orders.cs`, `Game/Game.cs` (week loop, `GenerateOffers`), `Game/Program.cs` (`/no-turn`, `/check`), `Game/Research.cs` (weekly output, breakthrough, preference), `Game/data structures/ModuleStack.Upkeep.cs` (sick bay, medical consume, quarterly maintenance), `Game/data structures/Galaxy.cs` (`LoadXml` / `LoadExits`), `Game/data structures/Exits.cs` / `ExitMode.cs` / `Region.cs` (region **Exits:** lines), `Game/game/DataFile.cs` (`LoadOrders` / `SaveOrders` delegate to `OrderXml`), `Game/game/OrderXml.cs` (XML switch), `Game/game/ModuleTypeGroupXml.cs` (`RESEARCH GROUP` tokens), `Game/effects/Effects.cs` (`LoadXml` effect types), each `Game/orders/*Order.Parse` / `Execute`. Sample prefix usage: `Tests/SampleGame/orders.*.txt`.
 
 Not source of truth: `Game/documentation/Rules.txt`. Turn order files are **Windows-1251** (same as reports). Verbs are case-insensitive; most arguments are not.
 
@@ -102,9 +102,9 @@ After week 13: **quarterly maintenance**, then **quarterly wounded outcome**, th
 
 - Bank: quarterly interest (`AddQuarterlyInterest`).
 - `UpdateRates` — empty (comments only).
-- `GenerateOffers` — empty (no NPC auto-offers). Duration-0 leftover `receiving-items` on cities (old market delivery) **persist** after save but **never complete**; there is no player verb that clears them.
+- `GenerateOffers` — NPC faction `[1]` stacks whose module type is `city` auto-list on-hand inventory as `SellItems` `Offer`s (same objects as XML `<selling>`; not leftover player `SELL` orders). Skips cash. Skips an item type if that city already has a **buy or sell** offer for it (no simultaneous buy+sell of the same type; standing offers are not rewritten). Quantity is on-hand; price is `Market.GetPrice`; skip if price ≤ 0. Farms and other non-city stacks are not auto-listed. Listings appear on this turn’s reports and save; weekly buy matching (step 6) can hit them from **next** turn. Duration-0 leftover `receiving-items` on cities (old market delivery) **persist** after save but **never complete**; there is no player verb that clears them.
 
-Standing `@buy` / `@sell` stay on the order list and retry each week at step 6. `ATTACK` / `TACTIC` / `DECLARE` during step 2 only set stance; shooting is step 7.
+Standing `@buy` / `@sell` stay on the order list and retry each week at step 6. NPC city auto-listings have no leftover `SELL` and persist as market `Offer`s. `ATTACK` / `TACTIC` / `DECLARE` during step 2 only set stance; shooting is step 7.
 
 ## Immediate vs long
 
@@ -187,7 +187,7 @@ Sets the owner’s attitude toward that unit id to **enemy**. Combat itself is r
 
 **Subject:** an offerent (trading stack).
 
-Posts a standing buy on the local market (`Offer.Process`). Quantity `ALL` sets `AllQuantity`. Omitted `AT` leaves price unrestricted (`Price = -1`). First token is treated as a **technology id** if it is in the catalog (do not write a trailing `technology` word — Parse would reject it). Sample: `@buy all terran`.
+Posts a standing buy on the local market (`Offer.Process`). Matching can complete against leftover player `SELL` and against market `Offer`s (XML `<selling>`, including NPC city auto-listings from end of turn). Quantity `ALL` sets `AllQuantity`. Omitted `AT` leaves price unrestricted (`Price = -1`). First token is treated as a **technology id** if it is in the catalog (do not write a trailing `technology` word — Parse would reject it). Sample: `@buy all terran`.
 
 ### CAPTURE
 
@@ -317,7 +317,7 @@ Succeeds if that stack or person is at the observer’s location. Both person wo
 
 **Subject:** offerent.
 
-Lists a standing sell (`Offer`). Matching is driven from the buy side; Execute does not complete the trade itself. `AT AVERAGE` uses the local market price. Sample: `-sell 1 wnplnt`. Same technology-id rule as BUY (no trailing `technology` word).
+Lists a standing sell (`Offer`) and keeps a leftover `SELL` on the template. Matching is driven from the buy side; Execute does not complete the trade itself. `AT AVERAGE` uses the local market price. Sample: `-sell 1 wnplnt`. Same technology-id rule as BUY (no trailing `technology` word). NPC city auto-listings are `Offer`s only (no leftover `SELL`); see [Turn sequence](#turn-sequence).
 
 ### SET
 

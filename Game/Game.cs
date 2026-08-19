@@ -394,11 +394,60 @@ namespace SpaceAge
 
 		#region economy
 
-        private void GenerateOffers()
+        public void GenerateOffers()
         {
-            // foreach neutral modulestack generate trade offer
-            // neutral faction cities cannot simultaneously sell and buy the same things
-            // only offer for sale stuff that is actually available
+            foreach (ModuleStack stack in this.ModuleStacks.Values)
+            {
+                if (stack.Owner == null || stack.Owner.Name != "1")
+                {
+                    continue;
+                }
+                if (stack.ModuleType == null || stack.ModuleType.Name != "city")
+                {
+                    continue;
+                }
+
+                foreach (ItemStack items in stack.ItemStacks.Values)
+                {
+                    if (items == null || items.Quantity <= 0)
+                    {
+                        continue;
+                    }
+                    if (items.ItemType == ItemType.All.Cash)
+                    {
+                        continue;
+                    }
+                    if (this.hasItemOffer(stack, EOfferType.BuyItems, items.ItemType)
+                        || this.hasItemOffer(stack, EOfferType.SellItems, items.ItemType))
+                    {
+                        continue;
+                    }
+
+                    int price = (int)stack.Location.Market.GetPrice(items.ItemType);
+                    if (price <= 0)
+                    {
+                        continue;
+                    }
+
+                    Offer offer = new Offer(stack.Location.Market, stack, EOfferType.SellItems);
+                    offer.ItemType = items.ItemType;
+                    offer.Quantity = items.Quantity;
+                    offer.Price = price;
+                    Offer.All.ReuseEquivalent(offer);
+                }
+            }
+        }
+
+        private bool hasItemOffer(ModuleStack stack, EOfferType offerType, ItemType itemType)
+        {
+            foreach (Offer offer in Offer.All[stack])
+            {
+                if (offer.OfferType == offerType && offer.ItemType == itemType)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         private void UpdateBankAccounts()
