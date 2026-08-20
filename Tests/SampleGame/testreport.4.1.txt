@@ -5,7 +5,7 @@ Content-Disposition: attachment
 SpaceAge report for NPC [1].
 Turn 4, Year 2021, September 1.
 
-SpaceAge Engine Version: 0.1.141.
+SpaceAge Engine Version: 0.1.142.
 
 Events during turn:
   none.
@@ -1258,7 +1258,7 @@ Galaxy report:
     Exits:
     Resources: 100 units of iron [iron], 100 units of silicium [silici], 100 units of titanium
     [titani], 100 units of uranium [uraniu], 100 units of copper [copper], 100 units of silicium
-    [silici].
+    [silici], 100 units of helium-3 [heliu3].
     - crashed alien vessel [200], alien vessel hull [alnhul], owned by Caste Prime [2].
       size: 6500.
       - advanced robo-factory [201], advanced robo-factory [robofc], immobile, owned by Caste Prime
@@ -1277,7 +1277,8 @@ Galaxy report:
         size: 2000.
       - fighter drone bay [206], fighter drone bay [drnbay], immobile, owned by Caste Prime [2].
         size: 400.
-        - alien fighter drone [207], 4 alien fighter drones [alndrn], owned by Caste Prime [2].
+        - alien fighter drone [207], 4 alien fighter drones [alndrn], immobile, owned by Caste Prime
+          [2].
           size: 320.
     - spaceship hull [101], spaceship hull [sshull], owned by Caste Prime [2].
       size: 5000.

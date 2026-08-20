@@ -53,7 +53,7 @@ namespace SpaceAge
 			if (this.Subject is ModuleStack)
 			{
 				ModuleStack moduleStack = (ModuleStack)this.Subject;
-				if (!moduleStack.IsActive)
+				if (!moduleStack.HasOperationalModules)
 				{
 					if (moduleStack.ModuleType == null)
 						moduleStack.EventReports.Add(

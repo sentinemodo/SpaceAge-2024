@@ -129,6 +129,27 @@ namespace UnitTests
         }
 
         [Test]
+        public void ProcessOffer_SellQuantityExceedsInventory_ClampsAndDoesNotThrow()
+        {
+            Region region = this.game.Regions["R00001"];
+            Market market = region.Market;
+            ItemType food = ItemType.All["food"];
+            ModuleStack buyer = this.game.ModuleStacks["000005"];
+            ModuleStack seller = this.game.ModuleStacks["000008"];
+            seller.Owner = Faction.All["2"];
+            seller.ItemStacks.Remove(new ItemStack(food, 30));
+            Assert.That(seller.ItemStacks[food].Quantity, Is.EqualTo(10));
+
+            Offer buyOffer = this.game.Offers[EOfferType.BuyItems][food][buyer].GetIndex(0);
+            buyOffer.AllQuantity = true;
+
+            Assert.DoesNotThrow(() => market.ProcessOffer(this.game.Week, buyOffer));
+            Assert.That(seller.ItemStacks.Quantity(food), Is.EqualTo(0));
+            ReceivingItems foodTransfer = (ReceivingItems)buyer.Effects[0];
+            Assert.That(foodTransfer.ItemStack.Quantity, Is.EqualTo(10));
+        }
+
+        [Test]
         public void ProcessBuySellItemStackUnlimited()
         {
             // @buy all terran everywhere

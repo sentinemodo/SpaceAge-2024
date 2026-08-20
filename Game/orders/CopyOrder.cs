@@ -86,7 +86,10 @@ namespace SpaceAge
             XmlElement elCopy = doc.CreateElement("copy");
 
             elCopy.SetAttribute("technology", this.Technology.Name);
-            elCopy.SetAttribute("receiver", this.Receiver.Name);
+            if (this.Receiver != null)
+            {
+                elCopy.SetAttribute("receiver", this.Receiver.Name);
+            }
 
             xmlElement.AppendChild(elCopy);
             return xmlElement;
@@ -95,6 +98,15 @@ namespace SpaceAge
 		public override void Execute(int week)
 		{
 			this.Executed = false;
+
+			if (this.Receiver == null || this.Receiver.ModuleType == null)
+			{
+				this.Transferer.EventReports.Add(
+					week,
+					"COPY failed. Receiver is not formed.");
+				base.Execute(week);
+				return;
+			}
 
             if (this.Receiver.TechnologyCapacity < this.Receiver.TechnologyCapacityUsed + this.Technology.Level)
             {

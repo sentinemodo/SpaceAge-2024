@@ -1,6 +1,6 @@
 # Player order syntax
 
-Checked **19 Aug 2026** against engine **0.1.141** (`Game/Program.cs`).
+Checked **20 Aug 2026** against engine **0.1.142** (`Game/Program.cs`).
 
 Sources: `Game/orders/EOrderType.cs`, `Game/orders/OrdersReader.cs`, `Game/orders/Orders.cs`, `Game/Game.cs` (week loop, `GenerateOffers`), `Game/Program.cs` (`/no-turn`, `/check`), `Game/Research.cs` (weekly output, breakthrough, preference), `Game/data structures/ModuleStack.Upkeep.cs` (sick bay, medical consume, quarterly maintenance), `Game/data structures/Galaxy.cs` (`LoadXml` / `LoadExits`), `Game/data structures/Exits.cs` / `ExitMode.cs` / `Region.cs` (region **Exits:** lines), `Game/game/DataFile.cs` (`LoadOrders` / `SaveOrders` delegate to `OrderXml`), `Game/game/OrderXml.cs` (XML switch), `Game/game/ModuleTypeGroupXml.cs` (`RESEARCH GROUP` tokens), `Game/effects/Effects.cs` (`LoadXml` effect types), `Game/effects/Producing.cs` (omit empty `technology=`), each `Game/orders/*Order.Parse` / `Execute`. Sample prefix usage: `Tests/SampleGame/orders.*.txt`.
 
@@ -100,7 +100,7 @@ After week 13: **quarterly maintenance**, then **quarterly wounded outcome**, th
 
 **End of turn (once):**
 
-- Bank: quarterly interest (`AddQuarterlyInterest`).
+- Bank: quarterly interest (`AddQuarterlyInterest`). Balance is stored and reported as **whole credits** (rounded half away from zero).
 - `UpdateRates` — empty (comments only).
 - `GenerateOffers` — NPC faction `[1]` stacks whose module type is `city` auto-list on-hand inventory as `SellItems` `Offer`s (same objects as XML `<selling>`; not leftover player `SELL` orders). Skips cash. Skips an item type if that city already has a **buy or sell** offer for it (no simultaneous buy+sell of the same type; standing offers are not rewritten, so existing NPC city sells **remain** at their saved quantity and price). Quantity for a **new** listing is on-hand; price is `Market.GetPrice`; skip if price ≤ 0. Farms and other non-city stacks are not auto-listed. Listings appear on this turn’s reports and save; weekly buy matching (step 6) can hit them from **next** turn. Duration-0 leftover `receiving-items` on cities (old market delivery) **persist** after save but **never complete**; there is no player verb that clears them.
 
@@ -321,11 +321,14 @@ Lists a standing sell (`Offer`) and keeps a leftover `SELL` on the template. Mat
 
 ### SET
 
-**Syntax:** `SET AVOID TRUE` or `SET AVOID FALSE`
+**Syntax:** `SET AVOID|ONLINE TRUE|FALSE`
 
 **Subject:** modulestack.
 
-Sets `IsAvoiding`. `**AVOID`, `TRUE`, and `FALSE` must be uppercase** (Parse does not fold case).
+Flag name and `TRUE`/`FALSE` are **case-insensitive**; Parse stores the flag as uppercase `AVOID` or `ONLINE`.
+
+- `SET AVOID TRUE|FALSE` — sets `IsAvoiding`. Not a battle tactic (see `player/battle.md`).
+- `SET ONLINE TRUE|FALSE` — `ModuleStack.SetOnline`: stack `Online` and every `module.Online`. Captured modules are left `Online=false` (report: deactivated); there is no other activate verb. Sample: `set online true`.
 
 ### STACK
 
@@ -333,15 +336,15 @@ Sets `IsAvoiding`. `**AVOID`, `TRUE`, and `FALSE` must be uppercase** (Parse doe
 
 **Subject:** stack (or person as item holder).
 
-Nests the subject under another stack (same location, same faction, not self), under the root parent (`TOP`), or out into the location (`OUT`). `**top` and `out` must be lowercase.**
+Nests the subject under another stack (same location, same faction, not self), under the root parent (`TOP`), or out into the location (`OUT`). `**top` and `out` must be lowercase.** Fighter drones may only `STACK OUT` (location) or stack under a fighter drone bay; stacking under a hull fails. Shuttles may also nest under a frigate hull.
 
 ### TACTIC
 
-**Syntax:** `TACTIC destroy|capture|evade` or `TACTIC prioritize armed|command`
+**Syntax:** `TACTIC destroy|capture|evade` or `TACTIC prioritize armed|command|storage`
 
 **Subject:** modulestack.
 
-Persists firing/evade/priority tactics. Destroy and capture are exclusive. Immobile stacks may only `destroy`. Sample: `-tactic prioritize armed`, `-tactic capture`.
+Persists firing/evade/priority tactics. Destroy and capture are exclusive. The three `prioritize` kinds are exclusive with each other (`ApplyPrioritizeTactic` removes the others) and may coexist with destroy/capture/evade. Immobile stacks may only `destroy`. `prioritize storage` prefers storage-group stacks (`IsCargoStack()`, e.g. `cargob`). Sample: `-tactic prioritize armed`, `tactic prioritize storage`, `-tactic capture`.
 
 ### TRANSFER
 
@@ -349,7 +352,7 @@ Persists firing/evade/priority tactics. Destroy and capture are exclusive. Immob
 
 **Subject:** modulestack (source).
 
-Moves `n` modules of this stack’s type onto an **existing** receiver. `n` must be a positive integer. The receiver id must already exist (no `newN` create). Module type is the transferer’s, same as XML load. Instantaneous: same type **merges** into the receiver; a different type **nests** under it. Copies the source’s long-order-used flag onto the package so the receiver cannot take a second long this week. Emptying the last module removes the source stack. Notifies GIVE contracts. Fails with `TRANSFER failed. tried to transfer more modules than having.` Execute does not check same location. `ALL`, damaged-only, and `MODULE <index>` are not parsed.
+Moves `n` modules of this stack’s type onto an **existing** receiver. `n` must be a positive integer. The receiver id must already exist (no `newN` create). Module type is the transferer’s, same as XML load. Instantaneous: same type **merges** into the receiver; a different type **nests** under it. Fighter drones (`alndrn`) may only nest in a **location** (`STACK OUT`) or a **fighter drone bay** (`drnbay`); `TRANSFER` them onto a hull fails — target the bay. Shuttles (`shuttl`) may also nest under a frigate hull. Copies the source’s long-order-used flag onto the package so the receiver cannot take a second long this week. Emptying the last module removes the source stack. Notifies GIVE contracts. Fails with `TRANSFER failed. tried to transfer more modules than having.` Execute does not check same location. `ALL`, damaged-only, and `MODULE <index>` are not parsed.
 
 ---
 

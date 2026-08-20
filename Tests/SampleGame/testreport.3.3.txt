@@ -5,7 +5,7 @@ Content-Disposition: attachment
 SpaceAge report for Gelvaren [3].
 Turn 3, Year 2020, July 1.
 
-SpaceAge Engine Version: 0.1.141.
+SpaceAge Engine Version: 0.1.142.
 
 Events during turn:
   none.
@@ -14,7 +14,7 @@ Declared stances:
   default: neutral, unknown: hostile.
   enemy toward Caste Prime [2].
 Bank report:
-  Bank account balance: 8106.075.
+  Bank account balance: 8106.
   Credit line maximum: 10000.
   Credit rate: 20%, Deposit rate: 5%.
 

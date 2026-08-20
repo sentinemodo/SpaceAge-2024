@@ -1,6 +1,6 @@
 # Battle (rules of engagement)
 
-Checked **19 Aug 2026** against engine **0.1.141**.
+Checked **20 Aug 2026** against engine **0.1.142**.
 
 Sources: `Game/battle/Battle.cs`, `Game/battle/ETactic.cs`, `Game/Game.cs` (`ExecuteBattles`), `Game/data structures/ModuleStack.cs` (attack, defense, initiative, tactics, `IsArmed`, `HasOperationalModules`, `GetFiringModules`), `Game/data structures/Faction.cs` / `FactionAttitude.cs`, `Game/orders/AttackOrder.cs`, `CaptureOrder.cs`, `DeclareOrder.cs`, `TacticOrder.cs`, `SetOrder.cs`. Catalog bonuses: `Tests/data.xml` (`attack`, `defense`, `damage`, `initiative` on modules, techs, skills, items).
 
@@ -57,7 +57,7 @@ Attitudes (one-way): `enemy` (0), `hostile` (1), `neutral` (2), `friendly` (3), 
 
 Resolution: per-unit declaration (`UnitAttitudes`) else stance toward the unit’s owner (`Attitudes`) else `DefaultAttitude`. Unknown factions use `UnknownAttitude` (baseline **hostile**).
 
-`SET AVOID TRUE` (`IsAvoiding`) is **not** a battle tactic. After a stack fires, `considerRetreat` only prints that an avoiding unit tries to escape and **fails** (or cannot, if immobile). It does not leave the fight.
+`SET AVOID TRUE` (`IsAvoiding`) is **not** a battle tactic. After a stack fires, `considerRetreat` only prints that an avoiding unit tries to escape and **fails** (or cannot, if immobile). It does not leave the fight. `SET ONLINE TRUE|FALSE` is also not a battle tactic; it only toggles stack and module `Online` (captured modules start deactivated).
 
 ## Turns and rounds
 
@@ -94,16 +94,21 @@ Same initiative value: those stacks fire in list order (not shuffled).
 | `TACTIC destroy` | Firing tactic **destroy** (default). |
 | `TACTIC capture` | Firing tactic **capture**. Exclusive with destroy. |
 | `TACTIC evade` | Stance: half to-hit; command/propulsion half hit-weight; leave after **two consecutive rounds unhit**. May coexist with destroy/capture. |
-| `TACTIC prioritize armed` | Prefer an armed target; may shoot a disabled-but-armed stack. |
-| `TACTIC prioritize command` | Prefer a command-group stack. |
+| `TACTIC prioritize armed` | Prefer an armed target; may shoot a disabled-but-armed stack. Exclusive with other prioritize kinds. |
+| `TACTIC prioritize command` | Prefer a command-group stack. Disabled command is included like cargo. Exclusive with other prioritize kinds. |
+| `TACTIC prioritize storage` | Prefer a storage-group stack (`IsCargoStack()`, e.g. `cargob`). Disabled cargo is included like prioritize command. Exclusive with other prioritize kinds. Coexists with capture/destroy. |
 
 `FiringTactic` is **capture** if `HasCapture`, else **destroy**. XML `disable` is stored then applied as **destroy** (`ApplyTactic` else-branch). `ETactic` also lists split, disarm, conquer, retreat, attackStrongest…, closeIn, longRange, support — **not** wired in `executeAttack` / `findTarget`.
 
-Target pick: preferred unit id from `CAPTURE`/`ATTACK` if still in the enemy list; else prioritize armed/command; else first armed, else first intact.
+Target pick: preferred unit id from `CAPTURE`/`ATTACK` if still in the enemy list; else prioritize armed, else command, else storage; else first armed, else first intact.
 
-Only **operational** modules fire. Unarmed stacks skip `executeAttack`.
+Only **operational** modules fire. Unarmed stacks skip `executeAttack`. Nested fighter drones and shuttles in a bay are skipped in `GetFiringModules` (the hull does not shoot them while docked).
 
 **Armed:** formed, and module group **military**, or group **vehicle** / **infantry** with `attack > 0`, including nested stacks.
+
+**Hangar launch:** at battle start, fighter drones (`alndrn`) and shuttles (`shuttl`) nested in a fighter drone bay (`drnbay`) detach to the location (`STACK OUT`). They join the parent’s side. They **do not fire in round 1**; from round 2 they fight as roots. They cannot move on their own.
+
+Fighter drones: high module `initiative`, small `damage` and hit points, no cargo capacity, helium-3 fuel (1 per 13 weeks).
 
 ## Chance to hit
 

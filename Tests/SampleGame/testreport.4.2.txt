@@ -5,13 +5,13 @@ Content-Disposition: attachment
 SpaceAge report for Caste Prime [2].
 Turn 4, Year 2021, September 1.
 
-SpaceAge Engine Version: 0.1.141.
+SpaceAge Engine Version: 0.1.142.
 
 Events during turn:
   none.
 
 Bank report:
-  Bank account balance: 8090.128125.
+  Bank account balance: 8090.
   Credit line maximum: 10000.
   Credit rate: 20%, Deposit rate: 5%.
 
@@ -35,7 +35,8 @@ Technology reports:
 + drone hangar construction [drnhng]: A hangar that stores and launches a squad of fighter drones.
   - fighter drone bay [drnbay]: Hangar for a squad of crewless fighter drones.
 + alien fighter construction [alnfgh]: A crewless alien fighter. It needs no life support.
-  - alien fighter drone [alndrn]: Crewless alien fighter. No life support.
+  - alien fighter drone [alndrn]: Crewless alien fighter. No life support. Cannot move on its own;
+    launches from a fighter drone bay.
 
 
 Battles report:
@@ -9357,9 +9358,9 @@ Galaxy report:
     Exits:
     Resources: 100 units of iron [iron], 100 units of silicium [silici], 100 units of titanium
     [titani], 100 units of uranium [uraniu], 100 units of copper [copper], 100 units of silicium
-    [silici].
+    [silici], 100 units of helium-3 [heliu3].
     + crashed alien vessel [200], alien vessel hull [alnhul].
-      size: 6500, mass: 10320/3490 (200), capacity: 6000/5520, energy: 80/61 (1), upkeep: 470 (20)
+      size: 6500, mass: 10000/3490 (200), capacity: 6000/5520, energy: 80/61 (1), upkeep: 470 (20)
       cash [cash].
       technologies: advanced hull construction [ahlcns].
       events:
@@ -9384,11 +9385,11 @@ Galaxy report:
         size: 2000, mass: 200 (200), capacity: 1800/0, upkeep: 30 cash [cash].
         technologies: small scale transportation [strans].
       + fighter drone bay [206], fighter drone bay [drnbay], immobile.
-        size: 400, mass: 320/620 (300), capacity: 400/320, energy: 5, upkeep: 120 (40) cash [cash].
+        size: 400, mass: 620 (300), capacity: 400/320, energy: 5, upkeep: 120 (40) cash [cash].
         technologies: drone hangar construction [drnhng].
-        + alien fighter drone [207], 4 alien fighter drones [alndrn].
-          size: 320, mass: 320/320 (320), capacity: 80/0, upkeep: 80 cash [cash].
-          movement speed: 0.3 in space.
+        + alien fighter drone [207], 4 alien fighter drones [alndrn], immobile.
+          size: 320, mass: 320 (320), upkeep: 80 cash [cash].
+          fuel requirements: 4 units of helium-3 [heliu3] per 13 weeks.
           technologies: alien fighter construction [alnfgh].
     + spaceship hull [101], spaceship hull [sshull].
       size: 5000, mass: 10000/1362 (100), capacity: 4500/2000, energy: 60/51 (1), crew: 3/4, upkeep:
@@ -9557,7 +9558,7 @@ sell 300 food
 ; technologies: drone hangar construction [drnhng].
 
 #modulestack 207
-; + alien fighter drone [207], 4 alien fighter drones [alndrn].
+; + alien fighter drone [207], 4 alien fighter drones [alndrn], immobile.
 ; technologies: alien fighter construction [alnfgh].
 
 #person 000001

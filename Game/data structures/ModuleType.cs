@@ -260,6 +260,23 @@ namespace SpaceAge
 			set { this.defense = value; }
 		}
 
+		private int initiative;
+		public int Initiative
+		{
+			get { return this.initiative; }
+			set { this.initiative = value; }
+		}
+
+		public bool IsHangarCraft
+		{
+			get { return this.name == "alndrn" || this.name == "shuttl"; }
+		}
+
+		public bool IsDroneBay
+		{
+			get { return this.name == "drnbay"; }
+		}
+
 		#endregion
 
 

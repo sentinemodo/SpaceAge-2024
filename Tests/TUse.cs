@@ -266,6 +266,34 @@ namespace UnitTests
 
 
 		[Test]
+		public void ExecuteUseOrder_PartialCrew_ProducesAtOperationalCapacity()
+		{
+			this.AssignUseOrder_unlimited();
+			ModuleStack farms = this.game.ModuleStacks["000008"];
+			ItemType food = ItemType.All["food"];
+			ItemType terran = ItemType.All["terran"];
+			Technology farming = Technology.All["farmng"];
+			int extraCrew = farms.ItemStacks[terran].Quantity - farms.ModuleType.CrewRequired;
+			farms.ItemStacks.Remove(new ItemStack(terran, extraCrew));
+
+			Assert.That(farms.Quantity, Is.EqualTo(3));
+			Assert.That(farms.QuantityOperational, Is.EqualTo(1));
+			Assert.That(farms.IsPartiallyDisabled);
+			Assert.That(farms.IsActive, Is.False);
+
+			int foodBefore = farms.ItemStacks[food].Quantity;
+			farms.ExecutedLongOrder = false;
+			farms.Execute(this.game.Week);
+
+			foreach (EventReport eventReport in farms.EventReports)
+			{
+				Assert.That(eventReport.Description, Does.Not.Contain("USE failed"));
+			}
+			Assert.That(farms.ItemStacks[food].Quantity, Is.EqualTo(foodBefore + farming.UseProduceItems[food].Quantity));
+		}
+
+
+		[Test]
 		public void AssignUseOrder_AliasRepeatable()
 		{
             Sequence.Ints.Push(100);

@@ -406,7 +406,12 @@ namespace SpaceAge
 			{
 				if (this.durationInitial == 0)
 				{
-					this.durationInitial = (int)(Math.Ceiling((double)(this.Technology.UseTime * this.Producer.ModuleType.UseCondition_EfficiencyMultiplier) / this.Producer.QuantityActive));
+					int copies = this.Producer.QuantityOperational;
+					if (copies < 1)
+					{
+						copies = 1;
+					}
+					this.durationInitial = (int)(Math.Ceiling((double)(this.Technology.UseTime * this.Producer.ModuleType.UseCondition_EfficiencyMultiplier) / copies));
 				}
 				return this.durationInitial;
 			}

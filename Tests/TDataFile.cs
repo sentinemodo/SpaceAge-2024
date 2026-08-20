@@ -189,7 +189,16 @@ namespace UnitTests
 			Assert.That(alnfgh.UseProduceModules.Name, Is.EqualTo("alndrn"));
 			ModuleType alndrnModule = ModuleType.All["alndrn"];
 			Assert.That(alndrnModule.CrewRequired, Is.EqualTo(0));
-			Assert.That(alndrnModule.Attack, Is.EqualTo(6));
+			Assert.That(alndrnModule.Attack, Is.EqualTo(4));
+			Assert.That(alndrnModule.Damage, Is.EqualTo(2));
+			Assert.That(alndrnModule.Defense, Is.EqualTo(1));
+			Assert.That(alndrnModule.DamageCapacity, Is.EqualTo(8));
+			Assert.That(alndrnModule.Capacity, Is.EqualTo(0));
+			Assert.That(alndrnModule.Initiative, Is.EqualTo(20));
+			Assert.That(alndrnModule.MoveModes.Count, Is.EqualTo(0));
+			Assert.That(alndrnModule.FuelDuration, Is.EqualTo(13));
+			Assert.That(alndrnModule.Fuel.ContainsKey(ItemType.All["heliu3"]));
+			Assert.That(alndrnModule.Fuel[ItemType.All["heliu3"]].Quantity, Is.EqualTo(1));
 
 			Assert.That(Technology.All["autfab"].Level, Is.EqualTo(2));
 			Assert.That(Technology.All["autfab"].UseProduceModules.Name, Is.EqualTo("robofc"));

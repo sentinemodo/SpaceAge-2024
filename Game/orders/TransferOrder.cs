@@ -156,6 +156,15 @@ namespace SpaceAge
 
             if (sourceStack != null)
             {
+				if (this.ModuleType != null && this.ModuleType.IsHangarCraft
+					&& !this.canTransferHangarCraft(this.Receiver))
+				{
+					this.Transferer.EventReports.Add(
+						week,
+						"TRANSFER failed. fighter drones can only nest in a location or a fighter drone bay.");
+					base.Execute(week);
+					return;
+				}
 				if (sourceStack.Quantity >= this.Quantity)
 				{             
                     // packaging
@@ -218,7 +227,20 @@ namespace SpaceAge
 						"TRANSFER failed. tried to transfer more modules than having.");								
 				}
 			}
-            base.Execute(week);
+			base.Execute(week);
         }
+
+		private bool canTransferHangarCraft(ModuleStack receiver)
+		{
+			if (receiver == null || receiver.ModuleType == null)
+			{
+				return false;
+			}
+			if (receiver.ModuleType == this.ModuleType)
+			{
+				return ModuleStack.CanNestHangarCraft(receiver.Parent, this.ModuleType);
+			}
+			return ModuleStack.CanNestHangarCraft(receiver, this.ModuleType);
+		}
 	}
 }

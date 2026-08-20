@@ -503,6 +503,119 @@ namespace UnitTests
 		}
 
 		[Test]
+		public void TacticOrder_PrioritizeCargoCoexistsWithCapture()
+		{
+			ModuleStack tanks = this.game.ModuleStacks["100011"];
+			List<string> testcommands = new List<string>
+			{
+				"#faction 2",
+				"#modulestack 100011",
+				"tactic capture",
+				"tactic prioritize storage",
+				"#end"
+			};
+			OrdersReader ordersReader = new OrdersReader(this.game);
+			ordersReader.AssignOrders(testcommands);
+			tanks.Orders[0].Execute(this.game.Week);
+			tanks.Orders[1].Execute(this.game.Week);
+
+			Assert.That(tanks.Tactics.ContainsName("capture"));
+			Assert.That(tanks.HasPrioritizeCargo);
+			Assert.That(tanks.Tactics.ContainsName("prioritize storage"));
+		}
+
+		[Test]
+		public void Execute_PrioritizeStorage_TargetsCargoBay()
+		{
+			Region region = new Region(Region.All["R00002"].RegionHolder, "cargoregion");
+			Faction attackerOwner = this.game.Factions["2"];
+			Faction defenderOwner = this.game.Factions["1"];
+			ModuleStack attacker = new ModuleStack(region, attackerOwner, ModuleType.All["tanks"], "cargoatk");
+			attacker.AddModule();
+			attacker.ItemStacks.Add(new ItemStack(ItemType.All["terran"], 16));
+			attacker.ApplyTactic("capture");
+			attacker.ApplyPrioritizeTactic("prioritize storage");
+			ModuleStack headquarters = new ModuleStack(region, defenderOwner, ModuleType.All["corphq"], "cargohq");
+			headquarters.AddModule();
+			ModuleStack guns = new ModuleStack(region, defenderOwner, ModuleType.All["gunplc"], "cargogun");
+			guns.AddModule();
+			guns.ItemStacks.Add(new ItemStack(ItemType.All["terran"], 2));
+			ModuleStack cargo = new ModuleStack(region, defenderOwner, ModuleType.All["cargob"], "cargobay");
+			cargo.AddModule();
+
+			Sequence.Rolls.Clear();
+			Sequence.Ints.Clear();
+			Sequence.Ints.Push(1);
+			Sequence.Ints.Push(1);
+
+			Battle battle = new Battle(attacker, headquarters);
+			battle.Execute(this.game.Week);
+
+			string report = string.Join("\n", battle.Report(attackerOwner).ToArray());
+			Assert.That(report, Does.Contain("on small cargo bay [cargobay]"));
+		}
+
+		[Test]
+		public void Execute_HangarCraft_LaunchesFromBayAndDoesNotFireRoundOne()
+		{
+			Region region = new Region(Region.All["R00002"].RegionHolder, "hangarregion");
+			Faction attackerOwner = this.game.Factions["2"];
+			Faction defenderOwner = this.game.Factions["1"];
+			ModuleStack attacker = new ModuleStack(region, attackerOwner, ModuleType.All["tanks"], "hangaratk");
+			attacker.AddModule();
+			attacker.ItemStacks.Add(new ItemStack(ItemType.All["terran"], 16));
+			ModuleStack headquarters = new ModuleStack(region, defenderOwner, ModuleType.All["corphq"], "hangarhq");
+			headquarters.AddModule();
+			ModuleStack bay = new ModuleStack(headquarters, defenderOwner, ModuleType.All["drnbay"], "hangarbay");
+			bay.AddModule();
+			ModuleStack drones = new ModuleStack(bay, defenderOwner, ModuleType.All["alndrn"], "hangardrn");
+			drones.AddModule();
+
+			Sequence.Rolls.Clear();
+			Sequence.Ints.Clear();
+			Sequence.Ints.Push(1);
+			Sequence.Ints.Push(1);
+
+			Battle battle = new Battle(attacker, headquarters);
+			battle.Execute(this.game.Week);
+
+			Assert.That(drones.Parent, Is.EqualTo(region));
+			string report = string.Join("\n", battle.Report(defenderOwner).ToArray());
+			Assert.That(report, Does.Contain("launched from hangar"));
+			int roundTwo = report.IndexOf("Round 2:", StringComparison.Ordinal);
+			Assert.That(roundTwo, Is.GreaterThan(0));
+			string roundOne = report.Substring(0, roundTwo);
+			Assert.That(roundOne, Does.Not.Contain("hangardrn] fires"));
+			Assert.That(report.Substring(roundTwo), Does.Contain("hangardrn] fires"));
+		}
+
+		[Test]
+		public void SetOrder_OnlineTrue_ActivatesDeactivatedModules()
+		{
+			ModuleStack tanks = this.game.ModuleStacks["100011"];
+			if (tanks.Quantity < 1)
+			{
+				tanks.AddModule();
+			}
+			tanks.Modules[0].Online = false;
+			Assert.That(tanks.Modules[0].IsActive, Is.False);
+
+			List<string> testcommands = new List<string>
+			{
+				"#faction 2",
+				"#modulestack 100011",
+				"set online true",
+				"#end"
+			};
+			OrdersReader ordersReader = new OrdersReader(this.game);
+			ordersReader.AssignOrders(testcommands);
+			tanks.Orders[0].Execute(this.game.Week);
+
+			Assert.That(tanks.Modules[0].Online);
+			Assert.That(tanks.Online);
+		}
+
+		[Test]
 		public void Execute_ImmobileTarget_HasHigherHitChance()
 		{
 			Region region = new Region(Region.All["R00002"].RegionHolder, "immregion");

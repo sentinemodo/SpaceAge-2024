@@ -5,13 +5,13 @@ Content-Disposition: attachment
 SpaceAge report for Caste Prime [2].
 Turn 3, Year 2020, July 1.
 
-SpaceAge Engine Version: 0.1.141.
+SpaceAge Engine Version: 0.1.142.
 
 Events during turn:
   none.
 
 Bank report:
-  Bank account balance: 8444.25.
+  Bank account balance: 8444.
   Credit line maximum: 10000.
   Credit rate: 20%, Deposit rate: 5%.
 

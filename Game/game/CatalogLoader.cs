@@ -427,6 +427,7 @@ namespace SpaceAge
 						moduleType.Attack = this.dataFile.XMLAssignInteger(el.GetAttribute("attack"), 0);
 						moduleType.Defense = this.dataFile.XMLAssignInteger(el.GetAttribute("defense"), 0);
 						moduleType.Damage = this.dataFile.XMLAssignInteger(el.GetAttribute("damage"), 0);
+						moduleType.Initiative = this.dataFile.XMLAssignInteger(el.GetAttribute("initiative"), 0);
 
 						this.dataFile.assignItemStacks(el.SelectNodes("upkeep"), moduleType.Upkeep);
 						foreach (XmlElement elNoUpkeep in el.SelectNodes("no-upkeep"))

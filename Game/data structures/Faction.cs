@@ -79,6 +79,29 @@ namespace SpaceAge
 			return this.AttitudeToward(unit.Owner);
 		}
 
+		// Drop per-unit stances whose target is gone, empty after capture, or now owned by this faction.
+		public void DropStaleUnitAttitudes()
+		{
+			List<string> stale = new List<string>();
+			foreach (string key in this.UnitAttitudes.Keys)
+			{
+				if (!ModuleStack.All.ContainsKey(key))
+				{
+					stale.Add(key);
+					continue;
+				}
+				ModuleStack unit = ModuleStack.All[key];
+				if (unit.Owner == this || unit.Quantity < 1)
+				{
+					stale.Add(key);
+				}
+			}
+			foreach (string key in stale)
+			{
+				this.UnitAttitudes.Remove(key);
+			}
+		}
+
 		// Report of this faction's declared stances. Empty at the baseline (neutral
 		// default, hostile unknown, no explicit declarations) so unchanged games are unaffected.
 		public List<string> ReportDeclarations()

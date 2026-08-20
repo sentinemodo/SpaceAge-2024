@@ -55,5 +55,69 @@ namespace UnitTests
 			Assert.That(loaded.Quantity, Is.EqualTo(1));
 			Assert.That(loaded.Receiver, Is.EqualTo(receiver));
 		}
+
+		[Test]
+		public void Execute_HangarCraft_CannotTransferOntoHull()
+		{
+			Region region = Region.All["R00002"];
+			Faction owner = this.game.Factions["2"];
+			ModuleStack hull = new ModuleStack(region, owner, ModuleType.All["sshull"], "xferhull");
+			hull.AddModule();
+			ModuleStack drones = new ModuleStack(region, owner, ModuleType.All["alndrn"], "xferdrn");
+			drones.AddModule();
+			drones.AddModule();
+
+			TransferOrder order = new TransferOrder(drones, hull, ModuleType.All["alndrn"], 2, 0);
+			order.Execute(this.game.Week);
+
+			Assert.That(order.Executed, Is.False);
+			Assert.That(drones.Quantity, Is.EqualTo(2));
+			Assert.That(drones.Parent, Is.EqualTo(region));
+		}
+
+		[Test]
+		public void Execute_HangarCraft_TransfersIntoDroneBay()
+		{
+			Region region = Region.All["R00002"];
+			Faction owner = this.game.Factions["2"];
+			ModuleStack hull = new ModuleStack(region, owner, ModuleType.All["sshull"], "bayhull");
+			hull.AddModule();
+			ModuleStack bay = new ModuleStack(hull, owner, ModuleType.All["drnbay"], "xferbay");
+			bay.AddModule();
+			ModuleStack drones = new ModuleStack(region, owner, ModuleType.All["alndrn"], "baydrn");
+			drones.AddModule();
+			drones.AddModule();
+
+			TransferOrder order = new TransferOrder(drones, bay, ModuleType.All["alndrn"], 2, 0);
+			order.Execute(this.game.Week);
+
+			Assert.That(order.Executed, Is.True);
+			int nestedDrones = 0;
+			foreach (ModuleStack nested in bay.ModuleStacks.Values)
+			{
+				if (nested.ModuleType != null && nested.ModuleType.Name == "alndrn")
+				{
+					nestedDrones += nested.Quantity;
+				}
+			}
+			Assert.That(nestedDrones, Is.EqualTo(2));
+		}
+
+		[Test]
+		public void Execute_HangarCraft_StackUnderHullFails()
+		{
+			Region region = Region.All["R00002"];
+			Faction owner = this.game.Factions["2"];
+			ModuleStack hull = new ModuleStack(region, owner, ModuleType.All["sshull"], "stackhull");
+			hull.AddModule();
+			ModuleStack drones = new ModuleStack(region, owner, ModuleType.All["alndrn"], "stackdrn");
+			drones.AddModule();
+
+			StackOrder order = new StackOrder(drones, hull);
+			order.Execute(this.game.Week);
+
+			Assert.That(order.Executed, Is.False);
+			Assert.That(drones.Parent, Is.EqualTo(region));
+		}
 	}
 }

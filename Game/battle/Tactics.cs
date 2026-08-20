@@ -73,6 +73,10 @@ namespace SpaceAge
                     case "prioritize command":
                         tactic = new PrioritizeCommandTactic(holder);
                         break;
+                    case "prioritize cargo":
+                    case "prioritize storage":
+                        tactic = new PrioritizeCargoTactic(holder);
+                        break;
                     default:
                         throw new Exception("Unknown tactics. Received: " + elTactic.GetAttribute("name"));
                 }

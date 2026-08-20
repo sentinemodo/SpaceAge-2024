@@ -982,6 +982,20 @@ namespace IntegrationTests
 		}
 
 		[Test]
+		public void BankBalance_RoundsToWholeCredits()
+		{
+			Faction faction = this.game.Factions["2"];
+			Bank bank = faction.Bank;
+			bank.Balance = 6221.9422265625;
+			Assert.That(bank.Balance, Is.EqualTo(6222));
+			Assert.That(bank.Report(faction)[1], Is.EqualTo("  Bank account balance: 6222."));
+
+			bank.Balance = 10000;
+			bank.AddQuarterlyInterest(13);
+			Assert.That(bank.Balance, Is.EqualTo(10125));
+		}
+
+		[Test]
 		public void MoonReport_IncludesOrbitStacks()
 		{
 			Orbit lunaOrbit = Orbit.All["O00004"];

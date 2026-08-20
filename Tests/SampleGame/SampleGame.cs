@@ -751,7 +751,7 @@ namespace IntegrationTests
 			this.compareFiles("gameout.4.xml", "gameout.4_saved.xml");
 		}
 
-		[Test, Ignore("not ready")]
+		[Test]
 		public void ExecuteTurn4()
 		{
 			Sequence.Ints.Clear();
@@ -778,15 +778,15 @@ namespace IntegrationTests
 			Assert.That(ModuleStack.All["200"].Owner.Name, Is.EqualTo("2"), "do not re-claim the wreck");
 			Assert.That(ModuleStack.All["115"].Technologies.Contains("alnfgh"), "COPY alnfgh onto library 115");
 
-			int dronesOnHull = 0;
-			foreach (ModuleStack nested in ModuleStack.All["101"].ModuleStacks.Values)
+			int dronesInBay = 0;
+			foreach (ModuleStack nested in ModuleStack.All["206"].ModuleStacks.Values)
 			{
 				if (nested.ModuleType != null && nested.ModuleType.Name == "alndrn")
 				{
-					dronesOnHull += nested.Quantity;
+					dronesInBay += nested.Quantity;
 				}
 			}
-			Assert.That(dronesOnHull, Is.EqualTo(4), "TRANSFER drones 207 onto hull 101");
+			Assert.That(dronesInBay, Is.EqualTo(4), "TRANSFER drones 207 into bay 206");
 
 			bool repairTechGranted = ModuleStack.All["116"].Technologies.Contains("servic")
 				|| ModuleStack.All["116"].Technologies.Contains("engshp")
@@ -807,6 +807,10 @@ namespace IntegrationTests
 			ReportWriter reportsWriter = new ReportWriter(this.game, this.dataFile, this.testDir);
 			reportsWriter.GenerateReports(this.testDir);
 			this.dataFile.SaveGame(this.testDir, "gameout.5_saved.xml");
+			this.compareFiles("testreport.5.1.txt", "report.5.1.txt");
+			this.compareFiles("testreport.5.2.txt", "report.5.2.txt");
+			this.compareFiles("testreport.5.3.txt", "report.5.3.txt");
+			this.compareFiles("gameout.5.xml", "gameout.5_saved.xml");
 		}
 
 		[Test, Ignore("not ready")]

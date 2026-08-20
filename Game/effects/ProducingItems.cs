@@ -44,7 +44,7 @@ namespace SpaceAge
 
 			this.ProducedItemStacks = new ItemStacks();
             this.ProducedItemStacks.Sum(technology.UseProduceItems);
-            this.ProducedItemStacks.Multiply(Producer.Quantity);
+            this.ProducedItemStacks.Multiply(Producer.QuantityOperational);
 		}
 
 		public ProducingItems(ProduceOrder produceOrder)

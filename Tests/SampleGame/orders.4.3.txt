@@ -1,14 +1,14 @@
 #faction 3 "abccb"
-; Gelvaren turn 4 — leftover RESEARCH TAG repair on library [116] (do not write
-; @research repair: that parses as technology [repair]). Sequence 0 breakthrough
-; this quarter; cheapest repair-tag pick is servic. COPY servic onto shuttle
-; [117] (capacity 1, nested with [116] under factory [000023]). COPY to the
-; factory would fail (armcbt already fills capacity 1). Continue Earth war on
-; infantry [110]; keep compound GET/BUY/produce and repairs.
+; Gelvaren turn 4 — feed Sydney, buy Earth food, man/activate captured
+; guns, repair captured modules, tanks prioritize storage. XML leftovers
+; still run: 000019 GET food/oil + sell 100 food; 000018 GET cash/terran
+; + buy terran + produce cash; c000012 repair; 108 @repair; 110 MOVE
+; then -capture; 116 @research tag repair; 000026 produce terran.
+; Do not add sell food. Plants c000015+ are not owned yet.
 
 #modulestack 000018
 ; + Gelvaren Headquarters [000018], corporate headquarters [corphq],
-;   disabled, immobile.
+;   disabled, immobile. crew 15/20. items: 14 terran, 4928 cash, wndtrn.
 @get all cash from 000026
 @get all terran from 000026
 @buy all terran
@@ -16,9 +16,8 @@
 
 #modulestack 000019
 ; + small cargo bay [000019], small cargo bay [cargob], immobile.
-@get all food from 000020
-@get all oil from 000022
-sell 100 food
+; items: 856 food, 2 terran, 54 oil. Leftover GET strips farms; leftover
+; one-shot sell 100 food still runs (omit sell here).
 
 #modulestack 000020
 ; + farming complex [000020], 2 farming complexes [farms], partially
@@ -35,18 +34,28 @@ sell 100 food
 
 #modulestack 000026
 ; + Gelvaren complex [000026], city [city], immobile.
+; Leftover buy 100 food at 1 does not match Sydney sell at 5.
+; GET cargo food onto the city (parent nest) so crew can eat.
+@get all food from 000019
+@buy all food
 @produce terran
 
 #modulestack 108
-; + peaceful scout [108], tanks [tanks], disabled.
-@repair
+; + peaceful scout [108], tanks [tanks], disabled (heavily damaged).
+; leftover @repair. Prioritize storage if it can shoot.
+; @get not one-shot: ExecuteOrders GET runs before ProcessBuyOffers
+; fills c000012. Later weeks pull purchased food. Tanks have almost no
+; cash, so they do not @buy.
+tactic prioritize storage
+capture all
+@get 40 food from c000012
 
-#modulestack 110
-; + infantry battalion [110], infantry battalion [inftry].
-; leftover move R00002 duration-left 4, then capture.
-move R00002
--capture 000012
--capture all
+#modulestack 109
+; + Surrender or die! [109], 3 tanks [tanks].
+; leftover tactic prioritize command — replace with storage; keep capture.
+tactic prioritize storage
+capture all
+@get 80 food from c000012
 
 #modulestack 116
 ; leftover XML is research-type tag repair. TAG keyword reconnects; bare
@@ -56,7 +65,63 @@ copy servic to 117
 
 #modulestack c000012
 ; + corporate headquarters [c000012], corporate headquarters [corphq],
-;   disabled, immobile.
-repair
+;   disabled, immobile, nested under Berlin. 22 terran, 2055 cash.
+; leftover one-shot repair (RepairScope is Berlin — do not add @repair).
+; Buy Berlin food at 5 and Caste leftover sell 300 food at any.
+set online true
+@buy all food
+@buy all terran
+
+#modulestack c000014
+; + farming complex [c000014], farming complex [farms], deactivated,
+;   lightly damaged, 4 terran (needs 5). Stack under HQ so @repair hits
+;   our nest (HQ then nested guns), not Berlin.
+stack c000012
+set online true
+get 1 terran from c000012
+@repair
+
+#modulestack c1000014
+; + farming complex [c1000014], 3 terran + wndtrn (needs 5).
+stack c000012
+set online true
+get 2 terran from c000012
+@repair
+
+#modulestack c2000014
+; + farming complex [c2000014], 3 terran (needs 5).
+stack c000012
+set online true
+get 2 terran from c000012
+@repair
+
+#modulestack c111
+; + gun placement [c111], gun placement [gunplc], heavily damaged,
+;   deactivated, 0 crew (needs 2).
+stack c000012
+set online true
+get 2 terran from c000012
+@repair
+
+#modulestack c1111
+; + gun placement [c1111], 1 terran (needs 2).
+stack c000012
+set online true
+get 1 terran from c000012
+@repair
+
+#modulestack c2111
+; + gun placement [c2111], 0 crew (needs 2), critically damaged.
+stack c000012
+set online true
+get 2 terran from c000012
+@repair
+
+#modulestack c3111
+; + gun placement [c3111], 1 terran (needs 2).
+stack c000012
+set online true
+get 1 terran from c000012
+@repair
 
 #end

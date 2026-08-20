@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="windows-1251"?>
 <game turn="3">
 	<faction name="1" name-en="NPC" password="" email="" default-attitude="2" text-report="True" text-report-line-length="100" xml-report="True" balance="1501" credit-line="0" credit-rate="0" deposit-rate="0" />
-	<faction name="2" name-en="Caste Prime" password="xyzzy" email="mail1@mail.pl" default-attitude="2" text-report="True" text-report-line-length="100" xml-report="True" balance="9821.25" credit-line="10000" credit-rate="0.2" deposit-rate="0.05" />
-	<faction name="3" name-en="Gelvaren" password="abccb" email="mail2@mail.pl" default-attitude="2" text-report="True" text-report-line-length="72" xml-report="True" balance="8908.9875" credit-line="10000" credit-rate="0.2" deposit-rate="0.05">
+	<faction name="2" name-en="Caste Prime" password="xyzzy" email="mail1@mail.pl" default-attitude="2" text-report="True" text-report-line-length="100" xml-report="True" balance="9821" credit-line="10000" credit-rate="0.2" deposit-rate="0.05" />
+	<faction name="3" name-en="Gelvaren" password="abccb" email="mail2@mail.pl" default-attitude="2" text-report="True" text-report-line-length="72" xml-report="True" balance="8909" credit-line="10000" credit-rate="0.2" deposit-rate="0.05">
 		<technology name="rckter" />
 		<attitude faction="2" attitude="enemy" />
 	</faction>
@@ -23,6 +23,7 @@
 						<resource type="uraniu" quantity="100" />
 						<resource type="copper" quantity="100" />
 						<resource type="silici" quantity="100" />
+						<resource type="heliu3" quantity="100" />
 						<modulestack name="200" name-en="crashed alien vessel" type="alnhul" quantity="1" faction="1">
 							<technology name="ahlcns" name-en="advanced hull construction" />
 							<upkeep type="cash" quantity="470" />

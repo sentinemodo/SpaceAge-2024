@@ -152,6 +152,7 @@ namespace SpaceAge
 		{			
 			this.ClearEventReports();
 			this.turn++;
+			this.DropStaleUnitAttitudes();
             #region execute orders
             for (this.week = 1; this.week <= 13; this.week++)
 			{
@@ -164,6 +165,7 @@ namespace SpaceAge
 				Contract.All.Evaluate(this.week);
                 this.ProcessBuyOffers();
 				this.ExecuteBattles();
+				this.DropStaleUnitAttitudes();
 			}
 			this.week = 13;
 			this.ExecuteMaintenance();
@@ -500,6 +502,14 @@ namespace SpaceAge
 			foreach (Battle battle in started)
 			{
 				battle.Execute(this.week);
+			}
+		}
+
+		public void DropStaleUnitAttitudes()
+		{
+			foreach (Faction faction in this.Factions.Values)
+			{
+				faction.DropStaleUnitAttitudes();
 			}
 		}
 		#endregion

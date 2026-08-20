@@ -4,7 +4,7 @@ using System.Xml;
 
 namespace SpaceAge
 {
-	// TACTIC destroy|capture|evade|prioritize armed|prioritize command — modulestack only.
+	// TACTIC destroy|capture|evade|prioritize armed|prioritize command|prioritize storage — modulestack only.
 	// Destroy and capture are exclusive. Evade and prioritize may coexist with firing tactics.
 	// Immobile stacks may only use destroy.
 	public class TacticOrder : ImmediateOrder
@@ -32,8 +32,8 @@ namespace SpaceAge
 			this.TacticName = token.ToLowerInvariant();
 			if (this.TacticName == "prioritize")
 			{
-				string kind = LineParser.GetToken(ref command);
-				if (kind != "armed" && kind != "command")
+				string kind = LineParser.GetToken(ref command).ToLowerInvariant();
+				if (kind != "armed" && kind != "command" && kind != "storage")
 				{
 					throw new Exception("Unknown prioritize tactic. Received: " + kind);
 				}
