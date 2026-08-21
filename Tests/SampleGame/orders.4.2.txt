@@ -1,0 +1,121 @@
+#faction 2 "xyzzy"
+; Caste Prime turn 4 — Luna: COPY fighters into the library, nest drones in bay
+; [206], land shuttles on Dusty field, build life support and a core drill on
+; wreck [200], start uranium then helium-3 mining, fuel plants, hop hull [101]
+; back to Luna orbit late. Do not claim wreck 200.
+; Drones [207] are already nested under fighter drone bay [206] under wreck
+; [200] in Dusty field [R00001]. COPY alnfgh (level 4) onto empty library [115]
+; (technology-capacity 4) before TRANSFER empties [207]. TRANSFER into the bay,
+; never onto hull [101]. Shuttles [100] are roots in Luna orbit [O00001]; they
+; cannot nest under the hull. Shuttle USE is orbit-only, so after landing the
+; robofactory [201] USEs airgen (level 0) and cdrill (COPY onto [201]; no stack
+; holds mineral core drilling, leftover [115] stays @research 200).
+
+#modulestack 000012
+; + Caste Prime Headquarters [000012], corporate headquarters [corphq], disabled, immobile.
+@produce cash
+
+#modulestack 000013
+; + small cargo bay [000013], 5 small cargo bays [cargob], disabled, immobile.
+@get all food from 000014
+@get all carbon from 000016
+sell 300 food
+
+#modulestack 000014
+; + farming complex [000014], farming complex [farms], disabled, immobile.
+@use farmng
+
+#modulestack 000015
+; + coal-burning plant [000015], 3 coal-burning plants [cplant], partially disabled, immobile.
+@produce energy
+
+#modulestack 000016
+; + core drill [000016], core drill [cdrill], disabled, immobile.
+; Earth drill leftover is hydrocarbons [hcdril], not mineral core drilling.
+@use hcdril
+
+#modulestack 115
+; leftover @research 200 reconnects. Long slot stays research; COPY is immediate on 207.
+; Do not TRAIN on the library. Do not switch this long to RESEARCH TECHNOLOGY.
+@research 200
+
+#modulestack 207
+; + alien fighter drone [207], 4 alien fighter drones [alndrn], nested under bay [206].
+; technologies: alien fighter construction [alnfgh].
+; COPY first: TRANSFER 4 empties this stack. Target the bay, not hull [101].
+copy alnfgh to 115
+transfer 4 to 206
+
+#modulestack 100
+; + space shuttle [100], 10 space shuttle [shuttl], roots in Luna orbit [O00001].
+; items: 37 terran, 30 iron, 16 titani, 16 silici, 15 copper, 93 food, 59 h2o2, 93 terair.
+; effects: fuelled 5 weeks (uranium + oxyhydro). Region↔orbit is 1 week space.
+; Land, then give build inputs and crew to robofactory [201] (wreck [200] cannot
+; hold cargo). Shuttle USE is orbit-only; do not USE airgen here after landing.
+; Keep leftover iron/copper on the shuttle. Refuel with uranium when mined (one
+; uranium this quarter goes to fission reactor [113]).
+move R00001
+-give 27 iron to 201
+-give 10 titani to 201
+-give 1 copper to 201
+-give 6 terran to 201
+-give 20 food to 112
+-give 20 terair to 112
+-give 10 food to 113
+-give 10 terair to 113
+-give 10 food to 114
+-give 10 terair to 114
+
+#modulestack 201
+; + advanced robo-factory [201], robofc, nested under wreck [200], crew 0, tech-cap 8.
+; technologies: automated fabrication [autfab] (level 2). COPY mineral core
+; drilling [cdrill] (level 1), uranium mining [uminng] (level 0), and helium-3
+; mining [he3min] (level 2) onto self immediately (receiver already exists).
+; USE airgen FOR 200 so lifsys nests under the wreck (frigate). Then USE
+; cdrill FOR 200 (25 iron + 10 titanium, 3 weeks). Nested --copy / ---copy
+; wait until the new drill is formed; do not leftover @copy onto new119.
+copy cdrill to 201
+copy uminng to 201
+copy he3min to 201
+use airgen as new118 for 200
+-use cdrill as new119 for 200
+--copy uminng to new119
+---copy he3min to new119
+
+#modulestack new118
+; life support [lifsys] after airgen. Produce canned air for the Luna camp.
+@produce terair
+
+#modulestack new119
+; core drill [cdrill] after USE cdrill (technology-capacity 4). Crew 6 from the
+; robofactory cargo. Nested COPY from [201] lands uminng then he3min the week
+; the drill forms (immediate loop after the long USE).
+get 6 terran from 201
+@use uminng
+-use he3min
+
+#modulestack 204
+; + automated helium powerplant [204], he3aut, 2 helium-3 per 13 weeks.
+; Restart energy once he3min delivers fuel (none on hand this week).
+@get all heliu3 from new119
+@produce energy
+
+#modulestack 113
+; + fission reactor [113], nested under hull [101]. Fuel with mined uranium,
+; then produce energy. Hull cannot hold cargo; GET onto the reactor.
+@get all uraniu from new119
+@produce energy
+
+#modulestack 101
+; + spaceship hull [101], sshull, in Dusty field [R00001]. Nested: 112/113/114/115.
+; Late hop to Luna orbit [O00001] for next turn's space battle, after nested
+; reactor has uranium. Do not re-claim wreck 200. Do not MOVE the drones.
+has 1 uraniu
+-move O00001
+
+#person 000001
+; + Caste Prime CEO [000001], terran [terran], on command bridge [112].
+; armor platoon leader [arpldr], training-duration 4 weeks.
+train skill arpldr
+
+#end

@@ -147,7 +147,40 @@ namespace UnitTests
 			station.Orders[0].Execute(this.game.Week);
 
 			Assert.That(station.HasCapture, Is.False);
-			Assert.That(station.Orders[0].Executed, Is.False);
+			Assert.That(station.Orders[0].Executed, Is.True);
+		}
+
+		[Test]
+		public void CaptureOrder_ImmobileLogsOnceEvenWhenPeerStacksKeepExecuting()
+		{
+			ModuleStack station = this.game.ModuleStacks["100021"];
+			ModuleStack frigate = this.game.ModuleStacks["100011"];
+			Assert.That(station.IsImmobile);
+			new OrdersReader(this.game).AssignOrders(new List<string>
+			{
+				"#faction 1",
+				"#modulestack 100021",
+				"capture all",
+				"#faction 2",
+				"#modulestack 100011",
+				"tactic evade",
+				"#end"
+			});
+
+			this.game.ExecuteOrdersByModuleStack();
+			this.game.ExecuteOrdersByModuleStack();
+
+			int fails = 0;
+			foreach (EventReport eventReport in station.EventReports)
+			{
+				if (eventReport.Description == "CAPTURE failed. Immobile units may only use destroy.")
+				{
+					fails++;
+				}
+			}
+			Assert.That(fails, Is.EqualTo(1));
+			Assert.That(station.HasCapture, Is.False);
+			Assert.That(frigate.HasEvade);
 		}
 
 		[Test]
@@ -503,6 +536,126 @@ namespace UnitTests
 		}
 
 		[Test]
+		public void TacticOrder_PrioritizeCargoCoexistsWithCapture()
+		{
+			ModuleStack tanks = this.game.ModuleStacks["100011"];
+			List<string> testcommands = new List<string>
+			{
+				"#faction 2",
+				"#modulestack 100011",
+				"tactic capture",
+				"tactic prioritize storage",
+				"#end"
+			};
+			OrdersReader ordersReader = new OrdersReader(this.game);
+			ordersReader.AssignOrders(testcommands);
+			tanks.Orders[0].Execute(this.game.Week);
+			tanks.Orders[1].Execute(this.game.Week);
+
+			Assert.That(tanks.Tactics.ContainsName("capture"));
+			Assert.That(tanks.HasPrioritizeCargo);
+			Assert.That(tanks.Tactics.ContainsName("prioritize storage"));
+		}
+
+		[Test]
+		public void Execute_PrioritizeStorage_TargetsCargoBay()
+		{
+			Region region = new Region(Region.All["R00002"].RegionHolder, "cargoregion");
+			Faction attackerOwner = this.game.Factions["2"];
+			Faction defenderOwner = this.game.Factions["1"];
+			ModuleStack attacker = new ModuleStack(region, attackerOwner, ModuleType.All["tanks"], "cargoatk");
+			attacker.AddModule();
+			attacker.ItemStacks.Add(new ItemStack(ItemType.All["terran"], 16));
+			attacker.ApplyTactic("capture");
+			attacker.ApplyPrioritizeTactic("prioritize storage");
+			ModuleStack headquarters = new ModuleStack(region, defenderOwner, ModuleType.All["corphq"], "cargohq");
+			headquarters.AddModule();
+			ModuleStack guns = new ModuleStack(region, defenderOwner, ModuleType.All["gunplc"], "cargogun");
+			guns.AddModule();
+			guns.ItemStacks.Add(new ItemStack(ItemType.All["terran"], 2));
+			ModuleStack cargo = new ModuleStack(region, defenderOwner, ModuleType.All["cargob"], "cargobay");
+			cargo.AddModule();
+
+			Sequence.Rolls.Clear();
+			Sequence.Ints.Clear();
+			Sequence.Ints.Push(1);
+			Sequence.Ints.Push(1);
+
+			Battle battle = new Battle(attacker, headquarters);
+			battle.Execute(this.game.Week);
+
+			string report = string.Join("\n", battle.Report(attackerOwner).ToArray());
+			Assert.That(report, Does.Contain("on small cargo bay [cargobay]"));
+		}
+
+		[Test]
+		public void Execute_HangarCraft_LaunchesFromBayAndDoesNotFireRoundOne()
+		{
+			Region region = new Region(Region.All["R00002"].RegionHolder, "hangarregion");
+			Faction attackerOwner = this.game.Factions["2"];
+			Faction defenderOwner = this.game.Factions["1"];
+			ModuleStack attacker = new ModuleStack(region, attackerOwner, ModuleType.All["tanks"], "hangaratk");
+			attacker.AddModule();
+			attacker.ItemStacks.Add(new ItemStack(ItemType.All["terran"], 16));
+			attacker.ApplyPrioritizeTactic("prioritize command");
+			ModuleStack headquarters = new ModuleStack(region, defenderOwner, ModuleType.All["corphq"], "hangarhq");
+			headquarters.AddModule();
+			ModuleStack bay = new ModuleStack(headquarters, defenderOwner, ModuleType.All["drnbay"], "hangarbay");
+			bay.AddModule();
+			ModuleStack drones = new ModuleStack(bay, defenderOwner, ModuleType.All["alndrn"], "hangardrn");
+			drones.AddModule();
+			drones.ItemStacks.Add(new ItemStack(ItemType.All["heliu3"], 1));
+
+			Sequence.Rolls.Clear();
+			Sequence.Ints.Clear();
+			Sequence.Ints.Push(1);
+			Sequence.Ints.Push(1);
+
+			Battle battle = new Battle(attacker, headquarters);
+			battle.Execute(this.game.Week);
+
+			Assert.That(drones.Parent, Is.EqualTo(region));
+			string report = string.Join("\n", battle.Report(defenderOwner).ToArray());
+			int roundOne = report.IndexOf("Round 1:", StringComparison.Ordinal);
+			int roundTwo = report.IndexOf("Round 2:", StringComparison.Ordinal);
+			Assert.That(roundOne, Is.GreaterThanOrEqualTo(0));
+			Assert.That(roundTwo, Is.GreaterThan(roundOne));
+			string beforeRounds = report.Substring(0, roundOne);
+			string roundOneText = report.Substring(roundOne, roundTwo - roundOne);
+			Assert.That(beforeRounds, Does.Not.Contain("launches"));
+			Assert.That(roundOneText, Does.Contain("hangarhq] launches alien fighter drone [hangardrn] from fighter drone bay [drnbay]"));
+			Assert.That(roundOneText, Does.Not.Contain("hangardrn] fires"));
+			Assert.That(report, Does.Not.Contain("fires fighter drone bay"));
+			Assert.That(report.Substring(roundTwo), Does.Contain("hangardrn] fires"));
+		}
+
+		[Test]
+		public void SetOrder_OnlineTrue_ActivatesDeactivatedModules()
+		{
+			ModuleStack tanks = this.game.ModuleStacks["100011"];
+			if (tanks.Quantity < 1)
+			{
+				tanks.AddModule();
+			}
+			tanks.Modules[0].Online = false;
+			Assert.That(tanks.Modules[0].IsActive, Is.False);
+
+			List<string> testcommands = new List<string>
+			{
+				"#faction 2",
+				"#modulestack 100011",
+				"set online true",
+				"#end"
+			};
+			OrdersReader ordersReader = new OrdersReader(this.game);
+			ordersReader.AssignOrders(testcommands);
+			tanks.Orders[0].Execute(this.game.Week);
+
+			Assert.That(tanks.Modules[0].Online);
+			Assert.That(tanks.Online);
+		}
+
+		[Test]
 		public void Execute_ImmobileTarget_HasHigherHitChance()
 		{
 			Region region = new Region(Region.All["R00002"].RegionHolder, "immregion");
@@ -602,5 +755,138 @@ namespace UnitTests
 				Assert.That(battle.Attackers.Contains(disabled.Name), Is.False);
 			}
 		}
+
+		[Test]
+		public void IsImmobile_NestedModuleOnMobileHull_FollowsRoot()
+		{
+			ModuleStack hull = this.game.ModuleStacks["100011"];
+			ModuleStack bridge = this.game.ModuleStacks["100012"];
+			Assert.That(hull.IsImmobile, Is.False);
+			Assert.That(bridge.IsImmobile, Is.False);
+		}
+
+		[Test]
+		public void IsImmobile_NestedModuleOnCity_IsTrue()
+		{
+			ModuleStack city = this.game.ModuleStacks["000001"];
+			ModuleStack factory = this.game.ModuleStacks["000004"];
+			Assert.That(city.IsImmobile, Is.True);
+			Assert.That(factory.IsImmobile, Is.True);
+		}
+
+		[Test]
+		public void IsImmobile_StationAndNestedBridge_AreImmobile()
+		{
+			ModuleStack station = this.game.ModuleStacks["100021"];
+			ModuleStack bridge = this.game.ModuleStacks["100022"];
+			Assert.That(station.IsImmobile, Is.True);
+			Assert.That(bridge.IsImmobile, Is.True);
+		}
+
+		[Test]
+		public void IsImmobile_TanksOutOfFuelOrDisabled()
+		{
+			Region region = Region.All["R00002"];
+			Faction owner = this.game.Factions["2"];
+			ModuleStack fueled = new ModuleStack(region, owner, ModuleType.All["tanks"], "immobfuel");
+			fueled.AddModule();
+			fueled.ItemStacks.Add(new ItemStack(ItemType.All["terran"], 16));
+			fueled.ItemStacks.Add(new ItemStack(ItemType.All["oil"], 4));
+			Assert.That(fueled.IsImmobile, Is.False);
+
+			ModuleStack dry = new ModuleStack(region, owner, ModuleType.All["tanks"], "immobdry");
+			dry.AddModule();
+			dry.ItemStacks.Add(new ItemStack(ItemType.All["terran"], 16));
+			Assert.That(dry.IsImmobile, Is.True);
+
+			ModuleStack wrecked = new ModuleStack(region, owner, ModuleType.All["tanks"], "immobdmg");
+			wrecked.AddModule();
+			wrecked.ItemStacks.Add(new ItemStack(ItemType.All["terran"], 16));
+			wrecked.ItemStacks.Add(new ItemStack(ItemType.All["oil"], 4));
+			this.disableByHeavyDamage(wrecked);
+			Assert.That(wrecked.IsImmobile, Is.True);
+		}
+
+		[Test]
+		public void IsImmobile_LaunchedDroneWithFuel_IsFalse()
+		{
+			ModuleStack drone = new ModuleStack(
+				Orbit.All["O00003"],
+				this.game.Factions["2"],
+				ModuleType.All["alndrn"],
+				"immobdrone");
+			drone.AddModule();
+			drone.ItemStacks.Add(new ItemStack(ItemType.All["heliu3"], 1));
+			Assert.That(drone.IsImmobile, Is.False);
+		}
+
+		[Test]
+		public void IsImmobile_LaunchedDroneOutOfFuel_IsTrue()
+		{
+			ModuleStack drone = new ModuleStack(
+				Orbit.All["O00003"],
+				this.game.Factions["2"],
+				ModuleType.All["alndrn"],
+				"immobdrydrone");
+			drone.AddModule();
+			Assert.That(drone.IsImmobile, Is.True);
+		}
+
+		[Test]
+		public void CollectDefenders_NestedWeaponOnSameRoot_IsNotASeparateCombatant()
+		{
+			Orbit orbit = Orbit.All["O00003"];
+			Faction dronesOwner = this.game.Factions["2"];
+			Faction shuttleOwner = this.game.Factions["1"];
+			shuttleOwner.Attitudes["2"] = FactionAttitude.Enemy;
+			dronesOwner.Attitudes["1"] = FactionAttitude.Enemy;
+
+			ModuleStack shuttle = new ModuleStack(orbit, shuttleOwner, ModuleType.All["shuttl"], "rptshut");
+			shuttle.AddModule();
+			shuttle.ItemStacks.Add(new ItemStack(ItemType.All["terran"], 2));
+			shuttle.ItemStacks.Add(new ItemStack(ItemType.All["uraniu"], 1));
+			shuttle.ItemStacks.Add(new ItemStack(ItemType.All["h2o2"], 1));
+			ModuleStack launcher = new ModuleStack(shuttle, shuttleOwner, ModuleType.All["orbrkt"], "rptlnch");
+			launcher.AddModule();
+			ModuleStack drones = new ModuleStack(orbit, dronesOwner, ModuleType.All["alndrn"], "rptdrn");
+			drones.AddModule();
+			drones.ItemStacks.Add(new ItemStack(ItemType.All["heliu3"], 1));
+
+			Battle battle = new Battle(drones, shuttle);
+
+			Assert.That(battle.Defenders.Contains("rptshut"), Is.True);
+			Assert.That(battle.Defenders.Contains("rptlnch"), Is.False, "nested launcher is listed under the shuttle, not twice");
+			string roster = string.Join("\n", shuttle.BattleReport(dronesOwner).ToArray());
+			Assert.That(roster, Does.Contain("rptlnch"));
+		}
+
+		[Test]
+		public void BattlesReport_BlankLineBetweenBattles()
+		{
+			ModuleStack frigate = ModuleStack.All["100011"];
+			ModuleStack station = ModuleStack.All["100021"];
+			Battle first = new Battle(frigate, station);
+			first.Week = 1;
+			Battle second = new Battle(frigate, station);
+			second.Week = 8;
+
+			Battles battles = new Battles();
+			battles.Add(first);
+			battles.Add(second);
+			List<string> lines = battles.Report(frigate.Owner);
+
+			int weekEight = -1;
+			for (int i = 0; i < lines.Count; i++)
+			{
+				if (lines[i].IndexOf("Week 8.") >= 0)
+				{
+					weekEight = i;
+					break;
+				}
+			}
+			Assert.That(weekEight, Is.GreaterThan(0));
+			Assert.That(lines[weekEight - 1], Is.EqualTo(""), "blank line between consecutive battles");
+		}
+
 	}
 }

@@ -260,6 +260,28 @@ namespace SpaceAge
 			set { this.defense = value; }
 		}
 
+		private int initiative;
+		public int Initiative
+		{
+			get { return this.initiative; }
+			set { this.initiative = value; }
+		}
+
+		public bool IsShuttleUnit
+		{
+			get { return this.Group == EModuleTypesGroup.shuttle || this.name == "shuttl" || this.name == "alndrn"; }
+		}
+
+		public bool IsHangarCraft
+		{
+			get { return this.IsShuttleUnit; }
+		}
+
+		public bool IsDroneBay
+		{
+			get { return this.name == "drnbay"; }
+		}
+
 		#endregion
 
 

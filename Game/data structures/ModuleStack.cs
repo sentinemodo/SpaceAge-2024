@@ -36,12 +36,7 @@ namespace SpaceAge
 		public ModuleStack(IHolder parent, Faction owner, ModuleType type)
 			: base("")
 		{
-			this.name = this.GenerateRandomIdentifier();
-			while (ModuleStack.All.ContainsKey(name))
-			{
-				this.name = this.GenerateRandomIdentifier();
-			}
-
+			this.name = this.GenerateUniqueModuleStackIdentifier();
 			ModuleStack.All.Add(this.name, this);
 
 			this.alias = this.name;
@@ -53,12 +48,7 @@ namespace SpaceAge
 		public ModuleStack(IHolder parent, Faction owner)
 			: base("")
 		{
-			this.name = this.GenerateRandomIdentifier();
-			while (ModuleStack.All.ContainsKey(name))
-			{
-				this.name = this.GenerateRandomIdentifier();
-			}
-
+			this.name = this.GenerateUniqueModuleStackIdentifier();
 			ModuleStack.All.Add(this.name, this);
 
 			this.parent = parent;
@@ -73,11 +63,8 @@ namespace SpaceAge
             if (name.StartsWith("new"))
             {
                 // okay if it's a new alias we need to create new identifier
-				string generatedRandomIdentifier = this.GenerateRandomIdentifier();
+				string generatedRandomIdentifier = this.GenerateUniqueModuleStackIdentifier();
 
-				// now we need to check if we by accident didn't randomly created the non-unique identifier
-                if (ModuleStack.All.ContainsKey(generatedRandomIdentifier))
-                    throw new Exception("Randomly generated modulestack name of [" + generatedRandomIdentifier + "] already existed.");
 				this.name = generatedRandomIdentifier;
             } else
             {
@@ -90,7 +77,7 @@ namespace SpaceAge
 
             while (ModuleStack.All.ContainsKey(this.name))
             {
-                this.name = this.GenerateRandomIdentifier();
+                this.name = this.GenerateUniqueModuleStackIdentifier();
             }
 
             ModuleStack.All.Add(this.name, this);
@@ -667,61 +654,106 @@ namespace SpaceAge
 		{
 			get
 			{
-                // if it is isn't it cannot move 
-                if (!this.IsFormed)
-                    return true;
-
-				// is moveable unit TODO: verify fuel
-				if (this.moduleType.Group == EModuleTypesGroup.vehicle
-					| this.ModuleType.Group == EModuleTypesGroup.infantry
-					| this.ModuleType.Group == EModuleTypesGroup.spacecraft)
+				if (!this.IsFormed)
 				{
-					return false;
+					return true;
 				}
-
-				// is propulsion type modulestack or has some TODO: verify fuel
-				if (this.moduleType.Group == EModuleTypesGroup.propulsion
-					| this.ModuleStacks.Contains(EModuleTypesGroup.propulsion))
+				if (!this.IsRootModuleStack)
 				{
-					return false;
+					return this.RootModuleStack.IsImmobile;
 				}
+				return !this.canRelocate();
+			}
+		}
 
-				// has some moveModes and at least one does not need fuel 
-				foreach(MoveMode moveMode in this.moduleType.MoveModes.Values)
+		private bool canRelocate()
+		{
+			if (!this.IsActive)
+			{
+				return false;
+			}
+
+			foreach (ModuleStack mover in this.spaceMovers())
+			{
+				if (mover.HasOperationalModules && !mover.NeedFuel(null))
 				{
-					if (!this.NeedFuel(moveMode))
-					{
-						return false;
-					}
+					return true;
 				}
+			}
 
-				// yes, it's immobile
-				return true;
+			if (this.MoveModes.ContainsKey(EMoveMode.ground))
+			{
+				return !this.NeedFuel(this.MoveModes[EMoveMode.ground]);
+			}
+
+			return false;
+		}
+
+		private List<ModuleStack> spaceMovers()
+		{
+			List<ModuleStack> movers = new List<ModuleStack>();
+			this.collectSpaceMovers(this, movers);
+			return movers;
+		}
+
+		private void collectSpaceMovers(ModuleStack stack, List<ModuleStack> movers)
+		{
+			if (stack.MoveModes.ContainsKey(EMoveMode.space))
+			{
+				movers.Add(stack);
+			}
+			if (stack.ModuleStacks.Count < 1)
+			{
+				return;
+			}
+			foreach (ModuleStack nested in stack.ModuleStacks.Values)
+			{
+				this.collectSpaceMovers(nested, movers);
 			}
 		}
 
 		public bool NeedFuel(MoveMode moveMode)
 		{
-			// need no fuel at all
 			if (this.Fuel.Count == 0)
 			{
 				return false;
 			}
 
-			// need fuel but is already fueled
 			if (this.Effects.IsFuelled)
-			{
-				return false;
-			} 
-			
-			// need fuel but has some
-			if (this.ItemStacksSumRecursive.Has(this.Fuel))
 			{
 				return false;
 			}
 
-			// need fuel
+			if (this.RootModuleStack.ItemStacksSumRecursive.Has(this.Fuel))
+			{
+				return false;
+			}
+
 			return true;
+		}
+
+		public string GenerateUniqueModuleStackIdentifier()
+		{
+			string generated = this.GenerateRandomIdentifier();
+			while (ModuleStack.IsInvalidGeneratedName(generated) || ModuleStack.All.ContainsKey(generated))
+			{
+				generated = this.GenerateRandomIdentifier();
+			}
+			return generated;
+		}
+
+		public static bool IsInvalidGeneratedName(string name)
+		{
+			if (string.IsNullOrEmpty(name))
+			{
+				return true;
+			}
+			int numeric;
+			if (int.TryParse(name, out numeric) && numeric == 0)
+			{
+				return true;
+			}
+			return false;
 		}
 
 		private bool moduleTypeIsCombatArmed(ModuleType type)
@@ -730,7 +762,8 @@ namespace SpaceAge
 			{
 				return false;
 			}
-			if (type.Group == EModuleTypesGroup.military)
+			if (type.Group == EModuleTypesGroup.military
+				|| type.Group == EModuleTypesGroup.shuttle)
 			{
 				return true;
 			}
@@ -1012,6 +1045,10 @@ namespace SpaceAge
 				{
 					initiativeBonus += this.InitiativeManeuverabilityBonus;
 				}
+				if (this.moduleType != null)
+				{
+					initiativeBonus += this.moduleType.Initiative;
+				}
 				initiativeBonus += this.technologies.Initiative;
 				initiativeBonus += this.People.Initiative;
 				return initiativeBonus; 
@@ -1044,6 +1081,15 @@ namespace SpaceAge
 		public bool HasPrioritizeCommand
 		{
 			get { return this.Tactics.ContainsName("prioritize command"); }
+		}
+
+		public bool HasPrioritizeCargo
+		{
+			get
+			{
+				return this.Tactics.ContainsName("prioritize storage")
+					|| this.Tactics.ContainsName("prioritize cargo");
+			}
 		}
 
 		public ETactic FiringTactic
@@ -1079,6 +1125,8 @@ namespace SpaceAge
 		{
 			this.Tactics.RemoveByName("prioritize armed");
 			this.Tactics.RemoveByName("prioritize command");
+			this.Tactics.RemoveByName("prioritize cargo");
+			this.Tactics.RemoveByName("prioritize storage");
 			if (tacticName == "prioritize armed")
 			{
 				this.Tactics.Add(new PrioritizeArmedTactic(this));
@@ -1086,6 +1134,10 @@ namespace SpaceAge
 			else if (tacticName == "prioritize command")
 			{
 				this.Tactics.Add(new PrioritizeCommandTactic(this));
+			}
+			else if (tacticName == "prioritize cargo" || tacticName == "prioritize storage")
+			{
+				this.Tactics.Add(new PrioritizeCargoTactic(this));
 			}
 		}
 
@@ -1122,6 +1174,60 @@ namespace SpaceAge
 				}
 			}
 			return false;
+		}
+
+		public bool IsCargoStack()
+		{
+			if (this.moduleType != null && this.moduleType.Group == EModuleTypesGroup.storage)
+			{
+				return true;
+			}
+			foreach (ModuleStack moduleStack in this.ModuleStacks.Values)
+			{
+				if (moduleStack.IsCargoStack())
+				{
+					return true;
+				}
+			}
+			return false;
+		}
+
+		public bool IsHangarCraft
+		{
+			get { return this.moduleType != null && this.moduleType.IsHangarCraft; }
+		}
+
+		public static bool CanNestHangarCraft(IHolder parent, ModuleType craftType)
+		{
+			if (parent == null)
+			{
+				return false;
+			}
+			if (parent.IsLocation)
+			{
+				return true;
+			}
+			ModuleStack stack = parent as ModuleStack;
+			if (stack == null || stack.ModuleType == null)
+			{
+				return false;
+			}
+			if (stack.ModuleType.IsDroneBay)
+			{
+				return true;
+			}
+			return craftType != null
+				&& craftType.Name == "shuttl"
+				&& stack.ModuleType.Group == EModuleTypesGroup.frigate;
+		}
+
+		public void SetOnline(bool online)
+		{
+			this.online = online;
+			foreach (Module module in this.modules)
+			{
+				module.Online = online;
+			}
 		}
 
 		#endregion
@@ -2033,6 +2139,14 @@ namespace SpaceAge
 			}
 			foreach (ModuleStack modulestack in this.ModuleStacks.Values)
 			{
+				if (modulestack.IsHangarCraft)
+				{
+					continue;
+				}
+				if (modulestack.ModuleType != null && modulestack.ModuleType.IsDroneBay)
+				{
+					continue;
+				}
 				firingModules.AddRange(modulestack.GetFiringModules());
 			}
 			return firingModules;

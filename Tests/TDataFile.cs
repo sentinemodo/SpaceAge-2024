@@ -189,7 +189,22 @@ namespace UnitTests
 			Assert.That(alnfgh.UseProduceModules.Name, Is.EqualTo("alndrn"));
 			ModuleType alndrnModule = ModuleType.All["alndrn"];
 			Assert.That(alndrnModule.CrewRequired, Is.EqualTo(0));
-			Assert.That(alndrnModule.Attack, Is.EqualTo(6));
+			Assert.That(alndrnModule.Attack, Is.EqualTo(4));
+			Assert.That(alndrnModule.Damage, Is.EqualTo(2));
+			Assert.That(alndrnModule.Defense, Is.EqualTo(1));
+			Assert.That(alndrnModule.DamageCapacity, Is.EqualTo(8));
+			Assert.That(alndrnModule.Capacity, Is.EqualTo(1));
+			Assert.That(alndrnModule.Initiative, Is.EqualTo(20));
+			Assert.That(alndrnModule.MoveModes.ContainsKey(EMoveMode.space));
+			Assert.That(alndrnModule.MoveModes[EMoveMode.space].Speed, Is.EqualTo(1));
+			Assert.That(alndrnModule.MoveModes[EMoveMode.space].MassCapacity, Is.EqualTo(750));
+			Assert.That(alndrnModule.FuelDuration, Is.EqualTo(13));
+			Assert.That(alndrnModule.Fuel.ContainsKey(ItemType.All["heliu3"]));
+			Assert.That(alndrnModule.Fuel[ItemType.All["heliu3"]].Quantity, Is.EqualTo(1));
+			Assert.That(alndrnModule.Group, Is.EqualTo(EModuleTypesGroup.shuttle));
+			Assert.That(alndrnModule.IsShuttleUnit, Is.True);
+			Assert.That(ModuleType.All["shuttl"].IsShuttleUnit, Is.True);
+			Assert.That(ModuleType.All["orbrkt"].IsShuttleUnit, Is.False);
 
 			Assert.That(Technology.All["autfab"].Level, Is.EqualTo(2));
 			Assert.That(Technology.All["autfab"].UseProduceModules.Name, Is.EqualTo("robofc"));
@@ -208,6 +223,43 @@ namespace UnitTests
 			Assert.That(Technology.All["ahlcns"].UseProduceModules.Name, Is.EqualTo("alnhul"));
 			Assert.That(ModuleType.All["alnhul"].Group, Is.EqualTo(EModuleTypesGroup.frigate));
 			Assert.That(ModuleType.All["alnhul"].Capacity, Is.EqualTo(6000));
+		}
+
+		[Test]
+		public void LoadConfiguration_LoadsOrbitalRocketLauncher()
+		{
+			this.dataFile.LoadConfiguration(Directory.GetCurrentDirectory());
+
+			Technology orbrkt = Technology.All["orbrkt"];
+			Assert.That(orbrkt.Level, Is.EqualTo(1));
+			Assert.That(orbrkt.HasTag("military"));
+			Assert.That(orbrkt.UseTime, Is.EqualTo(8));
+			Assert.That(orbrkt.UseCondition_ModuleTypesGroup, Is.EqualTo(EModuleTypesGroup.production));
+			Assert.That(orbrkt.UseCondition_LocationTypes, Is.Null.Or.Empty,
+				"factory on the ground or a shuttle in orbit may both USE orbrkt");
+			Assert.That(orbrkt.UseProduceModules.Name, Is.EqualTo("orbrkt"));
+			Assert.That(orbrkt.UseConsumeItems.ContainsKey(ItemType.All["iron"]));
+			Assert.That(orbrkt.UseConsumeItems[ItemType.All["iron"]].Quantity, Is.EqualTo(4));
+
+			ModuleType launcher = ModuleType.All["orbrkt"];
+			ModuleType shuttle = ModuleType.All["shuttl"];
+			ModuleType drones = ModuleType.All["alndrn"];
+			Assert.That(launcher.Group, Is.EqualTo(EModuleTypesGroup.military));
+			double haulReserve =
+				2 * ItemType.All["terran"].Size
+				+ 20 * ItemType.All["food"].Size
+				+ 20 * ItemType.All["terair"].Size
+				+ ItemType.All["uraniu"].Size
+				+ ItemType.All["h2o2"].Size;
+			Assert.That(launcher.Size, Is.LessThanOrEqualTo(shuttle.Capacity - haulReserve),
+				"shuttle must still hold crew, food, terair, and fuel beside the launcher");
+			Assert.That(launcher.OperationCondition_LocationTypes, Does.Contain(ELocationType.orbit));
+			Assert.That(launcher.OperationCondition_LocationTypes, Does.Not.Contain(ELocationType.solidSurface));
+			Assert.That(launcher.Attack, Is.GreaterThan(0));
+			Assert.That(launcher.Damage, Is.GreaterThan(0));
+			Assert.That(launcher.Attack, Is.LessThan(drones.Attack * 4), "four drones should outgun one launcher");
+			Assert.That(launcher.DamageCapacity, Is.LessThan(drones.DamageCapacity * 8), "drones can still chew through the launcher");
+			Assert.That(launcher.Initiative, Is.LessThan(drones.Initiative));
 		}
 
 		[Test]
@@ -1257,6 +1309,7 @@ namespace UnitTests
 			Assert.That(ModuleTypeGroupXml.Parse("spacestation"), Is.EqualTo(EModuleTypesGroup.spaceStation));
 			Assert.That(ModuleTypeGroupXml.Parse("spaceStation"), Is.EqualTo(EModuleTypesGroup.spaceStation));
 			Assert.That(ModuleTypeGroupXml.Parse("settlement"), Is.EqualTo(EModuleTypesGroup.settlement));
+			Assert.That(ModuleTypeGroupXml.Parse("shuttle"), Is.EqualTo(EModuleTypesGroup.shuttle));
 		}
 
 		[Test]
@@ -1367,6 +1420,34 @@ namespace UnitTests
 			Assert.That(producing, Is.Not.Null, "in-progress producing-energy must persist across save/load");
 			Assert.That(producing.Duration, Is.EqualTo(4));
 			Assert.That(producing.Technology.Name, Is.EqualTo("farmng"));
+		}
+
+		[Test]
+		public void SaveLoad_PersistsProducingEnergyEffect_WithoutTechnology()
+		{
+			this.LoadGameDocument();
+			this.dataFile.LoadConfiguration();
+			this.dataFile.LoadFactions();
+			this.dataFile.LoadGalaxy();
+			this.game = this.dataFile.Game;
+
+			ModuleStack plants = ModuleStack.All["000011"];
+			new ProducingEnergy(plants, null, 4);
+
+			this.reloadSavedGame("gameout.saved_producingEnergyNoTech.xml");
+			plants = ModuleStack.All["000011"];
+			ProducingEnergy producing = null;
+			foreach (Effect effect in plants.Effects)
+			{
+				producing = effect as ProducingEnergy;
+				if (producing != null)
+				{
+					break;
+				}
+			}
+			Assert.That(producing, Is.Not.Null, "in-progress producing-energy with no technology must persist across save/load");
+			Assert.That(producing.Duration, Is.EqualTo(4));
+			Assert.That(producing.Technology, Is.Null);
 		}
 
 		[Test]

@@ -135,6 +135,10 @@ namespace UnitTests
 		public void Execute_ChargesMaintenanceOnceAtEndOfTurn()
 		{
 			ModuleStack factory = ModuleStack.All["000004"];
+			Region earthRegion = Region.All["R00002"];
+			Region isolated = new Region(earthRegion.RegionHolder, "maintonce");
+			isolated.RegionType = earthRegion.RegionType;
+			factory.Parent = isolated;
 			factory.ItemStacks.Add(new ItemStack(ItemType.All["food"], 130));
 			factory.ItemStacks.Add(new ItemStack(ItemType.All["terair"], 130));
 
@@ -156,6 +160,34 @@ namespace UnitTests
 
 			Assert.That(factory.ItemStacks[ItemType.All["cash"]].Quantity, Is.EqualTo(230));
 			Assert.That((int)factory.Owner.Bank.Balance, Is.LessThanOrEqualTo(bankBefore));
+		}
+
+		[Test]
+		public void ExecuteMaintenance_LaunchedDrone_PaysCashUpkeepFromBank()
+		{
+			Orbit orbit = new Orbit(Orbit.All["O00003"].OrbitHolder, "OUPK1");
+			Faction owner = this.game.Factions["2"];
+			Faction enemyOwner = this.game.Factions["1"];
+			int bankBefore = (int)owner.Bank.Balance;
+			ModuleStack hull = new ModuleStack(orbit, owner, ModuleType.All["sshull"], "upkhull");
+			hull.AddModule();
+			ModuleStack bay = new ModuleStack(hull, owner, ModuleType.All["drnbay"], "upkbay");
+			bay.AddModule();
+			ModuleStack drone = new ModuleStack(bay, owner, ModuleType.All["alndrn"], "upkdrn");
+			drone.AddModule();
+			drone.ItemStacks.Add(new ItemStack(ItemType.All["heliu3"], 1));
+			ModuleStack enemy = new ModuleStack(orbit, enemyOwner, ModuleType.All["alndrn"], "upkenemy");
+			enemy.AddModule();
+			enemy.ItemStacks.Add(new ItemStack(ItemType.All["heliu3"], 1));
+
+			Battle battle = new Battle(enemy, hull);
+			battle.Execute(this.game.Week);
+			Assert.That(drone.IsRootModuleStack, Is.True);
+
+			drone.ExecuteMaintenance(13);
+
+			Assert.That((int)owner.Bank.Balance, Is.EqualTo(bankBefore - 20));
+			Assert.That(this.hasEvent(drone, 13, "paid 20 cash [cash] upkeep"), Is.True);
 		}
 
 		[Test]
@@ -232,6 +264,10 @@ namespace UnitTests
 		public void ExecuteMaintenance_UnpaidFoodWoundsTerrans()
 		{
 			ModuleStack factory = ModuleStack.All["000004"];
+			Region earthRegion = Region.All["R00002"];
+			Region isolated = new Region(earthRegion.RegionHolder, "starveiso");
+			isolated.RegionType = earthRegion.RegionType;
+			factory.Parent = isolated;
 			for (int i = 0; i < 10; i++)
 			{
 				Sequence.Ints.Push(0);
@@ -349,6 +385,93 @@ namespace UnitTests
 				}
 			}
 			return false;
+		}
+
+		[Test]
+		public void ExecuteMaintenance_PullsFoodFromNestedChild()
+		{
+			ModuleStack factory = ModuleStack.All["000004"];
+			ModuleStack locker = new ModuleStack(
+				factory,
+				factory.Owner,
+				ModuleType.All["cargob"],
+				"100501");
+			locker.AddModule();
+			locker.ItemStacks.Add(new ItemStack(ItemType.All["food"], 10));
+
+			factory.ExecuteMaintenance(1);
+
+			Assert.That(locker.ItemStacks.Has(ItemType.All["food"]), Is.False);
+			Assert.That(this.hasEvent(factory, 1, "wounded from lack of supplies"), Is.False);
+		}
+
+		[Test]
+		public void ExecuteMaintenance_PullsFoodFromParent()
+		{
+			ModuleStack factory = ModuleStack.All["000004"];
+			ModuleStack city = (ModuleStack)factory.Parent;
+			city.ItemStacks.Add(new ItemStack(ItemType.All["food"], 10));
+
+			factory.ExecuteMaintenance(1);
+
+			Assert.That(city.ItemStacks.Quantity(ItemType.All["food"]), Is.EqualTo(0));
+			Assert.That(this.hasEvent(factory, 1, "wounded from lack of supplies"), Is.False);
+		}
+
+		[Test]
+		public void ExecuteMaintenance_PullsFoodFromSiblingAtSameLocation()
+		{
+			Faction owner = this.game.Factions["2"];
+			ModuleStack hungry = new ModuleStack(
+				Region.All["R00002"],
+				owner,
+				ModuleType.All["tanks"],
+				"100510");
+			hungry.AddModule();
+			hungry.ItemStacks.Add(new ItemStack(ItemType.All["terran"], 16));
+			hungry.ItemStacks.Add(new ItemStack(ItemType.All["cash"], 100));
+			ModuleStack depot = new ModuleStack(
+				Region.All["R00002"],
+				owner,
+				ModuleType.All["cargob"],
+				"100511");
+			depot.AddModule();
+			depot.ItemStacks.Add(new ItemStack(ItemType.All["food"], 32));
+
+			hungry.ExecuteMaintenance(1);
+
+			Assert.That(depot.ItemStacks.Has(ItemType.All["food"]), Is.False);
+			Assert.That(this.hasEvent(hungry, 1, "wounded from lack of supplies"), Is.False);
+		}
+
+		[Test]
+		public void ExecuteMaintenance_DoesNotPullFoodFromOtherFaction()
+		{
+			Faction owner = this.game.Factions["2"];
+			ModuleStack hungry = new ModuleStack(
+				Region.All["R00002"],
+				owner,
+				ModuleType.All["tanks"],
+				"100512");
+			hungry.AddModule();
+			hungry.ItemStacks.Add(new ItemStack(ItemType.All["terran"], 16));
+			hungry.ItemStacks.Add(new ItemStack(ItemType.All["cash"], 100));
+			ModuleStack foreign = new ModuleStack(
+				Region.All["R00002"],
+				this.game.Factions["1"],
+				ModuleType.All["cargob"],
+				"100513");
+			foreign.AddModule();
+			foreign.ItemStacks.Add(new ItemStack(ItemType.All["food"], 16));
+			for (int i = 0; i < 16; i++)
+			{
+				Sequence.Ints.Push(0);
+			}
+
+			hungry.ExecuteMaintenance(1);
+
+			Assert.That(foreign.ItemStacks[ItemType.All["food"]].Quantity, Is.EqualTo(16));
+			Assert.That(this.hasEvent(hungry, 1, "wounded from lack of supplies"), Is.True);
 		}
 
 		private Region firstMoonRegion()

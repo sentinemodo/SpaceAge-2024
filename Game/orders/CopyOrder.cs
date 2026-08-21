@@ -18,6 +18,7 @@ namespace SpaceAge
 		{
 			this.type = EOrderType.copy;
 			this.Receiver = receiver;
+			this.ReceiverName = receiver != null ? receiver.Name : null;
             this.TransferTime = 1;
             this.Technology = technology;
 		}
@@ -31,6 +32,7 @@ namespace SpaceAge
 
         public Technology Technology    { get; set; }
 		public ModuleStack Receiver     { get; set; }
+		public string ReceiverName      { get; set; }
 
 		public override void Parse(string command)
 		{
@@ -62,22 +64,21 @@ namespace SpaceAge
 				throw new Exception("bad syntax TO expected");
 			}
 
-			try
+			token = LineParser.GetToken(ref command);
+			if (string.IsNullOrEmpty(token))
 			{
-				token = LineParser.GetToken(ref command);
-				this.Receiver = ModuleStack.All[token];
+				throw new Exception("bad syntax or receiver does not exist");
 			}
-			catch (Exception ex)
-			{
-				throw new Exception("bad syntax or receiver does not exist", ex);
-			}
+			this.ReceiverName = token;
+			this.Receiver = ModuleStack.All.GetOrCreateNewModuleStack(this.Transferer.Owner, token);
 		}
 
         public override void LoadXml(XmlElement elOrder)
         {
             XmlElement elCopy = (XmlElement)elOrder.SelectNodes("copy")[0];
 
-            this.Receiver = ModuleStack.All[elCopy.GetAttribute("receiver")];
+            this.ReceiverName = elCopy.GetAttribute("receiver");
+            this.Receiver = ModuleStack.All.GetOrCreateNewModuleStack(this.Transferer.Owner, this.ReceiverName);
             this.Technology = Technology.All[elCopy.GetAttribute("technology")];
         }
 
@@ -86,7 +87,11 @@ namespace SpaceAge
             XmlElement elCopy = doc.CreateElement("copy");
 
             elCopy.SetAttribute("technology", this.Technology.Name);
-            elCopy.SetAttribute("receiver", this.Receiver.Name);
+            string receiver = this.Receiver != null ? this.Receiver.Name : this.ReceiverName;
+            if (!string.IsNullOrEmpty(receiver))
+            {
+                elCopy.SetAttribute("receiver", receiver);
+            }
 
             xmlElement.AppendChild(elCopy);
             return xmlElement;
@@ -95,6 +100,15 @@ namespace SpaceAge
 		public override void Execute(int week)
 		{
 			this.Executed = false;
+
+			if (this.Receiver == null || this.Receiver.ModuleType == null)
+			{
+				this.Transferer.EventReports.Add(
+					week,
+					"COPY failed. Receiver is not formed.");
+				base.Execute(week);
+				return;
+			}
 
             if (this.Receiver.TechnologyCapacity < this.Receiver.TechnologyCapacityUsed + this.Technology.Level)
             {
@@ -128,9 +142,35 @@ namespace SpaceAge
                     this.Receiver.Effects.Remove(effect);
                 }
 
-			    this.Executed = true;
+			this.Executed = true;
 			}
             base.Execute(week);
         }
+
+		public override List<string> Report(Faction owner)
+		{
+			List<string> lines = new List<string>();
+			string receiverToken = this.reportReceiverToken();
+			string line = string.Format("{0}{1}copy {2} to {3}",
+				this.Conditions,
+				(this.Repeat == 1) ? string.Empty : ((this.Repeat < 0) ? "@" : string.Concat(this.Repeat.ToString(), " ")),
+				this.Technology != null ? this.Technology.Name : string.Empty,
+				receiverToken);
+			lines.Add(line);
+			return lines;
+		}
+
+		private string reportReceiverToken()
+		{
+			if (!string.IsNullOrEmpty(this.ReceiverName))
+			{
+				return this.ReceiverName;
+			}
+			if (this.Receiver == null)
+			{
+				return string.Empty;
+			}
+			return this.Receiver.Name;
+		}
 	}
 }

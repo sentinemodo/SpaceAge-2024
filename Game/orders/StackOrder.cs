@@ -169,6 +169,14 @@ namespace SpaceAge
                 {
                     stackerParent = stackerParent.Parent;
                 }
+				ModuleStack hangarStacker = this.Stacker as ModuleStack;
+				if (hangarStacker != null && hangarStacker.IsHangarCraft
+					&& !ModuleStack.CanNestHangarCraft(stackerParent, hangarStacker.ModuleType))
+				{
+					this.Stacker.EventReports.Add(week, "STACK failed. fighter drones can only nest in a location or a fighter drone bay.");
+					base.Execute(week);
+					return;
+				}
                 this.Stacker.Parent = stackerParent;
                 this.Stacker.EventReports.Add(week, string.Concat("stacked out under ", this.Stacker.Parent.ReportName, "."));
                 this.Executed = true;
@@ -212,6 +220,13 @@ namespace SpaceAge
                     canStack = false;
                     this.Stacker.EventReports.Add(week, "STACK failed. Parent is not the same faction.");
                 }
+				ModuleStack hangarStacker = this.Stacker as ModuleStack;
+				if (canStack && hangarStacker != null && hangarStacker.IsHangarCraft
+					&& !ModuleStack.CanNestHangarCraft(this.Parent, hangarStacker.ModuleType))
+				{
+					canStack = false;
+					this.Stacker.EventReports.Add(week, "STACK failed. fighter drones can only nest in a location or a fighter drone bay.");
+				}
             }
             return canStack;
 		}

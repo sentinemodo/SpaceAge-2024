@@ -1,6 +1,6 @@
 # Level 0 and 1 technologies
 
-Catalog: `Tests/data.xml`, loaded by `Game/game/CatalogLoader.cs` (`DataFile.LoadConfigurationItems` delegates). Checked **19 Aug 2026**.
+Catalog: `Tests/data.xml`, loaded by `Game/game/CatalogLoader.cs` (`DataFile.LoadConfigurationItems` delegates). Checked **22 Aug 2026** against engine **0.1.148**.
 
 This file lists **level 0 and level 1** technologies, then the **module types** and **item types** those technologies produce or consume. Level 2 and above: `player/advanced_technologies.md`. Alphabetical by English `name-en` inside each level.
 
@@ -182,6 +182,10 @@ Works in: command. Use consumes: nothing. Use produces: nothing (battle tech). U
 Mineral exploitation.  
 Works in: production. Use consumes: 25 iron `[iron]`, 10 titanium `[titani]`. Use produces: core drill `[cdrill]`. Use-time: 3 weeks.
 
+**orbital rocket launcher [orbrkt]**  
+A rack of chemically boosted rockets sized to nest on a shuttle or station and fire in orbit. Built in a factory on the ground or assembled in space. Tag: `military`.  
+Works in: production (no location-type limit). Use consumes: 4 iron `[iron]`. Use produces: orbital rocket launcher `[orbrkt]`. Use-time: 8 weeks.
+
 **preventive servicing [servic]**  
 Maintenance and repairs are best done in advance. Tag: `repair`.  
 Works in: production. Use consumes: 1 titanium `[titani]`, 1 iron `[iron]`, 1 copper `[copper]`, 1 silicium `[silici]`. Use produces: 10 spare parts `[spare]`. Use-time: 1 week (default).
@@ -221,7 +225,7 @@ Group `command`. Built by space control `[spctrl]`. Size 800, mass 300, crew 1, 
 
 **computer library [cmplib]**  
 The efficiency of the computer library allows on to store and manipulate larger than usual files and technological reference documents.  
-Group `research`. Built by file indexing `[filidx]`. Size 200, mass 50, energy 5, HP 50, tech-cap 4. Upkeep 100 cash (catalog attribute `quanity`).
+Group `research`. Built by file indexing `[filidx]`. Size 200, mass 50, energy 5, HP 50, tech-cap 4, research-output 1. Upkeep 100 cash (catalog attribute `quanity`).
 
 **corporate headquarters [corphq]**  
 A corporate headquarters allow centralized control of the corporation.  
@@ -269,7 +273,7 @@ Group `storage`. Built by small scale transportation `[strans]`. Size 2000, mass
 
 **space shuttle [shuttl]**  
 Basic shuttle used for orbital constructions. It has basic construction facitilites, small fission reactor and is propelled by a small reaction drive.  
-Group `production`. Built by shuttles assembly `[shtlas]`. Size 200, mass 30, crew 2, capacity 125, HP 17, tech-cap 1. Upkeep 100 cash. USE in orbit at 10× efficiency, requires fuel. Space move, mass-capacity 750. Fuel duration 13. Operates on solid-surface, liquid-surface, orbit.
+Group `production` (stays production so orbit `USE` still works). Built by shuttles assembly `[shtlas]`. Size 200, mass 30, crew 2, capacity 125, HP 17, tech-cap 1. Upkeep 100 cash. USE in orbit at 10× efficiency, requires fuel. Space move, mass-capacity 750. Fuel duration 13. Operates on solid-surface, liquid-surface, orbit. Shuttle unit (`IsShuttleUnit` / hangar craft) by type id, same as fighter drones `[alndrn]` (those use catalog group `shuttle`).
 
 **spaceship hull [sshull]**  
 The basic spaceship hull, it embodies the technology and experience in space travel.  
@@ -298,7 +302,7 @@ Advanced mining system. A core drill allows you to strip minerals and various re
 Group `extraction`. Built by mineral core drilling `[cdrill]`. Size 1000, mass 1000, crew 6, energy 5, capacity 750, HP 100. Upkeep 40 cash. Faster extraction on self. Operates on solid-surface, in settlement or frigate.
 
 **engineering shop [engshp]**  
-A small workshop that repairs the parent module stack and nested stacks. REPAIR restores 20 hit points per week and consumes 1 spare part, or 1 hit point with no parts.  
+A small workshop that repairs the parent module stack and nested stacks. REPAIR restores 20 damage per week and consumes 1 spare part, or 1 damage with no parts (event: `repaired N damage.`).  
 Group `production`. Built by engineering shop `[engshp]`. Size 25, mass 20, crew 2, energy 1, capacity 10, HP 15, tech-cap 1. Upkeep 5 cash. Operates in settlement, frigate, spacecraft, space station.
 
 **infantry battalion [inftry]**  
@@ -316,6 +320,10 @@ Group `military`. Built by laser turret `[lstrrt]`. Requires technology laser op
 **metropoly [mtrply]**  
 Well designed city with advanced infrastructure, that allows building tall buildings and effective public transport.  
 Group `settlement`. Built by city planning `[ctypln]` (consumes 1 city). Size 25000, capacity 20000, energy 20, HP 1250, tech-cap 2, population max 15000. Cannot be owned; cannot hold item stacks. Upkeep 150 food (riot 25% if unpaid). Produces 1500 cash and 15 terran per 13 weeks. Operates on solid-surface worlds with terran atmosphere.
+
+**orbital rocket launcher [orbrkt]**  
+A rack of chemically boosted rockets that only fires in orbit. Compact enough to nest in a shuttle with crew, fuel, food, and breathing mix.  
+Group `military`. Built by orbital rocket launcher `[orbrkt]`. Size 40, mass 40, crew 0, capacity 0, HP 40, tech-cap 1, attack 3, defense 1, damage 3. Upkeep 20 cash. Operates only in orbit. Not a shuttle unit: stays nested on the shuttle, fires on the parent’s shot sequence, and is included in the standard hit-location roll.
 
 **tanks [tanks]**  
 Platoon of 4 armored vehicles suitable for destroying ground modules and infantry battalions.  
@@ -343,7 +351,7 @@ Size 1, mass 1. Produced by intensive farming `[farmng]` (5). Also L1: advanced 
 
 **unit of iron [iron]**  
 Extracted, refined, and purified into industrial steels, iron is a basic construction material widely used in most structures.  
-Size 5, mass 10. Produced by iron mining `[iminng]` (3). Consumed by most L0 builds (see technology entries). Also L1: city planning `[ctypln]` (26), mineral core drilling `[cdrill]` (25), armored combat `[armcbt]` (4), form infantry battalion `[frminf]` (1), rocket launcher production `[rckter]` (1), laser turret `[lstrrt]` (2), preventive servicing `[servic]` (1), engineering shop `[engshp]` (5), law enforcement `[lawenf]` (6).
+Size 5, mass 10. Produced by iron mining `[iminng]` (3). Consumed by most L0 builds (see technology entries). Also L1: city planning `[ctypln]` (26), mineral core drilling `[cdrill]` (25), armored combat `[armcbt]` (4), orbital rocket launcher `[orbrkt]` (4), form infantry battalion `[frminf]` (1), rocket launcher production `[rckter]` (1), laser turret `[lstrrt]` (2), preventive servicing `[servic]` (1), engineering shop `[engshp]` (5), law enforcement `[lawenf]` (6).
 
 **unit of oil [oil]**  
 Black liquid carbon based used as fuel.  

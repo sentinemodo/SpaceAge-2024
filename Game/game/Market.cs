@@ -54,6 +54,25 @@ namespace SpaceAge
             return this.PriceList[type];
         }
         
+        private int availableSellQuantity()
+        {
+            if (this.Sell == null)
+            {
+                return 0;
+            }
+            int listed = this.Sell.Quantity;
+            if (this.Buy == null || this.Buy.OfferType != EOfferType.BuyItems || this.Buy.ItemType == null)
+            {
+                return listed;
+            }
+            int onHand = this.Sell.Offerent.ItemStacks.Quantity(this.Buy.ItemType);
+            if (onHand < listed)
+            {
+                return onHand;
+            }
+            return listed;
+        }
+
         private bool canBuy(int week, int amount)
 		{
 			//TODO: has cash & has cash for service as of now you need to have either full amount in account & has access to it, or have full amount in cash
@@ -285,26 +304,31 @@ namespace SpaceAge
 
 			if (this.Sell != null)
 			{
+				int sellQuantity = this.availableSellQuantity();
+				if (sellQuantity < 1)
+				{
+					return false;
+				}
                 int transactionCost;
-				if (this.Buy.Quantity == this.Sell.Quantity)
+				if (this.Buy.Quantity == sellQuantity)
 				{
 					// both are fullfilled
-					transactionCost = this.calculateTransactionCost(this.Sell.Quantity);
+					transactionCost = this.calculateTransactionCost(sellQuantity);
 					if (this.canBuy(week, transactionCost))
 					{
-						this.executeTransaction(week, transactionCost, this.Sell.Quantity);
+						this.executeTransaction(week, transactionCost, sellQuantity);
                         Offer.All.Remove(this.Sell);
                         Offer.All.Remove(this.Buy);
                     }
 				}
-				else if (this.Buy.AllQuantity | this.Buy.Quantity >= this.Sell.Quantity)
+				else if (this.Buy.AllQuantity | this.Buy.Quantity >= sellQuantity)
 				{
 					// sell is fullfilled, buy is reduced
-					transactionCost = this.calculateTransactionCost(this.Sell.Quantity);
+					transactionCost = this.calculateTransactionCost(sellQuantity);
 					if (this.canBuy(week, transactionCost))
 					{
-                        this.executeTransaction(week, transactionCost, this.Sell.Quantity);                        
-                        this.Buy.Quantity -= this.Sell.Quantity;
+                        this.executeTransaction(week, transactionCost, sellQuantity);                        
+                        this.Buy.Quantity -= sellQuantity;
 
                         Offer.All.Remove(this.Sell);
                         this.ProcessOffer(week, this.Buy);

@@ -20,6 +20,7 @@
 						<resource type="uraniu" quantity="100" />
 						<resource type="copper" quantity="100" />
 						<resource type="silici" quantity="100" />
+						<resource type="heliu3" quantity="100" />
 						<modulestack name="200" name-en="crashed alien vessel" type="alnhul" quantity="1" faction="1">
 							<technology name="ahlcns" />
 							<modulestack name="201" type="robofc" quantity="1" faction="1">

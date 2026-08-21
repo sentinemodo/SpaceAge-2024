@@ -5,7 +5,7 @@ Content-Disposition: attachment
 SpaceAge report for NPC [1].
 Turn 2, Year 2020, April 1.
 
-SpaceAge Engine Version: 0.1.141.
+SpaceAge Engine Version: 0.1.144.
 
 Events during turn:
   none.
@@ -59,7 +59,7 @@ Galaxy report:
     370 (0) units of terran breathing gas mixture [terair].
     items: 3000 cash [cash], 30 terrans [terran] (size: 120, mass: 120, upkeep: 30 cash [cash],
     consume: 30 units of food [food], 30 units of terran breathing gas mixture [terair]).
-    + Berlin garrison [000002], infantry battalion [inftry].
+    + Berlin garrison [000002], infantry battalion [inftry], immobile.
       size: 500, mass: 600 (500), capacity: 300/100, upkeep: 5 cash [cash], consume: 100 units of
       food [food], 100 units of terran breathing gas mixture [terair].
       movement speed: 0.1 on ground.
@@ -130,7 +130,7 @@ Galaxy report:
     units of food [food], 1028 (0) cash [cash], consume: 193 (0) units of food [food], 193 (0) units
     of terran breathing gas mixture [terair].
     items: 2000 cash [cash].
-    + Sydney garrison [000007], infantry battalion [inftry].
+    + Sydney garrison [000007], infantry battalion [inftry], immobile.
       size: 500, mass: 600 (500), capacity: 300/100, upkeep: 5 cash [cash], consume: 100 units of
       food [food], 100 units of terran breathing gas mixture [terair].
       movement speed: 0.1 on ground.
@@ -174,11 +174,11 @@ Galaxy report:
       size: 1000.
     - military barrack [000025], military barrack [barrck], immobile, owned by Gelvaren [3].
       size: 2000.
-      - tanks [109], 2 tanks [tanks], disabled, owned by Gelvaren [3].
+      - tanks [109], 2 tanks [tanks], disabled, immobile, owned by Gelvaren [3].
         size: 480.
         - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
           size: 4.
-    - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
+    - infantry battalion [110], infantry battalion [inftry], immobile, owned by Gelvaren [3].
       size: 500.
       - terran officer [107], terran [terran], working for Gelvaren [3].
         size: 4.
@@ -201,7 +201,7 @@ Orders Template:
 ; items: 3000 cash [cash], 30 terrans [terran].
 
 #modulestack 000002
-; + Berlin garrison [000002], infantry battalion [inftry].
+; + Berlin garrison [000002], infantry battalion [inftry], immobile.
 ; items: rocket launchers [rctlnc].
 
 #modulestack 000003
@@ -221,7 +221,7 @@ Orders Template:
 ; items: 2000 cash [cash].
 
 #modulestack 000007
-; + Sydney garrison [000007], infantry battalion [inftry].
+; + Sydney garrison [000007], infantry battalion [inftry], immobile.
 ; items: rocket launchers [rctlnc].
 
 #modulestack 000008

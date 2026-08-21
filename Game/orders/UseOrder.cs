@@ -63,11 +63,7 @@ namespace SpaceAge
 				else
 				{
 					// no explicit alias: generate a receiver name
-					string randomName = this.Producer.GenerateRandomIdentifier();
-					while (ModuleStack.All.ContainsKey(randomName))
-					{
-						randomName = this.Producer.GenerateRandomIdentifier();
-					}
+					string randomName = this.Producer.GenerateUniqueModuleStackIdentifier();
 					this.Receiver = ModuleStack.All.GetOrCreateNewModuleStack(this.Producer.Owner, randomName);
 				}
 
@@ -406,7 +402,12 @@ namespace SpaceAge
 			{
 				if (this.durationInitial == 0)
 				{
-					this.durationInitial = (int)(Math.Ceiling((double)(this.Technology.UseTime * this.Producer.ModuleType.UseCondition_EfficiencyMultiplier) / this.Producer.QuantityActive));
+					int copies = this.Producer.QuantityOperational;
+					if (copies < 1)
+					{
+						copies = 1;
+					}
+					this.durationInitial = (int)(Math.Ceiling((double)(this.Technology.UseTime * this.Producer.ModuleType.UseCondition_EfficiencyMultiplier) / copies));
 				}
 				return this.durationInitial;
 			}

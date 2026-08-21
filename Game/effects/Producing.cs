@@ -48,7 +48,10 @@ namespace SpaceAge
         public override void LoadXml(XmlElement elProducingEffect)
         {
             base.LoadXml(elProducingEffect);
-            this.Technology = Technology.All[elProducingEffect.GetAttribute("technology")];
+            if (elProducingEffect.HasAttribute("technology") && elProducingEffect.GetAttribute("technology") != string.Empty)
+            {
+                this.Technology = Technology.All[elProducingEffect.GetAttribute("technology")];
+            }
             this.ExecuteCondition = false;
         }
     
@@ -57,7 +60,10 @@ namespace SpaceAge
             // there probably will be a probalem with no linked produce order upon load xml
             // if that would be the case an unique order identifier will be necessary
             base.SaveXml(doc);
-            this.xmlElement.SetAttribute("technology", this.Technology.Name);
+            if (this.Technology != null)
+            {
+                this.xmlElement.SetAttribute("technology", this.Technology.Name);
+            }
             return this.xmlElement;
         }
 	}

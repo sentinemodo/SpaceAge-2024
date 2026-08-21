@@ -171,13 +171,26 @@ namespace SpaceAge
 			}
 		}
 
+		public bool MatchesTraining(TrainOrder other)
+		{
+			if (other == null || this.TrainingOfficer != other.TrainingOfficer)
+			{
+				return false;
+			}
+			if (this.TrainingOfficer)
+			{
+				return this.Race == other.Race && this.Officer == other.Officer;
+			}
+			return this.SkillType == other.SkillType;
+		}
+
         public override void LoadXml(XmlElement elOrder)
         {
             XmlElement elTrain = (XmlElement)elOrder.SelectNodes("train")[0];
-            if (elTrain.HasAttribute("officer"))
+            XmlElement elTrainee = (XmlElement)elTrain.SelectSingleNode("officer");
+            if (elTrainee != null)
             {
-                XmlElement elTrainee = (XmlElement)elTrain.SelectNodes("officer")[0];
-
+                this.trainingOfficer = true;
                 this.Officer = Person.All.GetOrCreateNewPerson(this.Trainer.Owner, elTrainee.GetAttribute("name"));
                 this.Race = Race.All[elTrainee.GetAttribute("race")];
                 if (elTrainee.HasAttribute("officer-parent"))
@@ -255,11 +268,61 @@ namespace SpaceAge
 			}
 		}
 
+		private Training FindMatchingTraining()
+		{
+			IEffectable holder = this.Subject as IEffectable;
+			if (holder == null)
+			{
+				return null;
+			}
+			foreach (Effect effect in holder.Effects)
+			{
+				if (this.trainingOfficer)
+				{
+					TrainingOfficer officer = effect as TrainingOfficer;
+					if (officer != null && !officer.Executed && officer.Race == this.Race)
+					{
+						return officer;
+					}
+				}
+				else
+				{
+					TrainingSkill skill = effect as TrainingSkill;
+					if (skill != null && !skill.Executed && skill.SkillType == this.SkillType)
+					{
+						return skill;
+					}
+				}
+			}
+			return null;
+		}
+
+		private void TryReconnectTraining()
+		{
+			if (this.Training != null)
+			{
+				return;
+			}
+
+			Training existing = this.FindMatchingTraining();
+			if (existing == null)
+			{
+				return;
+			}
+
+			this.Training = existing;
+			this.durationLeft = existing.Duration;
+			existing.TrainOrder = this;
+		}
+
 		public override void Execute(int week)
 		{
 			if (this.CanOperate(week))
 			{
-                // start training if not training
+                if (this.Training == null)
+                {
+                    this.TryReconnectTraining();
+                }
                 if (this.Training == null)
                 {
                     this.startTraining(week);

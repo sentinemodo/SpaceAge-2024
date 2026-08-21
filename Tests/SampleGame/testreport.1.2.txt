@@ -5,7 +5,7 @@ Content-Disposition: attachment
 SpaceAge report for Caste Prime [2].
 Turn 1, Year 2020, January 1.
 
-SpaceAge Engine Version: 0.1.141.
+SpaceAge Engine Version: 0.1.144.
 
 Events during turn:
   none.
@@ -49,7 +49,7 @@ Galaxy report:
   
   - Berlin [000001], 3 cities [city], immobile, owned by NPC [1].
     size: 75000, capacity: 45000/40620, energy: 320/265 (30).
-    - Berlin garrison [000002], infantry battalion [inftry], owned by NPC [1].
+    - Berlin garrison [000002], infantry battalion [inftry], immobile, owned by NPC [1].
       size: 500.
     - Berlin farms [000003], 10 farming complexes [farms], immobile, owned by NPC [1].
       size: 10000.

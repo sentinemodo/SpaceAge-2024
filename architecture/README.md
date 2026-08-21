@@ -27,7 +27,7 @@ Player-facing design notes remain in `Game/documentation/` (`Basics.txt`, `Conce
 | `diagrams/` | Pointers; Mermaid lives in the docs above |
 | `docs-index.md` | Canonical URLs, versions, date retrieved |
 | `adr/` | Architecture Decision Records |
-| `delivery/` | Branching, environments, versioning, CI entrypoints |
+| `delivery/` | Branching, environments, versioning, CI entrypoints; SampleGame turn 4 checklist [`delivery/samplegame-turn4.md`](delivery/samplegame-turn4.md) |
 | `future-work.md` | Deferred modernization backlog (ADR-gated) |
 
 There is no `cybersecurity/` package yet; add it only if a security review is commissioned.

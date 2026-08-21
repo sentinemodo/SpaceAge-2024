@@ -54,19 +54,22 @@ namespace SpaceAge
 
 			token = LineParser.GetToken(ref command);
 			this.flagName = token;
-			if (flagName != "AVOID")
+			string flag = this.flagName.ToUpperInvariant();
+			if (flag != "AVOID" && flag != "ONLINE")
 			{
 				throw new Exception("unknown name of the flag " + flagName);
 			}
+			this.flagName = flag;
 
 			token = LineParser.GetToken(ref command);
-			if (token != "TRUE" && token != "FALSE")
+			string value = token.ToUpperInvariant();
+			if (value != "TRUE" && value != "FALSE")
 			{
 				throw new Exception("bad syntax TRUE or FALSE expected");
 			}
 			else 
 			{
-				this.flagValue = (token == "TRUE") ? true : false;
+				this.flagValue = (value == "TRUE") ? true : false;
 			}
 		}
 
@@ -96,10 +99,14 @@ namespace SpaceAge
 		public override void Execute(int week)
 		{
 			this.Executed = false;
-			switch (this.flagName)
+			switch (this.flagName.ToUpperInvariant())
 			{
 				case "AVOID": 
 					this.Setter.IsAvoiding = flagValue;
+					this.Executed = true;
+					break;
+				case "ONLINE":
+					this.Setter.SetOnline(flagValue);
 					this.Executed = true;
 					break;
 			}

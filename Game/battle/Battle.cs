@@ -133,6 +133,14 @@ namespace SpaceAge
 				}
 				else if (this.isDefenderStack(stack, target, initiator))
 				{
+					ModuleStack root = stack.RootModuleStack;
+					if (root != null
+						&& root != stack
+						&& root.HasIntactModules()
+						&& this.joinsDefense(root.Owner, initiator.Owner, target.Owner))
+					{
+						continue;
+					}
 					if (this.joinsDefense(stack.Owner, initiator.Owner, target.Owner))
 					{
 						side.Add(stack.Name, stack);
@@ -426,6 +434,17 @@ namespace SpaceAge
 				}
 			}
 
+			if (modulestack.HasPrioritizeCargo)
+			{
+				foreach (ModuleStack target in targets.Values)
+				{
+					if (target.IsCargoStack())
+					{
+						return target;
+					}
+				}
+			}
+
 			ModuleStack firstArmed = null;
 			ModuleStack firstAny = null;
 			foreach (ModuleStack target in targets.Values)
@@ -473,6 +492,10 @@ namespace SpaceAge
 				{
 					includeDisabled = true;
 				}
+				if (attacker.HasPrioritizeCargo && target.IsCargoStack())
+				{
+					includeDisabled = true;
+				}
 
 				if (!target.HasOperationalModules && !includeDisabled)
 				{
@@ -487,10 +510,20 @@ namespace SpaceAge
 		private Dictionary<ModuleStack, int> unhitRounds = new Dictionary<ModuleStack, int>();
 		private List<ModuleStack> hitThisRound = new List<ModuleStack>();
 		private List<Module> pendingCaptures = new List<Module>();
+		private List<ModuleStack> launchedHangarCraft = new List<ModuleStack>();
+		private List<ModuleStack> hangarLaunchCarriers = new List<ModuleStack>();
 
 		private void executeAttack(ModuleStack modulestack)
 		{
 			string line;
+			if (this.round == 1 && this.launchedHangarCraft.Contains(modulestack))
+			{
+				return;
+			}
+			if (this.round == 1 && this.hangarLaunchCarriers.Contains(modulestack))
+			{
+				return;
+			}
 			if (!modulestack.IsArmed)
 			{
 				return;
@@ -866,6 +899,10 @@ namespace SpaceAge
 						this.report(faction, modulestack.BattleReport(faction));
 					}
 				}
+				if (this.round == 1)
+				{
+					this.launchHangarCraft();
+				}
 				this.report("------------------------------------------------------------");
 				this.hitThisRound.Clear();
 				
@@ -923,6 +960,86 @@ namespace SpaceAge
 				}
 			}
 			this.ApplyCaptures(week);
+		}
+
+		private void launchHangarCraft()
+		{
+			Location location = null;
+			if (this.attacker != null)
+			{
+				location = this.attacker.Location;
+			}
+			if (location == null && this.battleDefender != null)
+			{
+				location = this.battleDefender.Location;
+			}
+			if (location == null)
+			{
+				return;
+			}
+
+			List<ModuleStack> toLaunch = new List<ModuleStack>();
+			foreach (ModuleStack stack in stacksAtLocation(location))
+			{
+				if (!stack.IsHangarCraft)
+				{
+					continue;
+				}
+				ModuleStack parent = stack.Parent as ModuleStack;
+				if (parent == null || parent.ModuleType == null || !parent.ModuleType.IsDroneBay)
+				{
+					continue;
+				}
+				toLaunch.Add(stack);
+			}
+
+			foreach (ModuleStack craft in toLaunch)
+			{
+				this.addLaunchedHangarCraft(craft);
+			}
+		}
+
+		private void addLaunchedHangarCraft(ModuleStack craft)
+		{
+			ModuleStack root = craft.RootModuleStack;
+			bool onAttack = Battle.sideContains(this.attackers, craft) || Battle.sideContains(this.attackers, root);
+			bool onDefense = Battle.sideContains(this.defenders, craft) || Battle.sideContains(this.defenders, root);
+
+			ModuleStack bay = craft.Parent as ModuleStack;
+			ModuleStack carrier = craft.RootModuleStack;
+			string bayName = bay != null && bay.ModuleType != null
+				? bay.ModuleType.ReportName
+				: "hangar";
+			string carrierName = carrier != null ? carrier.ReportName : craft.ReportName;
+
+			craft.Parent = craft.Location;
+			if (!this.launchedHangarCraft.Contains(craft))
+			{
+				this.launchedHangarCraft.Add(craft);
+			}
+			if (carrier != null && !this.hangarLaunchCarriers.Contains(carrier))
+			{
+				this.hangarLaunchCarriers.Add(carrier);
+			}
+			this.report(string.Format("{0} launches {1} from {2}.", carrierName, craft.ReportName, bayName));
+
+			if (Battle.sideContains(this.attackers, craft) || Battle.sideContains(this.defenders, craft))
+			{
+				return;
+			}
+			if (onAttack && !onDefense)
+			{
+				this.attackers.Add(craft);
+			}
+			else if (onDefense)
+			{
+				this.defenders.Add(craft);
+			}
+		}
+
+		private static bool sideContains(ModuleStacks side, ModuleStack stack)
+		{
+			return side != null && stack != null && side.Contains(stack.Name);
 		}
 
 		private void resetCaptureDamage()
@@ -1131,14 +1248,20 @@ namespace SpaceAge
 
 		private string capturedStackName(ModuleStack source)
 		{
-			string name = string.Concat("c", source.Name);
-			int suffix = 0;
+			int serial = 1;
+			string name = this.formatCapturedName(serial);
 			while (ModuleStack.All.ContainsKey(name))
 			{
-				suffix++;
-				name = string.Concat("c", suffix.ToString(), source.Name);
+				serial++;
+				name = this.formatCapturedName(serial);
 			}
 			return name;
+		}
+
+		private string formatCapturedName(int serial)
+		{
+			int digits = NamedObject.MaxNameLength - 1;
+			return string.Concat("c", serial.ToString().PadLeft(digits, '0'));
 		}
 
 		private void transferProportionalItems(ModuleStack source, ModuleStack dest, int taken, int originalCount, bool crewCasualties)

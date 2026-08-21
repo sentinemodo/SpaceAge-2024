@@ -21,7 +21,7 @@ namespace SpaceAge
 			get { return this.balance; }
 			set 
 			{ 
-				this.balance = value;
+				this.balance = Math.Round(value, MidpointRounding.AwayFromZero);
 				if (this.balance < -this.creditLine)
 					throw new Exception("credit line exceeded");
 			}
@@ -71,13 +71,13 @@ namespace SpaceAge
             double interest;
             if (this.balance < 0)
 			{
-                interest = this.Balance * this.creditRate / 4;
+                interest = Math.Round(this.Balance * this.creditRate / 4, MidpointRounding.AwayFromZero);
                 this.Debit(week, interest, string.Format("Credit line interests accounted to {0}. Current balance: {1}.",
                             interest,
                             this.balance + interest));
 			} else
 			{
-                interest = this.Balance * this.depositRate / 4;
+                interest = Math.Round(this.Balance * this.depositRate / 4, MidpointRounding.AwayFromZero);
                 this.Credit(week, interest, string.Format("Deposit interests accounted to {0}. Current balance: {1}.",
                             interest,
                             this.balance + interest));
@@ -100,7 +100,7 @@ namespace SpaceAge
 			List<string> lines = new List<string>
             {
                 "Bank report:",
-                string.Format("  Bank account balance: {0}.", this.Balance),
+                string.Format("  Bank account balance: {0}.", this.Balance.ToString("0")),
                 string.Format("  Credit line maximum: {0}.", this.CreditLine),
                 string.Format("  Credit rate: {0}%, Deposit rate: {1}%.", this.CreditRate * 100, this.DepositRate * 100)
             };

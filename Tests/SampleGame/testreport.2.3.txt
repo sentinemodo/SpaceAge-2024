@@ -5,7 +5,7 @@ Content-Disposition: attachment
 SpaceAge report for Gelvaren [3].
 Turn 2, Year 2020, April 1.
 
-SpaceAge Engine Version: 0.1.141.
+SpaceAge Engine Version: 0.1.144.
 
 Events during turn:
   none.
@@ -52,8 +52,8 @@ Galaxy report:
   
   - Berlin [000001], 3 cities [city], immobile, owned by NPC [1].
     size: 75000.
-    - Berlin garrison [000002], infantry battalion [inftry], owned by
-      NPC [1].
+    - Berlin garrison [000002], infantry battalion [inftry], immobile,
+      owned by NPC [1].
       size: 500.
     - Berlin farms [000003], 10 farming complexes [farms], immobile,
       owned by NPC [1].
@@ -151,8 +151,8 @@ Galaxy report:
   
   - Sydney [000006], 2 cities [city], immobile, owned by NPC [1].
     size: 50000.
-    - Sydney garrison [000007], infantry battalion [inftry], owned by
-      NPC [1].
+    - Sydney garrison [000007], infantry battalion [inftry], immobile,
+      owned by NPC [1].
       size: 500.
     - Sydney farms [000008], 10 farming complexes [farms], immobile,
       owned by NPC [1].
@@ -383,7 +383,7 @@ Galaxy report:
         battalion [inftry] module.
         week 13: produced infantry battalion [inftry] into infantry
         battalion [110].
-      + tanks [109], 2 tanks [tanks], disabled.
+      + tanks [109], 2 tanks [tanks], disabled, immobile.
         size: 480, mass: 484 (480), capacity: 400/4, crew: 32/1, upkeep:
         58 (48) cash [cash], consume: 33 (32) units of food [food], 33
         (32) units of terran breathing gas mixture [terair].
@@ -407,7 +407,7 @@ Galaxy report:
             week 5: saw tanks [109] in Southern Hemisphere [R00003]
             (1,0).
             week 5: stacked under tanks [109].
-    + infantry battalion [110], infantry battalion [inftry].
+    + infantry battalion [110], infantry battalion [inftry], immobile.
       size: 500, mass: 504 (500), capacity: 300/4, upkeep: 15 (5) cash
       [cash], consume: 101 (100) units of food [food], 101 (100) units
       of terran breathing gas mixture [terair].
@@ -496,10 +496,10 @@ use armcbt as 109 for 000025
 ;   can operate for another 7 weeks without refueling.
 
 #modulestack 109
-; + tanks [109], 2 tanks [tanks], disabled.
+; + tanks [109], 2 tanks [tanks], disabled, immobile.
 
 #modulestack 110
-; + infantry battalion [110], infantry battalion [inftry].
+; + infantry battalion [110], infantry battalion [inftry], immobile.
 
 #person 000002
 ; + Gelvaren CEO [000002], terran [terran].

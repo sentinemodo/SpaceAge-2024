@@ -8,7 +8,7 @@ namespace SpaceAge
 {
 	class Program
 	{
-		public const string EngineVersion = "0.1.141";
+		public const string EngineVersion = "0.1.148";
 
 		static void Main(string[] args)
 		{

@@ -59,6 +59,19 @@ namespace UnitTests
 		}
 
 		[Test]
+		public void DeclarationReport_BlankLineBeforeBankReport()
+		{
+			Faction faction = this.game.Factions["2"];
+			faction.Attitudes["1"] = FactionAttitude.Enemy;
+
+			List<string> report = faction.Report();
+			int bankIndex = report.FindIndex(l => l.StartsWith("Bank report:"));
+
+			Assert.That(bankIndex, Is.GreaterThan(0));
+			Assert.That(report[bankIndex - 1], Is.EqualTo(""), "blank line between declared stances and the bank report");
+		}
+
+		[Test]
 		public void DeclarationReport_EmptyAtBaseline()
 		{
 			// baseline stances (neutral default, hostile unknown, no declarations) render nothing,
@@ -223,6 +236,49 @@ namespace UnitTests
 			Assert.That(faction.Attitudes["1"], Is.EqualTo(FactionAttitude.Enemy));
 			Assert.That(faction.UnitAttitudes["100021"], Is.EqualTo(FactionAttitude.Hostile));
 			Assert.That(faction.UnknownAttitude, Is.EqualTo(FactionAttitude.Enemy));
+		}
+
+		[Test]
+		public void DropStaleUnitAttitudes_RemovesMissingEmptyAndOwnStacks()
+		{
+			Faction faction = this.game.Factions["2"];
+			ModuleStack station = this.game.ModuleStacks["100021"];
+			faction.UnitAttitudes[station.Name] = FactionAttitude.Enemy;
+			faction.UnitAttitudes["gone-unit"] = FactionAttitude.Hostile;
+
+			while (station.Quantity > 0)
+			{
+				station.RemoveModule(0);
+			}
+			Assert.That(station.Quantity, Is.EqualTo(0));
+
+			ModuleStack ownUnit = this.game.ModuleStacks["100011"];
+			faction.UnitAttitudes[ownUnit.Name] = FactionAttitude.Enemy;
+
+			faction.DropStaleUnitAttitudes();
+
+			Assert.That(faction.UnitAttitudes.ContainsKey(station.Name), Is.False);
+			Assert.That(faction.UnitAttitudes.ContainsKey("gone-unit"), Is.False);
+			Assert.That(faction.UnitAttitudes.ContainsKey(ownUnit.Name), Is.False);
+		}
+
+		[Test]
+		public void DeclarationReport_OmitsStaleUnitStance()
+		{
+			Faction faction = this.game.Factions["2"];
+			faction.Attitudes["1"] = FactionAttitude.Enemy;
+			faction.UnitAttitudes["100021"] = FactionAttitude.Hostile;
+			ModuleStack station = this.game.ModuleStacks["100021"];
+			while (station.Quantity > 0)
+			{
+				station.RemoveModule(0);
+			}
+
+			this.game.DropStaleUnitAttitudes();
+			List<string> actual = faction.ReportDeclarations();
+
+			Assert.That(actual, Does.Contain("  enemy toward NPC [1]."));
+			Assert.That(string.Join("\n", actual.ToArray()), Does.Not.Contain("100021"));
 		}
 	}
 }

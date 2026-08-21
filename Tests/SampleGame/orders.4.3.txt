@@ -1,0 +1,127 @@
+#faction 3 "abccb"
+; Gelvaren turn 4 — feed Sydney, buy Earth food, man/activate captured
+; guns, repair captured modules, tanks prioritize storage. XML leftovers
+; still run: 000019 GET food/oil + sell 100 food; 000018 GET cash/terran
+; + buy terran + produce cash; c000012 repair; 108 @repair; 110 MOVE
+; then -capture; 116 @research tag repair; 000026 produce terran.
+; Do not add sell food. Plants c000015+ are not owned yet.
+
+#modulestack 000018
+; + Gelvaren Headquarters [000018], corporate headquarters [corphq],
+;   disabled, immobile. crew 15/20. items: 14 terran, 4928 cash, wndtrn.
+@get all cash from 000026
+@get all terran from 000026
+@buy all terran
+@produce cash
+
+#modulestack 000019
+; + small cargo bay [000019], small cargo bay [cargob], immobile.
+; items: 856 food, 2 terran, 54 oil. Leftover GET strips farms; leftover
+; one-shot sell 100 food still runs (omit sell here).
+
+#modulestack 000020
+; + farming complex [000020], 2 farming complexes [farms], partially
+;   disabled, immobile.
+@use farmng
+
+#modulestack 000021
+; + wind powerplant [000021], 19 wind powerplants [wnplnt], immobile.
+@produce energy
+
+#modulestack 000022
+; + core drill [000022], core drill [cdrill], disabled, immobile.
+@use oildwe
+
+#modulestack 000026
+; + Gelvaren complex [000026], city [city], immobile.
+; Leftover buy 100 food at 1 does not match Sydney sell at 5.
+; GET cargo food onto the city (parent nest) so crew can eat.
+@get all food from 000019
+@buy all food
+@produce terran
+
+#modulestack 108
+; + peaceful scout [108], tanks [tanks], disabled (heavily damaged).
+; leftover @repair. Prioritize storage if it can shoot.
+; @get not one-shot: ExecuteOrders GET runs before ProcessBuyOffers
+; fills c000012. Later weeks pull purchased food. Tanks have almost no
+; cash, so they do not @buy.
+tactic prioritize storage
+capture all
+@get 40 food from c000012
+
+#modulestack 109
+; + Surrender or die! [109], 3 tanks [tanks].
+; leftover tactic prioritize command — replace with storage; keep capture.
+tactic prioritize storage
+capture all
+@get 80 food from c000012
+
+#modulestack 116
+; leftover XML is research-type tag repair. TAG keyword reconnects; bare
+; repair would add a second RESEARCH for technology [repair].
+@research tag repair
+copy servic to 117
+
+#modulestack c000012
+; + corporate headquarters [c000012], corporate headquarters [corphq],
+;   disabled, immobile, nested under Berlin. 22 terran, 2055 cash.
+; leftover one-shot repair (RepairScope is Berlin — do not add @repair).
+; Buy Berlin food at 5 and Caste leftover sell 300 food at any.
+set online true
+@buy all food
+@buy all terran
+
+#modulestack c00001
+; + gun placement [c00001], gun placement [gunplc], heavily damaged
+;   100/31, deactivated, 0 crew (needs 2).
+stack c000012
+set online true
+get 2 terran from c000012
+@repair
+
+#modulestack c00002
+; + gun placement [c00002], gun placement [gunplc], heavily damaged
+;   100/30, 1 terran (needs 2).
+stack c000012
+set online true
+get 1 terran from c000012
+@repair
+
+#modulestack c00003
+; + gun placement [c00003], gun placement [gunplc], critically damaged
+;   100/14, 1 terran (needs 2).
+stack c000012
+set online true
+get 1 terran from c000012
+@repair
+
+#modulestack c00004
+; + gun placement [c00004], gun placement [gunplc], heavily damaged
+;   100/27, 1 terran (needs 2).
+stack c000012
+set online true
+get 1 terran from c000012
+@repair
+
+#modulestack c00005
+; + farming complex [c00005], farming complex [farms], deactivated,
+;   lightly damaged 55/36, 5 terran (needs 5). Stack under HQ so @repair
+;   hits our nest (HQ then nested guns), not Berlin.
+stack c000012
+set online true
+@repair
+
+#modulestack c00006
+; + farming complex [c00006], farming complex [farms], 5 terran (needs 5).
+stack c000012
+set online true
+@repair
+
+#modulestack c00007
+; + farming complex [c00007], farming complex [farms], 5 terran (needs 5).
+stack c000012
+set online true
+@repair
+
+#end

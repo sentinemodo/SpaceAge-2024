@@ -266,6 +266,34 @@ namespace UnitTests
 
 
 		[Test]
+		public void ExecuteUseOrder_PartialCrew_ProducesAtOperationalCapacity()
+		{
+			this.AssignUseOrder_unlimited();
+			ModuleStack farms = this.game.ModuleStacks["000008"];
+			ItemType food = ItemType.All["food"];
+			ItemType terran = ItemType.All["terran"];
+			Technology farming = Technology.All["farmng"];
+			int extraCrew = farms.ItemStacks[terran].Quantity - farms.ModuleType.CrewRequired;
+			farms.ItemStacks.Remove(new ItemStack(terran, extraCrew));
+
+			Assert.That(farms.Quantity, Is.EqualTo(3));
+			Assert.That(farms.QuantityOperational, Is.EqualTo(1));
+			Assert.That(farms.IsPartiallyDisabled);
+			Assert.That(farms.IsActive, Is.False);
+
+			int foodBefore = farms.ItemStacks[food].Quantity;
+			farms.ExecutedLongOrder = false;
+			farms.Execute(this.game.Week);
+
+			foreach (EventReport eventReport in farms.EventReports)
+			{
+				Assert.That(eventReport.Description, Does.Not.Contain("USE failed"));
+			}
+			Assert.That(farms.ItemStacks[food].Quantity, Is.EqualTo(foodBefore + farming.UseProduceItems[food].Quantity));
+		}
+
+
+		[Test]
 		public void AssignUseOrder_AliasRepeatable()
 		{
             Sequence.Ints.Push(100);
@@ -1442,5 +1470,78 @@ namespace UnitTests
 			Assert.That(quarters.ItemStacks[ItemType.All["food"]].Quantity, Is.EqualTo(foodBefore + 1));
 		}
 
+		[Test]
+		public void CopyOrder_ReportIncludesTechnologyAndReceiver()
+		{
+			ModuleStack factory = this.game.ModuleStacks["000004"];
+			List<string> commands = new List<string>
+			{
+				"#faction 2",
+				"#modulestack 000004",
+				"copy agrplx to new880",
+				"#end"
+			};
+			new OrdersReader(this.game).AssignOrders(commands);
+
+			CopyOrder order = (CopyOrder)factory.Orders[0];
+			Assert.That(order.Technology, Is.EqualTo(Technology.All["agrplx"]));
+			Assert.That(order.Receiver, Is.Not.Null);
+			Assert.That(order.Receiver.IsFormed, Is.False);
+			Assert.That(order.Report(factory.Owner)[0], Is.EqualTo("copy agrplx to new880"));
+
+			order.Execute(this.game.Week);
+			Assert.That(order.Executed, Is.False);
+			Assert.That(this.hasCopyFail(factory), Is.True);
+		}
+
+		[Test]
+		public void CopyOrder_SucceedsOnceReceiverIsFormed()
+		{
+			ModuleStack factory = this.game.ModuleStacks["000004"];
+			List<string> commands = new List<string>
+			{
+				"#faction 2",
+				"#modulestack 000004",
+				"copy agrplx to new881",
+				"#end"
+			};
+			new OrdersReader(this.game).AssignOrders(commands);
+
+			CopyOrder order = (CopyOrder)factory.Orders[0];
+			ModuleStack receiver = order.Receiver;
+			receiver.Parent = factory.Parent;
+			receiver.ModuleType = ModuleType.All["factry"];
+			receiver.AddModule();
+
+			order.Execute(this.game.Week);
+
+			Assert.That(order.Executed, Is.True);
+			Assert.That(receiver.Technologies.Contains("agrplx"), Is.True);
+		}
+
+		[Test]
+		public void ModuleStack_GeneratedNameSkipsZero()
+		{
+			Sequence.Ints.Push(250);
+			Sequence.Ints.Push(0);
+			ModuleStack stack = new ModuleStack(
+				Region.All["R00002"],
+				this.game.Factions["2"],
+				ModuleType.All["cargob"]);
+			Assert.That(stack.Name, Is.EqualTo("250"));
+			Assert.That(ModuleStack.All.ContainsKey("0"), Is.False);
+		}
+
+		private bool hasCopyFail(ModuleStack stack)
+		{
+			foreach (EventReport eventReport in stack.EventReports)
+			{
+				if (eventReport.Description.IndexOf("COPY failed. Receiver is not formed.") >= 0)
+				{
+					return true;
+				}
+			}
+			return false;
+		}
 	}
 }

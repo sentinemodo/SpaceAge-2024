@@ -613,6 +613,33 @@ namespace IntegrationTests
 		}
 
 		[Test]
+		public void _7_LoadGameIn4()
+		{
+			this.compareFiles("gamein.4.xml", "gameout.4.xml");
+			this.LoadGalaxy("gamein.4.xml");
+
+			Assert.That(this.game.Turn, Is.EqualTo(4));
+			Assert.That(ModuleStack.All["200"].Owner.Name, Is.EqualTo("2"));
+			Assert.That(ModuleStack.All.ContainsKey("207"), Is.True);
+			Assert.That(ModuleStack.All["207"].Quantity, Is.EqualTo(4));
+			Assert.That(ModuleStack.All["116"].ResearchPoints, Is.EqualTo(11));
+		}
+
+		[Test]
+		public void _8_LoadGameIn5()
+		{
+			this.LoadGalaxy("gamein.5.xml");
+
+			Assert.That(this.game.Turn, Is.EqualTo(5));
+			Assert.That(ModuleStack.All["450"].Quantity, Is.EqualTo(4));
+			Assert.That(ModuleStack.All["450"].Location.Name, Is.EqualTo("R00001"));
+			Assert.That(ModuleStack.All["000023"].Technologies.Contains("orbrkt"));
+			Assert.That(ModuleStack.All["117"].ItemStacks.Has(ItemType.All["uraniu"]));
+			Assert.That(ModuleStack.All["117"].ItemStacks.Has(ItemType.All["h2o2"]));
+			Assert.That(ModuleStack.All["100"].ItemStacks[ItemType.All["heliu3"]].Quantity, Is.GreaterThanOrEqualTo(4));
+		}
+
+		[Test]
 		public void _6a_InjectContractAndPress()
 		{
 			Sequence.Ints.Clear();
@@ -738,35 +765,116 @@ namespace IntegrationTests
 			this.compareFiles("gameout.4.xml", "gameout.4_saved.xml");
 		}
 
-		[Test, Ignore("not ready")]
+		[Test]
 		public void ExecuteTurn4()
 		{
-			this.dataFile.LoadGameDocument(Directory.GetCurrentDirectory(), "SampleGame/gamein.4.xml");
-			this.dataFile.LoadConfiguration();
-			this.dataFile.LoadFactions();
-			this.dataFile.LoadGalaxy();
+			Sequence.Ints.Clear();
+			int[] hitLocations = { 50, 150, 250, 350, 450 };
+			for (int i = 0; i < 2000; i++)
+			{
+				Sequence.Ints.Push(hitLocations[i % hitLocations.Length]);
+				Sequence.Ints.Push(1);
+			}
+			for (int i = 0; i < 40; i++)
+			{
+				Sequence.Ints.Push(0);
+			}
+			Sequence.Ints.Push(251);
+			Sequence.Ints.Push(250);
 
-			// story:
-			// a ship launches toward the moon
-			// ground regions make cash on market
-            // crashed ship is taken over
-            // crashed ships contain working fighter drones (tech 2) a hibernated seed of a colony, 
-            //   technology to build domed city (tech 2) and resources to build it
-            
+			this.LoadGalaxy("gamein.4.xml");
+
+			OrdersReader ordersReader = new OrdersReader(this.game);
+			ordersReader.LoadOrders(Path.Combine(this.testDir, "orders.4.2.txt"), false);
+			ordersReader.LoadOrders(Path.Combine(this.testDir, "orders.4.3.txt"), false);
+
+			this.game.Execute();
+
+			Assert.That(ModuleStack.All["200"].Owner.Name, Is.EqualTo("2"), "do not re-claim the wreck");
+			Assert.That(ModuleStack.All["115"].Technologies.Contains("alnfgh"), "COPY alnfgh onto library 115");
+
+			int dronesInBay = 0;
+			foreach (ModuleStack nested in ModuleStack.All["206"].ModuleStacks.Values)
+			{
+				if (nested.ModuleType != null && nested.ModuleType.Name == "alndrn")
+				{
+					dronesInBay += nested.Quantity;
+				}
+			}
+			Assert.That(dronesInBay, Is.EqualTo(4), "TRANSFER drones 207 into bay 206");
+
+			bool repairTechGranted = ModuleStack.All["116"].Technologies.Contains("servic")
+				|| ModuleStack.All["116"].Technologies.Contains("engshp")
+				|| ModuleStack.All["116"].Technologies.Contains("medtec")
+				|| ModuleStack.All["116"].Technologies.Contains("medirf")
+				|| Faction.All["3"].TechnologiesToShow.Contains("servic")
+				|| Faction.All["3"].TechnologiesToShow.Contains("engshp")
+				|| Faction.All["3"].TechnologiesToShow.Contains("medtec")
+				|| Faction.All["3"].TechnologiesToShow.Contains("medirf");
+			Assert.That(repairTechGranted, "RESEARCH tag repair breakthrough should grant a technology");
+
+			Assert.That(Person.All["000001"].Skills.ContainsKey(SkillType.All["arpldr"]),
+				"TRAIN leftover/skill should complete armor platoon leader this quarter");
+
+			Assert.That(this.game.Offers[EOfferType.SellItems][ItemType.All["terran"]].Count, Is.GreaterThan(0),
+				"NPC city auto-offers or standing sells remain after GenerateOffers");
+
+			ReportWriter reportsWriter = new ReportWriter(this.game, this.dataFile, this.testDir);
+			reportsWriter.GenerateReports(this.testDir);
+			this.dataFile.SaveGame(this.testDir, "gameout.5_saved.xml");
+			this.compareFiles("testreport.5.1.txt", "report.5.1.txt");
+			this.compareFiles("testreport.5.2.txt", "report.5.2.txt");
+			this.compareFiles("testreport.5.3.txt", "report.5.3.txt");
+			this.compareFiles("gameout.5.xml", "gameout.5_saved.xml");
 		}
 
-		[Test, Ignore("not ready")]
+		[Test]
 		public void ExecuteTurn5()
 		{
-			this.dataFile.LoadGameDocument(Directory.GetCurrentDirectory(), "SampleGame/gamein.5.xml");
-			this.dataFile.LoadConfiguration();
-			this.dataFile.LoadFactions();
-			this.dataFile.LoadGalaxy();
+			Sequence.Ints.Clear();
+			int[] hitLocations = { 50, 150, 250, 350, 450 };
+			for (int i = 0; i < 2000; i++)
+			{
+				Sequence.Ints.Push(hitLocations[i % hitLocations.Length]);
+				Sequence.Ints.Push(1);
+			}
 
-			// story:			
-            // a moon colony is started
-			// a space battle commence resulting in drones victory
-            // endstate earth vs moon - human vs human officers and alien race
+			this.LoadGalaxy("gamein.5.xml");
+
+			OrdersReader ordersReader = new OrdersReader(this.game);
+			ordersReader.LoadOrders(Path.Combine(this.testDir, "orders.5.2.txt"), false);
+			ordersReader.LoadOrders(Path.Combine(this.testDir, "orders.5.3.txt"), false);
+
+			this.game.Execute();
+
+			Assert.That(ModuleStack.All["200"].Location.Name, Is.EqualTo("R00001"), "do not fly the wreck");
+			Assert.That(ModuleStack.All["101"].Location.Name, Is.EqualTo("O00002"), "hull returns to Earth orbit");
+			Assert.That(ModuleStack.All.ContainsKey("450"), "drones survive");
+			Assert.That(ModuleStack.All["450"].Quantity, Is.GreaterThan(0), "drones survive");
+			Assert.That(ModuleStack.All["450"].Location.Name, Is.EqualTo("O00002"), "drones wait and fight in Earth orbit");
+			Assert.That(ModuleStack.All["450"].RootModuleStack.Name, Is.EqualTo("450"), "drones hangar-launch as roots");
+
+			Assert.That(ModuleStack.All.ContainsKey("117"), "shuttle hauls the launcher");
+			Assert.That(ModuleStack.All["117"].Location.Name, Is.EqualTo("O00002"), "armed shuttle arrives Earth orbit ~week 10");
+			Assert.That(
+				ModuleStack.All["117"].ModuleCountRecursive(ModuleType.All["orbrkt"]),
+				Is.GreaterThan(0),
+				"Sydney factory nested orbrkt under the shuttle");
+
+			int combatDamage = ModuleStack.All["117"].Damage;
+			foreach (ModuleStack nested in ModuleStack.All["117"].ModuleStacks.Values)
+			{
+				combatDamage += nested.Damage;
+			}
+			Assert.That(combatDamage, Is.GreaterThan(0), "drones victory: shuttle or launcher took combat damage");
+
+			ReportWriter reportsWriter = new ReportWriter(this.game, this.dataFile, this.testDir);
+			reportsWriter.GenerateReports(this.testDir);
+			this.dataFile.SaveGame(this.testDir, "gameout.6_saved.xml");
+			this.compareFiles("testreport.6.1.txt", "report.6.1.txt");
+			this.compareFiles("testreport.6.2.txt", "report.6.2.txt");
+			this.compareFiles("testreport.6.3.txt", "report.6.3.txt");
+			this.compareFiles("gameout.6.xml", "gameout.6_saved.xml");
 		}
 
 
