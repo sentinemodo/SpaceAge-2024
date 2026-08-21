@@ -182,6 +182,10 @@ Works in: command. Use consumes: nothing. Use produces: nothing (battle tech). U
 Mineral exploitation.  
 Works in: production. Use consumes: 25 iron `[iron]`, 10 titanium `[titani]`. Use produces: core drill `[cdrill]`. Use-time: 3 weeks.
 
+**orbital rocket launcher [orbrkt]**  
+A rack of chemically boosted rockets sized to nest on a shuttle or station and fire in orbit. Built in a factory on the ground or assembled in space. Tag: `military`.  
+Works in: production (no location-type limit). Use consumes: 4 iron `[iron]`. Use produces: orbital rocket launcher `[orbrkt]`. Use-time: 8 weeks.
+
 **preventive servicing [servic]**  
 Maintenance and repairs are best done in advance. Tag: `repair`.  
 Works in: production. Use consumes: 1 titanium `[titani]`, 1 iron `[iron]`, 1 copper `[copper]`, 1 silicium `[silici]`. Use produces: 10 spare parts `[spare]`. Use-time: 1 week (default).
@@ -317,6 +321,10 @@ Group `military`. Built by laser turret `[lstrrt]`. Requires technology laser op
 Well designed city with advanced infrastructure, that allows building tall buildings and effective public transport.  
 Group `settlement`. Built by city planning `[ctypln]` (consumes 1 city). Size 25000, capacity 20000, energy 20, HP 1250, tech-cap 2, population max 15000. Cannot be owned; cannot hold item stacks. Upkeep 150 food (riot 25% if unpaid). Produces 1500 cash and 15 terran per 13 weeks. Operates on solid-surface worlds with terran atmosphere.
 
+**orbital rocket launcher [orbrkt]**  
+A rack of chemically boosted rockets that only fires in orbit. Compact enough to nest in a shuttle with crew, fuel, food, and breathing mix.  
+Group `military`. Built by orbital rocket launcher `[orbrkt]`. Size 40, mass 40, crew 0, capacity 0, HP 40, tech-cap 1, attack 3, defense 1, damage 3. Upkeep 20 cash. Operates only in orbit.
+
 **tanks [tanks]**  
 Platoon of 4 armored vehicles suitable for destroying ground modules and infantry battalions.  
 Group `vehicle`. Built by armored combat `[armcbt]`. Size 240, mass 240, crew 16, capacity 200, HP 100. Upkeep 24 cash. Consumes 16 food and 16 terran air (damage 25% if not). Unpaid upkeep: rebel 10%. Ground move speed 0.5. Fuel duration 13. Operates on solid surface with terran atmosphere.
@@ -343,7 +351,7 @@ Size 1, mass 1. Produced by intensive farming `[farmng]` (5). Also L1: advanced 
 
 **unit of iron [iron]**  
 Extracted, refined, and purified into industrial steels, iron is a basic construction material widely used in most structures.  
-Size 5, mass 10. Produced by iron mining `[iminng]` (3). Consumed by most L0 builds (see technology entries). Also L1: city planning `[ctypln]` (26), mineral core drilling `[cdrill]` (25), armored combat `[armcbt]` (4), form infantry battalion `[frminf]` (1), rocket launcher production `[rckter]` (1), laser turret `[lstrrt]` (2), preventive servicing `[servic]` (1), engineering shop `[engshp]` (5), law enforcement `[lawenf]` (6).
+Size 5, mass 10. Produced by iron mining `[iminng]` (3). Consumed by most L0 builds (see technology entries). Also L1: city planning `[ctypln]` (26), mineral core drilling `[cdrill]` (25), armored combat `[armcbt]` (4), orbital rocket launcher `[orbrkt]` (4), form infantry battalion `[frminf]` (1), rocket launcher production `[rckter]` (1), laser turret `[lstrrt]` (2), preventive servicing `[servic]` (1), engineering shop `[engshp]` (5), law enforcement `[lawenf]` (6).
 
 **unit of oil [oil]**  
 Black liquid carbon based used as fuel.  

@@ -707,5 +707,32 @@ namespace UnitTests
 			this.consoleOutReport("receiver: ", receiver, faction);
 		}
 
+		[Test]
+		public void ExecuteGetOrder_RootDroneTakesHeliumFuel()
+		{
+			Orbit orbit = Orbit.All["O00003"];
+			Faction owner = this.game.Factions["2"];
+			ModuleStack depot = new ModuleStack(orbit, owner, ModuleType.All["cargob"], "he3depot");
+			depot.AddModule();
+			depot.ItemStacks.Add(new ItemStack(ItemType.All["heliu3"], 4));
+
+			ModuleStack drones = new ModuleStack(orbit, owner, ModuleType.All["alndrn"], "he3drones");
+			drones.AddModule();
+			drones.AddModule();
+			drones.AddModule();
+			drones.AddModule();
+
+			Assert.That(drones.NeedFuel(null), Is.True);
+			Assert.That(drones.IsImmobile, Is.True);
+
+			GetOrder get = new GetOrder(drones, depot, ItemType.All["heliu3"], 4);
+			get.Execute(this.game.Week);
+
+			Assert.That(get.Executed);
+			Assert.That(drones.ItemStacks[ItemType.All["heliu3"]].Quantity, Is.EqualTo(4));
+			Assert.That(drones.NeedFuel(null), Is.False);
+			Assert.That(drones.IsImmobile, Is.False);
+		}
+
 	}
 }

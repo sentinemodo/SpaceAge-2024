@@ -1,44 +1,55 @@
 #faction 3 "abccb"
-; Gelvaren turn 5 — shuttle [117] leaves Southern Hemisphere [R00003],
-; builds an orbital complex in Earth orbit [O00002], then an orbit-capable
-; rocket launcher. gunplc/laztrt only operate on solid ground; they cannot
-; be the orbital weapon. Leftover XML from gamein.5 keeps Sydney produce/
-; buy/farms/wind/oil, library @research tag repair, Berlin repairs, tanks
+; Gelvaren turn 5 — Sydney factory [000023] (under city [000026], Southern
+; Hemisphere [R00003]) builds an orbital rocket launcher, then shuttle
+; [117] hauls it to Earth orbit [O00002] ~week 10. Do not USE orassm /
+; build orcmpx on orbit. Do not USE orbrkt on the shuttle (in orbit or
+; on the ground). Leftover XML from gamein.5 keeps Sydney produce/buy/
+; farms/wind/oil, library @research tag repair, Berlin repairs, tanks
 ; @get food. Attitude already enemy toward Caste Prime [2].
-; Assume TDD: catalog tech/module orbrkt (orbit military); seed a copy on
-; [117] (technology-capacity is 1 and currently holds servic — replace
-; servic or raise cap, or COPY fails). Seed uraniu + h2o2 on [117] so it
-; can fly and USE (require-fuel). Shuttle use efficiency-multiplier="10"
-; currently lengthens USE (orassm 5×10=50 weeks) — blocker; draft as if
-; TDD sets it to 1 so orassm 5 weeks plus orbrkt finish inside 13 weeks
-; after the 1-week region→orbit hop. LAUNCH does not parse.
+; Assume TDD: catalog L1 tech+module orbrkt; use-allowed-in production
+; on the ground (factory), not orbit-only; module operates in orbit
+; (nested on shuttle is enough; size must fit shuttle capacity 125 /
+; mass-capacity 750); use-time ~8–9 weeks so this USE finishes ~week
+; 8–9, then a 0–1 week region→orbit hop arrives ~week 10. Seed orbrkt
+; on factory [000023] (tech-cap 1 currently holds armcbt — replace
+; armcbt). Shuttle [117] can keep servic. Seed uraniu + h2o2 on [117]
+; so it can fly. Shuttle efficiency-multiplier 10 is no longer a
+; blocker (no orbit USE). STACK OUT [117] into R00003 on week 1 so it
+; is a mobile root (nested in the city it inherits immobile). Do not
+; MOVE to orbit on week 1 or the factory cannot deliver into it.
+; Prefer USE as new141 for 117
+; (nests a different type under the shuttle, same as airgen-for-wreck).
+; TRANSFER n TO 117 is live if USE-FOR is wrong for module type.
+
+#modulestack 000023
+; + factory [000023], factry, immobile, nested under city [000026].
+; crew 10/10, energy 15. technologies: armored combat [armcbt] today;
+; TDD replaces with orbrkt. items: 10 terran, 8 iron, 4 silici, 3
+; titani — consume should fit these or extra-seed. Same-location USE
+; into shuttle [117] (city nest or stacked out onto R00003).
+use orbrkt as new141 for 117
 
 #modulestack 117
 ; + space shuttle [117], shuttl, nested under city [000026] on R00003.
-; disabled, crew 2/0, cap 125/0, only servic today. orassm is level 0
-; (always known): 2 iron, 5 weeks, produces orcmpx in orbit.
-; GET crew/iron/food while still in the city nest, then STACK OUT and hop.
+; disabled, crew 2/0, cap 125/0, servic today. GET crew/food while
+; still in the city nest, then STACK OUT onto R00003 (same location;
+; nested it inherits immobile). Stay on the ground until HAS sees the
+; launcher, then hop. has 1 orbrkt then -move O00002 delays the orbit
+; haul until new141 is nested. TACTIC/ATTACK after arrival.
 get 2 terran from 000018
 get 20 food from 000026
-get 4 iron from 000023
-get 2 titani from 000023
 set online true
 stack out
-move O00002
--use orassm as new140
---use orbrkt as new141 for new140
-
-#modulestack new140
-; orbital complex [orcmpx] after orassm. Unarmed space station; the
-; launcher nests here so the root is armed.
+has 1 orbrkt
+-move O00002
+--tactic destroy
+---tactic prioritize armed
+--attack 450
+--attack 101
 
 #modulestack new141
-; orbital rocket launcher [orbrkt] after USE orbrkt. Crew if the module
-; needs it; shoot Caste drones and the hull. Faction enemy already set.
-get 2 terran from 117
-tactic destroy
--tactic prioritize armed
-attack 450
-attack 101
+; orbital rocket launcher [orbrkt] after factory USE. Nested under
+; [117]; fires as equipment on that root. No orders here. If USE-FOR
+; failed to nest, TDD can add `transfer 1 to 117` on this subject.
 
 #end

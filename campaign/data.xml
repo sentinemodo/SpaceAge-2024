@@ -25,6 +25,10 @@
 			name="abelt"
 			name-en="asteroids belt"
 			description="Asteroid belt. Negligible gravity; temperature cold; atmosphere none." />
+		<entry
+			name="adpnt"
+			name-en="Alderson point"
+			description="Jump Gate. No solid surface. One corona (orbit-typed region) plus an orbit. Pair with the matching Gate in the destination system. JUMP is one week when the engine parses it; until then a one-week space exit links the coronas." />
 	</planet>
 
 	<moon>
@@ -524,6 +528,17 @@
 			<use-consume item="iron" quantity="2"/>
 			<use-consume item="uraniu" quantity="1"/>
 			<use-produce item="rctlnc"/>
+		</entry>
+		<entry
+			name="orbrkt"
+			tags="military"
+			name-en="orbital rocket launcher"
+			level="1"
+			description="A rack of chemically boosted rockets sized to nest on a shuttle or station and fire in orbit. Built in a factory on the ground or assembled in space."
+			use-time="8">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="4"/>
+			<use-produce module="orbrkt"/>
 		</entry>
 		<entry
 			name="wtrdst" 
@@ -1585,6 +1600,25 @@ Researchers can query the library. The system can handle natural language questi
 			<upkeep type="cash" quantity="20"/>
 			<require technology="lasopt"/>
 		</entry>
+		<entry
+			name="orbrkt"
+			name-en="orbital rocket launcher"
+			name-en2="orbital rocket launchers"
+			group="military"
+			weapon-group="missile"
+			description="A rack of chemically boosted rockets that only fires in orbit. Compact enough to nest in a shuttle with crew, fuel, food, and breathing mix."
+			size="40"
+			mass="40"
+			crew="0"
+			capacity="0"
+			technology-capacity="1"
+			hit-points="40"
+			attack="3"
+			defense="1"
+			damage="3">
+			<operation-allowed-in location-type="orbit"/>
+			<upkeep type="cash" quantity="20"/>
+		</entry>
     <entry
 			name="cargob" 
 			name-en="small cargo bay"
@@ -2025,7 +2059,7 @@ Researchers can query the library. The system can handle natural language questi
 			description="Crewless alien fighter. No life support. Slow space move at shuttle speed; launches from a fighter drone bay."
 			size="80"
 			mass="80"
-			capacity="0"
+			capacity="1"
 			crew="0"
 			hit-points="24"
 			attack="8"

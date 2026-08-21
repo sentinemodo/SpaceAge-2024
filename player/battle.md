@@ -108,7 +108,7 @@ Only **operational** modules fire. Unarmed stacks skip `executeAttack`. Nested f
 
 **Hangar launch:** at battle start, fighter drones (`alndrn`) and shuttles (`shuttl`) nested in a fighter drone bay (`drnbay`) detach to the location (`STACK OUT`). They join the parent’s side. They **do not fire in round 1**; from round 2 they fight as roots. Launched drones have a slow space move at shuttle speed (`speed` 1, mass-capacity 750); with helium-3 they are not immobile.
 
-Fighter drones: high module `initiative`, small `damage` and hit points, no cargo capacity, helium-3 fuel (1 per 13 weeks).
+Fighter drones: high module `initiative` (20), small `damage` and hit points, cargo capacity 1 (one helium-3 `[heliu3]`), helium-3 fuel (1 per 13 weeks).
 
 ## Chance to hit
 
