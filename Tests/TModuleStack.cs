@@ -157,21 +157,19 @@ namespace UnitTests
 		}
 
         [Test]
-        public void RandomId_DoubleException()
+        public void RandomId_SkipsDuplicateGeneratedName()
         {
+            Sequence.Ints.Push(101);
             Sequence.Ints.Push(100);
             Sequence.Ints.Push(100);
 
-            ModuleStack moduleStack1;
-            ModuleStack moduleStack2;
 			Faction testFaction = new Faction("2", "CastePrime");
+			ModuleStack moduleStack1 = new ModuleStack(testFaction, "new1");
+			ModuleStack moduleStack2 = new ModuleStack(testFaction, "new2");
 
-            Assert.Throws<Exception>(
-                delegate
-                {
-                    moduleStack1 = new ModuleStack(testFaction, "new1");
-                    moduleStack2 = new ModuleStack(testFaction, "new2");
-                });
+			Assert.That(moduleStack1.Name, Is.EqualTo("100"));
+			Assert.That(moduleStack2.Name, Is.EqualTo("101"));
+			Assert.That(moduleStack1.Name, Is.Not.EqualTo(moduleStack2.Name));
         }
 
     }

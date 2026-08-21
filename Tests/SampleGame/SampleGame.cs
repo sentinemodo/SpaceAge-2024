@@ -765,7 +765,8 @@ namespace IntegrationTests
 			{
 				Sequence.Ints.Push(0);
 			}
-			Sequence.Ints.Push(208);
+			Sequence.Ints.Push(251);
+			Sequence.Ints.Push(250);
 
 			this.LoadGalaxy("gamein.4.xml");
 

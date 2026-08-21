@@ -335,19 +335,79 @@ namespace SpaceAge
 		private int takeFromNest(ItemType itemType, int needed)
 		{
 			int taken = 0;
-			ModuleStack stack = this;
-			while (stack != null && taken < needed)
+			List<ModuleStack> visited = new List<ModuleStack>();
+
+			taken += this.takeFromStackTree(this, itemType, needed - taken, visited);
+
+			ModuleStack ancestor = this.Parent as ModuleStack;
+			while (ancestor != null && taken < needed)
 			{
-				int available = stack.ItemStacks.Quantity(itemType);
-				int take = Math.Min(available, needed - taken);
-				if (take > 0)
+				taken += this.takeFromStackOnly(ancestor, itemType, needed - taken, visited);
+				ancestor = ancestor.Parent as ModuleStack;
+			}
+
+			ancestor = this.Parent as ModuleStack;
+			if (ancestor != null && taken < needed)
+			{
+				taken += this.takeFromStackTree(ancestor, itemType, needed - taken, visited);
+			}
+
+			if (taken < needed && this.Location != null && this.Owner != null)
+			{
+				List<ModuleStack> snapshot = new List<ModuleStack>(ModuleStack.All.Values);
+				foreach (ModuleStack other in snapshot)
 				{
-					stack.ItemStacks.Minus(itemType, take);
-					taken += take;
+					if (taken >= needed)
+					{
+						break;
+					}
+					if (other == null || !other.IsFormed || other.Owner != this.Owner)
+					{
+						continue;
+					}
+					if (other.Location != this.Location || !other.IsRootModuleStack)
+					{
+						continue;
+					}
+					taken += this.takeFromStackTree(other, itemType, needed - taken, visited);
 				}
-				stack = stack.Parent as ModuleStack;
+			}
+
+			return taken;
+		}
+
+		private int takeFromStackTree(ModuleStack stack, ItemType itemType, int needed, List<ModuleStack> visited)
+		{
+			int taken = this.takeFromStackOnly(stack, itemType, needed, visited);
+			if (stack == null || stack.ModuleStacks.Count < 1)
+			{
+				return taken;
+			}
+			foreach (ModuleStack nested in stack.ModuleStacks.Values)
+			{
+				if (taken >= needed)
+				{
+					break;
+				}
+				taken += this.takeFromStackTree(nested, itemType, needed - taken, visited);
 			}
 			return taken;
+		}
+
+		private int takeFromStackOnly(ModuleStack stack, ItemType itemType, int needed, List<ModuleStack> visited)
+		{
+			if (stack == null || needed < 1 || visited.Contains(stack))
+			{
+				return 0;
+			}
+			visited.Add(stack);
+			int available = stack.ItemStacks.Quantity(itemType);
+			int take = Math.Min(available, needed);
+			if (take > 0)
+			{
+				stack.ItemStacks.Minus(itemType, take);
+			}
+			return take;
 		}
 
 		private int takeFromBank(int needed)

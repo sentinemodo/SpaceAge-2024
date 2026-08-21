@@ -1,6 +1,6 @@
 # Level 0 and 1 technologies
 
-Catalog: `Tests/data.xml`, loaded by `Game/game/CatalogLoader.cs` (`DataFile.LoadConfigurationItems` delegates). Checked **19 Aug 2026**.
+Catalog: `Tests/data.xml`, loaded by `Game/game/CatalogLoader.cs` (`DataFile.LoadConfigurationItems` delegates). Checked **21 Aug 2026**.
 
 This file lists **level 0 and level 1** technologies, then the **module types** and **item types** those technologies produce or consume. Level 2 and above: `player/advanced_technologies.md`. Alphabetical by English `name-en` inside each level.
 
@@ -298,7 +298,7 @@ Advanced mining system. A core drill allows you to strip minerals and various re
 Group `extraction`. Built by mineral core drilling `[cdrill]`. Size 1000, mass 1000, crew 6, energy 5, capacity 750, HP 100. Upkeep 40 cash. Faster extraction on self. Operates on solid-surface, in settlement or frigate.
 
 **engineering shop [engshp]**  
-A small workshop that repairs the parent module stack and nested stacks. REPAIR restores 20 hit points per week and consumes 1 spare part, or 1 hit point with no parts.  
+A small workshop that repairs the parent module stack and nested stacks. REPAIR restores 20 damage per week and consumes 1 spare part, or 1 damage with no parts (event: `repaired N damage.`).  
 Group `production`. Built by engineering shop `[engshp]`. Size 25, mass 20, crew 2, energy 1, capacity 10, HP 15, tech-cap 1. Upkeep 5 cash. Operates in settlement, frigate, spacecraft, space station.
 
 **infantry battalion [inftry]**  

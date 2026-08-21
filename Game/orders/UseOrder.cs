@@ -63,11 +63,7 @@ namespace SpaceAge
 				else
 				{
 					// no explicit alias: generate a receiver name
-					string randomName = this.Producer.GenerateRandomIdentifier();
-					while (ModuleStack.All.ContainsKey(randomName))
-					{
-						randomName = this.Producer.GenerateRandomIdentifier();
-					}
+					string randomName = this.Producer.GenerateUniqueModuleStackIdentifier();
 					this.Receiver = ModuleStack.All.GetOrCreateNewModuleStack(this.Producer.Owner, randomName);
 				}
 

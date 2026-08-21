@@ -72,56 +72,56 @@ set online true
 @buy all food
 @buy all terran
 
-#modulestack c000014
-; + farming complex [c000014], farming complex [farms], deactivated,
-;   lightly damaged, 4 terran (needs 5). Stack under HQ so @repair hits
-;   our nest (HQ then nested guns), not Berlin.
+#modulestack c00001
+; + gun placement [c00001], gun placement [gunplc], heavily damaged
+;   100/31, deactivated, 0 crew (needs 2).
+stack c000012
+set online true
+get 2 terran from c000012
+@repair
+
+#modulestack c00002
+; + gun placement [c00002], gun placement [gunplc], heavily damaged
+;   100/30, 1 terran (needs 2).
 stack c000012
 set online true
 get 1 terran from c000012
 @repair
 
-#modulestack c1000014
-; + farming complex [c1000014], 3 terran + wndtrn (needs 5).
-stack c000012
-set online true
-get 2 terran from c000012
-@repair
-
-#modulestack c2000014
-; + farming complex [c2000014], 3 terran (needs 5).
-stack c000012
-set online true
-get 2 terran from c000012
-@repair
-
-#modulestack c111
-; + gun placement [c111], gun placement [gunplc], heavily damaged,
-;   deactivated, 0 crew (needs 2).
-stack c000012
-set online true
-get 2 terran from c000012
-@repair
-
-#modulestack c1111
-; + gun placement [c1111], 1 terran (needs 2).
+#modulestack c00003
+; + gun placement [c00003], gun placement [gunplc], critically damaged
+;   100/14, 1 terran (needs 2).
 stack c000012
 set online true
 get 1 terran from c000012
 @repair
 
-#modulestack c2111
-; + gun placement [c2111], 0 crew (needs 2), critically damaged.
-stack c000012
-set online true
-get 2 terran from c000012
-@repair
-
-#modulestack c3111
-; + gun placement [c3111], 1 terran (needs 2).
+#modulestack c00004
+; + gun placement [c00004], gun placement [gunplc], heavily damaged
+;   100/27, 1 terran (needs 2).
 stack c000012
 set online true
 get 1 terran from c000012
+@repair
+
+#modulestack c00005
+; + farming complex [c00005], farming complex [farms], deactivated,
+;   lightly damaged 55/36, 5 terran (needs 5). Stack under HQ so @repair
+;   hits our nest (HQ then nested guns), not Berlin.
+stack c000012
+set online true
+@repair
+
+#modulestack c00006
+; + farming complex [c00006], farming complex [farms], 5 terran (needs 5).
+stack c000012
+set online true
+@repair
+
+#modulestack c00007
+; + farming complex [c00007], farming complex [farms], 5 terran (needs 5).
+stack c000012
+set online true
 @repair
 
 #end

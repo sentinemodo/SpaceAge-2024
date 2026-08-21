@@ -69,6 +69,7 @@ namespace UnitTests
 			Assert.That(trucks.ItemStacks.Has(ItemType.All["spare"]), Is.False);
 			Assert.That(order.Executed);
 			Assert.That(order.Executing, Is.False);
+			Assert.That(trucks.EventReports[trucks.EventReports.Count - 1].Description, Is.EqualTo("repaired 10 damage."));
 		}
 
 		[Test]
@@ -92,6 +93,7 @@ namespace UnitTests
 
 			Assert.That(trucks.Modules[0].Damage, Is.EqualTo(14));
 			Assert.That(order.Executed);
+			Assert.That(trucks.EventReports[trucks.EventReports.Count - 1].Description, Is.EqualTo("repaired 1 damage."));
 		}
 
 		[Test]

@@ -195,7 +195,9 @@ namespace UnitTests
 			Assert.That(alndrnModule.DamageCapacity, Is.EqualTo(8));
 			Assert.That(alndrnModule.Capacity, Is.EqualTo(0));
 			Assert.That(alndrnModule.Initiative, Is.EqualTo(20));
-			Assert.That(alndrnModule.MoveModes.Count, Is.EqualTo(0));
+			Assert.That(alndrnModule.MoveModes.ContainsKey(EMoveMode.space));
+			Assert.That(alndrnModule.MoveModes[EMoveMode.space].Speed, Is.EqualTo(1));
+			Assert.That(alndrnModule.MoveModes[EMoveMode.space].MassCapacity, Is.EqualTo(750));
 			Assert.That(alndrnModule.FuelDuration, Is.EqualTo(13));
 			Assert.That(alndrnModule.Fuel.ContainsKey(ItemType.All["heliu3"]));
 			Assert.That(alndrnModule.Fuel[ItemType.All["heliu3"]].Quantity, Is.EqualTo(1));

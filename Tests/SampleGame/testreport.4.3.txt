@@ -5,7 +5,7 @@ Content-Disposition: attachment
 SpaceAge report for Gelvaren [3].
 Turn 4, Year 2021, September 1.
 
-SpaceAge Engine Version: 0.1.142.
+SpaceAge Engine Version: 0.1.144.
 
 Events during turn:
   none.
@@ -14,7 +14,7 @@ Declared stances:
   default: neutral, unknown: hostile.
   enemy toward Caste Prime [2].
 Bank report:
-  Bank account balance: 8115.
+  Bank account balance: 8891.
   Credit line maximum: 10000.
   Credit rate: 20%, Deposit rate: 5%.
 
@@ -9456,9 +9456,9 @@ Galaxy report:
       none.
   
   - Berlin [000001], 3 cities [city], immobile, owned by NPC [1].
-    size: 75000, capacity: 45000/41088, energy: 320/240 (30).
-    - Berlin garrison [000002], infantry battalion [inftry], owned by
-      NPC [1].
+    size: 75000, capacity: 45000/41120, energy: 320/240 (30).
+    - Berlin garrison [000002], infantry battalion [inftry], immobile,
+      owned by NPC [1].
       size: 500.
     - Berlin farms [000003], 10 farming complexes [farms], immobile,
       owned by NPC [1].
@@ -9479,10 +9479,10 @@ Galaxy report:
       immobile, owned by Caste Prime [2].
       size: 0.
     - coal-burning plant [000015], 3 coal-burning plants [cplant],
-      partially disabled, immobile, owned by Caste Prime [2].
+      immobile, owned by Caste Prime [2].
       size: 3000.
-    - core drill [000016], core drill [cdrill], disabled, immobile,
-      owned by Caste Prime [2].
+    - core drill [000016], core drill [cdrill], immobile, owned by Caste
+      Prime [2].
       size: 1000.
     - factory [000017], 5 factories [factry], partially disabled,
       immobile, owned by Caste Prime [2].
@@ -9492,25 +9492,24 @@ Galaxy report:
       size: 100.
     + corporate headquarters [c000012], corporate headquarters [corphq],
       disabled, immobile.
-      size: 1000, mass: 1104 (1000), capacity: 750/104, upkeep: 126
-      (100) cash [cash], consume: 26 (0) units of food [food], 26 (0)
-      units of terran breathing gas mixture [terair], 4 (0) medicines
+      size: 1000, mass: 1120 (1000), capacity: 750/120, upkeep: 130
+      (100) cash [cash], consume: 30 (0) units of food [food], 30 (0)
+      units of terran breathing gas mixture [terair], 3 (0) medicines
       [medici].
       hit points: 100/75, capture: 75.
         #1 hit points: 100/75, capture: 75, deactivated.
-      items: 4 wounded terrans [wndtrn] (size: 16, mass: 16, upkeep: 4
-      cash [cash], consume: 4 units of food [food], 4 units of terran
-      breathing gas mixture [terair], 4 medicines [medici]), 22 terrans
-      [terran] (size: 88, mass: 88, upkeep: 22 cash [cash], consume: 22
-      units of food [food], 22 units of terran breathing gas mixture
+      items: 3 wounded terrans [wndtrn] (size: 12, mass: 12, upkeep: 3
+      cash [cash], consume: 3 units of food [food], 3 units of terran
+      breathing gas mixture [terair], 3 medicines [medici]), 27 terrans
+      [terran] (size: 108, mass: 108, upkeep: 27 cash [cash], consume:
+      27 units of food [food], 27 units of terran breathing gas mixture
       [terair]), 2055 cash [cash].
       events:
-        week 13: Lack of supplies: 45 unit of food [food].
-        week 13: 8 terrans [terran] wounded from lack of supplies.
-        week 13: 19 wounded terrans [wndtrn] died of their wounds.
-        week 13: 15 wounded terrans [wndtrn] recovered from their
+        week 13: 15 wounded terrans [wndtrn] died of their wounds.
+        week 13: 12 wounded terrans [wndtrn] recovered from their
         wounds.
-    + gun placement [c111], gun placement [gunplc], disabled, immobile.
+    + gun placement [c00001], gun placement [gunplc], disabled,
+      immobile.
       size: 100, mass: 500 (500), capacity: 100/0, upkeep: 10 cash
       [cash].
       hit points: 100/31, capture: 31.
@@ -9519,7 +9518,8 @@ Galaxy report:
       events:
         week 1: captured gun placement [gunplc] from gun placement
         [111].
-    + gun placement [c1111], gun placement [gunplc], disabled, immobile.
+    + gun placement [c00002], gun placement [gunplc], disabled,
+      immobile.
       size: 100, mass: 504 (500), capacity: 100/4, upkeep: 11 (10) cash
       [cash], consume: (0) unit of food [food], (0) unit of terran
       breathing gas mixture [terair].
@@ -9532,20 +9532,22 @@ Galaxy report:
       events:
         week 3: captured gun placement [gunplc] from gun placement
         [111].
-        week 13: Lack of supplies: 1 unit of food [food].
-    + gun placement [c2111], gun placement [gunplc], disabled, immobile.
-      size: 100, mass: 500 (500), capacity: 100/0, upkeep: 10 cash
-      [cash].
+    + gun placement [c00003], gun placement [gunplc], disabled,
+      immobile.
+      size: 100, mass: 504 (500), capacity: 100/4, upkeep: 11 (10) cash
+      [cash], consume: (0) unit of food [food], (0) unit of terran
+      breathing gas mixture [terair].
       hit points: 100/14, capture: 14.
         #1 hit points: 100/14, capture: 14, critically damaged,
         deactivated.
+      items: terran [terran] (size: 4, mass: 4, upkeep: cash [cash],
+      consume: unit of food [food], unit of terran breathing gas mixture
+      [terair]).
       events:
         week 4: captured gun placement [gunplc] from gun placement
         [111].
-        week 13: Lack of supplies: 1 unit of food [food].
-        week 13: 1 terran [terran] wounded from lack of supplies.
-        week 13: 1 wounded terran [wndtrn] died of their wounds.
-    + gun placement [c3111], gun placement [gunplc], disabled, immobile.
+    + gun placement [c00004], gun placement [gunplc], disabled,
+      immobile.
       size: 100, mass: 504 (500), capacity: 100/4, upkeep: 11 (10) cash
       [cash], consume: (0) unit of food [food], (0) unit of terran
       breathing gas mixture [terair].
@@ -9558,60 +9560,46 @@ Galaxy report:
       events:
         week 5: captured gun placement [gunplc] from gun placement
         [111].
-        week 13: Lack of supplies: 1 unit of food [food].
-    + farming complex [c000014], farming complex [farms], disabled,
+    + farming complex [c00005], farming complex [farms], disabled,
       immobile.
-      size: 1000, mass: 116 (100), capacity: 500/16, upkeep: 54 (50)
-      cash [cash], consume: 4 (0) units of food [food], 4 (0) units of
+      size: 1000, mass: 120 (100), capacity: 500/20, upkeep: 55 (50)
+      cash [cash], consume: 5 (0) units of food [food], 5 (0) units of
       terran breathing gas mixture [terair].
       hit points: 55/36, capture: 36.
         #1 hit points: 55/36, capture: 36, lightly damaged, deactivated.
-      items: 4 terrans [terran] (size: 16, mass: 16, upkeep: 4 cash
-      [cash], consume: 4 units of food [food], 4 units of terran
+      items: 5 terrans [terran] (size: 20, mass: 20, upkeep: 5 cash
+      [cash], consume: 5 units of food [food], 5 units of terran
       breathing gas mixture [terair]).
       events:
         week 12: captured farming complex [farms] from farming complex
         [000014].
-        week 13: Lack of supplies: 5 unit of food [food].
-        week 13: 3 terrans [terran] wounded from lack of supplies.
-        week 13: 1 wounded terran [wndtrn] died of their wounds.
-        week 13: 2 wounded terrans [wndtrn] recovered from their wounds.
-    + farming complex [c1000014], farming complex [farms], disabled,
+    + farming complex [c00006], farming complex [farms], disabled,
       immobile.
-      size: 1000, mass: 116 (100), capacity: 500/16, upkeep: 54 (50)
-      cash [cash], consume: 4 (0) units of food [food], 4 (0) units of
-      terran breathing gas mixture [terair], (0) medicines [medici].
-      hit points: 55/35, capture: 35.
-        #1 hit points: 55/35, capture: 35, lightly damaged, deactivated.
-      items: 3 terrans [terran] (size: 12, mass: 12, upkeep: 3 cash
-      [cash], consume: 3 units of food [food], 3 units of terran
-      breathing gas mixture [terair]), wounded terran [wndtrn] (size: 4,
-      mass: 4, upkeep: cash [cash], consume: unit of food [food], unit
-      of terran breathing gas mixture [terair], medicines [medici]).
-      events:
-        week 12: captured farming complex [farms] from farming complex
-        [000014].
-        week 13: Lack of supplies: 5 unit of food [food].
-        week 13: 2 terrans [terran] wounded from lack of supplies.
-        week 13: 1 wounded terran [wndtrn] died of their wounds.
-    + farming complex [c2000014], farming complex [farms], disabled,
-      immobile.
-      size: 1000, mass: 112 (100), capacity: 500/12, upkeep: 53 (50)
-      cash [cash], consume: 3 (0) units of food [food], 3 (0) units of
+      size: 1000, mass: 120 (100), capacity: 500/20, upkeep: 55 (50)
+      cash [cash], consume: 5 (0) units of food [food], 5 (0) units of
       terran breathing gas mixture [terair].
       hit points: 55/35, capture: 35.
         #1 hit points: 55/35, capture: 35, lightly damaged, deactivated.
-      items: 3 terrans [terran] (size: 12, mass: 12, upkeep: 3 cash
-      [cash], consume: 3 units of food [food], 3 units of terran
+      items: 5 terrans [terran] (size: 20, mass: 20, upkeep: 5 cash
+      [cash], consume: 5 units of food [food], 5 units of terran
+      breathing gas mixture [terair]).
+      events:
+        week 12: captured farming complex [farms] from farming complex
+        [000014].
+    + farming complex [c00007], farming complex [farms], disabled,
+      immobile.
+      size: 1000, mass: 120 (100), capacity: 500/20, upkeep: 55 (50)
+      cash [cash], consume: 5 (0) units of food [food], 5 (0) units of
+      terran breathing gas mixture [terair].
+      hit points: 55/35, capture: 35.
+        #1 hit points: 55/35, capture: 35, lightly damaged, deactivated.
+      items: 5 terrans [terran] (size: 20, mass: 20, upkeep: 5 cash
+      [cash], consume: 5 units of food [food], 5 units of terran
       breathing gas mixture [terair]).
       events:
         week 13: captured farming complex [farms] from farming complex
         [000014].
-        week 13: Lack of supplies: 5 unit of food [food].
-        week 13: 3 terrans [terran] wounded from lack of supplies.
-        week 13: 2 wounded terrans [wndtrn] died of their wounds.
-        week 13: 1 wounded terran [wndtrn] recovered from their wounds.
-  + peaceful scout [108], tanks [tanks], disabled.
+  + peaceful scout [108], tanks [tanks], disabled, immobile.
     size: 240, mass: 364 (240), capacity: 200/112, upkeep: 40 (24) cash
     [cash], consume: 32 (16) units of food [food], 32 (16) units of
     terran breathing gas mixture [terair].
@@ -9621,13 +9609,13 @@ Galaxy report:
     fuel requirements: 4 units of oil [oil] per 13 weeks.
     items: 16 terrans [terran] (size: 64, mass: 64, upkeep: 16 cash
     [cash], consume: 16 units of food [food], 16 units of terran
-    breathing gas mixture [terair]), 2 cash [cash], 12 units of oil
-    [oil] (size: 48, mass: 60).
+    breathing gas mixture [terair]), 12 units of oil [oil] (size: 48,
+    mass: 60).
     effects:
       can operate for another 5 weeks without refueling.
     events:
       week 1: set tactic to prioritize armed.
-      week 1: set tactic to capture all enemy units.
+      week 1: CAPTURE failed. Immobile units may only use destroy.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 949 (720), capacity: 600/223, crew: 48/49, upkeep:
     130 (72) cash [cash], consume: 97 (48) units of food [food], 97 (48)
@@ -9739,8 +9727,8 @@ Galaxy report:
   
   - Sydney [000006], 2 cities [city], immobile, owned by NPC [1].
     size: 50000.
-    - Sydney garrison [000007], 2 infantry battalions [inftry], owned by
-      NPC [1].
+    - Sydney garrison [000007], 2 infantry battalions [inftry],
+      immobile, owned by NPC [1].
       size: 1000.
     - Sydney farms [000008], 10 farming complexes [farms], immobile,
       owned by NPC [1].
@@ -9761,10 +9749,10 @@ Galaxy report:
       NPC [1].
       size: 10.
   + Gelvaren complex [000026], city [city], immobile.
-    size: 25000, mass: 750/5947, capacity: 15000/10090, energy: 76/79
-    (10), crew: 50/45, upkeep: 100 units of food [food], 880 (0) cash
-    [cash], consume: 145 (0) units of food [food], 145 (0) units of
-    terran breathing gas mixture [terair], 3 (0) medicines [medici].
+    size: 25000, mass: 750/5847, capacity: 15000/10090, energy: 76/79
+    (10), crew: 50/59, upkeep: 100 units of food [food], 894 (0) cash
+    [cash], consume: 159 (0) units of food [food], 159 (0) units of
+    terran breathing gas mixture [terair].
     technologies: rocket launcher production [rckter].
     events:
       week 1: started recruitment of terran, 13 weeks to complete.
@@ -9772,20 +9760,15 @@ Galaxy report:
       week 13: given 1000 cash [cash] to Gelvaren Headquarters [000018].
       week 13: given 10 terrans [terran] to Gelvaren Headquarters
       [000018].
-      week 13: Lack of upkeep: 100 unit of food [food].
-      week 13: Riot from lack of upkeep.
     + Gelvaren Headquarters [000018], corporate headquarters [corphq],
-      disabled, immobile.
-      size: 1000, mass: 1060 (1000), capacity: 750/60, energy: 10, crew:
-      20/15, upkeep: 115 (100) cash [cash], consume: 15 (0) units of
-      food [food], 15 (0) units of terran breathing gas mixture
-      [terair], (0) medicines [medici].
-      items: 14 terrans [terran] (size: 56, mass: 56, upkeep: 14 cash
-      [cash], consume: 14 units of food [food], 14 units of terran
-      breathing gas mixture [terair]), 4928 cash [cash], wounded terran
-      [wndtrn] (size: 4, mass: 4, upkeep: cash [cash], consume: unit of
-      food [food], unit of terran breathing gas mixture [terair],
-      medicines [medici]).
+      immobile.
+      size: 1000, mass: 1080 (1000), capacity: 750/80, energy: 10, crew:
+      20/20, upkeep: 120 (100) cash [cash], consume: 20 (0) units of
+      food [food], 20 (0) units of terran breathing gas mixture
+      [terair].
+      items: 20 terrans [terran] (size: 80, mass: 80, upkeep: 20 cash
+      [cash], consume: 20 units of food [food], 20 units of terran
+      breathing gas mixture [terair]), 4164 cash [cash].
       events:
         week 1: PRODUCE failed: Gelvaren Headquarters [000018] has not
         enough crew to operate - 20 required, 10 available.
@@ -9814,15 +9797,11 @@ Galaxy report:
         week 13: got 1000 cash [cash] from Gelvaren complex [000026].
         week 13: got 10 terrans [terran] from Gelvaren complex [000026].
         week 13: produced 100 cash [cash].
-        week 13: Lack of supplies: 20 unit of food [food].
-        week 13: 10 terrans [terran] wounded from lack of supplies.
-        week 13: 5 wounded terrans [wndtrn] died of their wounds.
-        week 13: 4 wounded terrans [wndtrn] recovered from their wounds.
     + small cargo bay [000019], small cargo bay [cargob], immobile.
-      size: 2000, mass: 1334 (200), capacity: 1800/1080, upkeep: 32 (30)
+      size: 2000, mass: 1178 (200), capacity: 1800/924, upkeep: 32 (30)
       cash [cash], consume: 2 (0) units of food [food], 2 (0) units of
       terran breathing gas mixture [terair].
-      items: 856 units of food [food] (size: 856, mass: 856), 2 terrans
+      items: 700 units of food [food] (size: 700, mass: 700), 2 terrans
       [terran] (size: 8, mass: 8, upkeep: 2 cash [cash], consume: 2
       units of food [food], 2 units of terran breathing gas mixture
       [terair]), 54 units of oil [oil] (size: 216, mass: 270).
@@ -9869,17 +9848,14 @@ Galaxy report:
         week 13: got 10 units of food [food] from farming complex
         [000020].
         week 13: got 2 units of oil [oil] from core drill [000022].
-    + farming complex [000020], 2 farming complexes [farms], partially
-      disabled, immobile.
-      size: 2000, mass: 228 (200), capacity: 1000/28, energy: 10, crew:
-      10/7, upkeep: 107 (100) cash [cash], consume: 7 (0) units of food
-      [food], 7 (0) units of terran breathing gas mixture [terair], (0)
-      medicines [medici].
-      items: 6 terrans [terran] (size: 24, mass: 24, upkeep: 6 cash
-      [cash], consume: 6 units of food [food], 6 units of terran
-      breathing gas mixture [terair]), wounded terran [wndtrn] (size: 4,
-      mass: 4, upkeep: cash [cash], consume: unit of food [food], unit
-      of terran breathing gas mixture [terair], medicines [medici]).
+    + farming complex [000020], 2 farming complexes [farms], immobile.
+      size: 2000, mass: 240 (200), capacity: 1000/40, energy: 10, crew:
+      10/10, upkeep: 110 (100) cash [cash], consume: 10 (0) units of
+      food [food], 10 (0) units of terran breathing gas mixture
+      [terair].
+      items: 10 terrans [terran] (size: 40, mass: 40, upkeep: 10 cash
+      [cash], consume: 10 units of food [food], 10 units of terran
+      breathing gas mixture [terair]).
       events:
         week 1: produced 10 units of food [food].
         week 1: given 10 units of food [food] to small cargo bay
@@ -9920,21 +9896,17 @@ Galaxy report:
         week 13: produced 10 units of food [food].
         week 13: given 10 units of food [food] to small cargo bay
         [000019].
-        week 13: Lack of supplies: 10 unit of food [food].
-        week 13: 5 terrans [terran] wounded from lack of supplies.
-        week 13: 3 wounded terrans [wndtrn] died of their wounds.
-        week 13: 1 wounded terran [wndtrn] recovered from their wounds.
     + wind powerplant [000021], 19 wind powerplants [wnplnt], immobile.
       size: 190, mass: 190 (190), energy: 76/19, upkeep: 190 cash
       [cash].
       events:
         week 1: started energy production for the next 13 weeks.
-    + core drill [000022], core drill [cdrill], disabled, immobile.
-      size: 1000, mass: 1020 (1000), capacity: 750/20, energy: 5, crew:
-      6/5, upkeep: 45 (40) cash [cash], consume: 5 (0) units of food
-      [food], 5 (0) units of terran breathing gas mixture [terair].
-      items: 5 terrans [terran] (size: 20, mass: 20, upkeep: 5 cash
-      [cash], consume: 5 units of food [food], 5 units of terran
+    + core drill [000022], core drill [cdrill], immobile.
+      size: 1000, mass: 1024 (1000), capacity: 750/24, energy: 5, crew:
+      6/6, upkeep: 46 (40) cash [cash], consume: 6 (0) units of food
+      [food], 6 (0) units of terran breathing gas mixture [terair].
+      items: 6 terrans [terran] (size: 24, mass: 24, upkeep: 6 cash
+      [cash], consume: 6 units of food [food], 6 units of terran
       breathing gas mixture [terair]).
       events:
         week 1: produced 2 units of oil [oil].
@@ -9963,17 +9935,13 @@ Galaxy report:
         week 12: given 2 units of oil [oil] to small cargo bay [000019].
         week 13: produced 2 units of oil [oil].
         week 13: given 2 units of oil [oil] to small cargo bay [000019].
-        week 13: Lack of supplies: 6 unit of food [food].
-        week 13: 3 terrans [terran] wounded from lack of supplies.
-        week 13: 1 wounded terran [wndtrn] died of their wounds.
-        week 13: 2 wounded terrans [wndtrn] recovered from their wounds.
-    + factory [000023], factory [factry], disabled, immobile.
-      size: 1000, mass: 900 (750), capacity: 500/118, energy: 15, crew:
-      10/7, upkeep: 67 (60) cash [cash], consume: 7 (0) units of food
-      [food], 7 (0) units of terran breathing gas mixture [terair].
+    + factory [000023], factory [factry], immobile.
+      size: 1000, mass: 912 (750), capacity: 500/130, energy: 15, crew:
+      10/10, upkeep: 70 (60) cash [cash], consume: 10 (0) units of food
+      [food], 10 (0) units of terran breathing gas mixture [terair].
       technologies: armored combat [armcbt].
-      items: 7 terrans [terran] (size: 28, mass: 28, upkeep: 7 cash
-      [cash], consume: 7 units of food [food], 7 units of terran
+      items: 10 terrans [terran] (size: 40, mass: 40, upkeep: 10 cash
+      [cash], consume: 10 units of food [food], 10 units of terran
       breathing gas mixture [terair]), 8 units of iron [iron] (size: 40,
       mass: 80), 4 units of silicium [silici] (size: 20, mass: 12), 3
       units of titanium [titani] (size: 30, mass: 30).
@@ -9992,27 +9960,15 @@ Galaxy report:
         shuttle [shuttl] module.
         week 6: produced space shuttle [shuttl] into space shuttle
         [117].
-        week 13: Lack of supplies: 10 unit of food [food].
-        week 13: 5 terrans [terran] wounded from lack of supplies.
-        week 13: 3 wounded terrans [wndtrn] died of their wounds.
-        week 13: 2 wounded terrans [wndtrn] recovered from their wounds.
     + military barrack [000025], military barrack [barrck], immobile.
-      size: 2000, mass: 532 (500), capacity: 1800/32, energy: 5, crew:
-      2/8, upkeep: 208 (200) cash [cash], consume: 8 (0) units of food
-      [food], 8 (0) units of terran breathing gas mixture [terair], (0)
-      medicines [medici].
+      size: 2000, mass: 540 (500), capacity: 1800/40, energy: 5, crew:
+      2/10, upkeep: 210 (200) cash [cash], consume: 10 (0) units of food
+      [food], 10 (0) units of terran breathing gas mixture [terair].
       technologies: form infantry battalion [frminf].
-      items: 7 terrans [terran] (size: 28, mass: 28, upkeep: 7 cash
-      [cash], consume: 7 units of food [food], 7 units of terran
-      breathing gas mixture [terair]), wounded terran [wndtrn] (size: 4,
-      mass: 4, upkeep: cash [cash], consume: unit of food [food], unit
-      of terran breathing gas mixture [terair], medicines [medici]).
-      events:
-        week 13: Lack of supplies: 10 unit of food [food].
-        week 13: 5 terrans [terran] wounded from lack of supplies.
-        week 13: 2 wounded terrans [wndtrn] died of their wounds.
-        week 13: 2 wounded terrans [wndtrn] recovered from their wounds.
-    + infantry battalion [110], infantry battalion [inftry].
+      items: 10 terrans [terran] (size: 40, mass: 40, upkeep: 10 cash
+      [cash], consume: 10 units of food [food], 10 units of terran
+      breathing gas mixture [terair]).
+    + infantry battalion [110], infantry battalion [inftry], immobile.
       size: 500, mass: 603 (500), capacity: 300/103, upkeep: 15 (5) cash
       [cash], consume: 101 (100) units of food [food], 101 (100) units
       of terran breathing gas mixture [terair].
@@ -10080,8 +10036,8 @@ Orders Template:
 #faction 3 "abccb"
 #modulestack 000018
 ; + Gelvaren Headquarters [000018], corporate headquarters [corphq],
-;   disabled, immobile.
-; items: 14 terrans [terran], 4928 cash [cash], wounded terran [wndtrn].
+;   immobile.
+; items: 20 terrans [terran], 4164 cash [cash].
 @get all cash from 000026
 @get all terran from 000026
 @buy all terran
@@ -10089,16 +10045,15 @@ Orders Template:
 
 #modulestack 000019
 ; + small cargo bay [000019], small cargo bay [cargob], immobile.
-; items: 856 units of food [food], 2 terrans [terran], 54 units of oil
+; items: 700 units of food [food], 2 terrans [terran], 54 units of oil
 ; [oil].
 @get all food from 000020
 @get all oil from 000022
 sell 100 food
 
 #modulestack 000020
-; + farming complex [000020], 2 farming complexes [farms], partially
-;   disabled, immobile.
-; items: 6 terrans [terran], wounded terran [wndtrn].
+; + farming complex [000020], 2 farming complexes [farms], immobile.
+; items: 10 terrans [terran].
 @use farmng
 
 #modulestack 000021
@@ -10106,20 +10061,20 @@ sell 100 food
 @produce energy
 
 #modulestack 000022
-; + core drill [000022], core drill [cdrill], disabled, immobile.
-; items: 5 terrans [terran].
+; + core drill [000022], core drill [cdrill], immobile.
+; items: 6 terrans [terran].
 @use oildwe
 
 #modulestack 000023
-; + factory [000023], factory [factry], disabled, immobile.
+; + factory [000023], factory [factry], immobile.
 ; technologies: armored combat [armcbt].
-; items: 7 terrans [terran], 8 units of iron [iron], 4 units of silicium
+; items: 10 terrans [terran], 8 units of iron [iron], 4 units of silicium
 ; [silici], 3 units of titanium [titani].
 
 #modulestack 000025
 ; + military barrack [000025], military barrack [barrck], immobile.
 ; technologies: form infantry battalion [frminf].
-; items: 7 terrans [terran], wounded terran [wndtrn].
+; items: 10 terrans [terran].
 
 #modulestack 000026
 ; + Gelvaren complex [000026], city [city], immobile.
@@ -10127,8 +10082,8 @@ sell 100 food
 @produce terran
 
 #modulestack 108
-; + peaceful scout [108], tanks [tanks], disabled.
-; items: 16 terrans [terran], 2 cash [cash], 12 units of oil [oil].
+; + peaceful scout [108], tanks [tanks], disabled, immobile.
+; items: 16 terrans [terran], 12 units of oil [oil].
 ; effects:
 ;   can operate for another 5 weeks without refueling.
 @repair
@@ -10141,7 +10096,7 @@ sell 100 food
 ;   can operate for another 6 weeks without refueling.
 
 #modulestack 110
-; + infantry battalion [110], infantry battalion [inftry].
+; + infantry battalion [110], infantry battalion [inftry], immobile.
 ; items: 99 units of food [food].
 ; effects:
 ;   will move for another 4 weeks before next destination.
@@ -10156,41 +10111,39 @@ move R00002
 #modulestack 117
 ; + space shuttle [117], space shuttle [shuttl], disabled, immobile.
 
+#modulestack c00001
+; + gun placement [c00001], gun placement [gunplc], disabled, immobile.
+
 #modulestack c000012
 ; + corporate headquarters [c000012], corporate headquarters [corphq],
 ;   disabled, immobile.
-; items: 4 wounded terrans [wndtrn], 22 terrans [terran], 2055 cash
+; items: 3 wounded terrans [wndtrn], 27 terrans [terran], 2055 cash
 ; [cash].
 repair
 
-#modulestack c000014
-; + farming complex [c000014], farming complex [farms], disabled,
-;   immobile.
-; items: 4 terrans [terran].
-
-#modulestack c1000014
-; + farming complex [c1000014], farming complex [farms], disabled,
-;   immobile.
-; items: 3 terrans [terran], wounded terran [wndtrn].
-
-#modulestack c111
-; + gun placement [c111], gun placement [gunplc], disabled, immobile.
-
-#modulestack c1111
-; + gun placement [c1111], gun placement [gunplc], disabled, immobile.
+#modulestack c00002
+; + gun placement [c00002], gun placement [gunplc], disabled, immobile.
 ; items: terran [terran].
 
-#modulestack c2000014
-; + farming complex [c2000014], farming complex [farms], disabled,
-;   immobile.
-; items: 3 terrans [terran].
-
-#modulestack c2111
-; + gun placement [c2111], gun placement [gunplc], disabled, immobile.
-
-#modulestack c3111
-; + gun placement [c3111], gun placement [gunplc], disabled, immobile.
+#modulestack c00003
+; + gun placement [c00003], gun placement [gunplc], disabled, immobile.
 ; items: terran [terran].
+
+#modulestack c00004
+; + gun placement [c00004], gun placement [gunplc], disabled, immobile.
+; items: terran [terran].
+
+#modulestack c00005
+; + farming complex [c00005], farming complex [farms], disabled, immobile.
+; items: 5 terrans [terran].
+
+#modulestack c00006
+; + farming complex [c00006], farming complex [farms], disabled, immobile.
+; items: 5 terrans [terran].
+
+#modulestack c00007
+; + farming complex [c00007], farming complex [farms], disabled, immobile.
+; items: 5 terrans [terran].
 
 #person 000002
 ; + Gelvaren CEO [000002], terran [terran].

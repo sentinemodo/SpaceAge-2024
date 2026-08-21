@@ -1,6 +1,6 @@
 # Level 2 and above technologies
 
-Catalog: `Tests/data.xml`, loaded by `Game/game/CatalogLoader.cs` (`DataFile.LoadConfigurationItems` delegates). Checked **19 Aug 2026**. Level 0–1: `player/basic_technologies.md`.
+Catalog: `Tests/data.xml`, loaded by `Game/game/CatalogLoader.cs` (`DataFile.LoadConfigurationItems` delegates). Checked **21 Aug 2026**. Level 0–1: `player/basic_technologies.md`.
 
 This file lists **level 2, 3, and 4** technologies, then the **module types** and **item types** those technologies produce or consume. Alphabetical by English `name-en` inside each level.
 
@@ -228,7 +228,7 @@ Group `settlement`. Built by dome city construction `[dmecns]`. Size 5000, capac
 
 **alien fighter drone [alndrn]**  
 Crewless alien fighter. No life support.  
-Group `military`. Built by alien fighter construction `[alnfgh]`. Size 80, mass 80, crew 0, capacity 20, HP 25, attack 6, defense 2, damage 6. Upkeep 20 cash. Space move, mass-capacity 80. Operates in military, frigate.
+Group `military`. Built by alien fighter construction `[alnfgh]`. Size 80, mass 80, crew 0, capacity 20, HP 25, attack 6, defense 2, damage 6. Upkeep 20 cash. Slow space move at shuttle speed (mass-capacity 750). Operates in military, frigate.
 
 ---
 

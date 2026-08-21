@@ -147,7 +147,40 @@ namespace UnitTests
 			station.Orders[0].Execute(this.game.Week);
 
 			Assert.That(station.HasCapture, Is.False);
-			Assert.That(station.Orders[0].Executed, Is.False);
+			Assert.That(station.Orders[0].Executed, Is.True);
+		}
+
+		[Test]
+		public void CaptureOrder_ImmobileLogsOnceEvenWhenPeerStacksKeepExecuting()
+		{
+			ModuleStack station = this.game.ModuleStacks["100021"];
+			ModuleStack frigate = this.game.ModuleStacks["100011"];
+			Assert.That(station.IsImmobile);
+			new OrdersReader(this.game).AssignOrders(new List<string>
+			{
+				"#faction 1",
+				"#modulestack 100021",
+				"capture all",
+				"#faction 2",
+				"#modulestack 100011",
+				"tactic evade",
+				"#end"
+			});
+
+			this.game.ExecuteOrdersByModuleStack();
+			this.game.ExecuteOrdersByModuleStack();
+
+			int fails = 0;
+			foreach (EventReport eventReport in station.EventReports)
+			{
+				if (eventReport.Description == "CAPTURE failed. Immobile units may only use destroy.")
+				{
+					fails++;
+				}
+			}
+			Assert.That(fails, Is.EqualTo(1));
+			Assert.That(station.HasCapture, Is.False);
+			Assert.That(frigate.HasEvade);
 		}
 
 		[Test]
@@ -714,6 +747,82 @@ namespace UnitTests
 				Assert.That(battle.Attacker.Name, Is.Not.EqualTo(disabled.Name));
 				Assert.That(battle.Attackers.Contains(disabled.Name), Is.False);
 			}
+		}
+
+		[Test]
+		public void IsImmobile_NestedModuleOnMobileHull_FollowsRoot()
+		{
+			ModuleStack hull = this.game.ModuleStacks["100011"];
+			ModuleStack bridge = this.game.ModuleStacks["100012"];
+			Assert.That(hull.IsImmobile, Is.False);
+			Assert.That(bridge.IsImmobile, Is.False);
+		}
+
+		[Test]
+		public void IsImmobile_NestedModuleOnCity_IsTrue()
+		{
+			ModuleStack city = this.game.ModuleStacks["000001"];
+			ModuleStack factory = this.game.ModuleStacks["000004"];
+			Assert.That(city.IsImmobile, Is.True);
+			Assert.That(factory.IsImmobile, Is.True);
+		}
+
+		[Test]
+		public void IsImmobile_StationAndNestedBridge_AreImmobile()
+		{
+			ModuleStack station = this.game.ModuleStacks["100021"];
+			ModuleStack bridge = this.game.ModuleStacks["100022"];
+			Assert.That(station.IsImmobile, Is.True);
+			Assert.That(bridge.IsImmobile, Is.True);
+		}
+
+		[Test]
+		public void IsImmobile_TanksOutOfFuelOrDisabled()
+		{
+			Region region = Region.All["R00002"];
+			Faction owner = this.game.Factions["2"];
+			ModuleStack fueled = new ModuleStack(region, owner, ModuleType.All["tanks"], "immobfuel");
+			fueled.AddModule();
+			fueled.ItemStacks.Add(new ItemStack(ItemType.All["terran"], 16));
+			fueled.ItemStacks.Add(new ItemStack(ItemType.All["oil"], 4));
+			Assert.That(fueled.IsImmobile, Is.False);
+
+			ModuleStack dry = new ModuleStack(region, owner, ModuleType.All["tanks"], "immobdry");
+			dry.AddModule();
+			dry.ItemStacks.Add(new ItemStack(ItemType.All["terran"], 16));
+			Assert.That(dry.IsImmobile, Is.True);
+
+			ModuleStack wrecked = new ModuleStack(region, owner, ModuleType.All["tanks"], "immobdmg");
+			wrecked.AddModule();
+			wrecked.ItemStacks.Add(new ItemStack(ItemType.All["terran"], 16));
+			wrecked.ItemStacks.Add(new ItemStack(ItemType.All["oil"], 4));
+			this.disableByHeavyDamage(wrecked);
+			Assert.That(wrecked.IsImmobile, Is.True);
+		}
+
+		[Test]
+		public void IsImmobile_LaunchedDroneWithFuel_IsFalse()
+		{
+			ModuleStack drone = new ModuleStack(
+				Orbit.All["O00003"],
+				this.game.Factions["2"],
+				ModuleType.All["alndrn"],
+				"immobdrone");
+			drone.AddModule();
+			drone.ItemStacks.Add(new ItemStack(ItemType.All["heliu3"], 1));
+			Assert.That(drone.IsImmobile, Is.False);
+		}
+
+		[Test]
+		public void IsImmobile_LaunchedDroneOutOfFuel_IsTrue()
+		{
+			ModuleStack drone = new ModuleStack(
+				Orbit.All["O00003"],
+				this.game.Factions["2"],
+				ModuleType.All["alndrn"],
+				"immobdrydrone");
+			drone.AddModule();
+			Assert.That(drone.IsImmobile, Is.True);
 		}
 	}
 }

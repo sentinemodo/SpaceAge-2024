@@ -1222,14 +1222,20 @@ namespace SpaceAge
 
 		private string capturedStackName(ModuleStack source)
 		{
-			string name = string.Concat("c", source.Name);
-			int suffix = 0;
+			int serial = 1;
+			string name = this.formatCapturedName(serial);
 			while (ModuleStack.All.ContainsKey(name))
 			{
-				suffix++;
-				name = string.Concat("c", suffix.ToString(), source.Name);
+				serial++;
+				name = this.formatCapturedName(serial);
 			}
 			return name;
+		}
+
+		private string formatCapturedName(int serial)
+		{
+			int digits = NamedObject.MaxNameLength - 1;
+			return string.Concat("c", serial.ToString().PadLeft(digits, '0'));
 		}
 
 		private void transferProportionalItems(ModuleStack source, ModuleStack dest, int taken, int originalCount, bool crewCasualties)

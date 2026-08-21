@@ -1785,7 +1785,7 @@ Researchers can query the library. The system can handle natural language questi
 			name-en="alien fighter drone"
 			name-en2="alien fighter drones"
 			group="military"
-			description="Crewless alien fighter. No life support. Cannot move on its own; launches from a fighter drone bay."
+			description="Crewless alien fighter. No life support. Slow space move at shuttle speed; launches from a fighter drone bay."
 			size="80"
 			mass="80"
 			capacity="0"
@@ -1796,6 +1796,8 @@ Researchers can query the library. The system can handle natural language questi
 			damage="2"
 			initiative="20">
 			<upkeep type="cash" quantity="20"/>
+			<move mode="space" mass-capacity="750">
+			</move>
 			<fuel duration="13">
 				<item type="heliu3" quantity="1"/>
 			</fuel>

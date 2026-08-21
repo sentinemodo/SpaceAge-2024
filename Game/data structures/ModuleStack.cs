@@ -36,12 +36,7 @@ namespace SpaceAge
 		public ModuleStack(IHolder parent, Faction owner, ModuleType type)
 			: base("")
 		{
-			this.name = this.GenerateRandomIdentifier();
-			while (ModuleStack.All.ContainsKey(name))
-			{
-				this.name = this.GenerateRandomIdentifier();
-			}
-
+			this.name = this.GenerateUniqueModuleStackIdentifier();
 			ModuleStack.All.Add(this.name, this);
 
 			this.alias = this.name;
@@ -53,12 +48,7 @@ namespace SpaceAge
 		public ModuleStack(IHolder parent, Faction owner)
 			: base("")
 		{
-			this.name = this.GenerateRandomIdentifier();
-			while (ModuleStack.All.ContainsKey(name))
-			{
-				this.name = this.GenerateRandomIdentifier();
-			}
-
+			this.name = this.GenerateUniqueModuleStackIdentifier();
 			ModuleStack.All.Add(this.name, this);
 
 			this.parent = parent;
@@ -73,11 +63,8 @@ namespace SpaceAge
             if (name.StartsWith("new"))
             {
                 // okay if it's a new alias we need to create new identifier
-				string generatedRandomIdentifier = this.GenerateRandomIdentifier();
+				string generatedRandomIdentifier = this.GenerateUniqueModuleStackIdentifier();
 
-				// now we need to check if we by accident didn't randomly created the non-unique identifier
-                if (ModuleStack.All.ContainsKey(generatedRandomIdentifier))
-                    throw new Exception("Randomly generated modulestack name of [" + generatedRandomIdentifier + "] already existed.");
 				this.name = generatedRandomIdentifier;
             } else
             {
@@ -90,7 +77,7 @@ namespace SpaceAge
 
             while (ModuleStack.All.ContainsKey(this.name))
             {
-                this.name = this.GenerateRandomIdentifier();
+                this.name = this.GenerateUniqueModuleStackIdentifier();
             }
 
             ModuleStack.All.Add(this.name, this);
@@ -667,61 +654,106 @@ namespace SpaceAge
 		{
 			get
 			{
-                // if it is isn't it cannot move 
-                if (!this.IsFormed)
-                    return true;
-
-				// is moveable unit TODO: verify fuel
-				if (this.moduleType.Group == EModuleTypesGroup.vehicle
-					| this.ModuleType.Group == EModuleTypesGroup.infantry
-					| this.ModuleType.Group == EModuleTypesGroup.spacecraft)
+				if (!this.IsFormed)
 				{
-					return false;
+					return true;
 				}
-
-				// is propulsion type modulestack or has some TODO: verify fuel
-				if (this.moduleType.Group == EModuleTypesGroup.propulsion
-					| this.ModuleStacks.Contains(EModuleTypesGroup.propulsion))
+				if (!this.IsRootModuleStack)
 				{
-					return false;
+					return this.RootModuleStack.IsImmobile;
 				}
+				return !this.canRelocate();
+			}
+		}
 
-				// has some moveModes and at least one does not need fuel 
-				foreach(MoveMode moveMode in this.moduleType.MoveModes.Values)
+		private bool canRelocate()
+		{
+			if (!this.IsActive)
+			{
+				return false;
+			}
+
+			foreach (ModuleStack mover in this.spaceMovers())
+			{
+				if (mover.HasOperationalModules && !mover.NeedFuel(null))
 				{
-					if (!this.NeedFuel(moveMode))
-					{
-						return false;
-					}
+					return true;
 				}
+			}
 
-				// yes, it's immobile
-				return true;
+			if (this.MoveModes.ContainsKey(EMoveMode.ground))
+			{
+				return !this.NeedFuel(this.MoveModes[EMoveMode.ground]);
+			}
+
+			return false;
+		}
+
+		private List<ModuleStack> spaceMovers()
+		{
+			List<ModuleStack> movers = new List<ModuleStack>();
+			this.collectSpaceMovers(this, movers);
+			return movers;
+		}
+
+		private void collectSpaceMovers(ModuleStack stack, List<ModuleStack> movers)
+		{
+			if (stack.MoveModes.ContainsKey(EMoveMode.space))
+			{
+				movers.Add(stack);
+			}
+			if (stack.ModuleStacks.Count < 1)
+			{
+				return;
+			}
+			foreach (ModuleStack nested in stack.ModuleStacks.Values)
+			{
+				this.collectSpaceMovers(nested, movers);
 			}
 		}
 
 		public bool NeedFuel(MoveMode moveMode)
 		{
-			// need no fuel at all
 			if (this.Fuel.Count == 0)
 			{
 				return false;
 			}
 
-			// need fuel but is already fueled
 			if (this.Effects.IsFuelled)
-			{
-				return false;
-			} 
-			
-			// need fuel but has some
-			if (this.ItemStacksSumRecursive.Has(this.Fuel))
 			{
 				return false;
 			}
 
-			// need fuel
+			if (this.RootModuleStack.ItemStacksSumRecursive.Has(this.Fuel))
+			{
+				return false;
+			}
+
 			return true;
+		}
+
+		public string GenerateUniqueModuleStackIdentifier()
+		{
+			string generated = this.GenerateRandomIdentifier();
+			while (ModuleStack.IsInvalidGeneratedName(generated) || ModuleStack.All.ContainsKey(generated))
+			{
+				generated = this.GenerateRandomIdentifier();
+			}
+			return generated;
+		}
+
+		public static bool IsInvalidGeneratedName(string name)
+		{
+			if (string.IsNullOrEmpty(name))
+			{
+				return true;
+			}
+			int numeric;
+			if (int.TryParse(name, out numeric) && numeric == 0)
+			{
+				return true;
+			}
+			return false;
 		}
 
 		private bool moduleTypeIsCombatArmed(ModuleType type)

@@ -1,6 +1,6 @@
 # Battle (rules of engagement)
 
-Checked **20 Aug 2026** against engine **0.1.142**.
+Checked **21 Aug 2026** against engine **0.1.144**.
 
 Sources: `Game/battle/Battle.cs`, `Game/battle/ETactic.cs`, `Game/Game.cs` (`ExecuteBattles`), `Game/data structures/ModuleStack.cs` (attack, defense, initiative, tactics, `IsArmed`, `HasOperationalModules`, `GetFiringModules`), `Game/data structures/Faction.cs` / `FactionAttitude.cs`, `Game/orders/AttackOrder.cs`, `CaptureOrder.cs`, `DeclareOrder.cs`, `TacticOrder.cs`, `SetOrder.cs`. Catalog bonuses: `Tests/data.xml` (`attack`, `defense`, `damage`, `initiative` on modules, techs, skills, items).
 
@@ -55,7 +55,7 @@ Attitudes (one-way): `enemy` (0), `hostile` (1), `neutral` (2), `friendly` (3), 
 | **friendly** | Joins **defense** of that faction, not attack. |
 | **ally** | Joins **attack** with that faction and **defense** of that faction. |
 
-Resolution: per-unit declaration (`UnitAttitudes`) else stance toward the unit’s owner (`Attitudes`) else `DefaultAttitude`. Unknown factions use `UnknownAttitude` (baseline **hostile**).
+Resolution: per-unit declaration (`UnitAttitudes`) else stance toward the unit’s owner (`Attitudes`) else `DefaultAttitude`. Unknown factions use `UnknownAttitude` (baseline **hostile**). Stale per-unit stances are dropped at turn start and after each week’s battles (`DropStaleUnitAttitudes`): missing ids, empty stacks, or stacks now owned by the declaring faction (including after capture).
 
 `SET AVOID TRUE` (`IsAvoiding`) is **not** a battle tactic. After a stack fires, `considerRetreat` only prints that an avoiding unit tries to escape and **fails** (or cannot, if immobile). It does not leave the fight. `SET ONLINE TRUE|FALSE` is also not a battle tactic; it only toggles stack and module `Online` (captured modules start deactivated).
 
@@ -87,7 +87,7 @@ Same initiative value: those stacks fire in list order (not shuffled).
 
 ## Tactics (live)
 
-`TACTIC` (`TacticOrder`) on a modulestack. Immobile stacks may only set **destroy**.
+`TACTIC` (`TacticOrder`) on a modulestack. Immobile stacks may only set **destroy**. `CAPTURE` or `TACTIC capture` / `TACTIC evade` on an immobile unit fails once per week (`CAPTURE failed. Immobile units may only use destroy.` / `TACTIC failed. Immobile units may only use destroy.`) and marks the order executed; `prioritize` still applies.
 
 | Order | Effect in `Battle` |
 |-------|-------------------|
@@ -106,7 +106,7 @@ Only **operational** modules fire. Unarmed stacks skip `executeAttack`. Nested f
 
 **Armed:** formed, and module group **military**, or group **vehicle** / **infantry** with `attack > 0`, including nested stacks.
 
-**Hangar launch:** at battle start, fighter drones (`alndrn`) and shuttles (`shuttl`) nested in a fighter drone bay (`drnbay`) detach to the location (`STACK OUT`). They join the parent’s side. They **do not fire in round 1**; from round 2 they fight as roots. They cannot move on their own.
+**Hangar launch:** at battle start, fighter drones (`alndrn`) and shuttles (`shuttl`) nested in a fighter drone bay (`drnbay`) detach to the location (`STACK OUT`). They join the parent’s side. They **do not fire in round 1**; from round 2 they fight as roots. Launched drones have a slow space move at shuttle speed (`speed` 1, mass-capacity 750); with helium-3 they are not immobile.
 
 Fighter drones: high module `initiative`, small `damage` and hit points, no cargo capacity, helium-3 fuel (1 per 13 weeks).
 
@@ -118,6 +118,8 @@ Each **operational firing module** on the shooter (and nested armed stacks) roll
 chance = (shooter.Attack + nested.Attack) / 2     // integer
 if target.HasEvade:     chance = chance / 2
 if target.IsImmobile:   chance = chance + chance / 2
+
+`IsImmobile` is the root’s ability to relocate: formed, `IsActive` (not disabled/partially disabled), and a usable move (space via self or nested drive with fuel, or ground with fuel). Nested modules inherit the root — a factory on a moving ship is not immobile; the same factory on a city is. Independent tanks/infantry that are roots use their own disable and fuel state. Launched fighter drones have shuttle-speed space move and are mobile when fueled. Gun placements on a city stay immobile for the combat to-hit bonus.
 dice   = shooter.Attack + nested.Attack + target.Defense + nested.Defense
 roll   = uniform 1 … dice   (Sequence; if dice is 0, roll is forced to 1)
 hit    if roll <= chance
@@ -141,7 +143,7 @@ On a hit, a module on the target is chosen by **hit weight**, then:
 Both are capped by remaining pool `HitPoints - Damage - CaptureDamage`.
 
 - `Damage >= HitPoints` → **wrecked**.
-- Capture: `Damage + CaptureDamage >= HitPoints` and not wrecked → **capture complete** (module offline, peeled to the **battle initiator’s owner** — `this.attacker.Owner`, not necessarily the firing stack).
+- Capture: `Damage + CaptureDamage >= HitPoints` and not wrecked → **capture complete** (module offline, peeled to the **battle initiator’s owner** — `this.attacker.Owner`, not necessarily the firing stack). The peeled module goes onto a **new stack** with a 6-character id `c` + 5 digits (`c00001`, `c00002`, …), skipping ids already in `ModuleStack.All`. Not `c` plus the source stack id.
 
 Hit weight for a stack: `DamageCapacity * intact module count`. Command or propulsion: **×2** if the shot is capture, **÷2** if the target is evading. Nested stacks of the **same owner** are included; other owners contribute 0 to this roll.
 

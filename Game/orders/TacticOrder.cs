@@ -48,7 +48,6 @@ namespace SpaceAge
 
 		public override void Execute(int week)
 		{
-			this.Executed = false;
 			if (this.TacticName.StartsWith("prioritize "))
 			{
 				this.Unit.ApplyPrioritizeTactic(this.TacticName);
@@ -59,7 +58,11 @@ namespace SpaceAge
 			}
 			if (this.Unit.IsImmobile && this.TacticName != "destroy")
 			{
-				this.Unit.EventReports.Add(week, "TACTIC failed. Immobile units may only use destroy.");
+				if (!this.Executed)
+				{
+					this.Unit.EventReports.Add(week, "TACTIC failed. Immobile units may only use destroy.");
+				}
+				this.Executed = true;
 				base.Execute(week);
 				return;
 			}

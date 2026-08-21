@@ -4,9 +4,9 @@ Live game XML for a 10-player PBEM (two starting systems, eight empty). Owned by
 
 | File | Role |
 |------|------|
-| `data.xml` | Catalog (copy-extend from `Tests/data.xml`, never the reverse). Present: live baseline plus campaign medical (`sckcns` / `sckbay` / `pharms`; `medtec`/`medirf` tagged research) |
-| `gamein.xml` | Factions, galaxy, contracts, starting stacks |
+| `data.xml` | Catalog (copy-extend from `Tests/data.xml`, never the reverse). Includes water→fuel/food techs, environment-related settlement modules, combat balance retune |
+| `gamein.xml` | Factions, galaxy, contracts, starting stacks (regenerate from design specs; not present on all branches) |
 
-Run the engine against this directory (`Game.exe /data` pointing here) only after both files exist. Until `gamein.xml` exists, `designer/galaxy.md` is the seed spec (United Star Nations, Arbor + Anvil).
+Environment / gravity / temperature rules: `designer/environments.md`. Galaxy water and moon seed rules: `designer/galaxy.md`.
 
 Encoding: Windows-1251. Do not replace these files with SampleGame goldens.

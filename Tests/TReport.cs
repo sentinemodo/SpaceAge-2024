@@ -393,7 +393,7 @@ namespace IntegrationTests
                 // inititive was calculated by the following formula ((energy supply / consumption) + (drive capacity / mass)) *10 + bonuses from technologies and skills
                 // power 120/78 = 1,53 * 10
                 // thrust 10000/5400 = 1,85 * 10  
-                "    + command bridge [100012], command bridge [cbridg], immobile.",
+                "    + command bridge [100012], command bridge [cbridg].",
                 "      size: 800, mass: 340 (300), energy: 5, crew: 1/10.",
                 "      hit points: 55/55, defense: 5, initiative: 10 (5).",
                 "      technologies: military tactics [miltac] (initiative: 5).",
@@ -401,7 +401,7 @@ namespace IntegrationTests
                 "      + terran officer [200002], terran [terran].",
                 "        mass: 4, defense: 5, initiative: 5.",
                 "        skills: frigate pilot [frgplt] (defense: 5, initiative: 5).",
-                "    + fission reactor [100013], 2 fission reactors [fisrec], immobile.",
+                "    + fission reactor [100013], 2 fission reactors [fisrec].",
                 "      size: 800, mass: 384 (280), energy: 120/20, crew: 2/6.",
                 "      hit points: 90/90, attack: 4.",
                 "        #1 hit points: 45/45.",
@@ -410,12 +410,12 @@ namespace IntegrationTests
                 "      size: 600, mass: 10000/804 (700), energy: 30, crew: 1/1.",
                 "      hit points: 65/65.",
                 "        #1 hit points: 65/65.",
-                "    + x-ray laser [100015], 2 x-ray lasers [xraylz], immobile.",
+                "    + x-ray laser [100015], 2 x-ray lasers [xraylz].",
                 "      size: 200, mass: 208 (200), energy: 20, crew: 2/2.",
                 "      hit points: 20/20, attack: 20, defense: 2.",
                 "        #1 hit points: 10/10.",
                 "        #2 hit points: 10/10.",
-                "    + crew quarters [100016], 2 crew quarters [crwqrt], immobile.",
+                "    + crew quarters [100016], 2 crew quarters [crwqrt].",
                 "      size: 1000, mass: 2844 (800), energy: 2.",
                 "      hit points: 90/90.",
                 "        #1 hit points: 45/45.",
@@ -463,7 +463,7 @@ namespace IntegrationTests
                 "    hit points: 370/370 (50/50), attack: 24 (0), defense: 17 (10), initiative: 50 (40).",
                 "    tactics: disable.",
                 "      #1 hit points: 50/50.",
-                "    + command bridge [100012], command bridge [cbridg], immobile.",
+                "    + command bridge [100012], command bridge [cbridg].",
                 "      size: 800, mass: 340 (300), energy: 5, crew: 1/10.",
                 "      hit points: 55/55, defense: 5, initiative: 10 (5).",
                 "      technologies: military tactics [miltac] (initiative: 5).",
@@ -471,7 +471,7 @@ namespace IntegrationTests
                 "      + terran officer [200002], terran [terran].",
                 "        mass: 4, defense: 5, initiative: 5.",
                 "        skills: frigate pilot [frgplt] (defense: 5, initiative: 5).",
-                "    + fission reactor [100013], 2 fission reactors [fisrec], immobile.",
+                "    + fission reactor [100013], 2 fission reactors [fisrec].",
                 "      size: 800, mass: 384 (280), energy: 120/20, crew: 2/6.",
                 "      hit points: 90/90, attack: 4.",
                 "        #1 hit points: 45/45.",
@@ -480,12 +480,12 @@ namespace IntegrationTests
                 "      size: 600, mass: 10000/804 (700), energy: 30, crew: 1/1.",
                 "      hit points: 65/65.",
                 "        #1 hit points: 65/65.",
-                "    + x-ray laser [100015], 2 x-ray lasers [xraylz], immobile.",
+                "    + x-ray laser [100015], 2 x-ray lasers [xraylz].",
                 "      size: 200, mass: 208 (200), energy: 20, crew: 2/2.",
                 "      hit points: 20/20, attack: 20, defense: 2.",
                 "        #1 hit points: 10/10.",
                 "        #2 hit points: 10/10.",
-                "    + crew quarters [100016], 2 crew quarters [crwqrt], immobile.",
+                "    + crew quarters [100016], 2 crew quarters [crwqrt].",
                 "      size: 1000, mass: 2844 (800), energy: 2.",
                 "      hit points: 90/90.",
                 "        #1 hit points: 45/45.",
@@ -563,7 +563,7 @@ namespace IntegrationTests
 					|| trimmed.Contains("killed")
 					|| trimmed.Contains("wounded")
 					|| trimmed.Contains("items:")
-					|| trimmed.Contains("[c100024]")
+					|| trimmed.Contains("+ small cargo bay [c")
 					|| trimmed.Contains("is wrecked")
 					|| trimmed.Contains("lost it's")
 					|| trimmed.Contains("Battle won")
@@ -574,6 +574,22 @@ namespace IntegrationTests
 				}
 			}
 			return narrative;
+		}
+
+		private ModuleStack firstCapturedStack(Faction owner, string moduleTypeName)
+		{
+			foreach (ModuleStack stack in ModuleStack.All.Values)
+			{
+				if (stack.Owner == owner
+					&& stack.ModuleType != null
+					&& stack.ModuleType.Name == moduleTypeName
+					&& stack.Name.StartsWith("c")
+					&& stack.Name.Length == NamedObject.MaxNameLength)
+				{
+					return stack;
+				}
+			}
+			return null;
 		}
 
 		private void resetModuleBattleDamage(ModuleStack stack)
@@ -626,7 +642,9 @@ namespace IntegrationTests
 			Assert.That(battle.Round, Is.LessThanOrEqualTo(Battle.MaxRounds));
 			Assert.That(string.Join("\n", lines.ToArray()), Does.Not.Contain("Round 11"));
 
-			ModuleStack capturedCargo = ModuleStack.All["c100024"];
+			ModuleStack capturedCargo = this.firstCapturedStack(faction, "cargob");
+			Assert.That(capturedCargo, Is.Not.Null);
+			Assert.That(capturedCargo.Name.Length, Is.EqualTo(NamedObject.MaxNameLength));
 			Assert.That(capturedCargo.Owner.Name, Is.EqualTo("2"));
 			Assert.That(capturedCargo.ModuleType.Name, Is.EqualTo("cargob"));
 			Assert.That(capturedCargo.Quantity, Is.EqualTo(1));
@@ -674,7 +692,7 @@ namespace IntegrationTests
                 "  Round 5:",
                 "  ------------------------------------------------------------",
                 "    tactics: capture.",
-                "    + small cargo bay [c100024], small cargo bay [cargob], disabled, immobile.",
+                string.Format("    + small cargo bay [{0}], small cargo bay [cargob], disabled, immobile.", capturedCargo.Name),
                 "      items: 50 units of iron [iron], 50 units of titanium [titani], 50 units of copper [copper], 50 units of silicium [silici], 500 units of oxyhydro [h2o2], 2 terrans [terran].",
             };
 			for (int i = 0; i < expected.Count; i++)
@@ -726,7 +744,9 @@ namespace IntegrationTests
 			Assert.That(station.Name, Is.EqualTo("100021"));
 			Assert.That(cargo.Name, Is.EqualTo("100024"));
 			Assert.That(cargo.Owner.Name, Is.EqualTo("2"));
-			ModuleStack capturedCommand = ModuleStack.All["c100022"];
+			ModuleStack capturedCommand = this.firstCapturedStack(faction, "cbridg");
+			Assert.That(capturedCommand, Is.Not.Null);
+			Assert.That(capturedCommand.Name.Length, Is.EqualTo(NamedObject.MaxNameLength));
 			Assert.That(capturedCommand.Owner.Name, Is.EqualTo("2"));
 			Assert.That(capturedCommand.Quantity, Is.EqualTo(1));
 			Assert.That(Person.All.Contains("200003"), Is.False);
@@ -821,13 +841,13 @@ namespace IntegrationTests
                 "    size: 5000.",
                 "    hit points: 370/370 (50/50), attack: 24 (0), defense: 17 (10), initiative: 50 (40).",
                 "      #1 hit points: 50/50.",
-                "    - command bridge [100012], command bridge [cbridg], immobile, owned by Caste Prime [2].",
+                "    - command bridge [100012], command bridge [cbridg], owned by Caste Prime [2].",
                 "      size: 800.",
                 "      hit points: 55/55, defense: 5, initiative: 10 (5).",
                 "        #1 hit points: 55/55.",
                 "      - terran officer [200002], terran [terran], working for Caste Prime [2].",
                 "        defense: 5, initiative: 5.",
-                "    - fission reactor [100013], 2 fission reactors [fisrec], immobile, owned by Caste Prime [2].",
+                "    - fission reactor [100013], 2 fission reactors [fisrec], owned by Caste Prime [2].",
                 "      size: 800.",
                 "      hit points: 90/90, attack: 4.",
                 "        #1 hit points: 45/45.",
@@ -836,12 +856,12 @@ namespace IntegrationTests
                 "      size: 600.",
                 "      hit points: 65/65.",
                 "        #1 hit points: 65/65.",
-                "    - x-ray laser [100015], 2 x-ray lasers [xraylz], immobile, owned by Caste Prime [2].",
+                "    - x-ray laser [100015], 2 x-ray lasers [xraylz], owned by Caste Prime [2].",
                 "      size: 200.",
                 "      hit points: 20/20, attack: 20, defense: 2.",
                 "        #1 hit points: 10/10.",
                 "        #2 hit points: 10/10.",
-                "    - crew quarters [100016], 2 crew quarters [crwqrt], immobile, owned by Caste Prime [2].",
+                "    - crew quarters [100016], 2 crew quarters [crwqrt], owned by Caste Prime [2].",
                 "      size: 1000.",
                 "      hit points: 90/90.",
                 "        #1 hit points: 45/45.",
@@ -882,13 +902,13 @@ namespace IntegrationTests
                 "    size: 5000.",
                 "    hit points: 370/370 (50/50), attack: 24 (0), defense: 17 (10), initiative: 50 (40).",
                 "      #1 hit points: 50/50.",
-                "    - command bridge [100012], command bridge [cbridg], immobile, owned by Caste Prime [2].",
+                "    - command bridge [100012], command bridge [cbridg], owned by Caste Prime [2].",
                 "      size: 800.",
                 "      hit points: 55/55, defense: 5, initiative: 10 (5).",
                 "        #1 hit points: 55/55.",
                 "      - terran officer [200002], terran [terran], working for Caste Prime [2].",
                 "        defense: 5, initiative: 5.",
-                "    - fission reactor [100013], 2 fission reactors [fisrec], immobile, owned by Caste Prime [2].",
+                "    - fission reactor [100013], 2 fission reactors [fisrec], owned by Caste Prime [2].",
                 "      size: 800.",
                 "      hit points: 90/90, attack: 4.",
                 "        #1 hit points: 45/45.",
@@ -897,12 +917,12 @@ namespace IntegrationTests
                 "      size: 600.",
                 "      hit points: 65/65.",
                 "        #1 hit points: 65/65.",
-                "    - x-ray laser [100015], 2 x-ray lasers [xraylz], immobile, owned by Caste Prime [2].",
+                "    - x-ray laser [100015], 2 x-ray lasers [xraylz], owned by Caste Prime [2].",
                 "      size: 200.",
                 "      hit points: 20/20, attack: 20, defense: 2.",
                 "        #1 hit points: 10/10.",
                 "        #2 hit points: 10/10.",
-                "    - crew quarters [100016], 2 crew quarters [crwqrt], immobile, owned by Caste Prime [2].",
+                "    - crew quarters [100016], 2 crew quarters [crwqrt], owned by Caste Prime [2].",
                 "      size: 1000.",
                 "      hit points: 90/90.",
                 "        #1 hit points: 45/45.",

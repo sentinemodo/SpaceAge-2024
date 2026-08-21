@@ -146,7 +146,7 @@ namespace SpaceAge
 			}
 			this.durationLeft--;
 			int repaired = this.applyRepair(this.RepairScope, points);
-			this.Repairer.EventReports.Add(week, string.Format("repaired {0} hit points.", repaired));
+			this.Repairer.EventReports.Add(week, string.Format("repaired {0} damage.", repaired));
 			this.Executing = true;
 			base.Execute(week);
 		}

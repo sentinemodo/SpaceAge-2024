@@ -1,6 +1,6 @@
 # Player order syntax
 
-Checked **20 Aug 2026** against engine **0.1.142** (`Game/Program.cs`).
+Checked **21 Aug 2026** against engine **0.1.144** (`Game/Program.cs`).
 
 Sources: `Game/orders/EOrderType.cs`, `Game/orders/OrdersReader.cs`, `Game/orders/Orders.cs`, `Game/Game.cs` (week loop, `GenerateOffers`), `Game/Program.cs` (`/no-turn`, `/check`), `Game/Research.cs` (weekly output, breakthrough, preference), `Game/data structures/ModuleStack.Upkeep.cs` (sick bay, medical consume, quarterly maintenance), `Game/data structures/Galaxy.cs` (`LoadXml` / `LoadExits`), `Game/data structures/Exits.cs` / `ExitMode.cs` / `Region.cs` (region **Exits:** lines), `Game/game/DataFile.cs` (`LoadOrders` / `SaveOrders` delegate to `OrderXml`), `Game/game/OrderXml.cs` (XML switch), `Game/game/ModuleTypeGroupXml.cs` (`RESEARCH GROUP` tokens), `Game/effects/Effects.cs` (`LoadXml` effect types), `Game/effects/Producing.cs` (omit empty `technology=`), each `Game/orders/*Order.Parse` / `Execute`. Sample prefix usage: `Tests/SampleGame/orders.*.txt`.
 
@@ -77,7 +77,7 @@ From `Game.exe` (`Program.Main`) and `Game.Execute`. A turn is **13 weeks**. Com
 
 ### Each turn (`Game.Execute`)
 
-Clear last turn’s event reports, then `turn++`.
+Clear last turn’s event reports, then `turn++`. Drop stale per-unit stances (`DropStaleUnitAttitudes`: missing, empty, or now-own stacks).
 
 **Weeks 1–13**, in order:
 
@@ -90,11 +90,11 @@ Clear last turn’s event reports, then `turn++`.
 4. **Medical consume** — `medici` for remaining wounded/mad crew on each stack (`wndtrn` / `madtrn`). Food and breathing gas are not deducted here.
 5. **Contracts** — evaluate triggers and pay rewards.
 6. **Buy offers** — each standing `BUY` tries to match a sell (`Offer.Process`). `SELL` only lists; matching is from the buy side.
-7. **Battles** — `Battle.StartAtLocations` then `Execute` (see `player/battle.md`).
+7. **Battles** — `Battle.StartAtLocations` then `Execute` (see `player/battle.md`). Then drop stale per-unit stances again.
 
 After week 13: **quarterly maintenance**, then **quarterly wounded outcome**, then clear long/immediate flags; drop unformed stacks that should not report (`RemoveNonReporting`).
 
-**Quarterly maintenance** (`ExecuteMaintenance`, once, week 13): cash upkeep, then food, then terran air `[terair]` if the stack needs canned air (orbit, space, or a moon region). Bills pull from this stack then parent nests; cash shortfall can also debit the faction bank. Unpaid food/air can wound healthy terrans (catalog 25%). Unpaid cash can damage the module or print race off-duty. `medici` is skipped here (already weekly).
+**Quarterly maintenance** (`ExecuteMaintenance`, once, week 13): cash upkeep, then food, then terran air `[terair]` if the stack needs canned air (orbit, space, or a moon region). Bills auto-GET from this stack’s own nest (self, then nested children), then the parent chain, then other same-owner stacks at the same location. Cash shortfall can also debit the faction bank. Unpaid food/air can wound healthy terrans (catalog 25%). Unpaid cash can damage the module or print race off-duty. `medici` is skipped here (already weekly).
 
 **Quarterly wounded outcome** (once, week 13): each remaining `wndtrn` rolls independently — **25%** die of wounds, **25%** recover to terran, **50%** stay wounded. Not gated on medici. `madtrn` is not rolled here.
 
@@ -195,7 +195,9 @@ Posts a standing buy on the local market (`Offer.Process`). Matching can complet
 
 **Subject:** modulestack.
 
-Sets tactic to **capture**. A specific id is the preferred target and is marked enemy if that stack exists. `ALL` prefers every enemy at the location. Immobile stacks cannot capture (destroy only).
+Sets tactic to **capture**. A specific id is the preferred target and is marked enemy if that stack exists. `ALL` prefers every enemy at the location. Successful battle peels go onto new stacks `c00001`, `c00002`, … (see `player/battle.md`).
+
+Immobile stacks cannot capture. Execute reports `CAPTURE failed. Immobile units may only use destroy.` **once per week**, marks the order **executed** (default one-shot is consumed that week; `@capture` retries next week), and does not set the tactic.
 
 ### CONTRACT
 
@@ -215,7 +217,7 @@ Publishes a location contract, or withdraws one by id. GIVE pays the technology 
 
 **Subject:** modulestack (source).
 
-Copies the named catalog technology onto a **pre-existing** receiver at the **same location**, if that receiver has remaining technology capacity. Execute does **not** check that the source already holds it. `COPY all` is not implemented.
+Copies the named catalog technology onto a receiver at the **same location**, if that receiver has remaining technology capacity. The leftover template prints `COPY <technology-id> TO <stack-id>` (alias while the receiver is unformed). Execute does **not** check that the source already holds it. `COPY all` is not implemented. Condition `COPY` on the `USE` that forms the receiver (`--copy … to newN` under `-use … as newN`) so it does not retry against an unformed stack.
 
 ### DECLARE
 
@@ -344,7 +346,9 @@ Nests the subject under another stack (same location, same faction, not self), u
 
 **Subject:** modulestack.
 
-Persists firing/evade/priority tactics. Destroy and capture are exclusive. The three `prioritize` kinds are exclusive with each other (`ApplyPrioritizeTactic` removes the others) and may coexist with destroy/capture/evade. Immobile stacks may only `destroy`. `prioritize storage` prefers storage-group stacks (`IsCargoStack()`, e.g. `cargob`). Sample: `-tactic prioritize armed`, `tactic prioritize storage`, `-tactic capture`.
+Persists firing/evade/priority tactics. Destroy and capture are exclusive. The three `prioritize` kinds are exclusive with each other (`ApplyPrioritizeTactic` removes the others) and may coexist with destroy/capture/evade. `prioritize storage` prefers storage-group stacks (`IsCargoStack()`, e.g. `cargob`). Sample: `-tactic prioritize armed`, `tactic prioritize storage`, `-tactic capture`.
+
+Immobile stacks may only `destroy`. `TACTIC capture` and `TACTIC evade` report `TACTIC failed. Immobile units may only use destroy.` **once per week**, mark the order **executed** (default one-shot consumed; `@tactic` retries next week), and do not change tactics. `prioritize armed|command|storage` still applies on immobile stacks.
 
 ### TRANSFER
 
@@ -393,7 +397,7 @@ Starts energy or item production using the stack’s module type (`ProducingEner
 
 **Subject:** modulestack only.
 
-Spends spare parts (`spare`) and restores hit points on the stack (or its parent scope). Engineering shop `[engshp]` restores **20 HP per active copy** and consumes **1 spare per copy**; otherwise **10 HP for 1 spare**; **1 HP** if unsupplied.
+Spends spare parts (`spare`) and restores damage on the stack (or its parent scope). Engineering shop `[engshp]` restores **20 damage per active copy** and consumes **1 spare per copy**; otherwise **10 damage for 1 spare**; **1 damage** if unsupplied. Event: `repaired N damage.`
 
 ### RESEARCH
 

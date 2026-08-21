@@ -33,13 +33,18 @@ namespace SpaceAge
 
 		public override void Execute(int week)
 		{
-			this.Executed = false;
 			if (this.Unit.IsImmobile)
 			{
-				this.Unit.EventReports.Add(week, "CAPTURE failed. Immobile units may only use destroy.");
+				if (!this.Executed)
+				{
+					this.Unit.EventReports.Add(week, "CAPTURE failed. Immobile units may only use destroy.");
+				}
+				this.Executed = true;
 				base.Execute(week);
 				return;
 			}
+
+			this.Executed = false;
 
 			this.Unit.ApplyTactic("capture");
 			if (string.Equals(this.TargetName, "all", StringComparison.OrdinalIgnoreCase))
