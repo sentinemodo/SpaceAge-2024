@@ -49,14 +49,16 @@
 							<upkeep type="cash" quantity="1027" />
 							<effect duration="3" type="fuelled" />
 							<event week="1" description="given 4 units of helium-3 [heliu3] to small cargo bay [205]." />
+							<event week="13" description="paid 1031 cash [cash] upkeep." />
 							<event week="13" description="Lack of supplies: 15 unit of food [food]." />
-							<event week="13" description="7 terrans [terran] wounded from lack of supplies." />
+							<event week="13" description="8 terrans [terran] wounded from lack of supplies." />
 							<event week="13" description="4 wounded terrans [wndtrn] died of their wounds." />
-							<event week="13" description="2 wounded terrans [wndtrn] recovered from their wounds." />
+							<event week="13" description="3 wounded terrans [wndtrn] recovered from their wounds." />
 						</modulestack>
 						<modulestack name="200" name-en="crashed alien vessel" type="alnhul" quantity="1" faction="2">
 							<technology name="ahlcns" name-en="advanced hull construction" />
-							<upkeep type="cash" quantity="445" />
+							<upkeep type="cash" quantity="405" />
+							<event week="13" description="paid 20 cash [cash] upkeep." />
 							<modulestack name="201" type="robofc" quantity="1" faction="2">
 								<technology name="autfab" name-en="automated fabrication" />
 								<technology name="cdrill" name-en="mineral core drilling" />
@@ -64,14 +66,17 @@
 								<technology name="he3min" name-en="helium-3 mining" />
 								<itemstack type="iron" quantity="27" />
 								<upkeep type="cash" quantity="60" />
+								<event week="13" description="paid 60 cash [cash] upkeep." />
 							</modulestack>
 							<modulestack name="202" type="autcmd" quantity="1" faction="2">
 								<technology name="autctl" name-en="automated command systems" />
 								<upkeep type="cash" quantity="80" />
+								<event week="13" description="paid 80 cash [cash] upkeep." />
 							</modulestack>
 							<modulestack name="203" type="autdrv" quantity="1" faction="2">
 								<technology name="autprp" name-en="automated propulsion" />
 								<upkeep type="cash" quantity="80" />
+								<event week="13" description="paid 80 cash [cash] upkeep." />
 							</modulestack>
 							<modulestack name="204" type="he3aut" quantity="1" faction="2">
 								<technology name="he3unc" name-en="unmanned helium plant" />
@@ -89,6 +94,7 @@
 								<event week="11" description="out of fuel." />
 								<event week="12" description="out of fuel." />
 								<event week="13" description="out of fuel." />
+								<event week="13" description="paid 80 cash [cash] upkeep." />
 							</modulestack>
 							<modulestack name="205" type="cargob" quantity="1" faction="2">
 								<technology name="strans" name-en="small scale transportation" />
@@ -96,10 +102,7 @@
 								<event week="1" description="got 4 units of helium-3 [heliu3] from space shuttle [100]." />
 								<event week="1" description="GET failed. space shuttle [100] does not have units of helium-3 [heliu3]." />
 								<event week="1" description="given 4 units of helium-3 [heliu3] to alien fighter drone [450]." />
-							</modulestack>
-							<modulestack name="206" type="drnbay" quantity="1" faction="2">
-								<technology name="drnhng" name-en="drone hangar construction" />
-								<upkeep type="cash" quantity="40" />
+								<event week="13" description="paid 30 cash [cash] upkeep." />
 							</modulestack>
 							<modulestack name="250" type="lifsys" quantity="1" faction="2">
 								<itemstack type="terair" quantity="219" />
@@ -117,6 +120,7 @@
 								<event week="11" description="produced 10 units of terran breathing gas mixture [terair]." />
 								<event week="12" description="produced 10 units of terran breathing gas mixture [terair]." />
 								<event week="13" description="produced 10 units of terran breathing gas mixture [terair]." />
+								<event week="13" description="paid 10 cash [cash] upkeep." />
 							</modulestack>
 							<modulestack name="251" type="cdrill" quantity="1" faction="2">
 								<technology name="uminng" name-en="uranium mining" />
@@ -128,6 +132,7 @@
 									<in-production type="uraniu" quantity="1" />
 								</effect>
 								<event week="8" description="produced unit of uranium [uraniu]." />
+								<event week="13" description="paid 46 cash [cash] upkeep." />
 								<event week="13" description="Lack of supplies: 6 unit of food [food]." />
 								<event week="13" description="3 terrans [terran] wounded from lack of supplies." />
 								<event week="13" description="1 wounded terran [wndtrn] died of their wounds." />
@@ -139,10 +144,26 @@
 				<orbit name="O00002">
 					<race type="terran" />
 					<modulestack name="101" type="sshull" quantity="1" faction="2">
-						<upkeep type="cash" quantity="324" />
+						<module damage="9" />
+						<upkeep type="cash" quantity="364" />
+						<tactic name="destroy" />
+						<tactic name="prioritize armed" />
 						<event week="1" description="declared enemy toward faction 3." />
-						<event week="1" description="departed from orbit [O00001] to orbit [O00002], ETA 0." />
-						<event week="1" description="arrived at orbit [O00002] from orbit [O00001]." />
+						<event week="1" description="declared 117 an enemy and will attack." />
+						<event week="1" description="set tactic to destroy." />
+						<event week="1" description="set tactic to prioritize armed." />
+						<event week="1" description="departed from orbit [O00001] to Dusty field [R00001] (0,0), ETA 0." />
+						<event week="1" description="arrived at Dusty field [R00001] (0,0) from orbit [O00001]." />
+						<event week="1" description="has 1 drnbay modules (needed 1)." />
+						<event week="2" description="departed from Dusty field [R00001] (0,0) to orbit [O00001], ETA 0." />
+						<event week="2" description="arrived at orbit [O00001] from Dusty field [R00001] (0,0)." />
+						<event week="3" description="departed from orbit [O00001] to orbit [O00002], ETA 0." />
+						<event week="3" description="arrived at orbit [O00002] from orbit [O00001]." />
+						<event week="8" description="initiated battle against space shuttle [117]" />
+						<event week="8" description="engaged in battle" />
+						<event week="9" description="initiated battle against space shuttle [117]" />
+						<event week="9" description="engaged in battle" />
+						<event week="13" description="paid 20 cash [cash] upkeep." />
 						<modulestack name="112" type="cbridg" quantity="1" faction="2">
 							<person name="000001" name-en="Caste Prime CEO" race="terran" faction="2">
 								<skill name="arpldr" experience="1" />
@@ -153,6 +174,7 @@
 							<itemstack type="food" quantity="32" />
 							<itemstack type="terair" quantity="32" />
 							<upkeep type="cash" quantity="111" />
+							<event week="13" description="paid 111 cash [cash] upkeep." />
 						</modulestack>
 						<modulestack name="113" type="fisrec" quantity="1" faction="2">
 							<itemstack type="terran" quantity="1" />
@@ -162,6 +184,7 @@
 							<event week="1" description="consumed unit of uranium [uraniu] as fuel." />
 							<event week="1" description="started energy production for the next 13 weeks." />
 							<event week="8" description="GET failed, tried to get unit of uranium [uraniu], but receiver is not present in this location." />
+							<event week="13" description="paid 91 cash [cash] upkeep." />
 						</modulestack>
 						<modulestack name="114" type="rctdrv" quantity="1" faction="2">
 							<itemstack type="terran" quantity="1" />
@@ -170,11 +193,11 @@
 							<itemstack type="terair" quantity="8" />
 							<upkeep type="cash" quantity="101" />
 							<effect duration="1" type="fuelled" />
+							<event week="13" description="paid 101 cash [cash] upkeep." />
 						</modulestack>
 						<modulestack name="115" type="cmplib" quantity="1" faction="2">
 							<technology name="alnfgh" name-en="alien fighter construction" />
 							<upkeep type="cash" quantity="1" />
-							<event week="1" description="RESEARCH failed: computer library [115] is not at crashed alien vessel [200]." />
 							<event week="2" description="RESEARCH failed: computer library [115] is not at crashed alien vessel [200]." />
 							<event week="3" description="RESEARCH failed: computer library [115] is not at crashed alien vessel [200]." />
 							<event week="4" description="RESEARCH failed: computer library [115] is not at crashed alien vessel [200]." />
@@ -187,13 +210,18 @@
 							<event week="11" description="RESEARCH failed: computer library [115] is not at crashed alien vessel [200]." />
 							<event week="12" description="RESEARCH failed: computer library [115] is not at crashed alien vessel [200]." />
 							<event week="13" description="RESEARCH failed: computer library [115] is not at crashed alien vessel [200]." />
+							<event week="13" description="paid 1 cash [cash] upkeep." />
+						</modulestack>
+						<modulestack name="206" type="drnbay" quantity="1" faction="2">
+							<technology name="drnhng" name-en="drone hangar construction" />
+							<upkeep type="cash" quantity="40" />
+							<event week="1" description="stacked out into Dusty field [R00001] (0,0)." />
+							<event week="1" description="saw spaceship hull [101] in Dusty field [R00001] (0,0)." />
+							<event week="1" description="stacked under spaceship hull [101]." />
+							<event week="13" description="paid 40 cash [cash] upkeep." />
 						</modulestack>
 					</modulestack>
 					<modulestack name="450" type="alndrn" quantity="4" faction="2">
-						<module />
-						<module damage="8" />
-						<module damage="3" />
-						<module damage="8" />
 						<upkeep type="cash" quantity="80" />
 						<tactic name="destroy" />
 						<tactic name="prioritize armed" />
@@ -201,22 +229,11 @@
 						<event week="1" description="got 4 units of helium-3 [heliu3] from small cargo bay [205]." />
 						<event week="1" description="GET failed. space shuttle [100] does not have units of helium-3 [heliu3]." />
 						<event week="1" description="GET failed. small cargo bay [205] does not have units of helium-3 [heliu3]." />
-						<event week="1" description="stacked out into Dusty field [R00001] (0,0)." />
 						<event week="1" description="set tactic to destroy." />
 						<event week="1" description="set tactic to prioritize armed." />
-						<event week="1" description="declared enemy toward faction 3." />
-						<event week="1" description="declared 117 an enemy and will attack." />
-						<event week="1" description="departed from Dusty field [R00001] (0,0) to orbit [O00001], ETA 0." />
-						<event week="1" description="consumed 4 units of helium-3 [heliu3] as fuel." />
-						<event week="1" description="arrived at orbit [O00001] from Dusty field [R00001] (0,0)." />
-						<event week="2" description="departed from orbit [O00001] to orbit [O00002], ETA 0." />
-						<event week="2" description="arrived at orbit [O00002] from orbit [O00001]." />
-						<event week="8" description="initiated battle against space shuttle [117], orbital rocket launcher [350]" />
-						<event week="8" description="engaged in battle" />
-						<event week="9" description="initiated battle against space shuttle [117]" />
+						<event week="2" description="consumed 4 units of helium-3 [heliu3] as fuel." />
 						<event week="9" description="engaged in battle" />
-						<event week="10" description="initiated battle against space shuttle [117]" />
-						<event week="10" description="engaged in battle" />
+						<event week="13" description="paid 80 cash [cash] upkeep." />
 					</modulestack>
 					<modulestack name="117" type="shuttl" quantity="1" faction="3">
 						<module damage="17" />
@@ -242,15 +259,15 @@
 						<event week="8" description="declared 101 an enemy and will attack." />
 						<event week="8" description="engaged in battle" />
 						<event week="9" description="engaged in battle" />
-						<event week="10" description="engaged in battle" />
+						<event week="13" description="paid 102 cash [cash] upkeep." />
 						<modulestack name="350" type="orbrkt" quantity="1" faction="3">
 							<module damage="40" />
 							<upkeep type="cash" quantity="20" />
 							<event week="1" description="formed by factory [000023] with orbital rocket launcher [orbrkt]." />
 							<event week="8" description="received orbital rocket launcher [orbrkt] produced by factory [000023]." />
 							<event week="8" description="stacked under space shuttle [117]." />
-							<event week="8" description="engaged in battle" />
 							<event week="9" description="stacked under space shuttle [117]." />
+							<event week="13" description="paid 20 cash [cash] upkeep." />
 						</modulestack>
 					</modulestack>
 				</orbit>
@@ -272,6 +289,7 @@
 						<upkeep type="cash" quantity="1963" />
 						<buying module="farms" quantity="1" price="100" />
 						<selling item="food" quantity="39" price="5" />
+						<event week="13" description="paid 300 unit of food [food] upkeep." />
 						<modulestack name="c00008" type="cargob" quantity="1" faction="3">
 							<module damage="39" capture="16" online="false" />
 							<itemstack type="terair" quantity="170" />
@@ -284,23 +302,28 @@
 							<itemstack type="terran" quantity="2" />
 							<itemstack type="carbon" quantity="16" />
 							<upkeep type="cash" quantity="32" />
+							<event week="13" description="paid 32 cash [cash] upkeep." />
 						</modulestack>
 						<modulestack name="000002" name-en="Berlin garrison" type="inftry" quantity="1" faction="1">
 							<itemstack type="rctlnc" quantity="1" />
 							<upkeep type="cash" quantity="5" />
+							<event week="13" description="paid 5 cash [cash] upkeep." />
 						</modulestack>
 						<modulestack name="000003" name-en="Berlin farms" type="farms" quantity="10" faction="1">
 							<itemstack type="terran" quantity="75" />
 							<upkeep type="cash" quantity="575" />
+							<event week="13" description="paid 575 cash [cash] upkeep." />
 						</modulestack>
 						<modulestack name="000004" name-en="Berlin coal powerplants" type="cplant" quantity="5" faction="1">
 							<itemstack type="carbon" quantity="100" />
 							<itemstack type="terran" quantity="15" />
 							<upkeep type="cash" quantity="265" />
+							<event week="13" description="paid 265 cash [cash] upkeep." />
 						</modulestack>
 						<modulestack name="000005" name-en="Berlin granary" type="cargob" quantity="1" faction="1">
 							<itemstack type="terran" quantity="3" />
 							<upkeep type="cash" quantity="33" />
+							<event week="13" description="paid 33 cash [cash] upkeep." />
 						</modulestack>
 						<modulestack name="000012" name-en="Caste Prime Headquarters" type="corphq" quantity="0" faction="2">
 							<upkeep type="cash" quantity="0" />
@@ -342,6 +365,7 @@
 							<event week="11" description="engaged in battle" />
 							<event week="12" description="engaged in battle" />
 							<event week="13" description="engaged in battle" />
+							<event week="13" description="paid 346 cash [cash] upkeep." />
 						</modulestack>
 						<modulestack name="111" type="gunplc" quantity="1" faction="2">
 							<module damage="41" />
@@ -360,6 +384,7 @@
 							<event week="11" description="engaged in battle" />
 							<event week="12" description="engaged in battle" />
 							<event week="13" description="engaged in battle" />
+							<event week="13" description="paid 11 cash [cash] upkeep." />
 						</modulestack>
 						<modulestack name="c000012" type="corphq" quantity="1" faction="3">
 							<module capture="75" />
@@ -367,6 +392,7 @@
 							<upkeep type="cash" quantity="366" />
 							<buying item="food" quantity="all" price="any" />
 							<buying item="terran" quantity="all" price="any" />
+							<event week="13" description="paid 153 cash [cash] upkeep." />
 							<modulestack name="c00001" type="gunplc" quantity="1" faction="3">
 								<module damage="5" capture="31" />
 								<itemstack type="terran" quantity="2" />
@@ -382,21 +408,25 @@
 								<event week="11" description="repaired 1 damage." />
 								<event week="12" description="repaired 1 damage." />
 								<event week="13" description="repaired 1 damage." />
+								<event week="13" description="paid 12 cash [cash] upkeep." />
 							</modulestack>
 							<modulestack name="c00002" type="gunplc" quantity="1" faction="3">
 								<module damage="70" capture="30" />
 								<itemstack type="terran" quantity="2" />
 								<upkeep type="cash" quantity="12" />
+								<event week="13" description="paid 12 cash [cash] upkeep." />
 							</modulestack>
 							<modulestack name="c00003" type="gunplc" quantity="1" faction="3">
 								<module damage="86" capture="14" />
 								<itemstack type="terran" quantity="2" />
 								<upkeep type="cash" quantity="12" />
+								<event week="13" description="paid 12 cash [cash] upkeep." />
 							</modulestack>
 							<modulestack name="c00004" type="gunplc" quantity="1" faction="3">
 								<module damage="73" capture="27" />
 								<itemstack type="terran" quantity="2" />
 								<upkeep type="cash" quantity="12" />
+								<event week="13" description="paid 12 cash [cash] upkeep." />
 							</modulestack>
 							<modulestack name="c00005" type="farms" quantity="1" faction="3">
 								<module damage="19" capture="36" />
@@ -415,6 +445,7 @@
 								<event week="11" description="repaired 1 damage." />
 								<event week="12" description="repaired 1 damage." />
 								<event week="13" description="repaired 1 damage." />
+								<event week="13" description="paid 55 cash [cash] upkeep." />
 							</modulestack>
 							<modulestack name="c00006" type="farms" quantity="1" faction="3">
 								<module damage="20" capture="35" />
@@ -433,6 +464,7 @@
 								<event week="11" description="repaired 1 damage." />
 								<event week="12" description="repaired 1 damage." />
 								<event week="13" description="repaired 1 damage." />
+								<event week="13" description="paid 55 cash [cash] upkeep." />
 							</modulestack>
 							<modulestack name="c00007" type="farms" quantity="1" faction="3">
 								<module damage="20" capture="35" />
@@ -451,6 +483,7 @@
 								<event week="11" description="repaired 1 damage." />
 								<event week="12" description="repaired 1 damage." />
 								<event week="13" description="repaired 1 damage." />
+								<event week="13" description="paid 55 cash [cash] upkeep." />
 							</modulestack>
 						</modulestack>
 						<modulestack name="c00009" type="cargob" quantity="1" faction="3">
@@ -465,6 +498,7 @@
 							<itemstack type="terran" quantity="2" />
 							<itemstack type="carbon" quantity="16" />
 							<upkeep type="cash" quantity="32" />
+							<event week="13" description="paid 32 cash [cash] upkeep." />
 						</modulestack>
 						<modulestack name="c00010" type="cargob" quantity="1" faction="3">
 							<module damage="40" capture="15" online="false" />
@@ -478,6 +512,7 @@
 							<itemstack type="terran" quantity="2" />
 							<itemstack type="carbon" quantity="16" />
 							<upkeep type="cash" quantity="32" />
+							<event week="13" description="paid 32 cash [cash] upkeep." />
 						</modulestack>
 						<modulestack name="c00011" type="cargob" quantity="1" faction="3">
 							<module damage="40" capture="15" online="false" />
@@ -492,6 +527,7 @@
 							<itemstack type="terran" quantity="2" />
 							<itemstack type="carbon" quantity="16" />
 							<upkeep type="cash" quantity="32" />
+							<event week="13" description="paid 32 cash [cash] upkeep." />
 						</modulestack>
 						<modulestack name="c00012" type="cargob" quantity="1" faction="3">
 							<module damage="43" capture="12" online="false" />
@@ -506,27 +542,32 @@
 							<itemstack type="terran" quantity="2" />
 							<itemstack type="carbon" quantity="17" />
 							<upkeep type="cash" quantity="32" />
+							<event week="13" description="paid 32 cash [cash] upkeep." />
 						</modulestack>
 						<modulestack name="c00013" type="cplant" quantity="1" faction="3">
 							<module damage="64" capture="36" online="false" />
 							<itemstack type="terran" quantity="2" />
 							<upkeep type="cash" quantity="52" />
+							<event week="13" description="paid 52 cash [cash] upkeep." />
 						</modulestack>
 						<modulestack name="c00014" type="cplant" quantity="1" faction="3">
 							<module damage="67" capture="33" online="false" />
 							<itemstack type="terran" quantity="2" />
 							<upkeep type="cash" quantity="52" />
+							<event week="13" description="paid 52 cash [cash] upkeep." />
 						</modulestack>
 						<modulestack name="c00015" type="cplant" quantity="1" faction="3">
 							<module damage="45" capture="55" online="false" />
 							<itemstack type="terran" quantity="2" />
 							<upkeep type="cash" quantity="52" />
+							<event week="13" description="paid 52 cash [cash] upkeep." />
 						</modulestack>
 						<modulestack name="c00016" type="cdrill" quantity="1" faction="3">
 							<module damage="23" capture="77" online="false" />
 							<itemstack type="terran" quantity="6" />
 							<itemstack type="carbon" quantity="6" />
 							<upkeep type="cash" quantity="46" />
+							<event week="13" description="paid 46 cash [cash] upkeep." />
 						</modulestack>
 					</modulestack>
 					<modulestack name="108" name-en="peaceful scout" type="tanks" quantity="1" faction="3">
@@ -536,18 +577,19 @@
 						<upkeep type="cash" quantity="40" />
 						<tactic name="prioritize storage" />
 						<effect duration="3" type="fuelled" />
+						<event week="13" description="paid 40 cash [cash] upkeep." />
 					</modulestack>
 					<modulestack name="109" name-en="Surrender or die!" type="tanks" quantity="3" faction="3">
 						<module damage="38" />
 						<module damage="38" />
-						<module damage="1" />
+						<module />
 						<person name="000002" name-en="Gelvaren CEO" race="terran" faction="3">
 							<skill name="arpldr" experience="1" />
 							<upkeep type="cash" quantity="10" />
 						</person>
-						<itemstack type="terran" quantity="33" />
+						<itemstack type="terran" quantity="34" />
 						<itemstack type="oil" quantity="6" />
-						<itemstack type="wndtrn" quantity="3" />
+						<itemstack type="wndtrn" quantity="2" />
 						<upkeep type="cash" quantity="118" />
 						<tactic name="prioritize storage" />
 						<tactic name="capture" />
@@ -578,13 +620,14 @@
 						<event week="12" description="engaged in battle" />
 						<event week="13" description="initiated battle against factory [000017], gun placement [111]" />
 						<event week="13" description="engaged in battle" />
+						<event week="13" description="paid 130 cash [cash] upkeep." />
 						<event week="13" description="Lack of supplies: 58 unit of food [food]." />
 						<event week="13" description="24 terrans [terran] wounded from lack of supplies." />
-						<event week="13" description="Damaged from lack of supplies." />
 						<event week="13" description="12 wounded terrans [wndtrn] died of their wounds." />
-						<event week="13" description="9 wounded terrans [wndtrn] recovered from their wounds." />
+						<event week="13" description="10 wounded terrans [wndtrn] recovered from their wounds." />
 					</modulestack>
 					<modulestack name="110" type="inftry" quantity="1" faction="3">
+						<module damage="1" />
 						<person name="107" race="terran" faction="3">
 							<skill name="inbtcm" experience="1" />
 							<upkeep type="cash" quantity="10" />
@@ -604,7 +647,9 @@
 						<event week="11" description="engaged in battle" />
 						<event week="12" description="engaged in battle" />
 						<event week="13" description="engaged in battle" />
+						<event week="13" description="paid 15 cash [cash] upkeep." />
 						<event week="13" description="Lack of supplies: 101 unit of food [food]." />
+						<event week="13" description="Damaged from lack of supplies." />
 					</modulestack>
 				</region>
 				<region name="R00003" name-en="Southern Hemisphere" X="1" Y="0" type="grassl">
@@ -622,50 +667,56 @@
 					<resource type="food" quantity="500" />
 					<modulestack name="000006" name-en="Sydney" type="city" quantity="2" faction="1">
 						<upkeep type="food" quantity="200" />
-						<upkeep type="cash" quantity="1030" />
+						<upkeep type="cash" quantity="1029" />
 						<selling item="food" quantity="59" price="5" />
+						<event week="13" description="paid 200 unit of food [food] upkeep." />
 						<modulestack name="000007" name-en="Sydney garrison" type="inftry" quantity="2" faction="1">
-							<module damage="1" />
-							<module />
 							<itemstack type="rctlnc" quantity="1" />
 							<upkeep type="cash" quantity="10" />
+							<event week="13" description="paid 10 cash [cash] upkeep." />
 							<event week="13" description="Lack of supplies: 186 unit of food [food]." />
-							<event week="13" description="Damaged from lack of supplies." />
 						</modulestack>
 						<modulestack name="000008" name-en="Sydney farms" type="farms" quantity="10" faction="1">
-							<itemstack type="terran" quantity="53" />
-							<itemstack type="wndtrn" quantity="3" />
+							<itemstack type="terran" quantity="52" />
+							<itemstack type="wndtrn" quantity="4" />
 							<upkeep type="cash" quantity="556" />
+							<event week="13" description="paid 575 cash [cash] upkeep." />
 							<event week="13" description="Lack of supplies: 75 unit of food [food]." />
-							<event week="13" description="37 terrans [terran] wounded from lack of supplies." />
+							<event week="13" description="38 terrans [terran] wounded from lack of supplies." />
 							<event week="13" description="19 wounded terrans [wndtrn] died of their wounds." />
 							<event week="13" description="15 wounded terrans [wndtrn] recovered from their wounds." />
 						</modulestack>
 						<modulestack name="000009" name-en="Sydney wind powerplants" type="wnplnt" quantity="10" faction="1">
 							<upkeep type="cash" quantity="100" />
+							<event week="13" description="paid 100 cash [cash] upkeep." />
 						</modulestack>
 						<modulestack name="000010" name-en="Sydney oil powerplants" type="oplant" quantity="5" faction="1">
 							<itemstack type="oil" quantity="100" />
 							<itemstack type="terran" quantity="10" />
 							<itemstack type="wndtrn" quantity="1" />
 							<upkeep type="cash" quantity="311" />
+							<event week="13" description="paid 315 cash [cash] upkeep." />
 							<event week="13" description="Lack of supplies: 15 unit of food [food]." />
-							<event week="13" description="8 terrans [terran] wounded from lack of supplies." />
+							<event week="13" description="7 terrans [terran] wounded from lack of supplies." />
 							<event week="13" description="4 wounded terrans [wndtrn] died of their wounds." />
-							<event week="13" description="3 wounded terrans [wndtrn] recovered from their wounds." />
+							<event week="13" description="2 wounded terrans [wndtrn] recovered from their wounds." />
 						</modulestack>
 						<modulestack name="000011" name-en="Sydney granary" type="cargob" quantity="1" faction="1">
-							<itemstack type="terran" quantity="3" />
-							<upkeep type="cash" quantity="33" />
+							<itemstack type="terran" quantity="2" />
+							<upkeep type="cash" quantity="32" />
+							<event week="13" description="paid 33 cash [cash] upkeep." />
 							<event week="13" description="Lack of supplies: 3 unit of food [food]." />
-							<event week="13" description="1 terran [terran] wounded from lack of supplies." />
+							<event week="13" description="2 terrans [terran] wounded from lack of supplies." />
+							<event week="13" description="1 wounded terran [wndtrn] died of their wounds." />
 							<event week="13" description="1 wounded terran [wndtrn] recovered from their wounds." />
 						</modulestack>
 						<modulestack name="122" type="wnplnt" quantity="1" faction="1">
 							<upkeep type="cash" quantity="10" />
+							<event week="13" description="paid 10 cash [cash] upkeep." />
 						</modulestack>
 						<modulestack name="1" type="wnplnt" quantity="1" faction="1">
 							<upkeep type="cash" quantity="10" />
+							<event week="13" description="paid 10 cash [cash] upkeep." />
 						</modulestack>
 					</modulestack>
 					<modulestack name="000026" name-en="Gelvaren complex" type="city" quantity="1" faction="3">
@@ -695,6 +746,7 @@
 						<event week="13" description="produced 1000 cash [cash], 10 terrans [terran]." />
 						<event week="13" description="given 1000 cash [cash] to Gelvaren Headquarters [000018]." />
 						<event week="13" description="given 10 terrans [terran] to Gelvaren Headquarters [000018]." />
+						<event week="13" description="paid 100 unit of food [food] upkeep." />
 						<modulestack name="000018" name-en="Gelvaren Headquarters" type="corphq" quantity="1" faction="3">
 							<itemstack type="terran" quantity="38" />
 							<itemstack type="cash" quantity="7078" />
@@ -716,6 +768,7 @@
 							<event week="13" description="got 1000 cash [cash] from Gelvaren complex [000026]." />
 							<event week="13" description="got 10 terrans [terran] from Gelvaren complex [000026]." />
 							<event week="13" description="produced 100 cash [cash]." />
+							<event week="13" description="paid 138 cash [cash] upkeep." />
 						</modulestack>
 						<modulestack name="000019" type="cargob" quantity="1" faction="3">
 							<itemstack type="food" quantity="8" />
@@ -762,6 +815,7 @@
 							<event week="13" description="given 10 units of food [food] to Gelvaren complex [000026]." />
 							<event week="13" description="got 10 units of food [food] from farming complex [000020]." />
 							<event week="13" description="got 2 units of oil [oil] from core drill [000022]." />
+							<event week="13" description="paid 32 cash [cash] upkeep." />
 						</modulestack>
 						<modulestack name="000020" type="farms" quantity="2" faction="3">
 							<itemstack type="terran" quantity="10" />
@@ -792,10 +846,12 @@
 							<event week="12" description="given 10 units of food [food] to small cargo bay [000019]." />
 							<event week="13" description="produced 10 units of food [food]." />
 							<event week="13" description="given 10 units of food [food] to small cargo bay [000019]." />
+							<event week="13" description="paid 110 cash [cash] upkeep." />
 						</modulestack>
 						<modulestack name="000021" type="wnplnt" quantity="19" faction="3">
 							<upkeep type="cash" quantity="190" />
 							<event week="1" description="started energy production for the next 13 weeks." />
+							<event week="13" description="paid 190 cash [cash] upkeep." />
 						</modulestack>
 						<modulestack name="000022" type="cdrill" quantity="1" faction="3">
 							<itemstack type="terran" quantity="6" />
@@ -826,6 +882,7 @@
 							<event week="12" description="given 2 units of oil [oil] to small cargo bay [000019]." />
 							<event week="13" description="produced 2 units of oil [oil]." />
 							<event week="13" description="given 2 units of oil [oil] to small cargo bay [000019]." />
+							<event week="13" description="paid 46 cash [cash] upkeep." />
 						</modulestack>
 						<modulestack name="000023" type="factry" quantity="1" faction="3">
 							<technology name="orbrkt" name-en="orbital rocket launcher" />
@@ -836,14 +893,17 @@
 							<upkeep type="cash" quantity="70" />
 							<event week="1" description="consumed 4 units of iron [iron] to produce orbital rocket launcher [orbrkt] module." />
 							<event week="8" description="produced orbital rocket launcher [orbrkt] into orbital rocket launcher [350]." />
+							<event week="13" description="paid 70 cash [cash] upkeep." />
 						</modulestack>
 						<modulestack name="000025" type="barrck" quantity="1" faction="3">
 							<technology name="frminf" name-en="form infantry battalion" />
 							<itemstack type="terran" quantity="10" />
 							<upkeep type="cash" quantity="210" />
+							<event week="13" description="paid 210 cash [cash] upkeep." />
 						</modulestack>
 						<modulestack name="116" type="cmplib" quantity="1" faction="3" research-points="37">
 							<upkeep type="cash" quantity="1" />
+							<event week="13" description="paid 1 cash [cash] upkeep." />
 						</modulestack>
 					</modulestack>
 				</region>

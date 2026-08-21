@@ -852,7 +852,7 @@ namespace IntegrationTests
 			Assert.That(ModuleStack.All.ContainsKey("450"), "drones survive");
 			Assert.That(ModuleStack.All["450"].Quantity, Is.GreaterThan(0), "drones survive");
 			Assert.That(ModuleStack.All["450"].Location.Name, Is.EqualTo("O00002"), "drones wait and fight in Earth orbit");
-			Assert.That(ModuleStack.All["450"].RootModuleStack.Name, Is.EqualTo("450"), "drones fight as roots");
+			Assert.That(ModuleStack.All["450"].RootModuleStack.Name, Is.EqualTo("450"), "drones hangar-launch as roots");
 
 			Assert.That(ModuleStack.All.ContainsKey("117"), "shuttle hauls the launcher");
 			Assert.That(ModuleStack.All["117"].Location.Name, Is.EqualTo("O00002"), "armed shuttle arrives Earth orbit ~week 10");

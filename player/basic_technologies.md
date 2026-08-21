@@ -1,6 +1,6 @@
 # Level 0 and 1 technologies
 
-Catalog: `Tests/data.xml`, loaded by `Game/game/CatalogLoader.cs` (`DataFile.LoadConfigurationItems` delegates). Checked **21 Aug 2026**.
+Catalog: `Tests/data.xml`, loaded by `Game/game/CatalogLoader.cs` (`DataFile.LoadConfigurationItems` delegates). Checked **22 Aug 2026** against engine **0.1.148**.
 
 This file lists **level 0 and level 1** technologies, then the **module types** and **item types** those technologies produce or consume. Level 2 and above: `player/advanced_technologies.md`. Alphabetical by English `name-en` inside each level.
 
@@ -273,7 +273,7 @@ Group `storage`. Built by small scale transportation `[strans]`. Size 2000, mass
 
 **space shuttle [shuttl]**  
 Basic shuttle used for orbital constructions. It has basic construction facitilites, small fission reactor and is propelled by a small reaction drive.  
-Group `production`. Built by shuttles assembly `[shtlas]`. Size 200, mass 30, crew 2, capacity 125, HP 17, tech-cap 1. Upkeep 100 cash. USE in orbit at 10× efficiency, requires fuel. Space move, mass-capacity 750. Fuel duration 13. Operates on solid-surface, liquid-surface, orbit.
+Group `production` (stays production so orbit `USE` still works). Built by shuttles assembly `[shtlas]`. Size 200, mass 30, crew 2, capacity 125, HP 17, tech-cap 1. Upkeep 100 cash. USE in orbit at 10× efficiency, requires fuel. Space move, mass-capacity 750. Fuel duration 13. Operates on solid-surface, liquid-surface, orbit. Shuttle unit (`IsShuttleUnit` / hangar craft) by type id, same as fighter drones `[alndrn]` (those use catalog group `shuttle`).
 
 **spaceship hull [sshull]**  
 The basic spaceship hull, it embodies the technology and experience in space travel.  
@@ -323,7 +323,7 @@ Group `settlement`. Built by city planning `[ctypln]` (consumes 1 city). Size 25
 
 **orbital rocket launcher [orbrkt]**  
 A rack of chemically boosted rockets that only fires in orbit. Compact enough to nest in a shuttle with crew, fuel, food, and breathing mix.  
-Group `military`. Built by orbital rocket launcher `[orbrkt]`. Size 40, mass 40, crew 0, capacity 0, HP 40, tech-cap 1, attack 3, defense 1, damage 3. Upkeep 20 cash. Operates only in orbit.
+Group `military`. Built by orbital rocket launcher `[orbrkt]`. Size 40, mass 40, crew 0, capacity 0, HP 40, tech-cap 1, attack 3, defense 1, damage 3. Upkeep 20 cash. Operates only in orbit. Not a shuttle unit: stays nested on the shuttle, fires on the parent’s shot sequence, and is included in the standard hit-location roll.
 
 **tanks [tanks]**  
 Platoon of 4 armored vehicles suitable for destroying ground modules and infantry battalions.  

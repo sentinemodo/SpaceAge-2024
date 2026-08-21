@@ -163,6 +163,34 @@ namespace UnitTests
 		}
 
 		[Test]
+		public void ExecuteMaintenance_LaunchedDrone_PaysCashUpkeepFromBank()
+		{
+			Orbit orbit = new Orbit(Orbit.All["O00003"].OrbitHolder, "OUPK1");
+			Faction owner = this.game.Factions["2"];
+			Faction enemyOwner = this.game.Factions["1"];
+			int bankBefore = (int)owner.Bank.Balance;
+			ModuleStack hull = new ModuleStack(orbit, owner, ModuleType.All["sshull"], "upkhull");
+			hull.AddModule();
+			ModuleStack bay = new ModuleStack(hull, owner, ModuleType.All["drnbay"], "upkbay");
+			bay.AddModule();
+			ModuleStack drone = new ModuleStack(bay, owner, ModuleType.All["alndrn"], "upkdrn");
+			drone.AddModule();
+			drone.ItemStacks.Add(new ItemStack(ItemType.All["heliu3"], 1));
+			ModuleStack enemy = new ModuleStack(orbit, enemyOwner, ModuleType.All["alndrn"], "upkenemy");
+			enemy.AddModule();
+			enemy.ItemStacks.Add(new ItemStack(ItemType.All["heliu3"], 1));
+
+			Battle battle = new Battle(enemy, hull);
+			battle.Execute(this.game.Week);
+			Assert.That(drone.IsRootModuleStack, Is.True);
+
+			drone.ExecuteMaintenance(13);
+
+			Assert.That((int)owner.Bank.Balance, Is.EqualTo(bankBefore - 20));
+			Assert.That(this.hasEvent(drone, 13, "paid 20 cash [cash] upkeep"), Is.True);
+		}
+
+		[Test]
 		public void ExecuteMaintenance_UnpaidCashDamagesModule()
 		{
 			Faction owner = this.game.Factions["2"];

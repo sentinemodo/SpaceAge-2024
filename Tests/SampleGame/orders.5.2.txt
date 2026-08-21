@@ -1,19 +1,19 @@
 #faction 2 "xyzzy"
-; Caste Prime turn 5 - fuel alien drones [450], hop them and hull [101] to
-; Earth orbit [O00002], wait for Gelvaren shuttle [117] (~week 10) with a
-; nested orbital rocket launcher, then fight in space. Do not MOVE wreck
-; [200]. Leftover XML from gamein.5 keeps Earth HQ/farms/sells, library
-; @research 200, reactor @produce energy, lifsys @produce terair, drill
-; @use uminng then -use he3min, helium plant @get heliu3 from 251.
+; Caste Prime turn 5 - fuel alien drones [450], nest bay [206] under hull
+; [101], hop the hull to Earth orbit [O00002], wait for Gelvaren shuttle
+; [117] (~week 8, USE-time 8) with a nested orbital rocket launcher, then
+; fight in space. Hull initiates; drones stay in [206] until battle
+; hangar-launch (round-1 skip, fire from round 2). Do not MOVE wreck [200].
+; Do not STACK OUT [450]. Do not ATTACK 117 on the drones. Leftover XML
+; from gamein.5 keeps Earth HQ/farms/sells, library @research 200, reactor
+; @produce energy, lifsys @produce terair, drill @use uminng then -use
+; he3min, helium plant @get heliu3 from 251.
 ; Mining cannot fuel 4 drones this quarter (he3min is 8 weeks per 1 helium).
 ; Shuttle [100] has 4 heliu3. alndrn capacity is 1 (4 drones hold 4), so
-; GET 4 heliu3 onto [450] works. LAUNCH does not parse; hangar launch is
-; battle-only if still in bay [206] (round-1 skip). STACK OUT here so they
-; fly as roots and can fire from round 1. Luna hops may finish early; wait
-; in O00002. Combat is weekly while co-located with TACTIC destroy. ATTACK
-; only sets enemy attitude (ImmediateOrder) on shuttle [117] (the armed
-; root that will carry orbrkt), not a cancelled orbital complex. Intended:
-; drone victory at O00002.
+; GET 4 heliu3 onto [450] works. Nested drones inherit wreck immobile until
+; the bay leaves the wreck. Intended weeks: 1 land + pick up bay, 2 launch
+; O00001, 3 hop O00002 and wait, ~8 fight. LAUNCH does not parse.
+; Encoding: Windows-1251 (this file is ASCII).
 
 #modulestack 100
 ; + space shuttle [100], 10 shuttl, Dusty field [R00001].
@@ -31,25 +31,35 @@ give 4 heliu3 to 450
 #modulestack 450
 ; + alien fighter drone [450], 4 alndrn, nested in bay [206] on wreck [200]
 ; on R00001. Capacity 1 per drone - GET 4 heliu3 works (fuel 4 heliu3 / 13 weeks).
-; Space move after launch (speed 1). GET from shuttle [100] (and bay [205]
-; fallback). Then leave the wreck and hop Luna orbit -> Earth orbit (two 1-week
-; space legs). Arrive early and wait in O00002 until [117] shows ~week 10.
+; Stay in the bay until hangar-launch. No STACK OUT, no MOVE, no ATTACK.
+; TACTIC persists after launch; they skip round 1 and may fire in round 2.
 get 4 heliu3 from 100
 get 4 heliu3 from 205
-stack out
-move O00001
--move O00002
 tactic destroy
 -tactic prioritize armed
-declare faction 3 enemy
-attack 117
+
+#modulestack 206
+; + fighter drone bay [206], drnbay, nested on wreck [200] on R00001.
+; Drones [450] stay inside. STACK OUT off the wreck (do not MOVE [200]),
+; then STACK 101 once hull [101] has landed at R00001. Drones cannot nest
+; directly under hull [101].
+stack out
+-see 101
+--stack 101
 
 #modulestack 101
 ; + spaceship hull [101], sshull, already in Luna orbit [O00001].
 ; Nested 112/113/114/115. Drive [114] has 20 h2o2 and 1 week fuelled.
-; Unarmed frigate - drones are the shooters. Hop to Earth orbit and wait;
-; battle starts when [117] arrives ~week 10.
-move O00002
+; Unarmed unless bay+drones nest (IsArmed walks nested). Land Dusty field,
+; wait until HAS 1 drnbay, launch Luna orbit, hop Earth orbit, wait for
+; [117]. ATTACK 117 on this hull so it initiates.
+move R00001
+-has 1 drnbay
+--move O00001
+---move O00002
 declare faction 3 enemy
+attack 117
+tactic destroy
+-tactic prioritize armed
 
 #end

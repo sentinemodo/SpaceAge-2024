@@ -5,7 +5,7 @@ Content-Disposition: attachment
 SpaceAge report for Caste Prime [2].
 Turn 6, Year 2021, April 1.
 
-SpaceAge Engine Version: 0.1.145.
+SpaceAge Engine Version: 0.1.148.
 
 Events during turn:
   none.
@@ -14,6 +14,7 @@ Declared stances:
   default: neutral, unknown: hostile.
   enemy toward Gelvaren [3].
   enemy toward space shuttle [117].
+
 Bank report:
   Bank account balance: 4449.
   Credit line maximum: 10000.
@@ -484,6 +485,7 @@ Battles report:
     #4 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Battle ended indecisively.
+
   Week 2.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
@@ -947,6 +949,7 @@ Battles report:
     #4 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Battle ended indecisively.
+
   Week 3.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
@@ -1410,6 +1413,7 @@ Battles report:
     #4 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Battle ended indecisively.
+
   Week 4.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
@@ -1896,6 +1900,7 @@ Battles report:
     #4 factory [factry] is disabled.
   ------------------------------------------------------------
   Battle ended indecisively.
+
   Week 5.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
@@ -2193,6 +2198,7 @@ Battles report:
   ------------------------------------------------------------
   ------------------------------------------------------------
   Battle ended indecisively.
+
   Week 6.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
@@ -2538,6 +2544,7 @@ Battles report:
   ------------------------------------------------------------
   ------------------------------------------------------------
   Battle ended indecisively.
+
   Week 7.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
@@ -2883,6 +2890,7 @@ Battles report:
   ------------------------------------------------------------
   ------------------------------------------------------------
   Battle ended indecisively.
+
   Week 8.
   Battle has commenced at orbit [O00002] of Earth [P00001] at AU 1, ocean planet [ocean] in system
   Sol [SS0001] (0, 0, 0).
@@ -2890,6 +2898,87 @@ Battles report:
   Round 1:
   ------------------------------------------------------------
   Attackers:
+  + spaceship hull [101], spaceship hull [sshull].
+    size: 5000, mass: 13000/2370 (100), energy: 60/56 (1), crew: 3/4.
+    hit points: 357/357 (50/50), attack: 23 (0), defense: 14 (10), initiative: 95 (70).
+    tactics: destroy, prioritize armed.
+      #1 hit points: 50/50.
+    + command bridge [112], command bridge [cbridg].
+      size: 800, mass: 376 (300), energy: 5, crew: 1/2.
+      hit points: 55/55, attack: 5, initiative: 5 (0).
+        #1 hit points: 55/55.
+      + Caste Prime CEO [000001], terran [terran].
+        mass: 4, attack: 5, initiative: 5.
+        skills: armor platoon leader [arpldr] (attack: 5, initiative: 5).
+    + fission reactor [113], fission reactor [fisrec].
+      size: 400, mass: 162 (140), energy: 60/10, crew: 1/1.
+      hit points: 45/45, attack: 2.
+        #1 hit points: 45/45.
+    + reaction drive [114], reaction drive [rctdrv].
+      size: 600, mass: 10000/742 (700), energy: 30, crew: 1/1.
+      hit points: 65/65.
+        #1 hit points: 65/65.
+    + computer library [115], computer library [cmplib].
+      size: 200, mass: 50 (50), energy: 5.
+      hit points: 50/50.
+        #1 hit points: 50/50.
+    + fighter drone bay [206], fighter drone bay [drnbay].
+      size: 400, mass: 3000/620 (300), energy: 5.
+      hit points: 92/92 (60/60), attack: 16 (0), defense: 4 (0), initiative: 20 (0).
+        #1 hit points: 60/60.
+      + alien fighter drone [450], 4 alien fighter drones [alndrn].
+        size: 320, mass: 3000/320 (320).
+        hit points: 32/32, attack: 16, defense: 4, initiative: 20.
+        tactics: destroy, prioritize armed.
+          #1 hit points: 8/8.
+          #2 hit points: 8/8.
+          #3 hit points: 8/8.
+          #4 hit points: 8/8.
+  Defenders:
+  - space shuttle [117], space shuttle [shuttl], owned by Gelvaren [3].
+    size: 200.
+    hit points: 57/57 (17/17), attack: 3 (0), defense: 1 (0), initiative: 60.
+      #1 hit points: 17/17.
+    - orbital rocket launcher [350], orbital rocket launcher [orbrkt], owned by Gelvaren [3].
+      size: 40.
+      hit points: 40/40, attack: 3, defense: 1.
+        #1 hit points: 40/40.
+  spaceship hull [101] launches alien fighter drone [450] from fighter drone bay [drnbay].
+  ------------------------------------------------------------
+  space shuttle [117] fires orbital rocket launcher [orbrkt] on spaceship hull [101] (chance: 1/13)
+  and misses.
+  ------------------------------------------------------------
+  Round 2:
+  ------------------------------------------------------------
+  Attackers:
+  + spaceship hull [101], spaceship hull [sshull].
+    size: 5000, mass: 10000/1730 (100), energy: 60/56 (1), crew: 3/4.
+    hit points: 325/325 (50/50), attack: 7 (0), defense: 10, initiative: 75 (70).
+    tactics: destroy, prioritize armed.
+      #1 hit points: 50/50.
+    + command bridge [112], command bridge [cbridg].
+      size: 800, mass: 376 (300), energy: 5, crew: 1/2.
+      hit points: 55/55, attack: 5, initiative: 5 (0).
+        #1 hit points: 55/55.
+      + Caste Prime CEO [000001], terran [terran].
+        mass: 4, attack: 5, initiative: 5.
+        skills: armor platoon leader [arpldr] (attack: 5, initiative: 5).
+    + fission reactor [113], fission reactor [fisrec].
+      size: 400, mass: 162 (140), energy: 60/10, crew: 1/1.
+      hit points: 45/45, attack: 2.
+        #1 hit points: 45/45.
+    + reaction drive [114], reaction drive [rctdrv].
+      size: 600, mass: 10000/742 (700), energy: 30, crew: 1/1.
+      hit points: 65/65.
+        #1 hit points: 65/65.
+    + computer library [115], computer library [cmplib].
+      size: 200, mass: 50 (50), energy: 5.
+      hit points: 50/50.
+        #1 hit points: 50/50.
+    + fighter drone bay [206], fighter drone bay [drnbay].
+      size: 400, mass: 300 (300), energy: 5.
+      hit points: 60/60.
+        #1 hit points: 60/60.
   + alien fighter drone [450], 4 alien fighter drones [alndrn].
     size: 320, mass: 3000/320 (320).
     hit points: 32/32, attack: 16, defense: 4, initiative: 110.
@@ -2907,16 +2996,9 @@ Battles report:
       size: 40.
       hit points: 40/40, attack: 3, defense: 1.
         #1 hit points: 40/40.
-  - orbital rocket launcher [350], orbital rocket launcher [orbrkt], owned by Gelvaren [3].
-    size: 40.
-    hit points: 40/40, attack: 3, defense: 1.
-      #1 hit points: 40/40.
   ------------------------------------------------------------
-  orbital rocket launcher [350] fires orbital rocket launcher [orbrkt] on alien fighter drone [450]
-  (chance: 1/7) and misses.
-  space shuttle [117] fires orbital rocket launcher [orbrkt] on alien fighter drone [450] (chance:
-  1/7) and hits #4 alien fighter drone [450] doing 3 damage.
-    #4 alien fighter drone [alndrn] is lightly damaged.
+  space shuttle [117] fires orbital rocket launcher [orbrkt] on spaceship hull [101] (chance: 1/13)
+  and hits #1 spaceship hull [101] doing 3 damage.
   alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 8/17)
   and hits #1 orbital rocket launcher [350] doing 2 damage.
   alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 8/17)
@@ -2926,17 +3008,45 @@ Battles report:
   alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 8/17)
   and hits #1 orbital rocket launcher [350] doing 2 damage.
   ------------------------------------------------------------
-  Round 2:
+  Round 3:
   ------------------------------------------------------------
   Attackers:
+  + spaceship hull [101], spaceship hull [sshull].
+    size: 5000, mass: 10000/1730 (100), energy: 60/56 (1), crew: 3/4.
+    hit points: 325/322 (50/47), attack: 7 (0), defense: 10, initiative: 75 (70).
+    tactics: destroy, prioritize armed.
+      #1 hit points: 50/47.
+    + command bridge [112], command bridge [cbridg].
+      size: 800, mass: 376 (300), energy: 5, crew: 1/2.
+      hit points: 55/55, attack: 5, initiative: 5 (0).
+        #1 hit points: 55/55.
+      + Caste Prime CEO [000001], terran [terran].
+        mass: 4, attack: 5, initiative: 5.
+        skills: armor platoon leader [arpldr] (attack: 5, initiative: 5).
+    + fission reactor [113], fission reactor [fisrec].
+      size: 400, mass: 162 (140), energy: 60/10, crew: 1/1.
+      hit points: 45/45, attack: 2.
+        #1 hit points: 45/45.
+    + reaction drive [114], reaction drive [rctdrv].
+      size: 600, mass: 10000/742 (700), energy: 30, crew: 1/1.
+      hit points: 65/65.
+        #1 hit points: 65/65.
+    + computer library [115], computer library [cmplib].
+      size: 200, mass: 50 (50), energy: 5.
+      hit points: 50/50.
+        #1 hit points: 50/50.
+    + fighter drone bay [206], fighter drone bay [drnbay].
+      size: 400, mass: 300 (300), energy: 5.
+      hit points: 60/60.
+        #1 hit points: 60/60.
   + alien fighter drone [450], 4 alien fighter drones [alndrn].
     size: 320, mass: 3000/320 (320).
-    hit points: 32/29, attack: 16, defense: 4, initiative: 110.
+    hit points: 32/32, attack: 16, defense: 4, initiative: 110.
     tactics: destroy, prioritize armed.
       #1 hit points: 8/8.
       #2 hit points: 8/8.
       #3 hit points: 8/8.
-      #4 hit points: 8/5, lightly damaged.
+      #4 hit points: 8/8.
   Defenders:
   - space shuttle [117], space shuttle [shuttl], owned by Gelvaren [3].
     size: 200.
@@ -2946,101 +3056,83 @@ Battles report:
       size: 40.
       hit points: 40/32, attack: 3, defense: 1.
         #1 hit points: 40/32.
-  - orbital rocket launcher [350], orbital rocket launcher [orbrkt], owned by Gelvaren [3].
-    size: 40.
-    hit points: 40/32, attack: 3, defense: 1.
-      #1 hit points: 40/32.
   ------------------------------------------------------------
-  orbital rocket launcher [350] fires orbital rocket launcher [orbrkt] on alien fighter drone [450]
-  (chance: 1/7) and hits #4 alien fighter drone [450] doing 3 damage.
-    #4 alien fighter drone [alndrn] is heavily damaged.
-    #4 alien fighter drone [alndrn] is disabled.
-  space shuttle [117] fires orbital rocket launcher [orbrkt] on alien fighter drone [450] (chance:
-  1/6) and hits #4 alien fighter drone [450] doing 2 damage.
-    #4 alien fighter drone [alndrn] is wrecked.
-  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 6/13)
+  space shuttle [117] fires orbital rocket launcher [orbrkt] on spaceship hull [101] (chance: 1/13)
+  and hits #1 spaceship hull [101] doing 3 damage.
+  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 8/17)
   and hits #1 orbital rocket launcher [350] doing 2 damage.
-  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 6/13)
+  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 8/17)
   and hits #1 orbital rocket launcher [350] doing 2 damage.
     #1 orbital rocket launcher [orbrkt] is lightly damaged.
-  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 6/13)
+  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 8/17)
   and hits #1 orbital rocket launcher [350] doing 2 damage.
     #1 orbital rocket launcher [orbrkt] is lightly damaged.
-  ------------------------------------------------------------
-  Round 3:
-  ------------------------------------------------------------
-  Attackers:
-  + alien fighter drone [450], 4 alien fighter drones [alndrn].
-    size: 320, mass: 3000/320 (320).
-    hit points: 32/24, attack: 12, defense: 3, initiative: 110.
-    tactics: destroy, prioritize armed.
-      #1 hit points: 8/8.
-      #2 hit points: 8/8.
-      #3 hit points: 8/8.
-      #4 hit points: 8/0, destroyed, effects: disabled.
-  Defenders:
-  - space shuttle [117], space shuttle [shuttl], owned by Gelvaren [3].
-    size: 200.
-    hit points: 57/43 (17/17), attack: 3 (0), defense: 1 (0), initiative: 60.
-      #1 hit points: 17/17.
-    - orbital rocket launcher [350], orbital rocket launcher [orbrkt], owned by Gelvaren [3].
-      size: 40.
-      hit points: 40/26, attack: 3, defense: 1.
-        #1 hit points: 40/26, lightly damaged.
-  - orbital rocket launcher [350], orbital rocket launcher [orbrkt], owned by Gelvaren [3].
-    size: 40.
-    hit points: 40/26, attack: 3, defense: 1.
-      #1 hit points: 40/26, lightly damaged.
-  ------------------------------------------------------------
-  orbital rocket launcher [350] fires orbital rocket launcher [orbrkt] on alien fighter drone [450]
-  (chance: 1/6) and hits #2 alien fighter drone [450] doing 3 damage.
-    #2 alien fighter drone [alndrn] is lightly damaged.
-  space shuttle [117] fires orbital rocket launcher [orbrkt] on alien fighter drone [450] (chance:
-  1/6) and hits #2 alien fighter drone [450] doing 3 damage.
-    #2 alien fighter drone [alndrn] is heavily damaged.
-    #2 alien fighter drone [alndrn] is disabled.
-  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 4/9)
-  and hits #1 orbital rocket launcher [350] doing 2 damage.
-    #1 orbital rocket launcher [orbrkt] is lightly damaged.
-  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 4/9)
+  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 8/17)
   and hits #1 orbital rocket launcher [350] doing 2 damage.
     #1 orbital rocket launcher [orbrkt] is lightly damaged.
   ------------------------------------------------------------
   Round 4:
   ------------------------------------------------------------
   Attackers:
+  + spaceship hull [101], spaceship hull [sshull].
+    size: 5000, mass: 10000/1730 (100), energy: 60/56 (1), crew: 3/4.
+    hit points: 325/319 (50/44), attack: 7 (0), defense: 10, initiative: 75 (70).
+    tactics: destroy, prioritize armed.
+      #1 hit points: 50/44.
+    + command bridge [112], command bridge [cbridg].
+      size: 800, mass: 376 (300), energy: 5, crew: 1/2.
+      hit points: 55/55, attack: 5, initiative: 5 (0).
+        #1 hit points: 55/55.
+      + Caste Prime CEO [000001], terran [terran].
+        mass: 4, attack: 5, initiative: 5.
+        skills: armor platoon leader [arpldr] (attack: 5, initiative: 5).
+    + fission reactor [113], fission reactor [fisrec].
+      size: 400, mass: 162 (140), energy: 60/10, crew: 1/1.
+      hit points: 45/45, attack: 2.
+        #1 hit points: 45/45.
+    + reaction drive [114], reaction drive [rctdrv].
+      size: 600, mass: 10000/742 (700), energy: 30, crew: 1/1.
+      hit points: 65/65.
+        #1 hit points: 65/65.
+    + computer library [115], computer library [cmplib].
+      size: 200, mass: 50 (50), energy: 5.
+      hit points: 50/50.
+        #1 hit points: 50/50.
+    + fighter drone bay [206], fighter drone bay [drnbay].
+      size: 400, mass: 300 (300), energy: 5.
+      hit points: 60/60.
+        #1 hit points: 60/60.
   + alien fighter drone [450], 4 alien fighter drones [alndrn].
     size: 320, mass: 3000/320 (320).
-    hit points: 32/18, attack: 8, defense: 2, initiative: 110.
+    hit points: 32/32, attack: 16, defense: 4, initiative: 110.
     tactics: destroy, prioritize armed.
       #1 hit points: 8/8.
-      #2 hit points: 8/2, heavily damaged, effects: disabled.
+      #2 hit points: 8/8.
       #3 hit points: 8/8.
-      #4 hit points: 8/0, destroyed, effects: disabled.
+      #4 hit points: 8/8.
   Defenders:
   - space shuttle [117], space shuttle [shuttl], owned by Gelvaren [3].
     size: 200.
-    hit points: 57/39 (17/17), attack: 3 (0), defense: 1 (0), initiative: 60.
+    hit points: 57/41 (17/17), attack: 3 (0), defense: 1 (0), initiative: 60.
       #1 hit points: 17/17.
     - orbital rocket launcher [350], orbital rocket launcher [orbrkt], owned by Gelvaren [3].
       size: 40.
-      hit points: 40/22, attack: 3, defense: 1.
-        #1 hit points: 40/22, lightly damaged.
-  - orbital rocket launcher [350], orbital rocket launcher [orbrkt], owned by Gelvaren [3].
-    size: 40.
-    hit points: 40/22, attack: 3, defense: 1.
-      #1 hit points: 40/22, lightly damaged.
+      hit points: 40/24, attack: 3, defense: 1.
+        #1 hit points: 40/24, lightly damaged.
   ------------------------------------------------------------
-  orbital rocket launcher [350] fires orbital rocket launcher [orbrkt] on alien fighter drone [450]
-  (chance: 1/5) and hits #3 alien fighter drone [450] doing 3 damage.
-    #3 alien fighter drone [alndrn] is lightly damaged.
-  space shuttle [117] fires orbital rocket launcher [orbrkt] on alien fighter drone [450] (chance:
-  1/5) and hits #2 alien fighter drone [450] doing 2 damage.
-    #2 alien fighter drone [alndrn] is wrecked.
-  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 4/9)
+  space shuttle [117] fires orbital rocket launcher [orbrkt] on spaceship hull [101] (chance: 1/13)
+  and hits #1 spaceship hull [101] doing 3 damage.
+  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 8/17)
   and hits #1 orbital rocket launcher [350] doing 2 damage.
     #1 orbital rocket launcher [orbrkt] is lightly damaged.
-  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 4/9)
+  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 8/17)
+  and hits #1 orbital rocket launcher [350] doing 2 damage.
+    #1 orbital rocket launcher [orbrkt] is lightly damaged.
+  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 8/17)
+  and hits #1 orbital rocket launcher [350] doing 2 damage.
+    #1 orbital rocket launcher [orbrkt] is heavily damaged.
+    #1 orbital rocket launcher [orbrkt] is disabled.
+  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 8/16)
   and hits #1 orbital rocket launcher [350] doing 2 damage.
     #1 orbital rocket launcher [orbrkt] is heavily damaged.
     #1 orbital rocket launcher [orbrkt] is disabled.
@@ -3048,35 +3140,64 @@ Battles report:
   Round 5:
   ------------------------------------------------------------
   Attackers:
+  + spaceship hull [101], spaceship hull [sshull].
+    size: 5000, mass: 10000/1730 (100), energy: 60/56 (1), crew: 3/4.
+    hit points: 325/316 (50/41), attack: 7 (0), defense: 10, initiative: 75 (70).
+    tactics: destroy, prioritize armed.
+      #1 hit points: 50/41.
+    + command bridge [112], command bridge [cbridg].
+      size: 800, mass: 376 (300), energy: 5, crew: 1/2.
+      hit points: 55/55, attack: 5, initiative: 5 (0).
+        #1 hit points: 55/55.
+      + Caste Prime CEO [000001], terran [terran].
+        mass: 4, attack: 5, initiative: 5.
+        skills: armor platoon leader [arpldr] (attack: 5, initiative: 5).
+    + fission reactor [113], fission reactor [fisrec].
+      size: 400, mass: 162 (140), energy: 60/10, crew: 1/1.
+      hit points: 45/45, attack: 2.
+        #1 hit points: 45/45.
+    + reaction drive [114], reaction drive [rctdrv].
+      size: 600, mass: 10000/742 (700), energy: 30, crew: 1/1.
+      hit points: 65/65.
+        #1 hit points: 65/65.
+    + computer library [115], computer library [cmplib].
+      size: 200, mass: 50 (50), energy: 5.
+      hit points: 50/50.
+        #1 hit points: 50/50.
+    + fighter drone bay [206], fighter drone bay [drnbay].
+      size: 400, mass: 300 (300), energy: 5.
+      hit points: 60/60.
+        #1 hit points: 60/60.
   + alien fighter drone [450], 4 alien fighter drones [alndrn].
     size: 320, mass: 3000/320 (320).
-    hit points: 32/13, attack: 8, defense: 2, initiative: 110.
+    hit points: 32/32, attack: 16, defense: 4, initiative: 110.
     tactics: destroy, prioritize armed.
       #1 hit points: 8/8.
-      #2 hit points: 8/0, destroyed, effects: disabled.
-      #3 hit points: 8/5, lightly damaged.
-      #4 hit points: 8/0, destroyed, effects: disabled.
+      #2 hit points: 8/8.
+      #3 hit points: 8/8.
+      #4 hit points: 8/8.
   Defenders:
   - space shuttle [117], space shuttle [shuttl], owned by Gelvaren [3].
     size: 200.
-    hit points: 57/35 (17/17), initiative: 60.
+    hit points: 57/33 (17/17), initiative: 60.
       #1 hit points: 17/17.
     - orbital rocket launcher [350], orbital rocket launcher [orbrkt], disabled, owned by Gelvaren
       [3].
       size: 40.
-      hit points: 40/18.
-        #1 hit points: 40/18, heavily damaged, effects: disabled.
-  - orbital rocket launcher [350], orbital rocket launcher [orbrkt], disabled, owned by Gelvaren
-    [3].
-    size: 40.
-    hit points: 40/18.
-      #1 hit points: 40/18, heavily damaged, effects: disabled.
+      hit points: 40/16.
+        #1 hit points: 40/16, heavily damaged, effects: disabled.
   ------------------------------------------------------------
-  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 4/8)
+  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 8/16)
+  and hits #1 space shuttle [117] doing 2 damage.
+  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 8/16)
   and hits #1 orbital rocket launcher [350] doing 2 damage.
     #1 orbital rocket launcher [orbrkt] is heavily damaged.
     #1 orbital rocket launcher [orbrkt] is disabled.
-  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 4/8)
+  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 8/16)
+  and hits #1 orbital rocket launcher [350] doing 2 damage.
+    #1 orbital rocket launcher [orbrkt] is heavily damaged.
+    #1 orbital rocket launcher [orbrkt] is disabled.
+  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 8/16)
   and hits #1 orbital rocket launcher [350] doing 2 damage.
     #1 orbital rocket launcher [orbrkt] is heavily damaged.
     #1 orbital rocket launcher [orbrkt] is disabled.
@@ -3084,178 +3205,189 @@ Battles report:
   Round 6:
   ------------------------------------------------------------
   Attackers:
+  + spaceship hull [101], spaceship hull [sshull].
+    size: 5000, mass: 10000/1730 (100), energy: 60/56 (1), crew: 3/4.
+    hit points: 325/316 (50/41), attack: 7 (0), defense: 10, initiative: 75 (70).
+    tactics: destroy, prioritize armed.
+      #1 hit points: 50/41.
+    + command bridge [112], command bridge [cbridg].
+      size: 800, mass: 376 (300), energy: 5, crew: 1/2.
+      hit points: 55/55, attack: 5, initiative: 5 (0).
+        #1 hit points: 55/55.
+      + Caste Prime CEO [000001], terran [terran].
+        mass: 4, attack: 5, initiative: 5.
+        skills: armor platoon leader [arpldr] (attack: 5, initiative: 5).
+    + fission reactor [113], fission reactor [fisrec].
+      size: 400, mass: 162 (140), energy: 60/10, crew: 1/1.
+      hit points: 45/45, attack: 2.
+        #1 hit points: 45/45.
+    + reaction drive [114], reaction drive [rctdrv].
+      size: 600, mass: 10000/742 (700), energy: 30, crew: 1/1.
+      hit points: 65/65.
+        #1 hit points: 65/65.
+    + computer library [115], computer library [cmplib].
+      size: 200, mass: 50 (50), energy: 5.
+      hit points: 50/50.
+        #1 hit points: 50/50.
+    + fighter drone bay [206], fighter drone bay [drnbay].
+      size: 400, mass: 300 (300), energy: 5.
+      hit points: 60/60.
+        #1 hit points: 60/60.
   + alien fighter drone [450], 4 alien fighter drones [alndrn].
     size: 320, mass: 3000/320 (320).
-    hit points: 32/13, attack: 8, defense: 2, initiative: 110.
+    hit points: 32/32, attack: 16, defense: 4, initiative: 110.
     tactics: destroy, prioritize armed.
       #1 hit points: 8/8.
-      #2 hit points: 8/0, destroyed, effects: disabled.
-      #3 hit points: 8/5, lightly damaged.
-      #4 hit points: 8/0, destroyed, effects: disabled.
+      #2 hit points: 8/8.
+      #3 hit points: 8/8.
+      #4 hit points: 8/8.
   Defenders:
   - space shuttle [117], space shuttle [shuttl], owned by Gelvaren [3].
     size: 200.
-    hit points: 57/31 (17/17), initiative: 60.
-      #1 hit points: 17/17.
+    hit points: 57/25 (17/15), initiative: 60.
+      #1 hit points: 17/15.
     - orbital rocket launcher [350], orbital rocket launcher [orbrkt], disabled, owned by Gelvaren
       [3].
       size: 40.
-      hit points: 40/14.
-        #1 hit points: 40/14, heavily damaged, effects: disabled.
-  - orbital rocket launcher [350], orbital rocket launcher [orbrkt], disabled, owned by Gelvaren
-    [3].
-    size: 40.
-    hit points: 40/14.
-      #1 hit points: 40/14, heavily damaged, effects: disabled.
+      hit points: 40/10.
+        #1 hit points: 40/10, heavily damaged, effects: disabled.
   ------------------------------------------------------------
-  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 4/8)
-  and hits #1 space shuttle [117] doing 2 damage.
-  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 4/8)
+  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 8/16)
   and hits #1 orbital rocket launcher [350] doing 2 damage.
-    #1 orbital rocket launcher [orbrkt] is heavily damaged.
+    #1 orbital rocket launcher [orbrkt] is critically damaged.
+    #1 orbital rocket launcher [orbrkt] is disabled.
+  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 8/16)
+  and hits #1 space shuttle [117] doing 2 damage.
+  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 8/16)
+  and hits #1 orbital rocket launcher [350] doing 2 damage.
+    #1 orbital rocket launcher [orbrkt] is critically damaged.
+    #1 orbital rocket launcher [orbrkt] is disabled.
+  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 8/16)
+  and hits #1 orbital rocket launcher [350] doing 2 damage.
+    #1 orbital rocket launcher [orbrkt] is critically damaged.
     #1 orbital rocket launcher [orbrkt] is disabled.
   ------------------------------------------------------------
   Round 7:
   ------------------------------------------------------------
   Attackers:
+  + spaceship hull [101], spaceship hull [sshull].
+    size: 5000, mass: 10000/1730 (100), energy: 60/56 (1), crew: 3/4.
+    hit points: 325/316 (50/41), attack: 7 (0), defense: 10, initiative: 75 (70).
+    tactics: destroy, prioritize armed.
+      #1 hit points: 50/41.
+    + command bridge [112], command bridge [cbridg].
+      size: 800, mass: 376 (300), energy: 5, crew: 1/2.
+      hit points: 55/55, attack: 5, initiative: 5 (0).
+        #1 hit points: 55/55.
+      + Caste Prime CEO [000001], terran [terran].
+        mass: 4, attack: 5, initiative: 5.
+        skills: armor platoon leader [arpldr] (attack: 5, initiative: 5).
+    + fission reactor [113], fission reactor [fisrec].
+      size: 400, mass: 162 (140), energy: 60/10, crew: 1/1.
+      hit points: 45/45, attack: 2.
+        #1 hit points: 45/45.
+    + reaction drive [114], reaction drive [rctdrv].
+      size: 600, mass: 10000/742 (700), energy: 30, crew: 1/1.
+      hit points: 65/65.
+        #1 hit points: 65/65.
+    + computer library [115], computer library [cmplib].
+      size: 200, mass: 50 (50), energy: 5.
+      hit points: 50/50.
+        #1 hit points: 50/50.
+    + fighter drone bay [206], fighter drone bay [drnbay].
+      size: 400, mass: 300 (300), energy: 5.
+      hit points: 60/60.
+        #1 hit points: 60/60.
   + alien fighter drone [450], 4 alien fighter drones [alndrn].
     size: 320, mass: 3000/320 (320).
-    hit points: 32/13, attack: 8, defense: 2, initiative: 110.
+    hit points: 32/32, attack: 16, defense: 4, initiative: 110.
     tactics: destroy, prioritize armed.
       #1 hit points: 8/8.
-      #2 hit points: 8/0, destroyed, effects: disabled.
-      #3 hit points: 8/5, lightly damaged.
-      #4 hit points: 8/0, destroyed, effects: disabled.
+      #2 hit points: 8/8.
+      #3 hit points: 8/8.
+      #4 hit points: 8/8.
   Defenders:
   - space shuttle [117], space shuttle [shuttl], owned by Gelvaren [3].
     size: 200.
-    hit points: 57/27 (17/15), initiative: 60.
-      #1 hit points: 17/15.
+    hit points: 57/17 (17/13), initiative: 60.
+      #1 hit points: 17/13.
     - orbital rocket launcher [350], orbital rocket launcher [orbrkt], disabled, owned by Gelvaren
       [3].
       size: 40.
-      hit points: 40/12.
-        #1 hit points: 40/12, heavily damaged, effects: disabled.
-  - orbital rocket launcher [350], orbital rocket launcher [orbrkt], disabled, owned by Gelvaren
-    [3].
-    size: 40.
-    hit points: 40/12.
-      #1 hit points: 40/12, heavily damaged, effects: disabled.
+      hit points: 40/4.
+        #1 hit points: 40/4, critically damaged, effects: disabled.
   ------------------------------------------------------------
-  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 4/8)
-  and hits #1 orbital rocket launcher [350] doing 2 damage.
-    #1 orbital rocket launcher [orbrkt] is heavily damaged.
-    #1 orbital rocket launcher [orbrkt] is disabled.
-  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 4/8)
+  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 8/16)
   and hits #1 orbital rocket launcher [350] doing 2 damage.
     #1 orbital rocket launcher [orbrkt] is critically damaged.
     #1 orbital rocket launcher [orbrkt] is disabled.
+  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 8/16)
+  and hits #1 orbital rocket launcher [350] doing 2 damage.
+    #1 orbital rocket launcher [orbrkt] is wrecked.
+  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 8/16)
+  and hits #1 space shuttle [117] doing 2 damage.
+    #1 space shuttle [shuttl] is lightly damaged.
+  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 8/16)
+  and hits #1 space shuttle [117] doing 2 damage.
+    #1 space shuttle [shuttl] is lightly damaged.
   ------------------------------------------------------------
   Round 8:
   ------------------------------------------------------------
   Attackers:
+  + spaceship hull [101], spaceship hull [sshull].
+    size: 5000, mass: 10000/1730 (100), energy: 60/56 (1), crew: 3/4.
+    hit points: 325/316 (50/41), attack: 7 (0), defense: 10, initiative: 75 (70).
+    tactics: destroy, prioritize armed.
+      #1 hit points: 50/41.
+    + command bridge [112], command bridge [cbridg].
+      size: 800, mass: 376 (300), energy: 5, crew: 1/2.
+      hit points: 55/55, attack: 5, initiative: 5 (0).
+        #1 hit points: 55/55.
+      + Caste Prime CEO [000001], terran [terran].
+        mass: 4, attack: 5, initiative: 5.
+        skills: armor platoon leader [arpldr] (attack: 5, initiative: 5).
+    + fission reactor [113], fission reactor [fisrec].
+      size: 400, mass: 162 (140), energy: 60/10, crew: 1/1.
+      hit points: 45/45, attack: 2.
+        #1 hit points: 45/45.
+    + reaction drive [114], reaction drive [rctdrv].
+      size: 600, mass: 10000/742 (700), energy: 30, crew: 1/1.
+      hit points: 65/65.
+        #1 hit points: 65/65.
+    + computer library [115], computer library [cmplib].
+      size: 200, mass: 50 (50), energy: 5.
+      hit points: 50/50.
+        #1 hit points: 50/50.
+    + fighter drone bay [206], fighter drone bay [drnbay].
+      size: 400, mass: 300 (300), energy: 5.
+      hit points: 60/60.
+        #1 hit points: 60/60.
   + alien fighter drone [450], 4 alien fighter drones [alndrn].
     size: 320, mass: 3000/320 (320).
-    hit points: 32/13, attack: 8, defense: 2, initiative: 110.
+    hit points: 32/32, attack: 16, defense: 4, initiative: 110.
     tactics: destroy, prioritize armed.
       #1 hit points: 8/8.
-      #2 hit points: 8/0, destroyed, effects: disabled.
-      #3 hit points: 8/5, lightly damaged.
-      #4 hit points: 8/0, destroyed, effects: disabled.
+      #2 hit points: 8/8.
+      #3 hit points: 8/8.
+      #4 hit points: 8/8.
   Defenders:
   - space shuttle [117], space shuttle [shuttl], owned by Gelvaren [3].
     size: 200.
-    hit points: 57/23 (17/15), initiative: 60.
-      #1 hit points: 17/15.
+    hit points: 57/9 (17/9), initiative: 60.
+      #1 hit points: 17/9, lightly damaged.
     - orbital rocket launcher [350], orbital rocket launcher [orbrkt], disabled, owned by Gelvaren
       [3].
       size: 40.
-      hit points: 40/8.
-        #1 hit points: 40/8, critically damaged, effects: disabled.
-  - orbital rocket launcher [350], orbital rocket launcher [orbrkt], disabled, owned by Gelvaren
-    [3].
-    size: 40.
-    hit points: 40/8.
-      #1 hit points: 40/8, critically damaged, effects: disabled.
+      hit points: 40/0.
+        #1 hit points: 40/0, destroyed, effects: disabled.
   ------------------------------------------------------------
-  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 4/8)
-  and hits #1 orbital rocket launcher [350] doing 2 damage.
-    #1 orbital rocket launcher [orbrkt] is critically damaged.
-    #1 orbital rocket launcher [orbrkt] is disabled.
-  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 4/8)
+  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 8/16)
   and hits #1 space shuttle [117] doing 2 damage.
+    #1 space shuttle [shuttl] is heavily damaged.
+    #1 space shuttle [shuttl] is disabled.
   ------------------------------------------------------------
-  Round 9:
-  ------------------------------------------------------------
-  Attackers:
-  + alien fighter drone [450], 4 alien fighter drones [alndrn].
-    size: 320, mass: 3000/320 (320).
-    hit points: 32/13, attack: 8, defense: 2, initiative: 110.
-    tactics: destroy, prioritize armed.
-      #1 hit points: 8/8.
-      #2 hit points: 8/0, destroyed, effects: disabled.
-      #3 hit points: 8/5, lightly damaged.
-      #4 hit points: 8/0, destroyed, effects: disabled.
-  Defenders:
-  - space shuttle [117], space shuttle [shuttl], owned by Gelvaren [3].
-    size: 200.
-    hit points: 57/19 (17/13), initiative: 60.
-      #1 hit points: 17/13.
-    - orbital rocket launcher [350], orbital rocket launcher [orbrkt], disabled, owned by Gelvaren
-      [3].
-      size: 40.
-      hit points: 40/6.
-        #1 hit points: 40/6, critically damaged, effects: disabled.
-  - orbital rocket launcher [350], orbital rocket launcher [orbrkt], disabled, owned by Gelvaren
-    [3].
-    size: 40.
-    hit points: 40/6.
-      #1 hit points: 40/6, critically damaged, effects: disabled.
-  ------------------------------------------------------------
-  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 4/8)
-  and hits #1 orbital rocket launcher [350] doing 2 damage.
-    #1 orbital rocket launcher [orbrkt] is critically damaged.
-    #1 orbital rocket launcher [orbrkt] is disabled.
-  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 4/8)
-  and hits #1 orbital rocket launcher [350] doing 2 damage.
-    #1 orbital rocket launcher [orbrkt] is critically damaged.
-    #1 orbital rocket launcher [orbrkt] is disabled.
-  ------------------------------------------------------------
-  Round 10:
-  ------------------------------------------------------------
-  Attackers:
-  + alien fighter drone [450], 4 alien fighter drones [alndrn].
-    size: 320, mass: 3000/320 (320).
-    hit points: 32/13, attack: 8, defense: 2, initiative: 110.
-    tactics: destroy, prioritize armed.
-      #1 hit points: 8/8.
-      #2 hit points: 8/0, destroyed, effects: disabled.
-      #3 hit points: 8/5, lightly damaged.
-      #4 hit points: 8/0, destroyed, effects: disabled.
-  Defenders:
-  - space shuttle [117], space shuttle [shuttl], owned by Gelvaren [3].
-    size: 200.
-    hit points: 57/15 (17/13), initiative: 60.
-      #1 hit points: 17/13.
-    - orbital rocket launcher [350], orbital rocket launcher [orbrkt], disabled, owned by Gelvaren
-      [3].
-      size: 40.
-      hit points: 40/2.
-        #1 hit points: 40/2, critically damaged, effects: disabled.
-  - orbital rocket launcher [350], orbital rocket launcher [orbrkt], disabled, owned by Gelvaren
-    [3].
-    size: 40.
-    hit points: 40/2.
-      #1 hit points: 40/2, critically damaged, effects: disabled.
-  ------------------------------------------------------------
-  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 4/8)
-  and hits #1 orbital rocket launcher [350] doing 2 damage.
-    #1 orbital rocket launcher [orbrkt] is wrecked.
-  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 4/8)
-  and hits #1 space shuttle [117] doing 2 damage.
-    #1 space shuttle [shuttl] is lightly damaged.
-  ------------------------------------------------------------
-  Battle ended indecisively.
+  Battle won by attackers.
+
   Week 8.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
@@ -3601,6 +3733,7 @@ Battles report:
   ------------------------------------------------------------
   ------------------------------------------------------------
   Battle ended indecisively.
+
   Week 9.
   Battle has commenced at orbit [O00002] of Earth [P00001] at AU 1, ocean planet [ocean] in system
   Sol [SS0001] (0, 0, 0).
@@ -3608,419 +3741,42 @@ Battles report:
   Round 1:
   ------------------------------------------------------------
   Attackers:
+  + spaceship hull [101], spaceship hull [sshull].
+    size: 5000, mass: 10000/1730 (100), energy: 60/56 (1), crew: 3/4.
+    hit points: 325/316 (50/41), attack: 7 (0), defense: 10, initiative: 75 (70).
+    tactics: destroy, prioritize armed.
+      #1 hit points: 50/41.
+    + command bridge [112], command bridge [cbridg].
+      size: 800, mass: 376 (300), energy: 5, crew: 1/2.
+      hit points: 55/55, attack: 5, initiative: 5 (0).
+        #1 hit points: 55/55.
+      + Caste Prime CEO [000001], terran [terran].
+        mass: 4, attack: 5, initiative: 5.
+        skills: armor platoon leader [arpldr] (attack: 5, initiative: 5).
+    + fission reactor [113], fission reactor [fisrec].
+      size: 400, mass: 162 (140), energy: 60/10, crew: 1/1.
+      hit points: 45/45, attack: 2.
+        #1 hit points: 45/45.
+    + reaction drive [114], reaction drive [rctdrv].
+      size: 600, mass: 10000/742 (700), energy: 30, crew: 1/1.
+      hit points: 65/65.
+        #1 hit points: 65/65.
+    + computer library [115], computer library [cmplib].
+      size: 200, mass: 50 (50), energy: 5.
+      hit points: 50/50.
+        #1 hit points: 50/50.
+    + fighter drone bay [206], fighter drone bay [drnbay].
+      size: 400, mass: 300 (300), energy: 5.
+      hit points: 60/60.
+        #1 hit points: 60/60.
   + alien fighter drone [450], 4 alien fighter drones [alndrn].
     size: 320, mass: 3000/320 (320).
-    hit points: 32/13, attack: 8, defense: 2, initiative: 110.
+    hit points: 32/32, attack: 16, defense: 4, initiative: 110.
     tactics: destroy, prioritize armed.
       #1 hit points: 8/8.
-      #2 hit points: 8/0, destroyed, effects: disabled.
-      #3 hit points: 8/5, lightly damaged.
-      #4 hit points: 8/0, destroyed, effects: disabled.
-  Defenders:
-  - space shuttle [117], space shuttle [shuttl], owned by Gelvaren [3].
-    size: 200.
-    hit points: 57/11 (17/11), initiative: 60.
-      #1 hit points: 17/11, lightly damaged.
-    - orbital rocket launcher [350], orbital rocket launcher [orbrkt], disabled, owned by Gelvaren
-      [3].
-      size: 40.
-      hit points: 40/0.
-        #1 hit points: 40/0, destroyed, effects: disabled.
-  ------------------------------------------------------------
-  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 4/8)
-  and misses.
-  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 4/8)
-  and hits #1 space shuttle [117] doing 2 damage.
-    #1 space shuttle [shuttl] is lightly damaged.
-  ------------------------------------------------------------
-  Round 2:
-  ------------------------------------------------------------
-  Attackers:
-  + alien fighter drone [450], 4 alien fighter drones [alndrn].
-    size: 320, mass: 3000/320 (320).
-    hit points: 32/13, attack: 8, defense: 2, initiative: 110.
-    tactics: destroy, prioritize armed.
-      #1 hit points: 8/8.
-      #2 hit points: 8/0, destroyed, effects: disabled.
-      #3 hit points: 8/5, lightly damaged.
-      #4 hit points: 8/0, destroyed, effects: disabled.
-  Defenders:
-  - space shuttle [117], space shuttle [shuttl], owned by Gelvaren [3].
-    size: 200.
-    hit points: 57/9 (17/9), initiative: 60.
-      #1 hit points: 17/9, lightly damaged.
-    - orbital rocket launcher [350], orbital rocket launcher [orbrkt], disabled, owned by Gelvaren
-      [3].
-      size: 40.
-      hit points: 40/0.
-        #1 hit points: 40/0, destroyed, effects: disabled.
-  ------------------------------------------------------------
-  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 4/8)
-  and hits #1 space shuttle [117] doing 2 damage.
-    #1 space shuttle [shuttl] is heavily damaged.
-    #1 space shuttle [shuttl] is disabled.
-  ------------------------------------------------------------
-  Battle won by attackers.
-  Week 9.
-  Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
-  [ocean] in system Sol [SS0001] (0, 0, 0).
-  ------------------------------------------------------------
-  Round 1:
-  ------------------------------------------------------------
-  Attackers:
-  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
-    size: 720.
-    hit points: 300/224, attack: 17, defense: 12, initiative: 5 (0).
-      #1 hit points: 100/62, lightly damaged.
-      #2 hit points: 100/62, lightly damaged.
-      #3 hit points: 100/100.
-    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
-  - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
-    size: 500.
-    hit points: 50/50, attack: 6, defense: 1, initiative: 5 (0).
-      #1 hit points: 50/50.
-    - terran officer [107], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
-  Defenders:
-  + factory [000017], 5 factories [factry], disabled, immobile.
-    size: 5000, mass: 4134 (3750).
-    hit points: 500/228.
-    items: 46 terrans [terran], 20 units of iron [iron].
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
-      #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/48, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
-  + gun placement [111], gun placement [gunplc], disabled, immobile.
-    size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
-    items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
-  ------------------------------------------------------------
-  ------------------------------------------------------------
-  Round 2:
-  ------------------------------------------------------------
-  Attackers:
-  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
-    size: 720.
-    hit points: 300/224, attack: 17, defense: 12, initiative: 5 (0).
-      #1 hit points: 100/62, lightly damaged.
-      #2 hit points: 100/62, lightly damaged.
-      #3 hit points: 100/100.
-    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
-  - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
-    size: 500.
-    hit points: 50/50, attack: 6, defense: 1, initiative: 5 (0).
-      #1 hit points: 50/50.
-    - terran officer [107], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
-  Defenders:
-  + factory [000017], 5 factories [factry], disabled, immobile.
-    size: 5000, mass: 4134 (3750).
-    hit points: 500/228.
-    items: 46 terrans [terran], 20 units of iron [iron].
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
-      #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/48, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
-  + gun placement [111], gun placement [gunplc], disabled, immobile.
-    size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
-    items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
-  ------------------------------------------------------------
-  ------------------------------------------------------------
-  Round 3:
-  ------------------------------------------------------------
-  Attackers:
-  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
-    size: 720.
-    hit points: 300/224, attack: 17, defense: 12, initiative: 5 (0).
-      #1 hit points: 100/62, lightly damaged.
-      #2 hit points: 100/62, lightly damaged.
-      #3 hit points: 100/100.
-    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
-  - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
-    size: 500.
-    hit points: 50/50, attack: 6, defense: 1, initiative: 5 (0).
-      #1 hit points: 50/50.
-    - terran officer [107], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
-  Defenders:
-  + factory [000017], 5 factories [factry], disabled, immobile.
-    size: 5000, mass: 4134 (3750).
-    hit points: 500/228.
-    items: 46 terrans [terran], 20 units of iron [iron].
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
-      #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/48, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
-  + gun placement [111], gun placement [gunplc], disabled, immobile.
-    size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
-    items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
-  ------------------------------------------------------------
-  ------------------------------------------------------------
-  Round 4:
-  ------------------------------------------------------------
-  Attackers:
-  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
-    size: 720.
-    hit points: 300/224, attack: 17, defense: 12, initiative: 5 (0).
-      #1 hit points: 100/62, lightly damaged.
-      #2 hit points: 100/62, lightly damaged.
-      #3 hit points: 100/100.
-    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
-  - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
-    size: 500.
-    hit points: 50/50, attack: 6, defense: 1, initiative: 5 (0).
-      #1 hit points: 50/50.
-    - terran officer [107], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
-  Defenders:
-  + factory [000017], 5 factories [factry], disabled, immobile.
-    size: 5000, mass: 4134 (3750).
-    hit points: 500/228.
-    items: 46 terrans [terran], 20 units of iron [iron].
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
-      #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/48, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
-  + gun placement [111], gun placement [gunplc], disabled, immobile.
-    size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
-    items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
-  ------------------------------------------------------------
-  ------------------------------------------------------------
-  Round 5:
-  ------------------------------------------------------------
-  Attackers:
-  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
-    size: 720.
-    hit points: 300/224, attack: 17, defense: 12, initiative: 5 (0).
-      #1 hit points: 100/62, lightly damaged.
-      #2 hit points: 100/62, lightly damaged.
-      #3 hit points: 100/100.
-    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
-  - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
-    size: 500.
-    hit points: 50/50, attack: 6, defense: 1, initiative: 5 (0).
-      #1 hit points: 50/50.
-    - terran officer [107], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
-  Defenders:
-  + factory [000017], 5 factories [factry], disabled, immobile.
-    size: 5000, mass: 4134 (3750).
-    hit points: 500/228.
-    items: 46 terrans [terran], 20 units of iron [iron].
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
-      #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/48, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
-  + gun placement [111], gun placement [gunplc], disabled, immobile.
-    size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
-    items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
-  ------------------------------------------------------------
-  ------------------------------------------------------------
-  Round 6:
-  ------------------------------------------------------------
-  Attackers:
-  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
-    size: 720.
-    hit points: 300/224, attack: 17, defense: 12, initiative: 5 (0).
-      #1 hit points: 100/62, lightly damaged.
-      #2 hit points: 100/62, lightly damaged.
-      #3 hit points: 100/100.
-    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
-  - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
-    size: 500.
-    hit points: 50/50, attack: 6, defense: 1, initiative: 5 (0).
-      #1 hit points: 50/50.
-    - terran officer [107], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
-  Defenders:
-  + factory [000017], 5 factories [factry], disabled, immobile.
-    size: 5000, mass: 4134 (3750).
-    hit points: 500/228.
-    items: 46 terrans [terran], 20 units of iron [iron].
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
-      #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/48, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
-  + gun placement [111], gun placement [gunplc], disabled, immobile.
-    size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
-    items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
-  ------------------------------------------------------------
-  ------------------------------------------------------------
-  Round 7:
-  ------------------------------------------------------------
-  Attackers:
-  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
-    size: 720.
-    hit points: 300/224, attack: 17, defense: 12, initiative: 5 (0).
-      #1 hit points: 100/62, lightly damaged.
-      #2 hit points: 100/62, lightly damaged.
-      #3 hit points: 100/100.
-    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
-  - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
-    size: 500.
-    hit points: 50/50, attack: 6, defense: 1, initiative: 5 (0).
-      #1 hit points: 50/50.
-    - terran officer [107], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
-  Defenders:
-  + factory [000017], 5 factories [factry], disabled, immobile.
-    size: 5000, mass: 4134 (3750).
-    hit points: 500/228.
-    items: 46 terrans [terran], 20 units of iron [iron].
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
-      #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/48, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
-  + gun placement [111], gun placement [gunplc], disabled, immobile.
-    size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
-    items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
-  ------------------------------------------------------------
-  ------------------------------------------------------------
-  Round 8:
-  ------------------------------------------------------------
-  Attackers:
-  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
-    size: 720.
-    hit points: 300/224, attack: 17, defense: 12, initiative: 5 (0).
-      #1 hit points: 100/62, lightly damaged.
-      #2 hit points: 100/62, lightly damaged.
-      #3 hit points: 100/100.
-    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
-  - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
-    size: 500.
-    hit points: 50/50, attack: 6, defense: 1, initiative: 5 (0).
-      #1 hit points: 50/50.
-    - terran officer [107], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
-  Defenders:
-  + factory [000017], 5 factories [factry], disabled, immobile.
-    size: 5000, mass: 4134 (3750).
-    hit points: 500/228.
-    items: 46 terrans [terran], 20 units of iron [iron].
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
-      #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/48, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
-  + gun placement [111], gun placement [gunplc], disabled, immobile.
-    size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
-    items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
-  ------------------------------------------------------------
-  ------------------------------------------------------------
-  Round 9:
-  ------------------------------------------------------------
-  Attackers:
-  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
-    size: 720.
-    hit points: 300/224, attack: 17, defense: 12, initiative: 5 (0).
-      #1 hit points: 100/62, lightly damaged.
-      #2 hit points: 100/62, lightly damaged.
-      #3 hit points: 100/100.
-    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
-  - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
-    size: 500.
-    hit points: 50/50, attack: 6, defense: 1, initiative: 5 (0).
-      #1 hit points: 50/50.
-    - terran officer [107], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
-  Defenders:
-  + factory [000017], 5 factories [factry], disabled, immobile.
-    size: 5000, mass: 4134 (3750).
-    hit points: 500/228.
-    items: 46 terrans [terran], 20 units of iron [iron].
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
-      #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/48, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
-  + gun placement [111], gun placement [gunplc], disabled, immobile.
-    size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
-    items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
-  ------------------------------------------------------------
-  ------------------------------------------------------------
-  Round 10:
-  ------------------------------------------------------------
-  Attackers:
-  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
-    size: 720.
-    hit points: 300/224, attack: 17, defense: 12, initiative: 5 (0).
-      #1 hit points: 100/62, lightly damaged.
-      #2 hit points: 100/62, lightly damaged.
-      #3 hit points: 100/100.
-    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
-  - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
-    size: 500.
-    hit points: 50/50, attack: 6, defense: 1, initiative: 5 (0).
-      #1 hit points: 50/50.
-    - terran officer [107], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
-  Defenders:
-  + factory [000017], 5 factories [factry], disabled, immobile.
-    size: 5000, mass: 4134 (3750).
-    hit points: 500/228.
-    items: 46 terrans [terran], 20 units of iron [iron].
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
-      #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/48, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
-  + gun placement [111], gun placement [gunplc], disabled, immobile.
-    size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
-    items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
-  ------------------------------------------------------------
-  ------------------------------------------------------------
-  Battle ended indecisively.
-  Week 10.
-  Battle has commenced at orbit [O00002] of Earth [P00001] at AU 1, ocean planet [ocean] in system
-  Sol [SS0001] (0, 0, 0).
-  ------------------------------------------------------------
-  Round 1:
-  ------------------------------------------------------------
-  Attackers:
-  + alien fighter drone [450], 4 alien fighter drones [alndrn].
-    size: 320, mass: 3000/320 (320).
-    hit points: 32/13, attack: 8, defense: 2, initiative: 110.
-    tactics: destroy, prioritize armed.
-      #1 hit points: 8/8.
-      #2 hit points: 8/0, destroyed, effects: disabled.
-      #3 hit points: 8/5, lightly damaged.
-      #4 hit points: 8/0, destroyed, effects: disabled.
+      #2 hit points: 8/8.
+      #3 hit points: 8/8.
+      #4 hit points: 8/8.
   Defenders:
   - space shuttle [117], space shuttle [shuttl], disabled, immobile, owned by Gelvaren [3].
     size: 200.
@@ -4032,55 +3788,60 @@ Battles report:
       hit points: 40/0.
         #1 hit points: 40/0, destroyed, effects: disabled.
   ------------------------------------------------------------
-  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 6/8)
-  and hits #1 space shuttle [117] doing 2 damage.
+  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance:
+  12/16) and hits #1 space shuttle [117] doing 2 damage.
     #1 space shuttle [shuttl] is heavily damaged.
     #1 space shuttle [shuttl] is disabled.
-  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 6/8)
-  and hits #1 space shuttle [117] doing 2 damage.
+  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance:
+  12/16) and hits #1 space shuttle [117] doing 2 damage.
+    #1 space shuttle [shuttl] is critically damaged.
+    #1 space shuttle [shuttl] is disabled.
+  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance:
+  12/16) and misses.
+  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance:
+  12/16) and hits #1 space shuttle [117] doing 2 damage.
     #1 space shuttle [shuttl] is critically damaged.
     #1 space shuttle [shuttl] is disabled.
   ------------------------------------------------------------
   Round 2:
   ------------------------------------------------------------
   Attackers:
+  + spaceship hull [101], spaceship hull [sshull].
+    size: 5000, mass: 10000/1730 (100), energy: 60/56 (1), crew: 3/4.
+    hit points: 325/316 (50/41), attack: 7 (0), defense: 10, initiative: 75 (70).
+    tactics: destroy, prioritize armed.
+      #1 hit points: 50/41.
+    + command bridge [112], command bridge [cbridg].
+      size: 800, mass: 376 (300), energy: 5, crew: 1/2.
+      hit points: 55/55, attack: 5, initiative: 5 (0).
+        #1 hit points: 55/55.
+      + Caste Prime CEO [000001], terran [terran].
+        mass: 4, attack: 5, initiative: 5.
+        skills: armor platoon leader [arpldr] (attack: 5, initiative: 5).
+    + fission reactor [113], fission reactor [fisrec].
+      size: 400, mass: 162 (140), energy: 60/10, crew: 1/1.
+      hit points: 45/45, attack: 2.
+        #1 hit points: 45/45.
+    + reaction drive [114], reaction drive [rctdrv].
+      size: 600, mass: 10000/742 (700), energy: 30, crew: 1/1.
+      hit points: 65/65.
+        #1 hit points: 65/65.
+    + computer library [115], computer library [cmplib].
+      size: 200, mass: 50 (50), energy: 5.
+      hit points: 50/50.
+        #1 hit points: 50/50.
+    + fighter drone bay [206], fighter drone bay [drnbay].
+      size: 400, mass: 300 (300), energy: 5.
+      hit points: 60/60.
+        #1 hit points: 60/60.
   + alien fighter drone [450], 4 alien fighter drones [alndrn].
     size: 320, mass: 3000/320 (320).
-    hit points: 32/13, attack: 8, defense: 2, initiative: 110.
+    hit points: 32/32, attack: 16, defense: 4, initiative: 110.
     tactics: destroy, prioritize armed.
       #1 hit points: 8/8.
-      #2 hit points: 8/0, destroyed, effects: disabled.
-      #3 hit points: 8/5, lightly damaged.
-      #4 hit points: 8/0, destroyed, effects: disabled.
-  Defenders:
-  - space shuttle [117], space shuttle [shuttl], disabled, immobile, owned by Gelvaren [3].
-    size: 200.
-    hit points: 57/3 (17/3), initiative: 60.
-      #1 hit points: 17/3, critically damaged, effects: disabled.
-    - orbital rocket launcher [350], orbital rocket launcher [orbrkt], disabled, immobile, owned by
-      Gelvaren [3].
-      size: 40.
-      hit points: 40/0.
-        #1 hit points: 40/0, destroyed, effects: disabled.
-  ------------------------------------------------------------
-  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 6/8)
-  and misses.
-  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 6/8)
-  and hits #1 space shuttle [117] doing 2 damage.
-    #1 space shuttle [shuttl] is critically damaged.
-    #1 space shuttle [shuttl] is disabled.
-  ------------------------------------------------------------
-  Round 3:
-  ------------------------------------------------------------
-  Attackers:
-  + alien fighter drone [450], 4 alien fighter drones [alndrn].
-    size: 320, mass: 3000/320 (320).
-    hit points: 32/13, attack: 8, defense: 2, initiative: 110.
-    tactics: destroy, prioritize armed.
-      #1 hit points: 8/8.
-      #2 hit points: 8/0, destroyed, effects: disabled.
-      #3 hit points: 8/5, lightly damaged.
-      #4 hit points: 8/0, destroyed, effects: disabled.
+      #2 hit points: 8/8.
+      #3 hit points: 8/8.
+      #4 hit points: 8/8.
   Defenders:
   - space shuttle [117], space shuttle [shuttl], disabled, immobile, owned by Gelvaren [3].
     size: 200.
@@ -4092,21 +3853,100 @@ Battles report:
       hit points: 40/0.
         #1 hit points: 40/0, destroyed, effects: disabled.
   ------------------------------------------------------------
-  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 6/8)
-  and hits #1 space shuttle [117] doing 1 damage.
+  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance:
+  12/16) and hits #1 space shuttle [117] doing 1 damage.
     #1 space shuttle [shuttl] is wrecked.
+  ------------------------------------------------------------
+  Round 3:
+  ------------------------------------------------------------
+  Attackers:
+  + spaceship hull [101], spaceship hull [sshull].
+    size: 5000, mass: 10000/1730 (100), energy: 60/56 (1), crew: 3/4.
+    hit points: 325/316 (50/41), attack: 7 (0), defense: 10, initiative: 75 (70).
+    tactics: destroy, prioritize armed.
+      #1 hit points: 50/41.
+    + command bridge [112], command bridge [cbridg].
+      size: 800, mass: 376 (300), energy: 5, crew: 1/2.
+      hit points: 55/55, attack: 5, initiative: 5 (0).
+        #1 hit points: 55/55.
+      + Caste Prime CEO [000001], terran [terran].
+        mass: 4, attack: 5, initiative: 5.
+        skills: armor platoon leader [arpldr] (attack: 5, initiative: 5).
+    + fission reactor [113], fission reactor [fisrec].
+      size: 400, mass: 162 (140), energy: 60/10, crew: 1/1.
+      hit points: 45/45, attack: 2.
+        #1 hit points: 45/45.
+    + reaction drive [114], reaction drive [rctdrv].
+      size: 600, mass: 10000/742 (700), energy: 30, crew: 1/1.
+      hit points: 65/65.
+        #1 hit points: 65/65.
+    + computer library [115], computer library [cmplib].
+      size: 200, mass: 50 (50), energy: 5.
+      hit points: 50/50.
+        #1 hit points: 50/50.
+    + fighter drone bay [206], fighter drone bay [drnbay].
+      size: 400, mass: 300 (300), energy: 5.
+      hit points: 60/60.
+        #1 hit points: 60/60.
+  + alien fighter drone [450], 4 alien fighter drones [alndrn].
+    size: 320, mass: 3000/320 (320).
+    hit points: 32/32, attack: 16, defense: 4, initiative: 110.
+    tactics: destroy, prioritize armed.
+      #1 hit points: 8/8.
+      #2 hit points: 8/8.
+      #3 hit points: 8/8.
+      #4 hit points: 8/8.
+  Defenders:
+  - space shuttle [117], space shuttle [shuttl], disabled, immobile, owned by Gelvaren [3].
+    size: 200.
+    hit points: 57/0 (17/0), initiative: 60.
+      #1 hit points: 17/0, destroyed, effects: disabled.
+    - orbital rocket launcher [350], orbital rocket launcher [orbrkt], disabled, immobile, owned by
+      Gelvaren [3].
+      size: 40.
+      hit points: 40/0.
+        #1 hit points: 40/0, destroyed, effects: disabled.
+  ------------------------------------------------------------
   ------------------------------------------------------------
   Round 4:
   ------------------------------------------------------------
   Attackers:
+  + spaceship hull [101], spaceship hull [sshull].
+    size: 5000, mass: 10000/1730 (100), energy: 60/56 (1), crew: 3/4.
+    hit points: 325/316 (50/41), attack: 7 (0), defense: 10, initiative: 75 (70).
+    tactics: destroy, prioritize armed.
+      #1 hit points: 50/41.
+    + command bridge [112], command bridge [cbridg].
+      size: 800, mass: 376 (300), energy: 5, crew: 1/2.
+      hit points: 55/55, attack: 5, initiative: 5 (0).
+        #1 hit points: 55/55.
+      + Caste Prime CEO [000001], terran [terran].
+        mass: 4, attack: 5, initiative: 5.
+        skills: armor platoon leader [arpldr] (attack: 5, initiative: 5).
+    + fission reactor [113], fission reactor [fisrec].
+      size: 400, mass: 162 (140), energy: 60/10, crew: 1/1.
+      hit points: 45/45, attack: 2.
+        #1 hit points: 45/45.
+    + reaction drive [114], reaction drive [rctdrv].
+      size: 600, mass: 10000/742 (700), energy: 30, crew: 1/1.
+      hit points: 65/65.
+        #1 hit points: 65/65.
+    + computer library [115], computer library [cmplib].
+      size: 200, mass: 50 (50), energy: 5.
+      hit points: 50/50.
+        #1 hit points: 50/50.
+    + fighter drone bay [206], fighter drone bay [drnbay].
+      size: 400, mass: 300 (300), energy: 5.
+      hit points: 60/60.
+        #1 hit points: 60/60.
   + alien fighter drone [450], 4 alien fighter drones [alndrn].
     size: 320, mass: 3000/320 (320).
-    hit points: 32/13, attack: 8, defense: 2, initiative: 110.
+    hit points: 32/32, attack: 16, defense: 4, initiative: 110.
     tactics: destroy, prioritize armed.
       #1 hit points: 8/8.
-      #2 hit points: 8/0, destroyed, effects: disabled.
-      #3 hit points: 8/5, lightly damaged.
-      #4 hit points: 8/0, destroyed, effects: disabled.
+      #2 hit points: 8/8.
+      #3 hit points: 8/8.
+      #4 hit points: 8/8.
   Defenders:
   - space shuttle [117], space shuttle [shuttl], disabled, immobile, owned by Gelvaren [3].
     size: 200.
@@ -4122,14 +3962,42 @@ Battles report:
   Round 5:
   ------------------------------------------------------------
   Attackers:
+  + spaceship hull [101], spaceship hull [sshull].
+    size: 5000, mass: 10000/1730 (100), energy: 60/56 (1), crew: 3/4.
+    hit points: 325/316 (50/41), attack: 7 (0), defense: 10, initiative: 75 (70).
+    tactics: destroy, prioritize armed.
+      #1 hit points: 50/41.
+    + command bridge [112], command bridge [cbridg].
+      size: 800, mass: 376 (300), energy: 5, crew: 1/2.
+      hit points: 55/55, attack: 5, initiative: 5 (0).
+        #1 hit points: 55/55.
+      + Caste Prime CEO [000001], terran [terran].
+        mass: 4, attack: 5, initiative: 5.
+        skills: armor platoon leader [arpldr] (attack: 5, initiative: 5).
+    + fission reactor [113], fission reactor [fisrec].
+      size: 400, mass: 162 (140), energy: 60/10, crew: 1/1.
+      hit points: 45/45, attack: 2.
+        #1 hit points: 45/45.
+    + reaction drive [114], reaction drive [rctdrv].
+      size: 600, mass: 10000/742 (700), energy: 30, crew: 1/1.
+      hit points: 65/65.
+        #1 hit points: 65/65.
+    + computer library [115], computer library [cmplib].
+      size: 200, mass: 50 (50), energy: 5.
+      hit points: 50/50.
+        #1 hit points: 50/50.
+    + fighter drone bay [206], fighter drone bay [drnbay].
+      size: 400, mass: 300 (300), energy: 5.
+      hit points: 60/60.
+        #1 hit points: 60/60.
   + alien fighter drone [450], 4 alien fighter drones [alndrn].
     size: 320, mass: 3000/320 (320).
-    hit points: 32/13, attack: 8, defense: 2, initiative: 110.
+    hit points: 32/32, attack: 16, defense: 4, initiative: 110.
     tactics: destroy, prioritize armed.
       #1 hit points: 8/8.
-      #2 hit points: 8/0, destroyed, effects: disabled.
-      #3 hit points: 8/5, lightly damaged.
-      #4 hit points: 8/0, destroyed, effects: disabled.
+      #2 hit points: 8/8.
+      #3 hit points: 8/8.
+      #4 hit points: 8/8.
   Defenders:
   - space shuttle [117], space shuttle [shuttl], disabled, immobile, owned by Gelvaren [3].
     size: 200.
@@ -4145,14 +4013,42 @@ Battles report:
   Round 6:
   ------------------------------------------------------------
   Attackers:
+  + spaceship hull [101], spaceship hull [sshull].
+    size: 5000, mass: 10000/1730 (100), energy: 60/56 (1), crew: 3/4.
+    hit points: 325/316 (50/41), attack: 7 (0), defense: 10, initiative: 75 (70).
+    tactics: destroy, prioritize armed.
+      #1 hit points: 50/41.
+    + command bridge [112], command bridge [cbridg].
+      size: 800, mass: 376 (300), energy: 5, crew: 1/2.
+      hit points: 55/55, attack: 5, initiative: 5 (0).
+        #1 hit points: 55/55.
+      + Caste Prime CEO [000001], terran [terran].
+        mass: 4, attack: 5, initiative: 5.
+        skills: armor platoon leader [arpldr] (attack: 5, initiative: 5).
+    + fission reactor [113], fission reactor [fisrec].
+      size: 400, mass: 162 (140), energy: 60/10, crew: 1/1.
+      hit points: 45/45, attack: 2.
+        #1 hit points: 45/45.
+    + reaction drive [114], reaction drive [rctdrv].
+      size: 600, mass: 10000/742 (700), energy: 30, crew: 1/1.
+      hit points: 65/65.
+        #1 hit points: 65/65.
+    + computer library [115], computer library [cmplib].
+      size: 200, mass: 50 (50), energy: 5.
+      hit points: 50/50.
+        #1 hit points: 50/50.
+    + fighter drone bay [206], fighter drone bay [drnbay].
+      size: 400, mass: 300 (300), energy: 5.
+      hit points: 60/60.
+        #1 hit points: 60/60.
   + alien fighter drone [450], 4 alien fighter drones [alndrn].
     size: 320, mass: 3000/320 (320).
-    hit points: 32/13, attack: 8, defense: 2, initiative: 110.
+    hit points: 32/32, attack: 16, defense: 4, initiative: 110.
     tactics: destroy, prioritize armed.
       #1 hit points: 8/8.
-      #2 hit points: 8/0, destroyed, effects: disabled.
-      #3 hit points: 8/5, lightly damaged.
-      #4 hit points: 8/0, destroyed, effects: disabled.
+      #2 hit points: 8/8.
+      #3 hit points: 8/8.
+      #4 hit points: 8/8.
   Defenders:
   - space shuttle [117], space shuttle [shuttl], disabled, immobile, owned by Gelvaren [3].
     size: 200.
@@ -4168,14 +4064,42 @@ Battles report:
   Round 7:
   ------------------------------------------------------------
   Attackers:
+  + spaceship hull [101], spaceship hull [sshull].
+    size: 5000, mass: 10000/1730 (100), energy: 60/56 (1), crew: 3/4.
+    hit points: 325/316 (50/41), attack: 7 (0), defense: 10, initiative: 75 (70).
+    tactics: destroy, prioritize armed.
+      #1 hit points: 50/41.
+    + command bridge [112], command bridge [cbridg].
+      size: 800, mass: 376 (300), energy: 5, crew: 1/2.
+      hit points: 55/55, attack: 5, initiative: 5 (0).
+        #1 hit points: 55/55.
+      + Caste Prime CEO [000001], terran [terran].
+        mass: 4, attack: 5, initiative: 5.
+        skills: armor platoon leader [arpldr] (attack: 5, initiative: 5).
+    + fission reactor [113], fission reactor [fisrec].
+      size: 400, mass: 162 (140), energy: 60/10, crew: 1/1.
+      hit points: 45/45, attack: 2.
+        #1 hit points: 45/45.
+    + reaction drive [114], reaction drive [rctdrv].
+      size: 600, mass: 10000/742 (700), energy: 30, crew: 1/1.
+      hit points: 65/65.
+        #1 hit points: 65/65.
+    + computer library [115], computer library [cmplib].
+      size: 200, mass: 50 (50), energy: 5.
+      hit points: 50/50.
+        #1 hit points: 50/50.
+    + fighter drone bay [206], fighter drone bay [drnbay].
+      size: 400, mass: 300 (300), energy: 5.
+      hit points: 60/60.
+        #1 hit points: 60/60.
   + alien fighter drone [450], 4 alien fighter drones [alndrn].
     size: 320, mass: 3000/320 (320).
-    hit points: 32/13, attack: 8, defense: 2, initiative: 110.
+    hit points: 32/32, attack: 16, defense: 4, initiative: 110.
     tactics: destroy, prioritize armed.
       #1 hit points: 8/8.
-      #2 hit points: 8/0, destroyed, effects: disabled.
-      #3 hit points: 8/5, lightly damaged.
-      #4 hit points: 8/0, destroyed, effects: disabled.
+      #2 hit points: 8/8.
+      #3 hit points: 8/8.
+      #4 hit points: 8/8.
   Defenders:
   - space shuttle [117], space shuttle [shuttl], disabled, immobile, owned by Gelvaren [3].
     size: 200.
@@ -4191,14 +4115,42 @@ Battles report:
   Round 8:
   ------------------------------------------------------------
   Attackers:
+  + spaceship hull [101], spaceship hull [sshull].
+    size: 5000, mass: 10000/1730 (100), energy: 60/56 (1), crew: 3/4.
+    hit points: 325/316 (50/41), attack: 7 (0), defense: 10, initiative: 75 (70).
+    tactics: destroy, prioritize armed.
+      #1 hit points: 50/41.
+    + command bridge [112], command bridge [cbridg].
+      size: 800, mass: 376 (300), energy: 5, crew: 1/2.
+      hit points: 55/55, attack: 5, initiative: 5 (0).
+        #1 hit points: 55/55.
+      + Caste Prime CEO [000001], terran [terran].
+        mass: 4, attack: 5, initiative: 5.
+        skills: armor platoon leader [arpldr] (attack: 5, initiative: 5).
+    + fission reactor [113], fission reactor [fisrec].
+      size: 400, mass: 162 (140), energy: 60/10, crew: 1/1.
+      hit points: 45/45, attack: 2.
+        #1 hit points: 45/45.
+    + reaction drive [114], reaction drive [rctdrv].
+      size: 600, mass: 10000/742 (700), energy: 30, crew: 1/1.
+      hit points: 65/65.
+        #1 hit points: 65/65.
+    + computer library [115], computer library [cmplib].
+      size: 200, mass: 50 (50), energy: 5.
+      hit points: 50/50.
+        #1 hit points: 50/50.
+    + fighter drone bay [206], fighter drone bay [drnbay].
+      size: 400, mass: 300 (300), energy: 5.
+      hit points: 60/60.
+        #1 hit points: 60/60.
   + alien fighter drone [450], 4 alien fighter drones [alndrn].
     size: 320, mass: 3000/320 (320).
-    hit points: 32/13, attack: 8, defense: 2, initiative: 110.
+    hit points: 32/32, attack: 16, defense: 4, initiative: 110.
     tactics: destroy, prioritize armed.
       #1 hit points: 8/8.
-      #2 hit points: 8/0, destroyed, effects: disabled.
-      #3 hit points: 8/5, lightly damaged.
-      #4 hit points: 8/0, destroyed, effects: disabled.
+      #2 hit points: 8/8.
+      #3 hit points: 8/8.
+      #4 hit points: 8/8.
   Defenders:
   - space shuttle [117], space shuttle [shuttl], disabled, immobile, owned by Gelvaren [3].
     size: 200.
@@ -4214,14 +4166,42 @@ Battles report:
   Round 9:
   ------------------------------------------------------------
   Attackers:
+  + spaceship hull [101], spaceship hull [sshull].
+    size: 5000, mass: 10000/1730 (100), energy: 60/56 (1), crew: 3/4.
+    hit points: 325/316 (50/41), attack: 7 (0), defense: 10, initiative: 75 (70).
+    tactics: destroy, prioritize armed.
+      #1 hit points: 50/41.
+    + command bridge [112], command bridge [cbridg].
+      size: 800, mass: 376 (300), energy: 5, crew: 1/2.
+      hit points: 55/55, attack: 5, initiative: 5 (0).
+        #1 hit points: 55/55.
+      + Caste Prime CEO [000001], terran [terran].
+        mass: 4, attack: 5, initiative: 5.
+        skills: armor platoon leader [arpldr] (attack: 5, initiative: 5).
+    + fission reactor [113], fission reactor [fisrec].
+      size: 400, mass: 162 (140), energy: 60/10, crew: 1/1.
+      hit points: 45/45, attack: 2.
+        #1 hit points: 45/45.
+    + reaction drive [114], reaction drive [rctdrv].
+      size: 600, mass: 10000/742 (700), energy: 30, crew: 1/1.
+      hit points: 65/65.
+        #1 hit points: 65/65.
+    + computer library [115], computer library [cmplib].
+      size: 200, mass: 50 (50), energy: 5.
+      hit points: 50/50.
+        #1 hit points: 50/50.
+    + fighter drone bay [206], fighter drone bay [drnbay].
+      size: 400, mass: 300 (300), energy: 5.
+      hit points: 60/60.
+        #1 hit points: 60/60.
   + alien fighter drone [450], 4 alien fighter drones [alndrn].
     size: 320, mass: 3000/320 (320).
-    hit points: 32/13, attack: 8, defense: 2, initiative: 110.
+    hit points: 32/32, attack: 16, defense: 4, initiative: 110.
     tactics: destroy, prioritize armed.
       #1 hit points: 8/8.
-      #2 hit points: 8/0, destroyed, effects: disabled.
-      #3 hit points: 8/5, lightly damaged.
-      #4 hit points: 8/0, destroyed, effects: disabled.
+      #2 hit points: 8/8.
+      #3 hit points: 8/8.
+      #4 hit points: 8/8.
   Defenders:
   - space shuttle [117], space shuttle [shuttl], disabled, immobile, owned by Gelvaren [3].
     size: 200.
@@ -4237,14 +4217,42 @@ Battles report:
   Round 10:
   ------------------------------------------------------------
   Attackers:
+  + spaceship hull [101], spaceship hull [sshull].
+    size: 5000, mass: 10000/1730 (100), energy: 60/56 (1), crew: 3/4.
+    hit points: 325/316 (50/41), attack: 7 (0), defense: 10, initiative: 75 (70).
+    tactics: destroy, prioritize armed.
+      #1 hit points: 50/41.
+    + command bridge [112], command bridge [cbridg].
+      size: 800, mass: 376 (300), energy: 5, crew: 1/2.
+      hit points: 55/55, attack: 5, initiative: 5 (0).
+        #1 hit points: 55/55.
+      + Caste Prime CEO [000001], terran [terran].
+        mass: 4, attack: 5, initiative: 5.
+        skills: armor platoon leader [arpldr] (attack: 5, initiative: 5).
+    + fission reactor [113], fission reactor [fisrec].
+      size: 400, mass: 162 (140), energy: 60/10, crew: 1/1.
+      hit points: 45/45, attack: 2.
+        #1 hit points: 45/45.
+    + reaction drive [114], reaction drive [rctdrv].
+      size: 600, mass: 10000/742 (700), energy: 30, crew: 1/1.
+      hit points: 65/65.
+        #1 hit points: 65/65.
+    + computer library [115], computer library [cmplib].
+      size: 200, mass: 50 (50), energy: 5.
+      hit points: 50/50.
+        #1 hit points: 50/50.
+    + fighter drone bay [206], fighter drone bay [drnbay].
+      size: 400, mass: 300 (300), energy: 5.
+      hit points: 60/60.
+        #1 hit points: 60/60.
   + alien fighter drone [450], 4 alien fighter drones [alndrn].
     size: 320, mass: 3000/320 (320).
-    hit points: 32/13, attack: 8, defense: 2, initiative: 110.
+    hit points: 32/32, attack: 16, defense: 4, initiative: 110.
     tactics: destroy, prioritize armed.
       #1 hit points: 8/8.
-      #2 hit points: 8/0, destroyed, effects: disabled.
-      #3 hit points: 8/5, lightly damaged.
-      #4 hit points: 8/0, destroyed, effects: disabled.
+      #2 hit points: 8/8.
+      #3 hit points: 8/8.
+      #4 hit points: 8/8.
   Defenders:
   - space shuttle [117], space shuttle [shuttl], disabled, immobile, owned by Gelvaren [3].
     size: 200.
@@ -4258,6 +4266,353 @@ Battles report:
   ------------------------------------------------------------
   ------------------------------------------------------------
   Battle ended indecisively.
+
+  Week 9.
+  Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
+  [ocean] in system Sol [SS0001] (0, 0, 0).
+  ------------------------------------------------------------
+  Round 1:
+  ------------------------------------------------------------
+  Attackers:
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/224, attack: 17, defense: 12, initiative: 5 (0).
+      #1 hit points: 100/62, lightly damaged.
+      #2 hit points: 100/62, lightly damaged.
+      #3 hit points: 100/100.
+    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
+    size: 500.
+    hit points: 50/50, attack: 6, defense: 1, initiative: 5 (0).
+      #1 hit points: 50/50.
+    - terran officer [107], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  Defenders:
+  + factory [000017], 5 factories [factry], disabled, immobile.
+    size: 5000, mass: 4134 (3750).
+    hit points: 500/228.
+    items: 46 terrans [terran], 20 units of iron [iron].
+      #1 hit points: 100/44, heavily damaged, effects: disabled.
+      #2 hit points: 100/49, heavily damaged, effects: disabled.
+      #3 hit points: 100/48, heavily damaged, effects: disabled.
+      #4 hit points: 100/43, heavily damaged, effects: disabled.
+      #5 hit points: 100/44, heavily damaged, effects: disabled.
+  + gun placement [111], gun placement [gunplc], disabled, immobile.
+    size: 100, mass: 504 (500), crew: 2/1.
+    hit points: 100/59, attack: 1, defense: 1.
+    items: terran [terran].
+      #1 hit points: 100/59, lightly damaged, effects: inactive.
+  ------------------------------------------------------------
+  ------------------------------------------------------------
+  Round 2:
+  ------------------------------------------------------------
+  Attackers:
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/224, attack: 17, defense: 12, initiative: 5 (0).
+      #1 hit points: 100/62, lightly damaged.
+      #2 hit points: 100/62, lightly damaged.
+      #3 hit points: 100/100.
+    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
+    size: 500.
+    hit points: 50/50, attack: 6, defense: 1, initiative: 5 (0).
+      #1 hit points: 50/50.
+    - terran officer [107], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  Defenders:
+  + factory [000017], 5 factories [factry], disabled, immobile.
+    size: 5000, mass: 4134 (3750).
+    hit points: 500/228.
+    items: 46 terrans [terran], 20 units of iron [iron].
+      #1 hit points: 100/44, heavily damaged, effects: disabled.
+      #2 hit points: 100/49, heavily damaged, effects: disabled.
+      #3 hit points: 100/48, heavily damaged, effects: disabled.
+      #4 hit points: 100/43, heavily damaged, effects: disabled.
+      #5 hit points: 100/44, heavily damaged, effects: disabled.
+  + gun placement [111], gun placement [gunplc], disabled, immobile.
+    size: 100, mass: 504 (500), crew: 2/1.
+    hit points: 100/59, attack: 1, defense: 1.
+    items: terran [terran].
+      #1 hit points: 100/59, lightly damaged, effects: inactive.
+  ------------------------------------------------------------
+  ------------------------------------------------------------
+  Round 3:
+  ------------------------------------------------------------
+  Attackers:
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/224, attack: 17, defense: 12, initiative: 5 (0).
+      #1 hit points: 100/62, lightly damaged.
+      #2 hit points: 100/62, lightly damaged.
+      #3 hit points: 100/100.
+    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
+    size: 500.
+    hit points: 50/50, attack: 6, defense: 1, initiative: 5 (0).
+      #1 hit points: 50/50.
+    - terran officer [107], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  Defenders:
+  + factory [000017], 5 factories [factry], disabled, immobile.
+    size: 5000, mass: 4134 (3750).
+    hit points: 500/228.
+    items: 46 terrans [terran], 20 units of iron [iron].
+      #1 hit points: 100/44, heavily damaged, effects: disabled.
+      #2 hit points: 100/49, heavily damaged, effects: disabled.
+      #3 hit points: 100/48, heavily damaged, effects: disabled.
+      #4 hit points: 100/43, heavily damaged, effects: disabled.
+      #5 hit points: 100/44, heavily damaged, effects: disabled.
+  + gun placement [111], gun placement [gunplc], disabled, immobile.
+    size: 100, mass: 504 (500), crew: 2/1.
+    hit points: 100/59, attack: 1, defense: 1.
+    items: terran [terran].
+      #1 hit points: 100/59, lightly damaged, effects: inactive.
+  ------------------------------------------------------------
+  ------------------------------------------------------------
+  Round 4:
+  ------------------------------------------------------------
+  Attackers:
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/224, attack: 17, defense: 12, initiative: 5 (0).
+      #1 hit points: 100/62, lightly damaged.
+      #2 hit points: 100/62, lightly damaged.
+      #3 hit points: 100/100.
+    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
+    size: 500.
+    hit points: 50/50, attack: 6, defense: 1, initiative: 5 (0).
+      #1 hit points: 50/50.
+    - terran officer [107], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  Defenders:
+  + factory [000017], 5 factories [factry], disabled, immobile.
+    size: 5000, mass: 4134 (3750).
+    hit points: 500/228.
+    items: 46 terrans [terran], 20 units of iron [iron].
+      #1 hit points: 100/44, heavily damaged, effects: disabled.
+      #2 hit points: 100/49, heavily damaged, effects: disabled.
+      #3 hit points: 100/48, heavily damaged, effects: disabled.
+      #4 hit points: 100/43, heavily damaged, effects: disabled.
+      #5 hit points: 100/44, heavily damaged, effects: disabled.
+  + gun placement [111], gun placement [gunplc], disabled, immobile.
+    size: 100, mass: 504 (500), crew: 2/1.
+    hit points: 100/59, attack: 1, defense: 1.
+    items: terran [terran].
+      #1 hit points: 100/59, lightly damaged, effects: inactive.
+  ------------------------------------------------------------
+  ------------------------------------------------------------
+  Round 5:
+  ------------------------------------------------------------
+  Attackers:
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/224, attack: 17, defense: 12, initiative: 5 (0).
+      #1 hit points: 100/62, lightly damaged.
+      #2 hit points: 100/62, lightly damaged.
+      #3 hit points: 100/100.
+    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
+    size: 500.
+    hit points: 50/50, attack: 6, defense: 1, initiative: 5 (0).
+      #1 hit points: 50/50.
+    - terran officer [107], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  Defenders:
+  + factory [000017], 5 factories [factry], disabled, immobile.
+    size: 5000, mass: 4134 (3750).
+    hit points: 500/228.
+    items: 46 terrans [terran], 20 units of iron [iron].
+      #1 hit points: 100/44, heavily damaged, effects: disabled.
+      #2 hit points: 100/49, heavily damaged, effects: disabled.
+      #3 hit points: 100/48, heavily damaged, effects: disabled.
+      #4 hit points: 100/43, heavily damaged, effects: disabled.
+      #5 hit points: 100/44, heavily damaged, effects: disabled.
+  + gun placement [111], gun placement [gunplc], disabled, immobile.
+    size: 100, mass: 504 (500), crew: 2/1.
+    hit points: 100/59, attack: 1, defense: 1.
+    items: terran [terran].
+      #1 hit points: 100/59, lightly damaged, effects: inactive.
+  ------------------------------------------------------------
+  ------------------------------------------------------------
+  Round 6:
+  ------------------------------------------------------------
+  Attackers:
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/224, attack: 17, defense: 12, initiative: 5 (0).
+      #1 hit points: 100/62, lightly damaged.
+      #2 hit points: 100/62, lightly damaged.
+      #3 hit points: 100/100.
+    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
+    size: 500.
+    hit points: 50/50, attack: 6, defense: 1, initiative: 5 (0).
+      #1 hit points: 50/50.
+    - terran officer [107], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  Defenders:
+  + factory [000017], 5 factories [factry], disabled, immobile.
+    size: 5000, mass: 4134 (3750).
+    hit points: 500/228.
+    items: 46 terrans [terran], 20 units of iron [iron].
+      #1 hit points: 100/44, heavily damaged, effects: disabled.
+      #2 hit points: 100/49, heavily damaged, effects: disabled.
+      #3 hit points: 100/48, heavily damaged, effects: disabled.
+      #4 hit points: 100/43, heavily damaged, effects: disabled.
+      #5 hit points: 100/44, heavily damaged, effects: disabled.
+  + gun placement [111], gun placement [gunplc], disabled, immobile.
+    size: 100, mass: 504 (500), crew: 2/1.
+    hit points: 100/59, attack: 1, defense: 1.
+    items: terran [terran].
+      #1 hit points: 100/59, lightly damaged, effects: inactive.
+  ------------------------------------------------------------
+  ------------------------------------------------------------
+  Round 7:
+  ------------------------------------------------------------
+  Attackers:
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/224, attack: 17, defense: 12, initiative: 5 (0).
+      #1 hit points: 100/62, lightly damaged.
+      #2 hit points: 100/62, lightly damaged.
+      #3 hit points: 100/100.
+    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
+    size: 500.
+    hit points: 50/50, attack: 6, defense: 1, initiative: 5 (0).
+      #1 hit points: 50/50.
+    - terran officer [107], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  Defenders:
+  + factory [000017], 5 factories [factry], disabled, immobile.
+    size: 5000, mass: 4134 (3750).
+    hit points: 500/228.
+    items: 46 terrans [terran], 20 units of iron [iron].
+      #1 hit points: 100/44, heavily damaged, effects: disabled.
+      #2 hit points: 100/49, heavily damaged, effects: disabled.
+      #3 hit points: 100/48, heavily damaged, effects: disabled.
+      #4 hit points: 100/43, heavily damaged, effects: disabled.
+      #5 hit points: 100/44, heavily damaged, effects: disabled.
+  + gun placement [111], gun placement [gunplc], disabled, immobile.
+    size: 100, mass: 504 (500), crew: 2/1.
+    hit points: 100/59, attack: 1, defense: 1.
+    items: terran [terran].
+      #1 hit points: 100/59, lightly damaged, effects: inactive.
+  ------------------------------------------------------------
+  ------------------------------------------------------------
+  Round 8:
+  ------------------------------------------------------------
+  Attackers:
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/224, attack: 17, defense: 12, initiative: 5 (0).
+      #1 hit points: 100/62, lightly damaged.
+      #2 hit points: 100/62, lightly damaged.
+      #3 hit points: 100/100.
+    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
+    size: 500.
+    hit points: 50/50, attack: 6, defense: 1, initiative: 5 (0).
+      #1 hit points: 50/50.
+    - terran officer [107], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  Defenders:
+  + factory [000017], 5 factories [factry], disabled, immobile.
+    size: 5000, mass: 4134 (3750).
+    hit points: 500/228.
+    items: 46 terrans [terran], 20 units of iron [iron].
+      #1 hit points: 100/44, heavily damaged, effects: disabled.
+      #2 hit points: 100/49, heavily damaged, effects: disabled.
+      #3 hit points: 100/48, heavily damaged, effects: disabled.
+      #4 hit points: 100/43, heavily damaged, effects: disabled.
+      #5 hit points: 100/44, heavily damaged, effects: disabled.
+  + gun placement [111], gun placement [gunplc], disabled, immobile.
+    size: 100, mass: 504 (500), crew: 2/1.
+    hit points: 100/59, attack: 1, defense: 1.
+    items: terran [terran].
+      #1 hit points: 100/59, lightly damaged, effects: inactive.
+  ------------------------------------------------------------
+  ------------------------------------------------------------
+  Round 9:
+  ------------------------------------------------------------
+  Attackers:
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/224, attack: 17, defense: 12, initiative: 5 (0).
+      #1 hit points: 100/62, lightly damaged.
+      #2 hit points: 100/62, lightly damaged.
+      #3 hit points: 100/100.
+    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
+    size: 500.
+    hit points: 50/50, attack: 6, defense: 1, initiative: 5 (0).
+      #1 hit points: 50/50.
+    - terran officer [107], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  Defenders:
+  + factory [000017], 5 factories [factry], disabled, immobile.
+    size: 5000, mass: 4134 (3750).
+    hit points: 500/228.
+    items: 46 terrans [terran], 20 units of iron [iron].
+      #1 hit points: 100/44, heavily damaged, effects: disabled.
+      #2 hit points: 100/49, heavily damaged, effects: disabled.
+      #3 hit points: 100/48, heavily damaged, effects: disabled.
+      #4 hit points: 100/43, heavily damaged, effects: disabled.
+      #5 hit points: 100/44, heavily damaged, effects: disabled.
+  + gun placement [111], gun placement [gunplc], disabled, immobile.
+    size: 100, mass: 504 (500), crew: 2/1.
+    hit points: 100/59, attack: 1, defense: 1.
+    items: terran [terran].
+      #1 hit points: 100/59, lightly damaged, effects: inactive.
+  ------------------------------------------------------------
+  ------------------------------------------------------------
+  Round 10:
+  ------------------------------------------------------------
+  Attackers:
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/224, attack: 17, defense: 12, initiative: 5 (0).
+      #1 hit points: 100/62, lightly damaged.
+      #2 hit points: 100/62, lightly damaged.
+      #3 hit points: 100/100.
+    - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
+    size: 500.
+    hit points: 50/50, attack: 6, defense: 1, initiative: 5 (0).
+      #1 hit points: 50/50.
+    - terran officer [107], terran [terran], working for Gelvaren [3].
+      attack: 5, initiative: 5.
+  Defenders:
+  + factory [000017], 5 factories [factry], disabled, immobile.
+    size: 5000, mass: 4134 (3750).
+    hit points: 500/228.
+    items: 46 terrans [terran], 20 units of iron [iron].
+      #1 hit points: 100/44, heavily damaged, effects: disabled.
+      #2 hit points: 100/49, heavily damaged, effects: disabled.
+      #3 hit points: 100/48, heavily damaged, effects: disabled.
+      #4 hit points: 100/43, heavily damaged, effects: disabled.
+      #5 hit points: 100/44, heavily damaged, effects: disabled.
+  + gun placement [111], gun placement [gunplc], disabled, immobile.
+    size: 100, mass: 504 (500), crew: 2/1.
+    hit points: 100/59, attack: 1, defense: 1.
+    items: terran [terran].
+      #1 hit points: 100/59, lightly damaged, effects: inactive.
+  ------------------------------------------------------------
+  ------------------------------------------------------------
+  Battle ended indecisively.
+
   Week 10.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
@@ -4603,6 +4958,7 @@ Battles report:
   ------------------------------------------------------------
   ------------------------------------------------------------
   Battle ended indecisively.
+
   Week 11.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
@@ -4948,6 +5304,7 @@ Battles report:
   ------------------------------------------------------------
   ------------------------------------------------------------
   Battle ended indecisively.
+
   Week 12.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
@@ -5293,6 +5650,7 @@ Battles report:
   ------------------------------------------------------------
   ------------------------------------------------------------
   Battle ended indecisively.
+
   Week 13.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
@@ -5651,13 +6009,28 @@ Galaxy report:
 ------------------------------------------------------------
   orbit [O00002], has atmosphere suitable for terran [terran].
   + spaceship hull [101], spaceship hull [sshull].
-    size: 5000, mass: 10000/1422 (100), capacity: 4500/2000, energy: 60/51 (1), crew: 3/4, upkeep:
-    324 (20) cash [cash], consume: 4 (0) units of food [food], 4 (0) units of terran breathing gas
+    size: 5000, mass: 10000/1722 (100), capacity: 4500/2400, energy: 60/56 (1), crew: 3/4, upkeep:
+    364 (20) cash [cash], consume: 4 (0) units of food [food], 4 (0) units of terran breathing gas
     mixture [terair].
+    hit points: 50/41.
+      #1 hit points: 50/41.
     events:
       week 1: declared enemy toward faction 3.
-      week 1: departed from orbit [O00001] to orbit [O00002], ETA 0.
-      week 1: arrived at orbit [O00002] from orbit [O00001].
+      week 1: declared 117 an enemy and will attack.
+      week 1: set tactic to destroy.
+      week 1: set tactic to prioritize armed.
+      week 1: departed from orbit [O00001] to Dusty field [R00001] (0,0), ETA 0.
+      week 1: arrived at Dusty field [R00001] (0,0) from orbit [O00001].
+      week 1: has 1 drnbay modules (needed 1).
+      week 2: departed from Dusty field [R00001] (0,0) to orbit [O00001], ETA 0.
+      week 2: arrived at orbit [O00001] from Dusty field [R00001] (0,0).
+      week 3: departed from orbit [O00001] to orbit [O00002], ETA 0.
+      week 3: arrived at orbit [O00002] from orbit [O00001].
+      week 8: initiated battle against space shuttle [117]
+      week 8: engaged in battle
+      week 9: initiated battle against space shuttle [117]
+      week 9: engaged in battle
+      week 13: paid 20 cash [cash] upkeep.
     + command bridge [112], command bridge [cbridg].
       size: 800, mass: 372 (300), capacity: 200/72, energy: 5, crew: 1/2, upkeep: 111 (100) cash
       [cash], consume: 2 (0) units of food [food], 2 (0) units of terran breathing gas mixture
@@ -5665,6 +6038,8 @@ Galaxy report:
       items: terran [terran] (size: 4, mass: 4, upkeep: cash [cash], consume: unit of food [food],
       unit of terran breathing gas mixture [terair]), 32 units of food [food] (size: 32, mass: 32),
       32 units of terran breathing gas mixture [terair] (size: 32, mass: 32).
+      events:
+        week 13: paid 111 cash [cash] upkeep.
       + Caste Prime CEO [000001], terran [terran].
         size: 4, mass: 4, capacity: 3/0, upkeep: 10 cash [cash], consume: unit of food [food], unit
         of terran breathing gas mixture [terair].
@@ -5682,6 +6057,7 @@ Galaxy report:
         week 1: started energy production for the next 13 weeks.
         week 8: GET failed, tried to get unit of uranium [uraniu], but receiver is not present in
         this location.
+        week 13: paid 91 cash [cash] upkeep.
     + reaction drive [114], reaction drive [rctdrv].
       size: 600, mass: 10000/740 (700), capacity: 150/40, energy: 30, crew: 1/1, upkeep: 101 (100)
       cash [cash], consume: (0) unit of food [food], (0) unit of terran breathing gas mixture
@@ -5694,11 +6070,12 @@ Galaxy report:
       [terair] (size: 8, mass: 8).
       effects:
         can operate for another 1 weeks without refueling.
+      events:
+        week 13: paid 101 cash [cash] upkeep.
     + computer library [115], computer library [cmplib].
       size: 200, mass: 50 (50), energy: 5, upkeep: cash [cash].
       technologies: alien fighter construction [alnfgh].
       events:
-        week 1: RESEARCH failed: computer library [115] is not at crashed alien vessel [200].
         week 2: RESEARCH failed: computer library [115] is not at crashed alien vessel [200].
         week 3: RESEARCH failed: computer library [115] is not at crashed alien vessel [200].
         week 4: RESEARCH failed: computer library [115] is not at crashed alien vessel [200].
@@ -5711,13 +6088,17 @@ Galaxy report:
         week 11: RESEARCH failed: computer library [115] is not at crashed alien vessel [200].
         week 12: RESEARCH failed: computer library [115] is not at crashed alien vessel [200].
         week 13: RESEARCH failed: computer library [115] is not at crashed alien vessel [200].
+        week 13: paid 1 cash [cash] upkeep.
+    + fighter drone bay [206], fighter drone bay [drnbay].
+      size: 400, mass: 300 (300), capacity: 400/0, energy: 5, upkeep: 40 cash [cash].
+      technologies: drone hangar construction [drnhng].
+      events:
+        week 1: stacked out into Dusty field [R00001] (0,0).
+        week 1: saw spaceship hull [101] in Dusty field [R00001] (0,0).
+        week 1: stacked under spaceship hull [101].
+        week 13: paid 40 cash [cash] upkeep.
   + alien fighter drone [450], 4 alien fighter drones [alndrn].
     size: 320, mass: 3000/320 (320), capacity: 4/0, upkeep: 80 cash [cash].
-    hit points: 32/13.
-      #1 hit points: 8/8.
-      #2 hit points: 8/0, destroyed, disabled.
-      #3 hit points: 8/5, lightly damaged.
-      #4 hit points: 8/0, destroyed, disabled.
     movement speed: 2.3 in space.
     fuel requirements: 4 units of helium-3 [heliu3] per 13 weeks.
     effects:
@@ -5726,22 +6107,11 @@ Galaxy report:
       week 1: got 4 units of helium-3 [heliu3] from small cargo bay [205].
       week 1: GET failed. space shuttle [100] does not have units of helium-3 [heliu3].
       week 1: GET failed. small cargo bay [205] does not have units of helium-3 [heliu3].
-      week 1: stacked out into Dusty field [R00001] (0,0).
       week 1: set tactic to destroy.
       week 1: set tactic to prioritize armed.
-      week 1: declared enemy toward faction 3.
-      week 1: declared 117 an enemy and will attack.
-      week 1: departed from Dusty field [R00001] (0,0) to orbit [O00001], ETA 0.
-      week 1: consumed 4 units of helium-3 [heliu3] as fuel.
-      week 1: arrived at orbit [O00001] from Dusty field [R00001] (0,0).
-      week 2: departed from orbit [O00001] to orbit [O00002], ETA 0.
-      week 2: arrived at orbit [O00002] from orbit [O00001].
-      week 8: initiated battle against space shuttle [117], orbital rocket launcher [350]
-      week 8: engaged in battle
-      week 9: initiated battle against space shuttle [117]
+      week 2: consumed 4 units of helium-3 [heliu3] as fuel.
       week 9: engaged in battle
-      week 10: initiated battle against space shuttle [117]
-      week 10: engaged in battle
+      week 13: paid 80 cash [cash] upkeep.
   - space shuttle [117], space shuttle [shuttl], disabled, immobile, owned by Gelvaren [3].
     size: 200.
     - orbital rocket launcher [350], orbital rocket launcher [orbrkt], disabled, immobile, owned by
@@ -5822,6 +6192,7 @@ Galaxy report:
         week 11: engaged in battle
         week 12: engaged in battle
         week 13: engaged in battle
+        week 13: paid 346 cash [cash] upkeep.
     + gun placement [111], gun placement [gunplc], disabled, immobile.
       size: 100, mass: 504 (500), capacity: 100/4, crew: 2/1, upkeep: 11 (10) cash [cash], consume:
       (0) unit of food [food], (0) unit of terran breathing gas mixture [terair].
@@ -5843,6 +6214,7 @@ Galaxy report:
         week 11: engaged in battle
         week 12: engaged in battle
         week 13: engaged in battle
+        week 13: paid 11 cash [cash] upkeep.
     - corporate headquarters [c000012], corporate headquarters [corphq], immobile, owned by Gelvaren
       [3].
       size: 1000.
@@ -5916,28 +6288,37 @@ Galaxy report:
         can operate for another 3 weeks without refueling.
       events:
         week 1: given 4 units of helium-3 [heliu3] to small cargo bay [205].
+        week 13: paid 1031 cash [cash] upkeep.
         week 13: Lack of supplies: 15 unit of food [food].
-        week 13: 7 terrans [terran] wounded from lack of supplies.
+        week 13: 8 terrans [terran] wounded from lack of supplies.
         week 13: 4 wounded terrans [wndtrn] died of their wounds.
-        week 13: 2 wounded terrans [wndtrn] recovered from their wounds.
+        week 13: 3 wounded terrans [wndtrn] recovered from their wounds.
     + crashed alien vessel [200], alien vessel hull [alnhul], immobile.
-      size: 6500, mass: 10000/4447 (200), capacity: 6000/6300, energy: 80/68 (1), crew: 6/5, upkeep:
-      445 (20) cash [cash], consume: 5 (0) units of food [food], 5 (0) units of terran breathing gas
+      size: 6500, mass: 10000/4147 (200), capacity: 6000/5900, energy: 80/63 (1), crew: 6/5, upkeep:
+      405 (20) cash [cash], consume: 5 (0) units of food [food], 5 (0) units of terran breathing gas
       mixture [terair].
       technologies: advanced hull construction [ahlcns].
+      events:
+        week 13: paid 20 cash [cash] upkeep.
       + advanced robo-factory [201], advanced robo-factory [robofc], immobile.
         size: 1000, mass: 1020 (750), capacity: 500/135, energy: 15, upkeep: 60 cash [cash].
         technologies: automated fabrication [autfab], mineral core drilling [cdrill], uranium mining
         [uminng], helium-3 mining [he3min].
         items: 27 units of iron [iron] (size: 135, mass: 270).
+        events:
+          week 13: paid 60 cash [cash] upkeep.
       + automated command module [202], automated command module [autcmd], immobile.
         size: 800, mass: 300 (300), capacity: 200/0, energy: 5, upkeep: 80 cash [cash].
         technologies: automated command systems [autctl].
+        events:
+          week 13: paid 80 cash [cash] upkeep.
       + automated propulsion module [203], automated propulsion module [autdrv], immobile.
         size: 600, mass: 10000/700 (700), capacity: 150/0, energy: 30, upkeep: 80 cash [cash].
         movement speed: 14.3 in space.
         fuel requirements:  unit of oxyhydro [h2o2] per week.
         technologies: automated propulsion [autprp].
+        events:
+          week 13: paid 80 cash [cash] upkeep.
       + automated helium powerplant [204], automated helium powerplant [he3aut], immobile.
         size: 400, mass: 400 (400), energy: 80/5 (consume: 2 units of helium-3 [heliu3] for 13
         weeks), upkeep: 80 cash [cash].
@@ -5957,6 +6338,7 @@ Galaxy report:
           week 11: out of fuel.
           week 12: out of fuel.
           week 13: out of fuel.
+          week 13: paid 80 cash [cash] upkeep.
       + small cargo bay [205], small cargo bay [cargob], immobile.
         size: 2000, mass: 200 (200), capacity: 1800/0, upkeep: 30 cash [cash].
         technologies: small scale transportation [strans].
@@ -5964,9 +6346,7 @@ Galaxy report:
           week 1: got 4 units of helium-3 [heliu3] from space shuttle [100].
           week 1: GET failed. space shuttle [100] does not have units of helium-3 [heliu3].
           week 1: given 4 units of helium-3 [heliu3] to alien fighter drone [450].
-      + fighter drone bay [206], fighter drone bay [drnbay], immobile.
-        size: 400, mass: 300 (300), capacity: 400/0, energy: 5, upkeep: 40 cash [cash].
-        technologies: drone hangar construction [drnhng].
+          week 13: paid 30 cash [cash] upkeep.
       + life support system [250], life support system [lifsys], immobile.
         size: 100, mass: 299 (80), capacity: 40/219, energy: 2, upkeep: 10 cash [cash].
         items: 219 units of terran breathing gas mixture [terair] (size: 219, mass: 219).
@@ -5984,6 +6364,7 @@ Galaxy report:
           week 11: produced 10 units of terran breathing gas mixture [terair].
           week 12: produced 10 units of terran breathing gas mixture [terair].
           week 13: produced 10 units of terran breathing gas mixture [terair].
+          week 13: paid 10 cash [cash] upkeep.
       + core drill [251], core drill [cdrill], disabled, immobile.
         size: 1000, mass: 1028 (1000), capacity: 750/21, energy: 5, crew: 6/5, upkeep: 45 (40) cash
         [cash], consume: 5 (0) units of food [food], 5 (0) units of terran breathing gas mixture
@@ -5996,6 +6377,7 @@ Galaxy report:
           producing unit of uranium [uraniu], 3 weeks to complete.
         events:
           week 8: produced unit of uranium [uraniu].
+          week 13: paid 46 cash [cash] upkeep.
           week 13: Lack of supplies: 6 unit of food [food].
           week 13: 3 terrans [terran] wounded from lack of supplies.
           week 13: 1 wounded terran [wndtrn] died of their wounds.
@@ -6101,7 +6483,7 @@ give 4 heliu3 to 450
 get 4 heliu3 from 100
 
 #modulestack 206
-; + fighter drone bay [206], fighter drone bay [drnbay], immobile.
+; + fighter drone bay [206], fighter drone bay [drnbay].
 ; technologies: drone hangar construction [drnhng].
 
 #modulestack 250

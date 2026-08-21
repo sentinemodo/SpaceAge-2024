@@ -762,7 +762,8 @@ namespace SpaceAge
 			{
 				return false;
 			}
-			if (type.Group == EModuleTypesGroup.military)
+			if (type.Group == EModuleTypesGroup.military
+				|| type.Group == EModuleTypesGroup.shuttle)
 			{
 				return true;
 			}
@@ -2139,6 +2140,10 @@ namespace SpaceAge
 			foreach (ModuleStack modulestack in this.ModuleStacks.Values)
 			{
 				if (modulestack.IsHangarCraft)
+				{
+					continue;
+				}
+				if (modulestack.ModuleType != null && modulestack.ModuleType.IsDroneBay)
 				{
 					continue;
 				}

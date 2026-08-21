@@ -597,12 +597,14 @@ namespace UnitTests
 			ModuleStack attacker = new ModuleStack(region, attackerOwner, ModuleType.All["tanks"], "hangaratk");
 			attacker.AddModule();
 			attacker.ItemStacks.Add(new ItemStack(ItemType.All["terran"], 16));
+			attacker.ApplyPrioritizeTactic("prioritize command");
 			ModuleStack headquarters = new ModuleStack(region, defenderOwner, ModuleType.All["corphq"], "hangarhq");
 			headquarters.AddModule();
 			ModuleStack bay = new ModuleStack(headquarters, defenderOwner, ModuleType.All["drnbay"], "hangarbay");
 			bay.AddModule();
 			ModuleStack drones = new ModuleStack(bay, defenderOwner, ModuleType.All["alndrn"], "hangardrn");
 			drones.AddModule();
+			drones.ItemStacks.Add(new ItemStack(ItemType.All["heliu3"], 1));
 
 			Sequence.Rolls.Clear();
 			Sequence.Ints.Clear();
@@ -614,11 +616,16 @@ namespace UnitTests
 
 			Assert.That(drones.Parent, Is.EqualTo(region));
 			string report = string.Join("\n", battle.Report(defenderOwner).ToArray());
-			Assert.That(report, Does.Contain("launched from hangar"));
+			int roundOne = report.IndexOf("Round 1:", StringComparison.Ordinal);
 			int roundTwo = report.IndexOf("Round 2:", StringComparison.Ordinal);
-			Assert.That(roundTwo, Is.GreaterThan(0));
-			string roundOne = report.Substring(0, roundTwo);
-			Assert.That(roundOne, Does.Not.Contain("hangardrn] fires"));
+			Assert.That(roundOne, Is.GreaterThanOrEqualTo(0));
+			Assert.That(roundTwo, Is.GreaterThan(roundOne));
+			string beforeRounds = report.Substring(0, roundOne);
+			string roundOneText = report.Substring(roundOne, roundTwo - roundOne);
+			Assert.That(beforeRounds, Does.Not.Contain("launches"));
+			Assert.That(roundOneText, Does.Contain("hangarhq] launches alien fighter drone [hangardrn] from fighter drone bay [drnbay]"));
+			Assert.That(roundOneText, Does.Not.Contain("hangardrn] fires"));
+			Assert.That(report, Does.Not.Contain("fires fighter drone bay"));
 			Assert.That(report.Substring(roundTwo), Does.Contain("hangardrn] fires"));
 		}
 
@@ -824,5 +831,62 @@ namespace UnitTests
 			drone.AddModule();
 			Assert.That(drone.IsImmobile, Is.True);
 		}
+
+		[Test]
+		public void CollectDefenders_NestedWeaponOnSameRoot_IsNotASeparateCombatant()
+		{
+			Orbit orbit = Orbit.All["O00003"];
+			Faction dronesOwner = this.game.Factions["2"];
+			Faction shuttleOwner = this.game.Factions["1"];
+			shuttleOwner.Attitudes["2"] = FactionAttitude.Enemy;
+			dronesOwner.Attitudes["1"] = FactionAttitude.Enemy;
+
+			ModuleStack shuttle = new ModuleStack(orbit, shuttleOwner, ModuleType.All["shuttl"], "rptshut");
+			shuttle.AddModule();
+			shuttle.ItemStacks.Add(new ItemStack(ItemType.All["terran"], 2));
+			shuttle.ItemStacks.Add(new ItemStack(ItemType.All["uraniu"], 1));
+			shuttle.ItemStacks.Add(new ItemStack(ItemType.All["h2o2"], 1));
+			ModuleStack launcher = new ModuleStack(shuttle, shuttleOwner, ModuleType.All["orbrkt"], "rptlnch");
+			launcher.AddModule();
+			ModuleStack drones = new ModuleStack(orbit, dronesOwner, ModuleType.All["alndrn"], "rptdrn");
+			drones.AddModule();
+			drones.ItemStacks.Add(new ItemStack(ItemType.All["heliu3"], 1));
+
+			Battle battle = new Battle(drones, shuttle);
+
+			Assert.That(battle.Defenders.Contains("rptshut"), Is.True);
+			Assert.That(battle.Defenders.Contains("rptlnch"), Is.False, "nested launcher is listed under the shuttle, not twice");
+			string roster = string.Join("\n", shuttle.BattleReport(dronesOwner).ToArray());
+			Assert.That(roster, Does.Contain("rptlnch"));
+		}
+
+		[Test]
+		public void BattlesReport_BlankLineBetweenBattles()
+		{
+			ModuleStack frigate = ModuleStack.All["100011"];
+			ModuleStack station = ModuleStack.All["100021"];
+			Battle first = new Battle(frigate, station);
+			first.Week = 1;
+			Battle second = new Battle(frigate, station);
+			second.Week = 8;
+
+			Battles battles = new Battles();
+			battles.Add(first);
+			battles.Add(second);
+			List<string> lines = battles.Report(frigate.Owner);
+
+			int weekEight = -1;
+			for (int i = 0; i < lines.Count; i++)
+			{
+				if (lines[i].IndexOf("Week 8.") >= 0)
+				{
+					weekEight = i;
+					break;
+				}
+			}
+			Assert.That(weekEight, Is.GreaterThan(0));
+			Assert.That(lines[weekEight - 1], Is.EqualTo(""), "blank line between consecutive battles");
+		}
+
 	}
 }

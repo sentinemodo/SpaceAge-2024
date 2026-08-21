@@ -267,9 +267,14 @@ namespace SpaceAge
 			set { this.initiative = value; }
 		}
 
+		public bool IsShuttleUnit
+		{
+			get { return this.Group == EModuleTypesGroup.shuttle || this.name == "shuttl" || this.name == "alndrn"; }
+		}
+
 		public bool IsHangarCraft
 		{
-			get { return this.name == "alndrn" || this.name == "shuttl"; }
+			get { return this.IsShuttleUnit; }
 		}
 
 		public bool IsDroneBay

@@ -244,6 +244,12 @@ namespace SpaceAge
 					taken += this.takeFromBank(bill.Quantity - taken);
 				}
 				int shortfall = bill.Quantity - taken;
+				if (taken > 0)
+				{
+					this.EventReports.Add(
+						week,
+						string.Format("paid {0} {1} upkeep.", taken, bill.ItemType.ReportName));
+				}
 				if (shortfall > 0)
 				{
 					unpaid = true;

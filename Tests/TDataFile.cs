@@ -201,6 +201,10 @@ namespace UnitTests
 			Assert.That(alndrnModule.FuelDuration, Is.EqualTo(13));
 			Assert.That(alndrnModule.Fuel.ContainsKey(ItemType.All["heliu3"]));
 			Assert.That(alndrnModule.Fuel[ItemType.All["heliu3"]].Quantity, Is.EqualTo(1));
+			Assert.That(alndrnModule.Group, Is.EqualTo(EModuleTypesGroup.shuttle));
+			Assert.That(alndrnModule.IsShuttleUnit, Is.True);
+			Assert.That(ModuleType.All["shuttl"].IsShuttleUnit, Is.True);
+			Assert.That(ModuleType.All["orbrkt"].IsShuttleUnit, Is.False);
 
 			Assert.That(Technology.All["autfab"].Level, Is.EqualTo(2));
 			Assert.That(Technology.All["autfab"].UseProduceModules.Name, Is.EqualTo("robofc"));
@@ -1305,6 +1309,7 @@ namespace UnitTests
 			Assert.That(ModuleTypeGroupXml.Parse("spacestation"), Is.EqualTo(EModuleTypesGroup.spaceStation));
 			Assert.That(ModuleTypeGroupXml.Parse("spaceStation"), Is.EqualTo(EModuleTypesGroup.spaceStation));
 			Assert.That(ModuleTypeGroupXml.Parse("settlement"), Is.EqualTo(EModuleTypesGroup.settlement));
+			Assert.That(ModuleTypeGroupXml.Parse("shuttle"), Is.EqualTo(EModuleTypesGroup.shuttle));
 		}
 
 		[Test]

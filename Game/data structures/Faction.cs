@@ -239,7 +239,12 @@ namespace SpaceAge
 			// space objects types report
 
 			// declared diplomatic stances (before the bank report)
-			reportLines.AddRange(this.ReportDeclarations());
+			List<string> declarations = this.ReportDeclarations();
+			reportLines.AddRange(declarations);
+			if (declarations.Count > 0)
+			{
+				reportLines.Add("");
+			}
 
 			reportLines.AddRange(this.Bank.Report(this));
 

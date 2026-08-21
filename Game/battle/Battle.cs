@@ -133,6 +133,14 @@ namespace SpaceAge
 				}
 				else if (this.isDefenderStack(stack, target, initiator))
 				{
+					ModuleStack root = stack.RootModuleStack;
+					if (root != null
+						&& root != stack
+						&& root.HasIntactModules()
+						&& this.joinsDefense(root.Owner, initiator.Owner, target.Owner))
+					{
+						continue;
+					}
 					if (this.joinsDefense(stack.Owner, initiator.Owner, target.Owner))
 					{
 						side.Add(stack.Name, stack);
@@ -503,11 +511,16 @@ namespace SpaceAge
 		private List<ModuleStack> hitThisRound = new List<ModuleStack>();
 		private List<Module> pendingCaptures = new List<Module>();
 		private List<ModuleStack> launchedHangarCraft = new List<ModuleStack>();
+		private List<ModuleStack> hangarLaunchCarriers = new List<ModuleStack>();
 
 		private void executeAttack(ModuleStack modulestack)
 		{
 			string line;
 			if (this.round == 1 && this.launchedHangarCraft.Contains(modulestack))
+			{
+				return;
+			}
+			if (this.round == 1 && this.hangarLaunchCarriers.Contains(modulestack))
 			{
 				return;
 			}
@@ -862,8 +875,6 @@ namespace SpaceAge
 			this.attackers.AddEvent(week, "engaged in battle");
 			this.defenders.AddEvent(week, "engaged in battle");
 
-			this.launchHangarCraft();
-
 			this.round = 0;
 
 			while (!this.concluded)
@@ -887,6 +898,10 @@ namespace SpaceAge
 					{
 						this.report(faction, modulestack.BattleReport(faction));
 					}
+				}
+				if (this.round == 1)
+				{
+					this.launchHangarCraft();
 				}
 				this.report("------------------------------------------------------------");
 				this.hitThisRound.Clear();
@@ -990,12 +1005,23 @@ namespace SpaceAge
 			bool onAttack = Battle.sideContains(this.attackers, craft) || Battle.sideContains(this.attackers, root);
 			bool onDefense = Battle.sideContains(this.defenders, craft) || Battle.sideContains(this.defenders, root);
 
+			ModuleStack bay = craft.Parent as ModuleStack;
+			ModuleStack carrier = craft.RootModuleStack;
+			string bayName = bay != null && bay.ModuleType != null
+				? bay.ModuleType.ReportName
+				: "hangar";
+			string carrierName = carrier != null ? carrier.ReportName : craft.ReportName;
+
 			craft.Parent = craft.Location;
 			if (!this.launchedHangarCraft.Contains(craft))
 			{
 				this.launchedHangarCraft.Add(craft);
 			}
-			this.report(string.Format("{0} launched from hangar.", craft.ReportName));
+			if (carrier != null && !this.hangarLaunchCarriers.Contains(carrier))
+			{
+				this.hangarLaunchCarriers.Add(carrier);
+			}
+			this.report(string.Format("{0} launches {1} from {2}.", carrierName, craft.ReportName, bayName));
 
 			if (Battle.sideContains(this.attackers, craft) || Battle.sideContains(this.defenders, craft))
 			{

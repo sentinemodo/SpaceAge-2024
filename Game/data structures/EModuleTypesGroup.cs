@@ -20,6 +20,7 @@ namespace SpaceAge
 		propulsion,
 		research,
 		settlement,
+		shuttle,
 		spaceStation,	
 		storage,
 		vehicle		

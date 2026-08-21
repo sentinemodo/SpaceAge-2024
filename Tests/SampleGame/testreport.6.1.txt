@@ -5,7 +5,7 @@ Content-Disposition: attachment
 SpaceAge report for NPC [1].
 Turn 6, Year 2021, April 1.
 
-SpaceAge Engine Version: 0.1.145.
+SpaceAge Engine Version: 0.1.148.
 
 Events during turn:
   none.
@@ -71,6 +71,7 @@ Battles report:
   Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #5 factory [000017].
   infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #4 factory
   [000017].
+
   Week 2.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
@@ -125,6 +126,7 @@ Battles report:
   Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #5 factory [000017].
   infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #4 factory
   [000017].
+
   Week 3.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
@@ -179,6 +181,7 @@ Battles report:
   Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #5 factory [000017].
   infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #4 factory
   [000017].
+
   Week 4.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
@@ -256,6 +259,7 @@ Battles report:
   infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #4 factory
   [000017].
     #4 factory [factry] is disabled.
+
   Week 5.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
@@ -273,46 +277,52 @@ Battles report:
     #3 factory [factry] is disabled.
   Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
     #2 factory [factry] is disabled.
+
   Week 6.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
   ------------------------------------------------------------
+
   Week 7.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
   ------------------------------------------------------------
+
   Week 8.
   Battle has commenced at orbit [O00002] of Earth [P00001] at AU 1, ocean planet [ocean] in system
   Sol [SS0001] (0, 0, 0).
   ------------------------------------------------------------
+
   Week 8.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
   ------------------------------------------------------------
+
   Week 9.
   Battle has commenced at orbit [O00002] of Earth [P00001] at AU 1, ocean planet [ocean] in system
   Sol [SS0001] (0, 0, 0).
   ------------------------------------------------------------
+
   Week 9.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
   ------------------------------------------------------------
-  Week 10.
-  Battle has commenced at orbit [O00002] of Earth [P00001] at AU 1, ocean planet [ocean] in system
-  Sol [SS0001] (0, 0, 0).
-  ------------------------------------------------------------
+
   Week 10.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
   ------------------------------------------------------------
+
   Week 11.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
   ------------------------------------------------------------
+
   Week 12.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
   ------------------------------------------------------------
+
   Week 13.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
@@ -341,6 +351,8 @@ Galaxy report:
       size: 600.
     - computer library [115], computer library [cmplib], owned by Caste Prime [2].
       size: 200.
+    - fighter drone bay [206], fighter drone bay [drnbay], owned by Caste Prime [2].
+      size: 400.
   - alien fighter drone [450], 4 alien fighter drones [alndrn], owned by Caste Prime [2].
     size: 320.
   - space shuttle [117], space shuttle [shuttl], disabled, immobile, owned by Gelvaren [3].
@@ -375,6 +387,8 @@ Galaxy report:
     size: 75000, mass: 28792, capacity: 45000/41000, energy: 200/155 (30), crew: 99/238, upkeep: 300
     units of food [food], 1963 (0) cash [cash], consume: 338 (0) units of food [food], 338 (0) units
     of terran breathing gas mixture [terair].
+    events:
+      week 13: paid 300 unit of food [food] upkeep.
     - small cargo bay [c00008], small cargo bay [cargob], disabled, immobile, owned by Gelvaren [3].
       size: 2000.
     + Berlin garrison [000002], infantry battalion [inftry], immobile.
@@ -382,12 +396,16 @@ Galaxy report:
       food [food], 100 units of terran breathing gas mixture [terair].
       movement speed: 0.1 on ground.
       items: rocket launchers [rctlnc] (size: 100, mass: 100).
+      events:
+        week 13: paid 5 cash [cash] upkeep.
     + Berlin farms [000003], 10 farming complexes [farms], immobile.
       size: 10000, mass: 1300 (1000), capacity: 5000/300, energy: 50, crew: 50/75, upkeep: 575 (500)
       cash [cash], consume: 75 (0) units of food [food], 75 (0) units of terran breathing gas
       mixture [terair].
       items: 75 terrans [terran] (size: 300, mass: 300, upkeep: 75 cash [cash], consume: 75 units of
       food [food], 75 units of terran breathing gas mixture [terair]).
+      events:
+        week 13: paid 575 cash [cash] upkeep.
     + Berlin coal powerplants [000004], 5 coal-burning plants [cplant], immobile.
       size: 5000, mass: 5560 (5000), capacity: 2500/560, energy: 200/50 (consume: 25 units of carbon
       [carbon] for 13 weeks), crew: 10/15, upkeep: 265 (250) cash [cash], consume: 15 (0) units of
@@ -396,11 +414,15 @@ Galaxy report:
       items: 100 units of carbon [carbon] (size: 500, mass: 500), 15 terrans [terran] (size: 60,
       mass: 60, upkeep: 15 cash [cash], consume: 15 units of food [food], 15 units of terran
       breathing gas mixture [terair]).
+      events:
+        week 13: paid 265 cash [cash] upkeep.
     + Berlin granary [000005], small cargo bay [cargob], immobile.
       size: 2000, mass: 212 (200), capacity: 1800/12, upkeep: 33 (30) cash [cash], consume: 3 (0)
       units of food [food], 3 (0) units of terran breathing gas mixture [terair].
       items: 3 terrans [terran] (size: 12, mass: 12, upkeep: 3 cash [cash], consume: 3 units of food
       [food], 3 units of terran breathing gas mixture [terair]).
+      events:
+        week 13: paid 33 cash [cash] upkeep.
     - Caste Prime Headquarters [000012], corporate headquarters [corphq], disabled, immobile, owned
       by Caste Prime [2].
       size: 0.
@@ -492,35 +514,37 @@ Galaxy report:
       none.
   
   + Sydney [000006], 2 cities [city], immobile.
-    size: 50000, mass: 7200, capacity: 30000/17120, energy: 198/132 (20), crew: 60/70, upkeep: 200
-    units of food [food], 1030 (0) cash [cash], consume: 270 (0) units of food [food], 270 (0) units
-    of terran breathing gas mixture [terair], 4 (0) medicines [medici].
+    size: 50000, mass: 7196, capacity: 30000/17120, energy: 198/132 (20), crew: 60/69, upkeep: 200
+    units of food [food], 1029 (0) cash [cash], consume: 269 (0) units of food [food], 269 (0) units
+    of terran breathing gas mixture [terair], 5 (0) medicines [medici].
+    events:
+      week 13: paid 200 unit of food [food] upkeep.
     + Sydney garrison [000007], 2 infantry battalions [inftry], immobile.
       size: 1000, mass: 1100 (1000), capacity: 600/100, upkeep: 10 cash [cash], consume: 200 units
       of food [food], 200 units of terran breathing gas mixture [terair].
-      hit points: 100/99.
-        #1 hit points: 50/49.
-        #2 hit points: 50/50.
       movement speed: 0.1 on ground.
       items: rocket launchers [rctlnc] (size: 100, mass: 100).
       events:
+        week 13: paid 10 cash [cash] upkeep.
         week 13: Lack of supplies: 186 unit of food [food].
-        week 13: Damaged from lack of supplies.
     + Sydney farms [000008], 10 farming complexes [farms], immobile.
       size: 10000, mass: 1224 (1000), capacity: 5000/224, energy: 50, crew: 50/56, upkeep: 556 (500)
       cash [cash], consume: 56 (0) units of food [food], 56 (0) units of terran breathing gas
-      mixture [terair], 3 (0) medicines [medici].
-      items: 53 terrans [terran] (size: 212, mass: 212, upkeep: 53 cash [cash], consume: 53 units of
-      food [food], 53 units of terran breathing gas mixture [terair]), 3 wounded terrans [wndtrn]
-      (size: 12, mass: 12, upkeep: 3 cash [cash], consume: 3 units of food [food], 3 units of terran
-      breathing gas mixture [terair], 3 medicines [medici]).
+      mixture [terair], 4 (0) medicines [medici].
+      items: 52 terrans [terran] (size: 208, mass: 208, upkeep: 52 cash [cash], consume: 52 units of
+      food [food], 52 units of terran breathing gas mixture [terair]), 4 wounded terrans [wndtrn]
+      (size: 16, mass: 16, upkeep: 4 cash [cash], consume: 4 units of food [food], 4 units of terran
+      breathing gas mixture [terair], 4 medicines [medici]).
       events:
+        week 13: paid 575 cash [cash] upkeep.
         week 13: Lack of supplies: 75 unit of food [food].
-        week 13: 37 terrans [terran] wounded from lack of supplies.
+        week 13: 38 terrans [terran] wounded from lack of supplies.
         week 13: 19 wounded terrans [wndtrn] died of their wounds.
         week 13: 15 wounded terrans [wndtrn] recovered from their wounds.
     + Sydney wind powerplants [000009], 10 wind powerplants [wnplnt], immobile.
       size: 100, mass: 100 (100), energy: 40/10, upkeep: 100 cash [cash].
+      events:
+        week 13: paid 100 cash [cash] upkeep.
     + Sydney oil powerplants [000010], 5 oil-burning plants [oplant], immobile.
       size: 4000, mass: 4544 (4000), capacity: 2500/444, energy: 150/50 (consume: 25 units of oil
       [oil] for 13 weeks), crew: 10/11, upkeep: 311 (300) cash [cash], consume: 11 (0) units of food
@@ -531,23 +555,30 @@ Galaxy report:
       mixture [terair]), wounded terran [wndtrn] (size: 4, mass: 4, upkeep: cash [cash], consume:
       unit of food [food], unit of terran breathing gas mixture [terair], medicines [medici]).
       events:
+        week 13: paid 315 cash [cash] upkeep.
         week 13: Lack of supplies: 15 unit of food [food].
-        week 13: 8 terrans [terran] wounded from lack of supplies.
+        week 13: 7 terrans [terran] wounded from lack of supplies.
         week 13: 4 wounded terrans [wndtrn] died of their wounds.
-        week 13: 3 wounded terrans [wndtrn] recovered from their wounds.
+        week 13: 2 wounded terrans [wndtrn] recovered from their wounds.
     + Sydney granary [000011], small cargo bay [cargob], immobile.
-      size: 2000, mass: 212 (200), capacity: 1800/12, upkeep: 33 (30) cash [cash], consume: 3 (0)
-      units of food [food], 3 (0) units of terran breathing gas mixture [terair].
-      items: 3 terrans [terran] (size: 12, mass: 12, upkeep: 3 cash [cash], consume: 3 units of food
-      [food], 3 units of terran breathing gas mixture [terair]).
+      size: 2000, mass: 208 (200), capacity: 1800/8, upkeep: 32 (30) cash [cash], consume: 2 (0)
+      units of food [food], 2 (0) units of terran breathing gas mixture [terair].
+      items: 2 terrans [terran] (size: 8, mass: 8, upkeep: 2 cash [cash], consume: 2 units of food
+      [food], 2 units of terran breathing gas mixture [terair]).
       events:
+        week 13: paid 33 cash [cash] upkeep.
         week 13: Lack of supplies: 3 unit of food [food].
-        week 13: 1 terran [terran] wounded from lack of supplies.
+        week 13: 2 terrans [terran] wounded from lack of supplies.
+        week 13: 1 wounded terran [wndtrn] died of their wounds.
         week 13: 1 wounded terran [wndtrn] recovered from their wounds.
     + wind powerplant [122], wind powerplant [wnplnt], immobile.
       size: 10, mass: 10 (10), energy: 4/1, upkeep: 10 cash [cash].
+      events:
+        week 13: paid 10 cash [cash] upkeep.
     + wind powerplant [1], wind powerplant [wnplnt], immobile.
       size: 10, mass: 10 (10), energy: 4/1, upkeep: 10 cash [cash].
+      events:
+        week 13: paid 10 cash [cash] upkeep.
   - Gelvaren complex [000026], city [city], immobile, owned by Gelvaren [3].
     size: 25000.
     - Gelvaren Headquarters [000018], corporate headquarters [corphq], immobile, owned by Gelvaren
@@ -595,8 +626,6 @@ Galaxy report:
         size: 400.
       - small cargo bay [205], small cargo bay [cargob], immobile, owned by Caste Prime [2].
         size: 2000.
-      - fighter drone bay [206], fighter drone bay [drnbay], immobile, owned by Caste Prime [2].
-        size: 400.
       - life support system [250], life support system [lifsys], immobile, owned by Caste Prime [2].
         size: 100.
       - core drill [251], core drill [cdrill], disabled, immobile, owned by Caste Prime [2].
@@ -633,7 +662,7 @@ Orders Template:
 
 #modulestack 000008
 ; + Sydney farms [000008], 10 farming complexes [farms], immobile.
-; items: 53 terrans [terran], 3 wounded terrans [wndtrn].
+; items: 52 terrans [terran], 4 wounded terrans [wndtrn].
 
 #modulestack 000009
 ; + Sydney wind powerplants [000009], 10 wind powerplants [wnplnt], immobile.
@@ -644,7 +673,7 @@ Orders Template:
 
 #modulestack 000011
 ; + Sydney granary [000011], small cargo bay [cargob], immobile.
-; items: 3 terrans [terran].
+; items: 2 terrans [terran].
 
 #modulestack 1
 ; + wind powerplant [1], wind powerplant [wnplnt], immobile.

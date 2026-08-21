@@ -1219,7 +1219,7 @@ Researchers can query the library. The system can handle natural language questi
 			energy="15"
 			technology-capacity="1"
 			hit-points="100">
-			<upkeep type="cash" quantity="60"/>
+			<upkeep type="cash" quantity="55"/>
 			<operation-allowed-in module-group="settlement"/>
 			<operation-allowed-in module-group="frigate"/>
 			<operation-allowed-in module-group="space station"/>
@@ -1236,7 +1236,7 @@ Researchers can query the library. The system can handle natural language questi
 			crew="6"
 			energy="5"
 			hit-points="50">
-			<upkeep type="cash" quantity="20"/>
+			<upkeep type="cash" quantity="35"/>
 			<operation-allowed-in location-type="solid-surface"/>
 			<operation-allowed-in module-group="settlement"/>
 			<operation-allowed-in module-group="frigate"/>
@@ -1254,7 +1254,7 @@ Researchers can query the library. The system can handle natural language questi
 			energy="5"
 			technology-capacity="4"
 			hit-points="100">
-			<upkeep type="cash" quantity="40"/>
+			<upkeep type="cash" quantity="50"/>
 			<operation-allowed-in location-type="solid-surface"/>
 			<operation-allowed-in module-group="settlement"/>
 			<operation-allowed-in module-group="frigate"/>
@@ -1273,7 +1273,7 @@ Researchers can query the library. The system can handle natural language questi
 			<produce energy="4" duration="13"/>
 			<operation-allowed-in planet-atmosphere="terair"/>
 			<operation-allowed-in module-group="settlement"/>
-			<upkeep type="cash" quantity="10"/>
+			<upkeep type="cash" quantity="1"/>
 		</entry>
 		<entry
 			name="slrpnl"
@@ -1319,7 +1319,7 @@ Researchers can query the library. The system can handle natural language questi
 			<operation-allowed-in planet-atmosphere="terair"/>
 			<operation-allowed-in location-type="solid-surface"/>
 			<operation-allowed-in module-group="settlement"/>
-			<upkeep type="cash" quantity="50"/>
+			<upkeep type="cash" quantity="40"/>
 			<fuel duration="13">
 				<item type="carbon" quantity="5"/>
 			</fuel>
@@ -1342,7 +1342,7 @@ Researchers can query the library. The system can handle natural language questi
 			<operation-allowed-in planet-atmosphere="terair"/>
 			<operation-allowed-in location-type="solid-surface"/>
 			<operation-allowed-in module-group="settlement"/>
-			<upkeep type="cash" quantity="60"/>
+			<upkeep type="cash" quantity="30"/>
 			<fuel duration="13">
 				<item type="oil" quantity="5"/>
 			</fuel>
@@ -1363,7 +1363,7 @@ Researchers can query the library. The system can handle natural language questi
 			<operation-allowed-in planet-atmosphere="terair"/>
 			<operation-allowed-in location-type="solid-surface"/>
 			<operation-allowed-in module-group="settlement"/>
-			<upkeep type="cash" quantity="50"/>
+			<upkeep type="cash" quantity="30"/>
 		</entry>
 		<entry
 			name="trucks"
@@ -1377,7 +1377,7 @@ Researchers can query the library. The system can handle natural language questi
 			hit-points="17">
 			<operation-allowed-in planet-atmosphere="terair"/>
 			<operation-allowed-in location-type="solid-surface"/>
-			<upkeep type="cash" quantity="10"/>
+			<upkeep type="cash" quantity="5"/>
 			<consume type="food" quantity="4"/>
 			<consume type="terair" quantity="4"/>
 			<no-consume effect="damage" chance="25"/>
@@ -1400,7 +1400,7 @@ Researchers can query the library. The system can handle natural language questi
 			technology-capacity="1"
 			hit-points="65">
 			<operation-allowed-in module-group="frigate"/>
-			<upkeep type="cash" quantity="100"/>
+			<upkeep type="cash" quantity="15"/>
 			<move mode="space" mass-capacity="10000"/>
 			<fuel duration="1">
 				<item type="h2o2" quantity="1"/>
@@ -1423,7 +1423,7 @@ Researchers can query the library. The system can handle natural language questi
 			<produce energy="60" duration="13"/>
 			<energy-consume type="uraniu" quantity="1"/>
 			<energy-produce item="wastes" quantity="1"/>
-			<upkeep type="cash" quantity="90"/>
+			<upkeep type="cash" quantity="15"/>
 			<no-upkeep effect="radiation" quantity="250" chance="25"/>
 			<fuel duration="13">
 				<item type="uraniu" quantity="1"/>
@@ -1440,7 +1440,7 @@ Researchers can query the library. The system can handle natural language questi
 			crew="2"
 			technology-capacity="1"
 			hit-points="17">
-			<upkeep type="cash" quantity="100"/>
+			<upkeep type="cash" quantity="10"/>
 			<use location-type="orbit" efficiency-multiplier="10" require-fuel="true"/>
 			<move mode="space" mass-capacity="750">
 			</move>
@@ -1464,7 +1464,7 @@ Researchers can query the library. The system can handle natural language questi
 			hit-points="50"
 			radiation="-50"
 			cannot-hold-itemstacks="yes">
-			<upkeep type="cash" quantity="10"/>
+			<upkeep type="cash" quantity="25"/>
 			<operation-allowed-in location-type="orbit"/>
 		</entry>
 		<entry
@@ -1480,7 +1480,7 @@ Researchers can query the library. The system can handle natural language questi
 			defense="10" 
 			radiation="-50"
 			cannot-hold-itemstacks="yes">
-			<upkeep type="cash" quantity="20"/>
+			<upkeep type="cash" quantity="30"/>
 			<operation-allowed-in location-type="orbit"/>
 			<operation-allowed-in location-type="space"/>
 		</entry>
@@ -1496,7 +1496,7 @@ Researchers can query the library. The system can handle natural language questi
 			capacity="200" 
 			technology-capacity="1"
 			hit-points="55">
-			<upkeep type="cash" quantity="100"/>
+			<upkeep type="cash" quantity="10"/>
 			<operation-allowed-in module-group="frigate"/>
 			<operation-allowed-in module-group="space station"/>
 		</entry>
@@ -1513,8 +1513,8 @@ Researchers can query the library. The system can handle natural language questi
 			technology-capacity="2"
 			hit-points="100"
 			defense="5">
-			<produce item="cash" quantity="100" duration="1"/>
-			<upkeep type="cash" quantity="100"/>
+			<produce item="cash" quantity="50" duration="1"/>
+			<upkeep type="cash" quantity="90"/>
 			<effect type="upkeep reduction" value="0.1" target="region"/>
 			<effect type="fast construction" value="1.0" target="region"/>
 			<operation-allowed-in module-group="settlement"/>
@@ -1536,7 +1536,7 @@ Researchers can query the library. The system can handle natural language questi
 			attack="7"
 			defense="1"
 			damage="7">
-			<upkeep type="cash" quantity="50"/>
+			<upkeep type="cash" quantity="20"/>
 			<require technology="lasopt"/>
 		</entry>
 		<entry
@@ -1556,7 +1556,7 @@ Researchers can query the library. The system can handle natural language questi
 			attack="12"
 			defense="1"
 			damage="12">
-			<upkeep type="cash" quantity="100"/>
+			<upkeep type="cash" quantity="30"/>
 			<require technology="xraylo"/>
 		</entry>
 		<entry
@@ -1597,7 +1597,7 @@ Researchers can query the library. The system can handle natural language questi
 			defense="1"
 			damage="7">
 			<operation-allowed-in region-surface="solid"/>
-			<upkeep type="cash" quantity="20"/>
+			<upkeep type="cash" quantity="25"/>
 			<require technology="lasopt"/>
 		</entry>
 		<entry
@@ -1617,7 +1617,7 @@ Researchers can query the library. The system can handle natural language questi
 			defense="1"
 			damage="3">
 			<operation-allowed-in location-type="orbit"/>
-			<upkeep type="cash" quantity="20"/>
+			<upkeep type="cash" quantity="10"/>
 		</entry>
     <entry
 			name="cargob" 
@@ -1631,7 +1631,7 @@ Researchers can query the library. The system can handle natural language questi
 			crew="0"
 			technology-capacity="1"
 			hit-points="55">
-			<upkeep type="cash" quantity="30"/>
+			<upkeep type="cash" quantity="10"/>
 		</entry>
 		<entry
 			name="crwqrt" 
@@ -1647,7 +1647,7 @@ Researchers can query the library. The system can handle natural language questi
 			technology-capacity="1"
 			radiation="-200" 
 			hit-points="45">
-			<upkeep type="cash" quantity="20"/>
+			<upkeep type="cash" quantity="5"/>
 			<effect type="heal" value="0.1" target="stacked"/>
 		</entry>
 		<entry
@@ -1666,7 +1666,7 @@ Researchers can query the library. The system can handle natural language questi
 			radiation="-100"
 			hit-points="25"
 			cure-chance="25">
-			<upkeep type="cash" quantity="100"/>
+			<upkeep type="cash" quantity="30"/>
 			<effect type="heal" value="1.0" target="stacked"/>
 		</entry>
 		<entry
@@ -1684,7 +1684,7 @@ Researchers can query the library. The system can handle natural language questi
 			technology-capacity="2"
 			radiation="-120"
 			hit-points="32">
-			<upkeep type="cash" quantity="40"/>
+			<upkeep type="cash" quantity="50"/>
 			<effect type="heal" value="2" target="wndtrn" weeks="4" weeks-with-item="1" with-item-value="4" consume-item="medici" consume-quantity="1"/>
 		</entry>
 		<entry
@@ -1701,7 +1701,7 @@ Researchers can query the library. The system can handle natural language questi
 			energy="2"
 			technology-capacity="1"
 			hit-points="65">
-			<upkeep type="cash" quantity="60"/>
+			<upkeep type="cash" quantity="35"/>
 			<effect type="immobile" target="stacked"/>
 		</entry>
 		<entry
@@ -1718,7 +1718,7 @@ Researchers can query the library. The system can handle natural language questi
 			technology-capacity="1"
 			radiation="-100"
 			hit-points="125">			
-			<upkeep type="cash" quantity="200"/>
+			<upkeep type="cash" quantity="20"/>
 			<effect type="fast training" value="1" target="region"/>
 			<effect type="repair" value="0.1" target="stacked"/>
 			<effect type="upkeep reduction" value="0.1" target="stacked"/>
@@ -1735,7 +1735,7 @@ Researchers can query the library. The system can handle natural language questi
 			technology-capacity="0"
 			radiation="-100"
 			hit-points="100">
-			<upkeep type="cash" quanity="10"/>
+			<upkeep type="cash" quantity="5"/>
 		</entry>
 		<entry
 			name="senvdm"
@@ -1753,7 +1753,7 @@ Researchers can query the library. The system can handle natural language questi
 			radiation="-50">
 			<upkeep type="terair" quantity="10"/>
 			<upkeep type="food" quantity="10"/>
-			<upkeep type="cash" quanity="100"/>
+			<upkeep type="cash" quantity="50"/>
 			<no-upkeep effect="riot" chance="10"/>
 			<produce item="terran" quantity="1" duration="13"/>
 			<operation-allowed-in location-type="orbit"/>
@@ -1769,7 +1769,7 @@ Researchers can query the library. The system can handle natural language questi
 			energy="2"			
 			technology-capacity="1"
 			hit-points="10">
-			<upkeep type="cash" quanity="10"/>
+			<upkeep type="cash" quantity="5"/>
 		</entry>
 		<entry
 			name="engshp"
@@ -1784,7 +1784,7 @@ Researchers can query the library. The system can handle natural language questi
 			energy="1"
 			technology-capacity="1"
 			hit-points="15">
-			<upkeep type="cash" quantity="5"/>
+			<upkeep type="cash" quantity="20"/>
 			<operation-allowed-in module-group="settlement"/>
 			<operation-allowed-in module-group="frigate"/>
 			<operation-allowed-in module-group="spacecraft"/>
@@ -1801,7 +1801,7 @@ Researchers can query the library. The system can handle natural language questi
 			energy="1"
 			technology-capacity="1"
 			hit-points="100">
-			<upkeep type="cash" quanity="10"/>
+			<upkeep type="cash" quantity="5"/>
 		</entry>
 		<entry
 			name="tanks"
@@ -1819,7 +1819,7 @@ Researchers can query the library. The system can handle natural language questi
 			damage="7">
 			<operation-allowed-in planet-atmosphere="terair"/>
 			<operation-allowed-in region-surface="solid"/>
-			<upkeep type="cash" quantity="24"/>
+			<upkeep type="cash" quantity="80"/>
 			<no-upkeep effect="rebel" chance="10"/>
 			<consume type="food" quantity="16"/>
 			<consume type="terair" quantity="16"/>
@@ -1847,7 +1847,7 @@ Researchers can query the library. The system can handle natural language questi
 			value="50">
 			<operation-allowed-in planet-atmosphere="terair"/>
 			<operation-allowed-in region-surface="solid"/>
-			<upkeep type="cash" quantity="5"/>
+			<upkeep type="cash" quantity="15"/>
 			<no-upkeep effect="rebel" chance="10"/>
 			<consume type="food" quantity="100"/>
 			<consume type="terair" quantity="100"/>
@@ -1867,11 +1867,11 @@ Researchers can query the library. The system can handle natural language questi
 			technology-capacity="4"
       research-output="1"
 			value="1000">
-			<upkeep type="cash" quanity="100"/>
+			<upkeep type="cash" quantity="5"/>
 		</entry>
 		<entry name="he3ext" name-en="helium-3 core drill" name-en2="helium-3 core drills" group="extraction" description="A specialised, costlier core drill dedicated to helium-3. It extracts helium-3 at twice the efficiency of a general core drill but cannot mine anything else." size="1200" capacity="750" mass="1200" crew="6" energy="6" hit-points="100">
 			<produce item="heliu3" quantity="20" duration="13"/>
-			<upkeep type="cash" quantity="60"/>
+			<upkeep type="cash" quantity="70"/>
 			<operation-allowed-in location-type="solid-surface"/>
 			<operation-allowed-in module-group="settlement"/>
 			<operation-allowed-in module-group="frigate"/>
@@ -1880,13 +1880,13 @@ Researchers can query the library. The system can handle natural language questi
 			<produce energy="120" duration="13"/>
 			<energy-consume type="heliu3" quantity="3"/>
 			<operation-allowed-in location-type="solid-surface"/>
-			<upkeep type="cash" quantity="150"/>
+			<upkeep type="cash" quantity="40"/>
 			<fuel duration="13">
 				<item type="heliu3" quantity="3"/>
 			</fuel>
 		</entry>
 		<entry name="advlib" name-en="advanced research complex" name-en2="advanced research complexes" group="research" description="A large, high-throughput research facility building on computer-library methods." size="400" mass="100" energy="10" hit-points="80" technology-capacity="8" research-output="2">
-			<upkeep type="cash" quantity="200"/>
+			<upkeep type="cash" quantity="40"/>
 		</entry>
 		<entry
 			name="lifsys"
@@ -1902,7 +1902,7 @@ Researchers can query the library. The system can handle natural language questi
 			technology-capacity="1"
 			hit-points="20">
 			<produce item="terair" quantity="10" duration="1"/>
-			<upkeep type="cash" quantity="10"/>
+			<upkeep type="cash" quantity="5"/>
 			<operation-allowed-in module-group="habitat"/>
 			<operation-allowed-in module-group="settlement"/>
 			<operation-allowed-in module-group="frigate"/>
@@ -1920,7 +1920,7 @@ Researchers can query the library. The system can handle natural language questi
 			energy="5"
 			technology-capacity="1"
 			hit-points="80">
-			<upkeep type="cash" quantity="40"/>
+			<upkeep type="cash" quantity="35"/>
 			<operation-allowed-in location-type="solid-surface"/>
 			<operation-allowed-in location-type="orbit"/>
 		</entry>
@@ -1938,7 +1938,7 @@ Researchers can query the library. The system can handle natural language questi
 			hit-points="250">
 			<upkeep type="food" quantity="20"/>
 			<upkeep type="terair" quantity="20"/>
-			<upkeep type="cash" quantity="80"/>
+			<upkeep type="cash" quantity="75"/>
 			<produce item="cash" quantity="200" duration="13"/>
 			<operation-allowed-in location-type="solid-surface"/>
 		</entry>
@@ -1957,7 +1957,7 @@ Researchers can query the library. The system can handle natural language questi
 			defense="12"
 			radiation="-50"
 			cannot-hold-itemstacks="yes">
-			<upkeep type="cash" quantity="40"/>
+			<upkeep type="cash" quantity="100"/>
 			<operation-allowed-in location-type="orbit"/>
 			<operation-allowed-in location-type="space"/>
 		</entry>
@@ -1974,7 +1974,7 @@ Researchers can query the library. The system can handle natural language questi
 			energy="15"
 			technology-capacity="8"
 			hit-points="100">
-			<upkeep type="cash" quantity="60"/>
+			<upkeep type="cash" quantity="30"/>
 			<operation-allowed-in module-group="frigate"/>
 			<operation-allowed-in module-group="settlement"/>
 		</entry>
@@ -1991,7 +1991,7 @@ Researchers can query the library. The system can handle natural language questi
 			capacity="200"
 			technology-capacity="2"
 			hit-points="55">
-			<upkeep type="cash" quantity="80"/>
+			<upkeep type="cash" quantity="35"/>
 			<operation-allowed-in module-group="frigate"/>
 		</entry>
 		<entry
@@ -2008,7 +2008,7 @@ Researchers can query the library. The system can handle natural language questi
 			technology-capacity="1"
 			hit-points="65">
 			<operation-allowed-in module-group="frigate"/>
-			<upkeep type="cash" quantity="80"/>
+			<upkeep type="cash" quantity="40"/>
 			<move mode="space" mass-capacity="10000"/>
 			<fuel duration="1">
 				<item type="h2o2" quantity="1"/>
@@ -2029,7 +2029,7 @@ Researchers can query the library. The system can handle natural language questi
 			<energy-consume type="heliu3" quantity="2"/>
 			<operation-allowed-in module-group="frigate"/>
 			<operation-allowed-in location-type="solid-surface"/>
-			<upkeep type="cash" quantity="80"/>
+			<upkeep type="cash" quantity="40"/>
 			<fuel duration="13">
 				<item type="heliu3" quantity="2"/>
 			</fuel>
@@ -2054,7 +2054,7 @@ Researchers can query the library. The system can handle natural language questi
 			name="alndrn"
 			name-en="alien fighter drone"
 			name-en2="alien fighter drones"
-			group="military"
+			group="shuttle"
 			weapon-group="drone"
 			description="Crewless alien fighter. No life support. Slow space move at shuttle speed; launches from a fighter drone bay."
 			size="80"
@@ -2066,7 +2066,7 @@ Researchers can query the library. The system can handle natural language questi
 			defense="2"
 			damage="8"
 			initiative="20">
-			<upkeep type="cash" quantity="20"/>
+			<upkeep type="cash" quantity="50"/>
 			<move mode="space" mass-capacity="750">
 			</move>
 			<fuel duration="13">
@@ -2078,73 +2078,73 @@ Researchers can query the library. The system can handle natural language questi
 		</entry>
 		<!-- L3-L8 military (combat balance pass) -->
 		<entry name="msltub" name-en="missile tube" name-en2="missile tubes" group="military" weapon-group="missile" description="Nitrate and uranium grain solid-motor missile launcher." size="300" mass="400" crew="2" energy="8" technology-capacity="1" hit-points="100" attack="12" defense="2" damage="14">
-			<upkeep type="cash" quantity="40"/>
-		</entry>
-		<entry name="ewantn" name-en="EW antenna" name-en2="EW antennae" group="military" resists="ew" description="Broadband jamming array disrupting drone targeting and degrading enemy initiative." size="150" mass="80" crew="2" energy="10" technology-capacity="1" hit-points="40" defense="8" initiative="4">
-			<upkeep type="cash" quantity="30"/>
-		</entry>
-		<entry name="shplas" name-en="ship plasma shield" name-en2="ship plasma shields" group="military" resists="shield" description="Gas-fed plasma and magnetic bottle; resists laser fire." size="400" mass="350" crew="3" energy="25" technology-capacity="1" hit-points="120" defense="12" attack="0">
-			<upkeep type="cash" quantity="50"/>
-		</entry>
-		<entry name="railgn" name-en="railgun" name-en2="railguns" group="military" weapon-group="kinetic" description="Electromagnetic rail kinetic weapon." size="800" mass="900" crew="4" energy="20" technology-capacity="1" hit-points="140" attack="14" defense="2" damage="16">
-			<upkeep type="cash" quantity="60"/>
-		</entry>
-		<entry name="kpdtur" name-en="kinetic cannon" name-en2="kinetic cannons" group="military" weapon-group="kinetic" description="Rapid mass-driver turret." size="250" mass="280" crew="2" energy="12" technology-capacity="1" hit-points="110" attack="10" defense="2" damage="12" initiative="6">
 			<upkeep type="cash" quantity="45"/>
 		</entry>
+		<entry name="ewantn" name-en="EW antenna" name-en2="EW antennae" group="military" resists="ew" description="Broadband jamming array disrupting drone targeting and degrading enemy initiative." size="150" mass="80" crew="2" energy="10" technology-capacity="1" hit-points="40" defense="8" initiative="4">
+			<upkeep type="cash" quantity="45"/>
+		</entry>
+		<entry name="shplas" name-en="ship plasma shield" name-en2="ship plasma shields" group="military" resists="shield" description="Gas-fed plasma and magnetic bottle; resists laser fire." size="400" mass="350" crew="3" energy="25" technology-capacity="1" hit-points="120" defense="12" attack="0">
+			<upkeep type="cash" quantity="65"/>
+		</entry>
+		<entry name="railgn" name-en="railgun" name-en2="railguns" group="military" weapon-group="kinetic" description="Electromagnetic rail kinetic weapon." size="800" mass="900" crew="4" energy="20" technology-capacity="1" hit-points="140" attack="14" defense="2" damage="16">
+			<upkeep type="cash" quantity="75"/>
+		</entry>
+		<entry name="kpdtur" name-en="kinetic cannon" name-en2="kinetic cannons" group="military" weapon-group="kinetic" description="Rapid mass-driver turret." size="250" mass="280" crew="2" energy="12" technology-capacity="1" hit-points="110" attack="10" defense="2" damage="12" initiative="6">
+			<upkeep type="cash" quantity="65"/>
+		</entry>
 		<entry name="pdltur" name-en="point-defense laser" name-en2="point-defense lasers" group="military" weapon-group="laser" description="Short-range beam PD; high initiative." size="200" mass="150" crew="1" energy="15" technology-capacity="1" hit-points="90" attack="8" defense="1" damage="8" initiative="8">
-			<upkeep type="cash" quantity="40"/>
+			<upkeep type="cash" quantity="60"/>
 		</entry>
 		<entry name="cermpl" name-en="ceramic armour plate" name-en2="ceramic armour plates" group="frigate" resists="armour" armor-module="true" description="B4C applique armour; resists kinetics. Preferentially hit; cannot be captured (wishlist)." size="1200" mass="1800" crew="0" energy="0" hit-points="150" defense="12">
-			<upkeep type="cash" quantity="30"/>
+			<upkeep type="cash" quantity="65"/>
 		</entry>
 		<entry name="coilgn" name-en="coilgun" name-en2="coilguns" group="military" weapon-group="kinetic" description="Dense armature coilgun." size="1200" mass="1400" crew="6" energy="35" technology-capacity="2" hit-points="160" attack="18" defense="2" damage="20">
-			<upkeep type="cash" quantity="80"/>
+			<upkeep type="cash" quantity="105"/>
 		</entry>
 		<entry name="proxpd" name-en="proximity burst PD" name-en2="proximity burst PDs" group="military" resists="pbpd" description="Last-ditch isotope and frag bursts vs incoming missiles." size="250" mass="200" crew="2" energy="12" technology-capacity="1" hit-points="100" attack="6" defense="10" damage="8" initiative="8">
-			<upkeep type="cash" quantity="50"/>
+			<upkeep type="cash" quantity="75"/>
 		</entry>
 		<entry name="crumis" name-en="cruise missile launcher" name-en2="cruise missile launchers" group="military" weapon-group="missile" description="Standoff guided missile with hydrazine flyout and isotope warhead." size="500" mass="600" crew="3" energy="10" technology-capacity="1" hit-points="130" attack="18" defense="2" damage="22">
-			<upkeep type="cash" quantity="70"/>
+			<upkeep type="cash" quantity="95"/>
 			<fuel duration="13">
 				<item type="h2o2" quantity="1"/>
 			</fuel>
 		</entry>
 		<entry name="armplt" name-en="spaced armour plate" name-en2="spaced armour plates" group="frigate" resists="armour" armor-module="true" description="Whipple shield with tungsten fibre; resists kinetics." size="2000" mass="3000" crew="0" energy="0" hit-points="200" defense="15">
-			<upkeep type="cash" quantity="40"/>
+			<upkeep type="cash" quantity="105"/>
 		</entry>
 		<entry name="capshd" name-en="capital plasma shield" name-en2="capital plasma shields" group="military" resists="shield" description="Capital-scale plasma bottle; resists lasers." size="800" mass="600" crew="4" energy="40" technology-capacity="2" hit-points="180" defense="16" attack="0">
-			<upkeep type="cash" quantity="90"/>
-		</entry>
-		<entry name="spnknc" name-en="spinal kinetic" name-en2="spinal kinetics" group="military" weapon-group="kinetic" description="Ship-length rail kinetic weapon." size="4000" mass="5000" crew="12" energy="40" technology-capacity="2" hit-points="220" attack="28" defense="2" damage="32">
 			<upkeep type="cash" quantity="120"/>
 		</entry>
+		<entry name="spnknc" name-en="spinal kinetic" name-en2="spinal kinetics" group="military" weapon-group="kinetic" description="Ship-length rail kinetic weapon." size="4000" mass="5000" crew="12" energy="40" technology-capacity="2" hit-points="220" attack="28" defense="2" damage="32">
+			<upkeep type="cash" quantity="195"/>
+		</entry>
 		<entry name="ciwst" name-en="close-in weapon system" name-en2="close-in weapon systems" group="military" resists="pbpd" description="Proximity isotope burst CIWS; resists missiles." size="400" mass="300" crew="2" energy="20" technology-capacity="2" hit-points="120" attack="8" defense="12" damage="10">
-			<upkeep type="cash" quantity="60"/>
+			<upkeep type="cash" quantity="115"/>
 		</entry>
 		<!-- Hull size classes (group frigate until engine adds corvette/cruiser/capital/ark) -->
 		<entry name="corhul" name-en="corvette hull" name-en2="corvette hulls" group="frigate" description="L2-L3 corvette pressure hull; hosts 2-4 combat stacks." size="8000" mass="400" capacity="7000" energy="2" hit-points="80" defense="10" radiation="-50" cannot-hold-itemstacks="yes">
-			<upkeep type="cash" quantity="40"/>
+			<upkeep type="cash" quantity="70"/>
 			<operation-allowed-in location-type="orbit"/>
 			<operation-allowed-in location-type="space"/>
 		</entry>
 		<entry name="deshul" name-en="destroyer hull" name-en2="destroyer hulls" group="frigate" description="L6-L7 destroyer hull; hosts 6-10 combat stacks." size="25000" mass="8000" capacity="20000" energy="20" hit-points="200" defense="14" radiation="-80" cannot-hold-itemstacks="yes">
-			<upkeep type="cash" quantity="100"/>
+			<upkeep type="cash" quantity="240"/>
 			<operation-allowed-in location-type="orbit"/>
 			<operation-allowed-in location-type="space"/>
 		</entry>
 		<entry name="cruhul" name-en="cruiser hull" name-en2="cruiser hulls" group="frigate" description="L8-L9 cruiser hull; hosts 10-16 combat stacks." size="45000" mass="15000" capacity="35000" energy="40" hit-points="350" defense="16" radiation="-100" cannot-hold-itemstacks="yes">
-			<upkeep type="cash" quantity="180"/>
+			<upkeep type="cash" quantity="395"/>
 			<operation-allowed-in location-type="orbit"/>
 			<operation-allowed-in location-type="space"/>
 		</entry>
 		<entry name="arkhul" name-en="ark hull" name-en2="ark hulls" group="frigate" description="L10 self-sufficient ark pressure hull for thousands of crew." size="80000" mass="25000" capacity="60000" energy="80" hit-points="500" defense="20" radiation="-150" cannot-hold-itemstacks="yes">
-			<upkeep type="cash" quantity="300"/>
+			<upkeep type="cash" quantity="635"/>
 			<operation-allowed-in location-type="orbit"/>
 			<operation-allowed-in location-type="space"/>
 		</entry>
 		<entry name="hydnoz" name-en="hydrolox stage" name-en2="hydrolox stages" group="propulsion" description="Staged hydrolox rocket; fuel water or oxyhydro." size="800" mass="900" crew="1" energy="40" hit-points="45">
-			<upkeep type="cash" quantity="40"/>
+			<upkeep type="cash" quantity="25"/>
 			<move mode="space" speed="1" mass-capacity="20000"/>
 			<fuel duration="13">
 				<item type="h2o2" quantity="2"/>
@@ -2152,18 +2152,18 @@ Researchers can query the library. The system can handle natural language questi
 			<operation-allowed-in module-group="frigate"/>
 		</entry>
 		<entry name="crylab" name-en="cryogenic lab" name-en2="cryogenic labs" group="research" description="Cryogenic instrumentation lab for cold-environment settlement and sensors." size="280" mass="90" crew="3" energy="8" technology-capacity="5" research-output="2" hit-points="30">
-			<upkeep type="cash" quantity="60"/>
+			<upkeep type="cash" quantity="40"/>
 		</entry>
 		<entry name="clddom" name-en="cold dome" name-en2="cold domes" group="settlement" description="Insulated cryogenic-rated settlement dome for cold moons and outer worlds. Upkeep food and terair." size="6000" mass="2000" capacity="4000" population-maximum="800" energy="15" technology-capacity="2" hit-points="200">
 			<upkeep type="food" quantity="15"/>
 			<upkeep type="terair" quantity="15"/>
-			<upkeep type="cash" quantity="60"/>
+			<upkeep type="cash" quantity="90"/>
 			<operation-allowed-in location-type="solid-surface"/>
 		</entry>
 		<entry name="hotdom" name-en="heat dome" name-en2="heat domes" group="settlement" description="Refractory settlement dome for Venus-class and volcanic hot worlds. Upkeep food and terair; high energy for heat rejection." size="6000" mass="2500" capacity="4000" population-maximum="800" energy="25" technology-capacity="2" hit-points="220">
 			<upkeep type="food" quantity="15"/>
 			<upkeep type="terair" quantity="20"/>
-			<upkeep type="cash" quantity="80"/>
+			<upkeep type="cash" quantity="90"/>
 			<operation-allowed-in location-type="solid-surface"/>
 		</entry>
 	</module>

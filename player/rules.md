@@ -1,8 +1,8 @@
 # Player order syntax
 
-Checked **21 Aug 2026** against engine **0.1.145** (`Game/Program.cs`).
+Checked **22 Aug 2026** against engine **0.1.148** (`Game/Program.cs`).
 
-Sources: `Game/orders/EOrderType.cs`, `Game/orders/OrdersReader.cs`, `Game/orders/Orders.cs`, `Game/Game.cs` (week loop, `GenerateOffers`), `Game/Program.cs` (`/no-turn`, `/check`), `Game/Research.cs` (weekly output, breakthrough, preference), `Game/data structures/ModuleStack.Upkeep.cs` (sick bay, medical consume, quarterly maintenance), `Game/data structures/Galaxy.cs` (`LoadXml` / `LoadExits`), `Game/data structures/Exits.cs` / `ExitMode.cs` / `Region.cs` (region **Exits:** lines), `Game/game/DataFile.cs` (`LoadOrders` / `SaveOrders` delegate to `OrderXml`), `Game/game/OrderXml.cs` (XML switch), `Game/game/ModuleTypeGroupXml.cs` (`RESEARCH GROUP` tokens), `Game/effects/Effects.cs` (`LoadXml` effect types), `Game/effects/Producing.cs` (omit empty `technology=`), each `Game/orders/*Order.Parse` / `Execute`. Sample prefix usage: `Tests/SampleGame/orders.*.txt`.
+Sources: `Game/orders/EOrderType.cs`, `Game/orders/OrdersReader.cs`, `Game/orders/Orders.cs`, `Game/Game.cs` (week loop, `GenerateOffers`), `Game/Program.cs` (`/no-turn`, `/check`), `Game/Research.cs` (weekly output, breakthrough, preference), `Game/data structures/ModuleStack.Upkeep.cs` (sick bay, medical consume, quarterly maintenance), `Game/data structures/Galaxy.cs` (`LoadXml` / `LoadExits`), `Game/data structures/Exits.cs` / `ExitMode.cs` / `Region.cs` (region **Exits:** lines), `Game/data structures/Faction.cs` (blank line before `Bank report:`), `Game/reports/ReportWriter.cs` (faction report sections and blank lines), `Game/battle/Battles.cs` (blank line between consecutive battles), `Game/game/DataFile.cs` (`LoadOrders` / `SaveOrders` delegate to `OrderXml`), `Game/game/OrderXml.cs` (XML switch), `Game/game/ModuleTypeGroupXml.cs` (`RESEARCH GROUP` tokens), `Game/effects/Effects.cs` (`LoadXml` effect types), `Game/effects/Producing.cs` (omit empty `technology=`), each `Game/orders/*Order.Parse` / `Execute`. Sample prefix usage: `Tests/SampleGame/orders.*.txt`.
 
 Not source of truth: `Game/documentation/Rules.txt`. Turn order files are **Windows-1251** (same as reports). Verbs are case-insensitive; most arguments are not.
 
@@ -69,7 +69,7 @@ From `Game.exe` (`Program.Main`) and `Game.Execute`. A turn is **13 weeks**. Com
 2. `Request.Load` and `EventsReaders.Load` are **stubs** (return 0 / null). `Game.Events.Execute` is also a stub (returns 0). No GM events run.
 3. Load `order.*` files (`OrdersReader`).
 4. `Game.Execute` (below).
-5. Write faction reports, then save the game.
+5. Write faction reports (`ReportWriter.GenerateFactionReport`), then save the game. Text reports insert **blank lines** between major sections: after the engine-version line, after the stub events block, between declared stances and `Bank report:` when declarations exist (`Faction.Report`), before/after `Technology reports:` when that section is present, before `Battles report:`, between consecutive battles (`Battles.Report`), after each space system, and before each visible region. The galaxy block ends with a blank line.
 
 `/no-turn` skips the 13 weeks: load orders, run **between-turn** immediates only (`AllowedBetweenTurns` — live text verbs: `CONTRACT`, `PRESS`), write announcements (`announce.{turn}.{faction}.txt` for new contracts at that location and for press releases), save.
 
@@ -94,7 +94,7 @@ Clear last turn’s event reports, then `turn++`. Drop stale per-unit stances (`
 
 After week 13: **quarterly maintenance**, then **quarterly wounded outcome**, then clear long/immediate flags; drop unformed stacks that should not report (`RemoveNonReporting`).
 
-**Quarterly maintenance** (`ExecuteMaintenance`, once, week 13): cash upkeep, then food, then terran air `[terair]` if the stack needs canned air (orbit, space, or a moon region). Bills auto-GET from this stack’s own nest (self, then nested children), then the parent chain, then other same-owner stacks at the same location. Cash shortfall can also debit the faction bank. Unpaid food/air can wound healthy terrans (catalog 25%). Unpaid cash can damage the module or print race off-duty. `medici` is skipped here (already weekly).
+**Quarterly maintenance** (`ExecuteMaintenance`, once, week 13): cash upkeep, then food, then terran air `[terair]` if the stack needs canned air (orbit, space, or a moon region). Bills auto-GET from this stack’s own nest (self, then nested children), then the parent chain, then other same-owner stacks at the same location. Cash shortfall can also debit the faction bank. When cash (or any other upkeep item) is actually deducted (`taken > 0`), the stack logs `week 13: paid N cash [cash] upkeep.` (`ItemType.ReportName` is `cash [cash]`; same `paid N {item} upkeep.` shape for food/air). Each formed stack pays its own `UpkeepNetto` (`localUpkeep` does not roll nested children into the parent bill). Nested hangar craft still pay if they remain nested through week 13; after hangar launch they pay as roots (4 alien fighter drones `[alndrn]` at 20 cash each = `paid 80 cash [cash] upkeep.`). Unpaid food/air can wound healthy terrans (catalog 25%). Unpaid cash can damage the module or print race off-duty. `medici` is skipped here (already weekly).
 
 **Quarterly wounded outcome** (once, week 13): each remaining `wndtrn` rolls independently — **25%** die of wounds, **25%** recover to terran, **50%** stay wounded. Not gated on medici. `madtrn` is not rolled here.
 

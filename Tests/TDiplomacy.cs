@@ -59,6 +59,19 @@ namespace UnitTests
 		}
 
 		[Test]
+		public void DeclarationReport_BlankLineBeforeBankReport()
+		{
+			Faction faction = this.game.Factions["2"];
+			faction.Attitudes["1"] = FactionAttitude.Enemy;
+
+			List<string> report = faction.Report();
+			int bankIndex = report.FindIndex(l => l.StartsWith("Bank report:"));
+
+			Assert.That(bankIndex, Is.GreaterThan(0));
+			Assert.That(report[bankIndex - 1], Is.EqualTo(""), "blank line between declared stances and the bank report");
+		}
+
+		[Test]
 		public void DeclarationReport_EmptyAtBaseline()
 		{
 			// baseline stances (neutral default, hostile unknown, no declarations) render nothing,
