@@ -1,0 +1,49 @@
+#faction 2 "xyzzy"
+; Caste Prime turn 5 — fuel alien drones [450], hop them and hull [101] to
+; Earth orbit [O00002], fight Gelvaren in space. Do not MOVE wreck [200].
+; Leftover XML from gamein.5 keeps Earth HQ/farms/sells, library @research 200,
+; reactor @produce energy, lifsys @produce terair, drill @use uminng then
+; -use he3min, helium plant @get heliu3 from 251.
+; Mining cannot fuel 4 drones this quarter (he3min is 8 weeks per 1 helium).
+; Assume TDD seeds at least 4 heliu3 on shuttle [100] or cargo bay [205].
+; alndrn capacity is 0 — GET onto [450] fails unless TDD gives fuel capacity
+; or a fuelled effect. LAUNCH does not parse; hangar launch is battle-only
+; if still in bay [206] (round-1 skip). STACK OUT here so they fly as roots
+; and can fire from round 1. Intended: drone victory at O00002.
+
+#modulestack 100
+; + space shuttle [100], 10 shuttl, Dusty field [R00001].
+; items: 31 terran, metals, 16 food, 59 h2o2, 22 terair. fuelled 4 weeks.
+; If TDD parked heliu3 here, push it onto the wreck nest (bay/cargo).
+give 4 heliu3 to 205
+give 4 heliu3 to 450
+
+#modulestack 205
+; + small cargo bay [205], under wreck [200], empty. Park helium if GET
+; onto drones is still capacity-blocked.
+get 4 heliu3 from 100
+give 4 heliu3 to 450
+
+#modulestack 450
+; + alien fighter drone [450], 4 alndrn, nested in bay [206] on wreck [200]
+; on R00001. Fuel 4 heliu3 / 13 weeks. Space move after launch (speed 1).
+; GET from both possible seed holders; one will fail. Then leave the wreck
+; and hop Luna orbit → Earth orbit (two 1-week space legs).
+get 4 heliu3 from 100
+get 4 heliu3 from 205
+stack out
+move O00001
+-move O00002
+tactic destroy
+-tactic prioritize armed
+declare faction 3 enemy
+attack 117
+
+#modulestack 101
+; + spaceship hull [101], sshull, already in Luna orbit [O00001].
+; Nested 112/113/114/115. Drive [114] has 20 h2o2 and 1 week fuelled.
+; Unarmed frigate — drones are the shooters. Meet at Earth orbit.
+move O00002
+declare faction 3 enemy
+
+#end

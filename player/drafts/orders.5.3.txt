@@ -1,0 +1,44 @@
+#faction 3 "abccb"
+; Gelvaren turn 5 — shuttle [117] leaves Southern Hemisphere [R00003],
+; builds an orbital complex in Earth orbit [O00002], then an orbit-capable
+; rocket launcher. gunplc/laztrt only operate on solid ground; they cannot
+; be the orbital weapon. Leftover XML from gamein.5 keeps Sydney produce/
+; buy/farms/wind/oil, library @research tag repair, Berlin repairs, tanks
+; @get food. Attitude already enemy toward Caste Prime [2].
+; Assume TDD: catalog tech/module orbrkt (orbit military); seed a copy on
+; [117] (technology-capacity is 1 and currently holds servic — replace
+; servic or raise cap, or COPY fails). Seed uraniu + h2o2 on [117] so it
+; can fly and USE (require-fuel). Shuttle use efficiency-multiplier="10"
+; currently lengthens USE (orassm 5×10=50 weeks) — blocker; draft as if
+; TDD sets it to 1 so orassm 5 weeks plus orbrkt finish inside 13 weeks
+; after the 1-week region→orbit hop. LAUNCH does not parse.
+
+#modulestack 117
+; + space shuttle [117], shuttl, nested under city [000026] on R00003.
+; disabled, crew 2/0, cap 125/0, only servic today. orassm is level 0
+; (always known): 2 iron, 5 weeks, produces orcmpx in orbit.
+; GET crew/iron/food while still in the city nest, then STACK OUT and hop.
+get 2 terran from 000018
+get 20 food from 000026
+get 4 iron from 000023
+get 2 titani from 000023
+set online true
+stack out
+move O00002
+-use orassm as new140
+--use orbrkt as new141 for new140
+
+#modulestack new140
+; orbital complex [orcmpx] after orassm. Unarmed space station; the
+; launcher nests here so the root is armed.
+
+#modulestack new141
+; orbital rocket launcher [orbrkt] after USE orbrkt. Crew if the module
+; needs it; shoot Caste drones and the hull. Faction enemy already set.
+get 2 terran from 117
+tactic destroy
+-tactic prioritize armed
+attack 450
+attack 101
+
+#end
