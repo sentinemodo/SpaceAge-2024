@@ -1,7 +1,7 @@
 # SampleGame turn 5 — feature track
 
 Last updated: 2026-08-21  
-Engine cited: `0.1.144`
+Engine cited: `0.1.145`
 
 Turns 1–4 already ship MOVE, USE, COPY, TRANSFER, RESEARCH, TRAIN, CAPTURE, hangar-launch, and quarterly upkeep. This PR **lands new engine/catalog behavior** and locks it with a Sol golden. It is not a replay of “another ship to Luna.”
 
