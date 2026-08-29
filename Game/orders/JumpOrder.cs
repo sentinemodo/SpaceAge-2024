@@ -16,8 +16,8 @@ namespace SpaceAge
 			get { return (ModuleStack)this.Subject; }
 		}
 
-		private Planet destinationGate;
-		public Planet DestinationGate
+		private Alderson destinationGate;
+		public Alderson DestinationGate
 		{
 			get { return this.destinationGate; }
 			set { this.destinationGate = value; }
@@ -26,11 +26,11 @@ namespace SpaceAge
 		public override void Parse(string command)
 		{
 			string token = LineParser.GetToken(ref command);
-			if (string.IsNullOrEmpty(token) || !Planet.All.ContainsKey(token))
+			if (string.IsNullOrEmpty(token) || !Alderson.All.ContainsKey(token))
 			{
 				throw new Exception("Bad syntax or unknown JUMP destination. Received: " + token);
 			}
-			this.destinationGate = Planet.All[token];
+			this.destinationGate = Alderson.All[token];
 		}
 
 		private Location JumpArrival()
@@ -39,25 +39,17 @@ namespace SpaceAge
 			{
 				return null;
 			}
-			foreach (Region region in this.destinationGate.Regions.Values)
-			{
-				if (region.RegionType != null && region.RegionType.LocationType == ELocationType.orbit)
-				{
-					return region;
-				}
-			}
 			return this.destinationGate.Orbit;
 		}
 
-		private Planet GateAt(Location location)
+		private Alderson GateAt(Location location)
 		{
-			Planet planet;
-			Moon moon;
-			if (!BodyEnvironment.TryGetBody(location, out planet, out moon))
+			Orbit orbit = location as Orbit;
+			if (orbit != null)
 			{
-				return null;
+				return orbit.OrbitHolder as Alderson;
 			}
-			return planet;
+			return null;
 		}
 
 		private bool canJump(int week)
@@ -71,7 +63,7 @@ namespace SpaceAge
 				this.Jumper.EventReports.Add(week, "JUMP failed. Only ships can jump.");
 				return false;
 			}
-			Planet here = this.GateAt(this.Jumper.Location);
+			Alderson here = this.GateAt(this.Jumper.Location);
 			if (here == null || string.IsNullOrEmpty(here.PairName))
 			{
 				this.Jumper.EventReports.Add(week, "JUMP failed. Unit is not at an Alderson Gate.");
@@ -116,9 +108,9 @@ namespace SpaceAge
 		public override void LoadXml(XmlElement elOrder)
 		{
 			XmlElement elJump = (XmlElement)elOrder.SelectSingleNode("jump");
-			if (elJump != null && Planet.All.ContainsKey(elJump.GetAttribute("destination")))
+			if (elJump != null && Alderson.All.ContainsKey(elJump.GetAttribute("destination")))
 			{
-				this.destinationGate = Planet.All[elJump.GetAttribute("destination")];
+				this.destinationGate = Alderson.All[elJump.GetAttribute("destination")];
 			}
 			if (elOrder.HasAttribute("duration-left"))
 			{

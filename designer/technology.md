@@ -350,7 +350,7 @@ Primary tags assigned for campaign research targeting. Consume/produce are live 
 |----|------|---------|---------|-------|
 | `fossil` | fossil use | 100 `iron` | `cplant` | Burns `carbon`. Use-time 8. Tag production |
 | `oilbrn` | oil burning | 80 `iron` | `oplant` | Burns `oil`. Use-time 10 |
-| `wndtrb` | wind turbines | 1 `iron` | `wnplnt` | Needs `terair` world to operate. Use-time 2 |
+| `wndtrb` | wind turbines | 1 `iron` | `wnplnt` | Needs `terair` world to operate. Use-time 2. `wnplnt` may sit on solid-surface or liquid-surface |
 | `hcdril` | hydrocarbons drilling | — | 1 `carbon` | Extraction, solid-surface |
 | `indust` | industrial automation | 15 `iron`, 10 `titani` | `factry` | Use-time 4. Tag production |
 | `popcnt` | population center | 100 `iron` | `city` | Solid-surface + `terair`. Use-time 26 |
@@ -366,6 +366,9 @@ Primary tags assigned for campaign research targeting. Consume/produce are live 
 | `cminng` | copper mining | — | 2 `copper` | Extraction |
 | `wtrdst` | water distillation | — | 3 `h2o2` | Extraction (electrolysis/distill of regional water/ice) |
 | `grndtr` | ground transport | 2 `iron` | `trucks` | Use-time 2 |
+| `nvltrs` | naval transport | 2 `iron` | `coastr` | Use-time 2. Displacement cargo hull; naval MOVE; operates on solid-surface (port) and liquid-surface |
+| `fshng` | fishery construction | 10 `iron` | `fshfrm` | Use-time 4. Built in a factory. Flavour: terair worlds; nets plus photic seaweed/algae; tow to sea |
+| `fshhrv` | fishery harvest | — | 5 `food` | Agricultural, `fshfrm` only, liquid-surface + `terair` (no ocean-planet gate). Fish plus photic seaweed/algae |
 | `strans` | small scale transportation | 2 `iron`, 2 `titani` | `cargob` | Use-time 2 |
 | `crewhs` | crew housing | 3 `iron`, 2 `titani` | `crwqrt` | Use-time 2 |
 | `airgen` | breathing-gas generation | 2 `iron`, 1 `copper` | `lifsys` | Produces `terair` in operation. Use-time 2 |
@@ -431,6 +434,7 @@ Copy required. Capacity 1. Cost 8 unless noted.
 | Id | Name | Requires | Use-time | Consume | Produce | Notes |
 |----|------|----------|----------|---------|---------|-------|
 | `armcbt` | armored combat | — | 4 | 6 `iron`, 2 `titani` | `tanks` | **kinetic**+**armour** platform (oil engines). Tag military |
+| `nvlcbt` | naval combat | — | 10 | 8 `iron`, 2 `titani` | `gunbot` | **kinetic** gunboat (oil engines). Naval MOVE. Tag military |
 | `frminf` | form infantry battalion | — | 13 | 1 `iron` | `inftry` | Mixed infantry; mount items below. Tag military |
 | `rckter` | rocket launcher production | — | 2 | 1 `iron` | item `rctlnc` | **missile**. Cost 4. Live consume; L3+ missiles pull `nitrat`/`uraniu` |
 | `lasopt` | laser optics | — | 4 | 2 `terair`, 2 `h2o2`, 2 `copper` | `bltlas` | **laser**. Campaign retune: working gas + electrodes. Tag military |

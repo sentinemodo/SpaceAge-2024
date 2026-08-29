@@ -63,6 +63,10 @@
     <Compile Include="battle\Tactic.cs" />
     <Compile Include="battle\Unit.cs" />
     <Compile Include="data structures\Anomaly.cs" />
+    <Compile Include="data structures\Alderson.cs" />
+    <Compile Include="data structures\Aldersons.cs" />
+    <Compile Include="data structures\Belt.cs" />
+    <Compile Include="data structures\Belts.cs" />
     <Compile Include="data structures\Capacities.cs" />
     <Compile Include="data structures\Capacity.cs" />
     <Compile Include="battle\Battles.cs" />

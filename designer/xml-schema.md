@@ -9,7 +9,7 @@ Unknown **attributes** are ignored. Unknown **module `group`**, **`location-type
 | Section | Required on `entry` | Children / notes |
 |---------|---------------------|------------------|
 | `star` | `name`, `name-en` | `description` |
-| `planet` | `name`, `name-en` | Live types: `ocean`, `gasgnt`, `dust`, `abelt`, `adpnt` (Alderson Gate: orbit + one `orbit`-typed corona region, no solid surface) |
+| `planet` | `name`, `name-en` | Live types: `ocean`, `gasgnt`, `dust`, `abelt` (unused in gamein — belts are `<belt>`), `adpnt` (unused in gamein — Gates are `<alderson>`) |
 | `moon` | `name`, `name-en` | Live types: `ice`, `rock`, `vulcan`, `ring` |
 | `region` | `name`, `name-en`, `location-type` | `orbit` \| `solid-surface` \| `liquid-surface` \| `space` |
 | `item` | `name`, `name-en` | `name-en2`, `description`, `size`, `mass`, `attack`, `damage`; `upkeep`/`consume` `type`+`quantity`; `use-allowed-by` `module-type-group`; design attr `value` (nominal price, ignored until TDD — [`economy.md`](economy.md)) |
@@ -64,14 +64,16 @@ Faction `name` **1** is still the unfiltered NPC in XML reports (`SaveGame` skip
 <system name="SS0001" name-en="..." X="0" Y="0" Z="0">
   <star name="S00001" name-en="..." type="M4" mass="1"/>
   <planet name="P00001" name-en="..." type="ocean" AU="1" surface-size-X="6" surface-size-Y="6">
+    <race type="terran"/>
     <moon name="M00001" name-en="..." type="rock" AU="0.0026" surface-size-X="4" surface-size-Y="3">
       <orbit name="O00001"/>
       <region name="R00001" name-en="..." X="0" Y="0" type="dust">...</region>
     </moon>
-    <orbit name="O00002"><race type="terran"/></orbit>
+    <orbit name="O00002"/>
     <region ...>
       <capacity group="settlement" quantity="8"/>
       <exit region="R00002"><exitmode mode="ground" duration="3"/></exit>
+      <!-- live modes: ground | naval | space. sea/ocean (and any exit that touches one) use mode="naval" (port = adjacent land). no coastal region type -->
       <resource type="iron" quantity="20"/>
       <modulestack .../>
     </region>
@@ -79,8 +81,9 @@ Faction `name` **1** is still the unfiltered NPC in XML reports (`SaveGame` skip
 </system>
 ```
 
-- Asteroid belts are **planets** with `type="abelt"` (no separate belt element).
-- Alderson Gates are **planets** with `type="adpnt"`: one `<orbit>` plus one corona `<region type="orbit">` so `LoadExits` walks them (planet regions only; orbit-element exits are not parsed). Pair Helios Gate `P00009` ↔ Fomal Gate `P00010`. `JUMP` is wishlist; t=1 emits a 1-week space exit between coronas.
+- `<race type="terran"/>` is a child of `<planet>` or `<moon>` (native biosphere). `LoadGalaxy` also still loads `<race>` under `<orbit>` (SampleGame fallback).
+- Asteroid belts are `<belt name="P00003" AU="2.7">` with `<composition><resource type="uraniu" quantity="80" probability="0.5"/></composition>`. No orbit, no child regions (asteroids spawn later). `MOVE P00003` occupies the belt (`location-type` space). Region `<exit belt="P00003">` carries space duration until AU×drive. Rings are `<belt>` children of a `<planet>` (gas giant), same as moons.
+- Alderson Gates are `<alderson name="P00009" AU="80" pair="P00010">` with one `<orbit>` and **no** child regions and **no** region exits. Do not emit `<exit alderson=>` from planetary regions. `JUMP P00010` while at Helios Gate orbit is 1 week to the pair’s orbit (ships only). Reaching a Gate from a planet is AU×drive (wishlist), not a baked surface hop.
 - Gas giants: orbit + moons; no solid-surface regions.
 - `AU` is stored; system `X Y Z` are currently commented out in the loader — still set them for later.
 - Design attrs on `<planet>` / `<moon>` (ignored until TDD): `gravity="low|normal|high"`, `temperature="habitable|cold|hot"`, `atmosphere="none|thin|terair|hostile"`. See [`environments.md`](environments.md).

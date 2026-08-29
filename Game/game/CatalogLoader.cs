@@ -455,15 +455,7 @@ namespace SpaceAge
 
 							if (elMove.HasAttribute("mode"))
 							{
-								switch (elMove.GetAttribute("mode"))
-								{
-									case "space":
-										moveMode.Mode = EMoveMode.space;
-										break;
-									default:
-										moveMode.Mode = EMoveMode.ground;
-										break;
-								}
+								moveMode.Mode = MoveModeXml.Parse(elMove.GetAttribute("mode"));
 							}
 							else
 							{

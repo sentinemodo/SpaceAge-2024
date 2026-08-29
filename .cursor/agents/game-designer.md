@@ -46,7 +46,7 @@ Encoding: **Windows-1251**. Prefer ASCII in `name-en` / `description`. Ids (`nam
 - **No test files.** Never edit `Tests/**`. The test catalog is a frozen engine fixture, not the campaign. Do not retune SampleGame goldens to match campaign stats.
 - **Campaign XML must load** on the current engine: use live module groups and `location-type` values. Unknown attributes are ignored (fine). Unknown groups/`location-type` **crash** load — keep those entries in `designer/` until TDD lands the wishlist row.
 - **Do not be constrained by the current codebase** for *design*. Propose techs, resources, modules, skills, equipment, and contract vectors the story needs. Extra effects/orders will be implemented.
-- **Hard science flavour** in every `description`: physical mechanism, mass/energy, environment. No magic, no FTL except Alderson `JUMP` between paired `adpnt` Gates. No psionics. Alien tech is still physics (materials, closed-cycle ecology, high-Isp propulsion, radiation, ISRU).
+- **Hard science flavour** in every `description`: physical mechanism, mass/energy, environment. No magic, no FTL except Alderson `JUMP` between paired `<alderson>` Gates. No psionics. Alien tech is still physics (materials, closed-cycle ecology, high-Isp propulsion, radiation, ISRU).
 - **Do not write `order.*` files** — that is `/player`. Do not write `play/runs/**` except when asked to regenerate seed XML the scripts copy.
 
 ## Roles
@@ -57,7 +57,7 @@ Encoding: **Windows-1251**. Prefer ASCII in `name-en` / `description`. Ids (`nam
 
 - Ten star systems; **two occupied** (Helios/Arbor factions 2–6, Fomal/Anvil factions 7–11), **eight empty**.
 - NPC faction `1` **United Star Nations** (cities, markets, contracts). Militias `12` **Arbor First** and `13` **HCS** (neutral at t=1; hostility flip is wishlist).
-- Helios Gate `P00009` ↔ Fomal Gate `P00010` (`type="adpnt"`, `pair=`). Empty systems have no AP at t=1.
+- Helios Gate `P00009` ↔ Fomal Gate `P00010` (`<alderson>`, `pair=`). Empty systems have no AP at t=1.
 - 1–4 planets or asteroid belts per system; 0–1 initially habitable; 0–2 exploitable; 0–4 moons; 10–50 regions per body.
 - Neither starting planet holds the full industrial diet — trade, contract, or fly.
 
@@ -84,6 +84,17 @@ Encoding: **Windows-1251**. Prefer ASCII in `name-en` / `description`. Ids (`nam
 - Each player region can bootstrap L0–1 on the local diet (Arbor organics vs Anvil metals). High-level resources are off-grid, belts, moons, or empty systems.
 - Water is strategic (`icemin` / `wtrdst` / `hydrop`). Homeworld moons must seed ice `water`.
 - Environment bands on bodies: `designer/environments.md`. Emit `gravity` / `temperature` / `atmosphere` even if the loader ignores them today.
+
+## Live surface movement (do not re-propose)
+
+- Live `exitmode` / `<move>` modes: `ground`, `naval`, `space`. Unknown modes throw; missing mode defaults to ground. Do **not** wishlist naval.
+- **No coastal region type.** Any surface exit that touches `sea` or `ocean` is `mode="naval"` only. Land–land stays `ground`. Ships occupy the adjacent land tile as a port and sail back to water; they cannot walk inland. Trucks cannot enter water.
+- East–west wrap on rectangular grids; no north–south wrap. No `<exit orbit=>` on regions (same-body region↔orbit is implicit for space movers).
+- L0 `fshfrm` / `fshhrv`: terair + liquid-surface only (photic seaweed/algae + nets). Do not gate harvest on `planet-type="ocean"`. Do not operate on grassland. `fshng` builds at factories.
+- L0 `coastr` / L1 `gunbot`: naval vehicles, solid+liquid + terair (port + sea).
+- `wnplnt` operates on **both** solid-surface and liquid-surface (plus terair).
+- Native race lives on `<planet>` / `<moon>` (`<race type="terran"/>`). Orbit `<race>` still loads. Habitable starts (Arbor, Anvil) emit body-level terran.
+- Asteroid belts are `<belt>` with `<composition>` (no orbit, no regions). Rings are belts on ~half of gas giants. `MOVE` onto the belt; region hops use `<exit belt="…">`. Do not spawn asteroid regions.
 
 ## Handoff
 

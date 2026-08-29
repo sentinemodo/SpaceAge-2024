@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<game turn="1">
+	<faction name="1" name-en="NPC" password="" email="" default-attitude="2" text-report="True" xml-report="True" balance="0" credit-line="0" credit-rate="0" deposit-rate="0" />
+	<faction name="2" name-en="Survey" password="" email="" default-attitude="2" text-report="True" xml-report="True" balance="1000" credit-line="0" credit-rate="0" deposit-rate="0" />
+	<galaxy>
+		<system name="SS0001" name-en="Habitat" X="0" Y="0" Z="0">
+			<star name="S00001" name-en="Habitat" />
+			<planet name="P00001" name-en="Arbor" AU="1" surface-size-X="1" surface-size-Y="1" type="ocean" atmosphere="terair">
+				<race type="terran" />
+				<orbit name="O00001" />
+				<region name="R00001" name-en="Basin" X="0" Y="0" type="grassl" />
+			</planet>
+			<planet name="P00002" name-en="Host" AU="2" surface-size-X="1" surface-size-Y="1" type="dust" atmosphere="none">
+				<moon name="M00001" name-en="Airy" AU="0.002" surface-size-X="1" surface-size-Y="1" type="rock" atmosphere="terair">
+					<race type="terran" />
+					<orbit name="O00002" />
+					<region name="R00002" name-en="Crater" X="0" Y="0" type="dust" />
+				</moon>
+				<orbit name="O00003" />
+				<region name="R00003" name-en="Dust" X="0" Y="0" type="dust" />
+			</planet>
+			<planet name="P00003" name-en="Breath" AU="3" surface-size-X="1" surface-size-Y="1" type="ocean" atmosphere="terair">
+				<orbit name="O00004" />
+				<region name="R00004" name-en="Shore" X="0" Y="0" type="grassl" />
+			</planet>
+			<planet name="P00004" name-en="Legacy" AU="4" surface-size-X="1" surface-size-Y="1" type="ocean">
+				<orbit name="O00005">
+					<race type="terran" />
+				</orbit>
+				<region name="R00005" name-en="Old" X="0" Y="0" type="grassl" />
+			</planet>
+		</system>
+	</galaxy>
+</game>

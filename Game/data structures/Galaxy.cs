@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 using System.Xml;
 
@@ -105,6 +106,8 @@ namespace SpaceAge
 						if (elPlanet.HasAttribute("mass"))
 							planet.Mass = Convert.ToDouble(elPlanet.GetAttribute("mass"));
 
+						this.loadRaces(elPlanet, planet.Races);
+
 						foreach (XmlElement elMoon in elPlanet.SelectNodes("moon"))
 						{
 							Moon moon = new Moon(system, planet, elMoon.GetAttribute("name"));
@@ -123,6 +126,7 @@ namespace SpaceAge
 								if (elMoon.HasAttribute("mass"))
 									moon.Mass = Convert.ToDouble(elMoon.GetAttribute("mass"));
 
+								this.loadRaces(elMoon, moon.Races);
 								this.loadOrbit(elMoon, moon, dataFile);
 								this.loadRegions(elMoon, moon, dataFile);
 							}
@@ -130,6 +134,11 @@ namespace SpaceAge
 							{
 								throw new Exception("Tried to parse moon " + moon.ReportName, ex);
 							}
+						}
+
+						foreach (XmlElement elBelt in elPlanet.SelectNodes("belt"))
+						{
+							this.loadBelt(elBelt, system, planet, dataFile);
 						}
 
 						this.loadOrbit(elPlanet, planet, dataFile);
@@ -142,7 +151,15 @@ namespace SpaceAge
 					}
 				}
 
-				// alderson points
+				foreach (XmlElement elBelt in elSystem.SelectNodes("belt"))
+				{
+					this.loadBelt(elBelt, system, null, dataFile);
+				}
+
+				foreach (XmlElement elAlderson in elSystem.SelectNodes("alderson"))
+				{
+					this.loadAlderson(elAlderson, system, dataFile);
+				}
 
 				// asteroid belts
 
@@ -203,9 +220,22 @@ namespace SpaceAge
 									}
 								}
 							}
+							foreach (XmlElement elBelt in elPlanet.SelectNodes("belt"))
+							{
+								this.loadGalaxyExits(elBelt, Belt.All[elBelt.GetAttribute("name")], dataFile);
+							}
 						}
 
-						// alderson points
+						foreach (XmlElement elBelt in elSystem.SelectNodes("belt"))
+						{
+							this.loadGalaxyExits(elBelt, Belt.All[elBelt.GetAttribute("name")], dataFile);
+						}
+
+						foreach (XmlElement elAlderson in elSystem.SelectNodes("alderson"))
+						{
+							Alderson alderson = Alderson.All[elAlderson.GetAttribute("name")];
+							this.loadGalaxyExits(elAlderson, alderson.Orbit, dataFile);
+						}
 
 						// asteroid belts
 
@@ -268,17 +298,7 @@ namespace SpaceAge
 			Orbit orbit = new Orbit(orbitHolder, elOrbit.GetAttribute("name"));
 			try
 			{
-				foreach (XmlElement elRace in elOrbit.SelectNodes("race"))
-				{
-					try
-					{
-						orbit.Races.Add(elRace.GetAttribute("type"), Race.All[elRace.GetAttribute("type")]);
-					}
-					catch (Exception ex)
-					{
-						throw new Exception("Tried to parse race ", ex);
-					}
-				}
+				this.loadRaces(elOrbit, orbit.Races);
 				this.loadResources(elOrbit, orbit, dataFile);
 
                 ModuleStack.All.LoadXml(elOrbit, orbit);
@@ -287,6 +307,21 @@ namespace SpaceAge
 			catch (Exception ex)
 			{
 				throw new Exception("tried to parse orbit " + orbit.ReportName, ex);
+			}
+		}
+
+		private void loadRaces(XmlElement elHolder, Races races)
+		{
+			foreach (XmlElement elRace in elHolder.SelectNodes("race"))
+			{
+				try
+				{
+					races.Add(elRace.GetAttribute("type"), Race.All[elRace.GetAttribute("type")]);
+				}
+				catch (Exception ex)
+				{
+					throw new Exception("Tried to parse race ", ex);
+				}
 			}
 		}
 
@@ -308,7 +343,7 @@ namespace SpaceAge
 			}
 		}
 
-		private void loadGalaxyExits(XmlElement elHolder, Region holder, DataFile dataFile)
+		private void loadGalaxyExits(XmlElement elHolder, Location holder, DataFile dataFile)
 		{
 			foreach (XmlElement elExit in elHolder.SelectNodes("exit"))
 			{
@@ -323,17 +358,24 @@ namespace SpaceAge
 					{
 						exit.To = Orbit.All[elExit.GetAttribute("orbit")];
 					}
+					else if (elExit.HasAttribute("belt"))
+					{
+						exit.To = Belt.All[elExit.GetAttribute("belt")];
+					}
+					else if (elExit.HasAttribute("alderson"))
+					{
+						exit.To = Alderson.All[elExit.GetAttribute("alderson")].Orbit;
+					}
 					foreach (XmlElement elExitMode in elExit.SelectNodes("exitmode"))
 					{
 						ExitMode exitMode = new ExitMode();
-						switch (elExitMode.GetAttribute("mode"))
+						if (elExitMode.HasAttribute("mode"))
 						{
-							case "space":
-								exitMode.Mode = EMoveMode.space;
-								break;
-							default:
-								exitMode.Mode = EMoveMode.ground;
-								break;
+							exitMode.Mode = MoveModeXml.Parse(elExitMode.GetAttribute("mode"));
+						}
+						else
+						{
+							exitMode.Mode = EMoveMode.ground;
 						}
 
 						exitMode.Duration = dataFile.XMLAssignInteger(elExitMode.GetAttribute("duration"), 0);
@@ -345,6 +387,55 @@ namespace SpaceAge
 				{
 					throw new Exception("Tried to parse exits", ex);
 				}
+			}
+		}
+
+		private void loadBelt(XmlElement elBelt, SpaceSystem system, Planet planet, DataFile dataFile)
+		{
+			Belt belt = new Belt(system, planet, elBelt.GetAttribute("name"));
+			belt.LoadXml(elBelt);
+			try
+			{
+				belt.AU = dataFile.XMLAssignDouble(elBelt.GetAttribute("AU"), 0);
+				XmlElement elComposition = (XmlElement)elBelt.SelectSingleNode("composition");
+				if (elComposition != null)
+				{
+					foreach (XmlElement elResource in elComposition.SelectNodes("resource"))
+					{
+						CompositionEntry entry = new CompositionEntry();
+						entry.ItemType = dataFile.Game.ItemTypes[elResource.GetAttribute("type")];
+						entry.Quantity = dataFile.XMLAssignInteger(elResource.GetAttribute("quantity"), 1);
+						entry.Probability = dataFile.XMLAssignDouble(elResource.GetAttribute("probability"), 1);
+						belt.Composition.Add(entry);
+					}
+				}
+				ModuleStack.All.LoadXml(elBelt, belt);
+			}
+			catch (Exception ex)
+			{
+				throw new Exception("Tried to parse belt " + belt.ReportName, ex);
+			}
+		}
+
+		private void loadAlderson(XmlElement elAlderson, SpaceSystem system, DataFile dataFile)
+		{
+			Alderson alderson = new Alderson(system, elAlderson.GetAttribute("name"));
+			alderson.LoadXml(elAlderson);
+			try
+			{
+				alderson.AU = dataFile.XMLAssignDouble(elAlderson.GetAttribute("AU"), 0);
+				alderson.TemperatureBand = BodyEnvironment.ParseTemperature(elAlderson.HasAttribute("temperature") ? elAlderson.GetAttribute("temperature") : "cold");
+				alderson.AtmosphereBand = BodyEnvironment.ParseAtmosphere(elAlderson.GetAttribute("atmosphere"));
+				if (elAlderson.HasAttribute("pair"))
+				{
+					alderson.PairName = elAlderson.GetAttribute("pair");
+				}
+				this.loadOrbit(elAlderson, alderson, dataFile);
+				system.Objects.Add(alderson.Name, alderson);
+			}
+			catch (Exception ex)
+			{
+				throw new Exception("Tried to parse alderson " + alderson.ReportName, ex);
 			}
 		}
 
@@ -403,6 +494,8 @@ namespace SpaceAge
 							elObject.SetAttribute("pair", planet.PairName);
 						}
 
+						this.saveRaces(doc, elObject, planet.Races);
+
 						foreach (Moon moon in planet.Moons.Values)
 						{
 							// do nost save is the xml report is prepared for faction and faction is not observing the object
@@ -422,17 +515,66 @@ namespace SpaceAge
 							elMoon.SetAttribute("gravity", BodyEnvironment.GravityToken(moon.GravityBand));
 							elMoon.SetAttribute("temperature", BodyEnvironment.TemperatureToken(moon.TemperatureBand));
 							elMoon.SetAttribute("atmosphere", BodyEnvironment.AtmosphereToken(moon.AtmosphereBand));
+							this.saveRaces(doc, elMoon, moon.Races);
 							this.saveOrbit(doc, elMoon, moon, factionXMLreport);
 							this.saveRegions(doc, elMoon, moon, factionXMLreport);
+						}
+
+						foreach (Belt ring in Belt.All[planet].Values)
+						{
+							if (factionXMLreport != null && !ring.Visible(factionXMLreport))
+							{
+								continue;
+							}
+							this.saveBelt(doc, elObject, ring, factionXMLreport);
 						}
 
 						this.saveOrbit(doc, elObject, (IOrbitHolder)systemObject, factionXMLreport);
 						this.saveRegions(doc, elObject, (IRegionHolder)systemObject, factionXMLreport);
 					}
+					else if (systemObject is Alderson)
+					{
+						Alderson alderson = (Alderson)systemObject;
+						elObject = doc.CreateElement("alderson");
+						elSystem.AppendChild(elObject);
+						elObject.SetAttribute("name", alderson.Name);
+						elObject.SetAttribute("name-en", alderson.FullName);
+						elObject.SetAttribute("AU", alderson.AU.ToString(CultureInfo.InvariantCulture));
+						elObject.SetAttribute("temperature", BodyEnvironment.TemperatureToken(alderson.TemperatureBand));
+						elObject.SetAttribute("atmosphere", BodyEnvironment.AtmosphereToken(alderson.AtmosphereBand));
+						if (!string.IsNullOrEmpty(alderson.PairName))
+						{
+							elObject.SetAttribute("pair", alderson.PairName);
+						}
+						this.saveOrbit(doc, elObject, alderson, factionXMLreport);
+						if (alderson.Orbit != null)
+						{
+							this.saveExits(doc, elObject, alderson.Orbit);
+						}
+					}
 
+				}
+
+				foreach (Belt belt in Belt.All[system].Values)
+				{
+					if (factionXMLreport != null && !belt.Visible(factionXMLreport))
+					{
+						continue;
+					}
+					this.saveBelt(doc, elSystem, belt, factionXMLreport);
 				}
             }
 			return elGalaxy;
+		}
+
+		private void saveRaces(XmlDocument doc, XmlElement elHolder, Races races)
+		{
+			foreach (Race race in races.Values)
+			{
+				XmlElement elRace = doc.CreateElement("race");
+				elHolder.AppendChild(elRace);
+				elRace.SetAttribute("type", race.Name);
+			}
 		}
 
 		private void saveOrbit(XmlDocument doc, XmlElement elObject, IOrbitHolder orbitHolder, Faction factionXMLreport = null)
@@ -447,13 +589,7 @@ namespace SpaceAge
 			}
 			else
 			{
-				XmlElement elRace;
-				foreach (Race race in orbitHolder.Orbit.Races.Values)
-				{
-					elRace = doc.CreateElement("race");
-					elOrbit.AppendChild(elRace);
-					elRace.SetAttribute("type", race.Name);
-				}
+				this.saveRaces(doc, elOrbit, orbitHolder.Orbit.Races);
 				this.saveResources(doc, elOrbit, orbitHolder.Orbit, factionXMLreport);
 
                 orbitHolder.Orbit.ModuleStacks.SaveXml(doc, elOrbit, factionXMLreport);
@@ -477,6 +613,76 @@ namespace SpaceAge
 					elObject.AppendChild(elResource);
 					elResource.SetAttribute("type", resource.ItemType.Name);
 					elResource.SetAttribute("quantity", resource.Quantity.ToString());
+				}
+			}
+		}
+
+		private void saveBelt(XmlDocument doc, XmlElement elParent, Belt belt, Faction factionXMLreport = null)
+		{
+			XmlElement elBelt = doc.CreateElement("belt");
+			elParent.AppendChild(elBelt);
+			elBelt.SetAttribute("name", belt.Name);
+			elBelt.SetAttribute("name-en", belt.FullName);
+			elBelt.SetAttribute("AU", belt.AU.ToString(CultureInfo.InvariantCulture));
+
+			if (factionXMLreport != null && !belt.Visible(factionXMLreport))
+			{
+				return;
+			}
+
+			if (belt.Composition.Count > 0)
+			{
+				XmlElement elComposition = doc.CreateElement("composition");
+				elBelt.AppendChild(elComposition);
+				foreach (CompositionEntry entry in belt.Composition)
+				{
+					XmlElement elResource = doc.CreateElement("resource");
+					elComposition.AppendChild(elResource);
+					elResource.SetAttribute("type", entry.ItemType.Name);
+					elResource.SetAttribute("quantity", entry.Quantity.ToString(CultureInfo.InvariantCulture));
+					elResource.SetAttribute("probability", entry.Probability.ToString(CultureInfo.InvariantCulture));
+				}
+			}
+
+			this.saveExits(doc, elBelt, belt);
+			belt.ModuleStacks.SaveXml(doc, elBelt, factionXMLreport);
+		}
+
+		private void setExitTarget(XmlElement elExit, IHolder to)
+		{
+			Orbit orbit = to as Orbit;
+			if (orbit != null)
+			{
+				Alderson alderson = orbit.OrbitHolder as Alderson;
+				if (alderson != null)
+				{
+					elExit.SetAttribute("alderson", alderson.Name);
+					return;
+				}
+				elExit.SetAttribute("orbit", to.Name);
+				return;
+			}
+			if (to is Belt)
+			{
+				elExit.SetAttribute("belt", to.Name);
+				return;
+			}
+			elExit.SetAttribute("region", to.Name);
+		}
+
+		private void saveExits(XmlDocument doc, XmlElement elHolder, Location holder)
+		{
+			foreach (Exit exit in holder.Exits)
+			{
+				XmlElement elExit = doc.CreateElement("exit");
+				elHolder.AppendChild(elExit);
+				this.setExitTarget(elExit, exit.To);
+				foreach (ExitMode exitMode in exit.ExitModes.Values)
+				{
+					XmlElement elExitMode = doc.CreateElement("exitmode");
+					elExit.AppendChild(elExitMode);
+					elExitMode.SetAttribute("mode", MoveModeXml.ToToken(exitMode.Mode));
+					elExitMode.SetAttribute("duration", exitMode.Duration.ToString());
 				}
 			}
 		}
@@ -515,28 +721,13 @@ namespace SpaceAge
 				{
 					elExit = doc.CreateElement("exit");
 					elRegion.AppendChild(elExit);
-					if (exit.To is Orbit)
-					{
-						elExit.SetAttribute("orbit", exit.To.Name);
-					}
-					else
-					{
-						elExit.SetAttribute("region", exit.To.Name);
-					}
+					this.setExitTarget(elExit, exit.To);
 					foreach (ExitMode exitMode in exit.ExitModes.Values)
 					{
 						elExitMode = doc.CreateElement("exitmode");
 						elExit.AppendChild(elExitMode);
 
-						switch (exitMode.Mode)
-						{
-							case EMoveMode.ground:
-								elExitMode.SetAttribute("mode", "ground");
-								break;
-							case EMoveMode.space:
-								elExitMode.SetAttribute("mode", "space");
-								break;
-						}						
+						elExitMode.SetAttribute("mode", MoveModeXml.ToToken(exitMode.Mode));
 						elExitMode.SetAttribute("duration", exitMode.Duration.ToString());
 					}
 				}

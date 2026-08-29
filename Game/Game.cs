@@ -531,6 +531,8 @@ namespace SpaceAge
 			Orbit.All.Clear();
 			Moon.All.Clear();
 			Planet.All.Clear();
+			Belt.All.Clear();
+			Alderson.All.Clear();
 			Anomaly.All.Clear();
 			Star.All.Clear();
 			Faction.All.Clear();

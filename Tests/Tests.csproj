@@ -85,6 +85,10 @@
     <Compile Include="TOrder.cs" />
     <Compile Include="TUse.cs" />
     <Compile Include="TMove.cs" />
+    <Compile Include="TMoveMode.cs" />
+    <Compile Include="TBodyRace.cs" />
+    <Compile Include="TBelt.cs" />
+    <Compile Include="TAlderson.cs" />
     <Compile Include="TGetGiveHas.cs" />
     <Compile Include="TFormStack.cs" />
     <Compile Include="TSee.cs" />
@@ -297,6 +301,27 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="fixtures\has-order-production\orders.2.3.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="fixtures\naval\gamein.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="fixtures\naval\gamein.unknown-exit.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="fixtures\naval\data-naval-module.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="fixtures\naval\data-unknown-move.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="fixtures\body-race\gamein.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="fixtures\belt\gamein.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="fixtures\alderson\gamein.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

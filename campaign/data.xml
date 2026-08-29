@@ -28,7 +28,7 @@
 		<entry
 			name="adpnt"
 			name-en="Alderson point"
-			description="Jump Gate. No solid surface. One corona (orbit-typed region) plus an orbit. Pair with the matching Gate in the destination system. JUMP is one week when the engine parses it; until then a one-week space exit links the coronas." />
+			description="Unused planet type. Live Gates are first-class alderson bodies (orbit, no corona region). JUMP between the paired Gate is one week, ships only." />
 	</planet>
 
 	<moon>
@@ -482,6 +482,38 @@
 			<use-produce module="trucks"/>
 		</entry>
 		<entry
+			name="nvltrs"
+			name-en="naval transport"
+			level="0"
+			description="Displacement hulls for cargo on liquid surfaces. Oil engines, hulls of iron. Same logistics as trucks, at sea."
+			use-time="2">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="2"/>
+			<use-produce module="coastr"/>
+		</entry>
+		<entry
+			name="fshng"
+			name-en="fishery construction"
+			level="0"
+			description="Factory-built pontoon kits: nets, holds, and photic-zone seaweed or algae lines. Photosynthetic biomass in sunlit liquid on a terair world; tow the works to sea."
+			use-time="4">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="10"/>
+			<use-produce module="fshfrm"/>
+		</entry>
+		<entry
+			name="fshhrv"
+			name-en="fishery harvest"
+			level="0"
+			description="Haul fish plus photic-zone seaweed or algae in place. Photosynthetic biomass in sunlit liquid. Requires a fishery on liquid surface under terair.">
+			<use-allowed-in
+				module-type-group="agricultural"
+				module="fshfrm"
+				planet-atmosphere="terair"
+				location-type="liquid-surface"/>
+			<use-produce item="food" quantity="5"/>
+		</entry>
+		<entry
 			name="stnrdf"
 			tags="military"
 			name-en="stationary defense"
@@ -504,6 +536,18 @@
 			<use-consume item="iron" quantity="8"/>
 			<use-consume item="titani" quantity="2"/>
 			<use-produce module="tanks"/>
+		</entry>
+		<entry
+			name="nvlcbt"
+			tags="military"
+			name-en="naval combat"
+			level="1"
+			description="Gunboats: oil-fired displacement hulls with deck guns for liquid-surface combat. Same role as tanks, at sea."
+			use-time="10">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="8"/>
+			<use-consume item="titani" quantity="2"/>
+			<use-produce module="gunbot"/>
 		</entry>
 		<entry
 			name="frminf"
@@ -1272,6 +1316,8 @@ Researchers can query the library. The system can handle natural language questi
 			hit-points="1">
 			<produce energy="4" duration="13"/>
 			<operation-allowed-in planet-atmosphere="terair"/>
+			<operation-allowed-in location-type="solid-surface"/>
+			<operation-allowed-in location-type="liquid-surface"/>
 			<operation-allowed-in module-group="settlement"/>
 			<upkeep type="cash" quantity="1"/>
 		</entry>
@@ -1366,6 +1412,23 @@ Researchers can query the library. The system can handle natural language questi
 			<upkeep type="cash" quantity="30"/>
 		</entry>
 		<entry
+			name="fshfrm"
+			name-en="fishery"
+			name-en2="fisheries"
+			group="agricultural"
+			description="Pontoon works on liquid surface: nets plus photic-zone seaweed or algae harvest. Photosynthetic biomass in sunlit water; needs terair and a sea or ocean cell."
+			size="1000"
+			capacity="500"
+			mass="100"
+			crew="5"
+			energy="5"
+			technology-capacity="1"
+			hit-points="55">
+			<operation-allowed-in planet-atmosphere="terair"/>
+			<operation-allowed-in location-type="liquid-surface"/>
+			<upkeep type="cash" quantity="30"/>
+		</entry>
+		<entry
 			name="trucks"
 			name-en="trucks" 
 			group="vehicle" 
@@ -1382,6 +1445,29 @@ Researchers can query the library. The system can handle natural language questi
 			<consume type="terair" quantity="4"/>
 			<no-consume effect="damage" chance="25"/>
 			<move mode="ground" speed="0.5"/>
+			<fuel duration="13">
+				<item type="oil" quantity="1"/>
+			</fuel>
+		</entry>
+		<entry
+			name="coastr"
+			name-en="coastal transport"
+			name-en2="coastal transports"
+			group="vehicle"
+			description="Displacement cargo hull for liquid surfaces. Oil engines. Can lie alongside a land region as a port."
+			size="250"
+			mass="100"
+			capacity="150"
+			crew="1"
+			hit-points="17">
+			<operation-allowed-in planet-atmosphere="terair"/>
+			<operation-allowed-in location-type="solid-surface"/>
+			<operation-allowed-in location-type="liquid-surface"/>
+			<upkeep type="cash" quantity="5"/>
+			<consume type="food" quantity="4"/>
+			<consume type="terair" quantity="4"/>
+			<no-consume effect="damage" chance="25"/>
+			<move mode="naval" speed="1"/>
 			<fuel duration="13">
 				<item type="oil" quantity="1"/>
 			</fuel>
@@ -1827,6 +1913,34 @@ Researchers can query the library. The system can handle natural language questi
 			<move mode="ground" speed="0.5"/>
 			<fuel duration="13">
 				<item type="oil" quantity="4"/>
+			</fuel>
+		</entry>
+		<entry
+			name="gunbot"
+			name-en="gunboat"
+			name-en2="gunboats"
+			group="vehicle"
+			weapon-group="kinetic"
+			description="Oil-fired gunboat for liquid-surface combat. Deck guns against hulls and coastal modules."
+			size="240"
+			mass="240"
+			capacity="200"
+			hit-points="70"
+			crew="12"
+			attack="5"
+			defense="3"
+			damage="6">
+			<operation-allowed-in planet-atmosphere="terair"/>
+			<operation-allowed-in location-type="solid-surface"/>
+			<operation-allowed-in location-type="liquid-surface"/>
+			<upkeep type="cash" quantity="80"/>
+			<no-upkeep effect="rebel" chance="10"/>
+			<consume type="food" quantity="12"/>
+			<consume type="terair" quantity="12"/>
+			<no-consume effect="damage" chance="25"/>
+			<move mode="naval" speed="1"/>
+			<fuel duration="13">
+				<item type="oil" quantity="3"/>
 			</fuel>
 		</entry>
 		<entry

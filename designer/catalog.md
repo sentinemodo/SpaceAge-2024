@@ -4,7 +4,7 @@ Ids ≤ 6 characters. No item id equal to a module id. Descriptions: mechanism a
 
 Live catalog (`Tests/data.xml`) is the baseline. Below are **additions** for `campaign/data.xml`.
 
-Planet type **`adpnt`** (Alderson Gate) is in the campaign catalog; seed in [`galaxy.md`](galaxy.md).
+Planet type **`adpnt`** remains in the campaign catalog but gamein Gates are `<alderson>` — see [`galaxy.md`](galaxy.md).
 
 ## Resources (item types)
 
@@ -34,6 +34,9 @@ All use `group="frigate"` until engine adds `corvette`/`cruiser`/`capital`/`ark`
 | Id | Group | Size/mass (order of) | Crew / energy | What it is |
 |----|-------|----------------------|---------------|------------|
 | `sckbay` | habitat | 380/250 | 3 / 4 | Sick bay (inpatient ward). Habitat 8, HP 32, tech-cap 2, cash upkeep 40, radiation −120. **Not** `medfac` (clinic: 300/200, crew 2, energy 2, habitat 5, HP 25). Stronger than the clinic: 2 `wndtrn`/4 wk without `medici`, 4/wk with 1 `medici` per conversion (wishlist). No `operation-allowed-in` — settlements, stations, hulls. `pharms` USE produces `medici` from 1 `food` |
+| `coastr` | vehicle | 250/100 | 1 / 0 | Coastal transport. Naval MOVE speed 1. Solid+liquid (port + sea). Oil fuel. L0 `nvltrs` |
+| `gunbot` | vehicle | 240/240 | 12 / 0 | Gunboat. Naval MOVE speed 1. Kinetic. Solid+liquid. L1 `nvlcbt` |
+| `fshfrm` | agricultural | 1000/100 | 5 / 5 | Fishery. Liquid-surface + `terair` only (not grassland). Nets plus photic seaweed/algae. L0 `fshng`; harvest `fshhrv` (terair, not planet-type ocean) |
 | `hydnoz` | propulsion | 800/900 | 1 / 40 | Staged hydrolox; mass-capacity ~20000; fuel `water` or `h2o2` |
 | `iondrv` | propulsion | 500/400 | 1 / 50 | Gridded ion; mass-capacity ~25000; fuel `water` |
 | `nepeng` | propulsion | 1400/1600 | 2 / 70 | Nuclear-electric; mass-capacity ~35000; fuel `uraniu`+`water` |

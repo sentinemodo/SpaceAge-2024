@@ -39,12 +39,12 @@ flowchart TD
 ## Todos
 
 - [x] Unit test: `LoadConfiguration` against `campaign/data.xml`; fix catalog if load throws
-- [ ] Python generator + committed `campaign/gamein.1.xml` from `galaxy.md` (factions 1–13, Gates, militias, HQs)
-- [ ] Test `LoadGame` of campaign catalog + `gamein.1.xml` (systems, Gates, Rootfast/Crusthold, 10 HQs)
+- [x] Python generator + committed `campaign/gamein.1.xml` from `galaxy.md` (factions 1–13, Gates, militias, HQs)
+- [x] Test `LoadGame` of campaign catalog + `gamein.1.xml` (systems, Gates, Rootfast/Crusthold, 10 HQs)
 - [ ] TDD `/reports` only (`GenerateReports`, no `Execute`). Scripts copy `gamein.N.xml` → `/data/gamein.xml`; do not relocate gamein into `/turn-dir`
 - [ ] `play/runs` layout, gitignore, init/reports/isolate/turn/next PowerShell + README
 - [ ] campaign-ai + campaign-gm Cursor agents; persona prefs; isolated reports; `/player` with campaign catalog
-- [ ] TDD `JumpOrder`: `JUMP` pair-id, 1 week, ships only, `pair=` on `adpnt`; drop 1-week corona MOVE from gamein once green
+- [x] TDD `JumpOrder`: `JUMP` pair-id, 1 week, ships only, `pair=` on `<alderson>`; no 1-week corona MOVE
 - [ ] TDD load gravity/temperature/atmosphere; shuttle `h2o2` surcharge; frigate land ban; high-g upkeep; cold/hot settlement gates
 - [ ] TDD load `weapon-group`/`resists`/`armor-module`; matchup table; armour 5× `hitWeight` + no capture; shield 90% intercept. SampleGame stays flat (no attrs)
 - [ ] TDD space MOVE duration from ΔAU × catalog drive speed (same-system planet/moon orbits); replace hardcoded 1-week and `NotImplemented` planet–planet
@@ -64,7 +64,7 @@ If load throws (name collision, bad `group`, unknown `location-type`), **fix `ca
 Designer-owned Python generator [campaign/_gen_gamein.py](../../campaign/_gen_gamein.py) emitting Windows-1251 XML from [designer/galaxy.md](../../designer/galaxy.md) / [designer/xml-schema.md](../../designer/xml-schema.md):
 
 - `<game turn="1">`, factions 1–13 (UN, players 2–11, Arbor First 12, HCS 13). Player passwords generated at init-run time or seeded placeholders documented in the run folder.
-- Helios + Fomal full Arbor/Anvil grids, UN + militia + HQ stacks. Spaceports emit region→orbit (and reverse) exits that **already load**. Gates emit `pair=` for `JUMP`. **Do not** emit a 1-week corona-to-corona MOVE once `JUMP` is green. Do **not** bake 8/13/26 week space durations once AU×drive is green (formula owns ETA).
+- Helios + Fomal full Arbor/Anvil grids, UN + militia + HQ stacks. Gates emit `pair=` for `JUMP`. Planetary regions do not exit to Gates. **Do not** emit a 1-week corona-to-corona MOVE. Do **not** bake 8/13/26 week space durations once AU×drive is green (formula owns ETA).
 - System `X Y Z` on every `<system>` (Helios 0,0,0; Fomal 1,0,0; empty `X` 4+).
 - Body attrs on planets/moons per [designer/environments.md](../../designer/environments.md) (`gravity` `temperature` `atmosphere`).
 - Same-system pockets as landing stubs; empty systems SS0003–SS0010 condensed; **no** empty-system APs; **no** unknown contract triggers (only live `give-module` / `research` from [designer/contracts.md](../../designer/contracts.md)).
@@ -128,12 +128,11 @@ Unit tests, owned fixtures under `Tests/fixtures/` if the world must not be Samp
 
 ### JUMP
 
-Spec: [designer/engine-wishlist.md](../../designer/engine-wishlist.md) `JUMP` row; [designer/galaxy.md](../../designer/galaxy.md) Alderson section.
+Live. Spec: [designer/galaxy.md](../../designer/galaxy.md) Alderson section.
 
-- Load planet `pair="P00010"` on `adpnt` bodies (unknown attrs are ignored today — add read/save).
-- New `JumpOrder` / `EOrderType.jump` / `OrdersReader` case `jump` / `OrderXml` load-save.
-- Syntax (live, from old Rules intent): `JUMP <pair-planet-id>` while the stack is on that Gate’s corona region or orbit. Duration **1 week** (long order). Fail if not at the paired Gate, or if the top-level stack is `city` / `inftry` / settlement (ships only: `shuttl`, `frigate`, `spacecraft`).
-- After green: generator omits the 1-week corona↔corona space exit. `/player` may add `JUMP` to [player/order_wishlist.md](../../player/order_wishlist.md) only until `rules.md` lists it as live.
+- `<alderson pair="P00010">` with an orbit and no corona region.
+- `JUMP <pair-id>` while the stack is on that Gate’s orbit. Duration **1 week** (long order). Ships only (`shuttl`, `frigate`, `spacecraft`). Arrival is the pair’s orbit.
+- Planetary regions do not exit to Gates. Reaching a Gate is AU×drive (wishlist).
 
 ### Body gravity / temperature / atmosphere
 

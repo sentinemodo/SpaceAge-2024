@@ -78,6 +78,12 @@ namespace SpaceAge
 			set { this.atmosphereBand = value; }
 		}
 
+		private Races races = new Races();
+		public Races Races
+		{
+			get { return this.races; }
+		}
+
 		private int surfaceSizeX = 0;
 		public int SurfaceSizeX
 		{

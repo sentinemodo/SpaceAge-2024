@@ -372,6 +372,10 @@ namespace SpaceAge
                 {
                     return this.MoveModes[EMoveMode.ground].Speed;
                 }
+                if (this.MoveModes.ContainsKey(EMoveMode.naval))
+                {
+                    return this.MoveModes[EMoveMode.naval].Speed;
+                }
                 else
                 {
                     return 0;
@@ -1609,9 +1613,20 @@ namespace SpaceAge
 			string line = "movement speed:";			
 			foreach (MoveMode moveMode in this.moduleType.MoveModes.Values) 
 			{
-                line = string.Format("{0} {1}", 
-                    line, 
-                    (moveMode.Mode == EMoveMode.ground) ? string.Concat(moveMode.Speed.ToString("F1"), " on ground") : string.Concat((moveMode.MassCapacity / this.Mass).ToString("F1"), " in space"));
+				string fragment;
+				if (moveMode.Mode == EMoveMode.ground)
+				{
+					fragment = string.Concat(moveMode.Speed.ToString("F1"), " on ground");
+				}
+				else if (moveMode.Mode == EMoveMode.naval)
+				{
+					fragment = string.Concat(moveMode.Speed.ToString("F1"), " naval");
+				}
+				else
+				{
+					fragment = string.Concat((moveMode.MassCapacity / this.Mass).ToString("F1"), " in space");
+				}
+                line = string.Format("{0} {1}", line, fragment);
 			}
 			line = string.Concat(line, ".");
 			return line;

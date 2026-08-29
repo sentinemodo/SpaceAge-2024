@@ -2,6 +2,8 @@
 
 Designer does **not** implement these. TDD adds a failing test first. Campaign XML stays loadable without them.
 
+**Already live — do not re-wishlist:** `EMoveMode.naval` (catalog `<move mode="naval">`, `<exitmode mode="naval">`; same-body MOVE uses naval duration when stack and exit both have naval; missing mode still defaults to ground). **Race on planet/moon** (`LoadGalaxy` `<race>` on `<planet>`/`<moon>`; orbit `<race>` still loads as fallback; `Orbit.HasAtmosphere` is true for parent `atmosphere="terair"` or body races). **First-class `<belt>`** (composition + MOVE-to-belt; no orbit; no child regions at t=1; rings are belts on gas giants). **First-class `<alderson>`** (orbit, no corona region, no region hops; `JUMP` 1 week to the paired Gate’s orbit, ships only). **Rejected:** coastal region type (port = naval exit onto adjacent land; ships occupy that land tile and sail back to water; they cannot walk inland; trucks cannot enter water).
+
 | Need | Objective | Suggested surface |
 |------|-----------|-------------------|
 | Moon constructed with moon `@name`, not planet name | Unique moon ids (`M00001`) survive load | `DataFile.LoadGalaxy` moon constructor |
@@ -15,7 +17,6 @@ Designer does **not** implement these. TDD adds a failing test first. Campaign X
 | Skill children (`usable-in`, cure-chance) applied in battle/medical | Officers matter on arks and labs | `SkillType` fill-pass |
 | Item `radiation` / equipment bonuses in combat and vacuum | Vests, suits, dosimeters | `ItemType` + consume/medical |
 | New `location-type` `atmosphere` | Gas-giant cloud regions | `LoadLocationType` |
-| Asteroid belt as first-class or typed planet exits | Belt drift between rocks | planet `abelt` already; optional space exits among belt regions |
 | Drive-dependent `fuel` for `plsdv` / `arkeng` using `heliu3` | High-Isp logistics | already expressible in module `fuel`; verify `Moving` consumes it on space hops |
 | Gas-giant cloud `deutrm`/`heliu3` | Dictionary wants orbit resources on `gasgnt`; until then seed ice-moon surfaces | same as `atmosphere` location-type row above — no extra token |
 | `SEE` / scan bonus from `survsc` | Anomaly gameplay | `SeeOrder` + module flag |
@@ -34,7 +35,6 @@ Designer does **not** implement these. TDD adds a failing test first. Campaign X
 | Multi-reward contracts | Hostile faction bounty: cash **and** technology on one completion (UN pay + finders keepers) | `Contract.Complete` applies multiple `<reward>` children; or `reward-type` list |
 | Item nominal `value` | `Market.GetPrice` is 0 with no history so NPC `GenerateOffers` skips; t=1 books must be standing XML prices. Catalog should seed the first price | Load item/module `value`; `GetPrice` falls back to it. Design ladder: [`economy.md`](economy.md) |
 | Capture / destroy stack trigger | UN charter to capture Arbor First / HCS city or HQ stack | `trigger="destroy-stack"` / `capture-stack"` + `target` stack id; optional hold-region weeks |
-| `JUMP` between paired `adpnt` | 1-week hop Helios Gate ↔ Fomal Gate. Stack at corona/orbit of one Gate; destination = pair planet id. Ships only (`shuttl` / `frigate` / `spacecraft`); no `city` | `JumpOrder` + `EOrderType.jump`; pair map on planet attrs `pair="P00010"` (ignored until load). Until then campaign emits a 1-week space exit between coronas |
 | Hostility flip on first spaceship | Arbor First (12) / HCS (13) go `DECLARE DEFAULT ENEMY` when `shuttl` or `frigate`/`spacecraft` production completes on that planet | `UseOrder`/`Produce` complete hook; planet of location; once-per-planet flag on faction or game |
 | Militia yearly raid | After flip, each year spawn/release 3 `inftry` toward a random player HQ on that planet | `Events` pipeline or GM `order.*` for factions 12/13; stop when city captured |
 

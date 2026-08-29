@@ -70,6 +70,12 @@ namespace SpaceAge
 			set { this.atmosphereBand = value; }
 		}
 
+		private Races races = new Races();
+		public Races Races
+		{
+			get { return this.races; }
+		}
+
 		private string pairName = string.Empty;
 		public string PairName
 		{
