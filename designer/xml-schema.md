@@ -44,6 +44,10 @@ Attributes: `module-type-group`, `location-type`, `planet-type`, `planet-atmosph
 
 ## Game state (`gamein.xml`) — `/game`
 
+The loader hardcodes filename `gamein.xml` under `/data`. The committed seed is `campaign/gamein.1.xml`; copy it to the run `/data/gamein.xml` and copy `campaign/data.xml` to `/data/data.xml`. Never point `/data` at `campaign/` (would write `gameout` into the catalog tree). Never put `gamein.xml` in `/turn-dir`.
+
+**Reports-only** (`/reports`): load + `GenerateReports`, no `Execute`. Seed `turn="1"` writes `report.1.{faction}.txt` in `/turn-dir` (plus `.xml` when `xml-report` is true).
+
 ```
 <game turn="N">
   <faction name="1" name-en="United Star Nations" ... />

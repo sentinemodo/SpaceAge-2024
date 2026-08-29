@@ -2,7 +2,7 @@
 
 Checked **29 Aug 2026** against engine **0.1.148** (`Game/Program.cs`).
 
-Sources: `Game/orders/EOrderType.cs`, `Game/orders/OrdersReader.cs`, `Game/orders/Orders.cs`, `Game/orders/JumpOrder.cs`, `Game/Game.cs` (week loop, `GenerateOffers`), `Game/Program.cs` (`/no-turn`, `/check`), `Game/Research.cs` (weekly output, breakthrough, preference), `Game/data structures/ModuleStack.Upkeep.cs` (sick bay, medical consume, quarterly maintenance, high-gravity bill), `Game/data structures/Galaxy.cs` (`LoadXml` / `LoadExits`, planet `pair` / environment bands), `Game/data structures/Planet.cs` (`PairName`), `Game/data structures/BodyEnvironment.cs` (`TryGetBody`, settlement temperature, gravity), `Game/data structures/ModuleType.cs` (`IsShipHullType`), `Game/data structures/Exits.cs` / `ExitMode.cs` / `Region.cs` (region **Exits:** lines), `Game/data structures/Faction.cs` (blank line before `Bank report:`), `Game/reports/ReportWriter.cs` (faction report sections and blank lines), `Game/battle/Battles.cs` (blank line between consecutive battles), `Game/game/DataFile.cs` (`LoadOrders` / `SaveOrders` delegate to `OrderXml`), `Game/game/OrderXml.cs` (XML switch, including `jump`), `Game/game/ModuleTypeGroupXml.cs` (`RESEARCH GROUP` tokens), `Game/effects/Effects.cs` (`LoadXml` effect types), `Game/effects/Producing.cs` (omit empty `technology=`), each `Game/orders/*Order.Parse` / `Execute`. Sample prefix usage: `Tests/SampleGame/orders.*.txt`.
+Sources: `Game/orders/EOrderType.cs`, `Game/orders/OrdersReader.cs`, `Game/orders/Orders.cs`, `Game/orders/JumpOrder.cs`, `Game/Game.cs` (week loop, `GenerateOffers`), `Game/Program.cs` (`/data`, `/turn-dir`, `/reports`, `/no-turn`, `/check`), `Game/Research.cs` (weekly output, breakthrough, preference), `Game/data structures/ModuleStack.Upkeep.cs` (sick bay, medical consume, quarterly maintenance, high-gravity bill), `Game/data structures/Galaxy.cs` (`LoadXml` / `LoadExits`, planet `pair` / environment bands), `Game/data structures/Planet.cs` (`PairName`), `Game/data structures/BodyEnvironment.cs` (`TryGetBody`, settlement temperature, gravity), `Game/data structures/ModuleType.cs` (`IsShipHullType`), `Game/data structures/Exits.cs` / `ExitMode.cs` / `Region.cs` (region **Exits:** lines), `Game/data structures/Faction.cs` (blank line before `Bank report:`), `Game/reports/ReportWriter.cs` (faction report sections and blank lines), `Game/battle/Battles.cs` (blank line between consecutive battles), `Game/game/DataFile.cs` (`LoadOrders` / `SaveOrders` delegate to `OrderXml`), `Game/game/OrderXml.cs` (XML switch, including `jump`), `Game/game/ModuleTypeGroupXml.cs` (`RESEARCH GROUP` tokens), `Game/effects/Effects.cs` (`LoadXml` effect types), `Game/effects/Producing.cs` (omit empty `technology=`), each `Game/orders/*Order.Parse` / `Execute`. Sample prefix usage: `Tests/SampleGame/orders.*.txt`.
 
 Not source of truth: `Game/documentation/Rules.txt`. Turn order files are **Windows-1251** (same as reports). Verbs are case-insensitive; most arguments are not.
 
@@ -65,15 +65,32 @@ From `Game.exe` (`Program.Main`) and `Game.Execute`. A turn is **13 weeks**. Com
 
 ### Host pipeline
 
-1. Load catalog (`data.xml`) and the saved game.
-2. `Request.Load` and `EventsReaders.Load` are **stubs** (return 0 / null). `Game.Events.Execute` is also a stub (returns 0). No GM events run.
-3. Load `order.*` files (`OrdersReader`).
-4. `Game.Execute` (below).
-5. Write faction reports (`ReportWriter.GenerateFactionReport`), then save the game. Text reports insert **blank lines** between major sections: after the engine-version line, after the stub events block, between declared stances and `Bank report:` when declarations exist (`Faction.Report`), before/after `Technology reports:` when that section is present, before `Battles report:`, between consecutive battles (`Battles.Report`), after each space system, and before each visible region. The galaxy block ends with a blank line.
+`Program.Main` is public. Engine version stays **0.1.148** (CLI-only; no bump). Flags share one parse loop: `/reports` and `/no-turn` are bare switches (no following argument); `/data`, `/turn-dir`, and `/check` take the next token.
 
-`/no-turn` skips the 13 weeks: load orders, run **between-turn** immediates only (`AllowedBetweenTurns` — live text verbs: `CONTRACT`, `PRESS`), write announcements (`announce.{turn}.{faction}.txt` for new contracts at that location and for press releases), save.
+| Flag | Argument | Effect |
+| ---- | -------- | ------ |
+| `/data` | directory | Catalog and saved-game directory (default: cwd). |
+| `/turn-dir` | directory | Orders, reports, and announcements directory (default: cwd). |
+| `/reports` | none | After load, write faction reports only (below). |
+| `/no-turn` | none | After load, between-turn orders only (below). |
+| `/check` | filename | Stub. Stores the argument, then `OrdersReader.Check` returns 0. Does not parse or execute. |
 
-`/check` is a **stub** (`OrdersReader.Check` returns 0). The host stores the filename argument, then ignores it and does not parse or execute.
+Always: load catalog (`data.xml`) and the saved game. Then one branch (`/check` wins if a filename was stored):
+
+**`/check`:** stub only. No orders, no Execute, no reports, no save.
+
+**`/reports`:** `ReportWriter.GenerateReports(turn_dir)` only. No order load, no events, no `Game.Execute`, no `SaveGame`. Filenames use the **saved** `turn` (seed `turn="1"` writes `report.1.{faction}.txt` into `/turn-dir`). Faction XML (`report.{turn}.{faction}.xml`) is written when that faction’s `xml-report` option is true (default). Does not increment the turn and does not write `gameout`.
+
+**`/no-turn`:** load orders, run **between-turn** immediates only (`AllowedBetweenTurns` — live text verbs: `CONTRACT`, `PRESS`), write announcements (`announce.{turn}.{faction}.txt` for new contracts at that location and for press releases), save.
+
+**Full run** (none of the above):
+
+1. `Request.Load` and `EventsReaders.Load` are **stubs** (return 0 / null). `Game.Events.Execute` is also a stub (returns 0). No GM events run.
+2. Load `order.*` files (`OrdersReader`).
+3. `Game.Execute` (below) — `turn++` first, so seed `turn="1"` becomes turn 2.
+4. Write faction reports (`ReportWriter.GenerateReports`), then save the game (`gameout.{turn}.xml` into `/data`). After that increment the files are `report.2.{faction}.txt` (and `.xml` when `xml-report` is true) plus `gameout.2.xml`.
+
+Text reports insert **blank lines** between major sections: after the engine-version line, after the stub events block, between declared stances and `Bank report:` when declarations exist (`Faction.Report`), before/after `Technology reports:` when that section is present, before `Battles report:`, between consecutive battles (`Battles.Report`), after each space system, and before each visible region. The galaxy block ends with a blank line.
 
 ### Each turn (`Game.Execute`)
 

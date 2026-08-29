@@ -16,7 +16,7 @@ Tick matching rows in [designer/engine-wishlist.md](../../designer/engine-wishli
 
 - TDD owns C# / `Tests/`. Designer owns `campaign/` XML and the generator. `/player` owns order drafts and manuals. Architecture docs under `architecture/`.
 - Engine loads catalog as `data.xml` and state as `gamein.xml` ([Game/game/DataFile.cs](../../Game/game/DataFile.cs) `LoadGameDocument` hardcodes `gamein.xml`). Orders are every `order.*` in `/turn-dir` ([Game/orders/OrdersReader.cs](../../Game/orders/OrdersReader.cs)). Reports are `report.{turn}.{faction}.txt` plus `.xml` when `xml-report` is true.
-- `Game.Execute()` increments `Turn` then runs 13 weeks. A starting snapshot **cannot** come from a full exe run: SampleGame writes `report.1.*` by calling `GenerateReports` **without** `Execute`. Program.Main has no such path today.
+- `Game.Execute()` increments `Turn` then runs 13 weeks. A starting snapshot **cannot** come from a full exe run: SampleGame writes `report.1.*` by calling `GenerateReports` **without** `Execute`. `Game.exe /reports` is that path (load + `GenerateReports`, no `Execute`, no `SaveGame`).
 - `/player` manuals currently track `Tests/data.xml`. Campaign play must point the player agent at `campaign/data.xml` without overwriting SampleGame manuals.
 
 ## Target play loop
@@ -41,7 +41,7 @@ flowchart TD
 - [x] Unit test: `LoadConfiguration` against `campaign/data.xml`; fix catalog if load throws
 - [x] Python generator + committed `campaign/gamein.1.xml` from `galaxy.md` (factions 1–13, Gates, militias, HQs)
 - [x] Test `LoadGame` of campaign catalog + `gamein.1.xml` (systems, Gates, Rootfast/Crusthold, 10 HQs)
-- [ ] TDD `/reports` only (`GenerateReports`, no `Execute`). Scripts copy `gamein.N.xml` → `/data/gamein.xml`; do not relocate gamein into `/turn-dir`
+- [x] TDD `/reports` only (`GenerateReports`, no `Execute`). Scripts copy `gamein.N.xml` → `/data/gamein.xml`; do not relocate gamein into `/turn-dir`
 - [ ] `play/runs` layout, gitignore, init/reports/isolate/turn/next PowerShell + README
 - [ ] campaign-ai + campaign-gm Cursor agents; persona prefs; isolated reports; `/player` with campaign catalog
 - [x] TDD `JumpOrder`: `JUMP` pair-id, 1 week, ships only, `pair=` on `<alderson>`; no 1-week corona MOVE
@@ -81,7 +81,7 @@ Live `Game.exe` 0.1.144:
 - `Execute` does `turn++` first: seed `turn="1"` then a full run writes **`report.2.*`** and **`gameout.2.xml`**.
 - `/no-turn` does not write reports. `/check` is a stub.
 
-The only justified Program TDD: **`/reports`** — load, `GenerateReports`, **do not** `Execute`. That is how SampleGame produces starting `report.1.*`. Do not seed `turn="0"` to fake report.1 (that would run a blank quarter and change the world).
+**`/reports`** (live): load, `GenerateReports`, **do not** `Execute` or `SaveGame`. That is how SampleGame produces starting `report.1.*`. Do not seed `turn="0"` to fake report.1 (that would run a blank quarter and change the world). Covered by `Tests/SampleGame/TProgram.cs`.
 
 Never point `/data` at `campaign/` for a live run (would write `gameout` into the catalog tree). Copy `campaign/data.xml` into the run’s `/data` folder.
 

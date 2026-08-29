@@ -15,6 +15,10 @@ The **game-designer** Cursor agent (`.cursor/agents/game-designer.md`) owns the 
 | [contracts.md](contracts.md) | In-game contract vectors |
 | [engine-wishlist.md](engine-wishlist.md) | Engine gaps (effects, orders, groups, triggers) |
 
-Live XML: `campaign/data.xml`, `campaign/gamein.xml` (generate `gamein.1.xml` from `galaxy.md`).
+Live XML: `campaign/data.xml` and `campaign/gamein.1.xml` (regenerate the seed with `python campaign/_gen_gamein.py` from `galaxy.md`). Engine `LoadGame` still opens only `/data/gamein.xml` — copy the seed there; copy the catalog to `/data/data.xml`. Never point `/data` at `campaign/`. Never put `gamein.xml` in `/turn-dir`.
+
+**Reports-only** (`/reports`): load + `GenerateReports`, no `Execute`. Starting reports for this seed are `report.1.{faction}.txt` in `/turn-dir` (plus `.xml` when `xml-report` is true).
 
 Test fixtures (`Tests/data.xml`, SampleGame) are **not** the campaign. `/player` manuals currently track the test catalog; after a campaign catalog lands, tell `/player` which file the humans are playing.
+
+**Public lobby website** (home excerpt + visual-tool link + orders-submission status) is specified under [architecture/delivery/website.md](../architecture/delivery/website.md) and tracked as a campaign-play todo in [architecture/delivery/campaign-play.md](../architecture/delivery/campaign-play.md). Designer owns flavour accuracy and faction-facing names; do not treat the site as an engine or `play/runs` AI path.

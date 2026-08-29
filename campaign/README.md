@@ -8,7 +8,9 @@ Live game XML for a 10-player PBEM (two starting systems, eight empty). Owned by
 | `_gen_gamein.py` | Generator. Run `python campaign/_gen_gamein.py` to rewrite `gamein.1.xml` from `designer/galaxy.md` |
 | `gamein.1.xml` | Turn-1 seed: factions 1–13, Helios/Fomal + eight empty systems, Gates, militias, 10 HQs, UN markets, live `give-module`/`research` contracts. Encoding Windows-1251 |
 
-Engine `LoadGame` opens **`gamein.xml`**. Play scripts copy `gamein.1.xml` → the run folder’s `gamein.xml`. Do not point `/data` at `campaign/` (that would write `gameout` into the catalog tree).
+Engine `LoadGame` always opens **`/data/gamein.xml`**. Play and TDD copy `campaign/gamein.1.xml` → run `/data/gamein.xml` and `campaign/data.xml` → run `/data/data.xml`. Never point `/data` at `campaign/` (that would write `gameout` into the catalog tree). Never put `gamein.xml` in `/turn-dir` (`/turn-dir` is `order.*` in and `report.*` out).
+
+**Reports-only** (`Game.exe /data <run>/data /turn-dir <run>/turn /reports`): load + `GenerateReports`, no `Execute`. Seed `turn="1"` therefore writes starting `report.1.{faction}.txt` into `/turn-dir` (plus `report.1.{faction}.xml` when that faction’s `xml-report` is true). A full turn run would `turn++` first and emit `report.2.*` plus `gameout.2.xml` — that is not this path.
 
 **Seeded player passwords** (placeholders until `play/init-run.ps1` assigns run-specific ones):
 
@@ -31,5 +33,7 @@ Engine `LoadGame` opens **`gamein.xml`**. Play scripts copy `gamein.1.xml` → t
 L3+ signature ores from `designer/resources.md` (`lithia`, `reeox`, …) are **not** seeded until those item rows exist in `data.xml` (unknown `resource type` throws on load). Empty systems use live stand-ins (`heliu3`, `nickfe`, `carbon`, `titani`).
 
 Environment / gravity / temperature rules: `designer/environments.md`. Galaxy seed (militias, Alderson Gates): `designer/galaxy.md`.
+
+The **public lobby website** (human-facing home, visual-tool link, current-turn orders status) is specified under `architecture/delivery/website.md` and tracked as a campaign-play todo in `architecture/delivery/campaign-play.md`. It is not this catalog tree and is not the `play/runs` AI isolation path.
 
 Do not replace these files with SampleGame goldens.

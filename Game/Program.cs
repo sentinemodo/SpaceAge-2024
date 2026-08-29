@@ -6,11 +6,11 @@ using System.Text;
 
 namespace SpaceAge
 {
-	class Program
+	public class Program
 	{
 		public const string EngineVersion = "0.1.148";
 
-		static void Main(string[] args)
+		public static void Main(string[] args)
 		{
 #if RELEASE
 			try 
@@ -20,11 +20,14 @@ namespace SpaceAge
 			string turn_dir = Directory.GetCurrentDirectory();
 			string order_to_check = null;
 			bool noTurn = false;
+			bool reportsOnly = false;
 
 			for (int i = 0; i < args.Length; i++)
 			{
 				if (args[i] == "/no-turn")
 					noTurn = true;
+				else if (args[i] == "/reports")
+					reportsOnly = true;
 				else if (i < args.Length - 1)
 				{
 					if (args[i] == "/data")
@@ -48,7 +51,13 @@ namespace SpaceAge
 
 			if (order_to_check == null)
 			{
-				if (noTurn)
+				if (reportsOnly)
+				{
+					Console.WriteLine("Generating reports");
+					ReportWriter reportsWriter = new ReportWriter(game, dataFile, turn_dir);
+					reportsWriter.GenerateReports(turn_dir);
+				}
+				else if (noTurn)
 				{
 					Console.WriteLine("Loading orders");
 					OrdersReader ordersReader = new OrdersReader(game);
