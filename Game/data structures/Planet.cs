@@ -70,6 +70,13 @@ namespace SpaceAge
 			set { this.atmosphereBand = value; }
 		}
 
+		private bool hasEnvironmentAttrs = false;
+		public bool HasEnvironmentAttrs
+		{
+			get { return this.hasEnvironmentAttrs; }
+			set { this.hasEnvironmentAttrs = value; }
+		}
+
 		private Races races = new Races();
 		public Races Races
 		{

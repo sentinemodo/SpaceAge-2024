@@ -399,6 +399,55 @@ namespace SpaceAge
             }
 		}
 
+		private bool applyEnvironmentMoveRules(int week)
+		{
+			Location from = this.Mover.Location as Location;
+			Location to = this.destination;
+			if (!BodyEnvironment.IsSurfaceOrbitHop(from, to))
+			{
+				return true;
+			}
+			if (BodyEnvironment.BansNonShuttleSurfaceHop(this.Mover.ModuleType, from, to))
+			{
+				this.Mover.EventReports.Add(
+					week,
+					"MOVE failed. Spaceships cannot use solid-surface exits on atmospheres.");
+				return false;
+			}
+			Location surface = from is Region ? from : to;
+			int surcharge = BodyEnvironment.SurfaceOrbitSurcharge(surface);
+			if (surcharge <= 0)
+			{
+				return true;
+			}
+			ItemType h2o2 = ItemType.All["h2o2"];
+			ItemStacks need = new ItemStacks();
+			need.Add(new ItemStack(h2o2, surcharge));
+			if (!this.Mover.ItemStacksSumRecursive.Has(need))
+			{
+				this.Mover.EventReports.Add(
+					week,
+					string.Format("MOVE failed. Not enough {0} for launch.", ItemType.All["h2o2"].ReportName));
+				return false;
+			}
+			IItemStacksHolder holder = this.findFuelHolder(this.Mover, need);
+			if (holder == null)
+			{
+				this.Mover.EventReports.Add(
+					week,
+					string.Format("MOVE failed. Not enough {0} for launch.", ItemType.All["h2o2"].ReportName));
+				return false;
+			}
+			holder.ItemStacks.Minus(need);
+			holder.EventReports.Add(
+				week,
+				string.Format(
+					"consumed {0} for launch{1}.",
+					need.ReportList,
+					holder == this.Mover ? string.Empty : string.Concat(" for ", this.Mover.ReportName)));
+			return true;
+		}
+
 		private bool canMove(int week)
 		{          
 			if (!this.Mover.IsActive)
@@ -572,6 +621,12 @@ namespace SpaceAge
 					// assign destination if not moving
 					if (this.Mover.MovingTo == null)
 					{
+						if (!this.applyEnvironmentMoveRules(week))
+						{
+							this.Executing = false;
+							this.Executed = true;
+							return;
+						}
 						this.Executing = true;
 						this.Mover.MovingTo = this.destination;
 						bool resume = this.DurationLeft > 0 && this.DurationLeft < Int32.MaxValue;

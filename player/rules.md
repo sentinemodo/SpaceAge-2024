@@ -2,7 +2,7 @@
 
 Checked **29 Aug 2026** against engine **0.1.148** (`Game/Program.cs`).
 
-Sources: `Game/orders/EOrderType.cs`, `Game/orders/OrdersReader.cs`, `Game/orders/Orders.cs`, `Game/orders/JumpOrder.cs`, `Game/Game.cs` (week loop, `GenerateOffers`), `Game/Program.cs` (`/data`, `/turn-dir`, `/reports`, `/no-turn`, `/check`), `Game/Research.cs` (weekly output, breakthrough, preference), `Game/data structures/ModuleStack.Upkeep.cs` (sick bay, medical consume, quarterly maintenance, high-gravity bill), `Game/data structures/Galaxy.cs` (`LoadXml` / `LoadExits`, planet `pair` / environment bands), `Game/data structures/Planet.cs` (`PairName`), `Game/data structures/BodyEnvironment.cs` (`TryGetBody`, settlement temperature, gravity), `Game/data structures/ModuleType.cs` (`IsShipHullType`), `Game/data structures/Exits.cs` / `ExitMode.cs` / `Region.cs` (region **Exits:** lines), `Game/data structures/Faction.cs` (blank line before `Bank report:`), `Game/reports/ReportWriter.cs` (faction report sections and blank lines), `Game/battle/Battles.cs` (blank line between consecutive battles), `Game/game/DataFile.cs` (`LoadOrders` / `SaveOrders` delegate to `OrderXml`), `Game/game/OrderXml.cs` (XML switch, including `jump`), `Game/game/ModuleTypeGroupXml.cs` (`RESEARCH GROUP` tokens), `Game/effects/Effects.cs` (`LoadXml` effect types), `Game/effects/Producing.cs` (omit empty `technology=`), each `Game/orders/*Order.Parse` / `Execute`. Sample prefix usage: `Tests/SampleGame/orders.*.txt`.
+Sources: `Game/orders/EOrderType.cs`, `Game/orders/OrdersReader.cs`, `Game/orders/Orders.cs`, `Game/orders/JumpOrder.cs`, `Game/orders/MoveOrder.cs`, `Game/Game.cs` (week loop, `GenerateOffers`), `Game/Program.cs` (`/data`, `/turn-dir`, `/reports`, `/no-turn`, `/check`), `Game/Research.cs` (weekly output, breakthrough, preference), `Game/data structures/ModuleStack.Upkeep.cs` (sick bay, medical consume, quarterly maintenance, high-gravity bill), `Game/data structures/Galaxy.cs` (`LoadXml` / `LoadExits` / save of environment attrs, belt and alderson exits), `Game/data structures/Alderson.cs` (`PairName`, orbit only), `Game/data structures/Belt.cs` (`LocationType` space), `Game/data structures/Planet.cs` / `Moon.cs` (`HasEnvironmentAttrs`), `Game/data structures/BodyEnvironment.cs` (`LaunchSurcharge`, `SurfaceOrbitSurcharge`, `BansNonShuttleSurfaceHop`, settlement temperature, gravity), `Game/data structures/ModuleType.cs` (`IsShipHullType` / `IsShuttleUnit`), `Game/data structures/Exits.cs` / `ExitMode.cs` / `Region.cs` (region **Exits:** lines), `Game/data structures/Faction.cs` (blank line before `Bank report:`), `Game/reports/ReportWriter.cs` (faction report sections and blank lines), `Game/battle/Battles.cs` (blank line between consecutive battles), `Game/game/DataFile.cs` (`LoadOrders` / `SaveOrders` delegate to `OrderXml`), `Game/game/OrderXml.cs` (XML switch, including `jump`), `Game/game/ModuleTypeGroupXml.cs` (`RESEARCH GROUP` tokens), `Game/effects/Effects.cs` (`LoadXml` effect types), `Game/effects/Producing.cs` (omit empty `technology=`), each `Game/orders/*Order.Parse` / `Execute`. Sample prefix usage: `Tests/SampleGame/orders.*.txt`.
 
 Not source of truth: `Game/documentation/Rules.txt`. Turn order files are **Windows-1251** (same as reports). Verbs are case-insensitive; most arguments are not.
 
@@ -385,17 +385,17 @@ JUMP, MOVE, PRODUCE, REPAIR, RESEARCH, TRAIN, USE.
 
 ### JUMP
 
-**Syntax:** `JUMP <planet-id>`
+**Syntax:** `JUMP <alderson-id>`
 
 **Subject:** modulestack.
 
-Alderson-gate hop. Parse takes **one** token; it must be a **planet** id in `Planet.All` (not a region, orbit, moon, or star). Throws `Bad syntax or unknown JUMP destination` otherwise. Text and XML both parse (`OrderXml` case `jump`). Leftover XML is `<jump destination="…"/>` plus optional `duration-left`. There is no `Report` override: a leftover that is still `NotExecuted` prints `jump` with no destination.
+Alderson-gate hop. Parse takes **one** token; it must be an **Alderson Gate** id in `Alderson.All` (not a planet, region, orbit, moon, belt, or star). Throws `Bad syntax or unknown JUMP destination` otherwise. Text and XML both parse (`OrderXml` case `jump`). Leftover XML is `<jump destination="…"/>` (the gate id) plus optional `duration-left`. There is no `Report` override: a leftover that is still `NotExecuted` prints `jump` with no destination.
 
 **Who:** `ModuleType.IsShipHullType` — groups `frigate`, `corvette`, `destroyer`, `cruiser`, `capital`, `ark`, `shuttle`, `spacecraft`, or a shuttle unit (`shuttl`, `alndrn`). Else `JUMP failed. Only ships can jump.` Unformed (null module type) fails with no event line.
 
-**Where:** the stack’s location must resolve to a **planet** (`BodyEnvironment.TryGetBody` → `Planet`). Moon regions and moon orbits do not qualify (`GateAt` returns null). That planet must have XML `pair` set (`Planet.PairName`). Else `JUMP failed. Unit is not at an Alderson Gate.` The destination planet’s **name** must equal that `pair` value. Else `JUMP failed. Destination is not the paired Gate.` Pairing is one-way (only the origin’s `pair` is checked). SampleGame maps have no `pair=` attributes, so JUMP always fails the gate check there.
+**Where:** the stack must be in an **orbit whose holder is an Alderson Gate** (`orbit.OrbitHolder as Alderson`). Planet/moon orbits and all regions fail (`GateAt` returns null). That gate must have XML `pair` set (`Alderson.PairName`). Else `JUMP failed. Unit is not at an Alderson Gate.` The destination gate’s **name** must equal that `pair` value. Else `JUMP failed. Destination is not the paired Gate.` Pairing is one-way (only the origin’s `pair` is checked). Gates have **orbit only, no regions** — frigates occupy the gate orbit; they do not land. SampleGame maps have no `<alderson>` objects, so JUMP parse fails there. Campaign maps pair gates (e.g. Helios Gate `[P00009]` ↔ Fomal Gate `[P00010]`). Planet `pair` is unused by JUMP.
 
-**Execute:** occupies the long slot (`base.Execute`). Does **not** call `CanOperate` (crew, energy, `operate-in`, and disabled stacks do not block). Does not consume fuel and does not start a `Moving` effect. Duration is 1 and completes in the **same** week: logs `jumping to {planet ReportName}, ETA 1.` then sets `Parent` to the arrival location and logs `arrived at {arrival ReportName} via JUMP.` Arrival is the destination planet’s first region whose type is `orbit`, else that planet’s `Orbit`. Nested children stay nested on the jumper; a nested shuttle issued JUMP unnests to the arrival. Failure and success both set `Executed` (long `Executed` is not cleared each week, so `@jump` does not retry). Repeat `N` is not decremented on arrival.
+**Execute:** occupies the long slot (`base.Execute`). Does **not** call `CanOperate` (crew, energy, `operate-in`, and disabled stacks do not block). Does not consume fuel and does not start a `Moving` effect. Duration is 1 and completes in the **same** week: logs `jumping to {gate ReportName}, ETA 1.` then sets `Parent` to the arrival and logs `arrived at {arrival ReportName} via JUMP.` Arrival is the destination gate’s `Orbit`. Nested children stay nested on the jumper; a nested shuttle issued JUMP unnests to the arrival. Failure and success both set `Executed` (long `Executed` is not cleared each week, so `@jump` does not retry). Repeat `N` is not decremented on arrival.
 
 ### MOVE
 
@@ -403,18 +403,36 @@ Alderson-gate hop. Parse takes **one** token; it must be a **planet** id in `Pla
 
 **Subject:** modulestack.
 
-Walks a route. Each dest token is a **region**, **star**, **planet**, **moon**, **anomaly**, or **orbit** id (stars/planets/moons/anomalies resolve to their orbit). Starts a `Moving` effect, consumes fuel when required, changes parent on arrival.
+Walks a route. Each dest token is a **region**, **star**, **planet**, **moon**, **belt**, **alderson**, **anomaly**, or **orbit** id. Stars, planets, moons, anomalies, and Alderson Gates resolve to their **orbit**. A **belt** token is the belt itself (location-type **space**, not a landing). Starts a `Moving` effect, consumes fuel when required, changes parent on arrival.
 
-**Exits on the report:** a **region** block includes `Exits:` (`Region.Report` → `Exits.Report`). A region destination prints `{name} [id] (x,y), {region type}, {ground|space} travel duration N week(s).` An **orbit** destination prints `orbit [id], space travel duration N week(s).` (no region-type clause). Orbit reports do not list exits. Maps without `orbit=` exits (SampleGame) never show that line.
+**Exits on the report:** a **region** block includes `Exits:` (`Region.Report` → `Exits.Report`). A region destination prints `{name} [id] (x,y), {region type}, {ground|naval|space} travel duration N week(s).` A non-region destination prints that location’s `ReportName` plus the mode duration — `orbit [id], space travel duration N week(s).` for an orbit, or `{name} [id] at AU N, belt, space travel duration N week(s).` for a belt. Orbit reports and `Belt.Report` do not list exits (belt exits still exist in the save and are used by MOVE). Maps without `orbit=` / `belt=` / `alderson=` exits (SampleGame) never show those lines.
 
 **Duration** (`movementDuration`) is not always the printed exit duration:
 
-- Same-planet **region → region**: ground; weeks = ceil(exit ground duration / mover Speed). Needs a ground exit from here.
-- Same-parent **region ↔ orbit** (e.g. Luna `R00011` → `O00004`): space; **1 week**, even if the exit lists 2. Needs a space-capable mover (or nested space stack).
+- Same-planet **region → region**: ground or naval (`tryCompatibleSurfaceMode`); weeks = ceil(exit duration / mover Speed). Needs a compatible surface exit from here.
+- Same-parent **region ↔ orbit** (e.g. Arbor surface → Arbor orbit): space; **1 week**, even if the exit lists more. Needs a space-capable mover (or nested space stack). Then the surface↔orbit environment rules below run before departure.
+- **Belt** hops (current or dest is a belt): space; weeks = ceil(listed space-exit duration / speed). Needs that exit. Occupying a belt is **space**, not a landing — there is no solid surface.
+- Region ↔ orbit with a **listed space exit** (different parent — typically a surface region to a Gate orbit): space; weeks from that exit. Alderson Gates have **orbit only, no regions**. Frigates occupy the Gate orbit; they do not land.
 - Same-planet **planet orbit ↔ moon orbit**: space; weeks from AU distance / (mass capacity / mass).
-- Other hops are not implemented.
+- Other hops (orbit ↔ orbit that is not same-planet moon, belt without an exit, …) are not implemented.
 
-A stack with a **space** move mode may attempt a hop even when the current location lists no matching exit. Ground-only stacks need an exit from here to the dest.
+A stack with a **space** move mode may attempt a same-parent region↔orbit hop even when the current location lists no matching exit. Ground- or naval-only stacks need an exit from here to the dest. Unformed stacks fail with `MOVE failed. unformed units cannot move.`
+
+#### Surface↔orbit environment
+
+Same-body region↔orbit only (`BodyEnvironment.IsSurfaceOrbitHop`). Runs once when the hop starts (`MovingTo` is still empty). Failures set `Executed` (the leftover is consumed; `@move` does not retry).
+
+**Ship landing ban** (`BansNonShuttleSurfaceHop`): a non-shuttle **ship hull** (`IsShipHullType` and not `IsShuttleUnit` — frigates, corvettes, …) cannot hop region↔orbit when the surface body **emitted** environment attrs and `atmosphere` is not `none`. Fail: `MOVE failed. Spaceships cannot use solid-surface exits on atmospheres.` Shuttles (`shuttl`, `alndrn`, group `shuttle`) still ferry. Vacuum moons (`atmosphere="none"`, e.g. Selene) stay landable for frigates. Bodies that **omit** `gravity` / `temperature` / `atmosphere` (SampleGame Earth) stay landable. Save writes those three attrs only when they were emitted (`HasEnvironmentAttrs`).
+
+**Launch surcharge** (`LaunchSurcharge` / `SurfaceOrbitSurcharge`): same hop, **both ways**, consumes oxyhydro `[h2o2]` from the mover or nested cargo when the body emitted environment attrs. Quantity is a table of gravity × atmosphere (hostile adds 4):
+
+| Gravity | Atmosphere `none` | Other atmosphere (`thin` / `terair` / `hostile`) |
+| ------- | ----------------- | ------------------------------------------------ |
+| high    | 16                | 16 (+4 if hostile → 20)                          |
+| normal  | 4                 | 8 (+4 if hostile → 12)                           |
+| low     | 0                 | 2 (+4 if hostile → 6)                            |
+
+Arbor / Anvil (`normal` + `terair`) = **8** `h2o2` both ways. Selene (`low` + `none`) = **0**. Omitted attrs (SampleGame Earth) = **0**. Short cargo: `MOVE failed. Not enough unit of oxyhydro [h2o2] for launch.` Success logs `consumed {N units of oxyhydro [h2o2]} for launch.` (or `for launch for {mover}.` if a nested holder paid). This is separate from drive fuel (`needFuel`).
 
 ### PRODUCE
 

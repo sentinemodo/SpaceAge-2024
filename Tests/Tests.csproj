@@ -89,6 +89,7 @@
     <Compile Include="TBodyRace.cs" />
     <Compile Include="TBelt.cs" />
     <Compile Include="TAlderson.cs" />
+    <Compile Include="TMoveEnvironment.cs" />
     <Compile Include="TGetGiveHas.cs" />
     <Compile Include="TFormStack.cs" />
     <Compile Include="TSee.cs" />
@@ -322,6 +323,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="fixtures\alderson\gamein.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="fixtures\environment\gamein.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

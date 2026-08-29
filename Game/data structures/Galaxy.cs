@@ -98,6 +98,9 @@ namespace SpaceAge
 						planet.GravityBand = BodyEnvironment.ParseGravity(elPlanet.HasAttribute("gravity") ? elPlanet.GetAttribute("gravity") : "normal");
 						planet.TemperatureBand = BodyEnvironment.ParseTemperature(elPlanet.HasAttribute("temperature") ? elPlanet.GetAttribute("temperature") : "habitable");
 						planet.AtmosphereBand = BodyEnvironment.ParseAtmosphere(elPlanet.GetAttribute("atmosphere"));
+						planet.HasEnvironmentAttrs = elPlanet.HasAttribute("gravity")
+							|| elPlanet.HasAttribute("temperature")
+							|| elPlanet.HasAttribute("atmosphere");
 						if (elPlanet.HasAttribute("pair"))
 						{
 							planet.PairName = elPlanet.GetAttribute("pair");
@@ -122,6 +125,9 @@ namespace SpaceAge
 								moon.GravityBand = BodyEnvironment.ParseGravity(elMoon.HasAttribute("gravity") ? elMoon.GetAttribute("gravity") : "low");
 								moon.TemperatureBand = BodyEnvironment.ParseTemperature(elMoon.GetAttribute("temperature"));
 								moon.AtmosphereBand = BodyEnvironment.ParseAtmosphere(elMoon.GetAttribute("atmosphere"));
+								moon.HasEnvironmentAttrs = elMoon.HasAttribute("gravity")
+									|| elMoon.HasAttribute("temperature")
+									|| elMoon.HasAttribute("atmosphere");
 
 								if (elMoon.HasAttribute("mass"))
 									moon.Mass = Convert.ToDouble(elMoon.GetAttribute("mass"));
@@ -486,9 +492,12 @@ namespace SpaceAge
 						elObject.SetAttribute("surface-size-X", planet.SurfaceSizeX.ToString());
 						elObject.SetAttribute("surface-size-Y", planet.SurfaceSizeY.ToString());
 						elObject.SetAttribute("type", planet.PlanetType.Name);
-						elObject.SetAttribute("gravity", BodyEnvironment.GravityToken(planet.GravityBand));
-						elObject.SetAttribute("temperature", BodyEnvironment.TemperatureToken(planet.TemperatureBand));
-						elObject.SetAttribute("atmosphere", BodyEnvironment.AtmosphereToken(planet.AtmosphereBand));
+						if (planet.HasEnvironmentAttrs)
+						{
+							elObject.SetAttribute("gravity", BodyEnvironment.GravityToken(planet.GravityBand));
+							elObject.SetAttribute("temperature", BodyEnvironment.TemperatureToken(planet.TemperatureBand));
+							elObject.SetAttribute("atmosphere", BodyEnvironment.AtmosphereToken(planet.AtmosphereBand));
+						}
 						if (!string.IsNullOrEmpty(planet.PairName))
 						{
 							elObject.SetAttribute("pair", planet.PairName);
@@ -512,9 +521,12 @@ namespace SpaceAge
 							elMoon.SetAttribute("surface-size-X", moon.SurfaceSizeX.ToString());
 							elMoon.SetAttribute("surface-size-Y", moon.SurfaceSizeY.ToString());
 							elMoon.SetAttribute("type", moon.MoonType.Name);
-							elMoon.SetAttribute("gravity", BodyEnvironment.GravityToken(moon.GravityBand));
-							elMoon.SetAttribute("temperature", BodyEnvironment.TemperatureToken(moon.TemperatureBand));
-							elMoon.SetAttribute("atmosphere", BodyEnvironment.AtmosphereToken(moon.AtmosphereBand));
+							if (moon.HasEnvironmentAttrs)
+							{
+								elMoon.SetAttribute("gravity", BodyEnvironment.GravityToken(moon.GravityBand));
+								elMoon.SetAttribute("temperature", BodyEnvironment.TemperatureToken(moon.TemperatureBand));
+								elMoon.SetAttribute("atmosphere", BodyEnvironment.AtmosphereToken(moon.AtmosphereBand));
+							}
 							this.saveRaces(doc, elMoon, moon.Races);
 							this.saveOrbit(doc, elMoon, moon, factionXMLreport);
 							this.saveRegions(doc, elMoon, moon, factionXMLreport);

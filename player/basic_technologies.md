@@ -359,7 +359,7 @@ Size 4, mass 5. Produced by oil dwelling `[oildwe]` (2). Oil-burning plants burn
 
 **unit of oxyhydro [h2o2]**  
 A very useful combination of two volatiles that react strongly.  
-Size 1, mass 1. Produced by water distillation `[wtrdst]` (3).
+Size 1, mass 1. Produced by water distillation `[wtrdst]` (3). Same-body surface↔orbit `MOVE` also consumes this as a launch surcharge when the body emitted environment attrs (see `player/rules.md` MOVE).
 
 **unit of silicium [silici]**  
 The silicium is a very common material in most areas, but high-grade siliciums are base components for smart systems and modules.  

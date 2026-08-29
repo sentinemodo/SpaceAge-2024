@@ -63,7 +63,7 @@ The lobby **must** expose:
 - [x] campaign-ai + campaign-gm Cursor agents; persona prefs; isolated reports; `/player` with campaign catalog
 - [ ] Public campaign website: home (Alderson excerpt + credits) + visual-tool link + current-turn orders-submission status (closed 10-player lobby; not `play/runs` AI isolation)
 - [x] TDD `JumpOrder`: `JUMP` pair-id, 1 week, ships only, `pair=` on `<alderson>`; no 1-week corona MOVE
-- [ ] TDD load gravity/temperature/atmosphere; shuttle `h2o2` surcharge; frigate land ban; high-g upkeep; cold/hot settlement gates
+- [x] TDD load gravity/temperature/atmosphere; shuttle `h2o2` surcharge; frigate land ban; high-g upkeep; cold/hot settlement gates
 - [ ] TDD load `weapon-group`/`resists`/`armor-module`; matchup table; armour 5× `hitWeight` + no capture; shield 90% intercept. SampleGame stays flat (no attrs)
 - [ ] TDD space MOVE duration from ΔAU × catalog drive speed (same-system planet/moon orbits); replace hardcoded 1-week and `NotImplemented` planet–planet
 - [ ] TDD `LoadGalaxy` assigns system X Y Z (uncomment); round-trip save; reports show coords. Empty systems `X=4+`
