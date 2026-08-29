@@ -10,6 +10,10 @@ Research cost if `cost` omitted: `8 * 2^(level-1)` (L1=8 … L10=4096). Live ove
 
 **Level 10:** a pressure hull for **thousands of crew**, nested closed-loop ECLSS and agriculture, fusion-pulse drive, inner-system transits in **weeks**. No FTL.
 
+Combat attack/damage/HP and military `use-time` ladders: **[combat-balance.md](combat-balance.md)** (capture in ≤10 rounds; small=3 / medium=8).
+
+Gravity, atmosphere, temperature, and water→fuel/food: **[environments.md](environments.md)**.
+
 Module ids ≤ 6 characters. Live module **groups** only. New consume item ids are the closed set in `designer/resources.md` — do not invent an ore here without a row there.
 
 Alien wreckage: one tech copy per find, mixed branches. t=1 wrecks L3–L6. L9–L10 unique, outer systems, mid-game.

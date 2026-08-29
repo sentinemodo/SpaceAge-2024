@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="battle\BattleField.cs" />
+    <Compile Include="battle\CombatMatchup.cs" />
     <Compile Include="battle\EDamageStatus.cs" />
     <Compile Include="battle\CaptureTactic.cs" />
     <Compile Include="battle\DestroyTactic.cs" />
@@ -159,6 +160,8 @@
     <Compile Include="game\DataFile.cs" />
     <Compile Include="game\ModuleTypeGroupXml.cs" />
     <Compile Include="game\CatalogLoader.cs" />
+    <Compile Include="game\SpaceTransit.cs" />
+    <Compile Include="data structures\BodyEnvironment.cs" />
     <Compile Include="game\OrderXml.cs" />
     <Compile Include="Events.cs" />
     <Compile Include="EventsReaders.cs" />
@@ -215,6 +218,7 @@
     <Compile Include="orders\TrainOrder.cs" />
     <Compile Include="orders\UseOrder.cs" />
     <Compile Include="orders\MoveOrder.cs" />
+    <Compile Include="orders\JumpOrder.cs" />
     <Compile Include="orders\IOrderable.cs" />
     <Compile Include="reports\EventReports.cs" />
     <Compile Include="reports\EventReport.cs" />

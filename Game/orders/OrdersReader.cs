@@ -381,6 +381,9 @@ namespace SpaceAge
 				case "give":
 					order = new GiveOrder(subject);
 					break;
+				case "jump":
+					order = new JumpOrder(subject);
+					break;
 				case "name":
 					order = new NameOrder(subject);
 					break;

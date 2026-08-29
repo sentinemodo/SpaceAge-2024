@@ -60,9 +60,9 @@ namespace SpaceAge
 			{
 				SpaceSystem system = new SpaceSystem(elSystem.GetAttribute("name"));
 				system.LoadXml(elSystem);
-                //system.Coordinates.X = Convert.ToDouble(elSystem.GetAttribute("X"));
-                //system.Coordinates.Y = Convert.ToDouble(elSystem.GetAttribute("Y"));
-                //system.Coordinates.Z = Convert.ToDouble(elSystem.GetAttribute("Z"));
+				system.Coordinates.X = dataFile.XMLAssignDouble(elSystem.GetAttribute("X"), 0);
+				system.Coordinates.Y = dataFile.XMLAssignDouble(elSystem.GetAttribute("Y"), 0);
+				system.Coordinates.Z = dataFile.XMLAssignDouble(elSystem.GetAttribute("Z"), 0);
 
 				#region stars
 				foreach (XmlElement elStar in elSystem.SelectNodes("star"))
@@ -94,6 +94,13 @@ namespace SpaceAge
 						planet.AU = dataFile.XMLAssignDouble(elPlanet.GetAttribute("AU"), 0);
 						planet.SurfaceSizeX = dataFile.XMLAssignInteger(elPlanet.GetAttribute("surface-size-X"), 0);
 						planet.SurfaceSizeY = dataFile.XMLAssignInteger(elPlanet.GetAttribute("surface-size-Y"), 0);
+						planet.GravityBand = BodyEnvironment.ParseGravity(elPlanet.HasAttribute("gravity") ? elPlanet.GetAttribute("gravity") : "normal");
+						planet.TemperatureBand = BodyEnvironment.ParseTemperature(elPlanet.HasAttribute("temperature") ? elPlanet.GetAttribute("temperature") : "habitable");
+						planet.AtmosphereBand = BodyEnvironment.ParseAtmosphere(elPlanet.GetAttribute("atmosphere"));
+						if (elPlanet.HasAttribute("pair"))
+						{
+							planet.PairName = elPlanet.GetAttribute("pair");
+						}
 
 						if (elPlanet.HasAttribute("mass"))
 							planet.Mass = Convert.ToDouble(elPlanet.GetAttribute("mass"));
@@ -109,6 +116,9 @@ namespace SpaceAge
 								moon.AU = dataFile.XMLAssignDouble(elMoon.GetAttribute("AU"), 0);
 								moon.SurfaceSizeX = dataFile.XMLAssignInteger(elMoon.GetAttribute("surface-size-X"), 0);
 								moon.SurfaceSizeY = dataFile.XMLAssignInteger(elMoon.GetAttribute("surface-size-Y"), 0);
+								moon.GravityBand = BodyEnvironment.ParseGravity(elMoon.HasAttribute("gravity") ? elMoon.GetAttribute("gravity") : "low");
+								moon.TemperatureBand = BodyEnvironment.ParseTemperature(elMoon.GetAttribute("temperature"));
+								moon.AtmosphereBand = BodyEnvironment.ParseAtmosphere(elMoon.GetAttribute("atmosphere"));
 
 								if (elMoon.HasAttribute("mass"))
 									moon.Mass = Convert.ToDouble(elMoon.GetAttribute("mass"));
@@ -385,6 +395,13 @@ namespace SpaceAge
 						elObject.SetAttribute("surface-size-X", planet.SurfaceSizeX.ToString());
 						elObject.SetAttribute("surface-size-Y", planet.SurfaceSizeY.ToString());
 						elObject.SetAttribute("type", planet.PlanetType.Name);
+						elObject.SetAttribute("gravity", BodyEnvironment.GravityToken(planet.GravityBand));
+						elObject.SetAttribute("temperature", BodyEnvironment.TemperatureToken(planet.TemperatureBand));
+						elObject.SetAttribute("atmosphere", BodyEnvironment.AtmosphereToken(planet.AtmosphereBand));
+						if (!string.IsNullOrEmpty(planet.PairName))
+						{
+							elObject.SetAttribute("pair", planet.PairName);
+						}
 
 						foreach (Moon moon in planet.Moons.Values)
 						{
@@ -402,6 +419,9 @@ namespace SpaceAge
 							elMoon.SetAttribute("surface-size-X", moon.SurfaceSizeX.ToString());
 							elMoon.SetAttribute("surface-size-Y", moon.SurfaceSizeY.ToString());
 							elMoon.SetAttribute("type", moon.MoonType.Name);
+							elMoon.SetAttribute("gravity", BodyEnvironment.GravityToken(moon.GravityBand));
+							elMoon.SetAttribute("temperature", BodyEnvironment.TemperatureToken(moon.TemperatureBand));
+							elMoon.SetAttribute("atmosphere", BodyEnvironment.AtmosphereToken(moon.AtmosphereBand));
 							this.saveOrbit(doc, elMoon, moon, factionXMLreport);
 							this.saveRegions(doc, elMoon, moon, factionXMLreport);
 						}

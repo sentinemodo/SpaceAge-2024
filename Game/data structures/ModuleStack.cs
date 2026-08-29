@@ -1218,7 +1218,7 @@ namespace SpaceAge
 			}
 			return craftType != null
 				&& craftType.Name == "shuttl"
-				&& stack.ModuleType.Group == EModuleTypesGroup.frigate;
+				&& ModuleType.IsShipHull(stack.ModuleType.Group);
 		}
 
 		public void SetOnline(bool online)

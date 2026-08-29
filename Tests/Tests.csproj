@@ -95,6 +95,7 @@
     <Compile Include="TConsume.cs" />
     <Compile Include="TDiplomacy.cs" />
     <Compile Include="TPoint3D.cs" />
+    <Compile Include="TCampaign.cs" />
     <Compile Include="TDataFile.cs" />
     <Compile Include="TPoint2D.cs" />
     <Compile Include="SampleGame\TProgram.cs" />

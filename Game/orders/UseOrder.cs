@@ -197,6 +197,21 @@ namespace SpaceAge
 				return false;
 			}
 
+			if (this.Technology.UseProduceModules != null
+				&& this.Technology.UseProduceModules.Group == EModuleTypesGroup.settlement)
+			{
+				ETemperatureBand temperature = BodyEnvironment.TemperatureAt(this.Producer.Location);
+				if (!BodyEnvironment.AllowsSettlement(this.Technology.UseProduceModules.Name, temperature))
+				{
+					this.Producer.EventReports.Add(
+						week,
+						string.Format("USE failed: {0} cannot settle a {1} world.",
+							this.Technology.UseProduceModules.ReportName,
+							temperature));
+					return false;
+				}
+			}
+
 			if (this.Producer.ModuleType.UseCondition_RequireFuel)
 			{
 				if (!this.Producer.Effects.IsFuelled)

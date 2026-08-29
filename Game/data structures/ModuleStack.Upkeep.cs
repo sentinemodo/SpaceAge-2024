@@ -221,6 +221,23 @@ namespace SpaceAge
 			local.Sum(this.UpkeepNetto);
 			local.Sum(this.ItemStacks.Upkeep);
 			local.Sum(this.People.Upkeep);
+			if (BodyEnvironment.GravityAt(this.Location) == EGravityBand.high)
+			{
+				foreach (ItemStack bill in local.Values)
+				{
+					if (this.isCash(bill.ItemType))
+					{
+						bill.Quantity = (int)Math.Ceiling(bill.Quantity * 1.5);
+					}
+				}
+				if (this.HasPeople || (this.moduleType != null && this.moduleType.PopulationMaximum > 0))
+				{
+					if (ItemType.All.ContainsKey("food"))
+					{
+						local.Add(new ItemStack(ItemType.All["food"], 2));
+					}
+				}
+			}
 			return local;
 		}
 

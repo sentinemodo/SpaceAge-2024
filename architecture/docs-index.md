@@ -28,6 +28,7 @@ Purpose: canonical vendor/spec links for implementers. Summaries only — do not
 | `architecture/future-work.md` | Deferred modernization backlog (ADR-gated) |
 | `designer/` | Game-designer specs: galaxy scale, tech tree, catalog, contracts (not engine) |
 | `campaign/` | Live PBEM `data.xml` / `gamein.xml` (not NUnit fixtures) |
+| `architecture/delivery/campaign-play.md` | Campaign load, engine TDD slices, CLI play loop, AI factions |
 
 ## In-repo ADRs
 

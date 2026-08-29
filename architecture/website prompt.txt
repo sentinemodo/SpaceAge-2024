@@ -1,0 +1,8 @@
+create a design website for the space age game, 
+review the site https://atlantis-pbem.com/
+
+the needed eleemnts is the home page explaining the game concept (take an excerpt from the original alderson game with an initial flavour text)
+then there need to be a link to visual tool and the status of orders submission
+
+the game introduction should clearly state that original ideas are taken from Atlantis, Rise of Heroes and influenced by Vincent Archer
+

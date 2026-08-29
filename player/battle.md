@@ -1,8 +1,8 @@
 # Battle (rules of engagement)
 
-Checked **22 Aug 2026** against engine **0.1.148**.
+Checked **29 Aug 2026** against engine **0.1.148**.
 
-Sources: `Game/battle/Battle.cs`, `Game/battle/Battles.cs`, `Game/battle/ETactic.cs`, `Game/Game.cs` (`ExecuteBattles`), `Game/reports/ReportWriter.cs` (blank line before `Battles report:`), `Game/data structures/ModuleStack.cs` (attack, defense, initiative, tactics, `IsArmed`, `HasOperationalModules`, `GetFiringModules`), `Game/data structures/ModuleType.cs` (`IsShuttleUnit` / `IsHangarCraft` / `IsDroneBay`), `Game/data structures/Faction.cs` / `FactionAttitude.cs`, `Game/orders/AttackOrder.cs`, `CaptureOrder.cs`, `DeclareOrder.cs`, `TacticOrder.cs`, `SetOrder.cs`. Catalog bonuses: `Tests/data.xml` (`attack`, `defense`, `damage`, `initiative` on modules, techs, skills, items).
+Sources: `Game/battle/Battle.cs`, `Game/battle/Battles.cs`, `Game/battle/CombatMatchup.cs`, `Game/battle/ETactic.cs`, `Game/Game.cs` (`ExecuteBattles`), `Game/reports/ReportWriter.cs` (blank line before `Battles report:`), `Game/data structures/ModuleStack.cs` (attack, defense, initiative, tactics, `IsArmed`, `HasOperationalModules`, `GetFiringModules`), `Game/data structures/ModuleType.cs` (`IsShuttleUnit` / `IsHangarCraft` / `IsDroneBay`, `WeaponGroup` / `Resists` / `ArmorModule`), `Game/data structures/Faction.cs` / `FactionAttitude.cs`, `Game/orders/AttackOrder.cs`, `CaptureOrder.cs`, `DeclareOrder.cs`, `TacticOrder.cs`, `SetOrder.cs`, `Game/game/CatalogLoader.cs` (`weapon-group`, `resists`, `armor-module`). Catalog bonuses: `Tests/data.xml` (`attack`, `defense`, `damage`, `initiative` on modules, techs, skills, items). SampleGame catalog is **flat**: no `weapon-group` / `resists` / `armor-module` attributes, so typed-matchup multipliers, shield intercept, and armor hit-weight do not fire there.
 
 Not source of truth: `Game/documentation/Rules.txt` combat chapters (Alderson CONVERT / 60% command / mixed leftover modules). Ground and space use the **same** battle loop; unused `GroundUnit` / `BattleField` do not run.
 
@@ -87,6 +87,7 @@ All attackers and defenders are grouped by `ModuleStack.Initiative` in a `Sorted
 `InitiativeBonus`:
 
 - If **root:** `InitiativeManeuverabilityBonus` = `int(energyReserveRatio + massCapacityRatio) * 10` (energy produced/required and mass capacity/mass; 0 if a denominator is 0).
+- Plus this stack’s **module type** `initiative` (catalog, e.g. fighter drone `[alndrn]` 20).
 - Plus sum of **technologies** `initiative` on the stack.
 - Plus sum of **people** `Initiative` (each person’s skills).
 
@@ -125,6 +126,8 @@ Each **operational firing module** on the shooter (and nested armed stacks) roll
 
 ```
 chance = (shooter.Attack + nested.Attack) / 2     // integer
+if shooter.ModuleType.WeaponGroup is non-empty:
+    chance = ceil(chance * CombatMatchup.ChanceMultiplier(weaponGroup, target.ModuleType.Resists))
 if target.HasEvade:     chance = chance / 2
 if target.IsImmobile:   chance = chance + chance / 2
 
@@ -136,6 +139,8 @@ hit    if roll <= chance
 
 The report prints `(chance: C/D)`.
 
+**Typed matchup** (`CombatMatchup.ChanceMultiplier`) runs only when the **shooting combatant’s** module type has a non-empty `weapon-group` (not the nested weapon that fired). `resists` is the **target combatant’s** module type, not the hit-location module. Multipliers: `laser` vs `shield` → 0.5, else 1.5; `kinetic` vs `armour`/`armor` → 0.5, else 1.5; `missile` vs `pbpd` → 0.5, else 1.5; `drone` vs `ew` → 0.5, else 1.5; any other group → 1.0. Empty `weapon-group` (SampleGame catalog) skips this step.
+
 `Attack` on a formed stack: `QuantityActive * moduleType.Attack` + technologies’ `attack` + people (skills’) `attack`. Nested stacks add through `ModuleStacks.Attack()`. Same shape for **Defense**.
 
 Item `attack` / `damage` (e.g. rocket launchers `[rctlnc]`) are **not** added in `ModuleStack.Attack`. They do not change this formula.
@@ -146,21 +151,22 @@ If `Defense` is 0, chance is half of attack and dice is attack, so about **50%**
 
 On a hit, a module on the target is chosen by **hit weight**, then:
 
-- **Destroy:** `hpDamage =` firing stack’s `ModuleType.Damage` (the weapon that fired). All of it is hit-point damage.
-- **Capture:** `hpDamage = 25%` of that damage (integer); the rest is **capture** damage. `HpDamageFromShot` / `CaptureDamageFromShot`.
+- **Shield intercept** (before the HP/capture split): if the target or a nested stack has a non-wrecked shield module (`Resists == "shield"`), `CombatMatchup.ShieldIntercept` takes **floor(90%)** of the weapon’s `Damage` as HP on that shield (capped by remaining shield HP). The remainder is the shot that hits the rolled location. No dedicated intercept line is printed. SampleGame catalog has no `resists="shield"` modules, so this is skipped.
+- **Destroy:** `hpDamage =` remaining weapon damage after intercept. All of it is hit-point damage.
+- **Capture:** `hpDamage = 25%` of that remaining damage (integer); the rest is **capture** damage. `HpDamageFromShot` / `CaptureDamageFromShot`. If the **hit location** is armor (`ArmorModule` or `Resists` `armour`/`armor`), both HP and capture from that shot are **0**.
 
 Both are capped by remaining pool `HitPoints - Damage - CaptureDamage`.
 
 - `Damage >= HitPoints` → **wrecked**.
 - Capture: `Damage + CaptureDamage >= HitPoints` and not wrecked → **capture complete** (module offline, peeled to the **battle initiator’s owner** — `this.attacker.Owner`, not necessarily the firing stack). The peeled module goes onto a **new stack** with a 6-character id `c` + 5 digits (`c00001`, `c00002`, …), skipping ids already in `ModuleStack.All`. Not `c` plus the source stack id.
 
-Hit weight for a stack: `DamageCapacity * intact module count`. Command or propulsion: **×2** if the shot is capture, **÷2** if the target is evading. Nested stacks of the **same owner** are included; other owners contribute 0 to this roll. Nested `orbrkt` is on that roll (not a shuttle unit). Nested shuttle-units already launched are roots and are not hit as cargo of the carrier.
+Hit weight for a stack: `DamageCapacity * intact module count`. **Armor** stacks (`ArmorModule` or `resists` armour/armor) **×5**. Command or propulsion: **×2** if the shot is capture, **÷2** if the target is evading. Nested stacks of the **same owner** are included; other owners contribute 0 to this roll. Nested `orbrkt` is on that roll (not a shuttle unit). Nested shuttle-units already launched are roots and are not hit as cargo of the carrier.
 
 Disabling the last operational module can drop the stack from the battle (command/energy flavor lines). Losing the last military module marks unarmed; losing propulsion marks immobile.
 
 ## Equipment and officers
 
-**Modules (weapons):** `attack` feeds to-hit; `damage` is the shot; `defense` feeds the defender’s dice; `hit-points` / `DamageCapacity` size the hit-location roll. Quantity active scales attack/defense. Nested military/vehicle/infantry fire as separate weapons on the parent’s shot sequence. Nested shuttle-units (`IsHangarCraft`: group `shuttle`, or types `alndrn` / `shuttl`) are skipped while still in the bay. `orbrkt` is military, not a shuttle unit: it stays nested, fires on the shuttle’s sequence, and can be the hit location. Drones `[alndrn]` are catalog group **shuttle** (not military); shuttles `[shuttl]` stay group **production** so orbit `USE` still works. Both are shuttle units.
+**Modules (weapons):** `attack` feeds to-hit; `damage` is the shot (then shield intercept); `defense` feeds the defender’s dice; `hit-points` / `DamageCapacity` size the hit-location roll. Catalog `weapon-group`, `resists`, and `armor-module` are live in `Battle` when set; SampleGame `Tests/data.xml` omits them. Quantity active scales attack/defense. Nested military/vehicle/infantry fire as separate weapons on the parent’s shot sequence. Nested shuttle-units (`IsHangarCraft`: group `shuttle`, or types `alndrn` / `shuttl`) are skipped while still in the bay. `orbrkt` is military, not a shuttle unit: it stays nested, fires on the shuttle’s sequence, and can be the hit location. Drones `[alndrn]` are catalog group **shuttle** (not military); shuttles `[shuttl]` stay group **production** so orbit `USE` still works. Both are shuttle units. `GetFiringModules` also skips fighter drone bays (`IsDroneBay`), so an empty bay is not a weapon.
 
 **Technologies** on the stack: `attack`, `defense`, `initiative` summed (e.g. `[miltac]` initiative 5). Battle techs are **held copies**, not `USE`d.
 

@@ -1,6 +1,6 @@
 # Galaxy — 10 players, two starting systems
 
-Ten corporations (factions `2`–`11`) plus NPC faction `1` (**United Star Nations**). Seed is **not** one home system per player.
+Ten corporations (factions `2`–`11`) plus NPC faction `1` (**United Star Nations**) and two planet-local militias (faction `12` **Arbor First**, faction `13` **HCS**). Seed is **not** one home system per player.
 
 **Turn 1 occupancy:** two star systems only. Five players on starting system A, five on starting system B. Each player owns **one exclusive region** on that system’s habitable planet. The other **eight systems have no player HQ and no NPC cities**. They are exploration destinations.
 
@@ -11,7 +11,9 @@ Helios and Fomal are a **wide bound pair** (~200 AU), not light-years apart. No 
 | Object | Count | Notes |
 |--------|-------|--------|
 | Player factions | 10 (`name` 2–11) | Faction `1` = United Star Nations (cities, markets, later patrons) |
-| Star systems | 10 | **2 occupied at t=1**, **8 empty** (no HQ, no NPC `city`) |
+| Militia NPCs | 2 (`name` 12–13) | **Arbor First** (Arbor), **HCS** (Anvil). Neutral at t=1; flip hostile on first spaceship |
+| Star systems | 10 | **2 occupied at t=1**, **8 empty** (no HQ, no UN `city`) |
+| Alderson pair | 1 | Helios Gate ↔ Fomal Gate (`type="adpnt"`). Empty systems have **no** AP at t=1 |
 | Planets + belts / system | 1–4 | Mix of `ocean`, `dust`, `gasgnt`, `abelt` |
 | Initially habitable / system | 0–1 | `terair` + food + liquid water + settlement capacity on grassland/ocean |
 | Initially exploitable / system | 0–2 | Ores/volatiles without a breathable mix; drills work, farms do not |
@@ -58,16 +60,66 @@ Trade-friendly charterer, not a conquering empire. Issues later `give-module` co
 
 NPC cities occupy **their own regions**. Players never start nested inside a UN `city`.
 
-### Assembly market (t=1, like SampleGame Berlin)
+## NPC militias — Arbor First and HCS
 
-On stack **Assembly** (`city`):
+Planet-local anti-starflight polities. They exist **at t=1** as neutral `city` stacks (not spawned on flip). They have **no shuttles, hulls, or space exits in their cargo**. They never leave their home planet.
+
+| Fac | `name-en` | Planet | Region | City stack | Nested (order of) | Why that cell |
+|-----|-----------|--------|--------|------------|-------------------|---------------|
+| **12** | Arbor First | Arbor | `R00014` (1,2) grassland **Farm Belt** | `120001` **Rootfast** `city` qty **3** | farms 16, `cplant` 2, `inftry` **3**, granary `cargob` 1 (food ~800, terair, water), cash ~4000, terran ~40. Nested idle raid `120010` `inftry` 3 (stays stacked under city until flip) | Inland agricultural heartland, away from Cinder Flats spaceport |
+| **13** | Human Conservation Society (HCS) | Anvil | `R00060` (2,3) grassland **Vale** | `130001` **Crusthold** `city` qty **2** | `cdrill` 4, `factry` 2, `wnplnt` 4, `inftry` 2, `tanks` 1, granary 1 (iron/titani/silici, food tight ~120), cash ~5000, terran ~30. Nested idle raid `130010` `inftry` 3 | Inland vale next to the uraninite spine, away from Pad |
+
+Faction XML: `password=""` (GM/NPC), `default-attitude="2"` (neutral), `text-report="True"`, bank as cash above. Stack id blocks: Arbor First `120001`–`120099`, HCS `130001`–`130099`.
+
+### Hostility flip (wishlist until TDD)
+
+**Trigger (per planet, once):** a stack whose location is a **region of that planet** completes production (`USE`/`PRODUCE` finishing) of:
+
+- module type `shuttl`, **or**
+- any module with group `frigate` or `spacecraft`.
+
+Arbor → flip faction **12**. Anvil → flip faction **13**. The other militia is unchanged. Building a shuttle on Scoria/Pyre/orbit does **not** flip.
+
+**On flip:**
+
+1. Militia `DECLARE DEFAULT ENEMY` (and `DECLARE FACTION 1 ENEMY` so UN is not exempt).
+2. UN issues the capture charter in [`contracts.md`](contracts.md) (live stand-in: `give-module` war-supply until `capture-stack` exists).
+3. **Raids start** (below).
+
+Until the Events pipeline lands, the GM/script writes faction 12/13 `order.*` files for the flip turn.
+
+### Raids (ground only)
+
+| Rule | Value |
+|------|--------|
+| Size | **3** combat modules (small raid in [`combat-balance.md`](combat-balance.md)): the nested `inftry` 3 stack |
+| Cadence | **1 raid per game year** (turns 4, 8, 12, …) after flip, until the militia `city` is captured or destroyed |
+| Path | `STACK OUT` from city → `MOVE` toward a **random player HQ on that planet** (not UN first). `ATTACK` / `CAPTURE` if they share a region |
+| Limits | No ships, no AP, no other planet. If the raid stack dies, the next yearly raid forms a new `inftry` 3 from city garrison if `inftry` remain; otherwise raids stop |
+| After city captured | Raids stop. Remnant hinterland `inftry` 1 optional, no new yearly spawn |
+
+Neutral t=1: raid stacks stay nested; no `ATTACK`. Players may trade with or ignore them until someone builds a shuttle.
+
+### UN markets (t=1)
+
+Canonical prices and quantities: [`economy.md`](economy.md). Standing XML offers on the `city` stack (engine `GetPrice` is 0 until a trade; auto-list would skip).
+
+**Assembly** (food-export capital):
 
 - `buying item="food" quantity="500" price="1"`
+- `buying item="carbon" quantity="80" price="2"`
 - `buying module="farms" quantity="2" price="100"`
 - `selling item="food" quantity="120" price="4"`
+- `selling item="iron" quantity="30" price="3"`
+- `selling item="silici" quantity="15" price="4"`
+- `selling item="titani" quantity="10" price="6"`
+- `selling item="copper" quantity="8" price="6"`
+- `selling item="terair" quantity="50" price="1"`
 - `selling item="terran" quantity="50" price="50"`
 
-Slagport: `buying item="food" quantity="200" price="2"` (premium); `selling item="terran" quantity="12" price="50"`; optional `selling` of `titani`/`copper` at modest quantity if the XML pass stocks them in the granary.
+**Slagport** (hungry metal town): `buying item="food" quantity="200" price="2"` (premium vs Assembly); buy local `iron`/`titani`/`copper`/`silici` at 1–2; `selling` `titani` 25 @ 4, `copper` 25 @ 4, `uraniu` 10 @ 8, `food` 40 @ 6, `terran` 12 @ 50.
+
+Tidewatch sells `oil`; Isotope sells `uraniu`; Windgap/Ridge are small food books. Stock granary `itemstack`s to cover the sell quantities.
 
 ## Faction → region (players 2–11)
 
@@ -86,7 +138,7 @@ Each player region: top-level `corphq` (not inside a UN city) + nested modest `c
 | 10 | Silicate | Anvil | `R00059` | 1,3 | `grassl` | same pattern | same | `wnplnt` 8 |
 | 11 | Fission | Anvil | `R00063` | 5,3 | `grassl` | same pattern | same | `wnplnt` 8 |
 
-Shared HQ nest (all ten): `corphq` 1 + CEO `terran` officer, `cargob` 2, `farms` 2–3, `cdrill` 1, `factry` 2, crew tens not hundreds. Faction `balance` ~10000 as SampleGame. Settlement `capacity` 8–12 on player grassland.
+Shared HQ nest (all ten): `corphq` 1 + CEO `terran` officer, `cargob` 2, `cdrill` 1, `factry` 2, crew **30**. Arbor `farms` **3**; Anvil `farms` **2**. Faction `balance` 10000. Leftover `@produce cash` on every HQ (`campaign/data.xml` **50**/week — [`economy.md`](economy.md)). Settlement `capacity` 8–12 on player grassland.
 
 Arbor HQ cargo quantities (order of): food 400, terair 200, h2o2 200, iron 40, carbon 40, silici 10.  
 Anvil HQ cargo: food 80, terair 200, h2o2 80, iron 15, titani 40, silici 40, copper 30, uraniu 20.
@@ -115,7 +167,7 @@ Live region types only: `orbit` `ocean` `sea` `grassl` `dust` `mountn` `barren` 
 
 Orbit-to-orbit and planet-orbit exits use `exitmode mode="space" duration="N"` weeks.
 
-**Loader today:** `loadGalaxyExits` walks **planet regions only**. A planet-region may `exit` to another `region` or an `orbit`. **Orbit elements and moon regions do not get exits parsed.** Campaign workaround: **bidirectional space exits between planet regions** (spaceports ↔ local dust/belt ↔ the other starting world). Moon maps stay in the spec for a later XML pass after TDD lands the wishlist row.
+**Loader today:** `LoadExits` walks **planet regions and moon regions**. A region may `exit` to another `region` or an `orbit`. **Orbit elements themselves do not get exits parsed.** Gate coronas are planet-regions (`type="orbit"`) so they load. Moon maps can wait for the XML pass.
 
 | Hop | Chemical / fission (L0–2) | L10 fusion ark (design target) |
 |-----|---------------------------|--------------------------------|
@@ -126,8 +178,12 @@ Orbit-to-orbit and planet-orbit exits use `exitmode mode="space" duration="N"` w
 | To gas giant (5 AU) | 13+ | 4–8 |
 | Outer belt (20–40 AU) | many turns | 8–13 |
 | Occupied pair → empty system | 52+ | 8–13 |
+| Spaceport → local Gate (80 AU) | **13** | 2–4 |
+| Helios Gate ↔ Fomal Gate | **1** (`JUMP` or stand-in exit) | 1 |
 
 Until AU×drive is wired, put those durations on the spaceport exits.
+
+**Inter-homeworld:** the **Alderson pair** is the intended crossing (1 week). The 26-week Cinder Flats ↔ Pad hop is the **chemical long way** (no Gate). Keep both.
 
 **t=1 spaceports (empty of cities/HQ):**
 
@@ -135,9 +191,12 @@ Until AU×drive is wired, put those durations on the spaceport exits.
 |------|----|----------|
 | Arbor `R00006` Cinder Flats (5,0) `barren` | Scoria landing `R00072` | 8 |
 | Arbor `R00006` | Helios belt landing `R00096` | 13 |
+| Arbor `R00006` | Helios Gate corona `R01490` | **13** |
 | Arbor `R00006` | Anvil `R00039` Pad (2,0) `dust` | 26 |
 | Anvil `R00039` | Pyre landing (first Pyre region) | 8 |
 | Anvil `R00039` | Fomal belt landing (first carbonaceous cell) | 13 |
+| Anvil `R00039` | Fomal Gate corona `R01491` | **13** |
+| Helios Gate `R01490` | Fomal Gate `R01491` | **1** (JUMP stand-in until `JUMP` parses) |
 | Reverse of each | — | same |
 
 ## Id allocation
@@ -146,13 +205,15 @@ Until AU×drive is wired, put those durations on the spaceport exits.
 |------|---------|-------------------------|
 | System | `SS0001`–`SS0010` | 10 |
 | Star | `S00001`–`S00012` | extras if a visual binary |
-| Planet/belt | `P00001`–`P0030` | ~25 bodies |
+| Planet/belt | `P00001`–`P0030` | Helios/Fomal bodies `P00001`–`P00008`; **APs `P00009`–`P00010`**; empty systems `P00011`+ |
 | Moon | `M00001`–`M0080` | unique ids even if loader currently copies planet id |
-| Orbit | `O00001`–`O0120` | one per planet/moon |
-| Region | `R00001`–`R1500` | Arbor `R00001`–`R00036`, Anvil `R00037`–`R00071`, then satellites + empty systems |
+| Orbit | `O00001`–`O0120` | one per planet/moon; Gate orbits `O00110` Helios, `O00111` Fomal |
+| Region | `R00001`–`R1500` | Arbor `R00001`–`R00036`, Anvil `R00037`–`R00071`, satellites next, Gate coronas `R01490`–`R01491` |
 | Contract | `CTnnnn` | 6 chars |
 | Wreckage stacks | `W00001`–`W0020` | faction 1; **not** on Arbor/Anvil grids at t=1 |
-| NPC city trees | `100001`+ | avoid SampleGame `000001`–`000030` |
+| UN city trees | `100001`+ | avoid SampleGame `000001`–`000030` |
+| Arbor First trees | `120001`–`120099` | Rootfast + raid |
+| HCS trees | `130001`–`130099` | Crusthold + raid |
 | Player HQ trees | `200001`+ (fac 2), `210001`+ (fac 3), … `290001`+ (fac 11) | |
 | Officers | same numeric space as HQ | |
 
@@ -168,8 +229,11 @@ Until AU×drive is wired, put those durations on the spaceport exits.
 | `P00002` | Scoria | `dust` | 1.5 | 6×4 (24) | **exp** | Ilmenite/copper plains; no biosphere |
 | `P00003` | (Helios belt) | `abelt` | 2.7 | 8×4 (32) | **exp** | Metal rocks = `uraniu`/`nickfe`; some `lrcast` carbon |
 | `P00004` | Aeolus | `gasgnt` | 5.2 | — | — | Orbit only |
+| `P00009` | Helios Gate | `adpnt` | 80 | — | — | Pair of Fomal Gate. Corona region `R01490` only |
 
-Moons: Arbor `M00001` **Selene** `rock` 5×3 (titani, silici). Aeolus: 4 moons (ice, ice, rock, vulcan) — `heliu3` / `h2o2` / later `tungst`. Moon region exits: wishlist.
+Moons: Arbor `M00001` **Selene** `rock` 5×3 (titani, silici, **polar `water` ice 40–80 on ≥2 regions**). Aeolus: 4 moons (ice, ice, rock, vulcan) — ice moons **rich `water`** + `heliu3` / later `tungst`. Moon region exits: wishlist.
+
+**Environment attrs (see [`environments.md`](environments.md)):** Arbor `gravity=normal` `temperature=habitable` `atmosphere=terair`. Selene `gravity=low` `temperature=cold` `atmosphere=none`. Scoria/Pyre `gravity=low` `temperature=hot` `atmosphere=thin`.
 
 **Arbor flavour:** ~1 bar N2/O2. Grasslands fix carbon; banded iron in old basins; peat and coastal oil. Crust is sediment and granite — little rutile or pitchblende at the surface.
 
@@ -183,10 +247,40 @@ Moons: Arbor `M00001` **Selene** `rock` 5×3 (titani, silici). Aeolus: 4 moons (
 | `P00006` | Pyre | `dust` | 0.6 | 5×4 (20) | **exp** | Hot iron/silica; not habitable |
 | `P00007` | (Fomal belt) | `abelt` | 2.5 | 8×4 (32) | **exp** | Carbonaceous: `carbon`, `oil`/`kerogn`, `volatl` |
 | `P00008` | Fomal giant | `gasgnt` | 6.0 | — | — | Orbit only |
+| `P00010` | Fomal Gate | `adpnt` | 80 | — | — | Pair of Helios Gate. Corona region `R01491` only |
 
-Moons: Anvil 2 (`rock`, `ice` 5×3 / 5×2) — extra rock metals; ice = water. Giant: 2 ice moons (`heliu3`, `ammoni`).
+Moons: Anvil 2 (`rock`, `ice` 5×3 / 5×2) — rock moon: metals + **`water` ice 30–60** on ≥2 regions; ice moon: **rich `water`**. Giant: 2 ice moons (`water`, `heliu3`, `ammoni`).
+
+**Environment attrs:** Anvil `gravity=normal` `temperature=habitable` `atmosphere=terair`. Moons `gravity=low` `temperature=cold` `atmosphere=none`.
 
 **Anvil flavour:** Breathable mix over a younger, thinner biosphere. Shield volcanoes expose ilmenite, native copper, uraninite veins. Soils are mineral; wetlands scarce; no commercial petroleum. Seas exist but ice and aquifers are modest.
+
+## Alderson Points (homeworld pair)
+
+Catalog planet type **`adpnt`**. Loader already has an empty “alderson points” pass in `Galaxy.LoadExits`; treat Gates as **planets** so they load today.
+
+Each Gate is **orbit + one corona region** (`type="orbit"`). No solid surface, no settlement capacity, no resources. Environment: `gravity` omitted (no well), `temperature="cold"`, `atmosphere="none"`. Spaceships may occupy the corona; shuttles too.
+
+| Id | Name | System | AU | Orbit | Corona | Pair |
+|----|------|--------|----|-------|--------|------|
+| `P00009` | Helios Gate | SS0001 | 80 | `O00110` | `R01490` | `P00010` |
+| `P00010` | Fomal Gate | SS0002 | 80 | `O00111` | `R01491` | `P00009` |
+
+**Play loop:** `MOVE` spaceport → corona (13 weeks) → `MOVE` to the other corona (**1 week**, stand-in) or, when TDD lands it, `JUMP P00010` while at Helios Gate (1 week, ships only: `frigate` / `spacecraft` / `shuttl`; no `city`/`inftry` top-level). Reverse the same.
+
+Empty systems: **no** AP at t=1. Do not add Cinder↔Shards or other pairs until a later XML pass.
+
+**XML sketch:**
+
+```
+<planet name="P00009" name-en="Helios Gate" type="adpnt" AU="80" atmosphere="none" temperature="cold">
+  <orbit name="O00110"/>
+  <region name="R01490" name-en="Helios Gate corona" X="0" Y="0" type="orbit">
+    <exit region="R00006"><exitmode mode="space" duration="13"/></exit>
+    <exit region="R01491"><exitmode mode="space" duration="1"/></exit>
+  </region>
+</planet>
+```
 
 ## Arbor region grid (P00001, 6×6)
 
@@ -207,7 +301,7 @@ Index: `R00001` + `Y*6+X`. 4-neighbour ground exits. Occupied cells in **bold**.
 | R00011 | 4,1 | mountn | South Ridge | empty | iron 70, silici 20, carbon 5 |
 | R00012 | 5,1 | dust | East Dune | empty | iron 30, silici 25, carbon 10 |
 | R00013 | 0,2 | sea | West Coast | empty | terair 100, water 400, food 80, h2o2 80 |
-| R00014 | 1,2 | grassl | Farm Belt | empty | terair 100, food 700, carbon 35, iron 20, water 160 |
+| R00014 | 1,2 | grassl | Farm Belt | **Arbor First Rootfast** | terair 100, food 700, carbon 35, iron 20, water 160 ; settlement 8 |
 | **R00015** | 2,2 | grassl | Assembly Basin | **UN Assembly** | terair 100, food 800, carbon 40, iron 25, water 180 ; settlement 16 |
 | R00016 | 3,2 | grassl | Central Basin | empty | terair 100, food 550, carbon 25, iron 20, water 150 |
 | **R00017** | 4,2 | grassl | Rivermark Grant | **fac 4 HQ** | terair 100, food 600, carbon 30, iron 20, water 150 |
@@ -231,7 +325,7 @@ Index: `R00001` + `Y*6+X`. 4-neighbour ground exits. Occupied cells in **bold**.
 | R00035 | 4,5 | mountn | North Spine | empty | iron 60, silici 20 |
 | R00036 | 5,5 | dust | Polar Dust | empty | iron 25, silici 20 |
 
-No `titani`, `copper`, `uraniu`, or `heliu3` on this grid. Hinterland: 28 empty of 36.
+No `titani`, `copper`, `uraniu`, or `heliu3` on this grid. Hinterland: 27 empty of 36.
 
 ## Anvil region grid (P00005, 7×5)
 
@@ -262,7 +356,7 @@ Index: `R00037` + `Y*7+X`. Occupied cells in **bold**.
 | **R00057** | 6,2 | grassl | Ridge | **UN Ridge** | terair 100, food 100, water 70, silici 30, titani 20, iron 15 |
 | R00058 | 0,3 | ocean | Gulf | empty | terair 100, water 350, food 10 |
 | **R00059** | 1,3 | grassl | Silicate Grant | **fac 10 HQ** | terair 100, food 140, water 80, silici 40, titani 20, iron 15 |
-| R00060 | 2,3 | grassl | Vale | empty | terair 100, food 90, water 70, silici 25, iron 15 |
+| **R00060** | 2,3 | grassl | Vale | **HCS Crusthold** | terair 100, food 90, water 70, silici 25, iron 15 ; settlement 8 |
 | R00061 | 3,3 | mountn | Uraninite | empty | **uraniu 150**, titani 40, silici 30, copper 20 |
 | R00062 | 4,3 | grassl | Thin Soil | empty | terair 100, food 80, water 60, silici 20, titani 10 |
 | **R00063** | 5,3 | grassl | Fission Grant | **fac 11 HQ** | terair 100, food 140, water 80, uraniu 15, titani 20, silici 30 |
@@ -275,7 +369,7 @@ Index: `R00037` + `Y*7+X`. Occupied cells in **bold**.
 | R00070 | 5,4 | barren | Glass | empty | silici 50, titani 15 |
 | R00071 | 6,4 | dust | North Reg | empty | copper 20, silici 40, iron 20 |
 
-No `oil`. No commercial `carbon` (belt holds kerogen/coal analogues). `heliu3` not on this grid. Hinterland: 27 empty of 35.
+No `oil`. No commercial `carbon` (belt holds kerogen/coal analogues). `heliu3` not on this grid. Hinterland: 26 empty of 35.
 
 ## Same-system pockets (summary; full grids on XML pass)
 
@@ -285,10 +379,10 @@ Region ids after `R00071`. Name landings used by spaceport exits.
 |------|----------------|------|--------|
 | Scoria `P00002` | `R00072` landing | 6×4 | `dust`/`mountn`/`barren`; titani, copper, silici, iron; no food, no ground `terair`; `extraction` 4 |
 | Helios belt `P00003` | `R00096` metal landing | 8×4 | mix `lrmast` (uraniu 50–150, nickfe) and `lrcast` (carbon); no settlement |
-| Selene `M00001` | `R00128` | 5×3 | titani, silici; **moon exits not loaded today** |
+| Selene `M00001` | `R00128` | 5×3 | titani, silici; **polar `water` ice required** (≥2 regions, 40–80); moon exits not loaded today |
 | Pyre `P00006` | after Helios block | 5×4 | hot dust; iron, silici |
 | Fomal belt `P00007` | carbonaceous landing | 8×4 | `smcast`/`lrcast`: carbon, oil, volatl |
-| Anvil moons / Fomal ices | later ids | 10–15 each | water, h2o2, heliu3 |
+| Anvil moons / Fomal ices | later ids | 10–15 each | **water** ice mandatory; h2o2, heliu3 on ice moons |
 
 Aeolus / Fomal giant: 0 surface regions.
 
@@ -307,7 +401,7 @@ No player HQ, no NPC `city`, no t=1 contracts on these grids. Sparse resources a
 | SS0009 Graph | G4 | ocean 0.95 **hab**; dust 1.6; abelt 2.5 **exp** | ocean 0; dust 1 rock | carbon, silici, iron, gold | Habitat wheel wreck → production/habitat |
 | SS0010 Spare | K3 | dust 1.1 **exp**; abelt 2.4 | dust 1 ice | titani, copper, ice; **`berylm` signature** | Life-support wreck → research+habitat |
 
-Place empty systems on the map farther than the Helios–Fomal pair (`X` 4+). XML star `type` remains `M4` until the catalog grows.
+Place empty systems on the map farther than the Helios–Fomal pair (`X` 4+). XML star `type` remains `M4` until the catalog grows. Planet ids **`P00011`+** (Gates took `P00009`–`P00010`).
 
 **L3+ signature ores** (not on Arbor/Anvil basins; see `resources.md`):
 
@@ -323,7 +417,7 @@ Place empty systems on the map farther than the Helios–Fomal pair (`X` 4+). XM
 
 SS0008 Deep keeps `methn` as its L3 volatile (already in the diet dictionary). SS0009 Graph stays a habitable carbon/silica prize, not an L3+ industrial signature.
 
-Planet ids continue `P00009`+. Do not pre-place wreck stacks on Arbor/Anvil.
+Planet ids continue `P00011`+. Do not pre-place wreck stacks on Arbor/Anvil.
 
 ## Resource placement (general)
 
@@ -335,4 +429,4 @@ Do not pre-build the whole inner-system industry. Add: depleted resource quantit
 
 ## XML pass status
 
-Spec-complete here. **`campaign/gamein.xml` is not written yet.** Next XML skeleton (when scheduled): factions 1–11, Helios+Fomal stars/planets, Arbor+Anvil full grids + stacks + spaceport exits, Scoria/Pyre/belts as landing-region stubs (not necessarily every belt cell). Empty systems: star + 1–4 bodies with condensed region lists. Skip moon region exits until TDD. Encoding Windows-1251. Ids ≤ 6 characters.
+Spec-complete here (militias + homeworld AP pair included). **`campaign/gamein.xml` / `gamein.1.xml` is not written yet.** Next XML skeleton (when scheduled): factions **1–13**, Helios+Fomal stars/planets **including Gates**, Arbor+Anvil full grids + UN + militia + player stacks + spaceport and Gate exits, Scoria/Pyre/belts as landing-region stubs. Empty systems: star + 1–4 bodies with condensed region lists, **no** AP. Skip moon region exits until TDD. Encoding Windows-1251. Ids ≤ 6 characters.

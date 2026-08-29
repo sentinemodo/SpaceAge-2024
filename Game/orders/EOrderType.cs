@@ -18,6 +18,7 @@ namespace SpaceAge
 		get,
 		give,
 		has,
+		jump,
 		move,
 		name,
 		press,

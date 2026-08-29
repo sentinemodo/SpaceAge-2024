@@ -1,6 +1,6 @@
 # Level 2 and above technologies
 
-Catalog: `Tests/data.xml`, loaded by `Game/game/CatalogLoader.cs` (`DataFile.LoadConfigurationItems` delegates). Checked **22 Aug 2026** against engine **0.1.148**. Level 0–1: `player/basic_technologies.md`.
+Catalog: `Tests/data.xml`, loaded by `Game/game/CatalogLoader.cs` (`DataFile.LoadConfigurationItems` delegates). Checked **29 Aug 2026** against engine **0.1.148**. Level 0–1: `player/basic_technologies.md`.
 
 This file lists **level 2, 3, and 4** technologies, then the **module types** and **item types** those technologies produce or consume. Alphabetical by English `name-en` inside each level.
 

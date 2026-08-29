@@ -428,6 +428,9 @@ namespace SpaceAge
 						moduleType.Defense = this.dataFile.XMLAssignInteger(el.GetAttribute("defense"), 0);
 						moduleType.Damage = this.dataFile.XMLAssignInteger(el.GetAttribute("damage"), 0);
 						moduleType.Initiative = this.dataFile.XMLAssignInteger(el.GetAttribute("initiative"), 0);
+						moduleType.WeaponGroup = el.GetAttribute("weapon-group");
+						moduleType.Resists = el.GetAttribute("resists");
+						moduleType.ArmorModule = el.GetAttribute("armor-module") == "true";
 
 						this.dataFile.assignItemStacks(el.SelectNodes("upkeep"), moduleType.Upkeep);
 						foreach (XmlElement elNoUpkeep in el.SelectNodes("no-upkeep"))
