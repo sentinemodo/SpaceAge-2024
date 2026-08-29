@@ -65,7 +65,7 @@ The lobby **must** expose:
 - [x] TDD `JumpOrder`: `JUMP` pair-id, 1 week, ships only, `pair=` on `<alderson>`; no 1-week corona MOVE
 - [x] TDD load gravity/temperature/atmosphere; shuttle `h2o2` surcharge; frigate land ban; high-g upkeep; cold/hot settlement gates
 - [ ] TDD load `weapon-group`/`resists`/`armor-module`; matchup table; armour 5× `hitWeight` + no capture; shield 90% intercept. SampleGame stays flat (no attrs)
-- [ ] TDD space MOVE duration from ΔAU × catalog drive speed (same-system planet/moon orbits); replace hardcoded 1-week and `NotImplemented` planet–planet
+- [x] TDD space MOVE duration from ΔAU × catalog drive speed (same-system planet/moon orbits); replace hardcoded 1-week and `NotImplemented` planet–planet
 - [ ] TDD `LoadGalaxy` assigns system X Y Z (uncomment); round-trip save; reports show coords. Empty systems `X=4+`
 - [ ] TDD hull groups `corvette`/`destroyer`/`cruiser`/`capital`/`ark`; Parse/ToToken; `IsShipHull` helper; campaign catalog groups; SampleGame stays `frigate`
 - [ ] `player/campaign/basic_technologies.md` from `campaign/data.xml`; `/player` refresh `rules.md` (`JUMP`, space MOVE ETA, hull groups) and `battle.md` typed combat; architect `campaign-play.md`
@@ -210,12 +210,14 @@ Today [EModuleTypesGroup](../../Game/data%20structures/EModuleTypesGroup.cs) and
 
 ### AU × drive space duration
 
-Spec: [designer/engine-wishlist.md](../../designer/engine-wishlist.md) “Space transit time from ΔAU × drive `speed`”; bands in [designer/galaxy.md](../../designer/galaxy.md) travel table.
+Spec: [designer/engine-wishlist.md](../../designer/engine-wishlist.md) “Retune `SpaceTransit` `f(ΔAU)` to 2/6/13/39”; bands in [designer/galaxy.md](../../designer/galaxy.md) travel table.
 
-Today [MoveOrder.movementDuration](../../Game/orders/MoveOrder.cs): same-body region↔orbit is hardcoded **1 week**; planet↔moon orbits use a mass-capacity hack; **planet↔planet orbits throw `NotImplementedException`**. Catalog `move speed` is already loaded ([CatalogLoader](../../Game/game/CatalogLoader.cs)); ground already divides exit duration by `Mover.Speed`.
+Live **0.1.148** ([SpaceTransit](../../Game/game/SpaceTransit.cs)): same-body region↔orbit is still **1 week**; intra-system orbit↔orbit (including `<alderson>`) is `ceil(f(|ΔAU|) / effectiveSpeed)` with `effectiveSpeed = catalogSpeed × massFactor` (clamp 0.67–1.50, reference 40000/4150); different-holder region↔region or belt hops with a space exit still use baked exit duration / speed. Catalog `move speed` is already loaded ([CatalogLoader](../../Game/game/CatalogLoader.cs)); missing space speed defaults to 1.
 
-- Intra-system space `MOVE` (orbit↔orbit, and region↔orbit when parents differ): `duration = ceil(f(|ΔAU|) / driveSpeed)` using the stack’s space `move` speed, not mass/capacity.
-- Tune `f` so L0–L2 chemical matches the table (inner 0.5–2 AU → **8–13** weeks; gas giant ~5 AU → **13+**; spaceport→Gate 80 AU → **13** order-of; L10 ark inner → **2–4**). Same-body surface↔local orbit stays **0–1** (surcharge is the environment slice).
+Live `f` in [designer/au-transit.md](../../designer/au-transit.md): moon-scale `50 × ΔAU`; else `6 + 33 × ln((1+ΔAU)/2.7) / ln(80/2.7)`. Default workshop frigate (mass 4150, one `fustor`, factor 1.00) is **2 / 6 / 13 / 39** on moon 0.04 / belt 1.7 / gas 4.2 / Gate 79.
+
+- Intra-system space `MOVE` (orbit↔orbit, and region↔orbit when parents differ): `duration = ceil(f(|ΔAU|) / effectiveSpeed)`.
+- Chemical `speed` 0.5 → Gate **78** (default-mass `rctdrv` hits MIN → **117**). L10 ark `speed` ~3.5 → Gate **12**. Same-body surface↔local orbit stays **1** (surcharge is the environment slice).
 - Inter-system Helios↔Fomal is **`JUMP`**, not AU. The 26-week Pad chemical hop is optional leftover `MOVE` via long ΔAU if both spaceports stay linked; prefer JUMP for the intended crossing.
 - Tests: owned fixture with two planets at known AU; shuttle vs high-speed drive. Do not change SampleGame goldens unless a 1-week local hop assertion breaks — keep local same-planet region↔orbit at 1 week.
 

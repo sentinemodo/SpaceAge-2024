@@ -206,7 +206,7 @@ Group `energy`. Built by unmanned helium plant `[he3unc]`. Size 400, mass 400, c
 
 **automated propulsion module [autdrv]**  
 Crewless alien drive. No life support.  
-Group `propulsion`. Built by automated propulsion `[autprp]`. Size 600, mass 700, crew 0, energy 30, capacity 150, HP 65, tech-cap 1. Upkeep 80 cash. Space move, mass-capacity 10000. Fuel duration 1 (1 oxyhydro `[h2o2]`). Operates in frigate.
+Group `propulsion`. Built by automated propulsion `[autprp]`. Size 600, mass 700, crew 0, energy 30, capacity 150, HP 65, tech-cap 1. Upkeep 80 cash. Space move, speed 1 (omitted in catalog), mass-capacity 10000. Fuel duration 1 (1 oxyhydro `[h2o2]`). Operates in frigate.
 
 **fighter drone bay [drnbay]**  
 Hangar for a squad of crewless fighter drones.  
@@ -228,7 +228,7 @@ Group `settlement`. Built by dome city construction `[dmecns]`. Size 5000, capac
 
 **alien fighter drone [alndrn]**  
 Crewless alien fighter. No life support. Slow space move at shuttle speed; launches from a fighter drone bay.  
-Group `shuttle`. Built by alien fighter construction `[alnfgh]`. Size 80, mass 80, crew 0, capacity 1, HP 8, attack 4, defense 1, damage 2, initiative 20. Upkeep 20 cash. Slow space move at shuttle speed (mass-capacity 750). Fuel duration 13 (1 helium-3 `[heliu3]`). Capacity 1 holds one helium-3 so a root drone can `GET` fuel. Operates in orbit, on solid-surface, and nested in military. Shuttle unit (`IsShuttleUnit` / hangar craft), same as space shuttle `[shuttl]` (which stays group `production` so orbit `USE` still works). Not group `military`.
+Group `shuttle`. Built by alien fighter construction `[alnfgh]`. Size 80, mass 80, crew 0, capacity 1, HP 8, attack 4, defense 1, damage 2, initiative 20. Upkeep 20 cash. Slow space move at shuttle speed (speed 1 omitted in catalog, mass-capacity 750). Fuel duration 13 (1 helium-3 `[heliu3]`). Capacity 1 holds one helium-3 so a root drone can `GET` fuel. Operates in orbit, on solid-surface, and nested in military. Shuttle unit (`IsShuttleUnit` / hangar craft), same as space shuttle `[shuttl]` (which stays group `production` so orbit `USE` still works). Not group `military`.
 
 ---
 

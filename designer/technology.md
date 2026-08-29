@@ -8,7 +8,7 @@ Tags used for `RESEARCH` targeting: `production`, `propulsion`, `research`, `mil
 
 Research cost if `cost` omitted: `8 * 2^(level-1)` (L1=8 … L10=4096). Live overrides: `rckter` 4, `engshp` 4. Do not cheapen except alien-derived copies.
 
-**Level 10:** a pressure hull for **thousands of crew**, nested closed-loop ECLSS and agriculture, fusion-pulse drive, inner-system transits in **weeks** (Gate in **4 weeks**). **Level 2** already unlocks a basic He3 **fusion torch** for AU hops (13-week Gate band). No FTL. Physics: [au-transit.md](au-transit.md).
+**Level 10:** a pressure hull for **thousands of crew**, nested closed-loop ECLSS and agriculture, fusion-pulse drive, inner-system transits in **weeks** (Gate in **12 weeks**, `ceil(39 / 3.5)`). **Level 2** already unlocks a basic He3 **fusion torch** for AU hops (**39-week** Gate). No FTL. Physics: [au-transit.md](au-transit.md).
 
 Combat attack/damage/HP and military `use-time` ladders: **[combat-balance.md](combat-balance.md)** (capture in ≤10 rounds; small=3 / medium=8).
 
@@ -469,7 +469,7 @@ AU hops (planet → local Gate) need a **fusion torch**, not chemical or ion. Ph
 
 | Id | Name | Requires | Use-time | Consume | Produce | Notes |
 |----|------|----------|----------|---------|---------|-------|
-| **`fustch`** | fusion torch drive | `he3fus` | 6 | 20 `titani`, 8 `silici`, 6 `copper`, 4 `heliu3` | `fustor` | Magnetic-nozzle He3 torch. **Fuel 2 `heliu3` / week** (thirstier than `rctdrv` 1 `h2o2` / wk). Space `speed` 1: Gate ~14 wk. Burn–coast–burn at ≤1.5 g. **Live in `campaign/data.xml`** |
+| **`fustch`** | fusion torch drive | `he3fus` | 6 | 20 `titani`, 8 `silici`, 6 `copper`, 4 `heliu3` | `fustor` | Magnetic-nozzle He3 torch. **Fuel 2 `heliu3` / week** (thirstier than `rctdrv` 1 `h2o2` / wk). Space `speed` 1: Gate **39** wk (**78 He3**). Burn–coast–burn at ≤1.5 g. **Live in `campaign/data.xml`**; `f(ΔAU)` 2 / 6 / 13 / 39 |
 | **`ionthr`** | electrostatic ion thrust | `hydstg` | 6 | 8 `titani`, 10 `copper`, 6 `silici` | `iondrv` | Gridded ion; water electrolyzed to H+/OH− then accelerated. High Isp, millinewtons. **Fuel `water`**. Station-keeping / cargo, **not** the Gate unlock |
 
 ### Research
@@ -672,7 +672,7 @@ Capacity 6. Cost 256.
 
 | Id | Name | Requires | Use-time | Consume | Produce | Description |
 |----|------|----------|----------|---------|---------|-------------|
-| **`fusdrv`** | fusion drive | `fustch` | 8 | 30 `titani`, 10 `silici`, 5 `heliu3` | `fuseng` | Improved torch (speed 2 planned). **Fuel `heliu3`**. Mass-cap ~2e5 |
+| **`fusdrv`** | fusion drive | `fustch` | 8 | 30 `titani`, 10 `silici`, 5 `heliu3` | `fuseng` | Improved torch (speed 2 planned). Gate **20** wk. **Fuel `heliu3`**. Mass-cap ~2e5 |
 | **`magsail`** | magnetic sail | `fusdrv` | 8 | 20 `copper`, 8 `reeox`, 10 `titani` | `mgsail` | Superconducting loop vs solar wind. No propellant. Outer-system braking |
 | **`xengid`** | high-power xenon ion | `hlthrs` | 7 | 12 `titani`, 15 `copper`, 6 `silici` | `xendrv` | Gridded ion, **fuel `xenon`**. Parallel to water-ion; higher Isp |
 
@@ -829,7 +829,7 @@ Capacity 10. Cost 4096. Capstone hull/drive/bridge/grid **plus** supporting syst
 
 | Id | Name | Requires | Use-time | Consume | Produce | Description |
 |----|------|----------|----------|---------|---------|-------------|
-| **`arkdrv`** | ark propulsion integration | `hiisp` | 13 | 80 `titani`, 20 `heliu3`, 20 `copper` | `arkeng` | Mass-capacity ~2e6. Gate in **4 weeks** (speed ~3.5 planned). **Fuel `heliu3`+`deutrm`**. See [au-transit.md](au-transit.md) |
+| **`arkdrv`** | ark propulsion integration | `hiisp` | 13 | 80 `titani`, 20 `heliu3`, 20 `copper` | `arkeng` | Mass-capacity ~2e6. Gate in **12 weeks** (speed ~3.5 planned, `ceil(39 / 3.5)`). **Fuel `heliu3`+`deutrm`**. See [au-transit.md](au-transit.md) |
 | **`arkrcs`** | ark RCS | `rcsblk` | 8 | 25 `titani`, 15 `copper` | `arkrcs` | Attitude for a high-inertia hull. **Fuel `hydzn`** |
 | **`arksail`** | ark abort sail | `magsail` | 10 | 40 `copper`, 15 `reeox`, 20 `titani` | `arksail` | Mag-sail for emergency braking if the pulse drive is dark. No onboard propellant |
 

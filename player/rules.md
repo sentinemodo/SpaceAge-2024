@@ -2,7 +2,7 @@
 
 Checked **29 Aug 2026** against engine **0.1.148** (`Game/Program.cs`).
 
-Sources: `Game/orders/EOrderType.cs`, `Game/orders/OrdersReader.cs`, `Game/orders/Orders.cs`, `Game/orders/JumpOrder.cs`, `Game/orders/MoveOrder.cs`, `Game/Game.cs` (week loop, `GenerateOffers`), `Game/Program.cs` (`/data`, `/turn-dir`, `/reports`, `/no-turn`, `/check`), `Game/Research.cs` (weekly output, breakthrough, preference), `Game/data structures/ModuleStack.Upkeep.cs` (sick bay, medical consume, quarterly maintenance, high-gravity bill), `Game/data structures/Galaxy.cs` (`LoadXml` / `LoadExits` / save of environment attrs, belt and alderson exits), `Game/data structures/Alderson.cs` (`PairName`, orbit only), `Game/data structures/Belt.cs` (`LocationType` space), `Game/data structures/Planet.cs` / `Moon.cs` (`HasEnvironmentAttrs`), `Game/data structures/BodyEnvironment.cs` (`LaunchSurcharge`, `SurfaceOrbitSurcharge`, `BansNonShuttleSurfaceHop`, settlement temperature, gravity), `Game/data structures/ModuleType.cs` (`IsShipHullType` / `IsShuttleUnit`), `Game/data structures/Exits.cs` / `ExitMode.cs` / `Region.cs` (region **Exits:** lines), `Game/data structures/Faction.cs` (blank line before `Bank report:`), `Game/reports/ReportWriter.cs` (faction report sections and blank lines), `Game/battle/Battles.cs` (blank line between consecutive battles), `Game/game/DataFile.cs` (`LoadOrders` / `SaveOrders` delegate to `OrderXml`), `Game/game/OrderXml.cs` (XML switch, including `jump`), `Game/game/ModuleTypeGroupXml.cs` (`RESEARCH GROUP` tokens), `Game/effects/Effects.cs` (`LoadXml` effect types), `Game/effects/Producing.cs` (omit empty `technology=`), each `Game/orders/*Order.Parse` / `Execute`. Sample prefix usage: `Tests/SampleGame/orders.*.txt`.
+Sources: `Game/orders/EOrderType.cs`, `Game/orders/OrdersReader.cs`, `Game/orders/Orders.cs`, `Game/orders/JumpOrder.cs`, `Game/orders/MoveOrder.cs`, `Game/game/SpaceTransit.cs` (`f(ΔAU)`, mass factor, baked space-exit weeks), `Game/Game.cs` (week loop, `GenerateOffers`), `Game/Program.cs` (`/data`, `/turn-dir`, `/reports`, `/no-turn`, `/check`), `Game/Research.cs` (weekly output, breakthrough, preference), `Game/data structures/ModuleStack.Upkeep.cs` (sick bay, medical consume, quarterly maintenance, high-gravity bill), `Game/data structures/Galaxy.cs` (`LoadXml` / `LoadExits` / save of environment attrs, belt and alderson exits), `Game/data structures/Alderson.cs` (`PairName`, orbit only), `Game/data structures/Belt.cs` (`LocationType` space), `Game/data structures/Planet.cs` / `Moon.cs` (`HasEnvironmentAttrs`), `Game/data structures/BodyEnvironment.cs` (`LaunchSurcharge`, `SurfaceOrbitSurcharge`, `BansNonShuttleSurfaceHop`, settlement temperature, gravity), `Game/data structures/ModuleType.cs` (`IsShipHullType` / `IsShuttleUnit`), `Game/data structures/Exits.cs` / `ExitMode.cs` / `Region.cs` (region **Exits:** lines), `Game/data structures/Faction.cs` (blank line before `Bank report:`), `Game/reports/ReportWriter.cs` (faction report sections and blank lines), `Game/battle/Battles.cs` (blank line between consecutive battles), `Game/game/DataFile.cs` (`LoadOrders` / `SaveOrders` delegate to `OrderXml`), `Game/game/OrderXml.cs` (XML switch, including `jump`), `Game/game/ModuleTypeGroupXml.cs` (`RESEARCH GROUP` tokens), `Game/effects/Effects.cs` (`LoadXml` effect types), `Game/effects/Producing.cs` (omit empty `technology=`), each `Game/orders/*Order.Parse` / `Execute`. Sample prefix usage: `Tests/SampleGame/orders.*.txt`.
 
 Not source of truth: `Game/documentation/Rules.txt`. Turn order files are **Windows-1251** (same as reports). Verbs are case-insensitive; most arguments are not.
 
@@ -407,16 +407,50 @@ Walks a route. Each dest token is a **region**, **star**, **planet**, **moon**, 
 
 **Exits on the report:** a **region** block includes `Exits:` (`Region.Report` → `Exits.Report`). A region destination prints `{name} [id] (x,y), {region type}, {ground|naval|space} travel duration N week(s).` A non-region destination prints that location’s `ReportName` plus the mode duration — `orbit [id], space travel duration N week(s).` for an orbit, or `{name} [id] at AU N, belt, space travel duration N week(s).` for a belt. Orbit reports and `Belt.Report` do not list exits (belt exits still exist in the save and are used by MOVE). Maps without `orbit=` / `belt=` / `alderson=` exits (SampleGame) never show those lines.
 
-**Duration** (`movementDuration`) is not always the printed exit duration:
+**Duration** (`movementDuration`) is not always the printed exit duration. Space hops use `SpaceTransit` (`Game/game/SpaceTransit.cs`). `JUMP` is a separate 1-week hop and does **not** use AU.
 
-- Same-planet **region → region**: ground or naval (`tryCompatibleSurfaceMode`); weeks = ceil(exit duration / mover Speed). Needs a compatible surface exit from here.
+- Same-planet **region → region**: ground or naval (`tryCompatibleSurfaceMode`); weeks = ceil(exit duration / mover Speed). Needs a compatible surface exit from here. If that surface match fails, a listed space exit uses baked space-exit weeks (below); otherwise AU weeks.
 - Same-parent **region ↔ orbit** (e.g. Arbor surface → Arbor orbit): space; **1 week**, even if the exit lists more. Needs a space-capable mover (or nested space stack). Then the surface↔orbit environment rules below run before departure.
-- **Belt** hops (current or dest is a belt): space; weeks = ceil(listed space-exit duration / speed). Needs that exit. Occupying a belt is **space**, not a landing — there is no solid surface.
-- Region ↔ orbit with a **listed space exit** (different parent — typically a surface region to a Gate orbit): space; weeks from that exit. Alderson Gates have **orbit only, no regions**. Frigates occupy the Gate orbit; they do not land.
-- Same-planet **planet orbit ↔ moon orbit**: space; weeks from AU distance / (mass capacity / mass).
-- Other hops (orbit ↔ orbit that is not same-planet moon, belt without an exit, …) are not implemented.
+- **Belt** hops (current or dest is a belt): space. A listed space exit uses baked space-exit weeks; otherwise AU weeks. Occupying a belt is **space**, not a landing — there is no solid surface.
+- Region ↔ orbit with a **listed space exit** (different parent — typically a surface region to a Gate orbit): baked space-exit weeks. No listed exit: AU weeks. Alderson Gates have **orbit only, no regions**. Frigates occupy the Gate orbit; they do not land.
+- **Orbit ↔ orbit** (planet, moon, Gate, or other): space; AU weeks. ΔAU is `|BodyAu(here) − BodyAu(dest)|` (a moon is `planet.AU + moon.AU`).
+- Any other hop: listed space exit → baked space-exit weeks; else AU weeks.
 
-A stack with a **space** move mode may attempt a same-parent region↔orbit hop even when the current location lists no matching exit. Ground- or naval-only stacks need an exit from here to the dest. Unformed stacks fail with `MOVE failed. unformed units cannot move.`
+A stack with a **space** move mode may attempt a hop even when the current location lists no matching exit (`isWay` returns true). Ground- or naval-only stacks need an exit from here to the dest. Unformed stacks fail with `MOVE failed. unformed units cannot move.`
+
+#### Space weeks (`SpaceTransit`)
+
+Catalog space `speed` omitted defaults to **1**. Effective speed is that catalog speed (max of this stack and nested space movers) times a mass factor. Thrust is the sum of nested space `mass-capacity` (this stack plus children). Zero thrust leaves the mass factor at 1.
+
+```
+load = (sum nested space mass-capacity) / max(Mass, 1)
+massFactor = clamp(load / (40000 / 4150), 0.67, 1.50)
+effectiveSpeed = catalogSpaceSpeed × massFactor
+```
+
+**AU hops** (`DurationWeeks`): ΔAU ≈ 0 is 1 week. One ceil, after dividing by `effectiveSpeed` (speed ≤ 0 treated as 1):
+
+```
+if ΔAU < 0.1:
+    f = max(1, 50 × ΔAU)   // moon-scale; 0.04 → 2.00
+else:
+    f = 6 + 33 × ln((1 + ΔAU) / 2.7) / ln(80 / 2.7)
+
+weeks = ceil(f / effectiveSpeed)
+```
+
+The log is the two-point fit through (1.7, 6) and (79, 39). Default workshop frigate (one `[fustor]`, mass **4150**, mass factor **1.00**, speed **1**):
+
+| Hop | ΔAU | Weeks |
+|-----|-----|-------|
+| Planet → moon | 0.04 | **2** |
+| Planet → belt | 1.7 | **6** |
+| Planet → gas giant | 4.2 | **13** |
+| Planet → Alderson Gate | 79 | **39** |
+
+Scout (factor 1.50) / cargo (factor 0.67) on the same hops: moon 2 / 3, belt 4 / 9, gas giant 9 / 19, Gate 26 / 59. SampleGame `rctdrv` / `autdrv` list thrust **10000** (omitted speed → 1); a default-mass hull then hits the **0.67** clamp.
+
+**Baked space exits** (`ExitDurationWeeks`): `ceil(exitDuration / effectiveSpeed)` (min 1). Same-body surface↔orbit stays **1 week** and does not use this formula. `JUMP` stays **1 week**, not AU.
 
 #### Surface↔orbit environment
 

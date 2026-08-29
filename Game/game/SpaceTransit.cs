@@ -4,7 +4,16 @@ namespace SpaceAge
 {
 	public static class SpaceTransit
 	{
-		public const double WeeksPerAuAtSpeedOne = 8.0;
+		private const double MoonAuLimit = 0.1;
+		private const double MoonWeeksPerAu = 50.0;
+		private const double BeltAnchorAu = 1.7;
+		private const double BeltAnchorWeeks = 6.0;
+		private const double GateAnchorWeeks = 39.0;
+
+		public const double ReferenceThrust = 40000.0;
+		public const double ReferenceMass = 4150.0;
+		public const double MassFactorMin = 0.67;
+		public const double MassFactorMax = 1.50;
 
 		public static int DurationWeeks(double deltaAu, double speed)
 		{
@@ -17,7 +26,77 @@ namespace SpaceAge
 			{
 				return 1;
 			}
-			return Math.Max(1, (int)Math.Ceiling(distance * WeeksPerAuAtSpeedOne / speed));
+			double weeksAtSpeedOne;
+			if (distance < MoonAuLimit)
+			{
+				weeksAtSpeedOne = Math.Max(1, distance * MoonWeeksPerAu);
+			}
+			else
+			{
+				double beltArg = 1.0 + BeltAnchorAu;
+				double logSpan = Math.Log((1.0 + 79.0) / beltArg);
+				weeksAtSpeedOne = BeltAnchorWeeks
+					+ (GateAnchorWeeks - BeltAnchorWeeks) * Math.Log((1.0 + distance) / beltArg) / logSpan;
+			}
+			return Math.Max(1, (int)Math.Ceiling(weeksAtSpeedOne / speed - 1e-9));
+		}
+
+		public static double MassFactor(double thrust, double mass)
+		{
+			if (thrust <= 0)
+			{
+				return 1;
+			}
+			double load = thrust / Math.Max(mass, 1);
+			double referenceLoad = ReferenceThrust / ReferenceMass;
+			double factor = load / referenceLoad;
+			if (factor < MassFactorMin)
+			{
+				return MassFactorMin;
+			}
+			if (factor > MassFactorMax)
+			{
+				return MassFactorMax;
+			}
+			return factor;
+		}
+
+		public static double SpaceThrust(ModuleStack stack)
+		{
+			if (stack == null)
+			{
+				return 0;
+			}
+			return stack.MassCapacity + stack.ModuleStacks.MassCapacity;
+		}
+
+		public static double SpaceSpeed(ModuleStack stack)
+		{
+			double speed = spaceSpeedRecursive(stack);
+			return speed > 0 ? speed : 1;
+		}
+
+		public static double EffectiveSpaceSpeed(ModuleStack stack)
+		{
+			if (stack == null)
+			{
+				return 1;
+			}
+			return SpaceSpeed(stack) * MassFactor(SpaceThrust(stack), stack.Mass);
+		}
+
+		public static int ExitDurationWeeks(int exitDuration, double speed)
+		{
+			if (speed <= 0)
+			{
+				speed = 1;
+			}
+			return Math.Max(1, (int)Math.Ceiling(exitDuration / speed - 1e-9));
+		}
+
+		public static int ExitDurationWeeks(int exitDuration, ModuleStack stack)
+		{
+			return ExitDurationWeeks(exitDuration, EffectiveSpaceSpeed(stack));
 		}
 
 		public static double BodyAu(object holder)
@@ -34,6 +113,16 @@ namespace SpaceAge
 			{
 				return BodyAu(((Region)holder).RegionHolder);
 			}
+			Alderson alderson = holder as Alderson;
+			if (alderson != null)
+			{
+				return alderson.AU;
+			}
+			Belt belt = holder as Belt;
+			if (belt != null)
+			{
+				return belt.AU;
+			}
 			Planet planet = holder as Planet;
 			if (planet != null)
 			{
@@ -47,18 +136,26 @@ namespace SpaceAge
 			return 0;
 		}
 
-		public static double SpaceSpeed(ModuleStack stack)
+		private static double spaceSpeedRecursive(ModuleStack stack)
 		{
 			if (stack == null)
 			{
-				return 1;
+				return 0;
 			}
+			double speed = 0;
 			if (stack.MoveModes.ContainsKey(EMoveMode.space))
 			{
-				double speed = stack.MoveModes[EMoveMode.space].Speed;
-				return speed > 0 ? speed : 1;
+				speed = stack.MoveModes[EMoveMode.space].Speed;
 			}
-			return 1;
+			foreach (ModuleStack nested in stack.ModuleStacks.Values)
+			{
+				double nestedSpeed = spaceSpeedRecursive(nested);
+				if (nestedSpeed > speed)
+				{
+					speed = nestedSpeed;
+				}
+			}
+			return speed;
 		}
 	}
 }

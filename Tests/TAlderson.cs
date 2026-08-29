@@ -70,16 +70,17 @@ namespace UnitTests
 			ModuleStack ship = ModuleStack.All["s00001"];
 			this.AssignOrders(ship, "move P00009");
 			MoveOrder order = (MoveOrder)ship.Orders[0];
+			int expected = SpaceTransit.ExitDurationWeeks(13, ship);
 
 			ship.ExecutedLongOrder = false;
 			ship.Orders.Execute(this.game.Week);
 
 			Assert.That(order.MoveMode, Is.EqualTo(EMoveMode.space));
-			Assert.That(order.DurationLeft, Is.EqualTo(12));
+			Assert.That(order.DurationLeft, Is.EqualTo(expected - 1));
 			Assert.That(ship.MovingTo, Is.EqualTo(Alderson.All["P00009"].Orbit));
 			Assert.That(ship.Parent, Is.EqualTo(Region.All["R00001"]));
 
-			for (int week = 0; week < 12; week++)
+			for (int week = 0; week < expected - 1; week++)
 			{
 				ship.ExecutedLongOrder = false;
 				ship.Orders.Execute(this.game.Week);

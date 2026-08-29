@@ -165,21 +165,23 @@ Live region types only: `orbit` `ocean` `sea` `grassl` `dust` `mountn` `barren` 
 
 ## Space travel times
 
-Orbit↔orbit duration is `SpaceTransit` (ΔAU × drive `speed`). Same-body surface↔orbit is implicit (1 week). Physics, fuel, and why fusion: **[au-transit.md](au-transit.md)**.
+Orbit↔orbit duration is `SpaceTransit` (`f(ΔAU)` × drive `speed` × mass factor). Same-body surface↔orbit is implicit (1 week). Locked `f` and fuel: **[au-transit.md](au-transit.md)** (live).
 
 **Loader today:** `LoadExits` walks planet regions, moon regions, belts, and `<alderson>`. A region may `exit` to another `region` or a `belt`. Same-body surface↔orbit is implicit (1 week) — do not emit `exit orbit=` or `exit alderson=`. Moon maps can wait for the XML pass.
 
 | Hop | Chemical (`speed` 0.5) | L2 fusion torch (`speed` 1) | L10 ark (`speed` ~3.5) |
 |-----|------------------------|-----------------------------|------------------------|
 | Surface ↔ local orbit | 1 | 1 | 1 |
-| Planet ↔ its moon | 1–2 | 1 | 1 |
-| Inner system (0.5–2 AU) | ~20–26 | 8–13 | 2–4 |
-| Helios ↔ Fomal (~200 AU pair, no JUMP) | ~28 | ~14 | 4–8 |
-| To gas giant (5 AU) | ~26 | ~13 | 4–8 |
-| Outer belt (20–40 AU) | many turns | ~14 | 8–13 |
-| Occupied pair → empty system | 52+ | many | 8–13 |
-| Planet → local Gate (79 AU) | **~28** — not the crossing | **~14** | **4** |
+| Planet ↔ its moon (0.04 AU) | 4 | **2** | 1 |
+| Inner system (1–2 AU) | 7–15 | 4–8 | 1–3 |
+| Helios ↔ Fomal (~200 AU pair, no JUMP) | 96 | 48 | 14 |
+| To gas giant (4.2 AU) | 25 | **13** | 4 |
+| Outer belt (20–40 AU) | 52–65 | 26–33 | 8–10 |
+| Occupied pair → empty system | no AU path | no AU path | no AU path |
+| Planet → local Gate (79 AU) | **78** — not the crossing | **39** | **12** |
 | Helios Gate ↔ Fomal Gate | **1** (`JUMP`) | 1 | 1 |
+
+Torch column is the **default workshop frigate** (mass 4150, one `fustor`). `ceil(f(ΔAU) / 1)` — locked `f` in [au-transit.md](au-transit.md) (live). Scout / cargo mass scales that column by 0.67–1.50. Chemical `rctdrv` (thrust 10000) on a default-mass hull hits the **MIN** factor: published chemical weeks ×1.5 (Gate **117**). Still not the crossing. 0.5 AU inner hops are ~1 week (log near zero); seed hops start at 1.7.
 
 Chemical stages cannot supply the Δv for a Gate hop in a season. The L2 torch (`fustch` / `fustor`) is the AU unlock: burn, coast, burn, ≤1.5 g, 2 `heliu3` / week.
 

@@ -90,6 +90,8 @@
     <Compile Include="TBelt.cs" />
     <Compile Include="TAlderson.cs" />
     <Compile Include="TMoveEnvironment.cs" />
+    <Compile Include="TSpaceTransit.cs" />
+    <Compile Include="TMoveDuration.cs" />
     <Compile Include="TGetGiveHas.cs" />
     <Compile Include="TFormStack.cs" />
     <Compile Include="TSee.cs" />
@@ -326,6 +328,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="fixtures\environment\gamein.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="fixtures\space-move\gamein.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

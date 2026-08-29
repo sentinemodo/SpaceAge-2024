@@ -289,114 +289,82 @@ namespace SpaceAge
 
 		private int movementDuration()
 		{
-            if (this.Mover.Location is Region && this.destination is Region)
-            {
-                Region region1 = (Region)this.Mover.Location;
-                Region region2 = (Region)this.destination;
+			Location current = (Location)this.Mover.Location;
 
-                if (region1.RegionHolder == region2.RegionHolder)
-                {
-                    Exit exit = region1.Exits[this.destination];
-                    EMoveMode surfaceMode;
-                    if (!this.tryCompatibleSurfaceMode(exit, out surfaceMode))
-                    {
-                        throw new InvalidOperationException("no compatible surface move mode");
-                    }
-                    this.moveMode = surfaceMode;
-                    ExitMode exitMode = exit.ExitModes[surfaceMode];
-                    double speed = this.Mover.MoveModes[surfaceMode].Speed;
-                    return Convert.ToInt32(Math.Ceiling(exitMode.Duration / speed));
-                }
-                else
-                {
-                    throw new NotImplementedException();
-                }
-            }
-            else if (this.destination is Belt || this.Mover.Location is Belt)
-            {
-                this.moveMode = EMoveMode.space;
-                Location current = (Location)this.Mover.Location;
-                if (!current.Exits.Contains(this.destination))
-                {
-                    throw new NotImplementedException();
-                }
-                ExitMode exitMode = current.Exits[this.destination].ExitModes[EMoveMode.space];
-                double speed = 1;
-                if (this.Mover.MoveModes.ContainsKey(EMoveMode.space) && this.Mover.MoveModes[EMoveMode.space].Speed > 0)
-                {
-                    speed = this.Mover.MoveModes[EMoveMode.space].Speed;
-                }
-                return Convert.ToInt32(Math.Ceiling(exitMode.Duration / speed));
-            }
-            else if ((this.Mover.Location is Region && this.destination is Orbit) || (this.Mover.Location is Orbit && this.destination is Region)) 
-            { // region -> orbit or orbit -> region, space movement
-                if (this.Mover.Location.LocationParent == this.destination.LocationParent)
-                {// same planet
-                    this.moveMode = EMoveMode.space;
-                    return 1;
-                }
-                Location current = (Location)this.Mover.Location;
-                if (current.Exits.Contains(this.destination)
-                    && current.Exits[this.destination].ExitModes.ContainsKey(EMoveMode.space))
-                {
-                    this.moveMode = EMoveMode.space;
-                    ExitMode exitMode = current.Exits[this.destination].ExitModes[EMoveMode.space];
-                    double speed = 1;
-                    if (this.Mover.MoveModes.ContainsKey(EMoveMode.space) && this.Mover.MoveModes[EMoveMode.space].Speed > 0)
-                    {
-                        speed = this.Mover.MoveModes[EMoveMode.space].Speed;
-                    }
-                    return Convert.ToInt32(Math.Ceiling(exitMode.Duration / speed));
-                }
-                throw new NotImplementedException();
-            } 
-            else if (this.Mover.Location is Orbit && this.destination is Orbit)
-            {
-                this.moveMode = EMoveMode.space;
-                Orbit orbit1 = (Orbit)this.Mover.Location;
-                Orbit orbit2 = (Orbit)this.destination;
-                //double distance = orbit1.OrbitHolder.DistanceTo(orbit2);
-                
-                double N = 0;
-                double M = 0;
-                double distance = 0;
-                double speed = 0;
-                if (orbit1.OrbitHolder is Planet && orbit2.OrbitHolder is Moon)
-                {// planet -> moon
-                    if (((Moon)orbit2.OrbitHolder).Planet == (Planet)orbit1.OrbitHolder)
-                    {// same planet
-                        N = 0;
-                        M = ((Moon)orbit2.OrbitHolder).AU;
-                        distance = (M - N) * 50 + (M + N) * 5;
-                        speed = (this.Mover.MassCapacity + this.Mover.ModuleStacks.MassCapacity) / this.Mover.Mass;
-                    }
-                    else
-                    {// not the same planet
-                        throw new NotImplementedException();
-                    }
-                }
-                else if (orbit1.OrbitHolder is Moon && orbit2.OrbitHolder is Planet)
-                {
-                    // moon -> planet
-                    if (((Moon)orbit1.OrbitHolder).Planet == (Planet)orbit2.OrbitHolder)
-                    {// same planet
-                        N = 0;
-                        M = ((Moon)orbit1.OrbitHolder).AU;
-                        distance = (M - N) * 50 + (M + N) * 5;
-                        speed = (this.Mover.MassCapacity + this.Mover.ModuleStacks.MassCapacity) / this.Mover.Mass;
-                    }
-                    else
-                    {// not the same planet
-                        throw new NotImplementedException();
-                    }
-                }
-                int duration = Convert.ToInt32(Math.Ceiling(distance / speed));
+			if (this.Mover.Location is Region && this.destination is Region)
+			{
+				Region region1 = (Region)this.Mover.Location;
+				Region region2 = (Region)this.destination;
 
-                return duration;
-            
-            } else {
-                throw new NotImplementedException("nothing matches");
-            }
+				if (region1.RegionHolder == region2.RegionHolder)
+				{
+					Exit exit = region1.Exits[this.destination];
+					EMoveMode surfaceMode;
+					if (!this.tryCompatibleSurfaceMode(exit, out surfaceMode))
+					{
+						throw new InvalidOperationException("no compatible surface move mode");
+					}
+					this.moveMode = surfaceMode;
+					ExitMode exitMode = exit.ExitModes[surfaceMode];
+					double speed = this.Mover.MoveModes[surfaceMode].Speed;
+					return Convert.ToInt32(Math.Ceiling(exitMode.Duration / speed));
+				}
+				if (this.hasSpaceExit(current))
+				{
+					return this.spaceExitDuration(current);
+				}
+				return this.spaceAuDuration();
+			}
+			if (this.destination is Belt || this.Mover.Location is Belt)
+			{
+				if (this.hasSpaceExit(current))
+				{
+					return this.spaceExitDuration(current);
+				}
+				return this.spaceAuDuration();
+			}
+			if ((this.Mover.Location is Region && this.destination is Orbit) || (this.Mover.Location is Orbit && this.destination is Region))
+			{
+				if (this.Mover.Location.LocationParent == this.destination.LocationParent)
+				{
+					this.moveMode = EMoveMode.space;
+					return 1;
+				}
+				if (this.hasSpaceExit(current))
+				{
+					return this.spaceExitDuration(current);
+				}
+				return this.spaceAuDuration();
+			}
+			if (this.Mover.Location is Orbit && this.destination is Orbit)
+			{
+				return this.spaceAuDuration();
+			}
+			if (this.hasSpaceExit(current))
+			{
+				return this.spaceExitDuration(current);
+			}
+			return this.spaceAuDuration();
+		}
+
+		private bool hasSpaceExit(Location current)
+		{
+			return current.Exits.Contains(this.destination)
+				&& current.Exits[this.destination].ExitModes.ContainsKey(EMoveMode.space);
+		}
+
+		private int spaceExitDuration(Location current)
+		{
+			this.moveMode = EMoveMode.space;
+			ExitMode exitMode = current.Exits[this.destination].ExitModes[EMoveMode.space];
+			return SpaceTransit.ExitDurationWeeks(exitMode.Duration, this.Mover);
+		}
+
+		private int spaceAuDuration()
+		{
+			this.moveMode = EMoveMode.space;
+			double deltaAu = Math.Abs(SpaceTransit.BodyAu(this.Mover.Location) - SpaceTransit.BodyAu(this.destination));
+			return SpaceTransit.DurationWeeks(deltaAu, SpaceTransit.EffectiveSpaceSpeed(this.Mover));
 		}
 
 		private bool applyEnvironmentMoveRules(int week)
