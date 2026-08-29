@@ -10,6 +10,7 @@ The **game-designer** Cursor agent (`.cursor/agents/game-designer.md`) owns the 
 | [combat-balance.md](combat-balance.md) | Raid sizes, capture-in-10, typed matchups |
 | [economy.md](economy.md) | HQ cash/week, nest bills, t=1 UN market books |
 | [technology.md](technology.md) | Tech tree through level 10, **Combat matchups** (four weapon groups), module power curve |
+| [au-transit.md](au-transit.md) | Fusion torch for AU hops: burn–coast–burn, g-load, He3 vs chemical, L2 `fustch` |
 | [resources.md](resources.md) | Canonical resource dictionary (seed, rarity, extraction) |
 | [catalog.md](catalog.md) | Module types, items, skills, equipment (resources → resources.md) |
 | [contracts.md](contracts.md) | In-game contract vectors |

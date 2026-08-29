@@ -58,7 +58,7 @@ See `technology.md` Combat matchups for which techs sit in each group.
 | `carbon` | unit of carbon | 5/5 | `hcdril` (1); `cplant` fuel | L0 (`fossil` / plant fuel) | common on organics | `grassl` wetlands; `smcast` `lrcast` | **rich** peat/coal | **absent** (trace graphite only; pocket: Fomal belt) | SS0005 Cinder; SS0007 Shards; SS0009 Graph |
 | `oil` | unit of oil | 4/5 | `oildwe` (2); `oplant` fuel | L0 (`oilbrn` / plant fuel) | uncommon | coastal `grassl`; `lrcast` | **present** Tidewatch coast | **absent** (pocket: Fomal belt) | SS0007 Shards carbonaceous |
 | `gold` | unit of gold | 5/9 | `gminng` (1); contacts | L1 (`optins` consumes 1) | trace | hydrothermal `mountn`; rare `lrmast` | **absent** | **trace** mountains | SS0009 Graph |
-| `heliu3` | unit of helium-3 | 1/1 | `he3min` (1); `he3ext`; `fusrec`/`he3aut`/`dhefrc`/`fuseng`/`plsdv`/`arkeng` fuel; build `he3fus` `fusdrv` `hiisp` `arkcns` `arkdrv`; pbpd `ciwssy` `arkpd` | L2 (`he3fus`) | rare / pocket | ice-moon `dust`/`barren`; outer `abelt`; **not** habitable basins | absent on Arbor (pocket: Aeolus ices) | absent on Anvil (pocket: Fomal ices) | SS0003 Ember ices; SS0006 Ash; SS0008 Deep ices |
+| `heliu3` | unit of helium-3 | 1/1 | `he3min` (1); `he3ext`; `fusrec`/`he3aut`/`dhefrc`/`fustor`/`fuseng`/`plsdv`/`arkeng` fuel; build `he3fus` `fustch` `fusdrv` `hiisp` `arkcns` `arkdrv`; pbpd `ciwssy` `arkpd` | L2 (`he3fus` + `fustch`) | rare / pocket | ice-moon `dust`/`barren`; outer `abelt`; **not** habitable basins | absent on Arbor (pocket: Aeolus ices) | absent on Anvil (pocket: Fomal ices) | SS0003 Ember ices; SS0006 Ash; SS0008 Deep ices |
 | `h2o2` | unit of oxyhydro | 1/1 | `wtrdst` (3); `rctdrv`/`autdrv`/`tanker` fuel | L0 (`areact` fuel; distillation) | common on wet worlds | `ocean` `sea` ice `dust`; polar | **rich** | **modest** | SS0007 Shards ice; SS0008 Deep; SS0010 Spare ice |
 | `water` | unit of water | 1/1 | region hydrosphere/ice; `icemin` (3); `wtrdst` consume 1→3 `h2o2`; `hydrop` consume 2→3 `food`; drive fuels | L0 (`icemin`/`wtrdst`); L1 `hydrop`/`hydstg` | **strategic** | `ocean` `sea`; ice moons `dust`/`barren`/`mountn` polar; **homeworld moons must seed** | **rich** liquid | **modest** liquid + ice moons | All ice moons; Selene polar ice; Anvil rock-moon ice |
 | `food` | unit of food | 1/1 | `farmng` (5), `afrmng` (8), `agrdek`; region biomass; city upkeep | L0 (`farmng`; city upkeep) | biosphere | `grassl` `sea` only (habitable) | **rich** 400–800 grassland | **poor** 80–150 | SS0008 Deep (tight); SS0009 Graph |
@@ -160,7 +160,7 @@ Farms: `farmng` / `afrmng` produce `food` (not a mine). `medirf` produces `medic
 | `trimth` `orbtug` | `xenon` or `water` |
 | `hypeng` `chmup2` `rcspod` `arkrcs` `crumis` | `hydzn` |
 | `h2cell` | `h2o2` |
-| `fusrec` `he3aut` `fuseng` | `heliu3` |
+| `fusrec` `he3aut` `fustor` `fuseng` | `heliu3` (`fustor`: **2 / week**) |
 | `dhefrc` `plsdv` `arkeng` | `heliu3` + `deutrm` |
 | `slsmod` `mgsail` `plsail` `arksail` `hshld` | none (sails / heatshield) |
 

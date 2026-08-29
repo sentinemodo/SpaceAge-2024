@@ -37,7 +37,8 @@ All use `group="frigate"` until engine adds `corvette`/`cruiser`/`capital`/`ark`
 | `coastr` | vehicle | 250/100 | 1 / 0 | Coastal transport. Naval MOVE speed 1. Solid+liquid (port + sea). Oil fuel. L0 `nvltrs` |
 | `gunbot` | vehicle | 240/240 | 12 / 0 | Gunboat. Naval MOVE speed 1. Kinetic. Solid+liquid. L1 `nvlcbt` |
 | `fshfrm` | agricultural | 1000/100 | 5 / 5 | Fishery. Liquid-surface + `terair` only (not grassland). Nets plus photic seaweed/algae. L0 `fshng`; harvest `fshhrv` (terair, not planet-type ocean) |
-| `hydnoz` | propulsion | 800/900 | 1 / 40 | Staged hydrolox; mass-capacity ~20000; fuel `water` or `h2o2` |
+| `hydnoz` | propulsion | 800/900 | 1 / 40 | Staged hydrolox; mass-capacity ~20000; fuel `water` or `h2o2`; space speed 0.5 |
+| `fustor` | propulsion | 1600/1400 | 2 / 80 | **L2 AU torch**; mass-capacity ~40000; **2 `heliu3` / week**; space speed 1. [au-transit.md](au-transit.md) |
 | `iondrv` | propulsion | 500/400 | 1 / 50 | Gridded ion; mass-capacity ~25000; fuel `water` |
 | `nepeng` | propulsion | 1400/1600 | 2 / 70 | Nuclear-electric; mass-capacity ~35000; fuel `uraniu`+`water` |
 | `optlab` | research | 250/60 | 2 / 6 | output 1, tech-cap 5 |

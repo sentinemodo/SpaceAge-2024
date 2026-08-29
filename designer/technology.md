@@ -8,7 +8,7 @@ Tags used for `RESEARCH` targeting: `production`, `propulsion`, `research`, `mil
 
 Research cost if `cost` omitted: `8 * 2^(level-1)` (L1=8 … L10=4096). Live overrides: `rckter` 4, `engshp` 4. Do not cheapen except alien-derived copies.
 
-**Level 10:** a pressure hull for **thousands of crew**, nested closed-loop ECLSS and agriculture, fusion-pulse drive, inner-system transits in **weeks**. No FTL.
+**Level 10:** a pressure hull for **thousands of crew**, nested closed-loop ECLSS and agriculture, fusion-pulse drive, inner-system transits in **weeks** (Gate in **4 weeks**). **Level 2** already unlocks a basic He3 **fusion torch** for AU hops (13-week Gate band). No FTL. Physics: [au-transit.md](au-transit.md).
 
 Combat attack/damage/HP and military `use-time` ladders: **[combat-balance.md](combat-balance.md)** (capture in ≤10 rounds; small=3 / medium=8).
 
@@ -67,7 +67,7 @@ L3–L10 target: production 3–5, propulsion 2–3, research 2–3, military 2�
 |----|------------|------------|----------|----------|
 | 0 | dense live | `areact` | `filidx` | `stnrdf` **kinetic** |
 | 1 | live + `nminng` `gminng` | `hydstg` | `optins` | armour/infantry/lasers + **`prlgun` `prllsr` `psnarm`** |
-| 2 | live He3/autfab/habitat + `alminn` `krogen` | `ionthr` | `medtec` `medirf` | `xraylo` **laser** + **`psnshd` `psnew`** |
+| 2 | live He3/autfab/habitat + `alminn` `krogen` | **`fustch`** `ionthr` | `medtec` `medirf` | `xraylo` **laser** + **`psnshd` `psnew`** |
 | 3 | live He3/dome/hull + `amnext` `ch4min` `ntmine` `solth` `hydsyn` | `autprp` `nucthr` `slsail` | `advres` `sckcns` `pharms` | `drnhng` **drone** `mslpod` **missile** `ewsens` **ew** `prxgrd` **pbpd** |
 | 4 | `orbfnd` `d2ext` `volext` `fuelcl` `liming` `xeming` | `ntrdrv` `hypstg` `hlthrs` | `radtol` `cryres` `matcmp` | `alnfgh` **drone** `kntcgn` **kinetic** `shplas` **shield** |
 | 5 | `clslfe` `isrurf` `wminng` `o2isru` `ceramp` `bormin` `beming` | `mpdthr` `mpdlth` `ethtst` | `survts` `seisns` `bwinow` | `pdefls` **laser** `kpdgun` **kinetic** `armcml` **armour** |
@@ -126,7 +126,8 @@ flowchart TB
 ```mermaid
 flowchart TB
   subgraph ladder["Isp ladder"]
-    areact --> hydstg --> ionthr --> nucthr --> ntrdrv --> mpdthr --> fusdrv --> vasimr --> hiisp --> arkdrv
+    areact --> hydstg --> ionthr --> nucthr --> ntrdrv --> mpdthr
+    he3fus --> fustch --> fusdrv --> vasimr --> hiisp --> arkdrv
   end
   subgraph alt["Parallel propulsion"]
     areact --> slsail
@@ -227,7 +228,8 @@ flowchart TB
 | `nucthr` | `ionthr` |
 | `ntrdrv` | `nucthr` |
 | `mpdthr` | `ntrdrv` |
-| `fusdrv` | `mpdthr` |
+| `fustch` | `he3fus` |
+| `fusdrv` | `fustch` |
 | `vasimr` | `fusdrv` |
 | `hiisp` | `vasimr` |
 | `arkdrv` | `hiisp` |
@@ -382,7 +384,7 @@ Primary tags assigned for campaign research targeting. Consume/produce are live 
 
 | Id | Name | Consume | Produce | Notes |
 |----|------|---------|---------|-------|
-| `areact` | action and reaction | 10 `iron`, 10 `titani` | `rctdrv` | Chemical/thermal rocket; **fuel `h2o2`**. Use-time 2. **Only live L0 propulsion** |
+| `areact` | action and reaction | 10 `iron`, 10 `titani` | `rctdrv` | Chemical/thermal rocket; **fuel `h2o2`**. Space speed **0.5** — orbit / short hops, **not** AU. Use-time 2. **Only live L0 propulsion** |
 
 ### Research
 
@@ -421,7 +423,7 @@ Copy required. Capacity 1. Cost 8 unless noted.
 
 | Id | Name | Requires | Use-time | Consume | Produce | Notes |
 |----|------|----------|----------|---------|---------|-------|
-| **`hydstg`** | staged hydrolox / oxyhydro | `areact` | 5 | 8 `iron`, 4 `titani`, 2 `copper` | `hydnoz` | Regenerative-cooled nozzle, staged combustion of H2/O2 from water or stored `h2o2`. Vacuum Isp ~450 s. **Fuel `water` or `h2o2`**. Not nuclear |
+| **`hydstg`** | staged hydrolox / oxyhydro | `areact` | 5 | 8 `iron`, 4 `titani`, 2 `copper` | `hydnoz` | Regenerative-cooled nozzle, staged combustion of H2/O2 from water or stored `h2o2`. Vacuum Isp ~450 s. **Fuel `water` or `h2o2`**. Space speed **0.5**. Not nuclear, not AU |
 
 ### Research (gap)
 
@@ -461,11 +463,14 @@ Capacity 2. Cost 16.
 | **`alminn`** | aluminium from anorthosite | `slcmlt` | 2 | — | 2 `alumin` | Hall–Héroult analogue on highlands. Extraction, solid-surface |
 | **`krogen`** | kerogen retorting | `hcdril` | 2 | — | 1 `kerogn` | Slow pyrolysis of carbonaceous chondrite organics. Extraction |
 
-### Propulsion (gap)
+### Propulsion
+
+AU hops (planet → local Gate) need a **fusion torch**, not chemical or ion. Physics and fuel: **[au-transit.md](au-transit.md)**. `he3fus` is already live L2 power; **`fustch`** is the missing drive.
 
 | Id | Name | Requires | Use-time | Consume | Produce | Notes |
 |----|------|----------|----------|---------|---------|-------|
-| **`ionthr`** | electrostatic ion thrust | `hydstg` | 6 | 8 `titani`, 10 `copper`, 6 `silici` | `iondrv` | Gridded ion; water electrolyzed to H+/OH− then accelerated. High Isp, millinewtons. **Fuel `water`**. Weeks of burn for inner-system |
+| **`fustch`** | fusion torch drive | `he3fus` | 6 | 20 `titani`, 8 `silici`, 6 `copper`, 4 `heliu3` | `fustor` | Magnetic-nozzle He3 torch. **Fuel 2 `heliu3` / week** (thirstier than `rctdrv` 1 `h2o2` / wk). Space `speed` 1: Gate ~14 wk. Burn–coast–burn at ≤1.5 g. **Live in `campaign/data.xml`** |
+| **`ionthr`** | electrostatic ion thrust | `hydstg` | 6 | 8 `titani`, 10 `copper`, 6 `silici` | `iondrv` | Gridded ion; water electrolyzed to H+/OH− then accelerated. High Isp, millinewtons. **Fuel `water`**. Station-keeping / cargo, **not** the Gate unlock |
 
 ### Research
 
@@ -667,7 +672,7 @@ Capacity 6. Cost 256.
 
 | Id | Name | Requires | Use-time | Consume | Produce | Description |
 |----|------|----------|----------|---------|---------|-------------|
-| **`fusdrv`** | fusion drive | `mpdthr` | 8 | 30 `titani`, 10 `silici`, 5 `heliu3` | `fuseng` | Magnetic nozzle. **Fuel `heliu3`**. Mass-cap ~2e5 |
+| **`fusdrv`** | fusion drive | `fustch` | 8 | 30 `titani`, 10 `silici`, 5 `heliu3` | `fuseng` | Improved torch (speed 2 planned). **Fuel `heliu3`**. Mass-cap ~2e5 |
 | **`magsail`** | magnetic sail | `fusdrv` | 8 | 20 `copper`, 8 `reeox`, 10 `titani` | `mgsail` | Superconducting loop vs solar wind. No propellant. Outer-system braking |
 | **`xengid`** | high-power xenon ion | `hlthrs` | 7 | 12 `titani`, 15 `copper`, 6 `silici` | `xendrv` | Gridded ion, **fuel `xenon`**. Parallel to water-ion; higher Isp |
 
@@ -824,7 +829,7 @@ Capacity 10. Cost 4096. Capstone hull/drive/bridge/grid **plus** supporting syst
 
 | Id | Name | Requires | Use-time | Consume | Produce | Description |
 |----|------|----------|----------|---------|---------|-------------|
-| **`arkdrv`** | ark propulsion integration | `hiisp` | 13 | 80 `titani`, 20 `heliu3`, 20 `copper` | `arkeng` | Mass-capacity ~2e6. Inner-system **weeks**. **Fuel `heliu3`+`deutrm`** |
+| **`arkdrv`** | ark propulsion integration | `hiisp` | 13 | 80 `titani`, 20 `heliu3`, 20 `copper` | `arkeng` | Mass-capacity ~2e6. Gate in **4 weeks** (speed ~3.5 planned). **Fuel `heliu3`+`deutrm`**. See [au-transit.md](au-transit.md) |
 | **`arkrcs`** | ark RCS | `rcsblk` | 8 | 25 `titani`, 15 `copper` | `arkrcs` | Attitude for a high-inertia hull. **Fuel `hydzn`** |
 | **`arksail`** | ark abort sail | `magsail` | 10 | 40 `copper`, 15 `reeox`, 20 `titani` | `arksail` | Mag-sail for emergency braking if the pulse drive is dark. No onboard propellant |
 
@@ -855,7 +860,8 @@ Full stats: `designer/catalog.md`. Fuel/feedstock must match `resources.md`.
 | Module | Group | Built by | Fuel / notable consume |
 |--------|-------|----------|------------------------|
 | `sckbay` | habitat | `sckcns` | heal cadence (wishlist); `pharms` USE → `medici` |
-| `hydnoz` | propulsion | `hydstg` | `water` or `h2o2` |
+| `hydnoz` | propulsion | `hydstg` | `water` or `h2o2`; space speed 0.5 |
+| `fustor` | propulsion | `fustch` | **2 `heliu3` / week**; space speed 1 (AU torch) |
 | `iondrv` | propulsion | `ionthr` | `water` |
 | `nepeng` | propulsion | `nucthr` | `uraniu` + `water` |
 | `optlab` | research | `optins` | — |
@@ -954,7 +960,7 @@ Full stats: `designer/catalog.md`. Fuel/feedstock must match `resources.md`.
 | `arkmag` | storage | `arkmag` | isotopes |
 | `arkew` | military | `arkew` | silicons |
 
-Live fuels unchanged: `rctdrv`/`autdrv`/`shuttl` `h2o2`; `cplant` `carbon`; `oplant` `oil`; `fisrec` `uraniu`; `fusrec`/`he3aut` `heliu3`.
+Live fuels: `rctdrv`/`autdrv`/`shuttl` `h2o2`; `fustor` 2 `heliu3` / week; `cplant` `carbon`; `oplant` `oil`; `fisrec` `uraniu`; `fusrec`/`he3aut` `heliu3`. Chemical space speed **0.5**; L2 torch speed **1**. See [au-transit.md](au-transit.md).
 
 ## Power vs cost (same role)
 
@@ -973,7 +979,7 @@ Do not nerf L0 to make L10 look good.
 | Branch | Example reward ids (one per find) |
 |--------|-----------------------------------|
 | production | `autfab`, `orbfnd`, `clslfe`, `arkcns` (at most one L8+ on the whole map at t=1) |
-| propulsion | `autprp`, `ntrdrv`, `fusdrv`, `arkdrv` (L10 unique, outer) |
+| propulsion | `autprp`, `fustch`, `ntrdrv`, `fusdrv`, `arkdrv` (L10 unique, outer) |
 | research | `advres`, `radtol`, `arkcmd` |
 | military | `alnfgh` (**drone**), `pdefls` (**laser**), `mslpod` (**missile**), `kntcgn` (**kinetic**) |
 

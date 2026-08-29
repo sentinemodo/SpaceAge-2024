@@ -87,7 +87,7 @@ Faction `name` **1** is still the unfiltered NPC in XML reports (`SaveGame` skip
 
 - `<race type="terran"/>` is a child of `<planet>` or `<moon>` (native biosphere). `LoadGalaxy` also still loads `<race>` under `<orbit>` (SampleGame fallback).
 - Asteroid belts are `<belt name="P00003" AU="2.7">` with `<composition><resource type="uraniu" quantity="80" probability="0.5"/></composition>`. No orbit, no child regions (asteroids spawn later). `MOVE P00003` occupies the belt (`location-type` space). Region `<exit belt="P00003">` carries space duration until AU×drive. Rings are `<belt>` children of a `<planet>` (gas giant), same as moons.
-- Alderson Gates are `<alderson name="P00009" AU="80" pair="P00010">` with one `<orbit>` and **no** child regions and **no** region exits. Do not emit `<exit alderson=>` from planetary regions. `JUMP P00010` while at Helios Gate orbit is 1 week to the pair’s orbit (ships only). Reaching a Gate from a planet is AU×drive (wishlist), not a baked surface hop.
+- Alderson Gates are `<alderson name="P00009" AU="80" pair="P00010">` with one `<orbit>` and **no** child regions and **no** region exits. Do not emit `<exit alderson=>` from planetary regions. `JUMP P00010` while at Helios Gate orbit is 1 week to the pair’s orbit (ships only). Reaching a Gate from a planet is AU×drive (`SpaceTransit` × `fustor` speed 1). See [au-transit.md](au-transit.md).
 - Gas giants: orbit + moons; no solid-surface regions.
 - `AU` is stored; system `X Y Z` are currently commented out in the loader — still set them for later.
 - Design attrs on `<planet>` / `<moon>` (ignored until TDD): `gravity="low|normal|high"`, `temperature="habitable|cold|hot"`, `atmosphere="none|thin|terair|hostile"`. See [`environments.md`](environments.md).

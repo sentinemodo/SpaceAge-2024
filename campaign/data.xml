@@ -953,10 +953,25 @@ Researchers can query the library. The system can handle natural language questi
 			<use-allowed-in module-type-group="extraction"/>
 			<use-produce item="heliu3"/>
 		</entry>
-		<entry name="he3fus" name-en="helium-3 fusion" level="2" tags="production" requires="he3min" description="Controlled fusion of helium-3 for clean, abundant energy.">
+		<entry name="he3fus" name-en="helium-3 fusion" level="2" tags="production" requires="he3min" description="Controlled fusion of helium-3 for clean, abundant energy. Unlocks the fusion torch drive.">
 			<use-allowed-in module-type-group="production"/>
 			<use-consume item="heliu3" quantity="1"/>
 			<use-produce module="fusrec"/>
+		</entry>
+		<entry
+			name="fustch"
+			name-en="fusion torch drive"
+			level="2"
+			tags="propulsion"
+			requires="he3fus"
+			description="Magnetic-nozzle helium-3 fusion torch. Exhaust velocity high enough for AU hops at a fraction of a g: accelerate, coast, decelerate. Burns helium-3 faster than a reaction drive burns oxyhydro. Chemical stages cannot make the Gate in a season."
+			use-time="6">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="titani" quantity="20"/>
+			<use-consume item="silici" quantity="8"/>
+			<use-consume item="copper" quantity="6"/>
+			<use-consume item="heliu3" quantity="4"/>
+			<use-produce module="fustor"/>
 		</entry>
 		<entry
 			name="he3drl"
@@ -1477,7 +1492,7 @@ Researchers can query the library. The system can handle natural language questi
 			name-en="reaction drive"
 			name-en2="reaction drives"
 			group="propulsion"
-			description="A long experience in fluid dynamics and combustion has gone into these drives."
+			description="Chemical thermal rocket. Cheap oxyhydro for orbit and short inner-system burns. Not an AU torch: too little exhaust velocity for the Gate in a season."
 			size="600" 
 			mass="700" 
 			crew="1" 
@@ -1487,7 +1502,7 @@ Researchers can query the library. The system can handle natural language questi
 			hit-points="65">
 			<operation-allowed-in module-group="frigate"/>
 			<upkeep type="cash" quantity="15"/>
-			<move mode="space" mass-capacity="10000"/>
+			<move mode="space" speed="0.5" mass-capacity="10000"/>
 			<fuel duration="1">
 				<item type="h2o2" quantity="1"/>
 			</fuel>
@@ -2113,7 +2128,7 @@ Researchers can query the library. The system can handle natural language questi
 			name-en="automated propulsion module"
 			name-en2="automated propulsion modules"
 			group="propulsion"
-			description="Crewless alien drive. No life support."
+			description="Crewless alien chemical drive. No life support. Same class as a reaction drive: not an AU torch."
 			size="600"
 			mass="700"
 			crew="0"
@@ -2123,7 +2138,7 @@ Researchers can query the library. The system can handle natural language questi
 			hit-points="65">
 			<operation-allowed-in module-group="frigate"/>
 			<upkeep type="cash" quantity="40"/>
-			<move mode="space" mass-capacity="10000"/>
+			<move mode="space" speed="0.5" mass-capacity="10000"/>
 			<fuel duration="1">
 				<item type="h2o2" quantity="1"/>
 			</fuel>
@@ -2257,11 +2272,31 @@ Researchers can query the library. The system can handle natural language questi
 			<operation-allowed-in location-type="orbit"/>
 			<operation-allowed-in location-type="space"/>
 		</entry>
-		<entry name="hydnoz" name-en="hydrolox stage" name-en2="hydrolox stages" group="propulsion" description="Staged hydrolox rocket; fuel water or oxyhydro." size="800" mass="900" crew="1" energy="40" hit-points="45">
+		<entry name="hydnoz" name-en="hydrolox stage" name-en2="hydrolox stages" group="propulsion" description="Staged hydrolox rocket; fuel water or oxyhydro. Better mass-capacity than a reaction drive, still chemical: not an AU torch." size="800" mass="900" crew="1" energy="40" hit-points="45">
 			<upkeep type="cash" quantity="25"/>
-			<move mode="space" speed="1" mass-capacity="20000"/>
+			<move mode="space" speed="0.5" mass-capacity="20000"/>
 			<fuel duration="13">
 				<item type="h2o2" quantity="2"/>
+			</fuel>
+			<operation-allowed-in module-group="frigate"/>
+		</entry>
+		<entry
+			name="fustor"
+			name-en="fusion torch"
+			name-en2="fusion torches"
+			group="propulsion"
+			description="Helium-3 fusion torch with a magnetic nozzle. Continuous thrust at a fraction of a g; burn, coast, burn on AU legs. Burns helium-3 faster than a reaction drive burns oxyhydro."
+			size="1600"
+			mass="1400"
+			crew="2"
+			energy="80"
+			capacity="200"
+			technology-capacity="1"
+			hit-points="90">
+			<upkeep type="cash" quantity="50"/>
+			<move mode="space" speed="1" mass-capacity="40000"/>
+			<fuel duration="1">
+				<item type="heliu3" quantity="2"/>
 			</fuel>
 			<operation-allowed-in module-group="frigate"/>
 		</entry>

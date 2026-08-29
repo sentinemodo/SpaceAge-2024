@@ -48,7 +48,8 @@ Habitable worlds do **not** need cold/hot dome techs.
 | `icemin` | regional ice (extraction) | `water` | Mine ice moons / polar ice |
 | `wtrdst` | 1 `water` | 3 `h2o2` | Fuel feedstock |
 | `hydrop` | 2 `water` (+ farm module) | 3 `food` | Food without grassland biosphere |
-| `hydstg` / drives | `water` or `h2o2` as fuel | Δv | Propulsion |
+| `hydstg` / chemical drives | `water` or `h2o2` | short hops | Not AU |
+| `fustch` / `fustor` | 2 `heliu3` / week | AU torch | [au-transit.md](au-transit.md) |
 
 Homeworld **moons** must seed `water` even if rock-typed (polar ice / hydrated regolith). Liquid `water` stays rich on Arbor/Anvil oceans.
 

@@ -163,25 +163,27 @@ Settlement `capacity` only on habitable or planned colony sites (4 tiny, 8 town,
 
 Live region types only: `orbit` `ocean` `sea` `grassl` `dust` `mountn` `barren` `smmast` `smcast` `lrmast` `lrcast`.
 
-## Space travel times (until drive speed is wired)
+## Space travel times
 
-Orbit-to-orbit and planet-orbit exits use `exitmode mode="space" duration="N"` weeks.
+Orbit↔orbit duration is `SpaceTransit` (ΔAU × drive `speed`). Same-body surface↔orbit is implicit (1 week). Physics, fuel, and why fusion: **[au-transit.md](au-transit.md)**.
 
 **Loader today:** `LoadExits` walks planet regions, moon regions, belts, and `<alderson>`. A region may `exit` to another `region` or a `belt`. Same-body surface↔orbit is implicit (1 week) — do not emit `exit orbit=` or `exit alderson=`. Moon maps can wait for the XML pass.
 
-| Hop | Chemical / fission (L0–2) | L10 fusion ark (design target) |
-|-----|---------------------------|--------------------------------|
-| Surface ↔ local orbit | 0–1 | 0 |
-| Planet ↔ its moon | 1–2 | 1 |
-| Inner system (0.5–2 AU) | 8–13 | 2–4 |
-| Helios ↔ Fomal (~200 AU pair) | 26 | 4–8 |
-| To gas giant (5 AU) | 13+ | 4–8 |
-| Outer belt (20–40 AU) | many turns | 8–13 |
-| Occupied pair → empty system | 52+ | 8–13 |
-| Planet → local Gate (80 AU) | **13** (AU×drive, wishlist) | 2–4 |
-| Helios Gate ↔ Fomal Gate | **1** (`JUMP`) | 1 |
+| Hop | Chemical (`speed` 0.5) | L2 fusion torch (`speed` 1) | L10 ark (`speed` ~3.5) |
+|-----|------------------------|-----------------------------|------------------------|
+| Surface ↔ local orbit | 1 | 1 | 1 |
+| Planet ↔ its moon | 1–2 | 1 | 1 |
+| Inner system (0.5–2 AU) | ~20–26 | 8–13 | 2–4 |
+| Helios ↔ Fomal (~200 AU pair, no JUMP) | ~28 | ~14 | 4–8 |
+| To gas giant (5 AU) | ~26 | ~13 | 4–8 |
+| Outer belt (20–40 AU) | many turns | ~14 | 8–13 |
+| Occupied pair → empty system | 52+ | many | 8–13 |
+| Planet → local Gate (79 AU) | **~28** — not the crossing | **~14** | **4** |
+| Helios Gate ↔ Fomal Gate | **1** (`JUMP`) | 1 | 1 |
 
-Until AU×drive is wired, put chemical durations on **region↔region** and **region↔belt** exits only. Do not bake hops from planetary regions to Gates.
+Chemical stages cannot supply the Δv for a Gate hop in a season. The L2 torch (`fustch` / `fustor`) is the AU unlock: burn, coast, burn, ≤1.5 g, 2 `heliu3` / week.
+
+Do not bake hops from planetary regions to Gates.
 
 **Inter-homeworld:** the **Alderson pair** is the intended crossing (1 week `JUMP` at the Gate). The 26-week Cinder Flats ↔ Pad hop is the **chemical long way** (no Gate). Keep both.
 
@@ -262,7 +264,7 @@ First-class `<alderson>` (not a planet). Catalog type `adpnt` remains unused in 
 | `P00009` | Helios Gate | SS0001 | 80 | `O00110` | `P00010` |
 | `P00010` | Fomal Gate | SS0002 | 80 | `O00111` | `P00009` |
 
-**Play loop:** Reach a Gate orbit via AU×drive (wishlist — not a region exit), then `JUMP P00010` while at Helios Gate (1 week, ships only: `frigate` / `spacecraft` / `shuttl`; no `city`/`inftry` top-level). Reverse the same. Do not emit region↔Gate MOVE exits.
+**Play loop:** Reach a Gate orbit via AU×drive on an L2 **`fustor`** (not a region exit; chemical `speed` 0.5 is not the crossing), then `JUMP P00010` while at Helios Gate (1 week, ships only: `frigate` / `spacecraft` / `shuttl`; no `city`/`inftry` top-level). Reverse the same. Do not emit region↔Gate MOVE exits. See [au-transit.md](au-transit.md).
 
 Empty systems: **no** AP at t=1. Do not add Cinder↔Shards or other pairs until a later XML pass.
 
