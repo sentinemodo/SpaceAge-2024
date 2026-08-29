@@ -12,7 +12,7 @@ Engine `LoadGame` always opens **`/data/gamein.xml`**. Play and TDD copy `campai
 
 **Reports-only** (`Game.exe /data <run>/data /turn-dir <run>/turn /reports`): load + `GenerateReports`, no `Execute`. Seed `turn="1"` therefore writes starting `report.1.{faction}.txt` into `/turn-dir` (plus `report.1.{faction}.xml` when that faction’s `xml-report` is true). A full turn run would `turn++` first and emit `report.2.*` plus `gameout.2.xml` — that is not this path.
 
-**Seeded player passwords** (placeholders until `play/init-run.ps1` assigns run-specific ones):
+**Seeded player passwords** (placeholders in this committed file only). `play/init-run.ps1` generates run-specific passwords and patches them into **`play/runs/<id>/data/gamein.xml`**, not this seed. NPC 1 / 12 / 13 stay `password=""`. Never commit a live run folder (`play/runs/` is gitignored — it holds passwords + gamein).
 
 | Fac | Name | Password |
 |-----|------|----------|

@@ -36,14 +36,32 @@ flowchart TD
   next --> isolate
 ```
 
+The mermaid above is the **AI isolation path** (`play/runs`, campaign-ai, isolated reports). Humans also play this occupancy through a **public lobby website** — see [Public website](#public-website) and [architecture/delivery/website.md](website.md). That site is not this mermaid and is not an engine TDD slice.
+
+## Public website
+
+The public site is the **human-facing lobby** for the 10-player campaign (factions **2–11**). It is not the AI `play/runs` isolation path. Occupancy is closed: **10 corps + UN + militias** per [designer/galaxy.md](../../designer/galaxy.md). Do **not** offer open “join any stranger” signup.
+
+**Home copy** uses an **excerpt** of original Alderson flavour from [Game/documentation/Rules.txt](../../Game/documentation/Rules.txt) — intro, in-game history, and PBEM principles §§1–2.1 — plus a short “how a turn works”. Do **not** dump the full rulebook. Hard-science only (Alderson Points, Earth silence). No magic, no FTL except Gate `JUMP`.
+
+The introduction **must** credit: original ideas from **Atlantis** and **Rise of Heroes**, influenced by **Vincent Archer**.
+
+The lobby **must** expose:
+
+- A link (or placeholder) to the **visual tool** — a separate product (`visual tool prompt.txt`). Implementing that tool is **out of scope** for this website todo.
+- **Orders submission status** for the current turn: who has filed `order.{id}.txt`. Public-enough for a closed group: faction-facing name + submitted yes/no + optional timestamp. **Never** passwords, **never** `gamein.xml`, **never** other factions’ reports or report contents.
+
+**Ownership:** designer owns flavour accuracy and faction-facing names; architect owns the stack ([architecture/delivery/website.md](website.md)); TDD does **not** implement the site; play scripts may later emit a status JSON.
+
 ## Todos
 
 - [x] Unit test: `LoadConfiguration` against `campaign/data.xml`; fix catalog if load throws
 - [x] Python generator + committed `campaign/gamein.1.xml` from `galaxy.md` (factions 1–13, Gates, militias, HQs)
 - [x] Test `LoadGame` of campaign catalog + `gamein.1.xml` (systems, Gates, Rootfast/Crusthold, 10 HQs)
 - [x] TDD `/reports` only (`GenerateReports`, no `Execute`). Scripts copy `gamein.N.xml` → `/data/gamein.xml`; do not relocate gamein into `/turn-dir`
-- [ ] `play/runs` layout, gitignore, init/reports/isolate/turn/next PowerShell + README
-- [ ] campaign-ai + campaign-gm Cursor agents; persona prefs; isolated reports; `/player` with campaign catalog
+- [x] `play/runs` layout, gitignore, init/reports/isolate/turn/next PowerShell + README
+- [x] campaign-ai + campaign-gm Cursor agents; persona prefs; isolated reports; `/player` with campaign catalog
+- [ ] Public campaign website: home (Alderson excerpt + credits) + visual-tool link + current-turn orders-submission status (closed 10-player lobby; not `play/runs` AI isolation)
 - [x] TDD `JumpOrder`: `JUMP` pair-id, 1 week, ships only, `pair=` on `<alderson>`; no 1-week corona MOVE
 - [ ] TDD load gravity/temperature/atmosphere; shuttle `h2o2` surcharge; frigate land ban; high-g upkeep; cold/hot settlement gates
 - [ ] TDD load `weapon-group`/`resists`/`armor-module`; matchup table; armour 5× `hitWeight` + no capture; shield 90% intercept. SampleGame stays flat (no attrs)
@@ -87,29 +105,53 @@ Never point `/data` at `campaign/` for a live run (would write `gameout` into th
 
 ## 4. Run folder and scripts
 
-Gitignore `play/runs/` (keep `play/README.md`). Layout:
+Gitignore `play/runs/` (keep `play/README.md` and `play/*.ps1` tracked). Do **not** add `play/runs/.gitkeep`. Layout after `init-run` (reconciles the live `/data` vs `/turn-dir` split — never point `/data` at `campaign/`):
 
-- `play/runs/<id>/` — live `gamein.xml`, `order.*`, `gameout.*`, `report.*`
-- `play/runs/<id>/factions/02` … `11/` — **only** that faction’s reports, `persona.md`, and drafted orders (isolation boundary)
+```
+play/runs/<id>/
+  data/                    Game.exe /data  — catalog + live gamein + gameout
+    data.xml               copy of campaign/data.xml
+    gamein.xml             copy of campaign/gamein.1.xml with run-specific passwords
+    gameout.{N}.xml        written by a full exe run (not by /reports)
+  turn/                    Game.exe /turn-dir — order.* in, report.* out
+    order.{id}.txt         staged copies (Windows-1251) for the current exe run
+    report.{turn}.{faction}.txt
+    report.{turn}.{faction}.xml   engine writes these; never copy into factions/
+  factions/02 … 11/        isolation boundary (players 2–11 only)
+    persona.md
+    story.md                           campaign-ai: review + strategic (system, 4q) + tactical (planet/moon) + win (galaxy, T≥10)
+    report.{turn}.{faction}.txt    text only
+    order.{id}.txt                 drafted orders (UTF-8 from /player, then 1251 for /turn)
+```
 
-PowerShell scripts (Windows-first, matching this repo):
+Never put `gamein.xml`, `gameout.xml`, `campaign/gamein.1.xml`, or any `report.*.xml` in a faction folder. Never create `factions/01`, `12`, or `13`.
 
-- `play/init-run.ps1` — copy `campaign/data.xml` and `campaign/gamein.1.xml` into the run `/data` as `data.xml` / `gamein.xml`; assign each of 10 players a random preference (`military` | `economic` | `researcher` | `contractor`); write `persona.md` (password, preference, explore → exploit → conquer; win solitary or by **mutual** `DECLARE FACTION <id> ALLY`).
+PowerShell scripts (Windows-first, matching this repo). Common: `-RunId` (positional ok), repo-root relative paths, fail if `Game.exe` is missing when the script invokes it. Default exe: `Game/bin/Debug/Game.exe`.
+
+- `play/init-run.ps1` — copy `campaign/data.xml` and `campaign/gamein.1.xml` into the run `/data` as `data.xml` / `gamein.xml`; generate random ASCII passwords (no quotes/backslashes) and patch **only the run copy** of `gamein.xml` (leave committed `campaign/gamein.1.xml` and NPC 1/12/13 `password=""`); assign each of 10 players a random preference (`military` | `economic` | `researcher` | `contractor`); write `factions/02`…`11/persona.md`.
 - `play/reports.ps1` — `Game.exe /data <run>/data /turn-dir <run>/turn /reports`
-- `play/isolate.ps1` — copy **text** `report.{turn}.{faction}.txt` into `factions/NN/` only (XML reports leak foreign cargo/techs; never give faction `1` XML)
-- `play/turn.ps1` — clear old `order.*`, copy ten `order.{id}.txt` into `/turn-dir`, `Game.exe /data ... /turn-dir ...`, then isolate
-- `play/next.ps1` — copy `gameout.{N}.xml` → `gamein.xml` for the next exe run
+- `play/isolate.ps1` — copy **text** `report.{turn}.{faction}.txt` into `factions/NN/` only (XML reports leak foreign cargo/techs; never isolate 1/12/13)
+- `play/turn.ps1` — clear old `order.*` in `/turn-dir`, copy ten `factions/NN/order.{id}.txt` into `/turn-dir`, `Game.exe /data <run>/data /turn-dir <run>/turn` (full turn, not `/reports`), then isolate. NPC 1/12/13 submit no `order.*`.
+- `play/next.ps1` — copy `data/gameout.{N}.xml` → `data/gamein.xml`. After a full turn from seed `turn="1"`, **N is 2**.
 
-NPC factions 1/12/13 submit no `order.*` until a later GM/raid slice.
+Exact exe command lines (engine **0.1.148**; invoke from repo root; `<id>` is the run id):
 
-Document the exact exe command lines in [play/README.md](../../play/README.md) and this file.
+```
+Game\bin\Debug\Game.exe /data play\runs\<id>\data /turn-dir play\runs\<id>\turn /reports
+Game\bin\Debug\Game.exe /data play\runs\<id>\data /turn-dir play\runs\<id>\turn
+Game\bin\Debug\Game.exe /data play\runs\<id>\data /turn-dir play\runs\<id>\turn /no-turn
+```
+
+`/reports` is load + `GenerateReports` only (seed `turn="1"` → `report.1.{faction}.*`). A full run `turn++` first (seed 1 → `report.2.*` + `data/gameout.2.xml`). `/no-turn` is between-turn `CONTRACT`/`PRESS` (GM may invoke it; there is no `play/no-turn.ps1`). `/check` is not used by these scripts.
+
+Document the same lines in [play/README.md](../../play/README.md). Do **not** emit `website/public/status.json` in this slice.
 
 ## 5. AI player agents
 
 Do **not** create ten near-duplicate agent files. Two Cursor agents:
 
-- [`.cursor/agents/campaign-ai.md`](../../.cursor/agents/campaign-ai.md) — invoked **once per faction**. Workspace for that call is `play/runs/<id>/factions/NN/` plus `player/rules.md` and a **campaign** L0–L1 excerpt. Forbidden: `gamein.xml`, `gameout.xml`, other factions’ reports, `campaign/gamein.1.xml`. Feed **text** reports only. It writes a short **story** then **calls `/player`** with: faction id, password, report path, catalog `campaign/data.xml`, objective from the story. `/player` drafts UTF-8; host copies must be Windows-1251 `order.{id}.txt` in `/turn-dir`.
-- [`.cursor/agents/campaign-gm.md`](../../.cursor/agents/campaign-gm.md) — orchestrator: init/reports/isolate, launch ten campaign-ai tasks, collect orders, run `turn.ps1`, check crude win (all other player HQs gone, or a bloc where **both** sides have `DECLARE FACTION … ALLY` and everyone else is gone). No C#. Alliance is one-way until both declare.
+- [`.cursor/agents/campaign-ai.md`](../../.cursor/agents/campaign-ai.md) — invoked **once per faction**. Workspace: `play/runs/<id>/factions/NN/` plus `player/rules.md` and `player/campaign/basic_technologies.md` when it exists. Forbidden: `campaign/data.xml` (and run `data/data.xml`), `gamein.xml`, `gameout.xml`, other factions’ reports, `campaign/gamein.1.xml`, XML reports. Text reports only. Writes `story.md` (review prior story; **strategic** = 4 quarters / **system**, **tactical** = next quarter / **planet-moon**, **win** = **galaxy-wide** once report turn ≥ 10, persona-tied) then **calls `/player`** with the tactical objective (does not draft `order.*`). Catalog **path** `campaign/data.xml` for `/player` only. UTF-8 `factions/NN/order.{id}.txt`. TDD / designer asks wait for **human approval**. No C# / scripts. Do not retarget SampleGame `player/*.md` manuals.
+- [`.cursor/agents/campaign-gm.md`](../../.cursor/agents/campaign-gm.md) — orchestrator: execute `play/*.ps1` (init/reports/isolate, collect orders, `turn.ps1`, `next.ps1`), launch ten isolated campaign-ai (or `/player`) tasks, apply **contracts** and **press** from `/game-designer` + `/player` (`CONTRACT` / `PRESS` / `/no-turn`, or designer patches to the **run** `gamein.xml`), check crude win (all other player HQs gone, or a bloc where **both** sides have `DECLARE FACTION … ALLY` and everyone else is gone). Owns [play/README.md](../../play/README.md) usage docs. **Does not write C#, tests, or any `play/*.ps1` / new scripts** (missing automation → README gap + handoff). Alliance is one-way until both declare.
 
 Preference mapping (live verbs only, from [player/rules.md](../../player/rules.md)):
 

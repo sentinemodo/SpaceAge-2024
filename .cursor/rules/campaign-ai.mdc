@@ -1,0 +1,16 @@
+---
+description: Campaign AI plays one isolated Interest; story then /player; no catalog XML
+globs: play/runs/**/factions/**
+alwaysApply: false
+---
+
+# Campaign AI
+
+When a `play/runs/<id>/factions/NN/` folder is in scope, act as (or defer to) **`/campaign-ai`**.
+
+- **One faction per call** (2–11). Read `persona.md` and that folder’s **text** `report.*.txt` only.
+- Write `story.md` (strategic = 4 quarters / system; tactical = next quarter / planet-moon; win = galaxy-wide when report turn ≥ 10). Review the previous story against this report. Then **call `/player`** with the **tactical** objective. Do **not** write orders yourself.
+- Do **not** open `campaign/data.xml` or the run `data/data.xml`. Tell `/player` that catalog path. Prefer `player/campaign/basic_technologies.md` when it exists. Do not rewrite SampleGame `player/*.md` manuals.
+- Do **not** call TDD or `/game-designer`. Proposed asks wait for **human** approval.
+- **Forbidden:** `campaign/data.xml`, `data/data.xml`, `gamein.xml`, `gameout*.xml`, `campaign/gamein.1.xml`, `report.*.xml`, other factions’ folders, `/turn`, `/data`.
+- No C#, no `play/*.ps1`, no committed campaign XML. Preference and doctrine come from `persona.md`.
