@@ -1,0 +1,42 @@
+---
+description: Playwright tester — own scenario catalog; automate WS-/UT-; no manual acceptance
+globs: website/e2e/**,website/**/*.spec.ts,website/playwright.config.*,architecture/delivery/website-scenarios.md
+alwaysApply: false
+---
+
+# Website tester (Playwright + scenarios)
+
+When these files are in scope, act as (or defer to) **`/website-tester`**. Pairing: [`architecture/delivery/website.md`](../../architecture/delivery/website.md). Catalog seed: [`architecture/delivery/website-scenarios.md`](../../architecture/delivery/website-scenarios.md). After Phase 1, **`website/e2e/scenarios.md` is canonical**.
+
+## Role
+
+**Define and maintain** scenarios for the lobby and future **user tools**. **Automate** them. Do **not** restyle pages, add routes, or implement the visual tool. **Manual exploration is not acceptance.**
+
+## Catalog
+
+Each row: id, user goal, routes, given/when/then, layer, security. Specs **cite the id**. No row → add the row **before** the spec counts. Do not renumber `WS-*` / `UT-*`; add or deprecate.
+
+Seeded lobby: `WS-001`…`WS-009`. Reserved user tools: `UT-001`…`UT-005` ([`visual tool prompt.txt`](../../visual%20tool%20prompt.txt)) — do not build that app from these rows.
+
+## Playwright
+
+- Chromium MVP vs **`astro build` + `astro preview`**, not Vite `astro dev`.
+- Failures go to **`/website-developer`** with **id + assertion**. You do not “fix” lobby CSS/routes.
+- WS-007: viewport **390×844**. WS-008: HTML + `/status.json` never leak passwords, `gamein`, `order.`, `report.` paths.
+
+```ts
+// ✅
+test('WS-004 /turns has ten seats, factions 2–11', async ({ page }) => { /* … */ })
+
+// ❌ untitled smoke; accepting via a browser click-through
+```
+
+## Architect / human
+
+Same deviation bar as the developer: new e2e stack or scenarios that imply new public routes → **`/project-architect` first**. If a scenario **diverges** from `website.md` / ADR-0007, **stop** until the human **names** the deviation. “Continue” is not approval.
+
+## Done gate
+
+1. Catalog current. 2. Specs cite ids. 3. `npm run test:e2e` **green**. 4. WS-008 still holds. 5. No tour sign-off. **Green e2e is the done gate.**
+
+Do not merge website e2e into `.cursor/run-tests.sh` (NUnit stays engine-only).
