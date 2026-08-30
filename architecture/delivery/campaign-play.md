@@ -68,6 +68,7 @@ The lobby **must** expose:
 - [x] TDD space MOVE duration from ΔAU × catalog drive speed (same-system planet/moon orbits); replace hardcoded 1-week and `NotImplemented` planet–planet
 - [x] TDD `LoadGalaxy` assigns system X Y Z (uncomment); round-trip save; reports show coords. Empty systems `X=4+`
 - [ ] TDD hull groups `corvette`/`destroyer`/`cruiser`/`capital`/`ark`; Parse/ToToken; `IsShipHull` helper; campaign catalog groups; SampleGame stays `frigate`
+- [ ] TDD reveal campaign flavour texts: `RESEARCH <space-object-id>` shows that star/planet/moon/belt `description` in the report (like technologies seen); turn-1 report seeds home star + home planet blurbs (Helios/Arbor or Fomal/Anvil). Spec: [designer/engine-wishlist.md](../../designer/engine-wishlist.md)
 - [x] `player/campaign/basic_technologies.md` from `campaign/data.xml`; `/player` refresh `rules.md` (`JUMP`, space MOVE ETA, hull groups) and `battle.md` typed combat; architect `campaign-play.md`
 - [ ] New branch `cursor/campaign-load-play`; commit; push `-u`; `gh pr create` against main (not stacked on SampleGame turn 5)
 
@@ -85,7 +86,7 @@ Designer-owned Python generator [campaign/_gen_gamein.py](../../campaign/_gen_ga
 - Helios + Fomal full Arbor/Anvil grids, UN + militia + HQ stacks. Gates emit `pair=` for `JUMP`. Planetary regions do not exit to Gates. **Do not** emit a 1-week corona-to-corona MOVE. Do **not** bake 8/13/26 week space durations once AU×drive is green (formula owns ETA).
 - System `X Y Z` on every `<system>` (Helios 0,0,0; Fomal 1,0,0; empty `X` 4+).
 - Body attrs on planets/moons per [designer/environments.md](../../designer/environments.md) (`gravity` `temperature` `atmosphere`).
-- Same-system pockets as landing stubs; empty systems SS0003–SS0010 condensed; **no** empty-system APs; **no** unknown contract triggers (only live `give-module` / `research` from [designer/contracts.md](../../designer/contracts.md)).
+- Same-system pockets as landing stubs; empty systems SS0003–SS0010 condensed with **one Gate each** (paired to a Helios or Fomal outbound Gate); **no** unknown contract triggers (only live `give-module` / `research` from [designer/contracts.md](../../designer/contracts.md)).
 - Commit both the generator and `campaign/gamein.1.xml`.
 
 Load test (unit or a small `IntegrationTests.Campaign` fixture, **not** SampleGame goldens): load campaign catalog + `gamein.1.xml`, assert 10 systems, Gates `P00009`/`P00010`, Rootfast `120001` on `R00014`, Crusthold `130001` on `R00060`, 10 player `corphq` stacks. Round-trip save is optional and must not become a SampleGame-style golden unless `/player` + human approve.

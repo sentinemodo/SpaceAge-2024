@@ -15,8 +15,9 @@ Give players and observers a **closed PBEM lobby**:
 2. Credit lineage (Atlantis, Rise of Heroes, Vincent Archer) on the home page.
 3. Show **orders-submission status** for the ten player factions (2–11).
 4. Link to the **visual tool** (a separate product) when it exists; until then, a Client page with a placeholder.
+5. **Later (Phase 4):** two **client-side planning tools** — an AU transit ETA calculator and a two-side battle simulator. Requested 2026-08-29; see [Phase 4 — Player tools](#phase-4--player-tools-feature-requests).
 
-The site is a **content lobby**, not a signup mill and not a report browser.
+The site is a **content lobby**, not a signup mill and not a report browser. Phase 4 tools never host `report.*` or `gamein.xml`; they run in the browser on **user-entered** text and numbers.
 
 ## In scope
 
@@ -26,6 +27,8 @@ The site is a **content lobby**, not a signup mill and not a report browser.
 | Flavour excerpt + attribution | Shortened from Rules.txt §§1, 1.1, 2.1 — do not invent a different origin myth |
 | Orders-status widgets | Driven by a **status JSON file**, never by calling `Game.exe` |
 | Visual-tool CTA and `/client` page | Link / placeholder only |
+| Phase 4: `/eta` transit calculator | Client-side only; paste **text** ship report + two AU-from-star fields → weeks |
+| Phase 4: `/battle` what-if simulator | Client-side only; user-entered units/tactics, both sides → round log + winner |
 | Static hosting | GitHub Pages (preferred) or Cloudflare Pages / Netlify |
 | Folder `website/` at repo root | Separate from `Game/`, `Tests/`, `campaign/`, `play/` |
 
@@ -38,6 +41,8 @@ The site is a **content lobby**, not a signup mill and not a report browser.
 | Serving `gamein.xml`, `gameout.*.xml`, `data.xml`, order files, or reports | Secrets and foreign intel |
 | Open “Join Game Now” signup | Closed 10-player campaign (factions 2–11); NPC 1 / 12 / 13 submit no orders |
 | Dumping the full rulebook | Excerpt flavour; later link to `player/rules.md` |
+| Serving or storing pasted reports | Phase 4 `/eta` parses in the browser and **discards** the paste; never POST, never write `report.*` |
+| Porting `Battle.cs` / calling `Game.exe` for the sim | `/battle` is a documented-formula what-if, not the engine |
 | Cloning Atlantis hex art, Bootstrap-default look, Discord-only community, Ukraine banner | Information architecture only |
 | Engine TDD / C# / `campaign/` XML | Other agents |
 | Editing [`campaign-play.md`](campaign-play.md) | Sibling designer track owns the play-loop todo there |
@@ -57,7 +62,7 @@ Reviewed [Atlantis New Origins](https://atlantis-pbem.com/) for **structure**, n
 - Dark top nav + light content cards on a dark/space page background.
 - Hero: preview of the **client / visual tool** beside a short “what is PBEM” blurb + primary CTA (Client, not “sign up”).
 - Live **status dashboard**: Game Status, Total Players (10 seats), Turn Number, Next Turn (countdown or “when the GM runs the turn”).
-- Secondary cards: community (only if we have a real channel — do not invent Discord), **visual tool / client**, **rules**.
+- Secondary cards: community (only if we have a real channel — do not invent Discord), **visual tool / client**, **rules**. Phase 4 adds a **Tools** card (ETA + battle).
 - Footer meta: engine version (`0.1.x`), game start date, turn schedule.
 - Separate **Game Client** page vs public home.
 - Separate **Players & Turns** surface for who has submitted orders.
@@ -77,6 +82,7 @@ Do **not** copy fantasy hex art or an open-enrollment CTA.
 | Rules card | `/rules` excerpt + pointer to `player/rules.md` when published |
 | Discord / community | Optional; omit until a real channel exists |
 | Players & Turns | `/turns` — per-faction **orders submitted: yes/no** only |
+| *(none — add in Phase 4)* | **Tools** card → `/eta` (transit ETA) and `/battle` (what-if fight) |
 
 ## Pages
 
@@ -86,6 +92,10 @@ Do **not** copy fantasy hex art or an open-enrollment CTA.
 | `/client` | Visual tool: what it is, screenshot/placeholder, launch/download link (Phase 3) or “coming later” (Phases 1–2) |
 | `/turns` | Players & Turns: ten seats, submitted / missing, turn number, next deadline |
 | `/rules` | Short principles (Open PBEM, Interests, quarterly reports). Link out to `player/rules.md` / Rules.txt — **do not** paste the book |
+| `/eta` | **Phase 4.** Transit time calculator (ship-report paste + two AU-from-star). See [Phase 4](#phase-4--player-tools-feature-requests) |
+| `/battle` | **Phase 4.** Two-side battle what-if. Same section |
+
+Phase 1 ships only `/`, `/client`, `/turns`, `/rules`. Do not add `/eta` or `/battle` until Phase 4.
 
 All pages share the dark nav, light cards, and footer (engine version, start date, schedule). Mobile: collapse nav; cards stack.
 
@@ -98,13 +108,19 @@ flowchart TD
   client["/client Visual tool"]
   turns["/turns Orders status"]
   rules["/rules Principles"]
+  eta["/eta Transit ETA Phase 4"]
+  battle["/battle What-if fight Phase 4"]
   nav --> home
   nav --> client
   nav --> turns
   nav --> rules
+  nav -.->|Phase 4| eta
+  nav -.->|Phase 4| battle
   home -->|CTA| client
   home -->|dashboard| turns
   home -->|card| rules
+  home -.->|Phase 4 Tools card| eta
+  home -.->|Phase 4 Tools card| battle
   statusJson["status.json from play scripts or GM"]
   statusJson --> home
   statusJson --> turns
@@ -199,6 +215,7 @@ Folder: **`website/`** at the repository root. The engine stays `Game/` + `Tests
 - TypeScript is allowed **inside `website/`**.
 - Do not add `Game` to a Node solution or compile C# from the site build.
 - Status JSON is UTF-8. Game files remain Windows-1251 ([ADR-0002](../adr/ADR-0002-windows-1251-io.md)).
+- **Phase 4 exception (client only):** the ETA island may parse a **user-pasted UTF-8 text** ship-report excerpt in the browser. It must not read `gamein.xml`, `data.xml`, or `report.*.xml` at build time or from disk. Treat the textarea as untrusted input; never persist it.
 - CSS: one or two files under `website/src/styles/`. No CSS-in-JS. Tailwind is optional and not required.
 - Keep dependencies few (`astro` + types + the test tools below). No auth libraries.
 
@@ -213,7 +230,7 @@ Astro’s own guide names **Vitest** for unit/component tests and **Playwright**
 | Typecheck | `astro check` (`@astrojs/check` + TypeScript) | Templates and islands type-check; `status.json` types stay aligned |
 | Unit | **Vitest** via Astro `getViteConfig()` | Status schema (exactly factions 2–11, allowed `status` enum, **no** password/email/path keys), countdown/`nextTurnAt` formatting, any TS helpers |
 | Component (optional) | Vitest + Astro **Container API** (`experimental_AstroContainer`) | A card/table renders expected strings without a browser. Skip until there is a reusable `.astro` component worth isolating |
-| End-to-end | **Playwright** against `astro build` + `astro preview` | Four routes exist; home has flavour + **Atlantis / Rise of Heroes / Vincent Archer**; `/turns` shows ten seats; `/client` is a placeholder then a live href; dashboard reads `/status.json`; mobile viewport (one width, e.g. 390px) |
+| End-to-end | **Playwright** against `astro build` + `astro preview` | Phase 1: four routes exist; home has flavour + **Atlantis / Rise of Heroes / Vincent Archer**; `/turns` shows ten seats; `/client` is a placeholder then a live href; dashboard reads `/status.json`; mobile viewport (one width, e.g. 390px). Phase 4: `/eta` and `/battle` (WS-010…WS-012) |
 
 **MVP commands** (document in `website/package.json`): `npm run check`, `npm test` → `vitest run`, `npm run test:e2e` → `playwright test`. Playwright `webServer` should be `npm run preview` on `http://localhost:4321/` after a build, not the Vite dev server.
 
@@ -289,6 +306,68 @@ The visual tool is a **separate** product: Stellaris-inspired report/XML client 
 
 Document the chosen href in `website/` README when Phase 3 lands. Do not implement map, unit tree, or order editors in `website/`.
 
+## Phase 4 — Player tools (feature requests)
+
+Requested 2026-08-29. **Not Phase 1.** Do not scaffold these routes until Phases 1–2 (lobby + status JSON) exist. Same bounded context: Astro static pages + TypeScript **islands**. Still no `Game.exe`, no React unless a later named deviation, no hosted reports.
+
+Home gets a **Tools** card. Nav adds **ETA** and **Battle**. Scenario ids: `WS-010`, `WS-011`, `WS-012` (seeded in [`website-scenarios.md`](website-scenarios.md)).
+
+These are **planning aids**. Label both pages: estimates follow published engine formulas; the next processed turn is authoritative.
+
+### `/eta` — Time required / transit ETA
+
+**User goal:** paste a ship from last quarter’s **text** report, enter two orbital radii, see weeks to MOVE.
+
+| Input | Rules |
+|-------|--------|
+| Ship report paste | One textarea. Parse the owner-visible mass line: `mass: {thrust}/{mass}` (engine: `MassCapacity` / `Mass`, e.g. `mass: 40000/4150`). Optional: `movement speed: … in space` for display only. If the mass pair is missing, show a parse error and allow **manual** thrust + mass |
+| Distance | **Two AU-from-star** numbers (origin, destination). ΔAU = \|AU₂ − AU₁\|. This is the Helios/Fomal geometry ([`designer/au-transit.md`](../../designer/au-transit.md)): Arbor/Anvil = 1.0, Gates = 80. Optional **presets** (planet→moon 0.04, belt 1.7, gas giant 4.2, Gate 79) may fill the two fields; they must not replace the two-AU model |
+| Drive speed | Dropdown or number. Default **1** (L2 fusion torch). Chemical / hydrolox **0.5**. Do not infer catalog speed by scraping `data.xml` |
+
+**Formula** (port to TypeScript; Vitest against the locked table in `au-transit.md`):
+
+```
+load = thrust / max(mass, 1)
+referenceLoad = 40000 / 4150
+massFactor = clamp(load / referenceLoad, 0.67, 1.50)
+effectiveSpeed = catalogSpaceSpeed * massFactor
+weeks = SpaceTransit.DurationWeeks(ΔAU, effectiveSpeed)
+```
+
+`DurationWeeks` is `Game/game/SpaceTransit.cs`: moon hops (ΔAU below 0.1) use `max(1, ΔAU × 50)`; else `8 + 6 × (ΔAU / (ΔAU + 0.8))`; then `ceil(weeksAtSpeedOne / speed)`. Same-body surface↔orbit stays **1 week** (checkbox or ΔAU ≈ 0). `JUMP` is out of scope.
+
+**Output:** integer **weeks** (ETA in-game), plus ΔAU, thrust/mass, mass factor, effective speed. Optional: helium-3 hint (`2 × weeks` for `fustor`) as copy, not a fuel sim.
+
+**Must not:** upload the paste; store it; parse XML reports; read `gamein.xml` / `data.xml`; treat the result as a GM-scheduled wall-clock date.
+
+### `/battle` — Two-side what-if
+
+**User goal:** enter units and tactics on **both** sides; the page plays out rounds and shows a winner or indecisive end.
+
+| Input | Rules |
+|-------|--------|
+| Sides | Two columns: Attackers / Defenders. Each side is a list of combatants the user adds |
+| Combatant | Name; quantity; attack; defense; damage; hit points; optional immobile; **tactic** (`destroy` default, `capture`, `evade`; optional prioritize `armed` / `command` / `storage`) |
+| Catalog | **User-entered stats** for MVP. A later committed UTF-8 **combat-stats excerpt** (public module attack/defense/damage/HP only — not `campaign/data.xml`) is optional. Never ship or fetch the live catalog |
+| RNG | Seeded (`seed` field, default 1). Same seed + same roster → same log. Document that the engine uses `Sequence`; this tool is a **replayable estimate** |
+
+**Loop** (document in the page; implement from [`player/battle.md`](../../player/battle.md), not from a C# import):
+
+- Up to **10** rounds or until one side has no intact combatants.
+- Initiative: lowest first (user-entered initiative, default 0).
+- To-hit and damage per the live formulas (chance = attack/2; evade halves; immobile +50%; hit if roll ≤ chance; destroy vs capture split; wreck at HP).
+- Evade: leave after **two consecutive** unhit rounds.
+
+**Output:** a readable round log (who fires, chance, hit/miss, wreck/capture) and an end line: attackers win / defenders win / indecisive.
+
+**Out of `/battle` MVP:** hangar launch, location scan, diplomacy / attitudes, third-faction sit-out, typed `weapon-group` matchup, shield intercept, nested stacks, officers, items-as-weapons, calling `Game.exe`. Those stay engine-only unless a later dated revision adds them.
+
+### Phase 4 implementation notes
+
+- Islands are **pre-approved** for these two pages (same as countdown / `status.json` fetch). Still no SSR, no accounts, no engine HTTP.
+- Vitest owns formula helpers (`DurationWeeks`, mass factor, to-hit / damage). Playwright owns WS-010…WS-012 (page exists, sample paste/inputs produce the locked weeks or a finished log, paste is not in `status.json` or static HTML).
+- `/website-developer` implements; `/website-tester` automates. Green e2e remains the done gate.
+
 ## Security
 
 - **Never** publish passwords (they live in `gamein` / `#faction` lines).
@@ -297,6 +376,7 @@ Document the chosen href in `website/` README when Phase 3 lands. Do not impleme
 - Status JSON is an **allow-list**. Scripts must not dump the run directory.
 - No player accounts, cookies, or analytics that identify a faction unless the GM later asks (new ADR).
 - Footer engine version is public and already appears on reports.
+- Phase 4: pasted report text and battle rosters stay **in-memory in the browser**. No `localStorage` of full report bodies unless a later ADR allows it. No POST of pastes. WS-012 asserts the published origin still has no `report.` / `gamein` / `order.` files.
 
 ## Deploy target
 
@@ -344,6 +424,15 @@ There is no production PHP/ASP.NET host.
 - [ ] Point `/client` CTA at the real visual-tool URL or `/visual-tool/`
 - [ ] Optional screenshot from the real client
 - [ ] Visual tool **implementation** remains a different agent / folder / host
+
+### Phase 4 — Player tools (`/eta`, `/battle`)
+
+Feature requests recorded 2026-08-29. Start only after Phase 1 exists (Phase 2 status feed is not a hard gate).
+
+- [ ] `/eta`: paste parser for `mass: thrust/mass`, two AU-from-star inputs, `DurationWeeks` + mass factor, Vitest vs `au-transit.md` locked table
+- [ ] `/battle`: two-side roster + tactics, seeded rounds, Vitest vs `player/battle.md` formulas
+- [ ] Home Tools card + nav links; disclaimer that the next engine turn is authoritative
+- [ ] Developer: `astro check` + Vitest → handoff. Tester: WS-010…WS-012 Playwright. Do **not** implement the visual tool here
 
 ## Ownership
 
@@ -420,9 +509,11 @@ After Phase 1, `website/e2e/scenarios.md` is already covered by `website/e2e/**`
 
 Delegate **`/project-architect` first**, then **wait**, when the request would add:
 
-- a **new public page** beyond `/`, `/client`, `/turns`, `/rules`;
+- a **new public page** beyond `/`, `/client`, `/turns`, `/rules`, and the Phase 4 pair `/eta` `/battle`;
 - a **new runtime** (SSR adapter, React/Vue island, player accounts, cookies, engine HTTP/SMTP/DB);
 - a **new npm dependency** beyond the approved list (below).
+
+`/eta` and `/battle` are **approved Phase 4 routes** (this file, 2026-08-29). Implementing them before Phase 1, or expanding `/battle` into a `Battle.cs` port, still needs a dated revision.
 
 **Approved MVP dependencies:** `astro` (current stable, `output: 'static'`), TypeScript, `@astrojs/check`, Vitest (`getViteConfig()`), `@playwright/test` (tester-owned). Tailwind is **pre-approved but not required**. No auth libraries.
 
@@ -456,23 +547,23 @@ After each **vertical slice**, the developer **handoffs to `/website-tester`**. 
 
 The catalog is the **source of truth** for acceptance. Each row: **id**, user goal, route(s), given / when / then, Vitest vs Playwright layer, security check if any. Specs cite ids (`WS-001`, …).
 
-Seeded lobby ids (maintain in the catalog, not by inventing parallel lists in code): `WS-001` home flavour + credits; `WS-002` closed lobby; `WS-003` status dashboard; `WS-004` `/turns` ten seats (2–11 only); `WS-005` `/client` placeholder then live href; `WS-006` `/rules` principles not rulebook; `WS-007` mobile nav/cards; `WS-008` no secret leak; `WS-009` four routes + chrome. Reserved **`UT-*`** user-tool rows: see the catalog (link to [`visual tool prompt.txt`](../../visual%20tool%20prompt.txt)).
+Seeded lobby ids (maintain in the catalog, not by inventing parallel lists in code): `WS-001` home flavour + credits; `WS-002` closed lobby; `WS-003` status dashboard; `WS-004` `/turns` ten seats (2–11 only); `WS-005` `/client` placeholder then live href; `WS-006` `/rules` principles not rulebook; `WS-007` mobile nav/cards; `WS-008` no secret leak; `WS-009` four routes + chrome. Reserved Phase 4: `WS-010` `/eta`; `WS-011` `/battle`; `WS-012` tools leak bar. Reserved **`UT-*`** visual-tool rows: see the catalog (link to [`visual tool prompt.txt`](../../visual%20tool%20prompt.txt)).
 
 ### User tools
 
-**User tools** = the visual tool and any later **player-facing web tools**. `/website-tester` owns those e2e scenarios. The same architect-compliance gate applies (new stack or hosting → `/project-architect` + human). The tool is a **separate folder** when it exists — do **not** put the Stellaris-inspired client inside `website/` lobby pages. Phase 3 only turns the `/client` href on.
+**User tools** = the visual tool **and** the Phase 4 lobby islands (`/eta`, `/battle`). `/website-tester` owns those e2e scenarios. The Stellaris-inspired client stays a **separate folder** when it exists — do **not** put it inside `website/` lobby pages. Phase 3 only turns the `/client` href on. Phase 4 **does** live in `website/` (static islands).
 
 ### Modern Astro techniques (copy into `website-astro.mdc`)
 
 Prefer official docs: [Astro](https://docs.astro.build/en/getting-started/), [Astro testing](https://docs.astro.build/en/guides/testing/) (linked from [`docs-index.md`](../docs-index.md)).
 
 - **Content-first pages**; Astro `output: 'static'`. No SSR adapter in MVP.
-- **Islands only when interactivity is required** (countdown / `fetch` of `/status.json`). Default is zero client JS.
+- **Islands only when interactivity is required** (countdown / `fetch` of `/status.json`; Phase 4 `/eta` and `/battle`). Default is zero client JS.
 - **Typed `status.json`**: TypeScript type + Vitest schema tests (factions 2–11, `status` enum, forbidden secret keys).
 - **Accessible HTML**: `nav`, heading rank, buttons that are real `<button>` / `<a>` — not clickable `div`s.
 - **CSS files**, not CSS-in-JS; mobile-first under `website/src/styles/`.
 - **No React/Vue** unless `/project-architect` + **human** approved (deviation wording above).
-- **No engine XML parse in Node** (no `gamein.xml` / 1251 reports in the site build).
+- **No engine XML parse in Node** (no `gamein.xml` / 1251 reports in the site build). Phase 4 may parse **user-pasted UTF-8 text** in the browser only.
 - **`astro check` + Vitest green before handoff** to `/website-tester`.
 - Keep dependencies few; no auth libraries.
 
@@ -509,3 +600,4 @@ The developer does **not** run Playwright as acceptance and does **not** declare
 - 2026-08-29: Website tests = `astro check` + **Vitest** + **Playwright** (Chromium, preview of static build). Not NUnit.
 - 2026-08-29: Cursor pairing — `/website-developer` + `/website-tester`; seed catalog [`website-scenarios.md`](website-scenarios.md); green e2e is the done gate.
 - 2026-08-29: Created `.cursor` agent and rule files from this contract.
+- 2026-08-29: Phase 4 feature requests — `/eta` transit calculator (report paste + two AU-from-star) and `/battle` two-side what-if. Client-side only; not Phase 1.

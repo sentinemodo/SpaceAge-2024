@@ -13,7 +13,7 @@ Helios and Fomal are a **wide bound pair** (~200 AU), not light-years apart. No 
 | Player factions | 10 (`name` 2–11) | Faction `1` = United Star Nations (cities, markets, later patrons) |
 | Militia NPCs | 2 (`name` 12–13) | **Arbor First** (Arbor), **HCS** (Anvil). Neutral at t=1; flip hostile on first spaceship |
 | Star systems | 10 | **2 occupied at t=1**, **8 empty** (no HQ, no UN `city`) |
-| Alderson pair | 1 | Helios Gate ↔ Fomal Gate (`<alderson>`, `pair=`). Empty systems have **no** AP at t=1 |
+| Alderson pairs | 9 | Helios Fomal Gate ↔ Fomal Helios Gate plus **8 empty-system pairs** (`<alderson>`, `pair=` is 1:1). Each Gate `name-en` is `{here} {pair} Gate` |
 | Planets + belts / system | 1–4 | Mix of `ocean`, `dust`, `gasgnt`, `abelt` |
 | Initially habitable / system | 0–1 | `terair` + food + liquid water + settlement capacity on grassland/ocean |
 | Initially exploitable / system | 0–2 | Ores/volatiles without a breathable mix; drills work, farms do not |
@@ -24,7 +24,31 @@ Helios and Fomal are a **wide bound pair** (~200 AU), not light-years apart. No 
 
 Leave empty regions. A ~36-region ocean world with eight occupied cells still has a hinterland.
 
-**XML star `type`:** live catalog currently has only `M4`. Emit `type="M4"` until `campaign/data.xml` adds more star entries. Spectral class in `name-en` / description is flavour.
+**XML star `type`:** catalog entries in `campaign/data.xml`. Habitable systems emit `type="M4"` (Helios, Fomal, Deep, Graph). Empty exploitable systems emit a flavour-matched type: Ember `K2`, Gleam `M1`, Cinder `K5`, Ash `M0`, Shards `G8`, Spare `K3`. Token `M4` is the habitable-class id (yellow-to-orange, ~solar luminosity), not a red-dwarf spectral type. Per-system MK flavour (G2 Helios, F5 Fomal, late-K Deep, G4 Graph) is arrival-brief only.
+
+### Arrival briefs (explorer-facing)
+
+Hard-science colour and light. No catalog item ids — only material **groups**. Per-system star text emits on `<star description=`. Planets, belts, and moons get the same treatment. Catalog star-type `description` remains the shared class blurb.
+
+**Helios (M4, G2 flavour).** The primary is a coin of warm gold, about the Sun radius, about the Sun luminosity - the colour of wheat and old brass. Limb darkening turns the edge a softer orange. Arbor hangs in the one-AU water zone like something you were always meant to see: white cloud, green basins, the kind of blue that makes a visor feel like a mistake. The pair-axis is a rumour of Fomal, too far for the eye. You have not come to a wilderness. You have come home to a lamp that feeds cities.
+
+**Fomal (M4, F5 flavour).** Hotter gold than the Sun, a shade toward white, still catalog M4, still about the Sun in size and output. The light is impatient. Anvil at 1.4 AU looks mineral even from the Gate: thinner green, more glare off highland, a world that grew metals and fissiles instead of peat. There is air enough to breathe and not enough kindness in the soil. The star does not look cruel. The crust will.
+
+**Ember (K2).** A smaller disk than Helios, maybe four-fifths as wide, two-fifths as bright, the colour of a banked forge. Inner dust is a kiln, too close, too dry. Past the ice line a pale giant holds three cold moons. The chemistry that matters is not on the baked plains. It is in freeze-worked brines: alkali salts leached from silicate, waiting in the dark. The star will outlive your corporation. It does not hurry you.
+
+**Gleam (M1).** The primary is a red coal, half a solar width, a few percent of a solar glow, so close that “noon” is a swollen wine-dark disk. The metal belt rides that glare. A flare can stitch white across the red without warning. These rocks never finished degassing: nickel-iron and rare-earth oxides still live in the metal phase. You feel the particle flux in the hull before you feel wonder. Then the wonder arrives anyway — a furnace that has been waiting since before language.
+
+**Cinder (K5).** Copper-orange, seven-tenths of a sun across, maybe a sixth as luminous, smoky at the limb. Vulcan moons glow in that light as if the star and the rock agreed on a temperature. Carbon here was cooked past any wetland story into hard lattice. Fumaroles leave borate crust. There is no green to rest the eye. Arrival is a held breath. The star looks near enough to scorch the Gate and old enough not to notice.
+
+**Ash (M0).** The disk is wrong. It is giant-class: tens of solar radii, dull blood-red, lazy light that can still outshine hundreds of Helios-class lamps. The ice line has been shoved into the outer dark. Warm dust is a lie. Far out, grainy ices hold adsorbed noble gases the way glass holds breath. The star fills too much of the sky for how cold the prize is. You will travel a long time under that red before you are close to what you came for.
+
+**Shards (G8).** Butter-yellow, almost a home star: nine-tenths of a solar radius, four-fifths of a solar luminosity. The familiarity is a trap. The chromosphere is young; ultraviolet still bites. Dry pans bleach into evaporite oxidizer salts. Carbonaceous belts keep ice and organics, but nothing here invited a city. The yellow looks like welcome. The spectrometer disagrees.
+
+**Deep (M4, late-K flavour).** Catalog M4 on a dimmer orange lamp - still habitable-class, a little smaller in the mind than Helios, gold sliding toward ember. Haven is the reason the token stayed M4: a thin ribbon of sea and grassland on an ice moon, tight calories, air you can almost trust. The outer ices keep methane-family volatiles. You feel, arriving, that someone could live here if they were careful and a little hungry.
+
+**Graph (M4, G4 flavour).** A clean yellow analog, catalog M4, near one solar radius and luminosity, the 0.95 AU ocean world already a bright sickle in the Gate light. Cloud, water, silica coasts, iron in the highlands — a carbon-and-stone prize, not an industrial signature world. No cities. The star does not know it is empty. For a minute after JUMP you can pretend the green is spoken for. Then the silence of the radio makes the pretence expensive.
+
+**Spare (K3).** Orange and even, three-quarters of a solar width, a fifth of a solar glow, the colour of a lantern left in a window. The inner crust is a light-metal leftover: residual melts, impact glass, structural alkali-earths, copper-family ballast. No air. No farms. The star is not trying to impress you. The loneliness is complete and, after a while, honest. You came for what the rock refused to become.
 
 ## Seed vs exploration (retired layout)
 
@@ -177,9 +201,9 @@ Orbit↔orbit duration is `SpaceTransit` (`f(ΔAU)` × drive `speed` × mass fac
 | Helios ↔ Fomal (~200 AU pair, no JUMP) | 96 | 48 | 14 |
 | To gas giant (4.2 AU) | 25 | **13** | 4 |
 | Outer belt (20–40 AU) | 52–65 | 26–33 | 8–10 |
-| Occupied pair → empty system | no AU path | no AU path | no AU path |
+| Occupied pair → empty system | **1** (`JUMP` at the matching outbound Gate; no AU path) | 1 | 1 |
 | Planet → local Gate (79 AU) | **78** — not the crossing | **39** | **12** |
-| Helios Gate ↔ Fomal Gate | **1** (`JUMP`) | 1 | 1 |
+| Helios Fomal Gate ↔ Fomal Helios Gate | **1** (`JUMP`) | 1 | 1 |
 
 Torch column is the **default workshop frigate** (mass 4150, one `fustor`). `ceil(f(ΔAU) / 1)` — locked `f` in [au-transit.md](au-transit.md) (live). Scout / cargo mass scales that column by 0.67–1.50. Chemical `rctdrv` (thrust 10000) on a default-mass hull hits the **MIN** factor: published chemical weeks ×1.5 (Gate **117**). Still not the crossing. 0.5 AU inner hops are ~1 week (log near zero); seed hops start at 1.7.
 
@@ -187,7 +211,9 @@ Chemical stages cannot supply the Δv for a Gate hop in a season. The L2 torch (
 
 Do not bake hops from planetary regions to Gates.
 
-**Inter-homeworld:** the **Alderson pair** is the intended crossing (1 week `JUMP` at the Gate). The 26-week Cinder Flats ↔ Pad hop is the **chemical long way** (no Gate). Keep both.
+**Inter-homeworld:** Helios Fomal Gate ↔ Fomal Helios Gate is the intended crossing (1 week `JUMP`). The 26-week Cinder Flats ↔ Pad hop is the **chemical long way** (no Gate). Keep both.
+
+**Empty systems:** no AU path from the occupied pair. Reach them with `JUMP` at the matching outbound Gate (Helios → Ember/Cinder/Ash/Graph; Fomal → Gleam/Shards/Deep/Spare).
 
 **t=1 baked chemical hops:**
 
@@ -198,7 +224,9 @@ Do not bake hops from planetary regions to Gates.
 | Arbor `R00006` | Anvil `R00039` Pad (2,0) `dust` | 26 |
 | Anvil `R00039` | Pyre landing (first Pyre region) | 8 |
 | Anvil `R00039` | Fomal Belt `P00007` | 13 |
-| Helios Gate `P00009` | Fomal Gate `P00010` | **1** (`JUMP`, not a MOVE exit) |
+| Helios Fomal Gate `P00009` | Fomal Helios Gate `P00010` | **1** (`JUMP`, not a MOVE exit) |
+| Helios outbound Gates `P00041`/`P00043`/`P00045`/`P00047` | Ember / Cinder / Ash / Graph Gates | **1** (`JUMP`) |
+| Fomal outbound Gates `P00049`/`P00051`/`P00053`/`P00055` | Gleam / Shards / Deep / Spare Gates | **1** (`JUMP`) |
 | Reverse of each | — | same |
 
 ## Id allocation
@@ -207,9 +235,9 @@ Do not bake hops from planetary regions to Gates.
 |------|---------|-------------------------|
 | System | `SS0001`–`SS0010` | 10 |
 | Star | `S00001`–`S00012` | extras if a visual binary |
-| Planet/belt | `P00001`–`P0030` | Helios/Fomal bodies `P00001`–`P00008`; **APs `P00009`–`P00010`**; empty systems `P00011`+ |
+| Planet/belt | `P00001`–`P00092` | Helios/Fomal bodies `P00001`–`P00008`; home pair APs `P00009`–`P00010`; empty bodies `P00011`–`P00035`; rings `P00091`–`P00092`; empty-system AP block `P00041`–`P00056` |
 | Moon | `M00001`–`M0080` | unique ids even if loader currently copies planet id |
-| Orbit | `O00001`–`O0120` | one per planet/moon; Gate orbits `O00110` Helios, `O00111` Fomal |
+| Orbit | `O00001`–`O0200` | one per planet/moon; home pair Gate orbits `O00110` Helios, `O00111` Fomal; outbound/empty Gate orbits `O00153`–`O00168` |
 | Region | `R00001`–`R1500` | Arbor `R00001`–`R00036`, Anvil `R00037`–`R00071`, satellites next. Gates have **no** corona region |
 | Contract | `CTnnnn` | 6 chars |
 | Wreckage stacks | `W00001`–`W0020` | faction 1; **not** on Arbor/Anvil grids at t=1 |
@@ -231,7 +259,7 @@ Do not bake hops from planetary regions to Gates.
 | `P00002` | Scoria | `dust` | 1.5 | 6×4 (24) | **exp** | Ilmenite/copper plains; no biosphere |
 | `P00003` | Helios Belt | `<belt>` | 2.7 | — | **exp** | Composition (uraniu/nickfe/iron/carbon); no regions; wreck `W00001` |
 | `P00004` | Aeolus | `gasgnt` | 5.2 | — | — | Orbit only |
-| `P00009` | Helios Gate | `<alderson>` | 80 | — | — | Pair of Fomal Gate. Orbit `O00110`, no regions |
+| `P00009` | Helios Fomal Gate | `<alderson>` | 80 | — | — | Pair of Fomal Helios Gate. Orbit `O00110`, no regions |
 
 Moons: Arbor `M00001` **Selene** `rock` 5×3 (titani, silici, **polar `water` ice 40–80 on ≥2 regions**). Aeolus: 4 moons (ice, ice, rock, vulcan) — ice moons **rich `water`** + `heliu3` / later `tungst`. Moon region exits: wishlist.
 
@@ -249,7 +277,7 @@ Moons: Arbor `M00001` **Selene** `rock` 5×3 (titani, silici, **polar `water` ic
 | `P00006` | Pyre | `dust` | 0.6 | 5×4 (20) | **exp** | Hot iron/silica; not habitable |
 | `P00007` | Fomal Belt | `<belt>` | 2.5 | — | **exp** | Composition (carbon/oil); no regions; wreck `W00002` |
 | `P00008` | Fomal giant | `gasgnt` | 6.0 | — | — | Orbit only |
-| `P00010` | Fomal Gate | `<alderson>` | 80 | — | — | Pair of Helios Gate. Orbit `O00111`, no regions |
+| `P00010` | Fomal Helios Gate | `<alderson>` | 80 | — | — | Pair of Helios Fomal Gate. Orbit `O00111`, no regions |
 
 Moons: Anvil 2 (`rock`, `ice` 5×3 / 5×2) — rock moon: metals + **`water` ice 30–60** on ≥2 regions; ice moon: **rich `water`**. Giant: 2 ice moons (`water`, `heliu3`, `ammoni`).
 
@@ -257,23 +285,39 @@ Moons: Anvil 2 (`rock`, `ice` 5×3 / 5×2) — rock moon: metals + **`water` ice
 
 **Anvil flavour:** Breathable mix over a younger, thinner biosphere. Shield volcanoes expose ilmenite, native copper, uraninite veins. Soils are mineral; wetlands scarce; no commercial petroleum. Seas exist but ice and aquifers are modest.
 
-## Alderson Points (homeworld pair)
+## Alderson Points
 
-First-class `<alderson>` (not a planet). Catalog type `adpnt` remains unused in gamein. Each Gate has **one orbit and no regions**. No solid surface, no settlement capacity, no resources. Environment: `temperature="cold"`, `atmosphere="none"`. Spaceships occupy the orbit.
+First-class `<alderson>` (not a planet). Catalog type `adpnt` remains unused in gamein. Each Gate has **one orbit and no regions**. No solid surface, no settlement capacity, no resources. Environment: `temperature="cold"`, `atmosphere="none"`. Spaceships occupy the orbit. `pair=` is **1:1** — a system may hold several Gates; each Gate opens on exactly one other Gate.
 
 | Id | Name | System | AU | Orbit | Pair |
 |----|------|--------|----|-------|------|
-| `P00009` | Helios Gate | SS0001 | 80 | `O00110` | `P00010` |
-| `P00010` | Fomal Gate | SS0002 | 80 | `O00111` | `P00009` |
+| `P00009` | Helios Fomal Gate | SS0001 | 80 | `O00110` | `P00010` |
+| `P00010` | Fomal Helios Gate | SS0002 | 80 | `O00111` | `P00009` |
+| `P00041` | Helios Ember Gate | SS0001 | 80 | `O00153` | `P00042` |
+| `P00042` | Ember Helios Gate | SS0003 | 80 | `O00154` | `P00041` |
+| `P00043` | Helios Cinder Gate | SS0001 | 80 | `O00155` | `P00044` |
+| `P00044` | Cinder Helios Gate | SS0005 | 80 | `O00156` | `P00043` |
+| `P00045` | Helios Ash Gate | SS0001 | 80 | `O00157` | `P00046` |
+| `P00046` | Ash Helios Gate | SS0006 | 80 | `O00158` | `P00045` |
+| `P00047` | Helios Graph Gate | SS0001 | 80 | `O00159` | `P00048` |
+| `P00048` | Graph Helios Gate | SS0009 | 80 | `O00160` | `P00047` |
+| `P00049` | Fomal Gleam Gate | SS0002 | 80 | `O00161` | `P00050` |
+| `P00050` | Gleam Fomal Gate | SS0004 | 80 | `O00162` | `P00049` |
+| `P00051` | Fomal Shards Gate | SS0002 | 80 | `O00163` | `P00052` |
+| `P00052` | Shards Fomal Gate | SS0007 | 80 | `O00164` | `P00051` |
+| `P00053` | Fomal Deep Gate | SS0002 | 80 | `O00165` | `P00054` |
+| `P00054` | Deep Fomal Gate | SS0008 | 80 | `O00166` | `P00053` |
+| `P00055` | Fomal Spare Gate | SS0002 | 80 | `O00167` | `P00056` |
+| `P00056` | Spare Fomal Gate | SS0010 | 80 | `O00168` | `P00055` |
 
-**Play loop:** Reach a Gate orbit via AU×drive on an L2 **`fustor`** (not a region exit; chemical `speed` 0.5 is not the crossing), then `JUMP P00010` while at Helios Gate (1 week, ships only: `frigate` / `spacecraft` / `shuttl`; no `city`/`inftry` top-level). Reverse the same. Do not emit region↔Gate MOVE exits. See [au-transit.md](au-transit.md).
+Helios (Arbor, organics) opens Ember, Cinder, Ash, Graph. Fomal (Anvil, metals) opens Gleam, Shards, Deep, Spare. There is **no** empty↔empty pairing and **no** cross-home shortcut (a Helios player reaching Gleam still goes Helios Fomal Gate → Fomal Helios Gate → Fomal Gleam Gate). `name-en` is always `{here} {pair} Gate`. No Gate `description`.
 
-Empty systems: **no** AP at t=1. Do not add Cinder↔Shards or other pairs until a later XML pass.
+**Play loop:** Reach a Gate orbit via AU×drive on an L2 **`fustor`** (not a region exit; chemical `speed` 0.5 is not the crossing), then `JUMP <pair-id>` while at that Gate (1 week, ships only: `frigate` / `spacecraft` / `shuttl`; no `city`/`inftry` top-level). Reverse the same. Do not emit region↔Gate MOVE exits. See [au-transit.md](au-transit.md).
 
 **XML sketch:**
 
 ```
-<alderson name="P00009" name-en="Helios Gate" AU="80" pair="P00010" temperature="cold" atmosphere="none">
+<alderson name="P00009" name-en="Helios Fomal Gate" AU="80" pair="P00010" temperature="cold" atmosphere="none">
   <orbit name="O00110"/>
 </alderson>
 ```
@@ -386,18 +430,18 @@ Aeolus / Fomal giant: 0 surface regions.
 
 No player HQ, no NPC `city`, no t=1 contracts on these grids. Sparse resources allowed. Optional **hidden** wreckage in a later XML pass (outer moons/belts), not on the two starting continents. Virgin **habitable** worlds (Graph, Deep’s ice moon) are mid-game land grabs.
 
-| SS | Star flavour | Bodies (type, AU, hab/exp) | Moons | Signature resources | Later alien seed (not t=1 on start worlds) |
-|----|--------------|----------------------------|-------|---------------------|--------------------------------------------|
-| SS0003 Ember | K2 | dust 0.7 (hot, not hab); ice-giant 4.1 **exp** (as `gasgnt`); abelt 2.2 **exp** | ice-giant 3 ice | titani, silici, heliu3 on ices; **`lithia` signature** (brines) | He3 plant wreck → production+energy |
-| SS0004 Gleam | M1 | barren-dust 0.12; abelt 0.4 **exp**; ice-dust 0.8 **exp** | 0 | nickfe, uraniu, copper; **`reeox` signature** | Drone hangar wreck → military |
-| SS0005 Cinder | K5 | dust 1.2 **exp**; abelt 2.8; gasgnt 8 | gasgnt 3 (vulcan, rock, ice) | carbon, tungst, uraniu; **`boron` + `grphit` signature** (vulcan / baked carbon) | Foundry wreck → production |
-| SS0006 Ash | M0 giant | abelt 3 **exp**; gasgnt 6; gasgnt 18 | inner giant 4 mixed | heliu3, volatiles, ammoni; **`xenon` signature** (outer ices) | Fusion core wreck → propulsion+production |
-| SS0007 Shards | G8 young | abelt 2.0 **exp**; abelt 3.1 **exp**; dust 0.9 | 0 | carbon, organics, ice; **`nitrat` signature** (evaporites) | Fauna/anomaly later |
-| SS0008 Deep | K7 | gasgnt 4.5; gasgnt 9.2; dust 0.5 | 4+3 moons; one ice moon **hab** (thin `sea`+`grassl`, 12 regions) | water, methn, food (tight) | Spinal-weapon wreck → military |
-| SS0009 Graph | G4 | ocean 0.95 **hab**; dust 1.6; abelt 2.5 **exp** | ocean 0; dust 1 rock | carbon, silici, iron, gold | Habitat wheel wreck → production/habitat |
-| SS0010 Spare | K3 | dust 1.1 **exp**; abelt 2.4 | dust 1 ice | titani, copper, ice; **`berylm` signature** | Life-support wreck → research+habitat |
+| SS | Catalog `type` | Bodies (type, AU, hab/exp) | Moons | Signature resources | Later alien seed (not t=1 on start worlds) |
+|----|----------------|----------------------------|-------|---------------------|--------------------------------------------|
+| SS0003 Ember | `K2` | dust 0.7 (hot, not hab); ice-giant 4.1 **exp** (as `gasgnt`); abelt 2.2 **exp** | ice-giant 3 ice | titani, silici, heliu3 on ices; **`lithia` signature** (brines) | He3 plant wreck → production+energy |
+| SS0004 Gleam | `M1` | barren-dust 0.12; abelt 0.4 **exp**; ice-dust 0.8 **exp** | 0 | nickfe, uraniu, copper; **`reeox` signature** | Drone hangar wreck → military |
+| SS0005 Cinder | `K5` | dust 1.2 **exp**; abelt 2.8; gasgnt 8 | gasgnt 3 (vulcan, rock, ice) | carbon, tungst, uraniu; **`boron` + `grphit` signature** (vulcan / baked carbon) | Foundry wreck → production |
+| SS0006 Ash | `M0` | abelt 3 **exp**; gasgnt 6; gasgnt 18 | inner giant 4 mixed | heliu3, volatiles, ammoni; **`xenon` signature** (outer ices) | Fusion core wreck → propulsion+production |
+| SS0007 Shards | `G8` | abelt 2.0 **exp**; abelt 3.1 **exp**; dust 0.9 | 0 | carbon, organics, ice; **`nitrat` signature** (evaporites) | Fauna/anomaly later |
+| SS0008 Deep | `M4` (late-K flavour; Haven ice moon **hab**) | gasgnt 4.5; gasgnt 9.2; dust 0.5 | 4+3 moons; one ice moon **hab** (thin `sea`+`grassl`, 12 regions) | water, methn, food (tight) | Spinal-weapon wreck → military |
+| SS0009 Graph | `M4` (G4 flavour; ocean world **hab**) | ocean 0.95 **hab**; dust 1.6; abelt 2.5 **exp** | ocean 0; dust 1 rock | carbon, silici, iron, gold | Habitat wheel wreck → production/habitat |
+| SS0010 Spare | `K3` | dust 1.1 **exp**; abelt 2.4 | dust 1 ice | titani, copper, ice; **`berylm` signature** | Life-support wreck → research+habitat |
 
-Place empty systems on the map farther than the Helios–Fomal pair (`X` 4+). XML star `type` remains `M4` until the catalog grows. Planet ids **`P00011`+** (Gates took `P00009`–`P00010`).
+Place empty systems on the map farther than the Helios–Fomal pair (`X` 4+). Planet ids **`P00011`+** (Gates took `P00009`–`P00010`).
 
 **L3+ signature ores** (not on Arbor/Anvil basins; see `resources.md`):
 
@@ -425,4 +469,4 @@ Do not pre-build the whole inner-system industry. Add: depleted resource quantit
 
 ## XML pass status
 
-Spec-complete here (militias + homeworld AP pair included). **`campaign/gamein.1.xml` is generated by `campaign/_gen_gamein.py`.** Regenerator: `python campaign/_gen_gamein.py`. Seed includes factions **1–13**, Helios+Fomal stars/planets **including Gates** (`pair=`), Arbor+Anvil full grids + UN + militia + player stacks + chemical hops and Gates, Scoria/Pyre/belts as landing grids, empty systems SS0003–SS0010 condensed, **no** empty-system APs. Encoding Windows-1251. Ids ≤ 6 characters. L3+ signature ores wait on catalog item rows.
+Spec-complete here (militias + nine AP pairs included). **`campaign/gamein.1.xml` is generated by `campaign/_gen_gamein.py`.** Regenerator: `python campaign/_gen_gamein.py`. Seed includes factions **1–13**, Helios+Fomal stars/planets **including the home pair and eight outbound Gates** (`pair=`), Arbor+Anvil full grids + UN + militia + player stacks + chemical hops and Gates, Scoria/Pyre/belts as landing grids, empty systems SS0003–SS0010 with signature ores, moons ≥10 regions (Graph 6×6 habitable, Haven 12-cell terran ice moon), and **one Gate each**. Encoding Windows-1251. Ids ≤ 6 characters. L3+ signature ores are live catalog rows.

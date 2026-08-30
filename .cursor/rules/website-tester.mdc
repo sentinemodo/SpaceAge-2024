@@ -16,7 +16,7 @@ When these files are in scope, act as (or defer to) **`/website-tester`**. Pairi
 
 Each row: id, user goal, routes, given/when/then, layer, security. Specs **cite the id**. No row → add the row **before** the spec counts. Do not renumber `WS-*` / `UT-*`; add or deprecate.
 
-Seeded lobby: `WS-001`…`WS-009`. Reserved user tools: `UT-001`…`UT-005` ([`visual tool prompt.txt`](../../visual%20tool%20prompt.txt)) — do not build that app from these rows.
+Seeded lobby: `WS-001`…`WS-009`. Reserved Phase 4: `WS-010` `/eta`, `WS-011` `/battle`, `WS-012` tools leak bar. Reserved visual-tool: `UT-001`…`UT-005` ([`visual tool prompt.txt`](../../visual%20tool%20prompt.txt)) — do not build that app from these rows.
 
 ## Playwright
 

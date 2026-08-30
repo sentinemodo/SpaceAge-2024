@@ -16,7 +16,7 @@ All engine types live in namespace `SpaceAge`. Folders below are **bounded conte
 | **Reports** | `Game/reports/` | `ReportWriter`, line wrapping, event lines | Reads world + `DataFile` for faction-filtered XML sidecar |
 | **World model** | `Game/data structures/` | Galaxy graph, factions, stacks, items, techs, offers | Used by every other module via `*.All` and object references |
 | **Tests** | `Tests/` | Unit and SampleGame integration | Project reference to `Game`; filesystem fixtures |
-| **Website** | `website/` (not yet created) | Public closed PBEM lobby: flavour, `/turns` orders status, `/client` link | Reads **`status.json` only**; links to a future visual tool. **No** `Game` project reference. [ADR-0007](adr/ADR-0007-public-campaign-website.md), [`delivery/website.md`](delivery/website.md) |
+| **Website** | `website/` (not yet created) | Public closed PBEM lobby: flavour, `/turns` orders status, `/client` link. Phase 4: `/eta` (transit ETA) and `/battle` (what-if) | Reads **`status.json` only**; links to a future visual tool. Phase 4 islands use **user-entered** text/numbers in the browser. **No** `Game` project reference. [ADR-0007](adr/ADR-0007-public-campaign-website.md), [`delivery/website.md`](delivery/website.md) |
 
 Website is a **separate bounded context**, not a `SpaceAge` namespace folder. The visual tool is a third context (out of scope here).
 
@@ -56,8 +56,8 @@ flowchart TD
 - **Do not** opportunistic-split `DataFile` outside [ADR-0006](adr/ADR-0006-datafile-facade-and-xml-seams.md) phases, and do not split the rest of `ModuleStack` (ADR-0005).
 - **Do not** “complete” the capacity save switch (`research` group) or rewrite moon/exit save quirks in the same PR as an extract.
 - **Do not** call `Game.exe` over HTTP or invent an engine REST API for the lobby ([ADR-0003](adr/ADR-0003-filesystem-pbem-batch.md), [ADR-0007](adr/ADR-0007-public-campaign-website.md)).
-- **Do not** serve `gamein.xml`, `gameout.*.xml`, `data.xml`, `order.*`, or faction reports from the public website.
-- **Do not** implement the visual tool (star map, unit tree, order editor) inside `website/`.
+- **Do not** serve `gamein.xml`, `gameout.*.xml`, `data.xml`, `order.*`, or faction reports from the public website. Phase 4 `/eta` may parse a **user-pasted text** excerpt in the browser; it must not persist or POST that paste.
+- **Do not** implement the visual tool (star map, unit tree, order editor) inside `website/`. Phase 4 `/battle` is a formula what-if, not a `Battle.cs` port and not `Game.exe`.
 
 ## Persistence (`DataFile`)
 
@@ -143,7 +143,7 @@ Encoding: **Windows-1251** for engine XML, orders, reports, and `error.log` (XML
 | `error.log` | CWD | out | RELEASE-only uncaught exceptions (1251) |
 | `status.json` | `website/public/` (published to the static host) | out (from `play/` / GM) | Allow-listed lobby status. UTF-8. **Not** an engine output. [ADR-0007](adr/ADR-0007-public-campaign-website.md) |
 
-The engine has **no** network, message bus, or shared database. Faction `email` is metadata for the GM mailer. The public website is a **separate static origin** that may fetch `status.json` only — never `gamein.xml` or reports.
+The engine has **no** network, message bus, or shared database. Faction `email` is metadata for the GM mailer. The public website is a **separate static origin** that may fetch `status.json` only — never `gamein.xml` or reports. Phase 4 tools do not change that file contract.
 
 ### Order text sketch
 
@@ -195,3 +195,4 @@ Treat as **not live integrations** until implemented with tests:
 
 - 2026-08-18: Persistence seams for `DataFile` (ADR-0006). Interim/target diagrams; anti-patterns for facade, 1251, two-pass catalog, faction XML-report filter. Engine citation `0.1.141`.
 - 2026-08-29: Website bounded context (ADR-0007). Status via `status.json`; do not HTTP-call `Game.exe` or publish `gamein.xml`.
+- 2026-08-29: Phase 4 lobby tools (`/eta`, `/battle`) — client-side user input only; still no engine files on the origin.

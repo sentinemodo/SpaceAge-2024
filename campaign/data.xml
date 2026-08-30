@@ -4,8 +4,32 @@
 	<star>
 		<entry 
 			name="M4" 
-			name-en="M4 class star"
-			description="M4 class, yellow stars are similiar to our Sun." />
+			name-en="M4 habitable-class star"
+			description="Catalog class M4 is the habitable primary: a star about one solar radius across, shining at roughly one solar luminosity, photosphere a warm gold that can slide toward pale yellow or soft orange at the limb. It is not a red dwarf. The light that fills a cockpit after JUMP is the color of late afternoon on a living world — thick enough to warm a faceplate, gentle enough that open air and green can exist near one AU. Ultraviolet is present but not cruel. You have arrived under a lamp that already knows how to keep cities and farms without canned breath." />
+		<entry
+			name="K2"
+			name-en="K2 orange dwarf"
+			description="A K2 orange dwarf sits smaller than the Sun, perhaps four-fifths of a solar radius, and pours out only about two-fifths of a solar luminosity. The disk is deep amber, almost the color of cooling iron, brighter at the center and rust-dark at the edge. It will outlive any yellow analog by billions of years. Inner dust is a kiln: dry, oxide-stained, too close for open water. Past the ice line the same long, quiet heat lets freeze-concentrated brines work alkali salts out of silicate rock. You did not come for the baked plains. You came for the cold chemistry that only this patient orange lamp allows." />
+		<entry
+			name="M1"
+			name-en="M1 red dwarf"
+			description="An M1 red dwarf is a coal of a star: roughly half a solar radius, a few percent of a solar luminosity, the photosphere a deep wine-red that never quite becomes white even at noon. Any distance that could melt ice hugs the primary so tightly the sky is a swollen ember. The belt rides that glare. Flares rise without warning — a sudden white stitch across the red — and the rocks have never fully degassed. Nickel-iron and rare-earth oxides still sit in the metal phase, waiting. Arrival feels like docking beside a furnace that has been burning since before your species learned names." />
+		<entry
+			name="K5"
+			name-en="K5 orange dwarf"
+			description="A K5 orange dwarf is cooler and dimmer than K2: about seven-tenths of a solar radius, perhaps a sixth of a solar luminosity, the color of copper left in a forge. The light is smoky orange, never gold, never the clean yellow of a habitable-class lamp. Inner dust and vulcan moons live in that heat. Carbon has been cooked past peat into hard, nuclear-grade lattice. Fumaroles sweat borate salts. There is no biosphere to soften the view. When the Gate drops you here the star looks close enough to touch and far too old to care that you have come." />
+		<entry
+			name="M0"
+			name-en="M0 luminous red"
+			description="This M0 is not a tidy dwarf. It is giant-class: tens of solar radii across, swollen, a dull blood-red disk that can fill a viewport the way a planet should not. Luminosity is huge — hundreds of suns — but the light is lazy and cold at the edge, all long wavelengths. The ice line has been pushed far into the dark. Outer ices keep nebular noble gases adsorbed on grain surfaces like breath on glass. Warm dust will disappoint you. The prize is out where the red has faded to black and the star still looks too large to be that distant." />
+		<entry
+			name="G8"
+			name-en="G8 young solar analog"
+			description="A G8 young solar analog is almost familiar: near nine-tenths of a solar radius, perhaps four-fifths of a solar luminosity, photosphere a butter-yellow that should feel like home. It does not. The disk is still restless. Ultraviolet from a young chromosphere is high enough to sting instruments and drive nitrogen-oxygen chemistry in dry pans. Evaporite oxidizer salts bleach the dust. Carbonaceous belts still hold ice and organics, but this is not a garden. The yellow looks like welcome and reads, on a spectrometer, like a warning." />
+		<entry
+			name="K3"
+			name-en="K3 orange dwarf"
+			description="A K3 orange dwarf stands between K2 and K5: about three-quarters of a solar radius, roughly a fifth of a solar luminosity, the color of a pumpkin lantern or a banked fire. The inner world is a light-metal residue — residual melts and impactites, structural alkali-earths and ballast copper-family metals, no air, no farms. The star is neither kind nor spectacular. It simply burns, orange and even, over a crust that was never invited to live. Arrival is quiet. The loneliness is the point." />
 	</star>
 	
 	<planet>
@@ -263,6 +287,22 @@
 			<use-allowed-by crew="terran"/>
 		</entry>
 		<entry name="heliu3" name-en="unit of helium-3" name-en2="units of helium-3" size="1" mass="1" description="A light, non-radioactive helium isotope prized as clean fusion fuel; scarce on planets but abundant in lunar regolith."/>
+		<entry name="tungst" name-en="unit of tungsten" name-en2="units of tungsten" size="8" mass="20" description="Dense refractory metal from scheelite on volcanic vents. Feedstock for armour, kinetics, and high-temperature throats."/>
+		<entry name="deutrm" name-en="unit of deuterium" name-en2="units of deuterium" size="1" mass="1" description="Heavy hydrogen distilled from outer ice. Fusion fuel for D-He3 plants; not found on habitable basins."/>
+		<entry name="ammoni" name-en="unit of ammonia ice" name-en2="units of ammonia ice" size="2" mass="2" description="NH3 ice from outer moons. Nitrogen source for closed-loop air mix and hydrazine synthesis."/>
+		<entry name="methn" name-en="unit of methane ice" name-en2="units of methane ice" size="2" mass="1" description="Titan-class CH4 ice. Storable carbon-hydrogen propellant for MPD and high-Isp chemical stages."/>
+		<entry name="volatl" name-en="unit of mixed volatiles" name-en2="units of mixed volatiles" size="2" mass="2" description="H2O, CO2, and N2 captured from heated carbonaceous fines. ISRU feedstock, not a habitable-basin ore."/>
+		<entry name="kerogn" name-en="unit of kerogen organics" name-en2="units of kerogen organics" size="2" mass="2" description="Insoluble macromolecular organics from carbonaceous chondrites. Slow pyrolysis yields usable carbon feedstock."/>
+		<entry name="alumin" name-en="unit of aluminium" name-en2="units of aluminium" size="5" mass="8" description="Light structural metal from anorthosite highlands and rock moons. Hull and habitat skin once refined."/>
+		<entry name="platnm" name-en="unit of platinum-group metal" name-en2="units of platinum-group metal" size="1" mass="4" description="Trace PGM recovered with nickel-iron. Catalyst and high-temperature electrical contacts."/>
+		<entry name="lithia" name-en="unit of lithium ore" name-en2="units of lithium ore" size="2" mass="2" description="Spodumene and brine lithium. Electrode metal for MPD cathodes and compact batteries. Ember signature."/>
+		<entry name="boron" name-en="unit of boron" name-en2="units of boron" size="3" mass="4" description="Fumarole borates on vulcan vents. Feedstock for ceramic armour and radiation shields. Cinder signature."/>
+		<entry name="berylm" name-en="unit of beryllium" name-en2="units of beryllium" size="4" mass="6" description="Bertrandite and phenakite on barren dust. Neutron windows and light structural alloy. Spare signature."/>
+		<entry name="xenon" name-en="unit of xenon" name-en2="units of xenon" size="1" mass="2" description="Adsorbed noble gas in outer ice. Hall and ion propellant; laser and shield working gas. Ash signature."/>
+		<entry name="reeox" name-en="unit of rare-earth oxides" name-en2="units of rare-earth oxides" size="3" mass="8" description="Monazite and bastnasite with nickel-iron on metal asteroids. Magnets, sails, and EW processors. Gleam signature."/>
+		<entry name="grphit" name-en="unit of nuclear graphite" name-en2="units of nuclear graphite" size="5" mass="5" description="High-purity baked carbon, not peat. Moderator and carbon-carbon composite feedstock. Cinder signature."/>
+		<entry name="nitrat" name-en="unit of nitrate salts" name-en2="units of nitrate salts" size="2" mass="2" description="Dry-lake oxidizer salts (NO3) on evaporite dust. Missile and proximity-burst grain. Shards signature."/>
+		<entry name="hydzn" name-en="unit of hydrazine" name-en2="units of hydrazine" size="2" mass="2" description="Storable N2H4 refined from ammonia ice. Hypergolic fuel; never a ground ore."/>
 	</item>
 
 	<technology>
@@ -984,6 +1024,66 @@ Researchers can query the library. The system can handle natural language questi
 			<use-consume item="iron" quantity="30"/>
 			<use-consume item="titani" quantity="10"/>
 			<use-produce module="he3ext"/>
+		</entry>
+		<entry name="alminn" name-en="aluminium from anorthosite" level="2" tags="production" requires="slcmlt" description="Hall-Heroult analogue: dissolve anorthosite in molten cryolite and reduce aluminium on highland dust and rock moons." use-time="2">
+			<use-allowed-in module-type-group="extraction" location-type="solid-surface"/>
+			<use-produce item="alumin" quantity="2"/>
+		</entry>
+		<entry name="krogen" name-en="kerogen retorting" level="2" tags="production" requires="hcdril" description="Slow pyrolysis of carbonaceous-chondrite organics into usable kerogen feedstock." use-time="2">
+			<use-allowed-in module-type-group="extraction" location-type="solid-surface"/>
+			<use-produce item="kerogn" quantity="1"/>
+		</entry>
+		<entry name="amnext" name-en="ammonia ice mining" level="3" tags="production" requires="wtrdst" description="Cut and sublime outer-moon NH3 ice as a nitrogen source for air mix and later hydrazine." use-time="2">
+			<use-allowed-in module-type-group="extraction" location-type="solid-surface"/>
+			<use-produce item="ammoni" quantity="2"/>
+		</entry>
+		<entry name="ch4min" name-en="methane ice mining" level="3" tags="production" requires="oildwe" description="Mine Titan-class methane ice for MPD and storable carbon-hydrogen propellant." use-time="2">
+			<use-allowed-in module-type-group="extraction" location-type="solid-surface"/>
+			<use-produce item="methn" quantity="2"/>
+		</entry>
+		<entry name="ntmine" name-en="nitrate evaporites" level="3" tags="production" requires="oildwe" description="Leach dry-lake oxidizer salts (NO3) from evaporite dust. Signature extraction on Shards." use-time="2">
+			<use-allowed-in module-type-group="extraction" location-type="solid-surface"/>
+			<use-produce item="nitrat" quantity="2"/>
+		</entry>
+		<entry name="d2ext" name-en="deuterium from ices" level="4" tags="production" requires="wtrdst" description="Electrolysis and cryogenic distillation of D/H from outer ice. Not used on habitable basins." use-time="6">
+			<use-allowed-in module-type-group="extraction" location-type="solid-surface"/>
+			<use-produce item="deutrm" quantity="1"/>
+		</entry>
+		<entry name="volext" name-en="mixed-volatile ISRU" level="4" tags="production" requires="krogen" description="Heat carbonaceous fines and capture mixed H2O, CO2, and N2 as ISRU feedstock." use-time="4">
+			<use-allowed-in module-type-group="extraction" location-type="solid-surface"/>
+			<use-produce item="volatl" quantity="2"/>
+		</entry>
+		<entry name="liming" name-en="lithium brines" level="4" tags="production" requires="wtrdst" description="Recover spodumene and brine lithium for MPD cathodes and batteries. Signature extraction on Ember." use-time="3">
+			<use-allowed-in module-type-group="extraction" location-type="solid-surface"/>
+			<use-produce item="lithia" quantity="1"/>
+		</entry>
+		<entry name="xeming" name-en="xenon from ices" level="4" tags="production" requires="volext" description="Slow desorption of adsorbed xenon from outer ice. Signature extraction on Ash. Not used on habitable basins." use-time="8">
+			<use-allowed-in module-type-group="extraction" location-type="solid-surface"/>
+			<use-produce item="xenon" quantity="1"/>
+		</entry>
+		<entry name="wminng" name-en="tungsten extraction" level="5" tags="production" requires="tminng" description="Scheelite recovery on vulcan vents. Dense refractory metal for armour and kinetics." use-time="8">
+			<use-allowed-in module-type-group="extraction" location-type="solid-surface"/>
+			<use-produce item="tungst" quantity="1"/>
+		</entry>
+		<entry name="bormin" name-en="boron extraction" level="5" tags="production" requires="tminng" description="Fumarole borate recovery on vulcan moons. Signature extraction on Cinder." use-time="6">
+			<use-allowed-in module-type-group="extraction" location-type="solid-surface"/>
+			<use-produce item="boron" quantity="1"/>
+		</entry>
+		<entry name="beming" name-en="beryllium extraction" level="5" tags="production" requires="tminng" description="Bertrandite and phenakite recovery on barren dust. Signature extraction on Spare." use-time="8">
+			<use-allowed-in module-type-group="extraction" location-type="solid-surface"/>
+			<use-produce item="berylm" quantity="1"/>
+		</entry>
+		<entry name="ptminn" name-en="platinum-group recovery" level="6" tags="production" requires="wminng" description="Trace PGM recovered with nickel-iron on metal asteroids and Gleam crust." use-time="10">
+			<use-allowed-in module-type-group="extraction" location-type="solid-surface"/>
+			<use-produce item="platnm" quantity="1"/>
+		</entry>
+		<entry name="reemin" name-en="rare-earth oxides" level="6" tags="production" requires="nminng" description="Monazite and bastnasite recovery on metal asteroids with nickel-iron. Signature extraction on Gleam." use-time="8">
+			<use-allowed-in module-type-group="extraction" location-type="solid-surface"/>
+			<use-produce item="reeox" quantity="1"/>
+		</entry>
+		<entry name="grmine" name-en="nuclear graphite" level="6" tags="production" requires="hcdril" description="High-purity baked carbon, not peat. Signature extraction on Cinder with boron." use-time="4">
+			<use-allowed-in module-type-group="extraction" location-type="solid-surface"/>
+			<use-produce item="grphit" quantity="1"/>
 		</entry>
 		<entry name="advres" name-en="advanced computing" level="3" tags="research" requires="filidx" description="Next-generation computing enabling far larger research complexes.">
 			<use-allowed-in module-type-group="production"/>

@@ -30,7 +30,7 @@ Engine `LoadGame` always opens **`/data/gamein.xml`**. Play and TDD copy `campai
 | 12 | Arbor First | (empty, NPC) |
 | 13 | HCS | (empty, NPC) |
 
-L3+ signature ores from `designer/resources.md` (`lithia`, `reeox`, …) are **not** seeded until those item rows exist in `data.xml` (unknown `resource type` throws on load). Empty systems use live stand-ins (`heliu3`, `nickfe`, `carbon`, `titani`).
+L3+ signature ores from `designer/resources.md` (`lithia`, `reeox`, `boron`, `grphit`, `xenon`, `nitrat`, `berylm`) are catalog items and are seeded on SS0003–SS0010. Extraction techs for those ores are in `data.xml`. `hydzn` is catalog-only (refined, not a region ore).
 
 Environment / gravity / temperature rules: `designer/environments.md`. Galaxy seed (militias, Alderson Gates): `designer/galaxy.md`.
 

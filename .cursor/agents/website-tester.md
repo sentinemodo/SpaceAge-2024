@@ -45,7 +45,7 @@ You may add **e2e-only fixtures** (mock `status.json`, route stubs) the spec nee
 
 Each row: **id**, user goal, route(s), given / when / then, layer (Vitest and/or Playwright), security.
 
-- Lobby ids: `WS-001` … `WS-009` (seeded). User tools: reserved `UT-001` … `UT-005`.
+- Lobby ids: `WS-001` … `WS-009` (seeded). Phase 4 reserved: `WS-010` `/eta`, `WS-011` `/battle`, `WS-012` tools leak bar. Visual tool: reserved `UT-001` … `UT-005`.
 - **Do not renumber.** Add or deprecate.
 - Every Playwright spec **cites the id** in the title or annotation.
 - If a spec has no catalog row, **add the row first** — then the spec can be acceptance.

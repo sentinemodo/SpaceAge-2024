@@ -14,7 +14,7 @@ SpaceAge is a **turn-based play-by-email (PBEM) space 4X engine**. A GM (or scri
 
 The engine does **not** send email, host an API, or use a database. External mailers and GM tools wrap `Game.exe`.
 
-A **public campaign website** is a separate product surface (not the engine): a closed PBEM lobby with flavour copy, orders-submission status from a published JSON file, and a link to a future visual tool. It must not call `Game.exe` over HTTP or serve `gamein.xml`. Plan: [`delivery/website.md`](delivery/website.md), [ADR-0007](adr/ADR-0007-public-campaign-website.md).
+A **public campaign website** is a separate product surface (not the engine): a closed PBEM lobby with flavour copy, orders-submission status from a published JSON file, and a link to a future visual tool. Phase 4 adds two **client-side** planning pages (`/eta`, `/battle`). It must not call `Game.exe` over HTTP or serve `gamein.xml`. Plan: [`delivery/website.md`](delivery/website.md), [ADR-0007](adr/ADR-0007-public-campaign-website.md).
 
 ## Concise architecture
 
@@ -53,7 +53,7 @@ Domain code lives under `Game/` in a **single namespace** `SpaceAge` (folders ar
 | **Catalog (`data.xml`)** | Static types: items, modules, technologies, stars, planets, races, skills |
 | **Game state (`gamein` / `gameout`)** | Factions, galaxy graph, saved orders |
 | **PBEM** | Players submit orders by email; GM runs the exe; reports returned by email (outside this repo) |
-| **Website** | Closed public lobby (`website/`); flavour + orders status + client link. Not the engine. [ADR-0007](adr/ADR-0007-public-campaign-website.md) |
+| **Website** | Closed public lobby (`website/`); flavour + orders status + client link. Phase 4: `/eta` and `/battle` islands. Not the engine. [ADR-0007](adr/ADR-0007-public-campaign-website.md) |
 | **status.json** | Allow-listed UTF-8 file published by GM/`play/` scripts for the lobby. Not `gamein.xml` |
 | **Visual tool** | Separate future client (XML reports, star map). Website **links**; does not implement it |
 
@@ -66,7 +66,7 @@ Domain code lives under `Game/` in a **single namespace** `SpaceAge` (folders ar
 | Encoding bugs on non-Windows | `mono-complete` provides code page 1251 on the cloud image; never drop 1251 |
 | `DataFile` as a god class | Seams named in [ADR-0006](adr/ADR-0006-datafile-facade-and-xml-seams.md); extract only along those phases. `DataFile` stays the host/test facade |
 | Stub pipeline steps (`Request`, `Events`) | Leave no-ops unless a feature requires them; cover with tests when activating |
-| Public lobby leaking `gamein`, reports, or passwords | Allow-list `status.json` only; [ADR-0007](adr/ADR-0007-public-campaign-website.md) |
+| Public lobby leaking `gamein`, reports, or passwords | Allow-list `status.json` only; Phase 4 pastes stay in the browser; [ADR-0007](adr/ADR-0007-public-campaign-website.md) |
 
 ## What implementers should read first
 

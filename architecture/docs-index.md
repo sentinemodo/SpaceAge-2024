@@ -38,8 +38,8 @@ Purpose: canonical vendor/spec links for implementers. Summaries only — do not
 | `designer/` | Game-designer specs: galaxy scale, tech tree, catalog, contracts (not engine) |
 | `campaign/` | Live PBEM `data.xml` / `gamein.xml` (not NUnit fixtures) |
 | `architecture/delivery/campaign-play.md` | Campaign load, engine TDD slices, CLI play loop, AI factions |
-| `architecture/delivery/website.md` | Public lobby implementation plan (Astro, status JSON, visual-tool link); **Cursor agents and test pairing** (`/website-developer` + `/website-tester`) |
-| `architecture/delivery/website-scenarios.md` | Seed acceptance catalog (WS-001…WS-009, reserved UT-*). After Phase 1: tester moves to `website/e2e/scenarios.md` (canonical) |
+| `architecture/delivery/website.md` | Public lobby implementation plan (Astro, status JSON, visual-tool link, Phase 4 `/eta` + `/battle`); **Cursor agents and test pairing** (`/website-developer` + `/website-tester`) |
+| `architecture/delivery/website-scenarios.md` | Seed acceptance catalog (WS-001…WS-009, reserved WS-010…WS-012 Phase 4, reserved UT-*). After Phase 1: tester moves to `website/e2e/scenarios.md` (canonical) |
 | `Game/documentation/Rules.txt` §§1, 1.1, 2.1 | Home-page flavour source (Alderson V 1.5); excerpt, do not dump |
 | `player/rules.md` | Later `/rules` link — live order syntax, not flavour myth |
 

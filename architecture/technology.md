@@ -81,12 +81,13 @@ This section does **not** replace the net48 stack above. The public lobby is a s
 |------|--------|------------|
 | Location | `website/` at repo root | Never under `Game/` or `Tests/` |
 | Framework | **Astro**, static output (`output: 'static'`) | Current stable from npm (`npm create astro@latest`); no SSR adapter in MVP |
-| Language | HTML/Astro templates + CSS; TypeScript only for small islands | Do not import C# or parse 1251 game XML in Node |
+| Language | HTML/Astro templates + CSS; TypeScript only for small islands | Do not import C# or parse 1251 game XML in Node. Phase 4 may parse **user-pasted UTF-8 text** in the browser (`/eta`) |
 | Styling | Hand-written CSS | Space / hard-science look; no Atlantis hex theme; Tailwind optional, not required |
 | Status data | UTF-8 `website/public/status.json` | Written by GM or `play/` PowerShell; not an engine REST API |
 | Hosting | GitHub Pages (preferred); Cloudflare Pages or Netlify OK | GM does not run PHP or IIS |
 | Tests | **`astro check`** + **Vitest** (`getViteConfig`) + **Playwright** (Chromium vs `astro preview`) | Inside `website/` only. Not NUnit, not `Tests.dll`, not Mono. [Astro testing](https://docs.astro.build/en/guides/testing/). Cursor agents are **paired**: `/website-developer` (Vitest) + `/website-tester` (scenario catalog + Playwright); see [`delivery/website.md`](delivery/website.md) |
 | Visual tool | Link only (`/client` → `/visual-tool/` placeholder) | Separate future app; may use React later |
+| Phase 4 tools | `/eta`, `/battle` TypeScript islands | Port published formulas (`SpaceTransit`, `au-transit.md`, `player/battle.md`). No `Game.exe`, no live `data.xml` |
 
 Rejected for the lobby: PHP/Laravel Atlantis clone, ASP.NET on net48, Next.js static export (heavier than four pages), embedding UI in `Game.exe`, a CMS.
 
@@ -97,3 +98,4 @@ Engine XML/orders stay Windows-1251. Website source and `status.json` are UTF-8.
 - 2026-08-29: Added **Website (new, not engine)**. Engine pins unchanged.
 - 2026-08-29: Website tests = Vitest + Playwright; engine stays NUnit.
 - 2026-08-29: Website Cursor agents paired (`/website-developer` + `/website-tester`).
+- 2026-08-29: Phase 4 `/eta` and `/battle` islands noted; engine pins unchanged.

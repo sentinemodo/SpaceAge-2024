@@ -22,8 +22,7 @@ from collections import OrderedDict
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT_PATH = os.path.join(HERE, "gamein.1.xml")
 
-# Only item types present in campaign/data.xml. Designer L3+ ores stay off
-# the seed until those catalog rows exist (load throws on unknown type).
+# Item types present in campaign/data.xml. hydzn is refined, never a region ore.
 LIVE_ITEMS = {
     "iron",
     "titani",
@@ -40,6 +39,21 @@ LIVE_ITEMS = {
     "nickfe",
     "heliu3",
     "cash",
+    "tungst",
+    "deutrm",
+    "ammoni",
+    "methn",
+    "volatl",
+    "kerogn",
+    "alumin",
+    "platnm",
+    "lithia",
+    "boron",
+    "berylm",
+    "xenon",
+    "reeox",
+    "grphit",
+    "nitrat",
 }
 
 # Atmosphere and fuel are produced, not mined from the map. HQ cargo still
@@ -267,6 +281,7 @@ class Moon:
         self.gravity = gravity
         self.temperature = temperature
         self.atmosphere = atmosphere
+        self.description = None
         self.orbit = None
         self.races = []
         self.regions = []
@@ -296,6 +311,7 @@ class Planet:
         self.temperature = temperature
         self.atmosphere = atmosphere
         self.pair = pair
+        self.description = None
         self.orbit = None
         self.races = []
         self.moons = []
@@ -309,6 +325,7 @@ class Belt:
         self.name_en = name_en
         self.au = au
         self.composition = list(composition or [])  # (type, qty, probability)
+        self.description = None
         self.exits = []
         self.stacks = []
 
@@ -321,6 +338,7 @@ class Alderson:
         self.pair = pair
         self.temperature = temperature
         self.atmosphere = atmosphere
+        self.description = None
         self.orbit = None
         self.exits = []
         self.stacks = []
@@ -331,6 +349,7 @@ class Star:
         self.name = name
         self.name_en = name_en
         self.typ = typ
+        self.description = None
 
 
 class System:
@@ -452,8 +471,15 @@ def emit_orbit(parent, orbit):
     return node
 
 
+def with_description(attrs, obj):
+    if getattr(obj, "description", None):
+        attrs["description"] = obj.description
+    return attrs
+
+
 def emit_belt(parent, belt):
-    node = el(parent, "belt", name=belt.name, **{"name-en": belt.name_en}, AU=belt.au)
+    attrs = with_description({"name": belt.name, "name-en": belt.name_en, "AU": belt.au}, belt)
+    node = el(parent, "belt", **attrs)
     if belt.composition:
         comp = el(node, "composition")
         for typ, qty, probability in belt.composition:
@@ -467,16 +493,15 @@ def emit_belt(parent, belt):
 
 
 def emit_alderson(parent, alderson):
-    node = el(
-        parent,
-        "alderson",
-        name=alderson.name,
-        **{"name-en": alderson.name_en},
-        AU=alderson.au,
-        pair=alderson.pair,
-        temperature=alderson.temperature,
-        atmosphere=alderson.atmosphere,
-    )
+    attrs = {
+        "name": alderson.name,
+        "name-en": alderson.name_en,
+        "AU": alderson.au,
+        "pair": alderson.pair,
+        "temperature": alderson.temperature,
+        "atmosphere": alderson.atmosphere,
+    }
+    node = el(parent, "alderson", **attrs)
     if alderson.orbit:
         emit_orbit(node, alderson.orbit)
     for ex in alderson.exits:
@@ -484,7 +509,6 @@ def emit_alderson(parent, alderson):
         el(e, "exitmode", mode=ex.mode, duration=ex.duration)
     for stack in alderson.stacks:
         emit_stack(node, stack)
-    return node
     return node
 
 
@@ -503,6 +527,7 @@ def emit_moon(parent, moon):
         attrs["temperature"] = moon.temperature
     if moon.atmosphere:
         attrs["atmosphere"] = moon.atmosphere
+    with_description(attrs, moon)
     node = el(parent, "moon", **attrs)
     for race in moon.races:
         el(node, "race", type=race)
@@ -530,6 +555,7 @@ def emit_planet(parent, planet):
         attrs["atmosphere"] = planet.atmosphere
     if planet.pair:
         attrs["pair"] = planet.pair
+    with_description(attrs, planet)
     node = el(parent, "planet", **attrs)
     for race in planet.races:
         el(node, "race", type=race)
@@ -857,7 +883,7 @@ def build_world():
     )
     helios.planets.append(aeolus)
 
-    gate_h = Alderson("P00009", "Helios Gate", 80, "P00010")
+    gate_h = Alderson("P00009", "Helios Fomal Gate", 80, "P00010")
     gate_h.orbit = Orbit("O00110")
     ids.O(110)
     landings["helios-gate"] = gate_h
@@ -945,7 +971,7 @@ def build_world():
     )
     fomal.planets.append(giant_f)
 
-    gate_f = Alderson("P00010", "Fomal Gate", 80, "P00009")
+    gate_f = Alderson("P00010", "Fomal Helios Gate", 80, "P00009")
     gate_f.orbit = Orbit("O00111")
     ids.O(111)
     landings["fomal-gate"] = gate_f
@@ -1186,24 +1212,57 @@ def build_world():
     landings["fomal-belt"].stacks.append(wreck_f)
 
     ids.skip_planets_to(11)
-    # Empty systems SS0003–SS0010 (condensed, no APs).
+    # Empty systems SS0003–SS0010 (signature ores; moons ≥10; Graph 6×6).
+    # Gates for those systems are added after the bodies (ids P00041+).
+    # Habitable systems stay catalog M4 (Helios/Fomal default; Deep/Graph here).
     empty = [
-        ("SS0003", "Ember", 4, ember_bodies),
-        ("SS0004", "Gleam", 5, gleam_bodies),
-        ("SS0005", "Cinder", 6, cinder_bodies),
-        ("SS0006", "Ash", 7, ash_bodies),
-        ("SS0007", "Shards", 8, shards_bodies),
-        ("SS0008", "Deep", 9, deep_bodies),
-        ("SS0009", "Graph", 10, graph_bodies),
-        ("SS0010", "Spare", 11, spare_bodies),
+        ("SS0003", "Ember", 4, "K2", ember_bodies),
+        ("SS0004", "Gleam", 5, "M1", gleam_bodies),
+        ("SS0005", "Cinder", 6, "K5", cinder_bodies),
+        ("SS0006", "Ash", 7, "M0", ash_bodies),
+        ("SS0007", "Shards", 8, "G8", shards_bodies),
+        ("SS0008", "Deep", 9, "M4", deep_bodies),
+        ("SS0009", "Graph", 10, "M4", graph_bodies),
+        ("SS0010", "Spare", 11, "K3", spare_bodies),
     ]
-    for ss, sname, x, builder in empty:
+    for ss, sname, x, typ, builder in empty:
         system = System(ss, sname, x, 0, 0)
-        system.star = Star(ids.S(), sname)
+        system.star = Star(ids.S(), sname, typ=typ)
         builder(ids, system)
         systems.append(system)
 
+    add_empty_system_gates(ids, systems)
     return systems, landings
+
+
+def add_empty_system_gates(ids, systems):
+    """One Gate per empty system, paired 1:1 with a homeworld outbound Gate.
+
+    Helios (Arbor) opens Ember, Cinder, Ash, Graph.
+    Fomal (Anvil) opens Gleam, Shards, Deep, Spare.
+    Existing Helios Fomal Gate P00009 remains paired only with Fomal Helios Gate P00010.
+    """
+    by_name = {s.name_en: s for s in systems}
+    ids.skip_planets_to(41)
+    links = (
+        ("Helios", "Ember"),
+        ("Helios", "Cinder"),
+        ("Helios", "Ash"),
+        ("Helios", "Graph"),
+        ("Fomal", "Gleam"),
+        ("Fomal", "Shards"),
+        ("Fomal", "Deep"),
+        ("Fomal", "Spare"),
+    )
+    for home_en, empty_en in links:
+        home_id = ids.P()
+        empty_id = ids.P()
+        home_gate = Alderson(home_id, "%s %s Gate" % (home_en, empty_en), 80, empty_id)
+        home_gate.orbit = Orbit(ids.O())
+        empty_gate = Alderson(empty_id, "%s %s Gate" % (empty_en, home_en), 80, home_id)
+        empty_gate.orbit = Orbit(ids.O())
+        by_name[home_en].aldersons.append(home_gate)
+        by_name[empty_en].aldersons.append(empty_gate)
 
 
 def add_belt(ids, system, name_en, au, composition):
@@ -1218,20 +1277,31 @@ def add_ring(ids, planet, name_en, au, composition):
     return ring
 
 
-def add_planet(ids, system, name_en, typ, au, w, h, env, typer, res_fn, cap_fn=None, moons=None):
+def add_planet(ids, system, name_en, typ, au, w, h, env, typer, res_fn, cap_fn=None, moons=None, races=None):
     gravity, temperature, atmosphere = env
     planet = Planet(ids.P(), name_en, typ, au, w, h, gravity, temperature, atmosphere)
     planet.orbit = Orbit(ids.O())
+    if races:
+        planet.races = list(races)
     if w > 0 and h > 0:
         planet.regions = make_pocket_grid(
             ids, w, h, lambda x, y: "%s %d,%d" % (name_en, x, y), typer, res_fn, cap_fn
         )
     for spec in moons or []:
-        mname, mtyp, mau, mw, mh, menv, mtyp_fn, mres = spec
+        mname, mtyp, mau, mw, mh, menv, mtyp_fn, mres = spec[:8]
+        mraces = None
+        mcap = None
+        for extra in spec[8:]:
+            if callable(extra):
+                mcap = extra
+            elif extra:
+                mraces = list(extra)
         moon = Moon(ids.M(), mname, mtyp, mau, mw, mh, *menv)
         moon.orbit = Orbit(ids.O())
+        if mraces:
+            moon.races = list(mraces)
         moon.regions = make_pocket_grid(
-            ids, mw, mh, lambda x, y, mname=mname: "%s %d,%d" % (mname, x, y), mtyp_fn, mres
+            ids, mw, mh, lambda x, y, mname=mname: "%s %d,%d" % (mname, x, y), mtyp_fn, mres, mcap
         )
         planet.moons.append(moon)
     system.planets.append(planet)
@@ -1249,7 +1319,8 @@ def ember_bodies(ids, system):
         3,
         ("low", "hot", "thin"),
         lambda x, y: "dust" if y < 2 else "barren",
-        lambda x, y, typ: [("titani", 20), ("silici", 18), ("heliu3", 40 if x == 0 and y == 0 else 8)],
+        lambda x, y, typ: [("titani", 20), ("silici", 18)]
+        + ([("lithia", 60)] if typ == "barren" and x in (0, 2) else []),
         lambda x, y, typ: [("extraction", 3)],
     )
     add_belt(
@@ -1275,11 +1346,13 @@ def ember_bodies(ids, system):
                 "Ember Ice %d" % i,
                 "ice",
                 0.004 + i * 0.002,
-                4,
+                5,
                 2,
                 ("low", "cold", "none"),
                 lambda x, y: "dust",
-                lambda x, y, typ, i=i: [("water", 50), ("heliu3", 20 + (10 if i == 0 else 0))],
+                lambda x, y, typ, i=i: [("water", 50), ("heliu3", 20 + (10 if i == 0 else 0))]
+                + ([("deutrm", 60)] if i == 0 and x + y == 0 else [])
+                + ([("lithia", 20)] if i == 1 and x == 0 and y == 0 else []),
             )
             for i in range(3)
         ],
@@ -1297,7 +1370,9 @@ def gleam_bodies(ids, system):
         3,
         ("low", "hot", "none"),
         lambda x, y: "barren" if y == 0 else "dust",
-        lambda x, y, typ: [("nickfe", 18), ("copper", 14), ("uraniu", 8)],
+        lambda x, y, typ: [("nickfe", 18), ("copper", 14), ("uraniu", 8)]
+        + ([("reeox", 50)] if x == 0 and y == 0 else [])
+        + ([("platnm", 6)] if x == 1 and y == 0 else []),
         lambda x, y, typ: [("extraction", 3)],
     )
     add_belt(
@@ -1305,7 +1380,14 @@ def gleam_bodies(ids, system):
         system,
         "Gleam Belt",
         0.4,
-        [("nickfe", 25, 0.6), ("uraniu", 12, 0.4), ("copper", 10, 0.4), ("gold", 8, 0.1)],
+        [
+            ("nickfe", 25, 0.6),
+            ("uraniu", 12, 0.4),
+            ("copper", 10, 0.4),
+            ("gold", 8, 0.1),
+            ("reeox", 50, 0.3),
+            ("platnm", 6, 0.1),
+        ],
     )
     add_planet(
         ids,
@@ -1332,7 +1414,8 @@ def cinder_bodies(ids, system):
         3,
         ("low", "hot", "thin"),
         lambda x, y: "dust" if x < 3 else "barren",
-        lambda x, y, typ: [("carbon", 20), ("uraniu", 10), ("iron", 4)],
+        lambda x, y, typ: [("carbon", 20), ("uraniu", 10), ("iron", 4)]
+        + ([("grphit", 45)] if typ == "barren" and x == 4 and y == 0 else []),
         lambda x, y, typ: [("extraction", 3)],
     )
     add_belt(
@@ -1340,7 +1423,7 @@ def cinder_bodies(ids, system):
         system,
         "Cinder Belt",
         2.8,
-        [("carbon", 22, 0.6), ("uraniu", 8, 0.4)],
+        [("carbon", 22, 0.6), ("uraniu", 8, 0.4), ("grphit", 20, 0.2)],
     )
     cinder_giant = add_planet(
         ids,
@@ -1358,17 +1441,19 @@ def cinder_bodies(ids, system):
                 "Cinder Vulcan",
                 "vulcan",
                 0.003,
-                4,
+                5,
                 2,
                 ("low", "hot", "none"),
                 lambda x, y: "mountn",
-                lambda x, y, typ: [("carbon", 50 if x + y == 0 else 10), ("iron", 6), ("silici", 20)],
+                lambda x, y, typ: [("carbon", 10), ("iron", 6), ("silici", 20), ("tungst", 8)]
+                + ([("boron", 60)] if x + y == 0 else [])
+                + ([("grphit", 50)] if x == 1 and y == 0 else []),
             ),
             (
                 "Cinder Rock",
                 "rock",
                 0.005,
-                4,
+                5,
                 2,
                 ("low", "cold", "none"),
                 lambda x, y: "dust",
@@ -1378,7 +1463,7 @@ def cinder_bodies(ids, system):
                 "Cinder Ice",
                 "ice",
                 0.007,
-                4,
+                5,
                 2,
                 ("low", "cold", "none"),
                 lambda x, y: "dust",
@@ -1401,7 +1486,7 @@ def ash_bodies(ids, system):
         system,
         "Ash Belt",
         3.0,
-        [("carbon", 18, 0.5), ("heliu3", 10, 0.3)],
+        [("carbon", 18, 0.5), ("heliu3", 10, 0.3), ("volatl", 14, 0.3)],
     )
     inner = add_planet(
         ids,
@@ -1419,12 +1504,14 @@ def ash_bodies(ids, system):
                 "Ash Moon %d" % i,
                 ("ice" if i < 2 else ("rock" if i == 2 else "vulcan")),
                 0.003 + i * 0.002,
-                4,
+                5,
                 2,
                 ("low", "hot" if i == 3 else "cold", "none"),
                 lambda x, y: "dust",
                 lambda x, y, typ, i=i: (
-                    [("water", 40), ("heliu3", 40 if i == 0 and x + y == 0 else 15)]
+                    [("water", 40), ("heliu3", 40 if i == 0 and x + y == 0 else 15), ("ammoni", 16)]
+                    + ([("xenon", 50)] if i == 0 and x + y == 0 else [])
+                    + ([("deutrm", 50)] if i == 1 and x + y == 0 else [])
                     if i < 2
                     else ([("silici", 16), ("iron", 10)] if i == 2 else [("iron", 5), ("silici", 12)])
                 ),
@@ -1460,7 +1547,7 @@ def shards_bodies(ids, system):
         system,
         "Shards Inner Belt",
         2.0,
-        [("carbon", 40, 0.6), ("oil", 8, 0.3)],
+        [("carbon", 40, 0.6), ("oil", 8, 0.3), ("kerogn", 16, 0.4), ("volatl", 12, 0.3)],
     )
     add_belt(
         ids,
@@ -1479,7 +1566,8 @@ def shards_bodies(ids, system):
         3,
         ("low", "cold", "thin"),
         lambda x, y: "dust" if y < 2 else "barren",
-        lambda x, y, typ: [("carbon", 12), ("silici", 16)],
+        lambda x, y, typ: [("carbon", 12), ("silici", 16)]
+        + ([("nitrat", 50)] if typ == "barren" and x in (0, 2) else []),
     )
 
 
@@ -1503,13 +1591,13 @@ def deep_bodies(ids, system):
         0.004,
         4,
         3,
-        ("low", "habitable", "thin"),
+        ("low", "habitable", "terair"),
         lambda x, y: "grassl" if y == 1 else ("sea" if y == 2 else "dust"),
         lambda x, y, typ: (
-            [("terair", 80), ("food", 40), ("water", 60)]
-            if typ in ("grassl", "sea")
-            else [("water", 40), ("heliu3", 12)]
+            [("food", 40), ("water", 60)] if typ in ("grassl", "sea") else [("water", 40)]
         ),
+        ["terran"],
+        lambda x, y, typ: [("settlement", 8)] if typ == "grassl" else [],
     )
     add_planet(
         ids,
@@ -1528,31 +1616,31 @@ def deep_bodies(ids, system):
                 "Deep Ice A",
                 "ice",
                 0.006,
-                4,
+                5,
                 2,
                 ("low", "cold", "none"),
                 lambda x, y: "dust",
-                lambda x, y, typ: [("water", 50), ("heliu3", 20)],
+                lambda x, y, typ: [("water", 50), ("heliu3", 20), ("methn", 16)],
             ),
             (
                 "Deep Rock",
                 "rock",
                 0.008,
-                4,
+                5,
                 2,
                 ("low", "cold", "none"),
                 lambda x, y: "dust",
-                lambda x, y, typ: [("silici", 16), ("iron", 10)],
+                lambda x, y, typ: [("silici", 16), ("iron", 10), ("alumin", 14)],
             ),
             (
                 "Deep Ice B",
                 "ice",
                 0.01,
-                4,
+                5,
                 2,
                 ("low", "cold", "none"),
                 lambda x, y: "dust",
-                lambda x, y, typ: [("water", 45), ("heliu3", 15)],
+                lambda x, y, typ: [("water", 45), ("heliu3", 15), ("methn", 12)],
             ),
         ],
     )
@@ -1572,11 +1660,15 @@ def deep_bodies(ids, system):
                 "Deep Outer %d" % i,
                 "ice" if i else "rock",
                 0.004 + i * 0.003,
-                4,
+                5,
                 2,
                 ("low", "cold", "none"),
                 lambda x, y: "dust",
-                lambda x, y, typ, i=i: [("water", 30), ("heliu3", 10)] if i else [("iron", 12), ("silici", 10)],
+                lambda x, y, typ, i=i: (
+                    [("water", 30), ("heliu3", 10), ("methn", 10)]
+                    if i
+                    else [("iron", 12), ("silici", 10), ("alumin", 12)]
+                ),
             )
             for i in range(3)
         ],
@@ -1584,21 +1676,60 @@ def deep_bodies(ids, system):
 
 
 def graph_bodies(ids, system):
+    graph_types = {
+        (0, 0): "ocean",
+        (1, 0): "sea",
+        (2, 0): "grassl",
+        (3, 0): "grassl",
+        (4, 0): "dust",
+        (5, 0): "mountn",
+        (0, 1): "ocean",
+        (1, 1): "sea",
+        (2, 1): "grassl",
+        (3, 1): "grassl",
+        (4, 1): "grassl",
+        (5, 1): "dust",
+        (0, 2): "ocean",
+        (1, 2): "grassl",
+        (2, 2): "grassl",
+        (3, 2): "grassl",
+        (4, 2): "mountn",
+        (5, 2): "dust",
+        (0, 3): "sea",
+        (1, 3): "grassl",
+        (2, 3): "grassl",
+        (3, 3): "dust",
+        (4, 3): "mountn",
+        (5, 3): "barren",
+        (0, 4): "ocean",
+        (1, 4): "sea",
+        (2, 4): "grassl",
+        (3, 4): "dust",
+        (4, 4): "barren",
+        (5, 4): "mountn",
+        (0, 5): "ocean",
+        (1, 5): "ocean",
+        (2, 5): "sea",
+        (3, 5): "grassl",
+        (4, 5): "dust",
+        (5, 5): "barren",
+    }
+
     def graph_type(x, y):
-        if y == 0:
-            return "ocean"
-        if y == 1:
-            return "grassl" if x < 3 else "sea"
-        return "dust"
+        return graph_types[(x, y)]
 
     def graph_res(x, y, typ):
         if typ in ("ocean", "sea"):
-            return [("terair", 90), ("water", 400), ("food", 20)]
+            return [("water", 400), ("food", 20)]
         if typ == "grassl":
-            return [("terair", 90), ("food", 300), ("carbon", 20), ("water", 80), ("iron", 12)]
-        return [("silici", 20), ("iron", 15), ("gold", 6 if x + y == 5 else 0)] if False else (
-            [("silici", 20), ("iron", 15)] + ([("gold", 6)] if x == 3 and y == 2 else [])
-        )
+            return [("food", 300), ("carbon", 20), ("water", 80), ("iron", 12)]
+        if typ == "mountn":
+            return [("silici", 22), ("iron", 18), ("alumin", 14)] + (
+                [("gold", 6)] if x == 4 and y == 2 else []
+            )
+        if typ == "barren":
+            return [("silici", 18), ("alumin", 12)]
+        return [("silici", 20), ("iron", 15), ("carbon", 8)]
 
     def graph_cap(x, y, typ):
         if typ == "grassl":
@@ -1611,12 +1742,13 @@ def graph_bodies(ids, system):
         "Graph",
         "ocean",
         0.95,
-        5,
-        3,
+        6,
+        6,
         ("normal", "habitable", "terair"),
         graph_type,
         graph_res,
         graph_cap,
+        races=["terran"],
     )
     add_planet(
         ids,
@@ -1624,21 +1756,21 @@ def graph_bodies(ids, system):
         "Graph Dust",
         "dust",
         1.6,
+        5,
         4,
-        3,
         ("low", "cold", "none"),
-        lambda x, y: "dust" if y < 2 else "mountn",
-        lambda x, y, typ: [("silici", 18), ("iron", 12), ("carbon", 8)],
+        lambda x, y: "dust" if y < 3 else "mountn",
+        lambda x, y, typ: [("silici", 18), ("iron", 12), ("carbon", 8), ("alumin", 10)],
         moons=[
             (
                 "Graph Rock",
                 "rock",
                 0.002,
-                4,
+                5,
                 2,
                 ("low", "cold", "none"),
                 lambda x, y: "dust",
-                lambda x, y, typ: [("silici", 14), ("iron", 10)],
+                lambda x, y, typ: [("silici", 14), ("iron", 10), ("alumin", 12)],
             )
         ],
     )
@@ -1663,18 +1795,19 @@ def spare_bodies(ids, system):
         3,
         ("low", "cold", "none"),
         lambda x, y: "dust" if y < 2 else "mountn",
-        lambda x, y, typ: [("titani", 45 if x + y == 0 else 22), ("copper", 16)],
+        lambda x, y, typ: [("titani", 45 if x + y == 0 else 22), ("copper", 16)]
+        + ([("berylm", 55)] if typ == "mountn" and x in (0, 2) else []),
         lambda x, y, typ: [("extraction", 3)],
         moons=[
             (
                 "Spare Ice",
                 "ice",
                 0.003,
-                4,
+                5,
                 2,
                 ("low", "cold", "none"),
                 lambda x, y: "dust",
-                lambda x, y, typ: [("water", 40), ("h2o2", 12)],
+                lambda x, y, typ: [("water", 40)],
             )
         ],
     )
@@ -1847,7 +1980,14 @@ def emit_galaxy(root, systems):
             Y=system.y,
             Z=system.z,
         )
-        el(sys_el, "star", name=system.star.name, **{"name-en": system.star.name_en}, type=system.star.typ)
+        el(
+            sys_el,
+            "star",
+            **with_description(
+                {"name": system.star.name, "name-en": system.star.name_en, "type": system.star.typ},
+                system.star,
+            )
+        )
         for planet in system.planets:
             emit_planet(sys_el, planet)
         for belt in system.belts:
@@ -1895,6 +2035,377 @@ def collect_stacks(systems):
     return found
 
 
+STAR_FLAVOUR = {
+    "Helios": (
+        "The primary is a coin of warm gold, about the Sun radius, about the Sun luminosity - "
+        "the colour of wheat and old brass. Limb darkening turns the edge a softer orange. "
+        "Arbor hangs in the one-AU water zone like something you were always meant to see: "
+        "white cloud, green basins, the kind of blue that makes a visor feel like a mistake. "
+        "The pair-axis is a rumour of Fomal, too far for the eye. You have not come to a wilderness. "
+        "You have come home to a lamp that feeds cities."
+    ),
+    "Fomal": (
+        "Hotter gold than the Sun, a shade toward white, still catalog M4, still about the Sun in size and output. "
+        "The light is impatient. Anvil at 1.4 AU looks mineral even from the Gate: thinner green, more glare off highland, "
+        "a world that grew metals and fissiles instead of peat. There is air enough to breathe and not enough kindness in the soil. "
+        "The star does not look cruel. The crust will."
+    ),
+    "Ember": (
+        "A smaller disk than Helios, maybe four-fifths as wide, two-fifths as bright, the colour of a banked forge. "
+        "Inner dust is a kiln, too close, too dry. Past the ice line a pale giant holds three cold moons. "
+        "The chemistry that matters is not on the baked plains. It is in freeze-worked brines: alkali salts leached from silicate, "
+        "waiting in the dark. The star will outlive your corporation. It does not hurry you."
+    ),
+    "Gleam": (
+        "The primary is a red coal, half a solar width, a few percent of a solar glow, so close that noon is a swollen wine-dark disk. "
+        "The metal belt rides that glare. A flare can stitch white across the red without warning. "
+        "These rocks never finished degassing: nickel-iron and rare-earth oxides still live in the metal phase. "
+        "You feel the particle flux in the hull before you feel wonder. Then the wonder arrives anyway - "
+        "a furnace that has been waiting since before language."
+    ),
+    "Cinder": (
+        "Copper-orange, seven-tenths of a sun across, maybe a sixth as luminous, smoky at the limb. "
+        "Vulcan moons glow in that light as if the star and the rock agreed on a temperature. "
+        "Carbon here was cooked past any wetland story into hard lattice. Fumaroles leave borate crust. "
+        "There is no green to rest the eye. Arrival is a held breath. The star looks near enough to scorch the Gate and old enough not to notice."
+    ),
+    "Ash": (
+        "The disk is wrong. It is giant-class: tens of solar radii, dull blood-red, lazy light that can still outshine hundreds of Helios-class lamps. "
+        "The ice line has been shoved into the outer dark. Warm dust is a lie. Far out, grainy ices hold adsorbed noble gases the way glass holds breath. "
+        "The star fills too much of the sky for how cold the prize is. You will travel a long time under that red before you are close to what you came for."
+    ),
+    "Shards": (
+        "Butter-yellow, almost a home star: nine-tenths of a solar radius, four-fifths of a solar luminosity. "
+        "The familiarity is a trap. The chromosphere is young; ultraviolet still bites. "
+        "Dry pans bleach into evaporite oxidizer salts. Carbonaceous belts keep ice and organics, but nothing here invited a city. "
+        "The yellow looks like welcome. The spectrometer disagrees."
+    ),
+    "Deep": (
+        "Catalog M4 on a dimmer orange lamp - still habitable-class, a little smaller in the mind than Helios, gold sliding toward ember. "
+        "Haven is the reason the token stayed M4: a thin ribbon of sea and grassland on an ice moon, tight calories, air you can almost trust. "
+        "The outer ices keep methane-family volatiles. You feel, arriving, that someone could live here if they were careful and a little hungry."
+    ),
+    "Graph": (
+        "A clean yellow analog, catalog M4, near one solar radius and luminosity, the 0.95 AU ocean world already a bright sickle in the Gate light. "
+        "Cloud, water, silica coasts, iron in the highlands - a carbon-and-stone prize, not an industrial signature world. No cities. "
+        "The star does not know it is empty. For a minute after JUMP you can pretend the green is spoken for. "
+        "Then the silence of the radio makes the pretence expensive."
+    ),
+    "Spare": (
+        "Orange and even, three-quarters of a solar width, a fifth of a solar glow, the colour of a lantern left in a window. "
+        "The inner crust is a light-metal leftover: residual melts, impact glass, structural alkali-earths, copper-family ballast. "
+        "No air. No farms. The star is not trying to impress you. The loneliness is complete and, after a while, honest. "
+        "You came for what the rock refused to become."
+    ),
+}
+
+BODY_FLAVOUR = {
+    "Arbor": (
+        "An ocean world under gold light, one AU out, the size of a settled continent mapped and a pelagic rest left off the chart. "
+        "White cloud, green basins, coastal peat and banded iron in old sediments. The air is thick enough to forget the visor. "
+        "There is no rutile glare here, no pitchblende spine - organics and common iron, and a hinterland that still has empty grass. "
+        "UN towns sit like pins in a living map. You could walk without a suit. That is the luxury and the trap."
+    ),
+    "Selene": (
+        "Arbor's rock moon is a pale coin in the gold. Low gravity, vacuum, cold enough that the poles keep ice in the dust. "
+        "Highlands show light structural metal and silica; the rest is grey powder that never learned rain. "
+        "From orbit the homeworld fills half the sky. Landing feels like stepping onto a loft above a garden you are not ready to leave."
+    ),
+    "Scoria": (
+        "Hot dust at 1.5 AU, thin air, low gravity - a kiln world next door to the garden. "
+        "Ilmenite plains and copper-family stains run in the glare. Nothing green. Extraction pads, not towns. "
+        "The gold of Helios is harsher here. You come for metals the homeworld will not grow, and you leave with dust in every seal."
+    ),
+    "Helios Belt": (
+        "A dark necklace at 2.7 AU: metal rock and carbonaceous grit sharing the same cold light. "
+        "Fissile pockets and nickel-iron hide in the metal phase; the darker stones keep organics and common carbon. "
+        "No surface, no air, no kindness. A wreck rumour lives here like a second star - something crewless and bright that should not be."
+    ),
+    "Aeolus": (
+        "A banded gas giant at 5.2 AU, high gravity at the cloud deck, hostile mix, no ground to stand on. "
+        "The disk is cream and rust, slow storms the size of worlds. You do not land. You park in the cold and look down. "
+        "Four moons and a thin ring do the work of a surface. The giant itself is weather and mass."
+    ),
+    "Rime": (
+        "The innermost ice moon of Aeolus: low, cold, airless, rich water ice and light fusion isotopes in the regolith. "
+        "Helios is a distant gold coin. The giant fills the other half of the sky. "
+        "You walk on packed frost that never melted. The prize is what the ice kept, not what it looks like."
+    ),
+    "Glaze": (
+        "A second ice: a little farther, a little poorer in isotopes, still a white desert under the giant's shadow. "
+        "Water is the reason to land. The rest is silence and a horizon that curves too fast. "
+        "From the night side Aeolus is a wall of cream lightning. You feel small on purpose."
+    ),
+    "Shard": (
+        "Aeolus's rock moon: vacuum, cold, silica and iron and light structural metal in the highlands. "
+        "No ice to soften the boots. The surface is a broken plate, older than the garden world inward. "
+        "You come when the ices are already claimed, or when you want stone that does not lie about being alive."
+    ),
+    "Cindercone": (
+        "A vulcan moon in the same family: hot, low, no air worth naming. Fumaroles stain the highlands. "
+        "Carbon here is baked, not grown. The light of Helios is a memory; the heat is local. "
+        "Landing is a negotiation with a world that is still cooking."
+    ),
+    "Aeolus Ring": (
+        "A thin ice-and-grit ring hugging the giant. No orbit of your own - you MOVE onto the belt itself. "
+        "Water ice and silica dust, cold enough to keep a glove stiff. Beautiful only if you like knives of light."
+    ),
+    "Anvil": (
+        "Habitable and unkind. Breathable air over a thinner biosphere, 1.4 AU from an impatient gold-white lamp. "
+        "Shield volcanoes show titanium-family metal, native copper-family veins, fissile spines. Wetlands are scarce. "
+        "Food is poor; petroleum never paid a rent. The UN towns look hungry even from orbit. "
+        "You can take a helmet off. You will still taste dust and ore."
+    ),
+    "Anvil Rock": (
+        "The rock moon: low, cold, vacuum, metals in the dust and mandatory polar ice so a base can drink. "
+        "Anvil hangs huge and mineral-brown below. There is no kindness here, only water in the shade and stone in the sun."
+    ),
+    "Anvil Ice": (
+        "A smaller ice moon, rich water, light isotopes, the colour of old bone. "
+        "Fomal's hotter gold makes the terminator a hard line. You came for ice, not for a view, but the view will stay with you."
+    ),
+    "Pyre": (
+        "Inner dust at 0.6 AU, hot, thin air, iron and silica in the glare. Not a place to live. "
+        "The star is too large in the sky. Landing is a short season of sweat and extraction, then leave before the seals complain."
+    ),
+    "Fomal Belt": (
+        "Carbonaceous, 2.5 AU out: dark rock, heavy hydrocarbons, the organics Anvil's crust refused to grow. "
+        "No metal glitter. The belt looks like soot against the white-gold lamp. A cold fabricator rumour sits in the grit."
+    ),
+    "Fomal Giant": (
+        "A cold gas world at 6 AU, high deck gravity, hostile air, cream belts that do not care you arrived. "
+        "Two ice moons and a ring do the mining. The giant is a mass and a weather system, not a destination."
+    ),
+    "Drift": (
+        "An ice moon of the Fomal giant: water, light isotopes, a slow year in the dim. "
+        "The primary is a bright point. The giant is a wall. You land for volatiles and leave before the cold writes your name."
+    ),
+    "Rimeband": (
+        "The richer ice of the pair - more fusion-light isotope in the frost, same vacuum, same honesty. "
+        "No air. No farms. The ring cuts a line across the giant like a scar you could walk."
+    ),
+    "Fomal Ring": (
+        "Ice grit on a short leash around the giant. Water and silica, no drama except the light. "
+        "You occupy the belt, not a landing. It feels like standing on a rumour."
+    ),
+    "Ember Dust": (
+        "Hot inner dust under amber light, too close, too dry. Titanium-family oxides and silica, no green, no brines. "
+        "The kiln look is honest. The chemistry you want is not here. This world is the warning before the ice."
+    ),
+    "Ember Belt": (
+        "A thin belt at 2.2 AU: iron, silica, a hint of light isotope in the cold. "
+        "Amber from the dwarf makes the rocks look warmer than they are. They are not warm."
+    ),
+    "Ember Giant": (
+        "A pale ice-giant at 4.1 AU, treated as a gas body: no ground, hostile deck, three ice moons. "
+        "The orange lamp looks small from here. This is where the brines begin. The giant is a cold throne for them."
+    ),
+    "Ember Ice 0": (
+        "The innermost ice: packed frost, light isotopes, and freeze-worked alkali brines in the dark. "
+        "This is the reason Ember exists on a map. The star is a distant forge. You came for what the ice stole from the rock."
+    ),
+    "Ember Ice 1": (
+        "A middle ice, still wet in the mineral sense, still patient. Less isotope flash, more quiet brine chemistry. "
+        "The giant's shadow is a regular night. You can work here if you like silence."
+    ),
+    "Ember Ice 2": (
+        "The outer of the three: colder, poorer, still water enough to matter. "
+        "You land here when the inner ices are claimed, or when you want to be alone with a pale giant."
+    ),
+    "Gleam Inner": (
+        "A barren-dust world hugging a red coal, 0.12 AU, hot vacuum. Nickel-iron and copper-family metal, fissile traces, rare-earth oxides in the metal phase. "
+        "Noon is a swollen wine disk. Flares write white on the hull. Nothing here wanted life. Everything here wanted to stay metal."
+    ),
+    "Gleam Belt": (
+        "The close-in metal belt: the real prize. Nickel-iron, fissiles, copper-family metal, rare-earth oxides, a trace of precious contacts. "
+        "The red dwarf is too large. You mine in a glare that feels like standing next to a furnace door."
+    ),
+    "Gleam Ice": (
+        "A colder dust world at 0.8 AU: some water ice, leftover metal, the first place the red light feels distant. "
+        "Not a garden. A shade. You drink here. You do not settle."
+    ),
+    "Cinder Dust": (
+        "Hot dust under copper-orange light: carbon that was never peat, fissile traces, iron as an afterthought. "
+        "High-temperature baking has already happened. The world looks like a foundry floor left in a vacuum."
+    ),
+    "Cinder Belt": (
+        "Dark carbonaceous rock at 2.8 AU, some fissile glitter, baked carbon in the mix. "
+        "The orange dwarf is a coin. The belt does not glow. You do."
+    ),
+    "Cinder Giant": (
+        "A distant gas giant at 8 AU, three moons - vulcan, rock, ice - and a thin ring. "
+        "This is the industrial attic of the system. The star is small. The work is not."
+    ),
+    "Cinder Vulcan": (
+        "Hot highland, no air, fumaroles that leave borate crust and carbon cooked into hard lattice. "
+        "Refractory metal sits in the vents. There is no green to forgive the heat. Landing is a held breath that never quite lets go."
+    ),
+    "Cinder Rock": (
+        "A cold rock moon: silica and iron, no performance. "
+        "You come for ballast and a place to stand that is not on fire. The vulcan next door still lights the sky."
+    ),
+    "Cinder Ice": (
+        "Water ice and a little light isotope, far from the copper lamp. "
+        "A drink after the foundry. The giant is a pale stripe. You will remember the quiet more than the ice."
+    ),
+    "Cinder Ring": (
+        "Carbon and silica grit on a short orbit of the giant. Baked, not grown. "
+        "You MOVE onto it. It does not welcome you. It does not care."
+    ),
+    "Ash Belt": (
+        "At 3 AU under a swollen red disk: carbonaceous grit, light isotopes, mixed volatiles. "
+        "The star is too large for this distance. The belt feels like ash from a fire that has not gone out in a billion years."
+    ),
+    "Ash Inner Giant": (
+        "The working giant at 6 AU: four mixed moons - ice, ice, rock, vulcan - and a ring. "
+        "Noble gases wait on the outer ices, not on this deck. The giant is weather. The moons are the map."
+    ),
+    "Ash Outer Giant": (
+        "Farther still, 18 AU, no moons worth a name. A second mass in the dark. "
+        "You pass it. You do not stay. The red lamp is still huge and still cold at the edge."
+    ),
+    "Ash Moon 0": (
+        "The first ice: water, ammonia-family frost, light isotopes, and adsorbed noble gas on the grain. "
+        "This is why Ash is on the chart. The giant is a blood-red wall. You came a long way under that light for a cold that keeps secrets."
+    ),
+    "Ash Moon 1": (
+        "The second ice: more water, more ammonia-family ice, a pocket of heavy hydrogen in the frost. "
+        "Quieter than the first. Still no air. Still the red disk too large in the mind."
+    ),
+    "Ash Moon 2": (
+        "Rock: silica and iron, a place to stand that is not ice. "
+        "You land here to rest the drills, not to get rich. The ices next door are the conversation."
+    ),
+    "Ash Moon 3": (
+        "A small vulcan, hot, low, airless. Iron and silica, no borate fame. "
+        "A leftover oven. Useful if you like heat. Not why you jumped."
+    ),
+    "Ash Ring": (
+        "Water ice and light isotope grit around the inner giant. "
+        "Pretty in the red. Thin. You occupy it like a thought you cannot quite hold."
+    ),
+    "Shards Inner Belt": (
+        "The carbonaceous heart at 2.0 AU: dark rock, heavy hydrocarbons, kerogen-family organics, mixed volatiles. "
+        "Young yellow light makes the soot look almost warm. It is not. This is the organics a garden world would have eaten."
+    ),
+    "Shards Outer Belt": (
+        "Farther, icier, still carbon-dark. Water in the mix. "
+        "The UV from the young lamp is a sting even here. You mine with the visor down."
+    ),
+    "Shards Dust": (
+        "A cold dust world at 0.9 AU: silica, carbon, and evaporite pans bleached by young ultraviolet. "
+        "Oxidizer salts sit in the dry lakes. Nothing invited a city. The yellow star looks like home and is not."
+    ),
+    "Deep Dust": (
+        "Inner hot dust at 0.5 AU: iron and silica, extraction pads, no air worth a farm. "
+        "The dimmer gold-orange lamp is already a warning. The living moon is farther out. This is only the doorstep."
+    ),
+    "Deep Inner Giant": (
+        "At 4.5 AU, four moons: Haven, two ices, one rock. The giant is the reason they have a sky. "
+        "You did not come for the deck. You came for the moon that learned green."
+    ),
+    "Deep Outer Giant": (
+        "9.2 AU, three more moons - rock then ice then ice. Methane-family volatiles on the frosts. "
+        "Colder, quieter, hungrier. Haven is a rumour inward. Out here the system tells the truth."
+    ),
+    "Haven": (
+        "An ice moon that learned a thin sea and a ribbon of grass. Low gravity, habitable cool, breathable mix. "
+        "Twelve cells of almost-life: tight calories, air you can almost trust, water in the dust. No cities. "
+        "The giant is a pale stripe. The star is a dimmer gold. You feel, landing, that someone could live here if they were careful and a little hungry."
+    ),
+    "Deep Ice A": (
+        "Water ice, light isotopes, methane-family frost. Not Haven. Not kind. "
+        "You land for volatiles. The habitable ribbon is a bright lie next door."
+    ),
+    "Deep Rock": (
+        "Stone and light metal in the highlands, vacuum, cold. "
+        "Aluminium-family crust, iron, silica. A workshop moon. Haven's green does not reach this far."
+    ),
+    "Deep Ice B": (
+        "Another ice: water, isotopes, methane-family volatiles, a little poorer, a little farther. "
+        "The giant still fills the sky. You will not write home about this one. You will still fill the tanks."
+    ),
+    "Deep Outer 0": (
+        "The outer giant's rock moon: iron, silica, light metal. A dry step in a wet system. "
+        "Deep feels deeper here. The inner green is gone from the sky."
+    ),
+    "Deep Outer 1": (
+        "Ice and methane-family volatiles on the first outer frost. "
+        "You came this far for cold chemistry, not for a view. The view is still a giant and a dim gold lamp."
+    ),
+    "Deep Outer 2": (
+        "The last ice: water, light isotope, more methane-family frost. The edge of the map. "
+        "Turn around and the system is a story you already paid for."
+    ),
+    "Graph": (
+        "An ocean world at 0.95 AU under a clean yellow analog: cloud, water, silica coasts, iron in the highlands, a little precious metal in the peaks. "
+        "Thirty-six cells of continent and sea, grassland that could take a town, no town on it. "
+        "Carbon and stone, not an industrial signature. The star does not know the radio is empty. You will."
+    ),
+    "Graph Dust": (
+        "A colder dust world at 1.6 AU: silica, iron, carbon, light metal, one rock moon. "
+        "The ocean prize is inward and blue. This is the attic: dry, honest, useful if you already have air."
+    ),
+    "Graph Rock": (
+        "The dust world's moon: silica, iron, aluminium-family stone, vacuum. "
+        "Graph hangs as a marble you could almost drink. You are not here to drink. You are here to cut."
+    ),
+    "Graph Belt": (
+        "Carbon, iron, silica at 2.5 AU. A quiet belt. No wreck rumour yet. "
+        "The yellow lamp is still kind from here. The belt does not care."
+    ),
+    "Spare Dust": (
+        "Barren dust and highland under an even orange lantern: titanium-family metal, copper-family ballast, light alkali-earth in the residual melts. "
+        "No air. No farms. The loneliness is the geology. You came for what the crust refused to become."
+    ),
+    "Spare Ice": (
+        "A small ice moon, water only, no performance. "
+        "A drink after the dust. The orange star looks like a window someone forgot to close."
+    ),
+    "Spare Belt": (
+        "Titanium-family metal, copper-family grit, iron - a thin belt at 2.4 AU. "
+        "Spare by name and by feeling. You will not write a song about it. You may still fill a hold."
+    ),
+}
+
+
+def apply_flavour(systems):
+    missing = []
+    for system in systems:
+        star = system.star
+        text = STAR_FLAVOUR.get(star.name_en)
+        if not text:
+            missing.append("star %s" % star.name_en)
+        else:
+            star.description = text
+        for planet in system.planets:
+            text = BODY_FLAVOUR.get(planet.name_en)
+            if not text:
+                missing.append("planet %s" % planet.name_en)
+            else:
+                planet.description = text
+            for moon in planet.moons:
+                text = BODY_FLAVOUR.get(moon.name_en)
+                if not text:
+                    missing.append("moon %s" % moon.name_en)
+                else:
+                    moon.description = text
+            for ring in planet.belts:
+                text = BODY_FLAVOUR.get(ring.name_en)
+                if not text:
+                    missing.append("ring %s" % ring.name_en)
+                else:
+                    ring.description = text
+        for belt in system.belts:
+            text = BODY_FLAVOUR.get(belt.name_en)
+            if not text:
+                missing.append("belt %s" % belt.name_en)
+            else:
+                belt.description = text
+    if missing:
+        raise SystemExit("missing flavour for: " + ", ".join(missing))
+
+
 def validate(systems, landings):
     errors = []
     if len(systems) != 10:
@@ -1914,10 +2425,35 @@ def validate(systems, landings):
         errors.append("duplicate planet ids")
     if any(p.name == "P00001" for p in planets for q in planets if p is not q and q.name == "P00001"):
         errors.append("duplicate P00001")
-    if any(a.pair not in ("P00009", "P00010") for a in aldersons):
-        errors.append("Gate pair attrs")
+    pair_map = {a.name: a.pair for a in aldersons}
+    if pair_map.get("P00009") != "P00010" or pair_map.get("P00010") != "P00009":
+        errors.append("home pair P00009/P00010")
+    if len(aldersons) != 18:
+        errors.append("expected 18 Gates, got %d" % len(aldersons))
+    if any(a.pair not in alderson_ids for a in aldersons):
+        errors.append("Gate pair missing")
+    if any(pair_map.get(a.pair) != a.name for a in aldersons):
+        errors.append("Gate pairs not mutual")
+    if len(set(a.pair for a in aldersons)) != len(aldersons):
+        errors.append("duplicate Gate pairs")
+    body_ids = planet_ids + [b.name for s in systems for b in s.belts]
+    body_ids += [r.name for s in systems for p in s.planets for r in p.belts]
+    if set(body_ids) & set(alderson_ids):
+        errors.append("planet/gate id collision")
     if any(a.orbit is None for a in aldersons):
         errors.append("Gate missing orbit")
+    here_by_gate = {}
+    for system in systems:
+        for gate in system.aldersons:
+            here_by_gate[gate.name] = system.name_en
+    for system in systems:
+        for gate in system.aldersons:
+            other = here_by_gate.get(gate.pair)
+            expected = "%s %s Gate" % (system.name_en, other)
+            if gate.name_en != expected:
+                errors.append("Gate name-en %s expected %s" % (gate.name_en, expected))
+            if getattr(gate, "description", None):
+                errors.append("%s must have no description" % gate.name)
     stacks = collect_stacks(systems)
     by_name = {s.name: s for s in stacks}
     if "120001" not in by_name or by_name["120001"].typ != "city":
@@ -1962,6 +2498,89 @@ def validate(systems, landings):
         errors.append("Arbor race must sit on the planet, not orbit")
     if anvil.races != ["terran"] or (anvil.orbit and anvil.orbit.races):
         errors.append("Anvil race must sit on the planet, not orbit")
+    empty_systems = systems[2:]
+    if [s.name for s in empty_systems] != [
+        "SS0003",
+        "SS0004",
+        "SS0005",
+        "SS0006",
+        "SS0007",
+        "SS0008",
+        "SS0009",
+        "SS0010",
+    ]:
+        errors.append("empty systems: %s" % [s.name for s in empty_systems])
+    if any(len(s.aldersons) != 1 for s in empty_systems):
+        errors.append("each empty system must have exactly one Gate")
+    if len(systems[0].aldersons) != 5 or len(systems[1].aldersons) != 5:
+        errors.append("each home system must have 5 Gates")
+    empty_stacks = [st for s in empty_systems for st in collect_stacks([s])]
+    if any(st.typ in ("corphq", "city") for st in empty_stacks):
+        errors.append("empty systems must have no HQ or city")
+    if any(st.name.startswith("W") for st in empty_stacks):
+        errors.append("empty systems must have no t=1 wrecks")
+
+    def body_resources(system):
+        types = set()
+        for planet in system.planets:
+            for region in planet.regions:
+                types.update(t for t, _ in region.resources)
+            for moon in planet.moons:
+                for region in moon.regions:
+                    types.update(t for t, _ in region.resources)
+            for ring in planet.belts:
+                types.update(t for t, _, _ in ring.composition)
+        for belt in system.belts:
+            types.update(t for t, _, _ in belt.composition)
+        return types
+
+    signatures = {
+        "SS0003": "lithia",
+        "SS0004": "reeox",
+        "SS0005": "boron",
+        "SS0006": "xenon",
+        "SS0007": "nitrat",
+        "SS0010": "berylm",
+    }
+    extra_ores = {
+        "SS0003": ("deutrm",),
+        "SS0004": ("platnm", "nickfe"),
+        "SS0005": ("tungst", "grphit"),
+        "SS0006": ("ammoni", "volatl", "deutrm"),
+        "SS0007": ("kerogn", "volatl"),
+        "SS0008": ("methn", "alumin"),
+        "SS0009": ("gold", "alumin"),
+        "SS0010": ("titani", "copper"),
+    }
+    by_name = {s.name: s for s in empty_systems}
+    for sid, ore in signatures.items():
+        if ore not in body_resources(by_name[sid]):
+            errors.append("%s missing signature %s" % (sid, ore))
+    for sid, ores in extra_ores.items():
+        have = body_resources(by_name[sid])
+        missing = [ore for ore in ores if ore not in have]
+        if missing:
+            errors.append("%s missing ores %s" % (sid, ",".join(missing)))
+
+    graph = next(p for p in by_name["SS0009"].planets if p.name_en == "Graph")
+    if graph.races != ["terran"] or len(graph.regions) < 30:
+        errors.append("Graph must be terran habitable with 30+ regions, got %d" % len(graph.regions))
+    haven = None
+    for planet in by_name["SS0008"].planets:
+        for moon in planet.moons:
+            if moon.name_en == "Haven":
+                haven = moon
+    if haven is None or haven.races != ["terran"] or len(haven.regions) != 12:
+        errors.append("Haven must be terran with 12 regions")
+    if haven is not None and haven.atmosphere != "terair":
+        errors.append("Haven atmosphere must be terair")
+    for system in empty_systems:
+        for planet in system.planets:
+            for moon in planet.moons:
+                if len(moon.regions) < 10:
+                    errors.append("%s has %d regions (need >=10)" % (moon.name_en, len(moon.regions)))
+            if planet.sx > 0 and planet.sy > 0 and len(planet.regions) < 10:
+                errors.append("%s has %d regions (need >=10)" % (planet.name_en, len(planet.regions)))
     if any(p.typ == "abelt" for p in planets):
         errors.append("abelt planets remain; belts must be <belt>")
     if any(p.typ == "adpnt" for p in planets):
@@ -1994,12 +2613,28 @@ def validate(systems, landings):
     for s in stacks:
         if len(s.name) > 6:
             errors.append("stack id too long: %s" % s.name)
+    for system in systems:
+        if not system.star.description:
+            errors.append("star %s missing description" % system.star.name_en)
+        for planet in system.planets:
+            if not planet.description:
+                errors.append("planet %s missing description" % planet.name_en)
+            for moon in planet.moons:
+                if not moon.description:
+                    errors.append("moon %s missing description" % moon.name_en)
+            for ring in planet.belts:
+                if not ring.description:
+                    errors.append("ring %s missing description" % ring.name_en)
+        for belt in system.belts:
+            if not belt.description:
+                errors.append("belt %s missing description" % belt.name_en)
     if errors:
         raise SystemExit("validation failed:\n  " + "\n  ".join(errors))
 
 
 def main():
     systems, landings = build_world()
+    apply_flavour(systems)
     validate(systems, landings)
     root = ET.Element("game", turn="1")
     emit_factions(root)

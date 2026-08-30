@@ -21,6 +21,7 @@ Putting pages on `Game.exe` would violate the batch-processor decision and coupl
 3. **Status without an engine API:** publish a UTF-8 `status.json` (schema in the plan). Phase 1 is a committed placeholder; Phase 2 is PowerShell in `play/` writing that file from order-file presence. The site never calls `Game.exe` and never serves `gamein.xml`.
 4. **Visual tool:** out of scope for the website implementer. The site exposes `/client` and a placeholder href (`/visual-tool/` or a later absolute URL). Turning the link on is Phase 3.
 5. **Closed lobby:** no open signup. Attribution (Atlantis, Rise of Heroes, Vincent Archer) is required on the home page.
+6. **Phase 4 player tools (2026-08-29):** the same static origin may later add `/eta` (transit ETA from a **user-pasted text** ship report + two AU-from-star) and `/battle` (two-side what-if). Both are browser islands that port published formulas. They do **not** call `Game.exe`, do not serve `report.*` / `gamein.xml` / `data.xml`, and do not persist pastes. A full `Battle.cs` port or server-side report parse would need a new ADR.
 
 ## Options considered
 
@@ -46,3 +47,4 @@ Putting pages on `Game.exe` would violate the batch-processor decision and coupl
 ## Revision
 
 - 2026-08-29: Accepted. Astro static lobby; file-published status JSON.
+- 2026-08-29: Decision 6 — Phase 4 `/eta` and `/battle` as client-side planning tools on the same origin.

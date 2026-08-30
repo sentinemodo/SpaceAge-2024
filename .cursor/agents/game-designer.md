@@ -57,7 +57,7 @@ Encoding: **Windows-1251**. Prefer ASCII in `name-en` / `description`. Ids (`nam
 
 - Ten star systems; **two occupied** (Helios/Arbor factions 2–6, Fomal/Anvil factions 7–11), **eight empty**.
 - NPC faction `1` **United Star Nations** (cities, markets, contracts). Militias `12` **Arbor First** and `13` **HCS** (neutral at t=1; hostility flip is wishlist).
-- Helios Gate `P00009` ↔ Fomal Gate `P00010` (`<alderson>`, `pair=`). Empty systems have no AP at t=1.
+- Helios Fomal Gate `P00009` ↔ Fomal Helios Gate `P00010` (`<alderson>`, `pair=`). Each empty system has one Gate paired to a Helios or Fomal outbound Gate. Gate `name-en` is `{here} {pair} Gate`; no Gate `description`.
 - 1–4 planets or asteroid belts per system; 0–1 initially habitable; 0–2 exploitable; 0–4 moons; 10–50 regions per body.
 - Neither starting planet holds the full industrial diet — trade, contract, or fly.
 

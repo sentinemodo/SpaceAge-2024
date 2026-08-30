@@ -24,7 +24,7 @@ flowchart LR
 | `Tests` | `Game` | Compile-time project reference; tests construct `DataFile` / `Game` in-process |
 | GM / mailer (external, not in repo) | `Game.exe` | CLI + files: `/data`, `/turn-dir`, reports with `To:` headers |
 | `play/` scripts (Phase 2) | `website/public/status.json` | UTF-8 JSON allow-list (factions 2–11, submitted yes/no). **No** `Game` project reference |
-| `website/` | status JSON + static host | Fetches `/status.json`; does not call `Game.exe` |
+| `website/` | status JSON + static host | Fetches `/status.json`; does not call `Game.exe`. Phase 4 `/eta` `/battle` are browser-only |
 | `website/` `/client` | visual tool (future) | Href only (`/visual-tool/` placeholder) |
 | Cursor Cloud | this repo | Checkout + `.cursor/install.sh` (engine only; site is Node/Astro when built) |
 

@@ -43,9 +43,11 @@ Read the three architecture sources **before** scaffolding or changing the stack
 
 Delegate **`/project-architect` first**, then **wait**, when the request would add:
 
-- a **new public page** beyond `/`, `/client`, `/turns`, `/rules`;
+- a **new public page** beyond `/`, `/client`, `/turns`, `/rules`, and the Phase 4 pair `/eta` `/battle`;
 - a **new runtime** (SSR adapter, React/Vue island, player accounts, cookies, engine HTTP/SMTP/DB);
 - a **new npm dependency** beyond: `astro` (`output: 'static'`), TypeScript, `@astrojs/check`, Vitest (`getViteConfig()`). Tailwind is pre-approved but not required. `@playwright/test` is tester-owned. No auth libraries.
+
+`/eta` and `/battle` are approved **Phase 4** routes ([`website.md`](../../architecture/delivery/website.md)). Do not implement them before Phase 1. Do not expand `/battle` into a `Battle.cs` port without a dated revision.
 
 ### Deviation — stop for the human
 
@@ -60,12 +62,12 @@ After an explicit yes: `/project-architect` records an ADR or a dated revision *
 Prefer [Astro docs](https://docs.astro.build/en/getting-started/) and [Astro testing](https://docs.astro.build/en/guides/testing/).
 
 - Content-first pages; `output: 'static'`. No SSR adapter in MVP.
-- Islands **only** when interactivity is required (countdown / `fetch` of `/status.json`). Default is zero client JS.
+- Islands **only** when interactivity is required (countdown / `fetch` of `/status.json`; Phase 4 `/eta` and `/battle`). Default is zero client JS.
 - Typed `status.json` + Vitest: factions **2–11** only, `status` enum, **no** password/email/path keys.
 - Accessible HTML: `nav`, heading rank, real `<button>` / `<a>` — not clickable `div`s.
 - CSS files under `website/src/styles/`, mobile-first. No CSS-in-JS.
 - No React/Vue unless architect + **human** approved.
-- **No engine XML parse in Node** (no `gamein.xml` / 1251 reports in the site build).
+- **No engine XML parse in Node** (no `gamein.xml` / 1251 reports in the site build). Phase 4 `/eta` may parse **user-pasted UTF-8 text** in the browser only; never persist or POST it.
 - Hard-science / space look. Do not clone Atlantis hex or Bootstrap defaults.
 - Copy: excerpt Rules.txt §§1, 1.1, 2.1. Home **must** credit Atlantis, Rise of Heroes, Vincent Archer (not footer-only). Closed lobby — no signup.
 

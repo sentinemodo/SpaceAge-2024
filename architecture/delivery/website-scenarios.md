@@ -160,6 +160,52 @@ Playwright specs **cite the scenario id** in the title or annotation (`WS-001`, 
 
 When the architect names the tool folder, add its `e2e/**` glob to `.cursor/rules/website-tester.mdc` and move live `UT-*` rows into that app’s scenario file (or keep one catalog with a User tools chapter). Until then, keep this reserved table only.
 
+## Reserved — Phase 4 lobby tools (`/eta`, `/battle`)
+
+Do **not** implement these pages in Phase 1. Specs stay reserved until `/website-developer` ships the islands. Product brief: [`website.md`](website.md) **Phase 4 — Player tools**.
+
+### WS-010 — Transit ETA from ship report + two AU
+
+| Field | Value |
+|-------|--------|
+| **id** | `WS-010` |
+| **user goal** | Estimate MOVE weeks from own-ship mass/thrust and two orbital radii |
+| **route(s)** | `/eta` (CTA from home Tools card) |
+| **given** | Phase 4 site is built; a sample paste includes `mass: 40000/4150`; origin AU 1.0 and destination AU 80; drive speed 1 |
+| **when** | The visitor pastes the excerpt, sets the two AU-from-star fields, and calculates |
+| **then** | The page shows ΔAU **79** and **14** weeks (default workshop frigate, speed 1). Scout paste `mass: 40000/2430` at the same hop shows **10** weeks. Parse failure (no `mass: thrust/mass`) shows an error and allows manual thrust/mass. Page states the next engine turn is authoritative |
+| **layer** | **Vitest**: `DurationWeeks` + mass-factor clamp vs [`designer/au-transit.md`](../../designer/au-transit.md) locked table. **Playwright**: sample paste + two AU → 14 weeks |
+| **security** | Paste is not submitted to a server. HTML + `/status.json` still have no `report.` / `gamein` / `order.` files |
+
+### WS-011 — Two-side battle what-if
+
+| Field | Value |
+|-------|--------|
+| **id** | `WS-011` |
+| **user goal** | Play out a fight after entering units and tactics on both sides |
+| **route(s)** | `/battle` |
+| **given** | Phase 4 site; each side has at least one combatant (attack, defense, damage, HP, tactic) and a numeric seed |
+| **when** | The visitor runs the simulation |
+| **then** | A round log appears (fire / chance / hit or miss / wreck or capture) and an end line: attackers win, defenders win, or indecisive. Same seed + same roster reproduces the log. Page states this is a what-if, not `Game.exe` |
+| **layer** | **Vitest**: to-hit / damage / evade-leave helpers from [`player/battle.md`](../../player/battle.md). **Playwright**: submit a minimal two-unit roster → finished log + end line |
+| **security** | No upload of rosters. No `data.xml` / `gamein` on the origin |
+
+### WS-012 — Phase 4 tools do not publish reports
+
+| Field | Value |
+|-------|--------|
+| **id** | `WS-012` |
+| **user goal** | Use the calculators without the site becoming a report host |
+| **route(s)** | `/eta`, `/battle`, `/status.json` |
+| **given** | Phase 4 pages exist |
+| **when** | Playwright fetches the routes and JSON |
+| **then** | No `report.` / `gamein` / `order.` / `data.xml` files are served. Default page HTML contains no sample password or `#faction` credential line. WS-008 still holds on the Phase 1 routes |
+| **layer** | **Playwright** (and Vitest if a combat-stats excerpt JSON is added — allow-list keys only) |
+| **security** | This is the tools leak bar. Fail closed |
+
+WS-007 / WS-009 stay Phase 1 (four routes). When Phase 4 ships, extend those rows (or add a follow-up id) so nav + 390px cover `/eta` and `/battle` — do not renumber.
+
 ## Revision
 
 - 2026-08-29: Seed catalog for `/website-tester`. Canonical path after Phase 1: `website/e2e/scenarios.md`.
+- 2026-08-29: Reserved WS-010…WS-012 for Phase 4 `/eta` and `/battle`.
