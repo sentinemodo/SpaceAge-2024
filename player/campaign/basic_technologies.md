@@ -1,10 +1,10 @@
 # Level 0 and 1 technologies (campaign)
 
-Catalog: `campaign/data.xml`, loaded by `Game/game/CatalogLoader.cs` (`DataFile.LoadConfigurationItems` delegates). Checked **30 Aug 2026** against engine **0.1.148**.
+Catalog: `campaign/data.xml`, loaded by `Game/game/CatalogLoader.cs` (`DataFile.LoadConfigurationItems` delegates). Checked **30 Aug 2026** against engine **0.1.148**. Phase 1 catalog slice (optins, personal combat kit, ionthr) included.
 
 This is the **campaign** L0–L1 excerpt for campaign-ai and campaign play. SampleGame manuals (`player/basic_technologies.md`, `player/advanced_technologies.md`) stay on `Tests/data.xml` and are not retargeted here.
 
-This file lists **level 0 and level 1** technologies, then the **module types** and **item types** those technologies produce or consume. Level 2 and above are not in this excerpt (no `player/campaign/advanced_technologies.md` yet). Alphabetical by English `name-en` inside each level.
+This file lists **level 0 and level 1** technologies, then the **module types** and **item types** those technologies produce or consume. **Level 2+** are in [`player/campaign/advanced_technologies.md`](advanced_technologies.md). SampleGame manuals stay on `Tests/data.xml`.
 
 Omitted `use-time` defaults to **1** week in `CatalogLoader`. Omitted consume/produce `quantity` defaults to **1**.
 
@@ -222,6 +222,22 @@ Works in: extraction, solid-surface. Use produces: 2 nickel-iron `[nickfe]`. Use
 A rack of chemically boosted rockets sized to nest on a shuttle or station and fire in orbit. Built in a factory on the ground or assembled in space. Tag: `military`.  
 Works in: production (no location-type limit). Use consumes: 4 iron `[iron]`. Use produces: orbital rocket launcher `[orbrkt]`. Use-time: 8 weeks.
 
+**optical and IR instruments [optins]**  
+Diffraction-limited telescopes, FTIR, and gold-coated contacts for survey and targeting research. Tag: `research`. **Requires:** file indexing `[filidx]`.  
+Works in: production. Use consumes: 6 silicium `[silici]`, 4 copper `[copper]`, 2 iron `[iron]`, 1 gold `[gold]`. Use produces: optical lab `[optlab]`. Use-time: 4 weeks.
+
+**personal armour [psnarm]**  
+Ceramic-composite body armour resisting kinetics. Tag: `military`. **Requires:** stationary defense `[stnrdf]`.  
+Works in: production. Use consumes: 2 iron `[iron]`, 1 titanium `[titani]`. Use produces: personal armour `[psnarm]` (item). Use-time: 3 weeks.
+
+**personal laser [prllsr]**  
+Compact man-portable high-frequency laser for infantry battalions. Tag: `military`. **Requires:** laser optics `[lasopt]`.  
+Works in: production. Use consumes: 2 terran breathing gas `[terair]`, 1 copper `[copper]`, 1 oxyhydro `[h2o2]`. Use produces: personal laser `[prllsr]` (item). Use-time: 3 weeks.
+
+**personal rail gun [prlgun]**  
+Man-portable electromagnetic rail kinetic for infantry battalions. Tag: `military`. **Requires:** stationary defense `[stnrdf]`.  
+Works in: production. Use consumes: 2 iron `[iron]`, 1 titanium `[titani]`. Use produces: personal rail gun `[prlgun]` (item). Use-time: 3 weeks.
+
 **preventive servicing [servic]**  
 Maintenance and repairs are best done in advance. Tag: `repair`.  
 Works in: production. Use consumes: 1 titanium `[titani]`, 1 iron `[iron]`, 1 copper `[copper]`, 1 silicium `[silici]`. Use produces: 10 spare parts `[spare]`. Use-time: 1 week (default).
@@ -270,6 +286,10 @@ Group `command`. Built by space control `[spctrl]`. Size 800, mass 300, crew 1, 
 **computer library [cmplib]**  
 The efficiency of the computer library allows on to store and manipulate larger than usual files and technological reference documents.  
 Group `research`. Built by file indexing `[filidx]`. Size 200, mass 50, energy 5, HP 50, tech-cap 4, research-output 1, value 1000. Upkeep 5 cash.
+
+**optical lab [optlab]**  
+Diffraction-limited optical and IR instruments for survey and targeting research.  
+Group `research`. Built by optical and IR instruments `[optins]`. Size 250, mass 60, crew 2, energy 6, HP 35, tech-cap 5, research-output 1. Upkeep 35 cash.
 
 **corporate headquarters [corphq]**  
 A corporate headquarters allow centralized control of the corporation.  
@@ -442,6 +462,26 @@ No size/mass in the catalog. Consumed by city planning `[ctypln]` (500). Settlem
 **rocket launchers [rctlnc]**  
 Infantry equipment.  
 Size 100, mass 100, attack 2, damage 2. Produced by rocket launcher production `[rckter]` (1). Usable by module group infantry.
+
+**personal laser [prllsr]**  
+Compact man-portable high-frequency laser.  
+Size 2, mass 3, attack 2, damage 2. Produced by personal laser `[prllsr]` (1). Usable by module group infantry.
+
+**personal rail gun [prlgun]**  
+Man-portable electromagnetic rail kinetic.  
+Size 3, mass 4, attack 2, damage 3. Produced by personal rail gun `[prlgun]` (1). Usable by module group infantry.
+
+**personal armour [psnarm]**  
+Ceramic-composite body armour resisting kinetics.  
+Size 4, mass 6, defense 3. Produced by personal armour `[psnarm]` (1). Usable by module group infantry.
+
+**personal plasma shield [psnshd]**  
+Wearable gas-fed plasma bottle resisting lasers.  
+Size 3, mass 4, defense 3. Produced by personal plasma shield `[psnshd]` (1). Usable by module group infantry.
+
+**personal EW pack [psnew]**  
+Datalink spoof and jamming pack vs drones.  
+Size 2, mass 2, defense 2, initiative 2. Produced by personal EW pack `[psnew]` (1). Usable by module group infantry.
 
 **spare part [spare]**  
 Spare part can be used to remove 10 points of damage.  

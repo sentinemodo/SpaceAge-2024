@@ -71,7 +71,7 @@ The lobby **must** expose:
 - [x] TDD reveal campaign flavour texts: `RESEARCH <space-object-id>` shows that star/planet/moon/belt `description` in the report when the lab is at that orbit/region/belt (or on the body's orbit/surface; stars have no proximity gate); turn-1 report seeds home star + home planet blurbs (Helios/Arbor or Fomal/Anvil). Spec: [designer/engine-wishlist.md](../../designer/engine-wishlist.md)
 - [x] `player/campaign/basic_technologies.md` from `campaign/data.xml`; `/player` refresh `rules.md` (`JUMP`, space MOVE ETA, hull groups) and `battle.md` typed combat; architect `campaign-play.md`
 - [ ] TDD SampleGame green: refresh `Tests/SampleGame/` goldens (`testreport.*`, `gameout.*`, frozen saves) for current engine **0.1.148** and landed slices (JUMP, env, AU×drive, typed combat, XYZ). Do **not** retune `Tests/data.xml` for campaign stats. `/player` validates report beats; human approves each golden replace.
-- [ ] Designer campaign catalog: add remaining technologies (and linked modules/items) from [designer/technology.md](../../designer/technology.md) / [designer/catalog.md](../../designer/catalog.md) through L10 — `requires` edges, L2–L10 gap fills, ark stack. TDD: `LoadConfiguration` on `campaign/data.xml` stays green; no `Tests/data.xml` changes.
+- [x] Designer campaign catalog: **phased** add of remaining technologies (and linked modules/items) from [designer/technology.md](../../designer/technology.md) / [designer/catalog.md](../../designer/catalog.md) through L10. **Phase 1–6 done (2026-08-30):** L2 personal combat → L10 ark stack (`arkdrv`…`arkmag`); `arkcns` `requires`→`lghull`; [`player/campaign/advanced_technologies.md`](../../player/campaign/advanced_technologies.md) (L2+). **`arkcns` policy:** both `cruihl` and `lghull` tech copies required to USE. TDD: `LoadConfiguration` stays green; no `Tests/data.xml` changes.
 - [ ] New branch `cursor/campaign-load-play`; commit; push `-u`; `gh pr create` against main (not stacked on SampleGame turn 5)
 
 ## 1. Prove the campaign catalog loads
@@ -204,7 +204,7 @@ Spec: [designer/combat-balance.md](../../designer/combat-balance.md) matchup tab
 
 Spec: [designer/combat-balance.md](../../designer/combat-balance.md) hull table; [designer/engine-wishlist.md](../../designer/engine-wishlist.md); [designer/xml-schema.md](../../designer/xml-schema.md).
 
-Parse/ToToken/`IsShipHull` already accept `corvette` `destroyer` `cruiser` `capital` `ark`. Campaign hulls (`corhul` `deshul` `cruhul` `arkhul`) still emit `group="frigate"` so load stays safe; retag plus `operation-allowed-in` allow-lists is the remaining work. SampleGame stays `frigate`.
+Parse/ToToken/`IsShipHull` already accept `corvette` `destroyer` `cruiser` `capital` `ark`. Campaign hulls (`corhul` `deshul` `cruhul` `arkhul`) emit the matching groups; allow-lists on `operation-allowed-in` / `usable-in` include all hull groups. SampleGame stays `frigate`.
 
 - Add enum + Parse/ToToken: `corvette` `destroyer` `cruiser` `capital` `ark`. Patrol `sshull` stays `frigate` (SampleGame).
 - Shared helper `IsShipHull` (frigate ∪ new groups ∪ type `shuttl`) for `JUMP`, atmosphere land ban, and nesting checks that today test `== frigate` ([ModuleStack](../../Game/data%20structures/ModuleStack.cs) ~1220).
@@ -241,7 +241,15 @@ Live `f` in [designer/au-transit.md](../../designer/au-transit.md): moon-scale `
 
 ## Suggested implementation order
 
-Remaining (playability, 2026-08-30): public lobby website → RESEARCH flavour reveal → **SampleGame golden refresh** → **campaign tech tree L2–L10** ([designer/technology.md](../../designer/technology.md)) → **new PR**. Landed this pass: hull catalog retag (`corhul`→corvette … `arkhul`→ark) + allow-lists + unit tests.
+Remaining (playability, 2026-08-30):
+
+1. **SampleGame golden refresh** (TDD; engine 0.1.148) — unblocks PR confidence; does not block designer catalog slices.
+2. **Campaign tech tree L2–L10** in **six designer PR slices** ([designer/technology.md](../../designer/technology.md); gap table in parent handoff 2026-08-30) — run `LoadConfiguration` after each slice.
+3. **`player/campaign/advanced_technologies.md`** (/player) — after designer **Phase 3** (L5–L6 in catalog) or when L4+ military/propulsion ids stabilize.
+4. **New PR** `cursor/campaign-load-play` — after SampleGame green + at least designer Phase 2 (L4 orbit/industrial) or human chooses “catalog-complete” gate.
+5. **Public lobby website** — parallel; architect/website-developer; not blocked by catalog.
+
+Done: RESEARCH flavour reveal; hull catalog retag (`corhul`→corvette … `arkhul`→ark) + allow-lists + unit tests.
 
 ## 8. New pull request
 

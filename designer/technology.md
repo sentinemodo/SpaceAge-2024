@@ -77,7 +77,7 @@ L3–L10 target: production 3–5, propulsion 2–3, research 2–3, military 2�
 | 9 | `eclss2` `agrark` `shldsp` `wstprc` | `hiisp` `orbtug` `brakch` | `crewmd` `psysup` `navint` | `ciwssy` **pbpd** `ewark` **ew** `minelr` **missile** |
 | 10 | `arkcns` `arkshl` `arkrec` | `arkdrv` `arkrcs` `arksail` | `arkcmd` `arknav` `dosmtr` | `arkdef` **laser** `arkshd` **shield** `arkew` **ew** `arkpd` **pbpd** |
 
-**L0–L1 gaps:** filled at L1 (`hydstg`, `optins`). **L4** is not only `alnfgh`. **L10** ark hull/drive/bridge/grid plus shielding, recycling, RCS, sail abort, nav, dosimetry, magazines, EW.
+**L0–L1 gaps:** filled at L1 (`hydstg`, `optins`). **L4** is not only `alnfgh`. **L10** ark hull/drive/bridge/grid plus shielding, recycling, RCS, sail abort, nav, dosimetry, magazines, EW. **`arkcns`:** both military hull ladder (`cruihl` chain) and production megahull (`lghull` chain) tech copies are required to USE; catalog `requires` is a single id — set to `lghull` once that tech lands (Phase 4), document `cruihl` as mandatory co-requisite.
 
 New ids are **bold** in the tables below. Live rows keep catalog consume/produce.
 
@@ -253,7 +253,7 @@ flowchart TB
 | `isrurf` | `he3min` |
 | `whlhbt` | `dmecns` |
 | `lghull` | `whlhbt` |
-| `arkcns` | `lghull` |
+| `arkcns` | `lghull` (when landed); **also requires `cruihl` tech copy** — engine XML holds one `requires` id; campaign policy is both hull paths before USE |
 | `agrark` | `afrmng` |
 | `dhefus` | `he3fus` |
 | `kntcgn` | `stnrdf` |

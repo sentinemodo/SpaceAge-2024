@@ -18,7 +18,9 @@ Use live **groups**. Intended future group in parentheses → wishlist.
 
 ### Hull size classes (L0–L10)
 
-All use `group="frigate"` until engine adds `corvette`/`cruiser`/`capital`/`ark`. See [`combat-balance.md`](combat-balance.md).
+Engine **0.1.148+** loads hull groups `corvette` `destroyer` `cruiser` `capital` `ark`. Campaign catalog already tags `corhul`/`deshul`/`cruhul`/`arkhul` accordingly. SampleGame stays `frigate`. See [`combat-balance.md`](combat-balance.md).
+
+Campaign also uses a **propulsion hull ladder** (`corvhl`→`desthl`→`cruihl`→`arkcns`) alongside spec production megahulls (`whlhbt`→`lghull`); both can coexist — see orchestration handoff in `architecture/delivery/campaign-play.md`.
 
 | Class | Id | Tech | Size / capacity | Nested combat | Hull HP |
 |-------|-----|------|-----------------|---------------|---------|

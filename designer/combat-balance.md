@@ -105,8 +105,8 @@ SampleGame goldens use **Tests/data.xml** (tanks dmg 4, gunplc HP 100) → captu
 | L0 | 8 | `stnrdf` 8 wk, 8 iron + 4 titani |
 | L1 | 10–13 | `armcbt` 10, `lasopt`/`lstrrt` 10, `frminf` 13 |
 | L2–3 | 12–14 | `xraylo` 12, `drnhng` 14, `mslpod` 14 |
-| L4–6 | 16–20 | `alnfgh` 16, `kntcgn`/`shpltc` 16, `gausgn` 20 |
-| L7–10 | 24–40 | `crumtc` 24, `spngun` 32, `arkcns` 40 |
+| L4–6 | 16–20 | `alnfgh` 16, `kntcgn`/`shplas` 16, `gausgn` 20 |
+| L7–10 | 24–40 | `crumis` 8, `spngun` 10, `arkcns` 13 |
 
 ## Hull size classes
 
