@@ -1313,6 +1313,41 @@ namespace UnitTests
 		}
 
 		[Test]
+		public void ModuleTypeGroupXml_Parse_MapsShipHullGroups()
+		{
+			Assert.That(ModuleTypeGroupXml.Parse("corvette"), Is.EqualTo(EModuleTypesGroup.corvette));
+			Assert.That(ModuleTypeGroupXml.Parse("destroyer"), Is.EqualTo(EModuleTypesGroup.destroyer));
+			Assert.That(ModuleTypeGroupXml.Parse("cruiser"), Is.EqualTo(EModuleTypesGroup.cruiser));
+			Assert.That(ModuleTypeGroupXml.Parse("capital"), Is.EqualTo(EModuleTypesGroup.capital));
+			Assert.That(ModuleTypeGroupXml.Parse("ark"), Is.EqualTo(EModuleTypesGroup.ark));
+		}
+
+		[Test]
+		public void ModuleTypeGroupXml_ToToken_MapsShipHullGroups()
+		{
+			Assert.That(ModuleTypeGroupXml.ToToken(EModuleTypesGroup.corvette), Is.EqualTo("corvette"));
+			Assert.That(ModuleTypeGroupXml.ToToken(EModuleTypesGroup.destroyer), Is.EqualTo("destroyer"));
+			Assert.That(ModuleTypeGroupXml.ToToken(EModuleTypesGroup.cruiser), Is.EqualTo("cruiser"));
+			Assert.That(ModuleTypeGroupXml.ToToken(EModuleTypesGroup.capital), Is.EqualTo("capital"));
+			Assert.That(ModuleTypeGroupXml.ToToken(EModuleTypesGroup.ark), Is.EqualTo("ark"));
+		}
+
+		[Test]
+		public void ModuleType_IsShipHull_RecognizesHullGroups()
+		{
+			Assert.That(ModuleType.IsShipHull(EModuleTypesGroup.frigate), Is.True);
+			Assert.That(ModuleType.IsShipHull(EModuleTypesGroup.corvette), Is.True);
+			Assert.That(ModuleType.IsShipHull(EModuleTypesGroup.destroyer), Is.True);
+			Assert.That(ModuleType.IsShipHull(EModuleTypesGroup.cruiser), Is.True);
+			Assert.That(ModuleType.IsShipHull(EModuleTypesGroup.capital), Is.True);
+			Assert.That(ModuleType.IsShipHull(EModuleTypesGroup.ark), Is.True);
+			Assert.That(ModuleType.IsShipHull(EModuleTypesGroup.shuttle), Is.True);
+			Assert.That(ModuleType.IsShipHull(EModuleTypesGroup.spacecraft), Is.True);
+			Assert.That(ModuleType.IsShipHull(EModuleTypesGroup.military), Is.False);
+			Assert.That(ModuleType.IsShipHull(EModuleTypesGroup.settlement), Is.False);
+		}
+
+		[Test]
 		public void ModuleTypeGroupXml_Parse_UnknownToken_ThrowsKeyNotFound()
 		{
 			Assert.Throws<KeyNotFoundException>(() => ModuleTypeGroupXml.Parse("not-a-group"));

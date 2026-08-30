@@ -1381,6 +1381,11 @@ Researchers can query the library. The system can handle natural language questi
 			<upkeep type="cash" quantity="55"/>
 			<operation-allowed-in module-group="settlement"/>
 			<operation-allowed-in module-group="frigate"/>
+			<operation-allowed-in module-group="corvette"/>
+			<operation-allowed-in module-group="destroyer"/>
+			<operation-allowed-in module-group="cruiser"/>
+			<operation-allowed-in module-group="capital"/>
+			<operation-allowed-in module-group="ark"/>
 			<operation-allowed-in module-group="space station"/>
 		</entry>
 		<entry
@@ -1399,6 +1404,11 @@ Researchers can query the library. The system can handle natural language questi
 			<operation-allowed-in location-type="solid-surface"/>
 			<operation-allowed-in module-group="settlement"/>
 			<operation-allowed-in module-group="frigate"/>
+			<operation-allowed-in module-group="corvette"/>
+			<operation-allowed-in module-group="destroyer"/>
+			<operation-allowed-in module-group="cruiser"/>
+			<operation-allowed-in module-group="capital"/>
+			<operation-allowed-in module-group="ark"/>
 		</entry>
 		<entry
 			name="cdrill"
@@ -1417,6 +1427,11 @@ Researchers can query the library. The system can handle natural language questi
 			<operation-allowed-in location-type="solid-surface"/>
 			<operation-allowed-in module-group="settlement"/>
 			<operation-allowed-in module-group="frigate"/>
+			<operation-allowed-in module-group="corvette"/>
+			<operation-allowed-in module-group="destroyer"/>
+			<operation-allowed-in module-group="cruiser"/>
+			<operation-allowed-in module-group="capital"/>
+			<operation-allowed-in module-group="ark"/>
 			<effect type="faster extraction" value="1" target="self"/>
 		</entry>
 		<entry
@@ -1601,6 +1616,11 @@ Researchers can query the library. The system can handle natural language questi
 			technology-capacity="1"
 			hit-points="65">
 			<operation-allowed-in module-group="frigate"/>
+			<operation-allowed-in module-group="corvette"/>
+			<operation-allowed-in module-group="destroyer"/>
+			<operation-allowed-in module-group="cruiser"/>
+			<operation-allowed-in module-group="capital"/>
+			<operation-allowed-in module-group="ark"/>
 			<upkeep type="cash" quantity="15"/>
 			<move mode="space" speed="0.5" mass-capacity="10000"/>
 			<fuel duration="1">
@@ -1699,6 +1719,11 @@ Researchers can query the library. The system can handle natural language questi
 			hit-points="55">
 			<upkeep type="cash" quantity="10"/>
 			<operation-allowed-in module-group="frigate"/>
+			<operation-allowed-in module-group="corvette"/>
+			<operation-allowed-in module-group="destroyer"/>
+			<operation-allowed-in module-group="cruiser"/>
+			<operation-allowed-in module-group="capital"/>
+			<operation-allowed-in module-group="ark"/>
 			<operation-allowed-in module-group="space station"/>
 		</entry>
 		<entry
@@ -1988,6 +2013,11 @@ Researchers can query the library. The system can handle natural language questi
 			<upkeep type="cash" quantity="20"/>
 			<operation-allowed-in module-group="settlement"/>
 			<operation-allowed-in module-group="frigate"/>
+			<operation-allowed-in module-group="corvette"/>
+			<operation-allowed-in module-group="destroyer"/>
+			<operation-allowed-in module-group="cruiser"/>
+			<operation-allowed-in module-group="capital"/>
+			<operation-allowed-in module-group="ark"/>
 			<operation-allowed-in module-group="spacecraft"/>
 			<operation-allowed-in module-group="space station"/>
 		</entry>
@@ -2104,6 +2134,11 @@ Researchers can query the library. The system can handle natural language questi
 			<operation-allowed-in location-type="solid-surface"/>
 			<operation-allowed-in module-group="settlement"/>
 			<operation-allowed-in module-group="frigate"/>
+			<operation-allowed-in module-group="corvette"/>
+			<operation-allowed-in module-group="destroyer"/>
+			<operation-allowed-in module-group="cruiser"/>
+			<operation-allowed-in module-group="capital"/>
+			<operation-allowed-in module-group="ark"/>
 		</entry>
 		<entry name="fusrec" name-en="fusion reactor" name-en2="fusion reactors" group="energy" description="Fuses helium-3 to deliver clean, abundant power." size="1200" mass="1200" crew="3" energy="5" hit-points="120">
 			<produce energy="120" duration="13"/>
@@ -2135,6 +2170,11 @@ Researchers can query the library. The system can handle natural language questi
 			<operation-allowed-in module-group="habitat"/>
 			<operation-allowed-in module-group="settlement"/>
 			<operation-allowed-in module-group="frigate"/>
+			<operation-allowed-in module-group="corvette"/>
+			<operation-allowed-in module-group="destroyer"/>
+			<operation-allowed-in module-group="cruiser"/>
+			<operation-allowed-in module-group="capital"/>
+			<operation-allowed-in module-group="ark"/>
 		</entry>
 		<entry
 			name="smhabi"
@@ -2205,6 +2245,11 @@ Researchers can query the library. The system can handle natural language questi
 			hit-points="100">
 			<upkeep type="cash" quantity="30"/>
 			<operation-allowed-in module-group="frigate"/>
+			<operation-allowed-in module-group="corvette"/>
+			<operation-allowed-in module-group="destroyer"/>
+			<operation-allowed-in module-group="cruiser"/>
+			<operation-allowed-in module-group="capital"/>
+			<operation-allowed-in module-group="ark"/>
 			<operation-allowed-in module-group="settlement"/>
 		</entry>
 		<entry
@@ -2222,6 +2267,11 @@ Researchers can query the library. The system can handle natural language questi
 			hit-points="55">
 			<upkeep type="cash" quantity="35"/>
 			<operation-allowed-in module-group="frigate"/>
+			<operation-allowed-in module-group="corvette"/>
+			<operation-allowed-in module-group="destroyer"/>
+			<operation-allowed-in module-group="cruiser"/>
+			<operation-allowed-in module-group="capital"/>
+			<operation-allowed-in module-group="ark"/>
 		</entry>
 		<entry
 			name="autdrv"
@@ -2237,6 +2287,11 @@ Researchers can query the library. The system can handle natural language questi
 			technology-capacity="1"
 			hit-points="65">
 			<operation-allowed-in module-group="frigate"/>
+			<operation-allowed-in module-group="corvette"/>
+			<operation-allowed-in module-group="destroyer"/>
+			<operation-allowed-in module-group="cruiser"/>
+			<operation-allowed-in module-group="capital"/>
+			<operation-allowed-in module-group="ark"/>
 			<upkeep type="cash" quantity="40"/>
 			<move mode="space" speed="0.5" mass-capacity="10000"/>
 			<fuel duration="1">
@@ -2257,6 +2312,11 @@ Researchers can query the library. The system can handle natural language questi
 			<produce energy="80" duration="13"/>
 			<energy-consume type="heliu3" quantity="2"/>
 			<operation-allowed-in module-group="frigate"/>
+			<operation-allowed-in module-group="corvette"/>
+			<operation-allowed-in module-group="destroyer"/>
+			<operation-allowed-in module-group="cruiser"/>
+			<operation-allowed-in module-group="capital"/>
+			<operation-allowed-in module-group="ark"/>
 			<operation-allowed-in location-type="solid-surface"/>
 			<upkeep type="cash" quantity="40"/>
 			<fuel duration="13">
@@ -2278,6 +2338,11 @@ Researchers can query the library. The system can handle natural language questi
 			hit-points="80">
 			<upkeep type="cash" quantity="40"/>
 			<operation-allowed-in module-group="frigate"/>
+			<operation-allowed-in module-group="corvette"/>
+			<operation-allowed-in module-group="destroyer"/>
+			<operation-allowed-in module-group="cruiser"/>
+			<operation-allowed-in module-group="capital"/>
+			<operation-allowed-in module-group="ark"/>
 		</entry>
 		<entry
 			name="alndrn"
@@ -2351,23 +2416,22 @@ Researchers can query the library. The system can handle natural language questi
 		<entry name="ciwst" name-en="close-in weapon system" name-en2="close-in weapon systems" group="military" resists="pbpd" description="Proximity isotope burst CIWS; resists missiles." size="400" mass="300" crew="2" energy="20" technology-capacity="2" hit-points="120" attack="8" defense="12" damage="10">
 			<upkeep type="cash" quantity="115"/>
 		</entry>
-		<!-- Hull size classes (group frigate until engine adds corvette/cruiser/capital/ark) -->
-		<entry name="corhul" name-en="corvette hull" name-en2="corvette hulls" group="frigate" description="L2-L3 corvette pressure hull; hosts 2-4 combat stacks." size="8000" mass="400" capacity="7000" energy="2" hit-points="80" defense="10" radiation="-50" cannot-hold-itemstacks="yes">
+		<entry name="corhul" name-en="corvette hull" name-en2="corvette hulls" group="corvette" description="L2-L3 corvette pressure hull; hosts 2-4 combat stacks." size="8000" mass="400" capacity="7000" energy="2" hit-points="80" defense="10" radiation="-50" cannot-hold-itemstacks="yes">
 			<upkeep type="cash" quantity="70"/>
 			<operation-allowed-in location-type="orbit"/>
 			<operation-allowed-in location-type="space"/>
 		</entry>
-		<entry name="deshul" name-en="destroyer hull" name-en2="destroyer hulls" group="frigate" description="L6-L7 destroyer hull; hosts 6-10 combat stacks." size="25000" mass="8000" capacity="20000" energy="20" hit-points="200" defense="14" radiation="-80" cannot-hold-itemstacks="yes">
+		<entry name="deshul" name-en="destroyer hull" name-en2="destroyer hulls" group="destroyer" description="L6-L7 destroyer hull; hosts 6-10 combat stacks." size="25000" mass="8000" capacity="20000" energy="20" hit-points="200" defense="14" radiation="-80" cannot-hold-itemstacks="yes">
 			<upkeep type="cash" quantity="240"/>
 			<operation-allowed-in location-type="orbit"/>
 			<operation-allowed-in location-type="space"/>
 		</entry>
-		<entry name="cruhul" name-en="cruiser hull" name-en2="cruiser hulls" group="frigate" description="L8-L9 cruiser hull; hosts 10-16 combat stacks." size="45000" mass="15000" capacity="35000" energy="40" hit-points="350" defense="16" radiation="-100" cannot-hold-itemstacks="yes">
+		<entry name="cruhul" name-en="cruiser hull" name-en2="cruiser hulls" group="cruiser" description="L8-L9 cruiser hull; hosts 10-16 combat stacks." size="45000" mass="15000" capacity="35000" energy="40" hit-points="350" defense="16" radiation="-100" cannot-hold-itemstacks="yes">
 			<upkeep type="cash" quantity="395"/>
 			<operation-allowed-in location-type="orbit"/>
 			<operation-allowed-in location-type="space"/>
 		</entry>
-		<entry name="arkhul" name-en="ark hull" name-en2="ark hulls" group="frigate" description="L10 self-sufficient ark pressure hull for thousands of crew." size="80000" mass="25000" capacity="60000" energy="80" hit-points="500" defense="20" radiation="-150" cannot-hold-itemstacks="yes">
+		<entry name="arkhul" name-en="ark hull" name-en2="ark hulls" group="ark" description="L10 self-sufficient ark pressure hull for thousands of crew." size="80000" mass="25000" capacity="60000" energy="80" hit-points="500" defense="20" radiation="-150" cannot-hold-itemstacks="yes">
 			<upkeep type="cash" quantity="635"/>
 			<operation-allowed-in location-type="orbit"/>
 			<operation-allowed-in location-type="space"/>
@@ -2379,6 +2443,11 @@ Researchers can query the library. The system can handle natural language questi
 				<item type="h2o2" quantity="2"/>
 			</fuel>
 			<operation-allowed-in module-group="frigate"/>
+			<operation-allowed-in module-group="corvette"/>
+			<operation-allowed-in module-group="destroyer"/>
+			<operation-allowed-in module-group="cruiser"/>
+			<operation-allowed-in module-group="capital"/>
+			<operation-allowed-in module-group="ark"/>
 		</entry>
 		<entry
 			name="fustor"
@@ -2399,6 +2468,11 @@ Researchers can query the library. The system can handle natural language questi
 				<item type="heliu3" quantity="2"/>
 			</fuel>
 			<operation-allowed-in module-group="frigate"/>
+			<operation-allowed-in module-group="corvette"/>
+			<operation-allowed-in module-group="destroyer"/>
+			<operation-allowed-in module-group="cruiser"/>
+			<operation-allowed-in module-group="capital"/>
+			<operation-allowed-in module-group="ark"/>
 		</entry>
 		<entry name="crylab" name-en="cryogenic lab" name-en2="cryogenic labs" group="research" description="Cryogenic instrumentation lab for cold-environment settlement and sensors." size="280" mass="90" crew="3" energy="8" technology-capacity="5" research-output="2" hit-points="30">
 			<upkeep type="cash" quantity="40"/>
@@ -2484,6 +2558,11 @@ Researchers can query the library. The system can handle natural language questi
 			defense="5"
 			initiative="5">
 			<usable-in module-group="frigate" modulestack-size="1"/>
+			<usable-in module-group="corvette" modulestack-size="1"/>
+			<usable-in module-group="destroyer" modulestack-size="1"/>
+			<usable-in module-group="cruiser" modulestack-size="1"/>
+			<usable-in module-group="capital" modulestack-size="1"/>
+			<usable-in module-group="ark" modulestack-size="1"/>
 		</entry>
 		<entry 
 			name="sscmnd"

@@ -67,9 +67,11 @@ The lobby **must** expose:
 - [x] TDD load `weapon-group`/`resists`/`armor-module`; matchup table; armour 5× `hitWeight` + no capture; shield 90% intercept. SampleGame stays flat (no attrs)
 - [x] TDD space MOVE duration from ΔAU × catalog drive speed (same-system planet/moon orbits); replace hardcoded 1-week and `NotImplemented` planet–planet
 - [x] TDD `LoadGalaxy` assigns system X Y Z (uncomment); round-trip save; reports show coords. Empty systems `X=4+`
-- [ ] TDD hull groups `corvette`/`destroyer`/`cruiser`/`capital`/`ark`; Parse/ToToken; `IsShipHull` helper; campaign catalog groups; SampleGame stays `frigate`
+- [x] TDD hull groups `corvette`/`destroyer`/`cruiser`/`capital`/`ark`; Parse/ToToken; `IsShipHull` helper; campaign catalog groups; SampleGame stays `frigate`
 - [ ] TDD reveal campaign flavour texts: `RESEARCH <space-object-id>` shows that star/planet/moon/belt `description` in the report (like technologies seen); turn-1 report seeds home star + home planet blurbs (Helios/Arbor or Fomal/Anvil). Spec: [designer/engine-wishlist.md](../../designer/engine-wishlist.md)
 - [x] `player/campaign/basic_technologies.md` from `campaign/data.xml`; `/player` refresh `rules.md` (`JUMP`, space MOVE ETA, hull groups) and `battle.md` typed combat; architect `campaign-play.md`
+- [ ] TDD SampleGame green: refresh `Tests/SampleGame/` goldens (`testreport.*`, `gameout.*`, frozen saves) for current engine **0.1.148** and landed slices (JUMP, env, AU×drive, typed combat, XYZ). Do **not** retune `Tests/data.xml` for campaign stats. `/player` validates report beats; human approves each golden replace.
+- [ ] Designer campaign catalog: add remaining technologies (and linked modules/items) from [designer/technology.md](../../designer/technology.md) / [designer/catalog.md](../../designer/catalog.md) through L10 — `requires` edges, L2–L10 gap fills, ark stack. TDD: `LoadConfiguration` on `campaign/data.xml` stays green; no `Tests/data.xml` changes.
 - [ ] New branch `cursor/campaign-load-play`; commit; push `-u`; `gh pr create` against main (not stacked on SampleGame turn 5)
 
 ## 1. Prove the campaign catalog loads
@@ -239,7 +241,7 @@ Live `f` in [designer/au-transit.md](../../designer/au-transit.md): moon-scale `
 
 ## Suggested implementation order
 
-Remaining (playability, 2026-08-30): hull catalog retag (`corhul`→corvette … `arkhul`→ark) + allow-lists → public lobby website → **new PR**. Landed this pass: `player/campaign/basic_technologies.md` (campaign L0–L1 excerpt). Engine already live: catalog/`gamein.1` load, `/reports`, play scripts, campaign-ai/gm, JUMP, environments, AU×drive, typed combat, system XYZ, hull Parse/`IsShipHull`.
+Remaining (playability, 2026-08-30): public lobby website → RESEARCH flavour reveal → **SampleGame golden refresh** → **campaign tech tree L2–L10** ([designer/technology.md](../../designer/technology.md)) → **new PR**. Landed this pass: hull catalog retag (`corhul`→corvette … `arkhul`→ark) + allow-lists + unit tests.
 
 ## 8. New pull request
 

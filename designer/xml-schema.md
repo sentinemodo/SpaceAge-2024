@@ -24,7 +24,7 @@ Research cost if `cost` omitted: `8 * 2^(level-1)` (L1=8, L10=4096). Level 0 is 
 
 `agricultural` `command` `energy` `extraction` `frigate` `corvette` `destroyer` `cruiser` `capital` `ark` `habitat` `infantry` `military` `production` `propulsion` `research` `settlement` `spacecraft` `space station` `storage` `vehicle`
 
-Parse accepts the extra hull groups. **Campaign catalog still emits `group="frigate"`** on `corhul`/`deshul`/`cruhul`/`arkhul` until the hull-group todo retags them **and** expands every `operation-allowed-in` / `usable-in` `module-group="frigate"` allow-list (drills, drives, weapons) to include the new groups. Do not retag without those allow-lists.
+Parse accepts the extra hull groups. Campaign catalog emits distinct groups on `corhul`/`deshul`/`cruhul`/`arkhul`; every `operation-allowed-in` / `usable-in` `module-group="frigate"` allow-list also lists `corvette` `destroyer` `cruiser` `capital` `ark` (engine does not enforce `module-group` on those attrs yet — catalog prep only).
 
 ### Combat attributes (live; SampleGame omits them)
 

@@ -175,6 +175,20 @@ namespace UnitTests
 		}
 
 		[Test]
+		public void LoadConfiguration_CampaignCatalog_ShipHullGroups()
+		{
+			this.dataFile.LoadConfiguration(CampaignDir(), "data.xml");
+			this.game = this.dataFile.Game;
+
+			Assert.That(ModuleType.All["corhul"].Group, Is.EqualTo(EModuleTypesGroup.corvette));
+			Assert.That(ModuleType.All["deshul"].Group, Is.EqualTo(EModuleTypesGroup.destroyer));
+			Assert.That(ModuleType.All["cruhul"].Group, Is.EqualTo(EModuleTypesGroup.cruiser));
+			Assert.That(ModuleType.All["arkhul"].Group, Is.EqualTo(EModuleTypesGroup.ark));
+			Assert.That(ModuleType.All["corhul"].IsShipHullType, Is.True);
+			Assert.That(ModuleType.All["arkhul"].IsShipHullType, Is.True);
+		}
+
+		[Test]
 		public void LoadConfiguration_CampaignCatalog_LoadsNavalModules()
 		{
 			this.dataFile.LoadConfiguration(CampaignDir(), "data.xml");

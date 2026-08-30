@@ -247,7 +247,7 @@ Works in: spacecraft. Use consumes: 2 waste products `[wastes]`. Use produces: n
 
 ## Module types
 
-Catalog `<module><entry>` that a level 0 or 1 technology **produces** or **consumes**. Not every module in `campaign/data.xml`. A type produced at level 0 and consumed at level 1 is listed under level 0. Hulls `corhul` / `deshul` / `cruhul` / `arkhul` are L2+ products and are omitted here; they still emit `group="frigate"` in the catalog today.
+Catalog `<module><entry>` that a level 0 or 1 technology **produces** or **consumes**. Not every module in `campaign/data.xml`. A type produced at level 0 and consumed at level 1 is listed under level 0. Hulls `corhul` / `deshul` / `cruhul` / `arkhul` are L2+ products and are omitted here; they emit `corvette` / `destroyer` / `cruiser` / `ark` in the campaign catalog.
 
 ### Level 0
 
@@ -325,7 +325,7 @@ Group `production` (stays production so orbit `USE` still works). Built by shutt
 
 **spaceship hull [sshull]**  
 The basic spaceship hull, it embodies the technology and experience in space travel.  
-Group **`frigate`** (as emitted). Built by space ship assembly `[ssassm]`. Size 5000, mass 100, capacity 4500, energy 1, HP 50, defense 10, radiation -50. Cannot hold item stacks. Upkeep 30 cash. Operates in orbit and space. Campaign hulls `corhul` / `deshul` / `cruhul` / `arkhul` also emit `group="frigate"` today; dedicated tokens `corvette` / `destroyer` / `cruiser` / `capital` / `ark` parse in the engine but are not yet on those ids. Those hulls are L2+ products and are not listed here.
+Group **`frigate`** (as emitted). Built by space ship assembly `[ssassm]`. Size 5000, mass 100, capacity 4500, energy 1, HP 50, defense 10, radiation -50. Cannot hold item stacks. Upkeep 30 cash. Operates in orbit and space. Campaign hulls `corhul` / `deshul` / `cruhul` / `arkhul` emit `corvette` / `destroyer` / `cruiser` / `ark` (L2+ products, not listed here).
 
 **surface drill [sdrill]**  
 Efficient mining system. A surface drill allows you to strip minerals and various resources out of the surface of any solid body.  
