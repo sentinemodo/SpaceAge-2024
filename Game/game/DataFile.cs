@@ -169,6 +169,10 @@ namespace SpaceAge
 			XmlElement elGalaxy = (XmlElement)this.gameDocument.SelectSingleNode("/game/galaxy");
 			this.game.Galaxy.LoadXml(elGalaxy, this);
 			this.game.Galaxy.LoadExits(elGalaxy, this);
+			foreach (Faction faction in this.game.Factions.Values)
+			{
+				faction.ResolveSurveyObjectsSeen();
+			}
 		}
 		public void LoadItemstacks(XmlElement element, IItemStacksHolder holder)
 		{

@@ -318,6 +318,12 @@ namespace SpaceAge
                     return;
                 }
 
+                if (this.ResearchType == EResearchType.SpaceObject
+                    && !Research.TryRevealSpaceObject(this.Researcher, this.ResearchToken, week))
+                {
+                    return;
+                }
+
                 // research: roll a breakthrough; if none, accumulate research points
                 Technologies available = Research.AvailableTechnologies(this.Researcher);
                 int output = Research.WeeklyOutput(this.Researcher);

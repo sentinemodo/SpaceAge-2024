@@ -68,6 +68,8 @@ namespace SpaceAge
 
 				public void GenerateFactionReport(Faction faction, string turnDir, string reportFileName)
 				{
+					SurveyReports.SeedTurnOneHomeBlurbs(this.game, faction);
+
 					this.InitiateTextWriter(faction, turnDir, reportFileName);
 
 					// Header
@@ -97,6 +99,14 @@ namespace SpaceAge
 						this.Write();
 						this.Write("Technology reports:");
 						this.Write(faction.TechnologiesToShow.ReportDescriptions(faction, 0));
+						this.Write();
+					}
+
+					if (faction.ObjectsToShow.Count > 0)
+					{
+						this.Write();
+						this.Write("Survey reports:");
+						this.Write(faction.ObjectsToShow.ReportDescriptions(0));
 						this.Write();
 					}
 

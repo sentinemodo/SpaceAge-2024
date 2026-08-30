@@ -230,6 +230,7 @@
     <Compile Include="reports\IReporting.cs" />
     <Compile Include="LineParser.cs" />
     <Compile Include="Research.cs" />
+    <Compile Include="SurveyReports.cs" />
     <Compile Include="orders\LongOrder.cs" />
     <Compile Include="orders\Order.cs" />
     <Compile Include="orders\Orders.cs" />
@@ -250,6 +251,7 @@
     <Compile Include="data structures\SpaceSystem.cs" />
     <Compile Include="data structures\StarType.cs" />
     <Compile Include="data structures\StarTypes.cs" />
+    <Compile Include="data structures\SurveyObjects.cs" />
     <Compile Include="data structures\Technologies.cs" />
     <Compile Include="data structures\Technology.cs" />
   </ItemGroup>

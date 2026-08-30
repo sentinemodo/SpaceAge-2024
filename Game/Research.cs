@@ -223,7 +223,130 @@ namespace SpaceAge
 				|| Orbit.All.ContainsKey(token)
 				|| Planet.All.ContainsKey(token)
 				|| Moon.All.ContainsKey(token)
-				|| Star.All.ContainsKey(token);
+				|| Star.All.ContainsKey(token)
+				|| Belt.All.ContainsKey(token);
+		}
+
+		public static NamedObject ResolveSpaceObject(string token)
+		{
+			if (Region.All.ContainsKey(token))
+			{
+				return Region.All[token];
+			}
+			if (Orbit.All.ContainsKey(token))
+			{
+				return Orbit.All[token];
+			}
+			if (Planet.All.ContainsKey(token))
+			{
+				return Planet.All[token];
+			}
+			if (Moon.All.ContainsKey(token))
+			{
+				return Moon.All[token];
+			}
+			if (Star.All.ContainsKey(token))
+			{
+				return Star.All[token];
+			}
+			if (Belt.All.ContainsKey(token))
+			{
+				return Belt.All[token];
+			}
+			return null;
+		}
+
+		// Space-object RESEARCH requires the lab to be in the target orbit, region, or belt,
+		// or in the orbit or a region of the target planet or moon. Stars have no proximity gate.
+		public static bool IsResearcherAtSpaceObject(ModuleStack researcher, NamedObject spaceObject)
+		{
+			Location location = researcher.Location;
+			if (location == null || spaceObject == null)
+			{
+				return false;
+			}
+
+			if (spaceObject is Star)
+			{
+				return true;
+			}
+
+			Region region = spaceObject as Region;
+			if (region != null)
+			{
+				return location == region;
+			}
+
+			Orbit orbit = spaceObject as Orbit;
+			if (orbit != null)
+			{
+				return location == orbit;
+			}
+
+			Belt belt = spaceObject as Belt;
+			if (belt != null)
+			{
+				return location == belt;
+			}
+
+			Planet planet = spaceObject as Planet;
+			if (planet != null)
+			{
+				return IsResearcherOnBody(researcher, planet.Orbit, planet.Regions);
+			}
+
+			Moon moon = spaceObject as Moon;
+			if (moon != null)
+			{
+				return IsResearcherOnBody(researcher, moon.Orbit, moon.Regions);
+			}
+
+			return false;
+		}
+
+		private static bool IsResearcherOnBody(ModuleStack researcher, Orbit orbit, Regions regions)
+		{
+			Location location = researcher.Location;
+			if (location == orbit)
+			{
+				return true;
+			}
+			foreach (Region bodyRegion in regions.Values)
+			{
+				if (location == bodyRegion)
+				{
+					return true;
+				}
+			}
+			return false;
+		}
+
+		// Returns false when proximity blocks the order (no RP that week).
+		public static bool TryRevealSpaceObject(ModuleStack researcher, string token, int week)
+		{
+			if (!IsSpaceObject(token))
+			{
+				return true;
+			}
+
+			NamedObject spaceObject = ResolveSpaceObject(token);
+			if (spaceObject == null)
+			{
+				return true;
+			}
+
+			if (!IsResearcherAtSpaceObject(researcher, spaceObject))
+			{
+				researcher.EventReports.Add(
+					week,
+					string.Format("RESEARCH failed: {0} is not at {1}.",
+						researcher.ReportName,
+						spaceObject.ReportName));
+				return false;
+			}
+
+			SurveyReports.QueueIfNew(researcher.Owner, spaceObject);
+			return true;
 		}
 
 		private static bool UsesItem(Technology technology, ItemType item)
@@ -272,6 +395,10 @@ namespace SpaceAge
 			else if (Star.All.ContainsKey(name))
 			{
 				AddHolderResources(Star.All[name], items);
+			}
+			else if (Belt.All.ContainsKey(name))
+			{
+				AddResources(Belt.All[name], items);
 			}
 			return items;
 		}
