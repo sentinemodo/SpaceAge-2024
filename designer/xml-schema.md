@@ -14,7 +14,7 @@ Unknown **attributes** are ignored. Unknown **module `group`**, **`location-type
 | `region` | `name`, `name-en`, `location-type` | `orbit` \| `solid-surface` \| `liquid-surface` \| `space` |
 | `item` | `name`, `name-en` | `name-en2`, `description`, `size`, `mass`, `attack`, `damage`; `upkeep`/`consume` `type`+`quantity`; `use-allowed-by` `module-type-group`; design attr `value` (nominal price, ignored until TDD — [`economy.md`](economy.md)) |
 | `technology` | `name`, `name-en`, `level` | `tags`, `requires`, `use-time`, `cost`, combat bonuses; `use-allowed-in`; `use-consume` / `use-produce` (`item` \| `module` \| `effect`) |
-| `module` | `name`, `name-en`, `group` | size/mass/capacity/crew/energy/`hit-points`/`technology-capacity`/`research-output`; combat: `attack`/`defense`/`damage`/`initiative`; design attrs (ignored until TDD): `weapon-group`, `resists`, `armor-module`; `upkeep`, `fuel`, `move`, `produce`, `operation-allowed-in`, `use` |
+| `module` | `name`, `name-en`, `group` | size/mass/capacity/crew/energy/`hit-points`/`technology-capacity`/`research-output`; combat: `attack`/`defense`/`damage`/`initiative`; live combat attrs: `weapon-group`, `resists`, `armor-module` (SampleGame omits them → flat dice); `upkeep`, `fuel`, `move`, `produce`, `operation-allowed-in`, `use` |
 | `race` | `name`, `name-en` | Also creates an `ItemType` (crew). `officer-training-duration`; upkeep `crew-type` crew\|officer |
 | `skill` | `name`, `name-en` | `training-duration`, `attack`, `defense`, `initiative` |
 
@@ -22,11 +22,11 @@ Research cost if `cost` omitted: `8 * 2^(level-1)` (L1=8, L10=4096). Level 0 is 
 
 ### Module groups (crash if misspelled)
 
-`agricultural` `command` `energy` `extraction` `frigate` `habitat` `infantry` `military` `production` `propulsion` `research` `settlement` `spacecraft` `space station` `storage` `vehicle`
+`agricultural` `command` `energy` `extraction` `frigate` `corvette` `destroyer` `cruiser` `capital` `ark` `habitat` `infantry` `military` `production` `propulsion` `research` `settlement` `spacecraft` `space station` `storage` `vehicle`
 
-Future hull groups (wishlist — do not emit until TDD): `corvette` `cruiser` `capital` `ark`. Until then all hulls use `frigate`.
+Parse accepts the extra hull groups. **Campaign catalog still emits `group="frigate"`** on `corhul`/`deshul`/`cruhul`/`arkhul` until the hull-group todo retags them **and** expands every `operation-allowed-in` / `usable-in` `module-group="frigate"` allow-list (drills, drives, weapons) to include the new groups. Do not retag without those allow-lists.
 
-### Combat design attributes (ignored by loader today)
+### Combat attributes (live; SampleGame omits them)
 
 | Attr | Values | On |
 |------|--------|-----|

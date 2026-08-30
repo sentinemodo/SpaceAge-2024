@@ -1,6 +1,6 @@
 # Campaign load, gamein.1, CLI play, AI factions
 
-Last updated: 2026-08-29
+Last updated: 2026-08-30
 
 Design seed is in [designer/galaxy.md](../../designer/galaxy.md): factions 1–13, Rootfast/Crusthold, Helios Gate `P00009` ↔ Fomal Gate `P00010`. Catalog has `adpnt` and combat `weapon-group`/`resists` in [campaign/data.xml](../../campaign/data.xml). Environment bands: [designer/environments.md](../../designer/environments.md). Combat ladders: [designer/combat-balance.md](../../designer/combat-balance.md).
 
@@ -64,11 +64,11 @@ The lobby **must** expose:
 - [ ] Public campaign website: home (Alderson excerpt + credits) + visual-tool link + current-turn orders-submission status (closed 10-player lobby; not `play/runs` AI isolation)
 - [x] TDD `JumpOrder`: `JUMP` pair-id, 1 week, ships only, `pair=` on `<alderson>`; no 1-week corona MOVE
 - [x] TDD load gravity/temperature/atmosphere; shuttle `h2o2` surcharge; frigate land ban; high-g upkeep; cold/hot settlement gates
-- [ ] TDD load `weapon-group`/`resists`/`armor-module`; matchup table; armour 5× `hitWeight` + no capture; shield 90% intercept. SampleGame stays flat (no attrs)
+- [x] TDD load `weapon-group`/`resists`/`armor-module`; matchup table; armour 5× `hitWeight` + no capture; shield 90% intercept. SampleGame stays flat (no attrs)
 - [x] TDD space MOVE duration from ΔAU × catalog drive speed (same-system planet/moon orbits); replace hardcoded 1-week and `NotImplemented` planet–planet
-- [ ] TDD `LoadGalaxy` assigns system X Y Z (uncomment); round-trip save; reports show coords. Empty systems `X=4+`
+- [x] TDD `LoadGalaxy` assigns system X Y Z (uncomment); round-trip save; reports show coords. Empty systems `X=4+`
 - [ ] TDD hull groups `corvette`/`destroyer`/`cruiser`/`capital`/`ark`; Parse/ToToken; `IsShipHull` helper; campaign catalog groups; SampleGame stays `frigate`
-- [ ] `player/campaign/basic_technologies.md` from `campaign/data.xml`; `/player` refresh `rules.md` (`JUMP`, space MOVE ETA, hull groups) and `battle.md` typed combat; architect `campaign-play.md`
+- [x] `player/campaign/basic_technologies.md` from `campaign/data.xml`; `/player` refresh `rules.md` (`JUMP`, space MOVE ETA, hull groups) and `battle.md` typed combat; architect `campaign-play.md`
 - [ ] New branch `cursor/campaign-load-play`; commit; push `-u`; `gh pr create` against main (not stacked on SampleGame turn 5)
 
 ## 1. Prove the campaign catalog loads
@@ -201,7 +201,7 @@ Spec: [designer/combat-balance.md](../../designer/combat-balance.md) matchup tab
 
 Spec: [designer/combat-balance.md](../../designer/combat-balance.md) hull table; [designer/engine-wishlist.md](../../designer/engine-wishlist.md); [designer/xml-schema.md](../../designer/xml-schema.md).
 
-Today [EModuleTypesGroup](../../Game/data%20structures/EModuleTypesGroup.cs) and [ModuleTypeGroupXml.Parse](../../Game/game/ModuleTypeGroupXml.cs) only know `frigate`. Unknown `group` throws on catalog load. Campaign hulls (`corhul` `deshul` `cruhul` `arkhul`) currently emit `group="frigate"`.
+Parse/ToToken/`IsShipHull` already accept `corvette` `destroyer` `cruiser` `capital` `ark`. Campaign hulls (`corhul` `deshul` `cruhul` `arkhul`) still emit `group="frigate"` so load stays safe; retag plus `operation-allowed-in` allow-lists is the remaining work. SampleGame stays `frigate`.
 
 - Add enum + Parse/ToToken: `corvette` `destroyer` `cruiser` `capital` `ark`. Patrol `sshull` stays `frigate` (SampleGame).
 - Shared helper `IsShipHull` (frigate ∪ new groups ∪ type `shuttl`) for `JUMP`, atmosphere land ban, and nesting checks that today test `== frigate` ([ModuleStack](../../Game/data%20structures/ModuleStack.cs) ~1220).
@@ -223,7 +223,7 @@ Live `f` in [designer/au-transit.md](../../designer/au-transit.md): moon-scale `
 
 ### System XYZ load
 
-[Galaxy.LoadXml](../../Game/data%20structures/Galaxy.cs) currently comments out `system.Coordinates.X/Y/Z`. Save and [SpaceSystem.ReportName](../../Game/data%20structures/SpaceSystem.cs) already emit them.
+[Galaxy.LoadXml](../../Game/data%20structures/Galaxy.cs) assigns `system.Coordinates.X/Y/Z`. Save and [SpaceSystem.ReportName](../../Game/data%20structures/SpaceSystem.cs) emit them. `campaign/gamein.1.xml` already writes Helios `(0,0,0)`, Fomal `(1,0,0)`, empty `X>=4`.
 
 - Uncomment assign on `<system>` (star XYZ optional, not required).
 - Round-trip: load Helios `(0,0,0)`, Fomal `(1,0,0)`, empty `X>=4`; save keeps values.
@@ -238,7 +238,7 @@ Live `f` in [designer/au-transit.md](../../designer/au-transit.md): moon-scale `
 
 ## Suggested implementation order
 
-TDD catalog load → TDD XYZ load → TDD hull groups (enum + campaign catalog) → TDD environments → TDD AU×drive → TDD JUMP (use `IsShipHull`) → TDD typed combat → generator + `gamein.1.xml` → TDD galaxy load → TDD `/reports` → play scripts → campaign-ai / campaign-gm → `/player` manuals + architect delivery note → **new PR**.
+Remaining (playability, 2026-08-30): hull catalog retag (`corhul`→corvette … `arkhul`→ark) + allow-lists → public lobby website → **new PR**. Landed this pass: `player/campaign/basic_technologies.md` (campaign L0–L1 excerpt). Engine already live: catalog/`gamein.1` load, `/reports`, play scripts, campaign-ai/gm, JUMP, environments, AU×drive, typed combat, system XYZ, hull Parse/`IsShipHull`.
 
 ## 8. New pull request
 

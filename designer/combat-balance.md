@@ -1,6 +1,6 @@
 # Combat balance (campaign)
 
-Canonical thresholds for retuning `campaign/data.xml` military modules. Engine rules: [`player/battle.md`](../player/battle.md). Typed matchups are design-time until TDD lands wishlist rows.
+Canonical thresholds for retuning `campaign/data.xml` military modules. Engine rules: [`player/battle.md`](../player/battle.md). Typed matchups are **live** in `CombatMatchup` / `Battle` when catalog attrs are set (campaign emits them; SampleGame stays flat).
 
 ## Thresholds
 
@@ -45,7 +45,7 @@ Large structures may be fragile (city domes); armour is sturdy and soaked prefer
 
 ## Typed weapon groups (design-time)
 
-Catalog attrs (ignored by loader until TDD): `weapon-group`, `resists`, `armor-module`.
+Catalog attrs (live): `weapon-group`, `resists`, `armor-module`.
 
 | Attacker (`weapon-group`) | Strong vs | Weak vs (`resists`) |
 |---------------------------|-----------|---------------------|
@@ -54,7 +54,7 @@ Catalog attrs (ignored by loader until TDD): `weapon-group`, `resists`, `armor-m
 | `missile` | low PD | `pbpd` |
 | `drone` | unwarned | `ew` |
 
-Until the engine applies matchups, pair same-level weapons and resists in the stat ladder so +2 level advantage still holds under flat dice.
++2 level advantage must still hold under typed matchups (campaign stats). SampleGame stays flat dice.
 
 ## L0–L10 combat ladder
 
@@ -110,7 +110,7 @@ SampleGame goldens use **Tests/data.xml** (tanks dmg 4, gunplc HP 100) → captu
 
 ## Hull size classes
 
-Until engine adds dedicated groups, keep `group="frigate"` and scale **size / capacity / nested combat stacks**.
+Engine Parse accepts dedicated groups. Keep `group="frigate"` on campaign hulls until the hull-group todo retags them **and** expands frigate allow-lists. Scale **size / capacity / nested combat stacks**.
 
 | Class | Tech gate | Size / capacity | Nested combat | Hull HP |
 |-------|-----------|-----------------|---------------|---------|

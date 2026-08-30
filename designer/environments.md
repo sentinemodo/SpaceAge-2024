@@ -1,6 +1,6 @@
 # Environments: gravity, atmosphere, temperature
 
-Campaign design for body attributes on planets/moons. Attrs are emitted on galaxy bodies (ignored by loader until TDD). Catalog planet/moon **types** carry default flavour only.
+Campaign design for body attributes on planets/moons. Attrs are emitted on galaxy bodies and **live** in `LoadGalaxy` / `BodyEnvironment` (engine 0.1.148). Catalog planet/moon **types** carry default flavour only.
 
 ## Attributes (per body)
 
