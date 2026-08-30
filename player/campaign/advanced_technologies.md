@@ -174,12 +174,16 @@ Works in: module-type-group=production. Use consumes: 2 unit of nitrate salts `[
 **shipboard pharmacy [pharms]**  
 Tag: `research`.  **Requires:** `sckcns`.
 Fermentation and sterile fill inside a sick bay. Sugars and amino acids from food grow antibiotic cultures; the ward energy budget runs a still for saline and antiseptic. No ocean harvest required. The feedstock is cargo rations, the constraint is sterility.
-Works in: module-type-group=habitat. Use consumes: unit of food `[food]`. Use produces: medicines `[medici]` (item). Use-time: 1 week.
+Works in: module-type-group=habitat, **module sick bay `[sckbay]`**. Use consumes: unit of food `[food]`. Use produces: medicines `[medici]` (item). Use-time: 1 week.
 
 **sick bay construction [sckcns]**  
 Tag: `research`.  **Requires:** `medtec`.
 A pressurized recovery ward: isolation beds, an autoclave, filtered air, and a surgical table. Trauma care is heat, sterility, fluids, and time. Without pharmaceuticals, two casualties still granulate over a four-week rest; with packed doses, infection drops fast enough that four patients can leave the ward each week.
 Works in: module-type-group=production. Use consumes: 8 unit of iron `[iron]`, 4 unit of titanium `[titani]`, 4 unit of copper `[copper]`, 3 unit of silicium `[silici]`. Use produces: sick bay `[sckbay]`. Use-time: 8 weeks.
+
+**sick bay [sckbay]**  
+Inpatient surgical and recovery ward. Isolation beds, autoclave, filtered air. Without medicines, two casualties granulate over four unmedicated weeks per bay; with one medicines `[medici]` per conversion, up to four wounded terran per bay return to duty each week (medici-funded weeks do not tick the unmedicated clock). Remaining wounded then pay weekly medicines and, on week 13, roll death/stay/recover. The clinic `[medfac]` does not run this cadence. `USE pharms` is restricted to this module type.  
+Group `habitat`. Built by sick bay construction `[sckcns]`. Size 380, mass 250, crew 3, energy 4, capacity 180, HP 32, tech-cap 2, habitat 8, radiation −120. Upkeep 50 cash (campaign catalog).
 
 **solar sail [slsail]**  
 Tag: `propulsion`.  **Requires:** `areact`.

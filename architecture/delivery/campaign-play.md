@@ -8,7 +8,7 @@ Design seed is in [designer/galaxy.md](../../designer/galaxy.md): factions 1–1
 
 **Already in the engine (do not TDD):** region and moon-region exits, including `<exit orbit="O…">` ([Galaxy.LoadExits](../../Game/data%20structures/Galaxy.cs) + `loadGalaxyExits`). Campaign XML should keep using those; no second pass over orbit elements.
 
-**Still out of scope (this plan):** hostility-flip Events, militia yearly raids. **Next engine wishlist** (see Todos): item combat stats, nominal value, sick-bay heal, use-produce effects, skills, orbit resources / gas-giant atmospheres.
+**Still out of scope (this plan):** hostility-flip Events, militia yearly raids. **Next engine wishlist** (see Todos): ~~sick-bay heal~~, use-produce effects, skills, orbit resources / gas-giant atmospheres.
 
 Tick matching rows in [designer/engine-wishlist.md](../../designer/engine-wishlist.md) when each slice lands.
 
@@ -79,7 +79,7 @@ The lobby **must** expose:
 
 - [x] **Item attack / damage / defense in battle** — wire `ItemType` combat stats into battle resolution ([designer/engine-wishlist.md](../../designer/engine-wishlist.md)). Live **0.1.149** (2026-08-30).
 - [x] **Item nominal value** — load/use catalog `value` for economy and contracts. Live **0.1.150** (2026-08-30). Campaign trade ladder in `campaign/data.xml`; `Tests/data.xml` unchanged.
-- [ ] **Sick-bay heal cadence** — periodic crew healing in sick-bay modules per design cadence.
+- [x] **Sick-bay heal cadence** — periodic crew healing in sick-bay modules per design cadence. Live **0.1.150** (2026-08-30); gap tests in `Tests/TConsume.cs`.
 - [x] **Moon `@name` ids + galaxy exits** — campaign moons use unique ids (`M00001` …); `Galaxy.LoadExits` walks moon **regions**; `<exit orbit="O…">` on regions resolves. Second pass over moon `<orbit>` elements only if campaign XML needs orbit-held exits (§7).
 - [ ] **use-produce effect execution** — run `use` / `produce` item effects in the game loop (not just catalog load).
 - [ ] **Skills** — skill system execution beyond catalog ids (training, checks, battle/campaign hooks).
@@ -255,7 +255,7 @@ Live `f` in [designer/au-transit.md](../../designer/au-transit.md): moon-scale `
 Remaining (playability, 2026-08-30):
 
 1. **`gh pr create`** for `cursor/campaign-load-play` — SampleGame green; catalog L2–L10 complete.
-2. **Engine wishlist slices** (TDD, any order by impact): ~~item nominal value~~ → sick-bay heal → use-produce effects → skills → orbit resources / gas-giant atmospheres.
+2. **Engine wishlist slices** (TDD, any order by impact): ~~item nominal value~~ → ~~sick-bay heal~~ → use-produce effects → skills → orbit resources / gas-giant atmospheres.
 3. **Public lobby website** — parallel; architect/website-developer; not blocked by catalog.
 
 Done this pass: SampleGame golden refresh (0.1.148); branch push; designer catalog L2–L10.

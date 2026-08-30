@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using SpaceAge;
+using System.Xml;
 
 namespace UnitTests
 {
@@ -354,6 +355,87 @@ namespace UnitTests
 
 			Assert.That(bay.ItemStacks[ItemType.All["wndtrn"]].Quantity, Is.EqualTo(4));
 			Assert.That(bay.ItemStacks.Has(ItemType.All["medici"]), Is.False);
+		}
+
+		[Test]
+		public void ExecuteSickBayHeal_TwoBays_ConvertsEightWithMedicines()
+		{
+			ModuleStack bay = this.createSickBay(2, 16, 8);
+
+			this.game.Week = 1;
+			this.game.ExecuteSickBayHeal();
+
+			Assert.That(bay.ItemStacks[ItemType.All["wndtrn"]].Quantity, Is.EqualTo(8));
+			Assert.That(bay.ItemStacks[ItemType.All["terran"]].Quantity, Is.EqualTo(8));
+			Assert.That(bay.ItemStacks.Has(ItemType.All["medici"]), Is.False);
+		}
+
+		[Test]
+		public void ExecuteSickBayHeal_PartialMedicines_LimitedBySupply()
+		{
+			ModuleStack bay = this.createSickBay(1, 8, 2);
+
+			this.game.Week = 1;
+			this.game.ExecuteSickBayHeal();
+
+			Assert.That(bay.ItemStacks[ItemType.All["wndtrn"]].Quantity, Is.EqualTo(6));
+			Assert.That(bay.ItemStacks[ItemType.All["terran"]].Quantity, Is.EqualTo(2));
+			Assert.That(bay.ItemStacks.Has(ItemType.All["medici"]), Is.False);
+		}
+
+		[Test]
+		public void ExecuteSickBayHeal_Week13_BeforeQuarterlyOutcome()
+		{
+			ModuleStack bay = this.createSickBay(1, 8, 4);
+
+			this.game.Week = 13;
+			this.game.ExecuteSickBayHeal();
+			Sequence.Ints.Push(0);
+			Sequence.Ints.Push(0);
+			Sequence.Ints.Push(0);
+			Sequence.Ints.Push(0);
+			this.game.ExecuteQuarterlyWoundedOutcome();
+
+			Assert.That(bay.ItemStacks.Quantity(ItemType.All["wndtrn"]), Is.EqualTo(0));
+			Assert.That(bay.ItemStacks.Quantity(ItemType.All["terran"]), Is.EqualTo(4));
+		}
+
+		[Test]
+		public void ExecuteSickBayHeal_Medfac_DoesNotConvertWounded()
+		{
+			ModuleStack clinic = new ModuleStack(
+				Region.All["R00002"],
+				this.game.Factions["2"],
+				ModuleType.All["medfac"],
+				"100402");
+			clinic.AddModules(1);
+			clinic.ItemStacks.Add(new ItemStack(ItemType.All["wndtrn"], 4));
+			clinic.ItemStacks.Add(new ItemStack(ItemType.All["medici"], 4));
+
+			clinic.ExecuteSickBayHeal(1);
+
+			Assert.That(clinic.ItemStacks[ItemType.All["wndtrn"]].Quantity, Is.EqualTo(4));
+			Assert.That(clinic.ItemStacks.Has(ItemType.All["terran"]), Is.False);
+		}
+
+		[Test]
+		public void SaveLoad_PreservesSickBayUnmedicatedWeeks()
+		{
+			ModuleStack bay = this.createSickBay(1, 4, 0);
+			bay.SickBayUnmedicatedWeeks = 3;
+
+			XmlDocument doc = new XmlDocument();
+			XmlElement saved = bay.SaveXml(doc);
+			doc.AppendChild(saved);
+
+			ModuleStack loaded = new ModuleStack(
+				Region.All["R00002"],
+				this.game.Factions["2"],
+				ModuleType.All["sckbay"],
+				"100401");
+			loaded.LoadXml(saved);
+
+			Assert.That(loaded.SickBayUnmedicatedWeeks, Is.EqualTo(3));
 		}
 
 		private ModuleStack createSickBay(int quantity, int wounded, int medici)
