@@ -537,6 +537,9 @@ namespace SpaceAge
 				}
 				ETactic firing = modulestack.FiringTactic;
 				Modules firingModules = modulestack.GetFiringModules();
+				int remainingItemShots = modulestack.ItemStacks.CombatDamageShotBudget(
+					modulestack.moduleType.Group,
+					modulestack.QuantityActive);
 				foreach (Module module in firingModules)
 				{
 					if (!this.defenders.Contains(target.Name) && !this.attackers.Contains(target.Name))
@@ -573,7 +576,13 @@ namespace SpaceAge
 							continue;
 						}
 
-						int weaponDamage = module.Parent.ModuleType.Damage;
+						int weaponDamage = module.Parent.ModuleShotDamage();
+						if (module.Parent.RootModuleStack == modulestack)
+						{
+							weaponDamage += modulestack.ItemStacks.CombatDamageBonusForShot(
+								modulestack.moduleType.Group,
+								ref remainingItemShots);
+						}
 						weaponDamage = this.applyShieldIntercept(target, weaponDamage);
 						int hpDamage = weaponDamage;
 						int captureDamage = 0;

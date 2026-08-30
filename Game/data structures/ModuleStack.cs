@@ -992,6 +992,7 @@ namespace SpaceAge
                     attack += this.QuantityActive * this.moduleType.Attack;
                     attack += this.technologies.Attack;
                     attack += this.People.Attack;
+					attack += this.ItemStacks.CombatAttack(this.moduleType.Group, this.QuantityActive);
                 }
 				return attack;
 			}
@@ -1007,9 +1008,19 @@ namespace SpaceAge
                     defense += this.QuantityActive * this.moduleType.Defense;
                     defense += this.technologies.Defense;
                     defense += this.People.Defense;
+					defense += this.ItemStacks.CombatDefense(this.moduleType.Group, this.QuantityActive);
                 }
 				return defense;
 			}
+		}
+
+		public int ModuleShotDamage()
+		{
+			if (!this.IsFormed || this.moduleType == null)
+			{
+				return 0;
+			}
+			return this.moduleType.Damage;
 		}
 
 		public int Initiative
@@ -1055,7 +1066,11 @@ namespace SpaceAge
 				}
 				initiativeBonus += this.technologies.Initiative;
 				initiativeBonus += this.People.Initiative;
-				return initiativeBonus; 
+				if (this.IsFormed && this.moduleType != null)
+				{
+					initiativeBonus += this.ItemStacks.CombatInitiative(this.moduleType.Group, this.QuantityActive);
+				}
+				return initiativeBonus;
 			}
 		}
 

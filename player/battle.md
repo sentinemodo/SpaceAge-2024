@@ -141,9 +141,9 @@ The report prints `(chance: C/D)`.
 
 **Typed matchup** (`CombatMatchup.ChanceMultiplier`) runs only when the **shooting combatant’s** module type has a non-empty `weapon-group` (not the nested weapon that fired). `resists` is the **target combatant’s** module type, not the hit-location module. Multipliers: `laser` vs `shield` → 0.5, else 1.5; `kinetic` vs `armour`/`armor` → 0.5, else 1.5; `missile` vs `pbpd` → 0.5, else 1.5; `drone` vs `ew` → 0.5, else 1.5; any other group → 1.0. Empty `weapon-group` (SampleGame catalog) skips this step.
 
-`Attack` on a formed stack: `QuantityActive * moduleType.Attack` + technologies’ `attack` + people (skills’) `attack`. Nested stacks add through `ModuleStacks.Attack()`. Same shape for **Defense**.
+`Attack` on a formed stack: `QuantityActive * moduleType.Attack` + technologies’ `attack` + people (skills’) `attack` + eligible cargo equipment `attack` (up to `min(item quantity, QuantityActive)` per item type, gated by `use-allowed-by module-type-group`). Nested stacks add through `ModuleStacks.Attack()`. Same shape for **Defense** (equipment `defense`).
 
-Item `attack` / `damage` (e.g. rocket launchers `[rctlnc]`) are **not** added in `ModuleStack.Attack`. They do not change this formula.
+Item `attack` / `damage` / `defense` / `initiative` on cargo count when the item’s `use-allowed-by module-type-group` matches the stack’s module `group`. Each item type contributes up to **`min(item quantity, QuantityActive)`** copies (one suit per active module, not one per stack). Equipment `attack` and `defense` feed `ModuleStack.Attack` / `Defense` (and thus `getChance` dice). Shot damage uses module `damage` plus item `damage` on the **first** boosted shots only: budget = sum of `min(item quantity, QuantityActive)` over eligible damage items; each boosted shot adds one copy of each eligible item’s `damage` until the budget is exhausted.
 
 If `Defense` is 0, chance is half of attack and dice is attack, so about **50%** before evade/immobile.
 
@@ -172,7 +172,7 @@ Disabling the last operational module can drop the stack from the battle (comman
 
 **Officers / people:** each person’s **skills** add `attack`, `defense`, `initiative` to the stack they are on (`People.Attack` / `Defense` / `Initiative`). Catalog: armor platoon leader and infantry battalion commander +5 attack and +5 initiative; frigate pilot +5 defense and +5 initiative; space station command +5 defense. Skill `produce effect="effective attack"` is catalog text; `Battle` does not read it.
 
-**Items:** rocket launchers report attack 2 / damage 2 for infantry; they are **not** in `getChance` or shot damage. Use the **module** (infantry battalion `damage="1"`) until the engine wires equipment.
+**Items:** rocket launchers and other personal equipment add `attack`/`damage`/`defense`/`initiative` when `use-allowed-by module-type-group` matches the carrier stack’s module `group` (up to `min(item qty, QuantityActive)` per item type). Shot damage: module `damage` on every shot; item `damage` on the first boosted shots only (budget = eligible item copies capped by active modules). Campaign catalog items (`prllsr`, `psnarm`, etc.) follow the same rules as `[rctlnc]`.
 
 ## Evade leave
 

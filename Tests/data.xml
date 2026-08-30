@@ -241,6 +241,16 @@
 			<use-allowed-by module-type-group="infantry"/>
 		</entry>
 		<entry
+			name="psnarm"
+			name-en="personal armour"
+			name-en2="suits of personal armour"
+			description="Ceramic-composite body armour resisting kinetics."
+			mass="6"
+			size="4"
+			defense="3">
+			<use-allowed-by module-type-group="infantry"/>
+		</entry>
+		<entry
 			name="spcsut"
 			name-en="space suit"
 			name-en2="space suits"

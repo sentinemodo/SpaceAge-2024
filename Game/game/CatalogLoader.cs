@@ -112,6 +112,8 @@ namespace SpaceAge
 					itemType.Size = this.dataFile.XMLAssignDouble(el.GetAttribute("size"), 0);
 					itemType.Attack = this.dataFile.XMLAssignInteger(el.GetAttribute("attack"), 0);
 					itemType.Damage = this.dataFile.XMLAssignInteger(el.GetAttribute("damage"), 0);
+					itemType.Defense = this.dataFile.XMLAssignInteger(el.GetAttribute("defense"), 0);
+					itemType.Initiative = this.dataFile.XMLAssignInteger(el.GetAttribute("initiative"), 0);
 
 					foreach (XmlElement elAllowedBy in el.SelectNodes("use-allowed-by"))
 					{

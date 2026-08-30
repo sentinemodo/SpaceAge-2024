@@ -8,7 +8,7 @@ Design seed is in [designer/galaxy.md](../../designer/galaxy.md): factions 1–1
 
 **Already in the engine (do not TDD):** region and moon-region exits, including `<exit orbit="O…">` ([Galaxy.LoadExits](../../Game/data%20structures/Galaxy.cs) + `loadGalaxyExits`). Campaign XML should keep using those; no second pass over orbit elements.
 
-**Still out of scope:** hostility-flip Events, militia yearly raids, item `attack` in `ModuleStack.Attack` (unless a typed-combat test needs it).
+**Still out of scope (this plan):** hostility-flip Events, militia yearly raids. **Next engine wishlist** (see Todos): item combat stats, nominal value, sick-bay heal, use-produce effects, skills, orbit resources / gas-giant atmospheres.
 
 Tick matching rows in [designer/engine-wishlist.md](../../designer/engine-wishlist.md) when each slice lands.
 
@@ -70,9 +70,20 @@ The lobby **must** expose:
 - [x] TDD hull groups `corvette`/`destroyer`/`cruiser`/`capital`/`ark`; Parse/ToToken; `IsShipHull` helper; campaign catalog groups; SampleGame stays `frigate`
 - [x] TDD reveal campaign flavour texts: `RESEARCH <space-object-id>` shows that star/planet/moon/belt `description` in the report when the lab is at that orbit/region/belt (or on the body's orbit/surface; stars have no proximity gate); turn-1 report seeds home star + home planet blurbs (Helios/Arbor or Fomal/Anvil). Spec: [designer/engine-wishlist.md](../../designer/engine-wishlist.md)
 - [x] `player/campaign/basic_technologies.md` from `campaign/data.xml`; `/player` refresh `rules.md` (`JUMP`, space MOVE ETA, hull groups) and `battle.md` typed combat; architect `campaign-play.md`
-- [ ] TDD SampleGame green: refresh `Tests/SampleGame/` goldens (`testreport.*`, `gameout.*`, frozen saves) for current engine **0.1.148** and landed slices (JUMP, env, AU×drive, typed combat, XYZ). Do **not** retune `Tests/data.xml` for campaign stats. `/player` validates report beats; human approves each golden replace.
+- [x] TDD SampleGame green: refresh `Tests/SampleGame/` goldens for engine **0.1.149** (item combat stats); **448/448** `Tests.dll` green (2026-08-30). Do **not** retune `Tests/data.xml` for campaign stats.
 - [x] Designer campaign catalog: **phased** add of remaining technologies (and linked modules/items) from [designer/technology.md](../../designer/technology.md) / [designer/catalog.md](../../designer/catalog.md) through L10. **Phase 1–6 done (2026-08-30):** L2 personal combat → L10 ark stack (`arkdrv`…`arkmag`); `arkcns` `requires`→`lghull`; [`player/campaign/advanced_technologies.md`](../../player/campaign/advanced_technologies.md) (L2+). **`arkcns` policy:** both `cruihl` and `lghull` tech copies required to USE. TDD: `LoadConfiguration` stays green; no `Tests/data.xml` changes.
-- [ ] New branch `cursor/campaign-load-play`; commit; push `-u`; `gh pr create` against main (not stacked on SampleGame turn 5)
+- [x] Branch `cursor/campaign-load-play`; commit; push `-u` (2026-08-30)
+- [ ] `gh pr create` against main (not stacked on SampleGame turn 5)
+
+### Engine wishlist (campaign play)
+
+- [x] **Item attack / damage / defense in battle** — wire `ItemType` combat stats into battle resolution ([designer/engine-wishlist.md](../../designer/engine-wishlist.md)). Live **0.1.149** (2026-08-30).
+- [ ] **Item nominal value** — load/use catalog `value` (or equivalent) for economy and contracts.
+- [ ] **Sick-bay heal cadence** — periodic crew healing in sick-bay modules per design cadence.
+- [x] **Moon `@name` ids + galaxy exits** — campaign moons use unique ids (`M00001` …); `Galaxy.LoadExits` walks moon **regions**; `<exit orbit="O…">` on regions resolves. Second pass over moon `<orbit>` elements only if campaign XML needs orbit-held exits (§7).
+- [ ] **use-produce effect execution** — run `use` / `produce` item effects in the game loop (not just catalog load).
+- [ ] **Skills** — skill system execution beyond catalog ids (training, checks, battle/campaign hooks).
+- [ ] **Orbit resources + gas-giant atmospheres** — orbit-held resources on load/save; gas-giant `atmosphere` bands in environments and extraction rules.
 
 ## 1. Prove the campaign catalog loads
 
@@ -243,11 +254,11 @@ Live `f` in [designer/au-transit.md](../../designer/au-transit.md): moon-scale `
 
 Remaining (playability, 2026-08-30):
 
-1. **SampleGame golden refresh** (TDD; engine 0.1.148) — unblocks PR confidence; does not block designer catalog slices.
-2. **Campaign tech tree L2–L10** in **six designer PR slices** ([designer/technology.md](../../designer/technology.md); gap table in parent handoff 2026-08-30) — run `LoadConfiguration` after each slice.
-3. **`player/campaign/advanced_technologies.md`** (/player) — after designer **Phase 3** (L5–L6 in catalog) or when L4+ military/propulsion ids stabilize.
-4. **New PR** `cursor/campaign-load-play` — after SampleGame green + at least designer Phase 2 (L4 orbit/industrial) or human chooses “catalog-complete” gate.
-5. **Public lobby website** — parallel; architect/website-developer; not blocked by catalog.
+1. **`gh pr create`** for `cursor/campaign-load-play` — SampleGame green; catalog L2–L10 complete.
+2. **Engine wishlist slices** (TDD, any order by impact): item combat stats → nominal value → sick-bay heal → use-produce effects → skills → orbit resources / gas-giant atmospheres.
+3. **Public lobby website** — parallel; architect/website-developer; not blocked by catalog.
+
+Done this pass: SampleGame golden refresh (0.1.148); branch push; designer catalog L2–L10.
 
 Done: RESEARCH flavour reveal; hull catalog retag (`corhul`→corvette … `arkhul`→ark) + allow-lists + unit tests.
 

@@ -98,6 +98,7 @@
     <Compile Include="TTrain.cs" />
     <Compile Include="TTransfer.cs" />
     <Compile Include="TRepair.cs" />
+    <Compile Include="TItemCombat.cs" />
     <Compile Include="TFlavourReveal.cs" />
     <Compile Include="TResearch.cs" />
     <Compile Include="TConsume.cs" />
