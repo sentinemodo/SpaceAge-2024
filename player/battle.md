@@ -1,6 +1,6 @@
 # Battle (rules of engagement)
 
-Checked **29 Aug 2026** against engine **0.1.148**.
+Checked **30 Aug 2026** against engine **0.1.148**.
 
 Sources: `Game/battle/Battle.cs`, `Game/battle/Battles.cs`, `Game/battle/CombatMatchup.cs`, `Game/battle/ETactic.cs`, `Game/Game.cs` (`ExecuteBattles`), `Game/reports/ReportWriter.cs` (blank line before `Battles report:`), `Game/data structures/ModuleStack.cs` (attack, defense, initiative, tactics, `IsArmed`, `HasOperationalModules`, `GetFiringModules`), `Game/data structures/ModuleType.cs` (`IsShuttleUnit` / `IsHangarCraft` / `IsDroneBay`, `WeaponGroup` / `Resists` / `ArmorModule`), `Game/data structures/Faction.cs` / `FactionAttitude.cs`, `Game/orders/AttackOrder.cs`, `CaptureOrder.cs`, `DeclareOrder.cs`, `TacticOrder.cs`, `SetOrder.cs`, `Game/game/CatalogLoader.cs` (`weapon-group`, `resists`, `armor-module`). Catalog bonuses: `Tests/data.xml` (`attack`, `defense`, `damage`, `initiative` on modules, techs, skills, items). SampleGame catalog is **flat**: no `weapon-group` / `resists` / `armor-module` attributes, so typed-matchup multipliers, shield intercept, and armor hit-weight do not fire there.
 
@@ -73,7 +73,7 @@ Resolution: per-unit declaration (`UnitAttitudes`) else stance toward the unit�
 - **Battle:** up to **`MaxRounds` = 10** rounds, or until one side’s list is empty.
 - Each round: print attacker/defender battle reports; **after Round 1’s roster only**, hangar launch as a **ship action** (not an attack): `{hull} launches {craft} from fighter drone bay [drnbay].`; then every operational combatant **fires** (see initiative), then evade-leave is checked. The carrier does **not** fire the empty bay (no `fires fighter drone bay` / 0-damage shot) and skips its own round-1 fire. Launched craft do not fire in round 1; they fire from round 2 as roots.
 - End lines: “Battle won by attackers/defenders” or “Battle ended indecisively.”
-- `ReportWriter` inserts a **blank line** before the `Battles report:` block when any battles ran. `Battles.Report` then prints `Battles report:` plus a blank, a **blank line** between consecutive battles, and a trailing blank.
+- `ReportWriter` inserts a **blank line** before the `Battles report:` block when any battles ran. `Battles.Report` prints `Battles report:` plus a blank after the header, then each battle’s report lines followed by a **blank line** (not before the first battle body).
 - Capture damage on modules is **zeroed at the start of each battle** (`resetCaptureDamage`). Hit-point `Damage` is not reset here.
 
 `executeMovement` is empty. In-battle orders (move/use in the round) are comments only.

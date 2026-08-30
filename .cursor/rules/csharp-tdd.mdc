@@ -61,6 +61,8 @@ If player reports a syntax/catalog gap, take the one-sentence engine note; do no
 
 Do **not** overwrite or commit a golden until both gates pass.
 
+**Exception — engine version line only:** When the **only** diff in a SampleGame golden (`testreport.*.txt`, `gameout.*.xml`, frozen `gamein.*`) is updating `SpaceAge Engine Version: X.Y.Z.` to match `Game/Program.cs` (`EngineVersion`), treat human approval as **already granted**. No `/player` pass required for that scope. Any other line change still needs `/player` + explicit approval.
+
 1. Keep the generated output as a **candidate** (test output, `*_saved`, or a clearly named temp). Do not replace the committed golden yet.
 2. Launch `/player` with candidate path(s), the current golden if any, and the expected beats. Wait for **match** or **mismatch**.
 3. If **mismatch**, do not update the golden. Fix engine/tests or ask; pause (plan step).

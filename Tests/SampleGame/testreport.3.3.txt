@@ -5,7 +5,7 @@ Content-Disposition: attachment
 SpaceAge report for Gelvaren [3].
 Turn 3, Year 2020, July 1.
 
-SpaceAge Engine Version: 0.1.144.
+SpaceAge Engine Version: 0.1.148.
 
 Events during turn:
   none.
@@ -13,6 +13,7 @@ Events during turn:
 Declared stances:
   default: neutral, unknown: hostile.
   enemy toward Caste Prime [2].
+
 Bank report:
   Bank account balance: 8779.
   Credit line maximum: 10000.
@@ -868,6 +869,7 @@ Battles report:
   (chance: 12/22) and hits #3 gun placement [111] doing 4 damage.
   ------------------------------------------------------------
   Battle ended indecisively.
+
   Week 10.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth
   [P00001] at AU 1, ocean planet [ocean] in system Sol [SS0001] (0, 0,
@@ -1786,6 +1788,7 @@ Battles report:
     #3 gun placement [gunplc] is lightly damaged.
   ------------------------------------------------------------
   Battle ended indecisively.
+
   Week 11.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth
   [P00001] at AU 1, ocean planet [ocean] in system Sol [SS0001] (0, 0,
@@ -2568,6 +2571,7 @@ Battles report:
     #3 small cargo bay [cargob] is lightly damaged.
   ------------------------------------------------------------
   Battle ended indecisively.
+
   Week 12.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth
   [P00001] at AU 1, ocean planet [ocean] in system Sol [SS0001] (0, 0,
@@ -3348,6 +3352,7 @@ Battles report:
     #3 farming complex [farms] is disabled.
   ------------------------------------------------------------
   Battle ended indecisively.
+
   Week 13.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth
   [P00001] at AU 1, ocean planet [ocean] in system Sol [SS0001] (0, 0,
@@ -4250,6 +4255,7 @@ Galaxy report:
       farming complex [000014], coal-burning plant [000015], core drill
       [000016], factory [000017], gun placement [111]
       week 13: engaged in battle
+      week 13: paid 40 cash [cash] upkeep.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 949 (720), capacity: 600/223, crew: 48/49, upkeep:
     130 (72) cash [cash], consume: 97 (48) units of food [food], 97 (48)
@@ -4290,6 +4296,7 @@ Galaxy report:
       week 11: engaged in battle
       week 12: engaged in battle
       week 13: engaged in battle
+      week 13: paid 130 cash [cash] upkeep.
     + Gelvaren CEO [000002], terran [terran].
       size: 4, mass: 4, capacity: 3/0, upkeep: 10 cash [cash], consume:
       unit of food [food], unit of terran breathing gas mixture
@@ -4365,6 +4372,7 @@ Galaxy report:
       [000018].
       week 13: received copy of rocket launcher production [rckter]
       technology.
+      week 13: paid 100 unit of food [food] upkeep.
     + Gelvaren Headquarters [000018], corporate headquarters [corphq],
       disabled, immobile.
       size: 1000, mass: 1040 (1000), capacity: 750/40, energy: 10, crew:
@@ -4402,6 +4410,7 @@ Galaxy report:
         week 13: got 10 terrans [terran] from Gelvaren complex [000026].
         week 13: PRODUCE failed: Gelvaren Headquarters [000018] has not
         enough crew to operate - 20 required, 10 available.
+        week 13: paid 110 cash [cash] upkeep.
     + small cargo bay [000019], small cargo bay [cargob], immobile.
       size: 2000, mass: 928 (200), capacity: 1800/697, upkeep: 32 (30)
       cash [cash], consume: 2 (0) units of food [food], 2 (0) units of
@@ -4457,6 +4466,7 @@ Galaxy report:
         week 13: got 10 units of food [food] from farming complex
         [000020].
         week 13: got 2 units of oil [oil] from core drill [000022].
+        week 13: paid 32 cash [cash] upkeep.
     + farming complex [000020], 2 farming complexes [farms], immobile.
       size: 2000, mass: 240 (200), capacity: 1000/40, energy: 10, crew:
       10/10, upkeep: 110 (100) cash [cash], consume: 10 (0) units of
@@ -4505,6 +4515,7 @@ Galaxy report:
         week 13: given 10 units of food [food] to small cargo bay
         [000019].
         week 13: produced 10 units of food [food].
+        week 13: paid 110 cash [cash] upkeep.
     + wind powerplant [000021], 19 wind powerplants [wnplnt], immobile.
       size: 190, mass: 190 (190), energy: 76/19, upkeep: 190 cash
       [cash].
@@ -4515,6 +4526,7 @@ Galaxy report:
         week 5: has 21 wnplnt modules (needed 21).
         week 5: transferred wind powerplant [wnplnt] to Sydney [000006].
         week 6: transferred wind powerplant [wnplnt] to Sydney [000006].
+        week 13: paid 190 cash [cash] upkeep.
     + core drill [000022], core drill [cdrill], immobile.
       size: 1000, mass: 1034 (1000), capacity: 750/32, energy: 5, crew:
       6/6, upkeep: 46 (40) cash [cash], consume: 6 (0) units of food
@@ -4550,6 +4562,7 @@ Galaxy report:
         week 12: produced 2 units of oil [oil].
         week 13: given 2 units of oil [oil] to small cargo bay [000019].
         week 13: produced 2 units of oil [oil].
+        week 13: paid 46 cash [cash] upkeep.
     + factory [000023], factory [factry], immobile.
       size: 1000, mass: 790 (750), capacity: 500/40, energy: 15, crew:
       10/10, upkeep: 70 (60) cash [cash], consume: 10 (0) units of food
@@ -4565,6 +4578,7 @@ Galaxy report:
         [wnplnt] module.
         week 5: produced wind powerplant [wnplnt] into wind powerplant
         [119].
+        week 13: paid 70 cash [cash] upkeep.
     + military barrack [000025], military barrack [barrck], immobile.
       size: 2000, mass: 540 (500), capacity: 1800/40, energy: 5, crew:
       2/10, upkeep: 210 (200) cash [cash], consume: 10 (0) units of food
@@ -4579,6 +4593,7 @@ Galaxy report:
         battalion [inftry] module.
         week 13: produced infantry battalion [inftry] into infantry
         battalion [120].
+        week 13: paid 210 cash [cash] upkeep.
     + infantry battalion [110], infantry battalion [inftry], immobile.
       size: 500, mass: 603 (500), capacity: 300/103, upkeep: 15 (5) cash
       [cash], consume: 101 (100) units of food [food], 101 (100) units
@@ -4617,6 +4632,7 @@ Galaxy report:
         Northern Hemisphere [R00002] (0,0), ETA 18.
         week 13: moving from Southern Hemisphere [R00003] (1,0) to
         Northern Hemisphere [R00002] (0,0), ETA 17.
+        week 13: paid 15 cash [cash] upkeep.
       + terran officer [107], terran [terran].
         size: 4, mass: 4, capacity: 3/0, upkeep: 10 cash [cash],
         consume: unit of food [food], unit of terran breathing gas

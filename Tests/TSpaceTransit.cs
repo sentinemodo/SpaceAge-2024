@@ -15,6 +15,20 @@ namespace UnitTests
 		}
 
 		[Test]
+		public void DurationWeeks_MoonScaleSubOneRawWeeks_SingleCeilAfterSpeed()
+		{
+			Assert.That(SpaceTransit.DurationWeeks(0.013, 0.67), Is.EqualTo(1));
+			Assert.That(SpaceTransit.DurationWeeks(0.014, 0.67), Is.EqualTo(2));
+		}
+
+		[Test]
+		public void DurationWeeks_OneRawWeekAtSpeedOne_IsOneWeekRegardlessOfMass()
+		{
+			Assert.That(SpaceTransit.DurationWeeks(0.02, 0.67), Is.EqualTo(1));
+			Assert.That(SpaceTransit.DurationWeeks(0.02, 1.00), Is.EqualTo(1));
+		}
+
+		[Test]
 		public void DurationWeeks_DefaultWorkshop_IsTwoSixThirteenThirtyNine()
 		{
 			Assert.That(SpaceTransit.DurationWeeks(0.04, 1), Is.EqualTo(2));

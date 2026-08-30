@@ -29,7 +29,7 @@ namespace SpaceAge
 			double weeksAtSpeedOne;
 			if (distance < MoonAuLimit)
 			{
-				weeksAtSpeedOne = Math.Max(1, distance * MoonWeeksPerAu);
+				weeksAtSpeedOne = distance * MoonWeeksPerAu;
 			}
 			else
 			{
@@ -38,7 +38,16 @@ namespace SpaceAge
 				weeksAtSpeedOne = BeltAnchorWeeks
 					+ (GateAnchorWeeks - BeltAnchorWeeks) * Math.Log((1.0 + distance) / beltArg) / logSpan;
 			}
-			return Math.Max(1, (int)Math.Ceiling(weeksAtSpeedOne / speed - 1e-9));
+			return DurationWeeksFromRaw(weeksAtSpeedOne, speed);
+		}
+
+		private static int DurationWeeksFromRaw(double weeksAtSpeedOne, double speed)
+		{
+			if (weeksAtSpeedOne >= 1.0 - 1e-9 && weeksAtSpeedOne <= 1.0 + 1e-9)
+			{
+				return 1;
+			}
+			return RoundUpWeeks(weeksAtSpeedOne / speed);
 		}
 
 		public static double MassFactor(double thrust, double mass)
@@ -91,7 +100,12 @@ namespace SpaceAge
 			{
 				speed = 1;
 			}
-			return Math.Max(1, (int)Math.Ceiling(exitDuration / speed - 1e-9));
+			return RoundUpWeeks(exitDuration / speed);
+		}
+
+		private static int RoundUpWeeks(double fractionalWeeks)
+		{
+			return Math.Max(1, (int)Math.Ceiling(fractionalWeeks - 1e-9));
 		}
 
 		public static int ExitDurationWeeks(int exitDuration, ModuleStack stack)

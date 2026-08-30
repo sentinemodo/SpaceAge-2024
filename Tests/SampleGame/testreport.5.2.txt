@@ -5,7 +5,7 @@ Content-Disposition: attachment
 SpaceAge report for Caste Prime [2].
 Turn 5, Year 2021, January 1.
 
-SpaceAge Engine Version: 0.1.144.
+SpaceAge Engine Version: 0.1.148.
 
 Events during turn:
   none.
@@ -668,6 +668,7 @@ Battles report:
     #3 small cargo bay [cargob] module captured by Gelvaren [3].
   ------------------------------------------------------------
   Battle ended indecisively.
+
   Week 2.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
@@ -1184,6 +1185,7 @@ Battles report:
   hits #1 coal-burning plant [000015] doing 1 damage and 3 capture damage.
   ------------------------------------------------------------
   Battle ended indecisively.
+
   Week 3.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
@@ -1650,6 +1652,7 @@ Battles report:
     #1 coal-burning plant [cplant] is lightly damaged.
   ------------------------------------------------------------
   Battle ended indecisively.
+
   Week 4.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
@@ -2225,6 +2228,7 @@ Battles report:
     #1 coal-burning plant [cplant] is lightly damaged.
   ------------------------------------------------------------
   Battle ended indecisively.
+
   Week 5.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
@@ -2805,6 +2809,7 @@ Battles report:
     #1 coal-burning plant [cplant] is disabled.
   ------------------------------------------------------------
   Battle ended indecisively.
+
   Week 6.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
@@ -3407,6 +3412,7 @@ Battles report:
     #1 coal-burning plant [cplant] is disabled.
   ------------------------------------------------------------
   Battle ended indecisively.
+
   Week 7.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
@@ -3982,6 +3988,7 @@ Battles report:
   and hits #1 core drill [000016] doing 0 damage and 1 capture damage.
   ------------------------------------------------------------
   Battle ended indecisively.
+
   Week 8.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
@@ -4447,6 +4454,7 @@ Battles report:
   hits #3 factory [000017] doing 0 damage and 1 capture damage.
   ------------------------------------------------------------
   Battle ended indecisively.
+
   Week 9.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
@@ -4871,6 +4879,7 @@ Battles report:
   hits #3 factory [000017] doing 0 damage and 1 capture damage.
   ------------------------------------------------------------
   Battle ended indecisively.
+
   Week 10.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
@@ -5295,6 +5304,7 @@ Battles report:
   hits #3 factory [000017] doing 0 damage and 1 capture damage.
   ------------------------------------------------------------
   Battle ended indecisively.
+
   Week 11.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
@@ -5719,6 +5729,7 @@ Battles report:
   hits #3 factory [000017] doing 0 damage and 1 capture damage.
   ------------------------------------------------------------
   Battle ended indecisively.
+
   Week 12.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
@@ -6145,6 +6156,7 @@ Battles report:
   hits #3 factory [000017] doing 0 damage and 1 capture damage.
   ------------------------------------------------------------
   Battle ended indecisively.
+
   Week 13.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
@@ -6735,6 +6747,7 @@ Galaxy report:
         week 11: engaged in battle
         week 12: engaged in battle
         week 13: engaged in battle
+        week 13: paid 346 cash [cash] upkeep.
     + gun placement [111], gun placement [gunplc], disabled, immobile.
       size: 100, mass: 504 (500), capacity: 100/4, crew: 2/1, upkeep: 11 (10) cash [cash], consume:
       (0) unit of food [food], (0) unit of terran breathing gas mixture [terair].
@@ -6756,6 +6769,7 @@ Galaxy report:
         week 11: engaged in battle
         week 12: engaged in battle
         week 13: engaged in battle
+        week 13: paid 11 cash [cash] upkeep.
     - corporate headquarters [c000012], corporate headquarters [corphq], immobile, owned by Gelvaren
       [3].
       size: 1000.
@@ -6814,6 +6828,7 @@ Galaxy report:
         week 13: has unit of uranium [uraniu] (needed 1).
         week 13: departed from Dusty field [R00001] (0,0) to orbit [O00001], ETA 0.
         week 13: arrived at orbit [O00001] from Dusty field [R00001] (0,0).
+        week 13: paid 20 cash [cash] upkeep.
       + command bridge [112], command bridge [cbridg].
         size: 800, mass: 376 (300), capacity: 200/76, energy: 5, crew: 1/2, upkeep: 111 (100) cash
         [cash], consume: 2 (0) units of food [food], 2 (0) units of terran breathing gas mixture
@@ -6824,6 +6839,7 @@ Galaxy report:
         events:
           week 1: got 20 units of food [food] from space shuttle [100].
           week 1: got 20 units of terran breathing gas mixture [terair] from space shuttle [100].
+          week 13: paid 111 cash [cash] upkeep.
         + Caste Prime CEO [000001], terran [terran].
           size: 4, mass: 4, capacity: 3/0, upkeep: 10 cash [cash], consume: unit of food [food],
           unit of terran breathing gas mixture [terair].
@@ -6857,6 +6873,7 @@ Galaxy report:
           week 12: out of fuel.
           week 13: out of fuel.
           week 13: got unit of uranium [uraniu] from core drill [251].
+          week 13: paid 91 cash [cash] upkeep.
       + reaction drive [114], reaction drive [rctdrv].
         size: 600, mass: 10000/742 (700), capacity: 150/42, energy: 30, crew: 1/1, upkeep: 101 (100)
         cash [cash], consume: (0) unit of food [food], (0) unit of terran breathing gas mixture
@@ -6872,12 +6889,14 @@ Galaxy report:
         events:
           week 1: got 10 units of food [food] from space shuttle [100].
           week 1: got 10 units of terran breathing gas mixture [terair] from space shuttle [100].
+          week 13: paid 101 cash [cash] upkeep.
       + computer library [115], computer library [cmplib].
         size: 200, mass: 50 (50), energy: 5, upkeep: cash [cash].
         technologies: alien fighter construction [alnfgh].
         events:
           week 1: received copy of alien fighter construction [alnfgh] technology from alien fighter
           drone [207].
+          week 13: paid 1 cash [cash] upkeep.
 
     Dusty field [R00001] (0,0), dusty region, settlement capacity 4/0.
     Exits:
@@ -6911,11 +6930,14 @@ Galaxy report:
         week 1: given 10 units of terran breathing gas mixture [terair] to fission reactor [113].
         week 1: given 10 units of food [food] to reaction drive [114].
         week 1: given 10 units of terran breathing gas mixture [terair] to reaction drive [114].
+        week 13: paid 1031 cash [cash] upkeep.
     + crashed alien vessel [200], alien vessel hull [alnhul], immobile.
       size: 6500, mass: 13000/4968 (200), capacity: 6000/6620, energy: 80/68 (1), crew: 6/6, upkeep:
       526 (20) cash [cash], consume: 6 (0) units of food [food], 6 (0) units of terran breathing gas
       mixture [terair].
       technologies: advanced hull construction [ahlcns].
+      events:
+        week 13: paid 20 cash [cash] upkeep.
       + advanced robo-factory [201], advanced robo-factory [robofc], immobile.
         size: 1000, mass: 1020 (750), capacity: 500/135, energy: 15, upkeep: 60 cash [cash].
         technologies: automated fabrication [autfab], mineral core drilling [cdrill], uranium mining
@@ -6942,14 +6964,19 @@ Galaxy report:
           week 5: copied helium-3 mining [he3min] technology to core drill [251].
           week 5: produced core drill [cdrill] into core drill [251].
           week 5: given 6 terrans [terran] to core drill [251].
+          week 13: paid 60 cash [cash] upkeep.
       + automated command module [202], automated command module [autcmd], immobile.
         size: 800, mass: 300 (300), capacity: 200/0, energy: 5, upkeep: 80 cash [cash].
         technologies: automated command systems [autctl].
+        events:
+          week 13: paid 80 cash [cash] upkeep.
       + automated propulsion module [203], automated propulsion module [autdrv], immobile.
         size: 600, mass: 10000/700 (700), capacity: 150/0, energy: 30, upkeep: 80 cash [cash].
         movement speed: 14.3 in space.
         fuel requirements:  unit of oxyhydro [h2o2] per week.
         technologies: automated propulsion [autprp].
+        events:
+          week 13: paid 80 cash [cash] upkeep.
       + automated helium powerplant [204], automated helium powerplant [he3aut], immobile.
         size: 400, mass: 400 (400), energy: 80/5 (consume: 2 units of helium-3 [heliu3] for 13
         weeks), upkeep: 80 cash [cash].
@@ -6969,18 +6996,24 @@ Galaxy report:
           week 11: out of fuel.
           week 12: out of fuel.
           week 13: out of fuel.
+          week 13: paid 80 cash [cash] upkeep.
       + small cargo bay [205], small cargo bay [cargob], immobile.
         size: 2000, mass: 200 (200), capacity: 1800/0, upkeep: 30 cash [cash].
         technologies: small scale transportation [strans].
+        events:
+          week 13: paid 30 cash [cash] upkeep.
       + fighter drone bay [206], fighter drone bay [drnbay], immobile.
         size: 400, mass: 3000/620 (300), capacity: 400/320, energy: 5, upkeep: 120 (40) cash [cash].
         technologies: drone hangar construction [drnhng].
         events:
           week 1: received 4 alien fighter drones [alndrn] from alien fighter drone [207].
+          week 13: paid 40 cash [cash] upkeep.
         + alien fighter drone [450], 4 alien fighter drones [alndrn], immobile.
-          size: 320, mass: 3000/320 (320), upkeep: 80 cash [cash].
+          size: 320, mass: 3000/320 (320), capacity: 4/0, upkeep: 80 cash [cash].
           movement speed: 2.3 in space.
           fuel requirements: 4 units of helium-3 [heliu3] per 13 weeks.
+          events:
+            week 13: paid 80 cash [cash] upkeep.
       + life support system [250], life support system [lifsys], immobile.
         size: 100, mass: 184 (80), capacity: 40/104, energy: 2, upkeep: 10 cash [cash].
         items: 104 units of terran breathing gas mixture [terair] (size: 104, mass: 104).
@@ -6998,6 +7031,7 @@ Galaxy report:
           week 11: produced 10 units of terran breathing gas mixture [terair].
           week 12: produced 10 units of terran breathing gas mixture [terair].
           week 13: produced 10 units of terran breathing gas mixture [terair].
+          week 13: paid 10 cash [cash] upkeep.
       + core drill [251], core drill [cdrill], immobile.
         size: 1000, mass: 1024 (1000), capacity: 750/24, energy: 5, crew: 6/6, upkeep: 46 (40) cash
         [cash], consume: 6 (0) units of food [food], 6 (0) units of terran breathing gas mixture
@@ -7017,6 +7051,7 @@ Galaxy report:
           week 5: got 6 terrans [terran] from advanced robo-factory [201].
           week 13: produced unit of uranium [uraniu].
           week 13: given unit of uranium [uraniu] to fission reactor [113].
+          week 13: paid 46 cash [cash] upkeep.
 
 
 Orders Template:

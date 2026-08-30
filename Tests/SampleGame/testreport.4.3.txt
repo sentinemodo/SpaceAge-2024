@@ -5,7 +5,7 @@ Content-Disposition: attachment
 SpaceAge report for Gelvaren [3].
 Turn 4, Year 2021, September 1.
 
-SpaceAge Engine Version: 0.1.144.
+SpaceAge Engine Version: 0.1.148.
 
 Events during turn:
   none.
@@ -13,6 +13,7 @@ Events during turn:
 Declared stances:
   default: neutral, unknown: hostile.
   enemy toward Caste Prime [2].
+
 Bank report:
   Bank account balance: 8891.
   Credit line maximum: 10000.
@@ -874,6 +875,7 @@ Battles report:
     #1 gun placement [gunplc] is lightly damaged.
   ------------------------------------------------------------
   Battle ended indecisively.
+
   Week 2.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth
   [P00001] at AU 1, ocean planet [ocean] in system Sol [SS0001] (0, 0,
@@ -1689,6 +1691,7 @@ Battles report:
     #1 gun placement [gunplc] is disabled.
   ------------------------------------------------------------
   Battle ended indecisively.
+
   Week 3.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth
   [P00001] at AU 1, ocean planet [ocean] in system Sol [SS0001] (0, 0,
@@ -2468,6 +2471,7 @@ Battles report:
     #2 gun placement [gunplc] is disabled.
   ------------------------------------------------------------
   Battle ended indecisively.
+
   Week 4.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth
   [P00001] at AU 1, ocean planet [ocean] in system Sol [SS0001] (0, 0,
@@ -3216,6 +3220,7 @@ Battles report:
     #2 gun placement [gunplc] is lightly damaged.
   ------------------------------------------------------------
   Battle ended indecisively.
+
   Week 5.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth
   [P00001] at AU 1, ocean planet [ocean] in system Sol [SS0001] (0, 0,
@@ -3939,6 +3944,7 @@ Battles report:
   damage and 3 capture damage.
   ------------------------------------------------------------
   Battle ended indecisively.
+
   Week 6.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth
   [P00001] at AU 1, ocean planet [ocean] in system Sol [SS0001] (0, 0,
@@ -4614,6 +4620,7 @@ Battles report:
   damage and 3 capture damage.
   ------------------------------------------------------------
   Battle ended indecisively.
+
   Week 7.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth
   [P00001] at AU 1, ocean planet [ocean] in system Sol [SS0001] (0, 0,
@@ -5293,6 +5300,7 @@ Battles report:
     #5 small cargo bay [cargob] is lightly damaged.
   ------------------------------------------------------------
   Battle ended indecisively.
+
   Week 8.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth
   [P00001] at AU 1, ocean planet [ocean] in system Sol [SS0001] (0, 0,
@@ -5995,6 +6003,7 @@ Battles report:
     #5 small cargo bay [cargob] is lightly damaged.
   ------------------------------------------------------------
   Battle ended indecisively.
+
   Week 9.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth
   [P00001] at AU 1, ocean planet [ocean] in system Sol [SS0001] (0, 0,
@@ -6699,6 +6708,7 @@ Battles report:
     #5 small cargo bay [cargob] is lightly damaged.
   ------------------------------------------------------------
   Battle ended indecisively.
+
   Week 10.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth
   [P00001] at AU 1, ocean planet [ocean] in system Sol [SS0001] (0, 0,
@@ -7450,6 +7460,7 @@ Battles report:
     #5 small cargo bay [cargob] is disabled.
   ------------------------------------------------------------
   Battle ended indecisively.
+
   Week 11.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth
   [P00001] at AU 1, ocean planet [ocean] in system Sol [SS0001] (0, 0,
@@ -8097,6 +8108,7 @@ Battles report:
   damage and 3 capture damage.
   ------------------------------------------------------------
   Battle ended indecisively.
+
   Week 12.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth
   [P00001] at AU 1, ocean planet [ocean] in system Sol [SS0001] (0, 0,
@@ -8785,6 +8797,7 @@ Battles report:
     #1 farming complex [farms] module captured by Gelvaren [3].
   ------------------------------------------------------------
   Battle ended indecisively.
+
   Week 13.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth
   [P00001] at AU 1, ocean planet [ocean] in system Sol [SS0001] (0, 0,
@@ -9505,6 +9518,7 @@ Galaxy report:
       27 units of food [food], 27 units of terran breathing gas mixture
       [terair]), 2055 cash [cash].
       events:
+        week 13: paid 145 cash [cash] upkeep.
         week 13: 15 wounded terrans [wndtrn] died of their wounds.
         week 13: 12 wounded terrans [wndtrn] recovered from their
         wounds.
@@ -9518,6 +9532,7 @@ Galaxy report:
       events:
         week 1: captured gun placement [gunplc] from gun placement
         [111].
+        week 13: paid 10 cash [cash] upkeep.
     + gun placement [c00002], gun placement [gunplc], disabled,
       immobile.
       size: 100, mass: 504 (500), capacity: 100/4, upkeep: 11 (10) cash
@@ -9532,6 +9547,7 @@ Galaxy report:
       events:
         week 3: captured gun placement [gunplc] from gun placement
         [111].
+        week 13: paid 11 cash [cash] upkeep.
     + gun placement [c00003], gun placement [gunplc], disabled,
       immobile.
       size: 100, mass: 504 (500), capacity: 100/4, upkeep: 11 (10) cash
@@ -9546,6 +9562,7 @@ Galaxy report:
       events:
         week 4: captured gun placement [gunplc] from gun placement
         [111].
+        week 13: paid 11 cash [cash] upkeep.
     + gun placement [c00004], gun placement [gunplc], disabled,
       immobile.
       size: 100, mass: 504 (500), capacity: 100/4, upkeep: 11 (10) cash
@@ -9560,6 +9577,7 @@ Galaxy report:
       events:
         week 5: captured gun placement [gunplc] from gun placement
         [111].
+        week 13: paid 11 cash [cash] upkeep.
     + farming complex [c00005], farming complex [farms], disabled,
       immobile.
       size: 1000, mass: 120 (100), capacity: 500/20, upkeep: 55 (50)
@@ -9573,6 +9591,7 @@ Galaxy report:
       events:
         week 12: captured farming complex [farms] from farming complex
         [000014].
+        week 13: paid 55 cash [cash] upkeep.
     + farming complex [c00006], farming complex [farms], disabled,
       immobile.
       size: 1000, mass: 120 (100), capacity: 500/20, upkeep: 55 (50)
@@ -9586,6 +9605,7 @@ Galaxy report:
       events:
         week 12: captured farming complex [farms] from farming complex
         [000014].
+        week 13: paid 55 cash [cash] upkeep.
     + farming complex [c00007], farming complex [farms], disabled,
       immobile.
       size: 1000, mass: 120 (100), capacity: 500/20, upkeep: 55 (50)
@@ -9599,6 +9619,7 @@ Galaxy report:
       events:
         week 13: captured farming complex [farms] from farming complex
         [000014].
+        week 13: paid 55 cash [cash] upkeep.
   + peaceful scout [108], tanks [tanks], disabled, immobile.
     size: 240, mass: 364 (240), capacity: 200/112, upkeep: 40 (24) cash
     [cash], consume: 32 (16) units of food [food], 32 (16) units of
@@ -9616,6 +9637,7 @@ Galaxy report:
     events:
       week 1: set tactic to prioritize armed.
       week 1: CAPTURE failed. Immobile units may only use destroy.
+      week 13: paid 40 cash [cash] upkeep.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 949 (720), capacity: 600/223, crew: 48/49, upkeep:
     130 (72) cash [cash], consume: 97 (48) units of food [food], 97 (48)
@@ -9687,6 +9709,7 @@ Galaxy report:
       farming complex [000014], coal-burning plant [000015], core drill
       [000016], factory [000017], gun placement [111]
       week 13: engaged in battle
+      week 13: paid 130 cash [cash] upkeep.
     + Gelvaren CEO [000002], terran [terran].
       size: 4, mass: 4, capacity: 3/0, upkeep: 10 cash [cash], consume:
       unit of food [food], unit of terran breathing gas mixture
@@ -9760,6 +9783,7 @@ Galaxy report:
       week 13: given 1000 cash [cash] to Gelvaren Headquarters [000018].
       week 13: given 10 terrans [terran] to Gelvaren Headquarters
       [000018].
+      week 13: paid 100 unit of food [food] upkeep.
     + Gelvaren Headquarters [000018], corporate headquarters [corphq],
       immobile.
       size: 1000, mass: 1080 (1000), capacity: 750/80, energy: 10, crew:
@@ -9797,6 +9821,7 @@ Galaxy report:
         week 13: got 1000 cash [cash] from Gelvaren complex [000026].
         week 13: got 10 terrans [terran] from Gelvaren complex [000026].
         week 13: produced 100 cash [cash].
+        week 13: paid 120 cash [cash] upkeep.
     + small cargo bay [000019], small cargo bay [cargob], immobile.
       size: 2000, mass: 1178 (200), capacity: 1800/924, upkeep: 32 (30)
       cash [cash], consume: 2 (0) units of food [food], 2 (0) units of
@@ -9848,6 +9873,7 @@ Galaxy report:
         week 13: got 10 units of food [food] from farming complex
         [000020].
         week 13: got 2 units of oil [oil] from core drill [000022].
+        week 13: paid 32 cash [cash] upkeep.
     + farming complex [000020], 2 farming complexes [farms], immobile.
       size: 2000, mass: 240 (200), capacity: 1000/40, energy: 10, crew:
       10/10, upkeep: 110 (100) cash [cash], consume: 10 (0) units of
@@ -9896,11 +9922,13 @@ Galaxy report:
         week 13: produced 10 units of food [food].
         week 13: given 10 units of food [food] to small cargo bay
         [000019].
+        week 13: paid 110 cash [cash] upkeep.
     + wind powerplant [000021], 19 wind powerplants [wnplnt], immobile.
       size: 190, mass: 190 (190), energy: 76/19, upkeep: 190 cash
       [cash].
       events:
         week 1: started energy production for the next 13 weeks.
+        week 13: paid 190 cash [cash] upkeep.
     + core drill [000022], core drill [cdrill], immobile.
       size: 1000, mass: 1024 (1000), capacity: 750/24, energy: 5, crew:
       6/6, upkeep: 46 (40) cash [cash], consume: 6 (0) units of food
@@ -9935,6 +9963,7 @@ Galaxy report:
         week 12: given 2 units of oil [oil] to small cargo bay [000019].
         week 13: produced 2 units of oil [oil].
         week 13: given 2 units of oil [oil] to small cargo bay [000019].
+        week 13: paid 46 cash [cash] upkeep.
     + factory [000023], factory [factry], immobile.
       size: 1000, mass: 912 (750), capacity: 500/130, energy: 15, crew:
       10/10, upkeep: 70 (60) cash [cash], consume: 10 (0) units of food
@@ -9960,6 +9989,7 @@ Galaxy report:
         shuttle [shuttl] module.
         week 6: produced space shuttle [shuttl] into space shuttle
         [117].
+        week 13: paid 70 cash [cash] upkeep.
     + military barrack [000025], military barrack [barrck], immobile.
       size: 2000, mass: 540 (500), capacity: 1800/40, energy: 5, crew:
       2/10, upkeep: 210 (200) cash [cash], consume: 10 (0) units of food
@@ -9968,6 +9998,8 @@ Galaxy report:
       items: 10 terrans [terran] (size: 40, mass: 40, upkeep: 10 cash
       [cash], consume: 10 units of food [food], 10 units of terran
       breathing gas mixture [terair]).
+      events:
+        week 13: paid 210 cash [cash] upkeep.
     + infantry battalion [110], infantry battalion [inftry], immobile.
       size: 500, mass: 603 (500), capacity: 300/103, upkeep: 15 (5) cash
       [cash], consume: 101 (100) units of food [food], 101 (100) units
@@ -10003,6 +10035,7 @@ Galaxy report:
         Northern Hemisphere [R00002] (0,0), ETA 5.
         week 13: moving from Southern Hemisphere [R00003] (1,0) to
         Northern Hemisphere [R00002] (0,0), ETA 4.
+        week 13: paid 15 cash [cash] upkeep.
       + terran officer [107], terran [terran].
         size: 4, mass: 4, capacity: 3/0, upkeep: 10 cash [cash],
         consume: unit of food [food], unit of terran breathing gas
@@ -10016,6 +10049,7 @@ Galaxy report:
         [cmplib].
         week 2: received computer library [cmplib] produced by factory
         [000023].
+        week 13: paid 1 cash [cash] upkeep.
     + space shuttle [117], space shuttle [shuttl], disabled, immobile.
       size: 200, mass: 750/30 (30), capacity: 125/0, crew: 2/0, upkeep:
       100 cash [cash].
@@ -10026,6 +10060,7 @@ Galaxy report:
         week 3: formed by factory [000023] with space shuttle [shuttl].
         week 6: received space shuttle [shuttl] produced by factory
         [000023].
+        week 13: paid 100 cash [cash] upkeep.
 ------------------------------------------------------------
   * Luna [P00003] (1, 0, 0), moon, unexplored.
 ------------------------------------------------------------

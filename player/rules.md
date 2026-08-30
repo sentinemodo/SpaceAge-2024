@@ -428,16 +428,19 @@ massFactor = clamp(load / (40000 / 4150), 0.67, 1.50)
 effectiveSpeed = catalogSpaceSpeed × massFactor
 ```
 
-**AU hops** (`DurationWeeks`): ΔAU ≈ 0 is 1 week. One ceil, after dividing by `effectiveSpeed` (speed ≤ 0 treated as 1):
+**AU hops** (`DurationWeeks` → `DurationWeeksFromRaw` → `RoundUpWeeks`): ΔAU ≈ 0 is 1 week. Speed ≤ 0 treated as 1.
 
 ```
 if ΔAU < 0.1:
-    f = max(1, 50 × ΔAU)   // moon-scale; 0.04 → 2.00
+    f = 50 × ΔAU                    // moon-scale; no premature floor
 else:
     f = 6 + 33 × ln((1 + ΔAU) / 2.7) / ln(80 / 2.7)
 
-weeks = ceil(f / effectiveSpeed)
+if f ≈ 1.0: weeks = 1               // bypass mass/speed (same-body orbit hops)
+else: weeks = RoundUpWeeks(f / effectiveSpeed)
 ```
+
+`RoundUpWeeks` = `max(1, ceil(weeks − ε))` — one ceil after dividing by `effectiveSpeed`. When `f` is exactly 1 week at speed 1, duration stays **1** even if mass factor < 1 (cargo hull).
 
 The log is the two-point fit through (1.7, 6) and (79, 39). Default workshop frigate (one `[fustor]`, mass **4150**, mass factor **1.00**, speed **1**):
 
@@ -450,7 +453,7 @@ The log is the two-point fit through (1.7, 6) and (79, 39). Default workshop fri
 
 Scout (factor 1.50) / cargo (factor 0.67) on the same hops: moon 2 / 3, belt 4 / 9, gas giant 9 / 19, Gate 26 / 59. SampleGame `rctdrv` / `autdrv` list thrust **10000** (omitted speed → 1); a default-mass hull then hits the **0.67** clamp.
 
-**Baked space exits** (`ExitDurationWeeks`): `ceil(exitDuration / effectiveSpeed)` (min 1). Same-body surface↔orbit stays **1 week** and does not use this formula. `JUMP` stays **1 week**, not AU.
+**Baked space exits** (`ExitDurationWeeks`): `RoundUpWeeks(exitDuration / effectiveSpeed)`. Same-body surface↔orbit stays **1 week** and does not use this formula. `JUMP` stays **1 week**, not AU.
 
 #### Surface↔orbit environment
 
