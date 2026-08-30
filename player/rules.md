@@ -485,7 +485,7 @@ Starts energy or item production using the stack’s module type (`ProducingEner
 
 **Subject:** modulestack only.
 
-Spends spare parts (`spare`) and restores damage on the stack (or its parent scope). Engineering shop `[engshp]` restores **20 damage per active copy** and consumes **1 spare per copy**; otherwise **10 damage for 1 spare**; **1 damage** if unsupplied. Event: `repaired N damage.`
+Spends spare parts (`spare`) and restores damage on the stack (or its parent scope). Engineering shop `[engshp]` restores **20 damage per active copy** and consumes **1 spare per copy**; otherwise **10 damage for 1 spare**; **1 damage** if unsupplied. Event: `repaired N damage.` For a slower tech path that consumes spare at job start, use **`USE repair`** (see [USE](#use)).
 
 ### RESEARCH
 
@@ -544,4 +544,4 @@ Omit `FOR`: `ReceiverParent` defaults to the **producer**. `ProducingModule` tre
 
 `use TECH as newX for 101` stacks the product under hull `101` when production **completes**, same location required (`STACK failed. Parent is in different location.` if the hull has already left). Alternative: `#modulestack new102` then `stack 101` (immediate, also same location). A nested factory can `USE` while the hull’s long slot is a `MOVE` (one long **per subject**). The shuttle itself may only `USE` in **orbit**.
 
-Effect-producing techs (catalog `use-produce effect=…`) hit “Not implemented” in Execute — use `REPAIR` for repairs.
+Effect-producing techs (`use-produce effect=…`) run through `ProducingEffect`. **Repair and maintenance** `[repair]` (`use-time` 2, production-group module): consumes **1 spare** at start, then after duration repairs **1 HP** on the producer’s parent scope (nested factory repairs its parent stack and nested children — same walk as `REPAIR`). Fails with `USE failed: no damage to repair.` if scope has no damage (spare not consumed). Event: `repaired 1 damage.` For faster weekly repairs use **`REPAIR`** instead (10/20 HP per week).

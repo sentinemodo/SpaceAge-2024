@@ -244,8 +244,7 @@ Works in: production. Use consumes: 1 titanium `[titani]`, 1 iron `[iron]`, 1 co
 
 **repair and maintenance [repair]**  
 Repair and maintenance allows you to recover from ship damage, either from military actions or neglect.  
-Works in: production. Use consumes: 1 spare part `[spare]`. Use produces: effect `repair` on `module-damage` (`change="-1"`). Use-time: 2 weeks.  
-`USE` of effect-producing techs throws “Not implemented”; issue **`REPAIR`** instead (see `player/rules.md`).
+Works in: production. Use consumes: 1 spare part `[spare]`. Use produces: effect `repair` on `module-damage` (`change="-1"`). Use-time: 2 weeks. On completion repairs **1 HP** on the parent scope (same as `REPAIR` scope). Fails if no damage. **`REPAIR`** is faster for weekly bulk repairs.
 
 **rocket launcher production [rckter]**  
 Manufacture of portable rocket launchers issued to infantry battalions. Tag: `military`. Research cost override: 4.  
@@ -485,7 +484,7 @@ Size 2, mass 2, defense 2, initiative 2. Produced by personal EW pack `[psnew]` 
 
 **spare part [spare]**  
 Spare part can be used to remove 10 points of damage.  
-Size 2, mass 2. Produced by preventive servicing `[servic]` (10). Consumed by repair and maintenance `[repair]` (1); the working HP path is the `REPAIR` order.
+Size 2, mass 2. Produced by preventive servicing `[servic]` (10). Consumed by repair and maintenance `[repair]` (1) and by the `REPAIR` order.
 
 **unit of gold [gold]**  
 This very valuable metal usable in energy based or energy intensive structures.  

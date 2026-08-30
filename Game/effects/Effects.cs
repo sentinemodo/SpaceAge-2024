@@ -249,6 +249,9 @@ namespace SpaceAge
                     case "producing-items":
                         effect = new ProducingItems(holder);
                         break;
+                    case "producing-effect":
+                        effect = new ProducingEffect(holder);
+                        break;
                     case "producing-energy":
                         effect = new ProducingEnergy(holder);
                         break;

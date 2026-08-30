@@ -69,12 +69,7 @@ namespace SpaceAge
 		{
 			get
 			{
-				ModuleStack parent = this.Repairer.Parent as ModuleStack;
-				if (parent != null)
-				{
-					return parent;
-				}
-				return this.Repairer;
+				return SpaceAge.RepairScope.For(this.Repairer);
 			}
 		}
 
@@ -116,7 +111,7 @@ namespace SpaceAge
 				return;
 			}
 
-			int damage = this.totalDamage(this.RepairScope);
+			int damage = SpaceAge.RepairScope.TotalDamage(this.RepairScope);
 			if (damage < 1)
 			{
 				return;
@@ -145,7 +140,7 @@ namespace SpaceAge
 				this.durationLeft = 1;
 			}
 			this.durationLeft--;
-			int repaired = this.applyRepair(this.RepairScope, points);
+			int repaired = SpaceAge.RepairScope.ApplyRepair(this.RepairScope, points);
 			this.Repairer.EventReports.Add(week, string.Format("repaired {0} damage.", repaired));
 			this.Executing = true;
 			base.Execute(week);
@@ -156,59 +151,6 @@ namespace SpaceAge
 			ItemStacks stacks = new ItemStacks();
 			stacks.Add(new ItemStack(ItemType.All["spare"], quantity));
 			return stacks;
-		}
-
-		private int totalDamage(ModuleStack stack)
-		{
-			int damage = stack.Damage;
-			foreach (ModuleStack nested in this.nestedSorted(stack))
-			{
-				damage += this.totalDamage(nested);
-			}
-			return damage;
-		}
-
-		private int applyRepair(ModuleStack stack, int points)
-		{
-			int remaining = points;
-			foreach (Module module in stack.Modules)
-			{
-				if (remaining < 1)
-				{
-					break;
-				}
-				if (module.Damage < 1)
-				{
-					continue;
-				}
-				int repair = module.Damage;
-				if (repair > remaining)
-				{
-					repair = remaining;
-				}
-				module.Damage -= repair;
-				remaining -= repair;
-			}
-			foreach (ModuleStack nested in this.nestedSorted(stack))
-			{
-				if (remaining < 1)
-				{
-					break;
-				}
-				remaining -= this.applyRepair(nested, remaining);
-			}
-			return points - remaining;
-		}
-
-		private List<ModuleStack> nestedSorted(ModuleStack stack)
-		{
-			List<ModuleStack> nested = new List<ModuleStack>();
-			foreach (ModuleStack child in stack.ModuleStacks.Values)
-			{
-				nested.Add(child);
-			}
-			nested.Sort(ModuleStacks.CompareByNames);
-			return nested;
 		}
 
 		private IItemStacksHolder findItemHolder(IItemStacksHolder holder, ItemStacks needed)
@@ -239,6 +181,17 @@ namespace SpaceAge
 				}
 			}
 			return null;
+		}
+
+		private List<ModuleStack> nestedSorted(ModuleStack stack)
+		{
+			List<ModuleStack> nested = new List<ModuleStack>();
+			foreach (ModuleStack child in stack.ModuleStacks.Values)
+			{
+				nested.Add(child);
+			}
+			nested.Sort(ModuleStacks.CompareByNames);
+			return nested;
 		}
 	}
 }

@@ -117,6 +117,7 @@
     <Compile Include="effects\ENoUpkeepEffects.cs" />
     <Compile Include="effects\EProducableEffects.cs" />
     <Compile Include="effects\ProducingEffect.cs" />
+    <Compile Include="effects\RepairScope.cs" />
     <Compile Include="effects\ProducingModule.cs" />
     <Compile Include="effects\ProducingItems.cs" />
     <Compile Include="effects\ReceivingTechnology.cs" />

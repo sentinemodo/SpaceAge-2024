@@ -14,7 +14,7 @@ Designer does **not** implement these. TDD adds a failing test first. Campaign X
 | Module group `capital` (or `ark`) | L10 hull is not a “frigate” | `EModuleTypesGroup` + `getModuleTypeGroup` |
 | Contract triggers: `survive-weeks`, `destroy-stack`, `region-resource-below` | Bombardment, fauna, pirate hunt | `IContractTrigger` + XML attrs |
 | `Events` pipeline for timed spawns | Alien reactivation, impact week | `Game/Events.cs` (today stub) |
-| `use-produce effect` execution | Catalog `repair` and future ECLSS effects | `UseOrder` / `EProductionType.Effects` |
+| ~~`use-produce effect` execution~~ | **Live 0.1.151 (2026-08-30).** `[repair]` runs via `ProducingEffect` / `UseOrder` (`module-damage` −1 HP on parent scope). `REPAIR` order unchanged. | `UseOrder` / `EProductionType.Effects` |
 | Skill children (`usable-in`, cure-chance) applied in battle/medical | Officers matter on arks and labs | `SkillType` fill-pass |
 | Item `radiation` / equipment bonuses in combat and vacuum | Vests, suits, dosimeters | `ItemType` + consume/medical |
 | New `location-type` `atmosphere` | Gas-giant cloud regions | `LoadLocationType` |

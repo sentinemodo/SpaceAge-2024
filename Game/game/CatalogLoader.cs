@@ -340,14 +340,14 @@ namespace SpaceAge
 						    }
 						    else if (elProduce.HasAttribute("effect"))
 						    {
-							    int duration = this.dataFile.XMLAssignInteger(elProduce.GetAttribute("duration"), -1);
 							    string reason = this.dataFile.XMLAssignString(elProduce.GetAttribute("effect"), "effect");
 							    if (elProduce.HasAttribute("target") == false || elProduce.HasAttribute("change") == false)
 							    {
 								    throw new FileLoadException("tried to parse effect " + reason);
 							    }
-							    string target = elProduce.GetAttribute("target");
-							    string change = elProduce.GetAttribute("change");
+							    technology.UseProduceEffectName = reason;
+							    technology.UseProduceTarget = elProduce.GetAttribute("target");
+							    technology.UseProduceChange = this.dataFile.XMLAssignInteger(elProduce.GetAttribute("change"), 0);
 							    technology.ProductionType = EProductionType.Effects;
 						    }
 					    }
