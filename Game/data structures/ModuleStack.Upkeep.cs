@@ -144,6 +144,11 @@ namespace SpaceAge
 			}
 
 			int wounded = this.itemStacks[woundedType].Quantity;
+			int recoverThreshold = 75 - this.MedicalCureChance;
+			if (recoverThreshold < 0)
+			{
+				recoverThreshold = 0;
+			}
 			int died = 0;
 			int recovered = 0;
 			for (int i = 0; i < wounded; i++)
@@ -153,7 +158,7 @@ namespace SpaceAge
 				{
 					died++;
 				}
-				else if (roll >= 75)
+				else if (roll >= recoverThreshold)
 				{
 					recovered++;
 				}

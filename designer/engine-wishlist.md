@@ -15,7 +15,7 @@ Designer does **not** implement these. TDD adds a failing test first. Campaign X
 | Contract triggers: `survive-weeks`, `destroy-stack`, `region-resource-below` | Bombardment, fauna, pirate hunt | `IContractTrigger` + XML attrs |
 | `Events` pipeline for timed spawns | Alien reactivation, impact week | `Game/Events.cs` (today stub) |
 | ~~`use-produce effect` execution~~ | **Live 0.1.151 (2026-08-30).** `[repair]` runs via `ProducingEffect` / `UseOrder` (`module-damage` −1 HP on parent scope). `REPAIR` order unchanged. | `UseOrder` / `EProductionType.Effects` |
-| Skill children (`usable-in`, cure-chance) applied in battle/medical | Officers matter on arks and labs | `SkillType` fill-pass |
+| Skill children (`usable-in`, cure-chance) applied in battle/medical | **Live 0.1.155 (2026-08-30).** `usable-in` gating + flat combat attrs; `produce` (`effective attack` / `effective defence` × units, `research output` per officer on labs); `cure-chance` on quarterly wounded outcome. | `SkillType` fill-pass; `Tests/TSkill.cs`, `Tests/TConsume.cs`, `Tests/TResearch.cs` |
 | Item `radiation` / equipment bonuses in combat and vacuum | Vests, suits, dosimeters | `ItemType` + consume/medical |
 | New `location-type` `atmosphere` | Gas-giant cloud regions | `LoadLocationType` |
 | Drive-dependent `fuel` for `fustor` / `plsdv` / `arkeng` using `heliu3` | L2 torch is **2 `heliu3` / week**; later pulse/ark same item | already expressible in module `fuel`; verify `Moving` consumes it on space hops |

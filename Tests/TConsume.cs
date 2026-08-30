@@ -95,6 +95,25 @@ namespace UnitTests
 		}
 
 		[Test]
+		public void ExecuteQuarterlyWoundedOutcome_HmedicLowersRecoverThreshold()
+		{
+			ModuleStack stack = ModuleStack.All["000005"];
+			int terranBefore = stack.ItemStacks.Quantity(ItemType.All["terran"]);
+			stack.ItemStacks.Add(new ItemStack(ItemType.All["wndtrn"], 4));
+			Person medic = new Person(stack, Faction.All["2"], Race.All["terran"], "med001");
+			medic.Skills.Add(SkillType.All["hmedic"]);
+			Sequence.Ints.Push(80);
+			Sequence.Ints.Push(60);
+			Sequence.Ints.Push(60);
+			Sequence.Ints.Push(0);
+
+			this.game.ExecuteQuarterlyWoundedOutcome();
+
+			Assert.That(stack.ItemStacks.ContainsKey(ItemType.All["wndtrn"]), Is.False);
+			Assert.That(stack.ItemStacks.Quantity(ItemType.All["terran"]), Is.EqualTo(terranBefore + 3));
+		}
+
+		[Test]
 		public void ExecuteMedicalConsume_DoesNotDeductFoodOrAir()
 		{
 			ModuleStack stack = ModuleStack.All["000005"];

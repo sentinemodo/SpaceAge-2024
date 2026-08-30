@@ -178,19 +178,49 @@ namespace SpaceAge
 			}
 		}
 
-		public int Attack
+		public int CombatAttack(ModuleStack root)
 		{
-			get { return this.skills.Attack; }
+			ModuleStack host = this.Parent as ModuleStack;
+			if (host == null)
+			{
+				return 0;
+			}
+			return this.skills.CombatAttack(host, root);
 		}
 
-		public int Defense
+		public int CombatDefense(ModuleStack root)
 		{
-			get { return this.skills.Defense; }
+			ModuleStack host = this.Parent as ModuleStack;
+			if (host == null)
+			{
+				return 0;
+			}
+			return this.skills.CombatDefense(host, root);
 		}
 
-		public int Initiative
+		public int CureChance(ModuleStack root)
 		{
-			get { return this.skills.Initiative; }
+			ModuleStack host = this.Parent as ModuleStack;
+			if (host == null)
+			{
+				return 0;
+			}
+			return this.skills.CureChance(host, root);
+		}
+
+		public int ResearchOutputBonus(ModuleStack host)
+		{
+			return this.skills.ResearchOutputBonus(host, host);
+		}
+
+		public int CombatInitiative(ModuleStack root)
+		{
+			ModuleStack host = this.Parent as ModuleStack;
+			if (host == null)
+			{
+				return 0;
+			}
+			return this.skills.CombatInitiative(host, root);
 		}
 
 		#endregion
@@ -450,17 +480,23 @@ namespace SpaceAge
 
 		private string reportBattleSkills(string line)
 		{
+			ModuleStack host = this.Parent as ModuleStack;
+			if (host == null)
+			{
+				return line;
+			}
+
 			line = string.Format("{0}skills: ",
 			   (line == string.Empty) ? string.Empty : string.Concat(line, ", "));
 
 			bool firstAdded = false;
 			foreach (Skill skill in this.skills.Values)
 			{
-				if (skill.SkillType.IsBattleSkill)
+				if (skill.SkillType.IsBattleSkill && skill.Experience >= 1)
 				{
 					line = string.Format("{0}{1}", line, (firstAdded) ? ", " : "");
 					firstAdded = true;
-					line = string.Concat(line, skill.SkillType.ReportDetails(skill.Experience));
+					line = string.Concat(line, skill.SkillType.ReportDetails(skill.Experience, host, host.RootModuleStack));
 				}
 			}
 			return line;
@@ -468,33 +504,51 @@ namespace SpaceAge
 
 		private string reportAttack(Faction faction, string line)
 		{
-			if (this.Attack > 0)
+			ModuleStack host = this.Parent as ModuleStack;
+			if (host == null)
+			{
+				return line;
+			}
+			int attack = this.CombatAttack(host.RootModuleStack);
+			if (attack > 0)
 			{
 				line = string.Format("{0}attack: {1}",
 				(line == string.Empty) ? string.Empty : string.Concat(line, ", "),
-				this.Attack);
+				attack);
 			}
 			return line;
 		}
 
 		private string reportDefense(Faction faction, string line)
 		{
-			if (this.Defense > 0)
+			ModuleStack host = this.Parent as ModuleStack;
+			if (host == null)
+			{
+				return line;
+			}
+			int defense = this.CombatDefense(host.RootModuleStack);
+			if (defense > 0)
 			{
 				line = string.Format("{0}defense: {1}",
 				   (line == string.Empty) ? string.Empty : string.Concat(line, ", "),
-				   this.Defense);
+				   defense);
 			}
 			return line;
 		}
 
 		private string reportInitiative(Faction faction, string line)
 		{
-			if (this.Initiative != 0)
+			ModuleStack host = this.Parent as ModuleStack;
+			if (host == null)
+			{
+				return line;
+			}
+			int initiative = this.CombatInitiative(host.RootModuleStack);
+			if (initiative != 0)
 			{
 				line = string.Format("{0}initiative: {1}",
 				   (line == string.Empty) ? string.Empty : string.Concat(line, ", "),
-				   this.Initiative);
+				   initiative);
 			}
 			return line;
 		}

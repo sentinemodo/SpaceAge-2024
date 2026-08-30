@@ -342,7 +342,6 @@ namespace SpaceAge
                 }
                 else
                 {
-                    // TODO: add effect / race / officer impact to weekly output
                     this.Researcher.ResearchPoints += output;
                 }
 

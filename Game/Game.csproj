@@ -104,7 +104,12 @@
     <Compile Include="data structures\Moons.cs" />
     <Compile Include="data structures\Modules.cs" />
     <Compile Include="data structures\SkillTypes.cs" />
+    <Compile Include="data structures\SkillBonusFormula.cs" />
+    <Compile Include="data structures\SkillPercentProduce.cs" />
+    <Compile Include="data structures\SkillEffects.cs" />
+    <Compile Include="data structures\SkillFormationStats.cs" />
     <Compile Include="data structures\SkillType.cs" />
+    <Compile Include="data structures\SkillUsableIn.cs" />
     <Compile Include="data structures\Skills.cs" />
     <Compile Include="data structures\Skill.cs" />
     <Compile Include="data structures\Module.cs" />

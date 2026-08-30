@@ -3851,8 +3851,8 @@ Researchers can query the library. The system can handle natural language questi
 			name-en="frigate pilot"
 			training-duration="6"
 			description="A succesful dodge can make a life or death difference in a small space vessels, and you shouldn't pilot a frigate if you can't make it to shoot first."
-			defense="5"
-			initiative="5">
+			defense="3+20%stack-defense"
+			initiative="3+40%stack-initiative">
 			<usable-in module-group="frigate" modulestack-size="1"/>
 			<usable-in module-group="corvette" modulestack-size="1"/>
 			<usable-in module-group="destroyer" modulestack-size="1"/>
@@ -3865,7 +3865,7 @@ Researchers can query the library. The system can handle natural language questi
 			name-en="space station command"
 			training-duration="6"
 			description="Space stations have not much of dodge possibilites, but still they do have small manouver engines that can present stronger points or deflectors."
-			defense="5">
+			defense="5+20%stack-defense">
 			<usable-in module-group="space station"/>
 		</entry>
 		<entry
@@ -3880,20 +3880,127 @@ Researchers can query the library. The system can handle natural language questi
 			name-en="armor platoon leader"
 			training-duration="4"
 			description="Experience in leading an attack of platoon of tanks can be learnt in simulator or on the battlefield."
-			attack="5"
-			initiative="5">
+			attack="2+25%stack-attack"
+			initiative="5+20%stack-initiative">
 			<usable-in module-type-group="vehicle"/>
-			<produce effect="effective attack" target="units" value="1"/>
+			<produce effect="effective attack" target="units" value="25%module-attack"/>
 		</entry>
 		<entry
 			name="inbtcm"
 			name-en="infantry battalion commander"
 			training-duration="4"
 			description="Experience in leading a infantry battalion need a good mixture of tactical and personal skills. The point is on preserving lives."
-			attack="5"
-			initiative="5">
+			attack="2+75%stack-attack"
+			initiative="5+20%stack-initiative">
 			<usable-in module-type-group="infantry"/>
-			<produce effect="effective defence" target="units" value="1"/>
+			<produce effect="effective defence" target="units" value="100%module-defense"/>
+		</entry>
+		<entry
+			name="snsroff"
+			name-en="sensor officer"
+			training-duration="5"
+			description="Instrument calibration and data reduction for research labs."
+			initiative="2+40%stack-initiative">
+			<usable-in module-type-group="research"/>
+			<usable-in module-type-group="command"/>
+			<produce effect="research output" value="1+50%lab-output"/>
+		</entry>
+		<entry
+			name="ntrplt"
+			name-en="nuclear thermal pilot"
+			training-duration="6"
+			description="Operating high-thrust thermal drives demands steady hands and reactor discipline."
+			defense="1+10%stack-defense"
+			initiative="2+20%stack-initiative">
+			<usable-in module-type-group="propulsion"/>
+			<usable-in module-group="frigate" modulestack-size="1"/>
+		</entry>
+		<entry
+			name="astrog"
+			name-en="astrogation"
+			training-duration="6"
+			description="Plotting intercepts and keeping a formation on course through cluttered space."
+			initiative="2+40%stack-initiative">
+			<usable-in module-type-group="command"/>
+			<usable-in module-type-group="spacecraft"/>
+			<produce effect="move duration" value="90%"/>
+		</entry>
+		<entry
+			name="chfeng"
+			name-en="chief engineer"
+			training-duration="8"
+			description="Keeping drives, factories, and power plants running under combat stress."
+			defense="1+20%stack-defense">
+			<usable-in module-type-group="production"/>
+			<usable-in module-type-group="propulsion"/>
+			<produce effect="production duration" value="75%"/>
+			<produce effect="mass thrust" value="110%"/>
+		</entry>
+		<entry
+			name="gunnry"
+			name-en="gunnery director"
+			training-duration="6"
+			description="Coordinating fire control and weapon arcs across a warship's batteries."
+			attack="2+25%stack-attack"
+			initiative="1+40%stack-initiative">
+			<usable-in module-type-group="military"/>
+		</entry>
+		<entry
+			name="logoff"
+			name-en="logistics officer"
+			training-duration="5"
+			description="Manifest discipline and settlement supply routing."
+			>
+			<usable-in module-type-group="storage"/>
+			<usable-in module-type-group="settlement"/>
+			<produce effect="capacity" value="110%"/>
+		</entry>
+		<entry
+			name="xenbio"
+			name-en="xenobiology"
+			training-duration="8"
+			description="Containment protocols and analysis of non-terran biology."
+			>
+			<usable-in module-type-group="research"/>
+			<usable-in module-type-group="agricultural"/>
+			<produce effect="research output" value="1+50%lab-output"/>
+			<produce effect="agricultural output" value="125%"/>
+		</entry>
+		<entry
+			name="radmed"
+			name-en="radiation medicine"
+			training-duration="6"
+			description="Treatment of acute radiation syndrome in sealed wards."
+			cure-chance="25">
+			<usable-in module-type-group="habitat"/>
+		</entry>
+		<entry
+			name="arkplt"
+			name-en="ark helm"
+			training-duration="10"
+			description="Helm and formation control for generation-ship scale hulls."
+			defense="4+20%stack-defense"
+			initiative="2+20%stack-initiative">
+			<usable-in module-group="ark" modulestack-size="1"/>
+			<usable-in module-type-group="command"/>
+		</entry>
+		<entry
+			name="exoagr"
+			name-en="exoagriculture"
+			training-duration="6"
+			description="Closed-loop farming in vacuum and hostile atmospheres."
+			>
+			<usable-in module-type-group="agricultural"/>
+			<produce effect="agricultural output" value="125%"/>
+		</entry>
+		<entry
+			name="excoff"
+			name-en="excavation officer"
+			training-duration="5"
+			description="Ore-body mapping and drill-head tuning for extraction modules."
+			>
+			<usable-in module-type-group="extraction"/>
+			<produce effect="extraction output" value="125%"/>
 		</entry>
 	</skill>
 </data>

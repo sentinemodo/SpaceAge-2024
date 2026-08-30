@@ -5,7 +5,7 @@ Content-Disposition: attachment
 SpaceAge report for Caste Prime [2].
 Turn 3, Year 2020, July 1.
 
-SpaceAge Engine Version: 0.1.151.
+SpaceAge Engine Version: 0.1.157.
 
 Events during turn:
   none.
@@ -30,12 +30,12 @@ Battles report:
       #1 hit points: 100/100.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+    hit points: 300/300, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
+      attack: 8, initiative: 5.
   Defenders:
   + Caste Prime Headquarters [000012], corporate headquarters [corphq], immobile.
     size: 1000, mass: 1240 (1000), energy: 10, crew: 20/60.
@@ -97,11 +97,11 @@ Battles report:
   gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 2/9) and misses.
   gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 2/9) and hits #1
   peaceful scout [108] doing 1 damage.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 12/22)
+  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 15/25)
   and hits #1 Caste Prime Headquarters [000012] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 12/22)
+  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 15/25)
   and hits #1 Caste Prime Headquarters [000012] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 12/22)
+  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 15/25)
   and hits #1 Caste Prime Headquarters [000012] doing 4 damage.
   ------------------------------------------------------------
   Round 2:
@@ -113,12 +113,12 @@ Battles report:
       #1 hit points: 100/99.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+    hit points: 300/300, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
+      attack: 8, initiative: 5.
   Defenders:
   + Caste Prime Headquarters [000012], corporate headquarters [corphq], immobile.
     size: 1000, mass: 1240 (1000), energy: 10, crew: 20/60.
@@ -181,11 +181,11 @@ Battles report:
   peaceful scout [108] doing 1 damage.
   gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 2/9) and hits #1
   peaceful scout [108] doing 1 damage.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 12/22)
+  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 15/25)
   and hits #1 Caste Prime Headquarters [000012] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 12/22)
+  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 15/25)
   and hits #1 Caste Prime Headquarters [000012] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 12/22)
+  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 15/25)
   and hits #1 Caste Prime Headquarters [000012] doing 4 damage.
   ------------------------------------------------------------
   Round 3:
@@ -197,12 +197,12 @@ Battles report:
       #1 hit points: 100/97.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+    hit points: 300/300, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
+      attack: 8, initiative: 5.
   Defenders:
   + Caste Prime Headquarters [000012], corporate headquarters [corphq], immobile.
     size: 1000, mass: 1240 (1000), energy: 10, crew: 20/60.
@@ -265,13 +265,13 @@ Battles report:
   peaceful scout [108] doing 1 damage.
   gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 2/9) and hits #1
   peaceful scout [108] doing 1 damage.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 12/22)
+  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 15/25)
   and hits #1 Caste Prime Headquarters [000012] doing 4 damage.
     #1 corporate headquarters [corphq] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 12/22)
+  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 15/25)
   and hits #1 Caste Prime Headquarters [000012] doing 4 damage.
     #1 corporate headquarters [corphq] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 12/22)
+  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 15/25)
   and hits #1 Caste Prime Headquarters [000012] doing 4 damage.
     #1 corporate headquarters [corphq] is lightly damaged.
   ------------------------------------------------------------
@@ -284,12 +284,12 @@ Battles report:
       #1 hit points: 100/95.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+    hit points: 300/300, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
+      attack: 8, initiative: 5.
   Defenders:
   + Caste Prime Headquarters [000012], corporate headquarters [corphq], immobile.
     size: 1000, mass: 1240 (1000), energy: 10, crew: 20/60.
@@ -352,13 +352,13 @@ Battles report:
   peaceful scout [108] doing 1 damage.
   gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 2/9) and hits #1
   peaceful scout [108] doing 1 damage.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 12/22)
+  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 15/25)
   and hits #1 Caste Prime Headquarters [000012] doing 4 damage.
     #1 corporate headquarters [corphq] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 12/22)
+  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 15/25)
   and hits #1 Caste Prime Headquarters [000012] doing 4 damage.
     #1 corporate headquarters [corphq] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 12/22)
+  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 15/25)
   and hits #1 Caste Prime Headquarters [000012] doing 4 damage.
     #1 corporate headquarters [corphq] is lightly damaged.
   ------------------------------------------------------------
@@ -371,12 +371,12 @@ Battles report:
       #1 hit points: 100/93.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+    hit points: 300/300, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
+      attack: 8, initiative: 5.
   Defenders:
   + Caste Prime Headquarters [000012], corporate headquarters [corphq], immobile.
     size: 1000, mass: 1240 (1000), energy: 10, crew: 20/60.
@@ -439,7 +439,7 @@ Battles report:
   peaceful scout [108] doing 1 damage.
   gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 2/9) and hits #1
   peaceful scout [108] doing 1 damage.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 12/22)
+  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 15/25)
   and hits #1 Caste Prime Headquarters [000012] doing 4 damage.
     #1 corporate headquarters [corphq] is heavily damaged.
     #1 corporate headquarters [corphq] is disabled.
@@ -454,12 +454,12 @@ Battles report:
       #1 hit points: 100/91.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+    hit points: 300/300, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
+      attack: 8, initiative: 5.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
     size: 10000, mass: 7030 (1000).
@@ -517,11 +517,11 @@ Battles report:
   peaceful scout [108] doing 1 damage.
   gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 2/9) and hits #1
   peaceful scout [108] doing 1 damage.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 12/22) and hits #4 gun
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 15/25) and hits #4 gun
   placement [111] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 12/22) and hits #3 gun
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 15/25) and hits #3 gun
   placement [111] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 12/22) and hits #2 gun
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 15/25) and hits #2 gun
   placement [111] doing 4 damage.
   ------------------------------------------------------------
   Round 7:
@@ -533,12 +533,12 @@ Battles report:
       #1 hit points: 100/89.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+    hit points: 300/300, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
+      attack: 8, initiative: 5.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
     size: 10000, mass: 7030 (1000).
@@ -596,11 +596,11 @@ Battles report:
   peaceful scout [108] doing 1 damage.
   gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 2/9) and hits #1
   peaceful scout [108] doing 1 damage.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 12/22) and hits #3 gun
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 15/25) and hits #3 gun
   placement [111] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 12/22) and hits #2 gun
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 15/25) and hits #2 gun
   placement [111] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 12/22) and hits #1 gun
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 15/25) and hits #1 gun
   placement [111] doing 4 damage.
   ------------------------------------------------------------
   Round 8:
@@ -612,12 +612,12 @@ Battles report:
       #1 hit points: 100/87.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+    hit points: 300/300, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
+      attack: 8, initiative: 5.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
     size: 10000, mass: 7030 (1000).
@@ -675,11 +675,11 @@ Battles report:
   peaceful scout [108] doing 1 damage.
   gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 2/9) and hits #1
   peaceful scout [108] doing 1 damage.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 12/22) and hits #2 gun
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 15/25) and hits #2 gun
   placement [111] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 12/22) and hits #1 gun
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 15/25) and hits #1 gun
   placement [111] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 12/22) and hits #5 gun
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 15/25) and hits #5 gun
   placement [111] doing 4 damage.
   ------------------------------------------------------------
   Round 9:
@@ -691,12 +691,12 @@ Battles report:
       #1 hit points: 100/85.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+    hit points: 300/300, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
+      attack: 8, initiative: 5.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
     size: 10000, mass: 7030 (1000).
@@ -754,11 +754,11 @@ Battles report:
   peaceful scout [108] doing 1 damage.
   gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 2/9) and hits #1
   peaceful scout [108] doing 1 damage.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 12/22) and hits #1 gun
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 15/25) and hits #1 gun
   placement [111] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 12/22) and hits #5 gun
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 15/25) and hits #5 gun
   placement [111] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 12/22) and hits #4 gun
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 15/25) and hits #4 gun
   placement [111] doing 4 damage.
   ------------------------------------------------------------
   Round 10:
@@ -770,12 +770,12 @@ Battles report:
       #1 hit points: 100/83.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+    hit points: 300/300, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
+      attack: 8, initiative: 5.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
     size: 10000, mass: 7030 (1000).
@@ -833,11 +833,11 @@ Battles report:
   peaceful scout [108] doing 1 damage.
   gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 2/9) and hits #1
   peaceful scout [108] doing 1 damage.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 12/22) and hits #5 gun
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 15/25) and hits #5 gun
   placement [111] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 12/22) and hits #4 gun
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 15/25) and hits #4 gun
   placement [111] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 12/22) and hits #3 gun
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 15/25) and hits #3 gun
   placement [111] doing 4 damage.
   ------------------------------------------------------------
   Battle ended indecisively.
@@ -855,12 +855,12 @@ Battles report:
       #1 hit points: 100/81.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+    hit points: 300/300, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
+      attack: 8, initiative: 5.
   Defenders:
   + Caste Prime Headquarters [000012], corporate headquarters [corphq], disabled, immobile.
     size: 1000, mass: 1240 (1000).
@@ -923,15 +923,15 @@ Battles report:
   peaceful scout [108] doing 1 damage.
   gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 2/9) and hits #1
   peaceful scout [108] doing 1 damage.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 12/17)
+  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 15/20)
   and hits #1 Caste Prime Headquarters [000012] doing 4 damage.
     #1 corporate headquarters [corphq] is heavily damaged.
     #1 corporate headquarters [corphq] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 12/17)
+  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 15/20)
   and hits #1 Caste Prime Headquarters [000012] doing 4 damage.
     #1 corporate headquarters [corphq] is heavily damaged.
     #1 corporate headquarters [corphq] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 12/17)
+  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 15/20)
   and hits #1 Caste Prime Headquarters [000012] doing 4 damage.
     #1 corporate headquarters [corphq] is heavily damaged.
     #1 corporate headquarters [corphq] is disabled.
@@ -945,12 +945,12 @@ Battles report:
       #1 hit points: 100/79.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+    hit points: 300/300, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
+      attack: 8, initiative: 5.
   Defenders:
   + Caste Prime Headquarters [000012], corporate headquarters [corphq], disabled, immobile.
     size: 1000, mass: 1240 (1000).
@@ -1014,15 +1014,15 @@ Battles report:
   peaceful scout [108] doing 1 damage.
   gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 2/9) and hits #1
   peaceful scout [108] doing 1 damage.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 12/17)
+  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 15/20)
   and hits #1 Caste Prime Headquarters [000012] doing 4 damage.
     #1 corporate headquarters [corphq] is heavily damaged.
     #1 corporate headquarters [corphq] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 12/17)
+  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 15/20)
   and hits #1 Caste Prime Headquarters [000012] doing 4 damage.
     #1 corporate headquarters [corphq] is heavily damaged.
     #1 corporate headquarters [corphq] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 12/17)
+  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 15/20)
   and hits #1 Caste Prime Headquarters [000012] doing 4 damage.
     #1 corporate headquarters [corphq] is critically damaged.
     #1 corporate headquarters [corphq] is disabled.
@@ -1036,12 +1036,12 @@ Battles report:
       #1 hit points: 100/77.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+    hit points: 300/300, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
+      attack: 8, initiative: 5.
   Defenders:
   + Caste Prime Headquarters [000012], corporate headquarters [corphq], disabled, immobile.
     size: 1000, mass: 1240 (1000).
@@ -1104,15 +1104,15 @@ Battles report:
   peaceful scout [108] doing 1 damage.
   gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 2/9) and hits #1
   peaceful scout [108] doing 1 damage.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 12/17)
+  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 15/20)
   and hits #1 Caste Prime Headquarters [000012] doing 4 damage.
     #1 corporate headquarters [corphq] is critically damaged.
     #1 corporate headquarters [corphq] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 12/17)
+  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 15/20)
   and hits #1 Caste Prime Headquarters [000012] doing 4 damage.
     #1 corporate headquarters [corphq] is critically damaged.
     #1 corporate headquarters [corphq] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 12/17)
+  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 15/20)
   and hits #1 Caste Prime Headquarters [000012] doing 4 damage.
     #1 corporate headquarters [corphq] is critically damaged.
     #1 corporate headquarters [corphq] is disabled.
@@ -1126,12 +1126,12 @@ Battles report:
       #1 hit points: 100/75.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+    hit points: 300/300, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
+      attack: 8, initiative: 5.
   Defenders:
   + Caste Prime Headquarters [000012], corporate headquarters [corphq], disabled, immobile.
     size: 1000, mass: 1240 (1000).
@@ -1196,15 +1196,15 @@ Battles report:
   gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 2/9) and hits #1
   peaceful scout [108] doing 1 damage.
     #1 tanks [tanks] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 12/17)
+  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 15/20)
   and hits #1 Caste Prime Headquarters [000012] doing 4 damage.
     #1 corporate headquarters [corphq] is critically damaged.
     #1 corporate headquarters [corphq] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 12/17)
+  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 15/20)
   and hits #1 Caste Prime Headquarters [000012] doing 4 damage.
     #1 corporate headquarters [corphq] is critically damaged.
     #1 corporate headquarters [corphq] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 12/17)
+  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 15/20)
   and hits #1 Caste Prime Headquarters [000012] doing 4 damage.
     #1 corporate headquarters [corphq] is wrecked.
   ------------------------------------------------------------
@@ -1217,12 +1217,12 @@ Battles report:
       #1 hit points: 100/73, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+    hit points: 300/300, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
+      attack: 8, initiative: 5.
   Defenders:
   + Caste Prime Headquarters [000012], corporate headquarters [corphq], disabled, immobile.
     size: 1000, mass: 1240 (1000).
@@ -1287,12 +1287,12 @@ Battles report:
   gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 2/9) and hits #1
   peaceful scout [108] doing 1 damage.
     #1 tanks [tanks] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 12/22) and hits #5 gun
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 15/25) and hits #5 gun
   placement [111] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 12/22) and hits #4 gun
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 15/25) and hits #4 gun
   placement [111] doing 4 damage.
     #4 gun placement [gunplc] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 12/22) and hits #3 gun
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 15/25) and hits #3 gun
   placement [111] doing 4 damage.
     #3 gun placement [gunplc] is lightly damaged.
   ------------------------------------------------------------
@@ -1305,12 +1305,12 @@ Battles report:
       #1 hit points: 100/71, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+    hit points: 300/300, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
+      attack: 8, initiative: 5.
   Defenders:
   + Caste Prime Headquarters [000012], corporate headquarters [corphq], disabled, immobile.
     size: 1000, mass: 1240 (1000).
@@ -1376,13 +1376,13 @@ Battles report:
   gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 2/9) and hits #1
   peaceful scout [108] doing 1 damage.
     #1 tanks [tanks] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 12/22) and hits #4 gun
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 15/25) and hits #4 gun
   placement [111] doing 4 damage.
     #4 gun placement [gunplc] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 12/22) and hits #3 gun
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 15/25) and hits #3 gun
   placement [111] doing 4 damage.
     #3 gun placement [gunplc] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 12/22) and hits #2 gun
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 15/25) and hits #2 gun
   placement [111] doing 4 damage.
     #2 gun placement [gunplc] is lightly damaged.
   ------------------------------------------------------------
@@ -1395,12 +1395,12 @@ Battles report:
       #1 hit points: 100/69, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+    hit points: 300/300, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
+      attack: 8, initiative: 5.
   Defenders:
   + Caste Prime Headquarters [000012], corporate headquarters [corphq], disabled, immobile.
     size: 1000, mass: 1240 (1000).
@@ -1466,13 +1466,13 @@ Battles report:
   gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 2/9) and hits #1
   peaceful scout [108] doing 1 damage.
     #1 tanks [tanks] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 12/22) and hits #3 gun
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 15/25) and hits #3 gun
   placement [111] doing 4 damage.
     #3 gun placement [gunplc] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 12/22) and hits #2 gun
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 15/25) and hits #2 gun
   placement [111] doing 4 damage.
     #2 gun placement [gunplc] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 12/22) and hits #1 gun
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 15/25) and hits #1 gun
   placement [111] doing 4 damage.
     #1 gun placement [gunplc] is lightly damaged.
   ------------------------------------------------------------
@@ -1485,12 +1485,12 @@ Battles report:
       #1 hit points: 100/67, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+    hit points: 300/300, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
+      attack: 8, initiative: 5.
   Defenders:
   + Caste Prime Headquarters [000012], corporate headquarters [corphq], disabled, immobile.
     size: 1000, mass: 1240 (1000).
@@ -1556,13 +1556,13 @@ Battles report:
   gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 2/9) and hits #1
   peaceful scout [108] doing 1 damage.
     #1 tanks [tanks] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 12/22) and hits #2 gun
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 15/25) and hits #2 gun
   placement [111] doing 4 damage.
     #2 gun placement [gunplc] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 12/22) and hits #1 gun
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 15/25) and hits #1 gun
   placement [111] doing 4 damage.
     #1 gun placement [gunplc] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 12/22) and hits #5 gun
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 15/25) and hits #5 gun
   placement [111] doing 4 damage.
     #5 gun placement [gunplc] is lightly damaged.
   ------------------------------------------------------------
@@ -1575,12 +1575,12 @@ Battles report:
       #1 hit points: 100/65, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+    hit points: 300/300, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
+      attack: 8, initiative: 5.
   Defenders:
   + Caste Prime Headquarters [000012], corporate headquarters [corphq], disabled, immobile.
     size: 1000, mass: 1240 (1000).
@@ -1646,13 +1646,13 @@ Battles report:
   gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 2/9) and hits #1
   peaceful scout [108] doing 1 damage.
     #1 tanks [tanks] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 12/22) and hits #1 gun
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 15/25) and hits #1 gun
   placement [111] doing 4 damage.
     #1 gun placement [gunplc] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 12/22) and hits #5 gun
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 15/25) and hits #5 gun
   placement [111] doing 4 damage.
     #5 gun placement [gunplc] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 12/22) and hits #4 gun
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 15/25) and hits #4 gun
   placement [111] doing 4 damage.
     #4 gun placement [gunplc] is lightly damaged.
   ------------------------------------------------------------
@@ -1665,12 +1665,12 @@ Battles report:
       #1 hit points: 100/63, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+    hit points: 300/300, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
+      attack: 8, initiative: 5.
   Defenders:
   + Caste Prime Headquarters [000012], corporate headquarters [corphq], disabled, immobile.
     size: 1000, mass: 1240 (1000).
@@ -1736,13 +1736,13 @@ Battles report:
   gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 2/9) and hits #1
   peaceful scout [108] doing 1 damage.
     #1 tanks [tanks] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 12/22) and hits #5 gun
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 15/25) and hits #5 gun
   placement [111] doing 4 damage.
     #5 gun placement [gunplc] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 12/22) and hits #4 gun
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 15/25) and hits #4 gun
   placement [111] doing 4 damage.
     #4 gun placement [gunplc] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 12/22) and hits #3 gun
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 15/25) and hits #3 gun
   placement [111] doing 4 damage.
     #3 gun placement [gunplc] is lightly damaged.
   ------------------------------------------------------------
@@ -1761,12 +1761,12 @@ Battles report:
       #1 hit points: 100/61, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+    hit points: 300/300, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
+      attack: 8, initiative: 5.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
     size: 10000, mass: 7070 (1000).
@@ -1827,13 +1827,13 @@ Battles report:
   gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 2/9) and hits #1
   peaceful scout [108] doing 1 damage.
     #1 tanks [tanks] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 12/22) and hits #4 gun
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 15/25) and hits #4 gun
   placement [111] doing 4 damage.
     #4 gun placement [gunplc] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 12/22) and hits #3 gun
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 15/25) and hits #3 gun
   placement [111] doing 4 damage.
     #3 gun placement [gunplc] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 12/22) and hits #2 gun
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 15/25) and hits #2 gun
   placement [111] doing 4 damage.
     #2 gun placement [gunplc] is lightly damaged.
   ------------------------------------------------------------
@@ -1846,12 +1846,12 @@ Battles report:
       #1 hit points: 100/59, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+    hit points: 300/300, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
+      attack: 8, initiative: 5.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
     size: 10000, mass: 7070 (1000).
@@ -1912,15 +1912,15 @@ Battles report:
   gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 2/9) and hits #1
   peaceful scout [108] doing 1 damage.
     #1 tanks [tanks] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 12/22) and hits #3 gun
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 15/25) and hits #3 gun
   placement [111] doing 4 damage.
     #3 gun placement [gunplc] is heavily damaged.
     #3 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 12/21) and hits #2 gun
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 15/24) and hits #2 gun
   placement [111] doing 4 damage.
     #2 gun placement [gunplc] is heavily damaged.
     #2 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 12/20) and hits #1 gun
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 15/23) and hits #1 gun
   placement [111] doing 4 damage.
     #1 gun placement [gunplc] is heavily damaged.
     #1 gun placement [gunplc] is disabled.
@@ -1934,12 +1934,12 @@ Battles report:
       #1 hit points: 100/57, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+    hit points: 300/300, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
+      attack: 8, initiative: 5.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
     size: 10000, mass: 7070 (1000).
@@ -2000,15 +2000,15 @@ Battles report:
   gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 1/6) and hits #1
   peaceful scout [108] doing 1 damage.
     #1 tanks [tanks] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 12/19) and hits #2 gun
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 15/22) and hits #2 gun
   placement [111] doing 4 damage.
     #2 gun placement [gunplc] is heavily damaged.
     #2 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 12/19) and hits #1 gun
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 15/22) and hits #1 gun
   placement [111] doing 4 damage.
     #1 gun placement [gunplc] is heavily damaged.
     #1 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 12/19) and hits #5 gun
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 15/22) and hits #5 gun
   placement [111] doing 4 damage.
     #5 gun placement [gunplc] is lightly damaged.
   ------------------------------------------------------------
@@ -2021,12 +2021,12 @@ Battles report:
       #1 hit points: 100/55, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+    hit points: 300/300, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
+      attack: 8, initiative: 5.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
     size: 10000, mass: 7070 (1000).
@@ -2083,12 +2083,12 @@ Battles report:
     #4 gun placement [gunplc] is heavily damaged.
     #4 gun placement [gunplc] is disabled.
   gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 0/5) and misses.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 12/18) and misses.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 12/18) and hits #2 gun
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 15/21) and misses.
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 15/21) and hits #2 gun
   placement [111] doing 4 damage.
     #2 gun placement [gunplc] is heavily damaged.
     #2 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 12/18) and hits #1 gun
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 15/21) and hits #1 gun
   placement [111] doing 4 damage.
     #1 gun placement [gunplc] is heavily damaged.
     #1 gun placement [gunplc] is disabled.
@@ -2102,12 +2102,12 @@ Battles report:
       #1 hit points: 100/55, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+    hit points: 300/300, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
+      attack: 8, initiative: 5.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
     size: 10000, mass: 7070 (1000).
@@ -2163,11 +2163,11 @@ Battles report:
   placement [111] doing 4 damage.
     #5 gun placement [gunplc] is heavily damaged.
     #5 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 15/20) and hits
   #2 small cargo bay [000013] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 15/20) and hits
   #5 small cargo bay [000013] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 15/20) and hits
   #3 small cargo bay [000013] doing 4 damage.
   ------------------------------------------------------------
   Round 6:
@@ -2179,12 +2179,12 @@ Battles report:
       #1 hit points: 100/55, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+    hit points: 300/300, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
+      attack: 8, initiative: 5.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
     size: 10000, mass: 7070 (1000).
@@ -2229,11 +2229,11 @@ Battles report:
   ------------------------------------------------------------
   peaceful scout [108] fires tanks [tanks] on small cargo bay [000013] (chance: 3/4) and hits #1
   small cargo bay [000013] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 15/20) and hits
   #4 small cargo bay [000013] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 15/20) and hits
   #2 small cargo bay [000013] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 15/20) and hits
   #5 small cargo bay [000013] doing 4 damage.
   ------------------------------------------------------------
   Round 7:
@@ -2245,12 +2245,12 @@ Battles report:
       #1 hit points: 100/55, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+    hit points: 300/300, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
+      attack: 8, initiative: 5.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
     size: 10000, mass: 7070 (1000).
@@ -2295,11 +2295,11 @@ Battles report:
   ------------------------------------------------------------
   peaceful scout [108] fires tanks [tanks] on small cargo bay [000013] (chance: 3/4) and hits #3
   small cargo bay [000013] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 15/20) and hits
   #1 small cargo bay [000013] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 15/20) and hits
   #4 small cargo bay [000013] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 15/20) and hits
   #2 small cargo bay [000013] doing 4 damage.
   ------------------------------------------------------------
   Round 8:
@@ -2311,12 +2311,12 @@ Battles report:
       #1 hit points: 100/55, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+    hit points: 300/300, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
+      attack: 8, initiative: 5.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
     size: 10000, mass: 7070 (1000).
@@ -2361,11 +2361,11 @@ Battles report:
   ------------------------------------------------------------
   peaceful scout [108] fires tanks [tanks] on small cargo bay [000013] (chance: 3/4) and hits #5
   small cargo bay [000013] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 15/20) and hits
   #3 small cargo bay [000013] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 15/20) and hits
   #1 small cargo bay [000013] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 15/20) and hits
   #4 small cargo bay [000013] doing 4 damage.
   ------------------------------------------------------------
   Round 9:
@@ -2377,12 +2377,12 @@ Battles report:
       #1 hit points: 100/55, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+    hit points: 300/300, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
+      attack: 8, initiative: 5.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
     size: 10000, mass: 7070 (1000).
@@ -2428,13 +2428,13 @@ Battles report:
   peaceful scout [108] fires tanks [tanks] on small cargo bay [000013] (chance: 3/4) and hits #2
   small cargo bay [000013] doing 4 damage.
     #2 small cargo bay [cargob] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 15/20) and hits
   #5 small cargo bay [000013] doing 4 damage.
     #5 small cargo bay [cargob] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 15/20) and hits
   #3 small cargo bay [000013] doing 4 damage.
     #3 small cargo bay [cargob] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 15/20) and hits
   #1 small cargo bay [000013] doing 4 damage.
     #1 small cargo bay [cargob] is lightly damaged.
   ------------------------------------------------------------
@@ -2447,12 +2447,12 @@ Battles report:
       #1 hit points: 100/55, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+    hit points: 300/300, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
+      attack: 8, initiative: 5.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
     size: 10000, mass: 7070 (1000).
@@ -2498,13 +2498,13 @@ Battles report:
   peaceful scout [108] fires tanks [tanks] on small cargo bay [000013] (chance: 3/4) and hits #4
   small cargo bay [000013] doing 4 damage.
     #4 small cargo bay [cargob] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 15/20) and hits
   #2 small cargo bay [000013] doing 4 damage.
     #2 small cargo bay [cargob] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 15/20) and hits
   #5 small cargo bay [000013] doing 4 damage.
     #5 small cargo bay [cargob] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 15/20) and hits
   #3 small cargo bay [000013] doing 4 damage.
     #3 small cargo bay [cargob] is lightly damaged.
   ------------------------------------------------------------
@@ -2523,12 +2523,12 @@ Battles report:
       #1 hit points: 100/55, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+    hit points: 300/300, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
+      attack: 8, initiative: 5.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
     size: 10000, mass: 7090 (1000).
@@ -2584,13 +2584,13 @@ Battles report:
   placement [111] doing 4 damage.
     #1 gun placement [gunplc] is heavily damaged.
     #1 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 15/20) and hits
   #4 small cargo bay [000013] doing 4 damage.
     #4 small cargo bay [cargob] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 15/20) and hits
   #2 small cargo bay [000013] doing 4 damage.
     #2 small cargo bay [cargob] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 15/20) and hits
   #5 small cargo bay [000013] doing 4 damage.
     #5 small cargo bay [cargob] is lightly damaged.
   ------------------------------------------------------------
@@ -2603,12 +2603,12 @@ Battles report:
       #1 hit points: 100/55, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+    hit points: 300/300, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
+      attack: 8, initiative: 5.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
     size: 10000, mass: 7090 (1000).
@@ -2664,13 +2664,13 @@ Battles report:
   placement [111] doing 4 damage.
     #2 gun placement [gunplc] is heavily damaged.
     #2 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 15/20) and hits
   #1 small cargo bay [000013] doing 4 damage.
     #1 small cargo bay [cargob] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 15/20) and hits
   #4 small cargo bay [000013] doing 4 damage.
     #4 small cargo bay [cargob] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 15/20) and hits
   #2 small cargo bay [000013] doing 4 damage.
     #2 small cargo bay [cargob] is heavily damaged.
     #2 small cargo bay [cargob] is disabled.
@@ -2684,12 +2684,12 @@ Battles report:
       #1 hit points: 100/55, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+    hit points: 300/300, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
+      attack: 8, initiative: 5.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
     size: 10000, mass: 7090 (1000).
@@ -2745,13 +2745,13 @@ Battles report:
   placement [111] doing 4 damage.
     #3 gun placement [gunplc] is heavily damaged.
     #3 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 15/20) and hits
   #3 small cargo bay [000013] doing 4 damage.
     #3 small cargo bay [cargob] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 15/20) and hits
   #1 small cargo bay [000013] doing 4 damage.
     #1 small cargo bay [cargob] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 15/20) and hits
   #4 small cargo bay [000013] doing 4 damage.
     #4 small cargo bay [cargob] is heavily damaged.
     #4 small cargo bay [cargob] is disabled.
@@ -2765,12 +2765,12 @@ Battles report:
       #1 hit points: 100/55, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+    hit points: 300/300, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
+      attack: 8, initiative: 5.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
     size: 10000, mass: 7090 (1000).
@@ -2826,15 +2826,15 @@ Battles report:
   placement [111] doing 4 damage.
     #4 gun placement [gunplc] is heavily damaged.
     #4 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 15/20) and hits
   #5 small cargo bay [000013] doing 4 damage.
     #5 small cargo bay [cargob] is heavily damaged.
     #5 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 15/20) and hits
   #3 small cargo bay [000013] doing 4 damage.
     #3 small cargo bay [cargob] is heavily damaged.
     #3 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 12/17) and hits
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 15/20) and hits
   #1 small cargo bay [000013] doing 4 damage.
     #1 small cargo bay [cargob] is heavily damaged.
     #1 small cargo bay [cargob] is disabled.
@@ -2848,12 +2848,12 @@ Battles report:
       #1 hit points: 100/55, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+    hit points: 300/300, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
+      attack: 8, initiative: 5.
   Defenders:
   + farming complex [000014], 3 farming complexes [farms], immobile.
     size: 3000, mass: 375 (300), energy: 15, crew: 15/15.
@@ -2897,11 +2897,11 @@ Battles report:
   placement [111] doing 4 damage.
     #5 gun placement [gunplc] is heavily damaged.
     #5 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 15/20) and hits
   #1 farming complex [000014] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 15/20) and hits
   #2 farming complex [000014] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 15/20) and hits
   #3 farming complex [000014] doing 4 damage.
   ------------------------------------------------------------
   Round 6:
@@ -2913,12 +2913,12 @@ Battles report:
       #1 hit points: 100/55, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+    hit points: 300/300, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
+      attack: 8, initiative: 5.
   Defenders:
   + farming complex [000014], 3 farming complexes [farms], immobile.
     size: 3000, mass: 375 (300), energy: 15, crew: 15/15.
@@ -2962,11 +2962,11 @@ Battles report:
   placement [111] doing 4 damage.
     #1 gun placement [gunplc] is heavily damaged.
     #1 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 15/20) and hits
   #3 farming complex [000014] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 15/20) and hits
   #1 farming complex [000014] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 15/20) and hits
   #2 farming complex [000014] doing 4 damage.
   ------------------------------------------------------------
   Round 7:
@@ -2978,12 +2978,12 @@ Battles report:
       #1 hit points: 100/55, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+    hit points: 300/300, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
+      attack: 8, initiative: 5.
   Defenders:
   + farming complex [000014], 3 farming complexes [farms], immobile.
     size: 3000, mass: 375 (300), energy: 15, crew: 15/15.
@@ -3027,11 +3027,11 @@ Battles report:
   placement [111] doing 4 damage.
     #2 gun placement [gunplc] is heavily damaged.
     #2 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 15/20) and hits
   #1 farming complex [000014] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 15/20) and hits
   #3 farming complex [000014] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 15/20) and hits
   #1 farming complex [000014] doing 4 damage.
     #1 farming complex [farms] is lightly damaged.
   ------------------------------------------------------------
@@ -3044,12 +3044,12 @@ Battles report:
       #1 hit points: 100/55, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+    hit points: 300/300, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
+      attack: 8, initiative: 5.
   Defenders:
   + farming complex [000014], 3 farming complexes [farms], immobile.
     size: 3000, mass: 375 (300), energy: 15, crew: 15/15.
@@ -3093,13 +3093,13 @@ Battles report:
   placement [111] doing 4 damage.
     #3 gun placement [gunplc] is heavily damaged.
     #3 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 15/20) and hits
   #3 farming complex [000014] doing 4 damage.
     #3 farming complex [farms] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 15/20) and hits
   #1 farming complex [000014] doing 4 damage.
     #1 farming complex [farms] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 15/20) and hits
   #3 farming complex [000014] doing 4 damage.
     #3 farming complex [farms] is lightly damaged.
   ------------------------------------------------------------
@@ -3112,12 +3112,12 @@ Battles report:
       #1 hit points: 100/55, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+    hit points: 300/300, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
+      attack: 8, initiative: 5.
   Defenders:
   + farming complex [000014], 3 farming complexes [farms], immobile.
     size: 3000, mass: 375 (300), energy: 15, crew: 15/15.
@@ -3161,12 +3161,12 @@ Battles report:
   placement [111] doing 4 damage.
     #4 gun placement [gunplc] is heavily damaged.
     #4 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 15/20) and hits
   #2 farming complex [000014] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 15/20) and hits
   #3 farming complex [000014] doing 4 damage.
     #3 farming complex [farms] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 15/20) and hits
   #1 farming complex [000014] doing 4 damage.
     #1 farming complex [farms] is lightly damaged.
   ------------------------------------------------------------
@@ -3179,12 +3179,12 @@ Battles report:
       #1 hit points: 100/55, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+    hit points: 300/300, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
+      attack: 8, initiative: 5.
   Defenders:
   + farming complex [000014], 3 farming complexes [farms], immobile.
     size: 3000, mass: 375 (300), energy: 15, crew: 15/15.
@@ -3228,14 +3228,14 @@ Battles report:
   placement [111] doing 4 damage.
     #5 gun placement [gunplc] is heavily damaged.
     #5 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 15/20) and hits
   #1 farming complex [000014] doing 4 damage.
     #1 farming complex [farms] is heavily damaged.
     #1 farming complex [farms] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 15/20) and hits
   #2 farming complex [000014] doing 4 damage.
     #2 farming complex [farms] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 15/20) and hits
   #3 farming complex [000014] doing 4 damage.
     #3 farming complex [farms] is heavily damaged.
     #3 farming complex [farms] is disabled.
@@ -3255,12 +3255,12 @@ Battles report:
       #1 hit points: 100/55, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+    hit points: 300/300, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
+      attack: 8, initiative: 5.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], disabled, immobile.
     size: 10000, mass: 7110 (1000).
@@ -3316,14 +3316,14 @@ Battles report:
   placement [111] doing 4 damage.
     #5 gun placement [gunplc] is heavily damaged.
     #5 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 15/20) and hits
   #1 farming complex [000014] doing 4 damage.
     #1 farming complex [farms] is heavily damaged.
     #1 farming complex [farms] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 15/20) and hits
   #2 farming complex [000014] doing 4 damage.
     #2 farming complex [farms] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 15/20) and hits
   #3 farming complex [000014] doing 4 damage.
     #3 farming complex [farms] is heavily damaged.
     #3 farming complex [farms] is disabled.
@@ -3337,12 +3337,12 @@ Battles report:
       #1 hit points: 100/55, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+    hit points: 300/300, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
+      attack: 8, initiative: 5.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], disabled, immobile.
     size: 10000, mass: 7110 (1000).
@@ -3398,15 +3398,15 @@ Battles report:
   placement [111] doing 4 damage.
     #1 gun placement [gunplc] is heavily damaged.
     #1 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 15/20) and hits
   #3 farming complex [000014] doing 4 damage.
     #3 farming complex [farms] is heavily damaged.
     #3 farming complex [farms] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 15/20) and hits
   #1 farming complex [000014] doing 4 damage.
     #1 farming complex [farms] is heavily damaged.
     #1 farming complex [farms] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 15/20) and hits
   #2 farming complex [000014] doing 4 damage.
     #2 farming complex [farms] is lightly damaged.
   ------------------------------------------------------------
@@ -3419,12 +3419,12 @@ Battles report:
       #1 hit points: 100/55, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+    hit points: 300/300, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
+      attack: 8, initiative: 5.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], disabled, immobile.
     size: 10000, mass: 7110 (1000).
@@ -3480,15 +3480,15 @@ Battles report:
   placement [111] doing 4 damage.
     #2 gun placement [gunplc] is heavily damaged.
     #2 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 15/20) and hits
   #1 farming complex [000014] doing 4 damage.
     #1 farming complex [farms] is heavily damaged.
     #1 farming complex [farms] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 15/20) and hits
   #3 farming complex [000014] doing 4 damage.
     #3 farming complex [farms] is heavily damaged.
     #3 farming complex [farms] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 15/20) and hits
   #1 farming complex [000014] doing 4 damage.
     #1 farming complex [farms] is critically damaged.
     #1 farming complex [farms] is disabled.
@@ -3502,12 +3502,12 @@ Battles report:
       #1 hit points: 100/55, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+    hit points: 300/300, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
+      attack: 8, initiative: 5.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], disabled, immobile.
     size: 10000, mass: 7110 (1000).
@@ -3563,15 +3563,15 @@ Battles report:
   placement [111] doing 4 damage.
     #3 gun placement [gunplc] is heavily damaged.
     #3 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 15/20) and hits
   #3 farming complex [000014] doing 4 damage.
     #3 farming complex [farms] is critically damaged.
     #3 farming complex [farms] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 15/20) and hits
   #1 farming complex [000014] doing 4 damage.
     #1 farming complex [farms] is critically damaged.
     #1 farming complex [farms] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 15/20) and hits
   #3 farming complex [000014] doing 4 damage.
     #3 farming complex [farms] is critically damaged.
     #3 farming complex [farms] is disabled.
@@ -3585,12 +3585,12 @@ Battles report:
       #1 hit points: 100/55, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+    hit points: 300/300, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
+      attack: 8, initiative: 5.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], disabled, immobile.
     size: 10000, mass: 7110 (1000).
@@ -3646,7 +3646,7 @@ Battles report:
   placement [111] doing 4 damage.
     #4 gun placement [gunplc] is heavily damaged.
     #4 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 12/17) and hits
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 15/20) and hits
   #2 farming complex [000014] doing 4 damage.
     #2 farming complex [farms] is heavily damaged.
     #2 farming complex [farms] is disabled.
@@ -3660,12 +3660,12 @@ Battles report:
       #1 hit points: 100/55, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+    hit points: 300/300, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
+      attack: 8, initiative: 5.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], disabled, immobile.
     size: 10000, mass: 7110 (1000).
@@ -3714,11 +3714,11 @@ Battles report:
   placement [111] doing 4 damage.
     #2 gun placement [gunplc] is critically damaged.
     #2 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 12/17) and
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 15/20) and
   hits #1 coal-burning plant [000015] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 12/17) and
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 15/20) and
   hits #2 coal-burning plant [000015] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 12/17) and
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 15/20) and
   hits #1 coal-burning plant [000015] doing 4 damage.
   ------------------------------------------------------------
   Round 7:
@@ -3730,12 +3730,12 @@ Battles report:
       #1 hit points: 100/55, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+    hit points: 300/300, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
+      attack: 8, initiative: 5.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], disabled, immobile.
     size: 10000, mass: 7110 (1000).
@@ -3784,11 +3784,11 @@ Battles report:
   placement [111] doing 4 damage.
     #3 gun placement [gunplc] is heavily damaged.
     #3 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 12/17) and
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 15/20) and
   hits #2 coal-burning plant [000015] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 12/17) and
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 15/20) and
   hits #1 coal-burning plant [000015] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 12/17) and
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 15/20) and
   hits #2 coal-burning plant [000015] doing 4 damage.
   ------------------------------------------------------------
   Round 8:
@@ -3800,12 +3800,12 @@ Battles report:
       #1 hit points: 100/55, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+    hit points: 300/300, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
+      attack: 8, initiative: 5.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], disabled, immobile.
     size: 10000, mass: 7110 (1000).
@@ -3854,11 +3854,11 @@ Battles report:
   placement [111] doing 4 damage.
     #4 gun placement [gunplc] is heavily damaged.
     #4 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 12/17) and
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 15/20) and
   hits #3 coal-burning plant [000015] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 12/17) and
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 15/20) and
   hits #2 coal-burning plant [000015] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 12/17) and
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 15/20) and
   hits #1 coal-burning plant [000015] doing 4 damage.
   ------------------------------------------------------------
   Round 9:
@@ -3870,12 +3870,12 @@ Battles report:
       #1 hit points: 100/55, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+    hit points: 300/300, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
+      attack: 8, initiative: 5.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], disabled, immobile.
     size: 10000, mass: 7110 (1000).
@@ -3924,11 +3924,11 @@ Battles report:
   placement [111] doing 4 damage.
     #5 gun placement [gunplc] is heavily damaged.
     #5 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 12/17) and
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 15/20) and
   hits #1 coal-burning plant [000015] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 12/17) and
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 15/20) and
   hits #3 coal-burning plant [000015] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 12/17) and
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 15/20) and
   hits #2 coal-burning plant [000015] doing 4 damage.
   ------------------------------------------------------------
   Round 10:
@@ -3940,12 +3940,12 @@ Battles report:
       #1 hit points: 100/55, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/300, attack: 17, defense: 12, initiative: 5 (0).
+    hit points: 300/300, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
-      attack: 5, initiative: 5.
+      attack: 8, initiative: 5.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], disabled, immobile.
     size: 10000, mass: 7110 (1000).
@@ -3994,11 +3994,11 @@ Battles report:
   placement [111] doing 4 damage.
     #1 gun placement [gunplc] is critically damaged.
     #1 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 12/17) and
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 15/20) and
   hits #2 coal-burning plant [000015] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 12/17) and
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 15/20) and
   hits #1 coal-burning plant [000015] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 12/17) and
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 15/20) and
   hits #3 coal-burning plant [000015] doing 4 damage.
   ------------------------------------------------------------
   Battle ended indecisively.

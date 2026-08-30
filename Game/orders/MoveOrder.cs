@@ -357,14 +357,16 @@ namespace SpaceAge
 		{
 			this.moveMode = EMoveMode.space;
 			ExitMode exitMode = current.Exits[this.destination].ExitModes[EMoveMode.space];
-			return SpaceTransit.ExitDurationWeeks(exitMode.Duration, this.Mover);
+			int weeks = SpaceTransit.ExitDurationWeeks(exitMode.Duration, this.Mover);
+			return SkillEffects.ApplyDurationPercent(weeks, SkillEffects.MoveDurationPercent(this.Mover.RootModuleStack));
 		}
 
 		private int spaceAuDuration()
 		{
 			this.moveMode = EMoveMode.space;
 			double deltaAu = Math.Abs(SpaceTransit.BodyAu(this.Mover.Location) - SpaceTransit.BodyAu(this.destination));
-			return SpaceTransit.DurationWeeks(deltaAu, SpaceTransit.EffectiveSpaceSpeed(this.Mover));
+			int weeks = SpaceTransit.DurationWeeks(deltaAu, SpaceTransit.EffectiveSpaceSpeed(this.Mover));
+			return SkillEffects.ApplyDurationPercent(weeks, SkillEffects.MoveDurationPercent(this.Mover.RootModuleStack));
 		}
 
 		private bool applyEnvironmentMoveRules(int week)

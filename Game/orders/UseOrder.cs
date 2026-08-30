@@ -462,7 +462,10 @@ namespace SpaceAge
 					{
 						copies = 1;
 					}
-					this.durationInitial = (int)(Math.Ceiling((double)(this.Technology.UseTime * this.Producer.ModuleType.UseCondition_EfficiencyMultiplier) / copies));
+					int weeks = (int)(Math.Ceiling((double)(this.Technology.UseTime * this.Producer.ModuleType.UseCondition_EfficiencyMultiplier) / copies));
+					this.durationInitial = SkillEffects.ApplyDurationPercent(
+						weeks,
+						SkillEffects.ProductionDurationPercent(this.Producer));
 				}
 				return this.durationInitial;
 			}

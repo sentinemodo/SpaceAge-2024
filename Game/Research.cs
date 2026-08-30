@@ -31,14 +31,16 @@ namespace SpaceAge
 			return technology.Cost;
 		}
 
-		// Research points produced per week = lab research-output x number of modules.
+		// Research points produced per week = lab research-output x number of modules
+		// plus skill produce bonuses from officers on the lab stack.
 		public static int WeeklyOutput(ModuleStack researcher)
 		{
 			if (researcher == null || researcher.ModuleType == null)
 			{
 				return 0;
 			}
-			return researcher.ModuleType.ResearchOutput * researcher.Modules.Count;
+			return researcher.ModuleType.ResearchOutput * researcher.Modules.Count
+				+ researcher.ResearchSkillOutputBonus;
 		}
 
 		// Weekly breakthrough roll against the cheapest available technology: each of

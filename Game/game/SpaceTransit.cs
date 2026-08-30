@@ -91,7 +91,8 @@ namespace SpaceAge
 			{
 				return 1;
 			}
-			return SpaceSpeed(stack) * MassFactor(SpaceThrust(stack), stack.Mass);
+			double thrust = SpaceThrust(stack) * SkillEffects.MassThrustPercent(stack.RootModuleStack) / 100.0;
+			return SpaceSpeed(stack) * MassFactor(thrust, stack.Mass);
 		}
 
 		public static int ExitDurationWeeks(int exitDuration, double speed)

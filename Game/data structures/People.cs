@@ -221,43 +221,58 @@ namespace SpaceAge
 			return size;
 		}
 
-		public int Attack
+		public int CombatAttack(ModuleStack root)
 		{
-			get 
+			int attack = 0;
+			foreach (Person person in this.Values)
 			{
-				int attack = 0;
-				foreach (Person person in this.Values)
-				{
-					attack += person.Attack;
-				}
-				return attack; 
+				attack += person.CombatAttack(root);
 			}
+			return attack;
 		}
 
-		public int Defense
+		public int CombatDefense(ModuleStack root)
 		{
-			get
+			int defense = 0;
+			foreach (Person person in this.Values)
 			{
-				int defense = 0;
-				foreach (Person person in this.Values)
-				{
-					defense += person.Defense;
-				}
-				return defense;
+				defense += person.CombatDefense(root);
 			}
+			return defense;
 		}
 
-		public int Initiative
+		public int CombatInitiative(ModuleStack root)
 		{
-			get
+			int initiative = 0;
+			foreach (Person person in this.Values)
 			{
-				int initiative = 0;
-				foreach (Person person in this.Values)
-				{
-					initiative += person.Initiative;
-				}
-				return initiative;
+				initiative += person.CombatInitiative(root);
 			}
+			return initiative;
+		}
+
+		public int CureChance(ModuleStack root)
+		{
+			int max = 0;
+			foreach (Person person in this.Values)
+			{
+				int chance = person.CureChance(root);
+				if (chance > max)
+				{
+					max = chance;
+				}
+			}
+			return max;
+		}
+
+		public int ResearchOutputBonus(ModuleStack host)
+		{
+			int bonus = 0;
+			foreach (Person person in this.Values)
+			{
+				bonus += person.ResearchOutputBonus(host);
+			}
+			return bonus;
 		}
 
 		public int CountBattleSkilled

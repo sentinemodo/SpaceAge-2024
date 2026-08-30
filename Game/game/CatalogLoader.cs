@@ -259,9 +259,56 @@ namespace SpaceAge
 					skillType.LoadXml(el);
 
 					skillType.TrainingDuration = this.dataFile.XMLAssignInteger(el.GetAttribute("training-duration"), 1);
-					skillType.Attack = this.dataFile.XMLAssignInteger(el.GetAttribute("attack"), 0);
-					skillType.Defense = this.dataFile.XMLAssignInteger(el.GetAttribute("defense"), 0);
-					skillType.Initiative = this.dataFile.XMLAssignInteger(el.GetAttribute("initiative"), 0);
+					skillType.AttackFormula = SkillBonusFormula.Parse(el.GetAttribute("attack"));
+					skillType.DefenseFormula = SkillBonusFormula.Parse(el.GetAttribute("defense"));
+					skillType.InitiativeFormula = SkillBonusFormula.Parse(el.GetAttribute("initiative"));
+					skillType.CureChanceFormula = SkillBonusFormula.Parse(el.GetAttribute("cure-chance"));
+
+					foreach (XmlElement elUsableIn in el.SelectNodes("usable-in"))
+					{
+						SkillUsableIn usableIn = new SkillUsableIn();
+						string moduleGroup = elUsableIn.GetAttribute("module-group");
+						if (moduleGroup != string.Empty)
+						{
+							usableIn.ModuleGroup = ModuleTypeGroupXml.Parse(moduleGroup);
+						}
+						else
+						{
+							string moduleTypeGroup = elUsableIn.GetAttribute("module-type-group");
+							if (moduleTypeGroup != string.Empty)
+							{
+								usableIn.ModuleGroup = ModuleTypeGroupXml.Parse(moduleTypeGroup);
+							}
+						}
+
+						string moduleStackSize = elUsableIn.GetAttribute("modulestack-size");
+						if (moduleStackSize != string.Empty)
+						{
+							usableIn.ModuleStackSize = this.dataFile.XMLAssignInteger(moduleStackSize, 0);
+						}
+
+						skillType.UsableIn.Add(usableIn);
+					}
+
+					foreach (XmlElement elProduce in el.SelectNodes("produce"))
+					{
+						string effect = elProduce.GetAttribute("effect");
+						string value = elProduce.GetAttribute("value");
+						if (CatalogLoader.isPercentProduceValue(value))
+						{
+							skillType.PercentProduces.Add(new SkillPercentProduce
+							{
+								Effect = effect,
+								Percent = int.Parse(value.Substring(0, value.Length - 1)),
+							});
+						}
+						else
+						{
+							skillType.ProduceEffect = effect;
+							skillType.ProduceTarget = elProduce.GetAttribute("target");
+							skillType.ProduceFormula = SkillBonusFormula.Parse(value);
+						}
+					}
 				}
 			}
 			#endregion
@@ -597,6 +644,17 @@ namespace SpaceAge
 				}
 			}
 			#endregion
+		}
+
+		private static bool isPercentProduceValue(string value)
+		{
+			if (string.IsNullOrEmpty(value) || !value.EndsWith("%"))
+			{
+				return false;
+			}
+			string digits = value.Substring(0, value.Length - 1);
+			int percent;
+			return int.TryParse(digits, out percent);
 		}
 	}
 }

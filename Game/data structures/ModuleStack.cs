@@ -444,7 +444,10 @@ namespace SpaceAge
 			{
 				if (this.IsFormed)
 				{
-					return this.Quantity * this.moduleType.Capacity;
+					int baseCapacity = (int)(this.Quantity * this.moduleType.Capacity);
+					return SkillEffects.ApplyCapacityPercent(
+						baseCapacity,
+						SkillEffects.CapacityPercent(this));
 				}
 				else
 				{
@@ -991,7 +994,7 @@ namespace SpaceAge
                 {
                     attack += this.QuantityActive * this.moduleType.Attack;
                     attack += this.technologies.Attack;
-                    attack += this.People.Attack;
+                    attack += this.People.CombatAttack(this.RootModuleStack);
 					attack += this.ItemStacks.CombatAttack(this.moduleType.Group, this.QuantityActive);
                 }
 				return attack;
@@ -1007,7 +1010,7 @@ namespace SpaceAge
                 {
                     defense += this.QuantityActive * this.moduleType.Defense;
                     defense += this.technologies.Defense;
-                    defense += this.People.Defense;
+                    defense += this.People.CombatDefense(this.RootModuleStack);
 					defense += this.ItemStacks.CombatDefense(this.moduleType.Group, this.QuantityActive);
                 }
 				return defense;
@@ -1065,12 +1068,42 @@ namespace SpaceAge
 					initiativeBonus += this.moduleType.Initiative;
 				}
 				initiativeBonus += this.technologies.Initiative;
-				initiativeBonus += this.People.Initiative;
+				initiativeBonus += this.People.CombatInitiative(this.RootModuleStack);
 				if (this.IsFormed && this.moduleType != null)
 				{
 					initiativeBonus += this.ItemStacks.CombatInitiative(this.moduleType.Group, this.QuantityActive);
 				}
 				return initiativeBonus;
+			}
+		}
+
+		public int MedicalCureChance
+		{
+			get
+			{
+				int max = this.People.CureChance(this.RootModuleStack);
+				foreach (ModuleStack nested in this.ModuleStacks.Values)
+				{
+					int nestedMax = nested.MedicalCureChance;
+					if (nestedMax > max)
+					{
+						max = nestedMax;
+					}
+				}
+				return max;
+			}
+		}
+
+		public int ResearchSkillOutputBonus
+		{
+			get
+			{
+				int bonus = this.People.ResearchOutputBonus(this);
+				foreach (ModuleStack nested in this.ModuleStacks.Values)
+				{
+					bonus += nested.ResearchSkillOutputBonus;
+				}
+				return bonus;
 			}
 		}
 
@@ -1945,11 +1978,11 @@ namespace SpaceAge
 				line = string.Format("{0}initiative: {1}",
 				   (line == string.Empty) ? string.Empty : string.Concat(line, ", "),
 				   this.Initiative);
-				if (this.Initiative != (this.InitiativeBonus - this.People.Initiative))
+				if (this.Initiative != (this.InitiativeBonus - this.People.CombatInitiative(this.RootModuleStack)))
 				{
 					line = string.Format("{0} ({1})", 
 						line,	
-						this.InitiativeBonus - this.People.Initiative);
+						this.InitiativeBonus - this.People.CombatInitiative(this.RootModuleStack));
 				}
 			}
 			return line;

@@ -82,7 +82,7 @@ The lobby **must** expose:
 - [x] **Sick-bay heal cadence** — periodic crew healing in sick-bay modules per design cadence. Live **0.1.150** (2026-08-30); gap tests in `Tests/TConsume.cs`.
 - [x] **Moon `@name` ids + galaxy exits** — campaign moons use unique ids (`M00001` …); `Galaxy.LoadExits` walks moon **regions**; `<exit orbit="O…">` on regions resolves. Second pass over moon `<orbit>` elements only if campaign XML needs orbit-held exits (§7).
 - [x] **use-produce effect execution** — run `use` / `produce` item effects in the game loop (not just catalog load). Live **0.1.151** (2026-08-30); `[repair]` via `ProducingEffect`; tests in `Tests/TUseRepairEffect.cs`.
-- [ ] **Skills** — skill system execution beyond catalog ids (training, checks, battle/campaign hooks).
+- [x] **Skills** — **Sub-slice 1 live 0.1.152:** `usable-in` load + context-aware combat bonuses. **Sub-slice 2 live 0.1.153:** skill `produce` (`effective attack` / `effective defence` × `QuantityActive`). **Sub-slice 3 live 0.1.154:** `cure-chance` on quarterly wounded recovery. **Sub-slice 4 live 0.1.155:** `research output` skill produce on `Research.WeeklyOutput`. Catalog skill `snsroff` in `Tests/data.xml`; campaign officer expansion still designer-owned.
 - [ ] **Orbit resources + gas-giant atmospheres** — orbit-held resources on load/save; gas-giant `atmosphere` bands in environments and extraction rules.
 
 ## 1. Prove the campaign catalog loads

@@ -205,22 +205,24 @@ Live: `rctlnc` (infantry rocket, **missile**), `spcsut` (EVA). Live `smlarm` is 
 
 ## Officer skills
 
-Live: `frgplt` `sscmnd` `hmedic` `arpldr` `inbtcm`. Loader stores `training-duration`, `attack`, `defense`, `initiative`. Extra children are ignored — still write `usable-in` for reports.
+Live: `frgplt` `sscmnd` `hmedic` `arpldr` `inbtcm` `snsroff` plus campaign officers `ntrplt` `astrog` `chfeng` `gunnry` `logoff` `xenbio` `radmed` `arkplt` `exoagr` `excoff`. Combat bonuses use formula attributes (`base+Pct%scale-token`); utility bonuses use `<produce effect="…" value="NN%"/>` — see `Tests/data.xml` / `campaign/data.xml`.
 
 | Id | Name | Weeks | Bonuses | Usable with |
 |----|------|-------|---------|-------------|
-| `ntrplt` | nuclear thermal pilot | 6 | init 4 def 2 | propulsion / frigate |
-| `astrog` | astrogation | 6 | init 6 | command, spacecraft |
-| `chfeng` | chief engineer | 8 | def 3 | production, propulsion |
-| `gunnry` | gunnery director | 6 | attack 6 init 3 | military; flavour: pick a weapon group |
-| `arpldr` | armor platoon leader | live | attack 5 init 5 | vehicle; **kinetic**+**armour** |
-| `inbtcm` | infantry battalion commander | live | attack 5 init 5 | infantry; mixed four groups |
-| `snsroff` | sensor officer | 5 | init 4 | research, command |
-| `logoff` | logistics officer | 5 | — | storage, settlement |
-| `xenbio` | xenobiology | 8 | — | research (`xbiolb`) |
-| `radmed` | radiation medicine | 6 | (cure-chance wishlist) | medical / `hmedic` line |
-| `arkplt` | ark helm | 10 | def 8 init 4 | L10 hull / command |
-| `exoagr` | exoagriculture | 6 | — | agricultural in vacuum |
+| `hmedic` | human physiology | 6 | **cure-chance 25%** | anywhere |
+| `radmed` | radiation medicine | 6 | **cure-chance 25%** | habitat |
+| `astrog` | astrogation | 6 | init (formula); **space MOVE ×90%** weeks (ceil) | command, spacecraft |
+| `chfeng` | chief engineer | 8 | def (formula); **production ×75%** weeks (ceil); **thrust ×110%** | production, propulsion |
+| `logoff` | logistics officer | 5 | **capacity ×110%** (floor) | storage, settlement |
+| `xenbio` | xenobiology | 8 | research output (formula); **ag output ×125%** (floor) | research, agricultural |
+| `exoagr` | exoagriculture | 6 | **ag output ×125%** (floor) | agricultural |
+| `excoff` | excavation officer | 5 | **extraction output ×125%** (floor) | extraction |
+| `ntrplt` | nuclear thermal pilot | 6 | def/init (formula) | propulsion / frigate |
+| `gunnry` | gunnery director | 6 | attack/init (formula) | military |
+| `arpldr` | armor platoon leader | live | attack/init (formula) + produce | vehicle |
+| `inbtcm` | infantry battalion commander | live | attack/init (formula) + produce | infantry |
+| `snsroff` | sensor officer | 5 | init (formula); research output (formula) | research, command |
+| `arkplt` | ark helm | 10 | def/init (formula) | L10 hull / command |
 
 ## Naming collisions to avoid
 
