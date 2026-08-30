@@ -538,7 +538,7 @@ namespace SpaceAge
 				ETactic firing = modulestack.FiringTactic;
 				Modules firingModules = modulestack.GetFiringModules();
 				int remainingItemShots = modulestack.ItemStacks.CombatDamageShotBudget(
-					modulestack.moduleType.Group,
+					modulestack.ModuleType.Group,
 					modulestack.QuantityActive);
 				foreach (Module module in firingModules)
 				{
@@ -580,7 +580,7 @@ namespace SpaceAge
 						if (module.Parent.RootModuleStack == modulestack)
 						{
 							weaponDamage += modulestack.ItemStacks.CombatDamageBonusForShot(
-								modulestack.moduleType.Group,
+								modulestack.ModuleType.Group,
 								ref remainingItemShots);
 						}
 						weaponDamage = this.applyShieldIntercept(target, weaponDamage);

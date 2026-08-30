@@ -267,6 +267,8 @@ namespace SpaceAge
 			set { this.initiative = value; }
 		}
 
+		public int NominalValue { get; set; }
+
 		public bool IsShuttleUnit
 		{
 			get { return this.Group == EModuleTypesGroup.shuttle || this.name == "shuttl" || this.name == "alndrn"; }

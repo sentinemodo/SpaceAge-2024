@@ -12,7 +12,7 @@ Canonical cash flow and t=1 UN books for `campaign/data.xml` and `galaxy.md`. En
 | HQ / farm / mine output | Weekly (`produce` duration 1, `use-time` default 1) |
 | City cash | `1000` cash / **13** weeks (~77/week) |
 | Remote `BUY` | Flat **100** transfer cost if buyer and seller regions differ |
-| `Market.GetPrice` | **0** until a trade posts a price; NPC auto-list skips price ≤ 0 |
+| `Market.GetPrice` | Regional average if any region posted; else catalog nominal `value`; else **0** |
 
 Catalog `upkeep reduction` on `corphq` is **not applied** by the engine today. Nest bills below are gross.
 

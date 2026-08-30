@@ -12,7 +12,7 @@ Unknown **attributes** are ignored. Unknown **module `group`**, **`location-type
 | `planet` | `name`, `name-en` | Live types: `ocean`, `gasgnt`, `dust`, `abelt` (unused in gamein — belts are `<belt>`), `adpnt` (unused in gamein — Gates are `<alderson>`) |
 | `moon` | `name`, `name-en` | Live types: `ice`, `rock`, `vulcan`, `ring` |
 | `region` | `name`, `name-en`, `location-type` | `orbit` \| `solid-surface` \| `liquid-surface` \| `space` |
-| `item` | `name`, `name-en` | `name-en2`, `description`, `size`, `mass`, `attack`, `damage`; `upkeep`/`consume` `type`+`quantity`; `use-allowed-by` `module-type-group`; design attr `value` (nominal price, ignored until TDD — [`economy.md`](economy.md)) |
+| `item` | `name`, `name-en` | `name-en2`, `description`, `size`, `mass`, `attack`, `damage`; `upkeep`/`consume` `type`+`quantity`; `use-allowed-by` `module-type-group`; design attr `value` (nominal price fallback for `Market.GetPrice` — [`economy.md`](economy.md)) |
 | `technology` | `name`, `name-en`, `level` | `tags`, `requires`, `use-time`, `cost`, combat bonuses; `use-allowed-in`; `use-consume` / `use-produce` (`item` \| `module` \| `effect`) |
 | `module` | `name`, `name-en`, `group` | size/mass/capacity/crew/energy/`hit-points`/`technology-capacity`/`research-output`; combat: `attack`/`defense`/`damage`/`initiative`; live combat attrs: `weapon-group`, `resists`, `armor-module` (SampleGame omits them → flat dice); `upkeep`, `fuel`, `move`, `produce`, `operation-allowed-in`, `use` |
 | `race` | `name`, `name-en` | Also creates an `ItemType` (crew). `officer-training-duration`; upkeep `crew-type` crew\|officer |

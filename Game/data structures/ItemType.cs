@@ -111,6 +111,8 @@ namespace SpaceAge
 			set { this.useAllowedModuleTypesGroup = value; }
 		}
 
+		public int NominalValue { get; set; }
+
 		public string ReportDescriptionForTechnology()
 		{
 			StringBuilder description = new StringBuilder(this.Description);

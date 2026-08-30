@@ -160,6 +160,20 @@ namespace UnitTests
 		}
 
 		[Test]
+		public void LoadConfiguration_CampaignCatalog_ItemNominalValues()
+		{
+			this.dataFile.LoadConfiguration(CampaignDir(), "data.xml");
+			this.game = this.dataFile.Game;
+
+			Assert.That(ItemType.All["food"].NominalValue, Is.EqualTo(2));
+			Assert.That(ItemType.All["iron"].NominalValue, Is.EqualTo(2));
+			Assert.That(ItemType.All["water"].NominalValue, Is.EqualTo(1));
+			Assert.That(ItemType.All["uraniu"].NominalValue, Is.EqualTo(6));
+			Assert.That(ItemType.All["terran"].NominalValue, Is.EqualTo(50));
+			Assert.That(ModuleType.All["inftry"].NominalValue, Is.EqualTo(50));
+		}
+
+		[Test]
 		public void LoadConfiguration_CampaignCatalog_LoadsAdpnt()
 		{
 			this.dataFile.LoadConfiguration(CampaignDir(), "data.xml");

@@ -162,77 +162,88 @@
 			name-en2="units of iron" 
 			description="Extracted, refined, and purified into industrial steels, iron is a basic construction material widely used in most structures." 
 			size="5" 
-			mass="10"/>
+			mass="10"
+			value="2"/>
 		<entry
 			name="titani" 
 			name-en="unit of titanium" 
 			name-en2="units of titanium" 
 			description="Due to its resistance to wear, titanium is a good construction material." 
 			size="10" 
-			mass="10"/>
+			mass="10"
+			value="4"/>
 		<entry
 			name="food" 
 			name-en="unit of food" 
 			name-en2="units of food" 
 			description="An carefully designed set of pastes, liquids and solids, lending itself to taste-satisfying preparations, yet a source of all essential minerals, vitamins and calories for human consumption." 
 			size="1" 
-			mass="1"/>
+			mass="1"
+			value="2"/>
 		<entry
 			name="carbon" 
 			name-en="unit of carbon" 
 			name-en2="units of carbon" 
 			description="In solid form or combined with hydrogen for organic basics, the carbon is used as a good source of both fuel and food enrichments." 
 			size="5" 
-			mass="5"/>
+			mass="5"
+			value="3"/>
 		<entry
 			name="silici" 
 			name-en="unit of silicium" 
 			name-en2="units of silicium" 
 			description="The silicium is a very common material in most areas, but high-grade siliciums are base components for smart systems and modules." 
 			size="5" 
-			mass="3"/>
+			mass="3"
+			value="3"/>
 		<entry
 			name="uraniu" 
 			name-en="unit of uranium" 
 			name-en2="units of uranium" 
 			description="With a half-life of million of years, this is one of the most stable of the radio-active elements, and one very easy to use in energy power modules." 
 			size="1" 
-			mass="8"/>
+			mass="8"
+			value="6"/>
 		<entry
 			name="terair" 
 			name-en="unit of terran breathing gas mixture"
 			name-en2="units of terran breathing gas mixture"
 			description="The basic gas mixture required for human to breathe." 
 			size="1" 
-			mass="1"/>
+			mass="1"
+			value="1"/>
 		<entry
 			name="oil"
 			name-en="unit of oil"
 			name-en2="units of oil" 
 			description="Black liquid carbon based used as fuel."
 			size="4"
-			mass="5"/>
+			mass="5"
+			value="3"/>
 		<entry
 			name="water"
 			name-en="unit of water"
 			name-en2="units of water"
 			description="Strategic hydrosphere resource: liquid water or melted ice. Feedstock for oxyhydro fuel (wtrdst) and hydroponic food (hydrop). Seed rich on ocean worlds; also as ice on homeworld moons."
 			mass="1"
-			size="1"/>
+			size="1"
+			value="1"/>
 		<entry
 			name="h2o2" 
 			name-en="unit of oxyhydro" 
 			name-en2="units of oxyhydro" 
 			description="A very useful combination of two volatiles that react strongly."
 			mass="1"
-			size="1"/>
+			size="1"
+			value="2"/>
 		<entry
 			name="copper" 
 			name-en="unit of copper" 
 			name-en2="units of copper" 
 			description="This very useful metal is the basis of most energy based or energy intensive structures."
 			mass="8"
-			size="5"/>
+			size="5"
+			value="4"/>
 		<entry
 			name="gold"
 			name-en="unit of gold"
@@ -3784,7 +3795,8 @@ Researchers can query the library. The system can handle natural language questi
 			size="4"
 			mass="4"
 			capacity="3"
-			officer-training-duration="6">
+			officer-training-duration="6"
+			value="50">
 			<consume type="food" quantity="1"/>
 			<consume type="terair" quantity="1"/>
 			<no-consume effect="wound" chance="25"/>

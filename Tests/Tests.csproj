@@ -100,6 +100,7 @@
     <Compile Include="TRepair.cs" />
     <Compile Include="TItemCombat.cs" />
     <Compile Include="TFlavourReveal.cs" />
+    <Compile Include="TNominalValue.cs" />
     <Compile Include="TResearch.cs" />
     <Compile Include="TConsume.cs" />
     <Compile Include="TDiplomacy.cs" />
@@ -333,6 +334,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="fixtures\space-move\gamein.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="fixtures\nominal-value\gamein.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="fixtures\nominal-value\data-nominal-items.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

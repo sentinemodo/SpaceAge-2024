@@ -121,7 +121,7 @@ After week 13: **quarterly maintenance**, then **quarterly wounded outcome**, th
 
 - Bank: quarterly interest (`AddQuarterlyInterest`). Balance is stored and reported as **whole credits** (rounded half away from zero).
 - `UpdateRates` — empty (comments only).
-- `GenerateOffers` — NPC faction `[1]` stacks whose module type is `city` auto-list on-hand inventory as `SellItems` `Offer`s (same objects as XML `<selling>`; not leftover player `SELL` orders). Skips cash. Skips an item type if that city already has a **buy or sell** offer for it (no simultaneous buy+sell of the same type; standing offers are not rewritten, so existing NPC city sells **remain** at their saved quantity and price). Quantity for a **new** listing is on-hand; price is `Market.GetPrice`; skip if price ≤ 0. Farms and other non-city stacks are not auto-listed. Listings appear on this turn’s reports and save; weekly buy matching (step 6) can hit them from **next** turn. Duration-0 leftover `receiving-items` on cities (old market delivery) **persist** after save but **never complete**; there is no player verb that clears them.
+- `GenerateOffers` — NPC faction `[1]` stacks whose module type is `city` auto-list on-hand inventory as `SellItems` `Offer`s (same objects as XML `<selling>`; not leftover player `SELL` orders). Skips cash. Skips an item type if that city already has a **buy or sell** offer for it (no simultaneous buy+sell of the same type; standing offers are not rewritten, so existing NPC city sells **remain** at their saved quantity and price). Quantity for a **new** listing is on-hand; price is `Market.GetPrice` (regional average if any region posted a price, else catalog nominal `value`, else 0); skip if price ≤ 0. Farms and other non-city stacks are not auto-listed. Listings appear on this turn’s reports and save; weekly buy matching (step 6) can hit them from **next** turn. Duration-0 leftover `receiving-items` on cities (old market delivery) **persist** after save but **never complete**; there is no player verb that clears them.
 
 Standing `@buy` / `@sell` stay on the order list and retry each week at step 6. NPC city auto-listings have no leftover `SELL` and persist as market `Offer`s. `ATTACK` / `TACTIC` / `DECLARE` during step 2 only set stance; shooting is step 7.
 
@@ -338,7 +338,7 @@ Succeeds if that stack or person is at the observer’s location. Both person wo
 
 **Subject:** offerent.
 
-Lists a standing sell (`Offer`) and keeps a leftover `SELL` on the template. Matching is driven from the buy side; Execute does not complete the trade itself. `AT AVERAGE` uses the local market price. Sample: `-sell 1 wnplnt`. Same technology-id rule as BUY (no trailing `technology` word). NPC city auto-listings are `Offer`s only (no leftover `SELL`); see [Turn sequence](#turn-sequence).
+Lists a standing sell (`Offer`) and keeps a leftover `SELL` on the template. Matching is driven from the buy side; Execute does not complete the trade itself. `AT AVERAGE` uses `Market.GetPrice` (regional average if any region posted a price, else catalog nominal `value`, else 0). Sample: `-sell 1 wnplnt`. Same technology-id rule as BUY (no trailing `technology` word). NPC city auto-listings are `Offer`s only (no leftover `SELL`); see [Turn sequence](#turn-sequence).
 
 ### SET
 
