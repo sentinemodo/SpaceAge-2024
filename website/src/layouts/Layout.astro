@@ -1,0 +1,126 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'SpaceAge - Open PBEM Lobby' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description" content={description} />
+	<title>{title} | SpaceAge</title>
+	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body>
+	<nav class="nav">
+	  <div class="nav-container">
+		<a href="/" class="nav-logo">⭐ SpaceAge</a>
+		<div class="nav-links">
+		  <a href="/">Home</a>
+		  <a href="/turns">Turns</a>
+		  <a href="/rules">Rules</a>
+		  <a href="/client">Client</a>
+		</div>
+	  </div>
+	</nav>
+
+	<main>
+	  <slot />
+	</main>
+
+	<footer class="footer">
+	  <div class="footer-container">
+		<div class="footer-section">
+		  <p>SpaceAge Engine v0.1.157 | Closed Campaign | Turns Quarterly</p>
+		</div>
+		<div class="footer-section">
+		  <p>Credits: Atlantis | Rise of Heroes | Vincent Archer</p>
+		</div>
+	  </div>
+	</footer>
+  </body>
+</html>
+
+<style>
+  .nav {
+	background-color: var(--color-bg-darker);
+	border-bottom: 1px solid var(--color-border);
+	position: sticky;
+	top: 0;
+	z-index: 100;
+  }
+
+  .nav-container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: var(--space-md) var(--space-lg);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+  }
+
+  .nav-logo {
+	font-size: var(--font-size-2xl);
+	font-weight: var(--font-weight-bold);
+	color: var(--color-accent-teal);
+	text-decoration: none;
+  }
+
+  .nav-links {
+	display: flex;
+	gap: var(--space-lg);
+  }
+
+  .nav-links a {
+	color: var(--color-text-light);
+	transition: color var(--transition-fast);
+  }
+
+  .nav-links a:hover {
+	color: var(--color-accent-teal);
+  }
+
+  .footer {
+	background-color: var(--color-bg-darker);
+	border-top: 1px solid var(--color-border);
+	margin-top: var(--space-2xl);
+	padding: var(--space-lg);
+  }
+
+  .footer-container {
+	max-width: 1200px;
+	margin: 0 auto;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: var(--space-lg);
+	text-align: center;
+  }
+
+  .footer-section {
+	font-size: var(--font-size-sm);
+	color: #999;
+  }
+
+  @media (max-width: 768px) {
+	.nav-container {
+	  flex-direction: column;
+	  gap: var(--space-md);
+	}
+
+	.nav-links {
+	  flex-wrap: wrap;
+	  justify-content: center;
+	}
+
+	.footer-container {
+	  grid-template-columns: 1fr;
+	}
+  }
+</style>

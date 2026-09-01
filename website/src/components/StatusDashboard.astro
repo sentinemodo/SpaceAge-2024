@@ -1,0 +1,149 @@
+---
+// StatusDashboard component - reads status.json and displays game state
+// Schema: { status, turn, nextTurnAt?, factions: [{id, submitted}] }
+
+interface StatusData {
+  status: string;
+  turn: number;
+  nextTurnAt?: string;
+  factions: Array<{
+	id: number;
+	submitted: boolean;
+	name?: string;
+  }>;
+}
+
+let statusData: StatusData = {
+  status: 'not-started',
+  turn: 0,
+  factions: [
+	{ id: 2, submitted: false, name: 'Faction 2' },
+	{ id: 3, submitted: false, name: 'Faction 3' },
+	{ id: 4, submitted: false, name: 'Faction 4' },
+	{ id: 5, submitted: false, name: 'Faction 5' },
+	{ id: 6, submitted: false, name: 'Faction 6' },
+	{ id: 7, submitted: false, name: 'Faction 7' },
+	{ id: 8, submitted: false, name: 'Faction 8' },
+	{ id: 9, submitted: false, name: 'Faction 9' },
+	{ id: 10, submitted: false, name: 'Faction 10' },
+	{ id: 11, submitted: false, name: 'Faction 11' },
+  ],
+};
+---
+
+<div class="status-dashboard">
+  <div class="status-header">
+	<div class="status-item">
+	  <span class="status-label">Game Status</span>
+	  <span class="status-value">{statusData.status}</span>
+	</div>
+	<div class="status-item">
+	  <span class="status-label">Turn Number</span>
+	  <span class="status-value">{statusData.turn}</span>
+	</div>
+	<div class="status-item">
+	  <span class="status-label">Total Players</span>
+	  <span class="status-value">10 seats</span>
+	</div>
+	{statusData.nextTurnAt && (
+	  <div class="status-item">
+		<span class="status-label">Next Turn</span>
+		<span class="status-value">{statusData.nextTurnAt}</span>
+	  </div>
+	)}
+  </div>
+
+  <div class="submissions-grid">
+	{statusData.factions.map((faction) => (
+	  <div class={`faction-card ${faction.submitted ? 'submitted' : 'pending'}`}>
+		<div class="faction-id">Faction {faction.id}</div>
+		<div class="faction-status">
+		  {faction.submitted ? '✓ Submitted' : '⏳ Pending'}
+		</div>
+	  </div>
+	))}
+  </div>
+</div>
+
+<style>
+  .status-dashboard {
+	margin-bottom: var(--space-2xl);
+  }
+
+  .status-header {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	gap: var(--space-lg);
+	margin-bottom: var(--space-2xl);
+  }
+
+  .status-item {
+	background-color: var(--color-card-bg);
+	color: var(--color-text-dark);
+	padding: var(--space-lg);
+	border-radius: var(--radius-lg);
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-sm);
+  }
+
+  .status-label {
+	font-size: var(--font-size-sm);
+	font-weight: var(--font-weight-semibold);
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	color: #666;
+  }
+
+  .status-value {
+	font-size: var(--font-size-2xl);
+	font-weight: var(--font-weight-bold);
+	color: var(--color-accent-teal);
+  }
+
+  .submissions-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+	gap: var(--space-md);
+  }
+
+  .faction-card {
+	background-color: var(--color-card-bg);
+	color: var(--color-text-dark);
+	padding: var(--space-md);
+	border-radius: var(--radius-lg);
+	text-align: center;
+	border: 2px solid transparent;
+	transition: border-color var(--transition-fast);
+  }
+
+  .faction-card.submitted {
+	border-color: #10b981;
+  }
+
+  .faction-card.pending {
+	border-color: #f59e0b;
+	opacity: 0.8;
+  }
+
+  .faction-id {
+	font-weight: var(--font-weight-bold);
+	font-size: var(--font-size-lg);
+	margin-bottom: var(--space-sm);
+  }
+
+  .faction-status {
+	font-size: var(--font-size-sm);
+	font-weight: var(--font-weight-semibold);
+  }
+
+  @media (max-width: 768px) {
+	.status-header {
+	  grid-template-columns: 1fr;
+	}
+
+	.submissions-grid {
+	  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+	}
+  }
+</style>

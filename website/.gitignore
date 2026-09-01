@@ -1,0 +1,31 @@
+# dependencies
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# astro
+dist/
+.astro/
+
+# testing
+coverage/
+.nyc_output/
+playwright-report/
+test-results/
+
+# environment
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
