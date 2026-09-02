@@ -35,11 +35,11 @@ let statusData: StatusData = {
   <div class="status-header">
 	<div class="status-item">
 	  <span class="status-label">Game Status</span>
-	  <span class="status-value">{statusData.status}</span>
+	  <span id="status-value" class="status-value">{statusData.status}</span>
 	</div>
 	<div class="status-item">
 	  <span class="status-label">Turn Number</span>
-	  <span class="status-value">{statusData.turn}</span>
+	  <span id="turn-value" class="status-value">{statusData.turn}</span>
 	</div>
 	<div class="status-item">
 	  <span class="status-label">Total Players</span>
@@ -48,14 +48,14 @@ let statusData: StatusData = {
 	{statusData.nextTurnAt && (
 	  <div class="status-item">
 		<span class="status-label">Next Turn</span>
-		<span class="status-value">{statusData.nextTurnAt}</span>
+		<span id="next-turn-value" class="status-value">{statusData.nextTurnAt}</span>
 	  </div>
 	)}
   </div>
 
-  <div class="submissions-grid">
+  <div id="submissions-grid" class="submissions-grid">
 	{statusData.factions.map((faction) => (
-	  <div class={`faction-card ${faction.submitted ? 'submitted' : 'pending'}`}>
+	  <div class={`faction-card ${faction.submitted ? 'submitted' : 'pending'}`} data-id={faction.id}>
 		<div class="faction-id">Faction {faction.id}</div>
 		<div class="faction-status">
 		  {faction.submitted ? '✓ Submitted' : '⏳ Pending'}
@@ -64,6 +64,43 @@ let statusData: StatusData = {
 	))}
   </div>
 </div>
+
+<script type="module">
+  // Client-side fetch to refresh status from /status.json
+  async function refreshStatus() {
+	try {
+	  const res = await fetch('/status.json', {cache: 'no-store'})
+	  if (!res.ok) return
+	  const data = await res.json()
+
+	  const statusEl = document.getElementById('status-value')
+	  if (statusEl) statusEl.textContent = data.status
+
+	  const turnEl = document.getElementById('turn-value')
+	  if (turnEl) turnEl.textContent = String(data.turn)
+
+	  const nextEl = document.getElementById('next-turn-value')
+	  if (nextEl) nextEl.textContent = data.nextTurnAt || ''
+
+	  const grid = document.getElementById('submissions-grid')
+	  if (grid && Array.isArray(data.factions)) {
+		grid.innerHTML = data.factions.map(f => {
+		  const cls = f.submitted ? 'faction-card submitted' : 'faction-card pending'
+		  const name = f.name ? f.name : `Faction ${f.id}`
+		  const status = f.submitted ? '✓ Submitted' : '⏳ Pending'
+		  return `<div class="${cls}" data-id="${f.id}"><div class="faction-id">${name}</div><div class="faction-status">${status}</div></div>`
+		}).join('')
+	  }
+	} catch (e) {
+	  // Silent fail; dashboard remains with placeholder
+	  console.warn('Could not refresh status.json', e)
+	}
+  }
+
+  // Refresh on load and every 30s
+  refreshStatus()
+  setInterval(refreshStatus, 30000)
+</script>
 
 <style>
   .status-dashboard {
