@@ -1,6 +1,6 @@
 # SpaceAge-2024 — future development backlog
 
-Last updated: 2026-08-18
+Last updated: 2026-09-09
 
 This file tracks **deferred modernization** — good practices that are intentionally **out of scope** for day-to-day work on the current engine. They are recorded here (not enforced by the TDD rule or coding guidance) so the running net48 engine stays stable and diffs stay small.
 
@@ -16,6 +16,7 @@ Each item requires a numbered **ADR** in [`adr/`](adr/) plus a full test pass on
 - **Dependency injection / interfaces at boundaries** to replace the pervasive static `*.All` registries, enabling parallel tests and multiple in-process games. Today [ADR-0003](adr/ADR-0003-filesystem-pbem-batch.md) and the `*.All` pattern are load-bearing.
 - **Split the single `SpaceAge` namespace** into folder-aligned namespaces (currently folders are organizational only).
 - **`DataFile` extracts** — seams and phases are named in [ADR-0006](adr/ADR-0006-datafile-facade-and-xml-seams.md). Remaining work is executing those phases (catalog loader, order factory, faction/galaxy XML on domain types). Do not opportunistic-split `DataFile` or invent extra loader types. Optional later slice: catalog fill-pass on `ItemType`/`Technology`/`ModuleType` without collapsing two-pass.
+- **`ModuleStack` decomposition** — seams and phased partial files in [ADR-0008](adr/ADR-0008-modulestack-decomposition.md) (**Accepted**); execution checklist in [`delivery/modulestack-refactor.md`](delivery/modulestack-refactor.md). **`Person`** mirror (six shared interfaces) is a follow-up ADR, not the first stack PR series.
 
 ## Build, test, and delivery
 
