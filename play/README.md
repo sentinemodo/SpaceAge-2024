@@ -76,6 +76,12 @@ Optional `-Exe path\to\Game.exe` on `reports.ps1` / `turn.ps1`. `init-run.ps1` a
 
 Typical first quarter: `init-run` → `reports` → `isolate` → (ten `order.{id}.txt` in faction folders) → `turn` → `next`.
 
+```
+.\play\generate-status.ps1 demo
+```
+
+Refreshes `website/public/status.json` without running the engine. `isolate.ps1`, `next.ps1`, and `turn.ps1` call this automatically after they finish.
+
 Shared helpers live in `play/_common.ps1` (dot-sourced; not invoked directly).
 
 ## GM operations
@@ -85,6 +91,41 @@ Invoke `/campaign-gm` to run a table. GM loop (same mermaid as [campaign-play.md
 ```
 init-run → reports → isolate → ten isolated campaign-ai (or /player) → turn → win check → next
 ```
+
+### Live status feed (`website/public/status.json`)
+
+Phase 2 publishes lobby status for the public site. The GM **does not** hand-edit JSON — `play/generate-status.ps1` writes it from the run directory.
+
+| When | Script | Typical `status` |
+|------|--------|------------------|
+| Run initialized, reports not yet isolated | — | `not-started` |
+| After `isolate` (reports in `factions/NN/`) | auto | `reports-out` |
+| Players submitting `factions/NN/order.{id}.txt` | auto on refresh | `accepting-orders` |
+| All ten drafts present, before `turn` | auto | `processing` |
+| After `turn` + isolate (drafts cleared) | auto | `reports-out` |
+| After `next` (new `gamein.xml`) | auto | `reports-out` until orders arrive |
+
+**Automatic hooks:** `isolate.ps1`, `next.ps1`, and `turn.ps1` call `Update-WebsiteStatus` at the end. `turn.ps1` also deletes consumed faction order drafts so the dashboard returns to `reports-out`.
+
+**Manual refresh** (e.g. mid order collection):
+
+```
+.\play\generate-status.ps1 <id>
+```
+
+**Optional order deadline** — create `play/runs/<id>/gm/schedule.json`:
+
+```json
+{ "nextTurnAt": "2026-09-15T23:59:59Z" }
+```
+
+ISO-8601 UTC. The site shows the timestamp or “GM-scheduled” when null. Override for one run:
+
+```
+.\play\generate-status.ps1 <id> -NextTurnAt "2026-09-15T23:59:59Z"
+```
+
+Commit and deploy `website/public/status.json` (or rsync to the host) so `/` and `/turns` pick up changes without rebuilding content. See [README_STATUS_AUTOGEN.md](README_STATUS_AUTOGEN.md) and [website.md](../architecture/delivery/website.md).
 
 Optional **between-turn** (UN contracts and press) uses `/no-turn` **before** collecting player orders or after `next`, never mixed with leftover `turn/order.{2–11}.txt` (the engine globs all `order.*`).
 
@@ -140,6 +181,5 @@ Not scripts yet (GM documents and may run the documented `Game.exe` line; GM doe
 |------|--------|
 | `play/no-turn.ps1` | Wrap `/no-turn` + UN `order.1.txt` staging + optional `next` |
 | NPC 12/13 orders on a full turn | `turn.ps1` copies factions 2–11 only (raids / hostility-flip later) |
-| `website/public/status.json` | Lobby Phase 2; not this isolation path |
 
 Do not point `/data` at `campaign/`. Do not commit `play/runs/`.

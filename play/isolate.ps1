@@ -28,19 +28,6 @@ function Get-TurnFromReports {
 	return $maxTurn
 }
 
-function Get-TurnFromGamein {
-	param([string]$GameinPath)
-	if (-not (Test-Path -LiteralPath $GameinPath)) {
-		return $null
-	}
-	$text = Read-Win1251Text -Path $GameinPath
-	$m = [regex]::Match($text, '<game\b[^>]*\bturn="(\d+)"')
-	if ($m.Success) {
-		return [int]$m.Groups[1].Value
-	}
-	return $null
-}
-
 $resolvedTurn = $null
 if ($PSBoundParameters.ContainsKey('Turn')) {
 	$resolvedTurn = $Turn
@@ -77,3 +64,5 @@ foreach ($id in $script:PlayerFactionIds) {
 }
 
 Write-Host "Isolated text reports for turn $resolvedTurn into factions/02 .. 11 (no XML)."
+
+Update-WebsiteStatus -RunId $RunId

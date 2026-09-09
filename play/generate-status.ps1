@@ -1,6 +1,7 @@
 param(
 	[Parameter(Mandatory=$true, Position=0)][string]$RunId,
-	[string]$OutPath
+	[string]$OutPath,
+	[string]$NextTurnAt
 )
 
 $ErrorActionPreference = 'Stop'
@@ -16,47 +17,74 @@ $status = 'not-started'
 $turn = 0
 $nextTurnAt = $null
 
-if (Test-Path -LiteralPath $gamein) {
-	$gameinText = Read-Win1251Text -Path $gamein
-	$m = [System.Text.RegularExpressions.Regex]::Match($gameinText, '<turn>\s*(\d+)\s*</turn>')
-	if ($m.Success) { $turn = [int]$m.Groups[1].Value }
-	if ($turn -eq 0) { $turn = 1 }
-
-	# Determine submission state from turn dir order files
-	$factions = @()
-	foreach ($id in $script:PlayerFactionIds) {
-		$orderPath = Join-Path $paths.TurnDir ("order.$id.txt")
-		$submitted = Test-Path -LiteralPath $orderPath
-		$factions += @{ id = $id; submitted = $submitted; name = ("Faction {0}" -f $id) }
+$schedulePath = Join-Path $paths.RunRoot 'gm\schedule.json'
+if (Test-Path -LiteralPath $schedulePath) {
+	try {
+		$sched = Get-Content -LiteralPath $schedulePath -Raw -Encoding UTF8 | ConvertFrom-Json
+		if ($null -ne $sched.nextTurnAt) {
+			$nextTurnAt = [string]$sched.nextTurnAt
+		}
 	}
+	catch {
+		Write-Warning "Could not parse $schedulePath: $_"
+	}
+}
 
-	if ($factions | Where-Object { -not $_.submitted }) {
-		$status = 'accepting-orders'
+if ($PSBoundParameters.ContainsKey('NextTurnAt')) {
+	$nextTurnAt = $NextTurnAt
+}
+
+$factions = @()
+foreach ($id in $script:PlayerFactionIds) {
+	$factions += @{ id = $id; submitted = $false; name = ("Faction {0}" -f $id) }
+}
+
+if (Test-Path -LiteralPath $gamein) {
+	$parsedTurn = Get-TurnFromGamein -GameinPath $gamein
+	if ($null -ne $parsedTurn -and $parsedTurn -gt 0) {
+		$turn = $parsedTurn
 	}
 	else {
+		$turn = 1
+	}
+
+	$draftCount = 0
+	for ($i = 0; $i -lt $factions.Count; $i++) {
+		$id = $factions[$i].id
+		$draftPath = Join-Path (Join-Path $paths.FactionsDir (Get-FactionFolderName -Id $id)) ("order.{0}.txt" -f $id)
+		$submitted = Test-Path -LiteralPath $draftPath
+		$factions[$i].submitted = $submitted
+		if ($submitted) { $draftCount++ }
+	}
+
+	$reportTurn = Get-LatestIsolatedReportTurn -FactionsDir $paths.FactionsDir
+	$reportsOut = $null -ne $reportTurn -and (Test-AllIsolatedReportsPresent -FactionsDir $paths.FactionsDir -Turn $reportTurn)
+
+	if ($draftCount -eq $script:PlayerFactionIds.Count) {
 		$status = 'processing'
 	}
-}
-else {
-	$factions = @()
-	foreach ($id in $script:PlayerFactionIds) {
-		$factions += @{ id = $id; submitted = $false; name = ("Faction {0}" -f $id) }
+	elseif ($draftCount -gt 0) {
+		$status = 'accepting-orders'
+	}
+	elseif ($reportsOut) {
+		$status = 'reports-out'
+	}
+	else {
+		$status = 'not-started'
 	}
 }
 
-# Build object
-$obj = @{ 
-	status = $status;
-	turn = $turn;
-	nextTurnAt = $nextTurnAt;
+$obj = @{
+	status = $status
+	turn = $turn
+	nextTurnAt = $nextTurnAt
 	factions = $factions
 }
 
 $json = $obj | ConvertTo-Json -Depth 4 -Compress
 
-# Ensure output folder exists
 $dir = Split-Path -Parent $OutPath
 if (-not (Test-Path -LiteralPath $dir)) { New-Item -ItemType Directory -Path $dir -Force | Out-Null }
 
 Write-Utf8Text -Path $OutPath -Text $json
-Write-Host "Wrote status.json to $OutPath"
+Write-Host "Wrote status.json to $OutPath (status=$status, turn=$turn)"

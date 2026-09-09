@@ -47,3 +47,5 @@ if (-not (Test-Path -LiteralPath $src)) {
 
 Copy-Item -LiteralPath $src -Destination $dst -Force
 Write-Host "Copied $src -> $dst (keep all gameout.*). After a full turn from seed 1, N is 2."
+
+Update-WebsiteStatus -RunId $RunId

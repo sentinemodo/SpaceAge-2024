@@ -94,3 +94,66 @@ function Write-Utf8Text {
 	$utf8 = New-Object System.Text.UTF8Encoding $false
 	[System.IO.File]::WriteAllText($Path, $Text, $utf8)
 }
+
+function Get-TurnFromGamein {
+	param([Parameter(Mandatory = $true)][string]$GameinPath)
+	if (-not (Test-Path -LiteralPath $GameinPath)) {
+		return $null
+	}
+	$text = Read-Win1251Text -Path $GameinPath
+	$m = [regex]::Match($text, '<game\b[^>]*\bturn="(\d+)"')
+	if ($m.Success) {
+		return [int]$m.Groups[1].Value
+	}
+	return $null
+}
+
+function Get-LatestIsolatedReportTurn {
+	param([Parameter(Mandatory = $true)][string]$FactionsDir)
+	$maxTurn = $null
+	foreach ($id in $script:PlayerFactionIds) {
+		$folder = Join-Path $FactionsDir (Get-FactionFolderName -Id $id)
+		if (-not (Test-Path -LiteralPath $folder)) {
+			continue
+		}
+		Get-ChildItem -LiteralPath $folder -Filter 'report.*.*.txt' -File -ErrorAction SilentlyContinue | ForEach-Object {
+			if ($_.Name -match '^report\.(\d+)\.\d+\.txt$') {
+				$t = [int]$Matches[1]
+				if ($null -eq $maxTurn -or $t -gt $maxTurn) {
+					$maxTurn = $t
+				}
+			}
+		}
+	}
+	return $maxTurn
+}
+
+function Test-AllIsolatedReportsPresent {
+	param(
+		[Parameter(Mandatory = $true)][string]$FactionsDir,
+		[Parameter(Mandatory = $true)][int]$Turn
+	)
+	foreach ($id in $script:PlayerFactionIds) {
+		$path = Join-Path (Join-Path $FactionsDir (Get-FactionFolderName -Id $id)) ("report.{0}.{1}.txt" -f $Turn, $id)
+		if (-not (Test-Path -LiteralPath $path)) {
+			return $false
+		}
+	}
+	return $true
+}
+
+function Update-WebsiteStatus {
+	param(
+		[Parameter(Mandatory = $true)][string]$RunId,
+		[string]$OutPath,
+		[string]$NextTurnAt
+	)
+	$args = @('-RunId', $RunId)
+	if (-not [string]::IsNullOrWhiteSpace($OutPath)) {
+		$args += @('-OutPath', $OutPath)
+	}
+	if ($PSBoundParameters.ContainsKey('NextTurnAt')) {
+		$args += @('-NextTurnAt', $NextTurnAt)
+	}
+	& (Join-Path $PSScriptRoot 'generate-status.ps1') @args
+}

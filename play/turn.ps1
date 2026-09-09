@@ -42,4 +42,13 @@ foreach ($id in $script:PlayerFactionIds) {
 Invoke-GameExe -Exe $Exe -GameArgs @('/data', $paths.DataDir, '/turn-dir', $paths.TurnDir)
 
 & (Join-Path $PSScriptRoot 'isolate.ps1') -RunId $RunId
+
+foreach ($id in $script:PlayerFactionIds) {
+	$draft = Join-Path (Join-Path $paths.FactionsDir (Get-FactionFolderName -Id $id)) ("order.{0}.txt" -f $id)
+	if (Test-Path -LiteralPath $draft) {
+		Remove-Item -LiteralPath $draft -Force
+	}
+}
+
+Update-WebsiteStatus -RunId $RunId
 Write-Host "Full turn complete for run '$RunId'. Isolate copied the latest text reports."
