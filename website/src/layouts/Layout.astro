@@ -22,7 +22,19 @@ const { title, description = 'SpaceAge - Open PBEM Lobby' } = Astro.props;
 	<nav class="nav">
 	  <div class="nav-container">
 		<a href="/" class="nav-logo">⭐ SpaceAge</a>
-		<div class="nav-links">
+		<button
+		  type="button"
+		  class="nav-toggle"
+		  id="nav-toggle"
+		  aria-label="Toggle navigation"
+		  aria-expanded="false"
+		  aria-controls="nav-menu"
+		>
+		  <span class="nav-toggle-bar"></span>
+		  <span class="nav-toggle-bar"></span>
+		  <span class="nav-toggle-bar"></span>
+		</button>
+		<div class="nav-links" id="nav-menu">
 		  <a href="/">Home</a>
 		  <a href="/turns">Turns</a>
 		  <a href="/rules">Rules</a>
@@ -37,16 +49,21 @@ const { title, description = 'SpaceAge - Open PBEM Lobby' } = Astro.props;
 
 	<footer class="footer">
 	  <div class="footer-container">
-		<div class="footer-section">
-		  <p>SpaceAge Engine v0.1.157 | Closed Campaign | Turns Quarterly</p>
-		</div>
-		<div class="footer-section">
-		  <p>Credits: Atlantis | Rise of Heroes | Vincent Archer</p>
-		</div>
+		<p>SpaceAge Engine v0.1.158 | Campaign start 2026 | Quarterly schedule</p>
 	  </div>
 	</footer>
   </body>
 </html>
+
+<script>
+  const toggle = document.getElementById('nav-toggle');
+  const menu = document.getElementById('nav-menu');
+
+  toggle?.addEventListener('click', () => {
+	const isOpen = menu?.classList.toggle('is-open') ?? false;
+	toggle.setAttribute('aria-expanded', String(isOpen));
+  });
+</script>
 
 <style>
   .nav {
@@ -73,6 +90,23 @@ const { title, description = 'SpaceAge - Open PBEM Lobby' } = Astro.props;
 	text-decoration: none;
   }
 
+  .nav-toggle {
+	display: none;
+	background: none;
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-md);
+	padding: var(--space-sm);
+	cursor: pointer;
+  }
+
+  .nav-toggle-bar {
+	display: block;
+	width: 1.25rem;
+	height: 2px;
+	background-color: var(--color-text-light);
+	margin: 4px 0;
+  }
+
   .nav-links {
 	display: flex;
 	gap: var(--space-lg);
@@ -97,30 +131,36 @@ const { title, description = 'SpaceAge - Open PBEM Lobby' } = Astro.props;
   .footer-container {
 	max-width: 1200px;
 	margin: 0 auto;
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	gap: var(--space-lg);
 	text-align: center;
-  }
-
-  .footer-section {
 	font-size: var(--font-size-sm);
 	color: #999;
   }
 
   @media (max-width: 768px) {
-	.nav-container {
-	  flex-direction: column;
-	  gap: var(--space-md);
+	.nav-toggle {
+	  display: block;
 	}
 
 	.nav-links {
-	  flex-wrap: wrap;
-	  justify-content: center;
+	  display: none;
+	  position: absolute;
+	  top: 100%;
+	  left: 0;
+	  right: 0;
+	  flex-direction: column;
+	  background-color: var(--color-bg-darker);
+	  border-bottom: 1px solid var(--color-border);
+	  padding: var(--space-md) var(--space-lg);
+	  gap: var(--space-md);
 	}
 
-	.footer-container {
-	  grid-template-columns: 1fr;
+	.nav-links.is-open {
+	  display: flex;
+	}
+
+	.nav-container {
+	  position: relative;
+	  flex-wrap: wrap;
 	}
   }
 </style>

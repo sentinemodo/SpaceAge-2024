@@ -402,15 +402,15 @@ There is no production PHP/ASP.NET host.
 
 ### Phase 1 — Static public site (`/website-developer` then `/website-tester`)
 
-- [ ] Scaffold Astro static app in `website/` (not under `Game/`) — developer, after reading this file + ADR-0007 + [`technology.md`](../technology.md) Website section
-- [ ] Layout: dark nav, light cards, footer meta (engine version placeholder, start date, schedule)
-- [ ] Home: flavour excerpt, **attribution block**, PBEM loop in SpaceAge terms, closed-lobby sentence, dashboard **wired to placeholder** `public/status.json`
-- [ ] `/client` placeholder, `/turns` table (ten seats), `/rules` short principles
-- [ ] Mobile-first CSS (tester proves WS-007 in Playwright; developer does not “explore in a browser” as the done path)
-- [ ] Developer: `astro check` + Vitest (status schema) → **handoff** to `/website-tester`
-- [ ] Tester: copy seed catalog to `website/e2e/scenarios.md`; Playwright Chromium vs `astro preview` for WS-001…WS-009
+- [x] Scaffold Astro static app in `website/` (not under `Game/`) — developer, after reading this file + ADR-0007 + [`technology.md`](../technology.md) Website section (2026-09-09)
+- [x] Layout: dark nav, light cards, footer meta (engine version placeholder, start date, schedule) (2026-09-09)
+- [x] Home: flavour excerpt, **attribution block**, PBEM loop in SpaceAge terms, closed-lobby sentence, dashboard **wired to placeholder** `public/status.json` (2026-09-09)
+- [x] `/client` placeholder, `/turns` table (ten seats), `/rules` short principles (2026-09-09)
+- [x] Mobile-first CSS (tester proves WS-007 in Playwright; developer does not “explore in a browser” as the done path) (2026-09-09)
+- [x] Developer: `astro check` + Vitest (status schema) → **handoff** to `/website-tester` (2026-09-09)
+- [x] Tester: copy seed catalog to `website/e2e/scenarios.md`; Playwright Chromium vs `astro preview` for WS-001…WS-009 (2026-09-09)
 - [ ] Deploy recipe (GitHub Pages) documented in `website/README.md`
-- [ ] Do **not** implement the visual tool
+- [x] Do **not** implement the visual tool
 
 ### Phase 2 — Orders-status feed from play scripts
 

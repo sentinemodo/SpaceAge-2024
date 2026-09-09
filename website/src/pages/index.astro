@@ -9,16 +9,40 @@ import StatusDashboard from '../components/StatusDashboard.astro';
 	  <h1>SpaceAge Campaign</h1>
 	  <p class="tagline">An Open Play-by-Email Galactic Strategy Game</p>
 
-	  <div class="flavour">
-		<h2>What is SpaceAge?</h2>
+	  <p class="closed-lobby">
+		This campaign is <strong>invitation-only</strong> — a closed table for ten player factions.
+		There is no public sign-up; this site is for players and observers of that table.
+	  </p>
+
+	  <div class="attribution-block card" id="attribution">
+		<h2>Lineage &amp; Attribution</h2>
 		<p>
-		  Explore a galaxy connected by ancient Points — stable wormholes that enable faster-than-light travel.
-		  Play as one of ten galactic Interests (corporations, fleets, or associations), pursuing your own goals
-		  over quarterly turns of in-game strategy.
+		  Original ideas are taken from <strong>Atlantis</strong> and <strong>Rise of Heroes</strong>,
+		  and influenced by <strong>Vincent Archer</strong>. Archer wrote a 1998 generic PBEM engine
+		  used by Overlord and then Rise of Heroes (1999–2000), intended for Atlantis-like games.
+		  SpaceAge / Alderson sits in that family. SpaceAge is a <strong>spiritual successor</strong>,
+		  not those games.
 		</p>
 		<p>
-		  Build colonies, explore distant systems, trade resources, develop technology, or wage war across the stars.
-		  There is no forced victory condition — only the goals you set for yourself and your faction.
+		  <a href="https://overlord.sourceforge.net/" rel="noopener noreferrer">Overlord PBEM engine (SourceForge)</a>
+		</p>
+	  </div>
+
+	  <div class="flavour">
+		<h2>The Alderson Points</h2>
+		<p class="flavour-lead">
+		  A long, long time ago, in a galaxy far, far away… Or maybe in our future, here, in the Milky Way?
+		</p>
+		<p>
+		  Alderson theorised <strong>weak points</strong> in space-time at the <strong>fringes of gravity wells</strong>.
+		  From those points one could jump to another. The experimental <strong>Alderson Drive</strong> sent an expedition
+		  more than <strong>750 light-years</strong> — and back the next week — in the wink of an eye. Today those Points
+		  link the galaxy. Resources await explorers, traders, operators, and captains.
+		</p>
+		<p>
+		  In a single day the Points <strong>shut down</strong>. Commerce died; colonies starved. After four months,
+		  Points <strong>reopened</strong> — mostly the old links, some new. Contact never resumed with 10% of systems.
+		  <strong>Two Points that led to Earth stayed dark.</strong> Radio from Sol dwindled to silence. Only the Fear remains.
 		</p>
 	  </div>
 
@@ -74,18 +98,6 @@ import StatusDashboard from '../components/StatusDashboard.astro';
 	<p>New to SpaceAge? Start with the <a href="/rules">rules overview</a> to understand the core mechanics.</p>
 	<p>Want to dive deeper? Check out the <a href="/client">client page</a> for installation and getting started.</p>
   </section>
-
-  <section class="credits-section">
-	<h2>Lineage & Credits</h2>
-	<p>
-	  SpaceAge is built on the legacy of <strong>Atlantis</strong>, a legendary play-by-email game,
-	  and <strong>Rise of Heroes</strong>. The engine and campaign design owe much to
-	  <strong>Vincent Archer</strong>'s work and vision for open PBEM strategy gaming.
-	</p>
-	<p style="margin-top: var(--space-lg); font-size: var(--font-size-sm); color: #999;">
-	  Engine Version: 0.1.157 | Campaign Launch: 2026 | Quarterly Play Schedule
-	</p>
-  </section>
 </Layout>
 
 <style>
@@ -115,6 +127,18 @@ import StatusDashboard from '../components/StatusDashboard.astro';
 	font-weight: var(--font-weight-semibold);
   }
 
+  .closed-lobby {
+	background-color: rgba(245, 158, 11, 0.12);
+	border-left: 3px solid var(--color-accent-amber);
+	padding: var(--space-md) var(--space-lg);
+	border-radius: var(--radius-md);
+  }
+
+  .attribution-block h2 {
+	margin-top: 0;
+	color: var(--color-accent-teal);
+  }
+
   .flavour {
 	background-color: rgba(13, 148, 136, 0.1);
 	padding: var(--space-lg);
@@ -126,6 +150,10 @@ import StatusDashboard from '../components/StatusDashboard.astro';
 	margin-top: 0;
 	color: var(--color-accent-teal);
 	font-size: var(--font-size-lg);
+  }
+
+  .flavour-lead {
+	font-style: italic;
   }
 
   .pbem-intro {
@@ -173,14 +201,6 @@ import StatusDashboard from '../components/StatusDashboard.astro';
 
   .rules-preview-section {
 	margin-bottom: var(--space-2xl);
-  }
-
-  .credits-section {
-	background-color: rgba(13, 148, 136, 0.05);
-	padding: var(--space-lg);
-	border-radius: var(--radius-lg);
-	text-align: center;
-	border: 1px solid var(--color-border);
   }
 
   @media (max-width: 768px) {

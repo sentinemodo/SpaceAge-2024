@@ -61,7 +61,7 @@ The lobby **must** expose:
 - [x] TDD `/reports` only (`GenerateReports`, no `Execute`). Scripts copy `gamein.N.xml` → `/data/gamein.xml`; do not relocate gamein into `/turn-dir`
 - [x] `play/runs` layout, gitignore, init/reports/isolate/turn/next PowerShell + README
 - [x] campaign-ai + campaign-gm Cursor agents; persona prefs; isolated reports; `/player` with campaign catalog
-- [ ] Public campaign website: home (Alderson excerpt + credits) + visual-tool link + current-turn orders-submission status (closed 10-player lobby; not `play/runs` AI isolation)
+- [x] Public campaign website: home (Alderson excerpt + credits) + visual-tool link + current-turn orders-submission status (closed 10-player lobby; not `play/runs` AI isolation). Phase 1 lobby green 2026-09-09; `/client` placeholder until Phase 3.
 - [x] TDD `JumpOrder`: `JUMP` pair-id, 1 week, ships only, `pair=` on `<alderson>`; no 1-week corona MOVE
 - [x] TDD load gravity/temperature/atmosphere; shuttle `h2o2` surcharge; frigate land ban; high-g upkeep; cold/hot settlement gates
 - [x] TDD load `weapon-group`/`resists`/`armor-module`; matchup table; armour 5× `hitWeight` + no capture; shield 90% intercept. SampleGame stays flat (no attrs)

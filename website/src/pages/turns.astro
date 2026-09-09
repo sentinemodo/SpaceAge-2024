@@ -1,9 +1,16 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { formatNextTurn, formatStatusLabel } from '../lib/statusSchema';
+
+const placeholderFactions = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((id) => ({
+  id,
+  submitted: false,
+  name: `Faction ${id}`,
+}));
 ---
 
 <Layout title="Players & Turns" description="SpaceAge Turn Status - Orders Submission Status">
-  <section class="turns-content">
+  <section class="turns-content" id="turns-page">
 	<h1>Players & Turns</h1>
 
 	<div class="status-summary card">
@@ -11,15 +18,19 @@ import Layout from '../layouts/Layout.astro';
 	  <div class="summary-grid">
 		<div class="summary-item">
 		  <span class="summary-label">Game Turn</span>
-		  <span class="summary-value">1</span>
+		  <span id="turns-turn-value" class="summary-value">1</span>
 		</div>
 		<div class="summary-item">
 		  <span class="summary-label">Orders Received</span>
-		  <span class="summary-value">0 / 10</span>
+		  <span id="turns-orders-count" class="summary-value">0 / 10</span>
 		</div>
 		<div class="summary-item">
 		  <span class="summary-label">Game Status</span>
-		  <span class="summary-value">Not Started</span>
+		  <span id="turns-status-value" class="summary-value">{formatStatusLabel('not-started')}</span>
+		</div>
+		<div class="summary-item">
+		  <span class="summary-label">Next Turn</span>
+		  <span id="turns-next-value" class="summary-value">{formatNextTurn(null)}</span>
 		</div>
 	  </div>
 	</div>
@@ -34,16 +45,18 @@ import Layout from '../layouts/Layout.astro';
 		  <div class="table-cell status-col">Orders Submitted</div>
 		</div>
 
-		{[2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((factionId) => (
-		  <div class="table-row">
-			<div class="table-cell faction-col">
-			  <strong>Faction {factionId}</strong>
+		<div id="turns-factions-table">
+		  {placeholderFactions.map((faction) => (
+			<div class="table-row" data-faction-id={faction.id}>
+			  <div class="table-cell faction-col">
+				<strong>{faction.name}</strong>
+			  </div>
+			  <div class="table-cell status-col pending">
+				⏳ Awaiting Orders
+			  </div>
 			</div>
-			<div class="table-cell status-col pending">
-			  ⏳ Awaiting Orders
-			</div>
-		  </div>
-		))}
+		  ))}
+		</div>
 	  </div>
 	</section>
 
@@ -67,16 +80,6 @@ import Layout from '../layouts/Layout.astro';
 	  </ol>
 	</section>
 
-	<section class="deadline-section">
-	  <h2>When's the Next Turn?</h2>
-	  <div class="card">
-		<p>
-		  Turn schedules are set by the game master. Check back here for the current turn deadline
-		  and status. New players will be notified when orders are due.
-		</p>
-	  </div>
-	</section>
-
 	<section class="rules-section card">
 	  <h2>Want to Learn More?</h2>
 	  <p>
@@ -86,6 +89,13 @@ import Layout from '../layouts/Layout.astro';
 	</section>
   </section>
 </Layout>
+
+<script>
+  import { bindTurnsPage } from '../lib/statusClient';
+
+  const root = document.getElementById('turns-page');
+  if (root) bindTurnsPage(root);
+</script>
 
 <style>
   .turns-content {
@@ -181,6 +191,10 @@ import Layout from '../layouts/Layout.astro';
 	color: #b45309;
   }
 
+  .status-col.submitted {
+	color: #047857;
+  }
+
   .turn-info {
 	margin-bottom: var(--space-2xl);
   }
@@ -193,10 +207,6 @@ import Layout from '../layouts/Layout.astro';
   .turn-info li {
 	margin-bottom: var(--space-md);
 	line-height: 1.8;
-  }
-
-  .deadline-section {
-	margin-bottom: var(--space-2xl);
   }
 
   .rules-section {
