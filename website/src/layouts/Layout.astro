@@ -1,0 +1,167 @@
+---
+import '../styles/global.css';
+import { withBase } from '../lib/paths';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'SpaceAge - Open PBEM Lobby' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description" content={description} />
+	<title>{title} | SpaceAge</title>
+	<link rel="icon" type="image/svg+xml" href={withBase('favicon.svg')} />
+  </head>
+  <body>
+	<nav class="nav">
+	  <div class="nav-container">
+		<a href={withBase()} class="nav-logo">⭐ SpaceAge</a>
+		<button
+		  type="button"
+		  class="nav-toggle"
+		  id="nav-toggle"
+		  aria-label="Toggle navigation"
+		  aria-expanded="false"
+		  aria-controls="nav-menu"
+		>
+		  <span class="nav-toggle-bar"></span>
+		  <span class="nav-toggle-bar"></span>
+		  <span class="nav-toggle-bar"></span>
+		</button>
+		<div class="nav-links" id="nav-menu">
+		  <a href={withBase()}>Home</a>
+		  <a href={withBase('turns')}>Turns</a>
+		  <a href={withBase('rules')}>Rules</a>
+		  <a href={withBase('client')}>Client</a>
+		</div>
+	  </div>
+	</nav>
+
+	<main>
+	  <slot />
+	</main>
+
+	<footer class="footer">
+	  <div class="footer-container">
+		<p>SpaceAge Engine v0.1.158 | Campaign start 2026 | Quarterly schedule</p>
+	  </div>
+	</footer>
+  </body>
+</html>
+
+<script>
+  const toggle = document.getElementById('nav-toggle');
+  const menu = document.getElementById('nav-menu');
+
+  toggle?.addEventListener('click', () => {
+	const isOpen = menu?.classList.toggle('is-open') ?? false;
+	toggle.setAttribute('aria-expanded', String(isOpen));
+  });
+</script>
+
+<style>
+  .nav {
+	background-color: var(--color-bg-darker);
+	border-bottom: 1px solid var(--color-border);
+	position: sticky;
+	top: 0;
+	z-index: 100;
+  }
+
+  .nav-container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: var(--space-md) var(--space-lg);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+  }
+
+  .nav-logo {
+	font-size: var(--font-size-2xl);
+	font-weight: var(--font-weight-bold);
+	color: var(--color-accent-teal);
+	text-decoration: none;
+  }
+
+  .nav-toggle {
+	display: none;
+	background: none;
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-md);
+	padding: var(--space-sm);
+	cursor: pointer;
+  }
+
+  .nav-toggle-bar {
+	display: block;
+	width: 1.25rem;
+	height: 2px;
+	background-color: var(--color-text-light);
+	margin: 4px 0;
+  }
+
+  .nav-links {
+	display: flex;
+	gap: var(--space-lg);
+  }
+
+  .nav-links a {
+	color: var(--color-text-light);
+	transition: color var(--transition-fast);
+  }
+
+  .nav-links a:hover {
+	color: var(--color-accent-teal);
+  }
+
+  .footer {
+	background-color: var(--color-bg-darker);
+	border-top: 1px solid var(--color-border);
+	margin-top: var(--space-2xl);
+	padding: var(--space-lg);
+  }
+
+  .footer-container {
+	max-width: 1200px;
+	margin: 0 auto;
+	text-align: center;
+	font-size: var(--font-size-sm);
+	color: #999;
+  }
+
+  @media (max-width: 768px) {
+	.nav-toggle {
+	  display: block;
+	}
+
+	.nav-links {
+	  display: none;
+	  position: absolute;
+	  top: 100%;
+	  left: 0;
+	  right: 0;
+	  flex-direction: column;
+	  background-color: var(--color-bg-darker);
+	  border-bottom: 1px solid var(--color-border);
+	  padding: var(--space-md) var(--space-lg);
+	  gap: var(--space-md);
+	}
+
+	.nav-links.is-open {
+	  display: flex;
+	}
+
+	.nav-container {
+	  position: relative;
+	  flex-wrap: wrap;
+	}
+  }
+</style>

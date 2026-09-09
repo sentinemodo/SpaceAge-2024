@@ -1,0 +1,17 @@
+{
+  "status": "not-started",
+  "turn": 1,
+  "nextTurnAt": null,
+  "factions": [
+    { "id": 2, "submitted": false, "name": "Faction 2" },
+    { "id": 3, "submitted": false, "name": "Faction 3" },
+    { "id": 4, "submitted": false, "name": "Faction 4" },
+    { "id": 5, "submitted": false, "name": "Faction 5" },
+    { "id": 6, "submitted": false, "name": "Faction 6" },
+    { "id": 7, "submitted": false, "name": "Faction 7" },
+    { "id": 8, "submitted": false, "name": "Faction 8" },
+    { "id": 9, "submitted": false, "name": "Faction 9" },
+    { "id": 10, "submitted": false, "name": "Faction 10" },
+    { "id": 11, "submitted": false, "name": "Faction 11" }
+  ]
+}

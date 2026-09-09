@@ -1,0 +1,136 @@
+---
+import { formatNextTurn, formatStatusLabel } from '../lib/statusSchema';
+
+const statusData = {
+  status: 'not-started',
+  turn: 0,
+  nextTurnAt: null as string | null,
+  factions: [2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((id) => ({
+    id,
+    submitted: false,
+    name: `Faction ${id}`,
+  })),
+};
+---
+
+<div class="status-dashboard" id="status-dashboard">
+  <div class="status-header">
+	<div class="status-item">
+	  <span class="status-label">Game Status</span>
+	  <span id="status-value" class="status-value">{formatStatusLabel(statusData.status)}</span>
+	</div>
+	<div class="status-item">
+	  <span class="status-label">Turn Number</span>
+	  <span id="turn-value" class="status-value">{statusData.turn}</span>
+	</div>
+	<div class="status-item">
+	  <span class="status-label">Total Players</span>
+	  <span class="status-value">10 seats</span>
+	</div>
+	<div class="status-item">
+	  <span class="status-label">Next Turn</span>
+	  <span id="next-turn-value" class="status-value">{formatNextTurn(statusData.nextTurnAt)}</span>
+	</div>
+  </div>
+
+  <div id="submissions-grid" class="submissions-grid">
+	{statusData.factions.map((faction) => (
+	  <div class={`faction-card ${faction.submitted ? 'submitted' : 'pending'}`} data-id={faction.id}>
+		<div class="faction-id">{faction.name}</div>
+		<div class="faction-status">
+		  {faction.submitted ? '✓ Submitted' : '⏳ Pending'}
+		</div>
+	  </div>
+	))}
+  </div>
+</div>
+
+<script>
+  import { bindStatusDashboard } from '../lib/statusClient';
+
+  const root = document.getElementById('status-dashboard');
+  if (root) bindStatusDashboard(root);
+</script>
+
+<style>
+  .status-dashboard {
+	margin-bottom: var(--space-2xl);
+  }
+
+  .status-header {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	gap: var(--space-lg);
+	margin-bottom: var(--space-2xl);
+  }
+
+  .status-item {
+	background-color: var(--color-card-bg);
+	color: var(--color-text-dark);
+	padding: var(--space-lg);
+	border-radius: var(--radius-lg);
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-sm);
+  }
+
+  .status-label {
+	font-size: var(--font-size-sm);
+	font-weight: var(--font-weight-semibold);
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	color: #666;
+  }
+
+  .status-value {
+	font-size: var(--font-size-2xl);
+	font-weight: var(--font-weight-bold);
+	color: var(--color-accent-teal);
+  }
+
+  .submissions-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+	gap: var(--space-md);
+  }
+
+  .faction-card {
+	background-color: var(--color-card-bg);
+	color: var(--color-text-dark);
+	padding: var(--space-md);
+	border-radius: var(--radius-lg);
+	text-align: center;
+	border: 2px solid transparent;
+	transition: border-color var(--transition-fast);
+  }
+
+  .faction-card.submitted {
+	border-color: #10b981;
+  }
+
+  .faction-card.pending {
+	border-color: #f59e0b;
+	opacity: 0.8;
+  }
+
+  .faction-id {
+	font-weight: var(--font-weight-bold);
+	font-size: var(--font-size-lg);
+	margin-bottom: var(--space-sm);
+  }
+
+  .faction-status {
+	font-size: var(--font-size-sm);
+	font-weight: var(--font-weight-semibold);
+  }
+
+  @media (max-width: 768px) {
+	.status-header {
+	  grid-template-columns: 1fr;
+	}
+
+	.submissions-grid {
+	  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+	}
+  }
+</style>

@@ -1,10 +1,10 @@
-# Public lobby — acceptance scenario catalog (pointer)
+# Public lobby — acceptance scenario catalog (canonical)
 
 Last updated: 2026-09-09  
 Owned by: **`/website-tester`** (defines, maintains, automates).  
-Plan: [`website.md`](website.md) · Decision: [ADR-0007](../adr/ADR-0007-public-campaign-website.md)
+Plan: [`architecture/delivery/website.md`](../../architecture/delivery/website.md) · Decision: [ADR-0007](../../architecture/adr/ADR-0007-public-campaign-website.md)
 
-**Canonical catalog:** [`website/e2e/scenarios.md`](../../website/e2e/scenarios.md) (Phase 1, 2026-09-09). Do not maintain two live catalogs. The snapshot below is retained for architecture cross-reference only.
+**This file is canonical.** The architecture seed at `architecture/delivery/website-scenarios.md` is a pointer only — do not maintain two live catalogs.
 
 **Manual browser exploration is not the acceptance path.** Every scenario below is automated: Vitest for schema/helpers, Playwright Chromium against `astro build` + `astro preview` for routes and copy. Green e2e is the done gate.
 

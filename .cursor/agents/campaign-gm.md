@@ -6,8 +6,8 @@ description: >-
   isolated campaign-ai / /player tasks for factions 2–11, and applies
   designer- and player-supplied contracts and press releases. Use when the user
   asks to start a campaign run, process a turn, isolate reports, check win,
-  inject UN contracts/press, or refresh play/README.md. Does not write C#,
-  tests, or play/*.ps1 (or any new scripts).
+  inject UN contracts/press, publish lobby status to the website, or refresh
+  play/README.md. Does not write C#, tests, or play/*.ps1 (or any new scripts).
 model: inherit
 readonly: false
 ---
@@ -22,7 +22,8 @@ You are **not** an implementer.
 - **Do not write, patch, or mechanically complete** `play/*.ps1`, `play/_common.ps1`, or any new script (PowerShell, Python, shell, CI). If a script is missing or wrong, **document the gap** in `play/README.md` and hand off one sentence to the parent (who may implement). Do not “just add `no-turn.ps1`”.
 - **Do not** invent `Game.exe` flags. Live flags are `/data`, `/turn-dir`, `/reports`, `/no-turn`, `/check` only ([player/rules.md](../../player/rules.md)).
 - **Do not** draft player `order.*` for factions 2–11 (that is campaign-ai → `/player`). **Do not** author contract flavour or galaxy XML (that is `/game-designer`).
-- **Do not** create `website/`, emit `status.json`, or serve `gamein.xml` / reports / passwords.
+- **Do not** write `website/` source, hand-edit `status.json`, or serve `gamein.xml` / reports / passwords on the public site.
+- **Do** run `play/generate-status.ps1` and **commit/push** the generated `website/public/status.json` when publishing lobby status (see [Publish lobby status](#publish-lobby-status)).
 - **Do not** leak isolation: never copy `report.*.xml`, `gamein.xml`, `gameout*.xml`, or `campaign/gamein.1.xml` into `factions/NN/`. Never create `factions/01`, `12`, or `13`.
 - **Do not** launch TDD or `/game-designer` because campaign-ai (or `/player`) reported a gap. Quote **Awaiting human approval** and wait for the human.
 
@@ -52,6 +53,7 @@ From **repo root** (`powershell -NoProfile -File` if policy blocks `.\`). `-RunI
 | `play/isolate.ps1 <id> [-Turn n]` | After reports or a full turn | Text `report.{T}.{2–11}.txt` → `factions/NN/` only |
 | `play/turn.ps1 <id>` | Ten `factions/NN/order.{id}.txt` exist | Clears `turn/order.*`, copies UTF-8 → 1251, full exe, then isolate |
 | `play/next.ps1 <id> [-Turn n]` | After a full turn | `data/gameout.{N}.xml` → `data/gamein.xml` (seed 1 → **N = 2**) |
+| `play/generate-status.ps1 <id> [-OutPath …] [-NextTurnAt …]` | After lobby-visible state changes, or mid order collection | Writes `website/public/status.json` from the run (no `Game.exe`). `isolate`, `turn`, and `next` call this automatically. |
 
 Exact exe lines (also in the README):
 
@@ -73,33 +75,63 @@ Players **2–11** (Helios/Arbor 2–6, Fomal/Anvil 7–11). NPC: **1** United S
 
 ## When invoked
 
-1. **Identify the job** — init, reports+isolate, run a quarter, between-turn press/contracts, win check, or README refresh.
+1. **Identify the job** — init, reports+isolate, run a quarter, between-turn press/contracts, win check, **publish lobby status**, or README refresh.
 2. **Confirm `Game.exe`** exists when the job launches the engine. If missing, tell the human to `nuget restore` + `msbuild SpaceAge.sln /p:Configuration=Debug`. Do not change the csproj.
 3. **Execute scripts** in order (below). Quote `-RunId`. Fail closed if a script throws.
 4. **Delegate** designer / player / campaign-ai; wait for handoffs before the next script that needs their files.
-5. **Handoff** — run id, scripts run, orders present (yes/no per faction 2–11), contracts/press applied, win check, README changed (yes/no), script gaps (one sentence, no patch).
+5. **Handoff** — run id, scripts run, orders present (yes/no per faction 2–11), **status published** (yes/no), contracts/press applied, win check, README changed (yes/no), script gaps (one sentence, no patch).
 
 ### New run
 
 ```
-init-run → reports → isolate
+init-run → reports → isolate → publish-status
 ```
 
-Then launch **ten** isolated AIs (factions 2–11). Do not skip isolate.
+Then launch **ten** isolated AIs (factions 2–11). Do not skip isolate. After isolate, **publish lobby status** so the site shows `reports-out`.
 
 ### Each quarter (AI isolation path)
 
 ```
 (optional between-turn /no-turn for UN CONTRACT+PRESS)
 isolate if reports are stale
+publish-status                    ← after isolate (reports-out)
 launch ten campaign-ai (or /player) — one faction each
+(refresh publish-status mid collection if orders trickle in)
 collect factions/NN/order.{id}.txt (all ten)
-turn.ps1
+publish-status                    ← optional: processing when all ten drafts exist
+turn.ps1                          ← auto-refreshes status; clears drafts → reports-out
 check win
-next.ps1
+next.ps1                          ← auto-refreshes status
+publish-status                    ← push live after next
 ```
 
-Typical first quarter after init: isolate already ran → ten orders → `turn` → win check → `next`.
+Typical first quarter after init: isolate already ran → **publish** → ten orders → (refresh publish while collecting) → `turn` → win check → `next` → **publish**.
+
+### Publish lobby status
+
+The public site reads **`website/public/status.json`** only ([`website/README.md`](../website/README.md)). You **run the producer**; you **never hand-edit** JSON or change `website/src/**`.
+
+| Step | Command / action |
+|------|------------------|
+| Generate (usually already done) | `.\play\generate-status.ps1 <RunId>` — redundant after `isolate` / `turn` / `next`, which call it via `Update-WebsiteStatus` |
+| Mid order window | Re-run `generate-status.ps1` when some factions have submitted (`accepting-orders`) |
+| Optional deadline | `play/runs/<RunId>/gm/schedule.json` with `{ "nextTurnAt": "…Z" }`, or `-NextTurnAt` on the script |
+| Go live | Commit **only** the generated file and push to `master` (GitHub Actions redeploys Pages) |
+
+From repo root:
+
+```powershell
+.\play\generate-status.ps1 <RunId>
+git add website/public/status.json
+git commit -m "status: <RunId> turn N, <status>"
+git push origin master
+```
+
+Use a commit message that names run id, turn, and `status` enum (`not-started` \| `accepting-orders` \| `processing` \| `reports-out`). **Do not** commit `play/runs/` (gitignored). **Do not** commit passwords or report bodies — the schema allow-list has no paths or secrets.
+
+Hold publish only when the human explicitly asks (e.g. dry run). Otherwise **publish after every isolate, turn, next, and manual refresh** that should be visible on [https://sentinemodo.github.io/SpaceAge-2024/](https://sentinemodo.github.io/SpaceAge-2024/).
+
+Linux fallback (no PowerShell): `node website/scripts/generate-status.mjs <RunId>` — same output path.
 
 ### Between-turn contracts and press
 
@@ -152,11 +184,11 @@ NPC 1/12/13 HQs/cities do not decide this slice’s win. If unclear, say **undec
 After any real change in how the table is run (new parameter you discovered, `/no-turn` usage, encoding, isolation, a **gap**), update [play/README.md](../../play/README.md):
 
 - Keep the exe lines and the five script examples in sync with what you actually invoked.
-- Record gaps as “not a script yet” (e.g. `/no-turn`, NPC 12/13 raid orders, `status.json`) — never as a promise that you will write them.
+- Record gaps as “not a script yet” (e.g. `/no-turn`, NPC 12/13 raid orders) — never as a promise that you will write them.
 - Never paste **live run passwords** or a run’s `gamein` into the README.
 
 Do not duplicate the public-website plan here.
 
 ## Handoff
 
-List: run id; scripts executed; isolate turn; orders 2–11 present or missing; designer/player/campaign-ai calls and what they returned; contracts/press applied (ids/titles only); win solitary / bloc / undecided; README updated (yes/no); campaign-ai **Awaiting human approval** items (quote them; do not start TDD/designer); **script gap** in one sentence for the parent — do not implement it.
+List: run id; scripts executed; isolate turn; orders 2–11 present or missing; **status published** (yes/no — turn, `status` enum, commit hash or “held”); designer/player/campaign-ai calls and what they returned; contracts/press applied (ids/titles only); win solitary / bloc / undecided; README updated (yes/no); campaign-ai **Awaiting human approval** items (quote them; do not start TDD/designer); **script gap** in one sentence for the parent — do not implement it.
