@@ -194,6 +194,7 @@ namespace SpaceAge
                 case "orbit":           return ELocationType.orbit;                  
                 case "solid-surface":   return ELocationType.solidSurface;
                 case "liquid-surface":  return ELocationType.liquidSurface;
+                case "atmosphere":      return ELocationType.atmosphere;
                 case "space":           return ELocationType.space;                 
                 default:
                     throw new FileLoadException("Tried to load location type item " + attribute);

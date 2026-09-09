@@ -47,12 +47,12 @@ namespace SpaceAge
 				Planet planet = this.OrbitHolder as Planet;
 				if (planet != null)
 				{
-					return planet.Races.Count > 0 || planet.AtmosphereBand == EAtmosphereBand.terair;
+					return planet.Races.Count > 0 || planet.AtmosphereBand != EAtmosphereBand.none;
 				}
 				Moon moon = this.OrbitHolder as Moon;
 				if (moon != null)
 				{
-					return moon.Races.Count > 0 || moon.AtmosphereBand == EAtmosphereBand.terair;
+					return moon.Races.Count > 0 || moon.AtmosphereBand != EAtmosphereBand.none;
 				}
 				return false;
 			}

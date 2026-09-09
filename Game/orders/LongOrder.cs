@@ -86,7 +86,7 @@ namespace SpaceAge
 				}
 				if (moduleStack.ModuleType.OperationCondition_LocationTypes.Count > 0)
 				{
-					if (!moduleStack.ModuleType.OperationCondition_LocationTypes.Contains(moduleStack.Location.LocationType))
+					if (!moduleStack.ModuleType.OperationCondition_LocationTypes.Contains(BodyEnvironment.EffectiveLocationType(moduleStack.Location)))
 					{
 						moduleStack.EventReports.Add(
 						week,
@@ -96,6 +96,17 @@ namespace SpaceAge
 								moduleStack.Location.ReportName));
 						return false;
 					}
+				}
+				if (moduleStack.ModuleType.OperationCondition_AtmosphereResources.Count > 0
+					&& !BodyEnvironment.HasAtmosphereResources(moduleStack.Location, moduleStack.ModuleType.OperationCondition_AtmosphereResources))
+				{
+					moduleStack.EventReports.Add(
+						week,
+						string.Format("{0} failed: {1} cannot operate in {2}.",
+								this.type.ToString().ToUpper(),
+								moduleStack.ModuleType.ReportName,
+								moduleStack.Location.ReportName));
+					return false;
 				}
 			}
 			return true;

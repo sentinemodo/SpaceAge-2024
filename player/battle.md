@@ -1,6 +1,6 @@
 # Battle (rules of engagement)
 
-Checked **30 Aug 2026** against engine **0.1.148**.
+Checked **9 Sep 2026** against engine **0.1.158**.
 
 Sources: `Game/battle/Battle.cs`, `Game/battle/Battles.cs`, `Game/battle/CombatMatchup.cs`, `Game/battle/ETactic.cs`, `Game/Game.cs` (`ExecuteBattles`), `Game/reports/ReportWriter.cs` (blank line before `Battles report:`), `Game/data structures/ModuleStack.cs` (attack, defense, initiative, tactics, `IsArmed`, `HasOperationalModules`, `GetFiringModules`), `Game/data structures/ModuleType.cs` (`IsShuttleUnit` / `IsHangarCraft` / `IsDroneBay`, `WeaponGroup` / `Resists` / `ArmorModule`), `Game/data structures/Faction.cs` / `FactionAttitude.cs`, `Game/orders/AttackOrder.cs`, `CaptureOrder.cs`, `DeclareOrder.cs`, `TacticOrder.cs`, `SetOrder.cs`, `Game/game/CatalogLoader.cs` (`weapon-group`, `resists`, `armor-module`). Catalog bonuses: `Tests/data.xml` (`attack`, `defense`, `damage`, `initiative` on modules, techs, skills, items). SampleGame catalog is **flat**: no `weapon-group` / `resists` / `armor-module` attributes, so typed-matchup multipliers, shield intercept, and armor hit-weight do not fire there.
 

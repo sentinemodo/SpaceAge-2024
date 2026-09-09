@@ -262,6 +262,7 @@
 			<use-allowed-by crew="terran"/>
 		</entry>
 		<entry name="heliu3" name-en="unit of helium-3" name-en2="units of helium-3" size="1" mass="1" description="A light, non-radioactive helium isotope prized as clean fusion fuel; scarce on planets but abundant in lunar regolith."/>
+		<entry name="deutrm" name-en="unit of deuterium" name-en2="units of deuterium" size="1" mass="1" description="Heavy hydrogen distilled from outer ice. Fusion fuel for D-He3 plants; not found on habitable basins."/>
 	</item>
 
 	<technology>

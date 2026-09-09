@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<game turn="1">
+	<faction name="1" name-en="NPC" password="" email="" default-attitude="2" text-report="True" xml-report="True" balance="0" credit-line="0" credit-rate="0" deposit-rate="0" />
+	<faction name="2" name-en="Survey" password="" email="" default-attitude="2" text-report="True" xml-report="True" balance="1000" credit-line="0" credit-rate="0" deposit-rate="0" />
+	<galaxy>
+		<system name="SS0001" name-en="Harbor" X="0" Y="0" Z="0">
+			<star name="S00001" name-en="Harbor" />
+			<planet name="P00001" name-en="Harbor" AU="1" surface-size-X="1" surface-size-Y="1" type="ocean" gravity="normal" temperature="habitable" atmosphere="terair">
+				<orbit name="O00001" />
+				<region name="R00001" name-en="Port" X="0" Y="0" type="dust">
+					<modulestack name="s00001" name-en="Survey shuttle" faction="2" type="shuttl" quantity="1">
+						<itemstack type="terran" quantity="2" />
+						<itemstack type="h2o2" quantity="2" />
+						<itemstack type="uraniu" quantity="2" />
+					</modulestack>
+					<modulestack name="s00003" name-en="Dust ram scoop" faction="2" type="ramsco" quantity="1" />
+				</region>
+				<region name="R00002" name-en="Harbor Sea" X="1" Y="0" type="sea">
+					<modulestack name="s00004" name-en="Terair fishery" faction="2" type="fshfrm" quantity="1">
+						<itemstack type="terran" quantity="1" />
+					</modulestack>
+				</region>
+			</planet>
+			<planet name="P00003" name-en="Vacuum Ocean" AU="2" surface-size-X="1" surface-size-Y="1" type="ocean" gravity="normal" temperature="cold" atmosphere="none">
+				<orbit name="O00003" />
+				<region name="R00004" name-en="Dead Sea" X="0" Y="0" type="sea">
+					<modulestack name="s00005" name-en="Vacuum fishery" faction="2" type="fshfrm" quantity="1">
+						<itemstack type="terran" quantity="1" />
+					</modulestack>
+					<modulestack name="s00006" name-en="Vacuum wind plant" faction="2" type="wnplnt" quantity="1" />
+				</region>
+			</planet>
+			<planet name="P00002" name-en="Giant" AU="5.2" surface-size-X="0" surface-size-Y="0" type="gasgnt" gravity="high" temperature="cold" atmosphere="hostile">
+				<orbit name="O00002">
+					<resource type="heliu3" quantity="120" />
+					<resource type="deutrm" quantity="80" />
+					<modulestack name="s00002" name-en="Giant ram scoop" faction="2" type="ramsco" quantity="1" />
+				</orbit>
+			</planet>
+		</system>
+	</galaxy>
+</game>

@@ -1,6 +1,6 @@
 # Level 0 and 1 technologies
 
-Catalog: `Tests/data.xml`, loaded by `Game/game/CatalogLoader.cs` (`DataFile.LoadConfigurationItems` delegates). Checked **29 Aug 2026** against engine **0.1.148**.
+Catalog: `Tests/data.xml`, loaded by `Game/game/CatalogLoader.cs` (`DataFile.LoadConfigurationItems` delegates). Checked **9 Sep 2026** against engine **0.1.158**.
 
 This file lists **level 0 and level 1** technologies, then the **module types** and **item types** those technologies produce or consume. Level 2 and above: `player/advanced_technologies.md`. Alphabetical by English `name-en` inside each level.
 
@@ -12,7 +12,7 @@ Omitted `use-time` defaults to **1** week in `CatalogLoader`. Omitted consume/pr
 
 **Level 1 and above** must exist as a **local copy** on the using stack (`UseOrder.HasTechnology`: `Producer.Technologies.Contains`). Get a copy by research (labs roll level 1 … faction max+1 into remaining capacity) or by `COPY <id> TO <stack>` from a same-location holder that already has it. Each copy uses `level` points of the stack’s technology capacity.
 
-`USE` still needs matching module group, location, and consume items. Battle-only techs (no produce) are held as copies, not used as builds.
+`USE` still needs matching module group, location, and consume items. Catalog `use-allowed-in planet-atmosphere="terair"` (and module `operation-allowed-in planet-atmosphere="terair"`) is enforced only when the parent planet or moon **emitted** environment attrs in map XML; SampleGame maps omit them, so the gate is skipped there. See `player/rules.md` (`HasAtmosphereResources`, `EffectiveLocationType`). Battle-only techs (no produce) are held as copies, not used as builds.
 
 ---
 

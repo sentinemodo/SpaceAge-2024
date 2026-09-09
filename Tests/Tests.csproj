@@ -89,6 +89,7 @@
     <Compile Include="TMoveMode.cs" />
     <Compile Include="TBodyRace.cs" />
     <Compile Include="TBelt.cs" />
+    <Compile Include="TGasAtmosphere.cs" />
     <Compile Include="TAlderson.cs" />
     <Compile Include="TMoveEnvironment.cs" />
     <Compile Include="TSkill.cs" />
@@ -327,6 +328,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="fixtures\belt\gamein.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="fixtures\gas-atmosphere\gamein.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="fixtures\gas-atmosphere\data-ramsco.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="fixtures\alderson\gamein.xml">

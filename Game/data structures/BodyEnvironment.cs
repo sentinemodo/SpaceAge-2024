@@ -229,5 +229,91 @@ namespace SpaceAge
 			}
 			return true;
 		}
+
+		public static ELocationType EffectiveLocationType(Location location)
+		{
+			if (location == null)
+			{
+				return ELocationType.solidSurface;
+			}
+			Orbit orbit = location as Orbit;
+			if (orbit != null)
+			{
+				Planet planet = orbit.OrbitHolder as Planet;
+				if (planet != null
+					&& planet.PlanetType != null
+					&& planet.PlanetType.Name == "gasgnt"
+					&& planet.AtmosphereBand != EAtmosphereBand.none)
+				{
+					return ELocationType.atmosphere;
+				}
+			}
+			return location.LocationType;
+		}
+
+		public static PlanetType PlanetTypeAt(object location)
+		{
+			Planet planet;
+			Moon moon;
+			if (!TryGetBody(location, out planet, out moon))
+			{
+				return null;
+			}
+			if (moon != null)
+			{
+				return moon.Planet != null ? moon.Planet.PlanetType : null;
+			}
+			return planet.PlanetType;
+		}
+
+		public static bool HasAtmosphereResource(Location location, ItemType required)
+		{
+			if (required == null)
+			{
+				return true;
+			}
+			IResourcesHolder resourcesHolder = location as IResourcesHolder;
+			if (resourcesHolder != null && resourcesHolder.Resources.Contains(required))
+			{
+				return true;
+			}
+			return AtmosphereToken(AtmosphereAt(location)) == required.Name;
+		}
+
+		public static bool HasAtmosphereResources(Location location, ItemTypes required)
+		{
+			if (required == null || required.Count == 0)
+			{
+				return true;
+			}
+			bool hasExplicitEnvironment = HasEnvironmentAttrs(location);
+			foreach (ItemType item in required.Values)
+			{
+				if (HasAtmosphereResource(location, item))
+				{
+					continue;
+				}
+				if (!hasExplicitEnvironment)
+				{
+					continue;
+				}
+				return false;
+			}
+			return true;
+		}
+
+		public static bool MatchesPlanetType(Location location, PlanetTypes required)
+		{
+			if (required == null || required.Count == 0)
+			{
+				return true;
+			}
+			PlanetType planetType = PlanetTypeAt(location);
+			if (planetType == null)
+			{
+				return false;
+			}
+			return required.ContainsKey(planetType.Name);
+		}
 	}
 }

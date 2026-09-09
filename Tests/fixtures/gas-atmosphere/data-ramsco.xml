@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<data>
+	<module>
+		<entry
+			name="ramsco"
+			name-en="ram scoop"
+			name-en2="ram scoops"
+			group="extraction"
+			description="Gas-giant atmospheric harvester."
+			size="10"
+			mass="10"
+			hit-points="1">
+			<produce item="heliu3" quantity="1" duration="13"/>
+			<operation-allowed-in location-type="atmosphere"/>
+		</entry>
+	</module>
+	<technology>
+		<entry
+			name="skimmn"
+			name-en="atmospheric skimming"
+			level="0"
+			description="Harvest helium from gas-giant cloud decks."
+			use-time="1">
+			<use-allowed-in module-type-group="extraction" location-type="atmosphere" planet-type="gasgnt"/>
+			<use-produce item="heliu3" quantity="1"/>
+		</entry>
+		<entry
+			name="fshhrv"
+			name-en="fishery harvest"
+			level="0"
+			description="Haul fish plus photic-zone seaweed or algae in place."
+			use-time="1">
+			<use-allowed-in
+				module-type-group="agricultural"
+				module="fshfrm"
+				planet-atmosphere="terair"
+				location-type="liquid-surface"/>
+			<use-produce item="food" quantity="5"/>
+		</entry>
+	</technology>
+	<module>
+		<entry
+			name="fshfrm"
+			name-en="fishery"
+			name-en2="fisheries"
+			group="agricultural"
+			description="Pontoon works on liquid surface under breathable air."
+			size="100"
+			mass="10"
+			crew="1"
+			hit-points="1">
+			<operation-allowed-in planet-atmosphere="terair"/>
+			<operation-allowed-in location-type="liquid-surface"/>
+		</entry>
+	</module>
+</data>
