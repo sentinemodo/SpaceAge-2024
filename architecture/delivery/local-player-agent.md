@@ -26,10 +26,11 @@ This plan delivers a **scriptable player-agent runner** that drafts UTF-8 order 
 ## Target layout
 
 ```text
-tools/player-agent/          # runner, ingest, lint, usage, guardrails (new; outside Game/)
+tools/player-agent/          # C# net8 runner, ingest, lint, usage, guardrails (outside Game/)
+  PlayerAgent.csproj         # in SpaceAge.sln
   README.md
-  …                          # Python or Node — pick one stack in Phase 0
-  .data/                     # gitignored: indexes, usage ledger, budget state
+  …                          # Commands/, Inference/, Rag/, Configuration/
+  .data/                     # gitignored: SQLite indexes, usage ledger, budget state
 play/runs/<id>/              # existing campaign isolation; reports & orders stay here
 player/                      # canonical manuals (RAG shared corpus)
 architecture/adr/ADR-0009-…  # decision
@@ -41,13 +42,18 @@ Suggested config (local, not committed secrets): endpoint URL (`localhost:11434`
 
 ## Phase 0 — Decide runner stack and contracts
 
-- [ ] Pick **Python** or **Node** for `tools/player-agent/` (OpenAI-compatible client to Ollama).
-- [ ] Freeze I/O to match `/player`: read report (+ optional `story.md`) → draft `order.{faction}.txt` UTF-8; no C#.
-- [ ] Define env vars: `OLLAMA_HOST`, `PLAYER_AGENT_CHAT_MODEL`, `PLAYER_AGENT_EMBED_MODEL`, `PLAYER_AGENT_INDEX_DIR`, plus RunPod/budget vars (Phase 7–8): `RUNPOD_API_KEY`, `PLAYER_AGENT_RUNPOD_POD_ID`, `PLAYER_AGENT_BUDGET_USD`, `PLAYER_AGENT_MAX_POD_HOURS`, `PLAYER_AGENT_REQUIRE_CONFIRM`.
-- [ ] Document RunPod vs local switch in `tools/player-agent/README.md`.
-- [ ] Document that **RunPod drafting is blocked** until usage tracker + guardrails (Phases 7–8) are implemented — local Ollama may proceed earlier.
+- [x] **C# / net8** console in `tools/player-agent/` (`PlayerAgent.csproj`, member of `SpaceAge.sln`). OpenAI-compatible HTTP client to Ollama. No reference to `Game.dll`.
+- [x] Freeze I/O to match `/player`: read report (+ optional `story.md`) → draft `order.{faction}.txt` UTF-8; runner stays outside `Game/`.
+- [x] **`--mode test|campaign`** required on `ingest-shared`, `ingest-faction`, and `draft` (separate shared indexes; `test` = SampleGame manuals, `campaign` = `player/campaign/*`).
+- [x] Draft output: **no default** — require `--output <path>` (dev/test) **or** `--run <id> --faction <n>` (campaign → `play/runs/<id>/factions/NN/order.{id}.txt`).
+- [x] Env vars: `OLLAMA_HOST`, `PLAYER_AGENT_CHAT_MODEL`, `PLAYER_AGENT_EMBED_MODEL`, `PLAYER_AGENT_INDEX_DIR`, `PLAYER_AGENT_ALLOW_RUNPOD`; plus RunPod/budget vars (Phase 7–8): `RUNPOD_API_KEY`, `PLAYER_AGENT_RUNPOD_POD_ID`, `PLAYER_AGENT_BUDGET_USD`, `PLAYER_AGENT_MAX_POD_HOURS`, `PLAYER_AGENT_REQUIRE_CONFIRM`.
+- [x] Local defaults: chat **`smollm2`** (plumbing), embed **`nomic-embed-text`**. RunPod chat default **`qwen2.5-coder:14b`** when host is non-local unless overridden.
+- [x] Vector index layout: **SQLite** under gitignored `tools/player-agent/.data/` (`shared-test`, `shared-campaign`, per-run faction DBs).
+- [x] CLI stubs: `config`, `smoke`, `ingest-shared`, `ingest-faction`, `draft`, `usage` — ingest/draft/usage bodies land in Phases 2–3 and 7.
+- [x] Document RunPod vs local switch in `tools/player-agent/README.md`.
+- [x] Remote hosts require `--allow-runpod` or `PLAYER_AGENT_ALLOW_RUNPOD=1`; full ledger + budget guardrails in Phases 7–8; **thin warnings in Phase 1B**.
 
-**Done when:** README states how to point the same runner at local Ollama or RunPod without code forks.
+**Done when:** README states how to point the same runner at local Ollama or RunPod without code forks. **Met (2026-09-10).**
 
 ---
 
@@ -89,11 +95,11 @@ Suggested config (local, not committed secrets): endpoint URL (`localhost:11434`
 |--------|----------------|----------|
 | `player/rules.md` | By verb / `##` heading | `doc=rules`, `verb=…` |
 | `player/battle.md` | By section | `doc=battle` |
-| `player/basic_technologies.md` + `player/advanced_technologies.md` | Tech / module / item entry | `doc=tech`, `mode=sample` |
+| `player/basic_technologies.md` + `player/advanced_technologies.md` | Tech / module / item entry | `doc=tech`, `mode=test` |
 | `player/campaign/basic_technologies.md` (+ advanced when present) | Same | `doc=tech`, `mode=campaign` |
 | Prior drafts under `player/drafts/` (optional style) | Per `#modulestack` / `#person` block | `doc=draft` |
 
-Play mode selects **sample** vs **campaign** tech manuals — do not mix both into one query without an explicit flag.
+Play mode selects **`test`** vs **campaign** tech manuals — do not mix both into one query without an explicit `--mode` flag.
 
 ### 2B. Corpus inventory (per-faction index)
 
@@ -116,7 +122,7 @@ Build a fixed prompt pack generator:
 
 - [ ] `tools/player-agent` command: `ingest-shared` — embed + store chunks for manuals.
 - [ ] Command: `ingest-faction --run <id> --faction <n>` — report + story + prior orders only.
-- [ ] Vector store under gitignored `.data/` (Chroma, LanceDB, or FAISS — pick one in Phase 0).
+- [ ] Vector store under gitignored `.data/` (**SQLite**, Phase 0 layout in `tools/player-agent/Rag/`).
 - [ ] Store path + heading metadata; support filter-by-planned-verb for retrieval.
 
 ### 2E. Documentation hygiene (human / `/player`)
@@ -180,7 +186,7 @@ Triggers (any of):
 
 1. **Refresh player docs first** (Cursor `/player` docs-only path or human): update `rules.md` / tech manuals / `battle.md` from engine + the correct catalog. Do not ingest stale manuals.
 2. **Rebuild shared index:** `ingest-shared` (full replace or content-hash upsert).
-3. **SampleGame vs campaign:** rebuild the index that matches the play mode; if both modes are used on one machine, keep **separate** index directories (`…/shared-sample`, `…/shared-campaign`).
+3. **Test vs campaign:** rebuild the index that matches the play mode; if both modes are used on one machine, keep **separate** index directories (`…/shared-test`, `…/shared-campaign`).
 4. **Faction indexes:** no mandatory wipe; re-ingest factions only if report templates or order syntax examples in drafts must change.
 5. **Bump allowlist:** regenerate verb list from updated `rules.md` before the next draft batch.
 6. **Smoke:** retrieve one changed verb / one new tech id; confirm chunks appear.
@@ -294,7 +300,7 @@ Hard stops so a forgotten pod or a runaway loop cannot burn budget. **Fail close
 | Hallucinated verbs / ids | Allowlist lint; manuals as sole syntax source |
 | Privacy on RunPod | Secure Cloud; strip passwords; excerpts; stop pod |
 | Stale RAG after catalog change | Phase 5 checklist mandatory before AI drafts |
-| Mixed SampleGame + campaign chunks | Separate shared indexes / `--mode` flag |
+| Mixed test + campaign chunks | Separate shared indexes / `--mode test|campaign` |
 | Context blow-up | Chunk reports; never feed galaxy XML |
 | Forgotten always-on pod / cost overrun | Phase 7 ledger + Phase 8 idle timeout, hard USD/hour caps, opt-in + confirm |
 | Unintended remote calls | `--allow-runpod`, fail-closed without budget, no auto-start daemons |

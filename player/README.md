@@ -17,3 +17,5 @@ TDD (`.cursor/rules/csharp-tdd.mdc`) launches this agent for **docs-only** refre
 Outdated copies (do not treat as live): `Game/documentation/Rules.txt`, `Game/documentation/Basics.txt`.
 
 **RAG sources** for the approved local/RunPod player-agent stack ([ADR-0009](../architecture/adr/ADR-0009-local-llm-player-agent.md), [delivery plan](../architecture/delivery/local-player-agent.md)): `rules.md`, `battle.md`, tech manuals under `player/`, plus per-faction isolated reports / story / prior orders — not raw `gamein` or other factions’ reports. After engine or catalog changes, refresh these manuals before rebuilding the shared RAG index.
+
+**Local runner (Phase 0+):** [`tools/player-agent/`](../tools/player-agent/README.md) — C# net8 CLI (`dotnet run --project tools/player-agent/PlayerAgent.csproj -- …`). Use `--mode test|campaign`; draft with `--output` or `--run` + `--faction`.

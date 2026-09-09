@@ -79,15 +79,17 @@ Separate from the net48 engine. Decision: [ADR-0009](adr/ADR-0009-local-llm-play
 
 | Area | Choice | Constraint |
 |------|--------|------------|
-| Location | `tools/player-agent/` (planned) | Outside `Game/`, `Tests/`, `website/` |
+| Location | `tools/player-agent/` (**C# net8**, `PlayerAgent.csproj` in `SpaceAge.sln`) | Outside `Game/`, `Tests/`, `website/`; no `Game.dll` reference |
 | Inference | **Ollama** (OpenAI-compatible `/v1`) | Same client for local and remote |
-| Chat model | **Qwen3-Coder** (`qwen3-coder:30b` target; smaller coder tags on weak GPUs) | No fine-tune before RAG + verb lint |
+| Chat model | Local default **`smollm2`** (plumbing); RunPod **`qwen2.5-coder:14b`**; ADR quality target **`qwen3-coder:30b`** when VRAM allows | No fine-tune before RAG + verb lint |
 | Embeddings | **`nomic-embed-text`** | Same Ollama host as chat |
-| RAG | Hybrid prompt pack + vector chunks over `player/*.md` + per-faction report/story/orders | Never `gamein` / other factions / raw full `data.xml` for strategist |
-| Default host | Local Windows Ollama | Prefer when ≥~16–24 GB VRAM |
-| Rented GPU | **RunPod** 1× **RTX 4090** (24 GB); Secure Cloud when reports leave the box | Ollama only on pod; stop when idle; passwords stay local; usage tracker + cost guardrails required before campaign batches |
+| RAG index | **SQLite** under gitignored `tools/player-agent/.data/` | Separate `shared-test` / `shared-campaign`; `--mode test\|campaign` required |
+| RAG corpus | Hybrid prompt pack + vector chunks over `player/*.md` + per-faction report/story/orders | Never `gamein` / other factions / raw full `data.xml` for strategist |
+| Default host | Local Windows Ollama | `smollm2` on weak GPUs; quality tests on RunPod |
+| Rented GPU | **RunPod** 1× **RTX 4090** (24 GB); Secure Cloud when reports leave the box | Ollama only on pod; `--allow-runpod` required; full usage tracker + cost guardrails Phases 7–8 |
 | Rejected as model host | Vercel, engine HTTP, always-on cloud chat as default | Vercel may later host *orchestration* for a web assistant only |
 
 ## Revision
 
+- 2026-09-10: Phase 0 — **C# net8** runner scaffold, SQLite index layout, `--mode test|campaign`, local `smollm2` / RunPod `qwen2.5-coder:14b` defaults.
 - 2026-09-09: Added **Local player-agent inference** ([ADR-0009](adr/ADR-0009-local-llm-player-agent.md): Ollama, Qwen3-Coder, RunPod rental).
