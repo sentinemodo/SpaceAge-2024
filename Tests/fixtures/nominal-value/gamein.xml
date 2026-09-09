@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<game turn="1">
+	<faction name="1" name-en="UN" password="" email="" default-attitude="2" text-report="True" xml-report="True" balance="0" credit-line="0" credit-rate="0" deposit-rate="0" />
+	<faction name="2" name-en="Player" password="" email="" default-attitude="2" text-report="True" xml-report="True" balance="1000" credit-line="0" credit-rate="0" deposit-rate="0" />
+	<galaxy>
+		<system name="SS0001" name-en="Harbor" X="0" Y="0" Z="0">
+			<star name="S00001" name-en="Harbor Star" />
+			<planet name="P00001" name-en="Harbor" AU="1" surface-size-X="1" surface-size-Y="1" type="ocean">
+				<orbit name="O00001" />
+				<region name="R00001" name-en="Port" X="0" Y="0" type="dust">
+					<modulestack name="un001" name-en="UN city" faction="1" type="city" quantity="1">
+						<itemstack type="iron" quantity="10" />
+					</modulestack>
+				</region>
+				<region name="R00002" name-en="Yard" X="1" Y="0" type="dust" />
+			</planet>
+		</system>
+	</galaxy>
+</game>

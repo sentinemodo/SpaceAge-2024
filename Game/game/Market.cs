@@ -27,29 +27,60 @@ namespace SpaceAge
             }
         }
 
-        private double getAveragePrice(NamedType type)
+        private bool tryGetRegionalAverage(NamedType type, out double average)
         {
             double sum = 0;
-            double i = 0;
+            int count = 0;
 
             foreach (Region region in Region.All.Values)
             {
                 if (region.Market.PriceList.ContainsKey(type))
                 {
                     sum += region.Market.PriceList[type];
-                    i++;
+                    count++;
                 }
             }
-            return (i > 0) ? (sum / i) : 0;
+
+            if (count > 0)
+            {
+                average = sum / count;
+                return true;
+            }
+
+            average = 0;
+            return false;
+        }
+
+        private int getNominalValue(NamedType type)
+        {
+            ItemType itemType = type as ItemType;
+            if (itemType != null)
+            {
+                return itemType.NominalValue;
+            }
+
+            ModuleType moduleType = type as ModuleType;
+            if (moduleType != null)
+            {
+                return moduleType.NominalValue;
+            }
+
+            return 0;
         }
         
         public double GetPrice(NamedType type)
         {
             if (!this.PriceList.ContainsKey(type))
             {
-                double price = this.getAveragePrice(type);
-                // TODO: add nominal itemtype values to xml 
-                this.PriceList.Add(type, price);
+                double price;
+                if (this.tryGetRegionalAverage(type, out price))
+                {
+                    this.PriceList.Add(type, price);
+                }
+                else
+                {
+                    this.PriceList.Add(type, this.getNominalValue(type));
+                }
             }
             return this.PriceList[type];
         }

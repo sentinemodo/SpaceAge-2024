@@ -4,6 +4,8 @@ Ids ≤ 6 characters. No item id equal to a module id. Descriptions: mechanism a
 
 Live catalog (`Tests/data.xml`) is the baseline. Below are **additions** for `campaign/data.xml`.
 
+Planet type **`adpnt`** remains in the campaign catalog but gamein Gates are `<alderson>` — see [`galaxy.md`](galaxy.md).
+
 ## Resources (item types)
 
 Canonical dictionary (ids, size/mass, extraction techs, rarity, Arbor/Anvil, empty-system seeds): **[resources.md](resources.md)**. Do not keep a second table here.
@@ -14,21 +16,43 @@ Closed seed set: `iron` `titani` `silici` `copper` `uraniu` `carbon` `oil` `gold
 
 Use live **groups**. Intended future group in parentheses → wishlist.
 
+### Hull size classes (L0–L10)
+
+Engine **0.1.148+** loads hull groups `corvette` `destroyer` `cruiser` `capital` `ark`. Campaign catalog already tags `corhul`/`deshul`/`cruhul`/`arkhul` accordingly. SampleGame stays `frigate`. See [`combat-balance.md`](combat-balance.md).
+
+Campaign also uses a **propulsion hull ladder** (`corvhl`→`desthl`→`cruihl`→`arkcns`) alongside spec production megahulls (`whlhbt`→`lghull`); both can coexist — see orchestration handoff in `architecture/delivery/campaign-play.md`.
+
+| Class | Id | Tech | Size / capacity | Nested combat | Hull HP |
+|-------|-----|------|-----------------|---------------|---------|
+| Patrol | `sshull` | L0–1 `ssassm` | 5k / 4.5k | 1–2 | 50 |
+| Corvette | `corhul` | L2 `corvhl` | 8k / 7k | 2–4 | 80 |
+| Frigate | `alnhul` | L4 (alien) / advanced hull | 12k / 10k | 4–6 | 120 |
+| Destroyer | `deshul` | L6 `desthl` | 25k / 20k | 6–10 | 200 |
+| Cruiser | `cruhul` | L8 `cruihl` | 45k / 35k | 10–16 | 350 |
+| Ark | `arkhul` | L10 `arkcns` | 80k / 60k | 20–40 | 500 |
+
+### Other modules
+
 | Id | Group | Size/mass (order of) | Crew / energy | What it is |
 |----|-------|----------------------|---------------|------------|
 | `sckbay` | habitat | 380/250 | 3 / 4 | Sick bay (inpatient ward). Habitat 8, HP 32, tech-cap 2, cash upkeep 40, radiation −120. **Not** `medfac` (clinic: 300/200, crew 2, energy 2, habitat 5, HP 25). Stronger than the clinic: 2 `wndtrn`/4 wk without `medici`, 4/wk with 1 `medici` per conversion (wishlist). No `operation-allowed-in` — settlements, stations, hulls. `pharms` USE produces `medici` from 1 `food` |
-| `hydnoz` | propulsion | 800/900 | 1 / 40 | Staged hydrolox; mass-capacity ~20000; fuel `water` or `h2o2` |
+| `coastr` | vehicle | 250/100 | 1 / 0 | Coastal transport. Naval MOVE speed 1. Solid+liquid (port + sea). Oil fuel. L0 `nvltrs` |
+| `gunbot` | vehicle | 240/240 | 12 / 0 | Gunboat. Naval MOVE speed 1. Kinetic. Solid+liquid. L1 `nvlcbt` |
+| `fshfrm` | agricultural | 1000/100 | 5 / 5 | Fishery. Liquid-surface + `terair` only (not grassland). Nets plus photic seaweed/algae. L0 `fshng`; harvest `fshhrv` (terair, not planet-type ocean) |
+| `hydnoz` | propulsion | 800/900 | 1 / 40 | Staged hydrolox; mass-capacity ~20000; fuel `water` or `h2o2`; space speed 0.5 |
+| `fustor` | propulsion | 1600/1400 | 2 / 80 | **L2 AU torch**; mass-capacity ~40000; **2 `heliu3` / week**; space speed 1. [au-transit.md](au-transit.md) |
 | `iondrv` | propulsion | 500/400 | 1 / 50 | Gridded ion; mass-capacity ~25000; fuel `water` |
 | `nepeng` | propulsion | 1400/1600 | 2 / 70 | Nuclear-electric; mass-capacity ~35000; fuel `uraniu`+`water` |
 | `optlab` | research | 250/60 | 2 / 6 | output 1, tech-cap 5 |
 | `ntreng` | propulsion | 1200/1400 | 2 / 80 | Nuclear thermal; `move` space mass-capacity ~40000; fuel `water` |
 | `orbfry` | production | 4000/800 | 8 / 40 | Vacuum foundry; `use` orbit |
 | `radlab` | research | 300/80 | 4 / 8 | output 2, tech-cap 6 |
-| `railgn` | military | 800/900 | 4 / 20 | **kinetic**; attack 8 defense 2 damage 8 |
+| `railgn` | military | 800/900 | 4 / 20 | **kinetic** `weapon-group`; attack 14 defense 2 damage 16 HP 140 |
 | `clslss` | habitat | 400/200 | 2 / 12 | produce `terair`+`water` from `wastes`+energy |
+| `ramsco` | extraction | 900/800 | 4 / 12 | Gas-giant cloud deck; `operation-allowed-in location-type="atmosphere"`; passive `heliu3`; L2 `skimmn` build |
 | `isrplt` | extraction | 1500/1500 | 8 / 20 | consumes regional `volatl`/`dust` flavour via USE techs |
 | `mpddrv` | propulsion | 900/800 | 2 / 60 | mass-capacity ~80000; fuel `methn` |
-| `pdltur` | military | 200/150 | 1 / 15 | **laser** PD; attack 4, high initiative |
+| `pdltur` | military | 200/150 | 1 / 15 | **laser** PD; attack 8 damage 8 initiative 8 HP 90 |
 | `survsc` | research | 150/40 | 2 / 4 | output 1, tech-cap 4 |
 | `dhefrc` | energy | 2000/1800 | 6 / 20 | produce energy ~250 / 13 wk; consume `heliu3`+`deutrm` |
 | `whlhul` | habitat | 20000/8000 | 20 / 40 | spin habitat; population-maximum 2000 |
@@ -38,43 +62,43 @@ Use live **groups**. Intended future group in parentheses → wishlist.
 | `msdrst` | production | 8000/10000 | 12 / 80 | surface; operation solid-surface |
 | `crytnk` | storage | 2000/400 | 1 / 8 | capacity 5000 |
 | `vasmdr` | propulsion | 1800/1600 | 3 / 100 | fuel `water` or `methn` |
-| `armplt` | frigate | 2000/3000 | 0 / 0 | **armour**; defense 15, hit-points 200 |
+| `armplt` | frigate | 2000/3000 | 0 / 0 | **armour** `resists`/`armor-module`; defense 15, HP 200 |
 | `xbiolb` | research | 250/80 | 4 / 6 | |
-| `lghul` | frigate | 25000/8000 | 0 / 20 | large hull; capacity 20000 |
+| `lghul` | frigate | 25000/8000 | 0 / 20 | large hull alias; prefer `deshul` destroyer class |
 | `tanker` | spacecraft | 6000/2000 | 6 / 30 | move space; cargo |
-| `spnknc` | military | 4000/5000 | 12 / 40 | **kinetic**; attack 14 damage 16 |
+| `spnknc` | military | 4000/5000 | 12 / 40 | **kinetic**; attack 28 damage 32 HP 220 |
 | `dpsens` | research | 600/200 | 4 / 15 | |
 | `eclssx` | habitat | 800/400 | 4 / 20 | near-closed loop |
 | `agrdek` | agricultural | 2000/600 | 15 / 25 | produce food in space (`operation` orbit/space) |
 | `plsdv` | propulsion | 4000/3500 | 6 / 180 | ark-class; mass-capacity ~8e5 |
-| `ciwst` | military | 400/300 | 2 / 20 | **pbpd** only; attack 6 damage 8 |
+| `ciwst` | military | 400/300 | 2 / 20 | **pbpd** `resists`; attack 8 damage 10 defense 12 |
 | `arkmed` | research | 500/150 | 8 / 10 | |
-| `arkhul` | frigate | 80000/25000 | 0 / 80 | L10 hull |
+| `arkhul` | frigate | 80000/25000 | 0 / 80 | L10 ark hull; capacity 60000; HP 500; hosts 20–40 combat stacks |
 | `arkeng` | propulsion | 8000/7000 | 8 / 200 | mass-capacity ~2e6 |
 | `arkbrg` | command | 2000/800 | 12 / 30 | tech-cap 16, research-output 4 |
 | `arkdfn` | military | 3000/2500 | 10 / 50 | **laser** grid |
 | `solthp` | energy | 800/600 | 2 / 4 | solar thermal; ~30 energy / 13 wk; inner-system |
 | `slsmod` | propulsion | 400/80 | 1 / 2 | sail; mass-cap ~15000; no fuel |
-| `msltub` | military | 300/400 | 2 / 8 | **missile**; attack 6 damage 8 |
-| `ewantn` | military | 150/80 | 2 / 10 | **ew**; defense 4 initiative 4 |
+| `msltub` | military | 300/400 | 2 / 8 | **missile**; attack 12 damage 14 HP 100 |
+| `ewantn` | military | 150/80 | 2 / 10 | **ew** `resists`; defense 8 initiative 4 |
 | `hypeng` | propulsion | 700/800 | 1 / 25 | mass-cap ~18000; fuel `hydzn` |
 | `hlthst` | propulsion | 600/500 | 1 / 55 | mass-cap ~30000; fuel `xenon` |
 | `h2cell` | energy | 400/300 | 2 / 8 | ~40 energy / 13 wk; fuel `h2o2` |
 | `crylab` | research | 280/90 | 3 / 8 | output 2, tech-cap 5 |
 | `cmplab` | research | 300/100 | 4 / 8 | output 2, tech-cap 6 |
-| `shplas` | military | 400/350 | 3 / 25 | **shield**: defense 12, attack 0 |
+| `shplas` | military | 400/350 | 3 / 25 | **shield** `resists`; defense 12, attack 0, HP 120 |
 | `o2plt` | extraction | 1200/1200 | 6 / 18 | volatiles → `h2o2`/`terair` |
 | `cerkil` | production | 1500/1200 | 6 / 30 | B4C/SiC kiln |
 | `limpd` | propulsion | 950/850 | 2 / 70 | Li-MPD; mass-cap ~90000; fuel `lithia` |
 | `arcjet` | propulsion | 500/450 | 1 / 45 | mass-cap ~22000; fuel `water` |
 | `seissc` | research | 180/80 | 2 / 6 | output 1, tech-cap 5 |
 | `bwinow` | research | 120/40 | 2 / 4 | x-ray windows |
-| `kpdtur` | military | 250/280 | 2 / 12 | **kinetic** cannon; attack 5 initiative 6 |
-| `cermpl` | frigate | 1200/1800 | 0 / 0 | **armour**; defense 12, HP 150 |
+| `kpdtur` | military | 250/280 | 2 / 12 | **kinetic**; attack 10 damage 12 initiative 6 HP 110 |
+| `cermpl` | frigate | 1200/1800 | 0 / 0 | **armour** `resists`/`armor-module`; defense 12, HP 150 |
 | `ccplnk` | production | 2000/1500 | 8 / 40 | C-C layup |
 | `mgsail` | propulsion | 800/400 | 2 / 20 | mag-sail; mass-cap ~1e5; no fuel |
 | `xendrv` | propulsion | 700/550 | 2 / 80 | xenon ion; mass-cap ~50000 |
-| `coilgn` | military | 1200/1400 | 6 / 35 | **kinetic**; attack 10 damage 10 |
+| `coilgn` | military | 1200/1400 | 6 / 35 | **kinetic**; attack 18 damage 20 HP 160 |
 | `miscpu` | command | 200/80 | 2 / 8 | tech-cap 3 |
 | `maglab` | research | 350/120 | 4 / 10 | output 2, tech-cap 6 |
 | `ntdiag` | research | 300/100 | 4 / 10 | output 2 |
@@ -82,7 +106,7 @@ Use live **groups**. Intended future group in parentheses → wishlist.
 | `bioplt` | production | 800/400 | 8 / 15 | cultured polymer |
 | `chmup2` | propulsion | 900/1000 | 2 / 30 | insertion stage; fuel `hydzn` |
 | `plsail` | propulsion | 1200/600 | 3 / 25 | plasma sail; no fuel |
-| `crumis` | military | 500/600 | 0 / 10 | **missile**; attack 12 damage 14; fuel `hydzn`; spacecraft-capable |
+| `crumis` | military | 500/600 | 0 / 10 | **missile**; attack 18 damage 22 HP 130; fuel `h2o2` |
 | `uvltur` | military | 350/400 | 2 / 20 | **laser**; attack 8 damage 7 |
 | `navcmp` | command | 400/150 | 4 / 12 | tech-cap 6 |
 | `fatlab` | research | 350/120 | 5 / 10 | output 2, tech-cap 7 |
@@ -111,12 +135,12 @@ Use live **groups**. Intended future group in parentheses → wishlist.
 | `doslab` | research | 400/150 | 4 / 8 | dosimetry |
 | `arkmag` | storage | 12000/8000 | 4 / 10 | **missile** ark grain |
 | `arkew` | military | 2000/1500 | 8 / 40 | **ew** |
-| `proxpd` | military | 250/200 | 2 / 15 | **pbpd**; attack 4 damage 6 initiative 8 |
-| `capshd` | military | 800/600 | 4 / 40 | **shield**; defense 16, attack 0 |
+| `proxpd` | military | 250/200 | 2 / 15 | **pbpd** `resists`; attack 6 damage 8 defense 10 initiative 8 |
+| `capshd` | military | 800/600 | 4 / 40 | **shield** `resists`; defense 16, attack 0, HP 180 |
 | `arkshd` | military | 2500/1800 | 6 / 60 | **shield**; defense 20. Not habitat `arkshl` |
 | `arkpd` | military | 1800/1400 | 6 / 35 | **pbpd**; attack 8 damage 10 |
 
-Tune hit-points ≈ `(mass+size)/20` if omitted. Cash upkeep roughly `crew*10 + energy + size/200`.
+Tune hit-points ≈ `(mass+size)/20` if omitted. Cash upkeep: [`economy.md`](economy.md) — `size/200 + 4×crew + build-cost/8 + 10×level`, round to 5, minimum 5 except size ≤ 15.
 
 ## Military groups (same four at every scale)
 
@@ -182,22 +206,24 @@ Live: `rctlnc` (infantry rocket, **missile**), `spcsut` (EVA). Live `smlarm` is 
 
 ## Officer skills
 
-Live: `frgplt` `sscmnd` `hmedic` `arpldr` `inbtcm`. Loader stores `training-duration`, `attack`, `defense`, `initiative`. Extra children are ignored — still write `usable-in` for reports.
+Live: `frgplt` `sscmnd` `hmedic` `arpldr` `inbtcm` `snsroff` plus campaign officers `ntrplt` `astrog` `chfeng` `gunnry` `logoff` `xenbio` `radmed` `arkplt` `exoagr` `excoff`. Combat bonuses use formula attributes (`base+Pct%scale-token`); utility bonuses use `<produce effect="…" value="NN%"/>` — see `Tests/data.xml` / `campaign/data.xml`.
 
 | Id | Name | Weeks | Bonuses | Usable with |
 |----|------|-------|---------|-------------|
-| `ntrplt` | nuclear thermal pilot | 6 | init 4 def 2 | propulsion / frigate |
-| `astrog` | astrogation | 6 | init 6 | command, spacecraft |
-| `chfeng` | chief engineer | 8 | def 3 | production, propulsion |
-| `gunnry` | gunnery director | 6 | attack 6 init 3 | military; flavour: pick a weapon group |
-| `arpldr` | armor platoon leader | live | attack 5 init 5 | vehicle; **kinetic**+**armour** |
-| `inbtcm` | infantry battalion commander | live | attack 5 init 5 | infantry; mixed four groups |
-| `snsroff` | sensor officer | 5 | init 4 | research, command |
-| `logoff` | logistics officer | 5 | — | storage, settlement |
-| `xenbio` | xenobiology | 8 | — | research (`xbiolb`) |
-| `radmed` | radiation medicine | 6 | (cure-chance wishlist) | medical / `hmedic` line |
-| `arkplt` | ark helm | 10 | def 8 init 4 | L10 hull / command |
-| `exoagr` | exoagriculture | 6 | — | agricultural in vacuum |
+| `hmedic` | human physiology | 6 | **cure-chance 25%** | anywhere |
+| `radmed` | radiation medicine | 6 | **cure-chance 25%** | habitat |
+| `astrog` | astrogation | 6 | init (formula); **space MOVE ×90%** weeks (ceil) | command, spacecraft |
+| `chfeng` | chief engineer | 8 | def (formula); **production ×75%** weeks (ceil); **thrust ×110%** | production, propulsion |
+| `logoff` | logistics officer | 5 | **capacity ×110%** (floor) | storage, settlement |
+| `xenbio` | xenobiology | 8 | research output (formula); **ag output ×125%** (floor) | research, agricultural |
+| `exoagr` | exoagriculture | 6 | **ag output ×125%** (floor) | agricultural |
+| `excoff` | excavation officer | 5 | **extraction output ×125%** (floor) | extraction |
+| `ntrplt` | nuclear thermal pilot | 6 | def/init (formula) | propulsion / frigate |
+| `gunnry` | gunnery director | 6 | attack/init (formula) | military |
+| `arpldr` | armor platoon leader | live | attack/init (formula) + produce | vehicle |
+| `inbtcm` | infantry battalion commander | live | attack/init (formula) + produce | infantry |
+| `snsroff` | sensor officer | 5 | init (formula); research output (formula) | research, command |
+| `arkplt` | ark helm | 10 | def/init (formula) | L10 hull / command |
 
 ## Naming collisions to avoid
 

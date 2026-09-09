@@ -144,6 +144,11 @@ namespace SpaceAge
 			}
 
 			int wounded = this.itemStacks[woundedType].Quantity;
+			int recoverThreshold = 75 - this.MedicalCureChance;
+			if (recoverThreshold < 0)
+			{
+				recoverThreshold = 0;
+			}
 			int died = 0;
 			int recovered = 0;
 			for (int i = 0; i < wounded; i++)
@@ -153,7 +158,7 @@ namespace SpaceAge
 				{
 					died++;
 				}
-				else if (roll >= 75)
+				else if (roll >= recoverThreshold)
 				{
 					recovered++;
 				}
@@ -221,6 +226,23 @@ namespace SpaceAge
 			local.Sum(this.UpkeepNetto);
 			local.Sum(this.ItemStacks.Upkeep);
 			local.Sum(this.People.Upkeep);
+			if (BodyEnvironment.GravityAt(this.Location) == EGravityBand.high)
+			{
+				foreach (ItemStack bill in local.Values)
+				{
+					if (this.isCash(bill.ItemType))
+					{
+						bill.Quantity = (int)Math.Ceiling(bill.Quantity * 1.5);
+					}
+				}
+				if (this.HasPeople || (this.moduleType != null && this.moduleType.PopulationMaximum > 0))
+				{
+					if (ItemType.All.ContainsKey("food"))
+					{
+						local.Add(new ItemStack(ItemType.All["food"], 2));
+					}
+				}
+			}
 			return local;
 		}
 

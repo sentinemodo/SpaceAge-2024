@@ -60,7 +60,7 @@
 					<modulestack name="100021" name-en="Station" faction="1" type="orcmpx">
 						<modulestack name="100022" faction="1" type="cbridg">
 							<person faction="1" name="200003" race="terran">
-								<skill name="sscmnd" level="1"/>
+								<skill name="sscmnd" experience="10" />
 							</person>
 							<itemstack type="terran" quantity="9"/>
 						</modulestack>

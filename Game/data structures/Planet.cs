@@ -41,12 +41,65 @@ namespace SpaceAge
 			set { this.radius = value; }
 		}
 
-		// surface temperature
+		// surface temperature (legacy unused kelvin leftover)
 		private double temperature = 0;
 		public double Temperature
 		{
 			get { return this.temperature; }
 			set { this.temperature = value; }
+		}
+
+		private EGravityBand gravityBand = EGravityBand.normal;
+		public EGravityBand GravityBand
+		{
+			get { return this.gravityBand; }
+			set { this.gravityBand = value; }
+		}
+
+		private ETemperatureBand temperatureBand = ETemperatureBand.cold;
+		public ETemperatureBand TemperatureBand
+		{
+			get { return this.temperatureBand; }
+			set { this.temperatureBand = value; }
+		}
+
+		private EAtmosphereBand atmosphereBand = EAtmosphereBand.none;
+		public EAtmosphereBand AtmosphereBand
+		{
+			get { return this.atmosphereBand; }
+			set { this.atmosphereBand = value; }
+		}
+
+		private bool hasEnvironmentAttrs = false;
+		public bool HasEnvironmentAttrs
+		{
+			get { return this.hasEnvironmentAttrs; }
+			set { this.hasEnvironmentAttrs = value; }
+		}
+
+		private Races races = new Races();
+		public Races Races
+		{
+			get { return this.races; }
+		}
+
+		private string pairName = string.Empty;
+		public string PairName
+		{
+			get { return this.pairName; }
+			set { this.pairName = value ?? string.Empty; }
+		}
+
+		public Planet PairPlanet
+		{
+			get
+			{
+				if (string.IsNullOrEmpty(this.pairName) || !Planet.All.ContainsKey(this.pairName))
+				{
+					return null;
+				}
+				return Planet.All[this.pairName];
+			}
 		}
 
 		private int surfaceSizeX = 0;

@@ -215,6 +215,37 @@ namespace UnitTests
 		}
 
 		[Test]
+		public void Research_SnsroffOfficer_AddsWeeklyOutput()
+		{
+			ModuleStack lab = this.createResearchLab();
+			Person officer = new Person(lab, Faction.All["2"], Race.All["terran"], "sns001");
+			officer.Skills.Add(SkillType.All["snsroff"]);
+			ResearchOrder order = this.assignResearch(lab, "research");
+
+			Sequence.Ints.Push(5);
+			order.Execute(this.game.Week);
+
+			Assert.That(Research.WeeklyOutput(lab), Is.EqualTo(2));
+			Assert.That(lab.ResearchPoints, Is.EqualTo(2));
+		}
+
+		[Test]
+		public void Research_SnsroffOnNonResearchStack_DoesNotAddOutput()
+		{
+			ModuleStack lab = this.createResearchLab();
+			ModuleStack granary = ModuleStack.All["000005"];
+			Person officer = new Person(granary, Faction.All["2"], Race.All["terran"], "sns002");
+			officer.Skills.Add(SkillType.All["snsroff"]);
+			ResearchOrder order = this.assignResearch(lab, "research");
+
+			Sequence.Ints.Push(5);
+			order.Execute(this.game.Week);
+
+			Assert.That(Research.WeeklyOutput(lab), Is.EqualTo(1));
+			Assert.That(lab.ResearchPoints, Is.EqualTo(1));
+		}
+
+		[Test]
 		public void Research_BreakthroughAwardsTechnologyAndZeroesResearchPoints()
 		{
 			ModuleStack lab = this.createResearchLab();

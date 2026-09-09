@@ -5,7 +5,7 @@ Content-Disposition: attachment
 SpaceAge report for NPC [1].
 Turn 4, Year 2021, September 1.
 
-SpaceAge Engine Version: 0.1.144.
+SpaceAge Engine Version: 0.1.157.
 
 Events during turn:
   none.
@@ -139,6 +139,7 @@ Battles report:
     #2 gun placement [gunplc] is disabled.
   Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
   [111].
+
   Week 2.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
@@ -214,58 +215,19 @@ Battles report:
   Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
   [111].
     #1 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and misses.
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
+  [111].
+    #1 gun placement [gunplc] is disabled.
   Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
   [111].
     #1 gun placement [gunplc] is disabled.
   gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and misses.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
-  [111].
-    #1 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and misses.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #2 gun placement
-  [111].
-    #2 gun placement [gunplc] is disabled.
-  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and misses.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and misses.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
-  [111].
-    #1 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #4 gun placement
-  [111].
-  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and misses.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and misses.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #2 gun placement
-  [111].
-    #2 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
-  [111].
-    #1 gun placement [gunplc] is disabled.
-  Week 3.
-  Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
-  [ocean] in system Sol [SS0001] (0, 0, 0).
-  ------------------------------------------------------------
-  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and misses.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #4 gun placement
-  [111].
   Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #3 gun placement
   [111].
     #3 gun placement [gunplc] is disabled.
   Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #2 gun placement
   [111].
     #2 gun placement [gunplc] is disabled.
-  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and misses.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and misses.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
-  [111].
-    #1 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #4 gun placement
-  [111].
-  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and misses.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and misses.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #2 gun placement
-  [111].
-    #2 gun placement [gunplc] is disabled.
   Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
   [111].
     #1 gun placement [gunplc] is disabled.
@@ -275,737 +237,757 @@ Battles report:
     #1 gun placement [gunplc] is disabled.
   Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
   [111].
-    #1 gun placement [gunplc] is disabled.
+    #1 gun placement [gunplc] module captured by Gelvaren [3].
   Surrender or die! [109] fires tanks [tanks] on gun placement [111] and misses.
   gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and misses.
   Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
   [111].
     #1 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and misses.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
-  [111].
-    #1 gun placement [gunplc] is disabled.
-  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and misses.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
-  [111].
-    #1 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and misses.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #2 gun placement
-  [111].
-    #2 gun placement [gunplc] is disabled.
-  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and misses.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and misses.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
-  [111].
-    #1 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #4 gun placement
-  [111].
-  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and misses.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and misses.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #2 gun placement
-  [111].
-    #2 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
-  [111].
-    #1 gun placement [gunplc] is disabled.
-  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and misses.
   Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
   [111].
     #1 gun placement [gunplc] module captured by Gelvaren [3].
   Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
   [111].
     #1 gun placement [gunplc] is disabled.
+
+  Week 3.
+  Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
+  [ocean] in system Sol [SS0001] (0, 0, 0).
+  ------------------------------------------------------------
+  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and misses.
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and misses.
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #2 gun placement
+  [111].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
+  [111].
+    #1 gun placement [gunplc] is disabled.
+  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and misses.
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
+  [111].
+    #1 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
+  [111].
+    #1 gun placement [gunplc] is disabled.
   Surrender or die! [109] fires tanks [tanks] on gun placement [111] and misses.
   gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and misses.
   Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
   [111].
     #1 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and misses.
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
+  [111].
+    #1 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
+  [111].
+    #1 gun placement [gunplc] is disabled.
+  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and misses.
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
+  [111].
+    #1 gun placement [gunplc] is disabled.
   Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #2 gun placement
   [111].
-    #2 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
+  [111].
+    #1 gun placement [gunplc] is disabled.
+  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and misses.
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
+  [111].
+    #1 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
+  [111].
+    #1 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and misses.
+  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and misses.
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
+  [111].
+    #1 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
+  [111].
+    #1 gun placement [gunplc] module captured by Gelvaren [3].
+  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
+  [111].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
+  bay [000013].
+
   Week 4.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
   ------------------------------------------------------------
-  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and misses.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #3 gun placement
-  [111].
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #2 gun placement
-  [111].
-    #2 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
-  [111].
-    #1 gun placement [gunplc] is disabled.
-  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and misses.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
-  [111].
-    #1 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
-  [111].
-    #1 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and misses.
-  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and misses.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
-  [111].
-    #1 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and misses.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #2 gun placement
-  [111].
-    #2 gun placement [gunplc] is disabled.
-  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and misses.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
-  [111].
-    #1 gun placement [gunplc] module captured by Gelvaren [3].
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and misses.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #2 gun placement
-  [111].
-  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and misses.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and misses.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
-  [111].
-    #1 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #2 gun placement
-  [111].
-  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and misses.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and misses.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #2 gun placement
-  [111].
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
-  [111].
-    #1 gun placement [gunplc] is disabled.
-  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and misses.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
-  [111].
-    #1 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
-  [111].
-    #1 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and misses.
-  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and misses.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
-  [111].
-    #1 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and misses.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
-  [111].
-    #1 gun placement [gunplc] is disabled.
-  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and misses.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
-  [111].
-    #1 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and misses.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #2 gun placement
-  [111].
-  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and misses.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and misses.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
-  [111].
-    #1 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #2 gun placement
-  [111].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
+  bay [000013].
+
   Week 5.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
   ------------------------------------------------------------
-  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and misses.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #2 gun placement
-  [111].
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
-  [111].
-    #1 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
-  [111].
-    #1 gun placement [gunplc] is disabled.
-  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and misses.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
-  [111].
-    #1 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and misses.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #2 gun placement
-  [111].
-  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and misses.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and misses.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
-  [111].
-    #1 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #2 gun placement
-  [111].
-  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and misses.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and misses.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #2 gun placement
-  [111].
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
-  [111].
-    #1 gun placement [gunplc] is disabled.
-  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and misses.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
-  [111].
-    #1 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
-  [111].
-    #1 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and misses.
-  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and misses.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
-  [111].
-    #1 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and misses.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
-  [111].
-    #1 gun placement [gunplc] is disabled.
-  gun placement [111] fires gun placement [gunplc] on Surrender or die! [109] and misses.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
-  [111].
-    #1 gun placement [gunplc] module captured by Gelvaren [3].
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and misses.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] and hits #1 gun placement
-  [111].
   Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
   bay [000013].
   Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
   bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
   bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
   bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
   bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
+  bay [000013].
+    #1 small cargo bay [cargob] module captured by Gelvaren [3].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
+  bay [000013].
+    #1 small cargo bay [cargob] module captured by Gelvaren [3].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
+  bay [000013].
+
   Week 6.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
   ------------------------------------------------------------
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and misses.
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
+  bay [000013].
   Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
   bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
-  bay [000013].
   Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
   bay [000013].
   Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
   bay [000013].
   Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
   bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
   bay [000013].
   Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
   bay [000013].
   Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
   bay [000013].
   Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
   bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
   bay [000013].
   Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
   bay [000013].
   Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
   bay [000013].
   Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
   bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
   bay [000013].
   Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
   bay [000013].
   Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
   bay [000013].
   Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
   bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
   bay [000013].
   Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
   bay [000013].
   Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
   bay [000013].
   Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
   bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
   bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
   bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
+    #1 small cargo bay [cargob] module captured by Gelvaren [3].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
   bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
+  bay [000013].
+
   Week 7.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
   ------------------------------------------------------------
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and misses.
   Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
   bay [000013].
   Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
   bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
   bay [000013].
   Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
   bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
   bay [000013].
   Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
   bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
   bay [000013].
   Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
   bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
   bay [000013].
   Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
   bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
   bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
+    #1 small cargo bay [cargob] module captured by Gelvaren [3].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
   bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
   bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
+  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
+  bay [000013].
+    #1 small cargo bay [cargob] module captured by Gelvaren [3].
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
+  complex [000014].
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
+  complex [000014].
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
+  complex [000014].
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
+  complex [000014].
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
+  complex [000014].
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
+  complex [000014].
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
+  complex [000014].
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
+  complex [000014].
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
+  complex [000014].
+
   Week 8.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
   ------------------------------------------------------------
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and misses.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
-  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
+  complex [000014].
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #2 farming
+  complex [000014].
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #3 farming
+  complex [000014].
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
+  complex [000014].
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #3 farming
+  complex [000014].
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
+  complex [000014].
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #2 farming
+  complex [000014].
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #3 farming
+  complex [000014].
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
+  complex [000014].
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #3 farming
+  complex [000014].
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
+  complex [000014].
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #2 farming
+  complex [000014].
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #3 farming
+  complex [000014].
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
+  complex [000014].
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #3 farming
+  complex [000014].
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
+  complex [000014].
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #2 farming
+  complex [000014].
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #3 farming
+  complex [000014].
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
+  complex [000014].
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #3 farming
+  complex [000014].
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
+  complex [000014].
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #2 farming
+  complex [000014].
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #3 farming
+  complex [000014].
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
+  complex [000014].
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #3 farming
+  complex [000014].
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
+  complex [000014].
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #2 farming
+  complex [000014].
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #3 farming
+  complex [000014].
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
+  complex [000014].
+    #1 farming complex [farms] module captured by Gelvaren [3].
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
+  complex [000014].
+
   Week 9.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
   ------------------------------------------------------------
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and misses.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
-  bay [000013].
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
+  complex [000014].
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
+  complex [000014].
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
+  complex [000014].
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
+  complex [000014].
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
+  complex [000014].
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
+  complex [000014].
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
+  complex [000014].
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
+  complex [000014].
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
+  complex [000014].
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
+  complex [000014].
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
+  complex [000014].
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
+  complex [000014].
+    #1 farming complex [farms] module captured by Gelvaren [3].
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
+  complex [000014].
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
+  complex [000014].
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
+  complex [000014].
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
+  complex [000014].
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
+  complex [000014].
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
+  complex [000014].
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
+  complex [000014].
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
+  complex [000014].
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
+  complex [000014].
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
+  complex [000014].
+  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
+  complex [000014].
+    #1 farming complex [farms] module captured by Gelvaren [3].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+
   Week 10.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
   ------------------------------------------------------------
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and misses.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
-  bay [000013].
-    #1 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
-  bay [000013].
-    #4 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
-  bay [000013].
-    #2 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
-  bay [000013].
-    #5 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
-  bay [000013].
-    #1 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
-  bay [000013].
-    #4 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
-  bay [000013].
-    #2 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
-  bay [000013].
-    #5 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
-  bay [000013].
-    #1 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
-  bay [000013].
-    #4 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
-  bay [000013].
-    #2 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
-  bay [000013].
-    #5 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
-  bay [000013].
-    #1 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
-  bay [000013].
-    #4 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
-  bay [000013].
-    #2 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
-  bay [000013].
-    #5 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
-  bay [000013].
-    #1 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
-  bay [000013].
-    #4 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
-  bay [000013].
-    #2 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
-  bay [000013].
-    #5 small cargo bay [cargob] is disabled.
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #3
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #3
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #3
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #3
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #3
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #3
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
+  coal-burning plant [000015].
+
   Week 11.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
   ------------------------------------------------------------
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and misses.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
-  bay [000013].
-    #1 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
-  bay [000013].
-    #4 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
-  bay [000013].
-    #2 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
-  bay [000013].
-    #5 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
-  bay [000013].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
-  bay [000013].
-    #1 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
-  bay [000013].
-    #4 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
-  bay [000013].
-    #2 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
-  bay [000013].
-    #5 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
-  bay [000013].
-    #3 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
-  complex [000014].
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #3 farming
-  complex [000014].
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
-  complex [000014].
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #2 farming
-  complex [000014].
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #3 farming
-  complex [000014].
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
-  complex [000014].
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #3 farming
-  complex [000014].
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
-  complex [000014].
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #2 farming
-  complex [000014].
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #3 farming
-  complex [000014].
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
-  complex [000014].
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #3 farming
-  complex [000014].
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
-  complex [000014].
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #2 farming
-  complex [000014].
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #3 farming
-  complex [000014].
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
-  complex [000014].
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #3 farming
-  complex [000014].
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
-  complex [000014].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+    #1 coal-burning plant [cplant] module captured by Gelvaren [3].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+
   Week 12.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
   ------------------------------------------------------------
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and misses.
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #3 farming
-  complex [000014].
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
-  complex [000014].
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #3 farming
-  complex [000014].
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
-  complex [000014].
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #2 farming
-  complex [000014].
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #3 farming
-  complex [000014].
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
-  complex [000014].
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #3 farming
-  complex [000014].
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
-  complex [000014].
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #2 farming
-  complex [000014].
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #3 farming
-  complex [000014].
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
-  complex [000014].
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #3 farming
-  complex [000014].
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
-  complex [000014].
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #2 farming
-  complex [000014].
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #3 farming
-  complex [000014].
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
-  complex [000014].
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #3 farming
-  complex [000014].
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
-  complex [000014].
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #2 farming
-  complex [000014].
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #3 farming
-  complex [000014].
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
-  complex [000014].
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #3 farming
-  complex [000014].
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
-  complex [000014].
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #2 farming
-  complex [000014].
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #3 farming
-  complex [000014].
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
-  complex [000014].
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #3 farming
-  complex [000014].
-    #3 farming complex [farms] module captured by Gelvaren [3].
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
-  complex [000014].
-    #1 farming complex [farms] module captured by Gelvaren [3].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
+  coal-burning plant [000015].
+
   Week 13.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
   ------------------------------------------------------------
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and misses.
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
-  complex [000014].
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
-  complex [000014].
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
-  complex [000014].
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
-  complex [000014].
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
-  complex [000014].
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
-  complex [000014].
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
-  complex [000014].
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
-  complex [000014].
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
-  complex [000014].
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
-  complex [000014].
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
-  complex [000014].
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] and hits #1 farming
-  complex [000014].
-    #1 farming complex [farms] module captured by Gelvaren [3].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
   coal-burning plant [000015].
   Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
   coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #3
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
   coal-burning plant [000015].
   Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
   coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
   coal-burning plant [000015].
   Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
   coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #3
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
   coal-burning plant [000015].
   Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
   coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
   coal-burning plant [000015].
   Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
   coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #3
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
   coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+    #1 coal-burning plant [cplant] is disabled.
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+    #1 coal-burning plant [cplant] is disabled.
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+    #1 coal-burning plant [cplant] is disabled.
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+    #1 coal-burning plant [cplant] is disabled.
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+    #1 coal-burning plant [cplant] module captured by Gelvaren [3].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
   coal-burning plant [000015].
   Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
   coal-burning plant [000015].
@@ -1045,22 +1027,29 @@ Galaxy report:
       none.
   
   + Berlin [000001], 3 cities [city], immobile.
-    size: 75000, mass: 27920 (0), capacity: 45000/41120, energy: 320/240 (30), crew: 124/240 (0/30),
+    size: 75000, mass: 27865 (0), capacity: 45000/41120, energy: 240/220 (30), crew: 120/240 (0/30),
     upkeep: 300 units of food [food], 1965 (0) cash [cash], consume: 340 (0) units of food [food],
     340 (0) units of terran breathing gas mixture [terair], 3 (0) medicines [medici].
     items: 1165 cash [cash], 30 terrans [terran] (size: 120, mass: 120, upkeep: 30 cash [cash],
     consume: 30 units of food [food], 30 units of terran breathing gas mixture [terair]).
+    events:
+      week 13: paid 300 unit of food [food] upkeep.
+      week 13: paid 30 cash [cash] upkeep.
     + Berlin garrison [000002], infantry battalion [inftry], immobile.
       size: 500, mass: 600 (500), capacity: 300/100, upkeep: 5 cash [cash], consume: 100 units of
       food [food], 100 units of terran breathing gas mixture [terair].
       movement speed: 0.1 on ground.
       items: rocket launchers [rctlnc] (size: 100, mass: 100).
+      events:
+        week 13: paid 5 cash [cash] upkeep.
     + Berlin farms [000003], 10 farming complexes [farms], immobile.
       size: 10000, mass: 1300 (1000), capacity: 5000/300, energy: 50, crew: 50/75, upkeep: 575 (500)
       cash [cash], consume: 75 (0) units of food [food], 75 (0) units of terran breathing gas
       mixture [terair].
       items: 75 terrans [terran] (size: 300, mass: 300, upkeep: 75 cash [cash], consume: 75 units of
       food [food], 75 units of terran breathing gas mixture [terair]).
+      events:
+        week 13: paid 575 cash [cash] upkeep.
     + Berlin coal powerplants [000004], 5 coal-burning plants [cplant], immobile.
       size: 5000, mass: 5560 (5000), capacity: 2500/560, energy: 200/50 (consume: 25 units of carbon
       [carbon] for 13 weeks), crew: 10/15, upkeep: 265 (250) cash [cash], consume: 15 (0) units of
@@ -1069,24 +1058,27 @@ Galaxy report:
       items: 100 units of carbon [carbon] (size: 500, mass: 500), 15 terrans [terran] (size: 60,
       mass: 60, upkeep: 15 cash [cash], consume: 15 units of food [food], 15 units of terran
       breathing gas mixture [terair]).
+      events:
+        week 13: paid 265 cash [cash] upkeep.
     + Berlin granary [000005], small cargo bay [cargob], immobile.
-      size: 2000, mass: 867 (200), capacity: 1800/667, upkeep: 33 (30) cash [cash], consume: 3 (0)
+      size: 2000, mass: 882 (200), capacity: 1800/682, upkeep: 33 (30) cash [cash], consume: 3 (0)
       units of food [food], 3 (0) units of terran breathing gas mixture [terair].
-      items: 655 units of food [food] (size: 655, mass: 655), 3 terrans [terran] (size: 12, mass:
+      items: 670 units of food [food] (size: 670, mass: 670), 3 terrans [terran] (size: 12, mass:
       12, upkeep: 3 cash [cash], consume: 3 units of food [food], 3 units of terran breathing gas
       mixture [terair]).
+      events:
+        week 13: paid 33 cash [cash] upkeep.
     - Caste Prime Headquarters [000012], corporate headquarters [corphq], disabled, immobile, owned
       by Caste Prime [2].
       size: 0.
-    - small cargo bay [000013], 5 small cargo bays [cargob], disabled, immobile, owned by Caste
-      Prime [2].
-      size: 10000.
+    - small cargo bay [000013], small cargo bay [cargob], disabled, immobile, owned by Caste Prime
+      [2].
+      size: 0.
     - farming complex [000014], farming complex [farms], disabled, immobile, owned by Caste Prime
       [2].
       size: 0.
-    - coal-burning plant [000015], 3 coal-burning plants [cplant], immobile, owned by Caste Prime
-      [2].
-      size: 3000.
+    - coal-burning plant [000015], coal-burning plant [cplant], immobile, owned by Caste Prime [2].
+      size: 1000.
     - core drill [000016], core drill [cdrill], immobile, owned by Caste Prime [2].
       size: 1000.
     - factory [000017], 5 factories [factry], partially disabled, immobile, owned by Caste Prime
@@ -1105,11 +1097,27 @@ Galaxy report:
       size: 100.
     - gun placement [c00004], gun placement [gunplc], disabled, immobile, owned by Gelvaren [3].
       size: 100.
-    - farming complex [c00005], farming complex [farms], disabled, immobile, owned by Gelvaren [3].
+    - small cargo bay [c00005], small cargo bay [cargob], disabled, immobile, owned by Gelvaren [3].
+      size: 2000.
+    - small cargo bay [c00006], small cargo bay [cargob], disabled, immobile, owned by Gelvaren [3].
+      size: 2000.
+    - small cargo bay [c00007], small cargo bay [cargob], disabled, immobile, owned by Gelvaren [3].
+      size: 2000.
+    - small cargo bay [c00008], small cargo bay [cargob], disabled, immobile, owned by Gelvaren [3].
+      size: 2000.
+    - small cargo bay [c00009], small cargo bay [cargob], disabled, immobile, owned by Gelvaren [3].
+      size: 2000.
+    - farming complex [c00010], farming complex [farms], disabled, immobile, owned by Gelvaren [3].
       size: 1000.
-    - farming complex [c00006], farming complex [farms], disabled, immobile, owned by Gelvaren [3].
+    - farming complex [c00011], farming complex [farms], disabled, immobile, owned by Gelvaren [3].
       size: 1000.
-    - farming complex [c00007], farming complex [farms], disabled, immobile, owned by Gelvaren [3].
+    - farming complex [c00012], farming complex [farms], disabled, immobile, owned by Gelvaren [3].
+      size: 1000.
+    - coal-burning plant [c00013], coal-burning plant [cplant], disabled, immobile, owned by
+      Gelvaren [3].
+      size: 1000.
+    - coal-burning plant [c00014], coal-burning plant [cplant], disabled, immobile, owned by
+      Gelvaren [3].
       size: 1000.
   - peaceful scout [108], tanks [tanks], disabled, immobile, owned by Gelvaren [3].
     size: 240.
@@ -1147,19 +1155,27 @@ Galaxy report:
     units of food [food], 1053 (0) cash [cash], consume: 293 (0) units of food [food], 293 (0) units
     of terran breathing gas mixture [terair].
     items: 947 cash [cash].
+    events:
+      week 13: paid 200 unit of food [food] upkeep.
     + Sydney garrison [000007], 2 infantry battalions [inftry], immobile.
       size: 1000, mass: 1100 (1000), capacity: 600/100, upkeep: 10 cash [cash], consume: 200 units
       of food [food], 200 units of terran breathing gas mixture [terair].
       movement speed: 0.1 on ground.
       items: rocket launchers [rctlnc] (size: 100, mass: 100).
+      events:
+        week 13: paid 10 cash [cash] upkeep.
     + Sydney farms [000008], 10 farming complexes [farms], immobile.
       size: 10000, mass: 1300 (1000), capacity: 5000/300, energy: 50, crew: 50/75, upkeep: 575 (500)
       cash [cash], consume: 75 (0) units of food [food], 75 (0) units of terran breathing gas
       mixture [terair].
       items: 75 terrans [terran] (size: 300, mass: 300, upkeep: 75 cash [cash], consume: 75 units of
       food [food], 75 units of terran breathing gas mixture [terair]).
+      events:
+        week 13: paid 575 cash [cash] upkeep.
     + Sydney wind powerplants [000009], 10 wind powerplants [wnplnt], immobile.
       size: 100, mass: 100 (100), energy: 40/10, upkeep: 100 cash [cash].
+      events:
+        week 13: paid 100 cash [cash] upkeep.
     + Sydney oil powerplants [000010], 5 oil-burning plants [oplant], immobile.
       size: 4000, mass: 4560 (4000), capacity: 2500/460, energy: 150/50 (consume: 25 units of oil
       [oil] for 13 weeks), crew: 10/15, upkeep: 315 (300) cash [cash], consume: 15 (0) units of food
@@ -1168,16 +1184,24 @@ Galaxy report:
       items: 100 units of oil [oil] (size: 400, mass: 500), 15 terrans [terran] (size: 60, mass: 60,
       upkeep: 15 cash [cash], consume: 15 units of food [food], 15 units of terran breathing gas
       mixture [terair]).
+      events:
+        week 13: paid 315 cash [cash] upkeep.
     + Sydney granary [000011], small cargo bay [cargob], immobile.
       size: 2000, mass: 919 (200), capacity: 1800/719, upkeep: 33 (30) cash [cash], consume: 3 (0)
       units of food [food], 3 (0) units of terran breathing gas mixture [terair].
       items: 707 units of food [food] (size: 707, mass: 707), 3 terrans [terran] (size: 12, mass:
       12, upkeep: 3 cash [cash], consume: 3 units of food [food], 3 units of terran breathing gas
       mixture [terair]).
+      events:
+        week 13: paid 33 cash [cash] upkeep.
     + wind powerplant [122], wind powerplant [wnplnt], immobile.
       size: 10, mass: 10 (10), energy: 4/1, upkeep: 10 cash [cash].
+      events:
+        week 13: paid 10 cash [cash] upkeep.
     + wind powerplant [1], wind powerplant [wnplnt], immobile.
       size: 10, mass: 10 (10), energy: 4/1, upkeep: 10 cash [cash].
+      events:
+        week 13: paid 10 cash [cash] upkeep.
   - Gelvaren complex [000026], city [city], immobile, owned by Gelvaren [3].
     size: 25000.
     - Gelvaren Headquarters [000018], corporate headquarters [corphq], immobile, owned by Gelvaren
@@ -1270,7 +1294,7 @@ Orders Template:
 
 #modulestack 000005
 ; + Berlin granary [000005], small cargo bay [cargob], immobile.
-; items: 655 units of food [food], 3 terrans [terran].
+; items: 670 units of food [food], 3 terrans [terran].
 
 #modulestack 000006
 ; + Sydney [000006], 2 cities [city], immobile.

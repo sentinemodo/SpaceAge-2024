@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="windows-1251"?>
 <game turn="6">
 	<faction name="1" name-en="NPC" password="" email="" default-attitude="2" text-report="True" text-report-line-length="100" xml-report="True" balance="1842" credit-line="0" credit-rate="0" deposit-rate="0" />
-	<faction name="2" name-en="Caste Prime" password="xyzzy" email="mail1@mail.pl" default-attitude="2" text-report="True" text-report-line-length="100" xml-report="True" balance="4449" credit-line="10000" credit-rate="0.2" deposit-rate="0.05">
+	<faction name="2" name-en="Caste Prime" password="xyzzy" email="mail1@mail.pl" default-attitude="2" text-report="True" text-report-line-length="100" xml-report="True" balance="4461" credit-line="10000" credit-rate="0.2" deposit-rate="0.05">
 		<technology name="ahlcns" />
 		<technology name="autfab" />
 		<technology name="autctl" />
@@ -16,7 +16,7 @@
 		<attitude faction="3" attitude="enemy" />
 		<attitude unit="117" attitude="enemy" />
 	</faction>
-	<faction name="3" name-en="Gelvaren" password="abccb" email="mail2@mail.pl" default-attitude="2" text-report="True" text-report-line-length="72" xml-report="True" balance="6372" credit-line="10000" credit-rate="0.2" deposit-rate="0.05">
+	<faction name="3" name-en="Gelvaren" password="abccb" email="mail2@mail.pl" default-attitude="2" text-report="True" text-report-line-length="72" xml-report="True" balance="6360" credit-line="10000" credit-rate="0.2" deposit-rate="0.05">
 		<technology name="rckter" />
 		<technology name="servic" />
 		<attitude faction="2" attitude="enemy" />
@@ -144,7 +144,7 @@
 				<orbit name="O00002">
 					<race type="terran" />
 					<modulestack name="101" type="sshull" quantity="1" faction="2">
-						<module damage="9" />
+						<module damage="12" />
 						<upkeep type="cash" quantity="364" />
 						<tactic name="destroy" />
 						<tactic name="prioritize armed" />
@@ -343,20 +343,20 @@
 						<modulestack name="000016" type="cdrill" quantity="0" faction="2">
 							<upkeep type="cash" quantity="0" />
 						</modulestack>
-						<modulestack name="000017" type="factry" quantity="5" faction="2">
-							<module damage="56" />
+						<modulestack name="000017" type="factry" quantity="3" faction="2">
 							<module damage="51" />
-							<module damage="52" />
-							<module damage="57" />
 							<module damage="56" />
-							<itemstack type="terran" quantity="46" />
-							<itemstack type="iron" quantity="20" />
-							<upkeep type="cash" quantity="346" />
+							<module damage="60" />
+							<itemstack type="terran" quantity="28" />
+							<itemstack type="iron" quantity="12" />
+							<upkeep type="cash" quantity="208" />
 							<event week="1" description="engaged in battle" />
 							<event week="2" description="engaged in battle" />
 							<event week="3" description="engaged in battle" />
 							<event week="4" description="engaged in battle" />
+							<event week="4" description="lost #1 factory [factry] to capture." />
 							<event week="5" description="engaged in battle" />
+							<event week="5" description="lost #1 factory [factry] to capture." />
 							<event week="6" description="engaged in battle" />
 							<event week="7" description="engaged in battle" />
 							<event week="8" description="engaged in battle" />
@@ -365,7 +365,7 @@
 							<event week="11" description="engaged in battle" />
 							<event week="12" description="engaged in battle" />
 							<event week="13" description="engaged in battle" />
-							<event week="13" description="paid 346 cash [cash] upkeep." />
+							<event week="13" description="paid 208 cash [cash] upkeep." />
 						</modulestack>
 						<modulestack name="111" type="gunplc" quantity="1" faction="2">
 							<module damage="41" />
@@ -569,6 +569,22 @@
 							<upkeep type="cash" quantity="46" />
 							<event week="13" description="paid 46 cash [cash] upkeep." />
 						</modulestack>
+						<modulestack name="c00017" type="factry" quantity="1" faction="3">
+							<module damage="73" capture="27" online="false" />
+							<itemstack type="terran" quantity="9" />
+							<itemstack type="iron" quantity="4" />
+							<upkeep type="cash" quantity="69" />
+							<event week="4" description="captured factory [factry] from factory [000017]." />
+							<event week="13" description="paid 69 cash [cash] upkeep." />
+						</modulestack>
+						<modulestack name="c00018" type="factry" quantity="1" faction="3">
+							<module damage="58" capture="42" online="false" />
+							<itemstack type="terran" quantity="9" />
+							<itemstack type="iron" quantity="4" />
+							<upkeep type="cash" quantity="69" />
+							<event week="5" description="captured factory [factry] from factory [000017]." />
+							<event week="13" description="paid 69 cash [cash] upkeep." />
+						</modulestack>
 					</modulestack>
 					<modulestack name="108" name-en="peaceful scout" type="tanks" quantity="1" faction="3">
 						<module damage="51" />
@@ -587,9 +603,9 @@
 							<skill name="arpldr" experience="1" />
 							<upkeep type="cash" quantity="10" />
 						</person>
-						<itemstack type="terran" quantity="34" />
+						<itemstack type="terran" quantity="33" />
 						<itemstack type="oil" quantity="6" />
-						<itemstack type="wndtrn" quantity="2" />
+						<itemstack type="wndtrn" quantity="3" />
 						<upkeep type="cash" quantity="118" />
 						<tactic name="prioritize storage" />
 						<tactic name="capture" />
@@ -624,7 +640,7 @@
 						<event week="13" description="Lack of supplies: 58 unit of food [food]." />
 						<event week="13" description="24 terrans [terran] wounded from lack of supplies." />
 						<event week="13" description="12 wounded terrans [wndtrn] died of their wounds." />
-						<event week="13" description="10 wounded terrans [wndtrn] recovered from their wounds." />
+						<event week="13" description="9 wounded terrans [wndtrn] recovered from their wounds." />
 					</modulestack>
 					<modulestack name="110" type="inftry" quantity="1" faction="3">
 						<module damage="1" />
@@ -692,14 +708,13 @@
 						</modulestack>
 						<modulestack name="000010" name-en="Sydney oil powerplants" type="oplant" quantity="5" faction="1">
 							<itemstack type="oil" quantity="100" />
-							<itemstack type="terran" quantity="10" />
-							<itemstack type="wndtrn" quantity="1" />
+							<itemstack type="terran" quantity="11" />
 							<upkeep type="cash" quantity="311" />
 							<event week="13" description="paid 315 cash [cash] upkeep." />
 							<event week="13" description="Lack of supplies: 15 unit of food [food]." />
 							<event week="13" description="7 terrans [terran] wounded from lack of supplies." />
 							<event week="13" description="4 wounded terrans [wndtrn] died of their wounds." />
-							<event week="13" description="2 wounded terrans [wndtrn] recovered from their wounds." />
+							<event week="13" description="3 wounded terrans [wndtrn] recovered from their wounds." />
 						</modulestack>
 						<modulestack name="000011" name-en="Sydney granary" type="cargob" quantity="1" faction="1">
 							<itemstack type="terran" quantity="2" />

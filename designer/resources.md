@@ -58,14 +58,14 @@ See `technology.md` Combat matchups for which techs sit in each group.
 | `carbon` | unit of carbon | 5/5 | `hcdril` (1); `cplant` fuel | L0 (`fossil` / plant fuel) | common on organics | `grassl` wetlands; `smcast` `lrcast` | **rich** peat/coal | **absent** (trace graphite only; pocket: Fomal belt) | SS0005 Cinder; SS0007 Shards; SS0009 Graph |
 | `oil` | unit of oil | 4/5 | `oildwe` (2); `oplant` fuel | L0 (`oilbrn` / plant fuel) | uncommon | coastal `grassl`; `lrcast` | **present** Tidewatch coast | **absent** (pocket: Fomal belt) | SS0007 Shards carbonaceous |
 | `gold` | unit of gold | 5/9 | `gminng` (1); contacts | L1 (`optins` consumes 1) | trace | hydrothermal `mountn`; rare `lrmast` | **absent** | **trace** mountains | SS0009 Graph |
-| `heliu3` | unit of helium-3 | 1/1 | `he3min` (1); `he3ext`; `fusrec`/`he3aut`/`dhefrc`/`fuseng`/`plsdv`/`arkeng` fuel; build `he3fus` `fusdrv` `hiisp` `arkcns` `arkdrv`; pbpd `ciwssy` `arkpd` | L2 (`he3fus`) | rare / pocket | ice-moon `dust`/`barren`; outer `abelt`; **not** habitable basins | absent on Arbor (pocket: Aeolus ices) | absent on Anvil (pocket: Fomal ices) | SS0003 Ember ices; SS0006 Ash; SS0008 Deep ices |
+| `heliu3` | unit of helium-3 | 1/1 | `he3min` (1); `he3skm` (1); `he3ext`; `ramsco` produce; `fusrec`/`he3aut`/`dhefrc`/`fustor`/`fuseng`/`plsdv`/`arkeng` fuel; build `he3fus` `fustch` `fusdrv` `hiisp` `arkcns` `arkdrv`; pbpd `ciwssy` `arkpd` | L2 (`he3fus` + `fustch`) | rare / pocket | ice-moon `dust`/`barren`; outer `abelt`; **gas-giant orbit** cloud deck; **not** habitable basins | absent on Arbor (pocket: Aeolus ices) | absent on Anvil (pocket: Fomal ices) | SS0003 Ember ices; SS0006 Ash; SS0008 Deep ices; all campaign `gasgnt` orbits |
 | `h2o2` | unit of oxyhydro | 1/1 | `wtrdst` (3); `rctdrv`/`autdrv`/`tanker` fuel | L0 (`areact` fuel; distillation) | common on wet worlds | `ocean` `sea` ice `dust`; polar | **rich** | **modest** | SS0007 Shards ice; SS0008 Deep; SS0010 Spare ice |
-| `water` | unit of water | 1/1 | region hydrosphere; `clslss` produce; `hydnoz`/`iondrv`/`ntreng`/`nepeng`/`vasmdr` fuel | L1 (`hydstg` fuel) | common / modest | `ocean` `sea` ice; not vacuum dust | **rich** | **modest** | SS0008 Deep hab moon; ice moons generally |
+| `water` | unit of water | 1/1 | region hydrosphere/ice; `icemin` (3); `wtrdst` consume 1→3 `h2o2`; `hydrop` consume 2→3 `food`; drive fuels | L0 (`icemin`/`wtrdst`); L1 `hydrop`/`hydstg` | **strategic** | `ocean` `sea`; ice moons `dust`/`barren`/`mountn` polar; **homeworld moons must seed** | **rich** liquid | **modest** liquid + ice moons | All ice moons; Selene polar ice; Anvil rock-moon ice |
 | `food` | unit of food | 1/1 | `farmng` (5), `afrmng` (8), `agrdek`; region biomass; city upkeep | L0 (`farmng`; city upkeep) | biosphere | `grassl` `sea` only (habitable) | **rich** 400–800 grassland | **poor** 80–150 | SS0008 Deep (tight); SS0009 Graph |
 | `terair` | terran breathing gas | 1/1 | region biosphere; `lifsys` produce 10/wk; `clslss` | L0 (`popcnt`/`agrplx`/`farmng` need atmosphere) | habitable only | habitable `grassl` `ocean` `sea` `mountn` (thin) | **present** habitable cells | **present** habitable cells | SS0008 Deep ice moon; SS0009 Graph. Never Scoria/Pyre/belts |
 | `nickfe` | nickel-iron | 6/12 | `nminng` (2); consume `orbfnd` `msdrvr` `lghull` `arkcns` | L1 (`nminng`); L4 foundry | uncommon | `lrmast` `smmast`; metal moons | absent on Arbor (pocket: Helios belt) | absent (Anvil has iron/titani instead) | SS0004 Gleam |
 | `tungst` | tungsten | 8/20 | `wminng` (1); consume `matlib` `armhul` `kntcgn` `kpdgun` `gausgn` `spngun` `hiisp` `arkcns` | L5 (`wminng` / L6 `matlib`) | trace | `vulcan` moon `mountn`/`dust` | absent (pocket: Aeolus vulcan) | absent | SS0005 Cinder vulcan moons |
-| `deutrm` | deuterium | 1/1 | `d2ext` (1); `dhefrc`/`plsdv`/`arkeng` fuel; consume `dhefus` | L4 (`d2ext`); L6 fusion | rare / pocket | ice `dust`/`barren`; **not** habitable basins. Orbit of `gasgnt` is flavour until `atmosphere` location-type | absent on Arbor (pocket: Aeolus ices) | absent on Anvil (pocket: Fomal ices) | SS0003 Ember ice-giant moons; SS0006 Ash |
+| `deutrm` | deuterium | 1/1 | `d2ext` (1); `d2skm` (1); `dhefrc`/`plsdv`/`arkeng` fuel; consume `dhefus` | L4 (`d2ext` / `d2skm`); L6 fusion | rare / pocket | ice `dust`/`barren`; **not** habitable basins; **gas-giant orbit** cloud deck (`hostile` atmosphere) | absent on Arbor (pocket: Aeolus ices) | absent on Anvil (pocket: Fomal ices) | SS0003 Ember ice-giant moons; SS0006 Ash; all campaign `gasgnt` orbits |
 | `ammoni` | ammonia ice | 2/2 | `amnext` (2); consume `clslfe`; makeup `eclssx` | L5 (`clslfe`) | uncommon | outer ice moons `dust`/`barren` | absent (pocket: Aeolus ices) | absent (pocket: Fomal ices) | SS0006 Ash |
 | `methn` | methane ice | 2/1 | `ch4min` (2); `mpddrv`/`vasmdr` fuel | L3 (`ch4min`); L5 MPD | uncommon | outer ice moons; Titan-class | absent (pocket: Aeolus ices) | absent (pocket: Fomal ices) | SS0008 Deep |
 | `volatl` | mixed volatiles | 2/2 | `volext` (2); `isrplt` USE feedstock | L4 (`volext` / `isrurf`) | uncommon | `smcast` `lrcast` | absent (pocket: Helios belt `lrcast`) | absent (pocket: Fomal belt) | SS0006 Ash; SS0007 Shards |
@@ -88,7 +88,7 @@ Same-system pockets (Scoria, Helios belt, Selene, Pyre, Fomal belt, ice/vulcan m
 
 | id | name-en | size/mass | How it enters play | First need | Seed |
 |----|---------|-----------|--------------------|------------|------|
-| `cash` | cash | — | cities, `corphq`; consume `ctypln` 500 | L1 | faction `balance`, city stacks — not `<resource>` |
+| `cash` | cash | — | cities 1000/13 wk; campaign `corphq` **50**/week ([`economy.md`](economy.md)); consume `ctypln` 500 | L1 | faction `balance`, city stacks — not `<resource>` |
 | `spare` | spare part | 2/2 | `servic` (10); consume `repair` / `REPAIR` | L1 | cargo only |
 | `wastes` | waste product | 5/5 | `fisrec` byproduct; consume `wastdp`; `clslss` feedstock | L0–1 | not a ground ore |
 | `medici` | medicines | 1/1 | `medirf` (1) on **ocean** worlds (no cargo consume); `pharms` (1) from 1 `food` on a `sckbay`; weekly `wndtrn`/`madtrn` race consume; 1 per sick-bay conversion; consume `exobio` `crewmd` | L2 harvest / L3 synth | not a region type; ocean refine on Arbor/Anvil/Graph, or ferment aboard |
@@ -120,7 +120,9 @@ All `use-allowed-in` extraction + solid-surface unless noted. Campaign tag **pro
 | `uminng` | 0 | — | 1 `uraniu` | |
 | `hcdril` | 0 | — | 1 `carbon` | solid-surface |
 | `oildwe` | 0 | — | 2 `oil` | |
-| `wtrdst` | 0 | — | 3 `h2o2` | water/ice cells |
+| `wtrdst` | 0 | — | consume 1 `water` → 3 `h2o2` | water/ice cells; strategic fuel path |
+| `icemin` | 0 | — | 3 `water` | ice moons, polar ice, hydrated regolith |
+| `hydrop` | 1 | `agrplx` | consume 2 `water` → 3 `food` | ice/airless food without grassland |
 | `nminng` | 1 | `iminng` | 2 `nickfe` | metal asteroids |
 | `gminng` | 1 | `cminng` | 1 `gold` | vein `mountn` |
 | `he3min` | 2 | `uminng` | 1 `heliu3` | ice/regolith, not grassland |
@@ -140,6 +142,9 @@ All `use-allowed-in` extraction + solid-surface unless noted. Campaign tag **pro
 | `reemin` | 6 | `nminng` | 1 `reeox` | metal asteroids; SS0004 |
 | `grmine` | 6 | `hcdril` | 1 `grphit` | high-T carbon; SS0005 |
 | `he3drl` | 3 | `he3min` | module `he3ext` (20 `heliu3`/13 wk) | build, not a USE-mine |
+| `skimmn` | 2 | `he3min` | module `ramsco` | production build |
+| `he3skm` | 2 | `skimmn` | 1 `heliu3` | `atmosphere` + `gasgnt` orbit |
+| `d2skm` | 4 | `d2ext` | 1 `deutrm` | `atmosphere` + `gasgnt` orbit |
 
 Farms: `farmng` / `afrmng` produce `food` (not a mine). `medirf` produces `medici` on ocean planets. `pharms` produces `medici` from 1 `food` on a sick bay. `hydsyn` produces `hydzn` from `ammoni` (not extraction).
 
@@ -158,12 +163,12 @@ Farms: `farmng` / `afrmng` produce `food` (not a mine). `medirf` produces `medic
 | `trimth` `orbtug` | `xenon` or `water` |
 | `hypeng` `chmup2` `rcspod` `arkrcs` `crumis` | `hydzn` |
 | `h2cell` | `h2o2` |
-| `fusrec` `he3aut` `fuseng` | `heliu3` |
+| `fusrec` `he3aut` `fustor` `fuseng` | `heliu3` (`fustor`: **2 / week**) |
 | `dhefrc` `plsdv` `arkeng` | `heliu3` + `deutrm` |
 | `slsmod` `mgsail` `plsail` `arksail` `hshld` | none (sails / heatshield) |
 
 ## Engine
 
-Gas-giant **orbit** `deutrm`/`heliu3` as a cloud resource needs location-type `atmosphere` — already on `designer/engine-wishlist.md`. Until then, put those isotopes on **ice-moon surfaces** (`dust`/`barren` + ice flavour). No new location-type for this dictionary.
+Gas-giant **orbit** `deutrm`/`heliu3` cloud resources and `location-type="atmosphere"` are **live** (engine **0.1.158**). Campaign seeds them on every `gasgnt` orbit with `atmosphere` ≠ `none`; ice-moon pockets remain for early L2–L4 without a scoop fleet.
 
 Moon-region exits still block Selene/Aeolus pockets; Helios **Scoria** and **abelt** remain the loadable titani/uraniu/nickfe path.

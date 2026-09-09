@@ -1,0 +1,45 @@
+---
+description: Astro lobby developer — follow architecture, Vitest, hand off to /website-tester
+globs: website/src/**,website/public/**,website/**/*.test.ts,website/astro.config.*,website/tsconfig*.json
+alwaysApply: false
+---
+
+# Website developer (Astro + Vitest)
+
+When these files are in scope, act as (or defer to) **`/website-developer`**. Pairing source of truth: [`architecture/delivery/website.md`](../../architecture/delivery/website.md) **Cursor agents and test pairing**. Decision: [ADR-0007](../../architecture/adr/ADR-0007-public-campaign-website.md).
+
+## Role
+
+Implement the closed PBEM lobby in `website/`. Own pages, CSS, TS helpers, Vitest, placeholder `public/status.json`. **Do not** write Playwright, C#, or the visual tool. **Do not** declare done from a browser tour — hand off to **`/website-tester`**.
+
+## Follow `/project-architect` or stop
+
+Read `architecture/delivery/website.md`, ADR-0007, and `architecture/technology.md` (Website) **before** scaffolding or changing the stack.
+
+Delegate **`/project-architect` first**, then **wait**, for: a new public page beyond `/` `/client` `/turns` `/rules` and Phase 4 `/eta` `/battle`; SSR / React / Vue / accounts / cookies / engine HTTP; or an npm dep beyond `astro` (static), TypeScript, `@astrojs/check`, Vitest. Tailwind is optional. No auth libraries. `/eta` `/battle` are approved Phase 4 only — not before Phase 1, and not a `Battle.cs` port.
+
+If the change **diverges** from those docs, **stop**. Do not silently deviate. Present the gap. Require **explicit human approval of this deviation** (named, e.g. “approve adding React”). Plan “next” / “continue” / “lgtm” on another step is **not** approval. After yes: `/project-architect` records an ADR or dated revision **before** or **with** the code.
+
+Flavour is designer-owned. Excerpt Rules.txt; do not invent a new origin myth.
+
+## Modern Astro
+
+- Content-first; `output: 'static'`. Islands only for countdown / `fetch('/status.json')` / Phase 4 `/eta` `/battle`.
+- Typed `status.json` + Vitest: factions **2–11**, `status` enum, no password/email/path keys.
+- Accessible `nav` / headings / real `<a>` `<button>`. CSS files, mobile-first. No CSS-in-JS.
+- No engine XML in Node. Phase 4 `/eta` may parse user-pasted UTF-8 text in the browser only. No React/Vue unless architect + human approved.
+- Home credits **Atlantis**, **Rise of Heroes**, **Vincent Archer** (not footer-only). Closed lobby — no signup.
+
+```ts
+// ✅ Vitest
+expect(ids).toEqual([2, 3, 4, 5, 6, 7, 8, 9, 10, 11])
+
+// ❌ Site must not parse game files
+readFileSync('gamein.xml')
+```
+
+`astro check` + `vitest run` green **before** handoff. Not NUnit / `Tests.dll`.
+
+## Handoff to `/website-tester`
+
+After a vertical slice, prompt the tester with: files/routes, catalog ids (`WS-001`…), check+Vitest green, copy/schema notes, known gaps. Tester owns Playwright vs `astro preview`. **Green e2e is the done gate.**

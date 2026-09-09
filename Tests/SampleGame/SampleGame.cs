@@ -113,6 +113,7 @@ namespace IntegrationTests
 		[Test]
 		public void _2_SaveGameIn1_orders()
 		{
+			Sequence.Reset();
             Sequence.Ints.Push(110);
             Sequence.Ints.Push(109);
             Sequence.Ints.Push(108);
@@ -139,6 +140,7 @@ namespace IntegrationTests
 		[Test]
 		public void _3_ExecuteTurn1()
 		{
+			Sequence.Reset();
             Sequence.Ints.Push(110);
             Sequence.Ints.Push(109);
             Sequence.Ints.Push(108);

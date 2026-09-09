@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<data>
+	<module>
+		<entry name="hover1" name-en="hovercraft" group="vehicle" size="20" mass="20">
+			<move mode="hover" speed="1" />
+		</entry>
+	</module>
+</data>

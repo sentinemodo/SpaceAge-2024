@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<game turn="1">
+	<faction name="1" name-en="NPC" password="" email="" default-attitude="2" text-report="True" xml-report="True" balance="0" credit-line="0" credit-rate="0" deposit-rate="0" />
+	<faction name="2" name-en="Survey" password="" email="" default-attitude="2" text-report="True" xml-report="True" balance="1000" credit-line="0" credit-rate="0" deposit-rate="0" />
+	<galaxy>
+		<system name="SS0001" name-en="Harbor" X="0" Y="0" Z="0">
+			<star name="S00001" name-en="Harbor" />
+			<planet name="P00001" name-en="Harbor" AU="1" surface-size-X="1" surface-size-Y="1" type="ocean">
+				<orbit name="O00001" />
+				<region name="R00001" name-en="Port" X="0" Y="0" type="dust">
+					<exit belt="P00003">
+						<exitmode mode="space" duration="13" />
+					</exit>
+					<modulestack name="s00001" name-en="Survey shuttle" faction="2" type="shuttl" quantity="1">
+						<itemstack type="terran" quantity="2" />
+						<itemstack type="h2o2" quantity="2" />
+						<itemstack type="uraniu" quantity="2" />
+					</modulestack>
+				</region>
+			</planet>
+			<planet name="P00002" name-en="Giant" AU="5.2" surface-size-X="0" surface-size-Y="0" type="gasgnt" gravity="high" temperature="cold" atmosphere="hostile">
+				<belt name="P00021" name-en="Giant Ring" AU="0.002">
+					<composition>
+						<resource type="water" quantity="40" probability="0.5" />
+					</composition>
+				</belt>
+				<orbit name="O00002" />
+			</planet>
+			<belt name="P00003" name-en="Harbor Belt" AU="2.7">
+				<composition>
+					<resource type="uraniu" quantity="80" probability="0.5" />
+					<resource type="iron" quantity="20" probability="0.4" />
+				</composition>
+				<exit region="R00001">
+					<exitmode mode="space" duration="13" />
+				</exit>
+			</belt>
+		</system>
+	</galaxy>
+</game>

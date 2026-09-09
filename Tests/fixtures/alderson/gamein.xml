@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<game turn="1">
+	<faction name="1" name-en="NPC" password="" email="" default-attitude="2" text-report="True" xml-report="True" balance="0" credit-line="0" credit-rate="0" deposit-rate="0" />
+	<faction name="2" name-en="Survey" password="" email="" default-attitude="2" text-report="True" xml-report="True" balance="1000" credit-line="0" credit-rate="0" deposit-rate="0" />
+	<galaxy>
+		<system name="SS0001" name-en="Harbor" X="0" Y="0" Z="0">
+			<star name="S00001" name-en="Harbor" />
+			<planet name="P00001" name-en="Harbor" AU="1" surface-size-X="1" surface-size-Y="1" type="ocean">
+				<orbit name="O00001" />
+				<region name="R00001" name-en="Port" X="0" Y="0" type="dust">
+					<exit alderson="P00009">
+						<exitmode mode="space" duration="13" />
+					</exit>
+					<modulestack name="s00001" name-en="Survey shuttle" faction="2" type="shuttl" quantity="1">
+						<itemstack type="terran" quantity="2" />
+						<itemstack type="h2o2" quantity="2" />
+						<itemstack type="uraniu" quantity="2" />
+					</modulestack>
+				</region>
+			</planet>
+			<alderson name="P00009" name-en="Helios Gate" AU="80" pair="P00010" temperature="cold" atmosphere="none">
+				<orbit name="O00110">
+					<modulestack name="s00002" name-en="Gate jumper" faction="2" type="shuttl" quantity="1">
+						<itemstack type="terran" quantity="2" />
+						<itemstack type="h2o2" quantity="2" />
+						<itemstack type="uraniu" quantity="2" />
+					</modulestack>
+				</orbit>
+				<exit region="R00001">
+					<exitmode mode="space" duration="13" />
+				</exit>
+			</alderson>
+		</system>
+		<system name="SS0002" name-en="Fomal" X="1" Y="0" Z="0">
+			<star name="S00002" name-en="Fomal" />
+			<alderson name="P00010" name-en="Fomal Gate" AU="80" pair="P00009" temperature="cold" atmosphere="none">
+				<orbit name="O00111" />
+			</alderson>
+		</system>
+	</galaxy>
+</game>

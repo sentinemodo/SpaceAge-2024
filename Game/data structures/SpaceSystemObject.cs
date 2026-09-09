@@ -55,10 +55,11 @@ namespace SpaceAge
             {
                 return spaceSystemObject.AU;
             }
-            else
+            if (this is Moon && spaceSystemObject is Planet && ((Moon)this).Planet == spaceSystemObject)
             {
-                throw new Exception("Not implemented");
+                return this.AU;
             }
+            return Math.Abs(SpaceTransit.BodyAu(this) - SpaceTransit.BodyAu(spaceSystemObject));
         }
 
         public double DistanceTo(Orbit orbit)
@@ -67,11 +68,11 @@ namespace SpaceAge
             {
                 return this.DistanceTo((Planet)orbit.OrbitHolder);
             }
-            else if (orbit.OrbitHolder is Moon)
+            if (orbit.OrbitHolder is Moon)
             {
                 return this.DistanceTo((Moon)orbit.OrbitHolder);
             }
-            return 0.002;
+            return Math.Abs(SpaceTransit.BodyAu(this) - SpaceTransit.BodyAu(orbit));
         }
     }
 }

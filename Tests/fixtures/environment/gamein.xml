@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<game turn="1">
+	<faction name="1" name-en="NPC" password="" email="" default-attitude="2" text-report="True" xml-report="True" balance="0" credit-line="0" credit-rate="0" deposit-rate="0" />
+	<faction name="2" name-en="Survey" password="" email="" default-attitude="2" text-report="True" xml-report="True" balance="1000" credit-line="0" credit-rate="0" deposit-rate="0" />
+	<galaxy>
+		<system name="SS0001" name-en="Harbor" X="0" Y="0" Z="0">
+			<star name="S00001" name-en="Harbor" />
+			<planet name="P00001" name-en="Arbor" AU="1" surface-size-X="1" surface-size-Y="1" type="ocean" gravity="normal" temperature="habitable" atmosphere="terair">
+				<moon name="M00001" name-en="Selene" AU="0.002" surface-size-X="1" surface-size-Y="1" type="rock" gravity="low" temperature="cold" atmosphere="none">
+					<orbit name="O00002">
+						<modulestack name="s00005" name-en="Moon frigate" faction="2" type="sshull">
+							<modulestack name="s00051" faction="2" type="fisrec" quantity="1">
+								<itemstack type="terran" quantity="1" />
+								<itemstack type="uraniu" quantity="5" />
+							</modulestack>
+							<modulestack name="s00052" faction="2" type="shuttl" quantity="1">
+								<itemstack type="terran" quantity="2" />
+								<itemstack type="h2o2" quantity="20" />
+								<itemstack type="uraniu" quantity="2" />
+							</modulestack>
+						</modulestack>
+					</orbit>
+					<region name="R00002" name-en="Selene Dust" X="0" Y="0" type="dust">
+						<modulestack name="s00003" name-en="Moon shuttle" faction="2" type="shuttl" quantity="1">
+							<itemstack type="terran" quantity="2" />
+							<itemstack type="h2o2" quantity="5" />
+							<itemstack type="uraniu" quantity="2" />
+						</modulestack>
+					</region>
+				</moon>
+				<orbit name="O00001">
+					<modulestack name="s00002" name-en="Arbor frigate" faction="2" type="sshull">
+						<modulestack name="s00022" faction="2" type="shuttl" quantity="1">
+							<itemstack type="terran" quantity="2" />
+							<itemstack type="h2o2" quantity="20" />
+							<itemstack type="uraniu" quantity="2" />
+						</modulestack>
+					</modulestack>
+					<modulestack name="s00006" name-en="Orbit shuttle" faction="2" type="shuttl" quantity="1">
+						<itemstack type="terran" quantity="2" />
+						<itemstack type="h2o2" quantity="20" />
+						<itemstack type="uraniu" quantity="2" />
+					</modulestack>
+				</orbit>
+				<region name="R00001" name-en="Pad" X="0" Y="0" type="dust">
+					<modulestack name="s00001" name-en="Pad shuttle" faction="2" type="shuttl" quantity="1">
+						<itemstack type="terran" quantity="2" />
+						<itemstack type="h2o2" quantity="20" />
+						<itemstack type="uraniu" quantity="2" />
+					</modulestack>
+				</region>
+			</planet>
+			<planet name="P00003" name-en="Bare" AU="2" surface-size-X="1" surface-size-Y="1" type="dust">
+				<orbit name="O00003" />
+				<region name="R00003" name-en="Rock" X="0" Y="0" type="dust">
+					<modulestack name="s00004" name-en="Bare shuttle" faction="2" type="shuttl" quantity="1">
+						<itemstack type="terran" quantity="2" />
+						<itemstack type="h2o2" quantity="20" />
+						<itemstack type="uraniu" quantity="2" />
+					</modulestack>
+				</region>
+			</planet>
+		</system>
+	</galaxy>
+</game>

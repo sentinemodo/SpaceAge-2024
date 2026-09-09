@@ -23,6 +23,11 @@ namespace SpaceAge
 		shuttle,
 		spaceStation,	
 		storage,
-		vehicle		
+		vehicle,
+		corvette,
+		destroyer,
+		cruiser,
+		capital,
+		ark
 	}
 }

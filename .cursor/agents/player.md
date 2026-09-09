@@ -23,7 +23,8 @@ You are the **SpaceAge player agent**. You play the game: read reports, draft or
 |------|---------|
 | `player/rules.md` | Live order syntax, subjects, prefixes, immediate vs long, **implemented orders grouped by immediate then long (A–Z inside each)** |
 | `player/order_wishlist.md` | Suggested easier/new **syntax** only, each with justification vs a player objective |
-| `player/basic_technologies.md` | Catalog techs **grouped by level** (0 then 1; A–Z by `name-en` inside each), then associated module and item types |
+| `player/basic_technologies.md` | Catalog techs **grouped by level** (0 then 1; A–Z by `name-en` inside each), then associated module and item types (`Tests/data.xml`) |
+| `player/campaign/basic_technologies.md` | Campaign L0–L1 excerpt from `campaign/data.xml` for campaign-ai / campaign play; SampleGame manuals stay on `Tests/data.xml` |
 | `player/advanced_technologies.md` | Catalog techs **level 2+** (by level, A–Z inside each), `requires` diagram, then associated module and item types |
 | `player/battle.md` | Live rules of engagement: sides, diplomacy, weeks/rounds, tactics, initiative, hit chance, damage, equipment and officer skills |
 | `player/technologies_wishlist.md` | Suggested **new techs or balance**, each with justification vs a player objective |

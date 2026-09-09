@@ -84,17 +84,31 @@
     <Compile Include="TModuleStack.cs" />
     <Compile Include="TOrder.cs" />
     <Compile Include="TUse.cs" />
+    <Compile Include="TUseRepairEffect.cs" />
     <Compile Include="TMove.cs" />
+    <Compile Include="TMoveMode.cs" />
+    <Compile Include="TBodyRace.cs" />
+    <Compile Include="TBelt.cs" />
+    <Compile Include="TGasAtmosphere.cs" />
+    <Compile Include="TAlderson.cs" />
+    <Compile Include="TMoveEnvironment.cs" />
+    <Compile Include="TSkill.cs" />
+    <Compile Include="TSpaceTransit.cs" />
+    <Compile Include="TMoveDuration.cs" />
     <Compile Include="TGetGiveHas.cs" />
     <Compile Include="TFormStack.cs" />
     <Compile Include="TSee.cs" />
     <Compile Include="TTrain.cs" />
     <Compile Include="TTransfer.cs" />
     <Compile Include="TRepair.cs" />
+    <Compile Include="TItemCombat.cs" />
+    <Compile Include="TFlavourReveal.cs" />
+    <Compile Include="TNominalValue.cs" />
     <Compile Include="TResearch.cs" />
     <Compile Include="TConsume.cs" />
     <Compile Include="TDiplomacy.cs" />
     <Compile Include="TPoint3D.cs" />
+    <Compile Include="TCampaign.cs" />
     <Compile Include="TDataFile.cs" />
     <Compile Include="TPoint2D.cs" />
     <Compile Include="SampleGame\TProgram.cs" />
@@ -296,6 +310,45 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="fixtures\has-order-production\orders.2.3.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="fixtures\naval\gamein.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="fixtures\naval\gamein.unknown-exit.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="fixtures\naval\data-naval-module.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="fixtures\naval\data-unknown-move.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="fixtures\body-race\gamein.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="fixtures\belt\gamein.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="fixtures\gas-atmosphere\gamein.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="fixtures\gas-atmosphere\data-ramsco.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="fixtures\alderson\gamein.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="fixtures\environment\gamein.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="fixtures\space-move\gamein.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="fixtures\nominal-value\gamein.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="fixtures\nominal-value\data-nominal-items.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

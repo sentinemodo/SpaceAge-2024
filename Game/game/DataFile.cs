@@ -169,6 +169,10 @@ namespace SpaceAge
 			XmlElement elGalaxy = (XmlElement)this.gameDocument.SelectSingleNode("/game/galaxy");
 			this.game.Galaxy.LoadXml(elGalaxy, this);
 			this.game.Galaxy.LoadExits(elGalaxy, this);
+			foreach (Faction faction in this.game.Factions.Values)
+			{
+				faction.ResolveSurveyObjectsSeen();
+			}
 		}
 		public void LoadItemstacks(XmlElement element, IItemStacksHolder holder)
 		{
@@ -190,6 +194,7 @@ namespace SpaceAge
                 case "orbit":           return ELocationType.orbit;                  
                 case "solid-surface":   return ELocationType.solidSurface;
                 case "liquid-surface":  return ELocationType.liquidSurface;
+                case "atmosphere":      return ELocationType.atmosphere;
                 case "space":           return ELocationType.space;                 
                 default:
                     throw new FileLoadException("Tried to load location type item " + attribute);

@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="battle\BattleField.cs" />
+    <Compile Include="battle\CombatMatchup.cs" />
     <Compile Include="battle\EDamageStatus.cs" />
     <Compile Include="battle\CaptureTactic.cs" />
     <Compile Include="battle\DestroyTactic.cs" />
@@ -62,6 +63,10 @@
     <Compile Include="battle\Tactic.cs" />
     <Compile Include="battle\Unit.cs" />
     <Compile Include="data structures\Anomaly.cs" />
+    <Compile Include="data structures\Alderson.cs" />
+    <Compile Include="data structures\Aldersons.cs" />
+    <Compile Include="data structures\Belt.cs" />
+    <Compile Include="data structures\Belts.cs" />
     <Compile Include="data structures\Capacities.cs" />
     <Compile Include="data structures\Capacity.cs" />
     <Compile Include="battle\Battles.cs" />
@@ -99,7 +104,12 @@
     <Compile Include="data structures\Moons.cs" />
     <Compile Include="data structures\Modules.cs" />
     <Compile Include="data structures\SkillTypes.cs" />
+    <Compile Include="data structures\SkillBonusFormula.cs" />
+    <Compile Include="data structures\SkillPercentProduce.cs" />
+    <Compile Include="data structures\SkillEffects.cs" />
+    <Compile Include="data structures\SkillFormationStats.cs" />
     <Compile Include="data structures\SkillType.cs" />
+    <Compile Include="data structures\SkillUsableIn.cs" />
     <Compile Include="data structures\Skills.cs" />
     <Compile Include="data structures\Skill.cs" />
     <Compile Include="data structures\Module.cs" />
@@ -112,6 +122,7 @@
     <Compile Include="effects\ENoUpkeepEffects.cs" />
     <Compile Include="effects\EProducableEffects.cs" />
     <Compile Include="effects\ProducingEffect.cs" />
+    <Compile Include="effects\RepairScope.cs" />
     <Compile Include="effects\ProducingModule.cs" />
     <Compile Include="effects\ProducingItems.cs" />
     <Compile Include="effects\ReceivingTechnology.cs" />
@@ -159,6 +170,8 @@
     <Compile Include="game\DataFile.cs" />
     <Compile Include="game\ModuleTypeGroupXml.cs" />
     <Compile Include="game\CatalogLoader.cs" />
+    <Compile Include="game\SpaceTransit.cs" />
+    <Compile Include="data structures\BodyEnvironment.cs" />
     <Compile Include="game\OrderXml.cs" />
     <Compile Include="Events.cs" />
     <Compile Include="EventsReaders.cs" />
@@ -215,6 +228,7 @@
     <Compile Include="orders\TrainOrder.cs" />
     <Compile Include="orders\UseOrder.cs" />
     <Compile Include="orders\MoveOrder.cs" />
+    <Compile Include="orders\JumpOrder.cs" />
     <Compile Include="orders\IOrderable.cs" />
     <Compile Include="reports\EventReports.cs" />
     <Compile Include="reports\EventReport.cs" />
@@ -222,6 +236,7 @@
     <Compile Include="reports\IReporting.cs" />
     <Compile Include="LineParser.cs" />
     <Compile Include="Research.cs" />
+    <Compile Include="SurveyReports.cs" />
     <Compile Include="orders\LongOrder.cs" />
     <Compile Include="orders\Order.cs" />
     <Compile Include="orders\Orders.cs" />
@@ -242,6 +257,7 @@
     <Compile Include="data structures\SpaceSystem.cs" />
     <Compile Include="data structures\StarType.cs" />
     <Compile Include="data structures\StarTypes.cs" />
+    <Compile Include="data structures\SurveyObjects.cs" />
     <Compile Include="data structures\Technologies.cs" />
     <Compile Include="data structures\Technology.cs" />
   </ItemGroup>

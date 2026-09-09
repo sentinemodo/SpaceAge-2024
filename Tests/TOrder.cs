@@ -775,11 +775,19 @@ namespace UnitTests
             this.consoleOutReport("orders after week 2", testModuleStack.Orders, testFaction);
             Assert.That(testModuleStack.Orders.Count, Is.EqualTo(5));
             Assert.That(testModuleStack.Effects.IsMoving);
+
+            int week = 2;
+            while (testModuleStack.Effects.IsMoving && ((MoveOrder)testModuleStack.Orders[0]).DurationLeft > 1)
+            {
+                testModuleStack.ExecutedLongOrder = false;
+                testModuleStack.Execute(this.game.Week + week);
+                week++;
+            }
             
             // stage three - moving, should complete movement, should find silici
             factories.ItemStacks.Add(new ItemStack(ItemType.All["silici"], 5));
             testModuleStack.ExecutedLongOrder = false;
-            testModuleStack.Execute(this.game.Week + 2);
+            testModuleStack.Execute(this.game.Week + week);
             //this.consoleOutReport("orbit after week 3", testModuleStack.Location, testFaction);
             this.consoleOutReport("orders after week 3", testModuleStack.Orders, testFaction);
             Assert.That(testModuleStack.Orders.Count, Is.EqualTo(3));
@@ -787,32 +795,50 @@ namespace UnitTests
 
             // stage four - added resource, should find tita, should start moving back
             factories.ItemStacks.Add(new ItemStack(ItemType.All["titani"], 5));
+            week++;
             testModuleStack.ExecutedLongOrder = false; 
-            testModuleStack.Execute(this.game.Week + 3);
+            testModuleStack.Execute(this.game.Week + week);
             //this.consoleOutReport("orbit after week 4", testModuleStack.Location, testFaction);
             this.consoleOutReport("orders after week 4", testModuleStack.Orders, testFaction);
             Assert.That(testModuleStack.Orders.Count, Is.EqualTo(2));
             Assert.That(testModuleStack.Effects.IsMoving);
 
-            // stage five - should complete movement           
+            while (testModuleStack.Effects.IsMoving && ((MoveOrder)testModuleStack.Orders[0]).DurationLeft > 1)
+            {
+                week++;
+                testModuleStack.ExecutedLongOrder = false;
+                testModuleStack.Execute(this.game.Week + week);
+            }
+
+            // stage five - should complete movement
+            week++;
             testModuleStack.ExecutedLongOrder = false; 
-            testModuleStack.Execute(this.game.Week + 4);
+            testModuleStack.Execute(this.game.Week + week);
             //this.consoleOutReport("orbit after week 5", testModuleStack.Location, testFaction);
             this.consoleOutReport("orders after week 5", testModuleStack.Orders, testFaction);
             Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
             Assert.That(testModuleStack.Effects.IsMoving, Is.False);
  
             // stage six - should start moving again
+            week++;
             testModuleStack.ExecutedLongOrder = false; 
-            testModuleStack.Execute(this.game.Week + 5);
+            testModuleStack.Execute(this.game.Week + week);
             Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
             //this.consoleOutReport("orbit after week 6", testModuleStack.Location, testFaction);
             this.consoleOutReport("orders after week 6", testModuleStack.Orders, testFaction);
             Assert.That(testModuleStack.Effects.IsMoving);
 
+            while (testModuleStack.Effects.IsMoving && ((MoveOrder)testModuleStack.Orders[0]).DurationLeft > 1)
+            {
+                week++;
+                testModuleStack.ExecutedLongOrder = false;
+                testModuleStack.Execute(this.game.Week + week);
+            }
+
             // stage seven - should complete movement
+            week++;
             testModuleStack.ExecutedLongOrder = false;
-            testModuleStack.Execute(this.game.Week + 6);
+            testModuleStack.Execute(this.game.Week + week);
             Assert.That(testModuleStack.Orders.Count, Is.EqualTo(0));
             //this.consoleOutReport("orbit after week 7", testModuleStack.Location, testFaction);
             this.consoleOutReport("orders after week 7", testModuleStack.Orders, testFaction);

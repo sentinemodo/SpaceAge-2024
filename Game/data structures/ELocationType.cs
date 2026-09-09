@@ -9,6 +9,7 @@ namespace SpaceAge
 		solidSurface,
         liquidSurface,
         orbit,
+		atmosphere,
 		space
 	}
 }

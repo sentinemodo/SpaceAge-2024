@@ -19,13 +19,9 @@ namespace SpaceAge
 			sorted.Sort(delegate(Battle a, Battle b) { return a.Week.CompareTo(b.Week); });
 			foreach (Battle battle in sorted)
 			{
-				if (reportLines.Count > 2)
-				{
-					reportLines.Add("");
-				}
 				reportLines.AddRange(battle.Report(faction));
+				reportLines.Add("");
 			}
-			reportLines.Add("");
 
 			return reportLines;
 		}

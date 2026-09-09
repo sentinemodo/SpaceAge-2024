@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<data>
+	<item>
+		<entry name="food" name-en="unit of food" value="2" size="1" mass="1"/>
+		<entry name="iron" name-en="unit of iron" value="3" size="5" mass="10"/>
+		<entry name="ztest" name-en="zero test" size="1" mass="1"/>
+	</item>
+</data>

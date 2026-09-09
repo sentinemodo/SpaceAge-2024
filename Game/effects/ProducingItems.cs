@@ -64,7 +64,10 @@ namespace SpaceAge
                     this.Duration--;
                     if (this.Duration == 0) 
 					{
-						this.Producer.ItemStacks.Sum(this.ProducedItemStacks);
+						ModuleStack producer = (ModuleStack)this.Producer;
+						ItemStacks output = this.ProducedItemStacks;
+						SkillEffects.ApplyOutputPercent(output, SkillEffects.ItemOutputPercent(producer));
+						this.Producer.ItemStacks.Sum(output);
                         this.Producer.EventReports.Add(week, string.Format("produced {0}.",
 							this.ProducedItemStacks.ReportList));							
 					}

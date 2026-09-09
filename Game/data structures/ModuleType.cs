@@ -267,9 +267,55 @@ namespace SpaceAge
 			set { this.initiative = value; }
 		}
 
+		public int NominalValue { get; set; }
+
 		public bool IsShuttleUnit
 		{
 			get { return this.Group == EModuleTypesGroup.shuttle || this.name == "shuttl" || this.name == "alndrn"; }
+		}
+
+		public static bool IsShipHull(EModuleTypesGroup group)
+		{
+			switch (group)
+			{
+				case EModuleTypesGroup.frigate:
+				case EModuleTypesGroup.corvette:
+				case EModuleTypesGroup.destroyer:
+				case EModuleTypesGroup.cruiser:
+				case EModuleTypesGroup.capital:
+				case EModuleTypesGroup.ark:
+				case EModuleTypesGroup.shuttle:
+				case EModuleTypesGroup.spacecraft:
+					return true;
+				default:
+					return false;
+			}
+		}
+
+		public bool IsShipHullType
+		{
+			get { return IsShipHull(this.Group) || this.IsShuttleUnit; }
+		}
+
+		private string weaponGroup = string.Empty;
+		public string WeaponGroup
+		{
+			get { return this.weaponGroup; }
+			set { this.weaponGroup = value ?? string.Empty; }
+		}
+
+		private string resists = string.Empty;
+		public string Resists
+		{
+			get { return this.resists; }
+			set { this.resists = value ?? string.Empty; }
+		}
+
+		private bool armorModule;
+		public bool ArmorModule
+		{
+			get { return this.armorModule; }
+			set { this.armorModule = value; }
 		}
 
 		public bool IsHangarCraft
@@ -296,6 +342,12 @@ namespace SpaceAge
 		public ItemTypes OperationCondition_AtmosphereResources
 		{
 			get { return this.operationCondition_AtmosphereResources; }
+		}
+
+		private PlanetTypes operationCondition_PlanetTypes = new PlanetTypes();
+		public PlanetTypes OperationCondition_PlanetTypes
+		{
+			get { return this.operationCondition_PlanetTypes; }
 		}
 
         private LocationTypes useCondition_LocationTypes = new LocationTypes();

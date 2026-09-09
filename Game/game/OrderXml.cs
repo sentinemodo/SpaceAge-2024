@@ -132,6 +132,8 @@ namespace SpaceAge
 					return new GiveOrder(subject);
 				case "has":
 					return new HasOrder(subject);
+				case "jump":
+					return new JumpOrder(subject);
 				case "move":
 					return new MoveOrder(subject);
 				case "name":

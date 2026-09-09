@@ -1,12 +1,12 @@
 # Player order syntax
 
-Checked **22 Aug 2026** against engine **0.1.148** (`Game/Program.cs`).
+Checked **9 Sep 2026** against engine **0.1.158** (`Game/Program.cs`).
 
-Sources: `Game/orders/EOrderType.cs`, `Game/orders/OrdersReader.cs`, `Game/orders/Orders.cs`, `Game/Game.cs` (week loop, `GenerateOffers`), `Game/Program.cs` (`/no-turn`, `/check`), `Game/Research.cs` (weekly output, breakthrough, preference), `Game/data structures/ModuleStack.Upkeep.cs` (sick bay, medical consume, quarterly maintenance), `Game/data structures/Galaxy.cs` (`LoadXml` / `LoadExits`), `Game/data structures/Exits.cs` / `ExitMode.cs` / `Region.cs` (region **Exits:** lines), `Game/data structures/Faction.cs` (blank line before `Bank report:`), `Game/reports/ReportWriter.cs` (faction report sections and blank lines), `Game/battle/Battles.cs` (blank line between consecutive battles), `Game/game/DataFile.cs` (`LoadOrders` / `SaveOrders` delegate to `OrderXml`), `Game/game/OrderXml.cs` (XML switch), `Game/game/ModuleTypeGroupXml.cs` (`RESEARCH GROUP` tokens), `Game/effects/Effects.cs` (`LoadXml` effect types), `Game/effects/Producing.cs` (omit empty `technology=`), each `Game/orders/*Order.Parse` / `Execute`. Sample prefix usage: `Tests/SampleGame/orders.*.txt`.
+Sources: `Game/orders/EOrderType.cs`, `Game/orders/OrdersReader.cs`, `Game/orders/Orders.cs`, `Game/orders/JumpOrder.cs`, `Game/orders/MoveOrder.cs`, `Game/orders/LongOrder.cs` (`CanOperate`, atmosphere and effective location), `Game/game/SpaceTransit.cs` (`f(ΔAU)`, mass factor, baked space-exit weeks), `Game/Game.cs` (week loop, `GenerateOffers`), `Game/Program.cs` (`/data`, `/turn-dir`, `/reports`, `/no-turn`, `/check`), `Game/Research.cs` (weekly output, breakthrough, preference, space-object proximity and reveal), `Game/SurveyReports.cs`, `Game/data structures/SurveyObjects.cs`, `Game/data structures/ModuleStack.Upkeep.cs` (sick bay, medical consume, quarterly maintenance, high-gravity bill), `Game/data structures/Galaxy.cs` (`LoadXml` / `LoadExits` / save of environment attrs, belt and alderson exits), `Game/data structures/Alderson.cs` (`PairName`, orbit only), `Game/data structures/Belt.cs` (`LocationType` space), `Game/data structures/Planet.cs` / `Moon.cs` (`HasEnvironmentAttrs`), `Game/data structures/ELocationType.cs` (`atmosphere`), `Game/data structures/BodyEnvironment.cs` (`EffectiveLocationType`, `HasAtmosphereResources`, `LaunchSurcharge`, `SurfaceOrbitSurcharge`, `BansNonShuttleSurfaceHop`, settlement temperature, gravity), `Game/data structures/Orbit.cs` (`HasAtmosphere`, orbit resources), `Game/data structures/ModuleType.cs` (`IsShipHullType` / `IsShuttleUnit`), `Game/data structures/Exits.cs` / `ExitMode.cs` / `Region.cs` (region **Exits:** lines), `Game/data structures/Faction.cs` (blank line before `Bank report:`), `Game/reports/ReportWriter.cs` (faction report sections and blank lines), `Game/battle/Battles.cs` (blank line between consecutive battles), `Game/game/DataFile.cs` (`LoadLocationType`, `LoadOrders` / `SaveOrders` delegate to `OrderXml`), `Game/game/OrderXml.cs` (XML switch, including `jump`), `Game/game/ModuleTypeGroupXml.cs` (`RESEARCH GROUP` tokens), `Game/game/CatalogLoader.cs` (`planet-atmosphere`, `location-type`), `Game/effects/Effects.cs` (`LoadXml` effect types), `Game/effects/Producing.cs` (omit empty `technology=`), each `Game/orders/*Order.Parse` / `Execute`. Sample prefix usage: `Tests/SampleGame/orders.*.txt`.
 
 Not source of truth: `Game/documentation/Rules.txt`. Turn order files are **Windows-1251** (same as reports). Verbs are case-insensitive; most arguments are not.
 
-**26** verbs parse from text (`OrdersReader` switch): **20 immediate**, **6 long**. See [Turn sequence](#turn-sequence), [Immediate vs long](#immediate-vs-long), and [Text vs XML](#text-vs-xml).
+**27** verbs parse from text (`OrdersReader` switch): **20 immediate**, **7 long**. See [Turn sequence](#turn-sequence), [Immediate vs long](#immediate-vs-long), and [Text vs XML](#text-vs-xml).
 
 ## Prefixes and subjects
 
@@ -65,15 +65,32 @@ From `Game.exe` (`Program.Main`) and `Game.Execute`. A turn is **13 weeks**. Com
 
 ### Host pipeline
 
-1. Load catalog (`data.xml`) and the saved game.
-2. `Request.Load` and `EventsReaders.Load` are **stubs** (return 0 / null). `Game.Events.Execute` is also a stub (returns 0). No GM events run.
-3. Load `order.*` files (`OrdersReader`).
-4. `Game.Execute` (below).
-5. Write faction reports (`ReportWriter.GenerateFactionReport`), then save the game. Text reports insert **blank lines** between major sections: after the engine-version line, after the stub events block, between declared stances and `Bank report:` when declarations exist (`Faction.Report`), before/after `Technology reports:` when that section is present, before `Battles report:`, between consecutive battles (`Battles.Report`), after each space system, and before each visible region. The galaxy block ends with a blank line.
+`Program.Main` is public. Engine version **0.1.158** (`Program.EngineVersion`). Flags share one parse loop: `/reports` and `/no-turn` are bare switches (no following argument); `/data`, `/turn-dir`, and `/check` take the next token.
 
-`/no-turn` skips the 13 weeks: load orders, run **between-turn** immediates only (`AllowedBetweenTurns` — live text verbs: `CONTRACT`, `PRESS`), write announcements (`announce.{turn}.{faction}.txt` for new contracts at that location and for press releases), save.
+| Flag | Argument | Effect |
+| ---- | -------- | ------ |
+| `/data` | directory | Catalog and saved-game directory (default: cwd). |
+| `/turn-dir` | directory | Orders, reports, and announcements directory (default: cwd). |
+| `/reports` | none | After load, write faction reports only (below). |
+| `/no-turn` | none | After load, between-turn orders only (below). |
+| `/check` | filename | Stub. Stores the argument, then `OrdersReader.Check` returns 0. Does not parse or execute. |
 
-`/check` is a **stub** (`OrdersReader.Check` returns 0). The host stores the filename argument, then ignores it and does not parse or execute.
+Always: load catalog (`data.xml`) and the saved game. Then one branch (`/check` wins if a filename was stored):
+
+**`/check`:** stub only. No orders, no Execute, no reports, no save.
+
+**`/reports`:** `ReportWriter.GenerateReports(turn_dir)` only. No order load, no events, no `Game.Execute`, no `SaveGame`. Filenames use the **saved** `turn` (seed `turn="1"` writes `report.1.{faction}.txt` into `/turn-dir`). Faction XML (`report.{turn}.{faction}.xml`) is written when that faction’s `xml-report` option is true (default). Does not increment the turn and does not write `gameout`.
+
+**`/no-turn`:** load orders, run **between-turn** immediates only (`AllowedBetweenTurns` — live text verbs: `CONTRACT`, `PRESS`), write announcements (`announce.{turn}.{faction}.txt` for new contracts at that location and for press releases), save.
+
+**Full run** (none of the above):
+
+1. `Request.Load` and `EventsReaders.Load` are **stubs** (return 0 / null). `Game.Events.Execute` is also a stub (returns 0). No GM events run.
+2. Load `order.*` files (`OrdersReader`).
+3. `Game.Execute` (below) — `turn++` first, so seed `turn="1"` becomes turn 2.
+4. Write faction reports (`ReportWriter.GenerateReports`), then save the game (`gameout.{turn}.xml` into `/data`). After that increment the files are `report.2.{faction}.txt` (and `.xml` when `xml-report` is true) plus `gameout.2.xml`.
+
+Text reports insert **blank lines** between major sections: after the engine-version line, after the stub events block, between declared stances and `Bank report:` when declarations exist (`Faction.Report`), before/after `Technology reports:` when that section is present, before/after **`Survey reports:`** when that section is present (between technology reports and battles), before `Battles report:`, between consecutive battles (`Battles.Report`), after each space system, and before each visible region. The galaxy block ends with a blank line.
 
 ### Each turn (`Game.Execute`)
 
@@ -96,13 +113,15 @@ After week 13: **quarterly maintenance**, then **quarterly wounded outcome**, th
 
 **Quarterly maintenance** (`ExecuteMaintenance`, once, week 13): cash upkeep, then food, then terran air `[terair]` if the stack needs canned air (orbit, space, or a moon region). Bills auto-GET from this stack’s own nest (self, then nested children), then the parent chain, then other same-owner stacks at the same location. Cash shortfall can also debit the faction bank. When cash (or any other upkeep item) is actually deducted (`taken > 0`), the stack logs `week 13: paid N cash [cash] upkeep.` (`ItemType.ReportName` is `cash [cash]`; same `paid N {item} upkeep.` shape for food/air). Each formed stack pays its own `UpkeepNetto` (`localUpkeep` does not roll nested children into the parent bill). Nested hangar craft still pay if they remain nested through week 13; after hangar launch they pay as roots (4 alien fighter drones `[alndrn]` at 20 cash each = `paid 80 cash [cash] upkeep.`). Unpaid food/air can wound healthy terrans (catalog 25%). Unpaid cash can damage the module or print race off-duty. `medici` is skipped here (already weekly).
 
-**Quarterly wounded outcome** (once, week 13): each remaining `wndtrn` rolls independently — **25%** die of wounds, **25%** recover to terran, **50%** stay wounded. Not gated on medici. `madtrn` is not rolled here.
+**High gravity** (`BodyEnvironment.GravityAt` == `high`): that stack’s local cash bill is multiplied by **1.5** (ceiling). Stacks with people or `population-maximum` > 0 also add **2 food**. Planets with no `gravity` attribute load as `normal`; moons with no attribute load as `low`. SampleGame maps have no `gravity=` attrs, so this surcharge does not fire there.
+
+**Quarterly wounded outcome** (once, week 13): each remaining `wndtrn` rolls independently — **25%** die of wounds (`roll < 25`), **25%** recover to terran (`roll ≥ 75`), **50%** stay wounded. An officer anywhere on the stack (including nested modules) with trained **`hmedic`** skill lowers the recover threshold by that skill’s catalog `cure-chance` (e.g. `25` → recover at `roll ≥ 50`). Death threshold is unchanged. Not gated on medici. `madtrn` is not rolled here.
 
 **End of turn (once):**
 
 - Bank: quarterly interest (`AddQuarterlyInterest`). Balance is stored and reported as **whole credits** (rounded half away from zero).
 - `UpdateRates` — empty (comments only).
-- `GenerateOffers` — NPC faction `[1]` stacks whose module type is `city` auto-list on-hand inventory as `SellItems` `Offer`s (same objects as XML `<selling>`; not leftover player `SELL` orders). Skips cash. Skips an item type if that city already has a **buy or sell** offer for it (no simultaneous buy+sell of the same type; standing offers are not rewritten, so existing NPC city sells **remain** at their saved quantity and price). Quantity for a **new** listing is on-hand; price is `Market.GetPrice`; skip if price ≤ 0. Farms and other non-city stacks are not auto-listed. Listings appear on this turn’s reports and save; weekly buy matching (step 6) can hit them from **next** turn. Duration-0 leftover `receiving-items` on cities (old market delivery) **persist** after save but **never complete**; there is no player verb that clears them.
+- `GenerateOffers` — NPC faction `[1]` stacks whose module type is `city` auto-list on-hand inventory as `SellItems` `Offer`s (same objects as XML `<selling>`; not leftover player `SELL` orders). Skips cash. Skips an item type if that city already has a **buy or sell** offer for it (no simultaneous buy+sell of the same type; standing offers are not rewritten, so existing NPC city sells **remain** at their saved quantity and price). Quantity for a **new** listing is on-hand; price is `Market.GetPrice` (regional average if any region posted a price, else catalog nominal `value`, else 0); skip if price ≤ 0. Farms and other non-city stacks are not auto-listed. Listings appear on this turn’s reports and save; weekly buy matching (step 6) can hit them from **next** turn. Duration-0 leftover `receiving-items` on cities (old market delivery) **persist** after save but **never complete**; there is no player verb that clears them.
 
 Standing `@buy` / `@sell` stay on the order list and retry each week at step 6. NPC city auto-listings have no leftover `SELL` and persist as market `Offer`s. `ATTACK` / `TACTIC` / `DECLARE` during step 2 only set stance; shooting is step 7.
 
@@ -123,12 +142,12 @@ The two kinds are independent except where you chain them with `-` / `+`. An imm
 | Duration              | Finishes in the week it succeeds (or retries later)                            | Occupies the long slot for `Duration` weeks (`use-time`, produce duration, move legs, …) |
 | Needs an active stack | No (probes and cargo still have their own checks)                              | Yes: formed, enough crew and energy (`CanOperate`)                                       |
 | Repeat `N` / `@`      | Succeed up to N weeks, or every week forever                                   | Complete N full durations, or never stop                                                 |
-| After a turn          | Dropped when `Executed` and repeat is used up; otherwise stays on the template | Same; in-progress work is kept as an effect (`Moving`, `Producing*`, `Training*`, `Receiving*`, `Fuelled`; `lightly-damaged` is a module marker). Those types **load again** after save (`Effects.LoadXml`). |
+| After a turn          | Dropped when `Executed` and repeat is used up; otherwise stays on the template | Same; in-progress work is kept as an effect (`Moving`, `Producing*`, `Training*`, `Receiving*`, `Fuelled`; `lightly-damaged` is a module marker). Those types **load again** after save (`Effects.LoadXml`). `JUMP` has no effect type (same-week hop). |
 
 
 **Immediate** orders are setup, probes, cargo, module transfers, stance, and stacking. They do not consume the week’s long slot. `FORM`, `GET`, `GIVE`, and `TRANSFER` can all fire the same week as a `USE` or `MOVE`.
 
-**Long** orders are the week’s work: move, produce, repair, research, train, use. A second long on the same subject waits until the first completes (or until its conditions clear). Accepting modules mid-week can mark the receiver as having already used its long slot.
+**Long** orders are the week’s work: jump, move, produce, repair, research, train, use. A second long on the same subject waits until the first completes (or until its conditions clear). Accepting modules mid-week can mark the receiver as having already used its long slot. `JUMP` occupies the long slot but does **not** call `CanOperate` (see [JUMP](#jump)).
 
 `CONTRACT` and `PRESS` are immediate and also **allowed between turns** (`/no-turn`). No other live text verb is.
 
@@ -319,7 +338,7 @@ Succeeds if that stack or person is at the observer’s location. Both person wo
 
 **Subject:** offerent.
 
-Lists a standing sell (`Offer`) and keeps a leftover `SELL` on the template. Matching is driven from the buy side; Execute does not complete the trade itself. `AT AVERAGE` uses the local market price. Sample: `-sell 1 wnplnt`. Same technology-id rule as BUY (no trailing `technology` word). NPC city auto-listings are `Offer`s only (no leftover `SELL`); see [Turn sequence](#turn-sequence).
+Lists a standing sell (`Offer`) and keeps a leftover `SELL` on the template. Matching is driven from the buy side; Execute does not complete the trade itself. `AT AVERAGE` uses `Market.GetPrice` (regional average if any region posted a price, else catalog nominal `value`, else 0). Sample: `-sell 1 wnplnt`. Same technology-id rule as BUY (no trailing `technology` word). NPC city auto-listings are `Offer`s only (no leftover `SELL`); see [Turn sequence](#turn-sequence).
 
 ### SET
 
@@ -362,7 +381,21 @@ Moves `n` modules of this stack’s type onto an **existing** receiver. `n` must
 
 ## Long orders
 
-MOVE, PRODUCE, REPAIR, RESEARCH, TRAIN, USE.
+JUMP, MOVE, PRODUCE, REPAIR, RESEARCH, TRAIN, USE.
+
+### JUMP
+
+**Syntax:** `JUMP <alderson-id>`
+
+**Subject:** modulestack.
+
+Alderson-gate hop. Parse takes **one** token; it must be an **Alderson Gate** id in `Alderson.All` (not a planet, region, orbit, moon, belt, or star). Throws `Bad syntax or unknown JUMP destination` otherwise. Text and XML both parse (`OrderXml` case `jump`). Leftover XML is `<jump destination="…"/>` (the gate id) plus optional `duration-left`. There is no `Report` override: a leftover that is still `NotExecuted` prints `jump` with no destination.
+
+**Who:** `ModuleType.IsShipHullType` — groups `frigate`, `corvette`, `destroyer`, `cruiser`, `capital`, `ark`, `shuttle`, `spacecraft`, or a shuttle unit (`shuttl`, `alndrn`). Else `JUMP failed. Only ships can jump.` Unformed (null module type) fails with no event line.
+
+**Where:** the stack must be in an **orbit whose holder is an Alderson Gate** (`orbit.OrbitHolder as Alderson`). Planet/moon orbits and all regions fail (`GateAt` returns null). That gate must have XML `pair` set (`Alderson.PairName`). Else `JUMP failed. Unit is not at an Alderson Gate.` The destination gate’s **name** must equal that `pair` value. Else `JUMP failed. Destination is not the paired Gate.` Pairing is one-way (only the origin’s `pair` is checked). Gates have **orbit only, no regions** — frigates occupy the gate orbit; they do not land. SampleGame maps have no `<alderson>` objects, so JUMP parse fails there. Campaign maps pair gates (e.g. Helios Gate `[P00009]` ↔ Fomal Gate `[P00010]`). Planet `pair` is unused by JUMP.
+
+**Execute:** occupies the long slot (`base.Execute`). Does **not** call `CanOperate` (crew, energy, `operate-in`, and disabled stacks do not block). Does not consume fuel and does not start a `Moving` effect. Duration is 1 and completes in the **same** week: logs `jumping to {gate ReportName}, ETA 1.` then sets `Parent` to the arrival and logs `arrived at {arrival ReportName} via JUMP.` Arrival is the destination gate’s `Orbit`. Nested children stay nested on the jumper; a nested shuttle issued JUMP unnests to the arrival. Failure and success both set `Executed` (long `Executed` is not cleared each week, so `@jump` does not retry). Repeat `N` is not decremented on arrival.
 
 ### MOVE
 
@@ -370,18 +403,75 @@ MOVE, PRODUCE, REPAIR, RESEARCH, TRAIN, USE.
 
 **Subject:** modulestack.
 
-Walks a route. Each dest token is a **region**, **star**, **planet**, **moon**, **anomaly**, or **orbit** id (stars/planets/moons/anomalies resolve to their orbit). Starts a `Moving` effect, consumes fuel when required, changes parent on arrival.
+Walks a route. Each dest token is a **region**, **star**, **planet**, **moon**, **belt**, **alderson**, **anomaly**, or **orbit** id. Stars, planets, moons, anomalies, and Alderson Gates resolve to their **orbit**. A **belt** token is the belt itself (location-type **space**, not a landing). Starts a `Moving` effect, consumes fuel when required, changes parent on arrival.
 
-**Exits on the report:** a **region** block includes `Exits:` (`Region.Report` → `Exits.Report`). A region destination prints `{name} [id] (x,y), {region type}, {ground|space} travel duration N week(s).` An **orbit** destination prints `orbit [id], space travel duration N week(s).` (no region-type clause). Orbit reports do not list exits. Maps without `orbit=` exits (SampleGame) never show that line.
+**Exits on the report:** a **region** block includes `Exits:` (`Region.Report` → `Exits.Report`). A region destination prints `{name} [id] (x,y), {region type}, {ground|naval|space} travel duration N week(s).` A non-region destination prints that location’s `ReportName` plus the mode duration — `orbit [id], space travel duration N week(s).` for an orbit, or `{name} [id] at AU N, belt, space travel duration N week(s).` for a belt. Orbit reports and `Belt.Report` do not list exits (belt exits still exist in the save and are used by MOVE). Maps without `orbit=` / `belt=` / `alderson=` exits (SampleGame) never show those lines.
 
-**Duration** (`movementDuration`) is not always the printed exit duration:
+**Orbit atmosphere line** (`Orbit.HasAtmosphere`): each orbit header ends with `, has atmosphere` or `, has no atmosphere`. True when the orbit has `<resource>` or `<race>` entries, or the parent planet/moon has races, or parent `atmosphere` ≠ `none` (any non-none band — thin, terair, hostile — counts). Optional `suitable for {race}` lists orbit and inherited body races.
 
-- Same-planet **region → region**: ground; weeks = ceil(exit ground duration / mover Speed). Needs a ground exit from here.
-- Same-parent **region ↔ orbit** (e.g. Luna `R00011` → `O00004`): space; **1 week**, even if the exit lists 2. Needs a space-capable mover (or nested space stack).
-- Same-planet **planet orbit ↔ moon orbit**: space; weeks from AU distance / (mass capacity / mass).
-- Other hops are not implemented.
+**Duration** (`movementDuration`) is not always the printed exit duration. Space hops use `SpaceTransit` (`Game/game/SpaceTransit.cs`). `JUMP` is a separate 1-week hop and does **not** use AU.
 
-A stack with a **space** move mode may attempt a hop even when the current location lists no matching exit. Ground-only stacks need an exit from here to the dest.
+- Same-planet **region → region**: ground or naval (`tryCompatibleSurfaceMode`); weeks = ceil(exit duration / mover Speed). Needs a compatible surface exit from here. If that surface match fails, a listed space exit uses baked space-exit weeks (below); otherwise AU weeks.
+- Same-parent **region ↔ orbit** (e.g. Arbor surface → Arbor orbit): space; **1 week**, even if the exit lists more. Needs a space-capable mover (or nested space stack). Then the surface↔orbit environment rules below run before departure.
+- **Belt** hops (current or dest is a belt): space. A listed space exit uses baked space-exit weeks; otherwise AU weeks. Occupying a belt is **space**, not a landing — there is no solid surface.
+- Region ↔ orbit with a **listed space exit** (different parent — typically a surface region to a Gate orbit): baked space-exit weeks. No listed exit: AU weeks. Alderson Gates have **orbit only, no regions**. Frigates occupy the Gate orbit; they do not land.
+- **Orbit ↔ orbit** (planet, moon, Gate, or other): space; AU weeks. ΔAU is `|BodyAu(here) − BodyAu(dest)|` (a moon is `planet.AU + moon.AU`).
+- Any other hop: listed space exit → baked space-exit weeks; else AU weeks.
+
+A stack with a **space** move mode may attempt a hop even when the current location lists no matching exit (`isWay` returns true). Ground- or naval-only stacks need an exit from here to the dest. Unformed stacks fail with `MOVE failed. unformed units cannot move.`
+
+#### Space weeks (`SpaceTransit`)
+
+Catalog space `speed` omitted defaults to **1**. Effective speed is that catalog speed (max of this stack and nested space movers) times a mass factor. Thrust is the sum of nested space `mass-capacity` (this stack plus children). Zero thrust leaves the mass factor at 1.
+
+```
+load = (sum nested space mass-capacity) / max(Mass, 1)
+massFactor = clamp(load / (40000 / 4150), 0.67, 1.50)
+effectiveSpeed = catalogSpaceSpeed × massFactor
+```
+
+**AU hops** (`DurationWeeks` → `DurationWeeksFromRaw` → `RoundUpWeeks`): ΔAU ≈ 0 is 1 week. Speed ≤ 0 treated as 1.
+
+```
+if ΔAU < 0.1:
+    f = 50 × ΔAU                    // moon-scale; no premature floor
+else:
+    f = 6 + 33 × ln((1 + ΔAU) / 2.7) / ln(80 / 2.7)
+
+if f ≈ 1.0: weeks = 1               // bypass mass/speed (same-body orbit hops)
+else: weeks = RoundUpWeeks(f / effectiveSpeed)
+```
+
+`RoundUpWeeks` = `max(1, ceil(weeks − ε))` — one ceil after dividing by `effectiveSpeed`. When `f` is exactly 1 week at speed 1, duration stays **1** even if mass factor < 1 (cargo hull).
+
+The log is the two-point fit through (1.7, 6) and (79, 39). Default workshop frigate (one `[fustor]`, mass **4150**, mass factor **1.00**, speed **1**):
+
+| Hop | ΔAU | Weeks |
+|-----|-----|-------|
+| Planet → moon | 0.04 | **2** |
+| Planet → belt | 1.7 | **6** |
+| Planet → gas giant | 4.2 | **13** |
+| Planet → Alderson Gate | 79 | **39** |
+
+Scout (factor 1.50) / cargo (factor 0.67) on the same hops: moon 2 / 3, belt 4 / 9, gas giant 9 / 19, Gate 26 / 59. SampleGame `rctdrv` / `autdrv` list thrust **10000** (omitted speed → 1); a default-mass hull then hits the **0.67** clamp.
+
+**Baked space exits** (`ExitDurationWeeks`): `RoundUpWeeks(exitDuration / effectiveSpeed)`. Same-body surface↔orbit stays **1 week** and does not use this formula. `JUMP` stays **1 week**, not AU.
+
+#### Surface↔orbit environment
+
+Same-body region↔orbit only (`BodyEnvironment.IsSurfaceOrbitHop`). Runs once when the hop starts (`MovingTo` is still empty). Failures set `Executed` (the leftover is consumed; `@move` does not retry).
+
+**Ship landing ban** (`BansNonShuttleSurfaceHop`): a non-shuttle **ship hull** (`IsShipHullType` and not `IsShuttleUnit` — frigates, corvettes, …) cannot hop region↔orbit when the surface body **emitted** environment attrs and `atmosphere` is not `none`. Fail: `MOVE failed. Spaceships cannot use solid-surface exits on atmospheres.` Shuttles (`shuttl`, `alndrn`, group `shuttle`) still ferry. Vacuum moons (`atmosphere="none"`, e.g. Selene) stay landable for frigates. Bodies that **omit** `gravity` / `temperature` / `atmosphere` (SampleGame Earth) stay landable. Save writes those three attrs only when they were emitted (`HasEnvironmentAttrs`).
+
+**Launch surcharge** (`LaunchSurcharge` / `SurfaceOrbitSurcharge`): same hop, **both ways**, consumes oxyhydro `[h2o2]` from the mover or nested cargo when the body emitted environment attrs. Quantity is a table of gravity × atmosphere (hostile adds 4):
+
+| Gravity | Atmosphere `none` | Other atmosphere (`thin` / `terair` / `hostile`) |
+| ------- | ----------------- | ------------------------------------------------ |
+| high    | 16                | 16 (+4 if hostile → 20)                          |
+| normal  | 4                 | 8 (+4 if hostile → 12)                           |
+| low     | 0                 | 2 (+4 if hostile → 6)                            |
+
+Arbor / Anvil (`normal` + `terair`) = **8** `h2o2` both ways. Selene (`low` + `none`) = **0**. Omitted attrs (SampleGame Earth) = **0**. Short cargo: `MOVE failed. Not enough unit of oxyhydro [h2o2] for launch.` Success logs `consumed {N units of oxyhydro [h2o2]} for launch.` (or `for launch for {mover}.` if a nested holder paid). This is separate from drive fuel (`needFuel`).
 
 ### PRODUCE
 
@@ -391,13 +481,19 @@ A stack with a **space** move mode may attempt a hop even when the current locat
 
 Starts energy or item production using the stack’s module type (`ProducingEnergy` / `ProducingItems`), duration from `ProduceDuration`. Energy production has no catalog technology (null Technology); save omits empty `technology=` so the leftover `producing-energy` effect loads. Those effects survive save/load; a leftover `@produce` does **not** reconnect to them (unlike leftover `USE`). Sample: `@produce cash`, `@produce energy`, `@produce terran`.
 
+**Location and atmosphere** (`LongOrder.CanOperate`): module `operation-allowed-in location-type` is checked against `BodyEnvironment.EffectiveLocationType` (not raw `Location.LocationType`). Catalog values: `solid-surface`, `liquid-surface`, `orbit`, `atmosphere`, `space`. A **gas-giant orbit** whose parent planet emitted `atmosphere` ≠ `none` counts as **`atmosphere`** (e.g. ram scoop `[ramsco]` with `location-type="atmosphere"` — fixture catalog `Tests/fixtures/gas-atmosphere/data-ramsco.xml`, not main SampleGame `Tests/data.xml`). Habitable or vacuum orbits stay `orbit`.
+
+Module `operation-allowed-in planet-atmosphere="…"` names an atmosphere **band token** (`terair`, `thin`, `hostile`, `none` — same strings as map `atmosphere=` attrs). `BodyEnvironment.HasAtmosphereResources` passes when the location’s orbit `<resource>` list includes that item type, or the parent body’s atmosphere band matches, or the parent **did not** emit explicit environment attrs (`HasEnvironmentAttrs`: any of `gravity`, `temperature`, `atmosphere` on planet/moon XML). When attrs were emitted and the band does not match, the week logs `PRODUCE failed: {module} cannot operate in {location}.` SampleGame Earth omits those attrs, so wind plants and other `terair` modules still produce there. Explicit `atmosphere="none"` on a sea body blocks them (unit test fixture).
+
+Module `operation-allowed-in planet-type="…"` restricts passive operations to the parent planet or moon’s catalog type (e.g. `gasgnt` for ram scoops). Checked via `BodyEnvironment.MatchesPlanetType`; same `cannot operate in {location}` failure line as the other gates.
+
 ### REPAIR
 
 **Syntax:** `REPAIR`
 
 **Subject:** modulestack only.
 
-Spends spare parts (`spare`) and restores damage on the stack (or its parent scope). Engineering shop `[engshp]` restores **20 damage per active copy** and consumes **1 spare per copy**; otherwise **10 damage for 1 spare**; **1 damage** if unsupplied. Event: `repaired N damage.`
+Spends spare parts (`spare`) and restores damage on the stack (or its parent scope). Engineering shop `[engshp]` restores **20 damage per active copy** and consumes **1 spare per copy**; otherwise **10 damage for 1 spare**; **1 damage** if unsupplied. Event: `repaired N damage.` For a slower tech path that consumes spare at job start, use **`USE repair`** (see [USE](#use)).
 
 ### RESEARCH
 
@@ -413,9 +509,13 @@ Spends spare parts (`spare`) and restores damage on the stack (or its parent sco
 
 **Subject:** modulestack (must be group **research**).
 
-Weekly output is catalog `research-output` × module count (`Research.WeeklyOutput`; computer library `[cmplib]` is 1). Breakthrough is a weekly hazard against the cheapest available tech cost (`Research.RollBreakthrough`; default cost 8, 16, 32… by level, catalog `cost` overrides). Else points accumulate. Preference (`RESEARCH TECHNOLOGY` / `GROUP` / `TAG` / …) is a ~50% pick from the matching subset (`PreferredTechnologies`). Bare tokens resolve in this order: existing **stack id**, known **technology**, **tag** (such as `military`), **item**, **module**, then **map object** (moon/planet/region/orbit). `TAG` forces a tag preference even when the token is also a technology id. `RESEARCH TAG repair` prefers catalog techs whose `tags` include `repair`: medical services `[medtec]`, medicines refining `[medirf]`, preventive servicing `[servic]`, and engineering shop `[engshp]` (`engshp` also keeps `production`). `RESEARCH TAG research` prefers file indexing `[filidx]`, advanced computing `[advres]`, sick bay construction `[sckcns]`, and shipboard pharmacy `[pharms]`. Bare `research repair` still matches technology **repair and maintenance** `[repair]` (that id has no `repair` tag). Bare `research military` is a **tag**; `research group military` is a **group**.
+Weekly output is catalog `research-output` × module count plus **`produce effect="research output"`** from trained officers anywhere on the lab stack whose `usable-in` matches the lab root (`Research.WeeklyOutput`; computer library `[cmplib]` is 1; sensor officer `[snsroff]` adds +1 per officer in Tests catalog). Breakthrough is a weekly hazard against the cheapest available tech cost (`Research.RollBreakthrough`; default cost 8, 16, 32… by level, catalog `cost` overrides). Else points accumulate. Preference (`RESEARCH TECHNOLOGY` / `GROUP` / `TAG` / …) is a ~50% pick from the matching subset (`PreferredTechnologies`). Bare tokens resolve in this order: existing **stack id**, known **technology**, **tag** (such as `military`), **item**, **module**, then **space object** (star, planet, moon, belt, region, or orbit id). `TAG` forces a tag preference even when the token is also a technology id. `RESEARCH TAG repair` prefers catalog techs whose `tags` include `repair`: medical services `[medtec]`, medicines refining `[medirf]`, preventive servicing `[servic]`, and engineering shop `[engshp]` (`engshp` also keeps `production`). `RESEARCH TAG research` prefers file indexing `[filidx]`, advanced computing `[advres]`, sick bay construction `[sckcns]`, and shipboard pharmacy `[pharms]`. Bare `research repair` still matches technology **repair and maintenance** `[repair]` (that id has no `repair` tag). Bare `research military` is a **tag**; `research group military` is a **group**.
 
-`GROUP` uses `ModuleTypeGroupXml` tokens: `agricultural`, `command`, `energy`, `extraction`, `frigate`, `habitat`, `infantry`, `military`, `production`, `propulsion`, `research`, `settlement`, `spacecraft`, `space station`, `storage`, `vehicle`. Quote `"space station"` (`GetQuotedToken`); load also accepts aliases `spacestation` and `spaceStation`. Save writes `group="space station"`, not enum `spaceStation`. Unknown names fall back to untyped `Any`. GROUP prefers techs whose `usable-in` module group or produced module group matches the stored token: `research group settlement` / `frigate` / `storage` prefer those catalog groups. The stored `space station` token does not equal the engine name `spaceStation`, so that preference currently matches nothing.
+**Space-object survey reveal:** when the target is a space-object id (not a wreckage stack id), each week that passes the proximity gate queues that body’s catalog **`description=`** for the faction report under **`Survey reports:`** (`SurveyReports.QueueIfNew` → `ObjectsToShow`; after the report, `AllShown` moves it to `ObjectsSeen`). Each body is shown **once per faction**, like technology reports; objects with no `description` are skipped. Turn **1** reports auto-seed the home **star** and home **planet** blurbs for player factions **2–11** (from the faction’s `corphq` location; `SurveyReports.SeedTurnOneHomeBlurbs`).
+
+**Proximity** (`Research.IsResearcherAtSpaceObject`): the lab must be at the target **orbit**, **region**, or **belt**, or on the target **planet** or **moon**’s orbit or one of its surface regions. **Stars** have no proximity gate (any star id passes). If proximity fails, the week logs `RESEARCH failed: {lab} is not at {object}.` and **no research points accrue** that week. When proximity passes (or the target is a star), reveal is queued if new and the week proceeds normally — RP accrue or a breakthrough roll as for any other `RESEARCH`. Space-object preference still biases breakthroughs toward technologies that produce or consume resources found on that body (`Research.ResourcesOf`).
+
+`GROUP` uses `ModuleTypeGroupXml` tokens: `agricultural`, `ark`, `capital`, `command`, `corvette`, `cruiser`, `destroyer`, `energy`, `extraction`, `frigate`, `habitat`, `infantry`, `military`, `production`, `propulsion`, `research`, `settlement`, `shuttle`, `spacecraft`, `space station`, `storage`, `vehicle`. Quote `"space station"` (`GetQuotedToken`); load also accepts aliases `spacestation` and `spaceStation`. Save writes `group="space station"`, not enum `spaceStation`. Unknown names fall back to untyped `Any` (`parseModuleTypeGroup` catch). GROUP prefers techs whose `usable-in` module group or produced module group matches the stored token: `research group settlement` / `frigate` / `storage` prefer those catalog groups. The stored `space station` token does not equal the engine name `spaceStation`, so that preference currently matches nothing. SampleGame `Tests/data.xml` has no `corvette` / `destroyer` / `cruiser` / `capital` / `ark` module groups. Campaign `campaign/data.xml` emits `group="frigate"` on patrol hull `[sshull]` and distinct groups on `corhul` (`corvette`), `deshul` (`destroyer`), `cruhul` (`cruiser`), and `arkhul` (`ark`).
 
 ### TRAIN
 
@@ -438,7 +538,9 @@ Starts `TrainingSkill` or `TrainingOfficer` (officer requires matching crew of t
 
 **Subject:** modulestack.
 
-Uses a loaded (or level-0) technology: consumes catalog inputs and after `use-time` produces items or a module. `AS` names the new module stack; `FOR` is the nest parent. `AS` and `FOR` are independent (`use wndtrb for 000021` is valid). Level 0 techs do not need to be copied onto the stack. Duration scales with `UseTime`, efficiency, and active quantity. `use-allowed-in` can restrict both module **group** and a specific module type (`module="sckbay"` for shipboard pharmacy `[pharms]`).
+Uses a loaded (or level-0) technology: consumes catalog inputs and after `use-time` produces items or a module. `AS` names the new module stack; `FOR` is the nest parent. `AS` and `FOR` are independent (`use wndtrb for 000021` is valid). Level 0 techs do not need to be copied onto the stack. Duration scales with `UseTime`, efficiency, and active quantity. `use-allowed-in` can restrict module **group**, a specific module type (`module="sckbay"` for shipboard pharmacy `[pharms]`), **location-type** (against `BodyEnvironment.EffectiveLocationType` — gas-giant orbits with atmosphere ≠ `none` count as `atmosphere`), **planet-type**, and **planet-atmosphere** (same band-token gate as `PRODUCE`; failure line `USE failed: {tech} cannot operate in {location}.`).
+
+**Settlement temperature:** if the tech produces a **settlement**-group module, `BodyEnvironment.AllowsSettlement` must pass at the producer’s location. **Habitable** (planet default when XML omits `temperature`) always allows. **Cold** allows only module types `clddom` and `cryhab`. **Hot** allows only `hotdom`. Otherwise `USE failed: {module} cannot settle a {cold|hot} world.` SampleGame `Tests/data.xml` has none of those exception types. Moons with no `temperature` attribute load as **cold** (`ParseTemperature` of an empty string), so `USE popcnt` / `ctypln` / `dmecns` on a SampleGame moon fails this gate. Planets with no attribute load as **habitable**.
 
 In-progress work is a `Producing*` effect. It only ticks when a matching unconditioned `USE` runs that week (`Use()`). After save/load, the leftover order reconnects to that effect (`producing-modules` persists `technology=`):
 
@@ -450,4 +552,4 @@ Omit `FOR`: `ReceiverParent` defaults to the **producer**. `ProducingModule` tre
 
 `use TECH as newX for 101` stacks the product under hull `101` when production **completes**, same location required (`STACK failed. Parent is in different location.` if the hull has already left). Alternative: `#modulestack new102` then `stack 101` (immediate, also same location). A nested factory can `USE` while the hull’s long slot is a `MOVE` (one long **per subject**). The shuttle itself may only `USE` in **orbit**.
 
-Effect-producing techs (catalog `use-produce effect=…`) hit “Not implemented” in Execute — use `REPAIR` for repairs.
+Effect-producing techs (`use-produce effect=…`) run through `ProducingEffect`. **Repair and maintenance** `[repair]` (`use-time` 2, production-group module): consumes **1 spare** at start, then after duration repairs **1 HP** on the producer’s parent scope (nested factory repairs its parent stack and nested children — same walk as `REPAIR`). Fails with `USE failed: no damage to repair.` if scope has no damage (spare not consumed). Event: `repaired 1 damage.` For faster weekly repairs use **`REPAIR`** instead (10/20 HP per week).

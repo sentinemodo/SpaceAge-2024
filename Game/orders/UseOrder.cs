@@ -161,12 +161,51 @@ namespace SpaceAge
 			// verify if the atmosphere is valid
 			// verify if regionType is valid
 			if (this.Producer.ModuleType.UseCondition_LocationTypes.Count > 0
-                & !this.Producer.ModuleType.UseCondition_LocationTypes.Contains(this.Producer.Location.LocationType))
+                & !this.Producer.ModuleType.UseCondition_LocationTypes.Contains(BodyEnvironment.EffectiveLocationType(this.Producer.Location)))
 			{
 				this.Producer.EventReports.Add(
 						week,
 						string.Format("USE failed: {0} cannot operate in {1}.",
 								this.Producer.ModuleType.ReportName,
+								this.Producer.Location.ReportName));
+
+				return false;
+			}
+
+			if (this.Technology.UseCondition_LocationTypes != null
+				&& this.Technology.UseCondition_LocationTypes.Count > 0
+				&& !this.Technology.UseCondition_LocationTypes.Contains(BodyEnvironment.EffectiveLocationType(this.Producer.Location)))
+			{
+				this.Producer.EventReports.Add(
+						week,
+						string.Format("USE failed: {0} cannot operate in {1}.",
+								this.Technology.ReportName,
+								this.Producer.Location.ReportName));
+
+				return false;
+			}
+
+			if (this.Technology.UseCondition_AtmosphereResources != null
+				&& this.Technology.UseCondition_AtmosphereResources.Count > 0
+				&& !BodyEnvironment.HasAtmosphereResources(this.Producer.Location, this.Technology.UseCondition_AtmosphereResources))
+			{
+				this.Producer.EventReports.Add(
+						week,
+						string.Format("USE failed: {0} cannot operate in {1}.",
+								this.Technology.ReportName,
+								this.Producer.Location.ReportName));
+
+				return false;
+			}
+
+			if (this.Technology.UseCondition_PlanetTypes != null
+				&& this.Technology.UseCondition_PlanetTypes.Count > 0
+				&& !BodyEnvironment.MatchesPlanetType(this.Producer.Location, this.Technology.UseCondition_PlanetTypes))
+			{
+				this.Producer.EventReports.Add(
+						week,
+						string.Format("USE failed: {0} cannot operate in {1}.",
+								this.Technology.ReportName,
 								this.Producer.Location.ReportName));
 
 				return false;
@@ -195,6 +234,21 @@ namespace SpaceAge
 								this.Producer.ReportName,
 								this.Technology.UseCondition_ModuleType));
 				return false;
+			}
+
+			if (this.Technology.UseProduceModules != null
+				&& this.Technology.UseProduceModules.Group == EModuleTypesGroup.settlement)
+			{
+				ETemperatureBand temperature = BodyEnvironment.TemperatureAt(this.Producer.Location);
+				if (!BodyEnvironment.AllowsSettlement(this.Technology.UseProduceModules.Name, temperature))
+				{
+					this.Producer.EventReports.Add(
+						week,
+						string.Format("USE failed: {0} cannot settle a {1} world.",
+							this.Technology.UseProduceModules.ReportName,
+							temperature));
+					return false;
+				}
 			}
 
 			if (this.Producer.ModuleType.UseCondition_RequireFuel)
@@ -295,6 +349,27 @@ namespace SpaceAge
 			}
 		}
 
+		private bool CanStartEffectProduction(int week)
+		{
+			if (this.Technology.ProductionType != EProductionType.Effects)
+			{
+				return true;
+			}
+
+			if (this.Technology.UseProduceEffectName == "repair"
+				&& this.Technology.UseProduceTarget == "module-damage")
+			{
+				ModuleStack scope = RepairScope.For(this.Producer);
+				if (RepairScope.TotalDamage(scope) < 1)
+				{
+					this.Producer.EventReports.Add(week, "USE failed: no damage to repair.");
+					return false;
+				}
+			}
+
+			return true;
+		}
+
 		public override void Execute(int week)
 		{
 			//TODO: refactor order into effect based -> move methods such as hastechnology or has resources to the producing effect
@@ -313,6 +388,11 @@ namespace SpaceAge
 				}
 				else if (this.Producing == null && this.HasResources)
 				{
+					if (!this.CanStartEffectProduction(week))
+					{
+					}
+					else
+					{
 					// start production, consume resources
 					this.Producer.ItemStacks.Minus(this.Technology.UseConsumeItems);
 
@@ -341,11 +421,22 @@ namespace SpaceAge
 
                             break;
 						case EProductionType.Effects:
-							throw new Exception("Not implemented");
+							if (!this.Executing)
+							{
+								this.durationLeft = this.DurationInitial;
+							}
+							this.Producing = new ProducingEffect(this.Producer, this.Technology, this.durationLeft);
+							if (this.Technology.UseConsumeItems != null)
+							{
+								this.Producer.EventReports.Add(week, string.Format("consumed {0} for repair.",
+									this.Technology.UseConsumeItems.ReportList));
+							}
+							break;
 					}
 					this.durationLeft--;
 					this.Producing.Execute(week);
 					this.Executing = true;
+					}
                 }
 				else if (this.Producing == null && !this.HasResources)
 				{
@@ -362,7 +453,10 @@ namespace SpaceAge
 									this.Technology.UseConsumeItems.ReportList));
 							break;
 						case EProductionType.Effects:
-							throw new Exception("Not implemented");
+							this.Producer.EventReports.Add(week, string.Format("USE failed, tried to run {0}, but needed to consume {1}.",
+									this.Technology.ReportName,
+									this.Technology.UseConsumeItems.ReportList));
+							break;
 					}
 				}
 			}
@@ -407,7 +501,10 @@ namespace SpaceAge
 					{
 						copies = 1;
 					}
-					this.durationInitial = (int)(Math.Ceiling((double)(this.Technology.UseTime * this.Producer.ModuleType.UseCondition_EfficiencyMultiplier) / copies));
+					int weeks = (int)(Math.Ceiling((double)(this.Technology.UseTime * this.Producer.ModuleType.UseCondition_EfficiencyMultiplier) / copies));
+					this.durationInitial = SkillEffects.ApplyDurationPercent(
+						weeks,
+						SkillEffects.ProductionDurationPercent(this.Producer));
 				}
 				return this.durationInitial;
 			}

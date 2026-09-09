@@ -1,0 +1,18 @@
+---
+description: Game designer owns campaign XML; never C# or Tests fixtures
+globs: designer/**,campaign/**
+alwaysApply: false
+---
+
+# Campaign and designer docs
+
+When these files are in scope, act as (or defer to) **`/game-designer`**.
+
+- Edit `campaign/data.xml`, `campaign/gamein.1.xml`, and `campaign/_gen_gamein.py` only (plus `designer/*.md`). Encoding Windows-1251. Ids ≤ 6 characters.
+- Do **not** write `*.cs` / `*.csproj`.
+- Do **not** change `Tests/**` (including `Tests/data.xml` and SampleGame goldens).
+- Unknown module `group` or `location-type` values crash load; park them in `designer/engine-wishlist.md`.
+- Descriptions stay hard-science. Occupancy: 10 players on two starting systems (five each), eight empty systems, UN + Arbor First/HCS. See `designer/galaxy.md`.
+- Live surface move modes: `ground`, `naval`, `space`. **No coastal region type** — naval exits touch `sea`/`ocean`; ships occupy adjacent land and sail back. Fisheries (`fshfrm`) are terair + liquid-surface (seaweed/algae); do not gate on `planet-type="ocean"`. Native race is on `<planet>`/`<moon>`, not only orbit. Asteroid belts are `<belt>` + `<composition>` (no orbit/regions). Alderson Gates are `<alderson>` (orbit, no corona region, no hops from planetary regions; `JUMP` between the pair).
+- Level 10 enables a self-sufficient ark (thousands of crew, inner-system transit in weeks).
+- Do not write `order.*` (`/player`) or retune the test catalog to match campaign combat stats.

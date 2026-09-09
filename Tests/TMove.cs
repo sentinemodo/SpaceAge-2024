@@ -211,17 +211,21 @@ namespace UnitTests
             Assert.That(order.Executing, Is.False);
             Assert.That(order.Executed, Is.False);
 
+            int expected = SpaceTransit.DurationWeeks(0.04, SpaceTransit.EffectiveSpaceSpeed(testModuleStack));
             testModuleStack.Execute(this.game.Week);
             Assert.That(testModuleStack.Effects.IsMoving);
             Assert.That(testModuleStack.MovingTo, Is.EqualTo(orbit2));
             Assert.That(testModuleStack.Parent, Is.EqualTo(orbit1));
             Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
-            Assert.That(order.DurationLeft, Is.EqualTo(1));
+            Assert.That(order.DurationLeft, Is.EqualTo(expected - 1));
             Assert.That(order.Executing);
             Assert.That(order.Executed, Is.False);
 
-            testModuleStack.ExecutedLongOrder = false;
-            testModuleStack.Execute(this.game.Week + 1);
+            for (int week = 1; week < expected; week++)
+            {
+                testModuleStack.ExecutedLongOrder = false;
+                testModuleStack.Execute(this.game.Week + week);
+            }
             Assert.That(testModuleStack.Effects.IsMoving, Is.False);
             Assert.That(testModuleStack.MovingTo, Is.Null);
             Assert.That(testModuleStack.Parent, Is.EqualTo(orbit2));

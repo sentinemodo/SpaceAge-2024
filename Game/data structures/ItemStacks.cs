@@ -110,6 +110,91 @@ namespace SpaceAge
             return this.Quantity(itemType);
         }
 
+		public int CombatAttack(EModuleTypesGroup carrierGroup, int quantityActive)
+		{
+			int attack = 0;
+			foreach (ItemStack itemStack in this.Values)
+			{
+				if (this.isCombatEligible(itemStack.ItemType, carrierGroup))
+				{
+					attack += this.combatQuantity(itemStack, quantityActive) * itemStack.ItemType.Attack;
+				}
+			}
+			return attack;
+		}
+
+		public int CombatDefense(EModuleTypesGroup carrierGroup, int quantityActive)
+		{
+			int defense = 0;
+			foreach (ItemStack itemStack in this.Values)
+			{
+				if (this.isCombatEligible(itemStack.ItemType, carrierGroup))
+				{
+					defense += this.combatQuantity(itemStack, quantityActive) * itemStack.ItemType.Defense;
+				}
+			}
+			return defense;
+		}
+
+		public int CombatDamageShotBudget(EModuleTypesGroup carrierGroup, int quantityActive)
+		{
+			int budget = 0;
+			foreach (ItemStack itemStack in this.Values)
+			{
+				if (this.isCombatEligible(itemStack.ItemType, carrierGroup) && itemStack.ItemType.Damage > 0)
+				{
+					budget += this.combatQuantity(itemStack, quantityActive);
+				}
+			}
+			return budget;
+		}
+
+		public int CombatDamageBonusForShot(EModuleTypesGroup carrierGroup, ref int remainingShots)
+		{
+			if (remainingShots <= 0)
+			{
+				return 0;
+			}
+			remainingShots--;
+			int bonus = 0;
+			foreach (ItemStack itemStack in this.Values)
+			{
+				if (this.isCombatEligible(itemStack.ItemType, carrierGroup) && itemStack.ItemType.Damage > 0)
+				{
+					bonus += itemStack.ItemType.Damage;
+				}
+			}
+			return bonus;
+		}
+
+		public int CombatInitiative(EModuleTypesGroup carrierGroup, int quantityActive)
+		{
+			int initiative = 0;
+			foreach (ItemStack itemStack in this.Values)
+			{
+				if (this.isCombatEligible(itemStack.ItemType, carrierGroup))
+				{
+					initiative += this.combatQuantity(itemStack, quantityActive) * itemStack.ItemType.Initiative;
+				}
+			}
+			return initiative;
+		}
+
+		private bool isCombatEligible(ItemType itemType, EModuleTypesGroup carrierGroup)
+		{
+			return itemType.UseAllowedModuleTypesGroup != null
+				&& itemType.UseAllowedModuleTypesGroup == carrierGroup;
+		}
+
+		private int combatQuantity(ItemStack itemStack, int quantityActive)
+		{
+			if (itemStack.Quantity <= 0 || quantityActive <= 0)
+			{
+				return 0;
+			}
+			return Math.Min(itemStack.Quantity, quantityActive);
+		}
+
 		#region IReporting Members
 
 		public List<string> Report(Faction faction)

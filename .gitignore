@@ -363,3 +363,6 @@ MigrationBackup/
 FodyWeavers.xsd
 # Cursor Cloud Agent downloaded tools (recreated by .cursor/install.sh)
 .cursor/tools/
+
+# Local campaign runs (passwords + gamein + reports). Keep play/README.md and play/*.ps1 tracked.
+play/runs/

@@ -68,6 +68,10 @@ namespace SpaceAge
 		public ModuleType UseConsumeModules { get; set; }
         public ModuleType UseProduceModules { get; set; }
 
+		public string UseProduceEffectName { get; set; }
+		public string UseProduceTarget { get; set; }
+		public int UseProduceChange { get; set; }
+
 		public EProductionType ProductionType { get; set; }
 
 		#region conditions
