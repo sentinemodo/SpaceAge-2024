@@ -1,6 +1,6 @@
 # Level 0 and 1 technologies (campaign)
 
-Catalog: `campaign/data.xml`, loaded by `Game/game/CatalogLoader.cs` (`DataFile.LoadConfigurationItems` delegates). Checked **30 Aug 2026** against engine **0.1.148**. Phase 1 catalog slice (optins, personal combat kit, ionthr) included.
+Catalog: `campaign/data.xml`, loaded by `Game/game/CatalogLoader.cs` (`DataFile.LoadConfigurationItems` delegates). Checked **9 Sep 2026** against engine **0.1.158**. Phase 1 catalog slice (optins, personal combat kit, ionthr) included; gas-giant cloud harvest (`skimmn`, `he3skm`, `d2skm`) is level 2+ in [`advanced_technologies.md`](advanced_technologies.md).
 
 This is the **campaign** L0–L1 excerpt for campaign-ai and campaign play. SampleGame manuals (`player/basic_technologies.md`, `player/advanced_technologies.md`) stay on `Tests/data.xml` and are not retargeted here.
 
@@ -14,7 +14,22 @@ Omitted `use-time` defaults to **1** week in `CatalogLoader`. Omitted consume/pr
 
 **Level 1 and above** must exist as a **local copy** on the using stack (`UseOrder.HasTechnology`: `Producer.Technologies.Contains`). Get a copy by research (labs roll level 1 … faction max+1 into remaining capacity) or by `COPY <id> TO <stack>` from a same-location holder that already has it. Each copy uses `level` points of the stack’s technology capacity.
 
-`USE` still needs matching module group, location, and consume items. Battle-only techs (no produce) are held as copies, not used as builds.
+`USE` still needs matching module group, location, and consume items. Catalog `use-allowed-in planet-atmosphere="…"` and `location-type="…"` are checked against `BodyEnvironment.HasAtmosphereResources` and `BodyEnvironment.EffectiveLocationType` when the parent body **emitted** environment attrs in map XML — **all campaign bodies do**, so fishery harvest, ocean farming, and terair gates apply as written. A **gas-giant orbit** whose parent emitted `atmosphere` ≠ `none` counts as **`atmosphere`** (cloud deck); regolith paths stay on solid-surface ice moons. See `player/rules.md`. Battle-only techs (no produce) are held as copies, not used as builds.
+
+### Harvest USE (level 0–1)
+
+**Active harvest** USE techs pull items from the site (no cargo consume except `wtrdst`, which spends 1 water). Needs matching module group and location gates.
+
+| Id | Works in | Produces |
+|----|----------|----------|
+| `iminng`, `tminng`, `slcmlt`, `hcdril`, `icemin` | extraction, solid-surface | per entry below |
+| `cminng`, `uminng`, `oildwe` | extraction (no solid-surface gate) | copper / uranium / oil |
+| `wtrdst` | extraction | 3 oxyhydro from 1 water |
+| `farmng` | agricultural; **ocean** + terair + solid-surface | 5 food |
+| `fshhrv` | agricultural on `fshfrm`; **liquid-surface** + terair | 5 food |
+| `nminng`, `gminng` | extraction, solid-surface (L1 copies) | 2 nickfe / 1 gold |
+
+Gas-giant **cloud skimming** (`he3skm`, `d2skm`) and ram scoop build (`skimmn` → `ramsco`) are **level 2+** — [`advanced_technologies.md`](advanced_technologies.md). Scale He-3/D from hostile gas-giant orbits; ice-moon `he3min` / `d2ext` remain the early path.
 
 Campaign play starts on **Arbor** (Helios) or **Anvil** (Fomal). Arbor is organics-rich (`food`, `carbon`, `oil`, `water`) and metals-poor (`titani`, `copper` thin or pocket-only). Anvil is metals-rich (`iron`, `titani`, `silici`, `copper`) and organics-poor (`food`, `carbon`, `oil`). Neither start has the full industrial diet.
 
@@ -57,8 +72,8 @@ Factory-built pontoon kits: nets, holds, and photic-zone seaweed or algae lines.
 Works in: production (factories; no sea-cell gate on the build). Use consumes: 10 iron `[iron]`. Use produces: fishery `[fshfrm]`. Use-time: 4 weeks.
 
 **fishery harvest [fshhrv]**  
-Haul fish plus photic-zone seaweed or algae in place. Photosynthetic biomass in sunlit liquid. Requires a fishery on liquid surface under terair.  
-Works in: agricultural, on fishery `[fshfrm]`, **liquid-surface**, terran atmosphere `[terair]`. Not grassland. No `planet-type="ocean"` gate. Use produces: 5 food `[food]`. Use-time: 1 week (default).
+Haul fish plus photic-zone seaweed or algae in place. Photosynthetic biomass in sunlit liquid. Requires a fishery on liquid surface under terair. Active harvest: no cargo consume.  
+Works in: agricultural, on fishery `[fshfrm]`, **liquid-surface**, terran atmosphere `[terair]`. Not grassland. No `planet-type="ocean"` gate — any terair sea cell qualifies on campaign maps. Use produces: 5 food `[food]`. Use-time: 1 week (default).
 
 **fossil use [fossil]**  
 Use of fossil fuels allows one to produce huge and dirty plants that transform carbon-based resources into energy. Tag: `production`.  
@@ -73,7 +88,7 @@ The extraction and refining of hydrocarbons, or fossil fuels, from a planetary s
 Works in: extraction, solid-surface. Use produces: 1 carbon `[carbon]`. Use-time: 1 week (default).
 
 **ice mining [icemin]**  
-Cut and melt water ice from polar caps, ice moons, and hydrated regolith. Produces bulk water for distillation and hydroponics. Tag: `production`.  
+Cut and melt water ice from polar caps, ice moons, and hydrated regolith. Active harvest: bulk water for distillation (`wtrdst`) and hydroponics (`hydrop`). Tag: `production`.  
 Works in: extraction, solid-surface. Use produces: 3 water `[water]`. Use-time: 1 week (default).
 
 **industrial automation [indust]**  
@@ -81,8 +96,8 @@ Use of automated production management to reduce the workforce requirements. Tag
 Works in: production. Use consumes: 15 iron `[iron]`, 10 titanium `[titani]`. Use produces: factory `[factry]`. Use-time: 4 weeks.
 
 **intensive farming [farmng]**  
-Long experience in exploitation techniques and breeds selection makes for intensive farming.  
-Works in: agricultural, on ocean worlds with terran atmosphere `[terair]`, solid-surface. Use produces: 5 food `[food]`. Use-time: 1 week (default).
+Long experience in exploitation techniques and breeds selection makes for intensive farming. Active harvest on grassland biosphere cells.  
+Works in: agricultural, **ocean** planet-type with terran atmosphere `[terair]`, solid-surface. Use produces: 5 food `[food]`. Use-time: 1 week (default).
 
 **iron mining [iminng]**  
 The extraction, purification and refining of iron ores from a variety of locations.  

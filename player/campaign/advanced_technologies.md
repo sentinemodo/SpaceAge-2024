@@ -1,6 +1,6 @@
 # Level 2 and above technologies (campaign)
 
-Catalog: `campaign/data.xml`, loaded by `Game/game/CatalogLoader.cs`. Checked **30 Aug 2026** against engine **0.1.148** (Phases 1–6 complete through L10). Level 0–1: `player/campaign/basic_technologies.md`.
+Catalog: `campaign/data.xml`, loaded by `Game/game/CatalogLoader.cs`. Checked **9 Sep 2026** against engine **0.1.158** (Phases 1–6 complete through L10). Level 0–1: `player/campaign/basic_technologies.md`.
 
 Lists **level 2+** technologies grouped by level, alphabetical by English `name-en`. Omitted `use-time` defaults to **1** week. Omitted consume/produce `quantity` defaults to **1**.
 
@@ -16,6 +16,11 @@ Same copy rule as level 1: local copy on the using stack; capacity = `level`. Ca
 Tag: `production`.  **Requires:** `slcmlt`.
 Hall-Heroult analogue: dissolve anorthosite in molten cryolite and reduce aluminium on highland dust and rock moons.
 Works in: module-type-group=extraction, location-type=solid-surface. Use produces: unit of aluminium `[alumin]` (item, qty 2). Use-time: 2 weeks.
+
+**atmospheric ram scoop [skimmn]**  
+Tag: `production`.  **Requires:** `he3min`.
+Superconducting intake and cryogenic separator for primordial helium-3 from a gas-giant upper cloud deck. Operates in the planet orbit; there is no ground.
+Works in: module-type-group=production. Use consumes: 40 unit of iron `[iron]`, 15 unit of titanium `[titani]`, 8 unit of copper `[copper]`. Use produces: ram scoop `[ramsco]`. Use-time: 8 weeks.
 
 **automated fabrication [autfab]**  
 Tag: `production`.
@@ -47,9 +52,14 @@ Tag: `production`.  **Requires:** `he3min`.
 Controlled fusion of helium-3 for clean, abundant energy. Unlocks the fusion torch drive.
 Works in: module-type-group=production. Use consumes: unit of helium-3 `[heliu3]`. Use produces: fusion reactor `[fusrec]`. Use-time: 1 week.
 
+**helium-3 cloud skimming [he3skm]**  
+Tag: `production`.  **Requires:** `skimmn`.
+Active harvest pass through the H/He layer: cryogenic pumps strip primordial helium-3 from the ram-scoop intake. Regolith mines still use `he3min` on solid bodies.
+Works in: module-type-group=extraction, **location-type=atmosphere**, **planet-type=gasgnt**. Use produces: unit of helium-3 `[heliu3]` (item). Use-time: 4 weeks.
+
 **helium-3 mining [he3min]**  
 Tag: `production`.  **Requires:** `uminng`.
-The extraction and refining of helium-3 from regolith and gas. Helium-3 mining can be carried out by any extraction module that has this technology loaded.
+The extraction and refining of helium-3 from regolith and ice. Early pocket path on ice moons; gas-giant scale harvest uses `he3skm` / passive `ramsco` produce in cloud decks.
 Works in: module-type-group=extraction. Use produces: unit of helium-3 `[heliu3]` (item). Use-time: 8 weeks.
 
 **kerogen retorting [krogen]**  
@@ -217,6 +227,11 @@ Works in: module-type-group=production. Use consumes: 10 unit of silicium `[sili
 Tag: `research`.  **Requires:** `advres`.
 Fibre and matrix characterisation for advanced hull and armour layups.
 Works in: module-type-group=production. Use consumes: 10 unit of silicium `[silici]`, 8 unit of carbon `[carbon]`, 4 unit of aluminium `[alumin]`. Use produces: composite lab `[cmplab]`. Use-time: 5 weeks.
+
+**deuterium cloud skimming [d2skm]**  
+Tag: `production`.  **Requires:** `d2ext`.
+Mass-filter the hydrogen belt of a gas-giant atmosphere for deuterium without landing on ice moons. Complements `d2ext` on outer ices.
+Works in: module-type-group=extraction, **location-type=atmosphere**, **planet-type=gasgnt**. Use produces: unit of deuterium `[deutrm]` (item). Use-time: 6 weeks.
 
 **deuterium from ices [d2ext]**  
 Tag: `production`.  **Requires:** `wtrdst`.
