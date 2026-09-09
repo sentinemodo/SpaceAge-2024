@@ -22,7 +22,13 @@ if (Test-Path -LiteralPath $schedulePath) {
 	try {
 		$sched = Get-Content -LiteralPath $schedulePath -Raw -Encoding UTF8 | ConvertFrom-Json
 		if ($null -ne $sched.nextTurnAt) {
-			$nextTurnAt = [string]$sched.nextTurnAt
+			$raw = $sched.nextTurnAt
+			if ($raw -is [datetime]) {
+				$nextTurnAt = $raw.ToUniversalTime().ToString("yyyy-MM-dd'T'HH:mm:ss'Z'")
+			}
+			else {
+				$nextTurnAt = [string]$raw
+			}
 		}
 	}
 	catch {
