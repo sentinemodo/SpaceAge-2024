@@ -344,6 +344,12 @@ namespace SpaceAge
 			get { return this.operationCondition_AtmosphereResources; }
 		}
 
+		private PlanetTypes operationCondition_PlanetTypes = new PlanetTypes();
+		public PlanetTypes OperationCondition_PlanetTypes
+		{
+			get { return this.operationCondition_PlanetTypes; }
+		}
+
         private LocationTypes useCondition_LocationTypes = new LocationTypes();
         public LocationTypes UseCondition_LocationTypes
         {

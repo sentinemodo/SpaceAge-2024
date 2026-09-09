@@ -11,7 +11,7 @@
 			mass="10"
 			hit-points="1">
 			<produce item="heliu3" quantity="1" duration="13"/>
-			<operation-allowed-in location-type="atmosphere"/>
+			<operation-allowed-in location-type="atmosphere" planet-type="gasgnt"/>
 		</entry>
 	</module>
 	<technology>

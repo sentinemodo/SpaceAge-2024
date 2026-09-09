@@ -485,6 +485,8 @@ Starts energy or item production using the stack’s module type (`ProducingEner
 
 Module `operation-allowed-in planet-atmosphere="…"` names an atmosphere **band token** (`terair`, `thin`, `hostile`, `none` — same strings as map `atmosphere=` attrs). `BodyEnvironment.HasAtmosphereResources` passes when the location’s orbit `<resource>` list includes that item type, or the parent body’s atmosphere band matches, or the parent **did not** emit explicit environment attrs (`HasEnvironmentAttrs`: any of `gravity`, `temperature`, `atmosphere` on planet/moon XML). When attrs were emitted and the band does not match, the week logs `PRODUCE failed: {module} cannot operate in {location}.` SampleGame Earth omits those attrs, so wind plants and other `terair` modules still produce there. Explicit `atmosphere="none"` on a sea body blocks them (unit test fixture).
 
+Module `operation-allowed-in planet-type="…"` restricts passive operations to the parent planet or moon’s catalog type (e.g. `gasgnt` for ram scoops). Checked via `BodyEnvironment.MatchesPlanetType`; same `cannot operate in {location}` failure line as the other gates.
+
 ### REPAIR
 
 **Syntax:** `REPAIR`

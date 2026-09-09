@@ -99,6 +99,18 @@ namespace UnitTests
 		}
 
 		[Test]
+		public void LoadRamscoCatalog_OperationAllowedIn_LoadsPlanetType()
+		{
+			this.dataFile.LoadConfiguration(Directory.GetCurrentDirectory());
+			this.LoadRamscoCatalog();
+
+			ModuleType ramsco = ModuleType.All["ramsco"];
+			Assert.That(ramsco.OperationCondition_PlanetTypes.Count, Is.EqualTo(1));
+			Assert.That(ramsco.OperationCondition_PlanetTypes.ContainsKey("gasgnt"), Is.True);
+			Assert.That(ramsco.OperationCondition_LocationTypes.Contains(ELocationType.atmosphere), Is.True);
+		}
+
+		[Test]
 		public void ExecuteProduceOrder_RamscoOnGasOrbit_Succeeds()
 		{
 			this.LoadGasAtmosphereWorld();

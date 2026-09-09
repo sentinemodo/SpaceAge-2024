@@ -108,6 +108,17 @@ namespace SpaceAge
 								moduleStack.Location.ReportName));
 					return false;
 				}
+				if (moduleStack.ModuleType.OperationCondition_PlanetTypes.Count > 0
+					&& !BodyEnvironment.MatchesPlanetType(moduleStack.Location, moduleStack.ModuleType.OperationCondition_PlanetTypes))
+				{
+					moduleStack.EventReports.Add(
+						week,
+						string.Format("{0} failed: {1} cannot operate in {2}.",
+								this.type.ToString().ToUpper(),
+								moduleStack.ModuleType.ReportName,
+								moduleStack.Location.ReportName));
+					return false;
+				}
 			}
 			return true;
 		}

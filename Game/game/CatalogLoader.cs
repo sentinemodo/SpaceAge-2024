@@ -612,6 +612,12 @@ namespace SpaceAge
 								moduleType.OperationCondition_AtmosphereResources.Add(condition, game.ItemTypes[condition]);
 							}
 
+							if (elAllowed.HasAttribute("planet-type"))
+							{
+								condition = elAllowed.GetAttribute("planet-type");
+								moduleType.OperationCondition_PlanetTypes.Add(condition, game.PlanetTypes[condition]);
+							}
+
 							if (elAllowed.HasAttribute("location-type"))
 							{
 								moduleType.OperationCondition_LocationTypes.Add(this.dataFile.LoadLocationType(elAllowed));
