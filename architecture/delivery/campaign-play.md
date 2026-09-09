@@ -1,6 +1,6 @@
 # Campaign load, gamein.1, CLI play, AI factions
 
-Last updated: 2026-08-30
+Last updated: 2026-09-09
 
 Design seed is in [designer/galaxy.md](../../designer/galaxy.md): factions 1–13, Rootfast/Crusthold, Helios Gate `P00009` ↔ Fomal Gate `P00010`. Catalog has `adpnt` and combat `weapon-group`/`resists` in [campaign/data.xml](../../campaign/data.xml). Environment bands: [designer/environments.md](../../designer/environments.md). Combat ladders: [designer/combat-balance.md](../../designer/combat-balance.md).
 
@@ -8,7 +8,7 @@ Design seed is in [designer/galaxy.md](../../designer/galaxy.md): factions 1–1
 
 **Already in the engine (do not TDD):** region and moon-region exits, including `<exit orbit="O…">` ([Galaxy.LoadExits](../../Game/data%20structures/Galaxy.cs) + `loadGalaxyExits`). Campaign XML should keep using those; no second pass over orbit elements.
 
-**Still out of scope (this plan):** hostility-flip Events, militia yearly raids. **Next engine wishlist** (see Todos): ~~sick-bay heal~~, ~~use-produce effects~~, skills, ~~orbit resources / gas-giant atmospheres~~.
+**Still out of scope (this plan):** hostility-flip Events, militia yearly raids. **Engine wishlist for this plan:** all slices done through **0.1.158** (see Todos).
 
 Tick matching rows in [designer/engine-wishlist.md](../../designer/engine-wishlist.md) when each slice lands.
 
@@ -73,7 +73,7 @@ The lobby **must** expose:
 - [x] TDD SampleGame green: refresh `Tests/SampleGame/` goldens for engine **0.1.149** (item combat stats); **448/448** `Tests.dll` green (2026-08-30). Do **not** retune `Tests/data.xml` for campaign stats.
 - [x] Designer campaign catalog: **phased** add of remaining technologies (and linked modules/items) from [designer/technology.md](../../designer/technology.md) / [designer/catalog.md](../../designer/catalog.md) through L10. **Phase 1–6 done (2026-08-30):** L2 personal combat → L10 ark stack (`arkdrv`…`arkmag`); `arkcns` `requires`→`lghull`; [`player/campaign/advanced_technologies.md`](../../player/campaign/advanced_technologies.md) (L2+). **`arkcns` policy:** both `cruihl` and `lghull` tech copies required to USE. TDD: `LoadConfiguration` stays green; no `Tests/data.xml` changes.
 - [x] Branch `cursor/campaign-load-play`; commit; push `-u` (2026-08-30)
-- [ ] `gh pr create` against main (not stacked on SampleGame turn 5)
+- [x] `gh pr create` against **master** (not stacked on SampleGame turn 5). Merged **PR #8** (`orbital-resources` → `master`, 2026-09-09)
 
 ### Engine wishlist (campaign play)
 
@@ -252,25 +252,12 @@ Live `f` in [designer/au-transit.md](../../designer/au-transit.md): moon-scale `
 
 ## Suggested implementation order
 
-Remaining (playability, 2026-08-30):
+Remaining (2026-09-09):
 
-1. **`gh pr create`** for `cursor/campaign-load-play` — SampleGame green; catalog L2–L10 complete.
-2. **Engine wishlist slices** (TDD, any order by impact): ~~item nominal value~~ → ~~sick-bay heal~~ → ~~use-produce effects~~ → skills → ~~orbit resources / gas-giant atmospheres~~.
-3. **Public lobby website** — parallel; architect/website-developer; not blocked by catalog.
+1. **Public lobby website** — architect/website-developer; not blocked by catalog or engine.
 
-Done this pass: SampleGame golden refresh (0.1.148); branch push; designer catalog L2–L10.
+Done: campaign load + play loop merged to **master** via **PR #8** (2026-09-09). Engine wishlist through **0.1.158** (skills, orbit resources, gas-giant atmospheres). SampleGame green; catalog L2–L10; RESEARCH flavour reveal; hull retag + allow-lists.
 
-Done: RESEARCH flavour reveal; hull catalog retag (`corhul`→corvette … `arkhul`→ark) + allow-lists + unit tests.
+## 8. Pull request (done)
 
-## 8. New pull request
-
-Do **not** open this work as a continuation of `cursor/sample-turn5-execution` (SampleGame turn 5). After the slice is green locally:
-
-1. Create branch `cursor/campaign-load-play` from the commit that contains this work (or from `main` and bring the files if this branch is mixed).
-2. Commit only campaign/engine/play/agent files for this plan (no SampleGame golden replacements, no `Tests/data.xml` retune).
-3. `/player` docs-only manuals refresh, then `git push -u origin HEAD`.
-4. `gh pr create` against **main** with:
-   - Title: campaign load, JUMP/environments/combat/hulls, play loop
-   - Body: summary bullets (catalog + `gamein.1`, CLI `/reports`, AU×drive, XYZ, hull groups, AI agents) and a test plan (unit catalog/galaxy load, JUMP/MOVE duration, typed combat fixture, SampleGame still green, `Game.exe /reports` smoke).
-
-If `gh` auth fails (as on an earlier designer push), stop and give the human the push/PR commands — do not force-push.
+Merged **PR #8** (`orbital-resources` → **master**, 2026-09-09). Not stacked on `cursor/sample-turn5-execution`. Branch `cursor/campaign-load-play` was superseded by `orbital-resources` (campaign play + orbital resources through engine **0.1.158**).
