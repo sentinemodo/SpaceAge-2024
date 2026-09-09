@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { withBase } from '../lib/paths';
 ---
 
 <Layout title="Game Client" description="SpaceAge Game Client - Download and Installation">
@@ -66,14 +67,14 @@ import Layout from '../layouts/Layout.astro';
 		<li>Draft and submit your orders before the deadline</li>
 	  </ol>
 	  <p>
-		<strong>New to the rules?</strong> Read the <a href="/rules">Rules Overview</a> first to understand core concepts.
+		<strong>New to the rules?</strong> Read the <a href={withBase('rules')}>Rules Overview</a> first to understand core concepts.
 	  </p>
 	</section>
 
 	<section class="support-section">
 	  <h2>Questions?</h2>
 	  <p>
-		Check the <a href="/rules">full rules</a> or browse the <a href="/">home page</a> for more information about SpaceAge.
+		Check the <a href={withBase('rules')}>full rules</a> or browse the <a href={withBase()}>home page</a> for more information about SpaceAge.
 	  </p>
 	</section>
   </section>

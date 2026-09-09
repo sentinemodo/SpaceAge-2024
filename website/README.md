@@ -183,16 +183,63 @@ Do **not** test against the dev server.
 
 ## Deployment
 
-### GitHub Pages
+### URL (decision)
 
-1. Build locally: `npm run build`
-2. Commit `dist/` (or configure CI to build on push)
-3. Set repository Pages to serve from `/` (root branch) or `/docs/` (depending on setup)
-4. Push to `gh-pages` branch or main
+**Production:** GitHub **project Pages** at [https://sentinemodo.github.io/SpaceAge-2024/](https://sentinemodo.github.io/SpaceAge-2024/)
 
-### Cloudflare Pages / Netlify
+- Repo: `sentinemodo/SpaceAge-2024` — Astro `base` is `/SpaceAge-2024` in CI (`PUBLIC_BASE_PATH`).
+- Local dev and Playwright preview use `base: '/'` (no env var).
+- **Custom domain** (e.g. `spaceage.example.com`) is optional later: add a `CNAME` in repo Settings → Pages, set `PUBLIC_SITE_URL` in the workflow, and point DNS at GitHub Pages. Not required for Phase 1–2.
 
-Connect the repository, set build command to `npm run build`, output to `dist/`, and deploy.
+### GitHub Actions (`.github/workflows/website.yml`)
+
+On every PR and push under `website/**` (and status producer scripts):
+
+1. `npm ci`
+2. `npm run check`
+3. `npm test` (Vitest — schema + status producer)
+4. `npm run build` (with `PUBLIC_BASE_PATH=/SpaceAge-2024` on CI)
+5. **Deploy `website/dist/` to GitHub Pages** — only on push to `master`
+
+**One-time repo setup:** Settings → Pages → Build and deployment → Source: **GitHub Actions**.
+
+The Windows job runs the same Vitest suite with the PowerShell status producer (parity check).
+
+### GM status publishing (Phase 2)
+
+The dashboard fetches `/status.json` at runtime. The GM **does not** hand-edit JSON.
+
+**Primary workflow — commit `status.json`:**
+
+1. After `isolate`, `turn`, or `next` (these call `generate-status` automatically), or manually:
+   ```powershell
+   .\play\generate-status.ps1 <RunId>
+   ```
+2. Commit and push `website/public/status.json`:
+   ```bash
+   git add website/public/status.json
+   git commit -m "status: turn N, accepting-orders"
+   git push origin master
+   ```
+3. CI rebuilds and redeploys; the live site picks up the new file.
+
+**Optional deadline:** `play/runs/<RunId>/gm/schedule.json` with `{ "nextTurnAt": "2026-09-15T23:59:59Z" }`, or `-NextTurnAt` on the script.
+
+**Linux / CI fallback (no PowerShell):** `node website/scripts/generate-status.mjs <RunId>`
+
+See also [`play/README_STATUS_AUTOGEN.md`](../play/README_STATUS_AUTOGEN.md) and [`play/README.md`](../play/README.md) (GM operations).
+
+### Local production build (matches Pages)
+
+```bash
+cd website
+PUBLIC_BASE_PATH=/SpaceAge-2024 PUBLIC_SITE_URL=https://sentinemodo.github.io npm run build
+npm run preview   # open http://localhost:4321/SpaceAge-2024/
+```
+
+### Cloudflare Pages / Netlify (alternative)
+
+Build command: `npm run build` with `PUBLIC_BASE_PATH` set to your mount path (or `/` on a dedicated subdomain). Output directory: `dist/`.
 
 ## Handoff to Testing
 
@@ -229,6 +276,6 @@ Tester runs `npm run build`, `npm run preview`, `npm run test:e2e` and confirms 
 
 ---
 
-**Last Updated:** 2026-09-01  
-**Phase:** 1 (MVP)  
-**Status:** Scaffolded
+**Last Updated:** 2026-09-09  
+**Phase:** 1–2 (lobby + status feed)  
+**Status:** CI deploy to GitHub Pages on `master`

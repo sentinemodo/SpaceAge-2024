@@ -89,8 +89,10 @@ Shared helpers live in `play/_common.ps1` (dot-sourced; not invoked directly).
 Invoke `/campaign-gm` to run a table. GM loop (same mermaid as [campaign-play.md](../architecture/delivery/campaign-play.md)):
 
 ```
-init-run → reports → isolate → ten isolated campaign-ai (or /player) → turn → win check → next
+init-run → reports → isolate → publish-status → ten isolated campaign-ai (or /player) → turn → win check → next → publish-status
 ```
+
+**`/campaign-gm`** runs `generate-status.ps1` and commits/pushes `website/public/status.json` to `master` after lobby-visible steps (see [Publish to the live site](#publish-to-the-live-site)).
 
 ### Live status feed (`website/public/status.json`)
 
@@ -125,7 +127,20 @@ ISO-8601 UTC. The site shows the timestamp or “GM-scheduled” when null. Over
 .\play\generate-status.ps1 <id> -NextTurnAt "2026-09-15T23:59:59Z"
 ```
 
-Commit and deploy `website/public/status.json` (or rsync to the host) so `/` and `/turns` pick up changes without rebuilding content. See [README_STATUS_AUTOGEN.md](README_STATUS_AUTOGEN.md) and [website.md](../architecture/delivery/website.md).
+See [README_STATUS_AUTOGEN.md](README_STATUS_AUTOGEN.md) and [website.md](../architecture/delivery/website.md).
+
+#### Publish to the live site
+
+`/campaign-gm` pushes status after isolate, turn, next, and manual refreshes (unless the human says hold):
+
+```powershell
+.\play\generate-status.ps1 <id>   # skip if isolate/turn/next just ran
+git add website/public/status.json
+git commit -m "status: <id> turn N, reports-out"
+git push origin master
+```
+
+CI on `master` rebuilds and deploys to [https://sentinemodo.github.io/SpaceAge-2024/](https://sentinemodo.github.io/SpaceAge-2024/). Commit **only** the generated JSON — never `play/runs/` or hand-edited fields.
 
 Optional **between-turn** (UN contracts and press) uses `/no-turn` **before** collecting player orders or after `next`, never mixed with leftover `turn/order.{2–11}.txt` (the engine globs all `order.*`).
 

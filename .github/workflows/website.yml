@@ -2,6 +2,7 @@ name: Website
 
 on:
   push:
+    branches: [master]
     paths:
       - 'website/**'
       - 'play/generate-status.ps1'
@@ -20,13 +21,21 @@ on:
       - 'play/turn.ps1'
       - '.github/workflows/website.yml'
 
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
 defaults:
   run:
     working-directory: website
 
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
     steps:
       - uses: actions/checkout@v4
 
@@ -45,8 +54,32 @@ jobs:
       - name: Vitest (schema + status producer via Node fallback)
         run: npm test
 
-      - name: Build
+      - name: Build for GitHub Pages
+        env:
+          PUBLIC_BASE_PATH: /SpaceAge-2024
+          PUBLIC_SITE_URL: https://sentinemodo.github.io
         run: npm run build
+
+      - name: Upload Pages artifact
+        if: github.event_name == 'push'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: website/dist
+
+  deploy:
+    if: github.event_name == 'push'
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      pages: write
+      id-token: write
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
 
   test-powershell-producer:
     runs-on: windows-latest

@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { withBase } from '../lib/paths';
 
 interface Props {
   title: string;
@@ -16,12 +17,12 @@ const { title, description = 'SpaceAge - Open PBEM Lobby' } = Astro.props;
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta name="description" content={description} />
 	<title>{title} | SpaceAge</title>
-	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+	<link rel="icon" type="image/svg+xml" href={withBase('favicon.svg')} />
   </head>
   <body>
 	<nav class="nav">
 	  <div class="nav-container">
-		<a href="/" class="nav-logo">⭐ SpaceAge</a>
+		<a href={withBase()} class="nav-logo">⭐ SpaceAge</a>
 		<button
 		  type="button"
 		  class="nav-toggle"
@@ -35,10 +36,10 @@ const { title, description = 'SpaceAge - Open PBEM Lobby' } = Astro.props;
 		  <span class="nav-toggle-bar"></span>
 		</button>
 		<div class="nav-links" id="nav-menu">
-		  <a href="/">Home</a>
-		  <a href="/turns">Turns</a>
-		  <a href="/rules">Rules</a>
-		  <a href="/client">Client</a>
+		  <a href={withBase()}>Home</a>
+		  <a href={withBase('turns')}>Turns</a>
+		  <a href={withBase('rules')}>Rules</a>
+		  <a href={withBase('client')}>Client</a>
 		</div>
 	  </div>
 	</nav>

@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import StatusDashboard from '../components/StatusDashboard.astro';
+import { withBase } from '../lib/paths';
 ---
 
 <Layout title="Home" description="SpaceAge - Open PBEM Campaign Lobby">
@@ -56,8 +57,8 @@ import StatusDashboard from '../components/StatusDashboard.astro';
 	  </div>
 
 	  <div class="cta-buttons">
-		<a href="/client" class="button">Open the Client</a>
-		<a href="/turns" class="button button-secondary">View Turn Status</a>
+		<a href={withBase('client')} class="button">Open the Client</a>
+		<a href={withBase('turns')} class="button button-secondary">View Turn Status</a>
 	  </div>
 	</div>
 
@@ -95,8 +96,8 @@ import StatusDashboard from '../components/StatusDashboard.astro';
 
   <section class="rules-preview-section card">
 	<h2>Quick Start</h2>
-	<p>New to SpaceAge? Start with the <a href="/rules">rules overview</a> to understand the core mechanics.</p>
-	<p>Want to dive deeper? Check out the <a href="/client">client page</a> for installation and getting started.</p>
+	<p>New to SpaceAge? Start with the <a href={withBase('rules')}>rules overview</a> to understand the core mechanics.</p>
+	<p>Want to dive deeper? Check out the <a href={withBase('client')}>client page</a> for installation and getting started.</p>
   </section>
 </Layout>
 

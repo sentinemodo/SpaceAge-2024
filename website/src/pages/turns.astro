@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { formatNextTurn, formatStatusLabel } from '../lib/statusSchema';
+import { withBase } from '../lib/paths';
 
 const placeholderFactions = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((id) => ({
   id,
@@ -83,7 +84,7 @@ const placeholderFactions = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((id) => ({
 	<section class="rules-section card">
 	  <h2>Want to Learn More?</h2>
 	  <p>
-		New to SpaceAge? Read the <a href="/rules">rules overview</a> to understand what goes into
+		New to SpaceAge? Read the <a href={withBase('rules')}>rules overview</a> to understand what goes into
 		each turn and how the game works.
 	  </p>
 	</section>
