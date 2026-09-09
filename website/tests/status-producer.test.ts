@@ -63,7 +63,18 @@ function writeIsolatedReports(turn: number) {
   }
 }
 
+async function runNodeProducer(outPath: string) {
+  const cmd = `node "${NodeScript}" ${TestRunId} --out "${outPath}"`;
+  await exec(cmd, { cwd: RepoRoot });
+  return 'node';
+}
+
 async function runProducer(outPath: string) {
+  // Linux CI: Node fallback (pwsh on ubuntu-latest is slow/flaky). Windows job tests PowerShell.
+  if (process.platform !== 'win32') {
+    return runNodeProducer(outPath);
+  }
+
   const shell = await whichShell();
   if (shell) {
     const script = path.join(RepoRoot, 'play', 'generate-status.ps1');
@@ -75,9 +86,7 @@ async function runProducer(outPath: string) {
     return 'powershell';
   }
 
-  const cmd = `node "${NodeScript}" ${TestRunId} --out "${outPath}"`;
-  await exec(cmd, { cwd: RepoRoot });
-  return 'node';
+  return runNodeProducer(outPath);
 }
 
 describe('Status producer script', () => {
