@@ -26,7 +26,7 @@ if (Test-Path -LiteralPath $schedulePath) {
 		}
 	}
 	catch {
-		Write-Warning "Could not parse $schedulePath: $_"
+		Write-Warning "Could not parse ${schedulePath}: $_"
 	}
 }
 
