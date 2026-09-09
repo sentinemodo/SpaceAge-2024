@@ -1,6 +1,6 @@
 # SpaceAge-2024 — technology choices
 
-Last updated: 2026-08-18  
+Last updated: 2026-09-09  
 Engine version: `Program.EngineVersion` = `0.1.137`
 
 This is a **legacy console engine**, not a service stack. Choices below describe what the repo already uses. Changing the runtime or project style requires an ADR.
@@ -72,3 +72,22 @@ SonarQube helper scripts (`Sonar.bat`, `sonar-project.properties`) exist locally
 - NUnit: stay on **4.1.x** until an ADR + full `.cursor/run-tests.sh` pass on Mono.
 - NUnit Console runner: **3.18.3** as installed by `.cursor/install.sh`.
 - Mono: whatever `mono-complete` on Ubuntu 24.04 provides (installed by `.cursor/install.sh`); do not add a second CLR in the cloud image.
+
+## Local player-agent inference (new, not engine)
+
+Separate from the net48 engine. Decision: [ADR-0009](adr/ADR-0009-local-llm-player-agent.md). Plan: [`delivery/local-player-agent.md`](delivery/local-player-agent.md). Do not hang an LLM off `Game.exe` or index forbidden campaign files into the strategist RAG path.
+
+| Area | Choice | Constraint |
+|------|--------|------------|
+| Location | `tools/player-agent/` (planned) | Outside `Game/`, `Tests/`, `website/` |
+| Inference | **Ollama** (OpenAI-compatible `/v1`) | Same client for local and remote |
+| Chat model | **Qwen3-Coder** (`qwen3-coder:30b` target; smaller coder tags on weak GPUs) | No fine-tune before RAG + verb lint |
+| Embeddings | **`nomic-embed-text`** | Same Ollama host as chat |
+| RAG | Hybrid prompt pack + vector chunks over `player/*.md` + per-faction report/story/orders | Never `gamein` / other factions / raw full `data.xml` for strategist |
+| Default host | Local Windows Ollama | Prefer when ≥~16–24 GB VRAM |
+| Rented GPU | **RunPod** 1× **RTX 4090** (24 GB); Secure Cloud when reports leave the box | Ollama only on pod; stop when idle; passwords stay local; usage tracker + cost guardrails required before campaign batches |
+| Rejected as model host | Vercel, engine HTTP, always-on cloud chat as default | Vercel may later host *orchestration* for a web assistant only |
+
+## Revision
+
+- 2026-09-09: Added **Local player-agent inference** ([ADR-0009](adr/ADR-0009-local-llm-player-agent.md): Ollama, Qwen3-Coder, RunPod rental).

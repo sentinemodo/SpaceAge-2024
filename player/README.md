@@ -15,3 +15,5 @@ The **player** Cursor agent (`.cursor/agents/player.md`) reads turn reports and 
 TDD (`.cursor/rules/csharp-tdd.mdc`) launches this agent for **docs-only** refresh before each commit (`rules.md`, `basic_technologies.md`, `advanced_technologies.md`, `battle.md`), to **write or update orders**, to **check reports** against expected beats, and to **validate golden candidates**. TDD does not draft orders, interpret reports, or replace goldens until this agent matches **and** the human approves.
 
 Outdated copies (do not treat as live): `Game/documentation/Rules.txt`, `Game/documentation/Basics.txt`.
+
+**RAG sources** for the approved local/RunPod player-agent stack ([ADR-0009](../architecture/adr/ADR-0009-local-llm-player-agent.md), [delivery plan](../architecture/delivery/local-player-agent.md)): `rules.md`, `battle.md`, tech manuals under `player/`, plus per-faction isolated reports / story / prior orders — not raw `gamein` or other factions’ reports. After engine or catalog changes, refresh these manuals before rebuilding the shared RAG index.

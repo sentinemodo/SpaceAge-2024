@@ -9,7 +9,8 @@ Implementation stays in `Game/` and `Tests/`. Architecture documents here are **
 | Reader | Start here |
 |--------|------------|
 | Implementers / TDD | [`overview.md`](overview.md), then [`modules-and-integrations.md`](modules-and-integrations.md) (test layers) |
-| Stack / versions | [`technology.md`](technology.md) |
+| Stack / versions | [`technology.md`](technology.md) (engine and local player-agent inference are **separate** sections) |
+| Local / RunPod player-agent LLM | [ADR-0009](adr/ADR-0009-local-llm-player-agent.md), plan [`delivery/local-player-agent.md`](delivery/local-player-agent.md) |
 | Official library docs | [`docs-index.md`](docs-index.md) |
 | Why a choice exists | [`adr/`](adr/) |
 | Build, test, versioning | [`delivery/cicd-conventions.md`](delivery/cicd-conventions.md) |
@@ -27,11 +28,12 @@ Player-facing design notes remain in `Game/documentation/` (`Basics.txt`, `Conce
 | `diagrams/` | Pointers; Mermaid lives in the docs above |
 | `docs-index.md` | Canonical URLs, versions, date retrieved |
 | `adr/` | Architecture Decision Records |
-| `delivery/` | Branching, environments, versioning, CI entrypoints; SampleGame turn 4 checklist [`delivery/samplegame-turn4.md`](delivery/samplegame-turn4.md) |
+| `delivery/` | Branching, environments, versioning, CI entrypoints; SampleGame turn 4 checklist [`delivery/samplegame-turn4.md`](delivery/samplegame-turn4.md); **local player-agent LLM** [`delivery/local-player-agent.md`](delivery/local-player-agent.md) |
+| `adr/ADR-0009-local-llm-player-agent.md` | Ollama + Qwen3-Coder + hybrid RAG; RunPod as rented GPU host |
 | `future-work.md` | Deferred modernization backlog (ADR-gated) |
 
 There is no `cybersecurity/` package yet; add it only if a security review is commissioned.
 
 ## Changing the architecture
 
-Prefer a numbered ADR in `adr/` or a dated revision note in the affected file (what changed, why, impact on tests/modules). Persistence / `DataFile` splits: [ADR-0006](adr/ADR-0006-datafile-facade-and-xml-seams.md).
+Prefer a numbered ADR in `adr/` or a dated revision note in the affected file (what changed, why, impact on tests/modules). Persistence / `DataFile` splits: [ADR-0006](adr/ADR-0006-datafile-facade-and-xml-seams.md). Local / RunPod player-agent LLM: [ADR-0009](adr/ADR-0009-local-llm-player-agent.md).
