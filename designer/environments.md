@@ -68,3 +68,44 @@ Homeworld **moons** must seed `water` even if rock-typed (polar ice / hydrated r
 | Fomal ices | low | cold | none | rich `water` |
 
 Empty systems: most moons `cold`+`low`; vulcan moons `hot`+`low`; rare high-g rock worlds carry `tungst`/`platnm`/`boron` bonuses.
+
+## Gas-giant cloud deck
+
+Gas giants (`type="gasgnt"`) have **no solid-surface regions**. Harvest happens in the planet **orbit**, which the engine treats as a cloud deck when the body emitted environment attrs.
+
+### Atmosphere band → effective location-type
+
+| Parent `atmosphere` | Orbit `EffectiveLocationType` | Cloud deck? | Orbit `<resource>` seed |
+|---------------------|-------------------------------|-------------|-------------------------|
+| `none` | `orbit` | No — vacuum corona; no cloud isotopes | none |
+| `thin` | `atmosphere` | Yes — tenuous H/He mix | `heliu3` pocket only (30–50) |
+| `hostile` | `atmosphere` | Yes — dense H/He/CH4/NH3 deck | `heliu3` + `deutrm` pockets (50–150 each) |
+| `terair` | `atmosphere` | Rare on `gasgnt`; treat as thin cloud | `heliu3` trace only |
+
+Habitable **rock/ocean** bodies keep orbit as `orbit` even when `atmosphere` ≠ `none` (Arbor/Anvil station-keeping). Only **gas-giant** orbits with emitted `atmosphere` ≠ `none` map to `atmosphere`.
+
+Bodies that **omit** environment attrs (SampleGame) skip atmosphere gates; orbit resources are optional there.
+
+### Orbit-held cloud resources
+
+Seed on the gas giant `<orbit>` (not moons, not rings):
+
+| Item | Band | Typical qty | Notes |
+|------|------|-------------|-------|
+| `heliu3` | pocket | 80–120 | Primordial He-3 in the upper H/He layer |
+| `deutrm` | pocket | 50–100 | D/H enrichment in the hydrogen belt; **hostile** decks only |
+
+Ice-moon regolith still carries pocket `heliu3` / `deutrm` for early L2–L4 paths; cloud decks are the **scale** source once `ramsco` and skimming techs are online. Do not duplicate the same `type` twice on one orbit.
+
+Campaign gas giants at t=1 emit **hostile** + both isotopes (see `campaign/_gen_gamein.py`).
+
+### Extraction modules and techs
+
+| Id | Role | Gate |
+|----|------|------|
+| `ramsco` | Extraction module; passive `produce` `heliu3` in cloud deck | `operation-allowed-in location-type="atmosphere"`; USE build via `skimmn` |
+| `skimmn` | Production USE → builds `ramsco` | requires `he3min` |
+| `he3skm` | Active USE harvest `heliu3` from cloud | `extraction` + `location-type="atmosphere"` + `planet-type="gasgnt"` |
+| `d2skm` | Active USE harvest `deutrm` from cloud | same gates; requires `d2ext` |
+
+Regolith path unchanged: `he3min` on solid-surface extraction, `he3ext` drill, `d2ext` on ice moons. Frigate+ hulls **cannot** land on any atmosphere; shuttles ferry to ice moons. **Ram scoops operate only in gas-giant orbit** (effective `atmosphere`).

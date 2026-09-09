@@ -49,6 +49,7 @@ Campaign also uses a **propulsion hull ladder** (`corvhl`→`desthl`→`cruihl`�
 | `radlab` | research | 300/80 | 4 / 8 | output 2, tech-cap 6 |
 | `railgn` | military | 800/900 | 4 / 20 | **kinetic** `weapon-group`; attack 14 defense 2 damage 16 HP 140 |
 | `clslss` | habitat | 400/200 | 2 / 12 | produce `terair`+`water` from `wastes`+energy |
+| `ramsco` | extraction | 900/800 | 4 / 12 | Gas-giant cloud deck; `operation-allowed-in location-type="atmosphere"`; passive `heliu3`; L2 `skimmn` build |
 | `isrplt` | extraction | 1500/1500 | 8 / 20 | consumes regional `volatl`/`dust` flavour via USE techs |
 | `mpddrv` | propulsion | 900/800 | 2 / 60 | mass-capacity ~80000; fuel `methn` |
 | `pdltur` | military | 200/150 | 1 / 15 | **laser** PD; attack 8 damage 8 initiative 8 HP 90 |

@@ -1101,6 +1101,31 @@ Researchers can query the library. The system can handle natural language questi
 			<use-consume item="titani" quantity="10"/>
 			<use-produce module="he3ext"/>
 		</entry>
+		<entry
+			name="skimmn"
+			name-en="atmospheric ram scoop"
+			level="2"
+			tags="production"
+			requires="he3min"
+			description="Superconducting intake and cryogenic separator for primordial helium-3 from a gas-giant upper cloud deck. Operates in the planet orbit; there is no ground."
+			use-time="8">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="40"/>
+			<use-consume item="titani" quantity="15"/>
+			<use-consume item="copper" quantity="8"/>
+			<use-produce module="ramsco"/>
+		</entry>
+		<entry
+			name="he3skm"
+			name-en="helium-3 cloud skimming"
+			level="2"
+			tags="production"
+			requires="skimmn"
+			description="Active harvest pass through the H/He layer: cryogenic pumps strip primordial helium-3 from the ram-scoop intake. Regolith mines still use he3min on solid bodies."
+			use-time="4">
+			<use-allowed-in module-type-group="extraction" location-type="atmosphere" planet-type="gasgnt"/>
+			<use-produce item="heliu3" quantity="1"/>
+		</entry>
 		<entry name="alminn" name-en="aluminium from anorthosite" level="2" tags="production" requires="slcmlt" description="Hall-Heroult analogue: dissolve anorthosite in molten cryolite and reduce aluminium on highland dust and rock moons." use-time="2">
 			<use-allowed-in module-type-group="extraction" location-type="solid-surface"/>
 			<use-produce item="alumin" quantity="2"/>
@@ -1155,6 +1180,17 @@ Researchers can query the library. The system can handle natural language questi
 		</entry>
 		<entry name="d2ext" name-en="deuterium from ices" level="4" tags="production" requires="wtrdst" description="Electrolysis and cryogenic distillation of D/H from outer ice. Not used on habitable basins." use-time="6">
 			<use-allowed-in module-type-group="extraction" location-type="solid-surface"/>
+			<use-produce item="deutrm" quantity="1"/>
+		</entry>
+		<entry
+			name="d2skm"
+			name-en="deuterium cloud skimming"
+			level="4"
+			tags="production"
+			requires="d2ext"
+			description="Mass-filter the hydrogen belt of a gas-giant atmosphere for deuterium without landing on ice moons. Complements d2ext on outer ices."
+			use-time="6">
+			<use-allowed-in module-type-group="extraction" location-type="atmosphere" planet-type="gasgnt"/>
 			<use-produce item="deutrm" quantity="1"/>
 		</entry>
 		<entry name="volext" name-en="mixed-volatile ISRU" level="4" tags="production" requires="krogen" description="Heat carbonaceous fines and capture mixed H2O, CO2, and N2 as ISRU feedstock." use-time="4">
@@ -2832,6 +2868,29 @@ Researchers can query the library. The system can handle natural language questi
 			<operation-allowed-in module-group="cruiser"/>
 			<operation-allowed-in module-group="capital"/>
 			<operation-allowed-in module-group="ark"/>
+		</entry>
+		<entry
+			name="ramsco"
+			name-en="ram scoop"
+			name-en2="ram scoops"
+			group="extraction"
+			description="Superconducting scoop and cryogenic separator in a gas-giant cloud deck. Ionizes and traps primordial helium-3 from the upper H/He mix; load d2skm to strip deuterium from the hydrogen belt. No solid surface to land on."
+			size="900"
+			capacity="400"
+			mass="800"
+			crew="4"
+			energy="12"
+			hit-points="80">
+			<produce item="heliu3" quantity="4" duration="13"/>
+			<upkeep type="cash" quantity="55"/>
+			<operation-allowed-in location-type="atmosphere" planet-type="gasgnt"/>
+			<operation-allowed-in module-group="frigate"/>
+			<operation-allowed-in module-group="corvette"/>
+			<operation-allowed-in module-group="destroyer"/>
+			<operation-allowed-in module-group="cruiser"/>
+			<operation-allowed-in module-group="capital"/>
+			<operation-allowed-in module-group="ark"/>
+			<operation-allowed-in module-group="spacecraft"/>
 		</entry>
 		<entry name="isrplt" name-en="ISRU refinery" name-en2="ISRU refineries" group="extraction" description="Regolith beneficiation to metals and slag." size="1500" mass="1500" crew="8" energy="15" capacity="800" hit-points="100">
 			<upkeep type="cash" quantity="65"/>

@@ -2081,7 +2081,10 @@
 						<resource type="iron" quantity="10" probability="0.3" />
 					</composition>
 				</belt>
-				<orbit name="O00004" />
+				<orbit name="O00004">
+					<resource type="heliu3" quantity="100" />
+					<resource type="deutrm" quantity="70" />
+				</orbit>
 			</planet>
 			<belt name="P00003" name-en="Helios Belt" AU="2.7" description="A dark necklace at 2.7 AU: metal rock and carbonaceous grit sharing the same cold light. Fissile pockets and nickel-iron hide in the metal phase; the darker stones keep organics and common carbon. No surface, no air, no kindness. A wreck rumour lives here like a second star - something crewless and bright that should not be.">
 				<composition>
@@ -3952,7 +3955,10 @@
 						<resource type="silici" quantity="15" probability="0.3" />
 					</composition>
 				</belt>
-				<orbit name="O00116" />
+				<orbit name="O00116">
+					<resource type="heliu3" quantity="90" />
+					<resource type="deutrm" quantity="65" />
+				</orbit>
 			</planet>
 			<belt name="P00007" name-en="Fomal Belt" AU="2.5" description="Carbonaceous, 2.5 AU out: dark rock, heavy hydrocarbons, the organics Anvil's crust refused to grow. No metal glitter. The belt looks like soot against the white-gold lamp. A cold fabricator rumour sits in the grit.">
 				<composition>
@@ -4616,7 +4622,10 @@
 						<resource type="heliu3" quantity="20" />
 					</region>
 				</moon>
-				<orbit name="O00120" />
+				<orbit name="O00120">
+					<resource type="heliu3" quantity="110" />
+					<resource type="deutrm" quantity="75" />
+				</orbit>
 			</planet>
 			<belt name="P00012" name-en="Ember Belt" AU="2.2" description="A thin belt at 2.2 AU: iron, silica, a hint of light isotope in the cold. Amber from the dwarf makes the rocks look warmer than they are. They are not warm.">
 				<composition>
@@ -5700,7 +5709,10 @@
 						<resource type="iron" quantity="8" probability="0.3" />
 					</composition>
 				</belt>
-				<orbit name="O00127" />
+				<orbit name="O00127">
+					<resource type="heliu3" quantity="85" />
+					<resource type="deutrm" quantity="90" />
+				</orbit>
 			</planet>
 			<belt name="P00018" name-en="Cinder Belt" AU="2.8" description="Dark carbonaceous rock at 2.8 AU, some fissile glitter, baked carbon in the mix. The orange dwarf is a coin. The belt does not glow. You do.">
 				<composition>
@@ -6276,10 +6288,16 @@
 						<resource type="heliu3" quantity="12" probability="0.3" />
 					</composition>
 				</belt>
-				<orbit name="O00131" />
+				<orbit name="O00131">
+					<resource type="heliu3" quantity="95" />
+					<resource type="deutrm" quantity="80" />
+				</orbit>
 			</planet>
 			<planet name="P00024" name-en="Ash Outer Giant" type="gasgnt" AU="18.0" surface-size-X="0" surface-size-Y="0" gravity="high" temperature="cold" atmosphere="hostile" description="Farther still, 18 AU, no moons worth a name. A second mass in the dark. You pass it. You do not stay. The red lamp is still huge and still cold at the edge.">
-				<orbit name="O00136" />
+				<orbit name="O00136">
+					<resource type="heliu3" quantity="70" />
+					<resource type="deutrm" quantity="95" />
+				</orbit>
 			</planet>
 			<belt name="P00021" name-en="Ash Belt" AU="3.0" description="At 3 AU under a swollen red disk: carbonaceous grit, light isotopes, mixed volatiles. The star is too large for this distance. The belt feels like ash from a fire that has not gone out in a billion years.">
 				<composition>
@@ -7314,7 +7332,10 @@
 						<resource type="methn" quantity="12" />
 					</region>
 				</moon>
-				<orbit name="O00139" />
+				<orbit name="O00139">
+					<resource type="heliu3" quantity="105" />
+					<resource type="deutrm" quantity="70" />
+				</orbit>
 			</planet>
 			<planet name="P00030" name-en="Deep Outer Giant" type="gasgnt" AU="9.2" surface-size-X="0" surface-size-Y="0" gravity="high" temperature="cold" atmosphere="hostile" description="9.2 AU, three more moons - rock then ice then ice. Methane-family volatiles on the frosts. Colder, quieter, hungrier. Haven is a rumour inward. Out here the system tells the truth.">
 				<moon name="M00024" name-en="Deep Outer 0" type="rock" AU="0.004" surface-size-X="5" surface-size-Y="2" gravity="low" temperature="cold" atmosphere="none" description="The outer giant's rock moon: iron, silica, light metal. A dry step in a wet system. Deep feels deeper here. The inner green is gone from the sky.">
@@ -7746,7 +7767,10 @@
 						<resource type="methn" quantity="10" />
 					</region>
 				</moon>
-				<orbit name="O00144" />
+				<orbit name="O00144">
+					<resource type="heliu3" quantity="80" />
+					<resource type="deutrm" quantity="100" />
+				</orbit>
 			</planet>
 			<alderson name="P00054" name-en="Deep Fomal Gate" AU="80" pair="P00053" temperature="cold" atmosphere="none">
 				<orbit name="O00166" />

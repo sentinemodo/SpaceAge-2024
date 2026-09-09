@@ -264,9 +264,10 @@ class Region:
 
 
 class Orbit:
-    def __init__(self, name, races=None):
+    def __init__(self, name, races=None, resources=None):
         self.name = name
         self.races = list(races or [])
+        self.resources = list(resources or [])
         self.stacks = []
 
 
@@ -466,6 +467,8 @@ def emit_orbit(parent, orbit):
     node = el(parent, "orbit", name=orbit.name)
     for race in orbit.races:
         el(node, "race", type=race)
+    for typ, qty in orbit.resources:
+        el(node, "resource", type=typ, quantity=qty)
     for stack in orbit.stacks:
         emit_stack(node, stack)
     return node
@@ -851,7 +854,7 @@ def build_world():
     )
 
     aeolus = Planet("P00004", "Aeolus", "gasgnt", 5.2, 0, 0, "high", "cold", "hostile")
-    aeolus.orbit = Orbit(ids.O())
+    aeolus.orbit = Orbit(ids.O(), resources=gas_cloud_resources("hostile", "Aeolus"))
     aeolus_moons = [
         ("Rime", "ice", [("water", 80), ("heliu3", 40)]),
         ("Glaze", "ice", [("water", 70), ("heliu3", 25)]),
@@ -948,7 +951,7 @@ def build_world():
     fomal.belts.append(belt_f)
 
     giant_f = Planet("P00008", "Fomal Giant", "gasgnt", 6.0, 0, 0, "high", "cold", "hostile")
-    giant_f.orbit = Orbit(ids.O())
+    giant_f.orbit = Orbit(ids.O(), resources=gas_cloud_resources("hostile", "Fomal Giant"))
     for mname, extra in (("Drift", [("heliu3", 20)]), ("Rimeband", [("heliu3", 30)])):
         moon = Moon(ids.M(), mname, "ice", 0.005, 5, 2, "low", "cold", "none")
         moon.orbit = Orbit(ids.O())
@@ -1277,10 +1280,37 @@ def add_ring(ids, planet, name_en, au, composition):
     return ring
 
 
+# Orbit-held cloud isotopes by atmosphere band (designer/environments.md, resources.md).
+GAS_CLOUD_BY_NAME = {
+    "Aeolus": (100, 70),
+    "Fomal Giant": (90, 65),
+    "Ember Giant": (110, 75),
+    "Cinder Giant": (85, 90),
+    "Ash Inner Giant": (95, 80),
+    "Ash Outer Giant": (70, 95),
+    "Deep Inner Giant": (105, 70),
+    "Deep Outer Giant": (80, 100),
+}
+
+
+def gas_cloud_resources(atmosphere, name_en=""):
+    if not atmosphere or atmosphere == "none":
+        return []
+    if atmosphere == "thin":
+        return [("heliu3", 40)]
+    if atmosphere == "terair":
+        return [("heliu3", 30)]
+    if atmosphere == "hostile":
+        he3, d2 = GAS_CLOUD_BY_NAME.get(name_en, (100, 80))
+        return [("heliu3", he3), ("deutrm", d2)]
+    return [("heliu3", 60)]
+
+
 def add_planet(ids, system, name_en, typ, au, w, h, env, typer, res_fn, cap_fn=None, moons=None, races=None):
     gravity, temperature, atmosphere = env
     planet = Planet(ids.P(), name_en, typ, au, w, h, gravity, temperature, atmosphere)
-    planet.orbit = Orbit(ids.O())
+    orbit_resources = gas_cloud_resources(atmosphere, name_en) if typ == "gasgnt" else None
+    planet.orbit = Orbit(ids.O(), resources=orbit_resources)
     if races:
         planet.races = list(races)
     if w > 0 and h > 0:
