@@ -898,6 +898,46 @@ namespace UnitTests
         }
 
 
+		[Test]
+		public void OrderFactory_EveryEOrderType_HasRegistryEntry()
+		{
+			foreach (EOrderType orderType in Enum.GetValues(typeof(EOrderType)))
+			{
+				Assert.That(
+					OrderFactory.IsKnownVerb(orderType.ToString()),
+					Is.True,
+					"Missing factory entry for " + orderType);
+			}
+		}
+
+		[Test]
+		public void OrderFactory_CreateFromTextToken_StripsConditionAndRepeatPrefixes()
+		{
+			ModuleStack subject = this.game.ModuleStacks["100001"];
+			int initialCount = subject.Orders.Count;
+
+			Order move = OrderFactory.CreateFromTextToken("@move", subject, "move R00002");
+			subject.Orders.Remove(move);
+			Order has = OrderFactory.CreateFromTextToken("+has", subject, "+has item");
+			subject.Orders.Remove(has);
+			Order set = OrderFactory.CreateFromTextToken("-set", subject, "-set x");
+			subject.Orders.Remove(set);
+
+			Assert.That(move.Type, Is.EqualTo(EOrderType.move));
+			Assert.That(has.Type, Is.EqualTo(EOrderType.has));
+			Assert.That(set.Type, Is.EqualTo(EOrderType.set));
+			Assert.That(subject.Orders.Count, Is.EqualTo(initialCount));
+		}
+
+		[Test]
+		public void OrderFactory_CreateFromTextToken_UnknownVerb_UsesFullCommandInError()
+		{
+			ModuleStack subject = this.game.ModuleStacks["100001"];
+			Exception ex = Assert.Throws<Exception>(() =>
+				OrderFactory.CreateFromTextToken("bogus", subject, "bogus target"));
+			Assert.That(ex.Message, Is.EqualTo("Unknown order: bogus target"));
+		}
+
 		// upkeep
         // cash in | out437
         // bank operations

@@ -225,6 +225,7 @@
     <Compile Include="orders\RepairOrder.cs" />
     <Compile Include="orders\TacticOrder.cs" />
     <Compile Include="orders\EOrderType.cs" />
+    <Compile Include="orders\OrderFactory.cs" />
     <Compile Include="orders\HasOrder.cs" />
     <Compile Include="orders\NameOrder.cs" />
     <Compile Include="orders\GiveOrder.cs" />
