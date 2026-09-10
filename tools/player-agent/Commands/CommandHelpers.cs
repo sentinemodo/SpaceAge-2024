@@ -37,6 +37,28 @@ internal static class CommandHelpers
         Description = "Build prompt/RAG inputs without calling chat or starting remote pods.",
     };
 
+    public static Option<string> IndexOption { get; } = new("--index")
+    {
+        Description = "Index to search: shared or faction.",
+        IsRequired = true,
+    };
+
+    public static Option<string> QueryOption { get; } = new("--query")
+    {
+        Description = "Natural-language retrieval query.",
+        IsRequired = true,
+    };
+
+    public static Option<string?> VerbOption { get; } = new("--verb")
+    {
+        Description = "Optional verb filter (e.g. MOVE) to prefer matching rules chunks.",
+    };
+
+    public static Option<int?> TopOption { get; } = new("--top")
+    {
+        Description = "Maximum number of retrieval hits (default 6).",
+    };
+
     public static PlayMode ParseRequiredMode(InvocationContext context)
     {
         var modeValue = context.ParseResult.GetValueForOption(ModeOption);

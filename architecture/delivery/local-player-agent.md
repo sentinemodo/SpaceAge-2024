@@ -1,6 +1,6 @@
 # Local player-agent LLM — implementation plan
 
-Last updated: 2026-09-09  
+Last updated: 2026-09-10  
 Decision: [ADR-0009](../adr/ADR-0009-local-llm-player-agent.md)  
 Related: `.cursor/agents/player.md`, `player/README.md`, campaign play isolation docs when present
 
@@ -118,12 +118,14 @@ Build a fixed prompt pack generator:
 3. Objective text.
 4. Faction id line **without** password when `OLLAMA_HOST` is remote.
 
+Implemented in `Rag/PromptPackBuilder.cs`; wired into `draft --dry-run` in Phase 3.
+
 ### 2D. Ingest tool
 
-- [ ] `tools/player-agent` command: `ingest-shared` — embed + store chunks for manuals.
-- [ ] Command: `ingest-faction --run <id> --faction <n>` — report + story + prior orders only.
-- [ ] Vector store under gitignored `.data/` (**SQLite**, Phase 0 layout in `tools/player-agent/Rag/`).
-- [ ] Store path + heading metadata; support filter-by-planned-verb for retrieval.
+- [x] `tools/player-agent` command: `ingest-shared` — embed + store chunks for manuals.
+- [x] Command: `ingest-faction --run <id> --faction <n>` — report + story + prior orders only.
+- [x] Vector store under gitignored `.data/` (**SQLite**, Phase 0 layout in `tools/player-agent/Rag/`).
+- [x] Store path + heading metadata; support filter-by-planned-verb for retrieval (`retrieve --verb …`).
 
 ### 2E. Documentation hygiene (human / `/player`)
 
@@ -133,7 +135,7 @@ Before first production ingest, ensure manuals are the live truth:
 - [ ] Campaign vs SampleGame tech manuals point at the correct catalog excerpt.
 - [ ] `player/README.md` links this plan and notes which files are RAG sources.
 
-**Done when:** `ingest-shared` + one `ingest-faction` produce a retrievable index; a dry-run retrieve for verb `MOVE` returns rules chunks with correct metadata.
+**Done when:** `ingest-shared` + one `ingest-faction` produce a retrievable index; a dry-run retrieve for verb `MOVE` returns rules chunks with correct metadata. **Code complete (2026-09-10)** — run ingest against a live Ollama host to populate indexes; unit tests cover chunking, SQLite replace, and verb-filtered retrieval.
 
 ---
 

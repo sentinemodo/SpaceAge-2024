@@ -2,7 +2,9 @@
 
 Scriptable order-drafting runner for PBEM play. Lives **outside** `Game.exe` per [ADR-0009](../../architecture/adr/ADR-0009-local-llm-player-agent.md). Implementation plan: [`architecture/delivery/local-player-agent.md`](../../architecture/delivery/local-player-agent.md).
 
-**Phase 0 status:** CLI contracts, Ollama client smoke test, config, and path layout. RAG ingest, draft loop, and usage ledger arrive in later phases.
+**Phase 0 status:** CLI contracts, Ollama client smoke test, config, and path layout.
+
+**Phase 2 status:** Shared and faction RAG ingest (`ingest-shared`, `ingest-faction`), SQLite vector store, chunking, `retrieve` dev helper, and always-on prompt pack builder. Draft loop and usage ledger arrive in Phases 3 and 7–8.
 
 ## Requirements
 
@@ -92,12 +94,33 @@ UTF-8 drafts in faction folders; `play/turn.ps1` converts to Windows-1251 for `G
 |---------|-------|---------|
 | `config` | 0 | Show resolved settings |
 | `smoke` | 0 | Chat + embedding connectivity test |
-| `ingest-shared --mode …` | 2 | Embed shared manuals |
-| `ingest-faction --mode … --run … --faction …` | 2 | Embed isolated faction report |
+| `ingest-shared --mode …` | 2 | Embed shared manuals into SQLite |
+| `ingest-faction --mode … --run … --faction …` | 2 | Embed isolated faction report / story / orders |
+| `retrieve --mode … --index shared\|faction --query …` | 2 | Dev helper: top-k vector search (optional `--verb MOVE`) |
 | `draft --mode …` | 3 | Generate order draft |
 | `usage …` | 7 | RunPod ledger and reports |
 
-`--dry-run` on ingest/draft builds paths and inputs without calling chat.
+`--dry-run` on ingest chunks sources without calling embed; on draft builds the prompt pack without chat.
+
+### RAG ingest (Phase 2)
+
+```powershell
+# Chunk-only dry run
+dotnet run --project tools/player-agent/PlayerAgent.csproj -- ingest-shared --mode test --dry-run
+
+# Full shared ingest (requires Ollama + nomic-embed-text)
+dotnet run --project tools/player-agent/PlayerAgent.csproj -- ingest-shared --mode test
+
+# Faction ingest after isolate copies report into play/runs/<id>/factions/NN/
+dotnet run --project tools/player-agent/PlayerAgent.csproj -- `
+  ingest-faction --mode campaign --run demo --faction 2
+
+# Retrieve MOVE rules chunks
+dotnet run --project tools/player-agent/PlayerAgent.csproj -- `
+  retrieve --mode test --index shared --query "move stack to orbit" --verb MOVE --top 4
+```
+
+Unit tests: `dotnet test tools/player-agent-tests/PlayerAgent.Tests.csproj`.
 
 ## Index layout (gitignored)
 

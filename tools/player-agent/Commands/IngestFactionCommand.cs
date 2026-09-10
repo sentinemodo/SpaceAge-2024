@@ -1,4 +1,5 @@
 using System.CommandLine;
+using SpaceAge.PlayerAgent.Inference;
 using SpaceAge.PlayerAgent.Paths;
 using SpaceAge.PlayerAgent.Rag;
 
@@ -15,7 +16,7 @@ internal static class IngestFactionCommand
         command.AddOption(CommandHelpers.AllowRunPodOption);
         command.AddOption(CommandHelpers.DryRunOption);
 
-        command.SetHandler((context) =>
+        command.SetHandler(async (context) =>
         {
             _ = CommandHelpers.ParseRequiredMode(context);
             var settings = CommandHelpers.LoadSettings(context);
@@ -34,23 +35,61 @@ internal static class IngestFactionCommand
             var factionDir = RepoPaths.FactionFolder(repoRoot, runId, factionId);
             var indexDir = RepoPaths.FactionIndexDirectory(settings.IndexDirectory, runId, factionId);
             Directory.CreateDirectory(indexDir);
+            var sqlitePath = VectorIndexPaths.FactionSqlitePath(indexDir);
 
             Console.WriteLine($"Faction folder:   {factionDir}");
             Console.WriteLine($"Faction index:    {indexDir}");
-            Console.WriteLine($"SQLite path:      {VectorIndexPaths.FactionSqlitePath(indexDir)}");
+            Console.WriteLine($"SQLite path:      {sqlitePath}");
 
             if (!Directory.Exists(factionDir))
             {
                 throw new InvalidOperationException($"Faction folder not found: {factionDir}");
             }
 
+            var sourcePaths = FactionCorpusPaths.ReportPaths(factionDir)
+                .Concat(FactionCorpusPaths.StoryPath(factionDir) is { } story ? [story] : [])
+                .Concat(FactionCorpusPaths.OrderPaths(factionDir))
+                .ToList();
+
+            Console.WriteLine("Faction sources:");
+            foreach (var path in sourcePaths)
+            {
+                Console.WriteLine($"  [ok] {path}");
+            }
+
+            if (sourcePaths.Count == 0)
+            {
+                throw new InvalidOperationException(
+                    $"No report, story, or order files found under {factionDir}");
+            }
+
             if (dryRun)
             {
-                Console.WriteLine("Dry run: skipping embed calls (Phase 2 will implement ingest).");
+                Console.WriteLine("Dry run: chunking only; no embed calls.");
+                foreach (var path in sourcePaths)
+                {
+                    var content = await File.ReadAllTextAsync(path, context.GetCancellationToken());
+                    var chunks = path.EndsWith("story.md", StringComparison.OrdinalIgnoreCase)
+                        ? MarkdownChunker.ChunkStory(path, content)
+                        : path.Contains("report", StringComparison.OrdinalIgnoreCase)
+                            ? MarkdownChunker.ChunkReport(path, content)
+                            : MarkdownChunker.ChunkOrderFile(path, content);
+                    Console.WriteLine($"  {Path.GetFileName(path)}: {chunks.Count} chunks");
+                }
+
                 return;
             }
 
-            Console.WriteLine("Phase 0 stub: ingest-faction is not implemented until Phase 2.");
+            using var client = new OllamaClient(settings);
+            var ingest = new CorpusIngestService(client);
+            var summary = await ingest.IngestFactionAsync(
+                sqlitePath,
+                factionDir,
+                context.GetCancellationToken());
+
+            Console.WriteLine($"Embedded chunks:  {summary.ChunkCount}");
+            Console.WriteLine($"Stored total:     {summary.TotalStored}");
+            Console.WriteLine("Faction ingest complete.");
         });
 
         return command;

@@ -12,6 +12,7 @@ static RootCommand BuildRootCommand()
     root.AddCommand(SmokeCommand.Create());
     root.AddCommand(IngestSharedCommand.Create());
     root.AddCommand(IngestFactionCommand.Create());
+    root.AddCommand(RetrieveCommand.Create());
     root.AddCommand(DraftCommand.Create());
     root.AddCommand(UsageCommand.Create());
 
