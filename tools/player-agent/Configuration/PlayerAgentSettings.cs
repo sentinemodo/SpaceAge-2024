@@ -5,7 +5,6 @@ namespace SpaceAge.PlayerAgent.Configuration;
 public sealed class PlayerAgentSettings
 {
     public const string LocalDefaultChatModel = "qwen2.5-coder:7b";
-    public const string LocalSmokeChatModel = "smollm2";
     public const string RunPodDefaultChatModel = "qwen2.5-coder:14b";
     public const string DefaultEmbedModel = "nomic-embed-text";
 

@@ -7,7 +7,9 @@ internal static class SmokeCommand
 {
     public static Command Create()
     {
-        var command = new Command("smoke", "Verify Ollama chat and embedding endpoints.");
+        var command = new Command(
+            "smoke",
+            "Verify Ollama chat (qwen2.5-coder:7b default) and embedding endpoints.");
         command.AddOption(CommandHelpers.AllowRunPodOption);
 
         command.SetHandler(async (context) =>

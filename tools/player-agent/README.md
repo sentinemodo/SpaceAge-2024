@@ -13,7 +13,7 @@ Scriptable order-drafting runner for PBEM play. Lives **outside** `Game.exe` per
 - [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
 - [Ollama](https://ollama.com/) on Windows (local) or on a RunPod RTX 4090 (remote)
 - Models:
-  - **Local chat (default):** `ollama pull qwen2.5-coder:7b` — minimum quality for order drafting (`smollm2` is connectivity smoke only)
+  - **Local chat + smoke:** `ollama pull qwen2.5-coder:7b`
   - **Local / remote embed:** `ollama pull nomic-embed-text`
   - **RunPod (quality):** `ollama pull qwen2.5-coder:14b` (or `qwen3-coder:30b` when VRAM allows)
 
@@ -34,7 +34,7 @@ After build, the executable is `tools/player-agent/bin/Debug/net8.0/player-agent
 | Variable | Local default | Notes |
 |----------|---------------|--------|
 | `OLLAMA_HOST` | `http://127.0.0.1:11434` | Base URL; OpenAI API is `{host}/v1` |
-| `PLAYER_AGENT_CHAT_MODEL` | `qwen2.5-coder:7b` | Override with `smollm2` for fast smoke only; RunPod default `qwen2.5-coder:14b` |
+| `PLAYER_AGENT_CHAT_MODEL` | `qwen2.5-coder:7b` | Used for smoke, draft, and ingest; RunPod default `qwen2.5-coder:14b` |
 | `PLAYER_AGENT_EMBED_MODEL` | `nomic-embed-text` | Same host as chat |
 | `PLAYER_AGENT_INDEX_DIR` | `tools/player-agent/.data/` | Gitignored SQLite indexes |
 | `PLAYER_AGENT_ALLOW_RUNPOD` | unset | Set `1` or pass `--allow-runpod` for remote hosts |

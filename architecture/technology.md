@@ -81,7 +81,7 @@ Separate from the net48 engine. Decision: [ADR-0009](adr/ADR-0009-local-llm-play
 |------|--------|------------|
 | Location | `tools/player-agent/` (**C# net8**, `PlayerAgent.csproj` in `SpaceAge.sln`) | Outside `Game/`, `Tests/`, `website/`; no `Game.dll` reference |
 | Inference | **Ollama** (OpenAI-compatible `/v1`) | Same client for local and remote |
-| Chat model | Local default **`qwen2.5-coder:7b`**; **`smollm2`** smoke-only; RunPod **`qwen2.5-coder:14b`**; ADR quality target **`qwen3-coder:30b`** when VRAM allows | No fine-tune before RAG + verb lint |
+| Chat model | Local default **`qwen2.5-coder:7b`** (smoke + draft); RunPod **`qwen2.5-coder:14b`**; ADR quality target **`qwen3-coder:30b`** when VRAM allows | No fine-tune before RAG + verb lint |
 | Embeddings | **`nomic-embed-text`** | Same Ollama host as chat |
 | RAG index | **SQLite** under gitignored `tools/player-agent/.data/` | Separate `shared-test` / `shared-campaign`; `--mode test\|campaign` required |
 | RAG corpus | Hybrid prompt pack + vector chunks over `player/*.md` + per-faction report/story/orders | Never `gamein` / other factions / raw full `data.xml` for strategist |
@@ -91,6 +91,6 @@ Separate from the net48 engine. Decision: [ADR-0009](adr/ADR-0009-local-llm-play
 
 ## Revision
 
-- 2026-09-10: Phase 3 — draft loop, `orders.{faction}.{turn}.{iteration}.txt` naming, local default **`qwen2.5-coder:7b`** (not `smollm2` for orders).
+- 2026-09-10: Phase 3 — draft loop, `orders.{faction}.{turn}.{iteration}.txt` naming, local default **`qwen2.5-coder:7b`** for smoke and draft.
 - 2026-09-10: Phase 0 — **C# net8** runner scaffold, SQLite index layout, `--mode test|campaign`, RunPod `qwen2.5-coder:14b` defaults.
 - 2026-09-09: Added **Local player-agent inference** ([ADR-0009](adr/ADR-0009-local-llm-player-agent.md): Ollama, Qwen3-Coder, RunPod rental).

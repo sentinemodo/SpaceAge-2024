@@ -48,7 +48,7 @@ Suggested config (local, not committed secrets): endpoint URL (`localhost:11434`
 - [x] Draft output: **no default** — require `--output <path>` (dev/test) **or** `--run <id> --faction <n>` (campaign → `play/runs/<id>/factions/NN/orders.{faction}.{turn}.{iteration}.txt`; turn = report turn + 1; iteration auto-increments).
 - [x] Turn processing uses the **latest iteration** per faction/turn (`RepoPaths.ResolveActiveOrderPath`); older files kept for tracking/training.
 - [x] Env vars: `OLLAMA_HOST`, `PLAYER_AGENT_CHAT_MODEL`, `PLAYER_AGENT_EMBED_MODEL`, `PLAYER_AGENT_INDEX_DIR`, `PLAYER_AGENT_ALLOW_RUNPOD`; plus RunPod/budget vars (Phase 7–8): `RUNPOD_API_KEY`, `PLAYER_AGENT_RUNPOD_POD_ID`, `PLAYER_AGENT_BUDGET_USD`, `PLAYER_AGENT_MAX_POD_HOURS`, `PLAYER_AGENT_REQUIRE_CONFIRM`.
-- [x] Local defaults: chat **`qwen2.5-coder:7b`** (minimum for order drafts; **`smollm2`** smoke-only), embed **`nomic-embed-text`**. RunPod chat default **`qwen2.5-coder:14b`** when host is non-local unless overridden.
+- [x] Local defaults: chat **`qwen2.5-coder:7b`** (smoke + draft), embed **`nomic-embed-text`**. RunPod chat default **`qwen2.5-coder:14b`** when host is non-local unless overridden.
 - [x] Vector index layout: **SQLite** under gitignored `tools/player-agent/.data/` (`shared-test`, `shared-campaign`, per-run faction DBs).
 - [x] CLI stubs: `config`, `smoke`, `ingest-shared`, `ingest-faction`, `draft`, `usage` — ingest/draft/usage bodies land in Phases 2–3 and 7.
 - [x] Document RunPod vs local switch in `tools/player-agent/README.md`.
