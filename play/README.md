@@ -64,7 +64,7 @@ dotnet run --project tools/player-agent/PlayerAgent.csproj -- `
   audit-isolation --mode campaign --run smoke-test
 ```
 
-`draft-run` audits shared and faction indexes first (no cross-seat report leakage), then drafts factions 2–11 sequentially against one Ollama host. Results append to `play/runs/<id>/gm/isolation-audit.md`. RunPod batches still require Phases 7–8 guardrails before production use.
+`draft-run` audits shared and faction indexes first (no cross-seat report leakage), then drafts factions 2–11 sequentially against one Ollama host. Results append to `play/runs/<id>/gm/isolation-audit.md`. Remote batches require `PLAYER_AGENT_BUDGET_USD` and auto-track usage under `tools/player-agent/.data/usage/`; cost notes land in `play/runs/<id>/gm/llm-usage.md` ([Phases 7–8](../architecture/delivery/local-player-agent.md)).
 
 ## Turn encoding
 

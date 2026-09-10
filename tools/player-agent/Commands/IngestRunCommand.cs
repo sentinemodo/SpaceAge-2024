@@ -15,6 +15,7 @@ internal static class IngestRunCommand
         command.AddOption(CommandHelpers.ModeOption);
         command.AddOption(CommandHelpers.RunOption);
         command.AddOption(CommandHelpers.AllowRunPodOption);
+        command.AddOption(CommandHelpers.YesOption);
         command.AddOption(CommandHelpers.DryRunOption);
         command.AddOption(CommandHelpers.ClearOption);
         command.AddOption(CommandHelpers.FullCorpusOption);
@@ -54,76 +55,95 @@ internal static class IngestRunCommand
             Console.WriteLine($"Ingest mode:      {(fullCorpus ? "full corpus" : $"incremental (max-order-turns={maxOrderTurns})")}");
 
             var failures = new List<(int FactionId, string Error)>();
-            for (var factionId = fromFaction; factionId <= toFaction; factionId++)
+            var factionRange = Enumerable.Range(fromFaction, toFaction - fromFaction + 1).ToList();
+
+            async Task RunIngestLoopAsync(IOllamaClient client, CancellationToken cancellationToken)
             {
-                var factionDir = RepoPaths.FactionFolder(repoRoot, runId, factionId);
-                var indexDir = RepoPaths.FactionIndexDirectory(settings.IndexDirectory, runId, factionId);
-                Directory.CreateDirectory(indexDir);
-                var sqlitePath = VectorIndexPaths.FactionSqlitePath(indexDir);
-
-                Console.WriteLine();
-                Console.WriteLine($"=== Faction {factionId} ===");
-                Console.WriteLine($"Folder:           {factionDir}");
-                Console.WriteLine($"Index:            {sqlitePath}");
-
-                if (!Directory.Exists(factionDir))
+                for (var factionId = fromFaction; factionId <= toFaction; factionId++)
                 {
-                    failures.Add((factionId, $"Faction folder not found: {factionDir}"));
-                    Console.WriteLine("Skipped:          missing faction folder.");
-                    continue;
-                }
+                    var factionDir = RepoPaths.FactionFolder(repoRoot, runId, factionId);
+                    var indexDir = RepoPaths.FactionIndexDirectory(settings.IndexDirectory, runId, factionId);
+                    Directory.CreateDirectory(indexDir);
+                    var sqlitePath = VectorIndexPaths.FactionSqlitePath(indexDir);
 
-                try
-                {
-                    if (dryRun)
+                    Console.WriteLine();
+                    Console.WriteLine($"=== Faction {factionId} ===");
+                    Console.WriteLine($"Folder:           {factionDir}");
+                    Console.WriteLine($"Index:            {sqlitePath}");
+
+                    if (!Directory.Exists(factionDir))
                     {
-                        var plan = FactionIngestPlanner.BuildPlan(factionDir, options);
-                        Console.WriteLine("Dry run plan:");
-                        foreach (var path in plan.IngestPaths)
-                        {
-                            Console.WriteLine($"  ingest  {path}");
-                        }
-
-                        if (plan.PruneIndexedFactionCorpus && File.Exists(sqlitePath))
-                        {
-                            using var store = new SqliteVectorStore(sqlitePath);
-                            var stale = FactionIngestPlanner.FindStaleSources(
-                                store.ListSourcePaths(),
-                                factionDir,
-                                plan.KeepSourcePaths);
-                            foreach (var path in stale)
-                            {
-                                Console.WriteLine($"  prune   {path}");
-                            }
-                        }
-
+                        failures.Add((factionId, $"Faction folder not found: {factionDir}"));
+                        Console.WriteLine("Skipped:          missing faction folder.");
                         continue;
                     }
 
-                    using var client = new OllamaClient(settings);
-                    var ingest = new CorpusIngestService(client);
-                    var summary = await ingest.IngestFactionIncrementalAsync(
-                        sqlitePath,
-                        factionDir,
-                        options,
-                        context.GetCancellationToken());
-
-                    Console.WriteLine($"Embedded chunks:  {summary.ChunkCount}");
-                    Console.WriteLine($"Stored total:     {summary.TotalStored}");
-                    if (summary.RemovedSources.Count > 0)
+                    try
                     {
-                        Console.WriteLine("Pruned sources:");
-                        foreach (var path in summary.RemovedSources)
+                        if (dryRun)
                         {
-                            Console.WriteLine($"  {path}");
+                            var plan = FactionIngestPlanner.BuildPlan(factionDir, options);
+                            Console.WriteLine("Dry run plan:");
+                            foreach (var path in plan.IngestPaths)
+                            {
+                                Console.WriteLine($"  ingest  {path}");
+                            }
+
+                            if (plan.PruneIndexedFactionCorpus && File.Exists(sqlitePath))
+                            {
+                                using var store = new SqliteVectorStore(sqlitePath);
+                                var stale = FactionIngestPlanner.FindStaleSources(
+                                    store.ListSourcePaths(),
+                                    factionDir,
+                                    plan.KeepSourcePaths);
+                                foreach (var path in stale)
+                                {
+                                    Console.WriteLine($"  prune   {path}");
+                                }
+                            }
+
+                            continue;
+                        }
+
+                        var ingest = new CorpusIngestService(client);
+                        var summary = await ingest.IngestFactionIncrementalAsync(
+                            sqlitePath,
+                            factionDir,
+                            options,
+                            cancellationToken);
+
+                        Console.WriteLine($"Embedded chunks:  {summary.ChunkCount}");
+                        Console.WriteLine($"Stored total:     {summary.TotalStored}");
+                        if (summary.RemovedSources.Count > 0)
+                        {
+                            Console.WriteLine("Pruned sources:");
+                            foreach (var path in summary.RemovedSources)
+                            {
+                                Console.WriteLine($"  {path}");
+                            }
                         }
                     }
+                    catch (Exception ex)
+                    {
+                        failures.Add((factionId, ex.Message));
+                        Console.WriteLine($"Failed:           {ex.Message}");
+                    }
                 }
-                catch (Exception ex)
-                {
-                    failures.Add((factionId, ex.Message));
-                    Console.WriteLine($"Failed:           {ex.Message}");
-                }
+            }
+
+            if (dryRun)
+            {
+                await RunIngestLoopAsync(new OllamaClient(settings), context.GetCancellationToken());
+            }
+            else
+            {
+                await CommandHelpers.RunWithInferenceAsync(
+                    settings,
+                    context,
+                    command: "ingest-run",
+                    runId,
+                    factionRange,
+                    RunIngestLoopAsync);
             }
 
             Console.WriteLine();

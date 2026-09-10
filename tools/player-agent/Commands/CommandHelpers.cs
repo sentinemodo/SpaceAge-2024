@@ -1,6 +1,8 @@
 using System.CommandLine;
 using System.CommandLine.Invocation;
 using SpaceAge.PlayerAgent.Configuration;
+using SpaceAge.PlayerAgent.Inference;
+using SpaceAge.PlayerAgent.Usage;
 
 namespace SpaceAge.PlayerAgent.Commands;
 
@@ -9,6 +11,11 @@ internal static class CommandHelpers
     public static Option<bool> AllowRunPodOption { get; } = new("--allow-runpod")
     {
         Description = "Allow remote Ollama hosts (RunPod). Required when OLLAMA_HOST is not localhost.",
+    };
+
+    public static Option<bool> YesOption { get; } = new("--yes")
+    {
+        Description = "Skip RunPod confirmation prompts (still enforces hard budget caps).",
     };
 
     public static Option<string> ModeOption { get; } = new("--mode")
@@ -137,6 +144,36 @@ internal static class CommandHelpers
         return settings;
     }
 
+    public static bool AssumeYes(InvocationContext context) =>
+        context.ParseResult.GetValueForOption(YesOption);
+
+    public static async Task RunWithInferenceAsync(
+        PlayerAgentSettings settings,
+        InvocationContext context,
+        string command,
+        string? runId,
+        IReadOnlyList<int>? factionIds,
+        Func<IOllamaClient, CancellationToken, Task> action)
+    {
+        var inference = RemoteInferenceContext.Create(
+            settings,
+            AssumeYes(context),
+            new ConsoleUserPrompt(),
+            command,
+            runId,
+            factionIds,
+            dryRun: false);
+
+        try
+        {
+            await action(inference.Client, context.GetCancellationToken());
+        }
+        finally
+        {
+            await inference.DisposeAsync();
+        }
+    }
+
     public static void PrintSettings(PlayerAgentSettings settings)
     {
         Console.WriteLine($"Ollama host:      {settings.OllamaBaseUri}");
@@ -146,5 +183,20 @@ internal static class CommandHelpers
         Console.WriteLine($"Index directory:  {settings.IndexDirectory}");
         Console.WriteLine($"Remote host:      {settings.IsRemoteHost}");
         Console.WriteLine($"Allow RunPod:     {settings.AllowRunPod}");
+        Console.WriteLine($"RunPod pod id:    {settings.RunPodPodId ?? "(unset)"}");
+        Console.WriteLine($"GPU class:        {settings.GpuClass ?? "(unset)"}");
+        Console.WriteLine($"Cloud tier:       {settings.CloudTier ?? "(unset)"}");
+        Console.WriteLine($"Hourly rate:      ${settings.HourlyRateUsd:F2}/hr");
+
+        if (settings.IsRemoteHost)
+        {
+            var budget = RunPodBudgetSettings.LoadFromEnvironment(isRemoteHost: true);
+            Console.WriteLine($"Budget hard:      {(budget.HardBudgetUsd is null ? "(unset)" : Usage.UsageReportFormatter.FormatUsd(budget.HardBudgetUsd.Value))}");
+            Console.WriteLine($"Budget soft:      {(budget.SoftBudgetUsd is null ? "(unset)" : Usage.UsageReportFormatter.FormatUsd(budget.SoftBudgetUsd.Value))}");
+            Console.WriteLine($"Max pod hours:    {budget.MaxPodHoursPerSession?.ToString("F2") ?? "(unset)"}");
+            Console.WriteLine($"Max chat calls:   {budget.MaxChatCallsPerSession?.ToString() ?? "(unset)"}");
+            Console.WriteLine($"Idle timeout:     {budget.IdleTimeoutMinutes} min");
+            Console.WriteLine($"Require confirm:  {budget.RequireConfirm}");
+        }
     }
 }

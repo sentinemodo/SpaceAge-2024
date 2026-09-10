@@ -4,9 +4,9 @@ namespace SpaceAge.PlayerAgent.Rag;
 
 public sealed class CorpusIngestService
 {
-    private readonly OllamaClient _client;
+    private readonly IOllamaClient _client;
 
-    public CorpusIngestService(OllamaClient client)
+    public CorpusIngestService(IOllamaClient client)
     {
         _client = client;
     }

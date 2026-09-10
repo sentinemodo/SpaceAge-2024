@@ -5,7 +5,7 @@ namespace SpaceAge.PlayerAgent.Rag;
 public static class SpotCheckRetriever
 {
     public static async Task<IReadOnlyList<SpotCheckResult>> RunAsync(
-        OllamaClient client,
+        IOllamaClient client,
         string sqlitePath,
         IReadOnlyList<SpotCheckQuery> queries,
         int topK,

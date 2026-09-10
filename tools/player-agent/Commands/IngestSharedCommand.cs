@@ -12,6 +12,7 @@ internal static class IngestSharedCommand
         var command = new Command("ingest-shared", "Embed player manuals into the shared RAG index (Phase 2).");
         command.AddOption(CommandHelpers.ModeOption);
         command.AddOption(CommandHelpers.AllowRunPodOption);
+        command.AddOption(CommandHelpers.YesOption);
         command.AddOption(CommandHelpers.DryRunOption);
         command.AddOption(CommandHelpers.ClearOption);
 
@@ -62,14 +63,23 @@ internal static class IngestSharedCommand
                 return;
             }
 
-            using var client = new OllamaClient(settings);
-            var ingest = new CorpusIngestService(client);
-            var summary = await ingest.IngestSharedAsync(
-                sqlitePath,
-                manualPaths,
-                mode,
-                clear,
-                context.GetCancellationToken());
+            IngestSummary summary = null!;
+            await CommandHelpers.RunWithInferenceAsync(
+                settings,
+                context,
+                command: "ingest-shared",
+                runId: null,
+                factionIds: null,
+                async (client, cancellationToken) =>
+                {
+                    var ingest = new CorpusIngestService(client);
+                    summary = await ingest.IngestSharedAsync(
+                        sqlitePath,
+                        manualPaths,
+                        mode,
+                        clear,
+                        cancellationToken);
+                });
 
             if (summary.MissingFiles.Count > 0)
             {

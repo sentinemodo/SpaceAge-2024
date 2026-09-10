@@ -17,6 +17,7 @@ internal static class IngestFactionCommand
         command.AddOption(CommandHelpers.FactionOption);
         command.AddOption(CommandHelpers.ReportOption);
         command.AddOption(CommandHelpers.AllowRunPodOption);
+        command.AddOption(CommandHelpers.YesOption);
         command.AddOption(CommandHelpers.DryRunOption);
         command.AddOption(CommandHelpers.ClearOption);
         command.AddOption(CommandHelpers.FullCorpusOption);
@@ -119,54 +120,38 @@ internal static class IngestFactionCommand
                 return;
             }
 
-            if (fullCorpus)
-            {
-                using var client = new OllamaClient(settings);
-                var ingest = new CorpusIngestService(client);
-                var summary = await ingest.IngestFactionAsync(
-                    sqlitePath,
-                    factionDir,
-                    clear,
-                    context.GetCancellationToken());
-
-                if (summary.ClearedExisting)
+            IngestSummary summary = null!;
+            await CommandHelpers.RunWithInferenceAsync(
+                settings,
+                context,
+                command: "ingest-faction",
+                runId,
+                factionIds: [factionId],
+                async (client, cancellationToken) =>
                 {
-                    Console.WriteLine("Index cleared before ingest.");
-                }
+                    var ingest = new CorpusIngestService(client);
+                    summary = fullCorpus
+                        ? await ingest.IngestFactionAsync(sqlitePath, factionDir, clear, cancellationToken)
+                        : await ingest.IngestFactionIncrementalAsync(sqlitePath, factionDir, options, cancellationToken);
+                });
 
-                Console.WriteLine($"Embedded chunks:  {summary.ChunkCount}");
-                Console.WriteLine($"Stored total:     {summary.TotalStored}");
-                Console.WriteLine("Faction ingest complete.");
-                return;
+            if (summary.ClearedExisting)
+            {
+                Console.WriteLine("Index cleared before ingest.");
             }
 
-            using (var client = new OllamaClient(settings))
+            Console.WriteLine($"Embedded chunks:  {summary.ChunkCount}");
+            Console.WriteLine($"Stored total:     {summary.TotalStored}");
+            if (!fullCorpus && summary.RemovedSources.Count > 0)
             {
-                var ingest = new CorpusIngestService(client);
-                var summary = await ingest.IngestFactionIncrementalAsync(
-                    sqlitePath,
-                    factionDir,
-                    options,
-                    context.GetCancellationToken());
-
-                if (summary.ClearedExisting)
+                Console.WriteLine("Pruned sources:");
+                foreach (var path in summary.RemovedSources)
                 {
-                    Console.WriteLine("Index cleared before ingest.");
+                    Console.WriteLine($"  {path}");
                 }
-
-                Console.WriteLine($"Embedded chunks:  {summary.ChunkCount}");
-                Console.WriteLine($"Stored total:     {summary.TotalStored}");
-                if (summary.RemovedSources.Count > 0)
-                {
-                    Console.WriteLine("Pruned sources:");
-                    foreach (var path in summary.RemovedSources)
-                    {
-                        Console.WriteLine($"  {path}");
-                    }
-                }
-
-                Console.WriteLine("Faction ingest complete.");
             }
+
+            Console.WriteLine("Faction ingest complete.");
         });
 
         return command;

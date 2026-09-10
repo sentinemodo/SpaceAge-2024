@@ -5,7 +5,7 @@ using SpaceAge.PlayerAgent.Configuration;
 
 namespace SpaceAge.PlayerAgent.Inference;
 
-public sealed class OllamaClient : IDisposable
+public sealed class OllamaClient : IOllamaClient, IDisposable
 {
     private readonly HttpClient _httpClient;
     private readonly PlayerAgentSettings _settings;

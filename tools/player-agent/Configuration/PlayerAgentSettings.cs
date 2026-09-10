@@ -13,6 +13,12 @@ public sealed class PlayerAgentSettings
     public string EmbedModel { get; set; } = DefaultEmbedModel;
     public string IndexDirectory { get; set; } = DefaultIndexDirectory;
     public bool AllowRunPod { get; set; }
+    public string? RunPodPodId { get; set; }
+    public string? GpuClass { get; set; }
+    public string? CloudTier { get; set; }
+    public double HourlyRateUsd { get; set; } = DefaultRunPodHourlyRateUsd;
+
+    public const double DefaultRunPodHourlyRateUsd = 0.44;
 
     public static string DefaultIndexDirectory =>
         Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..", "..", "..", ".data"));
@@ -47,6 +53,9 @@ public sealed class PlayerAgentSettings
             || string.Equals(configuration["PLAYER_AGENT_ALLOW_RUNPOD"], "1", StringComparison.Ordinal)
             || string.Equals(configuration["PLAYER_AGENT_ALLOW_RUNPOD"], "true", StringComparison.OrdinalIgnoreCase);
 
+        var hourlyRate = ParseDouble(configuration["PLAYER_AGENT_RUNPOD_HOURLY_RATE_USD"])
+            ?? DefaultRunPodHourlyRateUsd;
+
         return new PlayerAgentSettings
         {
             OllamaBaseUri = baseUri,
@@ -54,6 +63,10 @@ public sealed class PlayerAgentSettings
             EmbedModel = embedModel,
             IndexDirectory = Path.GetFullPath(indexDir),
             AllowRunPod = allowRunPod,
+            RunPodPodId = configuration["PLAYER_AGENT_RUNPOD_POD_ID"],
+            GpuClass = configuration["PLAYER_AGENT_GPU_CLASS"],
+            CloudTier = configuration["PLAYER_AGENT_CLOUD_TIER"],
+            HourlyRateUsd = hourlyRate,
         };
     }
 
@@ -97,4 +110,9 @@ public sealed class PlayerAgentSettings
         var trimmed = basePath.TrimEnd('/');
         return $"{trimmed}/{segment.TrimStart('/')}";
     }
+
+    private static double? ParseDouble(string? value) =>
+        double.TryParse(value, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out var parsed)
+            ? parsed
+            : null;
 }

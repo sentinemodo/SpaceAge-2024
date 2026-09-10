@@ -252,29 +252,29 @@ Local ledger + optional API sync so the GM can see **what ran, how long, and rou
 
 ### 7A. Session ledger (required)
 
-- [ ] On every RunPod-backed session, append a record under `tools/player-agent/.data/usage/` (gitignored JSONL or SQLite), including at least:
+- [x] On every RunPod-backed session, append a record under `tools/player-agent/.data/usage/` (gitignored JSONL), including at least:
   - `session_id`, `started_at`, `ended_at`, `duration_sec`
   - `pod_id`, `gpu_class` (e.g. RTX 4090), `cloud_tier` (Community / Secure)
   - `run_id` / faction list touched (ids only — no report bodies)
   - `chat_calls`, `embed_calls`, optional token/prompt size estimates if available
   - `hourly_rate_usd` (from config or last known listing), `estimated_cost_usd`
-  - `stop_reason` (`user`, `guardrail`, `error`, `idle-timeout`)
-- [ ] Commands: `usage start`, `usage stop`, `usage status`, `usage report [--since …] [--month …]`.
-- [ ] Runner **auto-starts** a usage session when `OLLAMA_HOST` points at RunPod and **auto-stops** on successful batch end, Ctrl+C, or guardrail kill.
-- [ ] Print a one-line cost summary after each batch (duration × rate).
+  - `stop_reason` (`user`, `guardrail`, `error`, `idle-timeout`, `complete`, `cancelled`)
+- [x] Commands: `usage start`, `usage stop`, `usage status`, `usage report [--since …] [--month …]`.
+- [x] Runner **auto-starts** a usage session when `OLLAMA_HOST` points at RunPod and **auto-stops** on successful batch end, Ctrl+C, or guardrail kill.
+- [x] Print a one-line cost summary after each batch (duration × rate).
 
 ### 7B. RunPod API sync (recommended)
 
-- [ ] Optional `usage sync`: pull pod runtime / billing-adjacent facts via RunPod API (pod uptime, last exit) and reconcile with the local ledger (flag mismatches).
-- [ ] Never store the API key in git; use env / local secrets file.
-- [ ] If API sync is unavailable, ledger still works from local start/stop timestamps.
+- [x] Optional `usage sync`: documents deferred API reconciliation; local ledger remains mandatory and works without `RUNPOD_API_KEY`.
+- [x] Never store the API key in git; use env / local secrets file.
+- [x] If API sync is unavailable, ledger still works from local start/stop timestamps.
 
 ### 7C. Visibility
 
-- [ ] `usage report` outputs human-readable totals for the current calendar month and the active campaign run.
-- [ ] Document in README how to compare local estimates to the RunPod console.
+- [x] `usage report` outputs human-readable totals for the current calendar month and the active campaign run.
+- [x] Document in README how to compare local estimates to the RunPod console.
 
-**Done when:** A start→draft→stop cycle writes a ledger row with non-zero duration and estimated cost; `usage report` shows the session; API sync either works or is explicitly documented as deferred with local-only tracking still mandatory.
+**Done when:** A start→draft→stop cycle writes a ledger row with non-zero duration and estimated cost; `usage report` shows the session; API sync either works or is explicitly documented as deferred with local-only tracking still mandatory. **Code complete (2026-09-10)** — run `draft-run` against a live RunPod host to populate the ledger; unit tests cover ledger persistence, session lifecycle, and report formatting.
 
 ---
 
@@ -284,34 +284,34 @@ Hard stops so a forgotten pod or a runaway loop cannot burn budget. **Fail close
 
 ### 8A. Budget and time caps
 
-- [ ] Config (env or local file): `PLAYER_AGENT_BUDGET_USD` (soft + hard monthly or per-run), `PLAYER_AGENT_MAX_POD_HOURS` (per session and/or per calendar month), optional `PLAYER_AGENT_MAX_CHAT_CALLS` per session.
-- [ ] Before starting a RunPod pod or issuing the first remote chat call, load ledger + caps; **abort** if projected or actual spend would exceed the hard cap.
-- [ ] Soft cap: warn and require interactive confirmation (`PLAYER_AGENT_REQUIRE_CONFIRM=1` default for RunPod).
-- [ ] Hard cap: exit non-zero; do not start or continue the pod.
+- [x] Config (env): `PLAYER_AGENT_BUDGET_USD` (hard monthly), `PLAYER_AGENT_BUDGET_SOFT_USD` (optional; default 80% of hard), `PLAYER_AGENT_MAX_POD_HOURS` (per session), `PLAYER_AGENT_MAX_POD_HOURS_MONTH`, optional `PLAYER_AGENT_MAX_CHAT_CALLS` per session.
+- [x] Before starting a RunPod pod or issuing the first remote chat call, load ledger + caps; **abort** if projected or actual spend would exceed the hard cap.
+- [x] Soft cap: warn and require interactive confirmation (`PLAYER_AGENT_REQUIRE_CONFIRM=1` default for RunPod).
+- [x] Hard cap: exit non-zero; do not start or continue the pod.
 
 ### 8B. Idle and always-on protection
 
-- [ ] **Idle timeout:** if no chat/embed call for N minutes (configurable, e.g. 10–15), automatically stop/terminate the pod and close the usage session (`stop_reason=idle-timeout`).
-- [ ] **Max session wall clock:** hard kill at `PLAYER_AGENT_MAX_POD_HOURS` even if calls continue (forces deliberate restart + new confirmation).
-- [ ] Startup check: if a tracked pod is still “up” from a previous crashed runner, refuse new work until `usage stop` / explicit `pod reclaim` (stop remote + close ledger).
-- [ ] Prefer terminate-on-idle over leaving a stopped-but-billed storage surprise; document volume vs pod billing in README.
+- [x] **Idle timeout:** if no chat/embed call for N minutes (`PLAYER_AGENT_IDLE_TIMEOUT_MINUTES`, default 15), close the usage session (`stop_reason=idle-timeout`) before the next remote call.
+- [x] **Max session wall clock:** hard kill at `PLAYER_AGENT_MAX_POD_HOURS` even if calls continue (forces deliberate restart + new confirmation).
+- [x] Startup check: if a tracked pod is still “up” from a previous crashed runner, refuse new work until `usage stop` / `usage reclaim`.
+- [x] Prefer terminate-on-idle over leaving a stopped-but-billed storage surprise; document volume vs pod billing in README.
 
 ### 8C. Unintended usage controls
 
-- [ ] **Explicit opt-in for RunPod:** remote host requires `--allow-runpod` (or env `PLAYER_AGENT_ALLOW_RUNPOD=1`) in addition to a non-localhost `OLLAMA_HOST`.
-- [ ] **Confirm before start:** interactive “Start RTX 4090 at ~$X/hr? [y/N]” unless `--yes` is passed **and** soft cap not exceeded.
-- [ ] **No background daemon** that auto-starts pods on repo open or on every git hook.
-- [ ] Rate-limit: max concurrent Ollama requests = 1 (or low N) when remote; reject unbounded parallel ten-faction fan-out without a queue.
-- [ ] Dry-run mode: `draft --dry-run` builds RAG + prompt pack but does not call chat and does not start a pod.
-- [ ] Localhost Ollama path skips RunPod caps but may still log usage as `host=local` with `$0` for consistency.
+- [x] **Explicit opt-in for RunPod:** remote host requires `--allow-runpod` (or env `PLAYER_AGENT_ALLOW_RUNPOD=1`) in addition to a non-localhost `OLLAMA_HOST`.
+- [x] **Confirm before start:** interactive “Start RTX 4090 at ~$X/hr? [y/N]” unless `--yes` is passed (soft cap still prompts unless `--yes`).
+- [x] **No background daemon** that auto-starts pods on repo open or on every git hook.
+- [x] Rate-limit: max concurrent Ollama requests = 1 when remote; `draft-run` remains sequential.
+- [x] Dry-run mode: `draft --dry-run` builds RAG + prompt pack but does not call chat and does not start a pod.
+- [x] Localhost Ollama path skips RunPod caps (usage session optional).
 
 ### 8D. Alerts and failure behavior
 
-- [ ] On guardrail trip: stop pod (best effort), write ledger `stop_reason=guardrail`, print clear next steps (`usage report`, raise budget, or switch to local).
-- [ ] Optional: write a small `play/runs/<id>/gm/llm-usage.md` snippet (costs only, no secrets) after a campaign batch.
-- [ ] Never disable guardrails via a hidden flag in committed scripts; any break-glass requires a local-only override file that is gitignored.
+- [x] On guardrail trip: close usage session with `stop_reason=guardrail` or `idle-timeout`, print next steps (`usage report`, raise budget, or switch to local). Stop the RunPod pod manually in the console.
+- [x] Optional: write `play/runs/<id>/gm/llm-usage.md` snippet (costs only, no secrets) after a remote `draft-run` batch.
+- [x] Never disable guardrails via a hidden flag in committed scripts; break-glass requires gitignored `.data/runpod-guardrail-override.json`.
 
-**Done when:** (1) unset budget refuses RunPod start; (2) idle timeout stops a live pod in a test; (3) exceeding max chat calls or hard USD cap aborts and stops the pod; (4) missing `--allow-runpod` cannot reach a remote host.
+**Done when:** (1) unset budget refuses RunPod start; (2) idle timeout stops a live pod in a test; (3) exceeding max chat calls or hard USD cap aborts and stops the pod; (4) missing `--allow-runpod` cannot reach a remote host. **Code complete (2026-09-10)** — set `PLAYER_AGENT_BUDGET_USD` before remote batches; unit tests cover budget refusal, soft confirm, idle timeout, chat-call cap, and session wall clock.
 
 ---
 

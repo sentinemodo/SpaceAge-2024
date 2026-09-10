@@ -13,13 +13,12 @@ public static class RunPodGuard
         {
             throw new InvalidOperationException(
                 "Remote Ollama host detected (RunPod or non-local URL). "
-                + "Pass --allow-runpod or set PLAYER_AGENT_ALLOW_RUNPOD=1. "
-                + "Full usage ledger and budget guardrails land in Phases 7–8; "
-                + "Phase 1B adds thin start/stop warnings.");
+                + "Pass --allow-runpod or set PLAYER_AGENT_ALLOW_RUNPOD=1.");
         }
 
         Console.Error.WriteLine(
             "Warning: report text may leave this machine on a remote Ollama host. "
-            + "Strip faction passwords from prompts; stop the pod when idle.");
+            + "Strip faction passwords from prompts; set PLAYER_AGENT_BUDGET_USD before remote work; "
+            + "usage is tracked under .data/usage/; stop the pod when idle.");
     }
 }

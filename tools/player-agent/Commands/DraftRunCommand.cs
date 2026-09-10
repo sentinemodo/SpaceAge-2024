@@ -1,8 +1,10 @@
 using System.CommandLine;
+using SpaceAge.PlayerAgent.Configuration;
 using SpaceAge.PlayerAgent.Draft;
 using SpaceAge.PlayerAgent.Inference;
 using SpaceAge.PlayerAgent.Paths;
 using SpaceAge.PlayerAgent.Rag;
+using SpaceAge.PlayerAgent.Usage;
 
 namespace SpaceAge.PlayerAgent.Commands;
 
@@ -16,6 +18,7 @@ internal static class DraftRunCommand
         command.AddOption(CommandHelpers.ModeOption);
         command.AddOption(CommandHelpers.RunOption);
         command.AddOption(CommandHelpers.AllowRunPodOption);
+        command.AddOption(CommandHelpers.YesOption);
         command.AddOption(CommandHelpers.DryRunOption);
         command.AddOption(CommandHelpers.TopOption);
         command.AddOption(CommandHelpers.FromFactionOption);
@@ -30,6 +33,7 @@ internal static class DraftRunCommand
             var mode = CommandHelpers.ParseRequiredMode(context);
             var settings = CommandHelpers.LoadSettings(context);
             var dryRun = context.ParseResult.GetValueForOption(CommandHelpers.DryRunOption);
+            var assumeYes = context.ParseResult.GetValueForOption(CommandHelpers.YesOption);
             var runId = context.ParseResult.GetValueForOption(CommandHelpers.RunOption)
                 ?? throw new InvalidOperationException("--run is required for draft-run.");
             var fromFaction = context.ParseResult.GetValueForOption(CommandHelpers.FromFactionOption) ?? 2;
@@ -87,95 +91,137 @@ internal static class DraftRunCommand
 
             var failures = new List<(int FactionId, string Error)>();
             var successes = new List<int>();
+            var factionRange = Enumerable.Range(fromFaction, toFaction - fromFaction + 1).ToList();
+            var inference = RemoteInferenceContext.Create(
+                settings,
+                assumeYes,
+                new ConsoleUserPrompt(),
+                command: "draft-run",
+                runId,
+                factionRange,
+                dryRun);
+            var service = new OrderDraftService(inference.Client, settings);
+            var cancellationToken = context.GetCancellationToken();
 
-            using var client = new OllamaClient(settings);
-            var service = new OrderDraftService(client, settings);
-
-            for (var factionId = fromFaction; factionId <= toFaction; factionId++)
+            try
             {
-                var factionDir = RepoPaths.FactionFolder(repoRoot, runId, factionId);
+                for (var factionId = fromFaction; factionId <= toFaction; factionId++)
+                {
+                    cancellationToken.ThrowIfCancellationRequested();
+                    var factionDir = RepoPaths.FactionFolder(repoRoot, runId, factionId);
+                    Console.WriteLine();
+                    Console.WriteLine($"=== Faction {factionId} ===");
+                    Console.WriteLine($"Folder:           {factionDir}");
+
+                    if (!Directory.Exists(factionDir))
+                    {
+                        failures.Add((factionId, $"Faction folder not found: {factionDir}"));
+                        Console.WriteLine("Skipped:          missing faction folder.");
+                        continue;
+                    }
+
+                    try
+                    {
+                        var reportPath = FactionCorpusPaths.ReportPaths(factionDir).LastOrDefault();
+                        if (reportPath is null)
+                        {
+                            throw new InvalidOperationException("No report.*.txt found in faction folder.");
+                        }
+
+                        var draftPath = RepoPaths.ResolveDraftOutput(
+                            repoRoot,
+                            outputPath: null,
+                            runId,
+                            factionId,
+                            turnOverride,
+                            iterationOverride,
+                            reportPath);
+                        var storyPath = FactionCorpusPaths.StoryPath(factionDir);
+
+                        Console.WriteLine($"Draft output:     {draftPath}");
+                        Console.WriteLine($"Report:           {reportPath}");
+                        Console.WriteLine($"Story:            {storyPath ?? "(none)"}");
+
+                        var request = new OrderDraftRequest
+                        {
+                            Mode = mode,
+                            FactionId = factionId,
+                            OutputPath = draftPath,
+                            RunId = runId,
+                            FactionDir = factionDir,
+                            ReportPath = reportPath,
+                            StoryPath = storyPath,
+                            DryRun = dryRun,
+                            TopK = topK,
+                        };
+
+                        var result = await service.DraftAsync(request, cancellationToken);
+                        Console.WriteLine($"Retrieved chunks: {result.RetrievedChunks.Count}");
+                        if (dryRun)
+                        {
+                            Console.WriteLine("Dry run prompt pack ready (no chat call).");
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Wrote draft:      {result.OutputPath}");
+                            Console.WriteLine($"Lint:             {(result.LintResult?.IsValid == true ? "pass" : "fail")}");
+                        }
+
+                        successes.Add(factionId);
+                    }
+                    catch (RunPodGuardrailException ex)
+                    {
+                        failures.Add((factionId, ex.Message));
+                        Console.WriteLine($"Failed:           {ex.Message}");
+                        throw;
+                    }
+                    catch (Exception ex)
+                    {
+                        failures.Add((factionId, ex.Message));
+                        Console.WriteLine($"Failed:           {ex.Message}");
+                    }
+                }
+
                 Console.WriteLine();
-                Console.WriteLine($"=== Faction {factionId} ===");
-                Console.WriteLine($"Folder:           {factionDir}");
-
-                if (!Directory.Exists(factionDir))
+                Console.WriteLine($"draft-run summary: {successes.Count} succeeded, {failures.Count} failed.");
+                if (failures.Count > 0)
                 {
-                    failures.Add((factionId, $"Faction folder not found: {factionDir}"));
-                    Console.WriteLine("Skipped:          missing faction folder.");
-                    continue;
+                    inference.UsageScope?.MarkError();
+                    throw new InvalidOperationException(
+                        $"draft-run completed with {failures.Count} failure(s): "
+                        + string.Join("; ", failures.Select(f => $"faction {f.FactionId}: {f.Error}")));
                 }
 
-                try
+                if (!dryRun)
                 {
-                    var reportPath = FactionCorpusPaths.ReportPaths(factionDir).LastOrDefault();
-                    if (reportPath is null)
-                    {
-                        throw new InvalidOperationException("No report.*.txt found in faction folder.");
-                    }
-
-                    var draftPath = RepoPaths.ResolveDraftOutput(
-                        repoRoot,
-                        outputPath: null,
-                        runId,
-                        factionId,
-                        turnOverride,
-                        iterationOverride,
-                        reportPath);
-                    var storyPath = FactionCorpusPaths.StoryPath(factionDir);
-
-                    Console.WriteLine($"Draft output:     {draftPath}");
-                    Console.WriteLine($"Report:           {reportPath}");
-                    Console.WriteLine($"Story:            {storyPath ?? "(none)"}");
-
-                    var request = new OrderDraftRequest
-                    {
-                        Mode = mode,
-                        FactionId = factionId,
-                        OutputPath = draftPath,
-                        RunId = runId,
-                        FactionDir = factionDir,
-                        ReportPath = reportPath,
-                        StoryPath = storyPath,
-                        DryRun = dryRun,
-                        TopK = topK,
-                    };
-
-                    var result = await service.DraftAsync(request, context.GetCancellationToken());
-                    Console.WriteLine($"Retrieved chunks: {result.RetrievedChunks.Count}");
-                    if (dryRun)
-                    {
-                        Console.WriteLine("Dry run prompt pack ready (no chat call).");
-                    }
-                    else
-                    {
-                        Console.WriteLine($"Wrote draft:      {result.OutputPath}");
-                        Console.WriteLine($"Lint:             {(result.LintResult?.IsValid == true ? "pass" : "fail")}");
-                    }
-
-                    successes.Add(factionId);
+                    Console.WriteLine("Reminder: UTF-8 drafts; play/turn.ps1 converts to Windows-1251 for Game.exe.");
                 }
-                catch (Exception ex)
-                {
-                    failures.Add((factionId, ex.Message));
-                    Console.WriteLine($"Failed:           {ex.Message}");
-                }
+
+                Console.WriteLine("draft-run complete.");
             }
-
-            Console.WriteLine();
-            Console.WriteLine($"draft-run summary: {successes.Count} succeeded, {failures.Count} failed.");
-            if (failures.Count > 0)
+            catch (OperationCanceledException)
             {
-                throw new InvalidOperationException(
-                    $"draft-run completed with {failures.Count} failure(s): "
-                    + string.Join("; ", failures.Select(f => $"faction {f.FactionId}: {f.Error}")));
+                inference.UsageScope?.MarkCancelled();
+                throw;
             }
-
-            if (!dryRun)
+            catch (RunPodGuardrailException)
             {
-                Console.WriteLine("Reminder: UTF-8 drafts; play/turn.ps1 converts to Windows-1251 for Game.exe.");
+                throw;
             }
-
-            Console.WriteLine("draft-run complete.");
+            catch
+            {
+                inference.UsageScope?.MarkError();
+                throw;
+            }
+            finally
+            {
+                await inference.DisposeAsync();
+                if (inference.CompletedRecord is { } record && !dryRun && settings.IsRemoteHost)
+                {
+                    LlmUsageNoteWriter.AppendRunNote(repoRoot, runId, record);
+                    Console.WriteLine($"Recorded usage:   play/runs/{runId}/gm/llm-usage.md");
+                }
+            }
         });
 
         return command;

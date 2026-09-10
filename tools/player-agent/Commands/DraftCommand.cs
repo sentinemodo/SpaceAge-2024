@@ -1,8 +1,10 @@
 using System.CommandLine;
+using SpaceAge.PlayerAgent.Configuration;
 using SpaceAge.PlayerAgent.Draft;
 using SpaceAge.PlayerAgent.Inference;
 using SpaceAge.PlayerAgent.Paths;
 using SpaceAge.PlayerAgent.Rag;
+using SpaceAge.PlayerAgent.Usage;
 
 namespace SpaceAge.PlayerAgent.Commands;
 
@@ -19,6 +21,7 @@ internal static class DraftCommand
         command.AddOption(CommandHelpers.TurnOption);
         command.AddOption(CommandHelpers.IterationOption);
         command.AddOption(CommandHelpers.AllowRunPodOption);
+        command.AddOption(CommandHelpers.YesOption);
         command.AddOption(CommandHelpers.DryRunOption);
         command.AddOption(CommandHelpers.TopOption);
 
@@ -27,6 +30,7 @@ internal static class DraftCommand
             var mode = CommandHelpers.ParseRequiredMode(context);
             var settings = CommandHelpers.LoadSettings(context);
             var dryRun = context.ParseResult.GetValueForOption(CommandHelpers.DryRunOption);
+            var assumeYes = context.ParseResult.GetValueForOption(CommandHelpers.YesOption);
             var output = context.ParseResult.GetValueForOption(CommandHelpers.OutputOption);
             var runId = context.ParseResult.GetValueForOption(CommandHelpers.RunOption);
             var factionIdValue = context.ParseResult.GetValueForOption(CommandHelpers.FactionOption)
@@ -79,25 +83,50 @@ internal static class DraftCommand
                 TopK = topK,
             };
 
-            if (dryRun)
-            {
-                using var client = new OllamaClient(settings);
-                var service = new OrderDraftService(client, settings);
-                var result = await service.DraftAsync(request, context.GetCancellationToken());
-                PrintRetrievalSummary(result);
-                Console.WriteLine();
-                Console.WriteLine("Dry run prompt pack:");
-                Console.WriteLine(result.ChatPrompt);
-                return;
-            }
+            var factionIds = new[] { factionIdValue };
+            var inference = RemoteInferenceContext.Create(
+                settings,
+                assumeYes,
+                new ConsoleUserPrompt(),
+                command: "draft",
+                runId,
+                factionIds,
+                dryRun);
+            var service = new OrderDraftService(inference.Client, settings);
+            var cancellationToken = context.GetCancellationToken();
 
-            using (var client = new OllamaClient(settings))
+            try
             {
-                var service = new OrderDraftService(client, settings);
-                var result = await service.DraftAsync(request, context.GetCancellationToken());
+                var result = await service.DraftAsync(request, cancellationToken);
                 PrintRetrievalSummary(result);
+                if (dryRun)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Dry run prompt pack:");
+                    Console.WriteLine(result.ChatPrompt);
+                    return;
+                }
+
                 Console.WriteLine($"Wrote draft:      {result.OutputPath}");
                 Console.WriteLine("Reminder: UTF-8 draft; play/turn.ps1 converts to Windows-1251 for Game.exe.");
+            }
+            catch (OperationCanceledException)
+            {
+                inference.UsageScope?.MarkCancelled();
+                throw;
+            }
+            catch (RunPodGuardrailException)
+            {
+                throw;
+            }
+            catch
+            {
+                inference.UsageScope?.MarkError();
+                throw;
+            }
+            finally
+            {
+                await inference.DisposeAsync();
             }
         });
 

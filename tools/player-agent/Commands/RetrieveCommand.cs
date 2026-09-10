@@ -18,6 +18,7 @@ internal static class RetrieveCommand
         command.AddOption(CommandHelpers.RunOption);
         command.AddOption(CommandHelpers.FactionOption);
         command.AddOption(CommandHelpers.AllowRunPodOption);
+        command.AddOption(CommandHelpers.YesOption);
 
         command.SetHandler(async (context) =>
         {
@@ -38,30 +39,38 @@ internal static class RetrieveCommand
                 throw new InvalidOperationException($"Index not found: {sqlitePath}. Run ingest first.");
             }
 
-            using var client = new OllamaClient(settings);
-            using var store = new SqliteVectorStore(sqlitePath);
-            var queryEmbedding = await client.EmbedAsync(query, context.GetCancellationToken());
-            var results = VectorRetriever.Retrieve(store.ListAll(), queryEmbedding, topK, verb);
+            await CommandHelpers.RunWithInferenceAsync(
+                settings,
+                context,
+                command: "retrieve",
+                runId,
+                factionId is null ? null : [factionId.Value],
+                async (client, cancellationToken) =>
+                {
+                    using var store = new SqliteVectorStore(sqlitePath);
+                    var queryEmbedding = await client.EmbedAsync(query, cancellationToken);
+                    var results = VectorRetriever.Retrieve(store.ListAll(), queryEmbedding, topK, verb);
 
-            Console.WriteLine($"Index:  {sqlitePath}");
-            Console.WriteLine($"Query:  {query}");
-            if (!string.IsNullOrWhiteSpace(verb))
-            {
-                Console.WriteLine($"Verb:   {verb}");
-            }
+                    Console.WriteLine($"Index:  {sqlitePath}");
+                    Console.WriteLine($"Query:  {query}");
+                    if (!string.IsNullOrWhiteSpace(verb))
+                    {
+                        Console.WriteLine($"Verb:   {verb}");
+                    }
 
-            Console.WriteLine($"Hits:   {results.Count}");
-            foreach (var result in results)
-            {
-                var metadata = result.Chunk.Chunk.Metadata;
-                Console.WriteLine();
-                Console.WriteLine(
-                    $"[{result.Score:F3}] doc={metadata.Doc} verb={metadata.Verb ?? "-"} heading={metadata.Heading ?? "-"}");
-                Console.WriteLine($"source: {metadata.SourcePath}");
-                Console.WriteLine(result.Chunk.Chunk.Content.Length > 240
-                    ? result.Chunk.Chunk.Content[..240] + "…"
-                    : result.Chunk.Chunk.Content);
-            }
+                    Console.WriteLine($"Hits:   {results.Count}");
+                    foreach (var result in results)
+                    {
+                        var metadata = result.Chunk.Chunk.Metadata;
+                        Console.WriteLine();
+                        Console.WriteLine(
+                            $"[{result.Score:F3}] doc={metadata.Doc} verb={metadata.Verb ?? "-"} heading={metadata.Heading ?? "-"}");
+                        Console.WriteLine($"source: {metadata.SourcePath}");
+                        Console.WriteLine(result.Chunk.Chunk.Content.Length > 240
+                            ? result.Chunk.Chunk.Content[..240] + "…"
+                            : result.Chunk.Chunk.Content);
+                    }
+                });
         });
 
         return command;

@@ -8,10 +8,10 @@ namespace SpaceAge.PlayerAgent.Draft;
 
 public sealed class OrderDraftService
 {
-    private readonly OllamaClient _client;
+    private readonly IOllamaClient _client;
     private readonly PlayerAgentSettings _settings;
 
-    public OrderDraftService(OllamaClient client, PlayerAgentSettings settings)
+    public OrderDraftService(IOllamaClient client, PlayerAgentSettings settings)
     {
         _client = client;
         _settings = settings;

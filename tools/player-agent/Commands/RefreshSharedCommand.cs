@@ -56,6 +56,7 @@ internal static class RefreshSharedCommand
             "Rebuild shared RAG after engine/catalog/manual updates (Phase 5).");
         command.AddOption(modeOption);
         command.AddOption(CommandHelpers.AllowRunPodOption);
+        command.AddOption(CommandHelpers.YesOption);
         command.AddOption(CommandHelpers.DryRunOption);
         command.AddOption(CommandHelpers.ClearOption);
         command.AddOption(spotCheckVerbOption);
@@ -155,9 +156,9 @@ internal static class RefreshSharedCommand
                         "Missing manual files: " + string.Join(", ", missingManuals));
                 }
 
-                if (!skipIngest)
+                if (dryRun)
                 {
-                    if (dryRun)
+                    if (!skipIngest)
                     {
                         Console.WriteLine("Dry run ingest: chunking only; no embed calls.");
                         foreach (var path in manualPaths)
@@ -168,58 +169,68 @@ internal static class RefreshSharedCommand
                             Console.WriteLine($"  {Path.GetFileName(path)}: {chunks.Count} chunks");
                         }
                     }
-                    else
+                    else if (!skipSpotCheck)
                     {
-                        using var client = new OllamaClient(settings);
-                        var ingest = new CorpusIngestService(client);
-                        var summary = await ingest.IngestSharedAsync(
-                            sqlitePath,
-                            manualPaths,
-                            mode,
-                            clear,
-                            context.GetCancellationToken());
-
-                        if (summary.ClearedExisting)
-                        {
-                            Console.WriteLine("Index cleared before ingest.");
-                        }
-
-                        Console.WriteLine($"Embedded chunks:  {summary.ChunkCount}");
-                        Console.WriteLine($"Stored total:     {summary.TotalStored}");
+                        Console.WriteLine("Dry run spot-check: skipped (requires live index + Ollama).");
                     }
                 }
-
-                if (!skipSpotCheck && !dryRun)
+                else if (!skipIngest || !skipSpotCheck)
                 {
-                    using var client = new OllamaClient(settings);
-                    var results = await SpotCheckRetriever.RunAsync(
-                        client,
-                        sqlitePath,
-                        spotChecks,
-                        topK: 4,
-                        context.GetCancellationToken());
-
-                    Console.WriteLine("Spot-check retrieve:");
-                    foreach (var result in results)
-                    {
-                        Console.WriteLine($"  [{result.Query.Label}] query={result.Query.Query}");
-                        if (result.Hits.Count == 0)
+                    await CommandHelpers.RunWithInferenceAsync(
+                        settings,
+                        context,
+                        command: "refresh-shared",
+                        runId: noteRunId,
+                        factionIds: null,
+                        async (client, cancellationToken) =>
                         {
-                            throw new InvalidOperationException(
-                                $"Spot-check '{result.Query.Label}' returned no hits for mode {PlayModeParser.ToCliValue(mode)}.");
-                        }
+                            if (!skipIngest)
+                            {
+                                var ingest = new CorpusIngestService(client);
+                                var summary = await ingest.IngestSharedAsync(
+                                    sqlitePath,
+                                    manualPaths,
+                                    mode,
+                                    clear,
+                                    cancellationToken);
 
-                        foreach (var hit in result.Hits.Take(2))
-                        {
-                            var metadata = hit.Chunk.Chunk.Metadata;
-                            Console.WriteLine(
-                                $"    [{hit.Score:F3}] doc={metadata.Doc} verb={metadata.Verb ?? "-"} heading={metadata.Heading ?? "-"}");
-                        }
-                    }
-                }
-                else if (!skipSpotCheck)
-                {
-                    Console.WriteLine("Dry run spot-check: skipped (requires live index + Ollama).");
+                                if (summary.ClearedExisting)
+                                {
+                                    Console.WriteLine("Index cleared before ingest.");
+                                }
+
+                                Console.WriteLine($"Embedded chunks:  {summary.ChunkCount}");
+                                Console.WriteLine($"Stored total:     {summary.TotalStored}");
+                            }
+
+                            if (!skipSpotCheck)
+                            {
+                                var results = await SpotCheckRetriever.RunAsync(
+                                    client,
+                                    sqlitePath,
+                                    spotChecks,
+                                    topK: 4,
+                                    cancellationToken);
+
+                                Console.WriteLine("Spot-check retrieve:");
+                                foreach (var result in results)
+                                {
+                                    Console.WriteLine($"  [{result.Query.Label}] query={result.Query.Query}");
+                                    if (result.Hits.Count == 0)
+                                    {
+                                        throw new InvalidOperationException(
+                                            $"Spot-check '{result.Query.Label}' returned no hits for mode {PlayModeParser.ToCliValue(mode)}.");
+                                    }
+
+                                    foreach (var hit in result.Hits.Take(2))
+                                    {
+                                        var metadata = hit.Chunk.Chunk.Metadata;
+                                        Console.WriteLine(
+                                            $"    [{hit.Score:F3}] doc={metadata.Doc} verb={metadata.Verb ?? "-"} heading={metadata.Heading ?? "-"}");
+                                    }
+                                }
+                            }
+                        });
                 }
 
                 if (!string.IsNullOrWhiteSpace(noteRunId) && !dryRun)

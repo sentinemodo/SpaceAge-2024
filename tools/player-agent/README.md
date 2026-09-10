@@ -14,6 +14,10 @@ Scriptable order-drafting runner for PBEM play. Lives **outside** `Game.exe` per
 
 **Phase 6 status:** Campaign play wiring — `draft-run` queues sequential drafts for factions 2–11, `audit-isolation` verifies shared/faction indexes, audit notes land in `play/runs/<id>/gm/isolation-audit.md`, and `play/draft-run.ps1` wraps the batch. Cursor `/player` remains valid for single-seat work.
 
+**Phase 7 status:** RunPod usage ledger — `usage start|stop|status|report|sync`, JSONL sessions under `.data/usage/`, auto start/stop on remote `draft` / `draft-run`, chat/embed call counting, and one-line cost summary after batches.
+
+**Phase 8 status:** Cost guardrails — fail-closed without `PLAYER_AGENT_BUDGET_USD`, soft/hard monthly caps, idle timeout, session wall clock + chat-call limits, `--yes` / interactive confirm, `GuardedOllamaClient` (remote concurrency = 1), stale-session reclaim via `usage reclaim`, gitignored break-glass override, and `play/runs/<id>/gm/llm-usage.md` notes after remote batches.
+
 ## Requirements
 
 - [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
@@ -44,8 +48,20 @@ After build, the executable is `tools/player-agent/bin/Debug/net8.0/player-agent
 | `PLAYER_AGENT_EMBED_MODEL` | `nomic-embed-text` | Same host as chat |
 | `PLAYER_AGENT_INDEX_DIR` | `tools/player-agent/.data/` | Gitignored SQLite indexes |
 | `PLAYER_AGENT_ALLOW_RUNPOD` | unset | Set `1` or pass `--allow-runpod` for remote hosts |
+| `PLAYER_AGENT_RUNPOD_POD_ID` | unset | Pod id for ledger rows and future API sync |
+| `PLAYER_AGENT_RUNPOD_HOURLY_RATE_USD` | `0.44` | Estimated $/hr for cost summary (check RunPod listing) |
+| `PLAYER_AGENT_GPU_CLASS` | unset | e.g. `RTX 4090` (ledger metadata) |
+| `PLAYER_AGENT_CLOUD_TIER` | unset | e.g. `Secure` or `Community` |
 
-RunPod / budget variables (`RUNPOD_API_KEY`, `PLAYER_AGENT_BUDGET_USD`, …) are defined in the plan for Phases 7–8. Phase 1B adds thin start/stop warnings before full guardrails.
+| `PLAYER_AGENT_BUDGET_USD` | unset | **Required** for remote work (hard monthly cap; fail closed) |
+| `PLAYER_AGENT_BUDGET_SOFT_USD` | 80% of hard | Soft cap; prompts before start when exceeded |
+| `PLAYER_AGENT_MAX_POD_HOURS` | unset | Max session wall-clock hours |
+| `PLAYER_AGENT_MAX_POD_HOURS_MONTH` | unset | Max remote pod hours per calendar month |
+| `PLAYER_AGENT_MAX_CHAT_CALLS` | unset | Max chat calls per usage session |
+| `PLAYER_AGENT_IDLE_TIMEOUT_MINUTES` | `15` | Idle gap before next remote call trips `idle-timeout` |
+| `PLAYER_AGENT_REQUIRE_CONFIRM` | `1` (remote) | Interactive confirm before starting remote work |
+
+Break-glass (local only, gitignored): `.data/runpod-guardrail-override.json` with `{ "allowMissingBudget": true, "expiresAt": "…" }`.
 
 ## Local vs RunPod (same runner)
 
@@ -115,7 +131,7 @@ UTF-8 drafts in faction folders; `play/turn.ps1` converts to Windows-1251 for `G
 | `draft --mode … --faction …` | 3 | Generate order draft (lint + UTF-8 write) |
 | `draft-run --mode … --run …` | 6 | Batch draft factions 2–11 (isolation audit first) |
 | `audit-isolation --mode … [--run …]` | 6 | Verify shared/faction RAG indexes are not cross-contaminated |
-| `usage …` | 7 | RunPod ledger and reports |
+| `usage start\|stop\|status\|report\|reclaim\|sync` | 7–8 | RunPod usage ledger, reports, stale-session reclaim |
 
 `--dry-run` on ingest chunks sources without calling embed; on draft builds the prompt pack without chat. `--clear` wipes the target SQLite index before ingest (or alone with `--dry-run`).
 
@@ -231,6 +247,41 @@ dotnet run --project tools/player-agent/PlayerAgent.csproj -- `
 ```
 
 Audit results append to `play/runs/<id>/gm/isolation-audit.md` unless `--no-record-audit`. Use Cursor `/player` for a single seat or when you want human-in-the-loop review before writing orders.
+
+### RunPod usage ledger (Phase 7)
+
+Remote `draft` and `draft-run` auto-start a usage session (skipped for `--dry-run` and localhost). Each batch prints a one-line cost summary on exit. Compare estimates to the RunPod billing console — the console is authoritative.
+
+**Before any RunPod batch:** set `PLAYER_AGENT_BUDGET_USD` (and optionally soft cap / max hours). Pass `--yes` to skip the start confirmation, or answer the interactive prompt.
+
+```powershell
+$env:PLAYER_AGENT_BUDGET_USD = "25"
+$env:PLAYER_AGENT_MAX_POD_HOURS = "4"
+$env:PLAYER_AGENT_MAX_CHAT_CALLS = "100"
+
+# Remote batch with guardrails (confirm or --yes)
+.\play\draft-run.ps1 -Run smoke-test -Mode campaign
+dotnet run --project tools/player-agent/PlayerAgent.csproj -- draft-run --mode campaign --run smoke-test --allow-runpod --yes
+
+# Manual session (optional — auto-managed by draft-run on remote hosts)
+dotnet run --project tools/player-agent/PlayerAgent.csproj -- usage start --allow-runpod --run smoke-test --yes
+dotnet run --project tools/player-agent/PlayerAgent.csproj -- usage status
+dotnet run --project tools/player-agent/PlayerAgent.csproj -- usage stop
+
+# Stale session after a crashed runner
+dotnet run --project tools/player-agent/PlayerAgent.csproj -- usage reclaim
+
+# Monthly totals and per-run breakdown
+dotnet run --project tools/player-agent/PlayerAgent.csproj -- usage report --month 2026-09
+dotnet run --project tools/player-agent/PlayerAgent.csproj -- usage report --run smoke-test
+
+# API reconciliation (optional; local ledger always works)
+dotnet run --project tools/player-agent/PlayerAgent.csproj -- usage sync
+```
+
+Ledger files (gitignored): `.data/usage/active-session.json`, `.data/usage/sessions.jsonl`. Remote `draft-run` also appends to `play/runs/<id>/gm/llm-usage.md`.
+
+**Pod vs volume billing:** stopping the pod stops GPU hourly charges; persistent volume storage may still bill until deleted — terminate idle pods in the RunPod console.
 
 Unit tests: `dotnet test tools/player-agent-tests/PlayerAgent.Tests.csproj`.
 
