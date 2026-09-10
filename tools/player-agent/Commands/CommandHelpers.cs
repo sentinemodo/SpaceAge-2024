@@ -37,6 +37,11 @@ internal static class CommandHelpers
         Description = "Build prompt/RAG inputs without calling chat or starting remote pods.",
     };
 
+    public static Option<bool> ClearOption { get; } = new("--clear")
+    {
+        Description = "Delete all existing chunks in the target index before ingesting.",
+    };
+
     public static Option<string> IndexOption { get; } = new("--index")
     {
         Description = "Index to search: shared or faction.",

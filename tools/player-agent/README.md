@@ -100,7 +100,7 @@ UTF-8 drafts in faction folders; `play/turn.ps1` converts to Windows-1251 for `G
 | `draft --mode …` | 3 | Generate order draft |
 | `usage …` | 7 | RunPod ledger and reports |
 
-`--dry-run` on ingest chunks sources without calling embed; on draft builds the prompt pack without chat.
+`--dry-run` on ingest chunks sources without calling embed; on draft builds the prompt pack without chat. `--clear` wipes the target SQLite index before ingest (or alone with `--dry-run`).
 
 ### RAG ingest (Phase 2)
 
@@ -110,6 +110,9 @@ dotnet run --project tools/player-agent/PlayerAgent.csproj -- ingest-shared --mo
 
 # Full shared ingest (requires Ollama + nomic-embed-text)
 dotnet run --project tools/player-agent/PlayerAgent.csproj -- ingest-shared --mode test
+
+# Rebuild from scratch (clears duplicate/stale chunks)
+dotnet run --project tools/player-agent/PlayerAgent.csproj -- ingest-shared --mode test --clear
 
 # Faction ingest after isolate copies report into play/runs/<id>/factions/NN/
 dotnet run --project tools/player-agent/PlayerAgent.csproj -- `

@@ -13,12 +13,14 @@ internal static class IngestSharedCommand
         command.AddOption(CommandHelpers.ModeOption);
         command.AddOption(CommandHelpers.AllowRunPodOption);
         command.AddOption(CommandHelpers.DryRunOption);
+        command.AddOption(CommandHelpers.ClearOption);
 
         command.SetHandler(async (context) =>
         {
             var mode = CommandHelpers.ParseRequiredMode(context);
             var settings = CommandHelpers.LoadSettings(context);
             var dryRun = context.ParseResult.GetValueForOption(CommandHelpers.DryRunOption);
+            var clear = context.ParseResult.GetValueForOption(CommandHelpers.ClearOption);
             var repoRoot = RepoPaths.FindRepositoryRoot();
             RepoPaths.EnsureIndexLayout(settings.IndexDirectory);
 
@@ -40,11 +42,20 @@ internal static class IngestSharedCommand
 
             if (dryRun)
             {
+                if (clear && File.Exists(sqlitePath))
+                {
+                    using var store = new SqliteVectorStore(sqlitePath);
+                    var removed = store.Count();
+                    store.ClearAll();
+                    Console.WriteLine($"Cleared index:    {removed} existing chunk(s) removed.");
+                }
+
                 Console.WriteLine("Dry run: chunking only; no embed calls.");
                 foreach (var path in manualPaths.Where(File.Exists))
                 {
-                    var content = await File.ReadAllTextAsync(path, context.GetCancellationToken());
-                    var chunks = MarkdownChunker.ChunkManual(path, content, mode);
+                    var normalizedPath = SourcePathNormalizer.Normalize(path);
+                    var content = await File.ReadAllTextAsync(normalizedPath, context.GetCancellationToken());
+                    var chunks = MarkdownChunker.ChunkManual(normalizedPath, content, mode);
                     Console.WriteLine($"  {Path.GetFileName(path)}: {chunks.Count} chunks");
                 }
 
@@ -57,12 +68,18 @@ internal static class IngestSharedCommand
                 sqlitePath,
                 manualPaths,
                 mode,
+                clear,
                 context.GetCancellationToken());
 
             if (summary.MissingFiles.Count > 0)
             {
                 throw new InvalidOperationException(
                     "Missing manual files: " + string.Join(", ", summary.MissingFiles));
+            }
+
+            if (summary.ClearedExisting)
+            {
+                Console.WriteLine("Index cleared before ingest.");
             }
 
             Console.WriteLine($"Embedded chunks:  {summary.ChunkCount}");

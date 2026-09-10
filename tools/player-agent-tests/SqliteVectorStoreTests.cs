@@ -8,6 +8,58 @@ namespace SpaceAge.PlayerAgent.Tests;
 public class SqliteVectorStoreTests
 {
     [Test]
+    public void ClearAll_RemovesEveryChunk()
+    {
+        var sqlitePath = Path.Combine(Path.GetTempPath(), $"player-agent-test-{Guid.NewGuid():N}.sqlite");
+        try
+        {
+            using var store = new SqliteVectorStore(sqlitePath);
+            var chunk = new TextChunk(
+                "MOVE syntax",
+                new ChunkMetadata("rules", "MOVE", null, "rules.md", "MOVE"));
+            store.ReplaceSource("rules.md", [(chunk, [1f, 0f])]);
+            Assert.That(store.Count(), Is.EqualTo(1));
+
+            store.ClearAll();
+            Assert.That(store.Count(), Is.EqualTo(0));
+        }
+        finally
+        {
+            SqliteConnection.ClearAllPools();
+            if (File.Exists(sqlitePath))
+            {
+                File.Delete(sqlitePath);
+            }
+        }
+    }
+
+    [Test]
+    public void ReplaceSource_IsIdempotentForSameNormalizedPath()
+    {
+        var sqlitePath = Path.Combine(Path.GetTempPath(), $"player-agent-test-{Guid.NewGuid():N}.sqlite");
+        var sourcePath = Path.Combine(Path.GetTempPath(), "rules.md");
+        try
+        {
+            using var store = new SqliteVectorStore(sqlitePath);
+            var chunk = new TextChunk(
+                "MOVE syntax",
+                new ChunkMetadata("rules", "MOVE", null, sourcePath, "MOVE"));
+            store.ReplaceSource(sourcePath, [(chunk, [1f, 0f])]);
+            store.ReplaceSource(sourcePath.ToUpperInvariant(), [(chunk, [1f, 0f])]);
+
+            Assert.That(store.Count(), Is.EqualTo(1));
+        }
+        finally
+        {
+            SqliteConnection.ClearAllPools();
+            if (File.Exists(sqlitePath))
+            {
+                File.Delete(sqlitePath);
+            }
+        }
+    }
+
+    [Test]
     public void ReplaceSource_RemovesOldChunksForSamePath()
     {
         var sqlitePath = Path.Combine(Path.GetTempPath(), $"player-agent-test-{Guid.NewGuid():N}.sqlite");

@@ -14,21 +14,32 @@ public sealed class SqliteVectorStore : IDisposable
         EnsureSchema();
     }
 
+    public void ClearAll()
+    {
+        using var command = _connection.CreateCommand();
+        command.CommandText = "DELETE FROM chunks;";
+        command.ExecuteNonQuery();
+    }
+
     public void ReplaceSource(string sourcePath, IReadOnlyList<(TextChunk Chunk, float[] Embedding)> rows)
     {
+        var normalizedPath = SourcePathNormalizer.Normalize(sourcePath);
         using var transaction = _connection.BeginTransaction();
 
         using (var delete = _connection.CreateCommand())
         {
             delete.Transaction = transaction;
-            delete.CommandText = "DELETE FROM chunks WHERE source_path = $source_path;";
-            delete.Parameters.AddWithValue("$source_path", sourcePath);
+            delete.CommandText = """
+                DELETE FROM chunks
+                WHERE lower(source_path) = lower($source_path);
+                """;
+            delete.Parameters.AddWithValue("$source_path", normalizedPath);
             delete.ExecuteNonQuery();
         }
 
         foreach (var (chunk, embedding) in rows)
         {
-            InsertChunk(chunk, embedding, transaction);
+            InsertChunk(WithNormalizedSource(chunk, normalizedPath), embedding, transaction);
         }
 
         transaction.Commit();
@@ -82,6 +93,12 @@ public sealed class SqliteVectorStore : IDisposable
             """;
         command.ExecuteNonQuery();
     }
+
+    private static TextChunk WithNormalizedSource(TextChunk chunk, string normalizedSourcePath) =>
+        chunk with
+        {
+            Metadata = chunk.Metadata with { SourcePath = normalizedSourcePath },
+        };
 
     private void InsertChunk(TextChunk chunk, float[] embedding, SqliteTransaction transaction)
     {

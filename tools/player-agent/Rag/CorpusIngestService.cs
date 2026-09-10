@@ -15,10 +15,16 @@ public sealed class CorpusIngestService
         string sqlitePath,
         IReadOnlyList<string> manualPaths,
         PlayMode mode,
+        bool clearIndex = false,
         CancellationToken cancellationToken = default)
     {
         using var store = new SqliteVectorStore(sqlitePath);
         var summary = new IngestSummary();
+        if (clearIndex)
+        {
+            store.ClearAll();
+            summary.ClearedExisting = true;
+        }
 
         foreach (var manualPath in manualPaths)
         {
@@ -28,11 +34,12 @@ public sealed class CorpusIngestService
                 continue;
             }
 
-            var content = await File.ReadAllTextAsync(manualPath, cancellationToken);
-            var chunks = MarkdownChunker.ChunkManual(manualPath, content, mode);
+            var normalizedPath = SourcePathNormalizer.Normalize(manualPath);
+            var content = await File.ReadAllTextAsync(normalizedPath, cancellationToken);
+            var chunks = MarkdownChunker.ChunkManual(normalizedPath, content, mode);
             var embedded = await EmbedChunksAsync(chunks, cancellationToken);
-            store.ReplaceSource(manualPath, embedded);
-            summary.Sources.Add(manualPath);
+            store.ReplaceSource(normalizedPath, embedded);
+            summary.Sources.Add(normalizedPath);
             summary.ChunkCount += embedded.Count;
         }
 
@@ -43,19 +50,25 @@ public sealed class CorpusIngestService
     public async Task<IngestSummary> IngestFactionAsync(
         string sqlitePath,
         string factionDir,
+        bool clearIndex = false,
         CancellationToken cancellationToken = default)
     {
         using var store = new SqliteVectorStore(sqlitePath);
         var summary = new IngestSummary();
+        if (clearIndex)
+        {
+            store.ClearAll();
+            summary.ClearedExisting = true;
+        }
 
         foreach (var reportPath in FactionCorpusPaths.ReportPaths(factionDir))
         {
             summary.ChunkCount += await IngestFileAsync(
                 store,
                 reportPath,
-                content => MarkdownChunker.ChunkReport(reportPath, content),
+                MarkdownChunker.ChunkReport,
                 cancellationToken);
-            summary.Sources.Add(reportPath);
+            summary.Sources.Add(SourcePathNormalizer.Normalize(reportPath));
         }
 
         var storyPath = FactionCorpusPaths.StoryPath(factionDir);
@@ -64,9 +77,9 @@ public sealed class CorpusIngestService
             summary.ChunkCount += await IngestFileAsync(
                 store,
                 storyPath,
-                content => MarkdownChunker.ChunkStory(storyPath, content),
+                MarkdownChunker.ChunkStory,
                 cancellationToken);
-            summary.Sources.Add(storyPath);
+            summary.Sources.Add(SourcePathNormalizer.Normalize(storyPath));
         }
 
         foreach (var orderPath in FactionCorpusPaths.OrderPaths(factionDir))
@@ -74,9 +87,9 @@ public sealed class CorpusIngestService
             summary.ChunkCount += await IngestFileAsync(
                 store,
                 orderPath,
-                content => MarkdownChunker.ChunkOrderFile(orderPath, content),
+                MarkdownChunker.ChunkOrderFile,
                 cancellationToken);
-            summary.Sources.Add(orderPath);
+            summary.Sources.Add(SourcePathNormalizer.Normalize(orderPath));
         }
 
         if (summary.Sources.Count == 0)
@@ -91,13 +104,14 @@ public sealed class CorpusIngestService
     private async Task<int> IngestFileAsync(
         SqliteVectorStore store,
         string sourcePath,
-        Func<string, IReadOnlyList<TextChunk>> chunkFactory,
+        Func<string, string, IReadOnlyList<TextChunk>> chunkFactory,
         CancellationToken cancellationToken)
     {
-        var content = await File.ReadAllTextAsync(sourcePath, cancellationToken);
-        var chunks = chunkFactory(content);
+        var normalizedPath = SourcePathNormalizer.Normalize(sourcePath);
+        var content = await File.ReadAllTextAsync(normalizedPath, cancellationToken);
+        var chunks = chunkFactory(normalizedPath, content);
         var embedded = await EmbedChunksAsync(chunks, cancellationToken);
-        store.ReplaceSource(sourcePath, embedded);
+        store.ReplaceSource(normalizedPath, embedded);
         return embedded.Count;
     }
 
@@ -122,4 +136,5 @@ public sealed class IngestSummary
     public List<string> MissingFiles { get; } = [];
     public int ChunkCount { get; set; }
     public int TotalStored { get; set; }
+    public bool ClearedExisting { get; set; }
 }

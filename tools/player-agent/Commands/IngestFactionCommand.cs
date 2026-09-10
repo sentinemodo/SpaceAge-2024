@@ -15,12 +15,14 @@ internal static class IngestFactionCommand
         command.AddOption(CommandHelpers.FactionOption);
         command.AddOption(CommandHelpers.AllowRunPodOption);
         command.AddOption(CommandHelpers.DryRunOption);
+        command.AddOption(CommandHelpers.ClearOption);
 
         command.SetHandler(async (context) =>
         {
             _ = CommandHelpers.ParseRequiredMode(context);
             var settings = CommandHelpers.LoadSettings(context);
             var dryRun = context.ParseResult.GetValueForOption(CommandHelpers.DryRunOption);
+            var clear = context.ParseResult.GetValueForOption(CommandHelpers.ClearOption);
             var runId = context.ParseResult.GetValueForOption(CommandHelpers.RunOption)
                 ?? throw new InvalidOperationException("--run is required for ingest-faction.");
             var factionId = context.ParseResult.GetValueForOption(CommandHelpers.FactionOption)
@@ -65,15 +67,24 @@ internal static class IngestFactionCommand
 
             if (dryRun)
             {
+                if (clear && File.Exists(sqlitePath))
+                {
+                    using var store = new SqliteVectorStore(sqlitePath);
+                    var removed = store.Count();
+                    store.ClearAll();
+                    Console.WriteLine($"Cleared index:    {removed} existing chunk(s) removed.");
+                }
+
                 Console.WriteLine("Dry run: chunking only; no embed calls.");
                 foreach (var path in sourcePaths)
                 {
-                    var content = await File.ReadAllTextAsync(path, context.GetCancellationToken());
+                    var normalizedPath = SourcePathNormalizer.Normalize(path);
+                    var content = await File.ReadAllTextAsync(normalizedPath, context.GetCancellationToken());
                     var chunks = path.EndsWith("story.md", StringComparison.OrdinalIgnoreCase)
-                        ? MarkdownChunker.ChunkStory(path, content)
+                        ? MarkdownChunker.ChunkStory(normalizedPath, content)
                         : path.Contains("report", StringComparison.OrdinalIgnoreCase)
-                            ? MarkdownChunker.ChunkReport(path, content)
-                            : MarkdownChunker.ChunkOrderFile(path, content);
+                            ? MarkdownChunker.ChunkReport(normalizedPath, content)
+                            : MarkdownChunker.ChunkOrderFile(normalizedPath, content);
                     Console.WriteLine($"  {Path.GetFileName(path)}: {chunks.Count} chunks");
                 }
 
@@ -85,7 +96,13 @@ internal static class IngestFactionCommand
             var summary = await ingest.IngestFactionAsync(
                 sqlitePath,
                 factionDir,
+                clear,
                 context.GetCancellationToken());
+
+            if (summary.ClearedExisting)
+            {
+                Console.WriteLine("Index cleared before ingest.");
+            }
 
             Console.WriteLine($"Embedded chunks:  {summary.ChunkCount}");
             Console.WriteLine($"Stored total:     {summary.TotalStored}");
