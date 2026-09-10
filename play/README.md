@@ -20,6 +20,23 @@ dotnet run --project tools/player-agent/PlayerAgent.csproj -- `
 
 Do **not** run `ingest-shared` on every turn unless `player/rules.md`, tech manuals, or `player/battle.md` changed ([Phase 5](../architecture/delivery/local-player-agent.md)).
 
+## Shared RAG refresh after engine / catalog updates (Phase 5)
+
+After `/player` docs-only refresh (or human edit) when rules, battle, tech manuals, or `Tests/data.xml` / `campaign/data.xml` change:
+
+```powershell
+# Rebuild campaign shared index + allowlist + spot-check
+.\play\refresh-shared-rag.ps1 -Mode campaign -SpotCheckVerb MOVE -SpotCheckTech helium
+
+# Both test and campaign indexes on one machine
+.\play\refresh-shared-rag.ps1 -Mode both
+
+# Plan only
+.\play\refresh-shared-rag.ps1 -Mode test -DryRun
+```
+
+Optional `-NoteRun <id>` appends a rebuild note to `play/runs/<id>/README.md`. Per-faction indexes are unchanged unless report templates or draft syntax examples need updating.
+
 ### Campaign-ai handoff
 
 When `/campaign-ai` updates `story.md` for a seat, re-ingest that story chunk before `draft`:

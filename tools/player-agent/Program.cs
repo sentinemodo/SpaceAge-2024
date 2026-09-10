@@ -13,6 +13,8 @@ static RootCommand BuildRootCommand()
     root.AddCommand(IngestSharedCommand.Create());
     root.AddCommand(IngestFactionCommand.Create());
     root.AddCommand(IngestRunCommand.Create());
+    root.AddCommand(RefreshSharedCommand.Create());
+    root.AddCommand(RegenerateAllowlistCommand.Create());
     root.AddCommand(RetrieveCommand.Create());
     root.AddCommand(DraftCommand.Create());
     root.AddCommand(UsageCommand.Create());

@@ -202,7 +202,23 @@ Triggers (any of):
 - [ ] Spot-check retrieve for new/changed headings
 - [ ] (If mid-campaign) note in run README that RAG shared index was rebuilt at engine version X / catalog revision Y
 
-**Done when:** A catalog or rules change is followed by a documented ingest + allowlist refresh before the next AI order batch.
+### Automation (preferred)
+
+- [x] Command: `refresh-shared --mode test|campaign|both` — rebuild shared index(es), export allowlist to `tools/player-agent/Lint/verb-allowlist.json`, spot-check retrieve (`--spot-check-verb`, optional `--spot-check-tech`), optional `--note-run` for run README.
+- [x] Command: `regenerate-allowlist` — allowlist export only (no Ollama).
+- [x] Script: `play/refresh-shared-rag.ps1` — thin wrapper around `refresh-shared`.
+
+### Manual fallback
+
+```powershell
+dotnet run --project tools/player-agent/PlayerAgent.csproj -- refresh-shared --mode campaign
+# or step-by-step:
+dotnet run --project tools/player-agent/PlayerAgent.csproj -- regenerate-allowlist
+dotnet run --project tools/player-agent/PlayerAgent.csproj -- ingest-shared --mode campaign
+dotnet run --project tools/player-agent/PlayerAgent.csproj -- retrieve --mode campaign --index shared --query "MOVE stack" --verb MOVE
+```
+
+**Done when:** A catalog or rules change is followed by a documented ingest + allowlist refresh before the next AI order batch. **Code complete (2026-09-10)** — run `refresh-shared` against a live Ollama host after refreshing player manuals; unit tests cover allowlist export, mode parsing, revision notes, and spot-check query planning.
 
 ---
 

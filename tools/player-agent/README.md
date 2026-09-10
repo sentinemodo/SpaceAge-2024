@@ -10,6 +10,8 @@ Scriptable order-drafting runner for PBEM play. Lives **outside** `Game.exe` per
 
 **Phase 4 status:** Incremental faction RAG refresh after isolate — latest report replaces prior report chunks, optional order-turn window, `ingest-run` batch for factions 2–11, `play/ingest-rag.ps1` hook, and `--story-only` for campaign-ai handoff.
 
+**Phase 5 status:** Shared RAG rebuild after engine/catalog/manual updates — `refresh-shared` orchestrates `ingest-shared`, verb allowlist export (`regenerate-allowlist` → `Lint/verb-allowlist.json`), spot-check retrieve, optional run README note, and `play/refresh-shared-rag.ps1` wrapper.
+
 ## Requirements
 
 - [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
@@ -105,6 +107,8 @@ UTF-8 drafts in faction folders; `play/turn.ps1` converts to Windows-1251 for `G
 | `ingest-shared --mode …` | 2 | Embed shared manuals into SQLite |
 | `ingest-faction --mode … --run … --faction …` | 2/4 | Embed faction corpus (incremental by default; `--full` for Phase 2 rebuild) |
 | `ingest-run --mode … --run …` | 4 | Batch incremental refresh for factions 2–11 after isolate |
+| `refresh-shared --mode test\|campaign\|both` | 5 | Rebuild shared index + allowlist + spot-check after manual/catalog/engine updates |
+| `regenerate-allowlist` | 5 | Export verb list from `player/rules.md` to `Lint/verb-allowlist.json` |
 | `retrieve --mode … --index shared\|faction --query …` | 2 | Dev helper: top-k vector search (optional `--verb MOVE`) |
 | `draft --mode … --faction …` | 3 | Generate order draft (lint + UTF-8 write) |
 | `usage …` | 7 | RunPod ledger and reports |
@@ -143,6 +147,36 @@ dotnet run --project tools/player-agent/PlayerAgent.csproj -- `
 dotnet run --project tools/player-agent/PlayerAgent.csproj -- `
   retrieve --mode test --index shared --query "move stack to orbit" --verb MOVE --top 4
 ```
+
+### Shared RAG refresh (Phase 5)
+
+Run **after** `/player` docs-only refresh (or human edit) when `player/rules.md`, tech manuals, `player/battle.md`, or the catalog change — **not** after every turn.
+
+```powershell
+# Plan only (checklist + chunk counts + allowlist preview)
+dotnet run --project tools/player-agent/PlayerAgent.csproj -- `
+  refresh-shared --mode test --dry-run
+
+# Rebuild SampleGame shared index + allowlist + spot-check MOVE
+dotnet run --project tools/player-agent/PlayerAgent.csproj -- `
+  refresh-shared --mode test --spot-check-verb MOVE
+
+# Campaign manuals + note in run README (mid-campaign catalog bump)
+dotnet run --project tools/player-agent/PlayerAgent.csproj -- `
+  refresh-shared --mode campaign --spot-check-tech helium --note-run smoke-test
+
+# Both shared indexes on one machine
+dotnet run --project tools/player-agent/PlayerAgent.csproj -- `
+  refresh-shared --mode both
+
+# Or use the play wrapper
+.\play\refresh-shared-rag.ps1 -Mode campaign -SpotCheckTech helium -NoteRun smoke-test
+
+# Allowlist only (no Ollama)
+dotnet run --project tools/player-agent/PlayerAgent.csproj -- regenerate-allowlist
+```
+
+Faction indexes are **not** wiped by default; re-`ingest-faction` only if report templates or order syntax examples in drafts must change.
 
 ### Draft loop (Phase 3)
 
