@@ -1,0 +1,347 @@
+To: 
+Subject: [SpaceAge] Report for turn 1
+Content-Disposition: attachment
+
+SpaceAge report for Arbor First [12].
+Turn 1, Year 2020, January 1.
+
+SpaceAge Engine Version: 0.1.148.
+
+Events during turn:
+  none.
+
+Bank report:
+  Bank account balance: 4000.
+  Credit line maximum: 0.
+  Credit rate: 0%, Deposit rate: 0%.
+Galaxy report:
+------------------------------------------------------------
+* Sol [SS0001] (0, 0, 0), star system.
+------------------------------------------------------------
+
+  * Sol [S00001] (0, 0, 0), M4 star, unexplored.
+------------------------------------------------------------
+
+  * Arbor [P00001] at AU 1, ocean planet [ocean].
+------------------------------------------------------------
+  orbit [O00001], has atmosphere suitable for terran [terran].
+
+  Farm Belt [R00014] (1,2), grassland region, settlement capacity 8/3.
+  Exits:
+    West Coast [R00013] (0,2), sea region, naval travel duration 3 weeks.
+    Assembly Basin [R00015] (2,2), grassland region, ground travel duration 3 weeks.
+    Northwind Grant [R00008] (1,1), grassland region, ground travel duration 3 weeks.
+    Inner Pelagic [R00020] (1,3), ocean region, naval travel duration 3 weeks.
+  Resources: 700 units of food [food], 35 units of carbon [carbon], 20 units of iron [iron], 160
+  units of water [water].
+  + Rootfast [120001], 3 cities [city], immobile.
+    size: 75000, mass: 8020 (0), capacity: 45000/23240, energy: 80/130 (30), crew: 84/40 (0/40),
+    upkeep: 300 units of food [food], 700 (0) cash [cash], consume: 640 (0) units of food [food],
+    640 (0) units of terran breathing gas mixture [terair].
+    items: 4000 cash [cash], 40 terrans [terran] (size: 160, mass: 160, upkeep: 40 cash [cash],
+    consume: 40 units of food [food], 40 units of terran breathing gas mixture [terair]), 40 units
+    of terran breathing gas mixture [terair] (size: 40, mass: 40), 40 units of water [water] (size:
+    40, mass: 40).
+    + Rootfast farms [120002], 16 farming complexes [farms], disabled, immobile.
+      size: 16000, mass: 1600 (1600), capacity: 8000/0, energy: 80, crew: 80/0, upkeep: 480 cash
+      [cash].
+    + Rootfast plants [120003], 2 coal-burning plants [cplant], disabled, immobile.
+      size: 2000, mass: 2100 (2000), capacity: 1000/100, energy: 80/20 (consume: 10 units of carbon
+      [carbon] for 13 weeks), crew: 4/0, upkeep: 80 cash [cash].
+      fuel requirements: 10 units of carbon [carbon] per 13 weeks.
+      items: 20 units of carbon [carbon] (size: 100, mass: 100).
+    + Rootfast garrison [120004], 3 infantry battalions [inftry], immobile.
+      size: 1500, mass: 1500 (1500), capacity: 900/0, upkeep: 45 cash [cash], consume: 300 units of
+      food [food], 300 units of terran breathing gas mixture [terair].
+      movement speed: 0.1 on ground.
+    + Rootfast granary [120005], small cargo bay [cargob], immobile.
+      size: 2000, mass: 1080 (200), capacity: 1800/880, upkeep: 10 cash [cash].
+      items: 800 units of food [food] (size: 800, mass: 800), 40 units of terran breathing gas
+      mixture [terair] (size: 40, mass: 40), 40 units of water [water] (size: 40, mass: 40).
+    + Rootfast raid [120010], 3 infantry battalions [inftry], immobile.
+      size: 1500, mass: 1500 (1500), capacity: 900/0, upkeep: 45 cash [cash], consume: 300 units of
+      food [food], 300 units of terran breathing gas mixture [terair].
+      movement speed: 0.1 on ground.
+------------------------------------------------------------
+  * Luna [P00003] (1, 0, 0), moon, unexplored.
+------------------------------------------------------------
+    orbit [O00002], has no atmosphere.
+
+  * Scoria [P00002] at AU 1.5, dust planet [dust].
+------------------------------------------------------------
+  orbit [O00003], has no atmosphere.
+
+  * Aeolus [P00004] at AU 5.2, gas giant planet [gasgnt].
+------------------------------------------------------------
+  orbit [O00004], has no atmosphere.
+------------------------------------------------------------
+  * Luna [P00003] (1, 0, 0), moon, unexplored.
+------------------------------------------------------------
+    orbit [O00005], has no atmosphere.
+------------------------------------------------------------
+  * Luna [P00003] (1, 0, 0), moon, unexplored.
+------------------------------------------------------------
+    orbit [O00006], has no atmosphere.
+------------------------------------------------------------
+  * Luna [P00003] (1, 0, 0), moon, unexplored.
+------------------------------------------------------------
+    orbit [O00007], has no atmosphere.
+------------------------------------------------------------
+  * Luna [P00003] (1, 0, 0), moon, unexplored.
+------------------------------------------------------------
+    orbit [O00008], has no atmosphere.
+
+  * Helios Gate [P00009] at AU 80, Alderson Gate.
+------------------------------------------------------------
+  orbit [O00110], has no atmosphere.
+
+* Sol [SS0001] (0, 0, 0), star system.
+------------------------------------------------------------
+
+  * Sol [S00001] (0, 0, 0), M4 star, unexplored.
+------------------------------------------------------------
+
+  * Anvil [P00005] at AU 1.4, ocean planet [ocean].
+------------------------------------------------------------
+  orbit [O00112], has atmosphere suitable for terran [terran].
+------------------------------------------------------------
+  * Luna [P00003] (1, 0, 0), moon, unexplored.
+------------------------------------------------------------
+    orbit [O00113], has no atmosphere.
+------------------------------------------------------------
+  * Luna [P00003] (1, 0, 0), moon, unexplored.
+------------------------------------------------------------
+    orbit [O00114], has no atmosphere.
+
+  * Pyre [P00006] at AU 0.6, dust planet [dust].
+------------------------------------------------------------
+  orbit [O00115], has no atmosphere.
+
+  * Fomal Giant [P00008] at AU 6, gas giant planet [gasgnt].
+------------------------------------------------------------
+  orbit [O00116], has no atmosphere.
+------------------------------------------------------------
+  * Luna [P00003] (1, 0, 0), moon, unexplored.
+------------------------------------------------------------
+    orbit [O00117], has no atmosphere.
+------------------------------------------------------------
+  * Luna [P00003] (1, 0, 0), moon, unexplored.
+------------------------------------------------------------
+    orbit [O00118], has no atmosphere.
+
+  * Fomal Gate [P00010] at AU 80, Alderson Gate.
+------------------------------------------------------------
+  orbit [O00111], has no atmosphere.
+
+* Sol [SS0001] (0, 0, 0), star system.
+------------------------------------------------------------
+
+  * Sol [S00001] (0, 0, 0), M4 star, unexplored.
+------------------------------------------------------------
+
+  * Ember Dust [P00011] at AU 0.7, dust planet [dust].
+------------------------------------------------------------
+  orbit [O00119], has no atmosphere.
+
+  * Ember Giant [P00013] at AU 4.1, gas giant planet [gasgnt].
+------------------------------------------------------------
+  orbit [O00120], has no atmosphere.
+------------------------------------------------------------
+  * Luna [P00003] (1, 0, 0), moon, unexplored.
+------------------------------------------------------------
+    orbit [O00121], has no atmosphere.
+------------------------------------------------------------
+  * Luna [P00003] (1, 0, 0), moon, unexplored.
+------------------------------------------------------------
+    orbit [O00122], has no atmosphere.
+------------------------------------------------------------
+  * Luna [P00003] (1, 0, 0), moon, unexplored.
+------------------------------------------------------------
+    orbit [O00123], has no atmosphere.
+
+* Sol [SS0001] (0, 0, 0), star system.
+------------------------------------------------------------
+
+  * Sol [S00001] (0, 0, 0), M4 star, unexplored.
+------------------------------------------------------------
+
+  * Gleam Inner [P00014] at AU 0.12, dust planet [dust].
+------------------------------------------------------------
+  orbit [O00124], has no atmosphere.
+
+  * Gleam Ice [P00016] at AU 0.8, dust planet [dust].
+------------------------------------------------------------
+  orbit [O00125], has no atmosphere.
+
+* Sol [SS0001] (0, 0, 0), star system.
+------------------------------------------------------------
+
+  * Sol [S00001] (0, 0, 0), M4 star, unexplored.
+------------------------------------------------------------
+
+  * Cinder Dust [P00017] at AU 1.2, dust planet [dust].
+------------------------------------------------------------
+  orbit [O00126], has no atmosphere.
+
+  * Cinder Giant [P00019] at AU 8, gas giant planet [gasgnt].
+------------------------------------------------------------
+  orbit [O00127], has no atmosphere.
+------------------------------------------------------------
+  * Luna [P00003] (1, 0, 0), moon, unexplored.
+------------------------------------------------------------
+    orbit [O00128], has no atmosphere.
+------------------------------------------------------------
+  * Luna [P00003] (1, 0, 0), moon, unexplored.
+------------------------------------------------------------
+    orbit [O00129], has no atmosphere.
+------------------------------------------------------------
+  * Luna [P00003] (1, 0, 0), moon, unexplored.
+------------------------------------------------------------
+    orbit [O00130], has no atmosphere.
+
+* Sol [SS0001] (0, 0, 0), star system.
+------------------------------------------------------------
+
+  * Sol [S00001] (0, 0, 0), M4 star, unexplored.
+------------------------------------------------------------
+
+  * Ash Inner Giant [P00022] at AU 6, gas giant planet [gasgnt].
+------------------------------------------------------------
+  orbit [O00131], has no atmosphere.
+------------------------------------------------------------
+  * Luna [P00003] (1, 0, 0), moon, unexplored.
+------------------------------------------------------------
+    orbit [O00132], has no atmosphere.
+------------------------------------------------------------
+  * Luna [P00003] (1, 0, 0), moon, unexplored.
+------------------------------------------------------------
+    orbit [O00133], has no atmosphere.
+------------------------------------------------------------
+  * Luna [P00003] (1, 0, 0), moon, unexplored.
+------------------------------------------------------------
+    orbit [O00134], has no atmosphere.
+------------------------------------------------------------
+  * Luna [P00003] (1, 0, 0), moon, unexplored.
+------------------------------------------------------------
+    orbit [O00135], has no atmosphere.
+
+  * Ash Outer Giant [P00024] at AU 18, gas giant planet [gasgnt].
+------------------------------------------------------------
+  orbit [O00136], has no atmosphere.
+
+* Sol [SS0001] (0, 0, 0), star system.
+------------------------------------------------------------
+
+  * Sol [S00001] (0, 0, 0), M4 star, unexplored.
+------------------------------------------------------------
+
+  * Shards Dust [P00027] at AU 0.9, dust planet [dust].
+------------------------------------------------------------
+  orbit [O00137], has no atmosphere.
+
+* Sol [SS0001] (0, 0, 0), star system.
+------------------------------------------------------------
+
+  * Sol [S00001] (0, 0, 0), M4 star, unexplored.
+------------------------------------------------------------
+
+  * Deep Dust [P00028] at AU 0.5, dust planet [dust].
+------------------------------------------------------------
+  orbit [O00138], has no atmosphere.
+
+  * Deep Inner Giant [P00029] at AU 4.5, gas giant planet [gasgnt].
+------------------------------------------------------------
+  orbit [O00139], has no atmosphere.
+------------------------------------------------------------
+  * Luna [P00003] (1, 0, 0), moon, unexplored.
+------------------------------------------------------------
+    orbit [O00140], has no atmosphere.
+------------------------------------------------------------
+  * Luna [P00003] (1, 0, 0), moon, unexplored.
+------------------------------------------------------------
+    orbit [O00141], has no atmosphere.
+------------------------------------------------------------
+  * Luna [P00003] (1, 0, 0), moon, unexplored.
+------------------------------------------------------------
+    orbit [O00142], has no atmosphere.
+------------------------------------------------------------
+  * Luna [P00003] (1, 0, 0), moon, unexplored.
+------------------------------------------------------------
+    orbit [O00143], has no atmosphere.
+
+  * Deep Outer Giant [P00030] at AU 9.2, gas giant planet [gasgnt].
+------------------------------------------------------------
+  orbit [O00144], has no atmosphere.
+------------------------------------------------------------
+  * Luna [P00003] (1, 0, 0), moon, unexplored.
+------------------------------------------------------------
+    orbit [O00145], has no atmosphere.
+------------------------------------------------------------
+  * Luna [P00003] (1, 0, 0), moon, unexplored.
+------------------------------------------------------------
+    orbit [O00146], has no atmosphere.
+------------------------------------------------------------
+  * Luna [P00003] (1, 0, 0), moon, unexplored.
+------------------------------------------------------------
+    orbit [O00147], has no atmosphere.
+
+* Sol [SS0001] (0, 0, 0), star system.
+------------------------------------------------------------
+
+  * Sol [S00001] (0, 0, 0), M4 star, unexplored.
+------------------------------------------------------------
+
+  * Graph [P00031] at AU 0.95, ocean planet [ocean].
+------------------------------------------------------------
+  orbit [O00148], has atmosphere.
+
+  * Graph Dust [P00032] at AU 1.6, dust planet [dust].
+------------------------------------------------------------
+  orbit [O00149], has no atmosphere.
+------------------------------------------------------------
+  * Luna [P00003] (1, 0, 0), moon, unexplored.
+------------------------------------------------------------
+    orbit [O00150], has no atmosphere.
+
+* Sol [SS0001] (0, 0, 0), star system.
+------------------------------------------------------------
+
+  * Sol [S00001] (0, 0, 0), M4 star, unexplored.
+------------------------------------------------------------
+
+  * Spare Dust [P00034] at AU 1.1, dust planet [dust].
+------------------------------------------------------------
+  orbit [O00151], has no atmosphere.
+------------------------------------------------------------
+  * Luna [P00003] (1, 0, 0), moon, unexplored.
+------------------------------------------------------------
+    orbit [O00152], has no atmosphere.
+
+
+Orders Template:
+#faction 12 ""
+#modulestack 120001
+; + Rootfast [120001], 3 cities [city], immobile.
+; items: 4000 cash [cash], 40 terrans [terran], 40 units of terran breathing gas mixture [terair], 40
+; units of water [water].
+
+#modulestack 120002
+; + Rootfast farms [120002], 16 farming complexes [farms], disabled, immobile.
+
+#modulestack 120003
+; + Rootfast plants [120003], 2 coal-burning plants [cplant], disabled, immobile.
+; items: 20 units of carbon [carbon].
+
+#modulestack 120004
+; + Rootfast garrison [120004], 3 infantry battalions [inftry], immobile.
+
+#modulestack 120005
+; + Rootfast granary [120005], small cargo bay [cargob], immobile.
+; items: 800 units of food [food], 40 units of terran breathing gas mixture [terair], 40 units of
+; water [water].
+
+#modulestack 120010
+; + Rootfast raid [120010], 3 infantry battalions [inftry], immobile.
+
+#end
+

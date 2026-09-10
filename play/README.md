@@ -4,6 +4,8 @@ AI isolation play loop for the 10-player campaign (factions **2–11**). This is
 
 The **campaign-gm** agent (`.cursor/agents/campaign-gm.md`) **executes** these scripts and keeps this README accurate. It does **not** write or patch `play/*.ps1`, C#, or tests. Missing automation is listed under [Gaps](#gaps) — implementers add scripts; the GM only documents and runs them.
 
+PBEM helpers orchestrate folders under `play/runs/<id>/`. The engine stays batch file-in/file-out ([ADR-0003](../architecture/adr/ADR-0003-filesystem-pbem-batch.md)).
+
 ## Build Game.exe (Windows)
 
 From the repo root:
@@ -37,7 +39,7 @@ Later:
 |------|------|--------|
 | `/reports` | `turn/report.1.{1–13}.txt` and `.xml` | Seed `turn="1"`; campaign factions have `xml-report="True"` |
 | isolate | `factions/NN/report.{T}.{id}.txt` only | NN = `02`–`11`; never `.xml`; never 1/12/13 |
-| `/player` draft | `factions/NN/order.{id}.txt` | UTF-8 in the faction folder |
+| `/player` or `draft-run` draft | `factions/NN/order.{id}.txt` or `orders.{faction}.{turn}.{iteration}.txt` | UTF-8 in the faction folder |
 | campaign-ai | `factions/NN/story.md` | Plan: review + strategic (system, 4q) + tactical (planet/moon, 1q) + win (galaxy, T≥10) |
 | `turn.ps1` | `turn/order.{id}.txt` | Windows-1251 copies of the ten player files |
 | full exe | `data/gameout.{N}.xml`, `turn/report.{N}.*` | Seed 1 → N = **2** |
@@ -74,7 +76,9 @@ From the repo root (`powershell -NoProfile -File` if execution policy blocks `.\
 
 Optional `-Exe path\to\Game.exe` on `reports.ps1` / `turn.ps1`. `init-run.ps1` accepts `-Exe` for consistency but does not launch the engine.
 
-Typical first quarter: `init-run` → `reports` → `isolate` → (ten `order.{id}.txt` in faction folders) → `turn` → `next`.
+Typical first quarter: `init-run` → `reports` → `isolate` → (ten order files in faction folders) → `turn` → `next`.
+
+Automated AI loop (after isolate): `ingest-rag` → `draft-run` → GM review → `turn`.
 
 ```
 .\play\generate-status.ps1 demo
@@ -84,12 +88,76 @@ Refreshes `website/public/status.json` without running the engine. `isolate.ps1`
 
 Shared helpers live in `play/_common.ps1` (dot-sourced; not invoked directly).
 
+## RAG refresh after isolate (Phase 4)
+
+After `Game.exe` (or reports-only) and isolate copies `report.{turn}.{faction}.txt` into each `play/runs/<id>/factions/NN/` folder, refresh per-seat indexes **before** drafting the next turn:
+
+```powershell
+# All AI seats (factions 2–11), incremental: latest report + story + last 3 order turns
+.\play\ingest-rag.ps1 -Run smoke-test -Mode campaign
+
+# Plan only (no Ollama calls)
+.\play\ingest-rag.ps1 -Run smoke-test -Mode campaign -DryRun
+
+# Single seat (manual fallback)
+dotnet run --project tools/player-agent/PlayerAgent.csproj -- `
+  ingest-faction --mode campaign --run smoke-test --faction 2
+```
+
+Do **not** run `ingest-shared` on every turn unless `player/rules.md`, tech manuals, or `player/battle.md` changed ([Phase 5](../architecture/delivery/local-player-agent.md)).
+
+## Shared RAG refresh after engine / catalog updates (Phase 5)
+
+After `/player` docs-only refresh (or human edit) when rules, battle, tech manuals, or `Tests/data.xml` / `campaign/data.xml` change:
+
+```powershell
+# Rebuild campaign shared index + allowlist + spot-check
+.\play\refresh-shared-rag.ps1 -Mode campaign -SpotCheckVerb MOVE -SpotCheckTech helium
+
+# Both test and campaign indexes on one machine
+.\play\refresh-shared-rag.ps1 -Mode both
+
+# Plan only
+.\play\refresh-shared-rag.ps1 -Mode test -DryRun
+```
+
+Optional `-NoteRun <id>` appends a rebuild note to `play/runs/<id>/README.md`. Per-faction indexes are unchanged unless report templates or draft syntax examples need updating.
+
+### Campaign-ai handoff
+
+When `/campaign-ai` updates `story.md` for a seat, re-ingest that story chunk before `draft`:
+
+```powershell
+dotnet run --project tools/player-agent/PlayerAgent.csproj -- `
+  ingest-faction --mode campaign --run <id> --faction <n> --story-only
+```
+
+`/campaign-ai` continues to own strategy text; the runner consumes `story.md` as RAG + prompt-pack input.
+
+## Batch order draft (Phase 6)
+
+After per-seat RAG refresh, draft all AI seats with the local runner. Cursor `/player` remains valid for single-seat or human-in-the-loop work ([`player/README.md`](../player/README.md)).
+
+```powershell
+# Typical loop after ingest-rag
+.\play\draft-run.ps1 -Run smoke-test -Mode campaign
+
+# Prompt packs only (audit + RAG, no chat)
+.\play\draft-run.ps1 -Run smoke-test -Mode campaign -DryRun
+
+# Isolation audit without drafting
+dotnet run --project tools/player-agent/PlayerAgent.csproj -- `
+  audit-isolation --mode campaign --run smoke-test
+```
+
+`draft-run` audits shared and faction indexes first (no cross-seat report leakage), then drafts factions 2–11 sequentially against one Ollama host. Results append to `play/runs/<id>/gm/isolation-audit.md`. Remote batches require `PLAYER_AGENT_BUDGET_USD` and auto-track usage under `tools/player-agent/.data/usage/`; cost notes land in `play/runs/<id>/gm/llm-usage.md` ([Phases 7–8](../architecture/delivery/local-player-agent.md)).
+
 ## GM operations
 
 Invoke `/campaign-gm` to run a table. GM loop (same mermaid as [campaign-play.md](../architecture/delivery/campaign-play.md)):
 
 ```
-init-run → reports → isolate → publish-status → ten isolated campaign-ai (or /player) → turn → win check → next → publish-status
+init-run → reports → isolate → publish-status → ingest-rag → draft-run (or ten isolated campaign-ai / /player) → turn → win check → next → publish-status
 ```
 
 **`/campaign-gm`** runs `generate-status.ps1` and commits/pushes `website/public/status.json` to `master` after lobby-visible steps (see [Publish to the live site](#publish-to-the-live-site)).
@@ -121,7 +189,7 @@ Phase 2 publishes lobby status for the public site. The GM **does not** hand-edi
 { "nextTurnAt": "2026-09-15T23:59:59Z" }
 ```
 
-ISO-8601 UTC. The site shows the timestamp or “GM-scheduled” when null. Override for one run:
+ISO-8601 UTC. The site shows the timestamp or "GM-scheduled" when null. Override for one run:
 
 ```
 .\play\generate-status.ps1 <id> -NextTurnAt "2026-09-15T23:59:59Z"
@@ -165,16 +233,18 @@ NPC 1 / 12 / 13 do not decide this win.
 
 ### AI players (`/campaign-ai`)
 
-One call per faction **2–11**. Workspace is `factions/NN/` plus `player/rules.md` (and `player/campaign/basic_technologies.md` when it exists). Each call reviews the previous `story.md` against this report, writes a new story (**strategic** = 4 quarters / system, **tactical** = next quarter / planet or moon, **win** = galaxy-wide when report turn ≥ 10), then invokes `/player` with the **tactical** objective (catalog **path** `campaign/data.xml` — campaign-ai does **not** open that XML). TDD or designer gaps wait for **human approval**. Do not feed catalog XML, `gamein.xml`, XML reports, or other factions’ files.
+One call per faction **2–11**. Workspace is `factions/NN/` plus `player/rules.md` (and `player/campaign/basic_technologies.md` when it exists). Each call reviews the previous `story.md` against this report, writes a new story (**strategic** = 4 quarters / system, **tactical** = next quarter / planet or moon, **win** = galaxy-wide when report turn ≥ 10), then invokes `/player` with the **tactical** objective (catalog **path** `campaign/data.xml` — campaign-ai does **not** open that XML). TDD or designer gaps wait for **human approval**. Do not feed catalog XML, `gamein.xml`, XML reports, or other factions' files.
 
 ## Encoding
 
 - Catalog / gamein / reports / `/turn-dir` orders: **Windows-1251**.
-- `/player` drafts UTF-8 in `factions/NN/order.{id}.txt`; `turn.ps1` writes 1251 into `turn\`.
+- `/player` and `draft-run` drafts UTF-8 in `factions/NN/`; `turn.ps1` writes 1251 into `turn\`.
 - `persona.md`: UTF-8.
 - `story.md`: UTF-8 (campaign-ai).
 
 Orders header: `#faction <id> "<password>"` (see `player/rules.md`).
+
+UTF-8 order drafts under faction folders are converted to Windows-1251 before `Game.exe`. See [ADR-0002](../architecture/adr/ADR-0002-windows-1251-io.md).
 
 ## Isolation
 

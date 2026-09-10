@@ -1,0 +1,33 @@
+﻿{
+  "sourcePath": "player/rules.md",
+  "sourceContentHash": "45fac7370e291d28c2488fdcba282f9df13b836a6569d71b462ffde90638edfa",
+  "generatedAtUtc": "2026-09-10T12:03:17.9443480Z",
+  "verbs": [
+    "ACTIVE",
+    "ALIAS",
+    "ATTACK",
+    "BUY",
+    "CAPTURE",
+    "CONTRACT",
+    "COPY",
+    "DECLARE",
+    "FORM",
+    "GET",
+    "GIVE",
+    "HAS",
+    "MOVE",
+    "NAME",
+    "PRESS",
+    "PRODUCE",
+    "REPAIR",
+    "RESEARCH",
+    "SEE",
+    "SELL",
+    "SET",
+    "STACK",
+    "TACTIC",
+    "TRAIN",
+    "TRANSFER",
+    "USE"
+  ]
+}

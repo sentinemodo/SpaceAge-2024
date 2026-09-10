@@ -1,6 +1,6 @@
 # SpaceAge-2024 — technology choices
 
-Last updated: 2026-08-29  
+Last updated: 2026-09-11  
 Engine version: `Program.EngineVersion` = `0.1.137`
 
 This is a **legacy console engine**, not a service stack. Choices below describe what the repo already uses. Changing the runtime or project style requires an ADR.
@@ -73,6 +73,22 @@ SonarQube helper scripts (`Sonar.bat`, `sonar-project.properties`) exist locally
 - NUnit Console runner: **3.18.3** as installed by `.cursor/install.sh`.
 - Mono: whatever `mono-complete` on Ubuntu 24.04 provides (installed by `.cursor/install.sh`); do not add a second CLR in the cloud image.
 
+## Local player-agent inference (new, not engine)
+
+Separate from the net48 engine. Decision: [ADR-0009](adr/ADR-0009-local-llm-player-agent.md). Plan: [`delivery/local-player-agent.md`](delivery/local-player-agent.md). Do not hang an LLM off `Game.exe` or index forbidden campaign files into the strategist RAG path.
+
+| Area | Choice | Constraint |
+|------|--------|------------|
+| Location | `tools/player-agent/` (**C# net8**, `PlayerAgent.csproj` in `SpaceAge.sln`) | Outside `Game/`, `Tests/`, `website/`; no `Game.dll` reference |
+| Inference | **Ollama** (OpenAI-compatible `/v1`) | Same client for local and remote |
+| Chat model | Local default **`qwen2.5-coder:7b`** (smoke + draft); RunPod **`qwen2.5-coder:14b`**; ADR quality target **`qwen3-coder:30b`** when VRAM allows | No fine-tune before RAG + verb lint |
+| Embeddings | **`nomic-embed-text`** | Same Ollama host as chat |
+| RAG index | **SQLite** under gitignored `tools/player-agent/.data/` | Separate `shared-test` / `shared-campaign`; `--mode test\|campaign` required |
+| RAG corpus | Hybrid prompt pack + vector chunks over `player/*.md` + per-faction report/story/orders | Never `gamein` / other factions / raw full `data.xml` for strategist |
+| Default host | Local Windows Ollama | `qwen2.5-coder:7b` minimum for drafts; quality tests on RunPod |
+| Rented GPU | **RunPod** 1× **RTX 4090** (24 GB); Secure Cloud when reports leave the box | Ollama only on pod; `--allow-runpod` required; full usage tracker + cost guardrails Phases 7–8 |
+| Rejected as model host | Vercel, engine HTTP, always-on cloud chat as default | Vercel may later host *orchestration* for a web assistant only |
+
 ## Website (new, not engine)
 
 This section does **not** replace the net48 stack above. The public lobby is a separate product ([ADR-0007](adr/ADR-0007-public-campaign-website.md), plan [`delivery/website.md`](delivery/website.md)). Do not retarget `Game.exe`, add ASP.NET to the engine, or build the site from `SpaceAge.sln`.
@@ -95,6 +111,9 @@ Engine XML/orders stay Windows-1251. Website source and `status.json` are UTF-8.
 
 ## Revision
 
+- 2026-09-10: Phase 3 — draft loop, `orders.{faction}.{turn}.{iteration}.txt` naming, local default **`qwen2.5-coder:7b`** for smoke and draft.
+- 2026-09-10: Phase 0 — **C# net8** runner scaffold, SQLite index layout, `--mode test|campaign`, RunPod `qwen2.5-coder:14b` defaults.
+- 2026-09-09: Added **Local player-agent inference** ([ADR-0009](adr/ADR-0009-local-llm-player-agent.md): Ollama, Qwen3-Coder, RunPod rental).
 - 2026-08-29: Added **Website (new, not engine)**. Engine pins unchanged.
 - 2026-08-29: Website tests = Vitest + Playwright; engine stays NUnit.
 - 2026-08-29: Website Cursor agents paired (`/website-developer` + `/website-tester`).

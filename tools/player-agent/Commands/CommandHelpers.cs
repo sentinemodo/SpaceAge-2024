@@ -1,0 +1,202 @@
+using System.CommandLine;
+using System.CommandLine.Invocation;
+using SpaceAge.PlayerAgent.Configuration;
+using SpaceAge.PlayerAgent.Inference;
+using SpaceAge.PlayerAgent.Usage;
+
+namespace SpaceAge.PlayerAgent.Commands;
+
+internal static class CommandHelpers
+{
+    public static Option<bool> AllowRunPodOption { get; } = new("--allow-runpod")
+    {
+        Description = "Allow remote Ollama hosts (RunPod). Required when OLLAMA_HOST is not localhost.",
+    };
+
+    public static Option<bool> YesOption { get; } = new("--yes")
+    {
+        Description = "Skip RunPod confirmation prompts (still enforces hard budget caps).",
+    };
+
+    public static Option<string> ModeOption { get; } = new("--mode")
+    {
+        Description = "Play mode for manual corpus selection: test (SampleGame manuals) or campaign.",
+        IsRequired = true,
+    };
+
+    public static Option<string> RunOption { get; } = new("--run")
+    {
+        Description = "Campaign run id under play/runs/<id>/.",
+    };
+
+    public static Option<int?> FactionOption { get; } = new("--faction")
+    {
+        Description = "Faction id (2–11) for campaign paths.",
+    };
+
+    public static Option<string> OutputOption { get; } = new("--output")
+    {
+        Description = "Explicit UTF-8 draft output path (dev/test).",
+    };
+
+    public static Option<string> ReportOption { get; } = new("--report")
+    {
+        Description = "Override report path (defaults to latest report in --run faction folder).",
+    };
+
+    public static Option<int?> TurnOption { get; } = new("--turn")
+    {
+        Description = "Turn number for orders.{faction}.{turn}.{iteration}.txt (default: report turn + 1).",
+    };
+
+    public static Option<int?> IterationOption { get; } = new("--iteration")
+    {
+        Description = "Draft iteration for the turn (default: next free orders.{faction}.{turn}.N.txt).",
+    };
+
+    public static Option<bool> DryRunOption { get; } = new("--dry-run")
+    {
+        Description = "Build prompt/RAG inputs without calling chat or starting remote pods.",
+    };
+
+    public static Option<bool> ClearOption { get; } = new("--clear")
+    {
+        Description = "Delete all existing chunks in the target index before ingesting.",
+    };
+
+    public static Option<bool> FullCorpusOption { get; } = new("--full")
+    {
+        Description = "Ingest every report and order file (Phase 2 full rebuild). Default is incremental turn refresh.",
+    };
+
+    public static Option<bool> StoryOnlyOption { get; } = new("--story-only")
+    {
+        Description = "Re-ingest story.md only (campaign-ai handoff). Does not touch reports or orders.",
+    };
+
+    public static Option<int?> MaxOrderTurnsOption { get; } = new("--max-order-turns")
+    {
+        Description = "Keep orders from the last N turns in the faction index (default 3).",
+    };
+
+    public static Option<int?> FromFactionOption { get; } = new("--from-faction")
+    {
+        Description = "First faction id for batch ingest-run (default 2).",
+    };
+
+    public static Option<int?> ToFactionOption { get; } = new("--to-faction")
+    {
+        Description = "Last faction id for batch ingest-run (default 11).",
+    };
+
+    public static Option<string> IndexOption { get; } = new("--index")
+    {
+        Description = "Index to search: shared or faction.",
+        IsRequired = true,
+    };
+
+    public static Option<string> QueryOption { get; } = new("--query")
+    {
+        Description = "Natural-language retrieval query.",
+        IsRequired = true,
+    };
+
+    public static Option<string?> VerbOption { get; } = new("--verb")
+    {
+        Description = "Optional verb filter (e.g. MOVE) to prefer matching rules chunks.",
+    };
+
+    public static Option<int?> TopOption { get; } = new("--top")
+    {
+        Description = "Maximum number of retrieval hits (default 6).",
+    };
+
+    public static Option<bool> SkipIsolationAuditOption { get; } = new("--skip-isolation-audit")
+    {
+        Description = "Skip shared/faction index isolation audit before draft-run (not recommended).",
+    };
+
+    public static Option<bool> NoRecordAuditOption { get; } = new("--no-record-audit")
+    {
+        Description = "Do not append isolation audit results to play/runs/<id>/gm/isolation-audit.md.",
+    };
+
+    public static PlayMode ParseRequiredMode(InvocationContext context)
+    {
+        var modeValue = context.ParseResult.GetValueForOption(ModeOption);
+        if (!PlayModeParser.TryParse(modeValue, out var mode))
+        {
+            throw new InvalidOperationException("--mode is required and must be test or campaign.");
+        }
+
+        return mode;
+    }
+
+    public static PlayerAgentSettings LoadSettings(InvocationContext context, bool checkRemote = true)
+    {
+        var allowRunPod = context.ParseResult.GetValueForOption(AllowRunPodOption);
+        var settings = PlayerAgentSettings.Load(allowRunPod);
+        if (checkRemote)
+        {
+            RunPodGuard.EnsureRemoteAllowed(settings);
+        }
+
+        return settings;
+    }
+
+    public static bool AssumeYes(InvocationContext context) =>
+        context.ParseResult.GetValueForOption(YesOption);
+
+    public static async Task RunWithInferenceAsync(
+        PlayerAgentSettings settings,
+        InvocationContext context,
+        string command,
+        string? runId,
+        IReadOnlyList<int>? factionIds,
+        Func<IOllamaClient, CancellationToken, Task> action)
+    {
+        var inference = RemoteInferenceContext.Create(
+            settings,
+            AssumeYes(context),
+            new ConsoleUserPrompt(),
+            command,
+            runId,
+            factionIds,
+            dryRun: false);
+
+        try
+        {
+            await action(inference.Client, context.GetCancellationToken());
+        }
+        finally
+        {
+            await inference.DisposeAsync();
+        }
+    }
+
+    public static void PrintSettings(PlayerAgentSettings settings)
+    {
+        Console.WriteLine($"Ollama host:      {settings.OllamaBaseUri}");
+        Console.WriteLine($"OpenAI base:      {settings.OpenAiBaseUri}");
+        Console.WriteLine($"Chat model:       {settings.ChatModel}");
+        Console.WriteLine($"Embed model:      {settings.EmbedModel}");
+        Console.WriteLine($"Index directory:  {settings.IndexDirectory}");
+        Console.WriteLine($"Remote host:      {settings.IsRemoteHost}");
+        Console.WriteLine($"Allow RunPod:     {settings.AllowRunPod}");
+        Console.WriteLine($"RunPod pod id:    {settings.RunPodPodId ?? "(unset)"}");
+        Console.WriteLine($"GPU class:        {settings.GpuClass ?? "(unset)"}");
+        Console.WriteLine($"Cloud tier:       {settings.CloudTier ?? "(unset)"}");
+        Console.WriteLine($"Hourly rate:      ${settings.HourlyRateUsd:F2}/hr");
+
+        if (settings.IsRemoteHost)
+        {
+            var budget = RunPodBudgetSettings.LoadFromEnvironment(isRemoteHost: true);
+            Console.WriteLine($"Budget hard:      {(budget.HardBudgetUsd is null ? "(unset)" : Usage.UsageReportFormatter.FormatUsd(budget.HardBudgetUsd.Value))}");
+            Console.WriteLine($"Budget soft:      {(budget.SoftBudgetUsd is null ? "(unset)" : Usage.UsageReportFormatter.FormatUsd(budget.SoftBudgetUsd.Value))}");
+            Console.WriteLine($"Max pod hours:    {budget.MaxPodHoursPerSession?.ToString("F2") ?? "(unset)"}");
+            Console.WriteLine($"Max chat calls:   {budget.MaxChatCallsPerSession?.ToString() ?? "(unset)"}");
+            Console.WriteLine($"Idle timeout:     {budget.IdleTimeoutMinutes} min");
+            Console.WriteLine($"Require confirm:  {budget.RequireConfirm}");
+        }
+    }
+}
