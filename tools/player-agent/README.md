@@ -12,6 +12,8 @@ Scriptable order-drafting runner for PBEM play. Lives **outside** `Game.exe` per
 
 **Phase 5 status:** Shared RAG rebuild after engine/catalog/manual updates — `refresh-shared` orchestrates `ingest-shared`, verb allowlist export (`regenerate-allowlist` → `Lint/verb-allowlist.json`), spot-check retrieve, optional run README note, and `play/refresh-shared-rag.ps1` wrapper.
 
+**Phase 6 status:** Campaign play wiring — `draft-run` queues sequential drafts for factions 2–11, `audit-isolation` verifies shared/faction indexes, audit notes land in `play/runs/<id>/gm/isolation-audit.md`, and `play/draft-run.ps1` wraps the batch. Cursor `/player` remains valid for single-seat work.
+
 ## Requirements
 
 - [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
@@ -111,6 +113,8 @@ UTF-8 drafts in faction folders; `play/turn.ps1` converts to Windows-1251 for `G
 | `regenerate-allowlist` | 5 | Export verb list from `player/rules.md` to `Lint/verb-allowlist.json` |
 | `retrieve --mode … --index shared\|faction --query …` | 2 | Dev helper: top-k vector search (optional `--verb MOVE`) |
 | `draft --mode … --faction …` | 3 | Generate order draft (lint + UTF-8 write) |
+| `draft-run --mode … --run …` | 6 | Batch draft factions 2–11 (isolation audit first) |
+| `audit-isolation --mode … [--run …]` | 6 | Verify shared/faction RAG indexes are not cross-contaminated |
 | `usage …` | 7 | RunPod ledger and reports |
 
 `--dry-run` on ingest chunks sources without calling embed; on draft builds the prompt pack without chat. `--clear` wipes the target SQLite index before ingest (or alone with `--dry-run`).
@@ -204,6 +208,29 @@ dotnet run --project tools/player-agent/PlayerAgent.csproj -- draft `
 Lint reads live verb headings from `player/rules.md` (immediate + long orders). Drafts that use unknown verbs fail closed and are not written. Password is read from the report template or `persona.md` and injected locally; remote hosts strip `#faction … "password"` from the chat prompt.
 
 UTF-8 drafts in faction folders or `player/drafts/`; **`play/turn.ps1` converts to Windows-1251** before `Game.exe`.
+
+### Campaign batch draft (Phase 6)
+
+Prerequisites: shared index built (`ingest-shared` or `refresh-shared`), per-seat indexes refreshed (`ingest-rag` / `ingest-run`), Ollama running.
+
+```powershell
+# Isolation audit only (shared + factions 2–11)
+dotnet run --project tools/player-agent/PlayerAgent.csproj -- `
+  audit-isolation --mode campaign --run smoke-test
+
+# Full batch: audit → draft each seat sequentially
+dotnet run --project tools/player-agent/PlayerAgent.csproj -- `
+  draft-run --mode campaign --run smoke-test
+
+# Prompt packs only (no chat, no writes)
+dotnet run --project tools/player-agent/PlayerAgent.csproj -- `
+  draft-run --mode campaign --run smoke-test --dry-run
+
+# Or use the play wrapper (typical after ingest-rag)
+.\play\draft-run.ps1 -Run smoke-test -Mode campaign
+```
+
+Audit results append to `play/runs/<id>/gm/isolation-audit.md` unless `--no-record-audit`. Use Cursor `/player` for a single seat or when you want human-in-the-loop review before writing orders.
 
 Unit tests: `dotnet test tools/player-agent-tests/PlayerAgent.Tests.csproj`.
 

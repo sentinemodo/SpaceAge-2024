@@ -224,11 +224,25 @@ dotnet run --project tools/player-agent/PlayerAgent.csproj -- retrieve --mode ca
 
 ## Phase 6 — Wire into campaign play (optional)
 
-- [ ] Document optional replacement of Cursor `/player` calls with the local runner in campaign play docs when present (link only; keep Cursor path valid).
-- [ ] Queue ten faction drafts against one Ollama (local or RunPod).
-- [ ] Record isolation audit: no shared index contains another faction’s report.
+- [x] Document optional replacement of Cursor `/player` calls with the local runner in campaign play docs when present (link only; keep Cursor path valid).
+- [x] Queue ten faction drafts against one Ollama (local or RunPod).
+- [x] Record isolation audit: no shared index contains another faction’s report.
 
-**Done when:** One full AI turn batch (factions 2–11) can be drafted via the runner with isolation intact. If the batch used RunPod, Phases 7–8 must already be green.
+### Automation (preferred)
+
+- [x] Command: `draft-run --mode … --run …` — isolation audit, then sequential drafts for factions 2–11 (one Ollama host; `--dry-run` for prompt packs only).
+- [x] Command: `audit-isolation --mode … [--run …]` — shared + per-seat index audit; optional `--run` adds faction DB checks.
+- [x] Script: `play/draft-run.ps1` — thin wrapper around `draft-run`.
+- [x] Audit log: `play/runs/<id>/gm/isolation-audit.md` (append per batch unless `--no-record-audit`).
+
+### Manual fallback
+
+```powershell
+dotnet run --project tools/player-agent/PlayerAgent.csproj -- audit-isolation --mode campaign --run smoke-test
+dotnet run --project tools/player-agent/PlayerAgent.csproj -- draft --mode campaign --run smoke-test --faction 2
+```
+
+**Done when:** One full AI turn batch (factions 2–11) can be drafted via the runner with isolation intact. If the batch used RunPod, Phases 7–8 must already be green. **Code complete (2026-09-10)** — run `ingest-rag` then `draft-run` against a live Ollama host; unit tests cover isolation audit rules and audit note formatting.
 
 ---
 

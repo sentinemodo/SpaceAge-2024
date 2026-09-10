@@ -104,6 +104,16 @@ internal static class CommandHelpers
         Description = "Maximum number of retrieval hits (default 6).",
     };
 
+    public static Option<bool> SkipIsolationAuditOption { get; } = new("--skip-isolation-audit")
+    {
+        Description = "Skip shared/faction index isolation audit before draft-run (not recommended).",
+    };
+
+    public static Option<bool> NoRecordAuditOption { get; } = new("--no-record-audit")
+    {
+        Description = "Do not append isolation audit results to play/runs/<id>/gm/isolation-audit.md.",
+    };
+
     public static PlayMode ParseRequiredMode(InvocationContext context)
     {
         var modeValue = context.ParseResult.GetValueForOption(ModeOption);

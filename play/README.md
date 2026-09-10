@@ -48,6 +48,24 @@ dotnet run --project tools/player-agent/PlayerAgent.csproj -- `
 
 `/campaign-ai` continues to own strategy text; the runner consumes `story.md` as RAG + prompt-pack input.
 
+## Batch order draft (Phase 6)
+
+After per-seat RAG refresh, draft all AI seats with the local runner. Cursor `/player` remains valid for single-seat or human-in-the-loop work ([`player/README.md`](../player/README.md)).
+
+```powershell
+# Typical loop after ingest-rag
+.\play\draft-run.ps1 -Run smoke-test -Mode campaign
+
+# Prompt packs only (audit + RAG, no chat)
+.\play\draft-run.ps1 -Run smoke-test -Mode campaign -DryRun
+
+# Isolation audit without drafting
+dotnet run --project tools/player-agent/PlayerAgent.csproj -- `
+  audit-isolation --mode campaign --run smoke-test
+```
+
+`draft-run` audits shared and faction indexes first (no cross-seat report leakage), then drafts factions 2–11 sequentially against one Ollama host. Results append to `play/runs/<id>/gm/isolation-audit.md`. RunPod batches still require Phases 7–8 guardrails before production use.
+
 ## Turn encoding
 
 UTF-8 order drafts under faction folders are converted to Windows-1251 before `Game.exe` (GM script or future `turn.ps1`). See [ADR-0002](../architecture/adr/ADR-0002-windows-1251-io.md).

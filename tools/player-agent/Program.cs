@@ -17,6 +17,8 @@ static RootCommand BuildRootCommand()
     root.AddCommand(RegenerateAllowlistCommand.Create());
     root.AddCommand(RetrieveCommand.Create());
     root.AddCommand(DraftCommand.Create());
+    root.AddCommand(DraftRunCommand.Create());
+    root.AddCommand(AuditIsolationCommand.Create());
     root.AddCommand(UsageCommand.Create());
 
     return root;
