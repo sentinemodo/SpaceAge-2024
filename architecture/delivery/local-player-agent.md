@@ -43,11 +43,12 @@ Suggested config (local, not committed secrets): endpoint URL (`localhost:11434`
 ## Phase 0 — Decide runner stack and contracts
 
 - [x] **C# / net8** console in `tools/player-agent/` (`PlayerAgent.csproj`, member of `SpaceAge.sln`). OpenAI-compatible HTTP client to Ollama. No reference to `Game.dll`.
-- [x] Freeze I/O to match `/player`: read report (+ optional `story.md`) → draft `order.{faction}.txt` UTF-8; runner stays outside `Game/`.
+- [x] Freeze I/O to match `/player`: read report (+ optional `story.md`) → draft `orders.{faction}.{turn}.{iteration}.txt` UTF-8; runner stays outside `Game/`.
 - [x] **`--mode test|campaign`** required on `ingest-shared`, `ingest-faction`, and `draft` (separate shared indexes; `test` = SampleGame manuals, `campaign` = `player/campaign/*`).
-- [x] Draft output: **no default** — require `--output <path>` (dev/test) **or** `--run <id> --faction <n>` (campaign → `play/runs/<id>/factions/NN/order.{id}.txt`).
+- [x] Draft output: **no default** — require `--output <path>` (dev/test) **or** `--run <id> --faction <n>` (campaign → `play/runs/<id>/factions/NN/orders.{faction}.{turn}.{iteration}.txt`; turn = report turn + 1; iteration auto-increments).
+- [x] Turn processing uses the **latest iteration** per faction/turn (`RepoPaths.ResolveActiveOrderPath`); older files kept for tracking/training.
 - [x] Env vars: `OLLAMA_HOST`, `PLAYER_AGENT_CHAT_MODEL`, `PLAYER_AGENT_EMBED_MODEL`, `PLAYER_AGENT_INDEX_DIR`, `PLAYER_AGENT_ALLOW_RUNPOD`; plus RunPod/budget vars (Phase 7–8): `RUNPOD_API_KEY`, `PLAYER_AGENT_RUNPOD_POD_ID`, `PLAYER_AGENT_BUDGET_USD`, `PLAYER_AGENT_MAX_POD_HOURS`, `PLAYER_AGENT_REQUIRE_CONFIRM`.
-- [x] Local defaults: chat **`smollm2`** (plumbing), embed **`nomic-embed-text`**. RunPod chat default **`qwen2.5-coder:14b`** when host is non-local unless overridden.
+- [x] Local defaults: chat **`qwen2.5-coder:7b`** (minimum for order drafts; **`smollm2`** smoke-only), embed **`nomic-embed-text`**. RunPod chat default **`qwen2.5-coder:14b`** when host is non-local unless overridden.
 - [x] Vector index layout: **SQLite** under gitignored `tools/player-agent/.data/` (`shared-test`, `shared-campaign`, per-run faction DBs).
 - [x] CLI stubs: `config`, `smoke`, `ingest-shared`, `ingest-faction`, `draft`, `usage` — ingest/draft/usage bodies land in Phases 2–3 and 7.
 - [x] Document RunPod vs local switch in `tools/player-agent/README.md`.
@@ -107,7 +108,7 @@ Play mode selects **`test`** vs **campaign** tech manuals — do not mix both in
 |--------|----------------|-------|
 | Isolated `report.*.txt` (faction folder) | By unit / major section; cap size | Never other factions |
 | `story.md` / objective | Whole or short sections | From campaign-ai or human |
-| Prior `order.{id}.txt` for that seat | Per stack block | Style + continuity |
+| Prior `orders.{faction}.{turn}.{iteration}.txt` for that seat | Per stack block | Style + continuity |
 
 ### 2C. Always-on pack (not only vectors)
 
@@ -141,13 +142,13 @@ Before first production ingest, ensure manuals are the live truth:
 
 ## Phase 3 — Draft loop + lint
 
-- [ ] Retrieve top-k ~4–8 chunks (prefer verb filter when objective names MOVE/JUMP/…).
-- [ ] Call chat model; stream optional.
-- [ ] **Verb allowlist lint** against headings / known `EOrderType` list exported as data (static list generated from `rules.md` is enough for v1).
-- [ ] Write UTF-8 draft to `player/drafts/` or `play/runs/<id>/factions/NN/order.N.txt`.
-- [ ] Reminder in README: GM / `turn.ps1` converts to Windows-1251 for `/turn-dir`.
+- [x] Retrieve top-k ~4–8 chunks (prefer verb filter when objective names MOVE/JUMP/…).
+- [x] Call chat model; stream optional.
+- [x] **Verb allowlist lint** against headings / known `EOrderType` list exported as data (static list generated from `rules.md` is enough for v1).
+- [x] Write UTF-8 draft to `player/drafts/` or `play/runs/<id>/factions/NN/orders.{faction}.{turn}.{iteration}.txt`.
+- [x] Reminder in README: GM / `turn.ps1` converts to Windows-1251 for `/turn-dir`.
 
-**Done when:** One SampleGame or campaign faction report produces a lint-passing draft comparable in shape to existing `player/drafts/`.
+**Done when:** One SampleGame or campaign faction report produces a lint-passing draft comparable in shape to existing `player/drafts/`. **Code complete (2026-09-10)** — run `ingest-shared` + `ingest-faction`, then `draft` against a live Ollama host to produce a lint-passing file; unit tests cover allowlist, lint, prompt pack, and writer normalization.
 
 ---
 

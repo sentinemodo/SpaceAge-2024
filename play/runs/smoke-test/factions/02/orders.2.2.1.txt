@@ -1,0 +1,20 @@
+#faction 2 "pQ5RijCV3M"
+#modulestack 200001
+; activate headquarters
+active 200001
+#modulestack 200004
+; activate core drill
+active 200004
+#modulestack 200005
+; activate factory
+active 200005
+#modulestack 200006
+; activate farming complex
+active 200006
+#modulestack 200007
+; activate coal-burning plant
+active 200007
+#person 200010
+; see headquarters
+see 200001
+#end

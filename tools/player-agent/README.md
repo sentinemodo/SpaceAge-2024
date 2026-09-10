@@ -4,16 +4,18 @@ Scriptable order-drafting runner for PBEM play. Lives **outside** `Game.exe` per
 
 **Phase 0 status:** CLI contracts, Ollama client smoke test, config, and path layout.
 
-**Phase 2 status:** Shared and faction RAG ingest (`ingest-shared`, `ingest-faction`), SQLite vector store, chunking, `retrieve` dev helper, and always-on prompt pack builder. Draft loop and usage ledger arrive in Phases 3 and 7–8.
+**Phase 2 status:** Shared and faction RAG ingest (`ingest-shared`, `ingest-faction`), SQLite vector store, chunking, `retrieve` dev helper, and always-on prompt pack builder.
+
+**Phase 3 status:** `draft` retrieves top-k chunks, calls Ollama chat, runs verb allowlist lint from `player/rules.md`, and writes UTF-8 orders. RunPod usage ledger arrives in Phases 7–8.
 
 ## Requirements
 
 - [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
 - [Ollama](https://ollama.com/) on Windows (local) or on a RunPod RTX 4090 (remote)
 - Models:
-  - **Local (plumbing):** `ollama pull smollm2`
+  - **Local chat (default):** `ollama pull qwen2.5-coder:7b` — minimum quality for order drafting (`smollm2` is connectivity smoke only)
   - **Local / remote embed:** `ollama pull nomic-embed-text`
-  - **RunPod (quality tests):** `ollama pull qwen2.5-coder:14b`
+  - **RunPod (quality):** `ollama pull qwen2.5-coder:14b` (or `qwen3-coder:30b` when VRAM allows)
 
 ## Build and run
 
@@ -32,7 +34,7 @@ After build, the executable is `tools/player-agent/bin/Debug/net8.0/player-agent
 | Variable | Local default | Notes |
 |----------|---------------|--------|
 | `OLLAMA_HOST` | `http://127.0.0.1:11434` | Base URL; OpenAI API is `{host}/v1` |
-| `PLAYER_AGENT_CHAT_MODEL` | `smollm2` | Use `qwen2.5-coder:14b` on RunPod |
+| `PLAYER_AGENT_CHAT_MODEL` | `qwen2.5-coder:7b` | Override with `smollm2` for fast smoke only; RunPod default `qwen2.5-coder:14b` |
 | `PLAYER_AGENT_EMBED_MODEL` | `nomic-embed-text` | Same host as chat |
 | `PLAYER_AGENT_INDEX_DIR` | `tools/player-agent/.data/` | Gitignored SQLite indexes |
 | `PLAYER_AGENT_ALLOW_RUNPOD` | unset | Set `1` or pass `--allow-runpod` for remote hosts |
@@ -46,7 +48,7 @@ Point `OLLAMA_HOST` at localhost or the RunPod HTTPS proxy. No code fork.
 ```powershell
 # Local
 $env:OLLAMA_HOST = "http://127.0.0.1:11434"
-$env:PLAYER_AGENT_CHAT_MODEL = "smollm2"
+$env:PLAYER_AGENT_CHAT_MODEL = "qwen2.5-coder:7b"
 
 # RunPod (example — use your pod proxy URL)
 $env:OLLAMA_HOST = "https://<runpod-proxy>"
@@ -69,21 +71,25 @@ Shared indexes are stored separately: `.data/shared-test/`, `.data/shared-campai
 
 ## Draft output (no default)
 
-Always specify **one** of:
+Order files use **`orders.{faction}.{turn}.{iteration}.txt`** (matches SampleGame / `player/drafts/`). Example after turn 1 report for faction 2: **`orders.2.2.1.txt`** (faction 2, turn 2 orders, first iteration).
 
 | Use case | Arguments | Output path |
 |----------|-----------|-------------|
-| Dev / agent testing | `--output player/drafts/order.2.txt` | Explicit path |
-| Campaign run | `--run <id> --faction <n>` | `play/runs/<id>/factions/NN/order.{n}.txt` |
+| Dev / agent testing | `--output player/drafts/orders.2.2.1.txt` | Explicit path |
+| Campaign run | `--run <id> --faction <n>` | Auto: next `orders.{faction}.{turn}.{iteration}.txt` under `play/runs/<id>/factions/NN/` |
+
+Turn defaults to **report turn + 1** (from latest `report.{turn}.{faction}.txt`). Iteration defaults to the **next free** number for that faction/turn. Override with `--turn` / `--iteration`.
+
+**Turn processing:** when multiple iterations exist for the same faction and turn, **`RepoPaths.ResolveActiveOrderPath`** (highest iteration) is the file fed to `Game.exe`. Older iterations stay on disk for tracking, training, and development.
 
 Example:
 
 ```powershell
 dotnet run --project tools/player-agent/PlayerAgent.csproj -- draft `
-  --mode test --output player/drafts/order.2.txt --dry-run
+  --mode test --faction 2 --output player/drafts/orders.2.2.1.txt --dry-run
 
 dotnet run --project tools/player-agent/PlayerAgent.csproj -- draft `
-  --mode campaign --run demo --faction 2 --dry-run
+  --mode campaign --run smoke-test --faction 2
 ```
 
 UTF-8 drafts in faction folders; `play/turn.ps1` converts to Windows-1251 for `Game.exe`.
@@ -97,7 +103,7 @@ UTF-8 drafts in faction folders; `play/turn.ps1` converts to Windows-1251 for `G
 | `ingest-shared --mode …` | 2 | Embed shared manuals into SQLite |
 | `ingest-faction --mode … --run … --faction …` | 2 | Embed isolated faction report / story / orders |
 | `retrieve --mode … --index shared\|faction --query …` | 2 | Dev helper: top-k vector search (optional `--verb MOVE`) |
-| `draft --mode …` | 3 | Generate order draft |
+| `draft --mode … --faction …` | 3 | Generate order draft (lint + UTF-8 write) |
 | `usage …` | 7 | RunPod ledger and reports |
 
 `--dry-run` on ingest chunks sources without calling embed; on draft builds the prompt pack without chat. `--clear` wipes the target SQLite index before ingest (or alone with `--dry-run`).
@@ -123,6 +129,33 @@ dotnet run --project tools/player-agent/PlayerAgent.csproj -- `
   retrieve --mode test --index shared --query "move stack to orbit" --verb MOVE --top 4
 ```
 
+### Draft loop (Phase 3)
+
+Prerequisites: Ollama running, indexes populated (`ingest-shared` + `ingest-faction` for the seat).
+
+```powershell
+# Prompt pack only (no chat); uses latest report under play/runs/<id>/factions/NN/
+dotnet run --project tools/player-agent/PlayerAgent.csproj -- draft `
+  --mode campaign --run smoke-test --faction 2 `
+  --dry-run
+
+# Full draft: retrieve → chat → lint → write UTF-8 (e.g. orders.2.2.1.txt)
+dotnet run --project tools/player-agent/PlayerAgent.csproj -- draft `
+  --mode campaign --run smoke-test --faction 2
+
+# Second iteration for the same turn → orders.2.2.2.txt
+dotnet run --project tools/player-agent/PlayerAgent.csproj -- draft `
+  --mode campaign --run smoke-test --faction 2
+
+# Override report path (dev)
+dotnet run --project tools/player-agent/PlayerAgent.csproj -- draft `
+  --mode test --faction 2 --report path/to/report.txt --output player/drafts/orders.2.2.1.txt
+```
+
+Lint reads live verb headings from `player/rules.md` (immediate + long orders). Drafts that use unknown verbs fail closed and are not written. Password is read from the report template or `persona.md` and injected locally; remote hosts strip `#faction … "password"` from the chat prompt.
+
+UTF-8 drafts in faction folders or `player/drafts/`; **`play/turn.ps1` converts to Windows-1251** before `Game.exe`.
+
 Unit tests: `dotnet test tools/player-agent-tests/PlayerAgent.Tests.csproj`.
 
 ## Index layout (gitignored)
@@ -139,6 +172,6 @@ tools/player-agent/.data/
 
 Read: isolated text report, optional `story.md`, shared + faction RAG chunks, always-on prompt pack from `player/rules.md`.
 
-Write: UTF-8 `order.{faction}.txt` with `#faction`, `#modulestack` / `#person`, `#end`. Post-generation verb allowlist lint (Phase 3).
+Write: UTF-8 `orders.{faction}.{turn}.{iteration}.txt` with `#faction`, `#modulestack` / `#person`, `#end`. Post-generation verb allowlist lint (Phase 3). Turn processing uses the **latest iteration** for that turn.
 
 Never index: `gamein.xml`, `gameout*.xml`, other factions’ reports, raw full `data.xml`.

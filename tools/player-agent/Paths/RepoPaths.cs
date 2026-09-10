@@ -51,7 +51,14 @@ public static class RepoPaths
         return paths;
     }
 
-    public static string ResolveDraftOutput(string repoRoot, string? outputPath, string? runId, int? factionId)
+    public static string ResolveDraftOutput(
+        string repoRoot,
+        string? outputPath,
+        string? runId,
+        int? factionId,
+        int? turn = null,
+        int? iteration = null,
+        string? latestReportPath = null)
     {
         if (!string.IsNullOrWhiteSpace(outputPath))
         {
@@ -70,15 +77,21 @@ public static class RepoPaths
             throw new InvalidOperationException("Faction id must be between 2 and 11 for campaign runs.");
         }
 
+        var factionDir = FactionFolder(repoRoot, runId, factionId.Value);
+        var draftTurn = turn ?? OrderFileNaming.InferDraftTurn(latestReportPath, factionId.Value);
+        var draftIteration = iteration
+            ?? OrderFileNaming.ResolveNextIteration(factionDir, factionId.Value, draftTurn);
+
         return Path.Combine(
-            repoRoot,
-            "play",
-            "runs",
-            runId,
-            "factions",
-            $"{factionId.Value:D2}",
-            $"order.{factionId.Value}.txt");
+            factionDir,
+            OrderFileNaming.FormatFileName(factionId.Value, draftTurn, draftIteration));
     }
+
+    public static string? ResolveActiveOrderPath(string repoRoot, string runId, int factionId, int turn) =>
+        OrderFileNaming.ResolveActiveOrderPath(
+            FactionFolder(repoRoot, runId, factionId),
+            factionId,
+            turn);
 
     public static string FactionFolder(string repoRoot, string runId, int factionId) =>
         Path.Combine(repoRoot, "play", "runs", runId, "factions", $"{factionId:D2}");

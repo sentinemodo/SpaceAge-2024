@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<game turn="1">
+	<faction name="10" name-en="Silicate" password="4X5iVsYkbD" email="player10@local" default-attitude="2" text-report="True" text-report-line-length="100" xml-report="True" balance="10000" credit-line="10000" credit-rate="0.2" deposit-rate="0.05" />
+	<contracts>
+		<contract name="CT0001" location="R00040" issuer="1" trigger="give-module" title="Slagport calorie charter" flavour="Slagport's granary spectra show a thin 1.6 um water-ice band and a weak chlorophyll shoulder. Deliver one farming complex so the metal town can close its own calorie loop." reward-type="technology" reward="ctypln" quantity="1" module="farms" receiver="100030" baseline="6" />
+		<contract name="CT0002" location="R00068" issuer="1" trigger="give-module" title="Isotope wind survey" flavour="Isotope sits on a uraninite spine with a measured 8 m/s mean surface wind. Two more wind plants keep the assay mill online without burning the local fissile stockpile." reward-type="technology" reward="servic" quantity="2" module="wnplnt" receiver="100050" baseline="4" />
+		<contract name="CT0003" location="R00003" issuer="1" trigger="give-module" title="Tidewatch core sample" flavour="Tidewatch Coast oil seeps sit above a granite basement. A core drill lets UN assay the sediment column without importing Anvil crust kits." reward-type="technology" reward="airgen" quantity="1" module="cdrill" receiver="100010" baseline="0" />
+		<contract name="CT0004" location="R00006" issuer="1" trigger="research" title="Helios belt hull charter" flavour="Radar returns from the metal landing rock match a high-albedo, crewless hull geometry. Research the hulk in situ; delta-v from Arbor is a belt-class chemical hop." reward-type="technology" reward="ahlcns" target="W00001" points="24" progress="0" />
+		<contract name="CT0005" location="R00039" issuer="1" trigger="research" title="Fomal carbonaceous fabricator" flavour="A cold, unmanned fabrication plant is wedged in a kerogen-rich carbonaceous cell. Research it on site; the organics are feedstock, not a skip of the Arbor/Anvil split." reward-type="technology" reward="advres" target="W00002" points="24" progress="0" />
+	</contracts>
+	<galaxy>
+		<system name="SS0001" name-en="Helios" X="0" Y="0" Z="0">
+			<star name="S00001" name-en="Helios" />
+			<planet name="P00001" name-en="Arbor" AU="1" surface-size-X="6" surface-size-Y="6" type="ocean" gravity="normal" temperature="habitable" atmosphere="terair">
+				<race type="terran" />
+				<moon name="M00001" name-en="Selene" AU="0.003" surface-size-X="5" surface-size-Y="3" type="rock" gravity="low" temperature="cold" atmosphere="none">
+					<orbit name="O00002" />
+				</moon>
+				<orbit name="O00001" />
+			</planet>
+			<planet name="P00002" name-en="Scoria" AU="1.5" surface-size-X="6" surface-size-Y="4" type="dust" gravity="low" temperature="hot" atmosphere="thin">
+				<orbit name="O00003" />
+			</planet>
+			<planet name="P00004" name-en="Aeolus" AU="5.2" surface-size-X="0" surface-size-Y="0" type="gasgnt" gravity="high" temperature="cold" atmosphere="hostile">
+				<moon name="M00002" name-en="Rime" AU="0.003" surface-size-X="5" surface-size-Y="2" type="ice" gravity="low" temperature="cold" atmosphere="none">
+					<orbit name="O00005" />
+				</moon>
+				<moon name="M00003" name-en="Glaze" AU="0.005" surface-size-X="5" surface-size-Y="2" type="ice" gravity="low" temperature="cold" atmosphere="none">
+					<orbit name="O00006" />
+				</moon>
+				<moon name="M00004" name-en="Shard" AU="0.007" surface-size-X="5" surface-size-Y="2" type="rock" gravity="low" temperature="cold" atmosphere="none">
+					<orbit name="O00007" />
+				</moon>
+				<moon name="M00005" name-en="Cindercone" AU="0.009" surface-size-X="5" surface-size-Y="2" type="vulcan" gravity="low" temperature="hot" atmosphere="none">
+					<orbit name="O00008" />
+				</moon>
+				<belt name="P00091" name-en="Aeolus Ring" AU="0.002">
+					<composition>
+						<resource type="water" quantity="40" probability="0.5" />
+						<resource type="silici" quantity="20" probability="0.4" />
+						<resource type="iron" quantity="10" probability="0.3" />
+					</composition>
+				</belt>
+				<orbit name="O00004" />
+			</planet>
+			<alderson name="P00009" name-en="Helios Gate" AU="80" temperature="cold" atmosphere="none" pair="P00010">
+				<orbit name="O00110" />
+			</alderson>
+			<belt name="P00003" name-en="Helios Belt" AU="2.7">
+				<composition>
+					<resource type="uraniu" quantity="80" probability="0.5" />
+					<resource type="nickfe" quantity="20" probability="0.5" />
+					<resource type="iron" quantity="15" probability="0.6" />
+					<resource type="carbon" quantity="30" probability="0.4" />
+					<resource type="gold" quantity="5" probability="0.1" />
+					<resource type="oil" quantity="8" probability="0.2" />
+				</composition>
+				<exit region="R00006">
+					<exitmode mode="space" duration="13" />
+				</exit>
+			</belt>
+		</system>
+		<system name="SS0002" name-en="Fomal" X="1" Y="0" Z="0">
+			<star name="S00002" name-en="Fomal" />
+			<planet name="P00005" name-en="Anvil" AU="1.4" surface-size-X="7" surface-size-Y="5" type="ocean" gravity="normal" temperature="habitable" atmosphere="terair">
+				<race type="terran" />
+				<moon name="M00006" name-en="Anvil Rock" AU="0.002" surface-size-X="5" surface-size-Y="3" type="rock" gravity="low" temperature="cold" atmosphere="none">
+					<orbit name="O00113" />
+				</moon>
+				<moon name="M00007" name-en="Anvil Ice" AU="0.004" surface-size-X="5" surface-size-Y="2" type="ice" gravity="low" temperature="cold" atmosphere="none">
+					<orbit name="O00114" />
+				</moon>
+				<orbit name="O00112" />
+				<region name="R00059" name-en="Silicate Grant" X="1" Y="3" type="grassl">
+					<capacity group="settlement" quantity="8" />
+					<exit region="R00058">
+						<exitmode mode="naval" duration="3" />
+					</exit>
+					<exit region="R00060">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R00052">
+						<exitmode mode="ground" duration="3" />
+					</exit>
+					<exit region="R00066">
+						<exitmode mode="naval" duration="3" />
+					</exit>
+					<resource type="food" quantity="140" />
+					<resource type="water" quantity="80" />
+					<resource type="silici" quantity="40" />
+					<resource type="titani" quantity="20" />
+					<resource type="iron" quantity="15" />
+					<modulestack name="280001" name-en="Silicate Headquarters" type="corphq" quantity="1" faction="10">
+						<person name="280010" name-en="Silicate CEO" race="terran" faction="10">
+							<upkeep type="cash" quantity="10" />
+						</person>
+						<itemstack type="terran" quantity="30" />
+						<upkeep type="cash" quantity="378" />
+						<modulestack name="280003" type="cargob" quantity="2" faction="10">
+							<itemstack type="food" quantity="80" />
+							<itemstack type="terair" quantity="200" />
+							<itemstack type="h2o2" quantity="80" />
+							<itemstack type="iron" quantity="15" />
+							<itemstack type="titani" quantity="40" />
+							<itemstack type="silici" quantity="40" />
+							<itemstack type="copper" quantity="30" />
+							<itemstack type="uraniu" quantity="20" />
+							<upkeep type="cash" quantity="20" />
+						</modulestack>
+						<modulestack name="280004" type="cdrill" quantity="1" faction="10">
+							<upkeep type="cash" quantity="50" />
+						</modulestack>
+						<modulestack name="280005" type="factry" quantity="2" faction="10">
+							<upkeep type="cash" quantity="110" />
+						</modulestack>
+						<modulestack name="280006" type="farms" quantity="2" faction="10">
+							<upkeep type="cash" quantity="60" />
+						</modulestack>
+						<modulestack name="280007" type="wnplnt" quantity="8" faction="10">
+							<upkeep type="cash" quantity="8" />
+						</modulestack>
+					</modulestack>
+				</region>
+			</planet>
+			<planet name="P00006" name-en="Pyre" AU="0.6" surface-size-X="5" surface-size-Y="4" type="dust" gravity="low" temperature="hot" atmosphere="thin">
+				<orbit name="O00115" />
+			</planet>
+			<planet name="P00008" name-en="Fomal Giant" AU="6" surface-size-X="0" surface-size-Y="0" type="gasgnt" gravity="high" temperature="cold" atmosphere="hostile">
+				<moon name="M00008" name-en="Drift" AU="0.005" surface-size-X="5" surface-size-Y="2" type="ice" gravity="low" temperature="cold" atmosphere="none">
+					<orbit name="O00117" />
+				</moon>
+				<moon name="M00009" name-en="Rimeband" AU="0.005" surface-size-X="5" surface-size-Y="2" type="ice" gravity="low" temperature="cold" atmosphere="none">
+					<orbit name="O00118" />
+				</moon>
+				<belt name="P00092" name-en="Fomal Ring" AU="0.002">
+					<composition>
+						<resource type="water" quantity="30" probability="0.5" />
+						<resource type="silici" quantity="15" probability="0.3" />
+					</composition>
+				</belt>
+				<orbit name="O00116" />
+			</planet>
+			<alderson name="P00010" name-en="Fomal Gate" AU="80" temperature="cold" atmosphere="none" pair="P00009">
+				<orbit name="O00111" />
+			</alderson>
+			<belt name="P00007" name-en="Fomal Belt" AU="2.5">
+				<composition>
+					<resource type="carbon" quantity="40" probability="0.6" />
+					<resource type="oil" quantity="15" probability="0.4" />
+				</composition>
+				<exit region="R00039">
+					<exitmode mode="space" duration="13" />
+				</exit>
+			</belt>
+		</system>
+		<system name="SS0003" name-en="Ember" X="4" Y="0" Z="0">
+			<star name="S00003" name-en="Ember" />
+			<planet name="P00011" name-en="Ember Dust" AU="0.7" surface-size-X="5" surface-size-Y="3" type="dust" gravity="low" temperature="hot" atmosphere="thin">
+				<orbit name="O00119" />
+			</planet>
+			<planet name="P00013" name-en="Ember Giant" AU="4.1" surface-size-X="0" surface-size-Y="0" type="gasgnt" gravity="high" temperature="cold" atmosphere="hostile">
+				<moon name="M00010" name-en="Ember Ice 0" AU="0.004" surface-size-X="4" surface-size-Y="2" type="ice" gravity="low" temperature="cold" atmosphere="none">
+					<orbit name="O00121" />
+				</moon>
+				<moon name="M00011" name-en="Ember Ice 1" AU="0.006" surface-size-X="4" surface-size-Y="2" type="ice" gravity="low" temperature="cold" atmosphere="none">
+					<orbit name="O00122" />
+				</moon>
+				<moon name="M00012" name-en="Ember Ice 2" AU="0.008" surface-size-X="4" surface-size-Y="2" type="ice" gravity="low" temperature="cold" atmosphere="none">
+					<orbit name="O00123" />
+				</moon>
+				<orbit name="O00120" />
+			</planet>
+			<belt name="P00012" name-en="Ember Belt" AU="2.2">
+				<composition>
+					<resource type="iron" quantity="15" probability="0.5" />
+					<resource type="silici" quantity="12" probability="0.5" />
+					<resource type="heliu3" quantity="16" probability="0.2" />
+				</composition>
+			</belt>
+		</system>
+		<system name="SS0004" name-en="Gleam" X="5" Y="0" Z="0">
+			<star name="S00004" name-en="Gleam" />
+			<planet name="P00014" name-en="Gleam Inner" AU="0.12" surface-size-X="4" surface-size-Y="3" type="dust" gravity="low" temperature="hot" atmosphere="none">
+				<orbit name="O00124" />
+			</planet>
+			<planet name="P00016" name-en="Gleam Ice" AU="0.8" surface-size-X="4" surface-size-Y="3" type="dust" gravity="low" temperature="cold" atmosphere="none">
+				<orbit name="O00125" />
+			</planet>
+			<belt name="P00015" name-en="Gleam Belt" AU="0.4">
+				<composition>
+					<resource type="nickfe" quantity="25" probability="0.6" />
+					<resource type="uraniu" quantity="12" probability="0.4" />
+					<resource type="copper" quantity="10" probability="0.4" />
+					<resource type="gold" quantity="8" probability="0.1" />
+				</composition>
+			</belt>
+		</system>
+		<system name="SS0005" name-en="Cinder" X="6" Y="0" Z="0">
+			<star name="S00005" name-en="Cinder" />
+			<planet name="P00017" name-en="Cinder Dust" AU="1.2" surface-size-X="5" surface-size-Y="3" type="dust" gravity="low" temperature="hot" atmosphere="thin">
+				<orbit name="O00126" />
+			</planet>
+			<planet name="P00019" name-en="Cinder Giant" AU="8" surface-size-X="0" surface-size-Y="0" type="gasgnt" gravity="high" temperature="cold" atmosphere="hostile">
+				<moon name="M00013" name-en="Cinder Vulcan" AU="0.003" surface-size-X="4" surface-size-Y="2" type="vulcan" gravity="low" temperature="hot" atmosphere="none">
+					<orbit name="O00128" />
+				</moon>
+				<moon name="M00014" name-en="Cinder Rock" AU="0.005" surface-size-X="4" surface-size-Y="2" type="rock" gravity="low" temperature="cold" atmosphere="none">
+					<orbit name="O00129" />
+				</moon>
+				<moon name="M00015" name-en="Cinder Ice" AU="0.007" surface-size-X="4" surface-size-Y="2" type="ice" gravity="low" temperature="cold" atmosphere="none">
+					<orbit name="O00130" />
+				</moon>
+				<belt name="P00020" name-en="Cinder Ring" AU="0.002">
+					<composition>
+						<resource type="carbon" quantity="20" probability="0.4" />
+						<resource type="silici" quantity="15" probability="0.4" />
+						<resource type="iron" quantity="8" probability="0.3" />
+					</composition>
+				</belt>
+				<orbit name="O00127" />
+			</planet>
+			<belt name="P00018" name-en="Cinder Belt" AU="2.8">
+				<composition>
+					<resource type="carbon" quantity="22" probability="0.6" />
+					<resource type="uraniu" quantity="8" probability="0.4" />
+				</composition>
+			</belt>
+		</system>
+		<system name="SS0006" name-en="Ash" X="7" Y="0" Z="0">
+			<star name="S00006" name-en="Ash" />
+			<planet name="P00022" name-en="Ash Inner Giant" AU="6" surface-size-X="0" surface-size-Y="0" type="gasgnt" gravity="high" temperature="cold" atmosphere="hostile">
+				<moon name="M00016" name-en="Ash Moon 0" AU="0.003" surface-size-X="4" surface-size-Y="2" type="ice" gravity="low" temperature="cold" atmosphere="none">
+					<orbit name="O00132" />
+				</moon>
+				<moon name="M00017" name-en="Ash Moon 1" AU="0.005" surface-size-X="4" surface-size-Y="2" type="ice" gravity="low" temperature="cold" atmosphere="none">
+					<orbit name="O00133" />
+				</moon>
+				<moon name="M00018" name-en="Ash Moon 2" AU="0.007" surface-size-X="4" surface-size-Y="2" type="rock" gravity="low" temperature="cold" atmosphere="none">
+					<orbit name="O00134" />
+				</moon>
+				<moon name="M00019" name-en="Ash Moon 3" AU="0.009" surface-size-X="4" surface-size-Y="2" type="vulcan" gravity="low" temperature="hot" atmosphere="none">
+					<orbit name="O00135" />
+				</moon>
+				<belt name="P00023" name-en="Ash Ring" AU="0.002">
+					<composition>
+						<resource type="water" quantity="25" probability="0.4" />
+						<resource type="heliu3" quantity="12" probability="0.3" />
+					</composition>
+				</belt>
+				<orbit name="O00131" />
+			</planet>
+			<planet name="P00024" name-en="Ash Outer Giant" AU="18" surface-size-X="0" surface-size-Y="0" type="gasgnt" gravity="high" temperature="cold" atmosphere="hostile">
+				<orbit name="O00136" />
+			</planet>
+			<belt name="P00021" name-en="Ash Belt" AU="3">
+				<composition>
+					<resource type="carbon" quantity="18" probability="0.5" />
+					<resource type="heliu3" quantity="10" probability="0.3" />
+				</composition>
+			</belt>
+		</system>
+		<system name="SS0007" name-en="Shards" X="8" Y="0" Z="0">
+			<star name="S00007" name-en="Shards" />
+			<planet name="P00027" name-en="Shards Dust" AU="0.9" surface-size-X="5" surface-size-Y="3" type="dust" gravity="low" temperature="cold" atmosphere="thin">
+				<orbit name="O00137" />
+			</planet>
+			<belt name="P00025" name-en="Shards Inner Belt" AU="2">
+				<composition>
+					<resource type="carbon" quantity="40" probability="0.6" />
+					<resource type="oil" quantity="8" probability="0.3" />
+				</composition>
+			</belt>
+			<belt name="P00026" name-en="Shards Outer Belt" AU="3.1">
+				<composition>
+					<resource type="carbon" quantity="18" probability="0.5" />
+					<resource type="water" quantity="8" probability="0.3" />
+				</composition>
+			</belt>
+		</system>
+		<system name="SS0008" name-en="Deep" X="9" Y="0" Z="0">
+			<star name="S00008" name-en="Deep" />
+			<planet name="P00028" name-en="Deep Dust" AU="0.5" surface-size-X="4" surface-size-Y="3" type="dust" gravity="low" temperature="hot" atmosphere="thin">
+				<orbit name="O00138" />
+			</planet>
+			<planet name="P00029" name-en="Deep Inner Giant" AU="4.5" surface-size-X="0" surface-size-Y="0" type="gasgnt" gravity="high" temperature="cold" atmosphere="hostile">
+				<moon name="M00020" name-en="Haven" AU="0.004" surface-size-X="4" surface-size-Y="3" type="ice" gravity="low" temperature="habitable" atmosphere="thin">
+					<orbit name="O00140" />
+				</moon>
+				<moon name="M00021" name-en="Deep Ice A" AU="0.006" surface-size-X="4" surface-size-Y="2" type="ice" gravity="low" temperature="cold" atmosphere="none">
+					<orbit name="O00141" />
+				</moon>
+				<moon name="M00022" name-en="Deep Rock" AU="0.008" surface-size-X="4" surface-size-Y="2" type="rock" gravity="low" temperature="cold" atmosphere="none">
+					<orbit name="O00142" />
+				</moon>
+				<moon name="M00023" name-en="Deep Ice B" AU="0.01" surface-size-X="4" surface-size-Y="2" type="ice" gravity="low" temperature="cold" atmosphere="none">
+					<orbit name="O00143" />
+				</moon>
+				<orbit name="O00139" />
+			</planet>
+			<planet name="P00030" name-en="Deep Outer Giant" AU="9.2" surface-size-X="0" surface-size-Y="0" type="gasgnt" gravity="high" temperature="cold" atmosphere="hostile">
+				<moon name="M00024" name-en="Deep Outer 0" AU="0.004" surface-size-X="4" surface-size-Y="2" type="rock" gravity="low" temperature="cold" atmosphere="none">
+					<orbit name="O00145" />
+				</moon>
+				<moon name="M00025" name-en="Deep Outer 1" AU="0.007" surface-size-X="4" surface-size-Y="2" type="ice" gravity="low" temperature="cold" atmosphere="none">
+					<orbit name="O00146" />
+				</moon>
+				<moon name="M00026" name-en="Deep Outer 2" AU="0.01" surface-size-X="4" surface-size-Y="2" type="ice" gravity="low" temperature="cold" atmosphere="none">
+					<orbit name="O00147" />
+				</moon>
+				<orbit name="O00144" />
+			</planet>
+		</system>
+		<system name="SS0009" name-en="Graph" X="10" Y="0" Z="0">
+			<star name="S00009" name-en="Graph" />
+			<planet name="P00031" name-en="Graph" AU="0.95" surface-size-X="5" surface-size-Y="3" type="ocean" gravity="normal" temperature="habitable" atmosphere="terair">
+				<orbit name="O00148" />
+			</planet>
+			<planet name="P00032" name-en="Graph Dust" AU="1.6" surface-size-X="4" surface-size-Y="3" type="dust" gravity="low" temperature="cold" atmosphere="none">
+				<moon name="M00027" name-en="Graph Rock" AU="0.002" surface-size-X="4" surface-size-Y="2" type="rock" gravity="low" temperature="cold" atmosphere="none">
+					<orbit name="O00150" />
+				</moon>
+				<orbit name="O00149" />
+			</planet>
+			<belt name="P00033" name-en="Graph Belt" AU="2.5">
+				<composition>
+					<resource type="carbon" quantity="20" probability="0.5" />
+					<resource type="iron" quantity="10" probability="0.4" />
+					<resource type="silici" quantity="10" probability="0.4" />
+				</composition>
+			</belt>
+		</system>
+		<system name="SS0010" name-en="Spare" X="11" Y="0" Z="0">
+			<star name="S00010" name-en="Spare" />
+			<planet name="P00034" name-en="Spare Dust" AU="1.1" surface-size-X="5" surface-size-Y="3" type="dust" gravity="low" temperature="cold" atmosphere="none">
+				<moon name="M00028" name-en="Spare Ice" AU="0.003" surface-size-X="4" surface-size-Y="2" type="ice" gravity="low" temperature="cold" atmosphere="none">
+					<orbit name="O00152" />
+				</moon>
+				<orbit name="O00151" />
+			</planet>
+			<belt name="P00035" name-en="Spare Belt" AU="2.4">
+				<composition>
+					<resource type="titani" quantity="14" probability="0.5" />
+					<resource type="copper" quantity="12" probability="0.4" />
+					<resource type="iron" quantity="10" probability="0.4" />
+				</composition>
+			</belt>
+		</system>
+	</galaxy>
+	<orders />
+</game>

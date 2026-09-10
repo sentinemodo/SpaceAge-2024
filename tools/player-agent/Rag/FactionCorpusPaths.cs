@@ -29,7 +29,9 @@ public static class FactionCorpusPaths
         }
 
         return Directory
-            .GetFiles(factionDir, "order*.txt")
+            .GetFiles(factionDir, "orders.*.txt")
+            .Concat(Directory.GetFiles(factionDir, "order.*.txt"))
+            .Distinct(StringComparer.OrdinalIgnoreCase)
             .OrderBy(path => path, StringComparer.OrdinalIgnoreCase)
             .ToList();
     }

@@ -32,6 +32,21 @@ internal static class CommandHelpers
         Description = "Explicit UTF-8 draft output path (dev/test).",
     };
 
+    public static Option<string> ReportOption { get; } = new("--report")
+    {
+        Description = "Override report path (defaults to latest report in --run faction folder).",
+    };
+
+    public static Option<int?> TurnOption { get; } = new("--turn")
+    {
+        Description = "Turn number for orders.{faction}.{turn}.{iteration}.txt (default: report turn + 1).",
+    };
+
+    public static Option<int?> IterationOption { get; } = new("--iteration")
+    {
+        Description = "Draft iteration for the turn (default: next free orders.{faction}.{turn}.N.txt).",
+    };
+
     public static Option<bool> DryRunOption { get; } = new("--dry-run")
     {
         Description = "Build prompt/RAG inputs without calling chat or starting remote pods.",

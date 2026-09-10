@@ -38,16 +38,28 @@ public sealed class OllamaClient : IDisposable
         }
     }
 
-    public async Task<string> ChatAsync(string userPrompt, CancellationToken cancellationToken = default)
+    public Task<string> ChatAsync(string userPrompt, CancellationToken cancellationToken = default) =>
+        ChatAsync(userPrompt, systemPrompt: null, cancellationToken);
+
+    public async Task<string> ChatAsync(
+        string userPrompt,
+        string? systemPrompt,
+        CancellationToken cancellationToken = default)
     {
+        var messages = new List<ChatMessage>();
+        if (!string.IsNullOrWhiteSpace(systemPrompt))
+        {
+            messages.Add(new ChatMessage { Role = "system", Content = systemPrompt });
+        }
+
+        messages.Add(new ChatMessage { Role = "user", Content = userPrompt });
+
         var payload = new ChatCompletionRequest
         {
             Model = _settings.ChatModel,
-            Messages =
-            [
-                new ChatMessage { Role = "user", Content = userPrompt },
-            ],
+            Messages = messages,
             Stream = false,
+            Temperature = 0.2,
         };
 
         using var response = await _httpClient.PostAsJsonAsync(
@@ -104,6 +116,9 @@ public sealed class OllamaClient : IDisposable
 
         [JsonPropertyName("stream")]
         public bool Stream { get; set; }
+
+        [JsonPropertyName("temperature")]
+        public double Temperature { get; set; }
     }
 
     private sealed class ChatMessage
