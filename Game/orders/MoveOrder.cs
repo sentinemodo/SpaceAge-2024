@@ -83,6 +83,14 @@ namespace SpaceAge
 			{
 				return Moon.All[token].Orbit;
 			}
+			else if (Belt.All.ContainsKey(token))
+			{
+				return Belt.All[token];
+			}
+			else if (Alderson.All.ContainsKey(token))
+			{
+				return Alderson.All[token].Orbit;
+			}
 			else if (Anomaly.All.ContainsKey(token))
 			{
 				return Anomaly.All[token].Orbit;
@@ -189,6 +197,14 @@ namespace SpaceAge
                     };
                     moveModes.Add(EMoveMode.ground, ground);
                 }
+                if (this.Mover.MoveModes.ContainsKey(EMoveMode.naval))
+                {
+                    List<IMoveable> naval = new List<IMoveable>
+                    {
+                        this.Mover
+                    };
+                    moveModes.Add(EMoveMode.naval, naval);
+                }
 
                 List<IMoveable> space = this.spaceMoveableRecursive(this.Mover);
                 if (space.Count > 0)
@@ -236,100 +252,170 @@ namespace SpaceAge
             {
                 return true;
             }
-            else
+
+            Location current = (Location)this.Mover.Location;
+            if (!current.Exits.Contains(this.destination))
             {
-                Location current = (Location)this.Mover.Location;
-
-                if (current.Exits.Contains(this.destination))
-                {
-                    return true;
-                }
+                return false;
             }
+            EMoveMode unused;
+            return this.tryCompatibleSurfaceMode(current.Exits[this.destination], out unused);
+		}
 
+		private bool tryCompatibleSurfaceMode(Exit exit, out EMoveMode mode)
+		{
+			bool canNaval = this.moveModesRecursive.ContainsKey(EMoveMode.naval)
+				&& exit.ExitModes.ContainsKey(EMoveMode.naval);
+			bool canGround = this.moveModesRecursive.ContainsKey(EMoveMode.ground)
+				&& exit.ExitModes.ContainsKey(EMoveMode.ground);
+			if (canNaval && !canGround)
+			{
+				mode = EMoveMode.naval;
+				return true;
+			}
+			if (canGround)
+			{
+				mode = EMoveMode.ground;
+				return true;
+			}
+			if (canNaval)
+			{
+				mode = EMoveMode.naval;
+				return true;
+			}
+			mode = EMoveMode.ground;
 			return false;
 		}
 
 		private int movementDuration()
 		{
-            if (this.Mover.Location is Region && this.destination is Region)
-            {
-                Region region1 = (Region)this.Mover.Location;
-                Region region2 = (Region)this.destination;
+			Location current = (Location)this.Mover.Location;
 
-                if (region1.RegionHolder == region2.RegionHolder)
-                {
-                    // same planet, region->region, ground movement
-                    this.moveMode = EMoveMode.ground;
-                    ExitMode exitMode = region1.Exits[this.destination].ExitModes[EMoveMode.ground];
-                    
-                    // that's pretty rough :/
-                    //double speed = this.moveModesRecursive[EMoveMode.ground][0].MoveModes[EMoveMode.ground].Speed;
-                    return Convert.ToInt32(Math.Ceiling(exitMode.Duration / this.Mover.Speed));
-                }
-                else
-                {
-                    throw new NotImplementedException();
-                }
-            }
-            else if ((this.Mover.Location is Region && this.destination is Orbit) || (this.Mover.Location is Orbit && this.destination is Region)) 
-            { // region -> orbit or orbit -> region, space movement
-                if (this.Mover.Location.LocationParent == this.destination.LocationParent)
-                {// same planet
-                    this.moveMode = EMoveMode.space;
-                    return 1;
-                }
-                else
-                {// not the same planet
-                    throw new NotImplementedException();
-                }
-            } 
-            else if (this.Mover.Location is Orbit && this.destination is Orbit)
-            {
-                this.moveMode = EMoveMode.space;
-                Orbit orbit1 = (Orbit)this.Mover.Location;
-                Orbit orbit2 = (Orbit)this.destination;
-                //double distance = orbit1.OrbitHolder.DistanceTo(orbit2);
-                
-                double N = 0;
-                double M = 0;
-                double distance = 0;
-                double speed = 0;
-                if (orbit1.OrbitHolder is Planet && orbit2.OrbitHolder is Moon)
-                {// planet -> moon
-                    if (((Moon)orbit2.OrbitHolder).Planet == (Planet)orbit1.OrbitHolder)
-                    {// same planet
-                        N = 0;
-                        M = ((Moon)orbit2.OrbitHolder).AU;
-                        distance = (M - N) * 50 + (M + N) * 5;
-                        speed = (this.Mover.MassCapacity + this.Mover.ModuleStacks.MassCapacity) / this.Mover.Mass;
-                    }
-                    else
-                    {// not the same planet
-                        throw new NotImplementedException();
-                    }
-                }
-                else if (orbit1.OrbitHolder is Moon && orbit2.OrbitHolder is Planet)
-                {
-                    // moon -> planet
-                    if (((Moon)orbit1.OrbitHolder).Planet == (Planet)orbit2.OrbitHolder)
-                    {// same planet
-                        N = 0;
-                        M = ((Moon)orbit1.OrbitHolder).AU;
-                        distance = (M - N) * 50 + (M + N) * 5;
-                        speed = (this.Mover.MassCapacity + this.Mover.ModuleStacks.MassCapacity) / this.Mover.Mass;
-                    }
-                    else
-                    {// not the same planet
-                        throw new NotImplementedException();
-                    }
-                }
-                int duration = Convert.ToInt32(Math.Ceiling(distance / speed));
+			if (this.Mover.Location is Region && this.destination is Region)
+			{
+				Region region1 = (Region)this.Mover.Location;
+				Region region2 = (Region)this.destination;
 
-                return duration;
-            
-            } else {
-                throw new NotImplementedException("nothing matches");
-            }
+				if (region1.RegionHolder == region2.RegionHolder)
+				{
+					Exit exit = region1.Exits[this.destination];
+					EMoveMode surfaceMode;
+					if (!this.tryCompatibleSurfaceMode(exit, out surfaceMode))
+					{
+						throw new InvalidOperationException("no compatible surface move mode");
+					}
+					this.moveMode = surfaceMode;
+					ExitMode exitMode = exit.ExitModes[surfaceMode];
+					double speed = this.Mover.MoveModes[surfaceMode].Speed;
+					return Convert.ToInt32(Math.Ceiling(exitMode.Duration / speed));
+				}
+				if (this.hasSpaceExit(current))
+				{
+					return this.spaceExitDuration(current);
+				}
+				return this.spaceAuDuration();
+			}
+			if (this.destination is Belt || this.Mover.Location is Belt)
+			{
+				if (this.hasSpaceExit(current))
+				{
+					return this.spaceExitDuration(current);
+				}
+				return this.spaceAuDuration();
+			}
+			if ((this.Mover.Location is Region && this.destination is Orbit) || (this.Mover.Location is Orbit && this.destination is Region))
+			{
+				if (this.Mover.Location.LocationParent == this.destination.LocationParent)
+				{
+					this.moveMode = EMoveMode.space;
+					return 1;
+				}
+				if (this.hasSpaceExit(current))
+				{
+					return this.spaceExitDuration(current);
+				}
+				return this.spaceAuDuration();
+			}
+			if (this.Mover.Location is Orbit && this.destination is Orbit)
+			{
+				return this.spaceAuDuration();
+			}
+			if (this.hasSpaceExit(current))
+			{
+				return this.spaceExitDuration(current);
+			}
+			return this.spaceAuDuration();
+		}
+
+		private bool hasSpaceExit(Location current)
+		{
+			return current.Exits.Contains(this.destination)
+				&& current.Exits[this.destination].ExitModes.ContainsKey(EMoveMode.space);
+		}
+
+		private int spaceExitDuration(Location current)
+		{
+			this.moveMode = EMoveMode.space;
+			ExitMode exitMode = current.Exits[this.destination].ExitModes[EMoveMode.space];
+			int weeks = SpaceTransit.ExitDurationWeeks(exitMode.Duration, this.Mover);
+			return SkillEffects.ApplyDurationPercent(weeks, SkillEffects.MoveDurationPercent(this.Mover.RootModuleStack));
+		}
+
+		private int spaceAuDuration()
+		{
+			this.moveMode = EMoveMode.space;
+			double deltaAu = Math.Abs(SpaceTransit.BodyAu(this.Mover.Location) - SpaceTransit.BodyAu(this.destination));
+			int weeks = SpaceTransit.DurationWeeks(deltaAu, SpaceTransit.EffectiveSpaceSpeed(this.Mover));
+			return SkillEffects.ApplyDurationPercent(weeks, SkillEffects.MoveDurationPercent(this.Mover.RootModuleStack));
+		}
+
+		private bool applyEnvironmentMoveRules(int week)
+		{
+			Location from = this.Mover.Location as Location;
+			Location to = this.destination;
+			if (!BodyEnvironment.IsSurfaceOrbitHop(from, to))
+			{
+				return true;
+			}
+			if (BodyEnvironment.BansNonShuttleSurfaceHop(this.Mover.ModuleType, from, to))
+			{
+				this.Mover.EventReports.Add(
+					week,
+					"MOVE failed. Spaceships cannot use solid-surface exits on atmospheres.");
+				return false;
+			}
+			Location surface = from is Region ? from : to;
+			int surcharge = BodyEnvironment.SurfaceOrbitSurcharge(surface);
+			if (surcharge <= 0)
+			{
+				return true;
+			}
+			ItemType h2o2 = ItemType.All["h2o2"];
+			ItemStacks need = new ItemStacks();
+			need.Add(new ItemStack(h2o2, surcharge));
+			if (!this.Mover.ItemStacksSumRecursive.Has(need))
+			{
+				this.Mover.EventReports.Add(
+					week,
+					string.Format("MOVE failed. Not enough {0} for launch.", ItemType.All["h2o2"].ReportName));
+				return false;
+			}
+			IItemStacksHolder holder = this.findFuelHolder(this.Mover, need);
+			if (holder == null)
+			{
+				this.Mover.EventReports.Add(
+					week,
+					string.Format("MOVE failed. Not enough {0} for launch.", ItemType.All["h2o2"].ReportName));
+				return false;
+			}
+			holder.ItemStacks.Minus(need);
+			holder.EventReports.Add(
+				week,
+				string.Format(
+					"consumed {0} for launch{1}.",
+					need.ReportList,
+					holder == this.Mover ? string.Empty : string.Concat(" for ", this.Mover.ReportName)));
+			return true;
 		}
 
 		private bool canMove(int week)
@@ -351,6 +437,12 @@ namespace SpaceAge
                     this.Mover.EventReports.Add(
                         week,
                         string.Format("MOVE failed. Unit need to be movable by ground."));
+                }
+                else if (this.moveMode == EMoveMode.naval)
+                {
+                    this.Mover.EventReports.Add(
+                        week,
+                        string.Format("MOVE failed. Unit need to be movable by sea."));
                 }
                 else
                 {
@@ -440,12 +532,12 @@ namespace SpaceAge
 
             ItemStacks fuelItemStacks = this.Mover.Fuel;
 
-            if (this.moveMode == EMoveMode.ground)
+            if (this.moveMode == EMoveMode.ground || this.moveMode == EMoveMode.naval)
             {
                 if (this.Mover.Fuel.Count == 0)
                     return false;
 
-                return this.consumeFuel(week, moveModes[EMoveMode.ground]);
+                return this.consumeFuel(week, moveModes[this.moveMode]);
             }
             else if (this.moveMode == EMoveMode.space)
             {
@@ -499,6 +591,12 @@ namespace SpaceAge
 					// assign destination if not moving
 					if (this.Mover.MovingTo == null)
 					{
+						if (!this.applyEnvironmentMoveRules(week))
+						{
+							this.Executing = false;
+							this.Executed = true;
+							return;
+						}
 						this.Executing = true;
 						this.Mover.MovingTo = this.destination;
 						bool resume = this.DurationLeft > 0 && this.DurationLeft < Int32.MaxValue;

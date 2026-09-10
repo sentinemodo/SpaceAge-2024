@@ -28,6 +28,7 @@ namespace UnitTests
 		{
 			if (this.game != null)
 				this.game.ClearDictionaries();
+			Sequence.Reset();
 			this.game = null;
 			this.dataFile = null;
 		}

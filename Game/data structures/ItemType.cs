@@ -90,6 +90,20 @@ namespace SpaceAge
 			set { this.damage = value; }
 		}
 
+		private int defense;
+		public int Defense
+		{
+			get { return this.defense; }
+			set { this.defense = value; }
+		}
+
+		private int initiative;
+		public int Initiative
+		{
+			get { return this.initiative; }
+			set { this.initiative = value; }
+		}
+
 		private EModuleTypesGroup? useAllowedModuleTypesGroup = null;
 		public EModuleTypesGroup? UseAllowedModuleTypesGroup
 		{
@@ -97,10 +111,12 @@ namespace SpaceAge
 			set { this.useAllowedModuleTypesGroup = value; }
 		}
 
+		public int NominalValue { get; set; }
+
 		public string ReportDescriptionForTechnology()
 		{
 			StringBuilder description = new StringBuilder(this.Description);
-			bool isEquipment = this.UseAllowedModuleTypesGroup != null || this.Attack > 0 || this.Damage > 0;
+			bool isEquipment = this.UseAllowedModuleTypesGroup != null || this.Attack > 0 || this.Damage > 0 || this.Defense > 0 || this.Initiative > 0;
 			if (isEquipment && (this.Size > 0 || this.Mass > 0))
 			{
 				description.AppendFormat(" Size: {0}, mass: {1}.", this.Size, this.Mass);
@@ -115,6 +131,14 @@ namespace SpaceAge
 						this.Attack,
 						this.Damage);
 				}
+			}
+			if (this.Defense > 0)
+			{
+				description.AppendFormat(" Defense: {0}.", this.Defense);
+			}
+			if (this.Initiative > 0)
+			{
+				description.AppendFormat(" Initiative: {0}.", this.Initiative);
 			}
 			return description.ToString();
 		}

@@ -1,6 +1,6 @@
 # Level 0 and 1 technologies
 
-Catalog: `Tests/data.xml`, loaded by `Game/game/CatalogLoader.cs` (`DataFile.LoadConfigurationItems` delegates). Checked **22 Aug 2026** against engine **0.1.148**.
+Catalog: `Tests/data.xml`, loaded by `Game/game/CatalogLoader.cs` (`DataFile.LoadConfigurationItems` delegates). Checked **9 Sep 2026** against engine **0.1.158**.
 
 This file lists **level 0 and level 1** technologies, then the **module types** and **item types** those technologies produce or consume. Level 2 and above: `player/advanced_technologies.md`. Alphabetical by English `name-en` inside each level.
 
@@ -12,7 +12,7 @@ Omitted `use-time` defaults to **1** week in `CatalogLoader`. Omitted consume/pr
 
 **Level 1 and above** must exist as a **local copy** on the using stack (`UseOrder.HasTechnology`: `Producer.Technologies.Contains`). Get a copy by research (labs roll level 1 … faction max+1 into remaining capacity) or by `COPY <id> TO <stack>` from a same-location holder that already has it. Each copy uses `level` points of the stack’s technology capacity.
 
-`USE` still needs matching module group, location, and consume items. Battle-only techs (no produce) are held as copies, not used as builds.
+`USE` still needs matching module group, location, and consume items. Catalog `use-allowed-in planet-atmosphere="terair"` (and module `operation-allowed-in planet-atmosphere="terair"`) is enforced only when the parent planet or moon **emitted** environment attrs in map XML; SampleGame maps omit them, so the gate is skipped there. See `player/rules.md` (`HasAtmosphereResources`, `EffectiveLocationType`). Battle-only techs (no produce) are held as copies, not used as builds.
 
 ---
 
@@ -192,8 +192,7 @@ Works in: production. Use consumes: 1 titanium `[titani]`, 1 iron `[iron]`, 1 co
 
 **repair and maintenance [repair]**  
 Repair and maintenance allows you to recover from ship damage, either from military actions or neglect.  
-Works in: production. Use consumes: 1 spare part `[spare]`. Use produces: effect `repair` on `module-damage` (`change="-1"`). Use-time: 2 weeks.  
-`USE` of effect-producing techs throws “Not implemented”; issue **`REPAIR`** instead (see `player/rules.md`).
+Works in: production. Use consumes: 1 spare part `[spare]`. Use produces: effect `repair` on `module-damage` (`change="-1"`). Use-time: 2 weeks. On completion repairs **1 HP** on the parent scope (same as `REPAIR` scope). Fails if no damage. **`REPAIR`** is faster for weekly bulk repairs.
 
 **rocket launcher production [rckter]**  
 Manufacture of portable rocket launchers issued to infantry battalions. Tag: `military`. Research cost override: 4.  
@@ -265,7 +264,7 @@ Group `space station`. Built by orbital complexes assembly `[orassm]`. Size 5000
 
 **reaction drive [rctdrv]**  
 Long experience in fluid dynamics and combustion has gone into these drives.  
-Group `propulsion`. Built by action and reaction `[areact]`. Size 600, mass 700, crew 1, energy 30, capacity 150, HP 65, tech-cap 1. Upkeep 100 cash. Space move, mass-capacity 10000. Fuel duration 1. Operates in frigate.
+Group `propulsion`. Built by action and reaction `[areact]`. Size 600, mass 700, crew 1, energy 30, capacity 150, HP 65, tech-cap 1. Upkeep 100 cash. Space move, speed 1 (omitted in catalog), mass-capacity 10000. Fuel duration 1. Operates in frigate.
 
 **small cargo bay [cargob]**  
 The cargo bays may hold a wide variety of cargo for bulk transportations.  
@@ -273,7 +272,7 @@ Group `storage`. Built by small scale transportation `[strans]`. Size 2000, mass
 
 **space shuttle [shuttl]**  
 Basic shuttle used for orbital constructions. It has basic construction facitilites, small fission reactor and is propelled by a small reaction drive.  
-Group `production` (stays production so orbit `USE` still works). Built by shuttles assembly `[shtlas]`. Size 200, mass 30, crew 2, capacity 125, HP 17, tech-cap 1. Upkeep 100 cash. USE in orbit at 10× efficiency, requires fuel. Space move, mass-capacity 750. Fuel duration 13. Operates on solid-surface, liquid-surface, orbit. Shuttle unit (`IsShuttleUnit` / hangar craft) by type id, same as fighter drones `[alndrn]` (those use catalog group `shuttle`).
+Group `production` (stays production so orbit `USE` still works). Built by shuttles assembly `[shtlas]`. Size 200, mass 30, crew 2, capacity 125, HP 17, tech-cap 1. Upkeep 100 cash. USE in orbit at 10× efficiency, requires fuel. Space move, speed 1 (omitted in catalog), mass-capacity 750. Fuel duration 13. Operates on solid-surface, liquid-surface, orbit. Shuttle unit (`IsShuttleUnit` / hangar craft) by type id, same as fighter drones `[alndrn]` (those use catalog group `shuttle`).
 
 **spaceship hull [sshull]**  
 The basic spaceship hull, it embodies the technology and experience in space travel.  
@@ -359,7 +358,7 @@ Size 4, mass 5. Produced by oil dwelling `[oildwe]` (2). Oil-burning plants burn
 
 **unit of oxyhydro [h2o2]**  
 A very useful combination of two volatiles that react strongly.  
-Size 1, mass 1. Produced by water distillation `[wtrdst]` (3).
+Size 1, mass 1. Produced by water distillation `[wtrdst]` (3). Same-body surface↔orbit `MOVE` also consumes this as a launch surcharge when the body emitted environment attrs (see `player/rules.md` MOVE).
 
 **unit of silicium [silici]**  
 The silicium is a very common material in most areas, but high-grade siliciums are base components for smart systems and modules.  
@@ -385,7 +384,7 @@ Size 100, mass 100, attack 2, damage 2. Produced by rocket launcher production `
 
 **spare part [spare]**  
 Spare part can be used to remove 10 points of damage.  
-Size 2, mass 2. Produced by preventive servicing `[servic]` (10). Consumed by repair and maintenance `[repair]` (1); the working HP path is the `REPAIR` order.
+Size 2, mass 2. Produced by preventive servicing `[servic]` (10). Consumed by repair and maintenance `[repair]` (1) and by the `REPAIR` order.
 
 **waste product [wastes]**  
 Industral wastes and radioactive decay products cause problems as they accumulate in modules.  

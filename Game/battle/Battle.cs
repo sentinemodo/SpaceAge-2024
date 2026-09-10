@@ -537,6 +537,9 @@ namespace SpaceAge
 				}
 				ETactic firing = modulestack.FiringTactic;
 				Modules firingModules = modulestack.GetFiringModules();
+				int remainingItemShots = modulestack.ItemStacks.CombatDamageShotBudget(
+					modulestack.ModuleType.Group,
+					modulestack.QuantityActive);
 				foreach (Module module in firingModules)
 				{
 					if (!this.defenders.Contains(target.Name) && !this.attackers.Contains(target.Name))
@@ -573,13 +576,28 @@ namespace SpaceAge
 							continue;
 						}
 
-						int weaponDamage = module.Parent.ModuleType.Damage;
+						int weaponDamage = module.Parent.ModuleShotDamage();
+						if (module.Parent.RootModuleStack == modulestack)
+						{
+							weaponDamage += modulestack.ItemStacks.CombatDamageBonusForShot(
+								modulestack.ModuleType.Group,
+								ref remainingItemShots);
+						}
+						weaponDamage = this.applyShieldIntercept(target, weaponDamage);
 						int hpDamage = weaponDamage;
 						int captureDamage = 0;
 						if (firing == ETactic.capture)
 						{
-							hpDamage = HpDamageFromShot(weaponDamage);
-							captureDamage = CaptureDamageFromShot(weaponDamage);
+							if (CombatMatchup.IsArmor(targetModule.Parent.ModuleType))
+							{
+								hpDamage = 0;
+								captureDamage = 0;
+							}
+							else
+							{
+								hpDamage = HpDamageFromShot(weaponDamage);
+								captureDamage = CaptureDamageFromShot(weaponDamage);
+							}
 						}
 						int poolRemaining = targetModule.HitPoints - targetModule.Damage - targetModule.CaptureDamage;
 						if (poolRemaining < 0)
@@ -741,6 +759,11 @@ namespace SpaceAge
 		private int getChance(ModuleStack modulestack, ModuleStack target, ETactic eTactic)
 		{
 			int chance = System.Convert.ToInt32((modulestack.Attack + modulestack.ModuleStacks.Attack()) / 2);
+			if (target != null && !string.IsNullOrEmpty(modulestack.ModuleType != null ? modulestack.ModuleType.WeaponGroup : null))
+			{
+				string resists = target.ModuleType != null ? target.ModuleType.Resists : string.Empty;
+				chance = System.Convert.ToInt32(Math.Ceiling(chance * CombatMatchup.ChanceMultiplier(modulestack.ModuleType.WeaponGroup, resists)));
+			}
 			if (target != null && target.HasEvade)
 			{
 				chance = chance / 2;
@@ -750,6 +773,59 @@ namespace SpaceAge
 				chance = chance + (chance / 2);
 			}
 			return chance;
+		}
+
+		private int applyShieldIntercept(ModuleStack target, int damage)
+		{
+			if (damage <= 0 || target == null)
+			{
+				return damage;
+			}
+			Module shield = this.findShieldModule(target);
+			if (shield == null)
+			{
+				return damage;
+			}
+			int intercepted = CombatMatchup.ShieldIntercept(damage);
+			int remainingHp = shield.HitPoints - shield.Damage;
+			if (remainingHp < 0)
+			{
+				remainingHp = 0;
+			}
+			if (intercepted > remainingHp)
+			{
+				intercepted = remainingHp;
+			}
+			shield.Damage += intercepted;
+			int remainder = damage - intercepted;
+			return remainder < 0 ? 0 : remainder;
+		}
+
+		private Module findShieldModule(ModuleStack stack)
+		{
+			if (stack == null || stack.ModuleType == null)
+			{
+				return null;
+			}
+			if (CombatMatchup.IsShield(stack.ModuleType))
+			{
+				foreach (Module module in stack.Modules)
+				{
+					if (!module.IsWrecked)
+					{
+						return module;
+					}
+				}
+			}
+			foreach (ModuleStack nested in stack.ModuleStacks.Values)
+			{
+				Module found = this.findShieldModule(nested);
+				if (found != null)
+				{
+					return found;
+				}
+			}
+			return null;
 		}
 
 		private int intactModuleCount(ModuleStack moduleStack)
@@ -773,6 +849,10 @@ namespace SpaceAge
 				return 0;
 			}
 			int size = moduleStack.ModuleType.DamageCapacity * intactCount;
+			if (CombatMatchup.IsArmor(moduleStack.ModuleType))
+			{
+				size = size * 5;
+			}
 			bool commandOrPropulsion = moduleStack.ModuleType.Group == EModuleTypesGroup.command
 				|| moduleStack.ModuleType.Group == EModuleTypesGroup.propulsion;
 			if (firing == ETactic.capture && commandOrPropulsion)

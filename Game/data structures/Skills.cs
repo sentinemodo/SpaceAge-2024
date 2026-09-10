@@ -58,43 +58,78 @@ namespace SpaceAge
 			return true;
 		}
 
-		public int Attack
+		public int CombatAttack(ModuleStack host, ModuleStack root)
 		{
-			get
+			int attackBonus = 0;
+			foreach (Skill skill in this.Values)
 			{
-				int attackBonus = 0;
-				foreach (Skill skill in this.Values)
+				if (skill.Experience < 1)
 				{
-					attackBonus += skill.SkillType.Attack;
+					continue;
 				}
-				return attackBonus;
+				attackBonus += skill.SkillType.CombatAttack(host, root);
 			}
+			return attackBonus;
 		}
 
-		public int Defense
+		public int CombatDefense(ModuleStack host, ModuleStack root)
 		{
-			get
+			int defenseBonus = 0;
+			foreach (Skill skill in this.Values)
 			{
-				int defenseBonus = 0;
-				foreach (Skill skill in this.Values)
+				if (skill.Experience < 1)
 				{
-					defenseBonus += skill.SkillType.Defense;
+					continue;
 				}
-				return defenseBonus;
+				defenseBonus += skill.SkillType.CombatDefense(host, root);
 			}
+			return defenseBonus;
 		}
 
-		public int Initiative
+		public int CombatInitiative(ModuleStack host, ModuleStack root)
 		{
-			get
+			int initiativeBonus = 0;
+			foreach (Skill skill in this.Values)
 			{
-				int initiativeBonus = 0;
-				foreach (Skill skill in this.Values)
+				if (skill.Experience < 1)
 				{
-					initiativeBonus += skill.SkillType.Initiative;
+					continue;
 				}
-				return initiativeBonus;
+				initiativeBonus += skill.SkillType.CombatInitiative(host, root);
 			}
+			return initiativeBonus;
+		}
+
+		public int CureChance(ModuleStack host, ModuleStack root)
+		{
+			int max = 0;
+			foreach (Skill skill in this.Values)
+			{
+				if (skill.Experience < 1)
+				{
+					continue;
+				}
+				int chance = skill.SkillType.EvaluateCureChance(host, root);
+				if (chance > max)
+				{
+					max = chance;
+				}
+			}
+			return max;
+		}
+
+		public int ResearchOutputBonus(ModuleStack host, ModuleStack root)
+		{
+			int bonus = 0;
+			foreach (Skill skill in this.Values)
+			{
+				if (skill.Experience < 1)
+				{
+					continue;
+				}
+				bonus += skill.SkillType.ResearchOutputBonus(host, root);
+			}
+			return bonus;
 		}
 
 		public string ReportList

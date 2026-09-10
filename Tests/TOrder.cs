@@ -775,11 +775,19 @@ namespace UnitTests
             this.consoleOutReport("orders after week 2", testModuleStack.Orders, testFaction);
             Assert.That(testModuleStack.Orders.Count, Is.EqualTo(5));
             Assert.That(testModuleStack.Effects.IsMoving);
+
+            int week = 2;
+            while (testModuleStack.Effects.IsMoving && ((MoveOrder)testModuleStack.Orders[0]).DurationLeft > 1)
+            {
+                testModuleStack.ExecutedLongOrder = false;
+                testModuleStack.Execute(this.game.Week + week);
+                week++;
+            }
             
             // stage three - moving, should complete movement, should find silici
             factories.ItemStacks.Add(new ItemStack(ItemType.All["silici"], 5));
             testModuleStack.ExecutedLongOrder = false;
-            testModuleStack.Execute(this.game.Week + 2);
+            testModuleStack.Execute(this.game.Week + week);
             //this.consoleOutReport("orbit after week 3", testModuleStack.Location, testFaction);
             this.consoleOutReport("orders after week 3", testModuleStack.Orders, testFaction);
             Assert.That(testModuleStack.Orders.Count, Is.EqualTo(3));
@@ -787,32 +795,50 @@ namespace UnitTests
 
             // stage four - added resource, should find tita, should start moving back
             factories.ItemStacks.Add(new ItemStack(ItemType.All["titani"], 5));
+            week++;
             testModuleStack.ExecutedLongOrder = false; 
-            testModuleStack.Execute(this.game.Week + 3);
+            testModuleStack.Execute(this.game.Week + week);
             //this.consoleOutReport("orbit after week 4", testModuleStack.Location, testFaction);
             this.consoleOutReport("orders after week 4", testModuleStack.Orders, testFaction);
             Assert.That(testModuleStack.Orders.Count, Is.EqualTo(2));
             Assert.That(testModuleStack.Effects.IsMoving);
 
-            // stage five - should complete movement           
+            while (testModuleStack.Effects.IsMoving && ((MoveOrder)testModuleStack.Orders[0]).DurationLeft > 1)
+            {
+                week++;
+                testModuleStack.ExecutedLongOrder = false;
+                testModuleStack.Execute(this.game.Week + week);
+            }
+
+            // stage five - should complete movement
+            week++;
             testModuleStack.ExecutedLongOrder = false; 
-            testModuleStack.Execute(this.game.Week + 4);
+            testModuleStack.Execute(this.game.Week + week);
             //this.consoleOutReport("orbit after week 5", testModuleStack.Location, testFaction);
             this.consoleOutReport("orders after week 5", testModuleStack.Orders, testFaction);
             Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
             Assert.That(testModuleStack.Effects.IsMoving, Is.False);
  
             // stage six - should start moving again
+            week++;
             testModuleStack.ExecutedLongOrder = false; 
-            testModuleStack.Execute(this.game.Week + 5);
+            testModuleStack.Execute(this.game.Week + week);
             Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
             //this.consoleOutReport("orbit after week 6", testModuleStack.Location, testFaction);
             this.consoleOutReport("orders after week 6", testModuleStack.Orders, testFaction);
             Assert.That(testModuleStack.Effects.IsMoving);
 
+            while (testModuleStack.Effects.IsMoving && ((MoveOrder)testModuleStack.Orders[0]).DurationLeft > 1)
+            {
+                week++;
+                testModuleStack.ExecutedLongOrder = false;
+                testModuleStack.Execute(this.game.Week + week);
+            }
+
             // stage seven - should complete movement
+            week++;
             testModuleStack.ExecutedLongOrder = false;
-            testModuleStack.Execute(this.game.Week + 6);
+            testModuleStack.Execute(this.game.Week + week);
             Assert.That(testModuleStack.Orders.Count, Is.EqualTo(0));
             //this.consoleOutReport("orbit after week 7", testModuleStack.Location, testFaction);
             this.consoleOutReport("orders after week 7", testModuleStack.Orders, testFaction);
@@ -871,6 +897,46 @@ namespace UnitTests
             Assert.That(testModuleStack.Orders.Count, Is.EqualTo(0));
         }
 
+
+		[Test]
+		public void OrderFactory_EveryEOrderType_HasRegistryEntry()
+		{
+			foreach (EOrderType orderType in Enum.GetValues(typeof(EOrderType)))
+			{
+				Assert.That(
+					OrderFactory.IsKnownVerb(orderType.ToString()),
+					Is.True,
+					"Missing factory entry for " + orderType);
+			}
+		}
+
+		[Test]
+		public void OrderFactory_CreateFromTextToken_StripsConditionAndRepeatPrefixes()
+		{
+			ModuleStack subject = this.game.ModuleStacks["100001"];
+			int initialCount = subject.Orders.Count;
+
+			Order move = OrderFactory.CreateFromTextToken("@move", subject, "move R00002");
+			subject.Orders.Remove(move);
+			Order has = OrderFactory.CreateFromTextToken("+has", subject, "+has item");
+			subject.Orders.Remove(has);
+			Order set = OrderFactory.CreateFromTextToken("-set", subject, "-set x");
+			subject.Orders.Remove(set);
+
+			Assert.That(move.Type, Is.EqualTo(EOrderType.move));
+			Assert.That(has.Type, Is.EqualTo(EOrderType.has));
+			Assert.That(set.Type, Is.EqualTo(EOrderType.set));
+			Assert.That(subject.Orders.Count, Is.EqualTo(initialCount));
+		}
+
+		[Test]
+		public void OrderFactory_CreateFromTextToken_UnknownVerb_UsesFullCommandInError()
+		{
+			ModuleStack subject = this.game.ModuleStacks["100001"];
+			Exception ex = Assert.Throws<Exception>(() =>
+				OrderFactory.CreateFromTextToken("bogus", subject, "bogus target"));
+			Assert.That(ex.Message, Is.EqualTo("Unknown order: bogus target"));
+		}
 
 		// upkeep
         // cash in | out437

@@ -64,14 +64,13 @@ namespace SpaceAge
         {
             base.LoadXml(elEffect);
             this.Destination = this.findDestination(elEffect.GetAttribute("destination"));
-            switch (elEffect.GetAttribute("move-mode"))
+            if (elEffect.HasAttribute("move-mode"))
             {
-                case "space":
-                    this.MoveMode = EMoveMode.space;
-                    break;
-                default:
-                    this.MoveMode = EMoveMode.ground;
-                    break;
+                this.MoveMode = MoveModeXml.Parse(elEffect.GetAttribute("move-mode"));
+            }
+            else
+            {
+                this.MoveMode = EMoveMode.ground;
             }
             this.InitialDuration = this.Duration;
             if (this.Mover.MovingTo == null)
@@ -85,17 +84,7 @@ namespace SpaceAge
             base.SaveXml(doc);
             this.xmlElement.SetAttribute("type", "moving");
             this.xmlElement.SetAttribute("destination", this.Destination.Name);
-            switch (this.MoveMode)
-            {
-                case EMoveMode.ground:
-                    this.xmlElement.SetAttribute("move-mode", "ground");
-                    break;
-                case EMoveMode.space:
-                    this.xmlElement.SetAttribute("move-mode", "space");
-                    break;
-                default:
-                    throw new Exception("Uknown move mode");
-            }            
+            this.xmlElement.SetAttribute("move-mode", MoveModeXml.ToToken(this.MoveMode)); 
 
             return this.xmlElement;
         }
@@ -121,6 +110,14 @@ namespace SpaceAge
 			if (Moon.All.ContainsKey(token))
 			{
 				return Moon.All[token].Orbit;
+			}
+			if (Belt.All.ContainsKey(token))
+			{
+				return Belt.All[token];
+			}
+			if (Alderson.All.ContainsKey(token))
+			{
+				return Alderson.All[token].Orbit;
 			}
 			if (Anomaly.All.ContainsKey(token))
 			{

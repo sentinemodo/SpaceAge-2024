@@ -1,0 +1,160 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { withBase } from '../lib/paths';
+---
+
+<Layout title="Game Client" description="SpaceAge Game Client - Download and Installation">
+  <section class="client-content">
+	<h1>Game Client</h1>
+
+	<div class="intro-card card">
+	  <h2>Visual Tools & Report Client</h2>
+	  <p>
+		To play SpaceAge, you need a way to read quarterly reports, analyze your faction's status, and draft orders.
+		This page links to the visual tool client application that handles all of this.
+	  </p>
+	</div>
+
+	<section class="features-section">
+	  <h2>What You Can Do</h2>
+	  <div class="features">
+		<div class="feature-item">
+		  <h3>📊 Read Reports</h3>
+		  <p>View your quarterly game reports in an organized, visual interface. Navigate units, facilities, and research status at a glance.</p>
+		</div>
+		<div class="feature-item">
+		  <h3>⭐ Explore the Galaxy</h3>
+		  <p>Interactive star map showing systems, gates, your colonies, and known contacts. Zoom in on specific regions or view the whole galaxy.</p>
+		</div>
+		<div class="feature-item">
+		  <h3>✏️ Draft Orders</h3>
+		  <p>Build orders with a point-and-click interface. Validation and error checking help you avoid mistakes before submission.</p>
+		</div>
+		<div class="feature-item">
+		  <h3>⚔️ Battle Simulator</h3>
+		  <p>Test what-if scenarios: what happens if you engage that enemy fleet? The simulator models combat before you commit.</p>
+		</div>
+		<div class="feature-item">
+		  <h3>🛸 Transit Calculator</h3>
+		  <p>Calculate travel times between systems. Account for ship mass, drive speed, and distance—essential for planning movements.</p>
+		</div>
+		<div class="feature-item">
+		  <h3>📋 Rules Reference</h3>
+		  <p>Full rules and technology catalog integrated into the client. Look up details without leaving the application.</p>
+		</div>
+	  </div>
+	</section>
+
+	<section class="placeholder-section card">
+	  <h2>Coming Soon</h2>
+	  <p>
+		The visual tool client is currently in development. Full details, download links, and installation instructions
+		will be available here during the campaign. Check back soon!
+	  </p>
+	  <div class="placeholder-visual">
+		<p style="font-size: 1.5rem; margin-bottom: 1rem;">🔧 Client Placeholder</p>
+		<p>Visual Tool Launch: Phase 3</p>
+	  </div>
+	</section>
+
+	<section class="getting-started card">
+	  <h2>Getting Started</h2>
+	  <ol>
+		<li>Download the Game Client (link will appear here)</li>
+		<li>Open your current quarterly report with the client</li>
+		<li>Review your faction's status, resources, and military units</li>
+		<li>Plan your strategy using the star map and simulator</li>
+		<li>Draft and submit your orders before the deadline</li>
+	  </ol>
+	  <p>
+		<strong>New to the rules?</strong> Read the <a href={withBase('rules')}>Rules Overview</a> first to understand core concepts.
+	  </p>
+	</section>
+
+	<section class="support-section">
+	  <h2>Questions?</h2>
+	  <p>
+		Check the <a href={withBase('rules')}>full rules</a> or browse the <a href={withBase()}>home page</a> for more information about SpaceAge.
+	  </p>
+	</section>
+  </section>
+</Layout>
+
+<style>
+  .client-content {
+	max-width: 900px;
+	margin: 0 auto;
+  }
+
+  h1 {
+	color: var(--color-accent-teal);
+	margin-bottom: var(--space-xl);
+  }
+
+  .intro-card {
+	margin-bottom: var(--space-2xl);
+  }
+
+  .features-section {
+	margin-bottom: var(--space-2xl);
+  }
+
+  .features {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+	gap: var(--space-lg);
+	margin-top: var(--space-lg);
+  }
+
+  .feature-item {
+	background-color: var(--color-card-bg);
+	color: var(--color-text-dark);
+	padding: var(--space-lg);
+	border-radius: var(--radius-lg);
+  }
+
+  .feature-item h3 {
+	color: var(--color-accent-teal);
+	margin-top: 0;
+  }
+
+  .placeholder-section {
+	text-align: center;
+	background-color: rgba(13, 148, 136, 0.05);
+	border: 1px dashed var(--color-accent-teal);
+	margin-bottom: var(--space-2xl);
+  }
+
+  .placeholder-visual {
+	background-color: rgba(13, 148, 136, 0.1);
+	border: 1px solid var(--color-accent-teal);
+	border-radius: var(--radius-md);
+	padding: var(--space-2xl);
+	margin-top: var(--space-lg);
+	color: #666;
+  }
+
+  .getting-started {
+	margin-bottom: var(--space-2xl);
+  }
+
+  .getting-started ol {
+	margin-left: var(--space-lg);
+	color: var(--color-text-dark);
+  }
+
+  .getting-started li {
+	margin-bottom: var(--space-md);
+	line-height: 1.8;
+  }
+
+  .support-section {
+	text-align: center;
+  }
+
+  @media (max-width: 768px) {
+	.features {
+	  grid-template-columns: 1fr;
+	}
+  }
+</style>

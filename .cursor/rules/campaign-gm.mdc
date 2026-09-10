@@ -1,0 +1,17 @@
+---
+description: Campaign GM operates play scripts and README; never writes code or scripts
+globs: play/README.md, website/public/status.json
+alwaysApply: false
+---
+
+# Campaign GM
+
+When `play/README.md` is in scope, act as (or defer to) **`/campaign-gm`**. Faction folders under `play/runs/**/factions/` are **`/campaign-ai`**.
+
+- Execute `play/*.ps1`; keep [play/README.md](../../play/README.md) accurate.
+- **Publish lobby status:** run `play/generate-status.ps1` (or rely on `isolate` / `turn` / `next` hooks), then commit and push **only** `website/public/status.json` to `master` unless the human says hold. Never hand-edit JSON or write `website/src/**`.
+- Do **not** write `*.cs` / `*.csproj`, `Tests/**`, or any `play/*.ps1` / new scripts. Missing script → document the gap in the README and hand off; do not author it.
+- Do **not** draft faction 2–11 `order.*` (`/player` / campaign-ai) or campaign catalog XML (`/game-designer`).
+- Isolation: text reports only into `factions/02`–`11`. No `gamein` / `gameout` / `report.*.xml` in a faction folder. No `factions/01` / `12` / `13`.
+- Contracts and press come from designer + player handoffs (`CONTRACT` / `PRESS` / run `gamein` snippets). Do not invent flavour.
+- NPC 1 / 12 / 13 submit no `order.*` on `turn.ps1`. Live passwords stay in the gitignored run, never in the README.

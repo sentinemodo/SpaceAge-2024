@@ -40,9 +40,19 @@ namespace SpaceAge
 		{
 			get
 			{
-				if (resources.Count > 0 | races.Count > 0)
+				if (this.resources.Count > 0 || this.races.Count > 0)
 				{
 					return true;
+				}
+				Planet planet = this.OrbitHolder as Planet;
+				if (planet != null)
+				{
+					return planet.Races.Count > 0 || planet.AtmosphereBand != EAtmosphereBand.none;
+				}
+				Moon moon = this.OrbitHolder as Moon;
+				if (moon != null)
+				{
+					return moon.Races.Count > 0 || moon.AtmosphereBand != EAtmosphereBand.none;
 				}
 				return false;
 			}
@@ -103,16 +113,18 @@ namespace SpaceAge
 			string line = this.ReportName;
 			if (this.HasAtmosphere) 
 			{
-				line = string.Concat(line, ", has atmosphere"); 
-				if (this.races.Count > 0)
+				line = string.Concat(line, ", has atmosphere");
+				List<Race> listed = this.AtmosphereRaces();
+				if (listed.Count > 0)
 				{
-					line = string.Concat(line, " suitable for"); 					
+					line = string.Concat(line, " suitable for");
 					bool firstAdded = false;
-					foreach (Race race in this.races.Values) 
+					foreach (Race race in listed)
 					{
 						line = string.Format("{0} {1}",
-							(firstAdded == true) ? string.Concat(line, ",") : line, 
+							firstAdded ? string.Concat(line, ",") : line,
 							race.ReportName);
+						firstAdded = true;
 					}
 				}
 			} 
@@ -122,6 +134,40 @@ namespace SpaceAge
 			}
 
 			return string.Concat(line, ".");
+		}
+
+		private List<Race> AtmosphereRaces()
+		{
+			List<Race> listed = new List<Race>();
+			foreach (Race race in this.races.Values)
+			{
+				listed.Add(race);
+			}
+			Races bodyRaces = null;
+			Planet planet = this.OrbitHolder as Planet;
+			if (planet != null)
+			{
+				bodyRaces = planet.Races;
+			}
+			else
+			{
+				Moon moon = this.OrbitHolder as Moon;
+				if (moon != null)
+				{
+					bodyRaces = moon.Races;
+				}
+			}
+			if (bodyRaces != null)
+			{
+				foreach (Race race in bodyRaces.Values)
+				{
+					if (!this.races.ContainsKey(race.Name))
+					{
+						listed.Add(race);
+					}
+				}
+			}
+			return listed;
 		}
 
 		#endregion

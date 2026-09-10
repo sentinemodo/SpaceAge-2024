@@ -308,7 +308,9 @@ namespace SpaceAge
 
         private void startProduction(int week)
         {
-            this.durationLeft = this.Producer.ModuleType.ProduceDuration;
+            this.durationLeft = SkillEffects.ApplyDurationPercent(
+                this.Producer.ModuleType.ProduceDuration,
+                SkillEffects.ProductionDurationPercent(this.Producer));
             switch (this.ProduceType)
             {
                 case EProduceType.Items:

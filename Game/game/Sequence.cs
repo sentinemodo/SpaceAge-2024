@@ -21,9 +21,16 @@ namespace SpaceAge
         public static List<RollDescription> Rolls = new List<RollDescription>();
 
         private static Stack<int> ints = new Stack<int>();
-		public static Stack<int> Ints
+        public static Stack<int> Ints
 		{
 			get { return Sequence.ints; }
+		}
+
+		public static void Reset()
+		{
+			Sequence.ints.Clear();
+			Sequence.Rolls.Clear();
+			Sequence.randomGenerator = new Random(1);
 		}
 
         private static Random randomGenerator = new Random(1);

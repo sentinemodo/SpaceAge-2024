@@ -18,6 +18,16 @@ namespace SpaceAge
 					return EModuleTypesGroup.extraction;
 				case "frigate":
 					return EModuleTypesGroup.frigate;
+				case "corvette":
+					return EModuleTypesGroup.corvette;
+				case "destroyer":
+					return EModuleTypesGroup.destroyer;
+				case "cruiser":
+					return EModuleTypesGroup.cruiser;
+				case "capital":
+					return EModuleTypesGroup.capital;
+				case "ark":
+					return EModuleTypesGroup.ark;
 				case "habitat":
 					return EModuleTypesGroup.habitat;
 				case "infantry":
@@ -63,6 +73,16 @@ namespace SpaceAge
 					return "extraction";
 				case EModuleTypesGroup.frigate:
 					return "frigate";
+				case EModuleTypesGroup.corvette:
+					return "corvette";
+				case EModuleTypesGroup.destroyer:
+					return "destroyer";
+				case EModuleTypesGroup.cruiser:
+					return "cruiser";
+				case EModuleTypesGroup.capital:
+					return "capital";
+				case EModuleTypesGroup.ark:
+					return "ark";
 				case EModuleTypesGroup.habitat:
 					return "habitat";
 				case EModuleTypesGroup.infantry:

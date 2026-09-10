@@ -195,6 +195,20 @@ namespace SpaceAge
 			get { return this.moduleTypesToShow; }
 		}
 
+		private SurveyObjects objectsSeen = new SurveyObjects();
+		public SurveyObjects ObjectsSeen
+		{
+			get { return this.objectsSeen; }
+		}
+
+		private List<string> objectsSeenPending = new List<string>();
+
+		private SurveyObjects objectsToShow = new SurveyObjects();
+		public SurveyObjects ObjectsToShow
+		{
+			get { return this.objectsToShow; }
+		}
+
 		#region IReporting Members
 
 		public List<string> Report(Faction faction)
@@ -215,7 +229,7 @@ namespace SpaceAge
 			//    Write("");
 
 			// faction events reports
-				//            Write("Events during turn:|˜˜˜˜˜˜˜ ˜˜˜˜˜ ˜˜˜˜:");
+				//            Write("Events during turn:|ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½:");
 				//foreach (Event obj in f.Events) 
 				//    Write(obj.ToString(lng));
 				//Write("");
@@ -236,7 +250,7 @@ namespace SpaceAge
 
 			// item types report
 			// skill types report
-			// space objects types report
+			// survey reports are written after the market section (see ReportWriter)
 
 			// declared diplomatic stances (before the bank report)
 			List<string> declarations = this.ReportDeclarations();
@@ -255,6 +269,19 @@ namespace SpaceAge
 		#endregion
 
 		#endregion
+
+		public void ResolveSurveyObjectsSeen()
+		{
+			foreach (string objectName in this.objectsSeenPending)
+			{
+				NamedObject spaceObject = Research.ResolveSpaceObject(objectName);
+				if (spaceObject != null && !this.objectsSeen.Contains(objectName))
+				{
+					this.objectsSeen.Add(spaceObject);
+				}
+			}
+			this.objectsSeenPending.Clear();
+		}
 
 		public void AllShown()
 		{
@@ -275,6 +302,15 @@ namespace SpaceAge
 				}
 			}
 			this.moduleTypesToShow.Clear();
+
+			foreach (NamedObject spaceObject in this.objectsToShow)
+			{
+				if (!this.objectsSeen.Contains(spaceObject.Name))
+				{
+					this.objectsSeen.Add(spaceObject);
+				}
+			}
+			this.objectsToShow.Clear();
 		}
 
 		#region market
@@ -358,6 +394,11 @@ namespace SpaceAge
 				}
 			}
 
+			foreach (XmlElement elSurvey in elFaction.SelectNodes("survey"))
+			{
+				this.objectsSeenPending.Add(elSurvey.GetAttribute("object"));
+			}
+
 			foreach (XmlElement elAttitude in elFaction.SelectNodes("attitude"))
 			{
 				FactionAttitude attitude = FactionAttitudeParser.Parse(elAttitude.GetAttribute("attitude"));
@@ -397,6 +438,13 @@ namespace SpaceAge
 				XmlElement elTechnology = doc.CreateElement("technology");
 				elTechnology.SetAttribute("name", technology.Name);
 				elFaction.AppendChild(elTechnology);
+			}
+
+			foreach (NamedObject spaceObject in this.ObjectsSeen)
+			{
+				XmlElement elSurvey = doc.CreateElement("survey");
+				elSurvey.SetAttribute("object", spaceObject.Name);
+				elFaction.AppendChild(elSurvey);
 			}
 
 			foreach (KeyValuePair<string, FactionAttitude> declaration in this.Attitudes)

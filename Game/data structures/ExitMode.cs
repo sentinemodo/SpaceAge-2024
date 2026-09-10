@@ -25,15 +25,7 @@ namespace SpaceAge
 			get
 			{
 				string modeName;
-				switch (this.mode)
-				{
-					case EMoveMode.space:
-						modeName = "space";
-						break;
-					default:
-						modeName = "ground";
-						break;
-				}
+				modeName = MoveModeXml.ToToken(this.mode);
 				return string.Format("{0} travel duration {1} {2}", 
 					modeName, this.duration, (this.duration == 1) ? "week" : "weeks");
 			}

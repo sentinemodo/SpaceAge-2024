@@ -112,6 +112,9 @@ namespace SpaceAge
 					itemType.Size = this.dataFile.XMLAssignDouble(el.GetAttribute("size"), 0);
 					itemType.Attack = this.dataFile.XMLAssignInteger(el.GetAttribute("attack"), 0);
 					itemType.Damage = this.dataFile.XMLAssignInteger(el.GetAttribute("damage"), 0);
+					itemType.Defense = this.dataFile.XMLAssignInteger(el.GetAttribute("defense"), 0);
+					itemType.Initiative = this.dataFile.XMLAssignInteger(el.GetAttribute("initiative"), 0);
+					itemType.NominalValue = this.dataFile.XMLAssignInteger(el.GetAttribute("value"), 0);
 
 					foreach (XmlElement elAllowedBy in el.SelectNodes("use-allowed-by"))
 					{
@@ -160,7 +163,7 @@ namespace SpaceAge
 					itemType.Group = EItemTypesGroup.crew;
 					itemType.Mass = this.dataFile.XMLAssignDouble(el.GetAttribute("mass"), 0);
 					itemType.Size = this.dataFile.XMLAssignDouble(el.GetAttribute("size"), 0);
-
+					itemType.NominalValue = this.dataFile.XMLAssignInteger(el.GetAttribute("value"), 0);
 
 					#region upkeep
 					ItemStack item = null;
@@ -256,9 +259,56 @@ namespace SpaceAge
 					skillType.LoadXml(el);
 
 					skillType.TrainingDuration = this.dataFile.XMLAssignInteger(el.GetAttribute("training-duration"), 1);
-					skillType.Attack = this.dataFile.XMLAssignInteger(el.GetAttribute("attack"), 0);
-					skillType.Defense = this.dataFile.XMLAssignInteger(el.GetAttribute("defense"), 0);
-					skillType.Initiative = this.dataFile.XMLAssignInteger(el.GetAttribute("initiative"), 0);
+					skillType.AttackFormula = SkillBonusFormula.Parse(el.GetAttribute("attack"));
+					skillType.DefenseFormula = SkillBonusFormula.Parse(el.GetAttribute("defense"));
+					skillType.InitiativeFormula = SkillBonusFormula.Parse(el.GetAttribute("initiative"));
+					skillType.CureChanceFormula = SkillBonusFormula.Parse(el.GetAttribute("cure-chance"));
+
+					foreach (XmlElement elUsableIn in el.SelectNodes("usable-in"))
+					{
+						SkillUsableIn usableIn = new SkillUsableIn();
+						string moduleGroup = elUsableIn.GetAttribute("module-group");
+						if (moduleGroup != string.Empty)
+						{
+							usableIn.ModuleGroup = ModuleTypeGroupXml.Parse(moduleGroup);
+						}
+						else
+						{
+							string moduleTypeGroup = elUsableIn.GetAttribute("module-type-group");
+							if (moduleTypeGroup != string.Empty)
+							{
+								usableIn.ModuleGroup = ModuleTypeGroupXml.Parse(moduleTypeGroup);
+							}
+						}
+
+						string moduleStackSize = elUsableIn.GetAttribute("modulestack-size");
+						if (moduleStackSize != string.Empty)
+						{
+							usableIn.ModuleStackSize = this.dataFile.XMLAssignInteger(moduleStackSize, 0);
+						}
+
+						skillType.UsableIn.Add(usableIn);
+					}
+
+					foreach (XmlElement elProduce in el.SelectNodes("produce"))
+					{
+						string effect = elProduce.GetAttribute("effect");
+						string value = elProduce.GetAttribute("value");
+						if (CatalogLoader.isPercentProduceValue(value))
+						{
+							skillType.PercentProduces.Add(new SkillPercentProduce
+							{
+								Effect = effect,
+								Percent = int.Parse(value.Substring(0, value.Length - 1)),
+							});
+						}
+						else
+						{
+							skillType.ProduceEffect = effect;
+							skillType.ProduceTarget = elProduce.GetAttribute("target");
+							skillType.ProduceFormula = SkillBonusFormula.Parse(value);
+						}
+					}
 				}
 			}
 			#endregion
@@ -337,14 +387,14 @@ namespace SpaceAge
 						    }
 						    else if (elProduce.HasAttribute("effect"))
 						    {
-							    int duration = this.dataFile.XMLAssignInteger(elProduce.GetAttribute("duration"), -1);
 							    string reason = this.dataFile.XMLAssignString(elProduce.GetAttribute("effect"), "effect");
 							    if (elProduce.HasAttribute("target") == false || elProduce.HasAttribute("change") == false)
 							    {
 								    throw new FileLoadException("tried to parse effect " + reason);
 							    }
-							    string target = elProduce.GetAttribute("target");
-							    string change = elProduce.GetAttribute("change");
+							    technology.UseProduceEffectName = reason;
+							    technology.UseProduceTarget = elProduce.GetAttribute("target");
+							    technology.UseProduceChange = this.dataFile.XMLAssignInteger(elProduce.GetAttribute("change"), 0);
 							    technology.ProductionType = EProductionType.Effects;
 						    }
 					    }
@@ -428,6 +478,10 @@ namespace SpaceAge
 						moduleType.Defense = this.dataFile.XMLAssignInteger(el.GetAttribute("defense"), 0);
 						moduleType.Damage = this.dataFile.XMLAssignInteger(el.GetAttribute("damage"), 0);
 						moduleType.Initiative = this.dataFile.XMLAssignInteger(el.GetAttribute("initiative"), 0);
+						moduleType.NominalValue = this.dataFile.XMLAssignInteger(el.GetAttribute("value"), 0);
+						moduleType.WeaponGroup = el.GetAttribute("weapon-group");
+						moduleType.Resists = el.GetAttribute("resists");
+						moduleType.ArmorModule = el.GetAttribute("armor-module") == "true";
 
 						this.dataFile.assignItemStacks(el.SelectNodes("upkeep"), moduleType.Upkeep);
 						foreach (XmlElement elNoUpkeep in el.SelectNodes("no-upkeep"))
@@ -452,15 +506,7 @@ namespace SpaceAge
 
 							if (elMove.HasAttribute("mode"))
 							{
-								switch (elMove.GetAttribute("mode"))
-								{
-									case "space":
-										moveMode.Mode = EMoveMode.space;
-										break;
-									default:
-										moveMode.Mode = EMoveMode.ground;
-										break;
-								}
+								moveMode.Mode = MoveModeXml.Parse(elMove.GetAttribute("mode"));
 							}
 							else
 							{
@@ -566,6 +612,12 @@ namespace SpaceAge
 								moduleType.OperationCondition_AtmosphereResources.Add(condition, game.ItemTypes[condition]);
 							}
 
+							if (elAllowed.HasAttribute("planet-type"))
+							{
+								condition = elAllowed.GetAttribute("planet-type");
+								moduleType.OperationCondition_PlanetTypes.Add(condition, game.PlanetTypes[condition]);
+							}
+
 							if (elAllowed.HasAttribute("location-type"))
 							{
 								moduleType.OperationCondition_LocationTypes.Add(this.dataFile.LoadLocationType(elAllowed));
@@ -598,6 +650,17 @@ namespace SpaceAge
 				}
 			}
 			#endregion
+		}
+
+		private static bool isPercentProduceValue(string value)
+		{
+			if (string.IsNullOrEmpty(value) || !value.EndsWith("%"))
+			{
+				return false;
+			}
+			string digits = value.Substring(0, value.Length - 1);
+			int percent;
+			return int.TryParse(digits, out percent);
 		}
 	}
 }

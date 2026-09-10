@@ -1,0 +1,232 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { formatNextTurn, formatStatusLabel } from '../lib/statusSchema';
+import { withBase } from '../lib/paths';
+
+const placeholderFactions = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((id) => ({
+  id,
+  submitted: false,
+  name: `Faction ${id}`,
+}));
+---
+
+<Layout title="Players & Turns" description="SpaceAge Turn Status - Orders Submission Status">
+  <section class="turns-content" id="turns-page">
+	<h1>Players & Turns</h1>
+
+	<div class="status-summary card">
+	  <h2>Current Turn Status</h2>
+	  <div class="summary-grid">
+		<div class="summary-item">
+		  <span class="summary-label">Game Turn</span>
+		  <span id="turns-turn-value" class="summary-value">1</span>
+		</div>
+		<div class="summary-item">
+		  <span class="summary-label">Orders Received</span>
+		  <span id="turns-orders-count" class="summary-value">0 / 10</span>
+		</div>
+		<div class="summary-item">
+		  <span class="summary-label">Game Status</span>
+		  <span id="turns-status-value" class="summary-value">{formatStatusLabel('not-started')}</span>
+		</div>
+		<div class="summary-item">
+		  <span class="summary-label">Next Turn</span>
+		  <span id="turns-next-value" class="summary-value">{formatNextTurn(null)}</span>
+		</div>
+	  </div>
+	</div>
+
+	<section class="submissions-section">
+	  <h2>Faction Orders Status</h2>
+	  <p>Status for the ten player factions (2–11). NPC factions (1, 12, 13) submit automatically.</p>
+
+	  <div class="factions-table">
+		<div class="table-header">
+		  <div class="table-cell faction-col">Faction</div>
+		  <div class="table-cell status-col">Orders Submitted</div>
+		</div>
+
+		<div id="turns-factions-table">
+		  {placeholderFactions.map((faction) => (
+			<div class="table-row" data-faction-id={faction.id}>
+			  <div class="table-cell faction-col">
+				<strong>{faction.name}</strong>
+			  </div>
+			  <div class="table-cell status-col pending">
+				⏳ Awaiting Orders
+			  </div>
+			</div>
+		  ))}
+		</div>
+	  </div>
+	</section>
+
+	<section class="turn-info card">
+	  <h2>What Happens Each Turn</h2>
+	  <ol>
+		<li>
+		  <strong>Orders Deadline:</strong> Players read the previous turn's report and submit orders
+		  within the deadline (typically one week for a quarterly turn).
+		</li>
+		<li>
+		  <strong>Processing:</strong> The game master collects all orders and runs the engine to process
+		  one quarter (13 weeks) of in-game time.
+		</li>
+		<li>
+		  <strong>Reports:</strong> New faction reports are generated and distributed to each player.
+		</li>
+		<li>
+		  <strong>Next Turn:</strong> The cycle repeats for the following quarter.
+		</li>
+	  </ol>
+	</section>
+
+	<section class="rules-section card">
+	  <h2>Want to Learn More?</h2>
+	  <p>
+		New to SpaceAge? Read the <a href={withBase('rules')}>rules overview</a> to understand what goes into
+		each turn and how the game works.
+	  </p>
+	</section>
+  </section>
+</Layout>
+
+<script>
+  import { bindTurnsPage } from '../lib/statusClient';
+
+  const root = document.getElementById('turns-page');
+  if (root) bindTurnsPage(root);
+</script>
+
+<style>
+  .turns-content {
+	max-width: 900px;
+	margin: 0 auto;
+  }
+
+  h1 {
+	color: var(--color-accent-teal);
+	margin-bottom: var(--space-xl);
+  }
+
+  .status-summary {
+	margin-bottom: var(--space-2xl);
+  }
+
+  .summary-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	gap: var(--space-lg);
+	margin-top: var(--space-lg);
+  }
+
+  .summary-item {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-sm);
+	padding: var(--space-md);
+	background-color: rgba(13, 148, 136, 0.1);
+	border-radius: var(--radius-md);
+  }
+
+  .summary-label {
+	font-size: var(--font-size-sm);
+	font-weight: var(--font-weight-semibold);
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	color: #666;
+  }
+
+  .summary-value {
+	font-size: var(--font-size-2xl);
+	font-weight: var(--font-weight-bold);
+	color: var(--color-accent-teal);
+  }
+
+  .submissions-section {
+	margin-bottom: var(--space-2xl);
+  }
+
+  .factions-table {
+	background-color: var(--color-card-bg);
+	border-radius: var(--radius-lg);
+	overflow: hidden;
+	margin-top: var(--space-lg);
+  }
+
+  .table-header {
+	display: grid;
+	grid-template-columns: 2fr 1fr;
+	gap: 0;
+	background-color: rgba(0, 0, 0, 0.1);
+	font-weight: var(--font-weight-bold);
+	border-bottom: 2px solid var(--color-accent-teal);
+  }
+
+  .table-row {
+	display: grid;
+	grid-template-columns: 2fr 1fr;
+	gap: 0;
+	border-bottom: 1px solid #ddd;
+	align-items: center;
+  }
+
+  .table-row:last-child {
+	border-bottom: none;
+  }
+
+  .table-cell {
+	padding: var(--space-md);
+	color: var(--color-text-dark);
+  }
+
+  .faction-col {
+	font-weight: var(--font-weight-semibold);
+  }
+
+  .status-col {
+	text-align: center;
+  }
+
+  .status-col.pending {
+	color: #b45309;
+  }
+
+  .status-col.submitted {
+	color: #047857;
+  }
+
+  .turn-info {
+	margin-bottom: var(--space-2xl);
+  }
+
+  .turn-info ol {
+	margin-left: var(--space-lg);
+	color: var(--color-text-dark);
+  }
+
+  .turn-info li {
+	margin-bottom: var(--space-md);
+	line-height: 1.8;
+  }
+
+  .rules-section {
+	text-align: center;
+  }
+
+  @media (max-width: 768px) {
+	.summary-grid {
+	  grid-template-columns: 1fr;
+	}
+
+	.table-header,
+	.table-row {
+	  grid-template-columns: 1fr;
+	}
+
+	.status-col {
+	  text-align: left;
+	  margin-top: var(--space-sm);
+	}
+  }
+</style>

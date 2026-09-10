@@ -1,0 +1,221 @@
+---
+import Layout from '../layouts/Layout.astro';
+import StatusDashboard from '../components/StatusDashboard.astro';
+import { withBase } from '../lib/paths';
+---
+
+<Layout title="Home" description="SpaceAge - Open PBEM Campaign Lobby">
+  <section class="hero">
+	<div class="hero-content">
+	  <h1>SpaceAge Campaign</h1>
+	  <p class="tagline">An Open Play-by-Email Galactic Strategy Game</p>
+
+	  <p class="closed-lobby">
+		This campaign is <strong>invitation-only</strong> — a closed table for ten player factions.
+		There is no public sign-up; this site is for players and observers of that table.
+	  </p>
+
+	  <div class="attribution-block card" id="attribution">
+		<h2>Lineage &amp; Attribution</h2>
+		<p>
+		  Original ideas are taken from <strong>Atlantis</strong> and <strong>Rise of Heroes</strong>,
+		  and influenced by <strong>Vincent Archer</strong>. Archer wrote a 1998 generic PBEM engine
+		  used by Overlord and then Rise of Heroes (1999–2000), intended for Atlantis-like games.
+		  SpaceAge / Alderson sits in that family. SpaceAge is a <strong>spiritual successor</strong>,
+		  not those games.
+		</p>
+		<p>
+		  <a href="https://overlord.sourceforge.net/" rel="noopener noreferrer">Overlord PBEM engine (SourceForge)</a>
+		</p>
+	  </div>
+
+	  <div class="flavour">
+		<h2>The Alderson Points</h2>
+		<p class="flavour-lead">
+		  A long, long time ago, in a galaxy far, far away… Or maybe in our future, here, in the Milky Way?
+		</p>
+		<p>
+		  Alderson theorised <strong>weak points</strong> in space-time at the <strong>fringes of gravity wells</strong>.
+		  From those points one could jump to another. The experimental <strong>Alderson Drive</strong> sent an expedition
+		  more than <strong>750 light-years</strong> — and back the next week — in the wink of an eye. Today those Points
+		  link the galaxy. Resources await explorers, traders, operators, and captains.
+		</p>
+		<p>
+		  In a single day the Points <strong>shut down</strong>. Commerce died; colonies starved. After four months,
+		  Points <strong>reopened</strong> — mostly the old links, some new. Contact never resumed with 10% of systems.
+		  <strong>Two Points that led to Earth stayed dark.</strong> Radio from Sol dwindled to silence. Only the Fear remains.
+		</p>
+	  </div>
+
+	  <div class="pbem-intro card">
+		<h3>How Play-by-Email Works</h3>
+		<p>
+		  You do not log into a live game. Instead, you read last quarter's report (text for now, visual tools later),
+		  discuss strategy, and submit orders. When all factions are ready, the game engine processes the turn and
+		  publishes new reports. The cycle repeats each quarter.
+		</p>
+	  </div>
+
+	  <div class="cta-buttons">
+		<a href={withBase('client')} class="button">Open the Client</a>
+		<a href={withBase('turns')} class="button button-secondary">View Turn Status</a>
+	  </div>
+	</div>
+
+	<div class="hero-visual">
+	  <div class="placeholder-visual">
+		<p>★ Star Map Preview ★</p>
+		<p style="font-size: 3rem; margin: 1rem 0;">✦</p>
+		<p>Visual Tool Coming Soon</p>
+	  </div>
+	</div>
+  </section>
+
+  <section class="dashboard-section">
+	<h2>Game Status</h2>
+	<StatusDashboard />
+  </section>
+
+  <section class="features-section">
+	<h2>Game Features</h2>
+	<div class="features-grid">
+	  <div class="card">
+		<h3>Quarterly Turns</h3>
+		<p>Each turn represents 13 weeks of in-game time. Strategy and diplomacy unfold across months of real time.</p>
+	  </div>
+	  <div class="card">
+		<h3>Deep Technology Tree</h3>
+		<p>Research and develop technologies across 10 levels, from basic fusion drives to advanced weapons and modules.</p>
+	  </div>
+	  <div class="card">
+		<h3>Rich Simulation</h3>
+		<p>Combat mechanics, resource management, crew skills, planetary environments, and diplomacy all affect your success.</p>
+	  </div>
+	</div>
+  </section>
+
+  <section class="rules-preview-section card">
+	<h2>Quick Start</h2>
+	<p>New to SpaceAge? Start with the <a href={withBase('rules')}>rules overview</a> to understand the core mechanics.</p>
+	<p>Want to dive deeper? Check out the <a href={withBase('client')}>client page</a> for installation and getting started.</p>
+  </section>
+</Layout>
+
+<style>
+  .hero {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: var(--space-2xl);
+	margin-bottom: var(--space-2xl);
+	align-items: center;
+  }
+
+  .hero-content {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-lg);
+  }
+
+  .hero h1 {
+	font-size: var(--font-size-3xl);
+	color: var(--color-accent-teal);
+	margin-bottom: var(--space-md);
+  }
+
+  .tagline {
+	font-size: var(--font-size-xl);
+	color: var(--color-accent-amber);
+	font-weight: var(--font-weight-semibold);
+  }
+
+  .closed-lobby {
+	background-color: rgba(245, 158, 11, 0.12);
+	border-left: 3px solid var(--color-accent-amber);
+	padding: var(--space-md) var(--space-lg);
+	border-radius: var(--radius-md);
+  }
+
+  .attribution-block h2 {
+	margin-top: 0;
+	color: var(--color-accent-teal);
+  }
+
+  .flavour {
+	background-color: rgba(13, 148, 136, 0.1);
+	padding: var(--space-lg);
+	border-left: 3px solid var(--color-accent-teal);
+	border-radius: var(--radius-md);
+  }
+
+  .flavour h2 {
+	margin-top: 0;
+	color: var(--color-accent-teal);
+	font-size: var(--font-size-lg);
+  }
+
+  .flavour-lead {
+	font-style: italic;
+  }
+
+  .pbem-intro {
+	margin: var(--space-lg) 0;
+  }
+
+  .cta-buttons {
+	display: flex;
+	gap: var(--space-md);
+	flex-wrap: wrap;
+  }
+
+  .button-secondary {
+	background-color: var(--color-accent-blue);
+  }
+
+  .hero-visual {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+  }
+
+  .placeholder-visual {
+	background-color: rgba(13, 148, 136, 0.05);
+	border: 2px solid var(--color-accent-teal);
+	border-radius: var(--radius-lg);
+	padding: var(--space-2xl);
+	text-align: center;
+	color: #666;
+  }
+
+  .dashboard-section {
+	margin-bottom: var(--space-2xl);
+  }
+
+  .features-section {
+	margin-bottom: var(--space-2xl);
+  }
+
+  .features-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	gap: var(--space-lg);
+  }
+
+  .rules-preview-section {
+	margin-bottom: var(--space-2xl);
+  }
+
+  @media (max-width: 768px) {
+	.hero {
+	  grid-template-columns: 1fr;
+	}
+
+	.cta-buttons {
+	  flex-direction: column;
+	}
+
+	.button {
+	  width: 100%;
+	  text-align: center;
+	}
+  }
+</style>

@@ -59,7 +59,7 @@ namespace SpaceAge
 			}
 			loadedKeys.Add(loadedKey);
 
-			Order order = CreateOrder(elVerb.Name, subject);
+			Order order = OrderFactory.Create(elVerb.Name, subject);
 			order.LoadXml(elOrder);
 
 			if (elOrder.GetAttribute("repeat") == "unlimited")
@@ -100,67 +100,6 @@ namespace SpaceAge
 				}
 			}
 			return null;
-		}
-
-		private static Order CreateOrder(string verb, IOrderable subject)
-		{
-			switch (verb)
-			{
-				case "active":
-					return new ActiveOrder(subject);
-				case "alias":
-					return new AliasOrder(subject);
-				case "attack":
-					return new AttackOrder(subject);
-				case "capture":
-					return new CaptureOrder(subject);
-				case "buy":
-					return new BuyOrder(subject);
-				case "copy":
-					return new CopyOrder(subject);
-				case "contract":
-					return new ContractOrder(subject);
-				case "press":
-					return new PressOrder(subject);
-				case "declare":
-					return new DeclareOrder(subject);
-				case "form":
-					return new FormOrder(subject);
-				case "get":
-					return new GetOrder(subject);
-				case "give":
-					return new GiveOrder(subject);
-				case "has":
-					return new HasOrder(subject);
-				case "move":
-					return new MoveOrder(subject);
-				case "name":
-					return new NameOrder(subject);
-				case "produce":
-					return new ProduceOrder(subject);
-				case "repair":
-					return new RepairOrder(subject);
-				case "research":
-					return new ResearchOrder(subject);
-				case "see":
-					return new SeeOrder(subject);
-				case "sell":
-					return new SellOrder(subject);
-				case "set":
-					return new SetOrder(subject);
-				case "stack":
-					return new StackOrder(subject);
-				case "tactic":
-					return new TacticOrder(subject);
-				case "train":
-					return new TrainOrder(subject);
-				case "transfer":
-					return new TransferOrder(subject);
-				case "use":
-					return new UseOrder(subject);
-				default:
-					throw new Exception("Unknown order. " + verb);
-			}
 		}
 
 		private static Order GetParentOrder(IOrderable subject, Order order, int orderLevel)

@@ -1,0 +1,215 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { withBase } from '../lib/paths';
+---
+
+<Layout title="Rules Overview" description="SpaceAge Rules - Core Game Mechanics">
+  <section class="rules-content">
+	<h1>Rules Overview</h1>
+
+	<div class="intro-card card">
+	  <h2>How SpaceAge Works</h2>
+	  <p>
+		SpaceAge is a quarterly turn-based strategy game. Each turn simulates 13 weeks of in-game time.
+		You control an Interest (faction) pursuing your own strategic goals across the galaxy.
+	  </p>
+	</div>
+
+	<section class="core-concepts">
+	  <h2>Core Concepts</h2>
+
+	  <div class="concept-card card">
+		<h3>📍 The Galaxy & Points</h3>
+		<p>
+		  The game world is a network of star systems connected by ancient Points — stable wormholes that enable
+		  faster-than-light travel. These Points form in the outer reaches of star systems (the <strong>Alderson Corona</strong>),
+		  far enough to avoid tidal destruction but close enough to form in the star's gravity well.
+		</p>
+		<p>
+		  In a single catastrophic day, the Points shut down. Commerce died. Colonies starved. After four months, most
+		  reopened — but not all connections were restored. Some systems remain isolated. And two Points that led to
+		  Earth stayed dark, leaving only mystery and fear.
+		</p>
+	  </div>
+
+	  <div class="concept-card card">
+		<h3>🚀 Interests & Factions</h3>
+		<p>
+		  You are an <strong>Interest</strong> — a corporation, fleet, association, or any other entity with strategic ambitions.
+		  In this campaign, ten Interests (factions 2–11) compete and cooperate across the stars. NPC factions (1, 12, 13)
+		  also exist in the world but do not submit player orders.
+		</p>
+		<p>
+		  There is no forced victory condition. You set your own goals: colonization, exploration, trade, science, or warfare.
+		</p>
+	  </div>
+
+	  <div class="concept-card card">
+		<h3>⏰ Quarterly Turns</h3>
+		<p>
+		  One game turn = one quarter = 13 weeks of in-game time. You read a quarterly report, analyze what happened,
+		  discuss strategy (via Discord, email, or forums), and submit orders. The game master processes the turn and
+		  publishes new reports. This cycle repeats.
+		</p>
+		<p>
+		  Because turns take time to discuss and process, a single quarter of in-game time may span a week or more of real time.
+		</p>
+	  </div>
+
+	  <div class="concept-card card">
+		<h3>🛸 Units & Resources</h3>
+		<p>
+		  Your faction controls ships (scouts, freighters, warships), facilities (mines, labs, shipyards), resources (metals,
+		  rare elements, fuel), and trained personnel (commanders, scientists, engineers). Each resource has costs and benefits.
+		  Strategic choices about what to build, explore, or attack shape your long-term success.
+		</p>
+	  </div>
+
+	  <div class="concept-card card">
+		<h3>🔬 Research & Technology</h3>
+		<p>
+		  A 10-level technology tree defines what you can build and research. Early techs (level 0–2) are basic and cheap.
+		  Higher levels unlock better ships, weapons, and modules — but require significant research investment and resources.
+		  Technology choices define your faction's capabilities and playstyle.
+		</p>
+	  </div>
+
+	  <div class="concept-card card">
+		<h3>⚔️ Combat & Tactics</h3>
+		<p>
+		  When interests clash, combat is resolved by the engine. Weapon types (kinetic, missile, energy) have different
+		  advantages and disadvantages. Ships with armor, shields, and trained crews have better survivability. Tactics matter:
+		  you can choose to destroy enemies, capture their ships, or attempt to evade.
+		</p>
+	  </div>
+	</section>
+
+	<section class="gameplay-flow">
+	  <h2>Gameplay Flow</h2>
+	  <ol class="flow-list">
+		<li>
+		  <strong>Receive Report:</strong> At the start of a turn, you get a detailed report of your faction's status,
+		  including units, locations, resources, and research progress.
+		</li>
+		<li>
+		  <strong>Plan Strategy:</strong> Analyze the report and discuss with allies or opponents. Decide your next moves.
+		</li>
+		<li>
+		  <strong>Write Orders:</strong> Specify actions for your ships, facilities, and personnel. Orders use a text-based
+		  syntax and can be drafted in the visual tool client.
+		</li>
+		<li>
+		  <strong>Submit Orders:</strong> Send your order file to the game master before the deadline.
+		</li>
+		<li>
+		  <strong>Processing:</strong> The GM collects all orders and runs the engine to simulate the quarter.
+		</li>
+		<li>
+		  <strong>New Reports:</strong> The engine outputs new faction reports reflecting all the actions and results.
+		</li>
+		<li>
+		  <strong>Repeat:</strong> The cycle continues for the next quarter.
+		</li>
+	  </ol>
+	</section>
+
+	<section class="sample-orders">
+	  <h2>Sample Orders</h2>
+	  <div class="card">
+		<p>
+		  Orders control what your units do each turn: moving ships between systems, researching technology, mining resources,
+		  building new units, engaging in combat, or diplomacy. The exact syntax and options are documented in the full
+		  <strong>Player Rules</strong> (available in the client and linked below).
+		</p>
+		<p style="font-size: var(--font-size-sm); color: #999; margin-top: var(--space-lg);">
+		  Sample orders and detailed order syntax are in the full rules document.
+		</p>
+	  </div>
+	</section>
+
+	<section class="full-rules-section card">
+	  <h2>Full Rules & Documentation</h2>
+	  <p>
+		This overview covers the basics. For detailed rules, order syntax, technology tree, combat formulas, and more,
+		consult the complete <strong>Player Rules</strong> document (available in the game client or on this site).
+	  </p>
+	  <p>
+		<strong>Questions?</strong> Check the <a href={withBase()}>home page</a> or ask the game master on the campaign's community channel.
+	  </p>
+	</section>
+
+	<section class="design-philosophy card">
+	  <h2>Design Philosophy</h2>
+	  <p>
+		SpaceAge follows the tradition of open PBEM strategy games: hard science (wormholes, orbital mechanics, resource constraints),
+		no forced narrative, and player agency. Your decisions matter. Diplomacy, deception, and strategy are as valid as military might.
+		There is no single path to success — only the path your Interest chooses.
+	  </p>
+	</section>
+  </section>
+</Layout>
+
+<style>
+  .rules-content {
+	max-width: 900px;
+	margin: 0 auto;
+  }
+
+  h1 {
+	color: var(--color-accent-teal);
+	margin-bottom: var(--space-xl);
+  }
+
+  .intro-card {
+	margin-bottom: var(--space-2xl);
+  }
+
+  .core-concepts {
+	margin-bottom: var(--space-2xl);
+  }
+
+  .concept-card {
+	margin-bottom: var(--space-lg);
+  }
+
+  .concept-card h3 {
+	color: var(--color-accent-teal);
+	margin-top: 0;
+  }
+
+  .gameplay-flow {
+	margin-bottom: var(--space-2xl);
+  }
+
+  .flow-list {
+	margin-left: var(--space-lg);
+	line-height: 2;
+  }
+
+  .flow-list li {
+	margin-bottom: var(--space-md);
+  }
+
+  .sample-orders {
+	margin-bottom: var(--space-2xl);
+  }
+
+  .full-rules-section {
+	margin-bottom: var(--space-2xl);
+  }
+
+  .design-philosophy {
+	background-color: rgba(13, 148, 136, 0.05);
+	border: 1px solid var(--color-accent-teal);
+  }
+
+  a {
+	color: var(--color-accent-teal);
+  }
+
+  @media (max-width: 768px) {
+	.concept-card {
+	  margin-bottom: var(--space-md);
+	}
+  }
+</style>

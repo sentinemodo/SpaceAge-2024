@@ -5,7 +5,7 @@ Content-Disposition: attachment
 SpaceAge report for NPC [1].
 Turn 5, Year 2021, January 1.
 
-SpaceAge Engine Version: 0.1.144.
+SpaceAge Engine Version: 0.1.158.
 
 Events during turn:
   none.
@@ -21,946 +21,639 @@ Battles report:
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
   ------------------------------------------------------------
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
-  bay [000013].
-    #1 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and misses.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
-  bay [000013].
-    #3 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
-  bay [000013].
-    #1 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
-  bay [000013].
-    #4 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
-  bay [000013].
-    #2 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
-  bay [000013].
-    #5 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
-  bay [000013].
-    #3 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
-  bay [000013].
-    #1 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
-  bay [000013].
-    #4 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
-  bay [000013].
-    #2 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
-  bay [000013].
-    #5 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
-  bay [000013].
-    #3 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
-  bay [000013].
-    #1 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
-  bay [000013].
-    #4 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
-  bay [000013].
-    #2 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
-  bay [000013].
-    #5 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
-  bay [000013].
-    #3 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
-  bay [000013].
-    #1 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #4 small cargo
-  bay [000013].
-    #4 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #2 small cargo
-  bay [000013].
-    #2 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #5 small cargo
-  bay [000013].
-    #5 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
-  bay [000013].
-    #3 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
-  bay [000013].
-    #1 small cargo bay [cargob] module captured by Gelvaren [3].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
-  bay [000013].
-    #1 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
-  bay [000013].
-    #3 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
-  bay [000013].
-    #1 small cargo bay [cargob] module captured by Gelvaren [3].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
-  bay [000013].
-    #3 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
-  bay [000013].
-    #1 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #3 small cargo
-  bay [000013].
-    #3 small cargo bay [cargob] module captured by Gelvaren [3].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
+  coal-burning plant [000015].
+    #1 coal-burning plant [cplant] module captured by Gelvaren [3].
+  Surrender or die! [109] fires tanks [tanks] on core drill [000016] and hits #1 core drill
+  [000016].
+  Surrender or die! [109] fires tanks [tanks] on core drill [000016] and hits #1 core drill
+  [000016].
+  Surrender or die! [109] fires tanks [tanks] on core drill [000016] and hits #1 core drill
+  [000016].
+  Surrender or die! [109] fires tanks [tanks] on core drill [000016] and hits #1 core drill
+  [000016].
+  Surrender or die! [109] fires tanks [tanks] on core drill [000016] and hits #1 core drill
+  [000016].
+  Surrender or die! [109] fires tanks [tanks] on core drill [000016] and hits #1 core drill
+  [000016].
+  Surrender or die! [109] fires tanks [tanks] on core drill [000016] and hits #1 core drill
+  [000016].
+  Surrender or die! [109] fires tanks [tanks] on core drill [000016] and hits #1 core drill
+  [000016].
+  Surrender or die! [109] fires tanks [tanks] on core drill [000016] and hits #1 core drill
+  [000016].
+  Surrender or die! [109] fires tanks [tanks] on core drill [000016] and hits #1 core drill
+  [000016].
+  Surrender or die! [109] fires tanks [tanks] on core drill [000016] and hits #1 core drill
+  [000016].
+  Surrender or die! [109] fires tanks [tanks] on core drill [000016] and hits #1 core drill
+  [000016].
+
   Week 2.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
   ------------------------------------------------------------
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
-  bay [000013].
-    #1 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and misses.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
-  bay [000013].
-    #1 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
-  bay [000013].
-    #1 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
-  bay [000013].
-    #1 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
-  bay [000013].
-    #1 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
-  bay [000013].
-    #1 small cargo bay [cargob] module captured by Gelvaren [3].
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
-  bay [000013].
-    #1 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
-  bay [000013].
-    #1 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
-  bay [000013].
-    #1 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] and hits #1 small cargo
-  bay [000013].
-    #1 small cargo bay [cargob] module captured by Gelvaren [3].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #3
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #3
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #3
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #3
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on core drill [000016] and hits #1 core drill
+  [000016].
+  Surrender or die! [109] fires tanks [tanks] on core drill [000016] and hits #1 core drill
+  [000016].
+  Surrender or die! [109] fires tanks [tanks] on core drill [000016] and hits #1 core drill
+  [000016].
+  Surrender or die! [109] fires tanks [tanks] on core drill [000016] and hits #1 core drill
+  [000016].
+  Surrender or die! [109] fires tanks [tanks] on core drill [000016] and hits #1 core drill
+  [000016].
+  Surrender or die! [109] fires tanks [tanks] on core drill [000016] and hits #1 core drill
+  [000016].
+  Surrender or die! [109] fires tanks [tanks] on core drill [000016] and hits #1 core drill
+  [000016].
+  Surrender or die! [109] fires tanks [tanks] on core drill [000016] and hits #1 core drill
+  [000016].
+  Surrender or die! [109] fires tanks [tanks] on core drill [000016] and hits #1 core drill
+  [000016].
+  Surrender or die! [109] fires tanks [tanks] on core drill [000016] and hits #1 core drill
+  [000016].
+  Surrender or die! [109] fires tanks [tanks] on core drill [000016] and hits #1 core drill
+  [000016].
+  Surrender or die! [109] fires tanks [tanks] on core drill [000016] and hits #1 core drill
+  [000016].
+  Surrender or die! [109] fires tanks [tanks] on core drill [000016] and hits #1 core drill
+  [000016].
+  Surrender or die! [109] fires tanks [tanks] on core drill [000016] and hits #1 core drill
+  [000016].
+  Surrender or die! [109] fires tanks [tanks] on core drill [000016] and hits #1 core drill
+  [000016].
+  Surrender or die! [109] fires tanks [tanks] on core drill [000016] and hits #1 core drill
+  [000016].
+  Surrender or die! [109] fires tanks [tanks] on core drill [000016] and hits #1 core drill
+  [000016].
+  Surrender or die! [109] fires tanks [tanks] on core drill [000016] and hits #1 core drill
+  [000016].
+  Surrender or die! [109] fires tanks [tanks] on core drill [000016] and hits #1 core drill
+  [000016].
+  Surrender or die! [109] fires tanks [tanks] on core drill [000016] and hits #1 core drill
+  [000016].
+  Surrender or die! [109] fires tanks [tanks] on core drill [000016] and hits #1 core drill
+  [000016].
+  Surrender or die! [109] fires tanks [tanks] on core drill [000016] and hits #1 core drill
+  [000016].
+    #1 core drill [cdrill] module captured by Gelvaren [3].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #5 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #4 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #3 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+
   Week 3.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
   ------------------------------------------------------------
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and misses.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #3
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #3
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #3
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #3
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #3
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+    #1 factory [factry] module captured by Gelvaren [3].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+
   Week 4.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
   ------------------------------------------------------------
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and misses.
-  infantry battalion [110] fires infantry battalion [inftry] on coal-burning plant [000015] and hits
-  #2 coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-  infantry battalion [110] fires infantry battalion [inftry] on coal-burning plant [000015] and hits
-  #3 coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
-  coal-burning plant [000015].
-  infantry battalion [110] fires infantry battalion [inftry] on coal-burning plant [000015] and hits
-  #1 coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #3
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-  infantry battalion [110] fires infantry battalion [inftry] on coal-burning plant [000015] and hits
-  #2 coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #3
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
-  coal-burning plant [000015].
-  infantry battalion [110] fires infantry battalion [inftry] on coal-burning plant [000015] and hits
-  #1 coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #3
-  coal-burning plant [000015].
-  infantry battalion [110] fires infantry battalion [inftry] on coal-burning plant [000015] and hits
-  #2 coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-  infantry battalion [110] fires infantry battalion [inftry] on coal-burning plant [000015] and hits
-  #3 coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
-  coal-burning plant [000015].
-  infantry battalion [110] fires infantry battalion [inftry] on coal-burning plant [000015] and hits
-  #1 coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #3
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-  infantry battalion [110] fires infantry battalion [inftry] on coal-burning plant [000015] and hits
-  #2 coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #3
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
-  coal-burning plant [000015].
-  infantry battalion [110] fires infantry battalion [inftry] on coal-burning plant [000015] and hits
-  #1 coal-burning plant [000015].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #4 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #3 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
+  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #1 factory
+  [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #4 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #3 factory [000017].
+  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #2 factory
+  [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #4 factory [000017].
+  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #3 factory
+  [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #4 factory
+  [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #3 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #1 factory
+  [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #4 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #3 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
+  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #1 factory
+  [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #4 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #3 factory [000017].
+  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #2 factory
+  [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #4 factory [000017].
+  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #3 factory
+  [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #4 factory
+  [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #3 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #1 factory
+  [000017].
+
   Week 5.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
   ------------------------------------------------------------
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and misses.
-  infantry battalion [110] fires infantry battalion [inftry] on coal-burning plant [000015] and hits
-  #2 coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-  infantry battalion [110] fires infantry battalion [inftry] on coal-burning plant [000015] and hits
-  #3 coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
-  coal-burning plant [000015].
-  infantry battalion [110] fires infantry battalion [inftry] on coal-burning plant [000015] and hits
-  #1 coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #3
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-  infantry battalion [110] fires infantry battalion [inftry] on coal-burning plant [000015] and hits
-  #2 coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #3
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
-  coal-burning plant [000015].
-  infantry battalion [110] fires infantry battalion [inftry] on coal-burning plant [000015] and hits
-  #1 coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #3
-  coal-burning plant [000015].
-  infantry battalion [110] fires infantry battalion [inftry] on coal-burning plant [000015] and hits
-  #2 coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-  infantry battalion [110] fires infantry battalion [inftry] on coal-burning plant [000015] and hits
-  #3 coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
-  coal-burning plant [000015].
-  infantry battalion [110] fires infantry battalion [inftry] on coal-burning plant [000015] and hits
-  #1 coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #3
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-    #1 coal-burning plant [cplant] is disabled.
-  infantry battalion [110] fires infantry battalion [inftry] on coal-burning plant [000015] and hits
-  #2 coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-    #1 coal-burning plant [cplant] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #3
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
-  coal-burning plant [000015].
-  infantry battalion [110] fires infantry battalion [inftry] on coal-burning plant [000015] and hits
-  #1 coal-burning plant [000015].
-    #1 coal-burning plant [cplant] is disabled.
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and misses.
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #4 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #3 factory [000017].
+  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #2 factory
+  [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #4 factory [000017].
+  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #3 factory
+  [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #4 factory
+  [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #3 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #1 factory
+  [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #4 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #3 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
+  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #1 factory
+  [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #4 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #3 factory [000017].
+  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #2 factory
+  [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #4 factory [000017].
+  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #3 factory
+  [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #4 factory
+  [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #3 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #1 factory
+  [000017].
+
   Week 6.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
   ------------------------------------------------------------
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-    #1 coal-burning plant [cplant] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-    #1 coal-burning plant [cplant] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and misses.
-  infantry battalion [110] fires infantry battalion [inftry] on coal-burning plant [000015] and hits
-  #2 coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-    #1 coal-burning plant [cplant] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-    #1 coal-burning plant [cplant] is disabled.
-  infantry battalion [110] fires infantry battalion [inftry] on coal-burning plant [000015] and hits
-  #3 coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-    #1 coal-burning plant [cplant] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
-  coal-burning plant [000015].
-  infantry battalion [110] fires infantry battalion [inftry] on coal-burning plant [000015] and hits
-  #1 coal-burning plant [000015].
-    #1 coal-burning plant [cplant] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #3
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-    #1 coal-burning plant [cplant] is disabled.
-  infantry battalion [110] fires infantry battalion [inftry] on coal-burning plant [000015] and hits
-  #2 coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-    #1 coal-burning plant [cplant] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #3
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
-  coal-burning plant [000015].
-    #2 coal-burning plant [cplant] is disabled.
-  infantry battalion [110] fires infantry battalion [inftry] on coal-burning plant [000015] and hits
-  #1 coal-burning plant [000015].
-    #1 coal-burning plant [cplant] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
-  coal-burning plant [000015].
-    #2 coal-burning plant [cplant] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-    #1 coal-burning plant [cplant] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #3
-  coal-burning plant [000015].
-  infantry battalion [110] fires infantry battalion [inftry] on coal-burning plant [000015] and hits
-  #2 coal-burning plant [000015].
-    #2 coal-burning plant [cplant] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-    #1 coal-burning plant [cplant] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
-  coal-burning plant [000015].
-    #2 coal-burning plant [cplant] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-    #1 coal-burning plant [cplant] is disabled.
-  infantry battalion [110] fires infantry battalion [inftry] on coal-burning plant [000015] and hits
-  #3 coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
-  coal-burning plant [000015].
-    #2 coal-burning plant [cplant] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-    #1 coal-burning plant [cplant] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
-  coal-burning plant [000015].
-    #2 coal-burning plant [cplant] is disabled.
-  infantry battalion [110] fires infantry battalion [inftry] on coal-burning plant [000015] and hits
-  #1 coal-burning plant [000015].
-    #1 coal-burning plant [cplant] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #3
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
-  coal-burning plant [000015].
-    #2 coal-burning plant [cplant] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-    #1 coal-burning plant [cplant] module captured by Gelvaren [3].
-  infantry battalion [110] fires infantry battalion [inftry] on coal-burning plant [000015] and hits
-  #1 coal-burning plant [000015].
-    #1 coal-burning plant [cplant] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-    #1 coal-burning plant [cplant] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
-  coal-burning plant [000015].
-  infantry battalion [110] fires infantry battalion [inftry] on coal-burning plant [000015] and hits
-  #1 coal-burning plant [000015].
-    #1 coal-burning plant [cplant] is disabled.
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and misses.
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #4 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #3 factory [000017].
+  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #2 factory
+  [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #4 factory [000017].
+  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #3 factory
+  [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #4 factory
+  [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #3 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #1 factory
+  [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #4 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #3 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
+  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #1 factory
+  [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #4 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #3 factory [000017].
+  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #2 factory
+  [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #4 factory [000017].
+  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #3 factory
+  [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #4 factory
+  [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #3 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #1 factory
+  [000017].
+
   Week 7.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
   ------------------------------------------------------------
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-    #1 coal-burning plant [cplant] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-    #1 coal-burning plant [cplant] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and misses.
-  infantry battalion [110] fires infantry battalion [inftry] on coal-burning plant [000015] and hits
-  #2 coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-    #1 coal-burning plant [cplant] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-    #1 coal-burning plant [cplant] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
-  coal-burning plant [000015].
-  infantry battalion [110] fires infantry battalion [inftry] on coal-burning plant [000015] and hits
-  #1 coal-burning plant [000015].
-    #1 coal-burning plant [cplant] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-    #1 coal-burning plant [cplant] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-    #1 coal-burning plant [cplant] is disabled.
-  infantry battalion [110] fires infantry battalion [inftry] on coal-burning plant [000015] and hits
-  #2 coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-    #1 coal-burning plant [cplant] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-    #1 coal-burning plant [cplant] is disabled.
-  infantry battalion [110] fires infantry battalion [inftry] on coal-burning plant [000015] and hits
-  #1 coal-burning plant [000015].
-    #1 coal-burning plant [cplant] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-    #1 coal-burning plant [cplant] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #2
-  coal-burning plant [000015].
-  infantry battalion [110] fires infantry battalion [inftry] on coal-burning plant [000015] and hits
-  #1 coal-burning plant [000015].
-    #1 coal-burning plant [cplant] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-    #1 coal-burning plant [cplant] module captured by Gelvaren [3].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-  infantry battalion [110] fires infantry battalion [inftry] on coal-burning plant [000015] and hits
-  #1 coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-  infantry battalion [110] fires infantry battalion [inftry] on coal-burning plant [000015] and hits
-  #1 coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-  infantry battalion [110] fires infantry battalion [inftry] on coal-burning plant [000015] and hits
-  #1 coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-  infantry battalion [110] fires infantry battalion [inftry] on coal-burning plant [000015] and hits
-  #1 coal-burning plant [000015].
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] and hits #1
-  coal-burning plant [000015].
-    #1 coal-burning plant [cplant] module captured by Gelvaren [3].
-  infantry battalion [110] fires infantry battalion [inftry] on core drill [000016] and hits #1 core
-  drill [000016].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+    #1 factory [factry] is disabled.
+  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and misses.
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+    #1 factory [factry] is disabled.
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #4 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #3 factory [000017].
+  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #2 factory
+  [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+    #1 factory [factry] is disabled.
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+    #1 factory [factry] is disabled.
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #4 factory [000017].
+  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #3 factory
+  [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+    #1 factory [factry] is disabled.
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+    #1 factory [factry] is disabled.
+  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #4 factory
+  [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #3 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+    #1 factory [factry] is disabled.
+  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #1 factory
+  [000017].
+    #1 factory [factry] is disabled.
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #4 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #3 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
+  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #1 factory
+  [000017].
+    #1 factory [factry] is disabled.
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+    #1 factory [factry] is disabled.
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #4 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #3 factory [000017].
+  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #2 factory
+  [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+    #1 factory [factry] is disabled.
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+    #1 factory [factry] is disabled.
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #4 factory [000017].
+  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #3 factory
+  [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+    #1 factory [factry] module captured by Gelvaren [3].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
+  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #1 factory
+  [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #3 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #2 factory
+  [000017].
+
   Week 8.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
   ------------------------------------------------------------
-  Surrender or die! [109] fires tanks [tanks] on core drill [000016] and misses.
-  Surrender or die! [109] fires tanks [tanks] on core drill [000016] and hits #1 core drill
-  [000016].
-  Surrender or die! [109] fires tanks [tanks] on core drill [000016] and hits #1 core drill
-  [000016].
-  infantry battalion [110] fires infantry battalion [inftry] on core drill [000016] and hits #1 core
-  drill [000016].
-  Surrender or die! [109] fires tanks [tanks] on core drill [000016] and hits #1 core drill
-  [000016].
-  Surrender or die! [109] fires tanks [tanks] on core drill [000016] and hits #1 core drill
-  [000016].
-  Surrender or die! [109] fires tanks [tanks] on core drill [000016] and hits #1 core drill
-  [000016].
-  infantry battalion [110] fires infantry battalion [inftry] on core drill [000016] and hits #1 core
-  drill [000016].
-  Surrender or die! [109] fires tanks [tanks] on core drill [000016] and hits #1 core drill
-  [000016].
-  Surrender or die! [109] fires tanks [tanks] on core drill [000016] and hits #1 core drill
-  [000016].
-  Surrender or die! [109] fires tanks [tanks] on core drill [000016] and hits #1 core drill
-  [000016].
-  infantry battalion [110] fires infantry battalion [inftry] on core drill [000016] and hits #1 core
-  drill [000016].
-  Surrender or die! [109] fires tanks [tanks] on core drill [000016] and hits #1 core drill
-  [000016].
-  Surrender or die! [109] fires tanks [tanks] on core drill [000016] and hits #1 core drill
-  [000016].
-  Surrender or die! [109] fires tanks [tanks] on core drill [000016] and hits #1 core drill
-  [000016].
-  infantry battalion [110] fires infantry battalion [inftry] on core drill [000016] and hits #1 core
-  drill [000016].
-  Surrender or die! [109] fires tanks [tanks] on core drill [000016] and hits #1 core drill
-  [000016].
-  Surrender or die! [109] fires tanks [tanks] on core drill [000016] and hits #1 core drill
-  [000016].
-  Surrender or die! [109] fires tanks [tanks] on core drill [000016] and hits #1 core drill
-  [000016].
-  infantry battalion [110] fires infantry battalion [inftry] on core drill [000016] and hits #1 core
-  drill [000016].
-  Surrender or die! [109] fires tanks [tanks] on core drill [000016] and hits #1 core drill
-  [000016].
-  Surrender or die! [109] fires tanks [tanks] on core drill [000016] and hits #1 core drill
-  [000016].
-  Surrender or die! [109] fires tanks [tanks] on core drill [000016] and hits #1 core drill
-  [000016].
-  infantry battalion [110] fires infantry battalion [inftry] on core drill [000016] and hits #1 core
-  drill [000016].
-  Surrender or die! [109] fires tanks [tanks] on core drill [000016] and hits #1 core drill
-  [000016].
-  Surrender or die! [109] fires tanks [tanks] on core drill [000016] and hits #1 core drill
-  [000016].
-  Surrender or die! [109] fires tanks [tanks] on core drill [000016] and hits #1 core drill
-  [000016].
-  infantry battalion [110] fires infantry battalion [inftry] on core drill [000016] and hits #1 core
-  drill [000016].
-  Surrender or die! [109] fires tanks [tanks] on core drill [000016] and hits #1 core drill
-  [000016].
-  Surrender or die! [109] fires tanks [tanks] on core drill [000016] and hits #1 core drill
-  [000016].
-  Surrender or die! [109] fires tanks [tanks] on core drill [000016] and hits #1 core drill
-  [000016].
-  infantry battalion [110] fires infantry battalion [inftry] on core drill [000016] and hits #1 core
-  drill [000016].
-    #1 core drill [cdrill] module captured by Gelvaren [3].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #5 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #4 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and misses.
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
   Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #3 factory [000017].
   infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #2 factory
   [000017].
   Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #5 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #4 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
   infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #3 factory
   [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
+  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #1 factory
+  [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #3 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #2 factory
+  [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #3 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
+  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #1 factory
+  [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #3 factory [000017].
+  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #2 factory
+  [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #3 factory
+  [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
+  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #1 factory
+  [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #3 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #2 factory
+  [000017].
+
   Week 9.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
   ------------------------------------------------------------
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and misses.
   Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #5 factory [000017].
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #4 factory
-  [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #3 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and misses.
   Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
   Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #5 factory
-  [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #4 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #3 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #1 factory
-  [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #5 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #4 factory [000017].
   Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #3 factory [000017].
   infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #2 factory
   [000017].
   Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #5 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #4 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
   infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #3 factory
   [000017].
   Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
   Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #5 factory [000017].
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #4 factory
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
+  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #1 factory
   [000017].
   Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #3 factory [000017].
   Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
   Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #5 factory
+  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #2 factory
   [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #4 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
   Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #3 factory [000017].
   Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
   infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #1 factory
   [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #5 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #4 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
   Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #3 factory [000017].
   infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #2 factory
   [000017].
   Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #5 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #4 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
   infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #3 factory
   [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
+  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #1 factory
+  [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #3 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #2 factory
+  [000017].
+
   Week 10.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
   ------------------------------------------------------------
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and misses.
   Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #5 factory [000017].
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #4 factory
-  [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #3 factory [000017].
+    #1 factory [factry] is disabled.
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+    #1 factory [factry] is disabled.
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+    #1 factory [factry] is disabled.
+  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and misses.
   Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
   Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #5 factory
-  [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #4 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #3 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #1 factory
-  [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #5 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #4 factory [000017].
+    #1 factory [factry] is disabled.
   Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #3 factory [000017].
   infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #2 factory
   [000017].
   Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #5 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #4 factory [000017].
+    #1 factory [factry] is disabled.
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+    #1 factory [factry] is disabled.
   infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #3 factory
   [000017].
   Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
   Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #5 factory [000017].
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #4 factory
-  [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #3 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #5 factory
-  [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #4 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #3 factory [000017].
+    #1 factory [factry] is disabled.
   Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
   infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #1 factory
   [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #5 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #4 factory [000017].
+    #1 factory [factry] is disabled.
   Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #3 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+    #1 factory [factry] is disabled.
   infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #2 factory
   [000017].
   Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #5 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #4 factory [000017].
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #3 factory
+    #1 factory [factry] is disabled.
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #3 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
+    #2 factory [factry] is disabled.
+  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #1 factory
   [000017].
+    #1 factory [factry] is disabled.
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
+    #2 factory [factry] is disabled.
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+    #1 factory [factry] is disabled.
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #3 factory [000017].
+  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #2 factory
+  [000017].
+    #2 factory [factry] is disabled.
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+    #1 factory [factry] is disabled.
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
+    #2 factory [factry] is disabled.
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+    #1 factory [factry] module captured by Gelvaren [3].
+  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #1 factory
+  [000017].
+    #1 factory [factry] is disabled.
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+    #1 factory [factry] is disabled.
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+    #1 factory [factry] is disabled.
+  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #2 factory
+  [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+    #1 factory [factry] is disabled.
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+    #1 factory [factry] is disabled.
+  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #1 factory
+  [000017].
+    #1 factory [factry] is disabled.
+
   Week 11.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
   ------------------------------------------------------------
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and misses.
   Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #5 factory [000017].
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #4 factory
-  [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #3 factory [000017].
+    #1 factory [factry] is disabled.
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+    #1 factory [factry] is disabled.
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+    #1 factory [factry] is disabled.
+  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and misses.
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+    #1 factory [factry] is disabled.
   Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
   Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #5 factory
-  [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #4 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #3 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #1 factory
-  [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #5 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #4 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #3 factory [000017].
+    #1 factory [factry] is disabled.
   infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #2 factory
   [000017].
   Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #5 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #4 factory [000017].
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #3 factory
-  [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
+    #1 factory [factry] is disabled.
   Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #5 factory [000017].
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #4 factory
-  [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #3 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #5 factory
-  [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #4 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #3 factory [000017].
+    #1 factory [factry] is disabled.
   Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
   infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #1 factory
   [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #5 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #4 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #3 factory [000017].
+    #1 factory [factry] is disabled.
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+    #1 factory [factry] is disabled.
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+    #1 factory [factry] is disabled.
   infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #2 factory
   [000017].
   Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #5 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #4 factory [000017].
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #3 factory
+    #1 factory [factry] is disabled.
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+    #1 factory [factry] module captured by Gelvaren [3].
+  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #1 factory
   [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #1 factory
+  [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #1 factory
+  [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
+    #1 factory [factry] is disabled.
+
   Week 12.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
   ------------------------------------------------------------
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and misses.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #5 factory [000017].
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #4 factory
-  [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #3 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #5 factory
-  [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #4 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #3 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #1 factory
-  [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #5 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #4 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #3 factory [000017].
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #2 factory
-  [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #5 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #4 factory [000017].
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #3 factory
-  [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #5 factory [000017].
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #4 factory
-  [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #3 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #5 factory
-  [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #4 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #3 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #1 factory
-  [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #5 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #4 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #3 factory [000017].
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #2 factory
-  [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #5 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #4 factory [000017].
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #3 factory
-  [000017].
+
   Week 13.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
   ------------------------------------------------------------
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and misses.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #5 factory [000017].
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #4 factory
-  [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #3 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #5 factory
-  [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #4 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #3 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #1 factory
-  [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #5 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #4 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #3 factory [000017].
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #2 factory
-  [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #5 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #4 factory [000017].
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #3 factory
-  [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #5 factory [000017].
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #4 factory
-  [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #3 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #5 factory
-  [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #4 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #3 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #2 factory [000017].
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #1 factory
-  [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #5 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #4 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #3 factory [000017].
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #2 factory
-  [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #1 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #5 factory [000017].
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] and hits #4 factory [000017].
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] and hits #3 factory
-  [000017].
 
 Galaxy report:
 ------------------------------------------------------------
@@ -983,6 +676,7 @@ Galaxy report:
   Market report:
     Offers of selling items:
       sell 39 units of food [food] at 5 each from Berlin [000001].
+      sell 300 units of food [food] at 0 each from small cargo bay [000013].
     Offers of buying items:
       buy all units of food [food] at any price by corporate headquarters [c000012].
       buy all terrans [terran] at any price by corporate headquarters [c000012].
@@ -996,22 +690,29 @@ Galaxy report:
       none.
   
   + Berlin [000001], 3 cities [city], immobile.
-    size: 75000, mass: 29407, capacity: 45000/41000, energy: 200/230 (30), crew: 147/238, upkeep:
-    300 units of food [food], 1963 (0) cash [cash], consume: 338 (0) units of food [food], 338 (0)
-    units of terran breathing gas mixture [terair].
-    - small cargo bay [c00008], small cargo bay [cargob], disabled, immobile, owned by Gelvaren [3].
-      size: 2000.
+    size: 75000, mass: 33458, capacity: 45000/41000, energy: 200/140 (30), crew: 82/239, upkeep: 300
+    units of food [food], 1964 (0) cash [cash], consume: 339 (0) units of food [food], 339 (0) units
+    of terran breathing gas mixture [terair].
+    events:
+      week 13: paid 300 unit of food [food] upkeep.
+    - coal-burning plant [c00015], coal-burning plant [cplant], disabled, immobile, owned by
+      Gelvaren [3].
+      size: 1000.
     + Berlin garrison [000002], infantry battalion [inftry], immobile.
       size: 500, mass: 600 (500), capacity: 300/100, upkeep: 5 cash [cash], consume: 100 units of
       food [food], 100 units of terran breathing gas mixture [terair].
       movement speed: 0.1 on ground.
       items: rocket launchers [rctlnc] (size: 100, mass: 100).
+      events:
+        week 13: paid 5 cash [cash] upkeep.
     + Berlin farms [000003], 10 farming complexes [farms], immobile.
       size: 10000, mass: 1300 (1000), capacity: 5000/300, energy: 50, crew: 50/75, upkeep: 575 (500)
       cash [cash], consume: 75 (0) units of food [food], 75 (0) units of terran breathing gas
       mixture [terair].
       items: 75 terrans [terran] (size: 300, mass: 300, upkeep: 75 cash [cash], consume: 75 units of
       food [food], 75 units of terran breathing gas mixture [terair]).
+      events:
+        week 13: paid 575 cash [cash] upkeep.
     + Berlin coal powerplants [000004], 5 coal-burning plants [cplant], immobile.
       size: 5000, mass: 5560 (5000), capacity: 2500/560, energy: 200/50 (consume: 25 units of carbon
       [carbon] for 13 weeks), crew: 10/15, upkeep: 265 (250) cash [cash], consume: 15 (0) units of
@@ -1020,12 +721,16 @@ Galaxy report:
       items: 100 units of carbon [carbon] (size: 500, mass: 500), 15 terrans [terran] (size: 60,
       mass: 60, upkeep: 15 cash [cash], consume: 15 units of food [food], 15 units of terran
       breathing gas mixture [terair]).
+      events:
+        week 13: paid 265 cash [cash] upkeep.
     + Berlin granary [000005], small cargo bay [cargob], immobile.
-      size: 2000, mass: 476 (200), capacity: 1800/276, upkeep: 33 (30) cash [cash], consume: 3 (0)
+      size: 2000, mass: 325 (200), capacity: 1800/125, upkeep: 33 (30) cash [cash], consume: 3 (0)
       units of food [food], 3 (0) units of terran breathing gas mixture [terair].
-      items: 264 units of food [food] (size: 264, mass: 264), 3 terrans [terran] (size: 12, mass:
+      items: 113 units of food [food] (size: 113, mass: 113), 3 terrans [terran] (size: 12, mass:
       12, upkeep: 3 cash [cash], consume: 3 units of food [food], 3 units of terran breathing gas
       mixture [terair]).
+      events:
+        week 13: paid 33 cash [cash] upkeep.
     - Caste Prime Headquarters [000012], corporate headquarters [corphq], disabled, immobile, owned
       by Caste Prime [2].
       size: 0.
@@ -1040,9 +745,8 @@ Galaxy report:
       size: 0.
     - core drill [000016], core drill [cdrill], disabled, immobile, owned by Caste Prime [2].
       size: 0.
-    - factory [000017], 5 factories [factry], partially disabled, immobile, owned by Caste Prime
-      [2].
-      size: 5000.
+    - factory [000017], factory [factry], disabled, immobile, owned by Caste Prime [2].
+      size: 1000.
     - gun placement [111], gun placement [gunplc], disabled, immobile, owned by Caste Prime [2].
       size: 100.
     - corporate headquarters [c000012], corporate headquarters [corphq], immobile, owned by Gelvaren
@@ -1056,34 +760,42 @@ Galaxy report:
         size: 100.
       - gun placement [c00004], gun placement [gunplc], disabled, immobile, owned by Gelvaren [3].
         size: 100.
-      - farming complex [c00005], farming complex [farms], immobile, owned by Gelvaren [3].
-        size: 1000.
-      - farming complex [c00006], farming complex [farms], immobile, owned by Gelvaren [3].
-        size: 1000.
-      - farming complex [c00007], farming complex [farms], immobile, owned by Gelvaren [3].
-        size: 1000.
+      - small cargo bay [c00005], small cargo bay [cargob], disabled, immobile, owned by Gelvaren
+        [3].
+        size: 2000.
+      - small cargo bay [c00006], small cargo bay [cargob], immobile, owned by Gelvaren [3].
+        size: 2000.
+      - small cargo bay [c00007], small cargo bay [cargob], immobile, owned by Gelvaren [3].
+        size: 2000.
+    - small cargo bay [c00008], small cargo bay [cargob], disabled, immobile, owned by Gelvaren [3].
+      size: 2000.
     - small cargo bay [c00009], small cargo bay [cargob], disabled, immobile, owned by Gelvaren [3].
       size: 2000.
-    - small cargo bay [c00010], small cargo bay [cargob], disabled, immobile, owned by Gelvaren [3].
-      size: 2000.
-    - small cargo bay [c00011], small cargo bay [cargob], disabled, immobile, owned by Gelvaren [3].
-      size: 2000.
-    - small cargo bay [c00012], small cargo bay [cargob], disabled, immobile, owned by Gelvaren [3].
-      size: 2000.
+    - farming complex [c00010], farming complex [farms], disabled, immobile, owned by Gelvaren [3].
+      size: 1000.
+    - farming complex [c00011], farming complex [farms], disabled, immobile, owned by Gelvaren [3].
+      size: 1000.
+    - farming complex [c00012], farming complex [farms], disabled, immobile, owned by Gelvaren [3].
+      size: 1000.
     - coal-burning plant [c00013], coal-burning plant [cplant], disabled, immobile, owned by
       Gelvaren [3].
       size: 1000.
     - coal-burning plant [c00014], coal-burning plant [cplant], disabled, immobile, owned by
       Gelvaren [3].
       size: 1000.
-    - coal-burning plant [c00015], coal-burning plant [cplant], disabled, immobile, owned by
-      Gelvaren [3].
-      size: 1000.
     - core drill [c00016], core drill [cdrill], disabled, immobile, owned by Gelvaren [3].
+      size: 1000.
+    - factory [c00017], factory [factry], disabled, immobile, owned by Gelvaren [3].
+      size: 1000.
+    - factory [c00018], factory [factry], disabled, immobile, owned by Gelvaren [3].
+      size: 1000.
+    - factory [c00019], factory [factry], disabled, immobile, owned by Gelvaren [3].
+      size: 1000.
+    - factory [c00020], factory [factry], disabled, immobile, owned by Gelvaren [3].
       size: 1000.
   - peaceful scout [108], tanks [tanks], disabled, immobile, owned by Gelvaren [3].
     size: 240.
-  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
+  - Surrender or die! [109], 3 tanks [tanks], partially disabled, immobile, owned by Gelvaren [3].
     size: 720.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       size: 4.
@@ -1121,19 +833,27 @@ Galaxy report:
     size: 50000, mass: 7506, capacity: 30000/17120, energy: 198/132 (20), crew: 60/93, upkeep: 200
     units of food [food], 1053 (0) cash [cash], consume: 293 (0) units of food [food], 293 (0) units
     of terran breathing gas mixture [terair].
+    events:
+      week 13: paid 200 unit of food [food] upkeep.
     + Sydney garrison [000007], 2 infantry battalions [inftry], immobile.
       size: 1000, mass: 1100 (1000), capacity: 600/100, upkeep: 10 cash [cash], consume: 200 units
       of food [food], 200 units of terran breathing gas mixture [terair].
       movement speed: 0.1 on ground.
       items: rocket launchers [rctlnc] (size: 100, mass: 100).
+      events:
+        week 13: paid 10 cash [cash] upkeep.
     + Sydney farms [000008], 10 farming complexes [farms], immobile.
       size: 10000, mass: 1300 (1000), capacity: 5000/300, energy: 50, crew: 50/75, upkeep: 575 (500)
       cash [cash], consume: 75 (0) units of food [food], 75 (0) units of terran breathing gas
       mixture [terair].
       items: 75 terrans [terran] (size: 300, mass: 300, upkeep: 75 cash [cash], consume: 75 units of
       food [food], 75 units of terran breathing gas mixture [terair]).
+      events:
+        week 13: paid 575 cash [cash] upkeep.
     + Sydney wind powerplants [000009], 10 wind powerplants [wnplnt], immobile.
       size: 100, mass: 100 (100), energy: 40/10, upkeep: 100 cash [cash].
+      events:
+        week 13: paid 100 cash [cash] upkeep.
     + Sydney oil powerplants [000010], 5 oil-burning plants [oplant], immobile.
       size: 4000, mass: 4560 (4000), capacity: 2500/460, energy: 150/50 (consume: 25 units of oil
       [oil] for 13 weeks), crew: 10/15, upkeep: 315 (300) cash [cash], consume: 15 (0) units of food
@@ -1142,16 +862,24 @@ Galaxy report:
       items: 100 units of oil [oil] (size: 400, mass: 500), 15 terrans [terran] (size: 60, mass: 60,
       upkeep: 15 cash [cash], consume: 15 units of food [food], 15 units of terran breathing gas
       mixture [terair]).
+      events:
+        week 13: paid 315 cash [cash] upkeep.
     + Sydney granary [000011], small cargo bay [cargob], immobile.
       size: 2000, mass: 426 (200), capacity: 1800/226, upkeep: 33 (30) cash [cash], consume: 3 (0)
       units of food [food], 3 (0) units of terran breathing gas mixture [terair].
       items: 214 units of food [food] (size: 214, mass: 214), 3 terrans [terran] (size: 12, mass:
       12, upkeep: 3 cash [cash], consume: 3 units of food [food], 3 units of terran breathing gas
       mixture [terair]).
+      events:
+        week 13: paid 33 cash [cash] upkeep.
     + wind powerplant [122], wind powerplant [wnplnt], immobile.
       size: 10, mass: 10 (10), energy: 4/1, upkeep: 10 cash [cash].
+      events:
+        week 13: paid 10 cash [cash] upkeep.
     + wind powerplant [1], wind powerplant [wnplnt], immobile.
       size: 10, mass: 10 (10), energy: 4/1, upkeep: 10 cash [cash].
+      events:
+        week 13: paid 10 cash [cash] upkeep.
   - Gelvaren complex [000026], city [city], immobile, owned by Gelvaren [3].
     size: 25000.
     - Gelvaren Headquarters [000018], corporate headquarters [corphq], immobile, owned by Gelvaren
@@ -1243,7 +971,7 @@ Orders Template:
 
 #modulestack 000005
 ; + Berlin granary [000005], small cargo bay [cargob], immobile.
-; items: 264 units of food [food], 3 terrans [terran].
+; items: 113 units of food [food], 3 terrans [terran].
 
 #modulestack 000006
 ; + Sydney [000006], 2 cities [city], immobile.

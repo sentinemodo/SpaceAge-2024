@@ -1,6 +1,6 @@
 # SpaceAge-2024 — modules and integrations
 
-Last updated: 2026-08-18
+Last updated: 2026-09-09
 
 All engine types live in namespace `SpaceAge`. Folders below are **bounded contexts by ownership**, not separate assemblies.
 
@@ -14,8 +14,11 @@ All engine types live in namespace `SpaceAge`. Folders below are **bounded conte
 | **Effects** | `Game/effects/` | Timed activities (`Producing*`, `Moving`, `Training*`, `Receiving*`, damage/fuel) | `IEffectable` on stacks/persons; runs after orders in the week |
 | **Battle** | `Game/battle/` | Combat instance, field, units, tactics | Triggered from movement/attack; reports via `IBattleReporting` |
 | **Reports** | `Game/reports/` | `ReportWriter`, line wrapping, event lines | Reads world + `DataFile` for faction-filtered XML sidecar |
-| **World model** | `Game/data structures/` | Galaxy graph, factions, stacks, items, techs, offers | Used by every other module via `*.All` and object references |
+| **World model** | `Game/data structures/` | Galaxy graph, factions, stacks, items, techs, offers. `ModuleStack` (~2,960 lines, 8 interfaces) — partial splits proposed in [ADR-0008](adr/ADR-0008-modulestack-decomposition.md); ownership/upkeep partials per [ADR-0005](adr/ADR-0005-modulestack-partials.md) | Used by every other module via `*.All` and object references |
 | **Tests** | `Tests/` | Unit and SampleGame integration | Project reference to `Game`; filesystem fixtures |
+| **Website** | `website/` (not yet created) | Public closed PBEM lobby: flavour, `/turns` orders status, `/client` link. Phase 4: `/eta` (transit ETA) and `/battle` (what-if) | Reads **`status.json` only**; links to a future visual tool. Phase 4 islands use **user-entered** text/numbers in the browser. **No** `Game` project reference. [ADR-0007](adr/ADR-0007-public-campaign-website.md), [`delivery/website.md`](delivery/website.md) |
+
+Website is a **separate bounded context**, not a `SpaceAge` namespace folder. The visual tool is a third context (out of scope here).
 
 ### World object graph
 
@@ -50,8 +53,11 @@ flowchart TD
 - **Do not** change Windows-1251 (`loadXmlDocument` / `XmlTextWriter` with `Encoding.GetEncoding(1251)`).
 - **Do not** collapse catalog two-pass (`LoadConfigurationItems(true)` then `(false)`); stubs must exist before `requires` / `use-produce`.
 - **Do not** change faction XML-report filter semantics: name `"1"` is NPC (unfiltered); skip factions with no stacks; visibility uses existing `Visible(faction)`.
-- **Do not** opportunistic-split `DataFile` outside [ADR-0006](adr/ADR-0006-datafile-facade-and-xml-seams.md) phases, and do not split the rest of `ModuleStack` (ADR-0005).
+- **Do not** opportunistic-split `DataFile` outside [ADR-0006](adr/ADR-0006-datafile-facade-and-xml-seams.md) phases, and do not split `ModuleStack` outside [ADR-0005](adr/ADR-0005-modulestack-partials.md) (ownership/upkeep only) or the named seams in [ADR-0008](adr/ADR-0008-modulestack-decomposition.md) once Accepted.
 - **Do not** “complete” the capacity save switch (`research` group) or rewrite moon/exit save quirks in the same PR as an extract.
+- **Do not** call `Game.exe` over HTTP or invent an engine REST API for the lobby ([ADR-0003](adr/ADR-0003-filesystem-pbem-batch.md), [ADR-0007](adr/ADR-0007-public-campaign-website.md)).
+- **Do not** serve `gamein.xml`, `gameout.*.xml`, `data.xml`, `order.*`, or faction reports from the public website. Phase 4 `/eta` may parse a **user-pasted text** excerpt in the browser; it must not persist or POST that paste.
+- **Do not** implement the visual tool (star map, unit tree, order editor) inside `website/`. Phase 4 `/battle` is a formula what-if, not a `Battle.cs` port and not `Game.exe`.
 
 ## Persistence (`DataFile`)
 
@@ -124,7 +130,7 @@ Per subject per week: all pending **immediate** orders → at most one **long** 
 
 ## File contracts
 
-Encoding: **Windows-1251** for all of the following. XML declaration: `encoding="windows-1251"`.
+Encoding: **Windows-1251** for engine XML, orders, reports, and `error.log` (XML declaration `encoding="windows-1251"`). `status.json` is **UTF-8** and is not an engine file.
 
 | File | Directory | Direction | Role |
 |------|-----------|-----------|------|
@@ -135,8 +141,9 @@ Encoding: **Windows-1251** for all of the following. XML declaration: `encoding=
 | `report.{turn}.{faction}.txt` | turn dir | out | Player report (To/Subject headers for an external mailer) |
 | `report.{turn}.{faction}.xml` | turn dir | out | Faction-visible XML subset (when `xml-report` is enabled) |
 | `error.log` | CWD | out | RELEASE-only uncaught exceptions (1251) |
+| `status.json` | `website/public/` (published to the static host) | out (from `play/` / GM) | Allow-listed lobby status. UTF-8. **Not** an engine output. [ADR-0007](adr/ADR-0007-public-campaign-website.md) |
 
-There is **no** network, message bus, or shared database. Faction `email` is metadata for the GM mailer.
+The engine has **no** network, message bus, or shared database. Faction `email` is metadata for the GM mailer. The public website is a **separate static origin** that may fetch `status.json` only — never `gamein.xml` or reports. Phase 4 tools do not change that file contract.
 
 ### Order text sketch
 
@@ -187,3 +194,6 @@ Treat as **not live integrations** until implemented with tests:
 ## Revision
 
 - 2026-08-18: Persistence seams for `DataFile` (ADR-0006). Interim/target diagrams; anti-patterns for facade, 1251, two-pass catalog, faction XML-report filter. Engine citation `0.1.141`.
+- 2026-08-29: Website bounded context (ADR-0007). Status via `status.json`; do not HTTP-call `Game.exe` or publish `gamein.xml`.
+- 2026-08-29: Phase 4 lobby tools (`/eta`, `/battle`) — client-side user input only; still no engine files on the origin.
+- 2026-09-09: `ModuleStack` decomposition seams (ADR-0008 Accepted); World model row and anti-pattern updated.

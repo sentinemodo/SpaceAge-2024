@@ -1,6 +1,6 @@
 # SpaceAge-2024 — technology choices
 
-Last updated: 2026-09-09  
+Last updated: 2026-09-11  
 Engine version: `Program.EngineVersion` = `0.1.137`
 
 This is a **legacy console engine**, not a service stack. Choices below describe what the repo already uses. Changing the runtime or project style requires an ADR.
@@ -89,8 +89,32 @@ Separate from the net48 engine. Decision: [ADR-0009](adr/ADR-0009-local-llm-play
 | Rented GPU | **RunPod** 1× **RTX 4090** (24 GB); Secure Cloud when reports leave the box | Ollama only on pod; `--allow-runpod` required; full usage tracker + cost guardrails Phases 7–8 |
 | Rejected as model host | Vercel, engine HTTP, always-on cloud chat as default | Vercel may later host *orchestration* for a web assistant only |
 
+## Website (new, not engine)
+
+This section does **not** replace the net48 stack above. The public lobby is a separate product ([ADR-0007](adr/ADR-0007-public-campaign-website.md), plan [`delivery/website.md`](delivery/website.md)). Do not retarget `Game.exe`, add ASP.NET to the engine, or build the site from `SpaceAge.sln`.
+
+| Area | Choice | Constraint |
+|------|--------|------------|
+| Location | `website/` at repo root | Never under `Game/` or `Tests/` |
+| Framework | **Astro**, static output (`output: 'static'`) | Current stable from npm (`npm create astro@latest`); no SSR adapter in MVP |
+| Language | HTML/Astro templates + CSS; TypeScript only for small islands | Do not import C# or parse 1251 game XML in Node. Phase 4 may parse **user-pasted UTF-8 text** in the browser (`/eta`) |
+| Styling | Hand-written CSS | Space / hard-science look; no Atlantis hex theme; Tailwind optional, not required |
+| Status data | UTF-8 `website/public/status.json` | Written by GM or `play/` PowerShell; not an engine REST API |
+| Hosting | GitHub Pages (preferred); Cloudflare Pages or Netlify OK | GM does not run PHP or IIS |
+| Tests | **`astro check`** + **Vitest** (`getViteConfig`) + **Playwright** (Chromium vs `astro preview`) | Inside `website/` only. Not NUnit, not `Tests.dll`, not Mono. [Astro testing](https://docs.astro.build/en/guides/testing/). Cursor agents are **paired**: `/website-developer` (Vitest) + `/website-tester` (scenario catalog + Playwright); see [`delivery/website.md`](delivery/website.md) |
+| Visual tool | Link only (`/client` → `/visual-tool/` placeholder) | Separate future app; may use React later |
+| Phase 4 tools | `/eta`, `/battle` TypeScript islands | Port published formulas (`SpaceTransit`, `au-transit.md`, `player/battle.md`). No `Game.exe`, no live `data.xml` |
+
+Rejected for the lobby: PHP/Laravel Atlantis clone, ASP.NET on net48, Next.js static export (heavier than four pages), embedding UI in `Game.exe`, a CMS.
+
+Engine XML/orders stay Windows-1251. Website source and `status.json` are UTF-8.
+
 ## Revision
 
 - 2026-09-10: Phase 3 — draft loop, `orders.{faction}.{turn}.{iteration}.txt` naming, local default **`qwen2.5-coder:7b`** for smoke and draft.
 - 2026-09-10: Phase 0 — **C# net8** runner scaffold, SQLite index layout, `--mode test|campaign`, RunPod `qwen2.5-coder:14b` defaults.
 - 2026-09-09: Added **Local player-agent inference** ([ADR-0009](adr/ADR-0009-local-llm-player-agent.md): Ollama, Qwen3-Coder, RunPod rental).
+- 2026-08-29: Added **Website (new, not engine)**. Engine pins unchanged.
+- 2026-08-29: Website tests = Vitest + Playwright; engine stays NUnit.
+- 2026-08-29: Website Cursor agents paired (`/website-developer` + `/website-tester`).
+- 2026-08-29: Phase 4 `/eta` and `/battle` islands noted; engine pins unchanged.

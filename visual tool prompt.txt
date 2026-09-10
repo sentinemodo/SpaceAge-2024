@@ -1,0 +1,31 @@
+create an architecture and visual design of the tool to visualize the content of the reports and make them more easily browsable
+the tool should be a website that should be also mobile friendly
+should be consuming the xmls rather than reports ultimately, but MVP should just create a multi window similar to presented on tihs page
+
+the old style client for different PBEM game looked like this https://atlantis-pbem.com/game-client
+the idea there was to have different perspective (faction, region, unit) and have some listings (regions, units, technologies) available at hand with some space to edit orders
+
+the new one need to be more modern (inspired by stellaris UI perhaps)
+star map with events (technologies, diplomacy, contracts, bank etc.) on the left side (called by the icons)
+the unit tree with minimum details to the right panel with some filters on top 
+
+each subwindow should allow viewing orders relevant for that section (switchable between order format and ai prompt)
+
+the windows should be contextual so cliecking on the starsystem would filter the units (shift click to add remove to/from filter)
+doubleclick should bring the region/moon view
+
+the starmap window should enable writing main (multiunit/faction prompt for AI) with orders witten directly to units
+
+the tools should trigger warnings for the orders written - take the tests from code directly on error messages e.g.
+- give/get unit ID is in different region, has no such item yet, 
+- produce with no technology known
+- move on inoperationsal/incomplete ship
+- trying to operate disabled module
+- missing resources for upkeep in unit/stack/region
+etc.
+
+when unit is selected that has move order the route is shown on map with estimated travel time
+
+battles view should a quick summary (damage done/recived, modules captured/destroyed/lost, spoils)
+
+the faction view beyond faction information and summaries (eg. total upkeep per quarter, total research points generated) should also show press releases and contracts (contextual to go to the region)

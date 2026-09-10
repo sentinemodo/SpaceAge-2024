@@ -1,6 +1,6 @@
 # Documentation index
 
-Last updated: 2026-09-09  
+Last updated: 2026-09-11  
 Purpose: canonical vendor/spec links for implementers. Summaries only — do not paste manuals into architecture docs.
 
 | Resource | Version / band | Purpose | Date retrieved |
@@ -19,6 +19,15 @@ Purpose: canonical vendor/spec links for implementers. Summaries only — do not
 | [RunPod](https://www.runpod.io/) / [RunPod docs](https://docs.runpod.io/) | current | Approved rented GPU host (RTX 4090 + Ollama); re-check $/hr before sessions | 2026-09-09 |
 | [Qwen3 (Ollama library)](https://ollama.com/library/qwen3-coder) | `qwen3-coder` tags | Approved chat model family for order drafting | 2026-09-09 |
 | [nomic-embed-text (Ollama)](https://ollama.com/library/nomic-embed-text) | current | Approved embeddings model for RAG | 2026-09-09 |
+| [Astro documentation](https://docs.astro.build/en/getting-started/) | current stable (static output) | Public lobby stack ([ADR-0007](adr/ADR-0007-public-campaign-website.md)); not the engine | 2026-08-29 |
+| [Astro testing](https://docs.astro.build/en/guides/testing/) | current Astro docs | Official: Vitest (`getViteConfig`, Container API) + Playwright e2e | 2026-08-29 |
+| [Vitest](https://vitest.dev/guide/) | current stable, Vite-native | Website unit tests in `website/` | 2026-08-29 |
+| [Playwright](https://playwright.dev/docs/intro) | current stable | Website e2e against `astro preview` (Chromium MVP) | 2026-08-29 |
+| [Astro deploy: GitHub Pages](https://docs.astro.build/en/guides/deploy/github/) | current Astro docs | Preferred static host for `website/` | 2026-08-29 |
+| [GitHub Pages](https://docs.github.com/en/pages) | current | Hosting the Astro `dist/` artifact | 2026-08-29 |
+| [Cloudflare Pages](https://developers.cloudflare.com/pages/) | current | Acceptable alternative static host | 2026-08-29 |
+| [Atlantis New Origins (atlantis-pbem.com)](https://atlantis-pbem.com/) | live site | IA reference only (not a visual or PHP clone); reviewed for lobby widgets | 2026-08-29 |
+| [Overlord / Vincent Archer](https://overlord.sourceforge.net/) | historical | 1998 generic PBEM engine; Overlord then Rise of Heroes lineage | 2026-08-29 |
 
 ## In-repo design notes (not vendor docs)
 
@@ -33,6 +42,11 @@ Purpose: canonical vendor/spec links for implementers. Summaries only — do not
 | `designer/` | Game-designer specs: galaxy scale, tech tree, catalog, contracts (not engine) |
 | `campaign/` | Live PBEM `data.xml` / `gamein.xml` (not NUnit fixtures) |
 | `architecture/delivery/local-player-agent.md` | Ollama / RunPod player-agent runner: env prep, RAG corpus, post-turn and engine/data refresh, usage tracker, cost guardrails |
+| `architecture/delivery/campaign-play.md` | Campaign load, engine TDD slices, CLI play loop, AI factions |
+| `architecture/delivery/website.md` | Public lobby implementation plan (Astro, status JSON, visual-tool link, Phase 4 `/eta` + `/battle`); **Cursor agents and test pairing** (`/website-developer` + `/website-tester`) |
+| `architecture/delivery/website-scenarios.md` | Seed acceptance catalog (WS-001…WS-009, reserved WS-010…WS-012 Phase 4, reserved UT-*). After Phase 1: tester moves to `website/e2e/scenarios.md` (canonical) |
+| `Game/documentation/Rules.txt` §§1, 1.1, 2.1 | Home-page flavour source (Alderson V 1.5); excerpt, do not dump |
+| `player/rules.md` | Later `/rules` link — live order syntax, not flavour myth |
 
 ## In-repo ADRs
 
@@ -44,6 +58,7 @@ Purpose: canonical vendor/spec links for implementers. Summaries only — do not
 | [`adr/ADR-0004-test-layers.md`](adr/ADR-0004-test-layers.md) | Unit = `UnitTests` / `T*.cs`; Integration = `IntegrationTests`; no module layer | 2026-08-18 |
 | [`adr/ADR-0005-modulestack-partials.md`](adr/ADR-0005-modulestack-partials.md) | `ModuleStack` stays one type; limited `partial` files | 2026-08-18 |
 | [`adr/ADR-0006-datafile-facade-and-xml-seams.md`](adr/ADR-0006-datafile-facade-and-xml-seams.md) | `DataFile` facade; catalog / order factory / domain XML phases | 2026-08-18 |
+| [`adr/ADR-0007-public-campaign-website.md`](adr/ADR-0007-public-campaign-website.md) | Public website as new bounded context; Astro + status JSON | 2026-08-29 |
 | [`adr/ADR-0009-local-llm-player-agent.md`](adr/ADR-0009-local-llm-player-agent.md) | Ollama + Qwen3-Coder + RAG; RunPod rented GPU | 2026-09-09 |
 
 Prefer Microsoft Learn / NUnit docs over blog posts when versions matter.
