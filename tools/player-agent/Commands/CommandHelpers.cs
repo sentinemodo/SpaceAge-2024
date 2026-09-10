@@ -57,6 +57,31 @@ internal static class CommandHelpers
         Description = "Delete all existing chunks in the target index before ingesting.",
     };
 
+    public static Option<bool> FullCorpusOption { get; } = new("--full")
+    {
+        Description = "Ingest every report and order file (Phase 2 full rebuild). Default is incremental turn refresh.",
+    };
+
+    public static Option<bool> StoryOnlyOption { get; } = new("--story-only")
+    {
+        Description = "Re-ingest story.md only (campaign-ai handoff). Does not touch reports or orders.",
+    };
+
+    public static Option<int?> MaxOrderTurnsOption { get; } = new("--max-order-turns")
+    {
+        Description = "Keep orders from the last N turns in the faction index (default 3).",
+    };
+
+    public static Option<int?> FromFactionOption { get; } = new("--from-faction")
+    {
+        Description = "First faction id for batch ingest-run (default 2).",
+    };
+
+    public static Option<int?> ToFactionOption { get; } = new("--to-faction")
+    {
+        Description = "Last faction id for batch ingest-run (default 11).",
+    };
+
     public static Option<string> IndexOption { get; } = new("--index")
     {
         Description = "Index to search: shared or faction.",

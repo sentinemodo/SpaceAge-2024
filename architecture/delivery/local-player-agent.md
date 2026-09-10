@@ -158,22 +158,22 @@ Trigger: after `Game.exe` turn (or reports-only) and isolate copies reports into
 
 ### Automation (preferred)
 
-- [ ] Hook or script step in the play loop (document next to `turn.ps1` / isolate scripts): for each faction 2–11, run `ingest-faction` for the **new** report path; drop or version-stamp the previous turn’s report chunks for that faction.
-- [ ] Do **not** rebuild the entire shared manual index on every turn (unless manuals changed).
-- [ ] Optional: keep last N turns of prior orders in the per-faction index for style; prune older than N.
+- [x] Hook or script step in the play loop (document next to `turn.ps1` / isolate scripts): for each faction 2–11, run `ingest-faction` for the **new** report path; drop or version-stamp the previous turn’s report chunks for that faction.
+- [x] Do **not** rebuild the entire shared manual index on every turn (unless manuals changed).
+- [x] Optional: keep last N turns of prior orders in the per-faction index for style; prune older than N.
 
 ### Manual fallback
 
-- [ ] Document: after isolate, run  
+- [x] Document: after isolate, run  
   `… ingest-faction --run <id> --faction <n>`  
   before drafting that seat.
 
 ### Campaign-ai handoff
 
-- [ ] After `story.md` updates, re-ingest that faction’s story chunk before draft.
-- [ ] `/campaign-ai` continues to own strategy text; runner consumes it as RAG + prompt pack input.
+- [x] After `story.md` updates, re-ingest that faction’s story chunk before draft.
+- [x] `/campaign-ai` continues to own strategy text; runner consumes it as RAG + prompt pack input.
 
-**Done when:** A second turn’s report replaces the prior report in the faction index without contaminating other seats; draft path uses the new report.
+**Done when:** A second turn’s report replaces the prior report in the faction index without contaminating other seats; draft path uses the new report. **Code complete (2026-09-10)** — `ingest-faction` defaults to incremental refresh (latest report, story, `--max-order-turns` default 3); `ingest-run` + `play/ingest-rag.ps1` batch factions 2–11; `--story-only` for campaign-ai; unit tests cover planner, prune, and SQLite delete.
 
 ---
 

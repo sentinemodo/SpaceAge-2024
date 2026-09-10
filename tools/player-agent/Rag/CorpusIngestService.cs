@@ -101,6 +101,64 @@ public sealed class CorpusIngestService
         return summary;
     }
 
+    public async Task<IngestSummary> IngestFactionIncrementalAsync(
+        string sqlitePath,
+        string factionDir,
+        FactionIngestOptions options,
+        CancellationToken cancellationToken = default)
+    {
+        var plan = FactionIngestPlanner.BuildPlan(factionDir, options);
+        using var store = new SqliteVectorStore(sqlitePath);
+        var summary = new IngestSummary();
+
+        if (options.ClearIndex)
+        {
+            store.ClearAll();
+            summary.ClearedExisting = true;
+        }
+
+        foreach (var sourcePath in plan.IngestPaths)
+        {
+            summary.ChunkCount += await IngestFileAsync(
+                store,
+                sourcePath,
+                SelectChunkFactory(sourcePath),
+                cancellationToken);
+            summary.Sources.Add(SourcePathNormalizer.Normalize(sourcePath));
+        }
+
+        if (plan.PruneIndexedFactionCorpus)
+        {
+            var stale = FactionIngestPlanner.FindStaleSources(
+                store.ListSourcePaths(),
+                factionDir,
+                plan.KeepSourcePaths);
+            if (stale.Count > 0)
+            {
+                store.DeleteSources(stale);
+                summary.RemovedSources.AddRange(stale);
+            }
+        }
+
+        summary.TotalStored = store.Count();
+        return summary;
+    }
+
+    private static Func<string, string, IReadOnlyList<TextChunk>> SelectChunkFactory(string sourcePath)
+    {
+        if (sourcePath.EndsWith("story.md", StringComparison.OrdinalIgnoreCase))
+        {
+            return MarkdownChunker.ChunkStory;
+        }
+
+        if (sourcePath.Contains("report", StringComparison.OrdinalIgnoreCase))
+        {
+            return MarkdownChunker.ChunkReport;
+        }
+
+        return MarkdownChunker.ChunkOrderFile;
+    }
+
     private async Task<int> IngestFileAsync(
         SqliteVectorStore store,
         string sourcePath,
@@ -133,6 +191,7 @@ public sealed class CorpusIngestService
 public sealed class IngestSummary
 {
     public List<string> Sources { get; } = [];
+    public List<string> RemovedSources { get; } = [];
     public List<string> MissingFiles { get; } = [];
     public int ChunkCount { get; set; }
     public int TotalStored { get; set; }

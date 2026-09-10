@@ -8,6 +8,8 @@ Scriptable order-drafting runner for PBEM play. Lives **outside** `Game.exe` per
 
 **Phase 3 status:** `draft` retrieves top-k chunks, calls Ollama chat, runs verb allowlist lint from `player/rules.md`, and writes UTF-8 orders. RunPod usage ledger arrives in Phases 7–8.
 
+**Phase 4 status:** Incremental faction RAG refresh after isolate — latest report replaces prior report chunks, optional order-turn window, `ingest-run` batch for factions 2–11, `play/ingest-rag.ps1` hook, and `--story-only` for campaign-ai handoff.
+
 ## Requirements
 
 - [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
@@ -101,7 +103,8 @@ UTF-8 drafts in faction folders; `play/turn.ps1` converts to Windows-1251 for `G
 | `config` | 0 | Show resolved settings |
 | `smoke` | 0 | Chat + embedding connectivity test |
 | `ingest-shared --mode …` | 2 | Embed shared manuals into SQLite |
-| `ingest-faction --mode … --run … --faction …` | 2 | Embed isolated faction report / story / orders |
+| `ingest-faction --mode … --run … --faction …` | 2/4 | Embed faction corpus (incremental by default; `--full` for Phase 2 rebuild) |
+| `ingest-run --mode … --run …` | 4 | Batch incremental refresh for factions 2–11 after isolate |
 | `retrieve --mode … --index shared\|faction --query …` | 2 | Dev helper: top-k vector search (optional `--verb MOVE`) |
 | `draft --mode … --faction …` | 3 | Generate order draft (lint + UTF-8 write) |
 | `usage …` | 7 | RunPod ledger and reports |
@@ -120,9 +123,21 @@ dotnet run --project tools/player-agent/PlayerAgent.csproj -- ingest-shared --mo
 # Rebuild from scratch (clears duplicate/stale chunks)
 dotnet run --project tools/player-agent/PlayerAgent.csproj -- ingest-shared --mode test --clear
 
-# Faction ingest after isolate copies report into play/runs/<id>/factions/NN/
+# Faction ingest after isolate (incremental: latest report + story + last 3 order turns)
 dotnet run --project tools/player-agent/PlayerAgent.csproj -- `
   ingest-faction --mode campaign --run demo --faction 2
+
+# All AI seats after isolate (preferred — or use play/ingest-rag.ps1)
+dotnet run --project tools/player-agent/PlayerAgent.csproj -- `
+  ingest-run --mode campaign --run demo
+
+# Phase 2 full rebuild (every report + order on disk)
+dotnet run --project tools/player-agent/PlayerAgent.csproj -- `
+  ingest-faction --mode campaign --run demo --faction 2 --full
+
+# Campaign-ai updated story.md — re-embed objective only
+dotnet run --project tools/player-agent/PlayerAgent.csproj -- `
+  ingest-faction --mode campaign --run demo --faction 2 --story-only
 
 # Retrieve MOVE rules chunks
 dotnet run --project tools/player-agent/PlayerAgent.csproj -- `

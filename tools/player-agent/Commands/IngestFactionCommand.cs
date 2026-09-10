@@ -9,13 +9,19 @@ internal static class IngestFactionCommand
 {
     public static Command Create()
     {
-        var command = new Command("ingest-faction", "Embed an isolated faction report into per-seat RAG (Phase 2).");
+        var command = new Command(
+            "ingest-faction",
+            "Embed isolated faction report/story/orders into per-seat RAG (incremental by default).");
         command.AddOption(CommandHelpers.ModeOption);
         command.AddOption(CommandHelpers.RunOption);
         command.AddOption(CommandHelpers.FactionOption);
+        command.AddOption(CommandHelpers.ReportOption);
         command.AddOption(CommandHelpers.AllowRunPodOption);
         command.AddOption(CommandHelpers.DryRunOption);
         command.AddOption(CommandHelpers.ClearOption);
+        command.AddOption(CommandHelpers.FullCorpusOption);
+        command.AddOption(CommandHelpers.StoryOnlyOption);
+        command.AddOption(CommandHelpers.MaxOrderTurnsOption);
 
         command.SetHandler(async (context) =>
         {
@@ -23,6 +29,10 @@ internal static class IngestFactionCommand
             var settings = CommandHelpers.LoadSettings(context);
             var dryRun = context.ParseResult.GetValueForOption(CommandHelpers.DryRunOption);
             var clear = context.ParseResult.GetValueForOption(CommandHelpers.ClearOption);
+            var fullCorpus = context.ParseResult.GetValueForOption(CommandHelpers.FullCorpusOption);
+            var storyOnly = context.ParseResult.GetValueForOption(CommandHelpers.StoryOnlyOption);
+            var maxOrderTurns = context.ParseResult.GetValueForOption(CommandHelpers.MaxOrderTurnsOption) ?? 3;
+            var reportOverride = context.ParseResult.GetValueForOption(CommandHelpers.ReportOption);
             var runId = context.ParseResult.GetValueForOption(CommandHelpers.RunOption)
                 ?? throw new InvalidOperationException("--run is required for ingest-faction.");
             var factionId = context.ParseResult.GetValueForOption(CommandHelpers.FactionOption)
@@ -32,37 +42,42 @@ internal static class IngestFactionCommand
                 throw new InvalidOperationException("--faction must be between 2 and 11.");
             }
 
+            if (storyOnly && fullCorpus)
+            {
+                throw new InvalidOperationException("Use either --story-only or --full, not both.");
+            }
+
             var repoRoot = RepoPaths.FindRepositoryRoot();
             RepoPaths.EnsureIndexLayout(settings.IndexDirectory);
             var factionDir = RepoPaths.FactionFolder(repoRoot, runId, factionId);
             var indexDir = RepoPaths.FactionIndexDirectory(settings.IndexDirectory, runId, factionId);
             Directory.CreateDirectory(indexDir);
             var sqlitePath = VectorIndexPaths.FactionSqlitePath(indexDir);
+            var options = new FactionIngestOptions
+            {
+                ClearIndex = clear,
+                FullCorpus = fullCorpus,
+                StoryOnly = storyOnly,
+                ReportPath = reportOverride,
+                MaxOrderTurns = maxOrderTurns,
+            };
 
             Console.WriteLine($"Faction folder:   {factionDir}");
             Console.WriteLine($"Faction index:    {indexDir}");
             Console.WriteLine($"SQLite path:      {sqlitePath}");
+            Console.WriteLine(
+                $"Ingest mode:      {(storyOnly ? "story-only" : fullCorpus ? "full corpus" : $"incremental (max-order-turns={maxOrderTurns})")}");
 
             if (!Directory.Exists(factionDir))
             {
                 throw new InvalidOperationException($"Faction folder not found: {factionDir}");
             }
 
-            var sourcePaths = FactionCorpusPaths.ReportPaths(factionDir)
-                .Concat(FactionCorpusPaths.StoryPath(factionDir) is { } story ? [story] : [])
-                .Concat(FactionCorpusPaths.OrderPaths(factionDir))
-                .ToList();
-
+            var plan = FactionIngestPlanner.BuildPlan(factionDir, options);
             Console.WriteLine("Faction sources:");
-            foreach (var path in sourcePaths)
+            foreach (var path in plan.IngestPaths)
             {
                 Console.WriteLine($"  [ok] {path}");
-            }
-
-            if (sourcePaths.Count == 0)
-            {
-                throw new InvalidOperationException(
-                    $"No report, story, or order files found under {factionDir}");
             }
 
             if (dryRun)
@@ -76,7 +91,7 @@ internal static class IngestFactionCommand
                 }
 
                 Console.WriteLine("Dry run: chunking only; no embed calls.");
-                foreach (var path in sourcePaths)
+                foreach (var path in plan.IngestPaths)
                 {
                     var normalizedPath = SourcePathNormalizer.Normalize(path);
                     var content = await File.ReadAllTextAsync(normalizedPath, context.GetCancellationToken());
@@ -88,25 +103,70 @@ internal static class IngestFactionCommand
                     Console.WriteLine($"  {Path.GetFileName(path)}: {chunks.Count} chunks");
                 }
 
+                if (plan.PruneIndexedFactionCorpus && File.Exists(sqlitePath))
+                {
+                    using var store = new SqliteVectorStore(sqlitePath);
+                    var stale = FactionIngestPlanner.FindStaleSources(
+                        store.ListSourcePaths(),
+                        factionDir,
+                        plan.KeepSourcePaths);
+                    foreach (var path in stale)
+                    {
+                        Console.WriteLine($"  prune {Path.GetFileName(path)}");
+                    }
+                }
+
                 return;
             }
 
-            using var client = new OllamaClient(settings);
-            var ingest = new CorpusIngestService(client);
-            var summary = await ingest.IngestFactionAsync(
-                sqlitePath,
-                factionDir,
-                clear,
-                context.GetCancellationToken());
-
-            if (summary.ClearedExisting)
+            if (fullCorpus)
             {
-                Console.WriteLine("Index cleared before ingest.");
+                using var client = new OllamaClient(settings);
+                var ingest = new CorpusIngestService(client);
+                var summary = await ingest.IngestFactionAsync(
+                    sqlitePath,
+                    factionDir,
+                    clear,
+                    context.GetCancellationToken());
+
+                if (summary.ClearedExisting)
+                {
+                    Console.WriteLine("Index cleared before ingest.");
+                }
+
+                Console.WriteLine($"Embedded chunks:  {summary.ChunkCount}");
+                Console.WriteLine($"Stored total:     {summary.TotalStored}");
+                Console.WriteLine("Faction ingest complete.");
+                return;
             }
 
-            Console.WriteLine($"Embedded chunks:  {summary.ChunkCount}");
-            Console.WriteLine($"Stored total:     {summary.TotalStored}");
-            Console.WriteLine("Faction ingest complete.");
+            using (var client = new OllamaClient(settings))
+            {
+                var ingest = new CorpusIngestService(client);
+                var summary = await ingest.IngestFactionIncrementalAsync(
+                    sqlitePath,
+                    factionDir,
+                    options,
+                    context.GetCancellationToken());
+
+                if (summary.ClearedExisting)
+                {
+                    Console.WriteLine("Index cleared before ingest.");
+                }
+
+                Console.WriteLine($"Embedded chunks:  {summary.ChunkCount}");
+                Console.WriteLine($"Stored total:     {summary.TotalStored}");
+                if (summary.RemovedSources.Count > 0)
+                {
+                    Console.WriteLine("Pruned sources:");
+                    foreach (var path in summary.RemovedSources)
+                    {
+                        Console.WriteLine($"  {path}");
+                    }
+                }
+
+                Console.WriteLine("Faction ingest complete.");
+            }
         });
 
         return command;

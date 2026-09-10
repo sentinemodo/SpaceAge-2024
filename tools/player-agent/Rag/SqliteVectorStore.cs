@@ -66,6 +66,50 @@ public sealed class SqliteVectorStore : IDisposable
     public int Count() =>
         Convert.ToInt32(Scalar("SELECT COUNT(*) FROM chunks;"));
 
+    public IReadOnlyList<string> ListSourcePaths()
+    {
+        using var command = _connection.CreateCommand();
+        command.CommandText = """
+            SELECT DISTINCT source_path
+            FROM chunks
+            ORDER BY source_path;
+            """;
+
+        var paths = new List<string>();
+        using var reader = command.ExecuteReader();
+        while (reader.Read())
+        {
+            paths.Add(reader.GetString(0));
+        }
+
+        return paths;
+    }
+
+    public int DeleteSources(IReadOnlyList<string> sourcePaths)
+    {
+        if (sourcePaths.Count == 0)
+        {
+            return 0;
+        }
+
+        var removed = 0;
+        using var transaction = _connection.BeginTransaction();
+        foreach (var sourcePath in sourcePaths)
+        {
+            using var delete = _connection.CreateCommand();
+            delete.Transaction = transaction;
+            delete.CommandText = """
+                DELETE FROM chunks
+                WHERE lower(source_path) = lower($source_path);
+                """;
+            delete.Parameters.AddWithValue("$source_path", SourcePathNormalizer.Normalize(sourcePath));
+            removed += delete.ExecuteNonQuery();
+        }
+
+        transaction.Commit();
+        return removed;
+    }
+
     public void Dispose()
     {
         _connection.Dispose();
