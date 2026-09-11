@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SpaceAge Battle Simulator</title>
+  <link rel="stylesheet" href="./css/simulator.css" />
+</head>
+<body>
+  <header class="page-header">
+    <h1>SpaceAge Battle Simulator</h1>
+    <p>Standalone planning tool — runs <code>Game.exe /battle-sim</code> against <code>campaign/data.xml</code>.</p>
+  </header>
+
+  <section class="controls card">
+    <label>Seed <input id="seed" type="number" value="42" /></label>
+    <label>Location
+      <select id="location-type">
+        <option value="orbit">Orbit</option>
+        <option value="region">Region</option>
+      </select>
+    </label>
+    <button id="preview-xml" type="button">Preview XML</button>
+    <button id="run-button" type="button" class="primary">Run simulation</button>
+    <span id="run-status" class="status"></span>
+  </section>
+
+  <div class="roster-grid">
+    <section class="card side-panel">
+      <h2>Attackers</h2>
+      <label>Side name <input id="attacker-side-name" type="text" value="Strike Force Alpha" /></label>
+      <label>Load preset
+        <select id="attacker-preset"><option value="">— preset —</option></select>
+      </label>
+      <div id="attackers-editor"></div>
+      <button id="add-attacker-stack" type="button">Add stack</button>
+    </section>
+
+    <section class="card side-panel">
+      <h2>Defenders</h2>
+      <label>Side name <input id="defender-side-name" type="text" value="Garrison Beta" /></label>
+      <label>Load preset
+        <select id="defender-preset"><option value="">— preset —</option></select>
+      </label>
+      <div id="defenders-editor"></div>
+      <button id="add-defender-stack" type="button">Add stack</button>
+    </section>
+  </div>
+
+  <section class="card">
+    <div class="template-actions">
+      <button id="save-template" type="button">Save attacker stack as custom template</button>
+    </div>
+    <label>Simulation XML
+      <textarea id="xml-preview" rows="12" readonly></textarea>
+    </label>
+    <label>Combat log
+      <pre id="log-output"></pre>
+    </label>
+  </section>
+
+  <script type="module" src="./js/app.js"></script>
+</body>
+</html>

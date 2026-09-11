@@ -1,0 +1,157 @@
+{
+  "catalogDataDir": "campaign",
+  "locationTypes": ["orbit", "region"],
+  "tactics": [
+    "destroy",
+    "capture",
+    "evade",
+    "prioritize armed",
+    "prioritize command",
+    "prioritize storage"
+  ],
+  "hullTypes": [
+    { "id": "corhul", "label": "Corvette Hull", "locationType": "orbit" },
+    { "id": "alnhul", "label": "Alien Frigate Hull", "locationType": "orbit" },
+    { "id": "deshul", "label": "Destroyer Hull", "locationType": "orbit" },
+    { "id": "sshull", "label": "Standard Ship Hull", "locationType": "orbit" },
+    { "id": "gunplc", "label": "Gun Placement", "locationType": "region" },
+    { "id": "laztrt", "label": "Laser Turret", "locationType": "region" },
+    { "id": "tanks", "label": "Tank Platoon", "locationType": "region" },
+    { "id": "inftry", "label": "Infantry Battalion", "locationType": "region" }
+  ],
+  "moduleTypes": [
+    { "id": "pdltur", "label": "Point-Defense Laser" },
+    { "id": "railgn", "label": "Railgun" },
+    { "id": "shplas", "label": "Plasma Shield" },
+    { "id": "cermpl", "label": "Ceramic Armour" },
+    { "id": "armplt", "label": "Spaced Armour" },
+    { "id": "coilgn", "label": "Coilgun" },
+    { "id": "crumis", "label": "Cruise Missile Launcher" },
+    { "id": "ciwst", "label": "CIWS" },
+    { "id": "drnbay", "label": "Fighter Drone Bay" },
+    { "id": "alndrn", "label": "Fighter Drone" },
+    { "id": "fisrec", "label": "Fission Reactor" },
+    { "id": "crwqrt", "label": "Crew Quarters" },
+    { "id": "cargob", "label": "Cargo Bay" }
+  ],
+  "itemTypes": [
+    { "id": "terran", "label": "Terran crew" },
+    { "id": "uraniu", "label": "Uranium fuel" },
+    { "id": "heliu3", "label": "Helium-3 fuel" },
+    { "id": "oil", "label": "Oil fuel" },
+    { "id": "food", "label": "Food" },
+    { "id": "terair", "label": "Breathing air" }
+  ],
+  "presets": [
+    {
+      "id": "system-patrol-corvette",
+      "displayName": "System Patrol Corvette",
+      "role": "Light Patrol",
+      "locationType": "orbit",
+      "stack": {
+        "type": "corhul",
+        "name": "Patrol Corvette",
+        "tactic": "destroy",
+        "nested": [
+          { "type": "pdltur", "name": "Point-Defense Laser", "quantity": 2 },
+          { "type": "cermpl", "name": "Ceramic Armour", "quantity": 2 },
+          { "type": "fisrec", "name": "Reactor", "quantity": 1, "items": [{ "type": "uraniu", "quantity": 10 }] },
+          { "type": "crwqrt", "name": "Crew Quarters", "quantity": 1, "items": [{ "type": "terran", "quantity": 12 }] }
+        ]
+      }
+    },
+    {
+      "id": "escort-frigate",
+      "displayName": "Escort Frigate",
+      "role": "Defense / Anti-Craft",
+      "locationType": "orbit",
+      "stack": {
+        "type": "alnhul",
+        "name": "Escort Frigate",
+        "tactic": "destroy",
+        "nested": [
+          { "type": "railgn", "name": "Railgun", "quantity": 2 },
+          { "type": "shplas", "name": "Plasma Shield", "quantity": 1 },
+          { "type": "cargob", "name": "Cargo Bay", "quantity": 1 },
+          { "type": "fisrec", "name": "Reactor", "quantity": 1, "items": [{ "type": "uraniu", "quantity": 10 }] },
+          { "type": "crwqrt", "name": "Crew Quarters", "quantity": 1, "items": [{ "type": "terran", "quantity": 12 }] }
+        ]
+      }
+    },
+    {
+      "id": "drone-carrier-frigate",
+      "displayName": "Drone Carrier Frigate",
+      "role": "Drone Swarm",
+      "locationType": "orbit",
+      "stack": {
+        "type": "alnhul",
+        "name": "Drone Carrier",
+        "tactic": "evade",
+        "nested": [
+          { "type": "drnbay", "name": "Fighter Drone Bay", "quantity": 1 },
+          { "type": "alndrn", "name": "Fighter Drone", "quantity": 6, "tactic": "evade", "items": [{ "type": "heliu3", "quantity": 4 }] },
+          { "type": "shplas", "name": "Plasma Shield", "quantity": 1 },
+          { "type": "fisrec", "name": "Reactor", "quantity": 1, "items": [{ "type": "uraniu", "quantity": 10 }] },
+          { "type": "crwqrt", "name": "Crew Quarters", "quantity": 1, "items": [{ "type": "terran", "quantity": 12 }] }
+        ]
+      }
+    },
+    {
+      "id": "line-destroyer",
+      "displayName": "Line Destroyer",
+      "role": "Fleet Combat",
+      "locationType": "orbit",
+      "stack": {
+        "type": "deshul",
+        "name": "Line Destroyer",
+        "tactic": "destroy",
+        "nested": [
+          { "type": "coilgn", "name": "Coilgun", "quantity": 1 },
+          { "type": "crumis", "name": "Cruise Missiles", "quantity": 1 },
+          { "type": "ciwst", "name": "CIWS", "quantity": 1 },
+          { "type": "armplt", "name": "Spaced Armour", "quantity": 2 },
+          { "type": "fisrec", "name": "Reactor", "quantity": 1, "items": [{ "type": "uraniu", "quantity": 10 }] },
+          { "type": "crwqrt", "name": "Crew Quarters", "quantity": 1, "items": [{ "type": "terran", "quantity": 12 }] }
+        ]
+      }
+    },
+    {
+      "id": "planetary-defense-battery",
+      "displayName": "Planetary Defense Battery",
+      "role": "Static Ground",
+      "locationType": "region",
+      "stack": { "type": "gunplc", "name": "Defense Battery", "tactic": "destroy", "quantity": 4 }
+    },
+    {
+      "id": "laser-emplacement",
+      "displayName": "Laser Emplacement",
+      "role": "Static Laser",
+      "locationType": "region",
+      "stack": { "type": "laztrt", "name": "Laser Emplacement", "tactic": "destroy" }
+    },
+    {
+      "id": "armored-tank-platoon",
+      "displayName": "Armored Tank Platoon",
+      "role": "Ground Armor",
+      "locationType": "region",
+      "stack": {
+        "type": "tanks",
+        "name": "Tank Platoon",
+        "tactic": "destroy",
+        "items": [{ "type": "oil", "quantity": 16 }, { "type": "food", "quantity": 16 }]
+      }
+    },
+    {
+      "id": "infantry-battalion",
+      "displayName": "Infantry Battalion",
+      "role": "Garrison / Capture",
+      "locationType": "region",
+      "stack": {
+        "type": "inftry",
+        "name": "Infantry Battalion",
+        "tactic": "capture",
+        "items": [{ "type": "food", "quantity": 100 }, { "type": "terair", "quantity": 100 }]
+      }
+    }
+  ]
+}

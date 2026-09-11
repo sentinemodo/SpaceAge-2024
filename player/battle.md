@@ -1,8 +1,8 @@
 # Battle (rules of engagement)
 
-Checked **9 Sep 2026** against engine **0.1.158**.
+Checked **11 Sep 2026** against engine **0.1.158**.
 
-Sources: `Game/battle/Battle.cs`, `Game/battle/Battles.cs`, `Game/battle/CombatMatchup.cs`, `Game/battle/ETactic.cs`, `Game/Game.cs` (`ExecuteBattles`), `Game/reports/ReportWriter.cs` (blank line before `Battles report:`), `Game/data structures/ModuleStack.cs` (attack, defense, initiative, tactics, `IsArmed`, `HasOperationalModules`, `GetFiringModules`), `Game/data structures/ModuleType.cs` (`IsShuttleUnit` / `IsHangarCraft` / `IsDroneBay`, `WeaponGroup` / `Resists` / `ArmorModule`), `Game/data structures/Faction.cs` / `FactionAttitude.cs`, `Game/orders/AttackOrder.cs`, `CaptureOrder.cs`, `DeclareOrder.cs`, `TacticOrder.cs`, `SetOrder.cs`, `Game/game/CatalogLoader.cs` (`weapon-group`, `resists`, `armor-module`). Catalog bonuses: `Tests/data.xml` (`attack`, `defense`, `damage`, `initiative` on modules, techs, skills, items). SampleGame catalog is **flat**: no `weapon-group` / `resists` / `armor-module` attributes, so typed-matchup multipliers, shield intercept, and armor hit-weight do not fire there.
+Sources: `Game/battle/Battle.cs`, `Game/battle/Battles.cs`, `Game/battle/CombatMatchup.cs`, `Game/battle/ETactic.cs`, `Game/battle/BattleSimulatorRunner.cs`, `Game/battle/BattleSimulatorTemplates.cs`, `Game/Game.cs` (`ExecuteBattles`), `Game/Program.cs` (`/battle-sim`), `Game/reports/ReportWriter.cs` (blank line before `Battles report:`), `Game/data structures/ModuleStack.cs` (attack, defense, initiative, tactics, `IsArmed`, `HasOperationalModules`, `GetFiringModules`), `Game/data structures/ModuleType.cs` (`IsShuttleUnit` / `IsHangarCraft` / `IsDroneBay`, `WeaponGroup` / `Resists` / `ArmorModule`), `Game/data structures/Faction.cs` / `FactionAttitude.cs`, `Game/orders/AttackOrder.cs`, `CaptureOrder.cs`, `DeclareOrder.cs`, `TacticOrder.cs`, `SetOrder.cs`, `Game/game/CatalogLoader.cs` (`weapon-group`, `resists`, `armor-module`). Catalog bonuses: `Tests/data.xml` (`attack`, `defense`, `damage`, `initiative` on modules, techs, skills, items). SampleGame catalog is **flat**: no `weapon-group` / `resists` / `armor-module` attributes, so typed-matchup multipliers, shield intercept, and armor hit-weight do not fire there. Standalone UI: `tools/battle-simulator/` (see [Battle simulator](#battle-simulator-standalone)).
 
 Not source of truth: `Game/documentation/Rules.txt` combat chapters (Alderson CONVERT / 60% command / mixed leftover modules). Ground and space use the **same** battle loop; unused `GroundUnit` / `BattleField` do not run.
 
@@ -71,7 +71,7 @@ Resolution: per-unit declaration (`UnitAttitudes`) else stance toward the unit�
 
 - **Turn:** 13 weeks. Battles may start **every week** if enemy armed roots share a location.
 - **Battle:** up to **`MaxRounds` = 10** rounds, or until one side’s list is empty.
-- Each round: print attacker/defender battle reports; **after Round 1’s roster only**, hangar launch as a **ship action** (not an attack): `{hull} launches {craft} from fighter drone bay [drnbay].`; then every operational combatant **fires** (see initiative), then evade-leave is checked. The carrier does **not** fire the empty bay (no `fires fighter drone bay` / 0-damage shot) and skips its own round-1 fire. Launched craft do not fire in round 1; they fire from round 2 as roots.
+- Each round: print attacker/defender battle reports; **after Round 1’s roster only**, hangar launch as a **ship action** (not an attack): `{carrier} launches {craft} from {bay type name}.` (e.g. `… from fighter drone bay.`); then every operational combatant **fires** (see initiative), then evade-leave is checked. The carrier does **not** fire the empty bay (no `fires fighter drone bay` / 0-damage shot) and skips its own round-1 fire. Launched craft do not fire in round 1; they fire from round 2 as roots.
 - End lines: “Battle won by attackers/defenders” or “Battle ended indecisively.”
 - `ReportWriter` inserts a **blank line** before the `Battles report:` block when any battles ran. `Battles.Report` prints `Battles report:` plus a blank after the header, then each battle’s report lines followed by a **blank line** (not before the first battle body).
 - Capture damage on modules is **zeroed at the start of each battle** (`resetCaptureDamage`). Hit-point `Damage` is not reset here.
@@ -116,7 +116,7 @@ Only **operational** modules fire. Unarmed stacks skip `executeAttack`. Nested s
 
 **Armed:** formed, and module group **military** or **shuttle**, or group **vehicle** / **infantry** with `attack > 0`, including nested stacks. Group `production` shuttles (`shuttl`) are hangar craft by type id, not by group; a shuttle is armed when nested military (e.g. `orbrkt`) makes `IsArmed` true.
 
-**Hangar launch:** a **ship action**, not an attack. Not before `Round 1:`. After the Round 1 Attackers/Defenders roster (drones still nested in `drnbay`), `launchHangarCraft` detaches shuttle-units nested in a fighter drone bay to the location (`STACK OUT`) and joins the parent’s side: `{hull} launches {craft} from fighter drone bay [drnbay].` The empty bay is not a weapon: the hull does **not** print `fires fighter drone bay` (no 0-damage shot). The carrier is recorded in `hangarLaunchCarriers` and `executeAttack` returns for it in round 1, so it fires nothing that round. Launched craft **do not fire in round 1** (`executeAttack` returns if `round == 1` and the stack is in `launchedHangarCraft`); from round 2 they fight as roots and pay their own quarterly cash upkeep. There is no player `LAUNCH` verb. Launched drones have a slow space move at shuttle speed (`speed` 1, mass-capacity 750); with helium-3 they are not immobile. Drones that `STACK OUT` in orders before the fight never go through this path.
+**Hangar launch:** a **ship action**, not an attack. Not before `Round 1:`. After the Round 1 Attackers/Defenders roster (drones still nested in `drnbay`), `launchHangarCraft` detaches shuttle-units nested in a fighter drone bay to the location (`STACK OUT`) and joins the parent’s side: `{carrier} launches {craft} from {bay type name}.` The empty bay is not a weapon: the hull does **not** print `fires fighter drone bay` (no 0-damage shot). The carrier is recorded in `hangarLaunchCarriers` and `executeAttack` returns for it in round 1, so it fires nothing that round. Launched craft **do not fire in round 1** (`executeAttack` returns if `round == 1` and the stack is in `launchedHangarCraft`); from round 2 they fight as roots and pay their own quarterly cash upkeep. There is no player `LAUNCH` verb. Launched drones have a slow space move at shuttle speed (`speed` 1, mass-capacity 750); with helium-3 they are not immobile. Drones that `STACK OUT` in orders before the fight never go through this path.
 
 Fighter drones: high module `initiative` (20), small `damage` and hit points, cargo capacity 1 (one helium-3 `[heliu3]`), helium-3 fuel (1 per 13 weeks).
 
@@ -158,7 +158,8 @@ On a hit, a module on the target is chosen by **hit weight**, then:
 Both are capped by remaining pool `HitPoints - Damage - CaptureDamage`.
 
 - `Damage >= HitPoints` → **wrecked**.
-- Capture: `Damage + CaptureDamage >= HitPoints` and not wrecked → **capture complete** (module offline, peeled to the **battle initiator’s owner** — `this.attacker.Owner`, not necessarily the firing stack). The peeled module goes onto a **new stack** with a 6-character id `c` + 5 digits (`c00001`, `c00002`, …), skipping ids already in `ModuleStack.All`. Not `c` plus the source stack id.
+- Capture: `Damage + CaptureDamage >= HitPoints` and not wrecked → **capture complete** (module offline, transferred to the **battle initiator’s owner** — `this.attacker.Owner`, not necessarily the firing stack). Transfer runs on the shot or again at battle end (`ApplyCaptures`) for any module still capture-complete. The peeled module goes onto a **new stack** with a 6-character id `c` + 5 digits (`c00001`, `c00002`, …), skipping ids already in `ModuleStack.All`. Not `c` plus the source stack id.
+- **Capture transfer:** proportional share of cargo items, nested stacks, and officers moves with the captured module (`taken / originalCount`). On a **command** module, crew items split roughly **25% killed**, **50% wounded** (`wndtrn`), **25% captured**; officers split the same way (wounded become race `wndtrn`). If the original owner has **no command modules left** on that root after the peel, the **entire root stack** changes owner to the initiator (`captureParentByOwnership`, `{stack} captured by {faction}.`). An emptied source stack is removed from the battle.
 
 Hit weight for a stack: `DamageCapacity * intact module count`. **Armor** stacks (`ArmorModule` or `resists` armour/armor) **×5**. Command or propulsion: **×2** if the shot is capture, **÷2** if the target is evading. Nested stacks of the **same owner** are included; other owners contribute 0 to this roll. Nested `orbrkt` is on that roll (not a shuttle unit). Nested shuttle-units already launched are roots and are not hit as cargo of the carrier.
 
@@ -177,3 +178,38 @@ Disabling the last operational module can drop the stack from the battle (comman
 ## Evade leave
 
 After the round’s shots: an evading stack that was **not** hit this round increments a counter; at **2** consecutive unhit rounds it “evades and leaves combat” and is removed from both lists. A hit resets the counter.
+
+## Battle simulator (standalone)
+
+Local tool at `tools/battle-simulator/` for planning fights without a full turn. It builds `<battle-sim>` XML and runs the same `Battle` loop through the engine:
+
+```text
+Game.exe /battle-sim <sim-input.xml> [output.txt] /data campaign [/seed N]
+```
+
+- **`/data campaign`** — loads `campaign/data.xml` (typed weapon groups, shields, armour, campaign hulls). SampleGame `Tests/data.xml` works for flat-catalog smoke tests.
+- **`/seed N`** — optional; overrides the XML `seed` attribute for reproducible dice (`Sequence`).
+- Default output: `<sim-input>.out.txt` (Windows-1251).
+
+**Preset templates** live in `Game/battle/BattleSimulatorTemplates.cs` and are mirrored in `tools/battle-simulator/public/presets.json` for the UI:
+
+| Id | Display name | Role |
+|----|--------------|------|
+| `system-patrol-corvette` | System Patrol Corvette | Light patrol (corvette + PD lasers, ceramic armour) |
+| `escort-frigate` | Escort Frigate | Defense / anti-craft (railguns, plasma shield) |
+| `drone-carrier-frigate` | Drone Carrier Frigate | Drone swarm (bay + 6 evading drones) |
+| `line-destroyer` | Line Destroyer | Fleet combat (coilgun, cruise missiles, CIWS, spaced armour) |
+| `planetary-defense-battery` | Planetary Defense Battery | Static ground (4× gun placement) |
+| `laser-emplacement` | Laser Emplacement | Static laser turret |
+| `armored-tank-platoon` | Armored Tank Platoon | Ground armor |
+| `infantry-battalion` | Infantry Battalion | Garrison / capture |
+
+**UI:** `npm start` in `tools/battle-simulator/` → http://localhost:4173 — two-sided roster editor, custom templates in `localStorage`, bridge via `server/bridge.mjs` to `Game.exe`.
+
+**CLI example** (unit fixture):
+
+```powershell
+Game.exe /battle-sim Tests\fixtures\battle-sim\inftry-skirmish.xml /data campaign /seed 42
+```
+
+Simulator output header: `SpaceAge Battle Simulator v{EngineVersion}`, seed, location type; then battle rounds from `Round 1:` onward; footer with result, round count, and casualty summary.
