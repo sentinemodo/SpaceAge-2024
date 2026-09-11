@@ -1,7 +1,7 @@
 import { spawn } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
-import { campaignDataXml, dataDir, gameExe, turnDir } from './paths.mjs';
+import { campaignDataXml, dataDir, gameExe, repoRoot, turnDir } from './paths.mjs';
 
 /** Resolve process + argv prefix for Game.exe (mono wrapper on Linux). */
 export function resolveGameSpawn(platform = process.platform, env = process.env) {

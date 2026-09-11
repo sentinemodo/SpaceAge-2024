@@ -23,9 +23,18 @@ Decision: [architecture/adr/ADR-0011-hosted-game-service.md](../architecture/adr
 
 ## Start
 
+**Native (Windows dev):**
+
 ```powershell
 cd game-host
 npm start
+```
+
+**Docker (GM laptop or Railway):** see [`docker/README.md`](../docker/README.md).
+
+```powershell
+docker compose up --build -d
+# or: .\play\docker-up.ps1 -Build
 ```
 
 ## GM workflow

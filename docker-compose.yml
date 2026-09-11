@@ -1,0 +1,23 @@
+# GM laptop: game-host + Game.exe in Docker; persistent runs on the host.
+# Ollama + player-agent run natively on the GM machine (see docker/README.md).
+
+services:
+  game-host:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "${GAME_HOST_PORT:-8787}:8787"
+    environment:
+      REPO_ROOT: /app
+      GAME_HOST_PORT: "8787"
+      GAME_USE_MONO: "1"
+      GAME_HOST_RUN_ID: ${GAME_HOST_RUN_ID:-beta-1}
+      GAME_HOST_GM_KEY: ${GAME_HOST_GM_KEY:-dev-gm-key}
+      GAME_HOST_CORS: ${GAME_HOST_CORS:-*}
+    volumes:
+      # Campaign state (gamein, orders, reports) — survives container rebuilds
+      - ./game-host/runs:/app/game-host/runs
+      # play/runs passwords + faction mirror for beta-launch init + player-agent RAG
+      - ./play/runs:/app/play/runs
+    restart: unless-stopped

@@ -5,6 +5,9 @@ import { fileURLToPath } from 'node:url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export function repoRoot() {
+  if (process.env.REPO_ROOT) {
+    return path.resolve(process.env.REPO_ROOT);
+  }
   return path.resolve(__dirname, '..', '..');
 }
 
