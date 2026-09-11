@@ -18,6 +18,7 @@ namespace SpaceAge
 			{ "contract", subject => new ContractOrder(subject) },
 			{ "press", subject => new PressOrder(subject) },
 			{ "declare", subject => new DeclareOrder(subject) },
+			{ "deposit", subject => new DepositOrder(subject) },
 			{ "form", subject => new FormOrder(subject) },
 			{ "get", subject => new GetOrder(subject) },
 			{ "give", subject => new GiveOrder(subject) },
@@ -36,6 +37,7 @@ namespace SpaceAge
 			{ "train", subject => new TrainOrder(subject) },
 			{ "transfer", subject => new TransferOrder(subject) },
 			{ "use", subject => new UseOrder(subject) },
+			{ "withdraw", subject => new WithdrawOrder(subject) },
 		};
 
 		public static string NormalizeTextVerb(string token)

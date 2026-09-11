@@ -84,6 +84,7 @@
     <Compile Include="TNamedObject.cs" />
     <Compile Include="TModuleStack.cs" />
     <Compile Include="TOrder.cs" />
+    <Compile Include="TBankOrders.cs" />
     <Compile Include="TUse.cs" />
     <Compile Include="TUseRepairEffect.cs" />
     <Compile Include="TMove.cs" />

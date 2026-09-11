@@ -237,7 +237,9 @@
     <Compile Include="orders\ContractOrder.cs" />
     <Compile Include="orders\PressOrder.cs" />
     <Compile Include="orders\DeclareOrder.cs" />
+    <Compile Include="orders\DepositOrder.cs" />
     <Compile Include="orders\TransferOrder.cs" />
+    <Compile Include="orders\WithdrawOrder.cs" />
     <Compile Include="orders\FormOrder.cs" />
     <Compile Include="orders\ImmediateOrder.cs" />
     <Compile Include="orders\TrainOrder.cs" />

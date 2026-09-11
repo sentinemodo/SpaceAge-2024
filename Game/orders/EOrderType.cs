@@ -14,6 +14,7 @@ namespace SpaceAge
         copy,
 		contract,
 		declare,
+		deposit,
 		form, 
 		get,
 		give,
@@ -32,6 +33,7 @@ namespace SpaceAge
 		tactic,
         transfer,
 		train,
-        use
+        use,
+		withdraw
 	}
 }
