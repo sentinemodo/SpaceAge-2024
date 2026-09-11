@@ -18,6 +18,8 @@ Decision: [architecture/adr/ADR-0011-hosted-game-service.md](../architecture/adr
 | `GAME_HOST_RUN_ID` | `beta-1` |
 | `GAME_HOST_GM_KEY` | `dev-gm-key` |
 | `GAME_EXE` | `Game/bin/Debug/Game.exe` |
+| `GAME_USE_MONO` | `1` on non-Windows (auto); set `0` to spawn `GAME_EXE` directly |
+| `MONO_EXE` | `mono` — Mono binary when `GAME_USE_MONO` is active |
 
 ## Start
 

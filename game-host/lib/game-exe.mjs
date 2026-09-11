@@ -3,16 +3,35 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { campaignDataXml, dataDir, gameExe, turnDir } from './paths.mjs';
 
+/** Resolve process + argv prefix for Game.exe (mono wrapper on Linux). */
+export function resolveGameSpawn(platform = process.platform, env = process.env) {
+  const exePath = gameExe();
+  const useMono = env.GAME_USE_MONO === '1'
+    || (env.GAME_USE_MONO !== '0' && platform !== 'win32');
+  if (useMono) {
+    return {
+      command: env.MONO_EXE || 'mono',
+      argvPrefix: [exePath],
+      exePath,
+      useMono: true,
+    };
+  }
+  return { command: exePath, argvPrefix: [], exePath, useMono: false };
+}
+
 export function spawnGame(args, { cwd } = {}) {
-  const exe = gameExe();
-  if (!fs.existsSync(exe)) {
-    return Promise.reject(new Error(`Game.exe not found at ${exe}. Build Game project first.`));
+  const { command, argvPrefix, exePath, useMono } = resolveGameSpawn();
+  if (!fs.existsSync(exePath)) {
+    return Promise.reject(new Error(`Game.exe not found at ${exePath}. Build Game project first.`));
   }
   return new Promise((resolve, reject) => {
-    const child = spawn(exe, args, {
-      cwd: cwd || path.dirname(exe),
-      windowsHide: true,
-    });
+    const spawnOpts = {
+      cwd: cwd || path.dirname(exePath),
+    };
+    if (!useMono) {
+      spawnOpts.windowsHide = true;
+    }
+    const child = spawn(command, [...argvPrefix, ...args], spawnOpts);
     let stdout = '';
     let stderr = '';
     child.stdout.on('data', (d) => { stdout += d; });
