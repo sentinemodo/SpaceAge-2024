@@ -48,3 +48,4 @@ Putting pages on `Game.exe` would violate the batch-processor decision and coupl
 
 - 2026-08-29: Accepted. Astro static lobby; file-published status JSON.
 - 2026-08-29: Decision 6 — Phase 4 `/eta` and `/battle` as client-side planning tools on the same origin.
+- 2026-09-11: [ADR-0011](ADR-0011-hosted-game-service.md) adds a **game-host** origin that serves faction-scoped report XML and accepts orders **behind auth**. The static lobby (`website/`) still does **not** embed `gamein.xml` or reports. Phase 3 `/client` links to the hosted visual tool on the game-host (or sibling) origin.

@@ -409,28 +409,28 @@ There is no production PHP/ASP.NET host.
 - [x] Mobile-first CSS (tester proves WS-007 in Playwright; developer does not “explore in a browser” as the done path) (2026-09-09)
 - [x] Developer: `astro check` + Vitest (status schema) → **handoff** to `/website-tester` (2026-09-09)
 - [x] Tester: copy seed catalog to `website/e2e/scenarios.md`; Playwright Chromium vs `astro preview` for WS-001…WS-009 (2026-09-09)
-- [ ] Deploy recipe (GitHub Pages) documented in `website/README.md`
+- [x] Deploy recipe (GitHub Pages) documented in `website/README.md`
 - [x] Do **not** implement the visual tool
 
 ### Phase 2 — Orders-status feed from play scripts
 
-- [ ] PowerShell in `play/` writes `website/public/status.json` (or copies onto the Pages artifact) from `play/runs/<id>/` order files
-- [ ] Depends on the play-loop existing — **checkbox lives in [`campaign-play.md`](campaign-play.md)**, not here
-- [ ] `/` and `/turns` consume the file; still no engine HTTP
-- [ ] Confirm JSON never includes passwords or report bodies
+- [x] PowerShell in `play/` writes `website/public/status.json` (or copies onto the Pages artifact) from `play/runs/<id>/` order files
+- [x] Depends on the play-loop existing — **checkbox lives in [`campaign-play.md`](campaign-play.md)**, not here
+- [x] `/` and `/turns` consume the file; still no engine HTTP
+- [x] Confirm JSON never includes passwords or report bodies
 
 ### Phase 3 — Visual-tool link goes live
 
-- [ ] Point `/client` CTA at the real visual-tool URL or `/visual-tool/`
-- [ ] Optional screenshot from the real client
-- [ ] Visual tool **implementation** remains a different agent / folder / host
+- [x] Point `/client` CTA at the real visual-tool URL or `/visual-tool/`
+- [x] Optional screenshot from the real client
+- [x] Visual tool **implementation** remains a different agent / folder / host (`visual-tool/` + game-host `/client/`)
 
 ### Phase 4 — Player tools (`/eta`, `/battle`)
 
 Feature requests recorded 2026-08-29. Start only after Phase 1 exists (Phase 2 status feed is not a hard gate).
 
-- [ ] `/eta`: paste parser for `mass: thrust/mass`, two AU-from-star inputs, `DurationWeeks` + mass factor, Vitest vs `au-transit.md` locked table
-- [ ] `/battle`: two-side roster + tactics, seeded rounds, Vitest vs `player/battle.md` formulas
+- [x] `/eta`: paste parser for `mass: thrust/mass`, two AU-from-star inputs, `DurationWeeks` + mass factor, Vitest vs `au-transit.md` locked table
+- [x] `/battle`: two-side roster + tactics, seeded rounds, Vitest vs `player/battle.md` formulas
 - [ ] Home Tools card + nav links; disclaimer that the next engine turn is authoritative
 - [ ] Developer: `astro check` + Vitest → handoff. Tester: WS-010…WS-012 Playwright. Do **not** implement the visual tool here
 

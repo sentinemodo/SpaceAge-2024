@@ -1,0 +1,183 @@
+SpaceAge Battle Simulator v0.1.158
+Seed: 42
+Location: Region
+
+Round 1:
+------------------------------------------------------------
+Attackers:
++ infantry battalion [sim_a1], infantry battalion [inftry].
+size: 500, mass: 500 (500).
+hit points: 50/50, attack: 2, defense: 2.
+tactics: destroy.
+#1 hit points: 50/50.
+Defenders:
+- infantry battalion [sim_d1], infantry battalion [inftry], owned by Beta Battalion [sim_d].
+size: 500.
+hit points: 50/50, attack: 2, defense: 2.
+#1 hit points: 50/50.
+------------------------------------------------------------
+infantry battalion [sim_a1] fires infantry battalion [inftry] on infantry battalion [sim_d1] (chance: 2/4) and misses.
+infantry battalion [sim_d1] fires infantry battalion [inftry] on infantry battalion [sim_a1] (chance: 2/4) and hits #1 infantry battalion [sim_a1] doing 2 damage.
+------------------------------------------------------------
+Round 2:
+------------------------------------------------------------
+Attackers:
++ infantry battalion [sim_a1], infantry battalion [inftry].
+size: 500, mass: 500 (500).
+hit points: 50/48, attack: 2, defense: 2.
+tactics: destroy.
+#1 hit points: 50/48.
+Defenders:
+- infantry battalion [sim_d1], infantry battalion [inftry], owned by Beta Battalion [sim_d].
+size: 500.
+hit points: 50/50, attack: 2, defense: 2.
+#1 hit points: 50/50.
+------------------------------------------------------------
+infantry battalion [sim_a1] fires infantry battalion [inftry] on infantry battalion [sim_d1] (chance: 2/4) and misses.
+infantry battalion [sim_d1] fires infantry battalion [inftry] on infantry battalion [sim_a1] (chance: 2/4) and hits #1 infantry battalion [sim_a1] doing 2 damage.
+------------------------------------------------------------
+Round 3:
+------------------------------------------------------------
+Attackers:
++ infantry battalion [sim_a1], infantry battalion [inftry].
+size: 500, mass: 500 (500).
+hit points: 50/46, attack: 2, defense: 2.
+tactics: destroy.
+#1 hit points: 50/46.
+Defenders:
+- infantry battalion [sim_d1], infantry battalion [inftry], owned by Beta Battalion [sim_d].
+size: 500.
+hit points: 50/50, attack: 2, defense: 2.
+#1 hit points: 50/50.
+------------------------------------------------------------
+infantry battalion [sim_a1] fires infantry battalion [inftry] on infantry battalion [sim_d1] (chance: 2/4) and misses.
+infantry battalion [sim_d1] fires infantry battalion [inftry] on infantry battalion [sim_a1] (chance: 2/4) and misses.
+------------------------------------------------------------
+Round 4:
+------------------------------------------------------------
+Attackers:
++ infantry battalion [sim_a1], infantry battalion [inftry].
+size: 500, mass: 500 (500).
+hit points: 50/46, attack: 2, defense: 2.
+tactics: destroy.
+#1 hit points: 50/46.
+Defenders:
+- infantry battalion [sim_d1], infantry battalion [inftry], owned by Beta Battalion [sim_d].
+size: 500.
+hit points: 50/50, attack: 2, defense: 2.
+#1 hit points: 50/50.
+------------------------------------------------------------
+infantry battalion [sim_a1] fires infantry battalion [inftry] on infantry battalion [sim_d1] (chance: 2/4) and hits #1 infantry battalion [sim_d1] doing 2 damage.
+infantry battalion [sim_d1] fires infantry battalion [inftry] on infantry battalion [sim_a1] (chance: 2/4) and hits #1 infantry battalion [sim_a1] doing 2 damage.
+------------------------------------------------------------
+Round 5:
+------------------------------------------------------------
+Attackers:
++ infantry battalion [sim_a1], infantry battalion [inftry].
+size: 500, mass: 500 (500).
+hit points: 50/44, attack: 2, defense: 2.
+tactics: destroy.
+#1 hit points: 50/44.
+Defenders:
+- infantry battalion [sim_d1], infantry battalion [inftry], owned by Beta Battalion [sim_d].
+size: 500.
+hit points: 50/48, attack: 2, defense: 2.
+#1 hit points: 50/48.
+------------------------------------------------------------
+infantry battalion [sim_a1] fires infantry battalion [inftry] on infantry battalion [sim_d1] (chance: 2/4) and misses.
+infantry battalion [sim_d1] fires infantry battalion [inftry] on infantry battalion [sim_a1] (chance: 2/4) and hits #1 infantry battalion [sim_a1] doing 2 damage.
+------------------------------------------------------------
+Round 6:
+------------------------------------------------------------
+Attackers:
++ infantry battalion [sim_a1], infantry battalion [inftry].
+size: 500, mass: 500 (500).
+hit points: 50/42, attack: 2, defense: 2.
+tactics: destroy.
+#1 hit points: 50/42.
+Defenders:
+- infantry battalion [sim_d1], infantry battalion [inftry], owned by Beta Battalion [sim_d].
+size: 500.
+hit points: 50/48, attack: 2, defense: 2.
+#1 hit points: 50/48.
+------------------------------------------------------------
+infantry battalion [sim_a1] fires infantry battalion [inftry] on infantry battalion [sim_d1] (chance: 2/4) and hits #1 infantry battalion [sim_d1] doing 2 damage.
+infantry battalion [sim_d1] fires infantry battalion [inftry] on infantry battalion [sim_a1] (chance: 2/4) and hits #1 infantry battalion [sim_a1] doing 2 damage.
+------------------------------------------------------------
+Round 7:
+------------------------------------------------------------
+Attackers:
++ infantry battalion [sim_a1], infantry battalion [inftry].
+size: 500, mass: 500 (500).
+hit points: 50/40, attack: 2, defense: 2.
+tactics: destroy.
+#1 hit points: 50/40.
+Defenders:
+- infantry battalion [sim_d1], infantry battalion [inftry], owned by Beta Battalion [sim_d].
+size: 500.
+hit points: 50/46, attack: 2, defense: 2.
+#1 hit points: 50/46.
+------------------------------------------------------------
+infantry battalion [sim_a1] fires infantry battalion [inftry] on infantry battalion [sim_d1] (chance: 2/4) and misses.
+infantry battalion [sim_d1] fires infantry battalion [inftry] on infantry battalion [sim_a1] (chance: 2/4) and hits #1 infantry battalion [sim_a1] doing 2 damage.
+------------------------------------------------------------
+Round 8:
+------------------------------------------------------------
+Attackers:
++ infantry battalion [sim_a1], infantry battalion [inftry].
+size: 500, mass: 500 (500).
+hit points: 50/38, attack: 2, defense: 2.
+tactics: destroy.
+#1 hit points: 50/38.
+Defenders:
+- infantry battalion [sim_d1], infantry battalion [inftry], owned by Beta Battalion [sim_d].
+size: 500.
+hit points: 50/46, attack: 2, defense: 2.
+#1 hit points: 50/46.
+------------------------------------------------------------
+infantry battalion [sim_a1] fires infantry battalion [inftry] on infantry battalion [sim_d1] (chance: 2/4) and hits #1 infantry battalion [sim_d1] doing 2 damage.
+infantry battalion [sim_d1] fires infantry battalion [inftry] on infantry battalion [sim_a1] (chance: 2/4) and misses.
+------------------------------------------------------------
+Round 9:
+------------------------------------------------------------
+Attackers:
++ infantry battalion [sim_a1], infantry battalion [inftry].
+size: 500, mass: 500 (500).
+hit points: 50/38, attack: 2, defense: 2.
+tactics: destroy.
+#1 hit points: 50/38.
+Defenders:
+- infantry battalion [sim_d1], infantry battalion [inftry], owned by Beta Battalion [sim_d].
+size: 500.
+hit points: 50/44, attack: 2, defense: 2.
+#1 hit points: 50/44.
+------------------------------------------------------------
+infantry battalion [sim_a1] fires infantry battalion [inftry] on infantry battalion [sim_d1] (chance: 2/4) and misses.
+infantry battalion [sim_d1] fires infantry battalion [inftry] on infantry battalion [sim_a1] (chance: 2/4) and hits #1 infantry battalion [sim_a1] doing 2 damage.
+#1 infantry battalion [inftry] is lightly damaged.
+------------------------------------------------------------
+Round 10:
+------------------------------------------------------------
+Attackers:
++ infantry battalion [sim_a1], infantry battalion [inftry].
+size: 500, mass: 500 (500).
+hit points: 50/36, attack: 2, defense: 2.
+tactics: destroy.
+#1 hit points: 50/36, lightly damaged.
+Defenders:
+- infantry battalion [sim_d1], infantry battalion [inftry], owned by Beta Battalion [sim_d].
+size: 500.
+hit points: 50/44, attack: 2, defense: 2.
+#1 hit points: 50/44.
+------------------------------------------------------------
+infantry battalion [sim_a1] fires infantry battalion [inftry] on infantry battalion [sim_d1] (chance: 2/4) and hits #1 infantry battalion [sim_d1] doing 2 damage.
+infantry battalion [sim_d1] fires infantry battalion [inftry] on infantry battalion [sim_a1] (chance: 2/4) and misses.
+------------------------------------------------------------
+Battle ended indecisively.
+============================================================
+SIMULATION RESULT: INDECISIVE
+Rounds: 10
+Casualties Attackers: none
+Casualties Defenders: none
+Captured Modules: none
+============================================================

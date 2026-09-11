@@ -46,6 +46,52 @@ namespace UnitTests
 		}
 
 		[Test]
+		public void GenerateOffers_DoesNotDuplicateStandingCitySells()
+		{
+			this.dataFile.LoadConfiguration(CampaignDir(), "data.xml");
+			this.dataFile.LoadGameDocument(CampaignDir(), "gamein.1.xml");
+			this.dataFile.LoadTurnNumber();
+			this.dataFile.LoadFactions();
+			this.dataFile.LoadGalaxy();
+			this.dataFile.LoadContracts();
+			this.game = this.dataFile.Game;
+
+			int standingTerranSells = 0;
+			ItemType terran = ItemType.All["terran"];
+			foreach (Offer offer in Offer.All)
+			{
+				if (offer.OfferType == EOfferType.SellItems
+					&& offer.ItemType == terran
+					&& offer.Offerent != null
+					&& offer.Offerent.Owner != null
+					&& offer.Offerent.Owner.Name == "1")
+				{
+					standingTerranSells++;
+				}
+			}
+
+			Assert.That(standingTerranSells, Is.GreaterThan(0), "campaign t=1 should seed UN terran sells");
+
+			this.game.GenerateOffers();
+
+			int afterTerranSells = 0;
+			foreach (Offer offer in Offer.All)
+			{
+				if (offer.OfferType == EOfferType.SellItems
+					&& offer.ItemType == terran
+					&& offer.Offerent != null
+					&& offer.Offerent.Owner != null
+					&& offer.Offerent.Owner.Name == "1")
+				{
+					afterTerranSells++;
+				}
+			}
+
+			Assert.That(afterTerranSells, Is.EqualTo(standingTerranSells),
+				"GenerateOffers must not add duplicate terran sells when standing offers exist");
+		}
+
+		[Test]
 		public void LoadGame_CampaignGamein1_LoadsWorld()
 		{
 			this.dataFile.LoadConfiguration(CampaignDir(), "data.xml");

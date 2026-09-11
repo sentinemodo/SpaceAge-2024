@@ -1,0 +1,50 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Transit ETA" description="AU transit time calculator">
+  <section class="card" style="max-width:720px;margin:2rem auto;padding:1.5rem;">
+    <h1>Transit ETA Calculator</h1>
+    <p>Planning aid only — the next processed turn is authoritative.</p>
+    <label>Paste ship report excerpt (optional)
+      <textarea id="paste" rows="4" style="width:100%"></textarea>
+    </label>
+    <label>Thrust <input type="number" id="thrust" value="40000" /></label>
+    <label>Mass <input type="number" id="mass" value="4150" /></label>
+    <label>AU from star (origin) <input type="number" id="au1" value="1" step="0.01" /></label>
+    <label>AU from star (destination) <input type="number" id="au2" value="80" step="0.01" /></label>
+    <label>Drive speed <input type="number" id="speed" value="1" step="0.1" /></label>
+    <button type="button" id="calc">Calculate</button>
+    <p id="result" style="margin-top:1rem;font-weight:600;"></p>
+  </section>
+</Layout>
+
+<script>
+  import { durationWeeks, parseMassLine, massFactor } from '../lib/transit';
+
+  const paste = document.getElementById('paste');
+  const thrust = document.getElementById('thrust');
+  const mass = document.getElementById('mass');
+  const au1 = document.getElementById('au1');
+  const au2 = document.getElementById('au2');
+  const speed = document.getElementById('speed');
+  const result = document.getElementById('result');
+
+  paste?.addEventListener('input', () => {
+    const p = parseMassLine(paste.value);
+    if (p) {
+      thrust.value = String(p.thrust);
+      mass.value = String(p.mass);
+    }
+  });
+
+  document.getElementById('calc')?.addEventListener('click', () => {
+    const delta = Math.abs(parseFloat(au2.value) - parseFloat(au1.value));
+    const t = parseInt(thrust.value, 10);
+    const m = parseInt(mass.value, 10);
+    const sp = parseFloat(speed.value);
+    const weeks = durationWeeks(delta, sp, t, m);
+    const mf = massFactor(t, m);
+    result.textContent = `${weeks} weeks (ΔAU=${delta.toFixed(2)}, mass factor=${mf.toFixed(2)}, effective speed=${(sp * mf).toFixed(2)})`;
+  });
+</script>

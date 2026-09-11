@@ -366,3 +366,7 @@ FodyWeavers.xsd
 
 # Local campaign runs (passwords + gamein + reports). Keep play/README.md and play/*.ps1 tracked.
 play/runs/
+game-host/runs/
+tools/player-agent/.data/
+visual-tool/node_modules/
+game-host/node_modules/

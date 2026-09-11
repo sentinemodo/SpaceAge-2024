@@ -1,7 +1,7 @@
 # SpaceAge-2024 — architecture overview
 
-Status: Current-state description (engine `0.1.141`)  
-Last updated: 2026-08-29
+Status: Current-state description (engine `0.1.159`)  
+Last updated: 2026-09-11
 
 ## Purpose
 
@@ -14,7 +14,16 @@ SpaceAge is a **turn-based play-by-email (PBEM) space 4X engine**. A GM (or scri
 
 The engine does **not** send email, host an API, or use a database. External mailers and GM tools wrap `Game.exe`.
 
-A **public campaign website** is a separate product surface (not the engine): a closed PBEM lobby with flavour copy, orders-submission status from a published JSON file, and a link to a future visual tool. Phase 4 adds two **client-side** planning pages (`/eta`, `/battle`). It must not call `Game.exe` over HTTP or serve `gamein.xml`. Plan: [`delivery/website.md`](delivery/website.md), [ADR-0007](adr/ADR-0007-public-campaign-website.md).
+A **public campaign website** is a separate product surface (not the engine): a closed PBEM lobby with flavour copy, orders-submission status from a published JSON file, and a link to the hosted visual tool. Phase 4 adds **client-side** planning pages (`/eta`, `/battle`). Plan: [`delivery/website.md`](delivery/website.md), [ADR-0007](adr/ADR-0007-public-campaign-website.md).
+
+**Open beta (2026-09-11)** adds two more bounded contexts:
+
+| Context | Folder | ADR |
+|---------|--------|-----|
+| Game host | `game-host/` | [ADR-0011](adr/ADR-0011-hosted-game-service.md) — faction auth, report XML, orders, GM turn runner |
+| Visual tool | `visual-tool/` | [ADR-0010](adr/ADR-0010-visual-tool.md) — complete XML report client |
+
+The static lobby still does not embed `gamein.xml`; the game-host serves faction-scoped data behind authentication.
 
 ## Concise architecture
 

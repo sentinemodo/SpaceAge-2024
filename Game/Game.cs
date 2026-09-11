@@ -464,17 +464,71 @@ namespace SpaceAge
 
         }
 
-        private void UpdateRates()
+        public void UpdateRates()
         {
-            // update deposit lines
-            // estimate credit mass
-            // estimate networth
-            // estimate cost of money
-            // update rates for the next quarter
-            // estimate value of local trades
-            // estimate value of external trades (like sum of receiving items effects)
-            // estimate total costs of delivery service 
-            // update costs of service
+            this.updateMarketPrices();
+            this.updateBankRates();
+        }
+
+        private void updateMarketPrices()
+        {
+            foreach (Region region in Region.All.Values)
+            {
+                foreach (ItemType itemType in ItemType.All.Values)
+                {
+                    if (!region.Market.PriceList.ContainsKey(itemType))
+                    {
+                        continue;
+                    }
+
+                    double sum = 0;
+                    int count = 0;
+                    foreach (Region other in Region.All.Values)
+                    {
+                        if (other.Market.PriceList.ContainsKey(itemType))
+                        {
+                            sum += other.Market.PriceList[itemType];
+                            count++;
+                        }
+                    }
+
+                    if (count == 0)
+                    {
+                        continue;
+                    }
+
+                    double averageRaw = sum / count;
+                    int average = (int)Math.Round(averageRaw, MidpointRounding.AwayFromZero);
+                    if (average < 1 && averageRaw >= 0.5)
+                    {
+                        average = 1;
+                    }
+
+                    region.Market.AddPrice(itemType, average);
+                }
+            }
+        }
+
+        private void updateBankRates()
+        {
+            foreach (Faction faction in this.Factions.Values)
+            {
+                int factionId;
+                if (!int.TryParse(faction.Name, out factionId) || factionId < 2 || factionId > 11)
+                {
+                    continue;
+                }
+
+                if (faction.Bank.Balance > 5000)
+                {
+                    faction.Bank.DepositRate = Math.Max(0.01, faction.Bank.DepositRate - 0.005);
+                }
+
+                if (faction.Bank.Balance < 0)
+                {
+                    faction.Bank.CreditRate = Math.Min(0.25, faction.Bank.CreditRate + 0.005);
+                }
+            }
         }
 
         private void ProcessBuyOffers()

@@ -27,6 +27,24 @@ Scriptable order-drafting runner for PBEM play. Lives **outside** `Game.exe` per
   - **Local / remote embed:** `ollama pull nomic-embed-text`
   - **RunPod (quality):** `ollama pull qwen2.5-coder:14b` (or `qwen3-coder:30b` when VRAM allows)
 
+## Open beta operations
+
+Optional AI fill-ins during beta (`play/runs/beta-1/`):
+
+```powershell
+# 1. Install Ollama + models (see Requirements)
+ollama pull qwen2.5-coder:7b
+ollama pull nomic-embed-text
+
+# 2. Refresh campaign RAG after manual updates
+dotnet run --project tools/player-agent/PlayerAgent.csproj -- refresh-shared --mode campaign
+
+# 3. After isolate, ingest per-faction reports then draft (or use play/draft-run.ps1)
+dotnet run --project tools/player-agent/PlayerAgent.csproj -- draft-run --mode campaign --run beta-1 --dry-run
+```
+
+Submitted orders go through the **game-host** like human players (`PUT /api/session/orders`), not email.
+
 ## Build and run
 
 From the repository root:

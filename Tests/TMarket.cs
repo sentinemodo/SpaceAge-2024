@@ -469,6 +469,46 @@ namespace UnitTests
         }
 
         [Test]
+        public void UpdateRates_SyncsRegionalPriceToGalaxyAverage()
+        {
+            Region berlin = this.game.Regions["R00001"];
+            Region sydney = this.game.Regions["R00002"];
+            ItemType food = ItemType.All["food"];
+
+            berlin.Market.AddPrice(food, 4);
+            sydney.Market.AddPrice(food, 6);
+
+            this.game.UpdateRates();
+
+            Assert.That(berlin.Market.PriceList[food], Is.EqualTo(5));
+            Assert.That(sydney.Market.PriceList[food], Is.EqualTo(5));
+        }
+
+        [Test]
+        public void UpdateRates_ReducesDepositRateWhenBalanceHigh()
+        {
+            Faction player = Faction.All["2"];
+            player.Bank.Balance = 6000;
+            player.Bank.DepositRate = 0.05;
+
+            this.game.UpdateRates();
+
+            Assert.That(player.Bank.DepositRate, Is.EqualTo(0.045).Within(0.0001));
+        }
+
+        [Test]
+        public void UpdateRates_IncreasesCreditRateWhenOverdrawn()
+        {
+            Faction player = Faction.All["2"];
+            player.Bank.Balance = -100;
+            player.Bank.CreditRate = 0.2;
+
+            this.game.UpdateRates();
+
+            Assert.That(player.Bank.CreditRate, Is.EqualTo(0.205).Within(0.0001));
+        }
+
+        [Test]
         public void ProcessGenerateAutoOffers()
         {
             ModuleStack berlin = this.game.ModuleStacks["000005"];
