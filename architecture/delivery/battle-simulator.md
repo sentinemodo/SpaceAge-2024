@@ -1,6 +1,6 @@
 # Battle simulator — implementation plan
 
-Last updated: 2026-09-10  
+Last updated: 2026-09-11  
 Decisions: [ADR-0001](../adr/ADR-0001-net48-legacy-csproj.md), [ADR-0003](../adr/ADR-0003-filesystem-pbem-batch.md), [ADR-0007](../adr/ADR-0007-public-campaign-website.md)  
 Engine reference: `0.1.158` (net48 / Mono)
 
@@ -227,9 +227,9 @@ Because the simulator directly invokes `Game.exe`, all combat sub-systems remain
 4. **Mechanics Fidelity Test:** Verify laser-vs-shield, kinetic-vs-armor, and drone evasion behaviors in simulation mode match standard in-game combat results.
 
 ### 6.2 Acceptance Checklist (Done Gate)
-- [ ] `Game.exe /battle-sim <spec.xml>` executes cleanly under both .NET 4.8 and Mono.
-- [ ] Common unit templates dropdown populated with core vehicle and vessel types.
-- [ ] Client allows defining and saving custom unit templates without server-side storage.
-- [ ] Combat round log displays hit chances, damage absorption, module wrecking, and final victory/defeat conditions.
+- [x] `Game.exe /battle-sim <spec.xml>` executes cleanly under both .NET 4.8 and Mono.
+- [x] Common unit templates dropdown populated with core vehicle and vessel types (`BattleSimulatorTemplates`, `tools/battle-simulator/public/presets.json`, campaign catalog).
+- [x] Client allows defining and saving custom unit templates without server-side storage (`tools/battle-simulator/public/js/storage.js`).
+- [x] Combat round log displays hit chances, damage absorption, module wrecking, and final victory/defeat conditions.
 - [ ] Post-MVP report stack parser path documented and architecturally isolated.
-- [ ] All existing regression tests in `Tests/` continue to pass via `.cursor/run-tests.sh`.
+- [x] All existing regression tests in `Tests/` continue to pass via `.cursor/run-tests.sh`.
