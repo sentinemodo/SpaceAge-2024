@@ -166,6 +166,9 @@
     <Compile Include="effects\Effects.cs" />
     <Compile Include="effects\IEffectable.cs" />
     <Compile Include="battle\Battle.cs" />
+    <Compile Include="battle\BattleSimTemplate.cs" />
+    <Compile Include="battle\BattleSimulatorRunner.cs" />
+    <Compile Include="battle\BattleSimulatorTemplates.cs" />
     <Compile Include="game\Sequence.cs" />
     <Compile Include="game\DataFile.cs" />
     <Compile Include="game\ModuleTypeGroupXml.cs" />

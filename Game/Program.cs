@@ -21,6 +21,9 @@ namespace SpaceAge
 			string order_to_check = null;
 			bool noTurn = false;
 			bool reportsOnly = false;
+			string battleSimFile = null;
+			string battleSimOutput = null;
+			int? battleSimSeed = null;
 
 			for (int i = 0; i < args.Length; i++)
 			{
@@ -28,15 +31,46 @@ namespace SpaceAge
 					noTurn = true;
 				else if (args[i] == "/reports")
 					reportsOnly = true;
+				else if (args[i] == "/battle-sim" && i < args.Length - 1)
+				{
+					battleSimFile = args[++i];
+					if (i < args.Length - 1 && !args[i + 1].StartsWith("/"))
+					{
+						battleSimOutput = args[++i];
+					}
+				}
 				else if (i < args.Length - 1)
 				{
 					if (args[i] == "/data")
-						game_dir = args[i + 1];
+					{
+						game_dir = args[++i];
+					}
 					else if (args[i] == "/turn-dir")
-						turn_dir = args[i + 1];
+					{
+						turn_dir = args[++i];
+					}
 					else if (args[i] == "/check")
-						order_to_check = args[i + 1];
+					{
+						order_to_check = args[++i];
+					}
+					else if (args[i] == "/seed")
+					{
+						battleSimSeed = Convert.ToInt32(args[++i]);
+					}
 				}
+			}
+
+			if (battleSimFile != null)
+			{
+				BattleSimulatorRunner runner = new BattleSimulatorRunner(game_dir);
+				string output = runner.Run(battleSimFile, battleSimSeed);
+				if (string.IsNullOrEmpty(battleSimOutput))
+				{
+					battleSimOutput = Path.ChangeExtension(battleSimFile, ".out.txt");
+				}
+				File.WriteAllText(battleSimOutput, output, Encoding.GetEncoding(1251));
+				Console.Write(output);
+				return;
 			}
 
 			Console.WriteLine("SpaceAge " + EngineVersion);

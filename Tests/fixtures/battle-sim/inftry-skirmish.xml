@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<battle-sim seed="42" location-type="region">
+  <attackers faction="sim_a" name="Alpha Battalion">
+    <stack id="sim_a1" type="inftry" name="Alpha Infantry" tactic="destroy"/>
+  </attackers>
+  <defenders faction="sim_d" name="Beta Battalion">
+    <stack id="sim_d1" type="inftry" name="Beta Infantry" tactic="destroy"/>
+  </defenders>
+</battle-sim>

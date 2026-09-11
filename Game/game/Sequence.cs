@@ -28,9 +28,14 @@ namespace SpaceAge
 
 		public static void Reset()
 		{
+			Sequence.Reset(1);
+		}
+
+		public static void Reset(int seed)
+		{
 			Sequence.ints.Clear();
 			Sequence.Rolls.Clear();
-			Sequence.randomGenerator = new Random(1);
+			Sequence.randomGenerator = new Random(seed);
 		}
 
         private static Random randomGenerator = new Random(1);

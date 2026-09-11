@@ -1,0 +1,8 @@
+{
+  "name": "spaceage-battle-simulator",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server/bridge.mjs"
+  }
+}
