@@ -4,11 +4,11 @@
   Build and start the game-host Docker stack on the GM laptop.
 
 .DESCRIPTION
-  Game.exe runs inside the container (Mono). Ollama and player-agent stay on the
-  host — pull models before drafting:
+  Game.exe runs inside the container (Mono). Player-agent runs on the host and
+  calls Ollama in Docker (port 11434). Ensure the ollama container is running:
 
-    ollama pull qwen2.5-coder:7b
-    ollama pull nomic-embed-text
+    docker start ollama
+    docker exec ollama ollama list
 #>
 param(
 	[switch] $Build,
@@ -32,7 +32,8 @@ try {
 	Write-Host "Health:     http://localhost:$port/health"
 	Write-Host "Bootstrap:  .\play\beta-launch.ps1 -GameHostUrl http://localhost:$port"
 	Write-Host ""
-	Write-Host "Ollama (host): ollama pull qwen2.5-coder:7b && ollama pull nomic-embed-text"
+	Write-Host "Ollama Docker: docker start ollama  (http://127.0.0.1:11434)"
+	Write-Host "Verify:       .\play\ollama-check.ps1"
 	Write-Host "Player-agent runs on this machine — not in Docker."
 }
 finally {

@@ -8,13 +8,19 @@ Runs **game-host**, **Game.exe** (via Mono), and the **visual tool** in one cont
 ### Prerequisites
 
 - Docker Desktop (Windows)
-- [Ollama](https://ollama.com/) on the host
+- **Ollama in Docker** on port **11434** (not the Windows Ollama installer)
 - .NET 8 SDK (for `player-agent` on the host)
 
 ```powershell
-ollama pull qwen2.5-coder:7b
-ollama pull nomic-embed-text
+# Existing stack (example container name: ollama)
+docker start ollama
+docker exec ollama ollama list
+# Required models: qwen2.5-coder:7b, nomic-embed-text
+docker exec ollama ollama pull qwen2.5-coder:7b
+docker exec ollama ollama pull nomic-embed-text
 ```
+
+Copy `.env.example` to `.env` — `OLLAMA_HOST=http://127.0.0.1:11434` is the default for Docker Ollama.
 
 ### Start game-host
 
@@ -52,9 +58,9 @@ Invoke-RestMethod -Method Post -Uri http://localhost:8787/api/gm/turn -Headers @
 # Copy isolated reports for player-agent RAG (reads play/runs/…/factions/)
 .\play\sync-game-host-factions.ps1 -Run beta-1
 
-# Host Ollama + player-agent (not in Docker)
-$env:OLLAMA_HOST = 'http://127.0.0.1:11434'
-$env:PLAYER_AGENT_CHAT_MODEL = 'qwen2.5-coder:7b'
+# Player-agent on host → Ollama Docker on 11434
+.\play\ollama-check.ps1
+.\play\sync-game-host-factions.ps1 -Run beta-1
 .\play\ingest-rag.ps1 -Run beta-1 -Mode campaign
 .\play\draft-run.ps1 -Run beta-1 -Mode campaign -DryRun   # drop -DryRun to draft
 
@@ -81,10 +87,10 @@ Copy `.env.example` to `.env` and set `GAME_HOST_GM_KEY` before open beta.
 4. Railway sets `PORT`; entrypoint maps it to `GAME_HOST_PORT`.
 5. **Do not** run Ollama on Railway — keep player-agent + Ollama on the GM laptop calling the public game-host URL for order upload only.
 
-Player-agent on the GM laptop during Railway hosting:
+Player-agent on the GM laptop during Railway hosting (Ollama stays in local Docker):
 
 ```powershell
-$env:OLLAMA_HOST = 'http://127.0.0.1:11434'
-$env:PLAYER_AGENT_CHAT_MODEL = 'qwen2.5-coder:7b'
+docker start ollama
+.\play\ollama-check.ps1
 # Draft locally; submit orders via game-host public URL or GM turn workflow
 ```

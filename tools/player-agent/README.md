@@ -21,10 +21,10 @@ Scriptable order-drafting runner for PBEM play. Lives **outside** `Game.exe` per
 ## Requirements
 
 - [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
-- [Ollama](https://ollama.com/) on Windows (local) or on a RunPod RTX 4090 (remote)
-- Models:
-  - **Local chat + smoke:** `ollama pull qwen2.5-coder:7b`
-  - **Local / remote embed:** `ollama pull nomic-embed-text`
+- **Ollama in Docker** on `http://127.0.0.1:11434` (GM default), or RunPod for remote GPU
+- Models (pull **inside** the `ollama` container):
+  - **Chat + smoke:** `docker exec ollama ollama pull qwen2.5-coder:7b`
+  - **Embeddings:** `docker exec ollama ollama pull nomic-embed-text`
   - **RunPod (quality):** `ollama pull qwen2.5-coder:14b` (or `qwen3-coder:30b` when VRAM allows)
 
 ## Open beta operations
@@ -32,9 +32,9 @@ Scriptable order-drafting runner for PBEM play. Lives **outside** `Game.exe` per
 Optional AI fill-ins during beta (`play/runs/beta-1/`):
 
 ```powershell
-# 1. Install Ollama + models (see Requirements)
-ollama pull qwen2.5-coder:7b
-ollama pull nomic-embed-text
+# 1. Start Ollama Docker + verify models (see Requirements)
+docker start ollama
+.\play\ollama-check.ps1
 
 # 2. Refresh campaign RAG after manual updates
 dotnet run --project tools/player-agent/PlayerAgent.csproj -- refresh-shared --mode campaign
@@ -61,7 +61,7 @@ After build, the executable is `tools/player-agent/bin/Debug/net8.0/player-agent
 
 | Variable | Local default | Notes |
 |----------|---------------|--------|
-| `OLLAMA_HOST` | `http://127.0.0.1:11434` | Base URL; OpenAI API is `{host}/v1` |
+| `OLLAMA_HOST` | `http://127.0.0.1:11434` | Ollama **Docker** on host port 11434; OpenAI API is `{host}/v1` |
 | `PLAYER_AGENT_CHAT_MODEL` | `qwen2.5-coder:7b` | Used for smoke, draft, and ingest; RunPod default `qwen2.5-coder:14b` |
 | `PLAYER_AGENT_EMBED_MODEL` | `nomic-embed-text` | Same host as chat |
 | `PLAYER_AGENT_INDEX_DIR` | `tools/player-agent/.data/` | Gitignored SQLite indexes |
@@ -87,6 +87,7 @@ Point `OLLAMA_HOST` at localhost or the RunPod HTTPS proxy. No code fork.
 
 ```powershell
 # Local
+# Default: Ollama Docker (play/_common.ps1 sets this if unset)
 $env:OLLAMA_HOST = "http://127.0.0.1:11434"
 $env:PLAYER_AGENT_CHAT_MODEL = "qwen2.5-coder:7b"
 

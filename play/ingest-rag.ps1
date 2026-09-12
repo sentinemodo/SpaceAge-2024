@@ -55,7 +55,11 @@ param(
 )
 
 $ErrorActionPreference = 'Stop'
-$repoRoot = Split-Path -Parent $PSScriptRoot
+. (Join-Path $PSScriptRoot '_common.ps1')
+if (-not $DryRun) {
+	Test-OllamaDocker
+}
+$repoRoot = $script:RepoRoot
 $project = Join-Path $repoRoot 'tools/player-agent/PlayerAgent.csproj'
 
 if (-not (Test-Path $project)) {
