@@ -400,7 +400,7 @@
 						<person name="200010" name-en="Northwind CEO" race="terran" faction="2">
 							<upkeep type="cash" quantity="10" />
 						</person>
-						<itemstack type="terran" quantity="30" />
+						<itemstack type="terran" quantity="20" />
 						<upkeep type="cash" quantity="90" />
 						<modulestack name="200003" type="cargob" quantity="2" faction="2">
 							<itemstack type="food" quantity="400" />
@@ -412,16 +412,20 @@
 							<upkeep type="cash" quantity="20" />
 						</modulestack>
 						<modulestack name="200004" type="cdrill" quantity="1" faction="2">
+							<itemstack type="terran" quantity="6" />
 							<upkeep type="cash" quantity="50" />
 						</modulestack>
 						<modulestack name="200005" type="factry" quantity="2" faction="2">
+							<itemstack type="terran" quantity="20" />
 							<upkeep type="cash" quantity="110" />
 						</modulestack>
 						<modulestack name="200006" type="farms" quantity="3" faction="2">
+							<itemstack type="terran" quantity="15" />
 							<upkeep type="cash" quantity="90" />
 						</modulestack>
 						<modulestack name="200007" type="cplant" quantity="2" faction="2">
 							<itemstack type="carbon" quantity="20" />
+							<itemstack type="terran" quantity="4" />
 							<upkeep type="cash" quantity="80" />
 						</modulestack>
 					</modulestack>
@@ -467,7 +471,7 @@
 						<person name="210010" name-en="Greenwell CEO" race="terran" faction="3">
 							<upkeep type="cash" quantity="10" />
 						</person>
-						<itemstack type="terran" quantity="30" />
+						<itemstack type="terran" quantity="20" />
 						<upkeep type="cash" quantity="90" />
 						<modulestack name="210003" type="cargob" quantity="2" faction="3">
 							<itemstack type="food" quantity="400" />
@@ -479,16 +483,20 @@
 							<upkeep type="cash" quantity="20" />
 						</modulestack>
 						<modulestack name="210004" type="cdrill" quantity="1" faction="3">
+							<itemstack type="terran" quantity="6" />
 							<upkeep type="cash" quantity="50" />
 						</modulestack>
 						<modulestack name="210005" type="factry" quantity="2" faction="3">
+							<itemstack type="terran" quantity="20" />
 							<upkeep type="cash" quantity="110" />
 						</modulestack>
 						<modulestack name="210006" type="farms" quantity="3" faction="3">
+							<itemstack type="terran" quantity="15" />
 							<upkeep type="cash" quantity="90" />
 						</modulestack>
 						<modulestack name="210007" type="cplant" quantity="2" faction="3">
 							<itemstack type="carbon" quantity="20" />
+							<itemstack type="terran" quantity="4" />
 							<upkeep type="cash" quantity="80" />
 						</modulestack>
 					</modulestack>
@@ -685,7 +693,7 @@
 						<person name="220010" name-en="Rivermark CEO" race="terran" faction="4">
 							<upkeep type="cash" quantity="10" />
 						</person>
-						<itemstack type="terran" quantity="30" />
+						<itemstack type="terran" quantity="20" />
 						<upkeep type="cash" quantity="90" />
 						<modulestack name="220003" type="cargob" quantity="2" faction="4">
 							<itemstack type="food" quantity="400" />
@@ -697,16 +705,20 @@
 							<upkeep type="cash" quantity="20" />
 						</modulestack>
 						<modulestack name="220004" type="cdrill" quantity="1" faction="4">
+							<itemstack type="terran" quantity="6" />
 							<upkeep type="cash" quantity="50" />
 						</modulestack>
 						<modulestack name="220005" type="factry" quantity="2" faction="4">
+							<itemstack type="terran" quantity="20" />
 							<upkeep type="cash" quantity="110" />
 						</modulestack>
 						<modulestack name="220006" type="farms" quantity="3" faction="4">
+							<itemstack type="terran" quantity="15" />
 							<upkeep type="cash" quantity="90" />
 						</modulestack>
 						<modulestack name="220007" type="cplant" quantity="2" faction="4">
 							<itemstack type="carbon" quantity="20" />
+							<itemstack type="terran" quantity="4" />
 							<upkeep type="cash" quantity="80" />
 						</modulestack>
 					</modulestack>
@@ -800,7 +812,7 @@
 						<person name="230010" name-en="Sundock CEO" race="terran" faction="5">
 							<upkeep type="cash" quantity="10" />
 						</person>
-						<itemstack type="terran" quantity="30" />
+						<itemstack type="terran" quantity="20" />
 						<upkeep type="cash" quantity="90" />
 						<modulestack name="230003" type="cargob" quantity="2" faction="5">
 							<itemstack type="food" quantity="400" />
@@ -812,16 +824,20 @@
 							<upkeep type="cash" quantity="20" />
 						</modulestack>
 						<modulestack name="230004" type="cdrill" quantity="1" faction="5">
+							<itemstack type="terran" quantity="6" />
 							<upkeep type="cash" quantity="50" />
 						</modulestack>
 						<modulestack name="230005" type="factry" quantity="2" faction="5">
+							<itemstack type="terran" quantity="20" />
 							<upkeep type="cash" quantity="110" />
 						</modulestack>
 						<modulestack name="230006" type="farms" quantity="3" faction="5">
+							<itemstack type="terran" quantity="15" />
 							<upkeep type="cash" quantity="90" />
 						</modulestack>
 						<modulestack name="230007" type="cplant" quantity="2" faction="5">
 							<itemstack type="carbon" quantity="20" />
+							<itemstack type="terran" quantity="4" />
 							<upkeep type="cash" quantity="80" />
 						</modulestack>
 					</modulestack>
@@ -915,7 +931,7 @@
 						<person name="240010" name-en="Copse CEO" race="terran" faction="6">
 							<upkeep type="cash" quantity="10" />
 						</person>
-						<itemstack type="terran" quantity="30" />
+						<itemstack type="terran" quantity="20" />
 						<upkeep type="cash" quantity="90" />
 						<modulestack name="240003" type="cargob" quantity="2" faction="6">
 							<itemstack type="food" quantity="400" />
@@ -927,16 +943,20 @@
 							<upkeep type="cash" quantity="20" />
 						</modulestack>
 						<modulestack name="240004" type="cdrill" quantity="1" faction="6">
+							<itemstack type="terran" quantity="6" />
 							<upkeep type="cash" quantity="50" />
 						</modulestack>
 						<modulestack name="240005" type="factry" quantity="2" faction="6">
+							<itemstack type="terran" quantity="20" />
 							<upkeep type="cash" quantity="110" />
 						</modulestack>
 						<modulestack name="240006" type="farms" quantity="3" faction="6">
+							<itemstack type="terran" quantity="15" />
 							<upkeep type="cash" quantity="90" />
 						</modulestack>
 						<modulestack name="240007" type="cplant" quantity="2" faction="6">
 							<itemstack type="carbon" quantity="20" />
+							<itemstack type="terran" quantity="4" />
 							<upkeep type="cash" quantity="80" />
 						</modulestack>
 					</modulestack>
@@ -2673,7 +2693,7 @@
 						<person name="250010" name-en="Ironclad CEO" race="terran" faction="7">
 							<upkeep type="cash" quantity="10" />
 						</person>
-						<itemstack type="terran" quantity="30" />
+						<itemstack type="terran" quantity="20" />
 						<upkeep type="cash" quantity="90" />
 						<modulestack name="250003" type="cargob" quantity="2" faction="7">
 							<itemstack type="food" quantity="80" />
@@ -2687,12 +2707,15 @@
 							<upkeep type="cash" quantity="20" />
 						</modulestack>
 						<modulestack name="250004" type="cdrill" quantity="1" faction="7">
+							<itemstack type="terran" quantity="6" />
 							<upkeep type="cash" quantity="50" />
 						</modulestack>
 						<modulestack name="250005" type="factry" quantity="2" faction="7">
+							<itemstack type="terran" quantity="20" />
 							<upkeep type="cash" quantity="110" />
 						</modulestack>
 						<modulestack name="250006" type="farms" quantity="2" faction="7">
+							<itemstack type="terran" quantity="10" />
 							<upkeep type="cash" quantity="60" />
 						</modulestack>
 						<modulestack name="250007" type="wnplnt" quantity="8" faction="7">
@@ -2778,7 +2801,7 @@
 						<person name="260010" name-en="Oreline CEO" race="terran" faction="8">
 							<upkeep type="cash" quantity="10" />
 						</person>
-						<itemstack type="terran" quantity="30" />
+						<itemstack type="terran" quantity="20" />
 						<upkeep type="cash" quantity="90" />
 						<modulestack name="260003" type="cargob" quantity="2" faction="8">
 							<itemstack type="food" quantity="80" />
@@ -2792,12 +2815,15 @@
 							<upkeep type="cash" quantity="20" />
 						</modulestack>
 						<modulestack name="260004" type="cdrill" quantity="1" faction="8">
+							<itemstack type="terran" quantity="6" />
 							<upkeep type="cash" quantity="50" />
 						</modulestack>
 						<modulestack name="260005" type="factry" quantity="2" faction="8">
+							<itemstack type="terran" quantity="20" />
 							<upkeep type="cash" quantity="110" />
 						</modulestack>
 						<modulestack name="260006" type="farms" quantity="2" faction="8">
+							<itemstack type="terran" quantity="10" />
 							<upkeep type="cash" quantity="60" />
 						</modulestack>
 						<modulestack name="260007" type="wnplnt" quantity="8" faction="8">
@@ -2901,7 +2927,7 @@
 						<person name="270010" name-en="Basalt CEO" race="terran" faction="9">
 							<upkeep type="cash" quantity="10" />
 						</person>
-						<itemstack type="terran" quantity="30" />
+						<itemstack type="terran" quantity="20" />
 						<upkeep type="cash" quantity="90" />
 						<modulestack name="270003" type="cargob" quantity="2" faction="9">
 							<itemstack type="food" quantity="80" />
@@ -2915,12 +2941,15 @@
 							<upkeep type="cash" quantity="20" />
 						</modulestack>
 						<modulestack name="270004" type="cdrill" quantity="1" faction="9">
+							<itemstack type="terran" quantity="6" />
 							<upkeep type="cash" quantity="50" />
 						</modulestack>
 						<modulestack name="270005" type="factry" quantity="2" faction="9">
+							<itemstack type="terran" quantity="20" />
 							<upkeep type="cash" quantity="110" />
 						</modulestack>
 						<modulestack name="270006" type="farms" quantity="2" faction="9">
+							<itemstack type="terran" quantity="10" />
 							<upkeep type="cash" quantity="60" />
 						</modulestack>
 						<modulestack name="270007" type="wnplnt" quantity="8" faction="9">
@@ -3044,7 +3073,7 @@
 						<person name="280010" name-en="Silicate CEO" race="terran" faction="10">
 							<upkeep type="cash" quantity="10" />
 						</person>
-						<itemstack type="terran" quantity="30" />
+						<itemstack type="terran" quantity="20" />
 						<upkeep type="cash" quantity="90" />
 						<modulestack name="280003" type="cargob" quantity="2" faction="10">
 							<itemstack type="food" quantity="80" />
@@ -3058,12 +3087,15 @@
 							<upkeep type="cash" quantity="20" />
 						</modulestack>
 						<modulestack name="280004" type="cdrill" quantity="1" faction="10">
+							<itemstack type="terran" quantity="6" />
 							<upkeep type="cash" quantity="50" />
 						</modulestack>
 						<modulestack name="280005" type="factry" quantity="2" faction="10">
+							<itemstack type="terran" quantity="20" />
 							<upkeep type="cash" quantity="110" />
 						</modulestack>
 						<modulestack name="280006" type="farms" quantity="2" faction="10">
+							<itemstack type="terran" quantity="10" />
 							<upkeep type="cash" quantity="60" />
 						</modulestack>
 						<modulestack name="280007" type="wnplnt" quantity="8" faction="10">
@@ -3180,7 +3212,7 @@
 						<person name="290010" name-en="Fission CEO" race="terran" faction="11">
 							<upkeep type="cash" quantity="10" />
 						</person>
-						<itemstack type="terran" quantity="30" />
+						<itemstack type="terran" quantity="20" />
 						<upkeep type="cash" quantity="90" />
 						<modulestack name="290003" type="cargob" quantity="2" faction="11">
 							<itemstack type="food" quantity="80" />
@@ -3194,12 +3226,15 @@
 							<upkeep type="cash" quantity="20" />
 						</modulestack>
 						<modulestack name="290004" type="cdrill" quantity="1" faction="11">
+							<itemstack type="terran" quantity="6" />
 							<upkeep type="cash" quantity="50" />
 						</modulestack>
 						<modulestack name="290005" type="factry" quantity="2" faction="11">
+							<itemstack type="terran" quantity="20" />
 							<upkeep type="cash" quantity="110" />
 						</modulestack>
 						<modulestack name="290006" type="farms" quantity="2" faction="11">
+							<itemstack type="terran" quantity="10" />
 							<upkeep type="cash" quantity="60" />
 						</modulestack>
 						<modulestack name="290007" type="wnplnt" quantity="8" faction="11">

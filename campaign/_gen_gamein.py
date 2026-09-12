@@ -710,15 +710,25 @@ def hq_stack(fac, planet):
             "upkeep": [("cash", 10)],
         }
     ]
-    hq.items = [("terran", 30)]
+    # corphq crew=20; nested production stacks carry their own terran crews so turn-1
+    # CanOperate succeeds without stripping HQ below its own requirement.
+    hq.items = [("terran", 20)]
     hq.upkeep = [("cash", 90)]
     if planet == "arbor":
         cargo = [("food", 400), ("terair", 200), ("h2o2", 200), ("iron", 40), ("carbon", 40), ("silici", 10)]
         nest(hq, "%d" % (base + 3), "cargob", fac, 2, items=cargo, upkeep=[("cash", 20)])
-        nest(hq, "%d" % (base + 4), "cdrill", fac, 1, upkeep=[("cash", 50)])
-        nest(hq, "%d" % (base + 5), "factry", fac, 2, upkeep=[("cash", 110)])
-        nest(hq, "%d" % (base + 6), "farms", fac, 3, upkeep=[("cash", 90)])
-        nest(hq, "%d" % (base + 7), "cplant", fac, 2, items=[("carbon", 20)], upkeep=[("cash", 80)])
+        nest(hq, "%d" % (base + 4), "cdrill", fac, 1, items=[("terran", 6)], upkeep=[("cash", 50)])
+        nest(hq, "%d" % (base + 5), "factry", fac, 2, items=[("terran", 20)], upkeep=[("cash", 110)])
+        nest(hq, "%d" % (base + 6), "farms", fac, 3, items=[("terran", 15)], upkeep=[("cash", 90)])
+        nest(
+            hq,
+            "%d" % (base + 7),
+            "cplant",
+            fac,
+            2,
+            items=[("carbon", 20), ("terran", 4)],
+            upkeep=[("cash", 80)],
+        )
     else:
         cargo = [
             ("food", 80),
@@ -731,9 +741,9 @@ def hq_stack(fac, planet):
             ("uraniu", 20),
         ]
         nest(hq, "%d" % (base + 3), "cargob", fac, 2, items=cargo, upkeep=[("cash", 20)])
-        nest(hq, "%d" % (base + 4), "cdrill", fac, 1, upkeep=[("cash", 50)])
-        nest(hq, "%d" % (base + 5), "factry", fac, 2, upkeep=[("cash", 110)])
-        nest(hq, "%d" % (base + 6), "farms", fac, 2, upkeep=[("cash", 60)])
+        nest(hq, "%d" % (base + 4), "cdrill", fac, 1, items=[("terran", 6)], upkeep=[("cash", 50)])
+        nest(hq, "%d" % (base + 5), "factry", fac, 2, items=[("terran", 20)], upkeep=[("cash", 110)])
+        nest(hq, "%d" % (base + 6), "farms", fac, 2, items=[("terran", 10)], upkeep=[("cash", 60)])
         nest(hq, "%d" % (base + 7), "wnplnt", fac, 8, upkeep=[("cash", 8)])
     return hq
 

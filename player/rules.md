@@ -153,6 +153,102 @@ The two kinds are independent except where you chain them with `-` / `+`. An imm
 
 `CONTRACT` and `PRESS` are immediate and also **allowed between turns** (`/no-turn`). No other live text verb is.
 
+## Order playbooks (templates)
+
+Hard-science campaign drafts should follow these patterns. Ground every id in the **text report** and orders template at the bottom — do not invent stack ids.
+
+### Activating disabled module stacks
+
+A stack marked **disabled** in the report is not yet operational (`Online=false`, or `Online=true` but missing crew, energy, fuel, or repairs). `SET ONLINE TRUE` is the only activate verb. Long orders (`USE`, `PRODUCE`, `REPAIR`, …) then require `CanOperate`:
+
+- sufficient **crew** (`terran` items on the stack),
+- sufficient **energy** from the root production tree,
+- sufficient **fuel** when the module consumes fuel,
+- **repaired** damage when modules are damaged,
+- other catalog **operate-in** conditions as applicable.
+
+To activate a module stack it must receive required inputs — **`GET`** them from other stacks at the same location, or **`BUY`** at a UN market after **`WITHDRAW`** enough cash into a trading stack.
+
+Typical bootstrap at headquarters (SampleGame and campaign turn 1):
+
+1. **`SET ONLINE TRUE`** on each production stack you intend to run this quarter.
+2. **Staff crew** — if the report shows `crew: N/0`, either **`GET` `terran`** from headquarters/cargo, or **buy crew at market** (see below).
+3. **`GET` fuel and inputs** — e.g. `@get all carbon from <cdrill-id>` into the cargo bay, then coal plant `@produce energy`.
+4. **`@produce energy`** on coal or wind plants so nested stacks meet energy requirements.
+5. **`@use farmng` / `@use hcdril`** once the stack is operational.
+6. **`@get`** surplus into the cargo bay; **`SELL … AT AVERAGE`** for exports; local **`@buy`** for metals (see [BUY](#buy) — **`AT AVERAGE` is SELL-only**).
+
+#### Buy crew when short (campaign turn 1 example)
+
+When headquarters lacks enough `terran` to staff every nested module, withdraw bank cash into the cargo bay and buy colonists at a UN city (Assembly on Arbor, Slagport on Anvil):
+
+```
+#modulestack 200003
+; cargo bay — trading stack at HQ
+withdraw 1500
+@buy 25 terran at 50
+
+#modulestack 200006
+set online true
+get 15 terran from 200003
+@use farmng
+
+#modulestack 200004
+set online true
+get 6 terran from 200003
+@use hcdril
+```
+
+Adjust quantities to match catalog crew per module (`cdrill` 6, `farms` 5×qty, `factry` 10×qty, `cplant` 2×qty). **`GIVE`/`GET`** distributes bought `terran` to nested stacks. Campaign seed games now pre-place crew on each nested stack so turn 1 can skip the market buy when the report already shows crew aboard.
+
+Order stacks on the **same subject**: HQ `@produce cash`, cargo bay `@get` / `@sell` / `@buy`, each module stack its own `#modulestack` block.
+
+### Multi-stop MOVE (preferred)
+
+**Syntax:** `MOVE <dest> [<dest2> …]` on one line — e.g. `move R00014 R00009` walks Grant → Farm Belt → Mid Vale using report exit durations.
+
+**Subject:** a **mobile `#modulestack`** only (shuttle, infantry stack, ship hull, etc.). Immobile stacks (`corphq`, `cargob`, …) cannot move.
+
+**People travel with vehicles, not alone.** A `#person` cannot take `MOVE` — `MoveOrder` casts the subject to `ModuleStack` and throws `InvalidCastException`. Board the CEO on a vehicle first:
+
+```
+#person 200010
+active 100
+-stack 100
+
+#modulestack 100
+; space shuttle [shuttl] or other ground-capable stack
+move R00014 R00009
+```
+
+Use `ACTIVE` + `STACK` (or start the turn already nested under a mover). Conditional `-move` chains are optional; for reconnaissance prefer a **single** `MOVE` with multiple region ids on the vehicle stack.
+
+### Turn-1 economic bootstrap (pattern)
+
+```
+#modulestack <hq-id>
+@produce cash
+
+#modulestack <cargob-id>
+@get all food from <farms-id>
+@get all carbon from <cdrill-id>
+sell <N> food at average
+
+#modulestack <cdrill-id>
+set online true
+@use hcdril
+
+#modulestack <farms-id>
+set online true
+@use farmng
+
+#modulestack <cplant-id>
+set online true
+@produce energy
+```
+
+Replace ids from the report template. When nested stacks already show crew in turn-1 reports, skip the market-buy block above. Defer ground **`MOVE`** until a shuttle or other mobile stack exists; people ride on that stack.
+
 ## Text vs XML
 
 `DataFile.LoadOrders` calls `OrderXml.LoadAll`; `DataFile.SaveOrders` calls `OrderXml.SaveAll`. XML builds leftover orders when loading a saved game. Divergences:
@@ -208,7 +304,7 @@ Sets the owner’s attitude toward that unit id to **enemy**. Combat itself is r
 
 **Subject:** an offerent (trading stack).
 
-Posts a standing buy on the local market (`Offer.Process`). Matching can complete against leftover player `SELL` and against market `Offer`s (XML `<selling>`, including NPC city auto-listings from end of turn). Quantity `ALL` sets `AllQuantity`. Omitted `AT` leaves price unrestricted (`Price = -1`). First token is treated as a **technology id** if it is in the catalog (do not write a trailing `technology` word — Parse would reject it). Sample: `@buy all terran`.
+Posts a standing buy on the local market (`Offer.Process`). Matching can complete against leftover player `SELL` and against market `Offer`s (XML `<selling>`, including NPC city auto-listings from end of turn). Quantity `ALL` sets `AllQuantity`. Omitted `AT` leaves price unrestricted (`Price = -1`). **`AT` takes a numeric price only** — unlike [SELL](#sell), **`AT AVERAGE` is not parsed on BUY** (throws `bad syntax price expected`). Optional trailing **`EVERYWHERE`** is parsed but **campaign execution currently throws** (`Regions.DistanceBetween` not implemented) when matching distant markets — omit `EVERYWHERE` on campaign maps until fixed, or use local `@buy` without it. First token is treated as a **technology id** if it is in the catalog (do not write a trailing `technology` word — Parse would reject it). Sample: `@buy all terran`, `@buy all iron` (local market).
 
 ### CAPTURE
 
@@ -419,9 +515,9 @@ Alderson-gate hop. Parse takes **one** token; it must be an **Alderson Gate** id
 
 **Syntax:** `MOVE <dest> [<dest2> …]`
 
-**Subject:** modulestack.
+**Subject:** modulestack only (not `#person`). People move only when boarded on a vehicle (`ACTIVE` + `STACK` onto a shuttle, infantry stack, or hull) — see [Order playbooks](#order-playbooks-templates).
 
-Walks a route. Each dest token is a **region**, **star**, **planet**, **moon**, **belt**, **alderson**, **anomaly**, or **orbit** id. Stars, planets, moons, anomalies, and Alderson Gates resolve to their **orbit**. A **belt** token is the belt itself (location-type **space**, not a landing). Starts a `Moving` effect, consumes fuel when required, changes parent on arrival.
+Walks a route in one order — e.g. `move R00014 R00009` (Grant → Farm Belt → Mid Vale). Each dest token is a **region**, **star**, **planet**, **moon**, **belt**, **alderson**, **anomaly**, or **orbit** id. Conditional `-move` / `+move` chains are optional; prefer listing all ground hops on one `MOVE` line for reconnaissance. Immobile stacks (e.g. `corphq`) cannot move. Stars, planets, moons, anomalies, and Alderson Gates resolve to their **orbit**. A **belt** token is the belt itself (location-type **space**, not a landing). Starts a `Moving` effect, consumes fuel when required, changes parent on arrival.
 
 **Exits on the report:** a **region** block includes `Exits:` (`Region.Report` → `Exits.Report`). A region destination prints `{name} [id] (x,y), {region type}, {ground|naval|space} travel duration N week(s).` A non-region destination prints that location’s `ReportName` plus the mode duration — `orbit [id], space travel duration N week(s).` for an orbit, or `{name} [id] at AU N, belt, space travel duration N week(s).` for a belt. Orbit reports and `Belt.Report` do not list exits (belt exits still exist in the save and are used by MOVE). Maps without `orbit=` / `belt=` / `alderson=` exits (SampleGame) never show those lines.
 
