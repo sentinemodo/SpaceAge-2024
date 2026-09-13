@@ -635,6 +635,10 @@ namespace SpaceAge
 							line = string.Format("  {0} is wrecked.", targetModule.ReportName);
 							this.report(line);
 							this.reportObserver(line);
+							if (!target.HasIntactModules())
+							{
+								Contract.All.NotifyStackDestroyed(this.attacker.Owner, target);
+							}
 						}
 						else if (firing == ETactic.capture && targetModule.IsCaptureComplete)
 						{

@@ -15,6 +15,7 @@ namespace SpaceAge
 		public IContractTrigger Trigger { get; set; }
 		public Technology RewardTechnology { get; set; }
 		public ModuleStack RewardStack { get; set; }
+		public int RewardCash { get; set; }
 		public string Title { get; set; }
 		public string Flavour { get; set; }
 		public bool CreatedThisSession { get; set; }
@@ -95,6 +96,14 @@ namespace SpaceAge
 					throw new Exception("Unknown contract reward unit: " + elContract.GetAttribute("reward"));
 				}
 			}
+			else if (rewardType == "cash")
+			{
+				this.RewardCash = Convert.ToInt32(elContract.GetAttribute("reward"));
+				if (this.RewardCash < 1)
+				{
+					throw new Exception("Contract cash reward must be a positive amount.");
+				}
+			}
 			else
 			{
 				throw new Exception("Unknown contract reward type: " + rewardType);
@@ -108,6 +117,10 @@ namespace SpaceAge
 			else if (triggerType == "research")
 			{
 				this.Trigger = ResearchWreckageTrigger.Load(elContract);
+			}
+			else if (triggerType == "destroy-stack")
+			{
+				this.Trigger = DestroyStackTrigger.Load(elContract);
 			}
 			else
 			{
@@ -134,6 +147,11 @@ namespace SpaceAge
 			{
 				elContract.SetAttribute("reward-type", "unit");
 				elContract.SetAttribute("reward", this.RewardStack.Name);
+			}
+			else if (this.RewardCash > 0)
+			{
+				elContract.SetAttribute("reward-type", "cash");
+				elContract.SetAttribute("reward", this.RewardCash.ToString());
 			}
 			else
 			{
@@ -167,6 +185,12 @@ namespace SpaceAge
 			if (this.RewardStack != null)
 			{
 				this.awardUnit(week, winner);
+				return;
+			}
+
+			if (this.RewardCash > 0)
+			{
+				this.awardCash(week, winner);
 				return;
 			}
 
@@ -244,6 +268,27 @@ namespace SpaceAge
 			return null;
 		}
 
+		private void awardCash(int week, Faction winner)
+		{
+			winner.Bank.Credit(
+				week,
+				this.RewardCash,
+				string.Format("contract {0} completion.", this.Name));
+			winner.EventReports.Add(
+				week,
+				string.Format("completed contract {0} and received {1} cash.",
+					this.Name,
+					this.RewardCash));
+			if (this.Location != null)
+			{
+				this.Location.EventReports.Add(
+					week,
+					string.Format("contract {0} completed by {1}.",
+						this.Name,
+						winner.ReportName));
+			}
+		}
+
 		private void awardUnit(int week, Faction winner)
 		{
 			this.RewardStack.SetOwnerRecursive(winner);
@@ -315,6 +360,31 @@ namespace SpaceAge
 				return lines;
 			}
 
+			DestroyStackTrigger destroy = this.Trigger as DestroyStackTrigger;
+			if (destroy != null)
+			{
+				if (string.IsNullOrEmpty(this.Title))
+				{
+					lines.Add(string.Format("  {0}: destroy {1}.",
+						this.Name,
+						destroy.Target.ReportName));
+				}
+				if (!string.IsNullOrEmpty(this.Flavour))
+				{
+					lines.Add(string.Format("    {0}", this.Flavour));
+				}
+				if (this.RewardCash > 0)
+				{
+					lines.Add(string.Format("    Reward: {0} cash.", this.RewardCash));
+				}
+				else if (this.RewardTechnology != null)
+				{
+					lines.Add(string.Format("    Reward: {0} technology.",
+						this.RewardTechnology.ReportName));
+				}
+				return lines;
+			}
+
 			GiveModuleTrigger give = this.Trigger as GiveModuleTrigger;
 			if (give == null)
 			{
@@ -347,7 +417,11 @@ namespace SpaceAge
 			{
 				lines.Add(string.Format("    {0}", this.Flavour));
 			}
-			if (this.RewardTechnology != null)
+			if (this.RewardCash > 0)
+			{
+				lines.Add(string.Format("    Reward: {0} cash.", this.RewardCash));
+			}
+			else if (this.RewardTechnology != null)
 			{
 				lines.Add(string.Format("    Reward: {0} technology.",
 					this.RewardTechnology.ReportName));

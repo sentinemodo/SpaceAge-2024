@@ -1799,6 +1799,30 @@ namespace UnitTests
 		}
 
 		[Test]
+		public void Parse_Rumor_BetweenTurns()
+		{
+			List<string> commands = new List<string>
+			{
+				"#faction 1",
+				"RUMOR P00001 TITLE \"Hostile fauna\" FLAVOUR \"Something hunts the grass east of Northwind.\"",
+				"#end"
+			};
+			OrdersReader reader = new OrdersReader(this.game);
+			reader.AssignOrders(commands);
+			RumorOrder rumor = (RumorOrder)Faction.All["1"].Orders[Faction.All["1"].Orders.Count - 1];
+			Assert.That(rumor.AllowedBetweenTurns, Is.True);
+			Assert.That(rumor.PlanetId, Is.EqualTo("P00001"));
+			Assert.That(rumor.Title, Is.EqualTo("Hostile fauna"));
+			this.game.ExecuteBetweenTurnOrders();
+			Assert.That(PressRelease.All.Count, Is.EqualTo(1));
+			Assert.That(PressRelease.All[0].Anonymous, Is.True);
+			Assert.That(PressRelease.All[0].Issuer, Is.Null);
+			List<string> report = Faction.All["2"].Report();
+			Assert.That(report, Does.Contain("Rumors:"));
+			Assert.That(string.Join("\n", report.ToArray()), Does.Contain("Hostile fauna"));
+		}
+
+		[Test]
 		public void XmlRoundTrip_PersistsResearchUnitContract()
 		{
 			ModuleStack wreck = new ModuleStack(Region.All["R00002"], Faction.All["1"], ModuleType.All["alnhul"], "200");

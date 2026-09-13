@@ -14,12 +14,18 @@
 	<faction name="11" name-en="Fission" password="fission" email="player11@local" default-attitude="2" text-report="True" text-report-line-length="100" xml-report="True" balance="10000" credit-line="10000" credit-rate="0.2" deposit-rate="0.05" />
 	<faction name="12" name-en="Arbor First" password="" email="" default-attitude="2" text-report="True" text-report-line-length="100" xml-report="True" balance="4000" credit-line="0" credit-rate="0" deposit-rate="0" />
 	<faction name="13" name-en="HCS" password="" email="" default-attitude="2" text-report="True" text-report-line-length="100" xml-report="True" balance="5000" credit-line="0" credit-rate="0" deposit-rate="0" />
+	<faction name="14" name-en="Arbor Fauna" password="" email="" default-attitude="2" text-report="True" text-report-line-length="100" xml-report="True" balance="0" credit-line="0" credit-rate="0" deposit-rate="0" />
+	<faction name="15" name-en="Anvil Fauna" password="" email="" default-attitude="2" text-report="True" text-report-line-length="100" xml-report="True" balance="0" credit-line="0" credit-rate="0" deposit-rate="0" />
+	<faction name="16" name-en="Haven Fauna" password="" email="" default-attitude="2" text-report="True" text-report-line-length="100" xml-report="True" balance="0" credit-line="0" credit-rate="0" deposit-rate="0" />
+	<faction name="17" name-en="Graph Fauna" password="" email="" default-attitude="2" text-report="True" text-report-line-length="100" xml-report="True" balance="0" credit-line="0" credit-rate="0" deposit-rate="0" />
 	<contracts>
 		<contract name="CT0001" location="R00040" issuer="1" trigger="give-module" reward-type="technology" reward="ctypln" quantity="1" module="farms" receiver="100030" baseline="6" title="Slagport calorie charter" flavour="Slagport's granary spectra show a thin 1.6 um water-ice band and a weak chlorophyll shoulder. Deliver one farming complex so the metal town can close its own calorie loop." />
 		<contract name="CT0002" location="R00068" issuer="1" trigger="give-module" reward-type="technology" reward="servic" quantity="2" module="wnplnt" receiver="100050" baseline="4" title="Isotope wind survey" flavour="Isotope sits on a uraninite spine with a measured 8 m/s mean surface wind. Two more wind plants keep the assay mill online without burning the local fissile stockpile." />
 		<contract name="CT0003" location="R00003" issuer="1" trigger="give-module" reward-type="technology" reward="airgen" quantity="1" module="cdrill" receiver="100010" baseline="0" title="Tidewatch core sample" flavour="Tidewatch Coast oil seeps sit above a granite basement. A core drill lets UN assay the sediment column without importing Anvil crust kits." />
 		<contract name="CT0004" location="R00006" issuer="1" trigger="research" reward-type="technology" reward="ahlcns" target="W00001" points="24" title="Helios belt hull charter" flavour="Radar returns from the metal landing rock match a high-albedo, crewless hull geometry. Research the hulk in situ; delta-v from Arbor is a belt-class chemical hop." />
 		<contract name="CT0005" location="R00039" issuer="1" trigger="research" reward-type="technology" reward="advres" target="W00002" points="24" title="Fomal carbonaceous fabricator" flavour="A cold, unmanned fabrication plant is wedged in a kerogen-rich carbonaceous cell. Research it on site; the organics are feedstock, not a skip of the Arbor/Anvil split." />
+		<contract name="CT0016" location="R00009" issuer="1" trigger="destroy-stack" target="140010" reward-type="cash" reward="1000" title="Mid Vale swarm cull" flavour="Destroy the Mid Vale brush stalker pack (140010). UN pays a tier-1 fauna bounty so the grant lane can replant." />
+		<contract name="CT0019" location="R00046" issuer="1" trigger="destroy-stack" target="150010" reward-type="cash" reward="1000" title="Slope swarm cull" flavour="Destroy the Slope crust burrower pack (150010). UN pays a tier-1 fauna bounty on the talus lane." />
 		<contract name="CT0006" location="R00008" issuer="1" trigger="give-module" reward-type="technology" reward="ctypln" quantity="1" module="town" receiver="200001" baseline="0" title="Northwind market charter" flavour="United Star Nations wants a prefab town seated on Northwind Grant this quarter. Factory-build one town module, then TRANSFER it TO FACTION 1 at headquarters; UN pays city planning when the civic shell is accepted." />
 		<contract name="CT0007" location="R00010" issuer="1" trigger="give-module" reward-type="technology" reward="servic" quantity="1" module="town" receiver="210001" baseline="0" title="Greenwell bazaar charter" flavour="Greenwell Grant must host a UN market town this quarter. Build one town module at headquarters and TRANSFER it TO FACTION 1 on the grant; UN opens a calorie-and-parts bazaar when accepted." />
 		<contract name="CT0008" location="R00017" issuer="1" trigger="give-module" reward-type="technology" reward="airgen" quantity="1" module="town" receiver="220001" baseline="0" title="Rivermark steppe charter" flavour="Rivermark Grant needs a civic shell on the same grid as HQ. Factory-build one town and TRANSFER it TO FACTION 1 at the grant; UN pays life-support tech for the steppe trade lane." />
@@ -460,6 +466,8 @@
 					<resource type="carbon" quantity="20" />
 					<resource type="iron" quantity="15" />
 					<resource type="water" quantity="140" />
+					<resource type="oil" quantity="25" />
+					<modulestack name="140010" type="brmstr" quantity="2" faction="14" name-en="Mid Vale brush pack" />
 					<deep-pocket>
 						<resource type="titani" quantity="55" />
 					</deep-pocket>
@@ -908,6 +916,7 @@
 					<resource type="carbon" quantity="20" />
 					<resource type="iron" quantity="18" />
 					<resource type="water" quantity="130" />
+					<modulestack name="140020" type="mulcrw" quantity="1" faction="14" name-en="East Steppe mulch crawler" />
 					<anomaly type="gravimetric" points="8" description="Local g anomaly on dense basement rock under steppe grass; mass concentration worth a gravimeter pass.">
 						<reward band="0" kind="survey-blurb" />
 						<reward band="0" kind="research-rp" technology="optins" quantity="20" />
@@ -1055,6 +1064,7 @@
 							<upkeep type="cash" quantity="10" />
 						</modulestack>
 					</modulestack>
+					<modulestack name="140030" type="canalp" quantity="1" faction="14" name-en="Windgap canopy alpha" />
 					<deep-pocket>
 						<resource type="uraniu" quantity="25" />
 					</deep-pocket>
@@ -2806,6 +2816,7 @@
 					<resource type="water" quantity="70" />
 					<resource type="silici" quantity="25" />
 					<resource type="titani" quantity="15" />
+					<modulestack name="150010" type="crstlb" quantity="2" faction="15" name-en="Slope burrow pack" />
 					<deep-pocket>
 						<resource type="titani" quantity="70" />
 					</deep-pocket>
@@ -2996,6 +3007,7 @@
 					<resource type="copper" quantity="40" />
 					<resource type="silici" quantity="45" />
 					<resource type="iron" quantity="35" />
+					<modulestack name="150030" type="urstlk" quantity="1" faction="15" name-en="Crag umber stalker" />
 					<deep-pocket>
 						<resource type="silici" quantity="50" />
 					</deep-pocket>
@@ -3076,6 +3088,7 @@
 					<resource type="silici" quantity="40" />
 					<resource type="titani" quantity="25" />
 					<resource type="iron" quantity="20" />
+					<modulestack name="150020" type="slgmnt" quantity="1" faction="15" name-en="Scree slag mantlet" />
 				</region>
 				<region name="R00056" name-en="East Peak" X="5" Y="2" type="mountn">
 					<exit region="R00055">
@@ -6946,6 +6959,7 @@
 						</exit>
 						<resource type="food" quantity="40" />
 						<resource type="water" quantity="60" />
+						<modulestack name="160030" type="frostb" quantity="1" faction="16" name-en="Haven frost brood" />
 					</region>
 					<region name="R00434" name-en="Haven 1,1" X="1" Y="1" type="grassl">
 						<capacity group="settlement" quantity="8" />
@@ -6963,6 +6977,7 @@
 						</exit>
 						<resource type="food" quantity="40" />
 						<resource type="water" quantity="60" />
+						<modulestack name="160010" type="ribgrz" quantity="2" faction="16" name-en="Haven ridge grazers" />
 					</region>
 					<region name="R00435" name-en="Haven 2,1" X="2" Y="1" type="grassl">
 						<capacity group="settlement" quantity="8" />
@@ -6980,6 +6995,7 @@
 						</exit>
 						<resource type="food" quantity="40" />
 						<resource type="water" quantity="60" />
+						<modulestack name="160020" type="glacra" quantity="1" faction="16" name-en="Haven glacier crab" />
 					</region>
 					<region name="R00436" name-en="Haven 3,1" X="3" Y="1" type="grassl">
 						<capacity group="settlement" quantity="8" />
@@ -7970,6 +7986,7 @@
 					<resource type="carbon" quantity="20" />
 					<resource type="water" quantity="80" />
 					<resource type="iron" quantity="12" />
+					<modulestack name="170010" type="silskk" quantity="2" faction="17" name-en="Graph silicate skitters" />
 				</region>
 				<region name="R00504" name-en="Graph 3,0" X="3" Y="0" type="grassl">
 					<capacity group="settlement" quantity="8" />
@@ -8084,6 +8101,7 @@
 					<resource type="carbon" quantity="20" />
 					<resource type="water" quantity="80" />
 					<resource type="iron" quantity="12" />
+					<modulestack name="170020" type="qtzrol" quantity="1" faction="17" name-en="Graph quartz roller" />
 				</region>
 				<region name="R00511" name-en="Graph 4,1" X="4" Y="1" type="grassl">
 					<capacity group="settlement" quantity="8" />
@@ -8155,6 +8173,7 @@
 					<resource type="carbon" quantity="20" />
 					<resource type="water" quantity="80" />
 					<resource type="iron" quantity="12" />
+					<modulestack name="170030" type="spngrf" quantity="1" faction="17" name-en="Graph spine reef" />
 				</region>
 				<region name="R00515" name-en="Graph 2,2" X="2" Y="2" type="grassl">
 					<capacity group="settlement" quantity="8" />

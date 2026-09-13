@@ -466,6 +466,17 @@ Condition probe: succeeds if recursive cargo / nested module count / person pres
 
 Creates a `PressRelease` and reports `issued press release {title}.` on the issuer. If the subject is not a faction, Execute does nothing. `/no-turn` writes title and flavour into `announce.{turn}.{faction}.txt` for every faction (`Contract.All.WriteAnnouncements`).
 
+### RUMOR
+
+**Syntax:**
+
+- `RUMOR <planet-id> TITLE "<title>" [FLAVOUR|FLAVOR "<text>"]`
+- Bare tokens after the planet id: first unused token is the title, the next is flavour. Title or flavour is required.
+
+**Subject:** **faction** (`#faction` as subject). Also allowed **between turns**.
+
+Creates an anonymous publication scoped to `<planet-id>`. The issuer is not shown on reports or announcements. Rumors persist in `<publications>` on save/load. Faction reports list **Rumors:** after **events:** and before **Contract reports:**. `/no-turn` also writes rumors into `announce.{turn}.{faction}.txt` (`Contract.All.WriteAnnouncements`).
+
 ### SEE
 
 **Syntax:**

@@ -260,6 +260,20 @@ namespace SpaceAge
 				reportLines.Add("");
 			}
 
+			List<string> eventLines = this.EventReports.Report(this);
+			if (eventLines.Count > 0)
+			{
+				reportLines.Add("");
+				reportLines.AddRange(eventLines);
+			}
+
+			List<string> rumorLines = PressRelease.ReportRumors();
+			if (rumorLines.Count > 0)
+			{
+				reportLines.Add("");
+				reportLines.AddRange(rumorLines);
+			}
+
 			List<string> contractLines = Contract.All.Report(this);
 			if (contractLines.Count > 0)
 			{

@@ -422,11 +422,14 @@ namespace SpaceAge
 		{          
 			if (!this.Mover.IsActive)
 			{
+				string inactiveState = this.Mover.IsPartiallyDisabled
+					? (this.Mover.IsLivingUnit ? "partially routed" : "partially disabled")
+					: (this.Mover.IsLivingUnit ? "routed" : "disabled");
 				this.Mover.EventReports.Add(
 					week,
 					string.Format("MOVE failed. {0} is {1}.",
 						this.Mover.ReportName,
-						this.Mover.IsPartiallyDisabled ? "partially disabled" : "disabled"));
+						inactiveState));
 				return false;
 			}
 

@@ -67,6 +67,10 @@ namespace SpaceAge
 		{
 		}
 
+		public void NotifyStackDestroyed(Faction killer, ModuleStack stack)
+		{
+		}
+
 		public void NotifyTransfer(Faction giver, ModuleStack giverStack, ModuleStack receiver, ModuleType moduleType, int quantity, Faction issuer)
 		{
 			if (receiver != this.Receiver)

@@ -31,7 +31,15 @@ $FactionMeta = @{
 }
 
 $PreferenceMeans = @{
-	military   = 'Build and move `inftry` and `tanks`. Use `ATTACK`, `CAPTURE`, and `DECLARE FACTION <id> ENEMY`. Cross Helios Gate `P00009` <-> Fomal Gate `P00010` with `JUMP` once you have a ship on the Gate orbit.'
+	military   = @'
+Startup: factory copy of **`armcbt`** (armored combat) costs **1000 balance** at init (9000 cash on hand). Do **not** blanket-declare fauna factions (14-17) hostile before contact — you have not met them yet. After a rumor or scout sighting, **`DECLARE FACTION 14 ENEMY`** (or the local fauna id) then engage. Oil is strategic - secure the nearest **oil** pocket with a defendable outpost before the grant thins.
+
+**Priority queue:** (1) **`use armcbt`** to build a **tanks** squad; (2) build **trucks** and scout *safe* adjacent grants; (3) after fauna contact, send **tanks** to clear pockets and escort columns; (4) **`cplant` / `fossil` energy complexes** to feed **barracks**; (5) deploy **barracks** and **`frminf`** infantry from them.
+
+Defend every region you occupy. Escort logistics except the first lone scouting truck. Scout contested ground with **tanks**, not trucks. Fauna culls yield battle loot; UN tier-1 bounties (**CT0016** Arbor, **CT0019** Anvil) pay **1000 cash** (default ladder 1000/2000/4000 by tier if UN posts more later).
+
+Use `ATTACK`, `CAPTURE`, and `DECLARE FACTION <id> ENEMY` when diplomacy warrants. Cross Helios Gate `P00009` <-> Fomal Gate `P00010` with `JUMP` once you have a ship on the Gate orbit.
+'@
 	economic   = 'Startup: **surface drill only** on HQ; factory copy of **`cdrill`** costs **1000 balance** at init (9000 cash on hand). **`use cdrill`** to build the first **core drill**, then stack more **core drills** and **`agrplx` farms** on the grant. **Energy first:** keep **`cplant`** (or add **`fossil`**) running before scaling extraction. Scout with **`moblib` to `moblab`** carrying a **`cdrill` technology copy** (not trucks): adjacent exits show **deep pocket of resources detected** once the factory copy is present; move the lab into the pocket cell to read **Deep resources:** assays. Defer UN town charters until the home grant is production-maxed. Trade at UN markets when local mass is thin.'
 	researcher = 'Build **`moblib` to `moblab` first** on the factory copy, `@get` crew, food, and **oil** from HQ cargo, then `@move` to the adjacent grant anomaly and `@research` it (8 pt / +20 RP). HQ cargo seeds **5 oil** for ground fuel (same as `trucks`). Defer town charters until the survey column moves. Later: `filidx`, `frminf` escort, silici scouting. Wreck charters (`CONTRACT` / `research` on belt hulks) when staged.'
 	contractor = 'File UN `CONTRACT` / `give-module` jobs first (food, wind, drills). Spend rewards on trade and the same live verbs as economic.'
@@ -63,7 +71,7 @@ function Get-PersonaMarkdown {
 You are the charter board of **$($meta.Name)**, Interest $Id.
 Home: **$($meta.World)** in **$($meta.System)** (Helios factions 2-6, Fomal factions 7-11).
 United Star Nations is faction 1. Arbor First is 12 (Arbor). HCS is 13 (Anvil).
-Those three are NPC this slice; they file no ``order.*``.
+Fauna factions 14-17 (wildlife per planet) are NPC; they file no ``order.*`` and start neutral until you declare or fight them.
 
 ## Credentials
 
@@ -137,6 +145,29 @@ function Add-EconomicStartupToGamein {
 	$cargoId = Get-CargoStackId -FactionId $FactionId
 	$titaniPattern = '(<modulestack name="' + [regex]::Escape($cargoId) + '"[\s\S]*?<itemstack type="titani" quantity=")2(" />)'
 	$text = [regex]::Replace($text, $titaniPattern, '${1}10${2}', 1)
+	return $text
+}
+
+function Add-MilitaryStartupToGamein {
+	param(
+		[Parameter(Mandatory = $true)][string]$GameinText,
+		[Parameter(Mandatory = $true)][int]$FactionId
+	)
+	$text = $GameinText
+	$balancePattern = '(<faction\b(?=[^>]*\bname="' + $FactionId + '")[^>]*\bbalance=")10000(")'
+	$text = [regex]::Replace($text, $balancePattern, '${1}9000${2}', 1)
+
+	$stackId = Get-FactoryStackId -FactionId $FactionId
+	if ($text -match ('<modulestack name="' + [regex]::Escape($stackId) + '"[\s\S]*?<technology name="armcbt"')) {
+		return $text
+	}
+
+	$stackOpen = '(<modulestack name="' + [regex]::Escape($stackId) + '" type="factry" quantity="2" faction="' + $FactionId + '">)'
+	$replacement = '${1}' + "`n`t`t`t`t`t`t<technology name=`"armcbt`" name-en=`"armored combat`" />"
+	$text = [regex]::Replace($text, $stackOpen, $replacement, 1)
+	if ($text -eq $GameinText) {
+		throw "Military startup: factory stack $stackId not found for faction $FactionId."
+	}
 	return $text
 }
 
@@ -251,8 +282,35 @@ foreach ($id in $script:PlayerFactionIds) {
 	elseif ($preferences[$id] -eq 'researcher') {
 		$gameinText = Add-ResearcherStartupToGamein -GameinText $gameinText -FactionId $id
 	}
+	elseif ($preferences[$id] -eq 'military') {
+		$gameinText = Add-MilitaryStartupToGamein -GameinText $gameinText -FactionId $id
+	}
 }
 Write-Win1251Text -Path $gameinPath -Text $gameinText
+
+function Seed-TurnOneRumor {
+	param(
+		[Parameter(Mandatory = $true)]$Paths,
+		[string]$Exe
+	)
+	$rumorOrder = @"
+#faction 1 ""
+RUMOR P00001 TITLE "Hostile fauna in Mid Vale" FLAVOUR "Anonymous traders report a pack of large ground animals has moved into Mid Vale east of Northwind Grant. Foot patrols refuse the route until someone with armour clears the brush."
+#end
+"@
+	$orderPath = Join-Path $paths.TurnDir 'order.1.txt'
+	Write-Win1251Text -Path $orderPath -Text $rumorOrder
+	Invoke-GameExe -Exe $Exe -GameArgs @('/data', $paths.DataDir, '/turn-dir', $paths.TurnDir, '/no-turn')
+	$gameout = Join-Path $paths.DataDir 'gameout.1.xml'
+	$gamein = Join-Path $paths.DataDir 'gamein.xml'
+	if (-not (Test-Path -LiteralPath $gameout)) {
+		throw "Expected rumor seed to write $gameout"
+	}
+	Copy-Item -LiteralPath $gameout -Destination $gamein -Force
+	Remove-Item -LiteralPath $orderPath -Force -ErrorAction SilentlyContinue
+}
+
+Seed-TurnOneRumor -Paths $paths -Exe $Exe
 
 foreach ($id in $script:PlayerFactionIds) {
 	$persona = Get-PersonaMarkdown -Id $id -Password $passwords[$id] -Preference $preferences[$id]

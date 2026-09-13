@@ -162,6 +162,7 @@ Matchup table: `technology.md` Combat matchups. Until Battle is typed, put `atta
 | live `alndrn` | drone | weapon **and** fighter hull | live | live | attack/damage; may nest other-group items |
 | live `inftry` | mixed | infantry platform | live | live | mounts items below |
 | live `tanks` | kinetic+armour | vehicle platform | live | live | oil engines; mounts items |
+| live fauna (12) | infantry/vehicle/military | wild seed-only | live | — | Arbor `brmstr`/`mulcrw`/`canalp`, Anvil `crstlb`/`slgmnt`/`urstlk`, Haven `ribgrz`/`glacra`/`frostb`, Graph `silskk`/`qtzrol`/`spngrf` — see [`fauna.md`](fauna.md) |
 | `railgn` | kinetic | weapon | 800/900 | 4 / 20 | attack 8 defense 2 damage 8 |
 | `kpdtur` | kinetic | weapon | 250/280 | 2 / 12 | attack 5 initiative 6 |
 | `coilgn` | kinetic | weapon | 1200/1400 | 6 / 35 | attack 10 damage 10 |

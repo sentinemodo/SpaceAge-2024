@@ -12,7 +12,10 @@ Designer does **not** implement these. TDD adds a failing test first. Campaign X
 | ~~Retune `SpaceTransit` `f(ΔAU)` to 2/6/13/39~~ | **Live 0.1.148 (2026-08-29).** Default workshop frigate: moon 0.04 → **2**, belt 1.7 → **6**, gas 4.2 → **13**, Gate 79 → **39**. Expression in [`au-transit.md`](au-transit.md). Mass clamp 0.67–1.50 unchanged. | `SpaceTransit.DurationWeeks` |
 | ~~System `X Y Z` loaded~~ | **Live (2026-08-29).** `LoadGalaxy` assigns system coordinates; save + `SpaceSystem.ReportName` emit them. Star XYZ still commented (optional). No FTL from XYZ. | Uncomment coordinate assign |
 | Module group `capital` (or `ark`) | L10 hull is not a “frigate” | `EModuleTypesGroup` + `getModuleTypeGroup` |
-| Contract triggers: `survive-weeks`, `destroy-stack`, `region-resource-below` | Bombardment, fauna, pirate hunt | `IContractTrigger` + XML attrs |
+| ~~Contract trigger: `destroy-stack`~~ | **Live.** Target stack destroyed in combat; `killer` faction wins. | `DestroyStackTrigger` + `Contract.All.NotifyStackDestroyed` from `Battle` |
+| ~~Contract reward: `reward-type="cash"`~~ | **Live.** Credits winner bank on completion. | `Contract.RewardCash` + `Bank.Credit` |
+| ~~Module `living-unit="yes"` report labels~~ | **Live.** Wounded / heavily wounded / routed / slain in battle reports for infantry + fauna; mechanics unchanged. | `ModuleType.LivingUnit`; `Module.ReportDamage` / `ReportActive` |
+| Contract triggers: `survive-weeks`, `region-resource-below` | Bombardment, pirate hunt | `IContractTrigger` + XML attrs |
 | `Events` pipeline for timed spawns | Alien reactivation, impact week | `Game/Events.cs` (today stub) |
 | ~~`use-produce effect` execution~~ | **Live 0.1.151 (2026-08-30).** `[repair]` runs via `ProducingEffect` / `UseOrder` (`module-damage` −1 HP on parent scope). `REPAIR` order unchanged. | `UseOrder` / `EProductionType.Effects` |
 | Skill children (`usable-in`, cure-chance) applied in battle/medical | **Live 0.1.155 (2026-08-30).** `usable-in` gating + flat combat attrs; `produce` (`effective attack` / `effective defence` × units, `research output` per officer on labs); `cure-chance` on quarterly wounded outcome. | `SkillType` fill-pass; `Tests/TSkill.cs`, `Tests/TConsume.cs`, `Tests/TResearch.cs` |
@@ -35,7 +38,7 @@ Designer does **not** implement these. TDD adds a failing test first. Campaign X
 | ~~Temperature settlement gates~~ | **Live 0.1.148 (2026-08-29).** `cold` needs `clddom`/`cryhab`; `hot` needs `hotdom`; `habitable` uses normal cities | Settlement USE / city place checks body temperature vs module type |
 | Multi-reward contracts | Hostile faction bounty: cash **and** technology on one completion (UN pay + finders keepers) | `Contract.Complete` applies multiple `<reward>` children; or `reward-type` list |
 | ~~Item nominal `value`~~ | **Live 0.1.150 (2026-08-30).** `CatalogLoader` reads item/module/race `value`; `Market.GetPrice` falls back when no region has posted a price. Campaign trade ladder in [`economy.md`](economy.md); SampleGame omits attrs → 0. | Load item/module `value`; `GetPrice` falls back to it. Design ladder: [`economy.md`](economy.md) |
-| Capture / destroy stack trigger | UN charter to capture Arbor First / HCS city or HQ stack | `trigger="destroy-stack"` / `capture-stack"` + `target` stack id; optional hold-region weeks |
+| Capture stack trigger | UN charter to capture Arbor First / HCS city or HQ stack | `trigger="capture-stack"` + `target` stack id; optional hold-region weeks |
 | Hostility flip on first spaceship | Arbor First (12) / HCS (13) go `DECLARE DEFAULT ENEMY` when `shuttl` or `frigate`/`spacecraft` production completes on that planet | `UseOrder`/`Produce` complete hook; planet of location; once-per-planet flag on faction or game |
 | Militia yearly raid | After flip, each year spawn/release 3 `inftry` toward a random player HQ on that planet | `Events` pipeline or GM `order.*` for factions 12/13; stop when city captured |
 | ~~Reveal body flavour on `RESEARCH` space-object + T1 home blurbs~~ | **Live 0.1.148 (2026-08-30).** Campaign `description=` on galaxy bodies reaches `"Survey reports:"` like tech blurbs. `RESEARCH <space-object-id>` requires proximity (lab in target orbit/region/belt, or on the body's orbit/surface); **stars are exempt**. Turn-1 `/reports` seeds home star + planet for factions 2–11. `ObjectsSeen` persists on save. | `Research.TryRevealSpaceObject`; `SurveyObjects` / `SurveyReports`; `ReportWriter` survey block |
@@ -48,5 +51,10 @@ Designer does **not** implement these. TDD adds a failing test first. Campaign X
 | ~~Type-matched investigation throughput~~ | **Live 0.1.162.** `investigation-output` + `investigation-types` on modules; default match table for labs without explicit types | `AnomalyInvestigation.WeeklyProgress`; `CatalogLoader` |
 | ~~Investigation payout dispatcher~~ | **Live 0.1.162.** On resolve: survey blurb, RP toward named tech, resource reveal, tech copy by faction band | `AnomalyInvestigation.Complete` |
 | **Re-open anomaly at higher tech band** (optional) | Resolved L0–1 HQ site grants L4+ payout when revisited with matched lab | Second threshold or `investigation-band` on region |
+| Fauna quarterly growth | Tier 1/2/3 breed and promote per [`fauna.md`](fauna.md) at week 13 | `Events` pipeline or GM; spawn native module types by body |
+| Fauna quarterly movement | Random solid-neighbour MOVE; split when ≥2 apex units | Same pipeline; respect water region types |
+| Fauna battle loot | Item drops + RP split among attacker stacks on destroy | `Battle` post-wreck hook; table in `fauna.md` |
+| Fauna pen + tame breeding | L3 techs (`brdtam`, `crstam`, `havbre`, `grftam`) produce tame variants (`tbrmst`, …) from captive wild stacks or samples at a fauna pen module | `use-produce module=` from pen; pen accepts captured fauna stack or tissue item; tame modules get `can-convert="yes"` |
+| Wild fauna faction AI | Factions 14–17 roam/forage without player orders | GM orders or `Events` pipeline for fauna upkeep |
 
 When TDD lands a row, tick it here with engine version and date, then migrate any parked catalog lines from `designer/catalog.md` into `campaign/data.xml`.

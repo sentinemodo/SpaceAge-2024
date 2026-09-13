@@ -362,6 +362,13 @@ namespace SpaceAge
 			get { return this.name == "drnbay"; }
 		}
 
+		private bool livingUnit;
+		public bool LivingUnit
+		{
+			get { return this.livingUnit; }
+			set { this.livingUnit = value; }
+		}
+
 		#endregion
 
 

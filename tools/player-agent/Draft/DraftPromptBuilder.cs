@@ -216,6 +216,46 @@ public static partial class DraftPromptBuilder
                 """;
         }
 
+        if (string.Equals(hints.PersonaPreference, "military", StringComparison.OrdinalIgnoreCase))
+        {
+            var safeScout = hints.AnomalyRegionId is null ? "R00014" : "R00014";
+            var faunaRegion = hints.AnomalyRegionId ?? "R00009";
+            return $$"""
+                #faction <id> "<password>"
+                DECLARE FACTION 14 ENEMY
+
+                #modulestack <hq-id>
+                @produce cash
+
+                #modulestack <cargob-id>
+                @get all food from <farms-id>
+                @get all carbon from <sdrill-id>
+                sell 200 food at average
+
+                #modulestack <sdrill-id>
+                @use hcdril
+
+                #modulestack <farms-id>
+                @use farmng
+
+                #modulestack <cplant-id>
+                @produce energy
+
+                #modulestack <factry-id>
+                get 30 iron from <cargob-id>
+                use grndtr as scout1 for <hq-id>
+                use armcbt as tanks1 for <hq-id>
+
+                #modulestack scout1
+                @move {{safeScout}}
+
+                #modulestack tanks1
+                @move {{faunaRegion}}
+                @tactic destroy
+                #end
+                """;
+        }
+
         return """
             #faction <id> "<password>"
             #modulestack <hq-id>
@@ -271,6 +311,19 @@ public static partial class DraftPromptBuilder
                 Turn 2+: moblib/moblab with cdrill tech copy to scout deep pockets (exit hint from grant; Deep resources line on-site). Activate cdrill @use iminng on pocket. Next agrplx/farms vs pocket cdrill by bottleneck.
                 Defer UN town/CONTRACT charters until home grant production is maxed.
                 Use only stack ids from the Orders template. Lowercase immediate verbs (get, use); leftover lines use @ prefix.
+                """;
+        }
+
+        if (string.Equals(hints.PersonaPreference, "military", StringComparison.OrdinalIgnoreCase))
+        {
+            var faunaRegion = hints.AnomalyRegionId ?? "adjacent anomaly region-id from grant exits (Mid Vale)";
+            return $"""
+                Write turn {hints.DraftTurn} orders for this military faction.
+                After turn-1 fauna rumor or scout contact: `DECLARE FACTION 14 ENEMY` (or local fauna id from report) before engaging wildlife.
+                Priority: factory `use grndtr` scout truck to a *safe* adjacent grant (Farm Belt R00014 — not the anomaly); factory `use armcbt` tanks squad; run grant economic loop (@produce cash, @use farmng/hcdril, @produce energy, sell food).
+                When tanks exist: @move tanks to {faunaRegion}, @tactic destroy (fauna stack id may be unknown until arrival — do not invent placeholder ids); claim CT0016 cash bounty when stack cleared.
+                Defer UN town charter (CT0006 twnbld) until armored lane is secure. Oil in Mid Vale is a follow-on objective after the cull.
+                Use only stack ids from the Orders template. Lowercase immediate verbs (get, use, declare); leftover lines use @ prefix.
                 """;
         }
 

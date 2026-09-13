@@ -7,7 +7,7 @@ public static partial class OrderVerbAllowlist
     private static readonly HashSet<string> FallbackVerbs = new(StringComparer.OrdinalIgnoreCase)
     {
         "ACTIVE", "ACTIVATE", "ALIAS", "ATTACK", "BUY", "CAPTURE", "CONTRACT", "COPY", "DECLARE",
-        "DEACTIVATE", "DEPOSIT", "FORM", "GET", "GIVE", "HAS", "NAME", "PRESS", "SEE", "SELL", "SET",
+        "DEACTIVATE", "DEPOSIT", "FORM", "GET", "GIVE", "HAS", "NAME", "PRESS", "RUMOR", "SEE", "SELL", "SET",
         "STACK", "TACTIC", "TRANSFER", "WITHDRAW",
         "MOVE", "PRODUCE", "REPAIR", "RESEARCH", "TRAIN", "USE",
     };

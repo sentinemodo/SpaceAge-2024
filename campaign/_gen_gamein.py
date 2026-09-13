@@ -118,7 +118,7 @@ ARBOR = [
     ((5, 0), "barren", "Cinder Flats", [("iron", 20), ("silici", 15)]),
     ((0, 1), "ocean", "West Deep", [("terair", 100), ("water", 600), ("food", 40)]),
     ((1, 1), "grassl", "Northwind Grant", [("terair", 100), ("food", 600), ("carbon", 30), ("iron", 20), ("water", 150)]),
-    ((2, 1), "grassl", "Mid Vale", [("terair", 100), ("food", 500), ("carbon", 20), ("iron", 15), ("water", 140)]),
+    ((2, 1), "grassl", "Mid Vale", [("terair", 100), ("food", 500), ("carbon", 20), ("iron", 15), ("water", 140), ("oil", 25)]),
     ((3, 1), "grassl", "Greenwell Grant", [("terair", 100), ("food", 600), ("carbon", 30), ("iron", 20), ("water", 150)]),
     ((4, 1), "mountn", "South Ridge", [("iron", 70), ("silici", 20), ("carbon", 5)]),
     ((5, 1), "dust", "East Dune", [("iron", 30), ("silici", 25), ("carbon", 10)]),
@@ -903,6 +903,72 @@ GRANT_MARKET_TOWNS = (
 )
 
 
+def fauna_pack(stack_id, faction, module_type, qty, name_en):
+    """Wild fauna pocket: native module tier only (no cargo, no upkeep). See designer/fauna.md."""
+    return Stack(stack_id, module_type, faction, qty, name_en)
+
+
+def seed_hostile_fauna(arbor, anvil):
+    """Small fauna pockets on homeworlds; one stack per native tier. See designer/fauna.md."""
+    arbor_pockets = [
+        ("Mid Vale", "140010", "brmstr", 2, "Mid Vale brush pack", 14),
+        ("East Steppe", "140020", "mulcrw", 1, "East Steppe mulch crawler", 14),
+        ("Windgap", "140030", "canalp", 1, "Windgap canopy alpha", 14),
+    ]
+    for region_name, stack_id, module_type, qty, name_en, faction in arbor_pockets:
+        find_region(arbor.regions, region_name).stacks.append(
+            fauna_pack(stack_id, faction, module_type, qty, name_en)
+        )
+
+    anvil_pockets = [
+        ("Slope", "150010", "crstlb", 2, "Slope burrow pack", 15),
+        ("Scree", "150020", "slgmnt", 1, "Scree slag mantlet", 15),
+        ("Crag", "150030", "urstlk", 1, "Crag umber stalker", 15),
+    ]
+    for region_name, stack_id, module_type, qty, name_en, faction in anvil_pockets:
+        find_region(anvil.regions, region_name).stacks.append(
+            fauna_pack(stack_id, faction, module_type, qty, name_en)
+        )
+
+
+def seed_haven_graph_fauna(systems):
+    """Fauna pockets on Deep Haven and Graph (built after homeworld seeding)."""
+    deep = next((s for s in systems if s.name_en == "Deep"), None)
+    haven = None
+    if deep:
+        for planet in deep.planets:
+            for moon in planet.moons:
+                if moon.name_en == "Haven":
+                    haven = moon
+                    break
+    graph_sys = next((s for s in systems if s.name_en == "Graph"), None)
+    graph = None
+    if graph_sys:
+        graph = next((p for p in graph_sys.planets if p.name_en == "Graph"), None)
+
+    if haven:
+        haven_pockets = [
+            ("Haven 1,1", "160010", "ribgrz", 2, "Haven ridge grazers", 16),
+            ("Haven 2,1", "160020", "glacra", 1, "Haven glacier crab", 16),
+            ("Haven 0,1", "160030", "frostb", 1, "Haven frost brood", 16),
+        ]
+        for region_name, stack_id, module_type, qty, name_en, faction in haven_pockets:
+            find_region(haven.regions, region_name).stacks.append(
+                fauna_pack(stack_id, faction, module_type, qty, name_en)
+            )
+
+    if graph:
+        graph_pockets = [
+            ("Graph 2,0", "170010", "silskk", 2, "Graph silicate skitters", 17),
+            ("Graph 3,1", "170020", "qtzrol", 1, "Graph quartz roller", 17),
+            ("Graph 1,2", "170030", "spngrf", 1, "Graph spine reef", 17),
+        ]
+        for region_name, stack_id, module_type, qty, name_en, faction in graph_pockets:
+            find_region(graph.regions, region_name).stacks.append(
+                fauna_pack(stack_id, faction, module_type, qty, name_en)
+            )
+
+
 def hq_stack(fac, planet):
     name_en, _pw = PLAYERS[fac]
     base = 200000 + (fac - 2) * 10000
@@ -1458,6 +1524,7 @@ def build_world():
 
     apply_hq_anomalies(arbor, anvil)
     apply_hq_deep_pockets(arbor, anvil)
+    seed_hostile_fauna(arbor, anvil)
 
     grant_market_contracts = []
     for fac, contract_id, reward, title, flavour in GRANT_MARKET_TOWNS:
@@ -1505,6 +1572,7 @@ def build_world():
         systems.append(system)
 
     add_empty_system_gates(ids, systems)
+    seed_haven_graph_fauna(systems)
     return systems, landings, grant_market_contracts
 
 
@@ -2186,6 +2254,70 @@ def emit_factions(root):
         **{"credit-rate": "0"},
         **{"deposit-rate": "0"},
     )
+    el(
+        root,
+        "faction",
+        name="14",
+        **{"name-en": "Arbor Fauna"},
+        password="",
+        email="",
+        **{"default-attitude": "2"},
+        **{"text-report": "True"},
+        **{"text-report-line-length": "100"},
+        **{"xml-report": "True"},
+        balance="0",
+        **{"credit-line": "0"},
+        **{"credit-rate": "0"},
+        **{"deposit-rate": "0"},
+    )
+    el(
+        root,
+        "faction",
+        name="15",
+        **{"name-en": "Anvil Fauna"},
+        password="",
+        email="",
+        **{"default-attitude": "2"},
+        **{"text-report": "True"},
+        **{"text-report-line-length": "100"},
+        **{"xml-report": "True"},
+        balance="0",
+        **{"credit-line": "0"},
+        **{"credit-rate": "0"},
+        **{"deposit-rate": "0"},
+    )
+    el(
+        root,
+        "faction",
+        name="16",
+        **{"name-en": "Haven Fauna"},
+        password="",
+        email="",
+        **{"default-attitude": "2"},
+        **{"text-report": "True"},
+        **{"text-report-line-length": "100"},
+        **{"xml-report": "True"},
+        balance="0",
+        **{"credit-line": "0"},
+        **{"credit-rate": "0"},
+        **{"deposit-rate": "0"},
+    )
+    el(
+        root,
+        "faction",
+        name="17",
+        **{"name-en": "Graph Fauna"},
+        password="",
+        email="",
+        **{"default-attitude": "2"},
+        **{"text-report": "True"},
+        **{"text-report-line-length": "100"},
+        **{"xml-report": "True"},
+        balance="0",
+        **{"credit-line": "0"},
+        **{"credit-rate": "0"},
+        **{"deposit-rate": "0"},
+    )
 
 
 def emit_contracts(root, landings, grant_market_contracts):
@@ -2266,6 +2398,38 @@ def emit_contracts(root, landings, grant_market_contracts):
         title="Fomal carbonaceous fabricator",
         flavour="A cold, unmanned fabrication plant is wedged in a kerogen-rich carbonaceous cell. Research it on site; the organics are feedstock, not a skip of the Arbor/Anvil split.",
     )
+    fauna_bounties = [
+        (
+            "CT0016",
+            "R00009",
+            "140010",
+            "1000",
+            "Mid Vale swarm cull",
+            "Destroy the Mid Vale brush stalker pack (140010). UN pays a tier-1 fauna bounty so the grant lane can replant.",
+        ),
+        (
+            "CT0019",
+            "R00046",
+            "150010",
+            "1000",
+            "Slope swarm cull",
+            "Destroy the Slope crust burrower pack (150010). UN pays a tier-1 fauna bounty on the talus lane.",
+        ),
+    ]
+    for name, location, target, cash, title, flavour in fauna_bounties:
+        el(
+            contracts,
+            "contract",
+            name=name,
+            location=location,
+            issuer="1",
+            trigger="destroy-stack",
+            target=target,
+            **{"reward-type": "cash"},
+            reward=cash,
+            title=title,
+            flavour=flavour,
+        )
     for spec in grant_market_contracts:
         el(
             contracts,

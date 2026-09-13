@@ -16,7 +16,7 @@ public static partial class VerbInference
         ["researcher"] = ["USE", "GET", "MOVE", "RESEARCH", "PRODUCE"],
         ["contractor"] = ["USE", "GET", "TRANSFER", "PRODUCE", "CONTRACT"],
         ["economic"] = ["PRODUCE", "USE", "GET", "SELL", "BUY"],
-        ["military"] = ["MOVE", "USE", "GET", "ATTACK", "PRODUCE"],
+        ["military"] = ["MOVE", "USE", "GET", "ATTACK", "DECLARE", "PRODUCE"],
     };
 
     /// <summary>Legacy single-verb filter for spot-check tooling.</summary>

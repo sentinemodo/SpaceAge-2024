@@ -75,6 +75,7 @@ public static partial class StoryDraftPromptBuilder
     {
         var isResearcher = context.PersonaText.Contains("Preference: researcher", StringComparison.OrdinalIgnoreCase);
         var isEconomic = context.PersonaText.Contains("Preference: economic", StringComparison.OrdinalIgnoreCase);
+        var isMilitary = context.PersonaText.Contains("Preference: military", StringComparison.OrdinalIgnoreCase);
         var personaBrief =
             $"{context.FactionName} faction {context.FactionId}. {SummarizePersona(context.PersonaText)} "
             + $"Contract: {context.ContractHint}. Stacks: {context.StackIdsSummary}.";
@@ -95,16 +96,26 @@ public static partial class StoryDraftPromptBuilder
                     - Scout with moblib/moblab carrying a cdrill technology copy (not trucks): adjacent exits show deep pocket of resources detected; move lab into pocket cell to read Deep resources assays
                     - Defer CT town charter until home grant production is maxed; next build agrplx farms or cdrill on deep pockets by market bottleneck
                     """
-                : """
-                    - Grant economic loop (@produce cash, @use farmng / @use hcdril, @produce energy, sell food via cargob)
-                    - Stage 30 iron + 2 titani on factory, use twnbld as new1, transfer 1 to faction 1 for the UN town contract
-                    """;
+                : isMilitary
+                    ? """
+                        - Turn-1 fauna rumor counts as contact: DECLARE FACTION 14 ENEMY before engaging Arbor Fauna
+                        - Grant economic loop (@produce cash, @use farmng / @use hcdril, @produce energy, sell food via cargob)
+                        - Factory: use grndtr scout truck to Farm Belt (safe adjacent grant); use armcbt tanks for Mid Vale fauna cull
+                        - Tanks @move Mid Vale [R00009], @attack brush pack; claim CT0016 (1000 cash bounty) when stack cleared
+                        - Secure Mid Vale oil after cull; defer CT0006 UN town charter until armored lane is safe
+                        """
+                    : """
+                        - Grant economic loop (@produce cash, @use farmng / @use hcdril, @produce energy, sell food via cargob)
+                        - Stage 30 iron + 2 titani on factory, use twnbld as new1, transfer 1 to faction 1 for the UN town contract
+                        """;
 
         var narrativeHook = isResearcher
             ? "adjacent HQ anomaly detected on grant exits, mobile lab field survey, 8-point investigation threshold"
             : isEconomic
                 ? "surface drill bootstrap, paid cdrill tech copy, moblab deep-pocket scouting column before grant expansion"
-                : "UN town charter via TRANSFER TO FACTION 1";
+                : isMilitary
+                    ? "anonymous Mid Vale fauna rumor, scout truck on Farm Belt, armored column clearing brush for CT0016 cash"
+                    : "UN town charter via TRANSFER TO FACTION 1";
 
         var strategicGuidance = isEconomic
             ? """
@@ -116,9 +127,14 @@ public static partial class StoryDraftPromptBuilder
                     Four-quarter arc: moblab anomaly survey and RESEARCH on adjacent grant exits, grant economic loop, defer UN town charter until survey column is staged.
                     Mention contract id and reward tech as later-quarter milestones.
                     """
-                : """
-                    Four quarters tied to persona doctrine and the open contract; mention contract id and reward tech where relevant.
-                    """;
+                : isMilitary
+                    ? """
+                        Four-quarter arc: clear adjacent fauna (CT0016/CT0019 cash bounties), secure oil pockets, cplant/fossil energy for barracks, frminf infantry from barracks, then Gate orbit when ready.
+                        Defer CT0006 UN town charter until the armored lane is secure. Fauna factions 14-17 start neutral — declare only after rumor or scout contact.
+                        """
+                    : """
+                        Four quarters tied to persona doctrine and the open contract; mention contract id and reward tech where relevant.
+                        """;
 
         return
         [
@@ -139,7 +155,7 @@ public static partial class StoryDraftPromptBuilder
                 $"""
                 {personaBrief}
 
-                Write ONLY ## Tactical objective with bullet list for the next quarter.
+                Write ONLY ## Tactical objective (bullet list for the next quarter).
                 {tacticalBullets}
                 Substitute real stack ids from the report where placeholders appear: {context.StackIdsSummary}.
                 Do not echo these instructions. No other headings.
@@ -179,16 +195,24 @@ public static partial class StoryDraftPromptBuilder
 
     private static string ExtractContractHint(string reportText)
     {
+        var hints = new List<string>();
         foreach (var line in reportText.Split('\n'))
         {
-            if (line.Contains("Contract reports:", StringComparison.OrdinalIgnoreCase)
-                || line.TrimStart().StartsWith("CT", StringComparison.Ordinal))
+            if (line.Contains("Rumors:", StringComparison.OrdinalIgnoreCase)
+                || line.Contains("Hostile fauna", StringComparison.OrdinalIgnoreCase))
             {
-                return line.Trim();
+                hints.Add(line.Trim());
+            }
+
+            if (line.TrimStart().StartsWith("CT", StringComparison.Ordinal))
+            {
+                hints.Add(line.Trim());
             }
         }
 
-        return "open UN give-module town contract on home grant";
+        return hints.Count == 0
+            ? "open UN give-module town contract on home grant"
+            : string.Join("; ", hints.Take(4));
     }
 
     private static string ExtractStackIds(string reportExcerpt, int factionId)

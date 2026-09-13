@@ -1,6 +1,6 @@
 # Contracts (during play)
 
-Live triggers: **`give-module`** (deliver N modules of a type to a receiver stack) and **`research`** (accumulate research points on a wreckage/anomaly stack at the same location). Rewards: **technology copy** or **unit**.
+Live triggers: **`give-module`**, **`research`**, **`destroy-stack`** (target stack wrecked in combat). Rewards: **technology copy**, **unit**, or **cash** (`reward-type="cash"`).
 
 Always set `title` and `flavour`. Flavour is **hard science**: spectra, Δv, isotopes, epidemiology — not prophecy.
 
@@ -16,6 +16,7 @@ The map is **two occupied basins** (Arbor, Anvil) plus eight empty systems. Do *
 2. **2–4 UN `give-module` jobs** that force local trade inside a starting system, e.g. deliver `farms` or `wnplnt` to **Slagport** / **Isotope**, or `cdrill` to **Tidewatch**. Receiver = that UN city or its nested garrison. `baseline` = current recursive count.
 3. **At most one wreck rumour per occupied system**, and only **off** the habitable grids: Helios belt metal rock or an Aeolus ice moon; Fomal carbonaceous belt or an ice moon. `research`, L3–L4 reward, mixed branches. Flavour as a UN survey charter, not a free skip of the resource split.
 4. **Empty systems:** no t=1 contracts. Wrecks there wait until someone can actually reach them (year 1+).
+5. **Fauna cull bounties** (tier-1 only at t=1): **CT0016** Mid Vale **1000** cash, **CT0019** Slope **1000** cash. Default ladder for later tiers: **1000 / 2000 / 4000**. See [`fauna.md`](fauna.md).
 
 Do not put L10 rewards on the map at t=1. Item shipments (food tonnes to Anvil) are **markets**, not `give-module`.
 

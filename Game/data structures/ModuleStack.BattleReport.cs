@@ -280,11 +280,11 @@ namespace SpaceAge
 			}
 			else if (this.IsPartiallyDisabled)
 			{
-				line = string.Concat(line, "partially disabled");
+				line = string.Concat(line, this.IsLivingUnit ? "partially routed" : "partially disabled");
 			}
 			else
 			{
-				line = string.Concat(line, "disabled");
+				line = string.Concat(line, this.IsLivingUnit ? "routed" : "disabled");
 			}
 			return line;
 		}

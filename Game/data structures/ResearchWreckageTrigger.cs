@@ -74,6 +74,10 @@ namespace SpaceAge
 			this.Winner = researcher;
 		}
 
+		public void NotifyStackDestroyed(Faction killer, ModuleStack stack)
+		{
+		}
+
 		public bool IsComplete()
 		{
 			return this.Winner != null && this.Progress >= this.RequiredPoints;

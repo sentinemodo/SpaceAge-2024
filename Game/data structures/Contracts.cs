@@ -86,6 +86,17 @@ namespace SpaceAge
 			}
 		}
 
+		public void NotifyStackDestroyed(Faction killer, ModuleStack stack)
+		{
+			foreach (Contract contract in this)
+			{
+				if (contract.Trigger != null)
+				{
+					contract.Trigger.NotifyStackDestroyed(killer, stack);
+				}
+			}
+		}
+
 		public void Evaluate(int week)
 		{
 			List<Contract> snapshot = new List<Contract>(this);
@@ -179,15 +190,24 @@ namespace SpaceAge
 			}
 
 			List<PressRelease> press = new List<PressRelease>();
+			List<PressRelease> rumors = new List<PressRelease>();
 			foreach (PressRelease release in PressRelease.All)
 			{
-				if (release.CreatedThisSession)
+				if (!release.CreatedThisSession)
+				{
+					continue;
+				}
+				if (release.Anonymous)
+				{
+					rumors.Add(release);
+				}
+				else
 				{
 					press.Add(release);
 				}
 			}
 
-			if (created.Count == 0 && press.Count == 0)
+			if (created.Count == 0 && press.Count == 0 && rumors.Count == 0)
 			{
 				return;
 			}
@@ -202,7 +222,7 @@ namespace SpaceAge
 						visible.Add(contract);
 					}
 				}
-				if (visible.Count == 0 && press.Count == 0)
+				if (visible.Count == 0 && press.Count == 0 && rumors.Count == 0)
 				{
 					continue;
 				}
@@ -222,6 +242,31 @@ namespace SpaceAge
 						writer.WriteLine(string.Format("  {0}: {1}.",
 							release.Issuer.ReportName,
 							release.Title));
+						if (!string.IsNullOrEmpty(release.Flavour))
+						{
+							writer.WriteLine(string.Format("    {0}", release.Flavour));
+						}
+					}
+					if (rumors.Count > 0 || visible.Count > 0)
+					{
+						writer.WriteLine();
+					}
+				}
+				if (rumors.Count > 0)
+				{
+					writer.WriteLine("Rumors:");
+					foreach (PressRelease release in rumors)
+					{
+						if (!string.IsNullOrEmpty(release.PlanetId) && Planet.All.ContainsKey(release.PlanetId))
+						{
+							writer.WriteLine(string.Format("  {0}: {1}.",
+								Planet.All[release.PlanetId].ReportName,
+								release.Title));
+						}
+						else
+						{
+							writer.WriteLine(string.Format("  {0}.", release.Title));
+						}
 						if (!string.IsNullOrEmpty(release.Flavour))
 						{
 							writer.WriteLine(string.Format("    {0}", release.Flavour));

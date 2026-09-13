@@ -18,6 +18,7 @@ namespace SpaceAge
 			{ "copy", subject => new CopyOrder(subject) },
 			{ "contract", subject => new ContractOrder(subject) },
 			{ "press", subject => new PressOrder(subject) },
+			{ "rumor", subject => new RumorOrder(subject) },
 			{ "declare", subject => new DeclareOrder(subject) },
 			{ "deactivate", subject => new DeactivateOrder(subject) },
 			{ "deposit", subject => new DepositOrder(subject) },
