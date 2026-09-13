@@ -445,7 +445,7 @@ Galaxy report:
   
   + Berlin [000001], 3 cities [city], immobile.
     size: 75000, mass: 28792, capacity: 45000/41000, energy: 200/155 (30), crew: 99/238, upkeep: 300
-    units of food [food], 1963 (0) cash [cash], consume: 338 (0) units of food [food], 338 (0) units
+    units of food [food], 1293 (0) cash [cash], consume: 338 (0) units of food [food], 338 (0) units
     of terran breathing gas mixture [terair].
     events:
       week 13: paid 300 unit of food [food] upkeep.

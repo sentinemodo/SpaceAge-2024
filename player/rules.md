@@ -249,10 +249,13 @@ sell <N> food at average
 #modulestack <factry-id>
 get 30 iron from <cargob-id>
 get 2 titani from <cargob-id>
-use twnbld for <town-receiver-id>
+use twnbld as new1
+
+#modulestack new1
+transfer 1 to faction 1
 ```
 
-Replace ids from the report template. When nested stacks already show crew in turn-1 reports, skip the market-buy block above. **`use twnbld for <receiver>`** (10 weeks) builds a **`town`** and delivers it into the UN **`give-module`** receiver on the same grant (completes turn-1 **CT0006–CT0015** when the receiver is a **`town`** stack at headquarters). Stage **30 iron** and **2 titani** on the factory first. Open contracts appear under **Contract reports:** in the faction report and **Contracts:** in the grant region. Defer ground **`MOVE`** until a shuttle or other mobile stack exists; people ride on that stack.
+Replace ids from the report template. When nested stacks already show crew in turn-1 reports, skip the market-buy block above. **`use twnbld as new1`** (10 weeks) builds a **`town`** module on the factory stack; then **`transfer 1 to faction 1`** on that new stack hands it to United Star Nations at headquarters and completes turn-1 **CT0006–CT0015** **`give-module`** contracts (reward e.g. **`ctypln`**). Stage **30 iron** and **2 titani** on the factory first. Open contracts appear under **Contract reports:** in the faction report and **Contracts:** in the grant region. Defer ground **`MOVE`** until a shuttle or other mobile stack exists; people ride on that stack.
 
 ## Text vs XML
 

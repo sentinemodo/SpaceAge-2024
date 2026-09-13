@@ -474,6 +474,11 @@ namespace SpaceAge
         {
             foreach (Region region in Region.All.Values)
             {
+                region.Market.ApplyOfferPressureDrift();
+            }
+
+            foreach (Region region in Region.All.Values)
+            {
                 foreach (ItemType itemType in ItemType.All.Values)
                 {
                     if (!region.Market.PriceList.ContainsKey(itemType))

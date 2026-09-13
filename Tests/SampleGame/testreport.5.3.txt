@@ -15,7 +15,7 @@ Declared stances:
   enemy toward Caste Prime [2].
 
 Bank report:
-  Bank account balance: 8804.
+  Bank account balance: 8852.
   Credit line maximum: 10000.
   Credit rate: 20%, Deposit rate: 4%.
 
@@ -6334,9 +6334,9 @@ Galaxy report:
     size: 75000, capacity: 45000/41120, energy: 200/140 (30).
     + coal-burning plant [c00015], coal-burning plant [cplant],
       disabled, immobile.
-      size: 1000, mass: 1008 (1000), capacity: 500/8, upkeep: 52 (50)
-      cash [cash], consume: 2 (0) units of food [food], 2 (0) units of
-      terran breathing gas mixture [terair].
+      size: 1000, mass: 1008 (1000), capacity: 500/8, upkeep: 2 (0) cash
+      [cash], consume: 2 (0) units of food [food], 2 (0) units of terran
+      breathing gas mixture [terair].
       hit points: 100/51, capture: 51.
         #1 hit points: 100/51, capture: 51, lightly damaged,
         deactivated.
@@ -6347,7 +6347,7 @@ Galaxy report:
       events:
         week 1: captured coal-burning plant [cplant] from coal-burning
         plant [000015].
-        week 13: paid 52 cash [cash] upkeep.
+        week 13: paid 2 cash [cash] upkeep.
     - Berlin garrison [000002], infantry battalion [inftry], immobile,
       owned by NPC [1].
       size: 500.
@@ -6384,14 +6384,14 @@ Galaxy report:
     + corporate headquarters [c000012], corporate headquarters [corphq],
       immobile.
       size: 1000, mass: 7378 (1000), capacity: 750/6496, energy: 10,
-      crew: 20/38, upkeep: 268 (100) cash [cash], consume: 38 (0) units
+      crew: 20/38, upkeep: 198 (100) cash [cash], consume: 38 (0) units
       of food [food], 38 (0) units of terran breathing gas mixture
       [terair].
       hit points: 100/100, capture: 75.
         #1 hit points: 100/100, capture: 75.
       items: 24 terrans [terran] (size: 96, mass: 96, upkeep: 24 cash
       [cash], consume: 24 units of food [food], 24 units of terran
-      breathing gas mixture [terair]), 1255 cash [cash].
+      breathing gas mixture [terair]), 1956 cash [cash].
       events:
         week 1: repaired 1 damage.
         week 1: given 2 terrans [terran] to gun placement [c00001].
@@ -6403,8 +6403,8 @@ Galaxy report:
         week 13: 2 wounded terrans [wndtrn] recovered from their wounds.
       + gun placement [c00001], gun placement [gunplc], disabled,
         immobile.
-        size: 100, mass: 508 (500), capacity: 100/8, upkeep: 12 (10)
-        cash [cash], consume: 2 (0) units of food [food], 2 (0) units of
+        size: 100, mass: 508 (500), capacity: 100/8, upkeep: 2 (0) cash
+        [cash], consume: 2 (0) units of food [food], 2 (0) units of
         terran breathing gas mixture [terair].
         hit points: 100/32, capture: 31.
           #1 hit points: 100/32, capture: 31, heavily damaged, disabled.
@@ -6415,11 +6415,11 @@ Galaxy report:
           week 1: stacked under corporate headquarters [c000012].
           week 1: got 2 terrans [terran] from corporate headquarters
           [c000012].
-          week 13: paid 12 cash [cash] upkeep.
+          week 13: paid 2 cash [cash] upkeep.
       + gun placement [c00002], gun placement [gunplc], disabled,
         immobile.
-        size: 100, mass: 508 (500), capacity: 100/8, upkeep: 12 (10)
-        cash [cash], consume: 2 (0) units of food [food], 2 (0) units of
+        size: 100, mass: 508 (500), capacity: 100/8, upkeep: 2 (0) cash
+        [cash], consume: 2 (0) units of food [food], 2 (0) units of
         terran breathing gas mixture [terair].
         hit points: 100/39, capture: 39.
           #1 hit points: 100/39, capture: 39, heavily damaged, disabled.
@@ -6430,11 +6430,11 @@ Galaxy report:
           week 1: stacked under corporate headquarters [c000012].
           week 1: got terran [terran] from corporate headquarters
           [c000012].
-          week 13: paid 12 cash [cash] upkeep.
+          week 13: paid 2 cash [cash] upkeep.
       + gun placement [c00003], gun placement [gunplc], disabled,
         immobile.
-        size: 100, mass: 508 (500), capacity: 100/8, upkeep: 12 (10)
-        cash [cash], consume: 2 (0) units of food [food], 2 (0) units of
+        size: 100, mass: 508 (500), capacity: 100/8, upkeep: 2 (0) cash
+        [cash], consume: 2 (0) units of food [food], 2 (0) units of
         terran breathing gas mixture [terair].
         hit points: 100/24, capture: 24.
           #1 hit points: 100/24, capture: 24, critically damaged,
@@ -6446,11 +6446,11 @@ Galaxy report:
           week 1: stacked under corporate headquarters [c000012].
           week 1: got terran [terran] from corporate headquarters
           [c000012].
-          week 13: paid 12 cash [cash] upkeep.
+          week 13: paid 2 cash [cash] upkeep.
       + gun placement [c00004], gun placement [gunplc], disabled,
         immobile.
-        size: 100, mass: 508 (500), capacity: 100/8, upkeep: 12 (10)
-        cash [cash], consume: 2 (0) units of food [food], 2 (0) units of
+        size: 100, mass: 508 (500), capacity: 100/8, upkeep: 2 (0) cash
+        [cash], consume: 2 (0) units of food [food], 2 (0) units of
         terran breathing gas mixture [terair].
         hit points: 100/35, capture: 35.
           #1 hit points: 100/35, capture: 35, heavily damaged, disabled.
@@ -6461,12 +6461,12 @@ Galaxy report:
           week 1: stacked under corporate headquarters [c000012].
           week 1: got terran [terran] from corporate headquarters
           [c000012].
-          week 13: paid 12 cash [cash] upkeep.
+          week 13: paid 2 cash [cash] upkeep.
       + small cargo bay [c00005], small cargo bay [cargob], disabled,
         immobile.
-        size: 2000, mass: 1393 (200), capacity: 1800/995, upkeep: 32
-        (30) cash [cash], consume: 2 (0) units of food [food], 2 (0)
-        units of terran breathing gas mixture [terair].
+        size: 2000, mass: 1393 (200), capacity: 1800/995, upkeep: 2 (0)
+        cash [cash], consume: 2 (0) units of food [food], 2 (0) units of
+        terran breathing gas mixture [terair].
         hit points: 55/27, capture: 27.
           #1 hit points: 55/27, capture: 27, heavily damaged, disabled.
         items: 166 units of food [food] (size: 166, mass: 166), 170
@@ -6482,7 +6482,7 @@ Galaxy report:
         85).
         events:
           week 1: stacked under corporate headquarters [c000012].
-          week 13: paid 32 cash [cash] upkeep.
+          week 13: paid 2 cash [cash] upkeep.
       + small cargo bay [c00006], small cargo bay [cargob], immobile.
         size: 2000, mass: 1426 (200), capacity: 1800/1028, upkeep: 32
         (30) cash [cash], consume: 2 (0) units of food [food], 2 (0)
@@ -6551,7 +6551,7 @@ Galaxy report:
           week 13: paid 32 cash [cash] upkeep.
     + small cargo bay [c00008], small cargo bay [cargob], disabled,
       immobile.
-      size: 2000, mass: 1443 (200), capacity: 1800/1045, upkeep: 32 (30)
+      size: 2000, mass: 1443 (200), capacity: 1800/1045, upkeep: 2 (0)
       cash [cash], consume: 2 (0) units of food [food], 2 (0) units of
       terran breathing gas mixture [terair].
       hit points: 55/30, capture: 30.
@@ -6567,10 +6567,10 @@ Galaxy report:
       units of food [food], 2 units of terran breathing gas mixture
       [terair]), 18 units of carbon [carbon] (size: 90, mass: 90).
       events:
-        week 13: paid 32 cash [cash] upkeep.
+        week 13: paid 2 cash [cash] upkeep.
     + small cargo bay [c00009], small cargo bay [cargob], disabled,
       immobile.
-      size: 2000, mass: 1449 (200), capacity: 1800/1051, upkeep: 32 (30)
+      size: 2000, mass: 1449 (200), capacity: 1800/1051, upkeep: 2 (0)
       cash [cash], consume: 2 (0) units of food [food], 2 (0) units of
       terran breathing gas mixture [terair].
       hit points: 55/28, capture: 28.
@@ -6586,48 +6586,48 @@ Galaxy report:
       units of food [food], 2 units of terran breathing gas mixture
       [terair]), 19 units of carbon [carbon] (size: 95, mass: 95).
       events:
-        week 13: paid 32 cash [cash] upkeep.
+        week 13: paid 2 cash [cash] upkeep.
     + farming complex [c00010], farming complex [farms], disabled,
       immobile.
-      size: 1000, mass: 120 (100), capacity: 500/20, upkeep: 55 (50)
-      cash [cash], consume: 5 (0) units of food [food], 5 (0) units of
-      terran breathing gas mixture [terair].
+      size: 1000, mass: 120 (100), capacity: 500/20, upkeep: 5 (0) cash
+      [cash], consume: 5 (0) units of food [food], 5 (0) units of terran
+      breathing gas mixture [terair].
       hit points: 55/34, capture: 34.
         #1 hit points: 55/34, capture: 34, lightly damaged, deactivated.
       items: 5 terrans [terran] (size: 20, mass: 20, upkeep: 5 cash
       [cash], consume: 5 units of food [food], 5 units of terran
       breathing gas mixture [terair]).
       events:
-        week 13: paid 55 cash [cash] upkeep.
+        week 13: paid 5 cash [cash] upkeep.
     + farming complex [c00011], farming complex [farms], disabled,
       immobile.
-      size: 1000, mass: 120 (100), capacity: 500/20, upkeep: 55 (50)
-      cash [cash], consume: 5 (0) units of food [food], 5 (0) units of
-      terran breathing gas mixture [terair].
+      size: 1000, mass: 120 (100), capacity: 500/20, upkeep: 5 (0) cash
+      [cash], consume: 5 (0) units of food [food], 5 (0) units of terran
+      breathing gas mixture [terair].
       hit points: 55/36, capture: 36.
         #1 hit points: 55/36, capture: 36, lightly damaged, deactivated.
       items: 5 terrans [terran] (size: 20, mass: 20, upkeep: 5 cash
       [cash], consume: 5 units of food [food], 5 units of terran
       breathing gas mixture [terair]).
       events:
-        week 13: paid 55 cash [cash] upkeep.
+        week 13: paid 5 cash [cash] upkeep.
     + farming complex [c00012], farming complex [farms], disabled,
       immobile.
-      size: 1000, mass: 120 (100), capacity: 500/20, upkeep: 55 (50)
-      cash [cash], consume: 5 (0) units of food [food], 5 (0) units of
-      terran breathing gas mixture [terair].
+      size: 1000, mass: 120 (100), capacity: 500/20, upkeep: 5 (0) cash
+      [cash], consume: 5 (0) units of food [food], 5 (0) units of terran
+      breathing gas mixture [terair].
       hit points: 55/33, capture: 33.
         #1 hit points: 55/33, capture: 33, lightly damaged, deactivated.
       items: 5 terrans [terran] (size: 20, mass: 20, upkeep: 5 cash
       [cash], consume: 5 units of food [food], 5 units of terran
       breathing gas mixture [terair]).
       events:
-        week 13: paid 55 cash [cash] upkeep.
+        week 13: paid 5 cash [cash] upkeep.
     + coal-burning plant [c00013], coal-burning plant [cplant],
       disabled, immobile.
-      size: 1000, mass: 1008 (1000), capacity: 500/8, upkeep: 52 (50)
-      cash [cash], consume: 2 (0) units of food [food], 2 (0) units of
-      terran breathing gas mixture [terair].
+      size: 1000, mass: 1008 (1000), capacity: 500/8, upkeep: 2 (0) cash
+      [cash], consume: 2 (0) units of food [food], 2 (0) units of terran
+      breathing gas mixture [terair].
       hit points: 100/61, capture: 61.
         #1 hit points: 100/61, capture: 61, lightly damaged,
         deactivated.
@@ -6636,12 +6636,12 @@ Galaxy report:
       [cash], consume: 2 units of food [food], 2 units of terran
       breathing gas mixture [terair]).
       events:
-        week 13: paid 52 cash [cash] upkeep.
+        week 13: paid 2 cash [cash] upkeep.
     + coal-burning plant [c00014], coal-burning plant [cplant],
       disabled, immobile.
-      size: 1000, mass: 1008 (1000), capacity: 500/8, upkeep: 52 (50)
-      cash [cash], consume: 2 (0) units of food [food], 2 (0) units of
-      terran breathing gas mixture [terair].
+      size: 1000, mass: 1008 (1000), capacity: 500/8, upkeep: 2 (0) cash
+      [cash], consume: 2 (0) units of food [food], 2 (0) units of terran
+      breathing gas mixture [terair].
       hit points: 100/45, capture: 45.
         #1 hit points: 100/45, capture: 45, heavily damaged,
         deactivated.
@@ -6650,9 +6650,9 @@ Galaxy report:
       [cash], consume: 2 units of food [food], 2 units of terran
       breathing gas mixture [terair]).
       events:
-        week 13: paid 52 cash [cash] upkeep.
+        week 13: paid 2 cash [cash] upkeep.
     + core drill [c00016], core drill [cdrill], disabled, immobile.
-      size: 1000, mass: 1039 (1000), capacity: 750/39, upkeep: 46 (40)
+      size: 1000, mass: 1039 (1000), capacity: 750/39, upkeep: 6 (0)
       cash [cash], consume: 6 (0) units of food [food], 6 (0) units of
       terran breathing gas mixture [terair].
       hit points: 100/66, capture: 66.
@@ -6664,11 +6664,11 @@ Galaxy report:
       15, mass: 15).
       events:
         week 2: captured core drill [cdrill] from core drill [000016].
-        week 13: paid 46 cash [cash] upkeep.
+        week 13: paid 6 cash [cash] upkeep.
     + factory [c00017], factory [factry], disabled, immobile.
-      size: 1000, mass: 826 (750), capacity: 500/56, upkeep: 69 (60)
-      cash [cash], consume: 9 (0) units of food [food], 9 (0) units of
-      terran breathing gas mixture [terair].
+      size: 1000, mass: 826 (750), capacity: 500/56, upkeep: 9 (0) cash
+      [cash], consume: 9 (0) units of food [food], 9 (0) units of terran
+      breathing gas mixture [terair].
       hit points: 100/73, capture: 73.
         #1 hit points: 100/73, capture: 73, lightly damaged,
         deactivated.
@@ -6678,11 +6678,11 @@ Galaxy report:
       mass: 40).
       events:
         week 3: captured factory [factry] from factory [000017].
-        week 13: paid 69 cash [cash] upkeep.
+        week 13: paid 9 cash [cash] upkeep.
     + factory [c00018], factory [factry], disabled, immobile.
-      size: 1000, mass: 826 (750), capacity: 500/56, upkeep: 69 (60)
-      cash [cash], consume: 9 (0) units of food [food], 9 (0) units of
-      terran breathing gas mixture [terair].
+      size: 1000, mass: 826 (750), capacity: 500/56, upkeep: 9 (0) cash
+      [cash], consume: 9 (0) units of food [food], 9 (0) units of terran
+      breathing gas mixture [terair].
       hit points: 100/39, capture: 39.
         #1 hit points: 100/39, capture: 39, heavily damaged,
         deactivated.
@@ -6692,11 +6692,11 @@ Galaxy report:
       mass: 40).
       events:
         week 7: captured factory [factry] from factory [000017].
-        week 13: paid 69 cash [cash] upkeep.
+        week 13: paid 9 cash [cash] upkeep.
     + factory [c00019], factory [factry], disabled, immobile.
-      size: 1000, mass: 826 (750), capacity: 500/56, upkeep: 69 (60)
-      cash [cash], consume: 9 (0) units of food [food], 9 (0) units of
-      terran breathing gas mixture [terair].
+      size: 1000, mass: 826 (750), capacity: 500/56, upkeep: 9 (0) cash
+      [cash], consume: 9 (0) units of food [food], 9 (0) units of terran
+      breathing gas mixture [terair].
       hit points: 100/38, capture: 38.
         #1 hit points: 100/38, capture: 38, heavily damaged,
         deactivated.
@@ -6706,11 +6706,11 @@ Galaxy report:
       mass: 40).
       events:
         week 10: captured factory [factry] from factory [000017].
-        week 13: paid 69 cash [cash] upkeep.
+        week 13: paid 9 cash [cash] upkeep.
     + factory [c00020], factory [factry], disabled, immobile.
-      size: 1000, mass: 826 (750), capacity: 500/56, upkeep: 69 (60)
-      cash [cash], consume: 9 (0) units of food [food], 9 (0) units of
-      terran breathing gas mixture [terair].
+      size: 1000, mass: 826 (750), capacity: 500/56, upkeep: 9 (0) cash
+      [cash], consume: 9 (0) units of food [food], 9 (0) units of terran
+      breathing gas mixture [terair].
       hit points: 100/32, capture: 32.
         #1 hit points: 100/32, capture: 32, heavily damaged,
         deactivated.
@@ -6720,9 +6720,9 @@ Galaxy report:
       mass: 40).
       events:
         week 11: captured factory [factry] from factory [000017].
-        week 13: paid 69 cash [cash] upkeep.
+        week 13: paid 9 cash [cash] upkeep.
   + peaceful scout [108], tanks [tanks], disabled, immobile.
-    size: 240, mass: 364 (240), capacity: 200/112, upkeep: 40 (24) cash
+    size: 240, mass: 364 (240), capacity: 200/112, upkeep: 16 (0) cash
     [cash], consume: 32 (16) units of food [food], 32 (16) units of
     terran breathing gas mixture [terair].
     hit points: 100/49.
@@ -6738,7 +6738,7 @@ Galaxy report:
     events:
       week 1: set tactic to prioritize storage.
       week 1: CAPTURE failed. Immobile units may only use destroy.
-      week 13: paid 40 cash [cash] upkeep.
+      week 13: paid 16 cash [cash] upkeep.
   + Surrender or die! [109], 3 tanks [tanks], partially disabled,
     immobile.
     size: 720, mass: 918 (720), capacity: 600/192, crew: 48/42, upkeep:
@@ -7262,7 +7262,7 @@ sell 100 food
 #modulestack c000012
 ; + corporate headquarters [c000012], corporate headquarters [corphq],
 ;   immobile.
-; items: 24 terrans [terran], 1255 cash [cash].
+; items: 24 terrans [terran], 1956 cash [cash].
 @buy all food
 @buy all terran
 

@@ -300,7 +300,7 @@ namespace SpaceAge
 			switch (this.Buy.OfferType)
 			{
 				case EOfferType.BuyItems:
-                    this.Sell.Market.AddPrice(this.Sell.ItemType, this.Sell.Price);                    
+                    this.Sell.Market.PostTradePrice(this.Sell, this.Sell.ItemType);
 					ItemStack boughtItems = new ItemStack(this.Buy.ItemType, quantity);
                     try
                     {
@@ -314,7 +314,7 @@ namespace SpaceAge
                     transferItems.Execute(week);
 					break;
 				case EOfferType.BuyModules:
-                    this.Sell.Market.AddPrice(this.Sell.ModuleType, this.Sell.Price);
+                    this.Sell.Market.PostTradePrice(this.Sell, this.Sell.ModuleType);
                     TransferOrder transferModules = new TransferOrder(
                         ModuleStack.All[this.Sell.Offerent.Name], 
                         ModuleStack.All[this.Buy.Offerent.Name], 
@@ -324,7 +324,7 @@ namespace SpaceAge
 					transferModules.Execute(week);
                     break;
                 case EOfferType.BuyTechnologies:
-                    this.Sell.Market.AddPrice(this.Sell.Technology, this.Sell.Price);
+                    this.Sell.Market.PostTradePrice(this.Sell, this.Sell.Technology);
                     CopyOrder copyTechnology = new CopyOrder(
                         ModuleStack.All[this.Sell.Offerent.Name], 
                         ModuleStack.All[this.Buy.Offerent.Name], 

@@ -1028,9 +1028,9 @@ Galaxy report:
   
   + Berlin [000001], 3 cities [city], immobile.
     size: 75000, mass: 27865 (0), capacity: 45000/41120, energy: 240/220 (30), crew: 120/240 (0/30),
-    upkeep: 300 units of food [food], 1965 (0) cash [cash], consume: 340 (0) units of food [food],
+    upkeep: 300 units of food [food], 1425 (0) cash [cash], consume: 340 (0) units of food [food],
     340 (0) units of terran breathing gas mixture [terair], 3 (0) medicines [medici].
-    items: 1165 cash [cash], 30 terrans [terran] (size: 120, mass: 120, upkeep: 30 cash [cash],
+    items: 1605 cash [cash], 30 terrans [terran] (size: 120, mass: 120, upkeep: 30 cash [cash],
     consume: 30 units of food [food], 30 units of terran breathing gas mixture [terair]).
     events:
       week 13: paid 300 unit of food [food] upkeep.
@@ -1278,7 +1278,7 @@ Orders Template:
 #faction 1 ""
 #modulestack 000001
 ; + Berlin [000001], 3 cities [city], immobile.
-; items: 1165 cash [cash], 30 terrans [terran].
+; items: 1605 cash [cash], 30 terrans [terran].
 
 #modulestack 000002
 ; + Berlin garrison [000002], infantry battalion [inftry], immobile.

@@ -6072,8 +6072,8 @@ Galaxy report:
     + core drill [000016], core drill [cdrill], disabled, immobile.
       size: 0, mass: 0.
     + factory [000017], 3 factories [factry], disabled, immobile.
-      size: 3000, mass: 2482 (2250), capacity: 1500/172, upkeep: 208 (180) cash [cash], consume: 28
-      (0) units of food [food], 28 (0) units of terran breathing gas mixture [terair].
+      size: 3000, mass: 2482 (2250), capacity: 1500/172, upkeep: 28 (0) cash [cash], consume: 28 (0)
+      units of food [food], 28 (0) units of terran breathing gas mixture [terair].
       hit points: 300/133.
         #1 hit points: 100/49, heavily damaged, disabled.
         #2 hit points: 100/44, heavily damaged, disabled.
@@ -6097,7 +6097,7 @@ Galaxy report:
         week 11: engaged in battle
         week 12: engaged in battle
         week 13: engaged in battle
-        week 13: paid 208 cash [cash] upkeep.
+        week 13: paid 28 cash [cash] upkeep.
     + gun placement [111], gun placement [gunplc], disabled, immobile.
       size: 100, mass: 504 (500), capacity: 100/4, crew: 2/1, upkeep: 11 (10) cash [cash], consume:
       (0) unit of food [food], (0) unit of terran breathing gas mixture [terair].

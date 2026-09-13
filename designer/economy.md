@@ -209,7 +209,9 @@ Each quarter, for every NPC faction `[1]` stack whose module type is **`city`**:
 
 ### UpdateRates (open beta)
 
-**Market prices:** For each `Region`, for each `ItemType` that has a price in **any** regional `Market.PriceList`, set this region's price to the **galaxy-wide average** of all regions that posted that type (integer rounding, minimum 1 if average ≥ 0.5). Types with no posted prices are unchanged. Standing offer **objects** keep their saved `Price` field; only regional `PriceList` entries drift toward the average (feeds `GetPrice` for new auto-listings next quarter).
+**Offer-pressure drift (per region, each quarter):** For each type with a regional list price, scan standing offers in that market. Highest **economically significant** buy bid below list pulls price down; lowest significant sell ask above list pulls up; both together target the average of those two anchors. Each move is capped at **10%** of the current list (minimum 1 credit step). Outliers are ignored for drift: sell ask **> 10×** list; buy bid **< list ÷ 10** (bid 1 at list 10 counts; bid 1 at list 100 does not). Orders remain valid and can still match; outlier **trades** with an explicit sell price also skip updating the regional list.
+
+**Galaxy average sync:** For each `Region`, for each `ItemType` that has a price in **any** regional `Market.PriceList`, set this region's price to the **galaxy-wide average** of all regions that posted that type (integer rounding, minimum 1 if average ≥ 0.5). Types with no posted prices are unchanged. Standing offer **objects** keep their saved `Price` field; only regional `PriceList` entries move (feeds `GetPrice` for new auto-listings next quarter).
 
 **Bank rates (player factions 2–11 only):**
 

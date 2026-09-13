@@ -14,7 +14,7 @@
 		<technology name="uminng" />
 		<technology name="he3min" />
 	</faction>
-	<faction name="3" name-en="Gelvaren" password="abccb" email="mail2@mail.pl" default-attitude="2" text-report="True" text-report-line-length="72" xml-report="True" balance="8804" credit-line="10000" credit-rate="0.2" deposit-rate="0.04">
+	<faction name="3" name-en="Gelvaren" password="abccb" email="mail2@mail.pl" default-attitude="2" text-report="True" text-report-line-length="72" xml-report="True" balance="8852" credit-line="10000" credit-rate="0.2" deposit-rate="0.04">
 		<technology name="rckter" />
 		<technology name="servic" />
 		<attitude faction="2" attitude="enemy" />
@@ -250,9 +250,10 @@
 					<resource type="h2o2" quantity="250" />
 					<resource type="food" quantity="500" />
 					<modulestack name="000001" name-en="Berlin" type="city" quantity="3" faction="1">
+						<itemstack type="cash" quantity="609" />
 						<itemstack type="terran" quantity="30" />
 						<upkeep type="food" quantity="300" />
-						<upkeep type="cash" quantity="1964" />
+						<upkeep type="cash" quantity="1194" />
 						<buying module="farms" quantity="1" price="100" />
 						<selling item="food" quantity="39" price="5" />
 						<selling item="terran" quantity="30" price="50" />
@@ -261,9 +262,9 @@
 						<modulestack name="c00015" type="cplant" quantity="1" faction="3">
 							<module damage="49" capture="51" online="false" />
 							<itemstack type="terran" quantity="2" />
-							<upkeep type="cash" quantity="52" />
+							<upkeep type="cash" quantity="2" />
 							<event week="1" description="captured coal-burning plant [cplant] from coal-burning plant [000015]." />
-							<event week="13" description="paid 52 cash [cash] upkeep." />
+							<event week="13" description="paid 2 cash [cash] upkeep." />
 						</modulestack>
 						<modulestack name="000002" name-en="Berlin garrison" type="inftry" quantity="1" faction="1">
 							<itemstack type="rctlnc" quantity="1" />
@@ -321,7 +322,7 @@
 							<module damage="51" />
 							<itemstack type="terran" quantity="10" />
 							<itemstack type="iron" quantity="4" />
-							<upkeep type="cash" quantity="70" />
+							<upkeep type="cash" quantity="10" />
 							<event week="1" description="engaged in battle" />
 							<event week="2" description="engaged in battle" />
 							<event week="3" description="engaged in battle" />
@@ -339,7 +340,7 @@
 							<event week="11" description="lost #1 factory [factry] to capture." />
 							<event week="12" description="engaged in battle" />
 							<event week="13" description="engaged in battle" />
-							<event week="13" description="paid 70 cash [cash] upkeep." />
+							<event week="13" description="paid 10 cash [cash] upkeep." />
 						</modulestack>
 						<modulestack name="111" type="gunplc" quantity="1" faction="2">
 							<module damage="29" />
@@ -363,8 +364,8 @@
 						<modulestack name="c000012" type="corphq" quantity="1" faction="3">
 							<module capture="75" />
 							<itemstack type="terran" quantity="24" />
-							<itemstack type="cash" quantity="1255" />
-							<upkeep type="cash" quantity="268" />
+							<itemstack type="cash" quantity="1956" />
+							<upkeep type="cash" quantity="198" />
 							<buying item="food" quantity="all" price="any" />
 							<buying item="terran" quantity="all" price="any" />
 							<event week="1" description="repaired 1 damage." />
@@ -378,34 +379,34 @@
 							<modulestack name="c00001" type="gunplc" quantity="1" faction="3">
 								<module damage="68" capture="31" />
 								<itemstack type="terran" quantity="2" />
-								<upkeep type="cash" quantity="12" />
+								<upkeep type="cash" quantity="2" />
 								<event week="1" description="stacked under corporate headquarters [c000012]." />
 								<event week="1" description="got 2 terrans [terran] from corporate headquarters [c000012]." />
-								<event week="13" description="paid 12 cash [cash] upkeep." />
+								<event week="13" description="paid 2 cash [cash] upkeep." />
 							</modulestack>
 							<modulestack name="c00002" type="gunplc" quantity="1" faction="3">
 								<module damage="61" capture="39" />
 								<itemstack type="terran" quantity="2" />
-								<upkeep type="cash" quantity="12" />
+								<upkeep type="cash" quantity="2" />
 								<event week="1" description="stacked under corporate headquarters [c000012]." />
 								<event week="1" description="got terran [terran] from corporate headquarters [c000012]." />
-								<event week="13" description="paid 12 cash [cash] upkeep." />
+								<event week="13" description="paid 2 cash [cash] upkeep." />
 							</modulestack>
 							<modulestack name="c00003" type="gunplc" quantity="1" faction="3">
 								<module damage="76" capture="24" />
 								<itemstack type="terran" quantity="2" />
-								<upkeep type="cash" quantity="12" />
+								<upkeep type="cash" quantity="2" />
 								<event week="1" description="stacked under corporate headquarters [c000012]." />
 								<event week="1" description="got terran [terran] from corporate headquarters [c000012]." />
-								<event week="13" description="paid 12 cash [cash] upkeep." />
+								<event week="13" description="paid 2 cash [cash] upkeep." />
 							</modulestack>
 							<modulestack name="c00004" type="gunplc" quantity="1" faction="3">
 								<module damage="65" capture="35" />
 								<itemstack type="terran" quantity="2" />
-								<upkeep type="cash" quantity="12" />
+								<upkeep type="cash" quantity="2" />
 								<event week="1" description="stacked under corporate headquarters [c000012]." />
 								<event week="1" description="got terran [terran] from corporate headquarters [c000012]." />
-								<event week="13" description="paid 12 cash [cash] upkeep." />
+								<event week="13" description="paid 2 cash [cash] upkeep." />
 							</modulestack>
 							<modulestack name="c00005" type="cargob" quantity="1" faction="3">
 								<module damage="28" capture="27" />
@@ -419,9 +420,9 @@
 								<itemstack type="uraniu" quantity="16" />
 								<itemstack type="terran" quantity="2" />
 								<itemstack type="carbon" quantity="17" />
-								<upkeep type="cash" quantity="32" />
+								<upkeep type="cash" quantity="2" />
 								<event week="1" description="stacked under corporate headquarters [c000012]." />
-								<event week="13" description="paid 32 cash [cash] upkeep." />
+								<event week="13" description="paid 2 cash [cash] upkeep." />
 							</modulestack>
 							<modulestack name="c00006" type="cargob" quantity="1" faction="3">
 								<module damage="19" capture="36" />
@@ -494,8 +495,8 @@
 							<itemstack type="uraniu" quantity="16" />
 							<itemstack type="terran" quantity="2" />
 							<itemstack type="carbon" quantity="18" />
-							<upkeep type="cash" quantity="32" />
-							<event week="13" description="paid 32 cash [cash] upkeep." />
+							<upkeep type="cash" quantity="2" />
+							<event week="13" description="paid 2 cash [cash] upkeep." />
 						</modulestack>
 						<modulestack name="c00009" type="cargob" quantity="1" faction="3">
 							<module damage="27" capture="28" online="false" />
@@ -509,90 +510,90 @@
 							<itemstack type="uraniu" quantity="16" />
 							<itemstack type="terran" quantity="2" />
 							<itemstack type="carbon" quantity="19" />
-							<upkeep type="cash" quantity="32" />
-							<event week="13" description="paid 32 cash [cash] upkeep." />
+							<upkeep type="cash" quantity="2" />
+							<event week="13" description="paid 2 cash [cash] upkeep." />
 						</modulestack>
 						<modulestack name="c00010" type="farms" quantity="1" faction="3">
 							<module damage="21" capture="34" online="false" />
 							<itemstack type="terran" quantity="5" />
-							<upkeep type="cash" quantity="55" />
-							<event week="13" description="paid 55 cash [cash] upkeep." />
+							<upkeep type="cash" quantity="5" />
+							<event week="13" description="paid 5 cash [cash] upkeep." />
 						</modulestack>
 						<modulestack name="c00011" type="farms" quantity="1" faction="3">
 							<module damage="19" capture="36" online="false" />
 							<itemstack type="terran" quantity="5" />
-							<upkeep type="cash" quantity="55" />
-							<event week="13" description="paid 55 cash [cash] upkeep." />
+							<upkeep type="cash" quantity="5" />
+							<event week="13" description="paid 5 cash [cash] upkeep." />
 						</modulestack>
 						<modulestack name="c00012" type="farms" quantity="1" faction="3">
 							<module damage="22" capture="33" online="false" />
 							<itemstack type="terran" quantity="5" />
-							<upkeep type="cash" quantity="55" />
-							<event week="13" description="paid 55 cash [cash] upkeep." />
+							<upkeep type="cash" quantity="5" />
+							<event week="13" description="paid 5 cash [cash] upkeep." />
 						</modulestack>
 						<modulestack name="c00013" type="cplant" quantity="1" faction="3">
 							<module damage="39" capture="61" online="false" />
 							<itemstack type="terran" quantity="2" />
-							<upkeep type="cash" quantity="52" />
-							<event week="13" description="paid 52 cash [cash] upkeep." />
+							<upkeep type="cash" quantity="2" />
+							<event week="13" description="paid 2 cash [cash] upkeep." />
 						</modulestack>
 						<modulestack name="c00014" type="cplant" quantity="1" faction="3">
 							<module damage="55" capture="45" online="false" />
 							<itemstack type="terran" quantity="2" />
-							<upkeep type="cash" quantity="52" />
-							<event week="13" description="paid 52 cash [cash] upkeep." />
+							<upkeep type="cash" quantity="2" />
+							<event week="13" description="paid 2 cash [cash] upkeep." />
 						</modulestack>
 						<modulestack name="c00016" type="cdrill" quantity="1" faction="3">
 							<module damage="34" capture="66" online="false" />
 							<itemstack type="terran" quantity="6" />
 							<itemstack type="carbon" quantity="3" />
-							<upkeep type="cash" quantity="46" />
+							<upkeep type="cash" quantity="6" />
 							<event week="2" description="captured core drill [cdrill] from core drill [000016]." />
-							<event week="13" description="paid 46 cash [cash] upkeep." />
+							<event week="13" description="paid 6 cash [cash] upkeep." />
 						</modulestack>
 						<modulestack name="c00017" type="factry" quantity="1" faction="3">
 							<module damage="27" capture="73" online="false" />
 							<itemstack type="terran" quantity="9" />
 							<itemstack type="iron" quantity="4" />
-							<upkeep type="cash" quantity="69" />
+							<upkeep type="cash" quantity="9" />
 							<event week="3" description="captured factory [factry] from factory [000017]." />
-							<event week="13" description="paid 69 cash [cash] upkeep." />
+							<event week="13" description="paid 9 cash [cash] upkeep." />
 						</modulestack>
 						<modulestack name="c00018" type="factry" quantity="1" faction="3">
 							<module damage="61" capture="39" online="false" />
 							<itemstack type="terran" quantity="9" />
 							<itemstack type="iron" quantity="4" />
-							<upkeep type="cash" quantity="69" />
+							<upkeep type="cash" quantity="9" />
 							<event week="7" description="captured factory [factry] from factory [000017]." />
-							<event week="13" description="paid 69 cash [cash] upkeep." />
+							<event week="13" description="paid 9 cash [cash] upkeep." />
 						</modulestack>
 						<modulestack name="c00019" type="factry" quantity="1" faction="3">
 							<module damage="62" capture="38" online="false" />
 							<itemstack type="terran" quantity="9" />
 							<itemstack type="iron" quantity="4" />
-							<upkeep type="cash" quantity="69" />
+							<upkeep type="cash" quantity="9" />
 							<event week="10" description="captured factory [factry] from factory [000017]." />
-							<event week="13" description="paid 69 cash [cash] upkeep." />
+							<event week="13" description="paid 9 cash [cash] upkeep." />
 						</modulestack>
 						<modulestack name="c00020" type="factry" quantity="1" faction="3">
 							<module damage="68" capture="32" online="false" />
 							<itemstack type="terran" quantity="9" />
 							<itemstack type="iron" quantity="4" />
-							<upkeep type="cash" quantity="69" />
+							<upkeep type="cash" quantity="9" />
 							<event week="11" description="captured factory [factry] from factory [000017]." />
-							<event week="13" description="paid 69 cash [cash] upkeep." />
+							<event week="13" description="paid 9 cash [cash] upkeep." />
 						</modulestack>
 					</modulestack>
 					<modulestack name="108" name-en="peaceful scout" type="tanks" quantity="1" faction="3">
 						<module damage="51" />
 						<itemstack type="terran" quantity="16" />
 						<itemstack type="oil" quantity="12" />
-						<upkeep type="cash" quantity="40" />
+						<upkeep type="cash" quantity="16" />
 						<tactic name="prioritize storage" />
 						<effect duration="4" type="fuelled" />
 						<event week="1" description="set tactic to prioritize storage." />
 						<event week="1" description="CAPTURE failed. Immobile units may only use destroy." />
-						<event week="13" description="paid 40 cash [cash] upkeep." />
+						<event week="13" description="paid 16 cash [cash] upkeep." />
 					</modulestack>
 					<modulestack name="109" name-en="Surrender or die!" type="tanks" quantity="3" faction="3">
 						<module damage="38" />

@@ -167,6 +167,10 @@ namespace SpaceAge
 					{
 						throw new Exception("bad syntax price expected", ex);
 					}
+					if (this.Price <= 0)
+					{
+						throw new Exception("bad syntax price expected");
+					}
 				}
             } else if (token == "everywhere")
             {

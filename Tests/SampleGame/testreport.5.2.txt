@@ -5372,7 +5372,7 @@ Galaxy report:
         week 2: engaged in battle
         week 2: lost #1 core drill [cdrill] to capture.
     + factory [000017], factory [factry], disabled, immobile.
-      size: 1000, mass: 830 (750), capacity: 500/60, upkeep: 70 (60) cash [cash], consume: 10 (0)
+      size: 1000, mass: 830 (750), capacity: 500/60, upkeep: 10 (0) cash [cash], consume: 10 (0)
       units of food [food], 10 (0) units of terran breathing gas mixture [terair].
       hit points: 100/49.
         #1 hit points: 100/49, heavily damaged, disabled.
@@ -5397,7 +5397,7 @@ Galaxy report:
         week 11: lost #1 factory [factry] to capture.
         week 12: engaged in battle
         week 13: engaged in battle
-        week 13: paid 70 cash [cash] upkeep.
+        week 13: paid 10 cash [cash] upkeep.
     + gun placement [111], gun placement [gunplc], disabled, immobile.
       size: 100, mass: 504 (500), capacity: 100/4, crew: 2/1, upkeep: 11 (10) cash [cash], consume:
       (0) unit of food [food], (0) unit of terran breathing gas mixture [terair].

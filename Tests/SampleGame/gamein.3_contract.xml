@@ -121,7 +121,7 @@
 						<itemstack type="terran" quantity="30" />
 						<itemstack type="food" quantity="300" />
 						<upkeep type="food" quantity="300" />
-						<upkeep type="cash" quantity="1980" />
+						<upkeep type="cash" quantity="1860" />
 						<buying module="farms" quantity="1" price="100" />
 						<selling item="food" quantity="39" price="5" />
 						<selling item="terran" quantity="30" price="50" />
@@ -316,7 +316,7 @@
 							<module damage="45" />
 							<module damage="26" />
 							<itemstack type="terran" quantity="4" />
-							<upkeep type="cash" quantity="54" />
+							<upkeep type="cash" quantity="34" />
 							<event week="1" description="formed by factory [000017] with gun placement [gunplc]." />
 							<event week="1" description="received gun placement [gunplc] produced by factory [000017]." />
 							<event week="2" description="received gun placement [gunplc] produced by factory [000017]." />
@@ -335,7 +335,7 @@
 							<itemstack type="wndtrn" quantity="30" />
 							<itemstack type="terran" quantity="15" />
 							<itemstack type="cash" quantity="2200" />
-							<upkeep type="cash" quantity="145" />
+							<upkeep type="cash" quantity="45" />
 							<event week="9" description="captured corporate headquarters [corphq] from Caste Prime Headquarters [000012]." />
 						</modulestack>
 					</modulestack>
@@ -345,7 +345,7 @@
 						<itemstack type="cash" quantity="42" />
 						<itemstack type="oil" quantity="12" />
 						<itemstack type="food" quantity="32" />
-						<upkeep type="cash" quantity="40" />
+						<upkeep type="cash" quantity="16" />
 						<tactic name="prioritize armed" />
 						<effect duration="6" type="fuelled" />
 						<event week="9" description="saw Surrender or die! [109] in Northern Hemisphere [R00002] (0,0)." />

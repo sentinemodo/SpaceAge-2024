@@ -2,7 +2,7 @@
 <game turn="3">
 	<faction name="1" name-en="NPC" password="" email="" default-attitude="2" text-report="True" text-report-line-length="100" xml-report="True" balance="1000" credit-line="0" credit-rate="0" deposit-rate="0" />
 	<faction name="2" name-en="Caste Prime" password="xyzzy" email="mail1@mail.pl" default-attitude="2" text-report="True" text-report-line-length="100" xml-report="True" balance="8748" credit-line="10000" credit-rate="0.2" deposit-rate="0.045" />
-	<faction name="3" name-en="Gelvaren" password="abccb" email="mail2@mail.pl" default-attitude="2" text-report="True" text-report-line-length="72" xml-report="True" balance="9793" credit-line="10000" credit-rate="0.2" deposit-rate="0.045">
+	<faction name="3" name-en="Gelvaren" password="abccb" email="mail2@mail.pl" default-attitude="2" text-report="True" text-report-line-length="72" xml-report="True" balance="9995" credit-line="10000" credit-rate="0.2" deposit-rate="0.045">
 		<technology name="rckter" />
 		<attitude faction="2" attitude="enemy" />
 	</faction>
@@ -86,10 +86,10 @@
 					<resource type="h2o2" quantity="250" />
 					<resource type="food" quantity="500" />
 					<modulestack name="000001" name-en="Berlin" type="city" quantity="3" faction="1">
-						<itemstack type="cash" quantity="1165" />
+						<itemstack type="cash" quantity="1515" />
 						<itemstack type="terran" quantity="30" />
 						<upkeep type="food" quantity="300" />
-						<upkeep type="cash" quantity="1995" />
+						<upkeep type="cash" quantity="1545" />
 						<buying module="farms" quantity="1" price="100" />
 						<selling item="food" quantity="39" price="5" />
 						<selling item="terran" quantity="30" price="50" />
@@ -123,8 +123,8 @@
 						<modulestack name="000012" name-en="Caste Prime Headquarters" type="corphq" quantity="1" faction="2">
 							<module damage="100" />
 							<itemstack type="terran" quantity="60" />
-							<itemstack type="cash" quantity="2040" />
-							<upkeep type="cash" quantity="160" />
+							<itemstack type="cash" quantity="2140" />
+							<upkeep type="cash" quantity="60" />
 							<event week="1" description="produced 100 cash [cash]." />
 							<event week="2" description="produced 100 cash [cash]." />
 							<event week="3" description="produced 100 cash [cash]." />
@@ -136,7 +136,7 @@
 							<event week="9" description="produced 100 cash [cash]." />
 							<event week="9" description="engaged in battle" />
 							<event week="10" description="engaged in battle" />
-							<event week="13" description="paid 160 cash [cash] upkeep." />
+							<event week="13" description="paid 60 cash [cash] upkeep." />
 						</modulestack>
 						<modulestack name="000013" type="cargob" quantity="5" faction="2">
 							<module damage="28" />
@@ -154,7 +154,7 @@
 							<itemstack type="uraniu" quantity="80" />
 							<itemstack type="terran" quantity="10" />
 							<itemstack type="carbon" quantity="95" />
-							<upkeep type="cash" quantity="160" />
+							<upkeep type="cash" quantity="10" />
 							<event week="1" description="got 15 units of food [food] from farming complex [000014]." />
 							<event week="1" description="got unit of carbon [carbon] from core drill [000016]." />
 							<event week="1" description="given 15 units of carbon [carbon] to coal-burning plant [000015]." />
@@ -187,14 +187,14 @@
 							<event week="13" description="got 15 units of food [food] from farming complex [000014]." />
 							<event week="13" description="got unit of carbon [carbon] from core drill [000016]." />
 							<event week="13" description="engaged in battle" />
-							<event week="13" description="paid 160 cash [cash] upkeep." />
+							<event week="13" description="paid 10 cash [cash] upkeep." />
 						</modulestack>
 						<modulestack name="000014" type="farms" quantity="3" faction="2">
 							<module damage="48" />
 							<module damage="28" />
 							<module damage="48" />
 							<itemstack type="terran" quantity="15" />
-							<upkeep type="cash" quantity="165" />
+							<upkeep type="cash" quantity="15" />
 							<event week="1" description="given 15 units of food [food] to small cargo bay [000013]." />
 							<event week="1" description="produced 15 units of food [food]." />
 							<event week="2" description="given 15 units of food [food] to small cargo bay [000013]." />
@@ -226,7 +226,7 @@
 							<event week="13" description="given 15 units of food [food] to small cargo bay [000013]." />
 							<event week="13" description="produced 5 units of food [food]." />
 							<event week="13" description="engaged in battle" />
-							<event week="13" description="paid 165 cash [cash] upkeep." />
+							<event week="13" description="paid 15 cash [cash] upkeep." />
 						</modulestack>
 						<modulestack name="000015" type="cplant" quantity="3" faction="2">
 							<module damage="24" />
@@ -310,7 +310,7 @@
 							<module damage="68" />
 							<module damage="68" />
 							<itemstack type="terran" quantity="4" />
-							<upkeep type="cash" quantity="54" />
+							<upkeep type="cash" quantity="4" />
 							<event week="1" description="formed by factory [000017] with gun placement [gunplc]." />
 							<event week="1" description="received gun placement [gunplc] produced by factory [000017]." />
 							<event week="2" description="received gun placement [gunplc] produced by factory [000017]." />
@@ -323,7 +323,7 @@
 							<event week="11" description="engaged in battle" />
 							<event week="12" description="engaged in battle" />
 							<event week="13" description="engaged in battle" />
-							<event week="13" description="paid 54 cash [cash] upkeep." />
+							<event week="13" description="paid 4 cash [cash] upkeep." />
 						</modulestack>
 					</modulestack>
 					<modulestack name="108" name-en="peaceful scout" type="tanks" quantity="1" faction="3">

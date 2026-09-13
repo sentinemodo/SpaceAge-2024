@@ -15,7 +15,7 @@ Declared stances:
   enemy toward Caste Prime [2].
 
 Bank report:
-  Bank account balance: 9793.
+  Bank account balance: 9995.
   Credit line maximum: 10000.
   Credit rate: 20%, Deposit rate: 4.5%.
 
