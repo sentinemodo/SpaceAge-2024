@@ -176,8 +176,8 @@ namespace SpaceAge
 			}
 
 			GiveModuleTrigger give = this.Trigger as GiveModuleTrigger;
-			ModuleStack rewardStack = (give != null) ? give.LastGiverStack : null;
-			if (rewardStack != null && ModuleStack.All.ContainsKey(rewardStack.Name))
+			ModuleStack rewardStack = this.findTechnologyRewardStack(give, winner);
+			if (rewardStack != null)
 			{
 				rewardStack.ReceiveTechnologyCopy(
 					this.RewardTechnology,
@@ -200,6 +200,48 @@ namespace SpaceAge
 						this.Name,
 						winner.ReportName));
 			}
+		}
+
+		private ModuleStack findTechnologyRewardStack(GiveModuleTrigger give, Faction winner)
+		{
+			if (give == null || winner == null)
+			{
+				return null;
+			}
+
+			ModuleStack rewardStack = give.LastGiverStack;
+			if (rewardStack != null
+				&& rewardStack.Owner == winner
+				&& ModuleStack.All.ContainsKey(rewardStack.Name))
+			{
+				return rewardStack;
+			}
+
+			if (this.Location != null)
+			{
+				foreach (ModuleStack stack in this.Location.ModuleStacks.Values)
+				{
+					if (stack.Owner == winner)
+					{
+						return stack;
+					}
+				}
+			}
+
+			foreach (ModuleStack stack in ModuleStack.All.Values)
+			{
+				if (stack.Owner == winner)
+				{
+					return stack;
+				}
+			}
+
+			if (rewardStack != null && ModuleStack.All.ContainsKey(rewardStack.Name))
+			{
+				return rewardStack;
+			}
+
+			return null;
 		}
 
 		private void awardUnit(int week, Faction winner)

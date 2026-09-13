@@ -64,6 +64,17 @@ namespace SpaceAge
 			}
 		}
 
+		public void NotifyFactionTransfer(Faction giver, ModuleStack giverStack, Faction receiverFaction, ModuleType moduleType, int quantity, Region location)
+		{
+			foreach (Contract contract in this)
+			{
+				if (contract.Trigger != null)
+				{
+					contract.Trigger.NotifyFactionTransfer(giver, giverStack, receiverFaction, moduleType, quantity, location, contract.Issuer);
+				}
+			}
+		}
+
 		public void NotifyResearch(Faction researcher, ModuleStack researcherStack, ModuleStack target, int points)
 		{
 			foreach (Contract contract in this)
@@ -101,6 +112,34 @@ namespace SpaceAge
 			{
 				lines.AddRange(contract.Report());
 			}
+			return lines;
+		}
+
+		// Open contracts at regions where the faction has stacks (HQ, pads, etc.).
+		public List<string> Report(Faction faction)
+		{
+			List<string> lines = new List<string>();
+			if (faction == null)
+			{
+				return lines;
+			}
+
+			foreach (Contract contract in this)
+			{
+				if (contract.Location == null
+					|| !contract.Location.ModuleStacks.Contains(faction))
+				{
+					continue;
+				}
+
+				if (lines.Count == 0)
+				{
+					lines.Add("Contract reports:");
+				}
+
+				lines.AddRange(contract.Report());
+			}
+
 			return lines;
 		}
 

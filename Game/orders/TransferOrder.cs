@@ -43,61 +43,110 @@ namespace SpaceAge
 		public int Index            { get; set; }      
         public int Quantity         { get; set; }
         public int TransferTime     { get; set; }
+		public bool TransferAll     { get; set; }
+		public bool DamagedOnly     { get; set; }
 
         public ModuleType ModuleType    { get; set; }
 		public ModuleStack Receiver     { get; set; }
+		public Faction ReceiverFaction  { get; set; }
 
 		public override void Parse(string command)
 		{
-            // TODO: implement remainign transfer syntax
-			// transfer first module to m00001
-            // TRANSFER MODULE TO m00001
-            // transfer a number of existing modules into receiver modulestack
-            // TRANSFER 2 MODULES TO m00001
-            // transfer all modules into receiver modulestack effectively clearing the stack (abandoned items get dropped to the region)
-            // TRANSFER ALL MODULES TO m00001
-            // transfer only damaged modules (in case all are damaged, abandoned items get dropped to the region)
-            // TRANSFER ALL DAMAGED MODULES to m00001
-            // transfer the specific module 2 in the stack (might get important, if you want to handpick a damaged module)
-            // TRANSFER MODULE 2 to m00001
-
 			string token;
 			if (string.IsNullOrEmpty(command.Trim()))
 			{
 				throw new Exception("Bad syntax");
 			}
 
-			try
+			token = LineParser.GetToken(ref command);
+			if (token == "all")
 			{
-				token = LineParser.GetToken(ref command);
-				this.Quantity = Convert.ToInt32(token);
-				if (this.Quantity < 1)
+				this.TransferAll = true;
+			}
+			else if (token == "module")
+			{
+				try
 				{
-					throw new Exception("Bad syntax, positive amount expected");
+					token = LineParser.GetToken(ref command);
+					this.Index = Convert.ToInt32(token);
+					if (this.Index < 1)
+					{
+						throw new Exception("Bad syntax, positive module index expected");
+					}
+				}
+				catch (Exception ex)
+				{
+					throw new Exception("bad syntax module index expected", ex);
+				}
+				this.Quantity = 1;
+			}
+			else
+			{
+				try
+				{
+					this.Quantity = Convert.ToInt32(token);
+					if (this.Quantity < 1)
+					{
+						throw new Exception("Bad syntax, positive amount expected");
+					}
+				}
+				catch (Exception ex)
+				{
+					throw new Exception("bad syntax number of modules expected", ex);
 				}
 			}
-			catch (Exception ex)
+
+			while (true)
 			{
-				throw new Exception("bad syntax number of modules expected", ex);
+				token = LineParser.GetToken(ref command);
+				if (token == "damaged")
+				{
+					this.DamagedOnly = true;
+				}
+				else if (token == "modules" || token == "module")
+				{
+				}
+				else if (token == "to")
+				{
+					break;
+				}
+				else
+				{
+					throw new Exception("bad syntax TO expected");
+				}
 			}
 
+			this.parseReceiverToken(ref command);
+			this.ModuleType = this.Transferer.ModuleType;
+		}
+
+		private void parseReceiverToken(ref string command)
+		{
+			string token;
+
 			token = LineParser.GetToken(ref command);
-			if (token != "to")
+			if (token == "faction")
 			{
-				throw new Exception("bad syntax TO expected");
+				try
+				{
+					token = LineParser.GetToken(ref command);
+					this.ReceiverFaction = Faction.All[token];
+				}
+				catch (Exception ex)
+				{
+					throw new Exception("bad syntax or faction does not exist", ex);
+				}
+				return;
 			}
 
 			try
 			{
-				token = LineParser.GetToken(ref command);
 				this.Receiver = ModuleStack.All[token];
 			}
 			catch (Exception ex)
 			{
 				throw new Exception("bad syntax or receiver does not exist", ex);
 			}
-
-			this.ModuleType = this.Transferer.ModuleType;
 		}
 
         public override void LoadXml(XmlElement elOrder)
@@ -111,7 +160,22 @@ namespace SpaceAge
             {
                 this.Index = this.XMLAssignInteger(elTransfer.GetAttribute("index"), 0);
             }
-            this.Receiver = ModuleStack.All[elTransfer.GetAttribute("receiver")];
+			if (elTransfer.HasAttribute("transfer-all"))
+			{
+				this.TransferAll = elTransfer.GetAttribute("transfer-all") == "true";
+			}
+			if (elTransfer.HasAttribute("damaged-only"))
+			{
+				this.DamagedOnly = elTransfer.GetAttribute("damaged-only") == "true";
+			}
+			if (elTransfer.HasAttribute("receiver-faction"))
+			{
+				this.ReceiverFaction = Faction.All[elTransfer.GetAttribute("receiver-faction")];
+			}
+			else
+			{
+				this.Receiver = ModuleStack.All[elTransfer.GetAttribute("receiver")];
+			}
             this.ModuleType = this.Transferer.ModuleType;
         }
 
@@ -126,9 +190,23 @@ namespace SpaceAge
             {
                 elTransfer.SetAttribute("index", this.Index.ToString());
             }
+			if (this.TransferAll)
+			{
+				elTransfer.SetAttribute("transfer-all", "true");
+			}
+			if (this.DamagedOnly)
+			{
+				elTransfer.SetAttribute("damaged-only", "true");
+			}
+			if (this.ReceiverFaction != null)
+			{
+				elTransfer.SetAttribute("receiver-faction", this.ReceiverFaction.Name);
+			}
+			else if (this.Receiver != null)
+			{
+				elTransfer.SetAttribute("receiver", this.Receiver.Name);
+			}
             
-            elTransfer.SetAttribute("receiver", this.Receiver.Name);
-
             xmlElement.AppendChild(elTransfer);
             return xmlElement;
         }
@@ -136,99 +214,231 @@ namespace SpaceAge
 		public override void Execute(int week)
 		{
 			this.Executed = false;
-            ModuleStack sourceStack = null;
+            ModuleStack sourceStack = this.findSourceStack();
 
-            if (this.ModuleType == this.Transferer.ModuleType)
-            {
-                sourceStack = this.Transferer;
-            }
-			else 
+            if (sourceStack == null)
 			{
-                foreach (ModuleStack stack in this.Transferer.ModuleStacks.Values)
-                {
-                    if (stack.ModuleType == this.ModuleType)
-                    {
-                        sourceStack = stack;
-                        break;
-                    }
-                }
-            }
-
-            if (sourceStack != null)
-            {
-				if (this.ModuleType != null && this.ModuleType.IsHangarCraft
-					&& !this.canTransferHangarCraft(this.Receiver))
-				{
-					this.Transferer.EventReports.Add(
-						week,
-						"TRANSFER failed. fighter drones can only nest in a location or a fighter drone bay.");
-					base.Execute(week);
-					return;
-				}
-				if (sourceStack.Quantity >= this.Quantity)
-				{             
-                    // packaging
-                    ModuleStack transferringStack = new ModuleStack(this.Transferer, this.Transferer.Owner, this.ModuleType);
-                    Module module; 
-                    for (int i = 0; i < this.Quantity; i++)
-                    {
-                        module = sourceStack.Modules[0];
-                        sourceStack.RemoveModule(0);
-                        transferringStack.AddModule(module);
-                    }
-                    
-                    // keeping in mind status of long order execution to avoid transfer/new order abuse
-                    if (this.Transferer.ExecutedLongOrder)
-                    {
-                        transferringStack.ExecutedLongOrder = true;
-                    }
-
-					this.Transferer.EventReports.Add(
-						week,
-						string.Format("transferred {0} to {1}.",						
-                            (transferringStack.Quantity > 1) ? string.Format("{0} {1}",
-                                transferringStack.Quantity,
-                                transferringStack.ModuleType.ReportNameMultiple) : 
-                                transferringStack.ModuleType.ReportName,
-                            this.Receiver.ReportName));
-
-                    // create receive effect
-                    ReceivingModules effect = new ReceivingModules(this.Receiver, this.Transferer, transferringStack, this.TransferTime);
-                    effect.Execute(week);
-
-                    // if it is instantenously executed, remove it
-                    if (effect.Executed)
-                    {
-                        this.Receiver.Effects.Remove(effect);
-                    }
-
-					if (sourceStack.Quantity == 0)
-					{
-                        sourceStack.ModuleType = null;
-                        ModuleStack.All.Remove(sourceStack);
-					}                   
-
-					this.Executed = true;
-					ModuleStack contractGiver = this.Transferer;
-					if (sourceStack.Quantity == 0)
-					{
-						ModuleStack parent = this.Transferer.Parent as ModuleStack;
-						if (parent != null && parent.Owner == this.Transferer.Owner)
-						{
-							contractGiver = parent;
-						}
-					}
-					Contract.All.NotifyTransfer(this.Transferer.Owner, contractGiver, this.Receiver, this.ModuleType, this.Quantity);
-				}
-				else
-				{
-					this.Transferer.EventReports.Add(
-						week, 
-						"TRANSFER failed. tried to transfer more modules than having.");								
-				}
+				base.Execute(week);
+				return;
 			}
+
+			if (this.ModuleType != null && this.ModuleType.IsHangarCraft
+				&& this.Receiver != null
+				&& !this.canTransferHangarCraft(this.Receiver))
+			{
+				this.Transferer.EventReports.Add(
+					week,
+					"TRANSFER failed. fighter drones can only nest in a location or a fighter drone bay.");
+				base.Execute(week);
+				return;
+			}
+
+			List<Module> picked = this.collectModules(sourceStack);
+			if (picked.Count == 0)
+			{
+				this.Transferer.EventReports.Add(
+					week,
+					"TRANSFER failed. tried to transfer more modules than having.");
+				base.Execute(week);
+				return;
+			}
+
+			if (this.ReceiverFaction != null)
+			{
+				this.executeToFaction(week, sourceStack, picked);
+			}
+			else
+			{
+				this.executeToStack(week, sourceStack, picked);
+			}
+
 			base.Execute(week);
         }
+
+		private ModuleStack findSourceStack()
+		{
+			if (this.ModuleType == this.Transferer.ModuleType)
+			{
+				return this.Transferer;
+			}
+
+			foreach (ModuleStack stack in this.Transferer.ModuleStacks.Values)
+			{
+				if (stack.ModuleType == this.ModuleType)
+				{
+					return stack;
+				}
+			}
+			return null;
+		}
+
+		private List<Module> collectModules(ModuleStack sourceStack)
+		{
+			List<Module> picked = new List<Module>();
+			if (this.Index > 0)
+			{
+				if (this.Index > sourceStack.Modules.Count)
+				{
+					return picked;
+				}
+				picked.Add(sourceStack.Modules[this.Index - 1]);
+				return picked;
+			}
+
+			if (this.TransferAll && this.DamagedOnly)
+			{
+				for (int i = sourceStack.Modules.Count - 1; i >= 0; i--)
+				{
+					if (sourceStack.Modules[i].DamageStatus != EDamageStatus.undamaged)
+					{
+						picked.Add(sourceStack.Modules[i]);
+					}
+				}
+				return picked;
+			}
+
+			int quantity = this.TransferAll ? sourceStack.Quantity : this.Quantity;
+			if (quantity > sourceStack.Quantity)
+			{
+				return picked;
+			}
+
+			for (int i = 0; i < quantity; i++)
+			{
+				picked.Add(sourceStack.Modules[0]);
+			}
+			return picked;
+		}
+
+		private void executeToStack(int week, ModuleStack sourceStack, List<Module> picked)
+		{
+			ModuleStack transferringStack = new ModuleStack(this.Transferer, this.Transferer.Owner, this.ModuleType);
+			this.moveModules(sourceStack, transferringStack, picked);
+
+			if (this.Transferer.ExecutedLongOrder)
+			{
+				transferringStack.ExecutedLongOrder = true;
+			}
+
+			this.Transferer.EventReports.Add(
+				week,
+				string.Format("transferred {0} to {1}.",
+					(transferringStack.Quantity > 1) ? string.Format("{0} {1}",
+						transferringStack.Quantity,
+						transferringStack.ModuleType.ReportNameMultiple) :
+						transferringStack.ModuleType.ReportName,
+					this.Receiver.ReportName));
+
+			ReceivingModules effect = new ReceivingModules(this.Receiver, this.Transferer, transferringStack, this.TransferTime);
+			effect.Execute(week);
+
+			if (effect.Executed)
+			{
+				this.Receiver.Effects.Remove(effect);
+			}
+
+			this.cleanupSource(sourceStack);
+			this.Executed = true;
+			this.notifyStackContracts(sourceStack, picked.Count);
+		}
+
+		private void executeToFaction(int week, ModuleStack sourceStack, List<Module> picked)
+		{
+			ModuleStack transferringStack = new ModuleStack(this.Transferer, this.Transferer.Owner, this.ModuleType);
+			this.moveModules(sourceStack, transferringStack, picked);
+
+			if (this.Transferer.ExecutedLongOrder)
+			{
+				transferringStack.ExecutedLongOrder = true;
+			}
+
+			transferringStack.SetOwnerRecursive(this.ReceiverFaction);
+			Location location = this.Transferer.Location;
+			transferringStack.Parent = location;
+
+			this.Transferer.EventReports.Add(
+				week,
+				string.Format("transferred {0} to {1}.",
+					(transferringStack.Quantity > 1) ? string.Format("{0} {1}",
+						transferringStack.Quantity,
+						transferringStack.ModuleType.ReportNameMultiple) :
+						transferringStack.ModuleType.ReportName,
+					this.ReceiverFaction.ReportName));
+
+			this.cleanupSource(sourceStack);
+			this.Executed = true;
+
+			Region contractLocation = location as Region;
+			if (contractLocation != null)
+			{
+				Contract.All.NotifyFactionTransfer(
+					this.Transferer.Owner,
+					transferringStack,
+					this.ReceiverFaction,
+					this.ModuleType,
+					picked.Count,
+					contractLocation);
+			}
+		}
+
+		private void moveModules(ModuleStack sourceStack, ModuleStack destination, List<Module> picked)
+		{
+			if (this.Index > 0)
+			{
+				destination.AddModule(picked[0]);
+				sourceStack.RemoveModule(this.Index - 1);
+				return;
+			}
+
+			if (this.TransferAll && this.DamagedOnly)
+			{
+				for (int i = sourceStack.Modules.Count - 1; i >= 0; i--)
+				{
+					Module module = sourceStack.Modules[i];
+					if (module.DamageStatus != EDamageStatus.undamaged)
+					{
+						sourceStack.RemoveModule(i);
+						destination.AddModule(module);
+					}
+				}
+				return;
+			}
+
+			for (int i = 0; i < picked.Count; i++)
+			{
+				Module module = sourceStack.Modules[0];
+				sourceStack.RemoveModule(0);
+				destination.AddModule(module);
+			}
+		}
+
+		private void cleanupSource(ModuleStack sourceStack)
+		{
+			if (sourceStack.Quantity == 0)
+			{
+				sourceStack.ModuleType = null;
+				ModuleStack.All.Remove(sourceStack);
+			}
+		}
+
+		private void notifyStackContracts(ModuleStack sourceStack, int quantity)
+		{
+			ModuleStack contractGiver = this.Transferer;
+			if (sourceStack.Quantity == 0)
+			{
+				ModuleStack parent = this.Transferer.Parent as ModuleStack;
+				if (parent != null && parent.Owner == this.Transferer.Owner)
+				{
+					contractGiver = parent;
+				}
+			}
+			Contract.All.NotifyTransfer(
+				this.Transferer.Owner,
+				contractGiver,
+				this.Receiver,
+				this.ModuleType,
+				quantity);
+		}
 
 		private bool canTransferHangarCraft(ModuleStack receiver)
 		{
