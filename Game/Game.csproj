@@ -259,6 +259,9 @@
     <Compile Include="reports\IReporting.cs" />
     <Compile Include="LineParser.cs" />
     <Compile Include="Research.cs" />
+    <Compile Include="AnomalyInvestigation.cs" />
+    <Compile Include="data structures\AnomalyReward.cs" />
+    <Compile Include="data structures\RegionAnomaly.cs" />
     <Compile Include="SurveyReports.cs" />
     <Compile Include="orders\LongOrder.cs" />
     <Compile Include="orders\Order.cs" />

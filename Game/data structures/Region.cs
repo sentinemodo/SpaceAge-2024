@@ -49,6 +49,18 @@ namespace SpaceAge
 			get { return this.resources; }
 		}
 
+		private RegionAnomaly anomaly;
+		public RegionAnomaly Anomaly
+		{
+			get { return this.anomaly; }
+			set { this.anomaly = value; }
+		}
+
+		public bool HasAnomaly
+		{
+			get { return this.anomaly != null && !string.IsNullOrEmpty(this.anomaly.Type); }
+		}
+
         public override ELocationType LocationType
         {
             get { return this.RegionType.LocationType; }
@@ -106,11 +118,29 @@ namespace SpaceAge
 			ReportLines reportLines = new ReportLines
             {
                 { this.reportHeader(), level },
-                { this.Exits.Report, level }
+                { this.Exits.Report(faction, this), level }
             };
 			if (this.resources.Count > 0)
 			{
 				reportLines.Add(this.Resources.Report, level);
+			}
+
+			if (this.HasAnomaly && faction != null)
+			{
+				if (this.Anomaly.IsResolved(faction))
+				{
+					reportLines.Add(string.Format("Anomaly survey: {0}.", this.Anomaly.Description), level);
+				}
+				else
+				{
+					int progress = this.Anomaly.GetProgress(faction);
+					if (progress > 0)
+					{
+						reportLines.Add(
+							string.Format("Anomaly survey in progress: {0}/{1}.", progress, this.Anomaly.Points),
+							level);
+					}
+				}
 			}
 
 			List<string> contractLines = Contract.All.Report(this);

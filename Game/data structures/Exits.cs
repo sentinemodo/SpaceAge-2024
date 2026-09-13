@@ -34,34 +34,39 @@ namespace SpaceAge
 			return false;
 		}
 
-		public List<string> Report
+		public List<string> Report(Faction faction, Region fromRegion)
 		{
-			get
+			string line;
+			List<string> lines = new List<string>
 			{
-				string line;
-				List<string> lines = new List<string>
-                {
-                    "Exits:"
-                };
-				foreach (Exit exit in this)
+				"Exits:"
+			};
+			foreach (Exit exit in this)
+			{
+				Region region = exit.To as Region;
+				if (region != null)
 				{
-					Region region = exit.To as Region;
-					if (region != null)
-					{
-						line = string.Format("  {0}, {1}", region.ReportName, region.RegionType.FullName);
-					}
-					else
-					{
-						line = string.Format("  {0}", exit.To.ReportName);
-					}
-					foreach (ExitMode exitMode in exit.ExitModes.Values)
-					{
-						line = string.Format("{0}, {1}", line, exitMode.ReportName);
-					}
-					lines.Add(string.Concat(line, "."));
+					line = string.Format("  {0}, {1}", region.ReportName, region.RegionType.FullName);
 				}
-				return lines;
+				else
+				{
+					line = string.Format("  {0}", exit.To.ReportName);
+				}
+				foreach (ExitMode exitMode in exit.ExitModes.Values)
+				{
+					line = string.Format("{0}, {1}", line, exitMode.ReportName);
+				}
+				if (region != null
+					&& region.HasAnomaly
+					&& (faction == null || !region.Anomaly.IsResolved(faction))
+					&& fromRegion != null
+					&& fromRegion.Visible(faction))
+				{
+					line = string.Format("{0}, anomaly detected", line);
+				}
+				lines.Add(string.Concat(line, "."));
 			}
+			return lines;
 		}
 
 	}

@@ -459,6 +459,11 @@
 					<resource type="carbon" quantity="20" />
 					<resource type="iron" quantity="15" />
 					<resource type="water" quantity="140" />
+					<anomaly type="spectral" points="8" description="Photic-band albedo steps on an otherwise uniform grassland — buried oxide or organics.">
+						<reward band="0" kind="survey-blurb" />
+						<reward band="0" kind="research-rp" technology="optins" quantity="4" />
+						<reward band="2" kind="research-rp" technology="survts" quantity="8" />
+					</anomaly>
 				</region>
 				<region name="R00010" name-en="Greenwell Grant" X="3" Y="1" type="grassl">
 					<capacity group="settlement" quantity="8" />
@@ -529,6 +534,12 @@
 					<resource type="iron" quantity="70" />
 					<resource type="silici" quantity="20" />
 					<resource type="carbon" quantity="5" />
+					<anomaly type="magnetic" points="8" description="Aeromagnetic gradient over banded iron: a subsurface ferrous lens, not yet cored.">
+						<reward band="0" kind="survey-blurb" />
+						<reward band="0" kind="research-rp" technology="optins" quantity="4" />
+						<reward band="2" kind="research-rp" technology="gminng" quantity="8" />
+						<reward band="2" kind="resource" item="iron" quantity="1" />
+					</anomaly>
 				</region>
 				<region name="R00012" name-en="East Dune" X="5" Y="1" type="dust">
 					<exit region="R00011">
@@ -751,6 +762,12 @@
 					</exit>
 					<resource type="iron" quantity="80" />
 					<resource type="silici" quantity="25" />
+					<anomaly type="seismic" points="8" description="Microseismic cluster under the ridge crest; shallow void or fault, not volcanic.">
+						<reward band="0" kind="survey-blurb" />
+						<reward band="0" kind="research-rp" technology="optins" quantity="4" />
+						<reward band="2" kind="research-rp" technology="seisns" quantity="8" />
+						<reward band="2" kind="resource" item="water" quantity="1" />
+					</anomaly>
 				</region>
 				<region name="R00019" name-en="Mid Pelagic" X="0" Y="3" type="ocean">
 					<exit region="R00020">
@@ -874,6 +891,12 @@
 					<resource type="carbon" quantity="20" />
 					<resource type="iron" quantity="18" />
 					<resource type="water" quantity="130" />
+					<anomaly type="gravimetric" points="8" description="Local g anomaly on dense basement rock under steppe grass; mass concentration worth a gravimeter pass.">
+						<reward band="0" kind="survey-blurb" />
+						<reward band="0" kind="research-rp" technology="optins" quantity="4" />
+						<reward band="2" kind="research-rp" technology="seisns" quantity="8" />
+						<reward band="2" kind="resource" item="tungst" quantity="1" />
+					</anomaly>
 				</region>
 				<region name="R00024" name-en="East Crag" X="5" Y="3" type="mountn">
 					<exit region="R00023">
@@ -1014,6 +1037,11 @@
 							<upkeep type="cash" quantity="10" />
 						</modulestack>
 					</modulestack>
+					<anomaly type="spectral" points="8" description="Narrow IR emission line in a wind-cut saddle — heated outcrop or shallow geothermal bleed.">
+						<reward band="0" kind="survey-blurb" />
+						<reward band="0" kind="research-rp" technology="optins" quantity="4" />
+						<reward band="2" kind="research-rp" technology="survts" quantity="8" />
+					</anomaly>
 				</region>
 				<region name="R00029" name-en="Loess" X="4" Y="4" type="dust">
 					<exit region="R00028">
@@ -2756,6 +2784,11 @@
 					<resource type="water" quantity="70" />
 					<resource type="silici" quantity="25" />
 					<resource type="titani" quantity="15" />
+					<anomaly type="magnetic" points="8" description="Magnetite streaks in talus give a strong dipole; ore body or slag, not instrument drift.">
+						<reward band="0" kind="survey-blurb" />
+						<reward band="0" kind="research-rp" technology="optins" quantity="4" />
+						<reward band="2" kind="research-rp" technology="gminng" quantity="8" />
+					</anomaly>
 				</region>
 				<region name="R00047" name-en="West Spine" X="3" Y="1" type="mountn">
 					<exit region="R00046">
@@ -2792,6 +2825,12 @@
 					<resource type="uraniu" quantity="80" />
 					<resource type="silici" quantity="30" />
 					<resource type="copper" quantity="20" />
+					<anomaly type="radiometric" points="8" description="Elevated gamma count on pitchblende-bearing spine rock; handle as ore, not background.">
+						<reward band="0" kind="survey-blurb" />
+						<reward band="0" kind="research-rp" technology="optins" quantity="4" />
+						<reward band="2" kind="research-rp" technology="radtol" quantity="8" />
+						<reward band="2" kind="resource" item="uraniu" quantity="1" />
+					</anomaly>
 				</region>
 				<region name="R00049" name-en="Oreline Grant" X="5" Y="1" type="grassl">
 					<capacity group="settlement" quantity="8" />
@@ -2900,6 +2939,12 @@
 					<resource type="water" quantity="70" />
 					<resource type="silici" quantity="25" />
 					<resource type="titani" quantity="15" />
+					<anomaly type="spectral" points="8" description="Silicate absorption feature shift on a bench terrace; altered regolith or glass.">
+						<reward band="0" kind="survey-blurb" />
+						<reward band="0" kind="research-rp" technology="optins" quantity="4" />
+						<reward band="2" kind="research-rp" technology="optins" quantity="8" />
+						<reward band="2" kind="resource" item="silici" quantity="1" />
+					</anomaly>
 				</region>
 				<region name="R00053" name-en="Crag" X="2" Y="2" type="mountn">
 					<exit region="R00052">
@@ -2918,6 +2963,11 @@
 					<resource type="copper" quantity="40" />
 					<resource type="silici" quantity="45" />
 					<resource type="iron" quantity="35" />
+					<anomaly type="seismic" points="8" description="Reflected compressional wave off a shallow density contrast — void or ore lens.">
+						<reward band="0" kind="survey-blurb" />
+						<reward band="0" kind="research-rp" technology="optins" quantity="4" />
+						<reward band="2" kind="resource" item="copper" quantity="1" />
+					</anomaly>
 				</region>
 				<region name="R00054" name-en="Basalt Grant" X="3" Y="2" type="grassl">
 					<capacity group="settlement" quantity="8" />
@@ -3007,6 +3057,12 @@
 					<resource type="uraniu" quantity="120" />
 					<resource type="silici" quantity="35" />
 					<resource type="copper" quantity="25" />
+					<anomaly type="radiometric" points="8" description="Hot spot on uraninite-rich crest; dosimeter spike above regional baseline.">
+						<reward band="0" kind="survey-blurb" />
+						<reward band="0" kind="research-rp" technology="optins" quantity="4" />
+						<reward band="2" kind="research-rp" technology="radtol" quantity="8" />
+						<reward band="2" kind="resource" item="uraniu" quantity="1" />
+					</anomaly>
 				</region>
 				<region name="R00057" name-en="Ridge" X="6" Y="2" type="grassl">
 					<capacity group="settlement" quantity="8" />

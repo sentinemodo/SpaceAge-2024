@@ -100,6 +100,99 @@ namespace UnitTests
 		}
 
 		[Test]
+		public void ResearchAnomaly_CompletesAndAppliesRewards()
+		{
+			Region region = Region.All["R00002"];
+			region.Anomaly = new RegionAnomaly();
+			region.Anomaly.Type = "spectral";
+			region.Anomaly.Description = "Buried oxide steps.";
+			region.Anomaly.Points = 2;
+			region.Anomaly.Rewards.Add(new AnomalyReward
+			{
+				Band = 0,
+				Kind = EAnomalyRewardKind.SurveyBlurb,
+			});
+			region.Anomaly.Rewards.Add(new AnomalyReward
+			{
+				Band = 0,
+				Kind = EAnomalyRewardKind.ResearchRp,
+				TechnologyName = "filidx",
+				Quantity = 4,
+			});
+
+			Faction owner = this.game.Factions["2"];
+			ModuleStack lab = ModuleStack.All.GetOrCreateNewModuleStack(owner, "an001");
+			lab.Parent = ModuleStack.All["000001"];
+			lab.ModuleType = ModuleType.All["moblab"];
+			lab.AddModule();
+			new Person(lab, owner, Race.All["terran"], "an001c");
+
+			ResearchOrder order = this.assignResearch(lab, "research R00002");
+			Assert.That(order.ResearchType, Is.EqualTo(EResearchType.Anomaly));
+
+			order.Execute(1);
+			Assert.That(region.Anomaly.GetProgress(owner), Is.EqualTo(1));
+			lab.ExecutedLongOrder = false;
+			order.Execute(2);
+			Assert.That(region.Anomaly.IsResolved(owner), Is.True);
+			Assert.That(lab.ResearchPoints, Is.EqualTo(4));
+		}
+
+		[Test]
+		public void ResearchAnomaly_ItemThroughputIncreasesProgress()
+		{
+			Region region = Region.All["R00002"];
+			region.Anomaly = new RegionAnomaly();
+			region.Anomaly.Type = "spectral";
+			region.Anomaly.Description = "Test.";
+			region.Anomaly.Points = 3;
+
+			Faction owner = this.game.Factions["2"];
+			ModuleStack lab = ModuleStack.All.GetOrCreateNewModuleStack(owner, "an002");
+			lab.Parent = ModuleStack.All["000001"];
+			lab.ModuleType = ModuleType.All["moblab"];
+			lab.AddModule();
+			new Person(lab, owner, Race.All["terran"], "an002c");
+			lab.ItemStacks.Add(ItemType.All["senpak"].ItemStack(1));
+
+			ResearchOrder order = this.assignResearch(lab, "research R00002");
+			order.Execute(1);
+			Assert.That(region.Anomaly.GetProgress(owner), Is.EqualTo(2));
+		}
+
+		[Test]
+		public void WeeklyOutput_OneMoblab_AccruesEveryOtherWeek()
+		{
+			Faction owner = this.game.Factions["2"];
+			ModuleStack moblab = ModuleStack.All.GetOrCreateNewModuleStack(owner, "mob001");
+			moblab.Parent = ModuleStack.All["000005"];
+			moblab.ModuleType = ModuleType.All["moblab"];
+			moblab.AddModule();
+
+			Assert.That(Research.WeeklyOutput(moblab), Is.EqualTo(0));
+			Assert.That(Research.WeeklyOutput(moblab), Is.EqualTo(1));
+			Assert.That(Research.WeeklyOutput(moblab), Is.EqualTo(0));
+		}
+
+		[Test]
+		public void WeeklyOutput_TwoMoblab_MatchesOneCmplib()
+		{
+			Faction owner = this.game.Factions["2"];
+			ModuleStack moblab = ModuleStack.All.GetOrCreateNewModuleStack(owner, "mob002");
+			moblab.Parent = ModuleStack.All["000005"];
+			moblab.ModuleType = ModuleType.All["moblab"];
+			moblab.AddModule();
+			moblab.AddModule();
+
+			ModuleStack cmplib = ModuleStack.All.GetOrCreateNewModuleStack(owner, "lib001");
+			cmplib.Parent = ModuleStack.All["000005"];
+			cmplib.ModuleType = ModuleType.All["cmplib"];
+			cmplib.AddModule();
+
+			Assert.That(Research.WeeklyOutput(moblab), Is.EqualTo(Research.WeeklyOutput(cmplib)));
+		}
+
+		[Test]
 		public void AssignResearchOrder()
 		{
 			Faction testFaction = this.game.Factions["2"];

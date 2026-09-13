@@ -261,6 +261,73 @@ class Region:
         self.resources = []  # (type, qty)
         self.exits = []
         self.stacks = []
+        self.anomaly = None  # type, description, points, rewards[]
+
+
+def _base_anomaly_rewards():
+    return [
+        {"band": 0, "kind": "survey-blurb"},
+        {"band": 0, "kind": "research-rp", "technology": "optins", "quantity": 4},
+    ]
+
+
+# Per-region band-2+ rewards (see designer/anomaly-investigation.md).
+HQ_ANOMALY_REWARDS = {
+    ("arbor", "Mid Vale"): _base_anomaly_rewards()
+    + [{"band": 2, "kind": "research-rp", "technology": "survts", "quantity": 8}],
+    ("arbor", "South Ridge"): _base_anomaly_rewards()
+    + [
+        {"band": 2, "kind": "research-rp", "technology": "gminng", "quantity": 8},
+        {"band": 2, "kind": "resource", "item": "iron", "quantity": 1},
+    ],
+    ("arbor", "East Peak"): _base_anomaly_rewards()
+    + [
+        {"band": 2, "kind": "research-rp", "technology": "seisns", "quantity": 8},
+        {"band": 2, "kind": "resource", "item": "water", "quantity": 1},
+    ],
+    ("anvil", "East Peak"): _base_anomaly_rewards()
+    + [
+        {"band": 2, "kind": "research-rp", "technology": "radtol", "quantity": 8},
+        {"band": 2, "kind": "resource", "item": "uraniu", "quantity": 1},
+    ],
+    ("arbor", "East Steppe"): _base_anomaly_rewards()
+    + [
+        {"band": 2, "kind": "research-rp", "technology": "seisns", "quantity": 8},
+        {"band": 2, "kind": "resource", "item": "tungst", "quantity": 1},
+    ],
+    ("arbor", "Windgap"): _base_anomaly_rewards()
+    + [{"band": 2, "kind": "research-rp", "technology": "survts", "quantity": 8}],
+    ("anvil", "Slope"): _base_anomaly_rewards()
+    + [{"band": 2, "kind": "research-rp", "technology": "gminng", "quantity": 8}],
+    ("anvil", "Mid Spine"): _base_anomaly_rewards()
+    + [
+        {"band": 2, "kind": "research-rp", "technology": "radtol", "quantity": 8},
+        {"band": 2, "kind": "resource", "item": "uraniu", "quantity": 1},
+    ],
+    ("anvil", "Crag"): _base_anomaly_rewards()
+    + [{"band": 2, "kind": "resource", "item": "copper", "quantity": 1}],
+    ("anvil", "Bench"): _base_anomaly_rewards()
+    + [
+        {"band": 2, "kind": "research-rp", "technology": "optins", "quantity": 8},
+        {"band": 2, "kind": "resource", "item": "silici", "quantity": 1},
+    ],
+}
+
+
+# One minor anomaly per player HQ grant: anomaly sits on an orthogonally adjacent cell.
+HQ_ANOMALIES = [
+    # faction, planet, grant, anomaly region, type, description
+    (2, "arbor", "Northwind Grant", "Mid Vale", "spectral", "Photic-band albedo steps on an otherwise uniform grassland — buried oxide or organics."),
+    (3, "arbor", "Greenwell Grant", "South Ridge", "magnetic", "Aeromagnetic gradient over banded iron: a subsurface ferrous lens, not yet cored."),
+    (4, "arbor", "Rivermark Grant", "East Peak", "seismic", "Microseismic cluster under the ridge crest; shallow void or fault, not volcanic."),
+    (5, "arbor", "Sundock Grant", "East Steppe", "gravimetric", "Local g anomaly on dense basement rock under steppe grass; mass concentration worth a gravimeter pass."),
+    (6, "arbor", "Copse Grant", "Windgap", "spectral", "Narrow IR emission line in a wind-cut saddle — heated outcrop or shallow geothermal bleed."),
+    (7, "anvil", "Ironclad Grant", "Slope", "magnetic", "Magnetite streaks in talus give a strong dipole; ore body or slag, not instrument drift."),
+    (8, "anvil", "Oreline Grant", "Mid Spine", "radiometric", "Elevated gamma count on pitchblende-bearing spine rock; handle as ore, not background."),
+    (9, "anvil", "Basalt Grant", "Crag", "seismic", "Reflected compressional wave off a shallow density contrast — void or ore lens."),
+    (10, "anvil", "Silicate Grant", "Bench", "spectral", "Silicate absorption feature shift on a bench terrace; altered regolith or glass."),
+    (11, "anvil", "Fission Grant", "East Peak", "radiometric", "Hot spot on uraninite-rich crest; dosimeter spike above regional baseline."),
+]
 
 
 class Orbit:
@@ -460,6 +527,17 @@ def emit_region(parent, region):
         el(node, "resource", type=typ, quantity=qty)
     for stack in region.stacks:
         emit_stack(node, stack)
+    if region.anomaly:
+        attrs = {"type": region.anomaly["type"], "points": region.anomaly.get("points", 8)}
+        if region.anomaly.get("description"):
+            attrs["description"] = region.anomaly["description"]
+        anode = el(node, "anomaly", **attrs)
+        for reward in region.anomaly.get("rewards", []):
+            rattrs = {"band": reward["band"], "kind": reward["kind"]}
+            for key in ("technology", "item", "region", "quantity", "text"):
+                if key in reward and reward[key] is not None:
+                    rattrs[key] = reward[key]
+            el(anode, "reward", **rattrs)
     return node
 
 
@@ -852,6 +930,25 @@ def find_region(regions, name_en):
         if region.name_en == name_en:
             return region
     raise KeyError(name_en)
+
+
+def apply_hq_anomalies(arbor, anvil):
+    grids = {"arbor": arbor.regions, "anvil": anvil.regions}
+    for _fac, planet, grant_name, anomaly_name, anomaly_type, description in HQ_ANOMALIES:
+        grid = grids[planet]
+        grant = find_region(grid, grant_name)
+        anomaly = find_region(grid, anomaly_name)
+        if not any(ex.target == anomaly.name for ex in grant.exits):
+            raise ValueError("anomaly %s is not adjacent to grant %s" % (anomaly_name, grant_name))
+        if anomaly.anomaly:
+            raise ValueError("duplicate anomaly on %s" % anomaly_name)
+        rewards = HQ_ANOMALY_REWARDS.get((planet, anomaly_name), _base_anomaly_rewards())
+        anomaly.anomaly = {
+            "type": anomaly_type,
+            "description": description,
+            "points": 8,
+            "rewards": [dict(r) for r in rewards],
+        }
 
 
 def find_id(regions, rid):
@@ -1315,6 +1412,8 @@ def build_world():
     for fac, (grant, home) in player_home.items():
         grid = arbor.regions if home == "arbor" else anvil.regions
         find_region(grid, grant).stacks.append(hq_stack(fac, home))
+
+    apply_hq_anomalies(arbor, anvil)
 
     grant_market_contracts = []
     for fac, contract_id, reward, title, flavour in GRANT_MARKET_TOWNS:
@@ -2645,6 +2744,17 @@ def validate(systems, landings):
     hqs = [s for s in stacks if s.typ == "corphq"]
     if len(hqs) != 10:
         errors.append("expected 10 corphq, got %d" % len(hqs))
+    anomaly_regions = [r for s in systems[:2] for p in s.planets for r in p.regions if r.anomaly]
+    if len(anomaly_regions) != len(HQ_ANOMALIES):
+        errors.append("expected %d HQ anomalies, got %d" % (len(HQ_ANOMALIES), len(anomaly_regions)))
+    for fac, planet, grant_name, anomaly_name, anomaly_type, _desc in HQ_ANOMALIES:
+        grid = arbor_regions if planet == "arbor" else anvil_regions
+        grant = find_region(grid, grant_name)
+        anomaly = find_region(grid, anomaly_name)
+        if not anomaly.anomaly or anomaly.anomaly.get("type") != anomaly_type:
+            errors.append("anomaly %s on %s type" % (anomaly_name, planet))
+        if not any(ex.target == anomaly.name for ex in grant.exits):
+            errors.append("anomaly %s not adjacent to %s" % (anomaly_name, grant_name))
     factions = sorted({int(s.faction) for s in hqs})
     if factions != list(range(2, 12)):
         errors.append("HQ factions %s" % factions)

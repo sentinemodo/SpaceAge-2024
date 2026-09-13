@@ -105,6 +105,21 @@ namespace IntegrationTests
 		}
 
 		[Test]
+		public void RegionReport_ExitTowardAnomaly_ShowsAnomalyDetected()
+		{
+			Faction faction = this.game.Factions["2"];
+			Region grant = this.game.Regions["R00001"];
+			Region neighbor = this.game.Regions["R00002"];
+			neighbor.Anomaly = new RegionAnomaly();
+			neighbor.Anomaly.Type = "magnetic";
+
+			List<string> lines = grant.Report(faction);
+			string exits = string.Join("\n", lines);
+			Assert.That(exits, Does.Contain("Eastern Europe [R00002]"));
+			Assert.That(exits, Does.Contain("anomaly detected"));
+		}
+
+		[Test]
 		public void RegionReport_ShowsContractAboveMarket()
 		{
 			Faction faction = this.game.Factions["2"];

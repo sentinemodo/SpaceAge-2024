@@ -157,6 +157,24 @@
 			mass="1">			
 		</entry>
 		<entry
+			name="senpak"
+			name-en="field sensor kit"
+			name-en2="field sensor kits"
+			description="Portable spectrometer and sample prep for field survey teams."
+			size="2"
+			mass="2"
+			research-throughput="1">
+		</entry>
+		<entry
+			name="gravrt"
+			name-en="gravimeter readout"
+			name-en2="gravimeter readouts"
+			description="Gravimeter trace and tilt meter for mass-concentration survey."
+			size="2"
+			mass="3"
+			research-throughput="1">
+		</entry>
+		<entry
 			name="iron" 
 			name-en="unit of iron" 
 			name-en2="units of iron" 
@@ -1040,6 +1058,19 @@ Researchers can query the library. The system can handle natural language questi
 			<use-consume item="iron"  quantity="1"/>
 			<use-consume item="silici" quantity="3"/>		
 			<use-produce module="cmplib"/>
+		</entry>
+		<entry
+			name="moblb"
+			name-en="mobile laboratory"
+			level="1"
+			tags="research"
+			requires="filidx"
+			description="Truck-mounted FTIR, XRF sample prep, and a rugged field terminal for half-rate research away from the factory floor."
+			use-time="3">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="2"/>
+			<use-consume item="silici" quantity="2"/>
+			<use-produce module="moblab"/>
 		</entry>
 		<entry name="optins" name-en="optical and IR instruments" level="1" tags="research" requires="filidx" description="Diffraction-limited telescopes, FTIR, and gold-coated contacts for survey and targeting research." use-time="4">
 			<use-allowed-in module-type-group="production"/>
@@ -2859,22 +2890,48 @@ Researchers can query the library. The system can handle natural language questi
 			energy="5"			
 			technology-capacity="4"
       research-output="1"
+			investigation-output="2"
 			value="1000">
 			<upkeep type="cash" quantity="5"/>
+		</entry>
+		<entry
+			name="moblab"
+			name-en="mobile laboratory"
+			name-en2="mobile laboratories"
+			group="research"
+			description="Six-wheel flatbed carries FTIR, XRF, and a field terminal: sample prep in a dust tent, spectra uplinked to the catalog. Half the throughput of a fixed computer library."
+			size="220"
+			mass="75"
+			crew="1"
+			hit-points="30"
+			energy="3"
+			technology-capacity="2"
+			research-output="1"
+			research-output-divisor="2"
+			investigation-output="1"
+			investigation-types="spectral radiometric"
+			value="600">
+			<operation-allowed-in planet-atmosphere="terair"/>
+			<operation-allowed-in location-type="solid-surface"/>
+			<upkeep type="cash" quantity="5"/>
+			<consume type="food" quantity="4"/>
+			<consume type="terair" quantity="4"/>
+			<no-consume effect="damage" chance="25"/>
+			<move mode="ground" speed="0.5"/>
 		</entry>
 		<entry name="optlab" name-en="optical lab" name-en2="optical labs" group="research" description="Diffraction-limited optical and IR instruments for survey and targeting research." size="250" mass="60" crew="2" energy="6" technology-capacity="5" research-output="1" hit-points="35">
 			<upkeep type="cash" quantity="35"/>
 		</entry>
-		<entry name="radlab" name-en="radiation lab" name-en2="radiation labs" group="research" description="Shielded computing and ECC for high-radiation environments." size="300" mass="80" crew="4" energy="8" technology-capacity="6" research-output="2" hit-points="40">
+		<entry name="radlab" name-en="radiation lab" name-en2="radiation labs" group="research" description="Shielded computing and ECC for high-radiation environments." size="300" mass="80" crew="4" energy="8" technology-capacity="6" research-output="2" investigation-output="2" investigation-types="radiometric" hit-points="40">
 			<upkeep type="cash" quantity="45"/>
 		</entry>
 		<entry name="cmplab" name-en="composite lab" name-en2="composite labs" group="research" description="Fibre and matrix characterisation for advanced hull and armour layups." size="300" mass="100" crew="4" energy="8" technology-capacity="6" research-output="2" hit-points="45">
 			<upkeep type="cash" quantity="45"/>
 		</entry>
-		<entry name="survsc" name-en="survey spectrometer" name-en2="survey spectrometers" group="research" description="Reflectance and emission spectrometry for surface survey." size="150" mass="40" crew="2" energy="6" technology-capacity="4" research-output="1" hit-points="30">
+		<entry name="survsc" name-en="survey spectrometer" name-en2="survey spectrometers" group="research" description="Reflectance and emission spectrometry for surface survey." size="150" mass="40" crew="2" energy="6" technology-capacity="4" research-output="1" investigation-output="2" investigation-types="spectral" hit-points="30">
 			<upkeep type="cash" quantity="35"/>
 		</entry>
-		<entry name="seissc" name-en="seismic sensor" name-en2="seismic sensors" group="research" description="Gravimetry and passive seismics for interiors." size="180" mass="80" crew="2" energy="6" technology-capacity="5" research-output="1" hit-points="35">
+		<entry name="seissc" name-en="seismic sensor" name-en2="seismic sensors" group="research" description="Gravimetry and passive seismics for interiors." size="180" mass="80" crew="2" energy="6" technology-capacity="5" research-output="1" investigation-output="2" investigation-types="seismic gravimetric" hit-points="35">
 			<upkeep type="cash" quantity="40"/>
 		</entry>
 		<entry name="bwinow" name-en="x-ray window" name-en2="x-ray windows" group="research" description="Beryllium soft x-ray windows for fusion and NTR diagnostics." size="120" mass="40" crew="1" energy="4" technology-capacity="4" research-output="1" hit-points="25">
@@ -2883,7 +2940,7 @@ Researchers can query the library. The system can handle natural language questi
 		<entry name="matlab" name-en="materials lab" name-en2="materials labs" group="research" description="Diffraction, hardness, and fatigue characterisation." size="400" mass="100" crew="6" energy="10" technology-capacity="8" research-output="3" hit-points="50">
 			<upkeep type="cash" quantity="55"/>
 		</entry>
-		<entry name="maglab" name-en="magnetometry lab" name-en2="magnetometry labs" group="research" description="SQUID and fluxgate magnetometry." size="350" mass="120" crew="4" energy="8" technology-capacity="6" research-output="2" hit-points="45">
+		<entry name="maglab" name-en="magnetometry lab" name-en2="magnetometry labs" group="research" description="SQUID and fluxgate magnetometry." size="350" mass="120" crew="4" energy="8" technology-capacity="6" research-output="2" investigation-output="2" investigation-types="magnetic" hit-points="45">
 			<upkeep type="cash" quantity="50"/>
 		</entry>
 		<entry name="ntdiag" name-en="neutron diagnostic rack" name-en2="neutron diagnostic racks" group="research" description="Beryllium windows and He3 tubes for fusion and NTR diagnostics." size="300" mass="100" crew="4" energy="8" technology-capacity="6" research-output="2" hit-points="40">

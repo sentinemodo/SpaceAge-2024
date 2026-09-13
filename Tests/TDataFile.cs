@@ -469,7 +469,7 @@ namespace UnitTests
 			this.game = this.dataFile.Game;
 
 			Region region = Region.All["R00011"];
-			List<string> lines = region.Exits.Report;
+			List<string> lines = region.Exits.Report(null, region);
 			Assert.That(lines, Does.Contain("Exits:"));
 			Assert.That(lines, Has.Some.Contains("orbit [O00004]"));
 			Assert.That(lines, Has.Some.Contains("space travel duration 2 weeks"));

@@ -277,6 +277,7 @@ namespace SpaceAge
 
 					this.loadCapacities(elRegion, region, dataFile);
 					this.loadResources(elRegion, region, dataFile);
+					this.loadAnomaly(elRegion, region, dataFile);
 
                     ModuleStack.All.LoadXml(elRegion, region);
 				}
@@ -347,6 +348,22 @@ namespace SpaceAge
 					throw new Exception("Tried to parse resources", ex);
 				}
 			}
+		}
+
+		private void loadAnomaly(XmlElement elRegion, Region region, DataFile dataFile)
+		{
+			XmlElement elAnomaly = (XmlElement)elRegion.SelectSingleNode("anomaly");
+			if (elAnomaly == null)
+			{
+				elAnomaly = (XmlElement)elRegion.SelectSingleNode("poi");
+			}
+			if (elAnomaly == null)
+			{
+				return;
+			}
+
+			region.Anomaly = new RegionAnomaly();
+			region.Anomaly.LoadXml(elAnomaly, dataFile);
 		}
 
 		private void loadGalaxyExits(XmlElement elHolder, Location holder, DataFile dataFile)
@@ -744,6 +761,12 @@ namespace SpaceAge
 					}
 				}
 				this.saveResources(doc, elRegion, region, factionXMLreport);
+				if (region.HasAnomaly)
+				{
+					XmlElement elAnomaly = doc.CreateElement("anomaly");
+					elRegion.AppendChild(elAnomaly);
+					region.Anomaly.SaveXml(doc, elAnomaly);
+				}
 
                 region.ModuleStacks.SaveXml(doc, elRegion, factionXMLreport);
 			}

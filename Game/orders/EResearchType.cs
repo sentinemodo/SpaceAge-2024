@@ -14,6 +14,7 @@ namespace SpaceAge
 		Feature,
 		Tag,
 		SpaceObject,
+		Anomaly,
 		ModuleStack
 	}
 }

@@ -113,6 +113,20 @@ namespace SpaceAge
 
 		public int NominalValue { get; set; }
 
+		private int researchThroughput = 0;
+		public int ResearchThroughput
+		{
+			get { return this.researchThroughput; }
+			set
+			{
+				if (value < 0)
+				{
+					throw new ArgumentOutOfRangeException();
+				}
+				this.researchThroughput = value;
+			}
+		}
+
 		public string ReportDescriptionForTechnology()
 		{
 			StringBuilder description = new StringBuilder(this.Description);

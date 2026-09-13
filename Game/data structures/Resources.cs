@@ -18,6 +18,28 @@ namespace SpaceAge
 			return false;
 		}
 
+		public void AddOrIncrease(ItemType itemType, int quantity)
+		{
+			if (itemType == null || quantity < 1)
+			{
+				return;
+			}
+
+			foreach (Resource resource in this)
+			{
+				if (resource.ItemType == itemType)
+				{
+					resource.Quantity += quantity;
+					return;
+				}
+			}
+
+			Resource added = new Resource();
+			added.ItemType = itemType;
+			added.Quantity = quantity;
+			this.Add(added);
+		}
+
 		public string Report
 		{
 			get

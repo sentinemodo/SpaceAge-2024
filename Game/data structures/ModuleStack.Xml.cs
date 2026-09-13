@@ -37,6 +37,7 @@ namespace SpaceAge
             this.ModuleStacks.LoadXml(elModuleStack, this);
             this.Technologies.LoadXml(elModuleStack, this);
 			this.ResearchPoints = this.XMLAssignInteger(elModuleStack.GetAttribute("research-points"), 0);
+			this.ResearchOutputRemainder = this.XMLAssignInteger(elModuleStack.GetAttribute("research-output-remainder"), 0);
 
             this.Tactics.LoadXml(elModuleStack, this);
 
@@ -71,6 +72,10 @@ namespace SpaceAge
 			if (this.ResearchPoints > 0)
 			{
 				this.xmlElement.SetAttribute("research-points", this.ResearchPoints.ToString());
+			}
+			if (this.ResearchOutputRemainder > 0)
+			{
+				this.xmlElement.SetAttribute("research-output-remainder", this.ResearchOutputRemainder.ToString());
 			}
             this.ItemStacks.SaveXml(doc, this.xmlElement, faction);
             this.Upkeep.SaveXml(doc, this.xmlElement, faction, "upkeep");
