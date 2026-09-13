@@ -346,7 +346,7 @@ namespace UnitTests
 
             // check if pricelist got updated
             Assert.That(market.PriceList.ContainsKey(windplant), Is.False, "without prior transaction, pricelist should be empty");
-            Assert.That(market.GetPrice(windplant), Is.EqualTo(-1), "with getPrice initiated and no other prices on other markets, price should be set to 0 - any price");
+            Assert.That(market.GetPrice(windplant), Is.EqualTo(0), "any-price module trade does not post a list price; GetPrice falls back to catalog nominal");
 
             // received, factory again has no modulestack
             Assert.That(buyer.Modules.Count, Is.EqualTo(11));
@@ -936,6 +936,198 @@ namespace UnitTests
 
 			Assert.That(buyerA.ItemStacks.Quantity(terran), Is.EqualTo(10));
 			Assert.That(buyerB.ItemStacks.Quantity(terran), Is.EqualTo(40));
+		}
+
+		[Test]
+		public void ParseBuyOrder_ZeroPrice_Throws()
+		{
+			ModuleStack buyer = this.game.ModuleStacks["000004"];
+			BuyOrder buyOrder = new BuyOrder(buyer);
+			Assert.Throws<Exception>(() => buyOrder.Parse("5 food at 0"));
+		}
+
+		[Test]
+		public void ParseBuyOrder_NegativePrice_Throws()
+		{
+			ModuleStack buyer = this.game.ModuleStacks["000004"];
+			BuyOrder buyOrder = new BuyOrder(buyer);
+			Assert.Throws<Exception>(() => buyOrder.Parse("5 food at -3"));
+		}
+
+		[Test]
+		public void Trade_OutlierSellPrice_DoesNotUpdateRegionalList()
+		{
+			Region region = this.game.Regions["R00001"];
+			ItemType food = ItemType.All["food"];
+			ModuleStack buyer = this.game.ModuleStacks["000005"];
+			ModuleStack seller = this.game.ModuleStacks["000008"];
+			seller.Owner = Faction.All["2"];
+
+			foreach (Region other in Region.All.Values)
+			{
+				if (other.Market.PriceList.ContainsKey(food))
+				{
+					other.Market.PriceList.Remove(food);
+				}
+			}
+			region.Market.AddPrice(food, 10);
+
+			this.removeSellOffers(seller, food);
+			Offer sellOffer = new Offer(region.Market, seller, EOfferType.SellItems);
+			sellOffer.ItemType = food;
+			sellOffer.Quantity = 5;
+			sellOffer.Price = 10000;
+
+			BuyOrder buyOrder = new BuyOrder(buyer);
+			buyOrder.Parse("5 food at 10000");
+			buyOrder.Execute(1);
+			this.ProcessMarketBuys(1);
+
+			Assert.That(region.Market.PriceList[food], Is.EqualTo(10));
+		}
+
+		[Test]
+		public void Trade_NormalSellPrice_UpdatesRegionalList()
+		{
+			Region region = this.game.Regions["R00001"];
+			ItemType food = ItemType.All["food"];
+			ModuleStack buyer = this.game.ModuleStacks["000005"];
+			ModuleStack seller = this.game.ModuleStacks["000008"];
+			seller.Owner = Faction.All["2"];
+
+			foreach (Region other in Region.All.Values)
+			{
+				if (other.Market.PriceList.ContainsKey(food))
+				{
+					other.Market.PriceList.Remove(food);
+				}
+			}
+			region.Market.AddPrice(food, 10);
+
+			this.removeSellOffers(seller, food);
+			Offer sellOffer = new Offer(region.Market, seller, EOfferType.SellItems);
+			sellOffer.ItemType = food;
+			sellOffer.Quantity = 5;
+			sellOffer.Price = 12;
+
+			BuyOrder buyOrder = new BuyOrder(buyer);
+			buyOrder.Parse("5 food at 12");
+			buyOrder.Execute(1);
+			this.ProcessMarketBuys(1);
+
+			Assert.That(region.Market.PriceList[food], Is.EqualTo(12));
+		}
+
+		[Test]
+		public void UpdateRates_OfferPressureDriftsDownTowardModerateLowBid()
+		{
+			Region berlin = this.game.Regions["R00001"];
+			ItemType food = ItemType.All["food"];
+			ModuleStack buyer = this.game.ModuleStacks["000005"];
+
+			foreach (Region region in Region.All.Values)
+			{
+				if (region.Market.PriceList.ContainsKey(food))
+				{
+					region.Market.PriceList.Remove(food);
+				}
+			}
+			berlin.Market.AddPrice(food, 10);
+
+			Offer buyOffer = new Offer(berlin.Market, buyer, EOfferType.BuyItems);
+			buyOffer.ItemType = food;
+			buyOffer.Price = 8;
+			buyOffer.Quantity = 100;
+			Offer.All.ReuseEquivalent(buyOffer);
+
+			this.game.UpdateRates();
+
+			Assert.That(berlin.Market.PriceList[food], Is.EqualTo(9));
+		}
+
+		[Test]
+		public void UpdateRates_ExtremeLowBidIgnoredForDrift()
+		{
+			Region berlin = this.game.Regions["R00001"];
+			ItemType food = ItemType.All["food"];
+			ModuleStack buyer = this.game.ModuleStacks["000005"];
+
+			foreach (Region region in Region.All.Values)
+			{
+				if (region.Market.PriceList.ContainsKey(food))
+				{
+					region.Market.PriceList.Remove(food);
+				}
+			}
+			berlin.Market.AddPrice(food, 100);
+
+			Offer buyOffer = new Offer(berlin.Market, buyer, EOfferType.BuyItems);
+			buyOffer.ItemType = food;
+			buyOffer.Price = 1;
+			buyOffer.Quantity = 100;
+			Offer.All.ReuseEquivalent(buyOffer);
+
+			this.game.UpdateRates();
+
+			Assert.That(berlin.Market.PriceList[food], Is.EqualTo(100));
+		}
+
+		[Test]
+		public void UpdateRates_ModerateHighSellDriftsUp()
+		{
+			Region berlin = this.game.Regions["R00001"];
+			ItemType food = ItemType.All["food"];
+			ModuleStack seller = this.game.ModuleStacks["000008"];
+			seller.Owner = Faction.All["2"];
+
+			foreach (Region region in Region.All.Values)
+			{
+				if (region.Market.PriceList.ContainsKey(food))
+				{
+					region.Market.PriceList.Remove(food);
+				}
+			}
+			berlin.Market.AddPrice(food, 10);
+
+			this.removeSellOffers(seller, food);
+			Offer sellOffer = new Offer(berlin.Market, seller, EOfferType.SellItems);
+			sellOffer.ItemType = food;
+			sellOffer.Quantity = 5;
+			sellOffer.Price = 12;
+			Offer.All.ReuseEquivalent(sellOffer);
+
+			this.game.UpdateRates();
+
+			Assert.That(berlin.Market.PriceList[food], Is.EqualTo(11));
+		}
+
+		[Test]
+		public void UpdateRates_OutlierHighSellIgnoredForDrift()
+		{
+			Region berlin = this.game.Regions["R00001"];
+			ItemType food = ItemType.All["food"];
+			ModuleStack seller = this.game.ModuleStacks["000008"];
+			seller.Owner = Faction.All["2"];
+
+			foreach (Region region in Region.All.Values)
+			{
+				if (region.Market.PriceList.ContainsKey(food))
+				{
+					region.Market.PriceList.Remove(food);
+				}
+			}
+			berlin.Market.AddPrice(food, 10);
+
+			this.removeSellOffers(seller, food);
+			Offer sellOffer = new Offer(berlin.Market, seller, EOfferType.SellItems);
+			sellOffer.ItemType = food;
+			sellOffer.Quantity = 1;
+			sellOffer.Price = 500;
+			Offer.All.ReuseEquivalent(sellOffer);
+
+			this.game.UpdateRates();
+
+			Assert.That(berlin.Market.PriceList[food], Is.EqualTo(10));
 		}
 
 		private void removeSellOffers(ModuleStack seller, ItemType itemType)
