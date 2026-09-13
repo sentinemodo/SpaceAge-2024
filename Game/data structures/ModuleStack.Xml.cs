@@ -44,6 +44,10 @@ namespace SpaceAge
             this.Effects.LoadXml(elModuleStack, this);
             this.EventReports.LoadXml(elModuleStack, this);
 			this.SickBayUnmedicatedWeeks = this.XMLAssignInteger(elModuleStack.GetAttribute("sick-bay-weeks"), 0);
+			if (elModuleStack.HasAttribute("allow-bank"))
+			{
+				this.AllowBank = this.XMLAssignBoolean(elModuleStack.GetAttribute("allow-bank"), true);
+			}
 
         }
 
@@ -78,6 +82,10 @@ namespace SpaceAge
 			if (this.SickBayUnmedicatedWeeks > 0)
 			{
 				this.xmlElement.SetAttribute("sick-bay-weeks", this.SickBayUnmedicatedWeeks.ToString());
+			}
+			if (!this.AllowBank)
+			{
+				this.xmlElement.SetAttribute("allow-bank", "false");
 			}
             return this.xmlElement;
         }

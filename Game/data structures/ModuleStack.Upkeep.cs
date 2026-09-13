@@ -261,7 +261,7 @@ namespace SpaceAge
 			foreach (ItemStack bill in this.copyStacks(this.localUpkeep()))
 			{
 				int taken = this.takeFromNest(bill.ItemType, bill.Quantity);
-				if (this.isCash(bill.ItemType))
+				if (this.isCash(bill.ItemType) && this.AllowBank)
 				{
 					taken += this.takeFromBank(bill.Quantity - taken);
 				}
