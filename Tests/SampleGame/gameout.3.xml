@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="windows-1251"?>
 <game turn="3">
-	<faction name="1" name-en="NPC" password="" email="" default-attitude="2" text-report="True" text-report-line-length="100" xml-report="True" balance="1501" credit-line="0" credit-rate="0" deposit-rate="0" />
-	<faction name="2" name-en="Caste Prime" password="xyzzy" email="mail1@mail.pl" default-attitude="2" text-report="True" text-report-line-length="100" xml-report="True" balance="8444" credit-line="10000" credit-rate="0.2" deposit-rate="0.05" />
-	<faction name="3" name-en="Gelvaren" password="abccb" email="mail2@mail.pl" default-attitude="2" text-report="True" text-report-line-length="72" xml-report="True" balance="8779" credit-line="10000" credit-rate="0.2" deposit-rate="0.05">
+	<faction name="1" name-en="NPC" password="" email="" default-attitude="2" text-report="True" text-report-line-length="100" xml-report="True" balance="1000" credit-line="0" credit-rate="0" deposit-rate="0" />
+	<faction name="2" name-en="Caste Prime" password="xyzzy" email="mail1@mail.pl" default-attitude="2" text-report="True" text-report-line-length="100" xml-report="True" balance="8748" credit-line="10000" credit-rate="0.2" deposit-rate="0.045" />
+	<faction name="3" name-en="Gelvaren" password="abccb" email="mail2@mail.pl" default-attitude="2" text-report="True" text-report-line-length="72" xml-report="True" balance="9793" credit-line="10000" credit-rate="0.2" deposit-rate="0.045">
 		<technology name="rckter" />
 		<attitude faction="2" attitude="enemy" />
 	</faction>
@@ -456,10 +456,10 @@
 						<event week="13" description="paid 100 unit of food [food] upkeep." />
 						<modulestack name="000018" name-en="Gelvaren Headquarters" type="corphq" quantity="1" faction="3">
 							<itemstack type="terran" quantity="10" />
-							<itemstack type="cash" quantity="3175" />
+							<itemstack type="cash" quantity="1375" />
 							<upkeep type="cash" quantity="110" />
 							<buying item="terran" quantity="all" price="any" />
-							<event week="1" description="produced 100 cash [cash]." />
+							<event week="1" description="trained terran [terran] into terran officer [107]." />
 							<event week="1" description="given 10 cash [cash] to infantry battalion [110]." />
 							<event week="2" description="produced 100 cash [cash]." />
 							<event week="3" description="produced 100 cash [cash]." />
@@ -613,6 +613,13 @@
 							<person name="107" race="terran" faction="3">
 								<skill name="inbtcm" experience="1" />
 								<upkeep type="cash" quantity="10" />
+								<effect duration="0" type="training-officer" skill="inbtcm" />
+								<event week="1" description="trained by Gelvaren Headquarters [000018]." />
+								<event week="1" description="stacked under military barrack [000025]." />
+								<event week="1" description="started training of infantry battalion commander [inbtcm] skill." />
+								<event week="4" description="trained infantry battalion commander [inbtcm] skill." />
+								<event week="4" description="saw infantry battalion [110] in Southern Hemisphere [R00003] (1,0)." />
+								<event week="4" description="stacked under infantry battalion [110]." />
 							</person>
 							<itemstack type="food" quantity="99" />
 							<upkeep type="cash" quantity="15" />
@@ -706,7 +713,7 @@
 			<get item="carbon" quantity="all" transferer="000016" />
 		</order>
 		<order subject="modulestack" name="000013">
-			<sell price="-1" quantity="300" sell-type="items" item="food" />
+			<sell price="-1" quantity="0" sell-type="items" item="food" />
 		</order>
 		<order subject="modulestack" name="000014" repeat="unlimited">
 			<use technology="farmng" />

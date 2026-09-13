@@ -5,7 +5,7 @@ Content-Disposition: attachment
 SpaceAge report for Caste Prime [2].
 Turn 4, Year 2021, September 1.
 
-SpaceAge Engine Version: 0.1.158.
+SpaceAge Engine Version: 0.1.159.
 
 Events during turn:
   none.
@@ -13,7 +13,7 @@ Events during turn:
 Bank report:
   Bank account balance: 8090.
   Credit line maximum: 10000.
-  Credit rate: 20%, Deposit rate: 5%.
+  Credit rate: 20%, Deposit rate: 4.5%.
 
 Technology reports:
 + advanced hull construction [ahlcns]: Recovered alien hull geometry. Automated internals need no

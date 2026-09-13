@@ -33,6 +33,12 @@ namespace UnitTests
 			this.dataFile = null;
 		}
 
+		protected void ProcessMarketBuys(int week)
+		{
+			this.game.Week = week;
+			this.game.ProcessBuyOffers();
+		}
+
         public void Dispose()
         {
             if (this.TextReader != null)

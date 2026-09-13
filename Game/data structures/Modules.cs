@@ -135,6 +135,7 @@ namespace SpaceAge
 				Module loaded = holder.Modules[holder.Modules.Count - 1];
 				loaded.CaptureDamage = holder.XMLAssignInteger(elModule.GetAttribute("capture"), 0);
 				loaded.Online = holder.XMLAssignBoolean(elModule.GetAttribute("online"), true);
+				loaded.Activated = holder.XMLAssignBoolean(elModule.GetAttribute("activated"), true);
 			}
 		}
 
@@ -158,6 +159,10 @@ namespace SpaceAge
 				if (!module.Online)
 				{
 					elModule.SetAttribute("online", "false");
+				}
+				if (!module.Activated)
+				{
+					elModule.SetAttribute("activated", "false");
 				}
 				elHolder.AppendChild(elModule);
 			}

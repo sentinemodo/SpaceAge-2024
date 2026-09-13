@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SpaceAge
 {
-	public class Market : IReporting
+	public partial class Market : IReporting
 	{
         public Offer Sell { get; set; }
         public Offer Buy { get; set; }
@@ -85,18 +85,18 @@ namespace SpaceAge
             return this.PriceList[type];
         }
         
-        private int availableSellQuantity()
+        private int availableSellQuantity(Offer sellOffer, Offer buyOffer)
         {
-            if (this.Sell == null)
+            if (sellOffer == null)
             {
                 return 0;
             }
-            int listed = this.Sell.Quantity;
-            if (this.Buy == null || this.Buy.OfferType != EOfferType.BuyItems || this.Buy.ItemType == null)
+            int listed = sellOffer.Quantity;
+            if (buyOffer == null || buyOffer.OfferType != EOfferType.BuyItems || buyOffer.ItemType == null)
             {
                 return listed;
             }
-            int onHand = this.Sell.Offerent.ItemStacks.Quantity(this.Buy.ItemType);
+            int onHand = sellOffer.Offerent.ItemStacks.Quantity(buyOffer.ItemType);
             if (onHand < listed)
             {
                 return onHand;
@@ -104,13 +104,19 @@ namespace SpaceAge
             return listed;
         }
 
-        private bool canBuy(int week, int amount)
-		{
-			//TODO: has cash & has cash for service as of now you need to have either full amount in account & has access to it, or have full amount in cash
+        private int availableFunds(Offer buyOffer)
+        {
+            int funds = buyOffer.Offerent.ItemStacks.Quantity(ItemType.All.Cash);
+            if (buyOffer.Offerent.HasBankAccess)
+            {
+                funds += (int)buyOffer.Offerent.Owner.Bank.AvailableFunds;
+            }
+            return funds;
+        }
 
-            // can pay
-            if ((this.Buy.Offerent.HasBankAccess & this.Buy.Offerent.Owner.Bank.AvailableFunds < amount) 
-                & (this.Buy.Offerent.ItemStacks.Quantity(ItemType.All.Cash) < amount))
+        private bool canBuy(int week, int amount, int itemQuantity)
+		{
+            if (this.availableFunds(this.Buy) < amount)
             {
                 this.Buy.Offerent.EventReports.Add(week, "BUY failed, not enough cash.");
                 return false;
@@ -119,23 +125,20 @@ namespace SpaceAge
             switch (this.Buy.OfferType)
             {
                 case EOfferType.BuyItems:
-                    // have space for items
-                    if (this.Buy.Offerent.Capacity < this.Buy.Offerent.CapacityUsed + this.Buy.ItemType.Size * this.Buy.Quantity)
+                    if (this.Buy.Offerent.Capacity < this.Buy.Offerent.CapacityUsed + this.Buy.ItemType.Size * itemQuantity)
                     {
                         this.Buy.Offerent.EventReports.Add(week, "BUY failed, not enough space to buy items.");
                         return false;
                     }
                     break;
                 case EOfferType.BuyModules:
-                    // have space for modules
-                    if (this.Buy.Offerent.Parent.Capacity < this.Buy.Offerent.Parent.CapacityUsed + this.Buy.ModuleType.Size * this.Buy.Quantity)
+                    if (this.Buy.Offerent.Parent.Capacity < this.Buy.Offerent.Parent.CapacityUsed + this.Buy.ModuleType.Size * itemQuantity)
                     {
                         this.Buy.Offerent.EventReports.Add(week, "BUY failed, not enough space to buy modules.");
                         return false;
                     }
                     break;
                 case EOfferType.BuyTechnologies:
-                    // have space for technology
                     if (this.Buy.Offerent.TechnologyCapacity < this.Buy.Offerent.TechnologyCapacityUsed + this.Buy.Technology.Level)
                     {
                         this.Buy.Offerent.EventReports.Add(week, "BUY failed, not enough space to buy items.");
@@ -166,7 +169,7 @@ namespace SpaceAge
    			Offer bestOffer = null;
 			foreach (Offer offer in offers)
 			{
-                 if ((buyOffer.Price <= 0) | (offer.Price <= buyOffer.Price))
+                 if (buyOffer.MatchesAsk(offer.Price))
 				{
                     if (bestOffer == null)
                     {
@@ -230,10 +233,29 @@ namespace SpaceAge
 			return offers;
 		}
 
+		private int getSellUnitPrice()
+		{
+			if (this.Sell.Price > 0)
+			{
+				return this.Sell.Price;
+			}
+			switch (this.Sell.OfferType)
+			{
+				case EOfferType.SellItems:
+					return (int)this.Sell.Market.GetPrice(this.Sell.ItemType);
+				case EOfferType.SellModules:
+					return (int)this.Sell.Market.GetPrice(this.Sell.ModuleType);
+				case EOfferType.SellTechnologies:
+					return (int)this.Sell.Market.GetPrice(this.Sell.Technology);
+				default:
+					return 0;
+			}
+		}
+
 		private int calculateTransactionCost(int quantity)
 		{
             // distance	service cost
-            int transactionCost = Convert.ToInt32(quantity * this.Sell.Price);
+            int transactionCost = Convert.ToInt32(quantity * this.getSellUnitPrice());
             // TODO: migrate the transfercost to XML
             int transferCost = 100;
 
@@ -265,13 +287,7 @@ namespace SpaceAge
 		{
 			int transportTime = this.calculateTransportTime();
             
-            if (this.Buy.Offerent.HasBankAccess)
-            {
-                this.Buy.Offerent.Owner.Bank.Debit(week, transactionValue, string.Concat("payment to ", this.Sell.Offerent.Owner.ReportName, "."));
-            } else
-            {
-                this.Buy.Offerent.ItemStacks.Remove(ItemStack.Cash(transactionValue));
-            }
+            this.payBuyer(week, transactionValue);
             if (this.Sell.Offerent.HasBankAccess)
             {
                 this.Sell.Offerent.Owner.Bank.Credit(week, transactionValue, string.Concat("payment from ", this.Buy.Offerent.Owner.ReportName, "."));
@@ -320,6 +336,28 @@ namespace SpaceAge
             }
 		}
 
+        private void payBuyer(int week, int transactionValue)
+        {
+            int localCash = this.Buy.Offerent.ItemStacks.Quantity(ItemType.All.Cash);
+            int fromLocal = Math.Min(localCash, transactionValue);
+            if (fromLocal > 0)
+            {
+                this.Buy.Offerent.ItemStacks.Remove(ItemStack.Cash(fromLocal));
+            }
+            int remaining = transactionValue - fromLocal;
+            if (remaining > 0)
+            {
+                if (this.Buy.Offerent.HasBankAccess)
+                {
+                    this.Buy.Offerent.Owner.Bank.Debit(week, remaining, string.Concat("payment to ", this.Sell.Offerent.Owner.ReportName, "."));
+                }
+                else
+                {
+                    throw new InvalidOperationException("BUY payment exceeded local cash without bank access.");
+                }
+            }
+        }
+
 		public bool ProcessOffer(int week, Offer buyOffer)
 		{
 			switch (buyOffer.OfferType)
@@ -335,7 +373,7 @@ namespace SpaceAge
 
 			if (this.Sell != null)
 			{
-				int sellQuantity = this.availableSellQuantity();
+				int sellQuantity = this.availableSellQuantity(this.Sell, this.Buy);
 				if (sellQuantity < 1)
 				{
 					return false;
@@ -343,33 +381,32 @@ namespace SpaceAge
                 int transactionCost;
 				if (this.Buy.Quantity == sellQuantity)
 				{
-					// both are fullfilled
 					transactionCost = this.calculateTransactionCost(sellQuantity);
-					if (this.canBuy(week, transactionCost))
+					if (this.canBuy(week, transactionCost, sellQuantity))
 					{
 						this.executeTransaction(week, transactionCost, sellQuantity);
                         Offer.All.Remove(this.Sell);
                         Offer.All.Remove(this.Buy);
+                        this.markBuyOrderExecuted(this.Buy);
                     }
 				}
 				else if (this.Buy.AllQuantity | this.Buy.Quantity >= sellQuantity)
 				{
-					// sell is fullfilled, buy is reduced
 					transactionCost = this.calculateTransactionCost(sellQuantity);
-					if (this.canBuy(week, transactionCost))
+					if (this.canBuy(week, transactionCost, sellQuantity))
 					{
                         this.executeTransaction(week, transactionCost, sellQuantity);                        
                         this.Buy.Quantity -= sellQuantity;
 
                         Offer.All.Remove(this.Sell);
+                        this.markBuyOrderExecuted(this.Buy);
                         this.ProcessOffer(week, this.Buy);
                     }
 				}
 				else
 				{
-					// buy is fullfilled, sell is reduced
 					transactionCost = this.calculateTransactionCost(this.Buy.Quantity);
-					if (this.canBuy(week, transactionCost))
+					if (this.canBuy(week, transactionCost, this.Buy.Quantity))
 					{
 						this.executeTransaction(week, transactionCost, this.Buy.Quantity);
 						this.Sell.Quantity -= this.Buy.Quantity;

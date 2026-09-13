@@ -708,7 +708,15 @@ namespace SpaceAge
 
 		public bool HasBankAccess
 		{
-			get { return true; }
+			get
+			{
+				ModuleStack parentStack = this.Parent as ModuleStack;
+				if (parentStack != null)
+				{
+					return parentStack.AllowBank;
+				}
+				return false;
+			}
 		}
 
 		#endregion

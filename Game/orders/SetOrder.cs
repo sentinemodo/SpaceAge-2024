@@ -53,13 +53,24 @@ namespace SpaceAge
 			}
 
 			token = LineParser.GetToken(ref command);
-			this.flagName = token;
-			string flag = this.flagName.ToUpperInvariant();
-			if (flag != "AVOID" && flag != "ONLINE")
+			string flag = token.ToUpperInvariant();
+			if (flag == "ALLOW")
 			{
-				throw new Exception("unknown name of the flag " + flagName);
+				token = LineParser.GetToken(ref command);
+				if (token.ToUpperInvariant() != "BANK")
+				{
+					throw new Exception("unknown name of the flag " + token);
+				}
+				this.flagName = "ALLOW BANK";
 			}
-			this.flagName = flag;
+			else if (flag == "AVOID" || flag == "ONLINE")
+			{
+				this.flagName = flag;
+			}
+			else
+			{
+				throw new Exception("unknown name of the flag " + token);
+			}
 
 			token = LineParser.GetToken(ref command);
 			string value = token.ToUpperInvariant();
@@ -107,6 +118,10 @@ namespace SpaceAge
 					break;
 				case "ONLINE":
 					this.Setter.SetOnline(flagValue);
+					this.Executed = true;
+					break;
+				case "ALLOW BANK":
+					this.Setter.AllowBank = flagValue;
 					this.Executed = true;
 					break;
 			}

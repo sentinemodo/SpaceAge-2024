@@ -5,7 +5,7 @@ Content-Disposition: attachment
 SpaceAge report for Gelvaren [3].
 Turn 5, Year 2021, January 1.
 
-SpaceAge Engine Version: 0.1.158.
+SpaceAge Engine Version: 0.1.159.
 
 Events during turn:
   none.
@@ -15,9 +15,9 @@ Declared stances:
   enemy toward Caste Prime [2].
 
 Bank report:
-  Bank account balance: 7296.
+  Bank account balance: 8804.
   Credit line maximum: 10000.
-  Credit rate: 20%, Deposit rate: 5%.
+  Credit rate: 20%, Deposit rate: 4%.
 
 Technology reports:
 + preventive servicing [servic]: Maintenance and repairs are best done
@@ -6313,6 +6313,7 @@ Galaxy report:
   Market report:
     Offers of selling items:
       sell 39 units of food [food] at 5 each from Berlin [000001].
+      sell 30 terrans [terran] at 50 each from Berlin [000001].
       sell 300 units of food [food] at 0 each from small cargo bay
       [000013].
     Offers of buying items:
@@ -6330,7 +6331,7 @@ Galaxy report:
       none.
   
   - Berlin [000001], 3 cities [city], immobile, owned by NPC [1].
-    size: 75000, capacity: 45000/41000, energy: 200/140 (30).
+    size: 75000, capacity: 45000/41120, energy: 200/140 (30).
     + coal-burning plant [c00015], coal-burning plant [cplant],
       disabled, immobile.
       size: 1000, mass: 1008 (1000), capacity: 500/8, upkeep: 52 (50)
@@ -6382,14 +6383,14 @@ Galaxy report:
       size: 100.
     + corporate headquarters [c000012], corporate headquarters [corphq],
       immobile.
-      size: 1000, mass: 7468 (1000), capacity: 750/6616, energy: 10,
-      crew: 20/68, upkeep: 298 (100) cash [cash], consume: 68 (0) units
-      of food [food], 68 (0) units of terran breathing gas mixture
+      size: 1000, mass: 7378 (1000), capacity: 750/6496, energy: 10,
+      crew: 20/38, upkeep: 268 (100) cash [cash], consume: 38 (0) units
+      of food [food], 38 (0) units of terran breathing gas mixture
       [terair].
       hit points: 100/100, capture: 75.
         #1 hit points: 100/100, capture: 75.
-      items: 54 terrans [terran] (size: 216, mass: 216, upkeep: 54 cash
-      [cash], consume: 54 units of food [food], 54 units of terran
+      items: 24 terrans [terran] (size: 96, mass: 96, upkeep: 24 cash
+      [cash], consume: 24 units of food [food], 24 units of terran
       breathing gas mixture [terair]), 1255 cash [cash].
       events:
         week 1: repaired 1 damage.
@@ -6397,7 +6398,7 @@ Galaxy report:
         week 1: given terran [terran] to gun placement [c00002].
         week 1: given terran [terran] to gun placement [c00003].
         week 1: given terran [terran] to gun placement [c00004].
-        week 13: paid 155 cash [cash] upkeep.
+        week 13: paid 125 cash [cash] upkeep.
         week 13: 1 wounded terran [wndtrn] died of their wounds.
         week 13: 2 wounded terrans [wndtrn] recovered from their wounds.
       + gun placement [c00001], gun placement [gunplc], disabled,
@@ -6463,12 +6464,12 @@ Galaxy report:
           week 13: paid 12 cash [cash] upkeep.
       + small cargo bay [c00005], small cargo bay [cargob], disabled,
         immobile.
-        size: 2000, mass: 1363 (200), capacity: 1800/965, upkeep: 32
+        size: 2000, mass: 1393 (200), capacity: 1800/995, upkeep: 32
         (30) cash [cash], consume: 2 (0) units of food [food], 2 (0)
         units of terran breathing gas mixture [terair].
         hit points: 55/27, capture: 27.
           #1 hit points: 55/27, capture: 27, heavily damaged, disabled.
-        items: 136 units of food [food] (size: 136, mass: 136), 170
+        items: 166 units of food [food] (size: 166, mass: 166), 170
         units of terran breathing gas mixture [terair] (size: 170, mass:
         170), 180 units of oxyhydro [h2o2] (size: 180, mass: 180), 14
         units of iron [iron] (size: 70, mass: 140), 14 units of titanium
@@ -7261,7 +7262,7 @@ sell 100 food
 #modulestack c000012
 ; + corporate headquarters [c000012], corporate headquarters [corphq],
 ;   immobile.
-; items: 54 terrans [terran], 1255 cash [cash].
+; items: 24 terrans [terran], 1255 cash [cash].
 @buy all food
 @buy all terran
 
@@ -7283,7 +7284,7 @@ sell 100 food
 #modulestack c00005
 ; + small cargo bay [c00005], small cargo bay [cargob], disabled,
 ;   immobile.
-; items: 136 units of food [food], 170 units of terran breathing gas
+; items: 166 units of food [food], 170 units of terran breathing gas
 ; mixture [terair], 180 units of oxyhydro [h2o2], 14 units of iron [iron],
 ; 14 units of titanium [titani], 16 units of silicium [silici], 16 units
 ; of copper [copper], 16 units of uranium [uraniu], 2 terrans [terran], 17

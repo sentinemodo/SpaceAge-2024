@@ -5,15 +5,15 @@ Content-Disposition: attachment
 SpaceAge report for Caste Prime [2].
 Turn 5, Year 2021, January 1.
 
-SpaceAge Engine Version: 0.1.158.
+SpaceAge Engine Version: 0.1.159.
 
 Events during turn:
   none.
 
 Bank report:
-  Bank account balance: 6287.
+  Bank account balance: 6279.
   Credit line maximum: 10000.
-  Credit rate: 20%, Deposit rate: 5%.
+  Credit rate: 20%, Deposit rate: 4%.
 
 Technology reports:
 + mineral core drilling [cdrill]: Mineral exploitation.
@@ -5314,6 +5314,7 @@ Galaxy report:
   Market report:
     Offers of selling items:
       sell 39 units of food [food] at 5 each from Berlin [000001].
+      sell 30 terrans [terran] at 50 each from Berlin [000001].
       sell 300 units of food [food] at 0 each from small cargo bay [000013].
     Offers of buying items:
       buy all units of food [food] at any price by corporate headquarters [c000012].
@@ -5328,7 +5329,7 @@ Galaxy report:
       none.
   
   - Berlin [000001], 3 cities [city], immobile, owned by NPC [1].
-    size: 75000, capacity: 45000/41000, energy: 200/140 (30).
+    size: 75000, capacity: 45000/41120, energy: 200/140 (30).
     - coal-burning plant [c00015], coal-burning plant [cplant], disabled, immobile, owned by
       Gelvaren [3].
       size: 1000.

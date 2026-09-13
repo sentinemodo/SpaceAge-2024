@@ -5,13 +5,13 @@ Content-Disposition: attachment
 SpaceAge report for NPC [1].
 Turn 5, Year 2021, January 1.
 
-SpaceAge Engine Version: 0.1.158.
+SpaceAge Engine Version: 0.1.159.
 
 Events during turn:
   none.
 
 Bank report:
-  Bank account balance: 2895.
+  Bank account balance: 1395.
   Credit line maximum: 0.
   Credit rate: 0%, Deposit rate: 0%.
 
@@ -676,6 +676,7 @@ Galaxy report:
   Market report:
     Offers of selling items:
       sell 39 units of food [food] at 5 each from Berlin [000001].
+      sell 30 terrans [terran] at 50 each from Berlin [000001].
       sell 300 units of food [food] at 0 each from small cargo bay [000013].
     Offers of buying items:
       buy all units of food [food] at any price by corporate headquarters [c000012].
@@ -690,11 +691,14 @@ Galaxy report:
       none.
   
   + Berlin [000001], 3 cities [city], immobile.
-    size: 75000, mass: 33458, capacity: 45000/41000, energy: 200/140 (30), crew: 82/239, upkeep: 300
-    units of food [food], 1964 (0) cash [cash], consume: 339 (0) units of food [food], 339 (0) units
-    of terran breathing gas mixture [terair].
+    size: 75000, mass: 33488 (0), capacity: 45000/41120, energy: 200/140 (30), crew: 82/239 (0/30),
+    upkeep: 300 units of food [food], 1964 (0) cash [cash], consume: 339 (0) units of food [food],
+    339 (0) units of terran breathing gas mixture [terair].
+    items: 30 terrans [terran] (size: 120, mass: 120, upkeep: 30 cash [cash], consume: 30 units of
+    food [food], 30 units of terran breathing gas mixture [terair]).
     events:
       week 13: paid 300 unit of food [food] upkeep.
+      week 13: paid 30 cash [cash] upkeep.
     - coal-burning plant [c00015], coal-burning plant [cplant], disabled, immobile, owned by
       Gelvaren [3].
       size: 1000.
@@ -724,10 +728,10 @@ Galaxy report:
       events:
         week 13: paid 265 cash [cash] upkeep.
     + Berlin granary [000005], small cargo bay [cargob], immobile.
-      size: 2000, mass: 325 (200), capacity: 1800/125, upkeep: 33 (30) cash [cash], consume: 3 (0)
+      size: 2000, mass: 295 (200), capacity: 1800/95, upkeep: 33 (30) cash [cash], consume: 3 (0)
       units of food [food], 3 (0) units of terran breathing gas mixture [terair].
-      items: 113 units of food [food] (size: 113, mass: 113), 3 terrans [terran] (size: 12, mass:
-      12, upkeep: 3 cash [cash], consume: 3 units of food [food], 3 units of terran breathing gas
+      items: 83 units of food [food] (size: 83, mass: 83), 3 terrans [terran] (size: 12, mass: 12,
+      upkeep: 3 cash [cash], consume: 3 units of food [food], 3 units of terran breathing gas
       mixture [terair]).
       events:
         week 13: paid 33 cash [cash] upkeep.
@@ -956,6 +960,7 @@ Orders Template:
 #faction 1 ""
 #modulestack 000001
 ; + Berlin [000001], 3 cities [city], immobile.
+; items: 30 terrans [terran].
 
 #modulestack 000002
 ; + Berlin garrison [000002], infantry battalion [inftry], immobile.
@@ -971,7 +976,7 @@ Orders Template:
 
 #modulestack 000005
 ; + Berlin granary [000005], small cargo bay [cargob], immobile.
-; items: 113 units of food [food], 3 terrans [terran].
+; items: 83 units of food [food], 3 terrans [terran].
 
 #modulestack 000006
 ; + Sydney [000006], 2 cities [city], immobile.

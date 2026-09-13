@@ -88,6 +88,13 @@ namespace SpaceAge
 			{
 				line = this.reportActive(line);
 			}
+			if (this.QuantityInactive > 0)
+			{
+				line = string.Format("{0}, {1} module{2} inactive",
+					line,
+					this.QuantityInactive,
+					this.QuantityInactive > 1 ? "s" : string.Empty);
+			}
 			line = string.Format("{0}{1}", line, this.IsImmobile ? ", immobile" : "");
 			// IsArmed is used for combat logic but not shown in reports
 

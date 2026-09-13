@@ -188,7 +188,7 @@ Treat as **not live integrations** until implemented with tests:
 | `Request.Load` | Stub |
 | `EventsReaders.Load` / `Events.Execute` | Stub |
 | `OrdersReader.Check` | Stub |
-| `Game.GenerateOffers` / `UpdateRates` | Partial / TODO |
+| `Game.GenerateOffers` / `UpdateRates` | Live **0.1.159** (open beta) |
 | SampleGame turns 4–5 | Ignored |
 
 ## Revision

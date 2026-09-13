@@ -9,6 +9,7 @@ namespace SpaceAge
 
 		private static readonly Dictionary<string, Factory> ByVerb = new Dictionary<string, Factory>(StringComparer.OrdinalIgnoreCase)
 		{
+			{ "activate", subject => new ActivateOrder(subject) },
 			{ "active", subject => new ActiveOrder(subject) },
 			{ "alias", subject => new AliasOrder(subject) },
 			{ "attack", subject => new AttackOrder(subject) },
@@ -18,6 +19,8 @@ namespace SpaceAge
 			{ "contract", subject => new ContractOrder(subject) },
 			{ "press", subject => new PressOrder(subject) },
 			{ "declare", subject => new DeclareOrder(subject) },
+			{ "deactivate", subject => new DeactivateOrder(subject) },
+			{ "deposit", subject => new DepositOrder(subject) },
 			{ "form", subject => new FormOrder(subject) },
 			{ "get", subject => new GetOrder(subject) },
 			{ "give", subject => new GiveOrder(subject) },
@@ -36,6 +39,7 @@ namespace SpaceAge
 			{ "train", subject => new TrainOrder(subject) },
 			{ "transfer", subject => new TransferOrder(subject) },
 			{ "use", subject => new UseOrder(subject) },
+			{ "withdraw", subject => new WithdrawOrder(subject) },
 		};
 
 		public static string NormalizeTextVerb(string token)

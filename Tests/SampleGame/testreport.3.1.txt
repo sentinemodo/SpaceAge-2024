@@ -5,13 +5,13 @@ Content-Disposition: attachment
 SpaceAge report for NPC [1].
 Turn 3, Year 2020, July 1.
 
-SpaceAge Engine Version: 0.1.158.
+SpaceAge Engine Version: 0.1.159.
 
 Events during turn:
   none.
 
 Bank report:
-  Bank account balance: 1501.
+  Bank account balance: 1000.
   Credit line maximum: 0.
   Credit rate: 0%, Deposit rate: 0%.
 

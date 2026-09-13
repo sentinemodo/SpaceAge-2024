@@ -23,6 +23,8 @@ namespace SpaceAge
 		public Technology Technology    { get; set; }
 
 		public int Price { get; set; }
+		public bool PriceRelative { get; set; }
+		public int PriceOffset { get; set; }
 
         private int quantity = 1;
         public int Quantity
@@ -90,6 +92,14 @@ namespace SpaceAge
 			{
 				return false;
 			}
+			if (this.PriceRelative != other.PriceRelative)
+			{
+				return false;
+			}
+			if (this.PriceOffset != other.PriceOffset)
+			{
+				return false;
+			}
 			if (this.AllQuantity != other.AllQuantity)
 			{
 				return false;
@@ -117,6 +127,74 @@ namespace SpaceAge
 		private int listedPrice()
 		{
 			return (this.Price > 0) ? this.Price : 0;
+		}
+
+		public int GetEffectiveBidCap()
+		{
+			NamedType type = this.getBidType();
+			if (this.PriceRelative)
+			{
+				return (int)this.Market.GetPrice(type) + this.PriceOffset;
+			}
+			if (this.Price > 0)
+			{
+				return this.Price;
+			}
+			return (int)this.Market.GetPrice(type);
+		}
+
+		public bool MatchesAsk(int ask)
+		{
+			if (!this.PriceRelative && this.Price <= 0)
+			{
+				return true;
+			}
+			return this.GetEffectiveBidCap() >= ask;
+		}
+
+		private NamedType getBidType()
+		{
+			switch (this.OfferType)
+			{
+				case EOfferType.BuyItems:
+					return this.ItemType;
+				case EOfferType.BuyModules:
+					return this.ModuleType;
+				case EOfferType.BuyTechnologies:
+					return this.Technology;
+				default:
+					throw new InvalidOperationException("Unexpected offer type = " + this.OfferType);
+			}
+		}
+
+		private string formatBuyPrice()
+		{
+			if (this.PriceRelative)
+			{
+				if (this.PriceOffset > 0)
+				{
+					return string.Concat("at average +", this.PriceOffset.ToString());
+				}
+				return "at average";
+			}
+			if (this.Price > 0)
+			{
+				return string.Concat("at ", this.Price.ToString());
+			}
+			return "at any price";
+		}
+
+		private string formatBuyPriceSuffix()
+		{
+			if (!(this.Quantity > 1 | this.AllQuantity))
+			{
+				return string.Empty;
+			}
+			if (this.Price > 0 || this.PriceRelative)
+			{
+				return " each";
+			}
+			return string.Empty;
 		}
 
 		public bool Process(int week)
@@ -219,9 +297,7 @@ namespace SpaceAge
                     line = string.Format("    buy {0}{1} {2} by {3}{4}.",
                         (this.AllQuantity) ? "all " : (this.Quantity > 1) ? string.Concat(this.Quantity, " ") : string.Empty,
                         (this.Quantity > 1 | this.AllQuantity) ? this.ItemType.ReportNameMultiple : this.ItemType.ReportName,
-                        (this.Price > 0)
-                            ? string.Concat("at ", this.Price.ToString(), (this.Quantity > 1 | this.AllQuantity) ? " each" : string.Empty)
-                            : "at any price",
+                        string.Concat(this.formatBuyPrice(), this.formatBuyPriceSuffix()),
                         this.Offerent.ReportName,
                         (full == true) ? string.Concat(" in ", this.Offerent.Location.ReportName) : string.Empty);
                     break;
@@ -229,9 +305,7 @@ namespace SpaceAge
                     line = string.Format("    buy {0}{1} {2} by {3}{4}.",
                         (this.AllQuantity) ? "all " : (this.Quantity > 1) ? string.Concat(this.Quantity, " ") : string.Empty,
                         (this.Quantity > 1 | this.AllQuantity) ? this.ModuleType.ReportNameMultiple : this.ModuleType.ReportName,
-                        (this.Price > 0)
-                            ? string.Concat("at ", this.Price.ToString(), (this.Quantity > 1 | this.AllQuantity) ? " each" : string.Empty)
-                            : "at any price",
+                        string.Concat(this.formatBuyPrice(), this.formatBuyPriceSuffix()),
                         this.Offerent.ReportName,
                         (full == true) ? string.Concat(" in ", this.Offerent.Location.ReportName) : string.Empty);
                     break;

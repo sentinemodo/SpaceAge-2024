@@ -1,0 +1,62 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Battle What-If" description="Two-side battle estimate">
+  <section class="card" style="max-width:900px;margin:2rem auto;padding:1.5rem;">
+    <h1>Battle What-If</h1>
+    <p>Formula estimate from <code>player/battle.md</code>. For authoritative combat use the <a href="../tools/battle-simulator/">engine battle simulator</a> or process a real turn.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+      <div>
+        <h2>Attackers</h2>
+        <textarea id="atk" rows="8" placeholder="name, qty, atk, def, dmg, hp per line"></textarea>
+      </div>
+      <div>
+        <h2>Defenders</h2>
+        <textarea id="def" rows="8"></textarea>
+      </div>
+    </div>
+    <label>Seed <input type="number" id="seed" value="1" /></label>
+    <button type="button" id="run">Simulate (10 rounds max)</button>
+    <pre id="log" style="background:#111;color:#eee;padding:1rem;margin-top:1rem;max-height:320px;overflow:auto;"></pre>
+  </section>
+</Layout>
+
+<script>
+  function parseSide(text) {
+    return text.split('\n').map(l => l.trim()).filter(Boolean).map(line => {
+      const [name, qty, atk, def, dmg, hp] = line.split(/[\s,]+/);
+      return { name, qty: +qty || 1, atk: +atk || 1, def: +def || 1, dmg: +dmg || 1, hp: +hp || 10, maxHp: +hp || 10 };
+    });
+  }
+
+  function rng(seed) {
+    let s = seed >>> 0;
+    return () => ((s = (s * 1664525 + 1013904223) >>> 0) / 0x100000000);
+  }
+
+  document.getElementById('run')?.addEventListener('click', () => {
+    const atk = parseSide(document.getElementById('atk').value);
+    const def = parseSide(document.getElementById('def').value);
+    const rand = rng(parseInt(document.getElementById('seed').value, 10) || 1);
+    const lines = [];
+    for (let round = 1; round <= 10; round++) {
+      lines.push(`Round ${round}:`);
+      for (const side of [{ label: 'Attacker', units: atk, foe: def }, { label: 'Defender', units: def, foe: atk }]) {
+        for (const u of side.units.filter(x => x.hp > 0)) {
+          const target = side.foe.find(t => t.hp > 0);
+          if (!target) continue;
+          const chance = u.atk / 2;
+          const roll = rand() * 100;
+          const hit = roll <= chance;
+          lines.push(`  ${side.label} ${u.name} vs ${target.name}: chance ${chance.toFixed(0)} roll ${roll.toFixed(0)} ${hit ? 'HIT' : 'miss'}`);
+          if (hit) target.hp -= u.dmg;
+        }
+      }
+      if (!atk.some(u => u.hp > 0) || !def.some(u => u.hp > 0)) break;
+    }
+    const winner = !def.some(u => u.hp > 0) ? 'Attackers win' : !atk.some(u => u.hp > 0) ? 'Defenders win' : 'Indecisive';
+    lines.push(winner);
+    document.getElementById('log').textContent = lines.join('\n');
+  });
+</script>

@@ -193,3 +193,37 @@ Militias (Arbor First / HCS) start **without** buy/sell. Neutral trade is option
 ```
 
 Standing offers live on UN `city` stacks in `gamein` (see [`galaxy.md`](galaxy.md)). Leave `Tests/data.xml` at 100.
+
+## Auto economy (open beta — engine live rules)
+
+Called once per turn after week 13 maintenance, in order: `UpdateBankAccounts()` → **`UpdateRates()`** → **`GenerateOffers()`**.
+
+### GenerateOffers (live)
+
+Each quarter, for every NPC faction `[1]` stack whose module type is **`city`**:
+
+- Scan on-hand item stacks (skip `cash`).
+- If the city already has a **buy or sell** offer for that item type, skip (no simultaneous buy+sell of the same type; **standing offers are never rewritten**).
+- Otherwise create a new **sell** offer: quantity = on-hand, price = `Market.GetPrice(item)` (regional average if any region posted a price, else catalog nominal `value`; skip if price ≤ 0).
+- Farms and non-city stacks are not auto-listed.
+
+### UpdateRates (open beta)
+
+**Market prices:** For each `Region`, for each `ItemType` that has a price in **any** regional `Market.PriceList`, set this region's price to the **galaxy-wide average** of all regions that posted that type (integer rounding, minimum 1 if average ≥ 0.5). Types with no posted prices are unchanged. Standing offer **objects** keep their saved `Price` field; only regional `PriceList` entries drift toward the average (feeds `GetPrice` for new auto-listings next quarter).
+
+**Bank rates (player factions 2–11 only):**
+
+| Condition | Adjustment |
+|-----------|------------|
+| Balance > 5 000 | `depositRate -= 0.005` (floor **0.01**) |
+| Balance > 0 and ≤ 5 000 | no deposit change |
+| Balance < 0 | `creditRate += 0.005` (ceiling **0.25**) |
+| Balance ≥ 0 | no credit change |
+
+NPC factions 1 / 12 / 13 are unchanged. Rates persist in save XML (`deposit-rate`, `credit-rate` on `<faction>`).
+
+### Beta verification
+
+- SampleGame: `ProcessGenerateAutoOffers` and turn 4 golden assert NPC city sells remain.
+- Campaign: load `campaign/data.xml` + UN city snippet → `GenerateOffers` does not duplicate standing sells from `gamein.1.xml`.
+- Unit: `UpdateRates` moves regional food price toward average after a trade posts a new price in one region.

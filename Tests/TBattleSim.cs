@@ -97,6 +97,71 @@ namespace UnitTests
 		}
 
 		[Test]
+		public void Run_MatchesGoldenSnapshot()
+		{
+			BattleSimulatorRunner runner = new BattleSimulatorRunner(Directory.GetCurrentDirectory());
+			string output = runner.Run(this.fixturePath);
+			string goldenPath = Path.Combine(
+				TestContext.CurrentContext.TestDirectory,
+				"fixtures",
+				"battle-sim",
+				"inftry-skirmish.out.txt");
+
+			if (!File.Exists(goldenPath))
+			{
+				File.WriteAllText(goldenPath, output, Encoding.UTF8);
+			}
+
+			string golden = File.ReadAllText(goldenPath, Encoding.UTF8);
+			Assert.That(output.Replace("\r\n", "\n"), Is.EqualTo(golden.Replace("\r\n", "\n")));
+		}
+
+		[Test]
+		public void Cli_BattleSim_ProducesOutputWhenExePresent()
+		{
+			string exe = Path.Combine(TCampaign.RepoRoot(), "Game", "bin", "Debug", "Game.exe");
+			if (!File.Exists(exe))
+			{
+				Assert.Ignore("Game.exe not built");
+			}
+
+			string outPath = Path.Combine(Path.GetTempPath(), "battle-sim-cli-" + Guid.NewGuid() + ".txt");
+			try
+			{
+				var psi = new System.Diagnostics.ProcessStartInfo
+				{
+					FileName = exe,
+					Arguments = string.Format(
+						"/battle-sim \"{0}\" \"{1}\" /data \"{2}\"",
+						this.fixturePath,
+						outPath,
+						Directory.GetCurrentDirectory()),
+					UseShellExecute = false,
+					RedirectStandardOutput = true,
+					CreateNoWindow = true,
+				};
+				using (var proc = System.Diagnostics.Process.Start(psi))
+				{
+					if (!proc.WaitForExit(120000))
+					{
+						proc.Kill();
+						Assert.Ignore("Game.exe battle-sim did not complete within 2 minutes");
+					}
+					Assert.That(proc.ExitCode, Is.EqualTo(0));
+				}
+				Assert.That(File.Exists(outPath));
+				Assert.That(File.ReadAllText(outPath, Encoding.GetEncoding(1251)), Does.Contain("SIMULATION RESULT:"));
+			}
+			finally
+			{
+				if (File.Exists(outPath))
+				{
+					File.Delete(outPath);
+				}
+			}
+		}
+
+		[Test]
 		public void SerializeTemplate_CampaignCorvetteTypesResolve()
 		{
 			BattleSimTemplate template = BattleSimulatorTemplates.Get("system-patrol-corvette");

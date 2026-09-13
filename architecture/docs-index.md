@@ -44,6 +44,8 @@ Purpose: canonical vendor/spec links for implementers. Summaries only — do not
 | `architecture/delivery/local-player-agent.md` | Ollama / RunPod player-agent runner: env prep, RAG corpus, post-turn and engine/data refresh, usage tracker, cost guardrails |
 | `architecture/delivery/campaign-play.md` | Campaign load, engine TDD slices, CLI play loop, AI factions |
 | `architecture/delivery/battle-simulator.md` | Battle simulator implementation plan (`Game.exe` direct invocation, template presets, custom templates, advanced combat sync) |
+| `architecture/delivery/game-host.md` | Hosted game service: auth, report XML, orders, turn runner |
+| `architecture/delivery/visual-tool.md` | Complete visual tool: XML client, map, orders, UT-001…UT-005 |
 | `architecture/delivery/website.md` | Public lobby implementation plan (Astro, status JSON, visual-tool link, Phase 4 `/eta` + `/battle`); **Cursor agents and test pairing** (`/website-developer` + `/website-tester`) |
 | `architecture/delivery/website-scenarios.md` | Seed acceptance catalog (WS-001…WS-009, reserved WS-010…WS-012 Phase 4, reserved UT-*). After Phase 1: tester moves to `website/e2e/scenarios.md` (canonical) |
 | `Game/documentation/Rules.txt` §§1, 1.1, 2.1 | Home-page flavour source (Alderson V 1.5); excerpt, do not dump |
@@ -61,5 +63,7 @@ Purpose: canonical vendor/spec links for implementers. Summaries only — do not
 | [`adr/ADR-0006-datafile-facade-and-xml-seams.md`](adr/ADR-0006-datafile-facade-and-xml-seams.md) | `DataFile` facade; catalog / order factory / domain XML phases | 2026-08-18 |
 | [`adr/ADR-0007-public-campaign-website.md`](adr/ADR-0007-public-campaign-website.md) | Public website as new bounded context; Astro + status JSON | 2026-08-29 |
 | [`adr/ADR-0009-local-llm-player-agent.md`](adr/ADR-0009-local-llm-player-agent.md) | Ollama + Qwen3-Coder + RAG; RunPod rented GPU | 2026-09-09 |
+| [`adr/ADR-0010-visual-tool.md`](adr/ADR-0010-visual-tool.md) | Hosted visual report client (React + Vite) | 2026-09-11 |
+| [`adr/ADR-0011-hosted-game-service.md`](adr/ADR-0011-hosted-game-service.md) | Game-host HTTP layer; faction auth; turn runner | 2026-09-11 |
 
 Prefer Microsoft Learn / NUnit docs over blog posts when versions matter.

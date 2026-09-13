@@ -6,6 +6,7 @@ namespace SpaceAge
 {
 	public enum EOrderType
 	{
+		activate,
 		active,
 		alias,
 		attack,
@@ -14,6 +15,8 @@ namespace SpaceAge
         copy,
 		contract,
 		declare,
+		deactivate,
+		deposit,
 		form, 
 		get,
 		give,
@@ -32,6 +35,7 @@ namespace SpaceAge
 		tactic,
         transfer,
 		train,
-        use
+        use,
+		withdraw
 	}
 }

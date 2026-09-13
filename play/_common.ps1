@@ -5,6 +5,68 @@ $script:RepoRoot = Split-Path -Parent $PSScriptRoot
 $script:Encoding1251 = [System.Text.Encoding]::GetEncoding(1251)
 $script:PlayerFactionIds = 2..11
 
+# Default inference: Ollama in Docker on localhost:11434 (container name "ollama").
+$script:DefaultOllamaHost = 'http://127.0.0.1:11434'
+$script:DefaultChatModel = 'qwen2.5-coder:7b'
+$script:DefaultEmbedModel = 'nomic-embed-text'
+
+function Import-RepoEnv {
+	$envFile = Join-Path $script:RepoRoot '.env'
+	if (-not (Test-Path -LiteralPath $envFile)) {
+		return
+	}
+	Get-Content -LiteralPath $envFile | ForEach-Object {
+		if ($_ -match '^\s*([^#=]+)=(.*)$') {
+			$name = $Matches[1].Trim()
+			$value = $Matches[2].Trim().Trim('"').Trim("'")
+			if ([string]::IsNullOrWhiteSpace([Environment]::GetEnvironmentVariable($name, 'Process'))) {
+				Set-Item -Path "Env:$name" -Value $value
+			}
+		}
+	}
+}
+
+function Initialize-OllamaEnv {
+	Import-RepoEnv
+	if ([string]::IsNullOrWhiteSpace($env:OLLAMA_HOST)) {
+		$env:OLLAMA_HOST = $script:DefaultOllamaHost
+	}
+	if ([string]::IsNullOrWhiteSpace($env:PLAYER_AGENT_CHAT_MODEL)) {
+		$env:PLAYER_AGENT_CHAT_MODEL = $script:DefaultChatModel
+	}
+	if ([string]::IsNullOrWhiteSpace($env:PLAYER_AGENT_EMBED_MODEL)) {
+		$env:PLAYER_AGENT_EMBED_MODEL = $script:DefaultEmbedModel
+	}
+}
+
+function Test-OllamaDocker {
+	param(
+		[switch] $Quiet
+	)
+	Initialize-OllamaEnv
+	$base = $env:OLLAMA_HOST.TrimEnd('/')
+	try {
+		$tags = Invoke-RestMethod -Uri "$base/api/tags" -TimeoutSec 10
+	}
+	catch {
+		throw "Ollama not reachable at $base. Start the Docker container: docker start ollama (image ollama/ollama, port 11434)."
+	}
+	$names = @($tags.models | ForEach-Object { $_.name })
+	$chat = $env:PLAYER_AGENT_CHAT_MODEL
+	$embed = $env:PLAYER_AGENT_EMBED_MODEL
+	$chatOk = $names | Where-Object { $_ -eq $chat -or $_ -eq "${chat}:latest" -or $_ -like "$chat*" }
+	$embedOk = $names | Where-Object { $_ -eq $embed -or $_ -eq "${embed}:latest" -or $_ -like "$embed*" }
+	if (-not $chatOk) {
+		throw "Chat model '$chat' not in Ollama Docker. Pull inside container: docker exec -it ollama ollama pull $chat"
+	}
+	if (-not $embedOk) {
+		throw "Embed model '$embed' not in Ollama Docker. Pull inside container: docker exec -it ollama ollama pull $embed"
+	}
+	if (-not $Quiet) {
+		Write-Host "Ollama Docker OK at $base (chat=$chat, embed=$embed)"
+	}
+}
+
 function Test-RunId {
 	param([Parameter(Mandatory = $true)][string]$RunId)
 	if ($RunId -notmatch '^[A-Za-z0-9][A-Za-z0-9._-]{0,31}$') {
