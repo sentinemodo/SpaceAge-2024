@@ -203,6 +203,16 @@ namespace UnitTests
 			Battle battle = new Battle(enemy, hull);
 			battle.Execute(this.game.Week);
 			Assert.That(drone.IsRootModuleStack, Is.True);
+			Assert.That(drone.Quantity, Is.GreaterThan(0), "launched drone must survive battle");
+
+			foreach (Module module in drone.Modules)
+			{
+				module.Damage = 0;
+				module.CaptureDamage = 0;
+				module.Activated = true;
+				module.Online = true;
+			}
+			Assert.That(drone.QuantityActive, Is.GreaterThan(0));
 
 			drone.ExecuteMaintenance(13);
 
