@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="windows-1251"?>
 <game turn="5">
-	<faction name="1" name-en="NPC" password="" email="" default-attitude="2" text-report="True" text-report-line-length="100" xml-report="True" balance="2895" credit-line="0" credit-rate="0" deposit-rate="0" />
-	<faction name="2" name-en="Caste Prime" password="xyzzy" email="mail1@mail.pl" default-attitude="2" text-report="True" text-report-line-length="100" xml-report="True" balance="6287" credit-line="10000" credit-rate="0.2" deposit-rate="0.05">
+	<faction name="1" name-en="NPC" password="" email="" default-attitude="2" text-report="True" text-report-line-length="100" xml-report="True" balance="1395" credit-line="0" credit-rate="0" deposit-rate="0" />
+	<faction name="2" name-en="Caste Prime" password="xyzzy" email="mail1@mail.pl" default-attitude="2" text-report="True" text-report-line-length="100" xml-report="True" balance="6279" credit-line="10000" credit-rate="0.2" deposit-rate="0.04">
 		<technology name="ahlcns" />
 		<technology name="autfab" />
 		<technology name="autctl" />
@@ -14,7 +14,7 @@
 		<technology name="uminng" />
 		<technology name="he3min" />
 	</faction>
-	<faction name="3" name-en="Gelvaren" password="abccb" email="mail2@mail.pl" default-attitude="2" text-report="True" text-report-line-length="72" xml-report="True" balance="7296" credit-line="10000" credit-rate="0.2" deposit-rate="0.05">
+	<faction name="3" name-en="Gelvaren" password="abccb" email="mail2@mail.pl" default-attitude="2" text-report="True" text-report-line-length="72" xml-report="True" balance="8804" credit-line="10000" credit-rate="0.2" deposit-rate="0.04">
 		<technology name="rckter" />
 		<technology name="servic" />
 		<attitude faction="2" attitude="enemy" />
@@ -250,11 +250,14 @@
 					<resource type="h2o2" quantity="250" />
 					<resource type="food" quantity="500" />
 					<modulestack name="000001" name-en="Berlin" type="city" quantity="3" faction="1">
+						<itemstack type="terran" quantity="30" />
 						<upkeep type="food" quantity="300" />
 						<upkeep type="cash" quantity="1964" />
 						<buying module="farms" quantity="1" price="100" />
 						<selling item="food" quantity="39" price="5" />
+						<selling item="terran" quantity="30" price="50" />
 						<event week="13" description="paid 300 unit of food [food] upkeep." />
+						<event week="13" description="paid 30 cash [cash] upkeep." />
 						<modulestack name="c00015" type="cplant" quantity="1" faction="3">
 							<module damage="49" capture="51" online="false" />
 							<itemstack type="terran" quantity="2" />
@@ -279,7 +282,7 @@
 							<event week="13" description="paid 265 cash [cash] upkeep." />
 						</modulestack>
 						<modulestack name="000005" name-en="Berlin granary" type="cargob" quantity="1" faction="1">
-							<itemstack type="food" quantity="113" />
+							<itemstack type="food" quantity="83" />
 							<itemstack type="terran" quantity="3" />
 							<upkeep type="cash" quantity="33" />
 							<event week="13" description="paid 33 cash [cash] upkeep." />
@@ -359,9 +362,9 @@
 						</modulestack>
 						<modulestack name="c000012" type="corphq" quantity="1" faction="3">
 							<module capture="75" />
-							<itemstack type="terran" quantity="54" />
+							<itemstack type="terran" quantity="24" />
 							<itemstack type="cash" quantity="1255" />
-							<upkeep type="cash" quantity="298" />
+							<upkeep type="cash" quantity="268" />
 							<buying item="food" quantity="all" price="any" />
 							<buying item="terran" quantity="all" price="any" />
 							<event week="1" description="repaired 1 damage." />
@@ -369,7 +372,7 @@
 							<event week="1" description="given terran [terran] to gun placement [c00002]." />
 							<event week="1" description="given terran [terran] to gun placement [c00003]." />
 							<event week="1" description="given terran [terran] to gun placement [c00004]." />
-							<event week="13" description="paid 155 cash [cash] upkeep." />
+							<event week="13" description="paid 125 cash [cash] upkeep." />
 							<event week="13" description="1 wounded terran [wndtrn] died of their wounds." />
 							<event week="13" description="2 wounded terrans [wndtrn] recovered from their wounds." />
 							<modulestack name="c00001" type="gunplc" quantity="1" faction="3">
@@ -406,7 +409,7 @@
 							</modulestack>
 							<modulestack name="c00005" type="cargob" quantity="1" faction="3">
 								<module damage="28" capture="27" />
-								<itemstack type="food" quantity="136" />
+								<itemstack type="food" quantity="166" />
 								<itemstack type="terair" quantity="170" />
 								<itemstack type="h2o2" quantity="180" />
 								<itemstack type="iron" quantity="14" />

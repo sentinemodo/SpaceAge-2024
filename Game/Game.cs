@@ -531,14 +531,23 @@ namespace SpaceAge
             }
         }
 
-        private void ProcessBuyOffers()
+        public void ProcessBuyOffers()
         {
-            // foreach offer check if matching offer exists if it does, process and update prices
-            Offers buyOffers;
-            buyOffers = this.Offers[EOffersType.Buy];
+            foreach (Region region in Region.All.Values)
+            {
+                region.Market.ProcessBuyClearing(this.week);
+            }
+            Offers buyOffers = this.Offers[EOffersType.Buy];
             foreach (Offer buyOffer in buyOffers)
             {
-                buyOffer.Process(week);
+                if (buyOffer.OfferType == EOfferType.BuyTechnologies)
+                {
+                    buyOffer.Process(this.week);
+                }
+                else if (buyOffer.Everywhere)
+                {
+                    buyOffer.Process(this.week);
+                }
             }
         }
 

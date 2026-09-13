@@ -5,7 +5,7 @@ Content-Disposition: attachment
 SpaceAge report for Gelvaren [3].
 Turn 3, Year 2020, July 1.
 
-SpaceAge Engine Version: 0.1.158.
+SpaceAge Engine Version: 0.1.159.
 
 Events during turn:
   none.
@@ -15,9 +15,9 @@ Declared stances:
   enemy toward Caste Prime [2].
 
 Bank report:
-  Bank account balance: 8779.
+  Bank account balance: 9793.
   Credit line maximum: 10000.
-  Credit rate: 20%, Deposit rate: 5%.
+  Credit rate: 20%, Deposit rate: 4.5%.
 
 Technology reports:
 + rocket launcher production [rckter]: Manufacture of portable rocket
@@ -4381,9 +4381,9 @@ Galaxy report:
       [terair].
       items: 10 terrans [terran] (size: 40, mass: 40, upkeep: 10 cash
       [cash], consume: 10 units of food [food], 10 units of terran
-      breathing gas mixture [terair]), 3175 cash [cash].
+      breathing gas mixture [terair]), 1375 cash [cash].
       events:
-        week 1: produced 100 cash [cash].
+        week 1: trained terran [terran] into terran officer [107].
         week 1: given 10 cash [cash] to infantry battalion [110].
         week 2: produced 100 cash [cash].
         week 3: produced 100 cash [cash].
@@ -4638,6 +4638,15 @@ Galaxy report:
         consume: unit of food [food], unit of terran breathing gas
         mixture [terair].
         skills: infantry battalion commander [inbtcm].
+        events:
+          week 1: trained by Gelvaren Headquarters [000018].
+          week 1: stacked under military barrack [000025].
+          week 1: started training of infantry battalion commander
+          [inbtcm] skill.
+          week 4: trained infantry battalion commander [inbtcm] skill.
+          week 4: saw infantry battalion [110] in Southern Hemisphere
+          [R00003] (1,0).
+          week 4: stacked under infantry battalion [110].
 ------------------------------------------------------------
   * Luna [P00003] (1, 0, 0), moon, unexplored.
 ------------------------------------------------------------
@@ -4649,7 +4658,7 @@ Orders Template:
 #modulestack 000018
 ; + Gelvaren Headquarters [000018], corporate headquarters [corphq],
 ;   disabled, immobile.
-; items: 10 terrans [terran], 3175 cash [cash].
+; items: 10 terrans [terran], 1375 cash [cash].
 @get all cash from 000026
 @get all terran from 000026
 @buy all terran
@@ -4671,7 +4680,7 @@ sell 100 food
 #modulestack 000021
 ; + wind powerplant [000021], 19 wind powerplants [wnplnt], immobile.
 @produce energy
-sell 1 wnplnt
+sell 0 wnplnt
 
 #modulestack 000022
 ; + core drill [000022], core drill [cdrill], immobile.
@@ -4722,6 +4731,9 @@ move R00002
 #person 107
 ; + terran officer [107], terran [terran].
 ; skills: infantry battalion commander [inbtcm].
+; effects:
+;   training infantry battalion commander [inbtcm] skill, 0 weeks to
+;   complete.
 
 #end
 

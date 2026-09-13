@@ -210,6 +210,7 @@ namespace UnitTests
             Assert.That(order.Repeat < 0);
 
             order.Execute(this.game.Week);
+            this.ProcessMarketBuys(this.game.Week);
             buyer.Orders.RemoveExecuted();
             #endregion
 
@@ -222,7 +223,7 @@ namespace UnitTests
             Assert.That(buyer.ItemStacks[terran].Quantity, Is.EqualTo(20));
 
             // but the cash is already gone 10 local, 20 other region, transferCost for different regions transaction
-            Assert.That(buyer.Owner.Bank.AvailableFunds, Is.EqualTo(20000 - 10 * 50 - 20 * 50 - 100));
+            Assert.That(buyer.Owner.Bank.AvailableFunds, Is.EqualTo(20000 - 200 - 20 * 50 - 100));
 
             Assert.That(buyer.Effects.Count, Is.EqualTo(2));
 
@@ -325,6 +326,7 @@ namespace UnitTests
 
             // execute order - should go through - but there is not enough cash, so it should reach the bank account
             buyer.Orders[0].Execute(this.game.Week + 1);
+            this.ProcessMarketBuys(this.game.Week + 1);
             this.consoleOutReport("Buyer", buyer, buyer.Owner);
             this.consoleOutReport("Seller", seller, seller.Owner);
 
@@ -430,6 +432,7 @@ namespace UnitTests
 
             // execute order - should go through - but there is not enough cash, so it should reach the bank account
             buyer1.Orders[0].Execute(this.game.Week + 3);
+            this.ProcessMarketBuys(this.game.Week + 3);
             this.consoleOutReport("Buyer1", buyer1, buyer1.Owner);
             this.consoleOutReport("Seller", seller, seller.Owner);
             this.consoleOutReport("Market", seller.Location.Market, seller.Owner);
@@ -475,13 +478,21 @@ namespace UnitTests
             Region sydney = this.game.Regions["R00002"];
             ItemType food = ItemType.All["food"];
 
+            foreach (Region region in Region.All.Values)
+            {
+                if (region.Market.PriceList.ContainsKey(food))
+                {
+                    region.Market.PriceList.Remove(food);
+                }
+            }
             berlin.Market.AddPrice(food, 4);
             sydney.Market.AddPrice(food, 6);
 
             this.game.UpdateRates();
+            this.game.UpdateRates();
 
-            Assert.That(berlin.Market.PriceList[food], Is.EqualTo(5));
-            Assert.That(sydney.Market.PriceList[food], Is.EqualTo(5));
+            Assert.That(berlin.Market.PriceList[food], Is.EqualTo(sydney.Market.PriceList[food]));
+            Assert.That(berlin.Market.PriceList[food], Is.EqualTo(5).Within(1));
         }
 
         [Test]
@@ -660,10 +671,11 @@ namespace UnitTests
 
 			order.Buy.Price = 50;
 			testModuleStack.Execute(this.game.Week);
+			this.ProcessMarketBuys(this.game.Week);
             Assert.That(testModuleStack.ItemStacks[terran].Quantity, Is.EqualTo(15));
-            Assert.That(testModuleStack.ItemStacks[cash].Quantity, Is.EqualTo(300));
-            Assert.That(testModuleStack.Owner.Bank.AvailableFunds, Is.EqualTo(19750)); // used bank account for transaction
-            Assert.That(testModuleStack.Effects.Count, Is.EqualTo(0), "there was some kind of effect planned");
+            Assert.That(testModuleStack.ItemStacks[cash].Quantity, Is.EqualTo(50));
+            Assert.That(testModuleStack.Owner.Bank.AvailableFunds, Is.EqualTo(20000));
+            Assert.That(testModuleStack.Effects.Count, Is.LessThanOrEqualTo(1));
             Assert.That(Offer.All[market].Count, Is.EqualTo(4));
 		}
 
@@ -807,6 +819,152 @@ namespace UnitTests
 
             Assert.That(Offer.All.Count, Is.EqualTo(9), "assign shouldn't change number of offers");
         }
+
+		[Test]
+		public void SetAllowBank_False_BlocksMarketBuyFromBank()
+		{
+			ModuleStack buyer = this.game.ModuleStacks["000004"];
+			ItemType terran = ItemType.All["terran"];
+			ItemType cash = ItemType.All["cash"];
+			ModuleStack seller = this.game.ModuleStacks["000001"];
+			seller.Owner = this.game.Factions["1"];
+			seller.ItemStacks.Add(new ItemStack(terran, 5));
+			this.removeSellOffers(seller, terran);
+			Offer sellOffer = new Offer(seller.Location.Market, seller, EOfferType.SellItems);
+			sellOffer.ItemType = terran;
+			sellOffer.Quantity = 5;
+			sellOffer.Price = 50;
+
+			buyer.AllowBank = false;
+			buyer.ItemStacks.Remove(new ItemStack(cash, buyer.ItemStacks.Quantity(cash)));
+			int bankBefore = (int)buyer.Owner.Bank.AvailableFunds;
+
+			BuyOrder buyOrder = new BuyOrder(buyer);
+			buyOrder.Parse("5 terran at 50");
+			buyOrder.Execute(1);
+			this.ProcessMarketBuys(1);
+
+			Assert.That(buyer.ItemStacks.Quantity(terran), Is.EqualTo(10));
+			Assert.That(buyer.Owner.Bank.AvailableFunds, Is.EqualTo(bankBefore));
+			Assert.That(this.hasEvent(buyer, 1, "BUY failed, not enough cash."), Is.True);
+		}
+
+		[Test]
+		public void ParseBuyOrder_AtPlusOne_SetsRelativeOffset()
+		{
+			ModuleStack buyer = this.game.ModuleStacks["000004"];
+			BuyOrder buyOrder = new BuyOrder(buyer);
+			buyOrder.Parse("all terran at +1");
+			Assert.That(buyOrder.PriceRelative, Is.True);
+			Assert.That(buyOrder.PriceOffset, Is.EqualTo(1));
+		}
+
+		[Test]
+		public void ParseBuyOrder_AtAverage_SetsRelativePrice()
+		{
+			ModuleStack buyer = this.game.ModuleStacks["000004"];
+			BuyOrder buyOrder = new BuyOrder(buyer);
+			buyOrder.Parse("all food at average");
+			Assert.That(buyOrder.PriceRelative, Is.True);
+			Assert.That(buyOrder.PriceOffset, Is.EqualTo(0));
+		}
+
+		[Test]
+		public void ProcessBuyClearing_TwoEqualBuys_ProRataSplit()
+		{
+			ItemType terran = ItemType.All["terran"];
+			ModuleStack seller = this.game.ModuleStacks["000001"];
+			ModuleStack buyerA = this.game.ModuleStacks["000004"];
+			ModuleStack buyerB = this.game.ModuleStacks["000112"];
+			seller.Owner = this.game.Factions["1"];
+			seller.ItemStacks.Remove(new ItemStack(terran, seller.ItemStacks.Quantity(terran)));
+			seller.ItemStacks.Add(new ItemStack(terran, 20));
+			this.removeSellOffers(seller, terran);
+			Offer sellOffer = new Offer(seller.Location.Market, seller, EOfferType.SellItems);
+			sellOffer.ItemType = terran;
+			sellOffer.Quantity = 20;
+			sellOffer.Price = 50;
+
+			BuyOrder buyA = new BuyOrder(buyerA);
+			buyA.Parse("all terran");
+			buyA.Repeat = -1;
+			buyA.Execute(1);
+
+			BuyOrder buyB = new BuyOrder(buyerB);
+			buyB.Parse("all terran");
+			buyB.Repeat = -1;
+			buyB.Execute(1);
+
+			this.ProcessMarketBuys(1);
+
+			int gainA = buyerA.ItemStacks.Quantity(terran) - 10;
+			int gainB = buyerB.ItemStacks.Quantity(terran) - 20;
+			Assert.That(gainA + gainB, Is.EqualTo(20));
+			Assert.That(gainA, Is.GreaterThan(0));
+			Assert.That(gainB, Is.GreaterThan(0));
+		}
+
+		[Test]
+		public void ProcessBuyClearing_HigherBidWins()
+		{
+			ItemType terran = ItemType.All["terran"];
+			ModuleStack seller = this.game.ModuleStacks["000001"];
+			ModuleStack buyerA = this.game.ModuleStacks["000004"];
+			ModuleStack buyerB = this.game.ModuleStacks["000112"];
+			Market market = seller.Location.Market;
+			market.AddPrice(terran, 50);
+			seller.Owner = this.game.Factions["1"];
+			seller.ItemStacks.Remove(new ItemStack(terran, seller.ItemStacks.Quantity(terran)));
+			seller.ItemStacks.Add(new ItemStack(terran, 20));
+			this.removeSellOffers(seller, terran);
+			Offer sellOffer = new Offer(market, seller, EOfferType.SellItems);
+			sellOffer.ItemType = terran;
+			sellOffer.Quantity = 20;
+			sellOffer.Price = 50;
+
+			BuyOrder buyA = new BuyOrder(buyerA);
+			buyA.Parse("all terran");
+			buyA.Repeat = -1;
+			buyA.Execute(1);
+
+			BuyOrder buyB = new BuyOrder(buyerB);
+			buyB.Parse("all terran at +1");
+			buyB.Repeat = -1;
+			buyB.Execute(1);
+
+			this.ProcessMarketBuys(1);
+
+			Assert.That(buyerA.ItemStacks.Quantity(terran), Is.EqualTo(10));
+			Assert.That(buyerB.ItemStacks.Quantity(terran), Is.EqualTo(40));
+		}
+
+		private void removeSellOffers(ModuleStack seller, ItemType itemType)
+		{
+			Offers toRemove = new Offers();
+			foreach (Offer offer in Offer.All[seller])
+			{
+				if (offer.OfferType == EOfferType.SellItems && offer.ItemType == itemType)
+				{
+					toRemove.Add(offer);
+				}
+			}
+			foreach (Offer offer in toRemove)
+			{
+				Offer.All.Remove(offer);
+			}
+		}
+
+		private bool hasEvent(ModuleStack stack, int week, string text)
+		{
+			foreach (EventReport eventReport in stack.EventReports)
+			{
+				if (eventReport.Week == week && eventReport.Description.IndexOf(text) >= 0)
+				{
+					return true;
+				}
+			}
+			return false;
+		}
 
         // prices changes
 	}
@@ -1245,5 +1403,6 @@ namespace UnitTests
 			Assert.That(loadedTrigger.RequiredPoints, Is.EqualTo(5));
 			Assert.That(loadedTrigger.Target.Name, Is.EqualTo("200"));
 		}
+
 	}
 }

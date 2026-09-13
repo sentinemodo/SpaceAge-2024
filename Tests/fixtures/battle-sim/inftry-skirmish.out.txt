@@ -1,4 +1,4 @@
-SpaceAge Battle Simulator v0.1.158
+SpaceAge Battle Simulator v0.1.159
 Seed: 42
 Location: Region
 

@@ -1,8 +1,8 @@
 # Player order syntax
 
-Checked **9 Sep 2026** against engine **0.1.158** (`Game/Program.cs`).
+Checked **13 Sep 2026** against engine **0.1.159** (`Game/Program.cs`).
 
-Sources: `Game/orders/EOrderType.cs`, `Game/orders/OrderFactory.cs`, `Game/orders/OrdersReader.cs`, `Game/orders/Orders.cs`, `Game/orders/JumpOrder.cs`, `Game/orders/MoveOrder.cs`, `Game/orders/LongOrder.cs` (`CanOperate`, atmosphere and effective location), `Game/game/SpaceTransit.cs` (`f(ΔAU)`, mass factor, baked space-exit weeks), `Game/Game.cs` (week loop, `GenerateOffers`), `Game/Program.cs` (`/data`, `/turn-dir`, `/reports`, `/no-turn`, `/check`), `Game/Research.cs` (weekly output, breakthrough, preference, space-object proximity and reveal), `Game/SurveyReports.cs`, `Game/data structures/SurveyObjects.cs`, `Game/data structures/ModuleStack.Upkeep.cs` (sick bay, medical consume, quarterly maintenance, high-gravity bill), `Game/data structures/Galaxy.cs` (`LoadXml` / `LoadExits` / save of environment attrs, belt and alderson exits), `Game/data structures/Alderson.cs` (`PairName`, orbit only), `Game/data structures/Belt.cs` (`LocationType` space), `Game/data structures/Planet.cs` / `Moon.cs` (`HasEnvironmentAttrs`), `Game/data structures/ELocationType.cs` (`atmosphere`), `Game/data structures/BodyEnvironment.cs` (`EffectiveLocationType`, `HasAtmosphereResources`, `LaunchSurcharge`, `SurfaceOrbitSurcharge`, `BansNonShuttleSurfaceHop`, settlement temperature, gravity), `Game/data structures/Orbit.cs` (`HasAtmosphere`, orbit resources), `Game/data structures/ModuleType.cs` (`IsShipHullType` / `IsShuttleUnit`), `Game/data structures/Exits.cs` / `ExitMode.cs` / `Region.cs` (region **Exits:** lines), `Game/data structures/Faction.cs` (blank line before `Bank report:`), `Game/reports/ReportWriter.cs` (faction report sections and blank lines), `Game/battle/Battles.cs` (blank line between consecutive battles), `Game/game/DataFile.cs` (`LoadLocationType`, `LoadOrders` / `SaveOrders` delegate to `OrderXml`), `Game/game/OrderXml.cs` (XML switch, including `jump`), `Game/game/ModuleTypeGroupXml.cs` (`RESEARCH GROUP` tokens), `Game/game/CatalogLoader.cs` (`planet-atmosphere`, `location-type`), `Game/effects/Effects.cs` (`LoadXml` effect types), `Game/effects/Producing.cs` (omit empty `technology=`), each `Game/orders/*Order.Parse` / `Execute`. Sample prefix usage: `Tests/SampleGame/orders.*.txt`.
+Sources: `Game/orders/EOrderType.cs`, `Game/orders/OrderFactory.cs`, `Game/orders/OrdersReader.cs`, `Game/orders/Orders.cs`, `Game/orders/JumpOrder.cs`, `Game/orders/MoveOrder.cs`, `Game/orders/LongOrder.cs` (`CanOperate`, atmosphere and effective location), `Game/game/SpaceTransit.cs` (`f(ΔAU)`, mass factor, baked space-exit weeks), `Game/Game.cs` (week loop, `GenerateOffers`, `ProcessBuyOffers`), `Game/Program.cs` (`/data`, `/turn-dir`, `/reports`, `/no-turn`, `/check`), `Game/Research.cs` (weekly output, breakthrough, preference, space-object proximity and reveal), `Game/SurveyReports.cs`, `Game/data structures/SurveyObjects.cs`, `Game/data structures/ModuleStack.Upkeep.cs` (sick bay, medical consume, quarterly maintenance, high-gravity bill, `AllowBank` on cash upkeep), `Game/data structures/ModuleStack.Economy.cs` (`AllowBank`, `HasBankAccess`), `Game/data structures/Galaxy.cs` (`LoadXml` / `LoadExits` / save of environment attrs, belt and alderson exits), `Game/data structures/Alderson.cs` (`PairName`, orbit only), `Game/data structures/Belt.cs` (`LocationType` space), `Game/data structures/Planet.cs` / `Moon.cs` (`HasEnvironmentAttrs`), `Game/data structures/ELocationType.cs` (`atmosphere`), `Game/data structures/BodyEnvironment.cs` (`EffectiveLocationType`, `HasAtmosphereResources`, `LaunchSurcharge`, `SurfaceOrbitSurcharge`, `BansNonShuttleSurfaceHop`, settlement temperature, gravity), `Game/data structures/Orbit.cs` (`HasAtmosphere`, orbit resources), `Game/data structures/ModuleType.cs` (`IsShipHullType` / `IsShuttleUnit`), `Game/data structures/Exits.cs` / `ExitMode.cs` / `Region.cs` (region **Exits:** lines), `Game/data structures/Faction.cs` (blank line before `Bank report:`), `Game/reports/ReportWriter.cs` (faction report sections and blank lines), `Game/battle/Battles.cs` (blank line between consecutive battles), `Game/game/DataFile.cs` (`LoadLocationType`, `LoadOrders` / `SaveOrders` delegate to `OrderXml`), `Game/game/OrderXml.cs` (XML switch, including `jump`), `Game/game/ModuleTypeGroupXml.cs` (`RESEARCH GROUP` tokens), `Game/game/CatalogLoader.cs` (`planet-atmosphere`, `location-type`), `Game/game/Market.cs` (`GetPrice`, `payBuyer`, `availableFunds`), `Game/game/Market.Clearing.cs` (regional buy clearing, pro-rata), `Game/data structures/Offer.cs` (`GetEffectiveBidCap`, `MatchesAsk`), `Game/effects/Effects.cs` (`LoadXml` effect types), `Game/effects/Producing.cs` (omit empty `technology=`), each `Game/orders/*Order.Parse` / `Execute`. Sample prefix usage: `Tests/SampleGame/orders.*.txt`.
 
 Not source of truth: `Game/documentation/Rules.txt`. Turn order files are **Windows-1251** (same as reports). Verbs are case-insensitive; most arguments are not.
 
@@ -65,7 +65,7 @@ From `Game.exe` (`Program.Main`) and `Game.Execute`. A turn is **13 weeks**. Com
 
 ### Host pipeline
 
-`Program.Main` is public. Engine version **0.1.158** (`Program.EngineVersion`). Flags share one parse loop: `/reports` and `/no-turn` are bare switches (no following argument); `/data`, `/turn-dir`, and `/check` take the next token.
+`Program.Main` is public. Engine version **0.1.159** (`Program.EngineVersion`). Flags share one parse loop: `/reports` and `/no-turn` are bare switches (no following argument); `/data`, `/turn-dir`, and `/check` take the next token.
 
 
 | Flag        | Argument  | Effect                                                                                     |
@@ -108,12 +108,12 @@ Clear last turn’s event reports, then `turn++`. Drop stale per-unit stances (`
 3. **Sick-bay heal** — stacks whose module type heals `wndtrn` (catalog: sick bay `[sckbay]`). With medicines `[medici]` on the stack, convert up to **4 wounded per bay** into terran `[terran]` this week and consume 1 medici each. Without medicines, count unmedicated weeks and every **4 weeks** convert **2 wounded per bay**. Medical facility `[medfac]` heal is catalog-only (`target="stacked"`) and does not run here.
 4. **Medical consume** — `medici` for remaining wounded/mad crew on each stack (`wndtrn` / `madtrn`). Food and breathing gas are not deducted here.
 5. **Contracts** — evaluate triggers and pay rewards.
-6. **Buy offers** — each standing `BUY` tries to match a sell (`Offer.Process`). `SELL` only lists; matching is from the buy side.
+6. **Buy offers** — after all orders for the week finish (`ExecuteOrders`), `ProcessBuyOffers` runs. Local item/module `BUY` orders only post or reuse standing offers during the week (`BuyOrder.Execute`); **matching waits until this step**. Per region, `Market.ProcessBuyClearing` clears item and module buys against the cheapest regional sell for each type (pro-rata among equal bids; higher bid wins over any-price). Technology buys and `EVERYWHERE` buys still use per-offer `Offer.Process`. `SELL` only lists; matching is from the buy side.
 7. **Battles** — `Battle.StartAtLocations` then `Execute` (see `player/battle.md`). Then drop stale per-unit stances again.
 
 After week 13: **quarterly maintenance**, then **quarterly wounded outcome**, then clear long/immediate flags; drop unformed stacks that should not report (`RemoveNonReporting`).
 
-**Quarterly maintenance** (`ExecuteMaintenance`, once, week 13): cash upkeep, then food, then terran air `[terair]` if the stack needs canned air (orbit, space, or a moon region). Bills auto-GET from this stack’s own nest (self, then nested children), then the parent chain, then other same-owner stacks at the same location. Cash shortfall can also debit the faction bank. When cash (or any other upkeep item) is actually deducted (`taken > 0`), the stack logs `week 13: paid N cash [cash] upkeep.` (`ItemType.ReportName` is `cash [cash]`; same `paid N {item} upkeep.` shape for food/air). Each formed stack pays its own `UpkeepNetto` (`localUpkeep` does not roll nested children into the parent bill). Nested hangar craft still pay if they remain nested through week 13; after hangar launch they pay as roots (4 alien fighter drones `[alndrn]` at 20 cash each = `paid 80 cash [cash] upkeep.`). Unpaid food/air can wound healthy terrans (catalog 25%). Unpaid cash can damage the module or print race off-duty. `medici` is skipped here (already weekly).
+**Quarterly maintenance** (`ExecuteMaintenance`, once, week 13): cash upkeep, then food, then terran air `[terair]` if the stack needs canned air (orbit, space, or a moon region). Bills auto-GET from this stack’s own nest (self, then nested children), then the parent chain, then other same-owner stacks at the same location. Cash shortfall can also debit the faction bank when the stack has **`AllowBank` true** (default; see [SET](#set)). When cash (or any other upkeep item) is actually deducted (`taken > 0`), the stack logs `week 13: paid N cash [cash] upkeep.` (`ItemType.ReportName` is `cash [cash]`; same `paid N {item} upkeep.` shape for food/air). Each formed stack pays its own `UpkeepNetto` (`localUpkeep` does not roll nested children into the parent bill). Nested hangar craft still pay if they remain nested through week 13; after hangar launch they pay as roots (4 alien fighter drones `[alndrn]` at 20 cash each = `paid 80 cash [cash] upkeep.`). Unpaid food/air can wound healthy terrans (catalog 25%). Unpaid cash can damage the module or print race off-duty. `medici` is skipped here (already weekly).
 
 **High gravity** (`BodyEnvironment.GravityAt` == `high`): that stack’s local cash bill is multiplied by **1.5** (ceiling). Stacks with people or `population-maximum` > 0 also add **2 food**. Planets with no `gravity` attribute load as `normal`; moons with no attribute load as `low`. SampleGame maps have no `gravity=` attrs, so this surcharge does not fire there.
 
@@ -125,7 +125,9 @@ After week 13: **quarterly maintenance**, then **quarterly wounded outcome**, th
 - `UpdateRates` — each quarter after bank interest: (1) for each region that already posted an item price, set that price to the **galaxy-wide average** of all regions that posted that item (integer, min 1 when average ≥ 0.5); standing offer **objects** keep their saved price — only regional price lists drift; (2) player factions 2–11: if balance > 5000, deposit rate −0.005 (floor 0.01); if balance < 0, credit rate +0.005 (ceiling 0.25).
 - `GenerateOffers` — NPC faction `[1]` stacks whose module type is `city` auto-list on-hand inventory as `SellItems` `Offer`s (same objects as XML `<selling>`; not leftover player `SELL` orders). Skips cash. Skips an item type if that city already has a **buy or sell** offer for it (no simultaneous buy+sell of the same type; standing offers are not rewritten, so existing NPC city sells **remain** at their saved quantity and price). Quantity for a **new** listing is on-hand; price is `Market.GetPrice` (regional average if any region posted a price, else catalog nominal `value`, else 0); skip if price ≤ 0. Farms and other non-city stacks are not auto-listed. Listings appear on this turn’s reports and save; weekly buy matching (step 6) can hit them from **next** turn. Duration-0 leftover `receiving-items` on cities (old market delivery) **persist** after save but **never complete**; there is no player verb that clears them.
 
-Standing `@buy` / `@sell` stay on the order list and retry each week at step 6. NPC city auto-listings have no leftover `SELL` and persist as market `Offer`s. `ATTACK` / `TACTIC` / `DECLARE` during step 2 only set stance; shooting is step 7.
+Standing `@buy` / `@sell` stay on the order list and retry each week at step 6. A successful regional buy marks the leftover `BUY` executed for that week (same as before); `@buy` retries next week. NPC city auto-listings have no leftover `SELL` and persist as market `Offer`s. `ATTACK` / `TACTIC` / `DECLARE` during step 2 only set stance; shooting is step 7.
+
+**Market payment:** when a buy clears, **`payBuyer` spends local cash on the trading stack first**, then debits the faction bank if the buyer has bank access (`AllowBank` / `HasBankAccess`). With `SET ALLOW BANK FALSE`, only on-hand cash counts — insufficient local cash logs `BUY failed, not enough cash.` and skips the trade (bank balance unchanged).
 
 ## Immediate vs long
 
@@ -176,7 +178,7 @@ Typical bootstrap at headquarters (SampleGame and campaign turn 1):
 3. **`GET` fuel and inputs** — e.g. `@get all carbon from <cdrill-id>` into the cargo bay, then coal plant `@produce energy`.
 4. **`@produce energy`** on coal or wind plants so nested stacks meet energy requirements.
 5. **`@use farmng` / `@use hcdril`** once the stack is operational.
-6. **`@get`** surplus into the cargo bay; **`SELL … AT AVERAGE`** for exports; local **`@buy`** for metals (see [BUY](#buy) — **`AT AVERAGE` is SELL-only**).
+6. **`@get`** surplus into the cargo bay; **`SELL … AT AVERAGE`** for exports; local **`@buy … AT AVERAGE`** (or **`AT +N`**) for metals (see [BUY](#buy)).
 
 #### Buy crew when short (campaign turn 1 example)
 
@@ -299,12 +301,23 @@ Sets the owner’s attitude toward that unit id to **enemy**. Combat itself is r
 
 **Syntax:**
 
-- `BUY <quantity\|ALL> <item-id\|module-id> [AT <price>] [EVERYWHERE]`
+- `BUY <quantity\|ALL> <item-id\|module-id> [AT <price>|AVERAGE [+<offset>]|+<offset>] [EVERYWHERE]`
 - `BUY <technology-id> [AT <price>] [EVERYWHERE]`
 
 **Subject:** an offerent (trading stack).
 
-Posts a standing buy on the local market (`Offer.Process`). Matching can complete against leftover player `SELL` and against market `Offer`s (XML `<selling>`, including NPC city auto-listings from end of turn). Quantity `ALL` sets `AllQuantity`. Omitted `AT` leaves price unrestricted (`Price = -1`). **`AT` takes a numeric price only** — unlike [SELL](#sell), **`AT AVERAGE` is not parsed on BUY** (throws `bad syntax price expected`). Optional trailing **`EVERYWHERE`** is parsed but **campaign execution currently throws** (`Regions.DistanceBetween` not implemented) when matching distant markets — omit `EVERYWHERE` on campaign maps until fixed, or use local `@buy` without it. First token is treated as a **technology id** if it is in the catalog (do not write a trailing `technology` word — Parse would reject it). Sample: `@buy all terran`, `@buy all iron` (local market).
+Posts a standing buy on the local market. During the week `Execute` only creates or reuses the offer; **local item/module matching runs later** in `ProcessBuyOffers` (see [Turn sequence](#turn-sequence)). Matching can complete against leftover player `SELL` and against market `Offer`s (XML `<selling>`, including NPC city auto-listings from end of turn). Quantity `ALL` sets `AllQuantity`.
+
+**Price:**
+
+- Omitted `AT` — any price (`MatchesAsk` accepts any ask; bid cap for clearing ties is regional `Market.GetPrice`).
+- `AT <number>` — max price per unit.
+- `AT AVERAGE` — cap at regional average (`Market.GetPrice`), same basis as [SELL](#sell) `AT AVERAGE`.
+- `AT AVERAGE +N` or shorthand **`AT +N`** — cap at average **+ N** (e.g. `@buy all terran at +1` outbids `@buy all terran` at list when both compete for the same sell).
+
+**Regional clearing:** within one region market, competing buys at the **same bid cap** split available sell quantity **pro-rata** (by each buyer’s budget, capacity, and remaining demand). A **higher bid** (numeric cap or `AT +N`) takes the tier alone — any-price buyers at list do not share with `at +1`. Cheapest regional sell is cleared first; the loop repeats until no sell or no matching buys.
+
+Optional trailing **`EVERYWHERE`** is parsed but **campaign execution currently throws** (`Regions.DistanceBetween` not implemented) when matching distant markets — omit `EVERYWHERE` on campaign maps until fixed, or use local `@buy` without it. Technology buys still match immediately via `Offer.Process`, not regional clearing. First token is treated as a **technology id** if it is in the catalog (do not write a trailing `technology` word — Parse would reject it). Sample: `@buy all terran`, `@buy all iron at average`, `@buy all terran at +1`.
 
 ### CAPTURE
 
@@ -448,14 +461,15 @@ Lists a standing sell (`Offer`) and keeps a leftover `SELL` on the template. Mat
 
 ### SET
 
-**Syntax:** `SET AVOID|ONLINE TRUE|FALSE`
+**Syntax:** `SET AVOID|ONLINE|ALLOW BANK TRUE|FALSE`
 
 **Subject:** modulestack.
 
-Flag name and `TRUE`/`FALSE` are **case-insensitive**; Parse stores the flag as uppercase `AVOID` or `ONLINE`.
+Flag name and `TRUE`/`FALSE` are **case-insensitive**; Parse stores the flag as uppercase `AVOID`, `ONLINE`, or `ALLOW BANK`.
 
 - `SET AVOID TRUE|FALSE` — sets `IsAvoiding`. Not a battle tactic (see `player/battle.md`).
 - `SET ONLINE TRUE|FALSE` — `ModuleStack.SetOnline`: stack `Online` and every `module.Online`. Captured modules are left `Online=false` (report: deactivated); there is no other activate verb. Sample: `set online true`.
+- `SET ALLOW BANK TRUE|FALSE` — sets `AllowBank` on the stack (default **true** on new stacks and when the save omits `allow-bank`). When **false**, market buys and quarterly **cash upkeep** may spend only **local cash** on that stack — the faction bank is not debited (`HasBankAccess` is false). People nested on the stack inherit the parent’s setting. Sample: `set allow bank false` on a trading stack to cap market spend to withdrawn cash.
 
 ### STACK
 

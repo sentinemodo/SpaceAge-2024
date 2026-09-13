@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="windows-1251"?>
 <game turn="2">
-	<faction name="1" name-en="NPC" password="" email="" default-attitude="2" text-report="True" text-report-line-length="100" xml-report="True" balance="1000" credit-line="0" credit-rate="0" deposit-rate="0" />
+	<faction name="1" name-en="NPC" password="" email="" default-attitude="2" text-report="True" text-report-line-length="100" xml-report="True" balance="0" credit-line="0" credit-rate="0" deposit-rate="0" />
 	<faction name="2" name-en="Caste Prime" password="xyzzy" email="mail1@mail.pl" default-attitude="2" text-report="True" text-report-line-length="100" xml-report="True" balance="10000" credit-line="10000" credit-rate="0.2" deposit-rate="0.05" />
-	<faction name="3" name-en="Gelvaren" password="abccb" email="mail2@mail.pl" default-attitude="2" text-report="True" text-report-line-length="72" xml-report="True" balance="9000" credit-line="10000" credit-rate="0.2" deposit-rate="0.05" />
+	<faction name="3" name-en="Gelvaren" password="abccb" email="mail2@mail.pl" default-attitude="2" text-report="True" text-report-line-length="72" xml-report="True" balance="10000" credit-line="10000" credit-rate="0.2" deposit-rate="0.05" />
 	<galaxy>
 		<system name="SS0001" name-en="Sol" X="0" Y="0" Z="0">
 			<star name="S00001" name-en="Sol" />
@@ -308,11 +308,13 @@
 					<resource type="food" quantity="500" />
 					<modulestack name="000006" name-en="Sydney" type="city" quantity="2" faction="1">
 						<itemstack type="cash" quantity="2000" />
+						<itemstack type="terran" quantity="20" />
 						<upkeep type="food" quantity="200" />
-						<upkeep type="cash" quantity="1028" />
+						<upkeep type="cash" quantity="1048" />
 						<buying item="food" quantity="200" price="1" />
 						<buying module="wnplnt" quantity="1" price="50" />
 						<selling item="food" quantity="59" price="5" />
+						<selling item="terran" quantity="20" price="50" />
 						<modulestack name="000007" name-en="Sydney garrison" type="inftry" quantity="1" faction="1">
 							<itemstack type="rctlnc" quantity="1" />
 							<upkeep type="cash" quantity="5" />
@@ -337,7 +339,7 @@
 					</modulestack>
 					<modulestack name="000026" name-en="Gelvaren complex" type="city" quantity="1" faction="3">
 						<upkeep type="food" quantity="100" />
-						<upkeep type="cash" quantity="889" />
+						<upkeep type="cash" quantity="860" />
 						<buying item="food" quantity="100" price="1" />
 						<selling item="food" quantity="25" price="5" />
 						<selling item="terran" quantity="10" price="50" />
@@ -348,24 +350,25 @@
 						<event week="13" description="given 1000 cash [cash] to Gelvaren Headquarters [000018]." />
 						<event week="13" description="given 10 terrans [terran] to Gelvaren Headquarters [000018]." />
 						<modulestack name="000018" name-en="Gelvaren Headquarters" type="corphq" quantity="1" faction="3">
-							<itemstack type="terran" quantity="48" />
-							<itemstack type="cash" quantity="2658" />
-							<upkeep type="cash" quantity="148" />
+							<itemstack type="terran" quantity="29" />
+							<itemstack type="cash" quantity="1958" />
+							<upkeep type="cash" quantity="129" />
 							<buying item="terran" quantity="all" price="any" />
+							<effect duration="1" type="training-officer" race="terran" officer="107" officer-parent="000018" />
 							<event week="1" description="got 1000 cash [cash] from Gelvaren complex [000026]." />
 							<event week="1" description="got 10 terrans [terran] from Gelvaren complex [000026]." />
 							<event week="4" description="given 16 terrans [terran] to peaceful scout [108]." />
 							<event week="4" description="given 42 cash [cash] to peaceful scout [108]." />
-							<event week="6" description="trained terran [terran] into terran officer [107]." />
-							<event week="7" description="produced 100 cash [cash]." />
-							<event week="8" description="produced 100 cash [cash]." />
-							<event week="9" description="produced 100 cash [cash]." />
-							<event week="10" description="produced 100 cash [cash]." />
-							<event week="11" description="produced 100 cash [cash]." />
-							<event week="12" description="produced 100 cash [cash]." />
+							<event week="5" description="TRAIN failed: Gelvaren Headquarters [000018] has not enough crew to operate - 20 required, 19 available." />
+							<event week="6" description="TRAIN failed: Gelvaren Headquarters [000018] has not enough crew to operate - 20 required, 19 available." />
+							<event week="7" description="TRAIN failed: Gelvaren Headquarters [000018] has not enough crew to operate - 20 required, 19 available." />
+							<event week="8" description="TRAIN failed: Gelvaren Headquarters [000018] has not enough crew to operate - 20 required, 19 available." />
+							<event week="9" description="TRAIN failed: Gelvaren Headquarters [000018] has not enough crew to operate - 20 required, 19 available." />
+							<event week="10" description="TRAIN failed: Gelvaren Headquarters [000018] has not enough crew to operate - 20 required, 19 available." />
+							<event week="11" description="TRAIN failed: Gelvaren Headquarters [000018] has not enough crew to operate - 20 required, 19 available." />
+							<event week="12" description="TRAIN failed: Gelvaren Headquarters [000018] has not enough crew to operate - 20 required, 19 available." />
 							<event week="13" description="got 1000 cash [cash] from Gelvaren complex [000026]." />
 							<event week="13" description="got 10 terrans [terran] from Gelvaren complex [000026]." />
-							<event week="13" description="produced 100 cash [cash]." />
 						</modulestack>
 						<modulestack name="000019" type="cargob" quantity="1" faction="3">
 							<itemstack type="food" quantity="1088" />
@@ -507,18 +510,7 @@
 							</modulestack>
 						</modulestack>
 						<modulestack name="110" type="inftry" quantity="1" faction="3">
-							<person name="107" race="terran" faction="3">
-								<skill name="inbtcm" experience="1" />
-								<upkeep type="cash" quantity="10" />
-								<event week="1" description="started training of terran [terran] officer." />
-								<event week="6" description="trained by Gelvaren Headquarters [000018]." />
-								<event week="6" description="stacked under military barrack [000025]." />
-								<event week="6" description="started training of infantry battalion commander [inbtcm] skill." />
-								<event week="9" description="trained infantry battalion commander [inbtcm] skill." />
-								<event week="9" description="saw infantry battalion [110] in Southern Hemisphere [R00003] (1,0)." />
-								<event week="9" description="stacked under infantry battalion [110]." />
-							</person>
-							<upkeep type="cash" quantity="15" />
+							<upkeep type="cash" quantity="5" />
 							<event week="1" description="formed by military barrack [000025] with infantry battalion [inftry]." />
 							<event week="13" description="received infantry battalion [inftry] produced by military barrack [000025]." />
 						</modulestack>
@@ -548,6 +540,11 @@
 		</order>
 		<order subject="modulestack" name="000026" repeat="unlimited">
 			<produce produce-type="item" item="terran" />
+		</order>
+		<order subject="modulestack" name="000018">
+			<train>
+				<officer name="107" race="terran" />
+			</train>
 		</order>
 		<order subject="modulestack" name="000018" repeat="unlimited">
 			<get item="cash" quantity="all" transferer="000026" />
@@ -580,6 +577,20 @@
 			<active observed="101" />
 			<order conditions="-">
 				<name description="Caste Prime valiant explorer" />
+			</order>
+		</order>
+		<order subject="person" name="107">
+			<stack parent="000025" />
+			<order conditions="-">
+				<train>
+					<skill skill="inbtcm" />
+				</train>
+				<order conditions="--">
+					<see see-type="modulestack" modulestack="110" />
+					<order conditions="---">
+						<stack parent="110" />
+					</order>
+				</order>
 			</order>
 		</order>
 	</orders>

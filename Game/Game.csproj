@@ -216,6 +216,7 @@
     <Compile Include="data structures\SpaceSystemObject.cs" />
     <Compile Include="data structures\Moon.cs" />
     <Compile Include="game\Market.cs" />
+    <Compile Include="game\Market.Clearing.cs" />
     <Compile Include="orders\BuyOrder.cs" />
     <Compile Include="orders\ProduceOrder.cs" />
     <Compile Include="orders\SeeOrder.cs" />
