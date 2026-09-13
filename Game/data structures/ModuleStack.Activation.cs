@@ -14,6 +14,56 @@ namespace SpaceAge
 			set { this.online = value; }
 		}
 
+		public int ActivateModules(int count)
+		{
+			int previousQuantityActive = this.QuantityActive;
+			int activated = 0;
+			int target = count < 0 ? int.MaxValue : count;
+			foreach (Module module in this.modules)
+			{
+				if (activated >= target)
+				{
+					break;
+				}
+				if (!module.Activated)
+				{
+					module.Activated = true;
+					activated++;
+				}
+			}
+			this.recalculateEffectsDuration(previousQuantityActive);
+			return activated;
+		}
+
+		public int DeactivateModules(int count)
+		{
+			int previousQuantityActive = this.QuantityActive;
+			int deactivated = 0;
+			int target = count < 0 ? int.MaxValue : count;
+			foreach (Module module in this.modules)
+			{
+				if (deactivated >= target)
+				{
+					break;
+				}
+				if (module.Activated)
+				{
+					module.Activated = false;
+					deactivated++;
+				}
+			}
+			this.recalculateEffectsDuration(previousQuantityActive);
+			return deactivated;
+		}
+
+		private void recalculateEffectsDuration(int previousQuantityActive)
+		{
+			if (previousQuantityActive != 0 && this.QuantityActive != 0)
+			{
+				this.effects.RecalculateDuration(previousQuantityActive / this.QuantityActive);
+			}
+		}
+
 		public bool IsActive
 		{
 			get

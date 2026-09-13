@@ -6,7 +6,7 @@ Sources: `Game/orders/EOrderType.cs`, `Game/orders/OrderFactory.cs`, `Game/order
 
 Not source of truth: `Game/documentation/Rules.txt`. Turn order files are **Windows-1251** (same as reports). Verbs are case-insensitive; most arguments are not.
 
-**27** verbs register in `OrderFactory.ByVerb` (text via `OrdersReader`, saved games via `OrderXml`): **20 immediate**, **7 long**. See [Turn sequence](#turn-sequence), [Immediate vs long](#immediate-vs-long), and [Text vs XML](#text-vs-xml).
+**29** verbs register in `OrderFactory.ByVerb` (text via `OrdersReader`, saved games via `OrderXml`): **22 immediate**, **7 long**. See [Turn sequence](#turn-sequence), [Immediate vs long](#immediate-vs-long), and [Text vs XML](#text-vs-xml).
 
 ## Prefixes and subjects
 
@@ -161,7 +161,7 @@ Hard-science campaign drafts should follow these patterns. Ground every id in th
 
 ### Activating disabled module stacks
 
-A stack marked **disabled** in the report is not yet operational (`Online=false`, or `Online=true` but missing crew, energy, fuel, or repairs). `SET ONLINE TRUE` is the only activate verb. Long orders (`USE`, `PRODUCE`, `REPAIR`, …) then require `CanOperate`:
+A stack marked **disabled** in the report is not yet operational (`Online=false`, or `Online=true` but missing crew, energy, fuel, or repairs). **`SET ONLINE TRUE`** brings the whole stack online (every module copy). **`ACTIVATE`** turns player-inactive copies back on without touching `Online`. Long orders (`USE`, `PRODUCE`, `REPAIR`, …) then require `CanOperate`:
 
 - sufficient **crew** (`terran` items on the stack),
 - sufficient **energy** from the root production tree,
@@ -271,7 +271,7 @@ Player turn files use **text**. XML matters for saved games, not for `order.*` d
 
 ## Immediate orders
 
-ACTIVE, ALIAS, ATTACK, BUY, CAPTURE, CONTRACT, COPY, DECLARE, DEPOSIT, FORM, GET, GIVE, HAS, NAME, PRESS, SEE, SELL, SET, STACK, TACTIC, TRANSFER, WITHDRAW.
+ACTIVE, ACTIVATE, ALIAS, ATTACK, BUY, CAPTURE, CONTRACT, COPY, DECLARE, DEACTIVATE, DEPOSIT, FORM, GET, GIVE, HAS, NAME, PRESS, SEE, SELL, SET, STACK, TACTIC, TRANSFER, WITHDRAW.
 
 ### ACTIVE
 
@@ -280,6 +280,16 @@ ACTIVE, ALIAS, ATTACK, BUY, CAPTURE, CONTRACT, COPY, DECLARE, DEPOSIT, FORM, GET
 **Subject:** any orderable (observer).
 
 Succeeds if the named stack is already active (`IsActive`). Used as a condition parent (SampleGame: `active new2` then `--stack new3`).
+
+### ACTIVATE
+
+**Syntax:** `ACTIVATE [N|ALL] [MODULES]`
+
+**Subject:** modulestack.
+
+Turns **player-inactive** module copies back on (`module.Activated = true`). Optional quantity defaults to **all** inactive copies (`Quantity = -1`). `N` or `ALL` may be followed by optional `MODULES`. Walks copies in stack order; skips copies that are already activated. Succeeds only if at least one copy is activated (`Executed` when count > 0). In-progress long effects on the stack rescale duration when active copy count changes (`effects.RecalculateDuration`).
+
+Per-module report status after activation: **active** when operational; **disabled** when online and activated but heavily/critically damaged or missing crew/energy; **deactivated** when `SET ONLINE FALSE`. Player-inactive copies show **inactive** until activated.
 
 ### ALIAS
 
@@ -361,6 +371,20 @@ Copies the named catalog technology onto a receiver at the **same location**, if
 **Subject:** any orderable (applies to its owner).
 
 One-way stance. Attitudes (case-insensitive): `enemy`, `hostile`, `neutral`, `friendly`, `ally`. `enemy` is the combat stance (faction-wide when targeting a faction). Sample: `-declare faction 2 enemy`.
+
+### DEACTIVATE
+
+**Syntax:** `DEACTIVATE [N|ALL] [MODULES]`
+
+**Subject:** modulestack.
+
+Turns active copies **player-inactive** (`module.Activated = false`). Optional quantity defaults to **all** activated copies. Same `N` / `ALL` / optional `MODULES` parsing as [ACTIVATE](#activate). Walks copies in stack order; skips copies already inactive. Succeeds only if at least one copy is deactivated.
+
+**Effect on stats:** inactive copies still count toward **mass**, **capacity**, and **capture** (`Quantity`, not `QuantityActive`). **Upkeep**, **energy production/requirement**, **crew requirement**, and **combat attack/defense** scale with `QuantityActive` only — same scaling as damage-disabled copies. Weekly **consume** (`ConsumeNetto`) still uses full `Quantity` (you cannot stop consumption by deactivating copies).
+
+**Reports:** stack header adds `, N module(s) inactive` when `QuantityInactive > 0`. Per-module detail shows **inactive** for `Activated=false` copies. Distinct from **`SET ONLINE FALSE`** (whole stack **deactivated**) and from damage **disabled** (online, activated, but too damaged or short crew/energy). In-progress long effects rescale duration when active copy count changes.
+
+Sample: `deactivate 2 modules`, `@deactivate all` to keep a stack mothballed but still aboard for transport.
 
 ### DEPOSIT
 
@@ -468,7 +492,7 @@ Lists a standing sell (`Offer`) and keeps a leftover `SELL` on the template. Mat
 Flag name and `TRUE`/`FALSE` are **case-insensitive**; Parse stores the flag as uppercase `AVOID`, `ONLINE`, or `ALLOW BANK`.
 
 - `SET AVOID TRUE|FALSE` — sets `IsAvoiding`. Not a battle tactic (see `player/battle.md`).
-- `SET ONLINE TRUE|FALSE` — `ModuleStack.SetOnline`: stack `Online` and every `module.Online`. Captured modules are left `Online=false` (report: deactivated); there is no other activate verb. Sample: `set online true`.
+- `SET ONLINE TRUE|FALSE` — `ModuleStack.SetOnline`: stack `Online` and every `module.Online`. When `Online=false`, every copy reports **deactivated** and `QuantityOperational` is 0. Captured modules are left `Online=false`. Per-copy player shutdown is [DEACTIVATE](#deactivate); per-copy turn-on without changing `Online` is [ACTIVATE](#activate). Sample: `set online true`.
 - `SET ALLOW BANK TRUE|FALSE` — sets `AllowBank` on the stack (default **true** on new stacks and when the save omits `allow-bank`). When **false**, market buys and quarterly **cash upkeep** may spend only **local cash** on that stack — the faction bank is not debited (`HasBankAccess` is false). People nested on the stack inherit the parent’s setting. Sample: `set allow bank false` on a trading stack to cap market spend to withdrawn cash.
 
 ### STACK

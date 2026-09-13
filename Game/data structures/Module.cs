@@ -11,6 +11,7 @@ namespace SpaceAge
 			this.parent = parent;
 			this.damage = 0;
 			this.online = true;
+			this.activated = true;
 		}
 
 		public Module(ModuleStack parent, int damage)
@@ -18,6 +19,7 @@ namespace SpaceAge
 			this.parent = parent;
 			this.damage = damage;
 			this.online = true;
+			this.activated = true;
 		}
 
 		private ModuleStack parent;
@@ -89,7 +91,7 @@ namespace SpaceAge
 
 		public bool HasPersistedState
 		{
-			get { return this.damage > 0 || this.captureDamage > 0 || !this.online; }
+			get { return this.damage > 0 || this.captureDamage > 0 || !this.online || !this.activated; }
 		}
 
 		public bool IsWrecked
@@ -159,12 +161,21 @@ namespace SpaceAge
 			set { this.online = value; }
 		}
 
+		private bool activated;
+		public bool Activated
+		{
+			get { return this.activated; }
+			set { this.activated = value; }
+		}
+
 		public bool IsActive
 		{
 			get
 			{
 				// the individual modules will be switched off on missing crew or energy
 				if (!this.online)
+					return false;
+				if (!this.activated)
 					return false;
 				if (this.DamageStatus == EDamageStatus.heavilyDamaged |
 					this.DamageStatus == EDamageStatus.criticallyDamaged | 
@@ -182,10 +193,16 @@ namespace SpaceAge
 				if (!this.online)
 				{
 					line = "deactivated";
-				} else if (this.IsActive)
+				}
+				else if (!this.activated)
+				{
+					line = "inactive";
+				}
+				else if (this.IsActive)
 				{
 					line = "active";
-				} else 
+				}
+				else 
 				{
 					line = "disabled";					
 				}

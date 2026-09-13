@@ -153,6 +153,22 @@ namespace SpaceAge
 			}
 		}
 
+		public int QuantityInactive
+		{
+			get
+			{
+				int count = 0;
+				foreach (Module module in this.modules)
+				{
+					if (!module.Activated)
+					{
+						count++;
+					}
+				}
+				return count;
+			}
+		}
+
 		public int QuantityOperational
 		{
 			get
@@ -379,7 +395,7 @@ namespace SpaceAge
                 if (this.IsFormed)
                 {
                     upkeepItemStacks.Sum(this.moduleType.Upkeep);
-                    upkeepItemStacks.Multiply(this.Quantity);
+                    upkeepItemStacks.Multiply(this.QuantityActive);
                 }
 				return upkeepItemStacks;
 			}

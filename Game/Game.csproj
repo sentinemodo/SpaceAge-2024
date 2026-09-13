@@ -222,6 +222,9 @@
     <Compile Include="orders\SeeOrder.cs" />
     <Compile Include="orders\StackOrder.cs" />
     <Compile Include="orders\SetOrder.cs" />
+    <Compile Include="orders\ActivateOrder.cs" />
+    <Compile Include="orders\DeactivateOrder.cs" />
+    <Compile Include="orders\ModuleActivationOrder.cs" />
     <Compile Include="orders\ActiveOrder.cs" />
     <Compile Include="orders\AliasOrder.cs" />
     <Compile Include="orders\AttackOrder.cs" />
