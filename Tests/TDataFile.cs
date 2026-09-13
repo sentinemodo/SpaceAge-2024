@@ -1486,6 +1486,46 @@ namespace UnitTests
 		}
 
 		[Test]
+		public void SaveLoad_PersistsDeliveringPurchaseEffect()
+		{
+			this.LoadGameDocument();
+			this.dataFile.LoadConfiguration();
+			this.dataFile.LoadFactions();
+			this.dataFile.LoadGalaxy();
+			this.game = this.dataFile.Game;
+
+			ModuleStack buyer = ModuleStack.All["000004"];
+			ModuleStack seller = ModuleStack.All["000005"];
+			ItemStack terrans = new ItemStack(ItemType.All["terran"], 4);
+			new DeliveringPurchase(
+				buyer,
+				seller,
+				terrans,
+				300,
+				(Region)buyer.Location,
+				4);
+
+			this.reloadSavedGame("gameout.saved_deliveringPurchase.xml");
+			buyer = ModuleStack.All["000004"];
+			DeliveringPurchase delivery = null;
+			foreach (Effect effect in buyer.Effects)
+			{
+				delivery = effect as DeliveringPurchase;
+				if (delivery != null)
+				{
+					break;
+				}
+			}
+			Assert.That(delivery, Is.Not.Null, "in-progress delivering-purchase must persist across save/load");
+			Assert.That(delivery.Duration, Is.EqualTo(4));
+			Assert.That(delivery.PaidAmount, Is.EqualTo(300));
+			Assert.That(delivery.Transferer.Name, Is.EqualTo("000005"));
+			Assert.That(delivery.ItemStack.ItemType.Name, Is.EqualTo("terran"));
+			Assert.That(delivery.ItemStack.Quantity, Is.EqualTo(4));
+			Assert.That(delivery.DestinationRegion.Name, Is.EqualTo("R00002"));
+		}
+
+		[Test]
 		public void SaveLoad_PersistsReceivingItemsEffect()
 		{
 			this.LoadGameDocument();

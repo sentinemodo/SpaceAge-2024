@@ -255,6 +255,9 @@ namespace SpaceAge
                     case "producing-energy":
                         effect = new ProducingEnergy(holder);
                         break;
+                    case "delivering-purchase":
+                        effect = new DeliveringPurchase((ModuleStack)holder);
+                        break;
                     case "receiving-items":
                         effect = new ReceivingItems(holder);
                         break;

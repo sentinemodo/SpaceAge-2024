@@ -127,6 +127,7 @@
     <Compile Include="effects\ProducingItems.cs" />
     <Compile Include="effects\ReceivingTechnology.cs" />
     <Compile Include="effects\ReceivingModules.cs" />
+    <Compile Include="effects\DeliveringPurchase.cs" />
     <Compile Include="effects\ReceivingItems.cs" />
     <Compile Include="effects\Producing.cs" />
     <Compile Include="effects\Fuelled.cs" />

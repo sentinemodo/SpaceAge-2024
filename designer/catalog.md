@@ -16,6 +16,15 @@ Closed seed set: `iron` `titani` `silici` `copper` `uraniu` `carbon` `oil` `gold
 
 Use live **groups**. Intended future group in parentheses → wishlist.
 
+### Settlement tiers (L0)
+
+| Id | Tech | Pop max | HP | Produce / 13 wk | Build |
+|----|------|---------|-----|-----------------|-------|
+| `town` | `twnbld` | 750 | 350 | 200 cash, 2 terran | 30 iron, 2 titani, 10 wk |
+| `city` | `popcnt` | 10000 | 1250 | 1000 cash, 10 terran | 100 iron, 26 wk |
+
+Both are `settlement`, `cannot-be-owned`, terair + solid-surface. Player factories `USE twnbld` for charter deliveries; UN/NPC shells use `town()` in seed.
+
 ### Hull size classes (L0–L10)
 
 Engine **0.1.148+** loads hull groups `corvette` `destroyer` `cruiser` `capital` `ark`. Campaign catalog already tags `corhul`/`deshul`/`cruhul`/`arkhul` accordingly. SampleGame stays `frigate`. See [`combat-balance.md`](combat-balance.md).

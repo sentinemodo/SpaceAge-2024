@@ -1596,5 +1596,120 @@ namespace UnitTests
 			Assert.That(loadedTrigger.Target.Name, Is.EqualTo("200"));
 		}
 
+		private DeliveringPurchase executeCrossRegionTerranBuy(out ModuleStack buyer, out double bankBeforeCancel)
+		{
+			ItemType terran = ItemType.All["terran"];
+			ModuleStack sellerLocal = this.game.ModuleStacks["000001"];
+			ModuleStack sellerRemote = this.game.ModuleStacks["000005"];
+			buyer = this.game.ModuleStacks["000004"];
+			sellerLocal.ItemStacks.Remove(new ItemStack(terran, sellerLocal.ItemStacks[terran].Quantity));
+
+			List<string> testcommands = new List<string>
+			{
+				"#faction 2",
+				"#modulestack 000004",
+				"@buy all terran everywhere",
+				"#end"
+			};
+			OrdersReader ordersReader = new OrdersReader(this.game);
+			ordersReader.AssignOrders(testcommands);
+
+			BuyOrder order = (BuyOrder)buyer.Orders[0];
+			order.Execute(this.game.Week);
+			this.ProcessMarketBuys(this.game.Week);
+
+			DeliveringPurchase delivery = null;
+			foreach (Effect effect in buyer.Effects)
+			{
+				delivery = effect as DeliveringPurchase;
+				if (delivery != null)
+				{
+					break;
+				}
+			}
+			Assert.That(delivery, Is.Not.Null);
+			Assert.That(sellerRemote.ItemStacks.ContainsKey(terran), Is.False);
+			bankBeforeCancel = buyer.Owner.Bank.AvailableFunds;
+			return delivery;
+		}
+
+		[Test]
+		public void BuyCancel_PendingCrossRegionDelivery_RefundsEightyPercent()
+		{
+			ModuleStack buyer;
+			double bankBeforeCancel;
+			DeliveringPurchase delivery = this.executeCrossRegionTerranBuy(out buyer, out bankBeforeCancel);
+			int paidAmount = delivery.PaidAmount;
+			int expectedRefund = (int)Math.Floor(paidAmount * DeliveringPurchase.CancelRefundRatio);
+
+			List<string> testcommands = new List<string>
+			{
+				"#faction 2",
+				"#modulestack 000004",
+				"buy cancel",
+				"#end"
+			};
+			OrdersReader ordersReader = new OrdersReader(this.game);
+			ordersReader.AssignOrders(testcommands);
+			BuyOrder cancelOrder = (BuyOrder)buyer.Orders[1];
+			Assert.That(cancelOrder.CancelMode);
+			cancelOrder.Execute(this.game.Week);
+
+			Assert.That(buyer.Effects.FindAll(effect => effect is DeliveringPurchase).Count, Is.EqualTo(0));
+			Assert.That(buyer.Owner.Bank.AvailableFunds, Is.EqualTo(bankBeforeCancel + expectedRefund));
+			Assert.That(expectedRefund, Is.EqualTo((int)Math.Floor(paidAmount * 0.8)));
+		}
+
+		[Test]
+		public void Move_Starts_CancelsPendingCrossRegionDeliveryWithEightyPercentRefund()
+		{
+			ModuleStack buyer = this.game.ModuleStacks["100001"];
+			ItemType terran = ItemType.All["terran"];
+			ModuleStack sellerLocal = this.game.ModuleStacks["000001"];
+			sellerLocal.ItemStacks.Remove(new ItemStack(terran, sellerLocal.ItemStacks[terran].Quantity));
+
+			List<string> testcommands = new List<string>
+			{
+				"#faction 2",
+				"#modulestack 100001",
+				"@buy all terran everywhere",
+				"#end"
+			};
+			OrdersReader ordersReader = new OrdersReader(this.game);
+			ordersReader.AssignOrders(testcommands);
+			BuyOrder buyOrder = (BuyOrder)buyer.Orders[0];
+			buyOrder.Execute(this.game.Week);
+			this.ProcessMarketBuys(this.game.Week);
+
+			DeliveringPurchase delivery = null;
+			foreach (Effect effect in buyer.Effects)
+			{
+				delivery = effect as DeliveringPurchase;
+				if (delivery != null)
+				{
+					break;
+				}
+			}
+			Assert.That(delivery, Is.Not.Null);
+			double bankBeforeMove = buyer.Owner.Bank.AvailableFunds;
+			int expectedRefund = (int)Math.Floor(delivery.PaidAmount * DeliveringPurchase.CancelRefundRatio);
+
+			testcommands = new List<string>
+			{
+				"#faction 2",
+				"#modulestack 100001",
+				"move R00002",
+				"#end"
+			};
+			ordersReader.AssignOrders(testcommands);
+			MoveOrder moveOrder = (MoveOrder)buyer.Orders[1];
+			buyer.ExecutedLongOrder = false;
+			buyer.Orders.Execute(this.game.Week);
+
+			Assert.That(buyer.Effects.FindAll(effect => effect is DeliveringPurchase).Count, Is.EqualTo(0));
+			Assert.That(buyer.Owner.Bank.AvailableFunds, Is.EqualTo(bankBeforeMove + expectedRefund));
+			Assert.That(moveOrder.Executing, Is.True);
+		}
+
 	}
 }

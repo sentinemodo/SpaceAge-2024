@@ -80,6 +80,7 @@
     <Compile Include="TBattleSim.cs" />
     <Compile Include="TModuleStacks.cs" />
     <Compile Include="TMarket.cs" />
+    <Compile Include="TRegions.cs" />
     <Compile Include="TReport.cs" />
     <Compile Include="TNamedObject.cs" />
     <Compile Include="TModuleStack.cs" />

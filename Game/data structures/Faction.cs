@@ -260,6 +260,13 @@ namespace SpaceAge
 				reportLines.Add("");
 			}
 
+			List<string> contractLines = Contract.All.Report(this);
+			if (contractLines.Count > 0)
+			{
+				reportLines.Add("");
+				reportLines.AddRange(contractLines);
+			}
+
 			reportLines.AddRange(this.Bank.Report(this));
 
 			// this.AllShown();

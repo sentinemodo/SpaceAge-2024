@@ -123,6 +123,23 @@ namespace IntegrationTests
 		}
 
 		[Test]
+		public void FactionReport_ShowsContractsAtHomeRegion()
+		{
+			Faction faction = this.game.Factions["2"];
+			Region region = this.game.Regions["R00001"];
+			GiveModuleTrigger trigger = new GiveModuleTrigger(1, ModuleType.All["inftry"], ModuleStack.All["000005"]);
+			new Contract("CT0001", region, this.game.Factions["1"], trigger, Technology.All["rckter"]);
+
+			List<string> lines = faction.Report();
+			int contractsIndex = lines.IndexOf("Contract reports:");
+			int bankIndex = lines.IndexOf("Bank report:");
+			Assert.That(contractsIndex, Is.GreaterThanOrEqualTo(0));
+			Assert.That(bankIndex, Is.GreaterThan(contractsIndex));
+			Assert.That(lines[contractsIndex + 1], Is.EqualTo("  CT0001: deliver 1 infantry battalion [inftry] to Berlin [000005]."));
+			Assert.That(lines[contractsIndex + 2], Is.EqualTo("    Reward: rocket launcher production [rckter] technology."));
+		}
+
+		[Test]
 		public void MarketReport()
 		{
 			Faction faction = this.game.Factions["2"];

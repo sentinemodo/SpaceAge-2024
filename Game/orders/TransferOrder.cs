@@ -214,6 +214,10 @@ namespace SpaceAge
 		public override void Execute(int week)
 		{
 			this.Executed = false;
+			if (this.ModuleType == null)
+			{
+				this.ModuleType = this.Transferer.ModuleType;
+			}
             ModuleStack sourceStack = this.findSourceStack();
 
             if (sourceStack == null)

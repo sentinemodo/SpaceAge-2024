@@ -35,6 +35,7 @@ namespace SpaceAge
         public int Quantity     { get; set; }
 		public bool AllQuantity { get; set; } // default false
         public bool Everywhere  { get; set; } // default false
+		public bool CancelMode  { get; set; } // default false
         		
 		private void parseRelativeOffset(string token)
 		{
@@ -98,6 +99,15 @@ namespace SpaceAge
 			}
 
 			token = LineParser.GetToken(ref command);
+			if (token == "cancel")
+			{
+				this.CancelMode = true;
+				if (!string.IsNullOrEmpty(LineParser.GetToken(ref command)))
+				{
+					throw new Exception("bad syntax");
+				}
+				return;
+			}
 			if (token != "all" & Technology.All.Contains(token))
 			{
 				this.BuyType = EOfferType.BuyTechnologies;
@@ -201,6 +211,11 @@ namespace SpaceAge
             line = string.Format("{0}{1}buy ",
 				this.Conditions,
 				(this.Repeat > 1) ? string.Concat(this.Repeat.ToString(), " ") : ((this.Repeat < 0) ? "@" : string.Empty));
+			if (this.CancelMode)
+			{
+				lines.Add(string.Concat(line, "cancel"));
+				return lines;
+			}
 			switch (this.BuyType)
 			{
 				case EOfferType.BuyItems:
@@ -347,6 +362,14 @@ namespace SpaceAge
 		public override void Execute(int week)
 		{
 			this.Executed = false;
+
+			if (this.CancelMode)
+			{
+				DeliveringPurchase.CancelAll(this.Buyer as ModuleStack, week);
+				this.Executed = true;
+				base.Execute(week);
+				return;
+			}
 
 			if (this.Buy == null)
 			{

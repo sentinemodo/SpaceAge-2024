@@ -591,6 +591,7 @@ namespace SpaceAge
 					// assign destination if not moving
 					if (this.Mover.MovingTo == null)
 					{
+						DeliveringPurchase.CancelAll(this.Mover, week);
 						if (!this.applyEnvironmentMoveRules(week))
 						{
 							this.Executing = false;

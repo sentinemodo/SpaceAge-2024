@@ -267,6 +267,49 @@ namespace UnitTests
 		}
 
 		[Test]
+		public void Execute_TransferToFaction_OnProducedAliasStack()
+		{
+			Faction player = this.game.Factions["2"];
+			Faction npc = this.game.Factions["1"];
+			ModuleStack factory = this.game.ModuleStacks["000004"];
+			new OrdersReader(this.game).AssignOrders(new List<string>
+			{
+				"#faction 2",
+				"#modulestack 000004",
+				"use agrplx as new1",
+				"#modulestack new1",
+				"transfer 1 to faction 1",
+				"#end"
+			});
+
+			ModuleStack aliasStack = this.game.ModuleStacks[player, "new1", true];
+			TransferOrder transfer = (TransferOrder)aliasStack.Orders[0];
+			Assert.That(transfer.ModuleType, Is.Null);
+
+			for (int week = 1; week <= 5; week++)
+			{
+				factory.ExecutedLongOrder = false;
+				factory.Execute(week);
+				aliasStack.ExecutedLongOrder = false;
+				aliasStack.Execute(week);
+			}
+
+			Assert.That(transfer.Executed, Is.True);
+			ModuleStack delivered = null;
+			Region region = factory.Location as Region;
+			foreach (ModuleStack stack in region.ModuleStacks.Values)
+			{
+				if (stack.Owner == npc && stack.ModuleType != null && stack.ModuleType.Name == "farms")
+				{
+					delivered = stack;
+					break;
+				}
+			}
+			Assert.That(delivered, Is.Not.Null);
+			Assert.That(delivered.Quantity, Is.EqualTo(1));
+		}
+
+		[Test]
 		public void Execute_TransferToFaction_CompletesGiveModuleContractWithoutLocalReceiver()
 		{
 			Region region = Region.All["R00002"];

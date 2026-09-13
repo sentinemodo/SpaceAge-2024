@@ -697,6 +697,105 @@ def city(
     return stack
 
 
+def town(
+    name,
+    name_en,
+    faction,
+    qty,
+    cash,
+    terran,
+    food_upkeep,
+    nested,
+    buying=None,
+    selling=None,
+    extra_items=None,
+):
+    stack = Stack(name, "town", faction, qty, name_en)
+    stack.items = [("cash", cash), ("terran", terran)] + list(extra_items or [])
+    stack.upkeep = [("food", food_upkeep)]
+    stack.buying = list(buying or [])
+    stack.selling = list(selling or [])
+    stack.children = nested
+    return stack
+
+
+# Town-building charters on player grant cells (fac 2-11). CT0006-CT0015.
+# Fulfilled by factory USE twnbld, then TRANSFER … TO FACTION 1 at the grant (no seeded UN town).
+GRANT_MARKET_TOWNS = (
+    # fac, contract_id, reward, title, flavour
+    (
+        2,
+        "CT0006",
+        "ctypln",
+        "Northwind market charter",
+        "United Star Nations wants a prefab town seated on Northwind Grant this quarter. Factory-build one town module, then TRANSFER it TO FACTION 1 at headquarters; UN pays city planning when the civic shell is accepted.",
+    ),
+    (
+        3,
+        "CT0007",
+        "servic",
+        "Greenwell bazaar charter",
+        "Greenwell Grant must host a UN market town this quarter. Build one town module at headquarters and TRANSFER it TO FACTION 1 on the grant; UN opens a calorie-and-parts bazaar when accepted.",
+    ),
+    (
+        4,
+        "CT0008",
+        "airgen",
+        "Rivermark steppe charter",
+        "Rivermark Grant needs a civic shell on the same grid as HQ. Factory-build one town and TRANSFER it TO FACTION 1 at the grant; UN pays life-support tech for the steppe trade lane.",
+    ),
+    (
+        5,
+        "CT0009",
+        "ctypln",
+        "Sundock prairie charter",
+        "Sundock Grant carries a UN town charter on the landing strip cell. Build one town module and TRANSFER it TO FACTION 1 beside headquarters; UN opens the books when the frame is accepted.",
+    ),
+    (
+        6,
+        "CT0010",
+        "servic",
+        "Copse tundra charter",
+        "Copse Grant's UN charter seats a market town on the grant itself. Deliver one town module via TRANSFER TO FACTION 1 at HQ so seasonal convoys can trade without crowding corp stacks.",
+    ),
+    (
+        7,
+        "CT0011",
+        "ctypln",
+        "Ironclad marsh charter",
+        "Ironclad Grant must accept a prefab town on the grant grid. Build at headquarters and TRANSFER TO FACTION 1; UN licenses a metal-side parts market when the shell lands.",
+    ),
+    (
+        8,
+        "CT0012",
+        "servic",
+        "Oreline bench charter",
+        "Oreline Grant shares regolith with headquarters under a UN town charter. Factory-build one town and TRANSFER it TO FACTION 1 on the grant for ridge-camp maintenance contracts.",
+    ),
+    (
+        9,
+        "CT0013",
+        "airgen",
+        "Basalt thin-soil charter",
+        "Basalt Grant needs a town module seated on the thin-soil HQ cell. Build one civic shell and TRANSFER TO FACTION 1 at headquarters so assay crews can trade breathing kits legally.",
+    ),
+    (
+        10,
+        "CT0014",
+        "ctypln",
+        "Silicate slope charter",
+        "Silicate Grant carries a UN exchange charter beside headquarters. Build one town module and TRANSFER TO FACTION 1 on the grant terrace; UN registers spare-parts and crew-air trade.",
+    ),
+    (
+        11,
+        "CT0015",
+        "airgen",
+        "Fission market charter",
+        "Fission Grant's isotope lane needs a UN market town on the grant grid. Factory-build one town and TRANSFER TO FACTION 1 at headquarters; UN pays life-support tech on acceptance.",
+    ),
+)
+
+
 def hq_stack(fac, planet):
     name_en, _pw = PLAYERS[fac]
     base = 200000 + (fac - 2) * 10000
@@ -715,7 +814,7 @@ def hq_stack(fac, planet):
     hq.items = [("terran", 20)]
     hq.upkeep = [("cash", 90)]
     if planet == "arbor":
-        cargo = [("food", 400), ("terair", 200), ("h2o2", 200), ("iron", 40), ("carbon", 40), ("silici", 10)]
+        cargo = [("food", 400), ("terair", 200), ("h2o2", 200), ("iron", 40), ("carbon", 40), ("silici", 10), ("titani", 2)]
         nest(hq, "%d" % (base + 3), "cargob", fac, 2, items=cargo, upkeep=[("cash", 20)])
         nest(hq, "%d" % (base + 4), "cdrill", fac, 1, items=[("terran", 6)], upkeep=[("cash", 50)])
         nest(hq, "%d" % (base + 5), "factry", fac, 2, items=[("terran", 20)], upkeep=[("cash", 110)])
@@ -1217,6 +1316,24 @@ def build_world():
         grid = arbor.regions if home == "arbor" else anvil.regions
         find_region(grid, grant).stacks.append(hq_stack(fac, home))
 
+    grant_market_contracts = []
+    for fac, contract_id, reward, title, flavour in GRANT_MARKET_TOWNS:
+        home = "arbor" if fac <= 6 else "anvil"
+        grant_name, _home = player_home[fac]
+        grid = arbor.regions if home == "arbor" else anvil.regions
+        region = find_region(grid, grant_name)
+        hq_id = str(200000 + (fac - 2) * 10000 + 1)
+        grant_market_contracts.append(
+            {
+                "name": contract_id,
+                "location": region.name,
+                "receiver": hq_id,
+                "reward": reward,
+                "title": title,
+                "flavour": flavour,
+            }
+        )
+
     wreck_h = Stack("W00001", "alnhul", 1, 1, "Helios belt hulk")
     wreck_h.upkeep = [("cash", 100)]
     landings["helios-belt"].stacks.append(wreck_h)
@@ -1245,7 +1362,7 @@ def build_world():
         systems.append(system)
 
     add_empty_system_gates(ids, systems)
-    return systems, landings
+    return systems, landings, grant_market_contracts
 
 
 def add_empty_system_gates(ids, systems):
@@ -1928,7 +2045,7 @@ def emit_factions(root):
     )
 
 
-def emit_contracts(root, landings):
+def emit_contracts(root, landings, grant_market_contracts):
     contracts = el(root, "contracts")
     el(
         contracts,
@@ -2006,6 +2123,23 @@ def emit_contracts(root, landings):
         title="Fomal carbonaceous fabricator",
         flavour="A cold, unmanned fabrication plant is wedged in a kerogen-rich carbonaceous cell. Research it on site; the organics are feedstock, not a skip of the Arbor/Anvil split.",
     )
+    for spec in grant_market_contracts:
+        el(
+            contracts,
+            "contract",
+            name=spec["name"],
+            location=spec["location"],
+            issuer="1",
+            trigger="give-module",
+            **{"reward-type": "technology"},
+            reward=spec["reward"],
+            quantity="1",
+            module="town",
+            receiver=spec["receiver"],
+            baseline="0",
+            title=spec["title"],
+            flavour=spec["flavour"],
+        )
 
 
 def emit_galaxy(root, systems):
@@ -2673,12 +2807,12 @@ def validate(systems, landings):
 
 
 def main():
-    systems, landings = build_world()
+    systems, landings, grant_market_contracts = build_world()
     apply_flavour(systems)
     validate(systems, landings)
     root = ET.Element("game", turn="1")
     emit_factions(root)
-    emit_contracts(root, landings)
+    emit_contracts(root, landings, grant_market_contracts)
     emit_galaxy(root, systems)
     el(root, "orders")
     comment = ET.Comment(" Generated by campaign/_gen_gamein.py from designer/galaxy.md. Do not edit by hand. ")

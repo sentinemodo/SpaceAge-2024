@@ -152,10 +152,26 @@ namespace SpaceAge
             return true;
 		}
 
+		private bool isGroundReachable(Region buyerRegion, Region sellerRegion)
+		{
+			int distance;
+			return Region.All.TryGroundDistance(buyerRegion, sellerRegion, out distance);
+		}
+
 		private bool isCloser(Region currentRegion, Region testedRegion)
 		{
 			Region buyerRegion = (Region)this.Buy.Offerent.Location;
-			if (Region.All.DistanceBetween(buyerRegion, currentRegion) > Region.All.DistanceBetween(buyerRegion, testedRegion))
+			int currentDistance;
+			int testedDistance;
+			if (!Region.All.TryGroundDistance(buyerRegion, currentRegion, out currentDistance))
+			{
+				return true;
+			}
+			if (!Region.All.TryGroundDistance(buyerRegion, testedRegion, out testedDistance))
+			{
+				return false;
+			}
+			if (currentDistance > testedDistance)
 			{
 				return true;
 			}
@@ -167,8 +183,17 @@ namespace SpaceAge
             Offers offers = this.availableOffers(buyOffer, buyOffer.Everywhere);
 
    			Offer bestOffer = null;
+			Region buyerRegion = buyOffer.Everywhere ? buyOffer.Offerent.Location as Region : null;
 			foreach (Offer offer in offers)
 			{
+				if (buyOffer.Everywhere)
+				{
+					Region sellerRegion = offer.Offerent.Location as Region;
+					if (sellerRegion == null || buyerRegion == null || !this.isGroundReachable(buyerRegion, sellerRegion))
+					{
+						continue;
+					}
+				}
                  if (buyOffer.MatchesAsk(offer.Price))
 				{
                     if (bestOffer == null)
@@ -276,16 +301,39 @@ namespace SpaceAge
 			// distance	service time
 			if (this.Buy.Offerent.Location != this.Sell.Offerent.Location)
 			{
-				transportTime = Region.All.DistanceBetween(
-					(Region)this.Buy.Offerent.Location, 
-					(Region)this.Sell.Offerent.Location) * 2;
+				Region buyerRegion = (Region)this.Buy.Offerent.Location;
+				Region sellerRegion = (Region)this.Sell.Offerent.Location;
+				int distance;
+				if (!Region.All.TryGroundDistance(buyerRegion, sellerRegion, out distance))
+				{
+					throw new InvalidOperationException("BUY failed, seller is not reachable by ground.");
+				}
+				transportTime = distance * 2;
 			}
 			return transportTime;
+		}
+
+		private bool isCrossRegionGroundDelivery()
+		{
+			if (this.Buy.Offerent.Location == this.Sell.Offerent.Location)
+			{
+				return false;
+			}
+			Region buyerRegion = this.Buy.Offerent.Location as Region;
+			Region sellerRegion = this.Sell.Offerent.Location as Region;
+			if (buyerRegion == null || sellerRegion == null)
+			{
+				return false;
+			}
+			int distance;
+			return Region.All.TryGroundDistance(buyerRegion, sellerRegion, out distance) && distance > 0;
 		}
 
 		private void executeTransaction(int week, int transactionValue, int quantity)
 		{
 			int transportTime = this.calculateTransportTime();
+			bool crossRegionDelivery = this.isCrossRegionGroundDelivery();
+			Region buyerRegion = (Region)this.Buy.Offerent.Location;
             
             this.payBuyer(week, transactionValue);
             if (this.Sell.Offerent.HasBankAccess)
@@ -310,18 +358,54 @@ namespace SpaceAge
 			        {
 				        throw new Exception(string.Concat("Offerent: ", this.Sell.Offerent.ReportName), ex);
 			        }
-					ReceivingItems transferItems = new ReceivingItems(this.Buy.Offerent, this.Sell.Offerent, boughtItems, transportTime);
-                    transferItems.Execute(week);
+					if (crossRegionDelivery)
+					{
+						DeliveringPurchase delivery = new DeliveringPurchase(
+							ModuleStack.All[this.Buy.Offerent.Name],
+							this.Sell.Offerent,
+							boughtItems,
+							transactionValue,
+							buyerRegion,
+							transportTime);
+						delivery.Execute(week);
+					}
+					else
+					{
+						ReceivingItems transferItems = new ReceivingItems(this.Buy.Offerent, this.Sell.Offerent, boughtItems, transportTime);
+						transferItems.Execute(week);
+					}
 					break;
 				case EOfferType.BuyModules:
                     this.Sell.Market.PostTradePrice(this.Sell, this.Sell.ModuleType);
-                    TransferOrder transferModules = new TransferOrder(
-                        ModuleStack.All[this.Sell.Offerent.Name], 
-                        ModuleStack.All[this.Buy.Offerent.Name], 
-                        this.Sell.ModuleType, 
-                        quantity, 
-                        transportTime);
-					transferModules.Execute(week);
+					if (crossRegionDelivery)
+					{
+						ModuleStack sellerStack = ModuleStack.All[this.Sell.Offerent.Name];
+						ModuleStack buyerStack = ModuleStack.All[this.Buy.Offerent.Name];
+						ModuleStack transferringStack = new ModuleStack(sellerStack, sellerStack.Owner, this.Sell.ModuleType);
+						for (int i = 0; i < quantity; i++)
+						{
+							transferringStack.AddModule(sellerStack.Modules[0]);
+							sellerStack.RemoveModule(0);
+						}
+						DeliveringPurchase delivery = new DeliveringPurchase(
+							buyerStack,
+							sellerStack,
+							transferringStack,
+							transactionValue,
+							buyerRegion,
+							transportTime);
+						delivery.Execute(week);
+					}
+					else
+					{
+						TransferOrder transferModules = new TransferOrder(
+							ModuleStack.All[this.Sell.Offerent.Name], 
+							ModuleStack.All[this.Buy.Offerent.Name], 
+							this.Sell.ModuleType, 
+							quantity, 
+							transportTime);
+						transferModules.Execute(week);
+					}
                     break;
                 case EOfferType.BuyTechnologies:
                     this.Sell.Market.PostTradePrice(this.Sell, this.Sell.Technology);

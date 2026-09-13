@@ -20,6 +20,16 @@
 		<contract name="CT0003" location="R00003" issuer="1" trigger="give-module" reward-type="technology" reward="airgen" quantity="1" module="cdrill" receiver="100010" baseline="0" title="Tidewatch core sample" flavour="Tidewatch Coast oil seeps sit above a granite basement. A core drill lets UN assay the sediment column without importing Anvil crust kits." />
 		<contract name="CT0004" location="R00006" issuer="1" trigger="research" reward-type="technology" reward="ahlcns" target="W00001" points="24" title="Helios belt hull charter" flavour="Radar returns from the metal landing rock match a high-albedo, crewless hull geometry. Research the hulk in situ; delta-v from Arbor is a belt-class chemical hop." />
 		<contract name="CT0005" location="R00039" issuer="1" trigger="research" reward-type="technology" reward="advres" target="W00002" points="24" title="Fomal carbonaceous fabricator" flavour="A cold, unmanned fabrication plant is wedged in a kerogen-rich carbonaceous cell. Research it on site; the organics are feedstock, not a skip of the Arbor/Anvil split." />
+		<contract name="CT0006" location="R00008" issuer="1" trigger="give-module" reward-type="technology" reward="ctypln" quantity="1" module="town" receiver="200001" baseline="0" title="Northwind market charter" flavour="United Star Nations wants a prefab town seated on Northwind Grant this quarter. Factory-build one town module, then TRANSFER it TO FACTION 1 at headquarters; UN pays city planning when the civic shell is accepted." />
+		<contract name="CT0007" location="R00010" issuer="1" trigger="give-module" reward-type="technology" reward="servic" quantity="1" module="town" receiver="210001" baseline="0" title="Greenwell bazaar charter" flavour="Greenwell Grant must host a UN market town this quarter. Build one town module at headquarters and TRANSFER it TO FACTION 1 on the grant; UN opens a calorie-and-parts bazaar when accepted." />
+		<contract name="CT0008" location="R00017" issuer="1" trigger="give-module" reward-type="technology" reward="airgen" quantity="1" module="town" receiver="220001" baseline="0" title="Rivermark steppe charter" flavour="Rivermark Grant needs a civic shell on the same grid as HQ. Factory-build one town and TRANSFER it TO FACTION 1 at the grant; UN pays life-support tech for the steppe trade lane." />
+		<contract name="CT0009" location="R00022" issuer="1" trigger="give-module" reward-type="technology" reward="ctypln" quantity="1" module="town" receiver="230001" baseline="0" title="Sundock prairie charter" flavour="Sundock Grant carries a UN town charter on the landing strip cell. Build one town module and TRANSFER it TO FACTION 1 beside headquarters; UN opens the books when the frame is accepted." />
+		<contract name="CT0010" location="R00027" issuer="1" trigger="give-module" reward-type="technology" reward="servic" quantity="1" module="town" receiver="240001" baseline="0" title="Copse tundra charter" flavour="Copse Grant's UN charter seats a market town on the grant itself. Deliver one town module via TRANSFER TO FACTION 1 at HQ so seasonal convoys can trade without crowding corp stacks." />
+		<contract name="CT0011" location="R00045" issuer="1" trigger="give-module" reward-type="technology" reward="ctypln" quantity="1" module="town" receiver="250001" baseline="0" title="Ironclad marsh charter" flavour="Ironclad Grant must accept a prefab town on the grant grid. Build at headquarters and TRANSFER TO FACTION 1; UN licenses a metal-side parts market when the shell lands." />
+		<contract name="CT0012" location="R00049" issuer="1" trigger="give-module" reward-type="technology" reward="servic" quantity="1" module="town" receiver="260001" baseline="0" title="Oreline bench charter" flavour="Oreline Grant shares regolith with headquarters under a UN town charter. Factory-build one town and TRANSFER it TO FACTION 1 on the grant for ridge-camp maintenance contracts." />
+		<contract name="CT0013" location="R00054" issuer="1" trigger="give-module" reward-type="technology" reward="airgen" quantity="1" module="town" receiver="270001" baseline="0" title="Basalt thin-soil charter" flavour="Basalt Grant needs a town module seated on the thin-soil HQ cell. Build one civic shell and TRANSFER TO FACTION 1 at headquarters so assay crews can trade breathing kits legally." />
+		<contract name="CT0014" location="R00059" issuer="1" trigger="give-module" reward-type="technology" reward="ctypln" quantity="1" module="town" receiver="280001" baseline="0" title="Silicate slope charter" flavour="Silicate Grant carries a UN exchange charter beside headquarters. Build one town module and TRANSFER TO FACTION 1 on the grant terrace; UN registers spare-parts and crew-air trade." />
+		<contract name="CT0015" location="R00063" issuer="1" trigger="give-module" reward-type="technology" reward="airgen" quantity="1" module="town" receiver="290001" baseline="0" title="Fission market charter" flavour="Fission Grant's isotope lane needs a UN market town on the grant grid. Factory-build one town and TRANSFER TO FACTION 1 at headquarters; UN pays life-support tech on acceptance." />
 	</contracts>
 	<galaxy>
 		<system name="SS0001" name-en="Helios" X="0" Y="0" Z="0">
@@ -409,6 +419,7 @@
 							<itemstack type="iron" quantity="40" />
 							<itemstack type="carbon" quantity="40" />
 							<itemstack type="silici" quantity="10" />
+							<itemstack type="titani" quantity="2" />
 							<upkeep type="cash" quantity="20" />
 						</modulestack>
 						<modulestack name="200004" type="cdrill" quantity="1" faction="2">
@@ -480,6 +491,7 @@
 							<itemstack type="iron" quantity="40" />
 							<itemstack type="carbon" quantity="40" />
 							<itemstack type="silici" quantity="10" />
+							<itemstack type="titani" quantity="2" />
 							<upkeep type="cash" quantity="20" />
 						</modulestack>
 						<modulestack name="210004" type="cdrill" quantity="1" faction="3">
@@ -702,6 +714,7 @@
 							<itemstack type="iron" quantity="40" />
 							<itemstack type="carbon" quantity="40" />
 							<itemstack type="silici" quantity="10" />
+							<itemstack type="titani" quantity="2" />
 							<upkeep type="cash" quantity="20" />
 						</modulestack>
 						<modulestack name="220004" type="cdrill" quantity="1" faction="4">
@@ -821,6 +834,7 @@
 							<itemstack type="iron" quantity="40" />
 							<itemstack type="carbon" quantity="40" />
 							<itemstack type="silici" quantity="10" />
+							<itemstack type="titani" quantity="2" />
 							<upkeep type="cash" quantity="20" />
 						</modulestack>
 						<modulestack name="230004" type="cdrill" quantity="1" faction="5">
@@ -940,6 +954,7 @@
 							<itemstack type="iron" quantity="40" />
 							<itemstack type="carbon" quantity="40" />
 							<itemstack type="silici" quantity="10" />
+							<itemstack type="titani" quantity="2" />
 							<upkeep type="cash" quantity="20" />
 						</modulestack>
 						<modulestack name="240004" type="cdrill" quantity="1" faction="6">

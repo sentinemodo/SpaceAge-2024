@@ -408,6 +408,17 @@
 			<use-produce module="city"/>
 		</entry>
 		<entry
+			name="twnbld"
+			name-en="town construction"
+			level="0"
+			description="Prefabricated civic shell: graded pads, trunk utilities, and light-frame housing for a minor market town."
+			use-time="10">
+			<use-allowed-in module-type-group="production" location-type="solid-surface" planet-atmosphere="terair"/>
+			<use-consume item="iron" quantity="30" />
+			<use-consume item="titani" quantity="2" />
+			<use-produce module="town"/>
+		</entry>
+		<entry
 			name="ctypln"
 			name-en="city planning"
 			level="1"
@@ -2020,6 +2031,27 @@ Researchers can query the library. The system can handle natural language questi
 			<no-upkeep effect="riot" chance="25"/>
 			<produce item="cash" quantity="1000" duration="13"/>
 			<produce item="terran" quantity="10" duration="13"/>
+			<operation-allowed-in planet-atmosphere="terair"/>
+			<operation-allowed-in location-type="solid-surface"/>
+		</entry>
+		<entry
+			name="town"
+			name-en="town"
+			name-en2="towns"
+			group="settlement"
+			description="A compact market town: trunk roads, a modest square, and light-frame housing under a shared utility spine."
+			size="6000"
+			capacity="4000"
+			population-maximum="750"
+			energy="4"
+			technology-capacity="1"
+			hit-points="350"
+			cannot-be-owned="yes"
+			cannot-hold-itemstacks="yes">
+			<upkeep type="food" quantity="30"/>
+			<no-upkeep effect="riot" chance="25"/>
+			<produce item="cash" quantity="200" duration="13"/>
+			<produce item="terran" quantity="2" duration="13"/>
 			<operation-allowed-in planet-atmosphere="terair"/>
 			<operation-allowed-in location-type="solid-surface"/>
 		</entry>

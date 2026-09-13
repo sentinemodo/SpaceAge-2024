@@ -15,16 +15,59 @@ namespace SpaceAge
 			return false;
 		}
 
+		public bool TryGroundDistance(Region region1, Region region2, out int distance)
+		{
+			distance = 0;
+			if (region1 == region2)
+			{
+				return true;
+			}
+			if (region1.RegionHolder != region2.RegionHolder)
+			{
+				return false;
+			}
+
+			Dictionary<Region, int> best = new Dictionary<Region, int>();
+			Queue<Region> queue = new Queue<Region>();
+			best[region1] = 0;
+			queue.Enqueue(region1);
+
+			while (queue.Count > 0)
+			{
+				Region current = queue.Dequeue();
+				int currentDistance = best[current];
+				foreach (Exit exit in current.Exits)
+				{
+					Region neighbour = exit.To as Region;
+					if (neighbour == null || !exit.ExitModes.ContainsKey(EMoveMode.ground))
+					{
+						continue;
+					}
+					int nextDistance = currentDistance + exit.ExitModes[EMoveMode.ground].Duration;
+					if (best.ContainsKey(neighbour) && best[neighbour] <= nextDistance)
+					{
+						continue;
+					}
+					best[neighbour] = nextDistance;
+					if (neighbour == region2)
+					{
+						distance = nextDistance;
+						return true;
+					}
+					queue.Enqueue(neighbour);
+				}
+			}
+
+			return false;
+		}
+
 		public int DistanceBetween(Region region1, Region region2)
 		{
-			if (region1 == region2) 
+			int distance;
+			if (this.TryGroundDistance(region1, region2, out distance))
 			{
-				return 0;
-			} else if (this.AreNeighbouring(region1, region2)) 
-			{
-				Exit exit = region1.Exits[region2];
-				return exit.ExitModes[EMoveMode.ground].Duration;
-			} 
+				return distance;
+			}
 			throw new Exception("Not implemented");
 		}
 

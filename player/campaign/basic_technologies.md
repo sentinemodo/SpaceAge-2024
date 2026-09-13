@@ -127,6 +127,10 @@ Works in: production, **orbit**. Use consumes: 2 iron `[iron]`. Use produces: or
 Creation of basic infrastructure and housing for population.  
 Works in: production, solid-surface, terran atmosphere `[terair]`. Use consumes: 100 iron `[iron]`. Use produces: city `[city]`. Use-time: 26 weeks.
 
+**town construction [twnbld]**  
+Prefabricated civic shell: graded pads, trunk utilities, and light-frame housing for a minor market town.  
+Works in: production, solid-surface, terran atmosphere `[terair]`. Use consumes: 30 iron `[iron]`, 2 titanium `[titani]`. Use produces: town `[town]`. Use-time: 10 weeks.
+
 **shuttles assembly [shtlas]**  
 Most ships can never land, and rely on orbital shuttles for exploration, ferrying and construction. The construction of space-based hulls, bases and any other large objects is usually done in solar space above the planet surface.  
 Works in: production. Use consumes: 2 iron `[iron]`, 1 titanium `[titani]`, 1 silicium `[silici]`. Use produces: space shuttle `[shuttl]`. Use-time: 4 weeks.
@@ -284,6 +288,10 @@ Catalog `<module><entry>` that a level 0 or 1 technology **produces** or **consu
 **city [city]**  
 The city with basic infrastructure, underlying a settlement.  
 Group `settlement`. Built by population center `[popcnt]`. Consumed (1) by city planning `[ctypln]` to make a metropoly. Size 25000, capacity 15000, energy 10, HP 1250, tech-cap 1, population max 10000. Cannot be owned; cannot hold item stacks. Upkeep 100 food (riot 25% if unpaid). Produces 1000 cash and 10 terran per 13 weeks. Operates on solid-surface worlds with terran atmosphere `[terair]`.
+
+**town [town]**  
+A compact market town: trunk roads, a modest square, and light-frame housing under a shared utility spine.  
+Group `settlement`. Built by town construction `[twnbld]`. Size 6000, capacity 4000, energy 4, HP 350, tech-cap 1, population max 750. Cannot be owned; cannot hold item stacks. Upkeep 30 food (riot 25% if unpaid). Produces 200 cash and 2 terran per 13 weeks. Operates on solid-surface worlds with terran atmosphere `[terair]`.
 
 **coal-burning plant [cplant]**  
 Provide energy by burining carbon.  
