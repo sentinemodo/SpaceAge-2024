@@ -7,7 +7,9 @@ param(
 
 	[int]$Seed,
 
-	[switch]$Force
+	[switch]$Force,
+
+	[hashtable]$PreferenceOverrides
 )
 
 $ErrorActionPreference = 'Stop'
@@ -30,13 +32,13 @@ $FactionMeta = @{
 
 $PreferenceMeans = @{
 	military   = 'Build and move `inftry` and `tanks`. Use `ATTACK`, `CAPTURE`, and `DECLARE FACTION <id> ENEMY`. Cross Helios Gate `P00009` <-> Fomal Gate `P00010` with `JUMP` once you have a ship on the Gate orbit.'
-	economic   = 'USE extractors and farms on local mass and calories. `BUY` / `SELL` at UN markets (Assembly on Arbor, Slagport on Anvil). Push surplus through spaceports when you have hulls.'
-	researcher = 'Build **`moblib` → `moblab` first** on the factory copy, `@get` crew, food, and **oil** from HQ cargo, then `@move` to the adjacent grant anomaly and `@research` it (8 pt / +20 RP). HQ cargo seeds **5 oil** for ground fuel (same as `trucks`). Defer town charters until the survey column moves. Later: `filidx`, `frminf` escort, silici scouting. Wreck charters (`CONTRACT` / `research` on belt hulks) when staged.'
+	economic   = 'Startup: **surface drill only** on HQ; factory copy of **`cdrill`** costs **1000 balance** at init (9000 cash on hand). **`use cdrill`** to build the first **core drill**, then stack more **core drills** and **`agrplx` farms** on the grant. **Energy first:** keep **`cplant`** (or add **`fossil`**) running before scaling extraction. Scout with **`moblib` to `moblab`** carrying a **`cdrill` technology copy** (not trucks): adjacent exits show **deep pocket of resources detected** once the factory copy is present; move the lab into the pocket cell to read **Deep resources:** assays. Defer UN town charters until the home grant is production-maxed. Trade at UN markets when local mass is thin.'
+	researcher = 'Build **`moblib` to `moblab` first** on the factory copy, `@get` crew, food, and **oil** from HQ cargo, then `@move` to the adjacent grant anomaly and `@research` it (8 pt / +20 RP). HQ cargo seeds **5 oil** for ground fuel (same as `trucks`). Defer town charters until the survey column moves. Later: `filidx`, `frminf` escort, silici scouting. Wreck charters (`CONTRACT` / `research` on belt hulks) when staged.'
 	contractor = 'File UN `CONTRACT` / `give-module` jobs first (food, wind, drills). Spend rewards on trade and the same live verbs as economic.'
 }
 
 $PasswordCharset = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789'
-$Preferences = @('military', 'economic', 'researcher', 'contractor')
+$PreferencePool = @('military', 'economic', 'researcher', 'contractor')
 
 function New-RunPassword {
 	param([Parameter(Mandatory = $true)][System.Random]$Rng)
@@ -104,6 +106,38 @@ Do **not** open ``campaign/data.xml`` or this run's ``data/data.xml``. Tell ``/p
 function Get-FactoryStackId {
 	param([Parameter(Mandatory = $true)][int]$FactionId)
 	return [string](200000 + ($FactionId - 2) * 10000 + 5)
+}
+
+function Get-CargoStackId {
+	param([Parameter(Mandatory = $true)][int]$FactionId)
+	return [string](200000 + ($FactionId - 2) * 10000 + 3)
+}
+
+function Add-EconomicStartupToGamein {
+	param(
+		[Parameter(Mandatory = $true)][string]$GameinText,
+		[Parameter(Mandatory = $true)][int]$FactionId
+	)
+	$text = $GameinText
+	$balancePattern = '(<faction\b(?=[^>]*\bname="' + $FactionId + '")[^>]*\bbalance=")10000(")'
+	$text = [regex]::Replace($text, $balancePattern, '${1}9000${2}', 1)
+
+	$stackId = Get-FactoryStackId -FactionId $FactionId
+	if ($text -match ('<modulestack name="' + [regex]::Escape($stackId) + '"[\s\S]*?<technology name="cdrill"')) {
+		return $text
+	}
+
+	$stackOpen = '(<modulestack name="' + [regex]::Escape($stackId) + '" type="factry" quantity="2" faction="' + $FactionId + '">)'
+	$replacement = '${1}' + "`n`t`t`t`t`t`t<technology name=`"cdrill`" name-en=`"mineral core drilling`" />"
+	$text = [regex]::Replace($text, $stackOpen, $replacement, 1)
+	if ($text -eq $GameinText) {
+		throw "Economic startup: factory stack $stackId not found for faction $FactionId."
+	}
+
+	$cargoId = Get-CargoStackId -FactionId $FactionId
+	$titaniPattern = '(<modulestack name="' + [regex]::Escape($cargoId) + '"[\s\S]*?<itemstack type="titani" quantity=")2(" />)'
+	$text = [regex]::Replace($text, $titaniPattern, '${1}10${2}', 1)
+	return $text
 }
 
 function Add-ResearcherStartupToGamein {
@@ -183,7 +217,20 @@ foreach ($id in $script:PlayerFactionIds) {
 
 $preferences = @{}
 foreach ($id in $script:PlayerFactionIds) {
-	$preferences[$id] = $Preferences[$rng.Next($Preferences.Length)]
+	$preferences[$id] = $PreferencePool[$rng.Next($PreferencePool.Length)]
+}
+if ($null -ne $PreferenceOverrides) {
+	foreach ($entry in $PreferenceOverrides.GetEnumerator()) {
+		$overrideId = [int]$entry.Key
+		$overridePref = [string]$entry.Value
+		if ($overridePref -notin $PreferencePool) {
+			throw "PreferenceOverrides[$overrideId] must be one of: $($PreferencePool -join ', ')."
+		}
+		if ($overrideId -notin $script:PlayerFactionIds) {
+			throw "PreferenceOverrides key $overrideId is not a player faction (2-11)."
+		}
+		$preferences[$overrideId] = $overridePref
+	}
 }
 
 $gameinPath = Join-Path $paths.DataDir 'gamein.xml'
@@ -198,7 +245,10 @@ foreach ($id in $script:PlayerFactionIds) {
 	$gameinText = $regex.Replace($gameinText, $replacement, 1)
 }
 foreach ($id in $script:PlayerFactionIds) {
-	if ($preferences[$id] -eq 'researcher') {
+	if ($preferences[$id] -eq 'economic') {
+		$gameinText = Add-EconomicStartupToGamein -GameinText $gameinText -FactionId $id
+	}
+	elseif ($preferences[$id] -eq 'researcher') {
 		$gameinText = Add-ResearcherStartupToGamein -GameinText $gameinText -FactionId $id
 	}
 }

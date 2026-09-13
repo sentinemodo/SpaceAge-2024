@@ -120,6 +120,48 @@ namespace IntegrationTests
 		}
 
 		[Test]
+		public void RegionReport_ExitTowardDeepPocket_ShowsHintWhenCdrillTechInSourceRegion()
+		{
+			Faction faction = this.game.Factions["2"];
+			Region grant = this.game.Regions["R00001"];
+			Region neighbor = this.game.Regions["R00002"];
+			neighbor.DeepPocketResources.AddOrIncrease(ItemType.All["titani"], 60);
+			ModuleStack factory = ModuleStack.All["000004"];
+			factory.Technologies.Add(Technology.All["cdrill"]);
+
+			List<string> lines = grant.Report(faction);
+			string exits = string.Join("\n", lines);
+			Assert.That(exits, Does.Contain("Eastern Europe [R00002]"));
+			Assert.That(exits, Does.Contain("deep pocket of resources detected"));
+		}
+
+		[Test]
+		public void RegionReport_DeepPocketResources_HiddenUntilCdrillTechInRegion()
+		{
+			Faction faction = this.game.Factions["2"];
+			Region grant = this.game.Regions["R00001"];
+			ModuleStack drill = ModuleStack.All["000006"];
+			ModuleType originalDrillType = drill.ModuleType;
+			drill.ModuleType = ModuleType.All["sdrill"];
+			grant.DeepPocketResources.AddOrIncrease(ItemType.All["titani"], 60);
+
+			try
+			{
+				List<string> withoutTech = grant.Report(faction);
+				Assert.That(string.Join("\n", withoutTech), Does.Not.Contain("Deep resources:"));
+
+				drill.ModuleType = originalDrillType;
+				List<string> withCdrillModule = grant.Report(faction);
+				Assert.That(string.Join("\n", withCdrillModule), Does.Contain("Deep resources:"));
+				Assert.That(string.Join("\n", withCdrillModule), Does.Contain("titanium [titani]"));
+			}
+			finally
+			{
+				drill.ModuleType = originalDrillType;
+			}
+		}
+
+		[Test]
 		public void RegionReport_ShowsContractAboveMarket()
 		{
 			Faction faction = this.game.Factions["2"];

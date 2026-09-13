@@ -67,14 +67,26 @@ Shuttle and HQ were oversized vs size/crew. Tanks pick up 16 crew. Ark picks up 
 
 ## Starting nest (cash / turn)
 
-Crew **30**. Arbor **3** `farms` + **2** `cplant`. Anvil **2** `farms` + **8** `wnplnt`. Shared: `corphq` 1, `cargob` 2, `cdrill` 1, `factry` 2, CEO officer. Rates from the formula.
+Crew **30**. Arbor **3** `farms` + **2** `cplant`. Anvil **2** `farms` + **8** `wnplnt`. Shared: `corphq` 1, `cargob` 2, **`sdrill` 1** (surface drill only at seed), `factry` 2, CEO officer. Rates from the formula.
+
+### Persona startup packages (`init-run.ps1`)
+
+| Item | Default (non-economic) | Economic persona | Researcher persona |
+|------|------------------------|------------------|-------------------|
+| HQ extractor | `sdrill` module | `sdrill` module | `sdrill` module |
+| Factory tech copy | none | **`cdrill`** on HQ `factry` | **`moblib`** on HQ `factry` |
+| Faction `balance` | **10000** | **9000** (−1000) | **9000** (−1000) |
+| `credit-line` | 10000 | 10000 | 10000 |
+| Cargo extras | seed default | **10 titani** on HQ `cargob` (first `cdrill` build) | **5 oil** on HQ `cargob` |
+
+Economic Interests pay **1000 cash** at init for a factory **`cdrill`** copy, then **`use cdrill`** to field the first **core drill** and stack more **`agrplx` / `cdrill`** on the grant once **`cplant`** energy keeps pace. Non-economic factions research **`cdrill`** normally (L1, 8 RP default). `_gen_gamein.py` emits **`sdrill`** only; persona injections happen after the preference roll.
 
 | Line | Qty | Rate | Arbor | Anvil |
 |------|-----|------|------:|------:|
 | `corphq` | 1 | 90 | 90 | 90 |
 | `cargob` | 2 | 10 | 20 | 20 |
 | `farms` | 3 / 2 | 30 | 90 | 60 |
-| `cdrill` | 1 | 50 | 50 | 50 |
+| `sdrill` | 1 | 35 | 35 | 35 |
 | `factry` | 2 | 55 | 110 | 110 |
 | `cplant` / `wnplnt` | 2 / 8 | 40 / 1 | 80 | 8 |
 | CEO officer | 1 | 10 | 10 | 10 |

@@ -262,6 +262,7 @@ class Region:
         self.exits = []
         self.stacks = []
         self.anomaly = None  # type, description, points, rewards[]
+        self.deep_pocket = []  # (type, qty) subsurface; core drill + cdrill tech in region to survey
 
 
 def _base_anomaly_rewards():
@@ -329,6 +330,21 @@ HQ_ANOMALIES = [
     (9, "anvil", "Basalt Grant", "Crag", "seismic", "Reflected compressional wave off a shallow density contrast — void or ore lens."),
     (10, "anvil", "Silicate Grant", "Bench", "spectral", "Silicate absorption feature shift on a bench terrace; altered regolith or glass."),
     (11, "anvil", "Fission Grant", "East Peak", "radiometric", "Hot spot on uraninite-rich crest; dosimeter spike above regional baseline."),
+]
+
+# One deep pocket per player HQ neighbourhood (~10/71 regions). Requires core drill to extract;
+# exit hint when the observing grant holds cdrill tech; ore types on-site only with cdrill in pocket region.
+HQ_DEEP_POCKETS = [
+    (2, "arbor", "Northwind Grant", "Mid Vale", [("titani", 55)]),
+    (3, "arbor", "Greenwell Grant", "South Ridge", [("titani", 45), ("iron", 60)]),
+    (4, "arbor", "Rivermark Grant", "East Peak", [("copper", 40)]),
+    (5, "arbor", "Sundock Grant", "Sundock Grant", [("titani", 50)]),
+    (6, "arbor", "Copse Grant", "Windgap", [("uraniu", 25)]),
+    (7, "anvil", "Ironclad Grant", "Slope", [("titani", 70)]),
+    (8, "anvil", "Oreline Grant", "Mid Spine", [("uraniu", 35), ("copper", 30)]),
+    (9, "anvil", "Basalt Grant", "Crag", [("silici", 50)]),
+    (10, "anvil", "Silicate Grant", "Bench", [("copper", 45)]),
+    (11, "anvil", "Fission Grant", "East Peak", [("uraniu", 40)]),
 ]
 
 
@@ -536,6 +552,10 @@ def emit_region(parent, region):
         el(node, "resource", type=typ, quantity=qty)
     for stack in region.stacks:
         emit_stack(node, stack)
+    if region.deep_pocket:
+        dpnode = el(node, "deep-pocket")
+        for typ, qty in region.deep_pocket:
+            el(dpnode, "resource", type=typ, quantity=qty)
     if region.anomaly:
         attrs = {"type": region.anomaly["type"], "points": region.anomaly.get("points", 8)}
         if region.anomaly.get("description"):
@@ -903,7 +923,7 @@ def hq_stack(fac, planet):
     if planet == "arbor":
         cargo = [("food", 400), ("terair", 200), ("h2o2", 200), ("iron", 40), ("carbon", 40), ("silici", 15), ("titani", 2), ("oil", 5)]
         nest(hq, "%d" % (base + 3), "cargob", fac, 2, items=cargo, upkeep=[("cash", 20)])
-        nest(hq, "%d" % (base + 4), "cdrill", fac, 1, items=[("terran", 6)], upkeep=[("cash", 50)])
+        nest(hq, "%d" % (base + 4), "sdrill", fac, 1, items=[("terran", 6)], upkeep=[("cash", 35)])
         factory = nest(hq, "%d" % (base + 5), "factry", fac, 2, items=[("terran", 20)], upkeep=[("cash", 110)])
         nest(hq, "%d" % (base + 6), "farms", fac, 3, items=[("terran", 15)], upkeep=[("cash", 90)])
         nest(
@@ -928,7 +948,7 @@ def hq_stack(fac, planet):
             ("oil", 5),
         ]
         nest(hq, "%d" % (base + 3), "cargob", fac, 2, items=cargo, upkeep=[("cash", 20)])
-        nest(hq, "%d" % (base + 4), "cdrill", fac, 1, items=[("terran", 6)], upkeep=[("cash", 50)])
+        nest(hq, "%d" % (base + 4), "sdrill", fac, 1, items=[("terran", 6)], upkeep=[("cash", 35)])
         factory = nest(hq, "%d" % (base + 5), "factry", fac, 2, items=[("terran", 20)], upkeep=[("cash", 110)])
         nest(hq, "%d" % (base + 6), "farms", fac, 2, items=[("terran", 10)], upkeep=[("cash", 60)])
         nest(hq, "%d" % (base + 7), "wnplnt", fac, 8, upkeep=[("cash", 8)])
@@ -959,6 +979,19 @@ def apply_hq_anomalies(arbor, anvil):
             "points": 8,
             "rewards": [dict(r) for r in rewards],
         }
+
+
+def apply_hq_deep_pockets(arbor, anvil):
+    grids = {"arbor": arbor.regions, "anvil": anvil.regions}
+    for _fac, planet, grant_name, pocket_name, resources in HQ_DEEP_POCKETS:
+        grid = grids[planet]
+        grant = find_region(grid, grant_name)
+        pocket = find_region(grid, pocket_name)
+        if pocket_name != grant_name and not any(ex.target == pocket.name for ex in grant.exits):
+            raise ValueError("deep pocket %s is not adjacent to grant %s" % (pocket_name, grant_name))
+        if pocket.deep_pocket:
+            raise ValueError("duplicate deep pocket on %s" % pocket_name)
+        pocket.deep_pocket = live_res(resources)
 
 
 def find_id(regions, rid):
@@ -1424,6 +1457,7 @@ def build_world():
         find_region(grid, grant).stacks.append(hq_stack(fac, home))
 
     apply_hq_anomalies(arbor, anvil)
+    apply_hq_deep_pockets(arbor, anvil)
 
     grant_market_contracts = []
     for fac, contract_id, reward, title, flavour in GRANT_MARKET_TOWNS:
@@ -2765,6 +2799,17 @@ def validate(systems, landings):
             errors.append("anomaly %s on %s type" % (anomaly_name, planet))
         if not any(ex.target == anomaly.name for ex in grant.exits):
             errors.append("anomaly %s not adjacent to %s" % (anomaly_name, grant_name))
+    deep_pocket_regions = [r for s in systems[:2] for p in s.planets for r in p.regions if r.deep_pocket]
+    if len(deep_pocket_regions) != len(HQ_DEEP_POCKETS):
+        errors.append("expected %d HQ deep pockets, got %d" % (len(HQ_DEEP_POCKETS), len(deep_pocket_regions)))
+    for _fac, planet, grant_name, pocket_name, resources in HQ_DEEP_POCKETS:
+        grid = arbor_regions if planet == "arbor" else anvil_regions
+        grant = find_region(grid, grant_name)
+        pocket = find_region(grid, pocket_name)
+        if pocket.deep_pocket != live_res(resources):
+            errors.append("deep pocket %s on %s resources" % (pocket_name, planet))
+        if pocket_name != grant_name and not any(ex.target == pocket.name for ex in grant.exits):
+            errors.append("deep pocket %s not adjacent to %s" % (pocket_name, grant_name))
     factions = sorted({int(s.faction) for s in hqs})
     if factions != list(range(2, 12)):
         errors.append("HQ factions %s" % factions)

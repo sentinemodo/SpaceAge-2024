@@ -183,6 +183,39 @@ public static partial class DraftPromptBuilder
                 """;
         }
 
+        if (string.Equals(hints.PersonaPreference, "economic", StringComparison.OrdinalIgnoreCase))
+        {
+            return """
+                #faction <id> "<password>"
+                #modulestack <cplant-id>
+                @produce energy
+
+                #modulestack <hq-id>
+                @produce cash
+
+                #modulestack <sdrill-id>
+                @use hcdril
+                @use iminng
+
+                #modulestack <farms-id>
+                @use farmng
+
+                #modulestack <cargob-id>
+                @get all food from <farms-id>
+                @get all carbon from <sdrill-id>
+                sell 200 food at average
+
+                #modulestack <factry-id>
+                get 25 iron from <cargob-id>
+                get 10 titani from <cargob-id>
+                use cdrill as new108 for <hq-id>
+                #modulestack new108
+                @get 6 terran from <hq-id>
+                deactivate 1
+                #end
+                """;
+        }
+
         return """
             #faction <id> "<password>"
             #modulestack <hq-id>
@@ -226,6 +259,18 @@ public static partial class DraftPromptBuilder
                 Write turn {hints.DraftTurn} orders for this faction.
                 Run the grant economic loop, then factory-build `twnbld` and `transfer 1 to faction 1` for the open UN town contract if due this quarter.
                 Use only stack ids from the Orders template.
+                """;
+        }
+
+        if (string.Equals(hints.PersonaPreference, "economic", StringComparison.OrdinalIgnoreCase))
+        {
+            return $"""
+                Write turn {hints.DraftTurn} orders for this faction.
+                Priority: `@produce energy` on cplant FIRST — HQ is often 80/80 with no headroom; do not activate a nested cdrill (+5 draw) until a 3rd cplant (fossil, 100 iron) is online.
+                Surface drill: @use hcdril + @use iminng (iron for next cplant). Factory: use cdrill as newNNN for HQ-id, stage 6 terran, deactivate 1 until energy margin.
+                Turn 2+: moblib/moblab with cdrill tech copy to scout deep pockets (exit hint from grant; Deep resources line on-site). Activate cdrill @use iminng on pocket. Next agrplx/farms vs pocket cdrill by bottleneck.
+                Defer UN town/CONTRACT charters until home grant production is maxed.
+                Use only stack ids from the Orders template. Lowercase immediate verbs (get, use); leftover lines use @ prefix.
                 """;
         }
 

@@ -32,6 +32,29 @@ public class StoryDraftPromptBuilderTests
     }
 
     [Test]
+    public void BuildChunkPrompts_EconomicPersona_PrioritizesCoreDrillAndMoblabScout()
+    {
+        var context = new StoryDraftContext(
+            "Greenwell",
+            3,
+            1,
+            "## Preference: economic\nHome: Arbor in Helios",
+            "CT0007: Greenwell bazaar charter.\n+ Greenwell Headquarters [210001]",
+            "CT0007 town charter reward servic",
+            "210001, 210003, 210005")
+        {
+            HasPriorStory = false,
+        };
+
+        var chunks = StoryDraftPromptBuilder.BuildChunkPrompts(context);
+
+        Assert.That(chunks[1].UserPrompt, Does.Contain("use cdrill as new108"));
+        Assert.That(chunks[1].UserPrompt, Does.Contain("moblab"));
+        Assert.That(chunks[1].UserPrompt, Does.Contain("deep pocket"));
+        Assert.That(chunks[1].UserPrompt, Does.Not.Contain("grndtr"));
+    }
+
+    [Test]
     public void AssembleStory_PrefixesTitleAndJoinsSections()
     {
         var story = StoryDraftPromptBuilder.AssembleStory(

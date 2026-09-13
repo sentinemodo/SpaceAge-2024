@@ -74,6 +74,7 @@ public static partial class StoryDraftPromptBuilder
     public static IReadOnlyList<StoryChunkPrompt> BuildChunkPrompts(StoryDraftContext context)
     {
         var isResearcher = context.PersonaText.Contains("Preference: researcher", StringComparison.OrdinalIgnoreCase);
+        var isEconomic = context.PersonaText.Contains("Preference: economic", StringComparison.OrdinalIgnoreCase);
         var personaBrief =
             $"{context.FactionName} faction {context.FactionId}. {SummarizePersona(context.PersonaText)} "
             + $"Contract: {context.ContractHint}. Stacks: {context.StackIdsSummary}.";
@@ -86,14 +87,38 @@ public static partial class StoryDraftPromptBuilder
                 - @move adjacent anomaly region-id; @research that region (8-point threshold, +20 RP resolve)
                 - Do not nest wind kits on moblab; HQ energy stays on coal plant. Defer UN town contract until survey column is staged
                 """
-            : """
-                - Grant economic loop (@produce cash, @use farmng / @use hcdril, @produce energy, sell food via cargob)
-                - Stage 30 iron + 2 titani on factory, use twnbld as new1, transfer 1 to faction 1 for the UN town contract
-                """;
+            : isEconomic
+                ? """
+                    - Factory first: seeded cdrill tech (−1000 balance at init) — get 25 iron + 10 titani, use cdrill as new108 for the first core drill on the grant
+                    - Energy before scale: @produce energy on cplant; add fossil/cplant copies when carbon tight before stacking more drills
+                    - Grant loop on surface drill until core drill online (@use hcdril / @use iminng on sdrill-id, @use farmng, sell surplus food)
+                    - Scout with moblib/moblab carrying a cdrill technology copy (not trucks): adjacent exits show deep pocket of resources detected; move lab into pocket cell to read Deep resources assays
+                    - Defer CT town charter until home grant production is maxed; next build agrplx farms or cdrill on deep pockets by market bottleneck
+                    """
+                : """
+                    - Grant economic loop (@produce cash, @use farmng / @use hcdril, @produce energy, sell food via cargob)
+                    - Stage 30 iron + 2 titani on factory, use twnbld as new1, transfer 1 to faction 1 for the UN town contract
+                    """;
 
         var narrativeHook = isResearcher
             ? "adjacent HQ anomaly detected on grant exits, mobile lab field survey, 8-point investigation threshold"
-            : "UN town charter via TRANSFER TO FACTION 1";
+            : isEconomic
+                ? "surface drill bootstrap, paid cdrill tech copy, moblab deep-pocket scouting column before grant expansion"
+                : "UN town charter via TRANSFER TO FACTION 1";
+
+        var strategicGuidance = isEconomic
+            ? """
+                Four-quarter arc: max home-grant extraction (surface drill → core drill → farms/deep pockets), moblab deep-pocket survey column, then UN town charter when production is saturated.
+                Name CT0007 and preventive servicing reward only as a deferred milestone — do NOT make hosting the UN market town the turn-1 priority.
+                """
+            : isResearcher
+                ? """
+                    Four-quarter arc: moblab anomaly survey and RESEARCH on adjacent grant exits, grant economic loop, defer UN town charter until survey column is staged.
+                    Mention contract id and reward tech as later-quarter milestones.
+                    """
+                : """
+                    Four quarters tied to persona doctrine and the open contract; mention contract id and reward tech where relevant.
+                    """;
 
         return
         [
@@ -106,19 +131,18 @@ public static partial class StoryDraftPromptBuilder
                 {context.ReportExcerpt}
 
                 Write ONLY the ## Strategic objective section (four quarters in Helios).
-                Use a short prose paragraph or 4 bullets tied to persona doctrine and the open contract.
-                Mention contract id, reward tech, and researcher/contractor priorities where relevant.
-                No other headings.
+                {strategicGuidance}
+                Use a short prose paragraph or 4 bullets. No other headings.
                 """),
             new StoryChunkPrompt(
                 "tactical",
                 $"""
                 {personaBrief}
 
-                Write ONLY ## Tactical objective with bullet list for the next quarter:
+                Write ONLY ## Tactical objective with bullet list for the next quarter.
                 {tacticalBullets}
-                Use stack ids: {context.StackIdsSummary}.
-                No other headings.
+                Substitute real stack ids from the report where placeholders appear: {context.StackIdsSummary}.
+                Do not echo these instructions. No other headings.
                 """),
             new StoryChunkPrompt(
                 "narrative",

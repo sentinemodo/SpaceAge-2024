@@ -64,6 +64,14 @@ namespace SpaceAge
 				{
 					line = string.Format("{0}, anomaly detected", line);
 				}
+				if (region != null
+					&& region.HasDeepPocket
+					&& fromRegion != null
+					&& fromRegion.Visible(faction)
+					&& fromRegion.HasCdrillTechnologyFor(faction))
+				{
+					line = string.Format("{0}, deep pocket of resources detected", line);
+				}
 				lines.Add(string.Concat(line, "."));
 			}
 			return lines;

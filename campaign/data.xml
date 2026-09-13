@@ -517,7 +517,7 @@
 			name="cdrill"
 			name-en="mineral core drilling"
 			level="1"
-			description="Mineral exploitation."
+			description="Core-body mineral exploitation. Detects subsurface deep pockets on regional exits when a cdrill technology copy is present on the observing grant; identifies ore types only when cdrill is on-site in the pocket region. Requires a core drill module to extract deep resources."
 			use-time="3">
 			<use-allowed-in module-type-group="production"/>
 			<use-consume item="iron" quantity="25"/>
@@ -2157,7 +2157,7 @@ Researchers can query the library. The system can handle natural language questi
 			name-en="core drill"
 			name-en2="core drills"
 			group="extraction"
-			description="Advanced mining system. A core drill allows you to strip minerals and various resources out of the core of any solid body."
+			description="Advanced mining system. A core drill strips minerals from the core of any solid body and extracts deep-pocket deposits invisible to surface drills. Carry a cdrill technology copy in-region to read deep resource assays; pair with a mobile laboratory for field scouting."
 			size="1000"
 			capacity="750"
 			mass="1000"

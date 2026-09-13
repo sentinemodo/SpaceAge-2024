@@ -1,8 +1,9 @@
 ﻿{
   "sourcePath": "player/rules.md",
   "sourceContentHash": "a8421279636c681e9e89e19a29757f3e3a0eebadbe571d5e1f207d09c413feaf",
-  "generatedAtUtc": "2026-09-13T16:00:00.7491936Z",
+  "generatedAtUtc": "2026-09-13T18:00:13.1005689Z",
   "verbs": [
+    "ACTIVATE",
     "ACTIVE",
     "ALIAS",
     "ATTACK",
@@ -10,7 +11,9 @@
     "CAPTURE",
     "CONTRACT",
     "COPY",
+    "DEACTIVATE",
     "DECLARE",
+    "DEPOSIT",
     "FORM",
     "GET",
     "GIVE",
@@ -28,6 +31,7 @@
     "TACTIC",
     "TRAIN",
     "TRANSFER",
-    "USE"
+    "USE",
+    "WITHDRAW"
   ]
 }

@@ -226,7 +226,7 @@ Elementary military tactics, which enable a higher level of combat proficiency. 
 Works in: command. Use consumes: nothing. Use produces: nothing (battle tech). Use-time: 1 week (default).
 
 **mineral core drilling [cdrill]**  
-Mineral exploitation.  
+Core-body mineral exploitation. Detects subsurface **deep pockets** on regional exits when a `cdrill` technology copy is present on the observing grant; identifies ore types only when `cdrill` is on-site in the pocket region. Requires a core drill module to extract deep resources.  
 Works in: production. Use consumes: 25 iron `[iron]`, 10 titanium `[titani]`. Use produces: core drill `[cdrill]`. Use-time: 3 weeks.
 
 **naval combat [nvlcbt]**  
@@ -396,7 +396,7 @@ A compact high-frequency laser suitable for ground combat.
 Group `military`. Built by laser optics `[lasopt]`. Requires technology laser optics `[lasopt]`. `weapon-group` `laser`. Size 100, mass 100, crew 1, energy 5, capacity 50, HP 50, tech-cap 2, attack 7, defense 1, damage 7. Upkeep 20 cash.
 
 **core drill [cdrill]**  
-Advanced mining system. A core drill allows you to strip minerals and various resources out of the core of any solid body.  
+Advanced mining system. Strips core-body minerals and extracts **deep-pocket** deposits invisible to surface drills. Carry a `cdrill` technology copy in-region to read deep resource assays; pair with a mobile laboratory for field scouting.  
 Group `extraction`. Built by mineral core drilling `[cdrill]`. Size 1000, mass 1000, crew 6, energy 5, capacity 750, HP 100, tech-cap 4. Upkeep 50 cash. Faster extraction on self. Operates on solid-surface, in settlement or frigate.
 
 **engineering shop [engshp]**  

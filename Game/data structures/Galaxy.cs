@@ -277,6 +277,7 @@ namespace SpaceAge
 
 					this.loadCapacities(elRegion, region, dataFile);
 					this.loadResources(elRegion, region, dataFile);
+					this.loadDeepPocket(elRegion, region, dataFile);
 					this.loadAnomaly(elRegion, region, dataFile);
 
                     ModuleStack.All.LoadXml(elRegion, region);
@@ -346,6 +347,31 @@ namespace SpaceAge
 				catch (Exception ex)
 				{
 					throw new Exception("Tried to parse resources", ex);
+				}
+			}
+		}
+
+		private void loadDeepPocket(XmlElement elRegion, Region region, DataFile dataFile)
+		{
+			XmlElement elDeepPocket = (XmlElement)elRegion.SelectSingleNode("deep-pocket");
+			if (elDeepPocket == null)
+			{
+				return;
+			}
+
+			foreach (XmlElement elResource in elDeepPocket.SelectNodes("resource"))
+			{
+				try
+				{
+					Resource resource = new Resource();
+					resource.ItemType = dataFile.Game.ItemTypes[elResource.GetAttribute("type")];
+					resource.Quantity = dataFile.XMLAssignInteger(elResource.GetAttribute("quantity"), 1);
+					resource.IsDeep = true;
+					region.DeepPocketResources.Add(resource);
+				}
+				catch (Exception ex)
+				{
+					throw new Exception("Tried to parse deep-pocket resources", ex);
 				}
 			}
 		}
@@ -761,6 +787,18 @@ namespace SpaceAge
 					}
 				}
 				this.saveResources(doc, elRegion, region, factionXMLreport);
+				if (region.HasDeepPocket)
+				{
+					XmlElement elDeepPocket = doc.CreateElement("deep-pocket");
+					elRegion.AppendChild(elDeepPocket);
+					foreach (Resource resource in region.DeepPocketResources)
+					{
+						XmlElement elResource = doc.CreateElement("resource");
+						elDeepPocket.AppendChild(elResource);
+						elResource.SetAttribute("type", resource.ItemType.Name);
+						elResource.SetAttribute("quantity", resource.Quantity.ToString());
+					}
+				}
 				if (region.HasAnomaly)
 				{
 					XmlElement elAnomaly = doc.CreateElement("anomaly");

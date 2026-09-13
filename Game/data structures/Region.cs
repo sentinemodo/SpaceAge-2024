@@ -49,6 +49,17 @@ namespace SpaceAge
 			get { return this.resources; }
 		}
 
+		private Resources deepPocketResources = new Resources();
+		public Resources DeepPocketResources
+		{
+			get { return this.deepPocketResources; }
+		}
+
+		public bool HasDeepPocket
+		{
+			get { return this.deepPocketResources.Count > 0; }
+		}
+
 		private RegionAnomaly anomaly;
 		public RegionAnomaly Anomaly
 		{
@@ -125,6 +136,15 @@ namespace SpaceAge
 				reportLines.Add(this.Resources.Report, level);
 			}
 
+			if (this.HasDeepPocket && faction != null && this.HasCdrillTechnologyFor(faction))
+			{
+				string deepReport = this.DeepPocketResources.FormatReport("Deep resources");
+				if (deepReport != null)
+				{
+					reportLines.Add(deepReport, level);
+				}
+			}
+
 			if (this.HasAnomaly && faction != null)
 			{
 				if (this.Anomaly.IsResolved(faction))
@@ -179,6 +199,61 @@ namespace SpaceAge
 			{
 				return true;
 			}
+			return false;
+		}
+
+		public bool HasCdrillTechnologyFor(Faction faction)
+		{
+			if (faction == null)
+			{
+				return false;
+			}
+
+			Technology cdrillTechnology = Technology.All["cdrill"];
+			ModuleType cdrillModule = ModuleType.All["cdrill"];
+			foreach (ModuleStack root in this.ModuleStacks.Values)
+			{
+				if (this.hasCdrillCapabilityRecursive(root, faction, cdrillTechnology, cdrillModule))
+				{
+					return true;
+				}
+			}
+
+			return false;
+		}
+
+		private bool hasCdrillCapabilityRecursive(
+			ModuleStack stack,
+			Faction faction,
+			Technology cdrillTechnology,
+			ModuleType cdrillModule)
+		{
+			if (stack == null)
+			{
+				return false;
+			}
+
+			if (stack.Owner == faction)
+			{
+				if (stack.HasTechnology(cdrillTechnology))
+				{
+					return true;
+				}
+
+				if (stack.IsFormed && stack.ModuleType == cdrillModule)
+				{
+					return true;
+				}
+			}
+
+			foreach (ModuleStack child in stack.ModuleStacks.Values)
+			{
+				if (this.hasCdrillCapabilityRecursive(child, faction, cdrillTechnology, cdrillModule))
+				{
+					return true;
+				}
+			}
+
 			return false;
 		}
 	}

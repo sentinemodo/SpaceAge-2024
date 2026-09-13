@@ -6,6 +6,14 @@ namespace SpaceAge
 {
 	public class Resource
 	{
+		private bool isDeep;
+
+		public bool IsDeep
+		{
+			get { return this.isDeep; }
+			set { this.isDeep = value; }
+		}
+
 		public bool Visible (Faction faction)
 		{
 			return true;
