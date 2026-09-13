@@ -179,6 +179,7 @@ internal static class CommandHelpers
         Console.WriteLine($"Ollama host:      {settings.OllamaBaseUri}");
         Console.WriteLine($"OpenAI base:      {settings.OpenAiBaseUri}");
         Console.WriteLine($"Chat model:       {settings.ChatModel}");
+        Console.WriteLine($"Chat timeout:     {settings.ChatTimeoutSeconds}s");
         Console.WriteLine($"Embed model:      {settings.EmbedModel}");
         Console.WriteLine($"Index directory:  {settings.IndexDirectory}");
         Console.WriteLine($"Remote host:      {settings.IsRemoteHost}");

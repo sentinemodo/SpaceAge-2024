@@ -1159,6 +1159,243 @@ namespace UnitTests
 		}
 
         // prices changes
+
+		private DeliveringPurchase executeCrossRegionTerranBuy(out ModuleStack buyer, out double bankBeforeCancel)
+		{
+			ItemType terran = ItemType.All["terran"];
+			ModuleStack sellerLocal = this.game.ModuleStacks["000001"];
+			ModuleStack sellerRemote = this.game.ModuleStacks["000005"];
+			buyer = this.game.ModuleStacks["000004"];
+			sellerLocal.ItemStacks.Remove(new ItemStack(terran, sellerLocal.ItemStacks[terran].Quantity));
+			foreach (Offer offer in Offer.All[EOfferType.SellItems][terran][sellerLocal])
+			{
+				Offer.All.Remove(offer);
+			}
+
+			List<string> testcommands = new List<string>
+			{
+				"#faction 2",
+				"#modulestack 000004",
+				"@buy all terran everywhere",
+				"#end"
+			};
+			OrdersReader ordersReader = new OrdersReader(this.game);
+			ordersReader.AssignOrders(testcommands);
+
+			BuyOrder order = (BuyOrder)buyer.Orders[0];
+			order.Execute(this.game.Week);
+			this.ProcessMarketBuys(this.game.Week);
+
+			DeliveringPurchase delivery = null;
+			foreach (Effect effect in buyer.Effects)
+			{
+				delivery = effect as DeliveringPurchase;
+				if (delivery != null)
+				{
+					break;
+				}
+			}
+			Assert.That(delivery, Is.Not.Null);
+			Assert.That(sellerRemote.ItemStacks.ContainsKey(terran), Is.False);
+			bankBeforeCancel = buyer.Owner.Bank.AvailableFunds;
+			return delivery;
+		}
+
+		[Test]
+		public void BuyCancel_PendingCrossRegionDelivery_RefundsEightyPercentAndReturnsGoods()
+		{
+			ModuleStack buyer;
+			double bankBeforeCancel;
+			ModuleStack sellerRemote = this.game.ModuleStacks["000005"];
+			DeliveringPurchase delivery = this.executeCrossRegionTerranBuy(out buyer, out bankBeforeCancel);
+			int expectedRefund = (int)Math.Floor(delivery.PurchaseValue * DeliveringPurchase.CancelRefundRatio);
+			ItemType cash = ItemType.All["cash"];
+			sellerRemote.ItemStacks.Remove(ItemStack.Cash(sellerRemote.ItemStacks.Quantity(cash)));
+			double sellerBankBeforeCancel = sellerRemote.Owner.Bank.Balance;
+
+			List<string> testcommands = new List<string>
+			{
+				"#faction 2",
+				"#modulestack 000004",
+				"buy cancel",
+				"#end"
+			};
+			OrdersReader ordersReader = new OrdersReader(this.game);
+			ordersReader.AssignOrders(testcommands);
+			BuyOrder cancelOrder = (BuyOrder)buyer.Orders[1];
+			Assert.That(cancelOrder.CancelMode);
+			cancelOrder.Execute(this.game.Week);
+
+			Assert.That(buyer.Effects.FindAll(effect => effect is DeliveringPurchase).Count, Is.EqualTo(0));
+			Assert.That(buyer.Owner.Bank.AvailableFunds, Is.EqualTo(bankBeforeCancel + expectedRefund));
+			Assert.That(expectedRefund, Is.EqualTo(800));
+			Assert.That(delivery.TransferCost, Is.EqualTo(100));
+			Assert.That(sellerRemote.Owner.Bank.Balance, Is.EqualTo(sellerBankBeforeCancel - expectedRefund));
+
+			DeliveringPurchase returnDelivery = null;
+			foreach (Effect effect in sellerRemote.Effects)
+			{
+				returnDelivery = effect as DeliveringPurchase;
+				if (returnDelivery != null)
+				{
+					break;
+				}
+			}
+			Assert.That(returnDelivery, Is.Not.Null);
+			Assert.That(returnDelivery.IsReturn);
+			Assert.That(returnDelivery.PurchaseValue, Is.EqualTo(0));
+			Assert.That(returnDelivery.ItemStack.Quantity, Is.EqualTo(20));
+			Assert.That(sellerRemote.ItemStacks.ContainsKey(ItemType.All["terran"]), Is.False);
+		}
+
+		[Test]
+		public void Move_Starts_CancelsPendingCrossRegionDeliveryWithEightyPercentRefund()
+		{
+			ItemType terran = ItemType.All["terran"];
+			ModuleStack buyer = this.game.ModuleStacks["100001"];
+			ModuleStack sellerLocal = this.game.ModuleStacks["000005"];
+			ModuleStack sellerRemote = this.game.ModuleStacks["000001"];
+			sellerLocal.ItemStacks.Remove(new ItemStack(terran, sellerLocal.ItemStacks[terran].Quantity));
+			foreach (Offer offer in Offer.All[EOfferType.SellItems][terran][sellerLocal])
+			{
+				Offer.All.Remove(offer);
+			}
+
+			List<string> testcommands = new List<string>
+			{
+				"#faction 2",
+				"#modulestack 100001",
+				"@buy all terran everywhere",
+				"#end"
+			};
+			OrdersReader ordersReader = new OrdersReader(this.game);
+			ordersReader.AssignOrders(testcommands);
+			BuyOrder buyOrder = (BuyOrder)buyer.Orders[0];
+			buyOrder.Execute(this.game.Week);
+			this.ProcessMarketBuys(this.game.Week);
+
+			DeliveringPurchase delivery = null;
+			foreach (Effect effect in buyer.Effects)
+			{
+				delivery = effect as DeliveringPurchase;
+				if (delivery != null)
+				{
+					break;
+				}
+			}
+			Assert.That(delivery, Is.Not.Null);
+			Assert.That(sellerRemote.ItemStacks.ContainsKey(terran), Is.False);
+			double bankBeforeMove = buyer.Owner.Bank.AvailableFunds;
+			int expectedRefund = (int)Math.Floor(delivery.PurchaseValue * DeliveringPurchase.CancelRefundRatio);
+
+			testcommands = new List<string>
+			{
+				"#faction 2",
+				"#modulestack 100001",
+				"move R00002",
+				"#end"
+			};
+			ordersReader.AssignOrders(testcommands);
+			MoveOrder moveOrder = (MoveOrder)buyer.Orders[1];
+			buyer.ExecutedLongOrder = false;
+			buyer.Orders.Execute(this.game.Week);
+
+			Assert.That(buyer.Effects.FindAll(effect => effect is DeliveringPurchase).Count, Is.EqualTo(0));
+			Assert.That(buyer.Owner.Bank.AvailableFunds, Is.EqualTo(bankBeforeMove + expectedRefund));
+			Assert.That(moveOrder.Executing, Is.True);
+
+			DeliveringPurchase returnDelivery = null;
+			foreach (Effect effect in sellerRemote.Effects)
+			{
+				returnDelivery = effect as DeliveringPurchase;
+				if (returnDelivery != null)
+				{
+					break;
+				}
+			}
+			Assert.That(returnDelivery, Is.Not.Null);
+			Assert.That(returnDelivery.IsReturn);
+		}
+
+		[Test]
+		public void BuyInRegion_MatchesOnlySpecifiedRegion()
+		{
+			ItemType terran = ItemType.All["terran"];
+			ModuleStack buyer = this.game.ModuleStacks["000004"];
+			ModuleStack sellerBerlin = this.game.ModuleStacks["000005"];
+			ModuleStack sellerWarsaw = this.game.ModuleStacks["000001"];
+			foreach (Offer offer in Offer.All[EOfferType.SellItems][terran][sellerWarsaw])
+			{
+				Offer.All.Remove(offer);
+			}
+
+			List<string> testcommands = new List<string>
+			{
+				"#faction 2",
+				"#modulestack 000004",
+				"@buy all terran in R00001",
+				"#end"
+			};
+			OrdersReader ordersReader = new OrdersReader(this.game);
+			ordersReader.AssignOrders(testcommands);
+
+			BuyOrder order = (BuyOrder)buyer.Orders[0];
+			Assert.That(order.BuyInRegion.Name, Is.EqualTo("R00001"));
+			order.Execute(this.game.Week);
+			this.ProcessMarketBuys(this.game.Week);
+
+			Assert.That(sellerBerlin.ItemStacks.ContainsKey(terran), Is.False);
+			Assert.That(sellerWarsaw.ItemStacks.ContainsKey(terran), Is.True);
+			DeliveringPurchase delivery = null;
+			foreach (Effect effect in buyer.Effects)
+			{
+				delivery = effect as DeliveringPurchase;
+				if (delivery != null)
+				{
+					break;
+				}
+			}
+			Assert.That(delivery, Is.Not.Null);
+			Assert.That(delivery.SellerStack.Name, Is.EqualTo("000005"));
+		}
+
+		[Test]
+		public void SellerMove_DestroyReturnShipmentInTransit()
+		{
+			ModuleStack seller = this.game.ModuleStacks["100001"];
+			ModuleStack buyer = this.game.ModuleStacks["000004"];
+			ItemType terran = ItemType.All["terran"];
+			int terransBefore = seller.ItemStacks.Quantity(terran);
+			ItemStack returningTerrans = new ItemStack(terran, 5);
+			DeliveringPurchase returnDelivery = new DeliveringPurchase(
+				seller,
+				buyer,
+				seller,
+				returningTerrans,
+				0,
+				0,
+				(Region)seller.Location,
+				4,
+				true);
+			returnDelivery.Execute(this.game.Week);
+
+			List<string> testcommands = new List<string>
+			{
+				"#faction 2",
+				"#modulestack 100001",
+				"move R00002",
+				"#end"
+			};
+			OrdersReader ordersReader = new OrdersReader(this.game);
+			ordersReader.AssignOrders(testcommands);
+			MoveOrder moveOrder = (MoveOrder)seller.Orders[0];
+			seller.ExecutedLongOrder = false;
+			seller.Orders.Execute(this.game.Week);
+
+			Assert.That(seller.Effects.FindAll(effect => effect is DeliveringPurchase).Count, Is.EqualTo(0));
+			Assert.That(moveOrder.Executing, Is.True);
+			Assert.That(seller.ItemStacks.Quantity(terran), Is.EqualTo(terransBefore));
+		}
 	}
 
 	[TestFixture]
@@ -1594,121 +1831,6 @@ namespace UnitTests
 			ResearchWreckageTrigger loadedTrigger = (ResearchWreckageTrigger)loaded.Trigger;
 			Assert.That(loadedTrigger.RequiredPoints, Is.EqualTo(5));
 			Assert.That(loadedTrigger.Target.Name, Is.EqualTo("200"));
-		}
-
-		private DeliveringPurchase executeCrossRegionTerranBuy(out ModuleStack buyer, out double bankBeforeCancel)
-		{
-			ItemType terran = ItemType.All["terran"];
-			ModuleStack sellerLocal = this.game.ModuleStacks["000001"];
-			ModuleStack sellerRemote = this.game.ModuleStacks["000005"];
-			buyer = this.game.ModuleStacks["000004"];
-			sellerLocal.ItemStacks.Remove(new ItemStack(terran, sellerLocal.ItemStacks[terran].Quantity));
-
-			List<string> testcommands = new List<string>
-			{
-				"#faction 2",
-				"#modulestack 000004",
-				"@buy all terran everywhere",
-				"#end"
-			};
-			OrdersReader ordersReader = new OrdersReader(this.game);
-			ordersReader.AssignOrders(testcommands);
-
-			BuyOrder order = (BuyOrder)buyer.Orders[0];
-			order.Execute(this.game.Week);
-			this.ProcessMarketBuys(this.game.Week);
-
-			DeliveringPurchase delivery = null;
-			foreach (Effect effect in buyer.Effects)
-			{
-				delivery = effect as DeliveringPurchase;
-				if (delivery != null)
-				{
-					break;
-				}
-			}
-			Assert.That(delivery, Is.Not.Null);
-			Assert.That(sellerRemote.ItemStacks.ContainsKey(terran), Is.False);
-			bankBeforeCancel = buyer.Owner.Bank.AvailableFunds;
-			return delivery;
-		}
-
-		[Test]
-		public void BuyCancel_PendingCrossRegionDelivery_RefundsEightyPercent()
-		{
-			ModuleStack buyer;
-			double bankBeforeCancel;
-			DeliveringPurchase delivery = this.executeCrossRegionTerranBuy(out buyer, out bankBeforeCancel);
-			int paidAmount = delivery.PaidAmount;
-			int expectedRefund = (int)Math.Floor(paidAmount * DeliveringPurchase.CancelRefundRatio);
-
-			List<string> testcommands = new List<string>
-			{
-				"#faction 2",
-				"#modulestack 000004",
-				"buy cancel",
-				"#end"
-			};
-			OrdersReader ordersReader = new OrdersReader(this.game);
-			ordersReader.AssignOrders(testcommands);
-			BuyOrder cancelOrder = (BuyOrder)buyer.Orders[1];
-			Assert.That(cancelOrder.CancelMode);
-			cancelOrder.Execute(this.game.Week);
-
-			Assert.That(buyer.Effects.FindAll(effect => effect is DeliveringPurchase).Count, Is.EqualTo(0));
-			Assert.That(buyer.Owner.Bank.AvailableFunds, Is.EqualTo(bankBeforeCancel + expectedRefund));
-			Assert.That(expectedRefund, Is.EqualTo((int)Math.Floor(paidAmount * 0.8)));
-		}
-
-		[Test]
-		public void Move_Starts_CancelsPendingCrossRegionDeliveryWithEightyPercentRefund()
-		{
-			ModuleStack buyer = this.game.ModuleStacks["100001"];
-			ItemType terran = ItemType.All["terran"];
-			ModuleStack sellerLocal = this.game.ModuleStacks["000001"];
-			sellerLocal.ItemStacks.Remove(new ItemStack(terran, sellerLocal.ItemStacks[terran].Quantity));
-
-			List<string> testcommands = new List<string>
-			{
-				"#faction 2",
-				"#modulestack 100001",
-				"@buy all terran everywhere",
-				"#end"
-			};
-			OrdersReader ordersReader = new OrdersReader(this.game);
-			ordersReader.AssignOrders(testcommands);
-			BuyOrder buyOrder = (BuyOrder)buyer.Orders[0];
-			buyOrder.Execute(this.game.Week);
-			this.ProcessMarketBuys(this.game.Week);
-
-			DeliveringPurchase delivery = null;
-			foreach (Effect effect in buyer.Effects)
-			{
-				delivery = effect as DeliveringPurchase;
-				if (delivery != null)
-				{
-					break;
-				}
-			}
-			Assert.That(delivery, Is.Not.Null);
-			double bankBeforeMove = buyer.Owner.Bank.AvailableFunds;
-			int expectedRefund = (int)Math.Floor(delivery.PaidAmount * DeliveringPurchase.CancelRefundRatio);
-
-			testcommands = new List<string>
-			{
-				"#faction 2",
-				"#modulestack 100001",
-				"move R00002",
-				"#end"
-			};
-			ordersReader.AssignOrders(testcommands);
-			MoveOrder moveOrder = (MoveOrder)buyer.Orders[1];
-			buyer.ExecutedLongOrder = false;
-			buyer.Orders.Execute(this.game.Week);
-
-			Assert.That(buyer.Effects.FindAll(effect => effect is DeliveringPurchase).Count, Is.EqualTo(0));
-			Assert.That(buyer.Owner.Bank.AvailableFunds, Is.EqualTo(bankBeforeMove + expectedRefund));
-			Assert.That(moveOrder.Executing, Is.True);
 		}
 
 	}

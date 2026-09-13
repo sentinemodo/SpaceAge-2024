@@ -43,7 +43,7 @@ namespace UnitTests
 		{
 			Region region1 = Region.All["R00001"];
 			Region region2 = Region.All["R00002"];
-			Region region3 = new Region(Planet.All["P00001"], "R90001");
+			Region region3 = new Region(Planet.All["P00002"], "R90001");
 			Exit exit = new Exit();
 			exit.To = region3;
 			exit.ExitModes.Add(EMoveMode.ground, new ExitMode { Duration = 2 });
@@ -62,7 +62,7 @@ namespace UnitTests
 		public void TryGroundDistance_NoGroundPath_ReturnsFalse()
 		{
 			Region region1 = Region.All["R00001"];
-			Region isolated = new Region(Planet.All["P00001"], "R90002");
+			Region isolated = new Region(Planet.All["P00002"], "R90002");
 			int distance;
 			Assert.That(Region.All.TryGroundDistance(region1, isolated, out distance), Is.False);
 		}

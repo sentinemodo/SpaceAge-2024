@@ -1060,7 +1060,7 @@ Researchers can query the library. The system can handle natural language questi
 			<use-produce module="cmplib"/>
 		</entry>
 		<entry
-			name="moblb"
+			name="moblib"
 			name-en="mobile laboratory"
 			level="1"
 			tags="research"
@@ -2902,6 +2902,7 @@ Researchers can query the library. The system can handle natural language questi
 			description="Six-wheel flatbed carries FTIR, XRF, and a field terminal: sample prep in a dust tent, spectra uplinked to the catalog. Half the throughput of a fixed computer library."
 			size="220"
 			mass="75"
+			capacity="50"
 			crew="1"
 			hit-points="30"
 			energy="3"
@@ -2918,6 +2919,9 @@ Researchers can query the library. The system can handle natural language questi
 			<consume type="terair" quantity="4"/>
 			<no-consume effect="damage" chance="25"/>
 			<move mode="ground" speed="0.5"/>
+			<fuel duration="13">
+				<item type="oil" quantity="1"/>
+			</fuel>
 		</entry>
 		<entry name="optlab" name-en="optical lab" name-en2="optical labs" group="research" description="Diffraction-limited optical and IR instruments for survey and targeting research." size="250" mass="60" crew="2" energy="6" technology-capacity="5" research-output="1" hit-points="35">
 			<upkeep type="cash" quantity="35"/>

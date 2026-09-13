@@ -265,9 +265,11 @@ class Region:
 
 
 def _base_anomaly_rewards():
+    # Band 0 resolve: one-shot +20 RP on the completing lab (≈1.5 qtrs stationary cmplib
+    # at 13 RP/qtr, or ≈3 qtrs moblab at 6 RP/qtr). Investigation threshold stays points=8.
     return [
         {"band": 0, "kind": "survey-blurb"},
-        {"band": 0, "kind": "research-rp", "technology": "optins", "quantity": 4},
+        {"band": 0, "kind": "research-rp", "technology": "optins", "quantity": 20},
     ]
 
 
@@ -446,6 +448,7 @@ class Stack:
         self.selling = []
         self.people = []
         self.children = []
+        self.technologies = []
 
 
 def el(parent, tag, **attrs):
@@ -499,6 +502,12 @@ def emit_stack(parent, stack):
             faction=person["faction"],
         )
         add_items(p, person.get("upkeep", []), "upkeep")
+    for tech in stack.technologies:
+        if isinstance(tech, tuple):
+            tid, tid_en = tech
+        else:
+            tid, tid_en = tech, tech
+        el(node, "technology", name=tid, **{"name-en": tid_en})
     add_items(node, stack.items)
     add_items(node, stack.upkeep, "upkeep")
     add_offers(node, stack.buying, "buying")
@@ -892,10 +901,10 @@ def hq_stack(fac, planet):
     hq.items = [("terran", 20)]
     hq.upkeep = [("cash", 90)]
     if planet == "arbor":
-        cargo = [("food", 400), ("terair", 200), ("h2o2", 200), ("iron", 40), ("carbon", 40), ("silici", 10), ("titani", 2)]
+        cargo = [("food", 400), ("terair", 200), ("h2o2", 200), ("iron", 40), ("carbon", 40), ("silici", 15), ("titani", 2), ("oil", 5)]
         nest(hq, "%d" % (base + 3), "cargob", fac, 2, items=cargo, upkeep=[("cash", 20)])
         nest(hq, "%d" % (base + 4), "cdrill", fac, 1, items=[("terran", 6)], upkeep=[("cash", 50)])
-        nest(hq, "%d" % (base + 5), "factry", fac, 2, items=[("terran", 20)], upkeep=[("cash", 110)])
+        factory = nest(hq, "%d" % (base + 5), "factry", fac, 2, items=[("terran", 20)], upkeep=[("cash", 110)])
         nest(hq, "%d" % (base + 6), "farms", fac, 3, items=[("terran", 15)], upkeep=[("cash", 90)])
         nest(
             hq,
@@ -916,10 +925,11 @@ def hq_stack(fac, planet):
             ("silici", 40),
             ("copper", 30),
             ("uraniu", 20),
+            ("oil", 5),
         ]
         nest(hq, "%d" % (base + 3), "cargob", fac, 2, items=cargo, upkeep=[("cash", 20)])
         nest(hq, "%d" % (base + 4), "cdrill", fac, 1, items=[("terran", 6)], upkeep=[("cash", 50)])
-        nest(hq, "%d" % (base + 5), "factry", fac, 2, items=[("terran", 20)], upkeep=[("cash", 110)])
+        factory = nest(hq, "%d" % (base + 5), "factry", fac, 2, items=[("terran", 20)], upkeep=[("cash", 110)])
         nest(hq, "%d" % (base + 6), "farms", fac, 2, items=[("terran", 10)], upkeep=[("cash", 60)])
         nest(hq, "%d" % (base + 7), "wnplnt", fac, 8, upkeep=[("cash", 8)])
     return hq

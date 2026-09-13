@@ -1,18 +1,24 @@
 using System.Text;
+using System.Text.RegularExpressions;
 using SpaceAge.PlayerAgent.Rag;
 
 namespace SpaceAge.PlayerAgent.Draft;
 
-public static class DraftPromptBuilder
+public static partial class DraftPromptBuilder
 {
     public const string SystemPrompt =
         "You generate SpaceAge PBEM order files. Reply with order file text only: #faction, "
         + "#modulestack / #person headers, verb lines, comments with ;, and #end. "
         + "No prose, no markdown fences, no numbered lists, no explanations.";
 
-    public static string BuildRetrievalQuery(string? objectiveText, string? reportText)
+    public static string BuildRetrievalQuery(string? objectiveText, string? reportText, string? personaText = null)
     {
         var builder = new StringBuilder();
+        if (!string.IsNullOrWhiteSpace(personaText))
+        {
+            builder.AppendLine(personaText.Trim());
+        }
+
         if (!string.IsNullOrWhiteSpace(objectiveText))
         {
             builder.AppendLine(objectiveText.Trim());
@@ -27,10 +33,29 @@ public static class DraftPromptBuilder
         return query.Length == 0 ? "SpaceAge order syntax and stack movement" : query;
     }
 
+    public static OrderDraftHints BuildHints(
+        string? objectiveText,
+        string? reportText,
+        string? personaText,
+        int draftTurn = 2)
+    {
+        var combined = string.Join(
+            '\n',
+            new[] { personaText, objectiveText, reportText }.Where(text => !string.IsNullOrWhiteSpace(text)));
+        return new OrderDraftHints
+        {
+            PersonaPreference = VerbInference.DetectPersonaPreference(combined),
+            TacticalObjective = ExtractSection(objectiveText, "Tactical objective"),
+            AnomalyRegionId = ExtractAnomalyRegionId(reportText, objectiveText),
+            DraftTurn = draftTurn,
+        };
+    }
+
     public static string BuildChatPrompt(
         string promptPack,
         IReadOnlyList<RetrievalResult> retrievedChunks,
-        string? ordersTemplate)
+        string? ordersTemplate,
+        OrderDraftHints hints)
     {
         var builder = new StringBuilder();
         builder.AppendLine(promptPack.Trim());
@@ -56,23 +81,17 @@ public static class DraftPromptBuilder
             builder.AppendLine();
         }
 
+        if (!string.IsNullOrWhiteSpace(hints.TacticalObjective))
+        {
+            builder.AppendLine("## Tactical objective (implement this quarter)");
+            builder.AppendLine(hints.TacticalObjective.Trim());
+            builder.AppendLine();
+        }
+
         builder.AppendLine("## Example output shape");
-        builder.AppendLine(
-            """
-            #faction 2
-            #modulestack 200001
-            ; activate headquarters
-            active 200001
-            #modulestack 200004
-            active 200004
-            #person 200010
-            see 200001
-            #end
-            """);
+        builder.AppendLine(BuildExampleOutput(hints));
         builder.AppendLine("## Task");
-        builder.AppendLine(
-            "Write turn 2 orders for this faction. Use only stack/person ids from the report or template. "
-            + "Use only documented verbs (ACTIVE, STACK, USE, MOVE, GIVE, CONTRACT, etc.).");
+        builder.AppendLine(BuildTask(hints));
         return builder.ToString().Trim();
     }
 
@@ -92,4 +111,211 @@ public static class DraftPromptBuilder
 
         return reportText[(index + marker.Length)..].Trim();
     }
+
+    private static string BuildExampleOutput(OrderDraftHints hints)
+    {
+        if (string.Equals(hints.PersonaPreference, "researcher", StringComparison.OrdinalIgnoreCase))
+        {
+            var anomaly = hints.AnomalyRegionId ?? "R00011";
+            return $$"""
+                #faction <id> "<password>"
+                #modulestack <factry-id>
+                get 2 iron from <cargob-id>
+                get 2 silici from <cargob-id>
+                use moblib as new109
+
+                #modulestack <hq-id>
+                @produce cash
+
+                #modulestack <cargob-id>
+                @get all food from <farms-id>
+                @get all carbon from <cdrill-id>
+                sell 200 food at average
+
+                #modulestack <cdrill-id>
+                @use hcdril
+
+                #modulestack <farms-id>
+                @use farmng
+
+                #modulestack <cplant-id>
+                @produce energy
+
+                #modulestack new109
+                @get 1 terran from <hq-id>
+                @get 60 food from <cargob-id>
+                @get 2 oil from <cargob-id>
+                @move {{anomaly}}
+                @research {{anomaly}}
+                #end
+                """;
+        }
+
+        if (string.Equals(hints.PersonaPreference, "contractor", StringComparison.OrdinalIgnoreCase))
+        {
+            return """
+                #faction <id> "<password>"
+                #modulestack <hq-id>
+                @produce cash
+
+                #modulestack <cargob-id>
+                @get all food from <farms-id>
+                @get all carbon from <cdrill-id>
+                sell 200 food at average
+
+                #modulestack <cdrill-id>
+                @use hcdril
+
+                #modulestack <farms-id>
+                @use farmng
+
+                #modulestack <cplant-id>
+                @produce energy
+
+                #modulestack <factry-id>
+                get 30 iron from <cargob-id>
+                get 2 titani from <cargob-id>
+                use twnbld as new1
+
+                #modulestack new1
+                transfer 1 to faction 1
+                #end
+                """;
+        }
+
+        return """
+            #faction <id> "<password>"
+            #modulestack <hq-id>
+            @produce cash
+
+            #modulestack <cargob-id>
+            @get all food from <farms-id>
+            @get all carbon from <cdrill-id>
+            sell 200 food at average
+
+            #modulestack <cdrill-id>
+            @use hcdril
+
+            #modulestack <farms-id>
+            @use farmng
+
+            #modulestack <cplant-id>
+            @produce energy
+            #end
+            """;
+    }
+
+    private static string BuildTask(OrderDraftHints hints)
+    {
+        if (string.Equals(hints.PersonaPreference, "researcher", StringComparison.OrdinalIgnoreCase))
+        {
+            var anomaly = hints.AnomalyRegionId ?? "the adjacent anomaly region-id from the report exits";
+            return $"""
+                Write turn {hints.DraftTurn} orders for this faction.
+                Priority: factory stack FIRST — get materials from cargob, then `use moblib as newNNN`.
+                Then run the grant economic loop (@produce, @use, sell food).
+                On the new moblab stack: @get terran, food, and oil (moblab burns oil like trucks); @move {anomaly}; @research {anomaly}.
+                Do not use active/see unless required. Do not implement deferred town/CONTRACT charters this quarter.
+                Use only stack ids from the Orders template. Lowercase immediate verbs (get, use); leftover lines use @ prefix.
+                """;
+        }
+
+        if (string.Equals(hints.PersonaPreference, "contractor", StringComparison.OrdinalIgnoreCase))
+        {
+            return $"""
+                Write turn {hints.DraftTurn} orders for this faction.
+                Run the grant economic loop, then factory-build `twnbld` and `transfer 1 to faction 1` for the open UN town contract if due this quarter.
+                Use only stack ids from the Orders template.
+                """;
+        }
+
+        return $"""
+            Write turn {hints.DraftTurn} orders for this faction.
+            Implement the grant economic bootstrap loop and any factory builds from the tactical objective.
+            Use only stack/person ids from the report or template. Do not reply with only active/see lines.
+            """;
+    }
+
+    private static string? ExtractSection(string? markdown, string heading)
+    {
+        if (string.IsNullOrWhiteSpace(markdown))
+        {
+            return null;
+        }
+
+        var lines = markdown.Replace("\r\n", "\n").Split('\n');
+        var capture = new StringBuilder();
+        var inSection = false;
+
+        foreach (var line in lines)
+        {
+            if (line.StartsWith("## ", StringComparison.Ordinal))
+            {
+                var title = line["## ".Length..].Trim();
+                if (title.Equals(heading, StringComparison.OrdinalIgnoreCase))
+                {
+                    inSection = true;
+                    continue;
+                }
+
+                if (inSection)
+                {
+                    break;
+                }
+            }
+            else if (inSection)
+            {
+                capture.AppendLine(line);
+            }
+        }
+
+        var text = capture.ToString().Trim();
+        return text.Length == 0 ? null : text;
+    }
+
+    private static string? ExtractAnomalyRegionId(string? reportText, string? objectiveText = null)
+    {
+        if (!string.IsNullOrWhiteSpace(objectiveText))
+        {
+            foreach (Match match in RegionIdRegex().Matches(objectiveText))
+            {
+                var regionId = match.Groups[1].Value;
+                if (ReportMentionsAnomaly(reportText, regionId))
+                {
+                    return regionId;
+                }
+            }
+        }
+
+        if (string.IsNullOrWhiteSpace(reportText))
+        {
+            return null;
+        }
+
+        foreach (Match match in AnomalyExitRegex().Matches(reportText))
+        {
+            return match.Groups[1].Value;
+        }
+
+        return null;
+    }
+
+    private static bool ReportMentionsAnomaly(string? reportText, string regionId) =>
+        !string.IsNullOrWhiteSpace(reportText)
+        && reportText.Contains($"[{regionId}]", StringComparison.OrdinalIgnoreCase)
+        && reportText.Contains("anomaly detected", StringComparison.OrdinalIgnoreCase);
+
+    [GeneratedRegex(@"\[(R\d{5})\][^\n\r]*anomaly detected", RegexOptions.IgnoreCase)]
+    private static partial Regex AnomalyExitRegex();
+
+    [GeneratedRegex("\\[(R\\d{5})\\]")]
+    private static partial Regex RegionIdRegex();
+}
+
+public sealed class OrderDraftHints
+{
+    public string? PersonaPreference { get; init; }
+    public string? TacticalObjective { get; init; }
+    public string? AnomalyRegionId { get; init; }
+    public int DraftTurn { get; init; } = 2;
 }

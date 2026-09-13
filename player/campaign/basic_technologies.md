@@ -241,6 +241,10 @@ Works in: extraction, solid-surface. Use produces: 2 nickel-iron `[nickfe]`. Use
 A rack of chemically boosted rockets sized to nest on a shuttle or station and fire in orbit. Built in a factory on the ground or assembled in space. Tag: `military`.  
 Works in: production (no location-type limit). Use consumes: 4 iron `[iron]`. Use produces: orbital rocket launcher `[orbrkt]`. Use-time: 8 weeks.
 
+**mobile laboratory [moblib]**  
+Truck-mounted FTIR, XRF sample prep, and a rugged field terminal for half-rate research away from the factory floor. Tag: `research`. **Requires:** file indexing `[filidx]`.  
+Works in: production. Use consumes: 2 iron `[iron]`, 2 silicium `[silici]`. Use produces: mobile laboratory `[moblab]`. Use-time: 3 weeks.
+
 **optical and IR instruments [optins]**  
 Diffraction-limited telescopes, FTIR, and gold-coated contacts for survey and targeting research. Tag: `research`. **Requires:** file indexing `[filidx]`.  
 Works in: production. Use consumes: 6 silicium `[silici]`, 4 copper `[copper]`, 2 iron `[iron]`, 1 gold `[gold]`. Use produces: optical lab `[optlab]`. Use-time: 4 weeks.
@@ -376,6 +380,10 @@ Group `extraction`. Built by mineral surface drilling `[sdrill]`. Size 500, mass
 **trucks [trucks]**  
 Group of large and slow ground moving trucks.  
 Group `vehicle`. Built by ground transport `[grndtr]`. Size 250, mass 100, crew 1, capacity 150, HP 17. Upkeep 5 cash. Consumes 4 food and 4 terran air (damage 25% if not). Ground move speed 0.5. Fuel duration 13 (1 oil). Operates on solid-surface with terran atmosphere.
+
+**mobile laboratory [moblab]**  
+Six-wheel flatbed carries FTIR, XRF, and a field terminal for half-rate research and anomaly investigation (spectral, radiometric).  
+Group `research`. Built by mobile laboratory `[moblib]`. Size 220, mass 75, crew 1, capacity 50, energy 3, HP 30, tech-cap 2, research-output 1 (divisor 2), investigation-output 1. Upkeep 5 cash. Consumes 4 food and 4 terran air off-world (damage 25% if not). Ground move speed 0.5. **Fuel duration 13 (1 oil)** — same ground fuel rule as `trucks`. Operates on solid-surface with terran atmosphere.
 
 **wind powerplant [wnplnt]**  
 Small serviceless energy system, utilising power of the wind.  

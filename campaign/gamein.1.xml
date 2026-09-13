@@ -418,8 +418,9 @@
 							<itemstack type="h2o2" quantity="200" />
 							<itemstack type="iron" quantity="40" />
 							<itemstack type="carbon" quantity="40" />
-							<itemstack type="silici" quantity="10" />
+							<itemstack type="silici" quantity="15" />
 							<itemstack type="titani" quantity="2" />
+							<itemstack type="oil" quantity="5" />
 							<upkeep type="cash" quantity="20" />
 						</modulestack>
 						<modulestack name="200004" type="cdrill" quantity="1" faction="2">
@@ -461,7 +462,7 @@
 					<resource type="water" quantity="140" />
 					<anomaly type="spectral" points="8" description="Photic-band albedo steps on an otherwise uniform grassland — buried oxide or organics.">
 						<reward band="0" kind="survey-blurb" />
-						<reward band="0" kind="research-rp" technology="optins" quantity="4" />
+						<reward band="0" kind="research-rp" technology="optins" quantity="20" />
 						<reward band="2" kind="research-rp" technology="survts" quantity="8" />
 					</anomaly>
 				</region>
@@ -495,8 +496,9 @@
 							<itemstack type="h2o2" quantity="200" />
 							<itemstack type="iron" quantity="40" />
 							<itemstack type="carbon" quantity="40" />
-							<itemstack type="silici" quantity="10" />
+							<itemstack type="silici" quantity="15" />
 							<itemstack type="titani" quantity="2" />
+							<itemstack type="oil" quantity="5" />
 							<upkeep type="cash" quantity="20" />
 						</modulestack>
 						<modulestack name="210004" type="cdrill" quantity="1" faction="3">
@@ -536,7 +538,7 @@
 					<resource type="carbon" quantity="5" />
 					<anomaly type="magnetic" points="8" description="Aeromagnetic gradient over banded iron: a subsurface ferrous lens, not yet cored.">
 						<reward band="0" kind="survey-blurb" />
-						<reward band="0" kind="research-rp" technology="optins" quantity="4" />
+						<reward band="0" kind="research-rp" technology="optins" quantity="20" />
 						<reward band="2" kind="research-rp" technology="gminng" quantity="8" />
 						<reward band="2" kind="resource" item="iron" quantity="1" />
 					</anomaly>
@@ -724,8 +726,9 @@
 							<itemstack type="h2o2" quantity="200" />
 							<itemstack type="iron" quantity="40" />
 							<itemstack type="carbon" quantity="40" />
-							<itemstack type="silici" quantity="10" />
+							<itemstack type="silici" quantity="15" />
 							<itemstack type="titani" quantity="2" />
+							<itemstack type="oil" quantity="5" />
 							<upkeep type="cash" quantity="20" />
 						</modulestack>
 						<modulestack name="220004" type="cdrill" quantity="1" faction="4">
@@ -764,7 +767,7 @@
 					<resource type="silici" quantity="25" />
 					<anomaly type="seismic" points="8" description="Microseismic cluster under the ridge crest; shallow void or fault, not volcanic.">
 						<reward band="0" kind="survey-blurb" />
-						<reward band="0" kind="research-rp" technology="optins" quantity="4" />
+						<reward band="0" kind="research-rp" technology="optins" quantity="20" />
 						<reward band="2" kind="research-rp" technology="seisns" quantity="8" />
 						<reward band="2" kind="resource" item="water" quantity="1" />
 					</anomaly>
@@ -850,8 +853,9 @@
 							<itemstack type="h2o2" quantity="200" />
 							<itemstack type="iron" quantity="40" />
 							<itemstack type="carbon" quantity="40" />
-							<itemstack type="silici" quantity="10" />
+							<itemstack type="silici" quantity="15" />
 							<itemstack type="titani" quantity="2" />
+							<itemstack type="oil" quantity="5" />
 							<upkeep type="cash" quantity="20" />
 						</modulestack>
 						<modulestack name="230004" type="cdrill" quantity="1" faction="5">
@@ -893,7 +897,7 @@
 					<resource type="water" quantity="130" />
 					<anomaly type="gravimetric" points="8" description="Local g anomaly on dense basement rock under steppe grass; mass concentration worth a gravimeter pass.">
 						<reward band="0" kind="survey-blurb" />
-						<reward band="0" kind="research-rp" technology="optins" quantity="4" />
+						<reward band="0" kind="research-rp" technology="optins" quantity="20" />
 						<reward band="2" kind="research-rp" technology="seisns" quantity="8" />
 						<reward band="2" kind="resource" item="tungst" quantity="1" />
 					</anomaly>
@@ -976,8 +980,9 @@
 							<itemstack type="h2o2" quantity="200" />
 							<itemstack type="iron" quantity="40" />
 							<itemstack type="carbon" quantity="40" />
-							<itemstack type="silici" quantity="10" />
+							<itemstack type="silici" quantity="15" />
 							<itemstack type="titani" quantity="2" />
+							<itemstack type="oil" quantity="5" />
 							<upkeep type="cash" quantity="20" />
 						</modulestack>
 						<modulestack name="240004" type="cdrill" quantity="1" faction="6">
@@ -1039,7 +1044,7 @@
 					</modulestack>
 					<anomaly type="spectral" points="8" description="Narrow IR emission line in a wind-cut saddle — heated outcrop or shallow geothermal bleed.">
 						<reward band="0" kind="survey-blurb" />
-						<reward band="0" kind="research-rp" technology="optins" quantity="4" />
+						<reward band="0" kind="research-rp" technology="optins" quantity="20" />
 						<reward band="2" kind="research-rp" technology="survts" quantity="8" />
 					</anomaly>
 				</region>
@@ -2747,6 +2752,7 @@
 							<itemstack type="silici" quantity="40" />
 							<itemstack type="copper" quantity="30" />
 							<itemstack type="uraniu" quantity="20" />
+							<itemstack type="oil" quantity="5" />
 							<upkeep type="cash" quantity="20" />
 						</modulestack>
 						<modulestack name="250004" type="cdrill" quantity="1" faction="7">
@@ -2786,7 +2792,7 @@
 					<resource type="titani" quantity="15" />
 					<anomaly type="magnetic" points="8" description="Magnetite streaks in talus give a strong dipole; ore body or slag, not instrument drift.">
 						<reward band="0" kind="survey-blurb" />
-						<reward band="0" kind="research-rp" technology="optins" quantity="4" />
+						<reward band="0" kind="research-rp" technology="optins" quantity="20" />
 						<reward band="2" kind="research-rp" technology="gminng" quantity="8" />
 					</anomaly>
 				</region>
@@ -2827,7 +2833,7 @@
 					<resource type="copper" quantity="20" />
 					<anomaly type="radiometric" points="8" description="Elevated gamma count on pitchblende-bearing spine rock; handle as ore, not background.">
 						<reward band="0" kind="survey-blurb" />
-						<reward band="0" kind="research-rp" technology="optins" quantity="4" />
+						<reward band="0" kind="research-rp" technology="optins" quantity="20" />
 						<reward band="2" kind="research-rp" technology="radtol" quantity="8" />
 						<reward band="2" kind="resource" item="uraniu" quantity="1" />
 					</anomaly>
@@ -2866,6 +2872,7 @@
 							<itemstack type="silici" quantity="40" />
 							<itemstack type="copper" quantity="30" />
 							<itemstack type="uraniu" quantity="20" />
+							<itemstack type="oil" quantity="5" />
 							<upkeep type="cash" quantity="20" />
 						</modulestack>
 						<modulestack name="260004" type="cdrill" quantity="1" faction="8">
@@ -2941,7 +2948,7 @@
 					<resource type="titani" quantity="15" />
 					<anomaly type="spectral" points="8" description="Silicate absorption feature shift on a bench terrace; altered regolith or glass.">
 						<reward band="0" kind="survey-blurb" />
-						<reward band="0" kind="research-rp" technology="optins" quantity="4" />
+						<reward band="0" kind="research-rp" technology="optins" quantity="20" />
 						<reward band="2" kind="research-rp" technology="optins" quantity="8" />
 						<reward band="2" kind="resource" item="silici" quantity="1" />
 					</anomaly>
@@ -2965,7 +2972,7 @@
 					<resource type="iron" quantity="35" />
 					<anomaly type="seismic" points="8" description="Reflected compressional wave off a shallow density contrast — void or ore lens.">
 						<reward band="0" kind="survey-blurb" />
-						<reward band="0" kind="research-rp" technology="optins" quantity="4" />
+						<reward band="0" kind="research-rp" technology="optins" quantity="20" />
 						<reward band="2" kind="resource" item="copper" quantity="1" />
 					</anomaly>
 				</region>
@@ -3003,6 +3010,7 @@
 							<itemstack type="silici" quantity="40" />
 							<itemstack type="copper" quantity="30" />
 							<itemstack type="uraniu" quantity="20" />
+							<itemstack type="oil" quantity="5" />
 							<upkeep type="cash" quantity="20" />
 						</modulestack>
 						<modulestack name="270004" type="cdrill" quantity="1" faction="9">
@@ -3059,7 +3067,7 @@
 					<resource type="copper" quantity="25" />
 					<anomaly type="radiometric" points="8" description="Hot spot on uraninite-rich crest; dosimeter spike above regional baseline.">
 						<reward band="0" kind="survey-blurb" />
-						<reward band="0" kind="research-rp" technology="optins" quantity="4" />
+						<reward band="0" kind="research-rp" technology="optins" quantity="20" />
 						<reward band="2" kind="research-rp" technology="radtol" quantity="8" />
 						<reward band="2" kind="resource" item="uraniu" quantity="1" />
 					</anomaly>
@@ -3155,6 +3163,7 @@
 							<itemstack type="silici" quantity="40" />
 							<itemstack type="copper" quantity="30" />
 							<itemstack type="uraniu" quantity="20" />
+							<itemstack type="oil" quantity="5" />
 							<upkeep type="cash" quantity="20" />
 						</modulestack>
 						<modulestack name="280004" type="cdrill" quantity="1" faction="10">
@@ -3294,6 +3303,7 @@
 							<itemstack type="silici" quantity="40" />
 							<itemstack type="copper" quantity="30" />
 							<itemstack type="uraniu" quantity="20" />
+							<itemstack type="oil" quantity="5" />
 							<upkeep type="cash" quantity="20" />
 						</modulestack>
 						<modulestack name="290004" type="cdrill" quantity="1" faction="11">

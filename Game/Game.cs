@@ -549,7 +549,7 @@ namespace SpaceAge
                 {
                     buyOffer.Process(this.week);
                 }
-                else if (buyOffer.Everywhere)
+                else if (buyOffer.Everywhere || buyOffer.BuyInRegion != null)
                 {
                     buyOffer.Process(this.week);
                 }

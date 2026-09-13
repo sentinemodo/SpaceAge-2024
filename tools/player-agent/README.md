@@ -64,6 +64,7 @@ After build, the executable is `tools/player-agent/bin/Debug/net8.0/player-agent
 | `OLLAMA_HOST` | `http://127.0.0.1:11434` | Ollama **Docker** on host port 11434; OpenAI API is `{host}/v1` |
 | `PLAYER_AGENT_CHAT_MODEL` | `qwen2.5-coder:7b` | Used for smoke, draft, and ingest; RunPod default `qwen2.5-coder:14b` |
 | `PLAYER_AGENT_EMBED_MODEL` | `nomic-embed-text` | Same host as chat |
+| `PLAYER_AGENT_CHAT_TIMEOUT_SECONDS` | `600` | HttpClient timeout for chat (monolithic story drafts can take ~10 min on local 7B) |
 | `PLAYER_AGENT_INDEX_DIR` | `tools/player-agent/.data/` | Gitignored SQLite indexes |
 | `PLAYER_AGENT_ALLOW_RUNPOD` | unset | Set `1` or pass `--allow-runpod` for remote hosts |
 | `PLAYER_AGENT_RUNPOD_POD_ID` | unset | Pod id for ledger rows and future API sync |
@@ -148,6 +149,7 @@ UTF-8 drafts in faction folders; `play/turn.ps1` converts to Windows-1251 for `G
 | `regenerate-allowlist` | 5 | Export verb list from `player/rules.md` to `Lint/verb-allowlist.json` |
 | `retrieve --mode … --index shared\|faction --query …` | 2 | Dev helper: top-k vector search (optional `--verb MOVE`) |
 | `draft --mode … --faction …` | 3 | Generate order draft (lint + UTF-8 write) |
+| `draft-story --run … --faction …` | 3+ | Generate `story.md` from persona + report (monolithic; auto `--chunked` fallback on timeout) |
 | `draft-run --mode … --run …` | 6 | Batch draft factions 2–11 (isolation audit first) |
 | `audit-isolation --mode … [--run …]` | 6 | Verify shared/faction RAG indexes are not cross-contaminated |
 | `usage start\|stop\|status\|report\|reclaim\|sync` | 7–8 | RunPod usage ledger, reports, stale-session reclaim |
@@ -181,6 +183,14 @@ dotnet run --project tools/player-agent/PlayerAgent.csproj -- `
 # Campaign-ai updated story.md — re-embed objective only
 dotnet run --project tools/player-agent/PlayerAgent.csproj -- `
   ingest-faction --mode campaign --run demo --faction 2 --story-only
+
+# Draft story.md (monolithic; falls back to --chunked prompts if chat times out)
+dotnet run --project tools/player-agent/PlayerAgent.csproj -- `
+  draft-story --run campaign-2026-09-12 --faction 3
+
+# Faster story draft: three smaller chat calls (~5 min vs ~10 min on local 7B)
+dotnet run --project tools/player-agent/PlayerAgent.csproj -- `
+  draft-story --run campaign-2026-09-12 --faction 3 --chunked
 
 # Retrieve MOVE rules chunks
 dotnet run --project tools/player-agent/PlayerAgent.csproj -- `

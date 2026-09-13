@@ -7,8 +7,10 @@ public sealed class PlayerAgentSettings
     public const string LocalDefaultChatModel = "qwen2.5-coder:7b";
     public const string RunPodDefaultChatModel = "qwen2.5-coder:14b";
     public const string DefaultEmbedModel = "nomic-embed-text";
+    public const int DefaultChatTimeoutSeconds = 900;
 
     public Uri OllamaBaseUri { get; set; } = new Uri("http://127.0.0.1:11434");
+    public int ChatTimeoutSeconds { get; set; } = DefaultChatTimeoutSeconds;
     public string ChatModel { get; set; } = LocalDefaultChatModel;
     public string EmbedModel { get; set; } = DefaultEmbedModel;
     public string IndexDirectory { get; set; } = DefaultIndexDirectory;
@@ -55,6 +57,8 @@ public sealed class PlayerAgentSettings
 
         var hourlyRate = ParseDouble(configuration["PLAYER_AGENT_RUNPOD_HOURLY_RATE_USD"])
             ?? DefaultRunPodHourlyRateUsd;
+        var chatTimeoutSeconds = ParseInt(configuration["PLAYER_AGENT_CHAT_TIMEOUT_SECONDS"])
+            ?? DefaultChatTimeoutSeconds;
 
         return new PlayerAgentSettings
         {
@@ -67,6 +71,7 @@ public sealed class PlayerAgentSettings
             GpuClass = configuration["PLAYER_AGENT_GPU_CLASS"],
             CloudTier = configuration["PLAYER_AGENT_CLOUD_TIER"],
             HourlyRateUsd = hourlyRate,
+            ChatTimeoutSeconds = chatTimeoutSeconds,
         };
     }
 
@@ -115,4 +120,7 @@ public sealed class PlayerAgentSettings
         double.TryParse(value, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out var parsed)
             ? parsed
             : null;
+
+    private static int? ParseInt(string? value) =>
+        int.TryParse(value, out var parsed) ? parsed : null;
 }

@@ -29,7 +29,8 @@ public class DraftPromptBuilderTests
                 0.9f),
         ];
 
-        var prompt = DraftPromptBuilder.BuildChatPrompt(pack, chunks, ordersTemplate: "#modulestack 101\n#end");
+        var hints = new OrderDraftHints { PersonaPreference = "researcher", AnomalyRegionId = "R00011" };
+        var prompt = DraftPromptBuilder.BuildChatPrompt(pack, chunks, ordersTemplate: "#modulestack 101\n#end", hints);
 
         Assert.That(prompt, Does.Contain("#faction 2"));
         Assert.That(prompt, Does.Not.Contain("secret"));
@@ -37,5 +38,7 @@ public class DraftPromptBuilderTests
         Assert.That(prompt, Does.Contain("MOVE syntax details"));
         Assert.That(prompt, Does.Contain("Orders template from report"));
         Assert.That(prompt, Does.Contain("Example output shape"));
+        Assert.That(prompt, Does.Contain("use moblib as new109"));
+        Assert.That(prompt, Does.Contain("@research R00011"));
     }
 }

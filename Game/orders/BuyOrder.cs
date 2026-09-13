@@ -35,6 +35,7 @@ namespace SpaceAge
         public int Quantity     { get; set; }
 		public bool AllQuantity { get; set; } // default false
         public bool Everywhere  { get; set; } // default false
+        public Region BuyInRegion { get; set; }
 		public bool CancelMode  { get; set; } // default false
         		
 		private void parseRelativeOffset(string token)
@@ -60,6 +61,19 @@ namespace SpaceAge
 			{
 				throw new Exception("bad syntax price expected");
 			}
+		}
+
+		private string formatBuyScope()
+		{
+			if (this.Everywhere)
+			{
+				return " everywhere";
+			}
+			if (this.BuyInRegion != null)
+			{
+				return string.Concat(" in ", this.BuyInRegion.Name);
+			}
+			return string.Empty;
 		}
 
 		private string formatBuyPrice()
@@ -147,10 +161,7 @@ namespace SpaceAge
 			}
 
 			token = LineParser.GetToken(ref command);
-            if (token != string.Empty & token != "at" & token != "everywhere")
-			{
-				throw new Exception("bad syntax AT or EVERYWHERE expected");
-			} else if (token == "at")
+            if (token == "at")
 			{
 				token = LineParser.GetToken(ref command);
 				if (token == "average")
@@ -182,25 +193,67 @@ namespace SpaceAge
 						throw new Exception("bad syntax price expected");
 					}
 				}
-            } else if (token == "everywhere")
-            {
-                this.Everywhere = true;
+				token = LineParser.GetToken(ref command);
             }
 
-            token = LineParser.GetToken(ref command);
-            if (token != string.Empty & token != "everywhere")
-            {
-                throw new Exception("bad syntax EVERYWHERE expected");
-            }
-            else if (token == "everywhere")
-            {
-                this.Everywhere = true;
-            }
-
-			token = LineParser.GetToken(ref command);
-			if (token != string.Empty)
+			while (token != string.Empty)
 			{
-				throw new Exception("bad syntax");
+				if (token == "at")
+				{
+					token = LineParser.GetToken(ref command);
+					if (token == "average")
+					{
+						this.PriceRelative = true;
+						token = LineParser.GetToken(ref command);
+						if (token != string.Empty)
+						{
+							this.parsePriceOffset(ref token, ref command);
+						}
+					}
+					else if (token.StartsWith("+"))
+					{
+						this.PriceRelative = true;
+						this.parseRelativeOffset(token);
+					}
+					else
+					{
+						try
+						{
+							this.Price = Convert.ToInt32(token);
+						}
+						catch (Exception ex)
+						{
+							throw new Exception("bad syntax price expected", ex);
+						}
+						if (this.Price <= 0)
+						{
+							throw new Exception("bad syntax price expected");
+						}
+					}
+				}
+				else if (token == "everywhere")
+				{
+					this.Everywhere = true;
+				}
+				else if (token == "in")
+				{
+					token = LineParser.GetToken(ref command);
+					if (!Region.All.ContainsKey(token))
+					{
+						throw new Exception("bad syntax region expected");
+					}
+					this.BuyInRegion = Region.All[token];
+				}
+				else
+				{
+					throw new Exception("bad syntax");
+				}
+				token = LineParser.GetToken(ref command);
+			}
+
+			if (this.Everywhere && this.BuyInRegion != null)
+			{
+				throw new Exception("bad syntax EVERYWHERE and IN are mutually exclusive");
 			}
 		}
 
@@ -223,14 +276,14 @@ namespace SpaceAge
 						(this.AllQuantity) ? "all" : this.Quantity.ToString(), 
 						this.ItemType.Name,
 						this.formatBuyPrice(),
-                        (this.Everywhere) ? "everywhere" : string.Empty));
+						this.formatBuyScope()));
 					break;
 				case EOfferType.BuyModules:
 					line = string.Concat(line, string.Format("{0} {1}{2}{3}",
 						(this.AllQuantity) ? "all" : this.Quantity.ToString(), 
 						this.ModuleType.Name,
 						this.formatBuyPrice(),
-                        (this.Everywhere) ? "everywhere" : ""));
+						this.formatBuyScope()));
 					break;
 				case EOfferType.BuyTechnologies:
 					line = string.Concat(line, string.Format("{0} technology{1}",
@@ -293,6 +346,10 @@ namespace SpaceAge
             XmlElement elBuy = (XmlElement)elOrder.SelectNodes("buy")[0];
             this.loadBuyPrice(elBuy);
             this.Everywhere = this.XMLAssignBoolean(elBuy.GetAttribute("everywhere"), false);
+            if (elBuy.HasAttribute("buy-in-region"))
+            {
+                this.BuyInRegion = Region.All[elBuy.GetAttribute("buy-in-region")];
+            }
             if (elBuy.GetAttribute("quantity") == "all")
             {
                 this.AllQuantity = true;
@@ -328,6 +385,10 @@ namespace SpaceAge
 
             this.saveBuyPrice(elBuy);
             elBuy.SetAttribute("everywhere", this.Everywhere.ToString());
+            if (this.BuyInRegion != null)
+            {
+                elBuy.SetAttribute("buy-in-region", this.BuyInRegion.Name);
+            }
             if (this.AllQuantity)
             {
                 elBuy.SetAttribute("quantity", "all");
@@ -385,6 +446,7 @@ namespace SpaceAge
 				this.Buy.ModuleType = this.ModuleType;
 				this.Buy.ItemType = this.ItemType;
                 this.Buy.Everywhere = this.Everywhere;
+                this.Buy.BuyInRegion = this.BuyInRegion;
 				this.Buy = Offer.All.ReuseEquivalent(this.Buy);
 				this.Buy.BuyOrder = this;
             }

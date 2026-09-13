@@ -61,6 +61,11 @@ internal static class DraftCommand
                 iterationOverride,
                 reportPath);
             var storyPath = factionDir is null ? null : FactionCorpusPaths.StoryPath(factionDir);
+            var personaPath = factionDir is null ? null : Path.Combine(factionDir, "persona.md");
+            var draftTurn = turnOverride
+                ?? (reportPath is not null && OrderFileNaming.TryParseReportFileName(reportPath, out var reportTurn, out _)
+                    ? OrderFileNaming.InferDraftTurnFromReportTurn(reportTurn)
+                    : 2);
 
             Console.WriteLine($"Mode:             {PlayModeParser.ToCliValue(mode)}");
             Console.WriteLine($"Faction:          {factionIdValue}");
@@ -79,8 +84,10 @@ internal static class DraftCommand
                 FactionDir = factionDir,
                 ReportPath = reportPath,
                 StoryPath = storyPath,
+                PersonaPath = personaPath,
                 DryRun = dryRun,
                 TopK = topK,
+                DraftTurn = draftTurn,
             };
 
             var factionIds = new[] { factionIdValue };
@@ -150,9 +157,9 @@ internal static class DraftCommand
 
     private static void PrintRetrievalSummary(OrderDraftResult result)
     {
-        if (!string.IsNullOrWhiteSpace(result.VerbFilter))
+        if (result.VerbBoost.Count > 0)
         {
-            Console.WriteLine($"Verb filter:      {result.VerbFilter}");
+            Console.WriteLine($"Verb boost:       {string.Join(", ", result.VerbBoost)}");
         }
 
         Console.WriteLine($"Retrieved chunks: {result.RetrievedChunks.Count}");

@@ -31,7 +31,7 @@ $FactionMeta = @{
 $PreferenceMeans = @{
 	military   = 'Build and move `inftry` and `tanks`. Use `ATTACK`, `CAPTURE`, and `DECLARE FACTION <id> ENEMY`. Cross Helios Gate `P00009` <-> Fomal Gate `P00010` with `JUMP` once you have a ship on the Gate orbit.'
 	economic   = 'USE extractors and farms on local mass and calories. `BUY` / `SELL` at UN markets (Assembly on Arbor, Slagport on Anvil). Push surplus through spaceports when you have hulls.'
-	researcher = '`RESEARCH` at labs. Take UN wreck charters (`CONTRACT` / `research` on belt hulks). `SEE` foreign tech; `COPY` onto a receiver at the same location.'
+	researcher = 'Build **`moblib` → `moblab` first** on the factory copy, `@get` crew, food, and **oil** from HQ cargo, then `@move` to the adjacent grant anomaly and `@research` it (8 pt / +20 RP). HQ cargo seeds **5 oil** for ground fuel (same as `trucks`). Defer town charters until the survey column moves. Later: `filidx`, `frminf` escort, silici scouting. Wreck charters (`CONTRACT` / `research` on belt hulks) when staged.'
 	contractor = 'File UN `CONTRACT` / `give-module` jobs first (food, wind, drills). Spend rewards on trade and the same live verbs as economic.'
 }
 
@@ -101,6 +101,34 @@ Do **not** open ``campaign/data.xml`` or this run's ``data/data.xml``. Tell ``/p
 "@
 }
 
+function Get-FactoryStackId {
+	param([Parameter(Mandatory = $true)][int]$FactionId)
+	return [string](200000 + ($FactionId - 2) * 10000 + 5)
+}
+
+function Add-ResearcherStartupToGamein {
+	param(
+		[Parameter(Mandatory = $true)][string]$GameinText,
+		[Parameter(Mandatory = $true)][int]$FactionId
+	)
+	$text = $GameinText
+	$balancePattern = '(<faction\b(?=[^>]*\bname="' + $FactionId + '")[^>]*\bbalance=")10000(")'
+	$text = [regex]::Replace($text, $balancePattern, '${1}9000${2}', 1)
+
+	$stackId = Get-FactoryStackId -FactionId $FactionId
+	if ($text -match ('<modulestack name="' + [regex]::Escape($stackId) + '"[\s\S]*?<technology name="moblib"')) {
+		return $text
+	}
+
+	$stackOpen = '(<modulestack name="' + [regex]::Escape($stackId) + '" type="factry" quantity="2" faction="' + $FactionId + '">)'
+	$replacement = '${1}' + "`n`t`t`t`t`t`t<technology name=`"moblib`" name-en=`"mobile laboratory`" />"
+	$text = [regex]::Replace($text, $stackOpen, $replacement, 1)
+	if ($text -eq $GameinText) {
+		throw "Researcher startup: factory stack $stackId not found for faction $FactionId."
+	}
+	return $text
+}
+
 $campaignData = Join-Path $script:RepoRoot 'campaign\data.xml'
 $campaignGamein = Join-Path $script:RepoRoot 'campaign\gamein.1.xml'
 if (-not (Test-Path -LiteralPath $campaignData)) {
@@ -153,6 +181,11 @@ foreach ($id in $script:PlayerFactionIds) {
 	$passwords[$id] = $pw
 }
 
+$preferences = @{}
+foreach ($id in $script:PlayerFactionIds) {
+	$preferences[$id] = $Preferences[$rng.Next($Preferences.Length)]
+}
+
 $gameinPath = Join-Path $paths.DataDir 'gamein.xml'
 $gameinText = Read-Win1251Text -Path $gameinPath
 foreach ($id in $script:PlayerFactionIds) {
@@ -164,11 +197,15 @@ foreach ($id in $script:PlayerFactionIds) {
 	$replacement = '${1}' + $passwords[$id] + '${2}'
 	$gameinText = $regex.Replace($gameinText, $replacement, 1)
 }
+foreach ($id in $script:PlayerFactionIds) {
+	if ($preferences[$id] -eq 'researcher') {
+		$gameinText = Add-ResearcherStartupToGamein -GameinText $gameinText -FactionId $id
+	}
+}
 Write-Win1251Text -Path $gameinPath -Text $gameinText
 
 foreach ($id in $script:PlayerFactionIds) {
-	$preference = $Preferences[$rng.Next($Preferences.Length)]
-	$persona = Get-PersonaMarkdown -Id $id -Password $passwords[$id] -Preference $preference
+	$persona = Get-PersonaMarkdown -Id $id -Password $passwords[$id] -Preference $preferences[$id]
 	$personaPath = Join-Path (Join-Path $paths.FactionsDir (Get-FactionFolderName -Id $id)) 'persona.md'
 	Write-Utf8Text -Path $personaPath -Text $persona
 }

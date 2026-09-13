@@ -81,7 +81,7 @@ Faction `name` **1** is still the unfiltered NPC in XML reports (`SaveGame` skip
       <resource type="iron" quantity="20"/>
       <anomaly type="spectral" description="Optional hard-science blurb." points="8">
         <reward band="0" kind="survey-blurb"/>
-        <reward band="0" kind="research-rp" technology="optins" quantity="4"/>
+        <reward band="0" kind="research-rp" technology="optins" quantity="20"/>
         <reward band="2" kind="resource" item="iron" quantity="1"/>
         <progress faction="2" quantity="3"/>
         <resolved faction="2"/>
@@ -101,7 +101,7 @@ Faction `name` **1** is still the unfiltered NPC in XML reports (`SaveGame` skip
 - Moon `name` must be unique. The loader currently constructs moons with the **planet** id (known bug); still emit unique moon ids and wishlist the fix.
 - Region exits: second pass walks **planet regions only**. Moon-region exits may not load; keep moon maps small or wishlist.
 - `surface-size-X/Y` is not enforced as region count; still match the grid.
-- **Regional anomaly** — optional child `<anomaly>` on `<region>`. Required attr `type` (`spectral` \| `magnetic` \| `seismic` \| `gravimetric` \| `radiometric` \| `anomaly`). Optional attrs `description` (hard-science survey note; not shown on exit hint until investigation resolves), `points` (threshold, default **8**). Child `<reward band="N" kind="survey-blurb|research-rp|technology|resource" …/>` defines payout bands in **gamein** (persist through save). Save-only children: `<progress faction="…" quantity="…"/>`, `<resolved faction="…"/>`. Order **`RESEARCH <region-id>`** on-site advances progress (engine **0.1.162**). Exit hint: `, anomaly detected` (engine **0.1.160**). Legacy `<poi>` loads as alias until saves migrate.
+- **Regional anomaly** — optional child `<anomaly>` on `<region>`. Required attr `type` (`spectral` \| `magnetic` \| `seismic` \| `gravimetric` \| `radiometric` \| `anomaly`). Optional attrs `description` (hard-science survey note; not shown on exit hint until investigation resolves), `points` (threshold, default **8**; HQ-adjacent minors in campaign seed use **20**). Child `<reward band="N" kind="survey-blurb|research-rp|technology|resource" …/>` defines payout bands in **gamein** (persist through save). Save-only children: `<progress faction="…" quantity="…"/>`, `<resolved faction="…"/>`. Order **`RESEARCH <region-id>`** on-site advances progress (engine **0.1.162**). Exit hint: `, anomaly detected` (engine **0.1.160**). Legacy `<poi>` loads as alias until saves migrate.
 
 ### Contracts
 

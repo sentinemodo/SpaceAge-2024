@@ -26,7 +26,7 @@ Order: **`RESEARCH <region-id>`** when the target region has an unresolved `<ano
 - Each week on `RESEARCH`, add **investigation points** to the region (persist `<progress>` / `<resolved>` under `<anomaly>` on save; rewards stay in gamein).
 - Throughput = sum of module **investigation rates** (below), × **type match** multiplier, + **`research-throughput`** items (`senpak`, `gravrt`) on stack or officers (same bonus as normal lab `RESEARCH`).
 
-**HQ minor anomaly threshold:** **8 points** (≈8 weeks solo `moblab`, ≈4 weeks matched `survsc`/`seissc`/`radlab`).
+**HQ minor anomaly threshold:** **8 investigation points** (≈8 weeks solo on-match `moblab`, ≈16 weeks off-match magnetic/seismic/gravimetric). **Resolve payout:** **+20 RP** on the completing lab (band 0) — a one-shot boost worth roughly 1.5 quarters of stationary `cmplib` output (~13 RP/qtr) or ~3 quarters of field `moblab` (~6 RP/qtr), so the adjacent anomaly beats idling on a new fixed lab.
 
 **Major anomalies** (belts, ice moons, empty-system sites — injected later per [`contracts.md`](contracts.md)): **24–64 points**, same order, often gated by `research` contract on a wreck stack co-located in the region.
 
@@ -79,11 +79,21 @@ Payouts **never skip more than one level** on the tree and **never grant L8+** f
 | Benefit | Detail |
 |---------|--------|
 | **Survey blurb** | Full hard-science `description` on the region report (what the spectrometer sees). |
-| **RP head start** | **+4 investigation RP** banked toward **`optins`** (8) or **`filidx`** follow-on — spend when a lab runs `RESEARCH TECHNOLOGY`. |
+| **RP payout** | **+20 RP** on the completing lab toward **`optins`** (band 0) — one-time resolve bonus, not per-week output. |
 | **Resource tease** | One-line hint in report: e.g. “ferrous”, “elevated U”, “silicate alteration” — **no** map quantity until L2+ band revisit rule (optional wishlist: **re-open** at higher band). |
 | **Contract hook** | 10% chance UN posts a **local** `give-module` follow-up (deliver `moblab` to a neighbour faction) — flavour only at this band. |
 
-**Realistic close time:** 8 weeks `moblab` alone; 4 weeks if the player already built `optlab` from early `optins`.
+**Realistic close time (8 pt threshold):** 8 weeks on-match `moblab` (spectral/radiometric); ~16 weeks off-match (magnetic/seismic/gravimetric). Add ~3 weeks factory pipeline (`moblib` → `moblab`) and 1 hop `MOVE` from grant. Researcher persona seeds `moblib` only — see startup package below.
+
+### Researcher startup package (init-run)
+
+| Item | All factions | Researcher persona only |
+|------|--------------|-------------------------|
+| Factory tech copy | none | `moblib` on HQ `factry` stack |
+| Faction `balance` | 10000 | **9000** (−1000 cash; **`credit-line` stays 10000**) |
+| Cargo | seed default | **+5 oil** on HQ `cargob` (same fuel rule as `trucks`: 1 oil / 13 weeks ground move) for initial `moblab` expedition |
+
+Non-researcher factions research `moblib` normally (L1, 8 RP default). `_gen_gamein.py` must **not** emit `moblib` on factories; `init-run.ps1` injects it after persona roll.
 
 ### L2–3 — optical and radiation base (optins, radtol, shuttles)
 

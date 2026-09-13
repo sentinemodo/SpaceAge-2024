@@ -1500,10 +1500,13 @@ namespace UnitTests
 			new DeliveringPurchase(
 				buyer,
 				seller,
+				seller,
 				terrans,
 				300,
+				0,
 				(Region)buyer.Location,
-				4);
+				4,
+				false);
 
 			this.reloadSavedGame("gameout.saved_deliveringPurchase.xml");
 			buyer = ModuleStack.All["000004"];
@@ -1518,7 +1521,9 @@ namespace UnitTests
 			}
 			Assert.That(delivery, Is.Not.Null, "in-progress delivering-purchase must persist across save/load");
 			Assert.That(delivery.Duration, Is.EqualTo(4));
+			Assert.That(delivery.PurchaseValue, Is.EqualTo(300));
 			Assert.That(delivery.PaidAmount, Is.EqualTo(300));
+			Assert.That(delivery.SellerStack.Name, Is.EqualTo("000005"));
 			Assert.That(delivery.Transferer.Name, Is.EqualTo("000005"));
 			Assert.That(delivery.ItemStack.ItemType.Name, Is.EqualTo("terran"));
 			Assert.That(delivery.ItemStack.Quantity, Is.EqualTo(4));

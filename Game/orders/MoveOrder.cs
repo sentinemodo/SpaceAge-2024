@@ -592,6 +592,7 @@ namespace SpaceAge
 					if (this.Mover.MovingTo == null)
 					{
 						DeliveringPurchase.CancelAll(this.Mover, week);
+						DeliveringPurchase.CancelReturns(this.Mover, week);
 						if (!this.applyEnvironmentMoveRules(week))
 						{
 							this.Executing = false;
