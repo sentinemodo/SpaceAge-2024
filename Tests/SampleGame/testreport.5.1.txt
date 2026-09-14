@@ -5,7 +5,7 @@ Content-Disposition: attachment
 SpaceAge report for NPC [1].
 Turn 5, Year 2021, January 1.
 
-SpaceAge Engine Version: 0.1.165.
+SpaceAge Engine Version: 0.1.167.
 
 Events during turn:
   none.
@@ -686,10 +686,7 @@ Battles report:
 
 Galaxy report:
 ------------------------------------------------------------
-* Sol [SS0001] (0, 0, 0), star system.
-------------------------------------------------------------
-
-  * Sol [S00001] (0, 0, 0), M4 star, unexplored.
+* system Sol [SS0001] (0, 0, 0).
 ------------------------------------------------------------
 
   * Earth [P00001] at AU 1, ocean planet [ocean].
@@ -709,22 +706,33 @@ Galaxy report:
       sell 30 terrans [terran] at 50 each from Berlin [000001].
       sell 300 units of food [food] at 0 each from small cargo bay [000013].
     Offers of buying items:
+      buy 300 units of food [food] at 1 each by Berlin [000001].
+      buy 75 units of iron [iron] at 1 each by Berlin [000001].
+      buy 75 units of carbon [carbon] at 2 each by Berlin [000001].
+      buy 60 units of silicium [silici] at 2 each by Berlin [000001].
+      buy 30 units of titanium [titani] at 2 each by Berlin [000001].
       buy all units of food [food] at any price by corporate headquarters [c000012].
       buy all terrans [terran] at any price by corporate headquarters [c000012].
     Offers of selling modules:
       none.
     Offers of buying modules:
       buy farming complex [farms] at 100 by Berlin [000001].
+      buy small cargo bay [cargob] at 100 by Berlin [000001].
+      buy wind powerplant [wnplnt] at 50 by Berlin [000001].
+      buy coal-burning plant [cplant] at 100 by Berlin [000001].
+      buy surface drill [sdrill] at 100 by Berlin [000001].
+      buy core drill [cdrill] at 100 by Berlin [000001].
+      buy factory [factry] at 100 by Berlin [000001].
     Offers of selling technologies:
       none.
     Offers of buying technologies:
       none.
   
   + Berlin [000001], 3 cities [city], immobile.
-    size: 75000, mass: 33488 (0), capacity: 45000/41120, energy: 200/140 (30), crew: 82/239 (0/30),
+    size: 75000, mass: 33496 (0), capacity: 45000/41120, energy: 200/140 (30), crew: 82/239 (0/30),
     upkeep: 300 units of food [food], 1194 (0) cash [cash], consume: 339 (0) units of food [food],
     339 (0) units of terran breathing gas mixture [terair].
-    items: 609 cash [cash], 30 terrans [terran] (size: 120, mass: 120, upkeep: 30 cash [cash],
+    items: 535 cash [cash], 30 terrans [terran] (size: 120, mass: 120, upkeep: 30 cash [cash],
     consume: 30 units of food [food], 30 units of terran breathing gas mixture [terair]).
     events:
       week 13: paid 300 unit of food [food] upkeep.
@@ -758,9 +766,9 @@ Galaxy report:
       events:
         week 13: paid 265 cash [cash] upkeep.
     + Berlin granary [000005], small cargo bay [cargob], immobile.
-      size: 2000, mass: 295 (200), capacity: 1800/95, upkeep: 33 (30) cash [cash], consume: 3 (0)
+      size: 2000, mass: 287 (200), capacity: 1800/87, upkeep: 33 (30) cash [cash], consume: 3 (0)
       units of food [food], 3 (0) units of terran breathing gas mixture [terair].
-      items: 83 units of food [food] (size: 83, mass: 83), 3 terrans [terran] (size: 12, mass: 12,
+      items: 75 units of food [food] (size: 75, mass: 75), 3 terrans [terran] (size: 12, mass: 12,
       upkeep: 3 cash [cash], consume: 3 units of food [food], 3 units of terran breathing gas
       mixture [terair]).
       events:
@@ -848,26 +856,39 @@ Galaxy report:
   Market report:
     Offers of selling items:
       sell 59 units of food [food] at 5 each from Sydney [000006].
-      sell 100 units of food [food] at 0 each from small cargo bay [000019].
+      sell 90 units of food [food] at 0 each from small cargo bay [000019].
       sell 25 units of food [food] at 5 each from Gelvaren complex [000026].
       sell 10 terrans [terran] at 50 each from Gelvaren complex [000026].
     Offers of buying items:
+      buy 200 units of food [food] at 1 each by Sydney [000006].
+      buy 50 units of iron [iron] at 1 each by Sydney [000006].
+      buy 50 units of carbon [carbon] at 2 each by Sydney [000006].
+      buy 40 units of silicium [silici] at 2 each by Sydney [000006].
+      buy 20 units of titanium [titani] at 2 each by Sydney [000006].
       buy all terrans [terran] at any price by Gelvaren Headquarters [000018].
       buy 100 units of food [food] at 1 each by Gelvaren complex [000026].
       buy all units of food [food] at any price by Gelvaren complex [000026].
     Offers of selling modules:
       none.
     Offers of buying modules:
-      none.
+      buy small cargo bay [cargob] at 100 by Sydney [000006].
+      buy farming complex [farms] at 100 by Sydney [000006].
+      buy wind powerplant [wnplnt] at 50 by Sydney [000006].
+      buy coal-burning plant [cplant] at 100 by Sydney [000006].
+      buy surface drill [sdrill] at 100 by Sydney [000006].
+      buy core drill [cdrill] at 100 by Sydney [000006].
+      buy factory [factry] at 100 by Sydney [000006].
     Offers of selling technologies:
       none.
     Offers of buying technologies:
       none.
   
   + Sydney [000006], 2 cities [city], immobile.
-    size: 50000, mass: 7506, capacity: 30000/17120, energy: 198/132 (20), crew: 60/93, upkeep: 200
+    size: 50000, mass: 7516, capacity: 30000/17120, energy: 198/132 (20), crew: 60/93, upkeep: 200
     units of food [food], 1053 (0) cash [cash], consume: 293 (0) units of food [food], 293 (0) units
     of terran breathing gas mixture [terair].
+    effects:
+      receiving 10 units of food [food] from small cargo bay [000019], 0 weeks to complete.
     events:
       week 13: paid 200 unit of food [food] upkeep.
     + Sydney garrison [000007], 2 infantry battalions [inftry], immobile.
@@ -900,9 +921,9 @@ Galaxy report:
       events:
         week 13: paid 315 cash [cash] upkeep.
     + Sydney granary [000011], small cargo bay [cargob], immobile.
-      size: 2000, mass: 426 (200), capacity: 1800/226, upkeep: 33 (30) cash [cash], consume: 3 (0)
+      size: 2000, mass: 436 (200), capacity: 1800/236, upkeep: 33 (30) cash [cash], consume: 3 (0)
       units of food [food], 3 (0) units of terran breathing gas mixture [terair].
-      items: 214 units of food [food] (size: 214, mass: 214), 3 terrans [terran] (size: 12, mass:
+      items: 224 units of food [food] (size: 224, mass: 224), 3 terrans [terran] (size: 12, mass:
       12, upkeep: 3 cash [cash], consume: 3 units of food [food], 3 units of terran breathing gas
       mixture [terair]).
       events:
@@ -937,7 +958,7 @@ Galaxy report:
     - space shuttle [117], space shuttle [shuttl], disabled, immobile, owned by Gelvaren [3].
       size: 200.
 ------------------------------------------------------------
-  * Luna [P00003] (1, 0, 0), moon, unexplored.
+  * Luna [P00001], rocky moon [rock] 0.02 AU from the planet.
 ------------------------------------------------------------
     orbit [O00001], has no atmosphere.
     - spaceship hull [101], spaceship hull [sshull], owned by Caste Prime [2].
@@ -960,30 +981,27 @@ Galaxy report:
     [silici], 100 units of helium-3 [heliu3].
     - space shuttle [100], 10 space shuttle [shuttl], owned by Caste Prime [2].
       size: 2000.
-    - crashed alien vessel [200], alien vessel hull [alnhul], immobile, owned by Caste Prime [2].
+    - crashed alien vessel [200], alien vessel hull [alnhul], owned by Caste Prime [2].
       size: 6500.
-      - advanced robo-factory [201], advanced robo-factory [robofc], immobile, owned by Caste Prime
-        [2].
+      - advanced robo-factory [201], advanced robo-factory [robofc], owned by Caste Prime [2].
         size: 1000.
-      - automated command module [202], automated command module [autcmd], immobile, owned by Caste
-        Prime [2].
+      - automated command module [202], automated command module [autcmd], owned by Caste Prime [2].
         size: 800.
-      - automated propulsion module [203], automated propulsion module [autdrv], immobile, owned by
-        Caste Prime [2].
+      - automated propulsion module [203], automated propulsion module [autdrv], owned by Caste
+        Prime [2].
         size: 600.
-      - automated helium powerplant [204], automated helium powerplant [he3aut], immobile, owned by
-        Caste Prime [2].
+      - automated helium powerplant [204], automated helium powerplant [he3aut], owned by Caste
+        Prime [2].
         size: 400.
-      - small cargo bay [205], small cargo bay [cargob], immobile, owned by Caste Prime [2].
+      - small cargo bay [205], small cargo bay [cargob], owned by Caste Prime [2].
         size: 2000.
-      - fighter drone bay [206], fighter drone bay [drnbay], immobile, owned by Caste Prime [2].
+      - fighter drone bay [206], fighter drone bay [drnbay], owned by Caste Prime [2].
         size: 400.
-        - alien fighter drone [450], 4 alien fighter drones [alndrn], immobile, owned by Caste Prime
-          [2].
+        - alien fighter drone [450], 4 alien fighter drones [alndrn], owned by Caste Prime [2].
           size: 320.
-      - life support system [250], life support system [lifsys], immobile, owned by Caste Prime [2].
+      - life support system [250], life support system [lifsys], owned by Caste Prime [2].
         size: 100.
-      - core drill [251], core drill [cdrill], immobile, owned by Caste Prime [2].
+      - core drill [251], core drill [cdrill], owned by Caste Prime [2].
         size: 1000.
 
 
@@ -991,7 +1009,7 @@ Orders Template:
 #faction 1 ""
 #modulestack 000001
 ; + Berlin [000001], 3 cities [city], immobile.
-; items: 609 cash [cash], 30 terrans [terran].
+; items: 535 cash [cash], 30 terrans [terran].
 
 #modulestack 000002
 ; + Berlin garrison [000002], infantry battalion [inftry], immobile.
@@ -1007,10 +1025,12 @@ Orders Template:
 
 #modulestack 000005
 ; + Berlin granary [000005], small cargo bay [cargob], immobile.
-; items: 83 units of food [food], 3 terrans [terran].
+; items: 75 units of food [food], 3 terrans [terran].
 
 #modulestack 000006
 ; + Sydney [000006], 2 cities [city], immobile.
+; effects:
+;   receiving 10 units of food [food] from small cargo bay [000019], 0 weeks to complete.
 
 #modulestack 000007
 ; + Sydney garrison [000007], 2 infantry battalions [inftry], immobile.
@@ -1029,7 +1049,7 @@ Orders Template:
 
 #modulestack 000011
 ; + Sydney granary [000011], small cargo bay [cargob], immobile.
-; items: 214 units of food [food], 3 terrans [terran].
+; items: 224 units of food [food], 3 terrans [terran].
 
 #modulestack 1
 ; + wind powerplant [1], wind powerplant [wnplnt], immobile.

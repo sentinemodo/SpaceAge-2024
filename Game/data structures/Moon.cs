@@ -144,6 +144,12 @@ namespace SpaceAge
 			reportLines.AddRange(this.reportHeader(faction));			
 			reportLines.AddRange(this.reportOrbit(faction));
 			reportLines.AddRange(this.reportRegions(faction));
+			List<string> publicationLines = PressRelease.ReportPublicationsForScope(faction, this.Name);
+			if (publicationLines.Count > 0)
+			{
+				reportLines.Add("");
+				reportLines.AddRange(publicationLines);
+			}
 			return reportLines;
 		}
 
@@ -151,8 +157,7 @@ namespace SpaceAge
 		{
 			List<string> lines = new List<string>
             {
-                // lines.Add(string.Format("    * {0}.", this.ReportName));
-                "  * Luna [P00003] (1, 0, 0), moon, unexplored.",
+                string.Format("  * {0}.", this.ReportName),
                 "------------------------------------------------------------"
             };
 			return lines;

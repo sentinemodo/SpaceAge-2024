@@ -49,6 +49,10 @@ namespace SpaceAge
 			{
 				this.AllowBank = this.XMLAssignBoolean(elModuleStack.GetAttribute("allow-bank"), true);
 			}
+			if (elModuleStack.HasAttribute("sharing"))
+			{
+				this.Sharing = this.XMLAssignBoolean(elModuleStack.GetAttribute("sharing"), true);
+			}
 
         }
 
@@ -91,6 +95,10 @@ namespace SpaceAge
 			if (!this.AllowBank)
 			{
 				this.xmlElement.SetAttribute("allow-bank", "false");
+			}
+			if (!this.Sharing)
+			{
+				this.xmlElement.SetAttribute("sharing", "false");
 			}
             return this.xmlElement;
         }

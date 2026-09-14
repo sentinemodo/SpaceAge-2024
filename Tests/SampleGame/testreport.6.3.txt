@@ -5,7 +5,7 @@ Content-Disposition: attachment
 SpaceAge report for Gelvaren [3].
 Turn 6, Year 2021, April 1.
 
-SpaceAge Engine Version: 0.1.165.
+SpaceAge Engine Version: 0.1.167.
 
 Events during turn:
   none.
@@ -6998,10 +6998,7 @@ Battles report:
 
 Galaxy report:
 ------------------------------------------------------------
-* Sol [SS0001] (0, 0, 0), star system.
-------------------------------------------------------------
-
-  * Sol [S00001] (0, 0, 0), M4 star, unexplored.
+* system Sol [SS0001] (0, 0, 0).
 ------------------------------------------------------------
 
   * Earth [P00001] at AU 1, ocean planet [ocean].
@@ -7096,6 +7093,11 @@ Galaxy report:
       sell 300 units of food [food] at -1 each from small cargo bay
       [000013].
     Offers of buying items:
+      buy 300 units of food [food] at 1 each by Berlin [000001].
+      buy 75 units of iron [iron] at 1 each by Berlin [000001].
+      buy 75 units of carbon [carbon] at 2 each by Berlin [000001].
+      buy 60 units of silicium [silici] at 2 each by Berlin [000001].
+      buy 30 units of titanium [titani] at 2 each by Berlin [000001].
       buy all units of food [food] at any price by corporate
       headquarters [c000012].
       buy all terrans [terran] at any price by corporate headquarters
@@ -7104,6 +7106,12 @@ Galaxy report:
       none.
     Offers of buying modules:
       buy farming complex [farms] at 100 by Berlin [000001].
+      buy small cargo bay [cargob] at 100 by Berlin [000001].
+      buy wind powerplant [wnplnt] at 50 by Berlin [000001].
+      buy coal-burning plant [cplant] at 100 by Berlin [000001].
+      buy surface drill [sdrill] at 100 by Berlin [000001].
+      buy core drill [cdrill] at 100 by Berlin [000001].
+      buy factory [factry] at 100 by Berlin [000001].
     Offers of selling technologies:
       none.
     Offers of buying technologies:
@@ -7601,6 +7609,11 @@ Galaxy report:
       sell 10 terrans [terran] at 50 each from Gelvaren complex
       [000026].
     Offers of buying items:
+      buy 200 units of food [food] at 1 each by Sydney [000006].
+      buy 50 units of iron [iron] at 1 each by Sydney [000006].
+      buy 50 units of carbon [carbon] at 2 each by Sydney [000006].
+      buy 40 units of silicium [silici] at 2 each by Sydney [000006].
+      buy 20 units of titanium [titani] at 2 each by Sydney [000006].
       buy all terrans [terran] at any price by Gelvaren Headquarters
       [000018].
       buy 100 units of food [food] at 1 each by Gelvaren complex
@@ -7610,7 +7623,13 @@ Galaxy report:
     Offers of selling modules:
       none.
     Offers of buying modules:
-      none.
+      buy small cargo bay [cargob] at 100 by Sydney [000006].
+      buy farming complex [farms] at 100 by Sydney [000006].
+      buy wind powerplant [wnplnt] at 50 by Sydney [000006].
+      buy coal-burning plant [cplant] at 100 by Sydney [000006].
+      buy surface drill [sdrill] at 100 by Sydney [000006].
+      buy core drill [cdrill] at 100 by Sydney [000006].
+      buy factory [factry] at 100 by Sydney [000006].
     Offers of selling technologies:
       none.
     Offers of buying technologies:
@@ -7895,7 +7914,7 @@ Galaxy report:
       events:
         week 13: paid 1 cash [cash] upkeep.
 ------------------------------------------------------------
-  * Luna [P00003] (1, 0, 0), moon, unexplored.
+  * Luna [P00001], rocky moon [rock] 0.02 AU from the planet.
 ------------------------------------------------------------
     orbit [O00001], has no atmosphere.
 

@@ -15,6 +15,9 @@
 		<technology name="rckter" />
 		<attitude faction="2" attitude="enemy" />
 	</faction>
+	<publications>
+		<press issuer="1" planet="P00001" title="Caste Prime closes Wake the crashed ship" flavour="United Star Nations records Caste Prime's fulfillment of CT0122 at Dusty field on Earth [P00001] at AU 1, ocean planet [ocean]." />
+	</publications>
 	<galaxy>
 		<system name="SS0001" name-en="Sol" X="0" Y="0" Z="0">
 			<star name="S00001" name-en="Sol" />
@@ -176,6 +179,17 @@
 						<buying module="farms" quantity="1" price="100" />
 						<selling item="food" quantity="39" price="5" />
 						<selling item="terran" quantity="30" price="50" />
+						<buying item="food" quantity="300" price="1" />
+						<buying item="iron" quantity="75" price="1" />
+						<buying item="carbon" quantity="75" price="2" />
+						<buying item="silici" quantity="60" price="2" />
+						<buying item="titani" quantity="30" price="2" />
+						<buying module="cargob" quantity="1" price="100" />
+						<buying module="wnplnt" quantity="1" price="50" />
+						<buying module="cplant" quantity="1" price="100" />
+						<buying module="sdrill" quantity="1" price="100" />
+						<buying module="cdrill" quantity="1" price="100" />
+						<buying module="factry" quantity="1" price="100" />
 						<event week="13" description="paid 300 unit of food [food] upkeep." />
 						<event week="13" description="paid 30 cash [cash] upkeep." />
 						<modulestack name="000002" name-en="Berlin garrison" type="inftry" quantity="1" faction="1">
@@ -601,6 +615,18 @@
 						<upkeep type="food" quantity="200" />
 						<upkeep type="cash" quantity="1053" />
 						<selling item="food" quantity="59" price="5" />
+						<buying item="food" quantity="200" price="1" />
+						<buying item="iron" quantity="50" price="1" />
+						<buying item="carbon" quantity="50" price="2" />
+						<buying item="silici" quantity="40" price="2" />
+						<buying item="titani" quantity="20" price="2" />
+						<buying module="cargob" quantity="1" price="100" />
+						<buying module="farms" quantity="1" price="100" />
+						<buying module="wnplnt" quantity="1" price="50" />
+						<buying module="cplant" quantity="1" price="100" />
+						<buying module="sdrill" quantity="1" price="100" />
+						<buying module="cdrill" quantity="1" price="100" />
+						<buying module="factry" quantity="1" price="100" />
 						<event week="13" description="paid 200 unit of food [food] upkeep." />
 						<modulestack name="000007" name-en="Sydney garrison" type="inftry" quantity="2" faction="1">
 							<itemstack type="rctlnc" quantity="1" />

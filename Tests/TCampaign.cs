@@ -47,6 +47,38 @@ namespace UnitTests
 		}
 
 		[Test]
+		public void RefillSettlementBuyOffers_AssemblyFoodScalesWithCityQty()
+		{
+			this.dataFile.LoadConfiguration(CampaignDir(), "data.xml");
+			this.dataFile.LoadGameDocument(CampaignDir(), "gamein.1.xml");
+			this.dataFile.LoadTurnNumber();
+			this.dataFile.LoadFactions();
+			this.dataFile.LoadGalaxy();
+			this.dataFile.LoadContracts();
+			this.game = this.dataFile.Game;
+
+			ModuleStack assembly = this.game.ModuleStacks["100001"];
+			ItemType food = ItemType.All["food"];
+			Offer foodBuy = null;
+			foreach (Offer offer in Offer.All[assembly])
+			{
+				if (offer.OfferType == EOfferType.BuyItems && offer.ItemType == food)
+				{
+					foodBuy = offer;
+					break;
+				}
+			}
+			Assert.That(foodBuy, Is.Not.Null);
+			Assert.That(assembly.Quantity, Is.EqualTo(6));
+
+			foodBuy.Quantity = 100;
+			this.game.GenerateOffers();
+
+			Assert.That(foodBuy.Quantity, Is.EqualTo(600),
+				"Assembly qty 6 city modules refill food buy to 100 per module");
+		}
+
+		[Test]
 		public void GenerateOffers_DoesNotDuplicateStandingCitySells()
 		{
 			this.dataFile.LoadConfiguration(CampaignDir(), "data.xml");

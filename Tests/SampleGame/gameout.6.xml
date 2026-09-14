@@ -288,6 +288,17 @@
 						<upkeep type="cash" quantity="1293" />
 						<buying module="farms" quantity="1" price="100" />
 						<selling item="food" quantity="39" price="5" />
+						<buying item="food" quantity="300" price="1" />
+						<buying item="iron" quantity="75" price="1" />
+						<buying item="carbon" quantity="75" price="2" />
+						<buying item="silici" quantity="60" price="2" />
+						<buying item="titani" quantity="30" price="2" />
+						<buying module="cargob" quantity="1" price="100" />
+						<buying module="wnplnt" quantity="1" price="50" />
+						<buying module="cplant" quantity="1" price="100" />
+						<buying module="sdrill" quantity="1" price="100" />
+						<buying module="cdrill" quantity="1" price="100" />
+						<buying module="factry" quantity="1" price="100" />
 						<event week="13" description="paid 300 unit of food [food] upkeep." />
 						<modulestack name="c00008" type="cargob" quantity="1" faction="3">
 							<module damage="39" capture="16" online="false" />
@@ -684,6 +695,18 @@
 						<upkeep type="food" quantity="200" />
 						<upkeep type="cash" quantity="1029" />
 						<selling item="food" quantity="59" price="5" />
+						<buying item="food" quantity="200" price="1" />
+						<buying item="iron" quantity="50" price="1" />
+						<buying item="carbon" quantity="50" price="2" />
+						<buying item="silici" quantity="40" price="2" />
+						<buying item="titani" quantity="20" price="2" />
+						<buying module="cargob" quantity="1" price="100" />
+						<buying module="farms" quantity="1" price="100" />
+						<buying module="wnplnt" quantity="1" price="50" />
+						<buying module="cplant" quantity="1" price="100" />
+						<buying module="sdrill" quantity="1" price="100" />
+						<buying module="cdrill" quantity="1" price="100" />
+						<buying module="factry" quantity="1" price="100" />
 						<event week="13" description="paid 200 unit of food [food] upkeep." />
 						<modulestack name="000007" name-en="Sydney garrison" type="inftry" quantity="2" faction="1">
 							<itemstack type="rctlnc" quantity="1" />

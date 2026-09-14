@@ -167,7 +167,7 @@ namespace SpaceAge
 				return false;
 			}
 
-			if (this.RootModuleStack.ItemStacksSumRecursive.Has(this.Fuel))
+			if (this.HasItemsAvailableTo(this, this.Fuel))
 			{
 				return false;
 			}

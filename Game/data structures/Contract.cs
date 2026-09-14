@@ -185,12 +185,14 @@ namespace SpaceAge
 			if (this.RewardStack != null)
 			{
 				this.awardUnit(week, winner);
+				this.issueCompletionPress(winner);
 				return;
 			}
 
 			if (this.RewardCash > 0)
 			{
 				this.awardCash(week, winner);
+				this.issueCompletionPress(winner);
 				return;
 			}
 
@@ -224,6 +226,32 @@ namespace SpaceAge
 						this.Name,
 						winner.ReportName));
 			}
+
+			this.issueCompletionPress(winner);
+		}
+
+		private void issueCompletionPress(Faction winner)
+		{
+			if (this.Issuer == null || winner == null || this.Location == null)
+			{
+				return;
+			}
+
+			string scopeId = PressRelease.ResolveScopeId(this.Location);
+			if (string.IsNullOrEmpty(scopeId))
+			{
+				return;
+			}
+
+			string descriptor = string.IsNullOrEmpty(this.Title) ? this.Name : this.Title;
+			string title = string.Format("{0} closes {1}", winner.FullName, descriptor);
+			string flavour = string.Format(
+				"United Star Nations records {0}'s fulfillment of {1} at {2} on {3}.",
+				winner.FullName,
+				this.Name,
+				this.Location.FullName,
+				PressRelease.ScopeReportName(scopeId));
+			new PressRelease(this.Issuer, title, flavour, false, scopeId);
 		}
 
 		private ModuleStack findTechnologyRewardStack(GiveModuleTrigger give, Faction winner)

@@ -32,9 +32,9 @@ $FactionMeta = @{
 
 $PreferenceMeans = @{
 	military   = @'
-Startup: factory copy of **`armcbt`** (armored combat) costs **1000 balance** at init (9000 cash on hand). Do **not** blanket-declare fauna factions (14-17) hostile before contact — you have not met them yet. After a rumor or scout sighting, **`DECLARE FACTION 14 ENEMY`** (or the local fauna id) then engage. Oil is strategic - secure the nearest **oil** pocket with a defendable outpost before the grant thins.
+Startup: factory copy of **`armcbt`** (armored combat) costs **1000 balance** at init (9000 cash on hand). **`use armcbt`** consumes **8 iron** and **2 titani** on the **factory stack** at job start — cargo in a sibling bay does not count until moved. Before the first tanks build: **`get 8 iron from <cargo-id>`** and **`get 2 titani from <cargo-id>`** onto the factory (same turn as **`use armcbt as newN`**), or **`set sharing true`** on the cargo bay so USE can draw from it (see `player/rules.md`). Oil is strategic - secure the nearest **oil** pocket with a defendable outpost before the grant thins.
 
-**Priority queue:** (1) **`use armcbt`** to build a **tanks** squad; (2) build **trucks** and scout *safe* adjacent grants; (3) after fauna contact, send **tanks** to clear pockets and escort columns; (4) **`cplant` / `fossil` energy complexes** to feed **barracks**; (5) deploy **barracks** and **`frminf`** infantry from them.
+**Priority queue:** (1) stage iron/titani on the factory, then **`use armcbt`** to build a **tanks** squad; (2) build **trucks** and scout *safe* adjacent grants; (3) send **tanks** to clear fauna pockets and escort columns; (4) **`cplant` / `fossil` energy complexes** to feed **barracks**; (5) deploy **barracks** and **`frminf`** infantry from them.
 
 Defend every region you occupy. Escort logistics except the first lone scouting truck. Scout contested ground with **tanks**, not trucks. Fauna culls yield battle loot; UN tier-1 bounties (**CT0016** Arbor, **CT0019** Anvil) pay **1000 cash** (default ladder 1000/2000/4000 by tier if UN posts more later).
 
@@ -71,7 +71,7 @@ function Get-PersonaMarkdown {
 You are the charter board of **$($meta.Name)**, Interest $Id.
 Home: **$($meta.World)** in **$($meta.System)** (Helios factions 2-6, Fomal factions 7-11).
 United Star Nations is faction 1. Arbor First is 12 (Arbor). HCS is 13 (Anvil).
-Fauna factions 14-17 (wildlife per planet) are NPC; they file no ``order.*`` and start neutral until you declare or fight them.
+Fauna factions 14-17 (wildlife per planet) are NPC; they file no ``order.*``. Fauna factions use **hostile** default and **hostile unknown** stances toward strangers; you have not declared them yet — contact or ``DECLARE FACTION <id> ENEMY`` when you choose.
 
 ## Credentials
 
@@ -168,6 +168,7 @@ function Add-MilitaryStartupToGamein {
 	if ($text -eq $GameinText) {
 		throw "Military startup: factory stack $stackId not found for faction $FactionId."
 	}
+
 	return $text
 }
 
@@ -287,6 +288,32 @@ foreach ($id in $script:PlayerFactionIds) {
 	}
 }
 Write-Win1251Text -Path $gameinPath -Text $gameinText
+
+function Seed-TurnOnePublications {
+	param(
+		[Parameter(Mandatory = $true)]$Paths,
+		[string]$Exe
+	)
+	$seedOrder = @"
+#faction 1 ""
+PRESS P00001 TITLE "Assembly capital seated at Assembly Basin" FLAVOUR "United Star Nations confirms its primary Arbor seat at Assembly Basin: six integrated city modules, twenty-four farm blocks, and dual granary bays maintain a closed calorie export loop for the Helios basin. Charter desks, garrison quarters, and the food spot market operate from this grassland cell until player towns register on the grant grid."
+PRESS P00005 TITLE "Slagport primary seat on Anvil" FLAVOUR "United Star Nations lists Slagport as its principal Anvil concession: a hungry metal-export town buying food at premium chlorophyll-index prices while selling titani, copper, and uraninite assay stock. Wind plants on the regolith apron keep the granary within calorie tolerance despite Anvil's thin soil column."
+RUMOR P00001 TITLE "Hostile fauna in Mid Vale" FLAVOUR "Anonymous traders report a pack of large ground animals has moved into Mid Vale east of Northwind Grant. Foot patrols refuse the route until someone with armour clears the brush."
+#end
+"@
+	$orderPath = Join-Path $paths.TurnDir 'order.1.txt'
+	Write-Win1251Text -Path $orderPath -Text $seedOrder
+	Invoke-GameExe -Exe $Exe -GameArgs @('/data', $paths.DataDir, '/turn-dir', $paths.TurnDir, '/no-turn')
+	$gameout = Join-Path $paths.DataDir 'gameout.1.xml'
+	$gamein = Join-Path $paths.DataDir 'gamein.xml'
+	if (-not (Test-Path -LiteralPath $gameout)) {
+		throw "Expected publication seed to write $gameout"
+	}
+	Copy-Item -LiteralPath $gameout -Destination $gamein -Force
+	Remove-Item -LiteralPath $orderPath -Force -ErrorAction SilentlyContinue
+}
+
+Seed-TurnOnePublications -Paths $paths -Exe $Exe
 
 foreach ($id in $script:PlayerFactionIds) {
 	$persona = Get-PersonaMarkdown -Id $id -Password $passwords[$id] -Preference $preferences[$id]

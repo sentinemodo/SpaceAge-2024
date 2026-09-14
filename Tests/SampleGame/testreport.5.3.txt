@@ -5,7 +5,7 @@ Content-Disposition: attachment
 SpaceAge report for Gelvaren [3].
 Turn 5, Year 2021, January 1.
 
-SpaceAge Engine Version: 0.1.165.
+SpaceAge Engine Version: 0.1.167.
 
 Events during turn:
   none.
@@ -16,6 +16,7 @@ Declared stances:
 
 
 events:
+  week 1: Bank account credited: payment from NPC [1].
   week 1: battle at Northern Hemisphere [R00002] (0,0), attackers:
   Gelvaren [3], defenders: Caste Prime [2].
   week 2: battle at Northern Hemisphere [R00002] (0,0), attackers:
@@ -6321,10 +6322,7 @@ Battles report:
 
 Galaxy report:
 ------------------------------------------------------------
-* Sol [SS0001] (0, 0, 0), star system.
-------------------------------------------------------------
-
-  * Sol [S00001] (0, 0, 0), M4 star, unexplored.
+* system Sol [SS0001] (0, 0, 0).
 ------------------------------------------------------------
 
   * Earth [P00001] at AU 1, ocean planet [ocean].
@@ -6347,6 +6345,11 @@ Galaxy report:
       sell 300 units of food [food] at 0 each from small cargo bay
       [000013].
     Offers of buying items:
+      buy 300 units of food [food] at 1 each by Berlin [000001].
+      buy 75 units of iron [iron] at 1 each by Berlin [000001].
+      buy 75 units of carbon [carbon] at 2 each by Berlin [000001].
+      buy 60 units of silicium [silici] at 2 each by Berlin [000001].
+      buy 30 units of titanium [titani] at 2 each by Berlin [000001].
       buy all units of food [food] at any price by corporate
       headquarters [c000012].
       buy all terrans [terran] at any price by corporate headquarters
@@ -6355,6 +6358,12 @@ Galaxy report:
       none.
     Offers of buying modules:
       buy farming complex [farms] at 100 by Berlin [000001].
+      buy small cargo bay [cargob] at 100 by Berlin [000001].
+      buy wind powerplant [wnplnt] at 50 by Berlin [000001].
+      buy coal-burning plant [cplant] at 100 by Berlin [000001].
+      buy surface drill [sdrill] at 100 by Berlin [000001].
+      buy core drill [cdrill] at 100 by Berlin [000001].
+      buy factory [factry] at 100 by Berlin [000001].
     Offers of selling technologies:
       none.
     Offers of buying technologies:
@@ -6413,7 +6422,7 @@ Galaxy report:
       size: 100.
     + corporate headquarters [c000012], corporate headquarters [corphq],
       immobile.
-      size: 1000, mass: 7378 (1000), capacity: 750/6496, energy: 10,
+      size: 1000, mass: 7386 (1000), capacity: 750/6496, energy: 10,
       crew: 20/38, upkeep: 198 (100) cash [cash], consume: 38 (0) units
       of food [food], 38 (0) units of terran breathing gas mixture
       [terair].
@@ -6421,7 +6430,7 @@ Galaxy report:
         #1 hit points: 100/100, capture: 75.
       items: 24 terrans [terran] (size: 96, mass: 96, upkeep: 24 cash
       [cash], consume: 24 units of food [food], 24 units of terran
-      breathing gas mixture [terair]), 1956 cash [cash].
+      breathing gas mixture [terair]), 2030 cash [cash].
       events:
         week 1: repaired 1 damage.
         week 1: given 2 terrans [terran] to gun placement [c00001].
@@ -6494,12 +6503,12 @@ Galaxy report:
           week 13: paid 2 cash [cash] upkeep.
       + small cargo bay [c00005], small cargo bay [cargob], disabled,
         immobile.
-        size: 2000, mass: 1393 (200), capacity: 1800/995, upkeep: 2 (0)
+        size: 2000, mass: 1401 (200), capacity: 1800/1003, upkeep: 2 (0)
         cash [cash], consume: 2 (0) units of food [food], 2 (0) units of
         terran breathing gas mixture [terair].
         hit points: 55/27, capture: 27.
           #1 hit points: 55/27, capture: 27, heavily damaged, disabled.
-        items: 166 units of food [food] (size: 166, mass: 166), 170
+        items: 174 units of food [food] (size: 174, mass: 174), 170
         units of terran breathing gas mixture [terair] (size: 170, mass:
         170), 180 units of oxyhydro [h2o2] (size: 180, mass: 180), 14
         units of iron [iron] (size: 70, mass: 140), 14 units of titanium
@@ -6890,13 +6899,18 @@ Galaxy report:
   Market report:
     Offers of selling items:
       sell 59 units of food [food] at 5 each from Sydney [000006].
-      sell 100 units of food [food] at 0 each from small cargo bay
+      sell 90 units of food [food] at 0 each from small cargo bay
       [000019].
       sell 25 units of food [food] at 5 each from Gelvaren complex
       [000026].
       sell 10 terrans [terran] at 50 each from Gelvaren complex
       [000026].
     Offers of buying items:
+      buy 200 units of food [food] at 1 each by Sydney [000006].
+      buy 50 units of iron [iron] at 1 each by Sydney [000006].
+      buy 50 units of carbon [carbon] at 2 each by Sydney [000006].
+      buy 40 units of silicium [silici] at 2 each by Sydney [000006].
+      buy 20 units of titanium [titani] at 2 each by Sydney [000006].
       buy all terrans [terran] at any price by Gelvaren Headquarters
       [000018].
       buy 100 units of food [food] at 1 each by Gelvaren complex
@@ -6906,7 +6920,13 @@ Galaxy report:
     Offers of selling modules:
       none.
     Offers of buying modules:
-      none.
+      buy small cargo bay [cargob] at 100 by Sydney [000006].
+      buy farming complex [farms] at 100 by Sydney [000006].
+      buy wind powerplant [wnplnt] at 50 by Sydney [000006].
+      buy coal-burning plant [cplant] at 100 by Sydney [000006].
+      buy surface drill [sdrill] at 100 by Sydney [000006].
+      buy core drill [cdrill] at 100 by Sydney [000006].
+      buy factory [factry] at 100 by Sydney [000006].
     Offers of selling technologies:
       none.
     Offers of buying technologies:
@@ -6936,12 +6956,12 @@ Galaxy report:
       NPC [1].
       size: 10.
   + Gelvaren complex [000026], city [city], immobile.
-    size: 25000, mass: 750/5376 (0), capacity: 15000/10244, energy:
+    size: 25000, mass: 750/5366 (0), capacity: 15000/10242, energy:
     76/79 (10), crew: 50/68, upkeep: 100 units of food [food], 889 (0)
     cash [cash], consume: 68 (0) units of food [food], 68 (0) units of
     terran breathing gas mixture [terair].
     technologies: rocket launcher production [rckter].
-    items: 654 units of food [food] (size: 654, mass: 654).
+    items: 652 units of food [food] (size: 652, mass: 652).
     events:
       week 1: got 700 units of food [food] from small cargo bay
       [000019].
@@ -6960,12 +6980,12 @@ Galaxy report:
       [000019].
       week 12: got 10 units of food [food] from small cargo bay
       [000019].
-      week 13: got 10 units of food [food] from small cargo bay
-      [000019].
       week 13: produced 1000 cash [cash], 10 terrans [terran].
       week 13: given 1000 cash [cash] to Gelvaren Headquarters [000018].
       week 13: given 10 terrans [terran] to Gelvaren Headquarters
       [000018].
+      week 13: got 10 units of food [food] from small cargo bay
+      [000019].
       week 13: paid 100 unit of food [food] upkeep.
     + Gelvaren Headquarters [000018], corporate headquarters [corphq],
       immobile.
@@ -6994,79 +7014,79 @@ Galaxy report:
         week 13: produced 100 cash [cash].
         week 13: paid 130 cash [cash] upkeep.
     + small cargo bay [000019], small cargo bay [cargob], immobile.
-      size: 2000, mass: 616 (200), capacity: 1800/336, upkeep: 32 (30)
+      size: 2000, mass: 608 (200), capacity: 1800/328, upkeep: 32 (30)
       cash [cash], consume: 2 (0) units of food [food], 2 (0) units of
       terran breathing gas mixture [terair].
-      items: 8 units of food [food] (size: 8, mass: 8), 2 terrans
-      [terran] (size: 8, mass: 8, upkeep: 2 cash [cash], consume: 2
-      units of food [food], 2 units of terran breathing gas mixture
-      [terair]), 80 units of oil [oil] (size: 320, mass: 400).
+      items: 2 terrans [terran] (size: 8, mass: 8, upkeep: 2 cash
+      [cash], consume: 2 units of food [food], 2 units of terran
+      breathing gas mixture [terair]), 80 units of oil [oil] (size: 320,
+      mass: 400).
       events:
         week 1: given 700 units of food [food] to Gelvaren complex
         [000026].
         week 1: got 10 units of food [food] from farming complex
         [000020].
         week 1: got 2 units of oil [oil] from core drill [000022].
-        week 2: given 10 units of food [food] to Gelvaren complex
-        [000026].
         week 2: got 10 units of food [food] from farming complex
         [000020].
         week 2: got 2 units of oil [oil] from core drill [000022].
-        week 3: given 10 units of food [food] to Gelvaren complex
+        week 2: given 10 units of food [food] to Gelvaren complex
         [000026].
         week 3: got 10 units of food [food] from farming complex
         [000020].
         week 3: got 2 units of oil [oil] from core drill [000022].
-        week 4: given 10 units of food [food] to Gelvaren complex
+        week 3: given 10 units of food [food] to Gelvaren complex
         [000026].
         week 4: got 10 units of food [food] from farming complex
         [000020].
         week 4: got 2 units of oil [oil] from core drill [000022].
-        week 5: given 10 units of food [food] to Gelvaren complex
+        week 4: given 10 units of food [food] to Gelvaren complex
         [000026].
         week 5: got 10 units of food [food] from farming complex
         [000020].
         week 5: got 2 units of oil [oil] from core drill [000022].
-        week 6: given 10 units of food [food] to Gelvaren complex
+        week 5: given 10 units of food [food] to Gelvaren complex
         [000026].
         week 6: got 10 units of food [food] from farming complex
         [000020].
         week 6: got 2 units of oil [oil] from core drill [000022].
-        week 7: given 10 units of food [food] to Gelvaren complex
+        week 6: given 10 units of food [food] to Gelvaren complex
         [000026].
         week 7: got 10 units of food [food] from farming complex
         [000020].
         week 7: got 2 units of oil [oil] from core drill [000022].
-        week 8: given 10 units of food [food] to Gelvaren complex
+        week 7: given 10 units of food [food] to Gelvaren complex
         [000026].
         week 8: got 10 units of food [food] from farming complex
         [000020].
         week 8: got 2 units of oil [oil] from core drill [000022].
-        week 9: given 10 units of food [food] to Gelvaren complex
+        week 8: given 10 units of food [food] to Gelvaren complex
         [000026].
         week 9: got 10 units of food [food] from farming complex
         [000020].
         week 9: got 2 units of oil [oil] from core drill [000022].
-        week 10: given 10 units of food [food] to Gelvaren complex
+        week 9: given 10 units of food [food] to Gelvaren complex
         [000026].
         week 10: got 10 units of food [food] from farming complex
         [000020].
         week 10: got 2 units of oil [oil] from core drill [000022].
-        week 11: given 10 units of food [food] to Gelvaren complex
+        week 10: given 10 units of food [food] to Gelvaren complex
         [000026].
         week 11: got 10 units of food [food] from farming complex
         [000020].
         week 11: got 2 units of oil [oil] from core drill [000022].
-        week 12: given 10 units of food [food] to Gelvaren complex
+        week 11: given 10 units of food [food] to Gelvaren complex
         [000026].
         week 12: got 10 units of food [food] from farming complex
         [000020].
         week 12: got 2 units of oil [oil] from core drill [000022].
-        week 13: given 10 units of food [food] to Gelvaren complex
+        week 12: given 10 units of food [food] to Gelvaren complex
         [000026].
         week 13: got 10 units of food [food] from farming complex
         [000020].
         week 13: got 2 units of oil [oil] from core drill [000022].
+        week 13: given 10 units of food [food] to Gelvaren complex
+        [000026].
         week 13: paid 32 cash [cash] upkeep.
     + farming complex [000020], 2 farming complexes [farms], immobile.
       size: 2000, mass: 240 (200), capacity: 1000/40, energy: 10, crew:
@@ -7199,7 +7219,7 @@ Galaxy report:
         technology from computer library [116].
         week 13: paid 100 cash [cash] upkeep.
 ------------------------------------------------------------
-  * Luna [P00003] (1, 0, 0), moon, unexplored.
+  * Luna [P00001], rocky moon [rock] 0.02 AU from the planet.
 ------------------------------------------------------------
     orbit [O00001], has no atmosphere.
 
@@ -7217,11 +7237,10 @@ Orders Template:
 
 #modulestack 000019
 ; + small cargo bay [000019], small cargo bay [cargob], immobile.
-; items: 8 units of food [food], 2 terrans [terran], 80 units of oil
-; [oil].
+; items: 2 terrans [terran], 80 units of oil [oil].
 @get all food from 000020
 @get all oil from 000022
-sell 100 food
+sell 90 food
 
 #modulestack 000020
 ; + farming complex [000020], 2 farming complexes [farms], immobile.
@@ -7251,7 +7270,7 @@ sell 100 food
 #modulestack 000026
 ; + Gelvaren complex [000026], city [city], immobile.
 ; technologies: rocket launcher production [rckter].
-; items: 654 units of food [food].
+; items: 652 units of food [food].
 @produce terran
 @get all food from 000019
 @buy all food
@@ -7292,7 +7311,7 @@ sell 100 food
 #modulestack c000012
 ; + corporate headquarters [c000012], corporate headquarters [corphq],
 ;   immobile.
-; items: 24 terrans [terran], 1956 cash [cash].
+; items: 24 terrans [terran], 2030 cash [cash].
 @buy all food
 @buy all terran
 
@@ -7314,7 +7333,7 @@ sell 100 food
 #modulestack c00005
 ; + small cargo bay [c00005], small cargo bay [cargob], disabled,
 ;   immobile.
-; items: 166 units of food [food], 170 units of terran breathing gas
+; items: 174 units of food [food], 170 units of terran breathing gas
 ; mixture [terair], 180 units of oxyhydro [h2o2], 14 units of iron [iron],
 ; 14 units of titanium [titani], 16 units of silicium [silici], 16 units
 ; of copper [copper], 16 units of uranium [uraniu], 2 terrans [terran], 17

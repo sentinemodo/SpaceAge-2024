@@ -112,7 +112,7 @@ Quantities are **per unit** in the destroyed stack; divide total drops across pa
 | `mulcrw` | mulch crawler | 2 | 65 | 5 | 3 | 6 | 0.35 | Peat-plated grazer |
 | `canalp` | canopy alpha | 3 | 90 | 11 | 3 | 12 | 0.15 | Treeline apex; kinetic |
 
-**Seeded:** Mid Vale (`brmstr`×2), East Steppe (`mulcrw`×1), Windgap (`canalp`×1).
+**Seeded:** Mid Vale (`brmstr`×2), East Steppe (`mulcrw`×1), Loess (`canalp`×1) — not on UN city cells (Windgap hosts city `100020`).
 
 ### Anvil (faction 15)
 

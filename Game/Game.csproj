@@ -188,6 +188,7 @@
     <Compile Include="data structures\Factions.cs" />
     <Compile Include="data structures\Galaxy.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="game\SettlementBuyBook.cs" />
     <Compile Include="data structures\ItemStack.cs" />
     <Compile Include="data structures\ItemStacks.cs" />
     <Compile Include="data structures\ItemType.cs" />
@@ -204,6 +205,7 @@
     <Compile Include="data structures\ModuleStack.Ownership.cs" />
     <Compile Include="data structures\ModuleStack.Relations.cs" />
     <Compile Include="data structures\ModuleStack.Reporting.cs" />
+    <Compile Include="data structures\ModuleStack.Sharing.cs" />
     <Compile Include="data structures\ModuleStack.Upkeep.cs" />
     <Compile Include="data structures\ModuleStack.Xml.cs" />
     <Compile Include="data structures\ModuleStacks.cs" />

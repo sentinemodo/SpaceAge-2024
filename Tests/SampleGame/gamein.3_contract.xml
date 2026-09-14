@@ -9,6 +9,10 @@
 	<contracts>
 		<contract name="CT0122" location="R00001" issuer="1" trigger="research" title="Wake the crashed ship" flavour="Research the wreckage until its systems can be activated and the vessel claimed." reward-type="unit" reward="200" target="200" points="5" progress="0" />
 	</contracts>
+	<publications>
+		<press issuer="2" title="Expedition to Luna" flavour="Caste Prime shuttles leave Earth orbit for the dusty lunar field." />
+		<press issuer="3" title="Berlin secured" flavour="Gelvaren consolidates captured ground and begins repairing the wounded city." />
+	</publications>
 	<galaxy>
 		<system name="SS0001" name-en="Sol" X="0" Y="0" Z="0">
 			<star name="S00001" name-en="Sol" />

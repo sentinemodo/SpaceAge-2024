@@ -520,6 +520,64 @@ namespace UnitTests
         }
 
         [Test]
+        public void RefillSettlementBuyOffers_RestoresCityFoodAfterPartialFill()
+        {
+            ModuleStack berlin = this.game.ModuleStacks["000005"];
+            ItemType food = ItemType.All["food"];
+            Offer foodBuy = this.game.Offers[EOfferType.BuyItems][food][berlin].GetIndex(0);
+            Assert.That(foodBuy.Quantity, Is.EqualTo(200));
+
+            foodBuy.Quantity = 40;
+            this.game.GenerateOffers();
+
+            Assert.That(this.game.Offers[EOfferType.BuyItems][food][berlin].GetIndex(0).Quantity, Is.EqualTo(200),
+                "city food buy refills to 100 per settlement module (Berlin qty 2)");
+        }
+
+        [Test]
+        public void RefillSettlementBuyOffers_PreservesStandingBuyPrice()
+        {
+            ModuleStack berlin = this.game.ModuleStacks["000005"];
+            ItemType food = ItemType.All["food"];
+            Offer foodBuy = this.game.Offers[EOfferType.BuyItems][food][berlin].GetIndex(0);
+            Assert.That(foodBuy.Price, Is.EqualTo(0));
+
+            foodBuy.Quantity = 10;
+            this.game.GenerateOffers();
+
+            Offer after = this.game.Offers[EOfferType.BuyItems][food][berlin].GetIndex(0);
+            Assert.That(after.Quantity, Is.EqualTo(200));
+            Assert.That(after.Price, Is.EqualTo(0));
+        }
+
+        [Test]
+        public void RefillSettlementBuyOffers_AddsCityModuleBids()
+        {
+            ModuleStack berlin = this.game.ModuleStacks["000005"];
+            ModuleType cargob = ModuleType.All["cargob"];
+            Assert.That(this.findModuleBuyOffer(berlin, cargob), Is.Null);
+
+            this.game.GenerateOffers();
+
+            Offer cargobBid = this.findModuleBuyOffer(berlin, cargob);
+            Assert.That(cargobBid, Is.Not.Null);
+            Assert.That(cargobBid.Quantity, Is.EqualTo(1));
+            Assert.That(cargobBid.Price, Is.EqualTo(100));
+        }
+
+        private Offer findModuleBuyOffer(ModuleStack stack, ModuleType moduleType)
+        {
+            foreach (Offer offer in Offer.All[stack])
+            {
+                if (offer.OfferType == EOfferType.BuyModules && offer.ModuleType == moduleType)
+                {
+                    return offer;
+                }
+            }
+            return null;
+        }
+
+        [Test]
         public void ProcessGenerateAutoOffers()
         {
             ModuleStack berlin = this.game.ModuleStacks["000005"];
@@ -552,9 +610,23 @@ namespace UnitTests
             Assert.That(this.game.Offers[EOfferType.SellItems][cash][berlin].Count, Is.EqualTo(0),
                 "cash is not listed for sale");
 
-            Offer ironOffer = this.game.Offers[EOfferType.SellItems][iron][berlin].GetIndex(0);
-            Assert.That(ironOffer.Quantity, Is.EqualTo(15));
-            Assert.That(ironOffer.Price, Is.EqualTo(10));
+            Assert.That(this.game.Offers[EOfferType.SellItems][iron][berlin].Count, Is.EqualTo(0),
+                "city with an iron buy bid must not also auto-sell iron");
+            Offer ironBuy = this.findItemBuyOffer(berlin, iron);
+            Assert.That(ironBuy, Is.Not.Null);
+            Assert.That(ironBuy.Quantity, Is.EqualTo(50), "Berlin qty 2 city modules refill iron buy to 25 each");
+        }
+
+        private Offer findItemBuyOffer(ModuleStack stack, ItemType itemType)
+        {
+            foreach (Offer offer in Offer.All[stack])
+            {
+                if (offer.OfferType == EOfferType.BuyItems && offer.ItemType == itemType)
+                {
+                    return offer;
+                }
+            }
+            return null;
         }
 
         [Test]
@@ -1804,14 +1876,14 @@ namespace UnitTests
 			List<string> commands = new List<string>
 			{
 				"#faction 1",
-				"RUMOR P00001 TITLE \"Hostile fauna\" FLAVOUR \"Something hunts the grass east of Northwind.\"",
+				"RUMOR P00002 TITLE \"Hostile fauna\" FLAVOUR \"Something hunts the grass east of Northwind.\"",
 				"#end"
 			};
 			OrdersReader reader = new OrdersReader(this.game);
 			reader.AssignOrders(commands);
 			RumorOrder rumor = (RumorOrder)Faction.All["1"].Orders[Faction.All["1"].Orders.Count - 1];
 			Assert.That(rumor.AllowedBetweenTurns, Is.True);
-			Assert.That(rumor.PlanetId, Is.EqualTo("P00001"));
+			Assert.That(rumor.PlanetId, Is.EqualTo("P00002"));
 			Assert.That(rumor.Title, Is.EqualTo("Hostile fauna"));
 			this.game.ExecuteBetweenTurnOrders();
 			Assert.That(PressRelease.All.Count, Is.EqualTo(1));

@@ -459,12 +459,16 @@ Condition probe: succeeds if recursive cargo / nested module count / person pres
 
 **Syntax:**
 
-- `PRESS TITLE "<title>" [FLAVOUR|FLAVOR "<text>"]`
-- Bare tokens: first unused token is the title, the next is flavour. Title or flavour is required.
+- `PRESS [<planet-id>|<moon-id>] TITLE "<title>" [FLAVOUR|FLAVOR "<text>"]`
+- Optional scope: first token may be a planet or moon id (`P00001`, `M00003`, …). When set, only factions with stacks on that body see the release in **Press releases:** / galaxy body sections / `announce.*`.
+- Without scope: global press (all factions).
+- Bare tokens after scope: first unused token is the title, the next is flavour. Title or flavour is required.
 
 **Subject:** **faction** (`#faction` as subject). Also allowed **between turns**.
 
-Creates a `PressRelease` and reports `issued press release {title}.` on the issuer. If the subject is not a faction, Execute does nothing. `/no-turn` writes title and flavour into `announce.{turn}.{faction}.txt` for every faction (`Contract.All.WriteAnnouncements`).
+Creates a `PressRelease` and reports `issued press release {title}.` on the issuer. If the subject is not a faction, Execute does nothing. `/no-turn` writes scoped releases into `announce.{turn}.{faction}.txt` only for factions present on that body (`Contract.All.WriteAnnouncements`).
+
+**Contract completion press (automatic):** when a contract completes, UN (issuer faction **1**) posts a scoped press release on the contract location's planet or moon — title `{Interest} closes {contract title}`, flavour cites `{Interest}`, contract id, region, and body name. Visible in **Press releases:** on that body and in the faction report header when the reader has stacks there.
 
 ### RUMOR
 
@@ -504,15 +508,16 @@ Lists a standing sell (`Offer`) and keeps a leftover `SELL` on the template. Mat
 
 ### SET
 
-**Syntax:** `SET AVOID|ONLINE|ALLOW BANK TRUE|FALSE`
+**Syntax:** `SET AVOID|ONLINE|ALLOW BANK|SHARING TRUE|FALSE`
 
 **Subject:** modulestack.
 
-Flag name and `TRUE`/`FALSE` are **case-insensitive**; Parse stores the flag as uppercase `AVOID`, `ONLINE`, or `ALLOW BANK`.
+Flag name and `TRUE`/`FALSE` are **case-insensitive**; Parse stores the flag as uppercase `AVOID`, `ONLINE`, `ALLOW BANK`, or `SHARING`.
 
 - `SET AVOID TRUE|FALSE` — sets `IsAvoiding`. Not a battle tactic (see `player/battle.md`).
 - `SET ONLINE TRUE|FALSE` — `ModuleStack.SetOnline`: stack `Online` and every `module.Online`. When `Online=false`, every copy reports **deactivated** and `QuantityOperational` is 0. Captured modules are left `Online=false`. Per-copy player shutdown is [DEACTIVATE](#deactivate); per-copy turn-on without changing `Online` is [ACTIVATE](#activate). Sample: `set online true`.
 - `SET ALLOW BANK TRUE|FALSE` — sets `AllowBank` on the stack (default **true** on new stacks and when the save omits `allow-bank`). When **false**, market buys and quarterly **cash upkeep** may spend only **local cash** on that stack — the faction bank is not debited (`HasBankAccess` is false). People nested on the stack inherit the parent’s setting. Sample: `set allow bank false` on a trading stack to cap market spend to withdrawn cash.
+- `SET SHARING TRUE|FALSE` — sets `Sharing` on the stack (default **true**). When **true**, other same-owner stacks in the same unit or region may draw that stack’s inventory (including nested stacks and crew-held items) to satisfy **USE** consume items, fuel, and quarterly upkeep after their own local `ItemStacks` are exhausted. When **false**, the stack is isolated (`not sharing` in reports). Sample: `set sharing false` on a private cargo reserve.
 
 ### STACK
 
@@ -726,6 +731,8 @@ Starts `TrainingSkill` or `TrainingOfficer` (officer requires matching crew of t
 **Subject:** modulestack.
 
 Uses a loaded (or level-0) technology: consumes catalog inputs and after `use-time` produces items or a module. `AS` names the new module stack; `FOR` is the nest parent. `AS` and `FOR` are independent (`use wndtrb for 000021` is valid). Level 0 techs do not need to be copied onto the stack. Duration scales with `UseTime`, efficiency, and active quantity. `use-allowed-in` can restrict module **group**, a specific module type (`module="sckbay"` for shipboard pharmacy `[pharms]`), **location-type** (against `BodyEnvironment.EffectiveLocationType` — gas-giant orbits with atmosphere ≠ `none` count as `atmosphere`), **planet-type**, and **planet-atmosphere** (same band-token gate as `PRODUCE`; failure line `USE failed: {tech} cannot operate in {location}.`).
+
+**Consume items at the factory:** on job start, `USE` debits every catalog `use-consume` item from the **producer stack’s own `ItemStacks` first**, then from other same-owner stacks in the same region whose cargo has **`Sharing=true`** (including nested bays on the grant). Materials sitting in a sibling cargo bay with default sharing still count; a bay marked **`set sharing false`** does not. Best practice: **`get`** iron, titani, and other inputs onto the factory before **`use armcbt`** (same turn is fine), or leave HQ cargo sharing enabled. Check the factory line in the report for on-hand iron/titani before issuing `USE`. Failure: `USE failed: not enough resources.` with no production started.
 
 **Settlement temperature:** if the tech produces a **settlement**-group module, `BodyEnvironment.AllowsSettlement` must pass at the producer’s location. **Habitable** (planet default when XML omits `temperature`) always allows. **Cold** allows only module types `clddom` and `cryhab`. **Hot** allows only `hotdom`. Otherwise `USE failed: {module} cannot settle a {cold|hot} world.` SampleGame `Tests/data.xml` has none of those exception types. Moons with no `temperature` attribute load as **cold** (`ParseTemperature` of an empty string), so `USE popcnt` / `ctypln` / `dmecns` on a SampleGame moon fails this gate. Planets with no attribute load as **habitable**.
 

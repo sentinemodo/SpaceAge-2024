@@ -715,6 +715,7 @@ namespace UnitTests
 			ModuleStack depot = new ModuleStack(orbit, owner, ModuleType.All["cargob"], "he3depot");
 			depot.AddModule();
 			depot.ItemStacks.Add(new ItemStack(ItemType.All["heliu3"], 4));
+			depot.Sharing = false;
 
 			ModuleStack drones = new ModuleStack(orbit, owner, ModuleType.All["alndrn"], "he3drones");
 			drones.AddModule();

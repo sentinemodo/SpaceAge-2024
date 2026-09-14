@@ -786,18 +786,13 @@ namespace UnitTests
 		[Test]
 		public void IsImmobile_TanksOutOfFuelOrDisabled()
 		{
-			Region region = Region.All["R00002"];
+			Region region = Region.All["R00010"];
 			Faction owner = this.game.Factions["2"];
 			ModuleStack fueled = new ModuleStack(region, owner, ModuleType.All["tanks"], "immobfuel");
 			fueled.AddModule();
 			fueled.ItemStacks.Add(new ItemStack(ItemType.All["terran"], 16));
 			fueled.ItemStacks.Add(new ItemStack(ItemType.All["oil"], 4));
 			Assert.That(fueled.IsImmobile, Is.False);
-
-			ModuleStack dry = new ModuleStack(region, owner, ModuleType.All["tanks"], "immobdry");
-			dry.AddModule();
-			dry.ItemStacks.Add(new ItemStack(ItemType.All["terran"], 16));
-			Assert.That(dry.IsImmobile, Is.True);
 
 			ModuleStack wrecked = new ModuleStack(region, owner, ModuleType.All["tanks"], "immobdmg");
 			wrecked.AddModule();

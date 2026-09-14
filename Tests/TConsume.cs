@@ -502,6 +502,18 @@ namespace UnitTests
 		public void ExecuteMaintenance_PullsFoodFromNestedChild()
 		{
 			ModuleStack factory = ModuleStack.All["000004"];
+			ModuleStack city = factory.Parent as ModuleStack;
+			Assert.That(city, Is.Not.Null);
+			int factoryFood = factory.ItemStacks.Quantity(ItemType.All["food"]);
+			if (factoryFood > 0)
+			{
+				factory.ItemStacks.Minus(ItemType.All["food"], factoryFood);
+			}
+			int cityFood = city.ItemStacks.Quantity(ItemType.All["food"]);
+			if (cityFood > 0)
+			{
+				city.ItemStacks.Minus(ItemType.All["food"], cityFood);
+			}
 			ModuleStack locker = new ModuleStack(
 				factory,
 				factory.Owner,

@@ -267,11 +267,11 @@ namespace SpaceAge
 				reportLines.AddRange(eventLines);
 			}
 
-			List<string> rumorLines = PressRelease.ReportRumors();
-			if (rumorLines.Count > 0)
+			List<string> publicationLines = PressRelease.ReportPublications(this);
+			if (publicationLines.Count > 0)
 			{
 				reportLines.Add("");
-				reportLines.AddRange(rumorLines);
+				reportLines.AddRange(publicationLines);
 			}
 
 			List<string> contractLines = Contract.All.Report(this);

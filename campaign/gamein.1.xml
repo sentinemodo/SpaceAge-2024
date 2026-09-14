@@ -14,10 +14,10 @@
 	<faction name="11" name-en="Fission" password="fission" email="player11@local" default-attitude="2" text-report="True" text-report-line-length="100" xml-report="True" balance="10000" credit-line="10000" credit-rate="0.2" deposit-rate="0.05" />
 	<faction name="12" name-en="Arbor First" password="" email="" default-attitude="2" text-report="True" text-report-line-length="100" xml-report="True" balance="4000" credit-line="0" credit-rate="0" deposit-rate="0" />
 	<faction name="13" name-en="HCS" password="" email="" default-attitude="2" text-report="True" text-report-line-length="100" xml-report="True" balance="5000" credit-line="0" credit-rate="0" deposit-rate="0" />
-	<faction name="14" name-en="Arbor Fauna" password="" email="" default-attitude="2" text-report="True" text-report-line-length="100" xml-report="True" balance="0" credit-line="0" credit-rate="0" deposit-rate="0" />
-	<faction name="15" name-en="Anvil Fauna" password="" email="" default-attitude="2" text-report="True" text-report-line-length="100" xml-report="True" balance="0" credit-line="0" credit-rate="0" deposit-rate="0" />
-	<faction name="16" name-en="Haven Fauna" password="" email="" default-attitude="2" text-report="True" text-report-line-length="100" xml-report="True" balance="0" credit-line="0" credit-rate="0" deposit-rate="0" />
-	<faction name="17" name-en="Graph Fauna" password="" email="" default-attitude="2" text-report="True" text-report-line-length="100" xml-report="True" balance="0" credit-line="0" credit-rate="0" deposit-rate="0" />
+	<faction name="14" name-en="Arbor Fauna" password="" email="" default-attitude="1" unknown-attitude="1" text-report="True" text-report-line-length="100" xml-report="True" balance="0" credit-line="0" credit-rate="0" deposit-rate="0" />
+	<faction name="15" name-en="Anvil Fauna" password="" email="" default-attitude="1" unknown-attitude="1" text-report="True" text-report-line-length="100" xml-report="True" balance="0" credit-line="0" credit-rate="0" deposit-rate="0" />
+	<faction name="16" name-en="Haven Fauna" password="" email="" default-attitude="1" unknown-attitude="1" text-report="True" text-report-line-length="100" xml-report="True" balance="0" credit-line="0" credit-rate="0" deposit-rate="0" />
+	<faction name="17" name-en="Graph Fauna" password="" email="" default-attitude="1" unknown-attitude="1" text-report="True" text-report-line-length="100" xml-report="True" balance="0" credit-line="0" credit-rate="0" deposit-rate="0" />
 	<contracts>
 		<contract name="CT0001" location="R00040" issuer="1" trigger="give-module" reward-type="technology" reward="ctypln" quantity="1" module="farms" receiver="100030" baseline="6" title="Slagport calorie charter" flavour="Slagport's granary spectra show a thin 1.6 um water-ice band and a weak chlorophyll shoulder. Deliver one farming complex so the metal town can close its own calorie loop." />
 		<contract name="CT0002" location="R00068" issuer="1" trigger="give-module" reward-type="technology" reward="servic" quantity="2" module="wnplnt" receiver="100050" baseline="4" title="Isotope wind survey" flavour="Isotope sits on a uraninite spine with a measured 8 m/s mean surface wind. Two more wind plants keep the assay mill online without burning the local fissile stockpile." />
@@ -1064,7 +1064,6 @@
 							<upkeep type="cash" quantity="10" />
 						</modulestack>
 					</modulestack>
-					<modulestack name="140030" type="canalp" quantity="1" faction="14" name-en="Windgap canopy alpha" />
 					<deep-pocket>
 						<resource type="uraniu" quantity="25" />
 					</deep-pocket>
@@ -1090,6 +1089,7 @@
 					<resource type="iron" quantity="35" />
 					<resource type="silici" quantity="20" />
 					<resource type="carbon" quantity="15" />
+					<modulestack name="140030" type="canalp" quantity="1" faction="14" name-en="Loess canopy alpha" />
 				</region>
 				<region name="R00030" name-en="East Flat" X="5" Y="4" type="barren">
 					<exit region="R00029">

@@ -210,7 +210,21 @@ Standing offers live on UN `city` stacks in `gamein` (see [`galaxy.md`](galaxy.m
 
 Called once per turn after week 13 maintenance, in order: `UpdateBankAccounts()` → **`UpdateRates()`** → **`GenerateOffers()`**.
 
-### GenerateOffers (live)
+### Settlement auto-buy refill (live 0.1.166)
+
+Each quarter, for every NPC faction `[1]` **`town`**, **`city`**, or **`mtrply`** (metropoly) settlement stack, the engine refills buy offers to the tier defaults below. **Item quantities scale with settlement stack module count** (`quantity` on the stack). **Module bids are per stack** (singular module stacks), not multiplied by stack count.
+
+Standing t=1 XML buys are preserved: existing offers keep their **price**; quantity is raised only when below the tier target. Militia cities (factions 12/13) and player-owned settlements are excluded unless transferred to faction 1.
+
+| Tier | Item buys (× stack qty) | Module buys (per stack) |
+|------|-------------------------|-------------------------|
+| **`town`** | `food` **60 @ 1**; `iron` **15 @ 1**; `carbon` **15 @ 2** | — |
+| **`city`** | `food` **100 @ 1**; `iron` **25 @ 1**; `carbon` **25 @ 2**; `silici` **20 @ 2**; `titani` **10 @ 2** | `cargob`, `farms`, `wnplnt`, `cplant`, `sdrill`, `cdrill`, `factry` — **1 each @ 50–100** (cargo/food/drill/factory @ 100, wind @ 50) |
+| **`mtrply`** | `food` **500 @ 1**; `iron` **40 @ 1**; `carbon` **40 @ 2**; `silici` **30 @ 2**; `titani` **25 @ 2**; `copper` **25 @ 2**; `uraniu` **10 @ 4** | Same module types as city — **2 each @ 50–100** |
+
+Implementation: `SettlementBuyBook.cs` + `Game.RefillSettlementBuyOffers()`.
+
+### GenerateOffers — auto-sell (live)
 
 Each quarter, for every NPC faction `[1]` stack whose module type is **`city`**:
 
@@ -239,5 +253,10 @@ NPC factions 1 / 12 / 13 are unchanged. Rates persist in save XML (`deposit-rate
 ### Beta verification
 
 - SampleGame: `ProcessGenerateAutoOffers` and turn 4 golden assert NPC city sells remain.
+- SampleGame: `RefillSettlementBuyOffers_*` restores city food buys and adds missing module bids.
 - Campaign: load `campaign/data.xml` + UN city snippet → `GenerateOffers` does not duplicate standing sells from `gamein.1.xml`.
 - Unit: `UpdateRates` moves regional food price toward average after a trade posts a new price in one region.
+
+### Settlement market evolution (wishlist — not live)
+
+See [`engine-wishlist.md`](engine-wishlist.md): fulfilled buy books spawn garrison units; tech level on planet expands the autobuy resource list; nested factory production adds auto-sell module offers.

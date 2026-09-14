@@ -5,7 +5,7 @@ Content-Disposition: attachment
 SpaceAge report for Caste Prime [2].
 Turn 4, Year 2021, September 1.
 
-SpaceAge Engine Version: 0.1.165.
+SpaceAge Engine Version: 0.1.167.
 
 Events during turn:
   none.
@@ -40,6 +40,11 @@ events:
   week 13: battle at Northern Hemisphere [R00002] (0,0), attackers: Gelvaren [3], defenders: Caste
   Prime [2].
   week 13: Bank account credited: Deposit interests accounted to 100. Current balance: 8090.
+
+Press releases:
+  Earth [P00001] at AU 1, ocean planet [ocean]: NPC [1] — Caste Prime closes Wake the crashed ship.
+    United Star Nations records Caste Prime's fulfillment of CT0122 at Dusty field on Earth [P00001]
+    at AU 1, ocean planet [ocean].
 Bank report:
   Bank account balance: 8090.
   Credit line maximum: 10000.
@@ -7893,10 +7898,7 @@ Battles report:
 
 Galaxy report:
 ------------------------------------------------------------
-* Sol [SS0001] (0, 0, 0), star system.
-------------------------------------------------------------
-
-  * Sol [S00001] (0, 0, 0), M4 star, unexplored.
+* system Sol [SS0001] (0, 0, 0).
 ------------------------------------------------------------
 
   * Earth [P00001] at AU 1, ocean planet [ocean].
@@ -7916,11 +7918,21 @@ Galaxy report:
       sell 30 terrans [terran] at 50 each from Berlin [000001].
       sell 300 units of food [food] at -1 each from small cargo bay [000013].
     Offers of buying items:
-      none.
+      buy 300 units of food [food] at 1 each by Berlin [000001].
+      buy 75 units of iron [iron] at 1 each by Berlin [000001].
+      buy 75 units of carbon [carbon] at 2 each by Berlin [000001].
+      buy 60 units of silicium [silici] at 2 each by Berlin [000001].
+      buy 30 units of titanium [titani] at 2 each by Berlin [000001].
     Offers of selling modules:
       none.
     Offers of buying modules:
       buy farming complex [farms] at 100 by Berlin [000001].
+      buy small cargo bay [cargob] at 100 by Berlin [000001].
+      buy wind powerplant [wnplnt] at 50 by Berlin [000001].
+      buy coal-burning plant [cplant] at 100 by Berlin [000001].
+      buy surface drill [sdrill] at 100 by Berlin [000001].
+      buy core drill [cdrill] at 100 by Berlin [000001].
+      buy factory [factry] at 100 by Berlin [000001].
     Offers of selling technologies:
       none.
     Offers of buying technologies:
@@ -8161,8 +8173,13 @@ Galaxy report:
     size: 720.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       size: 4.
+
+Press releases:
+  Earth [P00001] at AU 1, ocean planet [ocean]: NPC [1] — Caste Prime closes Wake the crashed ship.
+    United Star Nations records Caste Prime's fulfillment of CT0122 at Dusty field on Earth [P00001]
+    at AU 1, ocean planet [ocean].
 ------------------------------------------------------------
-  * Luna [P00003] (1, 0, 0), moon, unexplored.
+  * Luna [P00001], rocky moon [rock] 0.02 AU from the planet.
 ------------------------------------------------------------
     orbit [O00001], has no atmosphere.
     + space shuttle [100], 10 space shuttle [shuttl].
@@ -8199,48 +8216,48 @@ Galaxy report:
     Resources: 100 units of iron [iron], 100 units of silicium [silici], 100 units of titanium
     [titani], 100 units of uranium [uraniu], 100 units of copper [copper], 100 units of silicium
     [silici], 100 units of helium-3 [heliu3].
-    + crashed alien vessel [200], alien vessel hull [alnhul], immobile.
+    + crashed alien vessel [200], alien vessel hull [alnhul].
       size: 6500, mass: 13000/3490 (200), capacity: 6000/5520, energy: 80/61 (1), upkeep: 470 (20)
       cash [cash].
       technologies: advanced hull construction [ahlcns].
       events:
         week 7: activated onboard systems.
         week 13: paid 20 cash [cash] upkeep.
-      + advanced robo-factory [201], advanced robo-factory [robofc], immobile.
+      + advanced robo-factory [201], advanced robo-factory [robofc].
         size: 1000, mass: 750 (750), capacity: 500/0, energy: 15, upkeep: 60 cash [cash].
         technologies: automated fabrication [autfab].
         events:
           week 13: paid 60 cash [cash] upkeep.
-      + automated command module [202], automated command module [autcmd], immobile.
+      + automated command module [202], automated command module [autcmd].
         size: 800, mass: 300 (300), capacity: 200/0, energy: 5, upkeep: 80 cash [cash].
         technologies: automated command systems [autctl].
         events:
           week 13: paid 80 cash [cash] upkeep.
-      + automated propulsion module [203], automated propulsion module [autdrv], immobile.
+      + automated propulsion module [203], automated propulsion module [autdrv].
         size: 600, mass: 10000/700 (700), capacity: 150/0, energy: 30, upkeep: 80 cash [cash].
         movement speed: 14.3 in space.
         fuel requirements:  unit of oxyhydro [h2o2] per week.
         technologies: automated propulsion [autprp].
         events:
           week 13: paid 80 cash [cash] upkeep.
-      + automated helium powerplant [204], automated helium powerplant [he3aut], immobile.
+      + automated helium powerplant [204], automated helium powerplant [he3aut].
         size: 400, mass: 400 (400), energy: 80/5 (consume: 2 units of helium-3 [heliu3] for 13
         weeks), upkeep: 80 cash [cash].
         fuel requirements: 2 units of helium-3 [heliu3] per 13 weeks.
         technologies: unmanned helium plant [he3unc].
         events:
           week 13: paid 80 cash [cash] upkeep.
-      + small cargo bay [205], small cargo bay [cargob], immobile.
+      + small cargo bay [205], small cargo bay [cargob].
         size: 2000, mass: 200 (200), capacity: 1800/0, upkeep: 30 cash [cash].
         technologies: small scale transportation [strans].
         events:
           week 13: paid 30 cash [cash] upkeep.
-      + fighter drone bay [206], fighter drone bay [drnbay], immobile.
+      + fighter drone bay [206], fighter drone bay [drnbay].
         size: 400, mass: 3000/620 (300), capacity: 400/320, energy: 5, upkeep: 120 (40) cash [cash].
         technologies: drone hangar construction [drnhng].
         events:
           week 13: paid 40 cash [cash] upkeep.
-        + alien fighter drone [207], 4 alien fighter drones [alndrn], immobile.
+        + alien fighter drone [207], 4 alien fighter drones [alndrn].
           size: 320, mass: 3000/320 (320), capacity: 4/0, upkeep: 80 cash [cash].
           movement speed: 2.3 in space.
           fuel requirements: 4 units of helium-3 [heliu3] per 13 weeks.
@@ -8316,6 +8333,11 @@ Galaxy report:
           week 7: researched crashed alien vessel [200].
           week 13: paid 1 cash [cash] upkeep.
 
+Press releases:
+  Earth [P00001] at AU 1, ocean planet [ocean]: NPC [1] — Caste Prime closes Wake the crashed ship.
+    United Star Nations records Caste Prime's fulfillment of CT0122 at Dusty field on Earth [P00001]
+    at AU 1, ocean planet [ocean].
+
 
 Orders Template:
 #faction 2 "xyzzy"
@@ -8381,35 +8403,35 @@ sell 300 food
 @research 200
 
 #modulestack 200
-; + crashed alien vessel [200], alien vessel hull [alnhul], immobile.
+; + crashed alien vessel [200], alien vessel hull [alnhul].
 ; technologies: advanced hull construction [ahlcns].
 
 #modulestack 201
-; + advanced robo-factory [201], advanced robo-factory [robofc], immobile.
+; + advanced robo-factory [201], advanced robo-factory [robofc].
 ; technologies: automated fabrication [autfab].
 
 #modulestack 202
-; + automated command module [202], automated command module [autcmd], immobile.
+; + automated command module [202], automated command module [autcmd].
 ; technologies: automated command systems [autctl].
 
 #modulestack 203
-; + automated propulsion module [203], automated propulsion module [autdrv], immobile.
+; + automated propulsion module [203], automated propulsion module [autdrv].
 ; technologies: automated propulsion [autprp].
 
 #modulestack 204
-; + automated helium powerplant [204], automated helium powerplant [he3aut], immobile.
+; + automated helium powerplant [204], automated helium powerplant [he3aut].
 ; technologies: unmanned helium plant [he3unc].
 
 #modulestack 205
-; + small cargo bay [205], small cargo bay [cargob], immobile.
+; + small cargo bay [205], small cargo bay [cargob].
 ; technologies: small scale transportation [strans].
 
 #modulestack 206
-; + fighter drone bay [206], fighter drone bay [drnbay], immobile.
+; + fighter drone bay [206], fighter drone bay [drnbay].
 ; technologies: drone hangar construction [drnhng].
 
 #modulestack 207
-; + alien fighter drone [207], 4 alien fighter drones [alndrn], immobile.
+; + alien fighter drone [207], 4 alien fighter drones [alndrn].
 ; technologies: alien fighter construction [alnfgh].
 
 #person 000001

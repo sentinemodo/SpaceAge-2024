@@ -58,7 +58,7 @@ namespace SpaceAge
 		{
 			List<string> lines = new List<string>
             {
-                "* Sol [SS0001] (0, 0, 0), star system.",
+                string.Format("* {0}.", this.ReportName),
                 "------------------------------------------------------------"
             };
 			return lines;

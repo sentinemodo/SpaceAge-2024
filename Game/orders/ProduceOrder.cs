@@ -128,9 +128,9 @@ namespace SpaceAge
 			{
 				this.autoGetMissingFuel(week);
 
-				if (this.Producer.ItemStacksSumRecursive.Has(this.Producer.ProduceEnergyConsume))
+				if (this.Producer.HasItemsAvailableTo(this.Producer, this.Producer.ProduceEnergyConsume))
 				{
-					IItemStacksHolder holder = this.findFuelHolder(this.Producer, this.Producer.ProduceEnergyConsume);
+					IItemStacksHolder holder = this.Producer.FindItemHolderAvailableTo(this.Producer, this.Producer.ProduceEnergyConsume);
 
 					if (holder != null)
 					{
@@ -218,6 +218,7 @@ namespace SpaceAge
 		{
 			if (stack.Owner == this.Producer.Owner
 				&& stack != this.Producer
+				&& stack.CanSupplyTo(this.Producer)
 				&& stack.ItemStacks.Has(need))
 			{
 				return stack;

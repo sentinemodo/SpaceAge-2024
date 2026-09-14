@@ -398,6 +398,8 @@ namespace SpaceAge
 
         public void GenerateOffers()
         {
+            this.RefillSettlementBuyOffers();
+
             foreach (ModuleStack stack in this.ModuleStacks.Values)
             {
                 if (stack.Owner == null || stack.Owner.Name != "1")
@@ -438,6 +440,90 @@ namespace SpaceAge
                     Offer.All.ReuseEquivalent(offer);
                 }
             }
+        }
+
+        private void RefillSettlementBuyOffers()
+        {
+            foreach (ModuleStack stack in this.ModuleStacks.Values)
+            {
+                if (!this.isNpcSettlementMarket(stack))
+                {
+                    continue;
+                }
+
+                foreach (SettlementBuyTarget target in SettlementBuyBook.Targets(stack.ModuleType.Name, stack.Quantity))
+                {
+                    this.refillSettlementBuyOffer(stack, target);
+                }
+            }
+        }
+
+        private bool isNpcSettlementMarket(ModuleStack stack)
+        {
+            if (stack.Owner == null || stack.Owner.Name != "1")
+            {
+                return false;
+            }
+            if (stack.ModuleType == null || stack.ModuleType.Group != EModuleTypesGroup.settlement)
+            {
+                return false;
+            }
+            string name = stack.ModuleType.Name;
+            return name == "town" || name == "city" || name == "mtrply";
+        }
+
+        private void refillSettlementBuyOffer(ModuleStack stack, SettlementBuyTarget target)
+        {
+            Offer existing = target.IsModule
+                ? this.findModuleBuyOffer(stack, target.ModuleType)
+                : this.findItemBuyOffer(stack, target.ItemType);
+
+            if (existing != null)
+            {
+                if (existing.Quantity < target.Quantity)
+                {
+                    existing.Quantity = target.Quantity;
+                }
+                return;
+            }
+
+            EOfferType offerType = target.IsModule ? EOfferType.BuyModules : EOfferType.BuyItems;
+            Offer offer = new Offer(stack.Location.Market, stack, offerType);
+            if (target.IsModule)
+            {
+                offer.ModuleType = target.ModuleType;
+            }
+            else
+            {
+                offer.ItemType = target.ItemType;
+            }
+            offer.Quantity = target.Quantity;
+            offer.Price = target.Price;
+            Offer.All.ReuseEquivalent(offer);
+        }
+
+        private Offer findItemBuyOffer(ModuleStack stack, ItemType itemType)
+        {
+            foreach (Offer offer in Offer.All[stack])
+            {
+                if (offer.OfferType == EOfferType.BuyItems && offer.ItemType == itemType)
+                {
+                    return offer;
+                }
+            }
+            return null;
+        }
+
+        private Offer findModuleBuyOffer(ModuleStack stack, ModuleType moduleType)
+        {
+            foreach (Offer offer in Offer.All[stack])
+            {
+                if (offer.OfferType == EOfferType.BuyModules && offer.ModuleType == moduleType)
+                {
+                    return offer;
+                }
+            }
+            return null;
         }
 
         private bool hasItemOffer(ModuleStack stack, EOfferType offerType, ItemType itemType)

@@ -5,7 +5,7 @@ Content-Disposition: attachment
 SpaceAge report for Gelvaren [3].
 Turn 3, Year 2020, July 1.
 
-SpaceAge Engine Version: 0.1.165.
+SpaceAge Engine Version: 0.1.167.
 
 Events during turn:
   none.
@@ -32,6 +32,12 @@ events:
   Gelvaren [3], defenders: Caste Prime [2].
   week 13: Bank account credited: Deposit interests accounted to 123.
   Current balance: 9995.
+
+Press releases:
+  Earth [P00001] at AU 1, ocean planet [ocean]: NPC [1] — Gelvaren
+  closes CT0121.
+    United Star Nations records Gelvaren's fulfillment of CT0121 at
+    Southern Hemisphere on Earth [P00001] at AU 1, ocean planet [ocean].
 Bank report:
   Bank account balance: 9995.
   Credit line maximum: 10000.
@@ -4163,10 +4169,7 @@ Battles report:
 
 Galaxy report:
 ------------------------------------------------------------
-* Sol [SS0001] (0, 0, 0), star system.
-------------------------------------------------------------
-
-  * Sol [S00001] (0, 0, 0), M4 star, unexplored.
+* system Sol [SS0001] (0, 0, 0).
 ------------------------------------------------------------
 
   * Earth [P00001] at AU 1, ocean planet [ocean].
@@ -4187,11 +4190,21 @@ Galaxy report:
       sell 39 units of food [food] at 5 each from Berlin [000001].
       sell 30 terrans [terran] at 50 each from Berlin [000001].
     Offers of buying items:
-      none.
+      buy 300 units of food [food] at 1 each by Berlin [000001].
+      buy 75 units of iron [iron] at 1 each by Berlin [000001].
+      buy 75 units of carbon [carbon] at 2 each by Berlin [000001].
+      buy 60 units of silicium [silici] at 2 each by Berlin [000001].
+      buy 30 units of titanium [titani] at 2 each by Berlin [000001].
     Offers of selling modules:
       none.
     Offers of buying modules:
       buy farming complex [farms] at 100 by Berlin [000001].
+      buy small cargo bay [cargob] at 100 by Berlin [000001].
+      buy wind powerplant [wnplnt] at 50 by Berlin [000001].
+      buy coal-burning plant [cplant] at 100 by Berlin [000001].
+      buy surface drill [sdrill] at 100 by Berlin [000001].
+      buy core drill [cdrill] at 100 by Berlin [000001].
+      buy factory [factry] at 100 by Berlin [000001].
     Offers of selling technologies:
       none.
     Offers of buying technologies:
@@ -4340,6 +4353,11 @@ Galaxy report:
       sell 10 terrans [terran] at 50 each from Gelvaren complex
       [000026].
     Offers of buying items:
+      buy 200 units of food [food] at 1 each by Sydney [000006].
+      buy 50 units of iron [iron] at 1 each by Sydney [000006].
+      buy 50 units of carbon [carbon] at 2 each by Sydney [000006].
+      buy 40 units of silicium [silici] at 2 each by Sydney [000006].
+      buy 20 units of titanium [titani] at 2 each by Sydney [000006].
       buy all terrans [terran] at any price by Gelvaren Headquarters
       [000018].
       buy 100 units of food [food] at 1 each by Gelvaren complex
@@ -4347,7 +4365,13 @@ Galaxy report:
     Offers of selling modules:
       none.
     Offers of buying modules:
-      none.
+      buy small cargo bay [cargob] at 100 by Sydney [000006].
+      buy farming complex [farms] at 100 by Sydney [000006].
+      buy wind powerplant [wnplnt] at 50 by Sydney [000006].
+      buy coal-burning plant [cplant] at 100 by Sydney [000006].
+      buy surface drill [sdrill] at 100 by Sydney [000006].
+      buy core drill [cdrill] at 100 by Sydney [000006].
+      buy factory [factry] at 100 by Sydney [000006].
     Offers of selling technologies:
       none.
     Offers of buying technologies:
@@ -4665,10 +4689,22 @@ Galaxy report:
           week 4: saw infantry battalion [110] in Southern Hemisphere
           [R00003] (1,0).
           week 4: stacked under infantry battalion [110].
+
+Press releases:
+  Earth [P00001] at AU 1, ocean planet [ocean]: NPC [1] — Gelvaren
+  closes CT0121.
+    United Star Nations records Gelvaren's fulfillment of CT0121 at
+    Southern Hemisphere on Earth [P00001] at AU 1, ocean planet [ocean].
 ------------------------------------------------------------
-  * Luna [P00003] (1, 0, 0), moon, unexplored.
+  * Luna [P00001], rocky moon [rock] 0.02 AU from the planet.
 ------------------------------------------------------------
     orbit [O00001], has no atmosphere.
+
+Press releases:
+  Earth [P00001] at AU 1, ocean planet [ocean]: NPC [1] — Gelvaren
+  closes CT0121.
+    United Star Nations records Gelvaren's fulfillment of CT0121 at
+    Southern Hemisphere on Earth [P00001] at AU 1, ocean planet [ocean].
 
 
 Orders Template:

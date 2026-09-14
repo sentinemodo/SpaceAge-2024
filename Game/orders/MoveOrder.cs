@@ -393,14 +393,14 @@ namespace SpaceAge
 			ItemType h2o2 = ItemType.All["h2o2"];
 			ItemStacks need = new ItemStacks();
 			need.Add(new ItemStack(h2o2, surcharge));
-			if (!this.Mover.ItemStacksSumRecursive.Has(need))
+			if (!this.Mover.HasItemsAvailableTo(this.Mover, need))
 			{
 				this.Mover.EventReports.Add(
 					week,
 					string.Format("MOVE failed. Not enough {0} for launch.", ItemType.All["h2o2"].ReportName));
 				return false;
 			}
-			IItemStacksHolder holder = this.findFuelHolder(this.Mover, need);
+			IItemStacksHolder holder = this.Mover.FindItemHolderAvailableTo(this.Mover, need);
 			if (holder == null)
 			{
 				this.Mover.EventReports.Add(
@@ -498,9 +498,9 @@ namespace SpaceAge
             {
                 if (!moveable.Effects.IsFuelled)
                 {
-                    if (this.Mover.ItemStacksSumRecursive.Has(moveable.Fuel))
+                    if (this.Mover.HasItemsAvailableTo(this.Mover, moveable.Fuel))
                     {
-                        IItemStacksHolder holder = this.findFuelHolder(this.Mover, moveable.Fuel);
+                        IItemStacksHolder holder = this.Mover.FindItemHolderAvailableTo(this.Mover, moveable.Fuel);
 
                         if (holder != null)
                         {

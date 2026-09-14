@@ -913,7 +913,7 @@ def seed_hostile_fauna(arbor, anvil):
     arbor_pockets = [
         ("Mid Vale", "140010", "brmstr", 2, "Mid Vale brush pack", 14),
         ("East Steppe", "140020", "mulcrw", 1, "East Steppe mulch crawler", 14),
-        ("Windgap", "140030", "canalp", 1, "Windgap canopy alpha", 14),
+        ("Loess", "140030", "canalp", 1, "Loess canopy alpha", 14),
     ]
     for region_name, stack_id, module_type, qty, name_en, faction in arbor_pockets:
         find_region(arbor.regions, region_name).stacks.append(
@@ -2261,7 +2261,8 @@ def emit_factions(root):
         **{"name-en": "Arbor Fauna"},
         password="",
         email="",
-        **{"default-attitude": "2"},
+        **{"default-attitude": "1"},
+        **{"unknown-attitude": "1"},
         **{"text-report": "True"},
         **{"text-report-line-length": "100"},
         **{"xml-report": "True"},
@@ -2277,7 +2278,8 @@ def emit_factions(root):
         **{"name-en": "Anvil Fauna"},
         password="",
         email="",
-        **{"default-attitude": "2"},
+        **{"default-attitude": "1"},
+        **{"unknown-attitude": "1"},
         **{"text-report": "True"},
         **{"text-report-line-length": "100"},
         **{"xml-report": "True"},
@@ -2293,7 +2295,8 @@ def emit_factions(root):
         **{"name-en": "Haven Fauna"},
         password="",
         email="",
-        **{"default-attitude": "2"},
+        **{"default-attitude": "1"},
+        **{"unknown-attitude": "1"},
         **{"text-report": "True"},
         **{"text-report-line-length": "100"},
         **{"xml-report": "True"},
@@ -2309,7 +2312,8 @@ def emit_factions(root):
         **{"name-en": "Graph Fauna"},
         password="",
         email="",
-        **{"default-attitude": "2"},
+        **{"default-attitude": "1"},
+        **{"unknown-attitude": "1"},
         **{"text-report": "True"},
         **{"text-report-line-length": "100"},
         **{"xml-report": "True"},

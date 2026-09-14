@@ -47,13 +47,187 @@ namespace SpaceAge
 		{
 		}
 
+		public static bool IsVisibleTo(Faction faction, string scopeId)
+		{
+			if (faction == null)
+			{
+				return false;
+			}
+			if (string.IsNullOrEmpty(scopeId))
+			{
+				return true;
+			}
+			if (Planet.All.ContainsKey(scopeId))
+			{
+				return FactionHasStacksOnPlanet(faction, Planet.All[scopeId]);
+			}
+			if (Moon.All.ContainsKey(scopeId))
+			{
+				return FactionHasStacksOnMoon(faction, Moon.All[scopeId]);
+			}
+			return false;
+		}
+
+		private static bool FactionHasStacksOnPlanet(Faction faction, Planet planet)
+		{
+			foreach (Region region in planet.Regions.Values)
+			{
+				if (region.ModuleStacks.Contains(faction))
+				{
+					return true;
+				}
+			}
+			if (planet.Orbit != null && planet.Orbit.ModuleStacks.Contains(faction))
+			{
+				return true;
+			}
+			return false;
+		}
+
+		private static bool FactionHasStacksOnMoon(Faction faction, Moon moon)
+		{
+			foreach (Region region in moon.Regions.Values)
+			{
+				if (region.ModuleStacks.Contains(faction))
+				{
+					return true;
+				}
+			}
+			if (moon.Orbit != null && moon.Orbit.ModuleStacks.Contains(faction))
+			{
+				return true;
+			}
+			return false;
+		}
+
+		public static string ScopeReportName(string scopeId)
+		{
+			if (string.IsNullOrEmpty(scopeId))
+			{
+				return string.Empty;
+			}
+			if (Planet.All.ContainsKey(scopeId))
+			{
+				return Planet.All[scopeId].ReportName;
+			}
+			if (Moon.All.ContainsKey(scopeId))
+			{
+				return Moon.All[scopeId].ReportName;
+			}
+			return scopeId;
+		}
+
+		public static string ResolveScopeId(Region location)
+		{
+			if (location == null || location.RegionHolder == null)
+			{
+				return string.Empty;
+			}
+			Planet planet = location.RegionHolder as Planet;
+			if (planet != null)
+			{
+				return planet.Name;
+			}
+			Moon moon = location.RegionHolder as Moon;
+			if (moon != null)
+			{
+				return moon.Name;
+			}
+			return string.Empty;
+		}
+
+		public static List<string> ReportPublications(Faction faction)
+		{
+			List<string> lines = new List<string>();
+			lines.AddRange(ReportPress(faction));
+			lines.AddRange(ReportRumors(faction));
+			return lines;
+		}
+
+		public static List<string> ReportPublicationsForScope(Faction faction, string scopeId)
+		{
+			List<string> lines = new List<string>();
+			lines.AddRange(ReportPress(faction, scopeId));
+			lines.AddRange(ReportRumors(faction, scopeId));
+			return lines;
+		}
+
+		public static List<string> ReportPress(Faction faction)
+		{
+			return ReportPress(faction, null);
+		}
+
+		public static List<string> ReportPress(Faction faction, string scopeFilter)
+		{
+			List<string> lines = new List<string>();
+			bool headerAdded = false;
+			foreach (PressRelease release in PressRelease.All)
+			{
+				if (release.Anonymous || release.Issuer == null)
+				{
+					continue;
+				}
+				if (!string.IsNullOrEmpty(scopeFilter)
+					&& !string.Equals(release.PlanetId, scopeFilter, System.StringComparison.Ordinal))
+				{
+					continue;
+				}
+				if (!IsVisibleTo(faction, release.PlanetId))
+				{
+					continue;
+				}
+				if (!headerAdded)
+				{
+					lines.Add("Press releases:");
+					headerAdded = true;
+				}
+				if (!string.IsNullOrEmpty(release.PlanetId))
+				{
+					lines.Add(string.Format("  {0}: {1} — {2}.",
+						ScopeReportName(release.PlanetId),
+						release.Issuer.ReportName,
+						release.Title));
+				}
+				else
+				{
+					lines.Add(string.Format("  {0}: {1}.",
+						release.Issuer.ReportName,
+						release.Title));
+				}
+				if (!string.IsNullOrEmpty(release.Flavour))
+				{
+					lines.Add(string.Format("    {0}", release.Flavour));
+				}
+			}
+			return lines;
+		}
+
 		public static List<string> ReportRumors()
+		{
+			return ReportRumors(null, null);
+		}
+
+		public static List<string> ReportRumors(Faction faction)
+		{
+			return ReportRumors(faction, null);
+		}
+
+		public static List<string> ReportRumors(Faction faction, string scopeFilter)
 		{
 			List<string> lines = new List<string>();
 			bool headerAdded = false;
 			foreach (PressRelease release in PressRelease.All)
 			{
 				if (!release.Anonymous)
+				{
+					continue;
+				}
+				if (!string.IsNullOrEmpty(scopeFilter)
+					&& !string.Equals(release.PlanetId, scopeFilter, System.StringComparison.Ordinal))
+				{
+					continue;
+				}
+				if (faction != null && !IsVisibleTo(faction, release.PlanetId))
 				{
 					continue;
 				}
@@ -66,6 +240,12 @@ namespace SpaceAge
 				{
 					lines.Add(string.Format("  {0}: {1}.",
 						Planet.All[release.PlanetId].ReportName,
+						release.Title));
+				}
+				else if (!string.IsNullOrEmpty(release.PlanetId) && Moon.All.ContainsKey(release.PlanetId))
+				{
+					lines.Add(string.Format("  {0}: {1}.",
+						Moon.All[release.PlanetId].ReportName,
 						release.Title));
 				}
 				else
@@ -106,7 +286,7 @@ namespace SpaceAge
 					elPress.GetAttribute("title"),
 					elPress.GetAttribute("flavour"),
 					false,
-					string.Empty);
+					elPress.GetAttribute("planet"));
 			}
 		}
 
@@ -132,6 +312,10 @@ namespace SpaceAge
 				{
 					XmlElement elPress = doc.CreateElement("press");
 					elPress.SetAttribute("issuer", release.Issuer.Name);
+					if (!string.IsNullOrEmpty(release.PlanetId))
+					{
+						elPress.SetAttribute("planet", release.PlanetId);
+					}
 					elPress.SetAttribute("title", release.Title ?? string.Empty);
 					elPress.SetAttribute("flavour", release.Flavour ?? string.Empty);
 					elPublications.AppendChild(elPress);
