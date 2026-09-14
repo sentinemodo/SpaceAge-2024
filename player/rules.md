@@ -477,6 +477,8 @@ Creates a `PressRelease` and reports `issued press release {title}.` on the issu
 
 Creates an anonymous publication scoped to `<planet-id>`. The issuer is not shown on reports or announcements. Rumors persist in `<publications>` on save/load. Faction reports list **Rumors:** after **events:** and before **Contract reports:**. `/no-turn` also writes rumors into `announce.{turn}.{faction}.txt` (`Contract.All.WriteAnnouncements`).
 
+**Fauna rumors (automatic):** before each report generation and at the start of turn processing (`Events.Execute`), the engine scans fauna factions **14–17**. When a stack sits in a region **adjacent** to a region holding any settlement-group module, an anonymous rumor is added for that planet — title `Hostile fauna in {region name}`, flavour cites the module type, stack id, fauna region id, and a neighbouring settlement region. One rumor per stack (deduped by stack id). Treat as **contact** for diplomacy with that fauna faction.
+
 ### SEE
 
 **Syntax:**
@@ -585,6 +587,8 @@ Alderson-gate hop. Parse takes **one** token; it must be an **Alderson Gate** id
 Walks a route in one order — e.g. `move R00014 R00009` (Grant → Farm Belt → Mid Vale). Each dest token is a **region**, **star**, **planet**, **moon**, **belt**, **alderson**, **anomaly**, or **orbit** id. Conditional `-move` / `+move` chains are optional; prefer listing all ground hops on one `MOVE` line for reconnaissance. Immobile stacks (e.g. `corphq`) cannot move. Stars, planets, moons, anomalies, and Alderson Gates resolve to their **orbit**. A **belt** token is the belt itself (location-type **space**, not a landing). Starts a `Moving` effect, consumes fuel when required, changes parent on arrival.
 
 **Exits on the report:** a **region** block includes `Exits:` (`Region.Report` → `Exits.Report`). A region destination prints `{name} [id] (x,y), {region type}, {ground|naval|space} travel duration N week(s).` A non-region destination prints that location’s `ReportName` plus the mode duration — `orbit [id], space travel duration N week(s).` for an orbit, or `{name} [id] at AU N, belt, space travel duration N week(s).` for a belt. Orbit reports and `Belt.Report` do not list exits (belt exits still exist in the save and are used by MOVE). Maps without `orbit=` / `belt=` / `alderson=` exits (SampleGame) never show those lines.
+
+**Exit hints** (appended before the trailing period, only when you **own** the source region): `, anomaly detected` toward an unresolved anomaly cell; `, deep pocket of resources detected` when you hold **cdrill** tech or module in the source region and the destination has a deep pocket; `, settlement detected` when the destination region holds any settlement-group module (`town`, `city`, `metropoly`, dome variants). Hints do not name the settlement or its owner.
 
 **Orbit atmosphere line** (`Orbit.HasAtmosphere`): each orbit header ends with `, has atmosphere` or `, has no atmosphere`. True when the orbit has `<resource>` or `<race>` entries, or the parent planet/moon has races, or parent `atmosphere` ≠ `none` (any non-none band — thin, terair, hostile — counts). Optional `suitable for {race}` lists orbit and inherited body races.
 

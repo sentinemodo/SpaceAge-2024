@@ -5,11 +5,41 @@ Content-Disposition: attachment
 SpaceAge report for Caste Prime [2].
 Turn 4, Year 2021, September 1.
 
-SpaceAge Engine Version: 0.1.159.
+SpaceAge Engine Version: 0.1.165.
 
 Events during turn:
   none.
 
+
+events:
+  week 1: battle at Northern Hemisphere [R00002] (0,0), attackers: Gelvaren [3], defenders: Caste
+  Prime [2].
+  week 2: battle at Northern Hemisphere [R00002] (0,0), attackers: Gelvaren [3], defenders: Caste
+  Prime [2].
+  week 3: battle at Northern Hemisphere [R00002] (0,0), attackers: Gelvaren [3], defenders: Caste
+  Prime [2].
+  week 4: battle at Northern Hemisphere [R00002] (0,0), attackers: Gelvaren [3], defenders: Caste
+  Prime [2].
+  week 5: battle at Northern Hemisphere [R00002] (0,0), attackers: Gelvaren [3], defenders: Caste
+  Prime [2].
+  week 6: battle at Northern Hemisphere [R00002] (0,0), attackers: Gelvaren [3], defenders: Caste
+  Prime [2].
+  week 7: completed contract CT0122 and received crashed alien vessel [200]. Systems activated.
+  week 7: battle at Northern Hemisphere [R00002] (0,0), attackers: Gelvaren [3], defenders: Caste
+  Prime [2].
+  week 8: battle at Northern Hemisphere [R00002] (0,0), attackers: Gelvaren [3], defenders: Caste
+  Prime [2].
+  week 9: battle at Northern Hemisphere [R00002] (0,0), attackers: Gelvaren [3], defenders: Caste
+  Prime [2].
+  week 10: battle at Northern Hemisphere [R00002] (0,0), attackers: Gelvaren [3], defenders: Caste
+  Prime [2].
+  week 11: battle at Northern Hemisphere [R00002] (0,0), attackers: Gelvaren [3], defenders: Caste
+  Prime [2].
+  week 12: battle at Northern Hemisphere [R00002] (0,0), attackers: Gelvaren [3], defenders: Caste
+  Prime [2].
+  week 13: battle at Northern Hemisphere [R00002] (0,0), attackers: Gelvaren [3], defenders: Caste
+  Prime [2].
+  week 13: Bank account credited: Deposit interests accounted to 100. Current balance: 8090.
 Bank report:
   Bank account balance: 8090.
   Credit line maximum: 10000.
@@ -7875,7 +7905,8 @@ Galaxy report:
 
   Northern Hemisphere [R00002] (0,0), grassland region, settlement capacity 8/3.
   Exits:
-    Southern Hemisphere [R00003] (1,0), grassland region, ground travel duration 3 weeks.
+    Southern Hemisphere [R00003] (1,0), grassland region, ground travel duration 3 weeks, settlement
+    detected.
   Resources: 20 units of iron [iron], 20 units of carbon [carbon], 20 units of titanium [titani], 20
   units of uranium [uraniu], 20 units of copper [copper], 20 units of silicium [silici], 250 units
   of oxyhydro [h2o2], 500 units of food [food].

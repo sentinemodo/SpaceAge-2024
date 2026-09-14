@@ -11,6 +11,7 @@ Benchmarks vs player units: [`combat-balance.md`](combat-balance.md) — `inftry
 | Capture cities | **No** — omit `can-convert` |
 | Upkeep / consume | **None** — wild forage off-map; no cargo nests in seed |
 | Diplomacy | Fauna factions 14–17 start **neutral** (attitude 2); hostile only after contact |
+| Settlement rumors | When a fauna stack occupies a region **adjacent** to a region with a settlement-group module (`town`, `city`, `mtrply`, dome variants), the engine issues an anonymous planet-scoped **Rumor** naming the fauna region and stack id (engine **0.1.167**). Counts as contact for `DECLARE`. |
 | Production | **None** at campaign start — catalog modules only for combat/load |
 | Tame variants | Wishlist L3+ breeding techs (below); −1 atk, +can-convert, player upkeep |
 

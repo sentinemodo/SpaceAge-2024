@@ -288,30 +288,6 @@ foreach ($id in $script:PlayerFactionIds) {
 }
 Write-Win1251Text -Path $gameinPath -Text $gameinText
 
-function Seed-TurnOneRumor {
-	param(
-		[Parameter(Mandatory = $true)]$Paths,
-		[string]$Exe
-	)
-	$rumorOrder = @"
-#faction 1 ""
-RUMOR P00001 TITLE "Hostile fauna in Mid Vale" FLAVOUR "Anonymous traders report a pack of large ground animals has moved into Mid Vale east of Northwind Grant. Foot patrols refuse the route until someone with armour clears the brush."
-#end
-"@
-	$orderPath = Join-Path $paths.TurnDir 'order.1.txt'
-	Write-Win1251Text -Path $orderPath -Text $rumorOrder
-	Invoke-GameExe -Exe $Exe -GameArgs @('/data', $paths.DataDir, '/turn-dir', $paths.TurnDir, '/no-turn')
-	$gameout = Join-Path $paths.DataDir 'gameout.1.xml'
-	$gamein = Join-Path $paths.DataDir 'gamein.xml'
-	if (-not (Test-Path -LiteralPath $gameout)) {
-		throw "Expected rumor seed to write $gameout"
-	}
-	Copy-Item -LiteralPath $gameout -Destination $gamein -Force
-	Remove-Item -LiteralPath $orderPath -Force -ErrorAction SilentlyContinue
-}
-
-Seed-TurnOneRumor -Paths $paths -Exe $Exe
-
 foreach ($id in $script:PlayerFactionIds) {
 	$persona = Get-PersonaMarkdown -Id $id -Password $passwords[$id] -Preference $preferences[$id]
 	$personaPath = Join-Path (Join-Path $paths.FactionsDir (Get-FactionFolderName -Id $id)) 'persona.md'

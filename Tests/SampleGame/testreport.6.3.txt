@@ -5,7 +5,7 @@ Content-Disposition: attachment
 SpaceAge report for Gelvaren [3].
 Turn 6, Year 2021, April 1.
 
-SpaceAge Engine Version: 0.1.159.
+SpaceAge Engine Version: 0.1.165.
 
 Events during turn:
   none.
@@ -16,6 +16,40 @@ Declared stances:
   enemy toward alien fighter drone [450].
   enemy toward spaceship hull [101].
 
+
+events:
+  week 1: battle at Northern Hemisphere [R00002] (0,0), attackers:
+  Gelvaren [3], defenders: Caste Prime [2].
+  week 2: battle at Northern Hemisphere [R00002] (0,0), attackers:
+  Gelvaren [3], defenders: Caste Prime [2].
+  week 3: battle at Northern Hemisphere [R00002] (0,0), attackers:
+  Gelvaren [3], defenders: Caste Prime [2].
+  week 4: battle at Northern Hemisphere [R00002] (0,0), attackers:
+  Gelvaren [3], defenders: Caste Prime [2].
+  week 5: battle at Northern Hemisphere [R00002] (0,0), attackers:
+  Gelvaren [3], defenders: Caste Prime [2].
+  week 6: battle at Northern Hemisphere [R00002] (0,0), attackers:
+  Gelvaren [3], defenders: Caste Prime [2].
+  week 7: battle at Northern Hemisphere [R00002] (0,0), attackers:
+  Gelvaren [3], defenders: Caste Prime [2].
+  week 8: battle at orbit [O00002], attackers: Caste Prime [2],
+  defenders: Gelvaren [3].
+  week 8: battle at Northern Hemisphere [R00002] (0,0), attackers:
+  Gelvaren [3], defenders: Caste Prime [2].
+  week 9: battle at orbit [O00002], attackers: Caste Prime [2],
+  defenders: Gelvaren [3].
+  week 9: battle at Northern Hemisphere [R00002] (0,0), attackers:
+  Gelvaren [3], defenders: Caste Prime [2].
+  week 10: battle at Northern Hemisphere [R00002] (0,0), attackers:
+  Gelvaren [3], defenders: Caste Prime [2].
+  week 11: battle at Northern Hemisphere [R00002] (0,0), attackers:
+  Gelvaren [3], defenders: Caste Prime [2].
+  week 12: battle at Northern Hemisphere [R00002] (0,0), attackers:
+  Gelvaren [3], defenders: Caste Prime [2].
+  week 13: battle at Northern Hemisphere [R00002] (0,0), attackers:
+  Gelvaren [3], defenders: Caste Prime [2].
+  week 13: Bank account credited: Deposit interests accounted to 89.
+  Current balance: 7184.
 Bank report:
   Bank account balance: 7184.
   Credit line maximum: 10000.
@@ -7051,7 +7085,7 @@ Galaxy report:
   capacity 8/3.
   Exits:
     Southern Hemisphere [R00003] (1,0), grassland region, ground travel
-    duration 3 weeks.
+    duration 3 weeks, settlement detected.
   Resources: 20 units of iron [iron], 20 units of carbon [carbon], 20
   units of titanium [titani], 20 units of uranium [uraniu], 20 units of
   copper [copper], 20 units of silicium [silici], 250 units of oxyhydro
@@ -7552,7 +7586,7 @@ Galaxy report:
   capacity 8/3.
   Exits:
     Northern Hemisphere [R00002] (0,0), grassland region, ground travel
-    duration 3 weeks.
+    duration 3 weeks, settlement detected.
   Resources: 20 units of iron [iron], 20 units of oil [oil], 20 units of
   titanium [titani], 20 units of uranium [uraniu], 20 units of copper
   [copper], 20 units of silicium [silici], 250 units of oxyhydro [h2o2],

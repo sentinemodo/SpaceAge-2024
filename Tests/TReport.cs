@@ -51,7 +51,7 @@ namespace IntegrationTests
             {
                 "Western Europe [R00001] (0,4), grassland region, settlement capacity 8/2.",
                 "Exits:",
-                "  Eastern Europe [R00002] (1,4), grassland region, ground travel duration 3 weeks.",
+                "  Eastern Europe [R00002] (1,4), grassland region, ground travel duration 3 weeks, settlement detected.",
                 "Resources: 20 units of iron [iron], 500 units of food [food].",
                 "Market report:",
                 "  Offers of selling items:",
@@ -117,6 +117,38 @@ namespace IntegrationTests
 			string exits = string.Join("\n", lines);
 			Assert.That(exits, Does.Contain("Eastern Europe [R00002]"));
 			Assert.That(exits, Does.Contain("anomaly detected"));
+		}
+
+		[Test]
+		public void RegionReport_ExitTowardSettlement_ShowsSettlementDetected()
+		{
+			Faction faction = this.game.Factions["2"];
+			Region grant = this.game.Regions["R00001"];
+			Region neighbor = this.game.Regions["R00002"];
+
+			List<string> lines = grant.Report(faction);
+			string exits = string.Join("\n", lines);
+			Assert.That(exits, Does.Contain("Eastern Europe [R00002]"));
+			Assert.That(exits, Does.Contain("settlement detected"));
+		}
+
+		[Test]
+		public void RegionReport_ExitTowardSettlement_HiddenWhenSourceRegionNotVisible()
+		{
+			Faction faction = this.game.Factions["2"];
+			Faction npc = this.game.Factions["1"];
+			Region grant = this.game.Regions["R00001"];
+			ModuleStack trucks = ModuleStack.All["100001"];
+			ModuleStack cplant = ModuleStack.All["000007"];
+			ModuleStack cdrill = ModuleStack.All["000006"];
+			trucks.Owner = npc;
+			cplant.Owner = npc;
+			cdrill.Owner = npc;
+
+			List<string> lines = grant.Report(faction);
+			string exits = string.Join("\n", lines);
+			Assert.That(exits, Does.Contain("Eastern Europe [R00002]"));
+			Assert.That(exits, Does.Not.Contain("settlement detected"));
 		}
 
 		[Test]

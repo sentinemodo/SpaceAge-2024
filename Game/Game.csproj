@@ -179,6 +179,7 @@
     <Compile Include="data structures\BodyEnvironment.cs" />
     <Compile Include="game\OrderXml.cs" />
     <Compile Include="Events.cs" />
+    <Compile Include="FaunaRumors.cs" />
     <Compile Include="EventsReaders.cs" />
     <Compile Include="data structures\Faction.cs" />
     <Compile Include="data structures\FactionAttitude.cs" />

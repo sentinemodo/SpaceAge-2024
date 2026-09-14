@@ -72,6 +72,11 @@ namespace SpaceAge
 			get { return this.anomaly != null && !string.IsNullOrEmpty(this.anomaly.Type); }
 		}
 
+		public bool HasSettlement
+		{
+			get { return this.ModuleStacks.Quantity(EModuleTypesGroup.settlement) > 0; }
+		}
+
         public override ELocationType LocationType
         {
             get { return this.RegionType.LocationType; }

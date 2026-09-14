@@ -5,7 +5,7 @@ Content-Disposition: attachment
 SpaceAge report for Caste Prime [2].
 Turn 1, Year 2020, January 1.
 
-SpaceAge Engine Version: 0.1.159.
+SpaceAge Engine Version: 0.1.165.
 
 Events during turn:
   none.
@@ -28,7 +28,8 @@ Galaxy report:
 
   Northern Hemisphere [R00002] (0,0), grassland region, settlement capacity 8/3.
   Exits:
-    Southern Hemisphere [R00003] (1,0), grassland region, ground travel duration 3 weeks.
+    Southern Hemisphere [R00003] (1,0), grassland region, ground travel duration 3 weeks, settlement
+    detected.
   Resources: 20 units of iron [iron], 20 units of carbon [carbon], 20 units of titanium [titani], 20
   units of uranium [uraniu], 20 units of copper [copper], 20 units of silicium [silici], 250 units
   of oxyhydro [h2o2], 500 units of food [food].

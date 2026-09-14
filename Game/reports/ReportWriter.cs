@@ -54,6 +54,8 @@ namespace SpaceAge
 						throw new ArgumentNullException();
 					}
 
+					FaunaRumors.IssueAll();
+
 					DirectoryInfo directoryInfo = new DirectoryInfo(turnDir);
 
 					foreach (Faction faction in this.game.Factions.Values)
