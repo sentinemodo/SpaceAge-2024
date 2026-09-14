@@ -7355,12 +7355,12 @@ Galaxy report:
         week 13: paid 2 cash [cash] upkeep.
     + small cargo bay [c00011], small cargo bay [cargob], disabled,
       immobile.
-      size: 2000, mass: 1356 (200), capacity: 1800/958, upkeep: 2 (0)
+      size: 2000, mass: 1333 (200), capacity: 1800/935, upkeep: 2 (0)
       cash [cash], consume: 2 (0) units of food [food], 2 (0) units of
       terran breathing gas mixture [terair].
       hit points: 55/15, capture: 15.
         #1 hit points: 55/15, capture: 15, heavily damaged, deactivated.
-      items: 134 units of food [food] (size: 134, mass: 134), 170 units
+      items: 111 units of food [food] (size: 111, mass: 111), 170 units
       of terran breathing gas mixture [terair] (size: 170, mass: 170),
       180 units of oxyhydro [h2o2] (size: 180, mass: 180), 14 units of
       iron [iron] (size: 70, mass: 140), 14 units of titanium [titani]
@@ -7492,22 +7492,22 @@ Galaxy report:
       week 13: paid 16 cash [cash] upkeep.
   + Surrender or die! [109], 3 tanks [tanks], partially disabled,
     immobile.
-    size: 720, mass: 898 (720), capacity: 600/172, crew: 48/37, upkeep:
-    118 (72) cash [cash], consume: 85 (48) units of food [food], 85 (48)
-    units of terran breathing gas mixture [terair], 3 (0) medicines
+    size: 720, mass: 914 (720), capacity: 600/188, crew: 48/41, upkeep:
+    122 (72) cash [cash], consume: 89 (48) units of food [food], 89 (48)
+    units of terran breathing gas mixture [terair], 2 (0) medicines
     [medici].
-    hit points: 300/224.
+    hit points: 300/223.
       #1 hit points: 100/62, lightly damaged.
       #2 hit points: 100/62, lightly damaged.
-      #3 hit points: 100/100, inactive.
+      #3 hit points: 100/99, inactive.
     movement speed: 0.5 on ground.
     fuel requirements: 12 units of oil [oil] per 13 weeks.
-    items: 33 terrans [terran] (size: 132, mass: 132, upkeep: 33 cash
-    [cash], consume: 33 units of food [food], 33 units of terran
+    items: 38 terrans [terran] (size: 152, mass: 152, upkeep: 38 cash
+    [cash], consume: 38 units of food [food], 38 units of terran
     breathing gas mixture [terair]), 6 units of oil [oil] (size: 24,
-    mass: 30), 3 wounded terrans [wndtrn] (size: 12, mass: 12, upkeep: 3
-    cash [cash], consume: 3 units of food [food], 3 units of terran
-    breathing gas mixture [terair], 3 medicines [medici]).
+    mass: 30), 2 wounded terrans [wndtrn] (size: 8, mass: 8, upkeep: 2
+    cash [cash], consume: 2 units of food [food], 2 units of terran
+    breathing gas mixture [terair], 2 medicines [medici]).
     effects:
       can operate for another 4 weeks without refueling.
     events:
@@ -7551,10 +7551,11 @@ Galaxy report:
       [111]
       week 13: engaged in battle
       week 13: paid 130 cash [cash] upkeep.
-      week 13: Lack of supplies: 58 unit of food [food].
-      week 13: 24 terrans [terran] wounded from lack of supplies.
-      week 13: 12 wounded terrans [wndtrn] died of their wounds.
-      week 13: 9 wounded terrans [wndtrn] recovered from their wounds.
+      week 13: Lack of supplies: 35 unit of food [food].
+      week 13: 17 terrans [terran] wounded from lack of supplies.
+      week 13: Damaged from lack of supplies.
+      week 13: 8 wounded terrans [wndtrn] died of their wounds.
+      week 13: 7 wounded terrans [wndtrn] recovered from their wounds.
     + Gelvaren CEO [000002], terran [terran].
       size: 4, mass: 4, capacity: 3/0, upkeep: 10 cash [cash], consume:
       unit of food [food], unit of terran breathing gas mixture
@@ -7564,8 +7565,6 @@ Galaxy report:
     size: 500, mass: 504 (500), capacity: 300/4, upkeep: 15 (5) cash
     [cash], consume: 101 (100) units of food [food], 101 (100) units of
     terran breathing gas mixture [terair].
-    hit points: 50/49.
-      #1 hit points: 50/49.
     movement speed: 0.1 on ground.
     events:
       week 1: engaged in battle
@@ -7583,7 +7582,6 @@ Galaxy report:
       week 13: engaged in battle
       week 13: paid 15 cash [cash] upkeep.
       week 13: Lack of supplies: 101 unit of food [food].
-      week 13: Damaged from lack of supplies.
     + terran officer [107], terran [terran].
       size: 4, mass: 4, capacity: 3/0, upkeep: 10 cash [cash], consume:
       unit of food [food], unit of terran breathing gas mixture
@@ -7982,7 +7980,7 @@ sell 100 food
 #modulestack 109
 ; + Surrender or die! [109], 3 tanks [tanks], partially disabled,
 ;   immobile.
-; items: 33 terrans [terran], 6 units of oil [oil], 3 wounded terrans
+; items: 38 terrans [terran], 6 units of oil [oil], 2 wounded terrans
 ; [wndtrn].
 ; effects:
 ;   can operate for another 4 weeks without refueling.
@@ -8076,7 +8074,7 @@ sell 100 food
 #modulestack c00011
 ; + small cargo bay [c00011], small cargo bay [cargob], disabled,
 ;   immobile.
-; items: 134 units of food [food], 170 units of terran breathing gas
+; items: 111 units of food [food], 170 units of terran breathing gas
 ; mixture [terair], 180 units of oxyhydro [h2o2], 14 units of iron [iron],
 ; 14 units of titanium [titani], 16 units of silicium [silici], 16 units
 ; of copper [copper], 16 units of uranium [uraniu], 2 terrans [terran], 16

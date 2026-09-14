@@ -212,6 +212,8 @@ Order stacks on the **same subject**: HQ `@produce cash`, cargo bay `@get` / `@s
 
 **Subject:** a **mobile `#modulestack`** only (shuttle, infantry stack, ship hull, etc.). Immobile stacks (`corphq`, `cargob`, …) cannot move.
 
+**Space fuel on MOVE:** pre-flight fuel applies to the mover and nested **propulsion** modules only (e.g. reaction drive). Nested passengers such as hangar-launched drones do not block the parent hull's MOVE.
+
 **People travel with vehicles, not alone.** A `#person` cannot take `MOVE` — `MoveOrder` casts the subject to `ModuleStack` and throws `InvalidCastException`. Board the CEO on a vehicle first:
 
 ```

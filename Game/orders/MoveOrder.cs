@@ -237,6 +237,36 @@ namespace SpaceAge
             return spaceMoveables;
         }
 
+        private List<IMoveable> spaceMoveablesForFuel()
+        {
+            List<IMoveable> fuelMoveables = new List<IMoveable>();
+            if (this.Mover.MoveModes.ContainsKey(EMoveMode.space) && this.Mover.Fuel.Count > 0)
+            {
+                fuelMoveables.Add(this.Mover);
+            }
+            this.collectSpacePropulsionMoveables(this.Mover, fuelMoveables);
+            return fuelMoveables;
+        }
+
+        private void collectSpacePropulsionMoveables(IMoveable moveable, List<IMoveable> fuelMoveables)
+        {
+            if (!moveable.HasModuleStacks())
+            {
+                return;
+            }
+
+            foreach (ModuleStack nested in moveable.ModuleStacks.Values)
+            {
+                if (nested.MoveModes.ContainsKey(EMoveMode.space)
+                    && nested.ModuleType.Group == EModuleTypesGroup.propulsion
+                    && nested.Fuel.Count > 0)
+                {
+                    fuelMoveables.Add(nested);
+                }
+                this.collectSpacePropulsionMoveables(nested, fuelMoveables);
+            }
+        }
+
 
 		private bool isWay(int week)
 		{
@@ -544,15 +574,16 @@ namespace SpaceAge
             }
             else if (this.moveMode == EMoveMode.space)
             {
+                List<IMoveable> spaceMoveables = this.spaceMoveablesForFuel();
                 bool needFuelforSpace = false;
-                foreach (IMoveable moveable in moveModes[EMoveMode.space])
+                foreach (IMoveable moveable in spaceMoveables)
                 {
                     if (moveable.Fuel.Count > 0)
                         needFuelforSpace = true;
                 }
                 if (!needFuelforSpace)
                     return false;
-                return this.consumeFuel(week, moveModes[EMoveMode.space]);
+                return this.consumeFuel(week, spaceMoveables);
             }
             return false;
 		}
