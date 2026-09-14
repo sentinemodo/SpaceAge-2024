@@ -64,6 +64,18 @@ POST /api/auth/login
 
 Use returned `token` as `Authorization: Bearer <token>`.
 
+## Player session API
+
+| Method | Path | Purpose |
+|--------|------|---------|
+| GET | `/api/session/report.xml` | Faction-scoped XML (map/units/orders) |
+| GET | `/api/session/report.txt` | Full text report |
+| GET | `/api/session/report-sections` | Text report split into engine sections (JSON) |
+| POST | `/api/session/parse-orders` | Parse order text via Game.exe (`{ ok, errors, warnings }`) |
+| POST | `/api/session/battle-sim` | Run battle sim (`{ xml, seed? }` → `{ output, result }`) |
+| POST | `/api/session/check-orders` | Lightweight syntax warnings (legacy) |
+| PUT | `/api/session/orders` | Submit orders for current turn |
+
 ## Tests
 
 ```powershell

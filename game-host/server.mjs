@@ -14,6 +14,9 @@ import { login, logout, loadFactionCredentials, requireGm, requireSession, sessi
 import { bootstrapFromCampaign, promoteGameout, runReports, runTurn } from './lib/game-exe.mjs';
 import { buildStatusJson } from './lib/status.mjs';
 import { validateOrderText } from './lib/check-orders.mjs';
+import { parseOrders } from './lib/parse-orders.mjs';
+import { runBattleSimulation } from './lib/battle-sim.mjs';
+import { splitReportSections } from './lib/report-sections.mjs';
 import { saveOrder } from './lib/orders-io.mjs';
 import { isolateReports } from './lib/isolate.mjs';
 
@@ -151,6 +154,20 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
+  if (req.method === 'GET' && url.pathname === '/api/session/report-sections') {
+    const session = requireSession(req, res);
+    if (!session) return;
+    const { txtPath, isoTxt } = latestReportPaths(session.factionId);
+    const pick = fs.existsSync(isoTxt) ? isoTxt : txtPath;
+    if (!fs.existsSync(pick)) {
+      json(res, 404, { error: 'report not found' });
+      return;
+    }
+    const text = fs.readFileSync(pick, 'utf8');
+    json(res, 200, { sections: splitReportSections(text) });
+    return;
+  }
+
   if (req.method === 'PUT' && url.pathname === '/api/session/orders') {
     const session = requireSession(req, res);
     if (!session) return;
@@ -167,6 +184,33 @@ const server = http.createServer(async (req, res) => {
     const creds = loadFactionCredentials().get(session.factionId);
     const warnings = validateOrderText(body.text || '', session.factionId, creds?.password || '');
     json(res, 200, { warnings });
+    return;
+  }
+
+  if (req.method === 'POST' && url.pathname === '/api/session/parse-orders') {
+    const session = requireSession(req, res);
+    if (!session) return;
+    const body = JSON.parse(await readBody(req));
+    const creds = loadFactionCredentials().get(session.factionId);
+    const result = await parseOrders(body.text || '', session.factionId, creds?.password || '');
+    json(res, 200, result);
+    return;
+  }
+
+  if (req.method === 'POST' && url.pathname === '/api/session/battle-sim') {
+    const session = requireSession(req, res);
+    if (!session) return;
+    const body = JSON.parse(await readBody(req));
+    if (!body.xml) {
+      json(res, 400, { error: 'missing xml' });
+      return;
+    }
+    try {
+      const result = await runBattleSimulation(body.xml, body.seed);
+      json(res, 200, result);
+    } catch (err) {
+      json(res, 500, { error: String(err.message || err) });
+    }
     return;
   }
 

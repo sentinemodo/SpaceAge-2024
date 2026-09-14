@@ -203,6 +203,14 @@ body {
   font-size: 0.85rem;
 }
 
+.report-section {
+  white-space: pre-wrap;
+  font-family: 'Consolas', monospace;
+  font-size: 0.75rem;
+  line-height: 1.35;
+  margin: 0;
+}
+
 .route-line {
   position: absolute;
   height: 2px;

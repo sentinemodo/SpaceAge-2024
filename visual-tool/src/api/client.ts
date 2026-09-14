@@ -45,6 +45,33 @@ export async function fetchReportXml(): Promise<string> {
   return api('/api/session/report.xml');
 }
 
+export interface ReportSection {
+  id: string;
+  title: string;
+  text: string;
+}
+
+export async function fetchReportSections(): Promise<ReportSection[]> {
+  const data = await api('/api/session/report-sections');
+  return data.sections || [];
+}
+
+export interface ParseOrdersResult {
+  ok: boolean;
+  errors: string[];
+  warnings: string[];
+  engineUnavailable?: boolean;
+}
+
+export async function parseOrders(text: string): Promise<ParseOrdersResult> {
+  return api('/api/session/parse-orders', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ text }),
+  });
+}
+
+/** @deprecated prefer parseOrders for engine-backed validation */
 export async function checkOrders(text: string): Promise<string[]> {
   const data = await api('/api/session/check-orders', {
     method: 'POST',
@@ -52,6 +79,19 @@ export async function checkOrders(text: string): Promise<string[]> {
     body: JSON.stringify({ text }),
   });
   return data.warnings || [];
+}
+
+export interface BattleSimResult {
+  output: string;
+  result: string | null;
+}
+
+export async function runBattleSim(xml: string, seed?: number): Promise<BattleSimResult> {
+  return api('/api/session/battle-sim', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ xml, seed }),
+  });
 }
 
 export async function submitOrders(text: string) {

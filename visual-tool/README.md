@@ -27,12 +27,14 @@ npm start
 
 ## Features
 
-- XML report ingest from game-host API
-- Star map with system filter (click / shift-click)
+- Authenticated session (faction password from report `#faction` header)
+- **XML** report ingest from `GET /api/session/report.xml` (map, units, orders)
+- **Text report sections** from `GET /api/session/report-sections` (engine-formatted; client does not reformat)
+- Star map with system filter (click / shift-click) and region drill-down
 - Unit tree, order editor, AI prompt toggle
-- Engine-backed order warnings via `/api/session/check-orders`
-- Technology, diplomacy, contracts, bank, battle, faction panels
-- MOVE ETA estimate on selected unit
+- Engine-backed order parse via `POST /api/session/parse-orders`
+- Battle simulator via `POST /api/session/battle-sim` (Game.exe `/battle-sim`)
+- MOVE route from XML orders + ETA estimate on selected unit
 
 ## Tests
 

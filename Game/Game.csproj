@@ -272,6 +272,7 @@
     <Compile Include="orders\Order.cs" />
     <Compile Include="orders\Orders.cs" />
     <Compile Include="orders\OrdersReader.cs" />
+    <Compile Include="orders\OrderParseRunner.cs" />
     <Compile Include="data structures\Planet.cs" />
     <Compile Include="data structures\Point2D.cs" />
     <Compile Include="data structures\Point3D.cs" />

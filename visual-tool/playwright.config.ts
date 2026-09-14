@@ -6,9 +6,12 @@ export default defineConfig({
     baseURL: 'http://localhost:8787',
   },
   webServer: {
-    command: 'npm run preview -- --port 8787 --host',
-    cwd: '.',
+    command: 'npm start',
+    cwd: '../game-host',
     port: 8787,
     reuseExistingServer: true,
+    env: {
+      GAME_EXE: '../Game/bin/Debug/Game.exe',
+    },
   },
 });

@@ -19,6 +19,7 @@ namespace SpaceAge
 			string game_dir = Directory.GetCurrentDirectory();
 			string turn_dir = Directory.GetCurrentDirectory();
 			string order_to_check = null;
+			string order_to_parse = null;
 			bool noTurn = false;
 			bool reportsOnly = false;
 			string battleSimFile = null;
@@ -53,6 +54,10 @@ namespace SpaceAge
 					{
 						order_to_check = args[++i];
 					}
+					else if (args[i] == "/parse-orders" && i < args.Length - 1)
+					{
+						order_to_parse = args[++i];
+					}
 					else if (args[i] == "/seed")
 					{
 						battleSimSeed = Convert.ToInt32(args[++i]);
@@ -70,6 +75,16 @@ namespace SpaceAge
 				}
 				File.WriteAllText(battleSimOutput, output, Encoding.GetEncoding(1251));
 				Console.Write(output);
+				return;
+			}
+
+			if (order_to_parse != null)
+			{
+				DataFile parseDataFile = new DataFile(game_dir);
+				parseDataFile.LoadConfiguration();
+				parseDataFile.LoadGame();
+				OrderParseResult parseResult = OrderParseRunner.ParseFile(parseDataFile.Game, order_to_parse);
+				Console.Write(parseResult.ToJson());
 				return;
 			}
 

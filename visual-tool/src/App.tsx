@@ -3,16 +3,20 @@ import {
   login,
   fetchMeta,
   fetchReportXml,
-  checkOrders,
+  fetchReportSections,
+  parseOrders,
+  runBattleSim,
   submitOrders,
   getToken,
   setToken,
+  type ReportSection,
 } from './api/client';
 import {
   parseReportXml,
   flattenStacks,
   filterStacksBySystem,
   estimateMoveWeeks,
+  findOrderForStack,
   type ParsedReport,
   type StackNode,
 } from './parsers/reportXml';
@@ -94,16 +98,25 @@ export default function App() {
   const [orderText, setOrderText] = useState('');
   const [orderMode, setOrderMode] = useState<OrderMode>('order');
   const [warnings, setWarnings] = useState<string[]>([]);
+  const [parseErrors, setParseErrors] = useState<string[]>([]);
+  const [sections, setSections] = useState<ReportSection[]>([]);
+  const [battleSimXml, setBattleSimXml] = useState('');
+  const [battleSimOutput, setBattleSimOutput] = useState('');
   const [sideTab, setSideTab] = useState<'units' | 'orders'>('units');
 
   const load = useCallback(async () => {
     const m = await fetchMeta();
     setMeta(m);
     try {
-      const xml = await fetchReportXml();
+      const [xml, reportSections] = await Promise.all([
+        fetchReportXml(),
+        fetchReportSections(),
+      ]);
       setReport(parseReportXml(xml));
+      setSections(reportSections);
     } catch {
       setReport(null);
+      setSections([]);
     }
   }, []);
 
@@ -127,6 +140,13 @@ export default function App() {
 
   const selected = flatStacks.find((s) => s.id === selectedStack);
   const moveWeeks = selected ? estimateMoveWeeks(selected.mass) : null;
+  const selectedMove = selected && report
+    ? findOrderForStack(report.orders, selected.id)
+    : undefined;
+
+  function sectionText(id: string, fallback = 'No section in report.') {
+    return sections.find((s) => s.id === id)?.text || fallback;
+  }
 
   function handleSystemClick(id: string, shift: boolean) {
     if (shift) {
@@ -139,14 +159,20 @@ export default function App() {
   }
 
   async function handleCheck() {
-    const w = await checkOrders(orderText);
-    setWarnings(w);
+    const result = await parseOrders(orderText);
+    setParseErrors(result.errors);
+    setWarnings(result.warnings);
   }
 
   async function handleSubmit() {
     await handleCheck();
     await submitOrders(orderText);
     alert('Orders submitted to game host');
+  }
+
+  async function handleBattleSim() {
+    const result = await runBattleSim(battleSimXml);
+    setBattleSimOutput(result.output);
   }
 
   if (!authed) {
@@ -165,7 +191,7 @@ export default function App() {
       <nav className="icon-rail" aria-label="Panels">
         {(
           [
-            ['map', '🗺'],
+            ['map', '✦'],
             ['tech', '⚗'],
             ['diplomacy', '🤝'],
             ['contracts', '📜'],
@@ -178,7 +204,8 @@ export default function App() {
             key={id}
             type="button"
             className={panel === id ? 'active' : ''}
-            title={id}
+            title={id === 'map' ? 'Star map' : id}
+            aria-label={id === 'map' ? 'Star map' : id}
             onClick={() => setPanel(id)}
           >
             {icon}
@@ -208,9 +235,21 @@ export default function App() {
                 MOVE ETA ~{moveWeeks} weeks (estimate)
               </div>
             )}
-            {regionView && (
-              <div style={{ position: 'absolute', top: 8, right: 8, background: 'var(--bg-card)', padding: '0.5rem', borderRadius: 4 }}>
-                Region view: {regionView}
+            {regionView && report && (
+              <div style={{ position: 'absolute', top: 8, right: 8, background: 'var(--bg-card)', padding: '0.5rem', borderRadius: 4, maxWidth: '40%', fontSize: '0.75rem' }}>
+                <strong>Regions in {regionView}</strong>
+                <ul style={{ margin: '0.25rem 0 0', paddingLeft: '1rem' }}>
+                  {report.regions
+                    .filter((r) => r.systemId === regionView)
+                    .map((r) => (
+                      <li key={r.id}>{r.name} [{r.id}]</li>
+                    ))}
+                </ul>
+              </div>
+            )}
+            {selectedMove && selectedMove.moveDestinations.length > 0 && (
+              <div style={{ position: 'absolute', bottom: 8, right: 8, fontSize: '0.75rem', color: 'var(--accent)' }}>
+                MOVE route: {selectedMove.moveDestinations.join(' → ')}
               </div>
             )}
           </div>
@@ -219,49 +258,55 @@ export default function App() {
         {panel === 'tech' && (
           <div className="sub-panel scroll-area">
             <h3>Technologies</h3>
-            <ul>{report?.technologies.map((t) => <li key={t}>{t}</li>) ?? <li>Load report…</li>}</ul>
+            <pre className="report-section">{sectionText('technology', 'No technology reports this quarter.')}</pre>
           </div>
         )}
 
         {panel === 'diplomacy' && (
           <div className="sub-panel scroll-area">
             <h3>Diplomacy</h3>
-            {report?.diplomacy.length ? report.diplomacy.map((d, i) => <p key={i}>{d}</p>) : <p>No diplomacy entries in report.</p>}
+            <pre className="report-section">{sectionText('faction', 'No faction report section.')}</pre>
           </div>
         )}
 
         {panel === 'contracts' && (
           <div className="sub-panel scroll-area">
             <h3>Contracts</h3>
-            {report?.faction.contracts.map((c, i) => (
-              <p key={i} role="button" onClick={() => setFilterSystems([c.slice(0, 6)])}>{c}</p>
-            )) ?? null}
+            <pre className="report-section">{sectionText('faction', 'No contracts in report.')}</pre>
           </div>
         )}
 
         {panel === 'bank' && (
           <div className="sub-panel scroll-area">
             <h3>Bank</h3>
-            {report?.bank.map((b, i) => <p key={i}>{b}</p>)}
+            <pre className="report-section">{sectionText('faction', 'No bank report section.')}</pre>
           </div>
         )}
 
         {panel === 'battle' && (
           <div className="sub-panel scroll-area">
             <h3>Battle summaries</h3>
-            {report?.battles.length
-              ? report.battles.map((b) => <pre key={b.id} style={{ whiteSpace: 'pre-wrap' }}>{b.text}</pre>)
-              : <p>No battles this quarter.</p>}
+            <pre className="report-section">{sectionText('battles', 'No battles this quarter.')}</pre>
+            <h4>Battle simulator</h4>
+            <textarea
+              value={battleSimXml}
+              onChange={(e) => setBattleSimXml(e.target.value)}
+              placeholder={'Paste <battle-sim> XML…'}
+              style={{ width: '100%', minHeight: 120, fontFamily: 'Consolas, monospace', fontSize: '0.75rem' }}
+            />
+            <button type="button" onClick={handleBattleSim}>Run simulation</button>
+            {battleSimOutput && (
+              <pre className="report-section" style={{ marginTop: '0.75rem' }}>{battleSimOutput}</pre>
+            )}
           </div>
         )}
 
         {panel === 'faction' && (
           <div className="sub-panel scroll-area">
             <h3>Faction summary</h3>
-            <p>Upkeep: {report?.faction.upkeep || '—'}</p>
-            <p>Research output: {report?.faction.research || '—'}</p>
-            <h4>Press</h4>
-            {report?.faction.press.map((p, i) => <p key={i}>{p}</p>)}
+            <pre className="report-section">{sectionText('faction', 'No faction summary in report.')}</pre>
+            <h4>Galaxy excerpt</h4>
+            <pre className="report-section">{sectionText('galaxy', 'No galaxy report section.')}</pre>
           </div>
         )}
 
@@ -276,8 +321,9 @@ export default function App() {
               onChange={(e) => setOrderText(e.target.value)}
               placeholder={orderMode === 'order' ? '#faction N "password"\nMOVE …' : 'Describe strategic intent for AI…'}
             />
+            {parseErrors.map((e) => <div key={e} className="warnings">{e}</div>)}
             {warnings.map((w) => <div key={w} className="warnings">{w}</div>)}
-            <button type="button" onClick={handleCheck}>Check warnings</button>
+            <button type="button" onClick={handleCheck}>Parse orders</button>
             <button type="button" onClick={handleSubmit}>Submit orders</button>
           </div>
         )}
