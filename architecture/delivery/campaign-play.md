@@ -49,6 +49,8 @@ The introduction **must** credit: original ideas from **Atlantis** and **Rise of
 The lobby **must** expose:
 
 - A link (or placeholder) to the **visual tool** — a separate product (`visual tool prompt.txt`). Implementing that tool is **out of scope** for this website todo.
+
+**Visual tool dependency (engine):** Faction report XML today lists region exits by target id only; adjacent cells the player has not entered are omitted from the galaxy slice, so the visual tool cannot place them on the regional map. Required fix: nested `<target>` under `<exit>` with at least `X`, `Y`, `type`, and `name-en` for same-body neighbours, plus intel-gated settlement/resources/deep-pocket/anomaly stubs per [`designer/visual-tool-exit-xml.md`](../../designer/visual-tool-exit-xml.md). Tracked on [`designer/engine-wishlist.md`](../../designer/engine-wishlist.md); report-only (not gamein save).
 - **Orders submission status** for the current turn: who has filed `order.{id}.txt`. Public-enough for a closed group: faction-facing name + submitted yes/no + optional timestamp. **Never** passwords, **never** `gamein.xml`, **never** other factions’ reports or report contents.
 
 **Ownership:** designer owns flavour accuracy and faction-facing names; architect owns the stack ([architecture/delivery/website.md](website.md)); TDD does **not** implement the site; play scripts may later emit a status JSON.
@@ -99,7 +101,7 @@ Designer-owned Python generator [campaign/_gen_gamein.py](../../campaign/_gen_ga
 - Helios + Fomal full Arbor/Anvil grids, UN + militia + HQ stacks. Gates emit `pair=` for `JUMP`. Planetary regions do not exit to Gates. **Do not** emit a 1-week corona-to-corona MOVE. Do **not** bake 8/13/26 week space durations once AU×drive is green (formula owns ETA).
 - System `X Y Z` on every `<system>` (Helios 0,0,0; Fomal 1,0,0; empty `X` 4+).
 - Body attrs on planets/moons per [designer/environments.md](../../designer/environments.md) (`gravity` `temperature` `atmosphere`).
-- Same-system pockets as landing stubs; empty systems SS0003–SS0010 condensed with **one Gate each** (paired to a Helios or Fomal outbound Gate); **no** unknown contract triggers (only live `give-module` / `research` from [designer/contracts.md](../../designer/contracts.md)).
+- Same-system pockets as landing stubs; empty systems SS0003–SS0010 use **Ember/Gleam hub Gates** (Helios → Ember, Fomal → Gleam; leaf systems one Gate back to their hub; unstable Ember↔Gleam cross-link hidden until survey tech); **no** unknown contract triggers (only live `give-module` / `research` from [designer/contracts.md](../../designer/contracts.md)).
 - Commit both the generator and `campaign/gamein.1.xml`.
 
 Load test (unit or a small `IntegrationTests.Campaign` fixture, **not** SampleGame goldens): load campaign catalog + `gamein.1.xml`, assert 10 systems, Gates `P00009`/`P00010`, Rootfast `120001` on `R00014`, Crusthold `130001` on `R00060`, 10 player `corphq` stacks. Round-trip save is optional and must not become a SampleGame-style golden unless `/player` + human approve.
@@ -237,10 +239,10 @@ Live `f` in [designer/au-transit.md](../../designer/au-transit.md): moon-scale `
 
 ### System XYZ load
 
-[Galaxy.LoadXml](../../Game/data%20structures/Galaxy.cs) assigns `system.Coordinates.X/Y/Z`. Save and [SpaceSystem.ReportName](../../Game/data%20structures/SpaceSystem.cs) emit them. `campaign/gamein.1.xml` already writes Helios `(0,0,0)`, Fomal `(1,0,0)`, empty `X>=4`.
+[Galaxy.LoadXml](../../Game/data%20structures/Galaxy.cs) assigns `system.Coordinates.X/Y/Z`. Save and [SpaceSystem.ReportName](../../Game/data%20structures/SpaceSystem.cs) emit them. `campaign/gamein.1.xml` writes Helios `(5,5,0)`, Fomal `(6,5,0)`, Helios-linked empty systems `X` 1–4 west, Fomal-linked `X` 7–10 east, with empty systems spread on `Y` (centre pair stays `Y=5`, `Z=0`). See [galaxy.md](../../designer/galaxy.md) **Map coordinates**.
 
 - Uncomment assign on `<system>` (star XYZ optional, not required).
-- Round-trip: load Helios `(0,0,0)`, Fomal `(1,0,0)`, empty `X>=4`; save keeps values.
+- Round-trip: load Helios `(5,5,0)`, Fomal `(6,5,0)`, empty west/east chain; save keeps values.
 - No FTL from XYZ this slice. Reports show coordinates so AIs can see the map layout.
 
 ## 7. Out of scope for this implementation

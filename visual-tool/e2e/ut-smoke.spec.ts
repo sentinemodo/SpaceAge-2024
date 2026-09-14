@@ -43,15 +43,19 @@ test('UT-003 star map filters unit tree', async ({ page }) => {
   await page.getByRole('button', { name: /Refresh report/i }).click();
   const firstSystem = page.locator('.star-map .system-node').first();
   await expect(firstSystem).toBeVisible({ timeout: 15000 });
-  const systemName = (await firstSystem.textContent())?.trim() || '';
   await firstSystem.click();
   await expect(firstSystem).toHaveClass(/selected/);
   await expect(page.locator('.unit-tree .unit-row').first()).toBeVisible();
-  if (systemName) {
-    await expect(page.locator('.unit-tree')).toContainText(systemName, { timeout: 5000 }).catch(() => {
-      /* location names may differ from system label */
-    });
-  }
+});
+
+test('UT-003 system view opens on double-click', async ({ page }) => {
+  await login(page);
+  await page.getByRole('button', { name: /Refresh report/i }).click();
+  const firstSystem = page.locator('.star-map .system-node').first();
+  await expect(firstSystem).toBeVisible({ timeout: 15000 });
+  await firstSystem.dblclick();
+  await expect(page.getByRole('button', { name: /Galaxy map/i })).toBeVisible();
+  await expect(page.locator('.system-view-map')).toBeVisible();
 });
 
 test('UT-003 MOVE route preview when unit has XML move order', async ({ page }) => {

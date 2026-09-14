@@ -18,15 +18,40 @@ export function loadFactionCredentials() {
   return creds;
 }
 
-export function login(factionId, password) {
+export function login(factionId, password, gmKey) {
   const creds = loadFactionCredentials();
   const row = creds.get(factionId);
-  if (!row || row.password !== password) {
+  const expectedGm = process.env.GAME_HOST_GM_KEY || 'dev-gm-key';
+  const admin = typeof gmKey === 'string' && gmKey.trim() === expectedGm;
+  if (!row || (!admin && row.password !== password)) {
     return null;
   }
   const token = crypto.randomBytes(24).toString('hex');
-  sessions.set(token, { factionId, name: row.name, created: Date.now() });
+  sessions.set(token, {
+    factionId,
+    name: row.name,
+    admin,
+    viewAsFactionId: factionId,
+    created: Date.now(),
+  });
   return token;
+}
+
+export function listFactions() {
+  return [...loadFactionCredentials().values()].map((f) => ({
+    id: f.id,
+    name: f.name,
+  }));
+}
+
+export function effectiveFactionId(session) {
+  return session.viewAsFactionId ?? session.factionId;
+}
+
+export function factionDisplayName(session) {
+  const id = effectiveFactionId(session);
+  const row = loadFactionCredentials().get(id);
+  return row?.name || session.name;
 }
 
 export function logout(token) {

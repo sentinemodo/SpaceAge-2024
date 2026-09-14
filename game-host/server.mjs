@@ -10,7 +10,17 @@ import {
   repoRoot,
   runId,
 } from './lib/paths.mjs';
-import { login, logout, loadFactionCredentials, requireGm, requireSession, sessionFromRequest } from './lib/auth.mjs';
+import {
+  login,
+  logout,
+  loadFactionCredentials,
+  listFactions,
+  effectiveFactionId,
+  factionDisplayName,
+  requireGm,
+  requireSession,
+  sessionFromRequest,
+} from './lib/auth.mjs';
 import { bootstrapFromCampaign, promoteGameout, runReports, runTurn } from './lib/game-exe.mjs';
 import { buildStatusJson } from './lib/status.mjs';
 import { validateOrderText } from './lib/check-orders.mjs';
@@ -88,21 +98,29 @@ const server = http.createServer(async (req, res) => {
   }
 
   if (req.method === 'GET' && url.pathname === '/health') {
-    json(res, 200, { ok: true, runId: runId() });
+    json(res, 200, {
+      ok: true,
+      runId: runId(),
+      features: { adminBrowse: true, viewAsFaction: true },
+    });
     return;
   }
 
   if (req.method === 'POST' && url.pathname === '/api/auth/login') {
     const body = JSON.parse(await readBody(req));
-    const token = login(parseInt(body.factionId, 10), body.password || '');
+    const gmKey = req.headers['x-gm-key'] || body.gmKey || '';
+    const token = login(parseInt(body.factionId, 10), body.password || '', gmKey);
     if (!token) {
       json(res, 401, { error: 'invalid credentials' });
       return;
     }
+    const session = sessionFromRequest({ headers: { authorization: `Bearer ${token}` } });
     json(res, 200, {
       token,
-      factionId: body.factionId,
-      name: loadFactionCredentials().get(parseInt(body.factionId, 10))?.name,
+      factionId: session.factionId,
+      viewAsFactionId: session.viewAsFactionId,
+      name: session.name,
+      admin: !!session.admin,
     });
     return;
   }
@@ -119,17 +137,39 @@ const server = http.createServer(async (req, res) => {
     if (!session) return;
     json(res, 200, {
       factionId: session.factionId,
-      name: session.name,
+      viewAsFactionId: effectiveFactionId(session),
+      name: factionDisplayName(session),
+      admin: !!session.admin,
+      factions: session.admin ? listFactions() : undefined,
       turn: fs.existsSync(gameinPath()) ? readTurnFromGamein() : 0,
       engineVersion: '0.1.159',
     });
     return;
   }
 
+  if (req.method === 'POST' && url.pathname === '/api/session/view-as') {
+    const session = requireSession(req, res);
+    if (!session) return;
+    if (!session.admin) {
+      json(res, 403, { error: 'admin only' });
+      return;
+    }
+    const body = JSON.parse(await readBody(req));
+    const viewAs = parseInt(body.factionId, 10);
+    const row = loadFactionCredentials().get(viewAs);
+    if (!row) {
+      json(res, 400, { error: 'unknown faction' });
+      return;
+    }
+    session.viewAsFactionId = viewAs;
+    json(res, 200, { viewAsFactionId: viewAs, name: row.name });
+    return;
+  }
+
   if (req.method === 'GET' && url.pathname === '/api/session/report.xml') {
     const session = requireSession(req, res);
     if (!session) return;
-    const { xmlPath, isoTxt, txtPath } = latestReportPaths(session.factionId);
+    const { xmlPath, isoTxt, txtPath } = latestReportPaths(effectiveFactionId(session));
     const pick = fs.existsSync(xmlPath) ? xmlPath : null;
     if (!pick) {
       json(res, 404, { error: 'report xml not found; GM may need to run /reports' });
@@ -140,11 +180,24 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
+  if (req.method === 'GET' && url.pathname === '/api/static/basic-technologies') {
+    const session = requireSession(req, res);
+    if (!session) return;
+    const mdPath = path.join(repoRoot(), 'player', 'basic_technologies.md');
+    if (!fs.existsSync(mdPath)) {
+      json(res, 404, { error: 'basic_technologies.md not found' });
+      return;
+    }
+    res.writeHead(200, { 'Content-Type': 'text/plain; charset=utf-8' });
+    fs.createReadStream(mdPath).pipe(res);
+    return;
+  }
+
   if (req.method === 'GET' && url.pathname === '/api/session/report.txt') {
     const session = requireSession(req, res);
     if (!session) return;
-    const { txtPath, isoTxt } = latestReportPaths(session.factionId);
-    const pick = fs.existsSync(isoTxt) ? isoTxt : txtPath;
+    const { txtPath, isoTxt } = latestReportPaths(effectiveFactionId(session));
+    const pick = fs.existsSync(txtPath) ? txtPath : isoTxt;
     if (!fs.existsSync(pick)) {
       json(res, 404, { error: 'report not found' });
       return;
@@ -157,8 +210,9 @@ const server = http.createServer(async (req, res) => {
   if (req.method === 'GET' && url.pathname === '/api/session/report-sections') {
     const session = requireSession(req, res);
     if (!session) return;
-    const { txtPath, isoTxt } = latestReportPaths(session.factionId);
-    const pick = fs.existsSync(isoTxt) ? isoTxt : txtPath;
+    const factionId = effectiveFactionId(session);
+    const { txtPath, isoTxt } = latestReportPaths(factionId);
+    const pick = fs.existsSync(txtPath) ? txtPath : isoTxt;
     if (!fs.existsSync(pick)) {
       json(res, 404, { error: 'report not found' });
       return;
@@ -263,6 +317,32 @@ const server = http.createServer(async (req, res) => {
   }
 
   json(res, 404, { error: 'not found' });
+});
+
+async function reportPortConflict() {
+  try {
+    const res = await fetch(`http://127.0.0.1:${PORT}/health`);
+    if (res.ok) {
+      console.log(`Game-host already running on http://localhost:${PORT}`);
+      console.log(`Visual tool (if built): http://localhost:${PORT}/client/`);
+      process.exit(0);
+    }
+  } catch {
+    /* not our server */
+  }
+  console.error(`Port ${PORT} is already in use.`);
+  console.error(`  Windows: netstat -ano | findstr :${PORT}`);
+  console.error(`  Then:    taskkill /PID <pid> /F`);
+  console.error(`Or set GAME_HOST_PORT to use a different port.`);
+  process.exit(1);
+}
+
+server.on('error', (err) => {
+  if (err.code === 'EADDRINUSE') {
+    reportPortConflict();
+    return;
+  }
+  throw err;
 });
 
 server.listen(PORT, () => {

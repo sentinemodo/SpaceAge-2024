@@ -1,10 +1,12 @@
 const SECTION_MARKERS = [
   { id: 'header', title: 'Report header', match: (line) => /^SpaceAge report for /i.test(line) || /^Turn \d+/i.test(line) },
   { id: 'events', title: 'Events during turn', match: (line) => /^Events during turn:/i.test(line) },
-  { id: 'faction', title: 'Faction summary', match: (line) => /^Bank report:/i.test(line) },
-  { id: 'technology', title: 'Technology reports', match: (line) => /^Technology reports:/i.test(line) },
+  { id: 'bank', title: 'Bank report', match: (line) => /^Bank report:/i.test(line) },
   { id: 'survey', title: 'Survey reports', match: (line) => /^Survey reports:/i.test(line) },
-  { id: 'battles', title: 'Battle reports', match: (line) => /^Battles? during turn:/i.test(line) || /^Battle report:/i.test(line) },
+  { id: 'technology', title: 'Technology reports', match: (line) => /^Technology reports:/i.test(line) },
+  { id: 'battles', title: 'Battle reports', match: (line) => /^Battles? during turn:/i.test(line) || /^Battle report:/i.test(line) || /^Battles report:/i.test(line) },
+  { id: 'press', title: 'Press releases', match: (line) => /^Press releases:/i.test(line) },
+  { id: 'contracts', title: 'Contracts', match: (line) => /^A new contract|^Contracts:/i.test(line) },
   { id: 'galaxy', title: 'Galaxy report', match: (line) => /^Galaxy report:/i.test(line) },
   { id: 'orders', title: 'Orders template', match: (line) => /^Orders Template:/i.test(line) },
 ];

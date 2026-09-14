@@ -417,13 +417,14 @@ class Belt:
 
 
 class Alderson:
-    def __init__(self, name, name_en, au, pair, temperature="cold", atmosphere="none"):
+    def __init__(self, name, name_en, au, pair, temperature="cold", atmosphere="none", stability="stable"):
         self.name = name
         self.name_en = name_en
         self.au = au
         self.pair = pair
         self.temperature = temperature
         self.atmosphere = atmosphere
+        self.stability = stability
         self.description = None
         self.orbit = None
         self.exits = []
@@ -611,6 +612,8 @@ def emit_alderson(parent, alderson):
         "temperature": alderson.temperature,
         "atmosphere": alderson.atmosphere,
     }
+    if getattr(alderson, "stability", "stable") == "unstable":
+        attrs["stability"] = "unstable"
     node = el(parent, "alderson", **attrs)
     if alderson.orbit:
         emit_orbit(node, alderson.orbit)
@@ -1097,7 +1100,9 @@ def build_world():
     systems = []
     landings = {}
 
-    helios = System("SS0001", "Helios", 0, 0, 0)
+    # Star-map layout: Helios/Fomal anchor at (5,5)/(6,5); empty systems fan on X and Y, Z=0.
+    map_z = 0
+    helios = System("SS0001", "Helios", 5, 5, map_z)
     helios.star = Star(ids.S(), "Helios")
 
     arbor = Planet("P00001", "Arbor", "ocean", 1.0, 6, 6, "normal", "habitable", "terair")
@@ -1208,7 +1213,7 @@ def build_world():
     helios.aldersons.append(gate_h)
     systems.append(helios)
 
-    fomal = System("SS0002", "Fomal", 1, 0, 0)
+    fomal = System("SS0002", "Fomal", 6, 5, map_z)
     fomal.star = Star(ids.S(), "Fomal")
 
     anvil = Planet("P00005", "Anvil", "ocean", 1.4, 7, 5, "normal", "habitable", "terair")
@@ -1555,18 +1560,20 @@ def build_world():
     # Empty systems SS0003–SS0010 (signature ores; moons ≥10; Graph 6×6).
     # Gates for those systems are added after the bodies (ids P00041+).
     # Habitable systems stay catalog M4 (Helios/Fomal default; Deep/Graph here).
+    # Helios-linked empty systems west (decreasing X); Fomal-linked east (increasing X).
+    # Y spreads north/south; Helios and Fomal stay on the centre line (Y=5).
     empty = [
-        ("SS0003", "Ember", 4, "K2", ember_bodies),
-        ("SS0004", "Gleam", 5, "M1", gleam_bodies),
-        ("SS0005", "Cinder", 6, "K5", cinder_bodies),
-        ("SS0006", "Ash", 7, "M0", ash_bodies),
-        ("SS0007", "Shards", 8, "G8", shards_bodies),
-        ("SS0008", "Deep", 9, "M4", deep_bodies),
-        ("SS0009", "Graph", 10, "M4", graph_bodies),
-        ("SS0010", "Spare", 11, "K3", spare_bodies),
+        ("SS0003", "Ember", 4, 7, "K2", ember_bodies),
+        ("SS0004", "Gleam", 7, 3, "M1", gleam_bodies),
+        ("SS0005", "Cinder", 3, 6, "K5", cinder_bodies),
+        ("SS0006", "Ash", 2, 4, "M0", ash_bodies),
+        ("SS0007", "Shards", 8, 4, "G8", shards_bodies),
+        ("SS0008", "Deep", 9, 6, "M4", deep_bodies),
+        ("SS0009", "Graph", 1, 3, "M4", graph_bodies),
+        ("SS0010", "Spare", 10, 7, "K3", spare_bodies),
     ]
-    for ss, sname, x, typ, builder in empty:
-        system = System(ss, sname, x, 0, 0)
+    for ss, sname, x, y, typ, builder in empty:
+        system = System(ss, sname, x, y, map_z)
         system.star = Star(ids.S(), sname, typ=typ)
         builder(ids, system)
         systems.append(system)
@@ -1576,34 +1583,50 @@ def build_world():
     return systems, landings, grant_market_contracts
 
 
-def add_empty_system_gates(ids, systems):
-    """One Gate per empty system, paired 1:1 with a homeworld outbound Gate.
+def add_gate_pair(ids, by_name, here_en, there_en, unstable=False):
+    """Mutual 1:1 Alderson pair between two systems."""
+    here_id = ids.P()
+    there_id = ids.P()
+    stability = "unstable" if unstable else "stable"
+    here_gate = Alderson(
+        here_id,
+        "%s %s Gate" % (here_en, there_en),
+        80,
+        there_id,
+        stability=stability,
+    )
+    here_gate.orbit = Orbit(ids.O())
+    there_gate = Alderson(
+        there_id,
+        "%s %s Gate" % (there_en, here_en),
+        80,
+        here_id,
+        stability=stability,
+    )
+    there_gate.orbit = Orbit(ids.O())
+    by_name[here_en].aldersons.append(here_gate)
+    by_name[there_en].aldersons.append(there_gate)
+    return here_gate, there_gate
 
-    Helios (Arbor) opens Ember, Cinder, Ash, Graph.
-    Fomal (Anvil) opens Gleam, Shards, Deep, Spare.
-    Existing Helios Fomal Gate P00009 remains paired only with Fomal Helios Gate P00010.
+
+def add_empty_system_gates(ids, systems):
+    """Hub topology for empty-cluster Gates (see designer/galaxy.md).
+
+    Helios: Fomal (home pair P00009/P00010, added earlier) + Ember only.
+    Fomal: Helios (home pair) + Gleam only.
+    Ember hub (west): Helios, Cinder, Ash, Graph, plus unstable Gleam cross-link.
+    Gleam hub (east): Fomal, Shards, Deep, Spare, plus unstable Ember cross-link.
+    Leaf empty systems (Cinder, Ash, Graph, Shards, Deep, Spare): one Gate each.
     """
     by_name = {s.name_en: s for s in systems}
     ids.skip_planets_to(41)
-    links = (
-        ("Helios", "Ember"),
-        ("Helios", "Cinder"),
-        ("Helios", "Ash"),
-        ("Helios", "Graph"),
-        ("Fomal", "Gleam"),
-        ("Fomal", "Shards"),
-        ("Fomal", "Deep"),
-        ("Fomal", "Spare"),
-    )
-    for home_en, empty_en in links:
-        home_id = ids.P()
-        empty_id = ids.P()
-        home_gate = Alderson(home_id, "%s %s Gate" % (home_en, empty_en), 80, empty_id)
-        home_gate.orbit = Orbit(ids.O())
-        empty_gate = Alderson(empty_id, "%s %s Gate" % (empty_en, home_en), 80, home_id)
-        empty_gate.orbit = Orbit(ids.O())
-        by_name[home_en].aldersons.append(home_gate)
-        by_name[empty_en].aldersons.append(empty_gate)
+    add_gate_pair(ids, by_name, "Helios", "Ember")
+    add_gate_pair(ids, by_name, "Fomal", "Gleam")
+    for leaf in ("Cinder", "Ash", "Graph"):
+        add_gate_pair(ids, by_name, "Ember", leaf)
+    for leaf in ("Shards", "Deep", "Spare"):
+        add_gate_pair(ids, by_name, "Gleam", leaf)
+    add_gate_pair(ids, by_name, "Ember", "Gleam", unstable=True)
 
 
 def add_belt(ids, system, name_en, au, composition):
@@ -2913,8 +2936,8 @@ def validate(systems, landings):
     pair_map = {a.name: a.pair for a in aldersons}
     if pair_map.get("P00009") != "P00010" or pair_map.get("P00010") != "P00009":
         errors.append("home pair P00009/P00010")
-    if len(aldersons) != 18:
-        errors.append("expected 18 Gates, got %d" % len(aldersons))
+    if len(aldersons) != 20:
+        errors.append("expected 20 Gates, got %d" % len(aldersons))
     if any(a.pair not in alderson_ids for a in aldersons):
         errors.append("Gate pair missing")
     if any(pair_map.get(a.pair) != a.name for a in aldersons):
@@ -3017,10 +3040,18 @@ def validate(systems, landings):
         "SS0010",
     ]:
         errors.append("empty systems: %s" % [s.name for s in empty_systems])
-    if any(len(s.aldersons) != 1 for s in empty_systems):
-        errors.append("each empty system must have exactly one Gate")
-    if len(systems[0].aldersons) != 5 or len(systems[1].aldersons) != 5:
-        errors.append("each home system must have 5 Gates")
+    hub_names = {"Ember", "Gleam"}
+    for s in empty_systems:
+        expected = 5 if s.name_en in hub_names else 1
+        if len(s.aldersons) != expected:
+            errors.append("%s must have %d Gates, got %d" % (s.name_en, expected, len(s.aldersons)))
+    if len(systems[0].aldersons) != 2 or len(systems[1].aldersons) != 2:
+        errors.append("each home system must have 2 Gates")
+    unstable = [a for a in aldersons if getattr(a, "stability", "stable") == "unstable"]
+    if len(unstable) != 2:
+        errors.append("expected 2 unstable Gates (Ember Gleam cross-link), got %d" % len(unstable))
+    if unstable and {a.name_en for a in unstable} != {"Ember Gleam Gate", "Gleam Ember Gate"}:
+        errors.append("unstable pair must be Ember Gleam Gate / Gleam Ember Gate")
     empty_stacks = [st for s in empty_systems for st in collect_stacks([s])]
     if any(st.typ in ("corphq", "city") for st in empty_stacks):
         errors.append("empty systems must have no HQ or city")

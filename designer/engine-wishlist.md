@@ -61,5 +61,6 @@ Designer does **not** implement these. TDD adds a failing test first. Campaign X
 | Fauna battle loot | Item drops + RP split among attacker stacks on destroy | `Battle` post-wreck hook; table in `fauna.md` |
 | Fauna pen + tame breeding | L3 techs (`brdtam`, `crstam`, `havbre`, `grftam`) produce tame variants (`tbrmst`, …) from captive wild stacks or samples at a fauna pen module | `use-produce module=` from pen; pen accepts captured fauna stack or tissue item; tame modules get `can-convert="yes"` |
 | Wild fauna faction AI | Factions 14–17 roam/forage without player orders | GM orders or `Events` pipeline for fauna upkeep |
+| Exit target stubs in faction XML reports | Visible region exits embed `<target>` with X/Y/type/name-en for adjacent unseen cells; intel-gated capacity/resources/deep-pocket/anomaly on stub. Regional map in visual tool. Spec: [`visual-tool-exit-xml.md`](visual-tool-exit-xml.md) | `Galaxy.saveExits` / report-only `SaveXml` path; `Tests/TReport.cs` |
 
 When TDD lands a row, tick it here with engine version and date, then migrate any parked catalog lines from `designer/catalog.md` into `campaign/data.xml`.

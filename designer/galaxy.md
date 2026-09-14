@@ -13,7 +13,7 @@ Helios and Fomal are a **wide bound pair** (~200 AU), not light-years apart. No 
 | Player factions | 10 (`name` 2–11) | Faction `1` = United Star Nations (cities, markets, later patrons) |
 | Militia NPCs | 2 (`name` 12–13) | **Arbor First** (Arbor), **HCS** (Anvil). Neutral at t=1; flip hostile on first spaceship |
 | Star systems | 10 | **2 occupied at t=1**, **8 empty** (no HQ, no UN `city`) |
-| Alderson pairs | 9 | Helios Fomal Gate ↔ Fomal Helios Gate plus **8 empty-system pairs** (`<alderson>`, `pair=` is 1:1). Each Gate `name-en` is `{here} {pair} Gate` |
+| Alderson pairs | 10 | Helios Fomal Gate ↔ Fomal Helios Gate (home pair) plus **9 hub/leaf pairs** (`<alderson>`, `pair=` is 1:1). Each Gate `name-en` is `{here} {pair} Gate`. **Ember ↔ Gleam** is an **unstable wormhole-class cross-link** (hidden from reports until later technology) |
 | Planets + belts / system | 1–4 | Mix of `ocean`, `dust`, `gasgnt`, `abelt` |
 | Initially habitable / system | 0–1 | `terair` + food + liquid water + settlement capacity on grassland/ocean |
 | Initially exploitable / system | 0–2 | Ores/volatiles without a breathable mix; drills work, farms do not |
@@ -23,6 +23,23 @@ Helios and Fomal are a **wide bound pair** (~200 AU), not light-years apart. No 
 **Habitable** means a human can run `city` / `farms` without imported air and food. **Exploitable** means extraction techs have a regional resource they produce.
 
 Leave empty regions. A ~36-region ocean world with eight occupied cells still has a hinterland.
+
+## Map coordinates (star map)
+
+All systems use **Z=0** until the visual tool adds 3D rotation. **Helios** anchors the map at `(5,5,0)`; **Fomal** at `(6,5,0)` on the centre line. Helios outbound systems lie **west** (lower X); Fomal outbound systems lie **east** (higher X). Empty systems spread on **Y** as well so the star map is not a single row.
+
+| SS | Name | X | Y | Z | Home link |
+|----|------|---|---|---|-----------|
+| SS0009 | Graph | 1 | 3 | 0 | Helios |
+| SS0006 | Ash | 2 | 4 | 0 | Helios |
+| SS0005 | Cinder | 3 | 6 | 0 | Helios |
+| SS0003 | Ember | 4 | 7 | 0 | Helios |
+| SS0001 | Helios | 5 | 5 | 0 | — |
+| SS0002 | Fomal | 6 | 5 | 0 | — |
+| SS0004 | Gleam | 7 | 3 | 0 | Fomal |
+| SS0007 | Shards | 8 | 4 | 0 | Fomal |
+| SS0008 | Deep | 9 | 6 | 0 | Fomal |
+| SS0010 | Spare | 10 | 7 | 0 | Fomal |
 
 **XML star `type`:** catalog entries in `campaign/data.xml`. Habitable systems emit `type="M4"` (Helios, Fomal, Deep, Graph). Empty exploitable systems emit a flavour-matched type: Ember `K2`, Gleam `M1`, Cinder `K5`, Ash `M0`, Shards `G8`, Spare `K3`. Token `M4` is the habitable-class id (yellow-to-orange, ~solar luminosity), not a red-dwarf spectral type. Per-system MK flavour (G2 Helios, F5 Fomal, late-K Deep, G4 Graph) is arrival-brief only.
 
@@ -213,7 +230,7 @@ Do not bake hops from planetary regions to Gates.
 
 **Inter-homeworld:** Helios Fomal Gate ↔ Fomal Helios Gate is the intended crossing (1 week `JUMP`). The 26-week Cinder Flats ↔ Pad hop is the **chemical long way** (no Gate). Keep both.
 
-**Empty systems:** no AU path from the occupied pair. Reach them with `JUMP` at the matching outbound Gate (Helios → Ember/Cinder/Ash/Graph; Fomal → Gleam/Shards/Deep/Spare).
+**Empty systems:** no AU path from the occupied pair. From Helios, `JUMP` at Helios Ember Gate to reach the west hub; from Fomal, `JUMP` at Fomal Gleam Gate for the east hub. Cinder, Ash, and Graph open from **Ember**; Shards, Deep, and Spare from **Gleam**. A Helios player still reaches Gleam the long way (Helios Fomal Gate → Fomal Helios Gate → Fomal Gleam Gate) unless they discover the unstable Ember ↔ Gleam shortcut.
 
 **t=1 baked chemical hops:**
 
@@ -225,8 +242,11 @@ Do not bake hops from planetary regions to Gates.
 | Anvil `R00039` | Pyre landing (first Pyre region) | 8 |
 | Anvil `R00039` | Fomal Belt `P00007` | 13 |
 | Helios Fomal Gate `P00009` | Fomal Helios Gate `P00010` | **1** (`JUMP`, not a MOVE exit) |
-| Helios outbound Gates `P00041`/`P00043`/`P00045`/`P00047` | Ember / Cinder / Ash / Graph Gates | **1** (`JUMP`) |
-| Fomal outbound Gates `P00049`/`P00051`/`P00053`/`P00055` | Gleam / Shards / Deep / Spare Gates | **1** (`JUMP`) |
+| Helios Ember Gate `P00041` | Ember Helios Gate `P00042` | **1** (`JUMP`) |
+| Fomal Gleam Gate `P00043` | Gleam Fomal Gate `P00044` | **1** (`JUMP`) |
+| Ember hub Gates `P00045`/`P00047`/`P00049` | Cinder / Ash / Graph Gates | **1** (`JUMP`) |
+| Gleam hub Gates `P00051`/`P00053`/`P00055` | Shards / Deep / Spare Gates | **1** (`JUMP`) |
+| Ember Gleam Gate `P00057` / Gleam Ember Gate `P00058` (unstable) | cross-hub wormhole pair | **1** (`JUMP`; hidden until survey tech) |
 | Reverse of each | — | same |
 
 ## Id allocation
@@ -235,9 +255,9 @@ Do not bake hops from planetary regions to Gates.
 |------|---------|-------------------------|
 | System | `SS0001`–`SS0010` | 10 |
 | Star | `S00001`–`S00012` | extras if a visual binary |
-| Planet/belt | `P00001`–`P00092` | Helios/Fomal bodies `P00001`–`P00008`; home pair APs `P00009`–`P00010`; empty bodies `P00011`–`P00035`; rings `P00091`–`P00092`; empty-system AP block `P00041`–`P00056` |
+| Planet/belt | `P00001`–`P00092` | Helios/Fomal bodies `P00001`–`P00008`; home pair APs `P00009`–`P00010`; empty bodies `P00011`–`P00035`; rings `P00091`–`P00092`; hub/leaf AP block `P00041`–`P00058` |
 | Moon | `M00001`–`M0080` | unique ids even if loader currently copies planet id |
-| Orbit | `O00001`–`O0200` | one per planet/moon; home pair Gate orbits `O00110` Helios, `O00111` Fomal; outbound/empty Gate orbits `O00153`–`O00168` |
+| Orbit | `O00001`–`O0200` | one per planet/moon; home pair Gate orbits `O00110` Helios, `O00111` Fomal; hub/leaf Gate orbits `O00153`–`O00170` (20 Gates total) |
 | Region | `R00001`–`R1500` | Arbor `R00001`–`R00036`, Anvil `R00037`–`R00071`, satellites next. Gates have **no** corona region |
 | Contract | `CTnnnn` | 6 chars |
 | Wreckage stacks | `W00001`–`W0020` | faction 1; **not** on Arbor/Anvil grids at t=1 |
@@ -251,7 +271,7 @@ Do not bake hops from planetary regions to Gates.
 
 ### SS0001 Helios (start A) — G2 flavour, XML star `M4`
 
-`X="0" Y="0" Z="0"`. Star `S00001` Helios.
+`X="5" Y="5" Z="0"`. Star `S00001` Helios.
 
 | Id | Name | Type | AU | Size | Hab/exp | Notes |
 |----|------|------|----|------|---------|-------|
@@ -269,7 +289,7 @@ Moons: Arbor `M00001` **Selene** `rock` 5×3 (titani, silici, **polar `water` ic
 
 ### SS0002 Fomal (start B) — F5 flavour, XML star `M4`
 
-`X="1" Y="0" Z="0"` (pair axis). Star `S00002` Fomal.
+`X="6" Y="5" Z="0"` (pair axis). Star `S00002` Fomal.
 
 | Id | Name | Type | AU | Size | Hab/exp | Notes |
 |----|------|------|----|------|---------|-------|
@@ -289,28 +309,38 @@ Moons: Anvil 2 (`rock`, `ice` 5×3 / 5×2) — rock moon: metals + **`water` ice
 
 First-class `<alderson>` (not a planet). Catalog type `adpnt` remains unused in gamein. Each Gate has **one orbit and no regions**. No solid surface, no settlement capacity, no resources. Environment: `temperature="cold"`, `atmosphere="none"`. Spaceships occupy the orbit. `pair=` is **1:1** — a system may hold several Gates; each Gate opens on exactly one other Gate.
 
-| Id | Name | System | AU | Orbit | Pair |
-|----|------|--------|----|-------|------|
-| `P00009` | Helios Fomal Gate | SS0001 | 80 | `O00110` | `P00010` |
-| `P00010` | Fomal Helios Gate | SS0002 | 80 | `O00111` | `P00009` |
-| `P00041` | Helios Ember Gate | SS0001 | 80 | `O00153` | `P00042` |
-| `P00042` | Ember Helios Gate | SS0003 | 80 | `O00154` | `P00041` |
-| `P00043` | Helios Cinder Gate | SS0001 | 80 | `O00155` | `P00044` |
-| `P00044` | Cinder Helios Gate | SS0005 | 80 | `O00156` | `P00043` |
-| `P00045` | Helios Ash Gate | SS0001 | 80 | `O00157` | `P00046` |
-| `P00046` | Ash Helios Gate | SS0006 | 80 | `O00158` | `P00045` |
-| `P00047` | Helios Graph Gate | SS0001 | 80 | `O00159` | `P00048` |
-| `P00048` | Graph Helios Gate | SS0009 | 80 | `O00160` | `P00047` |
-| `P00049` | Fomal Gleam Gate | SS0002 | 80 | `O00161` | `P00050` |
-| `P00050` | Gleam Fomal Gate | SS0004 | 80 | `O00162` | `P00049` |
-| `P00051` | Fomal Shards Gate | SS0002 | 80 | `O00163` | `P00052` |
-| `P00052` | Shards Fomal Gate | SS0007 | 80 | `O00164` | `P00051` |
-| `P00053` | Fomal Deep Gate | SS0002 | 80 | `O00165` | `P00054` |
-| `P00054` | Deep Fomal Gate | SS0008 | 80 | `O00166` | `P00053` |
-| `P00055` | Fomal Spare Gate | SS0002 | 80 | `O00167` | `P00056` |
-| `P00056` | Spare Fomal Gate | SS0010 | 80 | `O00168` | `P00055` |
+| Id | Name | System | AU | Orbit | Pair | Stability |
+|----|------|--------|----|-------|------|-----------|
+| `P00009` | Helios Fomal Gate | SS0001 | 80 | `O00110` | `P00010` | stable |
+| `P00010` | Fomal Helios Gate | SS0002 | 80 | `O00111` | `P00009` | stable |
+| `P00041` | Helios Ember Gate | SS0001 | 80 | `O00153` | `P00042` | stable |
+| `P00042` | Ember Helios Gate | SS0003 | 80 | `O00154` | `P00041` | stable |
+| `P00043` | Fomal Gleam Gate | SS0002 | 80 | `O00155` | `P00044` | stable |
+| `P00044` | Gleam Fomal Gate | SS0004 | 80 | `O00156` | `P00043` | stable |
+| `P00045` | Ember Cinder Gate | SS0003 | 80 | `O00157` | `P00046` | stable |
+| `P00046` | Cinder Ember Gate | SS0005 | 80 | `O00158` | `P00045` | stable |
+| `P00047` | Ember Ash Gate | SS0003 | 80 | `O00159` | `P00048` | stable |
+| `P00048` | Ash Ember Gate | SS0006 | 80 | `O00160` | `P00047` | stable |
+| `P00049` | Ember Graph Gate | SS0003 | 80 | `O00161` | `P00050` | stable |
+| `P00050` | Graph Ember Gate | SS0009 | 80 | `O00162` | `P00049` | stable |
+| `P00051` | Gleam Shards Gate | SS0004 | 80 | `O00163` | `P00052` | stable |
+| `P00052` | Shards Gleam Gate | SS0007 | 80 | `O00164` | `P00051` | stable |
+| `P00053` | Gleam Deep Gate | SS0004 | 80 | `O00165` | `P00054` | stable |
+| `P00054` | Deep Gleam Gate | SS0008 | 80 | `O00166` | `P00053` | stable |
+| `P00055` | Gleam Spare Gate | SS0004 | 80 | `O00167` | `P00056` | stable |
+| `P00056` | Spare Gleam Gate | SS0010 | 80 | `O00168` | `P00055` | stable |
+| `P00057` | Ember Gleam Gate | SS0003 | 80 | `O00169` | `P00058` | **unstable** (wormhole-class) |
+| `P00058` | Gleam Ember Gate | SS0004 | 80 | `O00170` | `P00057` | **unstable** (wormhole-class) |
 
-Helios (Arbor, organics) opens Ember, Cinder, Ash, Graph. Fomal (Anvil, metals) opens Gleam, Shards, Deep, Spare. There is **no** empty↔empty pairing and **no** cross-home shortcut (a Helios player reaching Gleam still goes Helios Fomal Gate → Fomal Helios Gate → Fomal Gleam Gate). `name-en` is always `{here} {pair} Gate`. No Gate `description`.
+**Home outbound (two Gates each):** Helios → Fomal (home pair) + **Ember** only. Fomal → Helios (home pair) + **Gleam** only.
+
+**West hub (Ember):** Gates to Helios, Cinder, Ash, Graph, and the unstable cross-link to Gleam.
+
+**East hub (Gleam):** Gates to Fomal, Shards, Deep, Spare, and the unstable cross-link to Ember.
+
+Leaf empty systems (Cinder, Ash, Graph, Shards, Deep, Spare) each hold **one** Gate back to their hub. There is **no** leaf↔leaf pairing. A Helios player reaching Gleam the long way still goes Helios Fomal Gate → Fomal Helios Gate → Fomal Gleam Gate.
+
+**Unstable cross-link:** `P00057` ↔ `P00058` is a wormhole-class Alderson pair (Rules.txt flavour: effective length and diameter of order 10⁵ km). Emit `stability="unstable"` on both `<alderson>` nodes. **Hidden from faction reports until later survey technology** (engine wishlist — `Alderson.Visible` is still always true today). `JUMP` works once a stack knows the pair id. `name-en` is always `{here} {pair} Gate`. No Gate `description`.
 
 **Play loop:** Reach a Gate orbit via AU×drive on an L2 **`fustor`** (not a region exit; chemical `speed` 0.5 is not the crossing), then `JUMP <pair-id>` while at that Gate (1 week, ships only: `frigate` / `spacecraft` / `shuttl`; no `city`/`inftry` top-level). Reverse the same. Do not emit region↔Gate MOVE exits. See [au-transit.md](au-transit.md).
 
@@ -441,7 +471,7 @@ No player HQ, no NPC `city`, no t=1 contracts on these grids. Sparse resources a
 | SS0009 Graph | `M4` (G4 flavour; ocean world **hab**) | ocean 0.95 **hab**; dust 1.6; abelt 2.5 **exp** | ocean 0; dust 1 rock | carbon, silici, iron, gold | Habitat wheel wreck → production/habitat |
 | SS0010 Spare | `K3` | dust 1.1 **exp**; abelt 2.4 | dust 1 ice | titani, copper, ice; **`berylm` signature** | Life-support wreck → research+habitat |
 
-Place empty systems on the map farther than the Helios–Fomal pair (`X` 4+). Planet ids **`P00011`+** (Gates took `P00009`–`P00010`).
+Empty-system coordinates are in **Map coordinates** above (Helios-linked `X` 1–4 west; Fomal-linked `X` 7–10 east). Planet ids **`P00011`+** (Gates took `P00009`–`P00010`).
 
 **L3+ signature ores** (not on Arbor/Anvil basins; see `resources.md`):
 
@@ -469,4 +499,4 @@ Do not pre-build the whole inner-system industry. Add: depleted resource quantit
 
 ## XML pass status
 
-Spec-complete here (militias + nine AP pairs included). **`campaign/gamein.1.xml` is generated by `campaign/_gen_gamein.py`.** Regenerator: `python campaign/_gen_gamein.py`. Seed includes factions **1–13**, Helios+Fomal stars/planets **including the home pair and eight outbound Gates** (`pair=`), Arbor+Anvil full grids + UN + militia + player stacks + chemical hops and Gates, Scoria/Pyre/belts as landing grids, empty systems SS0003–SS0010 with signature ores, moons ≥10 regions (Graph 6×6 habitable, Haven 12-cell terran ice moon), and **one Gate each**. Encoding Windows-1251. Ids ≤ 6 characters. L3+ signature ores are live catalog rows.
+Spec-complete here (militias + ten AP pairs included). **`campaign/gamein.1.xml` is generated by `campaign/_gen_gamein.py`.** Regenerator: `python campaign/_gen_gamein.py`. Seed includes factions **1–13**, Helios+Fomal stars/planets **including the home pair, two home outbound Gates, Ember/Gleam hub Gates, and leaf Gates** (`pair=`), Arbor+Anvil full grids + UN + militia + player stacks + chemical hops and Gates, Scoria/Pyre/belts as landing grids, empty systems SS0003–SS0010 with signature ores, moons ≥10 regions (Graph 6×6 habitable, Haven 12-cell terran ice moon), Ember/Gleam **five Gates each**, other empty systems **one Gate each**, plus the unstable Ember↔Gleam cross-link. Encoding Windows-1251. Ids ≤ 6 characters. L3+ signature ores are live catalog rows.

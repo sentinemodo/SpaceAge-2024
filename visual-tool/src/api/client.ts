@@ -27,22 +27,60 @@ async function api(path: string, init: RequestInit = {}) {
   return res.text();
 }
 
-export async function login(factionId: number, password: string) {
+export interface FactionOption {
+  id: number;
+  name: string;
+}
+
+export interface SessionMeta {
+  factionId?: number;
+  viewAsFactionId?: number;
+  name?: string;
+  turn?: number;
+  admin?: boolean;
+  factions?: FactionOption[];
+}
+
+export interface LoginResult {
+  token: string;
+  factionId: number;
+  viewAsFactionId?: number;
+  name?: string;
+  admin?: boolean;
+}
+
+export async function login(factionId: number, password: string, gmKey?: string): Promise<LoginResult> {
+  setToken(null);
+  const headers: Record<string, string> = { 'Content-Type': 'application/json' };
+  const trimmedGm = gmKey?.trim();
+  if (trimmedGm) headers['X-GM-Key'] = trimmedGm;
   const data = await api('/api/auth/login', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ factionId, password }),
-  });
+    headers,
+    body: JSON.stringify({ factionId, password, gmKey: trimmedGm }),
+  }) as LoginResult;
   setToken(data.token);
   return data;
 }
 
-export async function fetchMeta() {
+export async function fetchMeta(): Promise<SessionMeta> {
   return api('/api/session/meta');
+}
+
+export async function viewAsFaction(factionId: number) {
+  return api('/api/session/view-as', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ factionId }),
+  });
 }
 
 export async function fetchReportXml(): Promise<string> {
   return api('/api/session/report.xml');
+}
+
+export async function fetchReportTxt(): Promise<string> {
+  return api('/api/session/report.txt');
 }
 
 export interface ReportSection {
@@ -71,33 +109,18 @@ export async function parseOrders(text: string): Promise<ParseOrdersResult> {
   });
 }
 
-/** @deprecated prefer parseOrders for engine-backed validation */
-export async function checkOrders(text: string): Promise<string[]> {
-  const data = await api('/api/session/check-orders', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ text }),
-  });
-  return data.warnings || [];
-}
-
-export interface BattleSimResult {
-  output: string;
-  result: string | null;
-}
-
-export async function runBattleSim(xml: string, seed?: number): Promise<BattleSimResult> {
-  return api('/api/session/battle-sim', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ xml, seed }),
-  });
-}
-
 export async function submitOrders(text: string) {
   return api('/api/session/orders', {
     method: 'PUT',
     headers: { 'Content-Type': 'text/plain; charset=utf-8' },
     body: text,
+  });
+}
+
+export async function runBattleSim(xml: string, seed?: number) {
+  return api('/api/session/battle-sim', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ xml, seed }),
   });
 }
