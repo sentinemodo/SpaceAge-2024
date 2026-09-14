@@ -64,6 +64,17 @@ namespace SpaceAge
 			}
 		}
 
+		public void NotifyFactionTransfer(Faction giver, ModuleStack giverStack, Faction receiverFaction, ModuleType moduleType, int quantity, Region location)
+		{
+			foreach (Contract contract in this)
+			{
+				if (contract.Trigger != null)
+				{
+					contract.Trigger.NotifyFactionTransfer(giver, giverStack, receiverFaction, moduleType, quantity, location, contract.Issuer);
+				}
+			}
+		}
+
 		public void NotifyResearch(Faction researcher, ModuleStack researcherStack, ModuleStack target, int points)
 		{
 			foreach (Contract contract in this)
@@ -71,6 +82,17 @@ namespace SpaceAge
 				if (contract.Trigger != null)
 				{
 					contract.Trigger.NotifyResearch(researcher, researcherStack, target, points);
+				}
+			}
+		}
+
+		public void NotifyStackDestroyed(Faction killer, ModuleStack stack)
+		{
+			foreach (Contract contract in this)
+			{
+				if (contract.Trigger != null)
+				{
+					contract.Trigger.NotifyStackDestroyed(killer, stack);
 				}
 			}
 		}
@@ -101,6 +123,34 @@ namespace SpaceAge
 			{
 				lines.AddRange(contract.Report());
 			}
+			return lines;
+		}
+
+		// Open contracts at regions where the faction has stacks (HQ, pads, etc.).
+		public List<string> Report(Faction faction)
+		{
+			List<string> lines = new List<string>();
+			if (faction == null)
+			{
+				return lines;
+			}
+
+			foreach (Contract contract in this)
+			{
+				if (contract.Location == null
+					|| !contract.Location.ModuleStacks.Contains(faction))
+				{
+					continue;
+				}
+
+				if (lines.Count == 0)
+				{
+					lines.Add("Contract reports:");
+				}
+
+				lines.AddRange(contract.Report());
+			}
+
 			return lines;
 		}
 
@@ -140,15 +190,24 @@ namespace SpaceAge
 			}
 
 			List<PressRelease> press = new List<PressRelease>();
+			List<PressRelease> rumors = new List<PressRelease>();
 			foreach (PressRelease release in PressRelease.All)
 			{
-				if (release.CreatedThisSession)
+				if (!release.CreatedThisSession)
+				{
+					continue;
+				}
+				if (release.Anonymous)
+				{
+					rumors.Add(release);
+				}
+				else
 				{
 					press.Add(release);
 				}
 			}
 
-			if (created.Count == 0 && press.Count == 0)
+			if (created.Count == 0 && press.Count == 0 && rumors.Count == 0)
 			{
 				return;
 			}
@@ -163,7 +222,23 @@ namespace SpaceAge
 						visible.Add(contract);
 					}
 				}
-				if (visible.Count == 0 && press.Count == 0)
+				List<PressRelease> visiblePress = new List<PressRelease>();
+				foreach (PressRelease release in press)
+				{
+					if (PressRelease.IsVisibleTo(faction, release.PlanetId))
+					{
+						visiblePress.Add(release);
+					}
+				}
+				List<PressRelease> visibleRumors = new List<PressRelease>();
+				foreach (PressRelease release in rumors)
+				{
+					if (PressRelease.IsVisibleTo(faction, release.PlanetId))
+					{
+						visibleRumors.Add(release);
+					}
+				}
+				if (visible.Count == 0 && visiblePress.Count == 0 && visibleRumors.Count == 0)
 				{
 					continue;
 				}
@@ -175,14 +250,55 @@ namespace SpaceAge
 				writer.WriteLine(string.Format("Subject: [SpaceAge] Report for turn {0}", game.Turn));
 				writer.WriteLine("Content-Disposition: attachment");
 				writer.WriteLine();
-				if (press.Count > 0)
+				if (visiblePress.Count > 0)
 				{
 					writer.WriteLine("Press releases:");
-					foreach (PressRelease release in press)
+					foreach (PressRelease release in visiblePress)
 					{
-						writer.WriteLine(string.Format("  {0}: {1}.",
-							release.Issuer.ReportName,
-							release.Title));
+						if (!string.IsNullOrEmpty(release.PlanetId))
+						{
+							writer.WriteLine(string.Format("  {0}: {1} — {2}.",
+								PressRelease.ScopeReportName(release.PlanetId),
+								release.Issuer.ReportName,
+								release.Title));
+						}
+						else
+						{
+							writer.WriteLine(string.Format("  {0}: {1}.",
+								release.Issuer.ReportName,
+								release.Title));
+						}
+						if (!string.IsNullOrEmpty(release.Flavour))
+						{
+							writer.WriteLine(string.Format("    {0}", release.Flavour));
+						}
+					}
+					if (visibleRumors.Count > 0 || visible.Count > 0)
+					{
+						writer.WriteLine();
+					}
+				}
+				if (visibleRumors.Count > 0)
+				{
+					writer.WriteLine("Rumors:");
+					foreach (PressRelease release in visibleRumors)
+					{
+						if (!string.IsNullOrEmpty(release.PlanetId) && Planet.All.ContainsKey(release.PlanetId))
+						{
+							writer.WriteLine(string.Format("  {0}: {1}.",
+								Planet.All[release.PlanetId].ReportName,
+								release.Title));
+						}
+						else if (!string.IsNullOrEmpty(release.PlanetId) && Moon.All.ContainsKey(release.PlanetId))
+						{
+							writer.WriteLine(string.Format("  {0}: {1}.",
+								Moon.All[release.PlanetId].ReportName,
+								release.Title));
+						}
+						else
+						{
+							writer.WriteLine(string.Format("  {0}.", release.Title));
+						}
 						if (!string.IsNullOrEmpty(release.Flavour))
 						{
 							writer.WriteLine(string.Format("    {0}", release.Flavour));

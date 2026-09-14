@@ -9,7 +9,7 @@
 				<orbit name="O00001" />
 				<region name="R00001" name-en="Port" X="0" Y="0" type="dust">
 					<modulestack name="un001" name-en="UN city" faction="1" type="city" quantity="1">
-						<itemstack type="iron" quantity="10" />
+						<itemstack type="nomtest" quantity="10" />
 					</modulestack>
 				</region>
 				<region name="R00002" name-en="Yard" X="1" Y="0" type="dust" />

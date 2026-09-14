@@ -14,12 +14,28 @@
 	<faction name="11" name-en="Fission" password="fission" email="player11@local" default-attitude="2" text-report="True" text-report-line-length="100" xml-report="True" balance="10000" credit-line="10000" credit-rate="0.2" deposit-rate="0.05" />
 	<faction name="12" name-en="Arbor First" password="" email="" default-attitude="2" text-report="True" text-report-line-length="100" xml-report="True" balance="4000" credit-line="0" credit-rate="0" deposit-rate="0" />
 	<faction name="13" name-en="HCS" password="" email="" default-attitude="2" text-report="True" text-report-line-length="100" xml-report="True" balance="5000" credit-line="0" credit-rate="0" deposit-rate="0" />
+	<faction name="14" name-en="Arbor Fauna" password="" email="" default-attitude="1" unknown-attitude="1" text-report="True" text-report-line-length="100" xml-report="True" balance="0" credit-line="0" credit-rate="0" deposit-rate="0" />
+	<faction name="15" name-en="Anvil Fauna" password="" email="" default-attitude="1" unknown-attitude="1" text-report="True" text-report-line-length="100" xml-report="True" balance="0" credit-line="0" credit-rate="0" deposit-rate="0" />
+	<faction name="16" name-en="Haven Fauna" password="" email="" default-attitude="1" unknown-attitude="1" text-report="True" text-report-line-length="100" xml-report="True" balance="0" credit-line="0" credit-rate="0" deposit-rate="0" />
+	<faction name="17" name-en="Graph Fauna" password="" email="" default-attitude="1" unknown-attitude="1" text-report="True" text-report-line-length="100" xml-report="True" balance="0" credit-line="0" credit-rate="0" deposit-rate="0" />
 	<contracts>
 		<contract name="CT0001" location="R00040" issuer="1" trigger="give-module" reward-type="technology" reward="ctypln" quantity="1" module="farms" receiver="100030" baseline="6" title="Slagport calorie charter" flavour="Slagport's granary spectra show a thin 1.6 um water-ice band and a weak chlorophyll shoulder. Deliver one farming complex so the metal town can close its own calorie loop." />
 		<contract name="CT0002" location="R00068" issuer="1" trigger="give-module" reward-type="technology" reward="servic" quantity="2" module="wnplnt" receiver="100050" baseline="4" title="Isotope wind survey" flavour="Isotope sits on a uraninite spine with a measured 8 m/s mean surface wind. Two more wind plants keep the assay mill online without burning the local fissile stockpile." />
 		<contract name="CT0003" location="R00003" issuer="1" trigger="give-module" reward-type="technology" reward="airgen" quantity="1" module="cdrill" receiver="100010" baseline="0" title="Tidewatch core sample" flavour="Tidewatch Coast oil seeps sit above a granite basement. A core drill lets UN assay the sediment column without importing Anvil crust kits." />
 		<contract name="CT0004" location="R00006" issuer="1" trigger="research" reward-type="technology" reward="ahlcns" target="W00001" points="24" title="Helios belt hull charter" flavour="Radar returns from the metal landing rock match a high-albedo, crewless hull geometry. Research the hulk in situ; delta-v from Arbor is a belt-class chemical hop." />
 		<contract name="CT0005" location="R00039" issuer="1" trigger="research" reward-type="technology" reward="advres" target="W00002" points="24" title="Fomal carbonaceous fabricator" flavour="A cold, unmanned fabrication plant is wedged in a kerogen-rich carbonaceous cell. Research it on site; the organics are feedstock, not a skip of the Arbor/Anvil split." />
+		<contract name="CT0016" location="R00009" issuer="1" trigger="destroy-stack" target="140010" reward-type="cash" reward="1000" title="Mid Vale swarm cull" flavour="Destroy the Mid Vale brush stalker pack (140010). UN pays a tier-1 fauna bounty so the grant lane can replant." />
+		<contract name="CT0019" location="R00046" issuer="1" trigger="destroy-stack" target="150010" reward-type="cash" reward="1000" title="Slope swarm cull" flavour="Destroy the Slope crust burrower pack (150010). UN pays a tier-1 fauna bounty on the talus lane." />
+		<contract name="CT0006" location="R00008" issuer="1" trigger="give-module" reward-type="technology" reward="ctypln" quantity="1" module="town" receiver="200001" baseline="0" title="Northwind market charter" flavour="United Star Nations wants a prefab town seated on Northwind Grant this quarter. Factory-build one town module, then TRANSFER it TO FACTION 1 at headquarters; UN pays city planning when the civic shell is accepted." />
+		<contract name="CT0007" location="R00010" issuer="1" trigger="give-module" reward-type="technology" reward="servic" quantity="1" module="town" receiver="210001" baseline="0" title="Greenwell bazaar charter" flavour="Greenwell Grant must host a UN market town this quarter. Build one town module at headquarters and TRANSFER it TO FACTION 1 on the grant; UN opens a calorie-and-parts bazaar when accepted." />
+		<contract name="CT0008" location="R00017" issuer="1" trigger="give-module" reward-type="technology" reward="airgen" quantity="1" module="town" receiver="220001" baseline="0" title="Rivermark steppe charter" flavour="Rivermark Grant needs a civic shell on the same grid as HQ. Factory-build one town and TRANSFER it TO FACTION 1 at the grant; UN pays life-support tech for the steppe trade lane." />
+		<contract name="CT0009" location="R00022" issuer="1" trigger="give-module" reward-type="technology" reward="ctypln" quantity="1" module="town" receiver="230001" baseline="0" title="Sundock prairie charter" flavour="Sundock Grant carries a UN town charter on the landing strip cell. Build one town module and TRANSFER it TO FACTION 1 beside headquarters; UN opens the books when the frame is accepted." />
+		<contract name="CT0010" location="R00027" issuer="1" trigger="give-module" reward-type="technology" reward="servic" quantity="1" module="town" receiver="240001" baseline="0" title="Copse tundra charter" flavour="Copse Grant's UN charter seats a market town on the grant itself. Deliver one town module via TRANSFER TO FACTION 1 at HQ so seasonal convoys can trade without crowding corp stacks." />
+		<contract name="CT0011" location="R00045" issuer="1" trigger="give-module" reward-type="technology" reward="ctypln" quantity="1" module="town" receiver="250001" baseline="0" title="Ironclad marsh charter" flavour="Ironclad Grant must accept a prefab town on the grant grid. Build at headquarters and TRANSFER TO FACTION 1; UN licenses a metal-side parts market when the shell lands." />
+		<contract name="CT0012" location="R00049" issuer="1" trigger="give-module" reward-type="technology" reward="servic" quantity="1" module="town" receiver="260001" baseline="0" title="Oreline bench charter" flavour="Oreline Grant shares regolith with headquarters under a UN town charter. Factory-build one town and TRANSFER it TO FACTION 1 on the grant for ridge-camp maintenance contracts." />
+		<contract name="CT0013" location="R00054" issuer="1" trigger="give-module" reward-type="technology" reward="airgen" quantity="1" module="town" receiver="270001" baseline="0" title="Basalt thin-soil charter" flavour="Basalt Grant needs a town module seated on the thin-soil HQ cell. Build one civic shell and TRANSFER TO FACTION 1 at headquarters so assay crews can trade breathing kits legally." />
+		<contract name="CT0014" location="R00059" issuer="1" trigger="give-module" reward-type="technology" reward="ctypln" quantity="1" module="town" receiver="280001" baseline="0" title="Silicate slope charter" flavour="Silicate Grant carries a UN exchange charter beside headquarters. Build one town module and TRANSFER TO FACTION 1 on the grant terrace; UN registers spare-parts and crew-air trade." />
+		<contract name="CT0015" location="R00063" issuer="1" trigger="give-module" reward-type="technology" reward="airgen" quantity="1" module="town" receiver="290001" baseline="0" title="Fission market charter" flavour="Fission Grant's isotope lane needs a UN market town on the grant grid. Factory-build one town and TRANSFER TO FACTION 1 at headquarters; UN pays life-support tech on acceptance." />
 	</contracts>
 	<galaxy>
 		<system name="SS0001" name-en="Helios" X="0" Y="0" Z="0">
@@ -408,12 +424,14 @@
 							<itemstack type="h2o2" quantity="200" />
 							<itemstack type="iron" quantity="40" />
 							<itemstack type="carbon" quantity="40" />
-							<itemstack type="silici" quantity="10" />
+							<itemstack type="silici" quantity="15" />
+							<itemstack type="titani" quantity="2" />
+							<itemstack type="oil" quantity="5" />
 							<upkeep type="cash" quantity="20" />
 						</modulestack>
-						<modulestack name="200004" type="cdrill" quantity="1" faction="2">
+						<modulestack name="200004" type="sdrill" quantity="1" faction="2">
 							<itemstack type="terran" quantity="6" />
-							<upkeep type="cash" quantity="50" />
+							<upkeep type="cash" quantity="35" />
 						</modulestack>
 						<modulestack name="200005" type="factry" quantity="2" faction="2">
 							<itemstack type="terran" quantity="20" />
@@ -448,6 +466,16 @@
 					<resource type="carbon" quantity="20" />
 					<resource type="iron" quantity="15" />
 					<resource type="water" quantity="140" />
+					<resource type="oil" quantity="25" />
+					<modulestack name="140010" type="brmstr" quantity="2" faction="14" name-en="Mid Vale brush pack" />
+					<deep-pocket>
+						<resource type="titani" quantity="55" />
+					</deep-pocket>
+					<anomaly type="spectral" points="8" description="Photic-band albedo steps on an otherwise uniform grassland — buried oxide or organics.">
+						<reward band="0" kind="survey-blurb" />
+						<reward band="0" kind="research-rp" technology="optins" quantity="20" />
+						<reward band="2" kind="research-rp" technology="survts" quantity="8" />
+					</anomaly>
 				</region>
 				<region name="R00010" name-en="Greenwell Grant" X="3" Y="1" type="grassl">
 					<capacity group="settlement" quantity="8" />
@@ -479,12 +507,14 @@
 							<itemstack type="h2o2" quantity="200" />
 							<itemstack type="iron" quantity="40" />
 							<itemstack type="carbon" quantity="40" />
-							<itemstack type="silici" quantity="10" />
+							<itemstack type="silici" quantity="15" />
+							<itemstack type="titani" quantity="2" />
+							<itemstack type="oil" quantity="5" />
 							<upkeep type="cash" quantity="20" />
 						</modulestack>
-						<modulestack name="210004" type="cdrill" quantity="1" faction="3">
+						<modulestack name="210004" type="sdrill" quantity="1" faction="3">
 							<itemstack type="terran" quantity="6" />
-							<upkeep type="cash" quantity="50" />
+							<upkeep type="cash" quantity="35" />
 						</modulestack>
 						<modulestack name="210005" type="factry" quantity="2" faction="3">
 							<itemstack type="terran" quantity="20" />
@@ -517,6 +547,16 @@
 					<resource type="iron" quantity="70" />
 					<resource type="silici" quantity="20" />
 					<resource type="carbon" quantity="5" />
+					<deep-pocket>
+						<resource type="titani" quantity="45" />
+						<resource type="iron" quantity="60" />
+					</deep-pocket>
+					<anomaly type="magnetic" points="8" description="Aeromagnetic gradient over banded iron: a subsurface ferrous lens, not yet cored.">
+						<reward band="0" kind="survey-blurb" />
+						<reward band="0" kind="research-rp" technology="optins" quantity="20" />
+						<reward band="2" kind="research-rp" technology="gminng" quantity="8" />
+						<reward band="2" kind="resource" item="iron" quantity="1" />
+					</anomaly>
 				</region>
 				<region name="R00012" name-en="East Dune" X="5" Y="1" type="dust">
 					<exit region="R00011">
@@ -701,12 +741,14 @@
 							<itemstack type="h2o2" quantity="200" />
 							<itemstack type="iron" quantity="40" />
 							<itemstack type="carbon" quantity="40" />
-							<itemstack type="silici" quantity="10" />
+							<itemstack type="silici" quantity="15" />
+							<itemstack type="titani" quantity="2" />
+							<itemstack type="oil" quantity="5" />
 							<upkeep type="cash" quantity="20" />
 						</modulestack>
-						<modulestack name="220004" type="cdrill" quantity="1" faction="4">
+						<modulestack name="220004" type="sdrill" quantity="1" faction="4">
 							<itemstack type="terran" quantity="6" />
-							<upkeep type="cash" quantity="50" />
+							<upkeep type="cash" quantity="35" />
 						</modulestack>
 						<modulestack name="220005" type="factry" quantity="2" faction="4">
 							<itemstack type="terran" quantity="20" />
@@ -738,6 +780,15 @@
 					</exit>
 					<resource type="iron" quantity="80" />
 					<resource type="silici" quantity="25" />
+					<deep-pocket>
+						<resource type="copper" quantity="40" />
+					</deep-pocket>
+					<anomaly type="seismic" points="8" description="Microseismic cluster under the ridge crest; shallow void or fault, not volcanic.">
+						<reward band="0" kind="survey-blurb" />
+						<reward band="0" kind="research-rp" technology="optins" quantity="20" />
+						<reward band="2" kind="research-rp" technology="seisns" quantity="8" />
+						<reward band="2" kind="resource" item="water" quantity="1" />
+					</anomaly>
 				</region>
 				<region name="R00019" name-en="Mid Pelagic" X="0" Y="3" type="ocean">
 					<exit region="R00020">
@@ -820,12 +871,14 @@
 							<itemstack type="h2o2" quantity="200" />
 							<itemstack type="iron" quantity="40" />
 							<itemstack type="carbon" quantity="40" />
-							<itemstack type="silici" quantity="10" />
+							<itemstack type="silici" quantity="15" />
+							<itemstack type="titani" quantity="2" />
+							<itemstack type="oil" quantity="5" />
 							<upkeep type="cash" quantity="20" />
 						</modulestack>
-						<modulestack name="230004" type="cdrill" quantity="1" faction="5">
+						<modulestack name="230004" type="sdrill" quantity="1" faction="5">
 							<itemstack type="terran" quantity="6" />
-							<upkeep type="cash" quantity="50" />
+							<upkeep type="cash" quantity="35" />
 						</modulestack>
 						<modulestack name="230005" type="factry" quantity="2" faction="5">
 							<itemstack type="terran" quantity="20" />
@@ -841,6 +894,9 @@
 							<upkeep type="cash" quantity="80" />
 						</modulestack>
 					</modulestack>
+					<deep-pocket>
+						<resource type="titani" quantity="50" />
+					</deep-pocket>
 				</region>
 				<region name="R00023" name-en="East Steppe" X="4" Y="3" type="grassl">
 					<capacity group="settlement" quantity="4" />
@@ -860,6 +916,13 @@
 					<resource type="carbon" quantity="20" />
 					<resource type="iron" quantity="18" />
 					<resource type="water" quantity="130" />
+					<modulestack name="140020" type="mulcrw" quantity="1" faction="14" name-en="East Steppe mulch crawler" />
+					<anomaly type="gravimetric" points="8" description="Local g anomaly on dense basement rock under steppe grass; mass concentration worth a gravimeter pass.">
+						<reward band="0" kind="survey-blurb" />
+						<reward band="0" kind="research-rp" technology="optins" quantity="20" />
+						<reward band="2" kind="research-rp" technology="seisns" quantity="8" />
+						<reward band="2" kind="resource" item="tungst" quantity="1" />
+					</anomaly>
 				</region>
 				<region name="R00024" name-en="East Crag" X="5" Y="3" type="mountn">
 					<exit region="R00023">
@@ -939,12 +1002,14 @@
 							<itemstack type="h2o2" quantity="200" />
 							<itemstack type="iron" quantity="40" />
 							<itemstack type="carbon" quantity="40" />
-							<itemstack type="silici" quantity="10" />
+							<itemstack type="silici" quantity="15" />
+							<itemstack type="titani" quantity="2" />
+							<itemstack type="oil" quantity="5" />
 							<upkeep type="cash" quantity="20" />
 						</modulestack>
-						<modulestack name="240004" type="cdrill" quantity="1" faction="6">
+						<modulestack name="240004" type="sdrill" quantity="1" faction="6">
 							<itemstack type="terran" quantity="6" />
-							<upkeep type="cash" quantity="50" />
+							<upkeep type="cash" quantity="35" />
 						</modulestack>
 						<modulestack name="240005" type="factry" quantity="2" faction="6">
 							<itemstack type="terran" quantity="20" />
@@ -999,6 +1064,14 @@
 							<upkeep type="cash" quantity="10" />
 						</modulestack>
 					</modulestack>
+					<deep-pocket>
+						<resource type="uraniu" quantity="25" />
+					</deep-pocket>
+					<anomaly type="spectral" points="8" description="Narrow IR emission line in a wind-cut saddle — heated outcrop or shallow geothermal bleed.">
+						<reward band="0" kind="survey-blurb" />
+						<reward band="0" kind="research-rp" technology="optins" quantity="20" />
+						<reward band="2" kind="research-rp" technology="survts" quantity="8" />
+					</anomaly>
 				</region>
 				<region name="R00029" name-en="Loess" X="4" Y="4" type="dust">
 					<exit region="R00028">
@@ -1016,6 +1089,7 @@
 					<resource type="iron" quantity="35" />
 					<resource type="silici" quantity="20" />
 					<resource type="carbon" quantity="15" />
+					<modulestack name="140030" type="canalp" quantity="1" faction="14" name-en="Loess canopy alpha" />
 				</region>
 				<region name="R00030" name-en="East Flat" X="5" Y="4" type="barren">
 					<exit region="R00029">
@@ -2704,11 +2778,12 @@
 							<itemstack type="silici" quantity="40" />
 							<itemstack type="copper" quantity="30" />
 							<itemstack type="uraniu" quantity="20" />
+							<itemstack type="oil" quantity="5" />
 							<upkeep type="cash" quantity="20" />
 						</modulestack>
-						<modulestack name="250004" type="cdrill" quantity="1" faction="7">
+						<modulestack name="250004" type="sdrill" quantity="1" faction="7">
 							<itemstack type="terran" quantity="6" />
-							<upkeep type="cash" quantity="50" />
+							<upkeep type="cash" quantity="35" />
 						</modulestack>
 						<modulestack name="250005" type="factry" quantity="2" faction="7">
 							<itemstack type="terran" quantity="20" />
@@ -2741,6 +2816,15 @@
 					<resource type="water" quantity="70" />
 					<resource type="silici" quantity="25" />
 					<resource type="titani" quantity="15" />
+					<modulestack name="150010" type="crstlb" quantity="2" faction="15" name-en="Slope burrow pack" />
+					<deep-pocket>
+						<resource type="titani" quantity="70" />
+					</deep-pocket>
+					<anomaly type="magnetic" points="8" description="Magnetite streaks in talus give a strong dipole; ore body or slag, not instrument drift.">
+						<reward band="0" kind="survey-blurb" />
+						<reward band="0" kind="research-rp" technology="optins" quantity="20" />
+						<reward band="2" kind="research-rp" technology="gminng" quantity="8" />
+					</anomaly>
 				</region>
 				<region name="R00047" name-en="West Spine" X="3" Y="1" type="mountn">
 					<exit region="R00046">
@@ -2777,6 +2861,16 @@
 					<resource type="uraniu" quantity="80" />
 					<resource type="silici" quantity="30" />
 					<resource type="copper" quantity="20" />
+					<deep-pocket>
+						<resource type="uraniu" quantity="35" />
+						<resource type="copper" quantity="30" />
+					</deep-pocket>
+					<anomaly type="radiometric" points="8" description="Elevated gamma count on pitchblende-bearing spine rock; handle as ore, not background.">
+						<reward band="0" kind="survey-blurb" />
+						<reward band="0" kind="research-rp" technology="optins" quantity="20" />
+						<reward band="2" kind="research-rp" technology="radtol" quantity="8" />
+						<reward band="2" kind="resource" item="uraniu" quantity="1" />
+					</anomaly>
 				</region>
 				<region name="R00049" name-en="Oreline Grant" X="5" Y="1" type="grassl">
 					<capacity group="settlement" quantity="8" />
@@ -2812,11 +2906,12 @@
 							<itemstack type="silici" quantity="40" />
 							<itemstack type="copper" quantity="30" />
 							<itemstack type="uraniu" quantity="20" />
+							<itemstack type="oil" quantity="5" />
 							<upkeep type="cash" quantity="20" />
 						</modulestack>
-						<modulestack name="260004" type="cdrill" quantity="1" faction="8">
+						<modulestack name="260004" type="sdrill" quantity="1" faction="8">
 							<itemstack type="terran" quantity="6" />
-							<upkeep type="cash" quantity="50" />
+							<upkeep type="cash" quantity="35" />
 						</modulestack>
 						<modulestack name="260005" type="factry" quantity="2" faction="8">
 							<itemstack type="terran" quantity="20" />
@@ -2885,6 +2980,15 @@
 					<resource type="water" quantity="70" />
 					<resource type="silici" quantity="25" />
 					<resource type="titani" quantity="15" />
+					<deep-pocket>
+						<resource type="copper" quantity="45" />
+					</deep-pocket>
+					<anomaly type="spectral" points="8" description="Silicate absorption feature shift on a bench terrace; altered regolith or glass.">
+						<reward band="0" kind="survey-blurb" />
+						<reward band="0" kind="research-rp" technology="optins" quantity="20" />
+						<reward band="2" kind="research-rp" technology="optins" quantity="8" />
+						<reward band="2" kind="resource" item="silici" quantity="1" />
+					</anomaly>
 				</region>
 				<region name="R00053" name-en="Crag" X="2" Y="2" type="mountn">
 					<exit region="R00052">
@@ -2903,6 +3007,15 @@
 					<resource type="copper" quantity="40" />
 					<resource type="silici" quantity="45" />
 					<resource type="iron" quantity="35" />
+					<modulestack name="150030" type="urstlk" quantity="1" faction="15" name-en="Crag umber stalker" />
+					<deep-pocket>
+						<resource type="silici" quantity="50" />
+					</deep-pocket>
+					<anomaly type="seismic" points="8" description="Reflected compressional wave off a shallow density contrast — void or ore lens.">
+						<reward band="0" kind="survey-blurb" />
+						<reward band="0" kind="research-rp" technology="optins" quantity="20" />
+						<reward band="2" kind="resource" item="copper" quantity="1" />
+					</anomaly>
 				</region>
 				<region name="R00054" name-en="Basalt Grant" X="3" Y="2" type="grassl">
 					<capacity group="settlement" quantity="8" />
@@ -2938,11 +3051,12 @@
 							<itemstack type="silici" quantity="40" />
 							<itemstack type="copper" quantity="30" />
 							<itemstack type="uraniu" quantity="20" />
+							<itemstack type="oil" quantity="5" />
 							<upkeep type="cash" quantity="20" />
 						</modulestack>
-						<modulestack name="270004" type="cdrill" quantity="1" faction="9">
+						<modulestack name="270004" type="sdrill" quantity="1" faction="9">
 							<itemstack type="terran" quantity="6" />
-							<upkeep type="cash" quantity="50" />
+							<upkeep type="cash" quantity="35" />
 						</modulestack>
 						<modulestack name="270005" type="factry" quantity="2" faction="9">
 							<itemstack type="terran" quantity="20" />
@@ -2974,6 +3088,7 @@
 					<resource type="silici" quantity="40" />
 					<resource type="titani" quantity="25" />
 					<resource type="iron" quantity="20" />
+					<modulestack name="150020" type="slgmnt" quantity="1" faction="15" name-en="Scree slag mantlet" />
 				</region>
 				<region name="R00056" name-en="East Peak" X="5" Y="2" type="mountn">
 					<exit region="R00055">
@@ -2992,6 +3107,15 @@
 					<resource type="uraniu" quantity="120" />
 					<resource type="silici" quantity="35" />
 					<resource type="copper" quantity="25" />
+					<deep-pocket>
+						<resource type="uraniu" quantity="40" />
+					</deep-pocket>
+					<anomaly type="radiometric" points="8" description="Hot spot on uraninite-rich crest; dosimeter spike above regional baseline.">
+						<reward band="0" kind="survey-blurb" />
+						<reward band="0" kind="research-rp" technology="optins" quantity="20" />
+						<reward band="2" kind="research-rp" technology="radtol" quantity="8" />
+						<reward band="2" kind="resource" item="uraniu" quantity="1" />
+					</anomaly>
 				</region>
 				<region name="R00057" name-en="Ridge" X="6" Y="2" type="grassl">
 					<capacity group="settlement" quantity="8" />
@@ -3084,11 +3208,12 @@
 							<itemstack type="silici" quantity="40" />
 							<itemstack type="copper" quantity="30" />
 							<itemstack type="uraniu" quantity="20" />
+							<itemstack type="oil" quantity="5" />
 							<upkeep type="cash" quantity="20" />
 						</modulestack>
-						<modulestack name="280004" type="cdrill" quantity="1" faction="10">
+						<modulestack name="280004" type="sdrill" quantity="1" faction="10">
 							<itemstack type="terran" quantity="6" />
-							<upkeep type="cash" quantity="50" />
+							<upkeep type="cash" quantity="35" />
 						</modulestack>
 						<modulestack name="280005" type="factry" quantity="2" faction="10">
 							<itemstack type="terran" quantity="20" />
@@ -3223,11 +3348,12 @@
 							<itemstack type="silici" quantity="40" />
 							<itemstack type="copper" quantity="30" />
 							<itemstack type="uraniu" quantity="20" />
+							<itemstack type="oil" quantity="5" />
 							<upkeep type="cash" quantity="20" />
 						</modulestack>
-						<modulestack name="290004" type="cdrill" quantity="1" faction="11">
+						<modulestack name="290004" type="sdrill" quantity="1" faction="11">
 							<itemstack type="terran" quantity="6" />
-							<upkeep type="cash" quantity="50" />
+							<upkeep type="cash" quantity="35" />
 						</modulestack>
 						<modulestack name="290005" type="factry" quantity="2" faction="11">
 							<itemstack type="terran" quantity="20" />
@@ -6833,6 +6959,7 @@
 						</exit>
 						<resource type="food" quantity="40" />
 						<resource type="water" quantity="60" />
+						<modulestack name="160030" type="frostb" quantity="1" faction="16" name-en="Haven frost brood" />
 					</region>
 					<region name="R00434" name-en="Haven 1,1" X="1" Y="1" type="grassl">
 						<capacity group="settlement" quantity="8" />
@@ -6850,6 +6977,7 @@
 						</exit>
 						<resource type="food" quantity="40" />
 						<resource type="water" quantity="60" />
+						<modulestack name="160010" type="ribgrz" quantity="2" faction="16" name-en="Haven ridge grazers" />
 					</region>
 					<region name="R00435" name-en="Haven 2,1" X="2" Y="1" type="grassl">
 						<capacity group="settlement" quantity="8" />
@@ -6867,6 +6995,7 @@
 						</exit>
 						<resource type="food" quantity="40" />
 						<resource type="water" quantity="60" />
+						<modulestack name="160020" type="glacra" quantity="1" faction="16" name-en="Haven glacier crab" />
 					</region>
 					<region name="R00436" name-en="Haven 3,1" X="3" Y="1" type="grassl">
 						<capacity group="settlement" quantity="8" />
@@ -7857,6 +7986,7 @@
 					<resource type="carbon" quantity="20" />
 					<resource type="water" quantity="80" />
 					<resource type="iron" quantity="12" />
+					<modulestack name="170010" type="silskk" quantity="2" faction="17" name-en="Graph silicate skitters" />
 				</region>
 				<region name="R00504" name-en="Graph 3,0" X="3" Y="0" type="grassl">
 					<capacity group="settlement" quantity="8" />
@@ -7971,6 +8101,7 @@
 					<resource type="carbon" quantity="20" />
 					<resource type="water" quantity="80" />
 					<resource type="iron" quantity="12" />
+					<modulestack name="170020" type="qtzrol" quantity="1" faction="17" name-en="Graph quartz roller" />
 				</region>
 				<region name="R00511" name-en="Graph 4,1" X="4" Y="1" type="grassl">
 					<capacity group="settlement" quantity="8" />
@@ -8042,6 +8173,7 @@
 					<resource type="carbon" quantity="20" />
 					<resource type="water" quantity="80" />
 					<resource type="iron" quantity="12" />
+					<modulestack name="170030" type="spngrf" quantity="1" faction="17" name-en="Graph spine reef" />
 				</region>
 				<region name="R00515" name-en="Graph 2,2" X="2" Y="2" type="grassl">
 					<capacity group="settlement" quantity="8" />

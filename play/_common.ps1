@@ -210,7 +210,7 @@ function Update-WebsiteStatus {
 		[string]$OutPath,
 		[string]$NextTurnAt
 	)
-	$args = @('-RunId', $RunId)
+	$args = @($RunId)
 	if (-not [string]::IsNullOrWhiteSpace($OutPath)) {
 		$args += @('-OutPath', $OutPath)
 	}

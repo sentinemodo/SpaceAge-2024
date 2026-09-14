@@ -97,6 +97,10 @@ namespace SpaceAge
 			}
 			line = string.Format("{0}{1}", line, this.IsImmobile ? ", immobile" : "");
 			// IsArmed is used for combat logic but not shown in reports
+			if (!this.Sharing)
+			{
+				line = string.Format("{0}, not sharing", line);
+			}
 
             if (this.Owner != null & this.Owner != faction)
             {

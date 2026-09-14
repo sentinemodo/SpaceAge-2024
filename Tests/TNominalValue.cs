@@ -61,9 +61,12 @@ namespace UnitTests
 
 			this.game.GenerateOffers();
 
-			Offer ironOffer = this.game.Offers[EOfferType.SellItems][ItemType.All["iron"]][city].GetIndex(0);
-			Assert.That(ironOffer.Quantity, Is.EqualTo(10));
-			Assert.That(ironOffer.Price, Is.EqualTo(3));
+			ItemType nomtest = ItemType.All["nomtest"];
+			Assert.That(this.game.Offers[EOfferType.BuyItems][nomtest][city].Count, Is.EqualTo(0),
+				"fixture item must not be on the city settlement buy book or auto-sell is suppressed");
+			Offer sellOffer = this.game.Offers[EOfferType.SellItems][nomtest][city].GetIndex(0);
+			Assert.That(sellOffer.Quantity, Is.EqualTo(10));
+			Assert.That(sellOffer.Price, Is.EqualTo(3));
 		}
 
 		private string FixtureDir()

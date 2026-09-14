@@ -15,6 +15,7 @@ namespace SpaceAge
 		public IContractTrigger Trigger { get; set; }
 		public Technology RewardTechnology { get; set; }
 		public ModuleStack RewardStack { get; set; }
+		public int RewardCash { get; set; }
 		public string Title { get; set; }
 		public string Flavour { get; set; }
 		public bool CreatedThisSession { get; set; }
@@ -95,6 +96,14 @@ namespace SpaceAge
 					throw new Exception("Unknown contract reward unit: " + elContract.GetAttribute("reward"));
 				}
 			}
+			else if (rewardType == "cash")
+			{
+				this.RewardCash = Convert.ToInt32(elContract.GetAttribute("reward"));
+				if (this.RewardCash < 1)
+				{
+					throw new Exception("Contract cash reward must be a positive amount.");
+				}
+			}
 			else
 			{
 				throw new Exception("Unknown contract reward type: " + rewardType);
@@ -108,6 +117,10 @@ namespace SpaceAge
 			else if (triggerType == "research")
 			{
 				this.Trigger = ResearchWreckageTrigger.Load(elContract);
+			}
+			else if (triggerType == "destroy-stack")
+			{
+				this.Trigger = DestroyStackTrigger.Load(elContract);
 			}
 			else
 			{
@@ -134,6 +147,11 @@ namespace SpaceAge
 			{
 				elContract.SetAttribute("reward-type", "unit");
 				elContract.SetAttribute("reward", this.RewardStack.Name);
+			}
+			else if (this.RewardCash > 0)
+			{
+				elContract.SetAttribute("reward-type", "cash");
+				elContract.SetAttribute("reward", this.RewardCash.ToString());
 			}
 			else
 			{
@@ -167,6 +185,14 @@ namespace SpaceAge
 			if (this.RewardStack != null)
 			{
 				this.awardUnit(week, winner);
+				this.issueCompletionPress(winner);
+				return;
+			}
+
+			if (this.RewardCash > 0)
+			{
+				this.awardCash(week, winner);
+				this.issueCompletionPress(winner);
 				return;
 			}
 
@@ -176,8 +202,8 @@ namespace SpaceAge
 			}
 
 			GiveModuleTrigger give = this.Trigger as GiveModuleTrigger;
-			ModuleStack rewardStack = (give != null) ? give.LastGiverStack : null;
-			if (rewardStack != null && ModuleStack.All.ContainsKey(rewardStack.Name))
+			ModuleStack rewardStack = this.findTechnologyRewardStack(give, winner);
+			if (rewardStack != null)
 			{
 				rewardStack.ReceiveTechnologyCopy(
 					this.RewardTechnology,
@@ -192,6 +218,95 @@ namespace SpaceAge
 					this.Name,
 					this.RewardTechnology.ReportName));
 
+			if (this.Location != null)
+			{
+				this.Location.EventReports.Add(
+					week,
+					string.Format("contract {0} completed by {1}.",
+						this.Name,
+						winner.ReportName));
+			}
+
+			this.issueCompletionPress(winner);
+		}
+
+		private void issueCompletionPress(Faction winner)
+		{
+			if (this.Issuer == null || winner == null || this.Location == null)
+			{
+				return;
+			}
+
+			string scopeId = PressRelease.ResolveScopeId(this.Location);
+			if (string.IsNullOrEmpty(scopeId))
+			{
+				return;
+			}
+
+			string descriptor = string.IsNullOrEmpty(this.Title) ? this.Name : this.Title;
+			string title = string.Format("{0} closes {1}", winner.FullName, descriptor);
+			string flavour = string.Format(
+				"United Star Nations records {0}'s fulfillment of {1} at {2} on {3}.",
+				winner.FullName,
+				this.Name,
+				this.Location.FullName,
+				PressRelease.ScopeReportName(scopeId));
+			new PressRelease(this.Issuer, title, flavour, false, scopeId);
+		}
+
+		private ModuleStack findTechnologyRewardStack(GiveModuleTrigger give, Faction winner)
+		{
+			if (give == null || winner == null)
+			{
+				return null;
+			}
+
+			ModuleStack rewardStack = give.LastGiverStack;
+			if (rewardStack != null
+				&& rewardStack.Owner == winner
+				&& ModuleStack.All.ContainsKey(rewardStack.Name))
+			{
+				return rewardStack;
+			}
+
+			if (this.Location != null)
+			{
+				foreach (ModuleStack stack in this.Location.ModuleStacks.Values)
+				{
+					if (stack.Owner == winner)
+					{
+						return stack;
+					}
+				}
+			}
+
+			foreach (ModuleStack stack in ModuleStack.All.Values)
+			{
+				if (stack.Owner == winner)
+				{
+					return stack;
+				}
+			}
+
+			if (rewardStack != null && ModuleStack.All.ContainsKey(rewardStack.Name))
+			{
+				return rewardStack;
+			}
+
+			return null;
+		}
+
+		private void awardCash(int week, Faction winner)
+		{
+			winner.Bank.Credit(
+				week,
+				this.RewardCash,
+				string.Format("contract {0} completion.", this.Name));
+			winner.EventReports.Add(
+				week,
+				string.Format("completed contract {0} and received {1} cash.",
+					this.Name,
+					this.RewardCash));
 			if (this.Location != null)
 			{
 				this.Location.EventReports.Add(
@@ -273,6 +388,31 @@ namespace SpaceAge
 				return lines;
 			}
 
+			DestroyStackTrigger destroy = this.Trigger as DestroyStackTrigger;
+			if (destroy != null)
+			{
+				if (string.IsNullOrEmpty(this.Title))
+				{
+					lines.Add(string.Format("  {0}: destroy {1}.",
+						this.Name,
+						destroy.Target.ReportName));
+				}
+				if (!string.IsNullOrEmpty(this.Flavour))
+				{
+					lines.Add(string.Format("    {0}", this.Flavour));
+				}
+				if (this.RewardCash > 0)
+				{
+					lines.Add(string.Format("    Reward: {0} cash.", this.RewardCash));
+				}
+				else if (this.RewardTechnology != null)
+				{
+					lines.Add(string.Format("    Reward: {0} technology.",
+						this.RewardTechnology.ReportName));
+				}
+				return lines;
+			}
+
 			GiveModuleTrigger give = this.Trigger as GiveModuleTrigger;
 			if (give == null)
 			{
@@ -305,7 +445,11 @@ namespace SpaceAge
 			{
 				lines.Add(string.Format("    {0}", this.Flavour));
 			}
-			if (this.RewardTechnology != null)
+			if (this.RewardCash > 0)
+			{
+				lines.Add(string.Format("    Reward: {0} cash.", this.RewardCash));
+			}
+			else if (this.RewardTechnology != null)
 			{
 				lines.Add(string.Format("    Reward: {0} technology.",
 					this.RewardTechnology.ReportName));

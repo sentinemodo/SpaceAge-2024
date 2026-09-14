@@ -257,16 +257,18 @@ namespace SpaceAge
 				{
 					if (this.Producer.Fuel.Count > 0)
 					{
-						if (this.Producer.ItemStacks.Has(this.Producer.Fuel))
+						IItemStacksHolder fuelHolder = this.Producer.FindItemHolderAvailableTo(this.Producer, this.Producer.Fuel);
+						if (fuelHolder != null)
 						{
-							this.Producer.ItemStacks.Minus(this.Producer.Fuel);
-							this.Producer.EventReports.Add(
-									week,
-									string.Format("consumed {0} as fuel.",
-									this.Producer.Fuel.ReportList));
+							fuelHolder.ItemStacks.Minus(this.Producer.Fuel);
+							fuelHolder.EventReports.Add(
+								week,
+								string.Format("consumed {0} as fuel{1}.",
+								this.Producer.Fuel.ReportList,
+								(fuelHolder == this.Producer) ? string.Empty : string.Concat(" for ", this.Producer.ReportName)));
 
 							Fuelled fuelled = new Fuelled(this.Producer, this.Producer.FuelDuration);
-                            fuelled.Use();
+							fuelled.Use();
 						}
 						else
 						{
@@ -294,7 +296,7 @@ namespace SpaceAge
 			{
                 if (this.Technology.UseConsumeItems != null)
                 {
-                    return this.Producer.ItemStacks.Has(this.Technology.UseConsumeItems);
+                    return this.Producer.HasItemsWithSharing(this.Technology.UseConsumeItems);
                 } else
                 {
                     return true;
@@ -394,7 +396,7 @@ namespace SpaceAge
 					else
 					{
 					// start production, consume resources
-					this.Producer.ItemStacks.Minus(this.Technology.UseConsumeItems);
+					this.Producer.ConsumeItemsWithSharing(this.Technology.UseConsumeItems, week);
 
 					switch (this.Technology.ProductionType)
 					{

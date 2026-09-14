@@ -37,6 +37,7 @@ namespace SpaceAge
             this.ModuleStacks.LoadXml(elModuleStack, this);
             this.Technologies.LoadXml(elModuleStack, this);
 			this.ResearchPoints = this.XMLAssignInteger(elModuleStack.GetAttribute("research-points"), 0);
+			this.ResearchOutputRemainder = this.XMLAssignInteger(elModuleStack.GetAttribute("research-output-remainder"), 0);
 
             this.Tactics.LoadXml(elModuleStack, this);
 
@@ -47,6 +48,10 @@ namespace SpaceAge
 			if (elModuleStack.HasAttribute("allow-bank"))
 			{
 				this.AllowBank = this.XMLAssignBoolean(elModuleStack.GetAttribute("allow-bank"), true);
+			}
+			if (elModuleStack.HasAttribute("sharing"))
+			{
+				this.Sharing = this.XMLAssignBoolean(elModuleStack.GetAttribute("sharing"), true);
 			}
 
         }
@@ -72,6 +77,10 @@ namespace SpaceAge
 			{
 				this.xmlElement.SetAttribute("research-points", this.ResearchPoints.ToString());
 			}
+			if (this.ResearchOutputRemainder > 0)
+			{
+				this.xmlElement.SetAttribute("research-output-remainder", this.ResearchOutputRemainder.ToString());
+			}
             this.ItemStacks.SaveXml(doc, this.xmlElement, faction);
             this.Upkeep.SaveXml(doc, this.xmlElement, faction, "upkeep");
             this.Tactics.SaveXml(doc, this.xmlElement);
@@ -86,6 +95,10 @@ namespace SpaceAge
 			if (!this.AllowBank)
 			{
 				this.xmlElement.SetAttribute("allow-bank", "false");
+			}
+			if (!this.Sharing)
+			{
+				this.xmlElement.SetAttribute("sharing", "false");
 			}
             return this.xmlElement;
         }

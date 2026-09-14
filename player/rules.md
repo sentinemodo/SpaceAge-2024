@@ -122,7 +122,7 @@ After week 13: **quarterly maintenance**, then **quarterly wounded outcome**, th
 **End of turn (once):**
 
 - Bank: quarterly interest (`AddQuarterlyInterest`). Balance is stored and reported as **whole credits** (rounded half away from zero).
-- `UpdateRates` — each quarter after bank interest: (1) for each region that already posted an item price, set that price to the **galaxy-wide average** of all regions that posted that item (integer, min 1 when average ≥ 0.5); standing offer **objects** keep their saved price — only regional price lists drift; (2) player factions 2–11: if balance > 5000, deposit rate −0.005 (floor 0.01); if balance < 0, credit rate +0.005 (ceiling 0.25).
+- `UpdateRates` — each quarter after bank interest: (1) **offer-pressure drift** per region — standing buy bids **below** list pull the regional price down (max **10%**/quarter toward the highest such bid); standing sell asks **above** list pull it up (max **10%**/quarter toward the lowest such ask); when both apply, targets are averaged first. Bids/asks that are **economic outliers** are ignored for drift (sell ask > **10×** list; buy bid < list÷**10**, e.g. bid 1 at list 100). (2) then sync each posted item price to the **galaxy-wide average** across regions (integer, min 1 when average ≥ 0.5). Standing offer **objects** keep their saved price — only regional price lists move; (3) player factions 2–11: if balance > 5000, deposit rate −0.005 (floor 0.01); if balance < 0, credit rate +0.005 (ceiling 0.25).
 - `GenerateOffers` — NPC faction `[1]` stacks whose module type is `city` auto-list on-hand inventory as `SellItems` `Offer`s (same objects as XML `<selling>`; not leftover player `SELL` orders). Skips cash. Skips an item type if that city already has a **buy or sell** offer for it (no simultaneous buy+sell of the same type; standing offers are not rewritten, so existing NPC city sells **remain** at their saved quantity and price). Quantity for a **new** listing is on-hand; price is `Market.GetPrice` (regional average if any region posted a price, else catalog nominal `value`, else 0); skip if price ≤ 0. Farms and other non-city stacks are not auto-listed. Listings appear on this turn’s reports and save; weekly buy matching (step 6) can hit them from **next** turn. Duration-0 leftover `receiving-items` on cities (old market delivery) **persist** after save but **never complete**; there is no player verb that clears them.
 
 Standing `@buy` / `@sell` stay on the order list and retry each week at step 6. A successful regional buy marks the leftover `BUY` executed for that week (same as before); `@buy` retries next week. NPC city auto-listings have no leftover `SELL` and persist as market `Offer`s. `ATTACK` / `TACTIC` / `DECLARE` during step 2 only set stance; shooting is step 7.
@@ -159,9 +159,13 @@ The two kinds are independent except where you chain them with `-` / `+`. An imm
 
 Hard-science campaign drafts should follow these patterns. Ground every id in the **text report** and orders template at the bottom — do not invent stack ids.
 
-### Activating disabled module stacks
+### Operational vs deactivated stacks
 
-A stack marked **disabled** in the report is not yet operational (`Online=false`, or `Online=true` but missing crew, energy, fuel, or repairs). **`SET ONLINE TRUE`** brings the whole stack online (every module copy). **`ACTIVATE`** turns player-inactive copies back on without touching `Online`. Long orders (`USE`, `PRODUCE`, `REPAIR`, …) then require `CanOperate`:
+Turn-1 campaign stacks start **online** with crew already aboard nested modules. Do **not** issue **`SET ONLINE TRUE`** unless the report marks a stack **deactivated** (`Online=false`, e.g. captured modules).
+
+**`ACTIVATE` / `DEACTIVATE`** toggle individual module copies within a stack (`module.Activated`). Use **`DEACTIVATE`** to park modules you are not running; use **`ACTIVATE`** only to turn copies back on after you deactivated them. Do not use **`ACTIVATE`** as a bootstrap substitute for **`SET ONLINE TRUE`**.
+
+A stack marked **disabled** in the report is online but not yet operational — usually missing **crew**, **energy**, **fuel**, or **repairs**. Long orders (`USE`, `PRODUCE`, `REPAIR`, …) require `CanOperate`:
 
 - sufficient **crew** (`terran` items on the stack),
 - sufficient **energy** from the root production tree,
@@ -169,16 +173,15 @@ A stack marked **disabled** in the report is not yet operational (`Online=false`
 - **repaired** damage when modules are damaged,
 - other catalog **operate-in** conditions as applicable.
 
-To activate a module stack it must receive required inputs — **`GET`** them from other stacks at the same location, or **`BUY`** at a UN market after **`WITHDRAW`** enough cash into a trading stack.
+Stage inputs with **`GET`** from other stacks at the same location, or **`BUY`** at a UN market after **`WITHDRAW`** cash into a trading stack.
 
 Typical bootstrap at headquarters (SampleGame and campaign turn 1):
 
-1. **`SET ONLINE TRUE`** on each production stack you intend to run this quarter.
-2. **Staff crew** — if the report shows `crew: N/0`, either **`GET` `terran`** from headquarters/cargo, or **buy crew at market** (see below).
-3. **`GET` fuel and inputs** — e.g. `@get all carbon from <cdrill-id>` into the cargo bay, then coal plant `@produce energy`.
-4. **`@produce energy`** on coal or wind plants so nested stacks meet energy requirements.
-5. **`@use farmng` / `@use hcdril`** once the stack is operational.
-6. **`@get`** surplus into the cargo bay; **`SELL … AT AVERAGE`** for exports; local **`@buy … AT AVERAGE`** (or **`AT +N`**) for metals (see [BUY](#buy)).
+1. **Staff crew** — if the report shows `crew: N/0`, either **`GET` `terran`** from headquarters/cargo, or **buy crew at market** (see below).
+2. **`GET` fuel and inputs** — e.g. `@get all carbon from <cdrill-id>` into the cargo bay, then coal plant `@produce energy`.
+3. **`@produce energy`** on coal or wind plants so nested stacks meet energy requirements.
+4. **`@use farmng` / `@use hcdril`** / **`@use twnbld`** (factory builds) once the stack can operate.
+5. **`@get`** surplus into the cargo bay; **`SELL … AT AVERAGE`** for exports; local **`@buy`** for metals (see [BUY](#buy) — no **`AT AVERAGE`** on BUY).
 
 #### Buy crew when short (campaign turn 1 example)
 
@@ -191,12 +194,10 @@ withdraw 1500
 @buy 25 terran at 50
 
 #modulestack 200006
-set online true
 get 15 terran from 200003
 @use farmng
 
 #modulestack 200004
-set online true
 get 6 terran from 200003
 @use hcdril
 ```
@@ -210,6 +211,8 @@ Order stacks on the **same subject**: HQ `@produce cash`, cargo bay `@get` / `@s
 **Syntax:** `MOVE <dest> [<dest2> …]` on one line — e.g. `move R00014 R00009` walks Grant → Farm Belt → Mid Vale using report exit durations.
 
 **Subject:** a **mobile `#modulestack`** only (shuttle, infantry stack, ship hull, etc.). Immobile stacks (`corphq`, `cargob`, …) cannot move.
+
+**Space fuel on MOVE:** pre-flight fuel applies to the mover and nested **propulsion** modules only (e.g. reaction drive). Nested passengers such as hangar-launched drones do not block the parent hull's MOVE.
 
 **People travel with vehicles, not alone.** A `#person` cannot take `MOVE` — `MoveOrder` casts the subject to `ModuleStack` and throws `InvalidCastException`. Board the CEO on a vehicle first:
 
@@ -237,19 +240,24 @@ Use `ACTIVE` + `STACK` (or start the turn already nested under a mover). Conditi
 sell <N> food at average
 
 #modulestack <cdrill-id>
-set online true
 @use hcdril
 
 #modulestack <farms-id>
-set online true
 @use farmng
 
 #modulestack <cplant-id>
-set online true
 @produce energy
+
+#modulestack <factry-id>
+get 30 iron from <cargob-id>
+get 2 titani from <cargob-id>
+use twnbld as new1
+
+#modulestack new1
+transfer 1 to faction 1
 ```
 
-Replace ids from the report template. When nested stacks already show crew in turn-1 reports, skip the market-buy block above. Defer ground **`MOVE`** until a shuttle or other mobile stack exists; people ride on that stack.
+Replace ids from the report template. When nested stacks already show crew in turn-1 reports, skip the market-buy block above. **`use twnbld as new1`** (10 weeks) builds a **`town`** module on the factory stack; then **`transfer 1 to faction 1`** on that new stack hands it to United Star Nations at headquarters and completes turn-1 **CT0006–CT0015** **`give-module`** contracts (reward e.g. **`ctypln`**). Stage **30 iron** and **2 titani** on the factory first. Open contracts appear under **Contract reports:** in the faction report and **Contracts:** in the grant region. Defer ground **`MOVE`** until a shuttle or other mobile stack exists; people ride on that stack.
 
 ## Text vs XML
 
@@ -321,7 +329,7 @@ Posts a standing buy on the local market. During the week `Execute` only creates
 **Price:**
 
 - Omitted `AT` — any price (`MatchesAsk` accepts any ask; bid cap for clearing ties is regional `Market.GetPrice`).
-- `AT <number>` — max price per unit.
+- `AT <number>` — max price per unit (**must be ≥ 1**; zero/negative rejected at parse).
 - `AT AVERAGE` — cap at regional average (`Market.GetPrice`), same basis as [SELL](#sell) `AT AVERAGE`.
 - `AT AVERAGE +N` or shorthand **`AT +N`** — cap at average **+ N** (e.g. `@buy all terran at +1` outbids `@buy all terran` at list when both compete for the same sell).
 
@@ -453,12 +461,29 @@ Condition probe: succeeds if recursive cargo / nested module count / person pres
 
 **Syntax:**
 
-- `PRESS TITLE "<title>" [FLAVOUR|FLAVOR "<text>"]`
-- Bare tokens: first unused token is the title, the next is flavour. Title or flavour is required.
+- `PRESS [<planet-id>|<moon-id>] TITLE "<title>" [FLAVOUR|FLAVOR "<text>"]`
+- Optional scope: first token may be a planet or moon id (`P00001`, `M00003`, …). When set, only factions with stacks on that body see the release in **Press releases:** / galaxy body sections / `announce.*`.
+- Without scope: global press (all factions).
+- Bare tokens after scope: first unused token is the title, the next is flavour. Title or flavour is required.
 
 **Subject:** **faction** (`#faction` as subject). Also allowed **between turns**.
 
-Creates a `PressRelease` and reports `issued press release {title}.` on the issuer. If the subject is not a faction, Execute does nothing. `/no-turn` writes title and flavour into `announce.{turn}.{faction}.txt` for every faction (`Contract.All.WriteAnnouncements`).
+Creates a `PressRelease` and reports `issued press release {title}.` on the issuer. If the subject is not a faction, Execute does nothing. `/no-turn` writes scoped releases into `announce.{turn}.{faction}.txt` only for factions present on that body (`Contract.All.WriteAnnouncements`).
+
+**Contract completion press (automatic):** when a contract completes, UN (issuer faction **1**) posts a scoped press release on the contract location's planet or moon — title `{Interest} closes {contract title}`, flavour cites `{Interest}`, contract id, region, and body name. Visible in **Press releases:** on that body and in the faction report header when the reader has stacks there.
+
+### RUMOR
+
+**Syntax:**
+
+- `RUMOR <planet-id> TITLE "<title>" [FLAVOUR|FLAVOR "<text>"]`
+- Bare tokens after the planet id: first unused token is the title, the next is flavour. Title or flavour is required.
+
+**Subject:** **faction** (`#faction` as subject). Also allowed **between turns**.
+
+Creates an anonymous publication scoped to `<planet-id>`. The issuer is not shown on reports or announcements. Rumors persist in `<publications>` on save/load. Faction reports list **Rumors:** after **events:** and before **Contract reports:**. `/no-turn` also writes rumors into `announce.{turn}.{faction}.txt` (`Contract.All.WriteAnnouncements`).
+
+**Fauna rumors (automatic):** before each report generation and at the start of turn processing (`Events.Execute`), the engine scans fauna factions **14–17**. When a stack sits in a region **adjacent** to a region holding any settlement-group module, an anonymous rumor is added for that planet — title `Hostile fauna in {region name}`, flavour cites the module type, stack id, fauna region id, and a neighbouring settlement region. One rumor per stack (deduped by stack id). Treat as **contact** for diplomacy with that fauna faction.
 
 ### SEE
 
@@ -485,15 +510,16 @@ Lists a standing sell (`Offer`) and keeps a leftover `SELL` on the template. Mat
 
 ### SET
 
-**Syntax:** `SET AVOID|ONLINE|ALLOW BANK TRUE|FALSE`
+**Syntax:** `SET AVOID|ONLINE|ALLOW BANK|SHARING TRUE|FALSE`
 
 **Subject:** modulestack.
 
-Flag name and `TRUE`/`FALSE` are **case-insensitive**; Parse stores the flag as uppercase `AVOID`, `ONLINE`, or `ALLOW BANK`.
+Flag name and `TRUE`/`FALSE` are **case-insensitive**; Parse stores the flag as uppercase `AVOID`, `ONLINE`, `ALLOW BANK`, or `SHARING`.
 
 - `SET AVOID TRUE|FALSE` — sets `IsAvoiding`. Not a battle tactic (see `player/battle.md`).
 - `SET ONLINE TRUE|FALSE` — `ModuleStack.SetOnline`: stack `Online` and every `module.Online`. When `Online=false`, every copy reports **deactivated** and `QuantityOperational` is 0. Captured modules are left `Online=false`. Per-copy player shutdown is [DEACTIVATE](#deactivate); per-copy turn-on without changing `Online` is [ACTIVATE](#activate). Sample: `set online true`.
 - `SET ALLOW BANK TRUE|FALSE` — sets `AllowBank` on the stack (default **true** on new stacks and when the save omits `allow-bank`). When **false**, market buys and quarterly **cash upkeep** may spend only **local cash** on that stack — the faction bank is not debited (`HasBankAccess` is false). People nested on the stack inherit the parent’s setting. Sample: `set allow bank false` on a trading stack to cap market spend to withdrawn cash.
+- `SET SHARING TRUE|FALSE` — sets `Sharing` on the stack (default **true**). When **true**, other same-owner stacks in the same unit or region may draw that stack’s inventory (including nested stacks and crew-held items) to satisfy **USE** consume items, fuel, and quarterly upkeep after their own local `ItemStacks` are exhausted. When **false**, the stack is isolated (`not sharing` in reports). Sample: `set sharing false` on a private cargo reserve.
 
 ### STACK
 
@@ -515,11 +541,21 @@ Immobile stacks may only `destroy`. `TACTIC capture` and `TACTIC evade` report `
 
 ### TRANSFER
 
-**Syntax:** `TRANSFER <n> TO <id>`
+**Syntax:**
+
+- `TRANSFER <n> TO <stack-id>`
+- `TRANSFER ALL [DAMAGED] [MODULES] TO <stack-id|FACTION <id>>`
+- `TRANSFER MODULE <index> TO <stack-id|FACTION <id>>`
 
 **Subject:** modulestack (source).
 
-Moves `n` modules of this stack’s type onto an **existing** receiver. `n` must be a positive integer. The receiver id must already exist (no `newN` create). Module type is the transferer’s, same as XML load. Instantaneous: same type **merges** into the receiver; a different type **nests** under it. Fighter drones (`alndrn`) may only nest in a **location** (`STACK OUT`) or a **fighter drone bay** (`drnbay`); `TRANSFER` them onto a hull fails — target the bay. Shuttles (`shuttl`) may also nest under a frigate hull. Copies the source’s long-order-used flag onto the package so the receiver cannot take a second long this week. Emptying the last module removes the source stack. Notifies GIVE contracts. Fails with `TRANSFER failed. tried to transfer more modules than having.` Execute does not check same location. `ALL`, damaged-only, and `MODULE <index>` are not parsed.
+Moves modules of this stack’s type onto an **existing** receiver stack, or **changes ownership** to another faction. Module type is the transferer’s, same as XML load (`quantity`, optional `index`, optional `transfer-all` / `damaged-only`, or `receiver-faction` instead of `receiver`).
+
+**To a stack:** `n` must be a positive integer. The receiver id must already exist (no `newN` create). Instantaneous: same type **merges** into the receiver; a different type **nests** under it (nested package takes the receiver’s owner). Fighter drones (`alndrn`) may only nest in a **location** (`STACK OUT`) or a **fighter drone bay** (`drnbay`); `TRANSFER` them onto a hull fails — target the bay. Shuttles (`shuttl`) may also nest under a frigate hull.
+
+**To a faction:** `TRANSFER … TO FACTION <id>` hands the peeled modules to that faction at the transferer’s **current location** (root stack placed in the region). Use this to fulfill **`give-module`** contracts at the contract site when no issuer stack is available to receive a normal merge/nest — the delivery must still be at the contract location. Notifies open **`give-module`** contracts for that issuer and module type.
+
+Copies the source’s long-order-used flag onto the package so the receiver cannot take a second long this week. Emptying the last module removes the source stack. Notifies **`give-module`** contracts on stack delivery. Fails with `TRANSFER failed. tried to transfer more modules than having.` Execute does not check same location for stack targets.
 
 ### WITHDRAW
 
@@ -558,6 +594,8 @@ Alderson-gate hop. Parse takes **one** token; it must be an **Alderson Gate** id
 Walks a route in one order — e.g. `move R00014 R00009` (Grant → Farm Belt → Mid Vale). Each dest token is a **region**, **star**, **planet**, **moon**, **belt**, **alderson**, **anomaly**, or **orbit** id. Conditional `-move` / `+move` chains are optional; prefer listing all ground hops on one `MOVE` line for reconnaissance. Immobile stacks (e.g. `corphq`) cannot move. Stars, planets, moons, anomalies, and Alderson Gates resolve to their **orbit**. A **belt** token is the belt itself (location-type **space**, not a landing). Starts a `Moving` effect, consumes fuel when required, changes parent on arrival.
 
 **Exits on the report:** a **region** block includes `Exits:` (`Region.Report` → `Exits.Report`). A region destination prints `{name} [id] (x,y), {region type}, {ground|naval|space} travel duration N week(s).` A non-region destination prints that location’s `ReportName` plus the mode duration — `orbit [id], space travel duration N week(s).` for an orbit, or `{name} [id] at AU N, belt, space travel duration N week(s).` for a belt. Orbit reports and `Belt.Report` do not list exits (belt exits still exist in the save and are used by MOVE). Maps without `orbit=` / `belt=` / `alderson=` exits (SampleGame) never show those lines.
+
+**Exit hints** (appended before the trailing period, only when you **own** the source region): `, anomaly detected` toward an unresolved anomaly cell; `, deep pocket of resources detected` when you hold **cdrill** tech or module in the source region and the destination has a deep pocket; `, settlement detected` when the destination region holds any settlement-group module (`town`, `city`, `metropoly`, dome variants). Hints do not name the settlement or its owner.
 
 **Orbit atmosphere line** (`Orbit.HasAtmosphere`): each orbit header ends with `, has atmosphere` or `, has no atmosphere`. True when the orbit has `<resource>` or `<race>` entries, or the parent planet/moon has races, or parent `atmosphere` ≠ `none` (any non-none band — thin, terair, hostile — counts). Optional `suitable for {race}` lists orbit and inherited body races.
 
@@ -695,6 +733,8 @@ Starts `TrainingSkill` or `TrainingOfficer` (officer requires matching crew of t
 **Subject:** modulestack.
 
 Uses a loaded (or level-0) technology: consumes catalog inputs and after `use-time` produces items or a module. `AS` names the new module stack; `FOR` is the nest parent. `AS` and `FOR` are independent (`use wndtrb for 000021` is valid). Level 0 techs do not need to be copied onto the stack. Duration scales with `UseTime`, efficiency, and active quantity. `use-allowed-in` can restrict module **group**, a specific module type (`module="sckbay"` for shipboard pharmacy `[pharms]`), **location-type** (against `BodyEnvironment.EffectiveLocationType` — gas-giant orbits with atmosphere ≠ `none` count as `atmosphere`), **planet-type**, and **planet-atmosphere** (same band-token gate as `PRODUCE`; failure line `USE failed: {tech} cannot operate in {location}.`).
+
+**Consume items at the factory:** on job start, `USE` debits every catalog `use-consume` item from the **producer stack’s own `ItemStacks` first**, then from other same-owner stacks in the same region whose cargo has **`Sharing=true`** (including nested bays on the grant). Materials sitting in a sibling cargo bay with default sharing still count; a bay marked **`set sharing false`** does not. Best practice: **`get`** iron, titani, and other inputs onto the factory before **`use armcbt`** (same turn is fine), or leave HQ cargo sharing enabled. Check the factory line in the report for on-hand iron/titani before issuing `USE`. Failure: `USE failed: not enough resources.` with no production started.
 
 **Settlement temperature:** if the tech produces a **settlement**-group module, `BodyEnvironment.AllowsSettlement` must pass at the producer’s location. **Habitable** (planet default when XML omits `temperature`) always allows. **Cold** allows only module types `clddom` and `cryhab`. **Hot** allows only `hotdom`. Otherwise `USE failed: {module} cannot settle a {cold|hot} world.` SampleGame `Tests/data.xml` has none of those exception types. Moons with no `temperature` attribute load as **cold** (`ParseTemperature` of an empty string), so `USE popcnt` / `ctypln` / `dmecns` on a SampleGame moon fails this gate. Planets with no attribute load as **habitable**.
 

@@ -49,6 +49,34 @@ namespace SpaceAge
 			get { return this.resources; }
 		}
 
+		private Resources deepPocketResources = new Resources();
+		public Resources DeepPocketResources
+		{
+			get { return this.deepPocketResources; }
+		}
+
+		public bool HasDeepPocket
+		{
+			get { return this.deepPocketResources.Count > 0; }
+		}
+
+		private RegionAnomaly anomaly;
+		public RegionAnomaly Anomaly
+		{
+			get { return this.anomaly; }
+			set { this.anomaly = value; }
+		}
+
+		public bool HasAnomaly
+		{
+			get { return this.anomaly != null && !string.IsNullOrEmpty(this.anomaly.Type); }
+		}
+
+		public bool HasSettlement
+		{
+			get { return this.ModuleStacks.Quantity(EModuleTypesGroup.settlement) > 0; }
+		}
+
         public override ELocationType LocationType
         {
             get { return this.RegionType.LocationType; }
@@ -106,11 +134,38 @@ namespace SpaceAge
 			ReportLines reportLines = new ReportLines
             {
                 { this.reportHeader(), level },
-                { this.Exits.Report, level }
+                { this.Exits.Report(faction, this), level }
             };
 			if (this.resources.Count > 0)
 			{
 				reportLines.Add(this.Resources.Report, level);
+			}
+
+			if (this.HasDeepPocket && faction != null && this.HasCdrillTechnologyFor(faction))
+			{
+				string deepReport = this.DeepPocketResources.FormatReport("Deep resources");
+				if (deepReport != null)
+				{
+					reportLines.Add(deepReport, level);
+				}
+			}
+
+			if (this.HasAnomaly && faction != null)
+			{
+				if (this.Anomaly.IsResolved(faction))
+				{
+					reportLines.Add(string.Format("Anomaly survey: {0}.", this.Anomaly.Description), level);
+				}
+				else
+				{
+					int progress = this.Anomaly.GetProgress(faction);
+					if (progress > 0)
+					{
+						reportLines.Add(
+							string.Format("Anomaly survey in progress: {0}/{1}.", progress, this.Anomaly.Points),
+							level);
+					}
+				}
 			}
 
 			List<string> contractLines = Contract.All.Report(this);
@@ -149,6 +204,61 @@ namespace SpaceAge
 			{
 				return true;
 			}
+			return false;
+		}
+
+		public bool HasCdrillTechnologyFor(Faction faction)
+		{
+			if (faction == null)
+			{
+				return false;
+			}
+
+			Technology cdrillTechnology = Technology.All["cdrill"];
+			ModuleType cdrillModule = ModuleType.All["cdrill"];
+			foreach (ModuleStack root in this.ModuleStacks.Values)
+			{
+				if (this.hasCdrillCapabilityRecursive(root, faction, cdrillTechnology, cdrillModule))
+				{
+					return true;
+				}
+			}
+
+			return false;
+		}
+
+		private bool hasCdrillCapabilityRecursive(
+			ModuleStack stack,
+			Faction faction,
+			Technology cdrillTechnology,
+			ModuleType cdrillModule)
+		{
+			if (stack == null)
+			{
+				return false;
+			}
+
+			if (stack.Owner == faction)
+			{
+				if (stack.HasTechnology(cdrillTechnology))
+				{
+					return true;
+				}
+
+				if (stack.IsFormed && stack.ModuleType == cdrillModule)
+				{
+					return true;
+				}
+			}
+
+			foreach (ModuleStack child in stack.ModuleStacks.Values)
+			{
+				if (this.hasCdrillCapabilityRecursive(child, faction, cdrillTechnology, cdrillModule))
+				{
+					return true;
+				}
+			}
+
 			return false;
 		}
 	}

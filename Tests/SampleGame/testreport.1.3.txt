@@ -5,7 +5,7 @@ Content-Disposition: attachment
 SpaceAge report for Gelvaren [3].
 Turn 1, Year 2020, January 1.
 
-SpaceAge Engine Version: 0.1.159.
+SpaceAge Engine Version: 0.1.167.
 
 Events during turn:
   none.
@@ -16,10 +16,7 @@ Bank report:
   Credit rate: 20%, Deposit rate: 5%.
 Galaxy report:
 ------------------------------------------------------------
-* Sol [SS0001] (0, 0, 0), star system.
-------------------------------------------------------------
-
-  * Sol [S00001] (0, 0, 0), M4 star, unexplored.
+* system Sol [SS0001] (0, 0, 0).
 ------------------------------------------------------------
 
   * Earth [P00001] at AU 1, ocean planet [ocean].
@@ -30,7 +27,7 @@ Galaxy report:
   capacity 8/3.
   Exits:
     Northern Hemisphere [R00002] (0,0), grassland region, ground travel
-    duration 3 weeks.
+    duration 3 weeks, settlement detected.
   Resources: 20 units of iron [iron], 20 units of oil [oil], 20 units of
   titanium [titani], 20 units of uranium [uraniu], 20 units of copper
   [copper], 20 units of silicium [silici], 250 units of oxyhydro [h2o2],
@@ -138,7 +135,7 @@ Galaxy report:
       [cash], consume: 10 units of food [food], 10 units of terran
       breathing gas mixture [terair]).
 ------------------------------------------------------------
-  * Luna [P00003] (1, 0, 0), moon, unexplored.
+  * Luna [P00001], rocky moon [rock] 0.02 AU from the planet.
 ------------------------------------------------------------
     orbit [O00001], has no atmosphere.
 

@@ -127,6 +127,7 @@
     <Compile Include="effects\ProducingItems.cs" />
     <Compile Include="effects\ReceivingTechnology.cs" />
     <Compile Include="effects\ReceivingModules.cs" />
+    <Compile Include="effects\DeliveringPurchase.cs" />
     <Compile Include="effects\ReceivingItems.cs" />
     <Compile Include="effects\Producing.cs" />
     <Compile Include="effects\Fuelled.cs" />
@@ -142,6 +143,7 @@
     <Compile Include="data structures\Offer.cs" />
     <Compile Include="data structures\Contract.cs" />
     <Compile Include="data structures\Contracts.cs" />
+    <Compile Include="data structures\DestroyStackTrigger.cs" />
     <Compile Include="data structures\GiveModuleTrigger.cs" />
     <Compile Include="data structures\ResearchWreckageTrigger.cs" />
     <Compile Include="data structures\IContractTrigger.cs" />
@@ -177,6 +179,7 @@
     <Compile Include="data structures\BodyEnvironment.cs" />
     <Compile Include="game\OrderXml.cs" />
     <Compile Include="Events.cs" />
+    <Compile Include="FaunaRumors.cs" />
     <Compile Include="EventsReaders.cs" />
     <Compile Include="data structures\Faction.cs" />
     <Compile Include="data structures\FactionAttitude.cs" />
@@ -185,6 +188,7 @@
     <Compile Include="data structures\Factions.cs" />
     <Compile Include="data structures\Galaxy.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="game\SettlementBuyBook.cs" />
     <Compile Include="data structures\ItemStack.cs" />
     <Compile Include="data structures\ItemStacks.cs" />
     <Compile Include="data structures\ItemType.cs" />
@@ -201,6 +205,7 @@
     <Compile Include="data structures\ModuleStack.Ownership.cs" />
     <Compile Include="data structures\ModuleStack.Relations.cs" />
     <Compile Include="data structures\ModuleStack.Reporting.cs" />
+    <Compile Include="data structures\ModuleStack.Sharing.cs" />
     <Compile Include="data structures\ModuleStack.Upkeep.cs" />
     <Compile Include="data structures\ModuleStack.Xml.cs" />
     <Compile Include="data structures\ModuleStacks.cs" />
@@ -217,6 +222,7 @@
     <Compile Include="data structures\Moon.cs" />
     <Compile Include="game\Market.cs" />
     <Compile Include="game\Market.Clearing.cs" />
+    <Compile Include="game\Market.Economy.cs" />
     <Compile Include="orders\BuyOrder.cs" />
     <Compile Include="orders\ProduceOrder.cs" />
     <Compile Include="orders\SeeOrder.cs" />
@@ -240,6 +246,7 @@
     <Compile Include="orders\CopyOrder.cs" />
     <Compile Include="orders\ContractOrder.cs" />
     <Compile Include="orders\PressOrder.cs" />
+    <Compile Include="orders\RumorOrder.cs" />
     <Compile Include="orders\DeclareOrder.cs" />
     <Compile Include="orders\DepositOrder.cs" />
     <Compile Include="orders\TransferOrder.cs" />
@@ -257,6 +264,9 @@
     <Compile Include="reports\IReporting.cs" />
     <Compile Include="LineParser.cs" />
     <Compile Include="Research.cs" />
+    <Compile Include="AnomalyInvestigation.cs" />
+    <Compile Include="data structures\AnomalyReward.cs" />
+    <Compile Include="data structures\RegionAnomaly.cs" />
     <Compile Include="SurveyReports.cs" />
     <Compile Include="orders\LongOrder.cs" />
     <Compile Include="orders\Order.cs" />

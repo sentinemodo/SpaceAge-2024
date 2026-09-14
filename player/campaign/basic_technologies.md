@@ -127,6 +127,10 @@ Works in: production, **orbit**. Use consumes: 2 iron `[iron]`. Use produces: or
 Creation of basic infrastructure and housing for population.  
 Works in: production, solid-surface, terran atmosphere `[terair]`. Use consumes: 100 iron `[iron]`. Use produces: city `[city]`. Use-time: 26 weeks.
 
+**town construction [twnbld]**  
+Prefabricated civic shell: graded pads, trunk utilities, and light-frame housing for a minor market town.  
+Works in: production, solid-surface, terran atmosphere `[terair]`. Use consumes: 30 iron `[iron]`, 2 titanium `[titani]`. Use produces: town `[town]`. Use-time: 10 weeks.
+
 **shuttles assembly [shtlas]**  
 Most ships can never land, and rely on orbital shuttles for exploration, ferrying and construction. The construction of space-based hulls, bases and any other large objects is usually done in solar space above the planet surface.  
 Works in: production. Use consumes: 2 iron `[iron]`, 1 titanium `[titani]`, 1 silicium `[silici]`. Use produces: space shuttle `[shuttl]`. Use-time: 4 weeks.
@@ -222,7 +226,7 @@ Elementary military tactics, which enable a higher level of combat proficiency. 
 Works in: command. Use consumes: nothing. Use produces: nothing (battle tech). Use-time: 1 week (default).
 
 **mineral core drilling [cdrill]**  
-Mineral exploitation.  
+Core-body mineral exploitation. Detects subsurface **deep pockets** on regional exits when a `cdrill` technology copy is present on the observing grant; identifies ore types only when `cdrill` is on-site in the pocket region. Requires a core drill module to extract deep resources.  
 Works in: production. Use consumes: 25 iron `[iron]`, 10 titanium `[titani]`. Use produces: core drill `[cdrill]`. Use-time: 3 weeks.
 
 **naval combat [nvlcbt]**  
@@ -236,6 +240,10 @@ Works in: extraction, solid-surface. Use produces: 2 nickel-iron `[nickfe]`. Use
 **orbital rocket launcher [orbrkt]**  
 A rack of chemically boosted rockets sized to nest on a shuttle or station and fire in orbit. Built in a factory on the ground or assembled in space. Tag: `military`.  
 Works in: production (no location-type limit). Use consumes: 4 iron `[iron]`. Use produces: orbital rocket launcher `[orbrkt]`. Use-time: 8 weeks.
+
+**mobile laboratory [moblib]**  
+Truck-mounted FTIR, XRF sample prep, and a rugged field terminal for half-rate research away from the factory floor. Tag: `research`. **Requires:** file indexing `[filidx]`.  
+Works in: production. Use consumes: 2 iron `[iron]`, 2 silicium `[silici]`. Use produces: mobile laboratory `[moblab]`. Use-time: 3 weeks.
 
 **optical and IR instruments [optins]**  
 Diffraction-limited telescopes, FTIR, and gold-coated contacts for survey and targeting research. Tag: `research`. **Requires:** file indexing `[filidx]`.  
@@ -284,6 +292,10 @@ Catalog `<module><entry>` that a level 0 or 1 technology **produces** or **consu
 **city [city]**  
 The city with basic infrastructure, underlying a settlement.  
 Group `settlement`. Built by population center `[popcnt]`. Consumed (1) by city planning `[ctypln]` to make a metropoly. Size 25000, capacity 15000, energy 10, HP 1250, tech-cap 1, population max 10000. Cannot be owned; cannot hold item stacks. Upkeep 100 food (riot 25% if unpaid). Produces 1000 cash and 10 terran per 13 weeks. Operates on solid-surface worlds with terran atmosphere `[terair]`.
+
+**town [town]**  
+A compact market town: trunk roads, a modest square, and light-frame housing under a shared utility spine.  
+Group `settlement`. Built by town construction `[twnbld]`. Size 6000, capacity 4000, energy 4, HP 350, tech-cap 1, population max 750. Cannot be owned; cannot hold item stacks. Upkeep 30 food (riot 25% if unpaid). Produces 200 cash and 2 terran per 13 weeks. Operates on solid-surface worlds with terran atmosphere `[terair]`.
 
 **coal-burning plant [cplant]**  
 Provide energy by burining carbon.  
@@ -369,6 +381,10 @@ Group `extraction`. Built by mineral surface drilling `[sdrill]`. Size 500, mass
 Group of large and slow ground moving trucks.  
 Group `vehicle`. Built by ground transport `[grndtr]`. Size 250, mass 100, crew 1, capacity 150, HP 17. Upkeep 5 cash. Consumes 4 food and 4 terran air (damage 25% if not). Ground move speed 0.5. Fuel duration 13 (1 oil). Operates on solid-surface with terran atmosphere.
 
+**mobile laboratory [moblab]**  
+Six-wheel flatbed carries FTIR, XRF, and a field terminal for half-rate research and anomaly investigation (spectral, radiometric).  
+Group `research`. Built by mobile laboratory `[moblib]`. Size 220, mass 75, crew 1, capacity 50, energy 3, HP 30, tech-cap 2, research-output 1 (divisor 2), investigation-output 1. Upkeep 5 cash. Consumes 4 food and 4 terran air off-world (damage 25% if not). Ground move speed 0.5. **Fuel duration 13 (1 oil)** — same ground fuel rule as `trucks`. Operates on solid-surface with terran atmosphere.
+
 **wind powerplant [wnplnt]**  
 Small serviceless energy system, utilising power of the wind.  
 Group `energy`. Built by wind turbines `[wndtrb]`. Size 10, mass 10, energy 1, HP 1. Upkeep 1 cash. Produces 4 energy / 13 weeks. Operates in settlement with terran atmosphere on **both solid-surface and liquid-surface**.
@@ -380,7 +396,7 @@ A compact high-frequency laser suitable for ground combat.
 Group `military`. Built by laser optics `[lasopt]`. Requires technology laser optics `[lasopt]`. `weapon-group` `laser`. Size 100, mass 100, crew 1, energy 5, capacity 50, HP 50, tech-cap 2, attack 7, defense 1, damage 7. Upkeep 20 cash.
 
 **core drill [cdrill]**  
-Advanced mining system. A core drill allows you to strip minerals and various resources out of the core of any solid body.  
+Advanced mining system. Strips core-body minerals and extracts **deep-pocket** deposits invisible to surface drills. Carry a `cdrill` technology copy in-region to read deep resource assays; pair with a mobile laboratory for field scouting.  
 Group `extraction`. Built by mineral core drilling `[cdrill]`. Size 1000, mass 1000, crew 6, energy 5, capacity 750, HP 100, tech-cap 4. Upkeep 50 cash. Faster extraction on self. Operates on solid-surface, in settlement or frigate.
 
 **engineering shop [engshp]**  

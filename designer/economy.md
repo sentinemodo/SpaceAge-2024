@@ -67,14 +67,26 @@ Shuttle and HQ were oversized vs size/crew. Tanks pick up 16 crew. Ark picks up 
 
 ## Starting nest (cash / turn)
 
-Crew **30**. Arbor **3** `farms` + **2** `cplant`. Anvil **2** `farms` + **8** `wnplnt`. Shared: `corphq` 1, `cargob` 2, `cdrill` 1, `factry` 2, CEO officer. Rates from the formula.
+Crew **30**. Arbor **3** `farms` + **2** `cplant`. Anvil **2** `farms` + **8** `wnplnt`. Shared: `corphq` 1, `cargob` 2, **`sdrill` 1** (surface drill only at seed), `factry` 2, CEO officer. Rates from the formula.
+
+### Persona startup packages (`init-run.ps1`)
+
+| Item | Default (non-economic) | Economic persona | Researcher persona |
+|------|------------------------|------------------|-------------------|
+| HQ extractor | `sdrill` module | `sdrill` module | `sdrill` module |
+| Factory tech copy | none | **`cdrill`** on HQ `factry` | **`moblib`** on HQ `factry` |
+| Faction `balance` | **10000** | **9000** (−1000) | **9000** (−1000) |
+| `credit-line` | 10000 | 10000 | 10000 |
+| Cargo extras | seed default | **10 titani** on HQ `cargob` (first `cdrill` build) | **5 oil** on HQ `cargob` |
+
+Economic Interests pay **1000 cash** at init for a factory **`cdrill`** copy, then **`use cdrill`** to field the first **core drill** and stack more **`agrplx` / `cdrill`** on the grant once **`cplant`** energy keeps pace. Non-economic factions research **`cdrill`** normally (L1, 8 RP default). `_gen_gamein.py` emits **`sdrill`** only; persona injections happen after the preference roll.
 
 | Line | Qty | Rate | Arbor | Anvil |
 |------|-----|------|------:|------:|
 | `corphq` | 1 | 90 | 90 | 90 |
 | `cargob` | 2 | 10 | 20 | 20 |
 | `farms` | 3 / 2 | 30 | 90 | 60 |
-| `cdrill` | 1 | 50 | 50 | 50 |
+| `sdrill` | 1 | 35 | 35 | 35 |
 | `factry` | 2 | 55 | 110 | 110 |
 | `cplant` / `wnplnt` | 2 / 8 | 40 / 1 | 80 | 8 |
 | CEO officer | 1 | 10 | 10 | 10 |
@@ -198,7 +210,21 @@ Standing offers live on UN `city` stacks in `gamein` (see [`galaxy.md`](galaxy.m
 
 Called once per turn after week 13 maintenance, in order: `UpdateBankAccounts()` → **`UpdateRates()`** → **`GenerateOffers()`**.
 
-### GenerateOffers (live)
+### Settlement auto-buy refill (live 0.1.166)
+
+Each quarter, for every NPC faction `[1]` **`town`**, **`city`**, or **`mtrply`** (metropoly) settlement stack, the engine refills buy offers to the tier defaults below. **Item quantities scale with settlement stack module count** (`quantity` on the stack). **Module bids are per stack** (singular module stacks), not multiplied by stack count.
+
+Standing t=1 XML buys are preserved: existing offers keep their **price**; quantity is raised only when below the tier target. Militia cities (factions 12/13) and player-owned settlements are excluded unless transferred to faction 1.
+
+| Tier | Item buys (× stack qty) | Module buys (per stack) |
+|------|-------------------------|-------------------------|
+| **`town`** | `food` **60 @ 1**; `iron` **15 @ 1**; `carbon` **15 @ 2** | — |
+| **`city`** | `food` **100 @ 1**; `iron` **25 @ 1**; `carbon` **25 @ 2**; `silici` **20 @ 2**; `titani` **10 @ 2** | `cargob`, `farms`, `wnplnt`, `cplant`, `sdrill`, `cdrill`, `factry` — **1 each @ 50–100** (cargo/food/drill/factory @ 100, wind @ 50) |
+| **`mtrply`** | `food` **500 @ 1**; `iron` **40 @ 1**; `carbon` **40 @ 2**; `silici` **30 @ 2**; `titani` **25 @ 2**; `copper` **25 @ 2**; `uraniu` **10 @ 4** | Same module types as city — **2 each @ 50–100** |
+
+Implementation: `SettlementBuyBook.cs` + `Game.RefillSettlementBuyOffers()`.
+
+### GenerateOffers — auto-sell (live)
 
 Each quarter, for every NPC faction `[1]` stack whose module type is **`city`**:
 
@@ -209,7 +235,9 @@ Each quarter, for every NPC faction `[1]` stack whose module type is **`city`**:
 
 ### UpdateRates (open beta)
 
-**Market prices:** For each `Region`, for each `ItemType` that has a price in **any** regional `Market.PriceList`, set this region's price to the **galaxy-wide average** of all regions that posted that type (integer rounding, minimum 1 if average ≥ 0.5). Types with no posted prices are unchanged. Standing offer **objects** keep their saved `Price` field; only regional `PriceList` entries drift toward the average (feeds `GetPrice` for new auto-listings next quarter).
+**Offer-pressure drift (per region, each quarter):** For each type with a regional list price, scan standing offers in that market. Highest **economically significant** buy bid below list pulls price down; lowest significant sell ask above list pulls up; both together target the average of those two anchors. Each move is capped at **10%** of the current list (minimum 1 credit step). Outliers are ignored for drift: sell ask **> 10×** list; buy bid **< list ÷ 10** (bid 1 at list 10 counts; bid 1 at list 100 does not). Orders remain valid and can still match; outlier **trades** with an explicit sell price also skip updating the regional list.
+
+**Galaxy average sync:** For each `Region`, for each `ItemType` that has a price in **any** regional `Market.PriceList`, set this region's price to the **galaxy-wide average** of all regions that posted that type (integer rounding, minimum 1 if average ≥ 0.5). Types with no posted prices are unchanged. Standing offer **objects** keep their saved `Price` field; only regional `PriceList` entries move (feeds `GetPrice` for new auto-listings next quarter).
 
 **Bank rates (player factions 2–11 only):**
 
@@ -225,5 +253,10 @@ NPC factions 1 / 12 / 13 are unchanged. Rates persist in save XML (`deposit-rate
 ### Beta verification
 
 - SampleGame: `ProcessGenerateAutoOffers` and turn 4 golden assert NPC city sells remain.
+- SampleGame: `RefillSettlementBuyOffers_*` restores city food buys and adds missing module bids.
 - Campaign: load `campaign/data.xml` + UN city snippet → `GenerateOffers` does not duplicate standing sells from `gamein.1.xml`.
 - Unit: `UpdateRates` moves regional food price toward average after a trade posts a new price in one region.
+
+### Settlement market evolution (wishlist — not live)
+
+See [`engine-wishlist.md`](engine-wishlist.md): fulfilled buy books spawn garrison units; tech level on planet expands the autobuy resource list; nested factory production adds auto-sell module offers.

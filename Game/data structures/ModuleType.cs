@@ -91,6 +91,40 @@ namespace SpaceAge
             }
         }
 
+        private int researchOutputDivisor = 1;
+        public int ResearchOutputDivisor
+        {
+            get { return this.researchOutputDivisor; }
+            set
+            {
+                if (value < 1)
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
+                this.researchOutputDivisor = value;
+            }
+        }
+
+        private int investigationOutput = 0;
+        public int InvestigationOutput
+        {
+            get { return this.investigationOutput; }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
+                this.investigationOutput = value;
+            }
+        }
+
+        private List<string> investigationTypes = new List<string>();
+        public List<string> InvestigationTypes
+        {
+            get { return this.investigationTypes; }
+        }
+
         private int technologyCapacity;
 		public int TechnologyCapacity
 		{
@@ -326,6 +360,13 @@ namespace SpaceAge
 		public bool IsDroneBay
 		{
 			get { return this.name == "drnbay"; }
+		}
+
+		private bool livingUnit;
+		public bool LivingUnit
+		{
+			get { return this.livingUnit; }
+			set { this.livingUnit = value; }
 		}
 
 		#endregion

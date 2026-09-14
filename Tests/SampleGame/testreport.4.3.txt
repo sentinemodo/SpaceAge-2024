@@ -5,7 +5,7 @@ Content-Disposition: attachment
 SpaceAge report for Gelvaren [3].
 Turn 4, Year 2021, September 1.
 
-SpaceAge Engine Version: 0.1.159.
+SpaceAge Engine Version: 0.1.167.
 
 Events during turn:
   none.
@@ -14,8 +14,44 @@ Declared stances:
   default: neutral, unknown: hostile.
   enemy toward Caste Prime [2].
 
+
+events:
+  week 1: battle at Northern Hemisphere [R00002] (0,0), attackers:
+  Gelvaren [3], defenders: Caste Prime [2].
+  week 2: battle at Northern Hemisphere [R00002] (0,0), attackers:
+  Gelvaren [3], defenders: Caste Prime [2].
+  week 3: battle at Northern Hemisphere [R00002] (0,0), attackers:
+  Gelvaren [3], defenders: Caste Prime [2].
+  week 4: battle at Northern Hemisphere [R00002] (0,0), attackers:
+  Gelvaren [3], defenders: Caste Prime [2].
+  week 5: battle at Northern Hemisphere [R00002] (0,0), attackers:
+  Gelvaren [3], defenders: Caste Prime [2].
+  week 6: battle at Northern Hemisphere [R00002] (0,0), attackers:
+  Gelvaren [3], defenders: Caste Prime [2].
+  week 7: battle at Northern Hemisphere [R00002] (0,0), attackers:
+  Gelvaren [3], defenders: Caste Prime [2].
+  week 8: battle at Northern Hemisphere [R00002] (0,0), attackers:
+  Gelvaren [3], defenders: Caste Prime [2].
+  week 9: battle at Northern Hemisphere [R00002] (0,0), attackers:
+  Gelvaren [3], defenders: Caste Prime [2].
+  week 10: battle at Northern Hemisphere [R00002] (0,0), attackers:
+  Gelvaren [3], defenders: Caste Prime [2].
+  week 11: battle at Northern Hemisphere [R00002] (0,0), attackers:
+  Gelvaren [3], defenders: Caste Prime [2].
+  week 12: battle at Northern Hemisphere [R00002] (0,0), attackers:
+  Gelvaren [3], defenders: Caste Prime [2].
+  week 13: battle at Northern Hemisphere [R00002] (0,0), attackers:
+  Gelvaren [3], defenders: Caste Prime [2].
+  week 13: Bank account credited: Deposit interests accounted to 110.
+  Current balance: 8915.
+
+Press releases:
+  Earth [P00001] at AU 1, ocean planet [ocean]: NPC [1] — Caste Prime
+  closes Wake the crashed ship.
+    United Star Nations records Caste Prime's fulfillment of CT0122 at
+    Dusty field on Earth [P00001] at AU 1, ocean planet [ocean].
 Bank report:
-  Bank account balance: 8891.
+  Bank account balance: 8915.
   Credit line maximum: 10000.
   Credit rate: 20%, Deposit rate: 4.5%.
 
@@ -8379,10 +8415,7 @@ Battles report:
 
 Galaxy report:
 ------------------------------------------------------------
-* Sol [SS0001] (0, 0, 0), star system.
-------------------------------------------------------------
-
-  * Sol [S00001] (0, 0, 0), M4 star, unexplored.
+* system Sol [SS0001] (0, 0, 0).
 ------------------------------------------------------------
 
   * Earth [P00001] at AU 1, ocean planet [ocean].
@@ -8393,7 +8426,7 @@ Galaxy report:
   capacity 8/3.
   Exits:
     Southern Hemisphere [R00003] (1,0), grassland region, ground travel
-    duration 3 weeks.
+    duration 3 weeks, settlement detected.
   Resources: 20 units of iron [iron], 20 units of carbon [carbon], 20
   units of titanium [titani], 20 units of uranium [uraniu], 20 units of
   copper [copper], 20 units of silicium [silici], 250 units of oxyhydro
@@ -8405,11 +8438,21 @@ Galaxy report:
       sell 300 units of food [food] at -1 each from small cargo bay
       [000013].
     Offers of buying items:
-      none.
+      buy 300 units of food [food] at 1 each by Berlin [000001].
+      buy 75 units of iron [iron] at 1 each by Berlin [000001].
+      buy 75 units of carbon [carbon] at 2 each by Berlin [000001].
+      buy 60 units of silicium [silici] at 2 each by Berlin [000001].
+      buy 30 units of titanium [titani] at 2 each by Berlin [000001].
     Offers of selling modules:
       none.
     Offers of buying modules:
       buy farming complex [farms] at 100 by Berlin [000001].
+      buy small cargo bay [cargob] at 100 by Berlin [000001].
+      buy wind powerplant [wnplnt] at 50 by Berlin [000001].
+      buy coal-burning plant [cplant] at 100 by Berlin [000001].
+      buy surface drill [sdrill] at 100 by Berlin [000001].
+      buy core drill [cdrill] at 100 by Berlin [000001].
+      buy factory [factry] at 100 by Berlin [000001].
     Offers of selling technologies:
       none.
     Offers of buying technologies:
@@ -8452,10 +8495,9 @@ Galaxy report:
       size: 100.
     + corporate headquarters [c000012], corporate headquarters [corphq],
       disabled, immobile.
-      size: 1000, mass: 1120 (1000), capacity: 750/120, upkeep: 130
-      (100) cash [cash], consume: 30 (0) units of food [food], 30 (0)
-      units of terran breathing gas mixture [terair], 3 (0) medicines
-      [medici].
+      size: 1000, mass: 1120 (1000), capacity: 750/120, upkeep: 30 (0)
+      cash [cash], consume: 30 (0) units of food [food], 30 (0) units of
+      terran breathing gas mixture [terair], 3 (0) medicines [medici].
       hit points: 100/75, capture: 75.
         #1 hit points: 100/75, capture: 75, deactivated.
       items: 3 wounded terrans [wndtrn] (size: 12, mass: 12, upkeep: 3
@@ -8463,26 +8505,24 @@ Galaxy report:
       breathing gas mixture [terair], 3 medicines [medici]), 27 terrans
       [terran] (size: 108, mass: 108, upkeep: 27 cash [cash], consume:
       27 units of food [food], 27 units of terran breathing gas mixture
-      [terair]), 2055 cash [cash].
+      [terair]), 2155 cash [cash].
       events:
-        week 13: paid 145 cash [cash] upkeep.
+        week 13: paid 45 cash [cash] upkeep.
         week 13: 15 wounded terrans [wndtrn] died of their wounds.
         week 13: 12 wounded terrans [wndtrn] recovered from their
         wounds.
     + gun placement [c00001], gun placement [gunplc], disabled,
       immobile.
-      size: 100, mass: 500 (500), capacity: 100/0, upkeep: 10 cash
-      [cash].
+      size: 100, mass: 500 (500), capacity: 100/0, upkeep: cash [cash].
       hit points: 100/31, capture: 31.
         #1 hit points: 100/31, capture: 31, heavily damaged,
         deactivated.
       events:
         week 1: captured gun placement [gunplc] from gun placement
         [111].
-        week 13: paid 10 cash [cash] upkeep.
     + gun placement [c00002], gun placement [gunplc], disabled,
       immobile.
-      size: 100, mass: 504 (500), capacity: 100/4, upkeep: 11 (10) cash
+      size: 100, mass: 504 (500), capacity: 100/4, upkeep: (0) cash
       [cash], consume: (0) unit of food [food], (0) unit of terran
       breathing gas mixture [terair].
       hit points: 100/39, capture: 39.
@@ -8494,10 +8534,10 @@ Galaxy report:
       events:
         week 2: captured gun placement [gunplc] from gun placement
         [111].
-        week 13: paid 11 cash [cash] upkeep.
+        week 13: paid 1 cash [cash] upkeep.
     + gun placement [c00003], gun placement [gunplc], disabled,
       immobile.
-      size: 100, mass: 504 (500), capacity: 100/4, upkeep: 11 (10) cash
+      size: 100, mass: 504 (500), capacity: 100/4, upkeep: (0) cash
       [cash], consume: (0) unit of food [food], (0) unit of terran
       breathing gas mixture [terair].
       hit points: 100/24, capture: 24.
@@ -8509,10 +8549,10 @@ Galaxy report:
       events:
         week 2: captured gun placement [gunplc] from gun placement
         [111].
-        week 13: paid 11 cash [cash] upkeep.
+        week 13: paid 1 cash [cash] upkeep.
     + gun placement [c00004], gun placement [gunplc], disabled,
       immobile.
-      size: 100, mass: 504 (500), capacity: 100/4, upkeep: 11 (10) cash
+      size: 100, mass: 504 (500), capacity: 100/4, upkeep: (0) cash
       [cash], consume: (0) unit of food [food], (0) unit of terran
       breathing gas mixture [terair].
       hit points: 100/35, capture: 35.
@@ -8524,10 +8564,10 @@ Galaxy report:
       events:
         week 3: captured gun placement [gunplc] from gun placement
         [111].
-        week 13: paid 11 cash [cash] upkeep.
+        week 13: paid 1 cash [cash] upkeep.
     + small cargo bay [c00005], small cargo bay [cargob], disabled,
       immobile.
-      size: 2000, mass: 1428 (200), capacity: 1800/1030, upkeep: 32 (30)
+      size: 2000, mass: 1428 (200), capacity: 1800/1030, upkeep: 2 (0)
       cash [cash], consume: 2 (0) units of food [food], 2 (0) units of
       terran breathing gas mixture [terair].
       hit points: 55/27, capture: 27.
@@ -8545,10 +8585,10 @@ Galaxy report:
       events:
         week 5: captured small cargo bay [cargob] from small cargo bay
         [000013].
-        week 13: paid 32 cash [cash] upkeep.
+        week 13: paid 2 cash [cash] upkeep.
     + small cargo bay [c00006], small cargo bay [cargob], disabled,
       immobile.
-      size: 2000, mass: 1428 (200), capacity: 1800/1030, upkeep: 32 (30)
+      size: 2000, mass: 1428 (200), capacity: 1800/1030, upkeep: 2 (0)
       cash [cash], consume: 2 (0) units of food [food], 2 (0) units of
       terran breathing gas mixture [terair].
       hit points: 55/36, capture: 36.
@@ -8566,10 +8606,10 @@ Galaxy report:
       events:
         week 5: captured small cargo bay [cargob] from small cargo bay
         [000013].
-        week 13: paid 32 cash [cash] upkeep.
+        week 13: paid 2 cash [cash] upkeep.
     + small cargo bay [c00007], small cargo bay [cargob], disabled,
       immobile.
-      size: 2000, mass: 1433 (200), capacity: 1800/1035, upkeep: 32 (30)
+      size: 2000, mass: 1433 (200), capacity: 1800/1035, upkeep: 2 (0)
       cash [cash], consume: 2 (0) units of food [food], 2 (0) units of
       terran breathing gas mixture [terair].
       hit points: 55/31, capture: 31.
@@ -8587,10 +8627,10 @@ Galaxy report:
       events:
         week 6: captured small cargo bay [cargob] from small cargo bay
         [000013].
-        week 13: paid 32 cash [cash] upkeep.
+        week 13: paid 2 cash [cash] upkeep.
     + small cargo bay [c00008], small cargo bay [cargob], disabled,
       immobile.
-      size: 2000, mass: 1445 (200), capacity: 1800/1047, upkeep: 32 (30)
+      size: 2000, mass: 1445 (200), capacity: 1800/1047, upkeep: 2 (0)
       cash [cash], consume: 2 (0) units of food [food], 2 (0) units of
       terran breathing gas mixture [terair].
       hit points: 55/30, capture: 30.
@@ -8608,10 +8648,10 @@ Galaxy report:
       events:
         week 7: captured small cargo bay [cargob] from small cargo bay
         [000013].
-        week 13: paid 32 cash [cash] upkeep.
+        week 13: paid 2 cash [cash] upkeep.
     + small cargo bay [c00009], small cargo bay [cargob], disabled,
       immobile.
-      size: 2000, mass: 1451 (200), capacity: 1800/1053, upkeep: 32 (30)
+      size: 2000, mass: 1451 (200), capacity: 1800/1053, upkeep: 2 (0)
       cash [cash], consume: 2 (0) units of food [food], 2 (0) units of
       terran breathing gas mixture [terair].
       hit points: 55/28, capture: 28.
@@ -8629,12 +8669,12 @@ Galaxy report:
       events:
         week 7: captured small cargo bay [cargob] from small cargo bay
         [000013].
-        week 13: paid 32 cash [cash] upkeep.
+        week 13: paid 2 cash [cash] upkeep.
     + farming complex [c00010], farming complex [farms], disabled,
       immobile.
-      size: 1000, mass: 120 (100), capacity: 500/20, upkeep: 55 (50)
-      cash [cash], consume: 5 (0) units of food [food], 5 (0) units of
-      terran breathing gas mixture [terair].
+      size: 1000, mass: 120 (100), capacity: 500/20, upkeep: 5 (0) cash
+      [cash], consume: 5 (0) units of food [food], 5 (0) units of terran
+      breathing gas mixture [terair].
       hit points: 55/34, capture: 34.
         #1 hit points: 55/34, capture: 34, lightly damaged, deactivated.
       items: 5 terrans [terran] (size: 20, mass: 20, upkeep: 5 cash
@@ -8643,12 +8683,12 @@ Galaxy report:
       events:
         week 8: captured farming complex [farms] from farming complex
         [000014].
-        week 13: paid 55 cash [cash] upkeep.
+        week 13: paid 5 cash [cash] upkeep.
     + farming complex [c00011], farming complex [farms], disabled,
       immobile.
-      size: 1000, mass: 125 (100), capacity: 500/25, upkeep: 55 (50)
-      cash [cash], consume: 5 (0) units of food [food], 5 (0) units of
-      terran breathing gas mixture [terair].
+      size: 1000, mass: 125 (100), capacity: 500/25, upkeep: 5 (0) cash
+      [cash], consume: 5 (0) units of food [food], 5 (0) units of terran
+      breathing gas mixture [terair].
       hit points: 55/36, capture: 36.
         #1 hit points: 55/36, capture: 36, lightly damaged, deactivated.
       items: 5 terrans [terran] (size: 20, mass: 20, upkeep: 5 cash
@@ -8658,12 +8698,12 @@ Galaxy report:
       events:
         week 9: captured farming complex [farms] from farming complex
         [000014].
-        week 13: paid 55 cash [cash] upkeep.
+        week 13: paid 5 cash [cash] upkeep.
     + farming complex [c00012], farming complex [farms], disabled,
       immobile.
-      size: 1000, mass: 125 (100), capacity: 500/25, upkeep: 55 (50)
-      cash [cash], consume: 5 (0) units of food [food], 5 (0) units of
-      terran breathing gas mixture [terair].
+      size: 1000, mass: 125 (100), capacity: 500/25, upkeep: 5 (0) cash
+      [cash], consume: 5 (0) units of food [food], 5 (0) units of terran
+      breathing gas mixture [terair].
       hit points: 55/33, capture: 33.
         #1 hit points: 55/33, capture: 33, lightly damaged, deactivated.
       items: 5 terrans [terran] (size: 20, mass: 20, upkeep: 5 cash
@@ -8673,12 +8713,12 @@ Galaxy report:
       events:
         week 9: captured farming complex [farms] from farming complex
         [000014].
-        week 13: paid 55 cash [cash] upkeep.
+        week 13: paid 5 cash [cash] upkeep.
     + coal-burning plant [c00013], coal-burning plant [cplant],
       disabled, immobile.
-      size: 1000, mass: 1008 (1000), capacity: 500/8, upkeep: 52 (50)
-      cash [cash], consume: 2 (0) units of food [food], 2 (0) units of
-      terran breathing gas mixture [terair].
+      size: 1000, mass: 1008 (1000), capacity: 500/8, upkeep: 2 (0) cash
+      [cash], consume: 2 (0) units of food [food], 2 (0) units of terran
+      breathing gas mixture [terair].
       hit points: 100/61, capture: 61.
         #1 hit points: 100/61, capture: 61, lightly damaged,
         deactivated.
@@ -8689,12 +8729,12 @@ Galaxy report:
       events:
         week 11: captured coal-burning plant [cplant] from coal-burning
         plant [000015].
-        week 13: paid 52 cash [cash] upkeep.
+        week 13: paid 2 cash [cash] upkeep.
     + coal-burning plant [c00014], coal-burning plant [cplant],
       disabled, immobile.
-      size: 1000, mass: 1008 (1000), capacity: 500/8, upkeep: 52 (50)
-      cash [cash], consume: 2 (0) units of food [food], 2 (0) units of
-      terran breathing gas mixture [terair].
+      size: 1000, mass: 1008 (1000), capacity: 500/8, upkeep: 2 (0) cash
+      [cash], consume: 2 (0) units of food [food], 2 (0) units of terran
+      breathing gas mixture [terair].
       hit points: 100/45, capture: 45.
         #1 hit points: 100/45, capture: 45, heavily damaged,
         deactivated.
@@ -8705,9 +8745,9 @@ Galaxy report:
       events:
         week 13: captured coal-burning plant [cplant] from coal-burning
         plant [000015].
-        week 13: paid 52 cash [cash] upkeep.
+        week 13: paid 2 cash [cash] upkeep.
   + peaceful scout [108], tanks [tanks], disabled, immobile.
-    size: 240, mass: 364 (240), capacity: 200/112, upkeep: 40 (24) cash
+    size: 240, mass: 364 (240), capacity: 200/112, upkeep: 16 (0) cash
     [cash], consume: 32 (16) units of food [food], 32 (16) units of
     terran breathing gas mixture [terair].
     hit points: 100/49.
@@ -8723,7 +8763,7 @@ Galaxy report:
     events:
       week 1: set tactic to prioritize armed.
       week 1: CAPTURE failed. Immobile units may only use destroy.
-      week 13: paid 40 cash [cash] upkeep.
+      week 13: paid 16 cash [cash] upkeep.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 949 (720), capacity: 600/223, crew: 48/49, upkeep:
     130 (72) cash [cash], consume: 97 (48) units of food [food], 97 (48)
@@ -8802,7 +8842,7 @@ Galaxy report:
   capacity 8/3.
   Exits:
     Northern Hemisphere [R00002] (0,0), grassland region, ground travel
-    duration 3 weeks.
+    duration 3 weeks, settlement detected.
   Resources: 20 units of iron [iron], 20 units of oil [oil], 20 units of
   titanium [titani], 20 units of uranium [uraniu], 20 units of copper
   [copper], 20 units of silicium [silici], 250 units of oxyhydro [h2o2],
@@ -8817,6 +8857,11 @@ Galaxy report:
       sell 10 terrans [terran] at 50 each from Gelvaren complex
       [000026].
     Offers of buying items:
+      buy 200 units of food [food] at 1 each by Sydney [000006].
+      buy 50 units of iron [iron] at 1 each by Sydney [000006].
+      buy 50 units of carbon [carbon] at 2 each by Sydney [000006].
+      buy 40 units of silicium [silici] at 2 each by Sydney [000006].
+      buy 20 units of titanium [titani] at 2 each by Sydney [000006].
       buy all terrans [terran] at any price by Gelvaren Headquarters
       [000018].
       buy 100 units of food [food] at 1 each by Gelvaren complex
@@ -8824,7 +8869,13 @@ Galaxy report:
     Offers of selling modules:
       none.
     Offers of buying modules:
-      none.
+      buy small cargo bay [cargob] at 100 by Sydney [000006].
+      buy farming complex [farms] at 100 by Sydney [000006].
+      buy wind powerplant [wnplnt] at 50 by Sydney [000006].
+      buy coal-burning plant [cplant] at 100 by Sydney [000006].
+      buy surface drill [sdrill] at 100 by Sydney [000006].
+      buy core drill [cdrill] at 100 by Sydney [000006].
+      buy factory [factry] at 100 by Sydney [000006].
     Offers of selling technologies:
       none.
     Offers of buying technologies:
@@ -9143,10 +9194,22 @@ Galaxy report:
         week 6: received space shuttle [shuttl] produced by factory
         [000023].
         week 13: paid 100 cash [cash] upkeep.
+
+Press releases:
+  Earth [P00001] at AU 1, ocean planet [ocean]: NPC [1] — Caste Prime
+  closes Wake the crashed ship.
+    United Star Nations records Caste Prime's fulfillment of CT0122 at
+    Dusty field on Earth [P00001] at AU 1, ocean planet [ocean].
 ------------------------------------------------------------
-  * Luna [P00003] (1, 0, 0), moon, unexplored.
+  * Luna [P00001], rocky moon [rock] 0.02 AU from the planet.
 ------------------------------------------------------------
     orbit [O00001], has no atmosphere.
+
+Press releases:
+  Earth [P00001] at AU 1, ocean planet [ocean]: NPC [1] — Caste Prime
+  closes Wake the crashed ship.
+    United Star Nations records Caste Prime's fulfillment of CT0122 at
+    Dusty field on Earth [P00001] at AU 1, ocean planet [ocean].
 
 
 Orders Template:
@@ -9234,7 +9297,7 @@ move R00002
 #modulestack c000012
 ; + corporate headquarters [c000012], corporate headquarters [corphq],
 ;   disabled, immobile.
-; items: 3 wounded terrans [wndtrn], 27 terrans [terran], 2055 cash
+; items: 3 wounded terrans [wndtrn], 27 terrans [terran], 2155 cash
 ; [cash].
 repair
 

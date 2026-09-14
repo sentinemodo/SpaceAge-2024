@@ -5,11 +5,40 @@ Content-Disposition: attachment
 SpaceAge report for NPC [1].
 Turn 6, Year 2021, April 1.
 
-SpaceAge Engine Version: 0.1.159.
+SpaceAge Engine Version: 0.1.167.
 
 Events during turn:
   none.
 
+
+events:
+  week 1: battle at Northern Hemisphere [R00002] (0,0), attackers: Gelvaren [3], defenders: Caste
+  Prime [2].
+  week 2: battle at Northern Hemisphere [R00002] (0,0), attackers: Gelvaren [3], defenders: Caste
+  Prime [2].
+  week 3: battle at Northern Hemisphere [R00002] (0,0), attackers: Gelvaren [3], defenders: Caste
+  Prime [2].
+  week 4: battle at Northern Hemisphere [R00002] (0,0), attackers: Gelvaren [3], defenders: Caste
+  Prime [2].
+  week 5: battle at Northern Hemisphere [R00002] (0,0), attackers: Gelvaren [3], defenders: Caste
+  Prime [2].
+  week 6: battle at Northern Hemisphere [R00002] (0,0), attackers: Gelvaren [3], defenders: Caste
+  Prime [2].
+  week 7: battle at Northern Hemisphere [R00002] (0,0), attackers: Gelvaren [3], defenders: Caste
+  Prime [2].
+  week 8: battle at Northern Hemisphere [R00002] (0,0), attackers: Gelvaren [3], defenders: Caste
+  Prime [2].
+  week 9: battle at Northern Hemisphere [R00002] (0,0), attackers: Gelvaren [3], defenders: Caste
+  Prime [2].
+  week 10: battle at Northern Hemisphere [R00002] (0,0), attackers: Gelvaren [3], defenders: Caste
+  Prime [2].
+  week 11: battle at Northern Hemisphere [R00002] (0,0), attackers: Gelvaren [3], defenders: Caste
+  Prime [2].
+  week 12: battle at Northern Hemisphere [R00002] (0,0), attackers: Gelvaren [3], defenders: Caste
+  Prime [2].
+  week 13: battle at Northern Hemisphere [R00002] (0,0), attackers: Gelvaren [3], defenders: Caste
+  Prime [2].
+  week 13: Bank account credited: Deposit interests accounted to 0. Current balance: 1842.
 Bank report:
   Bank account balance: 1842.
   Credit line maximum: 0.
@@ -390,10 +419,7 @@ Battles report:
 
 Galaxy report:
 ------------------------------------------------------------
-* Sol [SS0001] (0, 0, 0), star system.
-------------------------------------------------------------
-
-  * Sol [S00001] (0, 0, 0), M4 star, unexplored.
+* system Sol [SS0001] (0, 0, 0).
 ------------------------------------------------------------
 
   * Earth [P00001] at AU 1, ocean planet [ocean].
@@ -423,7 +449,8 @@ Galaxy report:
 
   Northern Hemisphere [R00002] (0,0), grassland region, settlement capacity 8/3.
   Exits:
-    Southern Hemisphere [R00003] (1,0), grassland region, ground travel duration 3 weeks.
+    Southern Hemisphere [R00003] (1,0), grassland region, ground travel duration 3 weeks, settlement
+    detected.
   Resources: 20 units of iron [iron], 20 units of carbon [carbon], 20 units of titanium [titani], 20
   units of uranium [uraniu], 20 units of copper [copper], 20 units of silicium [silici], 250 units
   of oxyhydro [h2o2], 500 units of food [food].
@@ -432,20 +459,31 @@ Galaxy report:
       sell 39 units of food [food] at 5 each from Berlin [000001].
       sell 300 units of food [food] at -1 each from small cargo bay [000013].
     Offers of buying items:
+      buy 300 units of food [food] at 1 each by Berlin [000001].
+      buy 75 units of iron [iron] at 1 each by Berlin [000001].
+      buy 75 units of carbon [carbon] at 2 each by Berlin [000001].
+      buy 60 units of silicium [silici] at 2 each by Berlin [000001].
+      buy 30 units of titanium [titani] at 2 each by Berlin [000001].
       buy all units of food [food] at any price by corporate headquarters [c000012].
       buy all terrans [terran] at any price by corporate headquarters [c000012].
     Offers of selling modules:
       none.
     Offers of buying modules:
       buy farming complex [farms] at 100 by Berlin [000001].
+      buy small cargo bay [cargob] at 100 by Berlin [000001].
+      buy wind powerplant [wnplnt] at 50 by Berlin [000001].
+      buy coal-burning plant [cplant] at 100 by Berlin [000001].
+      buy surface drill [sdrill] at 100 by Berlin [000001].
+      buy core drill [cdrill] at 100 by Berlin [000001].
+      buy factory [factry] at 100 by Berlin [000001].
     Offers of selling technologies:
       none.
     Offers of buying technologies:
       none.
   
   + Berlin [000001], 3 cities [city], immobile.
-    size: 75000, mass: 28792, capacity: 45000/41000, energy: 200/155 (30), crew: 99/238, upkeep: 300
-    units of food [food], 1963 (0) cash [cash], consume: 338 (0) units of food [food], 338 (0) units
+    size: 75000, mass: 28769, capacity: 45000/41000, energy: 200/155 (30), crew: 99/238, upkeep: 300
+    units of food [food], 1293 (0) cash [cash], consume: 338 (0) units of food [food], 338 (0) units
     of terran breathing gas mixture [terair].
     events:
       week 13: paid 300 unit of food [food] upkeep.
@@ -554,7 +592,8 @@ Galaxy report:
 
   Southern Hemisphere [R00003] (1,0), grassland region, settlement capacity 8/3.
   Exits:
-    Northern Hemisphere [R00002] (0,0), grassland region, ground travel duration 3 weeks.
+    Northern Hemisphere [R00002] (0,0), grassland region, ground travel duration 3 weeks, settlement
+    detected.
   Resources: 20 units of iron [iron], 20 units of oil [oil], 20 units of titanium [titani], 20 units
   of uranium [uraniu], 20 units of copper [copper], 20 units of silicium [silici], 250 units of
   oxyhydro [h2o2], 500 units of food [food].
@@ -565,44 +604,59 @@ Galaxy report:
       sell 25 units of food [food] at 5 each from Gelvaren complex [000026].
       sell 10 terrans [terran] at 50 each from Gelvaren complex [000026].
     Offers of buying items:
+      buy 200 units of food [food] at 1 each by Sydney [000006].
+      buy 50 units of iron [iron] at 1 each by Sydney [000006].
+      buy 50 units of carbon [carbon] at 2 each by Sydney [000006].
+      buy 40 units of silicium [silici] at 2 each by Sydney [000006].
+      buy 20 units of titanium [titani] at 2 each by Sydney [000006].
       buy all terrans [terran] at any price by Gelvaren Headquarters [000018].
       buy 100 units of food [food] at 1 each by Gelvaren complex [000026].
       buy all units of food [food] at any price by Gelvaren complex [000026].
     Offers of selling modules:
       none.
     Offers of buying modules:
-      none.
+      buy small cargo bay [cargob] at 100 by Sydney [000006].
+      buy farming complex [farms] at 100 by Sydney [000006].
+      buy wind powerplant [wnplnt] at 50 by Sydney [000006].
+      buy coal-burning plant [cplant] at 100 by Sydney [000006].
+      buy surface drill [sdrill] at 100 by Sydney [000006].
+      buy core drill [cdrill] at 100 by Sydney [000006].
+      buy factory [factry] at 100 by Sydney [000006].
     Offers of selling technologies:
       none.
     Offers of buying technologies:
       none.
   
   + Sydney [000006], 2 cities [city], immobile.
-    size: 50000, mass: 7196, capacity: 30000/17120, energy: 198/132 (20), crew: 60/69, upkeep: 200
-    units of food [food], 1029 (0) cash [cash], consume: 269 (0) units of food [food], 269 (0) units
+    size: 50000, mass: 7200, capacity: 30000/17120, energy: 198/132 (20), crew: 60/70, upkeep: 200
+    units of food [food], 1030 (0) cash [cash], consume: 270 (0) units of food [food], 270 (0) units
     of terran breathing gas mixture [terair], 4 (0) medicines [medici].
     events:
       week 13: paid 200 unit of food [food] upkeep.
     + Sydney garrison [000007], 2 infantry battalions [inftry], immobile.
       size: 1000, mass: 1100 (1000), capacity: 600/100, upkeep: 10 cash [cash], consume: 200 units
       of food [food], 200 units of terran breathing gas mixture [terair].
+      hit points: 100/99.
+        #1 hit points: 50/49.
+        #2 hit points: 50/50.
       movement speed: 0.1 on ground.
       items: rocket launchers [rctlnc] (size: 100, mass: 100).
       events:
         week 13: paid 10 cash [cash] upkeep.
         week 13: Lack of supplies: 186 unit of food [food].
+        week 13: Damaged from lack of supplies.
     + Sydney farms [000008], 10 farming complexes [farms], immobile.
       size: 10000, mass: 1224 (1000), capacity: 5000/224, energy: 50, crew: 50/56, upkeep: 556 (500)
       cash [cash], consume: 56 (0) units of food [food], 56 (0) units of terran breathing gas
-      mixture [terair], 4 (0) medicines [medici].
-      items: 52 terrans [terran] (size: 208, mass: 208, upkeep: 52 cash [cash], consume: 52 units of
-      food [food], 52 units of terran breathing gas mixture [terair]), 4 wounded terrans [wndtrn]
-      (size: 16, mass: 16, upkeep: 4 cash [cash], consume: 4 units of food [food], 4 units of terran
-      breathing gas mixture [terair], 4 medicines [medici]).
+      mixture [terair], 3 (0) medicines [medici].
+      items: 53 terrans [terran] (size: 212, mass: 212, upkeep: 53 cash [cash], consume: 53 units of
+      food [food], 53 units of terran breathing gas mixture [terair]), 3 wounded terrans [wndtrn]
+      (size: 12, mass: 12, upkeep: 3 cash [cash], consume: 3 units of food [food], 3 units of terran
+      breathing gas mixture [terair], 3 medicines [medici]).
       events:
         week 13: paid 575 cash [cash] upkeep.
         week 13: Lack of supplies: 75 unit of food [food].
-        week 13: 38 terrans [terran] wounded from lack of supplies.
+        week 13: 37 terrans [terran] wounded from lack of supplies.
         week 13: 19 wounded terrans [wndtrn] died of their wounds.
         week 13: 15 wounded terrans [wndtrn] recovered from their wounds.
     + Sydney wind powerplants [000009], 10 wind powerplants [wnplnt], immobile.
@@ -612,27 +666,27 @@ Galaxy report:
     + Sydney oil powerplants [000010], 5 oil-burning plants [oplant], immobile.
       size: 4000, mass: 4544 (4000), capacity: 2500/444, energy: 150/50 (consume: 25 units of oil
       [oil] for 13 weeks), crew: 10/11, upkeep: 311 (300) cash [cash], consume: 11 (0) units of food
-      [food], 11 (0) units of terran breathing gas mixture [terair].
+      [food], 11 (0) units of terran breathing gas mixture [terair], (0) medicines [medici].
       fuel requirements: 25 units of oil [oil] per 13 weeks.
-      items: 100 units of oil [oil] (size: 400, mass: 500), 11 terrans [terran] (size: 44, mass: 44,
-      upkeep: 11 cash [cash], consume: 11 units of food [food], 11 units of terran breathing gas
-      mixture [terair]).
+      items: 100 units of oil [oil] (size: 400, mass: 500), 10 terrans [terran] (size: 40, mass: 40,
+      upkeep: 10 cash [cash], consume: 10 units of food [food], 10 units of terran breathing gas
+      mixture [terair]), wounded terran [wndtrn] (size: 4, mass: 4, upkeep: cash [cash], consume:
+      unit of food [food], unit of terran breathing gas mixture [terair], medicines [medici]).
       events:
         week 13: paid 315 cash [cash] upkeep.
         week 13: Lack of supplies: 15 unit of food [food].
-        week 13: 7 terrans [terran] wounded from lack of supplies.
+        week 13: 8 terrans [terran] wounded from lack of supplies.
         week 13: 4 wounded terrans [wndtrn] died of their wounds.
         week 13: 3 wounded terrans [wndtrn] recovered from their wounds.
     + Sydney granary [000011], small cargo bay [cargob], immobile.
-      size: 2000, mass: 208 (200), capacity: 1800/8, upkeep: 32 (30) cash [cash], consume: 2 (0)
-      units of food [food], 2 (0) units of terran breathing gas mixture [terair].
-      items: 2 terrans [terran] (size: 8, mass: 8, upkeep: 2 cash [cash], consume: 2 units of food
-      [food], 2 units of terran breathing gas mixture [terair]).
+      size: 2000, mass: 212 (200), capacity: 1800/12, upkeep: 33 (30) cash [cash], consume: 3 (0)
+      units of food [food], 3 (0) units of terran breathing gas mixture [terair].
+      items: 3 terrans [terran] (size: 12, mass: 12, upkeep: 3 cash [cash], consume: 3 units of food
+      [food], 3 units of terran breathing gas mixture [terair]).
       events:
         week 13: paid 33 cash [cash] upkeep.
         week 13: Lack of supplies: 3 unit of food [food].
-        week 13: 2 terrans [terran] wounded from lack of supplies.
-        week 13: 1 wounded terran [wndtrn] died of their wounds.
+        week 13: 1 terran [terran] wounded from lack of supplies.
         week 13: 1 wounded terran [wndtrn] recovered from their wounds.
     + wind powerplant [122], wind powerplant [wnplnt], immobile.
       size: 10, mass: 10 (10), energy: 4/1, upkeep: 10 cash [cash].
@@ -662,7 +716,7 @@ Galaxy report:
     - computer library [116], computer library [cmplib], immobile, owned by Gelvaren [3].
       size: 200.
 ------------------------------------------------------------
-  * Luna [P00003] (1, 0, 0), moon, unexplored.
+  * Luna [P00001], rocky moon [rock] 0.02 AU from the planet.
 ------------------------------------------------------------
     orbit [O00001], has no atmosphere.
 
@@ -673,25 +727,23 @@ Galaxy report:
     [silici], 100 units of helium-3 [heliu3].
     - space shuttle [100], 10 space shuttle [shuttl], owned by Caste Prime [2].
       size: 2000.
-    - crashed alien vessel [200], alien vessel hull [alnhul], immobile, owned by Caste Prime [2].
+    - crashed alien vessel [200], alien vessel hull [alnhul], owned by Caste Prime [2].
       size: 6500.
-      - advanced robo-factory [201], advanced robo-factory [robofc], immobile, owned by Caste Prime
-        [2].
+      - advanced robo-factory [201], advanced robo-factory [robofc], owned by Caste Prime [2].
         size: 1000.
-      - automated command module [202], automated command module [autcmd], immobile, owned by Caste
-        Prime [2].
+      - automated command module [202], automated command module [autcmd], owned by Caste Prime [2].
         size: 800.
-      - automated propulsion module [203], automated propulsion module [autdrv], immobile, owned by
-        Caste Prime [2].
+      - automated propulsion module [203], automated propulsion module [autdrv], owned by Caste
+        Prime [2].
         size: 600.
-      - automated helium powerplant [204], automated helium powerplant [he3aut], immobile, owned by
-        Caste Prime [2].
+      - automated helium powerplant [204], automated helium powerplant [he3aut], owned by Caste
+        Prime [2].
         size: 400.
-      - small cargo bay [205], small cargo bay [cargob], immobile, owned by Caste Prime [2].
+      - small cargo bay [205], small cargo bay [cargob], owned by Caste Prime [2].
         size: 2000.
-      - life support system [250], life support system [lifsys], immobile, owned by Caste Prime [2].
+      - life support system [250], life support system [lifsys], owned by Caste Prime [2].
         size: 100.
-      - core drill [251], core drill [cdrill], disabled, immobile, owned by Caste Prime [2].
+      - core drill [251], core drill [cdrill], disabled, owned by Caste Prime [2].
         size: 1000.
 
 
@@ -725,18 +777,18 @@ Orders Template:
 
 #modulestack 000008
 ; + Sydney farms [000008], 10 farming complexes [farms], immobile.
-; items: 52 terrans [terran], 4 wounded terrans [wndtrn].
+; items: 53 terrans [terran], 3 wounded terrans [wndtrn].
 
 #modulestack 000009
 ; + Sydney wind powerplants [000009], 10 wind powerplants [wnplnt], immobile.
 
 #modulestack 000010
 ; + Sydney oil powerplants [000010], 5 oil-burning plants [oplant], immobile.
-; items: 100 units of oil [oil], 11 terrans [terran].
+; items: 100 units of oil [oil], 10 terrans [terran], wounded terran [wndtrn].
 
 #modulestack 000011
 ; + Sydney granary [000011], small cargo bay [cargob], immobile.
-; items: 2 terrans [terran].
+; items: 3 terrans [terran].
 
 #modulestack 1
 ; + wind powerplant [1], wind powerplant [wnplnt], immobile.

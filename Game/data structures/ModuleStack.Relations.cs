@@ -208,6 +208,11 @@ namespace SpaceAge
 			}
 		}
 
+		public bool IsLivingUnit
+		{
+			get { return this.ModuleType != null && this.ModuleType.LivingUnit; }
+		}
+
 		public bool IsModuleOperational(Module module)
 		{
 			if (module == null || module.Parent != this || !module.IsActive || !this.IsFormed || !this.online)

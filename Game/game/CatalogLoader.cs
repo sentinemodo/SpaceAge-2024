@@ -115,6 +115,7 @@ namespace SpaceAge
 					itemType.Defense = this.dataFile.XMLAssignInteger(el.GetAttribute("defense"), 0);
 					itemType.Initiative = this.dataFile.XMLAssignInteger(el.GetAttribute("initiative"), 0);
 					itemType.NominalValue = this.dataFile.XMLAssignInteger(el.GetAttribute("value"), 0);
+					itemType.ResearchThroughput = this.dataFile.XMLAssignInteger(el.GetAttribute("research-throughput"), 0);
 
 					foreach (XmlElement elAllowedBy in el.SelectNodes("use-allowed-by"))
 					{
@@ -467,7 +468,17 @@ namespace SpaceAge
 						moduleType.Mass = this.dataFile.XMLAssignDouble(el.GetAttribute("mass"), 0);
 						moduleType.Size = this.dataFile.XMLAssignDouble(el.GetAttribute("size"), 0);
 						moduleType.Capacity = this.dataFile.XMLAssignDouble(el.GetAttribute("capacity"), 0);
-                        moduleType.ResearchOutput = this.dataFile.XMLAssignInteger(el.GetAttribute("research-output"), 0); 
+                        moduleType.ResearchOutput = this.dataFile.XMLAssignInteger(el.GetAttribute("research-output"), 0);
+						moduleType.ResearchOutputDivisor = this.dataFile.XMLAssignInteger(el.GetAttribute("research-output-divisor"), 1);
+						moduleType.InvestigationOutput = this.dataFile.XMLAssignInteger(el.GetAttribute("investigation-output"), 0);
+						if (el.HasAttribute("investigation-types"))
+						{
+							string[] types = el.GetAttribute("investigation-types").Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+							foreach (string investigationType in types)
+							{
+								moduleType.InvestigationTypes.Add(investigationType);
+							}
+						}
 						moduleType.TechnologyCapacity = this.dataFile.XMLAssignInteger(el.GetAttribute("technology-capacity"), 0);
 
 						moduleType.CrewRequired = this.dataFile.XMLAssignInteger(el.GetAttribute("crew"), 0);
@@ -482,6 +493,7 @@ namespace SpaceAge
 						moduleType.WeaponGroup = el.GetAttribute("weapon-group");
 						moduleType.Resists = el.GetAttribute("resists");
 						moduleType.ArmorModule = el.GetAttribute("armor-module") == "true";
+						moduleType.LivingUnit = el.GetAttribute("living-unit") == "yes";
 
 						this.dataFile.assignItemStacks(el.SelectNodes("upkeep"), moduleType.Upkeep);
 						foreach (XmlElement elNoUpkeep in el.SelectNodes("no-upkeep"))

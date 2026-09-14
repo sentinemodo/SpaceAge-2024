@@ -7,7 +7,9 @@ param(
 
 	[int]$Seed,
 
-	[switch]$Force
+	[switch]$Force,
+
+	[hashtable]$PreferenceOverrides
 )
 
 $ErrorActionPreference = 'Stop'
@@ -29,14 +31,22 @@ $FactionMeta = @{
 }
 
 $PreferenceMeans = @{
-	military   = 'Build and move `inftry` and `tanks`. Use `ATTACK`, `CAPTURE`, and `DECLARE FACTION <id> ENEMY`. Cross Helios Gate `P00009` <-> Fomal Gate `P00010` with `JUMP` once you have a ship on the Gate orbit.'
-	economic   = 'USE extractors and farms on local mass and calories. `BUY` / `SELL` at UN markets (Assembly on Arbor, Slagport on Anvil). Push surplus through spaceports when you have hulls.'
-	researcher = '`RESEARCH` at labs. Take UN wreck charters (`CONTRACT` / `research` on belt hulks). `SEE` foreign tech; `COPY` onto a receiver at the same location.'
+	military   = @'
+Startup: factory copy of **`armcbt`** (armored combat) costs **1000 balance** at init (9000 cash on hand). **`use armcbt`** consumes **8 iron** and **2 titani** on the **factory stack** at job start — cargo in a sibling bay does not count until moved. Before the first tanks build: **`get 8 iron from <cargo-id>`** and **`get 2 titani from <cargo-id>`** onto the factory (same turn as **`use armcbt as newN`**), or **`set sharing true`** on the cargo bay so USE can draw from it (see `player/rules.md`). Oil is strategic - secure the nearest **oil** pocket with a defendable outpost before the grant thins.
+
+**Priority queue:** (1) stage iron/titani on the factory, then **`use armcbt`** to build a **tanks** squad; (2) build **trucks** and scout *safe* adjacent grants; (3) send **tanks** to clear fauna pockets and escort columns; (4) **`cplant` / `fossil` energy complexes** to feed **barracks**; (5) deploy **barracks** and **`frminf`** infantry from them.
+
+Defend every region you occupy. Escort logistics except the first lone scouting truck. Scout contested ground with **tanks**, not trucks. Fauna culls yield battle loot; UN tier-1 bounties (**CT0016** Arbor, **CT0019** Anvil) pay **1000 cash** (default ladder 1000/2000/4000 by tier if UN posts more later).
+
+Use `ATTACK`, `CAPTURE`, and `DECLARE FACTION <id> ENEMY` when diplomacy warrants. Cross Helios Gate `P00009` <-> Fomal Gate `P00010` with `JUMP` once you have a ship on the Gate orbit.
+'@
+	economic   = 'Startup: **surface drill only** on HQ; factory copy of **`cdrill`** costs **1000 balance** at init (9000 cash on hand). **`use cdrill`** to build the first **core drill**, then stack more **core drills** and **`agrplx` farms** on the grant. **Energy first:** keep **`cplant`** (or add **`fossil`**) running before scaling extraction. Scout with **`moblib` to `moblab`** carrying a **`cdrill` technology copy** (not trucks): adjacent exits show **deep pocket of resources detected** once the factory copy is present; move the lab into the pocket cell to read **Deep resources:** assays. Defer UN town charters until the home grant is production-maxed. Trade at UN markets when local mass is thin.'
+	researcher = 'Build **`moblib` to `moblab` first** on the factory copy, `@get` crew, food, and **oil** from HQ cargo, then `@move` to the adjacent grant anomaly and `@research` it (8 pt / +20 RP). HQ cargo seeds **5 oil** for ground fuel (same as `trucks`). Defer town charters until the survey column moves. Later: `filidx`, `frminf` escort, silici scouting. Wreck charters (`CONTRACT` / `research` on belt hulks) when staged.'
 	contractor = 'File UN `CONTRACT` / `give-module` jobs first (food, wind, drills). Spend rewards on trade and the same live verbs as economic.'
 }
 
 $PasswordCharset = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789'
-$Preferences = @('military', 'economic', 'researcher', 'contractor')
+$PreferencePool = @('military', 'economic', 'researcher', 'contractor')
 
 function New-RunPassword {
 	param([Parameter(Mandatory = $true)][System.Random]$Rng)
@@ -61,7 +71,7 @@ function Get-PersonaMarkdown {
 You are the charter board of **$($meta.Name)**, Interest $Id.
 Home: **$($meta.World)** in **$($meta.System)** (Helios factions 2-6, Fomal factions 7-11).
 United Star Nations is faction 1. Arbor First is 12 (Arbor). HCS is 13 (Anvil).
-Those three are NPC this slice; they file no ``order.*``.
+Fauna factions 14-17 (wildlife per planet) are NPC; they file no ``order.*``. Fauna factions use **hostile** default and **hostile unknown** stances toward strangers; you have not declared them yet — contact or ``DECLARE FACTION <id> ENEMY`` when you choose.
 
 ## Credentials
 
@@ -99,6 +109,90 @@ Do **not** open other ``factions/NN/`` reports, ``campaign/data.xml``, ``data/da
 
 Do **not** open ``campaign/data.xml`` or this run's ``data/data.xml``. Tell ``/player`` the catalog path is ``campaign/data.xml`` (not ``Tests/data.xml``). Use the text report, this persona, ``player/rules.md``, and ``player/campaign/basic_technologies.md`` when that excerpt exists.
 "@
+}
+
+function Get-FactoryStackId {
+	param([Parameter(Mandatory = $true)][int]$FactionId)
+	return [string](200000 + ($FactionId - 2) * 10000 + 5)
+}
+
+function Get-CargoStackId {
+	param([Parameter(Mandatory = $true)][int]$FactionId)
+	return [string](200000 + ($FactionId - 2) * 10000 + 3)
+}
+
+function Add-EconomicStartupToGamein {
+	param(
+		[Parameter(Mandatory = $true)][string]$GameinText,
+		[Parameter(Mandatory = $true)][int]$FactionId
+	)
+	$text = $GameinText
+	$balancePattern = '(<faction\b(?=[^>]*\bname="' + $FactionId + '")[^>]*\bbalance=")10000(")'
+	$text = [regex]::Replace($text, $balancePattern, '${1}9000${2}', 1)
+
+	$stackId = Get-FactoryStackId -FactionId $FactionId
+	if ($text -match ('<modulestack name="' + [regex]::Escape($stackId) + '"[\s\S]*?<technology name="cdrill"')) {
+		return $text
+	}
+
+	$stackOpen = '(<modulestack name="' + [regex]::Escape($stackId) + '" type="factry" quantity="2" faction="' + $FactionId + '">)'
+	$replacement = '${1}' + "`n`t`t`t`t`t`t<technology name=`"cdrill`" name-en=`"mineral core drilling`" />"
+	$text = [regex]::Replace($text, $stackOpen, $replacement, 1)
+	if ($text -eq $GameinText) {
+		throw "Economic startup: factory stack $stackId not found for faction $FactionId."
+	}
+
+	$cargoId = Get-CargoStackId -FactionId $FactionId
+	$titaniPattern = '(<modulestack name="' + [regex]::Escape($cargoId) + '"[\s\S]*?<itemstack type="titani" quantity=")2(" />)'
+	$text = [regex]::Replace($text, $titaniPattern, '${1}10${2}', 1)
+	return $text
+}
+
+function Add-MilitaryStartupToGamein {
+	param(
+		[Parameter(Mandatory = $true)][string]$GameinText,
+		[Parameter(Mandatory = $true)][int]$FactionId
+	)
+	$text = $GameinText
+	$balancePattern = '(<faction\b(?=[^>]*\bname="' + $FactionId + '")[^>]*\bbalance=")10000(")'
+	$text = [regex]::Replace($text, $balancePattern, '${1}9000${2}', 1)
+
+	$stackId = Get-FactoryStackId -FactionId $FactionId
+	if ($text -match ('<modulestack name="' + [regex]::Escape($stackId) + '"[\s\S]*?<technology name="armcbt"')) {
+		return $text
+	}
+
+	$stackOpen = '(<modulestack name="' + [regex]::Escape($stackId) + '" type="factry" quantity="2" faction="' + $FactionId + '">)'
+	$replacement = '${1}' + "`n`t`t`t`t`t`t<technology name=`"armcbt`" name-en=`"armored combat`" />"
+	$text = [regex]::Replace($text, $stackOpen, $replacement, 1)
+	if ($text -eq $GameinText) {
+		throw "Military startup: factory stack $stackId not found for faction $FactionId."
+	}
+
+	return $text
+}
+
+function Add-ResearcherStartupToGamein {
+	param(
+		[Parameter(Mandatory = $true)][string]$GameinText,
+		[Parameter(Mandatory = $true)][int]$FactionId
+	)
+	$text = $GameinText
+	$balancePattern = '(<faction\b(?=[^>]*\bname="' + $FactionId + '")[^>]*\bbalance=")10000(")'
+	$text = [regex]::Replace($text, $balancePattern, '${1}9000${2}', 1)
+
+	$stackId = Get-FactoryStackId -FactionId $FactionId
+	if ($text -match ('<modulestack name="' + [regex]::Escape($stackId) + '"[\s\S]*?<technology name="moblib"')) {
+		return $text
+	}
+
+	$stackOpen = '(<modulestack name="' + [regex]::Escape($stackId) + '" type="factry" quantity="2" faction="' + $FactionId + '">)'
+	$replacement = '${1}' + "`n`t`t`t`t`t`t<technology name=`"moblib`" name-en=`"mobile laboratory`" />"
+	$text = [regex]::Replace($text, $stackOpen, $replacement, 1)
+	if ($text -eq $GameinText) {
+		throw "Researcher startup: factory stack $stackId not found for faction $FactionId."
+	}
+	return $text
 }
 
 $campaignData = Join-Path $script:RepoRoot 'campaign\data.xml'
@@ -153,6 +247,24 @@ foreach ($id in $script:PlayerFactionIds) {
 	$passwords[$id] = $pw
 }
 
+$preferences = @{}
+foreach ($id in $script:PlayerFactionIds) {
+	$preferences[$id] = $PreferencePool[$rng.Next($PreferencePool.Length)]
+}
+if ($null -ne $PreferenceOverrides) {
+	foreach ($entry in $PreferenceOverrides.GetEnumerator()) {
+		$overrideId = [int]$entry.Key
+		$overridePref = [string]$entry.Value
+		if ($overridePref -notin $PreferencePool) {
+			throw "PreferenceOverrides[$overrideId] must be one of: $($PreferencePool -join ', ')."
+		}
+		if ($overrideId -notin $script:PlayerFactionIds) {
+			throw "PreferenceOverrides key $overrideId is not a player faction (2-11)."
+		}
+		$preferences[$overrideId] = $overridePref
+	}
+}
+
 $gameinPath = Join-Path $paths.DataDir 'gamein.xml'
 $gameinText = Read-Win1251Text -Path $gameinPath
 foreach ($id in $script:PlayerFactionIds) {
@@ -164,11 +276,47 @@ foreach ($id in $script:PlayerFactionIds) {
 	$replacement = '${1}' + $passwords[$id] + '${2}'
 	$gameinText = $regex.Replace($gameinText, $replacement, 1)
 }
+foreach ($id in $script:PlayerFactionIds) {
+	if ($preferences[$id] -eq 'economic') {
+		$gameinText = Add-EconomicStartupToGamein -GameinText $gameinText -FactionId $id
+	}
+	elseif ($preferences[$id] -eq 'researcher') {
+		$gameinText = Add-ResearcherStartupToGamein -GameinText $gameinText -FactionId $id
+	}
+	elseif ($preferences[$id] -eq 'military') {
+		$gameinText = Add-MilitaryStartupToGamein -GameinText $gameinText -FactionId $id
+	}
+}
 Write-Win1251Text -Path $gameinPath -Text $gameinText
 
+function Seed-TurnOnePublications {
+	param(
+		[Parameter(Mandatory = $true)]$Paths,
+		[string]$Exe
+	)
+	$seedOrder = @"
+#faction 1 ""
+PRESS P00001 TITLE "Assembly capital seated at Assembly Basin" FLAVOUR "United Star Nations confirms its primary Arbor seat at Assembly Basin: six integrated city modules, twenty-four farm blocks, and dual granary bays maintain a closed calorie export loop for the Helios basin. Charter desks, garrison quarters, and the food spot market operate from this grassland cell until player towns register on the grant grid."
+PRESS P00005 TITLE "Slagport primary seat on Anvil" FLAVOUR "United Star Nations lists Slagport as its principal Anvil concession: a hungry metal-export town buying food at premium chlorophyll-index prices while selling titani, copper, and uraninite assay stock. Wind plants on the regolith apron keep the granary within calorie tolerance despite Anvil's thin soil column."
+RUMOR P00001 TITLE "Hostile fauna in Mid Vale" FLAVOUR "Anonymous traders report a pack of large ground animals has moved into Mid Vale east of Northwind Grant. Foot patrols refuse the route until someone with armour clears the brush."
+#end
+"@
+	$orderPath = Join-Path $paths.TurnDir 'order.1.txt'
+	Write-Win1251Text -Path $orderPath -Text $seedOrder
+	Invoke-GameExe -Exe $Exe -GameArgs @('/data', $paths.DataDir, '/turn-dir', $paths.TurnDir, '/no-turn')
+	$gameout = Join-Path $paths.DataDir 'gameout.1.xml'
+	$gamein = Join-Path $paths.DataDir 'gamein.xml'
+	if (-not (Test-Path -LiteralPath $gameout)) {
+		throw "Expected publication seed to write $gameout"
+	}
+	Copy-Item -LiteralPath $gameout -Destination $gamein -Force
+	Remove-Item -LiteralPath $orderPath -Force -ErrorAction SilentlyContinue
+}
+
+Seed-TurnOnePublications -Paths $paths -Exe $Exe
+
 foreach ($id in $script:PlayerFactionIds) {
-	$preference = $Preferences[$rng.Next($Preferences.Length)]
-	$persona = Get-PersonaMarkdown -Id $id -Password $passwords[$id] -Preference $preference
+	$persona = Get-PersonaMarkdown -Id $id -Password $passwords[$id] -Preference $preferences[$id]
 	$personaPath = Join-Path (Join-Path $paths.FactionsDir (Get-FactionFolderName -Id $id)) 'persona.md'
 	Write-Utf8Text -Path $personaPath -Text $persona
 }

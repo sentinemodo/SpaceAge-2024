@@ -8,6 +8,7 @@ namespace SpaceAge
 	{
 		public int Execute()
 		{
+			FaunaRumors.IssueAll();
 			return 0;
 		}
 	}

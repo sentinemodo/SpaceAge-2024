@@ -73,21 +73,15 @@ namespace SpaceAge
 
 		public override List<string> Report(Faction faction)
 		{
-			List<string> reportLines = new List<string>
-            {
-                "",
-                "  * Sol [S00001] (0, 0, 0), M4 star, unexplored.",
-                "------------------------------------------------------------"
-            };
-
-			return reportLines;
+			// Star coordinates duplicate the system anchor; omit the star block from galaxy reports.
+			return new List<string>();
 		}
 
 		public override string BattleReportName
 		{
 			get
 			{
-				return "Sol [S00001] (0, 0, 0)";
+				return string.Format("{0} [{1}]", this.FullName, this.Name);
 			}
 		}
 

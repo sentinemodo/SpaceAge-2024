@@ -346,7 +346,7 @@ namespace UnitTests
 
             // check if pricelist got updated
             Assert.That(market.PriceList.ContainsKey(windplant), Is.False, "without prior transaction, pricelist should be empty");
-            Assert.That(market.GetPrice(windplant), Is.EqualTo(-1), "with getPrice initiated and no other prices on other markets, price should be set to 0 - any price");
+            Assert.That(market.GetPrice(windplant), Is.EqualTo(0), "any-price module trade does not post a list price; GetPrice falls back to catalog nominal");
 
             // received, factory again has no modulestack
             Assert.That(buyer.Modules.Count, Is.EqualTo(11));
@@ -520,6 +520,64 @@ namespace UnitTests
         }
 
         [Test]
+        public void RefillSettlementBuyOffers_RestoresCityFoodAfterPartialFill()
+        {
+            ModuleStack berlin = this.game.ModuleStacks["000005"];
+            ItemType food = ItemType.All["food"];
+            Offer foodBuy = this.game.Offers[EOfferType.BuyItems][food][berlin].GetIndex(0);
+            Assert.That(foodBuy.Quantity, Is.EqualTo(200));
+
+            foodBuy.Quantity = 40;
+            this.game.GenerateOffers();
+
+            Assert.That(this.game.Offers[EOfferType.BuyItems][food][berlin].GetIndex(0).Quantity, Is.EqualTo(200),
+                "city food buy refills to 100 per settlement module (Berlin qty 2)");
+        }
+
+        [Test]
+        public void RefillSettlementBuyOffers_PreservesStandingBuyPrice()
+        {
+            ModuleStack berlin = this.game.ModuleStacks["000005"];
+            ItemType food = ItemType.All["food"];
+            Offer foodBuy = this.game.Offers[EOfferType.BuyItems][food][berlin].GetIndex(0);
+            Assert.That(foodBuy.Price, Is.EqualTo(0));
+
+            foodBuy.Quantity = 10;
+            this.game.GenerateOffers();
+
+            Offer after = this.game.Offers[EOfferType.BuyItems][food][berlin].GetIndex(0);
+            Assert.That(after.Quantity, Is.EqualTo(200));
+            Assert.That(after.Price, Is.EqualTo(0));
+        }
+
+        [Test]
+        public void RefillSettlementBuyOffers_AddsCityModuleBids()
+        {
+            ModuleStack berlin = this.game.ModuleStacks["000005"];
+            ModuleType cargob = ModuleType.All["cargob"];
+            Assert.That(this.findModuleBuyOffer(berlin, cargob), Is.Null);
+
+            this.game.GenerateOffers();
+
+            Offer cargobBid = this.findModuleBuyOffer(berlin, cargob);
+            Assert.That(cargobBid, Is.Not.Null);
+            Assert.That(cargobBid.Quantity, Is.EqualTo(1));
+            Assert.That(cargobBid.Price, Is.EqualTo(100));
+        }
+
+        private Offer findModuleBuyOffer(ModuleStack stack, ModuleType moduleType)
+        {
+            foreach (Offer offer in Offer.All[stack])
+            {
+                if (offer.OfferType == EOfferType.BuyModules && offer.ModuleType == moduleType)
+                {
+                    return offer;
+                }
+            }
+            return null;
+        }
+
+        [Test]
         public void ProcessGenerateAutoOffers()
         {
             ModuleStack berlin = this.game.ModuleStacks["000005"];
@@ -552,9 +610,23 @@ namespace UnitTests
             Assert.That(this.game.Offers[EOfferType.SellItems][cash][berlin].Count, Is.EqualTo(0),
                 "cash is not listed for sale");
 
-            Offer ironOffer = this.game.Offers[EOfferType.SellItems][iron][berlin].GetIndex(0);
-            Assert.That(ironOffer.Quantity, Is.EqualTo(15));
-            Assert.That(ironOffer.Price, Is.EqualTo(10));
+            Assert.That(this.game.Offers[EOfferType.SellItems][iron][berlin].Count, Is.EqualTo(0),
+                "city with an iron buy bid must not also auto-sell iron");
+            Offer ironBuy = this.findItemBuyOffer(berlin, iron);
+            Assert.That(ironBuy, Is.Not.Null);
+            Assert.That(ironBuy.Quantity, Is.EqualTo(50), "Berlin qty 2 city modules refill iron buy to 25 each");
+        }
+
+        private Offer findItemBuyOffer(ModuleStack stack, ItemType itemType)
+        {
+            foreach (Offer offer in Offer.All[stack])
+            {
+                if (offer.OfferType == EOfferType.BuyItems && offer.ItemType == itemType)
+                {
+                    return offer;
+                }
+            }
+            return null;
         }
 
         [Test]
@@ -938,6 +1010,198 @@ namespace UnitTests
 			Assert.That(buyerB.ItemStacks.Quantity(terran), Is.EqualTo(40));
 		}
 
+		[Test]
+		public void ParseBuyOrder_ZeroPrice_Throws()
+		{
+			ModuleStack buyer = this.game.ModuleStacks["000004"];
+			BuyOrder buyOrder = new BuyOrder(buyer);
+			Assert.Throws<Exception>(() => buyOrder.Parse("5 food at 0"));
+		}
+
+		[Test]
+		public void ParseBuyOrder_NegativePrice_Throws()
+		{
+			ModuleStack buyer = this.game.ModuleStacks["000004"];
+			BuyOrder buyOrder = new BuyOrder(buyer);
+			Assert.Throws<Exception>(() => buyOrder.Parse("5 food at -3"));
+		}
+
+		[Test]
+		public void Trade_OutlierSellPrice_DoesNotUpdateRegionalList()
+		{
+			Region region = this.game.Regions["R00001"];
+			ItemType food = ItemType.All["food"];
+			ModuleStack buyer = this.game.ModuleStacks["000005"];
+			ModuleStack seller = this.game.ModuleStacks["000008"];
+			seller.Owner = Faction.All["2"];
+
+			foreach (Region other in Region.All.Values)
+			{
+				if (other.Market.PriceList.ContainsKey(food))
+				{
+					other.Market.PriceList.Remove(food);
+				}
+			}
+			region.Market.AddPrice(food, 10);
+
+			this.removeSellOffers(seller, food);
+			Offer sellOffer = new Offer(region.Market, seller, EOfferType.SellItems);
+			sellOffer.ItemType = food;
+			sellOffer.Quantity = 5;
+			sellOffer.Price = 10000;
+
+			BuyOrder buyOrder = new BuyOrder(buyer);
+			buyOrder.Parse("5 food at 10000");
+			buyOrder.Execute(1);
+			this.ProcessMarketBuys(1);
+
+			Assert.That(region.Market.PriceList[food], Is.EqualTo(10));
+		}
+
+		[Test]
+		public void Trade_NormalSellPrice_UpdatesRegionalList()
+		{
+			Region region = this.game.Regions["R00001"];
+			ItemType food = ItemType.All["food"];
+			ModuleStack buyer = this.game.ModuleStacks["000005"];
+			ModuleStack seller = this.game.ModuleStacks["000008"];
+			seller.Owner = Faction.All["2"];
+
+			foreach (Region other in Region.All.Values)
+			{
+				if (other.Market.PriceList.ContainsKey(food))
+				{
+					other.Market.PriceList.Remove(food);
+				}
+			}
+			region.Market.AddPrice(food, 10);
+
+			this.removeSellOffers(seller, food);
+			Offer sellOffer = new Offer(region.Market, seller, EOfferType.SellItems);
+			sellOffer.ItemType = food;
+			sellOffer.Quantity = 5;
+			sellOffer.Price = 12;
+
+			BuyOrder buyOrder = new BuyOrder(buyer);
+			buyOrder.Parse("5 food at 12");
+			buyOrder.Execute(1);
+			this.ProcessMarketBuys(1);
+
+			Assert.That(region.Market.PriceList[food], Is.EqualTo(12));
+		}
+
+		[Test]
+		public void UpdateRates_OfferPressureDriftsDownTowardModerateLowBid()
+		{
+			Region berlin = this.game.Regions["R00001"];
+			ItemType food = ItemType.All["food"];
+			ModuleStack buyer = this.game.ModuleStacks["000005"];
+
+			foreach (Region region in Region.All.Values)
+			{
+				if (region.Market.PriceList.ContainsKey(food))
+				{
+					region.Market.PriceList.Remove(food);
+				}
+			}
+			berlin.Market.AddPrice(food, 10);
+
+			Offer buyOffer = new Offer(berlin.Market, buyer, EOfferType.BuyItems);
+			buyOffer.ItemType = food;
+			buyOffer.Price = 8;
+			buyOffer.Quantity = 100;
+			Offer.All.ReuseEquivalent(buyOffer);
+
+			this.game.UpdateRates();
+
+			Assert.That(berlin.Market.PriceList[food], Is.EqualTo(9));
+		}
+
+		[Test]
+		public void UpdateRates_ExtremeLowBidIgnoredForDrift()
+		{
+			Region berlin = this.game.Regions["R00001"];
+			ItemType food = ItemType.All["food"];
+			ModuleStack buyer = this.game.ModuleStacks["000005"];
+
+			foreach (Region region in Region.All.Values)
+			{
+				if (region.Market.PriceList.ContainsKey(food))
+				{
+					region.Market.PriceList.Remove(food);
+				}
+			}
+			berlin.Market.AddPrice(food, 100);
+
+			Offer buyOffer = new Offer(berlin.Market, buyer, EOfferType.BuyItems);
+			buyOffer.ItemType = food;
+			buyOffer.Price = 1;
+			buyOffer.Quantity = 100;
+			Offer.All.ReuseEquivalent(buyOffer);
+
+			this.game.UpdateRates();
+
+			Assert.That(berlin.Market.PriceList[food], Is.EqualTo(100));
+		}
+
+		[Test]
+		public void UpdateRates_ModerateHighSellDriftsUp()
+		{
+			Region berlin = this.game.Regions["R00001"];
+			ItemType food = ItemType.All["food"];
+			ModuleStack seller = this.game.ModuleStacks["000008"];
+			seller.Owner = Faction.All["2"];
+
+			foreach (Region region in Region.All.Values)
+			{
+				if (region.Market.PriceList.ContainsKey(food))
+				{
+					region.Market.PriceList.Remove(food);
+				}
+			}
+			berlin.Market.AddPrice(food, 10);
+
+			this.removeSellOffers(seller, food);
+			Offer sellOffer = new Offer(berlin.Market, seller, EOfferType.SellItems);
+			sellOffer.ItemType = food;
+			sellOffer.Quantity = 5;
+			sellOffer.Price = 12;
+			Offer.All.ReuseEquivalent(sellOffer);
+
+			this.game.UpdateRates();
+
+			Assert.That(berlin.Market.PriceList[food], Is.EqualTo(11));
+		}
+
+		[Test]
+		public void UpdateRates_OutlierHighSellIgnoredForDrift()
+		{
+			Region berlin = this.game.Regions["R00001"];
+			ItemType food = ItemType.All["food"];
+			ModuleStack seller = this.game.ModuleStacks["000008"];
+			seller.Owner = Faction.All["2"];
+
+			foreach (Region region in Region.All.Values)
+			{
+				if (region.Market.PriceList.ContainsKey(food))
+				{
+					region.Market.PriceList.Remove(food);
+				}
+			}
+			berlin.Market.AddPrice(food, 10);
+
+			this.removeSellOffers(seller, food);
+			Offer sellOffer = new Offer(berlin.Market, seller, EOfferType.SellItems);
+			sellOffer.ItemType = food;
+			sellOffer.Quantity = 1;
+			sellOffer.Price = 500;
+			Offer.All.ReuseEquivalent(sellOffer);
+
+			this.game.UpdateRates();
+
+			Assert.That(berlin.Market.PriceList[food], Is.EqualTo(10));
+		}
+
 		private void removeSellOffers(ModuleStack seller, ItemType itemType)
 		{
 			Offers toRemove = new Offers();
@@ -967,6 +1231,243 @@ namespace UnitTests
 		}
 
         // prices changes
+
+		private DeliveringPurchase executeCrossRegionTerranBuy(out ModuleStack buyer, out double bankBeforeCancel)
+		{
+			ItemType terran = ItemType.All["terran"];
+			ModuleStack sellerLocal = this.game.ModuleStacks["000001"];
+			ModuleStack sellerRemote = this.game.ModuleStacks["000005"];
+			buyer = this.game.ModuleStacks["000004"];
+			sellerLocal.ItemStacks.Remove(new ItemStack(terran, sellerLocal.ItemStacks[terran].Quantity));
+			foreach (Offer offer in Offer.All[EOfferType.SellItems][terran][sellerLocal])
+			{
+				Offer.All.Remove(offer);
+			}
+
+			List<string> testcommands = new List<string>
+			{
+				"#faction 2",
+				"#modulestack 000004",
+				"@buy all terran everywhere",
+				"#end"
+			};
+			OrdersReader ordersReader = new OrdersReader(this.game);
+			ordersReader.AssignOrders(testcommands);
+
+			BuyOrder order = (BuyOrder)buyer.Orders[0];
+			order.Execute(this.game.Week);
+			this.ProcessMarketBuys(this.game.Week);
+
+			DeliveringPurchase delivery = null;
+			foreach (Effect effect in buyer.Effects)
+			{
+				delivery = effect as DeliveringPurchase;
+				if (delivery != null)
+				{
+					break;
+				}
+			}
+			Assert.That(delivery, Is.Not.Null);
+			Assert.That(sellerRemote.ItemStacks.ContainsKey(terran), Is.False);
+			bankBeforeCancel = buyer.Owner.Bank.AvailableFunds;
+			return delivery;
+		}
+
+		[Test]
+		public void BuyCancel_PendingCrossRegionDelivery_RefundsEightyPercentAndReturnsGoods()
+		{
+			ModuleStack buyer;
+			double bankBeforeCancel;
+			ModuleStack sellerRemote = this.game.ModuleStacks["000005"];
+			DeliveringPurchase delivery = this.executeCrossRegionTerranBuy(out buyer, out bankBeforeCancel);
+			int expectedRefund = (int)Math.Floor(delivery.PurchaseValue * DeliveringPurchase.CancelRefundRatio);
+			ItemType cash = ItemType.All["cash"];
+			sellerRemote.ItemStacks.Remove(ItemStack.Cash(sellerRemote.ItemStacks.Quantity(cash)));
+			double sellerBankBeforeCancel = sellerRemote.Owner.Bank.Balance;
+
+			List<string> testcommands = new List<string>
+			{
+				"#faction 2",
+				"#modulestack 000004",
+				"buy cancel",
+				"#end"
+			};
+			OrdersReader ordersReader = new OrdersReader(this.game);
+			ordersReader.AssignOrders(testcommands);
+			BuyOrder cancelOrder = (BuyOrder)buyer.Orders[1];
+			Assert.That(cancelOrder.CancelMode);
+			cancelOrder.Execute(this.game.Week);
+
+			Assert.That(buyer.Effects.FindAll(effect => effect is DeliveringPurchase).Count, Is.EqualTo(0));
+			Assert.That(buyer.Owner.Bank.AvailableFunds, Is.EqualTo(bankBeforeCancel + expectedRefund));
+			Assert.That(expectedRefund, Is.EqualTo(800));
+			Assert.That(delivery.TransferCost, Is.EqualTo(100));
+			Assert.That(sellerRemote.Owner.Bank.Balance, Is.EqualTo(sellerBankBeforeCancel - expectedRefund));
+
+			DeliveringPurchase returnDelivery = null;
+			foreach (Effect effect in sellerRemote.Effects)
+			{
+				returnDelivery = effect as DeliveringPurchase;
+				if (returnDelivery != null)
+				{
+					break;
+				}
+			}
+			Assert.That(returnDelivery, Is.Not.Null);
+			Assert.That(returnDelivery.IsReturn);
+			Assert.That(returnDelivery.PurchaseValue, Is.EqualTo(0));
+			Assert.That(returnDelivery.ItemStack.Quantity, Is.EqualTo(20));
+			Assert.That(sellerRemote.ItemStacks.ContainsKey(ItemType.All["terran"]), Is.False);
+		}
+
+		[Test]
+		public void Move_Starts_CancelsPendingCrossRegionDeliveryWithEightyPercentRefund()
+		{
+			ItemType terran = ItemType.All["terran"];
+			ModuleStack buyer = this.game.ModuleStacks["100001"];
+			ModuleStack sellerLocal = this.game.ModuleStacks["000005"];
+			ModuleStack sellerRemote = this.game.ModuleStacks["000001"];
+			sellerLocal.ItemStacks.Remove(new ItemStack(terran, sellerLocal.ItemStacks[terran].Quantity));
+			foreach (Offer offer in Offer.All[EOfferType.SellItems][terran][sellerLocal])
+			{
+				Offer.All.Remove(offer);
+			}
+
+			List<string> testcommands = new List<string>
+			{
+				"#faction 2",
+				"#modulestack 100001",
+				"@buy all terran everywhere",
+				"#end"
+			};
+			OrdersReader ordersReader = new OrdersReader(this.game);
+			ordersReader.AssignOrders(testcommands);
+			BuyOrder buyOrder = (BuyOrder)buyer.Orders[0];
+			buyOrder.Execute(this.game.Week);
+			this.ProcessMarketBuys(this.game.Week);
+
+			DeliveringPurchase delivery = null;
+			foreach (Effect effect in buyer.Effects)
+			{
+				delivery = effect as DeliveringPurchase;
+				if (delivery != null)
+				{
+					break;
+				}
+			}
+			Assert.That(delivery, Is.Not.Null);
+			Assert.That(sellerRemote.ItemStacks.ContainsKey(terran), Is.False);
+			double bankBeforeMove = buyer.Owner.Bank.AvailableFunds;
+			int expectedRefund = (int)Math.Floor(delivery.PurchaseValue * DeliveringPurchase.CancelRefundRatio);
+
+			testcommands = new List<string>
+			{
+				"#faction 2",
+				"#modulestack 100001",
+				"move R00002",
+				"#end"
+			};
+			ordersReader.AssignOrders(testcommands);
+			MoveOrder moveOrder = (MoveOrder)buyer.Orders[1];
+			buyer.ExecutedLongOrder = false;
+			buyer.Orders.Execute(this.game.Week);
+
+			Assert.That(buyer.Effects.FindAll(effect => effect is DeliveringPurchase).Count, Is.EqualTo(0));
+			Assert.That(buyer.Owner.Bank.AvailableFunds, Is.EqualTo(bankBeforeMove + expectedRefund));
+			Assert.That(moveOrder.Executing, Is.True);
+
+			DeliveringPurchase returnDelivery = null;
+			foreach (Effect effect in sellerRemote.Effects)
+			{
+				returnDelivery = effect as DeliveringPurchase;
+				if (returnDelivery != null)
+				{
+					break;
+				}
+			}
+			Assert.That(returnDelivery, Is.Not.Null);
+			Assert.That(returnDelivery.IsReturn);
+		}
+
+		[Test]
+		public void BuyInRegion_MatchesOnlySpecifiedRegion()
+		{
+			ItemType terran = ItemType.All["terran"];
+			ModuleStack buyer = this.game.ModuleStacks["000004"];
+			ModuleStack sellerBerlin = this.game.ModuleStacks["000005"];
+			ModuleStack sellerWarsaw = this.game.ModuleStacks["000001"];
+			foreach (Offer offer in Offer.All[EOfferType.SellItems][terran][sellerWarsaw])
+			{
+				Offer.All.Remove(offer);
+			}
+
+			List<string> testcommands = new List<string>
+			{
+				"#faction 2",
+				"#modulestack 000004",
+				"@buy all terran in R00001",
+				"#end"
+			};
+			OrdersReader ordersReader = new OrdersReader(this.game);
+			ordersReader.AssignOrders(testcommands);
+
+			BuyOrder order = (BuyOrder)buyer.Orders[0];
+			Assert.That(order.BuyInRegion.Name, Is.EqualTo("R00001"));
+			order.Execute(this.game.Week);
+			this.ProcessMarketBuys(this.game.Week);
+
+			Assert.That(sellerBerlin.ItemStacks.ContainsKey(terran), Is.False);
+			Assert.That(sellerWarsaw.ItemStacks.ContainsKey(terran), Is.True);
+			DeliveringPurchase delivery = null;
+			foreach (Effect effect in buyer.Effects)
+			{
+				delivery = effect as DeliveringPurchase;
+				if (delivery != null)
+				{
+					break;
+				}
+			}
+			Assert.That(delivery, Is.Not.Null);
+			Assert.That(delivery.SellerStack.Name, Is.EqualTo("000005"));
+		}
+
+		[Test]
+		public void SellerMove_DestroyReturnShipmentInTransit()
+		{
+			ModuleStack seller = this.game.ModuleStacks["100001"];
+			ModuleStack buyer = this.game.ModuleStacks["000004"];
+			ItemType terran = ItemType.All["terran"];
+			int terransBefore = seller.ItemStacks.Quantity(terran);
+			ItemStack returningTerrans = new ItemStack(terran, 5);
+			DeliveringPurchase returnDelivery = new DeliveringPurchase(
+				seller,
+				buyer,
+				seller,
+				returningTerrans,
+				0,
+				0,
+				(Region)seller.Location,
+				4,
+				true);
+			returnDelivery.Execute(this.game.Week);
+
+			List<string> testcommands = new List<string>
+			{
+				"#faction 2",
+				"#modulestack 100001",
+				"move R00002",
+				"#end"
+			};
+			OrdersReader ordersReader = new OrdersReader(this.game);
+			ordersReader.AssignOrders(testcommands);
+			MoveOrder moveOrder = (MoveOrder)seller.Orders[0];
+			seller.ExecutedLongOrder = false;
+			seller.Orders.Execute(this.game.Week);
+
+			Assert.That(seller.Effects.FindAll(effect => effect is DeliveringPurchase).Count, Is.EqualTo(0));
+			Assert.That(moveOrder.Executing, Is.True);
+			Assert.That(seller.ItemStacks.Quantity(terran), Is.EqualTo(terransBefore));
+		}
 	}
 
 	[TestFixture]
@@ -1367,6 +1868,30 @@ namespace UnitTests
 			this.game.ExecuteBetweenTurnOrders();
 			Assert.That(PressRelease.All.Count, Is.EqualTo(1));
 			Assert.That(PressRelease.All[0].Issuer.Name, Is.EqualTo("2"));
+		}
+
+		[Test]
+		public void Parse_Rumor_BetweenTurns()
+		{
+			List<string> commands = new List<string>
+			{
+				"#faction 1",
+				"RUMOR P00002 TITLE \"Hostile fauna\" FLAVOUR \"Something hunts the grass east of Northwind.\"",
+				"#end"
+			};
+			OrdersReader reader = new OrdersReader(this.game);
+			reader.AssignOrders(commands);
+			RumorOrder rumor = (RumorOrder)Faction.All["1"].Orders[Faction.All["1"].Orders.Count - 1];
+			Assert.That(rumor.AllowedBetweenTurns, Is.True);
+			Assert.That(rumor.PlanetId, Is.EqualTo("P00002"));
+			Assert.That(rumor.Title, Is.EqualTo("Hostile fauna"));
+			this.game.ExecuteBetweenTurnOrders();
+			Assert.That(PressRelease.All.Count, Is.EqualTo(1));
+			Assert.That(PressRelease.All[0].Anonymous, Is.True);
+			Assert.That(PressRelease.All[0].Issuer, Is.Null);
+			List<string> report = Faction.All["2"].Report();
+			Assert.That(report, Does.Contain("Rumors:"));
+			Assert.That(string.Join("\n", report.ToArray()), Does.Contain("Hostile fauna"));
 		}
 
 		[Test]

@@ -56,6 +56,7 @@ namespace SpaceAge
 			this.LoadFactions();
 			this.LoadGalaxy();
 			this.LoadContracts();
+			this.LoadPublications();
 			this.LoadOrders();
 			return game;
 		}
@@ -157,6 +158,12 @@ namespace SpaceAge
 			Contract.All.LoadXml(elContracts);
 		}
 
+		public void LoadPublications()
+		{
+			XmlElement elPublications = (XmlElement)this.gameDocument.SelectSingleNode("/game/publications");
+			PressRelease.LoadXml(elPublications);
+		}
+
 
 		public void LoadOrders()
 		{
@@ -238,6 +245,12 @@ namespace SpaceAge
 				doc.DocumentElement.AppendChild(Contract.All.SaveXml(doc));
 			}
 			#endregion
+
+			XmlElement elPublications = PressRelease.SaveXml(doc);
+			if (elPublications != null)
+			{
+				doc.DocumentElement.AppendChild(elPublications);
+			}
 
 			doc.DocumentElement.AppendChild(this.game.Galaxy.SaveXml(doc, factionXMLreport));
 

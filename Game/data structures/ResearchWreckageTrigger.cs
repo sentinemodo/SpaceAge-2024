@@ -51,6 +51,10 @@ namespace SpaceAge
 		{
 		}
 
+		public void NotifyFactionTransfer(Faction giver, ModuleStack giverStack, Faction receiverFaction, ModuleType moduleType, int quantity, Region location, Faction issuer)
+		{
+		}
+
 		public void NotifyResearch(Faction researcher, ModuleStack researcherStack, ModuleStack target, int points)
 		{
 			if (this.IsComplete())
@@ -68,6 +72,10 @@ namespace SpaceAge
 
 			this.Progress += points;
 			this.Winner = researcher;
+		}
+
+		public void NotifyStackDestroyed(Faction killer, ModuleStack stack)
+		{
 		}
 
 		public bool IsComplete()

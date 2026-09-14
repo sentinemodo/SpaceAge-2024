@@ -237,6 +237,36 @@ namespace SpaceAge
             return spaceMoveables;
         }
 
+        private List<IMoveable> spaceMoveablesForFuel()
+        {
+            List<IMoveable> fuelMoveables = new List<IMoveable>();
+            if (this.Mover.MoveModes.ContainsKey(EMoveMode.space) && this.Mover.Fuel.Count > 0)
+            {
+                fuelMoveables.Add(this.Mover);
+            }
+            this.collectSpacePropulsionMoveables(this.Mover, fuelMoveables);
+            return fuelMoveables;
+        }
+
+        private void collectSpacePropulsionMoveables(IMoveable moveable, List<IMoveable> fuelMoveables)
+        {
+            if (!moveable.HasModuleStacks())
+            {
+                return;
+            }
+
+            foreach (ModuleStack nested in moveable.ModuleStacks.Values)
+            {
+                if (nested.MoveModes.ContainsKey(EMoveMode.space)
+                    && nested.ModuleType.Group == EModuleTypesGroup.propulsion
+                    && nested.Fuel.Count > 0)
+                {
+                    fuelMoveables.Add(nested);
+                }
+                this.collectSpacePropulsionMoveables(nested, fuelMoveables);
+            }
+        }
+
 
 		private bool isWay(int week)
 		{
@@ -393,14 +423,14 @@ namespace SpaceAge
 			ItemType h2o2 = ItemType.All["h2o2"];
 			ItemStacks need = new ItemStacks();
 			need.Add(new ItemStack(h2o2, surcharge));
-			if (!this.Mover.ItemStacksSumRecursive.Has(need))
+			if (!this.Mover.HasItemsAvailableTo(this.Mover, need))
 			{
 				this.Mover.EventReports.Add(
 					week,
 					string.Format("MOVE failed. Not enough {0} for launch.", ItemType.All["h2o2"].ReportName));
 				return false;
 			}
-			IItemStacksHolder holder = this.findFuelHolder(this.Mover, need);
+			IItemStacksHolder holder = this.Mover.FindItemHolderAvailableTo(this.Mover, need);
 			if (holder == null)
 			{
 				this.Mover.EventReports.Add(
@@ -422,11 +452,14 @@ namespace SpaceAge
 		{          
 			if (!this.Mover.IsActive)
 			{
+				string inactiveState = this.Mover.IsPartiallyDisabled
+					? (this.Mover.IsLivingUnit ? "partially routed" : "partially disabled")
+					: (this.Mover.IsLivingUnit ? "routed" : "disabled");
 				this.Mover.EventReports.Add(
 					week,
 					string.Format("MOVE failed. {0} is {1}.",
 						this.Mover.ReportName,
-						this.Mover.IsPartiallyDisabled ? "partially disabled" : "disabled"));
+						inactiveState));
 				return false;
 			}
 
@@ -495,9 +528,9 @@ namespace SpaceAge
             {
                 if (!moveable.Effects.IsFuelled)
                 {
-                    if (this.Mover.ItemStacksSumRecursive.Has(moveable.Fuel))
+                    if (this.Mover.HasItemsAvailableTo(this.Mover, moveable.Fuel))
                     {
-                        IItemStacksHolder holder = this.findFuelHolder(this.Mover, moveable.Fuel);
+                        IItemStacksHolder holder = this.Mover.FindItemHolderAvailableTo(this.Mover, moveable.Fuel);
 
                         if (holder != null)
                         {
@@ -541,15 +574,16 @@ namespace SpaceAge
             }
             else if (this.moveMode == EMoveMode.space)
             {
+                List<IMoveable> spaceMoveables = this.spaceMoveablesForFuel();
                 bool needFuelforSpace = false;
-                foreach (IMoveable moveable in moveModes[EMoveMode.space])
+                foreach (IMoveable moveable in spaceMoveables)
                 {
                     if (moveable.Fuel.Count > 0)
                         needFuelforSpace = true;
                 }
                 if (!needFuelforSpace)
                     return false;
-                return this.consumeFuel(week, moveModes[EMoveMode.space]);
+                return this.consumeFuel(week, spaceMoveables);
             }
             return false;
 		}
@@ -591,6 +625,8 @@ namespace SpaceAge
 					// assign destination if not moving
 					if (this.Mover.MovingTo == null)
 					{
+						DeliveringPurchase.CancelAll(this.Mover, week);
+						DeliveringPurchase.CancelReturns(this.Mover, week);
 						if (!this.applyEnvironmentMoveRules(week))
 						{
 							this.Executing = false;

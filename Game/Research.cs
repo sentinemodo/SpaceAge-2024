@@ -39,8 +39,13 @@ namespace SpaceAge
 			{
 				return 0;
 			}
-			return researcher.ModuleType.ResearchOutput * researcher.Modules.Count
-				+ researcher.ResearchSkillOutputBonus;
+
+			int divisor = researcher.ModuleType.ResearchOutputDivisor;
+			int moduleUnits = researcher.ModuleType.ResearchOutput * researcher.Modules.Count;
+			researcher.ResearchOutputRemainder += moduleUnits;
+			int moduleOutput = researcher.ResearchOutputRemainder / divisor;
+			researcher.ResearchOutputRemainder %= divisor;
+			return moduleOutput + researcher.ResearchSkillOutputBonus + researcher.ResearchItemThroughputBonus;
 		}
 
 		// Weekly breakthrough roll against the cheapest available technology: each of

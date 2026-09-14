@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using NUnit.Framework;
 using SpaceAge;
@@ -46,6 +47,38 @@ namespace UnitTests
 		}
 
 		[Test]
+		public void RefillSettlementBuyOffers_AssemblyFoodScalesWithCityQty()
+		{
+			this.dataFile.LoadConfiguration(CampaignDir(), "data.xml");
+			this.dataFile.LoadGameDocument(CampaignDir(), "gamein.1.xml");
+			this.dataFile.LoadTurnNumber();
+			this.dataFile.LoadFactions();
+			this.dataFile.LoadGalaxy();
+			this.dataFile.LoadContracts();
+			this.game = this.dataFile.Game;
+
+			ModuleStack assembly = this.game.ModuleStacks["100001"];
+			ItemType food = ItemType.All["food"];
+			Offer foodBuy = null;
+			foreach (Offer offer in Offer.All[assembly])
+			{
+				if (offer.OfferType == EOfferType.BuyItems && offer.ItemType == food)
+				{
+					foodBuy = offer;
+					break;
+				}
+			}
+			Assert.That(foodBuy, Is.Not.Null);
+			Assert.That(assembly.Quantity, Is.EqualTo(6));
+
+			foodBuy.Quantity = 100;
+			this.game.GenerateOffers();
+
+			Assert.That(foodBuy.Quantity, Is.EqualTo(600),
+				"Assembly qty 6 city modules refill food buy to 100 per module");
+		}
+
+		[Test]
 		public void GenerateOffers_DoesNotDuplicateStandingCitySells()
 		{
 			this.dataFile.LoadConfiguration(CampaignDir(), "data.xml");
@@ -56,39 +89,59 @@ namespace UnitTests
 			this.dataFile.LoadContracts();
 			this.game = this.dataFile.Game;
 
-			int standingTerranSells = 0;
 			ItemType terran = ItemType.All["terran"];
+			Dictionary<ModuleStack, int> terranSellsByCity = new Dictionary<ModuleStack, int>();
 			foreach (Offer offer in Offer.All)
 			{
 				if (offer.OfferType == EOfferType.SellItems
 					&& offer.ItemType == terran
-					&& offer.Offerent != null
-					&& offer.Offerent.Owner != null
-					&& offer.Offerent.Owner.Name == "1")
+					&& offer.Offerent is ModuleStack city
+					&& city.ModuleType != null
+					&& city.ModuleType.Name == "city"
+					&& city.Owner != null
+					&& city.Owner.Name == "1")
 				{
-					standingTerranSells++;
+					if (!terranSellsByCity.ContainsKey(city))
+					{
+						terranSellsByCity[city] = 0;
+					}
+					terranSellsByCity[city]++;
 				}
 			}
 
-			Assert.That(standingTerranSells, Is.GreaterThan(0), "campaign t=1 should seed UN terran sells");
+			Assert.That(terranSellsByCity.Count, Is.GreaterThan(0), "campaign t=1 should seed UN terran sells");
 
 			this.game.GenerateOffers();
 
-			int afterTerranSells = 0;
+			Dictionary<ModuleStack, int> afterTerranSellsByCity = new Dictionary<ModuleStack, int>();
 			foreach (Offer offer in Offer.All)
 			{
 				if (offer.OfferType == EOfferType.SellItems
 					&& offer.ItemType == terran
-					&& offer.Offerent != null
-					&& offer.Offerent.Owner != null
-					&& offer.Offerent.Owner.Name == "1")
+					&& offer.Offerent is ModuleStack city
+					&& city.ModuleType != null
+					&& city.ModuleType.Name == "city"
+					&& city.Owner != null
+					&& city.Owner.Name == "1")
 				{
-					afterTerranSells++;
+					if (!afterTerranSellsByCity.ContainsKey(city))
+					{
+						afterTerranSellsByCity[city] = 0;
+					}
+					afterTerranSellsByCity[city]++;
 				}
 			}
 
-			Assert.That(afterTerranSells, Is.EqualTo(standingTerranSells),
-				"GenerateOffers must not add duplicate terran sells when standing offers exist");
+			foreach (KeyValuePair<ModuleStack, int> entry in terranSellsByCity)
+			{
+				Assert.That(afterTerranSellsByCity[entry.Key], Is.EqualTo(entry.Value),
+					"GenerateOffers must not duplicate terran sells on cities that already listed terran");
+			}
+			foreach (KeyValuePair<ModuleStack, int> entry in afterTerranSellsByCity)
+			{
+				Assert.That(entry.Value, Is.LessThanOrEqualTo(1),
+					"each UN city may have at most one terran sell offer");
+			}
 		}
 
 		[Test]

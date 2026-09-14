@@ -14,6 +14,7 @@ The **game-designer** Cursor agent (`.cursor/agents/game-designer.md`) owns the 
 | [resources.md](resources.md) | Canonical resource dictionary (seed, rarity, extraction) |
 | [catalog.md](catalog.md) | Module types, items, skills, equipment (resources → resources.md) |
 | [contracts.md](contracts.md) | In-game contract vectors |
+| [anomaly-investigation.md](anomaly-investigation.md) | Regional anomaly loop, tech-band payouts, HQ seed hooks |
 | [engine-wishlist.md](engine-wishlist.md) | Engine gaps (effects, orders, groups, triggers) |
 
 Live XML: `campaign/data.xml` and `campaign/gamein.1.xml` (regenerate the seed with `python campaign/_gen_gamein.py` from `galaxy.md`). Engine `LoadGame` still opens only `/data/gamein.xml` — copy the seed there; copy the catalog to `/data/data.xml`. Never point `/data` at `campaign/`. Never put `gamein.xml` in `/turn-dir`.

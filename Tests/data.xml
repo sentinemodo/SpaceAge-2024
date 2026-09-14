@@ -129,6 +129,24 @@
 			mass="1">			
 		</entry>
 		<entry
+			name="senpak"
+			name-en="field sensor kit"
+			name-en2="field sensor kits"
+			description="Portable spectrometer and sample prep for field survey teams."
+			size="2"
+			mass="2"
+			research-throughput="1">
+		</entry>
+		<entry
+			name="gravrt"
+			name-en="gravimeter readout"
+			name-en2="gravimeter readouts"
+			description="Gravimeter trace and tilt meter for mass-concentration survey."
+			size="2"
+			mass="3"
+			research-throughput="1">
+		</entry>
+		<entry
 			name="iron" 
 			name-en="unit of iron" 
 			name-en2="units of iron" 
@@ -1637,8 +1655,31 @@ Researchers can query the library. The system can handle natural language questi
 			energy="5"			
 			technology-capacity="4"
       research-output="1"
+			investigation-output="2"
 			value="1000">
 			<upkeep type="cash" quanity="100"/>
+		</entry>
+		<entry
+			name="moblab"
+			name-en="mobile laboratory"
+			name-en2="mobile laboratories"
+			group="research"
+			description="Truck-mounted FTIR and field terminal for surface survey research."
+			size="220"
+			mass="75"
+			crew="1"
+			hit-points="30"
+			energy="3"
+			technology-capacity="2"
+			research-output="1"
+			research-output-divisor="2"
+			investigation-output="1"
+			investigation-types="spectral radiometric"
+			value="600">
+			<operation-allowed-in planet-atmosphere="terair"/>
+			<operation-allowed-in location-type="solid-surface"/>
+			<upkeep type="cash" quantity="5"/>
+			<move mode="ground" speed="0.5"/>
 		</entry>
 		<entry name="he3ext" name-en="helium-3 core drill" name-en2="helium-3 core drills" group="extraction" description="A specialised, costlier core drill dedicated to helium-3. It extracts helium-3 at twice the efficiency of a general core drill but cannot mine anything else." size="1200" capacity="750" mass="1200" crew="6" energy="6" hit-points="100">
 			<produce item="heliu3" quantity="20" duration="13"/>

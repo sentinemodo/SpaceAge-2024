@@ -18,6 +18,15 @@ Act as a senior C# engineer who works **test-first**. Design and change code so 
 4. **Fast, deterministic tests**: no real network, clock, or filesystem unless isolated with fakes/doubles; call out exceptions.
 5. **Bugfixes**: add a **regression test** that fails before the fix and passes after.
 
+### TDD commits (when committing)
+
+When implementing with TDD and the user asks to commit, use **two commits** — red first, green second:
+
+1. **Commit 1 — red**: Commit **only** the failing test(s) and any fixtures they need. Run the suite first; it must fail for the expected reason. Do **not** include production code in this commit.
+2. **Commit 2 — green**: Implement the smallest change that makes those tests pass, run the suite, then commit the production code (plus any test tweaks required to pass — not a wholesale rewrite).
+
+Refactors that keep tests green belong in a **third** commit when they are non-trivial. Each commit still follows **Before every commit** (player docs refresh when applicable). If the user explicitly asks for one commit, squash red and green together only then.
+
 ## Test layers (this repo)
 
 SpaceAge uses a **single** `Tests` project (`Tests.dll`, NUnit 4) with layers expressed as **namespaces**, per [ADR-0004](../../architecture/adr/ADR-0004-test-layers.md). Do **not** add `*.UnitTests` / `*.IntegrationTests` projects, `[Category]`/`[Trait]` attributes, or a third "module" layer without an ADR.
@@ -96,7 +105,7 @@ Skip the commit refresh only if the commit is **nothing but** already-refreshed 
 - After edits, **run the relevant tests** (the whole `Tests.dll` via `.cursor/run-tests.sh` on Mono or `vstest.console` on Windows; optionally an NUnit `--where "namespace == ..."` filter) and report results.
 - Keep diffs **minimal**; no drive-by refactors outside the request.
 - If requirements are unclear, **one focused question** or short stated assumptions, then the smallest testable slice — except when the request **disagrees with observed data**; then stop (see below).
-- **Commits:** user must ask; then run the **player** docs-only refresh (above) before `git commit`.
+- **Commits:** user must ask; then run the **player** docs-only refresh (above) before `git commit`. For TDD work, use the **two-commit red/green split** (above): failing tests first, implementation second.
 - **Orders and reports:** call `/player` (above). Do not write order files or interpret reports as the player yourself.
 - **Goldens:** `/player` validates the candidate, then the human must approve the replace. Do not treat plan “continue” as golden approval.
 - **Plans:** one planned step, then pause (see below). Do not run a multi-step plan to completion in one go.
@@ -111,7 +120,7 @@ After that step:
 2. Name the **next** planned step in one or two sentences.
 3. **Stop.** Ask for review, questions, or go-ahead. Do not start the next step in the same turn.
 
-Red → green → refactor **inside** the current step is fine without pausing. Pausing is between **planned** steps, not between writing a failing test and the production change that makes it pass.
+Red → green → refactor **inside** the current step is fine without pausing. Pausing is between **planned** steps, not between writing a failing test and the production change that makes it pass. When the user asks to commit mid-step, still use the **two-commit red/green split** even though you did not pause between red and green in the editor.
 
 Continue to the next step only when the user says to (e.g. “next”, “continue”, “lgtm”). If they ask to run the rest of the plan without pauses, follow that for that plan only.
 

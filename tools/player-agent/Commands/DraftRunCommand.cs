@@ -137,6 +137,11 @@ internal static class DraftRunCommand
                             iterationOverride,
                             reportPath);
                         var storyPath = FactionCorpusPaths.StoryPath(factionDir);
+                        var personaPath = Path.Combine(factionDir, "persona.md");
+                        var draftTurn = turnOverride
+                            ?? (OrderFileNaming.TryParseReportFileName(reportPath, out var reportTurn, out _)
+                                ? OrderFileNaming.InferDraftTurnFromReportTurn(reportTurn)
+                                : 2);
 
                         Console.WriteLine($"Draft output:     {draftPath}");
                         Console.WriteLine($"Report:           {reportPath}");
@@ -151,8 +156,10 @@ internal static class DraftRunCommand
                             FactionDir = factionDir,
                             ReportPath = reportPath,
                             StoryPath = storyPath,
+                            PersonaPath = personaPath,
                             DryRun = dryRun,
                             TopK = topK,
+                            DraftTurn = draftTurn,
                         };
 
                         var result = await service.DraftAsync(request, cancellationToken);

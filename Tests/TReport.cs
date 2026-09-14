@@ -51,7 +51,7 @@ namespace IntegrationTests
             {
                 "Western Europe [R00001] (0,4), grassland region, settlement capacity 8/2.",
                 "Exits:",
-                "  Eastern Europe [R00002] (1,4), grassland region, ground travel duration 3 weeks.",
+                "  Eastern Europe [R00002] (1,4), grassland region, ground travel duration 3 weeks, settlement detected.",
                 "Resources: 20 units of iron [iron], 500 units of food [food].",
                 "Market report:",
                 "  Offers of selling items:",
@@ -105,6 +105,95 @@ namespace IntegrationTests
 		}
 
 		[Test]
+		public void RegionReport_ExitTowardAnomaly_ShowsAnomalyDetected()
+		{
+			Faction faction = this.game.Factions["2"];
+			Region grant = this.game.Regions["R00001"];
+			Region neighbor = this.game.Regions["R00002"];
+			neighbor.Anomaly = new RegionAnomaly();
+			neighbor.Anomaly.Type = "magnetic";
+
+			List<string> lines = grant.Report(faction);
+			string exits = string.Join("\n", lines);
+			Assert.That(exits, Does.Contain("Eastern Europe [R00002]"));
+			Assert.That(exits, Does.Contain("anomaly detected"));
+		}
+
+		[Test]
+		public void RegionReport_ExitTowardSettlement_ShowsSettlementDetected()
+		{
+			Faction faction = this.game.Factions["2"];
+			Region grant = this.game.Regions["R00001"];
+			Region neighbor = this.game.Regions["R00002"];
+
+			List<string> lines = grant.Report(faction);
+			string exits = string.Join("\n", lines);
+			Assert.That(exits, Does.Contain("Eastern Europe [R00002]"));
+			Assert.That(exits, Does.Contain("settlement detected"));
+		}
+
+		[Test]
+		public void RegionReport_ExitTowardSettlement_HiddenWhenSourceRegionNotVisible()
+		{
+			Faction faction = this.game.Factions["2"];
+			Faction npc = this.game.Factions["1"];
+			Region grant = this.game.Regions["R00001"];
+			ModuleStack trucks = ModuleStack.All["100001"];
+			ModuleStack cplant = ModuleStack.All["000007"];
+			ModuleStack cdrill = ModuleStack.All["000006"];
+			trucks.Owner = npc;
+			cplant.Owner = npc;
+			cdrill.Owner = npc;
+
+			List<string> lines = grant.Report(faction);
+			string exits = string.Join("\n", lines);
+			Assert.That(exits, Does.Contain("Eastern Europe [R00002]"));
+			Assert.That(exits, Does.Not.Contain("settlement detected"));
+		}
+
+		[Test]
+		public void RegionReport_ExitTowardDeepPocket_ShowsHintWhenCdrillTechInSourceRegion()
+		{
+			Faction faction = this.game.Factions["2"];
+			Region grant = this.game.Regions["R00001"];
+			Region neighbor = this.game.Regions["R00002"];
+			neighbor.DeepPocketResources.AddOrIncrease(ItemType.All["titani"], 60);
+			ModuleStack factory = ModuleStack.All["000004"];
+			factory.Technologies.Add(Technology.All["cdrill"]);
+
+			List<string> lines = grant.Report(faction);
+			string exits = string.Join("\n", lines);
+			Assert.That(exits, Does.Contain("Eastern Europe [R00002]"));
+			Assert.That(exits, Does.Contain("deep pocket of resources detected"));
+		}
+
+		[Test]
+		public void RegionReport_DeepPocketResources_HiddenUntilCdrillTechInRegion()
+		{
+			Faction faction = this.game.Factions["2"];
+			Region grant = this.game.Regions["R00001"];
+			ModuleStack drill = ModuleStack.All["000006"];
+			ModuleType originalDrillType = drill.ModuleType;
+			drill.ModuleType = ModuleType.All["sdrill"];
+			grant.DeepPocketResources.AddOrIncrease(ItemType.All["titani"], 60);
+
+			try
+			{
+				List<string> withoutTech = grant.Report(faction);
+				Assert.That(string.Join("\n", withoutTech), Does.Not.Contain("Deep resources:"));
+
+				drill.ModuleType = originalDrillType;
+				List<string> withCdrillModule = grant.Report(faction);
+				Assert.That(string.Join("\n", withCdrillModule), Does.Contain("Deep resources:"));
+				Assert.That(string.Join("\n", withCdrillModule), Does.Contain("titanium [titani]"));
+			}
+			finally
+			{
+				drill.ModuleType = originalDrillType;
+			}
+		}
+
+		[Test]
 		public void RegionReport_ShowsContractAboveMarket()
 		{
 			Faction faction = this.game.Factions["2"];
@@ -120,6 +209,23 @@ namespace IntegrationTests
 			Assert.That(lines[contractsIndex + 1], Is.EqualTo("  CT0001: deliver 1 infantry battalion [inftry] to Berlin [000005]."));
 			Assert.That(lines[contractsIndex + 2], Is.EqualTo("    Reward: rocket launcher production [rckter] technology."));
 			Assert.That(lines[contractsIndex + 3], Is.EqualTo("Market report:"));
+		}
+
+		[Test]
+		public void FactionReport_ShowsContractsAtHomeRegion()
+		{
+			Faction faction = this.game.Factions["2"];
+			Region region = this.game.Regions["R00001"];
+			GiveModuleTrigger trigger = new GiveModuleTrigger(1, ModuleType.All["inftry"], ModuleStack.All["000005"]);
+			new Contract("CT0001", region, this.game.Factions["1"], trigger, Technology.All["rckter"]);
+
+			List<string> lines = faction.Report();
+			int contractsIndex = lines.IndexOf("Contract reports:");
+			int bankIndex = lines.IndexOf("Bank report:");
+			Assert.That(contractsIndex, Is.GreaterThanOrEqualTo(0));
+			Assert.That(bankIndex, Is.GreaterThan(contractsIndex));
+			Assert.That(lines[contractsIndex + 1], Is.EqualTo("  CT0001: deliver 1 infantry battalion [inftry] to Berlin [000005]."));
+			Assert.That(lines[contractsIndex + 2], Is.EqualTo("    Reward: rocket launcher production [rckter] technology."));
 		}
 
 		[Test]

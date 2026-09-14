@@ -131,23 +131,25 @@ namespace SpaceAge
 		{
 			get
 			{
+				bool living = this.parent != null && this.parent.ModuleType != null
+					&& this.parent.ModuleType.LivingUnit;
 				string line = string.Empty;
 				switch (this.DamageStatus)
 				{
 					case EDamageStatus.undamaged:
-						line = "not damaged";
+						line = living ? "unhurt" : "not damaged";
 						break;
 					case EDamageStatus.lightlyDamaged:
-						line = "lightly damaged";
+						line = living ? "wounded" : "lightly damaged";
 						break;
 					case EDamageStatus.heavilyDamaged:
-						line = "heavily damaged";
+						line = living ? "heavily wounded" : "heavily damaged";
 						break;
 					case EDamageStatus.criticallyDamaged:
-						line = "critically damaged";
+						line = living ? "heavily wounded" : "critically damaged";
 						break;
 					case EDamageStatus.destroyed:
-						line = "destroyed";
+						line = living ? "slain" : "destroyed";
 						break;
 				}
 				return line;
@@ -204,7 +206,9 @@ namespace SpaceAge
 				}
 				else 
 				{
-					line = "disabled";					
+					bool living = this.parent != null && this.parent.ModuleType != null
+						&& this.parent.ModuleType.LivingUnit;
+					line = living ? "routed" : "disabled";
 				}
 				return line;
 			}

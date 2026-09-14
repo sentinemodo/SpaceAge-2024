@@ -25,6 +25,7 @@ namespace SpaceAge
 		move,
 		name,
 		press,
+		rumor,
 		produce,
 		repair,
 		research,

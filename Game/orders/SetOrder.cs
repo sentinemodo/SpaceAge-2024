@@ -63,7 +63,7 @@ namespace SpaceAge
 				}
 				this.flagName = "ALLOW BANK";
 			}
-			else if (flag == "AVOID" || flag == "ONLINE")
+			else if (flag == "AVOID" || flag == "ONLINE" || flag == "SHARING")
 			{
 				this.flagName = flag;
 			}
@@ -122,6 +122,10 @@ namespace SpaceAge
 					break;
 				case "ALLOW BANK":
 					this.Setter.AllowBank = flagValue;
+					this.Executed = true;
+					break;
+				case "SHARING":
+					this.Setter.Sharing = flagValue;
 					this.Executed = true;
 					break;
 			}

@@ -1543,5 +1543,120 @@ namespace UnitTests
 			}
 			return false;
 		}
+
+		[Test]
+		public void SetOrder_SharingFalse_DisablesSharingFlag()
+		{
+			ModuleStack cargo = new ModuleStack(
+				Region.All["R00002"],
+				this.game.Factions["2"],
+				ModuleType.All["cargob"],
+				"100501");
+			Assert.That(cargo.Sharing, Is.True);
+
+			List<string> commands = new List<string>
+			{
+				"#faction 2",
+				"#modulestack 100501",
+				"set sharing false",
+				"#end"
+			};
+			new OrdersReader(this.game).AssignOrders(commands);
+			((SetOrder)cargo.Orders[0]).Execute(this.game.Week);
+
+			Assert.That(cargo.Sharing, Is.False);
+		}
+
+		[Test]
+		public void UseOrder_SharingCargo_SuppliesMissingResources()
+		{
+			ModuleStack factory = this.game.ModuleStacks["000004"];
+			factory.ItemStacks.Minus(ItemType.All["iron"], factory.ItemStacks.Quantity(ItemType.All["iron"]));
+
+			ModuleStack cargo = new ModuleStack(
+				Region.All["R00002"],
+				this.game.Factions["2"],
+				ModuleType.All["cargob"],
+				"100502");
+			cargo.ItemStacks.Add(new ItemStack(ItemType.All["iron"], 10));
+			cargo.Sharing = true;
+
+			List<string> commands = new List<string>
+			{
+				"#faction 2",
+				"#modulestack 000004",
+				"use agrplx",
+				"#end"
+			};
+			new OrdersReader(this.game).AssignOrders(commands);
+
+			Assert.That(((UseOrder)factory.Orders[0]).HasResources, Is.True);
+			factory.ExecutedLongOrder = false;
+			factory.Execute(this.game.Week);
+
+			Assert.That(factory.Effects.IsProducing, Is.True);
+			Assert.That(cargo.ItemStacks.Quantity(ItemType.All["iron"]), Is.EqualTo(0));
+		}
+
+		[Test]
+		public void UseOrder_NoSharing_FailsWhenLocalInsufficient()
+		{
+			ModuleStack factory = this.game.ModuleStacks["000004"];
+			factory.ItemStacks.Minus(ItemType.All["iron"], factory.ItemStacks.Quantity(ItemType.All["iron"]));
+
+			ModuleStack cargo = new ModuleStack(
+				Region.All["R00002"],
+				this.game.Factions["2"],
+				ModuleType.All["cargob"],
+				"100503");
+			cargo.ItemStacks.Add(new ItemStack(ItemType.All["iron"], 10));
+			cargo.Sharing = false;
+
+			List<string> commands = new List<string>
+			{
+				"#faction 2",
+				"#modulestack 000004",
+				"use agrplx",
+				"#end"
+			};
+			new OrdersReader(this.game).AssignOrders(commands);
+
+			Assert.That(((UseOrder)factory.Orders[0]).HasResources, Is.False);
+			factory.ExecutedLongOrder = false;
+			factory.Execute(this.game.Week);
+
+			Assert.That(factory.Effects.IsProducing, Is.False);
+			Assert.That(cargo.ItemStacks.Quantity(ItemType.All["iron"]), Is.EqualTo(10));
+		}
+
+		[Test]
+		public void UseOrder_Sharing_ConsumesLocalFirstThenCargo()
+		{
+			ModuleStack factory = this.game.ModuleStacks["000004"];
+			factory.ItemStacks.Minus(ItemType.All["iron"], factory.ItemStacks.Quantity(ItemType.All["iron"]) - 4);
+
+			ModuleStack cargo = new ModuleStack(
+				Region.All["R00002"],
+				this.game.Factions["2"],
+				ModuleType.All["cargob"],
+				"100504");
+			cargo.ItemStacks.Add(new ItemStack(ItemType.All["iron"], 10));
+			cargo.Sharing = true;
+
+			List<string> commands = new List<string>
+			{
+				"#faction 2",
+				"#modulestack 000004",
+				"use agrplx",
+				"#end"
+			};
+			new OrdersReader(this.game).AssignOrders(commands);
+			factory.ExecutedLongOrder = false;
+			factory.Execute(this.game.Week);
+
+			Assert.That(factory.Effects.IsProducing, Is.True);
+			Assert.That(factory.ItemStacks.Quantity(ItemType.All["iron"]), Is.EqualTo(0));
+			Assert.That(cargo.ItemStacks.Quantity(ItemType.All["iron"]), Is.EqualTo(4));
+		}
 	}
 }

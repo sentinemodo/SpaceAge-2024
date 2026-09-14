@@ -5,7 +5,7 @@ Content-Disposition: attachment
 SpaceAge report for Caste Prime [2].
 Turn 6, Year 2021, April 1.
 
-SpaceAge Engine Version: 0.1.159.
+SpaceAge Engine Version: 0.1.167.
 
 Events during turn:
   none.
@@ -15,6 +15,37 @@ Declared stances:
   enemy toward Gelvaren [3].
   enemy toward space shuttle [117].
 
+
+events:
+  week 1: battle at Northern Hemisphere [R00002] (0,0), attackers: Gelvaren [3], defenders: Caste
+  Prime [2].
+  week 2: battle at Northern Hemisphere [R00002] (0,0), attackers: Gelvaren [3], defenders: Caste
+  Prime [2].
+  week 3: battle at Northern Hemisphere [R00002] (0,0), attackers: Gelvaren [3], defenders: Caste
+  Prime [2].
+  week 4: battle at Northern Hemisphere [R00002] (0,0), attackers: Gelvaren [3], defenders: Caste
+  Prime [2].
+  week 5: battle at Northern Hemisphere [R00002] (0,0), attackers: Gelvaren [3], defenders: Caste
+  Prime [2].
+  week 6: battle at Northern Hemisphere [R00002] (0,0), attackers: Gelvaren [3], defenders: Caste
+  Prime [2].
+  week 7: battle at Northern Hemisphere [R00002] (0,0), attackers: Gelvaren [3], defenders: Caste
+  Prime [2].
+  week 8: battle at orbit [O00002], attackers: Caste Prime [2], defenders: Gelvaren [3].
+  week 8: battle at Northern Hemisphere [R00002] (0,0), attackers: Gelvaren [3], defenders: Caste
+  Prime [2].
+  week 9: battle at orbit [O00002], attackers: Caste Prime [2], defenders: Gelvaren [3].
+  week 9: battle at Northern Hemisphere [R00002] (0,0), attackers: Gelvaren [3], defenders: Caste
+  Prime [2].
+  week 10: battle at Northern Hemisphere [R00002] (0,0), attackers: Gelvaren [3], defenders: Caste
+  Prime [2].
+  week 11: battle at Northern Hemisphere [R00002] (0,0), attackers: Gelvaren [3], defenders: Caste
+  Prime [2].
+  week 12: battle at Northern Hemisphere [R00002] (0,0), attackers: Gelvaren [3], defenders: Caste
+  Prime [2].
+  week 13: battle at Northern Hemisphere [R00002] (0,0), attackers: Gelvaren [3], defenders: Caste
+  Prime [2].
+  week 13: Bank account credited: Deposit interests accounted to 55. Current balance: 4461.
 Bank report:
   Bank account balance: 4461.
   Credit line maximum: 10000.
@@ -3025,7 +3056,7 @@ Battles report:
   ------------------------------------------------------------
   Attackers:
   + spaceship hull [101], spaceship hull [sshull].
-    size: 5000, mass: 13000/2370 (100), energy: 60/56 (1), crew: 3/4.
+    size: 5000, mass: 13000/2378 (100), energy: 60/56 (1), crew: 3/4.
     hit points: 357/357 (50/50), attack: 18 (0), defense: 14 (10), initiative: 90 (70).
     tactics: destroy, prioritize armed.
       #1 hit points: 50/50.
@@ -3049,11 +3080,11 @@ Battles report:
       hit points: 50/50.
         #1 hit points: 50/50.
     + fighter drone bay [206], fighter drone bay [drnbay].
-      size: 400, mass: 3000/620 (300), energy: 5.
+      size: 400, mass: 3000/624 (300), energy: 5.
       hit points: 92/92 (60/60), attack: 16 (0), defense: 4 (0), initiative: 20 (0).
         #1 hit points: 60/60.
       + alien fighter drone [450], 4 alien fighter drones [alndrn].
-        size: 320, mass: 3000/320 (320).
+        size: 320, mass: 3000/324 (320).
         hit points: 32/32, attack: 16, defense: 4, initiative: 20.
         tactics: destroy, prioritize armed.
           #1 hit points: 8/8.
@@ -3106,7 +3137,7 @@ Battles report:
       hit points: 60/60.
         #1 hit points: 60/60.
   + alien fighter drone [450], 4 alien fighter drones [alndrn].
-    size: 320, mass: 3000/320 (320).
+    size: 320, mass: 3000/324 (320).
     hit points: 32/32, attack: 16, defense: 4, initiative: 110.
     tactics: destroy, prioritize armed.
       #1 hit points: 8/8.
@@ -3166,7 +3197,7 @@ Battles report:
       hit points: 60/60.
         #1 hit points: 60/60.
   + alien fighter drone [450], 4 alien fighter drones [alndrn].
-    size: 320, mass: 3000/320 (320).
+    size: 320, mass: 3000/324 (320).
     hit points: 32/32, attack: 16, defense: 4, initiative: 110.
     tactics: destroy, prioritize armed.
       #1 hit points: 8/8.
@@ -3227,7 +3258,7 @@ Battles report:
       hit points: 60/60.
         #1 hit points: 60/60.
   + alien fighter drone [450], 4 alien fighter drones [alndrn].
-    size: 320, mass: 3000/320 (320).
+    size: 320, mass: 3000/324 (320).
     hit points: 32/32, attack: 16, defense: 4, initiative: 110.
     tactics: destroy, prioritize armed.
       #1 hit points: 8/8.
@@ -3291,7 +3322,7 @@ Battles report:
       hit points: 60/60.
         #1 hit points: 60/60.
   + alien fighter drone [450], 4 alien fighter drones [alndrn].
-    size: 320, mass: 3000/320 (320).
+    size: 320, mass: 3000/324 (320).
     hit points: 32/32, attack: 16, defense: 4, initiative: 110.
     tactics: destroy, prioritize armed.
       #1 hit points: 8/8.
@@ -3357,7 +3388,7 @@ Battles report:
       hit points: 60/60.
         #1 hit points: 60/60.
   + alien fighter drone [450], 4 alien fighter drones [alndrn].
-    size: 320, mass: 3000/320 (320).
+    size: 320, mass: 3000/324 (320).
     hit points: 32/32, attack: 16, defense: 4, initiative: 110.
     tactics: destroy, prioritize armed.
       #1 hit points: 8/8.
@@ -3752,7 +3783,7 @@ Battles report:
       hit points: 60/60.
         #1 hit points: 60/60.
   + alien fighter drone [450], 4 alien fighter drones [alndrn].
-    size: 320, mass: 3000/320 (320).
+    size: 320, mass: 3000/324 (320).
     hit points: 32/32, attack: 16, defense: 4, initiative: 110.
     tactics: destroy, prioritize armed.
       #1 hit points: 8/8.
@@ -3818,7 +3849,7 @@ Battles report:
       hit points: 60/60.
         #1 hit points: 60/60.
   + alien fighter drone [450], 4 alien fighter drones [alndrn].
-    size: 320, mass: 3000/320 (320).
+    size: 320, mass: 3000/324 (320).
     hit points: 32/32, attack: 16, defense: 4, initiative: 110.
     tactics: destroy, prioritize armed.
       #1 hit points: 8/8.
@@ -3883,7 +3914,7 @@ Battles report:
       hit points: 60/60.
         #1 hit points: 60/60.
   + alien fighter drone [450], 4 alien fighter drones [alndrn].
-    size: 320, mass: 3000/320 (320).
+    size: 320, mass: 3000/324 (320).
     hit points: 32/32, attack: 16, defense: 4, initiative: 110.
     tactics: destroy, prioritize armed.
       #1 hit points: 8/8.
@@ -3945,7 +3976,7 @@ Battles report:
       hit points: 60/60.
         #1 hit points: 60/60.
   + alien fighter drone [450], 4 alien fighter drones [alndrn].
-    size: 320, mass: 3000/320 (320).
+    size: 320, mass: 3000/324 (320).
     hit points: 32/32, attack: 16, defense: 4, initiative: 110.
     tactics: destroy, prioritize armed.
       #1 hit points: 8/8.
@@ -3996,7 +4027,7 @@ Battles report:
       hit points: 60/60.
         #1 hit points: 60/60.
   + alien fighter drone [450], 4 alien fighter drones [alndrn].
-    size: 320, mass: 3000/320 (320).
+    size: 320, mass: 3000/324 (320).
     hit points: 32/32, attack: 16, defense: 4, initiative: 110.
     tactics: destroy, prioritize armed.
       #1 hit points: 8/8.
@@ -4047,7 +4078,7 @@ Battles report:
       hit points: 60/60.
         #1 hit points: 60/60.
   + alien fighter drone [450], 4 alien fighter drones [alndrn].
-    size: 320, mass: 3000/320 (320).
+    size: 320, mass: 3000/324 (320).
     hit points: 32/32, attack: 16, defense: 4, initiative: 110.
     tactics: destroy, prioritize armed.
       #1 hit points: 8/8.
@@ -4098,7 +4129,7 @@ Battles report:
       hit points: 60/60.
         #1 hit points: 60/60.
   + alien fighter drone [450], 4 alien fighter drones [alndrn].
-    size: 320, mass: 3000/320 (320).
+    size: 320, mass: 3000/324 (320).
     hit points: 32/32, attack: 16, defense: 4, initiative: 110.
     tactics: destroy, prioritize armed.
       #1 hit points: 8/8.
@@ -4149,7 +4180,7 @@ Battles report:
       hit points: 60/60.
         #1 hit points: 60/60.
   + alien fighter drone [450], 4 alien fighter drones [alndrn].
-    size: 320, mass: 3000/320 (320).
+    size: 320, mass: 3000/324 (320).
     hit points: 32/32, attack: 16, defense: 4, initiative: 110.
     tactics: destroy, prioritize armed.
       #1 hit points: 8/8.
@@ -4200,7 +4231,7 @@ Battles report:
       hit points: 60/60.
         #1 hit points: 60/60.
   + alien fighter drone [450], 4 alien fighter drones [alndrn].
-    size: 320, mass: 3000/320 (320).
+    size: 320, mass: 3000/324 (320).
     hit points: 32/32, attack: 16, defense: 4, initiative: 110.
     tactics: destroy, prioritize armed.
       #1 hit points: 8/8.
@@ -4251,7 +4282,7 @@ Battles report:
       hit points: 60/60.
         #1 hit points: 60/60.
   + alien fighter drone [450], 4 alien fighter drones [alndrn].
-    size: 320, mass: 3000/320 (320).
+    size: 320, mass: 3000/324 (320).
     hit points: 32/32, attack: 16, defense: 4, initiative: 110.
     tactics: destroy, prioritize armed.
       #1 hit points: 8/8.
@@ -5904,10 +5935,7 @@ Battles report:
 
 Galaxy report:
 ------------------------------------------------------------
-* Sol [SS0001] (0, 0, 0), star system.
-------------------------------------------------------------
-
-  * Sol [S00001] (0, 0, 0), M4 star, unexplored.
+* system Sol [SS0001] (0, 0, 0).
 ------------------------------------------------------------
 
   * Earth [P00001] at AU 1, ocean planet [ocean].
@@ -6003,18 +6031,16 @@ Galaxy report:
         week 1: stacked under spaceship hull [101].
         week 13: paid 40 cash [cash] upkeep.
   + alien fighter drone [450], 4 alien fighter drones [alndrn].
-    size: 320, mass: 3000/320 (320), capacity: 4/0, upkeep: 80 cash [cash].
+    size: 320, mass: 3000/324 (320), capacity: 4/4, upkeep: 80 cash [cash].
     movement speed: 2.3 in space.
     fuel requirements: 4 units of helium-3 [heliu3] per 13 weeks.
-    effects:
-      can operate for another 11 weeks without refueling.
+    items: 4 units of helium-3 [heliu3] (size: 4, mass: 4).
     events:
       week 1: got 4 units of helium-3 [heliu3] from small cargo bay [205].
       week 1: GET failed. space shuttle [100] does not have units of helium-3 [heliu3].
       week 1: GET failed. small cargo bay [205] does not have units of helium-3 [heliu3].
       week 1: set tactic to destroy.
       week 1: set tactic to prioritize armed.
-      week 2: consumed 4 units of helium-3 [heliu3] as fuel.
       week 9: engaged in battle
       week 13: paid 80 cash [cash] upkeep.
   - space shuttle [117], space shuttle [shuttl], disabled, immobile, owned by Gelvaren [3].
@@ -6025,7 +6051,8 @@ Galaxy report:
 
   Northern Hemisphere [R00002] (0,0), grassland region, settlement capacity 8/3.
   Exits:
-    Southern Hemisphere [R00003] (1,0), grassland region, ground travel duration 3 weeks.
+    Southern Hemisphere [R00003] (1,0), grassland region, ground travel duration 3 weeks, settlement
+    detected.
   Resources: 20 units of iron [iron], 20 units of carbon [carbon], 20 units of titanium [titani], 20
   units of uranium [uraniu], 20 units of copper [copper], 20 units of silicium [silici], 250 units
   of oxyhydro [h2o2], 500 units of food [food].
@@ -6034,12 +6061,23 @@ Galaxy report:
       sell 39 units of food [food] at 5 each from Berlin [000001].
       sell 300 units of food [food] at -1 each from small cargo bay [000013].
     Offers of buying items:
+      buy 300 units of food [food] at 1 each by Berlin [000001].
+      buy 75 units of iron [iron] at 1 each by Berlin [000001].
+      buy 75 units of carbon [carbon] at 2 each by Berlin [000001].
+      buy 60 units of silicium [silici] at 2 each by Berlin [000001].
+      buy 30 units of titanium [titani] at 2 each by Berlin [000001].
       buy all units of food [food] at any price by corporate headquarters [c000012].
       buy all terrans [terran] at any price by corporate headquarters [c000012].
     Offers of selling modules:
       none.
     Offers of buying modules:
       buy farming complex [farms] at 100 by Berlin [000001].
+      buy small cargo bay [cargob] at 100 by Berlin [000001].
+      buy wind powerplant [wnplnt] at 50 by Berlin [000001].
+      buy coal-burning plant [cplant] at 100 by Berlin [000001].
+      buy surface drill [sdrill] at 100 by Berlin [000001].
+      buy core drill [cdrill] at 100 by Berlin [000001].
+      buy factory [factry] at 100 by Berlin [000001].
     Offers of selling technologies:
       none.
     Offers of buying technologies:
@@ -6072,8 +6110,8 @@ Galaxy report:
     + core drill [000016], core drill [cdrill], disabled, immobile.
       size: 0, mass: 0.
     + factory [000017], 3 factories [factry], disabled, immobile.
-      size: 3000, mass: 2482 (2250), capacity: 1500/172, upkeep: 208 (180) cash [cash], consume: 28
-      (0) units of food [food], 28 (0) units of terran breathing gas mixture [terair].
+      size: 3000, mass: 2482 (2250), capacity: 1500/172, upkeep: 28 (0) cash [cash], consume: 28 (0)
+      units of food [food], 28 (0) units of terran breathing gas mixture [terair].
       hit points: 300/133.
         #1 hit points: 100/49, heavily damaged, disabled.
         #2 hit points: 100/44, heavily damaged, disabled.
@@ -6097,7 +6135,7 @@ Galaxy report:
         week 11: engaged in battle
         week 12: engaged in battle
         week 13: engaged in battle
-        week 13: paid 208 cash [cash] upkeep.
+        week 13: paid 28 cash [cash] upkeep.
     + gun placement [111], gun placement [gunplc], disabled, immobile.
       size: 100, mass: 504 (500), capacity: 100/4, crew: 2/1, upkeep: 11 (10) cash [cash], consume:
       (0) unit of food [food], (0) unit of terran breathing gas mixture [terair].
@@ -6171,7 +6209,7 @@ Galaxy report:
     - terran officer [107], terran [terran], working for Gelvaren [3].
       size: 4.
 ------------------------------------------------------------
-  * Luna [P00003] (1, 0, 0), moon, unexplored.
+  * Luna [P00001], rocky moon [rock] 0.02 AU from the planet.
 ------------------------------------------------------------
     orbit [O00001], has no atmosphere.
 
@@ -6202,61 +6240,51 @@ Galaxy report:
         week 13: 8 terrans [terran] wounded from lack of supplies.
         week 13: 4 wounded terrans [wndtrn] died of their wounds.
         week 13: 3 wounded terrans [wndtrn] recovered from their wounds.
-    + crashed alien vessel [200], alien vessel hull [alnhul], immobile.
-      size: 6500, mass: 10000/4147 (200), capacity: 6000/5900, energy: 80/63 (1), crew: 6/5, upkeep:
-      405 (20) cash [cash], consume: 5 (0) units of food [food], 5 (0) units of terran breathing gas
+    + crashed alien vessel [200], alien vessel hull [alnhul].
+      size: 6500, mass: 10000/4143 (200), capacity: 6000/5900, energy: 80/63 (1), crew: 6/4, upkeep:
+      404 (20) cash [cash], consume: 4 (0) units of food [food], 4 (0) units of terran breathing gas
       mixture [terair].
       technologies: advanced hull construction [ahlcns].
       events:
         week 13: paid 20 cash [cash] upkeep.
-      + advanced robo-factory [201], advanced robo-factory [robofc], immobile.
+      + advanced robo-factory [201], advanced robo-factory [robofc].
         size: 1000, mass: 1020 (750), capacity: 500/135, energy: 15, upkeep: 60 cash [cash].
         technologies: automated fabrication [autfab], mineral core drilling [cdrill], uranium mining
         [uminng], helium-3 mining [he3min].
         items: 27 units of iron [iron] (size: 135, mass: 270).
         events:
           week 13: paid 60 cash [cash] upkeep.
-      + automated command module [202], automated command module [autcmd], immobile.
+      + automated command module [202], automated command module [autcmd].
         size: 800, mass: 300 (300), capacity: 200/0, energy: 5, upkeep: 80 cash [cash].
         technologies: automated command systems [autctl].
         events:
           week 13: paid 80 cash [cash] upkeep.
-      + automated propulsion module [203], automated propulsion module [autdrv], immobile.
+      + automated propulsion module [203], automated propulsion module [autdrv].
         size: 600, mass: 10000/700 (700), capacity: 150/0, energy: 30, upkeep: 80 cash [cash].
         movement speed: 14.3 in space.
         fuel requirements:  unit of oxyhydro [h2o2] per week.
         technologies: automated propulsion [autprp].
         events:
           week 13: paid 80 cash [cash] upkeep.
-      + automated helium powerplant [204], automated helium powerplant [he3aut], immobile.
+      + automated helium powerplant [204], automated helium powerplant [he3aut].
         size: 400, mass: 400 (400), energy: 80/5 (consume: 2 units of helium-3 [heliu3] for 13
         weeks), upkeep: 80 cash [cash].
         fuel requirements: 2 units of helium-3 [heliu3] per 13 weeks.
         technologies: unmanned helium plant [he3unc].
         events:
-          week 1: out of fuel.
-          week 2: out of fuel.
-          week 3: out of fuel.
-          week 4: out of fuel.
-          week 5: out of fuel.
-          week 6: out of fuel.
-          week 7: out of fuel.
-          week 8: out of fuel.
-          week 9: out of fuel.
-          week 10: out of fuel.
-          week 11: out of fuel.
-          week 12: out of fuel.
-          week 13: out of fuel.
+          week 1: started energy production for the next 13 weeks.
           week 13: paid 80 cash [cash] upkeep.
-      + small cargo bay [205], small cargo bay [cargob], immobile.
+      + small cargo bay [205], small cargo bay [cargob].
         size: 2000, mass: 200 (200), capacity: 1800/0, upkeep: 30 cash [cash].
         technologies: small scale transportation [strans].
         events:
           week 1: got 4 units of helium-3 [heliu3] from space shuttle [100].
+          week 1: consumed 2 units of helium-3 [heliu3] as fuel for automated helium powerplant
+          [204].
           week 1: GET failed. space shuttle [100] does not have units of helium-3 [heliu3].
           week 1: given 4 units of helium-3 [heliu3] to alien fighter drone [450].
           week 13: paid 30 cash [cash] upkeep.
-      + life support system [250], life support system [lifsys], immobile.
+      + life support system [250], life support system [lifsys].
         size: 100, mass: 299 (80), capacity: 40/219, energy: 2, upkeep: 10 cash [cash].
         items: 219 units of terran breathing gas mixture [terair] (size: 219, mass: 219).
         events:
@@ -6274,13 +6302,13 @@ Galaxy report:
           week 12: produced 10 units of terran breathing gas mixture [terair].
           week 13: produced 10 units of terran breathing gas mixture [terair].
           week 13: paid 10 cash [cash] upkeep.
-      + core drill [251], core drill [cdrill], disabled, immobile.
-        size: 1000, mass: 1028 (1000), capacity: 750/21, energy: 5, crew: 6/5, upkeep: 45 (40) cash
-        [cash], consume: 5 (0) units of food [food], 5 (0) units of terran breathing gas mixture
+      + core drill [251], core drill [cdrill], disabled.
+        size: 1000, mass: 1024 (1000), capacity: 750/17, energy: 5, crew: 6/4, upkeep: 44 (40) cash
+        [cash], consume: 4 (0) units of food [food], 4 (0) units of terran breathing gas mixture
         [terair].
         technologies: uranium mining [uminng], helium-3 mining [he3min].
-        items: 5 terrans [terran] (size: 20, mass: 20, upkeep: 5 cash [cash], consume: 5 units of
-        food [food], 5 units of terran breathing gas mixture [terair]), unit of uranium [uraniu]
+        items: 4 terrans [terran] (size: 16, mass: 16, upkeep: 4 cash [cash], consume: 4 units of
+        food [food], 4 units of terran breathing gas mixture [terair]), unit of uranium [uraniu]
         (size: 1, mass: 8).
         effects:
           producing unit of uranium [uraniu], 3 weeks to complete.
@@ -6289,8 +6317,8 @@ Galaxy report:
           week 13: paid 46 cash [cash] upkeep.
           week 13: Lack of supplies: 6 unit of food [food].
           week 13: 3 terrans [terran] wounded from lack of supplies.
-          week 13: 1 wounded terran [wndtrn] died of their wounds.
-          week 13: 2 wounded terrans [wndtrn] recovered from their wounds.
+          week 13: 2 wounded terrans [wndtrn] died of their wounds.
+          week 13: 1 wounded terran [wndtrn] recovered from their wounds.
 
 
 Orders Template:
@@ -6363,31 +6391,31 @@ give 4 heliu3 to 450
 @research 200
 
 #modulestack 200
-; + crashed alien vessel [200], alien vessel hull [alnhul], immobile.
+; + crashed alien vessel [200], alien vessel hull [alnhul].
 ; technologies: advanced hull construction [ahlcns].
 
 #modulestack 201
-; + advanced robo-factory [201], advanced robo-factory [robofc], immobile.
+; + advanced robo-factory [201], advanced robo-factory [robofc].
 ; technologies: automated fabrication [autfab], mineral core drilling [cdrill], uranium mining
 ; [uminng], helium-3 mining [he3min].
 ; items: 27 units of iron [iron].
 
 #modulestack 202
-; + automated command module [202], automated command module [autcmd], immobile.
+; + automated command module [202], automated command module [autcmd].
 ; technologies: automated command systems [autctl].
 
 #modulestack 203
-; + automated propulsion module [203], automated propulsion module [autdrv], immobile.
+; + automated propulsion module [203], automated propulsion module [autdrv].
 ; technologies: automated propulsion [autprp].
 
 #modulestack 204
-; + automated helium powerplant [204], automated helium powerplant [he3aut], immobile.
+; + automated helium powerplant [204], automated helium powerplant [he3aut].
 ; technologies: unmanned helium plant [he3unc].
 @get all heliu3 from 251
 @produce energy
 
 #modulestack 205
-; + small cargo bay [205], small cargo bay [cargob], immobile.
+; + small cargo bay [205], small cargo bay [cargob].
 ; technologies: small scale transportation [strans].
 get 4 heliu3 from 100
 
@@ -6396,14 +6424,14 @@ get 4 heliu3 from 100
 ; technologies: drone hangar construction [drnhng].
 
 #modulestack 250
-; + life support system [250], life support system [lifsys], immobile.
+; + life support system [250], life support system [lifsys].
 ; items: 219 units of terran breathing gas mixture [terair].
 @produce terair
 
 #modulestack 251
-; + core drill [251], core drill [cdrill], disabled, immobile.
+; + core drill [251], core drill [cdrill], disabled.
 ; technologies: uranium mining [uminng], helium-3 mining [he3min].
-; items: 5 terrans [terran], unit of uranium [uraniu].
+; items: 4 terrans [terran], unit of uranium [uraniu].
 ; effects:
 ;   producing unit of uranium [uraniu], 3 weeks to complete.
 @use uminng
@@ -6411,8 +6439,7 @@ get 4 heliu3 from 100
 
 #modulestack 450
 ; + alien fighter drone [450], 4 alien fighter drones [alndrn].
-; effects:
-;   can operate for another 11 weeks without refueling.
+; items: 4 units of helium-3 [heliu3].
 get 4 heliu3 from 100
 get 4 heliu3 from 205
 

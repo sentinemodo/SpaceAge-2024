@@ -18,6 +18,7 @@ namespace SpaceAge
 		public int Baseline { get; set; }
 		public Faction LastGiver { get; set; }
 		public ModuleStack LastGiverStack { get; set; }
+		public int DeliveredQuantity { get; set; }
 
 		public Faction Winner
 		{
@@ -55,10 +56,18 @@ namespace SpaceAge
 			{
 				trigger.Baseline = Convert.ToInt32(elContract.GetAttribute("baseline"));
 			}
+			if (elContract.HasAttribute("delivered-quantity"))
+			{
+				trigger.DeliveredQuantity = Convert.ToInt32(elContract.GetAttribute("delivered-quantity"));
+			}
 			return trigger;
 		}
 
 		public void NotifyResearch(Faction researcher, ModuleStack researcherStack, ModuleStack target, int points)
+		{
+		}
+
+		public void NotifyStackDestroyed(Faction killer, ModuleStack stack)
 		{
 		}
 
@@ -92,11 +101,42 @@ namespace SpaceAge
 			}
 		}
 
+		public void NotifyFactionTransfer(Faction giver, ModuleStack giverStack, Faction receiverFaction, ModuleType moduleType, int quantity, Region location, Faction issuer)
+		{
+			if (receiverFaction != issuer)
+			{
+				return;
+			}
+			if (moduleType != this.ModuleType)
+			{
+				return;
+			}
+			if (giver == null || giver == issuer)
+			{
+				return;
+			}
+			if (location == null || this.Receiver == null || location != this.Receiver.Location)
+			{
+				return;
+			}
+
+			this.LastGiver = giver;
+			if (giverStack != null)
+			{
+				this.LastGiverStack = giverStack;
+			}
+			this.DeliveredQuantity += quantity;
+		}
+
 		public bool IsComplete()
 		{
 			if (this.LastGiver == null)
 			{
 				return false;
+			}
+			if (this.DeliveredQuantity >= this.Quantity)
+			{
+				return true;
 			}
 			return this.Receiver.ModuleCountRecursive(this.ModuleType) >= this.Baseline + this.Quantity;
 		}
@@ -107,6 +147,10 @@ namespace SpaceAge
 			elContract.SetAttribute("module", this.ModuleType.Name);
 			elContract.SetAttribute("receiver", this.Receiver.Name);
 			elContract.SetAttribute("baseline", this.Baseline.ToString());
+			if (this.DeliveredQuantity > 0)
+			{
+				elContract.SetAttribute("delivered-quantity", this.DeliveredQuantity.ToString());
+			}
 		}
 	}
 }

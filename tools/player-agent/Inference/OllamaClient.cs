@@ -16,7 +16,7 @@ public sealed class OllamaClient : IOllamaClient, IDisposable
         _httpClient = httpClient ?? new HttpClient
         {
             BaseAddress = settings.OpenAiBaseUri,
-            Timeout = TimeSpan.FromMinutes(5),
+            Timeout = TimeSpan.FromSeconds(Math.Max(30, settings.ChatTimeoutSeconds)),
         };
     }
 

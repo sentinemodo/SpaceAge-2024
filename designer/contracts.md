@@ -1,6 +1,6 @@
 # Contracts (during play)
 
-Live triggers: **`give-module`** (deliver N modules of a type to a receiver stack) and **`research`** (accumulate research points on a wreckage/anomaly stack at the same location). Rewards: **technology copy** or **unit**.
+Live triggers: **`give-module`**, **`research`**, **`destroy-stack`** (target stack wrecked in combat). Rewards: **technology copy**, **unit**, or **cash** (`reward-type="cash"`).
 
 Always set `title` and `flavour`. Flavour is **hard science**: spectra, Δv, isotopes, epidemiology — not prophecy.
 
@@ -16,6 +16,7 @@ The map is **two occupied basins** (Arbor, Anvil) plus eight empty systems. Do *
 2. **2–4 UN `give-module` jobs** that force local trade inside a starting system, e.g. deliver `farms` or `wnplnt` to **Slagport** / **Isotope**, or `cdrill` to **Tidewatch**. Receiver = that UN city or its nested garrison. `baseline` = current recursive count.
 3. **At most one wreck rumour per occupied system**, and only **off** the habitable grids: Helios belt metal rock or an Aeolus ice moon; Fomal carbonaceous belt or an ice moon. `research`, L3–L4 reward, mixed branches. Flavour as a UN survey charter, not a free skip of the resource split.
 4. **Empty systems:** no t=1 contracts. Wrecks there wait until someone can actually reach them (year 1+).
+5. **Fauna cull bounties** (tier-1 only at t=1): **CT0016** Mid Vale **1000** cash, **CT0019** Slope **1000** cash. Default ladder for later tiers: **1000 / 2000 / 4000**. See [`fauna.md`](fauna.md).
 
 Do not put L10 rewards on the map at t=1. Item shipments (food tonnes to Anvil) are **markets**, not `give-module`.
 
@@ -43,6 +44,44 @@ Wreck target stacks: faction 1, wrecked or inert module (`alnhul`, `robofc`, `he
 3. `baseline` for `give-module` = current recursive count of that module type on the receiver (SampleGame Sydney garrison `inftry` baseline 1).
 4. Reward tech must exist in `campaign/data.xml`.
 5. One-sentence handoff: who should notice it in the report (region event + faction event).
+
+## Contract completion press
+
+When a contract trigger completes, **`Contract.Award`** emits a **planet-scoped `PressRelease`** (issuer faction `1`, visible only on that body's faction report under **Press releases:**). GM-authored `PRESS` uses the same planet prefix once live: `PRESS <planet-id> TITLE "…" FLAVOUR "…"`.
+
+**When it posts:** automatically on award, same turn/week as the completion event. Issuer is always **United Star Nations** (`name-en`). Scope is the **planet or moon** of the contract's `location` region (not galaxy-wide).
+
+**Title pattern:**
+
+`{Interest} closes {short descriptor}`
+
+- **Interest** = completing faction `name-en` (e.g. Northwind, Greenwell, Ironclad).
+- **Short descriptor** = contract `title` with the word *charter* dropped if redundant, or a 2–4 word beat from it (*Mid Vale swarm cull*, *Slagport calorie charter*, *Northwind market charter*).
+
+**Flavour pattern:**
+
+`United Star Nations records {Interest}'s fulfillment of {CTnnnn} at {Region name-en} on {Planet name-en}. {Outcome sentence — hard science, one mechanism.}`
+
+**Outcome sentence by trigger:**
+
+| Trigger | Outcome clause |
+|---------|----------------|
+| `give-module` (town charter CT0006–CT0015) | `{Interest} transferred the prefab town module to UN acceptance; charter desk released {reward} licensing to the completing Interest.` |
+| `give-module` (UN city job) | `{Interest} delivered the contracted {module} count to {receiver city name-en}; UN certified {reward} for the {Region name-en} lane.` |
+| `research` | `{Interest} filed in-situ survey research on the chartered wreck; UN copied {reward} protocols to the completing Interest.` |
+| `destroy-stack` (fauna) | `{Interest} destroyed fauna stack {target id} in {Region name-en}; UN paid {cash} credits under the tier-{n} cull charter.` |
+
+Keep flavour to **one or two sentences**. Echo the original contract's physical hook (spectra, Δv, isotope, epidemiology) where it fits; do not repeat the full seed `flavour` verbatim.
+
+**Examples (templates, not fixed copy):**
+
+| Contract | Title | Flavour |
+|----------|-------|---------|
+| CT0006 Northwind market charter | `Northwind closes Northwind market charter` | `United Star Nations records Northwind's fulfillment of CT0006 at Northwind Grant on Arbor. Northwind transferred the prefab town module to UN acceptance; charter desk released city planning licensing to the completing Interest.` |
+| CT0016 Mid Vale swarm cull | `Northwind closes Mid Vale swarm cull` | `United Star Nations records Northwind's fulfillment of CT0016 at Mid Vale on Arbor. Northwind destroyed fauna stack 140010 in Mid Vale; UN paid 1000 credits under the tier-1 cull charter.` |
+| CT0001 Slagport calorie charter | `Ironclad closes Slagport calorie charter` | `United Star Nations records Ironclad's fulfillment of CT0001 at Slagport on Anvil. Ironclad delivered the contracted farms count to Slagport; UN certified city planning for the Slagport lane.` |
+
+Region and faction events from `Contract.Award` still fire; this press line is the **public** UN notice on that planet's report.
 
 ## Cadence
 

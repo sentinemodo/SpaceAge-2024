@@ -14,6 +14,7 @@ namespace SpaceAge
         
 		public bool AllQuantity         { get; set; }
         public bool Everywhere          { get; set; }
+        public Region BuyInRegion       { get; set; }
         public IOfferent Offerent       { get; set; }
         public Market Market            { get; set; }
 
@@ -85,6 +86,10 @@ namespace SpaceAge
 				return false;
 			}
 			if (this.Everywhere != other.Everywhere)
+			{
+				return false;
+			}
+			if (this.BuyInRegion != other.BuyInRegion)
 			{
 				return false;
 			}

@@ -16,6 +16,15 @@ Closed seed set: `iron` `titani` `silici` `copper` `uraniu` `carbon` `oil` `gold
 
 Use live **groups**. Intended future group in parentheses → wishlist.
 
+### Settlement tiers (L0)
+
+| Id | Tech | Pop max | HP | Produce / 13 wk | Build |
+|----|------|---------|-----|-----------------|-------|
+| `town` | `twnbld` | 750 | 350 | 200 cash, 2 terran | 30 iron, 2 titani, 10 wk |
+| `city` | `popcnt` | 10000 | 1250 | 1000 cash, 10 terran | 100 iron, 26 wk |
+
+Both are `settlement`, `cannot-be-owned`, terair + solid-surface. Player factories `USE twnbld` for charter deliveries; UN/NPC shells use `town()` in seed.
+
 ### Hull size classes (L0–L10)
 
 Engine **0.1.148+** loads hull groups `corvette` `destroyer` `cruiser` `capital` `ark`. Campaign catalog already tags `corhul`/`deshul`/`cruhul`/`arkhul` accordingly. SampleGame stays `frigate`. See [`combat-balance.md`](combat-balance.md).
@@ -153,6 +162,7 @@ Matchup table: `technology.md` Combat matchups. Until Battle is typed, put `atta
 | live `alndrn` | drone | weapon **and** fighter hull | live | live | attack/damage; may nest other-group items |
 | live `inftry` | mixed | infantry platform | live | live | mounts items below |
 | live `tanks` | kinetic+armour | vehicle platform | live | live | oil engines; mounts items |
+| live fauna (12) | infantry/vehicle/military | wild seed-only | live | — | Arbor `brmstr`/`mulcrw`/`canalp`, Anvil `crstlb`/`slgmnt`/`urstlk`, Haven `ribgrz`/`glacra`/`frostb`, Graph `silskk`/`qtzrol`/`spngrf` — see [`fauna.md`](fauna.md) |
 | `railgn` | kinetic | weapon | 800/900 | 4 / 20 | attack 8 defense 2 damage 8 |
 | `kpdtur` | kinetic | weapon | 250/280 | 2 / 12 | attack 5 initiative 6 |
 | `coilgn` | kinetic | weapon | 1200/1400 | 6 / 35 | attack 10 damage 10 |

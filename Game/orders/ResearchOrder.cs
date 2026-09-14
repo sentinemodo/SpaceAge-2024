@@ -143,6 +143,11 @@ namespace SpaceAge
                     this.ModuleType = ModuleType.All[token];
                     this.ResearchToken = token;
                 }
+                else if (Region.All.ContainsKey(token) && Region.All[token].HasAnomaly)
+                {
+                    this.ResearchType = EResearchType.Anomaly;
+                    this.ResearchToken = token;
+                }
                 else if (Research.IsSpaceObject(token))
                 {
                     // a moon/planet/region/orbit -> prefer technologies tied to its resources
@@ -246,6 +251,10 @@ namespace SpaceAge
                     this.ResearchType = EResearchType.SpaceObject;
                     this.ResearchToken = elResearch.GetAttribute("object");
                     break;
+                case "anomaly":
+                    this.ResearchType = EResearchType.Anomaly;
+                    this.ResearchToken = elResearch.GetAttribute("region");
+                    break;
                 case "stack":
                     this.ResearchType = EResearchType.ModuleStack;
                     this.ResearchToken = elResearch.GetAttribute("stack");
@@ -286,6 +295,10 @@ namespace SpaceAge
                     elResearch.SetAttribute("research-type", "object");
                     elResearch.SetAttribute("object", this.ResearchToken);
                     break;
+                case EResearchType.Anomaly:
+                    elResearch.SetAttribute("research-type", "anomaly");
+                    elResearch.SetAttribute("region", this.ResearchToken);
+                    break;
                 case EResearchType.ModuleStack:
                     elResearch.SetAttribute("research-type", "stack");
                     elResearch.SetAttribute("stack", this.ResearchToken);
@@ -313,6 +326,14 @@ namespace SpaceAge
                 if (this.ResearchType == EResearchType.ModuleStack)
                 {
                     this.researchWreckage(week);
+                    this.Executing = true;
+                    base.Execute(week);
+                    return;
+                }
+
+                if (this.ResearchType == EResearchType.Anomaly)
+                {
+                    this.researchAnomaly(week);
                     this.Executing = true;
                     base.Execute(week);
                     return;
@@ -349,6 +370,79 @@ namespace SpaceAge
 
                 // finish order execution
                 base.Execute(week);
+            }
+        }
+
+        private void researchAnomaly(int week)
+        {
+            if (!Region.All.ContainsKey(this.ResearchToken))
+            {
+                this.Researcher.EventReports.Add(
+                    week,
+                    string.Format("RESEARCH failed: unknown region {0}.", this.ResearchToken));
+                return;
+            }
+
+            Region region = Region.All[this.ResearchToken];
+            if (!region.HasAnomaly)
+            {
+                this.Researcher.EventReports.Add(
+                    week,
+                    string.Format("RESEARCH failed: {0} has no anomaly.", region.ReportName));
+                return;
+            }
+
+            if (this.Researcher.Location != region)
+            {
+                this.Researcher.EventReports.Add(
+                    week,
+                    string.Format("RESEARCH failed: {0} is not at {1}.",
+                        this.Researcher.ReportName,
+                        region.ReportName));
+                return;
+            }
+
+            Faction owner = this.Researcher.Owner;
+            if (region.Anomaly.IsResolved(owner))
+            {
+                this.Researcher.EventReports.Add(
+                    week,
+                    string.Format("RESEARCH failed: anomaly at {0} is already surveyed.",
+                        region.ReportName));
+                return;
+            }
+
+            int hundredths = AnomalyInvestigation.WeeklyProgress(this.Researcher, region);
+            if (hundredths < 1)
+            {
+                this.Researcher.EventReports.Add(
+                    week,
+                    string.Format("RESEARCH failed: {0} has no survey capacity for {1}.",
+                        this.Researcher.ReportName,
+                        region.ReportName));
+                return;
+            }
+
+            int applied;
+            region.Anomaly.AddProgress(owner, hundredths, out applied);
+            if (applied < 1)
+            {
+                this.Researcher.EventReports.Add(
+                    week,
+                    string.Format("surveyed {0}.", region.ReportName));
+                return;
+            }
+
+            this.Researcher.EventReports.Add(
+                week,
+                string.Format("surveyed {0} ({1}/{2}).",
+                    region.ReportName,
+                    region.Anomaly.GetProgress(owner),
+                    region.Anomaly.Points));
+
+            if (region.Anomaly.GetProgress(owner) >= region.Anomaly.Points)
+            {
+                AnomalyInvestigation.Complete(this.Researcher, region, week);
             }
         }
 

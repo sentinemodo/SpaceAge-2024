@@ -118,7 +118,7 @@ ARBOR = [
     ((5, 0), "barren", "Cinder Flats", [("iron", 20), ("silici", 15)]),
     ((0, 1), "ocean", "West Deep", [("terair", 100), ("water", 600), ("food", 40)]),
     ((1, 1), "grassl", "Northwind Grant", [("terair", 100), ("food", 600), ("carbon", 30), ("iron", 20), ("water", 150)]),
-    ((2, 1), "grassl", "Mid Vale", [("terair", 100), ("food", 500), ("carbon", 20), ("iron", 15), ("water", 140)]),
+    ((2, 1), "grassl", "Mid Vale", [("terair", 100), ("food", 500), ("carbon", 20), ("iron", 15), ("water", 140), ("oil", 25)]),
     ((3, 1), "grassl", "Greenwell Grant", [("terair", 100), ("food", 600), ("carbon", 30), ("iron", 20), ("water", 150)]),
     ((4, 1), "mountn", "South Ridge", [("iron", 70), ("silici", 20), ("carbon", 5)]),
     ((5, 1), "dust", "East Dune", [("iron", 30), ("silici", 25), ("carbon", 10)]),
@@ -261,6 +261,91 @@ class Region:
         self.resources = []  # (type, qty)
         self.exits = []
         self.stacks = []
+        self.anomaly = None  # type, description, points, rewards[]
+        self.deep_pocket = []  # (type, qty) subsurface; core drill + cdrill tech in region to survey
+
+
+def _base_anomaly_rewards():
+    # Band 0 resolve: one-shot +20 RP on the completing lab (≈1.5 qtrs stationary cmplib
+    # at 13 RP/qtr, or ≈3 qtrs moblab at 6 RP/qtr). Investigation threshold stays points=8.
+    return [
+        {"band": 0, "kind": "survey-blurb"},
+        {"band": 0, "kind": "research-rp", "technology": "optins", "quantity": 20},
+    ]
+
+
+# Per-region band-2+ rewards (see designer/anomaly-investigation.md).
+HQ_ANOMALY_REWARDS = {
+    ("arbor", "Mid Vale"): _base_anomaly_rewards()
+    + [{"band": 2, "kind": "research-rp", "technology": "survts", "quantity": 8}],
+    ("arbor", "South Ridge"): _base_anomaly_rewards()
+    + [
+        {"band": 2, "kind": "research-rp", "technology": "gminng", "quantity": 8},
+        {"band": 2, "kind": "resource", "item": "iron", "quantity": 1},
+    ],
+    ("arbor", "East Peak"): _base_anomaly_rewards()
+    + [
+        {"band": 2, "kind": "research-rp", "technology": "seisns", "quantity": 8},
+        {"band": 2, "kind": "resource", "item": "water", "quantity": 1},
+    ],
+    ("anvil", "East Peak"): _base_anomaly_rewards()
+    + [
+        {"band": 2, "kind": "research-rp", "technology": "radtol", "quantity": 8},
+        {"band": 2, "kind": "resource", "item": "uraniu", "quantity": 1},
+    ],
+    ("arbor", "East Steppe"): _base_anomaly_rewards()
+    + [
+        {"band": 2, "kind": "research-rp", "technology": "seisns", "quantity": 8},
+        {"band": 2, "kind": "resource", "item": "tungst", "quantity": 1},
+    ],
+    ("arbor", "Windgap"): _base_anomaly_rewards()
+    + [{"band": 2, "kind": "research-rp", "technology": "survts", "quantity": 8}],
+    ("anvil", "Slope"): _base_anomaly_rewards()
+    + [{"band": 2, "kind": "research-rp", "technology": "gminng", "quantity": 8}],
+    ("anvil", "Mid Spine"): _base_anomaly_rewards()
+    + [
+        {"band": 2, "kind": "research-rp", "technology": "radtol", "quantity": 8},
+        {"band": 2, "kind": "resource", "item": "uraniu", "quantity": 1},
+    ],
+    ("anvil", "Crag"): _base_anomaly_rewards()
+    + [{"band": 2, "kind": "resource", "item": "copper", "quantity": 1}],
+    ("anvil", "Bench"): _base_anomaly_rewards()
+    + [
+        {"band": 2, "kind": "research-rp", "technology": "optins", "quantity": 8},
+        {"band": 2, "kind": "resource", "item": "silici", "quantity": 1},
+    ],
+}
+
+
+# One minor anomaly per player HQ grant: anomaly sits on an orthogonally adjacent cell.
+HQ_ANOMALIES = [
+    # faction, planet, grant, anomaly region, type, description
+    (2, "arbor", "Northwind Grant", "Mid Vale", "spectral", "Photic-band albedo steps on an otherwise uniform grassland — buried oxide or organics."),
+    (3, "arbor", "Greenwell Grant", "South Ridge", "magnetic", "Aeromagnetic gradient over banded iron: a subsurface ferrous lens, not yet cored."),
+    (4, "arbor", "Rivermark Grant", "East Peak", "seismic", "Microseismic cluster under the ridge crest; shallow void or fault, not volcanic."),
+    (5, "arbor", "Sundock Grant", "East Steppe", "gravimetric", "Local g anomaly on dense basement rock under steppe grass; mass concentration worth a gravimeter pass."),
+    (6, "arbor", "Copse Grant", "Windgap", "spectral", "Narrow IR emission line in a wind-cut saddle — heated outcrop or shallow geothermal bleed."),
+    (7, "anvil", "Ironclad Grant", "Slope", "magnetic", "Magnetite streaks in talus give a strong dipole; ore body or slag, not instrument drift."),
+    (8, "anvil", "Oreline Grant", "Mid Spine", "radiometric", "Elevated gamma count on pitchblende-bearing spine rock; handle as ore, not background."),
+    (9, "anvil", "Basalt Grant", "Crag", "seismic", "Reflected compressional wave off a shallow density contrast — void or ore lens."),
+    (10, "anvil", "Silicate Grant", "Bench", "spectral", "Silicate absorption feature shift on a bench terrace; altered regolith or glass."),
+    (11, "anvil", "Fission Grant", "East Peak", "radiometric", "Hot spot on uraninite-rich crest; dosimeter spike above regional baseline."),
+]
+
+# One deep pocket per player HQ neighbourhood (~10/71 regions). Requires core drill to extract;
+# exit hint when the observing grant holds cdrill tech; ore types on-site only with cdrill in pocket region.
+HQ_DEEP_POCKETS = [
+    (2, "arbor", "Northwind Grant", "Mid Vale", [("titani", 55)]),
+    (3, "arbor", "Greenwell Grant", "South Ridge", [("titani", 45), ("iron", 60)]),
+    (4, "arbor", "Rivermark Grant", "East Peak", [("copper", 40)]),
+    (5, "arbor", "Sundock Grant", "Sundock Grant", [("titani", 50)]),
+    (6, "arbor", "Copse Grant", "Windgap", [("uraniu", 25)]),
+    (7, "anvil", "Ironclad Grant", "Slope", [("titani", 70)]),
+    (8, "anvil", "Oreline Grant", "Mid Spine", [("uraniu", 35), ("copper", 30)]),
+    (9, "anvil", "Basalt Grant", "Crag", [("silici", 50)]),
+    (10, "anvil", "Silicate Grant", "Bench", [("copper", 45)]),
+    (11, "anvil", "Fission Grant", "East Peak", [("uraniu", 40)]),
+]
 
 
 class Orbit:
@@ -379,6 +464,7 @@ class Stack:
         self.selling = []
         self.people = []
         self.children = []
+        self.technologies = []
 
 
 def el(parent, tag, **attrs):
@@ -432,6 +518,12 @@ def emit_stack(parent, stack):
             faction=person["faction"],
         )
         add_items(p, person.get("upkeep", []), "upkeep")
+    for tech in stack.technologies:
+        if isinstance(tech, tuple):
+            tid, tid_en = tech
+        else:
+            tid, tid_en = tech, tech
+        el(node, "technology", name=tid, **{"name-en": tid_en})
     add_items(node, stack.items)
     add_items(node, stack.upkeep, "upkeep")
     add_offers(node, stack.buying, "buying")
@@ -460,6 +552,21 @@ def emit_region(parent, region):
         el(node, "resource", type=typ, quantity=qty)
     for stack in region.stacks:
         emit_stack(node, stack)
+    if region.deep_pocket:
+        dpnode = el(node, "deep-pocket")
+        for typ, qty in region.deep_pocket:
+            el(dpnode, "resource", type=typ, quantity=qty)
+    if region.anomaly:
+        attrs = {"type": region.anomaly["type"], "points": region.anomaly.get("points", 8)}
+        if region.anomaly.get("description"):
+            attrs["description"] = region.anomaly["description"]
+        anode = el(node, "anomaly", **attrs)
+        for reward in region.anomaly.get("rewards", []):
+            rattrs = {"band": reward["band"], "kind": reward["kind"]}
+            for key in ("technology", "item", "region", "quantity", "text"):
+                if key in reward and reward[key] is not None:
+                    rattrs[key] = reward[key]
+            el(anode, "reward", **rattrs)
     return node
 
 
@@ -697,6 +804,171 @@ def city(
     return stack
 
 
+def town(
+    name,
+    name_en,
+    faction,
+    qty,
+    cash,
+    terran,
+    food_upkeep,
+    nested,
+    buying=None,
+    selling=None,
+    extra_items=None,
+):
+    stack = Stack(name, "town", faction, qty, name_en)
+    stack.items = [("cash", cash), ("terran", terran)] + list(extra_items or [])
+    stack.upkeep = [("food", food_upkeep)]
+    stack.buying = list(buying or [])
+    stack.selling = list(selling or [])
+    stack.children = nested
+    return stack
+
+
+# Town-building charters on player grant cells (fac 2-11). CT0006-CT0015.
+# Fulfilled by factory USE twnbld, then TRANSFER … TO FACTION 1 at the grant (no seeded UN town).
+GRANT_MARKET_TOWNS = (
+    # fac, contract_id, reward, title, flavour
+    (
+        2,
+        "CT0006",
+        "ctypln",
+        "Northwind market charter",
+        "United Star Nations wants a prefab town seated on Northwind Grant this quarter. Factory-build one town module, then TRANSFER it TO FACTION 1 at headquarters; UN pays city planning when the civic shell is accepted.",
+    ),
+    (
+        3,
+        "CT0007",
+        "servic",
+        "Greenwell bazaar charter",
+        "Greenwell Grant must host a UN market town this quarter. Build one town module at headquarters and TRANSFER it TO FACTION 1 on the grant; UN opens a calorie-and-parts bazaar when accepted.",
+    ),
+    (
+        4,
+        "CT0008",
+        "airgen",
+        "Rivermark steppe charter",
+        "Rivermark Grant needs a civic shell on the same grid as HQ. Factory-build one town and TRANSFER it TO FACTION 1 at the grant; UN pays life-support tech for the steppe trade lane.",
+    ),
+    (
+        5,
+        "CT0009",
+        "ctypln",
+        "Sundock prairie charter",
+        "Sundock Grant carries a UN town charter on the landing strip cell. Build one town module and TRANSFER it TO FACTION 1 beside headquarters; UN opens the books when the frame is accepted.",
+    ),
+    (
+        6,
+        "CT0010",
+        "servic",
+        "Copse tundra charter",
+        "Copse Grant's UN charter seats a market town on the grant itself. Deliver one town module via TRANSFER TO FACTION 1 at HQ so seasonal convoys can trade without crowding corp stacks.",
+    ),
+    (
+        7,
+        "CT0011",
+        "ctypln",
+        "Ironclad marsh charter",
+        "Ironclad Grant must accept a prefab town on the grant grid. Build at headquarters and TRANSFER TO FACTION 1; UN licenses a metal-side parts market when the shell lands.",
+    ),
+    (
+        8,
+        "CT0012",
+        "servic",
+        "Oreline bench charter",
+        "Oreline Grant shares regolith with headquarters under a UN town charter. Factory-build one town and TRANSFER it TO FACTION 1 on the grant for ridge-camp maintenance contracts.",
+    ),
+    (
+        9,
+        "CT0013",
+        "airgen",
+        "Basalt thin-soil charter",
+        "Basalt Grant needs a town module seated on the thin-soil HQ cell. Build one civic shell and TRANSFER TO FACTION 1 at headquarters so assay crews can trade breathing kits legally.",
+    ),
+    (
+        10,
+        "CT0014",
+        "ctypln",
+        "Silicate slope charter",
+        "Silicate Grant carries a UN exchange charter beside headquarters. Build one town module and TRANSFER TO FACTION 1 on the grant terrace; UN registers spare-parts and crew-air trade.",
+    ),
+    (
+        11,
+        "CT0015",
+        "airgen",
+        "Fission market charter",
+        "Fission Grant's isotope lane needs a UN market town on the grant grid. Factory-build one town and TRANSFER TO FACTION 1 at headquarters; UN pays life-support tech on acceptance.",
+    ),
+)
+
+
+def fauna_pack(stack_id, faction, module_type, qty, name_en):
+    """Wild fauna pocket: native module tier only (no cargo, no upkeep). See designer/fauna.md."""
+    return Stack(stack_id, module_type, faction, qty, name_en)
+
+
+def seed_hostile_fauna(arbor, anvil):
+    """Small fauna pockets on homeworlds; one stack per native tier. See designer/fauna.md."""
+    arbor_pockets = [
+        ("Mid Vale", "140010", "brmstr", 2, "Mid Vale brush pack", 14),
+        ("East Steppe", "140020", "mulcrw", 1, "East Steppe mulch crawler", 14),
+        ("Loess", "140030", "canalp", 1, "Loess canopy alpha", 14),
+    ]
+    for region_name, stack_id, module_type, qty, name_en, faction in arbor_pockets:
+        find_region(arbor.regions, region_name).stacks.append(
+            fauna_pack(stack_id, faction, module_type, qty, name_en)
+        )
+
+    anvil_pockets = [
+        ("Slope", "150010", "crstlb", 2, "Slope burrow pack", 15),
+        ("Scree", "150020", "slgmnt", 1, "Scree slag mantlet", 15),
+        ("Crag", "150030", "urstlk", 1, "Crag umber stalker", 15),
+    ]
+    for region_name, stack_id, module_type, qty, name_en, faction in anvil_pockets:
+        find_region(anvil.regions, region_name).stacks.append(
+            fauna_pack(stack_id, faction, module_type, qty, name_en)
+        )
+
+
+def seed_haven_graph_fauna(systems):
+    """Fauna pockets on Deep Haven and Graph (built after homeworld seeding)."""
+    deep = next((s for s in systems if s.name_en == "Deep"), None)
+    haven = None
+    if deep:
+        for planet in deep.planets:
+            for moon in planet.moons:
+                if moon.name_en == "Haven":
+                    haven = moon
+                    break
+    graph_sys = next((s for s in systems if s.name_en == "Graph"), None)
+    graph = None
+    if graph_sys:
+        graph = next((p for p in graph_sys.planets if p.name_en == "Graph"), None)
+
+    if haven:
+        haven_pockets = [
+            ("Haven 1,1", "160010", "ribgrz", 2, "Haven ridge grazers", 16),
+            ("Haven 2,1", "160020", "glacra", 1, "Haven glacier crab", 16),
+            ("Haven 0,1", "160030", "frostb", 1, "Haven frost brood", 16),
+        ]
+        for region_name, stack_id, module_type, qty, name_en, faction in haven_pockets:
+            find_region(haven.regions, region_name).stacks.append(
+                fauna_pack(stack_id, faction, module_type, qty, name_en)
+            )
+
+    if graph:
+        graph_pockets = [
+            ("Graph 2,0", "170010", "silskk", 2, "Graph silicate skitters", 17),
+            ("Graph 3,1", "170020", "qtzrol", 1, "Graph quartz roller", 17),
+            ("Graph 1,2", "170030", "spngrf", 1, "Graph spine reef", 17),
+        ]
+        for region_name, stack_id, module_type, qty, name_en, faction in graph_pockets:
+            find_region(graph.regions, region_name).stacks.append(
+                fauna_pack(stack_id, faction, module_type, qty, name_en)
+            )
+
+
 def hq_stack(fac, planet):
     name_en, _pw = PLAYERS[fac]
     base = 200000 + (fac - 2) * 10000
@@ -715,10 +987,10 @@ def hq_stack(fac, planet):
     hq.items = [("terran", 20)]
     hq.upkeep = [("cash", 90)]
     if planet == "arbor":
-        cargo = [("food", 400), ("terair", 200), ("h2o2", 200), ("iron", 40), ("carbon", 40), ("silici", 10)]
+        cargo = [("food", 400), ("terair", 200), ("h2o2", 200), ("iron", 40), ("carbon", 40), ("silici", 15), ("titani", 2), ("oil", 5)]
         nest(hq, "%d" % (base + 3), "cargob", fac, 2, items=cargo, upkeep=[("cash", 20)])
-        nest(hq, "%d" % (base + 4), "cdrill", fac, 1, items=[("terran", 6)], upkeep=[("cash", 50)])
-        nest(hq, "%d" % (base + 5), "factry", fac, 2, items=[("terran", 20)], upkeep=[("cash", 110)])
+        nest(hq, "%d" % (base + 4), "sdrill", fac, 1, items=[("terran", 6)], upkeep=[("cash", 35)])
+        factory = nest(hq, "%d" % (base + 5), "factry", fac, 2, items=[("terran", 20)], upkeep=[("cash", 110)])
         nest(hq, "%d" % (base + 6), "farms", fac, 3, items=[("terran", 15)], upkeep=[("cash", 90)])
         nest(
             hq,
@@ -739,10 +1011,11 @@ def hq_stack(fac, planet):
             ("silici", 40),
             ("copper", 30),
             ("uraniu", 20),
+            ("oil", 5),
         ]
         nest(hq, "%d" % (base + 3), "cargob", fac, 2, items=cargo, upkeep=[("cash", 20)])
-        nest(hq, "%d" % (base + 4), "cdrill", fac, 1, items=[("terran", 6)], upkeep=[("cash", 50)])
-        nest(hq, "%d" % (base + 5), "factry", fac, 2, items=[("terran", 20)], upkeep=[("cash", 110)])
+        nest(hq, "%d" % (base + 4), "sdrill", fac, 1, items=[("terran", 6)], upkeep=[("cash", 35)])
+        factory = nest(hq, "%d" % (base + 5), "factry", fac, 2, items=[("terran", 20)], upkeep=[("cash", 110)])
         nest(hq, "%d" % (base + 6), "farms", fac, 2, items=[("terran", 10)], upkeep=[("cash", 60)])
         nest(hq, "%d" % (base + 7), "wnplnt", fac, 8, upkeep=[("cash", 8)])
     return hq
@@ -753,6 +1026,38 @@ def find_region(regions, name_en):
         if region.name_en == name_en:
             return region
     raise KeyError(name_en)
+
+
+def apply_hq_anomalies(arbor, anvil):
+    grids = {"arbor": arbor.regions, "anvil": anvil.regions}
+    for _fac, planet, grant_name, anomaly_name, anomaly_type, description in HQ_ANOMALIES:
+        grid = grids[planet]
+        grant = find_region(grid, grant_name)
+        anomaly = find_region(grid, anomaly_name)
+        if not any(ex.target == anomaly.name for ex in grant.exits):
+            raise ValueError("anomaly %s is not adjacent to grant %s" % (anomaly_name, grant_name))
+        if anomaly.anomaly:
+            raise ValueError("duplicate anomaly on %s" % anomaly_name)
+        rewards = HQ_ANOMALY_REWARDS.get((planet, anomaly_name), _base_anomaly_rewards())
+        anomaly.anomaly = {
+            "type": anomaly_type,
+            "description": description,
+            "points": 8,
+            "rewards": [dict(r) for r in rewards],
+        }
+
+
+def apply_hq_deep_pockets(arbor, anvil):
+    grids = {"arbor": arbor.regions, "anvil": anvil.regions}
+    for _fac, planet, grant_name, pocket_name, resources in HQ_DEEP_POCKETS:
+        grid = grids[planet]
+        grant = find_region(grid, grant_name)
+        pocket = find_region(grid, pocket_name)
+        if pocket_name != grant_name and not any(ex.target == pocket.name for ex in grant.exits):
+            raise ValueError("deep pocket %s is not adjacent to grant %s" % (pocket_name, grant_name))
+        if pocket.deep_pocket:
+            raise ValueError("duplicate deep pocket on %s" % pocket_name)
+        pocket.deep_pocket = live_res(resources)
 
 
 def find_id(regions, rid):
@@ -1217,6 +1522,28 @@ def build_world():
         grid = arbor.regions if home == "arbor" else anvil.regions
         find_region(grid, grant).stacks.append(hq_stack(fac, home))
 
+    apply_hq_anomalies(arbor, anvil)
+    apply_hq_deep_pockets(arbor, anvil)
+    seed_hostile_fauna(arbor, anvil)
+
+    grant_market_contracts = []
+    for fac, contract_id, reward, title, flavour in GRANT_MARKET_TOWNS:
+        home = "arbor" if fac <= 6 else "anvil"
+        grant_name, _home = player_home[fac]
+        grid = arbor.regions if home == "arbor" else anvil.regions
+        region = find_region(grid, grant_name)
+        hq_id = str(200000 + (fac - 2) * 10000 + 1)
+        grant_market_contracts.append(
+            {
+                "name": contract_id,
+                "location": region.name,
+                "receiver": hq_id,
+                "reward": reward,
+                "title": title,
+                "flavour": flavour,
+            }
+        )
+
     wreck_h = Stack("W00001", "alnhul", 1, 1, "Helios belt hulk")
     wreck_h.upkeep = [("cash", 100)]
     landings["helios-belt"].stacks.append(wreck_h)
@@ -1245,7 +1572,8 @@ def build_world():
         systems.append(system)
 
     add_empty_system_gates(ids, systems)
-    return systems, landings
+    seed_haven_graph_fauna(systems)
+    return systems, landings, grant_market_contracts
 
 
 def add_empty_system_gates(ids, systems):
@@ -1926,9 +2254,77 @@ def emit_factions(root):
         **{"credit-rate": "0"},
         **{"deposit-rate": "0"},
     )
+    el(
+        root,
+        "faction",
+        name="14",
+        **{"name-en": "Arbor Fauna"},
+        password="",
+        email="",
+        **{"default-attitude": "1"},
+        **{"unknown-attitude": "1"},
+        **{"text-report": "True"},
+        **{"text-report-line-length": "100"},
+        **{"xml-report": "True"},
+        balance="0",
+        **{"credit-line": "0"},
+        **{"credit-rate": "0"},
+        **{"deposit-rate": "0"},
+    )
+    el(
+        root,
+        "faction",
+        name="15",
+        **{"name-en": "Anvil Fauna"},
+        password="",
+        email="",
+        **{"default-attitude": "1"},
+        **{"unknown-attitude": "1"},
+        **{"text-report": "True"},
+        **{"text-report-line-length": "100"},
+        **{"xml-report": "True"},
+        balance="0",
+        **{"credit-line": "0"},
+        **{"credit-rate": "0"},
+        **{"deposit-rate": "0"},
+    )
+    el(
+        root,
+        "faction",
+        name="16",
+        **{"name-en": "Haven Fauna"},
+        password="",
+        email="",
+        **{"default-attitude": "1"},
+        **{"unknown-attitude": "1"},
+        **{"text-report": "True"},
+        **{"text-report-line-length": "100"},
+        **{"xml-report": "True"},
+        balance="0",
+        **{"credit-line": "0"},
+        **{"credit-rate": "0"},
+        **{"deposit-rate": "0"},
+    )
+    el(
+        root,
+        "faction",
+        name="17",
+        **{"name-en": "Graph Fauna"},
+        password="",
+        email="",
+        **{"default-attitude": "1"},
+        **{"unknown-attitude": "1"},
+        **{"text-report": "True"},
+        **{"text-report-line-length": "100"},
+        **{"xml-report": "True"},
+        balance="0",
+        **{"credit-line": "0"},
+        **{"credit-rate": "0"},
+        **{"deposit-rate": "0"},
+    )
 
 
-def emit_contracts(root, landings):
+def emit_contracts(root, landings, grant_market_contracts):
     contracts = el(root, "contracts")
     el(
         contracts,
@@ -2006,6 +2402,55 @@ def emit_contracts(root, landings):
         title="Fomal carbonaceous fabricator",
         flavour="A cold, unmanned fabrication plant is wedged in a kerogen-rich carbonaceous cell. Research it on site; the organics are feedstock, not a skip of the Arbor/Anvil split.",
     )
+    fauna_bounties = [
+        (
+            "CT0016",
+            "R00009",
+            "140010",
+            "1000",
+            "Mid Vale swarm cull",
+            "Destroy the Mid Vale brush stalker pack (140010). UN pays a tier-1 fauna bounty so the grant lane can replant.",
+        ),
+        (
+            "CT0019",
+            "R00046",
+            "150010",
+            "1000",
+            "Slope swarm cull",
+            "Destroy the Slope crust burrower pack (150010). UN pays a tier-1 fauna bounty on the talus lane.",
+        ),
+    ]
+    for name, location, target, cash, title, flavour in fauna_bounties:
+        el(
+            contracts,
+            "contract",
+            name=name,
+            location=location,
+            issuer="1",
+            trigger="destroy-stack",
+            target=target,
+            **{"reward-type": "cash"},
+            reward=cash,
+            title=title,
+            flavour=flavour,
+        )
+    for spec in grant_market_contracts:
+        el(
+            contracts,
+            "contract",
+            name=spec["name"],
+            location=spec["location"],
+            issuer="1",
+            trigger="give-module",
+            **{"reward-type": "technology"},
+            reward=spec["reward"],
+            quantity="1",
+            module="town",
+            receiver=spec["receiver"],
+            baseline="0",
+            title=spec["title"],
+            flavour=spec["flavour"],
+        )
 
 
 def emit_galaxy(root, systems):
@@ -2511,6 +2956,28 @@ def validate(systems, landings):
     hqs = [s for s in stacks if s.typ == "corphq"]
     if len(hqs) != 10:
         errors.append("expected 10 corphq, got %d" % len(hqs))
+    anomaly_regions = [r for s in systems[:2] for p in s.planets for r in p.regions if r.anomaly]
+    if len(anomaly_regions) != len(HQ_ANOMALIES):
+        errors.append("expected %d HQ anomalies, got %d" % (len(HQ_ANOMALIES), len(anomaly_regions)))
+    for fac, planet, grant_name, anomaly_name, anomaly_type, _desc in HQ_ANOMALIES:
+        grid = arbor_regions if planet == "arbor" else anvil_regions
+        grant = find_region(grid, grant_name)
+        anomaly = find_region(grid, anomaly_name)
+        if not anomaly.anomaly or anomaly.anomaly.get("type") != anomaly_type:
+            errors.append("anomaly %s on %s type" % (anomaly_name, planet))
+        if not any(ex.target == anomaly.name for ex in grant.exits):
+            errors.append("anomaly %s not adjacent to %s" % (anomaly_name, grant_name))
+    deep_pocket_regions = [r for s in systems[:2] for p in s.planets for r in p.regions if r.deep_pocket]
+    if len(deep_pocket_regions) != len(HQ_DEEP_POCKETS):
+        errors.append("expected %d HQ deep pockets, got %d" % (len(HQ_DEEP_POCKETS), len(deep_pocket_regions)))
+    for _fac, planet, grant_name, pocket_name, resources in HQ_DEEP_POCKETS:
+        grid = arbor_regions if planet == "arbor" else anvil_regions
+        grant = find_region(grid, grant_name)
+        pocket = find_region(grid, pocket_name)
+        if pocket.deep_pocket != live_res(resources):
+            errors.append("deep pocket %s on %s resources" % (pocket_name, planet))
+        if pocket_name != grant_name and not any(ex.target == pocket.name for ex in grant.exits):
+            errors.append("deep pocket %s not adjacent to %s" % (pocket_name, grant_name))
     factions = sorted({int(s.faction) for s in hqs})
     if factions != list(range(2, 12)):
         errors.append("HQ factions %s" % factions)
@@ -2673,12 +3140,12 @@ def validate(systems, landings):
 
 
 def main():
-    systems, landings = build_world()
+    systems, landings, grant_market_contracts = build_world()
     apply_flavour(systems)
     validate(systems, landings)
     root = ET.Element("game", turn="1")
     emit_factions(root)
-    emit_contracts(root, landings)
+    emit_contracts(root, landings, grant_market_contracts)
     emit_galaxy(root, systems)
     el(root, "orders")
     comment = ET.Comment(" Generated by campaign/_gen_gamein.py from designer/galaxy.md. Do not edit by hand. ")
