@@ -301,10 +301,70 @@ namespace SpaceAge
 					}
 					paired.Add(key);
 					factionPairs.Add(factionKey);
+					if (!ShouldCommenceBattle(stack, other))
+					{
+						continue;
+					}
 					started.Add(new Battle(stack, other));
 				}
 			}
 			return started;
+		}
+
+		public static bool ShouldCommenceBattle(ModuleStack initiator, ModuleStack target)
+		{
+			Battle battle = new Battle(initiator, target);
+			bool commence = battle.HasActionableEngagement();
+			Battle.All.Remove(battle);
+			return commence;
+		}
+
+		public bool HasActionableEngagement()
+		{
+			return this.sideCanEngage(this.attackers, this.defenders)
+				|| this.sideCanEngage(this.defenders, this.attackers);
+		}
+
+		private bool sideCanEngage(ModuleStacks side, ModuleStacks opponents)
+		{
+			if (side == null || side.Count == 0 || opponents == null || opponents.Count == 0)
+			{
+				return false;
+			}
+
+			foreach (ModuleStack stack in side.Values)
+			{
+				if (!stack.IsArmed || !stack.HasOperationalModules)
+				{
+					continue;
+				}
+				if (this.availableTargets(opponents, stack).Count > 0)
+				{
+					return true;
+				}
+				if (this.hasVictoryCleanupTactic(stack) && this.hasDisabledIntactOpponent(opponents))
+				{
+					return true;
+				}
+			}
+			return false;
+		}
+
+		private bool hasVictoryCleanupTactic(ModuleStack stack)
+		{
+			return stack.HasDestroy || stack.HasCapture || stack.HasScavenge;
+		}
+
+		private bool hasDisabledIntactOpponent(ModuleStacks opponents)
+		{
+			foreach (ModuleStack target in opponents.Values)
+			{
+				if (target.HasIntactModules() && !target.HasOperationalModules)
+				{
+					return true;
+				}
+			}
+			return false;
 		}
 
 		public static int HpDamageFromShot(int weaponDamage)

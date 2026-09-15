@@ -735,6 +735,14 @@ namespace UnitTests
 			Assert.That(drones.IsImmobile, Is.False);
 		}
 
+		private void clearReceiverTerran(ModuleStack receiver, ItemType terran)
+		{
+			if (receiver.ItemStacks.ContainsKey(terran))
+			{
+				receiver.ItemStacks.Remove(terran);
+			}
+		}
+
 		[Test]
 		public void SetHoldOrder_BlocksGetBelowReserve()
 		{
@@ -742,6 +750,7 @@ namespace UnitTests
 			ItemType terran = ItemType.All["terran"];
 			hq.ItemStacks[terran].Quantity = 30;
 			ModuleStack receiver = this.game.ModuleStacks["100001"];
+			this.clearReceiverTerran(receiver, terran);
 
 			new OrdersReader(this.game).AssignOrders(new List<string>
 			{
@@ -767,6 +776,7 @@ namespace UnitTests
 			ItemType terran = ItemType.All["terran"];
 			hq.ItemStacks[terran].Quantity = 30;
 			ModuleStack receiver = this.game.ModuleStacks["100001"];
+			this.clearReceiverTerran(receiver, terran);
 
 			new OrdersReader(this.game).AssignOrders(new List<string>
 			{
@@ -792,6 +802,7 @@ namespace UnitTests
 			ItemType terran = ItemType.All["terran"];
 			hq.ItemStacks[terran].Quantity = 30;
 			ModuleStack receiver = this.game.ModuleStacks["100001"];
+			this.clearReceiverTerran(receiver, terran);
 
 			hq.SetItemHold(terran, 20);
 			new OrdersReader(this.game).AssignOrders(new List<string>

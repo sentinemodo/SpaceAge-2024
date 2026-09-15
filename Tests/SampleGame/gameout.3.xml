@@ -2,7 +2,7 @@
 <game turn="3">
 	<faction name="1" name-en="NPC" password="" email="" default-attitude="2" text-report="True" text-report-line-length="100" xml-report="True" balance="1000" credit-line="0" credit-rate="0" deposit-rate="0" />
 	<faction name="2" name-en="Caste Prime" password="xyzzy" email="mail1@mail.pl" default-attitude="2" text-report="True" text-report-line-length="100" xml-report="True" balance="8748" credit-line="10000" credit-rate="0.2" deposit-rate="0.045" />
-	<faction name="3" name-en="Gelvaren" password="abccb" email="mail2@mail.pl" default-attitude="2" text-report="True" text-report-line-length="72" xml-report="True" balance="9995" credit-line="10000" credit-rate="0.2" deposit-rate="0.045">
+	<faction name="3" name-en="Gelvaren" password="abccb" email="mail2@mail.pl" default-attitude="2" text-report="True" text-report-line-length="72" xml-report="True" balance="9363" credit-line="10000" credit-rate="0.2" deposit-rate="0.045">
 		<technology name="rckter" />
 		<attitude faction="2" attitude="enemy" />
 	</faction>
@@ -32,8 +32,8 @@
 							<upkeep type="cash" quantity="10" />
 						</person>
 						<itemstack type="terran" quantity="40" />
-						<itemstack type="iron" quantity="30" />
-						<itemstack type="titani" quantity="16" />
+						<itemstack type="iron" quantity="11" />
+						<itemstack type="titani" quantity="4" />
 						<itemstack type="silici" quantity="19" />
 						<itemstack type="copper" quantity="15" />
 						<itemstack type="food" quantity="109" />
@@ -42,12 +42,12 @@
 						<upkeep type="cash" quantity="1050" />
 						<effect duration="10" type="fuelled" />
 						<event week="2" description="produced spaceship hull [sshull] into spaceship hull [101]." />
-						<event week="3" description="consumed unit of silicium [silici] to produce command bridge [cbridg] module." />
+						<event week="3" description="consumed unit of iron [iron], 4 units of titanium [titani], unit of silicium [silici] to produce command bridge [cbridg] module." />
 						<event week="5" description="produced command bridge [cbridg] into command bridge [112]." />
-						<event week="6" description="consumed 5 units of copper [copper] to produce fission reactor [fisrec] module." />
+						<event week="6" description="consumed 2 units of iron [iron], 8 units of titanium [titani], 5 units of copper [copper] to produce fission reactor [fisrec] module." />
 						<event week="11" description="consumed 10 units of uranium [uraniu], 10 units of oxyhydro [h2o2] as fuel." />
 						<event week="11" description="produced fission reactor [fisrec] into fission reactor [113]." />
-						<event week="12" description="consumed 10 units of titanium [titani] to produce reaction drive [rctdrv] module." />
+						<event week="12" description="consumed 10 units of iron [iron], 10 units of titanium [titani] to produce reaction drive [rctdrv] module." />
 						<event week="13" description="produced reaction drive [rctdrv] into reaction drive [114]." />
 						<event week="13" description="paid 1050 cash [cash] upkeep." />
 					</modulestack>
@@ -161,8 +161,8 @@
 							<itemstack type="food" quantity="915" />
 							<itemstack type="terair" quantity="850" />
 							<itemstack type="h2o2" quantity="900" />
-							<itemstack type="iron" quantity="70" />
-							<itemstack type="titani" quantity="70" />
+							<itemstack type="iron" quantity="60" />
+							<itemstack type="titani" quantity="60" />
 							<itemstack type="silici" quantity="80" />
 							<itemstack type="copper" quantity="80" />
 							<itemstack type="uraniu" quantity="80" />
@@ -297,17 +297,26 @@
 						</modulestack>
 						<modulestack name="000017" type="factry" quantity="5" faction="2">
 							<itemstack type="terran" quantity="46" />
-							<itemstack type="iron" quantity="20" />
 							<upkeep type="cash" quantity="346" />
-							<event week="1" description="consumed 2 units of titanium [titani] to produce gun placement [gunplc] module." />
+							<event week="1" description="consumed 2 unit of iron [iron] from shared small cargo bay [000013]." />
+							<event week="1" description="consumed 2 unit of titanium [titani] from shared small cargo bay [000013]." />
+							<event week="1" description="consumed 2 units of iron [iron], 2 units of titanium [titani] to produce gun placement [gunplc] module." />
 							<event week="1" description="produced gun placement [gunplc] into gun placement [111]." />
-							<event week="2" description="consumed 2 units of titanium [titani] to produce gun placement [gunplc] module." />
+							<event week="2" description="consumed 2 unit of iron [iron] from shared small cargo bay [000013]." />
+							<event week="2" description="consumed 2 unit of titanium [titani] from shared small cargo bay [000013]." />
+							<event week="2" description="consumed 2 units of iron [iron], 2 units of titanium [titani] to produce gun placement [gunplc] module." />
 							<event week="2" description="produced gun placement [gunplc] into gun placement [111]." />
-							<event week="3" description="consumed 2 units of titanium [titani] to produce gun placement [gunplc] module." />
+							<event week="3" description="consumed 2 unit of iron [iron] from shared small cargo bay [000013]." />
+							<event week="3" description="consumed 2 unit of titanium [titani] from shared small cargo bay [000013]." />
+							<event week="3" description="consumed 2 units of iron [iron], 2 units of titanium [titani] to produce gun placement [gunplc] module." />
 							<event week="3" description="produced gun placement [gunplc] into gun placement [111]." />
-							<event week="4" description="consumed 2 units of titanium [titani] to produce gun placement [gunplc] module." />
+							<event week="4" description="consumed 2 unit of iron [iron] from shared small cargo bay [000013]." />
+							<event week="4" description="consumed 2 unit of titanium [titani] from shared small cargo bay [000013]." />
+							<event week="4" description="consumed 2 units of iron [iron], 2 units of titanium [titani] to produce gun placement [gunplc] module." />
 							<event week="4" description="produced gun placement [gunplc] into gun placement [111]." />
-							<event week="5" description="consumed 2 units of titanium [titani] to produce gun placement [gunplc] module." />
+							<event week="5" description="consumed 2 unit of iron [iron] from shared small cargo bay [000013]." />
+							<event week="5" description="consumed 2 unit of titanium [titani] from shared small cargo bay [000013]." />
+							<event week="5" description="consumed 2 units of iron [iron], 2 units of titanium [titani] to produce gun placement [gunplc] module." />
 							<event week="5" description="produced gun placement [gunplc] into gun placement [111]." />
 							<event week="5" description="given 4 terrans [terran] to gun placement [111]." />
 							<event week="9" description="engaged in battle" />
@@ -475,14 +484,12 @@
 						<selling item="food" quantity="25" price="5" />
 						<selling item="terran" quantity="10" price="50" />
 						<event week="1" description="started recruitment of terran, 13 weeks to complete." />
-						<event week="13" description="produced 1000 cash [cash], 10 terrans [terran]." />
-						<event week="13" description="given 1000 cash [cash] to Gelvaren Headquarters [000018]." />
+						<event week="13" description="produced 10 terrans [terran]." />
 						<event week="13" description="given 10 terrans [terran] to Gelvaren Headquarters [000018]." />
 						<event week="13" description="received copy of rocket launcher production [rckter] technology." />
 						<event week="13" description="paid 100 unit of food [food] upkeep." />
 						<modulestack name="000018" name-en="Gelvaren Headquarters" type="corphq" quantity="1" faction="3">
 							<itemstack type="terran" quantity="10" />
-							<itemstack type="cash" quantity="1375" />
 							<upkeep type="cash" quantity="110" />
 							<buying item="terran" quantity="all" price="any" />
 							<event week="1" description="trained terran [terran] into terran officer [107]." />
@@ -499,7 +506,6 @@
 							<event week="10" description="PRODUCE failed: Gelvaren Headquarters [000018] has not enough crew to operate - 20 required, 0 available." />
 							<event week="11" description="PRODUCE failed: Gelvaren Headquarters [000018] has not enough crew to operate - 20 required, 0 available." />
 							<event week="12" description="PRODUCE failed: Gelvaren Headquarters [000018] has not enough crew to operate - 20 required, 0 available." />
-							<event week="13" description="got 1000 cash [cash] from Gelvaren complex [000026]." />
 							<event week="13" description="got 10 terrans [terran] from Gelvaren complex [000026]." />
 							<event week="13" description="PRODUCE failed: Gelvaren Headquarters [000018] has not enough crew to operate - 20 required, 10 available." />
 							<event week="13" description="paid 110 cash [cash] upkeep." />

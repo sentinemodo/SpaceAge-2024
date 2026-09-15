@@ -6956,7 +6956,7 @@ Galaxy report:
       NPC [1].
       size: 10.
   + Gelvaren complex [000026], city [city], immobile.
-    size: 25000, mass: 750/5366 (0), capacity: 15000/10242, energy:
+    size: 25000, mass: 750/5326 (0), capacity: 15000/10242, energy:
     76/79 (10), crew: 50/68, upkeep: 100 units of food [food], 889 (0)
     cash [cash], consume: 68 (0) units of food [food], 68 (0) units of
     terran breathing gas mixture [terair].
@@ -6980,8 +6980,7 @@ Galaxy report:
       [000019].
       week 12: got 10 units of food [food] from small cargo bay
       [000019].
-      week 13: produced 1000 cash [cash], 10 terrans [terran].
-      week 13: given 1000 cash [cash] to Gelvaren Headquarters [000018].
+      week 13: produced 10 terrans [terran].
       week 13: given 10 terrans [terran] to Gelvaren Headquarters
       [000018].
       week 13: got 10 units of food [food] from small cargo bay
@@ -6995,7 +6994,7 @@ Galaxy report:
       [terair].
       items: 30 terrans [terran] (size: 120, mass: 120, upkeep: 30 cash
       [cash], consume: 30 units of food [food], 30 units of terran
-      breathing gas mixture [terair]), 5575 cash [cash].
+      breathing gas mixture [terair]), 3575 cash [cash].
       events:
         week 1: produced 100 cash [cash].
         week 2: produced 100 cash [cash].
@@ -7009,7 +7008,6 @@ Galaxy report:
         week 10: produced 100 cash [cash].
         week 11: produced 100 cash [cash].
         week 12: produced 100 cash [cash].
-        week 13: got 1000 cash [cash] from Gelvaren complex [000026].
         week 13: got 10 terrans [terran] from Gelvaren complex [000026].
         week 13: produced 100 cash [cash].
         week 13: paid 130 cash [cash] upkeep.
@@ -7179,15 +7177,15 @@ Galaxy report:
         week 13: given 2 units of oil [oil] to small cargo bay [000019].
         week 13: paid 46 cash [cash] upkeep.
     + factory [000023], factory [factry], immobile.
-      size: 1000, mass: 912 (750), capacity: 500/130, energy: 15, crew:
+      size: 1000, mass: 872 (750), capacity: 500/105, energy: 15, crew:
       10/10, upkeep: 70 (60) cash [cash], consume: 10 (0) units of food
       [food], 10 (0) units of terran breathing gas mixture [terair].
       technologies: armored combat [armcbt].
       items: 10 terrans [terran] (size: 40, mass: 40, upkeep: 10 cash
       [cash], consume: 10 units of food [food], 10 units of terran
-      breathing gas mixture [terair]), 8 units of iron [iron] (size: 40,
-      mass: 80), 4 units of silicium [silici] (size: 20, mass: 12), 3
-      units of titanium [titani] (size: 30, mass: 30).
+      breathing gas mixture [terair]), 5 units of iron [iron] (size: 25,
+      mass: 50), 4 units of silicium [silici] (size: 20, mass: 12), 2
+      units of titanium [titani] (size: 20, mass: 20).
       events:
         week 13: paid 70 cash [cash] upkeep.
     + military barrack [000025], military barrack [barrck], immobile.
@@ -7229,7 +7227,7 @@ Orders Template:
 #modulestack 000018
 ; + Gelvaren Headquarters [000018], corporate headquarters [corphq],
 ;   immobile.
-; items: 30 terrans [terran], 5575 cash [cash].
+; items: 30 terrans [terran], 3575 cash [cash].
 @get all cash from 000026
 @get all terran from 000026
 @buy all terran
@@ -7259,8 +7257,8 @@ sell 90 food
 #modulestack 000023
 ; + factory [000023], factory [factry], immobile.
 ; technologies: armored combat [armcbt].
-; items: 10 terrans [terran], 8 units of iron [iron], 4 units of silicium
-; [silici], 3 units of titanium [titani].
+; items: 10 terrans [terran], 5 units of iron [iron], 4 units of silicium
+; [silici], 2 units of titanium [titani].
 
 #modulestack 000025
 ; + military barrack [000025], military barrack [barrck], immobile.

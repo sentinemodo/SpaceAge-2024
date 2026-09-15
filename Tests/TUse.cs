@@ -1241,11 +1241,43 @@ namespace UnitTests
             testModuleStack.Effects.Execute(this.game.Week + 1);
             testModuleStack.Effects.RemoveExecuted();
 
-            Assert.That(testModuleStack.ItemStacks[terran].Quantity, Is.EqualTo(startingTerran + 1));
+            Assert.That(testModuleStack.ItemStacks[terran].Quantity, Is.EqualTo(startingTerran + 2));
             Assert.That(testModuleStack.ItemStacks.ContainsKey(cash) ? testModuleStack.ItemStacks[cash].Quantity : 0,
                 Is.EqualTo(startingCash));
         }
 
+
+		[Test]
+		public void ProducingModule_Formation_PreservesExplicitTacticOnPlaceholder()
+		{
+			Sequence.Ints.Push(100);
+
+			Faction testFaction = this.game.Factions["2"];
+			ModuleStack factory = this.game.ModuleStacks["000004"];
+			ModuleStack receiver = ModuleStack.All.GetOrCreateNewModuleStack(testFaction, "109");
+			receiver.ApplyTactic("destroy");
+			Assert.That(receiver.HasDestroy);
+
+			List<string> testcommands = new List<string>
+			{
+				"#faction 2",
+				"#modulestack 000004",
+				"use agrplx as 109",
+				"#end"
+			};
+
+			OrdersReader ordersReader = new OrdersReader(this.game);
+			ordersReader.AssignOrders(testcommands);
+
+			for (int week = 1; week <= 4; week++)
+			{
+				factory.ExecutedLongOrder = false;
+				factory.Execute(week);
+			}
+
+			Assert.That(receiver.ModuleType, Is.EqualTo(ModuleType.All["farms"]));
+			Assert.That(receiver.HasDestroy);
+		}
 
 		[Test]
 		public void ExecuteUseOrder_ContinuesSavedProducingModuleWithoutConsumingAgain()

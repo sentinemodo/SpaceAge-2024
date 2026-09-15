@@ -31,7 +31,7 @@
 							<event week="1" description="stacked under space shuttle [100]." />
 						</person>
 						<itemstack type="terran" quantity="40" />
-						<itemstack type="iron" quantity="30" />
+						<itemstack type="iron" quantity="24" />
 						<itemstack type="titani" quantity="26" />
 						<itemstack type="silici" quantity="20" />
 						<itemstack type="copper" quantity="20" />
@@ -67,7 +67,7 @@
 						<event week="11" description="departed from Northern Hemisphere [R00002] (0,0) to orbit [O00002], ETA 0." />
 						<event week="11" description="consumed 10 units of uranium [uraniu], 10 units of oxyhydro [h2o2] as fuel." />
 						<event week="11" description="arrived at orbit [O00002] from Northern Hemisphere [R00002] (0,0)." />
-						<event week="12" description="consumed 4 units of titanium [titani] to produce spaceship hull [sshull] module." />
+						<event week="12" description="consumed 6 units of iron [iron], 4 units of titanium [titani] to produce spaceship hull [sshull] module." />
 					</modulestack>
 					<modulestack name="101" type="sshull" quantity="0" faction="2">
 						<upkeep type="cash" quantity="0" />
@@ -248,28 +248,26 @@
 						</modulestack>
 						<modulestack name="000017" type="factry" quantity="5" faction="2">
 							<itemstack type="terran" quantity="50" />
-							<itemstack type="iron" quantity="20" />
-							<itemstack type="titani" quantity="10" />
 							<upkeep type="cash" quantity="350" />
-							<event week="1" description="consumed unit of silicium [silici] to produce space shuttle [shuttl] module." />
+							<event week="1" description="consumed 2 units of iron [iron], unit of titanium [titani], unit of silicium [silici] to produce space shuttle [shuttl] module." />
 							<event week="1" description="produced space shuttle [shuttl] into space shuttle [100]." />
-							<event week="2" description="consumed unit of silicium [silici] to produce space shuttle [shuttl] module." />
+							<event week="2" description="consumed 2 units of iron [iron], unit of titanium [titani], unit of silicium [silici] to produce space shuttle [shuttl] module." />
 							<event week="2" description="produced space shuttle [shuttl] into space shuttle [100]." />
-							<event week="3" description="consumed unit of silicium [silici] to produce space shuttle [shuttl] module." />
+							<event week="3" description="consumed 2 units of iron [iron], unit of titanium [titani], unit of silicium [silici] to produce space shuttle [shuttl] module." />
 							<event week="3" description="produced space shuttle [shuttl] into space shuttle [100]." />
-							<event week="4" description="consumed unit of silicium [silici] to produce space shuttle [shuttl] module." />
+							<event week="4" description="consumed 2 units of iron [iron], unit of titanium [titani], unit of silicium [silici] to produce space shuttle [shuttl] module." />
 							<event week="4" description="produced space shuttle [shuttl] into space shuttle [100]." />
-							<event week="5" description="consumed unit of silicium [silici] to produce space shuttle [shuttl] module." />
+							<event week="5" description="consumed 2 units of iron [iron], unit of titanium [titani], unit of silicium [silici] to produce space shuttle [shuttl] module." />
 							<event week="5" description="produced space shuttle [shuttl] into space shuttle [100]." />
-							<event week="6" description="consumed unit of silicium [silici] to produce space shuttle [shuttl] module." />
+							<event week="6" description="consumed 2 units of iron [iron], unit of titanium [titani], unit of silicium [silici] to produce space shuttle [shuttl] module." />
 							<event week="6" description="produced space shuttle [shuttl] into space shuttle [100]." />
-							<event week="7" description="consumed unit of silicium [silici] to produce space shuttle [shuttl] module." />
+							<event week="7" description="consumed 2 units of iron [iron], unit of titanium [titani], unit of silicium [silici] to produce space shuttle [shuttl] module." />
 							<event week="7" description="produced space shuttle [shuttl] into space shuttle [100]." />
-							<event week="8" description="consumed unit of silicium [silici] to produce space shuttle [shuttl] module." />
+							<event week="8" description="consumed 2 units of iron [iron], unit of titanium [titani], unit of silicium [silici] to produce space shuttle [shuttl] module." />
 							<event week="8" description="produced space shuttle [shuttl] into space shuttle [100]." />
-							<event week="9" description="consumed unit of silicium [silici] to produce space shuttle [shuttl] module." />
+							<event week="9" description="consumed 2 units of iron [iron], unit of titanium [titani], unit of silicium [silici] to produce space shuttle [shuttl] module." />
 							<event week="9" description="produced space shuttle [shuttl] into space shuttle [100]." />
-							<event week="10" description="consumed unit of silicium [silici] to produce space shuttle [shuttl] module." />
+							<event week="10" description="consumed 2 units of iron [iron], unit of titanium [titani], unit of silicium [silici] to produce space shuttle [shuttl] module." />
 							<event week="10" description="produced space shuttle [shuttl] into space shuttle [100]." />
 						</modulestack>
 					</modulestack>
@@ -349,12 +347,11 @@
 						<event week="1" description="started recruitment of terran, 13 weeks to complete." />
 						<event week="1" description="given 1000 cash [cash] to Gelvaren Headquarters [000018]." />
 						<event week="1" description="given 10 terrans [terran] to Gelvaren Headquarters [000018]." />
-						<event week="13" description="produced 1000 cash [cash], 10 terrans [terran]." />
-						<event week="13" description="given 1000 cash [cash] to Gelvaren Headquarters [000018]." />
+						<event week="13" description="produced 10 terrans [terran]." />
 						<event week="13" description="given 10 terrans [terran] to Gelvaren Headquarters [000018]." />
 						<modulestack name="000018" name-en="Gelvaren Headquarters" type="corphq" quantity="1" faction="3">
 							<itemstack type="terran" quantity="29" />
-							<itemstack type="cash" quantity="1958" />
+							<itemstack type="cash" quantity="958" />
 							<upkeep type="cash" quantity="129" />
 							<buying item="terran" quantity="all" price="any" />
 							<effect duration="1" type="training-officer" race="terran" officer="107" officer-parent="000018" />
@@ -370,7 +367,6 @@
 							<event week="10" description="TRAIN failed: Gelvaren Headquarters [000018] has not enough crew to operate - 20 required, 19 available." />
 							<event week="11" description="TRAIN failed: Gelvaren Headquarters [000018] has not enough crew to operate - 20 required, 19 available." />
 							<event week="12" description="TRAIN failed: Gelvaren Headquarters [000018] has not enough crew to operate - 20 required, 19 available." />
-							<event week="13" description="got 1000 cash [cash] from Gelvaren complex [000026]." />
 							<event week="13" description="got 10 terrans [terran] from Gelvaren complex [000026]." />
 						</modulestack>
 						<modulestack name="000019" type="cargob" quantity="1" faction="3">

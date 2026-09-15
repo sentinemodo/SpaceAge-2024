@@ -5600,19 +5600,19 @@ Galaxy report:
     [titani], 100 units of uranium [uraniu], 100 units of copper [copper], 100 units of silicium
     [silici], 100 units of helium-3 [heliu3].
     + space shuttle [100], 10 space shuttle [shuttl].
-      size: 2000, mass: 7500/771 (300), capacity: 1250/446, crew: 20/31, upkeep: 1031 (1000) cash
+      size: 2000, mass: 7500/761 (300), capacity: 1250/441, crew: 20/31, upkeep: 1031 (1000) cash
       [cash], consume: 31 (0) units of food [food], 31 (0) units of terran breathing gas mixture
       [terair].
       movement speed: 1.0 in space.
       fuel requirements: 10 units of uranium [uraniu] , 10 units of oxyhydro [h2o2] per 13 weeks.
       items: 31 terrans [terran] (size: 124, mass: 124, upkeep: 31 cash [cash], consume: 31 units of
-      food [food], 31 units of terran breathing gas mixture [terair]), 3 units of iron [iron] (size:
-      15, mass: 30), 6 units of titanium [titani] (size: 60, mass: 60), 16 units of silicium
+      food [food], 31 units of terran breathing gas mixture [terair]), 2 units of iron [iron] (size:
+      10, mass: 20), 6 units of titanium [titani] (size: 60, mass: 60), 16 units of silicium
       [silici] (size: 80, mass: 48), 14 units of copper [copper] (size: 70, mass: 112), 16 units of
       food [food] (size: 16, mass: 16), 59 units of oxyhydro [h2o2] (size: 59, mass: 59), 22 units
       of terran breathing gas mixture [terair] (size: 22, mass: 22).
       effects:
-        can operate for another 4 weeks without refueling.
+        can operate for another 6 weeks without refueling.
       events:
         week 1: departed from orbit [O00001] to Dusty field [R00001] (0,0), ETA 0.
         week 1: arrived at Dusty field [R00001] (0,0) from orbit [O00001].
@@ -5628,17 +5628,16 @@ Galaxy report:
         week 1: given 10 units of terran breathing gas mixture [terair] to reaction drive [114].
         week 13: paid 1031 cash [cash] upkeep.
     + crashed alien vessel [200], alien vessel hull [alnhul].
-      size: 6500, mass: 13000/4968 (200), capacity: 6000/6620, energy: 80/68 (1), crew: 6/6, upkeep:
+      size: 6500, mass: 13000/4698 (200), capacity: 6000/6620, energy: 80/68 (1), crew: 6/6, upkeep:
       526 (20) cash [cash], consume: 6 (0) units of food [food], 6 (0) units of terran breathing gas
       mixture [terair].
       technologies: advanced hull construction [ahlcns].
       events:
         week 13: paid 20 cash [cash] upkeep.
       + advanced robo-factory [201], advanced robo-factory [robofc].
-        size: 1000, mass: 1020 (750), capacity: 500/135, energy: 15, upkeep: 60 cash [cash].
+        size: 1000, mass: 750 (750), capacity: 500/0, energy: 15, upkeep: 60 cash [cash].
         technologies: automated fabrication [autfab], mineral core drilling [cdrill], uranium mining
         [uminng], helium-3 mining [he3min].
-        items: 27 units of iron [iron] (size: 135, mass: 270).
         events:
           week 1: got 27 units of iron [iron] from space shuttle [100].
           week 1: got 10 units of titanium [titani] from space shuttle [100].
@@ -5653,9 +5652,11 @@ Galaxy report:
           week 1: copied helium-3 mining [he3min] technology to advanced robo-factory [201].
           week 1: received copy of helium-3 mining [he3min] technology from advanced robo-factory
           [201].
-          week 1: consumed unit of copper [copper] to produce life support system [lifsys] module.
+          week 1: consumed 2 units of iron [iron], unit of copper [copper] to produce life support
+          system [lifsys] module.
           week 2: produced life support system [lifsys] into life support system [250].
-          week 3: consumed 10 units of titanium [titani] to produce core drill [cdrill] module.
+          week 3: consumed 25 units of iron [iron], 10 units of titanium [titani] to produce core
+          drill [cdrill] module.
           week 5: copied uranium mining [uminng] technology to core drill [251].
           week 5: copied helium-3 mining [he3min] technology to core drill [251].
           week 5: produced core drill [cdrill] into core drill [251].
@@ -5784,11 +5785,11 @@ sell 300 food
 
 #modulestack 100
 ; + space shuttle [100], 10 space shuttle [shuttl].
-; items: 31 terrans [terran], 3 units of iron [iron], 6 units of titanium [titani], 16 units of
+; items: 31 terrans [terran], 2 units of iron [iron], 6 units of titanium [titani], 16 units of
 ; silicium [silici], 14 units of copper [copper], 16 units of food [food], 59 units of oxyhydro
 ; [h2o2], 22 units of terran breathing gas mixture [terair].
 ; effects:
-;   can operate for another 4 weeks without refueling.
+;   can operate for another 6 weeks without refueling.
 
 #modulestack 101
 ; + spaceship hull [101], spaceship hull [sshull].
@@ -5828,7 +5829,6 @@ sell 300 food
 ; + advanced robo-factory [201], advanced robo-factory [robofc].
 ; technologies: automated fabrication [autfab], mineral core drilling [cdrill], uranium mining
 ; [uminng], helium-3 mining [he3min].
-; items: 27 units of iron [iron].
 
 #modulestack 202
 ; + automated command module [202], automated command module [autcmd].

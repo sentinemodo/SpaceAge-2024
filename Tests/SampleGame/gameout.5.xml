@@ -101,7 +101,7 @@
 						<resource type="heliu3" quantity="100" />
 						<modulestack name="100" type="shuttl" quantity="10" faction="2">
 							<itemstack type="terran" quantity="31" />
-							<itemstack type="iron" quantity="3" />
+							<itemstack type="iron" quantity="2" />
 							<itemstack type="titani" quantity="6" />
 							<itemstack type="silici" quantity="16" />
 							<itemstack type="copper" quantity="14" />
@@ -109,7 +109,7 @@
 							<itemstack type="h2o2" quantity="59" />
 							<itemstack type="terair" quantity="22" />
 							<upkeep type="cash" quantity="1031" />
-							<effect duration="4" type="fuelled" />
+							<effect duration="6" type="fuelled" />
 							<event week="1" description="departed from orbit [O00001] to Dusty field [R00001] (0,0), ETA 0." />
 							<event week="1" description="arrived at Dusty field [R00001] (0,0) from orbit [O00001]." />
 							<event week="1" description="given 27 units of iron [iron] to advanced robo-factory [201]." />
@@ -133,7 +133,6 @@
 								<technology name="cdrill" name-en="mineral core drilling" />
 								<technology name="uminng" name-en="uranium mining" />
 								<technology name="he3min" name-en="helium-3 mining" />
-								<itemstack type="iron" quantity="27" />
 								<upkeep type="cash" quantity="60" />
 								<event week="1" description="got 27 units of iron [iron] from space shuttle [100]." />
 								<event week="1" description="got 10 units of titanium [titani] from space shuttle [100]." />
@@ -145,9 +144,9 @@
 								<event week="1" description="received copy of uranium mining [uminng] technology from advanced robo-factory [201]." />
 								<event week="1" description="copied helium-3 mining [he3min] technology to advanced robo-factory [201]." />
 								<event week="1" description="received copy of helium-3 mining [he3min] technology from advanced robo-factory [201]." />
-								<event week="1" description="consumed unit of copper [copper] to produce life support system [lifsys] module." />
+								<event week="1" description="consumed 2 units of iron [iron], unit of copper [copper] to produce life support system [lifsys] module." />
 								<event week="2" description="produced life support system [lifsys] into life support system [250]." />
-								<event week="3" description="consumed 10 units of titanium [titani] to produce core drill [cdrill] module." />
+								<event week="3" description="consumed 25 units of iron [iron], 10 units of titanium [titani] to produce core drill [cdrill] module." />
 								<event week="5" description="copied uranium mining [uminng] technology to core drill [251]." />
 								<event week="5" description="copied helium-3 mining [he3min] technology to core drill [251]." />
 								<event week="5" description="produced core drill [cdrill] into core drill [251]." />
@@ -774,14 +773,13 @@
 						<event week="10" description="got 10 units of food [food] from small cargo bay [000019]." />
 						<event week="11" description="got 10 units of food [food] from small cargo bay [000019]." />
 						<event week="12" description="got 10 units of food [food] from small cargo bay [000019]." />
-						<event week="13" description="produced 1000 cash [cash], 10 terrans [terran]." />
-						<event week="13" description="given 1000 cash [cash] to Gelvaren Headquarters [000018]." />
+						<event week="13" description="produced 10 terrans [terran]." />
 						<event week="13" description="given 10 terrans [terran] to Gelvaren Headquarters [000018]." />
 						<event week="13" description="got 10 units of food [food] from small cargo bay [000019]." />
 						<event week="13" description="paid 100 unit of food [food] upkeep." />
 						<modulestack name="000018" name-en="Gelvaren Headquarters" type="corphq" quantity="1" faction="3">
 							<itemstack type="terran" quantity="30" />
-							<itemstack type="cash" quantity="5575" />
+							<itemstack type="cash" quantity="3575" />
 							<upkeep type="cash" quantity="130" />
 							<buying item="terran" quantity="all" price="any" />
 							<event week="1" description="produced 100 cash [cash]." />
@@ -796,7 +794,6 @@
 							<event week="10" description="produced 100 cash [cash]." />
 							<event week="11" description="produced 100 cash [cash]." />
 							<event week="12" description="produced 100 cash [cash]." />
-							<event week="13" description="got 1000 cash [cash] from Gelvaren complex [000026]." />
 							<event week="13" description="got 10 terrans [terran] from Gelvaren complex [000026]." />
 							<event week="13" description="produced 100 cash [cash]." />
 							<event week="13" description="paid 130 cash [cash] upkeep." />
@@ -917,9 +914,9 @@
 						<modulestack name="000023" type="factry" quantity="1" faction="3">
 							<technology name="armcbt" name-en="armored combat" />
 							<itemstack type="terran" quantity="10" />
-							<itemstack type="iron" quantity="8" />
+							<itemstack type="iron" quantity="5" />
 							<itemstack type="silici" quantity="4" />
-							<itemstack type="titani" quantity="3" />
+							<itemstack type="titani" quantity="2" />
 							<upkeep type="cash" quantity="70" />
 							<event week="13" description="paid 70 cash [cash] upkeep." />
 						</modulestack>

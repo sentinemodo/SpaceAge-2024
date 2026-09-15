@@ -23,6 +23,8 @@ Fully disabled armed stacks do not initiate battles. Nested stacks are skipped (
 
 At most **one battle per location per unordered faction pair** per week (`FactionPairKey` + location). Further enemy pairs at that location that week are skipped.
 
+**No-op skip:** before `Battle(initiator, target)` is created, `ShouldCommenceBattle` checks both sides. If **neither** side has an operational armed stack that can shoot a valid target (`availableTargets`) **nor** an operational armed stack with explicit **`TACTIC destroy`**, **`capture`**, or **`scavenge`** facing disabled-but-intact enemies on the other side, the engagement is skipped (no battle report, no 10-round stalemate). Example: tanks without explicit cleanup tactics co-located with a routed fauna pack do not start a second battle.
+
 `ATTACK <unit>` and `CAPTURE <unit>` set that unit to **enemy** (one-way). `DECLARE FACTION` / `DECLARE UNIT` set stance without starting a fight by themselves.
 
 ## Sides

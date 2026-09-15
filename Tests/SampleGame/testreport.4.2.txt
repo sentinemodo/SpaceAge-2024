@@ -8183,19 +8183,19 @@ Press releases:
 ------------------------------------------------------------
     orbit [O00001], has no atmosphere.
     + space shuttle [100], 10 space shuttle [shuttl].
-      size: 2000, mass: 7500/1321 (300), capacity: 1250/858, crew: 20/37, upkeep: 1037 (1000) cash
+      size: 2000, mass: 7500/1311 (300), capacity: 1250/853, crew: 20/37, upkeep: 1037 (1000) cash
       [cash], consume: 37 (0) units of food [food], 37 (0) units of terran breathing gas mixture
       [terair].
       movement speed: 0.6 in space.
       fuel requirements: 10 units of uranium [uraniu] , 10 units of oxyhydro [h2o2] per 13 weeks.
       items: 37 terrans [terran] (size: 148, mass: 148, upkeep: 37 cash [cash], consume: 37 units of
-      food [food], 37 units of terran breathing gas mixture [terair]), 30 units of iron [iron]
-      (size: 150, mass: 300), 16 units of titanium [titani] (size: 160, mass: 160), 16 units of
+      food [food], 37 units of terran breathing gas mixture [terair]), 29 units of iron [iron]
+      (size: 145, mass: 290), 16 units of titanium [titani] (size: 160, mass: 160), 16 units of
       silicium [silici] (size: 80, mass: 48), 15 units of copper [copper] (size: 75, mass: 120), 93
       units of food [food] (size: 93, mass: 93), 59 units of oxyhydro [h2o2] (size: 59, mass: 59),
       93 units of terran breathing gas mixture [terair] (size: 93, mass: 93).
       effects:
-        can operate for another 5 weeks without refueling.
+        can operate for another 7 weeks without refueling.
       events:
         week 1: given terran [terran] to command bridge [112].
         week 1: given terran [terran] to fission reactor [113].
@@ -8204,7 +8204,8 @@ Press releases:
         week 1: given 20 units of food [food] to command bridge [112].
         week 1: given 20 units of terran breathing gas mixture [terair] to command bridge [112].
         week 1: stacked under spaceship hull [101].
-        week 1: consumed 3 units of silicium [silici] to produce computer library [cmplib] module.
+        week 1: consumed unit of iron [iron], 3 units of silicium [silici] to produce computer
+        library [cmplib] module.
         week 1: consumed unit of oxyhydro [h2o2] as fuel for reaction drive [114].
         week 2: produced computer library [cmplib] into computer library [115].
         week 3: departed from Dusty field [R00001] (0,0) to orbit [O00001], ETA 0.
@@ -8371,11 +8372,11 @@ sell 300 food
 
 #modulestack 100
 ; + space shuttle [100], 10 space shuttle [shuttl].
-; items: 37 terrans [terran], 30 units of iron [iron], 16 units of titanium [titani], 16 units of
+; items: 37 terrans [terran], 29 units of iron [iron], 16 units of titanium [titani], 16 units of
 ; silicium [silici], 15 units of copper [copper], 93 units of food [food], 59 units of oxyhydro
 ; [h2o2], 93 units of terran breathing gas mixture [terair].
 ; effects:
-;   can operate for another 5 weeks without refueling.
+;   can operate for another 7 weeks without refueling.
 
 #modulestack 101
 ; + spaceship hull [101], spaceship hull [sshull].

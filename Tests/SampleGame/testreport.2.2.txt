@@ -23,14 +23,14 @@ Galaxy report:
 ------------------------------------------------------------
   orbit [O00002], has atmosphere suitable for terran [terran].
   + space shuttle [100], 10 space shuttle [shuttl].
-    size: 2000, mass: 7500/1714 (300), capacity: 1250/1174, crew: 20/41, upkeep: 1050 (1000) cash
+    size: 2000, mass: 7500/1654 (300), capacity: 1250/1144, crew: 20/41, upkeep: 1050 (1000) cash
     [cash], consume: 41 (0) units of food [food], 41 (0) units of terran breathing gas mixture
     [terair].
-    movement speed: 0.4 in space.
+    movement speed: 0.5 in space.
     fuel requirements: 10 units of uranium [uraniu] , 10 units of oxyhydro [h2o2] per 13 weeks.
     items: 40 terrans [terran] (size: 160, mass: 160, upkeep: 40 cash [cash], consume: 40 units of
-    food [food], 40 units of terran breathing gas mixture [terair]), 30 units of iron [iron] (size:
-    150, mass: 300), 26 units of titanium [titani] (size: 260, mass: 260), 20 units of silicium
+    food [food], 40 units of terran breathing gas mixture [terair]), 24 units of iron [iron] (size:
+    120, mass: 240), 26 units of titanium [titani] (size: 260, mass: 260), 20 units of silicium
     [silici] (size: 100, mass: 60), 20 units of copper [copper] (size: 100, mass: 160), 10 units of
     uranium [uraniu] (size: 10, mass: 80), 150 units of food [food] (size: 150, mass: 150), 90 units
     of oxyhydro [h2o2] (size: 90, mass: 90), 150 units of terran breathing gas mixture [terair]
@@ -65,7 +65,8 @@ Galaxy report:
       week 11: departed from Northern Hemisphere [R00002] (0,0) to orbit [O00002], ETA 0.
       week 11: consumed 10 units of uranium [uraniu], 10 units of oxyhydro [h2o2] as fuel.
       week 11: arrived at orbit [O00002] from Northern Hemisphere [R00002] (0,0).
-      week 12: consumed 4 units of titanium [titani] to produce spaceship hull [sshull] module.
+      week 12: consumed 6 units of iron [iron], 4 units of titanium [titani] to produce spaceship
+      hull [sshull] module.
     + Caste Prime CEO [000001], terran [terran].
       size: 4, mass: 4, capacity: 3/0, upkeep: 10 cash [cash], consume: unit of food [food], unit of
       terran breathing gas mixture [terair].
@@ -253,32 +254,41 @@ Galaxy report:
         week 13: given unit of carbon [carbon] to small cargo bay [000013].
         week 13: produced unit of carbon [carbon].
     + factory [000017], 5 factories [factry], immobile.
-      size: 5000, mass: 4250 (3750), capacity: 2500/400, energy: 75, crew: 50/50, upkeep: 350 (300)
+      size: 5000, mass: 3950 (3750), capacity: 2500/200, energy: 75, crew: 50/50, upkeep: 350 (300)
       cash [cash], consume: 50 (0) units of food [food], 50 (0) units of terran breathing gas
       mixture [terair].
       items: 50 terrans [terran] (size: 200, mass: 200, upkeep: 50 cash [cash], consume: 50 units of
-      food [food], 50 units of terran breathing gas mixture [terair]), 20 units of iron [iron]
-      (size: 100, mass: 200), 10 units of titanium [titani] (size: 100, mass: 100).
+      food [food], 50 units of terran breathing gas mixture [terair]).
       events:
-        week 1: consumed unit of silicium [silici] to produce space shuttle [shuttl] module.
+        week 1: consumed 2 units of iron [iron], unit of titanium [titani], unit of silicium
+        [silici] to produce space shuttle [shuttl] module.
         week 1: produced space shuttle [shuttl] into space shuttle [100].
-        week 2: consumed unit of silicium [silici] to produce space shuttle [shuttl] module.
+        week 2: consumed 2 units of iron [iron], unit of titanium [titani], unit of silicium
+        [silici] to produce space shuttle [shuttl] module.
         week 2: produced space shuttle [shuttl] into space shuttle [100].
-        week 3: consumed unit of silicium [silici] to produce space shuttle [shuttl] module.
+        week 3: consumed 2 units of iron [iron], unit of titanium [titani], unit of silicium
+        [silici] to produce space shuttle [shuttl] module.
         week 3: produced space shuttle [shuttl] into space shuttle [100].
-        week 4: consumed unit of silicium [silici] to produce space shuttle [shuttl] module.
+        week 4: consumed 2 units of iron [iron], unit of titanium [titani], unit of silicium
+        [silici] to produce space shuttle [shuttl] module.
         week 4: produced space shuttle [shuttl] into space shuttle [100].
-        week 5: consumed unit of silicium [silici] to produce space shuttle [shuttl] module.
+        week 5: consumed 2 units of iron [iron], unit of titanium [titani], unit of silicium
+        [silici] to produce space shuttle [shuttl] module.
         week 5: produced space shuttle [shuttl] into space shuttle [100].
-        week 6: consumed unit of silicium [silici] to produce space shuttle [shuttl] module.
+        week 6: consumed 2 units of iron [iron], unit of titanium [titani], unit of silicium
+        [silici] to produce space shuttle [shuttl] module.
         week 6: produced space shuttle [shuttl] into space shuttle [100].
-        week 7: consumed unit of silicium [silici] to produce space shuttle [shuttl] module.
+        week 7: consumed 2 units of iron [iron], unit of titanium [titani], unit of silicium
+        [silici] to produce space shuttle [shuttl] module.
         week 7: produced space shuttle [shuttl] into space shuttle [100].
-        week 8: consumed unit of silicium [silici] to produce space shuttle [shuttl] module.
+        week 8: consumed 2 units of iron [iron], unit of titanium [titani], unit of silicium
+        [silici] to produce space shuttle [shuttl] module.
         week 8: produced space shuttle [shuttl] into space shuttle [100].
-        week 9: consumed unit of silicium [silici] to produce space shuttle [shuttl] module.
+        week 9: consumed 2 units of iron [iron], unit of titanium [titani], unit of silicium
+        [silici] to produce space shuttle [shuttl] module.
         week 9: produced space shuttle [shuttl] into space shuttle [100].
-        week 10: consumed unit of silicium [silici] to produce space shuttle [shuttl] module.
+        week 10: consumed 2 units of iron [iron], unit of titanium [titani], unit of silicium
+        [silici] to produce space shuttle [shuttl] module.
         week 10: produced space shuttle [shuttl] into space shuttle [100].
   - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
@@ -321,11 +331,11 @@ Orders Template:
 
 #modulestack 000017
 ; + factory [000017], 5 factories [factry], immobile.
-; items: 50 terrans [terran], 20 units of iron [iron], 10 units of titanium [titani].
+; items: 50 terrans [terran].
 
 #modulestack 100
 ; + space shuttle [100], 10 space shuttle [shuttl].
-; items: 40 terrans [terran], 30 units of iron [iron], 26 units of titanium [titani], 20 units of
+; items: 40 terrans [terran], 24 units of iron [iron], 26 units of titanium [titani], 20 units of
 ; silicium [silici], 20 units of copper [copper], 10 units of uranium [uraniu], 150 units of food
 ; [food], 90 units of oxyhydro [h2o2], 150 units of terran breathing gas mixture [terair].
 ; effects:

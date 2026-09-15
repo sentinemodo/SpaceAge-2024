@@ -377,19 +377,10 @@ Battles report:
   [ocean] in system Sol [SS0001] (0, 0, 0).
   ------------------------------------------------------------
 
-  Week 8.
-  Battle has commenced at orbit [O00002] of Earth [P00001] at AU 1, ocean planet [ocean] in system
-  Sol [SS0001] (0, 0, 0).
-  ------------------------------------------------------------
 
   Week 8.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
-  ------------------------------------------------------------
-
-  Week 9.
-  Battle has commenced at orbit [O00002] of Earth [P00001] at AU 1, ocean planet [ocean] in system
-  Sol [SS0001] (0, 0, 0).
   ------------------------------------------------------------
 
   Week 9.
@@ -441,11 +432,6 @@ Galaxy report:
       size: 400.
   - alien fighter drone [450], 4 alien fighter drones [alndrn], owned by Caste Prime [2].
     size: 320.
-  - space shuttle [117], space shuttle [shuttl], disabled, immobile, owned by Gelvaren [3].
-    size: 200.
-    - orbital rocket launcher [350], orbital rocket launcher [orbrkt], disabled, immobile, owned by
-      Gelvaren [3].
-      size: 40.
 
   Northern Hemisphere [R00002] (0,0), grassland region, settlement capacity 8/3.
   Exits:
@@ -630,33 +616,29 @@ Galaxy report:
   + Sydney [000006], 2 cities [city], immobile.
     size: 50000, mass: 7200, capacity: 30000/17120, energy: 198/132 (20), crew: 60/70, upkeep: 200
     units of food [food], 1030 (0) cash [cash], consume: 270 (0) units of food [food], 270 (0) units
-    of terran breathing gas mixture [terair], 4 (0) medicines [medici].
+    of terran breathing gas mixture [terair], 5 (0) medicines [medici].
     events:
       week 13: paid 200 unit of food [food] upkeep.
     + Sydney garrison [000007], 2 infantry battalions [inftry], immobile.
       size: 1000, mass: 1100 (1000), capacity: 600/100, upkeep: 10 cash [cash], consume: 200 units
       of food [food], 200 units of terran breathing gas mixture [terair].
-      hit points: 100/99.
-        #1 hit points: 50/49.
-        #2 hit points: 50/50.
       movement speed: 0.1 on ground.
       items: rocket launchers [rctlnc] (size: 100, mass: 100).
       events:
         week 13: paid 10 cash [cash] upkeep.
         week 13: Lack of supplies: 186 unit of food [food].
-        week 13: Damaged from lack of supplies.
     + Sydney farms [000008], 10 farming complexes [farms], immobile.
       size: 10000, mass: 1224 (1000), capacity: 5000/224, energy: 50, crew: 50/56, upkeep: 556 (500)
       cash [cash], consume: 56 (0) units of food [food], 56 (0) units of terran breathing gas
-      mixture [terair], 3 (0) medicines [medici].
-      items: 53 terrans [terran] (size: 212, mass: 212, upkeep: 53 cash [cash], consume: 53 units of
-      food [food], 53 units of terran breathing gas mixture [terair]), 3 wounded terrans [wndtrn]
-      (size: 12, mass: 12, upkeep: 3 cash [cash], consume: 3 units of food [food], 3 units of terran
-      breathing gas mixture [terair], 3 medicines [medici]).
+      mixture [terair], 4 (0) medicines [medici].
+      items: 52 terrans [terran] (size: 208, mass: 208, upkeep: 52 cash [cash], consume: 52 units of
+      food [food], 52 units of terran breathing gas mixture [terair]), 4 wounded terrans [wndtrn]
+      (size: 16, mass: 16, upkeep: 4 cash [cash], consume: 4 units of food [food], 4 units of terran
+      breathing gas mixture [terair], 4 medicines [medici]).
       events:
         week 13: paid 575 cash [cash] upkeep.
         week 13: Lack of supplies: 75 unit of food [food].
-        week 13: 37 terrans [terran] wounded from lack of supplies.
+        week 13: 38 terrans [terran] wounded from lack of supplies.
         week 13: 19 wounded terrans [wndtrn] died of their wounds.
         week 13: 15 wounded terrans [wndtrn] recovered from their wounds.
     + Sydney wind powerplants [000009], 10 wind powerplants [wnplnt], immobile.
@@ -664,29 +646,30 @@ Galaxy report:
       events:
         week 13: paid 100 cash [cash] upkeep.
     + Sydney oil powerplants [000010], 5 oil-burning plants [oplant], immobile.
-      size: 4000, mass: 4544 (4000), capacity: 2500/444, energy: 150/50 (consume: 25 units of oil
-      [oil] for 13 weeks), crew: 10/11, upkeep: 311 (300) cash [cash], consume: 11 (0) units of food
-      [food], 11 (0) units of terran breathing gas mixture [terair], (0) medicines [medici].
+      size: 4000, mass: 4548 (4000), capacity: 2500/448, energy: 150/50 (consume: 25 units of oil
+      [oil] for 13 weeks), crew: 10/12, upkeep: 312 (300) cash [cash], consume: 12 (0) units of food
+      [food], 12 (0) units of terran breathing gas mixture [terair], (0) medicines [medici].
       fuel requirements: 25 units of oil [oil] per 13 weeks.
-      items: 100 units of oil [oil] (size: 400, mass: 500), 10 terrans [terran] (size: 40, mass: 40,
-      upkeep: 10 cash [cash], consume: 10 units of food [food], 10 units of terran breathing gas
+      items: 100 units of oil [oil] (size: 400, mass: 500), 11 terrans [terran] (size: 44, mass: 44,
+      upkeep: 11 cash [cash], consume: 11 units of food [food], 11 units of terran breathing gas
       mixture [terair]), wounded terran [wndtrn] (size: 4, mass: 4, upkeep: cash [cash], consume:
       unit of food [food], unit of terran breathing gas mixture [terair], medicines [medici]).
       events:
         week 13: paid 315 cash [cash] upkeep.
         week 13: Lack of supplies: 15 unit of food [food].
-        week 13: 8 terrans [terran] wounded from lack of supplies.
-        week 13: 4 wounded terrans [wndtrn] died of their wounds.
+        week 13: 7 terrans [terran] wounded from lack of supplies.
+        week 13: 3 wounded terrans [wndtrn] died of their wounds.
         week 13: 3 wounded terrans [wndtrn] recovered from their wounds.
     + Sydney granary [000011], small cargo bay [cargob], immobile.
-      size: 2000, mass: 212 (200), capacity: 1800/12, upkeep: 33 (30) cash [cash], consume: 3 (0)
-      units of food [food], 3 (0) units of terran breathing gas mixture [terair].
-      items: 3 terrans [terran] (size: 12, mass: 12, upkeep: 3 cash [cash], consume: 3 units of food
-      [food], 3 units of terran breathing gas mixture [terair]).
+      size: 2000, mass: 208 (200), capacity: 1800/8, upkeep: 32 (30) cash [cash], consume: 2 (0)
+      units of food [food], 2 (0) units of terran breathing gas mixture [terair].
+      items: 2 terrans [terran] (size: 8, mass: 8, upkeep: 2 cash [cash], consume: 2 units of food
+      [food], 2 units of terran breathing gas mixture [terair]).
       events:
         week 13: paid 33 cash [cash] upkeep.
         week 13: Lack of supplies: 3 unit of food [food].
-        week 13: 1 terran [terran] wounded from lack of supplies.
+        week 13: 2 terrans [terran] wounded from lack of supplies.
+        week 13: 1 wounded terran [wndtrn] died of their wounds.
         week 13: 1 wounded terran [wndtrn] recovered from their wounds.
     + wind powerplant [122], wind powerplant [wnplnt], immobile.
       size: 10, mass: 10 (10), energy: 4/1, upkeep: 10 cash [cash].
@@ -777,18 +760,18 @@ Orders Template:
 
 #modulestack 000008
 ; + Sydney farms [000008], 10 farming complexes [farms], immobile.
-; items: 53 terrans [terran], 3 wounded terrans [wndtrn].
+; items: 52 terrans [terran], 4 wounded terrans [wndtrn].
 
 #modulestack 000009
 ; + Sydney wind powerplants [000009], 10 wind powerplants [wnplnt], immobile.
 
 #modulestack 000010
 ; + Sydney oil powerplants [000010], 5 oil-burning plants [oplant], immobile.
-; items: 100 units of oil [oil], 10 terrans [terran], wounded terran [wndtrn].
+; items: 100 units of oil [oil], 11 terrans [terran], wounded terran [wndtrn].
 
 #modulestack 000011
 ; + Sydney granary [000011], small cargo bay [cargob], immobile.
-; items: 3 terrans [terran].
+; items: 2 terrans [terran].
 
 #modulestack 1
 ; + wind powerplant [1], wind powerplant [wnplnt], immobile.

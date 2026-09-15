@@ -17,6 +17,7 @@ Declared stances:
 
 events:
   week 1: Bank account credited: payment from NPC [1].
+  week 1: Bank account debited: payment to NPC [1].
   week 5: Bank account credited: payment from NPC [1].
   week 9: battle at Northern Hemisphere [R00002] (0,0), attackers:
   Gelvaren [3], defenders: Caste Prime [2].
@@ -30,8 +31,8 @@ events:
   launcher production [rckter] technology.
   week 13: battle at Northern Hemisphere [R00002] (0,0), attackers:
   Gelvaren [3], defenders: Caste Prime [2].
-  week 13: Bank account credited: Deposit interests accounted to 123.
-  Current balance: 9995.
+  week 13: Bank account credited: Deposit interests accounted to 116.
+  Current balance: 9363.
 
 Press releases:
   Earth [P00001] at AU 1, ocean planet [ocean]: NPC [1] — Gelvaren
@@ -39,7 +40,7 @@ Press releases:
     United Star Nations records Gelvaren's fulfillment of CT0121 at
     Southern Hemisphere on Earth [P00001] at AU 1, ocean planet [ocean].
 Bank report:
-  Bank account balance: 9995.
+  Bank account balance: 9363.
   Credit line maximum: 10000.
   Credit rate: 20%, Deposit rate: 4.5%.
 
@@ -4408,8 +4409,7 @@ Galaxy report:
     technologies: rocket launcher production [rckter].
     events:
       week 1: started recruitment of terran, 13 weeks to complete.
-      week 13: produced 1000 cash [cash], 10 terrans [terran].
-      week 13: given 1000 cash [cash] to Gelvaren Headquarters [000018].
+      week 13: produced 10 terrans [terran].
       week 13: given 10 terrans [terran] to Gelvaren Headquarters
       [000018].
       week 13: received copy of rocket launcher production [rckter]
@@ -4423,7 +4423,7 @@ Galaxy report:
       [terair].
       items: 10 terrans [terran] (size: 40, mass: 40, upkeep: 10 cash
       [cash], consume: 10 units of food [food], 10 units of terran
-      breathing gas mixture [terair]), 1375 cash [cash].
+      breathing gas mixture [terair]).
       events:
         week 1: trained terran [terran] into terran officer [107].
         week 1: given 10 cash [cash] to infantry battalion [110].
@@ -4448,7 +4448,6 @@ Galaxy report:
         enough crew to operate - 20 required, 0 available.
         week 12: PRODUCE failed: Gelvaren Headquarters [000018] has not
         enough crew to operate - 20 required, 0 available.
-        week 13: got 1000 cash [cash] from Gelvaren complex [000026].
         week 13: got 10 terrans [terran] from Gelvaren complex [000026].
         week 13: PRODUCE failed: Gelvaren Headquarters [000018] has not
         enough crew to operate - 20 required, 10 available.
@@ -4712,7 +4711,7 @@ Orders Template:
 #modulestack 000018
 ; + Gelvaren Headquarters [000018], corporate headquarters [corphq],
 ;   disabled, immobile.
-; items: 10 terrans [terran], 1375 cash [cash].
+; items: 10 terrans [terran].
 @get all cash from 000026
 @get all terran from 000026
 @buy all terran

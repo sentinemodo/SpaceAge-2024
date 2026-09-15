@@ -876,8 +876,8 @@ namespace UnitTests
 		{
 			Region region = new Region(Region.All["R00002"].RegionHolder, "remotebattle");
 			Faction participantA = this.game.Factions["2"];
-			Faction participantB = this.game.Factions["3"];
-			Faction bystander = this.game.Factions["4"];
+			Faction participantB = new Faction("3", "Gelvaren");
+			Faction bystander = new Faction("4", "Bystander");
 			participantA.Attitudes["3"] = FactionAttitude.Enemy;
 			participantB.Attitudes["2"] = FactionAttitude.Enemy;
 
@@ -889,7 +889,7 @@ namespace UnitTests
 			defender.ItemStacks.Add(new ItemStack(ItemType.All["terran"], 20));
 
 			Battle battle = new Battle(attacker, defender);
-			battle.Week = 1;
+			battle.Execute(1);
 
 			List<string> bystanderReport = battle.Report(bystander);
 			List<string> participantReport = battle.Report(participantA);
@@ -905,9 +905,9 @@ namespace UnitTests
 			ModuleStack frigate = ModuleStack.All["100011"];
 			ModuleStack station = ModuleStack.All["100021"];
 			Battle first = new Battle(frigate, station);
-			first.Week = 1;
+			first.Execute(1);
 			Battle second = new Battle(frigate, station);
-			second.Week = 8;
+			second.Execute(8);
 
 			Battles battles = new Battles();
 			battles.Add(first);
@@ -1045,6 +1045,88 @@ namespace UnitTests
 
 			Assert.That(defender.Quantity, Is.EqualTo(1));
 			Assert.That(defender.ItemStacks[ItemType.All["cash"]].Quantity, Is.EqualTo(50));
+		}
+
+		[Test]
+		public void ShouldCommenceBattle_SkipsWhenDefenderDisabledAndNoCleanupTactic()
+		{
+			Region region = new Region(Region.All["R00002"].RegionHolder, "noskregion");
+			Faction attackerOwner = this.game.Factions["2"];
+			Faction defenderOwner = this.game.Factions["1"];
+			ModuleStack attacker = new ModuleStack(region, attackerOwner, ModuleType.All["tanks"], "noskatk");
+			attacker.AddModule();
+			attacker.ItemStacks.Add(new ItemStack(ItemType.All["terran"], 16));
+			ModuleStack defender = new ModuleStack(region, defenderOwner, ModuleType.All["inftry"], "noskdef");
+			defender.AddModule();
+			this.disableByHeavyDamage(defender);
+			attackerOwner.Attitudes["1"] = FactionAttitude.Enemy;
+
+			Assert.That(Battle.ShouldCommenceBattle(attacker, defender), Is.False);
+		}
+
+		[Test]
+		public void ShouldCommenceBattle_StartsWhenDefenderDisabledAndDestroyTactic()
+		{
+			Region region = new Region(Region.All["R00002"].RegionHolder, "clnregion");
+			Faction attackerOwner = this.game.Factions["2"];
+			Faction defenderOwner = this.game.Factions["1"];
+			ModuleStack attacker = new ModuleStack(region, attackerOwner, ModuleType.All["tanks"], "clnatk");
+			attacker.AddModule();
+			attacker.ItemStacks.Add(new ItemStack(ItemType.All["terran"], 16));
+			attacker.ApplyTactic("destroy");
+			ModuleStack defender = new ModuleStack(region, defenderOwner, ModuleType.All["inftry"], "clndef");
+			defender.AddModule();
+			this.disableByHeavyDamage(defender);
+			attackerOwner.Attitudes["1"] = FactionAttitude.Enemy;
+
+			Assert.That(Battle.ShouldCommenceBattle(attacker, defender), Is.True);
+		}
+
+		[Test]
+		public void StartAtLocations_SkipsDisabledDefenderWithoutCleanupTactic()
+		{
+			Region region = new Region(Region.All["R00002"].RegionHolder, "nosklocregion");
+			Faction attackerOwner = this.game.Factions["2"];
+			Faction defenderOwner = this.game.Factions["1"];
+			ModuleStack attacker = new ModuleStack(region, attackerOwner, ModuleType.All["tanks"], "noskloc");
+			attacker.AddModule();
+			attacker.ItemStacks.Add(new ItemStack(ItemType.All["terran"], 16));
+			ModuleStack defender = new ModuleStack(region, defenderOwner, ModuleType.All["inftry"], "nosklocdef");
+			defender.AddModule();
+			this.disableByHeavyDamage(defender);
+			attackerOwner.Attitudes["1"] = FactionAttitude.Enemy;
+
+			Battle.All.Clear();
+			List<Battle> started = Battle.StartAtLocations(1);
+
+			foreach (Battle battle in started)
+			{
+				Assert.That(battle.Attacker.Name, Is.Not.EqualTo(attacker.Name));
+				Assert.That(battle.Attackers.Contains(attacker.Name), Is.False);
+				Assert.That(battle.Defenders.Contains(defender.Name), Is.False);
+			}
+		}
+
+		[Test]
+		public void ApplyVictoryResolution_DefenderWin_Destroy_RemovesDisabledModules()
+		{
+			Region region = new Region(Region.All["R00002"].RegionHolder, "vdesdefregion");
+			Faction attackerOwner = this.game.Factions["1"];
+			Faction defenderOwner = this.game.Factions["2"];
+			ModuleStack attacker = new ModuleStack(region, attackerOwner, ModuleType.All["inftry"], "vdesdefatk");
+			attacker.AddModule();
+			this.disableByHeavyDamage(attacker);
+			ModuleStack defender = new ModuleStack(region, defenderOwner, ModuleType.All["tanks"], "vdesdefdef");
+			defender.AddModule();
+			defender.ItemStacks.Add(new ItemStack(ItemType.All["terran"], 16));
+			defender.ApplyTactic("destroy");
+
+			Battle battle = new Battle(attacker, defender);
+			battle.Week = this.game.Week;
+			battle.Attackers.Clear();
+			battle.ApplyVictoryResolution(this.game.Week);
+
+			Assert.That(attacker.Quantity, Is.EqualTo(0));
 		}
 
 		[Test]

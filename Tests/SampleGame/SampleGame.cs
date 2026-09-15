@@ -856,19 +856,19 @@ namespace IntegrationTests
 			Assert.That(ModuleStack.All["450"].Location.Name, Is.EqualTo("O00002"), "drones wait and fight in Earth orbit");
 			Assert.That(ModuleStack.All["450"].RootModuleStack.Name, Is.EqualTo("450"), "drones hangar-launch as roots");
 
-			Assert.That(ModuleStack.All.ContainsKey("117"), "shuttle hauls the launcher");
-			Assert.That(ModuleStack.All["117"].Location.Name, Is.EqualTo("O00002"), "armed shuttle arrives Earth orbit ~week 10");
-			Assert.That(
-				ModuleStack.All["117"].ModuleCountRecursive(ModuleType.All["orbrkt"]),
-				Is.GreaterThan(0),
-				"Sydney factory nested orbrkt under the shuttle");
-
-			int combatDamage = ModuleStack.All["117"].Damage;
-			foreach (ModuleStack nested in ModuleStack.All["117"].ModuleStacks.Values)
+			Assert.That(ModuleStack.All.ContainsKey("117"), Is.False,
+				"drone victory with destroy removes the disabled Gelvaren shuttle after battle");
+			bool factoryProducedOrbrkt = false;
+			foreach (EventReport eventReport in ModuleStack.All["000023"].EventReports)
 			{
-				combatDamage += nested.Damage;
+				if (eventReport.Description.IndexOf("orbital rocket launcher") >= 0)
+				{
+					factoryProducedOrbrkt = true;
+					break;
+				}
 			}
-			Assert.That(combatDamage, Is.GreaterThan(0), "drones victory: shuttle or launcher took combat damage");
+			Assert.That(factoryProducedOrbrkt, Is.True,
+				"Sydney factory nested orbrkt under the shuttle before orbit battle");
 
 			ReportWriter reportsWriter = new ReportWriter(this.game, this.dataFile, this.testDir);
 			reportsWriter.GenerateReports(this.testDir);

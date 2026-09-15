@@ -26,7 +26,7 @@
 					<orbit name="O00001">
 						<modulestack name="100" type="shuttl" quantity="10" faction="2">
 							<itemstack type="terran" quantity="37" />
-							<itemstack type="iron" quantity="30" />
+							<itemstack type="iron" quantity="29" />
 							<itemstack type="titani" quantity="16" />
 							<itemstack type="silici" quantity="16" />
 							<itemstack type="copper" quantity="15" />
@@ -34,7 +34,7 @@
 							<itemstack type="h2o2" quantity="59" />
 							<itemstack type="terair" quantity="93" />
 							<upkeep type="cash" quantity="1037" />
-							<effect duration="5" type="fuelled" />
+							<effect duration="7" type="fuelled" />
 							<event week="1" description="given terran [terran] to command bridge [112]." />
 							<event week="1" description="given terran [terran] to fission reactor [113]." />
 							<event week="1" description="given terran [terran] to reaction drive [114]." />
@@ -42,7 +42,7 @@
 							<event week="1" description="given 20 units of food [food] to command bridge [112]." />
 							<event week="1" description="given 20 units of terran breathing gas mixture [terair] to command bridge [112]." />
 							<event week="1" description="stacked under spaceship hull [101]." />
-							<event week="1" description="consumed 3 units of silicium [silici] to produce computer library [cmplib] module." />
+							<event week="1" description="consumed unit of iron [iron], 3 units of silicium [silici] to produce computer library [cmplib] module." />
 							<event week="1" description="consumed unit of oxyhydro [h2o2] as fuel for reaction drive [114]." />
 							<event week="2" description="produced computer library [cmplib] into computer library [115]." />
 							<event week="3" description="departed from Dusty field [R00001] (0,0) to orbit [O00001], ETA 0." />
@@ -671,13 +671,12 @@
 						<selling item="food" quantity="25" price="5" />
 						<selling item="terran" quantity="10" price="50" />
 						<event week="1" description="started recruitment of terran, 13 weeks to complete." />
-						<event week="13" description="produced 1000 cash [cash], 10 terrans [terran]." />
-						<event week="13" description="given 1000 cash [cash] to Gelvaren Headquarters [000018]." />
+						<event week="13" description="produced 10 terrans [terran]." />
 						<event week="13" description="given 10 terrans [terran] to Gelvaren Headquarters [000018]." />
 						<event week="13" description="paid 100 unit of food [food] upkeep." />
 						<modulestack name="000018" name-en="Gelvaren Headquarters" type="corphq" quantity="1" faction="3">
 							<itemstack type="terran" quantity="20" />
-							<itemstack type="cash" quantity="4164" />
+							<itemstack type="cash" quantity="3164" />
 							<upkeep type="cash" quantity="120" />
 							<buying item="terran" quantity="all" price="any" />
 							<event week="1" description="PRODUCE failed: Gelvaren Headquarters [000018] has not enough crew to operate - 20 required, 10 available." />
@@ -692,7 +691,6 @@
 							<event week="10" description="PRODUCE failed: Gelvaren Headquarters [000018] has not enough crew to operate - 20 required, 10 available." />
 							<event week="11" description="PRODUCE failed: Gelvaren Headquarters [000018] has not enough crew to operate - 20 required, 10 available." />
 							<event week="12" description="PRODUCE failed: Gelvaren Headquarters [000018] has not enough crew to operate - 20 required, 10 available." />
-							<event week="13" description="got 1000 cash [cash] from Gelvaren complex [000026]." />
 							<event week="13" description="got 10 terrans [terran] from Gelvaren complex [000026]." />
 							<event week="13" description="produced 100 cash [cash]." />
 							<event week="13" description="paid 120 cash [cash] upkeep." />
@@ -804,16 +802,16 @@
 						<modulestack name="000023" type="factry" quantity="1" faction="3">
 							<technology name="armcbt" name-en="armored combat" />
 							<itemstack type="terran" quantity="10" />
-							<itemstack type="iron" quantity="8" />
+							<itemstack type="iron" quantity="5" />
 							<itemstack type="silici" quantity="4" />
-							<itemstack type="titani" quantity="3" />
+							<itemstack type="titani" quantity="2" />
 							<upkeep type="cash" quantity="70" />
 							<event week="1" description="got 8 units of iron [iron] from small cargo bay [000019]." />
 							<event week="1" description="got 8 units of silicium [silici] from small cargo bay [000019]." />
 							<event week="1" description="got 3 units of titanium [titani] from small cargo bay [000019]." />
-							<event week="1" description="consumed 3 units of silicium [silici] to produce computer library [cmplib] module." />
+							<event week="1" description="consumed unit of iron [iron], 3 units of silicium [silici] to produce computer library [cmplib] module." />
 							<event week="2" description="produced computer library [cmplib] into computer library [116]." />
-							<event week="3" description="consumed unit of silicium [silici] to produce space shuttle [shuttl] module." />
+							<event week="3" description="consumed 2 units of iron [iron], unit of titanium [titani], unit of silicium [silici] to produce space shuttle [shuttl] module." />
 							<event week="6" description="produced space shuttle [shuttl] into space shuttle [117]." />
 							<event week="13" description="paid 70 cash [cash] upkeep." />
 						</modulestack>

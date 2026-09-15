@@ -62,10 +62,10 @@ Battles report:
     items: 60 terrans [terran], 2200 cash [cash].
       #1 hit points: 100/100.
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 7030 (1000).
+    size: 10000, mass: 6830 (1000).
     hit points: 275/275.
     items: 865 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
-    of oxyhydro [h2o2], 70 units of iron [iron], 70 units of titanium [titani], 80 units of silicium
+    of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
     [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 91
     units of carbon [carbon].
       #1 hit points: 55/55.
@@ -93,9 +93,9 @@ Battles report:
     items: 6 terrans [terran], unit of carbon [carbon].
       #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
-    size: 5000, mass: 4134 (3750), energy: 75, crew: 50/46.
+    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
-    items: 46 terrans [terran], 20 units of iron [iron].
+    items: 46 terrans [terran].
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
@@ -145,10 +145,10 @@ Battles report:
     items: 60 terrans [terran], 2200 cash [cash].
       #1 hit points: 100/88.
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 7030 (1000).
+    size: 10000, mass: 6830 (1000).
     hit points: 275/275.
     items: 865 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
-    of oxyhydro [h2o2], 70 units of iron [iron], 70 units of titanium [titani], 80 units of silicium
+    of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
     [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 91
     units of carbon [carbon].
       #1 hit points: 55/55.
@@ -176,9 +176,9 @@ Battles report:
     items: 6 terrans [terran], unit of carbon [carbon].
       #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
-    size: 5000, mass: 4134 (3750), energy: 75, crew: 50/46.
+    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
-    items: 46 terrans [terran], 20 units of iron [iron].
+    items: 46 terrans [terran].
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
@@ -229,10 +229,10 @@ Battles report:
     items: 60 terrans [terran], 2200 cash [cash].
       #1 hit points: 100/76.
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 7030 (1000).
+    size: 10000, mass: 6830 (1000).
     hit points: 275/275.
     items: 865 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
-    of oxyhydro [h2o2], 70 units of iron [iron], 70 units of titanium [titani], 80 units of silicium
+    of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
     [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 91
     units of carbon [carbon].
       #1 hit points: 55/55.
@@ -260,9 +260,9 @@ Battles report:
     items: 6 terrans [terran], unit of carbon [carbon].
       #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
-    size: 5000, mass: 4134 (3750), energy: 75, crew: 50/46.
+    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
-    items: 46 terrans [terran], 20 units of iron [iron].
+    items: 46 terrans [terran].
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
@@ -316,10 +316,10 @@ Battles report:
     items: 60 terrans [terran], 2200 cash [cash].
       #1 hit points: 100/64, lightly damaged.
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 7030 (1000).
+    size: 10000, mass: 6830 (1000).
     hit points: 275/275.
     items: 865 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
-    of oxyhydro [h2o2], 70 units of iron [iron], 70 units of titanium [titani], 80 units of silicium
+    of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
     [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 91
     units of carbon [carbon].
       #1 hit points: 55/55.
@@ -347,9 +347,9 @@ Battles report:
     items: 6 terrans [terran], unit of carbon [carbon].
       #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
-    size: 5000, mass: 4134 (3750), energy: 75, crew: 50/46.
+    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
-    items: 46 terrans [terran], 20 units of iron [iron].
+    items: 46 terrans [terran].
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
@@ -403,10 +403,10 @@ Battles report:
     items: 60 terrans [terran], 2200 cash [cash].
       #1 hit points: 100/52, lightly damaged.
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 7030 (1000).
+    size: 10000, mass: 6830 (1000).
     hit points: 275/275.
     items: 865 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
-    of oxyhydro [h2o2], 70 units of iron [iron], 70 units of titanium [titani], 80 units of silicium
+    of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
     [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 91
     units of carbon [carbon].
       #1 hit points: 55/55.
@@ -434,9 +434,9 @@ Battles report:
     items: 6 terrans [terran], unit of carbon [carbon].
       #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
-    size: 5000, mass: 4134 (3750), energy: 75, crew: 50/46.
+    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
-    items: 46 terrans [terran], 20 units of iron [iron].
+    items: 46 terrans [terran].
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
@@ -481,10 +481,10 @@ Battles report:
       attack: 8, initiative: 5.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 7030 (1000).
+    size: 10000, mass: 6830 (1000).
     hit points: 275/275.
     items: 865 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
-    of oxyhydro [h2o2], 70 units of iron [iron], 70 units of titanium [titani], 80 units of silicium
+    of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
     [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 91
     units of carbon [carbon].
       #1 hit points: 55/55.
@@ -512,9 +512,9 @@ Battles report:
     items: 6 terrans [terran], unit of carbon [carbon].
       #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
-    size: 5000, mass: 4134 (3750), energy: 75, crew: 50/46.
+    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
-    items: 46 terrans [terran], 20 units of iron [iron].
+    items: 46 terrans [terran].
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
@@ -560,10 +560,10 @@ Battles report:
       attack: 8, initiative: 5.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 7030 (1000).
+    size: 10000, mass: 6830 (1000).
     hit points: 275/275.
     items: 865 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
-    of oxyhydro [h2o2], 70 units of iron [iron], 70 units of titanium [titani], 80 units of silicium
+    of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
     [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 91
     units of carbon [carbon].
       #1 hit points: 55/55.
@@ -591,9 +591,9 @@ Battles report:
     items: 6 terrans [terran], unit of carbon [carbon].
       #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
-    size: 5000, mass: 4134 (3750), energy: 75, crew: 50/46.
+    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
-    items: 46 terrans [terran], 20 units of iron [iron].
+    items: 46 terrans [terran].
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
@@ -639,10 +639,10 @@ Battles report:
       attack: 8, initiative: 5.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 7030 (1000).
+    size: 10000, mass: 6830 (1000).
     hit points: 275/275.
     items: 865 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
-    of oxyhydro [h2o2], 70 units of iron [iron], 70 units of titanium [titani], 80 units of silicium
+    of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
     [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 91
     units of carbon [carbon].
       #1 hit points: 55/55.
@@ -670,9 +670,9 @@ Battles report:
     items: 6 terrans [terran], unit of carbon [carbon].
       #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
-    size: 5000, mass: 4134 (3750), energy: 75, crew: 50/46.
+    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
-    items: 46 terrans [terran], 20 units of iron [iron].
+    items: 46 terrans [terran].
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
@@ -718,10 +718,10 @@ Battles report:
       attack: 8, initiative: 5.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 7030 (1000).
+    size: 10000, mass: 6830 (1000).
     hit points: 275/275.
     items: 865 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
-    of oxyhydro [h2o2], 70 units of iron [iron], 70 units of titanium [titani], 80 units of silicium
+    of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
     [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 91
     units of carbon [carbon].
       #1 hit points: 55/55.
@@ -749,9 +749,9 @@ Battles report:
     items: 6 terrans [terran], unit of carbon [carbon].
       #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
-    size: 5000, mass: 4134 (3750), energy: 75, crew: 50/46.
+    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
-    items: 46 terrans [terran], 20 units of iron [iron].
+    items: 46 terrans [terran].
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
@@ -797,10 +797,10 @@ Battles report:
       attack: 8, initiative: 5.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 7030 (1000).
+    size: 10000, mass: 6830 (1000).
     hit points: 275/275.
     items: 865 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
-    of oxyhydro [h2o2], 70 units of iron [iron], 70 units of titanium [titani], 80 units of silicium
+    of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
     [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 91
     units of carbon [carbon].
       #1 hit points: 55/55.
@@ -828,9 +828,9 @@ Battles report:
     items: 6 terrans [terran], unit of carbon [carbon].
       #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
-    size: 5000, mass: 4134 (3750), energy: 75, crew: 50/46.
+    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
-    items: 46 terrans [terran], 20 units of iron [iron].
+    items: 46 terrans [terran].
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
@@ -887,10 +887,10 @@ Battles report:
     items: 60 terrans [terran], 2200 cash [cash].
       #1 hit points: 100/48, heavily damaged, effects: disabled.
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 7050 (1000).
+    size: 10000, mass: 6850 (1000).
     hit points: 275/275.
     items: 880 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
-    of oxyhydro [h2o2], 70 units of iron [iron], 70 units of titanium [titani], 80 units of silicium
+    of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
     [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 92
     units of carbon [carbon].
       #1 hit points: 55/55.
@@ -918,9 +918,9 @@ Battles report:
     items: 6 terrans [terran], unit of carbon [carbon].
       #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
-    size: 5000, mass: 4134 (3750), energy: 75, crew: 50/46.
+    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
-    items: 46 terrans [terran], 20 units of iron [iron].
+    items: 46 terrans [terran].
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
@@ -977,10 +977,10 @@ Battles report:
     items: 60 terrans [terran], 2200 cash [cash].
       #1 hit points: 100/36, heavily damaged, effects: disabled.
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 7050 (1000).
+    size: 10000, mass: 6850 (1000).
     hit points: 275/275.
     items: 880 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
-    of oxyhydro [h2o2], 70 units of iron [iron], 70 units of titanium [titani], 80 units of silicium
+    of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
     [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 92
     units of carbon [carbon].
       #1 hit points: 55/55.
@@ -1008,9 +1008,9 @@ Battles report:
     items: 6 terrans [terran], unit of carbon [carbon].
       #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
-    size: 5000, mass: 4134 (3750), energy: 75, crew: 50/46.
+    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
-    items: 46 terrans [terran], 20 units of iron [iron].
+    items: 46 terrans [terran].
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
@@ -1068,10 +1068,10 @@ Battles report:
     items: 60 terrans [terran], 2200 cash [cash].
       #1 hit points: 100/24, critically damaged, effects: disabled.
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 7050 (1000).
+    size: 10000, mass: 6850 (1000).
     hit points: 275/275.
     items: 880 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
-    of oxyhydro [h2o2], 70 units of iron [iron], 70 units of titanium [titani], 80 units of silicium
+    of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
     [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 92
     units of carbon [carbon].
       #1 hit points: 55/55.
@@ -1099,9 +1099,9 @@ Battles report:
     items: 6 terrans [terran], unit of carbon [carbon].
       #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
-    size: 5000, mass: 4134 (3750), energy: 75, crew: 50/46.
+    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
-    items: 46 terrans [terran], 20 units of iron [iron].
+    items: 46 terrans [terran].
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
@@ -1158,10 +1158,10 @@ Battles report:
     items: 60 terrans [terran], 2200 cash [cash].
       #1 hit points: 100/12, critically damaged, effects: disabled.
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 7050 (1000).
+    size: 10000, mass: 6850 (1000).
     hit points: 275/275.
     items: 880 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
-    of oxyhydro [h2o2], 70 units of iron [iron], 70 units of titanium [titani], 80 units of silicium
+    of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
     [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 92
     units of carbon [carbon].
       #1 hit points: 55/55.
@@ -1189,9 +1189,9 @@ Battles report:
     items: 6 terrans [terran], unit of carbon [carbon].
       #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
-    size: 5000, mass: 4134 (3750), energy: 75, crew: 50/46.
+    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
-    items: 46 terrans [terran], 20 units of iron [iron].
+    items: 46 terrans [terran].
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
@@ -1249,10 +1249,10 @@ Battles report:
     items: 60 terrans [terran], 2200 cash [cash].
       #1 hit points: 100/0, destroyed, effects: disabled.
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 7050 (1000).
+    size: 10000, mass: 6850 (1000).
     hit points: 275/275.
     items: 880 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
-    of oxyhydro [h2o2], 70 units of iron [iron], 70 units of titanium [titani], 80 units of silicium
+    of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
     [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 92
     units of carbon [carbon].
       #1 hit points: 55/55.
@@ -1280,9 +1280,9 @@ Battles report:
     items: 6 terrans [terran], unit of carbon [carbon].
       #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
-    size: 5000, mass: 4134 (3750), energy: 75, crew: 50/46.
+    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
-    items: 46 terrans [terran], 20 units of iron [iron].
+    items: 46 terrans [terran].
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
@@ -1337,10 +1337,10 @@ Battles report:
     items: 60 terrans [terran], 2200 cash [cash].
       #1 hit points: 100/0, destroyed, effects: disabled.
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 7050 (1000).
+    size: 10000, mass: 6850 (1000).
     hit points: 275/275.
     items: 880 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
-    of oxyhydro [h2o2], 70 units of iron [iron], 70 units of titanium [titani], 80 units of silicium
+    of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
     [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 92
     units of carbon [carbon].
       #1 hit points: 55/55.
@@ -1368,9 +1368,9 @@ Battles report:
     items: 6 terrans [terran], unit of carbon [carbon].
       #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
-    size: 5000, mass: 4134 (3750), energy: 75, crew: 50/46.
+    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
-    items: 46 terrans [terran], 20 units of iron [iron].
+    items: 46 terrans [terran].
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
@@ -1427,10 +1427,10 @@ Battles report:
     items: 60 terrans [terran], 2200 cash [cash].
       #1 hit points: 100/0, destroyed, effects: disabled.
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 7050 (1000).
+    size: 10000, mass: 6850 (1000).
     hit points: 275/275.
     items: 880 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
-    of oxyhydro [h2o2], 70 units of iron [iron], 70 units of titanium [titani], 80 units of silicium
+    of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
     [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 92
     units of carbon [carbon].
       #1 hit points: 55/55.
@@ -1458,9 +1458,9 @@ Battles report:
     items: 6 terrans [terran], unit of carbon [carbon].
       #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
-    size: 5000, mass: 4134 (3750), energy: 75, crew: 50/46.
+    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
-    items: 46 terrans [terran], 20 units of iron [iron].
+    items: 46 terrans [terran].
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
@@ -1517,10 +1517,10 @@ Battles report:
     items: 60 terrans [terran], 2200 cash [cash].
       #1 hit points: 100/0, destroyed, effects: disabled.
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 7050 (1000).
+    size: 10000, mass: 6850 (1000).
     hit points: 275/275.
     items: 880 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
-    of oxyhydro [h2o2], 70 units of iron [iron], 70 units of titanium [titani], 80 units of silicium
+    of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
     [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 92
     units of carbon [carbon].
       #1 hit points: 55/55.
@@ -1548,9 +1548,9 @@ Battles report:
     items: 6 terrans [terran], unit of carbon [carbon].
       #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
-    size: 5000, mass: 4134 (3750), energy: 75, crew: 50/46.
+    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
-    items: 46 terrans [terran], 20 units of iron [iron].
+    items: 46 terrans [terran].
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
@@ -1607,10 +1607,10 @@ Battles report:
     items: 60 terrans [terran], 2200 cash [cash].
       #1 hit points: 100/0, destroyed, effects: disabled.
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 7050 (1000).
+    size: 10000, mass: 6850 (1000).
     hit points: 275/275.
     items: 880 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
-    of oxyhydro [h2o2], 70 units of iron [iron], 70 units of titanium [titani], 80 units of silicium
+    of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
     [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 92
     units of carbon [carbon].
       #1 hit points: 55/55.
@@ -1638,9 +1638,9 @@ Battles report:
     items: 6 terrans [terran], unit of carbon [carbon].
       #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
-    size: 5000, mass: 4134 (3750), energy: 75, crew: 50/46.
+    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
-    items: 46 terrans [terran], 20 units of iron [iron].
+    items: 46 terrans [terran].
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
@@ -1697,10 +1697,10 @@ Battles report:
     items: 60 terrans [terran], 2200 cash [cash].
       #1 hit points: 100/0, destroyed, effects: disabled.
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 7050 (1000).
+    size: 10000, mass: 6850 (1000).
     hit points: 275/275.
     items: 880 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
-    of oxyhydro [h2o2], 70 units of iron [iron], 70 units of titanium [titani], 80 units of silicium
+    of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
     [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 92
     units of carbon [carbon].
       #1 hit points: 55/55.
@@ -1728,9 +1728,9 @@ Battles report:
     items: 6 terrans [terran], unit of carbon [carbon].
       #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
-    size: 5000, mass: 4134 (3750), energy: 75, crew: 50/46.
+    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
-    items: 46 terrans [terran], 20 units of iron [iron].
+    items: 46 terrans [terran].
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
@@ -1788,10 +1788,10 @@ Battles report:
       attack: 8, initiative: 5.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 7070 (1000).
+    size: 10000, mass: 6870 (1000).
     hit points: 275/275.
     items: 895 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
-    of oxyhydro [h2o2], 70 units of iron [iron], 70 units of titanium [titani], 80 units of silicium
+    of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
     [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 93
     units of carbon [carbon].
       #1 hit points: 55/55.
@@ -1819,9 +1819,9 @@ Battles report:
     items: 6 terrans [terran], unit of carbon [carbon].
       #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
-    size: 5000, mass: 4134 (3750), energy: 75, crew: 50/46.
+    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
-    items: 46 terrans [terran], 20 units of iron [iron].
+    items: 46 terrans [terran].
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
@@ -1873,10 +1873,10 @@ Battles report:
       attack: 8, initiative: 5.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 7070 (1000).
+    size: 10000, mass: 6870 (1000).
     hit points: 275/275.
     items: 895 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
-    of oxyhydro [h2o2], 70 units of iron [iron], 70 units of titanium [titani], 80 units of silicium
+    of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
     [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 93
     units of carbon [carbon].
       #1 hit points: 55/55.
@@ -1904,9 +1904,9 @@ Battles report:
     items: 6 terrans [terran], unit of carbon [carbon].
       #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
-    size: 5000, mass: 4134 (3750), energy: 75, crew: 50/46.
+    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
-    items: 46 terrans [terran], 20 units of iron [iron].
+    items: 46 terrans [terran].
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
@@ -1961,10 +1961,10 @@ Battles report:
       attack: 8, initiative: 5.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 7070 (1000).
+    size: 10000, mass: 6870 (1000).
     hit points: 275/275.
     items: 895 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
-    of oxyhydro [h2o2], 70 units of iron [iron], 70 units of titanium [titani], 80 units of silicium
+    of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
     [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 93
     units of carbon [carbon].
       #1 hit points: 55/55.
@@ -1992,9 +1992,9 @@ Battles report:
     items: 6 terrans [terran], unit of carbon [carbon].
       #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
-    size: 5000, mass: 4134 (3750), energy: 75, crew: 50/46.
+    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
-    items: 46 terrans [terran], 20 units of iron [iron].
+    items: 46 terrans [terran].
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
@@ -2048,10 +2048,10 @@ Battles report:
       attack: 8, initiative: 5.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 7070 (1000).
+    size: 10000, mass: 6870 (1000).
     hit points: 275/275.
     items: 895 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
-    of oxyhydro [h2o2], 70 units of iron [iron], 70 units of titanium [titani], 80 units of silicium
+    of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
     [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 93
     units of carbon [carbon].
       #1 hit points: 55/55.
@@ -2079,9 +2079,9 @@ Battles report:
     items: 6 terrans [terran], unit of carbon [carbon].
       #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
-    size: 5000, mass: 4134 (3750), energy: 75, crew: 50/46.
+    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
-    items: 46 terrans [terran], 20 units of iron [iron].
+    items: 46 terrans [terran].
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
@@ -2129,10 +2129,10 @@ Battles report:
       attack: 8, initiative: 5.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 7070 (1000).
+    size: 10000, mass: 6870 (1000).
     hit points: 275/275.
     items: 895 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
-    of oxyhydro [h2o2], 70 units of iron [iron], 70 units of titanium [titani], 80 units of silicium
+    of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
     [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 93
     units of carbon [carbon].
       #1 hit points: 55/55.
@@ -2160,9 +2160,9 @@ Battles report:
     items: 6 terrans [terran], unit of carbon [carbon].
       #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
-    size: 5000, mass: 4134 (3750), energy: 75, crew: 50/46.
+    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
-    items: 46 terrans [terran], 20 units of iron [iron].
+    items: 46 terrans [terran].
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
@@ -2206,10 +2206,10 @@ Battles report:
       attack: 8, initiative: 5.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 7070 (1000).
+    size: 10000, mass: 6870 (1000).
     hit points: 275/263.
     items: 895 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
-    of oxyhydro [h2o2], 70 units of iron [iron], 70 units of titanium [titani], 80 units of silicium
+    of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
     [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 93
     units of carbon [carbon].
       #1 hit points: 55/55.
@@ -2237,9 +2237,9 @@ Battles report:
     items: 6 terrans [terran], unit of carbon [carbon].
       #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
-    size: 5000, mass: 4134 (3750), energy: 75, crew: 50/46.
+    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
-    items: 46 terrans [terran], 20 units of iron [iron].
+    items: 46 terrans [terran].
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
@@ -2272,10 +2272,10 @@ Battles report:
       attack: 8, initiative: 5.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 7070 (1000).
+    size: 10000, mass: 6870 (1000).
     hit points: 275/247.
     items: 895 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
-    of oxyhydro [h2o2], 70 units of iron [iron], 70 units of titanium [titani], 80 units of silicium
+    of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
     [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 93
     units of carbon [carbon].
       #1 hit points: 55/51.
@@ -2303,9 +2303,9 @@ Battles report:
     items: 6 terrans [terran], unit of carbon [carbon].
       #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
-    size: 5000, mass: 4134 (3750), energy: 75, crew: 50/46.
+    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
-    items: 46 terrans [terran], 20 units of iron [iron].
+    items: 46 terrans [terran].
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
@@ -2338,10 +2338,10 @@ Battles report:
       attack: 8, initiative: 5.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 7070 (1000).
+    size: 10000, mass: 6870 (1000).
     hit points: 275/231.
     items: 895 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
-    of oxyhydro [h2o2], 70 units of iron [iron], 70 units of titanium [titani], 80 units of silicium
+    of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
     [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 93
     units of carbon [carbon].
       #1 hit points: 55/47.
@@ -2369,9 +2369,9 @@ Battles report:
     items: 6 terrans [terran], unit of carbon [carbon].
       #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
-    size: 5000, mass: 4134 (3750), energy: 75, crew: 50/46.
+    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
-    items: 46 terrans [terran], 20 units of iron [iron].
+    items: 46 terrans [terran].
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
@@ -2404,10 +2404,10 @@ Battles report:
       attack: 8, initiative: 5.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 7070 (1000).
+    size: 10000, mass: 6870 (1000).
     hit points: 275/215.
     items: 895 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
-    of oxyhydro [h2o2], 70 units of iron [iron], 70 units of titanium [titani], 80 units of silicium
+    of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
     [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 93
     units of carbon [carbon].
       #1 hit points: 55/43.
@@ -2435,9 +2435,9 @@ Battles report:
     items: 6 terrans [terran], unit of carbon [carbon].
       #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
-    size: 5000, mass: 4134 (3750), energy: 75, crew: 50/46.
+    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
-    items: 46 terrans [terran], 20 units of iron [iron].
+    items: 46 terrans [terran].
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
@@ -2474,10 +2474,10 @@ Battles report:
       attack: 8, initiative: 5.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 7070 (1000).
+    size: 10000, mass: 6870 (1000).
     hit points: 275/199.
     items: 895 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
-    of oxyhydro [h2o2], 70 units of iron [iron], 70 units of titanium [titani], 80 units of silicium
+    of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
     [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 93
     units of carbon [carbon].
       #1 hit points: 55/39, lightly damaged.
@@ -2505,9 +2505,9 @@ Battles report:
     items: 6 terrans [terran], unit of carbon [carbon].
       #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
-    size: 5000, mass: 4134 (3750), energy: 75, crew: 50/46.
+    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
-    items: 46 terrans [terran], 20 units of iron [iron].
+    items: 46 terrans [terran].
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
@@ -2550,10 +2550,10 @@ Battles report:
       attack: 8, initiative: 5.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 7090 (1000).
+    size: 10000, mass: 6890 (1000).
     hit points: 275/183.
     items: 910 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
-    of oxyhydro [h2o2], 70 units of iron [iron], 70 units of titanium [titani], 80 units of silicium
+    of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
     [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 94
     units of carbon [carbon].
       #1 hit points: 55/39, lightly damaged.
@@ -2581,9 +2581,9 @@ Battles report:
     items: 6 terrans [terran], unit of carbon [carbon].
       #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
-    size: 5000, mass: 4134 (3750), energy: 75, crew: 50/46.
+    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
-    items: 46 terrans [terran], 20 units of iron [iron].
+    items: 46 terrans [terran].
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
@@ -2630,10 +2630,10 @@ Battles report:
       attack: 8, initiative: 5.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 7090 (1000).
+    size: 10000, mass: 6890 (1000).
     hit points: 275/171.
     items: 910 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
-    of oxyhydro [h2o2], 70 units of iron [iron], 70 units of titanium [titani], 80 units of silicium
+    of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
     [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 94
     units of carbon [carbon].
       #1 hit points: 55/39, lightly damaged.
@@ -2661,9 +2661,9 @@ Battles report:
     items: 6 terrans [terran], unit of carbon [carbon].
       #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
-    size: 5000, mass: 4134 (3750), energy: 75, crew: 50/46.
+    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
-    items: 46 terrans [terran], 20 units of iron [iron].
+    items: 46 terrans [terran].
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
@@ -2711,10 +2711,10 @@ Battles report:
       attack: 8, initiative: 5.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 7090 (1000).
+    size: 10000, mass: 6890 (1000).
     hit points: 275/159.
     items: 910 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
-    of oxyhydro [h2o2], 70 units of iron [iron], 70 units of titanium [titani], 80 units of silicium
+    of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
     [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 94
     units of carbon [carbon].
       #1 hit points: 55/35, lightly damaged.
@@ -2742,9 +2742,9 @@ Battles report:
     items: 6 terrans [terran], unit of carbon [carbon].
       #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
-    size: 5000, mass: 4134 (3750), energy: 75, crew: 50/46.
+    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
-    items: 46 terrans [terran], 20 units of iron [iron].
+    items: 46 terrans [terran].
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
@@ -2792,10 +2792,10 @@ Battles report:
       attack: 8, initiative: 5.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 7090 (1000).
+    size: 10000, mass: 6890 (1000).
     hit points: 275/147.
     items: 910 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
-    of oxyhydro [h2o2], 70 units of iron [iron], 70 units of titanium [titani], 80 units of silicium
+    of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
     [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 94
     units of carbon [carbon].
       #1 hit points: 55/31, lightly damaged.
@@ -2823,9 +2823,9 @@ Battles report:
     items: 6 terrans [terran], unit of carbon [carbon].
       #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
-    size: 5000, mass: 4134 (3750), energy: 75, crew: 50/46.
+    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
-    items: 46 terrans [terran], 20 units of iron [iron].
+    items: 46 terrans [terran].
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
@@ -2894,9 +2894,9 @@ Battles report:
     items: 6 terrans [terran], unit of carbon [carbon].
       #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
-    size: 5000, mass: 4134 (3750), energy: 75, crew: 50/46.
+    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
-    items: 46 terrans [terran], 20 units of iron [iron].
+    items: 46 terrans [terran].
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
@@ -2959,9 +2959,9 @@ Battles report:
     items: 6 terrans [terran], unit of carbon [carbon].
       #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
-    size: 5000, mass: 4134 (3750), energy: 75, crew: 50/46.
+    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
-    items: 46 terrans [terran], 20 units of iron [iron].
+    items: 46 terrans [terran].
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
@@ -3024,9 +3024,9 @@ Battles report:
     items: 6 terrans [terran], unit of carbon [carbon].
       #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
-    size: 5000, mass: 4134 (3750), energy: 75, crew: 50/46.
+    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
-    items: 46 terrans [terran], 20 units of iron [iron].
+    items: 46 terrans [terran].
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
@@ -3090,9 +3090,9 @@ Battles report:
     items: 6 terrans [terran], unit of carbon [carbon].
       #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
-    size: 5000, mass: 4134 (3750), energy: 75, crew: 50/46.
+    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
-    items: 46 terrans [terran], 20 units of iron [iron].
+    items: 46 terrans [terran].
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
@@ -3158,9 +3158,9 @@ Battles report:
     items: 6 terrans [terran], unit of carbon [carbon].
       #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
-    size: 5000, mass: 4134 (3750), energy: 75, crew: 50/46.
+    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
-    items: 46 terrans [terran], 20 units of iron [iron].
+    items: 46 terrans [terran].
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
@@ -3225,9 +3225,9 @@ Battles report:
     items: 6 terrans [terran], unit of carbon [carbon].
       #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
-    size: 5000, mass: 4134 (3750), energy: 75, crew: 50/46.
+    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
-    items: 46 terrans [terran], 20 units of iron [iron].
+    items: 46 terrans [terran].
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
@@ -3282,10 +3282,10 @@ Battles report:
       attack: 8, initiative: 5.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], disabled, immobile.
-    size: 10000, mass: 7110 (1000).
+    size: 10000, mass: 6910 (1000).
     hit points: 275/135.
     items: 925 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
-    of oxyhydro [h2o2], 70 units of iron [iron], 70 units of titanium [titani], 80 units of silicium
+    of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
     [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 95
     units of carbon [carbon].
       #1 hit points: 55/27, heavily damaged, effects: disabled.
@@ -3313,9 +3313,9 @@ Battles report:
     items: 6 terrans [terran], unit of carbon [carbon].
       #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
-    size: 5000, mass: 4134 (3750), energy: 75, crew: 50/46.
+    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
-    items: 46 terrans [terran], 20 units of iron [iron].
+    items: 46 terrans [terran].
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
@@ -3364,10 +3364,10 @@ Battles report:
       attack: 8, initiative: 5.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], disabled, immobile.
-    size: 10000, mass: 7110 (1000).
+    size: 10000, mass: 6910 (1000).
     hit points: 275/135.
     items: 925 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
-    of oxyhydro [h2o2], 70 units of iron [iron], 70 units of titanium [titani], 80 units of silicium
+    of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
     [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 95
     units of carbon [carbon].
       #1 hit points: 55/27, heavily damaged, effects: disabled.
@@ -3395,9 +3395,9 @@ Battles report:
     items: 6 terrans [terran], unit of carbon [carbon].
       #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
-    size: 5000, mass: 4134 (3750), energy: 75, crew: 50/46.
+    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
-    items: 46 terrans [terran], 20 units of iron [iron].
+    items: 46 terrans [terran].
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
@@ -3446,10 +3446,10 @@ Battles report:
       attack: 8, initiative: 5.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], disabled, immobile.
-    size: 10000, mass: 7110 (1000).
+    size: 10000, mass: 6910 (1000).
     hit points: 275/135.
     items: 925 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
-    of oxyhydro [h2o2], 70 units of iron [iron], 70 units of titanium [titani], 80 units of silicium
+    of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
     [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 95
     units of carbon [carbon].
       #1 hit points: 55/27, heavily damaged, effects: disabled.
@@ -3477,9 +3477,9 @@ Battles report:
     items: 6 terrans [terran], unit of carbon [carbon].
       #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
-    size: 5000, mass: 4134 (3750), energy: 75, crew: 50/46.
+    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
-    items: 46 terrans [terran], 20 units of iron [iron].
+    items: 46 terrans [terran].
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
@@ -3529,10 +3529,10 @@ Battles report:
       attack: 8, initiative: 5.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], disabled, immobile.
-    size: 10000, mass: 7110 (1000).
+    size: 10000, mass: 6910 (1000).
     hit points: 275/135.
     items: 925 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
-    of oxyhydro [h2o2], 70 units of iron [iron], 70 units of titanium [titani], 80 units of silicium
+    of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
     [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 95
     units of carbon [carbon].
       #1 hit points: 55/27, heavily damaged, effects: disabled.
@@ -3560,9 +3560,9 @@ Battles report:
     items: 6 terrans [terran], unit of carbon [carbon].
       #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
-    size: 5000, mass: 4134 (3750), energy: 75, crew: 50/46.
+    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
-    items: 46 terrans [terran], 20 units of iron [iron].
+    items: 46 terrans [terran].
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
@@ -3612,10 +3612,10 @@ Battles report:
       attack: 8, initiative: 5.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], disabled, immobile.
-    size: 10000, mass: 7110 (1000).
+    size: 10000, mass: 6910 (1000).
     hit points: 275/135.
     items: 925 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
-    of oxyhydro [h2o2], 70 units of iron [iron], 70 units of titanium [titani], 80 units of silicium
+    of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
     [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 95
     units of carbon [carbon].
       #1 hit points: 55/27, heavily damaged, effects: disabled.
@@ -3643,9 +3643,9 @@ Battles report:
     items: 6 terrans [terran], unit of carbon [carbon].
       #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
-    size: 5000, mass: 4134 (3750), energy: 75, crew: 50/46.
+    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
-    items: 46 terrans [terran], 20 units of iron [iron].
+    items: 46 terrans [terran].
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
@@ -3687,10 +3687,10 @@ Battles report:
       attack: 8, initiative: 5.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], disabled, immobile.
-    size: 10000, mass: 7110 (1000).
+    size: 10000, mass: 6910 (1000).
     hit points: 275/135.
     items: 925 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
-    of oxyhydro [h2o2], 70 units of iron [iron], 70 units of titanium [titani], 80 units of silicium
+    of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
     [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 95
     units of carbon [carbon].
       #1 hit points: 55/27, heavily damaged, effects: disabled.
@@ -3711,9 +3711,9 @@ Battles report:
     items: 6 terrans [terran], unit of carbon [carbon].
       #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
-    size: 5000, mass: 4134 (3750), energy: 75, crew: 50/46.
+    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
-    items: 46 terrans [terran], 20 units of iron [iron].
+    items: 46 terrans [terran].
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
@@ -3757,10 +3757,10 @@ Battles report:
       attack: 8, initiative: 5.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], disabled, immobile.
-    size: 10000, mass: 7110 (1000).
+    size: 10000, mass: 6910 (1000).
     hit points: 275/135.
     items: 925 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
-    of oxyhydro [h2o2], 70 units of iron [iron], 70 units of titanium [titani], 80 units of silicium
+    of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
     [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 95
     units of carbon [carbon].
       #1 hit points: 55/27, heavily damaged, effects: disabled.
@@ -3781,9 +3781,9 @@ Battles report:
     items: 6 terrans [terran], unit of carbon [carbon].
       #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
-    size: 5000, mass: 4134 (3750), energy: 75, crew: 50/46.
+    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
-    items: 46 terrans [terran], 20 units of iron [iron].
+    items: 46 terrans [terran].
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
@@ -3827,10 +3827,10 @@ Battles report:
       attack: 8, initiative: 5.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], disabled, immobile.
-    size: 10000, mass: 7110 (1000).
+    size: 10000, mass: 6910 (1000).
     hit points: 275/135.
     items: 925 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
-    of oxyhydro [h2o2], 70 units of iron [iron], 70 units of titanium [titani], 80 units of silicium
+    of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
     [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 95
     units of carbon [carbon].
       #1 hit points: 55/27, heavily damaged, effects: disabled.
@@ -3851,9 +3851,9 @@ Battles report:
     items: 6 terrans [terran], unit of carbon [carbon].
       #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
-    size: 5000, mass: 4134 (3750), energy: 75, crew: 50/46.
+    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
-    items: 46 terrans [terran], 20 units of iron [iron].
+    items: 46 terrans [terran].
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
@@ -3897,10 +3897,10 @@ Battles report:
       attack: 8, initiative: 5.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], disabled, immobile.
-    size: 10000, mass: 7110 (1000).
+    size: 10000, mass: 6910 (1000).
     hit points: 275/135.
     items: 925 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
-    of oxyhydro [h2o2], 70 units of iron [iron], 70 units of titanium [titani], 80 units of silicium
+    of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
     [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 95
     units of carbon [carbon].
       #1 hit points: 55/27, heavily damaged, effects: disabled.
@@ -3921,9 +3921,9 @@ Battles report:
     items: 6 terrans [terran], unit of carbon [carbon].
       #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
-    size: 5000, mass: 4134 (3750), energy: 75, crew: 50/46.
+    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
-    items: 46 terrans [terran], 20 units of iron [iron].
+    items: 46 terrans [terran].
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
@@ -3967,10 +3967,10 @@ Battles report:
       attack: 8, initiative: 5.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], disabled, immobile.
-    size: 10000, mass: 7110 (1000).
+    size: 10000, mass: 6910 (1000).
     hit points: 275/135.
     items: 925 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
-    of oxyhydro [h2o2], 70 units of iron [iron], 70 units of titanium [titani], 80 units of silicium
+    of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
     [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 95
     units of carbon [carbon].
       #1 hit points: 55/27, heavily damaged, effects: disabled.
@@ -3991,9 +3991,9 @@ Battles report:
     items: 6 terrans [terran], unit of carbon [carbon].
       #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
-    size: 5000, mass: 4134 (3750), energy: 75, crew: 50/46.
+    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
-    items: 46 terrans [terran], 20 units of iron [iron].
+    items: 46 terrans [terran].
       #1 hit points: 100/100.
       #2 hit points: 100/100.
       #3 hit points: 100/100.
@@ -4031,27 +4031,30 @@ Galaxy report:
 ------------------------------------------------------------
   orbit [O00002], has atmosphere suitable for terran [terran].
   + space shuttle [100], 10 space shuttle [shuttl].
-    size: 2000, mass: 7500/1399 (300), capacity: 1250/942, crew: 20/41, upkeep: 1050 (1000) cash
+    size: 2000, mass: 7500/1089 (300), capacity: 1250/727, crew: 20/41, upkeep: 1050 (1000) cash
     [cash], consume: 41 (0) units of food [food], 41 (0) units of terran breathing gas mixture
     [terair].
-    movement speed: 0.5 in space.
+    movement speed: 0.7 in space.
     fuel requirements: 10 units of uranium [uraniu] , 10 units of oxyhydro [h2o2] per 13 weeks.
     items: 40 terrans [terran] (size: 160, mass: 160, upkeep: 40 cash [cash], consume: 40 units of
-    food [food], 40 units of terran breathing gas mixture [terair]), 30 units of iron [iron] (size:
-    150, mass: 300), 16 units of titanium [titani] (size: 160, mass: 160), 19 units of silicium
-    [silici] (size: 95, mass: 57), 15 units of copper [copper] (size: 75, mass: 120), 109 units of
-    food [food] (size: 109, mass: 109), 80 units of oxyhydro [h2o2] (size: 80, mass: 80), 109 units
-    of terran breathing gas mixture [terair] (size: 109, mass: 109).
+    food [food], 40 units of terran breathing gas mixture [terair]), 11 units of iron [iron] (size:
+    55, mass: 110), 4 units of titanium [titani] (size: 40, mass: 40), 19 units of silicium [silici]
+    (size: 95, mass: 57), 15 units of copper [copper] (size: 75, mass: 120), 109 units of food
+    [food] (size: 109, mass: 109), 80 units of oxyhydro [h2o2] (size: 80, mass: 80), 109 units of
+    terran breathing gas mixture [terair] (size: 109, mass: 109).
     effects:
       can operate for another 10 weeks without refueling.
     events:
       week 2: produced spaceship hull [sshull] into spaceship hull [101].
-      week 3: consumed unit of silicium [silici] to produce command bridge [cbridg] module.
+      week 3: consumed unit of iron [iron], 4 units of titanium [titani], unit of silicium [silici]
+      to produce command bridge [cbridg] module.
       week 5: produced command bridge [cbridg] into command bridge [112].
-      week 6: consumed 5 units of copper [copper] to produce fission reactor [fisrec] module.
+      week 6: consumed 2 units of iron [iron], 8 units of titanium [titani], 5 units of copper
+      [copper] to produce fission reactor [fisrec] module.
       week 11: consumed 10 units of uranium [uraniu], 10 units of oxyhydro [h2o2] as fuel.
       week 11: produced fission reactor [fisrec] into fission reactor [113].
-      week 12: consumed 10 units of titanium [titani] to produce reaction drive [rctdrv] module.
+      week 12: consumed 10 units of iron [iron], 10 units of titanium [titani] to produce reaction
+      drive [rctdrv] module.
       week 13: produced reaction drive [rctdrv] into reaction drive [114].
       week 13: paid 1050 cash [cash] upkeep.
     + Caste Prime CEO [000001], terran [terran].
@@ -4149,7 +4152,7 @@ Galaxy report:
         week 10: engaged in battle
         week 13: paid 60 cash [cash] upkeep.
     + small cargo bay [000013], 5 small cargo bays [cargob], disabled, immobile.
-      size: 10000, mass: 7100 (1000), capacity: 9000/5110, upkeep: 10 (0) cash [cash], consume: 10
+      size: 10000, mass: 6900 (1000), capacity: 9000/4960, upkeep: 10 (0) cash [cash], consume: 10
       (0) units of food [food], 10 (0) units of terran breathing gas mixture [terair].
       hit points: 275/135.
         #1 hit points: 55/27, heavily damaged, disabled.
@@ -4159,8 +4162,8 @@ Galaxy report:
         #5 hit points: 55/27, heavily damaged, disabled.
       items: 915 units of food [food] (size: 915, mass: 915), 850 units of terran breathing gas
       mixture [terair] (size: 850, mass: 850), 900 units of oxyhydro [h2o2] (size: 900, mass: 900),
-      70 units of iron [iron] (size: 350, mass: 700), 70 units of titanium [titani] (size: 700,
-      mass: 700), 80 units of silicium [silici] (size: 400, mass: 240), 80 units of copper [copper]
+      60 units of iron [iron] (size: 300, mass: 600), 60 units of titanium [titani] (size: 600,
+      mass: 600), 80 units of silicium [silici] (size: 400, mass: 240), 80 units of copper [copper]
       (size: 400, mass: 640), 80 units of uranium [uraniu] (size: 80, mass: 640), 10 terrans
       [terran] (size: 40, mass: 40, upkeep: 10 cash [cash], consume: 10 units of food [food], 10
       units of terran breathing gas mixture [terair]), 95 units of carbon [carbon] (size: 475, mass:
@@ -4303,22 +4306,36 @@ Galaxy report:
         week 13: engaged in battle
         week 13: paid 46 cash [cash] upkeep.
     + factory [000017], 5 factories [factry], partially disabled, immobile.
-      size: 5000, mass: 4134 (3750), capacity: 2500/284, energy: 75, crew: 50/46, upkeep: 346 (300)
+      size: 5000, mass: 3934 (3750), capacity: 2500/184, energy: 75, crew: 50/46, upkeep: 346 (300)
       cash [cash], consume: 46 (0) units of food [food], 46 (0) units of terran breathing gas
       mixture [terair].
       items: 46 terrans [terran] (size: 184, mass: 184, upkeep: 46 cash [cash], consume: 46 units of
-      food [food], 46 units of terran breathing gas mixture [terair]), 20 units of iron [iron]
-      (size: 100, mass: 200).
+      food [food], 46 units of terran breathing gas mixture [terair]).
       events:
-        week 1: consumed 2 units of titanium [titani] to produce gun placement [gunplc] module.
+        week 1: consumed 2 unit of iron [iron] from shared small cargo bay [000013].
+        week 1: consumed 2 unit of titanium [titani] from shared small cargo bay [000013].
+        week 1: consumed 2 units of iron [iron], 2 units of titanium [titani] to produce gun
+        placement [gunplc] module.
         week 1: produced gun placement [gunplc] into gun placement [111].
-        week 2: consumed 2 units of titanium [titani] to produce gun placement [gunplc] module.
+        week 2: consumed 2 unit of iron [iron] from shared small cargo bay [000013].
+        week 2: consumed 2 unit of titanium [titani] from shared small cargo bay [000013].
+        week 2: consumed 2 units of iron [iron], 2 units of titanium [titani] to produce gun
+        placement [gunplc] module.
         week 2: produced gun placement [gunplc] into gun placement [111].
-        week 3: consumed 2 units of titanium [titani] to produce gun placement [gunplc] module.
+        week 3: consumed 2 unit of iron [iron] from shared small cargo bay [000013].
+        week 3: consumed 2 unit of titanium [titani] from shared small cargo bay [000013].
+        week 3: consumed 2 units of iron [iron], 2 units of titanium [titani] to produce gun
+        placement [gunplc] module.
         week 3: produced gun placement [gunplc] into gun placement [111].
-        week 4: consumed 2 units of titanium [titani] to produce gun placement [gunplc] module.
+        week 4: consumed 2 unit of iron [iron] from shared small cargo bay [000013].
+        week 4: consumed 2 unit of titanium [titani] from shared small cargo bay [000013].
+        week 4: consumed 2 units of iron [iron], 2 units of titanium [titani] to produce gun
+        placement [gunplc] module.
         week 4: produced gun placement [gunplc] into gun placement [111].
-        week 5: consumed 2 units of titanium [titani] to produce gun placement [gunplc] module.
+        week 5: consumed 2 unit of iron [iron] from shared small cargo bay [000013].
+        week 5: consumed 2 unit of titanium [titani] from shared small cargo bay [000013].
+        week 5: consumed 2 units of iron [iron], 2 units of titanium [titani] to produce gun
+        placement [gunplc] module.
         week 5: produced gun placement [gunplc] into gun placement [111].
         week 5: given 4 terrans [terran] to gun placement [111].
         week 9: engaged in battle
@@ -4384,7 +4401,7 @@ Orders Template:
 #modulestack 000013
 ; + small cargo bay [000013], 5 small cargo bays [cargob], disabled, immobile.
 ; items: 915 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units of
-; oxyhydro [h2o2], 70 units of iron [iron], 70 units of titanium [titani], 80 units of silicium
+; oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
 ; [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 95 units
 ; of carbon [carbon].
 @get all food from 000014
@@ -4408,11 +4425,11 @@ sell 0 food
 
 #modulestack 000017
 ; + factory [000017], 5 factories [factry], partially disabled, immobile.
-; items: 46 terrans [terran], 20 units of iron [iron].
+; items: 46 terrans [terran].
 
 #modulestack 100
 ; + space shuttle [100], 10 space shuttle [shuttl].
-; items: 40 terrans [terran], 30 units of iron [iron], 16 units of titanium [titani], 19 units of
+; items: 40 terrans [terran], 11 units of iron [iron], 4 units of titanium [titani], 19 units of
 ; silicium [silici], 15 units of copper [copper], 109 units of food [food], 80 units of oxyhydro
 ; [h2o2], 109 units of terran breathing gas mixture [terair].
 ; effects:

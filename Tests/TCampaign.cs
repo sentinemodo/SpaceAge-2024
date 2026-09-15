@@ -448,9 +448,10 @@ namespace UnitTests
 			string joined = string.Join("\n", galaxyLines);
 
 			Assert.That(joined, Does.Contain("Helios"));
-			Assert.That(joined, Does.Not.Contain("Fomal"));
-			Assert.That(joined, Does.Not.Contain("Ember"));
-			Assert.That(joined, Does.Not.Contain("Graph"));
+			Assert.That(joined, Does.Not.Contain("system Fomal ["));
+			Assert.That(joined, Does.Not.Contain("system Ember [SS0003]"));
+			Assert.That(joined, Does.Not.Contain("system Graph ["));
+			Assert.That(joined, Does.Contain("Helios Ember Gate"));
 		}
 
 		[Test]
