@@ -1,0 +1,15 @@
+---
+description: RunPod pod lifecycle only — GPU provisioning, warmup timing, terminate and cost report
+globs:
+alwaysApply: false
+---
+
+# RunPod runner
+
+When the user invokes **`/runpod-runner`** or asks to start/stop RunPod for Ollama drafting, act as (or delegate to) **`/runpod-runner`**.
+
+- Create pods: template `e2wsrsjbjq`, volume `v41h4fkn1b`, data center **EU-RO-1**.
+- GPU order: **RTX 4090** → **RTX 5090** → pause, show availability, offer **wait 1 minute**.
+- Measure Ollama-ready time and warmup chat latency; report total cost after **terminate**.
+- Hand back `OLLAMA_HOST` and `PLAYER_AGENT_ALLOW_RUNPOD=1` for the parent agent.
+- Do **not** write C#, run tests, or ingest RAG.

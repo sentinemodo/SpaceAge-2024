@@ -199,6 +199,7 @@
     <Compile Include="data structures\ModuleStack.Combat.cs" />
     <Compile Include="data structures\ModuleStack.Economy.cs" />
     <Compile Include="data structures\ModuleStack.Effects.cs" />
+    <Compile Include="data structures\ModuleStack.Hold.cs" />
     <Compile Include="data structures\ModuleStack.ItemStacks.cs" />
     <Compile Include="data structures\ModuleStack.Movement.cs" />
     <Compile Include="data structures\ModuleStack.Orders.cs" />

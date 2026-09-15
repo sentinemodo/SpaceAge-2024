@@ -82,14 +82,16 @@ public static partial class StoryDraftPromptBuilder
 
         var tacticalBullets = isResearcher
             ? """
+                - HQ: set hold 20 terran beside @produce terran
                 - Factory first: use moblib as new109 (mobile lab priority); defer filidx/cmplib and frminf escort to later quarters
-                - Grant economic loop (@produce cash, @use farmng / @use hcdril, @produce energy, sell food via cargob)
-                - @get 1 terran, food, and oil from HQ stacks onto new109 (moblab burns oil like trucks: 1 oil / 13 weeks move; no terair on terran ground)
-                - @move adjacent anomaly region-id; @research that region (8-point threshold, +20 RP resolve)
+                - Grant economic loop (@produce terran, @use farmng / @use hcdril, @produce energy, sell food via cargob)
+                - get 1 terran, food, and oil from HQ stacks onto new109 (no @ on mobile stack; moblab burns oil like trucks)
+                - move adjacent anomaly region-id; research that region (8-point threshold, +20 RP resolve)
                 - Do not nest wind kits on moblab; HQ energy stays on coal plant. Defer UN town contract until survey column is staged
                 """
-            : isEconomic
+                : isEconomic
                 ? """
+                    - HQ: set hold 20 terran and @produce terran (manpower for nested crew beats cash income early)
                     - Factory first: seeded cdrill tech (−1000 balance at init) — get 25 iron + 10 titani, use cdrill as new108 for the first core drill on the grant
                     - Energy before scale: @produce energy on cplant; add fossil/cplant copies when carbon tight before stacking more drills
                     - Grant loop on surface drill until core drill online (@use hcdril / @use iminng on sdrill-id, @use farmng, sell surplus food)
@@ -99,9 +101,10 @@ public static partial class StoryDraftPromptBuilder
                 : isMilitary
                     ? """
                         - Turn-1 fauna rumor counts as contact: DECLARE FACTION 14 ENEMY before engaging Arbor Fauna
-                        - Grant economic loop (@produce cash, @use farmng / @use hcdril, @produce energy, sell food via cargob)
-                        - Factory: use grndtr scout truck to Farm Belt (safe adjacent grant); use armcbt tanks for Mid Vale fauna cull
-                        - Tanks @move Mid Vale [R00009], @attack brush pack; claim CT0016 (1000 cash bounty) when stack cleared
+                        - HQ: set hold 20 terran and @produce terran (crew reserve for two tank squads)
+                        - Grant economic loop (@use farmng / @use hcdril, @produce energy, sell food via cargob)
+                        - Factory: grndtr scout to Farm Belt first, then armcbt **twice** — new2 and new3 tank squads with +get iron/titani
+                        - Both tank squads: has 1 tanks, -get provisioning, -move Mid Vale [R00009], tactic destroy; claim CT0016 (1000 cash bounty) when stack cleared
                         - Secure Mid Vale oil after cull; defer CT0006 UN town charter until armored lane is safe
                         """
                     : """
@@ -114,7 +117,7 @@ public static partial class StoryDraftPromptBuilder
             : isEconomic
                 ? "surface drill bootstrap, paid cdrill tech copy, moblab deep-pocket scouting column before grant expansion"
                 : isMilitary
-                    ? "anonymous Mid Vale fauna rumor, scout truck on Farm Belt, armored column clearing brush for CT0016 cash"
+                    ? "anonymous Mid Vale fauna rumor, scout truck on Farm Belt, two armored tank squads clearing brush for CT0016 cash"
                     : "UN town charter via TRANSFER TO FACTION 1";
 
         var strategicGuidance = isEconomic

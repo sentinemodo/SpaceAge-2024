@@ -102,8 +102,8 @@ Hard science. No magic, no FTL except Alderson `JUMP` between Helios Gate `P0000
 
 Preference (from persona; live verbs) still colours **strategy** more than tactics:
 
-- **military** — `inftry` / `tanks`, `ATTACK` / `CAPTURE` / `DECLARE FACTION <id> ENEMY`, then `JUMP` once you have a ship on a Gate orbit
-- **economic** — `USE` extract/farm, `BUY` / `SELL` at UN markets, spaceport trade
+- **military** — HQ `@produce terran`; factory **two** `armcbt` tank squads (`new2`, `new3`) before Mid Vale columns; `inftry` / `tanks`, `ATTACK` / `CAPTURE` / `DECLARE FACTION <id> ENEMY`, then `JUMP` once you have a ship on a Gate orbit
+- **economic** — HQ `@produce terran`; `USE` extract/farm, `BUY` / `SELL` at UN markets, spaceport trade
 - **researcher** — `RESEARCH`, wreck charters, `SEE` / `COPY`
 - **contractor** — UN `CONTRACT` / `give-module` jobs first, then trade
 

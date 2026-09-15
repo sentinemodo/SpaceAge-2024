@@ -25,7 +25,7 @@ Scriptable order-drafting runner for PBEM play. Lives **outside** `Game.exe` per
 - Models (pull **inside** the `ollama` container):
   - **Chat + smoke:** `docker exec ollama ollama pull qwen2.5-coder:7b`
   - **Embeddings:** `docker exec ollama ollama pull nomic-embed-text`
-  - **RunPod (quality):** `ollama pull qwen2.5-coder:14b` (or `qwen3-coder:30b` when VRAM allows)
+  - **RunPod (quality):** `ollama pull qwen3-coder:30b` (default on 24 GB; fallback `qwen2.5-coder:14b`)
 
 ## Open beta operations
 
@@ -62,9 +62,11 @@ After build, the executable is `tools/player-agent/bin/Debug/net8.0/player-agent
 | Variable | Local default | Notes |
 |----------|---------------|--------|
 | `OLLAMA_HOST` | `http://127.0.0.1:11434` | Ollama **Docker** on host port 11434; OpenAI API is `{host}/v1` |
-| `PLAYER_AGENT_CHAT_MODEL` | `qwen2.5-coder:7b` | Used for smoke, draft, and ingest; RunPod default `qwen2.5-coder:14b` |
+| `PLAYER_AGENT_CHAT_MODEL` | `qwen2.5-coder:7b` local / `qwen3-coder:30b` RunPod | Used for smoke, draft, and ingest |
+| `PLAYER_AGENT_CHAT_CONTEXT_TOKENS` | `8192` local / `16384` RunPod | Passed to Ollama as `options.num_ctx` |
+| `PLAYER_AGENT_CHAT_MAX_OUTPUT_TOKENS` | `4096` | Passed as OpenAI `max_tokens` (`num_predict`) |
 | `PLAYER_AGENT_EMBED_MODEL` | `nomic-embed-text` | Same host as chat |
-| `PLAYER_AGENT_CHAT_TIMEOUT_SECONDS` | `600` | HttpClient timeout for chat (monolithic story drafts can take ~10 min on local 7B) |
+| `PLAYER_AGENT_CHAT_TIMEOUT_SECONDS` | `900` | HttpClient timeout for chat (monolithic story drafts can take ~10 min on local 7B) |
 | `PLAYER_AGENT_INDEX_DIR` | `tools/player-agent/.data/` | Gitignored SQLite indexes |
 | `PLAYER_AGENT_ALLOW_RUNPOD` | unset | Set `1` or pass `--allow-runpod` for remote hosts |
 | `PLAYER_AGENT_RUNPOD_POD_ID` | unset | Pod id for ledger rows and future API sync |
@@ -94,8 +96,19 @@ $env:PLAYER_AGENT_CHAT_MODEL = "qwen2.5-coder:7b"
 
 # RunPod (example — use your pod proxy URL)
 $env:OLLAMA_HOST = "https://<runpod-proxy>"
-$env:PLAYER_AGENT_CHAT_MODEL = "qwen2.5-coder:14b"
+$env:PLAYER_AGENT_CHAT_MODEL = "qwen3-coder:30b"
+$env:PLAYER_AGENT_CHAT_CONTEXT_TOKENS = "16384"
 dotnet run --project tools/player-agent/PlayerAgent.csproj -- smoke --allow-runpod
+```
+
+On RunPod, set the model context in the Modelfile or pull with an explicit context length if your Ollama build ignores `options.num_ctx` on the OpenAI shim:
+
+```bash
+ollama pull qwen3-coder:30b
+# or: ollama run qwen3-coder:30b --context-length 16384
+```
+
+Default RAG retrieval is **top-k 6** locally and **8** on remote hosts (override with `--top N`).
 ```
 
 **Remote hosts require `--allow-runpod` or `PLAYER_AGENT_ALLOW_RUNPOD=1`.** Strip `#faction … "password"` from prompts sent off-box; inject the password only when writing the local order file.

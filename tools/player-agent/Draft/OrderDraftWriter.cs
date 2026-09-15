@@ -9,9 +9,31 @@ public static partial class OrderDraftWriter
     public static string PrepareForWrite(string generatedText, int factionId, string? password)
     {
         var normalized = ExtractOrderBody(generatedText);
+        normalized = StripReportTemplateComments(normalized);
         normalized = EnsureFactionHeader(normalized, factionId, password);
         normalized = EnsureEndTrailer(normalized);
         return normalized.TrimEnd() + Environment.NewLine;
+    }
+
+    private static string StripReportTemplateComments(string orderText)
+    {
+        var kept = new List<string>();
+        foreach (var rawLine in orderText.Replace("\r\n", "\n").Split('\n'))
+        {
+            var trimmed = rawLine.TrimStart();
+            if (trimmed.StartsWith(';')
+                && (trimmed.StartsWith("; +", StringComparison.Ordinal)
+                    || trimmed.Contains('[', StringComparison.Ordinal)
+                    || trimmed.StartsWith("; items:", StringComparison.OrdinalIgnoreCase)
+                    || trimmed.StartsWith("; technologies:", StringComparison.OrdinalIgnoreCase)))
+            {
+                continue;
+            }
+
+            kept.Add(rawLine);
+        }
+
+        return string.Join(Environment.NewLine, kept);
     }
 
     public static async Task WriteUtf8Async(string outputPath, string orderText, CancellationToken cancellationToken)

@@ -52,6 +52,44 @@ public class MarkdownChunkerTests
     }
 
     [Test]
+    public void SplitWithSizeCap_AppliesOverlapBetweenParts()
+    {
+        var content = new string('a', 4000) + "\n\n" + new string('b', 4000);
+        var parts = MarkdownChunker.SplitWithSizeCap(content, 3500, overlapCharacters: 350);
+
+        Assert.That(parts, Has.Count.GreaterThan(1));
+        Assert.That(parts[1], Does.StartWith(new string('a', 350)));
+    }
+
+    [Test]
+    public void ChunkReport_SplitsByStackSection()
+    {
+        const string report = """
+            Galaxy report:
+            ------------------------------------------------------------
+              Northwind Grant [R00008] (1,1), grassland region.
+              Resources: 600 units of food [food].
+
+              + Northwind Headquarters [200001], corporate headquarters [corphq], immobile.
+                size: 1000, crew: 81/92.
+                items: 30 terrans [terran].
+
+              + small cargo bay [200003], 2 small cargo bays [cargob], immobile.
+                items: 487 units of food [food].
+            """;
+
+        var chunks = MarkdownChunker.ChunkReport("report.2.2.txt", report);
+        var headings = chunks.Select(chunk => chunk.Metadata.Heading).ToList();
+
+        Assert.That(headings.Any(heading =>
+            heading?.Contains("Northwind Headquarters", StringComparison.OrdinalIgnoreCase) == true), Is.True);
+        Assert.That(headings.Any(heading =>
+            heading?.Contains("small cargo bay", StringComparison.OrdinalIgnoreCase) == true), Is.True);
+        Assert.That(chunks.Any(chunk => chunk.Content.Contains("200001")), Is.True);
+        Assert.That(chunks.Any(chunk => chunk.Content.Contains("200003")), Is.True);
+    }
+
+    [Test]
     public void ChunkOrderFile_SplitsByModulestackBlock()
     {
         const string order = """

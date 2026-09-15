@@ -40,7 +40,9 @@ internal static class DraftRunCommand
             var toFaction = context.ParseResult.GetValueForOption(CommandHelpers.ToFactionOption) ?? 11;
             var turnOverride = context.ParseResult.GetValueForOption(CommandHelpers.TurnOption);
             var iterationOverride = context.ParseResult.GetValueForOption(CommandHelpers.IterationOption);
-            var topK = context.ParseResult.GetValueForOption(CommandHelpers.TopOption) ?? 6;
+            var topK = CommandHelpers.ResolveTopK(
+                settings,
+                context.ParseResult.GetValueForOption(CommandHelpers.TopOption));
             var skipAudit = context.ParseResult.GetValueForOption(CommandHelpers.SkipIsolationAuditOption);
             var recordAudit = !context.ParseResult.GetValueForOption(CommandHelpers.NoRecordAuditOption);
 

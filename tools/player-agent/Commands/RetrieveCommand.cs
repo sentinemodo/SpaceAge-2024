@@ -29,7 +29,9 @@ internal static class RetrieveCommand
             var query = context.ParseResult.GetValueForOption(CommandHelpers.QueryOption)
                 ?? throw new InvalidOperationException("--query is required.");
             var verb = context.ParseResult.GetValueForOption(CommandHelpers.VerbOption);
-            var topK = context.ParseResult.GetValueForOption(CommandHelpers.TopOption) ?? 6;
+            var topK = CommandHelpers.ResolveTopK(
+                settings,
+                context.ParseResult.GetValueForOption(CommandHelpers.TopOption));
             var runId = context.ParseResult.GetValueForOption(CommandHelpers.RunOption);
             var factionId = context.ParseResult.GetValueForOption(CommandHelpers.FactionOption);
 

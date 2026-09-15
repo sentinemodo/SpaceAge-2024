@@ -914,7 +914,7 @@ def fauna_pack(stack_id, faction, module_type, qty, name_en):
 def seed_hostile_fauna(arbor, anvil):
     """Small fauna pockets on homeworlds; one stack per native tier. See designer/fauna.md."""
     arbor_pockets = [
-        ("Mid Vale", "140010", "brmstr", 2, "Mid Vale brush pack", 14),
+        ("Mid Vale", "140010", "brmstr", 1, "Mid Vale brush pack", 14),
         ("East Steppe", "140020", "mulcrw", 1, "East Steppe mulch crawler", 14),
         ("Loess", "140030", "canalp", 1, "Loess canopy alpha", 14),
     ]
@@ -924,7 +924,7 @@ def seed_hostile_fauna(arbor, anvil):
         )
 
     anvil_pockets = [
-        ("Slope", "150010", "crstlb", 2, "Slope burrow pack", 15),
+        ("Slope", "150010", "crstlb", 1, "Slope burrow pack", 15),
         ("Scree", "150020", "slgmnt", 1, "Scree slag mantlet", 15),
         ("Crag", "150030", "urstlk", 1, "Crag umber stalker", 15),
     ]
@@ -951,7 +951,7 @@ def seed_haven_graph_fauna(systems):
 
     if haven:
         haven_pockets = [
-            ("Haven 1,1", "160010", "ribgrz", 2, "Haven ridge grazers", 16),
+            ("Haven 1,1", "160010", "ribgrz", 1, "Haven ridge grazers", 16),
             ("Haven 2,1", "160020", "glacra", 1, "Haven glacier crab", 16),
             ("Haven 0,1", "160030", "frostb", 1, "Haven frost brood", 16),
         ]
@@ -962,7 +962,7 @@ def seed_haven_graph_fauna(systems):
 
     if graph:
         graph_pockets = [
-            ("Graph 2,0", "170010", "silskk", 2, "Graph silicate skitters", 17),
+            ("Graph 2,0", "170010", "silskk", 1, "Graph silicate skitters", 17),
             ("Graph 3,1", "170020", "qtzrol", 1, "Graph quartz roller", 17),
             ("Graph 1,2", "170030", "spngrf", 1, "Graph spine reef", 17),
         ]
@@ -2284,8 +2284,8 @@ def emit_factions(root):
         **{"name-en": "Arbor Fauna"},
         password="",
         email="",
-        **{"default-attitude": "1"},
-        **{"unknown-attitude": "1"},
+        **{"default-attitude": "0"},
+        **{"unknown-attitude": "0"},
         **{"text-report": "True"},
         **{"text-report-line-length": "100"},
         **{"xml-report": "True"},
@@ -2301,8 +2301,8 @@ def emit_factions(root):
         **{"name-en": "Anvil Fauna"},
         password="",
         email="",
-        **{"default-attitude": "1"},
-        **{"unknown-attitude": "1"},
+        **{"default-attitude": "0"},
+        **{"unknown-attitude": "0"},
         **{"text-report": "True"},
         **{"text-report-line-length": "100"},
         **{"xml-report": "True"},
@@ -2318,8 +2318,8 @@ def emit_factions(root):
         **{"name-en": "Haven Fauna"},
         password="",
         email="",
-        **{"default-attitude": "1"},
-        **{"unknown-attitude": "1"},
+        **{"default-attitude": "0"},
+        **{"unknown-attitude": "0"},
         **{"text-report": "True"},
         **{"text-report-line-length": "100"},
         **{"xml-report": "True"},
@@ -2335,8 +2335,8 @@ def emit_factions(root):
         **{"name-en": "Graph Fauna"},
         password="",
         email="",
-        **{"default-attitude": "1"},
-        **{"unknown-attitude": "1"},
+        **{"default-attitude": "0"},
+        **{"unknown-attitude": "0"},
         **{"text-report": "True"},
         **{"text-report-line-length": "100"},
         **{"xml-report": "True"},

@@ -252,6 +252,11 @@ namespace SpaceAge
 			if (itemStacksHolder.ItemStacks.ContainsKey(itemType))
 			{
 				available = itemStacksHolder.ItemStacks[itemType].Quantity;
+				ModuleStack moduleStack = itemStacksHolder as ModuleStack;
+				if (moduleStack != null)
+				{
+					available -= moduleStack.GetItemHold(itemType);
+				}
 				if (this.GettingAllQuantity | this.Quantity == 0)
 				{
 					transferrable = available;

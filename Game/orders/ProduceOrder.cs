@@ -27,7 +27,25 @@ namespace SpaceAge
 
 		public ItemStacks ItemStacks
 		{
-			get { return this.Producer.ModuleType.ItemsProduction; }
+			get
+			{
+				if (this.ProduceType == EProduceType.Items && this.ItemType != null)
+				{
+					ItemStacks filtered = new ItemStacks();
+					if (this.Producer.ModuleType.ItemsProduction.ContainsKey(this.ItemType))
+					{
+						ItemStack template = this.Producer.ModuleType.ItemsProduction[this.ItemType];
+						filtered.Add(new ItemStack(template.ItemType, template.Quantity));
+					}
+					filtered.Multiply(this.Producer.QuantityOperational);
+					return filtered;
+				}
+
+				ItemStacks all = new ItemStacks();
+				all.Sum(this.Producer.ModuleType.ItemsProduction);
+				all.Multiply(this.Producer.QuantityOperational);
+				return all;
+			}
 		}
 		
 		public override void Parse(string command)

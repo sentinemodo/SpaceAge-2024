@@ -40,11 +40,25 @@ namespace SpaceAge
 			set { this.flagValue = value; }
 		}
 
+		private int holdQuantity = 0;
+		public int HoldQuantity
+		{
+			get { return this.holdQuantity; }
+			set { this.holdQuantity = value; }
+		}
+
+		private ItemType holdItemType = null;
+		public ItemType HoldItemType
+		{
+			get { return this.holdItemType; }
+			set { this.holdItemType = value; }
+		}
+
 		public override void Parse(string command)
 		{
-			// transfer a number of existing modules into receiver modulestack
 			// SET AVOID TRUE
-			// SET AVOID FALSE
+			// SET HOLD 20 terran
+			// SET HOLD 0 terran
 
 			string token;
 			if (string.IsNullOrEmpty(command.Trim()))
@@ -62,6 +76,15 @@ namespace SpaceAge
 					throw new Exception("unknown name of the flag " + token);
 				}
 				this.flagName = "ALLOW BANK";
+			}
+			else if (flag == "HOLD")
+			{
+				this.flagName = flag;
+				token = LineParser.GetToken(ref command);
+				this.holdQuantity = System.Convert.ToInt32(token);
+				token = LineParser.GetToken(ref command);
+				this.holdItemType = ItemType.All[token];
+				return;
 			}
 			else if (flag == "AVOID" || flag == "ONLINE" || flag == "SHARING")
 			{
@@ -90,8 +113,16 @@ namespace SpaceAge
             this.FlagName = elSet.GetAttribute("flag-name");
             if (elSet.HasAttribute("flag-value"))
             {
-                this.FlagValue = this.XMLAssignBoolean(elSet.GetAttribute("flagValue"), true);
-            }           
+                this.FlagValue = this.XMLAssignBoolean(elSet.GetAttribute("flag-value"), true);
+            }
+            if (elSet.HasAttribute("hold-quantity"))
+            {
+                this.HoldQuantity = this.XMLAssignInteger(elSet.GetAttribute("hold-quantity"), 0);
+            }
+            if (elSet.HasAttribute("hold-item-type"))
+            {
+                this.HoldItemType = ItemType.All[elSet.GetAttribute("hold-item-type")];
+            }
         }
 
         public override XmlElement SaveXml_core(XmlDocument doc, string subject)
@@ -99,7 +130,12 @@ namespace SpaceAge
             XmlElement elSet = doc.CreateElement("set");
 
             elSet.SetAttribute("flag-name", this.FlagName);
-            if (flagValue)
+            if (this.FlagName.ToUpperInvariant() == "HOLD")
+            {
+                elSet.SetAttribute("hold-quantity", this.HoldQuantity.ToString());
+                elSet.SetAttribute("hold-item-type", this.HoldItemType.Name);
+            }
+            else if (flagValue)
             {
                 elSet.SetAttribute("flag-value", this.FlagValue.ToString());
             }
@@ -126,6 +162,10 @@ namespace SpaceAge
 					break;
 				case "SHARING":
 					this.Setter.Sharing = flagValue;
+					this.Executed = true;
+					break;
+				case "HOLD":
+					this.Setter.SetItemHold(this.HoldItemType, this.HoldQuantity);
 					this.Executed = true;
 					break;
 			}

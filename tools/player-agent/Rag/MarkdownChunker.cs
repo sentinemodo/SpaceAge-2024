@@ -6,6 +6,8 @@ namespace SpaceAge.PlayerAgent.Rag;
 public static partial class MarkdownChunker
 {
     public const int MaxChunkCharacters = 3500;
+    public const int MaxRulesChunkCharacters = 4500;
+    public const int ChunkOverlapCharacters = 350;
 
     private static readonly HashSet<string> OrderVerbHeadings = new(StringComparer.OrdinalIgnoreCase)
     {
@@ -27,13 +29,31 @@ public static partial class MarkdownChunker
         };
     }
 
-    public static IReadOnlyList<TextChunk> ChunkReport(string sourcePath, string content) =>
-        SplitWithSizeCap(content, MaxChunkCharacters)
-            .Select((body, index) => new TextChunk(
-                body.Trim(),
-                new ChunkMetadata("report", null, null, sourcePath, $"report-{index + 1}")))
-            .Where(chunk => !string.IsNullOrWhiteSpace(chunk.Content))
-            .ToList();
+    public static IReadOnlyList<TextChunk> ChunkReport(string sourcePath, string content)
+    {
+        var chunks = new List<TextChunk>();
+        var chunkIndex = 0;
+
+        foreach (var section in SplitReportSections(content))
+        {
+            var heading = InferReportSectionHeading(section);
+            foreach (var piece in SplitWithSizeCap(section, MaxChunkCharacters, ChunkOverlapCharacters))
+            {
+                var body = piece.Trim();
+                if (string.IsNullOrWhiteSpace(body))
+                {
+                    continue;
+                }
+
+                chunkIndex++;
+                chunks.Add(new TextChunk(
+                    body,
+                    new ChunkMetadata("report", null, null, sourcePath, $"report-{heading}-{chunkIndex}")));
+            }
+        }
+
+        return chunks;
+    }
 
     public static IReadOnlyList<TextChunk> ChunkStory(string sourcePath, string content) =>
     [
@@ -64,14 +84,17 @@ public static partial class MarkdownChunker
                 return;
             }
 
-            chunks.Add(new TextChunk(
-                body,
-                new ChunkMetadata(
-                    "rules",
-                    currentVerb,
-                    null,
-                    sourcePath,
-                    currentHeading ?? currentH2)));
+            foreach (var piece in SplitWithSizeCap(body, MaxRulesChunkCharacters, ChunkOverlapCharacters))
+            {
+                chunks.Add(new TextChunk(
+                    piece.Trim(),
+                    new ChunkMetadata(
+                        "rules",
+                        currentVerb,
+                        null,
+                        sourcePath,
+                        currentHeading ?? currentH2)));
+            }
 
             buffer.Clear();
         }
@@ -135,7 +158,7 @@ public static partial class MarkdownChunker
                 return;
             }
 
-            foreach (var piece in SplitWithSizeCap(body, MaxChunkCharacters))
+            foreach (var piece in SplitWithSizeCap(body, MaxChunkCharacters, ChunkOverlapCharacters))
             {
                 chunks.Add(new TextChunk(
                     piece.Trim(),
@@ -188,7 +211,7 @@ public static partial class MarkdownChunker
                 return;
             }
 
-            foreach (var piece in SplitWithSizeCap(body, MaxChunkCharacters))
+            foreach (var piece in SplitWithSizeCap(body, MaxChunkCharacters, ChunkOverlapCharacters))
             {
                 chunks.Add(new TextChunk(
                     piece.Trim(),
@@ -260,16 +283,31 @@ public static partial class MarkdownChunker
         return chunks;
     }
 
-    public static IReadOnlyList<string> SplitWithSizeCap(string content, int maxCharacters)
+    public static IReadOnlyList<string> SplitWithSizeCap(
+        string content,
+        int maxCharacters,
+        int overlapCharacters = 0)
     {
         if (content.Length <= maxCharacters)
         {
             return [content];
         }
 
+        overlapCharacters = Math.Clamp(overlapCharacters, 0, maxCharacters / 2);
+        var step = Math.Max(1, maxCharacters - overlapCharacters);
         var parts = new List<string>();
         var paragraphs = content.Split("\n\n", StringSplitOptions.None);
         var buffer = new StringBuilder();
+
+        void SeedOverlap(string text)
+        {
+            if (overlapCharacters <= 0 || text.Length <= overlapCharacters)
+            {
+                return;
+            }
+
+            buffer.Append(text[^overlapCharacters..]);
+        }
 
         void Flush()
         {
@@ -278,8 +316,10 @@ public static partial class MarkdownChunker
                 return;
             }
 
-            parts.Add(buffer.ToString().TrimEnd());
+            var text = buffer.ToString().TrimEnd();
+            parts.Add(text);
             buffer.Clear();
+            SeedOverlap(text);
         }
 
         foreach (var paragraph in paragraphs)
@@ -287,7 +327,7 @@ public static partial class MarkdownChunker
             if (paragraph.Length > maxCharacters)
             {
                 Flush();
-                for (var offset = 0; offset < paragraph.Length; offset += maxCharacters)
+                for (var offset = 0; offset < paragraph.Length; offset += step)
                 {
                     var length = Math.Min(maxCharacters, paragraph.Length - offset);
                     parts.Add(paragraph.Substring(offset, length).Trim());
@@ -313,6 +353,112 @@ public static partial class MarkdownChunker
         Flush();
         return parts;
     }
+
+    public static IReadOnlyList<string> SplitReportSections(string content)
+    {
+        var normalized = content.Replace("\r\n", "\n");
+        var lines = normalized.Split('\n');
+        var sections = new List<string>();
+        var buffer = new StringBuilder();
+
+        void Flush()
+        {
+            if (buffer.Length == 0)
+            {
+                return;
+            }
+
+            sections.Add(buffer.ToString().TrimEnd());
+            buffer.Clear();
+        }
+
+        foreach (var line in lines)
+        {
+            if (IsReportSectionBoundary(line) && buffer.Length > 0)
+            {
+                Flush();
+            }
+
+            buffer.AppendLine(line);
+        }
+
+        Flush();
+        return sections;
+    }
+
+    internal static string InferReportSectionHeading(string section)
+    {
+        foreach (var line in section.Replace("\r\n", "\n").Split('\n'))
+        {
+            if (string.IsNullOrWhiteSpace(line))
+            {
+                continue;
+            }
+
+            var trimmed = line.Trim();
+            if (trimmed.StartsWith("+ ", StringComparison.Ordinal))
+            {
+                return SanitizeHeading(trimmed);
+            }
+
+            if (trimmed.EndsWith(':'))
+            {
+                return SanitizeHeading(trimmed.TrimEnd(':'));
+            }
+
+            return SanitizeHeading(trimmed);
+        }
+
+        return "section";
+    }
+
+    private static bool IsReportSectionBoundary(string line)
+    {
+        if (string.IsNullOrWhiteSpace(line))
+        {
+            return false;
+        }
+
+        if (line.StartsWith("Orders Template:", StringComparison.OrdinalIgnoreCase))
+        {
+            return true;
+        }
+
+        if (ReportStackLineRegex().IsMatch(line))
+        {
+            return true;
+        }
+
+        if (ReportRegionLineRegex().IsMatch(line))
+        {
+            return true;
+        }
+
+        return ReportTopSectionRegex().IsMatch(line);
+    }
+
+    private static string SanitizeHeading(string value)
+    {
+        var collapsed = WhitespaceRegex().Replace(value.Trim(), " ");
+        if (collapsed.Length <= 48)
+        {
+            return collapsed;
+        }
+
+        return collapsed[..48];
+    }
+
+    [GeneratedRegex(@"^\s{2}\+\s")]
+    private static partial Regex ReportStackLineRegex();
+
+    [GeneratedRegex(@"^\s{2}[A-Za-z].*\[[ROMPS]\d+\]")]
+    private static partial Regex ReportRegionLineRegex();
+
+    [GeneratedRegex(@"^[A-Za-z].*:\s*$")]
+    private static partial Regex ReportTopSectionRegex();
+
+    [GeneratedRegex(@"\s+")]
+    private static partial Regex WhitespaceRegex();
 
     [GeneratedRegex(@"^\*\*.+\*\*\s*$")]
     private static partial Regex TechEntryRegex();

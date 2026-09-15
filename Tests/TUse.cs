@@ -1202,6 +1202,50 @@ namespace UnitTests
             Assert.That(testModuleStack.ItemStacks[cash].Quantity, Is.EqualTo(200), "cash should appear in modulestack");
         }
 
+        [Test]
+        public void ExecuteProduceTerran_unlimited_ProducesOnlyTerran()
+        {
+            ModuleStack testModuleStack = this.game.ModuleStacks["000112"];
+            ItemType terran = ItemType.All["terran"];
+            ItemType cash = ItemType.All["cash"];
+            int startingTerran = testModuleStack.ItemStacks.ContainsKey(terran)
+                ? testModuleStack.ItemStacks[terran].Quantity
+                : 0;
+            int startingCash = testModuleStack.ItemStacks.ContainsKey(cash)
+                ? testModuleStack.ItemStacks[cash].Quantity
+                : 0;
+
+            List<string> testcommands = new List<string>
+            {
+                "#faction 2",
+                "#modulestack 000112",
+                "@produce terran",
+                "#end"
+            };
+
+            OrdersReader ordersReader = new OrdersReader(game);
+            ordersReader.AssignOrders(testcommands);
+            ProduceOrder order = (ProduceOrder)testModuleStack.Orders[0];
+            Assert.That(order.ItemType, Is.EqualTo(terran));
+            Assert.That(order.ItemStacks[terran].Quantity, Is.EqualTo(1));
+
+            testModuleStack.ExecutedLongOrder = false;
+            testModuleStack.Orders[0].Execute(this.game.Week + 0);
+            testModuleStack.Orders.RemoveExecuted();
+            testModuleStack.Effects.Execute(this.game.Week + 0);
+            testModuleStack.Effects.RemoveExecuted();
+
+            testModuleStack.ExecutedLongOrder = false;
+            testModuleStack.Orders[0].Execute(this.game.Week + 1);
+            testModuleStack.Orders.RemoveExecuted();
+            testModuleStack.Effects.Execute(this.game.Week + 1);
+            testModuleStack.Effects.RemoveExecuted();
+
+            Assert.That(testModuleStack.ItemStacks[terran].Quantity, Is.EqualTo(startingTerran + 1));
+            Assert.That(testModuleStack.ItemStacks.ContainsKey(cash) ? testModuleStack.ItemStacks[cash].Quantity : 0,
+                Is.EqualTo(startingCash));
+        }
+
 
 		[Test]
 		public void ExecuteUseOrder_ContinuesSavedProducingModuleWithoutConsumingAgain()

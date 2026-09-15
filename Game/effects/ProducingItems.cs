@@ -21,8 +21,26 @@ namespace SpaceAge
 		{
 			get
 			{
+				string producingWhat;
+				if (this.Technology?.UseProduceItems != null)
+				{
+					producingWhat = this.Technology.UseProduceItems.ReportList;
+				}
+				else if (this.ProduceOrder?.ItemType != null)
+				{
+					producingWhat = this.ProduceOrder.ItemType.Name;
+				}
+				else if (this.ProducedItemStacks != null && this.ProducedItemStacks.Count > 0)
+				{
+					producingWhat = this.ProducedItemStacks.ReportList;
+				}
+				else
+				{
+					producingWhat = "items";
+				}
+
 				return string.Format("producing {0}, {1} weeks to complete{2}.",
-					this.Technology.UseProduceItems.ReportList,
+					producingWhat,
 					this.Duration,
 					(this.Producer.ModuleType.UseCondition_EfficiencyMultiplier == 1) ? string.Empty : string.Concat(
 						" (",

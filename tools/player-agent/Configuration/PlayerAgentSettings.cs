@@ -5,13 +5,20 @@ namespace SpaceAge.PlayerAgent.Configuration;
 public sealed class PlayerAgentSettings
 {
     public const string LocalDefaultChatModel = "qwen2.5-coder:7b";
-    public const string RunPodDefaultChatModel = "qwen2.5-coder:14b";
+    public const string RunPodDefaultChatModel = "qwen3-coder:30b";
     public const string DefaultEmbedModel = "nomic-embed-text";
     public const int DefaultChatTimeoutSeconds = 900;
+    public const int LocalDefaultContextTokens = 8192;
+    public const int RunPodDefaultContextTokens = 16384;
+    public const int DefaultMaxOutputTokens = 4096;
+    public const int LocalDefaultTopK = 6;
+    public const int RunPodDefaultTopK = 8;
 
     public Uri OllamaBaseUri { get; set; } = new Uri("http://127.0.0.1:11434");
     public int ChatTimeoutSeconds { get; set; } = DefaultChatTimeoutSeconds;
     public string ChatModel { get; set; } = LocalDefaultChatModel;
+    public int ChatContextTokens { get; set; } = LocalDefaultContextTokens;
+    public int ChatMaxOutputTokens { get; set; } = DefaultMaxOutputTokens;
     public string EmbedModel { get; set; } = DefaultEmbedModel;
     public string IndexDirectory { get; set; } = DefaultIndexDirectory;
     public bool AllowRunPod { get; set; }
@@ -59,11 +66,18 @@ public sealed class PlayerAgentSettings
             ?? DefaultRunPodHourlyRateUsd;
         var chatTimeoutSeconds = ParseInt(configuration["PLAYER_AGENT_CHAT_TIMEOUT_SECONDS"])
             ?? DefaultChatTimeoutSeconds;
+        var defaultContextTokens = isRemote ? RunPodDefaultContextTokens : LocalDefaultContextTokens;
+        var chatContextTokens = ParseInt(configuration["PLAYER_AGENT_CHAT_CONTEXT_TOKENS"])
+            ?? defaultContextTokens;
+        var chatMaxOutputTokens = ParseInt(configuration["PLAYER_AGENT_CHAT_MAX_OUTPUT_TOKENS"])
+            ?? DefaultMaxOutputTokens;
 
         return new PlayerAgentSettings
         {
             OllamaBaseUri = baseUri,
             ChatModel = chatModel,
+            ChatContextTokens = chatContextTokens,
+            ChatMaxOutputTokens = chatMaxOutputTokens,
             EmbedModel = embedModel,
             IndexDirectory = Path.GetFullPath(indexDir),
             AllowRunPod = allowRunPod,
@@ -90,6 +104,8 @@ public sealed class PlayerAgentSettings
     }
 
     public bool IsRemoteHost => IsRemoteOllamaHost(OllamaBaseUri);
+
+    public int DefaultTopK => IsRemoteHost ? RunPodDefaultTopK : LocalDefaultTopK;
 
     public static bool IsRemoteOllamaHost(Uri baseUri)
     {

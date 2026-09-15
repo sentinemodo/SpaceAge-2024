@@ -108,8 +108,11 @@ internal static class CommandHelpers
 
     public static Option<int?> TopOption { get; } = new("--top")
     {
-        Description = "Maximum number of retrieval hits (default 6).",
+        Description = "Maximum number of retrieval hits (default 6 local, 8 RunPod).",
     };
+
+    public static int ResolveTopK(PlayerAgentSettings settings, int? topOverride) =>
+        topOverride ?? settings.DefaultTopK;
 
     public static Option<bool> SkipIsolationAuditOption { get; } = new("--skip-isolation-audit")
     {
@@ -179,6 +182,9 @@ internal static class CommandHelpers
         Console.WriteLine($"Ollama host:      {settings.OllamaBaseUri}");
         Console.WriteLine($"OpenAI base:      {settings.OpenAiBaseUri}");
         Console.WriteLine($"Chat model:       {settings.ChatModel}");
+        Console.WriteLine($"Chat context:     {settings.ChatContextTokens} tokens (num_ctx)");
+        Console.WriteLine($"Chat max output:  {settings.ChatMaxOutputTokens} tokens");
+        Console.WriteLine($"Default top-k:    {settings.DefaultTopK}");
         Console.WriteLine($"Chat timeout:     {settings.ChatTimeoutSeconds}s");
         Console.WriteLine($"Embed model:      {settings.EmbedModel}");
         Console.WriteLine($"Index directory:  {settings.IndexDirectory}");

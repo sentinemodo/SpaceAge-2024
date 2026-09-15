@@ -32,17 +32,17 @@ $FactionMeta = @{
 
 $PreferenceMeans = @{
 	military   = @'
-Startup: factory copy of **`armcbt`** (armored combat) costs **1000 balance** at init (9000 cash on hand). **`use armcbt`** consumes **8 iron** and **2 titani** on the **factory stack** at job start — cargo in a sibling bay does not count until moved. Before the first tanks build: **`get 8 iron from <cargo-id>`** and **`get 2 titani from <cargo-id>`** onto the factory (same turn as **`use armcbt as newN`**), or **`set sharing true`** on the cargo bay so USE can draw from it (see `player/rules.md`). Oil is strategic - secure the nearest **oil** pocket with a defendable outpost before the grant thins.
+Startup: factory copy of **`armcbt`** costs **1000 balance** at init; **+2 titani**, **+20 oil**, and **+20 iron** on cargob cost **500** more (**8500 cash** on hand). HQ **`set hold 20 terran`** then **`@produce terran`** for crew. **Do not sell food** early — tanks consume **16 food** and **4 oil per quarter**; keep grant calories for the army.
 
-**Priority queue:** (1) stage iron/titani on the factory, then **`use armcbt`** to build a **tanks** squad; (2) build **trucks** and scout *safe* adjacent grants; (3) send **tanks** to clear fauna pockets and escort columns; (4) **`cplant` / `fossil` energy complexes** to feed **barracks**; (5) deploy **barracks** and **`frminf`** infantry from them.
+**Priority queue:** (1) **`set hold 20 terran`** and **`@produce terran`** on HQ; **`@get all food/carbon`** on cargob but **no sell food**; (2) factory: **`use grndtr`** scout (`new1`) with **`+get`** first; then **two `use armcbt`** (`new2`, `new3`) each with **`+get` iron/titani** when stock lands; (3) tanks: **`has 1 tanks`**, **`-get` 16 terran / 8 oil / 32 food**, **`-move`** fauna lane, **`tactic destroy`** — **no `@` on move/tactic/active**; (4) scout: **`move`** then **`+get` terran/oil/food** on `new1`; (5) energy and barracks after the fauna lane is clear. Fauna **14** on Arbor, **15** on Anvil — default **Enemy**; they attack on contact; `DECLARE FACTION <id> ENEMY` optional once rumors confirm the pack.
 
 Defend every region you occupy. Escort logistics except the first lone scouting truck. Scout contested ground with **tanks**, not trucks. Fauna culls yield battle loot; UN tier-1 bounties (**CT0016** Arbor, **CT0019** Anvil) pay **1000 cash** (default ladder 1000/2000/4000 by tier if UN posts more later).
 
 Use `ATTACK`, `CAPTURE`, and `DECLARE FACTION <id> ENEMY` when diplomacy warrants. Cross Helios Gate `P00009` <-> Fomal Gate `P00010` with `JUMP` once you have a ship on the Gate orbit.
 '@
-	economic   = 'Startup: **surface drill only** on HQ; factory copy of **`cdrill`** costs **1000 balance** at init (9000 cash on hand). **`use cdrill`** to build the first **core drill**, then stack more **core drills** and **`agrplx` farms** on the grant. **Energy first:** keep **`cplant`** (or add **`fossil`**) running before scaling extraction. Scout with **`moblib` to `moblab`** carrying a **`cdrill` technology copy** (not trucks): adjacent exits show **deep pocket of resources detected** once the factory copy is present; move the lab into the pocket cell to read **Deep resources:** assays. Defer UN town charters until the home grant is production-maxed. Trade at UN markets when local mass is thin.'
-	researcher = 'Build **`moblib` to `moblab` first** on the factory copy, `@get` crew, food, and **oil** from HQ cargo, then `@move` to the adjacent grant anomaly and `@research` it (8 pt / +20 RP). HQ cargo seeds **5 oil** for ground fuel (same as `trucks`). Defer town charters until the survey column moves. Later: `filidx`, `frminf` escort, silici scouting. Wreck charters (`CONTRACT` / `research` on belt hulks) when staged.'
-	contractor = 'File UN `CONTRACT` / `give-module` jobs first (food, wind, drills). Spend rewards on trade and the same live verbs as economic.'
+	economic   = 'Startup: **surface drill only** on HQ; factory copy of **`cdrill`** costs **1000 balance** at init; **+50 iron** on cargob costs **500** more (**8500 cash** on hand). HQ: **`set hold 20 terran`** then **`@produce terran`** (manpower for nested crew and **`use cdrill`** builds beats cash income early). **`use cdrill`** to build the first **core drill**, then stack more **core drills** and **`agrplx` farms** on the grant. **Energy first:** keep **`cplant`** (or add **`fossil`**) running before scaling extraction. Scout with **`moblib` to `moblab`** carrying a **`cdrill` technology copy** (not trucks): adjacent exits show **deep pocket of resources detected** once the factory copy is present; move the lab into the pocket cell to read **Deep resources:** assays. Defer UN town charters until the home grant is production-maxed. Trade at UN markets when local mass is thin.'
+	researcher = 'HQ: **`set hold 20 terran`** beside **`@produce terran`**. Build **`moblib` to `moblab` first** on the factory copy, then **`get` crew, food, and oil** from HQ cargo (no `@` on mobile stack), **`move`** to the adjacent grant anomaly and **`research`** it (8 pt / +20 RP). HQ cargo seeds **5 oil** for ground fuel (same as `trucks`). Defer town charters until the survey column moves. Later: `filidx`, `frminf` escort, silici scouting. Wreck charters (`CONTRACT` / `research` on belt hulks) when staged.'
+	contractor = 'HQ: **`set hold 20 terran`** beside **`@produce terran`**. File UN `CONTRACT` / `give-module` jobs first (food, wind, drills). Spend rewards on trade and the same live verbs as economic.'
 }
 
 $PasswordCharset = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789'
@@ -71,7 +71,7 @@ function Get-PersonaMarkdown {
 You are the charter board of **$($meta.Name)**, Interest $Id.
 Home: **$($meta.World)** in **$($meta.System)** (Helios factions 2-6, Fomal factions 7-11).
 United Star Nations is faction 1. Arbor First is 12 (Arbor). HCS is 13 (Anvil).
-Fauna factions 14-17 (wildlife per planet) are NPC; they file no ``order.*``. Fauna factions use **hostile** default and **hostile unknown** stances toward strangers; you have not declared them yet — contact or ``DECLARE FACTION <id> ENEMY`` when you choose.
+Fauna factions 14-17 (wildlife per planet) are NPC; they file no ``order.*``. Fauna use **hostile** default stances and **attack armed intruders on contact** (Arbor **14**, Anvil **15**, Haven **16**, Graph **17**). Rumors or settlement adjacency count as contact; ``DECLARE FACTION <id> ENEMY`` lets your units fire back without waiting for fauna to strike first.
 
 ## Credentials
 
@@ -121,6 +121,21 @@ function Get-CargoStackId {
 	return [string](200000 + ($FactionId - 2) * 10000 + 3)
 }
 
+function Get-HqStackId {
+	param([Parameter(Mandatory = $true)][int]$FactionId)
+	return [string](200000 + ($FactionId - 2) * 10000 + 1)
+}
+
+function Add-PersonaTerranSeed {
+	param(
+		[Parameter(Mandatory = $true)][string]$GameinText,
+		[Parameter(Mandatory = $true)][int]$FactionId
+	)
+	$hqId = Get-HqStackId -FactionId $FactionId
+	$terranPattern = '(<modulestack name="' + [regex]::Escape($hqId) + '" type="corphq"[\s\S]*?<itemstack type="terran" quantity=")20(" />)'
+	return [regex]::Replace($GameinText, $terranPattern, '${1}40${2}', 1)
+}
+
 function Add-EconomicStartupToGamein {
 	param(
 		[Parameter(Mandatory = $true)][string]$GameinText,
@@ -128,7 +143,7 @@ function Add-EconomicStartupToGamein {
 	)
 	$text = $GameinText
 	$balancePattern = '(<faction\b(?=[^>]*\bname="' + $FactionId + '")[^>]*\bbalance=")10000(")'
-	$text = [regex]::Replace($text, $balancePattern, '${1}9000${2}', 1)
+	$text = [regex]::Replace($text, $balancePattern, '${1}8500${2}', 1)
 
 	$stackId = Get-FactoryStackId -FactionId $FactionId
 	if ($text -match ('<modulestack name="' + [regex]::Escape($stackId) + '"[\s\S]*?<technology name="cdrill"')) {
@@ -145,6 +160,28 @@ function Add-EconomicStartupToGamein {
 	$cargoId = Get-CargoStackId -FactionId $FactionId
 	$titaniPattern = '(<modulestack name="' + [regex]::Escape($cargoId) + '"[\s\S]*?<itemstack type="titani" quantity=")2(" />)'
 	$text = [regex]::Replace($text, $titaniPattern, '${1}10${2}', 1)
+	$ironPattern = '(<modulestack name="' + [regex]::Escape($cargoId) + '"[\s\S]*?<itemstack type="iron" quantity=")(\d+)(" />)'
+	$text = [regex]::Replace($text, $ironPattern, '${1}50${3}', 1)
+	$text = Add-PersonaTerranSeed -GameinText $text -FactionId $FactionId
+	return $text
+}
+
+function Add-MilitaryCargoSeed {
+	param(
+		[Parameter(Mandatory = $true)][string]$GameinText,
+		[Parameter(Mandatory = $true)][int]$FactionId
+	)
+	$cargoId = Get-CargoStackId -FactionId $FactionId
+	$text = $GameinText
+	$titaniPattern = '(<modulestack name="' + [regex]::Escape($cargoId) + '"[\s\S]*?<itemstack type="titani" quantity=")2(" />)'
+	$text = [regex]::Replace($text, $titaniPattern, '${1}4${2}', 1)
+	$oilPattern = '(<modulestack name="' + [regex]::Escape($cargoId) + '"[\s\S]*?<itemstack type="oil" quantity=")5(" />)'
+	$text = [regex]::Replace($text, $oilPattern, '${1}25${2}', 1)
+	$ironPattern = '(<modulestack name="' + [regex]::Escape($cargoId) + '"[\s\S]*?<itemstack type="iron" quantity=")(\d+)(" />)'
+	if ($text -match $ironPattern) {
+		$newIron = [int]$Matches[2] + 20
+		$text = [regex]::Replace($text, $ironPattern, ('${1}' + $newIron + '${3}'), 1)
+	}
 	return $text
 }
 
@@ -155,7 +192,7 @@ function Add-MilitaryStartupToGamein {
 	)
 	$text = $GameinText
 	$balancePattern = '(<faction\b(?=[^>]*\bname="' + $FactionId + '")[^>]*\bbalance=")10000(")'
-	$text = [regex]::Replace($text, $balancePattern, '${1}9000${2}', 1)
+	$text = [regex]::Replace($text, $balancePattern, '${1}8500${2}', 1)
 
 	$stackId = Get-FactoryStackId -FactionId $FactionId
 	if ($text -match ('<modulestack name="' + [regex]::Escape($stackId) + '"[\s\S]*?<technology name="armcbt"')) {
@@ -169,6 +206,8 @@ function Add-MilitaryStartupToGamein {
 		throw "Military startup: factory stack $stackId not found for faction $FactionId."
 	}
 
+	$text = Add-PersonaTerranSeed -GameinText $text -FactionId $FactionId
+	$text = Add-MilitaryCargoSeed -GameinText $text -FactionId $FactionId
 	return $text
 }
 
@@ -250,6 +289,15 @@ foreach ($id in $script:PlayerFactionIds) {
 $preferences = @{}
 foreach ($id in $script:PlayerFactionIds) {
 	$preferences[$id] = $PreferencePool[$rng.Next($PreferencePool.Length)]
+}
+# At least one researcher per homeworld (Arbor 2-6, Anvil 7-11).
+$ArborIds = @(2, 3, 4, 5, 6)
+$AnvilIds = @(7, 8, 9, 10, 11)
+if (-not ($preferences.GetEnumerator() | Where-Object { $_.Value -eq 'researcher' -and $_.Key -in $ArborIds })) {
+	$preferences[$ArborIds[$rng.Next($ArborIds.Length)]] = 'researcher'
+}
+if (-not ($preferences.GetEnumerator() | Where-Object { $_.Value -eq 'researcher' -and $_.Key -in $AnvilIds })) {
+	$preferences[$AnvilIds[$rng.Next($AnvilIds.Length)]] = 'researcher'
 }
 if ($null -ne $PreferenceOverrides) {
 	foreach ($entry in $PreferenceOverrides.GetEnumerator()) {

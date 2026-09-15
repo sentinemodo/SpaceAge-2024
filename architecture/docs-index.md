@@ -42,6 +42,7 @@ Purpose: canonical vendor/spec links for implementers. Summaries only — do not
 | `designer/` | Game-designer specs: galaxy scale, tech tree, catalog, contracts (not engine) |
 | `campaign/` | Live PBEM `data.xml` / `gamein.xml` (not NUnit fixtures) |
 | `architecture/delivery/local-player-agent.md` | Ollama / RunPod player-agent runner: env prep, RAG corpus, post-turn and engine/data refresh, usage tracker, cost guardrails |
+| `architecture/delivery/player-agent-context-rag-analysis.md` | Context utilization, RAG params, token budget, quality gates, 4090 / Qwen3 feasibility (2026-09-15) |
 | `architecture/delivery/campaign-play.md` | Campaign load, engine TDD slices, CLI play loop, AI factions |
 | `architecture/delivery/battle-simulator.md` | Battle simulator implementation plan (`Game.exe` direct invocation, template presets, custom templates, advanced combat sync) |
 | `architecture/delivery/game-host.md` | Hosted game service: auth, report XML, orders, turn runner |

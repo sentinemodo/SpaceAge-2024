@@ -2505,6 +2505,7 @@ Researchers can query the library. The system can handle natural language questi
 			hit-points="100"
 			defense="5">
 			<produce item="cash" quantity="50" duration="1"/>
+			<produce item="terran" quantity="1" duration="1"/>
 			<upkeep type="cash" quantity="90"/>
 			<effect type="upkeep reduction" value="0.1" target="region"/>
 			<effect type="fast construction" value="1.0" target="region"/>
@@ -2808,11 +2809,11 @@ Researchers can query the library. The system can handle natural language questi
 			size="240"			
 			mass="240" 
 			capacity="200"
-			hit-points="80"
+			hit-points="88"
 			crew="16"
-			attack="6"
-			defense="4"
-			damage="7">
+			attack="7"
+			defense="5"
+			damage="8">
 			<operation-allowed-in planet-atmosphere="terair"/>
 			<operation-allowed-in region-surface="solid"/>
 			<upkeep type="cash" quantity="80"/>
@@ -2880,7 +2881,7 @@ Researchers can query the library. The system can handle natural language questi
 			<move mode="ground" speed="0.1"/>
 		</entry>
 		<!-- Wild fauna — seed-only; no production tech at t=1. See designer/fauna.md -->
-		<entry name="brmstr" name-en="brush stalker" name-en2="brush stalkers" group="infantry" living-unit="yes" weapon-group="kinetic" description="Arbor pack hunter: fast glass-cannon swarm in tall grass. Wild seed only; no upkeep." size="400" mass="400" capacity="100" hit-points="35" attack="3" defense="2" damage="3" value="20">
+		<entry name="brmstr" name-en="brush stalker" name-en2="brush stalkers" group="infantry" living-unit="yes" weapon-group="kinetic" description="Arbor pack hunter: fast glass-cannon swarm in tall grass. Wild seed only; no upkeep." size="400" mass="400" capacity="100" hit-points="30" attack="2" defense="2" damage="2" value="20">
 			<operation-allowed-in planet-atmosphere="terair"/>
 			<operation-allowed-in region-surface="solid"/>
 			<move mode="ground" speed="0.12"/>
@@ -2895,7 +2896,7 @@ Researchers can query the library. The system can handle natural language questi
 			<operation-allowed-in region-surface="solid"/>
 			<move mode="ground" speed="0.15"/>
 		</entry>
-		<entry name="crstlb" name-en="crust burrower" name-en2="crust burrowers" group="infantry" living-unit="yes" weapon-group="kinetic" description="Anvil armoured digger; slow, tough swarm fauna. Wild seed only; no upkeep." size="450" mass="450" capacity="80" hit-points="58" attack="2" defense="4" damage="2" value="25">
+		<entry name="crstlb" name-en="crust burrower" name-en2="crust burrowers" group="infantry" living-unit="yes" weapon-group="kinetic" description="Anvil armoured digger; slow, tough swarm fauna. Wild seed only; no upkeep." size="450" mass="450" capacity="80" hit-points="52" attack="2" defense="3" damage="2" value="25">
 			<operation-allowed-in planet-atmosphere="terair"/>
 			<operation-allowed-in region-surface="solid"/>
 			<move mode="ground" speed="0.08"/>
@@ -2910,7 +2911,7 @@ Researchers can query the library. The system can handle natural language questi
 			<operation-allowed-in region-surface="solid"/>
 			<move mode="ground" speed="0.12"/>
 		</entry>
-		<entry name="ribgrz" name-en="ridge grazer" name-en2="ridge grazers" group="infantry" living-unit="yes" weapon-group="kinetic" description="Haven hardy herd beast on frost ridges. Wild seed only; no upkeep." size="420" mass="420" capacity="90" hit-points="42" attack="2" defense="3" damage="2" value="22">
+		<entry name="ribgrz" name-en="ridge grazer" name-en2="ridge grazers" group="infantry" living-unit="yes" weapon-group="kinetic" description="Haven hardy herd beast on frost ridges. Wild seed only; no upkeep." size="420" mass="420" capacity="90" hit-points="38" attack="2" defense="2" damage="2" value="22">
 			<operation-allowed-in planet-atmosphere="terair"/>
 			<operation-allowed-in region-surface="solid"/>
 			<move mode="ground" speed="0.14"/>
@@ -2925,7 +2926,7 @@ Researchers can query the library. The system can handle natural language questi
 			<operation-allowed-in region-surface="solid"/>
 			<move mode="ground" speed="0.10"/>
 		</entry>
-		<entry name="silskk" name-en="silicate skitter" name-en2="silicate skitters" group="infantry" living-unit="yes" weapon-group="kinetic" description="Graph fragile shard-limbed swarm; fast and vicious. Wild seed only; no upkeep." size="380" mass="380" capacity="90" hit-points="28" attack="4" defense="1" damage="4" value="18">
+		<entry name="silskk" name-en="silicate skitter" name-en2="silicate skitters" group="infantry" living-unit="yes" weapon-group="kinetic" description="Graph fragile shard-limbed swarm; fast and vicious. Wild seed only; no upkeep." size="380" mass="380" capacity="90" hit-points="24" attack="3" defense="1" damage="3" value="18">
 			<operation-allowed-in planet-atmosphere="terair"/>
 			<operation-allowed-in region-surface="solid"/>
 			<move mode="ground" speed="0.18"/>

@@ -82,7 +82,29 @@ namespace SpaceAge
 
 		public bool Visible(Faction faction) 
 		{
-			return true;
+			if (faction == null)
+			{
+				return true;
+			}
+
+			int factionId;
+			if (!int.TryParse(faction.Name, out factionId) || factionId < 2 || factionId > 11)
+			{
+				return true;
+			}
+
+			SpaceSystem homeSystem = SurveyReports.HomeSpaceSystem(faction);
+			if (homeSystem == null)
+			{
+				return true;
+			}
+
+			if (ReferenceEquals(this, homeSystem))
+			{
+				return true;
+			}
+
+			return SurveyReports.FactionHasStacksInSpaceSystem(faction, this);
 		}
 	}
 }

@@ -1604,6 +1604,11 @@ namespace SpaceAge
 		{
 			List<string> reportLines = new List<string>();
 
+			if (!this.battleReports.ContainsKey(faction) && !this.observerReports.ContainsKey(faction))
+			{
+				return reportLines;
+			}
+
 			reportLines.AddRange(this.reportHeader(faction));
 			reportLines.AddRange(this.reportDetails(faction));
 

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Xml;
 
 namespace SpaceAge
@@ -53,6 +54,12 @@ namespace SpaceAge
 			{
 				this.Sharing = this.XMLAssignBoolean(elModuleStack.GetAttribute("sharing"), true);
 			}
+			foreach (XmlElement elHold in elModuleStack.SelectNodes("hold"))
+			{
+				ItemType itemType = ItemType.All[elHold.GetAttribute("item-type")];
+				int quantity = this.XMLAssignInteger(elHold.GetAttribute("quantity"), 0);
+				this.SetItemHold(itemType, quantity);
+			}
 
         }
 
@@ -99,6 +106,13 @@ namespace SpaceAge
 			if (!this.Sharing)
 			{
 				this.xmlElement.SetAttribute("sharing", "false");
+			}
+			foreach (KeyValuePair<ItemType, int> hold in this.itemHolds)
+			{
+				XmlElement elHold = doc.CreateElement("hold");
+				elHold.SetAttribute("item-type", hold.Key.Name);
+				elHold.SetAttribute("quantity", hold.Value.ToString());
+				this.xmlElement.AppendChild(elHold);
 			}
             return this.xmlElement;
         }

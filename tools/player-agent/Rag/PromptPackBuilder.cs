@@ -16,7 +16,7 @@ public static partial class PromptPackBuilder
         return Truncate(section.Trim(), maxCharacters);
     }
 
-    public static string BuildReportExcerpt(string reportText, int maxCharacters = 6000) =>
+    public static string BuildReportExcerpt(string reportText, int maxCharacters = 8000) =>
         Truncate(reportText.Trim(), maxCharacters);
 
     public static string BuildFactionLine(int factionId, string? password, bool stripPassword) =>

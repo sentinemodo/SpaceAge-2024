@@ -179,7 +179,7 @@ Each player region: top-level `corphq` (not inside a UN city) + nested modest `c
 | 10 | Silicate | Anvil | `R00059` | 1,3 | `grassl` | same pattern | same | `wnplnt` 8 |
 | 11 | Fission | Anvil | `R00063` | 5,3 | `grassl` | same pattern | same | `wnplnt` 8 |
 
-Shared HQ nest (all ten): `corphq` 1 + CEO `terran` officer, `cargob` 2, `cdrill` 1, `factry` 2, crew **30**. Arbor `farms` **3**; Anvil `farms` **2**. Faction `balance` 10000. Leftover `@produce cash` on every HQ (`campaign/data.xml` **50**/week — [`economy.md`](economy.md)). Settlement `capacity` 8–12 on player grassland.
+Shared HQ nest (all ten): `corphq` 1 + CEO `terran` officer, `cargob` 2, `cdrill` 1, `factry` 2, crew **30**. Arbor `farms` **3**; Anvil `farms` **2**. Faction `balance` 10000. Leftover `@produce terran` on every HQ (1 terran/module/week — [`economy.md`](economy.md)). Settlement `capacity` 8–12 on player grassland.
 
 Arbor HQ cargo quantities (order of): food 400, terair 200, h2o2 200, iron 40, carbon 40, silici 10.  
 Anvil HQ cargo: food 80, terair 200, h2o2 80, iron 15, titani 40, silici 40, copper 30, uraniu 20.

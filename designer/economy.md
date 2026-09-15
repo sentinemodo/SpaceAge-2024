@@ -16,7 +16,7 @@ Canonical cash flow and t=1 UN books for `campaign/data.xml` and `galaxy.md`. En
 
 Catalog `upkeep reduction` on `corphq` is **not applied** by the engine today. Nest bills below are gross.
 
-Starting HQs must carry leftover `@produce cash`. No order → no HQ income that turn.
+Starting HQs must carry leftover `@produce terran`. No order → no HQ recruitment that turn. `@produce cash` on `corphq` still pays catalog cash (50/week) when explicitly ordered.
 
 ## Module cash upkeep
 
@@ -59,7 +59,8 @@ Shuttle and HQ were oversized vs size/crew. Tanks pick up 16 crew. Ark picks up 
 
 | Knob | Campaign | SampleGame (do not retune) |
 |------|----------|----------------------------|
-| **One `corphq` produce** | **50 cash / week** (650 / turn) | 100 / week (1300 / turn) |
+| **One `corphq` `@produce cash`** | **50 cash / week** (650 / turn) | 100 / week (1300 / turn) |
+| **One `corphq` `@produce terran`** | **1 terran / module / week** (13 / turn per module) | not on SampleGame `corphq` |
 | Faction `balance` | 10000 | 10000 |
 | City produce | 1000 cash + 10 `terran` / 13 weeks | same |
 
@@ -105,7 +106,7 @@ net = HQ_income_per_turn − nest_bill
 | 60 | 780 | +300 | +402 | Soft |
 | 100 (test catalog) | 1300 | +820 | +922 | HQ is the economy |
 
-Bank 10000 with **no** `@produce cash`: Arbor lasts ~20 turns on the nest bill alone. That is the missed-order safety net, not the plan.
+Bank 10000 with **no** `@produce terran` (and no cash produce elsewhere): Arbor lasts ~20 turns on the nest bill alone. That is the missed-order safety net, not the plan. HQ recruitment is the default leftover order, not cash printing.
 
 ## Why not keep 100
 
@@ -202,7 +203,10 @@ Militias (Arbor First / HCS) start **without** buy/sell. Neutral trade is option
 
 ```xml
 <produce item="cash" quantity="50" duration="1"/>
+<produce item="terran" quantity="1" duration="1"/>
 ```
+
+`@produce terran` on HQ uses the terran line only (1 per active module per week). `@produce cash` uses the cash line only (50/week). Engine must filter `ItemsProduction` by ordered item type and multiply by `QuantityOperational`.
 
 Standing offers live on UN `city` stacks in `gamein` (see [`galaxy.md`](galaxy.md)). Leave `Tests/data.xml` at 100.
 

@@ -856,6 +856,34 @@ namespace UnitTests
 		}
 
 		[Test]
+		public void BattleReport_NonParticipantSeesNothing()
+		{
+			Region region = new Region(Region.All["R00002"].RegionHolder, "remotebattle");
+			Faction participantA = this.game.Factions["2"];
+			Faction participantB = this.game.Factions["3"];
+			Faction bystander = this.game.Factions["4"];
+			participantA.Attitudes["3"] = FactionAttitude.Enemy;
+			participantB.Attitudes["2"] = FactionAttitude.Enemy;
+
+			ModuleStack attacker = new ModuleStack(region, participantA, ModuleType.All["tanks"], "remoteatt");
+			attacker.AddModule();
+			attacker.ItemStacks.Add(new ItemStack(ItemType.All["terran"], 16));
+			ModuleStack defender = new ModuleStack(region, participantB, ModuleType.All["corphq"], "remotedef");
+			defender.AddModule();
+			defender.ItemStacks.Add(new ItemStack(ItemType.All["terran"], 20));
+
+			Battle battle = new Battle(attacker, defender);
+			battle.Week = 1;
+
+			List<string> bystanderReport = battle.Report(bystander);
+			List<string> participantReport = battle.Report(participantA);
+
+			Assert.That(bystanderReport.Count, Is.EqualTo(0));
+			Assert.That(participantReport.Count, Is.GreaterThan(0));
+			Assert.That(string.Join("\n", participantReport.ToArray()), Does.Contain("Battle has commenced"));
+		}
+
+		[Test]
 		public void BattlesReport_BlankLineBetweenBattles()
 		{
 			ModuleStack frigate = ModuleStack.All["100011"];

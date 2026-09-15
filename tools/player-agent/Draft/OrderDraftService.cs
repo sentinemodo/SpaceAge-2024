@@ -68,25 +68,35 @@ public sealed class OrderDraftService
                 outputPath: request.OutputPath);
         }
 
-        var generated = await _client.ChatAsync(
-            chatPrompt,
-            DraftPromptBuilder.SystemPrompt,
-            cancellationToken);
-        var prepared = OrderDraftWriter.PrepareForWrite(generated, request.FactionId, password);
-        var lintResult = OrderDraftLinter.Lint(prepared, allowlist);
+        const int maxAttempts = 5;
+        string generated = string.Empty;
+        string prepared = string.Empty;
+        OrderDraftLintResult lintResult = new(false, Array.Empty<string>());
+        var prompt = chatPrompt;
 
-        if (lintResult.IsValid && !OrderDraftQuality.IsUsable(prepared, hints.PersonaPreference))
+        for (var attempt = 1; attempt <= maxAttempts; attempt++)
         {
-            var retryPrompt = chatPrompt
-                + Environment.NewLine
-                + Environment.NewLine
-                + OrderDraftQuality.BuildRetryInstruction(hints.PersonaPreference);
             generated = await _client.ChatAsync(
-                retryPrompt,
+                prompt,
                 DraftPromptBuilder.SystemPrompt,
                 cancellationToken);
             prepared = OrderDraftWriter.PrepareForWrite(generated, request.FactionId, password);
             lintResult = OrderDraftLinter.Lint(prepared, allowlist);
+
+            if (lintResult.IsValid && OrderDraftQuality.IsUsable(prepared, hints.PersonaPreference, reportText))
+            {
+                break;
+            }
+
+            if (attempt == maxAttempts)
+            {
+                break;
+            }
+
+            prompt = chatPrompt
+                + Environment.NewLine
+                + Environment.NewLine
+                + OrderDraftQuality.BuildRetryInstruction(hints.PersonaPreference, prepared, reportText);
         }
 
         if (!lintResult.IsValid)
@@ -95,10 +105,21 @@ public sealed class OrderDraftService
                 "Draft failed verb allowlist lint:\n  - " + string.Join("\n  - ", lintResult.Errors));
         }
 
-        if (!OrderDraftQuality.IsUsable(prepared, hints.PersonaPreference))
+        if (!OrderDraftQuality.IsUsable(prepared, hints.PersonaPreference, reportText))
         {
+            var qualityViolations = OrderDraftQuality.DescribeMoveReadinessViolations(prepared)
+                .Concat(OrderDraftQuality.DescribeUseTechPlacementViolations(prepared, reportText))
+                .Concat(OrderDraftQuality.DescribeInvalidItemTypeViolations(prepared))
+                .Concat(OrderDraftQuality.DescribeDeferredNestGetViolations(prepared))
+                .ToList();
+            var detail = qualityViolations.Count > 0
+                ? "\n  - " + string.Join("\n  - ", qualityViolations)
+                : string.Empty;
             throw new InvalidOperationException(
-                "Draft failed quality gate: expected factory USE, economic leftovers, and moblab @move/@research for researcher seats.");
+                "Draft failed quality gate after "
+                + maxAttempts
+                + " attempts."
+                + detail);
         }
 
         await OrderDraftWriter.WriteUtf8Async(request.OutputPath, prepared, cancellationToken);
@@ -186,7 +207,7 @@ public sealed class OrderDraftRequest
     public string? StoryPath { get; init; }
     public string? PersonaPath { get; init; }
     public bool DryRun { get; init; }
-    public int TopK { get; init; } = 6;
+    public int TopK { get; init; } = PlayerAgentSettings.LocalDefaultTopK;
     public int DraftTurn { get; init; } = 2;
 }
 

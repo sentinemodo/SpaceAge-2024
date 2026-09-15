@@ -432,5 +432,41 @@ namespace UnitTests
 				}
 			}
 		}
+
+		[Test]
+		public void GalaxyReport_PlayerFactionSeesHomeSystemOnly()
+		{
+			this.dataFile.LoadConfiguration(CampaignDir(), "data.xml");
+			this.dataFile.LoadGameDocument(CampaignDir(), "gamein.1.xml");
+			this.dataFile.LoadTurnNumber();
+			this.dataFile.LoadFactions();
+			this.dataFile.LoadGalaxy();
+			this.game = this.dataFile.Game;
+
+			Faction northwind = this.game.Factions["2"];
+			List<string> galaxyLines = this.game.Galaxy.Report(northwind);
+			string joined = string.Join("\n", galaxyLines);
+
+			Assert.That(joined, Does.Contain("Helios"));
+			Assert.That(joined, Does.Not.Contain("Fomal"));
+			Assert.That(joined, Does.Not.Contain("Ember"));
+			Assert.That(joined, Does.Not.Contain("Graph"));
+		}
+
+		[Test]
+		public void LoadGame_CampaignGamein1_HostileFaunaPocketsAreSingleModule()
+		{
+			this.dataFile.LoadConfiguration(CampaignDir(), "data.xml");
+			this.dataFile.LoadGameDocument(CampaignDir(), "gamein.1.xml");
+			this.dataFile.LoadTurnNumber();
+			this.dataFile.LoadFactions();
+			this.dataFile.LoadGalaxy();
+			this.game = this.dataFile.Game;
+
+			Assert.That(this.game.ModuleStacks["140010"].Quantity, Is.EqualTo(1));
+			Assert.That(this.game.ModuleStacks["150010"].Quantity, Is.EqualTo(1));
+			Assert.That(this.game.ModuleStacks["160010"].Quantity, Is.EqualTo(1));
+			Assert.That(this.game.ModuleStacks["170010"].Quantity, Is.EqualTo(1));
+		}
 	}
 }

@@ -103,5 +103,89 @@ namespace SpaceAge
 			}
 			return null;
 		}
+
+		public static SpaceSystem HomeSpaceSystem(Faction faction)
+		{
+			Planet homePlanet = FindHomePlanet(faction);
+			return homePlanet == null ? null : homePlanet.SpaceSystem;
+		}
+
+		public static bool FactionHasStacksInSpaceSystem(Faction faction, SpaceSystem spaceSystem)
+		{
+			if (faction == null || spaceSystem == null)
+			{
+				return false;
+			}
+
+			foreach (ModuleStack stack in ModuleStack.All.Values)
+			{
+				if (stack.Owner != faction)
+				{
+					continue;
+				}
+
+				SpaceSystem stackSystem = SpaceSystemFromLocation(stack.Location);
+				if (stackSystem == spaceSystem)
+				{
+					return true;
+				}
+			}
+
+			return false;
+		}
+
+		public static SpaceSystem SpaceSystemFromLocation(Location location)
+		{
+			if (location == null)
+			{
+				return null;
+			}
+
+			Belt belt = location as Belt;
+			if (belt != null)
+			{
+				return belt.SpaceSystem;
+			}
+
+			Orbit orbit = location as Orbit;
+			if (orbit != null)
+			{
+				Planet orbitPlanet = orbit.OrbitHolder as Planet;
+				if (orbitPlanet != null)
+				{
+					return orbitPlanet.SpaceSystem;
+				}
+
+				Moon orbitMoon = orbit.OrbitHolder as Moon;
+				if (orbitMoon != null)
+				{
+					return orbitMoon.SpaceSystem;
+				}
+
+				Alderson gate = orbit.OrbitHolder as Alderson;
+				if (gate != null)
+				{
+					return gate.SpaceSystem;
+				}
+			}
+
+			Region region = location as Region;
+			if (region != null)
+			{
+				Planet planet = region.RegionHolder as Planet;
+				if (planet != null)
+				{
+					return planet.SpaceSystem;
+				}
+
+				Moon moon = region.RegionHolder as Moon;
+				if (moon != null)
+				{
+					return moon.SpaceSystem;
+				}
+			}
+
+			return null;
+		}
 	}
 }

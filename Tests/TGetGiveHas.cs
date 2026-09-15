@@ -735,5 +735,82 @@ namespace UnitTests
 			Assert.That(drones.IsImmobile, Is.False);
 		}
 
+		[Test]
+		public void SetHoldOrder_BlocksGetBelowReserve()
+		{
+			ModuleStack hq = this.game.ModuleStacks["000006"];
+			ItemType terran = ItemType.All["terran"];
+			hq.ItemStacks[terran].Quantity = 30;
+			ModuleStack receiver = this.game.ModuleStacks["100001"];
+
+			new OrdersReader(this.game).AssignOrders(new List<string>
+			{
+				"#faction 2",
+				"#modulestack 000006",
+				"set hold 20 terran",
+				"#end",
+				"#modulestack 100001",
+				"get 15 terran from 000006",
+				"#end"
+			});
+			((SetOrder)hq.Orders[0]).Execute(this.game.Week);
+			receiver.Orders[0].Execute(this.game.Week);
+
+			Assert.That(hq.ItemStacks[terran].Quantity, Is.EqualTo(30));
+			Assert.That(receiver.ItemStacks.ContainsKey(terran), Is.False);
+		}
+
+		[Test]
+		public void SetHoldOrder_AllowsGetAboveReserve()
+		{
+			ModuleStack hq = this.game.ModuleStacks["000006"];
+			ItemType terran = ItemType.All["terran"];
+			hq.ItemStacks[terran].Quantity = 30;
+			ModuleStack receiver = this.game.ModuleStacks["100001"];
+
+			new OrdersReader(this.game).AssignOrders(new List<string>
+			{
+				"#faction 2",
+				"#modulestack 000006",
+				"set hold 20 terran",
+				"#end",
+				"#modulestack 100001",
+				"get 5 terran from 000006",
+				"#end"
+			});
+			((SetOrder)hq.Orders[0]).Execute(this.game.Week);
+			receiver.Orders[0].Execute(this.game.Week);
+
+			Assert.That(hq.ItemStacks[terran].Quantity, Is.EqualTo(25));
+			Assert.That(receiver.ItemStacks[terran].Quantity, Is.EqualTo(5));
+		}
+
+		[Test]
+		public void SetHoldZero_ClearsReserve()
+		{
+			ModuleStack hq = this.game.ModuleStacks["000006"];
+			ItemType terran = ItemType.All["terran"];
+			hq.ItemStacks[terran].Quantity = 30;
+			ModuleStack receiver = this.game.ModuleStacks["100001"];
+
+			hq.SetItemHold(terran, 20);
+			new OrdersReader(this.game).AssignOrders(new List<string>
+			{
+				"#faction 2",
+				"#modulestack 000006",
+				"set hold 0 terran",
+				"#end",
+				"#modulestack 100001",
+				"get 15 terran from 000006",
+				"#end"
+			});
+			((SetOrder)hq.Orders[0]).Execute(this.game.Week);
+			receiver.Orders[0].Execute(this.game.Week);
+
+			Assert.That(hq.GetItemHold(terran), Is.EqualTo(0));
+			Assert.That(hq.ItemStacks[terran].Quantity, Is.EqualTo(15));
+			Assert.That(receiver.ItemStacks[terran].Quantity, Is.EqualTo(15));
+		}
+
 	}
 }

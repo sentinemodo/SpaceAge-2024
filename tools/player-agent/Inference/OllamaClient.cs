@@ -60,6 +60,11 @@ public sealed class OllamaClient : IOllamaClient, IDisposable
             Messages = messages,
             Stream = false,
             Temperature = 0.2,
+            MaxTokens = _settings.ChatMaxOutputTokens,
+            Options = new OllamaRequestOptions
+            {
+                NumCtx = _settings.ChatContextTokens,
+            },
         };
 
         using var response = await _httpClient.PostAsJsonAsync(
@@ -119,6 +124,18 @@ public sealed class OllamaClient : IOllamaClient, IDisposable
 
         [JsonPropertyName("temperature")]
         public double Temperature { get; set; }
+
+        [JsonPropertyName("max_tokens")]
+        public int MaxTokens { get; set; }
+
+        [JsonPropertyName("options")]
+        public OllamaRequestOptions? Options { get; set; }
+    }
+
+    internal sealed class OllamaRequestOptions
+    {
+        [JsonPropertyName("num_ctx")]
+        public int NumCtx { get; set; }
     }
 
     private sealed class ChatMessage

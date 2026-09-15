@@ -113,7 +113,7 @@ Clear last turn’s event reports, then `turn++`. Drop stale per-unit stances (`
 
 After week 13: **quarterly maintenance**, then **quarterly wounded outcome**, then clear long/immediate flags; drop unformed stacks that should not report (`RemoveNonReporting`).
 
-**Quarterly maintenance** (`ExecuteMaintenance`, once, week 13): cash upkeep, then food, then terran air `[terair]` if the stack needs canned air (orbit, space, or a moon region). Bills auto-GET from this stack’s own nest (self, then nested children), then the parent chain, then other same-owner stacks at the same location. Cash shortfall can also debit the faction bank when the stack has **`AllowBank` true** (default; see [SET](#set)). When cash (or any other upkeep item) is actually deducted (`taken > 0`), the stack logs `week 13: paid N cash [cash] upkeep.` (`ItemType.ReportName` is `cash [cash]`; same `paid N {item} upkeep.` shape for food/air). Each formed stack pays its own `UpkeepNetto` (`localUpkeep` does not roll nested children into the parent bill). Nested hangar craft still pay if they remain nested through week 13; after hangar launch they pay as roots (4 alien fighter drones `[alndrn]` at 20 cash each = `paid 80 cash [cash] upkeep.`). Unpaid food/air can wound healthy terrans (catalog 25%). Unpaid cash can damage the module or print race off-duty. `medici` is skipped here (already weekly).
+**Quarterly maintenance** (`ExecuteMaintenance`, once, week 13): cash upkeep, then food, then terran air `[terair]` if the stack needs canned air (orbit, space, or a moon region). Bills auto-GET from this stack’s own nest (self, then nested children), then the parent chain, then other same-owner stacks at the same location. Cash shortfall can also debit the faction bank when the stack has `**AllowBank` true** (default; see [SET](#set)). When cash (or any other upkeep item) is actually deducted (`taken > 0`), the stack logs `week 13: paid N cash [cash] upkeep.` (`ItemType.ReportName` is `cash [cash]`; same `paid N {item} upkeep.` shape for food/air). Each formed stack pays its own `UpkeepNetto` (`localUpkeep` does not roll nested children into the parent bill). Nested hangar craft still pay if they remain nested through week 13; after hangar launch they pay as roots (4 alien fighter drones `[alndrn]` at 20 cash each = `paid 80 cash [cash] upkeep.`). Unpaid food/air can wound healthy terrans (catalog 25%). Unpaid cash can damage the module or print race off-duty. `medici` is skipped here (already weekly).
 
 **High gravity** (`BodyEnvironment.GravityAt` == `high`): that stack’s local cash bill is multiplied by **1.5** (ceiling). Stacks with people or `population-maximum` > 0 also add **2 food**. Planets with no `gravity` attribute load as `normal`; moons with no attribute load as `low`. SampleGame maps have no `gravity=` attrs, so this surcharge does not fire there.
 
@@ -127,7 +127,7 @@ After week 13: **quarterly maintenance**, then **quarterly wounded outcome**, th
 
 Standing `@buy` / `@sell` stay on the order list and retry each week at step 6. A successful regional buy marks the leftover `BUY` executed for that week (same as before); `@buy` retries next week. NPC city auto-listings have no leftover `SELL` and persist as market `Offer`s. `ATTACK` / `TACTIC` / `DECLARE` during step 2 only set stance; shooting is step 7.
 
-**Market payment:** when a buy clears, **`payBuyer` spends local cash on the trading stack first**, then debits the faction bank if the buyer has bank access (`AllowBank` / `HasBankAccess`). With `SET ALLOW BANK FALSE`, only on-hand cash counts — insufficient local cash logs `BUY failed, not enough cash.` and skips the trade (bank balance unchanged).
+**Market payment:** when a buy clears, `**payBuyer` spends local cash on the trading stack first**, then debits the faction bank if the buyer has bank access (`AllowBank` / `HasBankAccess`). With `SET ALLOW BANK FALSE`, only on-hand cash counts — insufficient local cash logs `BUY failed, not enough cash.` and skips the trade (bank balance unchanged).
 
 ## Immediate vs long
 
@@ -161,9 +161,9 @@ Hard-science campaign drafts should follow these patterns. Ground every id in th
 
 ### Operational vs deactivated stacks
 
-Turn-1 campaign stacks start **online** with crew already aboard nested modules. Do **not** issue **`SET ONLINE TRUE`** unless the report marks a stack **deactivated** (`Online=false`, e.g. captured modules).
+Turn-1 campaign stacks start **online** with crew already aboard nested modules. Do **not** issue `**SET ONLINE TRUE`** unless the report marks a stack **deactivated** (`Online=false`, e.g. captured modules).
 
-**`ACTIVATE` / `DEACTIVATE`** toggle individual module copies within a stack (`module.Activated`). Use **`DEACTIVATE`** to park modules you are not running; use **`ACTIVATE`** only to turn copies back on after you deactivated them. Do not use **`ACTIVATE`** as a bootstrap substitute for **`SET ONLINE TRUE`**.
+`**ACTIVATE` / `DEACTIVATE`** toggle individual module copies within a stack (`module.Activated`). Use `**DEACTIVATE**` to park modules you are not running; use `**ACTIVATE**` only to turn copies back on after you deactivated them. Do not use `**ACTIVATE**` as a bootstrap substitute for `**SET ONLINE TRUE**`.
 
 A stack marked **disabled** in the report is online but not yet operational — usually missing **crew**, **energy**, **fuel**, or **repairs**. Long orders (`USE`, `PRODUCE`, `REPAIR`, …) require `CanOperate`:
 
@@ -173,15 +173,35 @@ A stack marked **disabled** in the report is online but not yet operational — 
 - **repaired** damage when modules are damaged,
 - other catalog **operate-in** conditions as applicable.
 
-Stage inputs with **`GET`** from other stacks at the same location, or **`BUY`** at a UN market after **`WITHDRAW`** cash into a trading stack.
+Stage inputs with `**GET`** from other stacks at the same location, or `**BUY**` at a UN market after `**WITHDRAW**` cash into a trading stack.
+
+**Factory-built military units (`USE grndtr` / `USE armcbt`):** new scout trucks and tank squads form **empty** — report shows `crew: N/0` and status **disabled** until you stage crew (and usually **oil** fuel) on the `newN` stack. `**@move` on a disabled stack fails every week** (`MOVE failed. … is disabled.`). After `use grndtr as new1 for <hq-id>` / `use armcbt as new2 for <hq-id>` (campaign military: **two** tank squads — `new2` and `new3` — before Mid Vale columns), open `#modulestack new1` / `#modulestack new2` / `#modulestack new3` and stage crew/fuel **before** `@move`.
+
+**Slow HQ-nested builds (`use armcbt` / `use cdrill` … `as newN for <hq-id>`):** the unit may not exist at HQ until mid-quarter. Bare `@get` or wrong-order `+@get` on `#modulestack newN` in week 1 fails with `receiver is not present` / capacity errors and **poisons** later GET attempts. Use `@active newN` then `**-+@get`** crew/fuel — the leading `-` makes GET wait until `@active` succeeds; `@` retries each week until stock lands. Fast `grndtr` scouts can use plain `@get` once the truck forms (usually week 1). Factory `**@get**` (not bare `get`) for iron/titani from cargob retries until stock is available.
+
+### MOVE readiness (disabled stacks cannot move)
+
+`**MOVE` requires an operational mover** (`ModuleStack.IsActive` / `HasOperationalModules`). A stack listed **disabled** or **partially disabled** in the report cannot start a hop until you fix the blockers. `**@move` retries every week but keeps failing** until the stack is operational.
+
+Before `@move` on any mobile `#modulestack`, ensure **in that same stack block** (lines after its header, before the first `@move`):
+
+1. **Crew** — `@get` enough `**terran`** from HQ/cargo (or `@buy` at market) when `crew: required/0` or the unit was factory-built empty (`newN` stacks).
+2. **Fuel** — `@get` `**oil`** when the module lists fuel requirements (trucks `[trucks]`, tanks `[tanks]`, moblab `[moblib]`, shuttles). Ground units burn **oil** per catalog `fuel-requirements`.
+3. **Repairs** — run `**@repair`** (or `@use repair` tech) on the stack first when the report marks it **disabled** from **damage** (not just missing crew).
+4. **Energy** — nested or moving stacks neegd the root grant tree producing enough energy (`@produce energy` on cplant/wnplnt upstream); MOVE itself does not fix `crew: N/M` energy shortfalls on nested modules.
+5. **Spaceships** — a hull without a **command bridge** (`spctrl`) cannot move at all. Large ships need enough command modules (1 bridge + 1 command module per 15 modules). Nest `use spctrl as new… for <hull-id>` (and drives, cargo) **before** `@move` / `@jump`. Surface↔orbit hops on atmospheres also need `**@get h2o2`** (oxyhydro launch surcharge) on the mover or nested cargo.
+
+**Order-file pattern:** under `#modulestack new1` (or any stack that will `@move`), list `@get terran …` and `@get oil …` **above** `@move R…`. Do not issue `@move` alone on a freshly `USE`d module — it will stay disabled all quarter.
+
+**USE tech placement:** `@use farmng` / `use farmng` only under `#modulestack` headers whose module type is **farms** (farming complex). `@use hcdril` only under **sdrill** (surface drill). Putting either on factory `[factry]`, HQ, or cargob blocks that stack's long-order slot with `USE failed` all quarter.
 
 Typical bootstrap at headquarters (SampleGame and campaign turn 1):
 
-1. **Staff crew** — if the report shows `crew: N/0`, either **`GET` `terran`** from headquarters/cargo, or **buy crew at market** (see below).
-2. **`GET` fuel and inputs** — e.g. `@get all carbon from <cdrill-id>` into the cargo bay, then coal plant `@produce energy`.
-3. **`@produce energy`** on coal or wind plants so nested stacks meet energy requirements.
-4. **`@use farmng` / `@use hcdril`** / **`@use twnbld`** (factory builds) once the stack can operate.
-5. **`@get`** surplus into the cargo bay; **`SELL … AT AVERAGE`** for exports; local **`@buy`** for metals (see [BUY](#buy) — no **`AT AVERAGE`** on BUY).
+1. **Staff crew** — if the report shows `crew: N/0`, either `**GET` `terran`** from headquarters/cargo, or **buy crew at market** (see below).
+2. `**GET` fuel and inputs** — e.g. `@get all carbon from <cdrill-id>` into the cargo bay, then coal plant `@produce energy`.
+3. `**@produce energy`** on coal or wind plants so nested stacks meet energy requirements.
+4. `**@use farmng` / `@use hcdril**` / `**@use twnbld**` (factory builds) once the stack can operate.
+5. `**@get**` surplus into the cargo bay; `**SELL … AT AVERAGE**` for exports; local `**@buy**` for metals (see [BUY](#buy) — no `**AT AVERAGE**` on BUY).
 
 #### Buy crew when short (campaign turn 1 example)
 
@@ -202,9 +222,11 @@ get 6 terran from 200003
 @use hcdril
 ```
 
-Adjust quantities to match catalog crew per module (`cdrill` 6, `farms` 5×qty, `factry` 10×qty, `cplant` 2×qty). **`GIVE`/`GET`** distributes bought `terran` to nested stacks. Campaign seed games now pre-place crew on each nested stack so turn 1 can skip the market buy when the report already shows crew aboard.
+Adjust quantities to match catalog crew per module (`cdrill` 6, `farms` 5×qty, `factry` 10×qty, `cplant` 2×qty). `**GIVE`/`GET**` distributes bought `terran` to nested stacks. Campaign seed games now pre-place crew on each nested stack so turn 1 can skip the market buy when the report already shows crew aboard.
 
 Order stacks on the **same subject**: HQ `@produce cash`, cargo bay `@get` / `@sell` / `@buy`, each module stack its own `#modulestack` block.
+
+**Orders template (report footer):** reuse **numeric stack ids** only. Do **not** paste template comment lines (`; + …`, `; items: …`) into the order file. Do **not** emit `#person` CEO blocks unless issuing a person-only verb (`TRAIN`, `ACTIVE`, `SEE`). `**@produce cash` belongs under `#modulestack <hq-id>`** (corphq), never under `#person` or cargo bay. After `#modulestack <id>`, put verb lines immediately — comments do not change the subject.
 
 ### Multi-stop MOVE (preferred)
 
@@ -229,6 +251,8 @@ move R00014 R00009
 Use `ACTIVE` + `STACK` (or start the turn already nested under a mover). Conditional `-move` chains are optional; for reconnaissance prefer a **single** `MOVE` with multiple region ids on the vehicle stack.
 
 ### Turn-1 economic bootstrap (pattern)
+
+**Campaign military and economic personas** use `**@produce terran`** on HQ instead of `@produce cash` — early quarters need manpower for nested crew and factory builds more than bank income. Researcher and contractor personas keep `@produce cash`.
 
 ```
 #modulestack <hq-id>
@@ -257,7 +281,7 @@ use twnbld as new1
 transfer 1 to faction 1
 ```
 
-Replace ids from the report template. When nested stacks already show crew in turn-1 reports, skip the market-buy block above. **`use twnbld as new1`** (10 weeks) builds a **`town`** module on the factory stack; then **`transfer 1 to faction 1`** on that new stack hands it to United Star Nations at headquarters and completes turn-1 **CT0006–CT0015** **`give-module`** contracts (reward e.g. **`ctypln`**). Stage **30 iron** and **2 titani** on the factory first. Open contracts appear under **Contract reports:** in the faction report and **Contracts:** in the grant region. Defer ground **`MOVE`** until a shuttle or other mobile stack exists; people ride on that stack.
+Replace ids from the report template. When nested stacks already show crew in turn-1 reports, skip the market-buy block above. `**use twnbld as new1**` (10 weeks) builds a `**town**` module on the factory stack; then `**transfer 1 to faction 1**` on that new stack hands it to United Star Nations at headquarters and completes turn-1 **CT0006–CT0015** `**give-module`** contracts (reward e.g. `**ctypln**`). Stage **30 iron** and **2 titani** on the factory first. Open contracts appear under **Contract reports:** in the faction report and **Contracts:** in the grant region. Defer ground `**MOVE`** until a shuttle or other mobile stack exists; people ride on that stack.
 
 ## Text vs XML
 
@@ -331,11 +355,11 @@ Posts a standing buy on the local market. During the week `Execute` only creates
 - Omitted `AT` — any price (`MatchesAsk` accepts any ask; bid cap for clearing ties is regional `Market.GetPrice`).
 - `AT <number>` — max price per unit (**must be ≥ 1**; zero/negative rejected at parse).
 - `AT AVERAGE` — cap at regional average (`Market.GetPrice`), same basis as [SELL](#sell) `AT AVERAGE`.
-- `AT AVERAGE +N` or shorthand **`AT +N`** — cap at average **+ N** (e.g. `@buy all terran at +1` outbids `@buy all terran` at list when both compete for the same sell).
+- `AT AVERAGE +N` or shorthand `**AT +N`** — cap at average **+ N** (e.g. `@buy all terran at +1` outbids `@buy all terran` at list when both compete for the same sell).
 
 **Regional clearing:** within one region market, competing buys at the **same bid cap** split available sell quantity **pro-rata** (by each buyer’s budget, capacity, and remaining demand). A **higher bid** (numeric cap or `AT +N`) takes the tier alone — any-price buyers at list do not share with `at +1`. Cheapest regional sell is cleared first; the loop repeats until no sell or no matching buys.
 
-Optional trailing **`EVERYWHERE`** is parsed but **campaign execution currently throws** (`Regions.DistanceBetween` not implemented) when matching distant markets — omit `EVERYWHERE` on campaign maps until fixed, or use local `@buy` without it. Technology buys still match immediately via `Offer.Process`, not regional clearing. First token is treated as a **technology id** if it is in the catalog (do not write a trailing `technology` word — Parse would reject it). Sample: `@buy all terran`, `@buy all iron at average`, `@buy all terran at +1`.
+Optional trailing `**EVERYWHERE`** is parsed but **campaign execution currently throws** (`Regions.DistanceBetween` not implemented) when matching distant markets — omit `EVERYWHERE` on campaign maps until fixed, or use local `@buy` without it. Technology buys still match immediately via `Offer.Process`, not regional clearing. First token is treated as a **technology id** if it is in the catalog (do not write a trailing `technology` word — Parse would reject it). Sample: `@buy all terran`, `@buy all iron at average`, `@buy all terran at +1`.
 
 ### CAPTURE
 
@@ -390,7 +414,7 @@ Turns active copies **player-inactive** (`module.Activated = false`). Optional q
 
 **Effect on stats:** inactive copies still count toward **mass**, **capacity**, and **capture** (`Quantity`, not `QuantityActive`). **Upkeep**, **energy production/requirement**, **crew requirement**, and **combat attack/defense** scale with `QuantityActive` only — same scaling as damage-disabled copies. Weekly **consume** (`ConsumeNetto`) still uses full `Quantity` (you cannot stop consumption by deactivating copies).
 
-**Reports:** stack header adds `, N module(s) inactive` when `QuantityInactive > 0`. Per-module detail shows **inactive** for `Activated=false` copies. Distinct from **`SET ONLINE FALSE`** (whole stack **deactivated**) and from damage **disabled** (online, activated, but too damaged or short crew/energy). In-progress long effects rescale duration when active copy count changes.
+**Reports:** stack header adds `, N module(s) inactive` when `QuantityInactive > 0`. Per-module detail shows **inactive** for `Activated=false` copies. Distinct from `**SET ONLINE FALSE`** (whole stack **deactivated**) and from damage **disabled** (online, activated, but too damaged or short crew/energy). In-progress long effects rescale duration when active copy count changes.
 
 Sample: `deactivate 2 modules`, `@deactivate all` to keep a stack mothballed but still aboard for transport.
 
@@ -553,9 +577,9 @@ Moves modules of this stack’s type onto an **existing** receiver stack, or **c
 
 **To a stack:** `n` must be a positive integer. The receiver id must already exist (no `newN` create). Instantaneous: same type **merges** into the receiver; a different type **nests** under it (nested package takes the receiver’s owner). Fighter drones (`alndrn`) may only nest in a **location** (`STACK OUT`) or a **fighter drone bay** (`drnbay`); `TRANSFER` them onto a hull fails — target the bay. Shuttles (`shuttl`) may also nest under a frigate hull.
 
-**To a faction:** `TRANSFER … TO FACTION <id>` hands the peeled modules to that faction at the transferer’s **current location** (root stack placed in the region). Use this to fulfill **`give-module`** contracts at the contract site when no issuer stack is available to receive a normal merge/nest — the delivery must still be at the contract location. Notifies open **`give-module`** contracts for that issuer and module type.
+**To a faction:** `TRANSFER … TO FACTION <id>` hands the peeled modules to that faction at the transferer’s **current location** (root stack placed in the region). Use this to fulfill `**give-module`** contracts at the contract site when no issuer stack is available to receive a normal merge/nest — the delivery must still be at the contract location. Notifies open `**give-module**` contracts for that issuer and module type.
 
-Copies the source’s long-order-used flag onto the package so the receiver cannot take a second long this week. Emptying the last module removes the source stack. Notifies **`give-module`** contracts on stack delivery. Fails with `TRANSFER failed. tried to transfer more modules than having.` Execute does not check same location for stack targets.
+Copies the source’s long-order-used flag onto the package so the receiver cannot take a second long this week. Emptying the last module removes the source stack. Notifies `**give-module**` contracts on stack delivery. Fails with `TRANSFER failed. tried to transfer more modules than having.` Execute does not check same location for stack targets.
 
 ### WITHDRAW
 
@@ -705,7 +729,7 @@ Spends spare parts (`spare`) and restores damage on the stack (or its parent sco
 
 Weekly output is catalog `research-output` × module count plus `**produce effect="research output"`** from trained officers anywhere on the lab stack whose `usable-in` matches the lab root (`Research.WeeklyOutput`; computer library `[cmplib]` is 1; sensor officer `[snsroff]` adds +1 per officer in Tests catalog). Breakthrough is a weekly hazard against the cheapest available tech cost (`Research.RollBreakthrough`; default cost 8, 16, 32… by level, catalog `cost` overrides). Else points accumulate. Preference (`RESEARCH TECHNOLOGY` / `GROUP` / `TAG` / …) is a ~50% pick from the matching subset (`PreferredTechnologies`). Bare tokens resolve in this order: existing **stack id**, known **technology**, **tag** (such as `military`), **item**, **module**, then **space object** (star, planet, moon, belt, region, or orbit id). `TAG` forces a tag preference even when the token is also a technology id. `RESEARCH TAG repair` prefers catalog techs whose `tags` include `repair`: medical services `[medtec]`, medicines refining `[medirf]`, preventive servicing `[servic]`, and engineering shop `[engshp]` (`engshp` also keeps `production`). `RESEARCH TAG research` prefers file indexing `[filidx]`, advanced computing `[advres]`, sick bay construction `[sckcns]`, and shipboard pharmacy `[pharms]`. Bare `research repair` still matches technology **repair and maintenance** `[repair]` (that id has no `repair` tag). Bare `research military` is a **tag**; `research group military` is a **group**.
 
-**Space-object survey reveal:** when the target is a space-object id (not a wreckage stack id), each week that passes the proximity gate queues that body’s catalog `**description=`** for the faction report under `**Survey reports:**` (`SurveyReports.QueueIfNew` → `ObjectsToShow`; after the report, `AllShown` moves it to `ObjectsSeen`). Each body is shown **once per faction**, like technology reports; objects with no `description` are skipped. Turn **1** reports auto-seed the home **star** and home **planet** blurbs for player factions **2–11** (from the faction’s `corphq` location; `SurveyReports.SeedTurnOneHomeBlurbs`).
+**Space-object survey reveal:** when the target is a space-object id (not a wreckage stack id), each week that passes the proximity gate queues that body’s catalog `**description=`** for the faction report under `**Survey reports:`** (`SurveyReports.QueueIfNew` → `ObjectsToShow`; after the report, `AllShown` moves it to `ObjectsSeen`). Each body is shown **once per faction**, like technology reports; objects with no `description` are skipped. Turn **1** reports auto-seed the home **star** and home **planet** blurbs for player factions **2–11** (from the faction’s `corphq` location; `SurveyReports.SeedTurnOneHomeBlurbs`).
 
 **Proximity** (`Research.IsResearcherAtSpaceObject`): the lab must be at the target **orbit**, **region**, or **belt**, or on the target **planet** or **moon**’s orbit or one of its surface regions. **Stars** have no proximity gate (any star id passes). If proximity fails, the week logs `RESEARCH failed: {lab} is not at {object}.` and **no research points accrue** that week. When proximity passes (or the target is a star), reveal is queued if new and the week proceeds normally — RP accrue or a breakthrough roll as for any other `RESEARCH`. Space-object preference still biases breakthroughs toward technologies that produce or consume resources found on that body (`Research.ResourcesOf`).
 
@@ -734,7 +758,7 @@ Starts `TrainingSkill` or `TrainingOfficer` (officer requires matching crew of t
 
 Uses a loaded (or level-0) technology: consumes catalog inputs and after `use-time` produces items or a module. `AS` names the new module stack; `FOR` is the nest parent. `AS` and `FOR` are independent (`use wndtrb for 000021` is valid). Level 0 techs do not need to be copied onto the stack. Duration scales with `UseTime`, efficiency, and active quantity. `use-allowed-in` can restrict module **group**, a specific module type (`module="sckbay"` for shipboard pharmacy `[pharms]`), **location-type** (against `BodyEnvironment.EffectiveLocationType` — gas-giant orbits with atmosphere ≠ `none` count as `atmosphere`), **planet-type**, and **planet-atmosphere** (same band-token gate as `PRODUCE`; failure line `USE failed: {tech} cannot operate in {location}.`).
 
-**Consume items at the factory:** on job start, `USE` debits every catalog `use-consume` item from the **producer stack’s own `ItemStacks` first**, then from other same-owner stacks in the same region whose cargo has **`Sharing=true`** (including nested bays on the grant). Materials sitting in a sibling cargo bay with default sharing still count; a bay marked **`set sharing false`** does not. Best practice: **`get`** iron, titani, and other inputs onto the factory before **`use armcbt`** (same turn is fine), or leave HQ cargo sharing enabled. Check the factory line in the report for on-hand iron/titani before issuing `USE`. Failure: `USE failed: not enough resources.` with no production started.
+**Consume items at the factory:** on job start, `USE` debits every catalog `use-consume` item from the **producer stack’s own `ItemStacks` first**, then from other same-owner stacks in the same region whose cargo has `**Sharing=true`** (including nested bays on the grant). Materials sitting in a sibling cargo bay with default sharing still count; a bay marked `**set sharing false**` does not. Best practice: `**get**` iron, titani, and other inputs onto the factory before `**use armcbt**` (same turn is fine), or leave HQ cargo sharing enabled. Check the factory line in the report for on-hand iron/titani before issuing `USE`. Failure: `USE failed: not enough resources.` with no production started.
 
 **Settlement temperature:** if the tech produces a **settlement**-group module, `BodyEnvironment.AllowsSettlement` must pass at the producer’s location. **Habitable** (planet default when XML omits `temperature`) always allows. **Cold** allows only module types `clddom` and `cryhab`. **Hot** allows only `hotdom`. Otherwise `USE failed: {module} cannot settle a {cold|hot} world.` SampleGame `Tests/data.xml` has none of those exception types. Moons with no `temperature` attribute load as **cold** (`ParseTemperature` of an empty string), so `USE popcnt` / `ctypln` / `dmecns` on a SampleGame moon fails this gate. Planets with no attribute load as **habitable**.
 
@@ -747,5 +771,7 @@ In-progress work is a `Producing*` effect. It only ticks when a matching uncondi
 Omit `FOR`: `ReceiverParent` defaults to the **producer**. `ProducingModule` treats that as “no extra nest”: the product is **formed as a sibling** (`produced.Parent = Producer.Parent`, same orbit/region). At complete it does **not** stack under the producer. `use spctrl as new102` therefore leaves a command bridge sitting next to the shuttle.
 
 `use TECH as newX for 101` stacks the product under hull `101` when production **completes**, same location required (`STACK failed. Parent is in different location.` if the hull has already left). Alternative: `#modulestack new102` then `stack 101` (immediate, also same location). A nested factory can `USE` while the hull’s long slot is a `MOVE` (one long **per subject**). The shuttle itself may only `USE` in **orbit**.
+
+**Receiver aliases (`newN` only):** name new module stacks with the engine `**newN`** pattern (`new1`, `new108`, …). Do **not** invent prose aliases (`scout1`, `tanks1`) — `#modulestack scout1` can resolve to the wrong owner at parse time and abort the turn. Pattern: under factory `#modulestack <factry-id>` issue `use grndtr as new1 for <hq-id>` and one or two `use armcbt as newN for <hq-id>` lines (campaign military: **new2** and **new3** before engaging Mid Vale fauna), then switch subjects with `#modulestack new1` / `#modulestack new2` / `#modulestack new3` for `@move` / `@attack`. Reuse the **same** `newN` token in both the `USE … as newN` line and the later `#modulestack newN` header.
 
 Effect-producing techs (`use-produce effect=…`) run through `ProducingEffect`. **Repair and maintenance** `[repair]` (`use-time` 2, production-group module): consumes **1 spare** at start, then after duration repairs **1 HP** on the producer’s parent scope (nested factory repairs its parent stack and nested children — same walk as `REPAIR`). Fails with `USE failed: no damage to repair.` if scope has no damage (spare not consumed). Event: `repaired 1 damage.` For faster weekly repairs use `**REPAIR`** instead (10/20 HP per week).

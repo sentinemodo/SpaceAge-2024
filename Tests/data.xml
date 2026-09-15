@@ -1310,6 +1310,7 @@ Researchers can query the library. The system can handle natural language questi
 			hit-points="100"
 			defense="5">
 			<produce item="cash" quantity="100" duration="1"/>
+			<produce item="terran" quantity="1" duration="1"/>
 			<upkeep type="cash" quantity="100"/>
 			<effect type="upkeep reduction" value="0.1" target="region"/>
 			<effect type="fast construction" value="1.0" target="region"/>
