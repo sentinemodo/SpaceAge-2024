@@ -5,8 +5,11 @@ import { fileURLToPath } from 'node:url';
 import {
   ensureRunLayout,
   gameinPath,
-  latestReportPaths,
+  listRuns,
+  listTurns,
+  latestTurn,
   readTurnFromGamein,
+  reportPaths,
   repoRoot,
   runId,
 } from './lib/paths.mjs';
@@ -15,6 +18,7 @@ import {
   logout,
   loadFactionCredentials,
   listFactions,
+  getFaction,
   effectiveFactionId,
   factionDisplayName,
   requireGm,
@@ -34,6 +38,18 @@ const PORT = parseInt(process.env.GAME_HOST_PORT || '8787', 10);
 const VISUAL_DIST = path.join(repoRoot(), 'visual-tool', 'dist');
 
 ensureRunLayout();
+
+function sessionRunId(session) {
+  return session.viewRunId || runId();
+}
+
+function sessionTurn(session) {
+  return session.viewTurn ?? null;
+}
+
+function reportPathsForSession(session, factionId) {
+  return reportPaths(factionId, sessionRunId(session), sessionTurn(session));
+}
 
 function readBody(req) {
   return new Promise((resolve, reject) => {
@@ -135,14 +151,51 @@ const server = http.createServer(async (req, res) => {
   if (req.method === 'GET' && url.pathname === '/api/session/meta') {
     const session = requireSession(req, res);
     if (!session) return;
+    const rid = sessionRunId(session);
+    const resolvedTurn = sessionTurn(session) ?? latestTurn(rid);
     json(res, 200, {
       factionId: session.factionId,
       viewAsFactionId: effectiveFactionId(session),
       name: factionDisplayName(session),
       admin: !!session.admin,
       factions: session.admin ? listFactions() : undefined,
-      turn: fs.existsSync(gameinPath()) ? readTurnFromGamein() : 0,
+      runId: rid,
+      viewRunId: session.viewRunId || rid,
+      viewTurn: resolvedTurn,
+      runs: listRuns(),
+      turns: listTurns(rid),
+      turn: fs.existsSync(gameinPath(rid)) ? readTurnFromGamein(rid) : resolvedTurn,
       engineVersion: '0.1.159',
+    });
+    return;
+  }
+
+  if (req.method === 'GET' && url.pathname === '/api/session/runs') {
+    const session = requireSession(req, res);
+    if (!session) return;
+    json(res, 200, { runs: listRuns() });
+    return;
+  }
+
+  if (req.method === 'GET' && url.pathname === '/api/session/turns') {
+    const session = requireSession(req, res);
+    if (!session) return;
+    const rid = url.searchParams.get('runId') || sessionRunId(session);
+    json(res, 200, { runId: rid, turns: listTurns(rid) });
+    return;
+  }
+
+  if (req.method === 'POST' && url.pathname === '/api/session/context') {
+    const session = requireSession(req, res);
+    if (!session) return;
+    const body = JSON.parse(await readBody(req));
+    if (body.runId) session.viewRunId = String(body.runId);
+    if (body.turn != null) session.viewTurn = parseInt(body.turn, 10);
+    const rid = sessionRunId(session);
+    json(res, 200, {
+      runId: rid,
+      viewTurn: sessionTurn(session) ?? latestTurn(rid),
+      turns: listTurns(rid),
     });
     return;
   }
@@ -156,7 +209,7 @@ const server = http.createServer(async (req, res) => {
     }
     const body = JSON.parse(await readBody(req));
     const viewAs = parseInt(body.factionId, 10);
-    const row = loadFactionCredentials().get(viewAs);
+    const row = getFaction(viewAs);
     if (!row) {
       json(res, 400, { error: 'unknown faction' });
       return;
@@ -169,7 +222,7 @@ const server = http.createServer(async (req, res) => {
   if (req.method === 'GET' && url.pathname === '/api/session/report.xml') {
     const session = requireSession(req, res);
     if (!session) return;
-    const { xmlPath, isoTxt, txtPath } = latestReportPaths(effectiveFactionId(session));
+    const { xmlPath } = reportPathsForSession(session, effectiveFactionId(session));
     const pick = fs.existsSync(xmlPath) ? xmlPath : null;
     if (!pick) {
       json(res, 404, { error: 'report xml not found; GM may need to run /reports' });
@@ -196,7 +249,7 @@ const server = http.createServer(async (req, res) => {
   if (req.method === 'GET' && url.pathname === '/api/session/report.txt') {
     const session = requireSession(req, res);
     if (!session) return;
-    const { txtPath, isoTxt } = latestReportPaths(effectiveFactionId(session));
+    const { txtPath, isoTxt } = reportPathsForSession(session, effectiveFactionId(session));
     const pick = fs.existsSync(txtPath) ? txtPath : isoTxt;
     if (!fs.existsSync(pick)) {
       json(res, 404, { error: 'report not found' });
@@ -211,7 +264,7 @@ const server = http.createServer(async (req, res) => {
     const session = requireSession(req, res);
     if (!session) return;
     const factionId = effectiveFactionId(session);
-    const { txtPath, isoTxt } = latestReportPaths(factionId);
+    const { txtPath, isoTxt } = reportPathsForSession(session, factionId);
     const pick = fs.existsSync(txtPath) ? txtPath : isoTxt;
     if (!fs.existsSync(pick)) {
       json(res, 404, { error: 'report not found' });

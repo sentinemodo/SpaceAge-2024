@@ -445,6 +445,12 @@ body {
   transform: translate(-50%, -50%);
 }
 
+.system-node-star {
+  color: #1a1208;
+  font-weight: 600;
+  text-shadow: 0 0 4px rgba(255, 255, 255, 0.35);
+}
+
 .system-node.selected {
   border-color: var(--accent);
   box-shadow: 0 0 12px var(--accent);
@@ -466,12 +472,28 @@ body {
   margin: 0.35rem 0;
 }
 
+.region-map-stage {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
 .region-map-zoom-toolbar {
+  position: absolute;
+  top: 0.35rem;
+  right: 0.35rem;
+  z-index: 3;
   display: flex;
   align-items: center;
   gap: 0.5rem;
   font-size: 0.75rem;
-  align-self: flex-start;
+  padding: 0.2rem 0.35rem;
+  background: color-mix(in srgb, var(--bg-dark) 88%, transparent);
+  border: 1px solid var(--border);
+  border-radius: 4px;
 }
 
 .region-map-zoom-toolbar button {
@@ -512,12 +534,27 @@ body {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  margin-bottom: 0.75rem;
+}
+
+.body-view-orbit-label-below {
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.body-view-orbit-icons {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.body-view-orbit-vertical .body-view-orbit-icons {
+  flex-direction: column;
 }
 
 .body-view-orbit-label {
-  font-size: 0.8rem;
-  color: var(--text-muted);
+  font-size: 0.65rem;
+  color: var(--text-dim);
 }
 
 .selected-unit-order {
@@ -841,7 +878,7 @@ body {
   align-items: stretch;
   gap: 0;
   padding: 0.75rem 0.5rem;
-  background: radial-gradient(ellipse at 94% 50%, #2a1a10 0%, var(--bg-dark) 55%);
+  background: radial-gradient(ellipse at 6% 50%, #2a1a10 0%, var(--bg-dark) 55%);
   overflow-x: auto;
   overflow-y: hidden;
   min-height: 260px;
@@ -854,12 +891,12 @@ body {
   border: none;
   border-radius: 0 100% 100% 0 / 0 50% 50% 0;
   cursor: pointer;
-  box-shadow: inset 8px 0 24px rgba(255, 200, 80, 0.35), 0 0 20px rgba(240, 160, 48, 0.25);
+  box-shadow: inset -8px 0 24px rgba(255, 255, 255, 0.2), 0 0 20px rgba(240, 160, 48, 0.28);
   opacity: 0.92;
 }
 
 .system-orbit-star-arc.selected {
-  box-shadow: inset 8px 0 28px rgba(255, 220, 120, 0.5), 0 0 16px var(--accent);
+  box-shadow: inset -8px 0 28px rgba(255, 220, 120, 0.5), 0 0 16px var(--accent);
   outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
@@ -880,6 +917,12 @@ body {
   min-width: 148px;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
+}
+
+.system-orbit-band-belt {
+  flex: 0 0 auto;
+  min-width: 96px;
+  max-width: 112px;
 }
 
 .band-body-stack {
@@ -914,6 +957,260 @@ body {
   font-size: 0.65rem;
   color: var(--text-dim);
   text-align: center;
+}
+
+.band-au-vertical {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  max-height: 6rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.belt-arc {
+  flex: 1 1 auto;
+  align-self: stretch;
+  width: 44px;
+  min-height: 100px;
+  margin: 0.15rem 0;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--body-color);
+  cursor: pointer;
+  transform: rotate(var(--belt-tilt, 0deg));
+  transform-origin: center center;
+  opacity: 0.92;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+}
+
+.belt-arc-svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 4px color-mix(in srgb, var(--body-color) 45%, transparent));
+}
+
+.belt-arc.selected {
+  outline: none;
+  opacity: 1;
+}
+
+.belt-arc.selected .belt-arc-svg path {
+  stroke: var(--accent);
+  stroke-width: 3.5;
+}
+
+.belt-arc.has-presence .belt-arc-svg {
+  filter: drop-shadow(0 0 8px var(--accent-dim));
+}
+
+.belt-arc-compact {
+  width: 14px;
+  min-height: 56px;
+  flex: 0 0 56px;
+  margin: 0.1rem 0;
+}
+
+.band-children-rings {
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.15rem;
+  max-width: 72px;
+}
+
+.band-belt-stack {
+  flex: 1;
+  min-height: 140px;
+}
+
+.belt-arc-wrap {
+  position: relative;
+  flex: 1 1 auto;
+  align-self: stretch;
+  display: flex;
+  min-height: 100px;
+}
+
+.belt-orbit-center-inline {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.belt-orbit-center-inline .body-view-orbit {
+  pointer-events: auto;
+  background: color-mix(in srgb, var(--bg-dark) 82%, transparent);
+  border-radius: 6px;
+  padding: 0.25rem 0.35rem;
+}
+
+.belt-detail-map {
+  position: relative;
+  flex: 1;
+  min-height: 260px;
+  background: radial-gradient(ellipse at center, #1a2030 0%, var(--bg-dark) 70%);
+  overflow: hidden;
+}
+
+.belt-dot-field {
+  position: absolute;
+  inset: 0;
+}
+
+.belt-dot {
+  position: absolute;
+  border-radius: 50%;
+  background: #b8c0cc;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.belt-orbit-center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.belt-orbit-center .body-view-orbit {
+  pointer-events: auto;
+  background: color-mix(in srgb, var(--bg-dark) 80%, transparent);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.5rem;
+}
+
+.unit-report-detail-text {
+  font-size: 0.72rem;
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+.context-selector,
+.faction-selector {
+  font-size: 0.8rem;
+  max-width: 12rem;
+}
+
+.order-split-heading-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.35rem;
+}
+
+.order-mode-tabs {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.order-mode-tabs button {
+  font-size: 0.72rem;
+  padding: 0.2rem 0.5rem;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text-muted);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.order-mode-tabs button.active {
+  color: var(--accent);
+  border-color: var(--accent-dim);
+}
+
+.panel-heading-row,
+.panel-mode-tabs {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.panel-mode-tabs {
+  gap: 0.25rem;
+}
+
+.panel-mode-tabs button {
+  font-size: 0.72rem;
+  padding: 0.2rem 0.5rem;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text-muted);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.panel-mode-tabs button.active {
+  color: var(--accent);
+  border-color: var(--accent-dim);
+}
+
+.action-placeholders {
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+}
+
+.placeholder-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.placeholder-action {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.8rem;
+}
+
+.placeholder-action textarea {
+  width: 100%;
+  font-family: inherit;
+  font-size: 0.75rem;
+}
+
+.bank-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.75rem;
+  margin: 0.75rem 0 1rem;
+}
+
+.bank-summary-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.65rem 0.75rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 0.8rem;
+}
+
+.market-offer-group {
+  margin: 0.75rem 0;
+  padding: 0.5rem 0.75rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+.market-offer-group strong {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.82rem;
 }
 
 .body-icon {
@@ -960,6 +1257,176 @@ body {
 .body-icon-name {
   font-weight: 600;
   white-space: nowrap;
+}
+
+.planet-view-map {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 0;
+  padding: 0.75rem 0.5rem;
+  background: radial-gradient(ellipse at 6% 50%, color-mix(in srgb, var(--body-color, #3a5a80) 18%, #1a2540) 0%, var(--bg-dark) 58%);
+  overflow: hidden;
+  min-height: 260px;
+}
+
+.planet-view-map-no-regions {
+  background: radial-gradient(ellipse at 6% 50%, color-mix(in srgb, var(--body-color, #3a5a80) 22%, #1a2540) 0%, var(--bg-dark) 55%);
+}
+
+.planet-view-central-pane {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  padding: 0 0.5rem;
+  border-left: 1px dashed rgba(100, 150, 210, 0.2);
+}
+
+.planet-view-central-pane .region-map-zoom-toolbar {
+  position: absolute;
+  top: 0.35rem;
+  right: 0.35rem;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  padding: 0.2rem 0.35rem;
+  background: color-mix(in srgb, var(--bg-dark) 88%, transparent);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+
+.planet-view-switcher {
+  position: absolute;
+  top: 0.35rem;
+  left: 0.35rem;
+  z-index: 3;
+  display: flex;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.planet-view-orbit-column {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0.35rem;
+  border-left: 1px dashed rgba(100, 150, 210, 0.2);
+}
+
+.planet-view-satellite-bands {
+  flex: 0 1 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  min-height: 0;
+  overflow-x: auto;
+}
+
+.planet-view-satellite-band {
+  flex: 0 0 auto;
+  min-width: 88px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem 0.25rem;
+  border-left: 1px dashed rgba(100, 150, 210, 0.2);
+  align-self: stretch;
+}
+
+.body-surface-arc {
+  flex: 0 0 72px;
+  align-self: stretch;
+  margin: 0.25rem 0;
+  border: none;
+  border-radius: 0 100% 100% 0 / 0 50% 50% 0;
+  cursor: default;
+  box-shadow: inset -8px 0 24px rgba(255, 255, 255, 0.15), 0 0 18px color-mix(in srgb, var(--body-color) 40%, transparent);
+  opacity: 0.94;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 0.5rem 0.25rem 0.5rem 0;
+  color: rgba(255, 255, 255, 0.92);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
+}
+
+.body-surface-arc.selected {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.body-surface-arc-glyph {
+  font-size: 1.35rem;
+  line-height: 1;
+}
+
+.body-surface-arc-name {
+  font-size: 0.55rem;
+  font-weight: 600;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  max-height: 5.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.region-orbit-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  padding: 0 0.5rem;
+}
+
+.region-orbit-bands {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  width: 100%;
+  min-height: 0;
+  overflow-x: auto;
+}
+
+.region-orbit-band {
+  flex: 1 1 0;
+  min-width: 88px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem 0.25rem;
+  border-left: 1px dashed rgba(100, 150, 210, 0.2);
+  align-self: stretch;
+}
+
+.region-orbit-band-orbits {
+  flex: 0 0 auto;
+  min-width: 72px;
+}
+
+.body-view-orbit-vertical {
+  flex-direction: column;
+  align-items: center;
 }
 
 .region-view {
@@ -1037,9 +1504,15 @@ body {
 .region-cell-label {
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
-  padding: 0 2px;
+  white-space: normal;
+  line-height: 1.05;
+  padding: 1px 2px;
   max-width: 100%;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  word-break: break-word;
+  hyphens: auto;
 }
 
 .region-cell.no-presence .region-cell-label {

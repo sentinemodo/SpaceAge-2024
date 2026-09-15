@@ -4,26 +4,49 @@ import { gameinPath } from './paths.mjs';
 
 const sessions = new Map();
 
-export function loadFactionCredentials() {
+export const PLAYER_FACTION_MIN = 2;
+export const PLAYER_FACTION_MAX = 11;
+
+function isPlayerFaction(id) {
+  return id >= PLAYER_FACTION_MIN && id <= PLAYER_FACTION_MAX;
+}
+
+/** Every faction row from gamein (players, UN, fauna, etc.). */
+export function loadAllFactions() {
   const xml = fs.readFileSync(gameinPath(), 'utf8');
-  const creds = new Map();
+  const factions = new Map();
   const re = /<faction\s+name="(\d+)"[^>]*name-en="([^"]*)"[^>]*password="([^"]*)"/g;
   let m;
   while ((m = re.exec(xml)) !== null) {
     const id = parseInt(m[1], 10);
-    if (id >= 2 && id <= 11) {
-      creds.set(id, { id, name: m[2], password: m[3] });
-    }
+    factions.set(id, {
+      id,
+      name: m[2],
+      password: m[3],
+      npc: !isPlayerFaction(id),
+    });
+  }
+  return factions;
+}
+
+/** Player factions only — used for password login and order validation. */
+export function loadFactionCredentials() {
+  const creds = new Map();
+  for (const row of loadAllFactions().values()) {
+    if (isPlayerFaction(row.id)) creds.set(row.id, row);
   }
   return creds;
 }
 
+export function getFaction(factionId) {
+  return loadAllFactions().get(factionId);
+}
+
 export function login(factionId, password, gmKey) {
-  const creds = loadFactionCredentials();
-  const row = creds.get(factionId);
+  const row = getFaction(factionId);
   const expectedGm = process.env.GAME_HOST_GM_KEY || 'dev-gm-key';
   const admin = typeof gmKey === 'string' && gmKey.trim() === expectedGm;
-  if (!row || (!admin && row.password !== password)) {
+  if (!row || (!admin && (!isPlayerFaction(factionId) || row.password !== password))) {
     return null;
   }
   const token = crypto.randomBytes(24).toString('hex');
@@ -32,16 +55,22 @@ export function login(factionId, password, gmKey) {
     name: row.name,
     admin,
     viewAsFactionId: factionId,
+    viewRunId: null,
+    viewTurn: null,
     created: Date.now(),
   });
   return token;
 }
 
+/** Admin dropdown: all factions with npc flag for grouping in the client. */
 export function listFactions() {
-  return [...loadFactionCredentials().values()].map((f) => ({
-    id: f.id,
-    name: f.name,
-  }));
+  return [...loadAllFactions().values()]
+    .sort((a, b) => a.id - b.id)
+    .map((f) => ({
+      id: f.id,
+      name: f.name,
+      npc: f.npc,
+    }));
 }
 
 export function effectiveFactionId(session) {
@@ -50,7 +79,7 @@ export function effectiveFactionId(session) {
 
 export function factionDisplayName(session) {
   const id = effectiveFactionId(session);
-  const row = loadFactionCredentials().get(id);
+  const row = getFaction(id);
   return row?.name || session.name;
 }
 
@@ -88,7 +117,7 @@ export function requireGm(req, res) {
   if (provided !== key) {
     res.writeHead(403, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify({ error: 'forbidden' }));
-    return false;
+    return null;
   }
   return true;
 }

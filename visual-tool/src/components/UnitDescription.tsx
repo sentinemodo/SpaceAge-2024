@@ -1,6 +1,13 @@
 import { formatUpkeep, type StackNode } from '../parsers/reportXml';
+import { ClickableReportText } from './ClickableReportText';
 
-export function UnitDescription({ stack }: { stack: StackNode }) {
+export function UnitDescription({
+  stack,
+  onFocusId,
+}: {
+  stack: StackNode;
+  onFocusId?: (id: string) => void;
+}) {
   return (
     <div className="object-description-body">
       <div className="obj-meta">
@@ -49,6 +56,15 @@ export function UnitDescription({ stack }: { stack: StackNode }) {
           </div>
         )}
       </div>
+      {stack.reportDetail && (
+        <div className="obj-block unit-report-detail">
+          <ClickableReportText
+            text={stack.reportDetail}
+            onFocusId={onFocusId}
+            className="unit-report-detail-text"
+          />
+        </div>
+      )}
     </div>
   );
 }

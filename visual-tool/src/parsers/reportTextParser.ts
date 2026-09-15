@@ -1,4 +1,5 @@
 import type { ParsedReport, RegionNode, StackNode, StarNode } from './reportXml';
+import { attachStackDetails, parseStackDetails } from './stackDetailsParser';
 
 /** Region line: `Prairie [R00021] (2,3), grassland region` */
 const REGION_LINE =
@@ -145,11 +146,13 @@ export function enrichReportFromGalaxyText(
       terrainType: r.terrainType,
     }));
 
+  const stackDetails = parseStackDetails(galaxyText);
+
   return {
     ...report,
     regions,
     systemDetails,
-    stacks: attachStackLines(report.stacks, index.stackLines),
+    stacks: attachStackDetails(attachStackLines(report.stacks, index.stackLines), stackDetails),
     regionHints,
     regionReportLines: Object.fromEntries(index.regionReportLines),
   };

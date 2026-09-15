@@ -15,52 +15,118 @@ export function runId() {
   return process.env.GAME_HOST_RUN_ID || 'beta-1';
 }
 
-export function runRoot() {
-  return path.join(repoRoot(), 'game-host', 'runs', runId());
+export function runsRoot() {
+  return path.join(repoRoot(), 'game-host', 'runs');
 }
 
-export function dataDir() {
-  return path.join(runRoot(), 'data');
+export function resolveRunRoot(forRunId = runId()) {
+  const hostRun = path.join(runsRoot(), forRunId);
+  if (fs.existsSync(hostRun)) return hostRun;
+  const playRun = path.join(repoRoot(), 'play', 'runs', forRunId);
+  if (fs.existsSync(playRun)) return playRun;
+  return hostRun;
 }
 
-export function turnDir() {
-  return path.join(runRoot(), 'turn');
+export function runRoot(forRunId = runId()) {
+  return resolveRunRoot(forRunId);
 }
 
-export function factionsDir() {
-  return path.join(runRoot(), 'factions');
+export function dataDir(forRunId = runId()) {
+  return path.join(runRoot(forRunId), 'data');
 }
 
-export function gameExe() {
-  return process.env.GAME_EXE || path.join(repoRoot(), 'Game', 'bin', 'Debug', 'Game.exe');
+export function turnDir(forRunId = runId()) {
+  return path.join(runRoot(forRunId), 'turn');
+}
+
+export function factionsDir(forRunId = runId()) {
+  return path.join(runRoot(forRunId), 'factions');
 }
 
 export function campaignDataXml() {
   return path.join(repoRoot(), 'campaign', 'data.xml');
 }
 
-export function ensureRunLayout() {
-  for (const dir of [dataDir(), turnDir(), factionsDir()]) {
+export function ensureRunLayout(forRunId = runId()) {
+  for (const dir of [dataDir(forRunId), turnDir(forRunId), factionsDir(forRunId)]) {
     fs.mkdirSync(dir, { recursive: true });
   }
 }
 
-export function gameinPath() {
-  return path.join(dataDir(), 'gamein.xml');
+export function gameinPath(forRunId = runId()) {
+  return path.join(dataDir(forRunId), 'gamein.xml');
 }
 
-export function readTurnFromGamein() {
-  const xml = fs.readFileSync(gameinPath(), 'utf8');
+export function readTurnFromGamein(forRunId = runId()) {
+  const xmlPath = gameinPath(forRunId);
+  if (!fs.existsSync(xmlPath)) return 1;
+  const xml = fs.readFileSync(xmlPath, 'utf8');
   const m = xml.match(/<game\s+turn="(\d+)"/);
   return m ? parseInt(m[1], 10) : 1;
 }
 
-export function latestReportPaths(factionId) {
-  const turn = readTurnFromGamein();
-  const base = `report.${turn}.${factionId}`;
-  const turnPath = turnDir();
-  const xmlPath = path.join(turnPath, `${base}.xml`);
-  const txtPath = path.join(turnPath, `${base}.txt`);
-  const isoTxt = path.join(factionsDir(), String(factionId).padStart(2, '0'), `${base}.txt`);
-  return { turn, xmlPath, txtPath, isoTxt };
+export function listRuns() {
+  const ids = new Set();
+  for (const root of [runsRoot(), path.join(repoRoot(), 'play', 'runs')]) {
+    if (!fs.existsSync(root)) continue;
+    for (const d of fs.readdirSync(root)) {
+      try {
+        if (fs.statSync(path.join(root, d)).isDirectory()) ids.add(d);
+      } catch {
+        /* skip */
+      }
+    }
+  }
+  return [...ids].sort().map((id) => ({ id, label: id }));
+}
+
+function scanReportTurns(dir, turns) {
+  if (!fs.existsSync(dir)) return;
+  for (const file of fs.readdirSync(dir)) {
+    const m = file.match(/^report\.(\d+)\./);
+    if (m) turns.add(parseInt(m[1], 10));
+  }
+}
+
+export function listTurns(forRunId = runId()) {
+  const turns = new Set();
+  scanReportTurns(turnDir(forRunId), turns);
+  const fRoot = factionsDir(forRunId);
+  scanReportTurns(fRoot, turns);
+  if (fs.existsSync(fRoot)) {
+    for (const sub of fs.readdirSync(fRoot)) {
+      try {
+        const subPath = path.join(fRoot, sub);
+        if (fs.statSync(subPath).isDirectory()) scanReportTurns(subPath, turns);
+      } catch {
+        /* skip */
+      }
+    }
+  }
+  turns.add(readTurnFromGamein(forRunId));
+  return [...turns].sort((a, b) => b - a);
+}
+
+export function latestTurn(forRunId = runId()) {
+  const turns = listTurns(forRunId);
+  return turns.length ? turns[0] : readTurnFromGamein(forRunId);
+}
+
+export function reportPaths(factionId, forRunId = runId(), turn = null) {
+  const resolvedTurn = turn ?? latestTurn(forRunId);
+  const base = `report.${resolvedTurn}.${factionId}`;
+  const tDir = turnDir(forRunId);
+  const xmlPath = path.join(tDir, `${base}.xml`);
+  const txtPath = path.join(tDir, `${base}.txt`);
+  const isoTxt = path.join(factionsDir(forRunId), String(factionId).padStart(2, '0'), `${base}.txt`);
+  return { turn: resolvedTurn, runId: forRunId, xmlPath, txtPath, isoTxt };
+}
+
+/** @deprecated use reportPaths */
+export function latestReportPaths(factionId, forRunId = runId(), turn = null) {
+  return reportPaths(factionId, forRunId, turn);
+}
+
+export function gameExe() {
+  return process.env.GAME_EXE || path.join(repoRoot(), 'Game', 'bin', 'Debug', 'Game.exe');
 }

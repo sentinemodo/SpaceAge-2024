@@ -58,6 +58,8 @@ export interface StackNode {
   persons: PersonNode[];
   /** Galaxy report text line, e.g. `+ small cargo bay [230003], 2 small cargo bays [cargob], immobile.` */
   reportLine?: string;
+  /** Indented stats/items block from galaxy report text. */
+  reportDetail?: string;
 }
 
 export interface StarNode {

@@ -30,6 +30,12 @@ async function api(path: string, init: RequestInit = {}) {
 export interface FactionOption {
   id: number;
   name: string;
+  npc?: boolean;
+}
+
+export interface RunOption {
+  id: string;
+  label: string;
 }
 
 export interface SessionMeta {
@@ -37,6 +43,11 @@ export interface SessionMeta {
   viewAsFactionId?: number;
   name?: string;
   turn?: number;
+  viewTurn?: number;
+  runId?: string;
+  viewRunId?: string;
+  runs?: RunOption[];
+  turns?: number[];
   admin?: boolean;
   factions?: FactionOption[];
 }
@@ -72,6 +83,14 @@ export async function viewAsFaction(factionId: number) {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ factionId }),
+  });
+}
+
+export async function setSessionContext(ctx: { runId?: string; turn?: number }) {
+  return api('/api/session/context', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(ctx),
   });
 }
 

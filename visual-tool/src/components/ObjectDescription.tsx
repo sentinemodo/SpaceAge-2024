@@ -222,7 +222,7 @@ export function ObjectDescription({
     body = <PersonDescription person={selectedPerson} />;
   } else if (selectedStack) {
     title = titled(selectedStack.name || selectedStack.type || selectedStack.id, selectedStack.id);
-    body = <UnitDescription stack={selectedStack} />;
+    body = <UnitDescription stack={selectedStack} onFocusId={onFocusId} />;
   } else if (filterOrbitId && filterBodyId && systemDetail) {
     const b = getBodyDetail(report, systemViewId!, filterBodyId);
     if (b) {

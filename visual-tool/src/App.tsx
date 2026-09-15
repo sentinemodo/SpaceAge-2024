@@ -6,6 +6,7 @@ import {
   fetchReportTxt,
   fetchReportSections,
   viewAsFaction,
+  setSessionContext,
   parseOrders,
   runBattleSim,
   submitOrders,
@@ -22,7 +23,6 @@ import {
   findOrderForStack,
   findOrderForTarget,
   findPersonInStacks,
-  formatOrderEntry,
   resolveMoveRouteSystems,
   getSystemDetail,
   getBodyDetail,
@@ -44,8 +44,27 @@ import {
 } from './parsers/reportXml';
 import { enrichReportFromGalaxyText } from './parsers/reportTextParser';
 import { regionTerrainColor } from './lib/terrainColors';
-import { bodyTypeColor, bodyIconScale, starAmberGradient } from './lib/bodyStyles';
+import {
+  bodyTypeColor,
+  bodyIconScale,
+  bodyArcGradient,
+  starAmberGradient,
+  starTypeBorderColor,
+} from './lib/bodyStyles';
 import { SidePanel, type SideTab } from './components/SidePanel';
+import { OrbitSelector } from './components/OrbitSelector';
+import { BeltDotField } from './components/BeltDotField';
+import {
+  ordersTemplateText,
+  ordersSummaryForFocus,
+  preloadFactionOrders,
+} from './lib/orderDisplay';
+import {
+  estimateCashUpkeep,
+  estimateInterest,
+  parseBankSummary,
+  parseMarketOffers,
+} from './lib/bankMarket';
 import { ClickableReportText } from './components/ClickableReportText';
 import { TechnologyCatalog } from './components/TechnologyCatalog';
 import { ResizeHandle } from './components/ResizeHandle';
@@ -61,7 +80,13 @@ import {
 
 const REGION_ZOOM_BASE = 1.5;
 
-type Panel = 'map' | 'tech' | 'diplomacy' | 'contracts' | 'bank' | 'battle' | 'faction';
+type Panel = 'map' | 'tech' | 'diplomacy' | 'bank' | 'battle' | 'faction';
+type OrderMode = 'units' | 'faction';
+type TechView = 'known' | 'breakthrough';
+
+function isGasGiant(body: SystemBodyNode): boolean {
+  return body.kind === 'planet' && (body.planetType || '').toLowerCase().includes('gas');
+}
 
 function LoginScreen({ onLogin }: { onLogin: () => void }) {
   const [factionId, setFactionId] = useState('2');
@@ -188,11 +213,79 @@ function RegionMap({
             title={`${region.name} [${region.id}]${region.terrainType ? ` · ${region.terrainType}` : ''}`}
             onClick={() => onSelectRegion(region.id)}
           >
-            <span className="region-cell-label">{region.name.split(' ')[0]}</span>
+            <span className="region-cell-label">{region.name}</span>
           </button>
         );
       })}
     </div>
+  );
+}
+
+function BodySurfaceArc({
+  body,
+  selected,
+  onSelect,
+}: {
+  body: SystemBodyNode;
+  selected?: boolean;
+  onSelect?: () => void;
+}) {
+  const color = bodyTypeColor(body);
+  return (
+    <button
+      type="button"
+      className={`body-surface-arc body-surface-arc-${body.kind} ${selected ? 'selected' : ''}`}
+      style={{
+        background: bodyArcGradient(body),
+        ['--body-color' as string]: color,
+      }}
+      title={`${body.name} [${body.id}]${body.planetType ? ` · ${body.planetType}` : ''}`}
+      onClick={onSelect}
+    >
+      <span className="body-surface-arc-glyph" aria-hidden>{bodyKindIcon(body)}</span>
+      <span className="body-surface-arc-name">{body.name}</span>
+    </button>
+  );
+}
+
+function BeltArcButton({
+  body,
+  selected,
+  bandIndex,
+  compact,
+  hasPresence,
+  onSelect,
+  onOpen,
+}: {
+  body: SystemBodyNode;
+  selected: boolean;
+  bandIndex: number;
+  compact?: boolean;
+  hasPresence?: boolean;
+  onSelect: () => void;
+  onOpen: () => void;
+}) {
+  const color = bodyTypeColor(body);
+  const tilt = bandIndex % 2 === 0 ? 5 : -5;
+  return (
+    <button
+      type="button"
+      className={`belt-arc ${compact ? 'belt-arc-compact' : ''} ${selected ? 'selected' : ''} ${hasPresence ? 'has-presence' : ''}`}
+      style={{
+        ['--body-color' as string]: color,
+        ['--belt-tilt' as string]: `${tilt}deg`,
+      }}
+      title={`${body.name} (${body.au} AU) — belt`}
+      onClick={onSelect}
+      onDoubleClick={(e) => {
+        e.preventDefault();
+        onOpen();
+      }}
+    >
+      <svg className="belt-arc-svg" viewBox="0 0 42 100" preserveAspectRatio="none" aria-hidden>
+        <path d="M 0 0 A 40 50 0 0 1 0 100" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+      </svg>
+    </button>
   );
 }
 
@@ -226,6 +319,7 @@ function BodyIconButton({
       style={{
         ['--body-color' as string]: color,
         ['--body-scale' as string]: String(scale),
+        borderColor: selected ? 'var(--accent)' : `color-mix(in srgb, ${color} 65%, var(--accent-dim))`,
       }}
     >
       <span className="body-icon-glyph" aria-hidden>{bodyKindIcon(body)}</span>
@@ -237,21 +331,87 @@ function BodyIconButton({
 function BandBodyStack({
   body,
   satellites,
+  bandIndex,
   selectedBodyId,
+  filterOrbitId,
   presenceIds,
   onSelectBody,
   onOpenBody,
+  onSelectOrbit,
+  ringChildAsArc = false,
 }: {
   body: SystemBodyNode;
   satellites: SystemBodyNode[];
+  bandIndex: number;
   selectedBodyId: string | null;
+  filterOrbitId?: string | null;
   presenceIds: Set<string>;
   onSelectBody: (bodyId: string) => void;
   onOpenBody: (bodyId: string) => void;
+  onSelectOrbit?: (orbitId: string, bodyId: string) => void;
+  ringChildAsArc?: boolean;
 }) {
+  const renderChild = (child: SystemBodyNode, i: number) =>
+    child.kind === 'belt' && ringChildAsArc ? (
+      <BeltArcButton
+        key={child.id}
+        body={child}
+        bandIndex={i}
+        compact
+        hasPresence={presenceIds.has(child.id)}
+        selected={selectedBodyId === child.id}
+        onSelect={() => onSelectBody(child.id)}
+        onOpen={() => onOpenBody(child.id)}
+      />
+    ) : (
+      <BodyIconButton
+        key={child.id}
+        body={child}
+        compact
+        hasPresence={presenceIds.has(child.id) || child.regions.some((r) => presenceIds.has(r.id))}
+        selected={selectedBodyId === child.id}
+        onSelect={() => onSelectBody(child.id)}
+        onOpen={() => onOpenBody(child.id)}
+      />
+    );
   const bodyPresence = presenceIds.has(body.id)
     || body.regions.some((r) => presenceIds.has(r.id))
     || body.orbitIds.some((o) => presenceIds.has(o));
+
+  if (body.kind === 'belt') {
+    return (
+      <div className="band-body-stack band-belt-stack">
+        <div className="belt-arc-wrap">
+          <BeltArcButton
+            body={body}
+            bandIndex={bandIndex}
+            hasPresence={bodyPresence}
+            selected={selectedBodyId === body.id}
+            onSelect={() => onSelectBody(body.id)}
+            onOpen={() => onOpenBody(body.id)}
+          />
+          {body.orbitIds.length > 0 && onSelectOrbit && (
+            <div className="belt-orbit-center belt-orbit-center-inline">
+              <OrbitSelector
+                orbitIds={body.orbitIds}
+                filterOrbitId={filterOrbitId ?? null}
+                presenceIds={presenceIds}
+                glyph="◎"
+                onSelectOrbit={(orbitId) => onSelectOrbit(orbitId, body.id)}
+              />
+            </div>
+          )}
+        </div>
+        <span className="band-au band-au-vertical">{body.name}</span>
+        {satellites.length > 0 && (
+          <div className="band-children band-children-rings">
+            {satellites.map((child, i) => renderChild(child, i))}
+          </div>
+        )}
+      </div>
+    );
+  }
+
   return (
     <div className="band-body-stack">
       <BodyIconButton
@@ -263,18 +423,8 @@ function BandBodyStack({
       />
       <span className="band-au">{body.au} AU</span>
       {satellites.length > 0 && (
-        <div className="band-children">
-          {satellites.map((child) => (
-            <BodyIconButton
-              key={child.id}
-              body={child}
-              compact
-              hasPresence={presenceIds.has(child.id) || child.regions.some((r) => presenceIds.has(r.id))}
-              selected={selectedBodyId === child.id}
-              onSelect={() => onSelectBody(child.id)}
-              onOpen={() => onOpenBody(child.id)}
-            />
-          ))}
+        <div className={`band-children ${satellites.some((c) => c.kind === 'belt') ? 'band-children-rings' : ''}`}>
+          {satellites.map((child, i) => renderChild(child, i))}
         </div>
       )}
     </div>
@@ -284,20 +434,24 @@ function BandBodyStack({
 function SystemView({
   detail,
   selectedBodyId,
+  filterOrbitId,
   filterStar,
   presenceIds,
   onSelectStar,
   onSelectBody,
   onOpenBody,
+  onSelectOrbit,
   onBack,
 }: {
   detail: SystemDetail;
   selectedBodyId: string | null;
+  filterOrbitId: string | null;
   filterStar: boolean;
   presenceIds: Set<string>;
   onSelectStar: () => void;
   onSelectBody: (bodyId: string) => void;
   onOpenBody: (bodyId: string) => void;
+  onSelectOrbit: (orbitId: string, bodyId: string) => void;
   onBack: () => void;
 }) {
   const { bands, gates } = groupSystemOrbitBands(detail);
@@ -318,15 +472,21 @@ function SystemView({
           title={detail.star?.name || detail.starName || 'Star'}
           onClick={onSelectStar}
         />
-        {bands.map(({ body, children: satellites }) => (
-          <div key={body.id} className="system-orbit-band">
+        {bands.map(({ body, children: satellites }, bandIndex) => (
+          <div
+            key={body.id}
+            className={`system-orbit-band ${body.kind === 'belt' ? 'system-orbit-band-belt' : ''}`}
+          >
             <BandBodyStack
               body={body}
               satellites={satellites}
+              bandIndex={bandIndex}
               selectedBodyId={selectedBodyId}
+              filterOrbitId={filterOrbitId}
               presenceIds={presenceIds}
               onSelectBody={onSelectBody}
               onOpenBody={onOpenBody}
+              onSelectOrbit={onSelectOrbit}
             />
           </div>
         ))}
@@ -382,75 +542,123 @@ function BodyView({
   const parent = body.parentId ? detail.bodies.find((b) => b.id === body.parentId) : undefined;
   const siblings = parent ? childBodies(detail, parent.id) : childBodies(detail, body.id);
   const switchTargets = parent
-    ? [parent, ...siblings]
+    ? [parent, ...siblings.filter((s) => s.id !== parent.id)]
     : body.kind === 'planet'
       ? [body, ...siblings]
       : [body];
+  const hasRegions = body.regions.length > 0;
+  const gasGiant = isGasGiant(body);
+  const hasOrbits = body.orbitIds.length > 0;
+  const satellites = childBodies(detail, body.id)
+    .filter((c) => c.kind === 'moon' || c.kind === 'belt')
+    .sort((a, b) => a.au - b.au || a.name.localeCompare(b.name));
+
+  if (body.kind === 'belt') {
+    return (
+      <div className="system-view">
+        <div className="system-view-toolbar">
+          <button type="button" className="system-view-back" onClick={onBack}>← {detail.name}</button>
+          <strong>{body.name}</strong>
+          <span className="system-view-star">{body.au} AU · belt</span>
+        </div>
+        <div className="belt-detail-map">
+          <BeltDotField seed={body.id} />
+          {hasOrbits && (
+            <div className="belt-orbit-center">
+              <OrbitSelector
+                orbitIds={body.orbitIds}
+                filterOrbitId={filterOrbitId}
+                presenceIds={presenceIds}
+                glyph="◎"
+                onSelectOrbit={(orbitId) => onSelectOrbit(orbitId, body.id)}
+              />
+            </div>
+          )}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="system-view">
       <div className="system-view-toolbar">
         <button type="button" className="system-view-back" onClick={onBack}>← {detail.name}</button>
         <strong>{body.name}</strong>
-        <span className="system-view-star">{body.au} AU · {body.kind}</span>
+        <span className="system-view-star">{body.au} AU · {body.planetType || body.kind}</span>
       </div>
-      <div className="region-view">
-        {switchTargets.length > 1 && (
-          <div className="region-view-switcher">
-            {switchTargets.map((target) => (
-              <BodyIconButton
-                key={target.id}
-                body={target}
-                compact={target.id !== body.id}
-                selected={target.id === body.id}
-                onSelect={() => onOpenBody(target.id)}
-                onOpen={() => onOpenBody(target.id)}
+      <div
+        className={`planet-view-map ${hasRegions ? '' : 'planet-view-map-no-regions'}`}
+        style={{ ['--body-color' as string]: bodyTypeColor(body) }}
+      >
+        <BodySurfaceArc body={body} selected />
+
+        {hasRegions && (
+          <div className="planet-view-central-pane">
+            {switchTargets.length > 1 && (
+              <div className="planet-view-switcher">
+                {switchTargets.map((target) => (
+                  <BodyIconButton
+                    key={target.id}
+                    body={target}
+                    compact={target.id !== body.id}
+                    selected={target.id === body.id}
+                    onSelect={() => onOpenBody(target.id)}
+                    onOpen={() => onOpenBody(target.id)}
+                  />
+                ))}
+              </div>
+            )}
+            <div className="region-map-zoom-toolbar">
+              <button type="button" onClick={() => onRegionZoom(Math.max(REGION_ZOOM_BASE * 0.5, regionZoom - REGION_ZOOM_BASE * 0.25))}>−</button>
+              <span>{Math.round((regionZoom / REGION_ZOOM_BASE) * 100)}%</span>
+              <button type="button" onClick={() => onRegionZoom(Math.min(REGION_ZOOM_BASE * 2.5, regionZoom + REGION_ZOOM_BASE * 0.25))}>+</button>
+            </div>
+            <div className="region-map-panel">
+              <RegionMap
+                body={body}
+                report={report}
+                selectedRegionId={selectedRegionId}
+                onSelectRegion={onSelectRegion}
+                zoom={regionZoom}
+                large
               />
-            ))}
+            </div>
+            <p className="region-view-hint">Click a cell to filter units to that region.</p>
           </div>
         )}
-        {body.kind === 'planet' && body.orbitIds.length > 0 && (
-          <div className="body-view-orbit">
-            <span className="body-view-orbit-label">Orbit</span>
-            {body.orbitIds.map((orbitId) => (
-              <button
-                key={orbitId}
-                type="button"
-                className={`body-icon body-icon-orbit ${filterOrbitId === orbitId ? 'selected' : ''} ${presenceIds.has(orbitId) ? 'has-presence' : ''}`}
-                title={`${body.name} orbit ${orbitId}`}
-                onClick={() => onSelectOrbit(orbitId, body.id)}
-              >
-                <span className="body-icon-glyph" aria-hidden>◯</span>
-              </button>
-            ))}
-          </div>
-        )}
-        {body.regions.length > 0 && (
-          <div className="region-map-zoom-toolbar">
-            <button type="button" onClick={() => onRegionZoom(Math.max(REGION_ZOOM_BASE * 0.5, regionZoom - REGION_ZOOM_BASE * 0.25))}>−</button>
-            <span>{Math.round((regionZoom / REGION_ZOOM_BASE) * 100)}%</span>
-            <button type="button" onClick={() => onRegionZoom(Math.min(REGION_ZOOM_BASE * 2.5, regionZoom + REGION_ZOOM_BASE * 0.25))}>+</button>
-          </div>
-        )}
-        {body.regions.length > 0 ? (
-          <div className="region-map-panel">
-            <RegionMap
-              body={body}
-              report={report}
-              selectedRegionId={selectedRegionId}
-              onSelectRegion={onSelectRegion}
-              zoom={regionZoom}
-              large
+
+        {hasOrbits && (
+          <div className="planet-view-orbit-column">
+            <OrbitSelector
+              orbitIds={body.orbitIds}
+              filterOrbitId={filterOrbitId}
+              presenceIds={presenceIds}
+              vertical
+              glyph={gasGiant ? '◎' : '◯'}
+              onSelectOrbit={(orbitId) => onSelectOrbit(orbitId, body.id)}
             />
           </div>
-        ) : (
-          <p className="region-view-empty">
-            No surface regions — units in orbit only.
-            {body.orbitIds.length > 0 && ` Orbits: ${body.orbitIds.join(', ')}.`}
-          </p>
         )}
-        {body.regions.length > 0 && (
-          <p className="region-view-hint">Click a cell to filter units to that region.</p>
+
+        {satellites.length > 0 && (
+          <div className="planet-view-satellite-bands">
+            {satellites.map((sat, i) => (
+              <div key={sat.id} className="planet-view-satellite-band">
+                <BandBodyStack
+                  body={sat}
+                  satellites={childBodies(detail, sat.id)}
+                  bandIndex={i}
+                  selectedBodyId={null}
+                  filterOrbitId={filterOrbitId}
+                  presenceIds={presenceIds}
+                  onSelectBody={onOpenBody}
+                  onOpenBody={onOpenBody}
+                  onSelectOrbit={onSelectOrbit}
+                  ringChildAsArc={gasGiant || sat.kind === 'belt'}
+                />
+              </div>
+            ))}
+          </div>
         )}
       </div>
     </div>
@@ -490,6 +698,8 @@ export default function App() {
   const [selectedStack, setSelectedStack] = useState<string | null>(null);
   const [selectedPerson, setSelectedPerson] = useState<string | null>(null);
   const [orderText, setOrderText] = useState('');
+  const [orderMode, setOrderMode] = useState<OrderMode>('faction');
+  const [techView, setTechView] = useState<TechView>('known');
   const [aiPromptText, setAiPromptText] = useState('');
   const [sidePanelWidth, setSidePanelWidth] = useState(320);
   const [orderPaneHeight, setOrderPaneHeight] = useState(220);
@@ -521,7 +731,8 @@ export default function App() {
         fetchReportTxt().catch(() => ''),
       ]);
       const galaxyText = reportSections.find((s) => s.id === 'galaxy')?.text || '';
-      setReport(enrichReportFromGalaxyText(parseReportXml(xml), galaxyText));
+      const parsed = enrichReportFromGalaxyText(parseReportXml(xml), galaxyText);
+      setReport(parsed);
       setSections(reportSections);
       setReportFullText(fullText);
     } catch {
@@ -559,6 +770,22 @@ export default function App() {
     }
     return report.stacks;
   }, [report, filterSystems, filterRegionId, filterOrbitId, filterBodyId, systemViewId]);
+
+  const fullOrdersTemplate = useMemo(() => ordersTemplateText(sections), [sections]);
+
+  const factionOrdersText = useMemo(() => {
+    if (!report || !fullOrdersTemplate) return '';
+    return preloadFactionOrders(fullOrdersTemplate, report.stacks, report.factionId);
+  }, [report, fullOrdersTemplate]);
+
+  const unitsOrdersText = useMemo(() => {
+    if (!report || !fullOrdersTemplate) return '';
+    return ordersSummaryForFocus(fullOrdersTemplate, filteredRoots, selectedStack);
+  }, [report, fullOrdersTemplate, filteredRoots, selectedStack]);
+
+  useEffect(() => {
+    setOrderText(orderMode === 'units' ? unitsOrdersText : factionOrdersText);
+  }, [orderMode, unitsOrdersText, factionOrdersText]);
 
   const atLocationLevel = !!(filterRegionId || filterBodyId || filterOrbitId);
 
@@ -733,6 +960,16 @@ export default function App() {
     await load();
   }
 
+  async function handleRunChange(runId: string) {
+    await setSessionContext({ runId });
+    await load();
+  }
+
+  async function handleTurnChange(turn: number) {
+    await setSessionContext({ turn });
+    await load();
+  }
+
   async function handleCheck() {
     const result = await parseOrders(orderText);
     setParseErrors(result.errors);
@@ -764,14 +1001,45 @@ export default function App() {
             onChange={(e) => handleViewAs(parseInt(e.target.value, 10))}
             title="Admin: view report as faction"
           >
-            {(meta.factions as FactionOption[]).map((f) => (
-              <option key={f.id} value={f.id}>{f.name}</option>
-            ))}
+            <optgroup label="Player factions">
+              {(meta.factions as FactionOption[]).filter((f) => !f.npc).map((f) => (
+                <option key={f.id} value={f.id}>{f.name}</option>
+              ))}
+            </optgroup>
+            <optgroup label="NPC factions">
+              {(meta.factions as FactionOption[]).filter((f) => f.npc).map((f) => (
+                <option key={f.id} value={f.id}>{f.name}</option>
+              ))}
+            </optgroup>
           </select>
         ) : (
           <strong>{meta.name || 'SpaceAge'}</strong>
         )}
-        <span>Turn {meta.turn ?? '—'}</span>
+        {meta.runs && meta.runs.length > 0 && (
+          <select
+            className="context-selector"
+            value={meta.viewRunId ?? meta.runId ?? ''}
+            onChange={(e) => handleRunChange(e.target.value)}
+            title="Campaign run"
+          >
+            {meta.runs.map((r) => (
+              <option key={r.id} value={r.id}>{r.label}</option>
+            ))}
+          </select>
+        )}
+        {meta.turns && meta.turns.length > 0 && (
+          <select
+            className="context-selector"
+            value={meta.viewTurn ?? meta.turn ?? ''}
+            onChange={(e) => handleTurnChange(parseInt(e.target.value, 10))}
+            title="Report turn"
+          >
+            {meta.turns.map((t) => (
+              <option key={t} value={t}>Turn {t}</option>
+            ))}
+          </select>
+        )}
+        {!meta.turns?.length && <span>Turn {meta.viewTurn ?? meta.turn ?? '—'}</span>}
         {meta.admin && <span className="admin-badge">Admin</span>}
         {adminHint && <span className="warnings admin-hint">{adminHint}</span>}
         <button type="button" onClick={() => { setToken(null); setAuthed(false); setAdminHint(''); }}>Logout</button>
@@ -784,7 +1052,6 @@ export default function App() {
             ['map', '✦'],
             ['tech', '⚗'],
             ['diplomacy', '🤝'],
-            ['contracts', '📜'],
             ['bank', '🏦'],
             ['battle', '⚔'],
             ['faction', '👤'],
@@ -794,8 +1061,8 @@ export default function App() {
             key={id}
             type="button"
             className={panel === id ? 'active' : ''}
-            title={id === 'map' ? 'Star map' : id}
-            aria-label={id === 'map' ? 'Star map' : id}
+            title={id === 'map' ? 'Star map' : id === 'bank' ? 'Banking and market' : id}
+            aria-label={id === 'map' ? 'Star map' : id === 'bank' ? 'Banking and market' : id}
             onClick={() => setPanel(id)}
           >
             {icon}
@@ -825,11 +1092,13 @@ export default function App() {
           <SystemView
             detail={systemView}
             selectedBodyId={filterBodyId}
+            filterOrbitId={filterOrbitId}
             filterStar={filterStar}
             presenceIds={presenceIds}
             onSelectStar={selectStar}
             onSelectBody={selectBody}
             onOpenBody={openBodyView}
+            onSelectOrbit={selectOrbit}
             onBack={closeSystemView}
           />
         )}
@@ -837,21 +1106,34 @@ export default function App() {
         {panel === 'map' && report && !systemView && (
           <div className="star-map">
             <StarMapLinks links={aldersonLines} systems={report.systems} route={moveRoute} />
-            {report.systems.map((sys) => (
-              <button
-                key={sys.id}
-                type="button"
-                className={`system-node ${filterSystems.includes(sys.id) ? 'selected' : ''} ${filterSystems.length && !filterSystems.includes(sys.id) ? 'filtered' : ''} ${systemHasPresence(report, sys.id) ? 'has-presence' : ''}`}
-                style={{ left: `${sys.x}%`, top: `${sys.y}%` }}
-                onClick={(e) => handleSystemClick(sys.id, e.shiftKey)}
-                onDoubleClick={(e) => {
-                  e.preventDefault();
-                  openSystemView(sys.id);
-                }}
-              >
-                {sys.name}
-              </button>
-            ))}
+            {report.systems.map((sys) => {
+              const detail = getSystemDetail(report, sys.id);
+              const starType = detail?.star?.starType;
+              return (
+                <button
+                  key={sys.id}
+                  type="button"
+                  className={`system-node system-node-star ${filterSystems.includes(sys.id) ? 'selected' : ''} ${filterSystems.length && !filterSystems.includes(sys.id) ? 'filtered' : ''} ${systemHasPresence(report, sys.id) ? 'has-presence' : ''}`}
+                  style={{
+                    left: `${sys.x}%`,
+                    top: `${sys.y}%`,
+                    background: starAmberGradient(starType),
+                    borderColor: starTypeBorderColor(starType),
+                    boxShadow: filterSystems.includes(sys.id)
+                      ? `0 0 14px ${starTypeBorderColor(starType)}`
+                      : undefined,
+                  }}
+                  title={starType ? `${sys.name} · ${starType} star` : sys.name}
+                  onClick={(e) => handleSystemClick(sys.id, e.shiftKey)}
+                  onDoubleClick={(e) => {
+                    e.preventDefault();
+                    openSystemView(sys.id);
+                  }}
+                >
+                  {sys.name}
+                </button>
+              );
+            })}
             {focusedSystemId && (
               <button
                 type="button"
@@ -880,11 +1162,18 @@ export default function App() {
           const tech = splitTechnologyReport(sectionText(sections, 'technology', ''));
           return (
             <div className="sub-panel scroll-area">
-              <h3>Technologies</h3>
-              <h4>Known technologies</h4>
-              <TechnologyCatalog />
-              <h4>Breakthrough this turn</h4>
-              <ClickableReportText text={tech.breakthrough} onFocusId={handleFocusId} />
+              <div className="panel-heading-row">
+                <h3>Technologies</h3>
+                <div className="panel-mode-tabs">
+                  <button type="button" className={techView === 'known' ? 'active' : ''} onClick={() => setTechView('known')}>Known</button>
+                  <button type="button" className={techView === 'breakthrough' ? 'active' : ''} onClick={() => setTechView('breakthrough')}>Breakthroughs</button>
+                </div>
+              </div>
+              {techView === 'known' ? (
+                <TechnologyCatalog />
+              ) : (
+                <ClickableReportText text={tech.breakthrough} onFocusId={handleFocusId} />
+              )}
             </div>
           );
         })()}
@@ -893,28 +1182,75 @@ export default function App() {
           <div className="sub-panel scroll-area">
             <h3>Diplomacy</h3>
             <ClickableReportText text={extractDiplomacyText(sections, reportFullText)} onFocusId={handleFocusId} />
+            <div className="action-placeholders">
+              <h4>Actions</h4>
+              <p className="obj-desc">Press releases and rumors take effect immediately. Contracts and stance changes are submitted as faction orders.</p>
+              <div className="placeholder-grid">
+                <label className="placeholder-action">
+                  <span>Press release</span>
+                  <textarea placeholder="Press release text…" rows={3} disabled />
+                  <button type="button" disabled title="Not connected yet">Submit press release</button>
+                </label>
+                <label className="placeholder-action">
+                  <span>Rumor</span>
+                  <textarea placeholder="Rumor text…" rows={3} disabled />
+                  <button type="button" disabled title="Not connected yet">Submit rumor</button>
+                </label>
+                <label className="placeholder-action">
+                  <span>Contract</span>
+                  <textarea placeholder="Contract order text…" rows={3} disabled />
+                  <button type="button" disabled title="Not connected yet">Submit contract (faction order)</button>
+                </label>
+                <label className="placeholder-action">
+                  <span>Diplomacy stance</span>
+                  <textarea placeholder={'DECLARE FACTION …'} rows={3} disabled />
+                  <button type="button" disabled title="Not connected yet">Submit stance change (faction order)</button>
+                </label>
+              </div>
+            </div>
           </div>
         )}
 
-        {panel === 'contracts' && (
-          <div className="sub-panel scroll-area">
-            <h3>Contracts</h3>
-            <ClickableReportText
-              text={sectionText(sections, 'contracts', 'No contracts in report.')}
-              onFocusId={handleFocusId}
-            />
-          </div>
-        )}
-
-        {panel === 'bank' && (
-          <div className="sub-panel scroll-area">
-            <h3>Bank</h3>
-            <ClickableReportText
-              text={bankReportText(sections, reportFullText)}
-              onFocusId={handleFocusId}
-            />
-          </div>
-        )}
+        {panel === 'bank' && report && (() => {
+          const bankText = bankReportText(sections, reportFullText);
+          const bank = parseBankSummary(bankText);
+          const upkeep = estimateCashUpkeep(report.stacks, report.factionId);
+          const interest = estimateInterest(bank);
+          const galaxyText = sectionText(sections, 'galaxy', '');
+          const markets = parseMarketOffers(galaxyText, report);
+          return (
+            <div className="sub-panel scroll-area">
+              <h3>Banking and market</h3>
+              <div className="bank-summary-grid">
+                <div className="bank-summary-card">
+                  <strong>Estimated cash upkeep</strong>
+                  <span>{upkeep} cash / turn (owned units)</span>
+                </div>
+                <div className="bank-summary-card">
+                  <strong>Estimated interest</strong>
+                  <span>
+                    {interest.depositIncome != null && `+${interest.depositIncome} deposit`}
+                    {interest.creditCost != null && `−${interest.creditCost} credit`}
+                    {interest.depositIncome == null && interest.creditCost == null && '—'}
+                  </span>
+                </div>
+              </div>
+              <h4>Bank report</h4>
+              <ClickableReportText text={bankText} onFocusId={handleFocusId} />
+              <h4>Market offers</h4>
+              {markets.length === 0 ? (
+                <p className="obj-desc">No market offers found in galaxy report.</p>
+              ) : (
+                markets.map((group) => (
+                  <div key={group.locationLabel} className="market-offer-group">
+                    <strong>{group.locationLabel}</strong>
+                    <ClickableReportText text={group.lines.join('\n')} onFocusId={handleFocusId} />
+                  </div>
+                ))
+              )}
+            </div>
+          );
+        })()}
 
         {panel === 'battle' && (
           <div className="sub-panel scroll-area">
@@ -968,17 +1304,25 @@ export default function App() {
             <ResizeHandle direction="vertical" onDelta={(d) => setOrderPaneHeight((h) => Math.max(120, Math.min(480, h - d)))} className="order-editor-resize" />
             <div className="order-split">
               <div className="order-split-col order-split-orders">
-                <h4 className="order-split-heading">Orders</h4>
-                {selectedOrderLabel && (
-                  <div className="selected-unit-order" key={selectedStack ?? selectedPerson ?? 'none'}>
-                    <strong>{selectedOrderLabel}</strong>
-                    {selectedOrder ? (
-                      <pre>{formatOrderEntry(selectedOrder)}</pre>
-                    ) : (
-                      <p className="obj-desc">No order this turn.</p>
-                    )}
+                <div className="order-split-heading-row">
+                  <h4 className="order-split-heading">Orders</h4>
+                  <div className="order-mode-tabs">
+                    <button
+                      type="button"
+                      className={orderMode === 'units' ? 'active' : ''}
+                      onClick={() => setOrderMode('units')}
+                    >
+                      Units
+                    </button>
+                    <button
+                      type="button"
+                      className={orderMode === 'faction' ? 'active' : ''}
+                      onClick={() => setOrderMode('faction')}
+                    >
+                      Faction
+                    </button>
                   </div>
-                )}
+                </div>
                 <textarea
                   value={orderText}
                   onChange={(e) => setOrderText(e.target.value)}
