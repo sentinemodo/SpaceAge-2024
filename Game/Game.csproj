@@ -56,6 +56,7 @@
     <Compile Include="battle\PrioritizeArmedTactic.cs" />
     <Compile Include="battle\PrioritizeCommandTactic.cs" />
     <Compile Include="battle\PrioritizeCargoTactic.cs" />
+    <Compile Include="battle\ScavengeTactic.cs" />
     <Compile Include="battle\ETactic.cs" />
     <Compile Include="battle\GroundUnit.cs" />
     <Compile Include="battle\IBattleReporting.cs" />

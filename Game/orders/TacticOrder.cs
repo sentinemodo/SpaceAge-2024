@@ -4,7 +4,7 @@ using System.Xml;
 
 namespace SpaceAge
 {
-	// TACTIC destroy|capture|evade|prioritize armed|prioritize command|prioritize storage — modulestack only.
+	// TACTIC destroy|capture|scavenge|evade|prioritize armed|prioritize command|prioritize storage — modulestack only.
 	// Destroy and capture are exclusive. Evade and prioritize may coexist with firing tactics.
 	// Immobile stacks may only use destroy.
 	public class TacticOrder : ImmediateOrder
@@ -40,7 +40,8 @@ namespace SpaceAge
 				this.TacticName = string.Concat("prioritize ", kind);
 				return;
 			}
-			if (this.TacticName != "destroy" && this.TacticName != "capture" && this.TacticName != "evade")
+			if (this.TacticName != "destroy" && this.TacticName != "capture"
+				&& this.TacticName != "scavenge" && this.TacticName != "evade")
 			{
 				throw new Exception("Unknown tactic. Received: " + token);
 			}

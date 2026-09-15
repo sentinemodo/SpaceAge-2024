@@ -42,6 +42,22 @@ namespace UnitTests
             Assert.That(true);
 		}
 
+		private Battle simulateAttackerVictory(ModuleStack attacker, ModuleStack defender)
+		{
+			if (attacker.ItemStacks.Count == 0)
+			{
+				attacker.ItemStacks.Add(new ItemStack(ItemType.All["terran"], 16));
+			}
+			Battle battle = new Battle(attacker, defender);
+			battle.Week = this.game.Week;
+			if (!battle.Attackers.Contains(attacker.Name))
+			{
+				battle.Attackers.Add(attacker.Name, attacker);
+			}
+			battle.Defenders.Clear();
+			return battle;
+		}
+
 
 		[Test]
 		public void FindAllies_singleModulestack()
@@ -909,6 +925,147 @@ namespace UnitTests
 			}
 			Assert.That(weekEight, Is.GreaterThan(0));
 			Assert.That(lines[weekEight - 1], Is.EqualTo(""), "blank line between consecutive battles");
+		}
+
+		[Test]
+		public void ApplyVictoryResolution_Destroy_RemovesDisabledModulesAndItems()
+		{
+			Region region = new Region(Region.All["R00002"].RegionHolder, "vdesregion");
+			Faction attackerOwner = this.game.Factions["2"];
+			Faction defenderOwner = this.game.Factions["1"];
+			ModuleStack attacker = new ModuleStack(region, attackerOwner, ModuleType.All["tanks"], "vdesatk");
+			attacker.AddModule();
+			attacker.ApplyTactic("destroy");
+			ModuleStack defender = new ModuleStack(region, defenderOwner, ModuleType.All["gunplc"], "vdesdef");
+			defender.AddModule();
+			defender.ItemStacks.Add(new ItemStack(ItemType.All["cash"], 100));
+			this.disableByHeavyDamage(defender);
+
+			Battle battle = this.simulateAttackerVictory(attacker, defender);
+			battle.ApplyVictoryResolution(this.game.Week);
+
+			Assert.That(defender.Quantity, Is.EqualTo(0));
+			Assert.That(defender.ItemStacks.Count, Is.EqualTo(0));
+		}
+
+		[Test]
+		public void ApplyVictoryResolution_Scavenge_GivesHalfBuildCostAndItemShare()
+		{
+			Region region = new Region(Region.All["R00002"].RegionHolder, "vscnregion");
+			Faction attackerOwner = this.game.Factions["2"];
+			Faction defenderOwner = this.game.Factions["1"];
+			ModuleStack attacker = new ModuleStack(region, attackerOwner, ModuleType.All["tanks"], "vscnatk");
+			attacker.AddModule();
+			attacker.ApplyTactic("scavenge");
+			ModuleStack defender = new ModuleStack(region, defenderOwner, ModuleType.All["gunplc"], "vscndef");
+			defender.AddModule();
+			defender.ItemStacks.Add(new ItemStack(ItemType.All["cash"], 100));
+			this.disableByHeavyDamage(defender);
+
+			Battle battle = this.simulateAttackerVictory(attacker, defender);
+			battle.ApplyVictoryResolution(this.game.Week);
+
+			Assert.That(defender.Quantity, Is.EqualTo(0));
+			Assert.That(attacker.ItemStacks.ContainsKey(ItemType.All["iron"]), Is.True);
+			Assert.That(attacker.ItemStacks[ItemType.All["iron"]].Quantity, Is.EqualTo(1));
+			Assert.That(attacker.ItemStacks.ContainsKey(ItemType.All["titani"]), Is.True);
+			Assert.That(attacker.ItemStacks[ItemType.All["titani"]].Quantity, Is.EqualTo(1));
+			Assert.That(attacker.ItemStacks.ContainsKey(ItemType.All["cash"]), Is.True);
+			Assert.That(attacker.ItemStacks[ItemType.All["cash"]].Quantity, Is.EqualTo(100));
+		}
+
+		[Test]
+		public void ApplyVictoryResolution_Capture_TransfersDisabledModule()
+		{
+			Region region = new Region(Region.All["R00002"].RegionHolder, "vcapregion");
+			Faction attackerOwner = this.game.Factions["2"];
+			Faction defenderOwner = this.game.Factions["1"];
+			ModuleStack attacker = new ModuleStack(region, attackerOwner, ModuleType.All["tanks"], "vcapatk");
+			attacker.AddModule();
+			attacker.ApplyTactic("capture");
+			ModuleStack defender = new ModuleStack(region, defenderOwner, ModuleType.All["gunplc"], "vcapdef");
+			defender.AddModule();
+			defender.ItemStacks.Add(new ItemStack(ItemType.All["cash"], 50));
+			this.disableByHeavyDamage(defender);
+
+			Battle battle = this.simulateAttackerVictory(attacker, defender);
+			battle.ApplyVictoryResolution(this.game.Week);
+
+			Assert.That(defender.Quantity, Is.EqualTo(0));
+			ModuleStack captured = null;
+			foreach (ModuleStack stack in ModuleStack.All.Values)
+			{
+				if (stack.Name.StartsWith("c") && stack.Owner == attackerOwner && stack.ModuleType == ModuleType.All["gunplc"])
+				{
+					captured = stack;
+					break;
+				}
+			}
+			Assert.That(captured, Is.Not.Null);
+			Assert.That(captured.Quantity, Is.EqualTo(1));
+			Assert.That(captured.ItemStacks[ItemType.All["cash"]].Quantity, Is.EqualTo(50));
+		}
+
+		[Test]
+		public void ApplyVictoryResolution_AvoidOnly_LeavesDisabledModules()
+		{
+			Region region = new Region(Region.All["R00002"].RegionHolder, "vavoregion");
+			Faction attackerOwner = this.game.Factions["2"];
+			Faction defenderOwner = this.game.Factions["1"];
+			ModuleStack attacker = new ModuleStack(region, attackerOwner, ModuleType.All["tanks"], "vavoatk");
+			attacker.AddModule();
+			attacker.IsAvoiding = true;
+			ModuleStack defender = new ModuleStack(region, defenderOwner, ModuleType.All["gunplc"], "vavodef");
+			defender.AddModule();
+			defender.ItemStacks.Add(new ItemStack(ItemType.All["cash"], 50));
+			this.disableByHeavyDamage(defender);
+
+			Battle battle = this.simulateAttackerVictory(attacker, defender);
+			battle.ApplyVictoryResolution(this.game.Week);
+
+			Assert.That(defender.Quantity, Is.EqualTo(1));
+			Assert.That(defender.ItemStacks[ItemType.All["cash"]].Quantity, Is.EqualTo(50));
+		}
+
+		[Test]
+		public void ApplyVictoryResolution_NoExplicitTactic_LeavesDisabledModules()
+		{
+			Region region = new Region(Region.All["R00002"].RegionHolder, "vnonregion");
+			Faction attackerOwner = this.game.Factions["2"];
+			Faction defenderOwner = this.game.Factions["1"];
+			ModuleStack attacker = new ModuleStack(region, attackerOwner, ModuleType.All["tanks"], "vnonatk");
+			attacker.AddModule();
+			ModuleStack defender = new ModuleStack(region, defenderOwner, ModuleType.All["gunplc"], "vnondef");
+			defender.AddModule();
+			defender.ItemStacks.Add(new ItemStack(ItemType.All["cash"], 50));
+			this.disableByHeavyDamage(defender);
+
+			Battle battle = this.simulateAttackerVictory(attacker, defender);
+			battle.ApplyVictoryResolution(this.game.Week);
+
+			Assert.That(defender.Quantity, Is.EqualTo(1));
+			Assert.That(defender.ItemStacks[ItemType.All["cash"]].Quantity, Is.EqualTo(50));
+		}
+
+		[Test]
+		public void TacticOrder_SetsScavengeAndIsExclusiveWithCapture()
+		{
+			ModuleStack tanks = this.game.ModuleStacks["100011"];
+			List<string> testcommands = new List<string>
+			{
+				"#faction 2",
+				"#modulestack 100011",
+				"tactic scavenge",
+				"tactic capture",
+				"#end"
+			};
+			OrdersReader ordersReader = new OrdersReader(this.game);
+			ordersReader.AssignOrders(testcommands);
+			tanks.Orders[0].Execute(this.game.Week);
+			tanks.Orders[1].Execute(this.game.Week);
+
+			Assert.That(tanks.HasScavenge, Is.False);
+			Assert.That(tanks.HasCapture);
 		}
 
 	}

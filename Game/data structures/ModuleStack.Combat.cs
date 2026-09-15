@@ -197,6 +197,16 @@ namespace SpaceAge
 			get { return this.Tactics.ContainsName("capture"); }
 		}
 
+		public bool HasDestroy
+		{
+			get { return this.Tactics.ContainsName("destroy"); }
+		}
+
+		public bool HasScavenge
+		{
+			get { return this.Tactics.ContainsName("scavenge"); }
+		}
+
 		public bool HasPrioritizeArmed
 		{
 			get { return this.Tactics.ContainsName("prioritize armed"); }
@@ -234,10 +244,15 @@ namespace SpaceAge
 
 			this.Tactics.RemoveByName("destroy");
 			this.Tactics.RemoveByName("capture");
+			this.Tactics.RemoveByName("scavenge");
 			this.Tactics.RemoveByName("disable");
 			if (tacticName == "capture")
 			{
 				this.Tactics.Add(new CaptureTactic(this));
+			}
+			else if (tacticName == "scavenge")
+			{
+				this.Tactics.Add(new ScavengeTactic(this));
 			}
 			else
 			{

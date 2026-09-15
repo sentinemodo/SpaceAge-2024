@@ -201,5 +201,23 @@ namespace SpaceAge
 
             return elHolder;
         }
+
+		public Technology FindProducerFor(ModuleType moduleType)
+		{
+			if (moduleType == null)
+			{
+				return null;
+			}
+			foreach (Technology technology in this)
+			{
+				if (technology.UseProduceModules == moduleType
+					&& technology.UseConsumeItems != null
+					&& technology.UseConsumeItems.Count > 0)
+				{
+					return technology;
+				}
+			}
+			return null;
+		}
 	}
 }

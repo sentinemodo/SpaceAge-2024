@@ -101,9 +101,10 @@ Same initiative value: those stacks fire in list order (not shuffled).
 
 | Order | Effect in `Battle` |
 |-------|-------------------|
-| `TACTIC destroy` | Firing tactic **destroy** (default). |
-| `TACTIC capture` | Firing tactic **capture**. Exclusive with destroy. |
-| `TACTIC evade` | Stance: half to-hit; command/propulsion half hit-weight; leave after **two consecutive rounds unhit**. May coexist with destroy/capture. |
+| `TACTIC destroy` | Firing tactic **destroy** (default). After a clear win, **destroy** routed/disabled enemy modules at the location. |
+| `TACTIC capture` | Firing tactic **capture**. Exclusive with destroy/scavenge. After a clear win, transfers remaining routed/disabled enemy modules. |
+| `TACTIC scavenge` | Exclusive with destroy/capture. After a clear win, destroys routed/disabled enemy modules; scavenging stacks receive half the module build cost plus a proportional cargo share. |
+| `TACTIC evade` | Stance: half to-hit; command/propulsion half hit-weight; leave after **two consecutive rounds unhit**. May coexist with destroy/capture/scavenge. |
 | `TACTIC prioritize armed` | Prefer an armed target; may shoot a disabled-but-armed stack. Exclusive with other prioritize kinds. |
 | `TACTIC prioritize command` | Prefer a command-group stack. Disabled command is included like cargo. Exclusive with other prioritize kinds. |
 | `TACTIC prioritize storage` | Prefer a storage-group stack (`IsCargoStack()`, e.g. `cargob`). Disabled cargo is included like prioritize command. Exclusive with other prioritize kinds. Coexists with capture/destroy. |
@@ -178,6 +179,18 @@ Disabling the last operational module can drop the stack from the battle (comman
 ## Evade leave
 
 After the round’s shots: an evading stack that was **not** hit this round increments a counter; at **2** consecutive unhit rounds it “evades and leaves combat” and is removed from both lists. A hit resets the counter.
+
+## Post-victory resolution
+
+After `ApplyCaptures`, a **clear win** (one side’s battle list empty, the other not) runs `ApplyVictoryResolution` on **routed/disabled** enemy modules still at the location (`!IsActive`, not wrecked). Priority among **remaining winner stacks**:
+
+1. Any explicit **`TACTIC destroy`** → destroy those modules and proportional cargo/nested stacks.
+2. Else any **`TACTIC scavenge`** → destroy them; scavenging winners receive half the catalog `use-consume` build cost per module plus proportional cargo (split among scavengers).
+3. Else any **`TACTIC capture`** → peel each disabled module onto a new `c#####` stack owned by the winner, with proportional cargo/nested/people (same rules as mid-battle capture).
+4. Else if **every** remaining winner has **`SET AVOID TRUE`** → no changes (legacy behaviour).
+5. Else → no changes.
+
+Implicit default firing (destroy when not capture) does **not** trigger post-victory destruction; only an explicit `TACTIC destroy` does. `TACTIC evade` affects in-combat behaviour only.
 
 ## Battle simulator (standalone)
 

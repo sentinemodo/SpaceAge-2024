@@ -356,11 +356,13 @@ namespace SpaceAge
 						{
 							if (elConsume.HasAttribute("item"))
 							{
-                                items = new ItemStacks();
+								if (technology.UseConsumeItems == null)
+								{
+									technology.UseConsumeItems = new ItemStacks();
+								}
 								item = new ItemStack(ItemType.All[elConsume.GetAttribute("item")]);
 								item.Quantity = this.dataFile.XMLAssignInteger(elConsume.GetAttribute("quantity"), 1);
-                                items.Add(item);
-                                technology.UseConsumeItems = items;
+								technology.UseConsumeItems.Add(item);
 							}
 							else if (elConsume.HasAttribute("module"))
 							{

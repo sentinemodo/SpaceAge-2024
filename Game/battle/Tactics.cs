@@ -64,6 +64,9 @@ namespace SpaceAge
                     case "capture":
                         tactic = new CaptureTactic(holder);
                         break;
+                    case "scavenge":
+                        tactic = new ScavengeTactic(holder);
+                        break;
                     case "evade":
                         tactic = new EvadeTactic(holder);
                         break;
