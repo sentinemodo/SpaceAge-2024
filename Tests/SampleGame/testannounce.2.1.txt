@@ -1,0 +1,7 @@
+To: 
+Subject: [SpaceAge] Report for turn 2
+Content-Disposition: attachment
+
+A new contract has been published:
+  CT0121: deliver 1 infantry battalion [inftry] to Sydney garrison [000007].
+    Reward: rocket launcher production [rckter] technology.

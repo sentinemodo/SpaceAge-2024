@@ -367,6 +367,10 @@ FodyWeavers.xsd
 # Local env (copy from .env.example)
 .env
 
+# Game.exe / test run snapshots (tracked goldens under Tests/ stay in git via force-add if needed)
+gameout*.xml
+*.tsbuildinfo
+
 # Local campaign runs (passwords + gamein + reports). Keep play/README.md and play/*.ps1 tracked.
 play/runs/
 game-host/runs/
