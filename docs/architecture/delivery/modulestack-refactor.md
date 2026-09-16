@@ -1,10 +1,12 @@
 # ModuleStack refactor — implementation checklist
 
-Last updated: 2026-09-09  
+Last updated: 2026-09-16  
 Decision: [ADR-0008](../adr/ADR-0008-modulestack-decomposition.md)  
-Engine cited: current `master` (~2,960 lines across three partial files)
+Engine cited: post-refactor `Game/data structures/ModuleStack*.cs` (main file ~76 lines; concerns in named partials)
 
-This is the **TDD execution plan** for splitting `ModuleStack` into named `partial` files. The ADR names seams and forbids DI, namespace splits, new public service types, and a big-bang rewrite. This file is the commit-by-commit checklist for one refactor PR (or one commit per phase across PRs).
+**Status: complete.** All ADR phases 0–10 landed. Main `ModuleStack.cs` retains constructors/registry/glue only. Extra partials beyond the original checklist (`ModuleStack.Hold.cs`, `ModuleStack.Sharing.cs`) split additional seams without changing public API.
+
+This was the **TDD execution plan** for splitting `ModuleStack` into named `partial` files. The ADR names seams and forbids DI, namespace splits, new public service types, and a big-bang rewrite.
 
 ## Vehicle
 
@@ -31,20 +33,20 @@ Characterize with existing tests. Add assertions only when a seam has no proof. 
 
 ## Commits
 
-| # | Phase | Production change | Prove with |
-|---|--------|-------------------|------------|
-| 1 | Docs | This checklist + ADR-0008. No C#. | n/a |
-| 2 | 0 — characterize | Optional: short comments in ADR or test docstrings mapping `#region` → future partial. Tests only if a seam lacks coverage (e.g. `HasPresence` recursion). **No** production move. | Full `Tests.dll` or targeted `TModuleStack` + `TDataFile` + `TBattle` + `TReport` |
-| 3 | 1 — `ModuleStack.Xml.cs` | Move `LoadXml` / `SaveXml` from main file. Same method bodies; delegate to existing collection `LoadXml`/`SaveXml` unchanged. | `TDataFile` save/load, `SaveLoad_PersistsModuleDamageBetweenTurns`, SampleGame `*_saved.xml` |
-| 4 | 2 — `ModuleStack.Movement.cs` | Move `movement` region (`MovingTo`, `IsRoot`, `MoveModes`). | `TMove*`, `TAlderson`, `TBelt`, SampleGame move orders if exercised |
-| 5 | 3 — economy + effects | `ModuleStack.Economy.cs` (`HasBankAccess`, `Offers`, `ResearchPoints`). `ModuleStack.Effects.cs` (`Effects`, `EventReports`, `ExecutedLongOrder`). | `TMarket`, `TResearch`, `TConsume`, effects/order tests touching stacks |
-| 6 | 4 — `ModuleStack.ItemStacks.cs` | Move `IItemStacksHolder Members` region. | `TModuleStack`, `TGetGiveHas`, `TUse`, `TConsume` |
-| 7 | 5 — `ModuleStack.Orders.cs` | Move `IOrderable Members` + `Execute(int week)`. | `TOrder`, `TTrain`, `TFormStack`, SampleGame order execution goldens |
-| 8 | 6 — `ModuleStack.Activation.cs` | Move `requirements`, `settlement modules`, `energy modules` regions. | `TModuleStack`, `TUse`, `TResearch`, `TSee`, play/campaign/fixture tests using activation |
-| 9 | 7 — `ModuleStack.Combat.cs` | Move `combat` region (~400 lines). Optional static pure helpers **only** if file remains unreviewably large (ADR-0008). | `TBattle`, `TItemCombat`, `TRepair`, `TUseRepairEffect` |
-| 10 | 8 — `ModuleStack.Reporting.cs` | Move `report` / `IReporting Members` (not battle report). | `TReport`, SampleGame report goldens |
-| 11 | 9 — `ModuleStack.BattleReport.cs` | Move `battle report` region. | `TReport`, `TBattle`, SampleGame battle report lines |
-| 12 | 10 — `ModuleStack.Relations.cs` | Move `relations` region last (parent, owner, location, nesting, formation). Main `ModuleStack.cs` retains constructors + `All` + any shared glue. | `TModuleStack`, `TModuleStacks`, `TFormStack`, `TDataFile`, SampleGame load/save |
+| # | Phase | Production change | Prove with | Status |
+|---|--------|-------------------|------------|--------|
+| 1 | Docs | This checklist + ADR-0008. No C#. | n/a | [x] |
+| 2 | 0 — characterize | Optional: short comments in ADR or test docstrings mapping `#region` → future partial. Tests only if a seam lacks coverage (e.g. `HasPresence` recursion). **No** production move. | Full `Tests.dll` or targeted `TModuleStack` + `TDataFile` + `TBattle` + `TReport` | [x] |
+| 3 | 1 — `ModuleStack.Xml.cs` | Move `LoadXml` / `SaveXml` from main file. Same method bodies; delegate to existing collection `LoadXml`/`SaveXml` unchanged. | `TDataFile` save/load, `SaveLoad_PersistsModuleDamageBetweenTurns`, SampleGame `*_saved.xml` | [x] |
+| 4 | 2 — `ModuleStack.Movement.cs` | Move `movement` region (`MovingTo`, `IsRoot`, `MoveModes`). | `TMove*`, `TAlderson`, `TBelt`, SampleGame move orders if exercised | [x] |
+| 5 | 3 — economy + effects | `ModuleStack.Economy.cs` (`HasBankAccess`, `Offers`, `ResearchPoints`). `ModuleStack.Effects.cs` (`Effects`, `EventReports`, `ExecutedLongOrder`). | `TMarket`, `TResearch`, `TConsume`, effects/order tests touching stacks | [x] |
+| 6 | 4 — `ModuleStack.ItemStacks.cs` | Move `IItemStacksHolder Members` region. | `TModuleStack`, `TGetGiveHas`, `TUse`, `TConsume` | [x] |
+| 7 | 5 — `ModuleStack.Orders.cs` | Move `IOrderable Members` + `Execute(int week)`. | `TOrder`, `TTrain`, `TFormStack`, SampleGame order execution goldens | [x] |
+| 8 | 6 — `ModuleStack.Activation.cs` | Move `requirements`, `settlement modules`, `energy modules` regions. | `TModuleStack`, `TUse`, `TResearch`, `TSee`, play/campaign/fixture tests using activation | [x] |
+| 9 | 7 — `ModuleStack.Combat.cs` | Move `combat` region (~400 lines). Optional static pure helpers **only** if file remains unreviewably large (ADR-0008). | `TBattle`, `TItemCombat`, `TRepair`, `TUseRepairEffect` | [x] |
+| 10 | 8 — `ModuleStack.Reporting.cs` | Move `report` / `IReporting Members` (not battle report). | `TReport`, SampleGame report goldens | [x] |
+| 11 | 9 — `ModuleStack.BattleReport.cs` | Move `battle report` region. | `TReport`, `TBattle`, SampleGame battle report lines | [x] |
+| 12 | 10 — `ModuleStack.Relations.cs` | Move `relations` region last (parent, owner, location, nesting, formation). Main `ModuleStack.cs` retains constructors + `All` + any shared glue. | `TModuleStack`, `TModuleStacks`, `TFormStack`, `TDataFile`, SampleGame load/save | [x] |
 
 After phase 10, verify main `ModuleStack.cs` is mostly constructors/registry; no orphaned `#region` blocks for moved concerns.
 
@@ -59,7 +61,7 @@ After phase 10, verify main `ModuleStack.cs` is mostly constructors/registry; no
 
 ## After merge
 
-- [ADR-0008](../adr/ADR-0008-modulestack-decomposition.md) status is **Accepted** (2026-09-09).
+- [x] [ADR-0008](../adr/ADR-0008-modulestack-decomposition.md) status **Implemented** (phases landed; verified 2026-09-16).
 - Supersedes [ADR-0005](../adr/ADR-0005-modulestack-partials.md) “do not split the rest” **for the named seams only**; ownership/upkeep partials unchanged.
-- Optional follow-up: `Person` partial ADR; static combat helpers if Phase 7 partial is still too large.
+- Optional follow-up: `Person` partial ADR; static combat helpers if combat partial grows again.
 - Remaining modernization stays in [`../future-work.md`](../future-work.md).

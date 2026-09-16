@@ -1,6 +1,6 @@
 # Public campaign website — implementation plan
 
-Last updated: 2026-08-29  
+Last updated: 2026-09-16  
 Decision: [ADR-0007](../adr/ADR-0007-public-campaign-website.md)
 
 This is the **product brief and implementation plan** for a public SpaceAge lobby site. It is **not** the engine, **not** the visual tool, and **not** a built site. Do not create `website/` source from this document unless you are the website implementer executing a later phase.
@@ -429,10 +429,10 @@ There is no production PHP/ASP.NET host.
 
 Feature requests recorded 2026-08-29. Start only after Phase 1 exists (Phase 2 status feed is not a hard gate).
 
-- [x] `/eta`: paste parser for `mass: thrust/mass`, two AU-from-star inputs, `DurationWeeks` + mass factor, Vitest vs `au-transit.md` locked table
-- [x] `/battle`: two-side roster + tactics, seeded rounds, Vitest vs `play/player/battle.md` formulas
-- [ ] Home Tools card + nav links; disclaimer that the next engine turn is authoritative
-- [ ] Developer: `astro check` + Vitest → handoff. Tester: WS-010…WS-012 Playwright. Do **not** implement the visual tool here
+- [x] `/eta`: paste parser for `mass: thrust/mass`, two AU-from-star inputs, `DurationWeeks` + mass factor, Vitest vs `au-transit.md` locked table (`website/tests/transit.test.ts`)
+- [x] `/battle`: two-side roster + seeded rounds (client-side formula estimate from `play/player/battle.md`); authoritative combat via visual-tool `POST /api/session/battle-sim` or `Game.exe /battle-sim`
+- [x] Home Tools card + nav links (`/eta`, `/battle` in `Layout.astro` + home Planning Tools card); disclaimer on `/eta` (“next processed turn is authoritative”)
+- [x] Tester: WS-010…WS-012 Playwright in `website/e2e/smoke.spec.ts` (2026-09-16). Do **not** implement the visual tool here
 
 ## Ownership
 

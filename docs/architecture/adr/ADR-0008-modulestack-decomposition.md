@@ -1,8 +1,8 @@
 # ADR-0008: ModuleStack decomposition seams
 
 Date: 2026-09-09  
-Status: **Accepted** (strategy and seams; implementation is phased)  
-Engine cited: current `master` (~2,960 lines across three partial files)
+Status: **Implemented** (2026-09-16)  
+Engine cited: post-refactor partials under `Game/data structures/ModuleStack*.cs` (main file ~76 lines)
 
 This ADR is the gate that [ADR-0005](ADR-0005-modulestack-partials.md) required before splitting the rest of `ModuleStack`. Implementers may execute the phases below; they must not invent extra seams, DI, namespace splits, or a big-bang rewrite.
 

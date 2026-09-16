@@ -60,31 +60,32 @@ Suggested config (local, not committed secrets): endpoint URL (`localhost:11434`
 
 ## Phase 1 — Prepare the environment
 
+**Status: complete for open beta (2026-09-16).** Ops defaults differ from the original draft: local smoke uses **`qwen2.5-coder:7b`**; RunPod quality path uses **`qwen3-coder:30b`** via the RunPod runner agent.
+
 ### 1A. Local Windows (default when VRAM allows)
 
-- [ ] Install [Ollama](https://ollama.com/) for Windows; confirm service on `http://localhost:11434`.
-- [ ] Pull chat model: `qwen3-coder:30b` (or `8b` / `qwen2.5-coder:14b` on ≤12 GB VRAM).
-- [ ] Pull embeddings: `nomic-embed-text`.
-- [ ] Smoke-test `POST /v1/chat/completions` and an embed call.
-- [ ] Confirm no game files are required on the Ollama host beyond what the runner sends in the request.
+- [x] Ollama in Docker on `http://127.0.0.1:11434` — verified by `play/ollama-check.ps1` + `play/_common.ps1`.
+- [x] Chat model for local smoke/draft: **`qwen2.5-coder:7b`** (`PLAYER_AGENT_CHAT_MODEL` default in `tools/player-agent/README.md`).
+- [x] Embeddings: **`nomic-embed-text`**.
+- [x] Smoke: `dotnet run --project tools/player-agent -- smoke` (`POST /v1/chat/completions` + embed).
+- [x] Runner sends only RAG excerpts + prompt pack — no game files on the Ollama host.
 
 ### 1B. RunPod (approved rented GPU)
 
-- [ ] Create RunPod account; prefer **Secure Cloud** when reports will be sent.
-- [ ] Deploy **1× RTX 4090 (24 GB)** with an Ollama-capable template (or base image + install Ollama).
-- [ ] Attach a **persistent volume**; pull `qwen3-coder:30b` + `nomic-embed-text` once onto the volume.
-- [ ] Expose HTTPS proxy to Ollama’s OpenAI-compatible port; **do not** leave `0.0.0.0:11434` open without auth/proxy.
-- [ ] Set local runner `OLLAMA_HOST` to the proxy URL; re-run the same smoke tests as 1A.
-- [ ] Ops checklist: start pod → draft batch → **stop/terminate**; record approximate $/hr from current listing (prices change).
-- [ ] Do **not** treat RunPod as production-ready for campaign batches until **Phase 7 (usage tracker)** and **Phase 8 (cost/usage guardrails)** are done.
+- [x] Ops delegated to **`.cursor/agents/runpod-runner.md`** — pod lifecycle (EU-RO-1, RTX 4090/5090, Ollama template `e2wsrsjbjq`, network volume `v41h4fkn1b`).
+- [x] `game-host/lib/runpod.mjs` + visual-tool RunPod controls for GM-facing GPU start (separate from player-agent batch drafting).
+- [x] Player-agent remote path: set `OLLAMA_HOST` to RunPod proxy; `smoke --allow-runpod` / `draft-run --allow-runpod` with **`PLAYER_AGENT_BUDGET_USD`** (Phases 7–8 guardrails).
+- [x] RunPod chat default **`qwen3-coder:30b`** (fallback `qwen2.5-coder:14b`); models on persistent volume.
+- [x] Stop-when-idle + cost caps documented in `tools/player-agent/README.md`.
 
 ### 1C. Security baseline (both hosts)
 
-- [ ] Never persist faction passwords on the GPU volume or in remote chat logs.
-- [ ] Strip `#faction N "password"` from prompts sent off-box; inject only at local file write.
-- [ ] Serialize or queue multi-faction calls on one 4090.
+- [x] Passwords stripped from remote prompts (`PromptPackBuilder` + `OrderDraftService` when `IsRemoteHost`).
+- [x] Password injected only at local write (`OrderDraftWriter`).
+- [x] Remote concurrency = 1; `draft-run` sequential per faction.
+- [x] `--allow-runpod` / `PLAYER_AGENT_ALLOW_RUNPOD` required for non-localhost hosts.
 
-**Done when:** Local and (if used) RunPod endpoints both complete a smoke chat + embed; stop-when-idle is written into the runner README.
+**Done when:** Local and (if used) RunPod endpoints both complete a smoke chat + embed; stop-when-idle is written into the runner README. **Met.**
 
 ---
 

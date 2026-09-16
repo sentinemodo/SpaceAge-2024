@@ -37,3 +37,4 @@ Open beta requires a **complete** Stellaris-inspired client for browsing quarter
 ## Revision
 
 - 2026-09-11: Accepted for open beta.
+- 2026-09-16: Implemented — `tools/visual-tool/` + game-host session API; Vitest green; UT-001…UT-005 in Playwright.
