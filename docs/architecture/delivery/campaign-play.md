@@ -52,7 +52,7 @@ The lobby **must** expose:
 
 **Visual tool (beta path):** Open beta uses full faction report XML from game-host `GET /api/session/report.xml` ([ADR-0010](../adr/ADR-0010-visual-tool.md), [`visual-tool.md`](visual-tool.md)). The client parses exits, enriches region maps from text sections when needed, and does **not** read `gamein.xml` in the browser.
 
-**Engine enhancement (deferred, not beta-blocking):** Nested `<target>` stubs on region exits for adjacent unseen cells would improve the regional map without text enrichment. Spec: [`play/designer/visual-tool-exit-xml.md`](../../play/designer/visual-tool-exit-xml.md). Tracked on [`play/designer/engine-wishlist.md`](../../play/designer/engine-wishlist.md); report-only (not gamein save).
+**Engine exit `<target>` stubs (live 2026-09-16):** Faction report XML embeds nested `<target>` on visible region exits so the visual tool can place adjacent unvisited cells on the regional map. Spec: [`play/designer/visual-tool-exit-xml.md`](../../play/designer/visual-tool-exit-xml.md). Report-only (not gamein save); implemented in `Galaxy.saveExitTarget` + `tools/visual-tool` parser.
 - **Orders submission status** for the current turn: who has filed `order.{id}.txt`. Public-enough for a closed group: faction-facing name + submitted yes/no + optional timestamp. **Never** passwords, **never** `gamein.xml`, **never** other factions’ reports or report contents.
 
 **Ownership:** designer owns flavour accuracy and faction-facing names; architect owns the stack ([docs/architecture/delivery/website.md](website.md)); TDD does **not** implement the site; play scripts may later emit a status JSON.

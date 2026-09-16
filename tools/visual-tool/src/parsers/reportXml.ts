@@ -10,6 +10,10 @@ export interface ExitTargetStub {
   y?: number;
   terrainType?: string;
   discovered?: 'partial' | 'yes' | 'no';
+  capacities?: CapacityEntry[];
+  resources?: ResourceEntry[];
+  deepResources?: ResourceEntry[];
+  anomaly?: RegionAnomaly;
 }
 
 export interface ExitEntry {
@@ -218,12 +222,31 @@ function parseResources(parent: Element): ResourceEntry[] {
   }));
 }
 
+function parseCapacities(parent: Element): CapacityEntry[] {
+  return [...parent.querySelectorAll(':scope > capacity')].map((c) => ({
+    group: c.getAttribute('group') || '',
+    quantity: parseInt(c.getAttribute('quantity') || '0', 10),
+  }));
+}
+
+function parseAnomaly(el: Element | null): RegionAnomaly | undefined {
+  if (!el) return undefined;
+  const type = el.getAttribute('type') || '';
+  if (!type) return undefined;
+  return {
+    type,
+    points: parseOptionalInt(el.getAttribute('points')),
+    description: el.getAttribute('description') || undefined,
+  };
+}
+
 function parseExitTarget(ex: Element): ExitTargetStub | undefined {
   const targetEl = ex.querySelector(':scope > target');
   if (!targetEl) return undefined;
   const id = attr(targetEl, 'name', 'id') || ex.getAttribute('region') || '';
   if (!id) return undefined;
   const discovered = targetEl.getAttribute('discovered') as ExitTargetStub['discovered'] | null;
+  const deepEl = targetEl.querySelector(':scope > deep-pocket');
   return {
     id,
     name: attr(targetEl, 'name-en') || undefined,
@@ -231,6 +254,10 @@ function parseExitTarget(ex: Element): ExitTargetStub | undefined {
     y: parseOptionalInt(targetEl.getAttribute('Y')),
     terrainType: targetEl.getAttribute('type') || undefined,
     discovered: discovered || undefined,
+    capacities: parseCapacities(targetEl),
+    resources: parseResources(targetEl),
+    deepResources: deepEl ? parseResources(deepEl) : undefined,
+    anomaly: parseAnomaly(targetEl.querySelector(':scope > anomaly')),
   };
 }
 
@@ -255,13 +282,6 @@ function parseExits(parent: Element): ExitEntry[] {
     }
   }
   return exits;
-}
-
-function parseCapacities(parent: Element): CapacityEntry[] {
-  return [...parent.querySelectorAll(':scope > capacity')].map((c) => ({
-    group: c.getAttribute('group') || '',
-    quantity: parseInt(c.getAttribute('quantity') || '0', 10),
-  }));
 }
 
 function parseUpkeep(el: Element): { type: string; quantity: number }[] {
@@ -637,6 +657,17 @@ export function describeExitTarget(
   }
   const r = catalog.get(exit.targetId);
   if (!r) {
+    const stub = exit.target;
+    if (stub?.discovered === 'no') {
+      return { label: `${exit.targetId} (unknown region)`, missingCoords: true };
+    }
+    if (stub && stub.x != null && stub.y != null) {
+      let label = `${stub.name || exit.targetId} [${exit.targetId}] (${stub.x},${stub.y})`;
+      if (stub.terrainType) label += `, ${stub.terrainType} region`;
+      if (exit.mode) label += `, ${exit.mode} travel duration ${exit.duration ?? '?'} weeks`;
+      if (stub.discovered === 'partial') label += ', adjacent (unvisited)';
+      return { label, missingCoords: false };
+    }
     return {
       label: `${exit.targetId} (region not in report XML)`,
       missingCoords: true,
@@ -712,6 +743,10 @@ export function regionCatalog(report: ParsedReport): Map<string, RegionNode> {
             x: stub.x,
             y: stub.y,
             terrainType: stub.terrainType,
+            capacities: ex.target.capacities,
+            resources: ex.target.resources,
+            deepResources: ex.target.deepResources,
+            anomaly: ex.target.anomaly,
           });
         }
       }

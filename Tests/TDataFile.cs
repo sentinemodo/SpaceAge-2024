@@ -1756,6 +1756,64 @@ namespace UnitTests
 			Assert.That(saved.SelectSingleNode("//region[@name='R10001']"), Is.Null);
 		}
 
+		[Test]
+		public void SaveGame_FactionXmlReport_EmbedsExitTargetStubForAdjacentUnvisitedRegion()
+		{
+			this.LoadGameDocument();
+			this.dataFile.LoadConfiguration();
+			this.dataFile.LoadFactions();
+			this.dataFile.LoadGalaxy();
+			this.dataFile.LoadOrders();
+			this.game = this.dataFile.Game;
+
+			Faction castePrime = this.game.Factions["2"];
+			Faction northwind = this.game.Factions["1"];
+			foreach (string stackId in new[] { "000112", "000002", "000003", "000004", "100002" })
+			{
+				ModuleStack.All[stackId].SetOwnerRecursive(northwind);
+			}
+			Assert.That(this.game.Regions["R00002"].Visible(castePrime), Is.False);
+			Assert.That(this.game.Regions["R00001"].Visible(castePrime), Is.True);
+			string testdir = Directory.GetCurrentDirectory();
+			string testfile = "gameout.saved_exitTargetStub.xml";
+			this.dataFile.SaveGame(testdir, testfile, castePrime);
+
+			XmlDocument saved = new XmlDocument();
+			saved.Load(Path.Combine(testdir, testfile));
+			XmlElement stub = saved.SelectSingleNode("//region[@name='R00001']/exit[@region='R00002']/target") as XmlElement;
+			Assert.That(stub, Is.Not.Null);
+			Assert.That(stub.GetAttribute("discovered"), Is.EqualTo("partial"));
+			Assert.That(stub.GetAttribute("name-en"), Is.EqualTo("Eastern Europe"));
+			Assert.That(stub.GetAttribute("X"), Is.EqualTo("1"));
+			Assert.That(stub.GetAttribute("Y"), Is.EqualTo("4"));
+			Assert.That(stub.GetAttribute("type"), Is.EqualTo("grassl"));
+			Assert.That(stub.SelectSingleNode("capacity[@group='settlement']"), Is.Not.Null);
+			Assert.That(saved.SelectSingleNode("//region[@name='R00002']"), Is.Null);
+		}
+
+		[Test]
+		public void SaveGame_FactionXmlReport_IncludesFullRegionWhenVisited()
+		{
+			this.LoadGameDocument();
+			this.dataFile.LoadConfiguration();
+			this.dataFile.LoadFactions();
+			this.dataFile.LoadGalaxy();
+			this.dataFile.LoadOrders();
+			this.game = this.dataFile.Game;
+
+			Faction castePrime = this.game.Factions["2"];
+			string testdir = Directory.GetCurrentDirectory();
+			string testfile = "gameout.saved_exitTargetVisited.xml";
+			this.dataFile.SaveGame(testdir, testfile, castePrime);
+
+			XmlDocument saved = new XmlDocument();
+			saved.Load(Path.Combine(testdir, testfile));
+			Assert.That(saved.SelectSingleNode("//region[@name='R00002']"), Is.Not.Null);
+			XmlElement stub = saved.SelectSingleNode("//region[@name='R00001']/exit[@region='R00002']/target") as XmlElement;
+			Assert.That(stub, Is.Not.Null);
+			Assert.That(stub.GetAttribute("discovered"), Is.EqualTo("yes"));
+		}
+
 		private void executeFactoryWeek(ModuleStack factory, int weekOffset)
 		{
 			factory.ExecutedLongOrder = false;

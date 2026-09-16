@@ -1,6 +1,6 @@
 import { useMemo, type ReactNode } from 'react';
 
-import catalogText from '../../../play/player/campaign/basic_technologies.md?raw';
+import catalogText from '../../../../play/player/campaign/basic_technologies.md?raw';
 
 const HEADING_RE = /^\*\*(.+?) \[([a-z0-9]+)\]\*\*\s*$/i;
 const SECTION_RE = /^##\s+(.+)$/;

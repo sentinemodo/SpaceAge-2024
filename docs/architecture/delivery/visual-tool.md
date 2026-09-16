@@ -60,5 +60,5 @@ tools/visual-tool/
 
 - [x] `npm run build` green
 - [x] Vitest green on XML parser and helpers (30 tests, 2026-09-16)
-- [x] Playwright UT-001…UT-005 spec coverage (`e2e/ut-smoke.spec.ts`; requires game-host on `:8787`)
+- [x] Playwright UT-001…UT-006 spec coverage (`e2e/ut-smoke.spec.ts`; game-host globalSetup runs gm/init + reports)
 - [x] Website `/client` links to deployed URL (`PUBLIC_CLIENT_URL` or game-host `/client/`)

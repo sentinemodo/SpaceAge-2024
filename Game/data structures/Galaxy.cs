@@ -742,6 +742,97 @@ namespace SpaceAge
 			}
 		}
 
+		private void saveExitTarget(XmlDocument doc, XmlElement elExit, Exit exit, Region fromRegion, Faction factionXMLreport)
+		{
+			Region targetRegion = exit.To as Region;
+			if (targetRegion == null || factionXMLreport == null)
+			{
+				return;
+			}
+
+			if (!fromRegion.Visible(factionXMLreport))
+			{
+				return;
+			}
+
+			if (fromRegion.RegionHolder != targetRegion.RegionHolder)
+			{
+				return;
+			}
+
+			XmlElement elTarget = doc.CreateElement("target");
+			elExit.AppendChild(elTarget);
+			elTarget.SetAttribute("name", targetRegion.Name);
+
+			bool targetVisible = targetRegion.Visible(factionXMLreport);
+			elTarget.SetAttribute("discovered", targetVisible ? "yes" : "partial");
+			elTarget.SetAttribute("name-en", targetRegion.FullName);
+			elTarget.SetAttribute("X", targetRegion.Coordinates.X.ToString());
+			elTarget.SetAttribute("Y", targetRegion.Coordinates.Y.ToString());
+			elTarget.SetAttribute("type", targetRegion.RegionType.Name);
+
+			if (targetRegion.HasSettlement)
+			{
+				foreach (Capacity capacity in targetRegion.Capacities)
+				{
+					if (capacity.Group != EModuleTypesGroup.settlement)
+					{
+						continue;
+					}
+
+					XmlElement elCapacity = doc.CreateElement("capacity");
+					elTarget.AppendChild(elCapacity);
+					string groupToken = ModuleTypeGroupXml.ToToken(capacity.Group);
+					if (groupToken != null)
+					{
+						elCapacity.SetAttribute("group", groupToken);
+					}
+
+					elCapacity.SetAttribute("quantity", capacity.Quantity.ToString());
+				}
+			}
+
+			if (targetVisible)
+			{
+				foreach (Resource resource in targetRegion.Resources)
+				{
+					if (!resource.Visible(factionXMLreport))
+					{
+						continue;
+					}
+
+					XmlElement elResource = doc.CreateElement("resource");
+					elTarget.AppendChild(elResource);
+					elResource.SetAttribute("type", resource.ItemType.Name);
+					elResource.SetAttribute("quantity", resource.Quantity.ToString());
+				}
+			}
+
+			if (targetRegion.HasDeepPocket && fromRegion.HasCdrillTechnologyFor(factionXMLreport))
+			{
+				XmlElement elDeepPocket = doc.CreateElement("deep-pocket");
+				elTarget.AppendChild(elDeepPocket);
+				if (targetRegion.HasCdrillTechnologyFor(factionXMLreport))
+				{
+					foreach (Resource resource in targetRegion.DeepPocketResources)
+					{
+						XmlElement elResource = doc.CreateElement("resource");
+						elDeepPocket.AppendChild(elResource);
+						elResource.SetAttribute("type", resource.ItemType.Name);
+						elResource.SetAttribute("quantity", resource.Quantity.ToString());
+					}
+				}
+			}
+
+			if (targetRegion.HasAnomaly && !targetRegion.Anomaly.IsResolved(factionXMLreport))
+			{
+				XmlElement elAnomaly = doc.CreateElement("anomaly");
+				elTarget.AppendChild(elAnomaly);
+				elAnomaly.SetAttribute("type", targetRegion.Anomaly.Type);
+				elAnomaly.SetAttribute("points", targetRegion.Anomaly.Points.ToString());
+			}
+		}
+
 		private void saveRegions(XmlDocument doc, XmlElement elObject, IRegionHolder regionHolder, Faction factionXMLreport = null)
 		{
 			XmlElement elRegion, elCapacity, elExit, elExitMode;
@@ -784,6 +875,10 @@ namespace SpaceAge
 
 						elExitMode.SetAttribute("mode", MoveModeXml.ToToken(exitMode.Mode));
 						elExitMode.SetAttribute("duration", exitMode.Duration.ToString());
+					}
+					if (factionXMLreport != null)
+					{
+						this.saveExitTarget(doc, elExit, exit, region, factionXMLreport);
 					}
 				}
 				this.saveResources(doc, elRegion, region, factionXMLreport);

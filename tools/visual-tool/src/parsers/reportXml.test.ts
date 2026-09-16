@@ -15,6 +15,9 @@ import {
   topLevelBodies,
   groupSystemOrbitBands,
   collectBodyLocationIds,
+  regionCatalog,
+  buildRegionMapCells,
+  describeExitTarget,
 } from './reportXml';
 
 const fixturePath = join(dirname(fileURLToPath(import.meta.url)), '../fixtures/faction-report.xml');
@@ -211,6 +214,34 @@ describe('parseReportXml', () => {
     const order = findOrderForStack(report.orders, '000011');
     expect(order?.verbs.some((v) => v.kind === 'produce')).toBe(true);
     expect(formatOrderEntry(order!)).toMatch(/PRODUCE: energy/);
+  });
+
+  it('parses exit target stubs and builds regional map cells', () => {
+    const xml = `<?xml version="1.0"?><report turn="1"><faction name="2"/>
+      <galaxy><system name="SS0001"><planet name="P00001" AU="1">
+        <region name="R00001" name-en="West" X="0" Y="4" type="grassl">
+          <exit region="R00002">
+            <exitmode mode="ground" duration="3"/>
+            <target name="R00002" name-en="East" X="1" Y="4" type="grassl" discovered="partial">
+              <capacity group="settlement" quantity="4"/>
+            </target>
+          </exit>
+        </region>
+      </planet></system></galaxy></report>`;
+    const report = parseReportXml(xml);
+    const sys = getSystemDetail(report, 'SS0001');
+    const earth = sys?.bodies[0];
+    expect(earth).toBeDefined();
+    const catalog = regionCatalog(report);
+    expect(catalog.get('R00002')?.x).toBe(1);
+    expect(catalog.get('R00002')?.capacities?.[0]?.quantity).toBe(4);
+    const cells = buildRegionMapCells(earth!, catalog, new Set(['R00001']));
+    expect(cells.some((c) => c.id === 'R00002' && c.reachableViaExit && !c.hasPresence)).toBe(true);
+    const exit = report.regions[0].exits?.[0];
+    expect(exit).toBeDefined();
+    const desc = describeExitTarget(exit!, catalog);
+    expect(desc.missingCoords).toBe(false);
+    expect(desc.label).toMatch(/East/);
   });
 
   it('resolves inter-system MOVE route endpoints', () => {

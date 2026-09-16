@@ -44,7 +44,7 @@ export function factionsDir(forRunId = runId()) {
 }
 
 export function campaignDataXml() {
-  return path.join(repoRoot(), 'campaign', 'data.xml');
+  return path.join(repoRoot(), 'play', 'campaign', 'data.xml');
 }
 
 export function ensureRunLayout(forRunId = runId()) {
