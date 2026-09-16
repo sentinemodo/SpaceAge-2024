@@ -1,0 +1,15 @@
+---
+description: Strategic architecture documentation — modules, ADRs, integrations. Does not implement application code.
+globs: architecture/**
+alwaysApply: false
+---
+
+# Project architect (file-scoped)
+
+Full spec: [`.cursor/agents/project-architect.md`](../agents/project-architect.md) · [`docs/agents/README.md`](../../docs/agents/README.md).
+
+When editing under `architecture/`:
+
+- Treat `architecture/` as strategic SSOT; link to [`docs/README.md`](../../docs/README.md) for the doc hub.
+- Engine version: read `Game/Program.cs` → `EngineVersion` — do not hardcode.
+- Live player behavior: cite [`player/rules.md`](../../player/rules.md), not legacy Alderson text in [`docs/legacy/alderson/`](../../docs/legacy/alderson/).

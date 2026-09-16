@@ -3,7 +3,7 @@
 Date: 2026-09-11  
 Status: **Accepted**  
 Plan: [`../delivery/visual-tool.md`](../delivery/visual-tool.md)  
-Product brief: [`../../visual tool prompt.txt`](../../visual%20tool%20prompt.txt)
+Product brief (legacy): [`../../docs/legacy/prompts/visual-tool-brief.txt`](../../docs/legacy/prompts/visual-tool-brief.txt)
 
 ## Context
 

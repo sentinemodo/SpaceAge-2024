@@ -42,13 +42,13 @@ The mermaid above is the **AI isolation path** (`play/runs`, campaign-ai, isolat
 
 The public site is the **human-facing lobby** for the 10-player campaign (factions **2–11**). It is not the AI `play/runs` isolation path. Occupancy is closed: **10 corps + UN + militias** per [designer/galaxy.md](../../designer/galaxy.md). Do **not** offer open “join any stranger” signup.
 
-**Home copy** uses an **excerpt** of original Alderson flavour from [Game/documentation/Rules.txt](../../Game/documentation/Rules.txt) — intro, in-game history, and PBEM principles §§1–2.1 — plus a short “how a turn works”. Do **not** dump the full rulebook. Hard-science only (Alderson Points, Earth silence). No magic, no FTL except Gate `JUMP`.
+**Home copy** uses an **excerpt** of original Alderson flavour from [docs/legacy/alderson/Rules.txt](../../docs/legacy/alderson/Rules.txt) — intro, in-game history, and PBEM principles §§1–2.1 — plus a short “how a turn works”. Do **not** dump the full rulebook. Hard-science only (Alderson Points, Earth silence). No magic, no FTL except Gate `JUMP`.
 
 The introduction **must** credit: original ideas from **Atlantis** and **Rise of Heroes**, influenced by **Vincent Archer**.
 
 The lobby **must** expose:
 
-- A link (or placeholder) to the **visual tool** — a separate product (`visual tool prompt.txt`). Implementing that tool is **out of scope** for this website todo.
+- A link (or placeholder) to the **visual tool** — a separate product (`docs/legacy/prompts/visual-tool-brief.txt`). Implementing that tool is **out of scope** for this website todo.
 
 **Visual tool dependency (engine):** Faction report XML today lists region exits by target id only; adjacent cells the player has not entered are omitted from the galaxy slice, so the visual tool cannot place them on the regional map. Required fix: nested `<target>` under `<exit>` with at least `X`, `Y`, `type`, and `name-en` for same-body neighbours, plus intel-gated settlement/resources/deep-pocket/anomaly stubs per [`designer/visual-tool-exit-xml.md`](../../designer/visual-tool-exit-xml.md). Tracked on [`designer/engine-wishlist.md`](../../designer/engine-wishlist.md); report-only (not gamein save).
 - **Orders submission status** for the current turn: who has filed `order.{id}.txt`. Public-enough for a closed group: faction-facing name + submitted yes/no + optional timestamp. **Never** passwords, **never** `gamein.xml`, **never** other factions’ reports or report contents.

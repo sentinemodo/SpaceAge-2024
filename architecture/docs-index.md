@@ -33,10 +33,10 @@ Purpose: canonical vendor/spec links for implementers. Summaries only — do not
 
 | File | Purpose |
 |------|---------|
-| `Game/documentation/Basics.txt` | Level-0 technologies always available to units |
-| `Game/documentation/Concepts.txt` | Design intent: movement, combat, officers, markets |
-| `Game/documentation/Rules.txt` | Player-facing rulebook (Alderson PBEM lineage) |
-| `Game/documentation/links.txt` | External astronomy/spaceflight primers |
+| `docs/legacy/alderson/Basics.txt` | Level-0 technologies (historical; not live rules) |
+| `docs/legacy/alderson/Concepts.txt` | Design intent (historical) |
+| `docs/legacy/alderson/Rules.txt` | Alderson PBEM lineage rulebook (historical) |
+| `docs/legacy/alderson/links.txt` | External astronomy/spaceflight primers |
 | `.cursor/install.sh` / `.cursor/run-tests.sh` | Cloud restore/build and test entrypoints (Mono) |
 | `architecture/future-work.md` | Deferred modernization backlog (ADR-gated) |
 | `designer/` | Game-designer specs: galaxy scale, tech tree, catalog, contracts (not engine) |
@@ -44,12 +44,12 @@ Purpose: canonical vendor/spec links for implementers. Summaries only — do not
 | `architecture/delivery/local-player-agent.md` | Ollama / RunPod player-agent runner: env prep, RAG corpus, post-turn and engine/data refresh, usage tracker, cost guardrails |
 | `architecture/delivery/player-agent-context-rag-analysis.md` | Context utilization, RAG params, token budget, quality gates, 4090 / Qwen3 feasibility (2026-09-15) |
 | `architecture/delivery/campaign-play.md` | Campaign load, engine TDD slices, CLI play loop, AI factions |
-| `architecture/delivery/battle-simulator.md` | Battle simulator implementation plan (`Game.exe` direct invocation, template presets, custom templates, advanced combat sync) |
+| `architecture/delivery/battle-simulator.md` | Battle sim pointer (visual-tool + `Game.exe /battle-sim`) |
 | `architecture/delivery/game-host.md` | Hosted game service: auth, report XML, orders, turn runner |
 | `architecture/delivery/visual-tool.md` | Complete visual tool: XML client, map, orders, UT-001…UT-005 |
 | `architecture/delivery/website.md` | Public lobby implementation plan (Astro, status JSON, visual-tool link, Phase 4 `/eta` + `/battle`); **Cursor agents and test pairing** (`/website-developer` + `/website-tester`) |
 | `architecture/delivery/website-scenarios.md` | Seed acceptance catalog (WS-001…WS-009, reserved WS-010…WS-012 Phase 4, reserved UT-*). After Phase 1: tester moves to `website/e2e/scenarios.md` (canonical) |
-| `Game/documentation/Rules.txt` §§1, 1.1, 2.1 | Home-page flavour source (Alderson V 1.5); excerpt, do not dump |
+| `docs/legacy/alderson/Rules.txt` §§1, 1.1, 2.1 | Home-page flavour source (Alderson V 1.5); excerpt, do not dump |
 | `player/rules.md` | Later `/rules` link — live order syntax, not flavour myth |
 
 ## In-repo ADRs

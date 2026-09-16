@@ -40,7 +40,7 @@ You **may** create directories under `play/runs/<id>/` (including `gm/`), run th
 | [designer/contracts.md](../../designer/contracts.md) | Contract vectors. Designer writes them; you schedule and apply. |
 | [player/rules.md](../../player/rules.md) | Live `CONTRACT` / `PRESS` / `#faction` syntax. |
 
-Engine **0.1.148**. Default exe: `Game\bin\Debug\Game.exe`. Encoding: catalog, gamein, `/turn-dir` orders, reports = **Windows-1251**; faction drafts and `persona.md` = UTF-8.
+Engine version: read `Game/Program.cs` → `EngineVersion`. Default exe: `Game\bin\Debug\Game.exe`. Encoding: catalog, gamein, `/turn-dir` orders, reports = **Windows-1251**; faction drafts and `persona.md` = UTF-8.
 
 ## Script library (execute these)
 

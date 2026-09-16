@@ -5,7 +5,7 @@ Decision: [ADR-0007](../adr/ADR-0007-public-campaign-website.md)
 
 This is the **product brief and implementation plan** for a public SpaceAge lobby site. It is **not** the engine, **not** the visual tool, and **not** a built site. Do not create `website/` source from this document unless you are the website implementer executing a later phase.
 
-Player-facing flavour lives in [`Game/documentation/Rules.txt`](../../Game/documentation/Rules.txt). Operational play-loop checkboxes live in [`campaign-play.md`](campaign-play.md) (owned by the campaign/designer track — **do not edit that file from this workstream**).
+Player-facing flavour lives in [`docs/legacy/alderson/Rules.txt`](../../docs/legacy/alderson/Rules.txt). Operational play-loop checkboxes live in [`campaign-play.md`](campaign-play.md) (owned by the campaign/designer track — **do not edit that file from this workstream**).
 
 ## Purpose
 
@@ -36,7 +36,7 @@ The site is a **content lobby**, not a signup mill and not a report browser. Pha
 
 | Out | Why |
 |-----|-----|
-| Implementing the visual tool | Separate product ([`visual tool prompt.txt`](../../visual%20tool%20prompt.txt)); Phase 3 only **turns the link on** |
+| Implementing the visual tool | Separate product ([`docs/legacy/prompts/visual-tool-brief.txt`](../../visual%20tool%20prompt.txt)); Phase 3 only **turns the link on** |
 | `Game.exe` HTTP/SMTP/DB, or retargeting off net48 | [ADR-0001](../adr/ADR-0001-net48-legacy-csproj.md), [ADR-0003](../adr/ADR-0003-filesystem-pbem-batch.md) |
 | Serving `gamein.xml`, `gameout.*.xml`, `data.xml`, order files, or reports | Secrets and foreign intel |
 | Open “Join Game Now” signup | Closed 10-player campaign (factions 2–11); NPC 1 / 12 / 13 submit no orders |
@@ -130,7 +130,7 @@ flowchart TD
 
 ## Home-page copy outline (required)
 
-Shorten; do not rewrite the origin myth. Source: [`Game/documentation/Rules.txt`](../../Game/documentation/Rules.txt) (Alderson V 1.5). Website copy should be UTF-8 even though game files are Windows-1251.
+Shorten; do not rewrite the origin myth. Source: [`docs/legacy/alderson/Rules.txt`](../../docs/legacy/alderson/Rules.txt) (Alderson V 1.5). Website copy should be UTF-8 even though game files are Windows-1251.
 
 ### Attribution (visible on home, not footer-only)
 
@@ -297,7 +297,7 @@ Do not derive status by parsing `gamein.xml` in the browser or in Astro.
 
 ## Visual-tool integration
 
-The visual tool is a **separate** product: Stellaris-inspired report/XML client (star map, unit tree, order editing, warnings). MVP of that tool is multi-window, Atlantis Advisor–like ([`visual tool prompt.txt`](../../visual%20tool%20prompt.txt)). It consumes XML reports; the **website only links**.
+The visual tool is a **separate** product: Stellaris-inspired report/XML client (star map, unit tree, order editing, warnings). MVP of that tool is multi-window, Atlantis Advisor–like ([`docs/legacy/prompts/visual-tool-brief.txt`](../../visual%20tool%20prompt.txt)). It consumes XML reports; the **website only links**.
 
 | Phase | `/client` behaviour | Href |
 |-------|---------------------|------|
@@ -547,7 +547,7 @@ After each **vertical slice**, the developer **handoffs to `/website-tester`**. 
 
 The catalog is the **source of truth** for acceptance. Each row: **id**, user goal, route(s), given / when / then, Vitest vs Playwright layer, security check if any. Specs cite ids (`WS-001`, …).
 
-Seeded lobby ids (maintain in the catalog, not by inventing parallel lists in code): `WS-001` home flavour + credits; `WS-002` closed lobby; `WS-003` status dashboard; `WS-004` `/turns` ten seats (2–11 only); `WS-005` `/client` placeholder then live href; `WS-006` `/rules` principles not rulebook; `WS-007` mobile nav/cards; `WS-008` no secret leak; `WS-009` four routes + chrome. Reserved Phase 4: `WS-010` `/eta`; `WS-011` `/battle`; `WS-012` tools leak bar. Reserved **`UT-*`** visual-tool rows: see the catalog (link to [`visual tool prompt.txt`](../../visual%20tool%20prompt.txt)).
+Seeded lobby ids (maintain in the catalog, not by inventing parallel lists in code): `WS-001` home flavour + credits; `WS-002` closed lobby; `WS-003` status dashboard; `WS-004` `/turns` ten seats (2–11 only); `WS-005` `/client` placeholder then live href; `WS-006` `/rules` principles not rulebook; `WS-007` mobile nav/cards; `WS-008` no secret leak; `WS-009` four routes + chrome. Reserved Phase 4: `WS-010` `/eta`; `WS-011` `/battle`; `WS-012` tools leak bar. Reserved **`UT-*`** visual-tool rows: see the catalog (link to [`docs/legacy/prompts/visual-tool-brief.txt`](../../visual%20tool%20prompt.txt)).
 
 ### User tools
 

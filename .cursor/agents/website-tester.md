@@ -18,7 +18,7 @@ You are the **SpaceAge website tester**. You **define and maintain test scenario
 1. Catalog: [`architecture/delivery/website-scenarios.md`](../../architecture/delivery/website-scenarios.md) until Phase 1; then **`website/e2e/scenarios.md`** (canonical — you move/copy the seed)
 2. Pairing: [`architecture/delivery/website.md`](../../architecture/delivery/website.md) **Cursor agents and test pairing**
 3. [ADR-0007](../../architecture/adr/ADR-0007-public-campaign-website.md)
-4. User-tool brief (reserved): [`visual tool prompt.txt`](../../visual%20tool%20prompt.txt)
+4. User-tool brief (reserved): [ADR-0010](../../architecture/adr/ADR-0010-visual-tool.md) · legacy [`docs/legacy/prompts/visual-tool-brief.txt`](../../docs/legacy/prompts/visual-tool-brief.txt)
 
 ## Owns
 

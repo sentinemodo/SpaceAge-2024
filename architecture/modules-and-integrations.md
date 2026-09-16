@@ -1,6 +1,7 @@
 # SpaceAge-2024 — modules and integrations
 
-Last updated: 2026-09-09
+Last updated: 2026-09-16  
+Engine version: read `Game/Program.cs` → `EngineVersion`
 
 All engine types live in namespace `SpaceAge`. Folders below are **bounded contexts by ownership**, not separate assemblies.
 
@@ -16,9 +17,11 @@ All engine types live in namespace `SpaceAge`. Folders below are **bounded conte
 | **Reports** | `Game/reports/` | `ReportWriter`, line wrapping, event lines | Reads world + `DataFile` for faction-filtered XML sidecar |
 | **World model** | `Game/data structures/` | Galaxy graph, factions, stacks, items, techs, offers. `ModuleStack` (~2,960 lines, 8 interfaces) — partial splits proposed in [ADR-0008](adr/ADR-0008-modulestack-decomposition.md); ownership/upkeep partials per [ADR-0005](adr/ADR-0005-modulestack-partials.md) | Used by every other module via `*.All` and object references |
 | **Tests** | `Tests/` | Unit and SampleGame integration | Project reference to `Game`; filesystem fixtures |
-| **Website** | `website/` (not yet created) | Public closed PBEM lobby: flavour, `/turns` orders status, `/client` link. Phase 4: `/eta` (transit ETA) and `/battle` (what-if) | Reads **`status.json` only**; links to a future visual tool. Phase 4 islands use **user-entered** text/numbers in the browser. **No** `Game` project reference. [ADR-0007](adr/ADR-0007-public-campaign-website.md), [`delivery/website.md`](delivery/website.md) |
-
-Website is a **separate bounded context**, not a `SpaceAge` namespace folder. The visual tool is a third context (out of scope here).
+| **Website** | `website/` | Public closed PBEM lobby: flavour, `/turns` orders status, `/client` link. Phase 4: `/eta`, `/battle` | Reads **`status.json` only**; links to visual tool. **No** `Game` reference. [ADR-0007](adr/ADR-0007-public-campaign-website.md) |
+| **Game host** | `game-host/` | Node HTTP: faction auth, reports, orders, GM turn | Spawns `Game.exe`; session API for visual tool. [ADR-0011](adr/ADR-0011-hosted-game-service.md) |
+| **Visual tool** | `visual-tool/` | Authenticated XML report client | Calls game-host session API. [ADR-0010](adr/ADR-0010-visual-tool.md) |
+| **Player agent** | `tools/player-agent/` | LLM order drafting (Ollama/RAG) | Files + CLI to engine; [ADR-0009](adr/ADR-0009-local-llm-player-agent.md) |
+Website, game-host, and visual-tool are **separate bounded contexts** — not `SpaceAge` namespace folders.
 
 ### World object graph
 
@@ -176,7 +179,7 @@ One test assembly: `Tests.dll`. Layers are **namespaces**, not extra `.csproj` f
   - Unit: `--where "namespace == UnitTests"`
   - Integration: `--where "namespace == IntegrationTests"`
 - Fast local/cloud default: **entire** `Tests.dll` (`.cursor/run-tests.sh` on Mono / `vstest.console` on Windows).
-- Integration tests for SampleGame turns 4–5 are `[Ignore("not ready")]` — do not enable them without goldens. Turns 1–3 are independently runnable from committed `gamein` files.
+- SampleGame turns 1–6 have committed goldens; extend with new `gamein` / report files when adding integration coverage.
 - `DataFile` extracts (ADR-0006): characterize with `TDataFile` (unit) and SampleGame load/save goldens (integration). Do not add a third test layer.
 
 ## Stub / incomplete boundaries
@@ -188,8 +191,9 @@ Treat as **not live integrations** until implemented with tests:
 | `Request.Load` | Stub |
 | `EventsReaders.Load` / `Events.Execute` | Stub |
 | `OrdersReader.Check` | Stub |
-| `Game.GenerateOffers` / `UpdateRates` | Live **0.1.159** (open beta) |
-| SampleGame turns 4–5 | Ignored |
+| `Game.GenerateOffers` / `UpdateRates` | Live (open beta) |
+| `DataFile.LoadXml`/`SaveXml` (instance domain paths) | NotImplemented — use facade methods |
+| `Regions.DistanceBetween` | Not implemented — blocks `@buy … EVERYWHERE` |
 
 ## Revision
 

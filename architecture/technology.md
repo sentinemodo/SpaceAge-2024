@@ -1,7 +1,7 @@
 # SpaceAge-2024 — technology choices
 
-Last updated: 2026-09-11  
-Engine version: `Program.EngineVersion` = `0.1.137`
+Last updated: 2026-09-16  
+Engine version: `Game/Program.cs` → `EngineVersion` (currently **0.8.001** — open-beta milestone)
 
 This is a **legacy console engine**, not a service stack. Choices below describe what the repo already uses. Changing the runtime or project style requires an ADR.
 

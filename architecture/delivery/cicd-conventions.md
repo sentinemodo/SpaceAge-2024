@@ -27,7 +27,7 @@ There is no production deploy artifact beyond `Game.exe` + `data.xml` shipped to
 
 | What | Where | When to change |
 |------|--------|----------------|
-| Engine string shown to players | `Game/Program.cs` → `EngineVersion` (currently `0.1.137`) | Visible turn/report behavior change |
+| Engine string shown to players | `Game/Program.cs` → `EngineVersion` (currently **0.8.001**) | Visible turn/report behavior change |
 | NuGet pins | `Game/packages.config`, `Tests/packages.config` | Only with an ADR + Mono test pass |
 | Cloud toolchain | `.cursor/install.sh` | System packages (`mono-complete`), `nuget.exe`, NUnit console runner; default Ubuntu image (no custom Dockerfile) |
 

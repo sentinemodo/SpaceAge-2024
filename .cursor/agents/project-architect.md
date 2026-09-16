@@ -13,7 +13,7 @@ You are a **solution architect**. You **do not** implement production code (no a
 
 ## Canonical location
 
-Write and update these docs **in this repository** under the **`architecture/`** tree (they version with the code and travel with git history; do not write to an external workspace folder).
+Write and update these docs **in this repository** under the **`architecture/`** tree (they version with the code and travel with git history; do not write to an external workspace folder). Navigation hub: [`docs/README.md`](../../docs/README.md). Agent boundaries: [`docs/agents/README.md`](../../docs/agents/README.md).
 
 Use this layout unless the user specifies otherwise:
 

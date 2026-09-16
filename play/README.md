@@ -1,6 +1,10 @@
 # Campaign play scripts
 
-AI isolation play loop for the 10-player campaign (factions **2–11**). This is not the public lobby website. Engine **0.1.148**.
+**Dev / AI isolation** play loop for factions **2–11** (player-agent testing). Not the public beta path.
+
+**Open beta (primary):** [`game-host/`](../game-host/README.md) — faction auth, session API, visual tool.
+
+Engine version: `Game/Program.cs` → `EngineVersion`.
 
 The **campaign-gm** agent (`.cursor/agents/campaign-gm.md`) **executes** these scripts and keeps this README accurate. It does **not** write or patch `play/*.ps1`, C#, or tests. Missing automation is listed under [Gaps](#gaps) — implementers add scripts; the GM only documents and runs them.
 
@@ -268,3 +272,17 @@ Not scripts yet (GM documents and may run the documented `Game.exe` line; GM doe
 | NPC 12/13 orders on a full turn | `turn.ps1` copies factions 2–11 only (raids / hostility-flip later) |
 
 Do not point `/data` at `campaign/`. Do not commit `play/runs/`.
+
+## Status JSON generator
+
+Run from repo root:
+
+```powershell
+pwsh -NoProfile -File ./play/generate-status.ps1 <RunId>
+```
+
+Linux/CI fallback: `node website/scripts/generate-status.mjs <RunId>`
+
+Writes `website/public/status.json` (turn, per-faction submission state, lobby status). Reads `play/runs/<RunId>/data/gamein.xml`, faction `order.*` / isolated reports, optional `gm/schedule.json` (`nextTurnAt`).
+
+`isolate.ps1`, `next.ps1`, and `turn.ps1` call `generate-status` at end of each step. Website checks: `cd website && npm run check && npm test && npm run build && npm run test:e2e`. Keep `play/generate-status.ps1` and `website/scripts/generate-status.mjs` in sync.

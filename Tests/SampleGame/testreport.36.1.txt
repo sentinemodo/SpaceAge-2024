@@ -1,0 +1,284 @@
+To: 
+Subject: [SpaceAge] Report for turn 36
+Content-Disposition: attachment
+
+SpaceAge report for NPC [1].
+Turn 36, Year 2029, September 1.
+
+SpaceAge Engine Version: 0.8.001.
+
+Events during turn:
+  none.
+
+Bank report:
+  Bank account balance: 0.
+  Credit line maximum: 1000000.
+  Credit rate: 0%, Deposit rate: 0%.
+Galaxy report:
+------------------------------------------------------------
+* Sol [SS0001] (0, 0, 0), star system.
+------------------------------------------------------------
+
+  * Sol [S00001] (0, 0, 0), M4 star, unexplored.
+------------------------------------------------------------
+
+  * Mercury [P00001] at AU 0.4, dust planet [dust].
+------------------------------------------------------------
+  orbit [O00005], has no atmosphere.
+
+  * Earth [P00002] at AU 1, ocean planet [ocean].
+------------------------------------------------------------
+  orbit [O00003], has atmosphere suitable for terran [terran].
+  - Frigate [100011], spaceship hull [sshull], owned by Caste Prime [2].
+    size: 5000.
+    - command bridge [100012], command bridge [cbridg], owned by Caste Prime [2].
+      size: 800.
+      - terran officer [200002], terran [terran], working for Caste Prime [2].
+        size: 4.
+    - fission reactor [100013], 2 fission reactors [fisrec], owned by Caste Prime [2].
+      size: 800.
+    - reaction drive [100014], reaction drive [rctdrv], owned by Caste Prime [2].
+      size: 600.
+    - x-ray laser [100015], 2 x-ray lasers [xraylz], owned by Caste Prime [2].
+      size: 200.
+    - crew quarters [100016], 2 crew quarters [crwqrt], owned by Caste Prime [2].
+      size: 1000.
+  + Station [100021], orbital complex [orcmpx], immobile.
+    size: 5000, mass: 6564 (100), capacity: 4500/5700, energy: 60/17 (1), crew: 2/21, upkeep: 310
+    (10) cash [cash], consume: 21 (0) units of food [food], 21 (0) units of terran breathing gas
+    mixture [terair].
+    + command bridge [100022], command bridge [cbridg], immobile.
+      size: 800, mass: 340 (300), capacity: 200/40, energy: 5, crew: 1/10, upkeep: 119 (100) cash
+      [cash], consume: 10 (0) units of food [food], 10 (0) units of terran breathing gas mixture
+      [terair].
+      items: 9 terrans [terran] (size: 36, mass: 36, upkeep: 9 cash [cash], consume: 9 units of food
+      [food], 9 units of terran breathing gas mixture [terair]).
+      + terran officer [200003], terran [terran].
+        size: 4, mass: 4, capacity: 3/0, upkeep: 10 cash [cash], consume: unit of food [food], unit
+        of terran breathing gas mixture [terair].
+        skills: space station command [sscmnd].
+    + fission reactor [100023], fission reactor [fisrec], immobile.
+      size: 400, mass: 192 (140), capacity: 100/17, energy: 60/10 (consume: unit of uranium [uraniu]
+      for 13 weeks), crew: 1/3, upkeep: 93 (90) cash [cash], consume: 3 (0) units of food [food], 3
+      (0) units of terran breathing gas mixture [terair].
+      fuel requirements:  unit of uranium [uraniu] per 13 weeks.
+      items: 5 units of uranium [uraniu] (size: 5, mass: 40), 3 terrans [terran] (size: 12, mass:
+      12, upkeep: 3 cash [cash], consume: 3 units of food [food], 3 units of terran breathing gas
+      mixture [terair]).
+    + small cargo bay [100024], 2 small cargo bays [cargob], immobile.
+      size: 4000, mass: 4516 (400), capacity: 3600/3516, upkeep: 64 (60) cash [cash], consume: 4 (0)
+      units of food [food], 4 (0) units of terran breathing gas mixture [terair].
+      items: 100 units of iron [iron] (size: 500, mass: 1000), 100 units of titanium [titani] (size:
+      1000, mass: 1000), 100 units of copper [copper] (size: 500, mass: 800), 100 units of silicium
+      [silici] (size: 500, mass: 300), 1000 units of oxyhydro [h2o2] (size: 1000, mass: 1000), 4
+      terrans [terran] (size: 16, mass: 16, upkeep: 4 cash [cash], consume: 4 units of food [food],
+      4 units of terran breathing gas mixture [terair]).
+    + crew quarters [100025], crew quarters [crwqrt], immobile.
+      size: 500, mass: 1416 (400), capacity: 250/1016, energy: 1, upkeep: 24 (20) cash [cash],
+      consume: 4 (0) units of food [food], 4 (0) units of terran breathing gas mixture [terair].
+      items: 10000 cash [cash], 1000 units of food [food] (size: 1000, mass: 1000), 4 terrans
+      [terran] (size: 16, mass: 16, upkeep: 4 cash [cash], consume: 4 units of food [food], 4 units
+      of terran breathing gas mixture [terair]).
+
+  Arctic [R10001] (0,0), barren region.
+  Exits:
+
+  Arctic [R10002] (1,0), barren region.
+  Exits:
+
+  Northern Sea [R10003] (0,1), sea region.
+  Exits:
+
+  Northern Sea [R10004] (1,1), sea region.
+  Exits:
+
+  Northern Europe [R10005] (0,2), grassland region.
+  Exits:
+
+  Northern Europe [R10006] (1,2), grassland region.
+  Exits:
+
+  Baltic Sea [R10007] (0,3), sea region.
+  Exits:
+
+  Baltic Sea [R10008] (1,3), sea region.
+  Exits:
+
+  Western Europe [R00001] (0,4), grassland region, settlement capacity 8/2.
+  Exits:
+    Eastern Europe [R00002] (1,4), grassland region, ground travel duration 3 weeks.
+  Resources: 20 units of iron [iron], 500 units of food [food].
+  Market report:
+    Offers of selling items:
+      sell 20 terrans [terran] at 50 each from Berlin [000005].
+      sell 40 units of food [food] at 2 each from Berlin farms [000008].
+    Offers of buying items:
+      buy 200 units of food [food] at any price by Berlin [000005].
+    Offers of selling modules:
+      none.
+    Offers of buying modules:
+      buy core drill [cdrill] at 100 by Berlin [000005].
+    Offers of selling technologies:
+      none.
+    Offers of buying technologies:
+      buy city planning [ctypln] at 100 by Berlin [000005].
+  
+  + Berlin [000005], 2 cities [city], immobile.
+    size: 50000, mass: 4894 (0), capacity: 30000/7230, energy: 140/80 (20), crew: 31/51 (0/20),
+    upkeep: 200 units of food [food], 531 (0) cash [cash], consume: 51 (0) units of food [food], 51
+    (0) units of terran breathing gas mixture [terair].
+    items: 1000 cash [cash], 20 terrans [terran] (size: 80, mass: 80, upkeep: 20 cash [cash],
+    consume: 20 units of food [food], 20 units of terran breathing gas mixture [terair]).
+    + Berlin farms [000008], 3 farming complexes [farms], immobile.
+      size: 3000, mass: 400 (300), capacity: 1500/100, energy: 15, crew: 15/15, upkeep: 165 (150)
+      cash [cash], consume: 15 (0) units of food [food], 15 (0) units of terran breathing gas
+      mixture [terair].
+      technologies: intensive farming [farmng].
+      items: 40 units of food [food] (size: 40, mass: 40), 15 terrans [terran] (size: 60, mass: 60,
+      upkeep: 15 cash [cash], consume: 15 units of food [food], 15 units of terran breathing gas
+      mixture [terair]).
+    + Berlin wind powerplants [000011], 15 wind powerplants [wnplnt], immobile.
+      size: 150, mass: 150 (150), energy: 60/15, upkeep: 150 cash [cash].
+    - coal-burning plant [000007], 2 coal-burning plants [cplant], immobile, owned by Caste Prime
+      [2].
+      size: 2000.
+    - core drill [000006], 2 core drills [cdrill], immobile, owned by Caste Prime [2].
+      size: 2000.
+  - trucks [100001], 2 trucks [trucks], owned by Caste Prime [2].
+    size: 500.
+    - terran officer [200001], terran [terran], working for Caste Prime [2].
+      size: 4.
+
+  Eastern Europe [R00002] (1,4), grassland region, settlement capacity 4/1.
+  Exits:
+    Western Europe [R00001] (0,4), grassland region, ground travel duration 3 weeks.
+  Resources: 5 units of carbon [carbon], 600 units of food [food].
+  Market report:
+    Offers of selling items:
+      sell 10 terrans [terran] at 50 each from Warszawa [000001].
+      sell 20 units of food [food] at 2 each from Warsaw farms [000010].
+    Offers of buying items:
+      buy 100 units of food [food] at any price by Warszawa [000001].
+    Offers of selling modules:
+      none.
+    Offers of buying modules:
+      buy city [city] at 500 by Warszawa [000001].
+    Offers of selling technologies:
+      none.
+    Offers of buying technologies:
+      none.
+  
+  + Warszawa [000001], city [city], immobile.
+    size: 25000, mass: 4876 (0), capacity: 15000/6390, energy: 80/70 (10), crew: 49/59 (0/10),
+    upkeep: 100 units of food [food], 528 (0) cash [cash], consume: 63 (0) units of food [food], 63
+    (0) units of terran breathing gas mixture [terair].
+    items: 500 cash [cash], 10 terrans [terran] (size: 40, mass: 40, upkeep: 10 cash [cash],
+    consume: 10 units of food [food], 10 units of terran breathing gas mixture [terair]).
+    + Warsaw farms [000010], 2 farming complexes [farms], immobile.
+      size: 2000, mass: 280 (200), capacity: 1000/80, energy: 10, crew: 10/10, upkeep: 110 (100)
+      cash [cash], consume: 10 (0) units of food [food], 10 (0) units of terran breathing gas
+      mixture [terair].
+      technologies: intensive farming [farmng].
+      items: 40 units of food [food] (size: 40, mass: 40), 10 terrans [terran] (size: 40, mass: 40,
+      upkeep: 10 cash [cash], consume: 10 units of food [food], 10 units of terran breathing gas
+      mixture [terair]).
+    + Warsaw wind powerplants [000009], 10 wind powerplants [wnplnt], immobile.
+      size: 100, mass: 100 (100), energy: 40/10, upkeep: 100 cash [cash].
+    - Caste Prime Headquarters [000112], corporate headquarters [corphq], immobile, owned by Caste
+      Prime [2].
+      size: 1000.
+      - Caste Prime CEO [000101], terran [terran], working for Caste Prime [2].
+        size: 4.
+    - core drill [000002], core drill [cdrill], immobile, owned by Caste Prime [2].
+      size: 1000.
+    - coal-burning plant [000003], coal-burning plant [cplant], immobile, owned by Caste Prime [2].
+      size: 1000.
+    - factory [000004], factory [factry], immobile, owned by Caste Prime [2].
+      size: 1000.
+    - trucks [100002], trucks [trucks], disabled, immobile, owned by Caste Prime [2].
+      size: 250.
+
+  Southern Europe [R10009] (0,5), mountain region.
+  Exits:
+
+  Southern Europe [R10010] (1,5), grassland region.
+  Exits:
+
+  Mediterrean Sea [R10011] (0,6), sea region.
+  Exits:
+
+  Mediterrean Sea [R10012] (1,6), sea region.
+  Exits:
+------------------------------------------------------------
+  * Luna [P00003] (1, 0, 0), moon, unexplored.
+------------------------------------------------------------
+    orbit [O00004], has no atmosphere.
+
+    Great Desert [R00010] (0,1), dusty region.
+    Exits:
+      Western Europe [R00001] (0,4), grassland region, ground travel duration 5 weeks.
+
+    Great Desert [R00011] (0,1), dusty region.
+    Exits:
+      orbit [O00004], space travel duration 2 weeks.
+
+* Sol [SS0001] (0, 0, 0), star system.
+------------------------------------------------------------
+
+  * Sol [S00001] (0, 0, 0), M4 star, unexplored.
+------------------------------------------------------------
+
+
+Orders Template:
+#faction 1 ""
+#modulestack 000001
+; + Warszawa [000001], city [city], immobile.
+; items: 500 cash [cash], 10 terrans [terran].
+
+#modulestack 000005
+; + Berlin [000005], 2 cities [city], immobile.
+; items: 1000 cash [cash], 20 terrans [terran].
+
+#modulestack 000008
+; + Berlin farms [000008], 3 farming complexes [farms], immobile.
+; technologies: intensive farming [farmng].
+; items: 40 units of food [food], 15 terrans [terran].
+
+#modulestack 000009
+; + Warsaw wind powerplants [000009], 10 wind powerplants [wnplnt], immobile.
+
+#modulestack 000010
+; + Warsaw farms [000010], 2 farming complexes [farms], immobile.
+; technologies: intensive farming [farmng].
+; items: 40 units of food [food], 10 terrans [terran].
+
+#modulestack 000011
+; + Berlin wind powerplants [000011], 15 wind powerplants [wnplnt], immobile.
+@produce energy
+
+#modulestack 100021
+; + Station [100021], orbital complex [orcmpx], immobile.
+
+#modulestack 100022
+; + command bridge [100022], command bridge [cbridg], immobile.
+; items: 9 terrans [terran].
+
+#modulestack 100023
+; + fission reactor [100023], fission reactor [fisrec], immobile.
+; items: 5 units of uranium [uraniu], 3 terrans [terran].
+
+#modulestack 100024
+; + small cargo bay [100024], 2 small cargo bays [cargob], immobile.
+; items: 100 units of iron [iron], 100 units of titanium [titani], 100 units of copper [copper], 100
+; units of silicium [silici], 1000 units of oxyhydro [h2o2], 4 terrans [terran].
+
+#modulestack 100025
+; + crew quarters [100025], crew quarters [crwqrt], immobile.
+; items: 10000 cash [cash], 1000 units of food [food], 4 terrans [terran].
+
+#person 200003
+; + terran officer [200003], terran [terran].
+; skills: space station command [sscmnd].
+
+#end
+

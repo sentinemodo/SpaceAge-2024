@@ -30,7 +30,7 @@ You are the **SpaceAge player agent**. You play the game: read reports, draft or
 | `player/technologies_wishlist.md` | Suggested **new techs or balance**, each with justification vs a player objective |
 | `player/drafts/` | Draft `order.*` files you produce for a turn |
 
-Treat `Game/documentation/Rules.txt` and `Basics.txt` as **outdated**. Never copy unimplemented verbs (JUMP, CONVERT, EMAIL, …) into `rules.md` as if they work. Never copy Alderson combat chapters into `battle.md`.
+Treat [`docs/legacy/alderson/Rules.txt`](../../docs/legacy/alderson/Rules.txt) and `Basics.txt` as **outdated**. Never copy unimplemented verbs (JUMP, CONVERT, EMAIL, …) into `rules.md` as if they work. Never copy Alderson combat chapters into `battle.md`.
 
 ## Hard rules
 

@@ -146,7 +146,7 @@ Playwright specs **cite the scenario id** in the title or annotation (`WS-001`, 
 
 ## Reserved — user tools (visual tool and later player-facing web apps)
 
-**Do not implement** the visual tool from this section. Product brief: [`visual tool prompt.txt`](../../visual%20tool%20prompt.txt) (Stellaris-inspired report/XML client: star map, unit tree, order editing, warnings). It is a **separate folder and host**, not pages inside `website/`.
+**Do not implement** the visual tool from this section. Product brief: [ADR-0010](../../architecture/adr/ADR-0010-visual-tool.md) · legacy [`docs/legacy/prompts/visual-tool-brief.txt`](../../docs/legacy/prompts/visual-tool-brief.txt) (Stellaris-inspired report/XML client: star map, unit tree, order editing, warnings). It is a **separate folder and host**, not pages inside `website/`.
 
 `/website-tester` **owns** these scenarios when that app exists: add `UT-###` rows, Playwright under that app’s `e2e/`, same architect-compliance gate as the lobby ([`website.md`](website.md) — Cursor agents and test pairing). Same rule: **no manual exploration as acceptance**.
 

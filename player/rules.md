@@ -1,10 +1,12 @@
-# Player order syntax
+# Player order syntax (agent / RAG manual)
 
-Checked **13 Sep 2026** against engine **0.1.159** (`Game/Program.cs`).
+**Human-facing publish copy:** [`docs/human/rules.md`](../docs/human/rules.md) — website SSOT, no code references.
+
+Checked **16 Sep 2026** against engine **0.8.001** (`Game/Program.cs` → `EngineVersion`).
 
 Sources: `Game/orders/EOrderType.cs`, `Game/orders/OrderFactory.cs`, `Game/orders/OrdersReader.cs`, `Game/orders/Orders.cs`, `Game/orders/JumpOrder.cs`, `Game/orders/MoveOrder.cs`, `Game/orders/LongOrder.cs` (`CanOperate`, atmosphere and effective location), `Game/game/SpaceTransit.cs` (`f(ΔAU)`, mass factor, baked space-exit weeks), `Game/Game.cs` (week loop, `GenerateOffers`, `ProcessBuyOffers`), `Game/Program.cs` (`/data`, `/turn-dir`, `/reports`, `/no-turn`, `/check`), `Game/Research.cs` (weekly output, breakthrough, preference, space-object proximity and reveal), `Game/SurveyReports.cs`, `Game/data structures/SurveyObjects.cs`, `Game/data structures/ModuleStack.Upkeep.cs` (sick bay, medical consume, quarterly maintenance, high-gravity bill, `AllowBank` on cash upkeep), `Game/data structures/ModuleStack.Economy.cs` (`AllowBank`, `HasBankAccess`), `Game/data structures/Galaxy.cs` (`LoadXml` / `LoadExits` / save of environment attrs, belt and alderson exits), `Game/data structures/Alderson.cs` (`PairName`, orbit only), `Game/data structures/Belt.cs` (`LocationType` space), `Game/data structures/Planet.cs` / `Moon.cs` (`HasEnvironmentAttrs`), `Game/data structures/ELocationType.cs` (`atmosphere`), `Game/data structures/BodyEnvironment.cs` (`EffectiveLocationType`, `HasAtmosphereResources`, `LaunchSurcharge`, `SurfaceOrbitSurcharge`, `BansNonShuttleSurfaceHop`, settlement temperature, gravity), `Game/data structures/Orbit.cs` (`HasAtmosphere`, orbit resources), `Game/data structures/ModuleType.cs` (`IsShipHullType` / `IsShuttleUnit`), `Game/data structures/Exits.cs` / `ExitMode.cs` / `Region.cs` (region **Exits:** lines), `Game/data structures/Faction.cs` (blank line before `Bank report:`), `Game/reports/ReportWriter.cs` (faction report sections and blank lines), `Game/battle/Battles.cs` (blank line between consecutive battles), `Game/game/DataFile.cs` (`LoadLocationType`, `LoadOrders` / `SaveOrders` delegate to `OrderXml`), `Game/game/OrderXml.cs` (XML switch, including `jump`), `Game/game/ModuleTypeGroupXml.cs` (`RESEARCH GROUP` tokens), `Game/game/CatalogLoader.cs` (`planet-atmosphere`, `location-type`), `Game/game/Market.cs` (`GetPrice`, `payBuyer`, `availableFunds`), `Game/game/Market.Clearing.cs` (regional buy clearing, pro-rata), `Game/data structures/Offer.cs` (`GetEffectiveBidCap`, `MatchesAsk`), `Game/effects/Effects.cs` (`LoadXml` effect types), `Game/effects/Producing.cs` (omit empty `technology=`), each `Game/orders/*Order.Parse` / `Execute`. Sample prefix usage: `Tests/SampleGame/orders.*.txt`.
 
-Not source of truth: `Game/documentation/Rules.txt`. Turn order files are **Windows-1251** (same as reports). Verbs are case-insensitive; most arguments are not.
+Not source of truth: legacy Alderson docs in [`docs/legacy/alderson/`](../docs/legacy/alderson/). Turn order files are **Windows-1251** (same as reports). Verbs are case-insensitive; most arguments are not.
 
 **29** verbs register in `OrderFactory.ByVerb` (text via `OrdersReader`, saved games via `OrderXml`): **22 immediate**, **7 long**. See [Turn sequence](#turn-sequence), [Immediate vs long](#immediate-vs-long), and [Text vs XML](#text-vs-xml).
 
@@ -65,7 +67,7 @@ From `Game.exe` (`Program.Main`) and `Game.Execute`. A turn is **13 weeks**. Com
 
 ### Host pipeline
 
-`Program.Main` is public. Engine version **0.1.159** (`Program.EngineVersion`). Flags share one parse loop: `/reports` and `/no-turn` are bare switches (no following argument); `/data`, `/turn-dir`, and `/check` take the next token.
+`Program.Main` is public. Engine version from `Program.EngineVersion` (see `Game/Program.cs`). Flags share one parse loop: `/reports` and `/no-turn` are bare switches (no following argument); `/data`, `/turn-dir`, and `/check` take the next token.
 
 
 | Flag        | Argument  | Effect                                                                                     |

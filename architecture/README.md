@@ -2,14 +2,16 @@
 
 This folder is the **source of truth** for the SpaceAge engine's modules, file contracts, technology choices, and **test-layer mapping**. It lives **in this repository** (not the workspace `Architectures/` tree) so cloud agents and git history travel with the code.
 
-Engine implementation stays in `Game/` and `Tests/`. The public lobby is a **separate** surface (`website/` when built — see [`delivery/website.md`](delivery/website.md)). Architecture documents here are **strategic and slow-changing**. If code and these docs disagree, update the docs (ADR or dated revision) rather than silently diverging.
+Engine implementation stays in `Game/` and `Tests/`. Open-beta surfaces (`website/`, `game-host/`, `visual-tool/`, `tools/player-agent/`) are documented here and in [`docs/README.md`](../docs/README.md). Architecture documents here are **strategic and slow-changing**. If code and these docs disagree, update the docs (ADR or dated revision) rather than silently diverging.
 
 ## How to use
 
 | Reader | Start here |
 |--------|------------|
 | Implementers / TDD | [`overview.md`](overview.md), then [`modules-and-integrations.md`](modules-and-integrations.md) (test layers) |
-| Website developer / tester | [`delivery/website.md`](delivery/website.md) (**Cursor agents and test pairing**), seed catalog [`delivery/website-scenarios.md`](delivery/website-scenarios.md), [ADR-0007](adr/ADR-0007-public-campaign-website.md) |
+| Website developer / tester | [`delivery/website.md`](delivery/website.md), pairing [`.cursor/agents/website-pairing.md`](../.cursor/agents/website-pairing.md), scenarios [`website/e2e/scenarios.md`](../website/e2e/scenarios.md), [ADR-0007](adr/ADR-0007-public-campaign-website.md) |
+| Human players | [`player/rules.md`](../player/rules.md) · [`docs/human/`](../docs/human/) |
+| Cursor agents | [`docs/agents/README.md`](../docs/agents/README.md) |
 | Stack / versions | [`technology.md`](technology.md) (engine, website, and local player-agent inference are **separate** sections) |
 | Local / RunPod player-agent LLM | [ADR-0009](adr/ADR-0009-local-llm-player-agent.md), plan [`delivery/local-player-agent.md`](delivery/local-player-agent.md) |
 | Official library docs | [`docs-index.md`](docs-index.md) |
@@ -18,7 +20,7 @@ Engine implementation stays in `Game/` and `Tests/`. The public lobby is a **sep
 
 Cursor pairing for the lobby: `/website-developer` (`.cursor/agents/website-developer.md`, `.cursor/rules/website-astro.mdc`) and `/website-tester` (`.cursor/agents/website-tester.md`, `.cursor/rules/website-tester.mdc`). File-scoped (`alwaysApply: false`). Contract: [`delivery/website.md`](delivery/website.md). Green Playwright is the done gate — not a browser tour.
 
-Player-facing design notes remain in `Game/documentation/` (`Basics.txt`, `Concepts.txt`, `Rules.txt`). This tree describes the **software** architecture, not the full rulebook.
+Legacy Alderson design text: [`docs/legacy/alderson/`](../docs/legacy/alderson/). Live player rules: [`player/rules.md`](../player/rules.md). This tree describes **software** architecture.
 
 ## Layout
 

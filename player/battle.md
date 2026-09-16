@@ -4,7 +4,7 @@ Checked **11 Sep 2026** against engine **0.1.158**.
 
 Sources: `Game/battle/Battle.cs`, `Game/battle/Battles.cs`, `Game/battle/CombatMatchup.cs`, `Game/battle/ETactic.cs`, `Game/battle/BattleSimulatorRunner.cs`, `Game/battle/BattleSimulatorTemplates.cs`, `Game/Game.cs` (`ExecuteBattles`), `Game/Program.cs` (`/battle-sim`), `Game/reports/ReportWriter.cs` (blank line before `Battles report:`), `Game/data structures/ModuleStack.cs` (attack, defense, initiative, tactics, `IsArmed`, `HasOperationalModules`, `GetFiringModules`), `Game/data structures/ModuleType.cs` (`IsShuttleUnit` / `IsHangarCraft` / `IsDroneBay`, `WeaponGroup` / `Resists` / `ArmorModule`), `Game/data structures/Faction.cs` / `FactionAttitude.cs`, `Game/orders/AttackOrder.cs`, `CaptureOrder.cs`, `DeclareOrder.cs`, `TacticOrder.cs`, `SetOrder.cs`, `Game/game/CatalogLoader.cs` (`weapon-group`, `resists`, `armor-module`). Catalog bonuses: `Tests/data.xml` (`attack`, `defense`, `damage`, `initiative` on modules, techs, skills, items). SampleGame catalog is **flat**: no `weapon-group` / `resists` / `armor-module` attributes, so typed-matchup multipliers, shield intercept, and armor hit-weight do not fire there. Standalone UI: `tools/battle-simulator/` (see [Battle simulator](#battle-simulator-standalone)).
 
-Not source of truth: `Game/documentation/Rules.txt` combat chapters (Alderson CONVERT / 60% command / mixed leftover modules). Ground and space use the **same** battle loop; unused `GroundUnit` / `BattleField` do not run.
+Not source of truth: [`docs/legacy/alderson/Rules.txt`](../docs/legacy/alderson/Rules.txt) combat chapters (Alderson CONVERT / 60% command / mixed leftover modules). Ground and space use the **same** battle loop; unused `GroundUnit` / `BattleField` do not run.
 
 ## When a battle starts
 
@@ -194,37 +194,12 @@ After `ApplyCaptures`, a **clear win** (one side’s battle list empty, the othe
 
 Implicit default firing (destroy when not capture) does **not** trigger post-victory destruction; only an explicit `TACTIC destroy` does. `TACTIC evade` affects in-combat behaviour only.
 
-## Battle simulator (standalone)
+## Battle simulator
 
-Local tool at `tools/battle-simulator/` for planning fights without a full turn. It builds `<battle-sim>` XML and runs the same `Battle` loop through the engine:
+Use the **visual tool** battle-sim panel (`POST /api/session/battle-sim` via game-host) or the engine CLI:
 
 ```text
 Game.exe /battle-sim <sim-input.xml> [output.txt] /data campaign [/seed N]
 ```
 
-- **`/data campaign`** — loads `campaign/data.xml` (typed weapon groups, shields, armour, campaign hulls). SampleGame `Tests/data.xml` works for flat-catalog smoke tests.
-- **`/seed N`** — optional; overrides the XML `seed` attribute for reproducible dice (`Sequence`).
-- Default output: `<sim-input>.out.txt` (Windows-1251).
-
-**Preset templates** live in `Game/battle/BattleSimulatorTemplates.cs` and are mirrored in `tools/battle-simulator/public/presets.json` for the UI:
-
-| Id | Display name | Role |
-|----|--------------|------|
-| `system-patrol-corvette` | System Patrol Corvette | Light patrol (corvette + PD lasers, ceramic armour) |
-| `escort-frigate` | Escort Frigate | Defense / anti-craft (railguns, plasma shield) |
-| `drone-carrier-frigate` | Drone Carrier Frigate | Drone swarm (bay + 6 evading drones) |
-| `line-destroyer` | Line Destroyer | Fleet combat (coilgun, cruise missiles, CIWS, spaced armour) |
-| `planetary-defense-battery` | Planetary Defense Battery | Static ground (4× gun placement) |
-| `laser-emplacement` | Laser Emplacement | Static laser turret |
-| `armored-tank-platoon` | Armored Tank Platoon | Ground armor |
-| `infantry-battalion` | Infantry Battalion | Garrison / capture |
-
-**UI:** `npm start` in `tools/battle-simulator/` → http://localhost:4173 — two-sided roster editor, custom templates in `localStorage`, bridge via `server/bridge.mjs` to `Game.exe`.
-
-**CLI example** (unit fixture):
-
-```powershell
-Game.exe /battle-sim Tests\fixtures\battle-sim\inftry-skirmish.xml /data campaign /seed 42
-```
-
-Simulator output header: `SpaceAge Battle Simulator v{EngineVersion}`, seed, location type; then battle rounds from `Round 1:` onward; footer with result, round count, and casualty summary.
+Preset templates: `Game/battle/BattleSimulatorTemplates.cs`. Unit fixture: `Tests/fixtures/battle-sim/inftry-skirmish.xml`.

@@ -2,7 +2,7 @@
 
 Last updated: 2026-09-11  
 Decision: [ADR-0010](../adr/ADR-0010-visual-tool.md)  
-Brief: [visual tool prompt.txt](../../visual%20tool%20prompt.txt)
+Brief (legacy): [`docs/legacy/prompts/visual-tool-brief.txt`](../../docs/legacy/prompts/visual-tool-brief.txt) · live: [`visual-tool/README.md`](../../visual-tool/README.md)
 
 Hosted React client consuming game-host report XML.
 

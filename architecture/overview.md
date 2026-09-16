@@ -1,7 +1,10 @@
 # SpaceAge-2024 — architecture overview
 
-Status: Current-state description (engine `0.1.159`)  
-Last updated: 2026-09-11
+Status: **Current-state description** (open beta)  
+Engine version: `Game/Program.cs` → `EngineVersion` (currently **0.8.001**)  
+Last updated: 2026-09-16
+
+Doc hub: [`docs/README.md`](../docs/README.md)
 
 ## Purpose
 
@@ -12,76 +15,89 @@ SpaceAge is a **turn-based play-by-email (PBEM) space 4X engine**. A GM (or scri
 3. Advances the world **13 weeks** (one quarter).
 4. Writes per-faction text reports (email-shaped headers) and a new game XML snapshot.
 
-The engine does **not** send email, host an API, or use a database. External mailers and GM tools wrap `Game.exe`.
+The engine does **not** send email or use a database. External mailers, GM scripts, and the **game-host** service wrap `Game.exe`.
 
-A **public campaign website** is a separate product surface (not the engine): a closed PBEM lobby with flavour copy, orders-submission status from a published JSON file, and a link to the hosted visual tool. Phase 4 adds **client-side** planning pages (`/eta`, `/battle`). Plan: [`delivery/website.md`](delivery/website.md), [ADR-0007](adr/ADR-0007-public-campaign-website.md).
+## Product surfaces (beyond the engine)
 
-**Open beta (2026-09-11)** adds two more bounded contexts:
+| Surface | Folder | Role |
+|---------|--------|------|
+| **Public lobby** | `website/` | Static Astro site: flavour, `/turns` status, link to visual tool. [ADR-0007](adr/ADR-0007-public-campaign-website.md) |
+| **Game host** | `game-host/` | Node HTTP service: faction auth, report XML, orders, GM turn runner. [ADR-0011](adr/ADR-0011-hosted-game-service.md) |
+| **Visual tool** | `visual-tool/` | React/Vite authenticated report client. [ADR-0010](adr/ADR-0010-visual-tool.md) |
+| **Player agent** | `tools/player-agent/` | Local LLM order drafting. [ADR-0009](adr/ADR-0009-local-llm-player-agent.md) |
+| **AI campaign loop** | `play/` | PowerShell isolation path for factions 2–11 |
+| **Campaign data** | `campaign/` | Live `data.xml` + scenario XML (game-designer) |
 
-| Context | Folder | ADR |
-|---------|--------|-----|
-| Game host | `game-host/` | [ADR-0011](adr/ADR-0011-hosted-game-service.md) — faction auth, report XML, orders, GM turn runner |
-| Visual tool | `visual-tool/` | [ADR-0010](adr/ADR-0010-visual-tool.md) — complete XML report client |
+**Primary campaign path (open beta):** `game-host/runs/` — hosted sessions with faction auth and visual-tool API.
 
-The static lobby still does not embed `gamein.xml`; the game-host serves faction-scoped data behind authentication.
+**Dev / AI isolation:** `play/runs/` — PowerShell loop for factions 2–11 and player-agent testing; not the public beta surface.
 
 ## Concise architecture
 
-Two Visual Studio projects in `SpaceAge.sln`:
+```mermaid
+flowchart TB
+  subgraph sln [SpaceAge.sln]
+    Game[Game.exe]
+    Tests[Tests.dll]
+    PA[tools/player-agent]
+  end
+  subgraph node [Node - not in sln]
+    GH[game-host]
+    VT[visual-tool]
+    WEB[website]
+  end
+  Tests --> Game
+  PA --> Game
+  GH -->|spawn| Game
+  VT -->|session API| GH
+  WEB -->|status.json| GH
+  PLAY[play scripts] --> Game
+  PLAY -->|status.json| WEB
+```
 
 | Project | Assembly | Role |
 |---------|----------|------|
 | `Game` | `Game.exe` | Engine: load → orders → execute → reports → save |
-| `Tests` | `Tests.dll` | NUnit 4 fixtures: in-process unit tests and SampleGame golden-file integration |
+| `Tests` | `Tests.dll` | NUnit 4: unit + SampleGame integration |
+| `tools/player-agent` | CLI | Ollama/RAG order drafting |
 
-Domain code lives under `Game/` in a **single namespace** `SpaceAge` (folders are organizational, not namespace boundaries). Almost every entity type exposes a static `All` registry.
+Domain code lives under `Game/` in namespace **`SpaceAge`**. Almost every entity exposes a static `All` registry.
 
 ## Principles
 
-1. **File-in / file-out batch.** The only integration surface is the filesystem (`data.xml`, `gamein.xml`, `order.*`, `gameout.{turn}.xml`, `report.{turn}.{faction}.*`).
-2. **Preserve Windows-1251** on all game XML, orders, and reports (`Encoding.GetEncoding(1251)`).
-3. **Do not retarget** off .NET Framework 4.8 or convert to SDK-style projects unless an ADR says so.
-4. **Test-first.** New behavior starts in `Tests/` (see test layers in [`modules-and-integrations.md`](modules-and-integrations.md)).
-5. **Deterministic turns.** Randomness and generated IDs go through `Sequence`; tests push known values.
-6. **Keep diffs small.** Large “modernization” (DI containers, splitting the `SpaceAge` namespace, replacing `*.All`) is out of scope unless requested and recorded as an ADR.
+1. **File-in / file-out batch** for the engine (`data.xml`, `gamein.xml`, `order.*`, `gameout.{turn}.xml`, reports).
+2. **Windows-1251** on engine XML, orders, and reports.
+3. **Do not retarget** off .NET Framework 4.8 without an ADR.
+4. **Test-first** — see [`modules-and-integrations.md`](modules-and-integrations.md).
+5. **Deterministic turns** — `Sequence` for RNG and IDs.
+6. **Small diffs** — no drive-by modernization (DI, namespace splits) without ADR.
 
-## Current vs design notes
+## Live vs legacy documentation
 
-`Game/documentation/Concepts.txt` and `Rules.txt` describe a richer design (officer types, market delivery times, combat superiorities) than the running code. Treat those files as **design intent**. Treat this folder plus the C# as **what the engine actually does**. Gaps (stub `Events`/`Request`, incomplete SampleGame turns 4–5, economy TODOs) are documented as constraints, not as unimplemented product backlog unless an ADR promotes them.
+| Source | Use for |
+|--------|---------|
+| `player/rules.md`, `architecture/` | **Live behavior** |
+| `designer/` | Campaign design intent (feeds XML) |
+| `docs/legacy/alderson/` | Historical Alderson-era design text — **not** live rules |
+
+Known engine stubs (not product backlog unless ADR): `Request`, `Events`, `OrdersReader.Check`; partial types in `Location`, `DataFile.LoadXml` domain paths.
 
 ## Glossary
 
 | Term | Meaning |
 |------|---------|
-| **Turn** | One engine run; calendar quarter. `Game.Date` = year `startingYear` (2020) + `Turn`/4 (integer division), month from `Turn` % 4 (1→January, 2→April, 3→July, 0→September) |
-| **Week** | Inner loop 1..13 inside `Game.Execute()` |
-| **Faction** | Player corporation: password, email, bank, orders, attitudes |
-| **Module stack** | Primary game unit (ship, base, army); nested stacks; owns orders and effects |
-| **Order** | Parsed command (`move`, `use`, `produce`, …); immediate vs long; optional `+`/`-` conditions and `@` repeat |
-| **Effect** | Multi-week activity attached to a stack or person (produce, move, train, receive) |
-| **Catalog (`data.xml`)** | Static types: items, modules, technologies, stars, planets, races, skills |
-| **Game state (`gamein` / `gameout`)** | Factions, galaxy graph, saved orders |
-| **PBEM** | Players submit orders by email; GM runs the exe; reports returned by email (outside this repo) |
-| **Website** | Closed public lobby (`website/`); flavour + orders status + client link. Phase 4: `/eta` and `/battle` islands. Not the engine. [ADR-0007](adr/ADR-0007-public-campaign-website.md) |
-| **status.json** | Allow-listed UTF-8 file published by GM/`play/` scripts for the lobby. Not `gamein.xml` |
-| **Visual tool** | Separate future client (XML reports, star map). Website **links**; does not implement it |
+| **Turn** | One engine run; calendar quarter |
+| **Week** | Inner loop 1..13 in `Game.Execute()` |
+| **Faction** | Player corporation |
+| **Module stack** | Primary unit (ship, base, army) |
+| **status.json** | UTF-8 lobby status (not an engine file) |
+| **Game host** | Node wrapper exposing faction-scoped APIs over `Game.exe` |
 
-## Risks (architectural)
-
-| Risk | Mitigation in this architecture |
-|------|----------------------------------|
-| Global `*.All` registries leak between tests | `Game.ClearDictionaries()` in fixture teardown; one game at a time |
-| Mono vs real .NET 4.8 CLR differences | Cloud runs the solution under Mono (`.cursor/install.sh`); use a Windows Visual Studio / real-CLR pass for issues that only reproduce there |
-| Encoding bugs on non-Windows | `mono-complete` provides code page 1251 on the cloud image; never drop 1251 |
-| `DataFile` as a god class | Seams named in [ADR-0006](adr/ADR-0006-datafile-facade-and-xml-seams.md); extract only along those phases. `DataFile` stays the host/test facade |
-| Stub pipeline steps (`Request`, `Events`) | Leave no-ops unless a feature requires them; cover with tests when activating |
-| Public lobby leaking `gamein`, reports, or passwords | Allow-list `status.json` only; Phase 4 pastes stay in the browser; [ADR-0007](adr/ADR-0007-public-campaign-website.md) |
-
-## What implementers should read first
+## What to read first
 
 1. This file.
-2. [`modules-and-integrations.md`](modules-and-integrations.md) — turn pipeline, module boundaries, **test layers**.
-3. [`technology.md`](technology.md) — versions and “do not upgrade unless asked”.
-4. [`delivery/cicd-conventions.md`](delivery/cicd-conventions.md) — how to restore, build, and run tests.
-5. Persistence / `DataFile` work: [ADR-0006](adr/ADR-0006-datafile-facade-and-xml-seams.md) before any extract.
-6. Public lobby: [`delivery/website.md`](delivery/website.md) and [ADR-0007](adr/ADR-0007-public-campaign-website.md) — do not implement from `Game/`.
+2. [`modules-and-integrations.md`](modules-and-integrations.md) — modules, pipeline, test layers.
+3. [`dependencies/repo-map.md`](dependencies/repo-map.md) — project graph.
+4. [`technology.md`](technology.md) — stack pins.
+5. [`delivery/cicd-conventions.md`](delivery/cicd-conventions.md) — build and test.
+6. Human rules: [`player/rules.md`](../player/rules.md) or [`docs/human/rules.md`](../docs/human/rules.md).

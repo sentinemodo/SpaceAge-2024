@@ -1,6 +1,6 @@
 {
   "name": "spaceage-website",
-  "version": "0.1.0",
+  "version": "0.8.001",
   "description": "SpaceAge PBEM Lobby - Public campaign website built with Astro",
   "private": true,
   "type": "module",
