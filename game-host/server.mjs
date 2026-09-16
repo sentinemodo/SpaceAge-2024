@@ -2,6 +2,9 @@ import http from 'node:http';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { loadRepoEnv } from './lib/load-env.mjs';
+
+loadRepoEnv();
 import {
   ensureRunLayout,
   gameinPath,
@@ -33,6 +36,25 @@ import { runBattleSimulation } from './lib/battle-sim.mjs';
 import { splitReportSections } from './lib/report-sections.mjs';
 import { saveOrder } from './lib/orders-io.mjs';
 import { isolateReports } from './lib/isolate.mjs';
+import {
+  executeAiQuery,
+  regenerateStory,
+  runPodStatusPayload,
+} from './lib/ai-session.mjs';
+import {
+  listPersonas,
+  readPersona,
+  readStory,
+  savePersona,
+  saveStory,
+} from './lib/persona-story.mjs';
+import {
+  syncRunPodState,
+  startRunPodBackground,
+  startRunPodStatusPolling,
+  stopRunPod,
+  isRunPodStartInProgress,
+} from './lib/runpod.mjs';
 
 const PORT = parseInt(process.env.GAME_HOST_PORT || '8787', 10);
 const VISUAL_DIST = path.join(repoRoot(), 'visual-tool', 'dist');
@@ -117,7 +139,7 @@ const server = http.createServer(async (req, res) => {
     json(res, 200, {
       ok: true,
       runId: runId(),
-      features: { adminBrowse: true, viewAsFaction: true },
+      features: { adminBrowse: true, viewAsFaction: true, ai: true, runpod: true },
     });
     return;
   }
@@ -304,6 +326,160 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
+  if (req.method === 'GET' && url.pathname === '/api/session/runpod/status') {
+    const session = requireSession(req, res);
+    if (!session) return;
+    try {
+      await syncRunPodState();
+      json(res, 200, runPodStatusPayload());
+    } catch (err) {
+      json(res, 200, { ...runPodStatusPayload(), message: String(err.message || err) });
+    }
+    return;
+  }
+
+  if (req.method === 'POST' && url.pathname === '/api/session/runpod/start') {
+    const session = requireSession(req, res);
+    if (!session) return;
+    if (!process.env.RUNPOD_API_KEY) {
+      json(res, 500, {
+        error: 'RUNPOD_API_KEY is not set. Add it to repo-root .env and restart game-host.',
+        ...runPodStatusPayload(),
+      });
+      return;
+    }
+    try {
+      if (!isRunPodStartInProgress()) {
+        startRunPodBackground().catch((err) => {
+          console.error('[runpod] start failed:', err.message || err);
+        });
+      }
+      json(res, 202, {
+        ...runPodStatusPayload(),
+        message: 'RunPod start requested — poll status for progress',
+      });
+    } catch (err) {
+      json(res, 500, { error: String(err.message || err), ...runPodStatusPayload() });
+    }
+    return;
+  }
+
+  if (req.method === 'POST' && url.pathname === '/api/session/runpod/stop') {
+    const session = requireSession(req, res);
+    if (!session) return;
+    try {
+      await stopRunPod();
+      json(res, 200, runPodStatusPayload());
+    } catch (err) {
+      json(res, 500, { error: String(err.message || err) });
+    }
+    return;
+  }
+
+  if (req.method === 'GET' && url.pathname === '/api/session/personas') {
+    const session = requireSession(req, res);
+    if (!session) return;
+    json(res, 200, { personas: listPersonas(sessionRunId(session)) });
+    return;
+  }
+
+  if (req.method === 'GET' && url.pathname === '/api/session/persona') {
+    const session = requireSession(req, res);
+    if (!session) return;
+    const personaId = url.searchParams.get('id');
+    if (!personaId) {
+      json(res, 400, { error: 'missing id' });
+      return;
+    }
+    try {
+      json(res, 200, { personaId, text: readPersona(sessionRunId(session), personaId) });
+    } catch (err) {
+      json(res, 400, { error: String(err.message || err) });
+    }
+    return;
+  }
+
+  if (req.method === 'PUT' && url.pathname === '/api/session/persona') {
+    const session = requireSession(req, res);
+    if (!session) return;
+    if (!session.admin) {
+      json(res, 403, { error: 'admin/gm only' });
+      return;
+    }
+    const body = JSON.parse(await readBody(req));
+    if (!body.personaId || body.text == null) {
+      json(res, 400, { error: 'personaId and text required' });
+      return;
+    }
+    try {
+      savePersona(sessionRunId(session), body.personaId, body.text);
+      json(res, 200, { ok: true });
+    } catch (err) {
+      json(res, 400, { error: String(err.message || err) });
+    }
+    return;
+  }
+
+  if (req.method === 'GET' && url.pathname === '/api/session/story') {
+    const session = requireSession(req, res);
+    if (!session) return;
+    const text = readStory(sessionRunId(session), effectiveFactionId(session));
+    json(res, 200, { text });
+    return;
+  }
+
+  if (req.method === 'PUT' && url.pathname === '/api/session/story') {
+    const session = requireSession(req, res);
+    if (!session) return;
+    const body = await readBody(req);
+    saveStory(sessionRunId(session), effectiveFactionId(session), body);
+    json(res, 200, { ok: true });
+    return;
+  }
+
+  if (req.method === 'POST' && url.pathname === '/api/session/ai/query') {
+    const session = requireSession(req, res);
+    if (!session) return;
+    const body = JSON.parse(await readBody(req));
+    if (!body.prompt?.trim()) {
+      json(res, 400, { error: 'missing prompt' });
+      return;
+    }
+    try {
+      const result = await executeAiQuery({
+        runId: sessionRunId(session),
+        factionId: effectiveFactionId(session),
+        prompt: body.prompt.trim(),
+        includeStory: !!body.includeStory,
+      });
+      json(res, 200, result);
+    } catch (err) {
+      json(res, 500, { ok: false, error: String(err.message || err) });
+    }
+    return;
+  }
+
+  if (req.method === 'POST' && url.pathname === '/api/session/ai/draft-story') {
+    const session = requireSession(req, res);
+    if (!session) return;
+    const body = JSON.parse(await readBody(req));
+    if (!body.personaId) {
+      json(res, 400, { error: 'missing personaId' });
+      return;
+    }
+    try {
+      const result = await regenerateStory({
+        runId: sessionRunId(session),
+        factionId: effectiveFactionId(session),
+        personaId: body.personaId,
+      });
+      json(res, 200, result);
+    } catch (err) {
+      json(res, 500, { ok: false, error: String(err.message || err) });
+    }
+    return;
+  }
+
   if (req.method === 'POST' && url.pathname === '/api/session/battle-sim') {
     const session = requireSession(req, res);
     if (!session) return;
@@ -401,4 +577,5 @@ server.on('error', (err) => {
 server.listen(PORT, () => {
   console.log(`SpaceAge game-host run=${runId()} http://localhost:${PORT}`);
   console.log(`Visual tool (if built): http://localhost:${PORT}/client/`);
+  startRunPodStatusPolling(parseInt(process.env.RUNPOD_STATUS_POLL_MS || '30000', 10));
 });

@@ -15,8 +15,25 @@ describe('orderDisplay', () => {
     const roots: StackNode[] = [
       { id: '230003', faction: '2', children: [], upkeep: [], moduleCount: 1, persons: [] },
     ];
-    const text = ordersSummaryForFocus(template, roots, null);
+    const text = ordersSummaryForFocus(template, roots, null, null);
     expect(text).toContain('#modulestack 230003');
     expect(text).toContain('MOVE R00001');
+  });
+
+  it('shows person orders only when person is selected', () => {
+    const template = [
+      'Orders Template:',
+      '#modulestack 230003',
+      'MOVE R00001',
+      '#person 260010',
+      'TRAIN skill',
+      '#end',
+    ].join('\n');
+    const roots: StackNode[] = [
+      { id: '230003', faction: '2', children: [], upkeep: [], moduleCount: 1, persons: [] },
+    ];
+    expect(ordersSummaryForFocus(template, roots, '230003', null)).not.toContain('#person');
+    expect(ordersSummaryForFocus(template, roots, null, '260010')).toContain('#person 260010');
+    expect(ordersSummaryForFocus(template, roots, null, '260010')).not.toContain('#modulestack');
   });
 });

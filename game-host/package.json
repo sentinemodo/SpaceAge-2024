@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node server.mjs",
     "restart": "node scripts/restart.mjs",
+    "check-runpod": "node scripts/check-runpod-env.mjs",
     "dev": "node --watch server.mjs",
     "test": "node --test test/*.test.mjs"
   },

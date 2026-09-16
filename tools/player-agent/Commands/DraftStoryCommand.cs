@@ -23,6 +23,7 @@ internal static class DraftStoryCommand
         command.AddOption(CommandHelpers.AllowRunPodOption);
         command.AddOption(CommandHelpers.YesOption);
         command.AddOption(ChunkedOption);
+        command.AddOption(PersonaPathOption);
 
         command.SetHandler(async context =>
         {
@@ -45,10 +46,13 @@ internal static class DraftStoryCommand
             var factionDir = RepoPaths.FactionFolder(repoRoot, runId, factionIdValue);
             var reportPath = ResolveReportPath(factionDir, reportOverride)
                 ?? throw new InvalidOperationException($"No report found under {factionDir}");
-            var personaPath = Path.Combine(factionDir, "persona.md");
+            var personaOverride = context.ParseResult.GetValueForOption(PersonaPathOption);
+            var personaPath = string.IsNullOrWhiteSpace(personaOverride)
+                ? Path.Combine(factionDir, "persona.md")
+                : Path.GetFullPath(personaOverride);
             if (!File.Exists(personaPath))
             {
-                throw new FileNotFoundException($"Missing persona.md under {factionDir}");
+                throw new FileNotFoundException($"Missing persona.md at {personaPath}");
             }
 
             if (!OrderFileNaming.TryParseReportFileName(reportPath, out var reportTurn, out var reportFaction)
@@ -139,6 +143,11 @@ internal static class DraftStoryCommand
     private static Option<bool> ChunkedOption { get; } = new("--chunked")
     {
         Description = "Use three smaller chat calls (strategic, tactical, narrative) instead of one monolithic prompt.",
+    };
+
+    private static Option<string?> PersonaPathOption { get; } = new("--persona-path")
+    {
+        Description = "Override path to persona.md.",
     };
 
     private static string? ResolveReportPath(string factionDir, string? reportOverride)

@@ -542,6 +542,10 @@ body {
   gap: 0.3rem;
 }
 
+.body-view-orbit-label-below .band-au {
+  margin-top: 0.15rem;
+}
+
 .body-view-orbit-icons {
   display: flex;
   align-items: center;
@@ -1126,6 +1130,284 @@ body {
 .order-mode-tabs button.active {
   color: var(--accent);
   border-color: var(--accent-dim);
+}
+
+.order-text-readonly {
+  opacity: 0.92;
+  cursor: default;
+}
+
+.runpod-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 0.6rem;
+  margin: 0.35rem 0;
+  font-size: 0.72rem;
+  color: var(--text-dim);
+}
+
+.runpod-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.runpod-dot-stopped {
+  background: #ef4444;
+  box-shadow: 0 0 6px rgba(239, 68, 68, 0.55);
+}
+
+.runpod-dot-preparing {
+  background: #f59e0b;
+  box-shadow: 0 0 6px rgba(245, 158, 11, 0.55);
+  animation: runpod-pulse 1.2s ease-in-out infinite;
+}
+
+.runpod-dot-running {
+  background: #22c55e;
+  box-shadow: 0 0 6px rgba(34, 197, 94, 0.55);
+}
+
+@keyframes runpod-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.45; }
+}
+
+.runpod-actions {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.runpod-actions button {
+  font-size: 0.68rem;
+  padding: 0.15rem 0.45rem;
+}
+
+.runpod-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.runpod-modal {
+  width: min(520px, 100%);
+  max-height: min(80vh, 640px);
+  display: flex;
+  flex-direction: column;
+  background: var(--panel-bg, #1a1f2e);
+  border: 1px solid var(--border, #334155);
+  border-radius: 8px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+}
+
+.runpod-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.65rem 0.85rem;
+  border-bottom: 1px solid var(--border, #334155);
+}
+
+.runpod-modal-header h2 {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.runpod-modal-close {
+  border: none;
+  background: transparent;
+  color: var(--text-dim);
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 0.25rem;
+}
+
+.runpod-stage-steps {
+  list-style: none;
+  margin: 0.75rem 0.85rem 0.35rem;
+  padding: 0;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.runpod-stage-step {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.68rem;
+  color: var(--text-dim);
+  text-align: center;
+}
+
+.runpod-stage-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #475569;
+  border: 2px solid #64748b;
+}
+
+.runpod-stage-active .runpod-stage-dot {
+  background: #f59e0b;
+  border-color: #fbbf24;
+  box-shadow: 0 0 8px rgba(245, 158, 11, 0.55);
+  animation: runpod-pulse 1.2s ease-in-out infinite;
+}
+
+.runpod-stage-done .runpod-stage-dot {
+  background: #22c55e;
+  border-color: #4ade80;
+}
+
+.runpod-stage-active {
+  color: #fbbf24;
+  font-weight: 600;
+}
+
+.runpod-stage-done {
+  color: #86efac;
+}
+
+.runpod-modal-status {
+  margin: 0.35rem 0.85rem 0.25rem;
+  font-size: 0.78rem;
+  color: var(--text, #e2e8f0);
+}
+
+.runpod-modal-status-error {
+  color: #fca5a5;
+}
+
+.runpod-modal-meta {
+  margin: 0 0.85rem 0.35rem;
+  font-size: 0.68rem;
+  color: var(--text-dim);
+}
+
+.runpod-log-panel {
+  flex: 1;
+  min-height: 160px;
+  max-height: 320px;
+  overflow: auto;
+  margin: 0 0.85rem;
+  padding: 0.45rem;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--border, #334155);
+  border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.65rem;
+}
+
+.runpod-log-line {
+  margin-bottom: 0.35rem;
+  line-height: 1.35;
+}
+
+.runpod-log-time,
+.runpod-log-level {
+  display: inline-block;
+  margin-right: 0.35rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+}
+
+.runpod-log-level {
+  min-width: 3.5rem;
+}
+
+.runpod-log-info .runpod-log-level { color: #93c5fd; }
+.runpod-log-warn .runpod-log-level { color: #fcd34d; }
+.runpod-log-error .runpod-log-level { color: #f87171; }
+.runpod-log-success .runpod-log-level { color: #86efac; }
+
+.runpod-log-detail {
+  margin: 0.2rem 0 0 4.5rem;
+  padding: 0.25rem 0.35rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: var(--text-dim);
+}
+
+.runpod-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.65rem 0.85rem;
+  border-top: 1px solid var(--border, #334155);
+}
+
+.ai-include-story {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  margin-bottom: 0.25rem;
+}
+
+.ai-pane .ai-prompt-textarea {
+  flex: 1 1 auto;
+  min-height: 5rem;
+}
+
+.story-panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  padding: 0.75rem;
+  gap: 0.5rem;
+}
+
+.story-panel-toolbar {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+}
+
+.story-panel-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr minmax(220px, 28%);
+  gap: 0.75rem;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.story-editor-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-height: 0;
+}
+
+.story-editor-col textarea {
+  flex: 1 1 auto;
+  min-height: 12rem;
+  resize: vertical;
+}
+
+.story-field-label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.story-field-label select {
+  max-width: 12rem;
 }
 
 .panel-heading-row,

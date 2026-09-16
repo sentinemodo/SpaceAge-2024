@@ -21,22 +21,40 @@ export async function parseOrdersWithEngine(orderText, factionId) {
   }
 }
 
+export function formatParseOutput(result) {
+  const lines = [`ok: ${result.ok}`];
+  if (result.errors?.length) {
+    lines.push('errors:');
+    for (const err of result.errors) lines.push(`  ${err}`);
+  }
+  if (result.warnings?.length) {
+    lines.push('warnings:');
+    for (const warn of result.warnings) lines.push(`  ${warn}`);
+  }
+  if (result.engineUnavailable) {
+    lines.push('engine: unavailable (syntax check only)');
+  }
+  return lines.join('\n');
+}
+
 export async function parseOrders(orderText, factionId, password) {
   const syntaxWarnings = validateOrderText(orderText, factionId, password);
   try {
     const engineResult = await parseOrdersWithEngine(orderText, factionId);
     const warnings = [...new Set([...(engineResult.warnings || []), ...syntaxWarnings])];
-    return {
+    const result = {
       ok: engineResult.ok && warnings.length === 0,
       errors: engineResult.errors || [],
       warnings,
     };
+    return { ...result, output: formatParseOutput(result) };
   } catch (err) {
-    return {
+    const result = {
       ok: false,
       errors: [String(err.message || err)],
       warnings: syntaxWarnings,
       engineUnavailable: true,
     };
+    return { ...result, output: formatParseOutput(result) };
   }
 }

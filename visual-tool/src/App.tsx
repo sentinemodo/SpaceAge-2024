@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
+import { RunPodStartModal } from './components/RunPodStartModal';
 import {
   login,
   fetchMeta,
@@ -10,10 +11,22 @@ import {
   parseOrders,
   runBattleSim,
   submitOrders,
+  fetchRunPodStatus,
+  startRunPod,
+  stopRunPod,
+  fetchPersonas,
+  fetchPersona,
+  savePersona,
+  fetchStory,
+  saveStory,
+  submitAiQuery,
+  regenerateStory,
   getToken,
   setToken,
   type FactionOption,
+  type PersonaOption,
   type ReportSection,
+  type RunPodStatus,
   type SessionMeta,
 } from './api/client';
 import {
@@ -52,6 +65,7 @@ import {
   starTypeBorderColor,
 } from './lib/bodyStyles';
 import { SidePanel, type SideTab } from './components/SidePanel';
+import { AiPane, type AiViewMode } from './components/AiPane';
 import { OrbitSelector } from './components/OrbitSelector';
 import { BeltDotField } from './components/BeltDotField';
 import {
@@ -80,8 +94,8 @@ import {
 
 const REGION_ZOOM_BASE = 1.5;
 
-type Panel = 'map' | 'tech' | 'diplomacy' | 'bank' | 'battle' | 'faction';
-type OrderMode = 'units' | 'faction';
+type Panel = 'map' | 'tech' | 'diplomacy' | 'bank' | 'battle' | 'faction' | 'story';
+type OrderMode = 'units' | 'faction' | 'parser';
 type TechView = 'known' | 'breakthrough';
 
 function isGasGiant(body: SystemBodyNode): boolean {
@@ -102,10 +116,15 @@ function LoginScreen({ onLogin }: { onLogin: () => void }) {
       const trimmedGm = gmKey.trim();
       const data = await login(parseInt(factionId, 10), password, trimmedGm || undefined);
       if (trimmedGm && data.admin === undefined) {
-        setNotice('Game-host is outdated — restart it so admin login works (stop the old node process on port 8787, then npm start).');
-      } else if (trimmedGm && !data.admin) {
-        setNotice('GM key not accepted. Use dev-gm-key (or your GAME_HOST_GM_KEY env value).');
-      } else if (data.admin) {
+        setError('Game-host is outdated — restart it (npm run restart in game-host/).');
+        return;
+      }
+      if (trimmedGm && !data.admin) {
+        setError('GM key not accepted. Use the GAME_HOST_GM_KEY value from repo-root .env (not dev-gm-key unless that is what .env sets).');
+        setToken(null);
+        return;
+      }
+      if (data.admin) {
         setNotice('Admin access enabled — use the faction dropdown in the header to browse reports.');
       }
       onLogin();
@@ -128,7 +147,7 @@ function LoginScreen({ onLogin }: { onLogin: () => void }) {
       </label>
       <label>
         GM key (optional — browse all factions)
-        <input type="password" value={gmKey} onChange={(e) => setGmKey(e.target.value)} placeholder="dev-gm-key" />
+        <input type="password" value={gmKey} onChange={(e) => setGmKey(e.target.value)} placeholder="from .env GAME_HOST_GM_KEY" />
       </label>
       {error && <p className="warnings">{error}</p>}
       {notice && <p className="obj-desc">{notice}</p>}
@@ -248,47 +267,6 @@ function BodySurfaceArc({
   );
 }
 
-function BeltArcButton({
-  body,
-  selected,
-  bandIndex,
-  compact,
-  hasPresence,
-  onSelect,
-  onOpen,
-}: {
-  body: SystemBodyNode;
-  selected: boolean;
-  bandIndex: number;
-  compact?: boolean;
-  hasPresence?: boolean;
-  onSelect: () => void;
-  onOpen: () => void;
-}) {
-  const color = bodyTypeColor(body);
-  const tilt = bandIndex % 2 === 0 ? 5 : -5;
-  return (
-    <button
-      type="button"
-      className={`belt-arc ${compact ? 'belt-arc-compact' : ''} ${selected ? 'selected' : ''} ${hasPresence ? 'has-presence' : ''}`}
-      style={{
-        ['--body-color' as string]: color,
-        ['--belt-tilt' as string]: `${tilt}deg`,
-      }}
-      title={`${body.name} (${body.au} AU) — belt`}
-      onClick={onSelect}
-      onDoubleClick={(e) => {
-        e.preventDefault();
-        onOpen();
-      }}
-    >
-      <svg className="belt-arc-svg" viewBox="0 0 42 100" preserveAspectRatio="none" aria-hidden>
-        <path d="M 0 0 A 40 50 0 0 1 0 100" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
-      </svg>
-    </button>
-  );
-}
-
 function BodyIconButton({
   body,
   selected,
@@ -331,86 +309,25 @@ function BodyIconButton({
 function BandBodyStack({
   body,
   satellites,
-  bandIndex,
   selectedBodyId,
   filterOrbitId,
   presenceIds,
   onSelectBody,
   onOpenBody,
   onSelectOrbit,
-  ringChildAsArc = false,
 }: {
   body: SystemBodyNode;
   satellites: SystemBodyNode[];
-  bandIndex: number;
   selectedBodyId: string | null;
   filterOrbitId?: string | null;
   presenceIds: Set<string>;
   onSelectBody: (bodyId: string) => void;
   onOpenBody: (bodyId: string) => void;
   onSelectOrbit?: (orbitId: string, bodyId: string) => void;
-  ringChildAsArc?: boolean;
 }) {
-  const renderChild = (child: SystemBodyNode, i: number) =>
-    child.kind === 'belt' && ringChildAsArc ? (
-      <BeltArcButton
-        key={child.id}
-        body={child}
-        bandIndex={i}
-        compact
-        hasPresence={presenceIds.has(child.id)}
-        selected={selectedBodyId === child.id}
-        onSelect={() => onSelectBody(child.id)}
-        onOpen={() => onOpenBody(child.id)}
-      />
-    ) : (
-      <BodyIconButton
-        key={child.id}
-        body={child}
-        compact
-        hasPresence={presenceIds.has(child.id) || child.regions.some((r) => presenceIds.has(r.id))}
-        selected={selectedBodyId === child.id}
-        onSelect={() => onSelectBody(child.id)}
-        onOpen={() => onOpenBody(child.id)}
-      />
-    );
   const bodyPresence = presenceIds.has(body.id)
     || body.regions.some((r) => presenceIds.has(r.id))
     || body.orbitIds.some((o) => presenceIds.has(o));
-
-  if (body.kind === 'belt') {
-    return (
-      <div className="band-body-stack band-belt-stack">
-        <div className="belt-arc-wrap">
-          <BeltArcButton
-            body={body}
-            bandIndex={bandIndex}
-            hasPresence={bodyPresence}
-            selected={selectedBodyId === body.id}
-            onSelect={() => onSelectBody(body.id)}
-            onOpen={() => onOpenBody(body.id)}
-          />
-          {body.orbitIds.length > 0 && onSelectOrbit && (
-            <div className="belt-orbit-center belt-orbit-center-inline">
-              <OrbitSelector
-                orbitIds={body.orbitIds}
-                filterOrbitId={filterOrbitId ?? null}
-                presenceIds={presenceIds}
-                glyph="◎"
-                onSelectOrbit={(orbitId) => onSelectOrbit(orbitId, body.id)}
-              />
-            </div>
-          )}
-        </div>
-        <span className="band-au band-au-vertical">{body.name}</span>
-        {satellites.length > 0 && (
-          <div className="band-children band-children-rings">
-            {satellites.map((child, i) => renderChild(child, i))}
-          </div>
-        )}
-      </div>
-    );
-  }
 
   return (
     <div className="band-body-stack">
@@ -422,9 +339,28 @@ function BandBodyStack({
         onOpen={() => onOpenBody(body.id)}
       />
       <span className="band-au">{body.au} AU</span>
+      {body.kind === 'belt' && body.orbitIds.length > 0 && onSelectOrbit && (
+        <OrbitSelector
+          orbitIds={body.orbitIds}
+          filterOrbitId={filterOrbitId ?? null}
+          presenceIds={presenceIds}
+          glyph="◎"
+          onSelectOrbit={(orbitId) => onSelectOrbit(orbitId, body.id)}
+        />
+      )}
       {satellites.length > 0 && (
         <div className={`band-children ${satellites.some((c) => c.kind === 'belt') ? 'band-children-rings' : ''}`}>
-          {satellites.map((child, i) => renderChild(child, i))}
+          {satellites.map((child) => (
+            <BodyIconButton
+              key={child.id}
+              body={child}
+              compact
+              hasPresence={presenceIds.has(child.id) || child.regions.some((r) => presenceIds.has(r.id))}
+              selected={selectedBodyId === child.id}
+              onSelect={() => onSelectBody(child.id)}
+              onOpen={() => onOpenBody(child.id)}
+            />
+          ))}
         </div>
       )}
     </div>
@@ -472,15 +408,11 @@ function SystemView({
           title={detail.star?.name || detail.starName || 'Star'}
           onClick={onSelectStar}
         />
-        {bands.map(({ body, children: satellites }, bandIndex) => (
-          <div
-            key={body.id}
-            className={`system-orbit-band ${body.kind === 'belt' ? 'system-orbit-band-belt' : ''}`}
-          >
+        {bands.map(({ body, children: satellites }) => (
+          <div key={body.id} className="system-orbit-band">
             <BandBodyStack
               body={body}
               satellites={satellites}
-              bandIndex={bandIndex}
               selectedBodyId={selectedBodyId}
               filterOrbitId={filterOrbitId}
               presenceIds={presenceIds}
@@ -642,19 +574,17 @@ function BodyView({
 
         {satellites.length > 0 && (
           <div className="planet-view-satellite-bands">
-            {satellites.map((sat, i) => (
+            {satellites.map((sat) => (
               <div key={sat.id} className="planet-view-satellite-band">
                 <BandBodyStack
                   body={sat}
                   satellites={childBodies(detail, sat.id)}
-                  bandIndex={i}
                   selectedBodyId={null}
                   filterOrbitId={filterOrbitId}
                   presenceIds={presenceIds}
                   onSelectBody={onOpenBody}
                   onOpenBody={onOpenBody}
                   onSelectOrbit={onSelectOrbit}
-                  ringChildAsArc={gasGiant || sat.kind === 'belt'}
                 />
               </div>
             ))}
@@ -697,10 +627,28 @@ export default function App() {
   const [factionSearch, setFactionSearch] = useState('');
   const [selectedStack, setSelectedStack] = useState<string | null>(null);
   const [selectedPerson, setSelectedPerson] = useState<string | null>(null);
-  const [orderText, setOrderText] = useState('');
+  const [draftOrders, setDraftOrders] = useState('');
+  const [parserOutput, setParserOutput] = useState('No parser output yet.');
   const [orderMode, setOrderMode] = useState<OrderMode>('faction');
   const [techView, setTechView] = useState<TechView>('known');
   const [aiPromptText, setAiPromptText] = useState('');
+  const [aiOutputText, setAiOutputText] = useState('No AI output yet.');
+  const [aiMode, setAiMode] = useState<AiViewMode>('query');
+  const [includeStory, setIncludeStory] = useState(false);
+  const [storyAiPrompt, setStoryAiPrompt] = useState('');
+  const [storyAiOutput, setStoryAiOutput] = useState('No AI output yet.');
+  const [storyAiMode, setStoryAiMode] = useState<AiViewMode>('query');
+  const [storyIncludeStory, setStoryIncludeStory] = useState(true);
+  const [runpodStatus, setRunpodStatus] = useState<RunPodStatus | null>(null);
+  const [runpodBusy, setRunpodBusy] = useState(false);
+  const [runpodModalOpen, setRunpodModalOpen] = useState(false);
+  const [runpodStartResponse, setRunpodStartResponse] = useState<RunPodStatus | null>(null);
+  const [aiQueryBusy, setAiQueryBusy] = useState(false);
+  const [personas, setPersonas] = useState<PersonaOption[]>([]);
+  const [selectedPersonaId, setSelectedPersonaId] = useState('military');
+  const [personaText, setPersonaText] = useState('');
+  const [storyText, setStoryText] = useState('');
+  const [storyBusy, setStoryBusy] = useState(false);
   const [sidePanelWidth, setSidePanelWidth] = useState(320);
   const [orderPaneHeight, setOrderPaneHeight] = useState(220);
   const [aiPaneWidth, setAiPaneWidth] = useState(280);
@@ -780,12 +728,25 @@ export default function App() {
 
   const unitsOrdersText = useMemo(() => {
     if (!report || !fullOrdersTemplate) return '';
-    return ordersSummaryForFocus(fullOrdersTemplate, filteredRoots, selectedStack);
-  }, [report, fullOrdersTemplate, filteredRoots, selectedStack]);
+    return ordersSummaryForFocus(
+      draftOrders || fullOrdersTemplate,
+      filteredRoots,
+      selectedStack,
+      selectedPerson
+    );
+  }, [report, fullOrdersTemplate, draftOrders, filteredRoots, selectedStack, selectedPerson]);
 
   useEffect(() => {
-    setOrderText(orderMode === 'units' ? unitsOrdersText : factionOrdersText);
-  }, [orderMode, unitsOrdersText, factionOrdersText]);
+    setDraftOrders(factionOrdersText);
+  }, [factionOrdersText]);
+
+  const orderText = orderMode === 'units'
+    ? unitsOrdersText
+    : orderMode === 'parser'
+      ? parserOutput
+      : draftOrders;
+
+  const orderTextReadOnly = orderMode === 'units' || orderMode === 'parser';
 
   const atLocationLevel = !!(filterRegionId || filterBodyId || filterOrbitId);
 
@@ -971,20 +932,170 @@ export default function App() {
   }
 
   async function handleCheck() {
-    const result = await parseOrders(orderText);
+    const packageText = draftOrders || factionOrdersText;
+    const result = await parseOrders(packageText);
     setParseErrors(result.errors);
     setWarnings(result.warnings);
+    setParserOutput(result.output || `ok: ${result.ok}`);
   }
 
   async function handleSubmit() {
-    await handleCheck();
-    await submitOrders(orderText);
+    const packageText = draftOrders || factionOrdersText;
+    const result = await parseOrders(packageText);
+    setParseErrors(result.errors);
+    setWarnings(result.warnings);
+    setParserOutput(result.output || `ok: ${result.ok}`);
+    if (!result.ok) return;
+    await submitOrders(packageText);
     alert('Orders submitted to game host');
   }
 
   async function handleBattleSim() {
     const result = await runBattleSim(battleSimXml);
     setBattleSimOutput(result.output);
+  }
+
+  const refreshRunPod = useCallback(async () => {
+    try {
+      const status = await fetchRunPodStatus();
+      setRunpodStatus(status);
+    } catch {
+      setRunpodStatus({ phase: 'stopped', podId: null, ollamaHost: null, model: '', message: 'Status unavailable', ollamaReady: false });
+    }
+  }, []);
+
+  const loadStoryContext = useCallback(async () => {
+    const [personaList, story] = await Promise.all([
+      fetchPersonas(),
+      fetchStory(),
+    ]);
+    setPersonas(personaList);
+    setStoryText(story);
+    if (personaList.length) {
+      setSelectedPersonaId((current) => (
+        personaList.some((p) => p.id === current) ? current : personaList[0].id
+      ));
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!authed) return;
+    refreshRunPod();
+    loadStoryContext().catch(() => {});
+    const timer = window.setInterval(() => { refreshRunPod(); }, 30_000);
+    return () => window.clearInterval(timer);
+  }, [authed, refreshRunPod, loadStoryContext]);
+
+  useEffect(() => {
+    if (!authed || !selectedPersonaId) return;
+    fetchPersona(selectedPersonaId).then(setPersonaText).catch(() => setPersonaText(''));
+  }, [authed, selectedPersonaId]);
+
+  async function handleStartRunpod() {
+    setRunpodModalOpen(true);
+    setRunpodStartResponse(null);
+    setRunpodBusy(true);
+    try {
+      const status = await startRunPod();
+      setRunpodStartResponse(status);
+      setRunpodStatus(status);
+      for (let i = 0; i < 120; i += 1) {
+        await new Promise((r) => window.setTimeout(r, 2000));
+        const next = await fetchRunPodStatus();
+        setRunpodStatus(next);
+        if (next.stage === 'ready' || next.phase === 'running') break;
+        if (next.stage === 'failed' || (next.phase === 'stopped' && i > 0 && next.stage !== 'idle')) break;
+      }
+    } catch (err) {
+      setRunpodStatus((prev) => ({
+        phase: 'stopped',
+        stage: 'failed',
+        podId: prev?.podId ?? null,
+        ollamaHost: prev?.ollamaHost ?? null,
+        model: prev?.model ?? '',
+        message: String(err),
+        ollamaReady: false,
+        logs: [
+          ...(prev?.logs || []),
+          { at: new Date().toISOString(), level: 'error', message: String(err) },
+        ],
+      }));
+      await refreshRunPod();
+    } finally {
+      setRunpodBusy(false);
+    }
+  }
+
+  async function handleStopRunpod() {
+    setRunpodBusy(true);
+    try {
+      const status = await stopRunPod();
+      setRunpodStatus(status);
+    } catch (err) {
+      alert(String(err));
+    } finally {
+      setRunpodBusy(false);
+    }
+  }
+
+  async function handleAiQuery(useStoryPane: boolean) {
+    const prompt = useStoryPane ? storyAiPrompt : aiPromptText;
+    const include = useStoryPane ? storyIncludeStory : includeStory;
+    setAiQueryBusy(true);
+    try {
+      const result = await submitAiQuery(prompt, include);
+      const output = result.output || result.error || 'No output';
+      if (useStoryPane) {
+        setStoryAiOutput(output);
+        setStoryAiMode('output');
+      } else {
+        setAiOutputText(output);
+        setAiMode('output');
+      }
+    } catch (err) {
+      const msg = String(err);
+      if (useStoryPane) setStoryAiOutput(msg);
+      else setAiOutputText(msg);
+    } finally {
+      setAiQueryBusy(false);
+    }
+  }
+
+  async function handleSaveStoryDraft() {
+    setStoryBusy(true);
+    try {
+      await saveStory(storyText);
+    } catch (err) {
+      alert(String(err));
+    } finally {
+      setStoryBusy(false);
+    }
+  }
+
+  async function handleSavePersonaDraft() {
+    if (!meta.admin) return;
+    setStoryBusy(true);
+    try {
+      await savePersona(selectedPersonaId, personaText);
+    } catch (err) {
+      alert(String(err));
+    } finally {
+      setStoryBusy(false);
+    }
+  }
+
+  async function handleRegenerateStory() {
+    setStoryBusy(true);
+    try {
+      const result = await regenerateStory(selectedPersonaId);
+      if (result.story) setStoryText(result.story);
+      setStoryAiOutput(result.output || 'Story regenerated.');
+      setStoryAiMode('output');
+    } catch (err) {
+      alert(String(err));
+    } finally {
+      setStoryBusy(false);
+    }
   }
 
   if (!authed) {
@@ -1055,14 +1166,15 @@ export default function App() {
             ['bank', '🏦'],
             ['battle', '⚔'],
             ['faction', '👤'],
+            ['story', '📖'],
           ] as const
         ).map(([id, icon]) => (
           <button
             key={id}
             type="button"
             className={panel === id ? 'active' : ''}
-            title={id === 'map' ? 'Star map' : id === 'bank' ? 'Banking and market' : id}
-            aria-label={id === 'map' ? 'Star map' : id === 'bank' ? 'Banking and market' : id}
+            title={id === 'map' ? 'Star map' : id === 'bank' ? 'Banking and market' : id === 'story' ? 'Persona & story' : id}
+            aria-label={id === 'map' ? 'Star map' : id === 'bank' ? 'Banking and market' : id === 'story' ? 'Persona and story' : id}
             onClick={() => setPanel(id)}
           >
             {icon}
@@ -1299,6 +1411,73 @@ export default function App() {
           </div>
         )}
 
+        {panel === 'story' && (
+          <div className="story-panel">
+            <div className="story-panel-toolbar">
+              <h3>Persona &amp; story</h3>
+              <span className="system-view-star">Faction {report?.factionId ?? '—'}</span>
+            </div>
+            <div className="story-panel-body">
+              <div className="story-editor-col">
+                <label className="story-field-label">
+                  Persona
+                  <select
+                    value={selectedPersonaId}
+                    onChange={(e) => setSelectedPersonaId(e.target.value)}
+                  >
+                    {personas.map((p) => (
+                      <option key={p.id} value={p.id}>{p.label}</option>
+                    ))}
+                  </select>
+                </label>
+                <textarea
+                  className={meta.admin ? '' : 'order-text-readonly'}
+                  readOnly={!meta.admin}
+                  value={personaText}
+                  onChange={(e) => setPersonaText(e.target.value)}
+                  placeholder="Shared persona description (GM editable)…"
+                />
+                {meta.admin && (
+                  <button type="button" disabled={storyBusy} onClick={handleSavePersonaDraft}>
+                    Save persona
+                  </button>
+                )}
+              </div>
+              <div className="story-editor-col">
+                <label className="story-field-label">Faction story</label>
+                <textarea
+                  value={storyText}
+                  onChange={(e) => setStoryText(e.target.value)}
+                  placeholder="Campaign story for this faction…"
+                />
+                <div className="order-split-actions">
+                  <button type="button" disabled={storyBusy} onClick={handleSaveStoryDraft}>Save story</button>
+                  <button type="button" disabled={storyBusy} onClick={handleRegenerateStory}>
+                    Regenerate story
+                  </button>
+                </div>
+              </div>
+              <AiPane
+                heading="Story AI"
+                aiMode={storyAiMode}
+                onAiModeChange={setStoryAiMode}
+                includeStory={storyIncludeStory}
+                onIncludeStoryChange={setStoryIncludeStory}
+                promptText={storyAiPrompt}
+                onPromptChange={setStoryAiPrompt}
+                outputText={storyAiOutput}
+                runpodStatus={runpodStatus}
+                runpodBusy={runpodBusy}
+                queryBusy={aiQueryBusy}
+                onStartRunpod={handleStartRunpod}
+                onStopRunpod={handleStopRunpod}
+                onSubmit={() => handleAiQuery(true)}
+                submitLabel="Query story AI"
+              />
+            </div>
+          </div>
+        )}
+
         {panel === 'map' && (
           <div className="order-editor" style={{ height: orderPaneHeight }}>
             <ResizeHandle direction="vertical" onDelta={(d) => setOrderPaneHeight((h) => Math.max(120, Math.min(480, h - d)))} className="order-editor-resize" />
@@ -1321,12 +1500,23 @@ export default function App() {
                     >
                       Faction
                     </button>
+                    <button
+                      type="button"
+                      className={orderMode === 'parser' ? 'active' : ''}
+                      onClick={() => setOrderMode('parser')}
+                    >
+                      Parser output
+                    </button>
                   </div>
                 </div>
                 <textarea
                   value={orderText}
-                  onChange={(e) => setOrderText(e.target.value)}
+                  readOnly={orderTextReadOnly}
+                  onChange={(e) => {
+                    if (orderMode === 'faction') setDraftOrders(e.target.value);
+                  }}
                   placeholder={'#faction N "password"\nMOVE …'}
+                  className={orderTextReadOnly ? 'order-text-readonly' : ''}
                 />
                 {parseErrors.map((e) => <div key={e} className="warnings">{e}</div>)}
                 {warnings.map((w) => <div key={w} className="warnings">{w}</div>)}
@@ -1336,22 +1526,36 @@ export default function App() {
                 </div>
               </div>
               <ResizeHandle direction="horizontal" onDelta={(d) => setAiPaneWidth((w) => Math.max(160, w - d))} />
-              <div className="order-split-col order-split-ai" style={{ width: aiPaneWidth, flexShrink: 0 }}>
-                <h4 className="order-split-heading">AI prompt</h4>
-                <textarea
-                  className="ai-prompt-textarea"
-                  value={aiPromptText}
-                  onChange={(e) => setAiPromptText(e.target.value)}
-                  placeholder="Describe strategic intent for AI…"
+              <div style={{ width: aiPaneWidth, flexShrink: 0 }}>
+                <AiPane
+                  heading="AI prompt"
+                  aiMode={aiMode}
+                  onAiModeChange={setAiMode}
+                  includeStory={includeStory}
+                  onIncludeStoryChange={setIncludeStory}
+                  promptText={aiPromptText}
+                  onPromptChange={setAiPromptText}
+                  outputText={aiOutputText}
+                  runpodStatus={runpodStatus}
+                  runpodBusy={runpodBusy}
+                  queryBusy={aiQueryBusy}
+                  onStartRunpod={handleStartRunpod}
+                  onStopRunpod={handleStopRunpod}
+                  onSubmit={() => handleAiQuery(false)}
                 />
-                <div className="order-split-actions">
-                  <button type="button" onClick={() => { /* no-op for now */ }}>Submit prompt</button>
-                </div>
               </div>
             </div>
           </div>
         )}
       </main>
+
+      <RunPodStartModal
+        open={runpodModalOpen}
+        status={runpodStatus}
+        startResponse={runpodStartResponse}
+        busy={runpodBusy}
+        onClose={() => setRunpodModalOpen(false)}
+      />
 
       {report && (
         <SidePanel

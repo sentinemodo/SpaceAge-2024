@@ -82,10 +82,10 @@ export function filterOrdersTemplate(
   const { header, blocks, footer } = parseOrdersTemplate(trimmed);
   const filtered = blocks.filter((block) => {
     if (block.kind === 'modulestack') {
-      return !opts.stackIds || opts.stackIds.has(block.id);
+      return opts.stackIds ? opts.stackIds.has(block.id) : false;
     }
     if (block.kind === 'person') {
-      return !opts.personIds || opts.personIds.has(block.id);
+      return opts.personIds ? opts.personIds.has(block.id) : false;
     }
     return false;
   });

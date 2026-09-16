@@ -7,4 +7,5 @@ test('parseOrders flags syntax issues when engine unavailable', async () => {
   const result = await parseOrders(body, 2, 'secret');
   assert.equal(result.ok, false);
   assert.ok(result.warnings.some((w) => w.includes('#faction')));
+  assert.ok(result.output?.includes('ok:'));
 });
