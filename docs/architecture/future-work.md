@@ -1,6 +1,6 @@
 # SpaceAge-2024 — future development backlog
 
-Last updated: 2026-09-09
+Last updated: 2026-09-16
 
 This file tracks **deferred modernization** — good practices that are intentionally **out of scope** for day-to-day work on the current engine. They are recorded here (not enforced by the TDD rule or coding guidance) so the running net48 engine stays stable and diffs stay small.
 
@@ -22,11 +22,28 @@ Each item requires a numbered **ADR** in [`adr/`](adr/) plus a full test pass on
 
 - **Migrate to SDK-style projects / .NET 8** (`dotnet build` / `dotnet test`) — a product-wide migration, not a local refactor (see [ADR-0001](adr/ADR-0001-net48-legacy-csproj.md)). Would replace the Mono `xbuild` + NUnit-console path.
 - **Test categories / filters** (`[Category]` or split projects) so "fast" vs "full" pipelines can be gated independently. Today layering is by namespace only ([ADR-0004](adr/ADR-0004-test-layers.md)).
-- **Hosted CI** (e.g. GitHub Actions) around restore → build → test. Today "CI" is the Cursor Cloud environment running `.cursor/install.sh` then `.cursor/run-tests.sh`.
+- **Hosted CI for the engine** — GitHub Actions restore → build → `Tests.dll`. Today only [`.github/workflows/website.yml`](../../.github/workflows/website.yml) covers the Astro lobby; engine proof remains `.cursor/install.sh` + `.cursor/run-tests.sh` (or local MSBuild + vstest).
 
 ## Engine completeness (currently stubbed / partial)
 
-- Implement the stub pipeline hooks `Request.Load`, `EventsReaders.Load` / `Events.Execute`, and `OrdersReader.Check` (with tests) when a feature needs them.
+### Events pipeline vs `EventReports` (do not conflate)
+
+| Mechanism | Status | Role |
+|-----------|--------|------|
+| **`EventReports`** | **Live** | Per-entity turn log (`ModuleStack`, `Person`, `Faction`, …). Orders and effects call `EventReports.Add(week, …)` during `Game.Execute()`. Lines appear in **faction/unit report sections** via `Faction.Report()` / stack reports. Saved on stacks and persons in game XML. |
+| **`Events` pipeline** | **Stub** | Turn-start hook in [`Program.cs`](../../Game/Program.cs): `Request.Load` → `EventsReaders.Load` → `game.Events.Execute()` **before** orders load. Intended for scripted world mutations (fauna growth, militia raids, hostility flips). |
+| **`Events.Execute` today** | Partial | Only [`FaunaRumors.IssueAll()`](../../Game/FaunaRumors.cs) (settlement-adjacent fauna press rumors). Also invoked from [`ReportWriter.GenerateReports`](../../Game/reports/ReportWriter.cs) on `/reports`-only runs. |
+| **`EventsReaders.Load`** | Stub | Returns `null`; does not load event files from `turn_dir`. |
+| **`Request.Load`** | Stub | No-op. |
+| **`OrdersReader.Check`** | Stub | No-op (CLI check-order path). |
+| Report header | Misleading | Text reports still print hardcoded `Events during turn:` / `none.` — **not** wired to `EventReports` or the pipeline. |
+
+Designer wishlist rows that say “`Events` pipeline or GM orders” ([`play/designer/engine-wishlist.md`](../../play/designer/engine-wishlist.md)) mean the stub hook above, not the live `EventReports` machinery.
+
+### Remaining backlog
+
+- Implement `Request.Load`, `EventsReaders.Load`, and flesh out `Events.Execute` (with tests) when a feature needs scripted turn-start or week-13 world updates.
 - ~~Finish the economy methods `Game.GenerateOffers` / `UpdateRates`~~ — live **0.1.159** (open beta).
-- Add goldens and enable the `[Ignore("not ready")]` SampleGame turns 4–5. Turns 1–3 already load committed `gamein` files independently; do not reintroduce a `copyFile` daisy chain. Follow-ups: a `data.unit.xml` catalog for unit tests, `Tests/Stories/` scenario fixtures, and an optional `[Explicit]` chain-consistency test (`gameout.N` vs committed `gamein.N+1`).
-- Fix known data/parse gaps, e.g. the `//`-vs-`;` order-comment bug that fails `IntegrationTests.SampleGame._5_ExecuteTurn2`.
+- ~~SampleGame turns 4–5 goldens~~ — **live** (2026-09-16). `ExecuteTurn4` / `ExecuteTurn5` in [`Tests/SampleGame/SampleGame.cs`](../../Tests/SampleGame/SampleGame.cs) load committed `gamein.4.xml` / `gamein.5.xml` (no `[Ignore]`). Turns 1–3 use the same independent-`gamein` pattern; do not reintroduce a `copyFile` daisy chain.
+- **SampleGame follow-ups (optional):** `Tests/data.unit.xml` catalog for unit tests, `Tests/Stories/` scenario fixtures, and an `[Explicit]` chain-consistency test (`gameout.N` vs committed `gamein.N+1`).
+- Wire report header `Events during turn:` to pipeline output (or drop the section) when `Events.Execute` grows beyond fauna rumors.

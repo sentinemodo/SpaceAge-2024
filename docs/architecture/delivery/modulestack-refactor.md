@@ -57,7 +57,7 @@ After phase 10, verify main `ModuleStack.cs` is mostly constructors/registry; no
 - **Order factory duplication** (`OrderXml` vs `OrdersReader`) — ADR-0006 concern, not stack partials.
 - **Combat/report formula or wording changes** — follow-up PR, failing tests first.
 - **DI, `*.All` replacement, namespace splits, SDK migration** — [`../future-work.md`](../future-work.md).
-- **SampleGame turns 4–5**, stub pipeline (`Request`, `Events`, `OrdersReader.Check`), encoding change.
+- **Stub pipeline** (`Request`, `EventsReaders`, `OrdersReader.Check`) and encoding change — see [`../future-work.md`](../future-work.md) (Events vs `EventReports`).
 
 ## After merge
 

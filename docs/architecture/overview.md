@@ -80,7 +80,7 @@ Domain code lives under `Game/` in namespace **`SpaceAge`**. Almost every entity
 | `play/designer/` | Campaign design intent (feeds XML) |
 | `docs/legacy/alderson/` | Historical Alderson-era design text — **not** live rules |
 
-Known engine stubs (not product backlog unless ADR): `Request`, `Events`, `OrdersReader.Check`; partial types in `Location`, `DataFile.LoadXml` domain paths.
+Known engine stubs (not product backlog unless ADR): `Request`, `EventsReaders` / turn-start `Events.Execute` (today: fauna rumors only — distinct from live per-unit **`EventReports`**); `OrdersReader.Check`; partial types in `Location`, `DataFile.LoadXml` domain paths. See [`future-work.md`](future-work.md).
 
 ## Glossary
 
