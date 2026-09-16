@@ -51,7 +51,7 @@ export async function bootstrapFromCampaign() {
   fs.copyFileSync(campaignDataXml(), path.join(dataDir(), 'data.xml'));
   const seed = path.join(path.dirname(campaignDataXml()), 'gamein.1.xml');
   if (!fs.existsSync(seed)) {
-    throw new Error('campaign/gamein.1.xml missing');
+    throw new Error('play/campaign/gamein.1.xml missing');
   }
   fs.copyFileSync(seed, path.join(dataDir(), 'gamein.xml'));
 }

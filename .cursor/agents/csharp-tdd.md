@@ -43,7 +43,7 @@ Version-only line changes in SampleGame goldens do not require `/player` or huma
 
 ## Before every commit
 
-When the user asks to **commit**, invoke **`/player`** docs-only refresh for `player/*.md` before `git commit` (unless commit is player-manuals only).
+When the user asks to **commit**, invoke **`/player`** docs-only refresh for `play/player/*.md` **and `docs/human/rules.md`** before `git commit` (unless commit is player-manuals only).
 
 ## C# practices
 

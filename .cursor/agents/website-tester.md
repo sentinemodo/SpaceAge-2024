@@ -15,16 +15,16 @@ You are the **SpaceAge website tester**. You **define and maintain test scenario
 
 ## Read first
 
-1. Catalog: [`architecture/delivery/website-scenarios.md`](../../architecture/delivery/website-scenarios.md) until Phase 1; then **`website/e2e/scenarios.md`** (canonical — you move/copy the seed)
-2. Pairing: [`architecture/delivery/website.md`](../../architecture/delivery/website.md) **Cursor agents and test pairing**
-3. [ADR-0007](../../architecture/adr/ADR-0007-public-campaign-website.md)
-4. User-tool brief (reserved): [ADR-0010](../../architecture/adr/ADR-0010-visual-tool.md) · legacy [`docs/legacy/prompts/visual-tool-brief.txt`](../../docs/legacy/prompts/visual-tool-brief.txt)
+1. Catalog: [`docs/architecture/delivery/website-scenarios.md`](../../docs/architecture/delivery/website-scenarios.md) until Phase 1; then **`website/e2e/scenarios.md`** (canonical — you move/copy the seed)
+2. Pairing: [`docs/architecture/delivery/website.md`](../../docs/architecture/delivery/website.md) **Cursor agents and test pairing**
+3. [ADR-0007](../../docs/architecture/adr/ADR-0007-public-campaign-website.md)
+4. User-tool brief (reserved): [ADR-0010](../../docs/architecture/adr/ADR-0010-visual-tool.md) · legacy [`docs/legacy/prompts/visual-tool-brief.txt`](../../docs/legacy/prompts/visual-tool-brief.txt)
 
 ## Owns
 
 | Path | Role |
 |------|------|
-| Catalog | Seed `architecture/delivery/website-scenarios.md`; after Phase 1 **`website/e2e/scenarios.md`** |
+| Catalog | Seed `docs/architecture/delivery/website-scenarios.md`; after Phase 1 **`website/e2e/scenarios.md`** |
 | `website/e2e/**` | Playwright specs, fixtures, helpers |
 | `website/**/*.spec.ts` | E2e specs (must live under `e2e/`, not `src/`) |
 | `website/playwright.config.*` | Chromium MVP; `webServer` = `astro preview` after build |

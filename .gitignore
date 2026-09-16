@@ -371,9 +371,9 @@ FodyWeavers.xsd
 play/runs/
 game-host/runs/
 game-host/.runpod-state.json
-player/drafts/
+play/player/drafts/
 test-results.txt
-visual-tool/test-results/
+tools/visual-tool/test-results/
 tools/player-agent/.data/
-visual-tool/node_modules/
+tools/visual-tool/node_modules/
 game-host/node_modules/

@@ -103,11 +103,11 @@ No psionics. Alien wrecks are materials, closed-cycle hardware, and high-Isp phy
 
 You may read only this folder: ``persona.md``, your ``report.*.$Id.txt``, and your ``order.$Id.txt``.
 
-Do **not** open other ``factions/NN/`` reports, ``campaign/data.xml``, ``data/data.xml``, ``data/gamein.xml``, ``data/gameout.*.xml``, ``campaign/gamein.1.xml``, or any ``report.*.xml`` (XML leaks foreign cargo and techs).
+Do **not** open other ``factions/NN/`` reports, ``play/campaign/data.xml``, ``data/data.xml``, ``data/gamein.xml``, ``data/gameout.*.xml``, ``play/campaign/gamein.1.xml``, or any ``report.*.xml`` (XML leaks foreign cargo and techs).
 
 ## Catalog
 
-Do **not** open ``campaign/data.xml`` or this run's ``data/data.xml``. Tell ``/player`` the catalog path is ``campaign/data.xml`` (not ``Tests/data.xml``). Use the text report, this persona, ``player/rules.md``, and ``player/campaign/basic_technologies.md`` when that excerpt exists.
+Do **not** open ``play/campaign/data.xml`` or this run's ``data/data.xml``. Tell ``/player`` the catalog path is ``play/campaign/data.xml`` (not ``Tests/data.xml``). Use the text report, this persona, ``play/player/rules.md``, and ``play/player/campaign/basic_technologies.md`` when that excerpt exists.
 "@
 }
 

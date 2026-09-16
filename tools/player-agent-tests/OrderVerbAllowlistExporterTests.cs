@@ -24,9 +24,9 @@ public class OrderVerbAllowlistExporterTests
             text
             """;
 
-        var document = OrderVerbAllowlistExporter.Build("player/rules.md", rules);
+        var document = OrderVerbAllowlistExporter.Build("play/player/rules.md", rules);
 
-        Assert.That(document.SourcePath, Is.EqualTo("player/rules.md"));
+        Assert.That(document.SourcePath, Is.EqualTo("play/player/rules.md"));
         Assert.That(document.Verbs, Is.EqualTo(new[] { "MOVE", "USE" }));
         Assert.That(document.SourceContentHash, Has.Length.GreaterThan(10));
         Assert.That(document.GeneratedAtUtc, Is.Not.Empty);
@@ -55,7 +55,7 @@ public class OrderVerbAllowlistExporterTests
                 text
                 """;
 
-            var document = OrderVerbAllowlistExporter.Build("player/rules.md", rules);
+            var document = OrderVerbAllowlistExporter.Build("play/player/rules.md", rules);
             OrderVerbAllowlistExporter.WriteJson(outputPath, document);
             var loaded = OrderVerbAllowlistExporter.ReadJson(outputPath);
 
@@ -80,7 +80,7 @@ public class OrderVerbAllowlistExporterTests
 
         try
         {
-            var document = OrderVerbAllowlistExporter.Build("player/rules.md", "## Immediate orders\n\n### MOVE\n");
+            var document = OrderVerbAllowlistExporter.Build("play/player/rules.md", "## Immediate orders\n\n### MOVE\n");
             OrderVerbAllowlistExporter.WriteJson(outputPath, document);
             var json = File.ReadAllText(outputPath);
 

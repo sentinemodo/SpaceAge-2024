@@ -1,6 +1,6 @@
 ---
 description: Playwright tester — own scenario catalog; automate WS-/UT-; no manual acceptance
-globs: website/e2e/**,website/**/*.spec.ts,website/playwright.config.*,architecture/delivery/website-scenarios.md
+globs: website/e2e/**,website/**/*.spec.ts,website/playwright.config.*,docs/architecture/delivery/website-scenarios.md
 alwaysApply: false
 ---
 
@@ -16,7 +16,7 @@ When these files are in scope, act as (or defer to) **`/website-tester`**. Pairi
 
 Each row: id, user goal, routes, given/when/then, layer, security. Specs **cite the id**. No row → add the row **before** the spec counts. Do not renumber `WS-*` / `UT-*`; add or deprecate.
 
-Seeded lobby: `WS-001`…`WS-009`. Reserved Phase 4: `WS-010` `/eta`, `WS-011` `/battle`, `WS-012` tools leak bar. Reserved visual-tool: `UT-001`…`UT-005` ([ADR-0010](../../architecture/adr/ADR-0010-visual-tool.md)) — do not build that app from legacy prompt rows.
+Seeded lobby: `WS-001`…`WS-009`. Reserved Phase 4: `WS-010` `/eta`, `WS-011` `/battle`, `WS-012` tools leak bar. Reserved visual-tool: `UT-001`…`UT-005` ([ADR-0010](../../docs/architecture/adr/ADR-0010-visual-tool.md)) — do not build that app from legacy prompt rows.
 
 ## Playwright
 

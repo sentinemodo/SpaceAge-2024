@@ -15,7 +15,7 @@ internal static class RegenerateAllowlistCommand
 
         var command = new Command(
             "regenerate-allowlist",
-            "Export the verb allowlist from player/rules.md (Phase 5).");
+            "Export the verb allowlist from play/player/rules.md (Phase 5).");
         command.AddOption(outputOption);
 
         command.SetHandler((context) =>
@@ -34,7 +34,7 @@ internal static class RegenerateAllowlistCommand
 
             var document = OrderVerbAllowlistExporter.BuildFromRulesFile(
                 rulesPath,
-                "player/rules.md");
+                "play/player/rules.md");
             OrderVerbAllowlistExporter.WriteJson(resolvedOutput, document);
 
             Console.WriteLine($"Rules source:     {document.SourcePath}");

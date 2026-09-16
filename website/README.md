@@ -2,7 +2,7 @@
 
 A static Astro site for the SpaceAge PBEM campaign lobby.
 
-**Location:** `website/` at the repository root (separate from `Game/`, `Tests/`, `campaign/`, `play/`)
+**Location:** `website/` at the repository root (separate from `Game/`, `Tests/`, `play/campaign/`, `play/`)
 
 ## Overview
 
@@ -227,7 +227,7 @@ The dashboard fetches `/status.json` at runtime. The GM **does not** hand-edit J
 
 **Linux / CI fallback (no PowerShell):** `node website/scripts/generate-status.mjs <RunId>`
 
-See also [`play/README_STATUS_AUTOGEN.md`](../play/README_STATUS_AUTOGEN.md) and [`play/README.md`](../play/README.md) (GM operations).
+See also [`play/README.md`](../play/README.md) (GM operations and status JSON generator).
 
 ### Local production build (matches Pages)
 
@@ -257,7 +257,7 @@ Tester runs `npm run build`, `npm run preview`, `npm run test:e2e` and confirms 
 
 ## Guidelines
 
-- **Do:** Follow `architecture/delivery/website.md` and [ADR-0007](../architecture/adr/ADR-0007-public-campaign-website.md)
+- **Do:** Follow `docs/architecture/delivery/website.md` and [ADR-0007](../docs/architecture/adr/ADR-0007-public-campaign-website.md)
 - **Do:** Keep files in `website/` only; do not import from `Game/` or `Tests/`
 - **Do:** Validate `status.json` in Vitest before hand-off
 - **Do:** Commit `astro.config.mjs`, `package.json`, `tsconfig.json`, and all source
@@ -268,8 +268,8 @@ Tester runs `npm run build`, `npm run preview`, `npm run test:e2e` and confirms 
 
 ## Questions?
 
-- Strategy / scope: See `architecture/delivery/website.md`
-- Decision: See [ADR-0007](../architecture/adr/ADR-0007-public-campaign-website.md)
+- Strategy / scope: See `docs/architecture/delivery/website.md`
+- Decision: See [ADR-0007](../docs/architecture/adr/ADR-0007-public-campaign-website.md)
 - Astro docs: https://docs.astro.build/
 - Vitest: https://vitest.dev/
 - Playwright: https://playwright.dev/

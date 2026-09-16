@@ -25,7 +25,7 @@ namespace UnitTests
 				}
 				dir = parent.FullName;
 			}
-			throw new DirectoryNotFoundException("Could not find campaign/data.xml from " + TestContext.CurrentContext.TestDirectory);
+			throw new DirectoryNotFoundException("Could not find play/campaign/data.xml from " + TestContext.CurrentContext.TestDirectory);
 		}
 
 		public static string CampaignDir()

@@ -8,7 +8,7 @@ Engine version: `Game/Program.cs` → `EngineVersion`.
 
 The **campaign-gm** agent (`.cursor/agents/campaign-gm.md`) **executes** these scripts and keeps this README accurate. It does **not** write or patch `play/*.ps1`, C#, or tests. Missing automation is listed under [Gaps](#gaps) — implementers add scripts; the GM only documents and runs them.
 
-PBEM helpers orchestrate folders under `play/runs/<id>/`. The engine stays batch file-in/file-out ([ADR-0003](../architecture/adr/ADR-0003-filesystem-pbem-batch.md)).
+PBEM helpers orchestrate folders under `play/runs/<id>/`. The engine stays batch file-in/file-out ([ADR-0003](../docs/architecture/adr/ADR-0003-filesystem-pbem-batch.md)).
 
 ## Build Game.exe (Windows)
 
@@ -28,8 +28,8 @@ Output: `Game\bin\Debug\Game.exe` (`bin/` is gitignored). Scripts that invoke th
 ```
 play/runs/<id>/
   data/                          Game.exe /data
-    data.xml                     copy of campaign/data.xml
-    gamein.xml                   copy of campaign/gamein.1.xml with factions 2–11 passwords patched
+    data.xml                     copy of play/campaign/data.xml
+    gamein.xml                   copy of play/campaign/gamein.1.xml with factions 2–11 passwords patched
   turn/                          Game.exe /turn-dir  (empty after init)
   factions/
     02/  persona.md
@@ -49,7 +49,7 @@ Later:
 | full exe | `data/gameout.{N}.xml`, `turn/report.{N}.*` | Seed 1 → N = **2** |
 | `next.ps1` | overwrite `data/gamein.xml` from `data/gameout.{N}.xml` | Keep all `gameout.*` |
 
-Never put `gamein.xml`, `gameout*.xml`, `campaign/gamein.1.xml`, or any `report.*.xml` in a faction folder. Never create `factions/01`, `12`, or `13`. Never point `/data` at `campaign/`.
+Never put `gamein.xml`, `gameout*.xml`, `play/campaign/gamein.1.xml`, or any `report.*.xml` in a faction folder. Never create `factions/01`, `12`, or `13`. Never point `/data` at `play/campaign/`.
 
 ## Exact Game.exe lines
 
@@ -108,11 +108,11 @@ dotnet run --project tools/player-agent/PlayerAgent.csproj -- `
   ingest-faction --mode campaign --run smoke-test --faction 2
 ```
 
-Do **not** run `ingest-shared` on every turn unless `player/rules.md`, tech manuals, or `player/battle.md` changed ([Phase 5](../architecture/delivery/local-player-agent.md)).
+Do **not** run `ingest-shared` on every turn unless `play/player/rules.md`, tech manuals, or `play/player/battle.md` changed ([Phase 5](../docs/architecture/delivery/local-player-agent.md)).
 
 ## Shared RAG refresh after engine / catalog updates (Phase 5)
 
-After `/player` docs-only refresh (or human edit) when rules, battle, tech manuals, or `Tests/data.xml` / `campaign/data.xml` change:
+After `/player` docs-only refresh (or human edit) when rules, battle, tech manuals, or `Tests/data.xml` / `play/campaign/data.xml` change:
 
 ```powershell
 # Rebuild campaign shared index + allowlist + spot-check
@@ -140,7 +140,7 @@ dotnet run --project tools/player-agent/PlayerAgent.csproj -- `
 
 ## Batch order draft (Phase 6)
 
-After per-seat RAG refresh, draft all AI seats with the local runner. Cursor `/player` remains valid for single-seat or human-in-the-loop work ([`player/README.md`](../player/README.md)).
+After per-seat RAG refresh, draft all AI seats with the local runner. Cursor `/player` remains valid for single-seat or human-in-the-loop work ([`play/player/README.md`](../play/player/README.md)).
 
 ```powershell
 # Typical loop after ingest-rag
@@ -154,11 +154,11 @@ dotnet run --project tools/player-agent/PlayerAgent.csproj -- `
   audit-isolation --mode campaign --run smoke-test
 ```
 
-`draft-run` audits shared and faction indexes first (no cross-seat report leakage), then drafts factions 2–11 sequentially against one Ollama host. Results append to `play/runs/<id>/gm/isolation-audit.md`. Remote batches require `PLAYER_AGENT_BUDGET_USD` and auto-track usage under `tools/player-agent/.data/usage/`; cost notes land in `play/runs/<id>/gm/llm-usage.md` ([Phases 7–8](../architecture/delivery/local-player-agent.md)).
+`draft-run` audits shared and faction indexes first (no cross-seat report leakage), then drafts factions 2–11 sequentially against one Ollama host. Results append to `play/runs/<id>/gm/isolation-audit.md`. Remote batches require `PLAYER_AGENT_BUDGET_USD` and auto-track usage under `tools/player-agent/.data/usage/`; cost notes land in `play/runs/<id>/gm/llm-usage.md` ([Phases 7–8](../docs/architecture/delivery/local-player-agent.md)).
 
 ## GM operations
 
-Invoke `/campaign-gm` to run a table. GM loop (same mermaid as [campaign-play.md](../architecture/delivery/campaign-play.md)):
+Invoke `/campaign-gm` to run a table. GM loop (same mermaid as [campaign-play.md](../docs/architecture/delivery/campaign-play.md)):
 
 ```
 init-run → reports → isolate → publish-status → ingest-rag → draft-run (or ten isolated campaign-ai / /player) → turn → win check → next → publish-status
@@ -199,7 +199,7 @@ ISO-8601 UTC. The site shows the timestamp or "GM-scheduled" when null. Override
 .\play\generate-status.ps1 <id> -NextTurnAt "2026-09-15T23:59:59Z"
 ```
 
-See [README_STATUS_AUTOGEN.md](README_STATUS_AUTOGEN.md) and [website.md](../architecture/delivery/website.md).
+See [website.md](../docs/architecture/delivery/website.md) and the **Status JSON generator** section below.
 
 #### Publish to the live site
 
@@ -224,9 +224,9 @@ There is no `play/no-turn.ps1`. Until one exists, from repo root:
 Game\bin\Debug\Game.exe /data play\runs\<id>\data /turn-dir play\runs\<id>\turn /no-turn
 ```
 
-Stage only GM/UN orders (typically `turn\order.1.txt`, Windows-1251, `#faction 1 ""` then `CONTRACT` / `PRESS` per `player/rules.md`). Flavour and contract ids come from `/game-designer` + `/player` — the GM does not invent them. `/no-turn` does not increment the turn; `SaveGame` writes `data\gameout.{currentTurn}.xml`. Promote with `.\play\next.ps1 <id> -Turn <currentTurn>` when that file is the snapshot you want as the next `gamein.xml`.
+Stage only GM/UN orders (typically `turn\order.1.txt`, Windows-1251, `#faction 1 ""` then `CONTRACT` / `PRESS` per `play/player/rules.md`). Flavour and contract ids come from `/game-designer` + `/player` — the GM does not invent them. `/no-turn` does not increment the turn; `SaveGame` writes `data\gameout.{currentTurn}.xml`. Promote with `.\play\next.ps1 <id> -Turn <currentTurn>` when that file is the snapshot you want as the next `gamein.xml`.
 
-New wrecks or receivers that are not live `CONTRACT` orders: `/game-designer` patches the **run** `data\gamein.xml` only, not committed `campaign/gamein.1.xml`.
+New wrecks or receivers that are not live `CONTRACT` orders: `/game-designer` patches the **run** `data\gamein.xml` only, not committed `play/campaign/gamein.1.xml`.
 
 ### Win (crude, from text reports)
 
@@ -237,7 +237,7 @@ NPC 1 / 12 / 13 do not decide this win.
 
 ### AI players (`/campaign-ai`)
 
-One call per faction **2–11**. Workspace is `factions/NN/` plus `player/rules.md` (and `player/campaign/basic_technologies.md` when it exists). Each call reviews the previous `story.md` against this report, writes a new story (**strategic** = 4 quarters / system, **tactical** = next quarter / planet or moon, **win** = galaxy-wide when report turn ≥ 10), then invokes `/player` with the **tactical** objective (catalog **path** `campaign/data.xml` — campaign-ai does **not** open that XML). TDD or designer gaps wait for **human approval**. Do not feed catalog XML, `gamein.xml`, XML reports, or other factions' files.
+One call per faction **2–11**. Workspace is `factions/NN/` plus `play/player/rules.md` (and `play/player/campaign/basic_technologies.md` when it exists). Each call reviews the previous `story.md` against this report, writes a new story (**strategic** = 4 quarters / system, **tactical** = next quarter / planet or moon, **win** = galaxy-wide when report turn ≥ 10), then invokes `/player` with the **tactical** objective (catalog **path** `play/campaign/data.xml` — campaign-ai does **not** open that XML). TDD or designer gaps wait for **human approval**. Do not feed catalog XML, `gamein.xml`, XML reports, or other factions' files.
 
 ## Encoding
 
@@ -246,9 +246,9 @@ One call per faction **2–11**. Workspace is `factions/NN/` plus `player/rules.
 - `persona.md`: UTF-8.
 - `story.md`: UTF-8 (campaign-ai).
 
-Orders header: `#faction <id> "<password>"` (see `player/rules.md`).
+Orders header: `#faction <id> "<password>"` (see `play/player/rules.md`).
 
-UTF-8 order drafts under faction folders are converted to Windows-1251 before `Game.exe`. See [ADR-0002](../architecture/adr/ADR-0002-windows-1251-io.md).
+UTF-8 order drafts under faction folders are converted to Windows-1251 before `Game.exe`. See [ADR-0002](../docs/architecture/adr/ADR-0002-windows-1251-io.md).
 
 ## Isolation
 
@@ -260,7 +260,7 @@ Factions **1 / 12 / 13** submit no `order.*` until a later GM/raid slice.
 
 ## Passwords
 
-Generated at init (10 ASCII characters, no quotes or backslashes); stored in the **run** `gamein.xml` and each `persona.md`. Committed `campaign/gamein.1.xml` placeholders are **not** live. Do not publish run passwords in this README.
+Generated at init (10 ASCII characters, no quotes or backslashes); stored in the **run** `gamein.xml` and each `persona.md`. Committed `play/campaign/gamein.1.xml` placeholders are **not** live. Do not publish run passwords in this README.
 
 ## Gaps
 
@@ -271,7 +271,7 @@ Not scripts yet (GM documents and may run the documented `Game.exe` line; GM doe
 | `play/no-turn.ps1` | Wrap `/no-turn` + UN `order.1.txt` staging + optional `next` |
 | NPC 12/13 orders on a full turn | `turn.ps1` copies factions 2–11 only (raids / hostility-flip later) |
 
-Do not point `/data` at `campaign/`. Do not commit `play/runs/`.
+Do not point `/data` at `play/campaign/`. Do not commit `play/runs/`.
 
 ## Status JSON generator
 

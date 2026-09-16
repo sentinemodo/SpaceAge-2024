@@ -3,8 +3,10 @@ import { test, expect } from '@playwright/test';
 const FORBIDDEN_PATTERNS = [/password/i, /gamein/i, /order\./i, /report\./i];
 const ROUTES = ['/', '/client', '/turns', '/rules'] as const;
 
-function assertNoLeaks(body: string): void {
+function assertNoLeaks(body: string, route?: string): void {
   for (const pattern of FORBIDDEN_PATTERNS) {
+    // `/rules` documents order syntax including `#faction … "password"` placeholders.
+    if (route === '/rules' && pattern.source === 'password') continue;
     expect(body).not.toMatch(pattern);
   }
 }
@@ -44,7 +46,7 @@ test.describe('Phase 1 lobby acceptance', () => {
     const jsonResponse = await request.get('/status.json');
     expect(jsonResponse.status()).toBe(200);
     const json = await jsonResponse.json();
-    assertNoLeaks(JSON.stringify(json));
+    assertNoLeaks(JSON.stringify(json), '/status.json');
 
     await page.goto('/');
     await expect(page.locator('#status-value')).toHaveText(/Not Started/i);
@@ -81,17 +83,16 @@ test.describe('Phase 1 lobby acceptance', () => {
     await expect(main.getByText(/Visual Tool Launch: Phase 3/i)).toBeVisible();
   });
 
-  test('WS-006: Rules — short principles, not the rulebook', async ({ page }) => {
+  test('WS-006: Rules — intro plus live human rules from docs/human/rules.md', async ({ page }) => {
     await page.goto('/rules');
     const main = page.locator('main');
 
     await expect(main.getByText(/open PBEM/i)).toBeVisible();
-    await expect(main.getByRole('heading', { name: /Interests & Factions/i })).toBeVisible();
+    await expect(main.getByText(/Interest/i)).toBeVisible();
     await expect(main.getByText(/factions 2/i)).toBeVisible();
     await expect(main.getByText(/13 weeks/i).first()).toBeVisible();
-
-    const bodyText = await page.locator('main').innerText();
-    expect(bodyText.length).toBeLessThan(8000);
+    await expect(main.getByRole('heading', { name: /Order file format/i })).toBeVisible();
+    await expect(main.getByText(/#modulestack/i).first()).toBeVisible();
   });
 
   test('WS-007: Mobile nav and cards', async ({ page }) => {
@@ -123,11 +124,11 @@ test.describe('Phase 1 lobby acceptance', () => {
     for (const route of [...ROUTES, '/status.json']) {
       const response = await request.get(route);
       expect(response.status()).toBe(200);
-      assertNoLeaks(await response.text());
+      assertNoLeaks(await response.text(), route);
     }
 
     await page.goto('/');
-    assertNoLeaks(await page.content());
+    assertNoLeaks(await page.content(), '/');
   });
 
   test('WS-009: Four public routes and shared chrome', async ({ page }) => {
@@ -147,7 +148,7 @@ test.describe('Phase 1 lobby acceptance', () => {
     await expect(page).toHaveURL('/client');
 
     await page.goto('/');
-    await expect(page.locator('footer')).toContainText(/0\.1\./);
+    await expect(page.locator('footer')).toContainText(/0\.8\.001/);
     await expect(page.locator('footer')).toContainText(/Quarterly schedule/i);
   });
 });

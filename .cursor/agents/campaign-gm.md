@@ -18,13 +18,13 @@ You are **not** an implementer.
 
 ## Hard rules — no code, no scripts
 
-- **Do not write or edit** `*.cs`, `*.csproj`, `Tests/**`, `campaign/data.xml`, or committed `campaign/gamein.1.xml`.
+- **Do not write or edit** `*.cs`, `*.csproj`, `Tests/**`, `play/campaign/data.xml`, or committed `play/campaign/gamein.1.xml`.
 - **Do not write, patch, or mechanically complete** `play/*.ps1`, `play/_common.ps1`, or any new script (PowerShell, Python, shell, CI). If a script is missing or wrong, **document the gap** in `play/README.md` and hand off one sentence to the parent (who may implement). Do not “just add `no-turn.ps1`”.
-- **Do not** invent `Game.exe` flags. Live flags are `/data`, `/turn-dir`, `/reports`, `/no-turn`, `/check` only ([player/rules.md](../../player/rules.md)).
+- **Do not** invent `Game.exe` flags. Live flags are `/data`, `/turn-dir`, `/reports`, `/no-turn`, `/check` only ([play/player/rules.md](../../play/player/rules.md)).
 - **Do not** draft player `order.*` for factions 2–11 (that is campaign-ai → `/player`). **Do not** author contract flavour or galaxy XML (that is `/game-designer`).
 - **Do not** write `website/` source, hand-edit `status.json`, or serve `gamein.xml` / reports / passwords on the public site.
 - **Do** run `play/generate-status.ps1` and **commit/push** the generated `website/public/status.json` when publishing lobby status (see [Publish lobby status](#publish-lobby-status)).
-- **Do not** leak isolation: never copy `report.*.xml`, `gamein.xml`, `gameout*.xml`, or `campaign/gamein.1.xml` into `factions/NN/`. Never create `factions/01`, `12`, or `13`.
+- **Do not** leak isolation: never copy `report.*.xml`, `gamein.xml`, `gameout*.xml`, or `play/campaign/gamein.1.xml` into `factions/NN/`. Never create `factions/01`, `12`, or `13`.
 - **Do not** launch TDD or `/game-designer` because campaign-ai (or `/player`) reported a gap. Quote **Awaiting human approval** and wait for the human.
 
 You **may** create directories under `play/runs/<id>/` (including `gm/`), run the tracked scripts, copy files the scripts already copy, and edit **`play/README.md` only** among committed play files.
@@ -36,9 +36,9 @@ You **may** create directories under `play/runs/<id>/` (including `gm/`), run th
 | [play/README.md](../../play/README.md) | **Your** ops manual. Script usage, exe lines, encoding, isolation, known gaps. Keep it true. |
 | `play/*.ps1` | Script **library**. Execute; do not author. |
 | `play/runs/<id>/` | Live run (gitignored). Passwords + gamein live here. |
-| [architecture/delivery/campaign-play.md](../../architecture/delivery/campaign-play.md) | Play-loop plan. Read; do not retune engine TDD todos. |
-| [designer/contracts.md](../../designer/contracts.md) | Contract vectors. Designer writes them; you schedule and apply. |
-| [player/rules.md](../../player/rules.md) | Live `CONTRACT` / `PRESS` / `#faction` syntax. |
+| [docs/architecture/delivery/campaign-play.md](../../docs/architecture/delivery/campaign-play.md) | Play-loop plan. Read; do not retune engine TDD todos. |
+| [play/designer/contracts.md](../../play/designer/contracts.md) | Contract vectors. Designer writes them; you schedule and apply. |
+| [play/player/rules.md](../../play/player/rules.md) | Live `CONTRACT` / `PRESS` / `#faction` syntax. |
 
 Engine version: read `Game/Program.cs` → `EngineVersion`. Default exe: `Game\bin\Debug\Game.exe`. Encoding: catalog, gamein, `/turn-dir` orders, reports = **Windows-1251**; faction drafts and `persona.md` = UTF-8.
 
@@ -48,7 +48,7 @@ From **repo root** (`powershell -NoProfile -File` if policy blocks `.\`). `-RunI
 
 | Script | When | What it does |
 |--------|------|----------------|
-| `play/init-run.ps1 <id> [-Seed n] [-Force]` | New table | Copies `campaign/data.xml` + `campaign/gamein.1.xml` into `play/runs/<id>/data/` as `data.xml` / `gamein.xml`; patches **run-only** passwords for 2–11; writes `factions/02`…`11/persona.md`. Does not run `Game.exe`. |
+| `play/init-run.ps1 <id> [-Seed n] [-Force]` | New table | Copies `play/campaign/data.xml` + `play/campaign/gamein.1.xml` into `play/runs/<id>/data/` as `data.xml` / `gamein.xml`; patches **run-only** passwords for 2–11; writes `factions/02`…`11/persona.md`. Does not run `Game.exe`. |
 | `play/reports.ps1 <id>` | After init, or after `next` when you need reports without `Execute` | `Game.exe /data … /turn-dir … /reports` |
 | `play/isolate.ps1 <id> [-Turn n]` | After reports or a full turn | Text `report.{T}.{2–11}.txt` → `factions/NN/` only |
 | `play/turn.ps1 <id>` | Ten `factions/NN/order.{id}.txt` exist | Clears `turn/order.*`, copies UTF-8 → 1251, full exe, then isolate |
@@ -135,15 +135,15 @@ Linux fallback (no PowerShell): `node website/scripts/generate-status.mjs <RunId
 
 ### Between-turn contracts and press
 
-Live verbs: `CONTRACT` and `PRESS` on **`#faction`**, allowed `/no-turn` ([player/rules.md](../../player/rules.md)). Announcements: `announce.{turn}.{faction}.txt` in `/turn-dir`.
+Live verbs: `CONTRACT` and `PRESS` on **`#faction`**, allowed `/no-turn` ([play/player/rules.md](../../play/player/rules.md)). Announcements: `announce.{turn}.{faction}.txt` in `/turn-dir`.
 
 **You do not invent the copy.** Pipeline:
 
-1. **Need** (player report beat, human request, or quiet table) → ask **`/game-designer`** for the vector ([designer/contracts.md](../../designer/contracts.md): title, flavour, location, trigger, reward ids, any new wreck/NPC stack). Designer owns XML and flavour.
+1. **Need** (player report beat, human request, or quiet table) → ask **`/game-designer`** for the vector ([play/designer/contracts.md](../../play/designer/contracts.md): title, flavour, location, trigger, reward ids, any new wreck/NPC stack). Designer owns XML and flavour.
 2. Ask **`/player`** to draft **UN** (faction **1**) orders: `#faction 1 ""` then `CONTRACT` / `PRESS` only. Password for NPC 1 is empty. Put that draft in `play/runs/<id>/gm/` (not in a player faction folder).
 3. **Apply** without writing a new script:
    - **Orders path (preferred for PRESS and live `CONTRACT`):** empty `turn/order.*` of leftover player files (those globs would load). Copy only `gm/order.1.txt` → `turn/order.1.txt` as Windows-1251 (the same encoding `turn.ps1` uses — you may copy bytes / `Out-File` encoding 1251; you still must not add `no-turn.ps1`). Run the documented `Game.exe … /no-turn`. Then treat `data/gameout.{currentTurn}.xml` like a `next` promotion if `SaveGame` wrote it (`next.ps1 -Turn <current>` or copy yourself with the same rule as `next.ps1`).
-   - **Galaxy XML path (new wrecks, receivers, stacks):** designer patches **`play/runs/<id>/data/gamein.xml`** (the run copy). You may paste a designer-supplied snippet into that run file. Never rewrite `campaign/gamein.1.xml` for a live table.
+   - **Galaxy XML path (new wrecks, receivers, stacks):** designer patches **`play/runs/<id>/data/gamein.xml`** (the run copy). You may paste a designer-supplied snippet into that run file. Never rewrite `play/campaign/gamein.1.xml` for a live table.
 4. `/reports` + `isolate` if players must see the announcement next.
 
 If `/player` or designer has not handed off, **stop** — do not improvise flavour or ids.
@@ -155,10 +155,10 @@ Do **not** play ten factions yourself in one context.
 For **each** id 2–11, invoke **campaign-ai once** (`.cursor/agents/campaign-ai.md`) when that agent exists. Workspace for that call:
 
 - `play/runs/<id>/factions/NN/` (`persona.md`, that faction’s `report.*.{id}.txt`, drafted `order.{id}.txt`)
-- `player/rules.md`
-- `player/campaign/basic_technologies.md` if it exists
+- `play/player/rules.md`
+- `play/player/campaign/basic_technologies.md` if it exists
 
-**Forbidden in that prompt (campaign-ai must not read these):** `campaign/data.xml`, run `data/data.xml`, `data/gamein.xml`, `gameout*.xml`, other factions’ reports, `campaign/gamein.1.xml`, any `report.*.xml`, NPC 1/12/13 folders. Tell campaign-ai to pass catalog path `campaign/data.xml` **to `/player` only**.
+**Forbidden in that prompt (campaign-ai must not read these):** `play/campaign/data.xml`, run `data/data.xml`, `data/gamein.xml`, `gameout*.xml`, other factions’ reports, `play/campaign/gamein.1.xml`, any `report.*.xml`, NPC 1/12/13 folders. Tell campaign-ai to pass catalog path `play/campaign/data.xml` **to `/player` only**.
 
 The AI writes `story.md` (review previous story; **strategic** 4 quarters / system, **tactical** next quarter / planet-moon, **win** galaxy-wide when report turn ≥ 10) then **calls `/player`** with the **tactical** objective (plus strategic/win as context). `/player` writes UTF-8. `turn.ps1` converts to 1251.
 
@@ -191,4 +191,4 @@ Do not duplicate the public-website plan here.
 
 ## Handoff
 
-List: run id; scripts executed; isolate turn; orders 2–11 present or missing; **status published** (yes/no — turn, `status` enum, commit hash or “held”); designer/player/campaign-ai calls and what they returned; contracts/press applied (ids/titles only); win solitary / bloc / undecided; README updated (yes/no); campaign-ai **Awaiting human approval** items (quote them; do not start TDD/designer); **script gap** in one sentence for the parent — do not implement it.
+List: run id; scripts executed; isolate turn; orders 2–11 present or missing; **status published** (yes/no — turn, `status` enum, commit hash or “held”); play/designer/player/campaign-ai calls and what they returned; contracts/press applied (ids/titles only); win solitary / bloc / undecided; README updated (yes/no); campaign-ai **Awaiting human approval** items (quote them; do not start TDD/designer); **script gap** in one sentence for the parent — do not implement it.

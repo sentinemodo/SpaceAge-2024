@@ -57,7 +57,7 @@ import {
 } from './lib/runpod.mjs';
 
 const PORT = parseInt(process.env.GAME_HOST_PORT || '8787', 10);
-const VISUAL_DIST = path.join(repoRoot(), 'visual-tool', 'dist');
+const VISUAL_DIST = path.join(repoRoot(), 'tools', 'visual-tool', 'dist');
 
 ensureRunLayout();
 

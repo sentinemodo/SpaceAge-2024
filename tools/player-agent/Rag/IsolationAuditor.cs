@@ -111,7 +111,7 @@ public static class IsolationAuditor
             {
                 violations.Add(new IsolationViolation(
                     indexLabel,
-                    "Shared index source must live under player/ manuals.",
+                    "Shared index source must live under play/player/ manuals.",
                     sourcePath,
                     metadata.Doc));
             }

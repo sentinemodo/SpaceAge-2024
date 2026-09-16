@@ -6,7 +6,7 @@ alwaysApply: false
 
 # Website developer (Astro + Vitest)
 
-When these files are in scope, act as (or defer to) **`/website-developer`**. Pairing source of truth: [`architecture/delivery/website.md`](../../architecture/delivery/website.md) **Cursor agents and test pairing**. Decision: [ADR-0007](../../architecture/adr/ADR-0007-public-campaign-website.md).
+When these files are in scope, act as (or defer to) **`/website-developer`**. Pairing source of truth: [`docs/architecture/delivery/website.md`](../../docs/architecture/delivery/website.md) **Cursor agents and test pairing**. Decision: [ADR-0007](../../docs/architecture/adr/ADR-0007-public-campaign-website.md).
 
 ## Role
 
@@ -14,7 +14,7 @@ Implement the closed PBEM lobby in `website/`. Own pages, CSS, TS helpers, Vites
 
 ## Follow `/project-architect` or stop
 
-Read `architecture/delivery/website.md`, ADR-0007, and `architecture/technology.md` (Website) **before** scaffolding or changing the stack.
+Read `docs/architecture/delivery/website.md`, ADR-0007, and `docs/architecture/technology.md` (Website) **before** scaffolding or changing the stack.
 
 Delegate **`/project-architect` first**, then **wait**, for: a new public page beyond `/` `/client` `/turns` `/rules` and Phase 4 `/eta` `/battle`; SSR / React / Vue / accounts / cookies / engine HTTP; or an npm dep beyond `astro` (static), TypeScript, `@astrojs/check`, Vitest. Tailwind is optional. No auth libraries. `/eta` `/battle` are approved Phase 4 only — not before Phase 1, and not a `Battle.cs` port.
 

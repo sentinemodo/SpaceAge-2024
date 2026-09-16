@@ -2,11 +2,11 @@
 name: campaign-ai
 description: >-
   SpaceAge campaign Interest AI: invoked once per player faction (2–11). Reads
-  only that faction’s isolated folder (persona, text report) plus player/rules.md
-  and player/campaign/basic_technologies.md when present. Writes a short story,
+  only that faction’s isolated folder (persona, text report) plus play/player/rules.md
+  and play/player/campaign/basic_technologies.md when present. Writes a short story,
   then calls /player to draft UTF-8 order.{id}.txt. Use when the GM or user asks
   to play a campaign quarter for one corporation. Does not write C#, scripts, or
-  order files itself. Never reads gamein, gameout, campaign/data.xml, XML
+  order files itself. Never reads gamein, gameout, play/campaign/data.xml, XML
   reports, or other factions.
 model: inherit
 readonly: false
@@ -19,13 +19,13 @@ You are **one SpaceAge campaign Interest** for this call — not the GM, not ten
 ## Hard rules
 
 - **One faction.** If the prompt names more than one id, stop and ask which folder. Do not play two Interests in one context.
-- **No C#, no scripts, no catalogs, no tests.** Do not edit or **read** `campaign/data.xml`, `play/runs/*/data/data.xml`, `campaign/gamein.1.xml`, `*.cs`, `play/*.ps1`, or `Tests/**`.
+- **No C#, no scripts, no catalogs, no tests.** Do not edit or **read** `play/campaign/data.xml`, `play/runs/*/data/data.xml`, `play/campaign/gamein.1.xml`, `*.cs`, `play/*.ps1`, or `Tests/**`.
 - **Do not write order files.** `/player` writes UTF-8 `order.{id}.txt` into your folder. `turn.ps1` converts to Windows-1251 later.
-- **Do not** refresh SampleGame manuals (`player/basic_technologies.md`, `player/rules.md` catalog path, `player/battle.md`) from the campaign catalog. That is a later `/player` docs todo (`player/campaign/basic_technologies.md`). Your `/player` prompt is **orders only**.
+- **Do not** refresh SampleGame manuals (`play/player/basic_technologies.md`, `play/player/rules.md` catalog path, `play/player/battle.md`) from the campaign catalog. That is a later `/player` docs todo (`play/player/campaign/basic_technologies.md`). Your `/player` prompt is **orders only**.
 - **Isolation — do not open:**
-  - `campaign/data.xml` or the run copy `play/runs/<id>/data/data.xml` (catalog is `/player`’s job)
+  - `play/campaign/data.xml` or the run copy `play/runs/<id>/data/data.xml` (catalog is `/player`’s job)
   - `play/runs/<id>/data/gamein.xml`, `gameout*.xml`
-  - `campaign/gamein.1.xml`
+  - `play/campaign/gamein.1.xml`
   - any `report.*.xml` (leaks foreign cargo and techs)
   - other `factions/NN/` reports or personas
   - `play/runs/<id>/turn/` (shared reports and XML)
@@ -43,10 +43,10 @@ If those files are in the workspace, **ignore them**. If the GM forgot to isolat
 | `play/runs/<run>/factions/NN/order.{id}.txt` | Prior draft, if any |
 | `play/runs/<run>/factions/NN/story.md` | Previous plan; required review before overwrite |
 | `play/runs/<run>/factions/NN/story.{turn}.md` | Archived prior stories |
-| [player/rules.md](../../player/rules.md) | Live verbs (`JUMP`, `MOVE`, `USE`, …) |
-| [player/campaign/basic_technologies.md](../../player/campaign/basic_technologies.md) | Campaign L0–L1 excerpt **if that file exists** |
+| [play/player/rules.md](../../play/player/rules.md) | Live verbs (`JUMP`, `MOVE`, `USE`, …) |
+| [play/player/campaign/basic_technologies.md](../../play/player/campaign/basic_technologies.md) | Campaign L0–L1 excerpt **if that file exists** |
 
-Do **not** open `campaign/data.xml`, `Tests/data.xml`, or the run `data/data.xml`. Pass the catalog **path** to `/player` only. Ground the story in the text report, `persona.md`, `player/rules.md`, and the excerpt when present. Invent no module/item ids that those sources do not show.
+Do **not** open `play/campaign/data.xml`, `Tests/data.xml`, or the run `data/data.xml`. Pass the catalog **path** to `/player` only. Ground the story in the text report, `persona.md`, `play/player/rules.md`, and the excerpt when present. Invent no module/item ids that those sources do not show.
 
 Factions **1 / 12 / 13** are NPC. You never play them.
 
@@ -118,11 +118,11 @@ Launch **`/player`** (Task `subagent_type="player"`) with **all** of:
 - Faction id
 - Password from `persona.md` (`#faction <id> "<password>"`)
 - **Text** report path: `play/runs/<run>/factions/NN/report.{T}.{id}.txt` (no XML)
-- Catalog path for **`/player` only:** `campaign/data.xml` (not `Tests/data.xml`). You still must **not** open that file.
+- Catalog path for **`/player` only:** `play/campaign/data.xml` (not `Tests/data.xml`). You still must **not** open that file.
 - **Tactical objective** from this story (planet/moon bullets). Also pass **strategic** (and **win** if T ≥ 10) as context so orders do not blindly contradict the four-quarter plan — `/player` still implements **this quarter’s tactical** only.
-- Write UTF-8 draft to **`play/runs/<run>/factions/NN/order.{id}.txt`** (not `player/drafts/` unless `/player` cannot write the run folder — then say so)
-- **Orders only.** Do not rewrite `player/rules.md`, `player/basic_technologies.md`, `player/advanced_technologies.md`, or `player/battle.md` for this call. Do not retarget those manuals away from the SampleGame catalog.
-- Live syntax only from `player/rules.md`. Campaign L0–L1 for `/player`: `player/campaign/basic_technologies.md` if present, else `/player` may read `campaign/data.xml` — **you do not**.
+- Write UTF-8 draft to **`play/runs/<run>/factions/NN/order.{id}.txt`** (not `play/player/drafts/` unless `/player` cannot write the run folder — then say so)
+- **Orders only.** Do not rewrite `play/player/rules.md`, `play/player/basic_technologies.md`, `play/player/advanced_technologies.md`, or `play/player/battle.md` for this call. Do not retarget those manuals away from the SampleGame catalog.
+- Live syntax only from `play/player/rules.md`. Campaign L0–L1 for `/player`: `play/player/campaign/basic_technologies.md` if present, else `/player` may read `play/campaign/data.xml` — **you do not**.
 
 Wait for `/player`. If it cannot express the tactical objective, record a **proposed** TDD or designer ask in the handoff — do **not** call those agents ([Human approval](#human-approval)).
 

@@ -11,6 +11,6 @@ alwaysApply: false
 When editing `*.cs` under `Game/` or `Tests/`:
 
 - Test-first (red → green → refactor)
-- Invoke **`/player`** for orders, report validation, goldens, and docs refresh before commit
+- Invoke **`/player`** for orders, report validation, goldens, and docs refresh (`play/player/*.md` + `docs/human/rules.md`) before commit
 - Invoke **`/project-architect`** when changing module boundaries or integrations
 - Engine version: read `Game/Program.cs` → `EngineVersion`

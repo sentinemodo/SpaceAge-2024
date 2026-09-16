@@ -17,7 +17,7 @@ namespace SpaceAge
 
 	/// <summary>
 	/// Default NPC settlement buy books. Quantities scale with settlement stack module count.
-	/// Canonical design: designer/economy.md
+	/// Canonical design: play/designer/economy.md
 	/// </summary>
 	internal static class SettlementBuyBook
 	{

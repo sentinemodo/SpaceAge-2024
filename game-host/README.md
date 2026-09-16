@@ -2,13 +2,13 @@
 
 HTTP service for open beta: faction auth, report XML, order upload, GM turn runner.
 
-Decision: [architecture/adr/ADR-0011-hosted-game-service.md](../architecture/adr/ADR-0011-hosted-game-service.md)
+Decision: [docs/architecture/adr/ADR-0011-hosted-game-service.md](../docs/architecture/adr/ADR-0011-hosted-game-service.md)
 
 ## Prerequisites
 
 - Node.js 18+
 - Built `Game/bin/Debug/Game.exe` (`msbuild SpaceAge.sln`)
-- `campaign/data.xml` and `campaign/gamein.1.xml`
+- `play/campaign/data.xml` and `play/campaign/gamein.1.xml`
 
 ## Environment
 

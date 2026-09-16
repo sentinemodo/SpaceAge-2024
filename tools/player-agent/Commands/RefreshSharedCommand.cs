@@ -119,7 +119,7 @@ internal static class RefreshSharedCommand
                 var allowlistPath = OrderVerbAllowlistExporter.DefaultOutputPath(repoRoot);
                 var document = OrderVerbAllowlistExporter.BuildFromRulesFile(
                     rulesPath,
-                    "player/rules.md");
+                    "play/player/rules.md");
                 if (dryRun)
                 {
                     Console.WriteLine($"Dry run allowlist: {document.Verbs.Count} verbs -> {allowlistPath}");

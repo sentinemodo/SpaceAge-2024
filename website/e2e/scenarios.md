@@ -2,9 +2,9 @@
 
 Last updated: 2026-09-09  
 Owned by: **`/website-tester`** (defines, maintains, automates).  
-Plan: [`architecture/delivery/website.md`](../../architecture/delivery/website.md) · Decision: [ADR-0007](../../architecture/adr/ADR-0007-public-campaign-website.md)
+Plan: [`docs/architecture/delivery/website.md`](../../docs/architecture/delivery/website.md) · Decision: [ADR-0007](../../docs/architecture/adr/ADR-0007-public-campaign-website.md)
 
-**This file is canonical.** The architecture seed at `architecture/delivery/website-scenarios.md` is a pointer only — do not maintain two live catalogs.
+**This file is canonical.** The architecture seed at `docs/architecture/delivery/website-scenarios.md` is a pointer only — do not maintain two live catalogs.
 
 **Manual browser exploration is not the acceptance path.** Every scenario below is automated: Vitest for schema/helpers, Playwright Chromium against `astro build` + `astro preview` for routes and copy. Green e2e is the done gate.
 
@@ -92,17 +92,17 @@ Playwright specs **cite the scenario id** in the title or annotation (`WS-001`, 
 | **layer** | **Playwright**. Phase 3 updates this scenario’s `then` when the href is chosen; do not invent a host |
 | **security** | Client page does not host `gamein`, reports, or order files |
 
-### WS-006 — Rules: short principles, not the rulebook
+### WS-006 — Rules: intro + human rules (docs/human/rules.md)
 
 | Field | Value |
 |-------|--------|
 | **id** | `WS-006` |
-| **user goal** | Learn Open PBEM / Interests / quarterly reports in this engine’s terms |
+| **user goal** | Read live order syntax and turn rules for the open-beta campaign |
 | **route(s)** | `/rules` |
-| **given** | Flavour source is Rules.txt §2.1 rewritten in SpaceAge file-in/file-out terms ([`website.md`](website.md)) |
+| **given** | Build renders `docs/human/rules.md` via `website/src/lib/humanRules.ts` |
 | **when** | A visitor opens `/rules` |
-| **then** | Short principles only: Open PBEM, Interests (factions 2–11), one turn = one in-game quarter (13 weeks), reports then order files. **Must not** paste the full Rules.txt / `player/rules.md` book. May link out to `player/rules.md` when published |
-| **layer** | **Playwright** (principles present; page is not a dump of the rulebook — e.g. no multi-thousand-word paste, no full order-syntax manual) |
+| **then** | Intro states open PBEM, Interests (factions 2–11), 13 weeks per turn. Body includes order-file sections (`#modulestack`, `#faction`, verb syntax). **Must not** expose passwords, live `order.*`, or report paths |
+| **layer** | **Playwright** |
 | **security** | No live order files or report bodies |
 
 ### WS-007 — Mobile nav and cards
@@ -146,7 +146,7 @@ Playwright specs **cite the scenario id** in the title or annotation (`WS-001`, 
 
 ## Reserved — user tools (visual tool and later player-facing web apps)
 
-**Do not implement** the visual tool from this section. Product brief: [ADR-0010](../../architecture/adr/ADR-0010-visual-tool.md) · legacy [`docs/legacy/prompts/visual-tool-brief.txt`](../../docs/legacy/prompts/visual-tool-brief.txt) (Stellaris-inspired report/XML client: star map, unit tree, order editing, warnings). It is a **separate folder and host**, not pages inside `website/`.
+**Do not implement** the visual tool from this section. Product brief: [ADR-0010](../../docs/architecture/adr/ADR-0010-visual-tool.md) · legacy [`docs/legacy/prompts/visual-tool-brief.txt`](../../docs/legacy/prompts/visual-tool-brief.txt) (Stellaris-inspired report/XML client: star map, unit tree, order editing, warnings). It is a **separate folder and host**, not pages inside `website/`.
 
 `/website-tester` **owns** these scenarios when that app exists: add `UT-###` rows, Playwright under that app’s `e2e/`, same architect-compliance gate as the lobby ([`website.md`](website.md) — Cursor agents and test pairing). Same rule: **no manual exploration as acceptance**.
 
@@ -174,7 +174,7 @@ Do **not** implement these pages in Phase 1. Specs stay reserved until `/website
 | **given** | Phase 4 site is built; a sample paste includes `mass: 40000/4150`; origin AU 1.0 and destination AU 80; drive speed 1 |
 | **when** | The visitor pastes the excerpt, sets the two AU-from-star fields, and calculates |
 | **then** | The page shows ΔAU **79** and **14** weeks (default workshop frigate, speed 1). Scout paste `mass: 40000/2430` at the same hop shows **10** weeks. Parse failure (no `mass: thrust/mass`) shows an error and allows manual thrust/mass. Page states the next engine turn is authoritative |
-| **layer** | **Vitest**: `DurationWeeks` + mass-factor clamp vs [`designer/au-transit.md`](../../designer/au-transit.md) locked table. **Playwright**: sample paste + two AU → 14 weeks |
+| **layer** | **Vitest**: `DurationWeeks` + mass-factor clamp vs [`play/designer/au-transit.md`](../../play/designer/au-transit.md) locked table. **Playwright**: sample paste + two AU → 14 weeks |
 | **security** | Paste is not submitted to a server. HTML + `/status.json` still have no `report.` / `gamein` / `order.` files |
 
 ### WS-011 — Two-side battle what-if
@@ -187,7 +187,7 @@ Do **not** implement these pages in Phase 1. Specs stay reserved until `/website
 | **given** | Phase 4 site; each side has at least one combatant (attack, defense, damage, HP, tactic) and a numeric seed |
 | **when** | The visitor runs the simulation |
 | **then** | A round log appears (fire / chance / hit or miss / wreck or capture) and an end line: attackers win, defenders win, or indecisive. Same seed + same roster reproduces the log. Page states this is a what-if, not `Game.exe` |
-| **layer** | **Vitest**: to-hit / damage / evade-leave helpers from [`player/battle.md`](../../player/battle.md). **Playwright**: submit a minimal two-unit roster → finished log + end line |
+| **layer** | **Vitest**: to-hit / damage / evade-leave helpers from [`play/player/battle.md`](../../play/player/battle.md). **Playwright**: submit a minimal two-unit roster → finished log + end line |
 | **security** | No upload of rosters. No `data.xml` / `gamein` on the origin |
 
 ### WS-012 — Phase 4 tools do not publish reports

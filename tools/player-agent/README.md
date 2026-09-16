@@ -1,12 +1,12 @@
 # SpaceAge player-agent (C# + Ollama)
 
-Scriptable order-drafting runner for PBEM play. Lives **outside** `Game.exe` per [ADR-0009](../../architecture/adr/ADR-0009-local-llm-player-agent.md). Implementation plan: [`architecture/delivery/local-player-agent.md`](../../architecture/delivery/local-player-agent.md).
+Scriptable order-drafting runner for PBEM play. Lives **outside** `Game.exe` per [ADR-0009](../../docs/architecture/adr/ADR-0009-local-llm-player-agent.md). Implementation plan: [`docs/architecture/delivery/local-player-agent.md`](../../docs/architecture/delivery/local-player-agent.md).
 
 **Phase 0 status:** CLI contracts, Ollama client smoke test, config, and path layout.
 
 **Phase 2 status:** Shared and faction RAG ingest (`ingest-shared`, `ingest-faction`), SQLite vector store, chunking, `retrieve` dev helper, and always-on prompt pack builder.
 
-**Phase 3 status:** `draft` retrieves top-k chunks, calls Ollama chat, runs verb allowlist lint from `player/rules.md`, and writes UTF-8 orders. RunPod usage ledger arrives in Phases 7–8.
+**Phase 3 status:** `draft` retrieves top-k chunks, calls Ollama chat, runs verb allowlist lint from `play/player/rules.md`, and writes UTF-8 orders. RunPod usage ledger arrives in Phases 7–8.
 
 **Phase 4 status:** Incremental faction RAG refresh after isolate — latest report replaces prior report chunks, optional order-turn window, `ingest-run` batch for factions 2–11, `play/ingest-rag.ps1` hook, and `--story-only` for campaign-ai handoff.
 
@@ -119,18 +119,18 @@ Required on `ingest-shared`, `ingest-faction`, and `draft`:
 
 | Mode | Shared tech manuals |
 |------|---------------------|
-| `test` | `player/basic_technologies.md`, `player/advanced_technologies.md` |
-| `campaign` | `player/campaign/basic_technologies.md`, `player/campaign/advanced_technologies.md` |
+| `test` | `play/player/basic_technologies.md`, `play/player/advanced_technologies.md` |
+| `campaign` | `play/player/campaign/basic_technologies.md`, `play/player/campaign/advanced_technologies.md` |
 
-Shared indexes are stored separately: `.data/shared-test/`, `.data/shared-campaign/`.
+Shared indexes are stored separately: `.data/shared-test/`, `.data/shared-play/campaign/`.
 
 ## Draft output (no default)
 
-Order files use **`orders.{faction}.{turn}.{iteration}.txt`** (matches SampleGame / `player/drafts/`). Example after turn 1 report for faction 2: **`orders.2.2.1.txt`** (faction 2, turn 2 orders, first iteration).
+Order files use **`orders.{faction}.{turn}.{iteration}.txt`** (matches SampleGame / `play/player/drafts/`). Example after turn 1 report for faction 2: **`orders.2.2.1.txt`** (faction 2, turn 2 orders, first iteration).
 
 | Use case | Arguments | Output path |
 |----------|-----------|-------------|
-| Dev / agent testing | `--output player/drafts/orders.2.2.1.txt` | Explicit path |
+| Dev / agent testing | `--output play/player/drafts/orders.2.2.1.txt` | Explicit path |
 | Campaign run | `--run <id> --faction <n>` | Auto: next `orders.{faction}.{turn}.{iteration}.txt` under `play/runs/<id>/factions/NN/` |
 
 Turn defaults to **report turn + 1** (from latest `report.{turn}.{faction}.txt`). Iteration defaults to the **next free** number for that faction/turn. Override with `--turn` / `--iteration`.
@@ -141,7 +141,7 @@ Example:
 
 ```powershell
 dotnet run --project tools/player-agent/PlayerAgent.csproj -- draft `
-  --mode test --faction 2 --output player/drafts/orders.2.2.1.txt --dry-run
+  --mode test --faction 2 --output play/player/drafts/orders.2.2.1.txt --dry-run
 
 dotnet run --project tools/player-agent/PlayerAgent.csproj -- draft `
   --mode campaign --run smoke-test --faction 2
@@ -159,7 +159,7 @@ UTF-8 drafts in faction folders; `play/turn.ps1` converts to Windows-1251 for `G
 | `ingest-faction --mode … --run … --faction …` | 2/4 | Embed faction corpus (incremental by default; `--full` for Phase 2 rebuild) |
 | `ingest-run --mode … --run …` | 4 | Batch incremental refresh for factions 2–11 after isolate |
 | `refresh-shared --mode test\|campaign\|both` | 5 | Rebuild shared index + allowlist + spot-check after manual/catalog/engine updates |
-| `regenerate-allowlist` | 5 | Export verb list from `player/rules.md` to `Lint/verb-allowlist.json` |
+| `regenerate-allowlist` | 5 | Export verb list from `play/player/rules.md` to `Lint/verb-allowlist.json` |
 | `retrieve --mode … --index shared\|faction --query …` | 2 | Dev helper: top-k vector search (optional `--verb MOVE`) |
 | `draft --mode … --faction …` | 3 | Generate order draft (lint + UTF-8 write) |
 | `draft-story --run … --faction …` | 3+ | Generate `story.md` from persona + report (monolithic; auto `--chunked` fallback on timeout) |
@@ -212,7 +212,7 @@ dotnet run --project tools/player-agent/PlayerAgent.csproj -- `
 
 ### Shared RAG refresh (Phase 5)
 
-Run **after** `/player` docs-only refresh (or human edit) when `player/rules.md`, tech manuals, `player/battle.md`, or the catalog change — **not** after every turn.
+Run **after** `/player` docs-only refresh (or human edit) when `play/player/rules.md`, tech manuals, `play/player/battle.md`, or the catalog change — **not** after every turn.
 
 ```powershell
 # Plan only (checklist + chunk counts + allowlist preview)
@@ -260,12 +260,12 @@ dotnet run --project tools/player-agent/PlayerAgent.csproj -- draft `
 
 # Override report path (dev)
 dotnet run --project tools/player-agent/PlayerAgent.csproj -- draft `
-  --mode test --faction 2 --report path/to/report.txt --output player/drafts/orders.2.2.1.txt
+  --mode test --faction 2 --report path/to/report.txt --output play/player/drafts/orders.2.2.1.txt
 ```
 
-Lint reads live verb headings from `player/rules.md` (immediate + long orders). Drafts that use unknown verbs fail closed and are not written. Password is read from the report template or `persona.md` and injected locally; remote hosts strip `#faction … "password"` from the chat prompt.
+Lint reads live verb headings from `play/player/rules.md` (immediate + long orders). Drafts that use unknown verbs fail closed and are not written. Password is read from the report template or `persona.md` and injected locally; remote hosts strip `#faction … "password"` from the chat prompt.
 
-UTF-8 drafts in faction folders or `player/drafts/`; **`play/turn.ps1` converts to Windows-1251** before `Game.exe`.
+UTF-8 drafts in faction folders or `play/player/drafts/`; **`play/turn.ps1` converts to Windows-1251** before `Game.exe`.
 
 ### Campaign batch draft (Phase 6)
 
@@ -332,14 +332,14 @@ Unit tests: `dotnet test tools/player-agent-tests/PlayerAgent.Tests.csproj`.
 ```text
 tools/player-agent/.data/
   shared-test/shared.sqlite
-  shared-campaign/shared.sqlite
+  shared-play/campaign/shared.sqlite
   runs/<run-id>/faction-NN/faction.sqlite
   usage/                         # Phase 7 ledger
 ```
 
 ## I/O contract (matches `/player`)
 
-Read: isolated text report, optional `story.md`, shared + faction RAG chunks, always-on prompt pack from `player/rules.md`.
+Read: isolated text report, optional `story.md`, shared + faction RAG chunks, always-on prompt pack from `play/player/rules.md`.
 
 Write: UTF-8 `orders.{faction}.{turn}.{iteration}.txt` with `#faction`, `#modulestack` / `#person`, `#end`. Post-generation verb allowlist lint (Phase 3). Turn processing uses the **latest iteration** for that turn.
 
