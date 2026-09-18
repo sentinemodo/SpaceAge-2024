@@ -9,8 +9,8 @@
 game-host/runs
 play/runs
 tools/player-agent/.data
-visual-tool/dist
-visual-tool/node_modules
+tools/visual-tool/dist
+tools/visual-tool/node_modules
 website
 Tests
 tools/player-agent

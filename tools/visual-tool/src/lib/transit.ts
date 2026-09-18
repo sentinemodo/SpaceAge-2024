@@ -1,4 +1,4 @@
-/** Port of Game/game/SpaceTransit.cs DurationWeeks + mass factor (Phase 4 /eta). */
+/** Port of Game/game/SpaceTransit.cs DurationWeeks + mass factor. */
 
 export function durationWeeksRaw(deltaAu: number): number {
   if (deltaAu < 0.1) {

@@ -5,10 +5,9 @@ import { withBase } from '../lib/paths';
 interface Props {
   title: string;
   description?: string;
-  hideEtaBattle?: boolean;
 }
 
-const { title, description = 'SpaceAge - Open PBEM Lobby', hideEtaBattle = false } = Astro.props;
+const { title, description = 'SpaceAge - Open PBEM Lobby' } = Astro.props;
 const logoUrl = withBase('images/spaceage-logo.png');
 ---
 
@@ -51,13 +50,6 @@ const logoUrl = withBase('images/spaceage-logo.png');
 		  <a href={withBase('rules')}>Rules</a>
 		  <a href={withBase('sample-game')}>Sample game</a>
 		  <a href={withBase('client')}>Client</a>
-		  <a href={withBase('movement')}>Movement</a>
-		  {!hideEtaBattle && (
-			<>
-			  <a href={withBase('eta')}>ETA</a>
-			  <a href={withBase('battle')}>Battle</a>
-			</>
-		  )}
 		</div>
 	  </div>
 	</nav>

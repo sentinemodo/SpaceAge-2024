@@ -12,9 +12,9 @@ RUN xbuild /p:Configuration=Debug /verbosity:minimal Game/Game.csproj
 
 FROM node:20-bookworm-slim AS visual-build
 WORKDIR /src
-COPY visual-tool/package.json visual-tool/package-lock.json ./
+COPY tools/visual-tool/package.json tools/visual-tool/package-lock.json ./
 RUN npm ci
-COPY visual-tool/ ./
+COPY tools/visual-tool/ ./
 RUN npm run build
 
 FROM ubuntu:22.04 AS runtime
@@ -31,11 +31,11 @@ ENV GAME_USE_MONO=1
 ENV GAME_HOST_PORT=8787
 
 COPY --from=game-build /src/Game/bin/Debug/Game.exe Game/bin/Debug/Game.exe
-COPY --from=visual-build /src/dist visual-tool/dist/
+COPY --from=visual-build /src/dist tools/visual-tool/dist/
 COPY game-host/package.json game-host/
 RUN cd game-host && npm install --omit=dev
 COPY game-host/ game-host/
-COPY campaign/ campaign/
+COPY play/campaign/ play/campaign/
 
 EXPOSE 8787
 COPY docker/entrypoint.sh /entrypoint.sh

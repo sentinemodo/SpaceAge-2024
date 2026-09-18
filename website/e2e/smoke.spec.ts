@@ -1,7 +1,6 @@
 import { test, expect } from '@playwright/test';
 
 const FORBIDDEN_PATTERNS = [/password/i, /gamein/i, /order\./i, /report\./i];
-const ROUTES = ['/', '/client', '/turns', '/rules', '/eta', '/battle'] as const;
 const PHASE1_ROUTES = ['/', '/client', '/turns', '/rules'] as const;
 
 function assertNoLeaks(body: string, route?: string): void {
@@ -130,8 +129,7 @@ test.describe('Phase 1 lobby acceptance', () => {
     }
     await page.goto('/');
     await toggle.click();
-    await expect(menu.getByRole('link', { name: 'ETA', exact: true })).toBeVisible();
-    await expect(menu.getByRole('link', { name: 'Battle', exact: true })).toBeVisible();
+    await expect(menu.getByRole('link', { name: 'Sample game', exact: true })).toBeVisible();
 
     await page.goto('/');
     const dashboardHeader = page.locator('.status-header');
@@ -166,52 +164,11 @@ test.describe('Phase 1 lobby acceptance', () => {
     await nav.getByRole('link', { name: 'Client', exact: true }).click();
     await expect(page).toHaveURL('/client');
 
-    await nav.getByRole('link', { name: 'ETA', exact: true }).click();
-    await expect(page).toHaveURL(/\/eta\/?$/);
-
-    await nav.getByRole('link', { name: 'Battle', exact: true }).click();
-    await expect(page).toHaveURL(/\/battle\/?$/);
+    await nav.getByRole('link', { name: 'Sample game', exact: true }).click();
+    await expect(page).toHaveURL(/\/sample-game\/?$/);
 
     await page.goto('/');
     await expect(page.locator('footer')).toContainText(/0\.8\.001/);
     await expect(page.locator('footer')).toContainText(/Quarterly schedule/i);
-  });
-});
-
-test.describe('Phase 4 tools acceptance', () => {
-  test('WS-010: Transit ETA from ship paste + two AU', async ({ page }) => {
-    await page.goto('/eta');
-    await expect(page.getByText(/next processed turn is authoritative/i)).toBeVisible();
-
-    await page.locator('#paste').fill('Workshop frigate\nmass: 40000/4150\n');
-    await page.locator('#au1').fill('1');
-    await page.locator('#au2').fill('80');
-    await page.locator('#speed').fill('1');
-    await page.getByRole('button', { name: /Calculate/i }).click();
-
-    await expect(page.locator('#result')).toContainText('39 weeks');
-    await expect(page.locator('#result')).toContainText('ΔAU=79.00');
-  });
-
-  test('WS-011: Two-side battle what-if', async ({ page }) => {
-    await page.goto('/battle');
-    await expect(page.getByText(/Planning aid only/i)).toBeVisible();
-
-    await page.locator('#atk').fill('Alpha 1 10 5 8 20');
-    await page.locator('#def').fill('Beta 1 5 10 4 15');
-    await page.locator('#seed').fill('42');
-    await page.getByRole('button', { name: /Simulate/i }).click();
-
-    const log = page.locator('#log');
-    await expect(log).toContainText(/Round 1:/);
-    await expect(log).toContainText(/win|Indecisive/i);
-  });
-
-  test('WS-012: Phase 4 tools do not publish reports', async ({ request }) => {
-    for (const route of ['/eta', '/battle', '/status.json']) {
-      const response = await request.get(route);
-      expect(response.status()).toBe(200);
-      assertNoLeaks(await response.text(), route);
-    }
   });
 });

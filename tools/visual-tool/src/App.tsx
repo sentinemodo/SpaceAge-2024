@@ -64,6 +64,7 @@ import {
   starAmberGradient,
   starTypeBorderColor,
 } from './lib/bodyStyles';
+import { MovementPanel } from './components/MovementPanel';
 import { SidePanel, type SideTab } from './components/SidePanel';
 import { AiPane, type AiViewMode } from './components/AiPane';
 import { OrbitSelector } from './components/OrbitSelector';
@@ -95,7 +96,7 @@ import {
 
 const REGION_ZOOM_BASE = 1.5;
 
-type Panel = 'map' | 'tech' | 'diplomacy' | 'bank' | 'battle' | 'faction' | 'story';
+type Panel = 'map' | 'tech' | 'diplomacy' | 'bank' | 'movement' | 'battle' | 'faction' | 'story';
 type OrderMode = 'units' | 'faction' | 'parser';
 type TechView = 'known' | 'breakthrough';
 
@@ -1187,6 +1188,7 @@ export default function App() {
             ['tech', '⚗'],
             ['diplomacy', '🤝'],
             ['bank', '🏦'],
+            ['movement', '⇄'],
             ['battle', '⚔'],
             ['faction', '👤'],
             ['story', '📖'],
@@ -1196,8 +1198,8 @@ export default function App() {
             key={id}
             type="button"
             className={panel === id ? 'active' : ''}
-            title={id === 'map' ? 'Star map' : id === 'bank' ? 'Banking and market' : id === 'story' ? 'Persona & story' : id}
-            aria-label={id === 'map' ? 'Star map' : id === 'bank' ? 'Banking and market' : id === 'story' ? 'Persona and story' : id}
+            title={id === 'map' ? 'Star map' : id === 'bank' ? 'Banking and market' : id === 'movement' ? 'Movement and transit ETA' : id === 'story' ? 'Persona & story' : id}
+            aria-label={id === 'map' ? 'Star map' : id === 'bank' ? 'Banking and market' : id === 'movement' ? 'Movement and transit ETA' : id === 'story' ? 'Persona and story' : id}
             onClick={() => setPanel(id)}
           >
             {icon}
@@ -1386,6 +1388,15 @@ export default function App() {
             </div>
           );
         })()}
+
+        {panel === 'movement' && report && <MovementPanel report={report} />}
+
+        {panel === 'movement' && !report && (
+          <div className="sub-panel scroll-area">
+            <h3>Movement</h3>
+            <p className="obj-desc">Load a report to list unit MOVE orders.</p>
+          </div>
+        )}
 
         {panel === 'battle' && (
           <div className="sub-panel scroll-area">

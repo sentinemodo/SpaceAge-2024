@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
-import { durationWeeks, parseMassLine } from '../src/lib/transit';
+import { durationWeeks, parseMassLine } from './transit';
 
-describe('transit WS-010', () => {
+describe('transit', () => {
   it('Arbor to Gate ~39 weeks at default speed', () => {
     const weeks = durationWeeks(79, 1, 40000, 4150);
     expect(weeks).toBe(39);
