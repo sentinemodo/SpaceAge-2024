@@ -9,6 +9,7 @@ interface Props {
 }
 
 const { title, description = 'SpaceAge - Open PBEM Lobby', hideEtaBattle = false } = Astro.props;
+const logoUrl = withBase('images/spaceage-logo.png');
 ---
 
 <!doctype html>
@@ -23,7 +24,9 @@ const { title, description = 'SpaceAge - Open PBEM Lobby', hideEtaBattle = false
   <body>
 	<nav class="nav">
 	  <div class="nav-container">
-		<a href={withBase()} class="nav-logo">⭐ SpaceAge</a>
+		<a href={withBase()} class="nav-logo" aria-label="SpaceAge home">
+		  <img src={logoUrl} alt="SpaceAge" class="nav-logo-img" width="250" height="310" />
+		</a>
 		<button
 		  type="button"
 		  class="nav-toggle"
@@ -94,10 +97,15 @@ const { title, description = 'SpaceAge - Open PBEM Lobby', hideEtaBattle = false
   }
 
   .nav-logo {
-	font-size: var(--font-size-2xl);
-	font-weight: var(--font-weight-bold);
-	color: var(--color-accent-teal);
+	display: flex;
+	align-items: center;
 	text-decoration: none;
+	line-height: 0;
+  }
+
+  .nav-logo-img {
+	height: calc(var(--font-size-2xl) * 2);
+	width: auto;
   }
 
   .nav-toggle {
