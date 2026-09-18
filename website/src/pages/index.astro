@@ -5,7 +5,6 @@ import { withBase } from '../lib/paths';
 
 const clientScreenshot = withBase('images/client-screenshot.png');
 const clientPageUrl = withBase('client');
-const logoUrl = withBase('images/spaceage-logo.png');
 const discordDmUrl = 'https://discord.com/channels/@me';
 ---
 
@@ -26,8 +25,8 @@ const discordDmUrl = 'https://discord.com/channels/@me';
 	</div>
 
 	<p class="closed-lobby">
-	  This campaign is <strong>invitation-only</strong> — a closed table for ten player factions.
-	  There is no public sign-up; this site is for players and observers of that table.
+	  This campaign is <strong>invitation-only</strong> — a closed table for ten player and AI factions.
+	  Contact me at Discord @sentinemodo if you wish to join; this site is for players and observers of that table.
 	</p>
 
 	<div class="hero-body">
@@ -144,42 +143,9 @@ const discordDmUrl = 'https://discord.com/channels/@me';
   }
 
   .hero-top {
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	gap: var(--space-2xl);
-	align-items: start;
-  }
-
-  .hero-brand {
 	display: flex;
-	align-items: flex-start;
-	gap: var(--space-lg);
-  }
-
-  .hero-logo {
-	height: calc(var(--font-size-3xl) * 2);
-	width: auto;
-	flex-shrink: 0;
-  }
-
-  .hero-titles {
-	display: flex;
-	flex-direction: column;
-	gap: var(--space-sm);
-	padding-top: var(--space-xs);
-  }
-
-  .hero h1 {
-	font-size: var(--font-size-3xl);
-	color: var(--color-accent-teal);
-	margin: 0;
-  }
-
-  .tagline {
-	font-size: var(--font-size-xl);
-	color: var(--color-accent-amber);
-	font-weight: var(--font-weight-semibold);
-	margin: 0;
+	justify-content: center;
+	width: 100%;
   }
 
   .closed-lobby {
@@ -221,13 +187,14 @@ const discordDmUrl = 'https://discord.com/channels/@me';
 
   .hero-visual {
 	display: flex;
-	align-self: start;
-	align-items: flex-start;
 	justify-content: center;
+	width: 100%;
+	max-width: 1024px;
   }
 
   .client-screenshot-link {
 	display: block;
+	width: 100%;
 	border: 2px solid var(--color-accent-teal);
 	border-radius: var(--radius-lg);
 	overflow: hidden;
@@ -265,14 +232,4 @@ const discordDmUrl = 'https://discord.com/channels/@me';
 	margin-bottom: var(--space-2xl);
   }
 
-  @media (max-width: 768px) {
-	.hero-top {
-	  grid-template-columns: 1fr;
-	}
-
-	.hero-brand {
-	  flex-direction: column;
-	  align-items: flex-start;
-	}
-  }
 </style>
