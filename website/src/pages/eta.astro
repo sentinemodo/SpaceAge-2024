@@ -22,13 +22,13 @@ import Layout from '../layouts/Layout.astro';
 <script>
   import { durationWeeks, parseMassLine, massFactor } from '../lib/transit';
 
-  const paste = document.getElementById('paste');
-  const thrust = document.getElementById('thrust');
-  const mass = document.getElementById('mass');
-  const au1 = document.getElementById('au1');
-  const au2 = document.getElementById('au2');
-  const speed = document.getElementById('speed');
-  const result = document.getElementById('result');
+  const paste = document.getElementById('paste') as HTMLTextAreaElement;
+  const thrust = document.getElementById('thrust') as HTMLInputElement;
+  const mass = document.getElementById('mass') as HTMLInputElement;
+  const au1 = document.getElementById('au1') as HTMLInputElement;
+  const au2 = document.getElementById('au2') as HTMLInputElement;
+  const speed = document.getElementById('speed') as HTMLInputElement;
+  const result = document.getElementById('result') as HTMLElement;
 
   paste?.addEventListener('input', () => {
     const p = parseMassLine(paste.value);
