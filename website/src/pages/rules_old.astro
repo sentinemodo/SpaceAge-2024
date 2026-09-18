@@ -1,23 +1,22 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { withBase } from '../lib/paths';
-import { renderHumanRulesHtml } from '../lib/humanRules';
+import { renderHumanRulesOldHtml } from '../lib/humanRules';
 
-const rulesHtml = renderHumanRulesHtml();
+const rulesHtml = renderHumanRulesOldHtml();
 ---
 
-<Layout title="Player Rules" description="SpaceAge PBEM — order syntax and turn rules (open beta 0.8.001)">
+<Layout title="Player Rules (previous)" description="SpaceAge PBEM rules — archived copy before campaign setting">
   <section class="rules-content">
     <p class="rules-nav">
-      <a href={withBase('rules_old')}>Previous rules (before campaign setting)</a>
+      <a href={withBase('rules')}>← Current rules</a>
     </p>
 
     <div class="intro-card card">
-      <h1>Player Rules</h1>
+      <h1>Player Rules (previous)</h1>
       <p>
-        SpaceAge is an <strong>open PBEM</strong> campaign: you receive quarterly reports, write order files,
-        and the host advances the galaxy. You play an <strong>Interest</strong> (player factions <strong>2–11</strong>).
-        One turn = one in-game quarter = <strong>13 weeks</strong>.
+        Archived copy from before the <strong>Campaign setting — The Alderson Points</strong> section was added.
+        For live play, use the <a href={withBase('rules')}>current rules</a>.
       </p>
     </div>
 
