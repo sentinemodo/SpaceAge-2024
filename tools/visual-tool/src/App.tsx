@@ -980,11 +980,15 @@ export default function App() {
 
   useEffect(() => {
     if (!authed) return;
-    refreshRunPod();
     loadStoryContext().catch(() => {});
+  }, [authed, loadStoryContext]);
+
+  useEffect(() => {
+    if (!authed || !meta.admin) return;
+    refreshRunPod();
     const timer = window.setInterval(() => { refreshRunPod(); }, 30_000);
     return () => window.clearInterval(timer);
-  }, [authed, refreshRunPod, loadStoryContext]);
+  }, [authed, meta.admin, refreshRunPod]);
 
   useEffect(() => {
     if (!authed || !selectedPersonaId) return;
@@ -1153,6 +1157,7 @@ export default function App() {
         {!meta.turns?.length && <span>Turn {meta.viewTurn ?? meta.turn ?? '—'}</span>}
         {meta.admin && <span className="admin-badge">Admin</span>}
         {adminHint && <span className="warnings admin-hint">{adminHint}</span>}
+        <span className="client-title">SpaceAge client ver. 0.8.001</span>
         <button type="button" onClick={() => { setToken(null); setAuthed(false); setAdminHint(''); }}>Logout</button>
         <button type="button" onClick={load}>Refresh report</button>
       </header>
@@ -1417,7 +1422,7 @@ export default function App() {
               <h3>Persona &amp; story</h3>
               <span className="system-view-star">Faction {report?.factionId ?? '—'}</span>
             </div>
-            <div className="story-panel-body">
+            <div className={`story-panel-body${meta.admin ? '' : ' story-panel-body-no-ai'}`}>
               <div className="story-editor-col">
                 <label className="story-field-label">
                   Persona
@@ -1457,23 +1462,25 @@ export default function App() {
                   </button>
                 </div>
               </div>
-              <AiPane
-                heading="Story AI"
-                aiMode={storyAiMode}
-                onAiModeChange={setStoryAiMode}
-                includeStory={storyIncludeStory}
-                onIncludeStoryChange={setStoryIncludeStory}
-                promptText={storyAiPrompt}
-                onPromptChange={setStoryAiPrompt}
-                outputText={storyAiOutput}
-                runpodStatus={runpodStatus}
-                runpodBusy={runpodBusy}
-                queryBusy={aiQueryBusy}
-                onStartRunpod={handleStartRunpod}
-                onStopRunpod={handleStopRunpod}
-                onSubmit={() => handleAiQuery(true)}
-                submitLabel="Query story AI"
-              />
+              {meta.admin && (
+                <AiPane
+                  heading="Story AI"
+                  aiMode={storyAiMode}
+                  onAiModeChange={setStoryAiMode}
+                  includeStory={storyIncludeStory}
+                  onIncludeStoryChange={setStoryIncludeStory}
+                  promptText={storyAiPrompt}
+                  onPromptChange={setStoryAiPrompt}
+                  outputText={storyAiOutput}
+                  runpodStatus={runpodStatus}
+                  runpodBusy={runpodBusy}
+                  queryBusy={aiQueryBusy}
+                  onStartRunpod={handleStartRunpod}
+                  onStopRunpod={handleStopRunpod}
+                  onSubmit={() => handleAiQuery(true)}
+                  submitLabel="Query story AI"
+                />
+              )}
             </div>
           </div>
         )}
@@ -1525,37 +1532,43 @@ export default function App() {
                   <button type="button" onClick={handleSubmit}>Submit orders</button>
                 </div>
               </div>
-              <ResizeHandle direction="horizontal" onDelta={(d) => setAiPaneWidth((w) => Math.max(160, w - d))} />
-              <div style={{ width: aiPaneWidth, flexShrink: 0 }}>
-                <AiPane
-                  heading="AI prompt"
-                  aiMode={aiMode}
-                  onAiModeChange={setAiMode}
-                  includeStory={includeStory}
-                  onIncludeStoryChange={setIncludeStory}
-                  promptText={aiPromptText}
-                  onPromptChange={setAiPromptText}
-                  outputText={aiOutputText}
-                  runpodStatus={runpodStatus}
-                  runpodBusy={runpodBusy}
-                  queryBusy={aiQueryBusy}
-                  onStartRunpod={handleStartRunpod}
-                  onStopRunpod={handleStopRunpod}
-                  onSubmit={() => handleAiQuery(false)}
-                />
-              </div>
+              {meta.admin && (
+                <>
+                  <ResizeHandle direction="horizontal" onDelta={(d) => setAiPaneWidth((w) => Math.max(160, w - d))} />
+                  <div style={{ width: aiPaneWidth, flexShrink: 0 }}>
+                    <AiPane
+                      heading="AI prompt"
+                      aiMode={aiMode}
+                      onAiModeChange={setAiMode}
+                      includeStory={includeStory}
+                      onIncludeStoryChange={setIncludeStory}
+                      promptText={aiPromptText}
+                      onPromptChange={setAiPromptText}
+                      outputText={aiOutputText}
+                      runpodStatus={runpodStatus}
+                      runpodBusy={runpodBusy}
+                      queryBusy={aiQueryBusy}
+                      onStartRunpod={handleStartRunpod}
+                      onStopRunpod={handleStopRunpod}
+                      onSubmit={() => handleAiQuery(false)}
+                    />
+                  </div>
+                </>
+              )}
             </div>
           </div>
         )}
       </main>
 
-      <RunPodStartModal
-        open={runpodModalOpen}
-        status={runpodStatus}
-        startResponse={runpodStartResponse}
-        busy={runpodBusy}
-        onClose={() => setRunpodModalOpen(false)}
-      />
+      {meta.admin && (
+        <RunPodStartModal
+          open={runpodModalOpen}
+          status={runpodStatus}
+          startResponse={runpodStartResponse}
+          busy={runpodBusy}
+          onClose={() => setRunpodModalOpen(false)}
+        />
+      )}
 
       {report && (
         <SidePanel
