@@ -487,6 +487,37 @@ function BodyView({
     .filter((c) => c.kind === 'moon' || c.kind === 'belt')
     .sort((a, b) => a.au - b.au || a.name.localeCompare(b.name));
 
+  if (body.kind === 'alderson') {
+    return (
+      <div className="system-view">
+        <div className="system-view-toolbar">
+          <button type="button" className="system-view-back" onClick={onBack}>← {detail.name}</button>
+          <strong>{body.name}</strong>
+          <span className="system-view-star">{body.au} AU · Alderson gate</span>
+        </div>
+        <div
+          className="gate-detail-map"
+          style={{ ['--body-color' as string]: bodyTypeColor(body) }}
+        >
+          {hasOrbits && (
+            <div className="gate-orbit-center">
+              <div className="gate-orbit-marker">
+                <span className="gate-orbit-name">{body.name}</span>
+                <OrbitSelector
+                  orbitIds={body.orbitIds}
+                  filterOrbitId={filterOrbitId}
+                  presenceIds={presenceIds}
+                  glyph="◯"
+                  onSelectOrbit={(orbitId) => onSelectOrbit(orbitId, body.id)}
+                />
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    );
+  }
+
   if (body.kind === 'belt') {
     return (
       <div className="system-view">

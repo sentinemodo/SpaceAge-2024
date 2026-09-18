@@ -1100,6 +1100,55 @@ body {
   padding: 0.5rem;
 }
 
+.gate-detail-map {
+  position: relative;
+  flex: 1;
+  min-height: 260px;
+  background: radial-gradient(
+    ellipse at center,
+    color-mix(in srgb, var(--body-color, #9fd4ff) 22%, #1a2540) 0%,
+    var(--bg-dark) 70%
+  );
+  overflow: hidden;
+}
+
+.gate-orbit-center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.gate-orbit-marker {
+  pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.45rem;
+  background: color-mix(in srgb, var(--bg-dark) 80%, transparent);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.65rem 0.85rem 0.5rem;
+}
+
+.gate-orbit-name {
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-align: center;
+  color: var(--text);
+  text-shadow: 0 0 4px rgba(255, 255, 255, 0.35);
+  max-width: 8rem;
+  line-height: 1.2;
+}
+
+.gate-orbit-marker .body-view-orbit {
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
 .unit-report-detail-text {
   font-size: 0.72rem;
   margin: 0;
