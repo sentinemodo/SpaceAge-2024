@@ -3,8 +3,8 @@ import Layout from '../layouts/Layout.astro';
 import StatusDashboard from '../components/StatusDashboard.astro';
 import { withBase } from '../lib/paths';
 
-const clientUrl = import.meta.env.PUBLIC_CLIENT_URL || 'http://localhost:8787/client/';
 const clientScreenshot = withBase('images/client-screenshot.png');
+const clientPageUrl = withBase('client');
 ---
 
 <Layout title="Home" description="SpaceAge - Open PBEM Campaign Lobby">
@@ -90,7 +90,7 @@ const clientScreenshot = withBase('images/client-screenshot.png');
 	</div>
 
 	<div class="hero-visual">
-	  <a href={clientUrl} class="client-screenshot-link" aria-label="SpaceAge client">
+	  <a href={clientPageUrl} class="client-screenshot-link" aria-label="SpaceAge client">
 		<img
 		  src={clientScreenshot}
 		  alt="SpaceAge client — star map, unit tree, and order editor"
@@ -198,7 +198,8 @@ const clientScreenshot = withBase('images/client-screenshot.png');
 
   .hero-visual {
 	display: flex;
-	align-items: center;
+	align-self: start;
+	align-items: flex-start;
 	justify-content: center;
   }
 
