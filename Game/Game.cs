@@ -68,7 +68,7 @@ namespace SpaceAge
 
 		#region turn data
 
-		private int startingYear = 2020;
+		private int startingYear = 2156;
 
 		private int turn;
 		public int Turn
