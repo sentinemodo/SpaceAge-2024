@@ -154,9 +154,9 @@ Condense, keep these beats:
 1. Points are stable wormhole-class anomalies; the Drive enlarges them so a dense ship can jump if the Point sits inside its structure.
 2. Points form in star systems but only far out (the **Alderson Corona**): near enough a sun to form, far enough not to tear apart.
 3. Humanity rushed the Points; wars followed; an Imperium rose.
-4. In a single day the Points **shut down**. Commerce died; colonies starved; more than 28% of the Imperium’s population died in months.
-5. After four months, Points **reopened** — mostly the old links, some new. Contact never resumed with 10% of systems.
-6. **Two Points that led to Earth stayed dark.** Radio from Sol dwindled to silence. Astronomy showed no nuking, no orbital wreck. Only the **Fear** remains.
+4. In a single catastrophic day on **18 September 2152**, the Points **shut down** for no apparent reasons. **Commerce died. Colonies starved.**
+5. After **four years**, most reopened, some new points appeared some pairs become unstable. Some systems remain isolated.
+6. **Two Points that led to Earth stayed dark**, leaving only mystery and **Fear**.
 
 ### Principles — §2.1 The game (Rules.txt ~lines 113–137), in SpaceAge terms
 

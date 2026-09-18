@@ -22,6 +22,14 @@ test.describe('Phase 1 lobby acceptance', () => {
     await expect(attribution.getByText(/Atlantis/i)).toBeVisible();
     await expect(attribution.getByText(/Rise of Heroes/i)).toBeVisible();
     await expect(attribution.getByText(/Vincent Archer/i)).toBeVisible();
+    await expect(attribution.getByRole('link', { name: /Atlantis \(GitHub\)/i })).toHaveAttribute(
+      'href',
+      'https://github.com/pbem-games/Atlantis',
+    );
+    await expect(attribution.getByRole('link', { name: /Wasteland \(GitHub\)/i })).toHaveAttribute(
+      'href',
+      'https://github.com/pbem-games/wasteland',
+    );
     await expect(page.getByRole('link', { name: /Overlord PBEM engine/i })).toHaveAttribute(
       'href',
       'https://overlord.sourceforge.net/',
@@ -31,14 +39,15 @@ test.describe('Phase 1 lobby acceptance', () => {
     await expect(page.getByText(/weak points/i)).toBeVisible();
     await expect(page.getByText(/Alderson Drive/i)).toBeVisible();
     await expect(page.getByText(/shut down/i)).toBeVisible();
-    await expect(page.getByText(/Two Points that led to Earth stayed dark/i)).toBeVisible();
+    await expect(page.getByText(/18 September 2152/i)).toBeVisible();
+    await expect(page.getByText(/two Points that led to Earth stayed dark/i)).toBeVisible();
   });
 
   test('WS-002: Closed lobby (no join / signup)', async ({ page }) => {
     await page.goto('/');
 
     await expect(page.getByText(/invitation-only/i)).toBeVisible();
-    await expect(page.getByRole('link', { name: /Open the Client/i })).toBeVisible();
+    await expect(page.getByRole('link', { name: /SpaceAge client/i })).toBeVisible();
     await expect(page.getByText(/Join Game Now/i)).toHaveCount(0);
     await expect(page.locator('input[type="password"]')).toHaveCount(0);
     await expect(page.locator('form')).toHaveCount(0);

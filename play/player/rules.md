@@ -10,6 +10,12 @@ Not source of truth: legacy Alderson docs in [`docs/legacy/alderson/`](../docs/l
 
 **29** verbs register in `OrderFactory.ByVerb` (text via `OrdersReader`, saved games via `OrderXml`): **22 immediate**, **7 long**. See [Turn sequence](#turn-sequence), [Immediate vs long](#immediate-vs-long), and [Text vs XML](#text-vs-xml).
 
+## Campaign setting — The Alderson Points
+
+Human-facing copy: [`docs/human/rules.md`](../docs/human/rules.md). Canonical shutdown blurb:
+
+In a single catastrophic day on **18 September 2152**, the Points **shut down** for no apparent reasons. **Commerce died. Colonies starved.** After **four years**, most reopened, some new points appeared some pairs become unstable. Some systems remain isolated. And **two Points that led to Earth stayed dark**, leaving only mystery and **Fear**.
+
 ## Prefixes and subjects
 
 Order of a line after comments are stripped: **leading `-`/`+` conditions**, then **duration** (`N` on its own token, or `@` glued to the verb), then the **verb**. `OrdersReader` counts leading `+`/`-` on the first token as condition depth, then tries to read that token as a repeat count, then strips `@`/`+`/`-` from the verb.

@@ -9,6 +9,12 @@ Verbs are **case-insensitive**. Most arguments (stack ids, item ids) are **not**
 
 ---
 
+## Campaign setting — The Alderson Points
+
+In a single catastrophic day on **18 September 2152**, the Points **shut down** for no apparent reasons. **Commerce died. Colonies starved.** After **four years**, most reopened, some new points appeared some pairs become unstable. Some systems remain isolated. And **two Points that led to Earth stayed dark**, leaving only mystery and **Fear**.
+
+---
+
 ## Turn basics
 
 - One **turn** = **13 weeks**.
