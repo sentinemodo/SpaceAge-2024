@@ -12,7 +12,7 @@ export const sampleGameTurns: SampleGameTurn[] = [
     turn: 1,
     story:
       'Sol: one planet, one moon, two surface regions. Caste Prime and Gelvaren start the quarter. ' +
-      'Caste Prime builds a warship; Gelvaren raises a small army on Earth.',
+      'Caste Prime builds a spaceship; Gelvaren raises a small army on Earth.',
     reports: [
       { faction: 'Caste Prime (2)', file: 'testreport.1.2.txt' },
       { faction: 'Gelvaren (3)', file: 'testreport.1.3.txt' },
@@ -69,7 +69,7 @@ export const sampleGameTurns: SampleGameTurn[] = [
   {
     turn: 5,
     story:
-      'The wreck stays on Luna while Caste Prime\'s warship returns to Earth orbit. Alien drones hangar-launch to meet ' +
+      'The wreck stays on Luna while Caste Prime\'s spaceship returns to Earth orbit. Alien drones hangar-launch to meet ' +
       'Gelvaren\'s shuttle; Sydney factory nests an orbital rocket launcher aboard before the orbital battle.',
     reports: [
       { faction: 'Caste Prime (2)', file: 'testreport.5.2.txt' },
@@ -84,7 +84,7 @@ export const sampleGameTurns: SampleGameTurn[] = [
     turn: 6,
     story:
       'End of the five-turn SampleGame arc: Caste Prime holds the Luna wreck and surviving drones in Earth orbit; ' +
-      'Gelvaren\'s shuttle is gone after the orbital fight. These are the final golden reports — no further orders in the fixture.',
+      'Caste Prime rule the orbit after Gelvaren\'s shuttle is gone in the orbital fight.',
     reports: [
       { faction: 'Caste Prime (2)', file: 'testreport.6.2.txt' },
       { faction: 'Gelvaren (3)', file: 'testreport.6.3.txt' },

@@ -83,6 +83,7 @@ import { ClickableReportText } from './components/ClickableReportText';
 import { TechnologyCatalog } from './components/TechnologyCatalog';
 import { ResizeHandle } from './components/ResizeHandle';
 import { buildSystemLinkPath } from './lib/mapLinks';
+import { defaultLoginFactionId, readUrlFactionId } from './lib/factionLink';
 import { focusReportId } from './lib/navigation';
 import {
   sectionText,
@@ -103,7 +104,7 @@ function isGasGiant(body: SystemBodyNode): boolean {
 }
 
 function LoginScreen({ onLogin }: { onLogin: () => void }) {
-  const [factionId, setFactionId] = useState('2');
+  const [factionId, setFactionId] = useState(defaultLoginFactionId);
   const [password, setPassword] = useState('');
   const [gmKey, setGmKey] = useState('');
   const [error, setError] = useState('');
@@ -693,6 +694,23 @@ export default function App() {
   useEffect(() => {
     if (authed) load();
   }, [authed, load]);
+
+  useEffect(() => {
+    if (!authed || meta.factionId == null) return;
+    const requested = readUrlFactionId();
+    if (requested == null) return;
+
+    const viewing = meta.viewAsFactionId ?? meta.factionId;
+    if (viewing === requested) return;
+
+    if (meta.admin) {
+      viewAsFaction(requested).then(() => load()).catch(() => {});
+      return;
+    }
+
+    setToken(null);
+    setAuthed(false);
+  }, [authed, load, meta.admin, meta.factionId, meta.viewAsFactionId]);
 
   const flatStacks = useMemo(() => (report ? flattenStacks(report.stacks) : []), [report]);
 

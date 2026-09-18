@@ -1,6 +1,14 @@
 import { campaignFactionsByPlanet, campaignFactionLabel } from '../data/campaignFactions';
+import { clientFactionUrl } from './clientUrls';
 import { formatNextTurn, formatStatusLabel, type StatusData } from './statusSchema';
 import { withBase } from './paths';
+
+function escapeHtml(text: string): string {
+  return text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/"/g, '&quot;');
+}
 
 async function fetchStatus(): Promise<StatusData | null> {
   try {
@@ -29,7 +37,8 @@ function renderDashboardGrid(factions: StatusData['factions']): string {
           const cls = submitted ? 'faction-card submitted' : 'faction-card pending';
           const status = submitted ? '✓ Submitted' : '⏳ Pending';
           const name = live ? factionName(live) : `${faction.name} (${faction.id})`;
-          return `<div class="${cls}" data-id="${faction.id}"><div class="faction-id">${name}</div><div class="faction-status">${status}</div></div>`;
+          const href = clientFactionUrl(faction.id);
+          return `<div class="${cls}" data-id="${faction.id}"><div class="faction-id"><a href="${escapeHtml(href)}" class="faction-link">${escapeHtml(name)}</a></div><div class="faction-status">${status}</div></div>`;
         })
         .join('');
 

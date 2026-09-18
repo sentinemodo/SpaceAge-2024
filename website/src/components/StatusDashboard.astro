@@ -1,5 +1,6 @@
 ---
 import { formatNextTurn, formatStatusLabel } from '../lib/statusSchema';
+import { clientFactionUrl } from '../lib/clientUrls';
 import { campaignFactionsByPlanet } from '../data/campaignFactions';
 
 const statusData = {
@@ -44,7 +45,9 @@ const statusData = {
 		<div class="planet-factions">
 		  {group.factions.map((faction) => (
 			<div class="faction-card pending" data-id={faction.id}>
-			  <div class="faction-id">{faction.name} ({faction.id})</div>
+			  <div class="faction-id">
+				<a href={clientFactionUrl(faction.id)} class="faction-link">{faction.name} ({faction.id})</a>
+			  </div>
 			  <div class="faction-status">⏳ Pending</div>
 			</div>
 		  ))}
@@ -145,6 +148,17 @@ const statusData = {
 	font-weight: var(--font-weight-bold);
 	font-size: var(--font-size-sm);
 	margin-bottom: var(--space-sm);
+  }
+
+  .faction-link {
+	color: inherit;
+	text-decoration: none;
+  }
+
+  .faction-link:hover,
+  .faction-link:focus-visible {
+	color: var(--color-accent-teal);
+	text-decoration: underline;
   }
 
   .faction-status {
