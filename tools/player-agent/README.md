@@ -62,7 +62,7 @@ After build, the executable is `tools/player-agent/bin/Debug/net8.0/player-agent
 | Variable | Local default | Notes |
 |----------|---------------|--------|
 | `OLLAMA_HOST` | `http://127.0.0.1:11434` | Ollama **Docker** on host port 11434; OpenAI API is `{host}/v1` |
-| `PLAYER_AGENT_CHAT_MODEL` | `qwen2.5-coder:7b` local / `qwen3-coder:30b` RunPod | Used for smoke, draft, and ingest |
+| `PLAYER_AGENT_CHAT_MODEL` | `auto` (or unset): `qwen2.5-coder:7b` local / `qwen3-coder:30b` RunPod | Used for smoke, draft, and ingest; set an explicit tag to override |
 | `PLAYER_AGENT_CHAT_CONTEXT_TOKENS` | `8192` local / `16384` RunPod | Passed to Ollama as `options.num_ctx` |
 | `PLAYER_AGENT_CHAT_MAX_OUTPUT_TOKENS` | `4096` | Passed as OpenAI `max_tokens` (`num_predict`) |
 | `PLAYER_AGENT_EMBED_MODEL` | `nomic-embed-text` | Same host as chat |

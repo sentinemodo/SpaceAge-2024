@@ -61,6 +61,32 @@ public class PlayerAgentSettingsTests
     }
 
     [Test]
+    public void ResolveChatModel_Auto_UsesHostBasedDefault()
+    {
+        var localUri = new Uri("http://127.0.0.1:11434/");
+        var remoteUri = new Uri("https://runpod.example/v1/");
+
+        Assert.That(
+            PlayerAgentSettings.ResolveChatModel(null, localUri),
+            Is.EqualTo(PlayerAgentSettings.LocalDefaultChatModel));
+        Assert.That(
+            PlayerAgentSettings.ResolveChatModel("auto", localUri),
+            Is.EqualTo(PlayerAgentSettings.LocalDefaultChatModel));
+        Assert.That(
+            PlayerAgentSettings.ResolveChatModel("AUTO", remoteUri),
+            Is.EqualTo(PlayerAgentSettings.RunPodDefaultChatModel));
+    }
+
+    [Test]
+    public void ResolveChatModel_ExplicitValue_IsPreserved()
+    {
+        var localUri = new Uri("http://127.0.0.1:11434/");
+        Assert.That(
+            PlayerAgentSettings.ResolveChatModel("custom-model:1", localUri),
+            Is.EqualTo("custom-model:1"));
+    }
+
+    [Test]
     public void Load_ParsesContextOverrides()
     {
         ClearSettingsEnvironment();

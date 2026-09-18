@@ -155,8 +155,8 @@ namespace UnitTests
 			ModuleStack patroller = this.game.ModuleStacks["100011"];
 			patroller.Owner = this.game.Factions["1"];
 			patroller.Parent = target;
-			patroller.IsPatrolling = true;
 			attacker.Parent = Region.All["R00001"];
+			this.game.Factions["2"].Attitudes["1"] = FactionAttitude.Enemy;
 
 			List<string> commands = new List<string>
 			{
@@ -171,11 +171,13 @@ namespace UnitTests
 			AttackOrder attack = (AttackOrder)attacker.Orders[0];
 			Assert.That(attack.IsRegionTarget, Is.True);
 			Assert.That(attack.TargetRegion, Is.SameAs(target));
+			Assert.That(attacker.Location.Name, Is.EqualTo("R00001"));
 
 			attack.Execute(this.game.Week);
+			Assert.That(attacker.Orders.Count, Is.EqualTo(2));
+
 			attacker.Execute(this.game.Week);
 
-			Assert.That(attacker.Orders.Count, Is.GreaterThan(1));
 			Assert.That(attacker.Owner.UnitAttitudes.ContainsKey("100011"), Is.True);
 			Assert.That(attacker.Owner.UnitAttitudes["100011"], Is.EqualTo(FactionAttitude.Enemy));
 			Assert.That(attacker.MovingTo, Is.EqualTo(target));
@@ -184,13 +186,14 @@ namespace UnitTests
 		[Test]
 		public void CaptureRegionSetsTacticAndMoves()
 		{
-			ModuleStack unit = this.game.ModuleStacks["100011"];
+			ModuleStack unit = this.game.ModuleStacks["100001"];
 			Region target = Region.All["R00002"];
+			unit.Parent = Region.All["R00001"];
 
 			List<string> commands = new List<string>
 			{
 				"#faction 2",
-				"#modulestack 100011",
+				"#modulestack 100001",
 				"capture region R00002",
 				"#end"
 			};
@@ -198,7 +201,11 @@ namespace UnitTests
 			reader.AssignOrders(commands);
 
 			CaptureOrder capture = (CaptureOrder)unit.Orders[0];
+			Assert.That(capture.IsRegionTarget, Is.True);
+
 			capture.Execute(this.game.Week);
+			Assert.That(unit.Orders.Count, Is.EqualTo(2));
+
 			unit.Execute(this.game.Week);
 
 			Assert.That(unit.HasCapture, Is.True);

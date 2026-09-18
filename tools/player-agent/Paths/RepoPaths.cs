@@ -20,7 +20,7 @@ public static class RepoPaths
     }
 
     public static string PlayerDirectory(string repoRoot) =>
-        Path.Combine(repoRoot, "player");
+        Path.Combine(repoRoot, "play", "player");
 
     public static string SharedIndexDirectory(string indexRoot, PlayMode mode) =>
         Path.Combine(indexRoot, $"shared-{PlayModeParser.ToCliValue(mode)}");

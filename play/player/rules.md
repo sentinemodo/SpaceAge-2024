@@ -52,6 +52,19 @@ Empty lines are dropped. `;` and `//` start a comment; **whichever appears first
 
 On **immediate** orders, `N` / `@` is how many **weeks** the order may succeed (once per week while it stays on the list). On **long** orders, `N` / `@` is how many **durations** to complete (`5 use` is five builds; `@produce cash` never finishes).
 
+**When to use `@` (human-facing playbooks):**
+
+| Pattern | Use `@`? | Example |
+| -------- | -------- | ------- |
+| Standing production / extraction | **Yes** | `@produce cash`, `@use farmng`, `@use hcdril` |
+| Standing cargo pulls / market | **Yes** | `@get all food from <farms>`, `@get all carbon from <cdrill>` |
+| One-shot market buy / sell | **No** | `buy 25 terran at 50`, `sell 50 food at average` |
+| One-shot cargo move | **No** | `get 15 terran from <cargob>` (staff farm once) |
+| Long job that runs once | **No** | `use twnbld as new1`, `move R00014` |
+| Stage inputs **before** a long job on the same subject | **`+` prefix**, not `@` alone | `use twnbld as new1` then `+get 30 iron from <cargob>` |
+
+Do not default every line to `@`. Over-using `@` on one-shot `GET`/`BUY`/`SELL` clutters the template and hides which orders are meant to retry every week.
+
 ### Conditions (`-` / `+`)
 
 Leading `-` and `+` on the first token nest against **earlier orders on the same subject**. Depth is the count of those characters. Condition characters must sit on the **same token** as the verb (`-stack new1`, not `-` on its own line).
@@ -62,8 +75,25 @@ Leading `-` and `+` on the first token nest against **earlier orders on the same
 | Prefix   | Stored on                                            | Effect                                                                                                                                                                                                                      |
 | -------- | ---------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `-child` | parent goes into the **child’s** `ConditionalOrders` | Child is skipped until the parent **finishes** (`Executed`). Then `RemoveConditions` clears the wait. Use this to hop then build: `move O00001` then `-use filidx as new108 for 101`.                                       |
-| `+child` | child goes into the **parent’s** `ConditionalOrders` | **Parent is skipped** (its list is no longer empty). The child runs on its own if it has no further `+` grandchildren. `move R00001` then `+use ssassm` does **not** move — the USE chain runs and the MOVE stays leftover. |
+| `+child` | child goes into the **parent’s** `ConditionalOrders` | **Parent waits** until the child finishes. `move R00001` then `+get 20 iron from 200001` runs GET first, then MOVE. |
 
+Factory town build (materials before `USE`):
+
+```
+#modulestack <factry-id>
+use twnbld as new1
++get 30 iron from <cargob-id>
++get 2 titani from <cargob-id>
+```
+
+Disabled stack staging (crew/fuel before `MOVE`):
+
+```
+#modulestack new1
+move R00014
++get 6 terran from <hq-id>
++get 10 oil from <hq-id>
+```
 
 Immediate and long orders share one list. A `-` under a long parent waits until that long **finishes** (`Executed`), not merely starts (`Executing`). Stack them: `--+-use`, `-+get`, `--+--give`.
 
@@ -185,7 +215,7 @@ Stage inputs with `**GET`** from other stacks at the same location, or `**BUY**`
 
 **Factory-built military units (`USE grndtr` / `USE armcbt`):** new scout trucks and tank squads form **empty** — report shows `crew: N/0` and status **disabled** until you stage crew (and usually **oil** fuel) on the `newN` stack. `**@move` on a disabled stack fails every week** (`MOVE failed. … is disabled.`). After `use grndtr as new1 for <hq-id>` / `use armcbt as new2 for <hq-id>` (campaign military: **two** tank squads — `new2` and `new3` — before Mid Vale columns), open `#modulestack new1` / `#modulestack new2` / `#modulestack new3` and stage crew/fuel **before** `@move`.
 
-**Slow HQ-nested builds (`use armcbt` / `use cdrill` … `as newN for <hq-id>`):** the unit may not exist at HQ until mid-quarter. Bare `@get` or wrong-order `+@get` on `#modulestack newN` in week 1 fails with `receiver is not present` / capacity errors and **poisons** later GET attempts. Use `@active newN` then `**-+@get`** crew/fuel — the leading `-` makes GET wait until `@active` succeeds; `@` retries each week until stock lands. Fast `grndtr` scouts can use plain `@get` once the truck forms (usually week 1). Factory `**@get**` (not bare `get`) for iron/titani from cargob retries until stock is available.
+**Slow HQ-nested builds (`use armcbt` / `use cdrill` … `as newN for <hq-id>`):** the unit may not exist at HQ until mid-quarter. Bare `@get` on `#modulestack newN` in week 1 fails with `receiver is not present` / capacity errors and **poisons** later GET attempts. Use `active newN` then `-get` crew/fuel on the **same subject** — the leading `-` makes GET wait until `ACTIVE` succeeds. Fast `grndtr` scouts can use `@get` once the truck forms (usually week 1). Factory iron/titani for `use twnbld` use **`+get` under the `USE` line** (see [Conditions (`-` / `+`)](#conditions--)), not bare `get` lines above an unrelated header.
 
 ### MOVE readiness (disabled stacks cannot move)
 
@@ -199,7 +229,7 @@ Before `@move` on any mobile `#modulestack`, ensure **in that same stack block**
 4. **Energy** — nested or moving stacks neegd the root grant tree producing enough energy (`@produce energy` on cplant/wnplnt upstream); MOVE itself does not fix `crew: N/M` energy shortfalls on nested modules.
 5. **Spaceships** — a hull without a **command bridge** (`spctrl`) cannot move at all. Large ships need enough command modules (1 bridge + 1 command module per 15 modules). Nest `use spctrl as new… for <hull-id>` (and drives, cargo) **before** `@move` / `@jump`. Surface↔orbit hops on atmospheres also need `**@get h2o2`** (oxyhydro launch surcharge) on the mover or nested cargo.
 
-**Order-file pattern:** under `#modulestack new1` (or any stack that will `@move`), list `@get terran …` and `@get oil …` **above** `@move R…`. Do not issue `@move` alone on a freshly `USE`d module — it will stay disabled all quarter.
+**Order-file pattern:** under `#modulestack new1` (or any stack that will `move`), either list **`+get`** lines **under** the `move` line (GET runs first, then MOVE — preferred), or list one-shot `get` lines in the **same `#modulestack` block before** `move` if you do not need conditioning. Do not issue `move` alone on a freshly `USE`d module — it will stay disabled all quarter. Use `@move` only when you want the hop to retry every week until it succeeds.
 
 **USE tech placement:** `@use farmng` / `use farmng` only under `#modulestack` headers whose module type is **farms** (farming complex). `@use hcdril` only under **sdrill** (surface drill). Putting either on factory `[factry]`, HQ, or cargob blocks that stack's long-order slot with `USE failed` all quarter.
 
@@ -219,7 +249,7 @@ When headquarters lacks enough `terran` to staff every nested module, withdraw b
 #modulestack 200003
 ; cargo bay — trading stack at HQ
 withdraw 1500
-@buy 25 terran at 50
+buy 25 terran at 50
 
 #modulestack 200006
 get 15 terran from 200003
@@ -281,15 +311,30 @@ sell <N> food at average
 @produce energy
 
 #modulestack <factry-id>
-get 30 iron from <cargob-id>
-get 2 titani from <cargob-id>
 use twnbld as new1
++get 30 iron from <cargob-id>
++get 2 titani from <cargob-id>
 
 #modulestack new1
 transfer 1 to faction 1
 ```
 
-Replace ids from the report template. When nested stacks already show crew in turn-1 reports, skip the market-buy block above. `**use twnbld as new1**` (10 weeks) builds a `**town**` module on the factory stack; then `**transfer 1 to faction 1**` on that new stack hands it to United Star Nations at headquarters and completes turn-1 **CT0006–CT0015** `**give-module`** contracts (reward e.g. `**ctypln**`). Stage **30 iron** and **2 titani** on the factory first. Open contracts appear under **Contract reports:** in the faction report and **Contracts:** in the grant region. Defer ground `**MOVE`** until a shuttle or other mobile stack exists; people ride on that stack.
+Replace ids from the report template. When nested stacks already show crew in turn-1 reports, skip the market-buy block above. `**use twnbld as new1**` (10 weeks) builds a `**town**` module on the factory stack; then `**transfer 1 to faction 1**` on that new stack hands it to United Star Nations at headquarters and completes turn-1 **CT0006–CT0015** `**give-module`** contracts (reward e.g. `**ctypln**`). The `**+get**` lines stage **30 iron** and **2 titani** before the long `USE` starts. Open contracts appear under **Contract reports:** in the faction report and **Contracts:** in the grant region. Defer ground `**MOVE`** until a shuttle or other mobile stack exists; people ride on that stack.
+
+### Activating disabled stacks
+
+**Disabled** = missing crew, energy, fuel, or repairs. Long orders and `MOVE` fail until fixed.
+
+Factory-built units (`use grndtr`, `use armcbt`) start **empty** — new id but no crew, so `IsActive` is false until staged.
+
+```
+#modulestack new1
+move R00014
++get 6 terran from <hq-id>
++get 10 oil from <hq-id>
+```
+
+Before `move`: crew, fuel, `@repair` if damaged, `@produce energy` upstream, `get h2o2` for atmospheric hops (one-shot). `active newN` then `-get` when the unit forms mid-quarter. `@use farmng` only on farms; `@use hcdril` only on surface drills.
 
 ## Text vs XML
 
@@ -341,11 +386,13 @@ Sets the stack’s `Alias` string.
 
 ### ATTACK
 
-**Syntax:** `ATTACK <unit-id>`
+**Syntax:** `ATTACK <unit-id>` | `ATTACK REGION <region-id>`
 
 **Subject:** a holder (stack).
 
 Sets the owner’s attitude toward that unit id to **enemy**. Combat itself is resolved later from tactics (`destroy` / `capture`).
+
+`ATTACK REGION` declares **enemy** on armed operational stacks and patrolling stacks in that region (attitude hostile or worse toward the attacker’s owner), then queues a **MOVE** into the region if not already there (`PatrolGuard.QueueMoveToRegion`).
 
 ### BUY
 
@@ -371,11 +418,13 @@ Optional trailing `**EVERYWHERE`** is parsed but **campaign execution currently 
 
 ### CAPTURE
 
-**Syntax:** `CAPTURE <unit-id>|ALL`
+**Syntax:** `CAPTURE <unit-id>|ALL` | `CAPTURE REGION <region-id>`
 
 **Subject:** modulestack.
 
 Sets tactic to **capture**. A specific id is the preferred target and is marked enemy if that stack exists. `ALL` prefers every enemy at the location. Successful battle peels go onto new stacks `c00001`, `c00002`, … (see `play/player/battle.md`).
+
+`CAPTURE REGION` sets capture + `ALL` preference, declares region entry enemies (same rules as `ATTACK REGION`), and queues **MOVE** into the region.
 
 Immobile stacks cannot capture. Execute reports `CAPTURE failed. Immobile units may only use destroy.` **once per week**, marks the order **executed** (default one-shot is consumed that week; `@capture` retries next week), and does not set the tactic.
 
@@ -466,7 +515,7 @@ Moves cargo from a same-location holder into the subject if capacity allows. `ne
 
 **Subject:** item holder.
 
-Moves cargo to a receiver (same-location capacity check). Receiver may be an unformed `newN`.
+Moves cargo to a receiver (same-location capacity check). Receiver may be an unformed `newN`. Fails when attitude toward the receiver’s owner is below **neutral** (`GiveOrder.canGiveToReceiver`).
 
 ### HAS
 
@@ -542,16 +591,17 @@ Lists a standing sell (`Offer`) and keeps a leftover `SELL` on the template. Mat
 
 ### SET
 
-**Syntax:** `SET AVOID|ONLINE|ALLOW BANK|SHARING TRUE|FALSE`
+**Syntax:** `SET AVOID|ONLINE|ALLOW BANK|SHARING|PATROL TRUE|FALSE`
 
 **Subject:** modulestack.
 
-Flag name and `TRUE`/`FALSE` are **case-insensitive**; Parse stores the flag as uppercase `AVOID`, `ONLINE`, `ALLOW BANK`, or `SHARING`.
+Flag name and `TRUE`/`FALSE` are **case-insensitive**; Parse stores the flag as uppercase `AVOID`, `ONLINE`, `ALLOW BANK`, `SHARING`, or `PATROL`.
 
 - `SET AVOID TRUE|FALSE` — sets `IsAvoiding`. Not a battle tactic (see `play/player/battle.md`).
 - `SET ONLINE TRUE|FALSE` — `ModuleStack.SetOnline`: stack `Online` and every `module.Online`. When `Online=false`, every copy reports **deactivated** and `QuantityOperational` is 0. Captured modules are left `Online=false`. Per-copy player shutdown is [DEACTIVATE](#deactivate); per-copy turn-on without changing `Online` is [ACTIVATE](#activate). Sample: `set online true`.
 - `SET ALLOW BANK TRUE|FALSE` — sets `AllowBank` on the stack (default **true** on new stacks and when the save omits `allow-bank`). When **false**, market buys and quarterly **cash upkeep** may spend only **local cash** on that stack — the faction bank is not debited (`HasBankAccess` is false). People nested on the stack inherit the parent’s setting. Sample: `set allow bank false` on a trading stack to cap market spend to withdrawn cash.
 - `SET SHARING TRUE|FALSE` — sets `Sharing` on the stack (default **true**). When **true**, other same-owner stacks in the same unit or region may draw that stack’s inventory (including nested stacks and crew-held items) to satisfy **USE** consume items, fuel, and quarterly upkeep after their own local `ItemStacks` are exhausted. When **false**, the stack is isolated (`not sharing` in reports). Sample: `set sharing false` on a private cargo reserve.
+- `SET PATROL TRUE|FALSE` — sets `IsPatrolling` (default **false**). When **true**, an **armed operational root** stack in a region blocks **MOVE** entry by factions whose attitude toward the patroller’s owner is **hostile or enemy** (`PatrolGuard.FindBlocker`). Also blocks **NAME** on map objects for non-**ally** factions when a patroller is present. Persisted as `patrol="true"` on save. Sample: `set patrol true` on a garrison.
 
 ### STACK
 

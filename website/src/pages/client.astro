@@ -23,13 +23,13 @@ const logoUrl = withBase('images/spaceage-logo.png');
 	  <p><a class="cta-button" href={clientUrl} id="client-launch">Open SpaceAge Client →</a></p>
 	</div>
 
-	<section class="features-section">
+	<section class="client-features">
 	  <h2>What You Can Do</h2>
-	  <div class="features">
-		<div class="feature-item"><h3>Reports</h3><p>Quarterly XML reports from the game host.</p></div>
-		<div class="feature-item"><h3>Star map</h3><p>Filter units by system; region drill-down.</p></div>
-		<div class="feature-item"><h3>Orders</h3><p>Editor with engine-backed validation warnings.</p></div>
-		<div class="feature-item"><h3>Movement</h3><p>Unit MOVE orders from your report plus a transit ETA simulator — open the ⇄ panel in the client.</p></div>
+	  <div class="client-features-grid">
+		<div class="feature-item card"><h3>Reports</h3><p>Quarterly XML reports from the game host.</p></div>
+		<div class="feature-item card"><h3>Star map</h3><p>Filter units by system; region drill-down.</p></div>
+		<div class="feature-item card"><h3>Orders</h3><p>Editor with engine-backed validation warnings.</p></div>
+		<div class="feature-item card"><h3>Movement</h3><p>Unit MOVE orders and transit ETA — open the ⇄ panel in the client.</p></div>
 	  </div>
 	</section>
 
@@ -46,14 +46,19 @@ const logoUrl = withBase('images/spaceage-logo.png');
 </Layout>
 
 <style>
-  .client-content { max-width: 900px; margin: 0 auto; }
+  .client-content {
+	max-width: 900px;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-2xl);
+  }
 
   .client-header {
 	display: flex;
 	align-items: flex-start;
 	justify-content: space-between;
 	gap: var(--space-lg);
-	margin-bottom: var(--space-xl);
   }
 
   h1 {
@@ -69,7 +74,6 @@ const logoUrl = withBase('images/spaceage-logo.png');
 	flex-shrink: 0;
   }
 
-  .intro-card { margin-bottom: var(--space-2xl); }
   .cta-button {
 	display: inline-block;
 	margin-top: 1rem;
@@ -80,13 +84,40 @@ const logoUrl = withBase('images/spaceage-logo.png');
 	border-radius: var(--radius-md);
 	font-weight: 600;
   }
-  .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-lg); }
-  .feature-item { background: var(--color-card-bg); color: var(--color-text-dark); padding: var(--space-lg); border-radius: var(--radius-lg); }
+
+  .client-features {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-lg);
+  }
+
+  .client-features-grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: var(--space-lg);
+	width: 100%;
+  }
+
+  .feature-item h3 {
+	margin-top: 0;
+  }
+
+  .feature-item p:last-child {
+	margin-bottom: 0;
+  }
+
+  .getting-started {
+	margin: 0;
+  }
 
   @media (max-width: 768px) {
 	.client-header {
 	  flex-direction: column-reverse;
 	  align-items: flex-start;
+	}
+
+	.client-features-grid {
+	  grid-template-columns: 1fr;
 	}
   }
 </style>

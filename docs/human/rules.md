@@ -5,7 +5,7 @@
 
 Single source of truth for PBEM turn orders: file format, all live verbs, turn flow, market, movement, opening patterns, and combat.
 
-This is **complex ruleset** and diffcult game in terms of orders. A significant level of conditioning and flexibility is possible in drafting orders. I have found out on myself that this lead to a significant number of errors and the **SpaceAge is unforgiving**. While combat is by design extended and weighted toward defender the environment is not. Triple check the orders. **always take more terair and food and fuel than you think is needed.**
+This is a **complex ruleset** and difficult game in terms of orders. A significant level of conditioning and flexibility is possible in drafting orders. I have found out on myself that this lead to a significant number of errors and the **SpaceAge is unforgiving**. While combat is by design extended and weighted toward defender the environment is not. Triple check the orders. **always take more terair and food and fuel than you think is needed.**
 
 Verbs are **case-insensitive**. Most arguments (stack ids, item ids) are **not**.
 
@@ -99,21 +99,19 @@ Empty lines skipped. `;` or `//` starts a comment.
 
 On the **same token** as the verb: `-use farmng`, not `-` alone.
 
-
-| Prefix | Effect |
-|--------|--------|
-| `-child` | Runs after **parent finishes**, eg. MOVE **and then** USE technology and build a town.
+**`-child`** prefix:
+Runs after **parent finishes**, eg. MOVE **and then** USE technology and build a town.
 ``` 
 move R00009
 -use twnbld as new1
 ```
-|
-| `+child` | **Skips parent**; parent can execute only after all child runs complete. , eg. GET item **and then** MOVE somewhere else. 
+
+**`+child`** prefix:
+**Skips parent**; parent can execute only after all child runs complete, eg. GET item **and then** MOVE somewhere else. 
 ```
 move R00001
 +get 20 iron from 200001
 ``` 
-|
 
 Nesting is possible: `--+-use`, `-+get`. `-` under a long parent waits until that job **completes**, but keep in mind the sequence and don't skip levels `use` followed by `--get` **is an error**.
 
@@ -158,9 +156,10 @@ Week 13 then: upkeep, wounded outcomes, bank interest, price update, NPC listing
 
 - **`SELL`** lists goods (`AT AVERAGE` or fixed price).
 - **`BUY`** posts bid; matching at **end of week**, not when issued.
-- Pay from **stack cash first**, then bank if - same bid is placed in a region a selling is split betwen buyers. Higher bid wins ties and get full sale. 
+- Pay from **stack cash first**, then bank if `SET ALLOW BANK TRUE` (default).
+- Same bid cap in a region → **pro-rata** split; higher bid wins tier.
 - Tech buys match immediately.
-- the outcome of the sale influence the market locally and on the galactic scale
+- The outcome of the sale influences the market locally and on the galactic scale.
 
 **Banking:** 
 
@@ -230,15 +229,17 @@ this roughly gives the following in weeks
 
 ---
 
-## Full orders dictionary - All 29 verbs
+## Full orders dictionary - All 30 verbs
 
-**22 immediate** + **7 long**.
+**23 immediate** + **7 long**.
 
 ### Immediate
 
 **ACTIVE** — `ACTIVE <stack|newN>` — succeeds if stack is active (condition parent for `-get`).
 
 **ACTIVATE** — `ACTIVATE [N|ALL] [MODULES]` — turn inactive module copies on. Increase upkeep.
+
+**ALIAS** — `ALIAS "<name>"` — stack display alias.
 
 **ATTACK** — `ATTACK <unit-id>|REGION <region-id>` — mark unit as **enemy**. equivalent of DECLARE UNIT <unit-id> ENEMY. Combat may be resolved later depending on units visibility.
 ATTACK REGION forces move into region and declare unit preventing entry ENEMY.
@@ -331,7 +332,7 @@ SEE <transporter>
 **TRANSFER** — `TRANSFER n TO <stack>` | `TRANSFER ALL [DAMAGED] [MODULES] TO <stack|FACTION id>` | `TRANSFER MODULE index TO …`
 Stack specific module, damage modules or selected number of modules to unit or faction.
 
-**WITHDRAW** — `WITHDRAW <qty|ALL>` — trasnfer cash from bank account and place it as cash(positive balance only).
+**WITHDRAW** — `WITHDRAW <qty|ALL>` — transfer cash from bank account and place it as cash (positive balance only).
 
 ### Long
 
@@ -372,17 +373,14 @@ After orders and market each week: battles where **armed operational root** stac
 
 **DECLARE** sets stance; **ATTACK** / **CAPTURE** mark enemy. One battle per location per faction pair per week.
 
-### Tactics (TACTIC + CAPTURE)
+### Tactics 
 
 
 | Order | Effect |
 |-------|--------|
-| ATTACK | Mark enemy; targeting bias |
-| DECLARE | Stance only |
-| CAPTURE | Capture tactic; peel disabled foes after win |
 | TACTIC destroy | Kill; Post-win routed/disabled units are destroyed with cargo |
-| TACTIC scavenge | Kill; Pist-win routed/disabled units are converted to loot and trasnfered to scavenger units|
-| TACTIC capture | Seize; Post-win routed/disabled units are converted to new onwership |
+| TACTIC scavenge | Kill; Post-win routed/disabled units are converted to loot and transferred to scavenger units|
+| TACTIC capture | Seize; Post-win routed/disabled units are converted to new ownership |
 | TACTIC evade | Harder to hit; exit after 2 unhit rounds |
 | TACTIC prioritize armed\|command\|storage | Target preference |
 
@@ -403,11 +401,11 @@ If hit the **damage** is applied to specific module in the modulestack. The dama
 
 When destroy tactic is used shots carry full damage. In capture tactic, the damage splits module damage and capture damage. 
 
-If sum of module damage and capture damage exceeds the moduel hitpoints the module is wrecked/captured along with portion of the itemstacks held by the entire stack.
+If sum of module damage and capture damage exceeds the module hitpoints the module is wrecked/captured along with portion of the itemstacks held by the entire stack.
 
 Capture damage is cleared between combats.
 
-If battle ends with one side completely disabled the battle is won. in other cases the battle is not-conclusive and will be continued next week.
+If battle ends with one side completely disabled the battle is won. Otherwise, after up to **10 rounds**, the battle ends **indecisively** that week; combat may **re-trigger** the following week if enemy stacks remain co-located.
 
 On a clear win an explicit **destroy**/**capture**/**scavenge** tactics decides the fate of **disabled** survivors — default firing alone does not auto-kill routed units.
 
@@ -490,8 +488,6 @@ Before `move`: crew, fuel,
 `get h2o2` for atmospheric hops.
 
 `active newN` then `-get` when unit forms mid-quarter. **`USE farmng`** only on farms; **`USE hcdril`** only on surface drills.
-
-**ACTIVATE/DEACTIVATE** = per-module copies. **`SET ONLINE`** = whole stack — for captured/offline stacks, not normal bootstrap.
 
 ---
 

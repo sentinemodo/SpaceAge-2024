@@ -26,7 +26,7 @@ namespace SpaceAge
 				{
 					continue;
 				}
-				if (moverOwner.AttitudeToward(stack.Owner) >= FactionAttitude.Hostile)
+				if (moverOwner.AttitudeToward(stack.Owner) <= FactionAttitude.Hostile)
 				{
 					return stack;
 				}
@@ -115,7 +115,7 @@ namespace SpaceAge
 				{
 					continue;
 				}
-				if (owner.AttitudeToward(stack.Owner) < FactionAttitude.Hostile)
+				if (owner.AttitudeToward(stack.Owner) > FactionAttitude.Hostile)
 				{
 					continue;
 				}
@@ -127,15 +127,22 @@ namespace SpaceAge
 			}
 		}
 
-		public static void QueueMoveToRegion(ModuleStack unit, Region region)
+		public static MoveOrder QueueMoveToRegion(ModuleStack unit, Region region)
 		{
-			if (unit == null || region == null || unit.Location == region)
+			if (unit == null || region == null)
 			{
-				return;
+				return null;
+			}
+
+			Location here = unit.Location;
+			if (here != null && here.Name == region.Name)
+			{
+				return null;
 			}
 
 			MoveOrder move = new MoveOrder(unit);
-			move.Parse(region.Name);
+			move.Route.Add(region);
+			return move;
 		}
 	}
 }

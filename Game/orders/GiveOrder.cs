@@ -230,6 +230,11 @@ namespace SpaceAge
 		{
 			this.Executed = false;
 
+			if (this.receiver == null && !string.IsNullOrEmpty(this.receiverName))
+			{
+				this.assignReceiver(this.receiverName);
+			}
+
 			if (!this.canGiveToReceiver(week))
 			{
 				base.Execute(week);

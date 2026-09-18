@@ -53,8 +53,7 @@ public sealed class PlayerAgentSettings
         }
 
         var isRemote = IsRemoteOllamaHost(baseUri);
-        var chatModel = configuration["PLAYER_AGENT_CHAT_MODEL"]
-            ?? (isRemote ? RunPodDefaultChatModel : LocalDefaultChatModel);
+        var chatModel = ResolveChatModel(configuration["PLAYER_AGENT_CHAT_MODEL"], baseUri);
 
         var embedModel = configuration["PLAYER_AGENT_EMBED_MODEL"] ?? DefaultEmbedModel;
         var indexDir = configuration["PLAYER_AGENT_INDEX_DIR"] ?? DefaultIndexDirectory;
@@ -106,6 +105,22 @@ public sealed class PlayerAgentSettings
     public bool IsRemoteHost => IsRemoteOllamaHost(OllamaBaseUri);
 
     public int DefaultTopK => IsRemoteHost ? RunPodDefaultTopK : LocalDefaultTopK;
+
+    /// <summary>
+    /// Picks chat model from env or host: unset / <c>auto</c> → local 7B, remote qwen3 30B.
+    /// </summary>
+    public static string ResolveChatModel(string? configured, Uri baseUri)
+    {
+        if (string.IsNullOrWhiteSpace(configured)
+            || string.Equals(configured.Trim(), "auto", StringComparison.OrdinalIgnoreCase))
+        {
+            return IsRemoteOllamaHost(baseUri)
+                ? RunPodDefaultChatModel
+                : LocalDefaultChatModel;
+        }
+
+        return configured.Trim();
+    }
 
     public static bool IsRemoteOllamaHost(Uri baseUri)
     {

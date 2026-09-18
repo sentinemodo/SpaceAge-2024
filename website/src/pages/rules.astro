@@ -1,6 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { withBase } from '../lib/paths';
 import { renderHumanRulesHtml } from '../lib/humanRules';
 
 const rulesHtml = renderHumanRulesHtml();
@@ -8,10 +7,6 @@ const rulesHtml = renderHumanRulesHtml();
 
 <Layout title="Player Rules" description="SpaceAge PBEM — order syntax and turn rules (open beta 0.8.001)">
   <section class="rules-content">
-    <p class="rules-nav">
-      <a href={withBase('technologies')}>Basic technologies (L0–L1)</a>
-    </p>
-
     <div class="intro-card card">
       <h1>Player Rules</h1>
       <p>
@@ -29,10 +24,6 @@ const rulesHtml = renderHumanRulesHtml();
   .rules-content {
     max-width: 900px;
     margin: 0 auto;
-  }
-
-  .rules-nav {
-    margin: 0 0 var(--space-lg);
   }
 
   h1 {

@@ -7,8 +7,45 @@ $script:PlayerFactionIds = 2..11
 
 # Default inference: Ollama in Docker on localhost:11434 (container name "ollama").
 $script:DefaultOllamaHost = 'http://127.0.0.1:11434'
-$script:DefaultChatModel = 'qwen2.5-coder:7b'
+$script:LocalDefaultChatModel = 'qwen2.5-coder:7b'
+$script:RunPodDefaultChatModel = 'qwen3-coder:30b'
 $script:DefaultEmbedModel = 'nomic-embed-text'
+
+function Test-RemoteOllamaHost {
+	param([Parameter(Mandatory = $true)][string]$HostUrl)
+	if ([string]::IsNullOrWhiteSpace($HostUrl)) {
+		return $false
+	}
+	try {
+		$uri = [Uri]$HostUrl.TrimEnd('/')
+		if ($uri.Scheme -ne 'http' -and $uri.Scheme -ne 'https') {
+			return $true
+		}
+		$hostName = $uri.Host
+		return -not (
+			$hostName -eq 'localhost' -or
+			$hostName -eq '127.0.0.1' -or
+			$hostName -eq '::1'
+		)
+	}
+	catch {
+		return $true
+	}
+}
+
+function Resolve-PlayerAgentChatModel {
+	param(
+		[string]$Configured,
+		[string]$OllamaHost
+	)
+	if ([string]::IsNullOrWhiteSpace($Configured) -or $Configured.Trim().ToLowerInvariant() -eq 'auto') {
+		if (Test-RemoteOllamaHost -HostUrl $OllamaHost) {
+			return $script:RunPodDefaultChatModel
+		}
+		return $script:LocalDefaultChatModel
+	}
+	return $Configured.Trim()
+}
 
 function Import-RepoEnv {
 	$envFile = Join-Path $script:RepoRoot '.env'
@@ -31,9 +68,9 @@ function Initialize-OllamaEnv {
 	if ([string]::IsNullOrWhiteSpace($env:OLLAMA_HOST)) {
 		$env:OLLAMA_HOST = $script:DefaultOllamaHost
 	}
-	if ([string]::IsNullOrWhiteSpace($env:PLAYER_AGENT_CHAT_MODEL)) {
-		$env:PLAYER_AGENT_CHAT_MODEL = $script:DefaultChatModel
-	}
+	$env:PLAYER_AGENT_CHAT_MODEL = Resolve-PlayerAgentChatModel `
+		-Configured $env:PLAYER_AGENT_CHAT_MODEL `
+		-OllamaHost $env:OLLAMA_HOST
 	if ([string]::IsNullOrWhiteSpace($env:PLAYER_AGENT_EMBED_MODEL)) {
 		$env:PLAYER_AGENT_EMBED_MODEL = $script:DefaultEmbedModel
 	}
