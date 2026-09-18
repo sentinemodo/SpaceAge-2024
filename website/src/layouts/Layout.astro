@@ -5,9 +5,10 @@ import { withBase } from '../lib/paths';
 interface Props {
   title: string;
   description?: string;
+  hideEtaBattle?: boolean;
 }
 
-const { title, description = 'SpaceAge - Open PBEM Lobby' } = Astro.props;
+const { title, description = 'SpaceAge - Open PBEM Lobby', hideEtaBattle = false } = Astro.props;
 ---
 
 <!doctype html>
@@ -39,9 +40,15 @@ const { title, description = 'SpaceAge - Open PBEM Lobby' } = Astro.props;
 		  <a href={withBase()}>Home</a>
 		  <a href={withBase('turns')}>Turns</a>
 		  <a href={withBase('rules')}>Rules</a>
+		  <a href={withBase('sample-game')}>Sample game</a>
 		  <a href={withBase('client')}>Client</a>
-		  <a href={withBase('eta')}>ETA</a>
-		  <a href={withBase('battle')}>Battle</a>
+		  <a href={withBase('movement')}>Movement</a>
+		  {!hideEtaBattle && (
+			<>
+			  <a href={withBase('eta')}>ETA</a>
+			  <a href={withBase('battle')}>Battle</a>
+			</>
+		  )}
 		</div>
 	  </div>
 	</nav>
@@ -52,7 +59,7 @@ const { title, description = 'SpaceAge - Open PBEM Lobby' } = Astro.props;
 
 	<footer class="footer">
 	  <div class="footer-container">
-		<p>SpaceAge Engine v0.8.001 | Campaign start 2026 | Quarterly schedule</p>
+		<p>SpaceAge Engine v0.8.001 | Campaign start 2026 | Weekly turns schedule | Reruns of the turns possible</p>
 	  </div>
 	</footer>
   </body>

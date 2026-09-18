@@ -1,0 +1,316 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { withBase } from '../lib/paths';
+
+const clientUrl = import.meta.env.PUBLIC_CLIENT_URL || 'http://localhost:8787/client/';
+const apiBase = clientUrl.replace(/\/client\/?$/, '');
+---
+
+<Layout title="Movement" description="Faction unit movement orders and transit ETA">
+  <section class="movement-content" id="movement-page" data-api-base={apiBase}>
+	<header class="movement-header">
+	  <div>
+		<h1>Movement</h1>
+		<p class="lead">
+		  Units with <code>MOVE</code> orders from your quarterly XML report. Planning aid only — the next
+		  processed turn is authoritative.
+		</p>
+	  </div>
+	  <p class="client-link">
+		<a href={withBase('client')}>← Game Client</a>
+	  </p>
+	</header>
+
+	<div class="load-panel card">
+	  <h2>Report source</h2>
+	  <p id="load-status" class="load-status">Loading session report…</p>
+	  <details class="paste-details">
+		<summary>Paste XML report manually</summary>
+		<label>
+		  XML report
+		  <textarea id="report-paste" rows="6" placeholder="Paste faction report XML…"></textarea>
+		</label>
+		<button type="button" id="parse-paste">Parse pasted report</button>
+	  </details>
+	</div>
+
+	<div class="units-panel card">
+	  <h2>Unit movement</h2>
+	  <p id="report-meta" class="report-meta"></p>
+	  <div class="table-wrap">
+		<table id="movement-table">
+		  <thead>
+			<tr>
+			  <th>Unit</th>
+			  <th>Location</th>
+			  <th>Mass</th>
+			  <th>MOVE route</th>
+			  <th>Repeat</th>
+			</tr>
+		  </thead>
+		  <tbody id="movement-body">
+			<tr><td colspan="5" class="empty">Load a report to list units.</td></tr>
+		  </tbody>
+		</table>
+	  </div>
+	</div>
+
+	<div class="eta-panel card">
+	  <h2>Transit ETA simulator</h2>
+	  <p>Paste a ship excerpt or enter thrust/mass and two AU-from-star radii.</p>
+	  <label>Paste ship report excerpt (optional)
+		<textarea id="paste" rows="3"></textarea>
+	  </label>
+	  <div class="eta-fields">
+		<label>Thrust <input type="number" id="thrust" value="40000" /></label>
+		<label>Mass <input type="number" id="mass" value="4150" /></label>
+		<label>AU from star (origin) <input type="number" id="au1" value="1" step="0.01" /></label>
+		<label>AU from star (destination) <input type="number" id="au2" value="80" step="0.01" /></label>
+		<label>Drive speed <input type="number" id="speed" value="1" step="0.1" /></label>
+	  </div>
+	  <button type="button" id="calc">Calculate ETA</button>
+	  <p id="result" class="eta-result"></p>
+	</div>
+  </section>
+</Layout>
+
+<script>
+  import { parseMovementReport } from '../lib/reportMovement';
+  import { durationWeeks, parseMassLine } from '../lib/transit';
+
+  const pageRoot = document.getElementById('movement-page');
+  const apiBase = pageRoot?.dataset.apiBase || '';
+
+  const loadStatus = document.getElementById('load-status');
+  const reportMeta = document.getElementById('report-meta');
+  const movementBody = document.getElementById('movement-body');
+  const reportPaste = document.getElementById('report-paste') as HTMLTextAreaElement | null;
+  const parsePasteBtn = document.getElementById('parse-paste');
+
+  function renderReport(xml: string) {
+    if (!movementBody || !reportMeta) return;
+    const report = parseMovementReport(xml);
+    reportMeta.textContent = `Turn ${report.turn} — ${report.factionName} [${report.factionId}]`;
+    const withMove = report.rows.filter((r) => r.hasMove);
+    if (report.rows.length === 0) {
+      movementBody.innerHTML = '<tr><td colspan="5" class="empty">No units in report.</td></tr>';
+      return;
+    }
+    movementBody.innerHTML = report.rows
+      .map((row) => {
+        const cls = row.hasMove ? 'has-move' : '';
+        return `<tr class="${cls}"><td><strong>${escapeHtml(row.name)}</strong><br><span class="muted">${escapeHtml(row.id)}</span></td><td>${escapeHtml(row.location || '—')}</td><td>${escapeHtml(row.mass || '—')}</td><td>${escapeHtml(row.route)}</td><td>${escapeHtml(row.repeat || '—')}</td></tr>`;
+      })
+      .join('');
+    if (loadStatus) {
+      loadStatus.textContent = `${withMove.length} unit(s) with MOVE orders, ${report.rows.length} total listed.`;
+    }
+  }
+
+  function escapeHtml(value: string) {
+    return String(value)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  function handleXml(xml: string) {
+    try {
+      renderReport(xml);
+    } catch (err) {
+      if (loadStatus) loadStatus.textContent = err instanceof Error ? err.message : 'Parse failed';
+      if (movementBody) {
+        movementBody.innerHTML = '<tr><td colspan="5" class="empty">Could not parse report.</td></tr>';
+      }
+    }
+  }
+
+  async function loadSessionReport() {
+    const token = localStorage.getItem('sa_token');
+    if (!token) {
+      if (loadStatus) loadStatus.textContent = 'No client session — log in via the hosted client, or paste XML below.';
+      return;
+    }
+    try {
+      const res = await fetch(`${apiBase}/api/session/report.xml`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      if (!res.ok) throw new Error(res.statusText);
+      handleXml(await res.text());
+    } catch {
+      if (loadStatus) loadStatus.textContent = 'Session report unavailable — paste XML below.';
+    }
+  }
+
+  parsePasteBtn?.addEventListener('click', () => {
+    const xml = reportPaste?.value.trim();
+    if (!xml) {
+      if (loadStatus) loadStatus.textContent = 'Paste a report XML first.';
+      return;
+    }
+    handleXml(xml);
+  });
+
+  loadSessionReport();
+
+  const paste = document.getElementById('paste') as HTMLTextAreaElement | null;
+  const thrust = document.getElementById('thrust') as HTMLInputElement | null;
+  const mass = document.getElementById('mass') as HTMLInputElement | null;
+  const au1 = document.getElementById('au1') as HTMLInputElement | null;
+  const au2 = document.getElementById('au2') as HTMLInputElement | null;
+  const speed = document.getElementById('speed') as HTMLInputElement | null;
+  const result = document.getElementById('result');
+
+  paste?.addEventListener('input', () => {
+    const p = parseMassLine(paste?.value ?? '');
+    if (p && thrust instanceof HTMLInputElement && mass instanceof HTMLInputElement) {
+      thrust.value = String(p.thrust);
+      mass.value = String(p.mass);
+    }
+  });
+
+  document.getElementById('calc')?.addEventListener('click', () => {
+    if (
+      !(thrust instanceof HTMLInputElement) ||
+      !(mass instanceof HTMLInputElement) ||
+      !(au1 instanceof HTMLInputElement) ||
+      !(au2 instanceof HTMLInputElement) ||
+      !(speed instanceof HTMLInputElement) ||
+      !result
+    ) {
+      return;
+    }
+    const delta = Math.abs(parseFloat(au2.value) - parseFloat(au1.value));
+    const t = parseInt(thrust.value, 10);
+    const m = parseInt(mass.value, 10);
+    const sp = parseFloat(speed.value);
+    const weeks = durationWeeks(delta, sp, t, m);
+    const mf = (t / Math.max(m, 1)) / (40000 / 4150);
+    const clamped = Math.min(1.5, Math.max(0.67, mf));
+    result.textContent = `${weeks} weeks (ΔAU=${delta.toFixed(2)}, mass factor=${clamped.toFixed(2)}, effective speed=${(sp * clamped).toFixed(2)})`;
+  });
+</script>
+
+<style>
+  .movement-content {
+	max-width: 1100px;
+	margin: 0 auto;
+  }
+
+  .movement-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	gap: var(--space-lg);
+	margin-bottom: var(--space-xl);
+  }
+
+  h1 {
+	color: var(--color-accent-teal);
+	margin: 0 0 var(--space-sm);
+  }
+
+  .lead {
+	margin: 0;
+	max-width: 52rem;
+  }
+
+  .client-link {
+	margin: 0;
+	white-space: nowrap;
+  }
+
+  .load-panel,
+  .units-panel,
+  .eta-panel {
+	margin-bottom: var(--space-xl);
+  }
+
+  .load-status,
+  .report-meta {
+	color: var(--color-accent-amber);
+	font-weight: var(--font-weight-semibold);
+  }
+
+  .paste-details {
+	margin-top: var(--space-md);
+  }
+
+  .paste-details textarea,
+  .eta-panel textarea {
+	width: 100%;
+	margin-top: var(--space-xs);
+	font-family: ui-monospace, monospace;
+	font-size: var(--font-size-sm);
+  }
+
+  .table-wrap {
+	overflow-x: auto;
+	margin-top: var(--space-md);
+  }
+
+  table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: var(--font-size-sm);
+  }
+
+  th,
+  td {
+	border: 1px solid rgba(255, 255, 255, 0.12);
+	padding: var(--space-sm);
+	text-align: left;
+	vertical-align: top;
+  }
+
+  th {
+	background: rgba(13, 148, 136, 0.15);
+	color: var(--color-accent-teal);
+  }
+
+  tr.has-move td {
+	background: rgba(13, 148, 136, 0.08);
+  }
+
+  .muted {
+	color: #999;
+	font-size: 0.85em;
+  }
+
+  .empty {
+	text-align: center;
+	color: #999;
+	font-style: italic;
+  }
+
+  .eta-fields {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+	gap: var(--space-md);
+	margin: var(--space-md) 0;
+  }
+
+  .eta-fields label {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-xs);
+	font-size: var(--font-size-sm);
+  }
+
+  .eta-fields input {
+	padding: var(--space-xs);
+  }
+
+  .eta-result {
+	margin-top: var(--space-md);
+	font-weight: var(--font-weight-bold);
+	color: var(--color-accent-teal);
+  }
+
+  @media (max-width: 768px) {
+	.movement-header {
+	  flex-direction: column;
+	}
+  }
+</style>

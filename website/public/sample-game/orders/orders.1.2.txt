@@ -1,0 +1,100 @@
+#faction 2 "xyzzy"
+#modulestack 000012
+; Caste Prime Headquarters [000012]
+@produce cash
+
+#modulestack 000013
+; small cargo bay [000013]
+@get all food from 000014
+get -15 carbon from 000015
+@get all carbon from 000016 
+
+#modulestack 000014
+; farming complex [000014]
+@use farmng
+
+#modulestack 000015
+; coal-burning plant [000015]
+; auto produce energy (autoget carbon)
+@produce energy
+
+#modulestack 000016
+; core drill [000016]
+@use hcdril
+
+#modulestack 000017
+; factory [000017]
+; build 10 shuttles as new1
+10 use shtlas as new1
+
+#person 000001
+; Caste Prime CEO [000001]
+; enter shuttles as soon as produced
+see new1
+-stack new1
+; enter hull as soon as activated
+-active new2
+--stack new3
+
+#modulestack new1
+; wait for load of crew and resources (both for construction and for travel)
+; move to orbit
+has modules 10
+-move O00002
+-+get 40 terran from 000012
+-+get 30 iron from 000013
+-+get 30 titani from 000013
+-+get 20 silici from 000013 
+-+get 20 copper from 000013 
+-+get 20 uraniu from 000013 
+-+get 150 food from 000013  
+-+get 100 h2o2 from 000013 
+-+get 150 terair from 000013
+-+has person 000001
+--move R00001
+--+use ssassm as new2
+--+-use spctrl as new3 
+--+-use urfiss as new4 
+--+-use areact as new5 
+--+-use crewhs as new6 
+--+--give -20 terran to new6
+--+--give -20 terair to new6 
+--+--give -20 food to new6 
+--+-use strans as new7
+--+--give all iron to new7
+--+--give all titani to new7
+--+--give all silici to new7 
+--+--give all copper to new7 
+--+--give -10 uraniu to new7 
+--+--give -10 h2o2 to new7 
+
+
+#modulestack new2
+; spaceship hull, wait for modules, crew and resources
+active new2
+-name "Caste Prime valiant explorer"
+
+#modulestack new3
+; command bridge, stack under spaceship, get terran to operate
+stack new2
+-get 1 terran from new6
+
+#modulestack new4
+; reactor, stack under spaceship, get terran to operate
+stack new2
+-get 1 terran from new6
+
+#modulestack new5
+; drive, stack under spaceship, get terran to operate
+stack new2
+-get 1 terran from new6
+
+#modulestack new6
+; stack under spaceship
+stack new2
+
+#modulestack new7
+; stack under spaceship
+stack new2
+
+#end

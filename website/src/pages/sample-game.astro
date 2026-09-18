@@ -1,0 +1,110 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { withBase } from '../lib/paths';
+import { sampleGameTurns } from '../data/sampleGameTurns';
+---
+
+<Layout
+  title="Sample Game"
+  description="Five-turn SampleGame integration scenario — golden reports and orders for Caste Prime and Gelvaren"
+>
+  <section class="sample-game-content">
+    <div class="intro-card card">
+      <h1>Sample Game</h1>
+      <p>
+        The integration fixture in <code>Tests/SampleGame</code> runs five quarters between
+        <strong>Caste Prime</strong> (faction 2) and <strong>Gelvaren</strong> (faction 3) in the Sol system.
+        Each block below mirrors one turn: read the reports, see what happened, then open the orders both factions
+        submitted before the engine advanced. Turn 6 shows the final golden reports only.
+      </p>
+    </div>
+
+    {sampleGameTurns.map((turn) => (
+      <article class="turn-block card" id={`turn-${turn.turn}`}>
+        <h2>Turn {turn.turn}</h2>
+
+        <div class="turn-section">
+          <h3>Reports</h3>
+          <ul class="file-links">
+            {turn.reports.map((report) => (
+              <li>
+                <a href={withBase(`sample-game/reports/${report.file}`)}>
+                  {report.faction} — {report.file}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <p class="turn-story">{turn.story}</p>
+
+        {turn.orders && (
+          <div class="turn-section">
+            <h3>Orders</h3>
+            <ul class="file-links">
+              {turn.orders.map((order) => (
+                <li>
+                  <a href={withBase(`sample-game/orders/${order.file}`)}>
+                    {order.faction} — {order.file}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </article>
+    ))}
+  </section>
+</Layout>
+
+<style>
+  .sample-game-content {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    color: var(--color-accent-teal);
+    margin-top: 0;
+    margin-bottom: var(--space-md);
+  }
+
+  .intro-card {
+    margin-bottom: var(--space-xl);
+  }
+
+  .turn-block {
+    margin-bottom: var(--space-xl);
+  }
+
+  .turn-block h2 {
+    color: var(--color-accent-teal);
+    margin-top: 0;
+    margin-bottom: var(--space-md);
+  }
+
+  .turn-section {
+    margin-bottom: var(--space-md);
+  }
+
+  .turn-section h3 {
+    font-size: var(--font-size-lg);
+    color: var(--color-accent-amber);
+    margin-bottom: var(--space-xs);
+  }
+
+  .file-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .file-links li + li {
+    margin-top: var(--space-xs);
+  }
+
+  .turn-story {
+    margin: var(--space-md) 0;
+    line-height: 1.7;
+  }
+</style>

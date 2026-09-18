@@ -1,0 +1,49 @@
+#faction 3 "abccb"
+; Gelvaren turn 5 - Sydney factory [000023] (under city [000026], Southern
+; Hemisphere [R00003]) builds an orbital rocket launcher, then shuttle
+; [117] hauls it to Earth orbit [O00002] ~week 10. Do not USE orassm /
+; build orcmpx on orbit. Do not USE orbrkt on the shuttle (in orbit or
+; on the ground). Leftover XML from gamein.5 keeps Sydney produce/buy/
+; farms/wind/oil, library @research tag repair, Berlin repairs, tanks
+; @get food. Attitude already enemy toward Caste Prime [2].
+; Factory [000023] holds orbrkt (not armcbt). orbrkt USE is production
+; anywhere, use-time 8, consume 4 iron, module size 40. Factory has 8 iron.
+; Shuttle [117] has uraniu 1, h2o2 2, terair 20; keeps servic. Do not GET
+; terair (already seeded). STACK OUT onto R00003 on week 1 so it is a
+; mobile root (nested in the city it inherits immobile). Do not MOVE to
+; orbit on week 1 or the factory cannot deliver into it. HAS 1 orbrkt then
+; -MOVE O00002 delays the haul until new141 is nested. USE as new141 for
+; 117 (nests under the shuttle). TRANSFER n TO 117 is live if USE-FOR is
+; wrong for module type.
+
+#modulestack 000023
+; + factory [000023], factry, immobile, nested under city [000026].
+; crew 10/10, energy 15. technologies: orbital rocket launcher [orbrkt].
+; items: 10 terran, 8 iron, 4 silici, 3 titani - consume 4 iron.
+; Same-location USE into shuttle [117] (city nest or stacked out onto R00003).
+use orbrkt as new141 for 117
+
+#modulestack 117
+; + space shuttle [117], shuttl, nested under city [000026] on R00003.
+; crew 2/0, cap 125, servic, uraniu 1, h2o2 2, terair 20 (seeded).
+; GET crew/food while still in the city nest, then STACK OUT onto R00003
+; (same location; nested it inherits immobile). Stay on the ground until
+; HAS sees the launcher, then hop. has 1 orbrkt then -move O00002 delays
+; the orbit haul until new141 is nested. TACTIC/ATTACK after arrival.
+get 2 terran from 000018
+get 20 food from 000026
+set online true
+stack out
+has 1 orbrkt
+-move O00002
+--tactic destroy
+---tactic prioritize armed
+--attack 450
+--attack 101
+
+#modulestack new141
+; orbital rocket launcher [orbrkt] after factory USE. Nested under
+; [117]; fires as equipment on that root. No orders here. If USE-FOR
+; failed to nest, TDD can add transfer 1 to 117 on this subject.
+
+#end

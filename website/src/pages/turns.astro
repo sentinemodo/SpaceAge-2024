@@ -2,12 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import { formatNextTurn, formatStatusLabel } from '../lib/statusSchema';
 import { withBase } from '../lib/paths';
-
-const placeholderFactions = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((id) => ({
-  id,
-  submitted: false,
-  name: `Faction ${id}`,
-}));
+import { campaignFactionsByPlanet } from '../data/campaignFactions';
 ---
 
 <Layout title="Players & Turns" description="SpaceAge Turn Status - Orders Submission Status">
@@ -40,24 +35,28 @@ const placeholderFactions = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((id) => ({
 	  <h2>Faction Orders Status</h2>
 	  <p>Status for the ten player factions (2–11). NPC factions (1, 12, 13) submit automatically.</p>
 
-	  <div class="factions-table">
-		<div class="table-header">
-		  <div class="table-cell faction-col">Faction</div>
-		  <div class="table-cell status-col">Orders Submitted</div>
-		</div>
-
-		<div id="turns-factions-table">
-		  {placeholderFactions.map((faction) => (
-			<div class="table-row" data-faction-id={faction.id}>
-			  <div class="table-cell faction-col">
-				<strong>{faction.name}</strong>
+	  <div id="turns-factions-table" class="factions-columns">
+		{campaignFactionsByPlanet.map((group) => (
+		  <div class="planet-group">
+			<h3 class="planet-heading">{group.planet}</h3>
+			<div class="factions-table">
+			  <div class="table-header">
+				<div class="table-cell faction-col">Faction</div>
+				<div class="table-cell status-col">Orders Submitted</div>
 			  </div>
-			  <div class="table-cell status-col pending">
-				⏳ Awaiting Orders
-			  </div>
+			  {group.factions.map((faction) => (
+				<div class="table-row" data-faction-id={faction.id}>
+				  <div class="table-cell faction-col">
+					<strong>{faction.name} ({faction.id})</strong>
+				  </div>
+				  <div class="table-cell status-col pending">
+					⏳ Awaiting Orders
+				  </div>
+				</div>
+			  ))}
 			</div>
-		  ))}
-		</div>
+		  </div>
+		))}
 	  </div>
 	</section>
 
@@ -100,7 +99,7 @@ const placeholderFactions = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((id) => ({
 
 <style>
   .turns-content {
-	max-width: 900px;
+	max-width: 1100px;
 	margin: 0 auto;
   }
 
@@ -147,11 +146,30 @@ const placeholderFactions = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((id) => ({
 	margin-bottom: var(--space-2xl);
   }
 
+  .factions-columns {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: var(--space-lg);
+	margin-top: var(--space-lg);
+  }
+
+  .planet-group {
+	background-color: rgba(13, 148, 136, 0.08);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-lg);
+	padding: var(--space-md);
+  }
+
+  .planet-heading {
+	margin: 0 0 var(--space-md);
+	font-size: var(--font-size-lg);
+	color: var(--color-accent-teal);
+  }
+
   .factions-table {
 	background-color: var(--color-card-bg);
 	border-radius: var(--radius-lg);
 	overflow: hidden;
-	margin-top: var(--space-lg);
   }
 
   .table-header {
@@ -216,6 +234,10 @@ const placeholderFactions = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((id) => ({
 
   @media (max-width: 768px) {
 	.summary-grid {
+	  grid-template-columns: 1fr;
+	}
+
+	.factions-columns {
 	  grid-template-columns: 1fr;
 	}
 

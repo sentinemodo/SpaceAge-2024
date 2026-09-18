@@ -1,15 +1,19 @@
 ---
 import { formatNextTurn, formatStatusLabel } from '../lib/statusSchema';
+import { campaignFactionsByPlanet } from '../data/campaignFactions';
 
 const statusData = {
   status: 'not-started',
   turn: 0,
   nextTurnAt: null as string | null,
-  factions: [2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((id) => ({
-    id,
-    submitted: false,
-    name: `Faction ${id}`,
-  })),
+  factions: campaignFactionsByPlanet.flatMap((group) =>
+    group.factions.map((f) => ({
+      id: f.id,
+      submitted: false,
+      name: `${f.name} (${f.id})`,
+      planet: group.planet,
+    })),
+  ),
 };
 ---
 
@@ -34,11 +38,16 @@ const statusData = {
   </div>
 
   <div id="submissions-grid" class="submissions-grid">
-	{statusData.factions.map((faction) => (
-	  <div class={`faction-card ${faction.submitted ? 'submitted' : 'pending'}`} data-id={faction.id}>
-		<div class="faction-id">{faction.name}</div>
-		<div class="faction-status">
-		  {faction.submitted ? '✓ Submitted' : '⏳ Pending'}
+	{campaignFactionsByPlanet.map((group) => (
+	  <div class="planet-group">
+		<h3 class="planet-heading">{group.planet}</h3>
+		<div class="planet-factions">
+		  {group.factions.map((faction) => (
+			<div class="faction-card pending" data-id={faction.id}>
+			  <div class="faction-id">{faction.name} ({faction.id})</div>
+			  <div class="faction-status">⏳ Pending</div>
+			</div>
+		  ))}
 		</div>
 	  </div>
 	))}
@@ -90,7 +99,26 @@ const statusData = {
 
   .submissions-grid {
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: var(--space-lg);
+  }
+
+  .planet-group {
+	background-color: rgba(13, 148, 136, 0.08);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-lg);
+	padding: var(--space-md);
+  }
+
+  .planet-heading {
+	margin: 0 0 var(--space-md);
+	font-size: var(--font-size-lg);
+	color: var(--color-accent-teal);
+  }
+
+  .planet-factions {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
 	gap: var(--space-md);
   }
 
@@ -115,7 +143,7 @@ const statusData = {
 
   .faction-id {
 	font-weight: var(--font-weight-bold);
-	font-size: var(--font-size-lg);
+	font-size: var(--font-size-sm);
 	margin-bottom: var(--space-sm);
   }
 
@@ -130,7 +158,7 @@ const statusData = {
 	}
 
 	.submissions-grid {
-	  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+	  grid-template-columns: 1fr;
 	}
   }
 </style>

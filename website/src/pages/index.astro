@@ -5,19 +5,46 @@ import { withBase } from '../lib/paths';
 
 const clientScreenshot = withBase('images/client-screenshot.png');
 const clientPageUrl = withBase('client');
+const logoUrl = withBase('images/spaceage-logo.png');
+const discordDmUrl = 'https://discord.com/channels/@me';
 ---
 
-<Layout title="Home" description="SpaceAge - Open PBEM Campaign Lobby">
+<Layout title="Home" description="SpaceAge - Open PBEM Campaign Lobby" hideEtaBattle>
   <section class="hero">
-	<div class="hero-content">
-	  <h1>SpaceAge Campaign</h1>
-	  <p class="tagline">An Open Play-by-Email Galactic Strategy Game</p>
+	<div class="hero-top">
+	  <div class="hero-brand">
+		<img
+		  src={logoUrl}
+		  alt="SpaceAge"
+		  class="hero-logo"
+		  width="250"
+		  height="310"
+		/>
+		<div class="hero-titles">
+		  <h1>SpaceAge Campaign</h1>
+		  <p class="tagline">An Open Play-by-Email Galactic Strategy Game</p>
+		</div>
+	  </div>
 
-	  <p class="closed-lobby">
-		This campaign is <strong>invitation-only</strong> — a closed table for ten player factions.
-		There is no public sign-up; this site is for players and observers of that table.
-	  </p>
+	  <div class="hero-visual">
+		<a href={clientPageUrl} class="client-screenshot-link" aria-label="SpaceAge client">
+		  <img
+			src={clientScreenshot}
+			alt="SpaceAge client — star map, unit tree, and order editor"
+			width="1024"
+			height="461"
+			loading="lazy"
+		  />
+		</a>
+	  </div>
+	</div>
 
+	<p class="closed-lobby">
+	  This campaign is <strong>invitation-only</strong> — a closed table for ten player factions.
+	  There is no public sign-up; this site is for players and observers of that table.
+	</p>
+
+	<div class="hero-body">
 	  <div class="attribution-block card" id="attribution">
 		<h2>Lineage &amp; Attribution</h2>
 		<p>
@@ -86,19 +113,6 @@ const clientPageUrl = withBase('client');
 		  publishes new reports. The cycle repeats each quarter.
 		</p>
 	  </div>
-
-	</div>
-
-	<div class="hero-visual">
-	  <a href={clientPageUrl} class="client-screenshot-link" aria-label="SpaceAge client">
-		<img
-		  src={clientScreenshot}
-		  alt="SpaceAge client — star map, unit tree, and order editor"
-		  width="1024"
-		  height="461"
-		  loading="lazy"
-		/>
-	  </a>
 	</div>
   </section>
 
@@ -116,15 +130,11 @@ const clientPageUrl = withBase('client');
 	  </div>
 	  <div class="card">
 		<h3>Deep Technology Tree</h3>
-		<p>Research and develop technologies across 10 levels, from basic fusion drives to advanced weapons and modules.</p>
+		<p>Research and develop hundreds of technologies, from basic fusion drives to space ark class weapons and modules.</p>
 	  </div>
 	  <div class="card">
 		<h3>Rich Simulation</h3>
 		<p>Combat mechanics, resource management, crew skills, planetary environments, and diplomacy all affect your success.</p>
-	  </div>
-	  <div class="card">
-		<h3>Planning Tools</h3>
-		<p><a href={withBase('eta')}>Transit ETA</a> calculator and <a href={withBase('battle')}>battle what-if</a> (estimates only).</p>
 	  </div>
 	</div>
   </section>
@@ -132,35 +142,58 @@ const clientPageUrl = withBase('client');
   <section class="rules-preview-section card">
 	<h2>Quick Start</h2>
 	<p>New to SpaceAge? Start with the <a href={withBase('rules')}>rules overview</a> to understand the core mechanics.</p>
-	<p>Want to dive deeper? Check out the <a href={withBase('client')}>client page</a> for installation and getting started.</p>
+	<p>
+	  Want to dive deeper? Message
+	  <a href={discordDmUrl} rel="noopener noreferrer">@sentinemodo on Discord</a>.
+	</p>
   </section>
 </Layout>
 
 <style>
   .hero {
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	gap: var(--space-2xl);
-	margin-bottom: var(--space-2xl);
-	align-items: center;
-  }
-
-  .hero-content {
 	display: flex;
 	flex-direction: column;
 	gap: var(--space-lg);
+	margin-bottom: var(--space-2xl);
+  }
+
+  .hero-top {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: var(--space-2xl);
+	align-items: start;
+  }
+
+  .hero-brand {
+	display: flex;
+	align-items: flex-start;
+	gap: var(--space-lg);
+  }
+
+  .hero-logo {
+	height: calc(var(--font-size-3xl) * 2);
+	width: auto;
+	flex-shrink: 0;
+  }
+
+  .hero-titles {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-sm);
+	padding-top: var(--space-xs);
   }
 
   .hero h1 {
 	font-size: var(--font-size-3xl);
 	color: var(--color-accent-teal);
-	margin-bottom: var(--space-md);
+	margin: 0;
   }
 
   .tagline {
 	font-size: var(--font-size-xl);
 	color: var(--color-accent-amber);
 	font-weight: var(--font-weight-semibold);
+	margin: 0;
   }
 
   .closed-lobby {
@@ -168,6 +201,14 @@ const clientPageUrl = withBase('client');
 	border-left: 3px solid var(--color-accent-amber);
 	padding: var(--space-md) var(--space-lg);
 	border-radius: var(--radius-md);
+	margin: 0;
+  }
+
+  .hero-body {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-lg);
+	width: 100%;
   }
 
   .attribution-block h2 {
@@ -190,10 +231,6 @@ const clientPageUrl = withBase('client');
 
   .flavour-lead {
 	font-style: italic;
-  }
-
-  .pbem-intro {
-	margin: var(--space-lg) 0;
   }
 
   .hero-visual {
@@ -243,9 +280,13 @@ const clientPageUrl = withBase('client');
   }
 
   @media (max-width: 768px) {
-	.hero {
+	.hero-top {
 	  grid-template-columns: 1fr;
 	}
 
+	.hero-brand {
+	  flex-direction: column;
+	  align-items: flex-start;
+	}
   }
 </style>

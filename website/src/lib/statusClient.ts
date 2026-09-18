@@ -1,3 +1,4 @@
+import { campaignFactionsByPlanet, campaignFactionLabel } from '../data/campaignFactions';
 import { formatNextTurn, formatStatusLabel, type StatusData } from './statusSchema';
 import { withBase } from './paths';
 
@@ -9,6 +10,53 @@ async function fetchStatus(): Promise<StatusData | null> {
   } catch {
     return null;
   }
+}
+
+function factionName(f: { id: number; name?: string }): string {
+  if (f.name && !/^Faction \d+$/.test(f.name)) return f.name;
+  return campaignFactionLabel(f.id);
+}
+
+function renderDashboardGrid(factions: StatusData['factions']): string {
+  const byId = new Map(factions.map((f) => [f.id, f]));
+
+  return campaignFactionsByPlanet
+    .map((group) => {
+      const cards = group.factions
+        .map((faction) => {
+          const live = byId.get(faction.id);
+          const submitted = live?.submitted ?? false;
+          const cls = submitted ? 'faction-card submitted' : 'faction-card pending';
+          const status = submitted ? '✓ Submitted' : '⏳ Pending';
+          const name = live ? factionName(live) : `${faction.name} (${faction.id})`;
+          return `<div class="${cls}" data-id="${faction.id}"><div class="faction-id">${name}</div><div class="faction-status">${status}</div></div>`;
+        })
+        .join('');
+
+      return `<div class="planet-group"><h3 class="planet-heading">${group.planet}</h3><div class="planet-factions">${cards}</div></div>`;
+    })
+    .join('');
+}
+
+function renderTurnsTable(factions: StatusData['factions']): string {
+  const byId = new Map(factions.map((f) => [f.id, f]));
+
+  return campaignFactionsByPlanet
+    .map((group) => {
+      const rows = group.factions
+        .map((faction) => {
+          const live = byId.get(faction.id);
+          const submitted = live?.submitted ?? false;
+          const statusClass = submitted ? 'submitted' : 'pending';
+          const statusText = submitted ? '✓ Submitted' : '⏳ Awaiting Orders';
+          const name = live ? factionName(live) : `${faction.name} (${faction.id})`;
+          return `<div class="table-row" data-faction-id="${faction.id}"><div class="table-cell faction-col"><strong>${name}</strong></div><div class="table-cell status-col ${statusClass}">${statusText}</div></div>`;
+        })
+        .join('');
+
+      return `<div class="planet-group"><h3 class="planet-heading">${group.planet}</h3><div class="factions-table"><div class="table-header"><div class="table-cell faction-col">Faction</div><div class="table-cell status-col">Orders Submitted</div></div>${rows}</div></div>`;
+    })
+    .join('');
 }
 
 export function bindStatusDashboard(root: HTMLElement): () => void {
@@ -26,14 +74,7 @@ export function bindStatusDashboard(root: HTMLElement): () => void {
     if (nextEl) nextEl.textContent = formatNextTurn(data.nextTurnAt);
 
     if (grid && Array.isArray(data.factions)) {
-      grid.innerHTML = data.factions
-        .map((f) => {
-          const cls = f.submitted ? 'faction-card submitted' : 'faction-card pending';
-          const name = f.name ?? `Faction ${f.id}`;
-          const status = f.submitted ? '✓ Submitted' : '⏳ Pending';
-          return `<div class="${cls}" data-id="${f.id}"><div class="faction-id">${name}</div><div class="faction-status">${status}</div></div>`;
-        })
-        .join('');
+      grid.innerHTML = renderDashboardGrid(data.factions);
     }
   }
 
@@ -61,14 +102,7 @@ export function bindTurnsPage(root: HTMLElement): () => void {
     if (nextEl) nextEl.textContent = formatNextTurn(data.nextTurnAt);
 
     if (table && Array.isArray(data.factions)) {
-      table.innerHTML = data.factions
-        .map((f) => {
-          const statusClass = f.submitted ? 'submitted' : 'pending';
-          const statusText = f.submitted ? '✓ Submitted' : '⏳ Awaiting Orders';
-          const name = f.name ?? `Faction ${f.id}`;
-          return `<div class="table-row" data-faction-id="${f.id}"><div class="table-cell faction-col"><strong>${name}</strong></div><div class="table-cell status-col ${statusClass}">${statusText}</div></div>`;
-        })
-        .join('');
+      table.innerHTML = renderTurnsTable(data.factions);
     }
   }
 

@@ -1,0 +1,93 @@
+#faction 3 "abccb"
+#modulestack 000018
+; + Gelvaren Headquarters [000018], corporate headquarters [corphq].
+; items: 48 terrans [terran], 2658 cash [cash].
+@get all cash from 000026
+@get all terran from 000026
+@buy all terran
+@produce cash
+
+#modulestack 000019
+; + small cargo bay [000019], small cargo bay [cargob].
+; items: 1088 units of food [food], 2 terrans [terran], 3 units of iron
+; [iron], 18 units of oil [oil].
+sell 300 food
+@get all food from 000020
+@get all oil from 000022
+
+#modulestack 000020
+; + farming complex [000020], 2 farming complexes [farms].
+; items: 10 terrans [terran], 10 units of food [food].
+@use farmng
+
+#modulestack 000021
+; + wind powerplant [000021], 20 wind powerplants [wnplnt].
+has 21 wnplnt
+-sell 1 wnplnt
+@produce energy
+
+#modulestack 000022
+; + core drill [000022], core drill [cdrill].
+; items: 6 terrans [terran], 2 units of oil [oil].
+@use oildwe
+
+#modulestack 000023
+; + factory [000023], factory [factry].
+; technologies: armored combat [armcbt].
+; items: 10 terrans [terran].
+; effects:
+;   producing tanks [tanks] for military barrack [000025] into tanks
+;   [109], 3 weeks to complete.
+use armcbt as 109 for 000025
+get 1 iron from 000019
+-use wndtrb for 000021
+
+#modulestack 000025
+; + military barrack [000025], military barrack [barrck].
+; technologies: form infantry battalion [frminf].
+; items: 10 terrans [terran].
+get 1 iron from 000019
+-use frminf for 000007
+
+#modulestack 000026
+; + Gelvaren complex [000026], city [city], immobile.
+@produce terran
+
+#modulestack 108
+; + peaceful scout [108], tanks [tanks].
+; items: 16 terrans [terran], 42 cash [cash], 12 units of oil [oil], 32
+; units of food [food].
+; effects:
+;   can operate for another 7 weeks without refueling.
+see 109
+-declare faction 2 enemy
+-tactic prioritize armed
+
+#modulestack 109
+; + tanks [109], 2 tanks [tanks], disabled.
+has 3 tanks
+-get 48 terran from 000018
+-get 18 oil from 000019
+-get 100 food from 000019
+-tactic prioritize command
+-tactic capture
+-move R00002
+--name "Surrender or die!"
+
+#modulestack 110
+; + infantry battalion [110], infantry battalion [inftry].
+get 10 cash from 000018
+get 200 food from 000019
+move R00002
+-capture 000012
+-capture all
+
+#person 000002
+; + Gelvaren CEO [000002], terran [terran].
+; skills: armor platoon leader [arpldr].
+
+#person 107
+; + terran officer [107], terran [terran].
+; skills: infantry battalion commander [inbtcm].
+
+#end

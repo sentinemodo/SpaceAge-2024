@@ -1,0 +1,78 @@
+#faction 3 "abccb"
+#modulestack 000026
+; + Gelvaren complex [000026], city [city], immobile.
+; items: 1000 cash [cash].
+@produce terran
+
+#modulestack 000018
+; + Gelvaren Headquarters [000018], corporate headquarters [corphq].
+; items: 25 terrans [terran].
+train terran officer as new3
+@get all cash from 000026
+@get all terran from 000026
+@buy all terran 
+@produce cash
+
+#modulestack 000019
+; + small cargo bay [000019], small cargo bay [cargob].
+; items: 1000 units of food [food], 2 terrans [terran], 20 units of iron
+; [iron].
+@get all food from 000020
+@get all oil from 000022
+
+#modulestack 000020
+; + farming complex [000020], 2 farming complexes [farms].
+; items: 10 terrans [terran].
+@use farmng
+
+#modulestack 000021
+; + wind powerplant [000021], 20 wind powerplants [wnplnt].
+@produce energy
+
+#modulestack 000022
+; + core drill [000022], core drill [cdrill].
+; items: 6 terrans [terran].
+@use oildwe
+
+#modulestack 000023
+; + factory [000023], factory [factry].
+; technologies: armored combat [armcbt].
+; items: 10 terrans [terran].
+get 4 iron from 000019
+-use armcbt as new1
+get 12 iron from 000019
+-3 use armcbt as new4 for 000025
+
+#modulestack 000025
+; + military barrack [000025], military barrack [barrck].
+; skills available: armored combat platoon leader [acpldr], infantry battalion commander [inbtcm]
+; effects: fast training +100%, repair +10%, upkeep reduction -10%
+; technologies: form infantry battalion [frminf].
+; items: 10 terrans [terran]
+get 1 iron from 000019
+-use frminf as new2 for 000025
+
+#person 000002
+; + Gelvaren CEO [000002], terran [terran].
+stack 000025
+-train skill arpldr
+--see new4
+---stack new4
+
+#modulestack new1
+; recon force
+name "peaceful scout"
+has modules
+-move R00002
+-+get 16 terran from 000018
+-+get 42 cash from 000018
+-+get 16 oil from 000019
+-+get 32 food from 000019
+
+#person new3
+stack 000025
+-train skill inbtcm
+--see new2
+---stack new2
+
+#end

@@ -3,11 +3,15 @@ import Layout from '../layouts/Layout.astro';
 import { withBase } from '../lib/paths';
 
 const clientUrl = import.meta.env.PUBLIC_CLIENT_URL || 'http://localhost:8787/client/';
+const logoUrl = withBase('images/spaceage-logo.png');
 ---
 
 <Layout title="Game Client" description="SpaceAge hosted visual client">
   <section class="client-content">
-	<h1>Game Client</h1>
+	<header class="client-header">
+	  <h1>Game Client</h1>
+	  <img src={logoUrl} alt="SpaceAge" class="client-logo" width="250" height="310" />
+	</header>
 
 	<div class="intro-card card">
 	  <h2>Hosted Visual Client</h2>
@@ -24,7 +28,7 @@ const clientUrl = import.meta.env.PUBLIC_CLIENT_URL || 'http://localhost:8787/cl
 		<div class="feature-item"><h3>Reports</h3><p>Quarterly XML reports from the game host.</p></div>
 		<div class="feature-item"><h3>Star map</h3><p>Filter units by system; region drill-down.</p></div>
 		<div class="feature-item"><h3>Orders</h3><p>Editor with engine-backed validation warnings.</p></div>
-		<div class="feature-item"><h3>Tools</h3><p><a href={withBase('eta')}>Transit ETA</a> and <a href={withBase('battle')}>Battle what-if</a> on this site; engine battle-sim in the hosted client.</p></div>
+		<div class="feature-item"><h3>Movement</h3><p><a href={withBase('movement')}>Unit movement</a> — all MOVE orders from your report plus a transit ETA simulator.</p></div>
 	  </div>
 	</section>
 
@@ -42,7 +46,28 @@ const clientUrl = import.meta.env.PUBLIC_CLIENT_URL || 'http://localhost:8787/cl
 
 <style>
   .client-content { max-width: 900px; margin: 0 auto; }
-  h1 { color: var(--color-accent-teal); margin-bottom: var(--space-xl); }
+
+  .client-header {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: var(--space-lg);
+	margin-bottom: var(--space-xl);
+  }
+
+  h1 {
+	color: var(--color-accent-teal);
+	margin: 0;
+	font-size: var(--font-size-3xl);
+	line-height: 1.2;
+  }
+
+  .client-logo {
+	height: var(--font-size-3xl);
+	width: auto;
+	flex-shrink: 0;
+  }
+
   .intro-card { margin-bottom: var(--space-2xl); }
   .cta-button {
 	display: inline-block;
@@ -56,4 +81,11 @@ const clientUrl = import.meta.env.PUBLIC_CLIENT_URL || 'http://localhost:8787/cl
   }
   .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-lg); }
   .feature-item { background: var(--color-card-bg); color: var(--color-text-dark); padding: var(--space-lg); border-radius: var(--radius-lg); }
+
+  @media (max-width: 768px) {
+	.client-header {
+	  flex-direction: column-reverse;
+	  align-items: flex-start;
+	}
+  }
 </style>
