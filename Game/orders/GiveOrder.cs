@@ -230,6 +230,12 @@ namespace SpaceAge
 		{
 			this.Executed = false;
 
+			if (!this.canGiveToReceiver(week))
+			{
+				base.Execute(week);
+				return;
+			}
+
 			if (this.givingAllItemTypes) 
 			{				
 				this.executeGiveAllItems(week);
@@ -239,6 +245,37 @@ namespace SpaceAge
 			}
 			
 			base.Execute(week);
+		}
+
+		private bool canGiveToReceiver(int week)
+		{
+			if (this.Receiver == null)
+			{
+				return true;
+			}
+
+			Faction receiverOwner = this.Receiver.Owner;
+			Faction giverOwner = this.Transferer.Owner;
+			if (receiverOwner == null || giverOwner == null || receiverOwner == giverOwner)
+			{
+				return true;
+			}
+
+			if (giverOwner.AttitudeToward(receiverOwner) >= FactionAttitude.Neutral)
+			{
+				return true;
+			}
+
+			if (this.Level == 0 && !this.FailedToExecute)
+			{
+				this.Transferer.EventReports.Add(
+					week,
+					string.Format(
+						"GIVE failed. Cannot give to {0} while attitude is below neutral.",
+						this.Receiver.ReportName));
+				this.FailedToExecute = true;
+			}
+			return false;
 		}
 
 		private void executeGiveAllItems(int week)

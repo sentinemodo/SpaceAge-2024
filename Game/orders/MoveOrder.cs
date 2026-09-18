@@ -399,10 +399,37 @@ namespace SpaceAge
 			return SkillEffects.ApplyDurationPercent(weeks, SkillEffects.MoveDurationPercent(this.Mover.RootModuleStack));
 		}
 
+		private bool applyPatrolRules(int week)
+		{
+			Region destinationRegion = this.destination as Region;
+			if (destinationRegion == null)
+			{
+				return true;
+			}
+
+			ModuleStack blocker = PatrolGuard.FindBlocker(destinationRegion, this.Mover.Owner);
+			if (blocker == null)
+			{
+				return true;
+			}
+
+			this.Mover.EventReports.Add(
+				week,
+				string.Format(
+					"MOVE failed. {0} is patrolling {1}.",
+					blocker.ReportName,
+					destinationRegion.ReportName));
+			return false;
+		}
+
 		private bool applyEnvironmentMoveRules(int week)
 		{
 			Location from = this.Mover.Location as Location;
 			Location to = this.destination;
+			if (!this.applyPatrolRules(week))
+			{
+				return false;
+			}
 			if (!BodyEnvironment.IsSurfaceOrbitHop(from, to))
 			{
 				return true;

@@ -86,7 +86,7 @@ namespace SpaceAge
 				this.holdItemType = ItemType.All[token];
 				return;
 			}
-			else if (flag == "AVOID" || flag == "ONLINE" || flag == "SHARING")
+			else if (flag == "AVOID" || flag == "ONLINE" || flag == "SHARING" || flag == "PATROL")
 			{
 				this.flagName = flag;
 			}
@@ -162,6 +162,10 @@ namespace SpaceAge
 					break;
 				case "SHARING":
 					this.Setter.Sharing = flagValue;
+					this.Executed = true;
+					break;
+				case "PATROL":
+					this.Setter.IsPatrolling = flagValue;
 					this.Executed = true;
 					break;
 				case "HOLD":

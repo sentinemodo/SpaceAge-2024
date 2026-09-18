@@ -101,6 +101,10 @@ namespace SpaceAge
 			{
 				line = string.Format("{0}, not sharing", line);
 			}
+			if (this.IsPatrolling)
+			{
+				line = string.Format("{0}, patrolling", line);
+			}
 
             if (this.Owner != null & this.Owner != faction)
             {

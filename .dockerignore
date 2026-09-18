@@ -21,6 +21,7 @@ designer
 player/drafts
 *.md
 !campaign/README.md
+!play/player/campaign/basic_technologies.md
 **/*.tsbuildinfo
 **/.env
 **/.env.*

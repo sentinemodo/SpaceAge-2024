@@ -4,6 +4,8 @@
 
 **Open beta (primary):** [`game-host/`](../game-host/README.md) — faction auth, session API, visual tool.
 
+**Hosted beta GM scenarios (Docker + ngrok):** [`hosted-beta-gm.md`](hosted-beta-gm.md).
+
 Engine version: `Game/Program.cs` → `EngineVersion`.
 
 The **campaign-gm** agent (`.cursor/agents/campaign-gm.md`) **executes** these scripts and keeps this README accurate. It does **not** write or patch `play/*.ps1`, C#, or tests. Missing automation is listed under [Gaps](#gaps) — implementers add scripts; the GM only documents and runs them.

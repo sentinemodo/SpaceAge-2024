@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 const FORBIDDEN_PATTERNS = [/password/i, /gamein/i, /order\./i, /report\./i];
-const PHASE1_ROUTES = ['/', '/client', '/turns', '/rules'] as const;
+const PHASE1_ROUTES = ['/', '/client', '/turns', '/rules', '/technologies'] as const;
 
 function assertNoLeaks(body: string, route?: string): void {
   for (const pattern of FORBIDDEN_PATTERNS) {
@@ -109,6 +109,14 @@ test.describe('Phase 1 lobby acceptance', () => {
     await expect(main.getByText(/#modulestack/i).first()).toBeVisible();
   });
 
+  test('WS-006b: Basic technologies catalog with cross-links', async ({ page }) => {
+    await page.goto('/technologies');
+    const main = page.locator('main');
+    await expect(main.getByRole('heading', { name: /Basic Technologies/i })).toBeVisible();
+    await expect(main.locator('#tech-farmng')).toBeVisible();
+    await expect(main.locator('a.tech-crosslink[href="#tech-iron"]').first()).toBeVisible();
+  });
+
   test('WS-007: Mobile nav and cards', async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto('/');
@@ -160,6 +168,9 @@ test.describe('Phase 1 lobby acceptance', () => {
 
     await nav.getByRole('link', { name: 'Rules', exact: true }).click();
     await expect(page).toHaveURL('/rules');
+
+    await nav.getByRole('link', { name: 'Technologies', exact: true }).click();
+    await expect(page).toHaveURL(/\/technologies\/?$/);
 
     await nav.getByRole('link', { name: 'Client', exact: true }).click();
     await expect(page).toHaveURL('/client');

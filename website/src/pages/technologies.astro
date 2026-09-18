@@ -1,0 +1,112 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { withBase } from '../lib/paths';
+import { renderBasicTechnologiesHtml } from '../lib/basicTechnologies';
+
+const catalogHtml = renderBasicTechnologiesHtml();
+---
+
+<Layout title="Basic Technologies" description="SpaceAge campaign level 0–1 technology catalog (open beta 0.8.001)">
+  <section class="technologies-content">
+    <p class="tech-nav">
+      <a href={withBase('rules')}>← Player rules</a>
+    </p>
+
+    <div class="intro-card card">
+      <h1>Basic Technologies</h1>
+      <p>
+        Level <strong>0</strong> and <strong>1</strong> technologies for the open campaign, with cross-links between
+        tech and item ids — same catalog as the ⇄ Technologies panel in the game client.
+      </p>
+    </div>
+
+    <article class="tech-markdown card" set:html={catalogHtml} />
+  </section>
+</Layout>
+
+<style>
+  .technologies-content {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .tech-nav {
+    margin: 0 0 var(--space-lg);
+  }
+
+  h1 {
+    color: var(--color-accent-teal);
+    margin-top: 0;
+    margin-bottom: var(--space-md);
+  }
+
+  .intro-card {
+    margin-bottom: var(--space-xl);
+  }
+
+  .tech-markdown :global(.technology-catalog) {
+    font-size: var(--font-size-sm);
+    line-height: 1.5;
+  }
+
+  .tech-markdown :global(.tech-title) {
+    color: var(--color-accent-teal);
+    font-size: var(--font-size-lg);
+    margin: 0 0 var(--space-md);
+  }
+
+  .tech-markdown :global(.tech-section) {
+    color: var(--color-accent-teal);
+    font-size: var(--font-size-md);
+    margin: var(--space-xl) 0 var(--space-sm);
+    scroll-margin-top: var(--space-lg);
+  }
+
+  .tech-markdown :global(.tech-entry-title) {
+    font-size: var(--font-size-sm);
+    margin: var(--space-md) 0 var(--space-xs);
+    scroll-margin-top: var(--space-lg);
+  }
+
+  .tech-markdown :global(.tech-paragraph) {
+    margin: 0.2rem 0;
+    color: var(--color-text-muted, #bbb);
+  }
+
+  .tech-markdown :global(.tech-crosslink) {
+    color: var(--color-accent-teal);
+    text-decoration: underline;
+  }
+
+  .tech-markdown :global(.tech-crosslink:hover),
+  .tech-markdown :global(.tech-crosslink:focus-visible) {
+    color: var(--color-accent-amber);
+  }
+
+  .tech-markdown :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    margin: var(--space-md) 0;
+    font-size: var(--font-size-sm);
+  }
+
+  .tech-markdown :global(th),
+  .tech-markdown :global(td) {
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    padding: var(--space-sm);
+    text-align: left;
+    vertical-align: top;
+  }
+
+  .tech-markdown :global(th) {
+    background: rgba(13, 148, 136, 0.15);
+    color: var(--color-accent-teal);
+  }
+
+  @media (max-width: 768px) {
+    .tech-markdown :global(table) {
+      display: block;
+      overflow-x: auto;
+    }
+  }
+</style>

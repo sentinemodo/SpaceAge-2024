@@ -162,6 +162,7 @@
     <Compile Include="data structures\Exits.cs" />
     <Compile Include="data structures\ExitMode.cs" />
     <Compile Include="data structures\People.cs" />
+    <Compile Include="data structures\PatrolGuard.cs" />
     <Compile Include="data structures\Person.cs" />
     <Compile Include="data structures\Race.cs" />
     <Compile Include="data structures\Resource.cs" />

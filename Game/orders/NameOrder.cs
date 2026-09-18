@@ -127,8 +127,20 @@ namespace SpaceAge
 				} 
 				else if (this.Namer.Location.Name == this.named.Name)
 				{
-					this.named.FullName = this.Description;
-					this.Executed = true;
+					ModuleStack patrolBlocker = PatrolGuard.FindRenameBlocker(this.named, this.Namer.Owner);
+					if (patrolBlocker != null)
+					{
+						this.Namer.EventReports.Add(
+							week,
+							string.Format(
+								"NAME failed. {0} is patrolling this location.",
+								patrolBlocker.ReportName));
+					}
+					else
+					{
+						this.named.FullName = this.Description;
+						this.Executed = true;
+					}
 				}
 				else 
 				{

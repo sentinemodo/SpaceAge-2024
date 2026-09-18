@@ -1,8 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { clientBaseUrl } from '../lib/clientUrls';
 import { withBase } from '../lib/paths';
 
-const clientUrl = import.meta.env.PUBLIC_CLIENT_URL || 'http://localhost:8787/client/';
+const clientUrl = clientBaseUrl();
 const logoUrl = withBase('images/spaceage-logo.png');
 ---
 

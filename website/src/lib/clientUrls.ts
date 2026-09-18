@@ -1,6 +1,9 @@
+/** Production client URL (ngrok → Docker game-host). Override at build via PUBLIC_CLIENT_URL. */
+export const HOSTED_CLIENT_URL = 'https://manatee-sabbath-kudos.ngrok-free.dev/client/';
+
 /** Hosted visual client base URL (game-host /client/). */
 export function clientBaseUrl(): string {
-  return import.meta.env.PUBLIC_CLIENT_URL || 'http://localhost:8787/client/';
+  return import.meta.env.PUBLIC_CLIENT_URL || HOSTED_CLIENT_URL;
 }
 
 /** Open client with faction pre-selected (?faction=). Login prompts if needed. */

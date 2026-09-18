@@ -29,7 +29,9 @@ try {
 	$port = if ($env:GAME_HOST_PORT) { $env:GAME_HOST_PORT } else { '8787' }
 	Write-Host ""
 	Write-Host "Game-host:  http://localhost:$port/client/"
+	Write-Host "Public:     https://manatee-sabbath-kudos.ngrok-free.dev/client/  (.\play\expose-game-host-ngrok.ps1)"
 	Write-Host "Health:     http://localhost:$port/health"
+	Write-Host "GM guide:   play/hosted-beta-gm.md"
 	Write-Host "Bootstrap:  .\play\beta-launch.ps1 -GameHostUrl http://localhost:$port"
 	Write-Host ""
 	Write-Host "Ollama Docker: docker start ollama  (http://127.0.0.1:11434)"

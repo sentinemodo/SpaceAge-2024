@@ -34,6 +34,20 @@ docker compose up --build -d
 - API + visual client: http://localhost:8787/client/
 - Health: http://localhost:8787/health
 
+### Remote access (ngrok — primary)
+
+Public HTTPS client (visual tool + API, same origin):
+
+**https://manatee-sabbath-kudos.ngrok-free.dev/client/**
+
+```powershell
+.\play\expose-game-host-ngrok.ps1
+```
+
+Requires ngrok authtoken and the reserved domain on your account. No router port forwarding.
+
+Alternative (static IP + WAN port 8787): see [`play/router-port-forward.md`](../play/router-port-forward.md).
+
 Persistent data (host paths, gitignored):
 
 | Host path | Container path | Purpose |
@@ -41,32 +55,9 @@ Persistent data (host paths, gitignored):
 | `game-host/runs/` | `/app/game-host/runs` | Live campaign (`gamein.xml`, orders, reports) |
 | `play/runs/` | `/app/play/runs` | Init passwords, player-agent RAG inputs |
 
-### Bootstrap open beta
+### GM operations
 
-```powershell
-# 1. Start container (above)
-# 2. Init + reports via GM API
-.\play\beta-launch.ps1 -GameHostUrl http://localhost:8787
-```
-
-### Turn loop (GM)
-
-```powershell
-# After players submit orders (visual tool → game-host API)
-Invoke-RestMethod -Method Post -Uri http://localhost:8787/api/gm/turn -Headers @{ 'X-GM-Key' = 'dev-gm-key' }
-
-# Copy isolated reports for player-agent RAG (reads play/runs/…/factions/)
-.\play\sync-game-host-factions.ps1 -Run beta-1
-
-# Player-agent on host → Ollama Docker on 11434
-.\play\ollama-check.ps1
-.\play\sync-game-host-factions.ps1 -Run beta-1
-.\play\ingest-rag.ps1 -Run beta-1 -Mode campaign
-.\play\draft-run.ps1 -Run beta-1 -Mode campaign -DryRun   # drop -DryRun to draft
-
-# Publish lobby status
-.\play\generate-status.ps1 beta-1
-```
+Step-by-step scenarios (bootstrap, ngrok, turn loop, lobby status): **[`play/hosted-beta-gm.md`](../play/hosted-beta-gm.md)**.
 
 ### Environment
 

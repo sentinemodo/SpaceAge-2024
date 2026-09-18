@@ -31,6 +31,24 @@ namespace SpaceAge
 			set { this.isAvoiding = value; }
 		}
 
+		private bool isPatrolling = false;
+		public bool IsPatrolling
+		{
+			get { return this.isPatrolling; }
+			set { this.isPatrolling = value; }
+		}
+
+		public bool EnforcesPatrol
+		{
+			get
+			{
+				return this.IsPatrolling
+					&& this.IsArmed
+					&& this.HasOperationalModules
+					&& this.IsRootModuleStack;
+			}
+		}
+
 		public int Damage
 		{
 			get

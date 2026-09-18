@@ -54,6 +54,10 @@ namespace SpaceAge
 			{
 				this.Sharing = this.XMLAssignBoolean(elModuleStack.GetAttribute("sharing"), true);
 			}
+			if (elModuleStack.HasAttribute("patrol"))
+			{
+				this.IsPatrolling = this.XMLAssignBoolean(elModuleStack.GetAttribute("patrol"), false);
+			}
 			foreach (XmlElement elHold in elModuleStack.SelectNodes("hold"))
 			{
 				ItemType itemType = ItemType.All[elHold.GetAttribute("item-type")];
@@ -106,6 +110,10 @@ namespace SpaceAge
 			if (!this.Sharing)
 			{
 				this.xmlElement.SetAttribute("sharing", "false");
+			}
+			if (this.IsPatrolling)
+			{
+				this.xmlElement.SetAttribute("patrol", "true");
 			}
 			foreach (KeyValuePair<ItemType, int> hold in this.itemHolds)
 			{

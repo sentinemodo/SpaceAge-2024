@@ -2,6 +2,8 @@
 
 HTTP service for open beta: faction auth, report XML, order upload, GM turn runner.
 
+GM step-by-step scenarios (Docker, ngrok, turn loop): [`play/hosted-beta-gm.md`](../play/hosted-beta-gm.md).
+
 Decision: [docs/architecture/adr/ADR-0011-hosted-game-service.md](../docs/architecture/adr/ADR-0011-hosted-game-service.md)
 
 ## Prerequisites
