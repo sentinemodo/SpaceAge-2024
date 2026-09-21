@@ -6,6 +6,7 @@ Ideas collected for Cursor agents. Do not implement from this file unless explic
 
 - [ ] Technologies for creating underground regions
 - [ ] Technologies for building underwater and surface (above-water) cities
+- [ ] Branch offices enabling recruitment in regions beyond headquarters
 
 ## Done
 
