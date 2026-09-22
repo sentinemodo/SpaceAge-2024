@@ -415,6 +415,20 @@
 			<use-consume item="copper" quantity="2" />
 			<use-consume item="silici" quantity="5" />
 		</entry>
+		<entry
+			name="brnofc"
+			tags="production"
+			name-en="branch office construction"
+			level="1"
+			requires="corpmg"
+			description="Satellite HR and payroll offices use encrypted radio links to HQ ledgers, biometric screening booths, and local labour contracts. Not a second C-suite: no region-wide construction scheduling or upkeep optimization."
+			use-time="4">
+			<use-allowed-in module-type-group="production"/>
+			<use-produce module="brnofc"/>
+			<use-consume item="iron" quantity="5"/>
+			<use-consume item="copper" quantity="1"/>
+			<use-consume item="silici" quantity="2"/>
+		</entry>
 		<entry 
 			name="iminng" 
 			name-en="iron mining" 
@@ -1314,6 +1328,25 @@ Researchers can query the library. The system can handle natural language questi
 			<upkeep type="cash" quantity="100"/>
 			<effect type="upkeep reduction" value="0.1" target="region"/>
 			<effect type="fast construction" value="1.0" target="region"/>
+			<operation-allowed-in module-group="settlement"/>
+		</entry>
+		<entry
+			name="brnofc"
+			name-en="branch office"
+			name-en2="branch offices"
+			group="command"
+			description="A mid-rise admin block with interview suites, a small vault, and a satellite uplink for payroll. Recruits local labour at half headquarters cadence; optional cash take is a thin franchise fee, not corporate treasury output."
+			size="300"
+			mass="300"
+			energy="4"
+			crew="6"
+			capacity="150"
+			technology-capacity="1"
+			hit-points="40"
+			defense="2">
+			<produce item="cash" quantity="20" duration="2"/>
+			<produce item="terran" quantity="1" duration="2"/>
+			<upkeep type="cash" quantity="40"/>
 			<operation-allowed-in module-group="settlement"/>
 		</entry>
 		<entry
