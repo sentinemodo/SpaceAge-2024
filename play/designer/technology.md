@@ -66,7 +66,7 @@ L3–L10 target: production 3–5, propulsion 2–3, research 2–3, military 2�
 | Lv | Production | Propulsion | Research | Military |
 |----|------------|------------|----------|----------|
 | 0 | dense live | `areact` | `filidx` | `stnrdf` **kinetic** |
-| 1 | live + `nminng` `gminng` | `hydstg` | `optins` | armour/infantry/lasers + **`prlgun` `prllsr` `psnarm`** |
+| 1 | live + `nminng` `gminng` **`brnofc`** | `hydstg` | `optins` | armour/infantry/lasers + **`prlgun` `prllsr` `psnarm`** |
 | 2 | live He3/autfab/habitat + `alminn` `krogen` | **`fustch`** `ionthr` | `medtec` `medirf` | `xraylo` **laser** + **`psnshd` `psnew`** |
 | 3 | live He3/dome/hull + `amnext` `ch4min` `ntmine` `solth` `hydsyn` | `autprp` `nucthr` `slsail` | `advres` `sckcns` `pharms` | `drnhng` **drone** `mslpod` **missile** `ewsens` **ew** `prxgrd` **pbpd** |
 | 4 | `orbfnd` `d2ext` `volext` `fuelcl` `liming` `xeming` | `ntrdrv` `hypstg` `hlthrs` | `radtol` `cryres` `matcmp` | `alnfgh` **drone** `kntcgn` **kinetic** `shplas` **shield** |
@@ -93,6 +93,7 @@ flowchart TB
     slcmlt --> alminn
     slcmlt --> solth
     cminng --> gminng
+    corpmg --> brnofc
     tminng --> wminng --> ptminn
     tminng --> bormin
     tminng --> beming
@@ -215,6 +216,7 @@ flowchart TB
 | `advres` | `filidx` (live) |
 | `nminng` | `iminng` |
 | `gminng` | `cminng` |
+| `brnofc` | `corpmg` |
 | `alminn` | `slcmlt` |
 | `krogen` | `hcdril` |
 | `amnext` | `wtrdst` |
@@ -380,6 +382,8 @@ Primary tags assigned for campaign research targeting. Consume/produce are live 
 | `spctrl` | space control | 1 `iron`, 4 `titani`, 1 `silici` | `cbridg` | Use-time 3 |
 | `urfiss` | uranium fission | 2 `iron`, 8 `titani`, 5 `copper` | `fisrec` | Burns `uraniu`, produces `wastes`. Use-time 6 |
 
+`corpmg` is L0 (always known) and seeds every player HQ. Remote recruitment is **L1 `brnofc`** (below), not a free second headquarters.
+
 ### Propulsion
 
 | Id | Name | Consume | Produce | Notes |
@@ -418,6 +422,7 @@ Copy required. Capacity 1. Cost 8 unless noted.
 | `wastdp` | waste disposal | — | 1 | 2 `wastes` | — | Spacecraft; solar disposal |
 | **`nminng`** | nickel-iron extraction | `iminng` | 1 | — | 2 `nickfe` | M-type metal: Fe-Ni alloy from `lrmast`/`smmast`. Extraction, solid-surface |
 | **`gminng`** | gold recovery | `cminng` | 2 | — | 1 `gold` | Cyanide-free gravity/amalgam analogue on hydrothermal veins. Extraction |
+| **`brnofc`** | branch office construction | `corpmg` | 4 | 5 `iron`, 1 `copper`, 2 `silici` | `brnofc` | Satellite HR/payroll node for a second settlement region. Tag production. Cost 8. **Not** a second HQ: half recruitment, 20% cash, no region buffs — see [`economy.md`](economy.md), [`catalog.md`](catalog.md) |
 
 ### Propulsion (gap)
 
