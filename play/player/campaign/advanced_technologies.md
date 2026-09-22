@@ -1,8 +1,8 @@
 # Level 2 and above technologies (campaign)
 
-Catalog: `play/campaign/data.xml`, loaded by `Game/game/CatalogLoader.cs`. Checked **9 Sep 2026** against engine **0.1.158** (Phases 1–6 complete through L10). Level 0–1: `play/player/campaign/basic_technologies.md`.
+Catalog: `play/campaign/data.xml`, loaded by `Game/game/CatalogLoader.cs`. Checked **22 Sep 2026** against engine **0.8.001** (Phases 1–6 through L10; ocean / underwater L2–L3: `usctyc`, `uwcbt`, liquid-surface `dmecns`/`dmdcty`). Level 0–1: `play/player/campaign/basic_technologies.md`.
 
-Lists **level 2+** technologies grouped by level, alphabetical by English `name-en`. Omitted `use-time` defaults to **1** week. Omitted consume/produce `quantity` defaults to **1**.
+Lists **level 2+** technologies grouped by level, alphabetical by English `name-en`. Omitted `use-time` defaults to **1** week. Omitted consume/produce `quantity` defaults to **1**. SampleGame `play/player/advanced_technologies.md` stays on `Tests/data.xml` (no ocean-city tokens).
 
 ## Levels
 
@@ -91,6 +91,24 @@ Works in: module-type-group=production. Use consumes: 3 unit of terran breathing
 Methods for raising a root-level pressure shell sized to hold one or two support modules. It is not crew quarters.
 Works in: module-type-group=production, location-type=solid-surface. Use consumes: 20 unit of iron `[iron]`, 8 unit of titanium `[titani]`. Use produces: small habitat `[smhabi]`. Use-time: 6 weeks.
 
+**under-surface city construction [usctyc]**  
+Tag: `production`.  **Requires:** `uwtrs`.
+Seafloor pressure metro with a surface access port and elevator shaft. Ambient surface air is forced down the shaft; the colony does not run a closed breathing-gas loop.
+Works in: module-type-group=production. Use consumes: 60 unit of iron `[iron]`, 20 unit of titanium `[titani]`, 10 unit of copper `[copper]`. Use produces: under-surface city `[uscty]`. Use-time: 12 weeks. Seat via `FOR` needs own underwater craft in the seat region (`play/player/rules.md`).
+
+**under-surface city [uscty]**  
+Seafloor pressure metro with a surface access port and elevator shaft. Ambient surface air is forced down the shaft; no closed breathing-gas loop.  
+Group `settlement`. Built by under-surface city construction `[usctyc]`. Size 8000, capacity 5000, energy 12, HP 300, tech-cap 2, population max 1500. `underwater="yes"`. Upkeep 40 food and 90 cash — **no** `terair` upkeep (shaft air). Produces 150 cash / 13 weeks. Operates on **liquid-surface** only. Stealthy until an observer has underwater units in-region or a spaceship hull on the body’s orbit.
+
+**underwater combat [uwcbt]**  
+Tag: `military`.  **Requires:** `uwtrs`.
+Combat submarine: pressure hull, oil closed-cycle, and kinetic guns for undersea work. Costlier than tanks or gunboats; escorts undersea colonies.
+Works in: module-type-group=production. Use consumes: 14 unit of iron `[iron]`, 6 unit of titanium `[titani]`. Use produces: underwater combat craft `[uwtank]`. Use-time: 12 weeks.
+
+**underwater combat craft [uwtank]**  
+Combat submarine with kinetic guns. Pressure hull and oil closed-cycle. Costlier than tanks or gunboats; liquid surface only.  
+Group `vehicle`. Built by underwater combat `[uwcbt]`. `weapon-group` `kinetic`. Size 300, mass 320, crew 14, capacity 200, HP 95, attack 7, defense 6, damage 8. `underwater="yes"`. Upkeep 85 cash (rebel 10% if unpaid). Consumes 14 food and 14 terran air (damage 25% if not). Naval move speed 1. Fuel duration 13 (5 oil). Operates on **liquid-surface** with terran atmosphere `[terair]`. Counts as underwater presence for stealth and seating.
+
 **x-ray laser optics [xraylo]**  
 **Requires:** `lasopt`.
 Advanced optics for penetrating x-ray lasers.
@@ -133,8 +151,12 @@ Purpose-built helium-3 core drills that double extraction efficiency at the cost
 Works in: module-type-group=production. Use consumes: 30 unit of iron `[iron]`, 10 unit of titanium `[titani]`. Use produces: helium-3 core drill `[he3ext]`. Use-time: 1 week.
 
 **dome city construction [dmecns]**  
-Construction of a compact domed settlement that can operate on airless rock if it is supplied with breathing gas and food.
-Works in: module-type-group=production, location-type=solid-surface. Use consumes: 40 unit of iron `[iron]`, 20 unit of titanium `[titani]`. Use produces: small dome city `[dmdcty]`. Use-time: 10 weeks.
+Construction of a compact domed settlement for airless rock or seafloor. Closed pressure shell; always needs canned breathing gas and food, even underwater (no surface air shaft).
+Works in: module-type-group=production, location-type=solid-surface **or** liquid-surface. Use consumes: 40 unit of iron `[iron]`, 20 unit of titanium `[titani]`. Use produces: small dome city `[dmdcty]`. Use-time: 10 weeks. Seating on **liquid-surface** needs own underwater craft in the seat region (`play/player/rules.md`); solid-surface seats do not.
+
+**small dome city [dmdcty]**  
+A compact ownable dome for airless rock or seafloor. Closed pressure shell; always needs food and canned terran breathing gas (no surface air shaft) — **unlike** under-surface city `[uscty]`, which omits `terair` upkeep.  
+Group `settlement`. Built by dome city construction `[dmecns]`. Size 5000, capacity 3500, energy 10, HP 250, tech-cap 2, population max 2000. Upkeep 20 food, 20 terran air `[terair]`, 75 cash. Produces 200 cash / 13 weeks. Operates on **solid-surface and liquid-surface**. Not catalog-flagged `underwater`, but on liquid-surface it is stealthy and needs an underwater tender to seat.
 
 **drone hangar construction [drnhng]**  
 Tag: `military`.
