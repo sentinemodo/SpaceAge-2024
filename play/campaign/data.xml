@@ -2198,7 +2198,8 @@ Researchers can query the library. The system can handle natural language questi
 			population-maximum="1500"
 			energy="12"
 			technology-capacity="2"
-			hit-points="300">
+			hit-points="300"
+			underwater="yes">
 			<upkeep type="food" quantity="40"/>
 			<upkeep type="cash" quantity="90"/>
 			<produce item="cash" quantity="150" duration="13"/>
@@ -2281,7 +2282,8 @@ Researchers can query the library. The system can handle natural language questi
 			mass="750"
 			crew="8"
 			energy="8"
-			hit-points="60">
+			hit-points="60"
+			underwater="yes">
 			<upkeep type="cash" quantity="60"/>
 			<operation-allowed-in location-type="liquid-surface"/>
 			<operation-allowed-in module-group="settlement"/>
@@ -2517,7 +2519,8 @@ Researchers can query the library. The system can handle natural language questi
 			mass="200"
 			capacity="120"
 			crew="2"
-			hit-points="25">
+			hit-points="25"
+			underwater="yes">
 			<operation-allowed-in planet-atmosphere="terair"/>
 			<operation-allowed-in location-type="liquid-surface"/>
 			<upkeep type="cash" quantity="25"/>
@@ -3047,7 +3050,8 @@ Researchers can query the library. The system can handle natural language questi
 			crew="14"
 			attack="7"
 			defense="6"
-			damage="8">
+			damage="8"
+			underwater="yes">
 			<operation-allowed-in planet-atmosphere="terair"/>
 			<operation-allowed-in location-type="liquid-surface"/>
 			<upkeep type="cash" quantity="85"/>

@@ -496,6 +496,7 @@ namespace SpaceAge
 						moduleType.Resists = el.GetAttribute("resists");
 						moduleType.ArmorModule = el.GetAttribute("armor-module") == "true";
 						moduleType.LivingUnit = el.GetAttribute("living-unit") == "yes";
+						moduleType.Underwater = el.GetAttribute("underwater") == "yes";
 
 						this.dataFile.assignItemStacks(el.SelectNodes("upkeep"), moduleType.Upkeep);
 						foreach (XmlElement elNoUpkeep in el.SelectNodes("no-upkeep"))

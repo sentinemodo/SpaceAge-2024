@@ -32,7 +32,7 @@ Express by **omitting** the `<upkeep type="terair"/>` line on `uscty`. Food + ca
 
 ### Stealth
 
-Underwater-placed settlements (`uscty`, `dmdcty` on liquid) and underwater ships (`uwtruk`, `uwtank`) are **stealthy (+1 visibility difficulty)** unless the observer has **own underwater units in the region** or a **spaceship on the body's orbit**. Engine today is binary `Visible` via `Location.HasPresence` — **wishlist only**; do not invent crash tokens in campaign XML.
+Underwater-placed settlements (`uscty`, `dmdcty` on liquid) and underwater ships/drills (`uwtruk`, `uwtank`, `udrill`) are **stealthy** unless the observer has **own underwater units in the region** or a **spaceship on the body's orbit**. **Live (2026-09-22):** `ModuleType.Underwater` + `ModuleStack.Visible` / `IsUnderwaterStealthy`. Surface presence alone does not reveal them.
 
 ---
 

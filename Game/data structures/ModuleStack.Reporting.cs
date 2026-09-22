@@ -350,9 +350,97 @@ namespace SpaceAge
 			{
 				return true;
 			}
-			if (this.Size > 0)
+			if (this.Size <= 0)
 			{
-				return this.Location.HasPresence(faction);
+				return false;
+			}
+			if (!this.Location.HasPresence(faction))
+			{
+				return false;
+			}
+			if (this.IsUnderwaterStealthy
+				&& !this.Location.HasUnderwaterPresence(faction)
+				&& !this.HasObserverSpaceshipOnOrbit(faction))
+			{
+				return false;
+			}
+			return true;
+		}
+
+		public bool IsUnderwaterStealthy
+		{
+			get
+			{
+				if (this.ModuleType == null)
+				{
+					return false;
+				}
+				if (this.ModuleType.Underwater)
+				{
+					return true;
+				}
+				if (this.ModuleType.Name == "dmdcty"
+					&& this.Location != null
+					&& BodyEnvironment.EffectiveLocationType(this.Location) == ELocationType.liquidSurface)
+				{
+					return true;
+				}
+				return false;
+			}
+		}
+
+		private bool HasObserverSpaceshipOnOrbit(Faction faction)
+		{
+			Orbit orbit = this.FindBodyOrbit();
+			if (orbit == null)
+			{
+				return false;
+			}
+			foreach (ModuleStack stack in orbit.ModuleStacks.Values)
+			{
+				if (this.stackHasOwnedShipHull(stack, faction))
+				{
+					return true;
+				}
+			}
+			return false;
+		}
+
+		private Orbit FindBodyOrbit()
+		{
+			Region region = this.Location as Region;
+			if (region == null || region.RegionHolder == null)
+			{
+				return null;
+			}
+			Planet planet = region.RegionHolder as Planet;
+			if (planet != null)
+			{
+				return planet.Orbit;
+			}
+			Moon moon = region.RegionHolder as Moon;
+			if (moon != null)
+			{
+				return moon.Orbit;
+			}
+			return null;
+		}
+
+		private bool stackHasOwnedShipHull(ModuleStack stack, Faction faction)
+		{
+			if (stack.Owner == faction
+				&& stack.ModuleType != null
+				&& stack.ModuleType.IsShipHullType
+				&& stack.Quantity > 0)
+			{
+				return true;
+			}
+			foreach (ModuleStack child in stack.ModuleStacks.Values)
+			{
+				if (this.stackHasOwnedShipHull(child, faction))
+				{
+					return true;
+				}
 			}
 			return false;
 		}
