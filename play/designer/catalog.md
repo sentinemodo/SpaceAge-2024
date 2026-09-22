@@ -22,8 +22,9 @@ Use live **groups**. Intended future group in parentheses → wishlist.
 |----|------|---------|-----|-----------------|-------|
 | `town` | `twnbld` | 750 | 350 | 200 cash, 2 terran | 30 iron, 2 titani, 10 wk |
 | `city` | `popcnt` | 10000 | 1250 | 1000 cash, 10 terran | 100 iron, 26 wk |
+| `ptncty` | `ptncns` | 750 | 350 | 200 cash, 2 terran | 40 iron, 4 titani, 12 wk |
 
-Both are `settlement`, `cannot-be-owned`, terair + solid-surface. Player factories `USE twnbld` for charter deliveries; UN/NPC shells use `town()` in seed.
+`town` / `city` are `settlement`, `cannot-be-owned`, terair + solid-surface. **`ptncty`** is the above-water ocean metro: `cannot-be-owned`, liquid-surface + terair, **no** terair upkeep — see [`ocean-cities.md`](ocean-cities.md). Player factories `USE twnbld` for charter deliveries; UN/NPC shells use `town()` in seed.
 
 ### Hull size classes (L0–L10)
 
@@ -47,6 +48,12 @@ Campaign also uses a **propulsion hull ladder** (`corvhl`→`desthl`→`cruihl`�
 | `sckbay` | habitat | 380/250 | 3 / 4 | Sick bay (inpatient ward). Habitat 8, HP 32, tech-cap 2, cash upkeep 40, radiation −120. **Not** `medfac` (clinic: 300/200, crew 2, energy 2, habitat 5, HP 25). Stronger than the clinic: 2 `wndtrn`/4 wk without `medici`, 4/wk with 1 `medici` per conversion (wishlist). No `operation-allowed-in` — settlements, stations, hulls. `pharms` USE produces `medici` from 1 `food` |
 | `coastr` | vehicle | 250/100 | 1 / 0 | Coastal transport. Naval MOVE speed 1. Solid+liquid (port + sea). Oil fuel. L0 `nvltrs` |
 | `gunbot` | vehicle | 240/240 | 12 / 0 | Gunboat. Naval MOVE speed 1. Kinetic. Solid+liquid. L1 `nvlcbt` |
+| `uwtruk` | vehicle | 350/200 | 2 / 0 | Underwater cargo sub. Naval MOVE speed 1. Liquid only. Oil fuel. L1 `uwtrs`. Costlier than `coastr`/`trucks`. [`ocean-cities.md`](ocean-cities.md) |
+| `uwtank` | vehicle | 300/320 | 14 / 0 | Combat sub. Naval MOVE. Kinetic atk 7 def 6 dmg 8. Liquid only. L2 `uwcbt`. Costlier than `tanks`/`gunbot` |
+| `ptncty` | settlement | 6000/— | — / 4 | Pontoon city. Liquid + terair. Food 30; no terair upkeep. L1 `ptncns` |
+| `uscty` | settlement | 8000/— | — / 12 | Under-surface shaft city. Liquid (seafloor proxy). Food 40; **no** terair. L2 `usctyc` |
+| `tdlpln` | energy | 80/80 | 1 / 0 | Tidal plant. ~12 energy / 13 wk. Liquid + terair. L1 `tdlpwr` |
+| `udrill` | extraction | 750/750 | 8 / 8 | Underwater drill. Liquid only. L1 `udrill` |
 | `fshfrm` | agricultural | 1000/100 | 5 / 5 | Fishery. Liquid-surface + `terair` only (not grassland). Nets plus photic seaweed/algae. L0 `fshng`; harvest `fshhrv` (terair, not planet-type ocean) |
 | `hydnoz` | propulsion | 800/900 | 1 / 40 | Staged hydrolox; mass-capacity ~20000; fuel `water` or `h2o2`; space speed 0.5 |
 | `fustor` | propulsion | 1600/1400 | 2 / 80 | **L2 AU torch**; mass-capacity ~40000; **2 `heliu3` / week**; space speed 1. [au-transit.md](au-transit.md) |
