@@ -2539,7 +2539,7 @@ Researchers can query the library. The system can handle natural language questi
 			technology-capacity="1"
 			hit-points="40"
 			defense="2">
-			<produce item="cash" quantity="10" duration="1"/>
+			<produce item="cash" quantity="20" duration="2"/>
 			<produce item="terran" quantity="1" duration="2"/>
 			<upkeep type="cash" quantity="40"/>
 			<operation-allowed-in module-group="settlement"/>

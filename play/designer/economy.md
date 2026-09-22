@@ -62,7 +62,7 @@ Shuttle and HQ were oversized vs size/crew. Tanks pick up 16 crew. Ark picks up 
 |------|----------|----------------------------|
 | **One `corphq` `@produce cash`** | **50 cash / week** (650 / turn) | 100 / week (1300 / turn) |
 | **One `corphq` `@produce terran`** | **1 terran / module / week** (13 / turn per module) | not on SampleGame `corphq` |
-| **One `brnofc` `@produce cash`** | **10 cash / week** (130 / turn) | not in SampleGame |
+| **One `brnofc` `@produce cash`** | **20 cash / 2 weeks** (10/week effective; 130 / turn) | not in SampleGame |
 | **One `brnofc` `@produce terran`** | **1 terran / 2 weeks** (6.5 / turn) | not in SampleGame |
 | Faction `balance` | 10000 | 10000 |
 | City produce | 1000 cash + 10 `terran` / 13 weeks | same |
@@ -77,7 +77,7 @@ Design intent: staff a **second settlement region** without cloning headquarters
 | Source | Cash | Terran | Cash upkeep / turn | Region buffs | Footprint |
 |--------|------|--------|-------------------:|--------------|-----------|
 | `corphq` | **50 / week** | **1 / week** | 90 | upkeep −0.1 + fast construction (catalog; engine may ignore reduction) | size 1000, crew 20, tech-cap 2 |
-| `brnofc` | **10 / week** | **1 / 2 weeks** | **40** | **none** | size 300, crew 6, tech-cap 1 |
+| `brnofc` | **20 / 2 weeks** (~10/wk) | **1 / 2 weeks** | **40** | **none** | size 300, crew 6, tech-cap 1 |
 | `town` | 200 / 13 wk (~15/wk) | 2 / 13 wk | 0 | — | settlement shell |
 | `city` | 1000 / 13 wk (~77/wk) | 10 / 13 wk | 0 | — | settlement shell |
 
@@ -87,6 +87,8 @@ Worked upkeep for `brnofc` (L1, build_cost = 5×2 + 1×4 + 2×3 = **20**):
 raw = 300/200 + 4×6 + 20/8 + 10×1 = 1.5 + 24 + 2.5 + 10 = 38
 upkeep = round(38 to 5) = 40
 ```
+
+**Shared `ProduceDuration`:** the loader keeps one duration per module (last `<produce>` wins). Branch office therefore uses **duration 2 on both lines**; cash quantity is **20** so effective cash is still ~10/week when `@produce cash` is ordered. Do not mix duration 1 and 2 on the same module until the engine stores per-item duration.
 
 Net if always `@produce cash`: 130 − 40 = **+90 / turn** (HQ cash path is 650 − 90 = +560). Net if always recruiting: −40 cash / turn for **6.5 terran / turn** (~325 cash-equivalent at UN ask 50) — the intended job. Two branch offices still do not match one HQ on cash or on recruitment cadence, and they never grant HQ’s region-wide construction/upkeep effects.
 
@@ -233,11 +235,11 @@ Militias (Arbor First / HCS) start **without** buy/sell. Neutral trade is option
 `play/campaign/data.xml` `brnofc`:
 
 ```xml
-<produce item="cash" quantity="10" duration="1"/>
+<produce item="cash" quantity="20" duration="2"/>
 <produce item="terran" quantity="1" duration="2"/>
 ```
 
-`@produce terran` on HQ uses the terran line only (1 per active module per week). `@produce cash` uses the cash line only (50/week). Branch office same filter: terran order → 1 / 2 weeks; cash order → 10/week. Engine must filter `ItemsProduction` by ordered item type and multiply by `QuantityOperational`.
+`@produce terran` on HQ uses the terran line only (1 per active module per week). `@produce cash` uses the cash line only (50/week). Branch office same filter: terran order → 1 / 2 weeks; cash order → 20 / 2 weeks (~10/week). Both lines share module `ProduceDuration` (loader last-wins), so durations match. Engine must filter `ItemsProduction` by ordered item type and multiply by `QuantityOperational`.
 
 Standing offers live on UN `city` stacks in `gamein` (see [`galaxy.md`](galaxy.md)). Leave `Tests/data.xml` at 100.
 

@@ -88,7 +88,7 @@ Same-system pockets (Scoria, Helios belt, Selene, Pyre, Fomal belt, ice/vulcan m
 
 | id | name-en | size/mass | How it enters play | First need | Seed |
 |----|---------|-----------|--------------------|------------|------|
-| `cash` | cash | — | cities 1000/13 wk; campaign `corphq` **50**/week; `brnofc` **10**/week ([`economy.md`](economy.md)); consume `ctypln` 500 | L1 | faction `balance`, city stacks — not `<resource>` |
+| `cash` | cash | — | cities 1000/13 wk; campaign `corphq` **50**/week; `brnofc` **20**/2 wk (~10/wk) ([`economy.md`](economy.md)); consume `ctypln` 500 | L1 | faction `balance`, city stacks — not `<resource>` |
 | `spare` | spare part | 2/2 | `servic` (10); consume `repair` / `REPAIR` | L1 | cargo only |
 | `wastes` | waste product | 5/5 | `fisrec` byproduct; consume `wastdp`; `clslss` feedstock | L0–1 | not a ground ore |
 | `medici` | medicines | 1/1 | `medirf` (1) on **ocean** worlds (no cargo consume); `pharms` (1) from 1 `food` on a `sckbay`; weekly `wndtrn`/`madtrn` race consume; 1 per sick-bay conversion; consume `exobio` `crewmd` | L2 harvest / L3 synth | not a region type; ocean refine on Arbor/Anvil/Graph, or ferment aboard |
