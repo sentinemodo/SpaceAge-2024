@@ -10,7 +10,7 @@ public class MarkdownChunkerTests
     [Test]
     public void ChunkRules_ExtractsMoveVerb_WithRulesMetadata()
     {
-        var rulesPath = Path.Combine(TestRepoPaths.FindRepositoryRoot(), "player", "rules.md");
+        var rulesPath = Path.Combine(TestRepoPaths.PlayerDirectory(TestRepoPaths.FindRepositoryRoot()), "rules.md");
         var content = File.ReadAllText(rulesPath);
 
         var chunks = MarkdownChunker.ChunkRules(rulesPath, content);
@@ -25,7 +25,7 @@ public class MarkdownChunkerTests
     [Test]
     public void ChunkRules_IncludesPrefixesSection()
     {
-        var rulesPath = Path.Combine(TestRepoPaths.FindRepositoryRoot(), "player", "rules.md");
+        var rulesPath = Path.Combine(TestRepoPaths.PlayerDirectory(TestRepoPaths.FindRepositoryRoot()), "rules.md");
         var content = File.ReadAllText(rulesPath);
 
         var chunks = MarkdownChunker.ChunkRules(rulesPath, content);
@@ -39,7 +39,7 @@ public class MarkdownChunkerTests
     [Test]
     public void ChunkTechManual_SplitsByTechEntry()
     {
-        var techPath = Path.Combine(TestRepoPaths.FindRepositoryRoot(), "player", "basic_technologies.md");
+        var techPath = Path.Combine(TestRepoPaths.PlayerDirectory(TestRepoPaths.FindRepositoryRoot()), "basic_technologies.md");
         var content = File.ReadAllText(techPath);
 
         var chunks = MarkdownChunker.ChunkTechManual(techPath, content, "test");

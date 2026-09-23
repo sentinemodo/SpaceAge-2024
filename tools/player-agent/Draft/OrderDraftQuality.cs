@@ -364,7 +364,17 @@ public static partial class OrderDraftQuality
 
 
 
-            if (!upper.Contains("@MOVE", StringComparison.Ordinal) && !upper.Contains("@RESEARCH", StringComparison.Ordinal))
+            if (!upper.Contains("@RESEARCH", StringComparison.Ordinal))
+
+            {
+
+                return false;
+
+            }
+
+
+
+            if (!Regex.IsMatch(upper, @"\bMOVE\s+R", RegexOptions.None))
 
             {
 
@@ -1144,15 +1154,13 @@ public static partial class OrderDraftQuality
 
                     || trimmed.StartsWith("@active", StringComparison.OrdinalIgnoreCase)
 
-                    || trimmed.StartsWith("@get", StringComparison.OrdinalIgnoreCase)
-
-                    || trimmed.StartsWith("@research", StringComparison.OrdinalIgnoreCase))
+                    || trimmed.StartsWith("@get", StringComparison.OrdinalIgnoreCase))
 
                 {
 
                     violations.Add(
 
-                        $"stack {block.StackId}: use `get` / `move` / `research` / `tactic` without `@` on mobile stacks — `@` is for continuous HQ/cargob pulls only.");
+                        $"stack {block.StackId}: on mobile stacks use definite `get` / `move` / `tactic` (no `@`); `@research` is continuous like `@produce`.");
 
                 }
 
@@ -1474,7 +1482,7 @@ public static partial class OrderDraftQuality
 
               - HQ: `set hold 20 terran` beside `@produce terran`
 
-              - #modulestack newNNN: get terran and oil; move <anomaly-region-id>; research <same-region-id> (no `@` on mobile stack)
+              - #modulestack newNNN: get terran and oil; move <anomaly-region-id>; @research <same-region-id> (move is definite; @research is continuous)
 
               Disabled stacks cannot move — stage crew and fuel on the new stack before move.
 

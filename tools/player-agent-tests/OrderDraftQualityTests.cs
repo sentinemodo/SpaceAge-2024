@@ -11,6 +11,7 @@ public class OrderDraftQualityTests
         DECLARE FACTION 14 ENEMY
 
         #modulestack 200001
+        set hold 20 terran
         @produce terran
 
         #modulestack 200003
@@ -48,8 +49,7 @@ public class OrderDraftQualityTests
         -get 16 terran from 200001
         -get 8 oil from 200003
         -get 32 food from 200003
-        active new2
-        move R00009
+        -move R00009
         tactic destroy
 
         #modulestack new3
@@ -57,7 +57,7 @@ public class OrderDraftQualityTests
         -get 16 terran from 200001
         -get 8 oil from 200003
         -get 32 food from 200006
-        move R00009
+        -move R00009
         tactic destroy
 
         #end
@@ -82,7 +82,7 @@ public class OrderDraftQualityTests
     [Test]
     public void IsUsable_MilitaryAtMove_FailsMobileAtGate()
     {
-        var draft = GoldenNorthwind.Replace("move R00009", "@move R00009");
+        var draft = GoldenNorthwind.Replace("-move R00009", "@move R00009");
         Assert.That(OrderDraftQuality.IsUsable(draft, "military"), Is.False);
         Assert.That(OrderDraftQuality.DescribeMobileAtViolations(draft), Is.Not.Empty);
     }
@@ -108,9 +108,9 @@ public class OrderDraftQualityTests
             #modulestack 210003
             sell 200 food at average
             #modulestack new109
-            @get 1 terran from 210001
-            @get 2 oil from 210003
-            @move R00011
+            get 1 terran from 210001
+            get 2 oil from 210003
+            move R00011
             @research R00011
             #end
             """;
@@ -121,15 +121,7 @@ public class OrderDraftQualityTests
     [Test]
     public void IsUsable_MilitaryWithoutTwoTanks_Fails()
     {
-        var draft = GoldenNorthwind.Replace(
-            """
-            use armcbt as new3 for 200001
-            +get 8 iron from 200003
-            +get 2 titani from 200003
-
-            #modulestack 200006
-            """,
-            "#modulestack 200006");
+        var draft = GoldenNorthwind.Replace("use armcbt as new3 for 200001", string.Empty, StringComparison.Ordinal);
         Assert.That(OrderDraftQuality.IsUsable(draft, "military"), Is.False);
     }
 

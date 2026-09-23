@@ -16,7 +16,7 @@ public class ValidateCampaignOrdersOnce
     public void ValidateAllFactionOrders()
     {
         var repoRoot = RepoPaths.FindRepositoryRoot();
-        var rulesPath = Path.Combine(repoRoot, "player", "rules.md");
+        var rulesPath = Path.Combine(RepoPaths.PlayerDirectory(repoRoot), "rules.md");
         var allowlist = OrderVerbAllowlist.FromRulesMarkdown(File.ReadAllText(rulesPath));
         var failures = new List<string>();
 

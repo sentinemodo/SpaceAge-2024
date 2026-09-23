@@ -9,7 +9,7 @@ public class OrderVerbAllowlistTests
     [Test]
     public void FromRules_IncludesImmediateAndLongVerbs()
     {
-        var rulesPath = Path.Combine(TestRepoPaths.FindRepositoryRoot(), "player", "rules.md");
+        var rulesPath = Path.Combine(TestRepoPaths.PlayerDirectory(TestRepoPaths.FindRepositoryRoot()), "rules.md");
         var rules = File.ReadAllText(rulesPath);
         var allowlist = OrderVerbAllowlist.FromRulesMarkdown(rules);
 

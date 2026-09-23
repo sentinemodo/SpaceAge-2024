@@ -14,7 +14,7 @@ namespace UnitTests
 			string dir = TestContext.CurrentContext.TestDirectory;
 			for (int i = 0; i < 10; i++)
 			{
-				if (File.Exists(Path.Combine(dir, "campaign", "data.xml")))
+				if (File.Exists(Path.Combine(dir, "play", "campaign", "data.xml")))
 				{
 					return dir;
 				}
@@ -30,7 +30,7 @@ namespace UnitTests
 
 		public static string CampaignDir()
 		{
-			return Path.Combine(RepoRoot(), "campaign");
+			return Path.Combine(RepoRoot(), "play", "campaign");
 		}
 
 		[SetUp]

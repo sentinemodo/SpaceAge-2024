@@ -17,4 +17,7 @@ internal static class TestRepoPaths
 
         throw new InvalidOperationException("Could not locate repository root.");
     }
+
+    public static string PlayerDirectory(string repoRoot) =>
+        Path.Combine(repoRoot, "play", "player");
 }

@@ -11,7 +11,7 @@ public static partial class DraftPromptBuilder
         + "#modulestack headers, verb lines, optional ; comments you write yourself, and #end. "
         + "Do not paste report Orders template comment lines (; + …). Do not use #person unless TRAIN/ACTIVE/SEE. "
         + "Turn 1: every HQ stack needs `set hold 20 terran` beside `@produce terran`. "
-        + "Disabled stacks cannot move: on mobile stacks use one-time `get`/`-get`/`move`/`-move`/`research` (no `@`); stage terran crew and oil fuel before move. "
+        + "Disabled stacks cannot move: on mobile stacks use definite `get`/`-get`/`move`/`-move` (like use/repair); use `@research` for continuous research (like `@produce`). Stage terran crew and oil before move. "
         + "@use farmng only on farms stacks; @use hcdril only on sdrill stacks (match Orders template module types). "
         + "No prose, no markdown fences, no numbered lists, no explanations.";
 
@@ -155,7 +155,7 @@ public static partial class DraftPromptBuilder
                 get 60 food from <cargob-id>
                 get 2 oil from <cargob-id>
                 move {{anomaly}}
-                research {{anomaly}}
+                @research {{anomaly}}
                 #end
                 """;
         }
@@ -322,9 +322,9 @@ public static partial class DraftPromptBuilder
                 Priority: factory stack FIRST — get materials from cargob, then `use moblib as newNNN`.
                 Then run the grant economic loop (@produce, @use, sell food).
                 HQ: `set hold 20 terran` beside `@produce terran`.
-                On the new moblab stack: get terran, food, and oil (no `@`); move {anomaly}; research {anomaly}.
+                On the new moblab stack: bare `get` terran and oil; definite `move {anomaly}`; continuous `@research {anomaly}` (like `@produce`).
                 Do not use active/see unless required. Do not implement deferred town/CONTRACT charters this quarter.
-                Use only stack ids from the Orders template. `@` only on continuous HQ/cargob pulls (@produce, @get all, @use).
+                Use only stack ids from the Orders template. Factory/mobile staging uses bare `get`/`move`; HQ/cargob use `@produce`, `@get all`, `@use`, `@research`.
                 """;
         }
 
