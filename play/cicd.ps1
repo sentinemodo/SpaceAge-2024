@@ -41,6 +41,32 @@ function Write-CicdStep {
 	Write-Host "==> $Text" -ForegroundColor Cyan
 }
 
+function Test-DockerInfrastructureProcess {
+	param([Parameter(Mandatory = $true)][int] $ProcessId)
+	try {
+		$proc = Get-Process -Id $ProcessId -ErrorAction Stop
+	}
+	catch {
+		return $false
+	}
+	# Port 8787 is published by Docker Desktop. Killing that process takes the engine down
+	# before `docker compose down` can run.
+	return $proc.ProcessName -match '^(com\.docker\.|Docker Desktop|docker-proxy|wslrelay|vpnkit)$'
+}
+
+function Stop-ListenerProcess {
+	param(
+		[Parameter(Mandatory = $true)][int] $ProcessId,
+		[Parameter(Mandatory = $true)][int] $Port
+	)
+	if (Test-DockerInfrastructureProcess -ProcessId $ProcessId) {
+		Write-Host "  left PID $ProcessId on port $Port (Docker infrastructure; compose down releases it)"
+		return
+	}
+	Stop-Process -Id $ProcessId -Force -ErrorAction SilentlyContinue
+	Write-Host "  stopped PID $ProcessId on port $Port"
+}
+
 function Stop-ListenersOnPort {
 	param([Parameter(Mandatory = $true)][int] $Port)
 	try {
@@ -48,8 +74,7 @@ function Stop-ListenersOnPort {
 		foreach ($conn in $connections) {
 			$ownerPid = $conn.OwningProcess
 			if ($ownerPid -and $ownerPid -ne 0) {
-				Stop-Process -Id $ownerPid -Force -ErrorAction SilentlyContinue
-				Write-Host "  stopped PID $ownerPid on port $Port"
+				Stop-ListenerProcess -ProcessId $ownerPid -Port $Port
 			}
 		}
 	}
@@ -60,8 +85,7 @@ function Stop-ListenersOnPort {
 			if ($line -notmatch 'LISTENING') { continue }
 			$ownerPid = ($line -split '\s+')[-1]
 			if ($ownerPid -and $ownerPid -ne '0') {
-				taskkill /PID $ownerPid /F 2>$null | Out-Null
-				Write-Host "  stopped PID $ownerPid on port $Port"
+				Stop-ListenerProcess -ProcessId ([int]$ownerPid) -Port $Port
 			}
 		}
 	}
