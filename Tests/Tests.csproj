@@ -85,6 +85,7 @@
     <Compile Include="TReport.cs" />
     <Compile Include="TNamedObject.cs" />
     <Compile Include="TModuleStack.cs" />
+    <Compile Include="TUnderwaterVisibility.cs" />
     <Compile Include="TOrder.cs" />
     <Compile Include="TActivate.cs" />
     <Compile Include="TBankOrders.cs" />

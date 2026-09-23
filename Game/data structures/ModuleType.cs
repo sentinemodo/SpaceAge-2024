@@ -369,6 +369,13 @@ namespace SpaceAge
 			set { this.livingUnit = value; }
 		}
 
+		private bool underwater;
+		public bool Underwater
+		{
+			get { return this.underwater; }
+			set { this.underwater = value; }
+		}
+
 		#endregion
 
 
