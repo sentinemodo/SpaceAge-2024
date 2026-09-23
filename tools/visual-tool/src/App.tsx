@@ -69,6 +69,7 @@ import { SidePanel, type SideTab } from './components/SidePanel';
 import { AiPane, type AiViewMode } from './components/AiPane';
 import { OrbitSelector } from './components/OrbitSelector';
 import { BeltDotField } from './components/BeltDotField';
+import { MoveRouteOverlay } from './components/MoveRouteOverlay';
 import {
   ordersTemplateText,
   ordersSummaryForFocus,
@@ -84,6 +85,15 @@ import { ClickableReportText } from './components/ClickableReportText';
 import { TechnologyCatalog } from './components/TechnologyCatalog';
 import { ResizeHandle } from './components/ResizeHandle';
 import { buildSystemLinkPath } from './lib/mapLinks';
+import {
+  buildMoveSegments,
+  indexRouteLocations,
+  moveDestinationsForSelection,
+  routeAnchorProps,
+  selectionTravelContext,
+  travelerFromMass,
+  type MoveSegment,
+} from './lib/moveRoute';
 import { defaultLoginFactionId, readUrlFactionId } from './lib/factionLink';
 import { focusReportId } from './lib/navigation';
 import {
@@ -243,6 +253,7 @@ function RegionMap({
               backgroundColor: regionTerrainColor(region.terrainType),
             }}
             title={`${region.name} [${region.id}]${region.terrainType ? ` · ${region.terrainType}` : ''}`}
+            data-route-id={region.id}
             onClick={() => onSelectRegion(region.id)}
           >
             <span className="region-cell-label">{region.name}</span>
@@ -272,6 +283,7 @@ function BodySurfaceArc({
         ['--body-color' as string]: color,
       }}
       title={`${body.name} [${body.id}]${body.planetType ? ` · ${body.planetType}` : ''}`}
+      {...routeAnchorProps(body)}
       onClick={onSelect}
     >
       <span className="body-surface-arc-glyph" aria-hidden>{bodyKindIcon(body)}</span>
@@ -302,6 +314,7 @@ function BodyIconButton({
       type="button"
       className={`body-icon body-icon-${body.kind} ${selected ? 'selected' : ''} ${compact ? 'compact' : ''} ${hasPresence ? 'has-presence' : ''}`}
       title={`${body.name} (${body.au} AU)${body.unexplored ? ' — unexplored' : ''}`}
+      {...routeAnchorProps(body)}
       onClick={onSelect}
       onDoubleClick={(e) => {
         e.preventDefault();
@@ -386,6 +399,7 @@ function SystemView({
   filterOrbitId,
   filterStar,
   presenceIds,
+  moveSegments,
   onSelectStar,
   onSelectBody,
   onOpenBody,
@@ -397,6 +411,7 @@ function SystemView({
   filterOrbitId: string | null;
   filterStar: boolean;
   presenceIds: Set<string>;
+  moveSegments: MoveSegment[];
   onSelectStar: () => void;
   onSelectBody: (bodyId: string) => void;
   onOpenBody: (bodyId: string) => void;
@@ -452,6 +467,9 @@ function SystemView({
             <span className="band-au">{gates[0].au} AU</span>
           </div>
         )}
+        {moveSegments.length > 0 && (
+          <MoveRouteOverlay segments={moveSegments} layoutKey={detail.id} />
+        )}
       </div>
     </div>
   );
@@ -465,6 +483,7 @@ function BodyView({
   filterOrbitId,
   regionZoom,
   presenceIds,
+  moveSegments,
   onRegionZoom,
   onSelectRegion,
   onSelectOrbit,
@@ -478,6 +497,7 @@ function BodyView({
   filterOrbitId: string | null;
   regionZoom: number;
   presenceIds: Set<string>;
+  moveSegments: MoveSegment[];
   onRegionZoom: (z: number) => void;
   onSelectRegion: (regionId: string) => void;
   onSelectOrbit: (orbitId: string, bodyId: string) => void;
@@ -524,6 +544,9 @@ function BodyView({
               </div>
             </div>
           )}
+          {moveSegments.length > 0 && (
+            <MoveRouteOverlay segments={moveSegments} layoutKey={body.id} />
+          )}
         </div>
       </div>
     );
@@ -549,6 +572,9 @@ function BodyView({
                 onSelectOrbit={(orbitId) => onSelectOrbit(orbitId, body.id)}
               />
             </div>
+          )}
+          {moveSegments.length > 0 && (
+            <MoveRouteOverlay segments={moveSegments} layoutKey={body.id} />
           )}
         </div>
       </div>
@@ -633,6 +659,9 @@ function BodyView({
               </div>
             ))}
           </div>
+        )}
+        {moveSegments.length > 0 && (
+          <MoveRouteOverlay segments={moveSegments} layoutKey={`${body.id}:${regionZoom}`} />
         )}
       </div>
     </div>
@@ -865,15 +894,41 @@ export default function App() {
       ? (selectedPersonNode.name || selectedPersonNode.id)
       : null;
 
+  const moveDestinationIds = useMemo(() => {
+    const fromText = moveDestinationsForSelection(
+      draftOrders || fullOrdersTemplate,
+      selectedStack,
+      selectedPerson,
+    );
+    if (fromText !== null) return fromText;
+    return selectedOrder?.moveDestinations ?? [];
+  }, [draftOrders, fullOrdersTemplate, selectedStack, selectedPerson, selectedOrder]);
+
+  const moveSegments = useMemo(() => {
+    if (!report || moveDestinationIds.length === 0) return [];
+    const ctx = selectionTravelContext(report.stacks, selectedStack, selectedPerson);
+    return buildMoveSegments(
+      ctx?.locationId,
+      moveDestinationIds,
+      indexRouteLocations(report),
+      travelerFromMass(ctx?.mass),
+    );
+  }, [report, moveDestinationIds, selectedStack, selectedPerson]);
+
   const moveRoute = useMemo(() => {
-    if (!report || !selected || !selectedOrder?.moveDestinations.length) return null;
-    const endpoints = resolveMoveRouteSystems(selected, selectedOrder, report.regions);
+    if (!report || !selected || moveDestinationIds.length === 0) return null;
+    const endpoints = resolveMoveRouteSystems(selected, {
+      subject: selectedOrder?.subject ?? 'modulestack',
+      targetId: selectedOrder?.targetId ?? selected.id,
+      moveDestinations: moveDestinationIds,
+      verbs: selectedOrder?.verbs ?? [],
+    }, report.regions);
     if (!endpoints) return null;
     const from = report.systems.find((s) => s.id === endpoints.fromSystemId);
     const to = report.systems.find((s) => s.id === endpoints.toSystemId);
     if (!from || !to) return null;
     return { from, to };
-  }, [report, selected, selectedOrder]);
+  }, [report, selected, selectedOrder, moveDestinationIds]);
 
   const aldersonLines = useMemo(() => {
     if (!report) return [];
@@ -1323,6 +1378,7 @@ export default function App() {
             filterOrbitId={filterOrbitId}
             regionZoom={regionMapZoom}
             presenceIds={presenceIds}
+            moveSegments={moveSegments}
             onRegionZoom={setRegionMapZoom}
             onSelectRegion={selectRegion}
             onSelectOrbit={selectOrbit}
@@ -1338,6 +1394,7 @@ export default function App() {
             filterOrbitId={filterOrbitId}
             filterStar={filterStar}
             presenceIds={presenceIds}
+            moveSegments={moveSegments}
             onSelectStar={selectStar}
             onSelectBody={selectBody}
             onOpenBody={openBodyView}
@@ -1393,9 +1450,9 @@ export default function App() {
                 MOVE ETA ~{moveWeeks} weeks (estimate)
               </div>
             )}
-            {selectedOrder && selectedOrder.moveDestinations.length > 0 && (
+            {moveDestinationIds.length > 0 && (
               <div className="map-hud map-hud-br">
-                MOVE route: {selectedOrder.moveDestinations.join(' → ')}
+                MOVE route: {moveDestinationIds.join(' → ')}
               </div>
             )}
           </div>

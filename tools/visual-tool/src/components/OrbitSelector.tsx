@@ -31,6 +31,7 @@ export function OrbitSelector({
             type="button"
             className={`body-icon body-icon-orbit ${filterOrbitId === orbitId ? 'selected' : ''} ${presenceIds.has(orbitId) ? 'has-presence' : ''}`}
             title={`Orbit ${orbitId}`}
+            data-route-id={orbitId}
             onClick={() => onSelectOrbit(orbitId)}
           >
             <span className="body-icon-glyph" aria-hidden>{glyph}</span>
