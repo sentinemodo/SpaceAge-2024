@@ -50,24 +50,24 @@ See `technology.md` Combat matchups for which techs sit in each group.
 
 | id | name-en | size/mass | How it enters play | First level that *needs* it | Rarity | Seed environments | Arbor | Anvil | Empty systems (rich deposits) |
 |----|---------|-----------|--------------------|------------------------------|--------|-------------------|-------|-------|-------------------------------|
-| `iron` | unit of iron | 5/10 | `iminng` (3); region ore | L0 (`indust`, `fossil`, most builds) | common | `grassl` `dust` `mountn` `barren` `smmast` `lrmast`; `dust`/`ocean` planets | **present** common–rich | present, not signature | SS0009 Graph; SS0010 Spare; Pyre extra |
-| `titani` | unit of titanium | 10/10 | `tminng` (2); region ore | L0 (`areact`, `indust`, hulls) | uncommon–rich | `mountn` `dust` `lrmast`; ilmenite highlands | **absent** (pocket: Scoria, Selene) | **rich** highlands | SS0003 Ember; SS0010 Spare |
-| `silici` | unit of silicium | 5/3 | `slcmlt` (1); region ore | L0 (`corpmg`, `filidx`, `spctrl`) | common | `dust` `barren` `mountn` `grassl` (low); belts | **low** sediments | **rich** | SS0003 Ember; SS0009 Graph |
-| `copper` | unit of copper | 5/8 | `cminng` (2); region ore | L0 (`corpmg`, `urfiss`, `airgen`) | uncommon–common | volcanic `dust` `mountn`; metal asteroids | **absent** (pocket: Scoria) | **common** arcs | SS0004 Gleam; SS0010 Spare |
+| `iron` | unit of iron | 5/10 | `iminng` (3); region ore | L0 (`indust`, `fossil`, most builds) | common | `grassl` `dust` `mountn` `barren` `smmast` `lrmast`; `dust`/`ocean` planets; **ocean/sea seafloor crust** | **present** common–rich; **deep ocean** crust | present, not signature; modest undersea | SS0009 Graph; SS0010 Spare; Pyre extra |
+| `titani` | unit of titanium | 10/10 | `tminng` (2); region ore | L0 (`areact`, `indust`, hulls) | uncommon–rich | `mountn` `dust` `lrmast`; ilmenite highlands; **Anvil shelf seas** | **absent** (pocket: Scoria, Selene) | **rich** highlands; **shelf** pockets | SS0003 Ember; SS0010 Spare |
+| `silici` | unit of silicium | 5/3 | `slcmlt` (1); region ore | L0 (`corpmg`, `filidx`, `spctrl`) | common | `dust` `barren` `mountn` `grassl` (low); belts; **biogenic ocean/sea ooze** | **low** sediments; undersea ooze | **rich**; undersea common | SS0003 Ember; SS0009 Graph |
+| `copper` | unit of copper | 5/8 | `cminng` (2); region ore | L0 (`corpmg`, `urfiss`, `airgen`) | uncommon–common | volcanic `dust` `mountn`; metal asteroids; **Anvil hydrothermal shelves** | **absent** (pocket: Scoria) | **common** arcs; **vent** seas | SS0004 Gleam; SS0010 Spare |
 | `uraniu` | unit of uranium | 1/8 | `uminng` (1); `fisrec` fuel | L0 (`urfiss` fuel; mining) | rare / pocket | few `mountn`; `lrmast` | **absent** (pocket: Helios belt) | **pockets** 2–3 peaks 50–150 | SS0004 Gleam; SS0005 Cinder |
-| `carbon` | unit of carbon | 5/5 | `hcdril` (1); `cplant` fuel | L0 (`fossil` / plant fuel) | common on organics | `grassl` wetlands; `smcast` `lrcast` | **rich** peat/coal | **absent** (trace graphite only; pocket: Fomal belt) | SS0005 Cinder; SS0007 Shards; SS0009 Graph |
-| `oil` | unit of oil | 4/5 | `oildwe` (2); `oplant` fuel | L0 (`oilbrn` / plant fuel) | uncommon | coastal `grassl`; `lrcast` | **present** Tidewatch coast | **absent** (pocket: Fomal belt) | SS0007 Shards carbonaceous |
-| `gold` | unit of gold | 5/9 | `gminng` (1); contacts | L1 (`optins` consumes 1) | trace | hydrothermal `mountn`; rare `lrmast` | **absent** | **trace** mountains | SS0009 Graph |
+| `carbon` | unit of carbon | 5/5 | `hcdril` (1); `cplant` fuel | L0 (`fossil` / plant fuel) | common on organics | `grassl` wetlands; `smcast` `lrcast`; **Arbor deep marine organics** | **rich** peat/coal + deep pockets | **absent** (trace graphite only; pocket: Fomal belt) | SS0005 Cinder; SS0007 Shards; SS0009 Graph |
+| `oil` | unit of oil | 4/5 | `oildwe` (2); `oplant` fuel | L0 (`oilbrn` / plant fuel) | uncommon | coastal `grassl`; `lrcast`; **Arbor shelf seas** | **present** Tidewatch coast + **shelf seas** | **absent** (pocket: Fomal belt) | SS0007 Shards carbonaceous |
+| `gold` | unit of gold | 5/9 | `gminng` (1); contacts | L1 (`optins` consumes 1) | trace | hydrothermal `mountn`; rare `lrmast`; **Anvil vent chimneys** (1–2 sea cells) | **absent** | **trace** mountains + **trace vents** | SS0009 Graph |
 | `heliu3` | unit of helium-3 | 1/1 | `he3min` (1); `he3skm` (1); `he3ext`; `ramsco` produce; `fusrec`/`he3aut`/`dhefrc`/`fustor`/`fuseng`/`plsdv`/`arkeng` fuel; build `he3fus` `fustch` `fusdrv` `hiisp` `arkcns` `arkdrv`; pbpd `ciwssy` `arkpd` | L2 (`he3fus` + `fustch`) | rare / pocket | ice-moon `dust`/`barren`; outer `abelt`; **gas-giant orbit** cloud deck; **not** habitable basins | absent on Arbor (pocket: Aeolus ices) | absent on Anvil (pocket: Fomal ices) | SS0003 Ember ices; SS0006 Ash; SS0008 Deep ices; all campaign `gasgnt` orbits |
 | `h2o2` | unit of oxyhydro | 1/1 | `wtrdst` (3); `rctdrv`/`autdrv`/`tanker` fuel | L0 (`areact` fuel; distillation) | common on wet worlds | `ocean` `sea` ice `dust`; polar | **rich** | **modest** | SS0007 Shards ice; SS0008 Deep; SS0010 Spare ice |
 | `water` | unit of water | 1/1 | region hydrosphere/ice; `icemin` (3); `wtrdst` consume 1→3 `h2o2`; `hydrop` consume 2→3 `food`; drive fuels | L0 (`icemin`/`wtrdst`); L1 `hydrop`/`hydstg` | **strategic** | `ocean` `sea`; ice moons `dust`/`barren`/`mountn` polar; **homeworld moons must seed** | **rich** liquid | **modest** liquid + ice moons | All ice moons; Selene polar ice; Anvil rock-moon ice |
 | `food` | unit of food | 1/1 | `farmng` (5), `afrmng` (8), `agrdek`; region biomass; city upkeep | L0 (`farmng`; city upkeep) | biosphere | `grassl` `sea` only (habitable) | **rich** 400–800 grassland | **poor** 80–150 | SS0008 Deep (tight); SS0009 Graph |
 | `terair` | terran breathing gas | 1/1 | region biosphere; `lifsys` produce 10/wk; `clslss` | L0 (`popcnt`/`agrplx`/`farmng` need atmosphere) | habitable only | habitable `grassl` `ocean` `sea` `mountn` (thin) | **present** habitable cells | **present** habitable cells | SS0008 Deep ice moon; SS0009 Graph. Never Scoria/Pyre/belts |
-| `nickfe` | nickel-iron | 6/12 | `nminng` (2); consume `orbfnd` `msdrvr` `lghull` `arkcns` | L1 (`nminng`); L4 foundry | uncommon | `lrmast` `smmast`; metal moons | absent on Arbor (pocket: Helios belt) | absent (Anvil has iron/titani instead) | SS0004 Gleam |
+| `nickfe` | nickel-iron | 6/12 | `nminng` (2); consume `orbfnd` `msdrvr` `lghull` `arkcns` | L1 (`nminng`); L4 foundry | uncommon | `lrmast` `smmast`; metal moons; **Arbor deep-ocean nodule pockets** | absent on land (pocket: Helios belt); **few deep ocean cells** | absent (Anvil has iron/titani instead) | SS0004 Gleam |
 | `tungst` | tungsten | 8/20 | `wminng` (1); consume `matlib` `armhul` `kntcgn` `kpdgun` `gausgn` `spngun` `hiisp` `arkcns` | L5 (`wminng` / L6 `matlib`) | trace | `vulcan` moon `mountn`/`dust` | absent (pocket: Aeolus vulcan) | absent | SS0005 Cinder vulcan moons |
 | `deutrm` | deuterium | 1/1 | `d2ext` (1); `d2skm` (1); `dhefrc`/`plsdv`/`arkeng` fuel; consume `dhefus` | L4 (`d2ext` / `d2skm`); L6 fusion | rare / pocket | ice `dust`/`barren`; **not** habitable basins; **gas-giant orbit** cloud deck (`hostile` atmosphere) | absent on Arbor (pocket: Aeolus ices) | absent on Anvil (pocket: Fomal ices) | SS0003 Ember ice-giant moons; SS0006 Ash; all campaign `gasgnt` orbits |
 | `ammoni` | ammonia ice | 2/2 | `amnext` (2); consume `clslfe`; makeup `eclssx` | L5 (`clslfe`) | uncommon | outer ice moons `dust`/`barren` | absent (pocket: Aeolus ices) | absent (pocket: Fomal ices) | SS0006 Ash |
-| `methn` | methane ice | 2/1 | `ch4min` (2); `mpddrv`/`vasmdr` fuel | L3 (`ch4min`); L5 MPD | uncommon | outer ice moons; Titan-class | absent (pocket: Aeolus ices) | absent (pocket: Fomal ices) | SS0008 Deep |
+| `methn` | methane ice | 2/1 | `ch4min` (2); `mpddrv`/`vasmdr` fuel | L3 (`ch4min`); L5 MPD | uncommon | outer ice moons; Titan-class; **Arbor deep-ocean clathrate pockets** (modest 6–10) | absent on land (pocket: Aeolus ices); **few deep ocean cells** | absent (pocket: Fomal ices) | SS0008 Deep |
 | `volatl` | mixed volatiles | 2/2 | `volext` (2); `isrplt` USE feedstock | L4 (`volext` / `isrurf`) | uncommon | `smcast` `lrcast` | absent (pocket: Helios belt `lrcast`) | absent (pocket: Fomal belt) | SS0006 Ash; SS0007 Shards |
 | `kerogn` | kerogen organics | 2/2 | `krogen` (1); `isrplt` USE | L2 (`krogen`) | uncommon | `smcast` `lrcast` | absent (pocket: Helios belt carbonaceous) | absent (pocket: Fomal belt) | SS0007 Shards |
 | `alumin` | aluminium | 5/8 | `alminn` (2); consume `whlhbt` `agrark` | L2 (`alminn`); L6 habitat | uncommon | anorthosite `barren`/`dust` highlands; rock moons | absent (pocket: Selene) | **uncommon** highlands | SS0008 Deep rock moons; SS0009 Graph |
@@ -113,7 +113,7 @@ All `use-allowed-in` extraction + solid-surface unless noted. Campaign tag **pro
 
 | Tech | Lv | Requires | Produces | Where to USE |
 |------|----|----------|----------|--------------|
-| `iminng` | 0 | — | 3 `iron` | solid ore cells |
+| `iminng` | 0 | — | 3 `iron` | solid ore cells; also liquid-surface with `udrill` present (seafloor crust) |
 | `tminng` | 0 | — | 2 `titani` | |
 | `slcmlt` | 0 | — | 1 `silici` | |
 | `cminng` | 0 | — | 2 `copper` | |
@@ -147,6 +147,20 @@ All `use-allowed-in` extraction + solid-surface unless noted. Campaign tag **pro
 | `d2skm` | 4 | `d2ext` | 1 `deutrm` | `atmosphere` + `gasgnt` orbit |
 
 Farms: `farmng` / `afrmng` produce `food` (not a mine). `medirf` produces `medici` on ocean planets. `pharms` produces `medici` from 1 `food` on a sick bay. `hydsyn` produces `hydzn` from `ammoni` (not extraction).
+
+### Undersea ocean/sea seed table
+
+Full civic/tech design: [`ocean-cities.md`](ocean-cities.md). No new ids. Generator applies these bands on `ocean`/`sea` cells (plus existing `water`/`food`):
+
+| Band | Resources | Typical qty |
+|------|-----------|-------------|
+| All liquid | `water`, `food` | water 200–700; food 8–80 (Arbor richer) |
+| Deep ocean (Arbor) | + `iron`, `silici`; pockets `carbon`, `nickfe`, `methn` | iron 15–30; silici 10–20; pockets 6–10 |
+| Shelf sea (Arbor) | + `iron`, `oil`, `silici` | oil 12–20; iron 10–15 |
+| Anvil seas | + `copper`, `silici`, `iron`; shelf + `titani`; rare `gold` | copper 10–20; titani 12–15; gold 5 on 1 cell |
+| Graph liquid | + `iron`, `silici`, `carbon` | iron 15; silici 18; carbon 8 |
+
+`udrill` (L1) is the extraction module for liquid-surface ores; `iminng`/`tminng`/… USE still need TDD if restricted to solid-only — campaign seeds the ores now so undersea play has a diet.
 
 ## Module fuels (must exist in this dictionary)
 

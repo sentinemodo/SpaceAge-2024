@@ -110,53 +110,53 @@ PLAYERS = OrderedDict(
 
 ARBOR = [
     # id is implied as R00001 + Y*6+X; listed for the name/type/resources/occupant
-    ((0, 0), "ocean", "West Pelagic", [("terair", 100), ("water", 600), ("food", 40)]),
-    ((1, 0), "sea", "Shelf", [("terair", 100), ("water", 400), ("food", 80), ("h2o2", 100)]),
+    ((0, 0), "ocean", "West Pelagic", [("terair", 100), ("water", 600), ("food", 40), ("iron", 25), ("silici", 15), ("carbon", 10), ("methn", 8)]),
+    ((1, 0), "sea", "Shelf", [("terair", 100), ("water", 400), ("food", 80), ("h2o2", 100), ("iron", 15), ("oil", 20), ("silici", 12)]),
     ((2, 0), "grassl", "Tidewatch Coast", [("terair", 100), ("food", 500), ("oil", 30), ("iron", 15), ("water", 150)]),
     ((3, 0), "grassl", "South Vale", [("terair", 100), ("food", 450), ("carbon", 25), ("iron", 20), ("water", 120)]),
     ((4, 0), "dust", "Launch Steppe", [("iron", 30), ("silici", 25), ("carbon", 10)]),
     ((5, 0), "barren", "Cinder Flats", [("iron", 20), ("silici", 15)]),
-    ((0, 1), "ocean", "West Deep", [("terair", 100), ("water", 600), ("food", 40)]),
+    ((0, 1), "ocean", "West Deep", [("terair", 100), ("water", 600), ("food", 40), ("iron", 30), ("silici", 18), ("nickfe", 8)]),
     ((1, 1), "grassl", "Northwind Grant", [("terair", 100), ("food", 600), ("carbon", 30), ("iron", 20), ("water", 150)]),
     ((2, 1), "grassl", "Mid Vale", [("terair", 100), ("food", 500), ("carbon", 20), ("iron", 15), ("water", 140), ("oil", 25)]),
     ((3, 1), "grassl", "Greenwell Grant", [("terair", 100), ("food", 600), ("carbon", 30), ("iron", 20), ("water", 150)]),
     ((4, 1), "mountn", "South Ridge", [("iron", 70), ("silici", 20), ("carbon", 5)]),
     ((5, 1), "dust", "East Dune", [("iron", 30), ("silici", 25), ("carbon", 10)]),
-    ((0, 2), "sea", "West Coast", [("terair", 100), ("water", 400), ("food", 80), ("h2o2", 80)]),
+    ((0, 2), "sea", "West Coast", [("terair", 100), ("water", 400), ("food", 80), ("h2o2", 80), ("oil", 15), ("iron", 12)]),
     ((1, 2), "grassl", "Farm Belt", [("terair", 100), ("food", 700), ("carbon", 35), ("iron", 20), ("water", 160)]),
     ((2, 2), "grassl", "Assembly Basin", [("terair", 100), ("food", 800), ("carbon", 40), ("iron", 25), ("water", 180)]),
     ((3, 2), "grassl", "Central Basin", [("terair", 100), ("food", 550), ("carbon", 25), ("iron", 20), ("water", 150)]),
     ((4, 2), "grassl", "Rivermark Grant", [("terair", 100), ("food", 600), ("carbon", 30), ("iron", 20), ("water", 150)]),
     ((5, 2), "mountn", "East Peak", [("iron", 80), ("silici", 25)]),
-    ((0, 3), "ocean", "Mid Pelagic", [("terair", 100), ("water", 600), ("food", 30)]),
-    ((1, 3), "ocean", "Inner Pelagic", [("terair", 100), ("water", 600), ("food", 30)]),
+    ((0, 3), "ocean", "Mid Pelagic", [("terair", 100), ("water", 600), ("food", 30), ("iron", 20), ("silici", 20), ("methn", 6)]),
+    ((1, 3), "ocean", "Inner Pelagic", [("terair", 100), ("water", 600), ("food", 30), ("iron", 20), ("silici", 15)]),
     ((2, 3), "grassl", "Prairie", [("terair", 100), ("food", 500), ("carbon", 20), ("iron", 15), ("water", 140)]),
     ((3, 3), "grassl", "Sundock Grant", [("terair", 100), ("food", 600), ("oil", 20), ("iron", 20), ("water", 150)]),
     ((4, 3), "grassl", "East Steppe", [("terair", 100), ("food", 480), ("carbon", 20), ("iron", 18), ("water", 130)]),
     ((5, 3), "mountn", "East Crag", [("iron", 75), ("silici", 20)]),
-    ((0, 4), "ocean", "North Pelagic", [("terair", 100), ("water", 600), ("food", 30)]),
-    ((1, 4), "sea", "North Sound", [("terair", 100), ("water", 400), ("food", 70), ("h2o2", 90)]),
+    ((0, 4), "ocean", "North Pelagic", [("terair", 100), ("water", 600), ("food", 30), ("iron", 18), ("silici", 15)]),
+    ((1, 4), "sea", "North Sound", [("terair", 100), ("water", 400), ("food", 70), ("h2o2", 90), ("oil", 12), ("iron", 10)]),
     ((2, 4), "grassl", "Copse Grant", [("terair", 100), ("food", 600), ("carbon", 30), ("iron", 20), ("water", 150)]),
     ((3, 4), "grassl", "Windgap", [("terair", 100), ("food", 450), ("carbon", 20), ("iron", 15), ("water", 140)]),
     ((4, 4), "dust", "Loess", [("iron", 35), ("silici", 20), ("carbon", 15)]),
     ((5, 4), "barren", "East Flat", [("iron", 20), ("silici", 15)]),
-    ((0, 5), "ocean", "Polar Ocean", [("terair", 100), ("water", 700), ("food", 20)]),
-    ((1, 5), "ocean", "Polar Ocean E", [("terair", 100), ("water", 700), ("food", 20)]),
-    ((2, 5), "sea", "Polar Sea", [("terair", 100), ("water", 500), ("food", 40), ("h2o2", 120)]),
+    ((0, 5), "ocean", "Polar Ocean", [("terair", 100), ("water", 700), ("food", 20), ("iron", 15), ("silici", 10), ("methn", 10)]),
+    ((1, 5), "ocean", "Polar Ocean E", [("terair", 100), ("water", 700), ("food", 20), ("iron", 15), ("silici", 10)]),
+    ((2, 5), "sea", "Polar Sea", [("terair", 100), ("water", 500), ("food", 40), ("h2o2", 120), ("iron", 12), ("carbon", 8)]),
     ((3, 5), "grassl", "Tundra", [("terair", 100), ("food", 250), ("carbon", 10), ("iron", 10), ("water", 200)]),
     ((4, 5), "mountn", "North Spine", [("iron", 60), ("silici", 20)]),
     ((5, 5), "dust", "Polar Dust", [("iron", 25), ("silici", 20)]),
 ]
 
 ANVIL = [
-    ((0, 0), "ocean", "West Sea", [("terair", 100), ("water", 350), ("food", 10)]),
-    ((1, 0), "sea", "West Shelf", [("terair", 100), ("water", 200), ("food", 30)]),
+    ((0, 0), "ocean", "West Sea", [("terair", 100), ("water", 350), ("food", 10), ("copper", 15), ("silici", 20), ("iron", 12)]),
+    ((1, 0), "sea", "West Shelf", [("terair", 100), ("water", 200), ("food", 30), ("copper", 20), ("titani", 12), ("silici", 25)]),
     ((2, 0), "dust", "Pad", [("copper", 25), ("silici", 40), ("titani", 20), ("iron", 25)]),
     ((3, 0), "grassl", "Slagport", [("terair", 100), ("food", 120), ("water", 80), ("iron", 20), ("silici", 30), ("titani", 20)]),
     ((4, 0), "mountn", "South Ore", [("titani", 60), ("silici", 40), ("copper", 30), ("iron", 30)]),
     ((5, 0), "dust", "South Dune", [("copper", 20), ("silici", 40), ("titani", 15), ("iron", 25)]),
     ((6, 0), "barren", "South Scarp", [("silici", 50), ("titani", 20)]),
-    ((0, 1), "sea", "Northwest Sea", [("terair", 100), ("water", 200), ("food", 25)]),
+    ((0, 1), "sea", "Northwest Sea", [("terair", 100), ("water", 200), ("food", 25), ("copper", 18), ("silici", 20)]),
     ((1, 1), "grassl", "Ironclad Grant", [("terair", 100), ("food", 140), ("water", 80), ("iron", 20), ("titani", 25), ("silici", 30)]),
     ((2, 1), "grassl", "Slope", [("terair", 100), ("food", 100), ("water", 70), ("silici", 25), ("titani", 15)]),
     ((3, 1), "mountn", "West Spine", [("titani", 70), ("copper", 35), ("silici", 40), ("iron", 30)]),
@@ -170,15 +170,15 @@ ANVIL = [
     ((4, 2), "dust", "Scree", [("copper", 30), ("silici", 40), ("titani", 25), ("iron", 20)]),
     ((5, 2), "mountn", "East Peak", [("titani", 55), ("uraniu", 120), ("silici", 35), ("copper", 25)]),
     ((6, 2), "grassl", "Ridge", [("terair", 100), ("food", 100), ("water", 70), ("silici", 30), ("titani", 20), ("iron", 15)]),
-    ((0, 3), "ocean", "Gulf", [("terair", 100), ("water", 350), ("food", 10)]),
+    ((0, 3), "ocean", "Gulf", [("terair", 100), ("water", 350), ("food", 10), ("copper", 12), ("gold", 5), ("silici", 15)]),
     ((1, 3), "grassl", "Silicate Grant", [("terair", 100), ("food", 140), ("water", 80), ("silici", 40), ("titani", 20), ("iron", 15)]),
     ((2, 3), "grassl", "Vale", [("terair", 100), ("food", 90), ("water", 70), ("silici", 25), ("iron", 15)]),
     ((3, 3), "mountn", "Uraninite", [("uraniu", 150), ("titani", 40), ("silici", 30), ("copper", 20)]),
     ((4, 3), "grassl", "Thin Soil", [("terair", 100), ("food", 80), ("water", 60), ("silici", 20), ("titani", 10)]),
     ((5, 3), "grassl", "Fission Grant", [("terair", 100), ("food", 140), ("water", 80), ("uraniu", 15), ("titani", 20), ("silici", 30)]),
     ((6, 3), "dust", "Fan", [("copper", 20), ("silici", 45), ("titani", 15)]),
-    ((0, 4), "ocean", "North Sea", [("terair", 100), ("water", 350), ("food", 8)]),
-    ((1, 4), "sea", "North Shelf", [("terair", 100), ("water", 200), ("food", 20)]),
+    ((0, 4), "ocean", "North Sea", [("terair", 100), ("water", 350), ("food", 8), ("copper", 10), ("iron", 10), ("silici", 15)]),
+    ((1, 4), "sea", "North Shelf", [("terair", 100), ("water", 200), ("food", 20), ("titani", 15), ("copper", 15), ("silici", 20)]),
     ((2, 4), "dust", "Ash", [("copper", 15), ("silici", 35), ("titani", 15), ("iron", 20)]),
     ((3, 4), "grassl", "Isotope", [("terair", 100), ("food", 90), ("water", 70), ("silici", 25), ("titani", 15), ("iron", 15)]),
     ((4, 4), "mountn", "Shield", [("titani", 65), ("silici", 40), ("copper", 30), ("iron", 30)]),
@@ -741,6 +741,11 @@ def fill_grid(ids, rows, width, first_n, settlement_fn=None):
 
 
 def settlement_arbor(region, name_en, typ):
+    if typ in ("ocean", "sea"):
+        # Undersea / pontoon civic slots; deep ocean also gets extraction for udrill.
+        if typ == "ocean":
+            region.capacities.append(("extraction", 2))
+        return 4 if typ == "sea" else 2
     if typ != "grassl":
         return None
     if name_en == "Assembly Basin":
@@ -760,6 +765,10 @@ def settlement_arbor(region, name_en, typ):
 
 
 def settlement_anvil(region, name_en, typ):
+    if typ in ("ocean", "sea"):
+        if typ == "ocean":
+            region.capacities.append(("extraction", 2))
+        return 4 if typ == "sea" else 2
     if typ != "grassl":
         return None
     if name_en in (
@@ -1985,7 +1994,9 @@ def deep_bodies(ids, system):
         ("low", "habitable", "terair"),
         lambda x, y: "grassl" if y == 1 else ("sea" if y == 2 else "dust"),
         lambda x, y, typ: (
-            [("food", 40), ("water", 60)] if typ in ("grassl", "sea") else [("water", 40)]
+            [("food", 40), ("water", 60), ("iron", 8), ("silici", 8)]
+            if typ in ("grassl", "sea")
+            else [("water", 40)]
         ),
         ["terran"],
         lambda x, y, typ: [("settlement", 8)] if typ == "grassl" else [],
@@ -2111,7 +2122,7 @@ def graph_bodies(ids, system):
 
     def graph_res(x, y, typ):
         if typ in ("ocean", "sea"):
-            return [("water", 400), ("food", 20)]
+            return [("water", 400), ("food", 20), ("iron", 15), ("silici", 18), ("carbon", 8)]
         if typ == "grassl":
             return [("food", 300), ("carbon", 20), ("water", 80), ("iron", 12)]
         if typ == "mountn":
@@ -2125,6 +2136,10 @@ def graph_bodies(ids, system):
     def graph_cap(x, y, typ):
         if typ == "grassl":
             return [("settlement", 8)]
+        if typ == "sea":
+            return [("settlement", 4)]
+        if typ == "ocean":
+            return [("settlement", 2), ("extraction", 2)]
         return []
 
     ocean = add_planet(

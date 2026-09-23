@@ -1,8 +1,8 @@
 # Level 0 and 1 technologies (campaign)
 
-Catalog: `play/campaign/data.xml`. Checked **22 Sep 2026** against engine **0.8.001**. Phase 1 catalog slice (optins, personal combat kit, ionthr) included; L1 branch office (`brnofc`) included; gas-giant cloud harvest (`skimmn`, `he3skm`, `d2skm`) is level 2+ in [`advanced_technologies.md`](advanced_technologies.md).
+Catalog: `play/campaign/data.xml`. Checked **22 Sep 2026** against engine **0.8.001**. Phase 1 catalog slice (optins, personal combat kit, ionthr) included; L1 branch office (`brnofc`) and ocean / underwater L1 (`ptncns`, `tdlpwr`, `udrill`, `uwtrs`) included; gas-giant cloud harvest (`skimmn`, `he3skm`, `d2skm`) and under-surface / underwater combat (`usctyc`, `uwcbt`) are level 2+ in [`advanced_technologies.md`](advanced_technologies.md).
 
-This is the **campaign** L0–L1 excerpt for campaign-ai and campaign play. SampleGame manuals (`play/player/basic_technologies.md`, `play/player/advanced_technologies.md`) stay on `Tests/data.xml` and are not retargeted here.
+This is the **campaign** L0–L1 excerpt for campaign-ai and campaign play. SampleGame manuals (`play/player/basic_technologies.md`, `play/player/advanced_technologies.md`) stay on `Tests/data.xml` (no ocean-city tokens there) and are not retargeted here.
 
 This file lists **level 0 and level 1** technologies, then the **module types** and **item types** those technologies produce or consume. **Level 2+** are in [`play/player/campaign/advanced_technologies.md`](advanced_technologies.md). SampleGame manuals stay on `Tests/data.xml`.
 
@@ -265,6 +265,10 @@ Works in: production. Use consumes: 2 terran breathing gas `[terair]`, 1 copper 
 Man-portable electromagnetic rail kinetic for infantry battalions. Tag: `military`. **Requires:** stationary defense `[stnrdf]`.  
 Works in: production. Use consumes: 2 iron `[iron]`, 1 titanium `[titani]`. Use produces: personal rail gun `[prlgun]` (item). Use-time: 3 weeks.
 
+**pontoon city construction [ptncns]**  
+Prefabricated floating metro: displacement pontoons, sealed decks, and desalination. Crew breathe surface air on a terair world; no canned-gas plant. Tag: `production`. **Requires:** naval transport `[nvltrs]`.  
+Works in: production (factories; seat via `FOR` onto a liquid-surface tender). Use consumes: 40 iron `[iron]`, 4 titanium `[titani]`. Use produces: pontoon city `[ptncty]`. Use-time: 12 weeks.
+
 **preventive servicing [servic]**  
 Maintenance and repairs are best done in advance. Tag: `repair`.  
 Works in: production. Use consumes: 1 titanium `[titani]`, 1 iron `[iron]`, 1 copper `[copper]`, 1 silicium `[silici]`. Use produces: 10 spare parts `[spare]`. Use-time: 1 week (default).
@@ -280,6 +284,18 @@ Works in: production. Use consumes: 2 iron `[iron]`, 1 uranium `[uraniu]`. Use p
 **staged hydrolox [hydstg]**  
 Staged combustion of hydrogen and oxygen derived from water or stored oxyhydro. Vacuum Isp about 450 s. Fuel water or h2o2. Tag: `propulsion`. **Requires:** action and reaction `[areact]`.  
 Works in: production. Use consumes: 8 iron `[iron]`, 4 titanium `[titani]`, 2 copper `[copper]`. Use produces: hydrolox stage `[hydnoz]`. Use-time: 5 weeks.
+
+**tidal power [tdlpwr]**  
+Kinetic turbines in tidal streams and coastal currents. Needs a terair world with liquid surface; denser working fluid than wind. Tag: `production`. **Requires:** wind turbines `[wndtrb]`.  
+Works in: production. Use consumes: 8 iron `[iron]`, 2 copper `[copper]`. Use produces: tidal powerplant `[tdlpln]`. Use-time: 4 weeks.
+
+**underwater drilling [udrill]**  
+Seafloor rotary drill and riser on a bottom skid. Strips crust, nodules, and soft sediment under liquid surfaces. Heavier than a surface drill. Tag: `production`. **Requires:** mineral surface drilling `[sdrill]`.  
+Works in: production. Use consumes: 35 iron `[iron]`, 15 titanium `[titani]`. Use produces: underwater drill `[udrill]`. Use-time: 4 weeks. Module is `underwater="yes"` (stealth rules in `play/player/rules.md`).
+
+**underwater transport [uwtrs]**  
+Pressure-hull cargo submarine. Ballast and oil closed-cycle for liquid-surface transit. Costlier than coastal freighters; required to seat undersea colonies. Tag: `production`. **Requires:** naval transport `[nvltrs]`.  
+Works in: production. Use consumes: 6 iron `[iron]`, 4 titanium `[titani]`. Use produces: underwater transport `[uwtruk]`. Use-time: 4 weeks. Module is `underwater="yes"`.
 
 **waste disposal [wastdp]**  
 This simple yet effective technique sends wastes into a sun, preventing accumulation of radio-active or unbreakable toxic wastes.  
@@ -439,9 +455,25 @@ Group `settlement`. Built by city planning `[ctypln]` (consumes 1 city). Size 25
 A rack of chemically boosted rockets that only fires in orbit. Compact enough to nest in a shuttle with crew, fuel, food, and breathing mix.  
 Group `military`. Built by orbital rocket launcher `[orbrkt]`. `weapon-group` `missile`. Size 40, mass 40, crew 0, capacity 0, HP 40, tech-cap 1, attack 3, defense 1, damage 3. Upkeep 10 cash. Operates only in orbit. Not a shuttle unit: stays nested on the shuttle, fires on the parent’s shot sequence, and is included in the standard hit-location roll.
 
+**pontoon city [ptncty]**  
+Floating metro on displacement pontoons. Desalination and sealed decks; crew breathe surface air on a terair world. No canned-gas upkeep.  
+Group `settlement`. Built by pontoon city construction `[ptncns]`. Size 6000, capacity 4000, energy 4, HP 350, tech-cap 1, population max 750. Cannot be owned; cannot hold item stacks. Upkeep 30 food (riot 25% if unpaid) — **no** `terair` upkeep. Produces 200 cash and 2 terran per 13 weeks. Operates on **liquid-surface** with terran atmosphere `[terair]`. Not `underwater` (surface pontoon; ordinary visibility).
+
 **tanks [tanks]**  
 Platoon of 4 armored vehicles suitable for destroying ground modules and infantry battalions.  
 Group `vehicle`. Built by armored combat `[armcbt]`. `weapon-group` `kinetic`. Size 240, mass 240, crew 16, capacity 200, HP 80, attack 6, defense 4, damage 7. Upkeep 80 cash. Consumes 16 food and 16 terran air (damage 25% if not). Unpaid upkeep: rebel 10%. Ground move speed 0.5. Fuel duration 13 (4 oil). Operates on solid surface with terran atmosphere.
+
+**tidal powerplant [tdlpln]**  
+Kinetic turbines in tidal streams and coastal currents. Denser working fluid than wind; needs terair and liquid surface.  
+Group `energy`. Built by tidal power `[tdlpwr]`. Size 80, mass 80, crew 1, energy 2, HP 8. Upkeep 15 cash. Produces 12 energy / 13 weeks. Operates in settlement on **liquid-surface** with terran atmosphere `[terair]`.
+
+**underwater drill [udrill]**  
+Seafloor rotary drill and riser on a bottom skid. Strips crust, nodules, and soft sediment under liquid surfaces.  
+Group `extraction`. Built by underwater drilling `[udrill]`. Size 750, mass 750, crew 8, energy 8, capacity 400, HP 60. `underwater="yes"`. Upkeep 60 cash. Operates on liquid-surface, in settlement or frigate. Stealthy unless the observer has underwater presence in-region or a spaceship hull on orbit (`play/player/rules.md`).
+
+**underwater transport [uwtruk]**  
+Pressure-hull cargo submarine. Ballast tanks and oil closed-cycle. Liquid surface only; costlier than coastal freighters.  
+Group `vehicle`. Built by underwater transport `[uwtrs]`. Size 350, mass 200, crew 2, capacity 120, HP 25. `underwater="yes"`. Upkeep 25 cash. Consumes 8 food and 8 terran air (damage 25% if not). Naval move speed 1. Fuel duration 13 (2 oil). Operates on **liquid-surface** with terran atmosphere `[terair]` (no land port). Counts as underwater presence for stealth and seating under-surface cities / liquid-surface domes.
 
 ---
 
@@ -457,7 +489,7 @@ Size 5, mass 5. Produced by hydrocarbons drilling `[hcdril]` (1). Coal plants bu
 
 **unit of copper [copper]**  
 This very useful metal is the basis of most energy based or energy intensive structures.  
-Size 5, mass 8. Produced by copper mining `[cminng]` (2). Consumed by L0: breathing-gas generation `[airgen]` (1), corporate management `[corpmg]` (2), uranium fission `[urfiss]` (5). Also L1: branch office construction `[brnofc]` (1), laser optics `[lasopt]` (6), laser turret `[lstrrt]` (4), preventive servicing `[servic]` (1), staged hydrolox `[hydstg]` (2).
+Size 5, mass 8. Produced by copper mining `[cminng]` (2). Consumed by L0: breathing-gas generation `[airgen]` (1), corporate management `[corpmg]` (2), uranium fission `[urfiss]` (5). Also L1: branch office construction `[brnofc]` (1), laser optics `[lasopt]` (6), laser turret `[lstrrt]` (4), preventive servicing `[servic]` (1), staged hydrolox `[hydstg]` (2), tidal power `[tdlpwr]` (2).
 
 **unit of food [food]**  
 An carefully designed set of pastes, liquids and solids, lending itself to taste-satisfying preparations, yet a source of all essential minerals, vitamins and calories for human consumption.  
@@ -465,7 +497,7 @@ Size 1, mass 1. Produced by intensive farming `[farmng]` (5), fishery harvest `[
 
 **unit of iron [iron]**  
 Extracted, refined, and purified into industrial steels, iron is a basic construction material widely used in most structures.  
-Size 5, mass 10. Produced by iron mining `[iminng]` (3). Consumed by most L0 builds (see technology entries). Also L1: branch office construction `[brnofc]` (5), city planning `[ctypln]` (26), mineral core drilling `[cdrill]` (25), armored combat `[armcbt]` (8), naval combat `[nvlcbt]` (8), orbital rocket launcher `[orbrkt]` (4), form infantry battalion `[frminf]` (4), rocket launcher production `[rckter]` (2), laser turret `[lstrrt]` (6), preventive servicing `[servic]` (1), engineering shop `[engshp]` (5), law enforcement `[lawenf]` (6), staged hydrolox `[hydstg]` (8).
+Size 5, mass 10. Produced by iron mining `[iminng]` (3). Consumed by most L0 builds (see technology entries). Also L1: branch office construction `[brnofc]` (5), city planning `[ctypln]` (26), mineral core drilling `[cdrill]` (25), armored combat `[armcbt]` (8), naval combat `[nvlcbt]` (8), orbital rocket launcher `[orbrkt]` (4), form infantry battalion `[frminf]` (4), rocket launcher production `[rckter]` (2), laser turret `[lstrrt]` (6), preventive servicing `[servic]` (1), engineering shop `[engshp]` (5), law enforcement `[lawenf]` (6), staged hydrolox `[hydstg]` (8), pontoon city construction `[ptncns]` (40), tidal power `[tdlpwr]` (8), underwater drilling `[udrill]` (35), underwater transport `[uwtrs]` (6).
 
 **unit of oil [oil]**  
 Black liquid carbon based used as fuel.  
@@ -481,7 +513,7 @@ Size 5, mass 3. Produced by silicium melting `[slcmlt]` (1). Consumed by L0: cor
 
 **unit of titanium [titani]**  
 Due to its resistance to wear, titanium is a good construction material.  
-Size 10, mass 10. Produced by titanium mining `[tminng]` (2). Consumed by L0: action and reaction `[areact]` (10), industrial automation `[indust]` (10), stationary defense `[stnrdf]` (4), shuttles assembly `[shtlas]` (1), space ship assembly `[ssassm]` (4), space control `[spctrl]` (4), uranium fission `[urfiss]` (8), small scale transportation `[strans]` (2), crew housing `[crewhs]` (2). Also L1: mineral core drilling `[cdrill]` (10), laser optics `[lasopt]` (2), laser turret `[lstrrt]` (4), preventive servicing `[servic]` (1), armored combat `[armcbt]` (2), naval combat `[nvlcbt]` (2), staged hydrolox `[hydstg]` (4).
+Size 10, mass 10. Produced by titanium mining `[tminng]` (2). Consumed by L0: action and reaction `[areact]` (10), industrial automation `[indust]` (10), stationary defense `[stnrdf]` (4), shuttles assembly `[shtlas]` (1), space ship assembly `[ssassm]` (4), space control `[spctrl]` (4), uranium fission `[urfiss]` (8), small scale transportation `[strans]` (2), crew housing `[crewhs]` (2). Also L1: mineral core drilling `[cdrill]` (10), laser optics `[lasopt]` (2), laser turret `[lstrrt]` (4), preventive servicing `[servic]` (1), armored combat `[armcbt]` (2), naval combat `[nvlcbt]` (2), staged hydrolox `[hydstg]` (4), pontoon city construction `[ptncns]` (4), underwater drilling `[udrill]` (15), underwater transport `[uwtrs]` (4).
 
 **unit of uranium [uraniu]**  
 With a half-life of million of years, this is one of the most stable of the radio-active elements, and one very easy to use in energy power modules.  

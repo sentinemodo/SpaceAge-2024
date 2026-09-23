@@ -111,8 +111,13 @@ flowchart TB
     clslfe --> cryost --> isptnk
     clslfe --> recyl2
     habcns --> dmecns --> whlhbt --> lghull --> arkcns
-    afrmng --> agrark
+    nvltrs --> ptncns
+    nvltrs --> uwtrs --> usctyc
+    uwtrs --> uwcbt
+    sdrill --> udrill
+    wndtrb --> tdlpwr
     wndtrb --> solth
+    afrmng --> agrark
     urfiss --> fuelcl
     nminng --> reemin
     hcdril --> grmine --> cccomp
@@ -372,6 +377,7 @@ Primary tags assigned for campaign research targeting. Consume/produce are live 
 | `grndtr` | ground transport | 2 `iron` | `trucks` | Use-time 2 |
 | `nvltrs` | naval transport | 2 `iron` | `coastr` | Use-time 2. Displacement cargo hull; naval MOVE; operates on solid-surface (port) and liquid-surface |
 | `fshng` | fishery construction | 10 `iron` | `fshfrm` | Use-time 4. Built in a factory. Flavour: terair worlds; nets plus photic seaweed/algae; tow to sea |
+| *(ocean L1+)* | see Level 1–2 and [`ocean-cities.md`](ocean-cities.md) | | | Pontoon city, tidal, undersea drill, subs |
 | `fshhrv` | fishery harvest | — | 5 `food` | Agricultural, `fshfrm` only, liquid-surface + `terair` (no ocean-planet gate). Fish plus photic seaweed/algae |
 | `strans` | small scale transportation | 2 `iron`, 2 `titani` | `cargob` | Use-time 2 |
 | `crewhs` | crew housing | 3 `iron`, 2 `titani` | `crwqrt` | Use-time 2 |
@@ -423,6 +429,10 @@ Copy required. Capacity 1. Cost 8 unless noted.
 | **`nminng`** | nickel-iron extraction | `iminng` | 1 | — | 2 `nickfe` | M-type metal: Fe-Ni alloy from `lrmast`/`smmast`. Extraction, solid-surface |
 | **`gminng`** | gold recovery | `cminng` | 2 | — | 1 `gold` | Cyanide-free gravity/amalgam analogue on hydrothermal veins. Extraction |
 | **`brnofc`** | branch office construction | `corpmg` | 4 | 5 `iron`, 1 `copper`, 2 `silici` | `brnofc` | Satellite HR/payroll node for a second settlement region. Tag production. Cost 8. **Not** a second HQ: half recruitment, 20% cash, no region buffs — see [`economy.md`](economy.md), [`catalog.md`](catalog.md) |
+| **`ptncns`** | pontoon city construction | `nvltrs` | 12 | 40 `iron`, 4 `titani` | `ptncty` | Above-water floating metro on liquid-surface + terair. No terair upkeep. [`ocean-cities.md`](ocean-cities.md) |
+| **`tdlpwr`** | tidal power | `wndtrb` | 4 | 8 `iron`, 2 `copper` | `tdlpln` | Current/tidal turbines; liquid-surface + terair. Energy ~12 / 13 wk |
+| **`udrill`** | underwater drilling | `sdrill` | 4 | 35 `iron`, 15 `titani` | `udrill` | Seafloor rotary drill; liquid-surface only (seafloor proxy) |
+| **`uwtrs`** | underwater transport | `nvltrs` | 4 | 6 `iron`, 4 `titani` | `uwtruk` | Pressure-hull cargo sub; naval MOVE; liquid only. Costlier than `coastr`/`trucks` |
 
 ### Propulsion (gap)
 
@@ -442,6 +452,7 @@ Copy required. Capacity 1. Cost 8 unless noted.
 |----|------|----------|----------|---------|---------|-------|
 | `armcbt` | armored combat | — | 4 | 6 `iron`, 2 `titani` | `tanks` | **kinetic**+**armour** platform (oil engines). Tag military |
 | `nvlcbt` | naval combat | — | 10 | 8 `iron`, 2 `titani` | `gunbot` | **kinetic** gunboat (oil engines). Naval MOVE. Tag military |
+| *(L2 `uwcbt`)* | underwater combat | `uwtrs` | 12 | 14 `iron`, 6 `titani` | `uwtank` | See Level 2. Soft peer of `nvlcbt`/`armcbt` |
 | `frminf` | form infantry battalion | — | 13 | 1 `iron` | `inftry` | Mixed infantry; mount items below. Tag military |
 | `rckter` | rocket launcher production | — | 2 | 1 `iron` | item `rctlnc` | **missile**. Cost 4. Live consume; L3+ missiles pull `nitrat`/`uraniu` |
 | `lasopt` | laser optics | — | 4 | 2 `terair`, 2 `h2o2`, 2 `copper` | `bltlas` | **laser**. Campaign retune: working gas + electrodes. Tag military |
@@ -465,6 +476,7 @@ Capacity 2. Cost 16.
 | `he3min` | helium-3 mining | `uminng` | 8 | — | 1 `heliu3` | Extraction; regolith/ice, **not** habitable basins |
 | `he3fus` | helium-3 fusion | `he3min` | 1 | 1 `heliu3` | `fusrec` | Burns 3 `heliu3` / 13 wk |
 | `habcns` | small habitat construction | — | 6 | 20 `iron`, 8 `titani` | `smhabi` | Pressure shell, solid-surface |
+| **`usctyc`** | under-surface city construction | `uwtrs` | 12 | 60 `iron`, 20 `titani`, 10 `copper` | `uscty` | Shaft metro on seafloor proxy (`liquid-surface`); **no** terair upkeep. [`ocean-cities.md`](ocean-cities.md) |
 | **`alminn`** | aluminium from anorthosite | `slcmlt` | 2 | — | 2 `alumin` | Hall–Héroult analogue on highlands. Extraction, solid-surface |
 | **`krogen`** | kerogen retorting | `hcdril` | 2 | — | 1 `kerogn` | Slow pyrolysis of carbonaceous chondrite organics. Extraction |
 
@@ -489,6 +501,7 @@ AU hops (planet → local Gate) need a **fusion torch**, not chemical or ion. Ph
 | Id | Name | Requires | Use-time | Consume | Produce | Notes |
 |----|------|----------|----------|---------|---------|-------|
 | `xraylo` | x-ray laser optics | `lasopt` | 4 | 2 `terair`, 2 `volatl`, 2 `copper` | `xraylz` | **laser**. Campaign retune: gases. Tag military |
+| **`uwcbt`** | underwater combat | `uwtrs` | 12 | 14 `iron`, 6 `titani` | `uwtank` | **kinetic** combat sub. Naval MOVE; liquid only. Costlier than `tanks`/`gunbot`. Tag military. [`ocean-cities.md`](ocean-cities.md) |
 | **`psnshd`** | personal plasma shield | `airgen` | 4 | 3 `terair`, 2 `h2o2`, 1 `copper` | item `psnshd` | **shield**. Infantry/tank/fighter. Requires L2; campaign `requires` `airgen` until `shplas` exists |
 | **`psnew`** | personal EW pack | `optins` | 3 | 3 `silici`, 2 `copper` | item `psnew` | **ew**. Datalink spoof; infantry and fighter |
 
@@ -503,7 +516,7 @@ Capacity 3. Cost 32.
 | Id | Name | Requires | Use-time | Consume | Produce | Notes |
 |----|------|----------|----------|---------|---------|-------|
 | `he3drl` | dedicated helium-3 drilling | `he3min` | 1 | 30 `iron`, 10 `titani` | `he3ext` | 20 `heliu3` / 13 wk |
-| `dmecns` | dome city construction | — | 10 | 40 `iron`, 20 `titani` | `dmdcty` | Airless rock; upkeep `food`+`terair` |
+| `dmecns` | dome city construction | — | 10 | 40 `iron`, 20 `titani` | `dmdcty` | Airless rock **and** seafloor (liquid-surface proxy); upkeep `food`+`terair` always. [`ocean-cities.md`](ocean-cities.md) |
 | `ahlcns` | advanced hull construction | — | 8 | 20 `titani` | `alnhul` | Alien geometry; no crew |
 | `he3unc` | unmanned helium plant | — | 6 | 12 `titani` | `he3aut` | Burns `heliu3` |
 | `autctl` | automated command systems | — | 5 | 8 `silici` | `autcmd` | Alien; sits under **research** for `arkcmd` edge, production build |

@@ -395,6 +395,19 @@
 			<use-consume item="iron" quantity="1" />
 			<use-produce module="wnplnt"/>
 		</entry>
+		<entry
+			name="tdlpwr"
+			name-en="tidal power"
+			level="1"
+			tags="production"
+			requires="wndtrb"
+			description="Kinetic turbines in tidal streams and coastal currents. Needs a terair world with liquid surface; denser working fluid than wind."
+			use-time="4">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="8"/>
+			<use-consume item="copper" quantity="2"/>
+			<use-produce module="tdlpln"/>
+		</entry>
 		<entry 
 			name="hcdril" 
 			name-en="hydrocarbons drilling" 
@@ -517,7 +530,7 @@
 			<use-allowed-in module-type-group="extraction" location-type="solid-surface"/>
 			<use-produce item="iron" quantity="3"/>
 		</entry>
-		<entry 
+		<entry
 			name="sdrill" 
 			name-en="mineral surface drilling" 
 			level="0"
@@ -526,6 +539,19 @@
 			<use-allowed-in module-type-group="production"/>
 			<use-consume item="iron" quantity="25"/>
 			<use-produce module="sdrill"/>
+		</entry>
+		<entry
+			name="udrill"
+			name-en="underwater drilling"
+			level="1"
+			tags="production"
+			requires="sdrill"
+			description="Seafloor rotary drill and riser on a bottom skid. Strips crust, nodules, and soft sediment under liquid surfaces. Heavier than a surface drill."
+			use-time="4">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="35"/>
+			<use-consume item="titani" quantity="15"/>
+			<use-produce module="udrill"/>
 		</entry>
 		<entry
 			name="cdrill"
@@ -604,6 +630,46 @@
 			<use-produce module="coastr"/>
 		</entry>
 		<entry
+			name="ptncns"
+			name-en="pontoon city construction"
+			level="1"
+			tags="production"
+			requires="nvltrs"
+			description="Prefabricated floating metro: displacement pontoons, sealed decks, and desalination. Crew breathe surface air on a terair world; no canned-gas plant."
+			use-time="12">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="40"/>
+			<use-consume item="titani" quantity="4"/>
+			<use-produce module="ptncty"/>
+		</entry>
+		<entry
+			name="uwtrs"
+			name-en="underwater transport"
+			level="1"
+			tags="production"
+			requires="nvltrs"
+			description="Pressure-hull cargo submarine. Ballast and oil closed-cycle for liquid-surface transit. Costlier than coastal freighters; required to seat undersea colonies."
+			use-time="4">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="6"/>
+			<use-consume item="titani" quantity="4"/>
+			<use-produce module="uwtruk"/>
+		</entry>
+		<entry
+			name="usctyc"
+			name-en="under-surface city construction"
+			level="2"
+			tags="production"
+			requires="uwtrs"
+			description="Seafloor pressure metro with a surface access port and elevator shaft. Ambient surface air is forced down the shaft; the colony does not run a closed breathing-gas loop."
+			use-time="12">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="60"/>
+			<use-consume item="titani" quantity="20"/>
+			<use-consume item="copper" quantity="10"/>
+			<use-produce module="uscty"/>
+		</entry>
+		<entry
 			name="fshng"
 			name-en="fishery construction"
 			level="0"
@@ -660,6 +726,19 @@
 			<use-consume item="iron" quantity="8"/>
 			<use-consume item="titani" quantity="2"/>
 			<use-produce module="gunbot"/>
+		</entry>
+		<entry
+			name="uwcbt"
+			tags="military"
+			name-en="underwater combat"
+			level="2"
+			requires="uwtrs"
+			description="Combat submarine: pressure hull, oil closed-cycle, and kinetic guns for undersea work. Costlier than tanks or gunboats; escorts undersea colonies."
+			use-time="12">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="14"/>
+			<use-consume item="titani" quantity="6"/>
+			<use-produce module="uwtank"/>
 		</entry>
 		<entry
 			name="frminf"
@@ -1755,9 +1834,10 @@ Researchers can query the library. The system can handle natural language questi
 			name="dmecns"
 			name-en="dome city construction"
 			level="3"
-			description="Construction of a compact domed settlement that can operate on airless rock if it is supplied with breathing gas and food."
+			description="Construction of a compact domed settlement for airless rock or seafloor. Closed pressure shell; always needs canned breathing gas and food, even underwater (no surface air shaft)."
 			use-time="10">
 			<use-allowed-in module-type-group="production" location-type="solid-surface"/>
+			<use-allowed-in module-type-group="production" location-type="liquid-surface"/>
 			<use-consume item="iron" quantity="40"/>
 			<use-consume item="titani" quantity="20"/>
 			<use-produce module="dmdcty"/>
@@ -2100,6 +2180,45 @@ Researchers can query the library. The system can handle natural language questi
 			<operation-allowed-in planet-atmosphere="terair"/>
 			<operation-allowed-in location-type="solid-surface"/>
 		</entry>
+		<entry
+			name="ptncty"
+			name-en="pontoon city"
+			name-en2="pontoon cities"
+			group="settlement"
+			description="Floating metro on displacement pontoons. Desalination and sealed decks; crew breathe surface air on a terair world. No canned-gas upkeep."
+			size="6000"
+			capacity="4000"
+			population-maximum="750"
+			energy="4"
+			technology-capacity="1"
+			hit-points="350"
+			cannot-be-owned="yes"
+			cannot-hold-itemstacks="yes">
+			<upkeep type="food" quantity="30"/>
+			<no-upkeep effect="riot" chance="25"/>
+			<produce item="cash" quantity="200" duration="13"/>
+			<produce item="terran" quantity="2" duration="13"/>
+			<operation-allowed-in planet-atmosphere="terair"/>
+			<operation-allowed-in location-type="liquid-surface"/>
+		</entry>
+		<entry
+			name="uscty"
+			name-en="under-surface city"
+			name-en2="under-surface cities"
+			group="settlement"
+			description="Seafloor pressure metro with a surface access port and elevator shaft. Ambient surface air is forced down the shaft; no closed breathing-gas loop."
+			size="8000"
+			capacity="5000"
+			population-maximum="1500"
+			energy="12"
+			technology-capacity="2"
+			hit-points="300"
+			underwater="yes">
+			<upkeep type="food" quantity="40"/>
+			<upkeep type="cash" quantity="90"/>
+			<produce item="cash" quantity="150" duration="13"/>
+			<operation-allowed-in location-type="liquid-surface"/>
+		</entry>
 		<entry 
 			name="mtrply" 
 			name-en="metropoly"
@@ -2167,6 +2286,29 @@ Researchers can query the library. The system can handle natural language questi
 			<operation-allowed-in module-group="ark"/>
 		</entry>
 		<entry
+			name="udrill"
+			name-en="underwater drill"
+			name-en2="underwater drills"
+			group="extraction"
+			description="Seafloor rotary drill and riser on a bottom skid. Strips crust, nodules, and soft sediment under liquid surfaces."
+			size="750"
+			capacity="400"
+			mass="750"
+			crew="8"
+			energy="8"
+			hit-points="60"
+			underwater="yes">
+			<upkeep type="cash" quantity="60"/>
+			<operation-allowed-in location-type="liquid-surface"/>
+			<operation-allowed-in module-group="settlement"/>
+			<operation-allowed-in module-group="frigate"/>
+			<operation-allowed-in module-group="corvette"/>
+			<operation-allowed-in module-group="destroyer"/>
+			<operation-allowed-in module-group="cruiser"/>
+			<operation-allowed-in module-group="capital"/>
+			<operation-allowed-in module-group="ark"/>
+		</entry>
+		<entry
 			name="cdrill"
 			name-en="core drill"
 			name-en2="core drills"
@@ -2206,6 +2348,23 @@ Researchers can query the library. The system can handle natural language questi
 			<operation-allowed-in location-type="liquid-surface"/>
 			<operation-allowed-in module-group="settlement"/>
 			<upkeep type="cash" quantity="1"/>
+		</entry>
+		<entry
+			name="tdlpln"
+			name-en="tidal powerplant"
+			name-en2="tidal powerplants"
+			group="energy"
+			description="Kinetic turbines in tidal streams and coastal currents. Denser working fluid than wind; needs terair and liquid surface."
+			size="80"
+			mass="80"
+			crew="1"
+			energy="2"
+			hit-points="8">
+			<produce energy="12" duration="13"/>
+			<operation-allowed-in planet-atmosphere="terair"/>
+			<operation-allowed-in location-type="liquid-surface"/>
+			<operation-allowed-in module-group="settlement"/>
+			<upkeep type="cash" quantity="15"/>
 		</entry>
 		<entry name="solthp" name-en="solar thermal plant" name-en2="solar thermal plants" group="energy" description="Concentrated sunlight and heat engine. Inner-system baseload; needs radiators in vacuum." size="800" mass="600" crew="2" energy="10" hit-points="80">
 			<produce energy="30" duration="13"/>
@@ -2362,6 +2521,29 @@ Researchers can query the library. The system can handle natural language questi
 			<move mode="naval" speed="1"/>
 			<fuel duration="13">
 				<item type="oil" quantity="1"/>
+			</fuel>
+		</entry>
+		<entry
+			name="uwtruk"
+			name-en="underwater transport"
+			name-en2="underwater transports"
+			group="vehicle"
+			description="Pressure-hull cargo submarine. Ballast tanks and oil closed-cycle. Liquid surface only; costlier than coastal freighters."
+			size="350"
+			mass="200"
+			capacity="120"
+			crew="2"
+			hit-points="25"
+			underwater="yes">
+			<operation-allowed-in planet-atmosphere="terair"/>
+			<operation-allowed-in location-type="liquid-surface"/>
+			<upkeep type="cash" quantity="25"/>
+			<consume type="food" quantity="8"/>
+			<consume type="terair" quantity="8"/>
+			<no-consume effect="damage" chance="25"/>
+			<move mode="naval" speed="1"/>
+			<fuel duration="13">
+				<item type="oil" quantity="2"/>
 			</fuel>
 		</entry>
 		<entry
@@ -2888,6 +3070,34 @@ Researchers can query the library. The system can handle natural language questi
 			</fuel>
 		</entry>
 		<entry
+			name="uwtank"
+			name-en="underwater combat craft"
+			name-en2="underwater combat craft"
+			group="vehicle"
+			weapon-group="kinetic"
+			description="Combat submarine with kinetic guns. Pressure hull and oil closed-cycle. Costlier than tanks or gunboats; liquid surface only."
+			size="300"
+			mass="320"
+			capacity="200"
+			hit-points="95"
+			crew="14"
+			attack="7"
+			defense="6"
+			damage="8"
+			underwater="yes">
+			<operation-allowed-in planet-atmosphere="terair"/>
+			<operation-allowed-in location-type="liquid-surface"/>
+			<upkeep type="cash" quantity="85"/>
+			<no-upkeep effect="rebel" chance="10"/>
+			<consume type="food" quantity="14"/>
+			<consume type="terair" quantity="14"/>
+			<no-consume effect="damage" chance="25"/>
+			<move mode="naval" speed="1"/>
+			<fuel duration="13">
+				<item type="oil" quantity="5"/>
+			</fuel>
+		</entry>
+		<entry
 			name="inftry"
 			name-en="infantry battalion" 
 			name-en2="infantry battalions" 
@@ -3192,7 +3402,7 @@ Researchers can query the library. The system can handle natural language questi
 			name-en="small dome city"
 			name-en2="small dome cities"
 			group="settlement"
-			description="A compact ownable dome for airless worlds. It must be supplied with food and terran breathing gas."
+			description="A compact ownable dome for airless rock or seafloor. Closed pressure shell; always needs food and canned terran breathing gas (no surface air shaft)."
 			size="5000"
 			capacity="3500"
 			population-maximum="2000"
@@ -3204,6 +3414,7 @@ Researchers can query the library. The system can handle natural language questi
 			<upkeep type="cash" quantity="75"/>
 			<produce item="cash" quantity="200" duration="13"/>
 			<operation-allowed-in location-type="solid-surface"/>
+			<operation-allowed-in location-type="liquid-surface"/>
 		</entry>
 		<entry
 			name="alnhul"
