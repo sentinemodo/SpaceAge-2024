@@ -16,6 +16,7 @@ The **game-designer** Cursor agent (`.cursor/agents/game-designer.md`) owns the 
 | [contracts.md](contracts.md) | In-game contract vectors |
 | [anomaly-investigation.md](anomaly-investigation.md) | Regional anomaly loop, tech-band payouts, HQ seed hooks |
 | [visual-tool-exit-xml.md](visual-tool-exit-xml.md) | Faction report XML exit `<target>` stubs for regional map rendering |
+| [ocean-cities.md](ocean-cities.md) | Underwater / pontoon cities, tidal power, undersea drill, subs, stealth wishlist |
 | [engine-wishlist.md](engine-wishlist.md) | Engine gaps (effects, orders, groups, triggers) |
 
 Live XML: `play/campaign/data.xml` and `play/campaign/gamein.1.xml` (regenerate the seed with `python play/campaign/_gen_gamein.py` from `galaxy.md`). Engine `LoadGame` still opens only `/data/gamein.xml` — copy the seed there; copy the catalog to `/data/data.xml`. Never point `/data` at `play/campaign/`. Never put `gamein.xml` in `/turn-dir`.

@@ -178,6 +178,37 @@ namespace SpaceAge
 			return false;
 		}
 
+		public bool HasUnderwaterPresence(Faction faction)
+		{
+			foreach (ModuleStack moduleStack in this.ModuleStacks.Values)
+			{
+				if (this.stackHasUnderwaterPresence(moduleStack, faction))
+				{
+					return true;
+				}
+			}
+			return false;
+		}
+
+		private bool stackHasUnderwaterPresence(ModuleStack stack, Faction faction)
+		{
+			if (stack.Owner == faction
+				&& stack.ModuleType != null
+				&& stack.ModuleType.Underwater
+				&& stack.Quantity > 0)
+			{
+				return true;
+			}
+			foreach (ModuleStack child in stack.ModuleStacks.Values)
+			{
+				if (this.stackHasUnderwaterPresence(child, faction))
+				{
+					return true;
+				}
+			}
+			return false;
+		}
+
 		private Market market = new Market();
 		public Market Market
 		{

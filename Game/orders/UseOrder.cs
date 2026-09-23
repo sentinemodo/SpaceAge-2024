@@ -249,6 +249,11 @@ namespace SpaceAge
 							temperature));
 					return false;
 				}
+
+				if (!this.HasUnderwaterTenderForSettlement(week))
+				{
+					return false;
+				}
 			}
 
 			if (this.Producer.ModuleType.UseCondition_RequireFuel)
@@ -288,6 +293,47 @@ namespace SpaceAge
 			}
 
 			return true;
+		}
+
+		private bool HasUnderwaterTenderForSettlement(int week)
+		{
+			ModuleType produced = this.Technology.UseProduceModules;
+			if (produced == null)
+			{
+				return true;
+			}
+
+			IHolder seatParent = this.ReceiverParent ?? this.Producer;
+			Location seatLocation = seatParent.Location;
+			if (seatLocation == null)
+			{
+				return true;
+			}
+
+			bool needsTender = produced.Underwater;
+			if (!needsTender
+				&& produced.Name == "dmdcty"
+				&& BodyEnvironment.EffectiveLocationType(seatLocation) == ELocationType.liquidSurface)
+			{
+				needsTender = true;
+			}
+			if (!needsTender)
+			{
+				return true;
+			}
+
+			if (seatLocation.HasUnderwaterPresence(this.Producer.Owner))
+			{
+				return true;
+			}
+
+			this.Producer.EventReports.Add(
+				week,
+				string.Format(
+					"USE failed: {0} requires an underwater transport or combat craft in {1}.",
+					produced.ReportName,
+					seatLocation.ReportName));
+			return false;
 		}
 
 		public bool HasResources
