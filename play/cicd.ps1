@@ -46,10 +46,10 @@ function Stop-ListenersOnPort {
 	try {
 		$connections = Get-NetTCPConnection -LocalPort $Port -State Listen -ErrorAction SilentlyContinue
 		foreach ($conn in $connections) {
-			$pid = $conn.OwningProcess
-			if ($pid -and $pid -ne 0) {
-				Stop-Process -Id $pid -Force -ErrorAction SilentlyContinue
-				Write-Host "  stopped PID $pid on port $Port"
+			$ownerPid = $conn.OwningProcess
+			if ($ownerPid -and $ownerPid -ne 0) {
+				Stop-Process -Id $ownerPid -Force -ErrorAction SilentlyContinue
+				Write-Host "  stopped PID $ownerPid on port $Port"
 			}
 		}
 	}
@@ -58,14 +58,29 @@ function Stop-ListenersOnPort {
 		$out = netstat -ano | Select-String ":$Port\s"
 		foreach ($line in $out) {
 			if ($line -notmatch 'LISTENING') { continue }
-			$pid = ($line -split '\s+')[-1]
-			if ($pid -and $pid -ne '0') {
-				taskkill /PID $pid /F 2>$null | Out-Null
-				Write-Host "  stopped PID $pid on port $Port"
+			$ownerPid = ($line -split '\s+')[-1]
+			if ($ownerPid -and $ownerPid -ne '0') {
+				taskkill /PID $ownerPid /F 2>$null | Out-Null
+				Write-Host "  stopped PID $ownerPid on port $Port"
 			}
 		}
 	}
 	Start-Sleep -Milliseconds 400
+}
+
+function Stop-DevPorts {
+	Stop-ListenersOnPort -Port $script:WebsitePort
+	Stop-ListenersOnPort -Port $script:VisualToolPort
+}
+
+function Stop-GameHostPort {
+	Stop-ListenersOnPort -Port $script:GameHostPort
+}
+
+function Stop-CicdStackPorts {
+	Write-Host '  freeing ports 4321 (lobby), 5173 (visual tool), 8787 (game-host) ...'
+	Stop-DevPorts
+	Stop-GameHostPort
 }
 
 function Start-BackgroundNpmDev {
@@ -89,26 +104,42 @@ function Start-BackgroundNpmDev {
 	$psi.CreateNoWindow = $true
 	[void][System.Diagnostics.Process]::Start($psi)
 
-	$deadline = (Get-Date).AddSeconds(45)
+	$deadline = (Get-Date).AddSeconds(90)
 	do {
 		Start-Sleep -Milliseconds 500
-		try {
-			Invoke-WebRequest -Uri "http://127.0.0.1:$Port/" -UseBasicParsing -TimeoutSec 2 | Out-Null
+		$ready = $false
+		foreach ($hostName in @('127.0.0.1', 'localhost')) {
+			try {
+				Invoke-WebRequest -Uri "http://${hostName}:$Port/" -UseBasicParsing -TimeoutSec 3 | Out-Null
+				$ready = $true
+				break
+			}
+			catch {
+				# try next host or wait
+			}
+		}
+		if (-not $ready -and (Test-Path -LiteralPath $logPath)) {
+			$tail = Get-Content -LiteralPath $logPath -Tail 30 -ErrorAction SilentlyContinue
+			if ($tail -match 'ready in') {
+				$listening = Get-NetTCPConnection -LocalPort $Port -State Listen -ErrorAction SilentlyContinue
+				if ($listening) {
+					$ready = $true
+				}
+			}
+		}
+		if ($ready) {
 			Write-Host "  $Label listening on http://localhost:$Port/ (log: $logPath)"
 			return
 		}
-		catch {
-			if ((Get-Date) -gt $deadline) {
-				throw "$Label did not start on port $Port within 45s. See $logPath and $errPath"
-			}
+		if ((Get-Date) -gt $deadline) {
+			throw "$Label did not start on port $Port within 90s. See $logPath and $errPath"
 		}
 	} while ($true)
 }
 
 function Invoke-RestartDev {
 	Write-CicdStep 'Restart dev - lobby website + visual tool'
-	Stop-ListenersOnPort -Port $script:WebsitePort
-	Stop-ListenersOnPort -Port $script:VisualToolPort
+	Stop-DevPorts
 
 	$websiteDir = Join-Path $script:RepoRoot 'website'
 	$visualDir = Join-Path $script:RepoRoot 'tools\visual-tool'
@@ -130,27 +161,29 @@ function Test-GameHostHealth {
 
 function Invoke-RestartGameHostDocker {
 	Write-CicdStep 'Restart game-host Docker stack'
-	Push-Location $script:RepoRoot
-	try {
-		docker compose up -d --build
-		$deadline = (Get-Date).AddSeconds(120)
-		do {
-			try {
-				Test-GameHostHealth
-				Write-Host "  game-host healthy on http://localhost:$($script:GameHostPort)/"
-				return
-			}
-			catch {
-				if ((Get-Date) -gt $deadline) {
-					throw "game-host not healthy on port $($script:GameHostPort) after 120s"
-				}
-				Start-Sleep -Seconds 3
-			}
-		} while ($true)
+	Stop-GameHostPort
+	$down = Invoke-ExternalCommandCapture -FilePath 'docker' -ArgumentList @('compose', 'down', '--remove-orphans')
+	if ($down.ExitCode -ne 0) {
+		throw "docker compose down failed (exit $($down.ExitCode))"
 	}
-	finally {
-		Pop-Location
+	$up = Invoke-ExternalCommandCapture -FilePath 'docker' -ArgumentList @('compose', 'up', '-d', '--build')
+	if ($up.ExitCode -ne 0) {
+		throw "docker compose up failed (exit $($up.ExitCode))"
 	}
+	$deadline = (Get-Date).AddSeconds(120)
+	do {
+		try {
+			Test-GameHostHealth
+			Write-Host "  game-host healthy on http://localhost:$($script:GameHostPort)/"
+			return
+		}
+		catch {
+			if ((Get-Date) -gt $deadline) {
+				throw "game-host not healthy on port $($script:GameHostPort) after 120s"
+			}
+			Start-Sleep -Seconds 3
+		}
+	} while ($true)
 }
 
 function Ensure-NgrokTunnel {
@@ -216,6 +249,8 @@ function Ensure-NgrokTunnel {
 }
 
 function Invoke-RestartProd {
+	Write-CicdStep 'Free stack ports before prod restart'
+	Stop-CicdStackPorts
 	Invoke-RestartDev
 	Invoke-RestartGameHostDocker
 	Ensure-NgrokTunnel

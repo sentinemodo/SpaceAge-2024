@@ -2,13 +2,13 @@
 
 **Human-facing publish copy:** [`docs/human/rules.md`](../docs/human/rules.md) — website SSOT, no code references.
 
-Checked **22 Sep 2026** against engine **0.8.001** (`Game/Program.cs` → `EngineVersion`).
+Checked **23 Sep 2026** against engine **0.8.001** (`Game/Program.cs` → `EngineVersion`).
 
 Sources: `Game/orders/EOrderType.cs`, `Game/orders/OrderFactory.cs`, `Game/orders/OrdersReader.cs`, `Game/orders/Orders.cs`, `Game/orders/JumpOrder.cs`, `Game/orders/MoveOrder.cs`, `Game/orders/LongOrder.cs` (`CanOperate`, atmosphere and effective location), `Game/orders/UseOrder.cs` (underwater settlement seat tender), `Game/game/SpaceTransit.cs` (`f(ΔAU)`, mass factor, baked space-exit weeks), `Game/Game.cs` (week loop, `GenerateOffers`, `ProcessBuyOffers`), `Game/Program.cs` (`/data`, `/turn-dir`, `/reports`, `/no-turn`, `/check`), `Game/Research.cs` (weekly output, breakthrough, preference, space-object proximity and reveal), `Game/SurveyReports.cs`, `Game/data structures/SurveyObjects.cs`, `Game/data structures/ModuleStack.Upkeep.cs` (sick bay, medical consume, quarterly maintenance, high-gravity bill, `AllowBank` on cash upkeep), `Game/data structures/ModuleStack.Economy.cs` (`AllowBank`, `HasBankAccess`), `Game/data structures/ModuleStack.Reporting.cs` (`Visible`, `IsUnderwaterStealthy`, orbit spaceship reveal), `Game/data structures/Location.cs` (`HasUnderwaterPresence`), `Game/data structures/Galaxy.cs` (`LoadXml` / `LoadExits` / save of environment attrs, belt and alderson exits), `Game/data structures/Alderson.cs` (`PairName`, orbit only), `Game/data structures/Belt.cs` (`LocationType` space), `Game/data structures/Planet.cs` / `Moon.cs` (`HasEnvironmentAttrs`), `Game/data structures/ELocationType.cs` (`atmosphere`), `Game/data structures/BodyEnvironment.cs` (`EffectiveLocationType`, `HasAtmosphereResources`, `LaunchSurcharge`, `SurfaceOrbitSurcharge`, `BansNonShuttleSurfaceHop`, settlement temperature, gravity), `Game/data structures/Orbit.cs` (`HasAtmosphere`, orbit resources), `Game/data structures/ModuleType.cs` (`IsShipHullType` / `IsShuttleUnit` / `Underwater`), `Game/data structures/Exits.cs` / `ExitMode.cs` / `Region.cs` (region **Exits:** lines), `Game/data structures/Faction.cs` (blank line before `Bank report:`), `Game/reports/ReportWriter.cs` (faction report sections and blank lines), `Game/battle/Battles.cs` (blank line between consecutive battles), `Game/game/DataFile.cs` (`LoadLocationType`, `LoadOrders` / `SaveOrders` delegate to `OrderXml`), `Game/game/OrderXml.cs` (XML switch, including `jump`), `Game/game/ModuleTypeGroupXml.cs` (`RESEARCH GROUP` tokens), `Game/game/CatalogLoader.cs` (`planet-atmosphere`, `location-type`, `underwater`), `Game/game/Market.cs` (`GetPrice`, `payBuyer`, `availableFunds`), `Game/game/Market.Clearing.cs` (regional buy clearing, pro-rata), `Game/data structures/Offer.cs` (`GetEffectiveBidCap`, `MatchesAsk`), `Game/effects/Effects.cs` (`LoadXml` effect types), `Game/effects/Producing.cs` (omit empty `technology=`), each `Game/orders/*Order.Parse` / `Execute`. Sample prefix usage: `Tests/SampleGame/orders.*.txt`.
 
 Not source of truth: legacy Alderson docs in [`docs/legacy/alderson/`](../docs/legacy/alderson/). Turn order files are **Windows-1251** (same as reports). Verbs are case-insensitive; most arguments are not.
 
-**29** verbs register in `OrderFactory.ByVerb` (text via `OrdersReader`, saved games via `OrderXml`): **22 immediate**, **7 long**. See [Turn sequence](#turn-sequence), [Immediate vs long](#immediate-vs-long), and [Text vs XML](#text-vs-xml).
+**33** verbs register in `OrderFactory.ByVerb` (text via `OrdersReader`, saved games via `OrderXml`): **26 immediate**, **7 long**. See [Turn sequence](#turn-sequence), [Immediate vs long](#immediate-vs-long), and [Text vs XML](#text-vs-xml).
 
 ## Campaign setting — The Alderson Points
 
@@ -610,6 +610,49 @@ Flag name and `TRUE`/`FALSE` are **case-insensitive**; Parse stores the flag as 
 **Subject:** stack (or person as item holder).
 
 Nests the subject under another stack (same location, same faction, not self), under the root parent (`TOP`), or out into the location (`OUT`). `**top` and `out` must be lowercase.** Fighter drones may only `STACK OUT` (location) or stack under a fighter drone bay; stacking under a hull fails. Shuttles may also nest under a frigate hull.
+
+### SYNCHRO
+
+**Syntax:** `SYNCHRO <tag>`
+
+**Subject:** faction, modulestack, or person.
+
+Rendezvous. The order does not change the world by itself. Every live `SYNCHRO` with the same tag (any faction, stack, or person; tag match ignores case) must be **ready in the same week** before any of them count as executed. Ready means its own `+`/`-` conditions are already clear, so the immediate pass is allowed to try it. A lone `SYNCHRO` never fires. While any copy of that tag is still waiting, none of them are marked executed, and each ready copy tries again next week.
+
+When the last copy becomes ready, **all** of them execute together, report `synchronized <tag>.`, and release orders conditioned on them. Follow-up orders on other modulestacks run in a later pass of that same week.
+
+Use a distinct tag per signal. A third `SYNCHRO` with the same tag joins the same barrier and holds it until that copy is ready too.
+
+`-synchro <tag>` waits until the parent order finishes, then signals (signal after `MOVE` arrives). `+synchro <tag>` is the other way: the parent waits until the signal fires.
+
+```
+#modulestack 000001
+synchro move_signal
+-move R00001
+
+#modulestack 000002
+has 2 tanks
+-synchro move_signal
+```
+
+`000001` does not move until `000002` has two `tanks` modules and both `move_signal` orders fire.
+
+```
+#faction 2
+#modulestack 000001
+move R00001
++synchro arrived
+synchro given
+-move R00002
+
+#faction 1
+#modulestack 000002
+synchro arrived
+-give 2 iron to 000003
+--synchro given
+```
+
+`arrived` fires as soon as both copies are ready, which **unblocks** `move R00001` (the `+` child gates the parent; it does not mean “signal after I arrive”). `000002` then gives, and `given` fires, which unblocks `move R00002`. To signal only after a move completes, put `-synchro` under that `MOVE`.
 
 ### TACTIC
 

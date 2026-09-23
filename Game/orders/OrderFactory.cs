@@ -36,6 +36,7 @@ namespace SpaceAge
 			{ "sell", subject => new SellOrder(subject) },
 			{ "set", subject => new SetOrder(subject) },
 			{ "stack", subject => new StackOrder(subject) },
+			{ "synchro", subject => new SynchroOrder(subject) },
 			{ "tactic", subject => new TacticOrder(subject) },
 			{ "train", subject => new TrainOrder(subject) },
 			{ "transfer", subject => new TransferOrder(subject) },

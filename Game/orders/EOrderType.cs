@@ -37,6 +37,7 @@ namespace SpaceAge
         transfer,
 		train,
         use,
-		withdraw
+		withdraw,
+		synchro
 	}
 }

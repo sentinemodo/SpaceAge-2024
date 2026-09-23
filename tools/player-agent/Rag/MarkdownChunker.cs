@@ -12,7 +12,7 @@ public static partial class MarkdownChunker
     private static readonly HashSet<string> OrderVerbHeadings = new(StringComparer.OrdinalIgnoreCase)
     {
         "ACTIVE", "ALIAS", "ATTACK", "BUY", "CAPTURE", "CONTRACT", "COPY", "DECLARE", "FORM", "GET",
-        "GIVE", "HAS", "NAME", "PRESS", "SEE", "SELL", "SET", "STACK", "TACTIC", "TRANSFER",
+        "GIVE", "HAS", "NAME", "PRESS", "SEE", "SELL", "SET", "STACK", "SYNCHRO", "TACTIC", "TRANSFER",
         "MOVE", "PRODUCE", "REPAIR", "RESEARCH", "TRAIN", "USE",
     };
 

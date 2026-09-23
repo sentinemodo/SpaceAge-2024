@@ -229,9 +229,9 @@ this roughly gives the following in weeks
 
 ---
 
-## Full orders dictionary - All 30 verbs
+## Full orders dictionary - All 31 verbs
 
-**23 immediate** + **7 long**.
+**24 immediate** + **7 long**.
 
 ### Immediate
 
@@ -316,6 +316,18 @@ SEE <transporter>
 |Patrol|If true unit will prevent hostile units entry and will prevent region, space object names changes by non-allies|
 
 **STACK** — `STACK <parent|newN>` | `STACK top` | `STACK out` — **`top`/`out` lowercase**. Nest the modulestack under different parent unit or eject them to the region. Unit must have sufficient capacity to accept the stacked unit size. Some units may only be stacked under specific type of modules, e.g. figther drones may only be stacked under drone bay if they are to participate in combat.
+
+**SYNCHRO** — `SYNCHRO <tag>` — rendezvous. Every live `SYNCHRO` with the same tag (any faction or unit; case-insensitive) must be ready in the same week before any of them execute. A single copy never fires. A further copy of the same tag holds the signal until it is ready too. When the last one is ready, all of them execute together and release orders waiting on them. `-synchro <tag>` signals after the parent finishes (after a `MOVE` arrives). `+synchro <tag>` makes the parent wait until the signal fires.
+
+```
+#modulestack 000001
+synchro move_signal
+-move R00001
+
+#modulestack 000002
+has 2 tanks
+-synchro move_signal
+```
 
 **TACTIC** — `TACTIC destroy|capture|evade` | `TACTIC prioritize armed|command|storage` sets unit behaviour during combat. The default tactics are destroy and prioritize armed.
 

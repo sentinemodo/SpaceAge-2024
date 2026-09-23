@@ -243,6 +243,7 @@
     <Compile Include="orders\EOrderType.cs" />
     <Compile Include="orders\OrderFactory.cs" />
     <Compile Include="orders\HasOrder.cs" />
+    <Compile Include="orders\SynchroOrder.cs" />
     <Compile Include="orders\NameOrder.cs" />
     <Compile Include="orders\GiveOrder.cs" />
     <Compile Include="orders\GetOrder.cs" />

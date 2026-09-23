@@ -210,24 +210,34 @@ namespace SpaceAge
             {
                 foreach (ImmediateOrder order in faction.Orders.Immediate)
                 {
-                    order.Executed = false;
+                    ResetImmediateOrder(order);
                 }
             }
             foreach (ModuleStack moduleStack in this.ModuleStacks.Values)
             {
                 foreach (ImmediateOrder order in moduleStack.Orders.Immediate)
                 {
-                    order.Executed = false;
+                    ResetImmediateOrder(order);
                 }
             }
 						foreach (Person person in this.People.Values)
 						{
 							foreach (ImmediateOrder order in person.Orders.Immediate)
 							{
-								order.Executed = false;
+								ResetImmediateOrder(order);
 							}
 						}
         }
+
+		private static void ResetImmediateOrder(ImmediateOrder order)
+		{
+			order.Executed = false;
+			SynchroOrder synchro = order as SynchroOrder;
+			if (synchro != null)
+			{
+				synchro.Armed = false;
+			}
+		}
 
         public void ClearFailedToExecuteImmediateOrders()
         {

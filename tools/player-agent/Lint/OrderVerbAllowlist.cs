@@ -8,7 +8,7 @@ public static partial class OrderVerbAllowlist
     {
         "ACTIVE", "ACTIVATE", "ALIAS", "ATTACK", "BUY", "CAPTURE", "CONTRACT", "COPY", "DECLARE",
         "DEACTIVATE", "DEPOSIT", "FORM", "GET", "GIVE", "HAS", "NAME", "PRESS", "RUMOR", "SEE", "SELL", "SET",
-        "STACK", "TACTIC", "TRANSFER", "WITHDRAW",
+        "STACK", "SYNCHRO", "TACTIC", "TRANSFER", "WITHDRAW",
         "MOVE", "PRODUCE", "REPAIR", "RESEARCH", "TRAIN", "USE",
     };
 

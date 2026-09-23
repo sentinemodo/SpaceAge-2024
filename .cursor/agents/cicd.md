@@ -34,13 +34,13 @@ Reports from **test** / **test-e2e** are written to `.cursor/cicd-test-results/l
 ## What each command does
 
 ### restart-dev
-- Stops listeners on **4321** (Astro lobby) and **5173** (visual tool).
+- Stops any process listening on **4321** (Astro lobby) and **5173** (visual tool), then starts dev servers.
 - Starts `npm run dev` in `website/` and `tools/visual-tool/` (background; logs under `.cursor/dev-logs/`).
 - Does **not** start game-host or ngrok. Visual tool proxies `/api` to **localhost:8787** — start game-host separately or use **restart-prod**.
 
 ### restart-prod
-- **restart-dev**, then:
-- `docker compose up -d --build` and wait for `http://localhost:8787/health`.
+- Stops listeners on **4321**, **5173**, and **8787**, then **restart-dev**, then:
+- `docker compose down` + `docker compose up -d --build` and wait for `http://localhost:8787/health`.
 - Ensure **ngrok** forwards to game-host (starts in background if missing; domain from `NGROK_DOMAIN` or default reserved domain).
 
 ### restart-local-llm
