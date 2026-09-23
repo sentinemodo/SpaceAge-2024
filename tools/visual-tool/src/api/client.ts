@@ -36,6 +36,8 @@ export interface FactionOption {
 export interface RunOption {
   id: string;
   label: string;
+  /** True for the single campaign whose data.xml is newest. Marked "x" in the admin list. */
+  playerVisible?: boolean;
 }
 
 export interface SessionMeta {

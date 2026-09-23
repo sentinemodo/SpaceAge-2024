@@ -473,6 +473,19 @@ body {
   transform: translate(-50%, -50%);
 }
 
+.system-node:hover:not(:disabled),
+.system-node:active:not(:disabled) {
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 8px 1px rgba(255, 220, 140, 0.7);
+}
+
+.system-node.has-presence:hover:not(:disabled),
+.system-node.has-presence:active:not(:disabled) {
+  box-shadow:
+    0 0 0 2px rgba(62, 207, 207, 0.3),
+    0 0 8px 1px rgba(255, 220, 140, 0.7);
+}
+
 .system-node-star {
   color: #1a1208;
   font-weight: 600;
@@ -1280,6 +1293,36 @@ body {
 .faction-selector {
   font-size: 0.8rem;
   max-width: 12rem;
+}
+
+.context-label {
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+.context-switch {
+  display: flex;
+  gap: 0.2rem;
+}
+
+.context-switch button {
+  font-size: 0.72rem;
+  padding: 0.15rem 0.45rem;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text-dim);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.context-switch button.active {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.context-switch button:hover:not(:disabled),
+.context-switch button:active:not(:disabled) {
+  transform: none;
 }
 
 .order-split-heading-row {

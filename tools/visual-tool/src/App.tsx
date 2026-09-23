@@ -697,6 +697,7 @@ export default function App() {
   const [orderPaneHeight, setOrderPaneHeight] = useState(220);
   const [aiPaneWidth, setAiPaneWidth] = useState(280);
   const [regionMapZoom, setRegionMapZoom] = useState(REGION_ZOOM_BASE);
+  const [adminContextList, setAdminContextList] = useState<'campaigns' | 'turns'>('turns');
   const [reportFullText, setReportFullText] = useState('');
   const [filterStar, setFilterStar] = useState(false);
   const [warnings, setWarnings] = useState<string[]>([]);
@@ -1227,19 +1228,44 @@ export default function App() {
         ) : (
           <strong>{meta.name || 'SpaceAge'}</strong>
         )}
-        {meta.runs && meta.runs.length > 0 && (
+        {!meta.admin && meta.runs && meta.runs.length > 0 && (
+          <span className="context-label" title="Campaign">{meta.runs[0].label}</span>
+        )}
+        {meta.admin && (
+          <div className="context-switch" role="group" aria-label="Campaign list or turns list">
+            <button
+              type="button"
+              className={adminContextList === 'campaigns' ? 'active' : ''}
+              aria-pressed={adminContextList === 'campaigns'}
+              title="Campaign list"
+              onClick={() => setAdminContextList('campaigns')}
+            >
+              Campaigns
+            </button>
+            <button
+              type="button"
+              className={adminContextList === 'turns' ? 'active' : ''}
+              aria-pressed={adminContextList === 'turns'}
+              title="Turns list"
+              onClick={() => setAdminContextList('turns')}
+            >
+              Turns
+            </button>
+          </div>
+        )}
+        {meta.admin && adminContextList === 'campaigns' && meta.runs && meta.runs.length > 0 && (
           <select
             className="context-selector"
             value={meta.viewRunId ?? meta.runId ?? ''}
             onChange={(e) => handleRunChange(e.target.value)}
-            title="Campaign run"
+            title="x — visible to players"
           >
             {meta.runs.map((r) => (
-              <option key={r.id} value={r.id}>{r.label}</option>
+              <option key={r.id} value={r.id}>{r.playerVisible ? `x  ${r.label}` : r.label}</option>
             ))}
           </select>
         )}
-        {meta.turns && meta.turns.length > 0 && (
+        {(!meta.admin || adminContextList === 'turns') && meta.turns && meta.turns.length > 0 && (
           <select
             className="context-selector"
             value={meta.viewTurn ?? meta.turn ?? ''}
@@ -1251,7 +1277,9 @@ export default function App() {
             ))}
           </select>
         )}
-        {!meta.turns?.length && <span>Turn {meta.viewTurn ?? meta.turn ?? '—'}</span>}
+        {(!meta.admin || adminContextList === 'turns') && !meta.turns?.length && (
+          <span>Turn {meta.viewTurn ?? meta.turn ?? '—'}</span>
+        )}
         {meta.admin && <span className="admin-badge">Admin</span>}
         {adminHint && <span className="warnings admin-hint">{adminHint}</span>}
         <span className="client-title">SpaceAge client ver. 0.8.001</span>

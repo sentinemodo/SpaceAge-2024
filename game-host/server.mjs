@@ -61,8 +61,23 @@ const VISUAL_DIST = path.join(repoRoot(), 'tools', 'visual-tool', 'dist');
 
 ensureRunLayout();
 
+function playerVisibleRunId() {
+  const marked = listRuns().find((run) => run.playerVisible);
+  return marked?.id || runId();
+}
+
 function sessionRunId(session) {
+  if (!session?.admin) return playerVisibleRunId();
   return session.viewRunId || runId();
+}
+
+function runsForSession(session) {
+  const runs = listRuns();
+  if (session.admin) return runs;
+  const visible = runs.filter((run) => run.playerVisible);
+  if (visible.length) return visible;
+  const fallback = runs.find((run) => run.id === runId());
+  return fallback ? [fallback] : [];
 }
 
 function sessionTurn(session) {
@@ -184,7 +199,7 @@ const server = http.createServer(async (req, res) => {
       runId: rid,
       viewRunId: session.viewRunId || rid,
       viewTurn: resolvedTurn,
-      runs: listRuns(),
+      runs: runsForSession(session),
       turns: listTurns(rid),
       turn: fs.existsSync(gameinPath(rid)) ? readTurnFromGamein(rid) : resolvedTurn,
       engineVersion: '0.1.159',
@@ -195,14 +210,15 @@ const server = http.createServer(async (req, res) => {
   if (req.method === 'GET' && url.pathname === '/api/session/runs') {
     const session = requireSession(req, res);
     if (!session) return;
-    json(res, 200, { runs: listRuns() });
+    json(res, 200, { runs: runsForSession(session) });
     return;
   }
 
   if (req.method === 'GET' && url.pathname === '/api/session/turns') {
     const session = requireSession(req, res);
     if (!session) return;
-    const rid = url.searchParams.get('runId') || sessionRunId(session);
+    const requested = url.searchParams.get('runId');
+    const rid = session.admin && requested ? requested : sessionRunId(session);
     json(res, 200, { runId: rid, turns: listTurns(rid) });
     return;
   }
@@ -211,7 +227,13 @@ const server = http.createServer(async (req, res) => {
     const session = requireSession(req, res);
     if (!session) return;
     const body = JSON.parse(await readBody(req));
-    if (body.runId) session.viewRunId = String(body.runId);
+    if (body.runId) {
+      if (!session.admin) {
+        json(res, 403, { error: 'admin only' });
+        return;
+      }
+      session.viewRunId = String(body.runId);
+    }
     if (body.turn != null) session.viewTurn = parseInt(body.turn, 10);
     const rid = sessionRunId(session);
     json(res, 200, {

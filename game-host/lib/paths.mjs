@@ -59,17 +59,43 @@ export function readTurnFromGamein(forRunId = runId()) {
 }
 
 export function listRuns() {
-  const ids = new Set();
   const root = runsRoot();
   if (!fs.existsSync(root)) return [];
-  for (const d of fs.readdirSync(root)) {
+  const rows = [];
+  for (const id of fs.readdirSync(root)) {
+    const dir = path.join(root, id);
     try {
-      if (fs.statSync(path.join(root, d)).isDirectory()) ids.add(d);
+      if (!fs.statSync(dir).isDirectory()) continue;
+    } catch {
+      continue;
+    }
+    let dataXmlMtime = null;
+    const xmlPath = path.join(dir, 'data', 'data.xml');
+    try {
+      if (fs.existsSync(xmlPath)) dataXmlMtime = fs.statSync(xmlPath).mtimeMs;
     } catch {
       /* skip */
     }
+    rows.push({ id, dataXmlMtime });
   }
-  return [...ids].sort().map((id) => ({ id, label: id }));
+  let newest = null;
+  for (const row of rows) {
+    if (row.dataXmlMtime == null) continue;
+    if (
+      !newest
+      || row.dataXmlMtime > newest.dataXmlMtime
+      || (row.dataXmlMtime === newest.dataXmlMtime && row.id > newest.id)
+    ) {
+      newest = row;
+    }
+  }
+  return rows
+    .sort((a, b) => a.id.localeCompare(b.id))
+    .map((row) => ({
+      id: row.id,
+      label: row.id,
+      playerVisible: newest != null && row.id === newest.id,
+    }));
 }
 
 function scanReportTurns(dir, turns) {
