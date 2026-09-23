@@ -49,9 +49,9 @@ function Test-DockerInfrastructureProcess {
 	catch {
 		return $false
 	}
-	# Port 8787 is published by Docker Desktop. Killing that process takes the engine down
-	# before `docker compose down` can run.
-	return $proc.ProcessName -match '^(com\.docker\.|Docker Desktop|docker-proxy|wslrelay|vpnkit)$'
+	# Port 8787 is published by dockerd / Docker Desktop. Killing that process takes the
+	# engine down before `docker compose down` can run.
+	return $proc.ProcessName -match '^(com\.docker\.|Docker Desktop|docker|wsl|vpnkit)'
 }
 
 function Stop-ListenerProcess {
