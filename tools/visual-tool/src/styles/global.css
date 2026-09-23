@@ -1109,13 +1109,13 @@ body {
 }
 
 .system-orbit-band {
-  flex: 1 1 0;
-  min-width: 88px;
+  flex: 1 0 auto;
+  min-width: max-content;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 0.35rem 0.25rem;
+  padding: 0.35rem 0.45rem;
   border-left: 1px dashed rgba(100, 150, 210, 0.2);
 }
 
@@ -1142,9 +1142,17 @@ body {
 .band-children {
   display: flex;
   flex-direction: column;
+  flex-wrap: nowrap;
   align-items: center;
-  gap: 0.25rem;
+  justify-content: center;
+  gap: 0.28rem;
   margin-top: 0.15rem;
+}
+
+.band-children .body-icon {
+  padding: 0.2rem 0.5rem;
+  font-size: 0.68rem;
+  gap: 0.28rem;
 }
 
 .band-gates-stack {
@@ -1220,13 +1228,6 @@ body {
   margin: 0.1rem 0;
 }
 
-.band-children-rings {
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.15rem;
-  max-width: 72px;
-}
 
 .band-belt-stack {
   flex: 1;

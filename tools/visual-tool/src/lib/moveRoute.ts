@@ -54,12 +54,56 @@ export interface Obstacle {
   r: number;
 }
 
+export interface LabelRect {
+  left: number;
+  top: number;
+  right: number;
+  bottom: number;
+}
+
 export interface ArrowGeometry {
   d: string;
   labelAt: Point;
 }
 
 const MOVE_LINE = /^(?:\+\+|--|[+-])?\s*move\b\s*(.*)$/i;
+
+export interface OrderPaneFocus {
+  kind: 'modulestack' | 'person';
+  id: string;
+}
+
+/** Unit block that contains the order-pane caret. Null on the faction header or after #end. */
+export function orderFocusAtOffset(text: string, offset: number): OrderPaneFocus | null {
+  if (!text) return null;
+  const clamped = Math.max(0, Math.min(offset, text.length));
+  const lineIndex = text.slice(0, clamped).split('\n').length - 1;
+  const lines = text.split('\n');
+  let current: OrderPaneFocus | null = null;
+  for (let i = 0; i <= lineIndex && i < lines.length; i += 1) {
+    const trimmed = lines[i].trim();
+    if (/^#end\b/i.test(trimmed)) {
+      current = null;
+      continue;
+    }
+    const stackMatch = trimmed.match(/^#modulestack\s+(\S+)/i);
+    const personMatch = trimmed.match(/^#person\s+(\S+)/i);
+    if (stackMatch) current = { kind: 'modulestack', id: stackMatch[1] };
+    else if (personMatch) current = { kind: 'person', id: personMatch[1] };
+  }
+  return current;
+}
+
+/** One unit in the pane is that focus. Several units follow the caret. */
+export function orderFocusForPane(text: string, offset: number): OrderPaneFocus | null {
+  const unitBlocks = parseOrdersTemplate(text).blocks.filter(
+    (block) => block.kind === 'modulestack' || block.kind === 'person',
+  );
+  if (unitBlocks.length === 1 && unitBlocks[0].kind !== 'other') {
+    return { kind: unitBlocks[0].kind, id: unitBlocks[0].id };
+  }
+  return orderFocusAtOffset(text, offset);
+}
 
 /** Destinations from the unit's order block. Null when that unit is not in the template. */
 export function moveDestinationsForSelection(
@@ -195,24 +239,49 @@ export function segmentTimeLabel(segment: MoveSegment): string {
   return `${segment.weeks} ${unit}`;
 }
 
+/** Pixels of clear space between an arrow tip and a space-object label. */
+const LABEL_GAP = 6;
+
 export function arrowPath(
   from: Point,
   to: Point,
   geometry: RouteGeometry,
   obstacles: Obstacle[],
+  labels?: { from: LabelRect; to: LabelRect },
 ): ArrowGeometry | null {
   const dx = to.x - from.x;
   const dy = to.y - from.y;
   const len = Math.hypot(dx, dy);
   if (len < 1) return null;
-  if (geometry === 'straight') {
-    const labelAt = mid(from, to);
+  const control = geometry === 'straight' ? mid(from, to) : curveControl(from, to, len, obstacles);
+  const trimmed = labels ? trimCurveToLabels(from, control, to, labels.from, labels.to) : null;
+  const start = trimmed?.start ?? from;
+  const handle = trimmed?.control ?? control;
+  const end = trimmed?.end ?? to;
+  const labelAt = geometry === 'straight' && !trimmed
+    ? mid(from, to)
+    : quadPoint(start, handle, end, 0.5);
+  if (geometry === 'straight' && !trimmed) {
     return {
       d: `M ${fmt(from.x)} ${fmt(from.y)} L ${fmt(to.x)} ${fmt(to.y)}`,
       labelAt,
     };
   }
+  if (geometry === 'straight' && trimmed) {
+    return {
+      d: `M ${fmt(start.x)} ${fmt(start.y)} L ${fmt(end.x)} ${fmt(end.y)}`,
+      labelAt: { x: round1(labelAt.x), y: round1(labelAt.y) },
+    };
+  }
+  return {
+    d: `M ${fmt(start.x)} ${fmt(start.y)} Q ${fmt(handle.x)} ${fmt(handle.y)} ${fmt(end.x)} ${fmt(end.y)}`,
+    labelAt: { x: round1(labelAt.x), y: round1(labelAt.y) },
+  };
+}
 
+function curveControl(from: Point, to: Point, len: number, obstacles: Obstacle[]): Point {
+  const dx = to.x - from.x;
+  const dy = to.y - from.y;
   const nx = -dy / len;
   const ny = dx / len;
   const base = Math.min(90, Math.max(24, len * 0.28));
@@ -230,13 +299,99 @@ export function arrowPath(
     }
     if (bestScore > 14) break;
   }
-  const cx = (from.x + to.x) / 2 + nx * bestBulge;
-  const cy = (from.y + to.y) / 2 + ny * bestBulge;
-  const labelAt = quadPoint(from, { x: cx, y: cy }, to, 0.5);
   return {
-    d: `M ${fmt(from.x)} ${fmt(from.y)} Q ${fmt(cx)} ${fmt(cy)} ${fmt(to.x)} ${fmt(to.y)}`,
-    labelAt: { x: round1(labelAt.x), y: round1(labelAt.y) },
+    x: (from.x + to.x) / 2 + nx * bestBulge,
+    y: (from.y + to.y) / 2 + ny * bestBulge,
   };
+}
+
+function trimCurveToLabels(
+  from: Point,
+  control: Point,
+  to: Point,
+  fromLabel: LabelRect,
+  toLabel: LabelRect,
+): { start: Point; control: Point; end: Point } | null {
+  const t0 = boundaryT(from, control, to, fromLabel, true);
+  const t1 = boundaryT(from, control, to, toLabel, false);
+  if (t1 - t0 < 0.02) return null;
+  const [start, handle, end] = subcurve(from, control, to, t0, t1);
+  return { start, control: handle, end };
+}
+
+function boundaryT(
+  from: Point,
+  control: Point,
+  to: Point,
+  label: LabelRect,
+  leaveStart: boolean,
+): number {
+  const at = (t: number) => quadPoint(from, control, to, t);
+  if (leaveStart) {
+    let lo = 0;
+    let hi = 1;
+    for (let i = 1; i <= 32; i += 1) {
+      const t = i / 32;
+      if (!insideLabel(at(t), label)) {
+        lo = (i - 1) / 32;
+        hi = t;
+        break;
+      }
+    }
+    if (insideLabel(at(hi), label)) return 0;
+    for (let n = 0; n < 10; n += 1) {
+      const midT = (lo + hi) / 2;
+      if (insideLabel(at(midT), label)) lo = midT;
+      else hi = midT;
+    }
+    return hi;
+  }
+  let lo = 0;
+  let hi = 1;
+  for (let i = 31; i >= 0; i -= 1) {
+    const t = i / 32;
+    if (!insideLabel(at(t), label)) {
+      lo = t;
+      hi = (i + 1) / 32;
+      break;
+    }
+  }
+  if (insideLabel(at(lo), label)) return 1;
+  for (let n = 0; n < 10; n += 1) {
+    const midT = (lo + hi) / 2;
+    if (insideLabel(at(midT), label)) hi = midT;
+    else lo = midT;
+  }
+  return lo;
+}
+
+function insideLabel(point: Point, label: LabelRect): boolean {
+  return point.x >= label.left - LABEL_GAP
+    && point.x <= label.right + LABEL_GAP
+    && point.y >= label.top - LABEL_GAP
+    && point.y <= label.bottom + LABEL_GAP;
+}
+
+function subcurve(p0: Point, p1: Point, p2: Point, t0: number, t1: number): [Point, Point, Point] {
+  const head = cutQuad(p0, p1, p2, t1).left;
+  const u = t1 === 0 ? 0 : t0 / t1;
+  return cutQuad(head[0], head[1], head[2], u).right;
+}
+
+function cutQuad(
+  p0: Point,
+  p1: Point,
+  p2: Point,
+  t: number,
+): { left: [Point, Point, Point]; right: [Point, Point, Point] } {
+  const a = lerp(p0, p1, t);
+  const b = lerp(p1, p2, t);
+  const c = lerp(a, b, t);
+  return { left: [p0, a, c], right: [c, b, p2] };
+}
+
+function lerp(a: Point, b: Point, t: number): Point {
+  return { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t };
 }
 
 function mid(a: Point, b: Point): Point {

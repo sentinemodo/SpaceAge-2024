@@ -5,6 +5,8 @@ import {
   buildMoveSegments,
   indexRouteLocations,
   moveDestinationsForSelection,
+  orderFocusAtOffset,
+  orderFocusForPane,
   planVisibleArrows,
   segmentTimeLabel,
   type MoveSegment,
@@ -91,6 +93,44 @@ describe('moveDestinationsForSelection', () => {
 
   it('returns null when the stack is absent', () => {
     expect(moveDestinationsForSelection(template, '999999', null)).toBeNull();
+  });
+});
+
+describe('orderFocusAtOffset', () => {
+  const text = [
+    '#faction 2 "northwnd"',
+    '#modulestack 200001',
+    'MOVE R00009 R00010 O00001 O00002',
+    '#modulestack 200002',
+    'BUILD farms',
+    '#end',
+  ].join('\n');
+
+  function atLine(line: number): number {
+    return text.split('\n').slice(0, line).join('\n').length + (line > 0 ? 1 : 0);
+  }
+
+  it('is empty on the faction header', () => {
+    expect(orderFocusAtOffset(text, atLine(0))).toBeNull();
+  });
+
+  it('follows the stack block under the caret', () => {
+    expect(orderFocusAtOffset(text, atLine(2))).toEqual({ kind: 'modulestack', id: '200001' });
+    expect(orderFocusAtOffset(text, atLine(4))).toEqual({ kind: 'modulestack', id: '200002' });
+  });
+
+  it('clears after #end', () => {
+    expect(orderFocusAtOffset(text, atLine(5))).toBeNull();
+  });
+
+  it('keeps a single-unit pane focused on that unit', () => {
+    const one = '#modulestack 200001\nMOVE R00009\n\n#end';
+    expect(orderFocusForPane(one, one.length)).toEqual({ kind: 'modulestack', id: '200001' });
+  });
+
+  it('drops arrows when the caret moves to a unit with no MOVE', () => {
+    expect(moveDestinationsForSelection(text, '200002', null)).toEqual([]);
+    expect(orderFocusForPane(text, atLine(4))).toEqual({ kind: 'modulestack', id: '200002' });
   });
 });
 
@@ -184,7 +224,38 @@ describe('arrowPath', () => {
     expect(path?.d).toContain('Q');
     expect(Math.abs(path!.labelAt.y)).toBeGreaterThan(12);
   });
+
+  it('stops a Helios arrow just outside each label border', () => {
+    const fromLabel = { left: 0, top: -14, right: 48, bottom: 14 };
+    const toLabel = { left: 220, top: -14, right: 300, bottom: 14 };
+    const path = arrowPath({ x: 24, y: 0 }, { x: 260, y: 0 }, 'angled', [], {
+      from: fromLabel,
+      to: toLabel,
+    });
+    const ends = pathEnds(path!.d);
+    expect(gapOutside(ends.start, fromLabel)).toBeGreaterThan(4);
+    expect(gapOutside(ends.start, fromLabel)).toBeLessThan(9);
+    expect(gapOutside(ends.end, toLabel)).toBeGreaterThan(4);
+    expect(gapOutside(ends.end, toLabel)).toBeLessThan(9);
+  });
 });
+
+function pathEnds(d: string): { start: { x: number; y: number }; end: { x: number; y: number } } {
+  const nums = d.match(/-?\d+(?:\.\d+)?/g)!.map(Number);
+  if (d.includes('Q')) {
+    return { start: { x: nums[0], y: nums[1] }, end: { x: nums[4], y: nums[5] } };
+  }
+  return { start: { x: nums[0], y: nums[1] }, end: { x: nums[2], y: nums[3] } };
+}
+
+function gapOutside(
+  point: { x: number; y: number },
+  rect: { left: number; top: number; right: number; bottom: number },
+): number {
+  const dx = Math.max(rect.left - point.x, 0, point.x - rect.right);
+  const dy = Math.max(rect.top - point.y, 0, point.y - rect.bottom);
+  return Math.hypot(dx, dy);
+}
 
 describe('segment list shape', () => {
   it('keeps the chain starting at the unit location', () => {

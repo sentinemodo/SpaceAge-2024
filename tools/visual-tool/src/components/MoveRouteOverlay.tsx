@@ -2,6 +2,7 @@ import { useEffect, useId, useLayoutEffect, useState } from 'react';
 import {
   arrowPath,
   segmentTimeLabel,
+  type LabelRect,
   type MoveSegment,
   type Obstacle,
   type Point,
@@ -20,9 +21,12 @@ interface DrawnArrow {
 export function MoveRouteOverlay({
   segments,
   layoutKey,
+  clipToLabels = false,
 }: {
   segments: MoveSegment[];
   layoutKey: string;
+  /** Helios view: stop the shaft just outside each space-object label. */
+  clipToLabels?: boolean;
 }) {
   const markerId = `move-arrow-${useId().replace(/:/g, '')}`;
   const [host, setHost] = useState<HTMLDivElement | null>(null);
@@ -51,7 +55,10 @@ export function MoveRouteOverlay({
         const from = centerOf(fromEl, origin, root);
         const to = centerOf(toEl, origin, root);
         const blocked = obstacles.filter((obstacle) => obstacle.el !== fromEl && obstacle.el !== toEl);
-        const path = arrowPath(from, to, segment.geometry, blocked);
+        const labels = clipToLabels
+          ? { from: labelRect(fromEl, origin, root), to: labelRect(toEl, origin, root) }
+          : undefined;
+        const path = arrowPath(from, to, segment.geometry, blocked, labels);
         if (!path) return;
         drawn.push({
           key: `${segment.fromId}-${segment.toId}-${index}`,
@@ -78,7 +85,7 @@ export function MoveRouteOverlay({
       root.removeEventListener('scroll', measure, true);
       window.removeEventListener('resize', measure);
     };
-  }, [host, segments, layoutKey]);
+  }, [host, segments, layoutKey, clipToLabels]);
 
   useEffect(() => {
     if (hot == null) return;
@@ -158,6 +165,13 @@ function contentSize(root: HTMLElement, layer: HTMLElement): { w: number; h: num
   const h = Math.max(root.scrollHeight, root.clientHeight);
   layer.style.display = previous;
   return { w, h };
+}
+
+function labelRect(el: HTMLElement, origin: DOMRect, root: HTMLElement): LabelRect {
+  const rect = el.getBoundingClientRect();
+  const left = rect.left - origin.left + root.scrollLeft;
+  const top = rect.top - origin.top + root.scrollTop;
+  return { left, top, right: left + rect.width, bottom: top + rect.height };
 }
 
 function centerOf(el: HTMLElement, origin: DOMRect, root: HTMLElement): Point {

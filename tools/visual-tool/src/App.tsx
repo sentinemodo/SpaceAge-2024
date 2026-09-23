@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { RunPodStartModal } from './components/RunPodStartModal';
 import {
   login,
@@ -89,6 +89,7 @@ import {
   buildMoveSegments,
   indexRouteLocations,
   moveDestinationsForSelection,
+  orderFocusForPane,
   routeAnchorProps,
   selectionTravelContext,
   travelerFromMass,
@@ -375,18 +376,19 @@ function BandBodyStack({
         />
       )}
       {satellites.length > 0 && (
-        <div className={`band-children ${satellites.some((c) => c.kind === 'belt') ? 'band-children-rings' : ''}`}>
-          {satellites.map((child) => (
-            <BodyIconButton
-              key={child.id}
-              body={child}
-              compact
-              hasPresence={presenceIds.has(child.id) || child.regions.some((r) => presenceIds.has(r.id))}
-              selected={selectedBodyId === child.id}
-              onSelect={() => onSelectBody(child.id)}
-              onOpen={() => onOpenBody(child.id)}
-            />
-          ))}
+        <div className="band-children">
+          {[...satellites]
+            .sort((a, b) => a.au - b.au || a.name.localeCompare(b.name))
+            .map((child) => (
+              <BodyIconButton
+                key={child.id}
+                body={child}
+                hasPresence={presenceIds.has(child.id) || child.regions.some((r) => presenceIds.has(r.id))}
+                selected={selectedBodyId === child.id}
+                onSelect={() => onSelectBody(child.id)}
+                onOpen={() => onOpenBody(child.id)}
+              />
+            ))}
         </div>
       )}
     </div>
@@ -468,7 +470,7 @@ function SystemView({
           </div>
         )}
         {moveSegments.length > 0 && (
-          <MoveRouteOverlay segments={moveSegments} layoutKey={detail.id} />
+          <MoveRouteOverlay segments={moveSegments} layoutKey={detail.id} clipToLabels />
         )}
       </div>
     </div>
@@ -701,6 +703,7 @@ export default function App() {
   const [selectedStack, setSelectedStack] = useState<string | null>(null);
   const [selectedPerson, setSelectedPerson] = useState<string | null>(null);
   const [draftOrders, setDraftOrders] = useState('');
+  const [orderCaret, setOrderCaret] = useState(0);
   const [parserOutput, setParserOutput] = useState('No parser output yet.');
   const [orderMode, setOrderMode] = useState<OrderMode>('faction');
   const [techView, setTechView] = useState<TechView>('known');
@@ -841,6 +844,12 @@ export default function App() {
 
   const orderEditorText = orderMode === 'units' ? unitsOrdersText : draftOrders;
   const orderEditorReadOnly = orderMode === 'units';
+  const orderFocus = useMemo(
+    () => (orderMode === 'parser' ? null : orderFocusForPane(orderEditorText, orderCaret)),
+    [orderMode, orderEditorText, orderCaret],
+  );
+  const orderFocusKind = orderFocus?.kind ?? null;
+  const orderFocusId = orderFocus?.id ?? null;
 
   const parserPaneText = useMemo(() => {
     const blocks = [parserOutput];
@@ -869,6 +878,18 @@ export default function App() {
     }
   }
 
+  function syncOrderCaret(el: HTMLTextAreaElement) {
+    const next = el.selectionStart ?? 0;
+    setOrderCaret((prev) => (prev === next ? prev : next));
+  }
+
+  useLayoutEffect(() => {
+    const el = orderTextareaRef.current;
+    if (!el || orderMode === 'parser') return;
+    const next = el.selectionStart ?? 0;
+    setOrderCaret((prev) => (prev === next ? prev : next));
+  }, [orderEditorText, orderMode]);
+
   const atLocationLevel = !!(filterRegionId || filterBodyId || filterOrbitId);
 
   const systemView = report && systemViewId ? getSystemDetail(report, systemViewId) : undefined;
@@ -895,40 +916,53 @@ export default function App() {
       : null;
 
   const moveDestinationIds = useMemo(() => {
-    const fromText = moveDestinationsForSelection(
-      draftOrders || fullOrdersTemplate,
-      selectedStack,
-      selectedPerson,
+    if (!orderFocusKind || !orderFocusId) return [];
+    return moveDestinationsForSelection(
+      orderEditorText,
+      orderFocusKind === 'modulestack' ? orderFocusId : null,
+      orderFocusKind === 'person' ? orderFocusId : null,
+    ) ?? [];
+  }, [orderEditorText, orderFocusKind, orderFocusId]);
+
+  const focusedMover = useMemo(() => {
+    if (!report || !orderFocusKind || !orderFocusId) return undefined;
+    return selectionTravelContext(
+      report.stacks,
+      orderFocusKind === 'modulestack' ? orderFocusId : null,
+      orderFocusKind === 'person' ? orderFocusId : null,
     );
-    if (fromText !== null) return fromText;
-    return selectedOrder?.moveDestinations ?? [];
-  }, [draftOrders, fullOrdersTemplate, selectedStack, selectedPerson, selectedOrder]);
+  }, [report, orderFocusKind, orderFocusId]);
+
+  const focusedMoverStack = useMemo(() => {
+    if (!orderFocusKind || !orderFocusId) return undefined;
+    if (orderFocusKind === 'modulestack') return flatStacks.find((stack) => stack.id === orderFocusId);
+    return flatStacks.find((stack) => stack.persons.some((person) => person.id === orderFocusId));
+  }, [flatStacks, orderFocusKind, orderFocusId]);
 
   const moveSegments = useMemo(() => {
     if (!report || moveDestinationIds.length === 0) return [];
-    const ctx = selectionTravelContext(report.stacks, selectedStack, selectedPerson);
     return buildMoveSegments(
-      ctx?.locationId,
+      focusedMover?.locationId,
       moveDestinationIds,
       indexRouteLocations(report),
-      travelerFromMass(ctx?.mass),
+      travelerFromMass(focusedMover?.mass),
     );
-  }, [report, moveDestinationIds, selectedStack, selectedPerson]);
+  }, [report, moveDestinationIds, focusedMover]);
 
   const moveRoute = useMemo(() => {
-    if (!report || !selected || moveDestinationIds.length === 0) return null;
-    const endpoints = resolveMoveRouteSystems(selected, {
-      subject: selectedOrder?.subject ?? 'modulestack',
-      targetId: selectedOrder?.targetId ?? selected.id,
+    if (!report || !focusedMoverStack || moveDestinationIds.length === 0) return null;
+    const endpoints = resolveMoveRouteSystems(focusedMoverStack, {
+      subject: orderFocusKind ?? 'modulestack',
+      targetId: orderFocusId ?? focusedMoverStack.id,
       moveDestinations: moveDestinationIds,
-      verbs: selectedOrder?.verbs ?? [],
+      verbs: [],
     }, report.regions);
     if (!endpoints) return null;
     const from = report.systems.find((s) => s.id === endpoints.fromSystemId);
     const to = report.systems.find((s) => s.id === endpoints.toSystemId);
     if (!from || !to) return null;
     return { from, to };
-  }, [report, selected, selectedOrder, moveDestinationIds]);
+  }, [report, focusedMoverStack, orderFocusKind, orderFocusId, moveDestinationIds]);
 
   const aldersonLines = useMemo(() => {
     if (!report) return [];
@@ -1726,7 +1760,11 @@ export default function App() {
                       value={orderEditorText}
                       readOnly={orderEditorReadOnly}
                       onScroll={syncOrderLineNumbers}
+                      onSelect={(e) => syncOrderCaret(e.currentTarget)}
+                      onKeyUp={(e) => syncOrderCaret(e.currentTarget)}
+                      onClick={(e) => syncOrderCaret(e.currentTarget)}
                       onChange={(e) => {
+                        syncOrderCaret(e.currentTarget);
                         if (orderMode === 'faction') {
                           ordersDirtyRef.current = true;
                           setParseButtonStatus(null);
