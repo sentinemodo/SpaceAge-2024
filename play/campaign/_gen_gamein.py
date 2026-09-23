@@ -7,7 +7,8 @@ moon AU rounded to 3 decimals and at least 0.001; exits that touch
 sea/ocean are naval (no coastal type); native race is on planet/moon
 (`<race>`), not on orbit; asteroid belts are `<belt>` with `<composition>`
 (no orbit, no child regions, no spawned rocks); Alderson Gates are
-`<alderson>` (orbit, no corona region, no region hops; JUMP between the pair).
+`<alderson>` (orbit, no corona region, no region hops; JUMP between the pair;
+AU randomized 60–80 per gate via `next_gate_au()`, seed `GATE_AU_SEED`).
 
 Regenerate:
     python campaign/_gen_gamein.py
@@ -15,9 +16,20 @@ Regenerate:
 from __future__ import annotations
 
 import os
+import random
 import sys
 import xml.etree.ElementTree as ET
 from collections import OrderedDict
+
+GATE_AU_MIN = 60
+GATE_AU_MAX = 80
+GATE_AU_SEED = 20260918
+_gate_au_rng = random.Random(GATE_AU_SEED)
+
+
+def next_gate_au():
+    """Random Alderson gate AU in [GATE_AU_MIN, GATE_AU_MAX] (deterministic per GATE_AU_SEED)."""
+    return _gate_au_rng.randint(GATE_AU_MIN, GATE_AU_MAX)
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT_PATH = os.path.join(HERE, "gamein.1.xml")
@@ -1206,7 +1218,7 @@ def build_world():
     )
     helios.planets.append(aeolus)
 
-    gate_h = Alderson("P00009", "Helios Fomal Gate", 80, "P00010")
+    gate_h = Alderson("P00009", "Helios Fomal Gate", next_gate_au(), "P00010")
     gate_h.orbit = Orbit("O00110")
     ids.O(110)
     landings["helios-gate"] = gate_h
@@ -1294,7 +1306,7 @@ def build_world():
     )
     fomal.planets.append(giant_f)
 
-    gate_f = Alderson("P00010", "Fomal Helios Gate", 80, "P00009")
+    gate_f = Alderson("P00010", "Fomal Helios Gate", next_gate_au(), "P00009")
     gate_f.orbit = Orbit("O00111")
     ids.O(111)
     landings["fomal-gate"] = gate_f
@@ -1591,7 +1603,7 @@ def add_gate_pair(ids, by_name, here_en, there_en, unstable=False):
     here_gate = Alderson(
         here_id,
         "%s %s Gate" % (here_en, there_en),
-        80,
+        next_gate_au(),
         there_id,
         stability=stability,
     )
@@ -1599,7 +1611,7 @@ def add_gate_pair(ids, by_name, here_en, there_en, unstable=False):
     there_gate = Alderson(
         there_id,
         "%s %s Gate" % (there_en, here_en),
-        80,
+        next_gate_au(),
         here_id,
         stability=stability,
     )

@@ -45,14 +45,13 @@ Campaign files on the host (survive container rebuilds):
 
 | Host path | Purpose |
 |-----------|---------|
-| `game-host/runs/beta-1/` | Live `gamein.xml`, orders, reports |
-| `play/runs/beta-1/` | Init passwords, player-agent RAG mirror |
+| `play/runs/beta-1/` | Canonical run: `gamein.xml`, orders, reports, personas, GM notes |
 
 ---
 
 ## Scenario B — First-time campaign bootstrap
 
-**When:** New run or empty `game-host/runs/beta-1/data/gamein.xml`.
+**When:** New run or empty `play/runs/beta-1/data/gamein.xml`.
 
 ```powershell
 .\play\beta-launch.ps1 -GameHostUrl http://localhost:8787 -GmKey <GAME_HOST_GM_KEY>
@@ -116,7 +115,7 @@ They log in with faction id **2–11** and password from their invitation.
 GM monitors submitted orders on disk:
 
 ```powershell
-Get-ChildItem game-host\runs\beta-1\turn\order.*.txt
+Get-ChildItem play\runs\beta-1\turn\order.*.txt
 ```
 
 ---
@@ -141,12 +140,13 @@ Invoke-RestMethod -Method Post `
 
 ---
 
-## Scenario F — Sync player-agent RAG (optional)
+## Scenario F — Player-agent RAG (optional)
 
 **When:** After Scenario E; you want local AI drafts from new reports.
 
+Game-host `/reports` and `/turn` already write isolated text reports under `play/runs/beta-1/factions/`. Ingest directly:
+
 ```powershell
-.\play\sync-game-host-factions.ps1 -Run beta-1
 .\play\ollama-check.ps1
 .\play\ingest-rag.ps1 -Run beta-1 -Mode campaign
 .\play\draft-run.ps1 -Run beta-1 -Mode campaign -DryRun   # drop -DryRun to draft
@@ -217,5 +217,5 @@ docker compose down
 ## Security
 
 - Rotate `GAME_HOST_GM_KEY` before open beta; never share with players.
-- Back up `game-host/runs/beta-1/` before each GM turn.
+- Back up `play/runs/beta-1/` before each GM turn.
 - Only port **8787** is exposed via ngrok; do not expose GM key in chat or commits.

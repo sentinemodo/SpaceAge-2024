@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { RunPodStartModal } from './components/RunPodStartModal';
 import {
   login,
@@ -98,7 +98,18 @@ const REGION_ZOOM_BASE = 1.5;
 
 type Panel = 'map' | 'tech' | 'diplomacy' | 'bank' | 'movement' | 'battle' | 'faction' | 'story';
 type OrderMode = 'units' | 'faction' | 'parser';
+type ParseButtonStatus = 'ok' | 'warnings' | 'errors';
 type TechView = 'known' | 'breakthrough';
+
+function parseButtonStatusFromResult(
+  errors: string[],
+  warnings: string[],
+  ok: boolean,
+): ParseButtonStatus {
+  if (errors.length > 0) return 'errors';
+  if (warnings.length > 0) return 'warnings';
+  return ok ? 'ok' : 'errors';
+}
 
 function isGasGiant(body: SystemBodyNode): boolean {
   return body.kind === 'planet' && (body.planetType || '').toLowerCase().includes('gas');
@@ -690,6 +701,8 @@ export default function App() {
   const [filterStar, setFilterStar] = useState(false);
   const [warnings, setWarnings] = useState<string[]>([]);
   const [parseErrors, setParseErrors] = useState<string[]>([]);
+  const [parseButtonStatus, setParseButtonStatus] = useState<ParseButtonStatus | null>(null);
+  const ordersDirtyRef = useRef(false);
   const [sections, setSections] = useState<ReportSection[]>([]);
   const [battleSimXml, setBattleSimXml] = useState('');
   const [battleSimOutput, setBattleSimOutput] = useState('');
@@ -787,16 +800,44 @@ export default function App() {
   }, [report, fullOrdersTemplate, draftOrders, filteredRoots, selectedStack, selectedPerson]);
 
   useEffect(() => {
+    ordersDirtyRef.current = false;
+    setParseButtonStatus(null);
+  }, [report?.factionId, meta.viewAsFactionId]);
+
+  useEffect(() => {
+    if (ordersDirtyRef.current) return;
     setDraftOrders(factionOrdersText);
   }, [factionOrdersText]);
 
-  const orderText = orderMode === 'units'
-    ? unitsOrdersText
-    : orderMode === 'parser'
-      ? parserOutput
-      : draftOrders;
+  const orderEditorText = orderMode === 'units' ? unitsOrdersText : draftOrders;
+  const orderEditorReadOnly = orderMode === 'units';
 
-  const orderTextReadOnly = orderMode === 'units' || orderMode === 'parser';
+  const parserPaneText = useMemo(() => {
+    const blocks = [parserOutput];
+    if (parseErrors.length) {
+      blocks.push('', 'errors:', ...parseErrors.map((e) => `  ${e}`));
+    }
+    if (warnings.length) {
+      blocks.push('', 'warnings:', ...warnings.map((w) => `  ${w}`));
+    }
+    return blocks.join('\n');
+  }, [parserOutput, parseErrors, warnings]);
+
+  const orderLineCount = useMemo(() => {
+    const lines = orderEditorText.split('\n').length;
+    return Math.max(lines, 1);
+  }, [orderEditorText]);
+
+  const orderLineNumbersRef = useRef<HTMLDivElement>(null);
+  const orderTextareaRef = useRef<HTMLTextAreaElement>(null);
+
+  function syncOrderLineNumbers() {
+    const textarea = orderTextareaRef.current;
+    const gutter = orderLineNumbersRef.current;
+    if (textarea && gutter) {
+      gutter.scrollTop = textarea.scrollTop;
+    }
+  }
 
   const atLocationLevel = !!(filterRegionId || filterBodyId || filterOrbitId);
 
@@ -981,23 +1022,29 @@ export default function App() {
     await load();
   }
 
-  async function handleCheck() {
-    const packageText = draftOrders || factionOrdersText;
-    const result = await parseOrders(packageText);
+  function applyParseResult(result: Awaited<ReturnType<typeof parseOrders>>) {
     setParseErrors(result.errors);
     setWarnings(result.warnings);
     setParserOutput(result.output || `ok: ${result.ok}`);
+    setParseButtonStatus(parseButtonStatusFromResult(result.errors, result.warnings, result.ok));
+  }
+
+  async function handleCheck() {
+    const packageText = draftOrders || factionOrdersText;
+    const result = await parseOrders(packageText);
+    applyParseResult(result);
   }
 
   async function handleSubmit() {
     const packageText = draftOrders || factionOrdersText;
     const result = await parseOrders(packageText);
-    setParseErrors(result.errors);
-    setWarnings(result.warnings);
-    setParserOutput(result.output || `ok: ${result.ok}`);
-    if (!result.ok) return;
-    await submitOrders(packageText);
-    alert('Orders submitted to game host');
+    applyParseResult(result);
+    try {
+      await submitOrders(packageText);
+      alert('Orders submitted to game host');
+    } catch (err) {
+      alert(String(err));
+    }
   }
 
   async function handleBattleSim() {
@@ -1565,28 +1612,52 @@ export default function App() {
                       className={orderMode === 'faction' ? 'active' : ''}
                       onClick={() => setOrderMode('faction')}
                     >
-                      Faction
+                      Full order file
                     </button>
                     <button
                       type="button"
-                      className={orderMode === 'parser' ? 'active' : ''}
+                      className={`${orderMode === 'parser' ? 'active' : ''}${parseButtonStatus ? ` parse-tab-${parseButtonStatus}` : ''}`}
                       onClick={() => setOrderMode('parser')}
                     >
                       Parser output
                     </button>
                   </div>
                 </div>
-                <textarea
-                  value={orderText}
-                  readOnly={orderTextReadOnly}
-                  onChange={(e) => {
-                    if (orderMode === 'faction') setDraftOrders(e.target.value);
-                  }}
-                  placeholder={'#faction N "password"\nMOVE …'}
-                  className={orderTextReadOnly ? 'order-text-readonly' : ''}
-                />
-                {parseErrors.map((e) => <div key={e} className="warnings">{e}</div>)}
-                {warnings.map((w) => <div key={w} className="warnings">{w}</div>)}
+                <div className="order-pane-stack">
+                  <div
+                    className={`order-editor-with-lines${orderMode === 'parser' ? ' order-pane-hidden' : ''}`}
+                  >
+                    <div
+                      ref={orderLineNumbersRef}
+                      className="order-line-numbers"
+                      aria-hidden
+                    >
+                      {Array.from({ length: orderLineCount }, (_, i) => (
+                        <div key={i + 1} className="order-line-number">{i + 1}</div>
+                      ))}
+                    </div>
+                    <textarea
+                      ref={orderTextareaRef}
+                      value={orderEditorText}
+                      readOnly={orderEditorReadOnly}
+                      onScroll={syncOrderLineNumbers}
+                      onChange={(e) => {
+                        if (orderMode === 'faction') {
+                          ordersDirtyRef.current = true;
+                          setParseButtonStatus(null);
+                          setDraftOrders(e.target.value);
+                        }
+                      }}
+                      placeholder={'#faction N "password"\nMOVE …'}
+                      className={orderEditorReadOnly ? 'order-text-readonly' : ''}
+                    />
+                  </div>
+                  <pre
+                    className={`order-parser-output${orderMode === 'parser' ? '' : ' order-pane-hidden'}`}
+                  >
+                    {parserPaneText}
+                  </pre>
+                </div>
                 <div className="order-split-actions">
                   <button type="button" onClick={handleCheck}>Parse orders</button>
                   <button type="button" onClick={handleSubmit}>Submit orders</button>

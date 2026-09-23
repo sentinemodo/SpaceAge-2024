@@ -25,7 +25,7 @@ flowchart LR
 |------|----|----------|
 | `Tests` | `Game` | Project reference; in-process `DataFile` / `Game` |
 | `tools/player-agent` | `Game.exe` | Order files, reports; reads `EngineVersion` from `Program.cs` |
-| `game-host` | `Game.exe` | Spawn with `/data`, `/turn-dir`; session-scoped paths under `game-host/runs/` |
+| `game-host` | `Game.exe` | Spawn with `/data`, `/turn-dir`; session-scoped paths under `play/runs/<runId>/` |
 | `visual-tool` | `game-host` | Authenticated REST: reports, parse-orders, star map data |
 | `website/` | `status.json` + static host | No `Game` reference; links to visual tool URL |
 | `play/` scripts | `Game.exe` + `website/public/status.json` | AI isolation campaign (factions 2–11) |

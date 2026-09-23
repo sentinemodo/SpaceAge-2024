@@ -12,16 +12,17 @@ game-host/
   package.json
   server.mjs           # HTTP entry
   lib/
-    paths.mjs          # run directory resolution
+    paths.mjs          # resolves play/runs/<runId>/
     auth.mjs           # faction login + sessions
     game-exe.mjs       # spawn Game.exe
     status.mjs         # status.json generator
-  runs/                # gitignored active campaigns
-    <runId>/
-      data/
-      turn/
-      factions/02..11/  # isolated text reports (optional mirror)
   README.md
+
+play/runs/             # gitignored canonical campaign tree (shared with play/*.ps1)
+  <runId>/
+    data/
+    turn/
+    factions/02..11/
 ```
 
 ## API summary

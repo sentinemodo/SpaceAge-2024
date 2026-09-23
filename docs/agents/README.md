@@ -14,6 +14,7 @@ File-scoped rules live in **[`.cursor/rules/`](../../.cursor/rules/)**.
 | website-developer | [website-developer.md](../../.cursor/agents/website-developer.md) | [website-astro.mdc](../../.cursor/rules/website-astro.mdc) |
 | website-tester | [website-tester.md](../../.cursor/agents/website-tester.md) | [website-tester.mdc](../../.cursor/rules/website-tester.mdc) |
 | runpod-runner | [runpod-runner.md](../../.cursor/agents/runpod-runner.md) | [runpod-runner.mdc](../../.cursor/rules/runpod-runner.mdc) |
+| cicd | [cicd.md](../../.cursor/agents/cicd.md) | [cicd.mdc](../../.cursor/rules/cicd.mdc) |
 
 Shared contracts: [website-pairing.md](../../.cursor/agents/website-pairing.md)
 

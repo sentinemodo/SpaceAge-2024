@@ -14,6 +14,26 @@
 
 * { box-sizing: border-box; }
 
+button {
+  transition:
+    transform 0.16s ease,
+    box-shadow 0.16s ease,
+    background-color 0.16s ease,
+    border-color 0.16s ease,
+    color 0.16s ease,
+    opacity 0.16s ease;
+}
+
+button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.28);
+}
+
+button:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
 body {
   margin: 0;
   font-family: var(--font);
@@ -633,6 +653,36 @@ body {
   margin-top: 0.35rem;
 }
 
+.order-mode-tabs button.parse-tab-ok {
+  border-color: #22c55e;
+  color: #86efac;
+}
+
+.order-mode-tabs button.parse-tab-ok.active {
+  background: #166534;
+  color: #ecfdf5;
+}
+
+.order-mode-tabs button.parse-tab-warnings {
+  border-color: var(--warn);
+  color: var(--warn);
+}
+
+.order-mode-tabs button.parse-tab-warnings.active {
+  background: #854d0e;
+  color: #fef9c3;
+}
+
+.order-mode-tabs button.parse-tab-errors {
+  border-color: var(--danger);
+  color: #fca5a5;
+}
+
+.order-mode-tabs button.parse-tab-errors.active {
+  background: #7f1d1d;
+  color: #fee2e2;
+}
+
 .ai-prompt-textarea {
   flex: 1;
   min-height: 80px;
@@ -661,6 +711,74 @@ body {
 .resize-handle-vertical {
   height: 6px;
   cursor: row-resize;
+}
+
+.order-pane-stack {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 80px;
+  min-width: 0;
+}
+
+.order-pane-hidden {
+  display: none !important;
+}
+
+.order-editor-with-lines {
+  display: flex;
+  flex: 1;
+  min-height: 80px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--bg-dark);
+}
+
+.order-line-numbers {
+  flex: 0 0 auto;
+  min-width: 2.75rem;
+  padding: 0.5rem 0.35rem 0.5rem 0.5rem;
+  border-right: 1px solid var(--border);
+  background: var(--bg-panel);
+  color: var(--text-dim);
+  font-family: 'Consolas', monospace;
+  font-size: 0.8rem;
+  line-height: 1.4375;
+  overflow: hidden;
+  user-select: none;
+  text-align: right;
+}
+
+.order-line-number {
+  min-height: 1.4375em;
+}
+
+.order-editor-with-lines textarea {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  border: none;
+  border-radius: 0;
+  resize: none;
+  line-height: 1.4375;
+  padding: 0.5rem;
+}
+
+.order-parser-output {
+  flex: 1;
+  min-height: 80px;
+  margin: 0;
+  padding: 0.5rem;
+  overflow: auto;
+  background: var(--bg-dark);
+  color: var(--warn);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-family: 'Consolas', monospace;
+  font-size: 0.8rem;
+  line-height: 1.4375;
+  white-space: pre-wrap;
 }
 
 .order-editor textarea {

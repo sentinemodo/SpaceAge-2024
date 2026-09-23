@@ -6,7 +6,6 @@
 **/bin
 **/obj
 **/.data
-game-host/runs
 play/runs
 tools/player-agent/.data
 tools/visual-tool/dist

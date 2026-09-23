@@ -15,6 +15,7 @@ export default defineConfig({
     timeout: 120_000,
     env: {
       GAME_EXE: '../Game/bin/Debug/Game.exe',
+      GAME_HOST_GM_KEY: process.env.GAME_HOST_GM_KEY || 'dev-gm-key',
     },
   },
 });

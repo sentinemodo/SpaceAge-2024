@@ -52,8 +52,7 @@ Persistent data (host paths, gitignored):
 
 | Host path | Container path | Purpose |
 |-----------|----------------|---------|
-| `game-host/runs/` | `/app/game-host/runs` | Live campaign (`gamein.xml`, orders, reports) |
-| `play/runs/` | `/app/play/runs` | Init passwords, player-agent RAG inputs |
+| `play/runs/` | `/app/play/runs` | Campaign state (`gamein.xml`, orders, reports, faction mirrors) |
 
 ### GM operations
 
@@ -73,7 +72,7 @@ Copy `.env.example` to `.env` and set `GAME_HOST_GM_KEY` before open beta.
 ## Railway (later)
 
 1. Connect repo; Railway builds this `Dockerfile`.
-2. Attach a **volume** at `/app/game-host/runs` (campaign state survives redeploys).
+2. Attach a **volume** at `/app/play/runs` (campaign state survives redeploys).
 3. Set env: `GAME_HOST_GM_KEY`, `GAME_HOST_CORS`, `GAME_HOST_RUN_ID`.
 4. Railway sets `PORT`; entrypoint maps it to `GAME_HOST_PORT`.
 5. **Do not** run Ollama on Railway — keep player-agent + Ollama on the GM laptop calling the public game-host URL for order upload only.

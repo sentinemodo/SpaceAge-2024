@@ -82,4 +82,29 @@ console.log('5. Battle sim…');
   console.log('   OK', body.result);
 }
 
+console.log('6. Submit orders (persist to disk)…');
+{
+  const marker = `smoke-submit-${Date.now()}`;
+  const orderText = `${marker}\n#faction 2 "northwnd"\n#modulestack 200001\n#end\n`;
+  const res = await fetch(`${BASE}/api/session/orders`, {
+    method: 'PUT',
+    headers: { ...auth, 'Content-Type': 'text/plain; charset=utf-8' },
+    body: orderText,
+  });
+  assert.equal(res.status, 200);
+  const payload = await res.json();
+  assert.equal(payload.ok, true);
+
+  const { factionsDir, turnDir, runId } = await import('../lib/paths.mjs');
+  const draftPath = path.join(factionsDir(), '02', 'order.2.txt');
+  const turnPath = path.join(turnDir(), 'order.2.txt');
+  assert.ok(fs.existsSync(draftPath), `missing ${draftPath} (run ${runId()})`);
+  assert.ok(fs.existsSync(turnPath), `missing ${turnPath} (run ${runId()})`);
+  const draft = fs.readFileSync(draftPath, 'utf8');
+  const turn = fs.readFileSync(turnPath, 'utf8');
+  assert.ok(draft.includes(marker), 'draft file missing submitted marker');
+  assert.ok(turn.includes(marker), 'turn file missing submitted marker');
+  console.log('   OK', draftPath);
+}
+
 console.log('\nAll smoke checks passed.');

@@ -363,6 +363,8 @@ MigrationBackup/
 FodyWeavers.xsd
 # Cursor Cloud Agent downloaded tools (recreated by .cursor/install.sh)
 .cursor/tools/
+.cursor/dev-logs/
+.cursor/cicd-test-results/
 
 # Local env (copy from .env.example)
 .env
@@ -373,7 +375,6 @@ gameout*.xml
 
 # Local campaign runs (passwords + gamein + reports). Keep play/README.md and play/*.ps1 tracked.
 play/runs/
-game-host/runs/
 game-host/.runpod-state.json
 play/player/drafts/
 test-results.txt

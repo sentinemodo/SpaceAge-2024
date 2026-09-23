@@ -35,7 +35,8 @@ test('UT-002 parse orders shows password error', async ({ page }) => {
   await editor.fill('#faction 2 "wrongpass"\n#modulestack 200001\nMOVE R99999\n#end\n');
   await expect(editor).toContainText('wrongpass');
   await page.getByRole('button', { name: /Parse orders/i }).click();
-  await expect(page.locator('.warnings').filter({ hasText: /password|wrongpass|bad command/i }).first()).toBeVisible({
+  await page.getByRole('button', { name: /Parser output/i }).click();
+  await expect(page.locator('.order-parser-output').filter({ hasText: /password|wrongpass|bad command/i }).first()).toBeVisible({
     timeout: 15000,
   });
 });

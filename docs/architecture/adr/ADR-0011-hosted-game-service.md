@@ -50,7 +50,7 @@ Open beta requires ten invited players to use a **hosted web client** instead of
 - Visual tool (`tools/visual-tool/`) consumes game-host API, not local files.
 - Lobby (`website/`) links to visual tool; status JSON from `generate-status.ps1` or game-host `/api/gm/status`.
 - Security tests required: faction A cannot fetch faction B report (UT-005).
-- GM must protect `GAME_HOST_GM_KEY` and run disk backups of `game-host/runs/`.
+- GM must protect `GAME_HOST_GM_KEY` and run disk backups of `play/runs/<runId>/`.
 
 ## Revision
 

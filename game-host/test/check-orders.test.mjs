@@ -18,3 +18,31 @@ test('validateOrderText flags wrong password', () => {
   const w = validateOrderText(body, 2, 'secret');
   assert.ok(w.some((x) => x.includes('password')));
 });
+
+test('validateOrderText accepts @use and #end', () => {
+  const body = [
+    '#faction 2 "secret"',
+    '#modulestack 200001',
+    '@use farmng',
+    '#end',
+  ].join('\n');
+  const w = validateOrderText(body, 2, 'secret');
+  assert.equal(w.length, 0);
+});
+
+test('validateOrderText accepts +get conditional prefix', () => {
+  const body = [
+    '#faction 2 "secret"',
+    '#modulestack 200001',
+    '+get 2 titani from 200003',
+    '#end',
+  ].join('\n');
+  const w = validateOrderText(body, 2, 'secret');
+  assert.equal(w.length, 0);
+});
+
+test('validateOrderText includes full line in warnings', () => {
+  const body = '#faction 2 "secret"\nBADVERB O00001';
+  const w = validateOrderText(body, 2, 'secret');
+  assert.ok(w.some((x) => x.startsWith('BADVERB O00001:')));
+});

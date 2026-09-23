@@ -15,20 +15,13 @@ export function runId() {
   return process.env.GAME_HOST_RUN_ID || 'beta-1';
 }
 
+/** Canonical campaign run directory (shared by play scripts, game-host, player-agent). */
 export function runsRoot() {
-  return path.join(repoRoot(), 'game-host', 'runs');
-}
-
-export function resolveRunRoot(forRunId = runId()) {
-  const hostRun = path.join(runsRoot(), forRunId);
-  if (fs.existsSync(hostRun)) return hostRun;
-  const playRun = path.join(repoRoot(), 'play', 'runs', forRunId);
-  if (fs.existsSync(playRun)) return playRun;
-  return hostRun;
+  return path.join(repoRoot(), 'play', 'runs');
 }
 
 export function runRoot(forRunId = runId()) {
-  return resolveRunRoot(forRunId);
+  return path.join(runsRoot(), forRunId);
 }
 
 export function dataDir(forRunId = runId()) {
@@ -67,14 +60,13 @@ export function readTurnFromGamein(forRunId = runId()) {
 
 export function listRuns() {
   const ids = new Set();
-  for (const root of [runsRoot(), path.join(repoRoot(), 'play', 'runs')]) {
-    if (!fs.existsSync(root)) continue;
-    for (const d of fs.readdirSync(root)) {
-      try {
-        if (fs.statSync(path.join(root, d)).isDirectory()) ids.add(d);
-      } catch {
-        /* skip */
-      }
+  const root = runsRoot();
+  if (!fs.existsSync(root)) return [];
+  for (const d of fs.readdirSync(root)) {
+    try {
+      if (fs.statSync(path.join(root, d)).isDirectory()) ids.add(d);
+    } catch {
+      /* skip */
     }
   }
   return [...ids].sort().map((id) => ({ id, label: id }));

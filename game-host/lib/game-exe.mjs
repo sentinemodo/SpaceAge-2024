@@ -1,7 +1,7 @@
 import { spawn } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
-import { campaignDataXml, dataDir, gameExe, repoRoot, turnDir } from './paths.mjs';
+import { campaignDataXml, dataDir, ensureRunLayout, gameExe, runRoot, turnDir } from './paths.mjs';
 
 /** Resolve process + argv prefix for Game.exe (mono wrapper on Linux). */
 export function resolveGameSpawn(platform = process.platform, env = process.env) {
@@ -56,14 +56,19 @@ export async function bootstrapFromCampaign() {
   fs.copyFileSync(seed, path.join(dataDir(), 'gamein.xml'));
 }
 
-/** Copy live passwords from play/runs/{id}/data after init-run.ps1 */
+/** Verify init-run output exists; copy data when source run differs from active run. */
 export function bootstrapFromPlayRun(sourceRunId) {
-  const srcData = path.join(repoRoot(), 'play', 'runs', sourceRunId, 'data');
+  const srcData = path.join(runRoot(sourceRunId), 'data');
   if (!fs.existsSync(path.join(srcData, 'gamein.xml'))) {
     throw new Error(`play/runs/${sourceRunId}/data/gamein.xml missing — run play/init-run.ps1 first`);
   }
-  fs.copyFileSync(path.join(srcData, 'data.xml'), path.join(dataDir(), 'data.xml'));
-  fs.copyFileSync(path.join(srcData, 'gamein.xml'), path.join(dataDir(), 'gamein.xml'));
+  ensureRunLayout();
+  const destData = dataDir();
+  if (path.resolve(srcData) === path.resolve(destData)) {
+    return;
+  }
+  fs.copyFileSync(path.join(srcData, 'data.xml'), path.join(destData, 'data.xml'));
+  fs.copyFileSync(path.join(srcData, 'gamein.xml'), path.join(destData, 'gamein.xml'));
 }
 
 export async function runReports() {

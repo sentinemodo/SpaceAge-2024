@@ -4,6 +4,15 @@ const KNOWN_VERBS = new Set([
   'CONTRACT', 'PRESS', 'JUMP', 'REPAIR', 'SURVEY', 'PRODUCE', 'ONLINE', 'OFFLINE',
 ]);
 
+function normalizeVerb(token) {
+  return token.toUpperCase().replace(/^[@+-]+/, '');
+}
+
+function lineWarning(raw, message) {
+  const text = raw.trimEnd();
+  return text ? `${text}: ${message}` : message;
+}
+
 export function validateOrderText(body, factionId, expectedPassword) {
   const warnings = [];
   const lines = body.split(/\r?\n/);
@@ -20,14 +29,14 @@ export function validateOrderText(body, factionId, expectedPassword) {
       sawFaction = true;
       const m = line.match(/^#faction\s+(\d+)\s+"([^"]*)"/i);
       if (!m) {
-        warnings.push(`Line ${i + 1}: malformed #faction header`);
+        warnings.push(lineWarning(raw, 'malformed #faction header'));
         continue;
       }
       if (parseInt(m[1], 10) !== factionId) {
-        warnings.push(`Line ${i + 1}: faction id ${m[1]} does not match session (${factionId})`);
+        warnings.push(lineWarning(raw, `faction id ${m[1]} does not match session (${factionId})`));
       }
       if (m[2] !== expectedPassword) {
-        warnings.push(`Line ${i + 1}: password does not match gamein for faction ${factionId}`);
+        warnings.push(lineWarning(raw, `password does not match gamein for faction ${factionId}`));
       }
       continue;
     }
@@ -36,30 +45,30 @@ export function validateOrderText(body, factionId, expectedPassword) {
       const m = line.match(/^#modulestack\s+(\S+)/i);
       currentStack = m ? m[1] : null;
       if (!currentStack) {
-        warnings.push(`Line ${i + 1}: malformed #modulestack`);
+        warnings.push(lineWarning(raw, 'malformed #modulestack'));
       }
       continue;
     }
 
-    if (upper.startsWith('#PERSON')) {
+    if (upper.startsWith('#PERSON') || upper.startsWith('#END')) {
       continue;
     }
 
     if (!sawFaction) {
-      warnings.push(`Line ${i + 1}: #faction header must precede orders`);
+      warnings.push(lineWarning(raw, '#faction header must precede orders'));
     }
 
-    const verb = line.split(/\s+/)[0].toUpperCase();
+    const verb = normalizeVerb(line.split(/\s+/)[0]);
     if (!KNOWN_VERBS.has(verb)) {
-      warnings.push(`Line ${i + 1}: unknown or unsupported verb "${verb}"`);
+      warnings.push(lineWarning(raw, `unknown or unsupported verb "${verb}"`));
     }
 
     if (verb === 'MOVE' && !/\s+[A-Z]\d+/i.test(line)) {
-      warnings.push(`Line ${i + 1}: MOVE should specify a destination location id`);
+      warnings.push(lineWarning(raw, 'MOVE should specify a destination location id'));
     }
 
     if ((verb === 'USE' || verb === 'PRODUCE') && /as\s+new/i.test(line) && !currentStack && !/\bfor\s+\d+/i.test(line)) {
-      warnings.push(`Line ${i + 1}: USE/PRODUCE may need #modulestack context or FOR target`);
+      warnings.push(lineWarning(raw, 'USE/PRODUCE may need #modulestack context or FOR target'));
     }
   }
 

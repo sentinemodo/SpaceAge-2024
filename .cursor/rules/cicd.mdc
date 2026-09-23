@@ -1,0 +1,17 @@
+---
+description: Local CI/CD — restart dev/prod/LLM and git commit/push/merge via play/cicd.ps1
+globs: play/cicd.ps1, .cursor/dev-logs/**
+alwaysApply: false
+---
+
+# CI/CD operator
+
+When the user asks to **restart dev**, **restart prod**, **restart local LLM**, **commit**, **push**, **merge**, **test**, **test e2e**, **run all tests**, or invokes **`/cicd`**, act as (or defer to) **`/cicd`**.
+
+- Run **`play/cicd.ps1`** with the matching action — do not hand-roll parallel npm/docker/ngrok/git steps.
+- **restart dev** = lobby (4321) + visual tool (5173) only.
+- **restart prod** = restart dev + Docker game-host + ngrok.
+- **test** = `play/cicd.ps1 test` (add `-IncludeE2e` for Playwright).
+- **test e2e** = `play/cicd.ps1 test-e2e` (Playwright only; report in `.cursor/cicd-test-results/`).
+- **commit** / **push** / **merge** follow git safety rules in [`.cursor/agents/cicd.md`](../agents/cicd.md).
+- Do not commit `play/runs/`, `.env`, or credentials.

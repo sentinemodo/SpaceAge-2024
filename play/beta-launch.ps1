@@ -11,7 +11,7 @@ $root = Split-Path -Parent $PSScriptRoot
 Write-Host "=== SpaceAge Open Beta Launch ($RunId) ==="
 
 # 1. Optional: local play init (creates passwords in gitignored play/runs)
-if (-not (Test-Path (Join-Path $root "game-host\runs\$RunId\data\gamein.xml"))) {
+if (-not (Test-Path (Join-Path $root "play\runs\$RunId\data\gamein.xml"))) {
 	Write-Host "Initializing play run..."
 	& (Join-Path $PSScriptRoot 'init-run.ps1') $RunId -Force
 }

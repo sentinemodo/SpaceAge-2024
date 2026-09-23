@@ -12,6 +12,8 @@ Decision: [docs/architecture/adr/ADR-0011-hosted-game-service.md](../docs/archit
 - Built `Game/bin/Debug/Game.exe` (`msbuild SpaceAge.sln`)
 - `play/campaign/data.xml` and `play/campaign/gamein.1.xml`
 
+Campaign state lives under **`play/runs/<GAME_HOST_RUN_ID>/`** (same tree as `play/init-run.ps1` and player-agent). There is no separate `game-host/runs/` directory.
+
 ## Environment
 
 | Variable | Default |

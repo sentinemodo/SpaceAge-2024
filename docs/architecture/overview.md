@@ -28,9 +28,7 @@ The engine does **not** send email or use a database. External mailers, GM scrip
 | **AI campaign loop** | `play/` | PowerShell isolation path for factions 2–11 |
 | **Campaign data** | `play/campaign/` | Live `data.xml` + scenario XML (game-designer) |
 
-**Primary campaign path (open beta):** `game-host/runs/` — hosted sessions with faction auth and visual-tool API.
-
-**Dev / AI isolation:** `play/runs/` — PowerShell loop for factions 2–11 and player-agent testing; not the public beta surface.
+**Campaign run path (PBEM, hosted beta, player-agent):** `play/runs/<id>/` — `data/`, `turn/`, and per-faction `factions/NN/`; game-host, PowerShell GM scripts, and visual tool all use this tree.
 
 ## Concise architecture
 

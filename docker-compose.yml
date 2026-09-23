@@ -16,8 +16,6 @@ services:
       GAME_HOST_GM_KEY: ${GAME_HOST_GM_KEY:-dev-gm-key}
       GAME_HOST_CORS: ${GAME_HOST_CORS:-*}
     volumes:
-      # Campaign state (gamein, orders, reports) — survives container rebuilds
-      - ./game-host/runs:/app/game-host/runs
-      # play/runs passwords + faction mirror for beta-launch init + player-agent RAG
+      # Campaign state (gamein, orders, reports) — shared by game-host, play scripts, player-agent
       - ./play/runs:/app/play/runs
     restart: unless-stopped
