@@ -1,6 +1,6 @@
 # Level 0 and 1 technologies
 
-Catalog: `Tests/data.xml`, loaded by `Game/game/CatalogLoader.cs` (`DataFile.LoadConfigurationItems` delegates). Checked **9 Sep 2026** against engine **0.1.158**.
+Catalog: `Tests/data.xml`, loaded by `Game/game/CatalogLoader.cs` (`DataFile.LoadConfigurationItems` delegates). Checked **22 Sep 2026** against engine **0.8.001**.
 
 This file lists **level 0 and level 1** technologies, then the **module types** and **item types** those technologies produce or consume. Level 2 and above: `play/player/advanced_technologies.md`. Alphabetical by English `name-en` inside each level.
 
@@ -150,6 +150,10 @@ Works in: agricultural, on ocean worlds with terran atmosphere `[terair]`, solid
 The basic mobile armor, powered by oil consuming engines. Tag: `military`.  
 Works in: production. Use consumes: 4 iron `[iron]`. Use produces: tanks `[tanks]`. Use-time: 4 weeks.
 
+**branch office construction [brnofc]**  
+Satellite HR and payroll offices use encrypted radio links to HQ ledgers, biometric screening booths, and local labour contracts. Not a second C-suite: no region-wide construction scheduling or upkeep optimization. Tag: `production`. **Requires:** corporate management `[corpmg]`.  
+Works in: production. Use consumes: 5 iron `[iron]`, 1 copper `[copper]`, 2 silicium `[silici]`. Use produces: branch office `[brnofc]`. Use-time: 4 weeks.
+
 **city planning [ctypln]**  
 Planning the area of the city allows more eficient use of the area.  
 Works in: settlement, solid-surface, terran atmosphere `[terair]`. Use consumes: 500 cash `[cash]`, 26 iron `[iron]`, 1 city `[city]`. Use produces: metropoly `[mtrply]`. Use-time: 26 weeks.
@@ -296,6 +300,10 @@ Group `energy`. Built by wind turbines `[wndtrb]`. Size 10, mass 10, energy 1, H
 A compact high-frequency laser suitable for ground combat.  
 Group `military`. Built by laser optics `[lasopt]`. Requires technology laser optics `[lasopt]`. Size 100, mass 100, crew 1, energy 5, capacity 50, HP 40, tech-cap 2. Upkeep 50 cash.
 
+**branch office [brnofc]**  
+A mid-rise admin block with interview suites, a small vault, and a satellite uplink for payroll. Recruits local labour at half headquarters cadence; optional cash take is a thin franchise fee, not corporate treasury output.  
+Group `command`. Built by branch office construction `[brnofc]`. Size 300, mass 300, crew 6, energy 4, capacity 150, HP 40, tech-cap 1, defense 2. Upkeep 40 cash. Produces 20 cash / 2 weeks and 1 terran / 2 weeks (`@produce cash` / `@produce terran`). No region upkeep-reduction or fast-construction effects (unlike `corphq`). Operates in settlement.
+
 **core drill [cdrill]**  
 Advanced mining system. A core drill allows you to strip minerals and various resources out of the core of any solid body.  
 Group `extraction`. Built by mineral core drilling `[cdrill]`. Size 1000, mass 1000, crew 6, energy 5, capacity 750, HP 100. Upkeep 40 cash. Faster extraction on self. Operates on solid-surface, in settlement or frigate.
@@ -342,7 +350,7 @@ Size 5, mass 5. Produced by hydrocarbons drilling `[hcdril]` (1). Coal plants bu
 
 **unit of copper [copper]**  
 This very useful metal is the basis of most energy based or energy intensive structures.  
-Size 5, mass 8. Produced by copper mining `[cminng]` (2). Consumed by L0: breathing-gas generation `[airgen]` (1), corporate management `[corpmg]` (2), uranium fission `[urfiss]` (5). Also L1: laser optics `[lasopt]` (4), laser turret `[lstrrt]` (2), preventive servicing `[servic]` (1).
+Size 5, mass 8. Produced by copper mining `[cminng]` (2). Consumed by L0: breathing-gas generation `[airgen]` (1), corporate management `[corpmg]` (2), uranium fission `[urfiss]` (5). Also L1: branch office construction `[brnofc]` (1), laser optics `[lasopt]` (4), laser turret `[lstrrt]` (2), preventive servicing `[servic]` (1).
 
 **unit of food [food]**  
 An carefully designed set of pastes, liquids and solids, lending itself to taste-satisfying preparations, yet a source of all essential minerals, vitamins and calories for human consumption.  
@@ -350,7 +358,7 @@ Size 1, mass 1. Produced by intensive farming `[farmng]` (5). Also L1: advanced 
 
 **unit of iron [iron]**  
 Extracted, refined, and purified into industrial steels, iron is a basic construction material widely used in most structures.  
-Size 5, mass 10. Produced by iron mining `[iminng]` (3). Consumed by most L0 builds (see technology entries). Also L1: city planning `[ctypln]` (26), mineral core drilling `[cdrill]` (25), armored combat `[armcbt]` (4), orbital rocket launcher `[orbrkt]` (4), form infantry battalion `[frminf]` (1), rocket launcher production `[rckter]` (1), laser turret `[lstrrt]` (2), preventive servicing `[servic]` (1), engineering shop `[engshp]` (5), law enforcement `[lawenf]` (6).
+Size 5, mass 10. Produced by iron mining `[iminng]` (3). Consumed by most L0 builds (see technology entries). Also L1: branch office construction `[brnofc]` (5), city planning `[ctypln]` (26), mineral core drilling `[cdrill]` (25), armored combat `[armcbt]` (4), orbital rocket launcher `[orbrkt]` (4), form infantry battalion `[frminf]` (1), rocket launcher production `[rckter]` (1), laser turret `[lstrrt]` (2), preventive servicing `[servic]` (1), engineering shop `[engshp]` (5), law enforcement `[lawenf]` (6).
 
 **unit of oil [oil]**  
 Black liquid carbon based used as fuel.  
@@ -362,7 +370,7 @@ Size 1, mass 1. Produced by water distillation `[wtrdst]` (3). Same-body surface
 
 **unit of silicium [silici]**  
 The silicium is a very common material in most areas, but high-grade siliciums are base components for smart systems and modules.  
-Size 5, mass 3. Produced by silicium melting `[slcmlt]` (1). Consumed by L0: corporate management `[corpmg]` (5), shuttles assembly `[shtlas]` (1), space control `[spctrl]` (1), file indexing `[filidx]` (3). Also L1: laser optics `[lasopt]` (1), preventive servicing `[servic]` (1).
+Size 5, mass 3. Produced by silicium melting `[slcmlt]` (1). Consumed by L0: corporate management `[corpmg]` (5), shuttles assembly `[shtlas]` (1), space control `[spctrl]` (1), file indexing `[filidx]` (3). Also L1: branch office construction `[brnofc]` (2), laser optics `[lasopt]` (1), preventive servicing `[servic]` (1).
 
 **unit of titanium [titani]**  
 Due to its resistance to wear, titanium is a good construction material.  

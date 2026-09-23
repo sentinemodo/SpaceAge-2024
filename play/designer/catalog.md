@@ -45,6 +45,7 @@ Campaign also uses a **propulsion hull ladder** (`corvhl`→`desthl`→`cruihl`�
 
 | Id | Group | Size/mass (order of) | Crew / energy | What it is |
 |----|-------|----------------------|---------------|------------|
+| `brnofc` | command | 300/300 | 6 / 4 | Branch office. Tech-cap 1, HP 40, defense 2, capacity 150. Cash upkeep **40**. Produce **1 terran / 2 wk** and **20 cash / 2 wk** (~10/wk; shared `ProduceDuration`). Operates in settlement. **No** region upkeep-reduction or fast-construction effects (HQ-only). Built by L1 `brnofc` (requires `corpmg`). Half HQ recruitment; ~20% HQ cash — expand staffing without a free second headquarters. See [`economy.md`](economy.md) |
 | `sckbay` | habitat | 380/250 | 3 / 4 | Sick bay (inpatient ward). Habitat 8, HP 32, tech-cap 2, cash upkeep 40, radiation −120. **Not** `medfac` (clinic: 300/200, crew 2, energy 2, habitat 5, HP 25). Stronger than the clinic: 2 `wndtrn`/4 wk without `medici`, 4/wk with 1 `medici` per conversion (wishlist). No `operation-allowed-in` — settlements, stations, hulls. `pharms` USE produces `medici` from 1 `food` |
 | `coastr` | vehicle | 250/100 | 1 / 0 | Coastal transport. Naval MOVE speed 1. Solid+liquid (port + sea). Oil fuel. L0 `nvltrs` |
 | `gunbot` | vehicle | 240/240 | 12 / 0 | Gunboat. Naval MOVE speed 1. Kinetic. Solid+liquid. L1 `nvlcbt` |

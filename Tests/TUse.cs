@@ -1734,5 +1734,116 @@ namespace UnitTests
 			Assert.That(factory.ItemStacks.Quantity(ItemType.All["iron"]), Is.EqualTo(0));
 			Assert.That(cargo.ItemStacks.Quantity(ItemType.All["iron"]), Is.EqualTo(4));
 		}
+
+		[Test]
+		public void Catalog_BranchOffice_HasHalfRecruitmentAndFranchiseCash()
+		{
+			ModuleType branch = ModuleType.All["brnofc"];
+			Technology tech = Technology.All["brnofc"];
+			ItemType terran = ItemType.All["terran"];
+			ItemType cash = ItemType.All["cash"];
+
+			Assert.That(tech.Level, Is.EqualTo(1));
+			Assert.That(tech.UseTime, Is.EqualTo(4));
+			Assert.That(tech.UseProduceModules.Name, Is.EqualTo("brnofc"));
+
+			Assert.That(branch.ProduceDuration, Is.EqualTo(2));
+			Assert.That(branch.ItemsProduction[terran].Quantity, Is.EqualTo(1));
+			Assert.That(branch.ItemsProduction[cash].Quantity, Is.EqualTo(20));
+			Assert.That(branch.Upkeep[cash].Quantity, Is.EqualTo(40));
+			Assert.That(branch.Size, Is.EqualTo(300));
+			Assert.That(branch.CrewRequired, Is.EqualTo(6));
+			Assert.That(branch.EffectsProduction.Count, Is.EqualTo(0), "branch office must not inherit HQ region effects");
+		}
+
+		[Test]
+		public void ExecuteProduceTerran_BranchOffice_RemoteRegion_RecruitsEveryTwoWeeks()
+		{
+			ModuleStack headquarters = this.game.ModuleStacks["000112"];
+			ModuleStack berlin = this.game.ModuleStacks["000005"];
+			Assert.That(headquarters.Location.Name, Is.EqualTo("R00002"));
+			Assert.That(berlin.Location.Name, Is.EqualTo("R00001"));
+
+			ModuleStack branch = new ModuleStack(
+				berlin,
+				this.game.Factions["2"],
+				ModuleType.All["brnofc"],
+				"brn001");
+			branch.AddModule();
+			branch.ItemStacks.Add(new ItemStack(ItemType.All["terran"], 6));
+
+			ItemType terran = ItemType.All["terran"];
+			ItemType cash = ItemType.All["cash"];
+			int startingTerran = branch.ItemStacks[terran].Quantity;
+			int startingCash = branch.ItemStacks.ContainsKey(cash) ? branch.ItemStacks[cash].Quantity : 0;
+
+			List<string> commands = new List<string>
+			{
+				"#faction 2",
+				"#modulestack brn001",
+				"@produce terran",
+				"#end"
+			};
+			new OrdersReader(this.game).AssignOrders(commands);
+			ProduceOrder order = (ProduceOrder)branch.Orders[0];
+			Assert.That(order.ItemType, Is.EqualTo(terran));
+			Assert.That(order.ItemStacks[terran].Quantity, Is.EqualTo(1));
+			Assert.That(branch.Location.Name, Is.EqualTo("R00001"));
+			Assert.That(branch.Location.Name, Is.Not.EqualTo(headquarters.Location.Name));
+
+			for (int week = 0; week < 2; week++)
+			{
+				branch.ExecutedLongOrder = false;
+				branch.Orders[0].Execute(this.game.Week + week);
+				branch.Orders.RemoveExecuted();
+				branch.Effects.Execute(this.game.Week + week);
+				branch.Effects.RemoveExecuted();
+			}
+
+			Assert.That(branch.ItemStacks[terran].Quantity, Is.EqualTo(startingTerran + 1));
+			Assert.That(branch.ItemStacks.ContainsKey(cash) ? branch.ItemStacks[cash].Quantity : 0,
+				Is.EqualTo(startingCash));
+		}
+
+		[Test]
+		public void ExecuteProduceCash_BranchOffice_RemoteRegion_PaysTwentyEveryTwoWeeks()
+		{
+			ModuleStack berlin = this.game.ModuleStacks["000005"];
+			ModuleStack branch = new ModuleStack(
+				berlin,
+				this.game.Factions["2"],
+				ModuleType.All["brnofc"],
+				"brn002");
+			branch.AddModule();
+			branch.ItemStacks.Add(new ItemStack(ItemType.All["terran"], 6));
+
+			ItemType cash = ItemType.All["cash"];
+			ItemType terran = ItemType.All["terran"];
+			int startingCash = branch.ItemStacks.ContainsKey(cash) ? branch.ItemStacks[cash].Quantity : 0;
+			int startingTerran = branch.ItemStacks[terran].Quantity;
+
+			List<string> commands = new List<string>
+			{
+				"#faction 2",
+				"#modulestack brn002",
+				"@produce cash",
+				"#end"
+			};
+			new OrdersReader(this.game).AssignOrders(commands);
+			ProduceOrder order = (ProduceOrder)branch.Orders[0];
+			Assert.That(order.ItemStacks[cash].Quantity, Is.EqualTo(20));
+
+			for (int week = 0; week < 2; week++)
+			{
+				branch.ExecutedLongOrder = false;
+				branch.Orders[0].Execute(this.game.Week + week);
+				branch.Orders.RemoveExecuted();
+				branch.Effects.Execute(this.game.Week + week);
+				branch.Effects.RemoveExecuted();
+			}
+
+			Assert.That(branch.ItemStacks[cash].Quantity, Is.EqualTo(startingCash + 20));
+			Assert.That(branch.ItemStacks[terran].Quantity, Is.EqualTo(startingTerran));
+		}
 	}
 }

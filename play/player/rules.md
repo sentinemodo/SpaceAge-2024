@@ -262,15 +262,15 @@ get 6 terran from 200003
 
 Adjust quantities to match catalog crew per module (`cdrill` 6, `farms` 5×qty, `factry` 10×qty, `cplant` 2×qty). `**GIVE`/`GET**` distributes bought `terran` to nested stacks. Campaign seed games now pre-place crew on each nested stack so turn 1 can skip the market buy when the report already shows crew aboard.
 
-Order stacks on the **same subject**: HQ `@produce cash`, cargo bay `@get` / `@sell` / `@buy`, each module stack its own `#modulestack` block.
+Order stacks on the **same subject**: HQ or branch office `@produce cash` / `@produce terran`, cargo bay `@get` / `@sell` / `@buy`, each module stack its own `#modulestack` block.
 
-**Orders template (report footer):** reuse **numeric stack ids** only. Do **not** paste template comment lines (`; + …`, `; items: …`) into the order file. Do **not** emit `#person` CEO blocks unless issuing a person-only verb (`TRAIN`, `ACTIVE`, `SEE`). `**@produce cash` belongs under `#modulestack <hq-id>`** (corphq), never under `#person` or cargo bay. After `#modulestack <id>`, put verb lines immediately — comments do not change the subject.
+**Orders template (report footer):** reuse **numeric stack ids** only. Do **not** paste template comment lines (`; + …`, `; items: …`) into the order file. Do **not** emit `#person` CEO blocks unless issuing a person-only verb (`TRAIN`, `ACTIVE`, `SEE`). `**@produce cash`** / `**@produce terran`** belong under `#modulestack <id>` for a producing command module (`corphq` or `brnofc`), never under `#person` or cargo bay. After `#modulestack <id>`, put verb lines immediately — comments do not change the subject.
 
 ### Multi-stop MOVE (preferred)
 
 **Syntax:** `MOVE <dest> [<dest2> …]` on one line — e.g. `move R00014 R00009` walks Grant → Farm Belt → Mid Vale using report exit durations.
 
-**Subject:** a **mobile `#modulestack`** only (shuttle, infantry stack, ship hull, etc.). Immobile stacks (`corphq`, `cargob`, …) cannot move.
+**Subject:** a **mobile `#modulestack`** only (shuttle, infantry stack, ship hull, etc.). Immobile stacks (`corphq`, `brnofc`, `cargob`, …) cannot move.
 
 **Space fuel on MOVE:** pre-flight fuel applies to the mover and nested **propulsion** modules only (e.g. reaction drive). Nested passengers such as hangar-launched drones do not block the parent hull's MOVE.
 
@@ -290,7 +290,7 @@ Use `ACTIVE` + `STACK` (or start the turn already nested under a mover). Conditi
 
 ### Turn-1 economic bootstrap (pattern)
 
-**Campaign military and economic personas** use `**@produce terran`** on HQ instead of `@produce cash` — early quarters need manpower for nested crew and factory builds more than bank income. Researcher and contractor personas keep `@produce cash`.
+**Campaign military and economic personas** use `**@produce terran`** on HQ instead of `@produce cash` — early quarters need manpower for nested crew and factory builds more than bank income. Researcher and contractor personas keep `@produce cash`. After researching L1 `brnofc`, a branch office in a second settlement can `@produce terran` (1 / 2 weeks) or `@produce cash` (20 / 2 weeks); it does **not** copy HQ region upkeep-reduction or fast-construction effects.
 
 ```
 #modulestack <hq-id>
