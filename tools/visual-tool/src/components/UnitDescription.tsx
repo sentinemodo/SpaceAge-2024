@@ -1,3 +1,4 @@
+import { catalogEntry, humanCatalogEntries } from '../lib/techCatalog';
 import { formatUpkeep, type StackNode } from '../parsers/reportXml';
 import { ClickableReportText } from './ClickableReportText';
 
@@ -6,14 +7,26 @@ export function UnitDescription({
   onFocusId,
 }: {
   stack: StackNode;
-  onFocusId?: (id: string) => void;
+  onFocusId?: (id: string, before?: string) => void;
 }) {
+  const moduleEntry = stack.type
+    ? catalogEntry(humanCatalogEntries, stack.type, 'module')
+    : null;
+
   return (
     <div className="object-description-body">
       <div className="obj-meta">
         <div className="obj-meta-row">
           <span className="obj-meta-label">Type</span>
-          <span className="obj-meta-value">{stack.type || '—'}</span>
+          <span className="obj-meta-value">
+            {moduleEntry && onFocusId ? (
+              <button type="button" className="clickable-id" onClick={() => onFocusId(moduleEntry.id, moduleEntry.name)}>
+                {stack.type}
+              </button>
+            ) : (
+              stack.type || '—'
+            )}
+          </span>
         </div>
         <div className="obj-meta-row">
           <span className="obj-meta-label">Modules</span>

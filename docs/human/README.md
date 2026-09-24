@@ -8,7 +8,8 @@ Additional references:
 
 | Topic | Location |
 |-------|----------|
-| Basic technologies (SampleGame) | [`play/player/basic_technologies.md`](../../play/player/basic_technologies.md) |
+| Basic technologies (player copy) | [`basic_technologies.md`](basic_technologies.md) — client Technologies panel |
+| Basic technologies (SampleGame agent manual) | [`play/player/basic_technologies.md`](../../play/player/basic_technologies.md) |
 | Advanced technologies | [`play/player/advanced_technologies.md`](../../play/player/advanced_technologies.md) |
 | Battle / combat | [`play/player/battle.md`](../../play/player/battle.md) |
 | Campaign tech catalogs | [`play/player/campaign/`](../../play/player/campaign/) |

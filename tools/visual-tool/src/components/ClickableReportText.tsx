@@ -8,7 +8,7 @@ export function ClickableReportText({
   className = 'report-section',
 }: {
   text: string;
-  onFocusId?: (id: string) => void;
+  onFocusId?: (id: string, before?: string) => void;
   className?: string;
 }) {
   if (!onFocusId) {
@@ -22,12 +22,13 @@ export function ClickableReportText({
   while ((m = re.exec(text)) !== null) {
     if (m.index > last) parts.push(text.slice(last, m.index));
     const id = m[1];
+    const at = m.index;
     parts.push(
       <button
-        key={`${m.index}-${id}`}
+        key={`${at}-${id}`}
         type="button"
         className="clickable-id"
-        onClick={() => onFocusId(id)}
+        onClick={() => onFocusId(id, text.slice(0, at))}
       >
         [{id}]
       </button>
@@ -45,7 +46,7 @@ export function ClickableInline({
   onFocusId,
 }: {
   text: string;
-  onFocusId?: (id: string) => void;
+  onFocusId?: (id: string, before?: string) => void;
 }) {
   if (!onFocusId) return <>{text}</>;
   const parts: ReactNode[] = [];
@@ -55,8 +56,9 @@ export function ClickableInline({
   while ((m = re.exec(text)) !== null) {
     if (m.index > last) parts.push(text.slice(last, m.index));
     const id = m[1];
+    const at = m.index;
     parts.push(
-      <button key={`${m.index}-${id}`} type="button" className="clickable-id" onClick={() => onFocusId(id)}>
+      <button key={`${at}-${id}`} type="button" className="clickable-id" onClick={() => onFocusId(id, text.slice(0, at))}>
         [{id}]
       </button>
     );

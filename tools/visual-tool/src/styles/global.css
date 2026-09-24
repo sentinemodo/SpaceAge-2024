@@ -887,10 +887,20 @@ body {
   color: var(--accent);
 }
 
+.technology-catalog .tech-subsection {
+  font-size: 0.8rem;
+  margin: 0.6rem 0 0.25rem;
+}
+
 .technology-catalog .tech-entry-title {
   font-size: 0.82rem;
   margin: 0.75rem 0 0.25rem;
   scroll-margin-top: 0.5rem;
+}
+
+.technology-catalog .tech-id {
+  font-weight: 500;
+  color: var(--text-dim);
 }
 
 .technology-catalog .tech-paragraph {

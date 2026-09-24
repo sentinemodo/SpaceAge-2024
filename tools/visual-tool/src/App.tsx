@@ -83,6 +83,7 @@ import {
 } from './lib/bankMarket';
 import { ClickableReportText } from './components/ClickableReportText';
 import { TechnologyCatalog } from './components/TechnologyCatalog';
+import { catalogAnchor, humanCatalogEntries, resolveCatalogLink } from './lib/techCatalog';
 import { ResizeHandle } from './components/ResizeHandle';
 import { buildSystemLinkPath } from './lib/mapLinks';
 import {
@@ -707,6 +708,7 @@ export default function App() {
   const [parserOutput, setParserOutput] = useState('No parser output yet.');
   const [orderMode, setOrderMode] = useState<OrderMode>('faction');
   const [techView, setTechView] = useState<TechView>('known');
+  const [techFocus, setTechFocus] = useState<{ anchor: string; n: number } | null>(null);
   const [aiPromptText, setAiPromptText] = useState('');
   const [aiOutputText, setAiOutputText] = useState('No AI output yet.');
   const [aiMode, setAiMode] = useState<AiViewMode>('query');
@@ -1077,6 +1079,15 @@ export default function App() {
     setBodyViewId(null);
   }
 
+  const openCatalogId = useCallback((id: string, before?: string) => {
+    const hit = resolveCatalogLink(before ?? '', id, humanCatalogEntries);
+    if (!hit) return false;
+    setPanel('tech');
+    setTechView('known');
+    setTechFocus({ anchor: catalogAnchor(hit.kind, hit.id), n: Date.now() });
+    return true;
+  }, []);
+
   const handleFocusId = useCallback(
     (id: string) => {
       if (!report) return;
@@ -1095,6 +1106,14 @@ export default function App() {
       });
     },
     [report]
+  );
+
+  const focusFromText = useCallback(
+    (id: string, before?: string) => {
+      if (openCatalogId(id, before)) return;
+      handleFocusId(id);
+    },
+    [openCatalogId, handleFocusId]
   );
 
   async function handleViewAs(factionId: number) {
@@ -1504,9 +1523,9 @@ export default function App() {
                 </div>
               </div>
               {techView === 'known' ? (
-                <TechnologyCatalog />
+                <TechnologyCatalog focusAnchor={techFocus?.anchor} focusNonce={techFocus?.n} />
               ) : (
-                <ClickableReportText text={tech.breakthrough} onFocusId={handleFocusId} />
+                <ClickableReportText text={tech.breakthrough} onFocusId={focusFromText} />
               )}
             </div>
           );
@@ -1515,7 +1534,7 @@ export default function App() {
         {panel === 'diplomacy' && (
           <div className="sub-panel scroll-area">
             <h3>Diplomacy</h3>
-            <ClickableReportText text={extractDiplomacyText(sections, reportFullText)} onFocusId={handleFocusId} />
+            <ClickableReportText text={extractDiplomacyText(sections, reportFullText)} onFocusId={focusFromText} />
             <div className="action-placeholders">
               <h4>Actions</h4>
               <p className="obj-desc">Press releases and rumors take effect immediately. Contracts and stance changes are submitted as faction orders.</p>
@@ -1570,7 +1589,7 @@ export default function App() {
                 </div>
               </div>
               <h4>Bank report</h4>
-              <ClickableReportText text={bankText} onFocusId={handleFocusId} />
+              <ClickableReportText text={bankText} onFocusId={focusFromText} />
               <h4>Market offers</h4>
               {markets.length === 0 ? (
                 <p className="obj-desc">No market offers found in galaxy report.</p>
@@ -1578,7 +1597,7 @@ export default function App() {
                 markets.map((group) => (
                   <div key={group.locationLabel} className="market-offer-group">
                     <strong>{group.locationLabel}</strong>
-                    <ClickableReportText text={group.lines.join('\n')} onFocusId={handleFocusId} />
+                    <ClickableReportText text={group.lines.join('\n')} onFocusId={focusFromText} />
                   </div>
                 ))
               )}
@@ -1600,7 +1619,7 @@ export default function App() {
             <h3>Battle summaries</h3>
             <ClickableReportText
               text={sectionText(sections, 'battles', 'No battles this quarter.')}
-              onFocusId={handleFocusId}
+              onFocusId={focusFromText}
             />
             <h4>Battle simulator</h4>
             <textarea
@@ -1636,7 +1655,7 @@ export default function App() {
                   sectionText(sections, 'galaxy', 'No galaxy report section.'),
                 ].filter(Boolean).join('\n\n')}
                 query={factionSearch}
-                onFocusId={handleFocusId}
+                onFocusId={focusFromText}
               />
             </div>
           </div>
@@ -1841,7 +1860,7 @@ export default function App() {
           sideTab={sideTab}
           onSideTab={setSideTab}
           eventsText={sectionText(sections, 'events', 'No events this turn.')}
-          onFocusId={handleFocusId}
+          onFocusId={focusFromText}
           width={sidePanelWidth}
           onResize={(d) => setSidePanelWidth((w) => Math.max(240, Math.min(640, w + d)))}
         />
