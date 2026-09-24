@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url';
 import { describe, it, expect } from 'vitest';
 import {
   parseReportXml,
+  filterStacksByQuery,
   filterStacksBySystem,
   estimateMoveWeeks,
   flattenStacks,
@@ -258,6 +259,55 @@ describe('parseReportXml', () => {
 describe('estimateMoveWeeks', () => {
   it('returns weeks from mass line', () => {
     expect(estimateMoveWeeks('40000/4150')).toBeTypeOf('number');
+  });
+});
+
+describe('filterStacksByQuery', () => {
+  const hq = {
+    id: '200001',
+    name: 'Northwind Headquarters',
+    type: 'corphq',
+    reportLine: '+ Northwind Headquarters [200001], corporate headquarters [corphq], immobile.',
+    children: [
+      {
+        id: '200003',
+        name: 'small cargo bay',
+        type: 'cargob',
+        reportLine: '+ small cargo bay [200003], 2 small cargo bays [cargob], immobile.',
+        children: [],
+        upkeep: [],
+        moduleCount: 2,
+        persons: [],
+      },
+    ],
+    upkeep: [],
+    moduleCount: 1,
+    persons: [],
+  };
+
+  it('matches a name fragment on a nested unit', () => {
+    const found = filterStacksByQuery([hq], 'cargo');
+    expect(found).toHaveLength(1);
+    expect(found[0].children.map((c) => c.id)).toEqual(['200003']);
+  });
+
+  it('matches a module type name fragment', () => {
+    const found = filterStacksByQuery([hq], 'corporate head');
+    expect(found.map((s) => s.id)).toEqual(['200001']);
+  });
+
+  it('matches an id fragment', () => {
+    const found = filterStacksByQuery([hq], '0003');
+    expect(found[0].children.map((c) => c.id)).toEqual(['200003']);
+  });
+
+  it('matches the report-line name when the stack has no name-en', () => {
+    const bay = {
+      ...hq.children[0],
+      name: 'cargob',
+    };
+    const found = filterStacksByQuery([{ ...hq, children: [bay] }], 'small cargo bay');
+    expect(found[0].children.map((c) => c.id)).toEqual(['200003']);
   });
 });
 

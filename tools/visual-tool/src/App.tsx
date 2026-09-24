@@ -11,6 +11,7 @@ import {
   parseOrders,
   runBattleSim,
   submitOrders,
+  fetchSubmittedOrders,
   fetchRunPodStatus,
   startRunPod,
   stopRunPod,
@@ -71,10 +72,13 @@ import { OrbitSelector } from './components/OrbitSelector';
 import { BeltDotField } from './components/BeltDotField';
 import { MoveRouteOverlay } from './components/MoveRouteOverlay';
 import {
+  focusedStackIds,
   ordersTemplateText,
   ordersSummaryForFocus,
   preloadFactionOrders,
+  factionOrdersPane,
 } from './lib/orderDisplay';
+import { applyFocusedOrderEdits } from './lib/orderTemplate';
 import {
   estimateCashUpkeep,
   estimateInterest,
@@ -701,6 +705,11 @@ export default function App() {
   const [filterRegionId, setFilterRegionId] = useState<string | null>(null);
   const [filterOrbitId, setFilterOrbitId] = useState<string | null>(null);
   const [factionSearch, setFactionSearch] = useState('');
+  const [factionView, setFactionView] = useState<'report' | 'orders'>('report');
+  const [factionOrderText, setFactionOrderText] = useState('');
+  const [factionParseOutput, setFactionParseOutput] = useState('No orders submitted yet.');
+  const [factionOrdersTop, setFactionOrdersTop] = useState(280);
+  const factionOrdersDirty = useRef(false);
   const [selectedStack, setSelectedStack] = useState<string | null>(null);
   const [selectedPerson, setSelectedPerson] = useState<string | null>(null);
   const [draftOrders, setDraftOrders] = useState('');
@@ -842,10 +851,28 @@ export default function App() {
   useEffect(() => {
     if (ordersDirtyRef.current) return;
     setDraftOrders(factionOrdersText);
+    setUnitsEditText(null);
   }, [factionOrdersText]);
 
-  const orderEditorText = orderMode === 'units' ? unitsOrdersText : draftOrders;
-  const orderEditorReadOnly = orderMode === 'units';
+  const unitsFocus = useMemo(() => {
+    if (selectedPerson) {
+      return { stackIds: new Set<string>(), personIds: new Set([selectedPerson]) };
+    }
+    return {
+      stackIds: new Set(focusedStackIds(filteredRoots, selectedStack)),
+      personIds: new Set<string>(),
+    };
+  }, [filteredRoots, selectedPerson, selectedStack]);
+  const [unitsEditText, setUnitsEditText] = useState<string | null>(null);
+  const unitsFocusKey = `${selectedStack ?? ''}|${selectedPerson ?? ''}|${[...unitsFocus.stackIds].join(',')}|${[...unitsFocus.personIds].join(',')}`;
+  const unitsFocusKeyRef = useRef(unitsFocusKey);
+  if (unitsFocusKeyRef.current !== unitsFocusKey) {
+    unitsFocusKeyRef.current = unitsFocusKey;
+    if (unitsEditText !== null) setUnitsEditText(null);
+  }
+
+  const orderEditorText = orderMode === 'units' ? (unitsEditText ?? unitsOrdersText) : draftOrders;
+  const orderEditorReadOnly = false;
   const orderFocus = useMemo(
     () => (orderMode === 'parser' ? null : orderFocusForPane(orderEditorText, orderCaret)),
     [orderMode, orderEditorText, orderCaret],
@@ -1156,6 +1183,48 @@ export default function App() {
     }
   }
 
+  async function handleFactionParse() {
+    const result = await parseOrders(factionOrderText);
+    const blocks = [result.output || `ok: ${result.ok}`];
+    if (result.errors.length) blocks.push('', 'errors:', ...result.errors.map((e) => `  ${e}`));
+    if (result.warnings.length) blocks.push('', 'warnings:', ...result.warnings.map((w) => `  ${w}`));
+    setFactionParseOutput(blocks.join('\n'));
+  }
+
+  async function handleFactionSubmit() {
+    const result = await parseOrders(factionOrderText);
+    const blocks = [result.output || `ok: ${result.ok}`];
+    if (result.errors.length) blocks.push('', 'errors:', ...result.errors.map((e) => `  ${e}`));
+    if (result.warnings.length) blocks.push('', 'warnings:', ...result.warnings.map((w) => `  ${w}`));
+    try {
+      await submitOrders(factionOrderText);
+      factionOrdersDirty.current = false;
+      blocks.push('', 'Orders submitted.');
+    } catch (err) {
+      blocks.push('', String(err));
+    }
+    setFactionParseOutput(blocks.join('\n'));
+  }
+
+  useEffect(() => {
+    if (!authed) return;
+    let cancelled = false;
+    fetchSubmittedOrders()
+      .then((submitted) => {
+        if (cancelled || factionOrdersDirty.current) return;
+        const pane = factionOrdersPane(submitted, ordersTemplateText(sections));
+        setFactionOrderText(pane.ordersText);
+        if (pane.parseOutput) setFactionParseOutput(pane.parseOutput);
+      })
+      .catch(() => {
+        if (cancelled || factionOrdersDirty.current) return;
+        const pane = factionOrdersPane(null, ordersTemplateText(sections));
+        setFactionOrderText(pane.ordersText);
+        if (pane.parseOutput) setFactionParseOutput(pane.parseOutput);
+      });
+    return () => { cancelled = true; };
+  }, [authed, meta.factionId, meta.viewAsFactionId, sections]);
+
   async function handleBattleSim() {
     const result = await runBattleSim(battleSimXml);
     setBattleSimOutput(result.output);
@@ -1185,9 +1254,9 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    if (!authed) return;
+    if (!authed || !meta.admin) return;
     loadStoryContext().catch(() => {});
-  }, [authed, loadStoryContext]);
+  }, [authed, meta.admin, loadStoryContext]);
 
   useEffect(() => {
     if (!authed || !meta.admin) return;
@@ -1197,9 +1266,13 @@ export default function App() {
   }, [authed, meta.admin, refreshRunPod]);
 
   useEffect(() => {
-    if (!authed || !selectedPersonaId) return;
+    if (!meta.admin && panel === 'story') setPanel('map');
+  }, [meta.admin, panel]);
+
+  useEffect(() => {
+    if (!authed || !meta.admin || !selectedPersonaId) return;
     fetchPersona(selectedPersonaId).then(setPersonaText).catch(() => setPersonaText(''));
-  }, [authed, selectedPersonaId]);
+  }, [authed, meta.admin, selectedPersonaId]);
 
   async function handleStartRunpod() {
     setRunpodModalOpen(true);
@@ -1407,7 +1480,9 @@ export default function App() {
             ['faction', '👤'],
             ['story', '📖'],
           ] as const
-        ).map(([id, icon]) => (
+        )
+          .filter(([id]) => meta.admin || id !== 'story')
+          .map(([id, icon]) => (
           <button
             key={id}
             type="button"
@@ -1607,7 +1682,9 @@ export default function App() {
           );
         })()}
 
-        {panel === 'movement' && report && <MovementPanel report={report} />}
+        {panel === 'movement' && report && (
+          <MovementPanel report={report} ordersText={draftOrders || factionOrdersText} />
+        )}
 
         {panel === 'movement' && !report && (
           <div className="sub-panel scroll-area">
@@ -1640,30 +1717,76 @@ export default function App() {
         {panel === 'faction' && (
           <div className="sub-panel faction-panel">
             <div className="faction-panel-header">
-              <h3>Faction report</h3>
-              <input
-                type="search"
-                className="report-search"
-                placeholder="Search faction report…"
-                value={factionSearch}
-                onChange={(e) => setFactionSearch(e.target.value)}
-              />
+              <div className="faction-panel-title-row">
+                <h3>Faction report</h3>
+                <div className="order-mode-tabs" role="group" aria-label="Faction page">
+                  <button
+                    type="button"
+                    className={factionView === 'report' ? 'active' : ''}
+                    onClick={() => setFactionView('report')}
+                  >
+                    Report
+                  </button>
+                  <button
+                    type="button"
+                    className={factionView === 'orders' ? 'active' : ''}
+                    onClick={() => setFactionView('orders')}
+                  >
+                    Orders
+                  </button>
+                </div>
+              </div>
+              {factionView === 'report' && (
+                <input
+                  type="search"
+                  className="report-search"
+                  placeholder="Search faction report…"
+                  value={factionSearch}
+                  onChange={(e) => setFactionSearch(e.target.value)}
+                />
+              )}
             </div>
-            <div className="faction-panel-body">
-              <ReportSearchText
-                text={[
-                  sectionText(sections, 'events', ''),
-                  sectionText(sections, 'survey', ''),
-                  sectionText(sections, 'galaxy', 'No galaxy report section.'),
-                ].filter(Boolean).join('\n\n')}
-                query={factionSearch}
-                onFocusId={focusFromText}
-              />
-            </div>
+            {factionView === 'report' ? (
+              <div className="faction-panel-body">
+                <ReportSearchText
+                  text={[
+                    sectionText(sections, 'events', ''),
+                    sectionText(sections, 'survey', ''),
+                    sectionText(sections, 'galaxy', 'No galaxy report section.'),
+                  ].filter(Boolean).join('\n\n')}
+                  query={factionSearch}
+                  onFocusId={focusFromText}
+                />
+              </div>
+            ) : (
+              <div className="faction-orders">
+                <div className="faction-orders-top" style={{ height: factionOrdersTop }}>
+                  <textarea
+                    className="faction-orders-text"
+                    value={factionOrderText}
+                    onChange={(e) => {
+                      factionOrdersDirty.current = true;
+                      setFactionOrderText(e.target.value);
+                    }}
+                    spellCheck={false}
+                  />
+                  <div className="order-split-actions">
+                    <button type="button" onClick={handleFactionParse}>Parse orders</button>
+                    <button type="button" onClick={handleFactionSubmit}>Submit orders</button>
+                  </div>
+                </div>
+                <ResizeHandle
+                  direction="vertical"
+                  className="faction-orders-resize"
+                  onDelta={(d) => setFactionOrdersTop((h) => Math.max(120, Math.min(720, h + d)))}
+                />
+                <pre className="faction-orders-parse">{factionParseOutput}</pre>
+              </div>
+            )}
           </div>
         )}
 
-        {panel === 'story' && (
+        {panel === 'story' && meta.admin && (
           <div className="story-panel">
             <div className="story-panel-toolbar">
               <h3>Persona &amp; story</h3>
@@ -1743,7 +1866,7 @@ export default function App() {
                     <button
                       type="button"
                       className={orderMode === 'units' ? 'active' : ''}
-                      onClick={() => setOrderMode('units')}
+                      onClick={() => { setUnitsEditText(null); setOrderMode('units'); }}
                     >
                       Units
                     </button>
@@ -1790,6 +1913,15 @@ export default function App() {
                           ordersDirtyRef.current = true;
                           setParseButtonStatus(null);
                           setDraftOrders(e.target.value);
+                        } else if (orderMode === 'units') {
+                          ordersDirtyRef.current = true;
+                          setParseButtonStatus(null);
+                          setUnitsEditText(e.target.value);
+                          setDraftOrders(applyFocusedOrderEdits(
+                            draftOrders || factionOrdersText,
+                            e.target.value,
+                            unitsFocus,
+                          ));
                         }
                       }}
                       placeholder={'#faction N "password"\nMOVE …'}

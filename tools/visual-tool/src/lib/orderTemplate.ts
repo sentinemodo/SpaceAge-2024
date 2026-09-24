@@ -5,6 +5,9 @@ export interface OrderTemplateBlock {
   kind: 'modulestack' | 'person' | 'other';
   id: string;
   lines: string[];
+  /** Inclusive start and exclusive end in the source text. */
+  start?: number;
+  end?: number;
 }
 
 function stripOrdersHeader(text: string): string {
@@ -17,13 +20,20 @@ export function parseOrdersTemplate(text: string): {
   blocks: OrderTemplateBlock[];
   footer: string[];
 } {
-  const lines = stripOrdersHeader(text).split('\n');
+  const withoutLabel = text.replace(/^Orders Template:\s*/i, '');
+  const leadingTrim = withoutLabel.length - withoutLabel.trimStart().length;
+  const source = withoutLabel.trim();
+  const lines = source.split('\n');
   const header: string[] = [];
   const footer: string[] = [];
   const blocks: OrderTemplateBlock[] = [];
   let current: OrderTemplateBlock | null = null;
+  let offset = text.length - withoutLabel.length + leadingTrim;
 
   for (const line of lines) {
+    const lineStart = offset;
+    const lineEnd = offset + line.length;
+    offset = lineEnd + 1;
     const trimmed = line.trim();
     if (/^#end\b/i.test(trimmed)) {
       if (current) {
@@ -41,11 +51,14 @@ export function parseOrdersTemplate(text: string): {
         kind: stackMatch ? 'modulestack' : 'person',
         id: (stackMatch || personMatch)![1],
         lines: [line],
+        start: lineStart,
+        end: lineEnd,
       };
       continue;
     }
     if (current) {
       current.lines.push(line);
+      current.end = lineEnd;
       continue;
     }
     if (/^#faction\b/i.test(trimmed) || trimmed) {
@@ -112,6 +125,70 @@ export function ownedFactionOrdersTemplate(
     personIds: ownedPersonIds(stacks, factionId),
     includeHeader: true,
   });
+}
+
+function blockKey(block: OrderTemplateBlock): string {
+  return `${block.kind}:${block.id}`;
+}
+
+function blockInFocus(
+  block: OrderTemplateBlock,
+  focus: { stackIds: Set<string>; personIds: Set<string> },
+): boolean {
+  if (block.kind === 'modulestack') return focus.stackIds.has(block.id);
+  if (block.kind === 'person') return focus.personIds.has(block.id);
+  return false;
+}
+
+/** Replace the focused unit or person blocks in the full order file with the unit-view text. */
+export function applyFocusedOrderEdits(
+  fullText: string,
+  editedFocusText: string,
+  focus: { stackIds: Set<string>; personIds: Set<string> },
+): string {
+  const full = parseOrdersTemplate(fullText);
+  const edited = parseOrdersTemplate(editedFocusText);
+  const incoming = new Map(edited.blocks.map((block) => [blockKey(block), block]));
+  const replaced = new Set<string>();
+  const edits: { start: number; end: number; text: string }[] = [];
+
+  for (const block of full.blocks) {
+    if (!blockInFocus(block, focus) || block.start == null || block.end == null) continue;
+    const key = blockKey(block);
+    const next = incoming.get(key);
+    replaced.add(key);
+    edits.push({
+      start: block.start,
+      end: block.end,
+      text: next ? next.lines.join('\n') : '',
+    });
+  }
+
+  edits.sort((a, b) => b.start - a.start);
+  let result = fullText;
+  for (const edit of edits) {
+    let start = edit.start;
+    let end = edit.end;
+    let text = edit.text;
+    if (!text) {
+      const after = result.slice(end, end + 2);
+      if (after.startsWith('\n\n')) end += 2;
+      else if (after.startsWith('\n')) end += 1;
+      else if (start > 0 && result[start - 1] === '\n') start -= 1;
+    }
+    result = result.slice(0, start) + text + result.slice(end);
+  }
+
+  const fresh = edited.blocks.filter((block) => !replaced.has(blockKey(block)));
+  if (!fresh.length) return result;
+  const insertion = fresh.map((block) => block.lines.join('\n')).join('\n\n');
+  const endAt = result.search(/^#end\b/im);
+  if (endAt >= 0) {
+    const before = result.slice(0, endAt).replace(/\s*$/, '');
+    return `${before}\n\n${insertion}\n\n${result.slice(endAt)}`;
+  }
+  const trimmed = result.replace(/\s*$/, '');
+  return trimmed ? `${trimmed}\n\n${insertion}` : insertion;
 }
 
 export function focusOrdersTemplate(template: string, stackIds: string[]): string {

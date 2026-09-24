@@ -23,6 +23,7 @@ test('UT-001 browse report after login', async ({ page }) => {
   await expect(page.locator('.star-map .system-node').first()).toBeVisible({ timeout: 15000 });
   await expect(page.getByRole('complementary').getByRole('button', { name: 'Units' })).toBeVisible();
   await expect(page.getByRole('navigation', { name: 'Panels' }).getByRole('button', { name: 'Star map' })).toHaveText('✦');
+  await expect(page.getByRole('navigation', { name: 'Panels' }).getByRole('button', { name: 'Persona and story' })).toHaveCount(0);
 });
 
 /** UT-002 — engine-backed order parse surfaces errors */

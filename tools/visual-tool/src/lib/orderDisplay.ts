@@ -14,6 +14,17 @@ export function ordersTemplateText(sections: ReportSection[]): string {
   return '';
 }
 
+/** Latest submitted orders, or the report template when nothing has been submitted. */
+export function factionOrdersPane(
+  submittedText: string | null | undefined,
+  reportOrders: string,
+): { ordersText: string; parseOutput: string | null } {
+  if (submittedText && submittedText.trim()) {
+    return { ordersText: submittedText, parseOutput: null };
+  }
+  return { ordersText: reportOrders, parseOutput: 'No orders submitted yet.' };
+}
+
 export function focusedStackIds(
   filteredRoots: StackNode[],
   selectedStackId: string | null

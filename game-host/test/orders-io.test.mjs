@@ -11,7 +11,7 @@ process.env.REPO_ROOT = path.resolve(__dirname, '..', '..');
 process.env.GAME_HOST_RUN_ID = testRunId;
 
 const { ensureRunLayout, factionsDir, turnDir } = await import('../lib/paths.mjs');
-const { saveOrder } = await import('../lib/orders-io.mjs');
+const { readSubmittedOrder, saveOrder } = await import('../lib/orders-io.mjs');
 
 describe('saveOrder', () => {
   it('writes faction draft and turn order files with submitted body', () => {
@@ -26,5 +26,11 @@ describe('saveOrder', () => {
     assert.ok(fs.existsSync(turnPath), `missing turn copy: ${turnPath}`);
     assert.equal(fs.readFileSync(draftPath, 'utf8'), body);
     assert.equal(fs.readFileSync(turnPath, 'utf8'), body);
+    assert.equal(readSubmittedOrder(2), body);
+  });
+
+  it('returns null when the faction has not submitted orders', () => {
+    ensureRunLayout();
+    assert.equal(readSubmittedOrder(9), null);
   });
 });

@@ -34,7 +34,7 @@ import { validateOrderText } from './lib/check-orders.mjs';
 import { parseOrders } from './lib/parse-orders.mjs';
 import { runBattleSimulation } from './lib/battle-sim.mjs';
 import { splitReportSections } from './lib/report-sections.mjs';
-import { saveOrder } from './lib/orders-io.mjs';
+import { readSubmittedOrder, saveOrder } from './lib/orders-io.mjs';
 import { isolateReports } from './lib/isolate.mjs';
 import {
   executeAiQuery,
@@ -316,6 +316,14 @@ const server = http.createServer(async (req, res) => {
     }
     const text = fs.readFileSync(pick, 'utf8');
     json(res, 200, { sections: splitReportSections(text) });
+    return;
+  }
+
+  if (req.method === 'GET' && url.pathname === '/api/session/orders') {
+    const session = requireSession(req, res);
+    if (!session) return;
+    const text = readSubmittedOrder(effectiveFactionId(session));
+    json(res, 200, { submitted: text != null, text: text ?? '' });
     return;
   }
 

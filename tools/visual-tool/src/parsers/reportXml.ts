@@ -836,13 +836,53 @@ export function partitionOwnedStacks(
   return { owned, other };
 }
 
+/** Unit name from a galaxy line, e.g. `+ small cargo bay [200003], …` → `small cargo bay`. */
+function reportUnitName(stack: StackNode): string {
+  const line = stack.reportLine;
+  if (!line) return '';
+  const match = line.match(/^\+?\s*(.+?)\s*\[/);
+  return match?.[1]?.trim() ?? '';
+}
+
+/** Human-readable module type from a galaxy line, e.g. `2 small cargo bays [cargob]` → `small cargo bays`. */
+export function moduleTypeName(stack: StackNode): string {
+  const line = stack.reportLine;
+  if (!line) return '';
+  const match = line.match(/,\s*(.+?)\s*\[[^\]]+\]/);
+  if (!match?.[1]) return '';
+  return match[1].replace(/^\d+\s+/, '').trim();
+}
+
+function stackQueryHay(stack: StackNode): string {
+  return [
+    stack.id,
+    stack.name,
+    stack.type,
+    reportUnitName(stack),
+    moduleTypeName(stack),
+    stack.reportLine,
+    formatStackLabel(stack),
+  ]
+    .filter(Boolean)
+    .join(' ')
+    .toLowerCase();
+}
+
+function stackMatchesQuery(stack: StackNode, q: string): boolean {
+  return stackQueryHay(stack).includes(q);
+}
+
 export function filterStacksByQuery(stacks: StackNode[], query: string): StackNode[] {
   const q = query.trim().toLowerCase();
   if (!q) return stacks;
-  return stacks.filter((s) => {
-    const hay = `${s.id} ${s.name} ${s.type || ''}`.toLowerCase();
-    return hay.includes(q);
-  });
+  const matched: StackNode[] = [];
+  for (const stack of stacks) {
+    const self = stackMatchesQuery(stack, q);
+    const children = filterStacksByQuery(stack.children, query);
+    if (!self && children.length === 0) continue;
+    matched.push(self ? stack : { ...stack, children });
+  }
+  return matched;
 }
 
 export function groupStacksByLocation(

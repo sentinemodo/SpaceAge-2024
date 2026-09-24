@@ -1,6 +1,20 @@
 import { describe, it, expect } from 'vitest';
-import { ordersTemplateText, ordersSummaryForFocus } from './orderDisplay';
+import { factionOrdersPane, ordersTemplateText, ordersSummaryForFocus } from './orderDisplay';
 import type { StackNode } from '../parsers/reportXml';
+
+describe('factionOrdersPane', () => {
+  it('shows report orders and a parse note when nothing was submitted', () => {
+    const pane = factionOrdersPane(null, '#modulestack 200001\nMOVE R00001');
+    expect(pane.ordersText).toContain('#modulestack 200001');
+    expect(pane.parseOutput).toBe('No orders submitted yet.');
+  });
+
+  it('shows the submitted orders and leaves parse output empty', () => {
+    const pane = factionOrdersPane('#faction 2 "pw"\n#end\n', '#modulestack 200001');
+    expect(pane.ordersText).toContain('#faction 2');
+    expect(pane.parseOutput).toBeNull();
+  });
+});
 
 describe('orderDisplay', () => {
   it('extracts orders template section', () => {

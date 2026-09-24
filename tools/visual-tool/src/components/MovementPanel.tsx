@@ -1,11 +1,10 @@
 import { useMemo, useState } from 'react';
 import type { ParsedReport } from '../parsers/reportXml';
-import { movementRowsFromReport } from '../lib/movementReport';
+import { movementRowsFromOrders } from '../lib/movementReport';
 import { durationWeeks, massFactor, parseMassLine } from '../lib/transit';
 
-export function MovementPanel({ report }: { report: ParsedReport }) {
-  const rows = useMemo(() => movementRowsFromReport(report), [report]);
-  const withMove = rows.filter((r) => r.hasMove);
+export function MovementPanel({ report, ordersText }: { report: ParsedReport; ordersText: string }) {
+  const rows = useMemo(() => movementRowsFromOrders(report, ordersText), [report, ordersText]);
 
   const [paste, setPaste] = useState('');
   const [thrust, setThrust] = useState('40000');
@@ -40,8 +39,8 @@ export function MovementPanel({ report }: { report: ParsedReport }) {
     <div className="sub-panel scroll-area movement-panel">
       <h3>Movement</h3>
       <p className="obj-desc">
-        Units with <code>MOVE</code> orders from your quarterly report. Planning aid only — the next processed turn is
-        authoritative.
+        Module stacks that have a <code>MOVE</code> order in the current orders, including orders entered on the star
+        map. Planning aid only — the next processed turn is authoritative.
       </p>
 
       <section className="movement-section">
@@ -49,7 +48,7 @@ export function MovementPanel({ report }: { report: ParsedReport }) {
         <p className="movement-meta">
           Turn {report.turn} — {report.factionName} [{report.factionId}]
           {' · '}
-          {withMove.length} unit(s) with MOVE orders, {rows.length} total listed
+          {rows.length} module stack(s) with MOVE orders
         </p>
         <div className="movement-table-wrap">
           <table className="movement-table">
@@ -66,12 +65,12 @@ export function MovementPanel({ report }: { report: ParsedReport }) {
               {rows.length === 0 ? (
                 <tr>
                   <td colSpan={5} className="movement-empty">
-                    No units in report.
+                    No module stacks with a MOVE order.
                   </td>
                 </tr>
               ) : (
                 rows.map((row) => (
-                  <tr key={row.id} className={row.hasMove ? 'has-move' : ''}>
+                  <tr key={row.id} className="has-move">
                     <td>
                       <strong>{row.name}</strong>
                       <br />
@@ -117,11 +116,14 @@ export function MovementPanel({ report }: { report: ParsedReport }) {
             Drive speed
             <input type="number" value={speed} onChange={(e) => setSpeed(e.target.value)} step="0.1" />
           </label>
+          <label className="movement-field">
+            ETA
+            <input className="movement-eta-result" type="text" readOnly value={etaResult} />
+          </label>
         </div>
         <button type="button" onClick={handleCalcEta}>
           Calculate ETA
         </button>
-        {etaResult && <p className="movement-eta-result">{etaResult}</p>}
       </section>
     </div>
   );

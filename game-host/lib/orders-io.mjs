@@ -14,3 +14,15 @@ export function saveOrder(factionId, body) {
   const buf = Buffer.from(body, 'utf8');
   fs.writeFileSync(turnPath, buf);
 }
+
+/** UTF-8 draft written by the last submit, or null when this faction has not submitted. */
+export function readSubmittedOrder(factionId) {
+  const draftPath = path.join(
+    factionsDir(),
+    String(factionId).padStart(2, '0'),
+    `order.${factionId}.txt`,
+  );
+  if (!fs.existsSync(draftPath)) return null;
+  const text = fs.readFileSync(draftPath, 'utf8');
+  return text.trim() ? text : null;
+}

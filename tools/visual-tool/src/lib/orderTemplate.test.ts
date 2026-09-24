@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { filterOrdersTemplate, ownedFactionOrdersTemplate, parseOrdersTemplate } from './orderTemplate';
+import { applyFocusedOrderEdits, filterOrdersTemplate, ownedFactionOrdersTemplate, parseOrdersTemplate } from './orderTemplate';
 import type { StackNode } from '../parsers/reportXml';
 
 const sample = `Orders Template:
@@ -35,6 +35,32 @@ describe('orderTemplate', () => {
     expect(text).toContain('#modulestack 260003');
     expect(text).not.toContain('#modulestack 999999');
     expect(text).toContain('#end');
+  });
+
+  it('writes a unit-view edit back into the full order file', () => {
+    const full = [
+      '#faction 2 "northwnd"',
+      '#modulestack 200001',
+      '; + Northwind Headquarters [200001]',
+      'move R00009',
+      '#modulestack 200002',
+      'MOVE R00001',
+      '#end',
+    ].join('\n');
+    const edited = [
+      '#modulestack 200001',
+      '; + Northwind Headquarters [200001]',
+      'move R00010',
+    ].join('\n');
+    const next = applyFocusedOrderEdits(full, edited, {
+      stackIds: new Set(['200001']),
+      personIds: new Set<string>(),
+    });
+    expect(next).toContain('move R00010');
+    expect(next).not.toContain('move R00009');
+    expect(next).toContain('#modulestack 200002');
+    expect(next).toContain('MOVE R00001');
+    expect(next).toContain('#faction 2 "northwnd"');
   });
 
   it('focus filter preserves template lines', () => {

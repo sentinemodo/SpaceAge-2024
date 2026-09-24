@@ -131,6 +131,12 @@ export async function parseOrders(text: string): Promise<ParseOrdersResult> {
   });
 }
 
+export async function fetchSubmittedOrders(): Promise<string | null> {
+  const data = await api('/api/session/orders');
+  if (!data.submitted || !String(data.text || '').trim()) return null;
+  return data.text as string;
+}
+
 export async function submitOrders(text: string) {
   return api('/api/session/orders', {
     method: 'PUT',
