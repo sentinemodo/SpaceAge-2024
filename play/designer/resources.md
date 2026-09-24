@@ -95,9 +95,9 @@ Same-system pockets (Scoria, Helios belt, Selene, Pyre, Fomal belt, ice/vulcan m
 | `deadtn` | dead terran | 4/4 | combat/medical leftover; edible | — | never a region resource |
 | `rctlnc` | rocket launchers | 100/100 | `rckter` | L1 | infantry/vehicle/military cargo; **missile** |
 | `prllsr` | personal laser | 2/3 | `prllsr` | L1 | **laser** item |
-| `prlgun` | personal rail gun | 3/4 | `prlgun` | L1 | **kinetic** item |
+| `prlgun` | personal rail gun | 3/4 | `prlgun` | L2 | **kinetic** item |
 | `psnarm` | personal armour | 4/6 | `psnarm` | L1 | **armour** item |
-| `psnshd` | personal plasma shield | 3/4 | `psnshd` | L2 | **shield** item |
+| `psnshd` | personal plasma shield | 3/4 | `psnshd` | L3 | **shield** item |
 | `psnew` | personal EW pack | 2/2 | `psnew` | L2 | **ew** item |
 | `prxgrd` | proximity grenades | 3/3 | `prxgrd` | L3 | **pbpd** item |
 | `spcsut` | space suit | 2/10 | catalog equipment | L0 flavour | cargo, not ground |

@@ -1,25 +1,14 @@
-import { useEffect, useMemo, type ReactNode } from 'react';
+import { useEffect, useMemo, useState, type ReactNode } from 'react';
 
 import {
   catalogAnchor,
+  humanCatalogBlocks,
   humanCatalogEntries,
-  humanCatalogText,
   resolveCatalogLink,
+  visibleCatalogBlocks,
+  type CatalogDocumentBlock,
   type CatalogEntry,
-  type CatalogKind,
 } from '../lib/techCatalog';
-
-const HEADING_RE = /^\*\*(.+?) \[([a-z0-9]+)\]\*\*\s*$/i;
-const SECTION_RE = /^##\s+(.+)$/;
-const SUB_RE = /^###\s+(.+)$/;
-
-function sectionKind(title: string, current: CatalogKind): CatalogKind {
-  const lower = title.toLowerCase();
-  if (lower.startsWith('module')) return 'module';
-  if (lower.startsWith('item')) return 'item';
-  if (lower.startsWith('level')) return 'tech';
-  return current;
-}
 
 function renderInline(text: string, entries: CatalogEntry[]): ReactNode[] {
   const parts: ReactNode[] = [];
@@ -58,6 +47,131 @@ function renderInline(text: string, entries: CatalogEntry[]): ReactNode[] {
   return parts;
 }
 
+function renderTable(rows: string[][], key: string, entries: CatalogEntry[]): ReactNode {
+  const [head, ...body] = rows;
+  return (
+    <div key={key} className="tech-table-wrap">
+      <table className="tech-table">
+        <thead>
+          <tr>
+            {head.map((cell, index) => (
+              <th key={index}>{renderInline(cell, entries)}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {body.map((row, rowIndex) => (
+            <tr key={rowIndex}>
+              {row.map((cell, index) => (
+                <td key={index}>{renderInline(cell, entries)}</td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+function renderBlock(block: CatalogDocumentBlock, index: number, entries: CatalogEntry[]): ReactNode {
+  if (block.type === 'title') {
+    return (
+      <h1 key={`title-${index}`} className="tech-title">
+        {block.lines[0]}
+      </h1>
+    );
+  }
+  if (block.type === 'section') {
+    const slug = block.lines[0].toLowerCase().replace(/[^a-z0-9]+/g, '-');
+    return (
+      <h2 key={`section-${index}`} id={`tech-${slug}`} className="tech-section">
+        {block.lines[0]}
+      </h2>
+    );
+  }
+  if (block.type === 'subsection') {
+    return (
+      <h3 key={`sub-${index}`} className="tech-subsection">
+        {block.lines[0]}
+      </h3>
+    );
+  }
+  if (block.type === 'table' && block.table) {
+    return renderTable(block.table, `table-${index}`, entries);
+  }
+  if (block.type === 'entry' && block.kind && block.id) {
+    return (
+      <article key={`${block.kind}-${block.id}`} className="tech-entry">
+        <h3 id={catalogAnchor(block.kind, block.id)} className="tech-entry-title">
+          {block.name} <span className="tech-id">[{block.id}]</span>
+        </h3>
+        {block.lines.map((line, lineIndex) => (
+          <p key={lineIndex} className="tech-paragraph">
+            {renderInline(line, entries)}
+          </p>
+        ))}
+      </article>
+    );
+  }
+  return (
+    <p key={`prose-${index}`} className="tech-paragraph">
+      {renderInline(block.lines[0] ?? '', entries)}
+    </p>
+  );
+}
+
+function UseCalculator() {
+  const technologies = humanCatalogEntries.filter((entry) => entry.kind === 'tech');
+  const modules = humanCatalogEntries.filter((entry) => entry.kind === 'module');
+  return (
+    <form className="use-calculator" onSubmit={(event) => event.preventDefault()}>
+      <h4>Use calculator</h4>
+      <div className="use-calculator-inputs">
+        <label>
+          Technology
+          <select name="technology" defaultValue="">
+            <option value="">Choose a technology</option>
+            {technologies.map((entry) => (
+              <option key={entry.id} value={entry.id}>
+                {entry.name} [{entry.id}]
+              </option>
+            ))}
+          </select>
+        </label>
+        <label>
+          Producing module
+          <select name="module" defaultValue="">
+            <option value="">Choose a module type</option>
+            {modules.map((entry) => (
+              <option key={entry.id} value={entry.id}>
+                {entry.name} [{entry.id}]
+              </option>
+            ))}
+          </select>
+        </label>
+        <label>
+          Modules
+          <input name="count" type="number" min={1} defaultValue={1} />
+        </label>
+      </div>
+      <dl className="use-calculator-results">
+        <div>
+          <dt>Estimated consumption</dt>
+          <dd>—</dd>
+        </div>
+        <div>
+          <dt>Estimated output</dt>
+          <dd>—</dd>
+        </div>
+        <div>
+          <dt>Estimated use time</dt>
+          <dd>—</dd>
+        </div>
+      </dl>
+    </form>
+  );
+}
+
 export function TechnologyCatalog({
   focusAnchor,
   focusNonce,
@@ -65,71 +179,39 @@ export function TechnologyCatalog({
   focusAnchor?: string | null;
   focusNonce?: number;
 }) {
-  const entries = humanCatalogEntries;
+  const [query, setQuery] = useState('');
+  const [level, setLevel] = useState('');
+  const [tag, setTag] = useState('');
 
-  const body = useMemo(() => {
-    const nodes: ReactNode[] = [];
-    let kind: CatalogKind = 'tech';
-    let row = 0;
-    for (const rawLine of humanCatalogText.split('\n')) {
-      const line = rawLine.trimEnd();
-      const trimmed = line.trim();
-      row += 1;
-      if (!trimmed || trimmed === '---') continue;
-      if (trimmed.startsWith('|')) {
-        nodes.push(
-          <p key={`row-${row}`} className="tech-paragraph tech-table-row">
-            {trimmed}
-          </p>
-        );
-        continue;
-      }
-      const section = trimmed.match(SECTION_RE);
-      if (section) {
-        kind = sectionKind(section[1], kind);
-        const slug = section[1].toLowerCase().replace(/[^a-z0-9]+/g, '-');
-        nodes.push(
-          <h2 key={`h2-${row}`} id={`tech-${slug}`} className="tech-section">
-            {section[1]}
-          </h2>
-        );
-        continue;
-      }
-      const sub = trimmed.match(SUB_RE);
-      if (sub) {
-        nodes.push(
-          <h3 key={`h3s-${row}`} className="tech-subsection">
-            {sub[1]}
-          </h3>
-        );
-        continue;
-      }
-      const heading = trimmed.match(HEADING_RE);
-      if (heading) {
-        const id = heading[2].toLowerCase();
-        nodes.push(
-          <h3 key={`h3-${row}`} id={catalogAnchor(kind, id)} className="tech-entry-title">
-            {heading[1]} <span className="tech-id">[{heading[2]}]</span>
-          </h3>
-        );
-        continue;
-      }
-      if (trimmed.startsWith('# ')) {
-        nodes.push(
-          <h1 key={`h1-${row}`} className="tech-title">
-            {trimmed.slice(2)}
-          </h1>
-        );
-        continue;
-      }
-      nodes.push(
-        <p key={`p-${row}`} className="tech-paragraph">
-          {renderInline(line, entries)}
-        </p>
-      );
+  const levels = useMemo(() => {
+    const found = new Set<number>();
+    for (const block of humanCatalogBlocks) {
+      if (block.type === 'entry' && block.level != null) found.add(block.level);
     }
-    return nodes;
-  }, [entries]);
+    return [...found].sort((a, b) => a - b);
+  }, []);
+
+  const tags = useMemo(() => {
+    const found = new Set<string>();
+    for (const block of humanCatalogBlocks) {
+      if (block.type === 'entry' && block.kind === 'tech') {
+        for (const item of block.tags) found.add(item);
+      }
+    }
+    return [...found].sort();
+  }, []);
+
+  const visible = useMemo(
+    () =>
+      visibleCatalogBlocks(humanCatalogBlocks, {
+        query,
+        level: level === '' ? null : Number(level),
+        tag: tag === '' ? null : tag,
+      }),
+    [query, level, tag]
+  );
+
+  const hasEntry = visible.some((block) => block.type === 'entry');
 
   useEffect(() => {
     if (!focusAnchor) return;
@@ -137,8 +219,45 @@ export function TechnologyCatalog({
   }, [focusAnchor, focusNonce]);
 
   return (
-    <div className="technology-catalog">
-      {body}
+    <div className="tech-workspace">
+      <div className="tech-filters">
+        <label>
+          Search
+          <input
+            type="search"
+            value={query}
+            placeholder="Description text"
+            onChange={(event) => setQuery(event.target.value)}
+          />
+        </label>
+        <label>
+          Level
+          <select value={level} onChange={(event) => setLevel(event.target.value)}>
+            <option value="">All levels</option>
+            {levels.map((item) => (
+              <option key={item} value={item}>
+                Level {item}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label>
+          Tag
+          <select value={tag} onChange={(event) => setTag(event.target.value)}>
+            <option value="">All tags</option>
+            {tags.map((item) => (
+              <option key={item} value={item}>
+                {item}
+              </option>
+            ))}
+          </select>
+        </label>
+      </div>
+      <div className="technology-catalog">
+        {visible.map((block, index) => renderBlock(block, index, humanCatalogEntries))}
+        {!hasEntry && <p className="tech-empty">No technologies or items match.</p>}
+      </div>
+      <UseCalculator />
     </div>
   );
 }

@@ -15,9 +15,9 @@ WORKDIR /src
 COPY tools/visual-tool/package.json tools/visual-tool/package-lock.json ./
 RUN npm ci
 COPY tools/visual-tool/ ./
-# TechnologyCatalog.tsx imports this via ../../../../play/player/campaign/…
-RUN mkdir -p /play/player/campaign
-COPY play/player/campaign/basic_technologies.md /play/player/campaign/basic_technologies.md
+# techCatalog.ts imports this via ../../../../docs/human/… (resolves to /docs in this stage)
+RUN mkdir -p /docs/human
+COPY docs/human/basic_technologies.md /docs/human/basic_technologies.md
 RUN npm run build
 
 FROM ubuntu:22.04 AS runtime

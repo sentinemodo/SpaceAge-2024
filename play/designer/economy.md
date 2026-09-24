@@ -34,7 +34,7 @@ upkeep = 1                    if size ≤ 15
 | Exception | Cash | Why |
 |-----------|------|-----|
 | Tiny energy (`wnplnt` `slrpnl`) | **1** | size 10, 1 iron |
-| `city` `mtrply` `ptncty` | **0** | Food tax + cash produce; they are the tax base |
+| `city` `mtrply` | **0** | Food tax + cash produce; they are the tax base |
 
 Crew on the module is the **minimum complement**, not the people stacks. Tanks (crew 16) are dear; infantry (no crew attr, L1) stays cheap. High-tech weapons pick up `10×level` even when small.
 

@@ -630,19 +630,6 @@
 			<use-produce module="coastr"/>
 		</entry>
 		<entry
-			name="ptncns"
-			name-en="pontoon city construction"
-			level="1"
-			tags="production"
-			requires="nvltrs"
-			description="Prefabricated floating metro: displacement pontoons, sealed decks, and desalination. Crew breathe surface air on a terair world; no canned-gas plant."
-			use-time="12">
-			<use-allowed-in module-type-group="production"/>
-			<use-consume item="iron" quantity="40"/>
-			<use-consume item="titani" quantity="4"/>
-			<use-produce module="ptncty"/>
-		</entry>
-		<entry
 			name="uwtrs"
 			name-en="underwater transport"
 			level="1"
@@ -1034,16 +1021,6 @@ This assembly technology represents the pinnacle of human ingenuity and collabor
 			<use-consume item="silici" quantity="1"/>
 			<use-produce item="spare" quantity="10"/>
 		</entry>
-		<entry 
-			name="repair"
-			name-en="repair and maintenance"
-			level="1"
-			description="Repair and maintenance allows you to recover from ship damage, either from military actions or neglect."
-			use-time="2">
-			<use-allowed-in module-type-group="production"/>
-			<use-consume item="spare" quantity="1"/>
-			<use-produce effect="repair" target="module-damage" change="-1"/>
-		</entry>
 		<entry
 			name="engshp"
 			tags="production repair"
@@ -1087,7 +1064,7 @@ This assembly technology represents the pinnacle of human ingenuity and collabor
 			<use-consume item="silici" quantity="6"/>
 			<use-produce module="iondrv"/>
 		</entry>
-		<entry name="psnshd" name-en="personal plasma shield" level="2" tags="military" requires="airgen" description="Wearable gas-fed plasma bottle resisting lasers." use-time="4">
+		<entry name="psnshd" name-en="personal plasma shield" level="3" tags="military" requires="airgen" description="Wearable gas-fed plasma bottle resisting lasers." use-time="4">
 			<use-allowed-in module-type-group="production"/>
 			<use-consume item="terair" quantity="3"/>
 			<use-consume item="h2o2" quantity="2"/>
@@ -1173,7 +1150,7 @@ Researchers can query the library. The system can handle natural language questi
 			<use-consume item="gold" quantity="1"/>
 			<use-produce module="optlab"/>
 		</entry>
-		<entry name="prlgun" name-en="personal rail gun" level="1" tags="military" requires="stnrdf" description="Man-portable electromagnetic rail kinetic for infantry battalions." use-time="3">
+		<entry name="prlgun" name-en="personal rail gun" level="2" tags="military" requires="stnrdf" description="Man-portable electromagnetic rail kinetic for infantry battalions." use-time="3">
 			<use-allowed-in module-type-group="production"/>
 			<use-consume item="iron" quantity="2"/>
 			<use-consume item="titani" quantity="1"/>
@@ -2179,27 +2156,6 @@ Researchers can query the library. The system can handle natural language questi
 			<produce item="terran" quantity="2" duration="13"/>
 			<operation-allowed-in planet-atmosphere="terair"/>
 			<operation-allowed-in location-type="solid-surface"/>
-		</entry>
-		<entry
-			name="ptncty"
-			name-en="pontoon city"
-			name-en2="pontoon cities"
-			group="settlement"
-			description="Floating metro on displacement pontoons. Desalination and sealed decks; crew breathe surface air on a terair world. No canned-gas upkeep."
-			size="6000"
-			capacity="4000"
-			population-maximum="750"
-			energy="4"
-			technology-capacity="1"
-			hit-points="350"
-			cannot-be-owned="yes"
-			cannot-hold-itemstacks="yes">
-			<upkeep type="food" quantity="30"/>
-			<no-upkeep effect="riot" chance="25"/>
-			<produce item="cash" quantity="200" duration="13"/>
-			<produce item="terran" quantity="2" duration="13"/>
-			<operation-allowed-in planet-atmosphere="terair"/>
-			<operation-allowed-in location-type="liquid-surface"/>
 		</entry>
 		<entry
 			name="uscty"

@@ -82,10 +82,14 @@ Tag: `military`.  **Requires:** `optins`.
 Datalink spoof and jamming pack vs drones.
 Works in: module-type-group=production. Use consumes: 3 unit of silicium `[silici]`, 2 unit of copper `[copper]`. Use produces: personal EW pack `[psnew]` (item). Use-time: 3 weeks.
 
-**personal plasma shield [psnshd]**  
-Tag: `military`.  **Requires:** `airgen`.
-Wearable gas-fed plasma bottle resisting lasers.
-Works in: module-type-group=production. Use consumes: 3 unit of terran breathing gas mixture `[terair]`, 2 unit of oxyhydro `[h2o2]`, unit of copper `[copper]`. Use produces: personal plasma shield `[psnshd]` (item). Use-time: 4 weeks.
+**personal rail gun [prlgun]**  
+Tag: `military`.  **Requires:** `stnrdf`.
+Man-portable electromagnetic rail kinetic for infantry battalions.
+Works in: module-type-group=production. Use consumes: 2 unit of iron `[iron]`, unit of titanium `[titani]`. Use produces: personal rail gun `[prlgun]` (item). Use-time: 3 weeks.
+
+**personal rail gun [prlgun]**  
+Man-portable electromagnetic rail kinetic.  
+Size 3, mass 4, attack 2, damage 3. Produced by personal rail gun `[prlgun]` (1). Usable by module group infantry.
 
 **small habitat construction [habcns]**  
 Methods for raising a root-level pressure shell sized to hold one or two support modules. It is not crew quarters.
@@ -197,6 +201,15 @@ Works in: module-type-group=extraction, location-type=solid-surface. Use produce
 Tag: `propulsion`.  **Requires:** `ionthr`.
 Fission heat to Brayton cycle driving gridded ion or MPD thrusters. Reactor burns uranium; propellant is water.
 Works in: module-type-group=production. Use consumes: 12 unit of titanium `[titani]`, 6 unit of uranium `[uraniu]`, 8 unit of copper `[copper]`. Use produces: nuclear-electric engine `[nepeng]`. Use-time: 8 weeks.
+
+**personal plasma shield [psnshd]**  
+Tag: `military`.  **Requires:** `airgen`.
+Wearable gas-fed plasma bottle resisting lasers.
+Works in: module-type-group=production. Use consumes: 3 unit of terran breathing gas mixture `[terair]`, 2 unit of oxyhydro `[h2o2]`, unit of copper `[copper]`. Use produces: personal plasma shield `[psnshd]` (item). Use-time: 4 weeks.
+
+**personal plasma shield [psnshd]**  
+Wearable gas-fed plasma bottle resisting lasers.  
+Size 3, mass 4, defense 3. Produced by personal plasma shield `[psnshd]` (1). Usable by module group infantry.
 
 **proximity grenades [prxgrd]**  
 Tag: `military`.  **Requires:** `rckter`.

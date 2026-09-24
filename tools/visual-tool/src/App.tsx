@@ -1514,7 +1514,7 @@ export default function App() {
         {panel === 'tech' && (() => {
           const tech = splitTechnologyReport(sectionText(sections, 'technology', ''));
           return (
-            <div className="sub-panel scroll-area">
+            <div className="sub-panel tech-sub-panel">
               <div className="panel-heading-row">
                 <h3>Technologies</h3>
                 <div className="panel-mode-tabs">
@@ -1525,7 +1525,9 @@ export default function App() {
               {techView === 'known' ? (
                 <TechnologyCatalog focusAnchor={techFocus?.anchor} focusNonce={techFocus?.n} />
               ) : (
-                <ClickableReportText text={tech.breakthrough} onFocusId={focusFromText} />
+                <div className="tech-breakthrough">
+                  <ClickableReportText text={tech.breakthrough} onFocusId={focusFromText} />
+                </div>
               )}
             </div>
           );

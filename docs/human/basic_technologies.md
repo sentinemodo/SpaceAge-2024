@@ -8,9 +8,11 @@ A bracketed id such as [iron] jumps to that technology, module, or item. When tw
 
 **Level 0** technologies are already known. Any unit of the right kind, in the right place, can use them. They do not fill technology capacity and do not need a copy.
 
-**Level 1** technologies must sit on the unit that uses them. Research can discover a copy, or another unit in the same place can copy one across. Each copy fills 1 point of technology capacity.
+**Level 1** technologies **or higher** must sit on the unit that uses them. Research can discover a copy, or another unit in the same place can copy one across. Each copy fills 1 point of technology capacity per technology level.
 
-Using a technology still needs the right unit, the right location, and the materials listed under Needs. Battle technologies are held as copies; they do not build anything.
+Using a technology still needs the right unit, the right location, and the materials listed under Needs. 
+
+**Battle** technologies are held as copies; they do not build anything.
 
 **Harvest** technologies pull goods from the site. They do not spend cargo, except water distillation, which spends 1 water.
 
@@ -22,8 +24,6 @@ Using a technology still needs the right unit, the right location, and the mater
 | intensive farming | farms on grassland, or an ocean world with breathable air | 5 food |
 | fishery harvest | a fishery on open water with breathable air | 5 food |
 | nickel-iron, gold | extraction on solid ground (level 1 copies) | 2 nickel-iron or 1 gold |
-
-Gas-giant cloud skimming is a later technology and is not listed here.
 
 ## Level 0
 
@@ -251,21 +251,9 @@ Where: production. Needs: 2 iron `[iron]`, 1 titanium `[titani]`. Builds: person
 Compact man-portable high-frequency laser for infantry battalions. Tag: `military`. **Requires:** laser optics `[lasopt]`.  
 Where: production. Needs: 2 terran breathing gas `[terair]`, 1 copper `[copper]`, 1 oxyhydro `[h2o2]`. Builds: personal laser `[prllsr]` (item). Time: 3 weeks.
 
-**personal rail gun [prlgun]**  
-Man-portable electromagnetic rail kinetic for infantry battalions. Tag: `military`. **Requires:** stationary defense `[stnrdf]`.  
-Where: production. Needs: 2 iron `[iron]`, 1 titanium `[titani]`. Builds: personal rail gun `[prlgun]` (item). Time: 3 weeks.
-
-**pontoon city construction [ptncns]**  
-Prefabricated floating metro: displacement pontoons, sealed decks, and desalination. Crew breathe surface air on a terair world; no canned-gas plant. Tag: `production`. **Requires:** naval transport `[nvltrs]`.  
-Where: production (factories; seat via `FOR` onto a liquid-surface tender). Needs: 40 iron `[iron]`, 4 titanium `[titani]`. Builds: pontoon city `[ptncty]`. Time: 12 weeks.
-
 **preventive servicing [servic]**  
 Maintenance and repairs are best done in advance. Tag: `repair`.  
 Where: production. Needs: 1 titanium `[titani]`, 1 iron `[iron]`, 1 copper `[copper]`, 1 silicium `[silici]`. Builds: 10 spare parts `[spare]`. Time: 1 week.
-
-**repair and maintenance [repair]**  
-Repair and maintenance allows you to recover from ship damage, either from military actions or neglect.  
-Where: production. Needs: 1 spare part `[spare]`. Builds: effect `repair` on `module-damage` (`change="-1"`). Time: 2 weeks. On completion repairs **1 HP** on the parent scope (same as `REPAIR` scope). Fails if no damage. **`REPAIR`** is faster for weekly bulk repairs.
 
 **rocket launcher production [rckter]**  
 Manufacture of portable rocket launchers issued to infantry battalions. Tag: `military`.  
@@ -445,10 +433,6 @@ Group `settlement`. Built by city planning `[ctypln]` (consumes 1 city). Size 25
 A rack of chemically boosted rockets that only fires in orbit. Compact enough to nest in a shuttle with crew, fuel, food, and breathing mix.  
 Group `military`. Built by orbital rocket launcher `[orbrkt]`. Weapon: missile. Size 40, mass 40, crew 0, capacity 0, HP 40, tech-cap 1, attack 3, defense 1, damage 3. Upkeep 10 cash. Operates only in orbit. Not a shuttle unit: stays nested on the shuttle, fires on the parent’s shot sequence, and is included in the standard hit-location roll.
 
-**pontoon city [ptncty]**  
-Floating metro on displacement pontoons. Desalination and sealed decks; crew breathe surface air on a terair world. No canned-gas upkeep.  
-Group `settlement`. Built by pontoon city construction `[ptncns]`. Size 6000, capacity 4000, energy 4, HP 350, tech-cap 1, population max 750. Cannot be owned; cannot hold item stacks. Upkeep 30 food (riot 25% if unpaid) — **no** `terair` upkeep. Produces 200 cash and 2 terran per 13 weeks. Operates on **liquid-surface** with terran atmosphere `[terair]`. Not `underwater` (surface pontoon; ordinary visibility).
-
 **tanks [tanks]**  
 Platoon of 4 armored vehicles suitable for destroying ground modules and infantry battalions.  
 Group `vehicle`. Built by armored combat `[armcbt]`. Weapon: kinetic. Size 240, mass 240, crew 16, capacity 200, HP 80, attack 6, defense 4, damage 7. Upkeep 80 cash. Consumes 16 food and 16 terran air (damage 25% if not). Unpaid upkeep: rebel 10%. Ground move speed 0.5. Fuel duration 13 (4 oil). Operates on solid surface with terran atmosphere.
@@ -487,7 +471,7 @@ Size 1, mass 1. Produced by intensive farming `[farmng]` (5), fishery harvest `[
 
 **unit of iron [iron]**  
 Extracted, refined, and purified into industrial steels, iron is a basic construction material widely used in most structures.  
-Size 5, mass 10. Produced by iron mining `[iminng]` (3). Consumed by most L0 builds (see technology entries). Also L1: branch office construction `[brnofc]` (5), city planning `[ctypln]` (26), mineral core drilling `[cdrill]` (25), armored combat `[armcbt]` (8), naval combat `[nvlcbt]` (8), orbital rocket launcher `[orbrkt]` (4), form infantry battalion `[frminf]` (4), rocket launcher production `[rckter]` (2), laser turret `[lstrrt]` (6), preventive servicing `[servic]` (1), engineering shop `[engshp]` (5), law enforcement `[lawenf]` (6), staged hydrolox `[hydstg]` (8), pontoon city construction `[ptncns]` (40), tidal power `[tdlpwr]` (8), underwater drilling `[udrill]` (35), underwater transport `[uwtrs]` (6).
+Size 5, mass 10. Produced by iron mining `[iminng]` (3). Consumed by most L0 builds (see technology entries). Also L1: branch office construction `[brnofc]` (5), city planning `[ctypln]` (26), mineral core drilling `[cdrill]` (25), armored combat `[armcbt]` (8), naval combat `[nvlcbt]` (8), orbital rocket launcher `[orbrkt]` (4), form infantry battalion `[frminf]` (4), rocket launcher production `[rckter]` (2), laser turret `[lstrrt]` (6), preventive servicing `[servic]` (1), engineering shop `[engshp]` (5), law enforcement `[lawenf]` (6), staged hydrolox `[hydstg]` (8), tidal power `[tdlpwr]` (8), underwater drilling `[udrill]` (35), underwater transport `[uwtrs]` (6).
 
 **unit of oil [oil]**  
 Black liquid carbon based used as fuel.  
@@ -503,7 +487,7 @@ Size 5, mass 3. Produced by silicium melting `[slcmlt]` (1). Consumed by L0: cor
 
 **unit of titanium [titani]**  
 Due to its resistance to wear, titanium is a good construction material.  
-Size 10, mass 10. Produced by titanium mining `[tminng]` (2). Consumed by L0: action and reaction `[areact]` (10), industrial automation `[indust]` (10), stationary defense `[stnrdf]` (4), shuttles assembly `[shtlas]` (1), space ship assembly `[ssassm]` (4), space control `[spctrl]` (4), uranium fission `[urfiss]` (8), small scale transportation `[strans]` (2), crew housing `[crewhs]` (2). Also L1: mineral core drilling `[cdrill]` (10), laser optics `[lasopt]` (2), laser turret `[lstrrt]` (4), preventive servicing `[servic]` (1), armored combat `[armcbt]` (2), naval combat `[nvlcbt]` (2), staged hydrolox `[hydstg]` (4), pontoon city construction `[ptncns]` (4), underwater drilling `[udrill]` (15), underwater transport `[uwtrs]` (4).
+Size 10, mass 10. Produced by titanium mining `[tminng]` (2). Consumed by L0: action and reaction `[areact]` (10), industrial automation `[indust]` (10), stationary defense `[stnrdf]` (4), shuttles assembly `[shtlas]` (1), space ship assembly `[ssassm]` (4), space control `[spctrl]` (4), uranium fission `[urfiss]` (8), small scale transportation `[strans]` (2), crew housing `[crewhs]` (2). Also L1: mineral core drilling `[cdrill]` (10), laser optics `[lasopt]` (2), laser turret `[lstrrt]` (4), preventive servicing `[servic]` (1), armored combat `[armcbt]` (2), naval combat `[nvlcbt]` (2), staged hydrolox `[hydstg]` (4), underwater drilling `[udrill]` (15), underwater transport `[uwtrs]` (4).
 
 **unit of uranium [uraniu]**  
 With a half-life of million of years, this is one of the most stable of the radio-active elements, and one very easy to use in energy power modules.  
@@ -527,17 +511,9 @@ Size 100, mass 100, attack 2, damage 2. Produced by rocket launcher production `
 Compact man-portable high-frequency laser.  
 Size 2, mass 3, attack 2, damage 2. Produced by personal laser `[prllsr]` (1). Usable by module group infantry.
 
-**personal rail gun [prlgun]**  
-Man-portable electromagnetic rail kinetic.  
-Size 3, mass 4, attack 2, damage 3. Produced by personal rail gun `[prlgun]` (1). Usable by module group infantry.
-
 **personal armour [psnarm]**  
 Ceramic-composite body armour resisting kinetics.  
 Size 4, mass 6, defense 3. Produced by personal armour `[psnarm]` (1). Usable by module group infantry.
-
-**personal plasma shield [psnshd]**  
-Wearable gas-fed plasma bottle resisting lasers.  
-Size 3, mass 4, defense 3. Produced by personal plasma shield `[psnshd]` (1). Usable by module group infantry.
 
 **personal EW pack [psnew]**  
 Datalink spoof and jamming pack vs drones.  
@@ -545,7 +521,7 @@ Size 2, mass 2, defense 2, initiative 2. Produced by personal EW pack `[psnew]` 
 
 **spare part [spare]**  
 Spare part can be used to remove 10 points of damage.  
-Size 2, mass 2. Produced by preventive servicing `[servic]` (10). Consumed by repair and maintenance `[repair]` (1) and by the `REPAIR` order.
+Size 2, mass 2. Produced by preventive servicing `[servic]` (10). Spent by the `REPAIR` order.
 
 **unit of gold [gold]**  
 This very valuable metal usable in energy based or energy intensive structures.  
@@ -558,5 +534,3 @@ Size 6, mass 12. Produced by nickel-iron extraction `[nminng]` (2). No L0–L1 t
 **waste product [wastes]**  
 Industral wastes and radioactive decay products cause problems as they accumulate in modules.  
 Size 5, mass 5, radiation 1. Consumed by waste disposal `[wastdp]` (2). Upkeep 1 cash (radiation 10% if unpaid). Fission reactors produce wastes as an energy byproduct.
-
-Items also used at level 1 and already listed above: **copper**, **food**, **iron**, **silicium**, **titanium**, **uranium**, **water**.

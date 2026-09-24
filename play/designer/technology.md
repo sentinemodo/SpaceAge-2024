@@ -66,9 +66,9 @@ L3–L10 target: production 3–5, propulsion 2–3, research 2–3, military 2�
 | Lv | Production | Propulsion | Research | Military |
 |----|------------|------------|----------|----------|
 | 0 | dense live | `areact` | `filidx` | `stnrdf` **kinetic** |
-| 1 | live + `nminng` `gminng` **`brnofc`** | `hydstg` | `optins` | armour/infantry/lasers + **`prlgun` `prllsr` `psnarm`** |
-| 2 | live He3/autfab/habitat + `alminn` `krogen` | **`fustch`** `ionthr` | `medtec` `medirf` | `xraylo` **laser** + **`psnshd` `psnew`** |
-| 3 | live He3/dome/hull + `amnext` `ch4min` `ntmine` `solth` `hydsyn` | `autprp` `nucthr` `slsail` | `advres` `sckcns` `pharms` | `drnhng` **drone** `mslpod` **missile** `ewsens` **ew** `prxgrd` **pbpd** |
+| 1 | live + `nminng` `gminng` **`brnofc`** | `hydstg` | `optins` | armour/infantry/lasers + **`prllsr` `psnarm`** |
+| 2 | live He3/autfab/habitat + `alminn` `krogen` | **`fustch`** `ionthr` | `medtec` `medirf` | `xraylo` **laser** + **`prlgun` `psnew`** |
+| 3 | live He3/dome/hull + `amnext` `ch4min` `ntmine` `solth` `hydsyn` | `autprp` `nucthr` `slsail` | `advres` `sckcns` `pharms` | `drnhng` **drone** `mslpod` **missile** `ewsens` **ew** `prxgrd` **pbpd** **`psnshd`** |
 | 4 | `orbfnd` `d2ext` `volext` `fuelcl` `liming` `xeming` | `ntrdrv` `hypstg` `hlthrs` | `radtol` `cryres` `matcmp` | `alnfgh` **drone** `kntcgn` **kinetic** `shplas` **shield** |
 | 5 | `clslfe` `isrurf` `wminng` `o2isru` `ceramp` `bormin` `beming` | `mpdthr` `mpdlth` `ethtst` | `survts` `seisns` `bwinow` | `pdefls` **laser** `kpdgun` **kinetic** `armcml` **armour** |
 | 6 | `dhefus` `whlhbt` `ptminn` `reemin` `grmine` `cccomp` | `fusdrv` `magsail` `xengid` | `matlib` `magsns` `ntdiag` | `drnswm` **drone** `gausgn` **kinetic** `proxpd` **pbpd** |
@@ -111,7 +111,6 @@ flowchart TB
     clslfe --> cryost --> isptnk
     clslfe --> recyl2
     habcns --> dmecns --> whlhbt --> lghull --> arkcns
-    nvltrs --> ptncns
     nvltrs --> uwtrs --> usctyc
     uwtrs --> uwcbt
     sdrill --> udrill
@@ -422,14 +421,13 @@ Copy required. Capacity 1. Cost 8 unless noted.
 | `afrmng` | advanced farming | — | 1 | — | 8 `food` | Live; ocean + `terair` |
 | `cdrill` | mineral core drilling | — | 3 | 25 `iron`, 10 `titani` | `cdrill` | Live |
 | `servic` | preventive servicing | — | 1 | 1 `titani`, 1 `iron`, 1 `copper`, 1 `silici` | 10 `spare` | Tag repair |
-| `repair` | repair and maintenance | — | 2 | 1 `spare` | effect repair | USE of effect not executed; issue `REPAIR` |
+| `repair` | repair and maintenance | — | 2 | 1 `spare` | effect repair | SampleGame catalog only. Removed from the campaign catalog; players use the `REPAIR` order |
 | `engshp` | engineering shop | — | 2 | 5 `iron` | `engshp` | Cost 4. Tags production, repair |
 | `lawenf` | law enforcement | — | 4 | 6 `iron` | `jail` | Live |
 | `wastdp` | waste disposal | — | 1 | 2 `wastes` | — | Spacecraft; solar disposal |
 | **`nminng`** | nickel-iron extraction | `iminng` | 1 | — | 2 `nickfe` | M-type metal: Fe-Ni alloy from `lrmast`/`smmast`. Extraction, solid-surface |
 | **`gminng`** | gold recovery | `cminng` | 2 | — | 1 `gold` | Cyanide-free gravity/amalgam analogue on hydrothermal veins. Extraction |
 | **`brnofc`** | branch office construction | `corpmg` | 4 | 5 `iron`, 1 `copper`, 2 `silici` | `brnofc` | Satellite HR/payroll node for a second settlement region. Tag production. Cost 8. **Not** a second HQ: half recruitment, 20% cash, no region buffs — see [`economy.md`](economy.md), [`catalog.md`](catalog.md) |
-| **`ptncns`** | pontoon city construction | `nvltrs` | 12 | 40 `iron`, 4 `titani` | `ptncty` | Above-water floating metro on liquid-surface + terair. No terair upkeep. [`ocean-cities.md`](ocean-cities.md) |
 | **`tdlpwr`** | tidal power | `wndtrb` | 4 | 8 `iron`, 2 `copper` | `tdlpln` | Current/tidal turbines; liquid-surface + terair. Energy ~12 / 13 wk |
 | **`udrill`** | underwater drilling | `sdrill` | 4 | 35 `iron`, 15 `titani` | `udrill` | Seafloor rotary drill; liquid-surface only (seafloor proxy) |
 | **`uwtrs`** | underwater transport | `nvltrs` | 4 | 6 `iron`, 4 `titani` | `uwtruk` | Pressure-hull cargo sub; naval MOVE; liquid only. Costlier than `coastr`/`trucks` |
@@ -458,7 +456,6 @@ Copy required. Capacity 1. Cost 8 unless noted.
 | `lasopt` | laser optics | — | 4 | 2 `terair`, 2 `h2o2`, 2 `copper` | `bltlas` | **laser**. Campaign retune: working gas + electrodes. Tag military |
 | `lstrrt` | laser turret | `lasopt` | 4 | 2 `iron`, 4 `terair`, 2 `h2o2` | `laztrt` | **laser**. Campaign retune: gases |
 | `miltac` | military tactics | — | 1 | — | — | Battle tech; initiative 5; command group |
-| **`prlgun`** | personal rail gun | `stnrdf` | 3 | 2 `iron`, 1 `titani` | item `prlgun` | **kinetic**. Infantry/tank/fighter item. `tungst` from L5 guns |
 | **`prllsr`** | personal laser | `lasopt` | 3 | 2 `terair`, 1 `copper`, 1 `h2o2` | item `prllsr` | **laser**. Same item at infantry and fighter scale |
 | **`psnarm`** | personal armour | `stnrdf` | 3 | 2 `iron`, 1 `titani` | item `psnarm` | **armour**. Infantry/tank/EVA |
 
@@ -501,8 +498,8 @@ AU hops (planet → local Gate) need a **fusion torch**, not chemical or ion. Ph
 | Id | Name | Requires | Use-time | Consume | Produce | Notes |
 |----|------|----------|----------|---------|---------|-------|
 | `xraylo` | x-ray laser optics | `lasopt` | 4 | 2 `terair`, 2 `volatl`, 2 `copper` | `xraylz` | **laser**. Campaign retune: gases. Tag military |
+| **`prlgun`** | personal rail gun | `stnrdf` | 3 | 2 `iron`, 1 `titani` | item `prlgun` | **kinetic**. Level 2. Infantry/tank/fighter item. `tungst` from L5 guns |
 | **`uwcbt`** | underwater combat | `uwtrs` | 12 | 14 `iron`, 6 `titani` | `uwtank` | **kinetic** combat sub. Naval MOVE; liquid only. Costlier than `tanks`/`gunbot`. Tag military. [`ocean-cities.md`](ocean-cities.md) |
-| **`psnshd`** | personal plasma shield | `airgen` | 4 | 3 `terair`, 2 `h2o2`, 1 `copper` | item `psnshd` | **shield**. Infantry/tank/fighter. Requires L2; campaign `requires` `airgen` until `shplas` exists |
 | **`psnew`** | personal EW pack | `optins` | 3 | 3 `silici`, 2 `copper` | item `psnew` | **ew**. Datalink spoof; infantry and fighter |
 
 ---

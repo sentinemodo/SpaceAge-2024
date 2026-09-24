@@ -22,9 +22,8 @@ Use live **groups**. Intended future group in parentheses → wishlist.
 |----|------|---------|-----|-----------------|-------|
 | `town` | `twnbld` | 750 | 350 | 200 cash, 2 terran | 30 iron, 2 titani, 10 wk |
 | `city` | `popcnt` | 10000 | 1250 | 1000 cash, 10 terran | 100 iron, 26 wk |
-| `ptncty` | `ptncns` | 750 | 350 | 200 cash, 2 terran | 40 iron, 4 titani, 12 wk |
 
-`town` / `city` are `settlement`, `cannot-be-owned`, terair + solid-surface. **`ptncty`** is the above-water ocean metro: `cannot-be-owned`, liquid-surface + terair, **no** terair upkeep — see [`ocean-cities.md`](ocean-cities.md). Player factories `USE twnbld` for charter deliveries; UN/NPC shells use `town()` in seed.
+`town` / `city` are `settlement`, `cannot-be-owned`, terair + solid-surface. Player factories `USE twnbld` for charter deliveries; UN/NPC shells use `town()` in seed.
 
 ### Hull size classes (L0–L10)
 
@@ -51,7 +50,6 @@ Campaign also uses a **propulsion hull ladder** (`corvhl`→`desthl`→`cruihl`�
 | `gunbot` | vehicle | 240/240 | 12 / 0 | Gunboat. Naval MOVE speed 1. Kinetic. Solid+liquid. L1 `nvlcbt` |
 | `uwtruk` | vehicle | 350/200 | 2 / 0 | Underwater cargo sub. Naval MOVE speed 1. Liquid only. Oil fuel. L1 `uwtrs`. Costlier than `coastr`/`trucks`. [`ocean-cities.md`](ocean-cities.md) |
 | `uwtank` | vehicle | 300/320 | 14 / 0 | Combat sub. Naval MOVE. Kinetic atk 7 def 6 dmg 8. Liquid only. L2 `uwcbt`. Costlier than `tanks`/`gunbot` |
-| `ptncty` | settlement | 6000/— | — / 4 | Pontoon city. Liquid + terair. Food 30; no terair upkeep. L1 `ptncns` |
 | `uscty` | settlement | 8000/— | — / 12 | Under-surface shaft city. Liquid (seafloor proxy). Food 40; **no** terair. L2 `usctyc` |
 | `tdlpln` | energy | 80/80 | 1 / 0 | Tidal plant. ~12 energy / 13 wk. Liquid + terair. L1 `tdlpwr` |
 | `udrill` | extraction | 750/750 | 8 / 8 | Underwater drill. Liquid only. L1 `udrill` |

@@ -8,7 +8,7 @@ Canonical design for grokbot wishlist: **Technologies for building underwater an
 
 | Track | Tech | Module | Where (today) | Air | Role |
 |-------|------|--------|---------------|-----|------|
-| **Above-water pontoon city** | `ptncns` L1 | `ptncty` | `liquid-surface` + `terair` | Open air — **no** `terair` upkeep | Public metro like `town` (cannot-be-owned) |
+| **Above-water pontoon city** | removed from the live catalog | — | — | — | Not buildable. Under-surface city and the dome remain |
 | **Under-surface city** | `usctyc` L2 | `uscty` | `liquid-surface` (proxy for seafloor) | Surface port + elevator shaft pumps ambient air down — **no** `terair` upkeep (flavour); omit upkeep line | Ownable corp colony |
 | **Underwater dome** | existing `dmecns` L3 | `dmdcty` | `solid-surface` **and** `liquid-surface` | Closed dome — **still** `food`+`terair` upkeep | Same airless-rock dome, also seats on seafloor |
 
