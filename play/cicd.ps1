@@ -5,7 +5,7 @@
 
 .DESCRIPTION
   restart-dev        — Astro lobby (4321) + visual tool (5173)
-  restart-prod       — restart-dev + game-host Docker + ngrok tunnel
+  restart-prod       — restart-dev + game-host Docker + ngrok + GitHub Pages (latest origin)
   restart-local-llm  — Ollama Docker, pull/warm qwen2.5-coder:7b, health check
   commit             — git commit working changes, then restart-dev
   push               — git commit, push branch, then restart-prod
@@ -272,14 +272,76 @@ function Ensure-NgrokTunnel {
 	} while ($true)
 }
 
+function Get-PagesDeployBranch {
+	if ($MergeTarget) { return $MergeTarget }
+	$originHead = git symbolic-ref refs/remotes/origin/HEAD 2>$null
+	if ($originHead -match 'origin/(.+)$') { return $Matches[1] }
+	if (git show-ref --verify --quiet refs/heads/main) { return 'main' }
+	return 'master'
+}
+
+function Ensure-GitHubPagesDeploy {
+	Write-CicdStep 'Ensure GitHub Pages matches latest pushed website'
+	if (-not (Get-Command gh -ErrorAction SilentlyContinue)) {
+		Write-Host '  skipped: gh CLI not installed (install GitHub CLI to sync Pages on restart-prod)' -ForegroundColor Yellow
+		return
+	}
+
+	$branch = Get-PagesDeployBranch
+	git fetch origin $branch 2>&1 | Out-Null
+	$targetSha = (git rev-parse "origin/$branch" 2>$null).Trim()
+	if (-not $targetSha) {
+		Write-Host "  skipped: no origin/$branch" -ForegroundColor Yellow
+		return
+	}
+
+	$runsJson = gh run list --workflow website.yml --branch $branch --limit 25 `
+		--json databaseId, headSha, status, conclusion 2>$null
+	if ($LASTEXITCODE -ne 0) {
+		Write-Host '  skipped: could not list GitHub Actions runs (gh auth login?)' -ForegroundColor Yellow
+		return
+	}
+
+	$runs = @($runsJson | ConvertFrom-Json)
+	$deployed = $runs | Where-Object {
+		$_.headSha -eq $targetSha -and $_.status -eq 'completed' -and $_.conclusion -eq 'success'
+	} | Select-Object -First 1
+
+	if ($deployed) {
+		Write-Host "  GitHub Pages already live for origin/$branch @ $($targetSha.Substring(0, 7)) (run $($deployed.databaseId))"
+		return
+	}
+
+	Write-Host "  triggering Website workflow on origin/$branch @ $($targetSha.Substring(0, 7)) ..."
+	gh workflow run website.yml --ref $branch
+	if ($LASTEXITCODE -ne 0) {
+		throw 'gh workflow run website.yml failed'
+	}
+
+	Start-Sleep -Seconds 5
+	$runId = (gh run list --workflow website.yml --branch $branch --limit 1 --json databaseId -q '.[0].databaseId').Trim()
+	if (-not $runId) {
+		throw 'Could not find Website workflow run after trigger'
+	}
+
+	Write-Host "  waiting for run $runId (build + deploy to GitHub Pages) ..."
+	gh run watch $runId --exit-status
+	if ($LASTEXITCODE -ne 0) {
+		throw "GitHub Pages deploy failed (run $runId). See: gh run view $runId --log"
+	}
+
+	Write-Host '  GitHub Pages updated: https://sentinemodo.github.io/SpaceAge-2024/'
+}
+
 function Invoke-RestartProd {
 	Write-CicdStep 'Free stack ports before prod restart'
 	Stop-CicdStackPorts
 	Invoke-RestartDev
 	Invoke-RestartGameHostDocker
 	Ensure-NgrokTunnel
+	Ensure-GitHubPagesDeploy
 	Write-Host ""
-	Write-Host "Prod stack ready (local dev + Docker game-host + ngrok)."
+	Write-Host "Prod stack ready (local dev + Docker game-host + ngrok + GitHub Pages)."
 }
 
 function Invoke-RestartLocalLlm {

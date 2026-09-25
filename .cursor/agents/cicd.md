@@ -2,7 +2,7 @@
 name: cicd
 description: >-
   SpaceAge local CI/CD operator: restart dev servers (lobby + visual tool),
-  restart prod (dev + game-host Docker + ngrok), restart Ollama Docker,
+  restart prod (dev + game-host Docker + ngrok + GitHub Pages sync), restart Ollama Docker,
   and git commit/push/merge workflows with stack restarts. Use when the user
   says restart dev, restart prod, restart local LLM, commit, push, merge, test,
   run all tests, or invokes /cicd.
@@ -42,6 +42,7 @@ Reports from **test** / **test-e2e** are written to `.cursor/cicd-test-results/l
 - Stops listeners on **4321**, **5173**, and **8787** (Docker's own 8787 proxy is left for `compose down`), then **restart-dev**, then:
 - `docker compose down` + `docker compose up -d --build` and wait for `http://localhost:8787/health`.
 - Ensure **ngrok** forwards to game-host (starts in background if missing; domain from `NGROK_DOMAIN` or default reserved domain).
+- **GitHub Pages:** `git fetch origin`, compare `origin/<default branch>` to the latest successful **Website** workflow run. If Pages is not already deployed for that commit, run `gh workflow run website.yml` and **`gh run watch`** until deploy succeeds. Requires **`gh`** authenticated (`gh auth login`). Skipped with a warning if `gh` is missing.
 
 ### restart-local-llm
 - Start/restart Docker container **`ollama`** on port **11434** (creates if missing).
@@ -104,6 +105,7 @@ Saves summary to **`.cursor/cicd-test-results/latest.txt`** and `{timestamp}-e2e
 | Visual tool | `http://localhost:5173/client/` |
 | Game-host | `http://localhost:8787/health` |
 | ngrok | `http://127.0.0.1:4040/api/tunnels` or printed public URL |
+| GitHub Pages | https://sentinemodo.github.io/SpaceAge-2024/ (matches latest push on default branch after restart-prod) |
 | Ollama | `.\play\ollama-check.ps1` |
 
 ## When invoked

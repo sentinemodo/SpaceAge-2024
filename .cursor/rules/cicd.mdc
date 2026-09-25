@@ -10,7 +10,7 @@ When the user asks to **restart dev**, **restart prod**, **restart local LLM**, 
 
 - Run **`play/cicd.ps1`** with the matching action — do not hand-roll parallel npm/docker/ngrok/git steps.
 - **restart dev** = lobby (4321) + visual tool (5173) only.
-- **restart prod** = restart dev + Docker game-host + ngrok.
+- **restart prod** = restart dev + Docker game-host + ngrok + GitHub Pages sync (`gh workflow run website.yml` when needed).
 - **test** = `play/cicd.ps1 test` (add `-IncludeE2e` for Playwright).
 - **test e2e** = `play/cicd.ps1 test-e2e` (Playwright only; report in `.cursor/cicd-test-results/`).
 - **commit** / **push** / **merge** follow git safety rules in [`.cursor/agents/cicd.md`](../agents/cicd.md).
