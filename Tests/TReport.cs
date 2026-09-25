@@ -159,7 +159,7 @@ namespace IntegrationTests
 			Region neighbor = this.game.Regions["R00002"];
 			neighbor.DeepPocketResources.AddOrIncrease(ItemType.All["titani"], 60);
 			ModuleStack factory = ModuleStack.All["000004"];
-			factory.Technologies.Add(Technology.All["cdrill"]);
+			factory.Technologies.Add(Technology.All["mcored"]);
 
 			List<string> lines = grant.Report(faction);
 			string exits = string.Join("\n", lines);

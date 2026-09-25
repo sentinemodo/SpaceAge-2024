@@ -25,7 +25,7 @@ public class StoryDraftPromptBuilderTests
 
         Assert.That(chunks.Count, Is.EqualTo(3));
         Assert.That(chunks.Select(chunk => chunk.Name), Is.EqualTo(new[] { "strategic", "tactical", "narrative" }));
-        Assert.That(chunks[1].UserPrompt, Does.Contain("use moblib as new109"));
+        Assert.That(chunks[1].UserPrompt, Does.Contain("use msrvtm as new109"));
         Assert.That(chunks[1].UserPrompt, Does.Contain("8-point threshold"));
         Assert.That(chunks[1].UserPrompt, Does.Contain("oil"));
         Assert.That(chunks[1].UserPrompt, Does.Not.Contain("wndtrb"));
@@ -48,7 +48,7 @@ public class StoryDraftPromptBuilderTests
 
         var chunks = StoryDraftPromptBuilder.BuildChunkPrompts(context);
 
-        Assert.That(chunks[1].UserPrompt, Does.Contain("use cdrill as new108"));
+        Assert.That(chunks[1].UserPrompt, Does.Contain("use mcored as new108"));
         Assert.That(chunks[1].UserPrompt, Does.Contain("moblab"));
         Assert.That(chunks[1].UserPrompt, Does.Contain("deep pocket"));
         Assert.That(chunks[1].UserPrompt, Does.Not.Contain("grndtr"));

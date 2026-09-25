@@ -81,6 +81,7 @@ namespace SpaceAge
         public ItemTypes            UseCondition_AtmosphereResources    { get; set; }        
         public EModuleTypesGroup    UseCondition_ModuleTypesGroup       { get; set; }
 		public string               UseCondition_ModuleType             { get; set; }
+		public ETemperatureBand?    UseCondition_TemperatureBand        { get; set; }
 
         #endregion
 

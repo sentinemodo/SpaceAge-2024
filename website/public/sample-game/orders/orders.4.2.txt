@@ -69,7 +69,7 @@ move R00001
 #modulestack 201
 ; + advanced robo-factory [201], robofc, nested under wreck [200], crew 0, tech-cap 8.
 ; technologies: automated fabrication [autfab] (level 2). COPY mineral core
-; drilling [cdrill] (level 1), uranium mining [uminng] (level 0), and helium-3
+; drilling [mcored] (level 1), uranium mining [uminng] (level 0), and helium-3
 ; mining [he3min] (level 2) onto self immediately (receiver already exists).
 ; USE airgen FOR 200 so lifsys nests under the wreck (frigate). Then USE
 ; cdrill FOR 200 (25 iron + 10 titanium, 3 weeks). Nested --copy / ---copy
@@ -78,7 +78,7 @@ copy cdrill to 201
 copy uminng to 201
 copy he3min to 201
 use airgen as new118 for 200
--use cdrill as new119 for 200
+-use mcored as new119 for 200
 --copy uminng to new119
 ---copy he3min to new119
 
@@ -87,7 +87,7 @@ use airgen as new118 for 200
 @produce terair
 
 #modulestack new119
-; core drill [cdrill] after USE cdrill (technology-capacity 4). Crew 6 from the
+; core drill [cdrill] after USE mcored (technology-capacity 4). Crew 6 from the
 ; robofactory cargo. Nested COPY from [201] lands uminng then he3min the week
 ; the drill forms (immediate loop after the long USE).
 get 6 terran from 201

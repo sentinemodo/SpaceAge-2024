@@ -102,7 +102,7 @@ public class OrderDraftQualityTests
             #faction 3 "pw"
             #modulestack 210005
             @get 2 iron from 210003
-            use moblib as new109
+            use msrvtm as new109
             #modulestack 210001
             @produce cash
             #modulestack 210003

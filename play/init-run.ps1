@@ -40,8 +40,8 @@ Defend every region you occupy. Escort logistics except the first lone scouting 
 
 Use `ATTACK`, `CAPTURE`, and `DECLARE FACTION <id> ENEMY` when diplomacy warrants. Cross Helios Gate `P00009` <-> Fomal Gate `P00010` with `JUMP` once you have a ship on the Gate orbit.
 '@
-	economic   = 'Startup: **surface drill only** on HQ; factory copy of **`cdrill`** costs **1000 balance** at init; **+50 iron** on cargob costs **500** more (**8500 cash** on hand). HQ: **`set hold 20 terran`** then **`@produce terran`** (manpower for nested crew and **`use cdrill`** builds beats cash income early). **`use cdrill`** to build the first **core drill**, then stack more **core drills** and **`agrplx` farms** on the grant. **Energy first:** keep **`cplant`** (or add **`fossil`**) running before scaling extraction. Scout with **`moblib` to `moblab`** carrying a **`cdrill` technology copy** (not trucks): adjacent exits show **deep pocket of resources detected** once the factory copy is present; move the lab into the pocket cell to read **Deep resources:** assays. Defer UN town charters until the home grant is production-maxed. Trade at UN markets when local mass is thin.'
-	researcher = 'HQ: **`set hold 20 terran`** beside **`@produce terran`**. Build **`moblib` to `moblab` first** on the factory copy, then **`get` crew, food, and oil** from HQ cargo (no `@` on mobile stack), **`move`** to the adjacent grant anomaly and **`research`** it (8 pt / +20 RP). HQ cargo seeds **5 oil** for ground fuel (same as `trucks`). Defer town charters until the survey column moves. Later: `filidx`, `frminf` escort, silici scouting. Wreck charters (`CONTRACT` / `research` on belt hulks) when staged.'
+	economic   = 'Startup: **surface drill only** on HQ; factory copy of **`mcored`** costs **1000 balance** at init; **+50 iron** on cargob costs **500** more (**8500 cash** on hand). HQ: **`set hold 20 terran`** then **`@produce terran`** (manpower for nested crew and **`use mcored`** builds beats cash income early). **`use mcored`** to build the first **core drill**, then stack more **core drills** and **`agrplx` farms** on the grant. **Energy first:** keep **`cplant`** (or add **`fossil`**) running before scaling extraction. Scout with **`msrvtm` to `moblab`** carrying a **`mcored` technology copy** (not trucks): adjacent exits show **deep pocket of resources detected** once the factory copy is present; move the lab into the pocket cell to read **Deep resources:** assays. Defer UN town charters until the home grant is production-maxed. Trade at UN markets when local mass is thin.'
+	researcher = 'HQ: **`set hold 20 terran`** beside **`@produce terran`**. Build **`msrvtm` to `moblab` first** on the factory copy, then **`get` crew, food, and oil** from HQ cargo (no `@` on mobile stack), **`move`** to the adjacent grant anomaly and **`research`** it (8 pt / +20 RP). HQ cargo seeds **5 oil** for ground fuel (same as `trucks`). Defer town charters until the survey column moves. Later: `filidx`, `frminf` escort, silici scouting. Wreck charters (`CONTRACT` / `research` on belt hulks) when staged.'
 	contractor = 'HQ: **`set hold 20 terran`** beside **`@produce terran`**. File UN `CONTRACT` / `give-module` jobs first (food, wind, drills). Spend rewards on trade and the same live verbs as economic.'
 }
 
@@ -146,12 +146,12 @@ function Add-EconomicStartupToGamein {
 	$text = [regex]::Replace($text, $balancePattern, '${1}8500${2}', 1)
 
 	$stackId = Get-FactoryStackId -FactionId $FactionId
-	if ($text -match ('<modulestack name="' + [regex]::Escape($stackId) + '"[\s\S]*?<technology name="cdrill"')) {
+	if ($text -match ('<modulestack name="' + [regex]::Escape($stackId) + '"[\s\S]*?<technology name="mcored"')) {
 		return $text
 	}
 
 	$stackOpen = '(<modulestack name="' + [regex]::Escape($stackId) + '" type="factry" quantity="2" faction="' + $FactionId + '">)'
-	$replacement = '${1}' + "`n`t`t`t`t`t`t<technology name=`"cdrill`" name-en=`"mineral core drilling`" />"
+	$replacement = '${1}' + "`n`t`t`t`t`t`t<technology name=`"mcored`" name-en=`"mineral core drilling`" />"
 	$text = [regex]::Replace($text, $stackOpen, $replacement, 1)
 	if ($text -eq $GameinText) {
 		throw "Economic startup: factory stack $stackId not found for faction $FactionId."
@@ -221,12 +221,12 @@ function Add-ResearcherStartupToGamein {
 	$text = [regex]::Replace($text, $balancePattern, '${1}9000${2}', 1)
 
 	$stackId = Get-FactoryStackId -FactionId $FactionId
-	if ($text -match ('<modulestack name="' + [regex]::Escape($stackId) + '"[\s\S]*?<technology name="moblib"')) {
+	if ($text -match ('<modulestack name="' + [regex]::Escape($stackId) + '"[\s\S]*?<technology name="msrvtm"')) {
 		return $text
 	}
 
 	$stackOpen = '(<modulestack name="' + [regex]::Escape($stackId) + '" type="factry" quantity="2" faction="' + $FactionId + '">)'
-	$replacement = '${1}' + "`n`t`t`t`t`t`t<technology name=`"moblib`" name-en=`"mobile laboratory`" />"
+	$replacement = '${1}' + "`n`t`t`t`t`t`t<technology name=`"msrvtm`" name-en=`"mobile survey team`" />"
 	$text = [regex]::Replace($text, $stackOpen, $replacement, 1)
 	if ($text -eq $GameinText) {
 		throw "Researcher startup: factory stack $stackId not found for faction $FactionId."

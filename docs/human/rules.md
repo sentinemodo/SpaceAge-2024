@@ -172,12 +172,12 @@ Bank credits/debits the interest quarterly; balance is in whole credits.
 
 | Grant type | Target | Cost rule | Examples |
 |------------|--------|-----------|----------|
-| **Technology** | Modulestack (`unit-id`) | **125 × RP cost** (catalog `cost`, else **8×2^(L−1)** for level L) | `cdrill` L1 → **1000**; L2 → **2000**; `rckter` → **500** |
+| **Technology** | Modulestack (`unit-id`) | **125 × RP cost** (catalog `cost`, else **8×2^(L−1)** for level L) | `mcored` L1 → **1000**; L2 → **2000**; `rckter` → **500** |
 | **Skill** | Person (`person-id`) | **150 × training-duration** (weeks) | `hmedic` (6 wk) → **900**; `logoff` (5 wk) → **750**; `arkplt` (10 wk) → **1500** |
 | **Item** | Modulestack | **qty × max(1, nominal value) × 4** | 30 `iron` → **240**; 1 `terran` (50) → **200**; **`cash`:** **1:1** |
 | **Module** | Modulestack | **qty × max(250, 5×build_cost + 100×producing tech level)** | 1 `farms` → **250**; 1 `factry` → **350**; 1 `cdrill` → **550** |
 
-Faction must **already know** a technology before granting a copy. Skills are not granted if the person already has them. Items and modules go to **your** formed stacks (same rules as receiving **GIVE** from yourself). **GRANT** does not bypass catalog prerequisites for **USE**.
+**GRANT technology** may deliver any catalog technology (payment only; no prior research or copy required). Skills are not granted if the person already has them. Items and modules go to **your** formed stacks (same rules as receiving **GIVE** from yourself). **GRANT** does not bypass catalog prerequisites for **USE**.
 
 ---
 
@@ -325,7 +325,7 @@ SEE <transporter>
 
 **SELL** — `SELL <qty|ALL> <item|module> [AT price|AVERAGE]` | `SELL <tech-id> …`. Place an offer to sell the item, module or technology on the region's market.
 
-**SET** — `SET AVOID|ALLOW BANK|SHARING|PATROL TRUE|FALSE`
+**SET** — `SET AVOID|ALLOW BANK|SHARING|PATROL TRUE|FALSE` | `SET HOLD <qty> <item-id>`
 
 |Flag|Behaviour|
 |-----|----------|
@@ -333,6 +333,7 @@ SEE <transporter>
 |Allow Bank|if true unit can draw cash from bank when needed - upkeep, or market purchase.|
 |Sharing|If true unit will share resources when other units need them for fuel, upkeep, production|
 |Patrol|If true unit will prevent hostile units entry and will prevent region, space object names changes by non-allies|
+|Hold|Reserves a quantity of an item on the stack. **GET** from this stack cannot take that item below the reserve. `SET HOLD 0 <item-id>` clears it. On HQ with `@produce terran`, use e.g. `set hold 20 terran` so scouts do not drain crew.|
 
 **STACK** — `STACK <parent|newN>` | `STACK top` | `STACK out` — **`top`/`out` lowercase**. Nest the modulestack under different parent unit or eject them to the region. Unit must have sufficient capacity to accept the stacked unit size. Some units may only be stacked under specific type of modules, e.g. figther drones may only be stacked under drone bay if they are to participate in combat.
 

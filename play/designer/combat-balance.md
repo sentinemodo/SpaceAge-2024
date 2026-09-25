@@ -102,8 +102,8 @@ SampleGame goldens use **Tests/data.xml** (tanks dmg 4, gunplc HP 100) → captu
 
 | Level | Use-time (weeks) | Campaign example |
 |-------|------------------|------------------|
-| L0 | 8 | `stnrdf` 8 wk, 8 iron + 4 titani |
-| L1 | 10–13 | `armcbt` 10, `lasopt`/`lstrrt` 10, `frminf` 13 |
+| L0 | 8–13 | `stnrdf` 8 wk, 8 iron + 4 titani; `frminf` 13 |
+| L1 | 10–13 | `armcbt` 10, `lasopt`/`lstrrt` 10 |
 | L2–3 | 12–14 | `xraylo` 12, `drnhng` 14, `mslpod` 14 |
 | L4–6 | 16–20 | `alnfgh` 16, `kntcgn`/`shplas` 16, `gausgn` 20 |
 | L7–10 | 24–40 | `crumis` 8, `spngun` 10, `arkcns` 13 |

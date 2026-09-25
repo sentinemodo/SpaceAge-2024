@@ -10,7 +10,7 @@
 		<technology name="strans" />
 		<technology name="drnhng" />
 		<technology name="alnfgh" />
-		<technology name="cdrill" />
+		<technology name="mcored" />
 		<technology name="uminng" />
 		<technology name="he3min" />
 	</faction>
@@ -124,7 +124,7 @@
 							<upkeep type="cash" quantity="526" />
 							<modulestack name="201" type="robofc" quantity="1" faction="2">
 								<technology name="autfab" name-en="automated fabrication" />
-								<technology name="cdrill" name-en="mineral core drilling" />
+								<technology name="mcored" name-en="mineral core drilling" />
 								<technology name="uminng" name-en="uranium mining" />
 								<technology name="he3min" name-en="helium-3 mining" />
 								<itemstack type="iron" quantity="27" />
@@ -133,8 +133,8 @@
 								<event week="1" description="got 10 units of titanium [titani] from space shuttle [100]." />
 								<event week="1" description="got unit of copper [copper] from space shuttle [100]." />
 								<event week="1" description="got 6 terrans [terran] from space shuttle [100]." />
-								<event week="1" description="copied mineral core drilling [cdrill] technology to advanced robo-factory [201]." />
-								<event week="1" description="received copy of mineral core drilling [cdrill] technology from advanced robo-factory [201]." />
+								<event week="1" description="copied mineral core drilling [mcored] technology to advanced robo-factory [201]." />
+								<event week="1" description="received copy of mineral core drilling [mcored] technology from advanced robo-factory [201]." />
 								<event week="1" description="copied uranium mining [uminng] technology to advanced robo-factory [201]." />
 								<event week="1" description="received copy of uranium mining [uminng] technology from advanced robo-factory [201]." />
 								<event week="1" description="copied helium-3 mining [he3min] technology to advanced robo-factory [201]." />

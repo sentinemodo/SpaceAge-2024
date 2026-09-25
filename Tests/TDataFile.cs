@@ -710,7 +710,7 @@ namespace UnitTests
 			{
 				"#faction 2",
 				"#modulestack 000004",
-				"use agrplx as \"farms1\"",
+				"use agrplx as \"new1\"",
 				"#end"
 			});
 
@@ -738,7 +738,7 @@ namespace UnitTests
 			{
 				"#faction 2",
 				"#modulestack 000004",
-				"use agrplx as \"farms2\"",
+				"use agrplx as \"new2\"",
 				"#end"
 			});
 			this.executeFactoryWeek(factory, 2);
@@ -766,7 +766,7 @@ namespace UnitTests
 			{
 				"#faction 2",
 				"#modulestack 000004",
-				"use armcbt as \"tanks1\"",
+				"use armcbt as \"new1\"",
 				"#end"
 			});
 			this.executeFactoryWeek(factory, 0);
@@ -786,7 +786,7 @@ namespace UnitTests
 			{
 				"#faction 2",
 				"#modulestack 000004",
-				"use wndtrb as \"wind1\"",
+				"use wndtrb as \"new2\"",
 				"#end"
 			});
 			this.executeFactoryWeek(factory, 1);
@@ -1376,7 +1376,7 @@ namespace UnitTests
 			{
 				"#faction 2",
 				"#modulestack 000004",
-				"use agrplx as \"farms1\"",
+				"use agrplx as \"new1\"",
 				"#end"
 			});
 			this.executeFactoryWeek(factory, 0);

@@ -130,7 +130,7 @@ public static partial class DraftPromptBuilder
                 #modulestack <factry-id>
                 get 2 iron from <cargob-id>
                 get 2 silici from <cargob-id>
-                use moblib as new109
+                use msrvtm as new109
 
                 #modulestack <hq-id>
                 set hold 20 terran
@@ -217,7 +217,7 @@ public static partial class DraftPromptBuilder
                 sell 200 food at average
 
                 #modulestack <factry-id>
-                use cdrill as new108 for <hq-id>
+                use mcored as new108 for <hq-id>
                 +get 25 iron from <cargob-id>
                 +get 10 titani from <cargob-id>
                 #modulestack new108
@@ -319,7 +319,7 @@ public static partial class DraftPromptBuilder
             var anomaly = hints.AnomalyRegionId ?? "the adjacent anomaly region-id from the report exits";
             return $"""
                 Write turn {hints.DraftTurn} orders for this faction.
-                Priority: factory stack FIRST — get materials from cargob, then `use moblib as newNNN`.
+                Priority: factory stack FIRST — get materials from cargob, then `use msrvtm as newNNN`.
                 Then run the grant economic loop (@produce, @use, sell food).
                 HQ: `set hold 20 terran` beside `@produce terran`.
                 On the new moblab stack: bare `get` terran and oil; definite `move {anomaly}`; continuous `@research {anomaly}` (like `@produce`).
@@ -343,8 +343,8 @@ public static partial class DraftPromptBuilder
                 Write turn {hints.DraftTurn} orders for this faction.
                 Priority: `@produce energy` on cplant FIRST — HQ is often 80/80 with no headroom; do not activate a nested cdrill (+5 draw) until a 3rd cplant (fossil, 100 iron) is online.
                 HQ leftover: `@produce terran` (not cash — manpower for nested crew beats bank income early).
-                Surface drill: @use hcdril + @use iminng (iron for next cplant). Factory: `use cdrill as newNNN for <hq-id>` then `+get` iron/titani; on `#modulestack newNNN`: `has 1 cdrill`, `-get` 6 terran, deactivate 1 until energy margin.
-                Turn 2+: moblib/moblab with cdrill tech copy to scout deep pockets (exit hint from grant; Deep resources line on-site). Activate cdrill @use iminng on pocket. Next agrplx/farms vs pocket cdrill by bottleneck.
+                Surface drill: @use hcdril + @use iminng (iron for next cplant). Factory: `use mcored as newNNN for <hq-id>` then `+get` iron/titani; on `#modulestack newNNN`: `has 1 cdrill`, `-get` 6 terran, deactivate 1 until energy margin.
+                Turn 2+: msrvtm/moblab with mcored tech copy to scout deep pockets (exit hint from grant; Deep resources line on-site). Activate cdrill @use iminng on pocket. Next agrplx/farms vs pocket cdrill by bottleneck.
                 Defer UN town/CONTRACT charters until home grant production is maxed.
                 Use only stack ids from the Orders template. Lowercase immediate verbs (get, use); leftover lines use @ prefix.
                 """;

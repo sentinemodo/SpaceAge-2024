@@ -169,6 +169,57 @@ namespace UnitTests
 
 
 		[Test]
+		public void AssignUseOrder_RejectsProseAlias()
+		{
+			List<string> testcommands = new List<string>
+            {
+                "#faction 2",
+                "#modulestack 000004",
+                "use grndtr as Scout",
+                "#end"
+            };
+
+			OrdersReader ordersReader = new OrdersReader(game);
+			Exception ex = Assert.Throws<Exception>(() => ordersReader.AssignOrders(testcommands));
+			Assert.That(ex.Message, Does.Contain("Scout"));
+
+			testcommands[2] = "use grndtr as farms1";
+			ex = Assert.Throws<Exception>(() => ordersReader.AssignOrders(testcommands));
+			Assert.That(ex.Message, Does.Contain("farms1"));
+		}
+
+
+		[Test]
+		public void AssignUseOrder_AcceptsNewAliasAndNumericReceiver()
+		{
+			Sequence.Ints.Push(100);
+
+			ModuleStack factory = this.game.ModuleStacks["000004"];
+			new OrdersReader(this.game).AssignOrders(new List<string>
+            {
+                "#faction 2",
+                "#modulestack 000004",
+                "use agrplx as newScout",
+                "#end"
+            });
+			UseOrder newAlias = (UseOrder)factory.Orders[0];
+			Assert.That(newAlias.Receiver.Name, Is.EqualTo("100"));
+
+			factory.Orders.Clear();
+			Sequence.Ints.Push(200);
+			new OrdersReader(this.game).AssignOrders(new List<string>
+            {
+                "#faction 2",
+                "#modulestack 000004",
+				"use agrplx as 000004",
+				"#end"
+            });
+			UseOrder numeric = (UseOrder)factory.Orders[0];
+			Assert.That(((ModuleStack)numeric.Receiver).Name, Is.EqualTo("000004"));
+		}
+
+
+		[Test]
 		public void AssignUseOrder_ForClauseWithoutAs()
 		{
 			// "use <tech> for <id>" produces the module into an existing stack without

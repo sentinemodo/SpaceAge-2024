@@ -214,7 +214,7 @@ namespace SpaceAge
 				return false;
 			}
 
-			Technology cdrillTechnology = Technology.All["cdrill"];
+			Technology cdrillTechnology = Technology.All["mcored"];
 			ModuleType cdrillModule = ModuleType.All["cdrill"];
 			foreach (ModuleStack root in this.ModuleStacks.Values)
 			{

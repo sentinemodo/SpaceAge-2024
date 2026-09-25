@@ -346,6 +346,18 @@ namespace UnitTests
 			ModuleType wnplnt = ModuleType.All["wnplnt"];
 			Assert.That(wnplnt.OperationCondition_LocationTypes, Does.Contain(ELocationType.solidSurface));
 			Assert.That(wnplnt.OperationCondition_LocationTypes, Does.Contain(ELocationType.liquidSurface));
+
+			Technology frminf = Technology.All["frminf"];
+			Assert.That(frminf.Level, Is.EqualTo(0));
+			Assert.That(frminf.UseCondition_ModuleTypesGroup, Is.EqualTo(EModuleTypesGroup.production));
+			Assert.That(frminf.UseCondition_LocationTypes, Does.Contain(ELocationType.solidSurface));
+			Assert.That(frminf.UseCondition_TemperatureBand, Is.EqualTo(ETemperatureBand.habitable));
+			Assert.That(frminf.UseProduceModules.Name, Is.EqualTo("inftry"));
+
+			ModuleType inftry = ModuleType.All["inftry"];
+			Assert.That(inftry.DamageCapacity, Is.EqualTo(52));
+			Assert.That(inftry.Consume[ItemType.All["food"]].Quantity, Is.EqualTo(26));
+			Assert.That(inftry.Consume[ItemType.All["terair"]].Quantity, Is.EqualTo(26));
 		}
 
 		[Test]

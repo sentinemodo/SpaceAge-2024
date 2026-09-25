@@ -267,13 +267,6 @@ namespace SpaceAge
 			switch (this.GrantKind)
 			{
 				case EGrantKind.technology:
-					if (!this.factionKnowsTechnology(issuer, this.Technology))
-					{
-						issuer.EventReports.Add(
-							week,
-							string.Format("GRANT failed. Faction does not know {0} technology.", this.Technology.ReportName));
-						return false;
-					}
 					if (this.TargetStack.ModuleType == null)
 					{
 						issuer.EventReports.Add(week, "GRANT failed. Target stack is not formed.");
@@ -421,26 +414,6 @@ namespace SpaceAge
 				week,
 				string.Format("GRANT module {0} {1} to {2}.", this.Quantity, this.ModuleType.Name, this.TargetStack.Name));
 			return true;
-		}
-
-		private bool factionKnowsTechnology(Faction faction, Technology technology)
-		{
-			if (technology == null || faction == null)
-			{
-				return false;
-			}
-			if (faction.TechnologiesSeen.Contains(technology.Name))
-			{
-				return true;
-			}
-			foreach (ModuleStack stack in ModuleStack.All.Values)
-			{
-				if (stack.Owner == faction && stack.HasTechnology(technology))
-				{
-					return true;
-				}
-			}
-			return false;
 		}
 
 		private string debitTitle()

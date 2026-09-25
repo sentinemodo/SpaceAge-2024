@@ -199,6 +199,42 @@ namespace SpaceAge
 			return false;
 		}
 
+		// USE … AS / FOR targets: newN aliases or numeric modulestack ids (≤ MaxNameLength digits).
+		public static bool IsValidUseOrderStackReference(string name)
+		{
+			if (string.IsNullOrEmpty(name))
+			{
+				return false;
+			}
+			if (name.StartsWith("new"))
+			{
+				return true;
+			}
+			if (name.Length > NamedObject.MaxNameLength)
+			{
+				return false;
+			}
+			for (int i = 0; i < name.Length; i++)
+			{
+				char c = name[i];
+				if (c < '0' || c > '9')
+				{
+					return false;
+				}
+			}
+			return true;
+		}
+
+		public static void EnsureValidUseOrderStackReference(string name)
+		{
+			if (!ModuleStack.IsValidUseOrderStackReference(name))
+			{
+				throw new Exception(
+					"Bad syntax receiver modulestack id expected (numeric unit id or newN alias). Received: "
+					+ name);
+			}
+		}
+
 		private bool moduleTypeIsCombatArmed(ModuleType type)
 		{
 			if (type == null)

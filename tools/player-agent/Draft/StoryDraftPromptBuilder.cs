@@ -83,7 +83,7 @@ public static partial class StoryDraftPromptBuilder
         var tacticalBullets = isResearcher
             ? """
                 - HQ: set hold 20 terran beside @produce terran
-                - Factory first: use moblib as new109 (mobile lab priority); defer filidx/cmplib and frminf escort to later quarters
+                - Factory first: use msrvtm as new109 (mobile lab priority); defer filidx/cmplib and frminf escort to later quarters
                 - Grant economic loop (@produce terran, @use farmng / @use hcdril, @produce energy, sell food via cargob)
                 - get 1 terran, food, and oil from HQ stacks onto new109 (no @ on mobile stack; moblab burns oil like trucks)
                 - move adjacent anomaly region-id; research that region (8-point threshold, +20 RP resolve)
@@ -92,10 +92,10 @@ public static partial class StoryDraftPromptBuilder
                 : isEconomic
                 ? """
                     - HQ: set hold 20 terran and @produce terran (manpower for nested crew beats cash income early)
-                    - Factory first: seeded cdrill tech (−1000 balance at init) — get 25 iron + 10 titani, use cdrill as new108 for the first core drill on the grant
+                    - Factory first: seeded mcored tech (−1000 balance at init) — get 25 iron + 10 titani, use mcored as new108 for the first core drill on the grant
                     - Energy before scale: @produce energy on cplant; add fossil/cplant copies when carbon tight before stacking more drills
                     - Grant loop on surface drill until core drill online (@use hcdril / @use iminng on sdrill-id, @use farmng, sell surplus food)
-                    - Scout with moblib/moblab carrying a cdrill technology copy (not trucks): adjacent exits show deep pocket of resources detected; move lab into pocket cell to read Deep resources assays
+                    - Scout with msrvtm/moblab carrying an mcored technology copy (not trucks): adjacent exits show deep pocket of resources detected; move lab into pocket cell to read Deep resources assays
                     - Defer CT town charter until home grant production is maxed; next build agrplx farms or cdrill on deep pockets by market bottleneck
                     """
                 : isMilitary
@@ -115,7 +115,7 @@ public static partial class StoryDraftPromptBuilder
         var narrativeHook = isResearcher
             ? "adjacent HQ anomaly detected on grant exits, mobile lab field survey, 8-point investigation threshold"
             : isEconomic
-                ? "surface drill bootstrap, paid cdrill tech copy, moblab deep-pocket scouting column before grant expansion"
+                ? "surface drill bootstrap, paid mcored tech copy, moblab deep-pocket scouting column before grant expansion"
                 : isMilitary
                     ? "anonymous Mid Vale fauna rumor, scout truck on Farm Belt, two armored tank squads clearing brush for CT0016 cash"
                     : "UN town charter via TRANSFER TO FACTION 1";

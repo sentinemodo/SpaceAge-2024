@@ -106,12 +106,12 @@ Crew **30**. Arbor **3** `farms` + **2** `cplant`. Anvil **2** `farms` + **8** `
 | Item | Default (non-economic) | Economic persona | Researcher persona |
 |------|------------------------|------------------|-------------------|
 | HQ extractor | `sdrill` module | `sdrill` module | `sdrill` module |
-| Factory tech copy | none | **`cdrill`** on HQ `factry` | **`moblib`** on HQ `factry` |
+| Factory tech copy | none | **`mcored`** on HQ `factry` | **`msrvtm`** on HQ `factry` |
 | Faction `balance` | **10000** | **9000** (−1000) | **9000** (−1000) |
 | `credit-line` | 10000 | 10000 | 10000 |
-| Cargo extras | seed default | **10 titani** on HQ `cargob` (first `cdrill` build) | **5 oil** on HQ `cargob` |
+| Cargo extras | seed default | **10 titani** on HQ `cargob` (first `mcored` build) | **5 oil** on HQ `cargob` |
 
-Economic Interests pay **1000 cash** at init for a factory **`cdrill`** copy, then **`use cdrill`** to field the first **core drill** and stack more **`agrplx` / `cdrill`** on the grant once **`cplant`** energy keeps pace. Non-economic factions research **`cdrill`** normally (L1, 8 RP default). `_gen_gamein.py` emits **`sdrill`** only; persona injections happen after the preference roll.
+Economic Interests pay **1000 cash** at init for a factory **`mcored`** copy, then **`use mcored`** to field the first **core drill** and stack more **`agrplx` / `cdrill`** on the grant once **`cplant`** energy keeps pace. Non-economic factions research **`mcored`** normally (L1, 8 RP default). `_gen_gamein.py` emits **`sdrill`** only; persona injections happen after the preference roll.
 
 | Line | Qty | Rate | Arbor | Anvil |
 |------|-----|------|------:|------:|
@@ -233,7 +233,7 @@ Militias (Arbor First / HCS) start **without** buy/sell. Neutral trade is option
 
 Faction-level immediate orders (with `#faction` only — no stack header). Debit **faction bank balance** when the host executes between-turn submissions (same window as **CONTRACT** / **RUMOR** / **PRESS**). Integer credits only.
 
-**Model:** one **RP-equivalent tier** for technologies (matches Economic persona **1000** cash for a factory **`cdrill`** copy at init = **125 × 8 RP**). Items/modules use catalog **nominal `value`** and **`build_cost`** (same definitions as upkeep — [`technology.md`](technology.md) default RP `8 × 2^(level−1)` when `cost` omitted). Skills price **training-duration** weeks at the same weekly rate as a terran officer on the UN ask (**150 credits / week**).
+**Model:** one **RP-equivalent tier** for technologies (matches Economic persona **1000** cash for a factory **`mcored`** copy at init = **125 × 8 RP**). Items/modules use catalog **nominal `value`** and **`build_cost`** (same definitions as upkeep — [`technology.md`](technology.md) default RP `8 × 2^(level−1)` when `cost` omitted). Skills price **training-duration** weeks at the same weekly rate as a terran officer on the UN ask (**150 credits / week**).
 
 ### Technology
 
@@ -288,7 +288,7 @@ Examples: **1** `farms` (`agrplx`, build 20, L0) → **250**; **1** `factry` (`i
 
 | Rule | Detail |
 |------|--------|
-| Eligibility — tech | Faction must **already know** the technology (completed research or any owned copy). GRANT adds another **copy** to the target stack; receiver **technology-capacity** applies (overflow behaves like `ReceiveTechnologyCopy`). |
+| Eligibility — tech | Any catalog technology may be granted (bank debit only). GRANT adds a **copy** to the target stack; receiver **technology-capacity** applies (overflow uses `FindTechnologyCopyHost` like `ReceiveTechnologyCopy`). |
 | Eligibility — skill | Target **person** must not already have that skill. |
 | Eligibility — item/module | Target **modulestack** must be **same faction** and **same location** as a stack that could receive **GIVE** (attitude ≥ neutral to self). |
 | Prerequisites | GRANT does **not** bypass catalog `requires` for **USE** — only delivers the asset. |

@@ -5682,7 +5682,7 @@ Galaxy report:
         week 13: paid 20 cash [cash] upkeep.
       + advanced robo-factory [201], advanced robo-factory [robofc].
         size: 1000, mass: 1020 (750), capacity: 500/135, energy: 15, upkeep: 60 cash [cash].
-        technologies: automated fabrication [autfab], mineral core drilling [cdrill], uranium mining
+        technologies: automated fabrication [autfab], mineral core drilling [mcored], uranium mining
         [uminng], helium-3 mining [he3min].
         items: 27 units of iron [iron] (size: 135, mass: 270).
         events:
@@ -5828,7 +5828,7 @@ give 4 heliu3 to 450
 
 #modulestack 201
 ; + advanced robo-factory [201], advanced robo-factory [robofc].
-; technologies: automated fabrication [autfab], mineral core drilling [cdrill], uranium mining
+; technologies: automated fabrication [autfab], mineral core drilling [mcored], uranium mining
 ; [uminng], helium-3 mining [he3min].
 ; items: 27 units of iron [iron].
 

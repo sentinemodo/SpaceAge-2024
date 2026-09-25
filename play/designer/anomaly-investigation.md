@@ -83,17 +83,17 @@ Payouts **never skip more than one level** on the tree and **never grant L8+** f
 | **Resource tease** | One-line hint in report: e.g. “ferrous”, “elevated U”, “silicate alteration” — **no** map quantity until L2+ band revisit rule (optional wishlist: **re-open** at higher band). |
 | **Contract hook** | 10% chance UN posts a **local** `give-module` follow-up (deliver `moblab` to a neighbour faction) — flavour only at this band. |
 
-**Realistic close time (8 pt threshold):** 8 weeks on-match `moblab` (spectral/radiometric); ~16 weeks off-match (magnetic/seismic/gravimetric). Add ~3 weeks factory pipeline (`moblib` → `moblab`) and 1 hop `MOVE` from grant. Researcher persona seeds `moblib` only — see startup package below.
+**Realistic close time (8 pt threshold):** 8 weeks on-match `moblab` (spectral/radiometric); ~16 weeks off-match (magnetic/seismic/gravimetric). Add ~3 weeks factory pipeline (`msrvtm` → `moblab`) and 1 hop `MOVE` from grant. Researcher persona seeds `msrvtm` only — see startup package below.
 
 ### Researcher startup package (init-run)
 
 | Item | All factions | Researcher persona only |
 |------|--------------|-------------------------|
-| Factory tech copy | none | `moblib` on HQ `factry` stack |
+| Factory tech copy | none | `msrvtm` on HQ `factry` stack |
 | Faction `balance` | 10000 | **9000** (−1000 cash; **`credit-line` stays 10000**) |
 | Cargo | seed default | **+5 oil** on HQ `cargob` (same fuel rule as `trucks`: 1 oil / 13 weeks ground move) for initial `moblab` expedition |
 
-Non-researcher factions research `moblib` normally (L1, 8 RP default). `_gen_gamein.py` seeds **`sdrill`** (surface drill) on every HQ and must **not** emit persona tech copies on factories; `init-run.ps1` injects **`moblib`** (researcher) or **`cdrill`** (economic, −1000 balance) after the preference roll.
+Non-researcher factions research `msrvtm` normally (L1, 8 RP default). `_gen_gamein.py` seeds **`sdrill`** (surface drill) on every HQ and must **not** emit persona tech copies on factories; `init-run.ps1` injects **`msrvtm`** (researcher) or **`mcored`** (economic, −1000 balance) after the preference roll.
 
 ### L2–3 — optical and radiation base (optins, radtol, shuttles)
 

@@ -45,7 +45,7 @@ Bank report:
   Credit rate: 20%, Deposit rate: 4%.
 
 Technology reports:
-+ mineral core drilling [cdrill]: Mineral exploitation.
++ mineral core drilling [mcored]: Mineral exploitation.
   - core drill [cdrill]: Advanced mining system. A core drill allows you to strip minerals and
     various resources out of the core of any solid body.
 + uranium mining [uminng]: The extraction, purification and refining of pechblend, the basic uranium
@@ -5636,15 +5636,15 @@ Galaxy report:
         week 13: paid 20 cash [cash] upkeep.
       + advanced robo-factory [201], advanced robo-factory [robofc].
         size: 1000, mass: 750 (750), capacity: 500/0, energy: 15, upkeep: 60 cash [cash].
-        technologies: automated fabrication [autfab], mineral core drilling [cdrill], uranium mining
+        technologies: automated fabrication [autfab], mineral core drilling [mcored], uranium mining
         [uminng], helium-3 mining [he3min].
         events:
           week 1: got 27 units of iron [iron] from space shuttle [100].
           week 1: got 10 units of titanium [titani] from space shuttle [100].
           week 1: got unit of copper [copper] from space shuttle [100].
           week 1: got 6 terrans [terran] from space shuttle [100].
-          week 1: copied mineral core drilling [cdrill] technology to advanced robo-factory [201].
-          week 1: received copy of mineral core drilling [cdrill] technology from advanced
+          week 1: copied mineral core drilling [mcored] technology to advanced robo-factory [201].
+          week 1: received copy of mineral core drilling [mcored] technology from advanced
           robo-factory [201].
           week 1: copied uranium mining [uminng] technology to advanced robo-factory [201].
           week 1: received copy of uranium mining [uminng] technology from advanced robo-factory
@@ -5827,7 +5827,7 @@ sell 300 food
 
 #modulestack 201
 ; + advanced robo-factory [201], advanced robo-factory [robofc].
-; technologies: automated fabrication [autfab], mineral core drilling [cdrill], uranium mining
+; technologies: automated fabrication [autfab], mineral core drilling [mcored], uranium mining
 ; [uminng], helium-3 mining [he3min].
 
 #modulestack 202

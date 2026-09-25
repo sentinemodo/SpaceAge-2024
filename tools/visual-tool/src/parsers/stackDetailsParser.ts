@@ -1,6 +1,8 @@
 const STACK_HEADER = /\[([A-Za-z0-9]+)\]/;
 const SECTION_BREAK =
   /^(?:\* |[A-Z][a-z]+ report:|Rumors:|Orders Template:|Events during turn:|Bank report:|-{3,}|\s*\+?\s*[A-Za-z].*\[[SP]\d)/;
+const DETAIL_FIELD =
+  /^\s*(size:|mass:|capacity:|upkeep:|items:|technologies:|energy:|crew:|consume:|events:)/i;
 
 /** Parse indented detail blocks from galaxy report text keyed by stack id. */
 export function parseStackDetails(galaxyText: string): Map<string, string> {
@@ -31,9 +33,9 @@ export function parseStackDetails(galaxyText: string): Map<string, string> {
     }
 
     if (currentId && /^\s{2,}/.test(line) && !SECTION_BREAK.test(trimmed)) {
-      if (/^\s*(size:|mass:|capacity:|upkeep:|items:|technologies:|energy:|crew:|consume:)/i.test(trimmed)) {
+      if (DETAIL_FIELD.test(trimmed)) {
         buffer.push(trimmed);
-      } else if (buffer.length > 0 && /^\s+[a-z]/i.test(line)) {
+      } else if (buffer.length > 0) {
         buffer[buffer.length - 1] += ` ${trimmed}`;
       }
       continue;

@@ -441,6 +441,10 @@ namespace SpaceAge
 							{
 								technology.UseCondition_ModuleType = elAllowed.GetAttribute("module");
 							}
+							if (elAllowed.HasAttribute("planet-temperature"))
+							{
+								technology.UseCondition_TemperatureBand = BodyEnvironment.ParseTemperature(elAllowed.GetAttribute("planet-temperature"));
+							}
 					    }
                     }
                     catch (KeyNotFoundException ex)

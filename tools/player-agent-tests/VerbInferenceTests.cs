@@ -9,7 +9,7 @@ public class VerbInferenceTests
     [Test]
     public void InferBoostVerbs_ResearcherPersona_PrefersOperationalVerbs()
     {
-        const string persona = "## Preference: researcher\nBuild moblib first; defer CT0007 town CONTRACT until later.";
+        const string persona = "## Preference: researcher\nBuild msrvtm first; defer CT0007 town CONTRACT until later.";
 
         var verbs = VerbInference.InferBoostVerbs(persona);
 

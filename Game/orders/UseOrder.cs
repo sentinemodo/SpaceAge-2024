@@ -57,6 +57,7 @@ namespace SpaceAge
 					{
 						throw new Exception("Bad syntax receiver modulestack id expected or alias. Received: " + alias);
 					}
+					ModuleStack.EnsureValidUseOrderStackReference(alias);
 					this.Receiver = ModuleStack.All.GetOrCreateNewModuleStack(this.Producer.Owner, alias);
 					token = LineParser.GetToken(ref command);
 				}
@@ -74,6 +75,7 @@ namespace SpaceAge
 					{
 						throw new Exception("Bad syntax receiver parent modulestack id expected or alias. Received: " + parent);
 					}
+					ModuleStack.EnsureValidUseOrderStackReference(parent);
 					// TODO: possible error here - if we give specific modulestack AS target, put FOR moduleStack that isn't it's current parent
 					this.ReceiverParent = ModuleStack.All.GetOrCreateNewModuleStack(this.Producer.Owner, parent);
 				}
@@ -201,6 +203,18 @@ namespace SpaceAge
 			if (this.Technology.UseCondition_PlanetTypes != null
 				&& this.Technology.UseCondition_PlanetTypes.Count > 0
 				&& !BodyEnvironment.MatchesPlanetType(this.Producer.Location, this.Technology.UseCondition_PlanetTypes))
+			{
+				this.Producer.EventReports.Add(
+						week,
+						string.Format("USE failed: {0} cannot operate in {1}.",
+								this.Technology.ReportName,
+								this.Producer.Location.ReportName));
+
+				return false;
+			}
+
+			if (this.Technology.UseCondition_TemperatureBand.HasValue
+				&& BodyEnvironment.TemperatureAt(this.Producer.Location) != this.Technology.UseCondition_TemperatureBand.Value)
 			{
 				this.Producer.EventReports.Add(
 						week,

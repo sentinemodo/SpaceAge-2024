@@ -10,7 +10,7 @@ Campaign design for body attributes on planets/moons. Attrs are emitted on galax
 | `temperature` | `habitable` `cold` `hot` | Settlement climate band |
 | `atmosphere` | `none` `thin` `terair` `hostile` | Breathable / drag / heat |
 
-`planet-atmosphere="terair"` on USE gates stays as today for habitable farming. Body-level `atmosphere` drives launch and land rules.
+`planet-atmosphere="terair"` on USE gates stays as today for habitable farming. Optional `planet-temperature="habitable|cold|hot"` on `use-allowed-in` gates USE to the parent planet/moon temperature band (e.g. campaign `frminf`). Body-level `atmosphere` drives launch and land rules.
 
 ## Gravity + atmosphere → orbit launch (shuttles only)
 

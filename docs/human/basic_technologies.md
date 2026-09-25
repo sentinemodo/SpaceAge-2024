@@ -219,8 +219,8 @@ Where: production. Needs: 6 iron `[iron]`. Builds: jail block `[jail]`. Time: 4 
 Elementary military tactics, which enable a higher level of combat proficiency. Tag: `military`. Initiative: 5.  
 Where: command. Needs: nothing. Builds: nothing (battle tech). Time: 1 week.
 
-**mineral core drilling [cdrill]**  
-Core-body mineral exploitation. Detects subsurface **deep pockets** on regional exits when a `cdrill` technology copy is present on the observing grant; identifies ore types only when `cdrill` is on-site in the pocket region. Requires a core drill module to extract deep resources.  
+**mineral core drilling [mcored]**  
+Core-body mineral exploitation. Detects subsurface **deep pockets** on regional exits when an `mcored` technology copy is present on the observing grant; identifies ore types only when `mcored` tech or a core drill module is on-site in the pocket region. Requires a core drill module to extract deep resources.  
 Where: production. Needs: 25 iron `[iron]`, 10 titanium `[titani]`. Builds: core drill `[cdrill]`. Time: 3 weeks.
 
 **naval combat [nvlcbt]**  
@@ -235,7 +235,7 @@ Where: extraction, solid-surface. Builds: 2 nickel-iron `[nickfe]`. Time: 1 week
 A rack of chemically boosted rockets sized to nest on a shuttle or station and fire in orbit. Built in a factory on the ground or assembled in space. Tag: `military`.  
 Where: production. Needs: 4 iron `[iron]`. Builds: orbital rocket launcher `[orbrkt]`. Time: 8 weeks.
 
-**mobile laboratory [moblib]**  
+**mobile survey team [msrvtm]**  
 Truck-mounted FTIR, XRF sample prep, and a rugged field terminal for half-rate research away from the factory floor. Tag: `research`. **Requires:** file indexing `[filidx]`.  
 Where: production. Needs: 2 iron `[iron]`, 2 silicium `[silici]`. Builds: mobile laboratory `[moblab]`. Time: 3 weeks.
 
@@ -316,8 +316,8 @@ Diffraction-limited optical and IR instruments for survey and targeting research
 Group `research`. Built by optical and IR instruments `[optins]`. Size 250, mass 60, crew 2, energy 6, HP 35, tech-cap 5, research-output 1. Upkeep 35 cash.
 
 **corporate headquarters [corphq]**  
-A corporate headquarters allow centralized control of the corporation.  
-Group `command`. Built by corporate management `[corpmg]`. Size 1000, mass 1000, crew 20, energy 10, capacity 750, HP 100, tech-cap 2, defense 5. Upkeep 90 cash. Produces 50 cash / week. Effects: 0.1 upkeep reduction and fast construction in the region. Operates in settlement.
+Regional command tower with treasury ledgers, biometric intake booths, and encrypted payroll nets. Centralizes corporation control, construction scheduling, and upkeep optimization across the grant; each operational headquarters module can mint corporate cash or recruit terran crew at full headquarters cadence.  
+Group `command`. Built by corporate management `[corpmg]`. Size 1000, mass 1000, crew 20, energy 10, capacity 750, HP 100, tech-cap 2, defense 5. Upkeep 90 cash. Produces 50 cash / week and 1 terran / week (per operational module). Effects: 0.1 upkeep reduction and fast construction in the region. Operates in settlement.
 
 **crew quarters [crwqrt]**  
 These sealed and protected quarters house crew in the most hostile of the areas. They also allow slow recuperation of wounded crew members.  
@@ -381,7 +381,7 @@ Group `vehicle`. Built by ground transport `[grndtr]`. Size 250, mass 100, crew 
 
 **mobile laboratory [moblab]**  
 Six-wheel flatbed carries FTIR, XRF, and a field terminal for half-rate research and anomaly investigation (spectral, radiometric).  
-Group `research`. Built by mobile laboratory `[moblib]`. Size 220, mass 75, crew 1, capacity 50, energy 3, HP 30, tech-cap 2, research-output 1 (divisor 2), investigation-output 1. Upkeep 5 cash. Consumes 4 food and 4 terran air off-world (damage 25% if not). Ground move speed 0.5. **Fuel duration 13 (1 oil)** — same ground fuel rule as `trucks`. Operates on solid-surface with terran atmosphere.
+Group `research`. Built by mobile survey team `[msrvtm]`. Size 220, mass 75, crew 1, capacity 50, energy 3, HP 30, tech-cap 2, research-output 1 (divisor 2), investigation-output 1. Upkeep 5 cash. Consumes 1 food and 1 terran air per quarter (damage 25% if not). Ground move speed 0.5. **Fuel duration 13 (1 oil)** — same ground fuel rule as `trucks`. Operates on solid-surface with terran atmosphere.
 
 **wind powerplant [wnplnt]**  
 Small serviceless energy system, utilising power of the wind.  
@@ -398,8 +398,8 @@ A mid-rise admin block with interview suites, a small vault, and a satellite upl
 Group `command`. Built by branch office construction `[brnofc]`. Size 300, mass 300, crew 6, energy 4, capacity 150, HP 40, tech-cap 1, defense 2. Upkeep 40 cash. Produces 20 cash / 2 weeks and 1 terran / 2 weeks. No region upkeep-reduction or fast-construction effects. Operates in settlement.
 
 **core drill [cdrill]**  
-Advanced mining system. Strips core-body minerals and extracts **deep-pocket** deposits invisible to surface drills. Carry a `cdrill` technology copy in-region to read deep resource assays; pair with a mobile laboratory for field scouting.  
-Group `extraction`. Built by mineral core drilling `[cdrill]`. Size 1000, mass 1000, crew 6, energy 5, capacity 750, HP 100, tech-cap 4. Upkeep 50 cash. Faster extraction on self. Operates on solid-surface, in settlement or frigate.
+Advanced mining system. Strips core-body minerals and extracts **deep-pocket** deposits invisible to surface drills. Carry an `mcored` technology copy in-region to read deep resource assays; pair with a mobile laboratory for field scouting.  
+Group `extraction`. Built by mineral core drilling `[mcored]`. Size 1000, mass 1000, crew 6, energy 5, capacity 750, HP 100, tech-cap 4. Upkeep 50 cash. Faster extraction on self. Operates on solid-surface, in settlement or frigate.
 
 **engineering shop [engshp]**  
 A small workshop that repairs the parent module stack and nested stacks. REPAIR restores 20 hit points per week and consumes 1 spare part, or 1 hit point with no parts.  
@@ -471,7 +471,7 @@ Size 1, mass 1. Produced by intensive farming `[farmng]` (5), fishery harvest `[
 
 **unit of iron [iron]**  
 Extracted, refined, and purified into industrial steels, iron is a basic construction material widely used in most structures.  
-Size 5, mass 10. Produced by iron mining `[iminng]` (3). Consumed by most L0 builds (see technology entries). Also L1: branch office construction `[brnofc]` (5), city planning `[ctypln]` (26), mineral core drilling `[cdrill]` (25), armored combat `[armcbt]` (8), naval combat `[nvlcbt]` (8), orbital rocket launcher `[orbrkt]` (4), form infantry battalion `[frminf]` (4), rocket launcher production `[rckter]` (2), laser turret `[lstrrt]` (6), preventive servicing `[servic]` (1), engineering shop `[engshp]` (5), law enforcement `[lawenf]` (6), staged hydrolox `[hydstg]` (8), tidal power `[tdlpwr]` (8), underwater drilling `[udrill]` (35), underwater transport `[uwtrs]` (6).
+Size 5, mass 10. Produced by iron mining `[iminng]` (3). Consumed by most L0 builds (see technology entries). Also L1: branch office construction `[brnofc]` (5), city planning `[ctypln]` (26), mineral core drilling `[mcored]` (25), armored combat `[armcbt]` (8), naval combat `[nvlcbt]` (8), orbital rocket launcher `[orbrkt]` (4), form infantry battalion `[frminf]` (4), rocket launcher production `[rckter]` (2), laser turret `[lstrrt]` (6), preventive servicing `[servic]` (1), engineering shop `[engshp]` (5), law enforcement `[lawenf]` (6), staged hydrolox `[hydstg]` (8), tidal power `[tdlpwr]` (8), underwater drilling `[udrill]` (35), underwater transport `[uwtrs]` (6).
 
 **unit of oil [oil]**  
 Black liquid carbon based used as fuel.  
@@ -487,7 +487,7 @@ Size 5, mass 3. Produced by silicium melting `[slcmlt]` (1). Consumed by L0: cor
 
 **unit of titanium [titani]**  
 Due to its resistance to wear, titanium is a good construction material.  
-Size 10, mass 10. Produced by titanium mining `[tminng]` (2). Consumed by L0: action and reaction `[areact]` (10), industrial automation `[indust]` (10), stationary defense `[stnrdf]` (4), shuttles assembly `[shtlas]` (1), space ship assembly `[ssassm]` (4), space control `[spctrl]` (4), uranium fission `[urfiss]` (8), small scale transportation `[strans]` (2), crew housing `[crewhs]` (2). Also L1: mineral core drilling `[cdrill]` (10), laser optics `[lasopt]` (2), laser turret `[lstrrt]` (4), preventive servicing `[servic]` (1), armored combat `[armcbt]` (2), naval combat `[nvlcbt]` (2), staged hydrolox `[hydstg]` (4), underwater drilling `[udrill]` (15), underwater transport `[uwtrs]` (4).
+Size 10, mass 10. Produced by titanium mining `[tminng]` (2). Consumed by L0: action and reaction `[areact]` (10), industrial automation `[indust]` (10), stationary defense `[stnrdf]` (4), shuttles assembly `[shtlas]` (1), space ship assembly `[ssassm]` (4), space control `[spctrl]` (4), uranium fission `[urfiss]` (8), small scale transportation `[strans]` (2), crew housing `[crewhs]` (2). Also L1: mineral core drilling `[mcored]` (10), laser optics `[lasopt]` (2), laser turret `[lstrrt]` (4), preventive servicing `[servic]` (1), armored combat `[armcbt]` (2), naval combat `[nvlcbt]` (2), staged hydrolox `[hydstg]` (4), underwater drilling `[udrill]` (15), underwater transport `[uwtrs]` (4).
 
 **unit of uranium [uraniu]**  
 With a half-life of million of years, this is one of the most stable of the radio-active elements, and one very easy to use in energy power modules.  

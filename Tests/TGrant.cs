@@ -113,6 +113,38 @@ namespace UnitTests
 		}
 
 		[Test]
+		public void ExecuteBetweenTurn_GrantTechnology_WithoutFactionPriorKnowledge()
+		{
+			Faction faction = Faction.All["2"];
+			ModuleStack target = ModuleStack.All["100002"];
+			Technology indust = Technology.All["indust"];
+			Assert.That(indust, Is.Not.Null);
+
+			foreach (ModuleStack stack in ModuleStack.All.Values)
+			{
+				if (stack.Owner == faction && stack.HasTechnology(indust))
+				{
+					Assert.Fail("fixture should not start with indust on faction 2");
+				}
+			}
+
+			double balanceBefore = faction.Bank.Balance;
+			List<string> commands = new List<string>
+			{
+				"#faction 2",
+				"GRANT technology indust to 100002",
+				"#end"
+			};
+			new OrdersReader(this.game).AssignOrders(commands);
+			this.game.ExecuteBetweenTurnOrders();
+
+			Assert.That(
+				target.Technologies.Contains("indust"),
+				"GRANT should deliver a tech copy without prior faction knowledge");
+			Assert.That(faction.Bank.Balance, Is.EqualTo(balanceBefore - GrantCost.TechnologyCredits(indust)));
+		}
+
+		[Test]
 		public void ExecuteBetweenTurn_GrantFails_WhenInsufficientFunds()
 		{
 			Faction faction = Faction.All["2"];

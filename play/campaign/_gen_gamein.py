@@ -274,7 +274,7 @@ class Region:
         self.exits = []
         self.stacks = []
         self.anomaly = None  # type, description, points, rewards[]
-        self.deep_pocket = []  # (type, qty) subsurface; core drill + cdrill tech in region to survey
+        self.deep_pocket = []  # (type, qty) subsurface; core drill + mcored tech in region to survey
 
 
 def _base_anomaly_rewards():
@@ -345,7 +345,7 @@ HQ_ANOMALIES = [
 ]
 
 # One deep pocket per player HQ neighbourhood (~10/71 regions). Requires core drill to extract;
-# exit hint when the observing grant holds cdrill tech; ore types on-site only with cdrill in pocket region.
+# exit hint when the observing grant holds mcored tech; ore types on-site only with mcored/core drill in pocket region.
 HQ_DEEP_POCKETS = [
     (2, "arbor", "Northwind Grant", "Mid Vale", [("titani", 55)]),
     (3, "arbor", "Greenwell Grant", "South Ridge", [("titani", 45), ("iron", 60)]),

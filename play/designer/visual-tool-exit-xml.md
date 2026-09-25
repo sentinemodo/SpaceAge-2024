@@ -39,7 +39,7 @@ Align XML stubs with live text reporting ([`Exits.Report`](../../Game/data%20str
 | **Visited cell** | Target region `Visible(faction)` (faction stack in cell) | Full `<region>` in galaxy slice; stub optional. Attr `discovered="yes"` if stub present |
 | **Settlement hint** | Target `HasSettlement` and source visible | `<capacity group="settlement" quantity="…"/>` on stub (matches “, settlement detected”) |
 | **Surface resources** | Target `Visible(faction)` | `<resource type="…" quantity="…"/>` children (same as today’s region save) |
-| **Deep pocket hint** | Target `HasDeepPocket`, source visible, source `HasCdrillTechnologyFor(faction)` | `<deep-pocket>` with resources (matches “, deep pocket of resources detected”). Quantities only when cdrill is **in the pocket region** (matches “Deep resources:” assay) |
+| **Deep pocket hint** | Target `HasDeepPocket`, source visible, source `HasCdrillTechnologyFor(faction)` | `<deep-pocket>` with resources (matches “, deep pocket of resources detected”). Quantities only when mcored tech or core drill module is **in the pocket region** (matches “Deep resources:” assay) |
 | **Anomaly hint** | Target has unresolved anomaly, source visible | `<anomaly type="…" points="…"/>` only — **no** `description`, rewards, or progress (matches “, anomaly detected”) |
 | **Unknown** | Exit listed but faction lacks layout intel (future SEE/long-range cases) | `<target discovered="no"/>` or omit `X`/`Y`/`type`; visual tool greys label only |
 
@@ -115,7 +115,7 @@ SampleGame goldens may omit `<target>` until refreshed; parser treats missing st
 
 1. **Fixture:** Two adjacent regions `R1`/`R2` on one planet; faction stack only in `R1`. Faction XML report includes `<region name="R1" …>` with exit to `R2` and `<target name="R2" X="…" Y="…" type="…" name-en="…" discovered="partial"/>`. No full `<region name="R2">`.
 2. **Visited:** Same fixture with stack in `R2` → full `<region name="R2">` present; resources/stacks follow existing visibility rules.
-3. **Hints:** Anomaly on `R2`, HQ on `R1` with cdrill copy → stub includes `<anomaly type="…" points="…"/>`; deep pocket + cdrill in `R1` → stub includes `<deep-pocket>` when assay rules match text report.
+3. **Hints:** Anomaly on `R2`, HQ on `R1` with mcored copy → stub includes `<anomaly type="…" points="…"/>`; deep pocket + mcored in `R1` → stub includes `<deep-pocket>` when assay rules match text report.
 4. **Settlement:** Neighbour with `city` → stub includes settlement `<capacity>` when text report would append “, settlement detected”.
 5. **NPC / unfiltered report:** `factionXMLreport == null` or faction `1` behaviour unchanged (all regions emitted; stubs optional).
 6. **Load/save:** `<target>` is **report-only** — not written to `gamein.xml` / `gameout.xml` (emit in `SaveXml` report path only).
@@ -129,6 +129,6 @@ Tracked in [`engine-wishlist.md`](engine-wishlist.md): **Exit target stubs in fa
 ## Related docs
 
 - [`xml-schema.md`](xml-schema.md) — galaxy `<exit>` / `<region>` in gamein
-- [`deep-pockets.md`](deep-pockets.md) — cdrill-gated hints
+- [`deep-pockets.md`](deep-pockets.md) — mcored-gated hints
 - [`anomaly-investigation.md`](anomaly-investigation.md) — anomaly exit hints
 - [`docs/architecture/delivery/campaign-play.md`](../docs/architecture/delivery/campaign-play.md) — visual tool dependency pointer

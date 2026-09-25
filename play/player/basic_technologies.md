@@ -182,7 +182,7 @@ Works in: production. Use consumes: 6 iron `[iron]`. Use produces: jail block `[
 Elementary military tactics, which enable a higher level of combat proficiency. Tag: `military`. Initiative: 5.  
 Works in: command. Use consumes: nothing. Use produces: nothing (battle tech). Use-time: 1 week (default).
 
-**mineral core drilling [cdrill]**  
+**mineral core drilling [mcored]**  
 Mineral exploitation.  
 Works in: production. Use consumes: 25 iron `[iron]`, 10 titanium `[titani]`. Use produces: core drill `[cdrill]`. Use-time: 3 weeks.
 
@@ -306,7 +306,7 @@ Group `command`. Built by branch office construction `[brnofc]`. Size 300, mass 
 
 **core drill [cdrill]**  
 Advanced mining system. A core drill allows you to strip minerals and various resources out of the core of any solid body.  
-Group `extraction`. Built by mineral core drilling `[cdrill]`. Size 1000, mass 1000, crew 6, energy 5, capacity 750, HP 100. Upkeep 40 cash. Faster extraction on self. Operates on solid-surface, in settlement or frigate.
+Group `extraction`. Built by mineral core drilling `[mcored]`. Size 1000, mass 1000, crew 6, energy 5, capacity 750, HP 100. Upkeep 40 cash. Faster extraction on self. Operates on solid-surface, in settlement or frigate.
 
 **engineering shop [engshp]**  
 A small workshop that repairs the parent module stack and nested stacks. REPAIR restores 20 damage per week and consumes 1 spare part, or 1 damage with no parts (event: `repaired N damage.`).  
@@ -358,7 +358,7 @@ Size 1, mass 1. Produced by intensive farming `[farmng]` (5). Also L1: advanced 
 
 **unit of iron [iron]**  
 Extracted, refined, and purified into industrial steels, iron is a basic construction material widely used in most structures.  
-Size 5, mass 10. Produced by iron mining `[iminng]` (3). Consumed by most L0 builds (see technology entries). Also L1: branch office construction `[brnofc]` (5), city planning `[ctypln]` (26), mineral core drilling `[cdrill]` (25), armored combat `[armcbt]` (4), orbital rocket launcher `[orbrkt]` (4), form infantry battalion `[frminf]` (1), rocket launcher production `[rckter]` (1), laser turret `[lstrrt]` (2), preventive servicing `[servic]` (1), engineering shop `[engshp]` (5), law enforcement `[lawenf]` (6).
+Size 5, mass 10. Produced by iron mining `[iminng]` (3). Consumed by most L0 builds (see technology entries). Also L1: branch office construction `[brnofc]` (5), city planning `[ctypln]` (26), mineral core drilling `[mcored]` (25), armored combat `[armcbt]` (4), orbital rocket launcher `[orbrkt]` (4), form infantry battalion `[frminf]` (1), rocket launcher production `[rckter]` (1), laser turret `[lstrrt]` (2), preventive servicing `[servic]` (1), engineering shop `[engshp]` (5), law enforcement `[lawenf]` (6).
 
 **unit of oil [oil]**  
 Black liquid carbon based used as fuel.  
@@ -374,7 +374,7 @@ Size 5, mass 3. Produced by silicium melting `[slcmlt]` (1). Consumed by L0: cor
 
 **unit of titanium [titani]**  
 Due to its resistance to wear, titanium is a good construction material.  
-Size 10, mass 10. Produced by titanium mining `[tminng]` (2). Consumed by L0: action and reaction `[areact]` (10), industrial automation `[indust]` (10), stationary defense `[stnrdf]` (2), shuttles assembly `[shtlas]` (1), space ship assembly `[ssassm]` (4), space control `[spctrl]` (4), uranium fission `[urfiss]` (8), small scale transportation `[strans]` (2), crew housing `[crewhs]` (2). Also L1: mineral core drilling `[cdrill]` (10), laser optics `[lasopt]` (1), laser turret `[lstrrt]` (2), preventive servicing `[servic]` (1).
+Size 10, mass 10. Produced by titanium mining `[tminng]` (2). Consumed by L0: action and reaction `[areact]` (10), industrial automation `[indust]` (10), stationary defense `[stnrdf]` (2), shuttles assembly `[shtlas]` (1), space ship assembly `[ssassm]` (4), space control `[spctrl]` (4), uranium fission `[urfiss]` (8), small scale transportation `[strans]` (2), crew housing `[crewhs]` (2). Also L1: mineral core drilling `[mcored]` (10), laser optics `[lasopt]` (1), laser turret `[lstrrt]` (2), preventive servicing `[servic]` (1).
 
 **unit of uranium [uraniu]**  
 With a half-life of million of years, this is one of the most stable of the radio-active elements, and one very easy to use in energy power modules.  

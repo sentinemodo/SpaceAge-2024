@@ -26,7 +26,7 @@ public static partial class OrderDraftQuality
 
     {
 
-        "GRNDTR", "ARMCBT", "MOBLIB", "TRUCKS", "TANKS", "SHUTTL", "ALNDRN",
+        "GRNDTR", "ARMCBT", "MSRVTM", "TRUCKS", "TANKS", "SHUTTL", "ALNDRN",
 
     };
 
@@ -64,7 +64,7 @@ public static partial class OrderDraftQuality
 
         "ARMCBT",
 
-        "CDRILL",
+        "MCORED",
 
     };
 
@@ -984,7 +984,7 @@ public static partial class OrderDraftQuality
 
     {
 
-        "GRNDTR", "ARMCBT", "CDRILL",
+        "GRNDTR", "ARMCBT", "MCORED",
 
     };
 
@@ -1476,7 +1476,7 @@ public static partial class OrderDraftQuality
 
               Your previous draft was incomplete. Rewrite the full order file with at least:
 
-              - #modulestack <factory-id> first: get iron and silici from cargob, use moblib as newNNN
+              - #modulestack <factory-id> first: get iron and silici from cargob, use msrvtm as newNNN
 
               - economic loop: @produce cash, @use farmng, @use hcdril, @produce energy, sell food
 
@@ -1528,7 +1528,7 @@ public static partial class OrderDraftQuality
 
               - economic loop: @produce terran, @use hcdril + @use iminng, @use farmng, sell food
 
-              - factory: one-time `get iron+titani` (no @), then `use cdrill as newNNN for <hq-id>`
+              - factory: one-time `get iron+titani` (no @), then `use mcored as newNNN for <hq-id>`
 
               - #modulestack newNNN: `has 1 <drill module>` then `-get` terran from HQ (one-time nest crew — NOT @get or `-+@get`), then deactivate 1
 
@@ -1996,7 +1996,7 @@ public static partial class OrderDraftQuality
 
         return trimmed.Contains("drill", StringComparison.OrdinalIgnoreCase)
 
-            || trimmed.Contains("cdrill", StringComparison.OrdinalIgnoreCase);
+            || trimmed.Contains("mcored", StringComparison.OrdinalIgnoreCase);
 
     }
 

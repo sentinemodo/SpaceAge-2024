@@ -215,7 +215,7 @@ Stage inputs with `**GET`** from other stacks at the same location, or `**BUY**`
 
 **Factory-built military units (`USE grndtr` / `USE armcbt`):** new scout trucks and tank squads form **empty** — report shows `crew: N/0` and status **disabled** until you stage crew (and usually **oil** fuel) on the `newN` stack. `**@move` on a disabled stack fails every week** (`MOVE failed. … is disabled.`). After `use grndtr as new1 for <hq-id>` / `use armcbt as new2 for <hq-id>` (campaign military: **two** tank squads — `new2` and `new3` — before Mid Vale columns), open `#modulestack new1` / `#modulestack new2` / `#modulestack new3` and stage crew/fuel **before** `@move`.
 
-**Slow HQ-nested builds (`use armcbt` / `use cdrill` … `as newN for <hq-id>`):** the unit may not exist at HQ until mid-quarter. Bare `@get` on `#modulestack newN` in week 1 fails with `receiver is not present` / capacity errors and **poisons** later GET attempts. Use `active newN` then `-get` crew/fuel on the **same subject** — the leading `-` makes GET wait until `ACTIVE` succeeds. Fast `grndtr` scouts can use `@get` once the truck forms (usually week 1). Factory iron/titani for `use twnbld` use **`+get` under the `USE` line** (see [Conditions (`-` / `+`)](#conditions--)), not bare `get` lines above an unrelated header.
+**Slow HQ-nested builds (`use armcbt` / `use mcored` … `as newN for <hq-id>`):** the unit may not exist at HQ until mid-quarter. Bare `@get` on `#modulestack newN` in week 1 fails with `receiver is not present` / capacity errors and **poisons** later GET attempts. Use `active newN` then `-get` crew/fuel on the **same subject** — the leading `-` makes GET wait until `ACTIVE` succeeds. Fast `grndtr` scouts can use `@get` once the truck forms (usually week 1). Factory iron/titani for `use twnbld` use **`+get` under the `USE` line** (see [Conditions (`-` / `+`)](#conditions--)), not bare `get` lines above an unrelated header.
 
 ### MOVE readiness (disabled stacks cannot move)
 
@@ -224,7 +224,7 @@ Stage inputs with `**GET`** from other stacks at the same location, or `**BUY**`
 Before `@move` on any mobile `#modulestack`, ensure **in that same stack block** (lines after its header, before the first `@move`):
 
 1. **Crew** — `@get` enough `**terran`** from HQ/cargo (or `@buy` at market) when `crew: required/0` or the unit was factory-built empty (`newN` stacks).
-2. **Fuel** — `@get` `**oil`** when the module lists fuel requirements (trucks `[trucks]`, tanks `[tanks]`, moblab `[moblib]`, shuttles). Ground units burn **oil** per catalog `fuel-requirements`.
+2. **Fuel** — `@get` `**oil`** when the module lists fuel requirements (trucks `[trucks]`, tanks `[tanks]`, moblab `[msrvtm]`, shuttles). Ground units burn **oil** per catalog `fuel-requirements`.
 3. **Repairs** — run `**@repair`** (or `@use repair` tech) on the stack first when the report marks it **disabled** from **damage** (not just missing crew).
 4. **Energy** — nested or moving stacks neegd the root grant tree producing enough energy (`@produce energy` on cplant/wnplnt upstream); MOVE itself does not fix `crew: N/M` energy shortfalls on nested modules.
 5. **Spaceships** — a hull without a **command bridge** (`spctrl`) cannot move at all. Large ships need enough command modules (1 bridge + 1 command module per 15 modules). Nest `use spctrl as new… for <hull-id>` (and drives, cargo) **before** `@move` / `@jump`. Surface↔orbit hops on atmospheres also need `**@get h2o2`** (oxyhydro launch surcharge) on the mover or nested cargo.
@@ -503,7 +503,7 @@ Creates an empty stack as a sibling of the former. `WITH n` immediately transfer
 
 **Subject:** item holder (stack or person).
 
-Moves cargo from a same-location holder into the subject if capacity allows. `newN` transferers are created if needed. If the named holder is not in this region, parse keeps the order and warns `WARNING: source unit [id] is not in this region.`
+Moves cargo from a same-location holder into the subject if capacity allows. `newN` transferers are created if needed. If the named holder is not in this region, parse keeps the order and warns `WARNING: source unit [id] is not in this region.` When the transferer is a modulestack with a **hold** on that item type, available quantity is reduced by the reserve (see [SET](#set) `HOLD`).
 
 ### GIVE
 
@@ -591,7 +591,10 @@ Lists a standing sell (`Offer`) and keeps a leftover `SELL` on the template. Mat
 
 ### SET
 
-**Syntax:** `SET AVOID|ONLINE|ALLOW BANK|SHARING|PATROL TRUE|FALSE`
+**Syntax:**
+
+- `SET AVOID|ONLINE|ALLOW BANK|SHARING|PATROL TRUE|FALSE`
+- `SET HOLD <quantity> <item-id>`
 
 **Subject:** modulestack.
 
@@ -602,6 +605,7 @@ Flag name and `TRUE`/`FALSE` are **case-insensitive**; Parse stores the flag as 
 - `SET ALLOW BANK TRUE|FALSE` — sets `AllowBank` on the stack (default **true** on new stacks and when the save omits `allow-bank`). When **false**, market buys and quarterly **cash upkeep** may spend only **local cash** on that stack — the faction bank is not debited (`HasBankAccess` is false). People nested on the stack inherit the parent’s setting. Sample: `set allow bank false` on a trading stack to cap market spend to withdrawn cash.
 - `SET SHARING TRUE|FALSE` — sets `Sharing` on the stack (default **true**). When **true**, other same-owner stacks in the same unit or region may draw that stack’s inventory (including nested stacks and crew-held items) to satisfy **USE** consume items, fuel, and quarterly upkeep after their own local `ItemStacks` are exhausted. When **false**, the stack is isolated (`not sharing` in reports). Sample: `set sharing false` on a private cargo reserve.
 - `SET PATROL TRUE|FALSE` — sets `IsPatrolling` (default **false**). When **true**, an **armed operational root** stack in a region blocks **MOVE** entry by factions whose attitude toward the patroller’s owner is **hostile or enemy** (`PatrolGuard.FindBlocker`). Also blocks **NAME** on map objects for non-**ally** factions when a patroller is present. Persisted as `patrol="true"` on save. Sample: `set patrol true` on a garrison.
+- `SET HOLD <quantity> <item-id>` — `ModuleStack.SetItemHold`: reserves that many units of the item on this stack. Other stacks’ **GET** from this stack treat the reserve as unavailable (`GetOrder` subtracts `GetItemHold`). `SET HOLD 0 <item-id>` clears the reserve. Persisted as `<hold item-type="…" quantity="…">` on save. Immediate order (runs once when executed). Typical HQ pattern beside `@produce terran`: `set hold 20 terran` so outgoing **GET** cannot drain crew below 20.
 
 ### STACK
 
@@ -720,7 +724,7 @@ Walks a route in one order — e.g. `move R00014 R00009` (Grant → Farm Belt �
 
 **Exits on the report:** a **region** block includes `Exits:` (`Region.Report` → `Exits.Report`). A region destination prints `{name} [id] (x,y), {region type}, {ground|naval|space} travel duration N week(s).` A non-region destination prints that location’s `ReportName` plus the mode duration — `orbit [id], space travel duration N week(s).` for an orbit, or `{name} [id] at AU N, belt, space travel duration N week(s).` for a belt. Orbit reports and `Belt.Report` do not list exits (belt exits still exist in the save and are used by MOVE). Maps without `orbit=` / `belt=` / `alderson=` exits (SampleGame) never show those lines.
 
-**Exit hints** (appended before the trailing period, only when you **own** the source region): `, anomaly detected` toward an unresolved anomaly cell; `, deep pocket of resources detected` when you hold **cdrill** tech or module in the source region and the destination has a deep pocket; `, settlement detected` when the destination region holds any settlement-group module (`town`, `city`, `metropoly`, dome variants). Hints do not name the settlement or its owner.
+**Exit hints** (appended before the trailing period, only when you **own** the source region): `, anomaly detected` toward an unresolved anomaly cell; `, deep pocket of resources detected` when you hold **mcored** tech or core drill module in the source region and the destination has a deep pocket; `, settlement detected` when the destination region holds any settlement-group module (`town`, `city`, `metropoly`, dome variants). Hints do not name the settlement or its owner.
 
 **Orbit atmosphere line** (`Orbit.HasAtmosphere`): each orbit header ends with `, has atmosphere` or `, has no atmosphere`. True when the orbit has `<resource>` or `<race>` entries, or the parent planet/moon has races, or parent `atmosphere` ≠ `none` (any non-none band — thin, terair, hostile — counts). Optional `suitable for {race}` lists orbit and inherited body races.
 

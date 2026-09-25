@@ -448,7 +448,7 @@
 			<use-produce module="sdrill"/>
 		</entry>
 		<entry
-			name="cdrill"
+			name="mcored"
 			name-en="mineral core drilling"
 			level="1"
 			description="Mineral exploitation."

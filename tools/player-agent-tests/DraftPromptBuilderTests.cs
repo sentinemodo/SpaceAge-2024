@@ -38,7 +38,7 @@ public class DraftPromptBuilderTests
         Assert.That(prompt, Does.Contain("MOVE syntax details"));
         Assert.That(prompt, Does.Contain("Orders template from report"));
         Assert.That(prompt, Does.Contain("Example output shape"));
-        Assert.That(prompt, Does.Contain("use moblib as new109"));
+        Assert.That(prompt, Does.Contain("use msrvtm as new109"));
         Assert.That(prompt, Does.Contain("@research R00011"));
     }
 }

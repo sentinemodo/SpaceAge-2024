@@ -419,7 +419,7 @@ Copy required. Capacity 1. Cost 8 unless noted.
 |----|------|----------|----------|---------|---------|-------|
 | `ctypln` | city planning | — | 26 | 500 `cash`, 26 `iron`, 1 `city` | `mtrply` | Live |
 | `afrmng` | advanced farming | — | 1 | — | 8 `food` | Live; ocean + `terair` |
-| `cdrill` | mineral core drilling | — | 3 | 25 `iron`, 10 `titani` | `cdrill` | Live |
+| `mcored` | mineral core drilling | — | 3 | 25 `iron`, 10 `titani` | `cdrill` | Live |
 | `servic` | preventive servicing | — | 1 | 1 `titani`, 1 `iron`, 1 `copper`, 1 `silici` | 10 `spare` | Tag repair |
 | `repair` | repair and maintenance | — | 2 | 1 `spare` | effect repair | SampleGame catalog only. Removed from the campaign catalog; players use the `REPAIR` order |
 | `engshp` | engineering shop | — | 2 | 5 `iron` | `engshp` | Cost 4. Tags production, repair |
@@ -451,7 +451,7 @@ Copy required. Capacity 1. Cost 8 unless noted.
 | `armcbt` | armored combat | — | 4 | 6 `iron`, 2 `titani` | `tanks` | **kinetic**+**armour** platform (oil engines). Tag military |
 | `nvlcbt` | naval combat | — | 10 | 8 `iron`, 2 `titani` | `gunbot` | **kinetic** gunboat (oil engines). Naval MOVE. Tag military |
 | *(L2 `uwcbt`)* | underwater combat | `uwtrs` | 12 | 14 `iron`, 6 `titani` | `uwtank` | See Level 2. Soft peer of `nvlcbt`/`armcbt` |
-| `frminf` | form infantry battalion | — | 13 | 1 `iron` | `inftry` | Mixed infantry; mount items below. Tag military |
+| `frminf` | form infantry squad | — | 13 | 4 `iron` | `inftry` | Habitable solid-surface production only. Mixed infantry; mount items below. Tag military |
 | `rckter` | rocket launcher production | — | 2 | 1 `iron` | item `rctlnc` | **missile**. Cost 4. Live consume; L3+ missiles pull `nitrat`/`uraniu` |
 | `lasopt` | laser optics | — | 4 | 2 `terair`, 2 `h2o2`, 2 `copper` | `bltlas` | **laser**. Campaign retune: working gas + electrodes. Tag military |
 | `lstrrt` | laser turret | `lasopt` | 4 | 2 `iron`, 4 `terair`, 2 `h2o2` | `laztrt` | **laser**. Campaign retune: gases |

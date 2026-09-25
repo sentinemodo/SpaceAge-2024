@@ -554,10 +554,10 @@
 			<use-produce module="udrill"/>
 		</entry>
 		<entry
-			name="cdrill"
+			name="mcored"
 			name-en="mineral core drilling"
 			level="1"
-			description="Core-body mineral exploitation. Detects subsurface deep pockets on regional exits when a cdrill technology copy is present on the observing grant; identifies ore types only when cdrill is on-site in the pocket region. Requires a core drill module to extract deep resources."
+			description="Core-body mineral exploitation. Detects subsurface deep pockets on regional exits when an mcored technology copy is present on the observing grant; identifies ore types only when mcored tech or a core drill module is on-site in the pocket region. Requires a core drill module to extract deep resources."
 			use-time="3">
 			<use-allowed-in module-type-group="production"/>
 			<use-consume item="iron" quantity="25"/>
@@ -730,11 +730,11 @@
 		<entry
 			name="frminf"
 			tags="military"
-			name-en="form infantry battalion"
-			level="1"
+			name-en="form infantry squad"
+			level="0"
 			description="The basic infantry unit. Equipped with standard rifles."
 			use-time="13">
-			<use-allowed-in module-type-group="production"/>
+			<use-allowed-in module-type-group="production" location-type="solid-surface" planet-temperature="habitable"/>
 			<use-consume item="iron" quantity="4"/>
 			<use-produce module="inftry"/>
 		</entry>
@@ -1130,8 +1130,8 @@ Researchers can query the library. The system can handle natural language questi
 			<use-produce module="cmplib"/>
 		</entry>
 		<entry
-			name="moblib"
-			name-en="mobile laboratory"
+			name="msrvtm"
+			name-en="mobile survey team"
 			level="1"
 			tags="research"
 			requires="filidx"
@@ -2269,7 +2269,7 @@ Researchers can query the library. The system can handle natural language questi
 			name-en="core drill"
 			name-en2="core drills"
 			group="extraction"
-			description="Advanced mining system. A core drill strips minerals from the core of any solid body and extracts deep-pocket deposits invisible to surface drills. Carry a cdrill technology copy in-region to read deep resource assays; pair with a mobile laboratory for field scouting."
+			description="Advanced mining system. A core drill strips minerals from the core of any solid body and extracts deep-pocket deposits invisible to surface drills. Carry an mcored technology copy in-region to read deep resource assays; pair with a mobile laboratory for field scouting."
 			size="1000"
 			capacity="750"
 			mass="1000"
@@ -2647,7 +2647,7 @@ Researchers can query the library. The system can handle natural language questi
 			name="corphq" 
 			name-en="corporate headquarters"
 			group="command" 
-			description="A corporate headquarters allow centralized control of the corporation."
+			description="Regional command tower with treasury ledgers, biometric intake booths, and encrypted payroll nets. Centralizes corporation control, construction scheduling, and upkeep optimization across the grant; each operational headquarters module can mint corporate cash or recruit terran crew at full headquarters cadence."
 			size="1000"
 			mass="1000"
 			energy="10"
@@ -3055,16 +3055,16 @@ Researchers can query the library. The system can handle natural language questi
 		</entry>
 		<entry
 			name="inftry"
-			name-en="infantry battalion" 
-			name-en2="infantry battalions" 
+			name-en="infantry squad" 
+			name-en2="infantry squads" 
 			group="infantry"
 			living-unit="yes"
 			weapon-group="kinetic"
-			description="Infantry battalion used for claiming cities, and taking over hostile modules."
+			description="Infantry squad used for claiming cities, and taking over hostile modules."
 			size="500"			
 			mass="500" 
 			capacity="300"
-			hit-points="50"
+			hit-points="52"
 			attack="2"
 			defense="2"
 			damage="2"
@@ -3074,8 +3074,8 @@ Researchers can query the library. The system can handle natural language questi
 			<operation-allowed-in region-surface="solid"/>
 			<upkeep type="cash" quantity="15"/>
 			<no-upkeep effect="rebel" chance="10"/>
-			<consume type="food" quantity="100"/>
-			<consume type="terair" quantity="100"/>
+			<consume type="food" quantity="26"/>
+			<consume type="terair" quantity="26"/>
 			<no-consume effect="damage" chance="25"/>
 			<move mode="ground" speed="0.1"/>
 		</entry>
@@ -3177,8 +3177,8 @@ Researchers can query the library. The system can handle natural language questi
 			<operation-allowed-in planet-atmosphere="terair"/>
 			<operation-allowed-in location-type="solid-surface"/>
 			<upkeep type="cash" quantity="5"/>
-			<consume type="food" quantity="4"/>
-			<consume type="terair" quantity="4"/>
+			<consume type="food" quantity="1"/>
+			<consume type="terair" quantity="1"/>
 			<no-consume effect="damage" chance="25"/>
 			<move mode="ground" speed="0.5"/>
 			<fuel duration="13">

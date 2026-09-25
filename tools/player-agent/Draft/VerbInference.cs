@@ -56,7 +56,7 @@ public static partial class VerbInference
         }
 
         var upper = text.ToUpperInvariant();
-        if (upper.Contains("MOBLIB", StringComparison.Ordinal) || upper.Contains("MOBLAB", StringComparison.Ordinal))
+        if (upper.Contains("MSRVTM", StringComparison.Ordinal) || upper.Contains("MOBLAB", StringComparison.Ordinal))
         {
             return "researcher";
         }

@@ -19,9 +19,9 @@ Surface `<resource>` lines stay separate (visible whenever the region is visible
 
 | Observer | Condition | Report |
 |----------|-----------|--------|
-| Exit hint from owned grant | Faction has **`cdrill` technology copy or core drill module** anywhere on a stack in the **source** region | `, deep pocket of resources detected` on the exit toward the pocket cell |
-| Deep resource assay | Same, but **`cdrill` must be in the pocket region itself** | `Deep resources: …` line listing types and quantities |
-| No cdrill | — | No hint, no deep line (surface resources unchanged) |
+| Exit hint from owned grant | Faction has **`mcored` technology copy or core drill module** anywhere on a stack in the **source** region | `, deep pocket of resources detected` on the exit toward the pocket cell |
+| Deep resource assay | Same, but **`mcored` tech or core drill module must be in the pocket region itself** | `Deep resources: …` line listing types and quantities |
+| No mcored / core drill | — | No hint, no deep line (surface resources unchanged) |
 
 Nested factory copies under headquarters count toward the grant region.
 
@@ -31,7 +31,7 @@ Deep pockets require a **`cdrill` module** on-site with appropriate mining USE t
 
 ## Scouting doctrine
 
-Prefer **`moblib` → `moblab`** with a **`cdrill` technology copy** aboard over ground trucks: the lab carries survey gear and the tech copy needed to read assays when it enters a pocket cell. Economic personas with seeded **`cdrill`** see adjacent hints from turn 1 once the factory copy is present.
+Prefer **`msrvtm` → `moblab`** with an **`mcored` technology copy** aboard over ground trucks: the lab carries survey gear and the tech copy needed to read assays when it enters a pocket cell. Economic personas with seeded **`mcored`** see adjacent hints from turn 1 once the factory copy is present.
 
 ## Seed map
 

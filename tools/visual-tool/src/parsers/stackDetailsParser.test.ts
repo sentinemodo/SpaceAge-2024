@@ -17,4 +17,19 @@ Orders Template:
     expect(details.get('000026')).toMatch(/items: 1000 cash/);
     expect(details.get('000007')).toBe('size: 500.');
   });
+
+  it('joins wrapped item lines that continue with digits or punctuation', () => {
+    const text = `
++ small cargo bay [210003], 2 small cargo bays [cargob], immobile.
+  size: 4000, mass: 1890 (400), capacity: 3600/1315, upkeep: 20 cash [cash].
+  items: 400 units of food [food] (size: 400, mass: 400), 200 units of terran breathing gas
+  mixture [terair] (size: 200, mass: 200), 200 units of oxyhydro [h2o2] (size: 200, mass: 200),
+  40 units of iron [iron] (size: 200, mass: 400), 5 units of oil [oil] (size: 20, mass: 25).
+Orders Template:
+`;
+    const details = parseStackDetails(text);
+    const block = details.get('210003') ?? '';
+    expect(block).toMatch(/40 units of iron/);
+    expect(block).toMatch(/5 units of oil/);
+  });
 });
