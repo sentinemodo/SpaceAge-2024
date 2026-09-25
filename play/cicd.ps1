@@ -303,7 +303,7 @@ function Ensure-GitHubPagesDeploy {
 	}
 
 	$runsJson = gh run list --workflow website.yml --branch $branch --limit 25 `
-		--json databaseId, headSha, status, conclusion 2>$null
+		--json databaseId,headSha,status,conclusion 2>$null
 	if ($LASTEXITCODE -ne 0) {
 		Write-Host '  skipped: could not list GitHub Actions runs (gh auth login?)' -ForegroundColor Yellow
 		return
