@@ -23,6 +23,7 @@ namespace SpaceAge
 			{ "deactivate", subject => new DeactivateOrder(subject) },
 			{ "deposit", subject => new DepositOrder(subject) },
 			{ "form", subject => new FormOrder(subject) },
+			{ "grant", subject => new GrantOrder(subject) },
 			{ "get", subject => new GetOrder(subject) },
 			{ "give", subject => new GiveOrder(subject) },
 			{ "has", subject => new HasOrder(subject) },

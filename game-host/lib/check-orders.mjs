@@ -1,7 +1,7 @@
 const KNOWN_VERBS = new Set([
   'MOVE', 'USE', 'ATTACK', 'TACTIC', 'GIVE', 'GET', 'SET', 'STACK', 'HAS',
   'BUY', 'SELL', 'RESEARCH', 'TRAIN', 'COPY', 'TRANSFER', 'CAPTURE', 'DECLARE',
-  'CONTRACT', 'PRESS', 'JUMP', 'REPAIR', 'SURVEY', 'PRODUCE', 'ONLINE', 'OFFLINE',
+  'CONTRACT', 'GRANT', 'PRESS', 'RUMOR', 'JUMP', 'REPAIR', 'SURVEY', 'PRODUCE', 'ONLINE', 'OFFLINE',
 ]);
 
 function normalizeVerb(token) {

@@ -20,7 +20,7 @@ Verbs are **case-insensitive**. Most arguments (stack ids, item ids) are **not**
 - After each turn you receive a **faction report** (stacks, locations, contracts, battles, bank, orders template with ids to reuse).
 
 - Submit a plain-text **order file** before the deadline. The host runs all factions, advances time, sends new reports.
-- **Between-turn** submissions allow only **CONTRACT**, **RUMOR** and **PRESS**. They will be also issued immediately.
+- **Between-turn** submissions allow only **CONTRACT**, **GRANT**, **RUMOR** and **PRESS**. They will be also issued immediately.
 
 ---
 
@@ -133,7 +133,7 @@ Each week per subject:
 | Needs operational stack | No | Yes (crew, energy, fuel, repairs) |
 | Examples | GET, STACK, ATTACK, BUY | MOVE, USE, PRODUCE, RESEARCH |
 
-**CONTRACT** **RUMOR** and **PRESS** = immediate + between-turn allowed. 
+**CONTRACT** **GRANT** **RUMOR** and **PRESS** = immediate + between-turn allowed. 
 
 ---
 
@@ -166,6 +166,18 @@ Week 13 then: upkeep, wounded outcomes, bank interest, price update, NPC listing
 Bank credits/debits the interest quarterly; balance is in whole credits. 
 - **`WITHDRAW`** / **`DEPOSIT`** move cash between bank and stack cargo.
 - `SET ALLOW BANK TRUE` (default). `ALLOW BANK FALSE` = local cash only.
+- **`GRANT`** (between-turn, **#faction** only) spends **bank balance** immediately to deliver assets. Debits ignore `ALLOW BANK` on stacks. One line may not exceed **15000** credits; total spending must stay within your **credit line** (balance may not fall below **−credit line**).
+
+### GRANT credit costs
+
+| Grant type | Target | Cost rule | Examples |
+|------------|--------|-----------|----------|
+| **Technology** | Modulestack (`unit-id`) | **125 × RP cost** (catalog `cost`, else **8×2^(L−1)** for level L) | `cdrill` L1 → **1000**; L2 → **2000**; `rckter` → **500** |
+| **Skill** | Person (`person-id`) | **150 × training-duration** (weeks) | `hmedic` (6 wk) → **900**; `logoff` (5 wk) → **750**; `arkplt` (10 wk) → **1500** |
+| **Item** | Modulestack | **qty × max(1, nominal value) × 4** | 30 `iron` → **240**; 1 `terran` (50) → **200**; **`cash`:** **1:1** |
+| **Module** | Modulestack | **qty × max(250, 5×build_cost + 100×producing tech level)** | 1 `farms` → **250**; 1 `factry` → **350**; 1 `cdrill` → **550** |
+
+Faction must **already know** a technology before granting a copy. Skills are not granted if the person already has them. Items and modules go to **your** formed stacks (same rules as receiving **GIVE** from yourself). **GRANT** does not bypass catalog prerequisites for **USE**.
 
 ---
 
@@ -287,6 +299,13 @@ CAPTURE REGION forces move into region and declare unit preventing entry ENEMY.
 |-40|30|30  - ERR: insufficient amount to get|
 
 **GIVE** — `GIVE <qty|ALL> <item> TO <holder|newN>` | `GIVE ALL TO …` Same as GET but from giver perspective. You can only GIVE to units with whom you have a Nurtal or better attitude.
+
+**GRANT** — `#faction` only; between-turn OK; bank debit on execution (see **GRANT credit costs** under Market trading and banking).
+
+- `GRANT technology <technology-id> to <unit-id>`
+- `GRANT skill <skill-id> to <person-id>`
+- `GRANT item <amount> <itemtype-id> to <unit-id>`
+- `GRANT module <amount> <moduletype-id> to <unit-id>`
 
 **HAS** — `HAS <qty> <item|module-type>` | `HAS PERSON <id>` | `HAS MODULES [qty]` — condition probe. Executed when modulestack has an item or module.
 

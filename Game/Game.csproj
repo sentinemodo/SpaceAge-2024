@@ -223,6 +223,7 @@
     <Compile Include="data structures\LocationTypes.cs" />
     <Compile Include="data structures\SpaceSystemObject.cs" />
     <Compile Include="data structures\Moon.cs" />
+    <Compile Include="game\GrantCost.cs" />
     <Compile Include="game\Market.cs" />
     <Compile Include="game\Market.Clearing.cs" />
     <Compile Include="game\Market.Economy.cs" />
@@ -246,8 +247,10 @@
     <Compile Include="orders\SynchroOrder.cs" />
     <Compile Include="orders\NameOrder.cs" />
     <Compile Include="orders\GiveOrder.cs" />
+    <Compile Include="orders\TransferRegionWarning.cs" />
     <Compile Include="orders\GetOrder.cs" />
     <Compile Include="orders\CopyOrder.cs" />
+    <Compile Include="orders\GrantOrder.cs" />
     <Compile Include="orders\ContractOrder.cs" />
     <Compile Include="orders\PressOrder.cs" />
     <Compile Include="orders\RumorOrder.cs" />

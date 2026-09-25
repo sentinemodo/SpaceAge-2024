@@ -227,6 +227,75 @@ Militias (Arbor First / HCS) start **without** buy/sell. Neutral trade is option
 | UN `give-module` pay | later | Tech/unit today; cash band 8k–15k on hostility charters ([`contracts.md`](contracts.md)) |
 | Credit line 10000 @ 0.2 | interest on week 13 | Do not start in debt |
 | High-g upkeep | +50% cash | Wishlist ([`environments.md`](environments.md)); not in the nest table |
+| **GRANT** (between-turn) | tiered / formula | Immediate bank debit; see **GRANT orders** below |
+
+## GRANT orders (between-turn)
+
+Faction-level immediate orders (with `#faction` only — no stack header). Debit **faction bank balance** when the host executes between-turn submissions (same window as **CONTRACT** / **RUMOR** / **PRESS**). Integer credits only.
+
+**Model:** one **RP-equivalent tier** for technologies (matches Economic persona **1000** cash for a factory **`cdrill`** copy at init = **125 × 8 RP**). Items/modules use catalog **nominal `value`** and **`build_cost`** (same definitions as upkeep — [`technology.md`](technology.md) default RP `8 × 2^(level−1)` when `cost` omitted). Skills price **training-duration** weeks at the same weekly rate as a terran officer on the UN ask (**150 credits / week**).
+
+### Technology
+
+```
+grant_cost = 125 × rp_cost
+rp_cost    = catalog <technology cost="…"> if set, else 8 × 2^(level−1)
+```
+
+| Level | Default RP | Grant (credits) |
+|------:|-----------:|----------------:|
+| 1 | 8 | **1000** |
+| 2 | 16 | **2000** |
+| 3 | 32 | **4000** |
+| 4 | 64 | **8000** |
+| 5 | 128 | **16000** |
+| 6 | 256 | **32000** |
+| 7 | 512 | **64000** |
+| 8 | 1024 | **128000** |
+| 9 | 2048 | **256000** |
+| 10 | 4096 | **512000** |
+
+Overrides: `rckter` / `engshp` (`cost="4"`) → **500** each.
+
+### Skill
+
+```
+grant_cost = 150 × training-duration   (catalog <skill training-duration="…">)
+```
+
+Examples: `logoff` / `excoff` (5 wk) **750**; `hmedic` / `astrog` / `gunnry` (6 wk) **900**; `chfeng` / `xenbio` (8 wk) **1200**; `arkplt` (10 wk) **1500**; `arpldr` / `inbtcm` (4 wk) **600**.
+
+### Item
+
+```
+grant_cost = quantity × max(1, nominal_value) × 4
+```
+
+`nominal_value` = catalog item `value`, else **2** (bulk ore default). **Exception:** `cash` — **1 credit granted costs 1 credit** (no markup).
+
+Examples: **30** `iron` → 30×2×4 = **240**; **10** `titani` → **160**; **1** `terran` → 50×4 = **200**; **65** `food` → **520**.
+
+### Module
+
+```
+build_cost = sum(use-consume quantities × nominal value) on the producing technology for that module type
+grant_cost = quantity × max(250, 5 × build_cost + 100 × producing_tech_level)
+```
+
+Examples: **1** `farms` (`agrplx`, build 20, L0) → **250**; **1** `factry` (`indust`, 70, L0) → **350**; **1** `sdrill` (50, L0) → **250**; **1** `cdrill` (90, L1) → **550**; **1** `shuttl` (`shtlas`, 11, L0) → **250**; **1** `tanks` (`armcbt`, 24, L1) → **250** (220 rounds up to floor).
+
+### Rules and exceptions
+
+| Rule | Detail |
+|------|--------|
+| Eligibility — tech | Faction must **already know** the technology (completed research or any owned copy). GRANT adds another **copy** to the target stack; receiver **technology-capacity** applies (overflow behaves like `ReceiveTechnologyCopy`). |
+| Eligibility — skill | Target **person** must not already have that skill. |
+| Eligibility — item/module | Target **modulestack** must be **same faction** and **same location** as a stack that could receive **GIVE** (attitude ≥ neutral to self). |
+| Prerequisites | GRANT does **not** bypass catalog `requires` for **USE** — only delivers the asset. |
+| Free paths | **COPY** (same location, no cash), contract/research/anomaly rewards, persona init packages — not GRANT. |
+| Spending cap | Sum of GRANT debits in one between-turn window ≤ faction **`credit-line`** (default **10000**); GRANT cannot push balance below **−credit-line**. |
+| Single-line cap | One GRANT line ≤ **15000** credits (matches UN hostility charter band); higher tiers need multiple turns or normal research/production. |
+| Bank | Debits **faction balance** only (not stack cargo). `SET ALLOW BANK` does not apply — GRANT is always a bank draw. |
 
 ## XML
 

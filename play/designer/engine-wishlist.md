@@ -6,6 +6,7 @@ Designer does **not** implement these. TDD adds a failing test first. Campaign X
 
 | Need | Objective | Suggested surface |
 |------|-----------|-------------------|
+| ~~**`GRANT` between-turn order**~~ | **live.** Faction bank debit; tech copy / skill / item / module per [`economy.md`](economy.md) | `GrantOrder`, `GrantCost`, `TGrant.cs` |
 | Moon constructed with moon `@name`, not planet name | Unique moon ids (`M00001`) survive load | `DataFile.LoadGalaxy` moon constructor |
 | `loadGalaxyExits` walks moon regions and orbits | Moon maps and orbit↔surface space hops. Campaign currently uses **planet-region ↔ planet-region** space exits (Arbor/Anvil spaceports ↔ local dust/belt ↔ the pair hop) because those load today | Second pass over all `Region` / `Orbit` |
 | ~~Space transit time from ΔAU × drive `speed`~~ | **live (2026-08-29).** Intra-system orbit↔orbit and parent-differing region↔orbit use `ceil(f(\|ΔAU\|) / spaceSpeed)`. Same-body surface↔orbit stays 1 week. Explicit space exits (region↔region, region↔belt) still divide baked duration by speed. Designer may later drop baked 8/13/26 hops. Live `f` is still saturating (default 2 / 13 / 14 / 14). | `SpaceTransit.DurationWeeks` + `MoveOrder.movementDuration` |

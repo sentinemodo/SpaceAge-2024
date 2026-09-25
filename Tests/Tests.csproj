@@ -102,6 +102,7 @@
     <Compile Include="TSpaceTransit.cs" />
     <Compile Include="TMoveDuration.cs" />
     <Compile Include="TGetGiveHas.cs" />
+    <Compile Include="TGrant.cs" />
     <Compile Include="TFormStack.cs" />
     <Compile Include="TSee.cs" />
     <Compile Include="TSynchro.cs" />
