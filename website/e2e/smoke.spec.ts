@@ -15,6 +15,7 @@ function assertNoLeaks(body: string, route?: string): void {
     // `/rules` documents order/report syntax; `/client` explains invitation login.
     if (route === '/rules' && ['password', 'order\\.', 'report\\.'].includes(pattern.source)) continue;
     if (route === '/client' && pattern.source === 'password') continue;
+    if (route === '/faq' && pattern.source === 'password') continue;
     expect(body).not.toMatch(pattern);
   }
 }
@@ -139,6 +140,7 @@ test.describe('Phase 1 lobby acceptance', () => {
     await page.goto('/');
     await toggle.click();
     await expect(menu.getByRole('link', { name: 'Sample game', exact: true })).toBeVisible();
+    await expect(menu.getByRole('link', { name: 'FAQ', exact: true })).toBeVisible();
 
     await page.goto('/');
     const dashboardHeader = page.locator('.status-header');
@@ -175,6 +177,10 @@ test.describe('Phase 1 lobby acceptance', () => {
 
     await nav.getByRole('link', { name: 'Sample game', exact: true }).click();
     await expect(page).toHaveURL(/\/sample-game\/?$/);
+
+    await nav.getByRole('link', { name: 'FAQ', exact: true }).click();
+    await expect(page).toHaveURL(/\/faq\/?$/);
+    await expect(page.locator('h1')).toContainText(/Frequently asked questions/i);
 
     await page.goto('/');
     await expect(page.locator('footer')).toContainText(/0\.8\.001/);

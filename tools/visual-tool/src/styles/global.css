@@ -896,6 +896,11 @@ body {
   gap: 0.5rem;
 }
 
+.faction-orders-editor {
+  flex: 1;
+  min-height: 0;
+}
+
 .faction-orders-text {
   flex: 1;
   min-height: 0;
@@ -903,6 +908,7 @@ body {
   resize: none;
   font-family: Consolas, monospace;
   font-size: 0.75rem;
+  line-height: 1.4375;
 }
 
 .faction-orders-resize {

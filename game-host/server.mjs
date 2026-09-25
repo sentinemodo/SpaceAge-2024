@@ -1,10 +1,9 @@
+import './lib/env-bootstrap.mjs';
 import http from 'node:http';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { loadRepoEnv } from './lib/load-env.mjs';
-
-loadRepoEnv();
+import { repoEnvFilePath, runpodApiKey } from './lib/load-env.mjs';
 import {
   ensureRunLayout,
   gameinPath,
@@ -27,6 +26,7 @@ import {
   requireGm,
   requireSession,
   sessionFromRequest,
+  sessionTokenFromRequest,
 } from './lib/auth.mjs';
 import { bootstrapFromCampaign, promoteGameout, runReports, runTurn } from './lib/game-exe.mjs';
 import { buildStatusJson, syncLobbyStatusFile } from './lib/status.mjs';
@@ -34,7 +34,7 @@ import { validateOrderText } from './lib/check-orders.mjs';
 import { parseOrders } from './lib/parse-orders.mjs';
 import { runBattleSimulation } from './lib/battle-sim.mjs';
 import { splitReportSections } from './lib/report-sections.mjs';
-import { readSubmittedOrder, saveOrder } from './lib/orders-io.mjs';
+import { listOrderVersions, readSubmittedOrder, saveOrder } from './lib/orders-io.mjs';
 import { isolateReports } from './lib/isolate.mjs';
 import {
   executeAiQuery,
@@ -86,6 +86,13 @@ function sessionTurn(session) {
 
 function reportPathsForSession(session, factionId) {
   return reportPaths(factionId, sessionRunId(session), sessionTurn(session));
+}
+
+function orderContextForSession(session) {
+  const run = sessionRunId(session);
+  const factionId = effectiveFactionId(session);
+  const { turn } = reportPaths(factionId, run, sessionTurn(session));
+  return { run, factionId, turn };
 }
 
 function readBody(req) {
@@ -179,8 +186,8 @@ const server = http.createServer(async (req, res) => {
   }
 
   if (req.method === 'POST' && url.pathname === '/api/auth/logout') {
-    const session = sessionFromRequest(req);
-    if (session) logout(req.headers.authorization?.slice(7));
+    const token = sessionTokenFromRequest(req);
+    if (token) logout(token);
     json(res, 200, { ok: true });
     return;
   }
@@ -322,8 +329,9 @@ const server = http.createServer(async (req, res) => {
   if (req.method === 'GET' && url.pathname === '/api/session/orders') {
     const session = requireSession(req, res);
     if (!session) return;
-    const text = readSubmittedOrder(effectiveFactionId(session));
-    json(res, 200, { submitted: text != null, text: text ?? '' });
+    const { run, factionId, turn } = orderContextForSession(session);
+    const text = readSubmittedOrder(factionId, turn, run);
+    json(res, 200, { submitted: text != null, text: text ?? '', turn, version: listOrderVersions(factionId, turn, run).at(-1) ?? null });
     return;
   }
 
@@ -331,13 +339,14 @@ const server = http.createServer(async (req, res) => {
     const session = requireSession(req, res);
     if (!session) return;
     const body = await readBody(req);
-    saveOrder(session.factionId, body);
+    const { run, factionId, turn } = orderContextForSession(session);
+    const version = saveOrder(factionId, body, turn, run);
     try {
       syncLobbyStatusFile();
     } catch (err) {
       console.warn('Lobby status sync failed:', err);
     }
-    json(res, 200, { ok: true });
+    json(res, 200, { ok: true, turn, version });
     return;
   }
 
@@ -376,9 +385,9 @@ const server = http.createServer(async (req, res) => {
   if (req.method === 'POST' && url.pathname === '/api/session/runpod/start') {
     const session = requireSession(req, res);
     if (!session) return;
-    if (!process.env.RUNPOD_API_KEY) {
+    if (!runpodApiKey()) {
       json(res, 500, {
-        error: 'RUNPOD_API_KEY is not set. Add it to repo-root .env and restart game-host.',
+        error: `RUNPOD_API_KEY is not set. Add it to ${repoEnvFilePath()} and restart game-host.`,
         ...runPodStatusPayload(),
       });
       return;

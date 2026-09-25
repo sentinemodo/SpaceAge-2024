@@ -46,3 +46,15 @@ test('validateOrderText includes full line in warnings', () => {
   const w = validateOrderText(body, 2, 'secret');
   assert.ok(w.some((x) => x.startsWith('BADVERB O00001:')));
 });
+
+test('validateOrderText accepts numeric repeat before verb', () => {
+  const body = [
+    '#faction 2 "secret"',
+    '#modulestack 200001',
+    '3 use iminng',
+    '10 use hcdril',
+    '-3 use armcbt as new4 for 000025',
+  ].join('\n');
+  const w = validateOrderText(body, 2, 'secret');
+  assert.equal(w.length, 0);
+});

@@ -8,6 +8,18 @@ function normalizeVerb(token) {
   return token.toUpperCase().replace(/^[@+-]+/, '');
 }
 
+/** First token may be a repeat count (matches OrdersReader.AssignOrder). */
+function orderVerbToken(line) {
+  const parts = line.trim().split(/\s+/).filter(Boolean);
+  if (parts.length === 0) return '';
+  let idx = 0;
+  const first = parts[idx];
+  if (/^[-+]?\d+$/.test(first) && parts.length > idx + 1) {
+    idx += 1;
+  }
+  return normalizeVerb(parts[idx] || '');
+}
+
 function lineWarning(raw, message) {
   const text = raw.trimEnd();
   return text ? `${text}: ${message}` : message;
@@ -58,7 +70,7 @@ export function validateOrderText(body, factionId, expectedPassword) {
       warnings.push(lineWarning(raw, '#faction header must precede orders'));
     }
 
-    const verb = normalizeVerb(line.split(/\s+/)[0]);
+    const verb = orderVerbToken(line);
     if (!KNOWN_VERBS.has(verb)) {
       warnings.push(lineWarning(raw, `unknown or unsupported verb "${verb}"`));
     }

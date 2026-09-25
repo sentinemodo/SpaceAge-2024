@@ -1,8 +1,9 @@
 ---
 name: cicd
 description: >-
-  SpaceAge local CI/CD operator: restart dev servers (lobby + visual tool),
-  restart prod (dev + game-host Docker + ngrok + GitHub Pages sync), restart Ollama Docker,
+  SpaceAge local CI/CD operator: restart dev servers (lobby + visual tool + game-host Node),
+  restart prod (dev without local game-host + Docker game-host + ngrok + GitHub Pages sync),
+  restart Ollama Docker,
   and git commit/push/merge workflows with stack restarts. Use when the user
   says restart dev, restart prod, restart local LLM, commit, push, merge, test,
   run all tests, or invokes /cicd.
@@ -36,10 +37,11 @@ Reports from **test** / **test-e2e** are written to `.cursor/cicd-test-results/l
 ### restart-dev
 - Stops any process listening on **4321** (Astro lobby) and **5173** (visual tool), then starts dev servers.
 - Starts `npm run dev` in `website/` and `tools/visual-tool/` (background; logs under `.cursor/dev-logs/`).
-- Does **not** start game-host or ngrok. Visual tool proxies `/api` to **localhost:8787** — start game-host separately or use **restart-prod**.
+- Restarts **game-host** on **8787** (`npm start` in `game-host/`; log `.cursor/dev-logs/game-host.log`) and waits for `/health`.
+- Does **not** start ngrok. Use **restart-prod** for Docker game-host + tunnel + Pages.
 
 ### restart-prod
-- Stops listeners on **4321**, **5173**, and **8787** (Docker's own 8787 proxy is left for `compose down`), then **restart-dev**, then:
+- Stops listeners on **4321**, **5173**, and **8787** (Docker's own 8787 proxy is left for `compose down`), then **restart-dev** (lobby + visual tool only — `-SkipGameHost`), then:
 - `docker compose down` + `docker compose up -d --build` and wait for `http://localhost:8787/health`.
 - Ensure **ngrok** forwards to game-host (starts in background if missing; domain from `NGROK_DOMAIN` or default reserved domain).
 - **GitHub Pages:** `git fetch origin`, compare `origin/<default branch>` to the latest successful **Website** workflow run. If Pages is not already deployed for that commit, run `gh workflow run website.yml` and **`gh run watch`** until deploy succeeds. Requires **`gh`** authenticated (`gh auth login`). Skipped with a warning if `gh` is missing.

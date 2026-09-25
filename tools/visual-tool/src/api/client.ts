@@ -62,8 +62,19 @@ export interface LoginResult {
   admin?: boolean;
 }
 
-export async function login(factionId: number, password: string, gmKey?: string): Promise<LoginResult> {
+export async function logout(): Promise<void> {
+  try {
+    if (token) {
+      await api('/api/auth/logout', { method: 'POST' });
+    }
+  } catch {
+    // Drop local credentials even if the host is unreachable.
+  }
   setToken(null);
+}
+
+export async function login(factionId: number, password: string, gmKey?: string): Promise<LoginResult> {
+  await logout();
   const headers: Record<string, string> = { 'Content-Type': 'application/json' };
   const trimmedGm = gmKey?.trim();
   if (trimmedGm) headers['X-GM-Key'] = trimmedGm;

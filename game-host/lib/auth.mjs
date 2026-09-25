@@ -87,18 +87,23 @@ export function logout(token) {
   sessions.delete(token);
 }
 
-export function sessionFromRequest(req) {
+export function sessionTokenFromRequest(req) {
   const auth = req.headers.authorization || '';
   if (auth.startsWith('Bearer ')) {
-    return sessions.get(auth.slice(7)) || null;
+    return auth.slice(7);
   }
   const cookie = (req.headers.cookie || '').split(';').map((s) => s.trim());
   for (const part of cookie) {
     if (part.startsWith('sa_session=')) {
-      return sessions.get(part.slice('sa_session='.length)) || null;
+      return part.slice('sa_session='.length);
     }
   }
   return null;
+}
+
+export function sessionFromRequest(req) {
+  const token = sessionTokenFromRequest(req);
+  return token ? sessions.get(token) || null : null;
 }
 
 export function requireSession(req, res) {

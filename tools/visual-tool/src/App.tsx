@@ -23,6 +23,7 @@ import {
   submitAiQuery,
   regenerateStory,
   getToken,
+  logout,
   setToken,
   type FactionOption,
   type PersonaOption,
@@ -30,6 +31,7 @@ import {
   type RunPodStatus,
   type SessionMeta,
 } from './api/client';
+import { playSuccessPing } from './lib/notificationPing';
 import {
   parseReportXml,
   flattenStacks,
@@ -748,6 +750,7 @@ export default function App() {
   const [selectedStack, setSelectedStack] = useState<string | null>(null);
   const [selectedPerson, setSelectedPerson] = useState<string | null>(null);
   const [draftOrders, setDraftOrders] = useState('');
+  const [unitsEditText, setUnitsEditText] = useState<string | null>(null);
   const [orderCaret, setOrderCaret] = useState(0);
   const [parserOutput, setParserOutput] = useState('No parser output yet.');
   const [orderMode, setOrderMode] = useState<OrderMode>('faction');
@@ -765,6 +768,7 @@ export default function App() {
   const [runpodBusy, setRunpodBusy] = useState(false);
   const [runpodModalOpen, setRunpodModalOpen] = useState(false);
   const [runpodStartResponse, setRunpodStartResponse] = useState<RunPodStatus | null>(null);
+  const runpodWasConnectedRef = useRef(false);
   const [aiQueryBusy, setAiQueryBusy] = useState(false);
   const [personas, setPersonas] = useState<PersonaOption[]>([]);
   const [selectedPersonaId, setSelectedPersonaId] = useState('military');
@@ -815,6 +819,35 @@ export default function App() {
     }
   }, []);
 
+  const clearSessionUiState = useCallback(() => {
+    ordersDirtyRef.current = false;
+    factionOrdersDirty.current = false;
+    setMeta({});
+    setReport(null);
+    setSections([]);
+    setReportFullText('');
+    setDraftOrders('');
+    setFactionOrderText('');
+    setFactionParseOutput('No orders submitted yet.');
+    setParserOutput('No parser output yet.');
+    setParseErrors([]);
+    setWarnings([]);
+    setParseButtonStatus(null);
+    setUnitsEditText(null);
+  }, []);
+
+  const endSession = useCallback(async () => {
+    await logout();
+    clearSessionUiState();
+    setAdminHint('');
+    setAuthed(false);
+  }, [clearSessionUiState]);
+
+  const beginSession = useCallback(() => {
+    clearSessionUiState();
+    setAuthed(true);
+  }, [clearSessionUiState]);
+
   useEffect(() => {
     if (authed) load();
   }, [authed, load]);
@@ -832,9 +865,8 @@ export default function App() {
       return;
     }
 
-    setToken(null);
-    setAuthed(false);
-  }, [authed, load, meta.admin, meta.factionId, meta.viewAsFactionId]);
+    void endSession();
+  }, [authed, endSession, load, meta.admin, meta.factionId, meta.viewAsFactionId]);
 
   const flatStacks = useMemo(() => (report ? flattenStacks(report.stacks) : []), [report]);
 
@@ -898,7 +930,6 @@ export default function App() {
       personIds: new Set<string>(),
     };
   }, [filteredRoots, selectedPerson, selectedStack]);
-  const [unitsEditText, setUnitsEditText] = useState<string | null>(null);
   const unitsFocusKey = `${selectedStack ?? ''}|${selectedPerson ?? ''}|${[...unitsFocus.stackIds].join(',')}|${[...unitsFocus.personIds].join(',')}`;
   const unitsFocusKeyRef = useRef(unitsFocusKey);
   if (unitsFocusKeyRef.current !== unitsFocusKey) {
@@ -922,15 +953,31 @@ export default function App() {
     return Math.max(lines, 1);
   }, [orderEditorText]);
 
+  const factionOrderLineCount = useMemo(() => {
+    const lines = factionOrderText.split('\n').length;
+    return Math.max(lines, 1);
+  }, [factionOrderText]);
+
   const orderLineNumbersRef = useRef<HTMLDivElement>(null);
   const orderTextareaRef = useRef<HTMLTextAreaElement>(null);
+  const factionOrderLineNumbersRef = useRef<HTMLDivElement>(null);
+  const factionOrderTextareaRef = useRef<HTMLTextAreaElement>(null);
 
-  function syncOrderLineNumbers() {
-    const textarea = orderTextareaRef.current;
-    const gutter = orderLineNumbersRef.current;
+  function syncLineNumbers(
+    textarea: HTMLTextAreaElement | null,
+    gutter: HTMLDivElement | null,
+  ) {
     if (textarea && gutter) {
       gutter.scrollTop = textarea.scrollTop;
     }
+  }
+
+  function syncOrderLineNumbers() {
+    syncLineNumbers(orderTextareaRef.current, orderLineNumbersRef.current);
+  }
+
+  function syncFactionOrderLineNumbers() {
+    syncLineNumbers(factionOrderTextareaRef.current, factionOrderLineNumbersRef.current);
   }
 
   function syncOrderCaret(el: HTMLTextAreaElement) {
@@ -1239,24 +1286,26 @@ export default function App() {
     setFactionParseOutput(blocks.join('\n'));
   }
 
+  function applyFactionOrdersPane(submitted: string | null) {
+    const pane = factionOrdersPane(submitted, ordersTemplateText(sections));
+    setFactionOrderText(pane.ordersText);
+    setFactionParseOutput(pane.parseOutput ?? '');
+  }
+
   useEffect(() => {
     if (!authed) return;
     let cancelled = false;
     fetchSubmittedOrders()
       .then((submitted) => {
         if (cancelled || factionOrdersDirty.current) return;
-        const pane = factionOrdersPane(submitted, ordersTemplateText(sections));
-        setFactionOrderText(pane.ordersText);
-        if (pane.parseOutput) setFactionParseOutput(pane.parseOutput);
+        applyFactionOrdersPane(submitted);
       })
       .catch(() => {
         if (cancelled || factionOrdersDirty.current) return;
-        const pane = factionOrdersPane(null, ordersTemplateText(sections));
-        setFactionOrderText(pane.ordersText);
-        if (pane.parseOutput) setFactionParseOutput(pane.parseOutput);
+        applyFactionOrdersPane(null);
       });
     return () => { cancelled = true; };
-  }, [authed, meta.factionId, meta.viewAsFactionId, sections]);
+  }, [authed, meta.factionId, meta.viewAsFactionId, meta.viewTurn, meta.turn, sections]);
 
   async function handleBattleSim() {
     const result = await runBattleSim(battleSimXml);
@@ -1297,6 +1346,14 @@ export default function App() {
     const timer = window.setInterval(() => { refreshRunPod(); }, 30_000);
     return () => window.clearInterval(timer);
   }, [authed, meta.admin, refreshRunPod]);
+
+  useEffect(() => {
+    const connected = runpodStatus?.phase === 'running' && runpodStatus?.ollamaReady === true;
+    if (connected && !runpodWasConnectedRef.current) {
+      playSuccessPing();
+    }
+    runpodWasConnectedRef.current = connected;
+  }, [runpodStatus]);
 
   useEffect(() => {
     if (!meta.admin && panel === 'story') setPanel('map');
@@ -1415,7 +1472,7 @@ export default function App() {
   }
 
   if (!authed) {
-    return <LoginScreen onLogin={() => setAuthed(true)} />;
+    return <LoginScreen onLogin={beginSession} />;
   }
 
   return (
@@ -1497,7 +1554,7 @@ export default function App() {
         {meta.admin && <span className="admin-badge">Admin</span>}
         {adminHint && <span className="warnings admin-hint">{adminHint}</span>}
         <span className="client-title">SpaceAge client ver. 0.8.001</span>
-        <button type="button" onClick={() => { setToken(null); setAuthed(false); setAdminHint(''); }}>Logout</button>
+        <button type="button" onClick={() => { void endSession(); }}>Logout</button>
         <button type="button" onClick={load}>Refresh report</button>
       </header>
 
@@ -1797,15 +1854,28 @@ export default function App() {
             ) : (
               <div className="faction-orders">
                 <div className="faction-orders-top" style={{ height: factionOrdersTop }}>
-                  <textarea
-                    className="faction-orders-text"
-                    value={factionOrderText}
-                    onChange={(e) => {
-                      factionOrdersDirty.current = true;
-                      setFactionOrderText(e.target.value);
-                    }}
-                    spellCheck={false}
-                  />
+                  <div className="order-editor-with-lines faction-orders-editor">
+                    <div
+                      ref={factionOrderLineNumbersRef}
+                      className="order-line-numbers"
+                      aria-hidden
+                    >
+                      {Array.from({ length: factionOrderLineCount }, (_, i) => (
+                        <div key={i + 1} className="order-line-number">{i + 1}</div>
+                      ))}
+                    </div>
+                    <textarea
+                      ref={factionOrderTextareaRef}
+                      className="faction-orders-text"
+                      value={factionOrderText}
+                      onScroll={syncFactionOrderLineNumbers}
+                      onChange={(e) => {
+                        factionOrdersDirty.current = true;
+                        setFactionOrderText(e.target.value);
+                      }}
+                      spellCheck={false}
+                    />
+                  </div>
                   <div className="order-split-actions">
                     <button type="button" onClick={handleFactionParse}>Parse orders</button>
                     <button type="button" onClick={handleFactionSubmit}>Submit orders</button>

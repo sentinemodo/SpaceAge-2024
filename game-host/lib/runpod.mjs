@@ -1,5 +1,7 @@
+import './env-bootstrap.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
+import { repoEnvFilePath, runpodApiKey } from './load-env.mjs';
 import { repoRoot } from './paths.mjs';
 import { warmupOllama } from './player-agent.mjs';
 
@@ -163,9 +165,11 @@ export async function discoverExistingPod() {
 }
 
 async function runpodFetch(route, init = {}) {
-  const key = process.env.RUNPOD_API_KEY;
+  const key = runpodApiKey();
   if (!key) {
-    throw new Error('RUNPOD_API_KEY is not set (add it to repo-root .env and restart game-host)');
+    throw new Error(
+      `RUNPOD_API_KEY is not set (add it to ${repoEnvFilePath()} and restart game-host)`,
+    );
   }
   const res = await fetch(`${API_BASE}${route}`, {
     ...init,

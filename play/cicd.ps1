@@ -4,7 +4,7 @@
   SpaceAge local CI/CD helpers for the /cicd agent.
 
 .DESCRIPTION
-  restart-dev        — Astro lobby (4321) + visual tool (5173)
+  restart-dev        — Astro lobby (4321) + visual tool (5173) + game-host Node (8787)
   restart-prod       — restart-dev + game-host Docker + ngrok + GitHub Pages (latest origin)
   restart-local-llm  — Ollama Docker, pull/warm qwen2.5-coder:7b, health check
   commit             — git commit working changes, then restart-dev
@@ -161,8 +161,49 @@ function Start-BackgroundNpmDev {
 	} while ($true)
 }
 
+function Start-BackgroundGameHost {
+	$hostDir = Join-Path $script:RepoRoot 'game-host'
+	if (-not (Test-Path -LiteralPath $hostDir)) {
+		throw "Missing directory: $hostDir"
+	}
+	New-Item -ItemType Directory -Force -Path $script:DevLogDir | Out-Null
+	$logPath = Join-Path $script:DevLogDir 'game-host.log'
+	$errPath = Join-Path $script:DevLogDir 'game-host.err.log'
+
+	$psi = New-Object System.Diagnostics.ProcessStartInfo
+	$psi.FileName = 'cmd.exe'
+	$psi.Arguments = "/c npm start > `"$logPath`" 2> `"$errPath`""
+	$psi.WorkingDirectory = $hostDir
+	$psi.UseShellExecute = $false
+	$psi.CreateNoWindow = $true
+	[void][System.Diagnostics.Process]::Start($psi)
+
+	$deadline = (Get-Date).AddSeconds(60)
+	do {
+		Start-Sleep -Milliseconds 400
+		try {
+			Test-GameHostHealth
+			Write-Host "  game-host listening on http://localhost:$($script:GameHostPort)/ (log: $logPath)"
+			return
+		}
+		catch {
+			if ((Get-Date) -gt $deadline) {
+				throw "game-host did not become healthy on port $($script:GameHostPort) within 60s. See $logPath and $errPath"
+			}
+		}
+	} while ($true)
+}
+
+function Invoke-RestartGameHostLocal {
+	Write-CicdStep 'Restart game-host (Node)'
+	Stop-GameHostPort
+	Start-BackgroundGameHost
+}
+
 function Invoke-RestartDev {
-	Write-CicdStep 'Restart dev - lobby website + visual tool'
+	param([switch] $SkipGameHost)
+
+	Write-CicdStep 'Restart dev - lobby website + visual tool + game-host'
 	Stop-DevPorts
 
 	$websiteDir = Join-Path $script:RepoRoot 'website'
@@ -170,12 +211,15 @@ function Invoke-RestartDev {
 
 	Start-BackgroundNpmDev -Label 'website-dev' -WorkingDirectory $websiteDir -Port $script:WebsitePort
 	Start-BackgroundNpmDev -Label 'visual-tool-dev' -WorkingDirectory $visualDir -Port $script:VisualToolPort
+	if (-not $SkipGameHost) {
+		Invoke-RestartGameHostLocal
+	}
 
 	Write-Host ""
 	Write-Host "Dev URLs:"
 	Write-Host "  Lobby:       http://localhost:$($script:WebsitePort)/"
 	Write-Host "  Visual tool: http://localhost:$($script:VisualToolPort)/client/"
-	Write-Host "  (Visual tool API proxy expects game-host on http://localhost:$($script:GameHostPort)/ - use restart-prod or game-host npm start.)"
+	Write-Host "  Game-host:   http://localhost:$($script:GameHostPort)/health"
 }
 
 function Test-GameHostHealth {
@@ -343,7 +387,7 @@ function Ensure-GitHubPagesDeploy {
 function Invoke-RestartProd {
 	Write-CicdStep 'Free stack ports before prod restart'
 	Stop-CicdStackPorts
-	Invoke-RestartDev
+	Invoke-RestartDev -SkipGameHost
 	Invoke-RestartGameHostDocker
 	Ensure-NgrokTunnel
 	Ensure-GitHubPagesDeploy

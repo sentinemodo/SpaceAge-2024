@@ -14,6 +14,15 @@ function stageIndex(stage: RunPodStage | undefined): number {
   return -1;
 }
 
+function formatLogTime(iso: string): string {
+  if (/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}/.test(iso)) {
+    return iso.slice(0, 19).replace('T', ' ');
+  }
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return iso;
+  return d.toISOString().slice(0, 19).replace('T', ' ');
+}
+
 function formatDetail(detail: unknown): string {
   if (detail == null) return '';
   if (typeof detail === 'string') return detail;
@@ -28,7 +37,7 @@ function LogLine({ entry }: { entry: RunPodLogEntry }) {
   const detail = formatDetail(entry.detail);
   return (
     <div className={`runpod-log-line runpod-log-${entry.level}`}>
-      <span className="runpod-log-time">{entry.at.slice(11, 19)}</span>
+      <span className="runpod-log-time">{formatLogTime(entry.at)}</span>
       <span className="runpod-log-level">{entry.level}</span>
       <span className="runpod-log-message">{entry.message}</span>
       {detail ? <pre className="runpod-log-detail">{detail}</pre> : null}

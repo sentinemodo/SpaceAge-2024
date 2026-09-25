@@ -1,7 +1,8 @@
-import { loadRepoEnv } from '../lib/load-env.mjs';
+import '../lib/env-bootstrap.mjs';
+import { repoEnvFilePath, runpodApiKey } from '../lib/load-env.mjs';
 
-loadRepoEnv();
-const key = process.env.RUNPOD_API_KEY || '';
+const key = runpodApiKey();
+console.log('.env path:', repoEnvFilePath());
 console.log('RUNPOD_API_KEY set:', !!key);
 console.log('RUNPOD_API_KEY length:', key.length);
 console.log('RUNPOD_API_KEY prefix:', key.slice(0, 4));

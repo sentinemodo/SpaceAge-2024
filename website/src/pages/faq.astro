@@ -1,0 +1,67 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { renderFaqHtml } from '../lib/faq';
+import { withBase } from '../lib/paths';
+
+const faqHtml = renderFaqHtml();
+---
+
+<Layout title="FAQ" description="SpaceAge PBEM — frequently asked questions">
+  <section class="faq-content">
+    <div class="intro-card card">
+      <h1>Frequently asked questions</h1>
+      <p>
+        Quick answers about the campaign, turns, and client. For order syntax and mechanics, see
+        <a href={withBase('rules')}>Player Rules</a>.
+        To browse demo files, see <a href={withBase('sample-game')}>Sample game</a>.
+      </p>
+    </div>
+
+    <article class="faq-markdown card" set:html={faqHtml} />
+  </section>
+</Layout>
+
+<style>
+  .faq-content {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    color: var(--color-accent-teal);
+    margin-top: 0;
+    margin-bottom: var(--space-md);
+  }
+
+  .intro-card {
+    margin-bottom: var(--space-xl);
+  }
+
+  .intro-card a {
+    color: var(--color-accent-teal);
+  }
+
+  .faq-markdown :global(h1) {
+    display: none;
+  }
+
+  .faq-markdown :global(h2) {
+    color: var(--color-accent-teal);
+    font-size: var(--font-size-lg);
+    margin-top: var(--space-xl);
+    margin-bottom: var(--space-sm);
+  }
+
+  .faq-markdown :global(h2:first-child) {
+    margin-top: 0;
+  }
+
+  .faq-markdown :global(p),
+  .faq-markdown :global(li) {
+    line-height: 1.65;
+  }
+
+  .faq-markdown :global(a) {
+    color: var(--color-accent-teal);
+  }
+</style>
