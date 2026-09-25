@@ -288,7 +288,14 @@ function Ensure-GitHubPagesDeploy {
 	}
 
 	$branch = Get-PagesDeployBranch
-	git fetch origin $branch 2>&1 | Out-Null
+	$prevEap = $ErrorActionPreference
+	$ErrorActionPreference = 'Continue'
+	try {
+		git fetch origin $branch *> $null
+	}
+	finally {
+		$ErrorActionPreference = $prevEap
+	}
 	$targetSha = (git rev-parse "origin/$branch" 2>$null).Trim()
 	if (-not $targetSha) {
 		Write-Host "  skipped: no origin/$branch" -ForegroundColor Yellow
