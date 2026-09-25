@@ -6,8 +6,9 @@ describe('faq', () => {
   it('loads markdown with expected sections', () => {
     const md = loadFaqMarkdown();
     expect(md).toMatch(/^# Frequently asked questions/m);
-    expect(md).toMatch(/## Scout — what is it for/);
-    expect(md).toMatch(/## How do I build a scout\?/);
+    expect(md).toMatch(/## Scout — what to build for scouting initially/);
+    expect(md).toMatch(/## How do I build whatever\? \(Iron, trucks, factory chain\)/);
+    expect(md).toMatch(/## Anomaly investigation/);
   });
 
   it('renders HTML with question headings', () => {
