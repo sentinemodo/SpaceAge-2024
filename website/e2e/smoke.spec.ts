@@ -3,6 +3,13 @@ import { test, expect } from '@playwright/test';
 const FORBIDDEN_PATTERNS = [/password/i, /gamein/i, /order\./i, /report\./i];
 const PHASE1_ROUTES = ['/', '/client', '/turns', '/rules'] as const;
 
+const STATUS_LABEL: Record<string, RegExp> = {
+  'not-started': /Not Started/i,
+  'accepting-orders': /Accepting Orders/i,
+  processing: /Processing/i,
+  'reports-out': /Reports Out/i,
+};
+
 function assertNoLeaks(body: string, route?: string): void {
   for (const pattern of FORBIDDEN_PATTERNS) {
     // `/rules` documents order/report syntax; `/client` explains invitation login.
@@ -58,14 +65,16 @@ test.describe('Phase 1 lobby acceptance', () => {
     const json = await jsonResponse.json();
     assertNoLeaks(JSON.stringify(json), '/status.json');
 
+    const statusPattern = STATUS_LABEL[String(json.status)] ?? new RegExp(String(json.status), 'i');
+
     await page.goto('/');
-    await expect(page.locator('#status-value')).toHaveText(/Not Started/i);
+    await expect(page.locator('#status-value')).toHaveText(statusPattern);
     await expect(page.locator('#turn-value')).toHaveText(String(json.turn));
     await expect(page.locator('#next-turn-value')).toHaveText(/GM-scheduled/i);
     await expect(page.locator('#submissions-grid .faction-card')).toHaveCount(10);
 
     await page.goto('/turns');
-    await expect(page.locator('#turns-status-value')).toHaveText(/Not Started/i);
+    await expect(page.locator('#turns-status-value')).toHaveText(statusPattern);
     await expect(page.locator('#turns-turn-value')).toHaveText(String(json.turn));
     await expect(page.locator('#turns-next-value')).toHaveText(/GM-scheduled/i);
   });
@@ -73,8 +82,8 @@ test.describe('Phase 1 lobby acceptance', () => {
   test('WS-004: Players & Turns — ten seats, factions 2–11 only', async ({ page }) => {
     await page.goto('/turns');
 
-    const rows = page.locator('#turns-factions-table .table-row');
-    await expect(rows).toHaveCount(10);
+    const seats = page.locator('#turns-factions-table [data-faction-id]');
+    await expect(seats).toHaveCount(10);
 
     for (let id = 2; id <= 11; id += 1) {
       await expect(page.locator(`[data-faction-id="${id}"]`)).toBeVisible();

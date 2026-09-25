@@ -34,6 +34,7 @@ Open beta requires ten invited players to use a **hosted web client** instead of
    - `POST /api/session/check-orders` — write temp order file, load game + parse orders, return parse/validation messages (extends `/check` path)
 9. **Catalog:** `play/campaign/data.xml` on host disk only; not exposed as full download to clients.
 10. **Hosting:** Windows VM or developer machine with built `Game.exe`. Railway/other PaaS acceptable if Windows + Mono path documented ([ADR-0001](ADR-0001-net48-legacy-csproj.md)).
+11. **Current public edge (2026-09-24):** Caddy on the GM laptop, hostname `spaceage-pbem.duckdns.org` → `127.0.0.1:8787`. WAN `91.220.222.102` via Huawei port map of TCP 80 and 443. ngrok reserved domain remains the fallback, not the steady client URL.
 
 ## Options considered
 
@@ -55,3 +56,4 @@ Open beta requires ten invited players to use a **hosted web client** instead of
 ## Revision
 
 - 2026-09-11: Accepted for open beta.
+- 2026-09-24: Public edge is Caddy + DuckDNS on the home WAN. ngrok is fallback.

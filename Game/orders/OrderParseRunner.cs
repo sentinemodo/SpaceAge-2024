@@ -92,14 +92,19 @@ namespace SpaceAge
 
 		private static void AddExceptionMessages(List<string> target, Exception ex)
 		{
+			List<string> parts = new List<string>();
 			Exception current = ex;
 			while (current != null)
 			{
-				if (!string.IsNullOrEmpty(current.Message))
+				if (!string.IsNullOrEmpty(current.Message) && !parts.Contains(current.Message))
 				{
-					target.Add(current.Message);
+					parts.Add(current.Message);
 				}
 				current = current.InnerException;
+			}
+			if (parts.Count > 0)
+			{
+				target.Add(string.Join(" - ", parts));
 			}
 		}
 
@@ -109,7 +114,9 @@ namespace SpaceAge
 			{
 				foreach (EventReport eventReport in faction.EventReports)
 				{
-					if (eventReport.Description != null && eventReport.Description.StartsWith("PARSING:"))
+					if (eventReport.Description != null
+						&& (eventReport.Description.StartsWith("PARSING:")
+							|| eventReport.Description.StartsWith("WARNING:")))
 					{
 						warnings.Add(eventReport.Description);
 					}

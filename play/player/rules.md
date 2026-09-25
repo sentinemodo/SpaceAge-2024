@@ -503,7 +503,7 @@ Creates an empty stack as a sibling of the former. `WITH n` immediately transfer
 
 **Subject:** item holder (stack or person).
 
-Moves cargo from a same-location holder into the subject if capacity allows. `newN` transferers are created if needed.
+Moves cargo from a same-location holder into the subject if capacity allows. `newN` transferers are created if needed. If the named holder is not in this region, parse keeps the order and warns `WARNING: source unit [id] is not in this region.`
 
 ### GIVE
 
@@ -515,7 +515,7 @@ Moves cargo from a same-location holder into the subject if capacity allows. `ne
 
 **Subject:** item holder.
 
-Moves cargo to a receiver (same-location capacity check). Receiver may be an unformed `newN`. Fails when attitude toward the receiver’s owner is below **neutral** (`GiveOrder.canGiveToReceiver`).
+Moves cargo to a receiver (same-location capacity check). Receiver may be an unformed `newN`. If the named receiver is not in this region, parse keeps the order and warns `WARNING: receiver unit [id] is not in this region.` Fails when attitude toward the receiver’s owner is below **neutral** (`GiveOrder.canGiveToReceiver`).
 
 ### HAS
 

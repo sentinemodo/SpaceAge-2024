@@ -1,10 +1,12 @@
-# Hosted open beta — GM scenarios (Docker + ngrok)
+# Hosted open beta — GM scenarios (Docker + Caddy)
 
 Player client URL (HTTPS, same origin as API):
 
-**https://manatee-sabbath-kudos.ngrok-free.dev/client/**
+**https://spaceage-pbem.duckdns.org/client/**
 
-Lobby links to that URL via `PUBLIC_CLIENT_URL` in the website build. Game-host and visual tool run in Docker on the GM laptop; ngrok tunnels **localhost:8787** to the public HTTPS URL (no router port forwarding).
+Game-host and the visual tool run on the GM laptop at port **8787**. Caddy on that laptop (`C:\Users\akacz\caddy\Caddyfile`) terminates TLS for `spaceage-pbem.duckdns.org` and forwards to `127.0.0.1:8787`. DuckDNS points the name at WAN `91.220.222.102`. The Huawei HS8145V forwards TCP **80** and **443** to the laptop `192.168.100.17`. Port **8787** is not mapped on the router.
+
+ngrok (`https://manatee-sabbath-kudos.ngrok-free.dev/client/`) remains the fallback when the WAN forward is unreachable. The GitHub Pages workflow still bakes `PUBLIC_CLIENT_URL` to that ngrok URL until the workflow is changed. Caddy does not start on reboot (`caddy start` from `C:\Users\akacz\caddy`).
 
 See also: [`docker/README.md`](../docker/README.md), [`game-host/README.md`](../game-host/README.md).
 

@@ -1,7 +1,11 @@
 # Game host — implementation plan
 
-Last updated: 2026-09-11  
+Last updated: 2026-09-24  
 Decision: [ADR-0011](../adr/ADR-0011-hosted-game-service.md)
+
+## Public reach (current)
+
+The GM laptop (`192.168.100.17`) serves game-host on port 8787. Caddy terminates TLS for `https://spaceage-pbem.duckdns.org` and proxies to that port. DuckDNS points at WAN `91.220.222.102`. The Huawei HS8145V forwards TCP 80 and 443 only; 8787 is not on the WAN. ngrok (`manatee-sabbath-kudos.ngrok-free.dev`) is the fallback. Operational steps: [`play/router-port-forward.md`](../../../play/router-port-forward.md) and [`play/hosted-beta-gm.md`](../../../play/hosted-beta-gm.md). The Pages workflow still sets `PUBLIC_CLIENT_URL` to the ngrok client URL.
 
 HTTP service wrapping `Game.exe` and the `play/runs/` file layout for open beta.
 

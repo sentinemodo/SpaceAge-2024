@@ -14,15 +14,20 @@ export function ordersTemplateText(sections: ReportSection[]): string {
   return '';
 }
 
+function withoutOrdersTemplateLabel(text: string): string {
+  return text.replace(/^Orders Template:\s*/i, '');
+}
+
 /** Latest submitted orders, or the report template when nothing has been submitted. */
 export function factionOrdersPane(
   submittedText: string | null | undefined,
   reportOrders: string,
 ): { ordersText: string; parseOutput: string | null } {
+  const report = withoutOrdersTemplateLabel(reportOrders);
   if (submittedText && submittedText.trim()) {
-    return { ordersText: submittedText, parseOutput: null };
+    return { ordersText: withoutOrdersTemplateLabel(submittedText), parseOutput: null };
   }
-  return { ordersText: reportOrders, parseOutput: 'No orders submitted yet.' };
+  return { ordersText: report, parseOutput: 'No orders submitted yet.' };
 }
 
 export function focusedStackIds(

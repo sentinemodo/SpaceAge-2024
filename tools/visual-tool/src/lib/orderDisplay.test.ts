@@ -9,6 +9,12 @@ describe('factionOrdersPane', () => {
     expect(pane.parseOutput).toBe('No orders submitted yet.');
   });
 
+  it('drops the Orders Template label from faction report orders', () => {
+    const pane = factionOrdersPane(null, 'Orders Template:\n#faction 2 "northwnd"\n#modulestack 200001');
+    expect(pane.ordersText.startsWith('#faction 2')).toBe(true);
+    expect(pane.ordersText).not.toMatch(/Orders Template:/i);
+  });
+
   it('shows the submitted orders and leaves parse output empty', () => {
     const pane = factionOrdersPane('#faction 2 "pw"\n#end\n', '#modulestack 200001');
     expect(pane.ordersText).toContain('#faction 2');

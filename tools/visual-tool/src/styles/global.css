@@ -308,6 +308,12 @@ body {
   margin-bottom: 0.35rem;
 }
 
+.tree-location-group > .tree-root {
+  margin-left: 0.65rem;
+  padding-left: 0.65rem;
+  border-left: 1px solid rgba(100, 140, 200, 0.35);
+}
+
 .tree-location-header {
   display: flex;
   align-items: center;
@@ -553,8 +559,11 @@ body {
   width: 100%;
   min-height: 0;
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
+}
+
+.region-map-center {
+  margin: auto;
+  flex: 0 0 auto;
 }
 
 .unit-tree ul {
@@ -2041,6 +2050,15 @@ body {
   border-left: 1px dashed rgba(100, 150, 210, 0.2);
 }
 
+.planet-view-central-pane .region-view-hint {
+  position: absolute;
+  bottom: 0.35rem;
+  left: 0;
+  right: 0;
+  text-align: center;
+  pointer-events: none;
+}
+
 .planet-view-central-pane .region-map-zoom-toolbar {
   position: absolute;
   top: 0.35rem;
@@ -2235,8 +2253,10 @@ body {
 
 .region-cell {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 1px;
   border: 1px solid var(--accent-dim);
   border-radius: 3px;
   background: var(--bg-card);
@@ -2286,6 +2306,35 @@ body {
 .region-cell.selected .region-cell-label,
 .region-cell:hover .region-cell-label {
   color: var(--accent);
+}
+
+.presence-icons {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
+  line-height: 1;
+  pointer-events: none;
+  max-width: 100%;
+}
+
+.presence-icon {
+  font-size: 0.93rem;
+  color: #e8eef8;
+  text-shadow: 0 0 2px #000;
+}
+
+.system-node .presence-icons {
+  position: absolute;
+  top: calc(100% + 2px);
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+.body-icon-orbit {
+  flex-direction: column;
+  gap: 0;
 }
 
 .movement-panel .movement-section {

@@ -153,7 +153,11 @@ namespace SpaceAge
 				// give all|quantity xxx to 000000
 			}
 
-            this.assignReceiver(this.receiverName);	
+            this.assignReceiver(this.receiverName);
+			TransferRegionWarning.WarnIfOtherRegion(
+				this.Transferer,
+				this.Receiver,
+				"receiver");
 		}
 
         private void assignReceiver(string token)

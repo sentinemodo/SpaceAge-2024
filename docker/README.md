@@ -34,19 +34,21 @@ docker compose up --build -d
 - API + visual client: http://localhost:8787/client/
 - Health: http://localhost:8787/health
 
-### Remote access (ngrok — primary)
+### Remote access (Caddy — current)
 
 Public HTTPS client (visual tool + API, same origin):
 
-**https://manatee-sabbath-kudos.ngrok-free.dev/client/**
+**https://spaceage-pbem.duckdns.org/client/**
+
+Caddy on the GM laptop forwards that hostname to `127.0.0.1:8787`. DNS is DuckDNS → `91.220.222.102`. The router forwards TCP 80 and 443 to `192.168.100.17`. See [`play/router-port-forward.md`](../play/router-port-forward.md).
+
+Fallback when that forward is down:
 
 ```powershell
 .\play\expose-game-host-ngrok.ps1
 ```
 
-Requires ngrok authtoken and the reserved domain on your account. No router port forwarding.
-
-Alternative (static IP + WAN port 8787): see [`play/router-port-forward.md`](../play/router-port-forward.md).
+That script uses `https://manatee-sabbath-kudos.ngrok-free.dev/client/`. Do not run ngrok and Caddy as two public URLs for the same beta without picking one client link.
 
 Persistent data (host paths, gitignored):
 

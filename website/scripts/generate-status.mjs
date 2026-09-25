@@ -42,7 +42,8 @@ export function readScheduleNextTurnAt(schedulePath) {
   if (!fs.existsSync(schedulePath)) return null;
   try {
     const schedule = JSON.parse(fs.readFileSync(schedulePath, 'utf8'));
-    return schedule.nextTurnAt ?? null;
+    const raw = schedule.nextTurnAt ?? null;
+    return raw && String(raw).trim() ? raw : null;
   } catch {
     return null;
   }

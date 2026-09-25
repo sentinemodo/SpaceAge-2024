@@ -33,6 +33,8 @@ export interface RegionAnomaly {
   type: string;
   points?: number;
   description?: string;
+  /** Faction ids that have finished investigating this anomaly. */
+  resolvedFactions?: string[];
 }
 
 export interface PersonNode {
@@ -233,10 +235,14 @@ function parseAnomaly(el: Element | null): RegionAnomaly | undefined {
   if (!el) return undefined;
   const type = el.getAttribute('type') || '';
   if (!type) return undefined;
+  const resolvedFactions = [...el.querySelectorAll(':scope > resolved')]
+    .map((node) => node.getAttribute('faction') || '')
+    .filter(Boolean);
   return {
     type,
     points: parseOptionalInt(el.getAttribute('points')),
     description: el.getAttribute('description') || undefined,
+    resolvedFactions: resolvedFactions.length ? resolvedFactions : undefined,
   };
 }
 
@@ -297,13 +303,7 @@ function parseDeepPocket(el: Element): ResourceEntry[] {
 }
 
 function parseAnomalyEl(el: Element): RegionAnomaly | undefined {
-  const a = el.querySelector(':scope > anomaly');
-  if (!a) return undefined;
-  return {
-    type: a.getAttribute('type') || '',
-    points: parseOptionalInt(a.getAttribute('points')),
-    description: a.getAttribute('description') || undefined,
-  };
+  return parseAnomaly(el.querySelector(':scope > anomaly'));
 }
 
 function parsePersonEl(el: Element): PersonNode {
@@ -868,19 +868,36 @@ function stackQueryHay(stack: StackNode): string {
     .toLowerCase();
 }
 
-function stackMatchesQuery(stack: StackNode, q: string): boolean {
-  return stackQueryHay(stack).includes(q);
+function stackMatchesQuery(stack: StackNode, q: string, includeLocation: boolean): boolean {
+  if (stackQueryHay(stack).includes(q)) return true;
+  if (!includeLocation) return false;
+  const loc = `${stack.locationId || ''} ${stack.locationName || ''}`.toLowerCase();
+  return loc.includes(q);
 }
 
-export function filterStacksByQuery(stacks: StackNode[], query: string): StackNode[] {
+function personMatchesQuery(person: PersonNode, q: string): boolean {
+  return `${person.id} ${person.name}`.toLowerCase().includes(q);
+}
+
+export function filterStacksByQuery(
+  stacks: StackNode[],
+  query: string,
+  options?: { includeLocation?: boolean },
+): StackNode[] {
   const q = query.trim().toLowerCase();
   if (!q) return stacks;
+  const includeLocation = options?.includeLocation === true;
   const matched: StackNode[] = [];
   for (const stack of stacks) {
-    const self = stackMatchesQuery(stack, q);
-    const children = filterStacksByQuery(stack.children, query);
-    if (!self && children.length === 0) continue;
-    matched.push(self ? stack : { ...stack, children });
+    const self = stackMatchesQuery(stack, q, includeLocation);
+    if (self) {
+      matched.push(stack);
+      continue;
+    }
+    const persons = stack.persons.filter((person) => personMatchesQuery(person, q));
+    const children = filterStacksByQuery(stack.children, query, options);
+    if (persons.length === 0 && children.length === 0) continue;
+    matched.push({ ...stack, persons, children });
   }
   return matched;
 }

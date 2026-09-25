@@ -69,6 +69,15 @@ import { MovementPanel } from './components/MovementPanel';
 import { SidePanel, type SideTab } from './components/SidePanel';
 import { AiPane, type AiViewMode } from './components/AiPane';
 import { OrbitSelector } from './components/OrbitSelector';
+import { PresenceIcons } from './components/PresenceIcons';
+import {
+  bodyLocationIds,
+  buildPresenceIndex,
+  presenceIconsForLocations,
+  regionCellMarks,
+  systemLocationIds,
+  type PresenceIcon,
+} from './lib/presenceIcons';
 import { BeltDotField } from './components/BeltDotField';
 import { MoveRouteOverlay } from './components/MoveRouteOverlay';
 import {
@@ -222,6 +231,7 @@ function RegionMap({
   onSelectRegion,
   zoom,
   large,
+  presenceIndex,
 }: {
   body: SystemBodyNode;
   report: ParsedReport;
@@ -229,6 +239,7 @@ function RegionMap({
   onSelectRegion: (regionId: string) => void;
   zoom: number;
   large?: boolean;
+  presenceIndex: Map<string, PresenceIcon[]>;
 }) {
   const cells = buildRegionMapCells(body, regionCatalog(report), ownedRegionIds(report));
   if (cells.length === 0) return null;
@@ -248,6 +259,8 @@ function RegionMap({
       {cells.map((region) => {
         const rx = (region.x ?? 0) - minX + 1;
         const ry = (region.y ?? 0) - minY + 1;
+        const icons = presenceIndex.get(region.id) || [];
+        const marks = regionCellMarks(region.name, cell, icons.length);
         return (
           <button
             key={region.id}
@@ -258,11 +271,12 @@ function RegionMap({
               gridRow: ry,
               backgroundColor: regionTerrainColor(region.terrainType),
             }}
-            title={`${region.name} [${region.id}]${region.terrainType ? ` · ${region.terrainType}` : ''}`}
+            title={`${region.name} [${region.id}]${region.terrainType ? ` · ${region.terrainType}` : ''}${icons.length ? ` · ${icons.map((icon) => icon.label).join(', ')}` : ''}`}
             data-route-id={region.id}
             onClick={() => onSelectRegion(region.id)}
           >
-            <span className="region-cell-label">{region.name}</span>
+            {marks.showIcons && <PresenceIcons icons={icons} />}
+            {marks.showName && <span className="region-cell-label">{region.name}</span>}
           </button>
         );
       })}
@@ -303,6 +317,7 @@ function BodyIconButton({
   selected,
   compact,
   hasPresence,
+  presenceIcons,
   onSelect,
   onOpen,
 }: {
@@ -310,6 +325,7 @@ function BodyIconButton({
   selected: boolean;
   compact?: boolean;
   hasPresence?: boolean;
+  presenceIcons?: PresenceIcon[];
   onSelect: () => void;
   onOpen: () => void;
 }) {
@@ -334,6 +350,7 @@ function BodyIconButton({
     >
       <span className="body-icon-glyph" aria-hidden>{bodyKindIcon(body)}</span>
       {!compact && <span className="body-icon-name">{body.name}</span>}
+      {!compact && <PresenceIcons icons={presenceIcons || []} />}
     </button>
   );
 }
@@ -344,6 +361,7 @@ function BandBodyStack({
   selectedBodyId,
   filterOrbitId,
   presenceIds,
+  presenceIndex,
   onSelectBody,
   onOpenBody,
   onSelectOrbit,
@@ -353,6 +371,7 @@ function BandBodyStack({
   selectedBodyId: string | null;
   filterOrbitId?: string | null;
   presenceIds: Set<string>;
+  presenceIndex: Map<string, PresenceIcon[]>;
   onSelectBody: (bodyId: string) => void;
   onOpenBody: (bodyId: string) => void;
   onSelectOrbit?: (orbitId: string, bodyId: string) => void;
@@ -366,6 +385,7 @@ function BandBodyStack({
       <BodyIconButton
         body={body}
         hasPresence={bodyPresence}
+        presenceIcons={presenceIconsForLocations(presenceIndex, bodyLocationIds(body))}
         selected={selectedBodyId === body.id}
         onSelect={() => onSelectBody(body.id)}
         onOpen={() => onOpenBody(body.id)}
@@ -376,6 +396,7 @@ function BandBodyStack({
           orbitIds={body.orbitIds}
           filterOrbitId={filterOrbitId ?? null}
           presenceIds={presenceIds}
+          presenceIndex={presenceIndex}
           glyph="◎"
           onSelectOrbit={(orbitId) => onSelectOrbit(orbitId, body.id)}
         />
@@ -389,6 +410,7 @@ function BandBodyStack({
                 key={child.id}
                 body={child}
                 hasPresence={presenceIds.has(child.id) || child.regions.some((r) => presenceIds.has(r.id))}
+                presenceIcons={presenceIconsForLocations(presenceIndex, bodyLocationIds(child))}
                 selected={selectedBodyId === child.id}
                 onSelect={() => onSelectBody(child.id)}
                 onOpen={() => onOpenBody(child.id)}
@@ -406,6 +428,7 @@ function SystemView({
   filterOrbitId,
   filterStar,
   presenceIds,
+  presenceIndex,
   moveSegments,
   onSelectStar,
   onSelectBody,
@@ -418,6 +441,7 @@ function SystemView({
   filterOrbitId: string | null;
   filterStar: boolean;
   presenceIds: Set<string>;
+  presenceIndex: Map<string, PresenceIcon[]>;
   moveSegments: MoveSegment[];
   onSelectStar: () => void;
   onSelectBody: (bodyId: string) => void;
@@ -451,6 +475,7 @@ function SystemView({
               selectedBodyId={selectedBodyId}
               filterOrbitId={filterOrbitId}
               presenceIds={presenceIds}
+              presenceIndex={presenceIndex}
               onSelectBody={onSelectBody}
               onOpenBody={onOpenBody}
               onSelectOrbit={onSelectOrbit}
@@ -465,6 +490,7 @@ function SystemView({
                   key={gate.id}
                   body={gate}
                   hasPresence={presenceIds.has(gate.id)}
+                  presenceIcons={presenceIconsForLocations(presenceIndex, bodyLocationIds(gate))}
                   selected={selectedBodyId === gate.id}
                   onSelect={() => onSelectBody(gate.id)}
                   onOpen={() => onOpenBody(gate.id)}
@@ -490,6 +516,7 @@ function BodyView({
   filterOrbitId,
   regionZoom,
   presenceIds,
+  presenceIndex,
   moveSegments,
   onRegionZoom,
   onSelectRegion,
@@ -504,6 +531,7 @@ function BodyView({
   filterOrbitId: string | null;
   regionZoom: number;
   presenceIds: Set<string>;
+  presenceIndex: Map<string, PresenceIcon[]>;
   moveSegments: MoveSegment[];
   onRegionZoom: (z: number) => void;
   onSelectRegion: (regionId: string) => void;
@@ -545,6 +573,7 @@ function BodyView({
                   orbitIds={body.orbitIds}
                   filterOrbitId={filterOrbitId}
                   presenceIds={presenceIds}
+                  presenceIndex={presenceIndex}
                   glyph="◯"
                   onSelectOrbit={(orbitId) => onSelectOrbit(orbitId, body.id)}
                 />
@@ -575,6 +604,7 @@ function BodyView({
                 orbitIds={body.orbitIds}
                 filterOrbitId={filterOrbitId}
                 presenceIds={presenceIds}
+                presenceIndex={presenceIndex}
                 glyph="◎"
                 onSelectOrbit={(orbitId) => onSelectOrbit(orbitId, body.id)}
               />
@@ -623,6 +653,7 @@ function BodyView({
               <button type="button" onClick={() => onRegionZoom(Math.min(REGION_ZOOM_BASE * 2.5, regionZoom + REGION_ZOOM_BASE * 0.25))}>+</button>
             </div>
             <div className="region-map-panel">
+              <div className="region-map-center">
               <RegionMap
                 body={body}
                 report={report}
@@ -630,7 +661,9 @@ function BodyView({
                 onSelectRegion={onSelectRegion}
                 zoom={regionZoom}
                 large
+                presenceIndex={presenceIndex}
               />
+              </div>
             </div>
             <p className="region-view-hint">Click a cell to filter units to that region.</p>
           </div>
@@ -642,6 +675,7 @@ function BodyView({
               orbitIds={body.orbitIds}
               filterOrbitId={filterOrbitId}
               presenceIds={presenceIds}
+              presenceIndex={presenceIndex}
               vertical
               glyph={gasGiant ? '◎' : '◯'}
               onSelectOrbit={(orbitId) => onSelectOrbit(orbitId, body.id)}
@@ -659,6 +693,7 @@ function BodyView({
                   selectedBodyId={null}
                   filterOrbitId={filterOrbitId}
                   presenceIds={presenceIds}
+                  presenceIndex={presenceIndex}
                   onSelectBody={onOpenBody}
                   onOpenBody={onOpenBody}
                   onSelectOrbit={onSelectOrbit}
@@ -880,16 +915,7 @@ export default function App() {
   const orderFocusKind = orderFocus?.kind ?? null;
   const orderFocusId = orderFocus?.id ?? null;
 
-  const parserPaneText = useMemo(() => {
-    const blocks = [parserOutput];
-    if (parseErrors.length) {
-      blocks.push('', 'errors:', ...parseErrors.map((e) => `  ${e}`));
-    }
-    if (warnings.length) {
-      blocks.push('', 'warnings:', ...warnings.map((w) => `  ${w}`));
-    }
-    return blocks.join('\n');
-  }, [parserOutput, parseErrors, warnings]);
+  const parserPaneText = parserOutput;
 
   const orderLineCount = useMemo(() => {
     const lines = orderEditorText.split('\n').length;
@@ -1008,6 +1034,10 @@ export default function App() {
 
   const presenceIds = useMemo(
     () => (report ? locationIdsWithPresence(report, report.factionId) : new Set<string>()),
+    [report]
+  );
+  const presenceIndex = useMemo(
+    () => (report ? buildPresenceIndex(report) : new Map<string, PresenceIcon[]>()),
     [report]
   );
 
@@ -1158,6 +1188,14 @@ export default function App() {
     await load();
   }
 
+  function publishMapOrders(next: string) {
+    ordersDirtyRef.current = true;
+    factionOrdersDirty.current = true;
+    setParseButtonStatus(null);
+    setDraftOrders(next);
+    setFactionOrderText(next);
+  }
+
   function applyParseResult(result: Awaited<ReturnType<typeof parseOrders>>) {
     setParseErrors(result.errors);
     setWarnings(result.warnings);
@@ -1185,17 +1223,12 @@ export default function App() {
 
   async function handleFactionParse() {
     const result = await parseOrders(factionOrderText);
-    const blocks = [result.output || `ok: ${result.ok}`];
-    if (result.errors.length) blocks.push('', 'errors:', ...result.errors.map((e) => `  ${e}`));
-    if (result.warnings.length) blocks.push('', 'warnings:', ...result.warnings.map((w) => `  ${w}`));
-    setFactionParseOutput(blocks.join('\n'));
+    setFactionParseOutput(result.output || `ok: ${result.ok}`);
   }
 
   async function handleFactionSubmit() {
     const result = await parseOrders(factionOrderText);
     const blocks = [result.output || `ok: ${result.ok}`];
-    if (result.errors.length) blocks.push('', 'errors:', ...result.errors.map((e) => `  ${e}`));
-    if (result.warnings.length) blocks.push('', 'warnings:', ...result.warnings.map((w) => `  ${w}`));
     try {
       await submitOrders(factionOrderText);
       factionOrdersDirty.current = false;
@@ -1506,6 +1539,7 @@ export default function App() {
             filterOrbitId={filterOrbitId}
             regionZoom={regionMapZoom}
             presenceIds={presenceIds}
+            presenceIndex={presenceIndex}
             moveSegments={moveSegments}
             onRegionZoom={setRegionMapZoom}
             onSelectRegion={selectRegion}
@@ -1522,6 +1556,7 @@ export default function App() {
             filterOrbitId={filterOrbitId}
             filterStar={filterStar}
             presenceIds={presenceIds}
+            presenceIndex={presenceIndex}
             moveSegments={moveSegments}
             onSelectStar={selectStar}
             onSelectBody={selectBody}
@@ -1559,6 +1594,7 @@ export default function App() {
                   }}
                 >
                   {sys.name}
+                  <PresenceIcons icons={presenceIconsForLocations(presenceIndex, systemLocationIds(detail, sys.id))} />
                 </button>
               );
             })}
@@ -1910,14 +1946,10 @@ export default function App() {
                       onChange={(e) => {
                         syncOrderCaret(e.currentTarget);
                         if (orderMode === 'faction') {
-                          ordersDirtyRef.current = true;
-                          setParseButtonStatus(null);
-                          setDraftOrders(e.target.value);
+                          publishMapOrders(e.target.value);
                         } else if (orderMode === 'units') {
-                          ordersDirtyRef.current = true;
-                          setParseButtonStatus(null);
                           setUnitsEditText(e.target.value);
-                          setDraftOrders(applyFocusedOrderEdits(
+                          publishMapOrders(applyFocusedOrderEdits(
                             draftOrders || factionOrdersText,
                             e.target.value,
                             unitsFocus,

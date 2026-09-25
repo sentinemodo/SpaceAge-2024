@@ -167,6 +167,14 @@ namespace SpaceAge
 					throw new Exception("bad syntax FROM expected");
 				}
 			}
+
+			if (this.Transferer != null)
+			{
+				TransferRegionWarning.WarnIfOtherRegion(
+					this.Receiver,
+					this.Transferer,
+					"source");
+			}
 		}
 
         private void assignTransferer(string token)

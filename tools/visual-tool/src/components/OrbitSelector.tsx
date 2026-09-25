@@ -1,7 +1,11 @@
+import { PresenceIcons } from './PresenceIcons';
+import type { PresenceIcon } from '../lib/presenceIcons';
+
 export function OrbitSelector({
   orbitIds,
   filterOrbitId,
   presenceIds,
+  presenceIndex,
   onSelectOrbit,
   vertical,
   label = 'Orbit',
@@ -11,6 +15,7 @@ export function OrbitSelector({
   orbitIds: string[];
   filterOrbitId: string | null;
   presenceIds: Set<string>;
+  presenceIndex?: Map<string, PresenceIcon[]>;
   onSelectOrbit: (orbitId: string) => void;
   vertical?: boolean;
   label?: string;
@@ -35,6 +40,7 @@ export function OrbitSelector({
             onClick={() => onSelectOrbit(orbitId)}
           >
             <span className="body-icon-glyph" aria-hidden>{glyph}</span>
+            <PresenceIcons icons={presenceIndex?.get(orbitId) || []} />
           </button>
         ))}
       </div>

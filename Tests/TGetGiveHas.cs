@@ -165,6 +165,74 @@ namespace UnitTests
             Assert.That(ModuleStack.All[order.ReceiverName].ReportName, Is.EqualTo("trucks [100001]"));
 		}
 
+		[Test]
+		public void AssignGiveOrder_OtherRegion_WarnsButKeepsOrder()
+		{
+			ModuleStack giver = this.game.ModuleStacks["000006"];
+			ModuleStack receiver = this.game.ModuleStacks["100001"];
+			receiver.Parent = Region.All["R00002"];
+
+			OrdersReader ordersReader = new OrdersReader(this.game);
+			ordersReader.AssignOrders(new List<string>
+			{
+				"#faction 2",
+				"#modulestack 000006",
+				"give 5 terran to 100001",
+				"#end"
+			});
+
+			Assert.That(giver.Orders.Count, Is.EqualTo(1));
+			Assert.That(((GiveOrder)giver.Orders[0]).Receiver, Is.SameAs(receiver));
+			Assert.That(
+				this.game.Factions["2"].EventReports.Exists(report =>
+					report.Description == "WARNING: receiver unit [100001] is not in this region."),
+				Is.True);
+		}
+
+		[Test]
+		public void AssignGiveOrder_UnknownReceiver_WarnsButKeepsOrder()
+		{
+			ModuleStack giver = this.game.ModuleStacks["000006"];
+
+			OrdersReader ordersReader = new OrdersReader(this.game);
+			ordersReader.AssignOrders(new List<string>
+			{
+				"#faction 2",
+				"#modulestack 000006",
+				"give 5 terran to 779013",
+				"#end"
+			});
+
+			Assert.That(giver.Orders.Count, Is.EqualTo(1));
+			Assert.That(
+				this.game.Factions["2"].EventReports.Exists(report =>
+					report.Description == "WARNING: receiver unit [779013] is not in this region."),
+				Is.True);
+		}
+
+		[Test]
+		public void AssignGetOrder_OtherRegion_WarnsButKeepsOrder()
+		{
+			ModuleStack receiver = this.game.ModuleStacks["100001"];
+			ModuleStack source = this.game.ModuleStacks["000006"];
+			source.Parent = Region.All["R00002"];
+
+			OrdersReader ordersReader = new OrdersReader(this.game);
+			ordersReader.AssignOrders(new List<string>
+			{
+				"#faction 2",
+				"#modulestack 100001",
+				"get 5 terran from 000006",
+				"#end"
+			});
+
+			Assert.That(receiver.Orders.Count, Is.EqualTo(1));
+			Assert.That(((GetOrder)receiver.Orders[0]).Transferer, Is.SameAs(source));
+			Assert.That(
+				this.game.Factions["2"].EventReports.Exists(report =>
+					report.Description == "WARNING: source unit [000006] is not in this region."),
+				Is.True);
+		}
 
 		[Test]
 		public void ExecuteGiveOrder()

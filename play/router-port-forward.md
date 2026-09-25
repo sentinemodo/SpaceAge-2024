@@ -1,56 +1,49 @@
-# Expose game-host on your public IP (alternative to ngrok)
+# Expose the laptop on the public IP (Caddy)
 
-**Primary path for open beta:** ngrok HTTPS tunnel — see [`hosted-beta-gm.md`](hosted-beta-gm.md) Scenario C
-(`https://manatee-sabbath-kudos.ngrok-free.dev/client/`).
+**Current path:** HTTPS on the WAN address, TLS on the laptop, apps stay on localhost ports.
 
-Use this document only if you prefer a **static IP + router port forward** instead of ngrok.
+| Public URL | Upstream on `192.168.100.17` |
+|------------|------------------------------|
+| `https://spaceage-pbem.duckdns.org` | game-host `127.0.0.1:8787` |
+| `https://goodplays.duckdns.org` | GoodPlays API `127.0.0.1:5280` |
 
-Local Docker and Windows Firewall are already correct. If `http://localhost:8787/health` works but
-`http://91.220.222.102:8787/health` does not from outside your LAN, the missing piece is **router
-port forwarding** (NAT).
+Caddy config: `C:\Users\akacz\caddy\Caddyfile`. DuckDNS for both names is `91.220.222.102`.
 
-## Your network (current)
+## Router (Huawei HS8145V)
+
+**Forward Rules → Port Mapping Configuration**, WAN `1_INTERNET_R_VID_100`, internal host `192.168.100.17`:
+
+| External TCP | Internal TCP | Why |
+|--------------|--------------|-----|
+| 80 | 80 | HTTP and certificate checks |
+| 443 | 443 | HTTPS |
+| 5280 | 5280 | GoodPlays API without TLS (phone check). Pages uses 443. |
+
+Do not map **8787** or **5432**. Game-host is reached only through Caddy. Postgres stays on Docker on the laptop.
+
+ngrok remains the fallback: [`hosted-beta-gm.md`](hosted-beta-gm.md) (`https://manatee-sabbath-kudos.ngrok-free.dev/client/`).
+
+## Your network
 
 | Setting | Value |
 |---------|-------|
 | PC (GM laptop) | `192.168.100.17` |
 | Router | `192.168.100.1` |
 | Public IP | `91.220.222.102` |
-| Game-host port | `8787` |
+| Game-host | localhost `8787` (not on the WAN) |
 
-## Router setup
-
-1. Open the router admin UI (usually `http://192.168.100.1`).
-2. Find **Port forwarding** / **Virtual server** / **NAT**.
-3. Add a rule:
-
-   | Field | Value |
-   |-------|-------|
-   | External port | `8787` |
-   | Internal IP | `192.168.100.17` |
-   | Internal port | `8787` |
-   | Protocol | TCP (or TCP/UDP) |
-
-4. Save and apply. Some routers require a reboot.
-5. Reserve `192.168.100.17` for this PC (DHCP static lease) so the rule does not break after restart.
+Reserve `192.168.100.17` in DHCP so the mapping survives a reboot.
 
 ## Verify
 
-From a phone on **mobile data** (not Wi‑Fi):
+From a phone on **mobile data** (not the home Wi‑Fi; this router does not loop the public IP back onto the LAN):
 
-- `http://91.220.222.102:8787/health` → should return JSON with `"ok": true`
-- `http://91.220.222.102:8787/client/` → visual client
+- `https://spaceage-pbem.duckdns.org/health` → `"ok": true`
+- `https://spaceage-pbem.duckdns.org/client/` → login screen
+- `https://goodplays.duckdns.org/health` → `Healthy`
 
-## If it still fails
-
-- **ISP CGNAT**: some residential plans do not allow inbound port forwarding. Ask your ISP for a public IP or use ngrok instead.
-- **ISP blocks port 8787**: try forwarding external `8080` → internal `8787` and use `http://91.220.222.102:8080/...`.
-- **Double NAT**: modem + router both doing NAT; forward on both or put the router in bridge mode.
-
-## Preferred: ngrok (no router changes)
+If those fail and `http://localhost:8787/health` works, Caddy is down or the WAN forward is not reaching the laptop. Fallback:
 
 ```powershell
 .\play\expose-game-host-ngrok.ps1
 ```
-
-Client URL: **https://manatee-sabbath-kudos.ngrok-free.dev/client/** — see [`hosted-beta-gm.md`](hosted-beta-gm.md).

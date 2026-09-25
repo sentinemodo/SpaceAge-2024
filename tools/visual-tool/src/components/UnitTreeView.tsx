@@ -1,6 +1,4 @@
 import { useMemo, useState } from 'react';
-
-const emptyCollapsed = new Set<string>();
 import {
   formatStackLabel,
   formatPersonLabel,
@@ -11,6 +9,14 @@ import {
   type StackNode,
   type UnitSortKey,
 } from '../parsers/reportXml';
+
+const emptyCollapsed = new Set<string>();
+
+function formatLocationLabel(locationName: string, locationId: string): string {
+  if (!locationId || locationId === 'unknown') return locationName;
+  if (locationName.includes(`[${locationId}]`)) return locationName;
+  return `${locationName} [${locationId}]`;
+}
 
 function TreeBranch({
   node,
@@ -122,6 +128,7 @@ function PersonBranch({
 }
 
 function LocationGroup({
+  locationId,
   locationName,
   stacks,
   factionId,
@@ -134,6 +141,7 @@ function LocationGroup({
   onSelectStack,
   onSelectPerson,
 }: {
+  locationId: string;
   locationName: string;
   stacks: StackNode[];
   factionId: string;
@@ -146,7 +154,7 @@ function LocationGroup({
   onSelectStack: (id: string) => void;
   onSelectPerson: (id: string) => void;
 }) {
-  const locKey = `loc:${locationName}`;
+  const locKey = `loc:${locationId}`;
   const locCollapsed = collapsedLocations.has(locKey);
 
   return (
@@ -155,7 +163,7 @@ function LocationGroup({
         <button type="button" className="tree-toggle" onClick={() => onToggleLocation(locKey)}>
           {locCollapsed ? '▸' : '▾'}
         </button>
-        <span className="tree-location-name">{locationName}</span>
+        <span className="tree-location-name">{formatLocationLabel(locationName, locationId)}</span>
       </div>
       {!locCollapsed && (
         <ul className="tree-root">
@@ -204,11 +212,11 @@ export function UnitTreeView({
   const searching = query.trim().length > 0;
 
   const displayRoots = useMemo(() => {
-    let list = filterStacksByQuery(roots, query);
+    let list = filterStacksByQuery(roots, query, { includeLocation: !atLocationLevel });
     list = sortRootStacks(list, sortKey);
     const { owned, other } = partitionOwnedStacks(list, factionId);
     return [...sortRootStacks(owned, sortKey), ...sortRootStacks(other, sortKey)];
-  }, [roots, query, sortKey, factionId]);
+  }, [roots, query, sortKey, factionId, atLocationLevel]);
 
   const groups = useMemo(() => {
     if (atLocationLevel) return null;
@@ -285,6 +293,7 @@ export function UnitTreeView({
           groups?.map((g) => (
             <LocationGroup
               key={g.locationId}
+              locationId={g.locationId}
               locationName={g.locationName}
               stacks={g.stacks}
               factionId={factionId}

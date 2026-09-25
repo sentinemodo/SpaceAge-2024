@@ -288,7 +288,7 @@ CAPTURE REGION forces move into region and declare unit preventing entry ENEMY.
 
 **FORM** — `FORM NEW [WITH n] AS [newN|"alias"]` — form new stack; empty or filled with modules from the modulestack. 
 
-**GET** — `GET <qty|ALL> <item> FROM <holder>` | `GET ALL FROM <holder>` | `GET <qty|ALL> <item>` | `GET ALL`. Get itemstack from modulestack. Negative qty leaves all but remainder. Both units must be present in the region. You can only GET from your own units.
+**GET** — `GET <qty|ALL> <item> FROM <holder>` | `GET ALL FROM <holder>` | `GET <qty|ALL> <item>` | `GET ALL`. Get itemstack from modulestack. Negative qty leaves all but remainder. Both units must be present in the region. If the named holder is not in this region, the order is kept and parse warns `WARNING: source unit [id] is not in this region.` You can only GET from your own units.
 
 |Get value|Holder amount before get|Holder amount after get|
 |--------|-------|--------|
@@ -298,7 +298,7 @@ CAPTURE REGION forces move into region and declare unit preventing entry ENEMY.
 |-10|30|10|
 |-40|30|30  - ERR: insufficient amount to get|
 
-**GIVE** — `GIVE <qty|ALL> <item> TO <holder|newN>` | `GIVE ALL TO …` Same as GET but from giver perspective. You can only GIVE to units with whom you have a Nurtal or better attitude.
+**GIVE** — `GIVE <qty|ALL> <item> TO <holder|newN>` | `GIVE ALL TO …` Same as GET but from giver perspective. If the named receiver is not in this region, the order is kept and parse warns `WARNING: receiver unit [id] is not in this region.` You can only GIVE to units with whom you have a Nurtal or better attitude.
 
 **GRANT** — `#faction` only; between-turn OK; bank debit on execution (see **GRANT credit costs** under Market trading and banking).
 

@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import { formatNextTurn, formatStatusLabel } from '../lib/statusSchema';
 import { withBase } from '../lib/paths';
-import { campaignFactionsByPlanet } from '../data/campaignFactions';
+import { renderTurnsTableHtml } from '../lib/turnsTable';
 ---
 
 <Layout title="Players & Turns" description="SpaceAge Turn Status - Orders Submission Status">
@@ -35,29 +35,7 @@ import { campaignFactionsByPlanet } from '../data/campaignFactions';
 	  <h2>Faction Orders Status</h2>
 	  <p>Status for the player factions</p>
 
-	  <div id="turns-factions-table" class="factions-columns">
-		{campaignFactionsByPlanet.map((group) => (
-		  <div class="planet-group">
-			<h3 class="planet-heading">{group.planet}</h3>
-			<div class="factions-table">
-			  <div class="table-header">
-				<div class="table-cell faction-col">Faction</div>
-				<div class="table-cell status-col">Orders Submitted</div>
-			  </div>
-			  {group.factions.map((faction) => (
-				<div class="table-row" data-faction-id={faction.id}>
-				  <div class="table-cell faction-col">
-					<strong>{faction.name} ({faction.id})</strong>
-				  </div>
-				  <div class="table-cell status-col pending">
-					⏳ Awaiting Orders
-				  </div>
-				</div>
-			  ))}
-			</div>
-		  </div>
-		))}
-	  </div>
+	  <div id="turns-factions-table" set:html={renderTurnsTableHtml(null)} />
 	</section>
 
 	<section class="turn-info card">
@@ -149,71 +127,86 @@ import { campaignFactionsByPlanet } from '../data/campaignFactions';
 	margin-bottom: var(--space-2xl);
   }
 
-  .factions-columns {
-	display: grid;
-	grid-template-columns: repeat(2, minmax(0, 1fr));
-	gap: var(--space-lg);
+  #turns-factions-table {
 	margin-top: var(--space-lg);
   }
 
-  .planet-group {
-	background-color: rgba(13, 148, 136, 0.08);
-	border: 1px solid var(--color-border);
-	border-radius: var(--radius-lg);
-	padding: var(--space-md);
-  }
-
-  .planet-heading {
-	margin: 0 0 var(--space-md);
-	font-size: var(--font-size-lg);
-	color: var(--color-accent-teal);
-  }
-
-  .factions-table {
+  #turns-factions-table :global(.factions-table) {
 	background-color: var(--color-card-bg);
+	border: 1px solid var(--color-border);
 	border-radius: var(--radius-lg);
 	overflow: hidden;
   }
 
-  .table-header {
+  #turns-factions-table :global(.table-planet-row) {
 	display: grid;
-	grid-template-columns: 2fr 1fr;
+	grid-template-columns: 1fr 1fr;
 	gap: 0;
+	background-color: rgba(13, 148, 136, 0.12);
+	border-bottom: 1px solid var(--color-border);
+  }
+
+  #turns-factions-table :global(.planet-span) {
+	padding: var(--space-md);
+	font-size: var(--font-size-lg);
+	font-weight: var(--font-weight-bold);
+	color: var(--color-accent-teal);
+	text-align: center;
+  }
+
+  #turns-factions-table :global(.planet-span:first-child) {
+	border-right: 1px solid var(--color-border);
+  }
+
+  #turns-factions-table :global(.table-header) {
 	background-color: rgba(0, 0, 0, 0.1);
 	font-weight: var(--font-weight-bold);
 	border-bottom: 2px solid var(--color-accent-teal);
   }
 
-  .table-row {
+  #turns-factions-table :global(.table-header),
+  #turns-factions-table :global(.table-row) {
 	display: grid;
-	grid-template-columns: 2fr 1fr;
+	grid-template-columns: 2fr 1fr 2fr 1fr;
 	gap: 0;
-	border-bottom: 1px solid #ddd;
 	align-items: center;
   }
 
-  .table-row:last-child {
+  #turns-factions-table :global(.table-row) {
+	border-bottom: 1px solid #ddd;
+  }
+
+  #turns-factions-table :global(.table-row .faction-col:nth-child(1)) {
+	border-right: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  #turns-factions-table :global(.table-row .faction-col:nth-child(3)) {
+	border-left: 1px solid var(--color-border);
+	border-right: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  #turns-factions-table :global(.table-row:last-child) {
 	border-bottom: none;
   }
 
-  .table-cell {
+  #turns-factions-table :global(.table-cell) {
 	padding: var(--space-md);
 	color: var(--color-text-dark);
   }
 
-  .faction-col {
+  #turns-factions-table :global(.faction-col) {
 	font-weight: var(--font-weight-semibold);
   }
 
-  .status-col {
+  #turns-factions-table :global(.status-col) {
 	text-align: center;
   }
 
-  .status-col.pending {
+  #turns-factions-table :global(.status-col.pending) {
 	color: #b45309;
   }
 
-  .status-col.submitted {
+  #turns-factions-table :global(.status-col.submitted) {
 	color: #047857;
   }
 
@@ -240,18 +233,31 @@ import { campaignFactionsByPlanet } from '../data/campaignFactions';
 	  grid-template-columns: 1fr;
 	}
 
-	.factions-columns {
+	#turns-factions-table :global(.table-planet-row) {
 	  grid-template-columns: 1fr;
 	}
 
-	.table-header,
-	.table-row {
-	  grid-template-columns: 1fr;
+	#turns-factions-table :global(.planet-span:first-child) {
+	  border-right: none;
+	  border-bottom: 1px solid var(--color-border);
 	}
 
-	.status-col {
+	#turns-factions-table :global(.table-header),
+	#turns-factions-table :global(.table-row) {
+	  grid-template-columns: 1fr 1fr;
+	}
+
+	#turns-factions-table :global(.table-row .faction-col:nth-child(3)),
+	#turns-factions-table :global(.table-row .faction-col:nth-child(4)) {
+	  border-top: 1px solid #ddd;
+	}
+
+	#turns-factions-table :global(.table-row .faction-col:nth-child(3)) {
+	  border-left: none;
+	}
+
+	#turns-factions-table :global(.status-col) {
 	  text-align: left;
-	  margin-top: var(--space-sm);
 	}
   }
 </style>

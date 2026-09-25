@@ -21,7 +21,7 @@ $schedulePath = Join-Path $paths.RunRoot 'gm\schedule.json'
 if (Test-Path -LiteralPath $schedulePath) {
 	try {
 		$sched = Get-Content -LiteralPath $schedulePath -Raw -Encoding UTF8 | ConvertFrom-Json
-		if ($null -ne $sched.nextTurnAt) {
+		if ($null -ne $sched.nextTurnAt -and -not [string]::IsNullOrWhiteSpace([string]$sched.nextTurnAt)) {
 			$raw = $sched.nextTurnAt
 			if ($raw -is [datetime]) {
 				$nextTurnAt = $raw.ToUniversalTime().ToString("yyyy-MM-dd'T'HH:mm:ss'Z'")
@@ -36,7 +36,7 @@ if (Test-Path -LiteralPath $schedulePath) {
 	}
 }
 
-if ($PSBoundParameters.ContainsKey('NextTurnAt')) {
+if ($PSBoundParameters.ContainsKey('NextTurnAt') -and -not [string]::IsNullOrWhiteSpace($NextTurnAt)) {
 	$nextTurnAt = $NextTurnAt
 }
 
@@ -78,6 +78,10 @@ if (Test-Path -LiteralPath $gamein) {
 	else {
 		$status = 'not-started'
 	}
+}
+
+if ([string]::IsNullOrWhiteSpace([string]$nextTurnAt)) {
+	$nextTurnAt = $null
 }
 
 $obj = @{

@@ -29,7 +29,7 @@ import {
   sessionFromRequest,
 } from './lib/auth.mjs';
 import { bootstrapFromCampaign, promoteGameout, runReports, runTurn } from './lib/game-exe.mjs';
-import { buildStatusJson } from './lib/status.mjs';
+import { buildStatusJson, syncLobbyStatusFile } from './lib/status.mjs';
 import { validateOrderText } from './lib/check-orders.mjs';
 import { parseOrders } from './lib/parse-orders.mjs';
 import { runBattleSimulation } from './lib/battle-sim.mjs';
@@ -332,6 +332,11 @@ const server = http.createServer(async (req, res) => {
     if (!session) return;
     const body = await readBody(req);
     saveOrder(session.factionId, body);
+    try {
+      syncLobbyStatusFile();
+    } catch (err) {
+      console.warn('Lobby status sync failed:', err);
+    }
     json(res, 200, { ok: true });
     return;
   }
@@ -546,6 +551,7 @@ const server = http.createServer(async (req, res) => {
     } else {
       await bootstrapFromCampaign();
     }
+    syncLobbyStatusFile();
     json(res, 200, { ok: true, turn: readTurnFromGamein() });
     return;
   }
@@ -554,6 +560,7 @@ const server = http.createServer(async (req, res) => {
     if (!requireGm(req, res)) return;
     await runReports();
     isolateReports();
+    syncLobbyStatusFile();
     json(res, 200, { ok: true, turn: readTurnFromGamein() });
     return;
   }
@@ -564,6 +571,7 @@ const server = http.createServer(async (req, res) => {
     await runTurn();
     promoteGameout(before + 1);
     isolateReports();
+    syncLobbyStatusFile();
     json(res, 200, { ok: true, turn: readTurnFromGamein() });
     return;
   }
@@ -571,6 +579,7 @@ const server = http.createServer(async (req, res) => {
   if (req.method === 'POST' && url.pathname === '/api/gm/isolate') {
     if (!requireGm(req, res)) return;
     isolateReports();
+    syncLobbyStatusFile();
     json(res, 200, { ok: true });
     return;
   }

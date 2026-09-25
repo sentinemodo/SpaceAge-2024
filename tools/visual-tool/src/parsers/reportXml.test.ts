@@ -268,6 +268,8 @@ describe('filterStacksByQuery', () => {
     name: 'Northwind Headquarters',
     type: 'corphq',
     reportLine: '+ Northwind Headquarters [200001], corporate headquarters [corphq], immobile.',
+    locationId: 'R00008',
+    locationName: 'Northwind Grant',
     children: [
       {
         id: '200003',
@@ -279,16 +281,44 @@ describe('filterStacksByQuery', () => {
         moduleCount: 2,
         persons: [],
       },
+      {
+        id: '200005',
+        name: 'factory',
+        type: 'factry',
+        children: [],
+        upkeep: [],
+        moduleCount: 2,
+        persons: [],
+      },
     ],
     upkeep: [],
     moduleCount: 1,
-    persons: [],
+    persons: [{ id: '200010', name: 'Northwind CEO', upkeep: [] }],
   };
 
-  it('matches a name fragment on a nested unit', () => {
+  it('matches a name fragment on a nested unit and drops other children and persons', () => {
     const found = filterStacksByQuery([hq], 'cargo');
     expect(found).toHaveLength(1);
+    expect(found[0].id).toBe('200001');
     expect(found[0].children.map((c) => c.id)).toEqual(['200003']);
+    expect(found[0].persons).toEqual([]);
+  });
+
+  it('matches a person name or id and hides unrelated units', () => {
+    const byName = filterStacksByQuery([hq], 'ceo');
+    expect(byName[0].persons.map((p) => p.id)).toEqual(['200010']);
+    expect(byName[0].children).toEqual([]);
+    const byId = filterStacksByQuery([hq], '0010');
+    expect(byId[0].persons.map((p) => p.id)).toEqual(['200010']);
+  });
+
+  it('matches a region name or id on the galaxy map', () => {
+    const byName = filterStacksByQuery([hq], 'grant', { includeLocation: true });
+    expect(byName.map((s) => s.id)).toEqual(['200001']);
+    expect(byName[0].children).toHaveLength(2);
+    const byId = filterStacksByQuery([hq], 'r00008', { includeLocation: true });
+    expect(byId.map((s) => s.id)).toEqual(['200001']);
+    expect(filterStacksByQuery([hq], 'grant')).toEqual([]);
   });
 
   it('matches a module type name fragment', () => {

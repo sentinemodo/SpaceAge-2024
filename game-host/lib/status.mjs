@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { factionsDir, gameinPath, readTurnFromGamein, turnDir } from './paths.mjs';
+import { factionsDir, gameinPath, readTurnFromGamein, repoRoot, turnDir } from './paths.mjs';
 import { loadFactionCredentials } from './auth.mjs';
 
 const PLAYER_IDS = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
@@ -14,7 +14,8 @@ export function buildStatusJson() {
   if (fs.existsSync(schedulePath)) {
     try {
       const sched = JSON.parse(fs.readFileSync(schedulePath, 'utf8'));
-      nextTurnAt = sched.nextTurnAt ?? null;
+      const raw = sched.nextTurnAt ?? null;
+      nextTurnAt = raw && String(raw).trim() ? raw : null;
     } catch { /* ignore */ }
   }
 
@@ -44,4 +45,15 @@ export function buildStatusJson() {
   }
 
   return { status, turn, nextTurnAt, factions };
+}
+
+/** Write lobby status.json for the static site (same schema as play/generate-status.ps1). */
+export function syncLobbyStatusFile() {
+  if (process.env.GAME_HOST_SKIP_LOBBY_SYNC === '1') return;
+  const outPath =
+    process.env.GAME_HOST_LOBBY_STATUS_PATH ||
+    path.join(repoRoot(), 'website', 'public', 'status.json');
+  const payload = buildStatusJson();
+  fs.mkdirSync(path.dirname(outPath), { recursive: true });
+  fs.writeFileSync(outPath, `${JSON.stringify(payload)}\n`, 'utf8');
 }

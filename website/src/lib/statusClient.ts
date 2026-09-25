@@ -1,6 +1,7 @@
 import { campaignFactionsByPlanet, campaignFactionLabel } from '../data/campaignFactions';
 import { clientFactionUrl } from './clientUrls';
 import { formatNextTurn, formatStatusLabel, type StatusData } from './statusSchema';
+import { renderTurnsTableHtml } from './turnsTable';
 import { withBase } from './paths';
 
 function escapeHtml(text: string): string {
@@ -48,24 +49,7 @@ function renderDashboardGrid(factions: StatusData['factions']): string {
 }
 
 function renderTurnsTable(factions: StatusData['factions']): string {
-  const byId = new Map(factions.map((f) => [f.id, f]));
-
-  return campaignFactionsByPlanet
-    .map((group) => {
-      const rows = group.factions
-        .map((faction) => {
-          const live = byId.get(faction.id);
-          const submitted = live?.submitted ?? false;
-          const statusClass = submitted ? 'submitted' : 'pending';
-          const statusText = submitted ? '✓ Submitted' : '⏳ Awaiting Orders';
-          const name = live ? factionName(live) : `${faction.name} (${faction.id})`;
-          return `<div class="table-row" data-faction-id="${faction.id}"><div class="table-cell faction-col"><strong>${name}</strong></div><div class="table-cell status-col ${statusClass}">${statusText}</div></div>`;
-        })
-        .join('');
-
-      return `<div class="planet-group"><h3 class="planet-heading">${group.planet}</h3><div class="factions-table"><div class="table-header"><div class="table-cell faction-col">Faction</div><div class="table-cell status-col">Orders Submitted</div></div>${rows}</div></div>`;
-    })
-    .join('');
+  return renderTurnsTableHtml(factions);
 }
 
 export function bindStatusDashboard(root: HTMLElement): () => void {
