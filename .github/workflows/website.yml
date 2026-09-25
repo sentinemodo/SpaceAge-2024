@@ -61,7 +61,7 @@ jobs:
         env:
           PUBLIC_BASE_PATH: /SpaceAge-2024
           PUBLIC_SITE_URL: https://sentinemodo.github.io
-          PUBLIC_CLIENT_URL: https://manatee-sabbath-kudos.ngrok-free.dev/client/
+          PUBLIC_CLIENT_URL: https://spaceage-pbem.duckdns.org/client/
         run: npm run build
 
       - name: Upload Pages artifact

@@ -1,5 +1,5 @@
-/** Production client URL (ngrok → Docker game-host). Override at build via PUBLIC_CLIENT_URL. */
-export const HOSTED_CLIENT_URL = 'https://manatee-sabbath-kudos.ngrok-free.dev/client/';
+/** Production client URL (Caddy → game-host). Override at build via PUBLIC_CLIENT_URL. */
+export const HOSTED_CLIENT_URL = 'https://spaceage-pbem.duckdns.org/client/';
 
 /** Hosted visual client base URL (game-host /client/). */
 export function clientBaseUrl(): string {
