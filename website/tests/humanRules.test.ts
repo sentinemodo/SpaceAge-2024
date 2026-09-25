@@ -1,6 +1,12 @@
 import { describe, expect, it } from 'vitest';
 
-import { loadHumanRulesMarkdown, renderHumanRulesHtml } from '../src/lib/humanRules';
+import {
+  injectOrderAnchors,
+  loadHumanRulesMarkdown,
+  orderAnchorId,
+  parseOrdersIndex,
+  renderHumanRulesHtml,
+} from '../src/lib/humanRules';
 
 describe('human rules loader', () => {
   it('loads docs/human/rules.md from repo root', () => {
@@ -14,5 +20,33 @@ describe('human rules loader', () => {
     const html = renderHumanRulesHtml();
     expect(html).toMatch(/<h2[^>]*>.*Order file format/i);
     expect(html).toMatch(/13 weeks/);
+  });
+
+  it('indexes all dictionary orders as immediate vs long', () => {
+    const md = loadHumanRulesMarkdown();
+    const index = parseOrdersIndex(md);
+    expect(index.immediate).toHaveLength(25);
+    expect(index.long).toHaveLength(7);
+    expect(index.immediate[0]).toBe('ACTIVE');
+    expect(index.long.map((v) => v.toUpperCase())).toEqual([
+      'JUMP',
+      'MOVE',
+      'PRODUCE',
+      'REPAIR',
+      'RESEARCH',
+      'TRAIN',
+      'USE',
+    ]);
+  });
+
+  it('injects scroll anchors for dictionary verbs only', () => {
+    const md = loadHumanRulesMarkdown();
+    const withAnchors = injectOrderAnchors(md);
+    expect(withAnchors).toContain(`id="${orderAnchorId('GET')}"`);
+    expect(withAnchors.indexOf(`id="${orderAnchorId('GET')}"`)).toBeGreaterThan(
+      md.indexOf('## Full orders dictionary'),
+    );
+    const html = renderHumanRulesHtml();
+    expect(html).toMatch(new RegExp(`id="${orderAnchorId('MOVE')}"`));
   });
 });

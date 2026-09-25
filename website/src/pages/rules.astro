@@ -1,29 +1,116 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { renderHumanRulesHtml } from '../lib/humanRules';
+import {
+  loadHumanRulesMarkdown,
+  orderAnchorId,
+  parseOrdersIndex,
+  renderHumanRulesHtml,
+} from '../lib/humanRules';
 
 const rulesHtml = renderHumanRulesHtml();
+const ordersIndex = parseOrdersIndex(loadHumanRulesMarkdown());
 ---
 
 <Layout title="Player Rules" description="SpaceAge PBEM — order syntax and turn rules (open beta 0.8.001)">
   <section class="rules-content">
-    <div class="intro-card card">
-      <h1>Player Rules</h1>
-      <p>
-        SpaceAge is an <strong>open PBEM</strong> campaign: you receive quarterly reports, write order files,
-        and the host advances the galaxy. You play an <strong>Interest</strong> (player factions).
-        One turn = one in-game quarter = <strong>13 weeks</strong>.
-      </p>
+    <div class="rules-main">
+      <div class="intro-card card">
+        <h1>Player Rules</h1>
+        <p>
+          SpaceAge is an <strong>open PBEM</strong> campaign: you receive quarterly reports, write order files,
+          and the host advances the galaxy. You play an <strong>Interest</strong> (player factions).
+          One turn = one in-game quarter = <strong>13 weeks</strong>.
+        </p>
+      </div>
+
+      <article class="rules-markdown card" set:html={rulesHtml} />
     </div>
 
-    <article class="rules-markdown card" set:html={rulesHtml} />
+    <aside class="orders-index card" aria-label="Order verbs index">
+      <h2 class="orders-index-title">Orders</h2>
+      <p class="orders-index-lead">
+        {ordersIndex.immediate.length} immediate · {ordersIndex.long.length} long
+      </p>
+
+      <h3 class="orders-index-heading">Immediate</h3>
+      <ul class="orders-index-list">
+        {
+          ordersIndex.immediate.map((verb) => (
+            <li>
+              <a class="order-index-link" href={`#${orderAnchorId(verb)}`}>
+                {verb}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+
+      <h3 class="orders-index-heading">Long</h3>
+      <ul class="orders-index-list">
+        {
+          ordersIndex.long.map((verb) => (
+            <li>
+              <a class="order-index-link" href={`#${orderAnchorId(verb)}`}>
+                {verb}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </aside>
   </section>
 </Layout>
 
+<script>
+  const SCROLL_GAP_PX = 12;
+
+  /** Sticky site nav height + breathing room — used by scroll-margin on anchors. */
+  function syncRulesScrollOffset() {
+    const nav = document.querySelector('.nav');
+    const navHeight = nav?.getBoundingClientRect().height ?? 0;
+    const offset = navHeight + SCROLL_GAP_PX;
+    document.documentElement.style.setProperty('--rules-scroll-offset', `${offset}px`);
+    return offset;
+  }
+
+  function scrollOrderIntoView(id: string) {
+    syncRulesScrollOffset();
+    const target = document.getElementById(id);
+    if (!target) return;
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    history.replaceState(null, '', `#${id}`);
+  }
+
+  syncRulesScrollOffset();
+  window.addEventListener('resize', syncRulesScrollOffset);
+
+  document.querySelectorAll<HTMLAnchorElement>('a.order-index-link').forEach((link) => {
+    link.addEventListener('click', (event) => {
+      const hash = link.getAttribute('href');
+      if (!hash?.startsWith('#')) return;
+      event.preventDefault();
+      scrollOrderIntoView(hash.slice(1));
+    });
+  });
+
+  const initialHash = window.location.hash;
+  if (initialHash.startsWith('#order-')) {
+    requestAnimationFrame(() => scrollOrderIntoView(initialHash.slice(1)));
+  }
+</script>
+
 <style>
   .rules-content {
-    max-width: 900px;
+    max-width: 1200px;
     margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(11rem, 14rem);
+    gap: var(--space-lg);
+    align-items: start;
+  }
+
+  .rules-main {
+    min-width: 0;
   }
 
   h1 {
@@ -82,6 +169,84 @@ const rulesHtml = renderHumanRulesHtml();
 
   .rules-markdown :global(a) {
     color: var(--color-accent-teal);
+  }
+
+  .orders-index {
+    position: sticky;
+    top: var(--space-md);
+    max-height: calc(100vh - 2 * var(--space-md));
+    overflow-y: auto;
+    padding: var(--space-md);
+  }
+
+  .orders-index-title {
+    margin: 0 0 var(--space-xs);
+    font-size: var(--font-size-lg);
+    color: var(--color-accent-teal);
+  }
+
+  .orders-index-lead {
+    margin: 0 0 var(--space-md);
+    font-size: var(--font-size-sm);
+    opacity: 0.85;
+  }
+
+  .orders-index-heading {
+    margin: var(--space-md) 0 var(--space-xs);
+    font-size: var(--font-size-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--color-accent-teal);
+  }
+
+  .orders-index-heading:first-of-type {
+    margin-top: 0;
+  }
+
+  .orders-index-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .orders-index-list a {
+    display: block;
+    padding: 0.15rem 0.35rem;
+    border-radius: 3px;
+    font-family: ui-monospace, monospace;
+    font-size: var(--font-size-sm);
+    color: var(--color-accent-teal);
+    text-decoration: none;
+  }
+
+  .orders-index-list a:hover,
+  .orders-index-list a:focus-visible {
+    background: rgba(255, 255, 255, 0.08);
+    text-decoration: underline;
+  }
+
+  .rules-markdown :global(.order-anchor) {
+    display: block;
+    scroll-margin-top: var(
+      --rules-scroll-offset,
+      calc(var(--font-size-2xl) * 2 + var(--space-md) * 2 + var(--space-sm))
+    );
+    height: 0;
+  }
+
+  @media (max-width: 960px) {
+    .rules-content {
+      grid-template-columns: 1fr;
+    }
+
+    .orders-index {
+      position: static;
+      max-height: none;
+      order: -1;
+    }
   }
 
   @media (max-width: 768px) {
