@@ -10,13 +10,15 @@ const testRunId = `test-orders-${process.pid}`;
 process.env.REPO_ROOT = path.resolve(__dirname, '..', '..');
 process.env.GAME_HOST_RUN_ID = testRunId;
 
-const { ensureRunLayout, factionsDir, turnDir } = await import('../lib/paths.mjs');
+const { ensureRunLayout, factionsDir, gameinPath, turnDir } = await import('../lib/paths.mjs');
 const {
   hasSubmittedOrders,
   listOrderVersions,
   orderVersionFileName,
   readSubmittedOrder,
+  resolveSubmittedOrderPathForTurnRun,
   saveOrder,
+  stageSubmittedOrdersForTurnRun,
 } = await import('../lib/orders-io.mjs');
 
 describe('saveOrder', () => {
@@ -59,6 +61,58 @@ describe('saveOrder', () => {
   it('returns null when the faction has not submitted orders for the turn', () => {
     ensureRunLayout();
     assert.equal(readSubmittedOrder(9, 1), null);
+  });
+
+  it('resolveSubmittedOrderPathForTurnRun prefers orders for gamein report turn', () => {
+    ensureRunLayout();
+    fs.mkdirSync(path.dirname(gameinPath()), { recursive: true });
+    fs.writeFileSync(gameinPath(), '<?xml version="1.0"?><game turn="2"></game>', 'utf8');
+    const folder = path.join(factionsDir(), '05');
+    fs.mkdirSync(folder, { recursive: true });
+    fs.writeFileSync(
+      path.join(folder, orderVersionFileName(5, 1, 1)),
+      '#faction 5 "t1"\n#end\n',
+      'utf8',
+    );
+    fs.writeFileSync(
+      path.join(folder, orderVersionFileName(5, 2, 1)),
+      '#faction 5 "t2"\n#end\n',
+      'utf8',
+    );
+    assert.equal(path.basename(resolveSubmittedOrderPathForTurnRun(5)), 'orders.5.2.1.txt');
+  });
+
+  it('resolveSubmittedOrderPathForTurnRun prefers latest version over legacy draft', () => {
+    ensureRunLayout();
+    fs.mkdirSync(path.dirname(gameinPath()), { recursive: true });
+    fs.writeFileSync(gameinPath(), '<?xml version="1.0"?><game turn="1"></game>', 'utf8');
+    const folder = path.join(factionsDir(), '03');
+    fs.mkdirSync(folder, { recursive: true });
+    fs.writeFileSync(path.join(folder, 'order.3.txt'), '#faction 3 "stale"\n#end\n', 'utf8');
+    fs.writeFileSync(
+      path.join(folder, orderVersionFileName(3, 1, 10)),
+      '#faction 3 "v10"\n#end\n',
+      'utf8',
+    );
+    const resolved = resolveSubmittedOrderPathForTurnRun(3);
+    assert.equal(path.basename(resolved), 'orders.3.1.10.txt');
+    const stagedBody = fs.readFileSync(resolved, 'utf8');
+    assert.match(stagedBody, /v10/);
+    assert.doesNotMatch(stagedBody, /stale/);
+  });
+
+  it('stageSubmittedOrdersForTurnRun copies resolved paths for all player factions', () => {
+    ensureRunLayout();
+    const turn = 1;
+    for (let id = 2; id <= 11; id += 1) {
+      saveOrder(id, `#faction ${id} "all"\n#end\n`, turn);
+    }
+    saveOrder(3, '#faction 3 "rev2"\n#end\n', turn);
+    stageSubmittedOrdersForTurnRun();
+    assert.match(fs.readFileSync(path.join(turnDir(), 'order.3.txt'), 'utf8'), /rev2/);
+    for (let id = 2; id <= 11; id += 1) {
+      fs.unlinkSync(path.join(turnDir(), `order.${id}.txt`));
+    }
   });
 
   it('hasSubmittedOrders is true for LLM version file without order.{id}.txt draft', () => {

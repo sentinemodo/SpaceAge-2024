@@ -3,7 +3,10 @@ param(
 	[Parameter(Mandatory = $true, Position = 0)]
 	[string]$RunId,
 
-	[string]$Exe
+	[string]$Exe,
+
+	# Passed to Game.exe as /gm-log (e.g. all, or research,battles,market). Falls back to $env:GM_LOG when omitted.
+	[string]$GmLog
 )
 
 $ErrorActionPreference = 'Stop'
@@ -20,26 +23,36 @@ if (-not (Test-Path -LiteralPath $paths.TurnDir)) {
 
 $missing = @()
 foreach ($id in $script:PlayerFactionIds) {
-	$src = Join-Path (Join-Path $paths.FactionsDir (Get-FactionFolderName -Id $id)) ("order.{0}.txt" -f $id)
-	if (-not (Test-Path -LiteralPath $src)) {
-		$missing += $src
+	$src = Resolve-FactionOrderSourcePath -FactionId $id -Paths $paths
+	if (-not $src) {
+		$folder = Join-Path $paths.FactionsDir (Get-FactionFolderName -Id $id)
+		$missing += "faction $id (no orders.*.{turn}.{version}.txt and no order.$id.txt under $folder)"
 	}
 }
 if ($missing.Count -gt 0) {
-	throw "Missing faction order drafts (need all ten for factions 2-11):`n$($missing -join "`n")"
+	throw "Missing faction orders (need all ten for factions 2-11):`n$($missing -join "`n")"
 }
 
 Get-ChildItem -LiteralPath $paths.TurnDir -Filter 'order.*' -File -ErrorAction SilentlyContinue |
 	Remove-Item -Force
 
 foreach ($id in $script:PlayerFactionIds) {
-	$src = Join-Path (Join-Path $paths.FactionsDir (Get-FactionFolderName -Id $id)) ("order.{0}.txt" -f $id)
+	$src = Resolve-FactionOrderSourcePath -FactionId $id -Paths $paths
 	$dst = Join-Path $paths.TurnDir ("order.{0}.txt" -f $id)
 	$text = Read-Utf8Text -Path $src
 	Write-Win1251Text -Path $dst -Text $text
+	Write-Host ("  order.{0}.txt <= {1}" -f $id, (Split-Path -Leaf $src))
 }
 
-Invoke-GameExe -Exe $Exe -GameArgs @('/data', $paths.DataDir, '/turn-dir', $paths.TurnDir)
+$gameArgs = @('/data', $paths.DataDir, '/turn-dir', $paths.TurnDir)
+$gmLogChannels = $GmLog
+if ([string]::IsNullOrWhiteSpace($gmLogChannels)) {
+	$gmLogChannels = $env:GM_LOG
+}
+if (-not [string]::IsNullOrWhiteSpace($gmLogChannels)) {
+	$gameArgs += @('/gm-log', $gmLogChannels.Trim())
+}
+Invoke-GameExe -Exe $Exe -GameArgs $gameArgs
 
 & (Join-Path $PSScriptRoot 'isolate.ps1') -RunId $RunId
 

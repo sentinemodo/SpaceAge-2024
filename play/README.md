@@ -45,9 +45,10 @@ Later:
 |------|------|--------|
 | `/reports` | `turn/report.1.{1–13}.txt` and `.xml` | Seed `turn="1"`; campaign factions have `xml-report="True"` |
 | isolate | `factions/NN/report.{T}.{id}.txt` only | NN = `02`–`11`; never `.xml`; never 1/12/13 |
-| `/player` or `draft-run` draft | `factions/NN/order.{id}.txt` or `orders.{faction}.{turn}.{iteration}.txt` | UTF-8 in the faction folder |
+| `/player` or `draft-run` draft | `factions/NN/order.{id}.txt` (latest draft) or `orders.{id}.{T}.{version}.txt` | UTF-8; **T** = report turn from `report.{T}.{id}.txt`; **version** = submit/draft sequence |
 | campaign-ai | `factions/NN/story.md` | Plan: review + strategic (system, 4q) + tactical (planet/moon, 1q) + win (galaxy, T≥10) |
-| `turn.ps1` | `turn/order.{id}.txt` | Windows-1251 copies of the ten player files |
+| `turn.ps1` | `turn/order.{id}.txt` | Windows-1251 copies from latest `orders.{id}.{T}.{version}.txt`, else `order.{id}.txt` |
+| rename only | `normalize-order-filenames.ps1 -Run <id>` | Renumbers versions by file timestamp; merges legacy `T+1` names when only one report exists |
 | full exe | `data/gameout.{N}.xml`, `turn/report.{N}.*` | Seed 1 → N = **2** |
 | `next.ps1` | overwrite `data/gamein.xml` from `data/gameout.{N}.xml` | Keep all `gameout.*` |
 
@@ -80,7 +81,7 @@ From the repo root (`powershell -NoProfile -File` if execution policy blocks `.\
 .\play\next.ps1 demo
 ```
 
-Optional `-Exe path\to\Game.exe` on `reports.ps1` / `turn.ps1`. `init-run.ps1` accepts `-Exe` for consistency but does not launch the engine.
+Optional `-Exe path\to\Game.exe` on `reports.ps1` / `turn.ps1`. `turn.ps1` also accepts `-GmLog` (e.g. `all`) for `gmturn-log.{turn}.txt` in the run turn folder; when omitted, uses `$env:GM_LOG` if set. `init-run.ps1` accepts `-Exe` for consistency but does not launch the engine.
 
 Typical first quarter: `init-run` → `reports` → `isolate` → (ten order files in faction folders) → `turn` → `next`.
 

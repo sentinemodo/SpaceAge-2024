@@ -17,11 +17,11 @@ public class OrderFileNamingTests
     }
 
     [Test]
-    public void FormatFileName_UsesFactionTurnIteration()
+    public void FormatFileName_UsesFactionReportTurnAndVersion()
     {
         Assert.That(
-            OrderFileNaming.FormatFileName(factionId: 2, turn: 2, iteration: 1),
-            Is.EqualTo("orders.2.2.1.txt"));
+            OrderFileNaming.FormatFileName(factionId: 2, reportTurn: 1, version: 1),
+            Is.EqualTo("orders.2.1.1.txt"));
     }
 
     [Test]
@@ -78,8 +78,8 @@ public class OrderFileNamingTests
     }
 
     [Test]
-    public void InferDraftTurn_FromReportTurn_IsReportTurnPlusOne()
+    public void InferDraftTurn_FromReportTurn_MatchesReportTurn()
     {
-        Assert.That(OrderFileNaming.InferDraftTurnFromReportTurn(1), Is.EqualTo(2));
+        Assert.That(OrderFileNaming.InferDraftTurnFromReportTurn(1), Is.EqualTo(1));
     }
 }

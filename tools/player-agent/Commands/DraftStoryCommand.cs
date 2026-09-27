@@ -23,6 +23,7 @@ internal static class DraftStoryCommand
         command.AddOption(CommandHelpers.AllowRunPodOption);
         command.AddOption(CommandHelpers.YesOption);
         command.AddOption(ChunkedOption);
+        command.AddOption(OmitStrategicOption);
         command.AddOption(PersonaPathOption);
 
         command.SetHandler(async context =>
@@ -31,6 +32,7 @@ internal static class DraftStoryCommand
             var dryRun = context.ParseResult.GetValueForOption(CommandHelpers.DryRunOption);
             var assumeYes = context.ParseResult.GetValueForOption(CommandHelpers.YesOption);
             var chunked = context.ParseResult.GetValueForOption(ChunkedOption);
+            var omitStrategic = context.ParseResult.GetValueForOption(OmitStrategicOption);
             var output = context.ParseResult.GetValueForOption(CommandHelpers.OutputOption);
             var runId = context.ParseResult.GetValueForOption(CommandHelpers.RunOption)
                 ?? throw new InvalidOperationException("--run is required.");
@@ -73,6 +75,10 @@ internal static class DraftStoryCommand
             Console.WriteLine($"Persona:          {personaPath}");
             Console.WriteLine($"Chat timeout:     {settings.ChatTimeoutSeconds}s");
             Console.WriteLine($"Strategy:         {(chunked ? "chunked" : "monolithic (chunked fallback on timeout)")}");
+            if (omitStrategic)
+            {
+                Console.WriteLine("Story sections:   tactical + narrative only (omit strategic)");
+            }
             Console.WriteLine($"Remote host:      {settings.IsRemoteHost}");
 
             var request = new StoryDraftRequest
@@ -84,6 +90,7 @@ internal static class DraftStoryCommand
                 ReportPath = reportPath,
                 HasPriorStory = hasPriorStory,
                 Chunked = chunked,
+                OmitStrategicSection = omitStrategic,
                 DryRun = dryRun,
             };
 
@@ -142,7 +149,12 @@ internal static class DraftStoryCommand
 
     private static Option<bool> ChunkedOption { get; } = new("--chunked")
     {
-        Description = "Use three smaller chat calls (strategic, tactical, narrative) instead of one monolithic prompt.",
+        Description = "Use smaller chat calls (strategic, tactical, narrative) instead of one monolithic prompt.",
+    };
+
+    private static Option<bool> OmitStrategicOption { get; } = new("--omit-strategic")
+    {
+        Description = "With --chunked, skip the strategic objective chunk (tactical + narrative only).",
     };
 
     private static Option<string?> PersonaPathOption { get; } = new("--persona-path")

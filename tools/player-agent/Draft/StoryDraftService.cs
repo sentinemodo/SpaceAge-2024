@@ -39,7 +39,7 @@ public sealed partial class StoryDraftService
 
         if (request.Chunked)
         {
-            var chunked = await DraftChunkedAsync(context, cancellationToken);
+            var chunked = await DraftChunkedAsync(context, request.OmitStrategicSection, cancellationToken);
             await WriteStoryAsync(request.OutputPath, chunked.StoryText, cancellationToken);
             return chunked;
         }
@@ -54,7 +54,7 @@ public sealed partial class StoryDraftService
         {
             Console.WriteLine(
                 "Monolithic story chat timed out; retrying with chunked prompts (strategic + tactical + narrative).");
-            var chunked = await DraftChunkedAsync(context, cancellationToken);
+            var chunked = await DraftChunkedAsync(context, request.OmitStrategicSection, cancellationToken);
             await WriteStoryAsync(request.OutputPath, chunked.StoryText, cancellationToken);
             return chunked with { TimedOutBeforeFallback = true };
         }
@@ -75,9 +75,10 @@ public sealed partial class StoryDraftService
 
     private async Task<StoryDraftResult> DraftChunkedAsync(
         StoryDraftContext context,
+        bool omitStrategicSection,
         CancellationToken cancellationToken)
     {
-        var chunks = StoryDraftPromptBuilder.BuildChunkPrompts(context);
+        var chunks = StoryDraftPromptBuilder.BuildChunkPrompts(context, omitStrategicSection);
         var sections = new List<string>(chunks.Count);
         foreach (var chunk in chunks)
         {
@@ -192,6 +193,7 @@ public sealed record StoryDraftRequest
     public required string ReportPath { get; init; }
     public bool HasPriorStory { get; init; }
     public bool Chunked { get; init; }
+    public bool OmitStrategicSection { get; init; }
     public bool FallbackToChunkedOnTimeout { get; init; } = true;
     public bool DryRun { get; init; }
 }

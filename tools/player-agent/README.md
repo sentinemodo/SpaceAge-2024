@@ -126,14 +126,14 @@ Shared indexes are stored separately: `.data/shared-test/`, `.data/shared-play/c
 
 ## Draft output (no default)
 
-Order files use **`orders.{faction}.{turn}.{iteration}.txt`** (matches SampleGame / `play/player/drafts/`). Example after turn 1 report for faction 2: **`orders.2.2.1.txt`** (faction 2, turn 2 orders, first iteration).
+Order files use **`orders.{id}.{T}.{version}.txt`** (same as the visual tool on submit). **T** is the **report turn** from `report.{T}.{id}.txt`; **version** increments on each save/draft. Example after report 1 for faction 2: **`orders.2.1.1.txt`**.
 
 | Use case | Arguments | Output path |
 |----------|-----------|-------------|
 | Dev / agent testing | `--output play/player/drafts/orders.2.2.1.txt` | Explicit path |
 | Campaign run | `--run <id> --faction <n>` | Auto: next `orders.{faction}.{turn}.{iteration}.txt` under `play/runs/<id>/factions/NN/` |
 
-Turn defaults to **report turn + 1** (from latest `report.{turn}.{faction}.txt`). Iteration defaults to the **next free** number for that faction/turn. Override with `--turn` / `--iteration`.
+Turn **T** defaults to the latest **report turn** (from `report.{T}.{faction}.txt`). Version defaults to the **next free** number for that faction and T. Override with `--turn` / `--version` (alias `--iteration`).
 
 **Turn processing:** when multiple iterations exist for the same faction and turn, **`RepoPaths.ResolveActiveOrderPath`** (highest iteration) is the file fed to `Game.exe`. Older iterations stay on disk for tracking, training, and development.
 

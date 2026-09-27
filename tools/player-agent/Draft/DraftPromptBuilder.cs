@@ -131,7 +131,7 @@ public static partial class DraftPromptBuilder
         moduleType.ToLowerInvariant() switch
         {
             "cplant" => "@produce energy only (never @use hcdril / iminng on cplant)",
-            "wnplnt" => "@use windpower (never @use hcdril on wnplnt)",
+            "wnplnt" => "@use wndtrb (never @use hcdril on wnplnt)",
             "sdrill" => "@use hcdril and @use iminng",
             "farms" => "@use farmng",
             "corphq" => "set hold 20 terran and @produce terran",
@@ -226,6 +226,27 @@ public static partial class DraftPromptBuilder
 
                 #modulestack new1
                 transfer 1 to faction 1
+                #end
+                """;
+        }
+
+        if (string.Equals(hints.PersonaPreference, "absent-player", StringComparison.OrdinalIgnoreCase))
+        {
+            return """
+                #faction <id> "<password>"
+                #modulestack <hq-id>
+                set hold 20 terran
+                @produce cash
+
+                #modulestack <cargob-id>
+                @get all food from <farms-id>
+                @get all carbon from <sdrill-id>
+
+                #modulestack <farms-id>
+                @use farmng
+
+                #modulestack <cplant-id>
+                @produce energy
                 #end
                 """;
         }
@@ -371,6 +392,18 @@ public static partial class DraftPromptBuilder
                 Write turn {hints.DraftTurn} orders for this faction.
                 Run the grant economic loop, then factory-build `twnbld` and `transfer 1 to faction 1` for the open UN town contract if due this quarter.
                 Use only stack ids from the Orders template.
+                """;
+        }
+
+        if (string.Equals(hints.PersonaPreference, "absent-player", StringComparison.OrdinalIgnoreCase))
+        {
+            return $"""
+                Write turn {hints.DraftTurn} orders for this faction (absent-player / maintenance only).
+                HQ: `set hold 20 terran` and `@produce cash` (NOT `@produce terran` — crew upkeep).
+                Cargob: `@get all food from <farms-id>`, `@get all carbon from <sdrill-id>` for cplant fuel (not from cplant).
+                Cplant: `@produce energy`. Farms: `@use farmng`. Do NOT `@use hcdril` or `@use iminng` on drills this quarter.
+                Do NOT sell food or resources. No factory USE, tanks, or town charter unless REPAIR is required on a damaged module.
+                Use only stack ids from the Orders template and the stack catalog. Lowercase immediate verbs; leftover lines use @ prefix.
                 """;
         }
 

@@ -131,4 +131,45 @@ public class OrderDraftQualityTests
         var draft = GoldenNorthwind.Replace("-get 32 food from 200003", "-get 2 food from 200003");
         Assert.That(OrderDraftQuality.HasTravelProvisioningViolations(draft), Is.True);
     }
+
+    private const string GoldenAbsentNorthwind = """
+        #faction 2 "northwnd"
+        #modulestack 200001
+        set hold 20 terran
+        @produce cash
+
+        #modulestack 200003
+        @get all food from 200006
+        @get all carbon from 200004
+
+        #modulestack 200006
+        @use farmng
+
+        #modulestack 200007
+        @produce energy
+        #end
+        """;
+
+    [Test]
+    public void IsUsable_AbsentPlayerMaintenanceOrders_Passes()
+    {
+        Assert.That(OrderDraftQuality.IsUsable(GoldenAbsentNorthwind, "absent-player"), Is.True);
+    }
+
+    [Test]
+    public void IsUsable_AbsentPlayerProduceTerran_Fails()
+    {
+        var draft = GoldenAbsentNorthwind.Replace("@produce cash", "@produce terran");
+        Assert.That(OrderDraftQuality.IsUsable(draft, "absent-player"), Is.False);
+        Assert.That(OrderDraftQuality.DescribeAbsentPlayerPersonaViolations(draft), Is.Not.Empty);
+    }
+
+    [Test]
+    public void IsUsable_AbsentPlayerHcdrilOnDrill_Fails()
+    {
+        var draft = GoldenAbsentNorthwind.Replace(
+            "#modulestack 200006",
+            "#modulestack 200004\n@use hcdril\n\n#modulestack 200006");
+        Assert.That(OrderDraftQuality.IsUsable(draft, "absent-player"), Is.False);
+    }
 }

@@ -84,6 +84,8 @@ function gmLogArgs() {
 }
 
 export async function runTurn() {
+  const { stageSubmittedOrdersForTurnRun } = await import('./orders-io.mjs');
+  stageSubmittedOrdersForTurnRun();
   return spawnGame(['/data', dataDir(), '/turn-dir', turnDir(), ...gmLogArgs()]);
 }
 

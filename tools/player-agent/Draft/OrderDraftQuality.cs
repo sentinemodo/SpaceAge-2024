@@ -204,6 +204,16 @@ public static partial class OrderDraftQuality
 
 
 
+        if (HasAbsentPlayerPersonaViolations(orderText, personaPreference))
+
+        {
+
+            return false;
+
+        }
+
+
+
         var lines = orderText.Replace("\r\n", "\n").Split('\n');
 
         var moduleStacks = 0;
@@ -312,7 +322,21 @@ public static partial class OrderDraftQuality
 
 
 
-        if (string.Equals(personaPreference, "military", StringComparison.OrdinalIgnoreCase)
+        if (string.Equals(personaPreference, "absent-player", StringComparison.OrdinalIgnoreCase))
+
+        {
+
+            if (!hasCashProduce || !hasEnergyProduce)
+
+            {
+
+                return false;
+
+            }
+
+        }
+
+        else if (string.Equals(personaPreference, "military", StringComparison.OrdinalIgnoreCase)
 
             || string.Equals(personaPreference, "economic", StringComparison.OrdinalIgnoreCase))
 
@@ -1244,6 +1268,104 @@ public static partial class OrderDraftQuality
 
 
 
+    public static bool HasAbsentPlayerPersonaViolations(string orderText, string? personaPreference)
+
+    {
+
+        if (!string.Equals(personaPreference, "absent-player", StringComparison.OrdinalIgnoreCase))
+
+        {
+
+            return false;
+
+        }
+
+
+
+        return DescribeAbsentPlayerPersonaViolations(orderText).Count > 0;
+
+    }
+
+
+
+    public static IReadOnlyList<string> DescribeAbsentPlayerPersonaViolations(string orderText)
+
+    {
+
+        var violations = new List<string>();
+
+        var upper = orderText.ToUpperInvariant();
+
+
+
+        if (upper.Contains("@PRODUCE TERRAN", StringComparison.Ordinal)
+
+            || upper.Contains("\nPRODUCE TERRAN", StringComparison.Ordinal))
+
+        {
+
+            violations.Add(
+
+                "absent-player: use `@produce cash` on HQ for upkeep — do not `@produce terran` (it raises crew upkeep).");
+
+        }
+
+
+
+        if (Regex.IsMatch(orderText, @"\bsell\s+\d+\s+(food|carbon|iron|oil)\b", RegexOptions.IgnoreCase))
+
+        {
+
+            violations.Add("absent-player: do not sell grant food or resources — maintenance only.");
+
+        }
+
+
+
+        if (Regex.IsMatch(upper, @"\b@?USE\s+IMINNG\b", RegexOptions.None)
+
+            || Regex.IsMatch(upper, @"\b@?USE\s+HCDRIL\b", RegexOptions.None))
+
+        {
+
+            violations.Add(
+
+                "absent-player: do not `@use hcdril` or `@use iminng` on drills — pull `@get all carbon` from the sdrill stack for cplant fuel; no iron/coal drilling USE lines this quarter.");
+
+        }
+
+
+
+        if (!Regex.IsMatch(orderText, @"@get\s+all\s+carbon\s+from\s+\d+", RegexOptions.IgnoreCase))
+
+        {
+
+            violations.Add(
+
+                "absent-player: cargob needs `@get all carbon from <sdrill-id>` so cplant can `@produce energy`.");
+
+        }
+
+
+
+        if (Regex.IsMatch(upper, @"\bUSE\s+(ARMCBT|GRNDTR|MCORED|TWNBLD|MSRVTM|FUSTOR|SSHULL)\b", RegexOptions.None))
+
+        {
+
+            violations.Add(
+
+                "absent-player: no factory military/town/scout USE lines — upkeep and existing grant modules only.");
+
+        }
+
+
+
+        return violations;
+
+    }
+
+
+
     public static bool HasTravelProvisioningViolations(string orderText) =>
 
         DescribeTravelProvisioningViolations(orderText).Count > 0;
@@ -1452,6 +1574,8 @@ public static partial class OrderDraftQuality
 
             feedbackLines.AddRange(DescribeMilitaryPersonaViolations(orderText).Select(violation => "  - " + violation));
 
+            feedbackLines.AddRange(DescribeAbsentPlayerPersonaViolations(orderText).Select(violation => "  - " + violation));
+
         }
 
 
@@ -1509,6 +1633,30 @@ public static partial class OrderDraftQuality
               - #modulestack new1: `move` Farm Belt, then `+get` terran/oil/food (no `@` on move/get)
 
               - #modulestack new2/new3: `has 1 tanks`, `-get` 16 terran / 8 oil / 32 food, `-move` Mid Vale, `tactic destroy` (no `@` on move/tactic/active). Include #end.
+
+              """;
+
+        }
+
+
+
+        if (string.Equals(personaPreference, "absent-player", StringComparison.OrdinalIgnoreCase))
+
+        {
+
+            return moveBlock + """
+
+              Your previous draft was incomplete. Rewrite the full order file with at least:
+
+              - HQ: `set hold 20 terran` and `@produce cash` (NOT `@produce terran`)
+
+              - Cargob: `@get all food from <farms-id>`, `@get all carbon from <sdrill-id>` — no sell lines
+
+              - Farms: `@use farmng`; cplant: `@produce energy`
+
+              - No `@use hcdril` / `@use iminng` on drills; no factory USE or military moves
+
+              Use stack ids from the Orders template. Include #end.
 
               """;
 

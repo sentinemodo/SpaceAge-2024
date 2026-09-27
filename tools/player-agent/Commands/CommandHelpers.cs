@@ -46,12 +46,17 @@ internal static class CommandHelpers
 
     public static Option<int?> TurnOption { get; } = new("--turn")
     {
-        Description = "Turn number for orders.{faction}.{turn}.{iteration}.txt (default: report turn + 1).",
+        Description = "Report turn T for orders.{faction}.{T}.{version}.txt (default: from latest report.{T}.{faction}.txt).",
     };
 
     public static Option<int?> IterationOption { get; } = new("--iteration")
     {
-        Description = "Draft iteration for the turn (default: next free orders.{faction}.{turn}.N.txt).",
+        Description = "Version number for the report turn (default: next free orders.{faction}.{T}.N.txt). Alias: --version.",
+    };
+
+    public static Option<int?> VersionOption { get; } = new("--version")
+    {
+        Description = "Same as --iteration: version segment in orders.{faction}.{T}.{version}.txt.",
     };
 
     public static Option<bool> DryRunOption { get; } = new("--dry-run")
@@ -113,6 +118,10 @@ internal static class CommandHelpers
 
     public static int ResolveTopK(PlayerAgentSettings settings, int? topOverride) =>
         topOverride ?? settings.DefaultTopK;
+
+    public static int? ResolveVersionOverride(InvocationContext context) =>
+        context.ParseResult.GetValueForOption(IterationOption)
+        ?? context.ParseResult.GetValueForOption(VersionOption);
 
     public static Option<bool> SkipIsolationAuditOption { get; } = new("--skip-isolation-audit")
     {

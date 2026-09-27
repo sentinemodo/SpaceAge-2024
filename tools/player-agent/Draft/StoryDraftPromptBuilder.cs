@@ -71,11 +71,15 @@ public static partial class StoryDraftPromptBuilder
             """;
     }
 
-    public static IReadOnlyList<StoryChunkPrompt> BuildChunkPrompts(StoryDraftContext context)
+    public static IReadOnlyList<StoryChunkPrompt> BuildChunkPrompts(
+        StoryDraftContext context,
+        bool omitStrategicSection = false)
     {
         var isResearcher = context.PersonaText.Contains("Preference: researcher", StringComparison.OrdinalIgnoreCase);
         var isEconomic = context.PersonaText.Contains("Preference: economic", StringComparison.OrdinalIgnoreCase);
         var isMilitary = context.PersonaText.Contains("Preference: military", StringComparison.OrdinalIgnoreCase);
+        var isAbsentPlayer = context.PersonaText.Contains("Preference: absent-player", StringComparison.OrdinalIgnoreCase)
+            || context.PersonaText.Contains("Persona: absent-player", StringComparison.OrdinalIgnoreCase);
         var personaBrief =
             $"{context.FactionName} faction {context.FactionId}. {SummarizePersona(context.PersonaText)} "
             + $"Contract: {context.ContractHint}. Stacks: {context.StackIdsSummary}.";
@@ -107,6 +111,14 @@ public static partial class StoryDraftPromptBuilder
                         - Both tank squads: has 1 tanks, -get provisioning, -move Mid Vale [R00009], tactic destroy; claim CT0016 (1000 cash bounty) when stack cleared
                         - Secure Mid Vale oil after cull; defer CT0006 UN town charter until armored lane is safe
                         """
+                : isAbsentPlayer
+                    ? """
+                        - HQ: set hold 20 terran and @produce cash (not @produce terran — minimizes crew upkeep)
+                        - Cplant @produce energy; cargob @get all food from farms and @get all carbon from sdrill for coal-plant fuel
+                        - Farms @use farmng; no @use hcdril/iminng on drills — no sell food or resources
+                        - No factory USE, tanks, town charter, or fauna offensives — upkeep and existing grant only
+                        - REPAIR if report shows damage; RESEARCH only if a lab exists and energy margin allows
+                        """
                     : """
                         - Grant economic loop (@produce cash, @use farmng / @use hcdril, @produce energy, sell food via cargob)
                         - Stage 30 iron + 2 titani on factory, use twnbld as new1, transfer 1 to faction 1 for the UN town contract
@@ -118,6 +130,8 @@ public static partial class StoryDraftPromptBuilder
                 ? "surface drill bootstrap, paid mcored tech copy, moblab deep-pocket scouting column before grant expansion"
                 : isMilitary
                     ? "anonymous Mid Vale fauna rumor, scout truck on Farm Belt, two armored tank squads clearing brush for CT0016 cash"
+                : isAbsentPlayer
+                    ? "quiet grant maintenance under gold Helios light, coal plant and drills keeping the line fed while the CEO holds the charter paperwork"
                     : "UN town charter via TRANSFER TO FACTION 1";
 
         var strategicGuidance = isEconomic
@@ -139,9 +153,10 @@ public static partial class StoryDraftPromptBuilder
                         Four quarters tied to persona doctrine and the open contract; mention contract id and reward tech where relevant.
                         """;
 
-        return
-        [
-            new StoryChunkPrompt(
+        var prompts = new List<StoryChunkPrompt>();
+        if (!omitStrategicSection)
+        {
+            prompts.Add(new StoryChunkPrompt(
                 "strategic",
                 $"""
                 {personaBrief}
@@ -152,27 +167,31 @@ public static partial class StoryDraftPromptBuilder
                 Write ONLY the ## Strategic objective section (four quarters in Helios).
                 {strategicGuidance}
                 Use a short prose paragraph or 4 bullets. No other headings.
-                """),
-            new StoryChunkPrompt(
-                "tactical",
-                $"""
-                {personaBrief}
+                """));
+        }
 
-                Write ONLY ## Tactical objective (bullet list for the next quarter).
-                {tacticalBullets}
-                Substitute real stack ids from the report where placeholders appear: {context.StackIdsSummary}.
-                Do not echo these instructions. No other headings.
-                """),
-            new StoryChunkPrompt(
-                "narrative",
-                $"""
-                {personaBrief}
+        prompts.Add(new StoryChunkPrompt(
+            "tactical",
+            $"""
+            {personaBrief}
 
-                Write ONLY ## Narrative, 150-250 words hard SF prose for turn {context.ReportTurn} on the home grant,
-                gold Helios light on Arbor, {narrativeHook}.
-                No other headings.
-                """),
-        ];
+            Write ONLY ## Tactical objective (bullet list for the next quarter).
+            {tacticalBullets}
+            Substitute real stack ids from the report where placeholders appear: {context.StackIdsSummary}.
+            Do not echo these instructions. No other headings.
+            """));
+
+        prompts.Add(new StoryChunkPrompt(
+            "narrative",
+            $"""
+            {personaBrief}
+
+            Write ONLY ## Narrative, 150-250 words hard SF prose for turn {context.ReportTurn} on the home grant,
+            gold Helios light on Arbor, {narrativeHook}.
+            No other headings.
+            """));
+
+        return prompts;
     }
 
     public static string AssembleStory(string factionName, int reportTurn, IEnumerable<string> sectionBodies)

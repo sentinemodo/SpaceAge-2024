@@ -17,6 +17,7 @@ public static partial class VerbInference
         ["contractor"] = ["USE", "GET", "TRANSFER", "PRODUCE", "CONTRACT"],
         ["economic"] = ["PRODUCE", "USE", "GET", "SELL", "BUY"],
         ["military"] = ["MOVE", "USE", "GET", "ATTACK", "DECLARE", "PRODUCE"],
+        ["absent-player"] = ["PRODUCE", "USE", "GET", "REPAIR", "BUY", "RESEARCH"],
     };
 
     /// <summary>Legacy single-verb filter for spot-check tooling.</summary>
@@ -116,7 +117,7 @@ public static partial class VerbInference
         return count;
     }
 
-    [GeneratedRegex(@"##?\s*Preference\s*:\s*(\w+)", RegexOptions.IgnoreCase | RegexOptions.Multiline)]
+    [GeneratedRegex(@"##?\s*Preference\s*:\s*([\w-]+)", RegexOptions.IgnoreCase | RegexOptions.Multiline)]
     private static partial Regex PersonaPreferenceRegex();
 
     [GeneratedRegex(@"\bdefer\b[^.\n\r]{0,80}\b(contract|ct\d{4}|town|charter)\b", RegexOptions.IgnoreCase)]

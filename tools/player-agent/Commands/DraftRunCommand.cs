@@ -25,6 +25,7 @@ internal static class DraftRunCommand
         command.AddOption(CommandHelpers.ToFactionOption);
         command.AddOption(CommandHelpers.TurnOption);
         command.AddOption(CommandHelpers.IterationOption);
+        command.AddOption(CommandHelpers.VersionOption);
         command.AddOption(CommandHelpers.SkipIsolationAuditOption);
         command.AddOption(CommandHelpers.NoRecordAuditOption);
 
@@ -39,7 +40,7 @@ internal static class DraftRunCommand
             var fromFaction = context.ParseResult.GetValueForOption(CommandHelpers.FromFactionOption) ?? 2;
             var toFaction = context.ParseResult.GetValueForOption(CommandHelpers.ToFactionOption) ?? 11;
             var turnOverride = context.ParseResult.GetValueForOption(CommandHelpers.TurnOption);
-            var iterationOverride = context.ParseResult.GetValueForOption(CommandHelpers.IterationOption);
+            var iterationOverride = CommandHelpers.ResolveVersionOverride(context);
             var topK = CommandHelpers.ResolveTopK(
                 settings,
                 context.ParseResult.GetValueForOption(CommandHelpers.TopOption));

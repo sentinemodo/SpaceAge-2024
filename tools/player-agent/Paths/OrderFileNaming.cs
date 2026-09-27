@@ -4,10 +4,11 @@ namespace SpaceAge.PlayerAgent.Paths;
 
 public static partial class OrderFileNaming
 {
-    public static string FormatFileName(int factionId, int turn, int iteration) =>
-        $"orders.{factionId}.{turn}.{iteration}.txt";
+    /// <summary>orders.{factionId}.{reportTurn}.{version}.txt — middle segment is report turn from report.{reportTurn}.{factionId}.txt.</summary>
+    public static string FormatFileName(int factionId, int reportTurn, int version) =>
+        $"orders.{factionId}.{reportTurn}.{version}.txt";
 
-    public static int InferDraftTurnFromReportTurn(int reportTurn) => reportTurn + 1;
+    public static int InferDraftTurnFromReportTurn(int reportTurn) => reportTurn;
 
     public static bool TryParseReportFileName(string fileName, out int reportTurn, out int factionId)
     {

@@ -241,6 +241,69 @@ function Test-NonEmptyOrderFile {
 	return -not [string]::IsNullOrWhiteSpace($text)
 }
 
+function Get-LatestVersionedOrderPath {
+	param(
+		[Parameter(Mandatory = $true)][int]$FactionId,
+		[Parameter(Mandatory = $true)][int]$OrderTurn,
+		[Parameter(Mandatory = $true)][string]$FactionFolder
+	)
+	if (-not (Test-Path -LiteralPath $FactionFolder)) {
+		return $null
+	}
+	$pattern = "^orders\.$FactionId\.$OrderTurn\.(\d+)\.txt$"
+	$bestPath = $null
+	$bestVersion = -1
+	foreach ($file in Get-ChildItem -LiteralPath $FactionFolder -Filter 'orders.*.txt' -File -ErrorAction SilentlyContinue) {
+		if ($file.Name -match $pattern) {
+			$version = [int]$Matches[1]
+			if ($version -gt $bestVersion) {
+				$bestVersion = $version
+				$bestPath = $file.FullName
+			}
+		}
+	}
+	return $bestPath
+}
+
+function Resolve-FactionOrderSourcePath {
+	param(
+		[Parameter(Mandatory = $true)][int]$FactionId,
+		[Parameter(Mandatory = $true)][hashtable]$Paths
+	)
+	$gamein = Join-Path $Paths.DataDir 'gamein.xml'
+	$turn = Get-TurnFromGamein -GameinPath $gamein
+	if ($null -eq $turn -or $turn -le 0) {
+		$turn = 1
+	}
+	$folder = Join-Path $Paths.FactionsDir (Get-FactionFolderName -Id $FactionId)
+
+	$reportTurn = 0
+	foreach ($reportFile in Get-ChildItem -LiteralPath $folder -Filter "report.*.$FactionId.txt" -File -ErrorAction SilentlyContinue) {
+		if ($reportFile.Name -match '^report\.(\d+)\.') {
+			$rt = [int]$Matches[1]
+			if ($rt -gt $reportTurn) { $reportTurn = $rt }
+		}
+	}
+	$tryTurns = @($turn)
+	if ($reportTurn -gt 0 -and $reportTurn -ne $turn) { $tryTurns += $reportTurn }
+	if ($reportTurn -gt 0) { $tryTurns += ($reportTurn + 1) }
+	if ($turn -gt 0) { $tryTurns += ($turn + 1) }
+	$tryTurns = $tryTurns | Select-Object -Unique
+	foreach ($orderTurn in $tryTurns) {
+		$versioned = Get-LatestVersionedOrderPath -FactionId $FactionId -OrderTurn $orderTurn -FactionFolder $folder
+		if ($versioned) {
+			return $versioned
+		}
+	}
+
+	$legacyPath = Join-Path $folder ("order.{0}.txt" -f $FactionId)
+	if (Test-NonEmptyOrderFile -Path $legacyPath) {
+		return $legacyPath
+	}
+
+	return $null
+}
+
 function Test-FactionOrdersSubmitted {
 	param(
 		[Parameter(Mandatory = $true)][int]$FactionId,

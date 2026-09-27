@@ -20,6 +20,7 @@ internal static class DraftCommand
         command.AddOption(CommandHelpers.ReportOption);
         command.AddOption(CommandHelpers.TurnOption);
         command.AddOption(CommandHelpers.IterationOption);
+        command.AddOption(CommandHelpers.VersionOption);
         command.AddOption(CommandHelpers.AllowRunPodOption);
         command.AddOption(CommandHelpers.YesOption);
         command.AddOption(CommandHelpers.DryRunOption);
@@ -42,7 +43,7 @@ internal static class DraftCommand
 
             var reportOverride = context.ParseResult.GetValueForOption(CommandHelpers.ReportOption);
             var turnOverride = context.ParseResult.GetValueForOption(CommandHelpers.TurnOption);
-            var iterationOverride = context.ParseResult.GetValueForOption(CommandHelpers.IterationOption);
+            var iterationOverride = CommandHelpers.ResolveVersionOverride(context);
             var topK = CommandHelpers.ResolveTopK(
                 settings,
                 context.ParseResult.GetValueForOption(CommandHelpers.TopOption));
