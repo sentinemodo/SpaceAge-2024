@@ -7,9 +7,6 @@ Turn 6, Year 2157, April 1.
 
 SpaceAge Engine Version: 0.8.001.
 
-Events during turn:
-  none.
-
 Declared stances:
   default: neutral, unknown: hostile.
   enemy toward Gelvaren [3].

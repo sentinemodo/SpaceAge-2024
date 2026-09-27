@@ -7,9 +7,6 @@ Turn 1, Year 2156, January 1.
 
 SpaceAge Engine Version: 0.8.001.
 
-Events during turn:
-  none.
-
 Bank report:
   Bank account balance: 0.
   Credit line maximum: 0.

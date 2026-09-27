@@ -31,7 +31,28 @@ namespace SpaceAge
 
 		public Faction Issuer
 		{
-			get { return this.Subject as Faction; }
+			get
+			{
+				Faction faction = this.Subject as Faction;
+				if (faction != null)
+				{
+					return faction;
+				}
+
+				ModuleStack moduleStack = this.Subject as ModuleStack;
+				if (moduleStack != null)
+				{
+					return moduleStack.Owner;
+				}
+
+				Person person = this.Subject as Person;
+				if (person != null)
+				{
+					return person.Owner;
+				}
+
+				return null;
+			}
 		}
 
 		public GrantOrder(IOrderable subject)

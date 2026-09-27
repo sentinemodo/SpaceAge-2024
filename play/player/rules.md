@@ -130,7 +130,7 @@ Always: load catalog (`data.xml`) and the saved game. Then one branch (`/check` 
 3. `Game.Execute` (below) — `turn++` first, so seed `turn="1"` becomes turn 2.
 4. Write faction reports (`ReportWriter.GenerateReports`), then save the game (`gameout.{turn}.xml` into `/data`). After that increment the files are `report.2.{faction}.txt` (and `.xml` when `xml-report` is true) plus `gameout.2.xml`.
 
-Text reports insert **blank lines** between major sections: after the engine-version line, after the stub events block, between declared stances and `Bank report:` when declarations exist (`Faction.Report`), before/after `Technology reports:` when that section is present, before/after `**Survey reports:`** when that section is present (between technology reports and battles), before `Battles report:`, between consecutive battles (`Battles.Report`), after each space system, and before each visible region. The galaxy block ends with a blank line.
+Text reports insert **blank lines** between major sections: after the engine-version line, between declared stances and `Bank report:` when declarations exist (`Faction.Report`), before/after `Technology reports:` when that section is present, before/after `**Survey reports:`** when that section is present (between technology reports and battles), before `Battles report:`, between consecutive battles (`Battles.Report`), after each space system, and before each visible region. The galaxy block ends with a blank line.
 
 ### Each turn (`Game.Execute`)
 
@@ -573,7 +573,7 @@ Moves cargo from a same-location holder into the subject if capacity allows. `ne
 
 **Syntax:** `GRANT technology <tech-id> TO <modulestack-id|person-id|factory>` · `GRANT item <quantity> <item-id> TO <modulestack-id>` · `GRANT skill <skill-id> TO <person-id>` · `GRANT module …`
 
-**Subject:** `#faction` (issuer debits bank per catalog copy cost).
+**Subject:** `#faction` or any owned `#modulestack` / `#person` (issuer is always that faction’s bank; debits per catalog copy cost).
 
 Economic bootstrap: buy technology copies onto the factory (`GRANT technology mcored TO factory`, `GRANT technology msrvtm TO factory`) and stage bulk items on a drill or cargo stack (`GRANT item 50 iron TO <sdrill-id>`, `GRANT item 10 titani TO <sdrill-id>`) **before** `@use iminng` / `use mcored as newN` so paid inputs exist the same quarter. Target may be a numeric stack id or the word `factory` for the grant’s factory stack.
 

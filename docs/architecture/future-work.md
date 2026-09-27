@@ -36,7 +36,6 @@ Each item requires a numbered **ADR** in [`adr/`](adr/) plus a full test pass on
 | **`EventsReaders.Load`** | Stub | Returns `null`; does not load event files from `turn_dir`. |
 | **`Request.Load`** | Stub | No-op. |
 | **`OrdersReader.Check`** | Stub | No-op (CLI check-order path). |
-| Report header | Misleading | Text reports still print hardcoded `Events during turn:` / `none.` — **not** wired to `EventReports` or the pipeline. |
 
 Designer wishlist rows that say “`Events` pipeline or GM orders” ([`play/designer/engine-wishlist.md`](../../play/designer/engine-wishlist.md)) mean the stub hook above, not the live `EventReports` machinery.
 
@@ -46,4 +45,3 @@ Designer wishlist rows that say “`Events` pipeline or GM orders” ([`play/des
 - ~~Finish the economy methods `Game.GenerateOffers` / `UpdateRates`~~ — live **0.1.159** (open beta).
 - ~~SampleGame turns 4–5 goldens~~ — **live** (2026-09-16). `ExecuteTurn4` / `ExecuteTurn5` in [`Tests/SampleGame/SampleGame.cs`](../../Tests/SampleGame/SampleGame.cs) load committed `gamein.4.xml` / `gamein.5.xml` (no `[Ignore]`). Turns 1–3 use the same independent-`gamein` pattern; do not reintroduce a `copyFile` daisy chain.
 - **SampleGame follow-ups (optional):** `Tests/data.unit.xml` catalog for unit tests, `Tests/Stories/` scenario fixtures, and an `[Explicit]` chain-consistency test (`gameout.N` vs committed `gamein.N+1`).
-- Wire report header `Events during turn:` to pipeline output (or drop the section) when `Events.Execute` grows beyond fauna rumors.

@@ -7,9 +7,6 @@ Turn 4, Year 2157, September 1.
 
 SpaceAge Engine Version: 0.8.001.
 
-Events during turn:
-  none.
-
 Declared stances:
   default: neutral, unknown: hostile.
   enemy toward Caste Prime [2].

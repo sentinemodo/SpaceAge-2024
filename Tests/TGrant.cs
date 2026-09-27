@@ -145,6 +145,32 @@ namespace UnitTests
 		}
 
 		[Test]
+		public void Execute_GrantItem_UnderModuleStackSubject_DebitsOwnerFaction()
+		{
+			Faction faction = Faction.All["2"];
+			ModuleStack target = ModuleStack.All["100001"];
+			int ironBefore = target.ItemStacks.ContainsKey(ItemType.All["iron"])
+				? target.ItemStacks[ItemType.All["iron"]].Quantity
+				: 0;
+			double balanceBefore = faction.Bank.Balance;
+
+			List<string> commands = new List<string>
+			{
+				"#faction 2",
+				"#modulestack 100001",
+				"GRANT item 5 iron to 100001",
+				"#end"
+			};
+			new OrdersReader(this.game).AssignOrders(commands);
+			GrantOrder grant = (GrantOrder)target.Orders[target.Orders.Count - 1];
+			grant.Execute(1);
+
+			Assert.That(faction.Bank.Balance, Is.EqualTo(balanceBefore - 40));
+			Assert.That(target.ItemStacks[ItemType.All["iron"]].Quantity, Is.EqualTo(ironBefore + 5));
+			Assert.That(grant.Executed, Is.True);
+		}
+
+		[Test]
 		public void ExecuteBetweenTurn_GrantFails_WhenInsufficientFunds()
 		{
 			Faction faction = Faction.All["2"];

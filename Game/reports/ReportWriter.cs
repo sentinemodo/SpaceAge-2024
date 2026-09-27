@@ -87,11 +87,6 @@ namespace SpaceAge
 					this.Write(String.Format("SpaceAge Engine Version: {0}.", Program.EngineVersion));
 					this.Write();
 
-					// game events reports
-					this.Write("Events during turn:");
-					this.Write("  none.");
-					this.Write();
-
 					// faction events and data (ends with the bank report)
 					this.Write(faction);
 

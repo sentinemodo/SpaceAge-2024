@@ -1,6 +1,6 @@
 const STACK_HEADER = /\[([A-Za-z0-9]+)\]/;
 const SECTION_BREAK =
-  /^(?:\* |[A-Z][a-z]+ report:|Rumors:|Orders Template:|Events during turn:|Bank report:|-{3,}|\s*\+?\s*[A-Za-z].*\[[SP]\d)/;
+  /^(?:\* |[A-Z][a-z]+ report:|Rumors:|Orders Template:|Events this quarter:|Bank report:|-{3,}|\s*\+?\s*[A-Za-z].*\[[SP]\d)/;
 const DETAIL_FIELD =
   /^\s*(size:|mass:|capacity:|upkeep:|items:|technologies:|energy:|crew:|consume:|events:)/i;
 
