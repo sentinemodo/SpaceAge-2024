@@ -303,6 +303,19 @@ namespace SpaceAge
 			}
 		}
 
+		private bool IsUnknownUseTechnologyError(Exception ex)
+		{
+			for (Exception current = ex; current != null; current = current.InnerException)
+			{
+				string message = current.Message;
+				if (message != null && message.StartsWith("Unknown technology:", StringComparison.Ordinal))
+				{
+					return true;
+				}
+			}
+			return false;
+		}
+
 		private Order findEquivalentLeftover(IOrderable subject, Order order)
 		{
 			foreach (Order existing in subject.Orders)
@@ -341,7 +354,25 @@ namespace SpaceAge
 				repeat = -1;
 			}
 			order = OrderFactory.CreateFromTextToken(token, subject, command);
-			order.Parse(tokens);
+			try
+			{
+				order.Parse(tokens);
+			}
+			catch (Exception ex)
+			{
+				if (order is UseOrder && this.IsUnknownUseTechnologyError(ex))
+				{
+					subject.Orders.Remove(order);
+					Faction owner = subject.Owner;
+					if (owner != null)
+					{
+						owner.EventReports.Add(
+							string.Format("PARSING: {0} - order ignored, unknown technology.", command));
+					}
+					return null;
+				}
+				throw;
+			}
 			order.Repeat = repeat;
 			order.Level = orderLevel;
 			if (orderLevel == 0 && order.IsUnlimited)

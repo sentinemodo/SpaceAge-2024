@@ -36,14 +36,11 @@ namespace SpaceAge
 			}
 
 			token = LineParser.GetToken(ref command);
-			try
+			if (!Technology.All.Contains(token))
 			{
-				this.Technology = Technology.All[token];
+				throw new Exception("Unknown technology: " + token);
 			}
-			catch (Exception ex)
-			{
-				throw new Exception("Bad syntax or unknown technology", ex);
-			}
+			this.Technology = Technology.All[token];
 			if (this.Technology.ProductionType == EProductionType.Modules)
 			{
 				// grammar: USE tech [AS alias] [FOR id]. Both AS and FOR are optional and

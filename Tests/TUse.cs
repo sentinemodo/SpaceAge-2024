@@ -244,6 +244,44 @@ namespace UnitTests
 
 
 		[Test]
+		public void AssignUseOrder_IgnoresUnknownTechnology()
+		{
+			Faction faction = this.game.Factions["1"];
+			ModuleStack windPlant = this.game.ModuleStacks["000009"];
+			int eventReportsBefore = faction.EventReports.Count;
+
+			Assert.DoesNotThrow(() => new OrdersReader(this.game).AssignOrders(new List<string>
+            {
+                "#faction 1",
+                "#modulestack 000009",
+                "@use windpower",
+                "@use wndtrb",
+                "#end"
+            }));
+
+			Assert.That(windPlant.Orders.Count, Is.EqualTo(1));
+			UseOrder useOrder = windPlant.Orders[0] as UseOrder;
+			Assert.That(useOrder, Is.Not.Null);
+			Assert.That(useOrder.Technology.Name, Is.EqualTo("wndtrb"));
+			Assert.That(useOrder.Repeat, Is.EqualTo(-1));
+
+			bool ignoredWindpower = false;
+			for (int i = eventReportsBefore; i < faction.EventReports.Count; i++)
+			{
+				string description = faction.EventReports[i].Description;
+				if (description != null
+					&& description.StartsWith("PARSING:")
+					&& description.Contains("windpower"))
+				{
+					ignoredWindpower = true;
+					break;
+				}
+			}
+			Assert.That(ignoredWindpower, Is.True);
+		}
+
+
+		[Test]
 		public void AssignUseOrder_unlimited()
 		{
 			Faction testFaction = this.game.Factions["1"];
