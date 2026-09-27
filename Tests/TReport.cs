@@ -1414,6 +1414,23 @@ namespace IntegrationTests
         }
 
 		[Test]
+		public void FactionReport_QuarterEventsSection_ExcludesParsingWarnings()
+		{
+			Faction faction = Faction.All["2"];
+			faction.EventReports.Add(3, "completed contract CT0001 and received 100 cash.");
+			faction.EventReports.Add("PARSING: USE foo - order ignored.");
+			faction.EventReports.Add(3, "Bank account credited: test.");
+
+			List<string> report = faction.Report();
+			int sectionIndex = report.FindIndex(line => line == "Events this quarter:");
+			Assert.That(sectionIndex, Is.GreaterThanOrEqualTo(0));
+			string reportText = string.Join("\n", report.ToArray());
+			Assert.That(reportText.Contains("PARSING:"), Is.False);
+			Assert.That(reportText.Contains("completed contract CT0001"), Is.True);
+			Assert.That(reportText.Contains("Bank account credited:"), Is.True);
+		}
+
+		[Test]
 		public void Execute_ClearsPreviousTurnEventReports()
 		{
 			ModuleStack factory = ModuleStack.All["000004"];

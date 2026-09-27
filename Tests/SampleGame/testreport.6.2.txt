@@ -15,7 +15,8 @@ Declared stances:
   enemy toward Gelvaren [3].
 
 
-events:
+Events this quarter:
+  week 1: declared enemy toward faction 3.
   week 1: battle at Northern Hemisphere [R00002] (0,0), attackers: Gelvaren [3], defenders: Caste
   Prime [2].
   week 2: battle at Northern Hemisphere [R00002] (0,0), attackers: Gelvaren [3], defenders: Caste

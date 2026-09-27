@@ -1,0 +1,11 @@
+#faction 2 "xyzzy"
+#modulestack 900002
+@get all food from 900003
+
+#modulestack 900003
+@use farmng
+
+#modulestack 900004
+@produce energy
+
+#end

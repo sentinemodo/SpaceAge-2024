@@ -11,7 +11,7 @@ Events during turn:
   none.
 
 
-events:
+Events this quarter:
   week 1: Bank account credited: payment from NPC [1].
   week 9: battle at Northern Hemisphere [R00002] (0,0), attackers: Gelvaren [3], defenders: Caste
   Prime [2].

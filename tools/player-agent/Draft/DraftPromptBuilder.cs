@@ -164,21 +164,18 @@ public static partial class DraftPromptBuilder
             var anomaly = hints.AnomalyRegionId ?? "R00011";
             return $$"""
                 #faction <id> "<password>"
-                #modulestack <factry-id>
-                get 2 iron from <cargob-id>
-                get 2 silici from <cargob-id>
-                use msrvtm as new109
-
                 #modulestack <hq-id>
                 set hold 20 terran
                 @produce terran
 
                 #modulestack <cargob-id>
+                grant item 2 iron to <cargob-id>
+                grant item 2 silici to <cargob-id>
                 @get all food from <farms-id>
-                @get all carbon from <cdrill-id>
+                @get all carbon from <sdrill-id>
                 sell 200 food at average
 
-                #modulestack <cdrill-id>
+                #modulestack <sdrill-id>
                 @use hcdril
 
                 #modulestack <farms-id>
@@ -187,11 +184,17 @@ public static partial class DraftPromptBuilder
                 #modulestack <cplant-id>
                 @produce energy
 
+                #modulestack <factry-id>
+                grant technology msrvtm to <factry-id>
+                use msrvtm as new109 for <hq-id>
+                +get 2 iron from <cargob-id>
+                +get 2 silici from <cargob-id>
+
                 #modulestack new109
-                get 1 terran from <hq-id>
-                get 60 food from <cargob-id>
-                get 2 oil from <cargob-id>
                 move {{anomaly}}
+                +get 1 terran from <hq-id>
+                +get 2 oil from <cargob-id>
+                +get 2 food from <cargob-id>
                 @research {{anomaly}}
                 #end
                 """;
@@ -242,6 +245,9 @@ public static partial class DraftPromptBuilder
                 @get all food from <farms-id>
                 @get all carbon from <sdrill-id>
 
+                #modulestack <sdrill-id>
+                @use hcdril
+
                 #modulestack <farms-id>
                 @use farmng
 
@@ -263,8 +269,22 @@ public static partial class DraftPromptBuilder
                 @produce terran
 
                 #modulestack <sdrill-id>
+                grant item 50 iron to <sdrill-id>
+                grant item 10 titani to <sdrill-id>
                 @use hcdril
                 @use iminng
+
+                #modulestack <factry-id>
+                grant technology mcored to factory
+                grant technology msrvtm to factory
+                use mcored as new108 for <hq-id>
+                +get 25 iron from <cargob-id>
+                +get 10 titani from <cargob-id>
+
+                #modulestack new108
+                has 1 cdrill
+                -get 6 terran from <hq-id>
+                deactivate 1
 
                 #modulestack <farms-id>
                 @use farmng
@@ -273,15 +293,6 @@ public static partial class DraftPromptBuilder
                 @get all food from <farms-id>
                 @get all carbon from <sdrill-id>
                 sell 200 food at average
-
-                #modulestack <factry-id>
-                use mcored as new108 for <hq-id>
-                +get 25 iron from <cargob-id>
-                +get 10 titani from <cargob-id>
-                #modulestack new108
-                has 1 cdrill
-                -get 6 terran from <hq-id>
-                deactivate 1
                 #end
                 """;
         }
@@ -299,6 +310,9 @@ public static partial class DraftPromptBuilder
                 @produce terran
 
                 #modulestack <cargob-id>
+                grant item 50 iron to <cargob-id>
+                grant item 20 oil to <cargob-id>
+                grant item 10 titani to <cargob-id>
                 @get all food from <farms-id>
                 @get all carbon from <sdrill-id>
 
@@ -312,6 +326,7 @@ public static partial class DraftPromptBuilder
                 @produce energy
 
                 #modulestack <factry-id>
+                grant technology armcbt to <factry-id>
                 use grndtr as new1 for <hq-id>
                 +get 30 iron from <cargob-id>
                 +get 2 titani from <cargob-id>
@@ -377,12 +392,10 @@ public static partial class DraftPromptBuilder
             var anomaly = hints.AnomalyRegionId ?? "the adjacent anomaly region-id from the report exits";
             return $"""
                 Write turn {hints.DraftTurn} orders for this faction.
-                Priority: factory stack FIRST — get materials from cargob, then `use msrvtm as newNNN`.
-                Then run the grant economic loop (@produce, @use, sell food).
-                HQ: `set hold 20 terran` beside `@produce terran`.
-                On the new moblab stack: bare `get` terran and oil; definite `move {anomaly}`; continuous `@research {anomaly}` (like `@produce`).
-                Do not use active/see unless required. Do not implement deferred town/CONTRACT charters this quarter.
-                Use only stack ids from the Orders template. Factory/mobile staging uses bare `get`/`move`; HQ/cargob use `@produce`, `@get all`, `@use`, `@research`.
+                Issue bank GRANT lines before moblab USE: `grant item 2 iron` + `grant item 2 silici` to cargob-id; `grant technology msrvtm to <factry-id>`; then `use msrvtm as newNNN for <hq-id>` with `+get 2 iron` and `+get 2 silici` from cargob.
+                Run the grant economic loop (HQ `@produce terran`, cargob `@get all food/carbon`, sell food, sdrill `@use hcdril` only — no `@use iminng` turn 1).
+                On the new moblab stack: definite `move {anomaly}`; `+get` terran/oil/food; continuous `@research {anomaly}`.
+                Defer UN town charter until the survey column is staged. Use only stack ids from the Orders template.
                 """;
         }
 
@@ -401,7 +414,7 @@ public static partial class DraftPromptBuilder
                 Write turn {hints.DraftTurn} orders for this faction (absent-player / maintenance only).
                 HQ: `set hold 20 terran` and `@produce cash` (NOT `@produce terran` — crew upkeep).
                 Cargob: `@get all food from <farms-id>`, `@get all carbon from <sdrill-id>` for cplant fuel (not from cplant).
-                Cplant: `@produce energy`. Farms: `@use farmng`. Do NOT `@use hcdril` or `@use iminng` on drills this quarter.
+                Sdrill: `@use hcdril` on the sdrill stack (coal/carbon for cplant). Cplant: `@produce energy`. Farms: `@use farmng`. Do NOT `@use iminng` (iron) this quarter.
                 Do NOT sell food or resources. No factory USE, tanks, or town charter unless REPAIR is required on a damaged module.
                 Use only stack ids from the Orders template and the stack catalog. Lowercase immediate verbs; leftover lines use @ prefix.
                 """;
@@ -411,12 +424,11 @@ public static partial class DraftPromptBuilder
         {
             return $"""
                 Write turn {hints.DraftTurn} orders for this faction.
-                Priority: `@produce energy` on cplant FIRST — HQ is often 80/80 with no headroom; do not activate a nested cdrill (+5 draw) until a 3rd cplant (fossil, 100 iron) is online.
-                HQ leftover: `@produce terran` (not cash — manpower for nested crew beats bank income early).
-                Surface drill: @use hcdril + @use iminng (iron for next cplant). Factory: `use mcored as newNNN for <hq-id>` then `+get` iron/titani; on `#modulestack newNNN`: `has 1 cdrill`, `-get` 6 terran, deactivate 1 until energy margin.
-                Turn 2+: msrvtm/moblab with mcored tech copy to scout deep pockets (exit hint from grant; Deep resources line on-site). Activate cdrill @use iminng on pocket. Next agrplx/farms vs pocket cdrill by bottleneck.
-                Defer UN town/CONTRACT charters until home grant production is maxed.
-                Use only stack ids from the Orders template. Lowercase immediate verbs (get, use); leftover lines use @ prefix.
+                Priority: `@produce energy` on cplant FIRST — HQ is often 80/80 with no headroom; do not activate a nested cdrill (+5 draw) until energy margin allows.
+                HQ: `set hold 20 terran` and `@produce terran`. Issue GRANT lines (bank debit) before bootstrap USE: `grant item 50 iron` + `grant item 10 titani` to <sdrill-id>, then `@use hcdril` + `@use iminng`.
+                Factory: `grant technology mcored to factory`, `grant technology msrvtm to factory`, then `use mcored as newNNN for <hq-id>` with `+get` 25 iron / 10 titani from cargob; on `#modulestack newNNN`: `has 1 cdrill`, `-get` 6 terran, `deactivate 1`.
+                Cargob: `@get all food/carbon`, sell surplus food. Turn 2+: msrvtm/moblab scout when energy allows; defer UN town charters until home grant is maxed.
+                Use only stack ids from the Orders template. Lowercase immediate verbs (grant, get, use); leftover lines use @ prefix.
                 """;
         }
 
@@ -426,8 +438,9 @@ public static partial class DraftPromptBuilder
             return $"""
                 Write turn {hints.DraftTurn} orders for this military faction.
                 Fauna **14** on Arbor, **15** on Anvil — hostile packs attack on contact; optional `DECLARE FACTION <id> ENEMY` after rumors.
-                HQ: `set hold 20 terran` and `@produce terran`. **Do not sell food** — tanks need 16 food + 4 oil per quarter. Cargob: `@get all food/carbon` only.
-                Factory: **`use grndtr`** scout (new1) with **`+get`** first, then **two `use armcbt`** (new2, new3) each with **`+get` iron/titani**.
+                HQ: `set hold 20 terran` and `@produce terran`. **Do not sell food** — tanks need 16 food + 4 oil per quarter.
+                Cargob: **`grant item 50 iron`**, **`grant item 20 oil`**, **`grant item 10 titani`** to cargob-id, then `@get all food/carbon`.
+                Factory: **`grant technology armcbt to <factry-id>`**, then **`use grndtr`** scout (new1) with **`+get`**, then **two `use armcbt`** (new2, new3) each with **`+get` iron/titani**.
                 Scout `#modulestack new1`: **`move` then `+get` terran/oil/food** (no `@` on move/get).
                 Tanks `#modulestack new2/new3`: **`has 1 tanks`**, **`-get` 16 terran / 8 oil / 32 food**, **`-move` {faunaRegion}**, **`tactic destroy`** — never `@move`, `@tactic`, `@active`, or bare `move` under `has`.
                 Defer UN town charter until Mid Vale fauna is cleared.

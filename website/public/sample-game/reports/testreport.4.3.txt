@@ -15,7 +15,7 @@ Declared stances:
   enemy toward Caste Prime [2].
 
 
-events:
+Events this quarter:
   week 1: battle at Northern Hemisphere [R00002] (0,0), attackers:
   Gelvaren [3], defenders: Caste Prime [2].
   week 2: battle at Northern Hemisphere [R00002] (0,0), attackers:
@@ -46,7 +46,7 @@ events:
   Current balance: 8915.
 
 Press releases:
-  Earth [P00001] at AU 1, ocean planet [ocean]: NPC [1] â€” Caste Prime
+  Earth [P00001] at AU 1, ocean planet [ocean]: NPC [1] — Caste Prime
   closes Wake the crashed ship.
     United Star Nations records Caste Prime's fulfillment of CT0122 at
     Dusty field on Earth [P00001] at AU 1, ocean planet [ocean].
@@ -9195,7 +9195,7 @@ Galaxy report:
         week 13: paid 100 cash [cash] upkeep.
 
 Press releases:
-  Earth [P00001] at AU 1, ocean planet [ocean]: NPC [1] â€” Caste Prime
+  Earth [P00001] at AU 1, ocean planet [ocean]: NPC [1] — Caste Prime
   closes Wake the crashed ship.
     United Star Nations records Caste Prime's fulfillment of CT0122 at
     Dusty field on Earth [P00001] at AU 1, ocean planet [ocean].
@@ -9205,7 +9205,7 @@ Press releases:
     orbit [O00001], has no atmosphere.
 
 Press releases:
-  Earth [P00001] at AU 1, ocean planet [ocean]: NPC [1] â€” Caste Prime
+  Earth [P00001] at AU 1, ocean planet [ocean]: NPC [1] — Caste Prime
   closes Wake the crashed ship.
     United Star Nations records Caste Prime's fulfillment of CT0122 at
     Dusty field on Earth [P00001] at AU 1, ocean planet [ocean].

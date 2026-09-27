@@ -17,7 +17,7 @@ Declared stances:
   enemy toward spaceship hull [101].
 
 
-events:
+Events this quarter:
   week 1: battle at Northern Hemisphere [R00002] (0,0), attackers:
   Gelvaren [3], defenders: Caste Prime [2].
   week 2: battle at Northern Hemisphere [R00002] (0,0), attackers:

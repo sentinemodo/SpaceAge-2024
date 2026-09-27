@@ -10,6 +10,7 @@
 		<technology name="strans" />
 		<technology name="drnhng" />
 		<technology name="alnfgh" />
+		<skill name="arkplt" />
 	</faction>
 	<faction name="3" name-en="Gelvaren" password="abccb" email="mail2@mail.pl" default-attitude="2" text-report="True" text-report-line-length="72" xml-report="True" balance="8915" credit-line="10000" credit-rate="0.2" deposit-rate="0.045">
 		<technology name="rckter" />

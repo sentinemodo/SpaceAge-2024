@@ -473,7 +473,6 @@ train terran officer as new107
 ; effects:
 ;   producing tanks [tanks] for military barrack [000025] into tanks
 ;   [109], 3 weeks to complete.
-use armcbt as 109 for 000025
 
 #modulestack 000025
 ; + military barrack [000025], military barrack [barrck], immobile.

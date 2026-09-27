@@ -11,7 +11,7 @@ Events during turn:
   none.
 
 
-events:
+Events this quarter:
   week 1: battle at Northern Hemisphere [R00002] (0,0), attackers: Gelvaren [3], defenders: Caste
   Prime [2].
   week 2: battle at Northern Hemisphere [R00002] (0,0), attackers: Gelvaren [3], defenders: Caste
@@ -52,9 +52,11 @@ Bank report:
 
 Technology reports:
 + advanced hull construction [ahlcns]: Recovered alien hull geometry. Automated internals need no
-  crew and no life support.
+  crew and no life support. Unlocks TRAIN SKILL: ark helm [arkplt].
   - alien vessel hull [alnhul]: Crashed alien hull. Automated internals need no crew and no life
     support.
+  - ark helm [arkplt]: Helm and formation control for generation-ship scale hulls. Training: 10
+    weeks. Issue TRAIN SKILL on a person once your faction has discovered this skill.
 + automated fabrication [autfab]: An unmanned alien fabrication plant. It has no crew requirement.
   - advanced robo-factory [robofc]: Unmanned alien fabrication plant. No crew and no life support.
 + automated command systems [autctl]: A crewless command core that can wake nested alien systems.

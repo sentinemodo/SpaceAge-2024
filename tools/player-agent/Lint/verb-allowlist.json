@@ -1,7 +1,7 @@
 ﻿{
   "sourcePath": "play/player/rules.md",
-  "sourceContentHash": "ada1c4ea4c261c24c97ff93fe416731bb1a5d9a128d5a86b94e06502c946dd1d",
-  "generatedAtUtc": "2026-09-27T16:50:44.0971331Z",
+  "sourceContentHash": "db2c6c1e321ce12870b7aa41ea23156156dff2ea23463272ca2b0bfa16e4c1e8",
+  "generatedAtUtc": "2026-09-27T19:00:23.9205886Z",
   "verbs": [
     "ACTIVATE",
     "ACTIVE",
@@ -17,6 +17,7 @@
     "FORM",
     "GET",
     "GIVE",
+    "GRANT",
     "HAS",
     "MOVE",
     "NAME",

@@ -214,6 +214,26 @@ public static partial class OrderDraftQuality
 
 
 
+        if (HasEconomicPersonaViolations(orderText, personaPreference))
+
+        {
+
+            return false;
+
+        }
+
+
+
+        if (HasResearcherPersonaViolations(orderText, personaPreference))
+
+        {
+
+            return false;
+
+        }
+
+
+
         var lines = orderText.Replace("\r\n", "\n").Split('\n');
 
         var moduleStacks = 0;
@@ -1262,9 +1282,75 @@ public static partial class OrderDraftQuality
 
 
 
+        if (!MilitaryOffensivePlan(orderText))
+
+        {
+
+            return violations;
+
+        }
+
+
+
+        if (!Regex.IsMatch(orderText, @"grant\s+technology\s+armcbt\b", RegexOptions.IgnoreCase))
+
+        {
+
+            violations.Add(
+
+                "military persona: `grant technology armcbt to <factry-id>` before `use armcbt` — pays for the tank tech copy on the factory.");
+
+        }
+
+
+
+        if (!Regex.IsMatch(orderText, @"grant\s+item\s+\d+\s+iron\b", RegexOptions.IgnoreCase))
+
+        {
+
+            violations.Add(
+
+                "military persona: `grant item 50 iron to <cargob-id>` before factory `+get` / tank provisioning — bank-funded iron for grndtr and armcbt.");
+
+        }
+
+
+
+        if (!Regex.IsMatch(orderText, @"grant\s+item\s+\d+\s+oil\b", RegexOptions.IgnoreCase))
+
+        {
+
+            violations.Add(
+
+                "military persona: `grant item 20 oil to <cargob-id>` — tanks and trucks burn oil; grant before `-get` oil on tank squads.");
+
+        }
+
+
+
+        if (!Regex.IsMatch(orderText, @"grant\s+item\s+\d+\s+titani\b", RegexOptions.IgnoreCase))
+
+        {
+
+            violations.Add(
+
+                "military persona: `grant item 10 titani to <cargob-id>` before `use armcbt` / `+get` titani from cargob.");
+
+        }
+
+
+
         return violations;
 
     }
+
+
+
+    private static bool MilitaryOffensivePlan(string orderText) =>
+
+        Regex.IsMatch(orderText, @"\buse\s+grndtr\b", RegexOptions.IgnoreCase)
+
+        || Regex.IsMatch(orderText, @"\buse\s+armcbt\b", RegexOptions.IgnoreCase);
 
 
 
@@ -1322,15 +1408,25 @@ public static partial class OrderDraftQuality
 
 
 
-        if (Regex.IsMatch(upper, @"\b@?USE\s+IMINNG\b", RegexOptions.None)
-
-            || Regex.IsMatch(upper, @"\b@?USE\s+HCDRIL\b", RegexOptions.None))
+        if (Regex.IsMatch(upper, @"\b@?USE\s+IMINNG\b", RegexOptions.None))
 
         {
 
             violations.Add(
 
-                "absent-player: do not `@use hcdril` or `@use iminng` on drills — pull `@get all carbon` from the sdrill stack for cplant fuel; no iron/coal drilling USE lines this quarter.");
+                "absent-player: do not `@use iminng` on drills — iron mining is not needed for maintenance; keep `@use hcdril` on the sdrill for cplant fuel.");
+
+        }
+
+
+
+        if (!Regex.IsMatch(orderText, @"@use\s+hcdril\b", RegexOptions.IgnoreCase))
+
+        {
+
+            violations.Add(
+
+                "absent-player: `#modulestack <sdrill-id>` needs `@use hcdril` (with cargob `@get all carbon` from sdrill) so cplant can `@produce energy`.");
 
         }
 
@@ -1363,6 +1459,200 @@ public static partial class OrderDraftQuality
         return violations;
 
     }
+
+
+
+    public static bool HasEconomicPersonaViolations(string orderText, string? personaPreference)
+
+    {
+
+        if (!string.Equals(personaPreference, "economic", StringComparison.OrdinalIgnoreCase))
+
+        {
+
+            return false;
+
+        }
+
+
+
+        return DescribeEconomicPersonaViolations(orderText).Count > 0;
+
+    }
+
+
+
+    public static IReadOnlyList<string> DescribeEconomicPersonaViolations(string orderText)
+
+    {
+
+        var violations = new List<string>();
+
+        if (!EconomicBootstrapPlan(orderText))
+
+        {
+
+            return violations;
+
+        }
+
+
+
+        if (!Regex.IsMatch(orderText, @"grant\s+technology\s+mcored\b", RegexOptions.IgnoreCase))
+
+        {
+
+            violations.Add(
+
+                "economic persona: `grant technology mcored to factory` (or stack id) before `use mcored as newN` — pays for the factory tech copy.");
+
+        }
+
+
+
+        if (!Regex.IsMatch(orderText, @"grant\s+technology\s+msrvtm\b", RegexOptions.IgnoreCase))
+
+        {
+
+            violations.Add(
+
+                "economic persona: `grant technology msrvtm to factory` before moblab/scout builds — stages the mobile-lab copy on the factory.");
+
+        }
+
+
+
+        if (!Regex.IsMatch(orderText, @"grant\s+item\s+\d+\s+iron\b", RegexOptions.IgnoreCase))
+
+        {
+
+            violations.Add(
+
+                "economic persona: `grant item 50 iron to <sdrill-id>` (or cargob) before `@use iminng` / nested cdrill — bank-funded iron for the bootstrap plan.");
+
+        }
+
+
+
+        if (!Regex.IsMatch(orderText, @"grant\s+item\s+\d+\s+titani\b", RegexOptions.IgnoreCase))
+
+        {
+
+            violations.Add(
+
+                "economic persona: `grant item 10 titani to <sdrill-id>` (or cargob) before `@use iminng` / `use mcored` — titani for drill and factory staging.");
+
+        }
+
+
+
+        return violations;
+
+    }
+
+
+
+    private static bool EconomicBootstrapPlan(string orderText) =>
+
+        Regex.IsMatch(orderText, @"\buse\s+mcored\b", RegexOptions.IgnoreCase)
+
+        || Regex.IsMatch(orderText, @"@use\s+iminng\b", RegexOptions.IgnoreCase);
+
+
+
+    public static bool HasResearcherPersonaViolations(string orderText, string? personaPreference)
+
+    {
+
+        if (!string.Equals(personaPreference, "researcher", StringComparison.OrdinalIgnoreCase))
+
+        {
+
+            return false;
+
+        }
+
+
+
+        return DescribeResearcherPersonaViolations(orderText).Count > 0;
+
+    }
+
+
+
+    public static IReadOnlyList<string> DescribeResearcherPersonaViolations(string orderText)
+
+    {
+
+        var violations = new List<string>();
+
+        if (!ResearchBootstrapPlan(orderText))
+
+        {
+
+            return violations;
+
+        }
+
+
+
+        if (!Regex.IsMatch(orderText, @"grant\s+technology\s+msrvtm\b", RegexOptions.IgnoreCase))
+
+        {
+
+            violations.Add(
+
+                "researcher persona: `grant technology msrvtm to <factry-id>` before `use msrvtm` — pays for the mobile-survey tech copy on the factory.");
+
+        }
+
+
+
+        if (!Regex.IsMatch(orderText, @"grant\s+item\s+\d+\s+iron\b", RegexOptions.IgnoreCase))
+
+        {
+
+            violations.Add(
+
+                "researcher persona: `grant item 2 iron to <cargob-id>` before factory `+get` / `use msrvtm` — bank-funded iron for the moblab build.");
+
+        }
+
+
+
+        if (!Regex.IsMatch(orderText, @"grant\s+item\s+\d+\s+silici\b", RegexOptions.IgnoreCase))
+
+        {
+
+            violations.Add(
+
+                "researcher persona: `grant item 2 silici to <cargob-id>` before `use msrvtm` / `+get` silici from cargob.");
+
+        }
+
+
+
+        if (Regex.IsMatch(orderText, @"@use\s+iminng\b", RegexOptions.IgnoreCase))
+
+        {
+
+            violations.Add(
+
+                "researcher persona: use `@use hcdril` on sdrill for coal; defer `@use iminng` until after the survey column is staged.");
+
+        }
+
+
+
+        return violations;
+
+    }
+
+
+
+    private static bool ResearchBootstrapPlan(string orderText) =>
+
+        Regex.IsMatch(orderText, @"\buse\s+msrvtm\b", RegexOptions.IgnoreCase);
 
 
 
@@ -1576,6 +1866,10 @@ public static partial class OrderDraftQuality
 
             feedbackLines.AddRange(DescribeAbsentPlayerPersonaViolations(orderText).Select(violation => "  - " + violation));
 
+            feedbackLines.AddRange(DescribeEconomicPersonaViolations(orderText).Select(violation => "  - " + violation));
+
+            feedbackLines.AddRange(DescribeResearcherPersonaViolations(orderText).Select(violation => "  - " + violation));
+
         }
 
 
@@ -1600,15 +1894,13 @@ public static partial class OrderDraftQuality
 
               Your previous draft was incomplete. Rewrite the full order file with at least:
 
-              - #modulestack <factory-id> first: get iron and silici from cargob, use msrvtm as newNNN
+              - cargob: `grant item 2 iron`, `grant item 2 silici` to cargob-id, then `@get all food/carbon`, sell surplus food
 
-              - economic loop: @produce cash, @use farmng, @use hcdril, @produce energy, sell food
+              - factory: `grant technology msrvtm to <factry-id>`, then `use msrvtm as newNNN for <hq-id>` with `+get 2 iron` and `+get 2 silici` from cargob
 
-              - HQ: `set hold 20 terran` beside `@produce terran`
+              - economic loop: HQ `set hold 20 terran` + `@produce terran`; sdrill `@use hcdril` (not iminng); farms `@use farmng`; cplant `@produce energy`
 
-              - #modulestack newNNN: get terran and oil; move <anomaly-region-id>; @research <same-region-id> (move is definite; @research is continuous)
-
-              Disabled stacks cannot move — stage crew and fuel on the new stack before move.
+              - #modulestack newNNN: `move` anomaly region-id; `+get` terran/oil/food; `@research` same region-id (no `@` on move/get)
 
               Use stack ids from the Orders template. Do not reply with only active/see lines. Include #end.
 
@@ -1626,9 +1918,9 @@ public static partial class OrderDraftQuality
 
               Your previous draft was incomplete. Rewrite the full order file with at least:
 
-              - HQ: `set hold 20 terran` and `@produce terran`; @get all food/carbon on cargob — **no sell food**
+              - HQ: `set hold 20 terran` and `@produce terran`; cargob: `grant item 50 iron`, `grant item 20 oil`, `grant item 10 titani` to cargob-id, then `@get all food/carbon` — **no sell food**
 
-              - factory: `use grndtr` as new1 with `+get`, then two `use armcbt` as new2/new3 each with `+get` iron/titani
+              - factory: `grant technology armcbt to <factry-id>`, then `use grndtr` as new1 with `+get`, two `use armcbt` as new2/new3 each with `+get` iron/titani
 
               - #modulestack new1: `move` Farm Belt, then `+get` terran/oil/food (no `@` on move/get)
 
@@ -1652,9 +1944,9 @@ public static partial class OrderDraftQuality
 
               - Cargob: `@get all food from <farms-id>`, `@get all carbon from <sdrill-id>` — no sell lines
 
-              - Farms: `@use farmng`; cplant: `@produce energy`
+              - Sdrill: `@use hcdril` (not `@use iminng`); farms: `@use farmng`; cplant: `@produce energy`
 
-              - No `@use hcdril` / `@use iminng` on drills; no factory USE or military moves
+              - No factory USE or military moves
 
               Use stack ids from the Orders template. Include #end.
 
@@ -1674,11 +1966,13 @@ public static partial class OrderDraftQuality
 
               - `@produce energy` on cplant before scaling nested cdrill draw
 
-              - economic loop: @produce terran, @use hcdril + @use iminng, @use farmng, sell food
+              - `@produce energy` on cplant; HQ `set hold 20 terran` + `@produce terran`
 
-              - factory: one-time `get iron+titani` (no @), then `use mcored as newNNN for <hq-id>`
+              - sdrill: `grant item 50 iron` + `grant item 10 titani` to drill id, then `@use hcdril` + `@use iminng`
 
-              - #modulestack newNNN: `has 1 <drill module>` then `-get` terran from HQ (one-time nest crew — NOT @get or `-+@get`), then deactivate 1
+              - factory: `grant technology mcored to factory`, `grant technology msrvtm to factory`, then `use mcored as newNNN for <hq-id>` with `+get` iron/titani from cargob
+
+              - `#modulestack newNNN`: `has 1 cdrill`, `-get` 6 terran, `deactivate 1`; cargob `@get all` + sell food
 
               Use stack ids from the Orders template. Include #end.
 

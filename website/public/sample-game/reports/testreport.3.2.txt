@@ -11,7 +11,7 @@ Events during turn:
   none.
 
 
-events:
+Events this quarter:
   week 1: Bank account credited: payment from NPC [1].
   week 9: battle at Northern Hemisphere [R00002] (0,0), attackers: Gelvaren [3], defenders: Caste
   Prime [2].
@@ -26,7 +26,7 @@ events:
   week 13: Bank account credited: Deposit interests accounted to 108. Current balance: 8748.
 
 Press releases:
-  Earth [P00001] at AU 1, ocean planet [ocean]: NPC [1] â€” Gelvaren closes CT0121.
+  Earth [P00001] at AU 1, ocean planet [ocean]: NPC [1] — Gelvaren closes CT0121.
     United Star Nations records Gelvaren's fulfillment of CT0121 at Southern Hemisphere on Earth
     [P00001] at AU 1, ocean planet [ocean].
 Bank report:
@@ -4377,7 +4377,7 @@ Galaxy report:
       size: 4.
 
 Press releases:
-  Earth [P00001] at AU 1, ocean planet [ocean]: NPC [1] â€” Gelvaren closes CT0121.
+  Earth [P00001] at AU 1, ocean planet [ocean]: NPC [1] — Gelvaren closes CT0121.
     United Star Nations records Gelvaren's fulfillment of CT0121 at Southern Hemisphere on Earth
     [P00001] at AU 1, ocean planet [ocean].
 ------------------------------------------------------------
@@ -4386,7 +4386,7 @@ Press releases:
     orbit [O00001], has no atmosphere.
 
 Press releases:
-  Earth [P00001] at AU 1, ocean planet [ocean]: NPC [1] â€” Gelvaren closes CT0121.
+  Earth [P00001] at AU 1, ocean planet [ocean]: NPC [1] — Gelvaren closes CT0121.
     United Star Nations records Gelvaren's fulfillment of CT0121 at Southern Hemisphere on Earth
     [P00001] at AU 1, ocean planet [ocean].
 

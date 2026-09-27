@@ -381,10 +381,15 @@ namespace SpaceAge
                     }
 
                     // breakthrough consumes the accumulated research points
-                    this.Researcher.EventReports.Add(
-                        week,
-                        string.Format("Breakthough!!! Researched {0} technology.",
-                            this.researchedTechnology.ReportName));
+                    string breakthroughLine = string.Format(
+                        "Breakthough!!! Researched {0} technology.",
+                        this.researchedTechnology.ReportName);
+                    this.Researcher.EventReports.Add(week, breakthroughLine);
+                    Faction breakthroughOwner = this.Researcher.Owner;
+                    if (breakthroughOwner != null)
+                    {
+                        breakthroughOwner.EventReports.Add(week, breakthroughLine);
+                    }
                     this.Researcher.ReceiveTechnologyCopy(this.researchedTechnology, week, null);
                     this.Researcher.ResearchPoints = 0;
                 }

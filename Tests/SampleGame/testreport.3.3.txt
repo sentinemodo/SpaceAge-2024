@@ -15,10 +15,11 @@ Declared stances:
   enemy toward Caste Prime [2].
 
 
-events:
+Events this quarter:
   week 1: Bank account credited: payment from NPC [1].
   week 1: Bank account debited: payment to NPC [1].
   week 5: Bank account credited: payment from NPC [1].
+  week 9: declared enemy toward faction 2.
   week 9: battle at Northern Hemisphere [R00002] (0,0), attackers:
   Gelvaren [3], defenders: Caste Prime [2].
   week 10: battle at Northern Hemisphere [R00002] (0,0), attackers:
@@ -4453,10 +4454,10 @@ Galaxy report:
         enough crew to operate - 20 required, 10 available.
         week 13: paid 110 cash [cash] upkeep.
     + small cargo bay [000019], small cargo bay [cargob], immobile.
-      size: 2000, mass: 928 (200), capacity: 1800/697, upkeep: 32 (30)
+      size: 2000, mass: 927 (200), capacity: 1800/696, upkeep: 32 (30)
       cash [cash], consume: 2 (0) units of food [food], 2 (0) units of
       terran breathing gas mixture [terair].
-      items: 580 units of food [food] (size: 580, mass: 580), 2 terrans
+      items: 579 units of food [food] (size: 579, mass: 579), 2 terrans
       [terran] (size: 8, mass: 8, upkeep: 2 cash [cash], consume: 2
       units of food [food], 2 units of terran breathing gas mixture
       [terair]), unit of iron [iron] (size: 5, mass: 10), 26 units of
@@ -4621,9 +4622,9 @@ Galaxy report:
         [119].
         week 13: paid 70 cash [cash] upkeep.
     + military barrack [000025], military barrack [barrck], immobile.
-      size: 2000, mass: 540 (500), capacity: 1800/40, energy: 5, crew:
-      2/10, upkeep: 210 (200) cash [cash], consume: 10 (0) units of food
-      [food], 10 (0) units of terran breathing gas mixture [terair].
+      size: 2000, mass: 544 (500), capacity: 1800/44, energy: 5, crew:
+      2/11, upkeep: 220 (200) cash [cash], consume: 11 (0) units of food
+      [food], 11 (0) units of terran breathing gas mixture [terair].
       technologies: form infantry battalion [frminf].
       items: 10 terrans [terran] (size: 40, mass: 40, upkeep: 10 cash
       [cash], consume: 10 units of food [food], 10 units of terran
@@ -4634,13 +4635,59 @@ Galaxy report:
         battalion [inftry] module.
         week 13: produced infantry battalion [inftry] into infantry
         battalion [120].
-        week 13: paid 210 cash [cash] upkeep.
+        week 13: paid 220 cash [cash] upkeep.
+      + terran officer [107], terran [terran].
+        size: 4, mass: 4, capacity: 3/0, upkeep: 10 cash [cash],
+        consume: unit of food [food], unit of terran breathing gas
+        mixture [terair].
+        events:
+          week 1: trained by Gelvaren Headquarters [000018].
+          week 1: stacked under military barrack [000025].
+          week 1: TRAIN failed: skill infantry battalion commander
+          [inbtcm] is not known to the faction (research a technology
+          that grants it).
+          week 2: TRAIN failed: skill infantry battalion commander
+          [inbtcm] is not known to the faction (research a technology
+          that grants it).
+          week 3: TRAIN failed: skill infantry battalion commander
+          [inbtcm] is not known to the faction (research a technology
+          that grants it).
+          week 4: TRAIN failed: skill infantry battalion commander
+          [inbtcm] is not known to the faction (research a technology
+          that grants it).
+          week 5: TRAIN failed: skill infantry battalion commander
+          [inbtcm] is not known to the faction (research a technology
+          that grants it).
+          week 6: TRAIN failed: skill infantry battalion commander
+          [inbtcm] is not known to the faction (research a technology
+          that grants it).
+          week 7: TRAIN failed: skill infantry battalion commander
+          [inbtcm] is not known to the faction (research a technology
+          that grants it).
+          week 8: TRAIN failed: skill infantry battalion commander
+          [inbtcm] is not known to the faction (research a technology
+          that grants it).
+          week 9: TRAIN failed: skill infantry battalion commander
+          [inbtcm] is not known to the faction (research a technology
+          that grants it).
+          week 10: TRAIN failed: skill infantry battalion commander
+          [inbtcm] is not known to the faction (research a technology
+          that grants it).
+          week 11: TRAIN failed: skill infantry battalion commander
+          [inbtcm] is not known to the faction (research a technology
+          that grants it).
+          week 12: TRAIN failed: skill infantry battalion commander
+          [inbtcm] is not known to the faction (research a technology
+          that grants it).
+          week 13: TRAIN failed: skill infantry battalion commander
+          [inbtcm] is not known to the faction (research a technology
+          that grants it).
     + infantry battalion [110], infantry battalion [inftry], immobile.
-      size: 500, mass: 603 (500), capacity: 300/103, upkeep: 15 (5) cash
-      [cash], consume: 101 (100) units of food [food], 101 (100) units
-      of terran breathing gas mixture [terair].
+      size: 500, mass: 600 (500), capacity: 300/100, upkeep: 5 cash
+      [cash], consume: 100 units of food [food], 100 units of terran
+      breathing gas mixture [terair].
       movement speed: 0.1 on ground.
-      items: 99 units of food [food] (size: 99, mass: 99).
+      items: 100 units of food [food] (size: 100, mass: 100).
       effects:
         will move for another 17 weeks before next destination.
       events:
@@ -4673,21 +4720,7 @@ Galaxy report:
         Northern Hemisphere [R00002] (0,0), ETA 18.
         week 13: moving from Southern Hemisphere [R00003] (1,0) to
         Northern Hemisphere [R00002] (0,0), ETA 17.
-        week 13: paid 15 cash [cash] upkeep.
-      + terran officer [107], terran [terran].
-        size: 4, mass: 4, capacity: 3/0, upkeep: 10 cash [cash],
-        consume: unit of food [food], unit of terran breathing gas
-        mixture [terair].
-        skills: infantry battalion commander [inbtcm].
-        events:
-          week 1: trained by Gelvaren Headquarters [000018].
-          week 1: stacked under military barrack [000025].
-          week 1: started training of infantry battalion commander
-          [inbtcm] skill.
-          week 4: trained infantry battalion commander [inbtcm] skill.
-          week 4: saw infantry battalion [110] in Southern Hemisphere
-          [R00003] (1,0).
-          week 4: stacked under infantry battalion [110].
+        week 13: paid 5 cash [cash] upkeep.
 
 Press releases:
   Earth [P00001] at AU 1, ocean planet [ocean]: NPC [1] — Gelvaren
@@ -4719,7 +4752,7 @@ Orders Template:
 
 #modulestack 000019
 ; + small cargo bay [000019], small cargo bay [cargob], immobile.
-; items: 580 units of food [food], 2 terrans [terran], unit of iron
+; items: 579 units of food [food], 2 terrans [terran], unit of iron
 ; [iron], 26 units of oil [oil].
 @get all food from 000020
 @get all oil from 000022
@@ -4770,7 +4803,7 @@ sell 0 wnplnt
 
 #modulestack 110
 ; + infantry battalion [110], infantry battalion [inftry], immobile.
-; items: 99 units of food [food].
+; items: 100 units of food [food].
 ; effects:
 ;   will move for another 17 weeks before next destination.
 move R00002
@@ -4783,10 +4816,9 @@ move R00002
 
 #person 107
 ; + terran officer [107], terran [terran].
-; skills: infantry battalion commander [inbtcm].
-; effects:
-;   training infantry battalion commander [inbtcm] skill, 0 weeks to
-;   complete.
+train skill inbtcm
+-see 110
+--stack 110
 
 #end
 

@@ -19,12 +19,25 @@ namespace SpaceAge
 
 		#region IReporting Members
 
-		private bool anyVisible(Faction faction)
+		public static bool IsParsingWarning(EventReport eventReport)
+		{
+			return eventReport.Description != null
+				&& (eventReport.Description.StartsWith("PARSING:")
+					|| eventReport.Description.StartsWith("WARNING:"));
+		}
+
+		private bool anyVisible(Faction faction, bool excludeParsingWarnings)
 		{
 			foreach (EventReport eventReport in this)
 			{
+				if (excludeParsingWarnings && IsParsingWarning(eventReport))
+				{
+					continue;
+				}
 				if (eventReport.Visible(faction))
+				{
 					return true;
+				}
 			}
 			return false;
 		}
@@ -36,13 +49,26 @@ namespace SpaceAge
 
 		public List<string> Report(Faction faction, int level)
 		{
+			return this.Report(faction, level, "events:", false);
+		}
+
+		public List<string> Report(
+			Faction faction,
+			int level,
+			string sectionTitle,
+			bool excludeParsingWarnings)
+		{
 			ReportLines reportLines = new ReportLines();
-			if (this.anyVisible(faction))
+			if (this.anyVisible(faction, excludeParsingWarnings))
 			{
-				reportLines.Add("events:", level);
+				reportLines.Add(sectionTitle, level);
 
 				foreach (EventReport eventReport in this)
 				{
+					if (excludeParsingWarnings && IsParsingWarning(eventReport))
+					{
+						continue;
+					}
 					if (eventReport.Visible(faction))
 					{
 						reportLines.Add(eventReport.Report(faction, level + 1));

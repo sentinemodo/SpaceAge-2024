@@ -70,7 +70,8 @@ namespace SpaceAge
 			{
 				case TargetFaction:
 					owner.Attitudes[this.TargetName] = this.Attitude;
-					this.Subject.EventReports.Add(
+					this.recordDeclaration(
+						owner,
 						week,
 						string.Format("declared {0} toward faction {1}.",
 							FactionAttitudeParser.ToToken(this.Attitude),
@@ -78,7 +79,8 @@ namespace SpaceAge
 					break;
 				case TargetUnit:
 					owner.UnitAttitudes[this.TargetName] = this.Attitude;
-					this.Subject.EventReports.Add(
+					this.recordDeclaration(
+						owner,
 						week,
 						string.Format("declared {0} toward unit {1}.",
 							FactionAttitudeParser.ToToken(this.Attitude),
@@ -86,14 +88,16 @@ namespace SpaceAge
 					break;
 				case TargetDefault:
 					owner.DefaultAttitude = this.Attitude;
-					this.Subject.EventReports.Add(
+					this.recordDeclaration(
+						owner,
 						week,
 						string.Format("declared default stance {0}.",
 							FactionAttitudeParser.ToToken(this.Attitude)));
 					break;
 				case TargetUnknown:
 					owner.UnknownAttitude = this.Attitude;
-					this.Subject.EventReports.Add(
+					this.recordDeclaration(
+						owner,
 						week,
 						string.Format("declared unknown stance {0}.",
 							FactionAttitudeParser.ToToken(this.Attitude)));
@@ -105,6 +109,12 @@ namespace SpaceAge
 
 			this.Executed = true;
 			base.Execute(week);
+		}
+
+		private void recordDeclaration(Faction owner, int week, string description)
+		{
+			this.Subject.EventReports.Add(week, description);
+			owner.EventReports.Add(week, description);
 		}
 
 		public override void LoadXml(XmlElement elOrder)

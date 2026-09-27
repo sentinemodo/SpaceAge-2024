@@ -10,14 +10,17 @@
 		<technology name="strans" />
 		<technology name="drnhng" />
 		<technology name="alnfgh" />
-		<technology name="cdrill" />
+		<technology name="mcored" />
 		<technology name="uminng" />
 		<technology name="he3min" />
+		<skill name="arkplt" />
+		<skill name="excoff" />
 		<attitude faction="3" attitude="enemy" />
 	</faction>
 	<faction name="3" name-en="Gelvaren" password="abccb" email="mail2@mail.pl" default-attitude="2" text-report="True" text-report-line-length="72" xml-report="True" balance="7186" credit-line="10000" credit-rate="0.2" deposit-rate="0.045">
 		<technology name="rckter" />
 		<technology name="servic" />
+		<skill name="sscmnd" />
 		<attitude faction="2" attitude="enemy" />
 		<attitude unit="450" attitude="enemy" />
 		<attitude unit="101" attitude="enemy" />
@@ -59,7 +62,7 @@
 							<event week="13" description="paid 20 cash [cash] upkeep." />
 							<modulestack name="201" type="robofc" quantity="1" faction="2">
 								<technology name="autfab" name-en="automated fabrication" />
-								<technology name="cdrill" name-en="mineral core drilling" />
+								<technology name="mcored" name-en="mineral core drilling" />
 								<technology name="uminng" name-en="uranium mining" />
 								<technology name="he3min" name-en="helium-3 mining" />
 								<itemstack type="iron" quantity="27" />

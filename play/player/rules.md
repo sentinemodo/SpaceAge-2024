@@ -292,24 +292,88 @@ Use `ACTIVE` + `STACK` (or start the turn already nested under a mover). Conditi
 
 **Campaign military and economic personas** use `**@produce terran`** on HQ instead of `@produce cash` — early quarters need manpower for nested crew and factory builds more than bank income. Researcher and contractor personas keep `@produce cash`. After researching L1 `brnofc`, a branch office in a second settlement can `@produce terran` (1 / 2 weeks) or `@produce cash` (20 / 2 weeks); it does **not** copy HQ region upkeep-reduction or fast-construction effects.
 
+Economic personas with a paid **mcored** copy on the factory also issue **GRANT** lines (bank debit) before drilling and nesting:
+
 ```
+#modulestack <cplant-id>
+@produce energy
+
 #modulestack <hq-id>
-@produce cash
+set hold 20 terran
+@produce terran
 
-#modulestack <cargob-id>
-@get all food from <farms-id>
-@get all carbon from <cdrill-id>
-sell <N> food at average
-
-#modulestack <cdrill-id>
+#modulestack <sdrill-id>
+grant item 50 iron to <sdrill-id>
+grant item 10 titani to <sdrill-id>
 @use hcdril
+@use iminng
+
+#modulestack <factry-id>
+grant technology mcored to factory
+grant technology msrvtm to factory
+use mcored as new108 for <hq-id>
++get 25 iron from <cargob-id>
++get 10 titani from <cargob-id>
+
+#modulestack new108
+has 1 cdrill
+-get 6 terran from <hq-id>
+deactivate 1
 
 #modulestack <farms-id>
 @use farmng
 
-#modulestack <cplant-id>
-@produce energy
+#modulestack <cargob-id>
+@get all food from <farms-id>
+@get all carbon from <sdrill-id>
+sell 200 food at average
+```
 
+**Military bootstrap (grndtr + two armcbt):** issue bank **GRANT** lines on cargob and factory before factory `USE` / `+get`:
+
+```
+#modulestack <cargob-id>
+grant item 50 iron to <cargob-id>
+grant item 20 oil to <cargob-id>
+grant item 10 titani to <cargob-id>
+@get all food from <farms-id>
+@get all carbon from <sdrill-id>
+
+#modulestack <factry-id>
+grant technology armcbt to <factry-id>
+use grndtr as new1 for <hq-id>
++get 30 iron from <cargob-id>
+...
+```
+
+**Researcher bootstrap (moblab on adjacent anomaly):** issue bank **GRANT** lines before factory `USE` / `+get`:
+
+```
+#modulestack <cargob-id>
+grant item 2 iron to <cargob-id>
+grant item 2 silici to <cargob-id>
+@get all food from <farms-id>
+@get all carbon from <sdrill-id>
+
+#modulestack <factry-id>
+grant technology msrvtm to <factry-id>
+use msrvtm as newNNN for <hq-id>
++get 2 iron from <cargob-id>
++get 2 silici from <cargob-id>
+
+#modulestack newNNN
+move <anomaly-region-id>
++get 1 terran from <hq-id>
++get 2 oil from <cargob-id>
++get 2 food from <cargob-id>
+@research <anomaly-region-id>
+```
+
+`msrvtm` use consumes 2 iron and 2 silici; grants match that staging. Sdrill: `@use hcdril` for coal — defer `@use iminng` until after the survey column moves. Defer UN town charters until moblab research is underway.
+
+Contractor town charter variant (defer for economic until production is maxed):
+
+```
 #modulestack <factry-id>
 use twnbld as new1
 +get 30 iron from <cargob-id>
@@ -356,7 +420,7 @@ Player turn files use **text**. XML matters for saved games, not for `order.*` d
 
 ## Immediate orders
 
-ACTIVE, ACTIVATE, ALIAS, ATTACK, BUY, CAPTURE, CONTRACT, COPY, DECLARE, DEACTIVATE, DEPOSIT, FORM, GET, GIVE, HAS, NAME, PRESS, SEE, SELL, SET, STACK, TACTIC, TRANSFER, WITHDRAW.
+ACTIVE, ACTIVATE, ALIAS, ATTACK, BUY, CAPTURE, CONTRACT, COPY, DECLARE, DEACTIVATE, DEPOSIT, FORM, GET, GIVE, GRANT, HAS, NAME, PRESS, SEE, SELL, SET, STACK, TACTIC, TRANSFER, WITHDRAW.
 
 ### ACTIVE
 
@@ -505,6 +569,14 @@ Creates an empty stack as a sibling of the former. `WITH n` immediately transfer
 
 Moves cargo from a same-location holder into the subject if capacity allows. `newN` transferers are created if needed. If the named holder is not in this region, parse keeps the order and warns `WARNING: source unit [id] is not in this region.` When the transferer is a modulestack with a **hold** on that item type, available quantity is reduced by the reserve (see [SET](#set) `HOLD`).
 
+### GRANT
+
+**Syntax:** `GRANT technology <tech-id> TO <modulestack-id|person-id|factory>` · `GRANT item <quantity> <item-id> TO <modulestack-id>` · `GRANT skill <skill-id> TO <person-id>` · `GRANT module …`
+
+**Subject:** `#faction` (issuer debits bank per catalog copy cost).
+
+Economic bootstrap: buy technology copies onto the factory (`GRANT technology mcored TO factory`, `GRANT technology msrvtm TO factory`) and stage bulk items on a drill or cargo stack (`GRANT item 50 iron TO <sdrill-id>`, `GRANT item 10 titani TO <sdrill-id>`) **before** `@use iminng` / `use mcored as newN` so paid inputs exist the same quarter. Target may be a numeric stack id or the word `factory` for the grant’s factory stack.
+
 ### GIVE
 
 **Syntax:**
@@ -562,7 +634,7 @@ Creates a `PressRelease` and reports `issued press release {title}.` on the issu
 
 **Subject:** **faction** (`#faction` as subject). Also allowed **between turns**.
 
-Creates an anonymous publication scoped to `<planet-id>`. The issuer is not shown on reports or announcements. Rumors persist in `<publications>` on save/load. Faction reports list **Rumors:** after **events:** and before **Contract reports:**. `/no-turn` also writes rumors into `announce.{turn}.{faction}.txt` (`Contract.All.WriteAnnouncements`).
+Creates an anonymous publication scoped to `<planet-id>`. The issuer is not shown on reports or announcements. Rumors persist in `<publications>` on save/load. Faction reports list **Rumors:** after **Events this quarter:** and before **Contract reports:**. `/no-turn` also writes rumors into `announce.{turn}.{faction}.txt` (`Contract.All.WriteAnnouncements`).
 
 **Fauna rumors (automatic):** before each report generation and at the start of turn processing (`Events.Execute`), the engine scans fauna factions **14–17**. When a stack sits in a region **adjacent** to a region holding any settlement-group module, an anonymous rumor is added for that planet — title `Hostile fauna in {region name}`, flavour cites the module type, stack id, fauna region id, and a neighbouring settlement region. One rumor per stack (deduped by stack id). Treat as **contact** for diplomacy with that fauna faction.
 

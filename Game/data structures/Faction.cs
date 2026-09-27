@@ -272,7 +272,11 @@ namespace SpaceAge
 				reportLines.Add("");
 			}
 
-			List<string> eventLines = this.EventReports.Report(this);
+			List<string> eventLines = this.EventReports.Report(
+				this,
+				0,
+				"Events this quarter:",
+				true);
 			if (eventLines.Count > 0)
 			{
 				reportLines.Add("");

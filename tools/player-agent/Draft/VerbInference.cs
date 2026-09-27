@@ -13,10 +13,10 @@ public static partial class VerbInference
 
     private static readonly Dictionary<string, string[]> PersonaBoostVerbs = new(StringComparer.OrdinalIgnoreCase)
     {
-        ["researcher"] = ["USE", "GET", "MOVE", "RESEARCH", "PRODUCE"],
+        ["researcher"] = ["GRANT", "USE", "GET", "MOVE", "RESEARCH", "PRODUCE"],
         ["contractor"] = ["USE", "GET", "TRANSFER", "PRODUCE", "CONTRACT"],
-        ["economic"] = ["PRODUCE", "USE", "GET", "SELL", "BUY"],
-        ["military"] = ["MOVE", "USE", "GET", "ATTACK", "DECLARE", "PRODUCE"],
+        ["economic"] = ["GRANT", "PRODUCE", "USE", "GET", "SELL", "BUY"],
+        ["military"] = ["GRANT", "MOVE", "USE", "GET", "DECLARE", "PRODUCE"],
         ["absent-player"] = ["PRODUCE", "USE", "GET", "REPAIR", "BUY", "RESEARCH"],
     };
 

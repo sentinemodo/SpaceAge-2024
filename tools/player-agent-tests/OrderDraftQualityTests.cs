@@ -15,6 +15,9 @@ public class OrderDraftQualityTests
         @produce terran
 
         #modulestack 200003
+        grant item 50 iron to 200003
+        grant item 20 oil to 200003
+        grant item 10 titani to 200003
         @get all food from 200006
         @get all carbon from 200004
 
@@ -22,6 +25,7 @@ public class OrderDraftQualityTests
         @use hcdril
 
         #modulestack 200005
+        grant technology armcbt to 200005
         use armcbt as new2 for 200001
         +get 8 iron from 200003
         +get 2 titani from 200003
@@ -70,6 +74,14 @@ public class OrderDraftQualityTests
     }
 
     [Test]
+    public void IsUsable_MilitaryMissingArmcbtGrant_Fails()
+    {
+        var draft = GoldenNorthwind.Replace("grant technology armcbt to 200005", string.Empty);
+        Assert.That(OrderDraftQuality.DescribeMilitaryPersonaViolations(draft), Is.Not.Empty);
+        Assert.That(OrderDraftQuality.IsUsable(draft, "military"), Is.False);
+    }
+
+    [Test]
     public void IsUsable_MilitarySellFood_Fails()
     {
         var draft = GoldenNorthwind.Replace(
@@ -95,27 +107,63 @@ public class OrderDraftQualityTests
         Assert.That(OrderDraftQuality.IsUsable(draft, "military"), Is.False);
     }
 
+    private const string GoldenResearcherSilicate = """
+        #faction 10 "silicat"
+        #modulestack 280001
+        set hold 20 terran
+        @produce terran
+
+        #modulestack 280003
+        grant item 2 iron to 280003
+        grant item 2 silici to 280003
+        @get all food from 280006
+        @get all carbon from 280004
+        sell 200 food at average
+
+        #modulestack 280004
+        @use hcdril
+
+        #modulestack 280006
+        @use farmng
+
+        #modulestack 280007
+        @produce energy
+
+        #modulestack 280005
+        grant technology msrvtm to 280005
+        use msrvtm as new110 for 280001
+        +get 2 iron from 280003
+        +get 2 silici from 280003
+
+        #modulestack new110
+        move R00052
+        +get 1 terran from 280001
+        +get 2 oil from 280003
+        +get 2 food from 280003
+        @research R00052
+        #end
+        """;
+
     [Test]
     public void IsUsable_ResearcherHandDraft_Passes()
     {
-        const string draft = """
-            #faction 3 "pw"
-            #modulestack 210005
-            @get 2 iron from 210003
-            use msrvtm as new109
-            #modulestack 210001
-            @produce cash
-            #modulestack 210003
-            sell 200 food at average
-            #modulestack new109
-            get 1 terran from 210001
-            get 2 oil from 210003
-            move R00011
-            @research R00011
-            #end
-            """;
+        Assert.That(OrderDraftQuality.IsUsable(GoldenResearcherSilicate, "researcher"), Is.True);
+    }
 
-        Assert.That(OrderDraftQuality.IsUsable(draft, "researcher"), Is.True);
+    [Test]
+    public void IsUsable_ResearcherMissingMsrvtmGrant_Fails()
+    {
+        var draft = GoldenResearcherSilicate.Replace("grant technology msrvtm to 280005", string.Empty);
+        Assert.That(OrderDraftQuality.DescribeResearcherPersonaViolations(draft), Is.Not.Empty);
+        Assert.That(OrderDraftQuality.IsUsable(draft, "researcher"), Is.False);
+    }
+
+    [Test]
+    public void IsUsable_ResearcherIminngOnDrill_Fails()
+    {
+        var draft = GoldenResearcherSilicate.Replace("@use hcdril", "@use hcdril\n@use iminng");
+        Assert.That(OrderDraftQuality.IsUsable(draft, "researcher"), Is.False);
+        Assert.That(OrderDraftQuality.DescribeResearcherPersonaViolations(draft), Is.Not.Empty);
     }
 
     [Test]
@@ -142,6 +190,9 @@ public class OrderDraftQualityTests
         @get all food from 200006
         @get all carbon from 200004
 
+        #modulestack 200004
+        @use hcdril
+
         #modulestack 200006
         @use farmng
 
@@ -165,11 +216,69 @@ public class OrderDraftQualityTests
     }
 
     [Test]
-    public void IsUsable_AbsentPlayerHcdrilOnDrill_Fails()
+    public void IsUsable_AbsentPlayerMissingHcdril_Fails()
     {
-        var draft = GoldenAbsentNorthwind.Replace(
-            "#modulestack 200006",
-            "#modulestack 200004\n@use hcdril\n\n#modulestack 200006");
+        var draft = GoldenAbsentNorthwind.Replace("@use hcdril", string.Empty);
         Assert.That(OrderDraftQuality.IsUsable(draft, "absent-player"), Is.False);
+        Assert.That(OrderDraftQuality.DescribeAbsentPlayerPersonaViolations(draft), Is.Not.Empty);
+    }
+
+    [Test]
+    public void IsUsable_AbsentPlayerIminngOnDrill_Fails()
+    {
+        var draft = GoldenAbsentNorthwind + "\n#modulestack 200004\n@use iminng\n";
+        Assert.That(OrderDraftQuality.IsUsable(draft, "absent-player"), Is.False);
+    }
+
+    private const string GoldenEconomicSundock = """
+        #faction 5 "sundock"
+        #modulestack 230007
+        @produce energy
+
+        #modulestack 230001
+        set hold 20 terran
+        @produce terran
+
+        #modulestack 230004
+        grant item 50 iron to 230004
+        grant item 10 titani to 230004
+        @use hcdril
+        @use iminng
+
+        #modulestack 230005
+        grant technology mcored to factory
+        grant technology msrvtm to factory
+        use mcored as new108 for 230001
+        +get 25 iron from 230003
+        +get 10 titani from 230003
+
+        #modulestack new108
+        has 1 cdrill
+        -get 6 terran from 230001
+        deactivate 1
+
+        #modulestack 230006
+        @use farmng
+
+        #modulestack 230003
+        @get all food from 230006
+        @get all carbon from 230004
+        sell 200 food at average
+        #end
+        """;
+
+    [Test]
+    public void IsUsable_EconomicGrantBootstrap_Passes()
+    {
+        Assert.That(OrderDraftQuality.IsUsable(GoldenEconomicSundock, "economic"), Is.True);
+    }
+
+    [Test]
+    public void IsUsable_EconomicMcoredWithoutGrant_Fails()
+    {
+        var draft = GoldenEconomicSundock.Replace("grant technology mcored to factory", string.Empty);
+        var violations = OrderDraftQuality.DescribeEconomicPersonaViolations(draft);
+        Assert.That(violations, Is.Not.Empty);
+        Assert.That(OrderDraftQuality.IsUsable(draft, "economic"), Is.False);
     }
 }

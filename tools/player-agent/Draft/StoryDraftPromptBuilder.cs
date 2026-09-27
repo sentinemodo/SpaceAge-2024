@@ -87,27 +87,25 @@ public static partial class StoryDraftPromptBuilder
         var tacticalBullets = isResearcher
             ? """
                 - HQ: set hold 20 terran beside @produce terran
-                - Factory first: use msrvtm as new109 (mobile lab priority); defer filidx/cmplib and frminf escort to later quarters
-                - Grant economic loop (@produce terran, @use farmng / @use hcdril, @produce energy, sell food via cargob)
-                - get 1 terran, food, and oil from HQ stacks onto new109 (no @ on mobile stack; moblab burns oil like trucks)
-                - move adjacent anomaly region-id; research that region (8-point threshold, +20 RP resolve)
-                - Do not nest wind kits on moblab; HQ energy stays on coal plant. Defer UN town contract until survey column is staged
+                - GRANT bootstrap: grant item 2 iron + 2 silici to cargob; grant technology msrvtm to factory; use msrvtm as newNNN with +get iron/silici from cargob
+                - Grant economic loop (@use farmng, @use hcdril on sdrill — no iminng turn 1, @produce energy, cargob @get all + sell food)
+                - Moblab stack: +get terran/oil/food; move adjacent anomaly region-id; @research that region (+20 RP resolve)
+                - Defer filidx/cmplib, frminf escort, and UN town contract until survey column is staged
                 """
                 : isEconomic
                 ? """
-                    - HQ: set hold 20 terran and @produce terran (manpower for nested crew beats cash income early)
-                    - Factory first: seeded mcored tech (−1000 balance at init) — get 25 iron + 10 titani, use mcored as new108 for the first core drill on the grant
-                    - Energy before scale: @produce energy on cplant; add fossil/cplant copies when carbon tight before stacking more drills
-                    - Grant loop on surface drill until core drill online (@use hcdril / @use iminng on sdrill-id, @use farmng, sell surplus food)
+                    - HQ: set hold 20 terran and @produce terran; @produce energy on cplant before nested cdrill draw
+                    - GRANT bootstrap: grant item iron/titani to sdrill, grant technology mcored + msrvtm to factory, then @use hcdril/iminng and use mcored as newN with +get iron/titani
+                    - Nest cdrill: has 1 cdrill, -get 6 terran, deactivate 1 until energy margin; @use farmng, cargob @get all + sell food
                     - Scout with msrvtm/moblab carrying an mcored technology copy (not trucks): adjacent exits show deep pocket of resources detected; move lab into pocket cell to read Deep resources assays
                     - Defer CT town charter until home grant production is maxed; next build agrplx farms or cdrill on deep pockets by market bottleneck
                     """
                 : isMilitary
                     ? """
                         - Turn-1 fauna rumor counts as contact: DECLARE FACTION 14 ENEMY before engaging Arbor Fauna
-                        - HQ: set hold 20 terran and @produce terran (crew reserve for two tank squads)
-                        - Grant economic loop (@use farmng / @use hcdril, @produce energy, sell food via cargob)
-                        - Factory: grndtr scout to Farm Belt first, then armcbt **twice** — new2 and new3 tank squads with +get iron/titani
+                        - HQ: set hold 20 terran and @produce terran; DECLARE hostile fauna when rumors confirm contact
+                        - Cargob: grant item iron/oil/titani to cargob, then @get all food/carbon; grant loop + @use hcdril, @produce energy — no sell food
+                        - Factory: grant technology armcbt to factory, then grndtr scout and two armcbt builds with +get iron/titani
                         - Both tank squads: has 1 tanks, -get provisioning, -move Mid Vale [R00009], tactic destroy; claim CT0016 (1000 cash bounty) when stack cleared
                         - Secure Mid Vale oil after cull; defer CT0006 UN town charter until armored lane is safe
                         """
@@ -115,7 +113,7 @@ public static partial class StoryDraftPromptBuilder
                     ? """
                         - HQ: set hold 20 terran and @produce cash (not @produce terran — minimizes crew upkeep)
                         - Cplant @produce energy; cargob @get all food from farms and @get all carbon from sdrill for coal-plant fuel
-                        - Farms @use farmng; no @use hcdril/iminng on drills — no sell food or resources
+                        - Sdrill @use hcdril (carbon for cplant); @get all carbon on cargob; no @use iminng — no sell food or resources
                         - No factory USE, tanks, town charter, or fauna offensives — upkeep and existing grant only
                         - REPAIR if report shows damage; RESEARCH only if a lab exists and energy margin allows
                         """

@@ -114,9 +114,7 @@ namespace SpaceAge
 			{
 				foreach (EventReport eventReport in faction.EventReports)
 				{
-					if (eventReport.Description != null
-						&& (eventReport.Description.StartsWith("PARSING:")
-							|| eventReport.Description.StartsWith("WARNING:")))
+					if (EventReports.IsParsingWarning(eventReport))
 					{
 						warnings.Add(eventReport.Description);
 					}

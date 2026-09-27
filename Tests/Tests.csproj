@@ -102,6 +102,7 @@
     <Compile Include="TSpaceTransit.cs" />
     <Compile Include="TMoveDuration.cs" />
     <Compile Include="TGetGiveHas.cs" />
+    <Compile Include="TFoodGranaryTurn.cs" />
     <Compile Include="TGrant.cs" />
     <Compile Include="TFormStack.cs" />
     <Compile Include="TSee.cs" />
@@ -312,6 +313,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="fixtures\scout-declare\orders.2.3.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="fixtures\food-granary-turn\gamein.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="fixtures\food-granary-turn\orders.2.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="fixtures\has-order-production\gamein.xml">
