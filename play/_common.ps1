@@ -262,10 +262,12 @@ function Test-FactionOrdersSubmitted {
 		return $false
 	}
 
-	$pattern = "^orders\.$FactionId\.$Turn\.(\d+)\.txt$"
-	foreach ($file in Get-ChildItem -LiteralPath $folder -Filter 'orders.*.txt' -File -ErrorAction SilentlyContinue) {
-		if ($file.Name -match $pattern -and (Test-NonEmptyOrderFile -Path $file.FullName)) {
-			return $true
+	foreach ($orderTurn in @($Turn, ($Turn + 1))) {
+		$pattern = "^orders\.$FactionId\.$orderTurn\.(\d+)\.txt$"
+		foreach ($file in Get-ChildItem -LiteralPath $folder -Filter 'orders.*.txt' -File -ErrorAction SilentlyContinue) {
+			if ($file.Name -match $pattern -and (Test-NonEmptyOrderFile -Path $file.FullName)) {
+				return $true
+			}
 		}
 	}
 

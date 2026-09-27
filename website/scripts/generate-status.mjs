@@ -43,16 +43,18 @@ function nonEmptyFile(filePath) {
   return Boolean(fs.readFileSync(filePath, 'utf8').trim());
 }
 
-/** Client draft, turn copy, or LLM orders.{faction}.{turn}.{iteration}.txt for the current turn. */
-export function factionHasOrdersForTurn(factionId, turn, factionsDir, turnDir) {
+/** Client draft, turn copy, or LLM orders.{faction}.{turn}.{iteration}.txt (gamein turn or next). */
+export function factionHasOrdersForTurn(factionId, turn, factionsDir, turnDirPath) {
   const folder = path.join(factionsDir, factionFolderName(factionId));
   if (nonEmptyFile(path.join(folder, `order.${factionId}.txt`))) return true;
-  if (nonEmptyFile(path.join(turnDir, `order.${factionId}.txt`))) return true;
+  if (nonEmptyFile(path.join(turnDirPath, `order.${factionId}.txt`))) return true;
   if (!fs.existsSync(folder)) return false;
 
-  const re = new RegExp(`^orders\\.${factionId}\\.${turn}\\.(\\d+)\\.txt$`);
-  for (const name of fs.readdirSync(folder)) {
-    if (re.test(name) && nonEmptyFile(path.join(folder, name))) return true;
+  for (const orderTurn of [turn, turn + 1]) {
+    const re = new RegExp(`^orders\\.${factionId}\\.${orderTurn}\\.(\\d+)\\.txt$`);
+    for (const name of fs.readdirSync(folder)) {
+      if (re.test(name) && nonEmptyFile(path.join(folder, name))) return true;
+    }
   }
   return false;
 }

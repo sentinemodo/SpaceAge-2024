@@ -37,9 +37,11 @@ function nonEmptyFile(filePath) {
   return Boolean(text.trim());
 }
 
-/** True when the faction has orders for this turn (client, GM turn copy, or LLM version file). */
+/** True when the faction has orders for the active collection window (gamein turn or next). */
 export function hasSubmittedOrders(factionId, turn, forRunId = runId()) {
-  if (readSubmittedOrder(factionId, turn, forRunId) != null) return true;
+  for (const orderTurn of [turn, turn + 1]) {
+    if (readSubmittedOrder(factionId, orderTurn, forRunId) != null) return true;
+  }
   const turnPath = path.join(turnDir(forRunId), `order.${factionId}.txt`);
   return nonEmptyFile(turnPath);
 }

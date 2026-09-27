@@ -547,6 +547,18 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
+  if (req.method === 'POST' && url.pathname === '/api/gm/sync-lobby-status') {
+    if (!requireGm(req, res)) return;
+    try {
+      syncLobbyStatusFile();
+    } catch (err) {
+      json(res, 500, { error: String(err.message || err) });
+      return;
+    }
+    json(res, 200, buildStatusJson());
+    return;
+  }
+
   if (req.method === 'POST' && url.pathname === '/api/gm/init') {
     if (!requireGm(req, res)) return;
     let body = {};

@@ -127,6 +127,16 @@ describe('Status producer script', () => {
     expect(submitted).toEqual([7, 8]);
   });
 
+  it('counts orders for gamein turn + 1 when only version files exist', async () => {
+    writeGamein(1);
+    writeIsolatedReports(1);
+    writeFactionVersionedOrders(6, 2, 1);
+
+    await runProducer(GeneratedStatusOut);
+    const data = validateStatusJson(JSON.parse(fs.readFileSync(GeneratedStatusOut, { encoding: 'utf8' })));
+    expect(data.factions.find((f) => f.id === 6)?.submitted).toBe(true);
+  });
+
   it('generates status.json with partial order submissions (accepting-orders)', async () => {
     writeGamein(3);
     writeIsolatedReports(3);
