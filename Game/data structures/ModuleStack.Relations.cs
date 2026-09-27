@@ -188,8 +188,7 @@ namespace SpaceAge
 				}
 				if (this.IsRootModuleStack && this.ModuleType.EnergyRequired > 0)
 				{
-					int availableEnergy = this.EnergyProduction + this.ModuleStacks.EnergyProduction();
-					operable = Math.Min(operable, availableEnergy / this.ModuleType.EnergyRequired);
+					operable = Math.Min(operable, this.regionalEnergyOperableCap(this.QuantityActive));
 				}
 				return Math.Max(operable, 0);
 			}

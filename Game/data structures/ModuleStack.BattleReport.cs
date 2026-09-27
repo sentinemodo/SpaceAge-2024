@@ -222,21 +222,27 @@ namespace SpaceAge
 		{
 			if (this.owner == faction || (this.ModuleStacks.Contains(faction)))
 			{
-				if (this.EnergyProduction + this.ModuleStacks.EnergyProduction() > 0)
+				int energyProduction = this.IsRootModuleStack
+					? this.RegionalEnergyProduction()
+					: this.UnitEnergyProduction();
+				int energyRequired = this.IsRootModuleStack
+					? this.RegionalEnergyRequired()
+					: this.UnitEnergyRequired();
+				if (energyProduction > 0)
 				{
 					line = string.Format("{0}, energy: {1}/{2}{3}",
 						line,
-						this.EnergyProduction + this.ModuleStacks.EnergyProduction(),
-						this.EnergyRequired + this.ModuleStacks.EnergyRequired(),
+						energyProduction,
+						energyRequired,
                         (showConsume & this.ProduceEnergyConsume.Count > 0) ? string.Format(" (consume: {0} for {1} weeks)",
                             this.ProduceEnergyConsume.ReportList,
                             this.ModuleType.ProduceDuration) : string.Empty);
 				}
-				else if (this.EnergyRequired + this.ModuleStacks.EnergyRequired() > 0)
+				else if (energyRequired > 0)
 				{
 					line = string.Format("{0}, energy: {1}",
 						line,
-						this.EnergyRequired + this.ModuleStacks.EnergyRequired());
+						energyRequired);
 				}
 
 				if (this.ModuleStacks.EnergyRequired() > 0)

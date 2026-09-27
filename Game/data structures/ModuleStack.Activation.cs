@@ -80,7 +80,7 @@ namespace SpaceAge
 				// TODO: priorities of shutdown on lack of energy and lack of crew
 				if (this.IsRootModuleStack && this.QuantityOperational < this.QuantityActive)
 				{
-					if (this.EnergyRequired + this.ModuleStacks.EnergyRequired() > this.EnergyProduction + this.ModuleStacks.EnergyProduction())
+					if (!this.HasRegionalEnergySurplus())
 					{
 						return false;
 					}

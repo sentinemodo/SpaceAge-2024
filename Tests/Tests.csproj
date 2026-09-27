@@ -90,6 +90,7 @@
     <Compile Include="TActivate.cs" />
     <Compile Include="TBankOrders.cs" />
     <Compile Include="TUse.cs" />
+    <Compile Include="TRegionalEnergy.cs" />
     <Compile Include="TUseRepairEffect.cs" />
     <Compile Include="TMove.cs" />
     <Compile Include="TMoveMode.cs" />

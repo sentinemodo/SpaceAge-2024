@@ -69,10 +69,9 @@ namespace SpaceAge
 										moduleStack.ReportName,
 										moduleStack.CrewRequired + moduleStack.ModuleStacks.CrewRequired(),
 										moduleStack.CrewCurrent + moduleStack.ModuleStacks.CrewCurrent()));
-					ModuleStack energyRoot = moduleStack.RootModuleStack;
-					int energyRequired = moduleStack.EnergyRequired + moduleStack.ModuleStacks.EnergyRequired();
-					int energyAvailable = energyRoot.EnergyProduction + energyRoot.ModuleStacks.EnergyProduction();
-					if (energyRequired > energyAvailable)
+					int energyRequired = moduleStack.RegionalEnergyRequired();
+					int energyAvailable = moduleStack.RegionalEnergyProduction();
+					if (!moduleStack.HasRegionalEnergySurplus())
 					{
 						moduleStack.EventReports.Add(
 								week,

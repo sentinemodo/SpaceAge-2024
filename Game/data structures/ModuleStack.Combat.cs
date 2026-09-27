@@ -131,10 +131,10 @@ namespace SpaceAge
 				double energyReserves = 0;
 				double massCapacityReserves = 0;
 
-                if (this.EnergyRequired + this.ModuleStacks.EnergyRequired() > 0)
+                if (this.RegionalEnergyRequired() > 0)
 				{
-					energyReserves = (this.EnergyProduction + this.ModuleStacks.EnergyProduction())
-						/ System.Convert.ToDouble(this.EnergyRequired + this.ModuleStacks.EnergyRequired());
+					energyReserves = this.RegionalEnergyProduction()
+						/ System.Convert.ToDouble(this.RegionalEnergyRequired());
 				}
 				if (this.Mass > 0)
 				{
