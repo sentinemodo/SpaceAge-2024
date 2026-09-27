@@ -849,7 +849,7 @@ Weekly output is catalog `research-output` × module count plus `**produce effec
 
 **Subject:** person (skill) or stack (officer).
 
-Starts `TrainingSkill` or `TrainingOfficer` (officer requires matching crew of that race). `AS` is required for officer training. Duration is catalog `officer-training-duration` / `training-duration`. Both effects survive save/load as `type="training-officer"` (skill training is the `skill` attribute). After save/load, leftover `TRAIN` reconnects to that effect and **continues** `DurationLeft` (does not restart), same idea as leftover `USE`:
+Starts `TrainingSkill` or `TrainingOfficer` (officer requires matching crew of that race). **`TRAIN SKILL` requires the faction to have discovered that skill** (via a researched technology’s `<grants-skill>` entry, or **`GRANT skill`** which also marks it known). Undiscovered skills fail with `TRAIN failed: skill … is not known to the faction`. New skills appear under **Technology reports** on the breakthrough turn as `- skill [id]: …` lines, the same layout as produced items. Catalog technology descriptions list unlocked skill ids. `AS` is required for officer training. Duration is catalog `officer-training-duration` / `training-duration`. Both effects survive save/load as `type="training-officer"` (skill training is the `skill` attribute). After save/load, leftover `TRAIN` reconnects to that effect and **continues** `DurationLeft` (does not restart), same idea as leftover `USE`:
 
 - **Same skill**, or **same officer race and person** — leftover `TRAIN` is kept (not duplicated). Training **continues**.
 - **Otherwise** — leftover `TRAIN` is dropped. The old training effect **freezes** while the new `TRAIN` runs. Reissue the original skill or officer to **resume**.

@@ -31,6 +31,19 @@ function readLegacyDraft(factionId, forRunId) {
   return text.trim() ? text : null;
 }
 
+function nonEmptyFile(filePath) {
+  if (!fs.existsSync(filePath)) return false;
+  const text = fs.readFileSync(filePath, 'utf8');
+  return Boolean(text.trim());
+}
+
+/** True when the faction has orders for this turn (client, GM turn copy, or LLM version file). */
+export function hasSubmittedOrders(factionId, turn, forRunId = runId()) {
+  if (readSubmittedOrder(factionId, turn, forRunId) != null) return true;
+  const turnPath = path.join(turnDir(forRunId), `order.${factionId}.txt`);
+  return nonEmptyFile(turnPath);
+}
+
 /** Latest submitted orders for this turn, or null when none exist. */
 export function readSubmittedOrder(factionId, turn, forRunId = runId()) {
   let versions = listOrderVersions(factionId, turn, forRunId);

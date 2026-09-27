@@ -8,6 +8,27 @@ Tags used for `RESEARCH` targeting: `production`, `propulsion`, `research`, `mil
 
 Research cost if `cost` omitted: `8 * 2^(level-1)` (L1=8 … L10=4096). Live overrides: `rckter` 4, `engshp` 4. Do not cheapen except alien-derived copies.
 
+**Skills:** catalog `<grants-skill name="…"/>` on level ≥ 1 technologies. Research breakthrough (or `GRANT technology`) reveals those skills to the faction; they appear in **Technology reports** like produced items. `TRAIN SKILL` requires the skill to be known. Campaign extras: `optins`→`snsroff`, `navast`→`astrog`, `exobio`→`xenbio`, `autprp`→`ntrplt`.
+
+| Technology (min level) | Grants skills |
+|------------------------|---------------|
+| `armcbt` (1) | `arpldr` |
+| `miltac` (1) | `inbtcm` |
+| `lstrrt` (1) | `gunnry` |
+| `orbrkt` (1) | `frgplt` |
+| `brnofc` (1) | `logoff` |
+| `afrmng` (1) | `exoagr` |
+| `mcored` (1) | `excoff` |
+| `engshp` (1) | `chfeng` |
+| `servic` (1) | `sscmnd` |
+| `medtec` (2) | `hmedic` |
+| `he3fus` (2) | `ntrplt` |
+| `optins` (1) | `snsroff` |
+| `sckcns` (3) | `radmed` |
+| `navast` (7) | `astrog` |
+| `exobio` (7) | `xenbio` |
+| `ahlcns` (3) | `arkplt` |
+
 **Level 10:** a pressure hull for **thousands of crew**, nested closed-loop ECLSS and agriculture, fusion-pulse drive, inner-system transits in **weeks** (Gate in **12 weeks**, `ceil(39 / 3.5)`). **Level 2** already unlocks a basic He3 **fusion torch** for AU hops (**39-week** Gate). No FTL. Physics: [au-transit.md](au-transit.md).
 
 Combat attack/damage/HP and military `use-time` ladders: **[combat-balance.md](combat-balance.md)** (capture in ≤10 rounds; small=3 / medium=8).
@@ -57,7 +78,7 @@ Until Battle grows typed resolution, encode intent as `attack`/`damage` on weapo
 | `pbpd` | `prxgrd` `proxpd` `ciwssy` `arkpd` | `proxpd` `ciwst` `arkpd`; item `prxgrd` |
 | `kinetic` | live `stnrdf`; campaign `prlgun` `kntcgn` `kpdgun` `gausgn` `spngun` | `gunplc` `railgn` `kpdtur` `coilgn` `spnknc`; item `prlgun`; live `smlarm` is L0 kinetic flavour |
 | `armour` | `psnarm` `armcml` `armhul` | `cermpl` `armplt`; item `psnarm` |
-| mixed platform | live `frminf` `armcbt`; `miltac` (command, not a damage type) | `inftry` `tanks` — mount the four weapon items plus personal defences |
+| mixed platform | live `frminf` `armcbt`; `miltac` (command, not a damage type); L3+ `frmplt`/`frmhvy`/`frmasl` ( **`brck2` only** ) | `inftry` `infplt` `infhvy` `infasl` `tanks` — mount the four weapon items plus personal defences |
 
 ## Branch coverage (no empty branch at a level)
 
@@ -501,6 +522,7 @@ AU hops (planet → local Gate) need a **fusion torch**, not chemical or ion. Ph
 | **`prlgun`** | personal rail gun | `stnrdf` | 3 | 2 `iron`, 1 `titani` | item `prlgun` | **kinetic**. Level 2. Infantry/tank/fighter item. `tungst` from L5 guns |
 | **`uwcbt`** | underwater combat | `uwtrs` | 12 | 14 `iron`, 6 `titani` | `uwtank` | **kinetic** combat sub. Naval MOVE; liquid only. Costlier than `tanks`/`gunbot`. Tag military. [`ocean-cities.md`](ocean-cities.md) |
 | **`psnew`** | personal EW pack | `optins` | 3 | 3 `silici`, 2 `copper` | item `psnew` | **ew**. Datalink spoof; infantry and fighter |
+| **`brbld2`** | advanced barracks construction | `miltac` | 8 | 25 `iron`, 10 `titani`, 4 `copper`, 2 `silici` | `brck2` | Tag production + military. Module `use efficiency-multiplier="0.667"` (50% faster USE). Same repair/upkeep/training effects as `barrck`; tech-cap **2**. Still accelerates L0 `frminf` when USE runs on the post |
 
 ---
 
@@ -582,6 +604,7 @@ Intended module XML (extra attrs ignored until TDD):
 | **`mslpod`** | missile tube | `ntmine` | 5 | 6 `iron`, 6 `nitrat`, 2 `uraniu` | `msltub` | **missile**. Nitrate/U grain. Attack 6 damage 8 |
 | **`ewsens`** | electronic warfare suite | `optins` | 4 | 6 `silici`, 4 `copper` | `ewantn` | **ew**. Jamming as defense/initiative. No cartoon disable |
 | **`prxgrd`** | proximity grenades | `rckter` | 3 | 2 `nitrat`, 1 `uraniu`, 1 `iron` | item `prxgrd` | **pbpd**. Infantry/tank last-ditch burst; same item on fighters |
+| **`frmplt`** | form infantry platoon | `brbld2` | 13 | 8 `iron`, 4 `titani`, 2 `copper` | `infplt` | **USE only on `brck2`** (`module="brck2"`). L3 platoon: HP 88 atk 6 def 4 dmg 8. Mounts same personal kit as `inftry` |
 
 ---
 
@@ -665,6 +688,7 @@ Capacity 5. Cost 128.
 | **`pdefls`** | point-defense lasers | `lstrrt` | 4 | 6 `xenon`, 6 `terair`, 4 `h2o2` | `pdltur` | **laser**. Short-range beam, not missile-PD. High initiative |
 | **`kpdgun`** | kinetic cannon | `kntcgn` | 4 | 12 `iron`, 6 `tungst`, 4 `nickfe` | `kpdtur` | **kinetic**. Rapid mass driver. Not pbpd |
 | **`armcml`** | ceramic applique armour | `ceramp` | 6 | 12 `boron`, 8 `titani`, 6 `alumin` | `cermpl` | **armour**. B4C tiles. Defense 12 |
+| **`frmhvy`** | form heavy infantry company | `frmplt` | 18 | 12 `iron`, 6 `titani`, 3 `copper`, 2 `silici`, 2 `boron` | `infhvy` | **USE only on `brck2`**. L5 company: HP 115 atk 8 def 6 dmg 11 |
 
 ---
 
@@ -746,6 +770,7 @@ Capacity 7. Cost 512.
 | **`armhul`** | spaced armour | `ahlcns` | 6 | 40 `titani`, 10 `tungst`, 8 `nickfe` | `armplt` | **armour**. Whipple + W fibre. Defense 15 |
 | **`crumis`** | cruise missile | `mslpod` | 8 | 12 `iron`, 8 `nitrat`, 4 `uraniu`, 4 `hydzn` | `crumis` | **missile**. Flyout fuel `hydzn`; signature is nitrate/U. Attack 12 damage 14 |
 | **`uvltur`** | ultraviolet laser | `lstrrt` | 6 | 8 `xenon`, 6 `volatl`, 4 `terair`, 2 `silici` | `uvltur` | **laser**. Shorter wavelength; gases as working medium, a little Si for optics |
+| **`frmasl`** | form assault infantry battalion | `frmhvy` | 26 | 10 `iron`, 8 `titani`, 4 `copper`, 4 `silici`, 2 `nitrat` | `infasl` | **USE only on `brck2`**. L7 assault: HP 135 atk 10 def 8 dmg 14 |
 
 ---
 

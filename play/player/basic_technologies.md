@@ -179,7 +179,7 @@ The popular punishment for committed fellonies is to restrict ones' freedom of m
 Works in: production. Use consumes: 6 iron `[iron]`. Use produces: jail block `[jail]`. Use-time: 4 weeks.
 
 **military tactics [miltac]**  
-Elementary military tactics, which enable a higher level of combat proficiency. Tag: `military`. Initiative: 5.  
+Elementary military tactics, which enable a higher level of combat proficiency. Tag: `military`. Initiative: 5. Unlocks TRAIN SKILL: infantry battalion commander `[inbtcm]`.  
 Works in: command. Use consumes: nothing. Use produces: nothing (battle tech). Use-time: 1 week (default).
 
 **mineral core drilling [mcored]**  
@@ -189,6 +189,10 @@ Works in: production. Use consumes: 25 iron `[iron]`, 10 titanium `[titani]`. Us
 **orbital rocket launcher [orbrkt]**  
 A rack of chemically boosted rockets sized to nest on a shuttle or station and fire in orbit. Built in a factory on the ground or assembled in space. Tag: `military`.  
 Works in: production (no location-type limit). Use consumes: 4 iron `[iron]`. Use produces: orbital rocket launcher `[orbrkt]`. Use-time: 8 weeks.
+
+**optical and IR instruments [optins]**  
+Diffraction-limited telescopes, FTIR, and gold-coated contacts for survey and targeting research. Tag: `research`. **Requires:** file indexing `[filidx]`. Unlocks TRAIN SKILL: sensor officer `[snsroff]`.  
+Works in: production. Use consumes: 6 silicium `[silici]`, 4 copper `[copper]`, 2 iron `[iron]`, 1 gold `[gold]`. Use produces: optical lab `[optlab]`. Use-time: 4 weeks.
 
 **preventive servicing [servic]**  
 Maintenance and repairs are best done in advance. Tag: `repair`.  

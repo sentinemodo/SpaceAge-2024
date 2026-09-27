@@ -6,7 +6,26 @@ import {
   writeFactionPersonaFromShared,
 } from './persona-story.mjs';
 import { runAiQuery, runDraftStory } from './player-agent.mjs';
-import { currentOllamaHost, loadRunPodState } from './runpod.mjs';
+import { currentOllamaHost, loadRunPodState, prepareOllamaModels } from './runpod.mjs';
+
+async function resolveInferenceHost() {
+  const state = loadRunPodState();
+  if (state.podId) {
+    if (!state.ollamaHost) {
+      throw new Error('RunPod pod is attached but Ollama URL is missing. Stop and start RunPod again.');
+    }
+    if (!state.ollamaReady) {
+      throw new Error('RunPod is still warming up (pulling models). Wait until status shows ready.');
+    }
+    await prepareOllamaModels(state.ollamaHost);
+    return state.ollamaHost;
+  }
+  const host = currentOllamaHost();
+  if (!host) {
+    throw new Error('RunPod is not running and OLLAMA_HOST is unset.');
+  }
+  return host;
+}
 
 export function runPodStatusPayload() {
   const state = loadRunPodState();
@@ -31,10 +50,7 @@ export async function executeAiQuery({
   includeStory,
   reportPath,
 }) {
-  const state = loadRunPodState();
-  if (state.phase !== 'running' && !process.env.OLLAMA_HOST) {
-    throw new Error('RunPod is not running. Start RunPod before querying.');
-  }
+  const ollamaHost = await resolveInferenceHost();
 
   const resolvedReport = reportPath || latestFactionReportPath(runId, factionId);
   const result = await runAiQuery({
@@ -45,7 +61,7 @@ export async function executeAiQuery({
     reportPath: resolvedReport,
     storyPath: storyPath(runId, factionId),
     personaPath: null,
-    ollamaHost: currentOllamaHost(),
+    ollamaHost,
   });
 
   return {
@@ -62,10 +78,7 @@ export async function regenerateStory({
   personaId,
   reportPath,
 }) {
-  const state = loadRunPodState();
-  if (state.phase !== 'running' && !process.env.OLLAMA_HOST) {
-    throw new Error('RunPod is not running. Start RunPod before regenerating story.');
-  }
+  const ollamaHost = await resolveInferenceHost();
 
   const personaFile = writeFactionPersonaFromShared(runId, factionId, personaId);
   const resolvedReport = reportPath || latestFactionReportPath(runId, factionId);
@@ -80,11 +93,13 @@ export async function regenerateStory({
     reportPath: resolvedReport,
     personaPath: personaFile,
     outputPath: outPath,
-    ollamaHost: currentOllamaHost(),
+    ollamaHost,
   });
 
-  const text = readStory(runId, factionId);
-  saveStory(runId, factionId, text);
+  const text = (result.story || readStory(runId, factionId)).trim();
+  if (text) {
+    saveStory(runId, factionId, text);
+  }
   return {
     ok: true,
     output: result.output,

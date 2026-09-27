@@ -107,6 +107,7 @@
     <Compile Include="TSee.cs" />
     <Compile Include="TSynchro.cs" />
     <Compile Include="TTrain.cs" />
+    <Compile Include="TSkillGate.cs" />
     <Compile Include="TTransfer.cs" />
     <Compile Include="TRepair.cs" />
     <Compile Include="TItemCombat.cs" />

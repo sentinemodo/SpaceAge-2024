@@ -38,6 +38,25 @@ export function allIsolatedReportsPresent(factionsDir, turn) {
   );
 }
 
+function nonEmptyFile(filePath) {
+  if (!fs.existsSync(filePath)) return false;
+  return Boolean(fs.readFileSync(filePath, 'utf8').trim());
+}
+
+/** Client draft, turn copy, or LLM orders.{faction}.{turn}.{iteration}.txt for the current turn. */
+export function factionHasOrdersForTurn(factionId, turn, factionsDir, turnDir) {
+  const folder = path.join(factionsDir, factionFolderName(factionId));
+  if (nonEmptyFile(path.join(folder, `order.${factionId}.txt`))) return true;
+  if (nonEmptyFile(path.join(turnDir, `order.${factionId}.txt`))) return true;
+  if (!fs.existsSync(folder)) return false;
+
+  const re = new RegExp(`^orders\\.${factionId}\\.${turn}\\.(\\d+)\\.txt$`);
+  for (const name of fs.readdirSync(folder)) {
+    if (re.test(name) && nonEmptyFile(path.join(folder, name))) return true;
+  }
+  return false;
+}
+
 export function readScheduleNextTurnAt(schedulePath) {
   if (!fs.existsSync(schedulePath)) return null;
   try {
@@ -75,13 +94,14 @@ export function buildStatusPayload(runRoot, options = {}) {
     turn = parsedTurn && parsedTurn > 0 ? parsedTurn : 1;
 
     let draftCount = 0;
+    const runTurnDir = path.join(runRoot, 'turn');
     for (const faction of factions) {
-      const draftPath = path.join(
+      faction.submitted = factionHasOrdersForTurn(
+        faction.id,
+        turn,
         factionsDir,
-        factionFolderName(faction.id),
-        `order.${faction.id}.txt`,
+        runTurnDir,
       );
-      faction.submitted = fs.existsSync(draftPath);
       if (faction.submitted) draftCount += 1;
     }
 

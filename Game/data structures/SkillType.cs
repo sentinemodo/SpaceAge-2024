@@ -377,7 +377,13 @@ namespace SpaceAge
 			return line;
 		}
 
-
+		public string ReportDescriptionForTechnology()
+		{
+			StringBuilder description = new StringBuilder(this.Description);
+			description.AppendFormat(" Training: {0} weeks.", this.TrainingDuration);
+			description.Append(" Issue TRAIN SKILL on a person once your faction has discovered this skill.");
+			return description.ToString();
+		}
 
 	}
 

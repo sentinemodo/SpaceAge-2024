@@ -103,6 +103,12 @@ namespace SpaceAge
 		public int Initiative { get; set; }
 		#endregion
 
+		private readonly List<SkillType> grantsSkills = new List<SkillType>();
+		public IList<SkillType> GrantsSkills
+		{
+			get { return this.grantsSkills; }
+		}
+
 		public string ReportDetails()
 		{
 			string line = this.ReportName;

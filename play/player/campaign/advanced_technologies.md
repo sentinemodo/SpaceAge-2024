@@ -502,7 +502,7 @@ Works in: module-type-group=extraction, location-type=solid-surface. Use produce
 
 **astrogation computers [navast]**  
 Tag: `research`.  **Requires:** `advres`.
-N-body integrators for long interplanetary legs. Not FTL.
+N-body integrators for long interplanetary legs. Not FTL. Unlocks TRAIN SKILL: astrogation `[astrog]`.
 Works in: module-type-group=production. Use consumes: 12 unit of silicium `[silici]`, 8 unit of copper `[copper]`, 2 unit of gold `[gold]`. Use produces: astrogation computer `[navcmp]`. Use-time: 6 weeks.
 
 **chemical insertion stage [orbins]**  
@@ -537,7 +537,7 @@ Works in: module-type-group=production. Use consumes: 60 unit of iron `[iron]`, 
 
 **exobiology protocols [exobio]**  
 Tag: `research`.  **Requires:** `medtec`.
-Containment and PCR protocols for alien samples.
+Containment and PCR protocols for alien samples. Unlocks TRAIN SKILL: xenobiology `[xenbio]`.
 Works in: module-type-group=production. Use consumes: 8 unit of silicium `[silici]`, 4 medicines `[medici]`. Use produces: exobiology lab `[xbiolb]`. Use-time: 6 weeks.
 
 **metals recycling [metrec]**  

@@ -108,6 +108,17 @@ SampleGame goldens use **Tests/data.xml** (tanks dmg 4, gunplc HP 100) → captu
 | L4–6 | 16–20 | `alnfgh` 16, `kntcgn`/`shplas` 16, `gausgn` 20 |
 | L7–10 | 24–40 | `crumis` 8, `spngun` 10, `arkcns` 13 |
 
+### Infantry ladder (`brck2`-gated above L0)
+
+| Tier | Tech → module | Use-time | HP | atk | def | dmg | Notes |
+|------|---------------|----------|----|-----|-----|-----|-------|
+| L0 squad | `frminf` → `inftry` | 13 | 52 | 2 | 2 | 2 | Any `production` on habitable solid; factory or `barrck`/`brck2` |
+| L3 platoon | `frmplt` → `infplt` | 13 | 88 | 6 | 4 | 8 | **`brck2` only** |
+| L5 company | `frmhvy` → `infhvy` | 18 | 115 | 8 | 6 | 11 | **`brck2` only** |
+| L7 assault | `frmasl` → `infasl` | 26 | 135 | 10 | 8 | 14 | **`brck2` only** |
+
+`brck2` applies `use efficiency-multiplier="0.667"` to all USE on the post (including `frminf`). Small raid = 3 infantry combat modules at the tier’s stats.
+
 ## Hull size classes
 
 Engine Parse accepts dedicated groups. Keep `group="frigate"` on campaign hulls until the hull-group todo retags them **and** expands frigate allow-lists. Scale **size / capacity / nested combat stacks**.

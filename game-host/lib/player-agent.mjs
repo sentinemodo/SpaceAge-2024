@@ -143,7 +143,11 @@ export async function runDraftStory({
   if (ollamaHost) env.OLLAMA_HOST = ollamaHost;
 
   const result = await spawnPlayerAgent(args, { env, timeoutMs: 900_000 });
-  return { ok: true, output: result.stdout.trim() };
+  let story = '';
+  if (outputPath && fs.existsSync(outputPath)) {
+    story = fs.readFileSync(outputPath, 'utf8');
+  }
+  return { ok: true, output: result.stdout.trim(), story };
 }
 
 export async function warmupOllama(ollamaHost) {

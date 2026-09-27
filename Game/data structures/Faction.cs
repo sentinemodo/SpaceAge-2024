@@ -183,6 +183,18 @@ namespace SpaceAge
 			get { return this.technologiesToShow; }
 		}
 
+		private KnownSkills skillsSeen = new KnownSkills();
+		public KnownSkills SkillsSeen
+		{
+			get { return this.skillsSeen; }
+		}
+
+		private KnownSkills skillsToShow = new KnownSkills();
+		public KnownSkills SkillsToShow
+		{
+			get { return this.skillsToShow; }
+		}
+
 		private ModuleTypes moduleTypesSeen = new ModuleTypes();
 		public ModuleTypes ModuleTypesSeen
 		{
@@ -304,6 +316,53 @@ namespace SpaceAge
 			this.objectsSeenPending.Clear();
 		}
 
+		public void RevealSkillsGrantedBy(Technology technology)
+		{
+			if (technology == null)
+			{
+				return;
+			}
+			foreach (SkillType skill in technology.GrantsSkills)
+			{
+				this.RevealSkill(skill);
+			}
+		}
+
+		public void RevealSkill(SkillType skill)
+		{
+			if (skill == null || this.skillsSeen.Contains(skill.Name))
+			{
+				return;
+			}
+			if (!this.skillsToShow.Contains(skill.Name))
+			{
+				this.skillsToShow.Add(skill);
+			}
+		}
+
+		public void EnsureSkillKnown(SkillType skill)
+		{
+			if (skill == null)
+			{
+				return;
+			}
+			if (!this.skillsSeen.Contains(skill.Name))
+			{
+				this.skillsSeen.Add(skill);
+			}
+		}
+
+		public void SyncSkillsFromKnownTechnologies()
+		{
+			foreach (Technology technology in this.technologiesSeen)
+			{
+				foreach (SkillType skill in technology.GrantsSkills)
+				{
+					this.EnsureSkillKnown(skill);
+				}
+			}
+		}
+
 		public void AllShown()
 		{
 			foreach (Technology technology in this.technologiesToShow)
@@ -312,8 +371,18 @@ namespace SpaceAge
 				{
 					this.technologiesSeen.Add(technology);
 				}
+				this.RevealSkillsGrantedBy(technology);
 			}
 			this.technologiesToShow.Clear();
+
+			foreach (SkillType skill in this.skillsToShow)
+			{
+				if (!this.skillsSeen.Contains(skill.Name))
+				{
+					this.skillsSeen.Add(skill);
+				}
+			}
+			this.skillsToShow.Clear();
 
 			foreach (ModuleType moduleType in this.moduleTypesToShow.Values)
 			{
@@ -414,6 +483,16 @@ namespace SpaceAge
 					this.TechnologiesSeen.Add(Technology.All[technologyName]);
 				}
 			}
+			this.SyncSkillsFromKnownTechnologies();
+
+			foreach (XmlElement elSkill in elFaction.SelectNodes("skill"))
+			{
+				string skillName = elSkill.GetAttribute("name");
+				if (SkillType.All.ContainsKey(skillName))
+				{
+					this.EnsureSkillKnown(SkillType.All[skillName]);
+				}
+			}
 
 			foreach (XmlElement elSurvey in elFaction.SelectNodes("survey"))
 			{
@@ -459,6 +538,13 @@ namespace SpaceAge
 				XmlElement elTechnology = doc.CreateElement("technology");
 				elTechnology.SetAttribute("name", technology.Name);
 				elFaction.AppendChild(elTechnology);
+			}
+
+			foreach (SkillType skill in this.skillsSeen)
+			{
+				XmlElement elSkill = doc.CreateElement("skill");
+				elSkill.SetAttribute("name", skill.Name);
+				elFaction.AppendChild(elSkill);
 			}
 
 			foreach (NamedObject spaceObject in this.ObjectsSeen)

@@ -63,7 +63,8 @@ public static partial class DraftPromptBuilder
         string promptPack,
         IReadOnlyList<RetrievalResult> retrievedChunks,
         string? ordersTemplate,
-        OrderDraftHints hints)
+        OrderDraftHints hints,
+        string? reportText = null)
     {
         var builder = new StringBuilder();
         builder.AppendLine(promptPack.Trim());
@@ -89,6 +90,8 @@ public static partial class DraftPromptBuilder
             builder.AppendLine();
         }
 
+        AppendStackCatalog(builder, reportText);
+
         if (!string.IsNullOrWhiteSpace(hints.TacticalObjective))
         {
             builder.AppendLine("## Tactical objective (implement this quarter)");
@@ -102,6 +105,40 @@ public static partial class DraftPromptBuilder
         builder.AppendLine(BuildTask(hints));
         return builder.ToString().Trim();
     }
+
+    private static void AppendStackCatalog(StringBuilder builder, string? reportText)
+    {
+        var stackTypes = ReportStackCatalog.ParseModuleTypes(reportText);
+        if (stackTypes.Count == 0)
+        {
+            return;
+        }
+
+        builder.AppendLine("## Stack id → module type (from report; verbs must match stack type)");
+        foreach (var pair in stackTypes.OrderBy(entry => entry.Key, StringComparer.Ordinal))
+        {
+            var hint = DescribeAllowedVerbsForModuleType(pair.Value);
+            builder.AppendLine(
+                hint is null
+                    ? $"- {pair.Key}: [{pair.Value}]"
+                    : $"- {pair.Key}: [{pair.Value}] — {hint}");
+        }
+
+        builder.AppendLine();
+    }
+
+    private static string? DescribeAllowedVerbsForModuleType(string moduleType) =>
+        moduleType.ToLowerInvariant() switch
+        {
+            "cplant" => "@produce energy only (never @use hcdril / iminng on cplant)",
+            "wnplnt" => "@use windpower (never @use hcdril on wnplnt)",
+            "sdrill" => "@use hcdril and @use iminng",
+            "farms" => "@use farmng",
+            "corphq" => "set hold 20 terran and @produce terran",
+            "cargob" => "@get / sell lines (not @use hcdril)",
+            "factry" => "use <tech> as newN with +get from cargob (not @use hcdril)",
+            _ => null,
+        };
 
     public static string? ExtractOrdersTemplate(string? reportText)
     {

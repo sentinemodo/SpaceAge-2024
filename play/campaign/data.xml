@@ -487,13 +487,14 @@
 			name="afrmng"
 			name-en="advanced farming"
 			level="1"
-			description="Advancing techniques and breeds selection allows increase of farms the output.">
+			description="Advancing techniques and breeds selection allows increase of farms the output. Unlocks TRAIN SKILL: exoagriculture [exoagr].">
 			<use-allowed-in 
 				module-type-group="agricultural" 
 				planet-type="ocean" 
 				planet-atmosphere="terair" 
 				location-type="solid-surface"/>
 			<use-produce item="food" quantity="8"/>
+			<grants-skill name="exoagr"/>
 		</entry>
 		<entry 
 			name="corpmg" 
@@ -514,13 +515,14 @@
 			name-en="branch office construction"
 			level="1"
 			requires="corpmg"
-			description="Satellite HR and payroll offices use encrypted radio links to HQ ledgers, biometric screening booths, and local labour contracts. Not a second C-suite: no region-wide construction scheduling or upkeep optimization."
+			description="Satellite HR and payroll offices use encrypted radio links to HQ ledgers, biometric screening booths, and local labour contracts. Not a second C-suite: no region-wide construction scheduling or upkeep optimization. Unlocks TRAIN SKILL: logistics officer [logoff]."
 			use-time="4">
 			<use-allowed-in module-type-group="production"/>
 			<use-produce module="brnofc"/>
 			<use-consume item="iron" quantity="5"/>
 			<use-consume item="copper" quantity="1"/>
 			<use-consume item="silici" quantity="2"/>
+			<grants-skill name="logoff"/>
 		</entry>
 		<entry 
 			name="iminng" 
@@ -557,12 +559,13 @@
 			name="mcored"
 			name-en="mineral core drilling"
 			level="1"
-			description="Core-body mineral exploitation. Detects subsurface deep pockets on regional exits when an mcored technology copy is present on the observing grant; identifies ore types only when mcored tech or a core drill module is on-site in the pocket region. Requires a core drill module to extract deep resources."
+			description="Core-body mineral exploitation. Detects subsurface deep pockets on regional exits when an mcored technology copy is present on the observing grant; identifies ore types only when mcored tech or a core drill module is on-site in the pocket region. Requires a core drill module to extract deep resources. Unlocks TRAIN SKILL: excavation officer [excoff]."
 			use-time="3">
 			<use-allowed-in module-type-group="production"/>
 			<use-consume item="iron" quantity="25"/>
 			<use-consume item="titani" quantity="10"/>
 			<use-produce module="cdrill"/>
+			<grants-skill name="excoff"/>
 		</entry>
 		<entry 
 			name="slcmlt" 
@@ -695,12 +698,13 @@
 			tags="military"
 			name-en="armored combat"
 			level="1"
-			description="The basic mobile armor, powered by oil consuming engines."
+			description="The basic mobile armor, powered by oil consuming engines. Unlocks TRAIN SKILL: armor platoon leader [arpldr]."
 			use-time="10">
 			<use-allowed-in module-type-group="production"/>
 			<use-consume item="iron" quantity="8"/>
 			<use-consume item="titani" quantity="2"/>
 			<use-produce module="tanks"/>
+			<grants-skill name="arpldr"/>
 		</entry>
 		<entry
 			name="nvlcbt"
@@ -756,11 +760,12 @@
 			tags="military"
 			name-en="orbital rocket launcher"
 			level="1"
-			description="A rack of chemically boosted rockets sized to nest on a shuttle or station and fire in orbit. Built in a factory on the ground or assembled in space."
+			description="A rack of chemically boosted rockets sized to nest on a shuttle or station and fire in orbit. Built in a factory on the ground or assembled in space. Unlocks TRAIN SKILL: frigate pilot [frgplt]."
 			use-time="8">
 			<use-allowed-in module-type-group="production"/>
 			<use-consume item="iron" quantity="4"/>
 			<use-produce module="orbrkt"/>
+			<grants-skill name="frgplt"/>
 		</entry>
 		<entry
 			name="wtrdst" 
@@ -982,13 +987,14 @@ This assembly technology represents the pinnacle of human ingenuity and collabor
 			name-en="laser turret"
 			level="1"
 			requires="lasopt"
-			description="A fixed laser emplacement for ground defense. Requires a power supply."
+			description="A fixed laser emplacement for ground defense. Requires a power supply. Unlocks TRAIN SKILL: gunnery director [gunnry]."
 			use-time="10">
 			<use-allowed-in module-type-group="production"/>
 			<use-consume item="iron" quantity="6"/>
 			<use-consume item="titani" quantity="4"/>
 			<use-consume item="copper" quantity="4"/>
 			<use-produce module="laztrt"/>
+			<grants-skill name="gunnry"/>
 		</entry>
 		<entry
 			name="wastdp"
@@ -1004,22 +1010,24 @@ This assembly technology represents the pinnacle of human ingenuity and collabor
 			tags="military"
 			name-en="military tactics"
 			level="1"
-			description="Elementary military tactics, which enable a higher level of combat proficiency."
+			description="Elementary military tactics, which enable a higher level of combat proficiency. Unlocks TRAIN SKILL: infantry battalion commander [inbtcm]."
 			initiative="5">
 			<use-allowed-in module-type-group="command"/>
+			<grants-skill name="inbtcm"/>
 		</entry>
 		<entry
 			name="servic"
 			name-en="preventive servicing"
 			level="1"
 			tags="repair"
-			description="Maintenance and repairs are best done in advance.">
+			description="Maintenance and repairs are best done in advance. Unlocks TRAIN SKILL: space station command [sscmnd].">
 			<use-allowed-in module-type-group="production"/>
 			<use-consume item="titani" quantity="1"/>
 			<use-consume item="iron" quantity="1"/>
 			<use-consume item="copper" quantity="1"/>
 			<use-consume item="silici" quantity="1"/>
 			<use-produce item="spare" quantity="10"/>
+			<grants-skill name="sscmnd"/>
 		</entry>
 		<entry
 			name="engshp"
@@ -1027,24 +1035,26 @@ This assembly technology represents the pinnacle of human ingenuity and collabor
 			name-en="engineering shop"
 			level="1"
 			cost="4"
-			description="Construction of a compact engineering shop that patches battle and maintenance damage using spare parts."
+			description="Construction of a compact engineering shop that patches battle and maintenance damage using spare parts. Unlocks TRAIN SKILL: chief engineer [chfeng]."
 			use-time="2">
 			<use-allowed-in module-type-group="production"/>
 			<use-consume item="iron" quantity="5"/>
 			<use-produce module="engshp"/>
+			<grants-skill name="chfeng"/>
 		</entry>
 		<entry
 			name="medtec"
 			name-en="medical services"
 			level="2"
 			tags="research"
-			description="Organized triage, isolation, and first aid. Sterile volume, filtered air, and trained crew raise the odds that casualties survive long enough to reach a ward. This builds a clinic, not an inpatient surgical bay."
+			description="Organized triage, isolation, and first aid. Sterile volume, filtered air, and trained crew raise the odds that casualties survive long enough to reach a ward. This builds a clinic, not an inpatient surgical bay. Unlocks TRAIN SKILL: human physiology [hmedic]."
 			use-time="6">
 			<use-allowed-in module-type-group="production"/>
 			<use-consume item="iron"  quantity="1"/>
 			<use-consume item="copper" quantity="2"/>
 			<use-consume item="silici" quantity="2"/>
 			<use-produce module="medfac"/>
+			<grants-skill name="hmedic"/>
 		</entry>
 		<entry
 			name="medirf"
@@ -1078,12 +1088,27 @@ This assembly technology represents the pinnacle of human ingenuity and collabor
 			<use-produce item="psnew"/>
 		</entry>
 		<entry
+			name="brbld2"
+			tags="military production"
+			name-en="advanced barracks construction"
+			level="2"
+			requires="miltac"
+			description="Reinforced drill floors, climate-controlled arms rooms, and a small induction forge for squad-level kit. The post runs parallel training lanes so USE orders for infantry and light vehicles finish in two-thirds the calendar time."
+			use-time="8">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="25"/>
+			<use-consume item="titani" quantity="10"/>
+			<use-consume item="copper" quantity="4"/>
+			<use-consume item="silici" quantity="2"/>
+			<use-produce module="brck2"/>
+		</entry>
+		<entry
 			name="sckcns"
 			name-en="sick bay construction"
 			level="3"
 			tags="research"
 			requires="medtec"
-			description="A pressurized recovery ward: isolation beds, an autoclave, filtered air, and a surgical table. Trauma care is heat, sterility, fluids, and time. Without pharmaceuticals, two casualties still granulate over a four-week rest; with packed doses, infection drops fast enough that four patients can leave the ward each week."
+			description="A pressurized recovery ward: isolation beds, an autoclave, filtered air, and a surgical table. Trauma care is heat, sterility, fluids, and time. Without pharmaceuticals, two casualties still granulate over a four-week rest; with packed doses, infection drops fast enough that four patients can leave the ward each week. Unlocks TRAIN SKILL: radiation medicine [radmed]."
 			use-time="8">
 			<use-allowed-in module-type-group="production"/>
 			<use-consume item="iron" quantity="8"/>
@@ -1091,6 +1116,7 @@ This assembly technology represents the pinnacle of human ingenuity and collabor
 			<use-consume item="copper" quantity="4"/>
 			<use-consume item="silici" quantity="3"/>
 			<use-produce module="sckbay"/>
+			<grants-skill name="radmed"/>
 		</entry>
 		<entry
 			name="pharms"
@@ -1142,13 +1168,14 @@ Researchers can query the library. The system can handle natural language questi
 			<use-consume item="silici" quantity="2"/>
 			<use-produce module="moblab"/>
 		</entry>
-		<entry name="optins" name-en="optical and IR instruments" level="1" tags="research" requires="filidx" description="Diffraction-limited telescopes, FTIR, and gold-coated contacts for survey and targeting research." use-time="4">
+		<entry name="optins" name-en="optical and IR instruments" level="1" tags="research" requires="filidx" description="Diffraction-limited telescopes, FTIR, and gold-coated contacts for survey and targeting research. Unlocks TRAIN SKILL: sensor officer [snsroff]." use-time="4">
 			<use-allowed-in module-type-group="production"/>
 			<use-consume item="silici" quantity="6"/>
 			<use-consume item="copper" quantity="4"/>
 			<use-consume item="iron" quantity="2"/>
 			<use-consume item="gold" quantity="1"/>
 			<use-produce module="optlab"/>
+			<grants-skill name="snsroff"/>
 		</entry>
 		<entry name="prlgun" name-en="personal rail gun" level="2" tags="military" requires="stnrdf" description="Man-portable electromagnetic rail kinetic for infantry battalions." use-time="3">
 			<use-allowed-in module-type-group="production"/>
@@ -1181,10 +1208,11 @@ Researchers can query the library. The system can handle natural language questi
 			<use-allowed-in module-type-group="extraction"/>
 			<use-produce item="heliu3"/>
 		</entry>
-		<entry name="he3fus" name-en="helium-3 fusion" level="2" tags="production" requires="he3min" description="Controlled fusion of helium-3 for clean, abundant energy. Unlocks the fusion torch drive.">
+		<entry name="he3fus" name-en="helium-3 fusion" level="2" tags="production" requires="he3min" description="Controlled fusion of helium-3 for clean, abundant energy. Unlocks the fusion torch drive. Unlocks TRAIN SKILL: nuclear thermal pilot [ntrplt].">
 			<use-allowed-in module-type-group="production"/>
 			<use-consume item="heliu3" quantity="1"/>
 			<use-produce module="fusrec"/>
+			<grants-skill name="ntrplt"/>
 		</entry>
 		<entry
 			name="fustch"
@@ -1584,18 +1612,20 @@ Researchers can query the library. The system can handle natural language questi
 			<use-consume item="titani" quantity="8"/>
 			<use-produce module="plsail"/>
 		</entry>
-		<entry name="exobio" name-en="exobiology protocols" level="7" tags="research" requires="medtec" description="Containment and PCR protocols for alien samples." use-time="6">
+		<entry name="exobio" name-en="exobiology protocols" level="7" tags="research" requires="medtec" description="Containment and PCR protocols for alien samples. Unlocks TRAIN SKILL: xenobiology [xenbio]." use-time="6">
 			<use-allowed-in module-type-group="production"/>
 			<use-consume item="silici" quantity="8"/>
 			<use-consume item="medici" quantity="4"/>
 			<use-produce module="xbiolb"/>
+			<grants-skill name="xenbio"/>
 		</entry>
-		<entry name="navast" name-en="astrogation computers" level="7" tags="research" requires="advres" description="N-body integrators for long interplanetary legs. Not FTL." use-time="6">
+		<entry name="navast" name-en="astrogation computers" level="7" tags="research" requires="advres" description="N-body integrators for long interplanetary legs. Not FTL. Unlocks TRAIN SKILL: astrogation [astrog]." use-time="6">
 			<use-allowed-in module-type-group="production"/>
 			<use-consume item="silici" quantity="12"/>
 			<use-consume item="copper" quantity="8"/>
 			<use-consume item="gold" quantity="2"/>
 			<use-produce module="navcmp"/>
+			<grants-skill name="astrog"/>
 		</entry>
 		<entry name="fatlab" name-en="cryo-fatigue lab" level="7" tags="research" requires="matlib" description="Thermal-cycle coupons for hull and tank materials." use-time="6">
 			<use-allowed-in module-type-group="production"/>
@@ -1823,11 +1853,12 @@ Researchers can query the library. The system can handle natural language questi
 			name="ahlcns"
 			name-en="advanced hull construction"
 			level="3"
-			description="Recovered alien hull geometry. Automated internals need no crew and no life support."
+			description="Recovered alien hull geometry. Automated internals need no crew and no life support. Unlocks TRAIN SKILL: ark helm [arkplt]."
 			use-time="8">
 			<use-allowed-in module-type-group="production"/>
 			<use-consume item="titani" quantity="20"/>
 			<use-produce module="alnhul"/>
+			<grants-skill name="arkplt"/>
 		</entry>
 		<entry
 			name="autfab"
@@ -1855,11 +1886,12 @@ Researchers can query the library. The system can handle natural language questi
 			name="autprp"
 			name-en="automated propulsion"
 			level="3"
-			description="A crewless reaction drive sized for an alien hull."
+			description="A crewless reaction drive sized for an alien hull. Unlocks TRAIN SKILL: nuclear thermal pilot [ntrplt]."
 			use-time="5">
 			<use-allowed-in module-type-group="production"/>
 			<use-consume item="titani" quantity="10"/>
 			<use-produce module="autdrv"/>
+			<grants-skill name="ntrplt"/>
 		</entry>
 		<entry
 			name="he3unc"
@@ -1909,6 +1941,20 @@ Researchers can query the library. The system can handle natural language questi
 			<use-consume item="copper" quantity="6"/>
 			<use-produce module="ewantn"/>
 		</entry>
+		<entry
+			name="frmplt"
+			tags="military"
+			name-en="form infantry platoon"
+			level="3"
+			requires="brbld2"
+			description="Three squads under one lieutenant: ceramic plates, squad radios, and belt-fed support weapons. Trained and equipped only in an advanced barracks with parallel lanes and a forge bay."
+			use-time="13">
+			<use-allowed-in module-type-group="production" module="brck2"/>
+			<use-consume item="iron" quantity="8"/>
+			<use-consume item="titani" quantity="4"/>
+			<use-consume item="copper" quantity="2"/>
+			<use-produce module="infplt"/>
+		</entry>
 		<entry name="kntcgn" name-en="kinetic gunnery" level="4" tags="military" requires="stnrdf" description="Electromagnetic rail kinetic weapon." use-time="16">
 			<use-allowed-in module-type-group="production"/>
 			<use-consume item="iron" quantity="20"/>
@@ -1942,6 +1988,22 @@ Researchers can query the library. The system can handle natural language questi
 			<use-consume item="alumin" quantity="6"/>
 			<use-produce module="cermpl"/>
 		</entry>
+		<entry
+			name="frmhvy"
+			tags="military"
+			name-en="form heavy infantry company"
+			level="5"
+			requires="frmplt"
+			description="Mechanized rifle company with boron-ceramic plates, disposable anti-armour rockets, and encrypted platoon nets. Assembly and certification require the advanced barracks forge and three-lane drill hall."
+			use-time="18">
+			<use-allowed-in module-type-group="production" module="brck2"/>
+			<use-consume item="iron" quantity="12"/>
+			<use-consume item="titani" quantity="6"/>
+			<use-consume item="copper" quantity="3"/>
+			<use-consume item="silici" quantity="2"/>
+			<use-consume item="boron" quantity="2"/>
+			<use-produce module="infhvy"/>
+		</entry>
 		<entry name="gausgn" name-en="coilgun" level="6" tags="military" requires="kntcgn" description="Dense armature coilgun." use-time="20">
 			<use-allowed-in module-type-group="production"/>
 			<use-consume item="iron" quantity="24"/>
@@ -1962,6 +2024,22 @@ Researchers can query the library. The system can handle natural language questi
 			<use-consume item="uraniu" quantity="4"/>
 			<use-consume item="hydzn" quantity="4"/>
 			<use-produce module="crumis"/>
+		</entry>
+		<entry
+			name="frmasl"
+			tags="military"
+			name-en="form assault infantry battalion"
+			level="7"
+			requires="frmhvy"
+			description="Battalion assault element with powered exo-assist frames, nitrate-cut breaching charges, and hardened datalinks. Only the advanced barracks induction forge and live-fire gallery can integrate the power packs and warheads safely."
+			use-time="26">
+			<use-allowed-in module-type-group="production" module="brck2"/>
+			<use-consume item="iron" quantity="10"/>
+			<use-consume item="titani" quantity="8"/>
+			<use-consume item="copper" quantity="4"/>
+			<use-consume item="silici" quantity="4"/>
+			<use-consume item="nitrat" quantity="2"/>
+			<use-produce module="infasl"/>
 		</entry>
 		<entry name="armhul" name-en="spaced armour" level="7" tags="military" requires="ahlcns" description="Whipple and tungsten fibre spaced armour resisting kinetics." use-time="6">
 			<use-allowed-in module-type-group="production"/>
@@ -2887,6 +2965,26 @@ Researchers can query the library. The system can handle natural language questi
 			<effect type="upkeep reduction" value="0.1" target="stacked"/>
 		</entry>
 		<entry
+			name="brck2"
+			name-en="advanced military barrack"
+			name-en2="advanced military barracks"
+			group="production"
+			description="Reinforced post with parallel drill lanes, climate arms rooms, and a small induction forge. USE orders run here at two-thirds calendar time; stacked units still get repair, upkeep relief, and fast training."
+			size="2200"
+			capacity="2000"
+			mass="550"
+			crew="3"
+			energy="6"
+			technology-capacity="2"
+			radiation="-100"
+			hit-points="140">
+			<upkeep type="cash" quantity="28"/>
+			<use efficiency-multiplier="0.667" require-fuel="false"/>
+			<effect type="fast training" value="1" target="region"/>
+			<effect type="repair" value="0.1" target="stacked"/>
+			<effect type="upkeep reduction" value="0.1" target="stacked"/>
+		</entry>
+		<entry
 			name="tunnls"
 			name-en="underground shelter"
 			name-en2="underground shelters"
@@ -3077,7 +3175,85 @@ Researchers can query the library. The system can handle natural language questi
 			<consume type="food" quantity="26"/>
 			<consume type="terair" quantity="26"/>
 			<no-consume effect="damage" chance="25"/>
-			<move mode="ground" speed="0.1"/>
+			<move mode="ground" speed="0.2"/>
+		</entry>
+		<entry
+			name="infplt"
+			name-en="infantry platoon"
+			name-en2="infantry platoons"
+			group="infantry"
+			living-unit="yes"
+			weapon-group="kinetic"
+			description="Three rifle squads with ceramic plates and squad radios. Heavier than a line squad; mounts the same personal weapons and defences."
+			size="700"
+			mass="700"
+			capacity="420"
+			hit-points="88"
+			attack="6"
+			defense="4"
+			damage="8"
+			can-convert="yes"
+			value="120">
+			<operation-allowed-in planet-atmosphere="terair"/>
+			<operation-allowed-in region-surface="solid"/>
+			<upkeep type="cash" quantity="22"/>
+			<no-upkeep effect="rebel" chance="10"/>
+			<consume type="food" quantity="36"/>
+			<consume type="terair" quantity="36"/>
+			<no-consume effect="damage" chance="25"/>
+			<move mode="ground" speed="0.2"/>
+		</entry>
+		<entry
+			name="infhvy"
+			name-en="heavy infantry company"
+			name-en2="heavy infantry companies"
+			group="infantry"
+			living-unit="yes"
+			weapon-group="kinetic"
+			description="Mechanized rifle company with boron-ceramic armour and short-range anti-armour rockets. Built for sustained urban and trench assault."
+			size="850"
+			mass="850"
+			capacity="500"
+			hit-points="115"
+			attack="8"
+			defense="6"
+			damage="11"
+			can-convert="yes"
+			value="180">
+			<operation-allowed-in planet-atmosphere="terair"/>
+			<operation-allowed-in region-surface="solid"/>
+			<upkeep type="cash" quantity="28"/>
+			<no-upkeep effect="rebel" chance="10"/>
+			<consume type="food" quantity="44"/>
+			<consume type="terair" quantity="44"/>
+			<no-consume effect="damage" chance="25"/>
+			<move mode="ground" speed="0.09"/>
+		</entry>
+		<entry
+			name="infasl"
+			name-en="assault infantry battalion"
+			name-en2="assault infantry battalions"
+			group="infantry"
+			living-unit="yes"
+			weapon-group="kinetic"
+			description="Battalion assault element with powered exo-assist frames and nitrate breaching charges. Peak ground infantry before orbital fire support dominates the field."
+			size="1000"
+			mass="1000"
+			capacity="580"
+			hit-points="135"
+			attack="10"
+			defense="8"
+			damage="14"
+			can-convert="yes"
+			value="260">
+			<operation-allowed-in planet-atmosphere="terair"/>
+			<operation-allowed-in region-surface="solid"/>
+			<upkeep type="cash" quantity="35"/>
+			<no-upkeep effect="rebel" chance="10"/>
+			<consume type="food" quantity="52"/>
+			<consume type="terair" quantity="52"/>
+			<no-consume effect="damage" chance="25"/>
+			<move mode="ground" speed="0.11"/>
 		</entry>
 		<!-- Wild fauna — seed-only; no production tech at t=1. See play/designer/fauna.md -->
 		<entry name="brmstr" name-en="brush stalker" name-en2="brush stalkers" group="infantry" living-unit="yes" weapon-group="kinetic" description="Arbor pack hunter: fast glass-cannon swarm in tall grass. Wild seed only; no upkeep." size="400" mass="400" capacity="100" hit-points="30" attack="2" defense="2" damage="2" value="20">

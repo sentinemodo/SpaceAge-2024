@@ -5,6 +5,7 @@ import {
   isActivePodStatus,
   isGpuCapacityError,
   isRunPodAuthError,
+  ollamaTagMatchesInstalled,
   pickManagedPod,
   probeOllamaReady,
 } from '../lib/runpod.mjs';
@@ -42,6 +43,13 @@ describe('runpod gpu helpers', () => {
   it('probeOllamaReady returns false for invalid host', async () => {
     assert.equal(await probeOllamaReady(null), false);
     assert.equal(await probeOllamaReady('http://127.0.0.1:1'), false);
+  });
+
+  it('matches ollama model tags', () => {
+    const tags = ['nomic-embed-text:latest', 'qwen3-coder:30b'];
+    assert.equal(ollamaTagMatchesInstalled(tags, 'nomic-embed-text'), true);
+    assert.equal(ollamaTagMatchesInstalled(tags, 'qwen3-coder:30b'), true);
+    assert.equal(ollamaTagMatchesInstalled(tags, 'llama3'), false);
   });
 
   it('picks newest active spaceage pod', () => {

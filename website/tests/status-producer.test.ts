@@ -51,6 +51,16 @@ function writeFactionDraft(id: number) {
   );
 }
 
+function writeFactionVersionedOrders(factionId: number, turn: number, iteration = 1) {
+  const folder = path.join(TestRunPaths.factions, String(factionId).padStart(2, '0'));
+  fs.mkdirSync(folder, { recursive: true });
+  fs.writeFileSync(
+    path.join(folder, `orders.${factionId}.${turn}.${iteration}.txt`),
+    `#faction ${factionId}\nnoop`,
+    { encoding: 'utf8' },
+  );
+}
+
 function writeIsolatedReports(turn: number) {
   for (let id = 2; id <= 11; id += 1) {
     const folder = path.join(TestRunPaths.factions, String(id).padStart(2, '0'));
@@ -102,6 +112,19 @@ describe('Status producer script', () => {
   afterEach(() => {
     if (fs.existsSync(TestRunPaths.root)) fs.rmSync(TestRunPaths.root, { recursive: true, force: true });
     if (fs.existsSync(GeneratedStatusOut)) fs.unlinkSync(GeneratedStatusOut);
+  });
+
+  it('counts LLM orders.{faction}.{turn}.{iteration}.txt as submitted', async () => {
+    writeGamein(5);
+    writeIsolatedReports(5);
+    writeFactionVersionedOrders(7, 5, 1);
+    writeFactionVersionedOrders(8, 5, 2);
+
+    await runProducer(GeneratedStatusOut);
+    const data = validateStatusJson(JSON.parse(fs.readFileSync(GeneratedStatusOut, { encoding: 'utf8' })));
+    expect(data.status).toBe('accepting-orders');
+    const submitted = data.factions.filter((f) => f.submitted).map((f) => f.id).sort();
+    expect(submitted).toEqual([7, 8]);
   });
 
   it('generates status.json with partial order submissions (accepting-orders)', async () => {

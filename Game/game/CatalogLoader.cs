@@ -344,6 +344,16 @@ namespace SpaceAge
 					technology.Defense = this.dataFile.XMLAssignInteger(el.GetAttribute("defense"), 0);
 					technology.Initiative = this.dataFile.XMLAssignInteger(el.GetAttribute("initiative"), 0);
 
+					technology.GrantsSkills.Clear();
+					foreach (XmlElement elGrantSkill in el.SelectNodes("grants-skill"))
+					{
+						string skillName = elGrantSkill.GetAttribute("name");
+						if (!string.IsNullOrEmpty(skillName))
+						{
+							technology.GrantsSkills.Add(SkillType.All[skillName]);
+						}
+					}
+
 					// material and output
 					// Effect effect;
 					ModuleType module;

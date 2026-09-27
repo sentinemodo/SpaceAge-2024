@@ -192,6 +192,10 @@ Group `military`. Built by x-ray laser optics `[xraylo]`. Requires technology `[
 A large, high-throughput research facility building on computer-library methods.  
 Group `research`. Built by advanced computing `[advres]`. Size 400, mass 100, energy 10, HP 80, tech-cap 8, research-output 2. Upkeep 200 cash.
 
+**optical lab [optlab]**  
+Diffraction-limited optical and IR instruments for survey and targeting research.  
+Group `research`. Built by optical and IR instruments `[optins]`. Size 250, mass 60, crew 2, energy 6, HP 35, tech-cap 5, research-output 1. Upkeep 35 cash.
+
 **alien vessel hull [alnhul]**  
 Crashed alien hull. Automated internals need no crew and no life support.  
 Group `frigate`. Built by advanced hull construction `[ahlcns]`. Size 6500, mass 200, capacity 6000, energy 1, HP 120, tech-cap 4, defense 8. Cannot hold item stacks. Upkeep 20 cash. Operates on solid-surface and orbit.
@@ -223,6 +227,24 @@ Group `habitat`. Built by sick bay construction `[sckcns]`. Size 380, mass 250, 
 **small dome city [dmdcty]**  
 A compact ownable dome for airless worlds. It must be supplied with food and terran breathing gas.  
 Group `settlement`. Built by dome city construction `[dmecns]`. Size 5000, capacity 3500, energy 10, HP 250, tech-cap 2, population max 2000. Upkeep 20 food, 20 terran air, 80 cash. Produces 200 cash / 13 weeks. Operates on solid-surface.
+
+### Level 7
+
+**astrogation computers [navast]**  
+N-body integrators for long interplanetary legs. Not FTL. Tag: `research`. **Requires:** advanced computing `[advres]`. Unlocks TRAIN SKILL: astrogation `[astrog]`.  
+Works in: production. Use consumes: 12 silicium `[silici]`, 8 copper `[copper]`, 2 gold `[gold]`. Use produces: astrogation computer `[navcmp]`. Use-time: 6 weeks.
+
+**exobiology protocols [exobio]**  
+Containment and PCR protocols for alien samples. Tag: `research`. **Requires:** medical services `[medtec]`. Unlocks TRAIN SKILL: xenobiology `[xenbio]`.  
+Works in: production. Use consumes: 8 silicium `[silici]`, 4 medicines `[medici]`. Use produces: exobiology lab `[xbiolb]`. Use-time: 6 weeks.
+
+**astrogation computer [navcmp]**  
+N-body integrators for long interplanetary legs.  
+Group `command`. Built by astrogation computers `[navast]`. Size 400, mass 150, crew 4, energy 12, capacity 200, HP 40, tech-cap 6, initiative 2. Upkeep 50 cash. Operates in frigate, corvette, destroyer, cruiser, capital, and spacecraft groups.
+
+**exobiology lab [xbiolb]**  
+Containment and PCR for alien samples.  
+Group `research`. Built by exobiology protocols `[exobio]`. Size 250, mass 80, crew 4, energy 6, HP 25, tech-cap 4, research-output 1. Upkeep 40 cash.
 
 ### Level 4
 

@@ -20,6 +20,11 @@ async function api(path: string, init: RequestInit = {}) {
   const res = await fetch(`${API_BASE}${path}`, { ...init, headers });
   if (!res.ok) {
     const err = await res.json().catch(() => ({ error: res.statusText }));
+    if (res.status === 401) {
+      setToken(null);
+      window.dispatchEvent(new Event('sa-session-expired'));
+      throw new Error('Session expired — log in again (game-host restart clears sessions).');
+    }
     throw new Error(err.error || res.statusText);
   }
   const ct = res.headers.get('content-type') || '';

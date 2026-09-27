@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { factionsDir, gameinPath, readTurnFromGamein, repoRoot, turnDir } from './paths.mjs';
 import { loadFactionCredentials } from './auth.mjs';
+import { hasSubmittedOrders } from './orders-io.mjs';
 
 const PLAYER_IDS = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 
@@ -19,17 +20,19 @@ export function buildStatusJson() {
     } catch { /* ignore */ }
   }
 
+  const hasGamein = fs.existsSync(gameinPath());
+  if (hasGamein) {
+    turn = readTurnFromGamein();
+  }
+
   const factions = PLAYER_IDS.map((id) => {
-    const creds = fs.existsSync(gameinPath()) ? loadFactionCredentials() : new Map();
+    const creds = hasGamein ? loadFactionCredentials() : new Map();
     const row = creds.get(id);
-    const orderPath = path.join(turnDir(), `order.${id}.txt`);
-    const draftPath = path.join(factionsDir(), String(id).padStart(2, '0'), `order.${id}.txt`);
-    const submitted = fs.existsSync(orderPath) || fs.existsSync(draftPath);
+    const submitted = hasGamein ? hasSubmittedOrders(id, turn) : false;
     return { id, submitted, name: row?.name || `Faction ${id}` };
   });
 
-  if (fs.existsSync(gameinPath())) {
-    turn = readTurnFromGamein();
+  if (hasGamein) {
     const submittedCount = factions.filter((f) => f.submitted).length;
     if (submittedCount === PLAYER_IDS.length) {
       status = 'processing';

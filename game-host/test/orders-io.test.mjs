@@ -12,6 +12,7 @@ process.env.GAME_HOST_RUN_ID = testRunId;
 
 const { ensureRunLayout, factionsDir, turnDir } = await import('../lib/paths.mjs');
 const {
+  hasSubmittedOrders,
   listOrderVersions,
   orderVersionFileName,
   readSubmittedOrder,
@@ -58,5 +59,17 @@ describe('saveOrder', () => {
   it('returns null when the faction has not submitted orders for the turn', () => {
     ensureRunLayout();
     assert.equal(readSubmittedOrder(9, 1), null);
+  });
+
+  it('hasSubmittedOrders is true for LLM version file without order.{id}.txt draft', () => {
+    ensureRunLayout();
+    const turn = 6;
+    const folder = path.join(factionsDir(), '04');
+    fs.mkdirSync(folder, { recursive: true });
+    const versionPath = path.join(folder, orderVersionFileName(4, turn, 1));
+    fs.writeFileSync(versionPath, '#faction 4 "llm"\n#end\n', 'utf8');
+    assert.equal(readSubmittedOrder(4, turn)?.includes('llm'), true);
+    assert.equal(hasSubmittedOrders(4, turn), true);
+    assert.equal(hasSubmittedOrders(4, turn + 1), false);
   });
 });

@@ -228,6 +228,100 @@ export async function probeOllamaReady(ollamaHost) {
   }
 }
 
+/** True when `installedTags` from GET /api/tags includes `modelName` (any tag). */
+export function ollamaTagMatchesInstalled(installedTags, modelName) {
+  const base = modelName.includes(':') ? modelName.split(':')[0] : modelName;
+  return installedTags.some((tag) => tag === modelName || tag.startsWith(`${base}:`));
+}
+
+function resolveRemoteChatModelName() {
+  const configured = (process.env.PLAYER_AGENT_CHAT_MODEL || 'auto').trim();
+  if (!configured || configured.toLowerCase() === 'auto') {
+    return 'qwen3-coder:30b';
+  }
+  return configured;
+}
+
+function resolveEmbedModelName() {
+  return (process.env.PLAYER_AGENT_EMBED_MODEL || 'nomic-embed-text').trim();
+}
+
+async function listOllamaModelTags(ollamaHost) {
+  const res = await fetch(`${ollamaHost}/api/tags`, {
+    signal: AbortSignal.timeout(OLLAMA_PROBE_TIMEOUT_MS),
+  });
+  if (!res.ok) {
+    throw new Error(`Ollama /api/tags failed (${res.status})`);
+  }
+  const data = await res.json();
+  return (data.models || []).map((m) => m.name).filter(Boolean);
+}
+
+async function pullOllamaModel(ollamaHost, name) {
+  logState('info', `Pulling Ollama model ${name}…`, { ollamaHost });
+  const res = await fetch(`${ollamaHost}/api/pull`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ name, stream: true }),
+    signal: AbortSignal.timeout(900_000),
+  });
+  if (!res.ok) {
+    throw new Error(`Pull ${name} failed (${res.status}): ${await res.text()}`);
+  }
+  const reader = res.body?.getReader();
+  if (!reader) return;
+  const dec = new TextDecoder();
+  let buf = '';
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    buf += dec.decode(value, { stream: true });
+    const lines = buf.split('\n');
+    buf = lines.pop() || '';
+    for (const line of lines) {
+      if (!line.trim()) continue;
+      try {
+        const obj = JSON.parse(line);
+        if (obj.error) {
+          throw new Error(String(obj.error));
+        }
+      } catch (err) {
+        if (err instanceof SyntaxError) continue;
+        throw err;
+      }
+    }
+  }
+  logState('success', `Pulled Ollama model ${name}`);
+}
+
+async function ensureOllamaModels(ollamaHost) {
+  const chat = resolveRemoteChatModelName();
+  const embed = resolveEmbedModelName();
+  let tags = await listOllamaModelTags(ollamaHost);
+  for (const name of [embed, chat]) {
+    if (!ollamaTagMatchesInstalled(tags, name)) {
+      await pullOllamaModel(ollamaHost, name);
+      tags = await listOllamaModelTags(ollamaHost);
+      if (!ollamaTagMatchesInstalled(tags, name)) {
+        throw new Error(`Ollama model ${name} still missing after pull`);
+      }
+    }
+  }
+}
+
+let prepareModelsJob = null;
+
+/** Pull chat + embed models on the pod (deduped across concurrent callers). */
+export async function prepareOllamaModels(ollamaHost) {
+  if (!ollamaHost) return;
+  if (!prepareModelsJob) {
+    prepareModelsJob = ensureOllamaModels(ollamaHost).finally(() => {
+      prepareModelsJob = null;
+    });
+  }
+  await prepareModelsJob;
+}
+
 function attachDiscoveredPod(local, pod) {
   const podId = extractPodId(pod);
   const status = podStatus(pod);
@@ -301,13 +395,19 @@ export async function refreshRunPodStatus(initialLocal = null) {
 
     if (status === 'RUNNING' && !ollamaReady && ollamaHost && !isRunPodStartInProgress()) {
       if (await probeOllamaReady(ollamaHost)) {
-        ollamaReady = true;
-        stage = 'ready';
-        phase = 'running';
-        message = 'RunPod ready';
-        logs = appendRunPodLog(local, 'success', 'Ollama reachable — pod ready', { ollamaHost });
-        process.env.OLLAMA_HOST = ollamaHost;
-        process.env.PLAYER_AGENT_ALLOW_RUNPOD = '1';
+        try {
+          await prepareOllamaModels(ollamaHost);
+          ollamaReady = true;
+          stage = 'ready';
+          phase = 'running';
+          message = 'RunPod ready';
+          logs = appendRunPodLog(local, 'success', 'RunPod ready — models on pod', { ollamaHost });
+          process.env.OLLAMA_HOST = ollamaHost;
+          process.env.PLAYER_AGENT_ALLOW_RUNPOD = '1';
+        } catch (err) {
+          message = `Ollama up; model pull failed: ${err.message || err}`;
+          logs = appendRunPodLog(local, 'error', message, { ollamaHost });
+        }
       }
     }
 
@@ -364,6 +464,7 @@ async function reconnectToPod(podOrId) {
   const status = podStatus(pod);
 
   if (status === 'RUNNING' && await probeOllamaReady(ollamaHost)) {
+    await prepareOllamaModels(ollamaHost);
     saveRunPodState({
       ...loadRunPodState(),
       phase: 'running',
@@ -644,6 +745,13 @@ async function warmupAndMarkReady(ollamaHost) {
 
   await warmupOllamaHttp(ollamaHost);
 
+  try {
+    await prepareOllamaModels(ollamaHost);
+  } catch (err) {
+    logState('error', `Ollama model pull failed: ${err.message || err}`);
+    throw err;
+  }
+
   if (process.env.PLAYER_AGENT_BUDGET_USD) {
     try {
       await warmupOllama(ollamaHost);
@@ -728,7 +836,12 @@ export function startRunPodStatusPolling(intervalMs = 30_000) {
 
 export function currentOllamaHost() {
   const state = loadRunPodState();
-  if (state.phase === 'running' && state.ollamaHost) return state.ollamaHost;
+  if (state.podId && state.ollamaHost) {
+    return state.ollamaHost;
+  }
+  if (state.ollamaReady && state.ollamaHost) {
+    return state.ollamaHost;
+  }
   return process.env.OLLAMA_HOST || null;
 }
 

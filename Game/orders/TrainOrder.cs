@@ -365,6 +365,17 @@ namespace SpaceAge
             }
             else
             {
+				Faction owner = this.Trainee.Owner;
+				if (owner != null && !owner.SkillsSeen.Contains(this.skillType.Name))
+				{
+					this.Trainee.EventReports.Add(
+						week,
+						string.Format(
+							"TRAIN failed: skill {0} is not known to the faction (research a technology that grants it).",
+							this.skillType.ReportName));
+					return;
+				}
+
                 this.durationLeft = this.skillType.TrainingDuration;
                 this.training = new TrainingSkill(this.Trainee, this.durationLeft, this.skillType);
             }

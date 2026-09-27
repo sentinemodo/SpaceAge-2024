@@ -1,6 +1,6 @@
 # Basic technologies
 
-Level 0 and level 1 technologies for the open-beta campaign, then the **modules** (the units you build) and **items** (materials and gear) those technologies use. Checked September 2026.
+Level 0 and level 1 technologies for the open-beta campaign, then the **modules** (the units you build) and **items** (materials and gear) those technologies use. Checked 27 September 2026.
 
 A bracketed id such as [iron] jumps to that technology, module, or item. When two entries share an id, the link follows the name written next to it.
 
@@ -68,6 +68,10 @@ Where: agricultural, on fishery `[fshfrm]`, **liquid-surface**, terran atmospher
 **fossil use [fossil]**  
 Use of fossil fuels allows one to produce huge and dirty plants that transform carbon-based resources into energy. Tag: `production`.  
 Where: production. Needs: 100 iron `[iron]`. Builds: coal-burning plant `[cplant]`. Time: 8 weeks.
+
+**form infantry squad [frminf]**  
+The basic infantry unit. Equipped with standard rifles. Tag: `military`.  
+Where: production on solid surface under a habitable-temperature planet or moon. Needs: 4 iron `[iron]`. Builds: infantry squad `[inftry]`. Time: 13 weeks.
 
 **ground transport [grndtr]**  
 The most basic transportation means are large trucks, powered by oil consuming engines.  
@@ -172,15 +176,15 @@ Where: production. Needs: 1 iron `[iron]`. Builds: wind powerplant `[wnplnt]`. T
 The unit that uses one of these must hold a copy (research or copy from a neighbour). Each copy uses 1 capacity.
 
 **advanced farming [afrmng]**  
-Advancing techniques and breeds selection allows increase of farms the output.  
+Advancing techniques and breeds selection allows increase of farms the output. Unlocks TRAIN SKILL: exoagriculture `[exoagr]`.  
 Where: agricultural, on ocean worlds with terran atmosphere `[terair]`, solid-surface. Builds: 8 food `[food]`. Time: 1 week.
 
 **armored combat [armcbt]**  
-The basic mobile armor, powered by oil consuming engines. Tag: `military`.  
+The basic mobile armor, powered by oil consuming engines. Tag: `military`. Unlocks TRAIN SKILL: armor platoon leader `[arpldr]`.  
 Where: production. Needs: 8 iron `[iron]`, 2 titanium `[titani]`. Builds: tanks `[tanks]`. Time: 10 weeks.
 
 **branch office construction [brnofc]**  
-Satellite HR and payroll offices use encrypted radio links to HQ ledgers, biometric screening booths, and local labour contracts. Not a second C-suite: no region-wide construction scheduling or upkeep optimization. Tag: `production`. **Requires:** corporate management `[corpmg]`.  
+Satellite HR and payroll offices use encrypted radio links to HQ ledgers, biometric screening booths, and local labour contracts. Not a second C-suite: no region-wide construction scheduling or upkeep optimization. Unlocks TRAIN SKILL: logistics officer `[logoff]`. Tag: `production`. **Requires:** corporate management `[corpmg]`.  
 Where: production. Needs: 5 iron `[iron]`, 1 copper `[copper]`, 2 silicium `[silici]`. Builds: branch office `[brnofc]`. Time: 4 weeks.
 
 **city planning [ctypln]**  
@@ -188,12 +192,8 @@ Planning the area of the city allows more eficient use of the area.
 Where: settlement, solid-surface, terran atmosphere `[terair]`. Needs: 500 cash `[cash]`, 26 iron `[iron]`, 1 city `[city]`. Builds: metropoly `[mtrply]`. Time: 26 weeks.
 
 **engineering shop [engshp]**  
-Construction of a compact engineering shop that patches battle and maintenance damage using spare parts. Tags: `production`, `repair`.  
+Construction of a compact engineering shop that patches battle and maintenance damage using spare parts. Unlocks TRAIN SKILL: chief engineer `[chfeng]`. Tags: `production`, `repair`.  
 Where: production. Needs: 5 iron `[iron]`. Builds: engineering shop `[engshp]`. Time: 2 weeks.
-
-**form infantry battalion [frminf]**  
-The basic infantry unit. Equipped with standard rifles. Tag: `military`.  
-Where: production. Needs: 4 iron `[iron]`. Builds: infantry battalion `[inftry]`. Time: 13 weeks.
 
 **gold recovery [gminng]**  
 Trace precious-metal recovery from hydrothermal veins. Compact assay methods preserved in HCS crust manuals. Tag: `production`. **Requires:** copper mining `[cminng]`.  
@@ -208,7 +208,7 @@ The working of high-frequency lasers.
 Where: production. Needs: 2 titanium `[titani]`, 6 copper `[copper]`, 2 silicium `[silici]`. Builds: blue laser `[bltlas]`. Time: 10 weeks.
 
 **laser turret [lstrrt]**  
-A fixed laser emplacement for ground defense. Requires a power supply. Tag: `military`. **Requires:** laser optics `[lasopt]`.  
+A fixed laser emplacement for ground defense. Requires a power supply. Unlocks TRAIN SKILL: gunnery director `[gunnry]`. Tag: `military`. **Requires:** laser optics `[lasopt]`.  
 Where: production. Needs: 6 iron `[iron]`, 4 titanium `[titani]`, 4 copper `[copper]`. Builds: laser turret `[laztrt]`. Time: 10 weeks.
 
 **law enforcement [lawenf]**  
@@ -216,11 +216,11 @@ The popular punishment for committed fellonies is to restrict ones' freedom of m
 Where: production. Needs: 6 iron `[iron]`. Builds: jail block `[jail]`. Time: 4 weeks.
 
 **military tactics [miltac]**  
-Elementary military tactics, which enable a higher level of combat proficiency. Tag: `military`. Initiative: 5.  
+Elementary military tactics, which enable a higher level of combat proficiency. Tag: `military`. Initiative: 5. Unlocks TRAIN SKILL: infantry battalion commander `[inbtcm]`.  
 Where: command. Needs: nothing. Builds: nothing (battle tech). Time: 1 week.
 
 **mineral core drilling [mcored]**  
-Core-body mineral exploitation. Detects subsurface **deep pockets** on regional exits when an `mcored` technology copy is present on the observing grant; identifies ore types only when `mcored` tech or a core drill module is on-site in the pocket region. Requires a core drill module to extract deep resources.  
+Core-body mineral exploitation. Detects subsurface **deep pockets** on regional exits when an `mcored` technology copy is present on the observing grant; identifies ore types only when `mcored` tech or a core drill module is on-site in the pocket region. Requires a core drill module to extract deep resources. Unlocks TRAIN SKILL: excavation officer `[excoff]`.  
 Where: production. Needs: 25 iron `[iron]`, 10 titanium `[titani]`. Builds: core drill `[cdrill]`. Time: 3 weeks.
 
 **naval combat [nvlcbt]**  
@@ -232,7 +232,7 @@ Fe-Ni alloy recovery from metal-rich crust and M-type rocks. HCS archive special
 Where: extraction, solid-surface. Builds: 2 nickel-iron `[nickfe]`. Time: 1 week.
 
 **orbital rocket launcher [orbrkt]**  
-A rack of chemically boosted rockets sized to nest on a shuttle or station and fire in orbit. Built in a factory on the ground or assembled in space. Tag: `military`.  
+A rack of chemically boosted rockets sized to nest on a shuttle or station and fire in orbit. Built in a factory on the ground or assembled in space. Unlocks TRAIN SKILL: frigate pilot `[frgplt]`. Tag: `military`.  
 Where: production. Needs: 4 iron `[iron]`. Builds: orbital rocket launcher `[orbrkt]`. Time: 8 weeks.
 
 **mobile survey team [msrvtm]**  
@@ -240,7 +240,7 @@ Truck-mounted FTIR, XRF sample prep, and a rugged field terminal for half-rate r
 Where: production. Needs: 2 iron `[iron]`, 2 silicium `[silici]`. Builds: mobile laboratory `[moblab]`. Time: 3 weeks.
 
 **optical and IR instruments [optins]**  
-Diffraction-limited telescopes, FTIR, and gold-coated contacts for survey and targeting research. Tag: `research`. **Requires:** file indexing `[filidx]`.  
+Diffraction-limited telescopes, FTIR, and gold-coated contacts for survey and targeting research. Tag: `research`. **Requires:** file indexing `[filidx]`. Unlocks TRAIN SKILL: sensor officer `[snsroff]`.  
 Where: production. Needs: 6 silicium `[silici]`, 4 copper `[copper]`, 2 iron `[iron]`, 1 gold `[gold]`. Builds: optical lab `[optlab]`. Time: 4 weeks.
 
 **personal armour [psnarm]**  
@@ -252,7 +252,7 @@ Compact man-portable high-frequency laser for infantry battalions. Tag: `militar
 Where: production. Needs: 2 terran breathing gas `[terair]`, 1 copper `[copper]`, 1 oxyhydro `[h2o2]`. Builds: personal laser `[prllsr]` (item). Time: 3 weeks.
 
 **preventive servicing [servic]**  
-Maintenance and repairs are best done in advance. Tag: `repair`.  
+Maintenance and repairs are best done in advance. Unlocks TRAIN SKILL: space station command `[sscmnd]`. Tag: `repair`.  
 Where: production. Needs: 1 titanium `[titani]`, 1 iron `[iron]`, 1 copper `[copper]`, 1 silicium `[silici]`. Builds: 10 spare parts `[spare]`. Time: 1 week.
 
 **rocket launcher production [rckter]**  
@@ -413,9 +413,9 @@ Group `vehicle`. Built by naval combat `[nvlcbt]`. Weapon: kinetic. Size 240, ma
 Staged hydrolox rocket; fuel water or oxyhydro. Better mass-capacity than a reaction drive, still chemical: not an AU torch.  
 Group `propulsion`. Built by staged hydrolox `[hydstg]`. Size 800, mass 900, crew 1, energy 40, HP 45. Upkeep 25 cash. Space move, speed 0.5, mass-capacity 20000. Fuel duration 13 (2 oxyhydro). Operates in frigate.
 
-**infantry battalion [inftry]**  
-Infantry battalion used for claiming cities, and taking over hostile modules.  
-Group `infantry`. Built by form infantry battalion `[frminf]`. Weapon: kinetic. Size 500, mass 500, capacity 300, HP 50, attack 2, defense 2, damage 2, can-convert, value 50. Upkeep 15 cash. Consumes 100 food and 100 terran air (damage 25% if not). Unpaid upkeep: rebel 10%. Ground move speed 0.1. Operates on solid surface with terran atmosphere.
+**infantry squad [inftry]**  
+Infantry squad used for claiming cities, and taking over hostile modules.  
+Group `infantry`. Built by form infantry squad `[frminf]`. Weapon: kinetic. Size 500, mass 500, capacity 300, HP 52, attack 2, defense 2, damage 2, can-convert, value 50. Upkeep 15 cash. Consumes 26 food and 26 terran air (damage 25% if not). Unpaid upkeep: rebel 10%. Ground move speed 0.2. Operates on solid surface with terran atmosphere.
 
 **jail block [jail]**  
 Secure and durable - cells you want to be when the criminals and prisoners are put there for containment.  
@@ -471,7 +471,7 @@ Size 1, mass 1. Produced by intensive farming `[farmng]` (5), fishery harvest `[
 
 **unit of iron [iron]**  
 Extracted, refined, and purified into industrial steels, iron is a basic construction material widely used in most structures.  
-Size 5, mass 10. Produced by iron mining `[iminng]` (3). Consumed by most L0 builds (see technology entries). Also L1: branch office construction `[brnofc]` (5), city planning `[ctypln]` (26), mineral core drilling `[mcored]` (25), armored combat `[armcbt]` (8), naval combat `[nvlcbt]` (8), orbital rocket launcher `[orbrkt]` (4), form infantry battalion `[frminf]` (4), rocket launcher production `[rckter]` (2), laser turret `[lstrrt]` (6), preventive servicing `[servic]` (1), engineering shop `[engshp]` (5), law enforcement `[lawenf]` (6), staged hydrolox `[hydstg]` (8), tidal power `[tdlpwr]` (8), underwater drilling `[udrill]` (35), underwater transport `[uwtrs]` (6).
+Size 5, mass 10. Produced by iron mining `[iminng]` (3). Consumed by most L0 builds (see technology entries). Also L1: branch office construction `[brnofc]` (5), city planning `[ctypln]` (26), mineral core drilling `[mcored]` (25), armored combat `[armcbt]` (8), naval combat `[nvlcbt]` (8), orbital rocket launcher `[orbrkt]` (4), form infantry squad `[frminf]` (4), rocket launcher production `[rckter]` (2), laser turret `[lstrrt]` (6), preventive servicing `[servic]` (1), engineering shop `[engshp]` (5), law enforcement `[lawenf]` (6), staged hydrolox `[hydstg]` (8), tidal power `[tdlpwr]` (8), underwater drilling `[udrill]` (35), underwater transport `[uwtrs]` (6).
 
 **unit of oil [oil]**  
 Black liquid carbon based used as fuel.  

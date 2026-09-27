@@ -227,6 +227,51 @@ function Get-LatestIsolatedReportTurn {
 	return $maxTurn
 }
 
+function Test-NonEmptyOrderFile {
+	param([Parameter(Mandatory = $true)][string]$Path)
+	if (-not (Test-Path -LiteralPath $Path)) {
+		return $false
+	}
+	try {
+		$text = Read-Utf8Text -Path $Path
+	}
+	catch {
+		$text = Read-Win1251Text -Path $Path
+	}
+	return -not [string]::IsNullOrWhiteSpace($text)
+}
+
+function Test-FactionOrdersSubmitted {
+	param(
+		[Parameter(Mandatory = $true)][int]$FactionId,
+		[Parameter(Mandatory = $true)][int]$Turn,
+		[Parameter(Mandatory = $true)][hashtable]$Paths
+	)
+	$folder = Join-Path $Paths.FactionsDir (Get-FactionFolderName -Id $FactionId)
+	$draftPath = Join-Path $folder ("order.{0}.txt" -f $FactionId)
+	if (Test-NonEmptyOrderFile -Path $draftPath) {
+		return $true
+	}
+
+	$turnPath = Join-Path $Paths.TurnDir ("order.{0}.txt" -f $FactionId)
+	if (Test-NonEmptyOrderFile -Path $turnPath) {
+		return $true
+	}
+
+	if (-not (Test-Path -LiteralPath $folder)) {
+		return $false
+	}
+
+	$pattern = "^orders\.$FactionId\.$Turn\.(\d+)\.txt$"
+	foreach ($file in Get-ChildItem -LiteralPath $folder -Filter 'orders.*.txt' -File -ErrorAction SilentlyContinue) {
+		if ($file.Name -match $pattern -and (Test-NonEmptyOrderFile -Path $file.FullName)) {
+			return $true
+		}
+	}
+
+	return $false
+}
+
 function Test-AllIsolatedReportsPresent {
 	param(
 		[Parameter(Mandatory = $true)][string]$FactionsDir,

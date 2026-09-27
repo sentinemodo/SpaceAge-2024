@@ -849,6 +849,15 @@ export default function App() {
   }, [clearSessionUiState]);
 
   useEffect(() => {
+    const onExpired = () => {
+      clearSessionUiState();
+      setAuthed(false);
+    };
+    window.addEventListener('sa-session-expired', onExpired);
+    return () => window.removeEventListener('sa-session-expired', onExpired);
+  }, [clearSessionUiState]);
+
+  useEffect(() => {
     if (authed) load();
   }, [authed, load]);
 
@@ -1461,9 +1470,17 @@ export default function App() {
     setStoryBusy(true);
     try {
       const result = await regenerateStory(selectedPersonaId);
-      if (result.story) setStoryText(result.story);
-      setStoryAiOutput(result.output || 'Story regenerated.');
-      setStoryAiMode('output');
+      let text = (result.story ?? '').trim();
+      if (!text) {
+        text = (await fetchStory()).trim();
+      }
+      if (text) {
+        setStoryText(text);
+        setStoryAiOutput('Story regenerated — see Faction story.');
+      } else {
+        setStoryAiOutput(result.output?.trim() || 'Regenerate finished but no story text was returned.');
+        alert('Regenerate finished but Faction story is empty. Check RunPod logs in Story AI output.');
+      }
     } catch (err) {
       alert(String(err));
     } finally {

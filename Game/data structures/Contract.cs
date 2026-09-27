@@ -327,6 +327,7 @@ namespace SpaceAge
 				{
 					winner.TechnologiesToShow.Add(technology);
 				}
+				winner.RevealSkillsGrantedBy(technology);
 			}
 
 			winner.EventReports.Add(

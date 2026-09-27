@@ -382,7 +382,7 @@ One line, multiple hops: `move R00014 R00009 O00003`. Valid destinations: region
 
 **RESEARCH** — `RESEARCH` | `RESEARCH <target>` | `RESEARCH TECHNOLOGY|ITEM|MODULE|GROUP|REGION| TAG <id>`. Usable in Research modules. Generate Research Points that can trigger random technology breakthrough. Different tags may be used to prioritize specific group of technologies. Some tags require physical presence to be valid. Research regions to investigate anomalies.
 
-**TRAIN** — `TRAIN SKILL <skill>` (person) | `TRAIN <race> OFFICER AS "name"|newN [FOR stack]`. Usable in Research modules. Train a person in new skill or train a anonymous crewmate into skill-capable officer.
+**TRAIN** — `TRAIN SKILL <skill>` (person) | `TRAIN <race> OFFICER AS "name"|newN [FOR stack]`. **`TRAIN SKILL` only works after your faction has discovered that skill** (research a technology that lists it under `<grants-skill>`, or pay for **`GRANT skill`**). New skills appear in **Technology reports** on the breakthrough turn as `- skill [id]: …` lines, like produced items. Train a person in a skill or train crew into an officer.
 
 **USE** — `USE <tech> [AS newN] [FOR parent]` — Usable in production modules. Build or produce items or modules or effect out of local resources, or stored resources. Places outputs in unit indicated by `FOR`. 
 

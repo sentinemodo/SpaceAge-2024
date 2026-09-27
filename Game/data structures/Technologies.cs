@@ -172,6 +172,10 @@ namespace SpaceAge
                         reportLines.Add(string.Format("- {0}: {1}", itemType.ReportName, itemType.ReportDescriptionForTechnology()), level + 1);
                     }
                 }
+                foreach (SkillType skillType in technology.GrantsSkills)
+                {
+                    reportLines.Add(string.Format("- {0}: {1}", skillType.ReportName, skillType.ReportDescriptionForTechnology()), level + 1);
+                }
             }
             return reportLines.IndentedLines;
         }

@@ -55,7 +55,7 @@ public sealed class OrderDraftService
             cancellationToken);
 
         var ordersTemplate = DraftPromptBuilder.ExtractOrdersTemplate(reportText);
-        var chatPrompt = DraftPromptBuilder.BuildChatPrompt(promptPack, retrieved, ordersTemplate, hints);
+        var chatPrompt = DraftPromptBuilder.BuildChatPrompt(promptPack, retrieved, ordersTemplate, hints, reportText);
 
         if (request.DryRun)
         {

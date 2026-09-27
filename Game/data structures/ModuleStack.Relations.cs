@@ -527,6 +527,11 @@ namespace SpaceAge
 			{
 				this.Owner.TechnologiesToShow.Add(technology);
 			}
+
+			if (this.Owner != null)
+			{
+				this.Owner.RevealSkillsGrantedBy(technology);
+			}
 		}
 
 		// technology capacity limits older equipment usage.

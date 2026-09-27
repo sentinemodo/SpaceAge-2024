@@ -57,8 +57,7 @@ if (Test-Path -LiteralPath $gamein) {
 	$draftCount = 0
 	for ($i = 0; $i -lt $factions.Count; $i++) {
 		$id = $factions[$i].id
-		$draftPath = Join-Path (Join-Path $paths.FactionsDir (Get-FactionFolderName -Id $id)) ("order.{0}.txt" -f $id)
-		$submitted = Test-Path -LiteralPath $draftPath
+		$submitted = Test-FactionOrdersSubmitted -FactionId $id -Turn $turn -Paths $paths
 		$factions[$i].submitted = $submitted
 		if ($submitted) { $draftCount++ }
 	}

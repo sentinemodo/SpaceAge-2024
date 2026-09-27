@@ -119,6 +119,7 @@ namespace UnitTests
 		public void AssignTrain_skill()
 		{
 			Faction testFaction = this.game.Factions["2"];
+			testFaction.EnsureSkillKnown(SkillType.All["arpldr"]);
 			Person testPerson = this.game.People["000101"];
             Assert.That(testPerson.FullName, Is.EqualTo("Caste Prime CEO"));
 

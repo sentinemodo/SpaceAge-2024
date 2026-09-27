@@ -336,6 +336,7 @@ namespace SpaceAge
 			{
 				issuer.TechnologiesToShow.Add(this.Technology);
 			}
+			issuer.RevealSkillsGrantedBy(this.Technology);
 
 			issuer.EventReports.Add(
 				week,
@@ -345,6 +346,7 @@ namespace SpaceAge
 
 		private bool deliverSkill(Faction issuer, int week)
 		{
+			issuer.EnsureSkillKnown(this.SkillType);
 			this.TargetPerson.Skills.Add(this.SkillType);
 			this.TargetPerson.EventReports.Add(
 				week,
