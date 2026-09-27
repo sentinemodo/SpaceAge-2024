@@ -1,7 +1,7 @@
 ﻿{
   "sourcePath": "play/player/rules.md",
-  "sourceContentHash": "bdce641fb1d8dbda1a33f162a01e522159094d028cd3fe125094902e07f895dc",
-  "generatedAtUtc": "2026-09-18T16:03:28.6651085Z",
+  "sourceContentHash": "ada1c4ea4c261c24c97ff93fe416731bb1a5d9a128d5a86b94e06502c946dd1d",
+  "generatedAtUtc": "2026-09-27T16:50:44.0971331Z",
   "verbs": [
     "ACTIVATE",
     "ACTIVE",
@@ -29,6 +29,7 @@
     "SELL",
     "SET",
     "STACK",
+    "SYNCHRO",
     "TACTIC",
     "TRAIN",
     "TRANSFER",

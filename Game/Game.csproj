@@ -290,6 +290,7 @@
     <Compile Include="reports\ReportLine.cs" />
     <Compile Include="reports\ReportLines.cs" />
     <Compile Include="reports\ReportWriter.cs" />
+    <Compile Include="reports\TurnGmLog.cs" />
     <Compile Include="Request.cs" />
     <Compile Include="data structures\SpaceSystemObjects.cs" />
     <Compile Include="data structures\SpaceSystems.cs" />

@@ -25,6 +25,7 @@ namespace SpaceAge
 			string battleSimFile = null;
 			string battleSimOutput = null;
 			int? battleSimSeed = null;
+			List<string> gmLogTokens = new List<string>();
 
 			for (int i = 0; i < args.Length; i++)
 			{
@@ -62,8 +63,14 @@ namespace SpaceAge
 					{
 						battleSimSeed = Convert.ToInt32(args[++i]);
 					}
+					else if (args[i] == "/gm-log")
+					{
+						gmLogTokens.Add(args[++i]);
+					}
 				}
 			}
+
+			ETurnGmLogChannel gmLogChannels = TurnGmLog.ParseChannels(gmLogTokens);
 
 			if (battleSimFile != null)
 			{
@@ -119,23 +126,35 @@ namespace SpaceAge
 				}
 				else
 				{
-					Console.WriteLine("Processing requests");
-					Request.Load(turn_dir);
-					Console.WriteLine("Loading game events");
-					EventsReaders.Load(game, turn_dir);
-					game.Events.Execute();
-					Console.WriteLine("Loading orders");
-					OrdersReader ordersReader = new OrdersReader(game);
-					ordersReader.Load(turn_dir);
-					Console.WriteLine("Processing game turn");
-					game.Execute();
-					Console.WriteLine("Generating reports");
+					TurnGmLog.Begin(gmLogChannels);
+					try
+					{
+						Console.WriteLine("Processing requests");
+						Request.Load(turn_dir);
+						Console.WriteLine("Loading game events");
+						EventsReaders.Load(game, turn_dir);
+						game.Events.Execute();
+						Console.WriteLine("Loading orders");
+						OrdersReader ordersReader = new OrdersReader(game);
+						ordersReader.Load(turn_dir);
+						Console.WriteLine("Processing game turn");
+						game.Execute();
+						Console.WriteLine("Generating reports");
 
-					ReportWriter reportsWriter = new ReportWriter(game, dataFile, turn_dir);
-					reportsWriter.GenerateReports(turn_dir);
+						ReportWriter reportsWriter = new ReportWriter(game, dataFile, turn_dir);
+						reportsWriter.GenerateReports(turn_dir);
+						if (TurnGmLog.Current != null)
+						{
+							TurnGmLog.Current.WriteFile(turn_dir, game.Turn);
+						}
 
-					Console.WriteLine("Saving game");
-					dataFile.SaveGame();
+						Console.WriteLine("Saving game");
+						dataFile.SaveGame();
+					}
+					finally
+					{
+						TurnGmLog.Clear();
+					}
 				}
 			}
 			else

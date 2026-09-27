@@ -13,6 +13,15 @@ namespace SpaceAge
 	// lab (research-output 1, one module -> output 1) the constant weekly hazard
 	// p = 1 - (1 - 1/cost)^output gives a cumulative breakthrough chance of ~80%
 	// after 1 quarter (L1), 2 quarters (L2) and 4 quarters (L3).
+	public class ResearchSelectionLog
+	{
+		public int PreferenceRoll { get; set; }
+		public bool UsedPreferredPool { get; set; }
+		public Technologies Preferred { get; set; }
+		public int SelectionRoll { get; set; }
+		public int SelectionTotalArea { get; set; }
+	}
+
 	public static class Research
 	{
 		public const int BaseCost = 8;
@@ -54,12 +63,22 @@ namespace SpaceAge
 		// tests are deterministic (push 0 to force a breakthrough).
 		public static bool RollBreakthrough(Technologies available, int output)
 		{
+			int cheapestCost;
+			return RollBreakthrough(available, output, null, out cheapestCost);
+		}
+
+		public static bool RollBreakthrough(
+			Technologies available,
+			int output,
+			IList<int> rolls,
+			out int cheapestCost)
+		{
+			cheapestCost = int.MaxValue;
 			if (available == null || available.Count == 0 || output <= 0)
 			{
 				return false;
 			}
 
-			int cheapestCost = int.MaxValue;
 			foreach (Technology technology in available)
 			{
 				int cost = CostOf(technology);
@@ -75,7 +94,12 @@ namespace SpaceAge
 
 			for (int point = 0; point < output; point++)
 			{
-				if (Sequence.GenerateRandomInt(0, cheapestCost, "research breakthrough") == 0)
+				int roll = Sequence.GenerateRandomInt(0, cheapestCost, "research breakthrough");
+				if (rolls != null)
+				{
+					rolls.Add(roll);
+				}
+				if (roll == 0)
 				{
 					return true;
 				}
@@ -104,7 +128,15 @@ namespace SpaceAge
 		// Pick a technology weighted by 1/level (lower-level technologies are likelier).
 		public static Technology WeightedRandom(Technologies technologies)
 		{
-			int totalArea = 0;
+			int roll;
+			int totalArea;
+			return WeightedRandom(technologies, out roll, out totalArea);
+		}
+
+		public static Technology WeightedRandom(Technologies technologies, out int roll, out int totalArea)
+		{
+			roll = 0;
+			totalArea = 0;
 			foreach (Technology technology in technologies)
 			{
 				totalArea += 100 / technology.Level;
@@ -113,11 +145,12 @@ namespace SpaceAge
 			{
 				return null;
 			}
-			int roll = Sequence.GenerateRandomInt(0, totalArea, "research technology selection");
+			roll = Sequence.GenerateRandomInt(0, totalArea, "research technology selection");
+			int remaining = roll;
 			foreach (Technology technology in technologies)
 			{
-				roll -= 100 / technology.Level;
-				if (roll <= 0)
+				remaining -= 100 / technology.Level;
+				if (remaining <= 0)
 				{
 					return technology;
 				}
@@ -130,6 +163,17 @@ namespace SpaceAge
 		// otherwise a technology is chosen from all available ones.
 		public static Technology SelectResearchedTechnology(ResearchOrder order, Technologies available)
 		{
+			ResearchSelectionLog ignored;
+			return SelectResearchedTechnology(order, available, out ignored);
+		}
+
+		public static Technology SelectResearchedTechnology(
+			ResearchOrder order,
+			Technologies available,
+			out ResearchSelectionLog selectionLog)
+		{
+			selectionLog = new ResearchSelectionLog();
+			selectionLog.Preferred = new Technologies();
 			if (order.ResearchType == EResearchType.Feature)
 			{
 				return Technology.All[order.ResearchToken];
@@ -137,12 +181,30 @@ namespace SpaceAge
 			if (order.ResearchType != EResearchType.Any)
 			{
 				Technologies preferred = PreferredTechnologies(order, available);
-				if (preferred.Count > 0 && Sequence.GenerateRandomInt(0, 100, "research preference") <= 50)
+				selectionLog.Preferred = preferred;
+				if (preferred.Count > 0)
 				{
-					return WeightedRandom(preferred);
+					selectionLog.PreferenceRoll = Sequence.GenerateRandomInt(0, 100, "research preference");
+					selectionLog.UsedPreferredPool = selectionLog.PreferenceRoll <= 50;
+					if (selectionLog.UsedPreferredPool)
+					{
+						int selectionRoll;
+						int selectionTotalArea;
+						Technology selected = WeightedRandom(preferred, out selectionRoll, out selectionTotalArea);
+						selectionLog.SelectionRoll = selectionRoll;
+						selectionLog.SelectionTotalArea = selectionTotalArea;
+						return selected;
+					}
 				}
 			}
-			return WeightedRandom(available);
+			{
+				int selectionRoll;
+				int selectionTotalArea;
+				Technology selected = WeightedRandom(available, out selectionRoll, out selectionTotalArea);
+				selectionLog.SelectionRoll = selectionRoll;
+				selectionLog.SelectionTotalArea = selectionTotalArea;
+				return selected;
+			}
 		}
 
 		// Resolve the order's parameter into the preferred subset of available technologies.

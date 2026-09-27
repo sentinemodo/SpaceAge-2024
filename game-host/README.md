@@ -24,6 +24,7 @@ Campaign state lives under **`play/runs/<GAME_HOST_RUN_ID>/`** (same tree as `pl
 | `GAME_EXE` | `Game/bin/Debug/Game.exe` |
 | `GAME_USE_MONO` | `1` on non-Windows (auto); set `0` to spawn `GAME_EXE` directly |
 | `MONO_EXE` | `mono` — Mono binary when `GAME_USE_MONO` is active |
+| `GM_LOG` | *(unset)* — when set (e.g. `all`, `research,battles`), passed to `Game.exe` as `/gm-log` on full turn runs; writes `gmturn-log.{turn}.txt` in the run turn folder |
 
 ## Start
 

@@ -75,8 +75,16 @@ export async function runReports() {
   return spawnGame(['/data', dataDir(), '/turn-dir', turnDir(), '/reports']);
 }
 
+function gmLogArgs() {
+  const raw = process.env.GM_LOG?.trim();
+  if (!raw) {
+    return [];
+  }
+  return ['/gm-log', raw];
+}
+
 export async function runTurn() {
-  return spawnGame(['/data', dataDir(), '/turn-dir', turnDir()]);
+  return spawnGame(['/data', dataDir(), '/turn-dir', turnDir(), ...gmLogArgs()]);
 }
 
 export async function runNoTurn() {

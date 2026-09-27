@@ -31,6 +31,7 @@ namespace SpaceAge
 			this.participants = this.findParticipants();
 
 			this.week = 1;
+			this.logGmBattleCreated();
 		}
 
 		public Battle(ModuleStack attacker, Faction defenders)
@@ -630,7 +631,7 @@ namespace SpaceAge
 					{
 						this.markHit(target);
 						bool targetWasOperational = target.HasOperationalModules;
-						Module targetModule = this.resolveHitLocation(target, firing, target.HasEvade);
+						Module targetModule = this.resolveHitLocation(modulestack, target, firing, target.HasEvade);
 						if (targetModule == null)
 						{
 							continue;
@@ -987,7 +988,7 @@ namespace SpaceAge
 			return targetModule;
 		}
 
-        private Module resolveHitLocation(ModuleStack moduleStack, ETactic eTactic, bool targetEvade)
+        private Module resolveHitLocation(ModuleStack shooter, ModuleStack moduleStack, ETactic eTactic, bool targetEvade)
 		{
 			Faction targetOwner = moduleStack.Owner;
 			int damageArea = this.getDamageArea(moduleStack, eTactic, targetEvade, targetOwner);
@@ -996,7 +997,141 @@ namespace SpaceAge
 				damageArea = 1;
 			}
             int roll = this.getRoll(damageArea, string.Concat("Hit location 1 to ", damageArea.ToString()));
-			return this.getModule(moduleStack, roll, eTactic, targetEvade, targetOwner);
+			List<string> candidates = new List<string>();
+			this.collectHitLocationCandidates(moduleStack, eTactic, targetEvade, targetOwner, candidates);
+			Module selected = this.getModule(moduleStack, roll, eTactic, targetEvade, targetOwner);
+			this.logGmHitLocation(shooter, moduleStack, roll, damageArea, candidates, selected);
+			return selected;
+		}
+
+		private void collectHitLocationCandidates(
+			ModuleStack moduleStack,
+			ETactic eTactic,
+			bool targetEvade,
+			Faction targetOwner,
+			List<string> candidates)
+		{
+			if (moduleStack == null)
+			{
+				return;
+			}
+			if (targetOwner == null || moduleStack.Owner == targetOwner)
+			{
+				int weight = this.hitWeight(moduleStack, eTactic, targetEvade);
+				if (weight > 0)
+				{
+					candidates.Add(string.Format("{0} weight={1}", moduleStack.ReportName, weight));
+				}
+			}
+			foreach (ModuleStack nested in moduleStack.ModuleStacks.Values)
+			{
+				this.collectHitLocationCandidates(nested, eTactic, targetEvade, targetOwner, candidates);
+			}
+		}
+
+		private void logGmBattleCreated()
+		{
+			TurnGmLog log = TurnGmLog.Current;
+			if (log == null || !log.IsEnabled(ETurnGmLogChannel.Battles))
+			{
+				return;
+			}
+			if (this.attacker == null || this.battleDefender == null || this.attacker.Location == null)
+			{
+				return;
+			}
+			log.AppendSection(string.Format(
+				"battle created week={0} location={1} initiator={2} primary_defender={3}",
+				this.week,
+				this.attacker.Location.Name,
+				this.attacker.Name,
+				this.battleDefender.Name));
+			foreach (ModuleStack stack in stacksAtLocation(this.attacker.Location))
+			{
+				if (!stack.IsRootModuleStack)
+				{
+					continue;
+				}
+				if (!stack.HasIntactModules() && !stack.IsArmed)
+				{
+					continue;
+				}
+				string factionName = stack.Owner != null ? stack.Owner.Name : "-";
+				string decision;
+				if (this.attackers.Contains(stack.Name))
+				{
+					decision = "join attacker";
+				}
+				else if (this.defenders.Contains(stack.Name))
+				{
+					decision = "join defender";
+				}
+				else
+				{
+					decision = "skip: " + this.describeBattleSkipReason(stack);
+				}
+				log.Append(string.Format(
+					"faction={0} unit={1} decision={2}",
+					factionName,
+					stack.ReportName,
+					decision));
+			}
+			log.Append(string.Empty);
+		}
+
+		private string describeBattleSkipReason(ModuleStack stack)
+		{
+			if (!stack.HasIntactModules())
+			{
+				return "not intact";
+			}
+			if (this.attacker == null || this.battleDefender == null)
+			{
+				return "not eligible";
+			}
+			bool couldAttack = this.canJoinAsAttacker(stack)
+				&& this.joinsAttack(stack.Owner, this.attacker.Owner, this.battleDefender.Owner);
+			bool couldDefend = this.joinsDefense(stack.Owner, this.attacker.Owner, this.battleDefender.Owner);
+			if (couldAttack || couldDefend)
+			{
+				return "not selected for side";
+			}
+			if (!stack.IsArmed && !this.joinsDefense(stack.Owner, this.attacker.Owner, this.battleDefender.Owner))
+			{
+				return "diplomacy or not armed";
+			}
+			return "diplomacy";
+		}
+
+		private void logGmHitLocation(
+			ModuleStack shooter,
+			ModuleStack target,
+			int roll,
+			int damageArea,
+			List<string> candidates,
+			Module selected)
+		{
+			TurnGmLog log = TurnGmLog.Current;
+			if (log == null || !log.IsEnabled(ETurnGmLogChannel.Battles))
+			{
+				return;
+			}
+			string shooterFaction = shooter != null && shooter.Owner != null ? shooter.Owner.Name : "-";
+			string selectedStack = selected != null && selected.Parent != null
+				? selected.Parent.ReportName
+				: "-";
+			log.Append(string.Format(
+				"hit week={0} round={1} shooter_faction={2} shooter={3} target={4} roll={5}/{6} selected_stack={7} selected_module={8} candidates=[{9}]",
+				this.week,
+				this.round,
+				shooterFaction,
+				shooter != null ? shooter.ReportName : "-",
+				target != null ? target.ReportName : "-",
+				roll,
+				damageArea,
+				selectedStack,
+				selected != null ? selected.ReportID : "-",
+				string.Join("; ", candidates.ToArray())));
 		}
 
 		public void executeMovement()

@@ -5,7 +5,7 @@ Ideas collected for Cursor agents. Do not implement from this file unless explic
 ## Open
 
 - [ ] Technologies for creating underground regions
-- [ ] GM log: a system that tracks the options that were available to the GM (AI/game master) and which option was chosen. Start with research and combat decisions. The GM logging level is set as a parameter on the turn run.
+- [x] GM log: `TurnGmLog` + `/gm-log` on turn runs → `gmturn-log.{turn}.txt` (channels: `all`, `research`, `battles`, `market`; default off). Fauna deferred until growth ships.
 - [ ] Visibility system: layered visibility of planets, then regions, then resources, then stacks, then stacks within stacks. Add technologies that improve visibility and technologies that improve stealth.
 
 ## Done

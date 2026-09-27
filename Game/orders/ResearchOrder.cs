@@ -348,10 +348,37 @@ namespace SpaceAge
                 // research: roll a breakthrough; if none, accumulate research points
                 Technologies available = Research.AvailableTechnologies(this.Researcher);
                 int output = Research.WeeklyOutput(this.Researcher);
-
-                if (available.Count > 0 && Research.RollBreakthrough(available, output))
+                int labStackRp = this.Researcher.ResearchPoints;
+                List<int> breakthroughRolls = null;
+                int cheapestBreakthroughCost = 0;
+                if (TurnGmLog.Current != null && TurnGmLog.Current.IsEnabled(ETurnGmLogChannel.Research))
                 {
-                    this.researchedTechnology = Research.SelectResearchedTechnology(this, available);
+                    breakthroughRolls = new List<int>();
+                }
+                bool breakthrough = available.Count > 0
+                    && Research.RollBreakthrough(available, output, breakthroughRolls, out cheapestBreakthroughCost);
+
+                if (breakthrough)
+                {
+                    ResearchSelectionLog selectionLog;
+                    this.researchedTechnology = Research.SelectResearchedTechnology(this, available, out selectionLog);
+                    if (TurnGmLog.Current != null)
+                    {
+                        TurnGmLog.Current.LogResearchBreakthrough(
+                            this,
+                            labStackRp,
+                            output,
+                            cheapestBreakthroughCost,
+                            breakthroughRolls,
+                            true,
+                            selectionLog.PreferenceRoll,
+                            selectionLog.UsedPreferredPool,
+                            available,
+                            selectionLog.Preferred,
+                            selectionLog.SelectionRoll,
+                            selectionLog.SelectionTotalArea,
+                            this.researchedTechnology);
+                    }
 
                     // breakthrough consumes the accumulated research points
                     this.Researcher.EventReports.Add(

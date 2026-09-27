@@ -115,6 +115,7 @@
     <Compile Include="TFaunaRumors.cs" />
     <Compile Include="TNominalValue.cs" />
     <Compile Include="TResearch.cs" />
+    <Compile Include="TTurnGmLog.cs" />
     <Compile Include="TConsume.cs" />
     <Compile Include="TDiplomacy.cs" />
     <Compile Include="TPoint3D.cs" />
