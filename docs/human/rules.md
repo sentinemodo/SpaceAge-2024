@@ -1,7 +1,7 @@
 # SpaceAge player rules
 
 **Engine:** open beta **0.8.001**  
-**Updated:** September 2026
+**Updated:** 28 September 2026
 
 Single source of truth for PBEM turn orders: file format, all live verbs, turn flow, market, movement, opening patterns, and combat.
 
@@ -187,7 +187,25 @@ Bank credits/debits the interest quarterly; balance is in whole credits.
 - Lack of resources lead to wounds/death of the crew and disabling or other detrimental effects (riots, damage) of the modulestacks.
 - Resources are by default shared between same faction modulestacks within region. Cash is being pulled from bank for upkeep if allowed. 
 - Breathing air (terair for terrans) is not needed when on regions with breathable atmosphere.
-**Sharing:** default stacks share cargo for production/upkeep. `SET SHARING FALSE` isolates a reserve.
+**Sharing:** default stacks share **cargo** for production/upkeep. `SET SHARING FALSE` isolates a reserve (report shows `not sharing`).
+
+**Regional power:** same-owner **root** stacks in one region with sharing enabled pool **energy production and demand**. Nested modules still share power only within their own root stack tree. Report lines show regional totals on root stacks (`energy: production/required`). When nominal demand exceeds supply, the engine **powers down activated module copies** starting with the **highest energy priority** until the pool balances (partial operation — some stacks may show **disabled** from lack of power while others in the region stay on).
+
+**Default energy priority** (by module group; lower number = kept powered longer when the region is short):
+
+| Group | Priority |
+|-------|----------|
+| energy | 0 |
+| habitat (life support) | 1 |
+| command | 2 |
+| military / infantry | 3 |
+| propulsion (engines) | 4 |
+| extraction | 5 |
+| production | 6 |
+| other | 8 |
+| storage (cargo) / research | 10 |
+
+**`SET ENERGY <priority>`** on a stack overrides the default for that stack. **Higher values shut down before lower values.** Reports show `energy priority N` only when N differs from the default for that module type. Saved on the stack when non-default.
 
 ---
 
@@ -241,9 +259,9 @@ this roughly gives the following in weeks
 
 ---
 
-## Full orders dictionary - All 31 verbs
+## Full orders dictionary - All 32 verbs
 
-**24 immediate** + **7 long**.
+**25 immediate** + **7 long**.
 
 ### Immediate
 
@@ -272,6 +290,8 @@ CAPTURE REGION forces move into region and declare unit preventing entry ENEMY.
 
 **CONTRACT** — `CONTRACT <loc> GIVE … REWARD …` | `CONTRACT <loc> RESEARCH … REWARD … UNIT` | `CONTRACT <id> WITHDRAW`. Issue new contract that can be executed by any faction. The contract reward must be present at the moment of issuing. Reward is trasnfered to faction executing the contract. OK to issue between turns. Will be announced until completed or withdrawn.
 
+**COPY** — `COPY <technology-id> TO <stack-id>` — copy a technology from the subject stack to another stack at the **same location**. The source must already hold that copy; the receiver must be formed and have free technology capacity. The source keeps its copy unless you **ERASE** it.
+
 **DECLARE** — `DECLARE FACTION|UNIT <id> <attitude>` | `DECLARE DEFAULT|UNKNOWN <attitude>`. Attitudes: enemy, hostile, neutral, friendly, ally. Can be issued as **#Faction** order
 
 |Attitude|Behaviour|
@@ -285,6 +305,8 @@ CAPTURE REGION forces move into region and declare unit preventing entry ENEMY.
 **DEACTIVATE** — `DEACTIVATE [N|ALL] [MODULES]` — mothball module copies. Reduces upkeep. do not change the mass.
 
 **DEPOSIT** — `DEPOSIT <qty|ALL>` — move cash to bank.
+
+**ERASE** — `ERASE <technology-id>` — remove a local technology copy from the subject stack and free capacity. Fails if the stack does not hold that copy.
 
 **FORM** — `FORM NEW [WITH n] AS [newN|"alias"]` — form new stack; empty or filled with modules from the modulestack. 
 
@@ -325,14 +347,16 @@ SEE <transporter>
 
 **SELL** — `SELL <qty|ALL> <item|module> [AT price|AVERAGE]` | `SELL <tech-id> …`. Place an offer to sell the item, module or technology on the region's market.
 
-**SET** — `SET AVOID|ALLOW BANK|SHARING|PATROL TRUE|FALSE` | `SET HOLD <qty> <item-id>`
+**SET** — `SET AVOID|ALLOW BANK|ONLINE|SHARING|PATROL TRUE|FALSE` | `SET ENERGY <priority>` | `SET HOLD <qty> <item-id>`
 
 |Flag|Behaviour|
 |-----|----------|
 |Avoid|If true do not join battles unless attacked.|
 |Allow Bank|if true unit can draw cash from bank when needed - upkeep, or market purchase.|
-|Sharing|If true unit will share resources when other units need them for fuel, upkeep, production|
+|Online|Whole stack online or **deactivated** (all copies off until `SET ONLINE TRUE`).|
+|Sharing|If true unit shares **cargo** with same-owner stacks in the same unit or region (fuel, upkeep, production). Also joins the **regional energy pool** with other sharing root stacks in the region.|
 |Patrol|If true unit will prevent hostile units entry and will prevent region, space object names changes by non-allies|
+|Energy|Integer **priority** for regional power shedding when the region lacks energy (see [Maintenance, upkeep and sharing](#maintenance-upkeep-and-sharing)). Higher number = shut down first. Default depends on module group.|
 |Hold|Reserves a quantity of an item on the stack. **GET** from this stack cannot take that item below the reserve. `SET HOLD 0 <item-id>` clears it. On HQ with `@produce terran`, use e.g. `set hold 20 terran` so scouts do not drain crew.|
 
 **STACK** — `STACK <parent|newN>` | `STACK top` | `STACK out` — **`top`/`out` lowercase**. Nest the modulestack under different parent unit or eject them to the region. Unit must have sufficient capacity to accept the stacked unit size. Some units may only be stacked under specific type of modules, e.g. figther drones may only be stacked under drone bay if they are to participate in combat.
@@ -503,7 +527,7 @@ move R00014 R00009
 
 ### activating disabled stacks
 
-**Disabled** = missing crew, energy, fuel, or repairs. Long orders and MOVE fail until fixed.
+**Disabled** = missing crew, energy, fuel, or repairs. Long orders and MOVE fail until fixed. **Energy** may fail because the **region** lacks power (even if your plant is in the same tile) or because your stack was shed by **priority** — add production, reduce load, or `set energy` to protect critical stacks.
 
 Factory built units (`use grndtr`, `use armcbt`) start **empty** - have new ID but no modules so cannot be active
 

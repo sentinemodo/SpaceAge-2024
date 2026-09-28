@@ -19,6 +19,11 @@ public sealed class OrderDraftService
 
     public async Task<OrderDraftResult> DraftAsync(OrderDraftRequest request, CancellationToken cancellationToken)
     {
+        if (request.UseStagedDraft)
+        {
+            return await new StagedOrderDraftService(_client, _settings).DraftAsync(request, cancellationToken);
+        }
+
         var repoRoot = RepoPaths.FindRepositoryRoot();
         var rulesPath = Path.Combine(RepoPaths.PlayerDirectory(repoRoot), "rules.md");
         if (!File.Exists(rulesPath))
@@ -47,11 +52,13 @@ public sealed class OrderDraftService
         var hints = DraftPromptBuilder.BuildHints(objectiveText, reportText, personaText, request.DraftTurn);
         var retrievalQuery = DraftPromptBuilder.BuildRetrievalQuery(objectiveText, reportText, personaText);
         var verbBoost = VerbInference.InferBoostVerbs(personaText, objectiveText, reportText, retrievalQuery);
-        var retrieved = await RetrieveAsync(
-            repoRoot,
+        var retrieved = await OrderDraftRetrieval.RetrieveAsync(
+            _client,
+            _settings,
             request,
             retrievalQuery,
             verbBoost,
+            hints.PersonaPreference,
             cancellationToken);
 
         var ordersTemplate = DraftPromptBuilder.ExtractOrdersTemplate(reportText);
@@ -68,7 +75,7 @@ public sealed class OrderDraftService
                 outputPath: request.OutputPath);
         }
 
-        const int maxAttempts = 5;
+        var maxAttempts = request.MaxQualityAttempts;
         string generated = string.Empty;
         string prepared = string.Empty;
         OrderDraftLintResult lintResult = new(false, Array.Empty<string>());
@@ -132,44 +139,6 @@ public sealed class OrderDraftService
             request.OutputPath);
     }
 
-    private async Task<IReadOnlyList<RetrievalResult>> RetrieveAsync(
-        string repoRoot,
-        OrderDraftRequest request,
-        string query,
-        IReadOnlyList<string> verbBoost,
-        CancellationToken cancellationToken)
-    {
-        var sharedPath = VectorIndexPaths.SharedSqlitePath(
-            RepoPaths.SharedIndexDirectory(_settings.IndexDirectory, request.Mode));
-        var results = new List<RetrievalResult>();
-        var sharedTop = Math.Max(1, request.TopK / 2);
-
-        if (File.Exists(sharedPath))
-        {
-            using var sharedStore = new SqliteVectorStore(sharedPath);
-            var queryEmbedding = await _client.EmbedAsync(query, cancellationToken);
-            results.AddRange(VectorRetriever.Retrieve(sharedStore.ListAll(), queryEmbedding, sharedTop, verbBoost: verbBoost));
-        }
-
-        if (request.RunId is not null)
-        {
-            var factionPath = VectorIndexPaths.FactionSqlitePath(
-                RepoPaths.FactionIndexDirectory(_settings.IndexDirectory, request.RunId, request.FactionId));
-            if (File.Exists(factionPath))
-            {
-                using var factionStore = new SqliteVectorStore(factionPath);
-                var queryEmbedding = await _client.EmbedAsync(query, cancellationToken);
-                var factionTop = Math.Max(1, request.TopK - results.Count);
-                results.AddRange(VectorRetriever.Retrieve(factionStore.ListAll(), queryEmbedding, factionTop, verbBoost: verbBoost));
-            }
-        }
-
-        return results
-            .OrderByDescending(result => result.Score)
-            .Take(request.TopK)
-            .ToList();
-    }
-
     private static async Task<string?> ReadOptionalTextAsync(string? path, CancellationToken cancellationToken)
     {
         if (string.IsNullOrWhiteSpace(path) || !File.Exists(path))
@@ -209,6 +178,8 @@ public sealed class OrderDraftRequest
     public bool DryRun { get; init; }
     public int TopK { get; init; } = PlayerAgentSettings.LocalDefaultTopK;
     public int DraftTurn { get; init; } = 2;
+    public int MaxQualityAttempts { get; init; } = 7;
+    public bool UseStagedDraft { get; init; }
 }
 
 public sealed class OrderDraftResult

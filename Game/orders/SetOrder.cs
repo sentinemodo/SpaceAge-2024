@@ -54,6 +54,13 @@ namespace SpaceAge
 			set { this.holdItemType = value; }
 		}
 
+		private int energyPriority = 0;
+		public int EnergyPriority
+		{
+			get { return this.energyPriority; }
+			set { this.energyPriority = value; }
+		}
+
 		public override void Parse(string command)
 		{
 			// SET AVOID TRUE
@@ -84,6 +91,13 @@ namespace SpaceAge
 				this.holdQuantity = System.Convert.ToInt32(token);
 				token = LineParser.GetToken(ref command);
 				this.holdItemType = ItemType.All[token];
+				return;
+			}
+			else if (flag == "ENERGY")
+			{
+				this.flagName = flag;
+				token = LineParser.GetToken(ref command);
+				this.energyPriority = System.Convert.ToInt32(token);
 				return;
 			}
 			else if (flag == "AVOID" || flag == "ONLINE" || flag == "SHARING" || flag == "PATROL")
@@ -123,6 +137,11 @@ namespace SpaceAge
             {
                 this.HoldItemType = ItemType.All[elSet.GetAttribute("hold-item-type")];
             }
+            if (elSet.HasAttribute("energy-priority"))
+            {
+                this.flagName = "ENERGY";
+                this.energyPriority = this.XMLAssignInteger(elSet.GetAttribute("energy-priority"), 0);
+            }
         }
 
         public override XmlElement SaveXml_core(XmlDocument doc, string subject)
@@ -134,6 +153,10 @@ namespace SpaceAge
             {
                 elSet.SetAttribute("hold-quantity", this.HoldQuantity.ToString());
                 elSet.SetAttribute("hold-item-type", this.HoldItemType.Name);
+            }
+            else if (this.FlagName.ToUpperInvariant() == "ENERGY")
+            {
+                elSet.SetAttribute("energy-priority", this.EnergyPriority.ToString());
             }
             else if (flagValue)
             {
@@ -170,6 +193,10 @@ namespace SpaceAge
 					break;
 				case "HOLD":
 					this.Setter.SetItemHold(this.HoldItemType, this.HoldQuantity);
+					this.Executed = true;
+					break;
+				case "ENERGY":
+					this.Setter.SetEnergyPriority(this.EnergyPriority);
 					this.Executed = true;
 					break;
 			}

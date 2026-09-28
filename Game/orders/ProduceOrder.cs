@@ -67,6 +67,66 @@ namespace SpaceAge
             }
 		}
 
+		public string GetProductionValidationError()
+		{
+			ModuleType moduleType = this.Producer.ModuleType;
+			if (moduleType == null)
+			{
+				return "unit is not formed yet";
+			}
+
+			switch (this.ProduceType)
+			{
+				case EProduceType.Energy:
+					if (moduleType.EnergyProduction <= 0)
+					{
+						return "unit does not produce energy";
+					}
+					return null;
+				case EProduceType.Items:
+					if (this.ItemType == null)
+					{
+						return "no item type specified";
+					}
+					if (this.IsCommandTreasuryItem(this.ItemType)
+						&& !this.IsCommandOfficeModule(moduleType))
+					{
+						return "cash and terran production require headquarters or branch office";
+					}
+					if (!moduleType.ItemsProduction.ContainsKey(this.ItemType))
+					{
+						return string.Format("unit does not produce {0}", this.ItemType.Name);
+					}
+					return null;
+				default:
+					return "unknown produce type";
+			}
+		}
+
+		private bool IsCommandTreasuryItem(ItemType itemType)
+		{
+			return itemType.Name == "cash" || itemType.Name == "terran";
+		}
+
+		private bool IsCommandOfficeModule(ModuleType moduleType)
+		{
+			return moduleType.Name == "corphq" || moduleType.Name == "brnofc";
+		}
+
+		public bool CanProduce(int week)
+		{
+			string error = this.GetProductionValidationError();
+			if (error == null)
+			{
+				return true;
+			}
+
+			this.Producer.EventReports.Add(
+				week,
+				string.Format("PRODUCE failed: {0}.", error));
+			return false;
+		}
+
         public override List<string> Report(Faction owner)
 		{
             List<string> lines = new List<string>();
@@ -296,7 +356,7 @@ namespace SpaceAge
 
 		public override void Execute(int week)
 		{
-            if (this.CanOperate(week) && !this.NeedFuel(week))
+            if (this.CanProduce(week) && this.CanOperate(week) && !this.NeedFuel(week))
 			{                
                 // assign production if not producing
 				if (this.Producing == null)

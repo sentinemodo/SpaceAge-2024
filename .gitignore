@@ -380,5 +380,6 @@ play/player/drafts/
 test-results.txt
 tools/visual-tool/test-results/
 tools/player-agent/.data/
+tools/player-agent-tests/.data/
 tools/visual-tool/node_modules/
 game-host/node_modules/

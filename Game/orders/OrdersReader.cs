@@ -373,6 +373,22 @@ namespace SpaceAge
 				}
 				throw;
 			}
+			ProduceOrder produceOrder = order as ProduceOrder;
+			if (produceOrder != null)
+			{
+				string productionError = produceOrder.GetProductionValidationError();
+				if (productionError != null)
+				{
+					subject.Orders.Remove(order);
+					Faction owner = subject.Owner;
+					if (owner != null)
+					{
+						owner.EventReports.Add(
+							string.Format("PARSING: {0} - order ignored, {1}.", command, productionError));
+					}
+					return null;
+				}
+			}
 			order.Repeat = repeat;
 			order.Level = orderLevel;
 			if (orderLevel == 0 && order.IsUnlimited)

@@ -69,16 +69,14 @@ namespace SpaceAge
 			{
 				throw new Exception("bad syntax or receiver does not exist");
 			}
-			this.ReceiverName = token;
-			this.Receiver = ModuleStack.All.GetOrCreateNewModuleStack(this.Transferer.Owner, token);
+			this.assignReceiver(token);
 		}
 
         public override void LoadXml(XmlElement elOrder)
         {
             XmlElement elCopy = (XmlElement)elOrder.SelectNodes("copy")[0];
 
-            this.ReceiverName = elCopy.GetAttribute("receiver");
-            this.Receiver = ModuleStack.All.GetOrCreateNewModuleStack(this.Transferer.Owner, this.ReceiverName);
+            this.assignReceiver(elCopy.GetAttribute("receiver"));
             this.Technology = Technology.All[elCopy.GetAttribute("technology")];
         }
 
@@ -87,7 +85,7 @@ namespace SpaceAge
             XmlElement elCopy = doc.CreateElement("copy");
 
             elCopy.SetAttribute("technology", this.Technology.Name);
-            string receiver = this.Receiver != null ? this.Receiver.Name : this.ReceiverName;
+            string receiver = this.receiverTokenForSave();
             if (!string.IsNullOrEmpty(receiver))
             {
                 elCopy.SetAttribute("receiver", receiver);
@@ -101,6 +99,11 @@ namespace SpaceAge
 		{
 			this.Executed = false;
 
+			if (!string.IsNullOrEmpty(this.ReceiverName))
+			{
+				this.assignReceiver(this.ReceiverName);
+			}
+
 			if (this.Receiver == null || this.Receiver.ModuleType == null)
 			{
 				this.Transferer.EventReports.Add(
@@ -110,7 +113,15 @@ namespace SpaceAge
 				return;
 			}
 
-            if (this.Receiver.TechnologyCapacity < this.Receiver.TechnologyCapacityUsed + this.Technology.Level)
+			if (!this.Transferer.Technologies.Contains(this.Technology.Name))
+			{
+				this.Transferer.EventReports.Add(
+					week,
+					string.Format(
+						"COPY failed. Source does not hold {0} technology.",
+						this.Technology.ReportName));
+			}
+            else if (this.Receiver.TechnologyCapacity < this.Receiver.TechnologyCapacityUsed + this.Technology.Level)
             {
                 this.Transferer.EventReports.Add(
                     week,
@@ -160,6 +171,32 @@ namespace SpaceAge
 			return lines;
 		}
 
+		private void assignReceiver(string token)
+		{
+			if (string.IsNullOrEmpty(token))
+			{
+				throw new Exception("bad syntax or receiver does not exist");
+			}
+
+			this.ReceiverName = token;
+			this.Receiver = ModuleStack.ResolveOrderStackReference(this.Transferer.Owner, token);
+		}
+
+		private string receiverTokenForSave()
+		{
+			if (!string.IsNullOrEmpty(this.ReceiverName))
+			{
+				return this.ReceiverName;
+			}
+
+			if (this.Receiver == null)
+			{
+				return string.Empty;
+			}
+
+			return this.Receiver.OrderStackReferenceToken();
+		}
+
 		private string reportReceiverToken()
 		{
 			if (!string.IsNullOrEmpty(this.ReceiverName))
@@ -170,7 +207,7 @@ namespace SpaceAge
 			{
 				return string.Empty;
 			}
-			return this.Receiver.Name;
+			return this.Receiver.OrderStackReferenceToken();
 		}
 	}
 }

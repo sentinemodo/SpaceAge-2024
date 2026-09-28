@@ -433,34 +433,34 @@
 						</person>
 						<itemstack type="terran" quantity="20" />
 						<upkeep type="cash" quantity="90" />
-						<modulestack name="200003" type="cargob" quantity="2" faction="2">
-							<itemstack type="food" quantity="400" />
-							<itemstack type="terair" quantity="200" />
-							<itemstack type="h2o2" quantity="200" />
-							<itemstack type="iron" quantity="40" />
-							<itemstack type="carbon" quantity="40" />
-							<itemstack type="silici" quantity="15" />
-							<itemstack type="titani" quantity="2" />
-							<itemstack type="oil" quantity="5" />
-							<upkeep type="cash" quantity="20" />
-						</modulestack>
-						<modulestack name="200004" type="sdrill" quantity="1" faction="2">
-							<itemstack type="terran" quantity="6" />
-							<upkeep type="cash" quantity="35" />
-						</modulestack>
-						<modulestack name="200005" type="factry" quantity="2" faction="2">
-							<itemstack type="terran" quantity="20" />
-							<upkeep type="cash" quantity="110" />
-						</modulestack>
-						<modulestack name="200006" type="farms" quantity="3" faction="2">
-							<itemstack type="terran" quantity="15" />
-							<upkeep type="cash" quantity="90" />
-						</modulestack>
-						<modulestack name="200007" type="cplant" quantity="2" faction="2">
-							<itemstack type="carbon" quantity="20" />
-							<itemstack type="terran" quantity="4" />
-							<upkeep type="cash" quantity="80" />
-						</modulestack>
+					</modulestack>
+					<modulestack name="200003" type="cargob" quantity="2" faction="2">
+						<itemstack type="food" quantity="400" />
+						<itemstack type="terair" quantity="200" />
+						<itemstack type="h2o2" quantity="200" />
+						<itemstack type="iron" quantity="40" />
+						<itemstack type="carbon" quantity="40" />
+						<itemstack type="silici" quantity="15" />
+						<itemstack type="titani" quantity="2" />
+						<itemstack type="oil" quantity="5" />
+						<upkeep type="cash" quantity="20" />
+					</modulestack>
+					<modulestack name="200004" type="sdrill" quantity="1" faction="2">
+						<itemstack type="terran" quantity="6" />
+						<upkeep type="cash" quantity="35" />
+					</modulestack>
+					<modulestack name="200005" type="factry" quantity="2" faction="2">
+						<itemstack type="terran" quantity="20" />
+						<upkeep type="cash" quantity="110" />
+					</modulestack>
+					<modulestack name="200006" type="farms" quantity="3" faction="2">
+						<itemstack type="terran" quantity="15" />
+						<upkeep type="cash" quantity="90" />
+					</modulestack>
+					<modulestack name="200007" type="cplant" quantity="2" faction="2">
+						<itemstack type="carbon" quantity="20" />
+						<itemstack type="terran" quantity="4" />
+						<upkeep type="cash" quantity="80" />
 					</modulestack>
 				</region>
 				<region name="R00009" name-en="Mid Vale" X="2" Y="1" type="grassl">
@@ -516,34 +516,34 @@
 						</person>
 						<itemstack type="terran" quantity="20" />
 						<upkeep type="cash" quantity="90" />
-						<modulestack name="210003" type="cargob" quantity="2" faction="3">
-							<itemstack type="food" quantity="400" />
-							<itemstack type="terair" quantity="200" />
-							<itemstack type="h2o2" quantity="200" />
-							<itemstack type="iron" quantity="40" />
-							<itemstack type="carbon" quantity="40" />
-							<itemstack type="silici" quantity="15" />
-							<itemstack type="titani" quantity="2" />
-							<itemstack type="oil" quantity="5" />
-							<upkeep type="cash" quantity="20" />
-						</modulestack>
-						<modulestack name="210004" type="sdrill" quantity="1" faction="3">
-							<itemstack type="terran" quantity="6" />
-							<upkeep type="cash" quantity="35" />
-						</modulestack>
-						<modulestack name="210005" type="factry" quantity="2" faction="3">
-							<itemstack type="terran" quantity="20" />
-							<upkeep type="cash" quantity="110" />
-						</modulestack>
-						<modulestack name="210006" type="farms" quantity="3" faction="3">
-							<itemstack type="terran" quantity="15" />
-							<upkeep type="cash" quantity="90" />
-						</modulestack>
-						<modulestack name="210007" type="cplant" quantity="2" faction="3">
-							<itemstack type="carbon" quantity="20" />
-							<itemstack type="terran" quantity="4" />
-							<upkeep type="cash" quantity="80" />
-						</modulestack>
+					</modulestack>
+					<modulestack name="210003" type="cargob" quantity="2" faction="3">
+						<itemstack type="food" quantity="400" />
+						<itemstack type="terair" quantity="200" />
+						<itemstack type="h2o2" quantity="200" />
+						<itemstack type="iron" quantity="40" />
+						<itemstack type="carbon" quantity="40" />
+						<itemstack type="silici" quantity="15" />
+						<itemstack type="titani" quantity="2" />
+						<itemstack type="oil" quantity="5" />
+						<upkeep type="cash" quantity="20" />
+					</modulestack>
+					<modulestack name="210004" type="sdrill" quantity="1" faction="3">
+						<itemstack type="terran" quantity="6" />
+						<upkeep type="cash" quantity="35" />
+					</modulestack>
+					<modulestack name="210005" type="factry" quantity="2" faction="3">
+						<itemstack type="terran" quantity="20" />
+						<upkeep type="cash" quantity="110" />
+					</modulestack>
+					<modulestack name="210006" type="farms" quantity="3" faction="3">
+						<itemstack type="terran" quantity="15" />
+						<upkeep type="cash" quantity="90" />
+					</modulestack>
+					<modulestack name="210007" type="cplant" quantity="2" faction="3">
+						<itemstack type="carbon" quantity="20" />
+						<itemstack type="terran" quantity="4" />
+						<upkeep type="cash" quantity="80" />
 					</modulestack>
 				</region>
 				<region name="R00011" name-en="South Ridge" X="4" Y="1" type="mountn">
@@ -753,34 +753,34 @@
 						</person>
 						<itemstack type="terran" quantity="20" />
 						<upkeep type="cash" quantity="90" />
-						<modulestack name="220003" type="cargob" quantity="2" faction="4">
-							<itemstack type="food" quantity="400" />
-							<itemstack type="terair" quantity="200" />
-							<itemstack type="h2o2" quantity="200" />
-							<itemstack type="iron" quantity="40" />
-							<itemstack type="carbon" quantity="40" />
-							<itemstack type="silici" quantity="15" />
-							<itemstack type="titani" quantity="2" />
-							<itemstack type="oil" quantity="5" />
-							<upkeep type="cash" quantity="20" />
-						</modulestack>
-						<modulestack name="220004" type="sdrill" quantity="1" faction="4">
-							<itemstack type="terran" quantity="6" />
-							<upkeep type="cash" quantity="35" />
-						</modulestack>
-						<modulestack name="220005" type="factry" quantity="2" faction="4">
-							<itemstack type="terran" quantity="20" />
-							<upkeep type="cash" quantity="110" />
-						</modulestack>
-						<modulestack name="220006" type="farms" quantity="3" faction="4">
-							<itemstack type="terran" quantity="15" />
-							<upkeep type="cash" quantity="90" />
-						</modulestack>
-						<modulestack name="220007" type="cplant" quantity="2" faction="4">
-							<itemstack type="carbon" quantity="20" />
-							<itemstack type="terran" quantity="4" />
-							<upkeep type="cash" quantity="80" />
-						</modulestack>
+					</modulestack>
+					<modulestack name="220003" type="cargob" quantity="2" faction="4">
+						<itemstack type="food" quantity="400" />
+						<itemstack type="terair" quantity="200" />
+						<itemstack type="h2o2" quantity="200" />
+						<itemstack type="iron" quantity="40" />
+						<itemstack type="carbon" quantity="40" />
+						<itemstack type="silici" quantity="15" />
+						<itemstack type="titani" quantity="2" />
+						<itemstack type="oil" quantity="5" />
+						<upkeep type="cash" quantity="20" />
+					</modulestack>
+					<modulestack name="220004" type="sdrill" quantity="1" faction="4">
+						<itemstack type="terran" quantity="6" />
+						<upkeep type="cash" quantity="35" />
+					</modulestack>
+					<modulestack name="220005" type="factry" quantity="2" faction="4">
+						<itemstack type="terran" quantity="20" />
+						<upkeep type="cash" quantity="110" />
+					</modulestack>
+					<modulestack name="220006" type="farms" quantity="3" faction="4">
+						<itemstack type="terran" quantity="15" />
+						<upkeep type="cash" quantity="90" />
+					</modulestack>
+					<modulestack name="220007" type="cplant" quantity="2" faction="4">
+						<itemstack type="carbon" quantity="20" />
+						<itemstack type="terran" quantity="4" />
+						<upkeep type="cash" quantity="80" />
 					</modulestack>
 				</region>
 				<region name="R00018" name-en="East Peak" X="5" Y="2" type="mountn">
@@ -892,34 +892,34 @@
 						</person>
 						<itemstack type="terran" quantity="20" />
 						<upkeep type="cash" quantity="90" />
-						<modulestack name="230003" type="cargob" quantity="2" faction="5">
-							<itemstack type="food" quantity="400" />
-							<itemstack type="terair" quantity="200" />
-							<itemstack type="h2o2" quantity="200" />
-							<itemstack type="iron" quantity="40" />
-							<itemstack type="carbon" quantity="40" />
-							<itemstack type="silici" quantity="15" />
-							<itemstack type="titani" quantity="2" />
-							<itemstack type="oil" quantity="5" />
-							<upkeep type="cash" quantity="20" />
-						</modulestack>
-						<modulestack name="230004" type="sdrill" quantity="1" faction="5">
-							<itemstack type="terran" quantity="6" />
-							<upkeep type="cash" quantity="35" />
-						</modulestack>
-						<modulestack name="230005" type="factry" quantity="2" faction="5">
-							<itemstack type="terran" quantity="20" />
-							<upkeep type="cash" quantity="110" />
-						</modulestack>
-						<modulestack name="230006" type="farms" quantity="3" faction="5">
-							<itemstack type="terran" quantity="15" />
-							<upkeep type="cash" quantity="90" />
-						</modulestack>
-						<modulestack name="230007" type="cplant" quantity="2" faction="5">
-							<itemstack type="carbon" quantity="20" />
-							<itemstack type="terran" quantity="4" />
-							<upkeep type="cash" quantity="80" />
-						</modulestack>
+					</modulestack>
+					<modulestack name="230003" type="cargob" quantity="2" faction="5">
+						<itemstack type="food" quantity="400" />
+						<itemstack type="terair" quantity="200" />
+						<itemstack type="h2o2" quantity="200" />
+						<itemstack type="iron" quantity="40" />
+						<itemstack type="carbon" quantity="40" />
+						<itemstack type="silici" quantity="15" />
+						<itemstack type="titani" quantity="2" />
+						<itemstack type="oil" quantity="5" />
+						<upkeep type="cash" quantity="20" />
+					</modulestack>
+					<modulestack name="230004" type="sdrill" quantity="1" faction="5">
+						<itemstack type="terran" quantity="6" />
+						<upkeep type="cash" quantity="35" />
+					</modulestack>
+					<modulestack name="230005" type="factry" quantity="2" faction="5">
+						<itemstack type="terran" quantity="20" />
+						<upkeep type="cash" quantity="110" />
+					</modulestack>
+					<modulestack name="230006" type="farms" quantity="3" faction="5">
+						<itemstack type="terran" quantity="15" />
+						<upkeep type="cash" quantity="90" />
+					</modulestack>
+					<modulestack name="230007" type="cplant" quantity="2" faction="5">
+						<itemstack type="carbon" quantity="20" />
+						<itemstack type="terran" quantity="4" />
+						<upkeep type="cash" quantity="80" />
 					</modulestack>
 					<deep-pocket>
 						<resource type="titani" quantity="50" />
@@ -1030,34 +1030,34 @@
 						</person>
 						<itemstack type="terran" quantity="20" />
 						<upkeep type="cash" quantity="90" />
-						<modulestack name="240003" type="cargob" quantity="2" faction="6">
-							<itemstack type="food" quantity="400" />
-							<itemstack type="terair" quantity="200" />
-							<itemstack type="h2o2" quantity="200" />
-							<itemstack type="iron" quantity="40" />
-							<itemstack type="carbon" quantity="40" />
-							<itemstack type="silici" quantity="15" />
-							<itemstack type="titani" quantity="2" />
-							<itemstack type="oil" quantity="5" />
-							<upkeep type="cash" quantity="20" />
-						</modulestack>
-						<modulestack name="240004" type="sdrill" quantity="1" faction="6">
-							<itemstack type="terran" quantity="6" />
-							<upkeep type="cash" quantity="35" />
-						</modulestack>
-						<modulestack name="240005" type="factry" quantity="2" faction="6">
-							<itemstack type="terran" quantity="20" />
-							<upkeep type="cash" quantity="110" />
-						</modulestack>
-						<modulestack name="240006" type="farms" quantity="3" faction="6">
-							<itemstack type="terran" quantity="15" />
-							<upkeep type="cash" quantity="90" />
-						</modulestack>
-						<modulestack name="240007" type="cplant" quantity="2" faction="6">
-							<itemstack type="carbon" quantity="20" />
-							<itemstack type="terran" quantity="4" />
-							<upkeep type="cash" quantity="80" />
-						</modulestack>
+					</modulestack>
+					<modulestack name="240003" type="cargob" quantity="2" faction="6">
+						<itemstack type="food" quantity="400" />
+						<itemstack type="terair" quantity="200" />
+						<itemstack type="h2o2" quantity="200" />
+						<itemstack type="iron" quantity="40" />
+						<itemstack type="carbon" quantity="40" />
+						<itemstack type="silici" quantity="15" />
+						<itemstack type="titani" quantity="2" />
+						<itemstack type="oil" quantity="5" />
+						<upkeep type="cash" quantity="20" />
+					</modulestack>
+					<modulestack name="240004" type="sdrill" quantity="1" faction="6">
+						<itemstack type="terran" quantity="6" />
+						<upkeep type="cash" quantity="35" />
+					</modulestack>
+					<modulestack name="240005" type="factry" quantity="2" faction="6">
+						<itemstack type="terran" quantity="20" />
+						<upkeep type="cash" quantity="110" />
+					</modulestack>
+					<modulestack name="240006" type="farms" quantity="3" faction="6">
+						<itemstack type="terran" quantity="15" />
+						<upkeep type="cash" quantity="90" />
+					</modulestack>
+					<modulestack name="240007" type="cplant" quantity="2" faction="6">
+						<itemstack type="carbon" quantity="20" />
+						<itemstack type="terran" quantity="4" />
+						<upkeep type="cash" quantity="80" />
 					</modulestack>
 				</region>
 				<region name="R00028" name-en="Windgap" X="3" Y="4" type="grassl">
@@ -2242,10 +2242,10 @@
 					<upkeep type="cash" quantity="100" />
 				</modulestack>
 			</belt>
-			<alderson name="P00009" name-en="Helios Fomal Gate" AU="63" pair="P00010" temperature="cold" atmosphere="none">
+			<alderson name="P00009" name-en="Helios Fomal Gate" AU="69" pair="P00010" temperature="cold" atmosphere="none">
 				<orbit name="O00110" />
 			</alderson>
-			<alderson name="P00041" name-en="Helios Ember Gate" AU="67" pair="P00042" temperature="cold" atmosphere="none">
+			<alderson name="P00041" name-en="Helios Ember Gate" AU="79" pair="P00042" temperature="cold" atmosphere="none">
 				<orbit name="O00153" />
 			</alderson>
 		</system>
@@ -2818,33 +2818,33 @@
 						</person>
 						<itemstack type="terran" quantity="20" />
 						<upkeep type="cash" quantity="90" />
-						<modulestack name="250003" type="cargob" quantity="2" faction="7">
-							<itemstack type="food" quantity="80" />
-							<itemstack type="terair" quantity="200" />
-							<itemstack type="h2o2" quantity="80" />
-							<itemstack type="iron" quantity="15" />
-							<itemstack type="titani" quantity="40" />
-							<itemstack type="silici" quantity="40" />
-							<itemstack type="copper" quantity="30" />
-							<itemstack type="uraniu" quantity="20" />
-							<itemstack type="oil" quantity="5" />
-							<upkeep type="cash" quantity="20" />
-						</modulestack>
-						<modulestack name="250004" type="sdrill" quantity="1" faction="7">
-							<itemstack type="terran" quantity="6" />
-							<upkeep type="cash" quantity="35" />
-						</modulestack>
-						<modulestack name="250005" type="factry" quantity="2" faction="7">
-							<itemstack type="terran" quantity="20" />
-							<upkeep type="cash" quantity="110" />
-						</modulestack>
-						<modulestack name="250006" type="farms" quantity="2" faction="7">
-							<itemstack type="terran" quantity="10" />
-							<upkeep type="cash" quantity="60" />
-						</modulestack>
-						<modulestack name="250007" type="wnplnt" quantity="8" faction="7">
-							<upkeep type="cash" quantity="8" />
-						</modulestack>
+					</modulestack>
+					<modulestack name="250003" type="cargob" quantity="2" faction="7">
+						<itemstack type="food" quantity="80" />
+						<itemstack type="terair" quantity="200" />
+						<itemstack type="h2o2" quantity="80" />
+						<itemstack type="iron" quantity="15" />
+						<itemstack type="titani" quantity="40" />
+						<itemstack type="silici" quantity="40" />
+						<itemstack type="copper" quantity="30" />
+						<itemstack type="uraniu" quantity="20" />
+						<itemstack type="oil" quantity="5" />
+						<upkeep type="cash" quantity="20" />
+					</modulestack>
+					<modulestack name="250004" type="sdrill" quantity="1" faction="7">
+						<itemstack type="terran" quantity="6" />
+						<upkeep type="cash" quantity="35" />
+					</modulestack>
+					<modulestack name="250005" type="factry" quantity="2" faction="7">
+						<itemstack type="terran" quantity="20" />
+						<upkeep type="cash" quantity="110" />
+					</modulestack>
+					<modulestack name="250006" type="farms" quantity="2" faction="7">
+						<itemstack type="terran" quantity="10" />
+						<upkeep type="cash" quantity="60" />
+					</modulestack>
+					<modulestack name="250007" type="wnplnt" quantity="8" faction="7">
+						<upkeep type="cash" quantity="8" />
 					</modulestack>
 				</region>
 				<region name="R00046" name-en="Slope" X="2" Y="1" type="grassl">
@@ -2946,33 +2946,33 @@
 						</person>
 						<itemstack type="terran" quantity="20" />
 						<upkeep type="cash" quantity="90" />
-						<modulestack name="260003" type="cargob" quantity="2" faction="8">
-							<itemstack type="food" quantity="80" />
-							<itemstack type="terair" quantity="200" />
-							<itemstack type="h2o2" quantity="80" />
-							<itemstack type="iron" quantity="15" />
-							<itemstack type="titani" quantity="40" />
-							<itemstack type="silici" quantity="40" />
-							<itemstack type="copper" quantity="30" />
-							<itemstack type="uraniu" quantity="20" />
-							<itemstack type="oil" quantity="5" />
-							<upkeep type="cash" quantity="20" />
-						</modulestack>
-						<modulestack name="260004" type="sdrill" quantity="1" faction="8">
-							<itemstack type="terran" quantity="6" />
-							<upkeep type="cash" quantity="35" />
-						</modulestack>
-						<modulestack name="260005" type="factry" quantity="2" faction="8">
-							<itemstack type="terran" quantity="20" />
-							<upkeep type="cash" quantity="110" />
-						</modulestack>
-						<modulestack name="260006" type="farms" quantity="2" faction="8">
-							<itemstack type="terran" quantity="10" />
-							<upkeep type="cash" quantity="60" />
-						</modulestack>
-						<modulestack name="260007" type="wnplnt" quantity="8" faction="8">
-							<upkeep type="cash" quantity="8" />
-						</modulestack>
+					</modulestack>
+					<modulestack name="260003" type="cargob" quantity="2" faction="8">
+						<itemstack type="food" quantity="80" />
+						<itemstack type="terair" quantity="200" />
+						<itemstack type="h2o2" quantity="80" />
+						<itemstack type="iron" quantity="15" />
+						<itemstack type="titani" quantity="40" />
+						<itemstack type="silici" quantity="40" />
+						<itemstack type="copper" quantity="30" />
+						<itemstack type="uraniu" quantity="20" />
+						<itemstack type="oil" quantity="5" />
+						<upkeep type="cash" quantity="20" />
+					</modulestack>
+					<modulestack name="260004" type="sdrill" quantity="1" faction="8">
+						<itemstack type="terran" quantity="6" />
+						<upkeep type="cash" quantity="35" />
+					</modulestack>
+					<modulestack name="260005" type="factry" quantity="2" faction="8">
+						<itemstack type="terran" quantity="20" />
+						<upkeep type="cash" quantity="110" />
+					</modulestack>
+					<modulestack name="260006" type="farms" quantity="2" faction="8">
+						<itemstack type="terran" quantity="10" />
+						<upkeep type="cash" quantity="60" />
+					</modulestack>
+					<modulestack name="260007" type="wnplnt" quantity="8" faction="8">
+						<upkeep type="cash" quantity="8" />
 					</modulestack>
 				</region>
 				<region name="R00050" name-en="East Talus" X="6" Y="1" type="dust">
@@ -3091,33 +3091,33 @@
 						</person>
 						<itemstack type="terran" quantity="20" />
 						<upkeep type="cash" quantity="90" />
-						<modulestack name="270003" type="cargob" quantity="2" faction="9">
-							<itemstack type="food" quantity="80" />
-							<itemstack type="terair" quantity="200" />
-							<itemstack type="h2o2" quantity="80" />
-							<itemstack type="iron" quantity="15" />
-							<itemstack type="titani" quantity="40" />
-							<itemstack type="silici" quantity="40" />
-							<itemstack type="copper" quantity="30" />
-							<itemstack type="uraniu" quantity="20" />
-							<itemstack type="oil" quantity="5" />
-							<upkeep type="cash" quantity="20" />
-						</modulestack>
-						<modulestack name="270004" type="sdrill" quantity="1" faction="9">
-							<itemstack type="terran" quantity="6" />
-							<upkeep type="cash" quantity="35" />
-						</modulestack>
-						<modulestack name="270005" type="factry" quantity="2" faction="9">
-							<itemstack type="terran" quantity="20" />
-							<upkeep type="cash" quantity="110" />
-						</modulestack>
-						<modulestack name="270006" type="farms" quantity="2" faction="9">
-							<itemstack type="terran" quantity="10" />
-							<upkeep type="cash" quantity="60" />
-						</modulestack>
-						<modulestack name="270007" type="wnplnt" quantity="8" faction="9">
-							<upkeep type="cash" quantity="8" />
-						</modulestack>
+					</modulestack>
+					<modulestack name="270003" type="cargob" quantity="2" faction="9">
+						<itemstack type="food" quantity="80" />
+						<itemstack type="terair" quantity="200" />
+						<itemstack type="h2o2" quantity="80" />
+						<itemstack type="iron" quantity="15" />
+						<itemstack type="titani" quantity="40" />
+						<itemstack type="silici" quantity="40" />
+						<itemstack type="copper" quantity="30" />
+						<itemstack type="uraniu" quantity="20" />
+						<itemstack type="oil" quantity="5" />
+						<upkeep type="cash" quantity="20" />
+					</modulestack>
+					<modulestack name="270004" type="sdrill" quantity="1" faction="9">
+						<itemstack type="terran" quantity="6" />
+						<upkeep type="cash" quantity="35" />
+					</modulestack>
+					<modulestack name="270005" type="factry" quantity="2" faction="9">
+						<itemstack type="terran" quantity="20" />
+						<upkeep type="cash" quantity="110" />
+					</modulestack>
+					<modulestack name="270006" type="farms" quantity="2" faction="9">
+						<itemstack type="terran" quantity="10" />
+						<upkeep type="cash" quantity="60" />
+					</modulestack>
+					<modulestack name="270007" type="wnplnt" quantity="8" faction="9">
+						<upkeep type="cash" quantity="8" />
 					</modulestack>
 				</region>
 				<region name="R00055" name-en="Scree" X="4" Y="2" type="dust">
@@ -3253,33 +3253,33 @@
 						</person>
 						<itemstack type="terran" quantity="20" />
 						<upkeep type="cash" quantity="90" />
-						<modulestack name="280003" type="cargob" quantity="2" faction="10">
-							<itemstack type="food" quantity="80" />
-							<itemstack type="terair" quantity="200" />
-							<itemstack type="h2o2" quantity="80" />
-							<itemstack type="iron" quantity="15" />
-							<itemstack type="titani" quantity="40" />
-							<itemstack type="silici" quantity="40" />
-							<itemstack type="copper" quantity="30" />
-							<itemstack type="uraniu" quantity="20" />
-							<itemstack type="oil" quantity="5" />
-							<upkeep type="cash" quantity="20" />
-						</modulestack>
-						<modulestack name="280004" type="sdrill" quantity="1" faction="10">
-							<itemstack type="terran" quantity="6" />
-							<upkeep type="cash" quantity="35" />
-						</modulestack>
-						<modulestack name="280005" type="factry" quantity="2" faction="10">
-							<itemstack type="terran" quantity="20" />
-							<upkeep type="cash" quantity="110" />
-						</modulestack>
-						<modulestack name="280006" type="farms" quantity="2" faction="10">
-							<itemstack type="terran" quantity="10" />
-							<upkeep type="cash" quantity="60" />
-						</modulestack>
-						<modulestack name="280007" type="wnplnt" quantity="8" faction="10">
-							<upkeep type="cash" quantity="8" />
-						</modulestack>
+					</modulestack>
+					<modulestack name="280003" type="cargob" quantity="2" faction="10">
+						<itemstack type="food" quantity="80" />
+						<itemstack type="terair" quantity="200" />
+						<itemstack type="h2o2" quantity="80" />
+						<itemstack type="iron" quantity="15" />
+						<itemstack type="titani" quantity="40" />
+						<itemstack type="silici" quantity="40" />
+						<itemstack type="copper" quantity="30" />
+						<itemstack type="uraniu" quantity="20" />
+						<itemstack type="oil" quantity="5" />
+						<upkeep type="cash" quantity="20" />
+					</modulestack>
+					<modulestack name="280004" type="sdrill" quantity="1" faction="10">
+						<itemstack type="terran" quantity="6" />
+						<upkeep type="cash" quantity="35" />
+					</modulestack>
+					<modulestack name="280005" type="factry" quantity="2" faction="10">
+						<itemstack type="terran" quantity="20" />
+						<upkeep type="cash" quantity="110" />
+					</modulestack>
+					<modulestack name="280006" type="farms" quantity="2" faction="10">
+						<itemstack type="terran" quantity="10" />
+						<upkeep type="cash" quantity="60" />
+					</modulestack>
+					<modulestack name="280007" type="wnplnt" quantity="8" faction="10">
+						<upkeep type="cash" quantity="8" />
 					</modulestack>
 				</region>
 				<region name="R00060" name-en="Vale" X="2" Y="3" type="grassl">
@@ -3393,33 +3393,33 @@
 						</person>
 						<itemstack type="terran" quantity="20" />
 						<upkeep type="cash" quantity="90" />
-						<modulestack name="290003" type="cargob" quantity="2" faction="11">
-							<itemstack type="food" quantity="80" />
-							<itemstack type="terair" quantity="200" />
-							<itemstack type="h2o2" quantity="80" />
-							<itemstack type="iron" quantity="15" />
-							<itemstack type="titani" quantity="40" />
-							<itemstack type="silici" quantity="40" />
-							<itemstack type="copper" quantity="30" />
-							<itemstack type="uraniu" quantity="20" />
-							<itemstack type="oil" quantity="5" />
-							<upkeep type="cash" quantity="20" />
-						</modulestack>
-						<modulestack name="290004" type="sdrill" quantity="1" faction="11">
-							<itemstack type="terran" quantity="6" />
-							<upkeep type="cash" quantity="35" />
-						</modulestack>
-						<modulestack name="290005" type="factry" quantity="2" faction="11">
-							<itemstack type="terran" quantity="20" />
-							<upkeep type="cash" quantity="110" />
-						</modulestack>
-						<modulestack name="290006" type="farms" quantity="2" faction="11">
-							<itemstack type="terran" quantity="10" />
-							<upkeep type="cash" quantity="60" />
-						</modulestack>
-						<modulestack name="290007" type="wnplnt" quantity="8" faction="11">
-							<upkeep type="cash" quantity="8" />
-						</modulestack>
+					</modulestack>
+					<modulestack name="290003" type="cargob" quantity="2" faction="11">
+						<itemstack type="food" quantity="80" />
+						<itemstack type="terair" quantity="200" />
+						<itemstack type="h2o2" quantity="80" />
+						<itemstack type="iron" quantity="15" />
+						<itemstack type="titani" quantity="40" />
+						<itemstack type="silici" quantity="40" />
+						<itemstack type="copper" quantity="30" />
+						<itemstack type="uraniu" quantity="20" />
+						<itemstack type="oil" quantity="5" />
+						<upkeep type="cash" quantity="20" />
+					</modulestack>
+					<modulestack name="290004" type="sdrill" quantity="1" faction="11">
+						<itemstack type="terran" quantity="6" />
+						<upkeep type="cash" quantity="35" />
+					</modulestack>
+					<modulestack name="290005" type="factry" quantity="2" faction="11">
+						<itemstack type="terran" quantity="20" />
+						<upkeep type="cash" quantity="110" />
+					</modulestack>
+					<modulestack name="290006" type="farms" quantity="2" faction="11">
+						<itemstack type="terran" quantity="10" />
+						<upkeep type="cash" quantity="60" />
+					</modulestack>
+					<modulestack name="290007" type="wnplnt" quantity="8" faction="11">
+						<upkeep type="cash" quantity="8" />
 					</modulestack>
 				</region>
 				<region name="R00064" name-en="Fan" X="6" Y="3" type="dust">
@@ -4196,10 +4196,10 @@
 					<upkeep type="cash" quantity="30" />
 				</modulestack>
 			</belt>
-			<alderson name="P00010" name-en="Fomal Helios Gate" AU="62" pair="P00009" temperature="cold" atmosphere="none">
+			<alderson name="P00010" name-en="Fomal Helios Gate" AU="64" pair="P00009" temperature="cold" atmosphere="none">
 				<orbit name="O00111" />
 			</alderson>
-			<alderson name="P00043" name-en="Fomal Gleam Gate" AU="65" pair="P00044" temperature="cold" atmosphere="none">
+			<alderson name="P00043" name-en="Fomal Gleam Gate" AU="79" pair="P00044" temperature="cold" atmosphere="none">
 				<orbit name="O00155" />
 			</alderson>
 		</system>
@@ -4849,19 +4849,19 @@
 					<resource type="heliu3" quantity="16" probability="0.2" />
 				</composition>
 			</belt>
-			<alderson name="P00042" name-en="Ember Helios Gate" AU="75" pair="P00041" temperature="cold" atmosphere="none">
+			<alderson name="P00042" name-en="Ember Helios Gate" AU="61" pair="P00041" temperature="cold" atmosphere="none">
 				<orbit name="O00154" />
 			</alderson>
-			<alderson name="P00045" name-en="Ember Cinder Gate" AU="67" pair="P00046" temperature="cold" atmosphere="none">
+			<alderson name="P00045" name-en="Ember Cinder Gate" AU="71" pair="P00046" temperature="cold" atmosphere="none">
 				<orbit name="O00157" />
 			</alderson>
-			<alderson name="P00047" name-en="Ember Ash Gate" AU="79" pair="P00048" temperature="cold" atmosphere="none">
+			<alderson name="P00047" name-en="Ember Ash Gate" AU="70" pair="P00048" temperature="cold" atmosphere="none">
 				<orbit name="O00159" />
 			</alderson>
-			<alderson name="P00049" name-en="Ember Graph Gate" AU="80" pair="P00050" temperature="cold" atmosphere="none">
+			<alderson name="P00049" name-en="Ember Graph Gate" AU="71" pair="P00050" temperature="cold" atmosphere="none">
 				<orbit name="O00161" />
 			</alderson>
-			<alderson name="P00057" name-en="Ember Gleam Gate" AU="78" pair="P00058" temperature="cold" atmosphere="none" stability="unstable">
+			<alderson name="P00057" name-en="Ember Gleam Gate" AU="66" pair="P00058" temperature="cold" atmosphere="none" stability="unstable">
 				<orbit name="O00169" />
 			</alderson>
 		</system>
@@ -5257,19 +5257,19 @@
 					<resource type="platnm" quantity="6" probability="0.1" />
 				</composition>
 			</belt>
-			<alderson name="P00044" name-en="Gleam Fomal Gate" AU="60" pair="P00043" temperature="cold" atmosphere="none">
+			<alderson name="P00044" name-en="Gleam Fomal Gate" AU="73" pair="P00043" temperature="cold" atmosphere="none">
 				<orbit name="O00156" />
 			</alderson>
-			<alderson name="P00051" name-en="Gleam Shards Gate" AU="62" pair="P00052" temperature="cold" atmosphere="none">
+			<alderson name="P00051" name-en="Gleam Shards Gate" AU="77" pair="P00052" temperature="cold" atmosphere="none">
 				<orbit name="O00163" />
 			</alderson>
-			<alderson name="P00053" name-en="Gleam Deep Gate" AU="77" pair="P00054" temperature="cold" atmosphere="none">
+			<alderson name="P00053" name-en="Gleam Deep Gate" AU="71" pair="P00054" temperature="cold" atmosphere="none">
 				<orbit name="O00165" />
 			</alderson>
 			<alderson name="P00055" name-en="Gleam Spare Gate" AU="63" pair="P00056" temperature="cold" atmosphere="none">
 				<orbit name="O00167" />
 			</alderson>
-			<alderson name="P00058" name-en="Gleam Ember Gate" AU="77" pair="P00057" temperature="cold" atmosphere="none" stability="unstable">
+			<alderson name="P00058" name-en="Gleam Ember Gate" AU="61" pair="P00057" temperature="cold" atmosphere="none" stability="unstable">
 				<orbit name="O00170" />
 			</alderson>
 		</system>
@@ -5960,7 +5960,7 @@
 					<resource type="grphit" quantity="20" probability="0.2" />
 				</composition>
 			</belt>
-			<alderson name="P00046" name-en="Cinder Ember Gate" AU="71" pair="P00045" temperature="cold" atmosphere="none">
+			<alderson name="P00046" name-en="Cinder Ember Gate" AU="80" pair="P00045" temperature="cold" atmosphere="none">
 				<orbit name="O00158" />
 			</alderson>
 		</system>
@@ -6545,7 +6545,7 @@
 					<resource type="volatl" quantity="14" probability="0.3" />
 				</composition>
 			</belt>
-			<alderson name="P00048" name-en="Ash Ember Gate" AU="74" pair="P00047" temperature="cold" atmosphere="none">
+			<alderson name="P00048" name-en="Ash Ember Gate" AU="65" pair="P00047" temperature="cold" atmosphere="none">
 				<orbit name="O00160" />
 			</alderson>
 		</system>
@@ -6780,7 +6780,7 @@
 					<resource type="water" quantity="8" probability="0.3" />
 				</composition>
 			</belt>
-			<alderson name="P00052" name-en="Shards Gleam Gate" AU="70" pair="P00051" temperature="cold" atmosphere="none">
+			<alderson name="P00052" name-en="Shards Gleam Gate" AU="78" pair="P00051" temperature="cold" atmosphere="none">
 				<orbit name="O00164" />
 			</alderson>
 		</system>
@@ -7037,6 +7037,8 @@
 						</exit>
 						<resource type="food" quantity="40" />
 						<resource type="water" quantity="60" />
+						<resource type="iron" quantity="8" />
+						<resource type="silici" quantity="8" />
 						<modulestack name="160030" type="frostb" quantity="1" faction="16" name-en="Haven frost brood" />
 					</region>
 					<region name="R00434" name-en="Haven 1,1" X="1" Y="1" type="grassl">
@@ -7055,6 +7057,8 @@
 						</exit>
 						<resource type="food" quantity="40" />
 						<resource type="water" quantity="60" />
+						<resource type="iron" quantity="8" />
+						<resource type="silici" quantity="8" />
 						<modulestack name="160010" type="ribgrz" quantity="1" faction="16" name-en="Haven ridge grazers" />
 					</region>
 					<region name="R00435" name-en="Haven 2,1" X="2" Y="1" type="grassl">
@@ -7073,6 +7077,8 @@
 						</exit>
 						<resource type="food" quantity="40" />
 						<resource type="water" quantity="60" />
+						<resource type="iron" quantity="8" />
+						<resource type="silici" quantity="8" />
 						<modulestack name="160020" type="glacra" quantity="1" faction="16" name-en="Haven glacier crab" />
 					</region>
 					<region name="R00436" name-en="Haven 3,1" X="3" Y="1" type="grassl">
@@ -7091,6 +7097,8 @@
 						</exit>
 						<resource type="food" quantity="40" />
 						<resource type="water" quantity="60" />
+						<resource type="iron" quantity="8" />
+						<resource type="silici" quantity="8" />
 					</region>
 					<region name="R00437" name-en="Haven 0,2" X="0" Y="2" type="sea">
 						<exit region="R00438">
@@ -7104,6 +7112,8 @@
 						</exit>
 						<resource type="food" quantity="40" />
 						<resource type="water" quantity="60" />
+						<resource type="iron" quantity="8" />
+						<resource type="silici" quantity="8" />
 					</region>
 					<region name="R00438" name-en="Haven 1,2" X="1" Y="2" type="sea">
 						<exit region="R00437">
@@ -7117,6 +7127,8 @@
 						</exit>
 						<resource type="food" quantity="40" />
 						<resource type="water" quantity="60" />
+						<resource type="iron" quantity="8" />
+						<resource type="silici" quantity="8" />
 					</region>
 					<region name="R00439" name-en="Haven 2,2" X="2" Y="2" type="sea">
 						<exit region="R00438">
@@ -7130,6 +7142,8 @@
 						</exit>
 						<resource type="food" quantity="40" />
 						<resource type="water" quantity="60" />
+						<resource type="iron" quantity="8" />
+						<resource type="silici" quantity="8" />
 					</region>
 					<region name="R00440" name-en="Haven 3,2" X="3" Y="2" type="sea">
 						<exit region="R00439">
@@ -7143,6 +7157,8 @@
 						</exit>
 						<resource type="food" quantity="40" />
 						<resource type="water" quantity="60" />
+						<resource type="iron" quantity="8" />
+						<resource type="silici" quantity="8" />
 					</region>
 				</moon>
 				<moon name="M00021" name-en="Deep Ice A" type="ice" AU="0.006" surface-size-X="5" surface-size-Y="2" gravity="low" temperature="cold" atmosphere="none" description="Water ice, light isotopes, methane-family frost. Not Haven. Not kind. You land for volatiles. The habitable ribbon is a bright lie next door.">
@@ -8014,7 +8030,7 @@
 					<resource type="deutrm" quantity="100" />
 				</orbit>
 			</planet>
-			<alderson name="P00054" name-en="Deep Gleam Gate" AU="70" pair="P00053" temperature="cold" atmosphere="none">
+			<alderson name="P00054" name-en="Deep Gleam Gate" AU="63" pair="P00053" temperature="cold" atmosphere="none">
 				<orbit name="O00166" />
 			</alderson>
 		</system>
@@ -9147,7 +9163,7 @@
 					<resource type="silici" quantity="10" probability="0.4" />
 				</composition>
 			</belt>
-			<alderson name="P00050" name-en="Graph Ember Gate" AU="71" pair="P00049" temperature="cold" atmosphere="none">
+			<alderson name="P00050" name-en="Graph Ember Gate" AU="63" pair="P00049" temperature="cold" atmosphere="none">
 				<orbit name="O00162" />
 			</alderson>
 		</system>
@@ -9513,7 +9529,7 @@
 					<resource type="iron" quantity="10" probability="0.4" />
 				</composition>
 			</belt>
-			<alderson name="P00056" name-en="Spare Gleam Gate" AU="74" pair="P00055" temperature="cold" atmosphere="none">
+			<alderson name="P00056" name-en="Spare Gleam Gate" AU="66" pair="P00055" temperature="cold" atmosphere="none">
 				<orbit name="O00168" />
 			</alderson>
 		</system>

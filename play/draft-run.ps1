@@ -54,7 +54,11 @@ param(
     [switch] $DryRun,
     [switch] $AllowRunPod,
     [switch] $SkipIsolationAudit,
-    [switch] $NoRecordAudit
+    [switch] $NoRecordAudit,
+
+    [int] $Top = 0,
+    [int] $MaxQualityAttempts = 0,
+    [switch] $Staged
 )
 
 $ErrorActionPreference = 'Stop'
@@ -84,6 +88,9 @@ if ($DryRun) { $args += '--dry-run' }
 if ($AllowRunPod) { $args += '--allow-runpod' }
 if ($SkipIsolationAudit) { $args += '--skip-isolation-audit' }
 if ($NoRecordAudit) { $args += '--no-record-audit' }
+if ($Top -gt 0) { $args += @('--top', $Top) }
+if ($MaxQualityAttempts -gt 0) { $args += @('--max-quality-attempts', $MaxQualityAttempts) }
+if ($Staged) { $args += '--staged' }
 
 Write-Host "player-agent draft-run --mode $Mode --run $Run (factions $FromFaction..$ToFaction)"
 & dotnet @args

@@ -87,7 +87,7 @@ public static partial class StoryDraftPromptBuilder
         var tacticalBullets = isResearcher
             ? """
                 - HQ: set hold 20 terran beside @produce terran
-                - GRANT bootstrap: grant item 2 iron + 2 silici to cargob; grant technology msrvtm to factory; use msrvtm as newNNN with +get iron/silici from cargob
+                - GRANT bootstrap: grant item 2 iron + 2 silici to cargob id; grant technology msrvtm to factry stack id; use msrvtm as newNNN with +get iron/silici from cargob
                 - Grant economic loop (@use farmng, @use hcdril on sdrill — no iminng turn 1, @produce energy, cargob @get all + sell food)
                 - Moblab stack: +get terran/oil/food; move adjacent anomaly region-id; @research that region (+20 RP resolve)
                 - Defer filidx/cmplib, frminf escort, and UN town contract until survey column is staged
@@ -95,7 +95,7 @@ public static partial class StoryDraftPromptBuilder
                 : isEconomic
                 ? """
                     - HQ: set hold 20 terran and @produce terran; @produce energy on cplant before nested cdrill draw
-                    - GRANT bootstrap: grant item iron/titani to sdrill, grant technology mcored + msrvtm to factory, then @use hcdril/iminng and use mcored as newN with +get iron/titani
+                    - GRANT bootstrap: grant item iron/titani to sdrill id, grant technology mcored + msrvtm to factry stack id, then ONE drill @use matching grant Resources (hcdril if carbon/oil; iminng if iron — never both), use mcored as newN, use msrvtm moblab as newN toward deep metals, expand wnplnt with use wndtrb + @produce energy before cdrill nest
                     - Nest cdrill: has 1 cdrill, -get 6 terran, deactivate 1 until energy margin; @use farmng, cargob @get all + sell food
                     - Scout with msrvtm/moblab carrying an mcored technology copy (not trucks): adjacent exits show deep pocket of resources detected; move lab into pocket cell to read Deep resources assays
                     - Defer CT town charter until home grant production is maxed; next build agrplx farms or cdrill on deep pockets by market bottleneck
@@ -105,7 +105,7 @@ public static partial class StoryDraftPromptBuilder
                         - Turn-1 fauna rumor counts as contact: DECLARE FACTION 14 ENEMY before engaging Arbor Fauna
                         - HQ: set hold 20 terran and @produce terran; DECLARE hostile fauna when rumors confirm contact
                         - Cargob: grant item iron/oil/titani to cargob, then @get all food/carbon; grant loop + @use hcdril, @produce energy — no sell food
-                        - Factory: grant technology armcbt to factory, then grndtr scout and two armcbt builds with +get iron/titani
+                        - Factory: grant technology armcbt to factry stack id, then grndtr scout and two armcbt builds with +get iron/titani
                         - Both tank squads: has 1 tanks, -get provisioning, -move Mid Vale [R00009], tactic destroy; claim CT0016 (1000 cash bounty) when stack cleared
                         - Secure Mid Vale oil after cull; defer CT0006 UN town charter until armored lane is safe
                         """

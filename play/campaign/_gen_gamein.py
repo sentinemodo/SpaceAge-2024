@@ -26,6 +26,24 @@ GATE_AU_MAX = 80
 GATE_AU_SEED = 20260918
 _gate_au_rng = random.Random(GATE_AU_SEED)
 
+# Beta-1 GRANT between-turn pricing (economy.md defaults ×2 for item/module; technology unchanged).
+GRANT_TECHNOLOGY_CREDIT_MULTIPLIER = 125
+GRANT_ITEM_VALUE_MULTIPLIER = 8
+GRANT_MODULE_COST_FLOOR = 500
+GRANT_MODULE_BUILD_MULTIPLIER = 10
+GRANT_MODULE_LEVEL_MULTIPLIER = 200
+
+# Player HQ grant nest cash upkeep / turn (2× economy.md starting nest table).
+NEST_CORPHQ_CASH_UPKEEP = 180
+NEST_CEO_CASH_UPKEEP = 20
+NEST_CARGOB_CASH_UPKEEP = 40
+NEST_SDRILL_CASH_UPKEEP = 70
+NEST_FACTRY_CASH_UPKEEP = 220
+NEST_FARMS_CASH_UPKEEP_ARBOR = 180
+NEST_CPLANT_CASH_UPKEEP = 160
+NEST_FARMS_CASH_UPKEEP_ANVIL = 120
+NEST_WNPLNT_CASH_UPKEEP = 32
+
 
 def next_gate_au():
     """Random Alderson gate AU in [GATE_AU_MIN, GATE_AU_MAX] (deterministic per GATE_AU_SEED)."""
@@ -993,7 +1011,15 @@ def seed_haven_graph_fauna(systems):
             )
 
 
+def _grant_module(name, typ, faction, quantity=1, items=None, upkeep=None):
+    stack = Stack(name, typ, faction, quantity)
+    stack.items = list(items or [])
+    stack.upkeep = list(upkeep or [])
+    return stack
+
+
 def hq_stack(fac, planet):
+    """Return (corphq, grant_modules) — production stacks sit on the grant region, not nested under HQ."""
     name_en, _pw = PLAYERS[fac]
     base = 200000 + (fac - 2) * 10000
     hq = Stack("%d" % (base + 1), "corphq", fac, 1, "%s Headquarters" % name_en)
@@ -1003,27 +1029,43 @@ def hq_stack(fac, planet):
             "name-en": "%s CEO" % name_en,
             "race": "terran",
             "faction": str(fac),
-            "upkeep": [("cash", 10)],
+            "upkeep": [("cash", NEST_CEO_CASH_UPKEEP)],
         }
     ]
-    # corphq crew=20; nested production stacks carry their own terran crews so turn-1
+    # corphq crew=20; sibling production stacks carry their own terran crews so turn-1
     # CanOperate succeeds without stripping HQ below its own requirement.
     hq.items = [("terran", 20)]
-    hq.upkeep = [("cash", 90)]
+    hq.upkeep = [("cash", NEST_CORPHQ_CASH_UPKEEP)]
+    grant_modules = []
     if planet == "arbor":
         cargo = [("food", 400), ("terair", 200), ("h2o2", 200), ("iron", 40), ("carbon", 40), ("silici", 15), ("titani", 2), ("oil", 5)]
-        nest(hq, "%d" % (base + 3), "cargob", fac, 2, items=cargo, upkeep=[("cash", 20)])
-        nest(hq, "%d" % (base + 4), "sdrill", fac, 1, items=[("terran", 6)], upkeep=[("cash", 35)])
-        factory = nest(hq, "%d" % (base + 5), "factry", fac, 2, items=[("terran", 20)], upkeep=[("cash", 110)])
-        nest(hq, "%d" % (base + 6), "farms", fac, 3, items=[("terran", 15)], upkeep=[("cash", 90)])
-        nest(
-            hq,
-            "%d" % (base + 7),
-            "cplant",
-            fac,
-            2,
-            items=[("carbon", 20), ("terran", 4)],
-            upkeep=[("cash", 80)],
+        grant_modules.append(
+            _grant_module("%d" % (base + 3), "cargob", fac, 2, items=cargo, upkeep=[("cash", NEST_CARGOB_CASH_UPKEEP)])
+        )
+        grant_modules.append(
+            _grant_module(
+                "%d" % (base + 4), "sdrill", fac, 1, items=[("terran", 6)], upkeep=[("cash", NEST_SDRILL_CASH_UPKEEP)]
+            )
+        )
+        grant_modules.append(
+            _grant_module(
+                "%d" % (base + 5), "factry", fac, 2, items=[("terran", 20)], upkeep=[("cash", NEST_FACTRY_CASH_UPKEEP)]
+            )
+        )
+        grant_modules.append(
+            _grant_module(
+                "%d" % (base + 6), "farms", fac, 3, items=[("terran", 15)], upkeep=[("cash", NEST_FARMS_CASH_UPKEEP_ARBOR)]
+            )
+        )
+        grant_modules.append(
+            _grant_module(
+                "%d" % (base + 7),
+                "cplant",
+                fac,
+                2,
+                items=[("carbon", 20), ("terran", 4)],
+                upkeep=[("cash", NEST_CPLANT_CASH_UPKEEP)],
+            )
         )
     else:
         cargo = [
@@ -1037,12 +1079,28 @@ def hq_stack(fac, planet):
             ("uraniu", 20),
             ("oil", 5),
         ]
-        nest(hq, "%d" % (base + 3), "cargob", fac, 2, items=cargo, upkeep=[("cash", 20)])
-        nest(hq, "%d" % (base + 4), "sdrill", fac, 1, items=[("terran", 6)], upkeep=[("cash", 35)])
-        factory = nest(hq, "%d" % (base + 5), "factry", fac, 2, items=[("terran", 20)], upkeep=[("cash", 110)])
-        nest(hq, "%d" % (base + 6), "farms", fac, 2, items=[("terran", 10)], upkeep=[("cash", 60)])
-        nest(hq, "%d" % (base + 7), "wnplnt", fac, 8, upkeep=[("cash", 8)])
-    return hq
+        grant_modules.append(
+            _grant_module("%d" % (base + 3), "cargob", fac, 2, items=cargo, upkeep=[("cash", NEST_CARGOB_CASH_UPKEEP)])
+        )
+        grant_modules.append(
+            _grant_module(
+                "%d" % (base + 4), "sdrill", fac, 1, items=[("terran", 6)], upkeep=[("cash", NEST_SDRILL_CASH_UPKEEP)]
+            )
+        )
+        grant_modules.append(
+            _grant_module(
+                "%d" % (base + 5), "factry", fac, 2, items=[("terran", 20)], upkeep=[("cash", NEST_FACTRY_CASH_UPKEEP)]
+            )
+        )
+        grant_modules.append(
+            _grant_module(
+                "%d" % (base + 6), "farms", fac, 2, items=[("terran", 10)], upkeep=[("cash", NEST_FARMS_CASH_UPKEEP_ANVIL)]
+            )
+        )
+        grant_modules.append(
+            _grant_module("%d" % (base + 7), "wnplnt", fac, 16, upkeep=[("cash", NEST_WNPLNT_CASH_UPKEEP)])
+        )
+    return hq, grant_modules
 
 
 def find_region(regions, name_en):
@@ -1546,7 +1604,10 @@ def build_world():
     }
     for fac, (grant, home) in player_home.items():
         grid = arbor.regions if home == "arbor" else anvil.regions
-        find_region(grid, grant).stacks.append(hq_stack(fac, home))
+        region = find_region(grid, grant)
+        hq, grant_modules = hq_stack(fac, home)
+        region.stacks.append(hq)
+        region.stacks.extend(grant_modules)
 
     apply_hq_anomalies(arbor, anvil)
     apply_hq_deep_pockets(arbor, anvil)
@@ -2235,6 +2296,18 @@ def spare_bodies(ids, system):
         "Spare Belt",
         2.4,
         [("titani", 14, 0.5), ("copper", 12, 0.4), ("iron", 10, 0.4)],
+    )
+
+
+def emit_grant_pricing(root):
+    el(
+        root,
+        "grant-pricing",
+        **{"technology-credit-multiplier": str(GRANT_TECHNOLOGY_CREDIT_MULTIPLIER)},
+        **{"item-value-multiplier": str(GRANT_ITEM_VALUE_MULTIPLIER)},
+        **{"module-cost-floor": str(GRANT_MODULE_COST_FLOOR)},
+        **{"module-build-multiplier": str(GRANT_MODULE_BUILD_MULTIPLIER)},
+        **{"module-level-multiplier": str(GRANT_MODULE_LEVEL_MULTIPLIER)},
     )
 
 
@@ -3203,6 +3276,7 @@ def main():
     validate(systems, landings)
     root = ET.Element("game", turn="1")
     emit_factions(root)
+    emit_grant_pricing(root)
     emit_contracts(root, landings, grant_market_contracts)
     emit_galaxy(root, systems)
     el(root, "orders")

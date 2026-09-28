@@ -69,8 +69,8 @@ namespace SpaceAge
 										moduleStack.ReportName,
 										moduleStack.CrewRequired + moduleStack.ModuleStacks.CrewRequired(),
 										moduleStack.CrewCurrent + moduleStack.ModuleStacks.CrewCurrent()));
-					int energyRequired = moduleStack.RegionalEnergyRequired();
-					int energyAvailable = moduleStack.RegionalEnergyProduction();
+					int energyRequired = moduleStack.RegionalNominalEnergyRequired();
+					int energyAvailable = moduleStack.RegionalNominalEnergyProduction();
 					if (!moduleStack.HasRegionalEnergySurplus())
 					{
 						moduleStack.EventReports.Add(

@@ -2285,7 +2285,7 @@ Researchers can query the library. The system can handle natural language questi
 			mass="750" 
 			crew="10"
 			energy="15"
-			technology-capacity="1"
+			technology-capacity="2"
 			hit-points="100">
 			<upkeep type="cash" quantity="55"/>
 			<operation-allowed-in module-group="settlement"/>
@@ -3343,7 +3343,6 @@ Researchers can query the library. The system can handle natural language questi
 			capacity="50"
 			crew="1"
 			hit-points="30"
-			energy="3"
 			technology-capacity="2"
 			research-output="1"
 			research-output-divisor="2"

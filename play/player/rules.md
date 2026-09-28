@@ -2,9 +2,9 @@
 
 **Human-facing publish copy:** [`docs/human/rules.md`](../docs/human/rules.md) — website SSOT, no code references.
 
-Checked **23 Sep 2026** against engine **0.8.001** (`Game/Program.cs` → `EngineVersion`).
+Checked **28 Sep 2026** against engine **0.8.001** (`Game/Program.cs` → `EngineVersion`).
 
-Sources: `Game/orders/EOrderType.cs`, `Game/orders/OrderFactory.cs`, `Game/orders/OrdersReader.cs`, `Game/orders/Orders.cs`, `Game/orders/JumpOrder.cs`, `Game/orders/MoveOrder.cs`, `Game/orders/LongOrder.cs` (`CanOperate`, atmosphere and effective location), `Game/orders/UseOrder.cs` (underwater settlement seat tender), `Game/game/SpaceTransit.cs` (`f(ΔAU)`, mass factor, baked space-exit weeks), `Game/Game.cs` (week loop, `GenerateOffers`, `ProcessBuyOffers`), `Game/Program.cs` (`/data`, `/turn-dir`, `/reports`, `/no-turn`, `/check`), `Game/Research.cs` (weekly output, breakthrough, preference, space-object proximity and reveal), `Game/SurveyReports.cs`, `Game/data structures/SurveyObjects.cs`, `Game/data structures/ModuleStack.Upkeep.cs` (sick bay, medical consume, quarterly maintenance, high-gravity bill, `AllowBank` on cash upkeep), `Game/data structures/ModuleStack.Economy.cs` (`AllowBank`, `HasBankAccess`), `Game/data structures/ModuleStack.Reporting.cs` (`Visible`, `IsUnderwaterStealthy`, orbit spaceship reveal), `Game/data structures/Location.cs` (`HasUnderwaterPresence`), `Game/data structures/Galaxy.cs` (`LoadXml` / `LoadExits` / save of environment attrs, belt and alderson exits), `Game/data structures/Alderson.cs` (`PairName`, orbit only), `Game/data structures/Belt.cs` (`LocationType` space), `Game/data structures/Planet.cs` / `Moon.cs` (`HasEnvironmentAttrs`), `Game/data structures/ELocationType.cs` (`atmosphere`), `Game/data structures/BodyEnvironment.cs` (`EffectiveLocationType`, `HasAtmosphereResources`, `LaunchSurcharge`, `SurfaceOrbitSurcharge`, `BansNonShuttleSurfaceHop`, settlement temperature, gravity), `Game/data structures/Orbit.cs` (`HasAtmosphere`, orbit resources), `Game/data structures/ModuleType.cs` (`IsShipHullType` / `IsShuttleUnit` / `Underwater`), `Game/data structures/Exits.cs` / `ExitMode.cs` / `Region.cs` (region **Exits:** lines), `Game/data structures/Faction.cs` (blank line before `Bank report:`), `Game/reports/ReportWriter.cs` (faction report sections and blank lines), `Game/battle/Battles.cs` (blank line between consecutive battles), `Game/game/DataFile.cs` (`LoadLocationType`, `LoadOrders` / `SaveOrders` delegate to `OrderXml`), `Game/game/OrderXml.cs` (XML switch, including `jump`), `Game/game/ModuleTypeGroupXml.cs` (`RESEARCH GROUP` tokens), `Game/game/CatalogLoader.cs` (`planet-atmosphere`, `location-type`, `underwater`), `Game/game/Market.cs` (`GetPrice`, `payBuyer`, `availableFunds`), `Game/game/Market.Clearing.cs` (regional buy clearing, pro-rata), `Game/data structures/Offer.cs` (`GetEffectiveBidCap`, `MatchesAsk`), `Game/effects/Effects.cs` (`LoadXml` effect types), `Game/effects/Producing.cs` (omit empty `technology=`), each `Game/orders/*Order.Parse` / `Execute`. Sample prefix usage: `Tests/SampleGame/orders.*.txt`.
+Sources: `Game/orders/EOrderType.cs`, `Game/orders/OrderFactory.cs`, `Game/orders/OrdersReader.cs`, `Game/orders/Orders.cs`, `Game/orders/JumpOrder.cs`, `Game/orders/MoveOrder.cs`, `Game/orders/LongOrder.cs` (`CanOperate`, atmosphere and effective location), `Game/orders/SetOrder.cs` (`ENERGY`, `SHARING`, …), `Game/orders/UseOrder.cs` (underwater settlement seat tender), `Game/game/SpaceTransit.cs` (`f(ΔAU)`, mass factor, baked space-exit weeks), `Game/Game.cs` (week loop, `GenerateOffers`, `ProcessBuyOffers`), `Game/Program.cs` (`/data`, `/turn-dir`, `/reports`, `/no-turn`, `/check`), `Game/Research.cs` (weekly output, breakthrough, preference, space-object proximity and reveal), `Game/SurveyReports.cs`, `Game/data structures/SurveyObjects.cs`, `Game/data structures/ModuleStack.Upkeep.cs` (sick bay, medical consume, quarterly maintenance, high-gravity bill, `AllowBank` on cash upkeep), `Game/data structures/ModuleStack.Economy.cs` (`AllowBank`, `HasBankAccess`), `Game/data structures/ModuleStack.Energy.cs` (regional pool, priority allocation, `SET ENERGY`), `Game/data structures/ModuleEnergyPriority.cs` (default priority by module group), `Game/data structures/ModuleStack.Reporting.cs` (`Visible`, `IsUnderwaterStealthy`, orbit spaceship reveal, `energy priority` line), `Game/data structures/Location.cs` (`HasUnderwaterPresence`), `Game/data structures/Galaxy.cs` (`LoadXml` / `LoadExits` / save of environment attrs, belt and alderson exits), `Game/data structures/Alderson.cs` (`PairName`, orbit only), `Game/data structures/Belt.cs` (`LocationType` space), `Game/data structures/Planet.cs` / `Moon.cs` (`HasEnvironmentAttrs`), `Game/data structures/ELocationType.cs` (`atmosphere`), `Game/data structures/BodyEnvironment.cs` (`EffectiveLocationType`, `HasAtmosphereResources`, `LaunchSurcharge`, `SurfaceOrbitSurcharge`, `BansNonShuttleSurfaceHop`, settlement temperature, gravity), `Game/data structures/Orbit.cs` (`HasAtmosphere`, orbit resources), `Game/data structures/ModuleType.cs` (`IsShipHullType` / `IsShuttleUnit` / `Underwater`), `Game/data structures/Exits.cs` / `ExitMode.cs` / `Region.cs` (region **Exits:** lines), `Game/data structures/Faction.cs` (blank line before `Bank report:`), `Game/reports/ReportWriter.cs` (faction report sections and blank lines), `Game/battle/Battles.cs` (blank line between consecutive battles), `Game/game/DataFile.cs` (`LoadLocationType`, `LoadOrders` / `SaveOrders` delegate to `OrderXml`), `Game/game/OrderXml.cs` (XML switch, including `jump`), `Game/game/ModuleTypeGroupXml.cs` (`RESEARCH GROUP` tokens), `Game/game/CatalogLoader.cs` (`planet-atmosphere`, `location-type`, `underwater`), `Game/game/Market.cs` (`GetPrice`, `payBuyer`, `availableFunds`), `Game/game/Market.Clearing.cs` (regional buy clearing, pro-rata), `Game/data structures/Offer.cs` (`GetEffectiveBidCap`, `MatchesAsk`), `Game/effects/Effects.cs` (`LoadXml` effect types), `Game/effects/Producing.cs` (omit empty `technology=`), each `Game/orders/*Order.Parse` / `Execute`. Sample prefix usage: `Tests/SampleGame/orders.*.txt`.
 
 Not source of truth: legacy Alderson docs in [`docs/legacy/alderson/`](../docs/legacy/alderson/). Turn order files are **Windows-1251** (same as reports). Verbs are case-insensitive; most arguments are not.
 
@@ -206,7 +206,7 @@ Turn-1 campaign stacks start **online** with crew already aboard nested modules.
 A stack marked **disabled** in the report is online but not yet operational — usually missing **crew**, **energy**, **fuel**, or **repairs**. Long orders (`USE`, `PRODUCE`, `REPAIR`, …) require `CanOperate`:
 
 - sufficient **crew** (`terran` items on the stack),
-- sufficient **energy** from the root production tree,
+- sufficient **energy** — from the stack’s own tree **and**, for same-owner **sharing root stacks in the same region**, from the **regional power pool** (see [Regional energy pool](#regional-energy-pool)),
 - sufficient **fuel** when the module consumes fuel,
 - **repaired** damage when modules are damaged,
 - other catalog **operate-in** conditions as applicable.
@@ -226,7 +226,7 @@ Before `@move` on any mobile `#modulestack`, ensure **in that same stack block**
 1. **Crew** — `@get` enough `**terran`** from HQ/cargo (or `@buy` at market) when `crew: required/0` or the unit was factory-built empty (`newN` stacks).
 2. **Fuel** — `@get` `**oil`** when the module lists fuel requirements (trucks `[trucks]`, tanks `[tanks]`, moblab `[msrvtm]`, shuttles). Ground units burn **oil** per catalog `fuel-requirements`.
 3. **Repairs** — run `**@repair`** (or `@use repair` tech) on the stack first when the report marks it **disabled** from **damage** (not just missing crew).
-4. **Energy** — nested or moving stacks neegd the root grant tree producing enough energy (`@produce energy` on cplant/wnplnt upstream); MOVE itself does not fix `crew: N/M` energy shortfalls on nested modules.
+4. **Energy** — run `@produce energy` on plants in the **same region** (sibling root stacks pool power with sharing on). Nested modules only draw from their **root tree** plus the regional pool, not from nested stacks under another faction’s city shell. If the region is short, lower-priority stacks shed copies first ([Regional energy pool](#regional-energy-pool)); use `set energy` to protect critical units. MOVE does not fix crew/energy shortfalls by itself.
 5. **Spaceships** — a hull without a **command bridge** (`spctrl`) cannot move at all. Large ships need enough command modules (1 bridge + 1 command module per 15 modules). Nest `use spctrl as new… for <hull-id>` (and drives, cargo) **before** `@move` / `@jump`. Surface↔orbit hops on atmospheres also need `**@get h2o2`** (oxyhydro launch surcharge) on the mover or nested cargo.
 
 **Order-file pattern:** under `#modulestack new1` (or any stack that will `move`), either list **`+get`** lines **under** the `move` line (GET runs first, then MOVE — preferred), or list one-shot `get` lines in the **same `#modulestack` block before** `move` if you do not need conditioning. Do not issue `move` alone on a freshly `USE`d module — it will stay disabled all quarter. Use `@move` only when you want the hop to retry every week until it succeeds.
@@ -309,8 +309,8 @@ grant item 10 titani to <sdrill-id>
 @use iminng
 
 #modulestack <factry-id>
-grant technology mcored to factory
-grant technology msrvtm to factory
+grant technology mcored to <factry-id>
+grant technology msrvtm to <factry-id>
 use mcored as new108 for <hq-id>
 +get 25 iron from <cargob-id>
 +get 10 titani from <cargob-id>
@@ -420,7 +420,7 @@ Player turn files use **text**. XML matters for saved games, not for `order.*` d
 
 ## Immediate orders
 
-ACTIVE, ACTIVATE, ALIAS, ATTACK, BUY, CAPTURE, CONTRACT, COPY, DECLARE, DEACTIVATE, DEPOSIT, FORM, GET, GIVE, GRANT, HAS, NAME, PRESS, SEE, SELL, SET, STACK, TACTIC, TRANSFER, WITHDRAW.
+ACTIVE, ACTIVATE, ALIAS, ATTACK, BUY, CAPTURE, CONTRACT, COPY, DECLARE, DEACTIVATE, DEPOSIT, ERASE, FORM, GET, GIVE, GRANT, HAS, NAME, PRESS, SEE, SELL, SET, STACK, TACTIC, TRANSFER, WITHDRAW.
 
 ### ACTIVE
 
@@ -510,7 +510,15 @@ Publishes a location contract, or withdraws one by id. GIVE pays the technology 
 
 **Subject:** modulestack (source).
 
-Copies the named catalog technology onto a receiver at the **same location**, if that receiver has remaining technology capacity. The leftover template prints `COPY <technology-id> TO <stack-id>` (alias while the receiver is unformed). Execute does **not** check that the source already holds it. `COPY all` is not implemented. Condition `COPY` on the `USE` that forms the receiver (`--copy … to newN` under `-use … as newN`) so it does not retry against an unformed stack.
+Copies the named catalog technology onto a receiver at the **same location**, if the **source stack already holds** that technology copy, and the receiver has remaining technology capacity. The source keeps its copy (use `ERASE` to drop a copy from a stack). The leftover template prints `COPY <technology-id> TO <stack-id>` (alias while the receiver is unformed). `COPY all` is not implemented. Condition `COPY` on the `USE` that forms the receiver (`--copy … to newN` under `-use … as newN`) so it does not retry against an unformed stack.
+
+### ERASE
+
+**Syntax:** `ERASE <technology-id>`
+
+**Subject:** modulestack.
+
+Removes one local copy of the named technology from the subject stack. Fails if the stack does not hold that copy. Frees technology capacity (`level` points per copy). Does not affect faction-wide “seen” technology or skills already granted.
 
 ### DECLARE
 
@@ -533,7 +541,7 @@ One-way stance. Attitudes (case-insensitive): `enemy`, `hostile`, `neutral`, `fr
 
 Turns active copies **player-inactive** (`module.Activated = false`). Optional quantity defaults to **all** activated copies. Same `N` / `ALL` / optional `MODULES` parsing as [ACTIVATE](#activate). Walks copies in stack order; skips copies already inactive. Succeeds only if at least one copy is deactivated.
 
-**Effect on stats:** inactive copies still count toward **mass**, **capacity**, and **capture** (`Quantity`, not `QuantityActive`). **Upkeep**, **energy production/requirement**, **crew requirement**, and **combat attack/defense** scale with `QuantityActive` only — same scaling as damage-disabled copies. Weekly **consume** (`ConsumeNetto`) still uses full `Quantity` (you cannot stop consumption by deactivating copies).
+**Effect on stats:** inactive copies still count toward **mass**, **capacity**, and **capture** (`Quantity`, not `QuantityActive`). **Upkeep**, **crew requirement**, and **combat attack/defense** scale with `QuantityActive`. **Energy production and draw** scale with **operable** activated copies (after regional priority shedding). Weekly **consume** (`ConsumeNetto`) still uses full `Quantity` (you cannot stop consumption by deactivating copies).
 
 **Reports:** stack header adds `, N module(s) inactive` when `QuantityInactive > 0`. Per-module detail shows **inactive** for `Activated=false` copies. Distinct from `**SET ONLINE FALSE`** (whole stack **deactivated**) and from damage **disabled** (online, activated, but too damaged or short crew/energy). In-progress long effects rescale duration when active copy count changes.
 
@@ -571,11 +579,15 @@ Moves cargo from a same-location holder into the subject if capacity allows. `ne
 
 ### GRANT
 
-**Syntax:** `GRANT technology <tech-id> TO <modulestack-id|person-id|factory>` · `GRANT item <quantity> <item-id> TO <modulestack-id>` · `GRANT skill <skill-id> TO <person-id>` · `GRANT module …`
+**Syntax:** `GRANT technology <tech-id> TO <modulestack-id|newN>` · `GRANT item <quantity> <item-id> TO <modulestack-id|newN>` · `GRANT skill <skill-id> TO <person-id>` · `GRANT module …`
 
-**Subject:** `#faction` or any owned `#modulestack` / `#person` (issuer is always that faction’s bank; debits per catalog copy cost).
+**Subject:** `#faction` or any owned `#modulestack` / `#person` (issuer is always that faction’s bank; debits per catalog copy cost). GRANT lines may appear directly under `#faction` (before any `#modulestack`) or inside a stack block.
 
-Economic bootstrap: buy technology copies onto the factory (`GRANT technology mcored TO factory`, `GRANT technology msrvtm TO factory`) and stage bulk items on a drill or cargo stack (`GRANT item 50 iron TO <sdrill-id>`, `GRANT item 10 titani TO <sdrill-id>`) **before** `@use iminng` / `use mcored as newN` so paid inputs exist the same quarter. Target may be a numeric stack id or the word `factory` for the grant’s factory stack.
+**TO target:** use the numeric **modulestack id** from the report or Orders template (e.g. `280005`), not aliases like `factory`, `cargob`, or `newN`.
+
+Economic bootstrap: buy technology copies onto the factory stack (`GRANT technology mcored TO <factry-id>`, `GRANT technology msrvtm TO <factry-id>`) and stage bulk items on a drill or cargo stack (`GRANT item 50 iron TO <sdrill-id>`, `GRANT item 10 titani TO <sdrill-id>`) **before** `@use iminng` / `use mcored as newN` so paid inputs exist the same quarter.
+
+Ground **`MOVE R…`** targets must be **adjacent grant exits** listed under the homeworld grant region in the Galaxy report (each `move` in a stack block must target a region listed under `Exits:` from the stack’s current region, starting at the grant cell).
 
 ### GIVE
 
@@ -661,21 +673,33 @@ Succeeds if that stack or person is at the observer’s location. Both person wo
 
 Lists a standing sell (`Offer`) and keeps a leftover `SELL` on the template. Matching is driven from the buy side; Execute does not complete the trade itself. `AT AVERAGE` uses `Market.GetPrice` (regional average if any region posted a price, else catalog nominal `value`, else 0). Sample: `-sell 1 wnplnt`. Same technology-id rule as BUY (no trailing `technology` word). NPC city auto-listings are `Offer`s only (no leftover `SELL`); see [Turn sequence](#turn-sequence).
 
+### Regional energy pool
+
+Same-owner **root** module stacks in one **region** with `Sharing=true` share one **energy pool**: production and demand from each root’s **whole nested tree** are totaled regionally. A wind plant as its own root stack can power a sibling factory root; nested `cplant` under your HQ tree does **not** pool to a separate root factory unless that factory is under the same root.
+
+When **nominal** regional demand exceeds supply, the engine reduces **operable module copies** stack by stack, highest **`EffectiveEnergyPriority`** first (tie-break: stack id). Defaults by module group are in [`docs/human/rules.md`](../docs/human/rules.md) (energy 0 … cargo/research 10). **`SET ENERGY <priority>`** overrides per stack; persisted as `energy-priority="…"` when not default.
+
+**Reports:** root stack detail uses regional totals for `energy: prod/required` when applicable. Stack header adds `, energy priority N` only when N ≠ default. **`not sharing`** excludes a root from the pool (cargo isolation and no regional power draw/contribution).
+
+Long-order failure when starved: `… has not enough energy to operate - {regional required} required, {regional nominal production} available.` (`LongOrder` / `HasRegionalEnergySurplus` on nominal totals).
+
 ### SET
 
 **Syntax:**
 
 - `SET AVOID|ONLINE|ALLOW BANK|SHARING|PATROL TRUE|FALSE`
+- `SET ENERGY <priority>`
 - `SET HOLD <quantity> <item-id>`
 
 **Subject:** modulestack.
 
-Flag name and `TRUE`/`FALSE` are **case-insensitive**; Parse stores the flag as uppercase `AVOID`, `ONLINE`, `ALLOW BANK`, `SHARING`, or `PATROL`.
+Flag name and `TRUE`/`FALSE` are **case-insensitive**; Parse stores the flag as uppercase `AVOID`, `ONLINE`, `ALLOW BANK`, `SHARING`, or `PATROL`. **`SET ENERGY`** takes a signed integer priority (see [Regional energy pool](#regional-energy-pool)).
 
 - `SET AVOID TRUE|FALSE` — sets `IsAvoiding`. Not a battle tactic (see `play/player/battle.md`).
 - `SET ONLINE TRUE|FALSE` — `ModuleStack.SetOnline`: stack `Online` and every `module.Online`. When `Online=false`, every copy reports **deactivated** and `QuantityOperational` is 0. Captured modules are left `Online=false`. Per-copy player shutdown is [DEACTIVATE](#deactivate); per-copy turn-on without changing `Online` is [ACTIVATE](#activate). Sample: `set online true`.
 - `SET ALLOW BANK TRUE|FALSE` — sets `AllowBank` on the stack (default **true** on new stacks and when the save omits `allow-bank`). When **false**, market buys and quarterly **cash upkeep** may spend only **local cash** on that stack — the faction bank is not debited (`HasBankAccess` is false). People nested on the stack inherit the parent’s setting. Sample: `set allow bank false` on a trading stack to cap market spend to withdrawn cash.
-- `SET SHARING TRUE|FALSE` — sets `Sharing` on the stack (default **true**). When **true**, other same-owner stacks in the same unit or region may draw that stack’s inventory (including nested stacks and crew-held items) to satisfy **USE** consume items, fuel, and quarterly upkeep after their own local `ItemStacks` are exhausted. When **false**, the stack is isolated (`not sharing` in reports). Sample: `set sharing false` on a private cargo reserve.
+- `SET SHARING TRUE|FALSE` — sets `Sharing` on the stack (default **true**). When **true**, other same-owner stacks in the same unit or region may draw that stack’s inventory (including nested stacks and crew-held items) to satisfy **USE** consume items, fuel, and quarterly upkeep after their own local `ItemStacks` are exhausted. The stack also joins the **regional energy pool** with other sharing **root** stacks in the region. When **false**, the stack is isolated (`not sharing` in reports; no regional power sharing). Sample: `set sharing false` on a private cargo reserve.
+- `SET ENERGY <priority>` — `ModuleStack.SetEnergyPriority`: override default shedding order for this stack ([Regional energy pool](#regional-energy-pool)). **Higher numbers shut down first.** Order XML: `<set flag-name="ENERGY" energy-priority="…"/>`. Sample: `set energy 15` on a spare factory so it sheds before default production (6); `set energy 2` on HQ/command to keep it powered longer than factories when the region is short.
 - `SET PATROL TRUE|FALSE` — sets `IsPatrolling` (default **false**). When **true**, an **armed operational root** stack in a region blocks **MOVE** entry by factions whose attitude toward the patroller’s owner is **hostile or enemy** (`PatrolGuard.FindBlocker`). Also blocks **NAME** on map objects for non-**ally** factions when a patroller is present. Persisted as `patrol="true"` on save. Sample: `set patrol true` on a garrison.
 - `SET HOLD <quantity> <item-id>` — `ModuleStack.SetItemHold`: reserves that many units of the item on this stack. Other stacks’ **GET** from this stack treat the reserve as unavailable (`GetOrder` subtracts `GetItemHold`). `SET HOLD 0 <item-id>` clears the reserve. Persisted as `<hold item-type="…" quantity="…">` on save. Immediate order (runs once when executed). Typical HQ pattern beside `@produce terran`: `set hold 20 terran` so outgoing **GET** cannot drain crew below 20.
 
@@ -799,6 +823,8 @@ Walks a route in one order — e.g. `move R00014 R00009` (Grant → Farm Belt �
 **Exit hints** (appended before the trailing period, only when you **own** the source region): `, anomaly detected` toward an unresolved anomaly cell; `, deep pocket of resources detected` when you hold **mcored** tech or core drill module in the source region and the destination has a deep pocket; `, settlement detected` when the destination region holds any settlement-group module (`town`, `city`, `metropoly`, dome variants). Hints do not name the settlement or its owner.
 
 **Orbit atmosphere line** (`Orbit.HasAtmosphere`): each orbit header ends with `, has atmosphere` or `, has no atmosphere`. True when the orbit has `<resource>` or `<race>` entries, or the parent planet/moon has races, or parent `atmosphere` ≠ `none` (any non-none band — thin, terair, hostile — counts). Optional `suitable for {race}` lists orbit and inherited body races.
+
+**Orbit resource line** (`Orbit.Report`): cloud-deck `Resources:` quantities (e.g. gas-giant `heliu3` / `deutrm`) appear only when your faction has a module stack **in that orbit** (`Orbit.Visible`, same rule as region surface resources). The atmosphere header still prints on parent planet/moon reports when the body is visible in the galaxy report.
 
 **Duration** (`movementDuration`) is not always the printed exit duration. Space hops use `SpaceTransit` (`Game/game/SpaceTransit.cs`). `JUMP` is a separate 1-week hop and does **not** use AU.
 

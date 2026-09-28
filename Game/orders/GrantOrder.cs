@@ -269,17 +269,40 @@ namespace SpaceAge
 				return true;
 			}
 
-			if (!ModuleStack.All.ContainsKey(this.TargetName))
+			ModuleStack targetStack;
+			if (!this.tryResolveModuleStackTarget(issuer, week, out targetStack))
+			{
+				return false;
+			}
+
+			this.TargetStack = targetStack;
+			return true;
+		}
+
+		private bool tryResolveModuleStackTarget(Faction issuer, int week, out ModuleStack targetStack)
+		{
+			targetStack = null;
+			if (ModuleStack.All.ContainsKey(this.TargetName))
+			{
+				targetStack = ModuleStack.All[this.TargetName];
+			}
+			else if (ModuleStack.IsValidUseOrderStackReference(this.TargetName))
+			{
+				targetStack = ModuleStack.All.GetOrCreateNewModuleStack(issuer, this.TargetName, true);
+			}
+			else
 			{
 				issuer.EventReports.Add(week, string.Format("GRANT failed. Unknown modulestack {0}.", this.TargetName));
 				return false;
 			}
-			this.TargetStack = ModuleStack.All[this.TargetName];
-			if (this.TargetStack.Owner != issuer)
+
+			if (targetStack.Owner != issuer)
 			{
 				issuer.EventReports.Add(week, string.Format("GRANT failed. Modulestack {0} is not owned by faction.", this.TargetName));
+				targetStack = null;
 				return false;
 			}
+
 			return true;
 		}
 

@@ -28,6 +28,8 @@ internal static class DraftRunCommand
         command.AddOption(CommandHelpers.VersionOption);
         command.AddOption(CommandHelpers.SkipIsolationAuditOption);
         command.AddOption(CommandHelpers.NoRecordAuditOption);
+        command.AddOption(CommandHelpers.MaxQualityAttemptsOption);
+        command.AddOption(CommandHelpers.StagedDraftOption);
 
         command.SetHandler(async (context) =>
         {
@@ -44,6 +46,9 @@ internal static class DraftRunCommand
             var topK = CommandHelpers.ResolveTopK(
                 settings,
                 context.ParseResult.GetValueForOption(CommandHelpers.TopOption));
+            var maxQualityAttempts = CommandHelpers.ResolveMaxQualityAttempts(
+                context.ParseResult.GetValueForOption(CommandHelpers.MaxQualityAttemptsOption));
+            var staged = context.ParseResult.GetValueForOption(CommandHelpers.StagedDraftOption);
             var skipAudit = context.ParseResult.GetValueForOption(CommandHelpers.SkipIsolationAuditOption);
             var recordAudit = !context.ParseResult.GetValueForOption(CommandHelpers.NoRecordAuditOption);
 
@@ -59,6 +64,9 @@ internal static class DraftRunCommand
             Console.WriteLine($"Factions:         {fromFaction}..{toFaction}");
             Console.WriteLine($"Draft mode:       {(dryRun ? "dry-run (prompt pack only)" : "full draft")}");
             Console.WriteLine($"Remote host:      {settings.IsRemoteHost}");
+            Console.WriteLine($"Top-k retrieval:  {topK}");
+            Console.WriteLine($"Quality retries:  {maxQualityAttempts}");
+            Console.WriteLine($"Staged draft:     {staged}");
 
             if (!skipAudit)
             {
@@ -163,6 +171,8 @@ internal static class DraftRunCommand
                             DryRun = dryRun,
                             TopK = topK,
                             DraftTurn = draftTurn,
+                            MaxQualityAttempts = maxQualityAttempts,
+                            UseStagedDraft = staged,
                         };
 
                         var result = await service.DraftAsync(request, cancellationToken);

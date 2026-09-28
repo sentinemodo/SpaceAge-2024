@@ -1,7 +1,7 @@
 ﻿{
   "sourcePath": "play/player/rules.md",
-  "sourceContentHash": "db2c6c1e321ce12870b7aa41ea23156156dff2ea23463272ca2b0bfa16e4c1e8",
-  "generatedAtUtc": "2026-09-27T19:00:23.9205886Z",
+  "sourceContentHash": "f45ef4cde2d2878a87f41386a97cd41139c8755004261b276f4fad14b2fa78ed",
+  "generatedAtUtc": "2026-09-28T15:31:05.8349362Z",
   "verbs": [
     "ACTIVATE",
     "ACTIVE",
@@ -14,6 +14,7 @@
     "DEACTIVATE",
     "DECLARE",
     "DEPOSIT",
+    "ERASE",
     "FORM",
     "GET",
     "GIVE",

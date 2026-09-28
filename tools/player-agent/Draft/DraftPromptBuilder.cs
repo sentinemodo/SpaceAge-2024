@@ -91,6 +91,7 @@ public static partial class DraftPromptBuilder
         }
 
         AppendStackCatalog(builder, reportText);
+        AppendGrantRegionNavigation(builder, reportText);
 
         if (!string.IsNullOrWhiteSpace(hints.TacticalObjective))
         {
@@ -127,12 +128,24 @@ public static partial class DraftPromptBuilder
         builder.AppendLine();
     }
 
+    private static void AppendGrantRegionNavigation(StringBuilder builder, string? reportText)
+    {
+        var table = ReportRegionGraph.FormatGrantRegionNavigationTable(reportText);
+        if (string.IsNullOrWhiteSpace(table))
+        {
+            return;
+        }
+
+        builder.AppendLine(table);
+        builder.AppendLine();
+    }
+
     private static string? DescribeAllowedVerbsForModuleType(string moduleType) =>
         moduleType.ToLowerInvariant() switch
         {
             "cplant" => "@produce energy only (never @use hcdril / iminng on cplant)",
             "wnplnt" => "@use wndtrb (never @use hcdril on wnplnt)",
-            "sdrill" => "@use hcdril and @use iminng",
+            "sdrill" => "one `@use` only: hcdril if grant Resources list carbon/oil; iminng if iron — never both on the same sdrill",
             "farms" => "@use farmng",
             "corphq" => "set hold 20 terran and @produce terran",
             "cargob" => "@get / sell lines (not @use hcdril)",
@@ -268,16 +281,22 @@ public static partial class DraftPromptBuilder
                 set hold 20 terran
                 @produce terran
 
+                #modulestack <wnplnt-id>
+                @produce energy
+                use wndtrb as new109 for <wnplnt-id>
+
                 #modulestack <sdrill-id>
                 grant item 50 iron to <sdrill-id>
                 grant item 10 titani to <sdrill-id>
-                @use hcdril
                 @use iminng
 
                 #modulestack <factry-id>
-                grant technology mcored to factory
-                grant technology msrvtm to factory
+                grant technology mcored to <factry-id>
+                grant technology msrvtm to <factry-id>
                 use mcored as new108 for <hq-id>
+                +get 25 iron from <cargob-id>
+                +get 10 titani from <cargob-id>
+                use msrvtm as new110 for <hq-id>
                 +get 25 iron from <cargob-id>
                 +get 10 titani from <cargob-id>
 
@@ -285,6 +304,12 @@ public static partial class DraftPromptBuilder
                 has 1 cdrill
                 -get 6 terran from <hq-id>
                 deactivate 1
+
+                #modulestack new110
+                move <ground-exit-from-table>
+                +get 1 terran from <hq-id>
+                +get 2 oil from <cargob-id>
+                +get 2 food from <cargob-id>
 
                 #modulestack <farms-id>
                 @use farmng
@@ -307,6 +332,7 @@ public static partial class DraftPromptBuilder
 
                 #modulestack <hq-id>
                 set hold 20 terran
+                grant item 16 terran to <hq-id>
                 @produce terran
 
                 #modulestack <cargob-id>
@@ -425,8 +451,8 @@ public static partial class DraftPromptBuilder
             return $"""
                 Write turn {hints.DraftTurn} orders for this faction.
                 Priority: `@produce energy` on cplant FIRST — HQ is often 80/80 with no headroom; do not activate a nested cdrill (+5 draw) until energy margin allows.
-                HQ: `set hold 20 terran` and `@produce terran`. Issue GRANT lines (bank debit) before bootstrap USE: `grant item 50 iron` + `grant item 10 titani` to <sdrill-id>, then `@use hcdril` + `@use iminng`.
-                Factory: `grant technology mcored to factory`, `grant technology msrvtm to factory`, then `use mcored as newNNN for <hq-id>` with `+get` 25 iron / 10 titani from cargob; on `#modulestack newNNN`: `has 1 cdrill`, `-get` 6 terran, `deactivate 1`.
+                HQ: `set hold 20 terran` and `@produce terran`. Issue GRANT lines (bank debit) before bootstrap USE: `grant item 50 iron` + `grant item 10 titani` to <sdrill-id>. Sdrill: **one** `@use` only — `@use hcdril` if grant Resources lists carbon/oil; `@use iminng` if iron — never both on the same sdrill stack.
+                Factory: `grant technology mcored to <factry-id>`, `grant technology msrvtm to <factry-id>` (numeric stack id — GRANT may sit under `#faction` or `#modulestack`), then `use mcored as newNNN for <hq-id>` with `+get` 25 iron / 10 titani from cargob; on `#modulestack newNNN`: `has 1 cdrill`, `-get` 6 terran, `deactivate 1`. Ground `move R…` targets must be listed under Exits from the grant region in the report.
                 Cargob: `@get all food/carbon`, sell surplus food. Turn 2+: msrvtm/moblab scout when energy allows; defer UN town charters until home grant is maxed.
                 Use only stack ids from the Orders template. Lowercase immediate verbs (grant, get, use); leftover lines use @ prefix.
                 """;

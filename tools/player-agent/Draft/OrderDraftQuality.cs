@@ -114,6 +114,66 @@ public static partial class OrderDraftQuality
 
 
 
+        if (HasMoveRegionReachabilityViolations(orderText, reportText))
+
+        {
+
+            return false;
+
+        }
+
+
+
+        if (HasGrantTargetViolations(orderText, reportText))
+
+        {
+
+            return false;
+
+        }
+
+
+
+        if (HasWindGrantDrillViolations(orderText, reportText, personaPreference))
+
+        {
+
+            return false;
+
+        }
+
+
+
+        if (HasDrillUseResourceViolations(orderText, reportText))
+
+        {
+
+            return false;
+
+        }
+
+
+
+        if (HasCombinedDrillUseViolations(orderText))
+
+        {
+
+            return false;
+
+        }
+
+
+
+        if (HasEnergyStagingViolations(orderText, reportText))
+
+        {
+
+            return false;
+
+        }
+
+
+
         if (HasUseTechPlacementViolations(orderText, reportText))
 
         {
@@ -194,7 +254,7 @@ public static partial class OrderDraftQuality
 
 
 
-        if (HasMilitaryPersonaViolations(orderText, personaPreference))
+        if (HasMilitaryPersonaViolations(orderText, personaPreference, reportText))
 
         {
 
@@ -204,7 +264,7 @@ public static partial class OrderDraftQuality
 
 
 
-        if (HasAbsentPlayerPersonaViolations(orderText, personaPreference))
+        if (HasAbsentPlayerPersonaViolations(orderText, personaPreference, reportText))
 
         {
 
@@ -214,7 +274,7 @@ public static partial class OrderDraftQuality
 
 
 
-        if (HasEconomicPersonaViolations(orderText, personaPreference))
+        if (HasEconomicPersonaViolations(orderText, personaPreference, reportText))
 
         {
 
@@ -224,7 +284,7 @@ public static partial class OrderDraftQuality
 
 
 
-        if (HasResearcherPersonaViolations(orderText, personaPreference))
+        if (HasResearcherPersonaViolations(orderText, personaPreference, reportText))
 
         {
 
@@ -489,6 +549,188 @@ public static partial class OrderDraftQuality
     public static bool HasMoveReadinessViolations(string orderText) =>
 
         DescribeMoveReadinessViolations(orderText).Count > 0;
+
+
+
+    public static bool HasMoveRegionReachabilityViolations(string orderText, string? reportText) =>
+
+        DescribeMoveRegionReachabilityViolations(orderText, reportText).Count > 0;
+
+
+
+    public static IReadOnlyList<string> DescribeMoveRegionReachabilityViolations(string orderText, string? reportText)
+
+    {
+
+        var violations = new List<string>();
+
+        if (string.IsNullOrWhiteSpace(reportText))
+
+        {
+
+            return violations;
+
+        }
+
+
+
+        var grantRegion = ReportRegionGraph.ParseGrantRegionId(reportText);
+
+        var adjacency = ReportRegionGraph.ParseGroundRegionAdjacency(reportText);
+
+        if (grantRegion is null || adjacency.Count == 0)
+
+        {
+
+            return violations;
+
+        }
+
+
+
+        foreach (var block in ParseModuleStackBlocks(orderText))
+
+        {
+
+            var location = grantRegion;
+
+            foreach (var line in block.Lines)
+
+            {
+
+                if (!IsMoveLine(line))
+
+                {
+
+                    continue;
+
+                }
+
+
+
+                if (OrbitHopRegex().IsMatch(line))
+
+                {
+
+                    continue;
+
+                }
+
+
+
+                var dest = ExtractGroundMoveRegionId(line);
+
+                if (dest is null)
+
+                {
+
+                    continue;
+
+                }
+
+
+
+                if (location is null
+
+                    || !adjacency.TryGetValue(location, out var exits)
+
+                    || !exits.Contains(dest))
+
+                {
+
+                    violations.Add(
+
+                        $"stack {block.StackId}: `move {dest}` is not reachable from {location ?? grantRegion} — pick a region listed under Exits in the grant report.");
+
+                }
+
+
+
+                location = dest;
+
+            }
+
+        }
+
+
+
+        return violations;
+
+    }
+
+
+
+    public static bool HasGrantTargetViolations(string orderText, string? reportText = null) =>
+
+        DescribeGrantTargetViolations(orderText, reportText).Count > 0;
+
+
+
+    public static IReadOnlyList<string> DescribeGrantTargetViolations(string orderText, string? reportText = null)
+
+    {
+
+        var violations = new List<string>();
+
+        foreach (Match match in GrantOrderLineRegex().Matches(orderText))
+
+        {
+
+            var target = match.Groups[1].Value.Trim();
+
+            if (IsNumericStackId(target))
+
+            {
+
+                continue;
+
+            }
+
+
+
+            violations.Add(
+
+                $"GRANT target `{target}` must be a numeric modulestack id from the report (not `factory`, `cargob`, or `newN`). GRANT may appear under `#faction` or `#modulestack`.");
+
+        }
+
+
+
+        return violations;
+
+    }
+
+
+
+    private static bool IsNumericStackId(string target) =>
+
+        target.Length > 0 && target.All(char.IsDigit);
+
+
+
+    private static string? ExtractGroundMoveRegionId(string line)
+
+    {
+
+        var trimmed = StripOrderPrefixes(line).TrimStart();
+
+        if (!trimmed.StartsWith("move ", StringComparison.OrdinalIgnoreCase)
+
+            && !trimmed.StartsWith("@move ", StringComparison.OrdinalIgnoreCase))
+
+        {
+
+            return null;
+
+        }
+
+
+
+        var match = GroundMoveRegionRegex().Match(trimmed);
+
+        return match.Success ? match.Groups[1].Value.ToUpperInvariant() : null;
+
+    }
 
 
 
@@ -1246,7 +1488,7 @@ public static partial class OrderDraftQuality
 
 
 
-    public static bool HasMilitaryPersonaViolations(string orderText, string? personaPreference)
+    public static bool HasMilitaryPersonaViolations(string orderText, string? personaPreference, string? reportText = null)
 
     {
 
@@ -1260,13 +1502,13 @@ public static partial class OrderDraftQuality
 
 
 
-        return DescribeMilitaryPersonaViolations(orderText).Count > 0;
+        return DescribeMilitaryPersonaViolations(orderText, reportText).Count > 0;
 
     }
 
 
 
-    public static IReadOnlyList<string> DescribeMilitaryPersonaViolations(string orderText)
+    public static IReadOnlyList<string> DescribeMilitaryPersonaViolations(string orderText, string? reportText = null)
 
     {
 
@@ -1340,6 +1582,66 @@ public static partial class OrderDraftQuality
 
 
 
+        var bankBalance = ReportRegionGraph.ParseBankBalance(reportText);
+
+        if (bankBalance is >= 5000)
+
+        {
+
+            var terranPullFromHq = 0;
+
+            foreach (Match match in TerranGetFromHqRegex().Matches(orderText))
+
+            {
+
+                if (int.TryParse(match.Groups[1].Value, out var qty))
+
+                {
+
+                    terranPullFromHq += qty;
+
+                }
+
+            }
+
+
+
+            var hqTerranOnHand = 20;
+
+            var grantedTerran = 0;
+
+            foreach (Match match in GrantTerranRegex().Matches(orderText))
+
+            {
+
+                if (int.TryParse(match.Groups[1].Value, out var qty))
+
+                {
+
+                    grantedTerran += qty;
+
+                }
+
+            }
+
+
+
+            if (terranPullFromHq > hqTerranOnHand + grantedTerran)
+
+            {
+
+                var need = terranPullFromHq - hqTerranOnHand;
+
+                violations.Add(
+
+                    $"military persona: tank squads pull {terranPullFromHq} terran from HQ but only ~{hqTerranOnHand} start on grant — `grant item {need} terran to <hq-id>` (bank ≥ 5000) before `-get … terran …` on `has 1 tanks` blocks.");
+
+            }
+
+        }
+
+
+
         return violations;
 
     }
@@ -1354,7 +1656,303 @@ public static partial class OrderDraftQuality
 
 
 
-    public static bool HasAbsentPlayerPersonaViolations(string orderText, string? personaPreference)
+    public static bool HasDrillUseResourceViolations(string orderText, string? reportText) =>
+
+        DescribeDrillUseResourceViolations(orderText, reportText).Count > 0;
+
+
+
+    public static IReadOnlyList<string> DescribeDrillUseResourceViolations(string orderText, string? reportText)
+
+    {
+
+        var violations = new List<string>();
+
+        if (string.IsNullOrWhiteSpace(reportText))
+
+        {
+
+            return violations;
+
+        }
+
+
+
+        var grantResources = ReportRegionGraph.ParseGrantRegionResourceIds(reportText);
+
+        if (grantResources.Count == 0)
+
+        {
+
+            return violations;
+
+        }
+
+
+
+        foreach (var block in ParseModuleStackBlocks(orderText))
+
+        {
+
+            var blockText = string.Join('\n', block.Lines);
+
+            if (!Regex.IsMatch(blockText, @"@use\s+(hcdril|iminng)\b", RegexOptions.IgnoreCase))
+
+            {
+
+                continue;
+
+            }
+
+            if (Regex.IsMatch(blockText, @"@use\s+hcdril\b", RegexOptions.IgnoreCase)
+
+                && !grantResources.Contains("carbon")
+
+                && !grantResources.Contains("oil"))
+
+            {
+
+                violations.Add(
+
+                    $"stack {block.StackId}: `@use hcdril` needs carbon or oil in the grant region Resources line — this cell has neither; use `@use iminng` only when iron is listed (Anvil/wind grants).");
+
+            }
+
+
+
+            if (Regex.IsMatch(blockText, @"@use\s+iminng\b", RegexOptions.IgnoreCase)
+
+                && !grantResources.Contains("iron"))
+
+            {
+
+                violations.Add(
+
+                    $"stack {block.StackId}: `@use iminng` needs iron in the grant region Resources line — omit iminng or GRANT iron for factory staging only, not surface mining.");
+
+            }
+
+        }
+
+
+
+        return violations;
+
+    }
+
+
+
+    public static bool HasCombinedDrillUseViolations(string orderText) =>
+
+        DescribeCombinedDrillUseViolations(orderText).Count > 0;
+
+
+
+    public static IReadOnlyList<string> DescribeCombinedDrillUseViolations(string orderText)
+
+    {
+
+        var violations = new List<string>();
+
+        foreach (var block in ParseModuleStackBlocks(orderText))
+
+        {
+
+            var blockText = string.Join('\n', block.Lines);
+
+            if (Regex.IsMatch(blockText, @"@use\s+hcdril\b", RegexOptions.IgnoreCase)
+
+                && Regex.IsMatch(blockText, @"@use\s+iminng\b", RegexOptions.IgnoreCase))
+
+            {
+
+                violations.Add(
+
+                    $"stack {block.StackId}: do not combine `@use hcdril` and `@use iminng` on one sdrill — the engine runs hydrocarbons first and iminng never executes; pick one tech matching grant region resources.");
+
+            }
+
+        }
+
+
+
+        return violations;
+
+    }
+
+
+
+    public static bool HasEnergyStagingViolations(string orderText, string? reportText) =>
+
+        DescribeEnergyStagingViolations(orderText, reportText).Count > 0;
+
+
+
+    public static IReadOnlyList<string> DescribeEnergyStagingViolations(string orderText, string? reportText)
+
+    {
+
+        var violations = new List<string>();
+
+        if (string.IsNullOrWhiteSpace(reportText))
+
+        {
+
+            return violations;
+
+        }
+
+
+
+        if (!Regex.IsMatch(orderText, @"\buse\s+mcored\b", RegexOptions.IgnoreCase)
+
+            || !Regex.IsMatch(orderText, @"\bhas\s+1\s+cdrill\b", RegexOptions.IgnoreCase))
+
+        {
+
+            return violations;
+
+        }
+
+
+
+        var windGrant = ReportStackCatalog.GrantUsesWindPowerPlant(reportText);
+
+        var wnplntId = ReportStackCatalog.FindStackIdByModuleType(reportText, "wnplnt");
+
+        var cplantId = ReportStackCatalog.FindStackIdByModuleType(reportText, "cplant");
+
+
+
+        if (windGrant && wnplntId is not null)
+
+        {
+
+            if (!Regex.IsMatch(orderText, $@"#\s*modulestack\s+{Regex.Escape(wnplntId)}\b", RegexOptions.IgnoreCase)
+
+                || !Regex.IsMatch(orderText, @"@produce\s+energy", RegexOptions.IgnoreCase))
+
+            {
+
+                violations.Add(
+
+                    $"energy: nested cdrill under `use mcored` needs `#modulestack {wnplntId}` with `@produce energy` before activation — grant tree is energy-starved.");
+
+            }
+
+
+
+            if (!Regex.IsMatch(orderText, @"\buse\s+wndtrb\b", RegexOptions.IgnoreCase))
+
+            {
+
+                violations.Add(
+
+                    $"energy: after mcored/cdrill staging on Anvil, expand wind on `#modulestack {wnplntId}` — `use wndtrb as newN for {wnplntId}` (then `@produce energy`) so nested modules can activate.");
+
+            }
+
+        }
+
+        else if (!windGrant && cplantId is not null
+
+            && !Regex.IsMatch(orderText, $@"#\s*modulestack\s+{Regex.Escape(cplantId)}\b[\s\S]*?@produce\s+energy", RegexOptions.IgnoreCase))
+
+        {
+
+            violations.Add(
+
+                $"energy: nested cdrill under `use mcored` needs `#modulestack {cplantId}` with `@produce energy` (and sdrill `@use hcdril` + cargob carbon) before `-get` terran on the cdrill nest.");
+
+        }
+
+
+
+        return violations;
+
+    }
+
+
+
+    public static bool HasWindGrantDrillViolations(string orderText, string? reportText, string? personaPreference) =>
+
+        DescribeWindGrantDrillViolations(orderText, reportText, personaPreference).Count > 0;
+
+
+
+    public static IReadOnlyList<string> DescribeWindGrantDrillViolations(
+
+        string orderText,
+
+        string? reportText,
+
+        string? personaPreference)
+
+    {
+
+        var violations = new List<string>();
+
+        if (!ReportStackCatalog.GrantUsesWindPowerPlant(reportText))
+
+        {
+
+            return violations;
+
+        }
+
+
+
+        if (Regex.IsMatch(orderText, @"@use\s+hcdril\b", RegexOptions.IgnoreCase))
+
+        {
+
+            violations.Add(
+
+                "wind-grant (Anvil): do not `@use hcdril` — that mines carbon for coal plants. Use `@use iminng` on the sdrill for iron (and other metals); energy comes from `#modulestack <wnplnt-id>` `@produce energy`.");
+
+        }
+
+
+
+        if (string.Equals(personaPreference, "absent-player", StringComparison.OrdinalIgnoreCase))
+
+        {
+
+            return violations;
+
+        }
+
+
+
+        var sdrillId = ReportStackCatalog.FindStackIdByModuleType(reportText, "sdrill");
+
+        var hasSdrillStackBlock = sdrillId is not null
+
+            && Regex.IsMatch(orderText, $@"#\s*modulestack\s+{Regex.Escape(sdrillId)}\b", RegexOptions.IgnoreCase);
+
+
+
+        if ((hasSdrillStackBlock || EconomicBootstrapPlan(orderText) || MilitaryOffensivePlan(orderText) || ResearchBootstrapPlan(orderText))
+
+            && !Regex.IsMatch(orderText, @"@use\s+iminng\b", RegexOptions.IgnoreCase))
+
+        {
+
+            violations.Add(
+
+                "wind-grant (Anvil): `#modulestack <sdrill-id>` needs `@use iminng` for iron/copper/silicium — not `@use hcdril` (carbon/coal path is for Arbor cplant grants).");
+
+        }
+
+
+
+        return violations;
+
+    }
+
+
+
+    public static bool HasAbsentPlayerPersonaViolations(string orderText, string? personaPreference, string? reportText = null)
 
     {
 
@@ -1368,19 +1966,21 @@ public static partial class OrderDraftQuality
 
 
 
-        return DescribeAbsentPlayerPersonaViolations(orderText).Count > 0;
+        return DescribeAbsentPlayerPersonaViolations(orderText, reportText).Count > 0;
 
     }
 
 
 
-    public static IReadOnlyList<string> DescribeAbsentPlayerPersonaViolations(string orderText)
+    public static IReadOnlyList<string> DescribeAbsentPlayerPersonaViolations(string orderText, string? reportText = null)
 
     {
 
         var violations = new List<string>();
 
         var upper = orderText.ToUpperInvariant();
+
+        var windGrant = ReportStackCatalog.GrantUsesWindPowerPlant(reportText);
 
 
 
@@ -1420,7 +2020,7 @@ public static partial class OrderDraftQuality
 
 
 
-        if (!Regex.IsMatch(orderText, @"@use\s+hcdril\b", RegexOptions.IgnoreCase))
+        if (!windGrant && !Regex.IsMatch(orderText, @"@use\s+hcdril\b", RegexOptions.IgnoreCase))
 
         {
 
@@ -1432,7 +2032,7 @@ public static partial class OrderDraftQuality
 
 
 
-        if (!Regex.IsMatch(orderText, @"@get\s+all\s+carbon\s+from\s+\d+", RegexOptions.IgnoreCase))
+        if (!windGrant && !Regex.IsMatch(orderText, @"@get\s+all\s+carbon\s+from\s+\d+", RegexOptions.IgnoreCase))
 
         {
 
@@ -1462,7 +2062,7 @@ public static partial class OrderDraftQuality
 
 
 
-    public static bool HasEconomicPersonaViolations(string orderText, string? personaPreference)
+    public static bool HasEconomicPersonaViolations(string orderText, string? personaPreference, string? reportText = null)
 
     {
 
@@ -1476,13 +2076,13 @@ public static partial class OrderDraftQuality
 
 
 
-        return DescribeEconomicPersonaViolations(orderText).Count > 0;
+        return DescribeEconomicPersonaViolations(orderText, reportText).Count > 0;
 
     }
 
 
 
-    public static IReadOnlyList<string> DescribeEconomicPersonaViolations(string orderText)
+    public static IReadOnlyList<string> DescribeEconomicPersonaViolations(string orderText, string? reportText = null)
 
     {
 
@@ -1504,7 +2104,7 @@ public static partial class OrderDraftQuality
 
             violations.Add(
 
-                "economic persona: `grant technology mcored to factory` (or stack id) before `use mcored as newN` — pays for the factory tech copy.");
+                "economic persona: `grant technology mcored to <factry-stack-id>` before `use mcored as newN` — pays for the factory tech copy.");
 
         }
 
@@ -1516,7 +2116,7 @@ public static partial class OrderDraftQuality
 
             violations.Add(
 
-                "economic persona: `grant technology msrvtm to factory` before moblab/scout builds — stages the mobile-lab copy on the factory.");
+                "economic persona: `grant technology msrvtm to <factry-stack-id>` before moblab/scout builds — stages the mobile-lab copy on the factory.");
 
         }
 
@@ -1546,6 +2146,20 @@ public static partial class OrderDraftQuality
 
 
 
+        if (Regex.IsMatch(orderText, @"grant\s+technology\s+msrvtm\b", RegexOptions.IgnoreCase)
+
+            && !Regex.IsMatch(orderText, @"\buse\s+msrvtm\s+as\s+new\d+", RegexOptions.IgnoreCase))
+
+        {
+
+            violations.Add(
+
+                "economic persona: after `grant technology msrvtm`, build a mobile survey lab — `use msrvtm as newN for <hq-id>` with `+get` iron/titani, then `move` the moblab toward the nearest deep metal pocket and copy `mcored` onto it.");
+
+        }
+
+
+
         return violations;
 
     }
@@ -1560,7 +2174,7 @@ public static partial class OrderDraftQuality
 
 
 
-    public static bool HasResearcherPersonaViolations(string orderText, string? personaPreference)
+    public static bool HasResearcherPersonaViolations(string orderText, string? personaPreference, string? reportText = null)
 
     {
 
@@ -1574,13 +2188,13 @@ public static partial class OrderDraftQuality
 
 
 
-        return DescribeResearcherPersonaViolations(orderText).Count > 0;
+        return DescribeResearcherPersonaViolations(orderText, reportText).Count > 0;
 
     }
 
 
 
-    public static IReadOnlyList<string> DescribeResearcherPersonaViolations(string orderText)
+    public static IReadOnlyList<string> DescribeResearcherPersonaViolations(string orderText, string? reportText = null)
 
     {
 
@@ -1632,13 +2246,15 @@ public static partial class OrderDraftQuality
 
 
 
-        if (Regex.IsMatch(orderText, @"@use\s+iminng\b", RegexOptions.IgnoreCase))
+        if (!ReportStackCatalog.GrantUsesWindPowerPlant(reportText)
+
+            && Regex.IsMatch(orderText, @"@use\s+iminng\b", RegexOptions.IgnoreCase))
 
         {
 
             violations.Add(
 
-                "researcher persona: use `@use hcdril` on sdrill for coal; defer `@use iminng` until after the survey column is staged.");
+                "researcher persona (Arbor/coal grant): use `@use hcdril` on sdrill for carbon; defer `@use iminng` until after the survey column is staged.");
 
         }
 
@@ -1846,6 +2462,10 @@ public static partial class OrderDraftQuality
 
             feedbackLines.AddRange(DescribeMoveReadinessViolations(orderText).Select(violation => "  - " + violation));
 
+            feedbackLines.AddRange(DescribeMoveRegionReachabilityViolations(orderText, reportText).Select(violation => "  - " + violation));
+
+            feedbackLines.AddRange(DescribeGrantTargetViolations(orderText, reportText).Select(violation => "  - " + violation));
+
             feedbackLines.AddRange(DescribeUseTechPlacementViolations(orderText, reportText).Select(violation => "  - " + violation));
 
             feedbackLines.AddRange(DescribeInvalidItemTypeViolations(orderText).Select(violation => "  - " + violation));
@@ -1862,13 +2482,21 @@ public static partial class OrderDraftQuality
 
             feedbackLines.AddRange(DescribeSetHoldViolations(orderText).Select(violation => "  - " + violation));
 
-            feedbackLines.AddRange(DescribeMilitaryPersonaViolations(orderText).Select(violation => "  - " + violation));
+            feedbackLines.AddRange(DescribeMilitaryPersonaViolations(orderText, reportText).Select(violation => "  - " + violation));
 
-            feedbackLines.AddRange(DescribeAbsentPlayerPersonaViolations(orderText).Select(violation => "  - " + violation));
+            feedbackLines.AddRange(DescribeAbsentPlayerPersonaViolations(orderText, reportText).Select(violation => "  - " + violation));
 
-            feedbackLines.AddRange(DescribeEconomicPersonaViolations(orderText).Select(violation => "  - " + violation));
+            feedbackLines.AddRange(DescribeWindGrantDrillViolations(orderText, reportText, personaPreference).Select(violation => "  - " + violation));
 
-            feedbackLines.AddRange(DescribeResearcherPersonaViolations(orderText).Select(violation => "  - " + violation));
+            feedbackLines.AddRange(DescribeDrillUseResourceViolations(orderText, reportText).Select(violation => "  - " + violation));
+
+            feedbackLines.AddRange(DescribeCombinedDrillUseViolations(orderText).Select(violation => "  - " + violation));
+
+            feedbackLines.AddRange(DescribeEnergyStagingViolations(orderText, reportText).Select(violation => "  - " + violation));
+
+            feedbackLines.AddRange(DescribeEconomicPersonaViolations(orderText, reportText).Select(violation => "  - " + violation));
+
+            feedbackLines.AddRange(DescribeResearcherPersonaViolations(orderText, reportText).Select(violation => "  - " + violation));
 
         }
 
@@ -1970,7 +2598,7 @@ public static partial class OrderDraftQuality
 
               - sdrill: `grant item 50 iron` + `grant item 10 titani` to drill id, then `@use hcdril` + `@use iminng`
 
-              - factory: `grant technology mcored to factory`, `grant technology msrvtm to factory`, then `use mcored as newNNN for <hq-id>` with `+get` iron/titani from cargob
+              - factory stack id: `grant technology mcored to <factry-id>`, `grant technology msrvtm to <factry-id>`, then `use mcored as newNNN for <hq-id>` with `+get` iron/titani from cargob
 
               - `#modulestack newNNN`: `has 1 cdrill`, `-get` 6 terran, `deactivate 1`; cargob `@get all` + sell food
 
@@ -2607,6 +3235,30 @@ public static partial class OrderDraftQuality
     [GeneratedRegex(@"\b(O\d+|P\d+|M\d+)\b", RegexOptions.IgnoreCase)]
 
     private static partial Regex OrbitHopRegex();
+
+
+
+    [GeneratedRegex(@"(?im)^\s*grant\s+(?:technology|item|skill)\s+.+?\s+to\s+(\S+)\s*$")]
+
+    private static partial Regex GrantOrderLineRegex();
+
+
+
+    [GeneratedRegex(@"\bmove\s+(R\d+)\b", RegexOptions.IgnoreCase)]
+
+    private static partial Regex GroundMoveRegionRegex();
+
+
+
+    [GeneratedRegex(@"\-get\s+(\d+)\s+terran\b", RegexOptions.IgnoreCase)]
+
+    private static partial Regex TerranGetFromHqRegex();
+
+
+
+    [GeneratedRegex(@"grant\s+item\s+(\d+)\s+terran\s+to\s+\d+", RegexOptions.IgnoreCase)]
+
+    private static partial Regex GrantTerranRegex();
 
 }
 

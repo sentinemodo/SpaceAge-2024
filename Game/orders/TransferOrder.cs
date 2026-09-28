@@ -421,7 +421,10 @@ namespace SpaceAge
 			if (sourceStack.Quantity == 0)
 			{
 				sourceStack.ModuleType = null;
-				ModuleStack.All.Remove(sourceStack);
+				if (ModuleStack.All.ContainsKey(sourceStack.Name))
+				{
+					ModuleStack.All.Remove(sourceStack);
+				}
 			}
 		}
 

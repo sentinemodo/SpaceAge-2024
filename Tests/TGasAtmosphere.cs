@@ -177,6 +177,22 @@ namespace UnitTests
 		}
 
 		[Test]
+		public void OrbitReport_GasGiantResources_OnlyWhenFactionHasStacksInOrbit()
+		{
+			this.LoadGasAtmosphereWorld();
+
+			Orbit gasOrbit = Orbit.All["O00002"];
+			Faction outsider = new Faction("3", "Outsider");
+
+			string absentReport = string.Join("\n", gasOrbit.Report(outsider));
+			Assert.That(absentReport, Does.Not.Contain("Resources:"));
+
+			string presentReport = string.Join("\n", gasOrbit.Report(this.game.Factions["2"]));
+			Assert.That(presentReport, Does.Contain("Resources:"));
+			Assert.That(presentReport, Does.Contain("heliu3"));
+		}
+
+		[Test]
 		public void ExecuteUseOrder_FisheryHarvestOnTerairSea_Succeeds()
 		{
 			this.LoadGasAtmosphereWorld();

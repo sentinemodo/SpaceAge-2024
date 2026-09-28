@@ -25,6 +25,8 @@ internal static class DraftCommand
         command.AddOption(CommandHelpers.YesOption);
         command.AddOption(CommandHelpers.DryRunOption);
         command.AddOption(CommandHelpers.TopOption);
+        command.AddOption(CommandHelpers.MaxQualityAttemptsOption);
+        command.AddOption(CommandHelpers.StagedDraftOption);
 
         command.SetHandler(async (context) =>
         {
@@ -47,6 +49,9 @@ internal static class DraftCommand
             var topK = CommandHelpers.ResolveTopK(
                 settings,
                 context.ParseResult.GetValueForOption(CommandHelpers.TopOption));
+            var maxQualityAttempts = CommandHelpers.ResolveMaxQualityAttempts(
+                context.ParseResult.GetValueForOption(CommandHelpers.MaxQualityAttemptsOption));
+            var staged = context.ParseResult.GetValueForOption(CommandHelpers.StagedDraftOption);
 
             var repoRoot = RepoPaths.FindRepositoryRoot();
 
@@ -77,6 +82,8 @@ internal static class DraftCommand
             Console.WriteLine($"Story:            {storyPath ?? "(none)"}");
             Console.WriteLine($"Remote host:      {settings.IsRemoteHost}");
             Console.WriteLine($"Top-k retrieval:  {topK}");
+            Console.WriteLine($"Quality retries:  {maxQualityAttempts}");
+            Console.WriteLine($"Staged draft:     {staged}");
 
             var request = new OrderDraftRequest
             {
@@ -91,6 +98,8 @@ internal static class DraftCommand
                 DryRun = dryRun,
                 TopK = topK,
                 DraftTurn = draftTurn,
+                MaxQualityAttempts = maxQualityAttempts,
+                UseStagedDraft = staged,
             };
 
             var factionIds = new[] { factionIdValue };

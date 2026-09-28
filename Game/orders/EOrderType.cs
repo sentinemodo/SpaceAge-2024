@@ -17,6 +17,7 @@ namespace SpaceAge
 		declare,
 		deactivate,
 		deposit,
+		erase,
 		form,
 		grant,
 		get,

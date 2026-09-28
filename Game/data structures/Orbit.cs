@@ -93,7 +93,7 @@ namespace SpaceAge
                 { this.reportHeader(), level }
             };
 
-			if (this.resources.Count > 0)
+			if (this.resources.Count > 0 && this.Visible(faction))
 			{
 				reportLines.Add(this.Resources.Report, level);
 			}
@@ -175,7 +175,19 @@ namespace SpaceAge
 
 		public bool Visible(Faction faction)
 		{
-			return true;
+			if (faction == null)
+			{
+				return true;
+			}
+			if (faction.FullName == "NPC")
+			{
+				return true;
+			}
+			if (this.ModuleStacks.Contains(faction))
+			{
+				return true;
+			}
+			return false;
 		}
 	}
 }

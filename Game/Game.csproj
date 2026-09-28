@@ -210,6 +210,7 @@
     <Compile Include="data structures\ModuleStack.Relations.cs" />
     <Compile Include="data structures\ModuleStack.Reporting.cs" />
     <Compile Include="data structures\ModuleStack.Sharing.cs" />
+    <Compile Include="data structures\ModuleEnergyPriority.cs" />
     <Compile Include="data structures\ModuleStack.Energy.cs" />
     <Compile Include="data structures\ModuleStack.Upkeep.cs" />
     <Compile Include="data structures\ModuleStack.Xml.cs" />
@@ -252,6 +253,7 @@
     <Compile Include="orders\TransferRegionWarning.cs" />
     <Compile Include="orders\GetOrder.cs" />
     <Compile Include="orders\CopyOrder.cs" />
+    <Compile Include="orders\EraseOrder.cs" />
     <Compile Include="orders\GrantOrder.cs" />
     <Compile Include="orders\ContractOrder.cs" />
     <Compile Include="orders\PressOrder.cs" />

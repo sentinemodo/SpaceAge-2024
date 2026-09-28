@@ -186,9 +186,9 @@ namespace SpaceAge
 				{
 					operable = Math.Min(operable, this.CrewCurrent / this.ModuleType.CrewRequired);
 				}
-				if (this.IsRootModuleStack && this.ModuleType.EnergyRequired > 0)
+				if (this.ModuleType.EnergyRequired > 0)
 				{
-					operable = Math.Min(operable, this.regionalEnergyOperableCap(this.QuantityActive));
+					operable = Math.Min(operable, this.energyOperableModuleCount());
 				}
 				return Math.Max(operable, 0);
 			}
@@ -506,6 +506,25 @@ namespace SpaceAge
 			}
 
 			return null;
+		}
+
+		public bool RemoveTechnologyCopy(Technology technology)
+		{
+			if (technology == null || !this.Technologies.Contains(technology.Name))
+			{
+				return false;
+			}
+
+			for (int i = this.technologies.Count - 1; i >= 0; i--)
+			{
+				if (this.technologies[i].Name == technology.Name)
+				{
+					this.technologies.RemoveAt(i);
+					return true;
+				}
+			}
+
+			return false;
 		}
 
 		private void ReceiveTechnologyCopyOnThis(Technology technology, int week, string eventDescription)

@@ -7,7 +7,7 @@ public static partial class VerbInference
     private static readonly string[] KnownVerbs =
     [
         "CONTRACT", "TRANSFER", "RESEARCH", "PRODUCE", "CAPTURE", "DECLARE", "TRAIN", "REPAIR",
-        "ATTACK", "ACTIVE", "TACTIC", "STACK", "MOVE", "GIVE", "SELL", "COPY", "FORM", "USE",
+        "ATTACK", "ACTIVE", "TACTIC", "STACK", "MOVE", "GIVE", "SELL", "COPY", "ERASE", "FORM", "USE",
         "NAME", "ALIAS", "PRESS", "HAS", "BUY", "GET", "SEE", "SET",
     ];
 

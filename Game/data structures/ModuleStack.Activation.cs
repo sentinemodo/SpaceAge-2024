@@ -78,13 +78,6 @@ namespace SpaceAge
                 //if (this.CrewRequired + this.ModuleStacks.CrewRequired() > this.CrewCurrent + this.ModuleStacks.CrewCurrent() )
                 //    return false;
 				// TODO: priorities of shutdown on lack of energy and lack of crew
-				if (this.IsRootModuleStack && this.QuantityOperational < this.QuantityActive)
-				{
-					if (!this.HasRegionalEnergySurplus())
-					{
-						return false;
-					}
-				}
 				if (this.QuantityOperational < this.QuantityActive)
 				{
 					return false;
@@ -235,6 +228,12 @@ namespace SpaceAge
 			}
 		}
 
+		public static ModuleStack ResolveOrderStackReference(Faction owner, string token)
+		{
+			EnsureValidUseOrderStackReference(token);
+			return ModuleStack.All.GetOrCreateNewModuleStack(owner, token, true);
+		}
+
 		private bool moduleTypeIsCombatArmed(ModuleType type)
 		{
 			if (type == null)
@@ -287,7 +286,7 @@ namespace SpaceAge
             {
                 if (this.IsFormed)
                 { 
-                    return this.QuantityActive * this.moduleType.EnergyRequired; 
+                    return this.energyOperableModuleCount() * this.moduleType.EnergyRequired; 
                 }
                 return 0;
             }
@@ -382,7 +381,7 @@ namespace SpaceAge
 			{
                 if (this.IsFormed)
                 {
-                    return this.QuantityActive * this.moduleType.EnergyProduction;
+                    return this.energyOperableModuleCount() * this.moduleType.EnergyProduction;
                 }
                 return 0;
 			}

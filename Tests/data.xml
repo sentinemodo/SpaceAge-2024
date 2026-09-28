@@ -1740,7 +1740,6 @@ Researchers can query the library. The system can handle natural language questi
 			mass="75"
 			crew="1"
 			hit-points="30"
-			energy="3"
 			technology-capacity="2"
 			research-output="1"
 			research-output-divisor="2"

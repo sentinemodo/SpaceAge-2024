@@ -402,10 +402,28 @@ namespace SpaceAge
 			}
 
 			producingModule.UseOrder = this;
+			this.EnsureModuleReceiverRegistered();
 			if (this.Receiver != producingModule.Receiver || this.ReceiverParent != producingModule.ReceiverParent)
 			{
 				producingModule.Retarget(this.Receiver, this.ReceiverParent);
 			}
+		}
+
+		private void EnsureModuleReceiverRegistered()
+		{
+			if (this.Technology.ProductionType != EProductionType.Modules)
+			{
+				return;
+			}
+
+			ModuleStack receiver = this.Receiver as ModuleStack;
+			if (receiver == null || ModuleStack.All.ContainsKey(receiver.Name))
+			{
+				return;
+			}
+
+			string reference = !string.IsNullOrEmpty(receiver.Alias) ? receiver.Alias : receiver.Name;
+			this.Receiver = ModuleStack.All.GetOrCreateNewModuleStack(this.Producer.Owner, reference);
 		}
 
 		private bool CanStartEffectProduction(int week)
@@ -476,6 +494,7 @@ namespace SpaceAge
 							{
 								this.durationLeft = this.DurationInitial;
 							}
+							this.EnsureModuleReceiverRegistered();
                             this.Producing = new ProducingModule(this);
 
                             break;
@@ -542,6 +561,7 @@ namespace SpaceAge
 				if (this.Producing is ProducingModule)
 				{
 					this.Receiver = ((ProducingModule)this.Producing).Receiver;
+					this.EnsureModuleReceiverRegistered();
                 }
 
                 this.Producing = null;

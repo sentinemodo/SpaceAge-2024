@@ -35,6 +35,7 @@ public static class RepoPaths
         {
             Path.Combine(player, "rules.md"),
             Path.Combine(player, "battle.md"),
+            Path.Combine(player, "order_draft_quality.md"),
         };
 
         if (mode == PlayMode.Campaign)

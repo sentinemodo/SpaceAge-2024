@@ -17,6 +17,17 @@ namespace SpaceAge
 		#endregion
 
 		protected string alias = string.Empty;
+
+		public string OrderStackReferenceToken()
+		{
+			if (!this.IsFormed && !string.IsNullOrEmpty(this.alias) && this.alias.StartsWith("new"))
+			{
+				return this.alias;
+			}
+
+			return this.name;
+		}
+
 		public override string Alias
 		{
 			get 
@@ -100,6 +111,10 @@ namespace SpaceAge
 			if (!this.Sharing)
 			{
 				line = string.Format("{0}, not sharing", line);
+			}
+			if (this.HasNonDefaultEnergyPriority)
+			{
+				line = string.Format("{0}, energy priority {1}", line, this.EffectiveEnergyPriority);
 			}
 			if (this.IsPatrolling)
 			{

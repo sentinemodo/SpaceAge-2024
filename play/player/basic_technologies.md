@@ -10,7 +10,7 @@ Omitted `use-time` defaults to **1** week in `CatalogLoader`. Omitted consume/pr
 
 **Level 0** technologies are always known and present. Any stack whose module group and location match `usable-in` can `USE` them. They do not occupy technology capacity, are not research breakthroughs, and do not need `COPY`.
 
-**Level 1 and above** must exist as a **local copy** on the using stack (`UseOrder.HasTechnology`: `Producer.Technologies.Contains`). Get a copy by research (labs roll level 1 … faction max+1 into remaining capacity) or by `COPY <id> TO <stack>` from a same-location holder that already has it. Each copy uses `level` points of the stack’s technology capacity.
+**Level 1 and above** must exist as a **local copy** on the using stack (`UseOrder.HasTechnology`: `Producer.Technologies.Contains`). Get a copy by research (labs roll level 1 … faction max+1 into remaining capacity) or by `COPY <id> TO <stack>` from a same-location **source** stack that already holds it. `ERASE <id>` drops a copy from a stack and frees capacity. Each copy uses `level` points of the stack’s technology capacity.
 
 `USE` still needs matching module group, location, and consume items. Catalog `use-allowed-in planet-atmosphere="terair"` (and module `operation-allowed-in planet-atmosphere="terair"`) is enforced only when the parent planet or moon **emitted** environment attrs in map XML; SampleGame maps omit them, so the gate is skipped there. See `play/player/rules.md` (`HasAtmosphereResources`, `EffectiveLocationType`). Battle-only techs (no produce) are held as copies, not used as builds.
 
@@ -244,7 +244,7 @@ Group `habitat`. Built by crew housing `[crewhs]`. Size 500, mass 400, crew 0, e
 
 **factory [factry]**  
 Factories are everywhere since the dawn of Industral age, and even the Space age couldn't change the fact.  
-Group `production`. Built by industrial automation `[indust]`. Size 1000, mass 750, crew 10, energy 15, capacity 500, HP 100, tech-cap 1. Upkeep 60 cash. Operates in settlement, frigate, space station.
+Group `production`. Built by industrial automation `[indust]`. Size 1000, mass 750, crew 10, energy 15, capacity 500, HP 100, tech-cap 1 (campaign catalog `play/campaign/data.xml`: **2**). Upkeep 60 cash. Operates in settlement, frigate, space station.
 
 **farming complex [farms]**  
 A low-energy, low-technology food producing and harvesting complex.  

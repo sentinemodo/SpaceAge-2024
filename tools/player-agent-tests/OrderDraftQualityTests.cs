@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using SpaceAge.PlayerAgent.Draft;
+using SpaceAge.PlayerAgent.Paths;
 
 namespace SpaceAge.PlayerAgent.Tests;
 
@@ -12,6 +13,7 @@ public class OrderDraftQualityTests
 
         #modulestack 200001
         set hold 20 terran
+        grant item 16 terran to 200001
         @produce terran
 
         #modulestack 200003
@@ -121,7 +123,7 @@ public class OrderDraftQualityTests
         sell 200 food at average
 
         #modulestack 280004
-        @use hcdril
+        @use iminng
 
         #modulestack 280006
         @use farmng
@@ -147,7 +149,7 @@ public class OrderDraftQualityTests
     [Test]
     public void IsUsable_ResearcherHandDraft_Passes()
     {
-        Assert.That(OrderDraftQuality.IsUsable(GoldenResearcherSilicate, "researcher"), Is.True);
+        Assert.That(OrderDraftQuality.IsUsable(GoldenResearcherSilicate, "researcher", SilicateWindGrantTemplate), Is.True);
     }
 
     [Test]
@@ -158,12 +160,41 @@ public class OrderDraftQualityTests
         Assert.That(OrderDraftQuality.IsUsable(draft, "researcher"), Is.False);
     }
 
+    private const string SilicateWindGrantTemplate = """
+        Orders Template:
+        #modulestack 280001
+        ; + Silicate Headquarters [280001], corporate headquarters [corphq], immobile.
+        #modulestack 280004
+        ; + surface drill [280004], surface drill [sdrill], immobile.
+        #modulestack 280007
+        ; + wind powerplant [280007], 8 wind powerplants [wnplnt], immobile.
+        #end
+        """;
+
     [Test]
-    public void IsUsable_ResearcherIminngOnDrill_Fails()
+    public void IsUsable_ResearcherIminngOnArborDrill_Fails()
     {
-        var draft = GoldenResearcherSilicate.Replace("@use hcdril", "@use hcdril\n@use iminng");
-        Assert.That(OrderDraftQuality.IsUsable(draft, "researcher"), Is.False);
-        Assert.That(OrderDraftQuality.DescribeResearcherPersonaViolations(draft), Is.Not.Empty);
+        var draft = GoldenResearcherSilicate
+            .Replace("@use iminng", "@use hcdril\n@use iminng");
+        Assert.That(OrderDraftQuality.DescribeResearcherPersonaViolations(draft, reportText: null), Is.Not.Empty);
+    }
+
+    [Test]
+    public void IsUsable_WindGrant_HcdrilOnDrill_Fails()
+    {
+        var draft = GoldenNorthwind.Replace("@use hcdril", "@use hcdril");
+        var report = SilicateWindGrantTemplate;
+        Assert.That(OrderDraftQuality.DescribeWindGrantDrillViolations(draft, report, "military"), Is.Not.Empty);
+        Assert.That(OrderDraftQuality.IsUsable(draft, "military", report), Is.False);
+    }
+
+    [Test]
+    public void IsUsable_WindGrant_IminngOnDrill_PassesWindGate()
+    {
+        var draft = GoldenNorthwind
+            .Replace("@use hcdril", "@use iminng")
+            .Replace("@get all carbon from 200004", string.Empty);
+        Assert.That(OrderDraftQuality.DescribeWindGrantDrillViolations(draft, SilicateWindGrantTemplate, "military"), Is.Empty);
     }
 
     [Test]
@@ -243,12 +274,14 @@ public class OrderDraftQualityTests
         grant item 50 iron to 230004
         grant item 10 titani to 230004
         @use hcdril
-        @use iminng
 
         #modulestack 230005
-        grant technology mcored to factory
-        grant technology msrvtm to factory
+        grant technology mcored to 230005
+        grant technology msrvtm to 230005
         use mcored as new108 for 230001
+        +get 25 iron from 230003
+        +get 10 titani from 230003
+        use msrvtm as new109 for 230001
         +get 25 iron from 230003
         +get 10 titani from 230003
 
@@ -256,6 +289,12 @@ public class OrderDraftQualityTests
         has 1 cdrill
         -get 6 terran from 230001
         deactivate 1
+
+        #modulestack new109
+        move R00009
+        +get 1 terran from 230001
+        +get 2 oil from 230003
+        +get 2 food from 230003
 
         #modulestack 230006
         @use farmng
@@ -276,9 +315,156 @@ public class OrderDraftQualityTests
     [Test]
     public void IsUsable_EconomicMcoredWithoutGrant_Fails()
     {
-        var draft = GoldenEconomicSundock.Replace("grant technology mcored to factory", string.Empty);
+        var draft = GoldenEconomicSundock.Replace("grant technology mcored to 230005", string.Empty);
         var violations = OrderDraftQuality.DescribeEconomicPersonaViolations(draft);
         Assert.That(violations, Is.Not.Empty);
         Assert.That(OrderDraftQuality.IsUsable(draft, "economic"), Is.False);
+    }
+
+    [Test]
+    public void IsUsable_GrantToFactoryAlias_Fails()
+    {
+        var draft = GoldenEconomicSundock.Replace("grant technology mcored to 230005", "grant technology mcored to factory");
+        Assert.That(OrderDraftQuality.DescribeGrantTargetViolations(draft), Is.Not.Empty);
+        Assert.That(OrderDraftQuality.IsUsable(draft, "economic"), Is.False);
+    }
+
+    [Test]
+    public void IsUsable_GrantUnderFactionHeader_PassesPersonaGate()
+    {
+        var draft = GoldenEconomicSundock
+            .Replace("#modulestack 230004\n        grant item 50 iron to 230004\n        grant item 10 titani to 230004\n        ", string.Empty)
+            .Replace(
+                "#faction 5 \"sundock\"\n",
+                """
+                #faction 5 "sundock"
+                grant item 50 iron to 230004
+                grant item 10 titani to 230004
+
+                """);
+        Assert.That(OrderDraftQuality.IsUsable(draft, "economic"), Is.True);
+    }
+
+    private const string NorthwindGrantExcerpt = """
+          Northwind Grant [R00008] (1,1), grassland region, settlement capacity 8/0.
+          Exits:
+            West Deep [R00007] (0,1), ocean region, naval travel duration 3 weeks.
+            Mid Vale [R00009] (2,1), grassland region, ground travel duration 3 weeks, anomaly detected.
+            Shelf [R00002] (1,0), sea region, naval travel duration 3 weeks.
+            Farm Belt [R00014] (1,2), grassland region, ground travel duration 3 weeks, settlement detected.
+          Resources: 600 units of food [food], 40 units of carbon [carbon]
+        """;
+
+    [Test]
+    public void IsUsable_MoveToGrantExit_PassesWithReport()
+    {
+        var draft = GoldenNorthwind.Replace("-move R00009", "-move R00014");
+        Assert.That(OrderDraftQuality.IsUsable(draft, "military", NorthwindGrantExcerpt), Is.True);
+    }
+
+    [Test]
+    public void IsUsable_MoveToUnreachableRegion_FailsWithReport()
+    {
+        var draft = GoldenNorthwind.Replace("-move R00009", "-move R00099");
+        Assert.That(OrderDraftQuality.DescribeMoveRegionReachabilityViolations(draft, NorthwindGrantExcerpt), Is.Not.Empty);
+        Assert.That(OrderDraftQuality.IsUsable(draft, "military", NorthwindGrantExcerpt), Is.False);
+    }
+
+    [Test]
+    public void IsUsable_SdrillHcdrilWithoutCarbonInRegion_Fails()
+    {
+        const string anvilGrant = """
+              Ironclad Grant [R00045] (1,1), grassland region, settlement capacity 8/0.
+              Exits:
+                Slope [R00046] (2,1), grassland region, ground travel duration 3 weeks.
+              Resources: 140 units of food [food], 20 units of iron [iron]
+            """;
+        var draft = """
+            #modulestack 250004
+            @use hcdril
+            #end
+            """;
+        Assert.That(OrderDraftQuality.DescribeDrillUseResourceViolations(draft, anvilGrant), Is.Not.Empty);
+    }
+
+    [Test]
+    public void IsUsable_SdrillBothDrillTechs_Fails()
+    {
+        var draft = """
+            #modulestack 230004
+            @use hcdril
+            @use iminng
+            #end
+            """;
+        Assert.That(OrderDraftQuality.DescribeCombinedDrillUseViolations(draft), Is.Not.Empty);
+    }
+
+    [Test]
+    public void IsUsable_MilitaryTanksWithoutTerranGrant_FailsWhenBankHigh()
+    {
+        const string bankReport = "Bank account balance: 10000.\n" + NorthwindGrantExcerpt;
+        var draft = GoldenNorthwind.Replace("grant item 16 terran to 200001", string.Empty);
+        Assert.That(OrderDraftQuality.DescribeMilitaryPersonaViolations(draft, bankReport), Is.Not.Empty);
+    }
+
+    [Test]
+    public void MergeBootstrapAndProduction_CombinesStacksAndKeepsPreamble()
+    {
+        const string bootstrap = """
+            #faction 8 "pwd"
+            grant item 10 iron to 800003
+
+            #modulestack 800001
+            @produce terran
+
+            #modulestack 800004
+            @use hcdril
+
+            #end
+            """;
+
+        const string production = """
+            #faction 8 "pwd"
+
+            #modulestack 800005
+            grant technology mcored to 800005
+            use mcored as new10 for 800001
+            +get 25 iron from 800003
+
+            #end
+            """;
+
+        var merged = OrderDraftMerger.MergeBootstrapAndProduction(bootstrap, production);
+        Assert.That(merged, Does.Contain("#faction 8"));
+        Assert.That(merged, Does.Contain("#modulestack 800001"));
+        Assert.That(merged, Does.Contain("#modulestack 800004"));
+        Assert.That(merged, Does.Contain("#modulestack 800005"));
+        Assert.That(merged, Does.Contain("use mcored as new10"));
+        Assert.That(merged.Split("#end", StringSplitOptions.None).Length, Is.EqualTo(2));
+        Assert.That(merged.TrimEnd(), Does.EndWith("#end"));
+    }
+
+    [Test]
+    public void IsUsable_Beta1RedraftFactionOrders_PassQualityGate()
+    {
+        var repoRoot = RepoPaths.FindRepositoryRoot();
+        const int reportTurn = 1;
+        for (var faction = 4; faction <= 11; faction++)
+        {
+            var folder = RepoPaths.FactionFolder(repoRoot, "beta-1", faction);
+            var ordersPath = OrderFileNaming.ResolveActiveOrderPath(folder, faction, reportTurn)
+                ?? throw new InvalidOperationException($"faction {faction}: no active orders file");
+            var reportPath = Path.Combine(folder, $"report.{reportTurn}.{faction}.txt");
+            var personaPath = Path.Combine(folder, "persona.md");
+            var persona = File.Exists(personaPath)
+                ? VerbInference.DetectPersonaPreference(File.ReadAllText(personaPath))
+                : null;
+            var orders = File.ReadAllText(ordersPath);
+            var report = File.ReadAllText(reportPath);
+            Assert.That(
+                OrderDraftQuality.IsUsable(orders, persona, report),
+                Is.True,
+                () => $"faction {faction} {ordersPath}");
+        }
     }
 }

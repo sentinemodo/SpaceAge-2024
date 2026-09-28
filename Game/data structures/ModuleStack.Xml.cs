@@ -58,6 +58,10 @@ namespace SpaceAge
 			{
 				this.IsPatrolling = this.XMLAssignBoolean(elModuleStack.GetAttribute("patrol"), false);
 			}
+			if (elModuleStack.HasAttribute("energy-priority"))
+			{
+				this.SetEnergyPriority(this.XMLAssignInteger(elModuleStack.GetAttribute("energy-priority"), 0));
+			}
 			foreach (XmlElement elHold in elModuleStack.SelectNodes("hold"))
 			{
 				ItemType itemType = ItemType.All[elHold.GetAttribute("item-type")];
@@ -114,6 +118,10 @@ namespace SpaceAge
 			if (this.IsPatrolling)
 			{
 				this.xmlElement.SetAttribute("patrol", "true");
+			}
+			if (this.HasNonDefaultEnergyPriority)
+			{
+				this.xmlElement.SetAttribute("energy-priority", this.energyPriorityOverride.ToString());
 			}
 			foreach (KeyValuePair<ItemType, int> hold in this.itemHolds)
 			{

@@ -8,7 +8,7 @@ A bracketed id such as [iron] jumps to that technology, module, or item. When tw
 
 **Level 0** technologies are already known. Any unit of the right kind, in the right place, can use them. They do not fill technology capacity and do not need a copy.
 
-**Level 1** technologies **or higher** must sit on the unit that uses them. Research can discover a copy, or another unit in the same place can copy one across. Each copy fills 1 point of technology capacity per technology level.
+**Level 1** technologies **or higher** must sit on the unit that uses them. Research can discover a copy, or another unit in the same place can **COPY** one across from a stack that already holds it. **ERASE** removes a copy from a stack and frees capacity. Each copy fills 1 point of technology capacity per technology level.
 
 Using a technology still needs the right unit, the right location, and the materials listed under Needs. 
 
@@ -325,7 +325,7 @@ Group `habitat`. Built by crew housing `[crewhs]`. Size 500, mass 400, crew 0, e
 
 **factory [factry]**  
 Factories are everywhere since the dawn of Industral age, and even the Space age couldn't change the fact.  
-Group `production`. Built by industrial automation `[indust]`. Size 1000, mass 750, crew 10, energy 15, capacity 500, HP 100, tech-cap 1. Upkeep 55 cash. Operates in settlement, frigate, space station.
+Group `production`. Built by industrial automation `[indust]`. Size 1000, mass 750, crew 10, energy 15, capacity 500, HP 100, tech-cap **2**. Upkeep 55 cash. Operates in settlement, frigate, space station.
 
 **farming complex [farms]**  
 A low-energy, low-technology food producing and harvesting complex.  

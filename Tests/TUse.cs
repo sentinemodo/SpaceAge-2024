@@ -975,6 +975,69 @@ namespace UnitTests
 
 
 		[Test]
+		public void AssignProduceEnergy_onHeadquarters_ignoredWithParsingWarning()
+		{
+			Faction faction = this.game.Factions["2"];
+			ModuleStack hq = this.game.ModuleStacks["000112"];
+			int eventReportsBefore = faction.EventReports.Count;
+
+			OrdersReader ordersReader = new OrdersReader(this.game);
+			ordersReader.AssignOrders(new List<string>
+			{
+				"#faction 2",
+				"#modulestack 000112",
+				"@produce energy",
+				"#end"
+			});
+
+			Assert.That(hq.Orders.Count, Is.EqualTo(0));
+			bool ignored = false;
+			for (int i = eventReportsBefore; i < faction.EventReports.Count; i++)
+			{
+				string description = faction.EventReports[i].Description;
+				if (description != null
+					&& description.StartsWith("PARSING:")
+					&& description.Contains("does not produce energy"))
+				{
+					ignored = true;
+					break;
+				}
+			}
+			Assert.That(ignored, Is.True);
+		}
+
+		[Test]
+		public void AssignProduceCash_onWindPlant_ignoredWithParsingWarning()
+		{
+			Faction faction = this.game.Factions["1"];
+			ModuleStack windPlant = this.game.ModuleStacks["000009"];
+			int eventReportsBefore = faction.EventReports.Count;
+
+			new OrdersReader(this.game).AssignOrders(new List<string>
+			{
+				"#faction 1",
+				"#modulestack 000009",
+				"@produce cash",
+				"#end"
+			});
+
+			Assert.That(windPlant.Orders.Count, Is.EqualTo(0));
+			bool ignored = false;
+			for (int i = eventReportsBefore; i < faction.EventReports.Count; i++)
+			{
+				string description = faction.EventReports[i].Description;
+				if (description != null
+					&& description.StartsWith("PARSING:")
+					&& description.Contains("headquarters or branch office"))
+				{
+					ignored = true;
+					break;
+				}
+			}
+			Assert.That(ignored, Is.True);
+		}
+
+		[Test]
 		public void AssignProduceOrder_unlimited()
 		{
 			Faction testFaction = this.game.Factions["1"];
@@ -1636,6 +1699,69 @@ namespace UnitTests
 		}
 
 		[Test]
+		public void CopyOrder_New110AliasMatchesUseOrderReceiver()
+		{
+			ModuleStack factory = this.game.ModuleStacks["000004"];
+			List<string> commands = new List<string>
+			{
+				"#faction 2",
+				"#modulestack 000004",
+				"use agrplx as new110",
+				"copy agrplx to new110",
+				"#end"
+			};
+			new OrdersReader(this.game).AssignOrders(commands);
+
+			UseOrder useOrder = (UseOrder)factory.Orders[0];
+			CopyOrder copyOrder = (CopyOrder)factory.Orders[1];
+
+			Assert.That(useOrder.Receiver, Is.SameAs(copyOrder.Receiver));
+			Assert.That(copyOrder.ReceiverName, Is.EqualTo("new110"));
+			Assert.That(copyOrder.Report(factory.Owner)[0], Is.EqualTo("copy agrplx to new110"));
+
+			ModuleStack receiver = copyOrder.Receiver;
+			receiver.Parent = factory.Parent;
+			receiver.ModuleType = ModuleType.All["factry"];
+			receiver.AddModule();
+			factory.ReceiveTechnologyCopy(Technology.All["agrplx"], this.game.Week, null);
+
+			copyOrder.Execute(this.game.Week);
+
+			Assert.That(copyOrder.Executed, Is.True);
+			Assert.That(receiver.Technologies.Contains("agrplx"), Is.True);
+		}
+
+		[Test]
+		public void CopyOrder_ModuleStackHeaderResolvesNew110Alias()
+		{
+			ModuleStack factory = this.game.ModuleStacks["000004"];
+			List<string> setup = new List<string>
+			{
+				"#faction 2",
+				"#modulestack 000004",
+				"use agrplx as new110",
+				"#end"
+			};
+			new OrdersReader(this.game).AssignOrders(setup);
+
+			UseOrder useOrder = (UseOrder)factory.Orders[0];
+			ModuleStack useReceiver = (ModuleStack)useOrder.Receiver;
+
+			List<string> header = new List<string>
+			{
+				"#faction 2",
+				"#modulestack new110",
+				"alias \"moblab scout\"",
+				"#end"
+			};
+			new OrdersReader(this.game).AssignOrders(header);
+
+			ModuleStack headerSubject = ModuleStack.All[this.game.Factions["2"], "new110", true];
+			Assert.That(headerSubject, Is.SameAs(useReceiver));
+			Assert.That(headerSubject.Orders.Count, Is.EqualTo(1));
+		}
+
+		[Test]
 		public void CopyOrder_ReportIncludesTechnologyAndReceiver()
 		{
 			ModuleStack factory = this.game.ModuleStacks["000004"];
@@ -1660,9 +1786,35 @@ namespace UnitTests
 		}
 
 		[Test]
+		public void CopyOrder_FailsWhenSourceLacksTechnology()
+		{
+			ModuleStack factory = this.game.ModuleStacks["000004"];
+			List<string> commands = new List<string>
+			{
+				"#faction 2",
+				"#modulestack 000004",
+				"copy agrplx to new882",
+				"#end"
+			};
+			new OrdersReader(this.game).AssignOrders(commands);
+
+			CopyOrder order = (CopyOrder)factory.Orders[0];
+			ModuleStack receiver = order.Receiver;
+			receiver.Parent = factory.Parent;
+			receiver.ModuleType = ModuleType.All["factry"];
+			receiver.AddModule();
+
+			order.Execute(this.game.Week);
+
+			Assert.That(order.Executed, Is.False);
+			Assert.That(this.eventReportContains(factory, "COPY failed. Source does not hold"), Is.True);
+		}
+
+		[Test]
 		public void CopyOrder_SucceedsOnceReceiverIsFormed()
 		{
 			ModuleStack factory = this.game.ModuleStacks["000004"];
+			factory.ReceiveTechnologyCopy(Technology.All["agrplx"], this.game.Week, null);
 			List<string> commands = new List<string>
 			{
 				"#faction 2",
@@ -1695,6 +1847,61 @@ namespace UnitTests
 				ModuleType.All["cargob"]);
 			Assert.That(stack.Name, Is.EqualTo("250"));
 			Assert.That(ModuleStack.All.ContainsKey("0"), Is.False);
+		}
+
+		[Test]
+		public void EraseOrder_RemovesTechnologyCopyFromStack()
+		{
+			ModuleStack factory = this.game.ModuleStacks["000004"];
+			factory.ReceiveTechnologyCopy(Technology.All["agrplx"], this.game.Week, null);
+			List<string> commands = new List<string>
+			{
+				"#faction 2",
+				"#modulestack 000004",
+				"erase agrplx",
+				"#end"
+			};
+			new OrdersReader(this.game).AssignOrders(commands);
+
+			EraseOrder order = (EraseOrder)factory.Orders[0];
+			Assert.That(order.Report(factory.Owner)[0], Is.EqualTo("erase agrplx"));
+
+			order.Execute(this.game.Week);
+
+			Assert.That(order.Executed, Is.True);
+			Assert.That(factory.Technologies.Contains("agrplx"), Is.False);
+		}
+
+		[Test]
+		public void EraseOrder_FailsWhenStackLacksTechnology()
+		{
+			ModuleStack factory = this.game.ModuleStacks["000004"];
+			List<string> commands = new List<string>
+			{
+				"#faction 2",
+				"#modulestack 000004",
+				"erase agrplx",
+				"#end"
+			};
+			new OrdersReader(this.game).AssignOrders(commands);
+
+			EraseOrder order = (EraseOrder)factory.Orders[0];
+			order.Execute(this.game.Week);
+
+			Assert.That(order.Executed, Is.False);
+			Assert.That(this.eventReportContains(factory, "ERASE failed. Stack does not hold"), Is.True);
+		}
+
+		private bool eventReportContains(ModuleStack stack, string fragment)
+		{
+			foreach (EventReport eventReport in stack.EventReports)
+			{
+				if (eventReport.Description.IndexOf(fragment) >= 0)
+				{
+					return true;
+				}
+			}
+			return false;
 		}
 
 		private bool hasCopyFail(ModuleStack stack)

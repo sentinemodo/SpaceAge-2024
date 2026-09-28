@@ -145,6 +145,49 @@ namespace UnitTests
 		}
 
 		[Test]
+		public void Execute_GrantItem_ToNewAlias_DebitsBankAndDelivers()
+		{
+			Faction faction = Faction.All["2"];
+			ModuleStack target = ModuleStack.All.GetOrCreateNewModuleStack(faction, "new2");
+			target.ModuleType = ModuleType.All["cargob"];
+			target.AddModule();
+			double balanceBefore = faction.Bank.Balance;
+
+			GrantOrder grant = new GrantOrder(faction);
+			grant.Parse("item 10 titani to new2");
+			grant.Execute(1);
+
+			Assert.That(grant.Executed, Is.True);
+			Assert.That(faction.Bank.Balance, Is.EqualTo(balanceBefore - GrantCost.ItemCredits(ItemType.All["titani"], 10)));
+			Assert.That(target.ItemStacks[ItemType.All["titani"]].Quantity, Is.EqualTo(10));
+		}
+
+		[Test]
+		public void Execute_GrantItem_ToNewAliasBeforeFormed_FailsWithMessage()
+		{
+			Faction faction = Faction.All["2"];
+			ModuleStack placeholder = ModuleStack.All.GetOrCreateNewModuleStack(faction, "new3", true);
+			Assert.That(placeholder.IsFormed, Is.False);
+
+			GrantOrder grant = new GrantOrder(faction);
+			grant.Parse("item 10 titani to new3");
+			grant.Execute(1);
+
+			Assert.That(grant.Executed, Is.False);
+			bool reportedNotFormed = false;
+			foreach (EventReport eventReport in faction.EventReports)
+			{
+				if (eventReport.Week == 1
+					&& eventReport.Description.Contains("GRANT failed. Target stack is not formed."))
+				{
+					reportedNotFormed = true;
+					break;
+				}
+			}
+			Assert.That(reportedNotFormed, Is.True);
+		}
+
+		[Test]
 		public void Execute_GrantItem_UnderModuleStackSubject_DebitsOwnerFaction()
 		{
 			Faction faction = Faction.All["2"];

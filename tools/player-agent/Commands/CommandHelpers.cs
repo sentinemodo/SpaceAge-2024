@@ -116,8 +116,21 @@ internal static class CommandHelpers
         Description = "Maximum number of retrieval hits (default 6 local, 8 RunPod).",
     };
 
+    public static Option<int?> MaxQualityAttemptsOption { get; } = new("--max-quality-attempts")
+    {
+        Description = "Max chat retries when lint or quality gates fail (default 7).",
+    };
+
+    public static Option<bool> StagedDraftOption { get; } = new("--staged")
+    {
+        Description = "Two-pass staged draft: bootstrap stacks then factory/mobile; merge and re-lint.",
+    };
+
     public static int ResolveTopK(PlayerAgentSettings settings, int? topOverride) =>
         topOverride ?? settings.DefaultTopK;
+
+    public static int ResolveMaxQualityAttempts(int? overrideValue) =>
+        overrideValue is > 0 ? overrideValue.Value : 7;
 
     public static int? ResolveVersionOverride(InvocationContext context) =>
         context.ParseResult.GetValueForOption(IterationOption)
