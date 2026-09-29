@@ -497,6 +497,7 @@ Immobile stacks cannot capture. Execute reports `CAPTURE failed. Immobile units 
 **Syntax:**
 
 - `CONTRACT <location> GIVE <quantity> <module-id> TO <stack-id> REWARD <technology-id> [TITLE "<title>"] [FLAVOUR|FLAVOR "<text>"]`
+- `CONTRACT <location> PRESENCE REWARD <technology-id> [TITLE "<title>"] [FLAVOUR|FLAVOR "<text>"]` — first player Interest with a stack in that region **or** the parent planet/moon orbit wins (live trigger `region-presence`).
 - `CONTRACT <location> RESEARCH <stack-id> [POINTS <n>] REWARD <stack-id> UNIT [TITLE "<title>"] [FLAVOUR|FLAVOR "<text>"]`
 - `CONTRACT <contract-id> WITHDRAW`
 

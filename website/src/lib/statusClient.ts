@@ -1,6 +1,7 @@
 import { campaignFactionsByPlanet, campaignFactionLabel } from '../data/campaignFactions';
 import { clientFactionUrl } from './clientUrls';
 import { formatNextTurn, formatStatusLabel, type StatusData } from './statusSchema';
+import { renderIssuesTableHtml } from './issuesTable';
 import { renderTurnsTableHtml } from './turnsTable';
 import { withBase } from './paths';
 
@@ -82,6 +83,7 @@ export function bindTurnsPage(root: HTMLElement): () => void {
   const ordersEl = root.querySelector('#turns-orders-count');
   const nextEl = root.querySelector('#turns-next-value');
   const table = root.querySelector('#turns-factions-table');
+  const issuesEl = root.querySelector('#turns-issues-table');
 
   async function refresh() {
     const data = await fetchStatus();
@@ -96,6 +98,9 @@ export function bindTurnsPage(root: HTMLElement): () => void {
 
     if (table && Array.isArray(data.factions)) {
       table.innerHTML = renderTurnsTable(data.factions);
+    }
+    if (issuesEl) {
+      issuesEl.innerHTML = renderIssuesTableHtml(data.issues);
     }
   }
 

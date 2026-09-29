@@ -1929,5 +1929,65 @@ namespace UnitTests
 			Assert.That(loadedTrigger.Target.Name, Is.EqualTo("200"));
 		}
 
+		[Test]
+		public void RegionPresence_OrbitStackCompletesTechnologyContract()
+		{
+			Faction player = Faction.All["2"];
+			Region anchor = Region.All["R00002"];
+			Orbit orbit = Planet.All["P00002"].Orbit;
+			Assert.That(orbit, Is.Not.Null);
+
+			new Contract(
+				"CT0998",
+				anchor,
+				Faction.All["1"],
+				new RegionPresenceTrigger(anchor, Faction.All["1"]),
+				Technology.All["rckter"]);
+
+			ModuleStack shuttle = new ModuleStack(orbit, player, ModuleType.All["shuttl"], "s99801");
+			shuttle.AddModules(1);
+
+			Contract.All.Evaluate(1);
+			Assert.That(Contract.All.Count, Is.EqualTo(0));
+			Assert.That(player.TechnologiesToShow.Contains("rckter"), Is.True);
+		}
+
+		[Test]
+		public void XmlRoundTrip_PersistsRegionPresenceContract()
+		{
+			new Contract(
+				"CT0997",
+				Region.All["R00002"],
+				Faction.All["1"],
+				new RegionPresenceTrigger(Region.All["R00002"], Faction.All["1"]),
+				Technology.All["rckter"]);
+
+			string testdir = Directory.GetCurrentDirectory();
+			string testfile = "gameout.region_presence.xml";
+			this.dataFile.SaveGame(testdir, testfile);
+
+			XmlDocument saved = new XmlDocument();
+			saved.Load(Path.Combine(testdir, testfile));
+			XmlElement elContract = (XmlElement)saved.SelectSingleNode("/game/contracts/contract[@name='CT0997']");
+			Assert.That(elContract, Is.Not.Null);
+			Assert.That(elContract.GetAttribute("trigger"), Is.EqualTo("region-presence"));
+
+			this.game.ClearDictionaries();
+			this.game = null;
+			this.dataFile = null;
+
+			this.dataFile = new DataFile(testdir);
+			this.dataFile.LoadGameDocument(testdir, testfile);
+			this.dataFile.LoadConfiguration(testdir);
+			this.dataFile.LoadFactions();
+			this.dataFile.LoadGalaxy();
+			this.dataFile.LoadContracts();
+			this.game = this.dataFile.Game;
+
+			RegionPresenceTrigger loaded = (RegionPresenceTrigger)Contract.All["CT0997"].Trigger;
+			Assert.That(loaded, Is.Not.Null);
+			Assert.That(loaded.AnchorRegion.Name, Is.EqualTo("R00002"));
+		}
+
 	}
 }

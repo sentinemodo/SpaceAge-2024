@@ -1,6 +1,6 @@
 # Contracts (during play)
 
-Live triggers: **`give-module`**, **`research`**, **`destroy-stack`** (target stack wrecked in combat). Rewards: **technology copy**, **unit**, or **cash** (`reward-type="cash"`).
+Live triggers: **`give-module`**, **`research`**, **`destroy-stack`** (target stack wrecked in combat), **`region-presence`** (player stack in the contract anchor region **or** in orbit of the same planet/moon body). Rewards: **technology copy**, **unit**, or **cash** (`reward-type="cash"`).
 
 Always set `title` and `flavour`. Flavour is **hard science**: spectra, Δv, isotopes, epidemiology — not prophecy.
 

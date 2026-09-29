@@ -2701,6 +2701,24 @@ Researchers can query the library. The system can handle natural language questi
 			<operation-allowed-in location-type="space"/>
 		</entry>
 		<entry
+			name="uncolh"
+			name-en="UN colony ship hull"
+			name-en2="UN colony ship hulls"
+			group="frigate"
+			description="United Star Nations generation-ship pressure hull sized for colonial seeding: nested cargo bays, computer libraries, command, crew quarters, life support, fission plant, and reaction drive. Intended as a GRANT module from faction 1 patron stock."
+			size="26000"
+			mass="9000"
+			capacity="21000"
+			energy="25"
+			hit-points="220"
+			defense="14"
+			radiation="-80"
+			cannot-hold-itemstacks="yes">
+			<upkeep type="cash" quantity="260"/>
+			<operation-allowed-in location-type="orbit"/>
+			<operation-allowed-in location-type="space"/>
+		</entry>
+		<entry
 			name="cbridg" 
 			name-en="command bridge"
 			group="command" 

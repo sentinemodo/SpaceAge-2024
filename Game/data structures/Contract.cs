@@ -122,6 +122,10 @@ namespace SpaceAge
 			{
 				this.Trigger = DestroyStackTrigger.Load(elContract);
 			}
+			else if (triggerType == "region-presence")
+			{
+				this.Trigger = RegionPresenceTrigger.Load(elContract, this.Location, this.Issuer);
+			}
 			else
 			{
 				throw new Exception("Unknown contract trigger: " + triggerType);
@@ -245,8 +249,10 @@ namespace SpaceAge
 
 			string descriptor = string.IsNullOrEmpty(this.Title) ? this.Name : this.Title;
 			string title = string.Format("{0} closes {1}", winner.FullName, descriptor);
+			string issuerName = this.Issuer != null ? this.Issuer.FullName : "United Star Nations";
 			string flavour = string.Format(
-				"United Star Nations records {0}'s fulfillment of {1} at {2} on {3}.",
+				"{0} records {1}'s fulfillment of {2} at {3} on {4}.",
+				issuerName,
 				winner.FullName,
 				this.Name,
 				this.Location.FullName,
@@ -256,12 +262,12 @@ namespace SpaceAge
 
 		private ModuleStack findTechnologyRewardStack(GiveModuleTrigger give, Faction winner)
 		{
-			if (give == null || winner == null)
+			if (winner == null)
 			{
 				return null;
 			}
 
-			ModuleStack rewardStack = give.LastGiverStack;
+			ModuleStack rewardStack = give != null ? give.LastGiverStack : null;
 			if (rewardStack != null
 				&& rewardStack.Owner == winner
 				&& ModuleStack.All.ContainsKey(rewardStack.Name))
@@ -385,6 +391,31 @@ namespace SpaceAge
 				if (this.RewardStack != null)
 				{
 					lines.Add(string.Format("    Reward: {0}.", this.RewardStack.ReportName));
+				}
+				return lines;
+			}
+
+			RegionPresenceTrigger presence = this.Trigger as RegionPresenceTrigger;
+			if (presence != null)
+			{
+				if (string.IsNullOrEmpty(this.Title))
+				{
+					lines.Add(string.Format("  {0}: establish presence at {1} (surface or orbit).",
+						this.Name,
+						this.Location.FullName));
+				}
+				if (!string.IsNullOrEmpty(this.Flavour))
+				{
+					lines.Add(string.Format("    {0}", this.Flavour));
+				}
+				if (this.RewardCash > 0)
+				{
+					lines.Add(string.Format("    Reward: {0} cash.", this.RewardCash));
+				}
+				else if (this.RewardTechnology != null)
+				{
+					lines.Add(string.Format("    Reward: {0} technology.",
+						this.RewardTechnology.ReportName));
 				}
 				return lines;
 			}

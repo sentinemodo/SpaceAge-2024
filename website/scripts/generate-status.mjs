@@ -69,6 +69,49 @@ export function readScheduleNextTurnAt(schedulePath) {
   }
 }
 
+export function collectPublicIssues(runRoot, gameinText) {
+  const gmDir = path.join(runRoot, 'gm');
+  if (!fs.existsSync(gmDir)) return [];
+
+  const files = fs
+    .readdirSync(gmDir)
+    .filter((name) => /^issues-turn-\d+\.json$/.test(name))
+    .sort();
+
+  const issues = [];
+  for (const name of files) {
+    const doc = JSON.parse(fs.readFileSync(path.join(gmDir, name), 'utf8'));
+    for (const item of doc.issues ?? []) {
+      const row = {
+        turn: doc.turn,
+        no: item.no,
+        kind: item.kind,
+        planetId: item.planetId,
+      };
+      if (item.kind === 'rumor') {
+        row.title = item.title;
+        row.flavour = item.flavour;
+      } else if (item.kind === 'contract') {
+        row.contractId = item.contractId;
+        if (item.issuer !== undefined) row.issuer = item.issuer;
+        const re = new RegExp(
+          `<contract\\s+name="${item.contractId.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}"[^>]*/>`,
+        );
+        const match = gameinText.match(re);
+        if (match) {
+          const block = match[0];
+          const title = block.match(/title="([^"]*)"/);
+          const flavour = block.match(/flavour="([^"]*)"/);
+          if (title) row.title = title[1];
+          if (flavour) row.flavour = flavour[1];
+        }
+      }
+      issues.push(row);
+    }
+  }
+  return issues;
+}
+
 export function buildStatusPayload(runRoot, options = {}) {
   const dataDir = path.join(runRoot, 'data');
   const factionsDir = path.join(runRoot, 'factions');
@@ -89,8 +132,9 @@ export function buildStatusPayload(runRoot, options = {}) {
     name: `Faction ${id}`,
   }));
 
+  let gameinText = '';
   if (fs.existsSync(gameinPath)) {
-    const gameinText = fs.readFileSync(gameinPath, 'utf8');
+    gameinText = fs.readFileSync(gameinPath, 'utf8');
     const parsedTurn = getTurnFromGamein(gameinText);
     turn = parsedTurn && parsedTurn > 0 ? parsedTurn : 1;
 
@@ -115,7 +159,13 @@ export function buildStatusPayload(runRoot, options = {}) {
     }
   }
 
-  return { status, turn, nextTurnAt, factions };
+  return {
+    status,
+    turn,
+    nextTurnAt,
+    factions,
+    issues: collectPublicIssues(runRoot, gameinText),
+  };
 }
 
 function parseArgs(argv) {

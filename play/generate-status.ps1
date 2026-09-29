@@ -83,11 +83,60 @@ if ([string]::IsNullOrWhiteSpace([string]$nextTurnAt)) {
 	$nextTurnAt = $null
 }
 
+function Get-PublicIssuesFromRun {
+	param(
+		[string]$RunRoot,
+		[string]$GameinText
+	)
+	$issues = New-Object System.Collections.Generic.List[object]
+	$gmDir = Join-Path $RunRoot 'gm'
+	if (-not (Test-Path -LiteralPath $gmDir)) {
+		return @()
+	}
+	Get-ChildItem -LiteralPath $gmDir -Filter 'issues-turn-*.json' | Sort-Object Name | ForEach-Object {
+		$doc = Get-Content -LiteralPath $_.FullName -Raw -Encoding UTF8 | ConvertFrom-Json
+		foreach ($item in $doc.issues) {
+			$row = @{
+				turn = [int]$doc.turn
+				no = [int]$item.no
+				kind = [string]$item.kind
+				planetId = [string]$item.planetId
+			}
+			if ($item.kind -eq 'rumor') {
+				$row.title = [string]$item.title
+				$row.flavour = [string]$item.flavour
+			}
+			elseif ($item.kind -eq 'contract') {
+				$cid = [string]$item.contractId
+				$row.contractId = $cid
+				if ($item.PSObject.Properties['issuer']) {
+					$row.issuer = [int]$item.issuer
+				}
+				$pattern = '<contract\s+name="' + [regex]::Escape($cid) + '"[^>]*/>'
+				$m = [regex]::Match($GameinText, $pattern)
+				if ($m.Success) {
+					$block = $m.Value
+					$row.title = ([regex]::Match($block, 'title="([^"]*)"')).Groups[1].Value
+					$row.flavour = ([regex]::Match($block, 'flavour="([^"]*)"')).Groups[1].Value
+				}
+			}
+			$issues.Add($row)
+		}
+	}
+	return $issues.ToArray()
+}
+
+$gameinText = ''
+if (Test-Path -LiteralPath $gamein) {
+	$gameinText = [System.IO.File]::ReadAllText($gamein, [System.Text.Encoding]::GetEncoding(1251))
+}
+
 $obj = @{
 	status = $status
 	turn = $turn
 	nextTurnAt = $nextTurnAt
 	factions = $factions
+	issues = Get-PublicIssuesFromRun -RunRoot $paths.RunRoot -GameinText $gameinText
 }
 
 $json = $obj | ConvertTo-Json -Depth 4 -Compress

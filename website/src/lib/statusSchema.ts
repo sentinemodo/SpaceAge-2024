@@ -10,11 +10,25 @@ export interface FactionStatus {
   name?: string;
 }
 
+export type IssueKind = 'rumor' | 'contract';
+
+export interface TurnIssue {
+  turn: number;
+  no: number;
+  kind: IssueKind;
+  planetId?: string;
+  title?: string;
+  flavour?: string;
+  contractId?: string;
+  issuer?: number;
+}
+
 export interface StatusData {
   status: StatusEnum;
   turn: number;
   nextTurnAt?: string | null;
   factions: FactionStatus[];
+  issues?: TurnIssue[];
 }
 
 const VALID_STATUSES: StatusEnum[] = [
@@ -105,11 +119,41 @@ export function validateStatusJson(data: unknown): StatusData {
     throw new Error('factions must be ids 2 through 11');
   }
 
+  let issues: TurnIssue[] | undefined;
+  if (record.issues !== undefined) {
+    if (!Array.isArray(record.issues)) {
+      throw new Error('issues must be an array when present');
+    }
+    issues = record.issues.map((entry, index) => {
+      if (!entry || typeof entry !== 'object') {
+        throw new Error(`issues[${index}] must be an object`);
+      }
+      const issue = entry as Record<string, unknown>;
+      if (typeof issue.turn !== 'number' || typeof issue.no !== 'number') {
+        throw new Error(`issues[${index}] requires turn and no numbers`);
+      }
+      if (issue.kind !== 'rumor' && issue.kind !== 'contract') {
+        throw new Error(`issues[${index}] kind must be rumor or contract`);
+      }
+      return {
+        turn: issue.turn,
+        no: issue.no,
+        kind: issue.kind as IssueKind,
+        planetId: typeof issue.planetId === 'string' ? issue.planetId : undefined,
+        title: typeof issue.title === 'string' ? issue.title : undefined,
+        flavour: typeof issue.flavour === 'string' ? issue.flavour : undefined,
+        contractId: typeof issue.contractId === 'string' ? issue.contractId : undefined,
+        issuer: typeof issue.issuer === 'number' ? issue.issuer : undefined,
+      };
+    });
+  }
+
   return {
     status: record.status as StatusEnum,
     turn: record.turn as number,
     nextTurnAt: record.nextTurnAt as string | null | undefined,
     factions: record.factions as FactionStatus[],
+    issues,
   };
 }
 

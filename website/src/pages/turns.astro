@@ -38,6 +38,12 @@ import { renderTurnsTableHtml } from '../lib/turnsTable';
 	  <div id="turns-factions-table" set:html={renderTurnsTableHtml(null)} />
 	</section>
 
+	<section class="issues-section card">
+	  <h2>Rumors &amp; contracts</h2>
+	  <p>Between-turn diplomatic releases (planet-scoped; more may arrive before the next quarter).</p>
+	  <div id="turns-issues-table"></div>
+	</section>
+
 	<section class="turn-info card">
 	  <h2>What Happens Each Turn</h2>
 	  <ol>
@@ -125,6 +131,42 @@ import { renderTurnsTableHtml } from '../lib/turnsTable';
 
   .submissions-section {
 	margin-bottom: var(--space-2xl);
+  }
+
+  .issues-section {
+	margin-bottom: var(--space-2xl);
+  }
+
+  .issues-section :global(.issues-list) {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-md);
+	margin-top: var(--space-md);
+  }
+
+  .issues-section :global(.issue-row) {
+	padding: var(--space-md);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-md);
+	background: rgba(0, 0, 0, 0.03);
+  }
+
+  .issues-section :global(.issue-title) {
+	margin: 0 0 var(--space-xs);
+	font-size: var(--font-size-lg);
+	color: var(--color-accent-teal);
+  }
+
+  .issues-section :global(.issue-meta) {
+	margin: 0;
+	font-size: var(--font-size-sm);
+	color: #666;
+  }
+
+  .issues-section :global(.issue-flavour) {
+	margin: var(--space-sm) 0 0;
+	line-height: 1.6;
+	color: var(--color-text-dark);
   }
 
   #turns-factions-table {

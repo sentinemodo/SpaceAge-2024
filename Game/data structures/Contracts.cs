@@ -138,7 +138,7 @@ namespace SpaceAge
 			foreach (Contract contract in this)
 			{
 				if (contract.Location == null
-					|| !contract.Location.ModuleStacks.Contains(faction))
+					|| !ContractScope.FactionHasPresenceOnBody(faction, contract.Location))
 				{
 					continue;
 				}
@@ -217,7 +217,7 @@ namespace SpaceAge
 				List<Contract> visible = new List<Contract>();
 				foreach (Contract contract in created)
 				{
-					if (contract.Location != null && contract.Location.ModuleStacks.Contains(faction))
+					if (contract.Location != null && ContractScope.FactionHasPresenceOnBody(faction, contract.Location))
 					{
 						visible.Add(contract);
 					}

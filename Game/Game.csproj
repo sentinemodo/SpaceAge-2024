@@ -146,7 +146,9 @@
     <Compile Include="data structures\Contract.cs" />
     <Compile Include="data structures\Contracts.cs" />
     <Compile Include="data structures\DestroyStackTrigger.cs" />
+    <Compile Include="data structures\ContractScope.cs" />
     <Compile Include="data structures\GiveModuleTrigger.cs" />
+    <Compile Include="data structures\RegionPresenceTrigger.cs" />
     <Compile Include="data structures\ResearchWreckageTrigger.cs" />
     <Compile Include="data structures\IContractTrigger.cs" />
     <Compile Include="data structures\PressRelease.cs" />

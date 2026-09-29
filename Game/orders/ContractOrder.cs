@@ -21,6 +21,7 @@ namespace SpaceAge
 		public ModuleStack RewardStack { get; set; }
 		public ModuleStack ResearchTarget { get; set; }
 		public int ResearchPoints { get; set; }
+		public bool IsRegionPresence { get; set; }
 		public string Title { get; set; }
 		public string Flavour { get; set; }
 
@@ -71,9 +72,17 @@ namespace SpaceAge
 				return;
 			}
 
+			if (second.ToLowerInvariant() == "presence")
+			{
+				this.IsRegionPresence = true;
+				this.parseReward(ref command);
+				this.parseTitleFlavour(ref command);
+				return;
+			}
+
 			if (second.ToLowerInvariant() != "give")
 			{
-				throw new Exception("Bad syntax, give or research expected.");
+				throw new Exception("Bad syntax, give, research or presence expected.");
 			}
 
 			string quantityToken = LineParser.GetToken(ref command);
@@ -229,6 +238,17 @@ namespace SpaceAge
 				ResearchWreckageTrigger trigger = new ResearchWreckageTrigger(this.ResearchTarget, this.ResearchPoints);
 				published = new Contract(this.ContractName, this.Location, issuer, trigger, this.RewardStack);
 			}
+			else if (this.IsRegionPresence)
+			{
+				if (this.RewardTechnology == null)
+				{
+					issuer.EventReports.Add(week, "CONTRACT failed. Technology reward unknown.");
+					base.Execute(week);
+					return;
+				}
+				RegionPresenceTrigger trigger = new RegionPresenceTrigger(this.Location, issuer);
+				published = new Contract(this.ContractName, this.Location, issuer, trigger, this.RewardTechnology);
+			}
 			else
 			{
 				if (this.Receiver == null || this.ModuleType == null || this.RewardTechnology == null)
@@ -271,6 +291,13 @@ namespace SpaceAge
 				return;
 			}
 
+			if (elContract.GetAttribute("trigger") == "region-presence")
+			{
+				this.IsRegionPresence = true;
+				this.RewardTechnology = Technology.All[elContract.GetAttribute("reward")];
+				return;
+			}
+
 			this.Quantity = this.XMLAssignInteger(elContract.GetAttribute("quantity"), 1);
 			this.ModuleType = ModuleType.All[elContract.GetAttribute("module")];
 			this.Receiver = ModuleStack.All[elContract.GetAttribute("receiver")];
@@ -302,6 +329,12 @@ namespace SpaceAge
 					elContract.SetAttribute("points", this.ResearchPoints.ToString());
 					elContract.SetAttribute("reward-type", "unit");
 					elContract.SetAttribute("reward", this.RewardStack.Name);
+				}
+				else if (this.IsRegionPresence)
+				{
+					elContract.SetAttribute("trigger", "region-presence");
+					elContract.SetAttribute("reward-type", "technology");
+					elContract.SetAttribute("reward", this.RewardTechnology.Name);
 				}
 				else
 				{

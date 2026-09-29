@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<!-- Draft gamein fragment — NOT merged into play/campaign/gamein.1.xml yet.
+     Place under an orbit or space modulestack list (e.g. UN reserve orbit).
+     Stack name UNC001 is a placeholder; renumber to avoid collisions in live saves.
+     faction="1" = United Star Nations (GRANT issuer / initial owner). -->
+<modulestack name="UNC001" name-en="UN colony ship Alpha" type="uncolh" quantity="1" faction="1">
+	<modulestack name="UNC011" name-en="UN colony command" type="cbridg" quantity="1" faction="1"/>
+	<modulestack name="UNC012" name-en="UN colony life support" type="lifsys" quantity="1" faction="1"/>
+	<modulestack name="UNC021" name-en="UN colony crew A" type="crwqrt" quantity="1" faction="1"/>
+	<modulestack name="UNC022" name-en="UN colony crew B" type="crwqrt" quantity="1" faction="1"/>
+	<modulestack name="UNC023" name-en="UN colony crew C" type="crwqrt" quantity="1" faction="1"/>
+	<modulestack name="UNC024" name-en="UN colony crew D" type="crwqrt" quantity="1" faction="1"/>
+	<modulestack name="UNC031" name-en="UN colony powerplant" type="fisrec" quantity="1" faction="1">
+		<itemstack type="uraniu" quantity="10"/>
+	</modulestack>
+	<modulestack name="UNC032" name-en="UN colony drive" type="rctdrv" quantity="1" faction="1">
+		<itemstack type="h2o2" quantity="20"/>
+	</modulestack>
+	<modulestack name="UNC041" name-en="UN colony library 1" type="cmplib" quantity="1" faction="1"/>
+	<modulestack name="UNC042" name-en="UN colony library 2" type="cmplib" quantity="1" faction="1"/>
+	<modulestack name="UNC043" name-en="UN colony library 3" type="cmplib" quantity="1" faction="1"/>
+	<modulestack name="UNC044" name-en="UN colony library 4" type="cmplib" quantity="1" faction="1"/>
+	<modulestack name="UNC045" name-en="UN colony library 5" type="cmplib" quantity="1" faction="1"/>
+	<modulestack name="UNC046" name-en="UN colony library 6" type="cmplib" quantity="1" faction="1"/>
+	<modulestack name="UNC047" name-en="UN colony library 7" type="cmplib" quantity="1" faction="1"/>
+	<modulestack name="UNC051" name-en="UN colony cargo iron" type="cargob" quantity="1" faction="1">
+		<itemstack type="iron" quantity="500"/>
+	</modulestack>
+	<modulestack name="UNC052" name-en="UN colony cargo carbon" type="cargob" quantity="1" faction="1">
+		<itemstack type="carbon" quantity="500"/>
+	</modulestack>
+	<modulestack name="UNC053" name-en="UN colony cargo oil" type="cargob" quantity="1" faction="1">
+		<itemstack type="oil" quantity="500"/>
+	</modulestack>
+	<modulestack name="UNC054" name-en="UN colony cargo food and air" type="cargob" quantity="1" faction="1">
+		<itemstack type="food" quantity="500"/>
+		<itemstack type="terair" quantity="500"/>
+	</modulestack>
+	<modulestack name="UNC055" name-en="UN colony cargo uranium and titanium" type="cargob" quantity="1" faction="1">
+		<itemstack type="uraniu" quantity="100"/>
+		<itemstack type="titani" quantity="100"/>
+	</modulestack>
+	<modulestack name="UNC056" name-en="UN colony cargo silicium" type="cargob" quantity="1" faction="1">
+		<itemstack type="silici" quantity="100"/>
+	</modulestack>
+</modulestack>
