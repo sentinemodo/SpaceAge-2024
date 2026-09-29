@@ -68,10 +68,20 @@ function nonEmptyFile(filePath) {
 /** True when the faction has orders for the active collection window (gamein turn or next). */
 export function hasSubmittedOrders(factionId, turn, forRunId = runId()) {
   for (const orderTurn of [turn, turn + 1]) {
-    if (readSubmittedOrder(factionId, orderTurn, forRunId) != null) return true;
+    const versions = listOrderVersions(factionId, orderTurn, forRunId);
+    if (!versions.length) continue;
+    const version = versions[versions.length - 1];
+    const filePath = path.join(
+      factionOrderFolder(factionId, forRunId),
+      orderVersionFileName(factionId, orderTurn, version),
+    );
+    if (nonEmptyFile(filePath)) return true;
   }
-  const turnPath = path.join(turnDir(forRunId), `order.${factionId}.txt`);
-  return nonEmptyFile(turnPath);
+  if (turn !== readTurnFromGamein(forRunId)) {
+    return false;
+  }
+  const legacyPath = path.join(factionOrderFolder(factionId, forRunId), `order.${factionId}.txt`);
+  return nonEmptyFile(legacyPath);
 }
 
 /** Path to the order file that should run for this faction (versioned latest, else legacy draft). */

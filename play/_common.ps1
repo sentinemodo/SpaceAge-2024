@@ -316,11 +316,6 @@ function Test-FactionOrdersSubmitted {
 		return $true
 	}
 
-	$turnPath = Join-Path $Paths.TurnDir ("order.{0}.txt" -f $FactionId)
-	if (Test-NonEmptyOrderFile -Path $turnPath) {
-		return $true
-	}
-
 	if (-not (Test-Path -LiteralPath $folder)) {
 		return $false
 	}

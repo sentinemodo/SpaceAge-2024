@@ -115,6 +115,31 @@ describe('saveOrder', () => {
     }
   });
 
+  it('hasSubmittedOrders ignores stale turn-dir copies after a processed turn', () => {
+    ensureRunLayout();
+    fs.mkdirSync(path.dirname(gameinPath()), { recursive: true });
+    fs.writeFileSync(gameinPath(), '<?xml version="1.0"?><game turn="2"></game>', 'utf8');
+    const factionId = 10;
+    const folder = path.join(factionsDir(), '10');
+    fs.mkdirSync(folder, { recursive: true });
+    for (const name of fs.readdirSync(folder)) {
+      if (name.startsWith(`orders.${factionId}.`) || name === `order.${factionId}.txt`) {
+        fs.unlinkSync(path.join(folder, name));
+      }
+    }
+    fs.writeFileSync(
+      path.join(folder, orderVersionFileName(factionId, 1, 1)),
+      `#faction ${factionId} "turn1"\n#end\n`,
+      'utf8',
+    );
+    fs.writeFileSync(
+      path.join(turnDir(), `order.${factionId}.txt`),
+      `#faction ${factionId} "staged"\n#end\n`,
+      'utf8',
+    );
+    assert.equal(hasSubmittedOrders(factionId, 2), false);
+  });
+
   it('hasSubmittedOrders is true for LLM version file without order.{id}.txt draft', () => {
     ensureRunLayout();
     const turn = 6;

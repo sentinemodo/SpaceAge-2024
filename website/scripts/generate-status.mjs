@@ -43,11 +43,10 @@ function nonEmptyFile(filePath) {
   return Boolean(fs.readFileSync(filePath, 'utf8').trim());
 }
 
-/** Client draft, turn copy, or LLM orders.{faction}.{turn}.{iteration}.txt (gamein turn or next). */
-export function factionHasOrdersForTurn(factionId, turn, factionsDir, turnDirPath) {
+/** Faction draft or LLM orders.{faction}.{turn}.{iteration}.txt (gamein turn or next). */
+export function factionHasOrdersForTurn(factionId, turn, factionsDir) {
   const folder = path.join(factionsDir, factionFolderName(factionId));
   if (nonEmptyFile(path.join(folder, `order.${factionId}.txt`))) return true;
-  if (nonEmptyFile(path.join(turnDirPath, `order.${factionId}.txt`))) return true;
   if (!fs.existsSync(folder)) return false;
 
   for (const orderTurn of [turn, turn + 1]) {
@@ -96,14 +95,8 @@ export function buildStatusPayload(runRoot, options = {}) {
     turn = parsedTurn && parsedTurn > 0 ? parsedTurn : 1;
 
     let draftCount = 0;
-    const runTurnDir = path.join(runRoot, 'turn');
     for (const faction of factions) {
-      faction.submitted = factionHasOrdersForTurn(
-        faction.id,
-        turn,
-        factionsDir,
-        runTurnDir,
-      );
+      faction.submitted = factionHasOrdersForTurn(faction.id, turn, factionsDir);
       if (faction.submitted) draftCount += 1;
     }
 

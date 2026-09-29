@@ -167,6 +167,24 @@ describe('Status producer script', () => {
     expect(data.turn).toBe(2);
   });
 
+  it('ignores stale turn-dir copies and prior-turn version files when collecting turn 2', async () => {
+    writeGamein(2);
+    writeIsolatedReports(2);
+    for (let id = 2; id <= 11; id += 1) {
+      writeFactionVersionedOrders(id, 1, 1);
+      fs.writeFileSync(
+        path.join(TestRunPaths.turn, `order.${id}.txt`),
+        `#faction ${id}\nprocessed turn 1`,
+        { encoding: 'utf8' },
+      );
+    }
+
+    await runProducer(GeneratedStatusOut);
+    const data = validateStatusJson(JSON.parse(fs.readFileSync(GeneratedStatusOut, { encoding: 'utf8' })));
+    expect(data.status).toBe('reports-out');
+    expect(data.factions.every((f) => !f.submitted)).toBe(true);
+  });
+
   it('generates processing when all ten faction drafts exist', async () => {
     writeGamein(4);
     writeIsolatedReports(4);
