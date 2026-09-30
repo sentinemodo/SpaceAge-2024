@@ -364,6 +364,9 @@
     <Content Include="fixtures\space-move\gamein.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="fixtures\reveal\gamein.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="fixtures\nominal-value\gamein.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

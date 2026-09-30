@@ -224,7 +224,8 @@ namespace UnitTests
 			string dir = TestContext.CurrentContext.TestDirectory;
 			for (int i = 0; i < 10; i++)
 			{
-				if (File.Exists(Path.Combine(dir, "data.xml"))
+				if (File.Exists(Path.Combine(dir, "Tests.csproj"))
+					&& File.Exists(Path.Combine(dir, "data.xml"))
 					&& Directory.Exists(Path.Combine(dir, "fixtures", "reveal")))
 				{
 					return dir;
@@ -246,6 +247,7 @@ namespace UnitTests
 
 		private void LoadRevealWorld()
 		{
+			new Game().ClearDictionaries();
 			string testsDir = TestsDir();
 			string fixtureDir = this.RevealFixtureDir();
 			this.dataFile = new DataFile(fixtureDir);
