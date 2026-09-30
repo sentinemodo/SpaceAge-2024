@@ -180,6 +180,35 @@ namespace SpaceAge
 			{
 				yield return sibling;
 			}
+
+			foreach (ModuleStack nestedProducer in this.nestedEnergyProducers(root))
+			{
+				yield return nestedProducer;
+			}
+		}
+
+		private IEnumerable<ModuleStack> nestedEnergyProducers(ModuleStack holder)
+		{
+			if (holder == null)
+			{
+				yield break;
+			}
+
+			foreach (ModuleStack nested in holder.ModuleStacks.Values)
+			{
+				if (nested == null || !nested.IsFormed)
+				{
+					continue;
+				}
+				if (nested.NominalUnitEnergyProduction() > 0)
+				{
+					yield return nested;
+				}
+				foreach (ModuleStack deeper in this.nestedEnergyProducers(nested))
+				{
+					yield return deeper;
+				}
+			}
 		}
 
 		private int energyOperableModuleCount()
