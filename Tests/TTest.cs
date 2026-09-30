@@ -18,6 +18,8 @@ namespace UnitTests
 
 		protected void LoadDefaultGame()
 		{
+			new Game().ClearDictionaries();
+			Sequence.Reset();
 			this.dataFile = new DataFile(Directory.GetCurrentDirectory());
 			this.dataFile.LoadConfiguration();
 			this.dataFile.LoadGame();
