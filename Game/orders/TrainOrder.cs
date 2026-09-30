@@ -365,6 +365,16 @@ namespace SpaceAge
             }
             else
             {
+				if (!this.skillType.Trainable)
+				{
+					this.Trainee.EventReports.Add(
+						week,
+						string.Format(
+							"TRAIN failed: skill {0} is not trainable.",
+							this.skillType.ReportName));
+					return;
+				}
+
 				Faction owner = this.Trainee.Owner;
 				if (owner != null && !owner.SkillsSeen.Contains(this.skillType.Name))
 				{

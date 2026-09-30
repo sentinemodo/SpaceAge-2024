@@ -260,6 +260,10 @@ namespace SpaceAge
 					skillType.LoadXml(el);
 
 					skillType.TrainingDuration = this.dataFile.XMLAssignInteger(el.GetAttribute("training-duration"), 1);
+					if (el.HasAttribute("trainable"))
+					{
+						skillType.Trainable = this.dataFile.XMLAssignBoolean(el.GetAttribute("trainable"), true);
+					}
 					skillType.AttackFormula = SkillBonusFormula.Parse(el.GetAttribute("attack"));
 					skillType.DefenseFormula = SkillBonusFormula.Parse(el.GetAttribute("defense"));
 					skillType.InitiativeFormula = SkillBonusFormula.Parse(el.GetAttribute("initiative"));

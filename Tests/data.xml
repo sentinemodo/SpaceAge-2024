@@ -2183,5 +2183,17 @@ Researchers can query the library. The system can handle natural language questi
 			<usable-in module-type-group="extraction"/>
 			<produce effect="extraction output" value="125%"/>
 		</entry>
+		<entry
+			name="exmgmt"
+			name-en="executive management"
+			trainable="false"
+			description="Corporate oversight of energy, extraction, and factory lines."
+			>
+			<usable-in module-type-group="energy"/>
+			<usable-in module-type-group="extraction"/>
+			<usable-in module-type-group="production"/>
+			<produce effect="extraction output" value="125%"/>
+			<produce effect="production duration" value="75%"/>
+		</entry>
 	</skill>
 </data>

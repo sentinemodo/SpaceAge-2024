@@ -68,6 +68,18 @@ namespace SpaceAge
 
 		}
 
+		private bool trainable = true;
+
+		public bool Trainable
+
+		{
+
+			get { return this.trainable; }
+
+			set { this.trainable = value; }
+
+		}
+
 
 
 		public bool IsBattleSkill
@@ -380,6 +392,11 @@ namespace SpaceAge
 		public string ReportDescriptionForTechnology()
 		{
 			StringBuilder description = new StringBuilder(this.Description);
+			if (!this.Trainable)
+			{
+				description.Append(" Not trainable (assigned at seed or by scenario only).");
+				return description.ToString();
+			}
 			description.AppendFormat(" Training: {0} weeks.", this.TrainingDuration);
 			description.Append(" Issue TRAIN SKILL on a person once your faction has discovered this skill.");
 			return description.ToString();

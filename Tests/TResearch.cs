@@ -501,7 +501,8 @@ namespace UnitTests
 
 			List<string> expected = new List<string>
 			{
-				"+ military tactics [miltac]: Elementary military tactics, which enable a higher level of combat proficiency.",
+				"+ military tactics [miltac]: Elementary military tactics, which enable a higher level of combat proficiency. Unlocks TRAIN SKILL: infantry battalion commander [inbtcm].",
+				"  - infantry battalion commander [inbtcm]: Experience in leading a infantry battalion need a good mixture of tactical and personal skills. The point is on preserving lives. Training: 4 weeks. Issue TRAIN SKILL on a person once your faction has discovered this skill.",
 				"+ helium-3 mining [he3min]: The extraction and refining of helium-3 from regolith and gas. Helium-3 mining can be carried out by any extraction module that has this technology loaded.",
 				"  - unit of helium-3 [heliu3]: A light, non-radioactive helium isotope prized as clean fusion fuel; scarce on planets but abundant in lunar regolith.",
 				"+ advanced computing [advres]: Next-generation computing enabling far larger research complexes.",
