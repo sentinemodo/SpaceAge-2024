@@ -67,7 +67,8 @@ namespace UnitTests
 			this.game.ExecuteBetweenTurnOrders();
 
 			Assert.That(faction.Bank.Balance, Is.EqualTo(balanceBefore - 1000));
-			Assert.That(target.Technologies.Contains("armcbt"), Is.True);
+			ModuleStack host = target.FindTechnologyCopyHost(Technology.All["armcbt"]);
+			Assert.That(host.Technologies.Contains("armcbt"), Is.True);
 		}
 
 		[Test]
