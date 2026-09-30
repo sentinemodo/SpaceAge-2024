@@ -240,6 +240,10 @@ namespace SpaceAge
 		public static ModuleStack ResolveOrderStackReference(Faction owner, string token)
 		{
 			EnsureValidUseOrderStackReference(token);
+			if (ModuleStack.All.ContainsKey(token))
+			{
+				return ModuleStack.All[token];
+			}
 			return ModuleStack.All.GetOrCreateNewModuleStack(owner, token, true);
 		}
 
