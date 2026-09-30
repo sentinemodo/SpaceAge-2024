@@ -45,58 +45,89 @@ namespace SpaceAge
 			get { return this.description; }
 			set { this.description = value; }
 		}
-		
+
+		public bool RenamesIssuerStack
+		{
+			get
+			{
+				if (this.named == null)
+				{
+					return true;
+				}
+				return this.named == (NamedObject)this.Namer;
+			}
+		}
+
 		public override void Parse(string command)
 		{
-			// change name of the named object
-			// NAME "new name"
-			// NAME target "new name"
+			// NAME "new name" — rename issuing stack
+			// NAME LOCATION <region|planet|moon|orbit-id> "new name" — rename map object (patrol rules)
+			// NAME <id> "new name" — legacy location form
 
-			string token;
 			if (string.IsNullOrEmpty(command.Trim()))
 			{
 				throw new Exception("Bad syntax");
 			}
 			string commandCopy = command;
 
-			token = LineParser.GetToken(ref commandCopy);			
-			if (token[0] == '"')
+			string token = LineParser.GetToken(ref commandCopy);
+			if (token.Length > 0 && token[0] == '"')
 			{
 				this.description = LineParser.GetQuotedToken(ref command);
 				this.named = this.Namer;
-			} else 
-			{
-				token = LineParser.GetToken(ref command);			
-				//if (Star.All.ContainsKey(token)) 
-				//{
-				//    this.named = Star.All[token];
-				//} else 
-				if (Planet.All.ContainsKey(token))
-				{
-					this.named = Planet.All[token];
-				} else if (Moon.All.ContainsKey(token))
-				{
-					this.named = Moon.All[token];
-				} else if (Orbit.All.ContainsKey(token))
-				{
-					this.named = Orbit.All[token];
-				} else if (Region.All.ContainsKey(token))
-				{
-					this.named = Region.All[token];
-				} else {
-					throw new Exception("bad syntax or unknown object to name " + token);
-				}
-				this.description = LineParser.GetQuotedToken(ref command);
+				return;
 			}
 
+			if (string.Equals(token, "location", StringComparison.OrdinalIgnoreCase))
+			{
+				token = LineParser.GetToken(ref commandCopy);
+			}
+
+			this.named = this.resolveMapNameTarget(token);
+			if (this.named == null)
+			{
+				throw new Exception("bad syntax or unknown object to name " + token);
+			}
+			this.description = LineParser.GetQuotedToken(ref commandCopy);
+		}
+
+		private NamedObject resolveMapNameTarget(string token)
+		{
+			if (Planet.All.ContainsKey(token))
+			{
+				return Planet.All[token];
+			}
+			if (Moon.All.ContainsKey(token))
+			{
+				return Moon.All[token];
+			}
+			if (Orbit.All.ContainsKey(token))
+			{
+				return Orbit.All[token];
+			}
+			if (Region.All.ContainsKey(token))
+			{
+				return Region.All[token];
+			}
+			return null;
 		}
 
         public override List<string> Report(Faction owner)
         {
             List<string> lines = new List<string>();
-            string line = string.Format("{0}name \"{1}\"",
-                this.Conditions,
-                this.Description);
+			string line;
+			if (this.RenamesIssuerStack)
+			{
+				line = string.Format("{0}name \"{1}\"", this.Conditions, this.Description);
+			}
+			else
+			{
+				line = string.Format(
+					"{0}name location {1} \"{2}\"",
+					this.Conditions,
+					this.named.Name,
+					this.Description);
+			}
             lines.Add(line);
             return lines;
         }
@@ -105,12 +136,29 @@ namespace SpaceAge
         {
             XmlElement elName = (XmlElement)elOrder.SelectNodes("name")[0];
             this.Description = elName.GetAttribute("description");
+			string target = elName.GetAttribute("target");
+			if (string.IsNullOrEmpty(target))
+			{
+				this.named = this.Namer;
+			}
+			else
+			{
+				this.named = this.resolveMapNameTarget(target);
+				if (this.named == null)
+				{
+					this.named = this.Namer;
+				}
+			}
         }
 
 		public override XmlElement SaveXml_core(XmlDocument doc, string subject)
 		{
             XmlElement elName = doc.CreateElement("name");
             elName.SetAttribute("description", this.Description);
+			if (!this.RenamesIssuerStack && this.named != null)
+			{
+				elName.SetAttribute("target", this.named.Name);
+			}
 			this.xmlElement.AppendChild(elName);
 			return this.xmlElement;
 		}
@@ -120,11 +168,15 @@ namespace SpaceAge
 			try
 			{
 				this.Executed = false;
-				if (this.Namer == this.named)
+				if (this.RenamesIssuerStack)
 				{
-					this.named.FullName = this.Description;
+					this.Namer.FullName = this.Description;
 					this.Executed = true;
-				} 
+				}
+				else if (this.Namer.Location == null)
+				{
+					this.Namer.EventReports.Add(week, "NAME failed. You must be in location to name it.");
+				}
 				else if (this.Namer.Location.Name == this.named.Name)
 				{
 					ModuleStack patrolBlocker = PatrolGuard.FindRenameBlocker(this.named, this.Namer.Owner);
@@ -142,7 +194,7 @@ namespace SpaceAge
 						this.Executed = true;
 					}
 				}
-				else 
+				else
 				{
 					this.Namer.EventReports.Add(week, "NAME failed. You must be in location to name it.");
 				}

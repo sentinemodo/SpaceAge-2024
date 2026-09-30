@@ -331,7 +331,7 @@ CAPTURE REGION forces move into region and declare unit preventing entry ENEMY.
 
 **HAS** — `HAS <qty> <item|module-type>` | `HAS PERSON <id>` | `HAS MODULES [qty]` — condition probe. Executed when modulestack has an item or module.
 
-**NAME** — `NAME "<stack name>"` | `NAME <region-object>|<space-object-id> "<name>"` — rename (map rename requires presence). Cannot change the <region-id>|<space-object-id> name if there is a patrolling modulestack of non-ally different faction.
+**NAME** — `NAME "<stack name>"` renames the issuing unit (always allowed). `NAME LOCATION <region-object>|<space-object-id> "<name>"` renames that map object; you must be there, and non-allies cannot rename while a hostile patroller blocks it. Legacy `NAME <id> "<name>"` (without `LOCATION`) is the same as the location form.
 
 **PRESS** — `PRESS [planet|moon] TITLE "<t>" [FLAVOUR "<f>"]`. Subject: **#faction**. Between-turn OK. Issue a press release that will be added to the report (and immediatelly issued if submitted between turns). The press release will be visible to all present on the planet/moon. The sender of the press release **will be indicated.**
 
