@@ -430,6 +430,7 @@
 					<modulestack name="200001" type="corphq" quantity="1" faction="2" name-en="Northwind Headquarters">
 						<person name="200010" name-en="Northwind CEO" race="terran" faction="2">
 							<upkeep type="cash" quantity="10" />
+				<skill name="exmgmt" experience="10" />
 						</person>
 						<itemstack type="terran" quantity="20" />
 						<upkeep type="cash" quantity="90" />
@@ -486,7 +487,7 @@
 					<deep-pocket>
 						<resource type="titani" quantity="55" />
 					</deep-pocket>
-					<anomaly type="spectral" points="8" description="Photic-band albedo steps on an otherwise uniform grassland — buried oxide or organics.">
+					<anomaly type="spectral" points="8" description="Photic-band albedo steps on an otherwise uniform grassland ï¿½ buried oxide or organics.">
 						<reward band="0" kind="survey-blurb" />
 						<reward band="0" kind="research-rp" technology="optins" quantity="20" />
 						<reward band="2" kind="research-rp" technology="survts" quantity="8" />
@@ -513,6 +514,7 @@
 					<modulestack name="210001" type="corphq" quantity="1" faction="3" name-en="Greenwell Headquarters">
 						<person name="210010" name-en="Greenwell CEO" race="terran" faction="3">
 							<upkeep type="cash" quantity="10" />
+				<skill name="exmgmt" experience="10" />
 						</person>
 						<itemstack type="terran" quantity="20" />
 						<upkeep type="cash" quantity="90" />
@@ -750,6 +752,7 @@
 					<modulestack name="220001" type="corphq" quantity="1" faction="4" name-en="Rivermark Headquarters">
 						<person name="220010" name-en="Rivermark CEO" race="terran" faction="4">
 							<upkeep type="cash" quantity="10" />
+				<skill name="exmgmt" experience="10" />
 						</person>
 						<itemstack type="terran" quantity="20" />
 						<upkeep type="cash" quantity="90" />
@@ -889,6 +892,7 @@
 					<modulestack name="230001" type="corphq" quantity="1" faction="5" name-en="Sundock Headquarters">
 						<person name="230010" name-en="Sundock CEO" race="terran" faction="5">
 							<upkeep type="cash" quantity="10" />
+				<skill name="exmgmt" experience="10" />
 						</person>
 						<itemstack type="terran" quantity="20" />
 						<upkeep type="cash" quantity="90" />
@@ -1027,6 +1031,7 @@
 					<modulestack name="240001" type="corphq" quantity="1" faction="6" name-en="Copse Headquarters">
 						<person name="240010" name-en="Copse CEO" race="terran" faction="6">
 							<upkeep type="cash" quantity="10" />
+				<skill name="exmgmt" experience="10" />
 						</person>
 						<itemstack type="terran" quantity="20" />
 						<upkeep type="cash" quantity="90" />
@@ -1101,7 +1106,7 @@
 					<deep-pocket>
 						<resource type="uraniu" quantity="25" />
 					</deep-pocket>
-					<anomaly type="spectral" points="8" description="Narrow IR emission line in a wind-cut saddle — heated outcrop or shallow geothermal bleed.">
+					<anomaly type="spectral" points="8" description="Narrow IR emission line in a wind-cut saddle ï¿½ heated outcrop or shallow geothermal bleed.">
 						<reward band="0" kind="survey-blurb" />
 						<reward band="0" kind="research-rp" technology="optins" quantity="20" />
 						<reward band="2" kind="research-rp" technology="survts" quantity="8" />
@@ -2815,6 +2820,7 @@
 					<modulestack name="250001" type="corphq" quantity="1" faction="7" name-en="Ironclad Headquarters">
 						<person name="250010" name-en="Ironclad CEO" race="terran" faction="7">
 							<upkeep type="cash" quantity="10" />
+				<skill name="exmgmt" experience="10" />
 						</person>
 						<itemstack type="terran" quantity="20" />
 						<upkeep type="cash" quantity="90" />
@@ -2943,6 +2949,7 @@
 					<modulestack name="260001" type="corphq" quantity="1" faction="8" name-en="Oreline Headquarters">
 						<person name="260010" name-en="Oreline CEO" race="terran" faction="8">
 							<upkeep type="cash" quantity="10" />
+				<skill name="exmgmt" experience="10" />
 						</person>
 						<itemstack type="terran" quantity="20" />
 						<upkeep type="cash" quantity="90" />
@@ -3060,7 +3067,7 @@
 					<deep-pocket>
 						<resource type="silici" quantity="50" />
 					</deep-pocket>
-					<anomaly type="seismic" points="8" description="Reflected compressional wave off a shallow density contrast — void or ore lens.">
+					<anomaly type="seismic" points="8" description="Reflected compressional wave off a shallow density contrast ï¿½ void or ore lens.">
 						<reward band="0" kind="survey-blurb" />
 						<reward band="0" kind="research-rp" technology="optins" quantity="20" />
 						<reward band="2" kind="resource" item="copper" quantity="1" />
@@ -3088,6 +3095,7 @@
 					<modulestack name="270001" type="corphq" quantity="1" faction="9" name-en="Basalt Headquarters">
 						<person name="270010" name-en="Basalt CEO" race="terran" faction="9">
 							<upkeep type="cash" quantity="10" />
+				<skill name="exmgmt" experience="10" />
 						</person>
 						<itemstack type="terran" quantity="20" />
 						<upkeep type="cash" quantity="90" />
@@ -3250,6 +3258,7 @@
 					<modulestack name="280001" type="corphq" quantity="1" faction="10" name-en="Silicate Headquarters">
 						<person name="280010" name-en="Silicate CEO" race="terran" faction="10">
 							<upkeep type="cash" quantity="10" />
+				<skill name="exmgmt" experience="10" />
 						</person>
 						<itemstack type="terran" quantity="20" />
 						<upkeep type="cash" quantity="90" />
@@ -3390,6 +3399,7 @@
 					<modulestack name="290001" type="corphq" quantity="1" faction="11" name-en="Fission Headquarters">
 						<person name="290010" name-en="Fission CEO" race="terran" faction="11">
 							<upkeep type="cash" quantity="10" />
+				<skill name="exmgmt" experience="10" />
 						</person>
 						<itemstack type="terran" quantity="20" />
 						<upkeep type="cash" quantity="90" />

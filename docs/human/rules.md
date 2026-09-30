@@ -1,6 +1,6 @@
 # SpaceAge player rules
 
-**Engine:** open beta **0.8.001**  
+**Engine:** open beta **0.8.002**  
 **Updated:** 28 September 2026
 
 Single source of truth for PBEM turn orders: file format, all live verbs, turn flow, market, movement, opening patterns, and combat.
@@ -547,4 +547,4 @@ Before `move`: crew, fuel,
 
 ---
 
-*SpaceAge open beta 0.8.001*
+*SpaceAge open beta 0.8.002*

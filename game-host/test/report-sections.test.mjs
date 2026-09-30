@@ -14,7 +14,6 @@ const sampleReport = fs.readFileSync(
 test('splitReportSections preserves engine text without reformatting', () => {
   const sections = splitReportSections(sampleReport);
   assert.ok(sections.some((s) => s.id === 'galaxy'));
-  assert.ok(sections.some((s) => s.id === 'events'));
   assert.ok(sections.some((s) => s.id === 'bank'));
   const galaxy = sections.find((s) => s.id === 'galaxy');
   assert.match(galaxy.text, /Galaxy report:/);

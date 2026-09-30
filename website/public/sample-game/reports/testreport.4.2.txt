@@ -5,7 +5,7 @@ Content-Disposition: attachment
 SpaceAge report for Caste Prime [2].
 Turn 4, Year 2157, September 1.
 
-SpaceAge Engine Version: 0.8.001.
+SpaceAge Engine Version: 0.8.002.
 
 
 Events this quarter:
@@ -39,7 +39,7 @@ Events this quarter:
   week 13: Bank account credited: Deposit interests accounted to 100. Current balance: 8090.
 
 Press releases:
-  Earth [P00001] at AU 1, ocean planet [ocean]: NPC [1] — Caste Prime closes Wake the crashed ship.
+  Earth [P00001] at AU 1, ocean planet [ocean]: NPC [1] ï¿½ Caste Prime closes Wake the crashed ship.
     United Star Nations records Caste Prime's fulfillment of CT0122 at Dusty field on Earth [P00001]
     at AU 1, ocean planet [ocean].
 Bank report:
@@ -8174,7 +8174,7 @@ Galaxy report:
       size: 4.
 
 Press releases:
-  Earth [P00001] at AU 1, ocean planet [ocean]: NPC [1] — Caste Prime closes Wake the crashed ship.
+  Earth [P00001] at AU 1, ocean planet [ocean]: NPC [1] ï¿½ Caste Prime closes Wake the crashed ship.
     United Star Nations records Caste Prime's fulfillment of CT0122 at Dusty field on Earth [P00001]
     at AU 1, ocean planet [ocean].
 ------------------------------------------------------------
@@ -8334,7 +8334,7 @@ Press releases:
           week 13: paid 1 cash [cash] upkeep.
 
 Press releases:
-  Earth [P00001] at AU 1, ocean planet [ocean]: NPC [1] — Caste Prime closes Wake the crashed ship.
+  Earth [P00001] at AU 1, ocean planet [ocean]: NPC [1] ï¿½ Caste Prime closes Wake the crashed ship.
     United Star Nations records Caste Prime's fulfillment of CT0122 at Dusty field on Earth [P00001]
     at AU 1, ocean planet [ocean].
 

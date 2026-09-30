@@ -462,14 +462,14 @@
 			<use-produce module="mtrply"/>
 		</entry>
 		<entry 
-			name="agrplx" 
-			name-en="agricultural complex" 
+			name="agrplx"
+			name-en="agricultural complex"
 			level="0"
-			description="The placing of farms and others complexes on a planet for farming and ranching." 
+			description="The placing of farms and others complexes on a planet for farming and ranching."
 			use-time="4">
 			<use-allowed-in module-type-group="production" location-type="solid-surface" planet-atmosphere="terair"/>
 			<use-consume item="iron" quantity="10" />
-			<use-produce module="farms"/>			
+			<use-produce module="farms"/>
 		</entry>
 		<entry 
 			name="farmng" 
@@ -621,6 +621,19 @@
 			<use-allowed-in module-type-group="production"/>
 			<use-consume item="iron" quantity="2"/>
 			<use-produce module="trucks"/>
+		</entry>
+		<entry
+			name="mobctr"
+			name-en="mobile construction team"
+			level="1"
+			tags="production"
+			requires="grndtr"
+			description="Field fabrication truck with cranes and prefab kits. Builds modules on solid ground at roughly one-tenth factory pace; runs on oil, not grid power."
+			use-time="2">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="2"/>
+			<use-consume item="titani" quantity="2"/>
+			<use-produce module="engtrk"/>
 		</entry>
 		<entry
 			name="nvltrs"
@@ -2515,11 +2528,11 @@ Researchers can query the library. The system can handle natural language questi
 		</entry>
 		<entry
 			name="trucks"
-			name-en="trucks" 
-			group="vehicle" 
+			name-en="trucks"
+			group="vehicle"
 			description="Group of large and slow ground moving trucks."
-			size="250"			
-			mass="100" 
+			size="250"
+			mass="100"
 			capacity="150"
 			crew="1"
 			hit-points="17">
@@ -2530,6 +2543,30 @@ Researchers can query the library. The system can handle natural language questi
 			<consume type="terair" quantity="4"/>
 			<no-consume effect="damage" chance="25"/>
 			<move mode="ground" speed="0.5"/>
+			<fuel duration="13">
+				<item type="oil" quantity="1"/>
+			</fuel>
+		</entry>
+		<entry
+			name="engtrk"
+			name-en="engineering truck"
+			name-en2="engineering trucks"
+			group="production"
+			description="Mobile production module on an oil-fuelled chassis. Any factory USE allowed on solid ground applies here at one-tenth speed; suited to field cplants, drills, and contract modules—not hauling finished complexes."
+			size="250"
+			mass="120"
+			capacity="150"
+			crew="2"
+			energy="0"
+			hit-points="17">
+			<operation-allowed-in planet-atmosphere="terair"/>
+			<operation-allowed-in location-type="solid-surface"/>
+			<upkeep type="cash" quantity="8"/>
+			<consume type="food" quantity="6"/>
+			<consume type="terair" quantity="6"/>
+			<no-consume effect="damage" chance="25"/>
+			<move mode="ground" speed="0.4"/>
+			<use efficiency-multiplier="10" require-fuel="true" location-type="solid-surface"/>
 			<fuel duration="13">
 				<item type="oil" quantity="1"/>
 			</fuel>
@@ -4609,6 +4646,18 @@ Researchers can query the library. The system can handle natural language questi
 			>
 			<usable-in module-type-group="extraction"/>
 			<produce effect="extraction output" value="125%"/>
+		</entry>
+		<entry
+			name="exmgmt"
+			name-en="executive management"
+			trainable="false"
+			description="Corporate oversight of energy, extraction, and factory lines. Seeded on charter CEOs; not taught through TRAIN SKILL."
+			>
+			<usable-in module-type-group="energy"/>
+			<usable-in module-type-group="extraction"/>
+			<usable-in module-type-group="production"/>
+			<produce effect="extraction output" value="125%"/>
+			<produce effect="production duration" value="75%"/>
 		</entry>
 	</skill>
 </data>

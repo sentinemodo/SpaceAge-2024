@@ -1,7 +1,7 @@
 # SpaceAge-2024 — architecture overview
 
 Status: **Current-state description** (open beta)  
-Engine version: `Game/Program.cs` → `EngineVersion` (currently **0.8.001**)  
+Engine version: `Game/Program.cs` → `EngineVersion` (currently **0.8.002**)  
 Last updated: 2026-09-16
 
 Doc hub: [`docs/README.md`](../docs/README.md)

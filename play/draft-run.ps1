@@ -58,11 +58,14 @@ param(
 
     [int] $Top = 0,
     [int] $MaxQualityAttempts = 0,
-    [switch] $Staged
+    [switch] $Staged,
+    [string] $LogFileName = 'draft-run.log'
 )
 
 $ErrorActionPreference = 'Stop'
 . (Join-Path $PSScriptRoot '_common.ps1')
+Initialize-PlayRunLog -RunId $Run -LogFileName $LogFileName
+Write-PlayRunLog "draft-run run=$Run mode=$Mode factions=$FromFaction..$ToFaction dryRun=$DryRun staged=$Staged"
 if (-not $DryRun) {
 	Test-OllamaDocker
 }
@@ -92,8 +95,9 @@ if ($Top -gt 0) { $args += @('--top', $Top) }
 if ($MaxQualityAttempts -gt 0) { $args += @('--max-quality-attempts', $MaxQualityAttempts) }
 if ($Staged) { $args += '--staged' }
 
-Write-Host "player-agent draft-run --mode $Mode --run $Run (factions $FromFaction..$ToFaction)"
-& dotnet @args
+Write-PlayRunLog "player-agent draft-run --mode $Mode --run $Run (factions $FromFaction..$ToFaction)" -Color Cyan
+& dotnet @args 2>&1 | ForEach-Object { Write-PlayRunLog "  $_" }
 if ($LASTEXITCODE -ne 0) {
     throw "draft-run failed with exit code $LASTEXITCODE"
 }
+Write-PlayRunLog 'draft-run finished' -Color Green

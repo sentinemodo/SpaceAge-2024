@@ -4,7 +4,7 @@ Last updated: 2026-09-16
 Decision: [ADR-0010](../adr/ADR-0010-visual-tool.md)  
 Brief (legacy): [`docs/legacy/prompts/visual-tool-brief.txt`](../../docs/legacy/prompts/visual-tool-brief.txt) · live: [`tools/visual-tool/README.md`](../../tools/visual-tool/README.md)
 
-**Status: complete for open beta 0.8.001** — F1–F13 implemented; Vitest green (30 tests). Playwright UT-001…UT-005 run against `game-host` preview + `/client/` (see `tools/visual-tool/e2e/ut-smoke.spec.ts`).
+**Status: complete for open beta 0.8.002** — F1–F13 implemented; Vitest green (30 tests). Playwright UT-001…UT-005 run against `game-host` preview + `/client/` (see `tools/visual-tool/e2e/ut-smoke.spec.ts`).
 
 Hosted React client consuming game-host report XML via session API (`GET /api/session/report.xml`, `report-sections`, `parse-orders`, `battle-sim`).
 

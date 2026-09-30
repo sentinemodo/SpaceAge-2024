@@ -13,7 +13,7 @@ describe('human rules loader', () => {
     const md = loadHumanRulesMarkdown();
     expect(md).toMatch(/PBEM/);
     expect(md).toMatch(/#modulestack/);
-    expect(md).toMatch(/0\.8\.001/);
+    expect(md).toMatch(/0\.8\.002/);
   });
 
   it('renders markdown to HTML', () => {

@@ -5,7 +5,7 @@ Content-Disposition: attachment
 SpaceAge report for NPC [1].
 Turn 3, Year 2156, July 1.
 
-SpaceAge Engine Version: 0.8.001.
+SpaceAge Engine Version: 0.8.002.
 
 
 Events this quarter:
@@ -23,7 +23,7 @@ Events this quarter:
   week 13: Bank account credited: Deposit interests accounted to 0. Current balance: 1000.
 
 Press releases:
-  Earth [P00001] at AU 1, ocean planet [ocean]: NPC [1] — Gelvaren closes CT0121.
+  Earth [P00001] at AU 1, ocean planet [ocean]: NPC [1] ï¿½ Gelvaren closes CT0121.
     United Star Nations records Gelvaren's fulfillment of CT0121 at Southern Hemisphere on Earth
     [P00001] at AU 1, ocean planet [ocean].
 Bank report:
@@ -796,7 +796,7 @@ Galaxy report:
       size: 500.
 
 Press releases:
-  Earth [P00001] at AU 1, ocean planet [ocean]: NPC [1] — Gelvaren closes CT0121.
+  Earth [P00001] at AU 1, ocean planet [ocean]: NPC [1] ï¿½ Gelvaren closes CT0121.
     United Star Nations records Gelvaren's fulfillment of CT0121 at Southern Hemisphere on Earth
     [P00001] at AU 1, ocean planet [ocean].
 ------------------------------------------------------------
@@ -811,7 +811,7 @@ Press releases:
     [silici].
 
 Press releases:
-  Earth [P00001] at AU 1, ocean planet [ocean]: NPC [1] — Gelvaren closes CT0121.
+  Earth [P00001] at AU 1, ocean planet [ocean]: NPC [1] ï¿½ Gelvaren closes CT0121.
     United Star Nations records Gelvaren's fulfillment of CT0121 at Southern Hemisphere on Earth
     [P00001] at AU 1, ocean planet [ocean].
 

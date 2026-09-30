@@ -42,7 +42,11 @@ Use `ATTACK`, `CAPTURE`, and `DECLARE FACTION <id> ENEMY` when diplomacy warrant
 '@
 	economic   = 'Startup: **surface drill only** on HQ; factory copy of **`mcored`** costs **1000 balance** at init; **+50 iron** on cargob costs **500** more (**8500 cash** on hand). HQ: **`set hold 20 terran`** then **`@produce terran`** (manpower for nested crew and **`use mcored`** builds beats cash income early). **`use mcored`** to build the first **core drill**, then stack more **core drills** and **`agrplx` farms** on the grant. **Energy first:** keep **`cplant`** (or add **`fossil`**) running before scaling extraction. Scout with **`msrvtm` to `moblab`** carrying a **`mcored` technology copy** (not trucks): adjacent exits show **deep pocket of resources detected** once the factory copy is present; move the lab into the pocket cell to read **Deep resources:** assays. Defer UN town charters until the home grant is production-maxed. Trade at UN markets when local mass is thin.'
 	researcher = 'HQ: **`set hold 20 terran`** beside **`@produce terran`**. Build **`msrvtm` to `moblab` first** on the factory copy, then **`get` crew, food, and oil** from HQ cargo (no `@` on mobile stack), **`move`** to the adjacent grant anomaly and **`research`** it (8 pt / +20 RP). HQ cargo seeds **5 oil** for ground fuel (same as `trucks`). Defer town charters until the survey column moves. Later: `filidx`, `frminf` escort, silici scouting. Wreck charters (`CONTRACT` / `research` on belt hulks) when staged.'
-	contractor = 'HQ: **`set hold 20 terran`** beside **`@produce terran`**. File UN `CONTRACT` / `give-module` jobs first (food, wind, drills). Spend rewards on trade and the same live verbs as economic.'
+	contractor = @'
+HQ: **`set hold 20 terran`** beside **`@produce terran`**. Scout with trucks for settlements offering contracts; prioritize UN town charters and `give-module` jobs (food, wind, drills).
+
+**Turn focus doctrine (each quarter):** long-run weights — **50% contract**, **25% defence**, **15% economy**, **10% research**; pick the focus the report makes achievable. Contract quarters may include aligned economy/research/defence staging. Every `story.md` needs **## Turn priority** with focus, rationale, and **Active contract: CTxxxx** when focus is contract. See `play/player/personas/contractor-turn-focus.md`.
+'@
 }
 
 $PasswordCharset = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789'

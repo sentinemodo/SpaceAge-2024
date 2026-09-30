@@ -19,7 +19,7 @@ public static partial class StoryDraftPromptBuilder
         string personaText,
         string reportText)
     {
-        var reportExcerpt = BuildReportExcerpt(reportText, maxLines: 70);
+        var reportExcerpt = BuildReportExcerpt(reportText, maxLines: 120);
         var contractHint = ExtractContractHint(reportText);
         var stackIds = ExtractStackIds(reportExcerpt, factionId);
         return new StoryDraftContext(
@@ -66,6 +66,7 @@ public static partial class StoryDraftPromptBuilder
 
             {(includeWin ? string.Empty : "Omit Win objective (T < 10). ")}
             {(context.HasPriorStory ? string.Empty : "Omit Review (first quarter). ")}
+            {(IsContractorPersona(context.PersonaText) ? ContractorTurnPriorityHeadingRequirement : string.Empty)}
             Use stack ids from report: {context.StackIdsSummary}.
             Contract: {context.ContractHint}.
             """;
@@ -75,6 +76,7 @@ public static partial class StoryDraftPromptBuilder
         StoryDraftContext context,
         bool omitStrategicSection = false)
     {
+        var isContractor = IsContractorPersona(context.PersonaText);
         var isResearcher = context.PersonaText.Contains("Preference: researcher", StringComparison.OrdinalIgnoreCase);
         var isEconomic = context.PersonaText.Contains("Preference: economic", StringComparison.OrdinalIgnoreCase);
         var isMilitary = context.PersonaText.Contains("Preference: military", StringComparison.OrdinalIgnoreCase);
@@ -117,6 +119,14 @@ public static partial class StoryDraftPromptBuilder
                         - No factory USE, tanks, town charter, or fauna offensives — upkeep and existing grant only
                         - REPAIR if report shows damage; RESEARCH only if a lab exists and energy margin allows
                         """
+                : isContractor
+                    ? """
+                        - Match bullets to **## Turn priority** focus (contract 50% / defence 25% / economy 15% / research 10% doctrine)
+                        - **contract:** stage `use twnbld` / wind / food / drill modules per active CT; `transfer 1 to faction 1` on give-module jobs; `CONTRACT` accept or presence steps from rumors
+                        - **defence:** escort trucks, clear fauna lanes when rumors confirm; DECLARE FACTION 14 ENEMY only after contact intel
+                        - **economy:** HQ `@produce terran`, grant loop `@use farmng` / `@use hcdril`, `@produce energy`, stage 30 iron + 2 titani on factory cargob feeds
+                        - **research:** moblab + `@research` only when a contract reward or wreck charter requires it
+                        """
                     : """
                         - Grant economic loop (@produce cash, @use farmng / @use hcdril, @produce energy, sell food via cargob)
                         - Stage 30 iron + 2 titani on factory, use twnbld as new1, transfer 1 to faction 1 for the UN town contract
@@ -130,6 +140,8 @@ public static partial class StoryDraftPromptBuilder
                     ? "anonymous Mid Vale fauna rumor, scout truck on Farm Belt, two armored tank squads clearing brush for CT0016 cash"
                 : isAbsentPlayer
                     ? "quiet grant maintenance under gold Helios light, coal plant and drills keeping the line fed while the CEO holds the charter paperwork"
+                : isContractor
+                    ? "charter mercenary boardroom, UN contract postings and rumor releases, trucks scouting for the quarter's chosen focus"
                     : "UN town charter via TRANSFER TO FACTION 1";
 
         var strategicGuidance = isEconomic
@@ -146,6 +158,11 @@ public static partial class StoryDraftPromptBuilder
                     ? """
                         Four-quarter arc: clear adjacent fauna (CT0016/CT0019 cash bounties), secure oil pockets, cplant/fossil energy for barracks, frminf infantry from barracks, then Gate orbit when ready.
                         Defer CT0006 UN town charter until the armored lane is secure. Fauna factions 14-17 start neutral — declare only after rumor or scout contact.
+                        """
+                : isContractor
+                    ? """
+                        Four-quarter arc weighted to contractor doctrine: ~50% quarters push open UN contracts (name CT ids), ~25% defence of grant lanes and escorts, ~15% economy staging for module builds, ~10% research/moblab when rewards require it.
+                        Quarters may blend focuses when contract execution needs economy or research first.
                         """
                     : """
                         Four quarters tied to persona doctrine and the open contract; mention contract id and reward tech where relevant.
@@ -168,12 +185,38 @@ public static partial class StoryDraftPromptBuilder
                 """));
         }
 
+        var reportBlock = omitStrategicSection
+            ? $"""
+
+            Report excerpt (turn {context.ReportTurn}; honor new contracts/rumors and stack ids):
+            {context.ReportExcerpt}
+            """
+            : string.Empty;
+
+        if (isContractor)
+        {
+            prompts.Add(new StoryChunkPrompt(
+                "turn-priority",
+                $"""
+                {personaBrief}
+                {reportBlock}
+
+                Write ONLY ## Turn priority for turn {context.ReportTurn}.
+                {ContractorTurnPriorityBodyInstructions}
+                Open contracts / rumors hint: {context.ContractHint}.
+                Pick **contract** when an open CT is achievable this quarter; else defence if fauna/rumors threaten; else economy staging; else research.
+                No other headings.
+                """));
+        }
+
         prompts.Add(new StoryChunkPrompt(
             "tactical",
             $"""
             {personaBrief}
+            {reportBlock}
 
             Write ONLY ## Tactical objective (bullet list for the next quarter).
+            {(isContractor ? "Execute the focus declared in ## Turn priority (same story)." : string.Empty)}
             {tacticalBullets}
             Substitute real stack ids from the report where placeholders appear: {context.StackIdsSummary}.
             Do not echo these instructions. No other headings.
@@ -183,9 +226,12 @@ public static partial class StoryDraftPromptBuilder
             "narrative",
             $"""
             {personaBrief}
+            {reportBlock}
 
             Write ONLY ## Narrative, 150-250 words hard SF prose for turn {context.ReportTurn} on the home grant,
             gold Helios light on Arbor, {narrativeHook}.
+            Reflect this report and any new contract/rumor releases; do not rewrite the four-quarter strategic arc.
+            {(isContractor ? "State the quarter's Turn priority focus and name the active CTxxxx when focus is contract." : string.Empty)}
             No other headings.
             """));
 
@@ -273,6 +319,24 @@ public static partial class StoryDraftPromptBuilder
 
     private static Regex PersonaFieldRegex(string label) =>
         new($@"##?\s*{label}\s*:?\s*(.+)$", RegexOptions.IgnoreCase | RegexOptions.Multiline);
+
+    private static bool IsContractorPersona(string personaText) =>
+        personaText.Contains("Preference: contractor", StringComparison.OrdinalIgnoreCase);
+
+    private const string ContractorTurnPriorityHeadingRequirement =
+        """
+        ## Turn priority
+        (contractor: Focus this quarter contract|defence|economy|research; Rationale; Active contract CTxxxx when contract focus)
+        """;
+
+    private const string ContractorTurnPriorityBodyInstructions =
+        """
+        Required bullets under the heading:
+        - **Focus this quarter:** contract | defence | economy | research (one primary; doctrine weights 50/25/15/10)
+        - **Rationale:** one sentence from this report or rumor
+        - **Active contract:** `CTxxxx` — required when focus is **contract** (id + next milestone); omit when not contract-focused
+        - **Supporting work:** optional one line when economy/research/defence aligns with the contract
+        """;
 
     [GeneratedRegex(@"\[(\d{6})\]")]
     private static partial Regex StackIdRegex();

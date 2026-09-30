@@ -361,3 +361,59 @@ function Update-WebsiteStatus {
 	}
 	& (Join-Path $PSScriptRoot 'generate-status.ps1') @args
 }
+
+$script:PlayRunLogPath = $null
+
+function Initialize-PlayRunLog {
+	param(
+		[Parameter(Mandatory = $true)][string]$RunId,
+		[Parameter(Mandatory = $true)][string]$LogFileName
+	)
+	$paths = Get-RunPaths -RunId $RunId
+	$gmDir = Join-Path $paths.RunRoot 'gm'
+	if (-not (Test-Path -LiteralPath $gmDir)) {
+		New-Item -ItemType Directory -Path $gmDir -Force | Out-Null
+	}
+	$script:PlayRunLogPath = Join-Path $gmDir $LogFileName
+	$started = Get-Date -Format 'yyyy-MM-dd HH:mm:ss zzz'
+	"=== log started $started ===" | Out-File -LiteralPath $script:PlayRunLogPath -Encoding utf8 -Force
+}
+
+function Write-PlayRunLog {
+	param(
+		[Parameter(Mandatory = $true)][string]$Message,
+		[ConsoleColor] $Color = 'Gray'
+	)
+	$ts = Get-Date -Format 'yyyy-MM-dd HH:mm:ss'
+	$line = "[$ts] $Message"
+	if ($Color -eq 'Gray') {
+		Write-Host $line
+	}
+	else {
+		Write-Host $line -ForegroundColor $Color
+	}
+	if ($script:PlayRunLogPath) {
+		Add-Content -LiteralPath $script:PlayRunLogPath -Value $line -Encoding UTF8
+	}
+}
+
+function Get-ContractorFactionIds {
+	param(
+		[Parameter(Mandatory = $true)][string]$RunId,
+		[int[]]$ExcludeFaction = @(2, 3),
+		[int]$FromFaction = 2,
+		[int]$ToFaction = 11
+	)
+	$paths = Get-RunPaths -RunId $RunId
+	$ids = [System.Collections.Generic.List[int]]::new()
+	for ($id = $FromFaction; $id -le $ToFaction; $id++) {
+		if ($ExcludeFaction -contains $id) { continue }
+		$persona = Join-Path (Join-Path $paths.FactionsDir (Get-FactionFolderName -Id $id)) 'persona.md'
+		if (-not (Test-Path -LiteralPath $persona)) { continue }
+		$text = Get-Content -LiteralPath $persona -Raw -Encoding UTF8
+		if ($text -match '(?m)^##\s*Preference:\s*contractor\s*$') {
+			$ids.Add($id)
+		}
+	}
+	return $ids.ToArray()
+}

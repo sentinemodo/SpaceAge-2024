@@ -1789,6 +1789,10 @@ namespace UnitTests
 		public void CopyOrder_FailsWhenSourceLacksTechnology()
 		{
 			ModuleStack factory = this.game.ModuleStacks["000004"];
+			while (factory.Technologies.Count > 0)
+			{
+				factory.RemoveTechnologyCopy(factory.Technologies[0]);
+			}
 			List<string> commands = new List<string>
 			{
 				"#faction 2",
@@ -1876,6 +1880,10 @@ namespace UnitTests
 		public void EraseOrder_FailsWhenStackLacksTechnology()
 		{
 			ModuleStack factory = this.game.ModuleStacks["000004"];
+			while (factory.Technologies.Count > 0)
+			{
+				factory.RemoveTechnologyCopy(factory.Technologies[0]);
+			}
 			List<string> commands = new List<string>
 			{
 				"#faction 2",

@@ -223,25 +223,33 @@ public static partial class DraftPromptBuilder
 
                 #modulestack <cargob-id>
                 @get all food from <farms-id>
-                @get all carbon from <cdrill-id>
-                sell 200 food at average
+                sell <market-buy-qty> food at <market-buy-price>
+
+                #modulestack <cplant-id>
+                get 10 carbon from <cargob-id>
+                @produce energy
 
                 #modulestack <cdrill-id>
-                @use hcdril
+                @give all to <cargob-id>
+                2 use tminng
+                use iminng
+                10 use hcdril
 
                 #modulestack <farms-id>
                 @use farmng
 
-                #modulestack <cplant-id>
-                @produce energy
-
                 #modulestack <factry-id>
-                get 30 iron from <cargob-id>
-                get 2 titani from <cargob-id>
-                use twnbld as new1
+                grant item 25 iron to <cargob-id>
+                use grndtr as new1 for <hq-id>
+                +get 2 iron from <cargob-id>
+                -use sdrill as new2 for <hq-id>
+                +get 25 iron from <cargob-id>
 
                 #modulestack new1
-                transfer 1 to faction 1
+                +get 1 terran from <hq-id>
+                +get 1 oil from <cargob-id>
+                +get 8 food from <cargob-id>
+                move R…
                 #end
                 """;
         }
@@ -428,9 +436,13 @@ public static partial class DraftPromptBuilder
         if (string.Equals(hints.PersonaPreference, "contractor", StringComparison.OrdinalIgnoreCase))
         {
             return $"""
-                Write turn {hints.DraftTurn} orders for this faction.
-                Run the grant economic loop, then factory-build `twnbld` and `transfer 1 to faction 1` for the open UN town contract if due this quarter.
-                Use only stack ids from the Orders template.
+                Write turn {hints.DraftTurn} orders for this contractor faction.
+                Read **## Turn priority** in story.md: implement that quarter's focus (contract 50% / defence 25% / economy 15% / research 10% doctrine).
+                Decompose the active CT into **tactical objectives** that fit one quarter: **energy → drill mix (`@give all`, `2 use tminng`, `use iminng`, `10 use hcdril`) → expand cplant/drill capacity when carbon/iron allow → oil scout (`grndtr` to first neighbor exit) → later `mobctr`/`[engtrk]`**. **Bootstrap:** when bank balance is **above ~5000** and the market does not sell needed inputs, prefer **`grant item … to <cargob-id>`** (or stack) before factory **`USE`** — do not stall a spare line waiting on **`iminng`** alone.
+                **CEO `[exmgmt]`:** charter CEOs start with executive management (not trainable). **`#person <ceo-id>`** then **`stack <factry-id>`** / **`<sdrill-id>`** / **`<cplant-id>`** (same region) for the quarter for **+25% productivity**; **`#person <ceo-id>`** + **`stack <hq-id>`** to return. (production group = factory USE set in field) for remote **`fossil`/`sdrill`** and parallel **`agrplx`** at contract site — not hauling `[farms]` on cargo trucks.
+                Match **market sell qty/price** to the report town **buy** line. Reserve cplant fuel with **`get 10 carbon`** then `@produce energy`.
+                When focus is **contract**, execute the named **Active contract** CT (skip completed charters like CT0008). Delivery `transfer` at the contract location when modules exist.
+                Use only stack ids from the Orders template. See `Draft/contractor-story-to-orders.md`.
                 """;
         }
 

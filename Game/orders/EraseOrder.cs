@@ -75,6 +75,7 @@ namespace SpaceAge
 					string.Format(
 						"ERASE failed. Stack does not hold {0} technology.",
 						this.Technology.ReportName));
+				this.FailedToExecute = true;
 			}
 			else
 			{

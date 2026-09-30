@@ -1570,7 +1570,7 @@ export default function App() {
         )}
         {meta.admin && <span className="admin-badge">Admin</span>}
         {adminHint && <span className="warnings admin-hint">{adminHint}</span>}
-        <span className="client-title">SpaceAge client ver. 0.8.001</span>
+        <span className="client-title">SpaceAge client ver. 0.8.002</span>
         <button type="button" onClick={() => { void endSession(); }}>Logout</button>
         <button type="button" onClick={load}>Refresh report</button>
       </header>

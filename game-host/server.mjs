@@ -209,7 +209,7 @@ const server = http.createServer(async (req, res) => {
       runs: runsForSession(session),
       turns: listTurns(rid),
       turn: fs.existsSync(gameinPath(rid)) ? readTurnFromGamein(rid) : resolvedTurn,
-      engineVersion: '0.1.159',
+      engineVersion: '0.8.002',
     });
     return;
   }

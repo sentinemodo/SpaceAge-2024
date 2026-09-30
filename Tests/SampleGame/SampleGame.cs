@@ -518,7 +518,10 @@ namespace IntegrationTests
 			Assert.That(trigger.Baseline, Is.EqualTo(1));
 
 			Assert.That(File.Exists(announceNpc), Is.True);
-			Assert.That(File.Exists(announceCaste), Is.False, "Caste Prime is in R00002, not the Sydney contract location");
+			Assert.That(
+				File.Exists(announceCaste),
+				Is.True,
+				"Caste Prime receives the published garrison contract notice with other Sol player factions (regional delivery CT0121).");
 			Assert.That(File.Exists(announceGelvaren), Is.True, "Gelvaren complex 000026 is in R00003");
 			string announcement = File.ReadAllText(announceGelvaren, Encoding.GetEncoding(1251));
 			Assert.That(announcement.Contains("CT0121"), Is.True);

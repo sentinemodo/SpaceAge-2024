@@ -109,6 +109,7 @@ namespace SpaceAge
 				this.Transferer.EventReports.Add(
 					week,
 					"COPY failed. Receiver is not formed.");
+				this.FailedToExecute = true;
 				base.Execute(week);
 				return;
 			}
@@ -120,19 +121,30 @@ namespace SpaceAge
 					string.Format(
 						"COPY failed. Source does not hold {0} technology.",
 						this.Technology.ReportName));
+				this.FailedToExecute = true;
+				base.Execute(week);
+				return;
 			}
-            else if (this.Receiver.TechnologyCapacity < this.Receiver.TechnologyCapacityUsed + this.Technology.Level)
+            if (this.Receiver.TechnologyCapacity < this.Receiver.TechnologyCapacityUsed + this.Technology.Level)
             {
                 this.Transferer.EventReports.Add(
                     week,
-                    "COPY failed. Not enough capacity to copy technology.");								
-            } else if (this.Transferer.Location != this.Receiver.Location)
+                    "COPY failed. Not enough capacity to copy technology.");
+				this.FailedToExecute = true;
+				base.Execute(week);
+				return;
+            }
+			if (this.Transferer.Location != this.Receiver.Location)
             {
                 this.Transferer.EventReports.Add(
                     week,
-                    "COPY failed. Tried to copy technology to receiver that is not in the same location.");								
-            } else 
-            {
+                    "COPY failed. Tried to copy technology to receiver that is not in the same location.");
+				this.FailedToExecute = true;
+				base.Execute(week);
+				return;
+            }
+
+			{
 			    this.Transferer.EventReports.Add(
 				    week,
 				    string.Format("copied {0} technology to {1}.",						

@@ -5,7 +5,7 @@ Content-Disposition: attachment
 SpaceAge report for Gelvaren [3].
 Turn 4, Year 2157, September 1.
 
-SpaceAge Engine Version: 0.8.001.
+SpaceAge Engine Version: 0.8.002.
 
 Declared stances:
   default: neutral, unknown: hostile.
@@ -43,7 +43,7 @@ Events this quarter:
   Current balance: 8915.
 
 Press releases:
-  Earth [P00001] at AU 1, ocean planet [ocean]: NPC [1] — Caste Prime
+  Earth [P00001] at AU 1, ocean planet [ocean]: NPC [1] ï¿½ Caste Prime
   closes Wake the crashed ship.
     United Star Nations records Caste Prime's fulfillment of CT0122 at
     Dusty field on Earth [P00001] at AU 1, ocean planet [ocean].
@@ -9192,7 +9192,7 @@ Galaxy report:
         week 13: paid 100 cash [cash] upkeep.
 
 Press releases:
-  Earth [P00001] at AU 1, ocean planet [ocean]: NPC [1] — Caste Prime
+  Earth [P00001] at AU 1, ocean planet [ocean]: NPC [1] ï¿½ Caste Prime
   closes Wake the crashed ship.
     United Star Nations records Caste Prime's fulfillment of CT0122 at
     Dusty field on Earth [P00001] at AU 1, ocean planet [ocean].
@@ -9202,7 +9202,7 @@ Press releases:
     orbit [O00001], has no atmosphere.
 
 Press releases:
-  Earth [P00001] at AU 1, ocean planet [ocean]: NPC [1] — Caste Prime
+  Earth [P00001] at AU 1, ocean planet [ocean]: NPC [1] ï¿½ Caste Prime
   closes Wake the crashed ship.
     United Star Nations records Caste Prime's fulfillment of CT0122 at
     Dusty field on Earth [P00001] at AU 1, ocean planet [ocean].

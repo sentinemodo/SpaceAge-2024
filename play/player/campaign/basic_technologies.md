@@ -1,6 +1,6 @@
 # Level 0 and 1 technologies (campaign)
 
-Catalog: `play/campaign/data.xml`. Checked **27 Sep 2026** against engine **0.8.001**. Phase 1 catalog slice (optins, personal combat kit, ionthr) included; L1 branch office (`brnofc`) and ocean / underwater L1 (`tdlpwr`, `udrill`, `uwtrs`) included; gas-giant cloud harvest (`skimmn`, `he3skm`, `d2skm`) and under-surface / underwater combat (`usctyc`, `uwcbt`) are level 2+ in [`advanced_technologies.md`](advanced_technologies.md).
+Catalog: `play/campaign/data.xml`. Checked **27 Sep 2026** against engine **0.8.002**. Phase 1 catalog slice (optins, personal combat kit, ionthr) included; L1 branch office (`brnofc`) and ocean / underwater L1 (`tdlpwr`, `udrill`, `uwtrs`) included; gas-giant cloud harvest (`skimmn`, `he3skm`, `d2skm`) and under-surface / underwater combat (`usctyc`, `uwcbt`) are level 2+ in [`advanced_technologies.md`](advanced_technologies.md).
 
 This is the **campaign** L0–L1 excerpt for campaign-ai and campaign play. SampleGame manuals (`play/player/basic_technologies.md`, `play/player/advanced_technologies.md`) stay on `Tests/data.xml` (no ocean-city tokens there) and are not retargeted here.
 
@@ -86,6 +86,10 @@ Works in: production on solid surface under a habitable-temperature planet or mo
 **ground transport [grndtr]**  
 The most basic transportation means are large trucks, powered by oil consuming engines.  
 Works in: production. Use consumes: 2 iron `[iron]`. Use produces: trucks `[trucks]`. Use-time: 2 weeks.
+
+**mobile construction team [mobctr]**  
+Field fabrication truck with cranes and prefab kits. Tag: `production`. Requires ground transport `[grndtr]`.  
+Works in: production. Use consumes: 2 iron `[iron]`, 2 titanium `[titani]`. Use produces: engineering truck `[engtrk]`. Use-time: 2 weeks.
 
 **hydrocarbons drilling [hcdril]**  
 The extraction and refining of hydrocarbons, or fossil fuels, from a planetary surface.  
@@ -388,6 +392,10 @@ Group `extraction`. Built by mineral surface drilling `[sdrill]`. Size 500, mass
 **trucks [trucks]**  
 Group of large and slow ground moving trucks.  
 Group `vehicle`. Built by ground transport `[grndtr]`. Size 250, mass 100, crew 1, capacity 150, HP 17. Upkeep 5 cash. Consumes 4 food and 4 terran air (damage 25% if not). Ground move speed 0.5. Fuel duration 13 (1 oil). Operates on solid-surface with terran atmosphere.
+
+**engineering truck [engtrk]**  
+Mobile **production** module on an oil-fuelled chassis; same `use-allowed-in module-type-group="production"` techs as a factory (solid-surface), at one-tenth speed (`efficiency-multiplier` 10), energy draw 0.  
+Group `production`. Built by mobile construction team `[mobctr]`. Size 250, mass 120, crew 2, capacity 150, HP 17. Upkeep 8 cash. Consumes 6 food and 6 terran air (damage 25% if not). Ground move speed 0.4. Fuel duration 13 (1 oil).
 
 **mobile laboratory [moblab]**  
 Six-wheel flatbed carries FTIR, XRF, and a field terminal for half-rate research and anomaly investigation (spectral, radiometric).  

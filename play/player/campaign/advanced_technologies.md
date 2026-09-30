@@ -1,6 +1,6 @@
 # Level 2 and above technologies (campaign)
 
-Catalog: `play/campaign/data.xml`, loaded by `Game/game/CatalogLoader.cs`. Checked **22 Sep 2026** against engine **0.8.001** (Phases 1–6 through L10; ocean / underwater L2–L3: `usctyc`, `uwcbt`, liquid-surface `dmecns`/`dmdcty`). Level 0–1: `play/player/campaign/basic_technologies.md`.
+Catalog: `play/campaign/data.xml`, loaded by `Game/game/CatalogLoader.cs`. Checked **22 Sep 2026** against engine **0.8.002** (Phases 1–6 through L10; ocean / underwater L2–L3: `usctyc`, `uwcbt`, liquid-surface `dmecns`/`dmdcty`). Level 0–1: `play/player/campaign/basic_technologies.md`.
 
 Lists **level 2+** technologies grouped by level, alphabetical by English `name-en`. Omitted `use-time` defaults to **1** week. Omitted consume/produce `quantity` defaults to **1**. SampleGame `play/player/advanced_technologies.md` stays on `Tests/data.xml` (no ocean-city tokens).
 

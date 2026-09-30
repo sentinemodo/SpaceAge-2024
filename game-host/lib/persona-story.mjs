@@ -8,7 +8,8 @@ const DEFAULT_PERSONA_BLURBS = {
   military: 'Prioritize defense, tanks, and fauna clearance. Do not sell food early.',
   economic: 'Prioritize drills, farms, and energy before expansion.',
   researcher: 'Prioritize mobile lab survey and research anomalies first.',
-  contractor: 'Prioritize UN contracts and module delivery jobs.',
+  contractor:
+    'Turn focus: ~50% contract, 25% defence, 15% economy, 10% research; story must declare ## Turn priority and active CT when contract-focused.',
 };
 
 function sharedPersonasDir(forRunId) {
