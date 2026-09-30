@@ -218,6 +218,7 @@ namespace UnitTests
 		{
 			Faction faction = Faction.All["2"];
 			faction.Bank.Balance = 100;
+			faction.Bank.CreditLine = 0;
 
 			List<string> commands = new List<string>
 			{

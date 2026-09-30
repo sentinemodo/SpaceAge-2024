@@ -254,6 +254,11 @@ namespace UnitTests
 			this.dataFile.LoadFactions();
 			this.dataFile.LoadGalaxy();
 			this.game = this.dataFile.Game;
+			foreach (string stackId in new[] { "nest01", "nest02", "lab001", "belt01", "wind01", "wind02" })
+			{
+				ModuleStack stack = ModuleStack.All[stackId];
+				stack.ActivateModules(-1);
+			}
 		}
 
 		private ResearchOrder assignResearch(ModuleStack lab, string command)

@@ -114,11 +114,11 @@ namespace UnitTests
 		[Test]
 		public void AssignOrders_UnlimitedLeftover_DoesNotDuplicateWhenReissuedFromFile()
 		{
-			ModuleStack stack = this.game.ModuleStacks["000004"];
+			ModuleStack stack = this.game.ModuleStacks["000112"];
 			List<string> leftover = new List<string>
 			{
 				"#faction 2",
-				"#modulestack 000004",
+				"#modulestack 000112",
 				"@produce cash",
 				"#end"
 			};
@@ -129,9 +129,9 @@ namespace UnitTests
 			List<string> copiedTemplate = new List<string>
 			{
 				"#faction 2",
-				"#modulestack 000004",
+				"#modulestack 000112",
 				"@produce cash",
-				"@produce energy",
+				"@produce terran",
 				"#end"
 			};
 			ordersReader.AssignOrders(copiedTemplate);
@@ -147,7 +147,7 @@ namespace UnitTests
 				{
 					produceCash++;
 				}
-				if (produce.ProduceType == EProduceType.Energy)
+				if (produce.ProduceType == EProduceType.Items && produce.ItemType.Name == "terran")
 				{
 					produceEnergy++;
 				}

@@ -9,14 +9,18 @@
 				<orbit name="O00001" />
 				<region name="R00001" name-en="Port" X="0" Y="0" type="dust" description="Region blurb.">
 					<modulestack name="nest01" faction="2" type="city" quantity="1">
-						<modulestack name="lab001" faction="2" type="cmplib" quantity="1" />
+						<modulestack name="lab001" faction="2" type="cmplib" quantity="1">
+							<itemstack type="terran" quantity="10" />
+						</modulestack>
 						<modulestack name="wind01" faction="2" type="wnplnt" quantity="1" />
 					</modulestack>
 				</region>
 			</planet>
 			<belt name="P00003" name-en="Harbor Belt" AU="2.7" description="Belt blurb.">
 				<modulestack name="nest02" faction="2" type="city" quantity="1">
-					<modulestack name="belt01" faction="2" type="cmplib" quantity="1" />
+					<modulestack name="belt01" faction="2" type="cmplib" quantity="1">
+						<itemstack type="terran" quantity="10" />
+					</modulestack>
 					<modulestack name="wind02" faction="2" type="wnplnt" quantity="1" />
 				</modulestack>
 			</belt>
