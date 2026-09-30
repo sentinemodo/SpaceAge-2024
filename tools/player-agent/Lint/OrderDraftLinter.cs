@@ -60,6 +60,35 @@ public static class OrderDraftLinter
         return new OrderDraftLintResult(errors.Count == 0, errors);
     }
 
+    private static bool IsRepeatCountToken(string token)
+    {
+        if (token.Length == 0)
+        {
+            return false;
+        }
+
+        var start = 0;
+        if (token[0] == '+' || token[0] == '-')
+        {
+            start = 1;
+        }
+
+        if (start >= token.Length)
+        {
+            return false;
+        }
+
+        for (var i = start; i < token.Length; i++)
+        {
+            if (!char.IsDigit(token[i]))
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     public static string ExtractVerb(string line)
     {
         var trimmed = line.Trim();
@@ -74,7 +103,13 @@ public static class OrderDraftLinter
             return string.Empty;
         }
 
-        var firstToken = trimmed.Split(' ', StringSplitOptions.RemoveEmptyEntries)[0];
-        return OrderVerbAllowlist.NormalizeToken(firstToken);
+        var parts = trimmed.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+        var index = 0;
+        if (parts.Length > index + 1 && IsRepeatCountToken(parts[index]))
+        {
+            index += 1;
+        }
+
+        return OrderVerbAllowlist.NormalizeToken(parts[index]);
     }
 }

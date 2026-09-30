@@ -61,4 +61,19 @@ public class OrderDraftLinterTests
         Assert.That(result.IsValid, Is.False);
         Assert.That(result.Errors, Has.Some.Contains("#end"));
     }
+
+    [Test]
+    public void Lint_NumericRepeatBeforeVerb_Passes()
+    {
+        const string draft = """
+            #faction 8 "oreline"
+            #modulestack 260005
+            5 use wndtrb for 260007
+            #end
+            """;
+
+        var result = OrderDraftLinter.Lint(draft, Allowlist);
+
+        Assert.That(result.IsValid, Is.True);
+    }
 }
