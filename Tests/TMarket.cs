@@ -1695,7 +1695,7 @@ namespace UnitTests
 
 			Assert.That(use.Executed, Is.True);
 			Assert.That(garrison.Quantity, Is.EqualTo(2));
-			Assert.That(ModuleStack.All.ContainsKey(((ModuleStack)use.Receiver).Name), Is.False);
+			Assert.That(ModuleStack.All.ContainsKey("g99902"), Is.True, "contract garrison id remains registered after merge-in delivery");
 
 			Contract.All.Evaluate(1);
 			Assert.That(Contract.All.Count, Is.EqualTo(0));
