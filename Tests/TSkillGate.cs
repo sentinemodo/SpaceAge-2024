@@ -7,6 +7,18 @@ namespace UnitTests
 	[TestFixture]
 	public class TSkillGate : TTest
 	{
+		[SetUp]
+		public void SetUp()
+		{
+			this.LoadDefaultGame();
+		}
+
+		[TearDown]
+		public void TearDown()
+		{
+			this.ClearGame();
+		}
+
 		[Test]
 		public void TrainSkill_FailsWhenFactionHasNotDiscoveredSkill()
 		{
@@ -40,6 +52,26 @@ namespace UnitTests
 			string joined = string.Join("\n", lines);
 			Assert.That(joined, Does.Contain("armor platoon leader [arpldr]"));
 			Assert.That(joined, Does.Contain("Training: 4 weeks"));
+		}
+
+		[Test]
+		public void TrainSkill_FailsWhenSkillIsNotTrainable()
+		{
+			Person trainee = Person.All["000101"];
+			List<string> commands = new List<string>
+			{
+				"#faction 2",
+				"#person 000101",
+				"train skill exmgmt",
+				"#end"
+			};
+			new OrdersReader(this.game).AssignOrders(commands);
+			trainee.Orders[0].Execute(this.game.Week);
+
+			Assert.That(trainee.Skills.ContainsKey(SkillType.All["exmgmt"]), Is.False);
+			string events = string.Join(" ", trainee.EventReports.Report(this.game.Factions["2"]));
+			Assert.That(events, Does.Contain("TRAIN failed: skill"));
+			Assert.That(events, Does.Contain("not trainable"));
 		}
 
 		[Test]

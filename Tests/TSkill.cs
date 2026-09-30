@@ -78,7 +78,8 @@ namespace UnitTests
 
 			Assert.That(SkillType.All["ntrplt"].UsableIn.Count, Is.GreaterThanOrEqualTo(2));
 
-			Assert.That(SkillType.All.Count, Is.EqualTo(16));
+			Assert.That(SkillType.All.Count, Is.EqualTo(17));
+			Assert.That(SkillType.All["exmgmt"].Trainable, Is.False);
 
 		}
 
