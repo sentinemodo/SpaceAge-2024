@@ -376,6 +376,10 @@ namespace SpaceAge
 		private static bool IsResearcherOnBody(ModuleStack researcher, Orbit orbit, Regions regions)
 		{
 			Location location = researcher.Location;
+			if (location == null)
+			{
+				return false;
+			}
 			if (location == orbit)
 			{
 				return true;
@@ -386,6 +390,11 @@ namespace SpaceAge
 				{
 					return true;
 				}
+			}
+			Region locatedRegion = location as Region;
+			if (locatedRegion != null && regions.ContainsKey(locatedRegion.Name))
+			{
+				return true;
 			}
 			return false;
 		}
