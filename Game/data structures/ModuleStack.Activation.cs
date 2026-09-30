@@ -192,7 +192,7 @@ namespace SpaceAge
 			return false;
 		}
 
-		// USE … AS / FOR targets: newN aliases or numeric modulestack ids (≤ MaxNameLength digits).
+		// USE … AS / FOR targets: newN aliases, numeric modulestack ids, or contract garrison ids (g + digits).
 		public static bool IsValidUseOrderStackReference(string name)
 		{
 			if (string.IsNullOrEmpty(name))
@@ -207,7 +207,16 @@ namespace SpaceAge
 			{
 				return false;
 			}
-			for (int i = 0; i < name.Length; i++)
+			int index = 0;
+			if (name[0] == 'g')
+			{
+				if (name.Length < 2)
+				{
+					return false;
+				}
+				index = 1;
+			}
+			for (int i = index; i < name.Length; i++)
 			{
 				char c = name[i];
 				if (c < '0' || c > '9')
@@ -215,7 +224,7 @@ namespace SpaceAge
 					return false;
 				}
 			}
-			return true;
+			return index == 0 || name.Length > 1;
 		}
 
 		public static void EnsureValidUseOrderStackReference(string name)
