@@ -1989,5 +1989,23 @@ namespace UnitTests
 			Assert.That(loaded.AnchorRegion.Name, Is.EqualTo("R00002"));
 		}
 
+		[Test, Ignore("Contract partial fulfillment tracking not implemented yet.")]
+		public void PartialFulfillment_ReportsProgressInQuarterlyReport()
+		{
+			Assert.Fail("Track x-of-y module/item contributions per faction in contract reports.");
+		}
+
+		[Test, Ignore("Contract partial fulfillment tracking not implemented yet.")]
+		public void PartialFulfillment_ClosesWhenAllRequiredContributionsMet()
+		{
+			Assert.Fail("Close contract only after cumulative deliveries satisfy trigger totals.");
+		}
+
+		[Test, Ignore("Contract partial fulfillment tracking not implemented yet.")]
+		public void PartialFulfillment_PaysRewardProportionalToContribution()
+		{
+			Assert.Fail("Credit rewards by contribution share; technology rewards copy for each qualifying contributor.");
+		}
+
 	}
 }
