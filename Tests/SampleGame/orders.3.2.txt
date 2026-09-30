@@ -11,18 +11,25 @@
 
 #modulestack 112
 ; command bridge — nest under hull
+activate
 stack 101
 
 #modulestack 113
-; fission reactor
+; fission reactor — fuel and energy before nested lab draws regional power
+get 1 uraniu from 000013
+activate
+@produce energy
 stack 101
 
 #modulestack 114
 ; reaction drive
+activate
 stack 101
 
 #modulestack 100
-; +use first: blocks leftover move O00001 until filidx finishes, then leftover hop may unstack
+; drop saved leftover hop so nested modules can stack under 101 at Earth orbit before any MOVE
+-move O00001
+; +use first on the shuttle long slot after nest orders on 112–114 have run
 +use filidx as new108 for 101
 ; crew and drive fuel (immediates; hull cannot hold cargo)
 give 1 terran to 112
@@ -35,7 +42,8 @@ give 20 terair to 112
 stack 101
 
 #modulestack 101
-; leftover active 101 must succeed (nested command/reactor/drive) before the hull hops
+; nest reactor/bridge/drive (112–114) before leaving Earth orbit; leftover active 101 still gates the hop
+has 1 fisrec
 -move O00001
 --has 1 cmplib
 ---move R00001

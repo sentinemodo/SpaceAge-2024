@@ -4007,7 +4007,7 @@ Galaxy report:
       none.
   
   - Berlin [000001], 3 cities [city], immobile, owned by NPC [1].
-    size: 75000, capacity: 45000/41120, energy: 640/320 (30).
+    size: 75000, capacity: 45000/41120, energy: 320/240 (30).
     - Berlin garrison [000002], infantry battalion [inftry], immobile, owned by NPC [1].
       size: 500.
     - Berlin farms [000003], 10 farming complexes [farms], immobile, owned by NPC [1].

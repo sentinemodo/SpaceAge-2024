@@ -4229,7 +4229,7 @@ Galaxy report:
       NPC [1].
       size: 10.
   + Gelvaren complex [000026], city [city], immobile.
-    size: 25000, mass: 5452, capacity: 15000/9690, energy: 152/93 (10),
+    size: 25000, mass: 5452, capacity: 15000/9690, energy: 76/74 (10),
     crew: 48/78, upkeep: 100 units of food [food], 821 (0) cash [cash],
     consume: 178 (0) units of food [food], 178 (0) units of terran
     breathing gas mixture [terair].

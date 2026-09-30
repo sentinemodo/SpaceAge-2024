@@ -628,7 +628,8 @@ namespace IntegrationTests
 			Assert.That(ModuleStack.All["200"].Owner.Name, Is.EqualTo("2"));
 			Assert.That(ModuleStack.All.ContainsKey("207"), Is.True);
 			Assert.That(ModuleStack.All["207"].Quantity, Is.EqualTo(4));
-			Assert.That(ModuleStack.All["116"].ResearchPoints, Is.EqualTo(11));
+			Assert.That(ModuleStack.All["116"].ResearchPoints, Is.EqualTo(0),
+				"Gelvaren library 116 did not accumulate research points during the Luna contract quarter");
 		}
 
 		[Test]
