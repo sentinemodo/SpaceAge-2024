@@ -136,7 +136,8 @@ $obj = @{
 	turn = $turn
 	nextTurnAt = $nextTurnAt
 	factions = $factions
-	issues = Get-PublicIssuesFromRun -RunRoot $paths.RunRoot -GameinText $gameinText
+	# @() keeps ConvertTo-Json emitting [] when the function returns an empty array (otherwise {}).
+	issues = @(Get-PublicIssuesFromRun -RunRoot $paths.RunRoot -GameinText $gameinText)
 }
 
 $json = $obj | ConvertTo-Json -Depth 4 -Compress
