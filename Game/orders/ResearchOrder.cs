@@ -489,7 +489,7 @@ namespace SpaceAge
             }
 
             ModuleStack target = ModuleStack.All[this.ResearchToken];
-            if (this.Researcher.Location != target.Location)
+            if (!Research.IsResearcherWithWreckStack(this.Researcher, target))
             {
                 this.Researcher.EventReports.Add(
                     week,

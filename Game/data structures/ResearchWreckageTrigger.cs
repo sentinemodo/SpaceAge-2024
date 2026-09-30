@@ -65,7 +65,7 @@ namespace SpaceAge
 			{
 				return;
 			}
-			if (researcherStack == null || researcherStack.Location != this.Target.Location)
+			if (researcherStack == null || !Research.IsResearcherWithWreckStack(researcherStack, this.Target))
 			{
 				return;
 			}

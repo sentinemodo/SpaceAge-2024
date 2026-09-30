@@ -373,6 +373,39 @@ namespace SpaceAge
 			return false;
 		}
 
+		// Wreck/stack research: same location, or on the orbit or a region of the wreck's planet or moon.
+		public static bool IsResearcherWithWreckStack(ModuleStack researcher, ModuleStack wreck)
+		{
+			if (researcher == null || wreck == null || wreck.Location == null)
+			{
+				return false;
+			}
+			if (researcher.Location == wreck.Location)
+			{
+				return true;
+			}
+
+			Region wreckRegion = wreck.Location as Region;
+			if (wreckRegion == null)
+			{
+				return false;
+			}
+
+			Moon moon = wreckRegion.RegionHolder as Moon;
+			if (moon != null)
+			{
+				return IsResearcherOnBody(researcher, moon.Orbit, moon.Regions);
+			}
+
+			Planet planet = wreckRegion.RegionHolder as Planet;
+			if (planet != null)
+			{
+				return IsResearcherOnBody(researcher, planet.Orbit, planet.Regions);
+			}
+
+			return false;
+		}
+
 		private static bool IsResearcherOnBody(ModuleStack researcher, Orbit orbit, Regions regions)
 		{
 			Location location = researcher.Location;
