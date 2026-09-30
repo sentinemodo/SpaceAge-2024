@@ -727,10 +727,11 @@ function Invoke-GameEngineTests {
 		throw "NUnit console missing at $nunit - run: bash .cursor/install.sh"
 	}
 	Write-Host '  msbuild SpaceAge.sln (Debug) - Game.exe + Tests.dll'
-	Write-Host '  nunit3-console Tests.dll --inprocess'
+	Write-Host '  nunit3-console Tests.dll --inprocess --workers=1'
 	$result = Invoke-ExternalCommandCapture -FilePath $nunit -ArgumentList @(
 		'Tests.dll',
 		'--inprocess',
+		'--workers=1',
 		'--work=.',
 		'--result=TestResult.xml'
 	) -WorkingDirectory $testBin

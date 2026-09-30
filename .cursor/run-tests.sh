@@ -11,4 +11,4 @@ RUNNER="$REPO_ROOT/.cursor/tools/nunit-runner/NUnit.ConsoleRunner.3.18.3/tools/n
 TEST_BIN="$REPO_ROOT/Tests/bin/Debug"
 
 cd "$TEST_BIN"
-mono "$RUNNER" Tests.dll --inprocess --work=. "$@"
+mono "$RUNNER" Tests.dll --inprocess --workers=1 --work=. "$@"

@@ -9,7 +9,7 @@ There is **no** GitHub Actions (or other hosted CI) workflow in this repository 
 | Environment | Restore / build | Test |
 |-------------|-----------------|------|
 | Windows (local) | `nuget restore SpaceAge.sln` then `msbuild SpaceAge.sln /p:Configuration=Debug` | `vstest.console Tests\bin\Debug\Tests.dll` or VS NUnit adapter |
-| Cursor Cloud (Mono) | `bash .cursor/install.sh` (also the `install` field in `.cursor/environment.json`) | `bash .cursor/run-tests.sh` |
+| Cursor Cloud (Mono) | `bash .cursor/install.sh` (also the `install` field in `.cursor/environment.json`) | `bash .cursor/run-tests.sh` (NUnit `--workers=1`; engine catalogs use static singletons) |
 
 Do not open a PR until `.cursor/run-tests.sh` succeeds, unless the failure is a documented existing baseline (today: `SampleGame._5_ExecuteTurn2`, a `//`-vs-`;` order-comment data bug, and the five `[Ignore("not ready")]` tests).
 
@@ -27,7 +27,7 @@ There is no production deploy artifact beyond `Game.exe` + `data.xml` shipped to
 
 | What | Where | When to change |
 |------|--------|----------------|
-| Engine string shown to players | `Game/Program.cs` → `EngineVersion` (currently **0.8.001**) | Visible turn/report behavior change |
+| Engine string shown to players | `Game/Program.cs` → `EngineVersion` (currently **0.8.002**) | Visible turn/report behavior change |
 | NuGet pins | `Game/packages.config`, `Tests/packages.config` | Only with an ADR + Mono test pass |
 | Cloud toolchain | `.cursor/install.sh` | System packages (`mono-complete`), `nuget.exe`, NUnit console runner; default Ubuntu image (no custom Dockerfile) |
 
