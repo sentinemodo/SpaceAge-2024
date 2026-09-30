@@ -576,6 +576,7 @@ namespace IntegrationTests
             ordersReader.LoadOrders(Path.Combine(this.testDir, "orders.2.2.txt"), false);
             ordersReader.LoadOrders(Path.Combine(this.testDir, "orders.2.3.txt"), false);
 
+			this.game.ExecuteBetweenTurnOrders();
             this.game.Execute();
 
             Assert.That(Contract.All.Count, Is.EqualTo(0), "USE for 000007 should complete the Sydney garrison contract");

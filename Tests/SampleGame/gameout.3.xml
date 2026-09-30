@@ -2,12 +2,12 @@
 <game turn="3">
 	<faction name="1" name-en="NPC" password="" email="" default-attitude="2" text-report="True" text-report-line-length="100" xml-report="True" balance="1000" credit-line="0" credit-rate="0" deposit-rate="0" />
 	<faction name="2" name-en="Caste Prime" password="xyzzy" email="mail1@mail.pl" default-attitude="2" text-report="True" text-report-line-length="100" xml-report="True" balance="8748" credit-line="10000" credit-rate="0.2" deposit-rate="0.045" />
-	<faction name="3" name-en="Gelvaren" password="abccb" email="mail2@mail.pl" default-attitude="2" text-report="True" text-report-line-length="72" xml-report="True" balance="9363" credit-line="10000" credit-rate="0.2" deposit-rate="0.045">
+	<faction name="3" name-en="Gelvaren" password="abccb" email="mail2@mail.pl" default-attitude="2" text-report="True" text-report-line-length="72" xml-report="True" balance="9564" credit-line="10000" credit-rate="0.2" deposit-rate="0.045">
 		<technology name="rckter" />
 		<attitude faction="2" attitude="enemy" />
 	</faction>
 	<publications>
-		<press issuer="1" planet="P00001" title="Gelvaren closes CT0121" flavour="United Star Nations records Gelvaren's fulfillment of CT0121 at Southern Hemisphere on Earth [P00001] at AU 1, ocean planet [ocean]." />
+		<press issuer="1" planet="P00001" title="Gelvaren closes CT0121" flavour="NPC records Gelvaren's fulfillment of CT0121 at Southern Hemisphere on Earth [P00001] at AU 1, ocean planet [ocean]." />
 	</publications>
 	<galaxy>
 		<system name="SS0001" name-en="Sol" X="0" Y="0" Z="0">
@@ -28,9 +28,6 @@
 				<orbit name="O00002">
 					<race type="terran" />
 					<modulestack name="100" type="shuttl" quantity="10" faction="2">
-						<person name="000001" name-en="Caste Prime CEO" race="terran" faction="2">
-							<upkeep type="cash" quantity="10" />
-						</person>
 						<itemstack type="terran" quantity="40" />
 						<itemstack type="iron" quantity="11" />
 						<itemstack type="titani" quantity="4" />
@@ -39,7 +36,7 @@
 						<itemstack type="food" quantity="109" />
 						<itemstack type="h2o2" quantity="80" />
 						<itemstack type="terair" quantity="109" />
-						<upkeep type="cash" quantity="1050" />
+						<upkeep type="cash" quantity="1040" />
 						<effect duration="10" type="fuelled" />
 						<event week="2" description="produced spaceship hull [sshull] into spaceship hull [101]." />
 						<event week="3" description="consumed unit of iron [iron], 4 units of titanium [titani], unit of silicium [silici] to produce command bridge [cbridg] module." />
@@ -49,18 +46,22 @@
 						<event week="11" description="produced fission reactor [fisrec] into fission reactor [113]." />
 						<event week="12" description="consumed 10 units of iron [iron], 10 units of titanium [titani] to produce reaction drive [rctdrv] module." />
 						<event week="13" description="produced reaction drive [rctdrv] into reaction drive [114]." />
-						<event week="13" description="paid 1050 cash [cash] upkeep." />
+						<event week="13" description="paid 1040 cash [cash] upkeep." />
 					</modulestack>
-					<modulestack name="101" type="sshull" quantity="1" faction="2">
+					<modulestack name="101" name-en="Caste Prime valiant explorer" type="sshull" quantity="1" faction="2">
 						<upkeep type="cash" quantity="20" />
 						<event week="2" description="received spaceship hull [sshull] produced by space shuttle [100]." />
 						<event week="13" description="paid 20 cash [cash] upkeep." />
 					</modulestack>
 					<modulestack name="112" type="cbridg" quantity="1" faction="2">
-						<upkeep type="cash" quantity="100" />
+						<person name="000001" name-en="Caste Prime CEO" race="terran" faction="2">
+							<upkeep type="cash" quantity="10" />
+							<event week="11" description="stacked under command bridge [112]." />
+						</person>
+						<upkeep type="cash" quantity="110" />
 						<event week="3" description="formed by space shuttle [100] with command bridge [cbridg]." />
 						<event week="5" description="received command bridge [cbridg] produced by space shuttle [100]." />
-						<event week="13" description="paid 100 cash [cash] upkeep." />
+						<event week="13" description="paid 110 cash [cash] upkeep." />
 					</modulestack>
 					<modulestack name="113" type="fisrec" quantity="1" faction="2">
 						<upkeep type="cash" quantity="90" />
@@ -154,7 +155,7 @@
 						</modulestack>
 						<modulestack name="000013" type="cargob" quantity="5" faction="2">
 							<module damage="28" />
-							<module damage="28" />
+							<module damage="32" />
 							<module damage="28" />
 							<module damage="28" />
 							<module damage="28" />
@@ -204,9 +205,9 @@
 							<event week="13" description="paid 10 cash [cash] upkeep." />
 						</modulestack>
 						<modulestack name="000014" type="farms" quantity="3" faction="2">
-							<module damage="48" />
+							<module damage="40" />
 							<module damage="28" />
-							<module damage="48" />
+							<module damage="40" />
 							<itemstack type="terran" quantity="15" />
 							<upkeep type="cash" quantity="15" />
 							<event week="1" description="given 15 units of food [food] to small cargo bay [000013]." />
@@ -243,8 +244,8 @@
 							<event week="13" description="paid 15 cash [cash] upkeep." />
 						</modulestack>
 						<modulestack name="000015" type="cplant" quantity="3" faction="2">
-							<module damage="24" />
-							<module damage="24" />
+							<module damage="36" />
+							<module damage="36" />
 							<module damage="12" />
 							<itemstack type="terran" quantity="6" />
 							<upkeep type="cash" quantity="156" />
@@ -328,9 +329,9 @@
 						</modulestack>
 						<modulestack name="111" type="gunplc" quantity="5" faction="2">
 							<module damage="76" />
-							<module damage="76" />
 							<module damage="68" />
-							<module damage="68" />
+							<module damage="72" />
+							<module damage="72" />
 							<module damage="68" />
 							<itemstack type="terran" quantity="4" />
 							<upkeep type="cash" quantity="4" />
@@ -350,7 +351,7 @@
 						</modulestack>
 					</modulestack>
 					<modulestack name="108" name-en="peaceful scout" type="tanks" quantity="1" faction="3">
-						<module damage="45" />
+						<module damage="46" />
 						<itemstack type="terran" quantity="16" />
 						<itemstack type="oil" quantity="12" />
 						<upkeep type="cash" quantity="40" />
@@ -372,19 +373,15 @@
 						<event week="13" description="paid 40 cash [cash] upkeep." />
 					</modulestack>
 					<modulestack name="109" name-en="Surrender or die!" type="tanks" quantity="3" faction="3">
-						<person name="000002" name-en="Gelvaren CEO" race="terran" faction="3">
-							<skill name="arpldr" experience="1" />
-							<upkeep type="cash" quantity="10" />
-						</person>
 						<itemstack type="terran" quantity="48" />
 						<itemstack type="oil" quantity="6" />
-						<itemstack type="food" quantity="3" />
-						<upkeep type="cash" quantity="130" />
+						<itemstack type="food" quantity="4" />
+						<upkeep type="cash" quantity="120" />
 						<tactic name="prioritize command" />
 						<effect duration="7" type="fuelled" />
 						<event week="3" description="received tanks [tanks] produced by factory [000023]." />
 						<event week="3" description="has 3 tanks modules (needed 3)." />
-						<event week="3" description="got 48 terrans [terran] from Gelvaren Headquarters [000018]." />
+						<event week="3" description="GET failed. Gelvaren Headquarters [000018] have less terrans [terran] then needed to complete." />
 						<event week="3" description="got 18 units of oil [oil] from small cargo bay [000019]." />
 						<event week="3" description="got 100 units of food [food] from small cargo bay [000019]." />
 						<event week="3" description="set tactic to prioritize command." />
@@ -401,7 +398,7 @@
 						<event week="11" description="engaged in battle" />
 						<event week="12" description="engaged in battle" />
 						<event week="13" description="engaged in battle" />
-						<event week="13" description="paid 130 cash [cash] upkeep." />
+						<event week="13" description="paid 120 cash [cash] upkeep." />
 					</modulestack>
 				</region>
 				<region name="R00003" name-en="Southern Hemisphere" X="1" Y="0" type="grassl">
@@ -479,39 +476,34 @@
 					<modulestack name="000026" name-en="Gelvaren complex" type="city" quantity="1" faction="3">
 						<technology name="rckter" name-en="rocket launcher production" />
 						<upkeep type="food" quantity="100" />
-						<upkeep type="cash" quantity="783" />
+						<upkeep type="cash" quantity="821" />
 						<buying item="food" quantity="100" price="1" />
 						<selling item="food" quantity="25" price="5" />
 						<selling item="terran" quantity="10" price="50" />
-						<event week="1" description="started recruitment of terran, 13 weeks to complete." />
-						<event week="13" description="produced 10 terrans [terran]." />
-						<event week="13" description="given 10 terrans [terran] to Gelvaren Headquarters [000018]." />
 						<event week="13" description="received copy of rocket launcher production [rckter] technology." />
 						<event week="13" description="paid 100 unit of food [food] upkeep." />
 						<modulestack name="000018" name-en="Gelvaren Headquarters" type="corphq" quantity="1" faction="3">
-							<itemstack type="terran" quantity="10" />
-							<upkeep type="cash" quantity="110" />
+							<itemstack type="terran" quantity="38" />
+							<itemstack type="cash" quantity="184" />
+							<upkeep type="cash" quantity="138" />
 							<buying item="terran" quantity="all" price="any" />
-							<event week="1" description="trained terran [terran] into terran officer [107]." />
+							<event week="1" description="TRAIN failed: Gelvaren Headquarters [000018] has not enough crew to operate - 20 required, 19 available." />
 							<event week="1" description="given 10 cash [cash] to infantry battalion [110]." />
-							<event week="2" description="produced 100 cash [cash]." />
-							<event week="3" description="produced 100 cash [cash]." />
-							<event week="3" description="given 48 terrans [terran] to tanks [109]." />
-							<event week="4" description="PRODUCE failed: Gelvaren Headquarters [000018] has not enough crew to operate - 20 required, 0 available." />
-							<event week="5" description="PRODUCE failed: Gelvaren Headquarters [000018] has not enough crew to operate - 20 required, 0 available." />
-							<event week="6" description="PRODUCE failed: Gelvaren Headquarters [000018] has not enough crew to operate - 20 required, 0 available." />
-							<event week="7" description="PRODUCE failed: Gelvaren Headquarters [000018] has not enough crew to operate - 20 required, 0 available." />
-							<event week="8" description="PRODUCE failed: Gelvaren Headquarters [000018] has not enough crew to operate - 20 required, 0 available." />
-							<event week="9" description="PRODUCE failed: Gelvaren Headquarters [000018] has not enough crew to operate - 20 required, 0 available." />
-							<event week="10" description="PRODUCE failed: Gelvaren Headquarters [000018] has not enough crew to operate - 20 required, 0 available." />
-							<event week="11" description="PRODUCE failed: Gelvaren Headquarters [000018] has not enough crew to operate - 20 required, 0 available." />
-							<event week="12" description="PRODUCE failed: Gelvaren Headquarters [000018] has not enough crew to operate - 20 required, 0 available." />
-							<event week="13" description="got 10 terrans [terran] from Gelvaren complex [000026]." />
-							<event week="13" description="PRODUCE failed: Gelvaren Headquarters [000018] has not enough crew to operate - 20 required, 10 available." />
-							<event week="13" description="paid 110 cash [cash] upkeep." />
+							<event week="3" description="trained terran [terran] into terran officer [107]." />
+							<event week="4" description="produced 100 cash [cash]." />
+							<event week="5" description="produced 100 cash [cash]." />
+							<event week="6" description="produced 100 cash [cash]." />
+							<event week="7" description="produced 100 cash [cash]." />
+							<event week="8" description="produced 100 cash [cash]." />
+							<event week="9" description="produced 100 cash [cash]." />
+							<event week="10" description="produced 100 cash [cash]." />
+							<event week="11" description="produced 100 cash [cash]." />
+							<event week="12" description="produced 100 cash [cash]." />
+							<event week="13" description="produced 100 cash [cash]." />
+							<event week="13" description="paid 138 cash [cash] upkeep." />
 						</modulestack>
 						<modulestack name="000019" type="cargob" quantity="1" faction="3">
-							<itemstack type="food" quantity="579" />
+							<itemstack type="food" quantity="550" />
 							<itemstack type="terran" quantity="2" />
 							<itemstack type="iron" quantity="1" />
 							<itemstack type="oil" quantity="26" />
@@ -635,10 +627,8 @@
 						<modulestack name="000025" type="barrck" quantity="1" faction="3">
 							<person name="107" race="terran" faction="3">
 								<upkeep type="cash" quantity="10" />
-								<event week="1" description="trained by Gelvaren Headquarters [000018]." />
-								<event week="1" description="stacked under military barrack [000025]." />
-								<event week="1" description="TRAIN failed: skill infantry battalion commander [inbtcm] is not known to the faction (research a technology that grants it)." />
-								<event week="2" description="TRAIN failed: skill infantry battalion commander [inbtcm] is not known to the faction (research a technology that grants it)." />
+								<event week="3" description="trained by Gelvaren Headquarters [000018]." />
+								<event week="3" description="stacked under military barrack [000025]." />
 								<event week="3" description="TRAIN failed: skill infantry battalion commander [inbtcm] is not known to the faction (research a technology that grants it)." />
 								<event week="4" description="TRAIN failed: skill infantry battalion commander [inbtcm] is not known to the faction (research a technology that grants it)." />
 								<event week="5" description="TRAIN failed: skill infantry battalion commander [inbtcm] is not known to the faction (research a technology that grants it)." />
@@ -651,15 +641,19 @@
 								<event week="12" description="TRAIN failed: skill infantry battalion commander [inbtcm] is not known to the faction (research a technology that grants it)." />
 								<event week="13" description="TRAIN failed: skill infantry battalion commander [inbtcm] is not known to the faction (research a technology that grants it)." />
 							</person>
+							<person name="000002" name-en="Gelvaren CEO" race="terran" faction="3">
+								<upkeep type="cash" quantity="10" />
+							</person>
 							<technology name="frminf" name-en="form infantry battalion" />
 							<itemstack type="terran" quantity="10" />
-							<upkeep type="cash" quantity="220" />
+							<upkeep type="cash" quantity="230" />
 							<event week="1" description="got unit of iron [iron] from small cargo bay [000019]." />
 							<event week="1" description="consumed unit of iron [iron] to produce infantry battalion [inftry] module." />
 							<event week="13" description="produced infantry battalion [inftry] into infantry battalion [120]." />
-							<event week="13" description="paid 220 cash [cash] upkeep." />
+							<event week="13" description="paid 230 cash [cash] upkeep." />
 						</modulestack>
 						<modulestack name="110" type="inftry" quantity="1" faction="3">
+							<itemstack type="cash" quantity="5" />
 							<itemstack type="food" quantity="100" />
 							<upkeep type="cash" quantity="5" />
 							<effect duration="17" type="moving" destination="R00002" move-mode="ground" />
@@ -730,18 +724,6 @@
 				</order>
 			</order>
 		</order>
-		<order subject="modulestack" name="101">
-			<active observed="101" />
-			<order conditions="-">
-				<name description="Caste Prime valiant explorer" />
-			</order>
-		</order>
-		<order subject="modulestack" name="101">
-			<active observed="101" />
-			<order conditions="-">
-				<name description="Caste Prime valiant explorer" />
-			</order>
-		</order>
 		<order subject="modulestack" name="000012" repeat="unlimited">
 			<produce produce-type="item" item="cash" />
 		</order>
@@ -762,9 +744,6 @@
 		</order>
 		<order subject="modulestack" name="000016" repeat="unlimited">
 			<use technology="hcdril" />
-		</order>
-		<order subject="modulestack" name="000026" repeat="unlimited">
-			<produce produce-type="item" item="terran" />
 		</order>
 		<order subject="modulestack" name="000018" repeat="unlimited">
 			<get item="cash" quantity="all" transferer="000026" />
@@ -805,12 +784,6 @@
 			</order>
 			<order conditions="-">
 				<capture unit="all" />
-			</order>
-		</order>
-		<order subject="person" name="000001">
-			<active observed="101" />
-			<order conditions="-">
-				<stack parent="112" />
 			</order>
 		</order>
 	</orders>
