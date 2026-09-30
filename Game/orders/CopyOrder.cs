@@ -84,6 +84,12 @@ namespace SpaceAge
         {
             XmlElement elCopy = doc.CreateElement("copy");
 
+            if (this.Technology == null)
+            {
+                xmlElement.AppendChild(elCopy);
+                return xmlElement;
+            }
+
             elCopy.SetAttribute("technology", this.Technology.Name);
             string receiver = this.receiverTokenForSave();
             if (!string.IsNullOrEmpty(receiver))

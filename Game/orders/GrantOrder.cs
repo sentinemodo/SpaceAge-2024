@@ -381,6 +381,10 @@ namespace SpaceAge
 				issuer.TechnologiesToShow.Add(this.Technology);
 			}
 			issuer.RevealSkillsGrantedBy(this.Technology);
+			foreach (SkillType skill in this.Technology.GrantsSkills)
+			{
+				issuer.EnsureSkillKnown(skill);
+			}
 
 			issuer.EventReports.Add(
 				week,

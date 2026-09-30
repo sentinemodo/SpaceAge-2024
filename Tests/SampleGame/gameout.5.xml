@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="windows-1251"?>
 <game turn="5">
 	<faction name="1" name-en="NPC" password="" email="" default-attitude="2" text-report="True" text-report-line-length="100" xml-report="True" balance="1395" credit-line="0" credit-rate="0" deposit-rate="0" />
-	<faction name="2" name-en="Caste Prime" password="xyzzy" email="mail1@mail.pl" default-attitude="2" text-report="True" text-report-line-length="100" xml-report="True" balance="6279" credit-line="10000" credit-rate="0.2" deposit-rate="0.04">
+	<faction name="2" name-en="Caste Prime" password="xyzzy" email="mail1@mail.pl" default-attitude="2" text-report="True" text-report-line-length="100" xml-report="True" balance="5308" credit-line="10000" credit-rate="0.2" deposit-rate="0.04">
 		<technology name="ahlcns" />
 		<technology name="autfab" />
 		<technology name="autctl" />
@@ -10,13 +10,14 @@
 		<technology name="strans" />
 		<technology name="drnhng" />
 		<technology name="alnfgh" />
-		<technology name="cdrill" />
-		<technology name="uminng" />
-		<technology name="he3min" />
+		<technology name="armcbt" />
+		<skill name="arkplt" />
+		<skill name="arpldr" />
 	</faction>
-	<faction name="3" name-en="Gelvaren" password="abccb" email="mail2@mail.pl" default-attitude="2" text-report="True" text-report-line-length="72" xml-report="True" balance="8852" credit-line="10000" credit-rate="0.2" deposit-rate="0.04">
+	<faction name="3" name-en="Gelvaren" password="abccb" email="mail2@mail.pl" default-attitude="2" text-report="True" text-report-line-length="72" xml-report="True" balance="8597" credit-line="10000" credit-rate="0.2" deposit-rate="0.04">
 		<technology name="rckter" />
 		<technology name="servic" />
+		<skill name="sscmnd" />
 		<attitude faction="2" attitude="enemy" />
 	</faction>
 	<galaxy>
@@ -24,72 +25,7 @@
 			<star name="S00001" name-en="Sol" />
 			<planet name="P00001" name-en="Earth" AU="1" surface-size-X="1" surface-size-Y="1" type="ocean">
 				<moon name="P00001" name-en="Luna" AU="0.02" surface-size-X="1" surface-size-Y="1" type="rock">
-					<orbit name="O00001">
-						<modulestack name="101" type="sshull" quantity="1" faction="2">
-							<upkeep type="cash" quantity="324" />
-							<event week="13" description="has unit of uranium [uraniu] (needed 1)." />
-							<event week="13" description="departed from Dusty field [R00001] (0,0) to orbit [O00001], ETA 0." />
-							<event week="13" description="arrived at orbit [O00001] from Dusty field [R00001] (0,0)." />
-							<event week="13" description="paid 20 cash [cash] upkeep." />
-							<modulestack name="112" type="cbridg" quantity="1" faction="2">
-								<person name="000001" name-en="Caste Prime CEO" race="terran" faction="2">
-									<skill name="arpldr" experience="1" />
-									<upkeep type="cash" quantity="10" />
-									<effect duration="0" type="training-officer" skill="arpldr" />
-									<event week="1" description="started training of armor platoon leader [arpldr] skill." />
-									<event week="4" description="trained armor platoon leader [arpldr] skill." />
-								</person>
-								<itemstack type="terran" quantity="1" />
-								<itemstack type="food" quantity="34" />
-								<itemstack type="terair" quantity="34" />
-								<upkeep type="cash" quantity="111" />
-								<event week="1" description="got 20 units of food [food] from space shuttle [100]." />
-								<event week="1" description="got 20 units of terran breathing gas mixture [terair] from space shuttle [100]." />
-								<event week="13" description="paid 111 cash [cash] upkeep." />
-							</modulestack>
-							<modulestack name="113" type="fisrec" quantity="1" faction="2">
-								<itemstack type="terran" quantity="1" />
-								<itemstack type="food" quantity="9" />
-								<itemstack type="terair" quantity="9" />
-								<itemstack type="uraniu" quantity="1" />
-								<upkeep type="cash" quantity="91" />
-								<event week="1" description="got 10 units of food [food] from space shuttle [100]." />
-								<event week="1" description="got 10 units of terran breathing gas mixture [terair] from space shuttle [100]." />
-								<event week="1" description="out of fuel." />
-								<event week="2" description="out of fuel." />
-								<event week="3" description="out of fuel." />
-								<event week="4" description="out of fuel." />
-								<event week="5" description="out of fuel." />
-								<event week="6" description="out of fuel." />
-								<event week="7" description="out of fuel." />
-								<event week="8" description="out of fuel." />
-								<event week="9" description="out of fuel." />
-								<event week="10" description="out of fuel." />
-								<event week="11" description="out of fuel." />
-								<event week="12" description="out of fuel." />
-								<event week="13" description="out of fuel." />
-								<event week="13" description="got unit of uranium [uraniu] from core drill [251]." />
-								<event week="13" description="paid 91 cash [cash] upkeep." />
-							</modulestack>
-							<modulestack name="114" type="rctdrv" quantity="1" faction="2">
-								<itemstack type="terran" quantity="1" />
-								<itemstack type="h2o2" quantity="20" />
-								<itemstack type="food" quantity="9" />
-								<itemstack type="terair" quantity="9" />
-								<upkeep type="cash" quantity="101" />
-								<effect duration="1" type="fuelled" />
-								<event week="1" description="got 10 units of food [food] from space shuttle [100]." />
-								<event week="1" description="got 10 units of terran breathing gas mixture [terair] from space shuttle [100]." />
-								<event week="13" description="paid 101 cash [cash] upkeep." />
-							</modulestack>
-							<modulestack name="115" type="cmplib" quantity="1" faction="2">
-								<technology name="alnfgh" name-en="alien fighter construction" />
-								<upkeep type="cash" quantity="1" />
-								<event week="1" description="received copy of alien fighter construction [alnfgh] technology from alien fighter drone [207]." />
-								<event week="13" description="paid 1 cash [cash] upkeep." />
-							</modulestack>
-						</modulestack>
-					</orbit>
+					<orbit name="O00001" />
 					<region name="R00001" name-en="Dusty field" X="0" Y="0" type="dust">
 						<capacity group="settlement" quantity="4" />
 						<resource type="iron" quantity="100" />
@@ -106,10 +42,10 @@
 							<itemstack type="silici" quantity="16" />
 							<itemstack type="copper" quantity="14" />
 							<itemstack type="food" quantity="16" />
-							<itemstack type="h2o2" quantity="59" />
-							<itemstack type="terair" quantity="22" />
+							<itemstack type="h2o2" quantity="58" />
+							<itemstack type="terair" quantity="16" />
 							<upkeep type="cash" quantity="1031" />
-							<effect duration="6" type="fuelled" />
+							<effect duration="5" type="fuelled" />
 							<event week="1" description="departed from orbit [O00001] to Dusty field [R00001] (0,0), ETA 0." />
 							<event week="1" description="arrived at Dusty field [R00001] (0,0) from orbit [O00001]." />
 							<event week="1" description="given 27 units of iron [iron] to advanced robo-factory [201]." />
@@ -126,32 +62,338 @@
 						</modulestack>
 						<modulestack name="200" name-en="crashed alien vessel" type="alnhul" quantity="1" faction="2">
 							<technology name="ahlcns" name-en="advanced hull construction" />
-							<upkeep type="cash" quantity="526" />
+							<upkeep type="cash" quantity="486" />
 							<event week="13" description="paid 20 cash [cash] upkeep." />
 							<modulestack name="201" type="robofc" quantity="1" faction="2">
 								<technology name="autfab" name-en="automated fabrication" />
-								<technology name="cdrill" name-en="mineral core drilling" />
-								<technology name="uminng" name-en="uranium mining" />
-								<technology name="he3min" name-en="helium-3 mining" />
-								<upkeep type="cash" quantity="60" />
+								<itemstack type="iron" quantity="25" />
+								<itemstack type="titani" quantity="10" />
+								<itemstack type="terran" quantity="6" />
+								<upkeep type="cash" quantity="66" />
 								<event week="1" description="got 27 units of iron [iron] from space shuttle [100]." />
 								<event week="1" description="got 10 units of titanium [titani] from space shuttle [100]." />
 								<event week="1" description="got unit of copper [copper] from space shuttle [100]." />
 								<event week="1" description="got 6 terrans [terran] from space shuttle [100]." />
-								<event week="1" description="copied mineral core drilling [cdrill] technology to advanced robo-factory [201]." />
-								<event week="1" description="received copy of mineral core drilling [cdrill] technology from advanced robo-factory [201]." />
-								<event week="1" description="copied uranium mining [uminng] technology to advanced robo-factory [201]." />
-								<event week="1" description="received copy of uranium mining [uminng] technology from advanced robo-factory [201]." />
-								<event week="1" description="copied helium-3 mining [he3min] technology to advanced robo-factory [201]." />
-								<event week="1" description="received copy of helium-3 mining [he3min] technology from advanced robo-factory [201]." />
+								<event week="1" description="COPY failed. Technology is not specified." />
+								<event week="1" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="1" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
 								<event week="1" description="consumed 2 units of iron [iron], unit of copper [copper] to produce life support system [lifsys] module." />
+								<event week="1" description="COPY failed. Technology is not specified." />
+								<event week="1" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="1" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="1" description="COPY failed. Technology is not specified." />
+								<event week="1" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="1" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="1" description="COPY failed. Technology is not specified." />
+								<event week="1" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="1" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="1" description="COPY failed. Technology is not specified." />
+								<event week="1" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="1" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="1" description="COPY failed. Technology is not specified." />
+								<event week="1" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="1" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="2" description="COPY failed. Technology is not specified." />
+								<event week="2" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="2" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="2" description="COPY failed. Technology is not specified." />
+								<event week="2" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="2" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
 								<event week="2" description="produced life support system [lifsys] into life support system [250]." />
-								<event week="3" description="consumed 25 units of iron [iron], 10 units of titanium [titani] to produce core drill [cdrill] module." />
-								<event week="5" description="copied uranium mining [uminng] technology to core drill [251]." />
-								<event week="5" description="copied helium-3 mining [he3min] technology to core drill [251]." />
-								<event week="5" description="produced core drill [cdrill] into core drill [251]." />
-								<event week="5" description="given 6 terrans [terran] to core drill [251]." />
-								<event week="13" description="paid 60 cash [cash] upkeep." />
+								<event week="2" description="COPY failed. Technology is not specified." />
+								<event week="2" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="2" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="2" description="COPY failed. Technology is not specified." />
+								<event week="2" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="2" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="2" description="COPY failed. Technology is not specified." />
+								<event week="2" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="2" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="2" description="COPY failed. Technology is not specified." />
+								<event week="2" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="2" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="2" description="COPY failed. Technology is not specified." />
+								<event week="2" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="2" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="2" description="COPY failed. Technology is not specified." />
+								<event week="2" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="2" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="3" description="COPY failed. Technology is not specified." />
+								<event week="3" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="3" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="3" description="USE failed: lack of technology necessary to operate: mineral core drilling [mcored]." />
+								<event week="3" description="COPY failed. Technology is not specified." />
+								<event week="3" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="3" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="3" description="COPY failed. Technology is not specified." />
+								<event week="3" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="3" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="3" description="COPY failed. Technology is not specified." />
+								<event week="3" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="3" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="3" description="COPY failed. Technology is not specified." />
+								<event week="3" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="3" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="3" description="COPY failed. Technology is not specified." />
+								<event week="3" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="3" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="3" description="COPY failed. Technology is not specified." />
+								<event week="3" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="3" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="3" description="COPY failed. Technology is not specified." />
+								<event week="3" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="3" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="4" description="COPY failed. Technology is not specified." />
+								<event week="4" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="4" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="4" description="USE failed: lack of technology necessary to operate: mineral core drilling [mcored]." />
+								<event week="4" description="COPY failed. Technology is not specified." />
+								<event week="4" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="4" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="4" description="COPY failed. Technology is not specified." />
+								<event week="4" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="4" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="4" description="COPY failed. Technology is not specified." />
+								<event week="4" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="4" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="4" description="COPY failed. Technology is not specified." />
+								<event week="4" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="4" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="4" description="COPY failed. Technology is not specified." />
+								<event week="4" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="4" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="4" description="COPY failed. Technology is not specified." />
+								<event week="4" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="4" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="4" description="COPY failed. Technology is not specified." />
+								<event week="4" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="4" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="5" description="COPY failed. Technology is not specified." />
+								<event week="5" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="5" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="5" description="USE failed: lack of technology necessary to operate: mineral core drilling [mcored]." />
+								<event week="5" description="COPY failed. Technology is not specified." />
+								<event week="5" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="5" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="5" description="COPY failed. Technology is not specified." />
+								<event week="5" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="5" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="5" description="COPY failed. Technology is not specified." />
+								<event week="5" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="5" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="5" description="COPY failed. Technology is not specified." />
+								<event week="5" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="5" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="5" description="COPY failed. Technology is not specified." />
+								<event week="5" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="5" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="5" description="COPY failed. Technology is not specified." />
+								<event week="5" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="5" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="5" description="COPY failed. Technology is not specified." />
+								<event week="5" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="5" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="6" description="COPY failed. Technology is not specified." />
+								<event week="6" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="6" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="6" description="USE failed: lack of technology necessary to operate: mineral core drilling [mcored]." />
+								<event week="6" description="COPY failed. Technology is not specified." />
+								<event week="6" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="6" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="6" description="COPY failed. Technology is not specified." />
+								<event week="6" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="6" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="6" description="COPY failed. Technology is not specified." />
+								<event week="6" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="6" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="6" description="COPY failed. Technology is not specified." />
+								<event week="6" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="6" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="6" description="COPY failed. Technology is not specified." />
+								<event week="6" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="6" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="6" description="COPY failed. Technology is not specified." />
+								<event week="6" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="6" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="6" description="COPY failed. Technology is not specified." />
+								<event week="6" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="6" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="7" description="COPY failed. Technology is not specified." />
+								<event week="7" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="7" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="7" description="USE failed: lack of technology necessary to operate: mineral core drilling [mcored]." />
+								<event week="7" description="COPY failed. Technology is not specified." />
+								<event week="7" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="7" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="7" description="COPY failed. Technology is not specified." />
+								<event week="7" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="7" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="7" description="COPY failed. Technology is not specified." />
+								<event week="7" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="7" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="7" description="COPY failed. Technology is not specified." />
+								<event week="7" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="7" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="7" description="COPY failed. Technology is not specified." />
+								<event week="7" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="7" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="7" description="COPY failed. Technology is not specified." />
+								<event week="7" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="7" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="7" description="COPY failed. Technology is not specified." />
+								<event week="7" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="7" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="8" description="COPY failed. Technology is not specified." />
+								<event week="8" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="8" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="8" description="USE failed: lack of technology necessary to operate: mineral core drilling [mcored]." />
+								<event week="8" description="COPY failed. Technology is not specified." />
+								<event week="8" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="8" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="8" description="COPY failed. Technology is not specified." />
+								<event week="8" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="8" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="8" description="COPY failed. Technology is not specified." />
+								<event week="8" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="8" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="8" description="COPY failed. Technology is not specified." />
+								<event week="8" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="8" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="8" description="COPY failed. Technology is not specified." />
+								<event week="8" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="8" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="8" description="COPY failed. Technology is not specified." />
+								<event week="8" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="8" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="8" description="COPY failed. Technology is not specified." />
+								<event week="8" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="8" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="9" description="COPY failed. Technology is not specified." />
+								<event week="9" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="9" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="9" description="USE failed: lack of technology necessary to operate: mineral core drilling [mcored]." />
+								<event week="9" description="COPY failed. Technology is not specified." />
+								<event week="9" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="9" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="9" description="COPY failed. Technology is not specified." />
+								<event week="9" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="9" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="9" description="COPY failed. Technology is not specified." />
+								<event week="9" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="9" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="9" description="COPY failed. Technology is not specified." />
+								<event week="9" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="9" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="9" description="COPY failed. Technology is not specified." />
+								<event week="9" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="9" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="9" description="COPY failed. Technology is not specified." />
+								<event week="9" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="9" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="9" description="COPY failed. Technology is not specified." />
+								<event week="9" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="9" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="10" description="COPY failed. Technology is not specified." />
+								<event week="10" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="10" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="10" description="USE failed: lack of technology necessary to operate: mineral core drilling [mcored]." />
+								<event week="10" description="COPY failed. Technology is not specified." />
+								<event week="10" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="10" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="10" description="COPY failed. Technology is not specified." />
+								<event week="10" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="10" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="10" description="COPY failed. Technology is not specified." />
+								<event week="10" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="10" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="10" description="COPY failed. Technology is not specified." />
+								<event week="10" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="10" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="10" description="COPY failed. Technology is not specified." />
+								<event week="10" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="10" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="10" description="COPY failed. Technology is not specified." />
+								<event week="10" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="10" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="10" description="COPY failed. Technology is not specified." />
+								<event week="10" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="10" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="11" description="COPY failed. Technology is not specified." />
+								<event week="11" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="11" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="11" description="USE failed: lack of technology necessary to operate: mineral core drilling [mcored]." />
+								<event week="11" description="COPY failed. Technology is not specified." />
+								<event week="11" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="11" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="11" description="COPY failed. Technology is not specified." />
+								<event week="11" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="11" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="11" description="COPY failed. Technology is not specified." />
+								<event week="11" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="11" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="11" description="COPY failed. Technology is not specified." />
+								<event week="11" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="11" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="11" description="COPY failed. Technology is not specified." />
+								<event week="11" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="11" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="11" description="COPY failed. Technology is not specified." />
+								<event week="11" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="11" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="11" description="COPY failed. Technology is not specified." />
+								<event week="11" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="11" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="12" description="COPY failed. Technology is not specified." />
+								<event week="12" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="12" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="12" description="USE failed: lack of technology necessary to operate: mineral core drilling [mcored]." />
+								<event week="12" description="COPY failed. Technology is not specified." />
+								<event week="12" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="12" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="12" description="COPY failed. Technology is not specified." />
+								<event week="12" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="12" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="12" description="COPY failed. Technology is not specified." />
+								<event week="12" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="12" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="12" description="COPY failed. Technology is not specified." />
+								<event week="12" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="12" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="12" description="COPY failed. Technology is not specified." />
+								<event week="12" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="12" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="12" description="COPY failed. Technology is not specified." />
+								<event week="12" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="12" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="12" description="COPY failed. Technology is not specified." />
+								<event week="12" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="12" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="13" description="COPY failed. Technology is not specified." />
+								<event week="13" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="13" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="13" description="USE failed: lack of technology necessary to operate: mineral core drilling [mcored]." />
+								<event week="13" description="COPY failed. Technology is not specified." />
+								<event week="13" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="13" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="13" description="COPY failed. Technology is not specified." />
+								<event week="13" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="13" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="13" description="COPY failed. Technology is not specified." />
+								<event week="13" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="13" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="13" description="COPY failed. Technology is not specified." />
+								<event week="13" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="13" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="13" description="COPY failed. Technology is not specified." />
+								<event week="13" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="13" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="13" description="COPY failed. Technology is not specified." />
+								<event week="13" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="13" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="13" description="COPY failed. Technology is not specified." />
+								<event week="13" description="COPY failed. Source does not hold uranium mining [uminng] technology." />
+								<event week="13" description="COPY failed. Source does not hold helium-3 mining [he3min] technology." />
+								<event week="13" description="paid 66 cash [cash] upkeep." />
 							</modulestack>
 							<modulestack name="202" type="autcmd" quantity="1" faction="2">
 								<technology name="autctl" name-en="automated command systems" />
@@ -197,37 +439,69 @@
 								</modulestack>
 							</modulestack>
 							<modulestack name="250" type="lifsys" quantity="1" faction="2">
-								<itemstack type="terair" quantity="104" />
 								<upkeep type="cash" quantity="10" />
 								<event week="1" description="formed by advanced robo-factory [201] with life support system [lifsys]." />
 								<event week="2" description="received life support system [lifsys] produced by advanced robo-factory [201]." />
-								<event week="3" description="produced 10 units of terran breathing gas mixture [terair]." />
-								<event week="4" description="produced 10 units of terran breathing gas mixture [terair]." />
-								<event week="5" description="produced 10 units of terran breathing gas mixture [terair]." />
-								<event week="6" description="produced 10 units of terran breathing gas mixture [terair]." />
-								<event week="7" description="produced 10 units of terran breathing gas mixture [terair]." />
-								<event week="8" description="produced 10 units of terran breathing gas mixture [terair]." />
-								<event week="9" description="produced 10 units of terran breathing gas mixture [terair]." />
-								<event week="10" description="produced 10 units of terran breathing gas mixture [terair]." />
-								<event week="11" description="produced 10 units of terran breathing gas mixture [terair]." />
-								<event week="12" description="produced 10 units of terran breathing gas mixture [terair]." />
-								<event week="13" description="produced 10 units of terran breathing gas mixture [terair]." />
 								<event week="13" description="paid 10 cash [cash] upkeep." />
 							</modulestack>
-							<modulestack name="251" type="cdrill" quantity="1" faction="2">
-								<technology name="uminng" name-en="uranium mining" />
-								<technology name="he3min" name-en="helium-3 mining" />
-								<itemstack type="terran" quantity="6" />
-								<upkeep type="cash" quantity="46" />
-								<event week="1" description="GET failed, tried to get 6 terrans [terran], but receiver is not present in this location." />
-								<event week="3" description="formed by advanced robo-factory [201] with core drill [cdrill]." />
-								<event week="5" description="received copy of uranium mining [uminng] technology from advanced robo-factory [201]." />
-								<event week="5" description="received copy of helium-3 mining [he3min] technology from advanced robo-factory [201]." />
-								<event week="5" description="received core drill [cdrill] produced by advanced robo-factory [201]." />
-								<event week="5" description="got 6 terrans [terran] from advanced robo-factory [201]." />
-								<event week="13" description="produced unit of uranium [uraniu]." />
-								<event week="13" description="given unit of uranium [uraniu] to fission reactor [113]." />
-								<event week="13" description="paid 46 cash [cash] upkeep." />
+						</modulestack>
+						<modulestack name="101" type="sshull" quantity="1" faction="2">
+							<upkeep type="cash" quantity="324" />
+							<event week="13" description="paid 20 cash [cash] upkeep." />
+							<modulestack name="112" type="cbridg" quantity="1" faction="2">
+								<person name="000001" name-en="Caste Prime CEO" race="terran" faction="2">
+									<skill name="arpldr" experience="1" />
+									<upkeep type="cash" quantity="10" />
+									<effect duration="0" type="training-officer" skill="arpldr" />
+									<event week="1" description="started training of armor platoon leader [arpldr] skill." />
+									<event week="4" description="trained armor platoon leader [arpldr] skill." />
+								</person>
+								<itemstack type="terran" quantity="1" />
+								<itemstack type="food" quantity="34" />
+								<itemstack type="terair" quantity="34" />
+								<upkeep type="cash" quantity="111" />
+								<event week="1" description="got 20 units of food [food] from space shuttle [100]." />
+								<event week="1" description="got 20 units of terran breathing gas mixture [terair] from space shuttle [100]." />
+								<event week="13" description="paid 111 cash [cash] upkeep." />
+							</modulestack>
+							<modulestack name="113" type="fisrec" quantity="1" faction="2">
+								<itemstack type="terran" quantity="1" />
+								<itemstack type="food" quantity="9" />
+								<itemstack type="terair" quantity="9" />
+								<upkeep type="cash" quantity="91" />
+								<event week="1" description="got 10 units of food [food] from space shuttle [100]." />
+								<event week="1" description="got 10 units of terran breathing gas mixture [terair] from space shuttle [100]." />
+								<event week="1" description="GET failed. small cargo bay [000013] does not have units of uranium [uraniu]." />
+								<event week="1" description="out of fuel." />
+								<event week="2" description="out of fuel." />
+								<event week="3" description="out of fuel." />
+								<event week="4" description="out of fuel." />
+								<event week="5" description="out of fuel." />
+								<event week="6" description="out of fuel." />
+								<event week="7" description="out of fuel." />
+								<event week="8" description="out of fuel." />
+								<event week="9" description="out of fuel." />
+								<event week="10" description="out of fuel." />
+								<event week="11" description="out of fuel." />
+								<event week="12" description="out of fuel." />
+								<event week="13" description="out of fuel." />
+								<event week="13" description="paid 91 cash [cash] upkeep." />
+							</modulestack>
+							<modulestack name="114" type="rctdrv" quantity="1" faction="2">
+								<itemstack type="terran" quantity="1" />
+								<itemstack type="h2o2" quantity="20" />
+								<itemstack type="food" quantity="9" />
+								<itemstack type="terair" quantity="9" />
+								<upkeep type="cash" quantity="101" />
+								<event week="1" description="got 10 units of food [food] from space shuttle [100]." />
+								<event week="1" description="got 10 units of terran breathing gas mixture [terair] from space shuttle [100]." />
+								<event week="13" description="paid 101 cash [cash] upkeep." />
+							</modulestack>
+							<modulestack name="115" type="cmplib" quantity="1" faction="2">
+								<technology name="alnfgh" name-en="alien fighter construction" />
+								<upkeep type="cash" quantity="1" />
+								<event week="1" description="received copy of alien fighter construction [alnfgh] technology from alien fighter drone [207]." />
+								<event week="13" description="paid 1 cash [cash] upkeep." />
 							</modulestack>
 						</modulestack>
 					</region>
@@ -252,7 +526,7 @@
 						<itemstack type="cash" quantity="535" />
 						<itemstack type="terran" quantity="30" />
 						<upkeep type="food" quantity="300" />
-						<upkeep type="cash" quantity="1194" />
+						<upkeep type="cash" quantity="1193" />
 						<buying module="farms" quantity="1" price="100" />
 						<buying item="food" quantity="300" price="1" />
 						<buying item="iron" quantity="75" price="1" />
@@ -300,6 +574,8 @@
 						</modulestack>
 						<modulestack name="000012" name-en="Caste Prime Headquarters" type="corphq" quantity="0" faction="2">
 							<upkeep type="cash" quantity="0" />
+							<event week="2" description="PRODUCE failed: Caste Prime Headquarters [000012] has not enough energy to operate - 220 required, 200 available." />
+							<event week="3" description="PRODUCE failed: Caste Prime Headquarters [000012] has not enough energy to operate - 215 required, 200 available." />
 						</modulestack>
 						<modulestack name="000013" type="cargob" quantity="0" faction="2">
 							<upkeep type="cash" quantity="0" />
@@ -308,6 +584,8 @@
 						</modulestack>
 						<modulestack name="000014" type="farms" quantity="0" faction="2">
 							<upkeep type="cash" quantity="0" />
+							<event week="2" description="USE failed: farming complex [000014] has not enough energy to operate - 220 required, 200 available." />
+							<event week="3" description="USE failed: farming complex [000014] has not enough energy to operate - 215 required, 200 available." />
 						</modulestack>
 						<modulestack name="000015" type="cplant" quantity="0" faction="2">
 							<upkeep type="cash" quantity="0" />
@@ -318,6 +596,8 @@
 							<event week="1" description="started energy production for the next 13 weeks." />
 							<event week="1" description="engaged in battle" />
 							<event week="1" description="lost #1 coal-burning plant [cplant] to capture." />
+							<event week="2" description="PRODUCE failed: coal-burning plant [000015] has not enough energy to operate - 220 required, 200 available." />
+							<event week="3" description="PRODUCE failed: coal-burning plant [000015] has not enough energy to operate - 215 required, 200 available." />
 						</modulestack>
 						<modulestack name="000016" type="cdrill" quantity="0" faction="2">
 							<upkeep type="cash" quantity="0" />
@@ -327,12 +607,11 @@
 							<event week="2" description="produced unit of carbon [carbon]." />
 							<event week="2" description="engaged in battle" />
 							<event week="2" description="lost #1 core drill [cdrill] to capture." />
+							<event week="3" description="USE failed: core drill [000016] has not enough energy to operate - 215 required, 200 available." />
 						</modulestack>
-						<modulestack name="000017" type="factry" quantity="1" faction="2">
-							<module damage="51" />
-							<itemstack type="terran" quantity="10" />
-							<itemstack type="iron" quantity="4" />
-							<upkeep type="cash" quantity="10" />
+						<modulestack name="000017" type="factry" quantity="0" faction="2">
+							<technology name="armcbt" name-en="armored combat" />
+							<upkeep type="cash" quantity="0" />
 							<event week="1" description="engaged in battle" />
 							<event week="2" description="engaged in battle" />
 							<event week="3" description="engaged in battle" />
@@ -340,17 +619,14 @@
 							<event week="4" description="engaged in battle" />
 							<event week="5" description="engaged in battle" />
 							<event week="6" description="engaged in battle" />
+							<event week="6" description="lost #1 factory [factry] to capture." />
 							<event week="7" description="engaged in battle" />
-							<event week="7" description="lost #1 factory [factry] to capture." />
 							<event week="8" description="engaged in battle" />
 							<event week="9" description="engaged in battle" />
+							<event week="9" description="lost #1 factory [factry] to capture." />
 							<event week="10" description="engaged in battle" />
 							<event week="10" description="lost #1 factory [factry] to capture." />
-							<event week="11" description="engaged in battle" />
-							<event week="11" description="lost #1 factory [factry] to capture." />
-							<event week="12" description="engaged in battle" />
-							<event week="13" description="engaged in battle" />
-							<event week="13" description="paid 10 cash [cash] upkeep." />
+							<event week="10" description="lost #1 factory [factry] to capture." />
 						</modulestack>
 						<modulestack name="111" type="gunplc" quantity="1" faction="2">
 							<module damage="29" />
@@ -373,9 +649,9 @@
 						</modulestack>
 						<modulestack name="c000012" type="corphq" quantity="1" faction="3">
 							<module capture="75" />
-							<itemstack type="terran" quantity="24" />
+							<itemstack type="terran" quantity="23" />
 							<itemstack type="cash" quantity="2030" />
-							<upkeep type="cash" quantity="198" />
+							<upkeep type="cash" quantity="197" />
 							<buying item="food" quantity="all" price="any" />
 							<buying item="terran" quantity="all" price="any" />
 							<event week="1" description="repaired 1 damage." />
@@ -384,14 +660,16 @@
 							<event week="1" description="given terran [terran] to gun placement [c00003]." />
 							<event week="1" description="given terran [terran] to gun placement [c00004]." />
 							<event week="13" description="paid 125 cash [cash] upkeep." />
-							<event week="13" description="1 wounded terran [wndtrn] died of their wounds." />
-							<event week="13" description="2 wounded terrans [wndtrn] recovered from their wounds." />
+							<event week="13" description="2 wounded terrans [wndtrn] died of their wounds." />
+							<event week="13" description="1 wounded terran [wndtrn] recovered from their wounds." />
 							<modulestack name="c00001" type="gunplc" quantity="1" faction="3">
 								<module damage="68" capture="31" />
 								<itemstack type="terran" quantity="2" />
 								<upkeep type="cash" quantity="2" />
 								<event week="1" description="stacked under corporate headquarters [c000012]." />
 								<event week="1" description="got 2 terrans [terran] from corporate headquarters [c000012]." />
+								<event week="2" description="REPAIR failed: gun placement [c00001] has not enough energy to operate - 220 required, 200 available." />
+								<event week="3" description="REPAIR failed: gun placement [c00001] has not enough energy to operate - 215 required, 200 available." />
 								<event week="13" description="paid 2 cash [cash] upkeep." />
 							</modulestack>
 							<modulestack name="c00002" type="gunplc" quantity="1" faction="3">
@@ -400,6 +678,8 @@
 								<upkeep type="cash" quantity="2" />
 								<event week="1" description="stacked under corporate headquarters [c000012]." />
 								<event week="1" description="got terran [terran] from corporate headquarters [c000012]." />
+								<event week="2" description="REPAIR failed: gun placement [c00002] has not enough energy to operate - 220 required, 200 available." />
+								<event week="3" description="REPAIR failed: gun placement [c00002] has not enough energy to operate - 215 required, 200 available." />
 								<event week="13" description="paid 2 cash [cash] upkeep." />
 							</modulestack>
 							<modulestack name="c00003" type="gunplc" quantity="1" faction="3">
@@ -408,6 +688,8 @@
 								<upkeep type="cash" quantity="2" />
 								<event week="1" description="stacked under corporate headquarters [c000012]." />
 								<event week="1" description="got terran [terran] from corporate headquarters [c000012]." />
+								<event week="2" description="REPAIR failed: gun placement [c00003] has not enough energy to operate - 220 required, 200 available." />
+								<event week="3" description="REPAIR failed: gun placement [c00003] has not enough energy to operate - 215 required, 200 available." />
 								<event week="13" description="paid 2 cash [cash] upkeep." />
 							</modulestack>
 							<modulestack name="c00004" type="gunplc" quantity="1" faction="3">
@@ -416,6 +698,8 @@
 								<upkeep type="cash" quantity="2" />
 								<event week="1" description="stacked under corporate headquarters [c000012]." />
 								<event week="1" description="got terran [terran] from corporate headquarters [c000012]." />
+								<event week="2" description="REPAIR failed: gun placement [c00004] has not enough energy to operate - 220 required, 200 available." />
+								<event week="3" description="REPAIR failed: gun placement [c00004] has not enough energy to operate - 215 required, 200 available." />
 								<event week="13" description="paid 2 cash [cash] upkeep." />
 							</modulestack>
 							<modulestack name="c00005" type="cargob" quantity="1" faction="3">
@@ -432,6 +716,8 @@
 								<itemstack type="carbon" quantity="17" />
 								<upkeep type="cash" quantity="2" />
 								<event week="1" description="stacked under corporate headquarters [c000012]." />
+								<event week="2" description="REPAIR failed: small cargo bay [c00005] has not enough energy to operate - 220 required, 200 available." />
+								<event week="3" description="REPAIR failed: small cargo bay [c00005] has not enough energy to operate - 215 required, 200 available." />
 								<event week="13" description="paid 2 cash [cash] upkeep." />
 							</modulestack>
 							<modulestack name="c00006" type="cargob" quantity="1" faction="3">
@@ -562,7 +848,7 @@
 							<event week="13" description="paid 6 cash [cash] upkeep." />
 						</modulestack>
 						<modulestack name="c00017" type="factry" quantity="1" faction="3">
-							<module damage="27" capture="73" online="false" />
+							<module damage="26" capture="74" online="false" />
 							<itemstack type="terran" quantity="9" />
 							<itemstack type="iron" quantity="4" />
 							<upkeep type="cash" quantity="9" />
@@ -570,28 +856,36 @@
 							<event week="13" description="paid 9 cash [cash] upkeep." />
 						</modulestack>
 						<modulestack name="c00018" type="factry" quantity="1" faction="3">
-							<module damage="61" capture="39" online="false" />
+							<module damage="51" capture="49" online="false" />
 							<itemstack type="terran" quantity="9" />
 							<itemstack type="iron" quantity="4" />
 							<upkeep type="cash" quantity="9" />
-							<event week="7" description="captured factory [factry] from factory [000017]." />
+							<event week="6" description="captured factory [factry] from factory [000017]." />
 							<event week="13" description="paid 9 cash [cash] upkeep." />
 						</modulestack>
 						<modulestack name="c00019" type="factry" quantity="1" faction="3">
-							<module damage="62" capture="38" online="false" />
+							<module damage="60" capture="40" online="false" />
+							<itemstack type="terran" quantity="9" />
+							<itemstack type="iron" quantity="4" />
+							<upkeep type="cash" quantity="9" />
+							<event week="9" description="captured factory [factry] from factory [000017]." />
+							<event week="13" description="paid 9 cash [cash] upkeep." />
+						</modulestack>
+						<modulestack name="c00020" type="factry" quantity="1" faction="3">
+							<module damage="61" capture="39" online="false" />
 							<itemstack type="terran" quantity="9" />
 							<itemstack type="iron" quantity="4" />
 							<upkeep type="cash" quantity="9" />
 							<event week="10" description="captured factory [factry] from factory [000017]." />
 							<event week="13" description="paid 9 cash [cash] upkeep." />
 						</modulestack>
-						<modulestack name="c00020" type="factry" quantity="1" faction="3">
-							<module damage="68" capture="32" online="false" />
-							<itemstack type="terran" quantity="9" />
+						<modulestack name="c00021" type="factry" quantity="1" faction="3">
+							<module damage="47" capture="53" online="false" />
+							<itemstack type="terran" quantity="10" />
 							<itemstack type="iron" quantity="4" />
-							<upkeep type="cash" quantity="9" />
-							<event week="11" description="captured factory [factry] from factory [000017]." />
-							<event week="13" description="paid 9 cash [cash] upkeep." />
+							<upkeep type="cash" quantity="10" />
+							<event week="10" description="captured factory [factry] from factory [000017]." />
+							<event week="13" description="paid 10 cash [cash] upkeep." />
 						</modulestack>
 					</modulestack>
 					<modulestack name="108" name-en="peaceful scout" type="tanks" quantity="1" faction="3">
@@ -608,15 +902,15 @@
 					<modulestack name="109" name-en="Surrender or die!" type="tanks" quantity="3" faction="3">
 						<module damage="38" />
 						<module damage="38" />
-						<module />
+						<module damage="1" />
 						<person name="000002" name-en="Gelvaren CEO" race="terran" faction="3">
 							<skill name="arpldr" experience="1" />
 							<upkeep type="cash" quantity="10" />
 						</person>
-						<itemstack type="terran" quantity="39" />
+						<itemstack type="terran" quantity="41" />
 						<itemstack type="oil" quantity="6" />
-						<itemstack type="wndtrn" quantity="2" />
-						<upkeep type="cash" quantity="123" />
+						<itemstack type="wndtrn" quantity="1" />
+						<upkeep type="cash" quantity="124" />
 						<tactic name="prioritize storage" />
 						<tactic name="capture" />
 						<effect duration="5" type="fuelled" />
@@ -642,20 +936,20 @@
 						<event week="9" description="engaged in battle" />
 						<event week="10" description="initiated battle against factory [000017], gun placement [111]" />
 						<event week="10" description="engaged in battle" />
-						<event week="11" description="initiated battle against factory [000017], gun placement [111]" />
+						<event week="11" description="initiated battle against gun placement [111]" />
 						<event week="11" description="engaged in battle" />
-						<event week="12" description="initiated battle against factory [000017], gun placement [111]" />
+						<event week="12" description="initiated battle against gun placement [111]" />
 						<event week="12" description="engaged in battle" />
-						<event week="13" description="initiated battle against factory [000017], gun placement [111]" />
+						<event week="13" description="initiated battle against gun placement [111]" />
 						<event week="13" description="engaged in battle" />
 						<event week="13" description="paid 130 cash [cash] upkeep." />
 						<event week="13" description="Lack of supplies: 27 unit of food [food]." />
-						<event week="13" description="14 terrans [terran] wounded from lack of supplies." />
-						<event week="13" description="7 wounded terrans [wndtrn] died of their wounds." />
-						<event week="13" description="5 wounded terrans [wndtrn] recovered from their wounds." />
+						<event week="13" description="13 terrans [terran] wounded from lack of supplies." />
+						<event week="13" description="Damaged from lack of supplies." />
+						<event week="13" description="6 wounded terrans [wndtrn] died of their wounds." />
+						<event week="13" description="6 wounded terrans [wndtrn] recovered from their wounds." />
 					</modulestack>
 					<modulestack name="110" type="inftry" quantity="1" faction="3">
-						<module damage="1" />
 						<person name="107" race="terran" faction="3">
 							<skill name="inbtcm" experience="1" />
 							<upkeep type="cash" quantity="10" />
@@ -680,7 +974,6 @@
 						<event week="13" description="engaged in battle" />
 						<event week="13" description="paid 15 cash [cash] upkeep." />
 						<event week="13" description="Lack of supplies: 101 unit of food [food]." />
-						<event week="13" description="Damaged from lack of supplies." />
 					</modulestack>
 				</region>
 				<region name="R00003" name-en="Southern Hemisphere" X="1" Y="0" type="grassl">
@@ -753,57 +1046,66 @@
 					</modulestack>
 					<modulestack name="000026" name-en="Gelvaren complex" type="city" quantity="1" faction="3">
 						<technology name="rckter" name-en="rocket launcher production" />
-						<itemstack type="food" quantity="652" />
+						<itemstack type="food" quantity="682" />
 						<upkeep type="food" quantity="100" />
-						<upkeep type="cash" quantity="889" />
+						<upkeep type="cash" quantity="879" />
 						<buying item="food" quantity="100" price="1" />
 						<selling item="food" quantity="25" price="5" />
 						<selling item="terran" quantity="10" price="50" />
 						<buying item="food" quantity="all" price="any" />
-						<event week="1" description="got 700 units of food [food] from small cargo bay [000019]." />
-						<event week="1" description="started recruitment of terran, 13 weeks to complete." />
+						<event week="1" description="got 710 units of food [food] from small cargo bay [000019]." />
+						<event week="1" description="PRODUCE failed: cash and terran production require headquarters or branch office." />
+						<event week="2" description="PRODUCE failed: cash and terran production require headquarters or branch office." />
 						<event week="2" description="got 10 units of food [food] from small cargo bay [000019]." />
+						<event week="3" description="PRODUCE failed: cash and terran production require headquarters or branch office." />
 						<event week="3" description="got 10 units of food [food] from small cargo bay [000019]." />
+						<event week="4" description="PRODUCE failed: cash and terran production require headquarters or branch office." />
 						<event week="4" description="got 10 units of food [food] from small cargo bay [000019]." />
+						<event week="5" description="PRODUCE failed: cash and terran production require headquarters or branch office." />
 						<event week="5" description="got 10 units of food [food] from small cargo bay [000019]." />
+						<event week="6" description="PRODUCE failed: cash and terran production require headquarters or branch office." />
 						<event week="6" description="got 10 units of food [food] from small cargo bay [000019]." />
+						<event week="7" description="PRODUCE failed: cash and terran production require headquarters or branch office." />
 						<event week="7" description="got 10 units of food [food] from small cargo bay [000019]." />
+						<event week="8" description="PRODUCE failed: cash and terran production require headquarters or branch office." />
 						<event week="8" description="got 10 units of food [food] from small cargo bay [000019]." />
+						<event week="9" description="PRODUCE failed: cash and terran production require headquarters or branch office." />
 						<event week="9" description="got 10 units of food [food] from small cargo bay [000019]." />
+						<event week="10" description="PRODUCE failed: cash and terran production require headquarters or branch office." />
 						<event week="10" description="got 10 units of food [food] from small cargo bay [000019]." />
+						<event week="11" description="PRODUCE failed: cash and terran production require headquarters or branch office." />
 						<event week="11" description="got 10 units of food [food] from small cargo bay [000019]." />
+						<event week="12" description="PRODUCE failed: cash and terran production require headquarters or branch office." />
 						<event week="12" description="got 10 units of food [food] from small cargo bay [000019]." />
-						<event week="13" description="produced 10 terrans [terran]." />
-						<event week="13" description="given 10 terrans [terran] to Gelvaren Headquarters [000018]." />
+						<event week="13" description="PRODUCE failed: cash and terran production require headquarters or branch office." />
 						<event week="13" description="got 10 units of food [food] from small cargo bay [000019]." />
 						<event week="13" description="paid 100 unit of food [food] upkeep." />
 						<modulestack name="000018" name-en="Gelvaren Headquarters" type="corphq" quantity="1" faction="3">
-							<itemstack type="terran" quantity="30" />
-							<itemstack type="cash" quantity="3575" />
-							<upkeep type="cash" quantity="130" />
+							<itemstack type="terran" quantity="10" />
+							<itemstack type="cash" quantity="2185" />
+							<upkeep type="cash" quantity="110" />
 							<buying item="terran" quantity="all" price="any" />
-							<event week="1" description="produced 100 cash [cash]." />
-							<event week="2" description="produced 100 cash [cash]." />
-							<event week="3" description="produced 100 cash [cash]." />
-							<event week="4" description="produced 100 cash [cash]." />
-							<event week="5" description="produced 100 cash [cash]." />
-							<event week="6" description="produced 100 cash [cash]." />
-							<event week="7" description="produced 100 cash [cash]." />
-							<event week="8" description="produced 100 cash [cash]." />
-							<event week="9" description="produced 100 cash [cash]." />
-							<event week="10" description="produced 100 cash [cash]." />
-							<event week="11" description="produced 100 cash [cash]." />
-							<event week="12" description="produced 100 cash [cash]." />
-							<event week="13" description="got 10 terrans [terran] from Gelvaren complex [000026]." />
-							<event week="13" description="produced 100 cash [cash]." />
-							<event week="13" description="paid 130 cash [cash] upkeep." />
+							<event week="1" description="PRODUCE failed: Gelvaren Headquarters [000018] has not enough crew to operate - 20 required, 10 available." />
+							<event week="2" description="PRODUCE failed: Gelvaren Headquarters [000018] has not enough crew to operate - 20 required, 10 available." />
+							<event week="3" description="PRODUCE failed: Gelvaren Headquarters [000018] has not enough crew to operate - 20 required, 10 available." />
+							<event week="4" description="PRODUCE failed: Gelvaren Headquarters [000018] has not enough crew to operate - 20 required, 10 available." />
+							<event week="5" description="PRODUCE failed: Gelvaren Headquarters [000018] has not enough crew to operate - 20 required, 10 available." />
+							<event week="6" description="PRODUCE failed: Gelvaren Headquarters [000018] has not enough crew to operate - 20 required, 10 available." />
+							<event week="7" description="PRODUCE failed: Gelvaren Headquarters [000018] has not enough crew to operate - 20 required, 10 available." />
+							<event week="8" description="PRODUCE failed: Gelvaren Headquarters [000018] has not enough crew to operate - 20 required, 10 available." />
+							<event week="9" description="PRODUCE failed: Gelvaren Headquarters [000018] has not enough crew to operate - 20 required, 10 available." />
+							<event week="10" description="PRODUCE failed: Gelvaren Headquarters [000018] has not enough crew to operate - 20 required, 10 available." />
+							<event week="11" description="PRODUCE failed: Gelvaren Headquarters [000018] has not enough crew to operate - 20 required, 10 available." />
+							<event week="12" description="PRODUCE failed: Gelvaren Headquarters [000018] has not enough crew to operate - 20 required, 10 available." />
+							<event week="13" description="PRODUCE failed: Gelvaren Headquarters [000018] has not enough crew to operate - 20 required, 10 available." />
+							<event week="13" description="paid 110 cash [cash] upkeep." />
 						</modulestack>
 						<modulestack name="000019" type="cargob" quantity="1" faction="3">
 							<itemstack type="terran" quantity="2" />
 							<itemstack type="oil" quantity="80" />
 							<upkeep type="cash" quantity="32" />
 							<selling item="food" quantity="90" price="any" />
-							<event week="1" description="given 700 units of food [food] to Gelvaren complex [000026]." />
+							<event week="1" description="given 710 units of food [food] to Gelvaren complex [000026]." />
 							<event week="1" description="got 10 units of food [food] from farming complex [000020]." />
 							<event week="1" description="got 2 units of oil [oil] from core drill [000022]." />
 							<event week="2" description="got 10 units of food [food] from farming complex [000020]." />
@@ -875,10 +1177,10 @@
 							<event week="13" description="given 10 units of food [food] to small cargo bay [000019]." />
 							<event week="13" description="paid 110 cash [cash] upkeep." />
 						</modulestack>
-						<modulestack name="000021" type="wnplnt" quantity="19" faction="3">
-							<upkeep type="cash" quantity="190" />
+						<modulestack name="000021" type="wnplnt" quantity="20" faction="3">
+							<upkeep type="cash" quantity="200" />
 							<event week="1" description="started energy production for the next 13 weeks." />
-							<event week="13" description="paid 190 cash [cash] upkeep." />
+							<event week="13" description="paid 200 cash [cash] upkeep." />
 						</modulestack>
 						<modulestack name="000022" type="cdrill" quantity="1" faction="3">
 							<itemstack type="terran" quantity="6" />
@@ -926,8 +1228,11 @@
 							<upkeep type="cash" quantity="210" />
 							<event week="13" description="paid 210 cash [cash] upkeep." />
 						</modulestack>
-						<modulestack name="116" type="cmplib" quantity="1" faction="3" research-points="24">
+						<modulestack name="116" type="cmplib" quantity="1" faction="3" research-points="12">
+							<technology name="servic" name-en="preventive servicing" />
 							<upkeep type="cash" quantity="1" />
+							<event week="1" description="COPY failed. Source does not hold preventive servicing [servic] technology." />
+							<event week="1" description="Breakthough!!! Researched preventive servicing [servic] technology." />
 							<event week="1" description="copied preventive servicing [servic] technology to space shuttle [117]." />
 							<event week="13" description="paid 1 cash [cash] upkeep." />
 						</modulestack>
@@ -943,17 +1248,48 @@
 		</system>
 	</galaxy>
 	<orders>
+		<order subject="modulestack" name="201">
+			<copy />
+		</order>
+		<order subject="modulestack" name="201">
+			<copy technology="uminng" receiver="201" />
+		</order>
+		<order subject="modulestack" name="201">
+			<copy technology="he3min" receiver="201" />
+		</order>
 		<order subject="modulestack" name="204" repeat="unlimited">
 			<get item="heliu3" quantity="all" transferer="251" />
 		</order>
 		<order subject="modulestack" name="204" repeat="unlimited">
 			<produce produce-type="energy" />
 		</order>
-		<order subject="modulestack" name="113" repeat="unlimited">
-			<get item="uraniu" quantity="all" transferer="251" />
+		<order subject="modulestack" name="101">
+			<has>
+				<itemstack item="uraniu" quantity="1" />
+			</has>
+			<order conditions="-">
+				<move>
+					<destination destination="O00001" />
+				</move>
+			</order>
+		</order>
+		<order subject="modulestack" name="112">
+			<activate quantity="all" />
+		</order>
+		<order subject="modulestack" name="113">
+			<get item="uraniu" quantity="1" transferer="000013" />
+		</order>
+		<order subject="modulestack" name="113">
+			<activate quantity="all" />
 		</order>
 		<order subject="modulestack" name="113" repeat="unlimited">
 			<produce produce-type="energy" />
+		</order>
+		<order subject="modulestack" name="113" repeat="unlimited">
+			<get item="uraniu" quantity="all" transferer="251" />
+		</order>
+		<order subject="modulestack" name="114">
+			<activate quantity="all" />
 		</order>
 		<order subject="modulestack" name="115" repeat="unlimited">
 			<research research-type="stack" stack="200" />
@@ -1059,15 +1395,6 @@
 		</order>
 		<order subject="modulestack" name="116" repeat="unlimited">
 			<research research-type="tag" tag="repair" />
-		</order>
-		<order subject="modulestack" name="250" repeat="unlimited">
-			<produce produce-type="item" item="terair" />
-		</order>
-		<order subject="modulestack" name="251" repeat="unlimited">
-			<use technology="uminng" />
-			<order conditions="-">
-				<use technology="he3min" />
-			</order>
 		</order>
 	</orders>
 </game>

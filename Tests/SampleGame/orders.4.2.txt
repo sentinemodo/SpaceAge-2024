@@ -1,4 +1,6 @@
 #faction 2 "xyzzy"
+GRANT technology armcbt to 000017
+; Between-turn purchase: armored combat [armcbt] unlocks TRAIN SKILL arpldr for the CEO.
 ; Caste Prime turn 4 — Luna: COPY fighters into the library, nest drones in bay
 ; [206], land shuttles on Dusty field, build life support and a core drill on
 ; wreck [200], start uranium then helium-3 mining, fuel plants, hop hull [101]

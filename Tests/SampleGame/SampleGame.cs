@@ -628,8 +628,8 @@ namespace IntegrationTests
 			Assert.That(ModuleStack.All["200"].Owner.Name, Is.EqualTo("2"));
 			Assert.That(ModuleStack.All.ContainsKey("207"), Is.True);
 			Assert.That(ModuleStack.All["207"].Quantity, Is.EqualTo(4));
-			Assert.That(ModuleStack.All["116"].ResearchPoints, Is.EqualTo(0),
-				"Gelvaren library 116 did not accumulate research points during the Luna contract quarter");
+			Assert.That(ModuleStack.All["116"].ResearchPoints, Is.EqualTo(11),
+				"Sydney lab 116 accumulates tag-repair research once wnplnt grant restores regional power");
 		}
 
 		[Test]
@@ -726,6 +726,7 @@ namespace IntegrationTests
 			ordersReader.LoadOrders(Path.Combine(this.testDir, "orders.3.2.txt"), false);
 			ordersReader.LoadOrders(Path.Combine(this.testDir, "orders.3.3.txt"), false);
 
+			this.game.ExecuteBetweenTurnOrders();
 			this.game.Execute();
 
 			Assert.That(Contract.All.Count, Is.EqualTo(0), "researching the wreck should complete the Luna contract");
@@ -779,8 +780,18 @@ namespace IntegrationTests
 			int[] hitLocations = { 50, 150, 250, 350, 450 };
 			for (int i = 0; i < 2000; i++)
 			{
-				Sequence.Ints.Push(hitLocations[i % hitLocations.Length]);
-				Sequence.Ints.Push(1);
+				// After 250/251 and forty identifier rolls, lab 116 week-1 tag repair needs
+				// breakthrough roll 0 then preference roll <= 50 (see TResearch push order).
+				if (i == 1998)
+				{
+					Sequence.Ints.Push(10);
+					Sequence.Ints.Push(0);
+				}
+				else
+				{
+					Sequence.Ints.Push(hitLocations[i % hitLocations.Length]);
+					Sequence.Ints.Push(1);
+				}
 			}
 			for (int i = 0; i < 40; i++)
 			{
@@ -795,6 +806,7 @@ namespace IntegrationTests
 			ordersReader.LoadOrders(Path.Combine(this.testDir, "orders.4.2.txt"), false);
 			ordersReader.LoadOrders(Path.Combine(this.testDir, "orders.4.3.txt"), false);
 
+			this.game.ExecuteBetweenTurnOrders();
 			this.game.Execute();
 
 			Assert.That(ModuleStack.All["200"].Owner.Name, Is.EqualTo("2"), "do not re-claim the wreck");
