@@ -1532,6 +1532,14 @@ public static partial class OrderDraftQuality
 
         }
 
+        if (!UsesGrantBootstrapSyntax(orderText))
+
+        {
+
+            return violations;
+
+        }
+
 
 
         if (!Regex.IsMatch(orderText, @"grant\s+technology\s+armcbt\b", RegexOptions.IgnoreCase))
@@ -1754,6 +1762,14 @@ public static partial class OrderDraftQuality
 
         var violations = new List<string>();
 
+        if (!UsesGrantBootstrapSyntax(orderText))
+
+        {
+
+            return violations;
+
+        }
+
         foreach (var block in ParseModuleStackBlocks(orderText))
 
         {
@@ -1893,6 +1909,14 @@ public static partial class OrderDraftQuality
         var violations = new List<string>();
 
         if (!ReportStackCatalog.GrantUsesWindPowerPlant(reportText))
+
+        {
+
+            return violations;
+
+        }
+
+        if (!UsesGrantBootstrapSyntax(orderText))
 
         {
 
@@ -2082,6 +2106,10 @@ public static partial class OrderDraftQuality
 
 
 
+    /// GRANT bootstrap rules apply to player-agent drafts that already use bank-funded GRANT lines.
+    private static bool UsesGrantBootstrapSyntax(string orderText) =>
+        Regex.IsMatch(orderText, @"\bgrant\s+(technology|item)\b", RegexOptions.IgnoreCase);
+
     public static IReadOnlyList<string> DescribeEconomicPersonaViolations(string orderText, string? reportText = null)
 
     {
@@ -2089,6 +2117,14 @@ public static partial class OrderDraftQuality
         var violations = new List<string>();
 
         if (!EconomicBootstrapPlan(orderText))
+
+        {
+
+            return violations;
+
+        }
+
+        if (!UsesGrantBootstrapSyntax(orderText))
 
         {
 
@@ -2201,6 +2237,14 @@ public static partial class OrderDraftQuality
         var violations = new List<string>();
 
         if (!ResearchBootstrapPlan(orderText))
+
+        {
+
+            return violations;
+
+        }
+
+        if (!UsesGrantBootstrapSyntax(orderText))
 
         {
 
