@@ -337,21 +337,18 @@
 					</modulestack>
 					<modulestack name="000026" name-en="Gelvaren complex" type="city" quantity="1" faction="3">
 						<upkeep type="food" quantity="100" />
-						<upkeep type="cash" quantity="860" />
+						<upkeep type="cash" quantity="850" />
 						<buying item="food" quantity="100" price="1" />
 						<selling item="food" quantity="25" price="5" />
 						<selling item="terran" quantity="10" price="50" />
-						<event week="1" description="started recruitment of terran, 13 weeks to complete." />
 						<event week="1" description="given 1000 cash [cash] to Gelvaren Headquarters [000018]." />
 						<event week="1" description="given 10 terrans [terran] to Gelvaren Headquarters [000018]." />
-						<event week="13" description="produced 10 terrans [terran]." />
-						<event week="13" description="given 10 terrans [terran] to Gelvaren Headquarters [000018]." />
 						<modulestack name="000018" name-en="Gelvaren Headquarters" type="corphq" quantity="1" faction="3">
-							<itemstack type="terran" quantity="29" />
+							<itemstack type="terran" quantity="19" />
 							<itemstack type="cash" quantity="958" />
-							<upkeep type="cash" quantity="129" />
+							<upkeep type="cash" quantity="119" />
 							<buying item="terran" quantity="all" price="any" />
-							<effect duration="1" type="training-officer" race="terran" officer="107" officer-parent="000018" />
+							<effect duration="2" type="training-officer" race="terran" officer="107" officer-parent="000018" />
 							<event week="1" description="got 1000 cash [cash] from Gelvaren complex [000026]." />
 							<event week="1" description="got 10 terrans [terran] from Gelvaren complex [000026]." />
 							<event week="4" description="given 16 terrans [terran] to peaceful scout [108]." />
@@ -364,7 +361,7 @@
 							<event week="10" description="TRAIN failed: Gelvaren Headquarters [000018] has not enough crew to operate - 20 required, 19 available." />
 							<event week="11" description="TRAIN failed: Gelvaren Headquarters [000018] has not enough crew to operate - 20 required, 19 available." />
 							<event week="12" description="TRAIN failed: Gelvaren Headquarters [000018] has not enough crew to operate - 20 required, 19 available." />
-							<event week="13" description="got 10 terrans [terran] from Gelvaren complex [000026]." />
+							<event week="13" description="TRAIN failed: Gelvaren Headquarters [000018] has not enough crew to operate - 20 required, 19 available." />
 						</modulestack>
 						<modulestack name="000019" type="cargob" quantity="1" faction="3">
 							<itemstack type="food" quantity="1088" />
@@ -482,6 +479,23 @@
 							<event week="13" description="consumed 4 units of iron [iron] to produce tanks [tanks] module." />
 						</modulestack>
 						<modulestack name="000025" type="barrck" quantity="1" faction="3">
+							<person name="000002" name-en="Gelvaren CEO" race="terran" faction="3">
+								<upkeep type="cash" quantity="10" />
+								<event week="1" description="stacked under military barrack [000025]." />
+								<event week="1" description="TRAIN failed: skill armor platoon leader [arpldr] is not known to the faction (research a technology that grants it)." />
+								<event week="2" description="TRAIN failed: skill armor platoon leader [arpldr] is not known to the faction (research a technology that grants it)." />
+								<event week="3" description="TRAIN failed: skill armor platoon leader [arpldr] is not known to the faction (research a technology that grants it)." />
+								<event week="4" description="TRAIN failed: skill armor platoon leader [arpldr] is not known to the faction (research a technology that grants it)." />
+								<event week="5" description="TRAIN failed: skill armor platoon leader [arpldr] is not known to the faction (research a technology that grants it)." />
+								<event week="6" description="TRAIN failed: skill armor platoon leader [arpldr] is not known to the faction (research a technology that grants it)." />
+								<event week="7" description="TRAIN failed: skill armor platoon leader [arpldr] is not known to the faction (research a technology that grants it)." />
+								<event week="8" description="TRAIN failed: skill armor platoon leader [arpldr] is not known to the faction (research a technology that grants it)." />
+								<event week="9" description="TRAIN failed: skill armor platoon leader [arpldr] is not known to the faction (research a technology that grants it)." />
+								<event week="10" description="TRAIN failed: skill armor platoon leader [arpldr] is not known to the faction (research a technology that grants it)." />
+								<event week="11" description="TRAIN failed: skill armor platoon leader [arpldr] is not known to the faction (research a technology that grants it)." />
+								<event week="12" description="TRAIN failed: skill armor platoon leader [arpldr] is not known to the faction (research a technology that grants it)." />
+								<event week="13" description="TRAIN failed: skill armor platoon leader [arpldr] is not known to the faction (research a technology that grants it)." />
+							</person>
 							<technology name="frminf" name-en="form infantry battalion" />
 							<itemstack type="terran" quantity="10" />
 							<upkeep type="cash" quantity="268" />
@@ -489,16 +503,7 @@
 							<event week="1" description="consumed unit of iron [iron] to produce infantry battalion [inftry] module." />
 							<event week="13" description="produced infantry battalion [inftry] into infantry battalion [110]." />
 							<modulestack name="109" type="tanks" quantity="2" faction="3">
-								<person name="000002" name-en="Gelvaren CEO" race="terran" faction="3">
-									<skill name="arpldr" experience="1" />
-									<upkeep type="cash" quantity="10" />
-									<event week="1" description="stacked under military barrack [000025]." />
-									<event week="1" description="started training of armor platoon leader [arpldr] skill." />
-									<event week="4" description="trained armor platoon leader [arpldr] skill." />
-									<event week="5" description="saw tanks [109] in Southern Hemisphere [R00003] (1,0)." />
-									<event week="5" description="stacked under tanks [109]." />
-								</person>
-								<upkeep type="cash" quantity="58" />
+								<upkeep type="cash" quantity="48" />
 								<event week="5" description="formed by factory [000023] with tanks [tanks]." />
 								<event week="8" description="received tanks [tanks] produced by factory [000023]." />
 								<event week="8" description="stacked under military barrack [000025]." />
@@ -533,9 +538,6 @@
 		</order>
 		<order subject="modulestack" name="000016" repeat="unlimited">
 			<use technology="hcdril" />
-		</order>
-		<order subject="modulestack" name="000026" repeat="unlimited">
-			<produce produce-type="item" item="terran" />
 		</order>
 		<order subject="modulestack" name="000018">
 			<train>

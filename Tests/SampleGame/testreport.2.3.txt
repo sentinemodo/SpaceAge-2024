@@ -5,7 +5,7 @@ Content-Disposition: attachment
 SpaceAge report for Gelvaren [3].
 Turn 2, Year 2156, April 1.
 
-SpaceAge Engine Version: 0.8.001.
+SpaceAge Engine Version: 0.8.002.
 
 Bank report:
   Bank account balance: 10000.
@@ -162,30 +162,26 @@ Galaxy report:
       by NPC [1].
       size: 2000.
   + Gelvaren complex [000026], city [city], immobile.
-    size: 25000, mass: 6814, capacity: 15000/10180, energy: 80/75 (10),
-    crew: 80/68, upkeep: 100 units of food [food], 860 (0) cash [cash],
-    consume: 200 (0) units of food [food], 200 (0) units of terran
+    size: 25000, mass: 6770, capacity: 15000/10180, energy: 80/75 (10),
+    crew: 80/58, upkeep: 100 units of food [food], 850 (0) cash [cash],
+    consume: 190 (0) units of food [food], 190 (0) units of terran
     breathing gas mixture [terair].
     events:
-      week 1: started recruitment of terran, 13 weeks to complete.
       week 1: given 1000 cash [cash] to Gelvaren Headquarters [000018].
       week 1: given 10 terrans [terran] to Gelvaren Headquarters
       [000018].
-      week 13: produced 10 terrans [terran].
-      week 13: given 10 terrans [terran] to Gelvaren Headquarters
-      [000018].
     + Gelvaren Headquarters [000018], corporate headquarters [corphq],
-      immobile.
-      size: 1000, mass: 1116 (1000), capacity: 750/116, energy: 10,
-      crew: 20/29, upkeep: 129 (100) cash [cash], consume: 29 (0) units
-      of food [food], 29 (0) units of terran breathing gas mixture
+      disabled, immobile.
+      size: 1000, mass: 1076 (1000), capacity: 750/76, energy: 10, crew:
+      20/19, upkeep: 119 (100) cash [cash], consume: 19 (0) units of
+      food [food], 19 (0) units of terran breathing gas mixture
       [terair].
-      items: 29 terrans [terran] (size: 116, mass: 116, upkeep: 29 cash
-      [cash], consume: 29 units of food [food], 29 units of terran
+      items: 19 terrans [terran] (size: 76, mass: 76, upkeep: 19 cash
+      [cash], consume: 19 units of food [food], 19 units of terran
       breathing gas mixture [terair]), 958 cash [cash].
       effects:
         training terran [terran] officer for Gelvaren Headquarters
-        [000018], 1 weeks to complete.
+        [000018], 2 weeks to complete.
       events:
         week 1: got 1000 cash [cash] from Gelvaren complex [000026].
         week 1: got 10 terrans [terran] from Gelvaren complex [000026].
@@ -207,7 +203,8 @@ Galaxy report:
         enough crew to operate - 20 required, 19 available.
         week 12: TRAIN failed: Gelvaren Headquarters [000018] has not
         enough crew to operate - 20 required, 19 available.
-        week 13: got 10 terrans [terran] from Gelvaren complex [000026].
+        week 13: TRAIN failed: Gelvaren Headquarters [000018] has not
+        enough crew to operate - 20 required, 19 available.
     + small cargo bay [000019], small cargo bay [cargob], immobile.
       size: 2000, mass: 1416 (200), capacity: 1800/1183, upkeep: 32 (30)
       cash [cash], consume: 2 (0) units of food [food], 2 (0) units of
@@ -373,8 +370,8 @@ Galaxy report:
         week 13: consumed 4 units of iron [iron] to produce tanks
         [tanks] module.
     + military barrack [000025], military barrack [barrck], immobile.
-      size: 2000, mass: 1024 (500), capacity: 1800/520, energy: 5, crew:
-      34/11 (2/10), upkeep: 268 (200) cash [cash], consume: 43 (0) units
+      size: 2000, mass: 1024 (500), capacity: 1800/524, energy: 5, crew:
+      34/11 (2/11), upkeep: 268 (200) cash [cash], consume: 43 (0) units
       of food [food], 43 (0) units of terran breathing gas mixture
       [terair].
       technologies: form infantry battalion [frminf].
@@ -387,10 +384,55 @@ Galaxy report:
         battalion [inftry] module.
         week 13: produced infantry battalion [inftry] into infantry
         battalion [110].
+      + Gelvaren CEO [000002], terran [terran].
+        size: 4, mass: 4, capacity: 3/0, upkeep: 10 cash [cash],
+        consume: unit of food [food], unit of terran breathing gas
+        mixture [terair].
+        events:
+          week 1: stacked under military barrack [000025].
+          week 1: TRAIN failed: skill armor platoon leader [arpldr] is
+          not known to the faction (research a technology that grants
+          it).
+          week 2: TRAIN failed: skill armor platoon leader [arpldr] is
+          not known to the faction (research a technology that grants
+          it).
+          week 3: TRAIN failed: skill armor platoon leader [arpldr] is
+          not known to the faction (research a technology that grants
+          it).
+          week 4: TRAIN failed: skill armor platoon leader [arpldr] is
+          not known to the faction (research a technology that grants
+          it).
+          week 5: TRAIN failed: skill armor platoon leader [arpldr] is
+          not known to the faction (research a technology that grants
+          it).
+          week 6: TRAIN failed: skill armor platoon leader [arpldr] is
+          not known to the faction (research a technology that grants
+          it).
+          week 7: TRAIN failed: skill armor platoon leader [arpldr] is
+          not known to the faction (research a technology that grants
+          it).
+          week 8: TRAIN failed: skill armor platoon leader [arpldr] is
+          not known to the faction (research a technology that grants
+          it).
+          week 9: TRAIN failed: skill armor platoon leader [arpldr] is
+          not known to the faction (research a technology that grants
+          it).
+          week 10: TRAIN failed: skill armor platoon leader [arpldr] is
+          not known to the faction (research a technology that grants
+          it).
+          week 11: TRAIN failed: skill armor platoon leader [arpldr] is
+          not known to the faction (research a technology that grants
+          it).
+          week 12: TRAIN failed: skill armor platoon leader [arpldr] is
+          not known to the faction (research a technology that grants
+          it).
+          week 13: TRAIN failed: skill armor platoon leader [arpldr] is
+          not known to the faction (research a technology that grants
+          it).
       + tanks [109], 2 tanks [tanks], disabled, immobile.
-        size: 480, mass: 484 (480), capacity: 400/4, crew: 32/1, upkeep:
-        58 (48) cash [cash], consume: 33 (32) units of food [food], 33
-        (32) units of terran breathing gas mixture [terair].
+        size: 480, mass: 480 (480), capacity: 400/0, crew: 32/0, upkeep:
+        48 cash [cash], consume: 32 units of food [food], 32 units of
+        terran breathing gas mixture [terair].
         movement speed: 0.5 on ground.
         fuel requirements: 8 units of oil [oil] per 13 weeks.
         events:
@@ -398,19 +440,6 @@ Galaxy report:
           week 8: received tanks [tanks] produced by factory [000023].
           week 8: stacked under military barrack [000025].
           week 12: received tanks [tanks] produced by factory [000023].
-        + Gelvaren CEO [000002], terran [terran].
-          size: 4, mass: 4, capacity: 3/0, upkeep: 10 cash [cash],
-          consume: unit of food [food], unit of terran breathing gas
-          mixture [terair].
-          skills: armor platoon leader [arpldr].
-          events:
-            week 1: stacked under military barrack [000025].
-            week 1: started training of armor platoon leader [arpldr]
-            skill.
-            week 4: trained armor platoon leader [arpldr] skill.
-            week 5: saw tanks [109] in Southern Hemisphere [R00003]
-            (1,0).
-            week 5: stacked under tanks [109].
     + infantry battalion [110], infantry battalion [inftry], immobile.
       size: 500, mass: 500 (500), capacity: 300/0, upkeep: 5 cash
       [cash], consume: 100 units of food [food], 100 units of terran
@@ -431,10 +460,10 @@ Orders Template:
 #faction 3 "abccb"
 #modulestack 000018
 ; + Gelvaren Headquarters [000018], corporate headquarters [corphq],
-;   immobile.
-; items: 29 terrans [terran], 958 cash [cash].
+;   disabled, immobile.
+; items: 19 terrans [terran], 958 cash [cash].
 ; effects:
-;   training terran [terran] officer for Gelvaren Headquarters [000018], 1
+;   training terran [terran] officer for Gelvaren Headquarters [000018], 2
 ;   weeks to complete.
 train terran officer as new107
 @get all cash from 000026
@@ -470,6 +499,7 @@ train terran officer as new107
 ; effects:
 ;   producing tanks [tanks] for military barrack [000025] into tanks
 ;   [109], 3 weeks to complete.
+use armcbt as 109 for 000025
 
 #modulestack 000025
 ; + military barrack [000025], military barrack [barrck], immobile.
@@ -478,7 +508,6 @@ train terran officer as new107
 
 #modulestack 000026
 ; + Gelvaren complex [000026], city [city], immobile.
-@produce terran
 
 #modulestack 108
 ; + peaceful scout [108], tanks [tanks].
@@ -495,7 +524,9 @@ train terran officer as new107
 
 #person 000002
 ; + Gelvaren CEO [000002], terran [terran].
-; skills: armor platoon leader [arpldr].
+train skill arpldr
+-see 109
+--stack 109
 
 #person 107
 ; + unformed officer [107].

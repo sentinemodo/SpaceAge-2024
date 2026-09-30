@@ -220,9 +220,6 @@
 		<order subject="modulestack" name="000017" repeat="10">
 			<use technology="shtlas" receiver="100" receiver-parent="000017" />
 		</order>
-		<order subject="modulestack" name="000026" repeat="unlimited">
-			<produce produce-type="item" item="terran" />
-		</order>
 		<order subject="modulestack" name="000018">
 			<train>
 				<officer name="107" race="terran" />
