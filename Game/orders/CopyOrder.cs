@@ -114,6 +114,16 @@ namespace SpaceAge
 				return;
 			}
 
+			if (this.Technology == null)
+			{
+				this.Transferer.EventReports.Add(
+					week,
+					"COPY failed. Technology is not specified.");
+				this.FailedToExecute = true;
+				base.Execute(week);
+				return;
+			}
+
 			if (!this.Transferer.Technologies.Contains(this.Technology.Name))
 			{
 				this.Transferer.EventReports.Add(
