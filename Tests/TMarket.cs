@@ -1809,8 +1809,8 @@ namespace UnitTests
 				File.Delete(absentFile);
 			}
 
-			ModuleStack remote = this.CreateInfantry("i10009", Faction.All["1"], Region.All["R10009"], 1);
-			Contract remoteContract = this.Publish("CT1009", "R10009", remote.Name);
+			ModuleStack remote = this.CreateInfantry("i10009", Faction.All["1"], Region.All["R00010"], 1);
+			Contract remoteContract = this.Publish("CT1009", "R00010", remote.Name);
 			remoteContract.CreatedThisSession = true;
 			Contract.All.WriteAnnouncements(turnDir, this.game);
 

@@ -16,11 +16,6 @@ namespace SpaceAge
 				return false;
 			}
 
-			if (anchorRegion.ModuleStacks.Contains(faction))
-			{
-				return true;
-			}
-
 			IRegionHolder holder = anchorRegion.RegionHolder;
 			Planet planet = holder as Planet;
 			if (planet != null)
