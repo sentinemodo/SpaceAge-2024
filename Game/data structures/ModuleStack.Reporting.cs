@@ -346,6 +346,10 @@ namespace SpaceAge
 			// submodulestacks
 			foreach (ModuleStack moduleStack in this.ModuleStacks.Values) 
 			{
+				if (!moduleStack.Visible(faction))
+				{
+					continue;
+				}
 				reportLines.Add(moduleStack.Report(faction, level + 1));
 			}
 			return reportLines.IndentedLines;
@@ -353,33 +357,7 @@ namespace SpaceAge
 
 		public bool Visible(Faction faction)
 		{
-            if (faction == null)
-            {
-                return true;
-            }
-            if (faction.FullName == "NPC")
-            {
-                return true;
-            }
-			if (this.Owner == faction)
-			{
-				return true;
-			}
-			if (this.Size <= 0)
-			{
-				return false;
-			}
-			if (!this.Location.HasPresence(faction))
-			{
-				return false;
-			}
-			if (this.IsUnderwaterStealthy
-				&& !this.Location.HasUnderwaterPresence(faction)
-				&& !this.HasObserverSpaceshipOnOrbit(faction))
-			{
-				return false;
-			}
-			return true;
+			return StackVisibility.IsVisibleToFaction(this, faction);
 		}
 
 		public bool IsUnderwaterStealthy

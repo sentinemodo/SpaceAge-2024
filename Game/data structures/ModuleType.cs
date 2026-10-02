@@ -12,6 +12,7 @@ namespace SpaceAge
 			: base(name) 
 		{			
 			ModuleType.All.Add(this.name, this);
+			this.Detection = 1;
 		}
 
 		protected string fullNameMultiple = string.Empty;
@@ -302,6 +303,10 @@ namespace SpaceAge
 		}
 
 		public int NominalValue { get; set; }
+
+		public int Detection { get; set; }
+
+		public int Stealth { get; set; }
 
 		public bool IsShuttleUnit
 		{

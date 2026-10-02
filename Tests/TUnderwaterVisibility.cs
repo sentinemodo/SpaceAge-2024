@@ -52,6 +52,9 @@ namespace UnitTests
 			this.trucksType.Size = 50;
 			this.trucksType.Underwater = false;
 			this.trucksType.Group = EModuleTypesGroup.vehicle;
+			this.trucksType.Detection = 1;
+
+			this.uwtrukType.Detection = 1;
 
 			this.dmdctyType = new ModuleType("dmdcty");
 			this.dmdctyType.Size = 100;

@@ -26,6 +26,8 @@ namespace SpaceAge
 		public int Level { get; set; }
 		public int UseTime { get; set; }
 
+		public int DetectionBonus { get; set; }
+
 		// Research point cost for a breakthrough. Defaults to a per-level value
 		// (see Research.DefaultCostForLevel) unless explicitly overridden in the datafile.
 		private int? costOverride = null;

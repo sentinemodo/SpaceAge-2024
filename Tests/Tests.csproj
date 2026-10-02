@@ -83,8 +83,10 @@
     <Compile Include="TMarket.cs" />
     <Compile Include="TRegions.cs" />
     <Compile Include="TReport.cs" />
+    <Compile Include="TMobLabReport.cs" />
     <Compile Include="TNamedObject.cs" />
     <Compile Include="TModuleStack.cs" />
+    <Compile Include="TStackVisibility.cs" />
     <Compile Include="TUnderwaterVisibility.cs" />
     <Compile Include="TOrder.cs" />
     <Compile Include="TActivate.cs" />

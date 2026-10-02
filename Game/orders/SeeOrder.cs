@@ -32,6 +32,20 @@ namespace SpaceAge
             set { this.seeType = value; }
         }
 
+		private ESeeScope seeScope = ESeeScope.CurrentLocation;
+		public ESeeScope SeeScope
+		{
+			get { return this.seeScope; }
+			set { this.seeScope = value; }
+		}
+
+		private Region atRegion = null;
+		public Region AtRegion
+		{
+			get { return this.atRegion; }
+			set { this.atRegion = value; }
+		}
+
         private NamedObject lookedFor = null;
         public NamedObject LookedFor
         {
@@ -48,11 +62,6 @@ namespace SpaceAge
 
 		public override void Parse(string command)
 		{
-			//// check if can see modulestack
-			//testcommands.Add("see new1");
-			//// check if can see person
-			//testcommands.Add("see new1 person");
-
 			string token;
 			if (string.IsNullOrEmpty(command.Trim()))
 			{
@@ -78,26 +87,62 @@ namespace SpaceAge
                         this.lookedForName = token;
                         this.seeType = ESeeType.Person;
                         this.lookedFor = Person.All.GetOrCreateNewPerson(this.Observer.Owner, this.lookedForName);
+						this.parseSeeScope(ref command);
                     }
                 }
                 else
                 {
                     this.lookedForName = token;
-                    string remaining = command;
-                    string suffix = LineParser.GetToken(ref remaining);
+                    string afterName = command;
+                    string suffix = LineParser.GetToken(ref afterName);
                     if (suffix == "person")
                     {
-                        command = remaining;
                         this.seeType = ESeeType.Person;
                         this.lookedFor = Person.All.GetOrCreateNewPerson(this.Observer.Owner, this.lookedForName);
+						this.parseSeeScope(ref afterName);
                     }
                     else
                     {
                         this.seeType = ESeeType.Modulestack; 
                         this.lookedFor = ModuleStack.All.GetOrCreateNewModuleStack(this.Observer.Owner, this.lookedForName);
+						string scopePart = afterName;
+						if (!string.IsNullOrEmpty(suffix))
+						{
+							scopePart = string.IsNullOrEmpty(afterName)
+								? suffix
+								: string.Concat(suffix, " ", afterName);
+						}
+						this.parseSeeScope(ref scopePart);
                     }
                 }
             }
+		}
+
+		private void parseSeeScope(ref string command)
+		{
+			string token = LineParser.GetToken(ref command);
+			if (string.IsNullOrEmpty(token))
+			{
+				this.seeScope = ESeeScope.CurrentLocation;
+				return;
+			}
+			if (string.Equals(token, "ANYWHERE", StringComparison.OrdinalIgnoreCase))
+			{
+				this.seeScope = ESeeScope.Anywhere;
+				return;
+			}
+			if (string.Equals(token, "AT", StringComparison.OrdinalIgnoreCase))
+			{
+				string regionName = LineParser.GetToken(ref command);
+				if (string.IsNullOrEmpty(regionName) || !Region.All.ContainsKey(regionName))
+				{
+					throw new Exception("Bad syntax region id expected after AT");
+				}
+				this.seeScope = ESeeScope.AtRegion;
+				this.atRegion = Region.All[regionName];
+				return;
+			}
+			throw new Exception("Bad syntax for SEE scope");
 		}
 
         public override void LoadXml(XmlElement elOrder)
@@ -121,6 +166,24 @@ namespace SpaceAge
                 default:
                     throw new Exception("Unknown type for SEE");
             }
+			if (string.Equals(elSee.GetAttribute("anywhere"), "yes", StringComparison.OrdinalIgnoreCase))
+			{
+				this.seeScope = ESeeScope.Anywhere;
+			}
+			else if (elSee.HasAttribute("at-region"))
+			{
+				string regionName = elSee.GetAttribute("at-region");
+				if (!Region.All.ContainsKey(regionName))
+				{
+					throw new Exception("Unknown at-region for SEE");
+				}
+				this.seeScope = ESeeScope.AtRegion;
+				this.atRegion = Region.All[regionName];
+			}
+			else
+			{
+				this.seeScope = ESeeScope.CurrentLocation;
+			}
         }
 
 		public override XmlElement SaveXml_core(XmlDocument doc, string subject)
@@ -135,6 +198,14 @@ namespace SpaceAge
                 elSee.SetAttribute("see-type", "person");
                 elSee.SetAttribute("person", this.lookedFor.Name);
 			}
+			if (this.seeScope == ESeeScope.Anywhere)
+			{
+				elSee.SetAttribute("anywhere", "yes");
+			}
+			else if (this.seeScope == ESeeScope.AtRegion && this.atRegion != null)
+			{
+				elSee.SetAttribute("at-region", this.atRegion.Name);
+			}
 
             this.xmlElement.AppendChild(elSee);
 			return this.xmlElement;
@@ -143,8 +214,17 @@ namespace SpaceAge
         public override List<string> Report(Faction owner)
         {
             List<string> lines = new List<string>();
+			string scopeSuffix = string.Empty;
+			if (this.seeScope == ESeeScope.Anywhere)
+			{
+				scopeSuffix = " anywhere";
+			}
+			else if (this.seeScope == ESeeScope.AtRegion && this.atRegion != null)
+			{
+				scopeSuffix = string.Format(" at {0}", this.atRegion.Name);
+			}
             string line;
-            line = string.Format("{0}{1}see {2}",
+            line = string.Format("{0}{1}see {2}{3}",
 					this.Conditions,
 					(this.Repeat == 1) ? string.Empty : ((this.Repeat < 0) ? "@" : string.Concat(this.Repeat.ToString(), " ")),
 					(this.seeType == ESeeType.Modulestack) ? 
@@ -153,7 +233,8 @@ namespace SpaceAge
 							"new", this.LookedFor.Name) : 
 						string.Concat(((Person)this.LookedFor).IsFormed ? 
 							string.Empty : 
-							"new", this.LookedFor.Name, " person"));
+							"new", this.LookedFor.Name, " person"),
+					scopeSuffix);
             lines.Add(line);
             return lines;
 		}
@@ -162,41 +243,82 @@ namespace SpaceAge
 		{
 			this.Executed = false;
             NamedObject found = null;
-            if (this.Observer.Location != null)
+			ModuleStack observerStack = this.resolveObserverStack();
+            if (this.Observer.Location != null && observerStack != null)
             {
                 if (this.seeType == ESeeType.Modulestack)
                 {
-                    if (ModuleStack.All[this.Observer.Location, true].Contains(this.lookedFor.Name))
+					ModuleStack target = this.resolveModuleTarget();
+					if (target != null
+						&& StackVisibility.CanSeeModuleForSeeOrder(
+							observerStack,
+							target,
+							this.seeScope,
+							this.atRegion))
                     {
-                        found = this.lookedFor;
+                        found = target;
                         this.Executed = true;
                     }
                 } else if (this.seeType == ESeeType.Person)                
                 {
-                    if (Person.All[this.Observer.Location, true].Contains(this.lookedFor.Name))
+					Person target = this.resolvePersonTarget();
+					if (target != null
+						&& StackVisibility.CanSeePersonForSeeOrder(
+							observerStack,
+							target,
+							this.seeScope,
+							this.atRegion))
                     {
-                        found = this.lookedFor;
+                        found = target;
                         this.Executed = true;
                     }
                 }
             }
             if (this.Executed)
             {
+				Location reportLocation = found is ModuleStack
+					? ((ModuleStack)found).Location
+					: ((Person)found).Location;
                 this.Observer.EventReports.Add(
                     week,
                     string.Format("saw {0} in {1}.",
                         found.ReportName,
-                        this.Observer.Location.ReportName));
-            }
-            else
-            {
-                //this.Observer.EventReports.Add(
-                //    week,
-                //    string.Format("SEE failed: Didn't see {0} in {1}.",
-                //        this.lookedFor.ReportName,
-                //        this.Observer.Location.ReportName));
+                        reportLocation != null ? reportLocation.ReportName : this.Observer.Location.ReportName));
             }
 			base.Execute(week);
+		}
+
+		private ModuleStack resolveModuleTarget()
+		{
+			if (ModuleStack.All.ContainsKey(this.lookedForName))
+			{
+				return ModuleStack.All[this.lookedForName];
+			}
+			return this.LookedFor as ModuleStack;
+		}
+
+		private Person resolvePersonTarget()
+		{
+			if (Person.All.ContainsKey(this.lookedForName))
+			{
+				return Person.All[this.lookedForName];
+			}
+			return this.LookedFor as Person;
+		}
+
+		private ModuleStack resolveObserverStack()
+		{
+			ModuleStack stack = this.Observer as ModuleStack;
+			if (stack != null)
+			{
+			 return stack;
+			}
+			Person person = this.Observer as Person;
+			if (person != null && person.Parent is ModuleStack)
+			{
+				return (ModuleStack)person.Parent;
+			}
+			return null;
 		}
 	}
 }

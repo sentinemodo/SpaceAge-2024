@@ -510,6 +510,8 @@ namespace SpaceAge
 						moduleType.Damage = this.dataFile.XMLAssignInteger(el.GetAttribute("damage"), 0);
 						moduleType.Initiative = this.dataFile.XMLAssignInteger(el.GetAttribute("initiative"), 0);
 						moduleType.NominalValue = this.dataFile.XMLAssignInteger(el.GetAttribute("value"), 0);
+						moduleType.Detection = this.dataFile.XMLAssignInteger(el.GetAttribute("detection"), 1);
+						moduleType.Stealth = this.dataFile.XMLAssignInteger(el.GetAttribute("stealth"), 0);
 						moduleType.WeaponGroup = el.GetAttribute("weapon-group");
 						moduleType.Resists = el.GetAttribute("resists");
 						moduleType.ArmorModule = el.GetAttribute("armor-module") == "true";

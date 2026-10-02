@@ -632,7 +632,7 @@ Condition probe: succeeds if recursive cargo / nested module count / person pres
 **Syntax:**
 
 - `PRESS [<planet-id>|<moon-id>] TITLE "<title>" [FLAVOUR|FLAVOR "<text>"]`
-- Optional scope: first token may be a planet or moon id (`P00001`, `M00003`, …). When set, only factions with stacks on that body see the release in **Press releases:** / galaxy body sections / `announce.*`.
+- Optional scope: first token may be a planet or moon id (`P00001`, `M00003`, …). When set, only factions with stacks on that body see the release in the faction report **Press releases:** block and in `announce.*`.
 - Without scope: global press (all factions).
 - Bare tokens after scope: first unused token is the title, the next is flavour. Title or flavour is required.
 
@@ -640,7 +640,7 @@ Condition probe: succeeds if recursive cargo / nested module count / person pres
 
 Creates a `PressRelease` and reports `issued press release {title}.` on the issuer. If the subject is not a faction, Execute does nothing. `/no-turn` writes scoped releases into `announce.{turn}.{faction}.txt` only for factions present on that body (`Contract.All.WriteAnnouncements`).
 
-**Contract completion press (automatic):** when a contract completes, UN (issuer faction **1**) posts a scoped press release on the contract location's planet or moon — title `{Interest} closes {contract title}`, flavour cites `{Interest}`, contract id, region, and body name. Visible in **Press releases:** on that body and in the faction report header when the reader has stacks there.
+**Contract completion press (automatic):** when a contract completes, UN (issuer faction **1**) posts a scoped press release on the contract location's planet or moon — title `{Interest} closes {contract title}`, flavour cites `{Interest}`, contract id, region, and body name. Visible in the faction report **Press releases:** block when the reader has stacks on that body.
 
 ### RUMOR
 
@@ -659,13 +659,15 @@ Creates an anonymous publication scoped to `<planet-id>`. The issuer is not show
 
 **Syntax:**
 
-- `SEE <stack-id|newN>`
-- `SEE PERSON <person-id|newN>`
-- `SEE <person-id|newN> PERSON`
+- `SEE <stack-id|newN> [AT <region-id>|ANYWHERE]`
+- `SEE PERSON <person-id|newN> [AT <region-id>|ANYWHERE]`
+- `SEE <person-id|newN> PERSON [AT <region-id>|ANYWHERE]`
 
 **Subject:** holder.
 
-Succeeds if that stack or person is at the observer’s location. Both person word orders parse (`person` must be lowercase). Leftover/template (`SeeOrder.Report`) prints `see <id> person` (or `see newN person` if unformed). XML is unchanged: `see-type="person"` plus `person="<id>"` on the `<see>` element (`LoadXml` uses `GetOrCreateNewPerson`).
+Succeeds when **`detection > stealth`** for the observer stack (`StackVisibility`). Default: target in the observer’s **current location** (region or orbit). `AT <region-id>`: target in that region. `ANYWHERE`: target anywhere the observer’s detection reaches (regional/system stealth still applies). Unformed observer stacks never detect. Spec: [`play/designer/stack-visibility.md`](../designer/stack-visibility.md).
+
+Both person word orders parse (`person` must be lowercase). Leftover/template (`SeeOrder.Report`) prints `see <id> person` (or `see newN person` if unformed). XML today: `see-type="person"` plus `person="<id>"` on the `<see>` element; extended attrs `at-region` / `anywhere` when visibility ships.
 
 ### SELL
 

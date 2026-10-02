@@ -5,7 +5,7 @@ Content-Disposition: attachment
 SpaceAge report for Arbor First [12].
 Turn 1, Year 2156, January 1.
 
-SpaceAge Engine Version: 0.8.002.
+SpaceAge Engine Version: 0.8.003.
 
 Bank report:
   Bank account balance: 4000.

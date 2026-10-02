@@ -5,7 +5,7 @@ Content-Disposition: attachment
 SpaceAge report for Caste Prime [2].
 Turn 36, Year 2165, September 1.
 
-SpaceAge Engine Version: 0.8.002.
+SpaceAge Engine Version: 0.8.003.
 
 Bank report:
   Bank account balance: 10000.

@@ -5,7 +5,7 @@ Content-Disposition: attachment
 SpaceAge report for NPC [1].
 Turn 3, Year 2156, July 1.
 
-SpaceAge Engine Version: 0.8.002.
+SpaceAge Engine Version: 0.8.003.
 
 
 Events this quarter:

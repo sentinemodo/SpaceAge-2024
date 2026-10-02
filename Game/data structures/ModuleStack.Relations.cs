@@ -587,6 +587,11 @@ namespace SpaceAge
 			}
 		}
 
+		public int NestDepth
+		{
+			get { return StackVisibility.NestDepth(this); }
+		}
+
 		public ModuleStack RootModuleStack
 		{
 			get

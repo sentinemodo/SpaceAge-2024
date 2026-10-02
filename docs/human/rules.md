@@ -337,7 +337,7 @@ CAPTURE REGION forces move into region and declare unit preventing entry ENEMY.
 
 **RUMOR** — `RUMOR [planet|moon] TITLE "<t>" [FLAVOUR "<f>"]`. Subject: **#faction**. Between-turn OK. Issue a rumor message that will be added to the report (and immediatelly issued if submitted between turns). The rumore will be visible to all present on the planet/moon. The sender of the rumor **will not indicated.**
 
-**SEE** — `SEE <stack|newN>` | `SEE PERSON <id>` | `SEE <id> PERSON` — a conditional order. execute when modulestack can see the target unit. May be limited by stealth technologies. You can always see your own units in the region regardless of visibility factors.
+**SEE** — `SEE <stack|newN> [AT <region-id>|ANYWHERE]` | `SEE PERSON <id> [AT …|ANYWHERE]` | `SEE <id> PERSON [AT …|ANYWHERE]` — a conditional order. Executes when the issuing modulestack’s faction **detects** the target (stealth vs detection; nested stacks harder to see). Default: target in the **observer’s current region**. `AT <region-id>`: look for the target in that region (same body). `ANYWHERE`: succeed if the observer’s detection range reaches the target anywhere on the map. May be limited by stealth technologies. You can always see your own units in the region regardless of visibility factors.
 
 ```
 #modulestack <producer>
@@ -359,7 +359,11 @@ SEE <transporter>
 |Energy|Integer **priority** for regional power shedding when the region lacks energy (see [Maintenance, upkeep and sharing](#maintenance-upkeep-and-sharing)). Higher number = shut down first. Default depends on module group.|
 |Hold|Reserves a quantity of an item on the stack. **GET** from this stack cannot take that item below the reserve. `SET HOLD 0 <item-id>` clears it. On HQ with `@produce terran`, use e.g. `set hold 20 terran` so scouts do not drain crew.|
 
-**STACK** — `STACK <parent|newN>` | `STACK top` | `STACK out` — **`top`/`out` lowercase**. Nest the modulestack under different parent unit or eject them to the region. Unit must have sufficient capacity to accept the stacked unit size. Some units may only be stacked under specific type of modules, e.g. figther drones may only be stacked under drone bay if they are to participate in combat.
+**STACK** — `STACK <parent|newN>` | `STACK top` | `STACK out` — **`top`/`out` lowercase**. Nest the modulestack under different parent unit or eject them to the region. Unit must have sufficient capacity to accept the stacked unit size. 
+
+Stacking under units reduce stack visibility for other factions. e.g. standard orbital unit will detect all non-hidden units in region. but it will only report a town if units are stacked under one.
+
+Some units may only be stacked under specific type of modules, e.g. figther drones may only be stacked under drone bay if they are to participate in combat.
 
 **SYNCHRO** — `SYNCHRO <tag>` — rendezvous. Every live `SYNCHRO` with the same tag (any faction or unit; case-insensitive) must be ready in the same week before any of them execute. A single copy never fires. A further copy of the same tag holds the signal until it is ready too. When the last one is ready, all of them execute together and release orders waiting on them. `-synchro <tag>` signals after the parent finishes (after a `MOVE` arrives). `+synchro <tag>` makes the parent wait until the signal fires.
 
