@@ -110,7 +110,10 @@ namespace UnitTests
                 {
                     Console.WriteLine(reportLines[i]);
                 }
-                Assert.That(reportLines[i], Is.EqualTo(testLines[i]), "error in file " + generated + " in line " + i + ": " + reportLines[i]);
+                Assert.That(
+                    GoldenText.NormalizeLine(reportLines[i]),
+                    Is.EqualTo(GoldenText.NormalizeLine(testLines[i])),
+                    "error in file " + generated + " in line " + i + ": " + reportLines[i]);
             }
             if (maxLines == int.MaxValue)
             {

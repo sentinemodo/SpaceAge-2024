@@ -113,7 +113,9 @@ namespace UnitTests
 			}
 
 			string golden = File.ReadAllText(goldenPath, Encoding.UTF8);
-			Assert.That(output.Replace("\r\n", "\n"), Is.EqualTo(golden.Replace("\r\n", "\n")));
+			Assert.That(
+				GoldenText.NormalizeDocument(output),
+				Is.EqualTo(GoldenText.NormalizeDocument(golden)));
 		}
 
 		[Test]

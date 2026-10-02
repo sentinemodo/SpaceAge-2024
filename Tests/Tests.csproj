@@ -127,6 +127,7 @@
     <Compile Include="TDataFile.cs" />
     <Compile Include="TPoint2D.cs" />
     <Compile Include="SampleGame\TProgram.cs" />
+    <Compile Include="GoldenText.cs" />
     <Compile Include="TTest.cs" />
     <Compile Include="TTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
