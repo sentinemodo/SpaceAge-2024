@@ -798,11 +798,6 @@ Galaxy report:
         size: 4.
     - infantry battalion [110], infantry battalion [inftry], immobile, owned by Gelvaren [3].
       size: 500.
-
-Press releases:
-  Earth [P00001] at AU 1, ocean planet [ocean]: NPC [1] — Gelvaren closes CT0121.
-    NPC records Gelvaren's fulfillment of CT0121 at Southern Hemisphere on Earth [P00001] at AU 1,
-    ocean planet [ocean].
 ------------------------------------------------------------
   * Luna [P00001], rocky moon [rock] 0.02 AU from the planet.
 ------------------------------------------------------------
@@ -813,11 +808,6 @@ Press releases:
     Resources: 100 units of iron [iron], 100 units of silicium [silici], 100 units of titanium
     [titani], 100 units of uranium [uraniu], 100 units of copper [copper], 100 units of silicium
     [silici].
-
-Press releases:
-  Earth [P00001] at AU 1, ocean planet [ocean]: NPC [1] — Gelvaren closes CT0121.
-    NPC records Gelvaren's fulfillment of CT0121 at Southern Hemisphere on Earth [P00001] at AU 1,
-    ocean planet [ocean].
 
 
 Orders Template:

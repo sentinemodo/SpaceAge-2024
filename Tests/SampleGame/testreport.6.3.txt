@@ -6354,6 +6354,12 @@ Galaxy report:
   * Earth [P00001] at AU 1, ocean planet [ocean].
 ------------------------------------------------------------
   orbit [O00002], has atmosphere suitable for terran [terran].
+  - spaceship hull [101], spaceship hull [sshull], owned by Caste Prime
+    [2].
+    size: 5000.
+  - alien fighter drone [450], 4 alien fighter drones [alndrn], owned by
+    Caste Prime [2].
+    size: 320.
 
   Northern Hemisphere [R00002] (0,0), grassland region, settlement
   capacity 8/3.
@@ -6415,39 +6421,6 @@ Galaxy report:
       80).
       events:
         week 13: paid 2 cash [cash] upkeep.
-    - Berlin garrison [000002], infantry battalion [inftry], immobile,
-      owned by NPC [1].
-      size: 500.
-    - Berlin farms [000003], 10 farming complexes [farms], immobile,
-      owned by NPC [1].
-      size: 10000.
-    - Berlin coal powerplants [000004], 5 coal-burning plants [cplant],
-      immobile, owned by NPC [1].
-      size: 5000.
-    - Berlin granary [000005], small cargo bay [cargob], immobile, owned
-      by NPC [1].
-      size: 2000.
-    - Caste Prime Headquarters [000012], corporate headquarters
-      [corphq], disabled, immobile, owned by Caste Prime [2].
-      size: 0.
-    - small cargo bay [000013], small cargo bay [cargob], disabled,
-      immobile, owned by Caste Prime [2].
-      size: 0.
-    - farming complex [000014], farming complex [farms], disabled,
-      immobile, owned by Caste Prime [2].
-      size: 0.
-    - coal-burning plant [000015], coal-burning plant [cplant],
-      disabled, immobile, owned by Caste Prime [2].
-      size: 0.
-    - core drill [000016], core drill [cdrill], disabled, immobile,
-      owned by Caste Prime [2].
-      size: 0.
-    - factory [000017], 5 factories [factry], disabled, immobile, owned
-      by Caste Prime [2].
-      size: 5000.
-    - gun placement [111], gun placement [gunplc], disabled, immobile,
-      owned by Caste Prime [2].
-      size: 100.
     + corporate headquarters [c000012], corporate headquarters [corphq],
       immobile.
       size: 1000, mass: 3604 (1000), capacity: 750/3612, energy: 25
@@ -6924,27 +6897,6 @@ Galaxy report:
   
   - Sydney [000006], 2 cities [city], immobile, owned by NPC [1].
     size: 50000.
-    - Sydney garrison [000007], 2 infantry battalions [inftry],
-      immobile, owned by NPC [1].
-      size: 1000.
-    - Sydney farms [000008], 10 farming complexes [farms], immobile,
-      owned by NPC [1].
-      size: 10000.
-    - Sydney wind powerplants [000009], 10 wind powerplants [wnplnt],
-      immobile, owned by NPC [1].
-      size: 100.
-    - Sydney oil powerplants [000010], 5 oil-burning plants [oplant],
-      immobile, owned by NPC [1].
-      size: 4000.
-    - Sydney granary [000011], small cargo bay [cargob], immobile, owned
-      by NPC [1].
-      size: 2000.
-    - wind powerplant [122], wind powerplant [wnplnt], immobile, owned
-      by NPC [1].
-      size: 10.
-    - wind powerplant [1], wind powerplant [wnplnt], immobile, owned by
-      NPC [1].
-      size: 10.
   + Gelvaren complex [000026], city [city], immobile.
     size: 25000, mass: 5372 (0), capacity: 15000/9988, energy: 76/74
     (10), crew: 48/66, upkeep: 100 units of food [food], 787 (0) cash

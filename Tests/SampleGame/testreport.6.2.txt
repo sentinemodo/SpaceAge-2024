@@ -5638,20 +5638,6 @@ Galaxy report:
     - corporate headquarters [c000012], corporate headquarters [corphq], immobile, owned by Gelvaren
       [3].
       size: 1000.
-      - gun placement [c00001], gun placement [gunplc], immobile, owned by Gelvaren [3].
-        size: 100.
-      - gun placement [c00002], gun placement [gunplc], disabled, immobile, owned by Gelvaren [3].
-        size: 100.
-      - gun placement [c00003], gun placement [gunplc], disabled, immobile, owned by Gelvaren [3].
-        size: 100.
-      - gun placement [c00004], gun placement [gunplc], disabled, immobile, owned by Gelvaren [3].
-        size: 100.
-      - farming complex [c00005], farming complex [farms], immobile, owned by Gelvaren [3].
-        size: 1000.
-      - farming complex [c00006], farming complex [farms], immobile, owned by Gelvaren [3].
-        size: 1000.
-      - farming complex [c00007], farming complex [farms], immobile, owned by Gelvaren [3].
-        size: 1000.
     - small cargo bay [c00009], small cargo bay [cargob], disabled, immobile, owned by Gelvaren [3].
       size: 2000.
     - small cargo bay [c00010], small cargo bay [cargob], disabled, immobile, owned by Gelvaren [3].

@@ -110,6 +110,25 @@ namespace UnitTests
 		}
 
 		[Test]
+		public void NestedObserver_RevealsForeignSettlementRoot_NotNestedGarrison()
+		{
+			ModuleType city = new ModuleType("city");
+			city.Size = 1000;
+			city.Detection = 0;
+
+			ModuleStack town = this.form(this.regionA, this.owner, city, "town1");
+			ModuleStack garrison = this.form(this.regionA, this.owner, this.garrisonType, "gar1");
+			garrison.Parent = town;
+
+			ModuleStack nestedScout = this.form(this.regionA, this.observer, this.scoutType, "obs5");
+			nestedScout.Parent = town;
+
+			Assert.That(town.Visible(this.observer), Is.True);
+			Assert.That(garrison.Visible(this.observer), Is.False);
+			Assert.That(nestedScout.Visible(this.observer), Is.True);
+		}
+
+		[Test]
 		public void SeeOrder_CurrentRegion_FailsAcrossRegions()
 		{
 			ModuleStack foreign = this.form(this.regionB, this.owner, this.scoutType, "for3");

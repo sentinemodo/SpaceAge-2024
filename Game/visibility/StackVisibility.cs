@@ -390,11 +390,19 @@ namespace SpaceAge
 			return GetAnchor(location).SpaceSystem;
 		}
 
+		private static bool IsEligibleObserver(ModuleStack stack, Faction faction)
+		{
+			return stack != null
+				&& stack.Owner == faction
+				&& stack.IsFormed
+				&& stack.Size > 0;
+		}
+
 		private static bool FactionHasObserverInSystem(Faction faction, SpaceSystem system)
 		{
 			foreach (ModuleStack stack in ModuleStack.All.Values)
 			{
-				if (stack.Owner != faction || !stack.IsRootModuleStack || !stack.IsFormed || stack.Size <= 0)
+				if (!IsEligibleObserver(stack, faction))
 				{
 					continue;
 				}
@@ -411,7 +419,7 @@ namespace SpaceAge
 		{
 			foreach (ModuleStack stack in ModuleStack.All.Values)
 			{
-				if (stack.Owner != faction || !stack.IsRootModuleStack || !stack.IsFormed || stack.Size <= 0)
+				if (!IsEligibleObserver(stack, faction))
 				{
 					continue;
 				}

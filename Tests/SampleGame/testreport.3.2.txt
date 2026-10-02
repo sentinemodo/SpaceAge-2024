@@ -4258,20 +4258,10 @@ Galaxy report:
     size: 240.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-
-Press releases:
-  Earth [P00001] at AU 1, ocean planet [ocean]: NPC [1] — Gelvaren closes CT0121.
-    NPC records Gelvaren's fulfillment of CT0121 at Southern Hemisphere on Earth [P00001] at AU 1,
-    ocean planet [ocean].
 ------------------------------------------------------------
   * Luna [P00001], rocky moon [rock] 0.02 AU from the planet.
 ------------------------------------------------------------
     orbit [O00001], has no atmosphere.
-
-Press releases:
-  Earth [P00001] at AU 1, ocean planet [ocean]: NPC [1] — Gelvaren closes CT0121.
-    NPC records Gelvaren's fulfillment of CT0121 at Southern Hemisphere on Earth [P00001] at AU 1,
-    ocean planet [ocean].
 
 
 Orders Template:

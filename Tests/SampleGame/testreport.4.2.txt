@@ -7939,14 +7939,6 @@ Galaxy report:
   
   - Berlin [000001], 3 cities [city], immobile, owned by NPC [1].
     size: 75000, capacity: 45000/41120, energy: 240/220 (30).
-    - Berlin garrison [000002], infantry battalion [inftry], immobile, owned by NPC [1].
-      size: 500.
-    - Berlin farms [000003], 10 farming complexes [farms], immobile, owned by NPC [1].
-      size: 10000.
-    - Berlin coal powerplants [000004], 5 coal-burning plants [cplant], immobile, owned by NPC [1].
-      size: 5000.
-    - Berlin granary [000005], small cargo bay [cargob], immobile, owned by NPC [1].
-      size: 2000.
     + Caste Prime Headquarters [000012], corporate headquarters [corphq], disabled, immobile.
       size: 0, mass: 0.
     + small cargo bay [000013], small cargo bay [cargob], disabled, immobile.
@@ -8133,50 +8125,12 @@ Galaxy report:
         week 12: engaged in battle
         week 13: engaged in battle
         week 13: paid 11 cash [cash] upkeep.
-    - corporate headquarters [c000012], corporate headquarters [corphq], disabled, immobile, owned
-      by Gelvaren [3].
-      size: 1000.
-    - gun placement [c00001], gun placement [gunplc], disabled, immobile, owned by Gelvaren [3].
-      size: 100.
-    - gun placement [c00002], gun placement [gunplc], disabled, immobile, owned by Gelvaren [3].
-      size: 100.
-    - gun placement [c00003], gun placement [gunplc], disabled, immobile, owned by Gelvaren [3].
-      size: 100.
-    - gun placement [c00004], gun placement [gunplc], disabled, immobile, owned by Gelvaren [3].
-      size: 100.
-    - small cargo bay [c00005], small cargo bay [cargob], disabled, immobile, owned by Gelvaren [3].
-      size: 2000.
-    - small cargo bay [c00006], small cargo bay [cargob], disabled, immobile, owned by Gelvaren [3].
-      size: 2000.
-    - small cargo bay [c00007], small cargo bay [cargob], disabled, immobile, owned by Gelvaren [3].
-      size: 2000.
-    - small cargo bay [c00008], small cargo bay [cargob], disabled, immobile, owned by Gelvaren [3].
-      size: 2000.
-    - small cargo bay [c00009], small cargo bay [cargob], disabled, immobile, owned by Gelvaren [3].
-      size: 2000.
-    - farming complex [c00010], farming complex [farms], disabled, immobile, owned by Gelvaren [3].
-      size: 1000.
-    - farming complex [c00011], farming complex [farms], disabled, immobile, owned by Gelvaren [3].
-      size: 1000.
-    - farming complex [c00012], farming complex [farms], disabled, immobile, owned by Gelvaren [3].
-      size: 1000.
-    - coal-burning plant [c00013], coal-burning plant [cplant], disabled, immobile, owned by
-      Gelvaren [3].
-      size: 1000.
-    - coal-burning plant [c00014], coal-burning plant [cplant], disabled, immobile, owned by
-      Gelvaren [3].
-      size: 1000.
   - peaceful scout [108], tanks [tanks], disabled, immobile, owned by Gelvaren [3].
     size: 240.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       size: 4.
-
-Press releases:
-  Earth [P00001] at AU 1, ocean planet [ocean]: NPC [1] — Caste Prime closes Wake the crashed ship.
-    NPC records Caste Prime's fulfillment of CT0122 at Dusty field on Earth [P00001] at AU 1, ocean
-    planet [ocean].
 ------------------------------------------------------------
   * Luna [P00001], rocky moon [rock] 0.02 AU from the planet.
 ------------------------------------------------------------
@@ -8349,11 +8303,6 @@ Press releases:
           week 6: researched crashed alien vessel [200].
           week 7: researched crashed alien vessel [200].
           week 13: paid 1 cash [cash] upkeep.
-
-Press releases:
-  Earth [P00001] at AU 1, ocean planet [ocean]: NPC [1] — Caste Prime closes Wake the crashed ship.
-    NPC records Caste Prime's fulfillment of CT0122 at Dusty field on Earth [P00001] at AU 1, ocean
-    planet [ocean].
 
 
 Orders Template:

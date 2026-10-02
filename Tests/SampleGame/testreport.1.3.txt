@@ -52,21 +52,6 @@ Galaxy report:
   
   - Sydney [000006], 2 cities [city], immobile, owned by NPC [1].
     size: 50000.
-    - Sydney garrison [000007], infantry battalion [inftry], immobile,
-      owned by NPC [1].
-      size: 500.
-    - Sydney farms [000008], 10 farming complexes [farms], immobile,
-      owned by NPC [1].
-      size: 10000.
-    - Sydney wind powerplants [000009], 10 wind powerplants [wnplnt],
-      immobile, owned by NPC [1].
-      size: 100.
-    - Sydney oil powerplants [000010], 5 oil-burning plants [oplant],
-      immobile, owned by NPC [1].
-      size: 4000.
-    - Sydney granary [000011], small cargo bay [cargob], immobile, owned
-      by NPC [1].
-      size: 2000.
   + Gelvaren complex [000026], city [city], immobile.
     size: 25000, mass: 5396 (0), capacity: 15000/9240, energy: 80/75
     (10), crew: 48/74 (0/10), upkeep: 100 units of food [food], 813 (0)

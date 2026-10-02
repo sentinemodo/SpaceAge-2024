@@ -1278,11 +1278,6 @@ Galaxy report:
       size: 200.
     - space shuttle [117], space shuttle [shuttl], disabled, immobile, owned by Gelvaren [3].
       size: 200.
-
-Press releases:
-  Earth [P00001] at AU 1, ocean planet [ocean]: NPC [1] — Caste Prime closes Wake the crashed ship.
-    NPC records Caste Prime's fulfillment of CT0122 at Dusty field on Earth [P00001] at AU 1, ocean
-    planet [ocean].
 ------------------------------------------------------------
   * Luna [P00001], rocky moon [rock] 0.02 AU from the planet.
 ------------------------------------------------------------
@@ -1325,11 +1320,6 @@ Press releases:
         size: 600.
       - computer library [115], computer library [cmplib], owned by Caste Prime [2].
         size: 200.
-
-Press releases:
-  Earth [P00001] at AU 1, ocean planet [ocean]: NPC [1] — Caste Prime closes Wake the crashed ship.
-    NPC records Caste Prime's fulfillment of CT0122 at Dusty field on Earth [P00001] at AU 1, ocean
-    planet [ocean].
 
 
 Orders Template:

@@ -4008,6 +4008,24 @@ Galaxy report:
   * Earth [P00001] at AU 1, ocean planet [ocean].
 ------------------------------------------------------------
   orbit [O00002], has atmosphere suitable for terran [terran].
+  - space shuttle [100], 10 space shuttle [shuttl], owned by Caste Prime
+    [2].
+    size: 2000.
+  - Caste Prime valiant explorer [101], spaceship hull [sshull],
+    immobile, owned by Caste Prime [2].
+    size: 5000.
+  - command bridge [112], command bridge [cbridg], immobile, owned by
+    Caste Prime [2].
+    size: 800.
+    - Caste Prime CEO [000001], terran [terran], working for Caste Prime
+      [2].
+      size: 4.
+  - fission reactor [113], fission reactor [fisrec], disabled, immobile,
+    owned by Caste Prime [2].
+    size: 400.
+  - reaction drive [114], reaction drive [rctdrv], disabled, immobile,
+    owned by Caste Prime [2].
+    size: 600.
 
   Northern Hemisphere [R00002] (0,0), grassland region, settlement
   capacity 8/3.
@@ -4045,39 +4063,6 @@ Galaxy report:
   
   - Berlin [000001], 3 cities [city], immobile, owned by NPC [1].
     size: 75000.
-    - Berlin garrison [000002], infantry battalion [inftry], immobile,
-      owned by NPC [1].
-      size: 500.
-    - Berlin farms [000003], 10 farming complexes [farms], immobile,
-      owned by NPC [1].
-      size: 10000.
-    - Berlin coal powerplants [000004], 5 coal-burning plants [cplant],
-      immobile, owned by NPC [1].
-      size: 5000.
-    - Berlin granary [000005], small cargo bay [cargob], immobile, owned
-      by NPC [1].
-      size: 2000.
-    - Caste Prime Headquarters [000012], corporate headquarters
-      [corphq], disabled, immobile, owned by Caste Prime [2].
-      size: 1000.
-    - small cargo bay [000013], 5 small cargo bays [cargob], disabled,
-      immobile, owned by Caste Prime [2].
-      size: 10000.
-    - farming complex [000014], 3 farming complexes [farms], disabled,
-      immobile, owned by Caste Prime [2].
-      size: 3000.
-    - coal-burning plant [000015], 3 coal-burning plants [cplant],
-      immobile, owned by Caste Prime [2].
-      size: 3000.
-    - core drill [000016], core drill [cdrill], immobile, owned by Caste
-      Prime [2].
-      size: 1000.
-    - factory [000017], 5 factories [factry], partially disabled,
-      immobile, owned by Caste Prime [2].
-      size: 5000.
-    - gun placement [111], 5 gun placements [gunplc], disabled,
-      immobile, owned by Caste Prime [2].
-      size: 500.
   + peaceful scout [108], tanks [tanks].
     size: 240, mass: 364 (240), capacity: 200/112, crew: 16/16, upkeep:
     40 (24) cash [cash], consume: 32 (16) units of food [food], 32 (16)
@@ -4207,27 +4192,6 @@ Galaxy report:
   
   - Sydney [000006], 2 cities [city], immobile, owned by NPC [1].
     size: 50000.
-    - Sydney garrison [000007], 2 infantry battalions [inftry],
-      immobile, owned by NPC [1].
-      size: 1000.
-    - Sydney farms [000008], 10 farming complexes [farms], immobile,
-      owned by NPC [1].
-      size: 10000.
-    - Sydney wind powerplants [000009], 10 wind powerplants [wnplnt],
-      immobile, owned by NPC [1].
-      size: 100.
-    - Sydney oil powerplants [000010], 5 oil-burning plants [oplant],
-      immobile, owned by NPC [1].
-      size: 4000.
-    - Sydney granary [000011], small cargo bay [cargob], immobile, owned
-      by NPC [1].
-      size: 2000.
-    - wind powerplant [122], wind powerplant [wnplnt], immobile, owned
-      by NPC [1].
-      size: 10.
-    - wind powerplant [1], wind powerplant [wnplnt], immobile, owned by
-      NPC [1].
-      size: 10.
   + Gelvaren complex [000026], city [city], immobile.
     size: 25000, mass: 5452, capacity: 15000/9690, energy: 76/74 (10),
     crew: 48/78, upkeep: 100 units of food [food], 821 (0) cash [cash],
@@ -4530,22 +4494,10 @@ Galaxy report:
         week 13: moving from Southern Hemisphere [R00003] (1,0) to
         Northern Hemisphere [R00002] (0,0), ETA 17.
         week 13: paid 5 cash [cash] upkeep.
-
-Press releases:
-  Earth [P00001] at AU 1, ocean planet [ocean]: NPC [1] — Gelvaren
-  closes CT0121.
-    NPC records Gelvaren's fulfillment of CT0121 at Southern Hemisphere
-    on Earth [P00001] at AU 1, ocean planet [ocean].
 ------------------------------------------------------------
   * Luna [P00001], rocky moon [rock] 0.02 AU from the planet.
 ------------------------------------------------------------
     orbit [O00001], has no atmosphere.
-
-Press releases:
-  Earth [P00001] at AU 1, ocean planet [ocean]: NPC [1] — Gelvaren
-  closes CT0121.
-    NPC records Gelvaren's fulfillment of CT0121 at Southern Hemisphere
-    on Earth [P00001] at AU 1, ocean planet [ocean].
 
 
 Orders Template:
