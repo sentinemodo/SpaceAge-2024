@@ -12,6 +12,25 @@ export function getToken() {
   return token;
 }
 
+/** Thrown when the server rejects a stored session token (e.g. after game-host restart). */
+export class SessionExpiredError extends Error {
+  readonly sessionExpired = true as const;
+
+  constructor() {
+    super('Session ended');
+    this.name = 'SessionExpiredError';
+  }
+}
+
+export function isSessionExpiredError(err: unknown): err is SessionExpiredError {
+  return err instanceof SessionExpiredError;
+}
+
+function notifySessionExpired() {
+  setToken(null);
+  window.dispatchEvent(new Event('sa-session-expired'));
+}
+
 async function api(path: string, init: RequestInit = {}) {
   const headers: Record<string, string> = {
     ...(init.headers as Record<string, string>),
@@ -21,9 +40,11 @@ async function api(path: string, init: RequestInit = {}) {
   if (!res.ok) {
     const err = await res.json().catch(() => ({ error: res.statusText }));
     if (res.status === 401) {
-      setToken(null);
-      window.dispatchEvent(new Event('sa-session-expired'));
-      throw new Error('Session expired — log in again (game-host restart clears sessions).');
+      if (path === '/api/auth/login') {
+        throw new Error(err.error || res.statusText);
+      }
+      notifySessionExpired();
+      throw new SessionExpiredError();
     }
     throw new Error(err.error || res.statusText);
   }
@@ -260,5 +281,61 @@ export async function regenerateStory(personaId: string): Promise<{ ok: boolean;
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ personaId }),
+  });
+}
+
+export type LobbyStatusEnum =
+  | 'not-started'
+  | 'accepting-orders'
+  | 'processing'
+  | 'reports-out';
+
+export interface LobbyFactionStatus {
+  id: number;
+  submitted: boolean;
+  name?: string;
+}
+
+export interface LobbyStatus {
+  status: LobbyStatusEnum;
+  turn: number;
+  nextTurnAt?: string | null;
+  factions: LobbyFactionStatus[];
+}
+
+export async function fetchLobbyStatus(): Promise<LobbyStatus> {
+  return api('/api/session/admin/lobby-status');
+}
+
+export async function syncLobbyStatus(): Promise<LobbyStatus> {
+  return api('/api/session/admin/sync-lobby-status', { method: 'POST' });
+}
+
+export async function fetchAdminFactionOrders(factionId: number): Promise<{
+  submitted: boolean;
+  text: string;
+  turn: number;
+  factionId: number;
+  version: number | null;
+}> {
+  return api(`/api/session/admin/orders?factionId=${factionId}`);
+}
+
+export async function saveAdminFactionOrders(factionId: number, text: string) {
+  return api(`/api/session/admin/orders?factionId=${factionId}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'text/plain; charset=utf-8' },
+    body: text,
+  });
+}
+
+export async function parseAdminFactionOrders(
+  factionId: number,
+  text: string,
+): Promise<ParseOrdersResult> {
+  return api('/api/session/admin/parse-orders', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ factionId, text }),
   });
 }

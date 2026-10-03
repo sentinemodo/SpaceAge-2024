@@ -24,7 +24,9 @@ import {
   effectiveFactionId,
   factionDisplayName,
   requireGm,
+  requireAdmin,
   requireSession,
+  isPlayerFaction,
   sessionFromRequest,
   sessionTokenFromRequest,
 } from './lib/auth.mjs';
@@ -95,6 +97,20 @@ function orderContextForSession(session) {
   return { run, factionId, turn };
 }
 
+function orderContextForFactionId(session, factionId) {
+  const run = sessionRunId(session);
+  const { turn } = reportPaths(factionId, run, sessionTurn(session));
+  return { run, factionId, turn };
+}
+
+function parseFactionIdParam(url) {
+  const raw = url.searchParams.get('factionId');
+  if (!raw) return null;
+  const factionId = parseInt(raw, 10);
+  if (!Number.isFinite(factionId) || !isPlayerFaction(factionId)) return null;
+  return factionId;
+}
+
 function readBody(req) {
   return new Promise((resolve, reject) => {
     const chunks = [];
@@ -155,6 +171,11 @@ const server = http.createServer(async (req, res) => {
   if (url.pathname.startsWith('/client') || url.pathname.startsWith('/assets')) {
     const p = url.pathname.replace(/^\/client/, '') || '/';
     if (serveStatic(req, res, p)) return;
+  }
+
+  if (req.method === 'GET' && url.pathname === '/api/public/lobby-status') {
+    json(res, 200, buildStatusJson());
+    return;
   }
 
   if (req.method === 'GET' && url.pathname === '/health') {
@@ -538,6 +559,81 @@ const server = http.createServer(async (req, res) => {
     } catch (err) {
       json(res, 500, { error: String(err.message || err) });
     }
+    return;
+  }
+
+  if (req.method === 'GET' && url.pathname === '/api/session/admin/lobby-status') {
+    const session = requireAdmin(req, res);
+    if (!session) return;
+    json(res, 200, buildStatusJson());
+    return;
+  }
+
+  if (req.method === 'POST' && url.pathname === '/api/session/admin/sync-lobby-status') {
+    const session = requireAdmin(req, res);
+    if (!session) return;
+    try {
+      syncLobbyStatusFile();
+    } catch (err) {
+      json(res, 500, { error: String(err.message || err) });
+      return;
+    }
+    json(res, 200, buildStatusJson());
+    return;
+  }
+
+  if (req.method === 'GET' && url.pathname === '/api/session/admin/orders') {
+    const session = requireAdmin(req, res);
+    if (!session) return;
+    const factionId = parseFactionIdParam(url);
+    if (factionId == null) {
+      json(res, 400, { error: 'factionId query required (2–11)' });
+      return;
+    }
+    const { run, turn } = orderContextForFactionId(session, factionId);
+    const text = readSubmittedOrder(factionId, turn, run);
+    json(res, 200, {
+      submitted: text != null,
+      text: text ?? '',
+      turn,
+      factionId,
+      version: listOrderVersions(factionId, turn, run).at(-1) ?? null,
+    });
+    return;
+  }
+
+  if (req.method === 'PUT' && url.pathname === '/api/session/admin/orders') {
+    const session = requireAdmin(req, res);
+    if (!session) return;
+    const factionId = parseFactionIdParam(url);
+    if (factionId == null) {
+      json(res, 400, { error: 'factionId query required (2–11)' });
+      return;
+    }
+    const body = await readBody(req);
+    const { run, turn } = orderContextForFactionId(session, factionId);
+    const version = saveOrder(factionId, body, turn, run);
+    try {
+      syncLobbyStatusFile();
+    } catch (err) {
+      console.warn('Lobby status sync failed:', err);
+    }
+    json(res, 200, { ok: true, turn, factionId, version });
+    return;
+  }
+
+  if (req.method === 'POST' && url.pathname === '/api/session/admin/parse-orders') {
+    const session = requireAdmin(req, res);
+    if (!session) return;
+    const body = JSON.parse(await readBody(req));
+    const factionId = parseInt(body.factionId, 10);
+    if (!Number.isFinite(factionId) || !isPlayerFaction(factionId)) {
+      json(res, 400, { error: 'factionId required (2–11)' });
+      return;
+    }
+    const creds = loadFactionCredentials().get(factionId);
+    const result = await parseOrders(body.text || '', factionId, creds?.password || '');
+    json(res, 200, result);
     return;
   }
 

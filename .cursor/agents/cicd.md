@@ -2,7 +2,7 @@
 name: cicd
 description: >-
   SpaceAge local CI/CD operator: restart dev servers (lobby + visual tool + game-host Node),
-  restart prod (dev without local game-host + Docker game-host + ngrok + GitHub Pages sync),
+  restart prod (dev without local game-host + Docker game-host + GitHub Pages sync),
   restart Ollama Docker,
   and git commit/push/merge workflows with stack restarts. Use when the user
   says restart dev, restart prod, restart local LLM, commit, push, merge, test,
@@ -38,13 +38,14 @@ Reports from **test** / **test-e2e** are written to `.cursor/cicd-test-results/l
 - Stops any process listening on **4321** (Astro lobby) and **5173** (visual tool), then starts dev servers.
 - Starts `npm run dev` in `website/` and `tools/visual-tool/` (background; logs under `.cursor/dev-logs/`).
 - Restarts **game-host** on **8787** (`npm start` in `game-host/`; log `.cursor/dev-logs/game-host.log`) and waits for `/health`.
-- Does **not** start ngrok. Use **restart-prod** for Docker game-host + tunnel + Pages.
+- Does **not** start Docker game-host. Use **restart-prod** for Docker + Pages sync.
 
 ### restart-prod
 - Stops listeners on **4321**, **5173**, and **8787** (Docker's own 8787 proxy is left for `compose down`), then **restart-dev** (lobby + visual tool only — `-SkipGameHost`), then:
 - `docker compose down` + `docker compose up -d --build` and wait for `http://localhost:8787/health`.
-- Ensure **ngrok** forwards to game-host (starts in background if missing; domain from `NGROK_DOMAIN` or default reserved domain).
 - **GitHub Pages:** `git fetch origin`, compare `origin/<default branch>` to the latest successful **Website** workflow run. If Pages is not already deployed for that commit, run `gh workflow run website.yml` and **`gh run watch`** until deploy succeeds. Requires **`gh`** authenticated (`gh auth login`). Skipped with a warning if `gh` is missing.
+
+Public client URL (Caddy + DuckDNS, not ngrok): **https://spaceage-pbem.duckdns.org/client/**
 
 ### restart-local-llm
 - Start/restart Docker container **`ollama`** on port **11434** (creates if missing).
@@ -106,7 +107,8 @@ Saves summary to **`.cursor/cicd-test-results/latest.txt`** and `{timestamp}-e2e
 | Dev lobby | `http://localhost:4321/` |
 | Visual tool | `http://localhost:5173/client/` |
 | Game-host | `http://localhost:8787/health` |
-| ngrok | `http://127.0.0.1:4040/api/tunnels` or printed public URL |
+| Public client | https://spaceage-pbem.duckdns.org/client/ |
+| Live lobby status | https://spaceage-pbem.duckdns.org/api/public/lobby-status |
 | GitHub Pages | https://sentinemodo.github.io/SpaceAge-2024/ (matches latest push on default branch after restart-prod) |
 | Ollama | `.\play\ollama-check.ps1` |
 

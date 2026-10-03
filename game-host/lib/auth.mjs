@@ -7,7 +7,7 @@ const sessions = new Map();
 export const PLAYER_FACTION_MIN = 2;
 export const PLAYER_FACTION_MAX = 11;
 
-function isPlayerFaction(id) {
+export function isPlayerFaction(id) {
   return id >= PLAYER_FACTION_MIN && id <= PLAYER_FACTION_MAX;
 }
 
@@ -125,4 +125,16 @@ export function requireGm(req, res) {
     return null;
   }
   return true;
+}
+
+/** GM logged into the visual client (Bearer session with admin flag). */
+export function requireAdmin(req, res) {
+  const session = requireSession(req, res);
+  if (!session) return null;
+  if (!session.admin) {
+    res.writeHead(403, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ error: 'admin only' }));
+    return null;
+  }
+  return session;
 }

@@ -1,9 +1,10 @@
 import { campaignFactionsByPlanet, campaignFactionLabel } from '../data/campaignFactions';
 import { clientFactionUrl } from './clientUrls';
-import { formatNextTurn, formatStatusLabel, type StatusData } from './statusSchema';
+import { formatNextTurn, formatStatusLabel, validateStatusJson, type StatusData } from './statusSchema';
 import { renderIssuesTableHtml } from './issuesTable';
 import { renderTurnsTableHtml } from './turnsTable';
 import { withBase } from './paths';
+import { lobbyStatusLiveUrl, lobbyStatusLocalDevUrl } from './statusUrls';
 
 function escapeHtml(text: string): string {
   return text
@@ -12,14 +13,31 @@ function escapeHtml(text: string): string {
     .replace(/"/g, '&quot;');
 }
 
-async function fetchStatus(): Promise<StatusData | null> {
-  try {
-    const res = await fetch(withBase('status.json'), { cache: 'no-store' });
-    if (!res.ok) return null;
-    return (await res.json()) as StatusData;
-  } catch {
-    return null;
+function statusFetchUrls(): string[] {
+  const urls: string[] = [];
+  if (typeof window !== 'undefined') {
+    const host = window.location.hostname;
+    if (host === 'localhost' || host === '127.0.0.1') {
+      urls.push(lobbyStatusLocalDevUrl());
+    }
   }
+  const live = lobbyStatusLiveUrl();
+  if (live) urls.push(live);
+  urls.push(withBase('status.json'));
+  return [...new Set(urls)];
+}
+
+async function fetchStatus(): Promise<StatusData | null> {
+  for (const url of statusFetchUrls()) {
+    try {
+      const res = await fetch(url, { cache: 'no-store' });
+      if (!res.ok) continue;
+      return validateStatusJson(await res.json());
+    } catch {
+      // try next source
+    }
+  }
+  return null;
 }
 
 function factionName(f: { id: number; name?: string }): string {

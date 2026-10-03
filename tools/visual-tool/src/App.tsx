@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { RunPodStartModal } from './components/RunPodStartModal';
+import { GameManagementPanel } from './components/GameManagementPanel';
 import {
   login,
   fetchMeta,
@@ -25,6 +26,7 @@ import {
   getToken,
   logout,
   setToken,
+  isSessionExpiredError,
   type FactionOption,
   type PersonaOption,
   type ReportSection,
@@ -123,7 +125,7 @@ import {
 
 const REGION_ZOOM_BASE = 1.5;
 
-type Panel = 'map' | 'tech' | 'diplomacy' | 'bank' | 'movement' | 'battle' | 'faction' | 'story';
+type Panel = 'map' | 'tech' | 'diplomacy' | 'bank' | 'movement' | 'battle' | 'faction' | 'story' | 'manage';
 type OrderMode = 'units' | 'faction' | 'parser';
 type ParseButtonStatus = 'ok' | 'warnings' | 'errors';
 type TechView = 'known' | 'breakthrough';
@@ -169,6 +171,7 @@ function LoginScreen({ onLogin }: { onLogin: () => void }) {
       }
       onLogin();
     } catch (err) {
+      if (isSessionExpiredError(err)) return;
       setError(String(err));
     }
   }
@@ -858,7 +861,10 @@ export default function App() {
   }, [clearSessionUiState]);
 
   useEffect(() => {
-    if (authed) load();
+    if (!authed) return;
+    load().catch((err) => {
+      if (!isSessionExpiredError(err)) console.error(err);
+    });
   }, [authed, load]);
 
   useEffect(() => {
@@ -1365,7 +1371,7 @@ export default function App() {
   }, [runpodStatus]);
 
   useEffect(() => {
-    if (!meta.admin && panel === 'story') setPanel('map');
+    if (!meta.admin && (panel === 'story' || panel === 'manage')) setPanel('map');
   }, [meta.admin, panel]);
 
   useEffect(() => {
@@ -1586,16 +1592,17 @@ export default function App() {
             ['battle', '⚔'],
             ['faction', '👤'],
             ['story', '📖'],
+            ['manage', '⚙'],
           ] as const
         )
-          .filter(([id]) => meta.admin || id !== 'story')
+          .filter(([id]) => meta.admin || (id !== 'story' && id !== 'manage'))
           .map(([id, icon]) => (
           <button
             key={id}
             type="button"
             className={panel === id ? 'active' : ''}
-            title={id === 'map' ? 'Star map' : id === 'bank' ? 'Banking and market' : id === 'movement' ? 'Movement and transit ETA' : id === 'story' ? 'Persona & story' : id}
-            aria-label={id === 'map' ? 'Star map' : id === 'bank' ? 'Banking and market' : id === 'movement' ? 'Movement and transit ETA' : id === 'story' ? 'Persona and story' : id}
+            title={id === 'map' ? 'Star map' : id === 'bank' ? 'Banking and market' : id === 'movement' ? 'Movement and transit ETA' : id === 'story' ? 'Persona & story' : id === 'manage' ? 'Game management' : id}
+            aria-label={id === 'map' ? 'Star map' : id === 'bank' ? 'Banking and market' : id === 'movement' ? 'Movement and transit ETA' : id === 'story' ? 'Persona and story' : id === 'manage' ? 'Game management' : id}
             onClick={() => setPanel(id)}
           >
             {icon}
@@ -1907,6 +1914,10 @@ export default function App() {
               </div>
             )}
           </div>
+        )}
+
+        {panel === 'manage' && meta.admin && meta.factions && (
+          <GameManagementPanel factions={meta.factions as FactionOption[]} />
         )}
 
         {panel === 'story' && meta.admin && (

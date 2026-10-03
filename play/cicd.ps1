@@ -5,7 +5,7 @@
 
 .DESCRIPTION
   restart-dev        — Astro lobby (4321) + visual tool (5173) + game-host Node (8787)
-  restart-prod       — restart-dev + game-host Docker + ngrok + GitHub Pages (latest origin)
+  restart-prod       — restart-dev + game-host Docker + GitHub Pages (latest origin)
   restart-local-llm  — Ollama Docker, pull/warm qwen2.5-coder:7b, health check
   commit             — git commit working changes, then restart-dev
   push               — git commit, push branch, then restart-prod
@@ -254,68 +254,6 @@ function Invoke-RestartGameHostDocker {
 	} while ($true)
 }
 
-function Ensure-NgrokTunnel {
-	Write-CicdStep 'Ensure ngrok tunnel to game-host'
-	Import-RepoEnv
-	$port = $script:GameHostPort
-	$domain = if ($env:NGROK_DOMAIN) { $env:NGROK_DOMAIN } else { 'manatee-sabbath-kudos.ngrok-free.dev' }
-
-	Test-GameHostHealth -Port $port
-
-	$existing = $null
-	try {
-		$existing = Invoke-RestMethod -Uri 'http://127.0.0.1:4040/api/tunnels' -TimeoutSec 3
-	}
-	catch {
-		# ngrok API not up yet
-	}
-
-	$tunnel = $null
-	if ($existing -and $existing.tunnels) {
-		$tunnel = $existing.tunnels | Where-Object {
-			$_.config.addr -match ":$port`$" -or $_.config.addr -match ":$port/"
-		} | Select-Object -First 1
-	}
-
-	if ($tunnel) {
-		Write-Host "  ngrok already forwarding: $($tunnel.public_url)/client/"
-		return
-	}
-
-	$ngrokExe = Join-Path $env:APPDATA 'npm\node_modules\ngrok\bin\ngrok.exe'
-	if (-not (Test-Path -LiteralPath $ngrokExe)) {
-		$ngrokExe = (Get-Command ngrok.exe -ErrorAction SilentlyContinue).Source
-	}
-	if (-not $ngrokExe -or -not (Test-Path -LiteralPath $ngrokExe)) {
-		throw 'ngrok not found. Install: npm install -g ngrok, then: ngrok config add-authtoken <token>'
-	}
-
-	New-Item -ItemType Directory -Force -Path $script:DevLogDir | Out-Null
-	$ngrokLog = Join-Path $script:DevLogDir 'ngrok.log'
-	$args = @('http', [string]$port, "--domain=$domain", "--log=stdout")
-	Start-Process -FilePath $ngrokExe -ArgumentList $args -RedirectStandardOutput $ngrokLog -WindowStyle Hidden | Out-Null
-
-	$deadline = (Get-Date).AddSeconds(30)
-	do {
-		Start-Sleep -Seconds 1
-		try {
-			$existing = Invoke-RestMethod -Uri 'http://127.0.0.1:4040/api/tunnels' -TimeoutSec 3
-			$tunnel = $existing.tunnels | Where-Object {
-				$_.config.addr -match ":$port`$" -or $_.config.addr -match ":$port/"
-			} | Select-Object -First 1
-			if ($tunnel) {
-				Write-Host "  ngrok started: $($tunnel.public_url)/client/"
-				return
-			}
-		}
-		catch {
-			if ((Get-Date) -gt $deadline) {
-				throw "ngrok did not expose port $port within 30s. See $ngrokLog"
-			}
-		}
-	} while ($true)
-}
-
 function Get-PagesDeployBranch {
 	if ($MergeTarget) { return $MergeTarget }
 	$originHead = git symbolic-ref refs/remotes/origin/HEAD 2>$null
@@ -389,10 +327,11 @@ function Invoke-RestartProd {
 	Stop-CicdStackPorts
 	Invoke-RestartDev -SkipGameHost
 	Invoke-RestartGameHostDocker
-	Ensure-NgrokTunnel
 	Ensure-GitHubPagesDeploy
 	Write-Host ""
-	Write-Host "Prod stack ready (local dev + Docker game-host + ngrok + GitHub Pages)."
+	Write-Host "Prod stack ready (local dev + Docker game-host + GitHub Pages)."
+	Write-Host "  Public client: https://spaceage-pbem.duckdns.org/client/"
+	Write-Host "  Live lobby status: https://spaceage-pbem.duckdns.org/api/public/lobby-status"
 }
 
 function Invoke-RestartLocalLlm {
