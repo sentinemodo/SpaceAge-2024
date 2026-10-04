@@ -780,6 +780,8 @@ export default function App() {
   const [storyBusy, setStoryBusy] = useState(false);
   const [sidePanelWidth, setSidePanelWidth] = useState(320);
   const [orderPaneHeight, setOrderPaneHeight] = useState(220);
+  const [orderEditorCollapsed, setOrderEditorCollapsed] = useState(false);
+  const [adminMobilePane, setAdminMobilePane] = useState<'orders' | 'ai'>('orders');
   const [aiPaneWidth, setAiPaneWidth] = useState(280);
   const [regionMapZoom, setRegionMapZoom] = useState(REGION_ZOOM_BASE);
   const [adminContextList, setAdminContextList] = useState<'campaigns' | 'turns'>('turns');
@@ -1499,7 +1501,10 @@ export default function App() {
   }
 
   return (
-    <div className="app-shell" style={{ gridTemplateColumns: `56px 1fr ${sidePanelWidth}px` }}>
+    <div
+      className="app-shell"
+      style={{ '--side-panel-width': `${sidePanelWidth}px` } as React.CSSProperties}
+    >
       <header className="top-bar">
         {meta.admin && meta.factions && meta.factions.length > 0 ? (
           <select
@@ -1990,12 +1995,63 @@ export default function App() {
         )}
 
         {panel === 'map' && (
-          <div className="order-editor" style={{ height: orderPaneHeight }}>
-            <ResizeHandle direction="vertical" onDelta={(d) => setOrderPaneHeight((h) => Math.max(120, Math.min(480, h - d)))} className="order-editor-resize" />
+          <div
+            className={`order-editor ${orderEditorCollapsed ? 'order-editor-collapsed' : ''}`}
+            style={orderEditorCollapsed ? undefined : { height: orderPaneHeight }}
+          >
+            {!orderEditorCollapsed && (
+              <ResizeHandle
+                direction="vertical"
+                onDelta={(d) => setOrderPaneHeight((h) => Math.max(120, Math.min(480, h - d)))}
+                className="order-editor-resize"
+              />
+            )}
+            {meta.admin && !orderEditorCollapsed && (
+              <div className="order-mobile-switcher" role="tablist" aria-label="Editor view">
+                <button
+                  type="button"
+                  role="tab"
+                  aria-selected={adminMobilePane === 'orders'}
+                  className={adminMobilePane === 'orders' ? 'active' : ''}
+                  onClick={() => setAdminMobilePane('orders')}
+                >
+                  Orders
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  aria-selected={adminMobilePane === 'ai'}
+                  className={adminMobilePane === 'ai' ? 'active' : ''}
+                  onClick={() => setAdminMobilePane('ai')}
+                >
+                  AI prompt
+                </button>
+              </div>
+            )}
             <div className="order-split">
-              <div className="order-split-col order-split-orders">
+              <div
+                className={`order-split-col order-split-orders ${meta.admin && adminMobilePane === 'ai' ? 'order-pane-mobile-hidden' : ''}`}
+              >
                 <div className="order-split-heading-row">
-                  <h4 className="order-split-heading">Orders</h4>
+                  <div className="order-heading-group">
+                    <button
+                      type="button"
+                      className="order-collapse-btn"
+                      onClick={() => setOrderEditorCollapsed(!orderEditorCollapsed)}
+                      title={orderEditorCollapsed ? 'Expand orders panel' : 'Collapse orders panel'}
+                      aria-expanded={!orderEditorCollapsed}
+                    >
+                      {orderEditorCollapsed ? '▸' : '▾'}
+                    </button>
+                    <h4
+                      className="order-split-heading"
+                      onClick={() => setOrderEditorCollapsed(!orderEditorCollapsed)}
+                      style={{ cursor: 'pointer' }}
+                      title="Click to collapse/expand"
+                    >
+                      Orders
+                    </h4>
+                  </div>
                   <div className="order-mode-tabs">
                     <button
                       type="button"
@@ -2020,59 +2076,70 @@ export default function App() {
                     </button>
                   </div>
                 </div>
-                <div className="order-pane-stack">
-                  <div
-                    className={`order-editor-with-lines${orderMode === 'parser' ? ' order-pane-hidden' : ''}`}
-                  >
-                    <div
-                      ref={orderLineNumbersRef}
-                      className="order-line-numbers"
-                      aria-hidden
-                    >
-                      {Array.from({ length: orderLineCount }, (_, i) => (
-                        <div key={i + 1} className="order-line-number">{i + 1}</div>
-                      ))}
+                {!orderEditorCollapsed && (
+                  <>
+                    <div className="order-pane-stack">
+                      <div
+                        className={`order-editor-with-lines${orderMode === 'parser' ? ' order-pane-hidden' : ''}`}
+                      >
+                        <div
+                          ref={orderLineNumbersRef}
+                          className="order-line-numbers"
+                          aria-hidden
+                        >
+                          {Array.from({ length: orderLineCount }, (_, i) => (
+                            <div key={i + 1} className="order-line-number">{i + 1}</div>
+                          ))}
+                        </div>
+                        <textarea
+                          ref={orderTextareaRef}
+                          value={orderEditorText}
+                          readOnly={orderEditorReadOnly}
+                          onScroll={syncOrderLineNumbers}
+                          onSelect={(e) => syncOrderCaret(e.currentTarget)}
+                          onKeyUp={(e) => syncOrderCaret(e.currentTarget)}
+                          onClick={(e) => syncOrderCaret(e.currentTarget)}
+                          onChange={(e) => {
+                            syncOrderCaret(e.currentTarget);
+                            if (orderMode === 'faction') {
+                              publishMapOrders(e.target.value);
+                            } else if (orderMode === 'units') {
+                              setUnitsEditText(e.target.value);
+                              publishMapOrders(applyFocusedOrderEdits(
+                                draftOrders || factionOrdersText,
+                                e.target.value,
+                                unitsFocus,
+                              ));
+                            }
+                          }}
+                          placeholder={'#faction N "password"\nMOVE …'}
+                          className={orderEditorReadOnly ? 'order-text-readonly' : ''}
+                        />
+                      </div>
+                      <pre
+                        className={`order-parser-output${orderMode === 'parser' ? '' : ' order-pane-hidden'}`}
+                      >
+                        {parserPaneText}
+                      </pre>
                     </div>
-                    <textarea
-                      ref={orderTextareaRef}
-                      value={orderEditorText}
-                      readOnly={orderEditorReadOnly}
-                      onScroll={syncOrderLineNumbers}
-                      onSelect={(e) => syncOrderCaret(e.currentTarget)}
-                      onKeyUp={(e) => syncOrderCaret(e.currentTarget)}
-                      onClick={(e) => syncOrderCaret(e.currentTarget)}
-                      onChange={(e) => {
-                        syncOrderCaret(e.currentTarget);
-                        if (orderMode === 'faction') {
-                          publishMapOrders(e.target.value);
-                        } else if (orderMode === 'units') {
-                          setUnitsEditText(e.target.value);
-                          publishMapOrders(applyFocusedOrderEdits(
-                            draftOrders || factionOrdersText,
-                            e.target.value,
-                            unitsFocus,
-                          ));
-                        }
-                      }}
-                      placeholder={'#faction N "password"\nMOVE …'}
-                      className={orderEditorReadOnly ? 'order-text-readonly' : ''}
-                    />
-                  </div>
-                  <pre
-                    className={`order-parser-output${orderMode === 'parser' ? '' : ' order-pane-hidden'}`}
-                  >
-                    {parserPaneText}
-                  </pre>
-                </div>
-                <div className="order-split-actions">
-                  <button type="button" onClick={handleCheck}>Parse orders</button>
-                  <button type="button" onClick={handleSubmit}>Submit orders</button>
-                </div>
+                    <div className="order-split-actions">
+                      <button type="button" onClick={handleCheck}>Parse orders</button>
+                      <button type="button" onClick={handleSubmit}>Submit orders</button>
+                    </div>
+                  </>
+                )}
               </div>
-              {meta.admin && (
+              {meta.admin && !orderEditorCollapsed && (
                 <>
-                  <ResizeHandle direction="horizontal" onDelta={(d) => setAiPaneWidth((w) => Math.max(160, w - d))} />
-                  <div style={{ width: aiPaneWidth, flexShrink: 0 }}>
+                  <ResizeHandle
+                    direction="horizontal"
+                    className="order-ai-resize"
+                    onDelta={(d) => setAiPaneWidth((w) => Math.max(160, w - d))}
+                  />
+                  <div
+                    className={`order-split-col order-split-ai-wrapper ${adminMobilePane === 'orders' ? 'order-pane-mobile-hidden' : ''}`}
+                    style={{ width: aiPaneWidth }}
+                  >
                     <AiPane
                       heading="AI prompt"
                       aiMode={aiMode}
