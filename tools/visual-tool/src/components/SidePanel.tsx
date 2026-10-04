@@ -46,7 +46,7 @@ export function SidePanel({
   onFocusId?: (id: string) => void;
 }) {
   return (
-    <aside className="side-panel" style={{ width }}>
+    <aside className="side-panel">
       <ResizeHandle direction="horizontal" onDelta={(d) => onResize(-d)} className="side-panel-resize" />
       <ObjectDescription
         report={report}

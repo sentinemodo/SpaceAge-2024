@@ -91,6 +91,33 @@ test('UT-004 mobile layout shows side panel', async ({ page }) => {
   await login(page);
   await expect(page.locator('.side-panel')).toBeVisible();
   await expect(page.locator('.icon-rail')).toBeVisible();
+
+  // Verify main stage is not squeezed into a sliver
+  const mainStageBox = await page.locator('.main-stage').boundingBox();
+  expect(mainStageBox).not.toBeNull();
+  expect(mainStageBox!.width).toBeGreaterThan(300);
+
+  // Verify side panel spans full width in portrait
+  const sidePanelBox = await page.locator('.side-panel').boundingBox();
+  expect(sidePanelBox).not.toBeNull();
+  expect(sidePanelBox!.width).toBeGreaterThanOrEqual(380);
+});
+
+test('UT-004 mobile landscape layout and collapse toggle', async ({ page }) => {
+  await page.setViewportSize({ width: 844, height: 390 });
+  await login(page);
+
+  // Main stage and side panel are side-by-side in landscape
+  await expect(page.locator('.side-panel')).toBeVisible();
+  await expect(page.locator('.main-stage')).toBeVisible();
+
+  // Orders collapse and expand
+  const collapseBtn = page.locator('.order-collapse-btn');
+  await expect(collapseBtn).toBeVisible();
+  await collapseBtn.click();
+  await expect(page.locator('.order-editor')).toHaveClass(/order-editor-collapsed/);
+  await collapseBtn.click();
+  await expect(page.locator('.order-editor')).not.toHaveClass(/order-editor-collapsed/);
 });
 
 /** UT-005 — static bundle leak bar */
