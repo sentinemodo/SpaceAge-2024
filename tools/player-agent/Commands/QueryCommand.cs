@@ -54,7 +54,7 @@ internal static class QueryCommand
                 : RepoPaths.FactionFolder(repoRoot, runId, factionIdValue);
             var reportPath = ResolveReportPath(factionDir, reportOverride);
             var storyPath = storyOverride
-                ?? (factionDir is null ? null : FactionCorpusPaths.StoryPath(factionDir));
+                ?? (factionDir is null ? null : FactionCorpusPaths.StoryPath(factionDir, factionIdValue));
             var personaPath = personaOverride
                 ?? (factionDir is null ? null : Path.Combine(factionDir, "persona.md"));
 

@@ -21,7 +21,6 @@ Events this quarter:
   Prime [2].
   week 6: battle at Northern Hemisphere [R00002] (0,0), attackers: Gelvaren [3], defenders: Caste
   Prime [2].
-  week 7: completed contract CT0122 and received crashed alien vessel [200]. Systems activated.
   week 7: battle at Northern Hemisphere [R00002] (0,0), attackers: Gelvaren [3], defenders: Caste
   Prime [2].
   week 8: battle at Northern Hemisphere [R00002] (0,0), attackers: Gelvaren [3], defenders: Caste
@@ -36,16 +35,21 @@ Events this quarter:
   Prime [2].
   week 13: battle at Northern Hemisphere [R00002] (0,0), attackers: Gelvaren [3], defenders: Caste
   Prime [2].
-  week 13: Bank account credited: Deposit interests accounted to 100. Current balance: 8090.
 
 Press releases:
   Earth [P00001] at AU 1, ocean planet [ocean]: NPC [1] — Caste Prime closes Wake the crashed ship.
     NPC records Caste Prime's fulfillment of CT0122 at Dusty field on Earth [P00001] at AU 1, ocean
     planet [ocean].
+
+Contract events:
+  week 7: completed CT0122 (Wake the crashed ship); reward: crashed alien vessel [200] (systems
+  activated).
 Bank report:
   Bank account balance: 8090.
   Credit line maximum: 10000.
   Credit rate: 20%, Deposit rate: 4.5%.
+  Account activity:
+    week 13: Bank account credited: 100 cash (Deposit interests accounted.). Balance: 8090.
 
 Technology reports:
 + advanced hull construction [ahlcns]: Recovered alien hull geometry. Automated internals need no

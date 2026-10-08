@@ -133,6 +133,17 @@ function Get-FactionFolderName {
 	return ('{0:D2}' -f $Id)
 }
 
+function Get-FactionOrdersFolder {
+	param(
+		[Parameter(Mandatory = $true)][int]$FactionId,
+		[Parameter(Mandatory = $true)][hashtable]$Paths
+	)
+	if ($FactionId -eq 1) {
+		return Join-Path $Paths.RunRoot 'gm'
+	}
+	return Join-Path $Paths.FactionsDir (Get-FactionFolderName -Id $FactionId)
+}
+
 function Get-DefaultGameExe {
 	return Join-Path $script:RepoRoot 'Game\bin\Debug\Game.exe'
 }
@@ -275,7 +286,7 @@ function Resolve-FactionOrderSourcePath {
 	if ($null -eq $turn -or $turn -le 0) {
 		$turn = 1
 	}
-	$folder = Join-Path $Paths.FactionsDir (Get-FactionFolderName -Id $FactionId)
+	$folder = Get-FactionOrdersFolder -FactionId $FactionId -Paths $Paths
 
 	$reportTurn = 0
 	foreach ($reportFile in Get-ChildItem -LiteralPath $folder -Filter "report.*.$FactionId.txt" -File -ErrorAction SilentlyContinue) {
@@ -310,7 +321,7 @@ function Test-FactionOrdersSubmitted {
 		[Parameter(Mandatory = $true)][int]$Turn,
 		[Parameter(Mandatory = $true)][hashtable]$Paths
 	)
-	$folder = Join-Path $Paths.FactionsDir (Get-FactionFolderName -Id $FactionId)
+	$folder = Get-FactionOrdersFolder -FactionId $FactionId -Paths $Paths
 	$draftPath = Join-Path $folder ("order.{0}.txt" -f $FactionId)
 	if (Test-NonEmptyOrderFile -Path $draftPath) {
 		return $true
@@ -412,6 +423,48 @@ function Get-ContractorFactionIds {
 		if (-not (Test-Path -LiteralPath $persona)) { continue }
 		$text = Get-Content -LiteralPath $persona -Raw -Encoding UTF8
 		if ($text -match '(?m)^##\s*Preference:\s*contractor\s*$') {
+			$ids.Add($id)
+		}
+	}
+	return $ids.ToArray()
+}
+
+function Get-EconomicFactionIds {
+	param(
+		[Parameter(Mandatory = $true)][string]$RunId,
+		[int[]]$ExcludeFaction = @(2, 3),
+		[int]$FromFaction = 2,
+		[int]$ToFaction = 11
+	)
+	$paths = Get-RunPaths -RunId $RunId
+	$ids = [System.Collections.Generic.List[int]]::new()
+	for ($id = $FromFaction; $id -le $ToFaction; $id++) {
+		if ($ExcludeFaction -contains $id) { continue }
+		$persona = Join-Path (Join-Path $paths.FactionsDir (Get-FactionFolderName -Id $id)) 'persona.md'
+		if (-not (Test-Path -LiteralPath $persona)) { continue }
+		$text = Get-Content -LiteralPath $persona -Raw -Encoding UTF8
+		if ($text -match '(?m)^##\s*Preference:\s*economic\s*$') {
+			$ids.Add($id)
+		}
+	}
+	return $ids.ToArray()
+}
+
+function Get-MilitaryFactionIds {
+	param(
+		[Parameter(Mandatory = $true)][string]$RunId,
+		[int[]]$ExcludeFaction = @(2, 3),
+		[int]$FromFaction = 2,
+		[int]$ToFaction = 11
+	)
+	$paths = Get-RunPaths -RunId $RunId
+	$ids = [System.Collections.Generic.List[int]]::new()
+	for ($id = $FromFaction; $id -le $ToFaction; $id++) {
+		if ($ExcludeFaction -contains $id) { continue }
+		$persona = Join-Path (Join-Path $paths.FactionsDir (Get-FactionFolderName -Id $id)) 'persona.md'
+		if (-not (Test-Path -LiteralPath $persona)) { continue }
+		$text = Get-Content -LiteralPath $persona -Raw -Encoding UTF8
+		if ($text -match '(?m)^##\s*Preference:\s*military\s*$') {
 			$ids.Add($id)
 		}
 	}

@@ -153,6 +153,42 @@ public static partial class ReportRegionGraph
         return resources;
     }
 
+    /// <summary>Ground region id where a module stack is listed in the galaxy report (e.g. moblab away from grant).</summary>
+    public static string? ParseModuleStackRegionId(string? reportText, string stackId)
+    {
+        if (string.IsNullOrWhiteSpace(reportText) || string.IsNullOrWhiteSpace(stackId))
+        {
+            return null;
+        }
+
+        string? currentRegion = null;
+        var stackToken = $"[{stackId}]";
+
+        foreach (var rawLine in reportText.Replace("\r\n", "\n").Split('\n'))
+        {
+            if (rawLine.StartsWith("Rumors:", StringComparison.OrdinalIgnoreCase))
+            {
+                break;
+            }
+
+            var regionHeader = RegionHeaderRegex().Match(rawLine);
+            if (regionHeader.Success)
+            {
+                currentRegion = regionHeader.Groups[1].Value.ToUpperInvariant();
+                continue;
+            }
+
+            if (currentRegion is not null
+                && rawLine.Contains(stackToken, StringComparison.Ordinal)
+                && rawLine.TrimStart().StartsWith("+ ", StringComparison.Ordinal))
+            {
+                return currentRegion;
+            }
+        }
+
+        return null;
+    }
+
     /// <summary>Markdown table for prompt: grant region ground exits (MOVE targets).</summary>
     public static string FormatGrantRegionNavigationTable(string? reportText)
     {

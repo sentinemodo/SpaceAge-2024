@@ -105,7 +105,7 @@ Preference (from persona; live verbs) still colours **strategy** more than tacti
 - **military** — HQ `@produce terran`; factory **two** `armcbt` tank squads (`new2`, `new3`) before Mid Vale columns; `inftry` / `tanks`, `ATTACK` / `CAPTURE` / `DECLARE FACTION <id> ENEMY`, then `JUMP` once you have a ship on a Gate orbit
 - **economic** — HQ `@produce terran`; `USE` extract/farm, `BUY` / `SELL` at UN markets, spaceport trade
 - **researcher** — `RESEARCH`, wreck charters, `SEE` / `COPY`
-- **contractor** — UN `CONTRACT` / `give-module` jobs first, then trade
+- **contractor** — weighted turn focus (50% contract / 25% defence / 15% economy / 10% research); every story needs **## Turn priority** with active `CTxxxx` when contract-focused (`play/player/personas/contractor-turn-focus.md`)
 
 Doctrine: **explore** hinterland and Gate → **exploit** complementary diet (Arbor organics vs Anvil metals) → **conquer** or **ally**. Strategy should name that beat at **system** scale; tactics apply it on named bodies.
 

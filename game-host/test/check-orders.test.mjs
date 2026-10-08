@@ -47,6 +47,16 @@ test('validateOrderText includes full line in warnings', () => {
   assert.ok(w.some((x) => x.startsWith('BADVERB O00001:')));
 });
 
+test('validateOrderText accepts PASSWORD under faction header', () => {
+  const body = [
+    '#faction 2 "secret"',
+    'password "new-login-pass"',
+    '#end',
+  ].join('\n');
+  const w = validateOrderText(body, 2, 'secret');
+  assert.equal(w.length, 0);
+});
+
 test('validateOrderText accepts numeric repeat before verb', () => {
   const body = [
     '#faction 2 "secret"',

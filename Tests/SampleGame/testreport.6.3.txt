@@ -43,12 +43,13 @@ Events this quarter:
   Gelvaren [3], defenders: Caste Prime [2].
   week 13: battle at Northern Hemisphere [R00002] (0,0), attackers:
   Gelvaren [3], defenders: Caste Prime [2].
-  week 13: Bank account credited: Deposit interests accounted to 89.
-  Current balance: 7186.
 Bank report:
   Bank account balance: 7186.
   Credit line maximum: 10000.
   Credit rate: 20%, Deposit rate: 4.5%.
+  Account activity:
+    week 13: Bank account credited: 89 cash (Deposit interests
+    accounted.). Balance: 7186.
 
 Battles report:
 

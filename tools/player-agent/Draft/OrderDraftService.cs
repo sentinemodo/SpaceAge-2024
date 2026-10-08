@@ -34,7 +34,9 @@ public sealed class OrderDraftService
         var rulesMarkdown = await File.ReadAllTextAsync(rulesPath, cancellationToken);
         var allowlist = OrderVerbAllowlist.FromRulesMarkdown(rulesMarkdown);
         var reportText = await ReadOptionalTextAsync(request.ReportPath, cancellationToken);
-        var objectiveText = await ReadOptionalTextAsync(request.StoryPath, cancellationToken);
+        var objectiveText = MergeStoryAndKnowledge(
+            await ReadOptionalTextAsync(request.StoryPath, cancellationToken),
+            await ReadOptionalTextAsync(request.KnowledgePath, cancellationToken));
         var personaText = await ReadPersonaTextAsync(request, cancellationToken);
         var password = request.FactionDir is null
             ? null
@@ -114,10 +116,12 @@ public sealed class OrderDraftService
 
         if (!OrderDraftQuality.IsUsable(prepared, hints.PersonaPreference, reportText))
         {
-            var qualityViolations = OrderDraftQuality.DescribeMoveReadinessViolations(prepared)
-                .Concat(OrderDraftQuality.DescribeUseTechPlacementViolations(prepared, reportText))
-                .Concat(OrderDraftQuality.DescribeInvalidItemTypeViolations(prepared))
-                .Concat(OrderDraftQuality.DescribeDeferredNestGetViolations(prepared))
+            var qualityViolations = OrderDraftQuality.BuildRetryInstruction(hints.PersonaPreference, prepared, reportText)
+                .Split('\n', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
+                .Select(line => line.Trim())
+                .Select(line => line.TrimStart())
+                .Where(line => line.StartsWith("- ", StringComparison.Ordinal))
+                .Select(line => line[2..].Trim())
                 .ToList();
             var detail = qualityViolations.Count > 0
                 ? "\n  - " + string.Join("\n  - ", qualityViolations)
@@ -149,6 +153,26 @@ public sealed class OrderDraftService
         return await File.ReadAllTextAsync(path, cancellationToken);
     }
 
+    private static string? MergeStoryAndKnowledge(string? storyText, string? knowledgeText)
+    {
+        if (string.IsNullOrWhiteSpace(knowledgeText))
+        {
+            return storyText;
+        }
+
+        if (string.IsNullOrWhiteSpace(storyText))
+        {
+            return knowledgeText.Trim();
+        }
+
+        return storyText.TrimEnd()
+            + Environment.NewLine
+            + Environment.NewLine
+            + "## Faction knowledge (carry forward)"
+            + Environment.NewLine
+            + knowledgeText.Trim();
+    }
+
     private static async Task<string?> ReadPersonaTextAsync(OrderDraftRequest request, CancellationToken cancellationToken)
     {
         if (!string.IsNullOrWhiteSpace(request.PersonaPath))
@@ -174,6 +198,7 @@ public sealed class OrderDraftRequest
     public string? FactionDir { get; init; }
     public string? ReportPath { get; init; }
     public string? StoryPath { get; init; }
+    public string? KnowledgePath { get; init; }
     public string? PersonaPath { get; init; }
     public bool DryRun { get; init; }
     public int TopK { get; init; } = PlayerAgentSettings.LocalDefaultTopK;

@@ -13,9 +13,6 @@ Declared stances:
 
 
 Events this quarter:
-  week 1: Bank account credited: payment from NPC [1].
-  week 1: Bank account debited: payment to NPC [1].
-  week 5: Bank account credited: payment from NPC [1].
   week 9: declared enemy toward faction 2.
   week 9: battle at Northern Hemisphere [R00002] (0,0), attackers:
   Gelvaren [3], defenders: Caste Prime [2].
@@ -25,22 +22,31 @@ Events this quarter:
   Gelvaren [3], defenders: Caste Prime [2].
   week 12: battle at Northern Hemisphere [R00002] (0,0), attackers:
   Gelvaren [3], defenders: Caste Prime [2].
-  week 13: completed contract CT0121 and received a copy of rocket
-  launcher production [rckter] technology.
   week 13: battle at Northern Hemisphere [R00002] (0,0), attackers:
   Gelvaren [3], defenders: Caste Prime [2].
-  week 13: Bank account credited: Deposit interests accounted to 118.
-  Current balance: 9564.
 
 Press releases:
   Earth [P00001] at AU 1, ocean planet [ocean]: NPC [1] — Gelvaren
   closes CT0121.
     NPC records Gelvaren's fulfillment of CT0121 at Southern Hemisphere
     on Earth [P00001] at AU 1, ocean planet [ocean].
+
+Contract events:
+  week 13: completed CT0121; reward: copy of rocket launcher production
+  [rckter] technology.
 Bank report:
   Bank account balance: 9564.
   Credit line maximum: 10000.
   Credit rate: 20%, Deposit rate: 4.5%.
+  Account activity:
+    week 1: Bank account credited: 0 cash (payment from NPC [1].).
+    Balance: 9616.
+    week 1: Bank account debited: 52 cash (payment to NPC [1].).
+    Balance: 9564.
+    week 5: Bank account credited: 0 cash (payment from NPC [1].).
+    Balance: 9564.
+    week 13: Bank account credited: 118 cash (Deposit interests
+    accounted.). Balance: 9564.
 
 Technology reports:
 + rocket launcher production [rckter]: Manufacture of portable rocket

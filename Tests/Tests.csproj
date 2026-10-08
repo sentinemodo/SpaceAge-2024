@@ -89,6 +89,7 @@
     <Compile Include="TStackVisibility.cs" />
     <Compile Include="TUnderwaterVisibility.cs" />
     <Compile Include="TOrder.cs" />
+    <Compile Include="TPasswordOrder.cs" />
     <Compile Include="TActivate.cs" />
     <Compile Include="TBankOrders.cs" />
     <Compile Include="TUse.cs" />
@@ -107,6 +108,7 @@
     <Compile Include="TGetGiveHas.cs" />
     <Compile Include="TFoodGranaryTurn.cs" />
     <Compile Include="TGrant.cs" />
+    <Compile Include="TBankReport.cs" />
     <Compile Include="TFormStack.cs" />
     <Compile Include="TSee.cs" />
     <Compile Include="TSynchro.cs" />

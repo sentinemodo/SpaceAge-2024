@@ -42,6 +42,12 @@ public static partial class OrderDraftQuality
 
     };
 
+    /// <summary>Long <c>use &lt;tech&gt;</c> lines must run on factory stacks (build modules into the world).</summary>
+    private static readonly HashSet<string> FactoryBuiltUseTechs = new(StringComparer.OrdinalIgnoreCase)
+    {
+        "wndtrb", "mcored", "msrvtm", "armcbt", "grndtr", "twnbld", "engtrk", "mobctr", "sdrill", "fossil", "agrplx", "moblab",
+    };
+
 
 
     private static readonly Dictionary<string, string> WrongItemTypeNames = new(StringComparer.OrdinalIgnoreCase)
@@ -104,7 +110,7 @@ public static partial class OrderDraftQuality
 
 
 
-        if (HasMoveReadinessViolations(orderText))
+        if (HasMoveReadinessViolations(orderText, reportText))
 
         {
 
@@ -264,6 +270,16 @@ public static partial class OrderDraftQuality
 
 
 
+        if (HasMilitaryFieldedTurnViolations(orderText, personaPreference, reportText))
+
+        {
+
+            return false;
+
+        }
+
+
+
         if (HasAbsentPlayerPersonaViolations(orderText, personaPreference, reportText))
 
         {
@@ -275,6 +291,66 @@ public static partial class OrderDraftQuality
 
 
         if (HasEconomicPersonaViolations(orderText, personaPreference, reportText))
+
+        {
+
+            return false;
+
+        }
+
+
+
+        if (HasEconomicTurn2RepeatViolations(orderText, personaPreference, reportText))
+
+        {
+
+            return false;
+
+        }
+
+
+
+        if (HasOrdersTemplateCoverageViolations(orderText, reportText))
+
+        {
+
+            return false;
+
+        }
+
+
+
+        if (HasWindGrantMoblabFuelViolations(orderText, reportText, personaPreference))
+
+        {
+
+            return false;
+
+        }
+
+
+
+        if (HasRepeatCdrillBuildViolations(orderText, reportText))
+
+        {
+
+            return false;
+
+        }
+
+
+
+        if (HasWindGrantEnergySynchroViolations(orderText, reportText, personaPreference))
+
+        {
+
+            return false;
+
+        }
+
+
+
+        if (HasCdrillUseSequenceViolations(orderText, reportText))
 
         {
 
@@ -496,28 +572,6 @@ public static partial class OrderDraftQuality
 
             var upper = orderText.ToUpperInvariant();
 
-            if (!upper.Contains("GRNDTR", StringComparison.Ordinal))
-
-            {
-
-                return false;
-
-            }
-
-
-
-            var armcbtUses = Regex.Matches(upper, @"\bUSE\s+ARMCBT\b", RegexOptions.None).Count;
-
-            if (armcbtUses < 2)
-
-            {
-
-                return false;
-
-            }
-
-
-
             if (!upper.Contains("DECLARE FACTION", StringComparison.Ordinal))
 
             {
@@ -528,11 +582,61 @@ public static partial class OrderDraftQuality
 
 
 
-            if (!Regex.IsMatch(upper, @"(@MOVE|\bMOVE\s+R|\-MOVE\s+R)", RegexOptions.None))
+            var fieldedTanks = !string.IsNullOrWhiteSpace(reportText)
+
+                && ReportStackCatalog.ParseModuleTypes(reportText).Values
+
+                    .Any(t => t.Equals("tanks", StringComparison.OrdinalIgnoreCase));
+
+
+
+            if (fieldedTanks)
 
             {
 
-                return false;
+                if (!Regex.IsMatch(upper, @"(@MOVE|\bMOVE\s+R|\-MOVE\s+R|TACTIC\s+)", RegexOptions.None))
+
+                {
+
+                    return false;
+
+                }
+
+            }
+
+            else
+
+            {
+
+                if (!upper.Contains("GRNDTR", StringComparison.Ordinal))
+
+                {
+
+                    return false;
+
+                }
+
+
+
+                var armcbtUses = Regex.Matches(upper, @"\bUSE\s+ARMCBT\b", RegexOptions.None).Count;
+
+                if (armcbtUses < 2)
+
+                {
+
+                    return false;
+
+                }
+
+
+
+                if (!Regex.IsMatch(upper, @"(@MOVE|\bMOVE\s+R|\-MOVE\s+R)", RegexOptions.None))
+
+                {
+
+                    return false;
+
+                }
 
             }
 
@@ -546,9 +650,9 @@ public static partial class OrderDraftQuality
 
 
 
-    public static bool HasMoveReadinessViolations(string orderText) =>
+    public static bool HasMoveReadinessViolations(string orderText, string? reportText = null) =>
 
-        DescribeMoveReadinessViolations(orderText).Count > 0;
+        DescribeMoveReadinessViolations(orderText, reportText).Count > 0;
 
 
 
@@ -592,7 +696,9 @@ public static partial class OrderDraftQuality
 
         {
 
-            var location = grantRegion;
+            var location = ReportRegionGraph.ParseModuleStackRegionId(reportText, block.StackId)
+
+                ?? grantRegion;
 
             foreach (var line in block.Lines)
 
@@ -734,11 +840,15 @@ public static partial class OrderDraftQuality
 
 
 
-    public static IReadOnlyList<string> DescribeMoveReadinessViolations(string orderText)
+    public static IReadOnlyList<string> DescribeMoveReadinessViolations(string orderText, string? reportText = null)
 
     {
 
         var violations = new List<string>();
+
+        var moblabStackId = ReportStackCatalog.FindStackIdByModuleType(reportText, "moblab");
+
+        var moduleTypes = ReportStackCatalog.ParseModuleTypes(reportText);
 
         var useTechByAlias = ParseUseAsNewMap(orderText);
 
@@ -786,6 +896,18 @@ public static partial class OrderDraftQuality
 
 
 
+            if (ReportStackCatalog.StackTemplateMentionsModuleTech(reportText, block.StackId, "tanks")
+
+                && ReportBattleIntel.StackCanOperateWithoutRefuelInTemplate(reportText, block.StackId))
+
+            {
+
+                continue;
+
+            }
+
+
+
             var beforeMove = TakeLinesBeforeFirstMove(block.Lines);
 
             var beforeMoveText = string.Join('\n', beforeMove);
@@ -798,7 +920,18 @@ public static partial class OrderDraftQuality
 
 
 
-            if (!isHasGatedTank && !ContainsGetItem(beforeMoveText, "terran") && !ContainsGetItem(blockText, "terran"))
+            var isMoblabAwayGrant = moblabStackId is not null
+                && string.Equals(block.StackId, moblabStackId, StringComparison.OrdinalIgnoreCase)
+                && Regex.IsMatch(blockText, @"grant\s+item\s+\d+\s+oil\b", RegexOptions.IgnoreCase);
+
+            var bringsStackOnline = beforeMove.Any(line =>
+                line.TrimStart().StartsWith("set online true", StringComparison.OrdinalIgnoreCase));
+
+            if (!isHasGatedTank
+                && !isMoblabAwayGrant
+                && !bringsStackOnline
+                && !ContainsGetItem(beforeMoveText, "terran")
+                && !ContainsGetItem(blockText, "terran"))
 
             {
 
@@ -996,7 +1129,7 @@ public static partial class OrderDraftQuality
 
                 var tech = ExtractUseTech(line);
 
-                if (tech is null || !UseTechRequiredModule.TryGetValue(tech, out var requiredModule))
+                if (tech is null)
 
                 {
 
@@ -1006,7 +1139,23 @@ public static partial class OrderDraftQuality
 
 
 
-                if (!string.Equals(moduleType, requiredModule, StringComparison.OrdinalIgnoreCase))
+                if (FactoryBuiltUseTechs.Contains(tech)
+
+                    && !string.Equals(moduleType, "factry", StringComparison.OrdinalIgnoreCase))
+
+                {
+
+                    violations.Add(
+
+                        $"stack {block.StackId} ({moduleType}): `use {tech.ToLowerInvariant()}` builds modules from the factory — put `N use {tech.ToLowerInvariant()} for <target-id>` under `#modulestack <factry-id>` only, not on energy or drill stacks.");
+
+                }
+
+
+
+                if (UseTechRequiredModule.TryGetValue(tech, out var requiredModule)
+
+                    && !string.Equals(moduleType, requiredModule, StringComparison.OrdinalIgnoreCase))
 
                 {
 
@@ -1325,6 +1474,42 @@ public static partial class OrderDraftQuality
 
 
                 var tail = block.Lines.Skip(i + 1).TakeWhile(line => ExtractUseTech(line) is null).ToList();
+
+                if (tech.Equals("grndtr", StringComparison.OrdinalIgnoreCase))
+
+                {
+
+                    if (tail.Any(line => Regex.IsMatch(line, @"\+get\s+\d+\s+titani\b", RegexOptions.IgnoreCase)))
+
+                    {
+
+                        violations.Add(
+
+                            $"stack {block.StackId}: `use grndtr` staging is **`+get 2 iron` only** (catalog consume 2 iron) — omit titani.");
+
+                    }
+
+                    foreach (var line in tail)
+
+                    {
+
+                        var ironMatch = Regex.Match(line, @"\+get\s+(\d+)\s+iron\b", RegexOptions.IgnoreCase);
+
+                        if (ironMatch.Success && int.Parse(ironMatch.Groups[1].Value) > 2)
+
+                        {
+
+                            violations.Add(
+
+                                $"stack {block.StackId}: `use grndtr` needs **`+get 2 iron`** from cargob — not {ironMatch.Groups[1].Value} iron.");
+
+                        }
+
+                    }
+
+                    continue;
+
+                }
 
                 if (!tail.Any(line => line.TrimStart().StartsWith("+get ", StringComparison.OrdinalIgnoreCase)))
 
@@ -1656,6 +1841,422 @@ public static partial class OrderDraftQuality
 
 
 
+    public static bool HasMilitaryFieldedTurnViolations(string orderText, string? personaPreference, string? reportText) =>
+
+        string.Equals(personaPreference, "military", StringComparison.OrdinalIgnoreCase)
+
+        && DescribeMilitaryFieldedTurnViolations(orderText, reportText).Count > 0;
+
+
+
+    public static IReadOnlyList<string> DescribeMilitaryFieldedTurnViolations(string orderText, string? reportText)
+
+    {
+
+        var violations = new List<string>();
+
+        if (string.IsNullOrWhiteSpace(reportText))
+
+        {
+
+            return violations;
+
+        }
+
+
+
+        var reportTurn = ParseReportTurnFromText(reportText);
+
+        var moduleTypes = ReportStackCatalog.ParseModuleTypes(reportText);
+
+        var fieldedTanks = moduleTypes.Values.Any(t => t.Equals("tanks", StringComparison.OrdinalIgnoreCase));
+
+        if (reportTurn is null or < 2 || !fieldedTanks)
+
+        {
+
+            return violations;
+
+        }
+
+
+
+        var playerFactionId = ParsePlayerFactionIdFromReport(reportText);
+
+        var bankBalance = ReportRegionGraph.ParseBankBalance(reportText);
+
+        if (bankBalance is < 2000)
+
+        {
+
+            if (Regex.IsMatch(orderText, @"@produce\s+terran\b", RegexOptions.IgnoreCase))
+
+            {
+
+                violations.Add(
+
+                    "military turn 2+: bank balance under 2000 — HQ `@produce cash` (not `@produce terran`) until reserves recover.");
+
+            }
+
+
+
+            if (!Regex.IsMatch(orderText, @"@produce\s+cash\b", RegexOptions.IgnoreCase))
+
+            {
+
+                violations.Add("military turn 2+: bank balance under 2000 — add HQ `@produce cash` for upkeep.");
+
+            }
+
+        }
+
+
+
+        var faunaOnPlanet = ReportBattleIntel.FaunaFactionsOnPlanet(reportText);
+
+        if (faunaOnPlanet.Count > 0)
+
+        {
+
+            var declared = new HashSet<int>();
+
+            foreach (Match match in DeclareFactionEnemyRegex().Matches(orderText))
+
+            {
+
+                if (int.TryParse(match.Groups[1].Value, out var id))
+
+                {
+
+                    declared.Add(id);
+
+                }
+
+            }
+
+
+
+            foreach (var id in declared)
+
+            {
+
+                if (!faunaOnPlanet.Contains(id))
+
+                {
+
+                    violations.Add(
+
+                        $"military: DECLARE FACTION {id} ENEMY — fauna [{id}] not on this planet (present: {string.Join(", ", faunaOnPlanet.OrderBy(x => x))}).");
+
+                }
+
+            }
+
+
+
+            if (declared.Count > faunaOnPlanet.Count)
+
+            {
+
+                violations.Add(
+
+                    "military: declare only fauna factions present on this planet — omit off-world fauna ids.");
+
+            }
+
+        }
+
+
+
+        foreach (var block in ParseModuleStackBlocks(orderText))
+
+        {
+
+            var blockText = string.Join('\n', block.Lines);
+
+            if (block.Lines.Any(line =>
+
+                    line.TrimStart().StartsWith("set online true", StringComparison.OrdinalIgnoreCase))
+
+                && !ReportBattleIntel.StackMarkedDisabledInTemplate(reportText, block.StackId))
+
+            {
+
+                violations.Add(
+
+                    $"stack {block.StackId}: omit `set online true` when the module is already online in the report template.");
+
+            }
+
+
+
+            if (!ReportStackCatalog.StackTemplateMentionsModuleTech(reportText, block.StackId, "tanks"))
+
+            {
+
+                continue;
+
+            }
+
+
+
+            var isProvisioning = block.Lines.Any(line =>
+
+                Regex.IsMatch(line.Trim(), @"^has\s+1\s+tanks\b", RegexOptions.IgnoreCase));
+
+
+
+            if (!isProvisioning
+
+                && Regex.IsMatch(blockText, @"\-get\s+\d+\s+(terran|oil|food)\b", RegexOptions.IgnoreCase)
+
+                && ReportBattleIntel.StackCanOperateWithoutRefuelInTemplate(reportText, block.StackId))
+
+            {
+
+                violations.Add(
+
+                    $"stack {block.StackId}: omit `-get` terran/oil/food on crewed tanks — resupply at grant with `grant item` or `+get` under `move`, not repeat `-get` after `has 1 tanks`.");
+
+            }
+
+
+
+            if (Regex.IsMatch(blockText, @"@?give\s+all\b", RegexOptions.IgnoreCase))
+
+            {
+
+                violations.Add(
+
+                    $"stack {block.StackId}: never `@give all` / `give all` from tanks — strips crew/fuel/food and disables the unit; `-move` to grant, then `-give N copper|iron|titani` (loot only) to cargob.");
+
+            }
+
+
+
+            var moveLineIndex = -1;
+
+            var giveLineIndex = -1;
+
+            for (var i = 0; i < block.Lines.Count; i++)
+
+            {
+
+                var trimmed = block.Lines[i].Trim();
+
+                if (moveLineIndex < 0 && IsMoveLine(block.Lines[i]))
+
+                {
+
+                    moveLineIndex = i;
+
+                }
+
+
+
+                if (giveLineIndex < 0
+
+                    && Regex.IsMatch(trimmed, @"^@?give\b", RegexOptions.IgnoreCase))
+
+                {
+
+                    giveLineIndex = i;
+
+                }
+
+            }
+
+
+
+            if (moveLineIndex >= 0 && giveLineIndex >= 0 && giveLineIndex < moveLineIndex)
+
+            {
+
+                violations.Add(
+
+                    $"stack {block.StackId}: `-move` to the grant region **before** `-give` loot to cargob — cross-region GIVE fails while the tank is away from HQ/cargob.");
+
+            }
+
+
+
+            if (Regex.IsMatch(blockText, @"@repair\s+all\b", RegexOptions.IgnoreCase)
+
+                && !ReportBattleIntel.StackNeedsRepair(reportText, block.StackId))
+
+            {
+
+                violations.Add(
+
+                    $"stack {block.StackId}: omit `@repair all` when the report shows no hull damage (supply wounds use `grant item` food/oil, not repair).");
+
+            }
+
+
+
+            if (!isProvisioning
+
+                && block.Lines.Any(line => Regex.IsMatch(line.Trim(), @"^tactic\s+destroy\b", RegexOptions.IgnoreCase))
+
+                && !block.Lines.Any(IsMoveLine))
+
+            {
+
+                violations.Add(
+
+                    $"stack {block.StackId}: omit repeat `tactic destroy` when tactics unchanged — set tactic only with a new `-move`.");
+
+            }
+
+        }
+
+
+
+        foreach (var block in ParseModuleStackBlocks(orderText))
+
+        {
+
+            if (!block.Lines.Any(line => Regex.IsMatch(line.Trim(), @"^set\s+hold\s+20\s+terran\b", RegexOptions.IgnoreCase)))
+
+            {
+
+                continue;
+
+            }
+
+
+
+            if (block.Lines.Any(line => line.TrimStart().StartsWith("@produce", StringComparison.OrdinalIgnoreCase)))
+
+            {
+
+                violations.Add("military turn 2+: omit repeat `set hold 20 terran` on HQ when hold is already configured.");
+
+            }
+
+        }
+
+
+
+        if (playerFactionId is int factionId)
+
+        {
+
+            var lostRegions = ReportBattleIntel.RegionsWhereDefendersLost(reportText, factionId);
+
+            foreach (var block in ParseModuleStackBlocks(orderText))
+
+            {
+
+                if (!ReportStackCatalog.StackTemplateMentionsModuleTech(reportText, block.StackId, "tanks"))
+
+                {
+
+                    continue;
+
+                }
+
+
+
+                foreach (var moveLine in block.Lines.Where(IsMoveLine))
+
+                {
+
+                    var regionMatch = GroundMoveRegionRegex().Match(moveLine);
+
+                    if (!regionMatch.Success)
+
+                    {
+
+                        continue;
+
+                    }
+
+
+
+                    var region = regionMatch.Groups[1].Value;
+
+                    if (lostRegions.Any(r => r.Equals(region, StringComparison.OrdinalIgnoreCase)))
+
+                    {
+
+                        violations.Add(
+
+                            $"stack {block.StackId}: do not `-move {region}` — prior battle lost there; build mass before re-engaging heavy fauna.");
+
+                    }
+
+                }
+
+            }
+
+        }
+
+
+
+        return violations;
+
+    }
+
+
+
+    private static int? ParseReportTurnFromText(string? reportText)
+
+    {
+
+        if (string.IsNullOrWhiteSpace(reportText))
+
+        {
+
+            return null;
+
+        }
+
+
+
+        var match = Regex.Match(reportText, @"Turn\s+(\d+)\s*,", RegexOptions.IgnoreCase);
+
+        return match.Success && int.TryParse(match.Groups[1].Value, out var turn) ? turn : null;
+
+    }
+
+
+
+    private static int? ParsePlayerFactionIdFromReport(string? reportText)
+
+    {
+
+        if (string.IsNullOrWhiteSpace(reportText))
+
+        {
+
+            return null;
+
+        }
+
+
+
+        var match = Regex.Match(reportText, @"Report for\s+[^\[]+\[(\d+)\]", RegexOptions.IgnoreCase);
+
+        if (match.Success && int.TryParse(match.Groups[1].Value, out var id))
+
+        {
+
+            return id;
+
+        }
+
+
+
+        match = Regex.Match(reportText, @"SpaceAge report for[^\[]+\[(\d+)\]", RegexOptions.IgnoreCase);
+
+        return match.Success && int.TryParse(match.Groups[1].Value, out id) ? id : null;
+
+    }
+
+
+
     private static bool MilitaryOffensivePlan(string orderText) =>
 
         Regex.IsMatch(orderText, @"\buse\s+grndtr\b", RegexOptions.IgnoreCase)
@@ -1704,11 +2305,15 @@ public static partial class OrderDraftQuality
 
             var blockText = string.Join('\n', block.Lines);
 
-            if (!Regex.IsMatch(blockText, @"@use\s+(hcdril|iminng)\b", RegexOptions.IgnoreCase))
+            if (Regex.IsMatch(blockText, @"(?:@use|\b\d+\s+use|use)\s+tminng\b", RegexOptions.IgnoreCase)
+
+                && !grantResources.Contains("titani"))
 
             {
 
-                continue;
+                violations.Add(
+
+                    $"stack {block.StackId}: titanium mining (`tminng`) needs titani in the grant region Resources line — this cell has none; drill iron/carbon with `iminng` / `hcdril` only.");
 
             }
 
@@ -1864,7 +2469,7 @@ public static partial class OrderDraftQuality
 
                 violations.Add(
 
-                    $"energy: after mcored/cdrill staging on Anvil, expand wind on `#modulestack {wnplntId}` — `use wndtrb as newN for {wnplntId}` (then `@produce energy`) so nested modules can activate.");
+                    $"energy: after mcored/cdrill staging on Anvil, expand wind from `#modulestack <factry-id>` — `5 use wndtrb for {wnplntId}` with `+get` iron from cargob (then `#modulestack {wnplntId}` `@produce energy`) so nested modules can activate.");
 
             }
 
@@ -2110,6 +2715,10 @@ public static partial class OrderDraftQuality
     private static bool UsesGrantBootstrapSyntax(string orderText) =>
         Regex.IsMatch(orderText, @"\bgrant\s+(technology|item)\b", RegexOptions.IgnoreCase);
 
+    private static bool UsesEconomicBootstrapGrantSyntax(string orderText) =>
+        Regex.IsMatch(orderText, @"grant\s+technology\s+(mcored|msrvtm)\b", RegexOptions.IgnoreCase)
+        || Regex.IsMatch(orderText, @"grant\s+item\s+\d+\s+(iron|titani)\b", RegexOptions.IgnoreCase);
+
     public static IReadOnlyList<string> DescribeEconomicPersonaViolations(string orderText, string? reportText = null)
 
     {
@@ -2124,7 +2733,7 @@ public static partial class OrderDraftQuality
 
         }
 
-        if (!UsesGrantBootstrapSyntax(orderText))
+        if (!UsesEconomicBootstrapGrantSyntax(orderText))
 
         {
 
@@ -2199,6 +2808,316 @@ public static partial class OrderDraftQuality
         return violations;
 
     }
+
+
+
+    public static bool HasOrdersTemplateCoverageViolations(string orderText, string? reportText) =>
+        DescribeOrdersTemplateCoverageViolations(orderText, reportText).Count > 0;
+
+    public static IReadOnlyList<string> DescribeOrdersTemplateCoverageViolations(string orderText, string? reportText)
+    {
+        var violations = new List<string>();
+        if (string.IsNullOrWhiteSpace(reportText))
+        {
+            return violations;
+        }
+
+        var required = ReportStackCatalog.ParseOrdersTemplateStackIds(reportText);
+        if (required.Count == 0)
+        {
+            return violations;
+        }
+
+        var covered = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        foreach (var rawLine in orderText.Replace("\r\n", "\n").Split('\n'))
+        {
+            var line = rawLine.Trim();
+            if (!line.StartsWith("#modulestack", StringComparison.OrdinalIgnoreCase))
+            {
+                continue;
+            }
+
+            var id = line["#modulestack".Length..].Trim();
+            if (id.Length > 0 && char.IsDigit(id[0]))
+            {
+                covered.Add(id);
+            }
+        }
+
+        foreach (var stackId in required)
+        {
+            if (!covered.Contains(stackId))
+            {
+                violations.Add(
+                    $"orders template stack {stackId} missing — add `#modulestack {stackId}` (verb lines or empty block if idle this turn).");
+            }
+        }
+
+        return violations;
+    }
+
+    public static bool HasWindGrantMoblabFuelViolations(string orderText, string? reportText, string? personaPreference) =>
+        DescribeWindGrantMoblabFuelViolations(orderText, reportText, personaPreference).Count > 0;
+
+    public static IReadOnlyList<string> DescribeWindGrantMoblabFuelViolations(
+        string orderText,
+        string? reportText,
+        string? personaPreference)
+    {
+        var violations = new List<string>();
+        if (!string.Equals(personaPreference, "economic", StringComparison.OrdinalIgnoreCase)
+            || !ReportStackCatalog.GrantUsesWindPowerPlant(reportText))
+        {
+            return violations;
+        }
+
+        var moblabId = ReportStackCatalog.FindStackIdByModuleType(reportText, "moblab");
+        if (moblabId is null)
+        {
+            return violations;
+        }
+
+        foreach (var block in ParseModuleStackBlocks(orderText))
+        {
+            if (!string.Equals(block.StackId, moblabId, StringComparison.OrdinalIgnoreCase))
+            {
+                continue;
+            }
+
+            var blockText = string.Join('\n', block.Lines);
+            if (Regex.IsMatch(blockText, @"\+get\s+\d+\s+oil\b", RegexOptions.IgnoreCase)
+                || Regex.IsMatch(blockText, @"@get\s+.*\boil\b", RegexOptions.IgnoreCase))
+            {
+                violations.Add(
+                    $"stack {moblabId} (moblab): wind grant has no oil drilling — fuel with `grant item N oil to {moblabId}` only, not +get/@get oil from cargob.");
+            }
+
+            if (block.Lines.Any(IsMoveLine)
+                && Regex.IsMatch(blockText, @"\+get\s+\d+\s+food\b", RegexOptions.IgnoreCase)
+                && !Regex.IsMatch(blockText, @"grant\s+item\s+\d+\s+food\b", RegexOptions.IgnoreCase))
+            {
+                violations.Add(
+                    $"stack {moblabId}: moblab away from grant — `grant item N food to {moblabId}` instead of +get food from cargob (cross-region GET fails).");
+            }
+        }
+
+        return violations;
+    }
+
+    public static bool HasRepeatCdrillBuildViolations(string orderText, string? reportText) =>
+        DescribeRepeatCdrillBuildViolations(orderText, reportText).Count > 0;
+
+    public static IReadOnlyList<string> DescribeRepeatCdrillBuildViolations(string orderText, string? reportText)
+    {
+        var violations = new List<string>();
+        var cdrillId = ReportStackCatalog.FindStackIdByModuleType(reportText, "cdrill");
+        if (cdrillId is null)
+        {
+            return violations;
+        }
+
+        if (Regex.IsMatch(orderText, @"\buse\s+mcored\s+as\s+new\d+", RegexOptions.IgnoreCase))
+        {
+            violations.Add(
+                $"factory already fielded core drill [{cdrillId}] — do not `use mcored as newN`; `#modulestack <wnplnt-id>` `has N wnplnt` / `-synchro wind1` after factory `5 use wndtrb`; `#modulestack {cdrillId}` `synchro wind1` / `-activate 1` then **`N use tminng` before `@use iminng`**, `@give all to cargob`.");
+        }
+
+        return violations;
+    }
+
+    public static bool HasWindGrantEnergySynchroViolations(string orderText, string? reportText, string? personaPreference) =>
+        DescribeWindGrantEnergySynchroViolations(orderText, reportText, personaPreference).Count > 0;
+
+    public static IReadOnlyList<string> DescribeWindGrantEnergySynchroViolations(
+        string orderText,
+        string? reportText,
+        string? personaPreference)
+    {
+        var violations = new List<string>();
+        if (!string.Equals(personaPreference, "economic", StringComparison.OrdinalIgnoreCase)
+            || !ReportStackCatalog.GrantUsesWindPowerPlant(reportText)
+            || !Regex.IsMatch(orderText, @"\buse\s+wndtrb\b", RegexOptions.IgnoreCase))
+        {
+            return violations;
+        }
+
+        var wnplntId = ReportStackCatalog.FindStackIdByModuleType(reportText, "wnplnt");
+        var cdrillId = ReportStackCatalog.FindStackIdByModuleType(reportText, "cdrill");
+        var factryId = ReportStackCatalog.FindStackIdByModuleType(reportText, "factry");
+        if (wnplntId is null || cdrillId is null)
+        {
+            return violations;
+        }
+
+        foreach (var block in ParseModuleStackBlocks(orderText))
+        {
+            if (factryId is not null
+                && string.Equals(block.StackId, factryId, StringComparison.OrdinalIgnoreCase)
+                && block.Lines.Any(line => Regex.IsMatch(line.Trim(), @"^(\+|\-)?synchro\s+\w", RegexOptions.IgnoreCase)))
+            {
+                violations.Add(
+                    $"stack {factryId}: do not put `synchro` on the factory — `5 use wndtrb` runs alone; rendezvous on `#modulestack {wnplntId}` (`has N wnplnt` / `-synchro wind1`) and `#modulestack {cdrillId}` (`synchro wind1`).");
+            }
+        }
+
+        if (!Regex.IsMatch(
+                orderText,
+                $@"#\s*modulestack\s+{Regex.Escape(wnplntId)}\b[\s\S]*?has\s+\d+\s+wnplnt\b[\s\S]*?-synchro\s+wind1\b",
+                RegexOptions.IgnoreCase))
+        {
+            violations.Add(
+                $"wind batch: `#modulestack {wnplntId}` needs `has <N> wnplnt` and `-synchro wind1` after factory `5 use wndtrb` (do not synchro on factory — SYNCHRO is immediate).");
+        }
+
+        var cdrillBlockMatch = Regex.Match(
+            orderText,
+            $@"#\s*modulestack\s+{Regex.Escape(cdrillId)}\b([\s\S]*?)(?=#\s*modulestack|\#end\b|$)",
+            RegexOptions.IgnoreCase);
+        if (cdrillBlockMatch.Success)
+        {
+            var cdrillBody = cdrillBlockMatch.Groups[1].Value;
+            if (!Regex.IsMatch(cdrillBody, @"\bsynchro\s+wind1\b", RegexOptions.IgnoreCase))
+            {
+                violations.Add(
+                    $"core drill: `#modulestack {cdrillId}` needs `synchro wind1` (paired with wnplnt `-synchro wind1`) before `-activate 1` and extraction USE lines.");
+            }
+            else if (Regex.IsMatch(cdrillBody, @"\+synchro\s+wind1\b", RegexOptions.IgnoreCase)
+                     && !Regex.IsMatch(cdrillBody, @"(?<![+\-])\bsynchro\s+wind1\b", RegexOptions.IgnoreCase))
+            {
+                violations.Add(
+                    $"stack {cdrillId}: use bare `synchro wind1` on the cdrill stack — not `+synchro` (barrier pairs with wnplnt `-synchro`).");
+            }
+        }
+
+        return violations;
+    }
+
+    public static bool HasCdrillUseSequenceViolations(string orderText, string? reportText) =>
+        DescribeCdrillUseSequenceViolations(orderText, reportText).Count > 0;
+
+    public static IReadOnlyList<string> DescribeCdrillUseSequenceViolations(string orderText, string? reportText)
+    {
+        var violations = new List<string>();
+        var cdrillId = ReportStackCatalog.FindStackIdByModuleType(reportText, "cdrill");
+        if (cdrillId is null)
+        {
+            return violations;
+        }
+
+        foreach (var block in ParseModuleStackBlocks(orderText))
+        {
+            if (!string.Equals(block.StackId, cdrillId, StringComparison.OrdinalIgnoreCase))
+            {
+                continue;
+            }
+
+            var iminngIndex = -1;
+            var tminngIndex = -1;
+            for (var i = 0; i < block.Lines.Count; i++)
+            {
+                var line = block.Lines[i];
+                if (Regex.IsMatch(line, @"@use\s+iminng\b", RegexOptions.IgnoreCase))
+                {
+                    iminngIndex = i;
+                }
+
+                if (Regex.IsMatch(line, @"\b\d+\s+use\s+tminng\b", RegexOptions.IgnoreCase)
+                    || Regex.IsMatch(line, @"^use\s+tminng\b", RegexOptions.IgnoreCase))
+                {
+                    tminngIndex = i;
+                }
+            }
+
+            if (iminngIndex >= 0 && tminngIndex >= 0 && iminngIndex < tminngIndex)
+            {
+                violations.Add(
+                    $"stack {cdrillId}: put **`N use tminng` before `@use iminng`** — continuous `@use iminng` starves later immediate USE lines in the same quarter.");
+            }
+        }
+
+        return violations;
+    }
+
+    public static bool HasEconomicTurn2RepeatViolations(string orderText, string? personaPreference, string? reportText) =>
+
+        DescribeEconomicTurn2RepeatViolations(orderText, personaPreference, reportText).Count > 0;
+
+
+
+    public static IReadOnlyList<string> DescribeEconomicTurn2RepeatViolations(
+
+        string orderText,
+
+        string? personaPreference,
+
+        string? reportText)
+
+    {
+
+        var violations = new List<string>();
+
+        if (!string.Equals(personaPreference, "economic", StringComparison.OrdinalIgnoreCase)
+
+            || string.IsNullOrWhiteSpace(reportText))
+
+        {
+
+            return violations;
+
+        }
+
+
+
+        if (ReportFactoryAlreadyHasTechnology(reportText, "msrvtm")
+
+            && Regex.IsMatch(orderText, @"\buse\s+msrvtm\b", RegexOptions.IgnoreCase))
+
+        {
+
+            violations.Add(
+
+                "economic turn 2+: moblab/msrvtm already built — do not `use msrvtm` again; use `use grndtr`/`armcbt`/`engtrk` or reposition existing moblab instead.");
+
+        }
+
+
+
+        if (ReportFactoryAlreadyHasTechnology(reportText, "mcored")
+
+            && Regex.IsMatch(orderText, @"grant\s+technology\s+mcored\b", RegexOptions.IgnoreCase))
+
+        {
+
+            violations.Add(
+
+                "economic turn 2+: factory already holds mcored tech copy — omit repeat `grant technology mcored`.");
+
+        }
+
+
+
+        if (ReportFactoryAlreadyHasTechnology(reportText, "msrvtm")
+
+            && Regex.IsMatch(orderText, @"grant\s+technology\s+msrvtm\b", RegexOptions.IgnoreCase))
+
+        {
+
+            violations.Add(
+
+                "economic turn 2+: factory already holds msrvtm tech copy — omit repeat `grant technology msrvtm`.");
+
+        }
+
+
+
+        return violations;
+
+    }
+
+
+
+    private static bool ReportFactoryAlreadyHasTechnology(string reportText, string techId) =>
+        ReportStackCatalog.FactoryAlreadyHasTechnology(reportText, techId);
 
 
 
@@ -2504,7 +3423,7 @@ public static partial class OrderDraftQuality
 
         {
 
-            feedbackLines.AddRange(DescribeMoveReadinessViolations(orderText).Select(violation => "  - " + violation));
+            feedbackLines.AddRange(DescribeMoveReadinessViolations(orderText, reportText).Select(violation => "  - " + violation));
 
             feedbackLines.AddRange(DescribeMoveRegionReachabilityViolations(orderText, reportText).Select(violation => "  - " + violation));
 
@@ -2528,7 +3447,15 @@ public static partial class OrderDraftQuality
 
             feedbackLines.AddRange(DescribeMilitaryPersonaViolations(orderText, reportText).Select(violation => "  - " + violation));
 
-            feedbackLines.AddRange(DescribeAbsentPlayerPersonaViolations(orderText, reportText).Select(violation => "  - " + violation));
+            feedbackLines.AddRange(DescribeMilitaryFieldedTurnViolations(orderText, reportText).Select(violation => "  - " + violation));
+
+            if (string.Equals(personaPreference, "absent-player", StringComparison.OrdinalIgnoreCase))
+
+            {
+
+                feedbackLines.AddRange(DescribeAbsentPlayerPersonaViolations(orderText, reportText).Select(violation => "  - " + violation));
+
+            }
 
             feedbackLines.AddRange(DescribeWindGrantDrillViolations(orderText, reportText, personaPreference).Select(violation => "  - " + violation));
 
@@ -2539,6 +3466,18 @@ public static partial class OrderDraftQuality
             feedbackLines.AddRange(DescribeEnergyStagingViolations(orderText, reportText).Select(violation => "  - " + violation));
 
             feedbackLines.AddRange(DescribeEconomicPersonaViolations(orderText, reportText).Select(violation => "  - " + violation));
+
+            feedbackLines.AddRange(DescribeEconomicTurn2RepeatViolations(orderText, personaPreference, reportText).Select(violation => "  - " + violation));
+
+            feedbackLines.AddRange(DescribeOrdersTemplateCoverageViolations(orderText, reportText).Select(violation => "  - " + violation));
+
+            feedbackLines.AddRange(DescribeWindGrantMoblabFuelViolations(orderText, reportText, personaPreference).Select(violation => "  - " + violation));
+
+            feedbackLines.AddRange(DescribeRepeatCdrillBuildViolations(orderText, reportText).Select(violation => "  - " + violation));
+
+            feedbackLines.AddRange(DescribeWindGrantEnergySynchroViolations(orderText, reportText, personaPreference).Select(violation => "  - " + violation));
+
+            feedbackLines.AddRange(DescribeCdrillUseSequenceViolations(orderText, reportText).Select(violation => "  - " + violation));
 
             feedbackLines.AddRange(DescribeResearcherPersonaViolations(orderText, reportText).Select(violation => "  - " + violation));
 
@@ -2585,6 +3524,40 @@ public static partial class OrderDraftQuality
         if (string.Equals(personaPreference, "military", StringComparison.OrdinalIgnoreCase))
 
         {
+
+            var fielded = !string.IsNullOrWhiteSpace(reportText)
+
+                && ReportStackCatalog.ParseModuleTypes(reportText).Values
+
+                    .Any(t => t.Equals("tanks", StringComparison.OrdinalIgnoreCase));
+
+            var turn = ParseReportTurnFromText(reportText);
+
+            if (fielded && turn is >= 2)
+
+            {
+
+                return moveBlock + """
+
+                  Your previous draft was incomplete. Rewrite the full order file with at least:
+
+                  - `DECLARE FACTION <id> ENEMY` only for fauna **on this planet** (Battles report owner ids — not off-world packs).
+
+                  - HQ: `@produce cash` when bank balance is under 2000 — **no** `@produce terran`, **no** repeat `set hold 20 terran`.
+
+                  - Economy: wnplnt `@produce energy`; cargob `@get all food/iron`; sdrill `@use iminng`; farms `@use farmng` — **no** `set online true` on already-online modules.
+
+                  - Damaged tanks: `@repair all`, then `-move R00054` (grant), then `-give N copper|iron|titani` to cargob — **never** `@give all` (keeps crew/fuel/food aboard).
+
+                  - Under-provisioned tanks: `grant item 32 food` / `grant item 8 oil` to the stack id, then `-move` to scout — prefer future `move R…` with `+get 32 food from cargob` under the move (not `has 1 tanks` + `-get` + `-move`).
+
+                  - Avoid `-move` into lost battle regions until massed. Cover every Orders template `#modulestack`. Include #end.
+
+                  """;
+
+            }
+
+
 
             return moveBlock + """
 
@@ -2960,6 +3933,8 @@ public static partial class OrderDraftQuality
 
         return trimmed.StartsWith("@move", StringComparison.OrdinalIgnoreCase)
 
+            || trimmed.StartsWith("-move ", StringComparison.OrdinalIgnoreCase)
+
             || trimmed.StartsWith("move ", StringComparison.OrdinalIgnoreCase);
 
     }
@@ -3230,6 +4205,14 @@ public static partial class OrderDraftQuality
 
         var trimmed = line.Trim();
 
+        if (Regex.IsMatch(trimmed, @"^\d+\s+use\s+", RegexOptions.IgnoreCase))
+
+        {
+
+            trimmed = Regex.Replace(trimmed, @"^\d+\s+", string.Empty);
+
+        }
+
         if (trimmed.StartsWith("@use ", StringComparison.OrdinalIgnoreCase))
 
         {
@@ -3303,6 +4286,12 @@ public static partial class OrderDraftQuality
     [GeneratedRegex(@"grant\s+item\s+(\d+)\s+terran\s+to\s+\d+", RegexOptions.IgnoreCase)]
 
     private static partial Regex GrantTerranRegex();
+
+
+
+    [GeneratedRegex(@"(?im)^\s*declare\s+faction\s+(\d+)\s+enemy\s*$")]
+
+    private static partial Regex DeclareFactionEnemyRegex();
 
 }
 

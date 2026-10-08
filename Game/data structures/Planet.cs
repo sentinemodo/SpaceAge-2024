@@ -160,12 +160,6 @@ namespace SpaceAge
 			reportLines.AddRange(this.reportHeader(faction));
 			reportLines.AddRange(this.reportOrbit(faction));
 			reportLines.AddRange(this.reportRegions(faction));
-			List<string> publicationLines = PressRelease.ReportPublicationsForScope(faction, this.Name);
-			if (publicationLines.Count > 0)
-			{
-				reportLines.Add("");
-				reportLines.AddRange(publicationLines);
-			}
 			reportLines.AddRange(this.reportMoons(faction));
 			return reportLines;
 		}

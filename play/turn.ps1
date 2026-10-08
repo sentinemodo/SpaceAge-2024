@@ -44,6 +44,14 @@ foreach ($id in $script:PlayerFactionIds) {
 	Write-Host ("  order.{0}.txt <= {1}" -f $id, (Split-Path -Leaf $src))
 }
 
+$unSrc = Resolve-FactionOrderSourcePath -FactionId 1 -Paths $paths
+if ($unSrc) {
+	$unDst = Join-Path $paths.TurnDir 'order.1.txt'
+	$unText = Read-Utf8Text -Path $unSrc
+	Write-Win1251Text -Path $unDst -Text $unText
+	Write-Host ("  order.1.txt <= {0}" -f (Split-Path -Leaf $unSrc))
+}
+
 $gameArgs = @('/data', $paths.DataDir, '/turn-dir', $paths.TurnDir)
 $gmLogChannels = $GmLog
 if ([string]::IsNullOrWhiteSpace($gmLogChannels)) {

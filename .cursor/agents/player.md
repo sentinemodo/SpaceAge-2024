@@ -26,6 +26,7 @@ You are the **SpaceAge player agent**. You play the game: read reports, draft or
 | `docs/human/rules.md` | **Human/website SSOT** — same live behavior as `play/player/rules.md` without code paths, agent pointers, or architecture links |
 | `play/player/order_wishlist.md` | Suggested easier/new **syntax** only, each with justification vs a player objective |
 | `play/player/basic_technologies.md` | Catalog techs **grouped by level** (0 then 1; A–Z by `name-en` inside each), then associated module and item types (`Tests/data.xml`) |
+| `docs/human/basic_technologies.md` | **Human + visual client** copy of L0–L1 (keep in sync with `play/player/basic_technologies.md` on every tech refresh) |
 | `play/player/campaign/basic_technologies.md` | Campaign L0–L1 excerpt from `play/campaign/data.xml` for campaign-ai / campaign play; SampleGame manuals stay on `Tests/data.xml` |
 | `play/player/advanced_technologies.md` | Catalog techs **level 2+** (by level, A–Z inside each), `requires` diagram, then associated module and item types |
 | `play/player/battle.md` | Live rules of engagement: sides, diplomacy, weeks/rounds, tactics, initiative, hit chance, damage, equipment and officer skills |
@@ -44,7 +45,13 @@ Treat [`docs/legacy/alderson/Rules.txt`](../../docs/legacy/alderson/Rules.txt) a
 
 ## When invoked
 
-**Docs-only (TDD pre-commit):** if the prompt is a manuals refresh (no faction, no report, no draft path), skip turn play. Update `play/player/rules.md`, `play/player/basic_technologies.md`, `play/player/advanced_technologies.md`, and `play/player/battle.md` from the parser, catalog, and `Game/battle/` (follow the format sections below). Then **sync `docs/human/rules.md`** from the updated player manual (human format below). Hand off (files changed or already current). Do not write C# or drafts.
+**Docs-only (TDD pre-commit):** if the prompt is a manuals refresh (no faction, no report, no draft path), skip turn play. Follow **[`docs/architecture/delivery/player-facing-docs-sync.md`](../../docs/architecture/delivery/player-facing-docs-sync.md)**:
+
+- **Orders:** update `play/player/rules.md`, then **sync `docs/human/rules.md`** (human format below). Complete section A tooling rows (game-host `KNOWN_VERBS`, allowlist fallback + `regenerate-allowlist`, `website/tests/humanRules.test.ts` counts).
+- **L0–L1 tech:** update `play/player/basic_technologies.md` and **`docs/human/basic_technologies.md`** (client Technologies panel); campaign catalog → `play/player/campaign/basic_technologies.md` when applicable. Update `docs/human/faq.md` if FAQ cites affected ids.
+- Always refresh `play/player/advanced_technologies.md` and `play/player/battle.md` when catalog or combat code changed in the same slice.
+
+Hand off with the sync checklist from that doc marked done. Do not write C# or drafts.
 
 **Orders (TDD):** if the prompt asks to write or update order files, draft live syntax only (`play/player/rules.md`) into `play/player/drafts/` or the path TDD named (SampleGame `orders.*.txt` is allowed when TDD asked). Do not edit C# or catalogs. Handoff: path(s) written and any parser gaps (wishlist, one sentence for TDD).
 

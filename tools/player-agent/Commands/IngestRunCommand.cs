@@ -82,7 +82,7 @@ internal static class IngestRunCommand
                     {
                         if (dryRun)
                         {
-                            var plan = FactionIngestPlanner.BuildPlan(factionDir, options);
+                            var plan = FactionIngestPlanner.BuildPlan(factionDir, factionId, options);
                             Console.WriteLine("Dry run plan:");
                             foreach (var path in plan.IngestPaths)
                             {

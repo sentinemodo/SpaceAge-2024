@@ -154,7 +154,7 @@ Unchanged from prior revision: system presence gate, per-faction observer index,
 ## Migration
 
 - Subsumes boolean underwater hide into stealth + channels.
-- Update [`play/player/rules.md`](../player/rules.md) SEE + visibility when live.
+- [`play/player/rules.md`](../player/rules.md) SEE + visibility updated for engine **0.8.003**.
 
 ## Decisions (closed)
 

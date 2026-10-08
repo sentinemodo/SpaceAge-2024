@@ -1,6 +1,6 @@
 const SECTION_MARKERS = [
   { id: 'header', title: 'Report header', match: (line) => /^SpaceAge report for /i.test(line) || /^Turn \d+/i.test(line) },
-  { id: 'quarterEvents', title: 'Events this quarter', match: (line) => /^Events this quarter:/i.test(line) },
+  { id: 'events', title: 'Events this quarter', match: (line) => /^Events this quarter:/i.test(line) },
   { id: 'bank', title: 'Bank report', match: (line) => /^Bank report:/i.test(line) },
   { id: 'survey', title: 'Survey reports', match: (line) => /^Survey reports:/i.test(line) },
   { id: 'technology', title: 'Technology reports', match: (line) => /^Technology reports:/i.test(line) },

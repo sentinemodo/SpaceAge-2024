@@ -11,19 +11,21 @@ public sealed class FactionIngestPlan
 
 public static class FactionIngestPlanner
 {
-    public static FactionIngestPlan BuildPlan(string factionDir, FactionIngestOptions options)
+    public static FactionIngestPlan BuildPlan(string factionDir, int factionId, FactionIngestOptions options)
     {
         if (options.StoryOnly)
         {
-            var storyPath = FactionCorpusPaths.StoryPath(factionDir)
-                ?? throw new InvalidOperationException(
-                    $"story.md not found under {factionDir}. Create or update story before --story-only ingest.");
+            var storyPaths = StoryFileNaming.AllStoryPaths(factionDir, factionId);
+            if (storyPaths.Count == 0)
+            {
+                throw new InvalidOperationException(
+                    $"No story file found under {factionDir}. Create story.{{faction}}.{{turn}}.md before --story-only ingest.");
+            }
 
-            var normalizedStory = SourcePathNormalizer.Normalize(storyPath);
             return new FactionIngestPlan
             {
-                IngestPaths = [storyPath],
-                KeepSourcePaths = [normalizedStory],
+                IngestPaths = storyPaths,
+                KeepSourcePaths = storyPaths.Select(SourcePathNormalizer.Normalize).ToList(),
                 PruneIndexedFactionCorpus = false,
             };
         }
@@ -31,7 +33,8 @@ public static class FactionIngestPlanner
         if (options.FullCorpus)
         {
             var paths = FactionCorpusPaths.ReportPaths(factionDir)
-                .Concat(FactionCorpusPaths.StoryPath(factionDir) is { } story ? [story] : [])
+                .Concat(StoryFileNaming.AllStoryPaths(factionDir, factionId))
+                .Concat(FactionCorpusPaths.KnowledgePath(factionDir) is { } knowledge ? [knowledge] : [])
                 .Concat(FactionCorpusPaths.OrderPaths(factionDir))
                 .ToList();
 
@@ -56,10 +59,16 @@ public static class FactionIngestPlanner
             SourcePathNormalizer.Normalize(reportPath),
         };
 
-        if (FactionCorpusPaths.StoryPath(factionDir) is { } factionStory)
+        foreach (var factionStory in StoryFileNaming.AllStoryPaths(factionDir, factionId))
         {
             ingestPaths.Add(factionStory);
             keepSources.Add(SourcePathNormalizer.Normalize(factionStory));
+        }
+
+        if (FactionCorpusPaths.KnowledgePath(factionDir) is { } factionKnowledge)
+        {
+            ingestPaths.Add(factionKnowledge);
+            keepSources.Add(SourcePathNormalizer.Normalize(factionKnowledge));
         }
 
         foreach (var orderPath in FactionCorpusPaths.OrderPathsWithinTurnWindow(factionDir, options.MaxOrderTurns))

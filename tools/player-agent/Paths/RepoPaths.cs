@@ -49,6 +49,13 @@ public static class RepoPaths
             paths.Add(Path.Combine(player, "advanced_technologies.md"));
         }
 
+        var draftDocs = Path.Combine(repoRoot, "tools", "player-agent", "Draft");
+        paths.Add(Path.Combine(draftDocs, "economic-story.md"));
+        paths.Add(Path.Combine(draftDocs, "economic-wind-grant.md"));
+        paths.Add(Path.Combine(draftDocs, "contractor-story-to-orders.md"));
+        paths.Add(Path.Combine(draftDocs, "military-battle-doctrine.md"));
+        paths.Add(Path.Combine(player, "personas", "all.md"));
+
         return paths;
     }
 

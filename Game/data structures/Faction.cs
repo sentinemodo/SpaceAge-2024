@@ -35,6 +35,8 @@ namespace SpaceAge
 			set { this.password = value; }
 		}
 
+		public string PendingPassword { get; set; }
+
 		private string email;
 		public string Email
 		{
@@ -276,6 +278,7 @@ namespace SpaceAge
 				this,
 				0,
 				"Events this quarter:",
+				true,
 				true);
 			if (eventLines.Count > 0)
 			{
@@ -295,6 +298,17 @@ namespace SpaceAge
 			{
 				reportLines.Add("");
 				reportLines.AddRange(contractLines);
+			}
+
+			List<string> contractEventLines = this.ContractEventReports.Report(
+				this,
+				0,
+				"Contract events:",
+				true);
+			if (contractEventLines.Count > 0)
+			{
+				reportLines.Add("");
+				reportLines.AddRange(contractEventLines);
 			}
 
 			reportLines.AddRange(this.Bank.Report(this));
@@ -457,6 +471,12 @@ namespace SpaceAge
 		public EventReports EventReports
 		{
 			get { return this.eventReports; }
+		}
+
+		private EventReports contractEventReports = new EventReports();
+		public EventReports ContractEventReports
+		{
+			get { return this.contractEventReports; }
 		}
 
 		#endregion

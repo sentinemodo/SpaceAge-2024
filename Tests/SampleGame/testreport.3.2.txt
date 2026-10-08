@@ -9,7 +9,6 @@ SpaceAge Engine Version: 0.8.003.
 
 
 Events this quarter:
-  week 1: Bank account credited: payment from NPC [1].
   week 9: battle at Northern Hemisphere [R00002] (0,0), attackers: Gelvaren [3], defenders: Caste
   Prime [2].
   week 10: battle at Northern Hemisphere [R00002] (0,0), attackers: Gelvaren [3], defenders: Caste
@@ -20,7 +19,6 @@ Events this quarter:
   Prime [2].
   week 13: battle at Northern Hemisphere [R00002] (0,0), attackers: Gelvaren [3], defenders: Caste
   Prime [2].
-  week 13: Bank account credited: Deposit interests accounted to 108. Current balance: 8748.
 
 Press releases:
   Earth [P00001] at AU 1, ocean planet [ocean]: NPC [1] — Gelvaren closes CT0121.
@@ -30,6 +28,9 @@ Bank report:
   Bank account balance: 8748.
   Credit line maximum: 10000.
   Credit rate: 20%, Deposit rate: 4.5%.
+  Account activity:
+    week 1: Bank account credited: 0 cash (payment from NPC [1].). Balance: 10000.
+    week 13: Bank account credited: 108 cash (Deposit interests accounted.). Balance: 8748.
 
 Battles report:
 

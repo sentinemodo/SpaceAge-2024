@@ -1,7 +1,7 @@
 # SpaceAge player rules
 
 **Engine:** open beta **0.8.002**  
-**Updated:** 28 September 2026
+**Updated:** 9 October 2026
 
 Single source of truth for PBEM turn orders: file format, all live verbs, turn flow, market, movement, opening patterns, and combat.
 
@@ -20,7 +20,7 @@ Verbs are **case-insensitive**. Most arguments (stack ids, item ids) are **not**
 - After each turn you receive a **faction report** (stacks, locations, contracts, battles, bank, orders template with ids to reuse).
 
 - Submit a plain-text **order file** before the deadline. The host runs all factions, advances time, sends new reports.
-- **Between-turn** submissions allow only **CONTRACT**, **GRANT**, **RUMOR** and **PRESS**. They will be also issued immediately.
+- **Between-turn** submissions allow only **CONTRACT**, **GRANT**, **PASSWORD**, **RUMOR**, and **PRESS**. They will be also issued immediately.
 
 ---
 
@@ -51,7 +51,7 @@ Plain text, **Windows-1251** encoding (same as reports). Use Windows-1251 if nam
 
 | Line | Meaning |
 |------|---------|
-| `#faction <id> "<password>"` | Your faction (password in quotes). First line. |
+| `#faction <id> "<password>"` | Your faction (password in quotes). First line. Must match the host until a **`PASSWORD`** order takes effect after the turn. |
 | `#modulestack <id\|newN>` | Next lines apply to this stack. |
 | `#person <id\|newN>` | Next lines apply to this person. |
 | `#end` | Optional end marker — put last. |
@@ -133,7 +133,7 @@ Each week per subject:
 | Needs operational stack | No | Yes (crew, energy, fuel, repairs) |
 | Examples | GET, STACK, ATTACK, BUY | MOVE, USE, PRODUCE, RESEARCH |
 
-**CONTRACT** **GRANT** **RUMOR** and **PRESS** = immediate + between-turn allowed. 
+**CONTRACT** **GRANT** **PASSWORD** **RUMOR** and **PRESS** = immediate + between-turn allowed. 
 
 ---
 
@@ -259,9 +259,9 @@ this roughly gives the following in weeks
 
 ---
 
-## Full orders dictionary - All 32 verbs
+## Full orders dictionary - All 33 verbs
 
-**25 immediate** + **7 long**.
+**26 immediate** + **7 long**.
 
 ### Immediate
 
@@ -332,6 +332,8 @@ CAPTURE REGION forces move into region and declare unit preventing entry ENEMY.
 **HAS** — `HAS <qty> <item|module-type>` | `HAS PERSON <id>` | `HAS MODULES [qty]` — condition probe. Executed when modulestack has an item or module.
 
 **NAME** — `NAME "<stack name>"` renames the issuing unit (always allowed). `NAME LOCATION <region-object>|<space-object-id> "<name>"` renames that map object; you must be there, and non-allies cannot rename while a hostile patroller blocks it. Legacy `NAME <id> "<name>"` (without `LOCATION`) is the same as the location form.
+
+**PASSWORD** — `PASSWORD "<new-password>"` or `PASSWORD new-password` (unquoted when no spaces). Subject: **#faction** only — place directly under `#faction` before any `#modulestack`. Between-turn OK. Queues a new login/order-file password; the **current turn** still requires the old password in `#faction` until the order will be processed. The next report template use the new password.
 
 **PRESS** — `PRESS [planet|moon] TITLE "<t>" [FLAVOUR "<f>"]`. Subject: **#faction**. Between-turn OK. Issue a press release that will be added to the report (and immediatelly issued if submitted between turns). The press release will be visible to all present on the planet/moon. The sender of the press release **will be indicated.**
 

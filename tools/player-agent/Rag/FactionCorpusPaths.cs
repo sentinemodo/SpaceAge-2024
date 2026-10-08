@@ -2,6 +2,8 @@ using SpaceAge.PlayerAgent.Paths;
 
 namespace SpaceAge.PlayerAgent.Rag;
 
+using StoryFileNaming = SpaceAge.PlayerAgent.Paths.StoryFileNaming;
+
 public static class FactionCorpusPaths
 {
     public static string? LatestReportPath(string factionDir)
@@ -41,7 +43,9 @@ public static class FactionCorpusPaths
     public static bool IsFactionCorpusFile(string path)
     {
         var fileName = Path.GetFileName(path);
-        if (string.Equals(fileName, "story.md", StringComparison.OrdinalIgnoreCase))
+        if (string.Equals(fileName, "story.md", StringComparison.OrdinalIgnoreCase)
+            || string.Equals(fileName, "knowledge.md", StringComparison.OrdinalIgnoreCase)
+            || StoryFileNaming.TryParseFileName(fileName, out _, out _))
         {
             return true;
         }
@@ -63,9 +67,14 @@ public static class FactionCorpusPaths
             .ToList();
     }
 
-    public static string? StoryPath(string factionDir)
+    public static string? StoryPath(string factionDir, int factionId)
     {
-        var path = Path.Combine(factionDir, "story.md");
+        return StoryFileNaming.ResolveActiveStoryPath(factionDir, factionId);
+    }
+
+    public static string? KnowledgePath(string factionDir)
+    {
+        var path = Path.Combine(factionDir, "knowledge.md");
         return File.Exists(path) ? path : null;
     }
 

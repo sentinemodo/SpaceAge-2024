@@ -2,6 +2,8 @@
 
 For **live order syntax and turn rules**, read [`rules.md`](rules.md) — human-facing SSOT for the website and players.
 
+When engine order syntax or L0–L1 catalog tech changes, **`/player`** must keep this folder aligned with `play/player/` per [`docs/architecture/delivery/player-facing-docs-sync.md`](../architecture/delivery/player-facing-docs-sync.md).
+
 For **lobby FAQ** (joining, turns, client), read [`faq.md`](faq.md) — rendered on the site **FAQ** page.
 
 The [`play/player/rules.md`](../../play/player/rules.md) file is the agent/RAG manual (includes code sources for `/player` refresh).

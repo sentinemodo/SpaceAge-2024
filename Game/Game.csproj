@@ -84,6 +84,8 @@
     <Compile Include="effects\Training.cs" />
     <Compile Include="effects\ProducingEnergy.cs" />
     <Compile Include="game\Bank.cs" />
+    <Compile Include="game\BankTransaction.cs" />
+    <Compile Include="FaunaBattleLoot.cs" />
     <Compile Include="game\XMLProcessing.cs" />
     <Compile Include="orders\EResearchType.cs" />
     <Compile Include="orders\ResearchOrder.cs" />
@@ -258,6 +260,7 @@
     <Compile Include="orders\EraseOrder.cs" />
     <Compile Include="orders\GrantOrder.cs" />
     <Compile Include="orders\ContractOrder.cs" />
+    <Compile Include="orders\PasswordOrder.cs" />
     <Compile Include="orders\PressOrder.cs" />
     <Compile Include="orders\RumorOrder.cs" />
     <Compile Include="orders\DeclareOrder.cs" />

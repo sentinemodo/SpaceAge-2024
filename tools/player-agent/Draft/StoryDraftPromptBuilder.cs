@@ -96,11 +96,13 @@ public static partial class StoryDraftPromptBuilder
                 """
                 : isEconomic
                 ? """
-                    - HQ: set hold 20 terran and @produce terran; @produce energy on cplant before nested cdrill draw
-                    - GRANT bootstrap: grant item iron/titani to sdrill id, grant technology mcored + msrvtm to factry stack id, then ONE drill @use matching grant Resources (hcdril if carbon/oil; iminng if iron — never both), use mcored as newN, use msrvtm moblab as newN toward deep metals, expand wnplnt with use wndtrb + @produce energy before cdrill nest
-                    - Nest cdrill: has 1 cdrill, -get 6 terran, deactivate 1 until energy margin; @use farmng, cargob @get all + sell food
-                    - Scout with msrvtm/moblab carrying an mcored technology copy (not trucks): adjacent exits show deep pocket of resources detected; move lab into pocket cell to read Deep resources assays
-                    - Defer CT town charter until home grant production is maxed; next build agrplx farms or cdrill on deep pockets by market bottleneck
+                    - Focus: max home-grant output — open UN give-module contracts are background only, not this quarter's plan
+                    - HQ: set hold 20 terran and @produce terran; @produce energy on every cplant before nested cdrill or heavy factory USE
+                    - GRANT bootstrap (priority): grant technology mcored to factry stack id, then use mcored as newN with +get iron/titani from cargob this quarter; grant technology msrvtm when moblab not yet fielded
+                    - Sdrill: ONE @use matching grant Resources (hcdril if carbon/oil; iminng if iron — never both; no tminng unless Resources list titani); @use farmng on farms; cargob @get all food/carbon, sell food at town buy price
+                    - Energy deficit: expand wndtrb/wind plant and @produce energy before has 1 cdrill nest — deactivate surplus modules until watts cover core drill draw
+                    - Moblab column: use msrvtm as newN toward adjacent deep pocket of resources detected; move lab into pocket for assays; stage cdrill on deep metals after home grant loop is stable
+                    - Defer twnbld UN town charter and CT module convoys until grant production hits market/energy bottleneck
                     """
                 : isMilitary
                     ? """
@@ -135,7 +137,7 @@ public static partial class StoryDraftPromptBuilder
         var narrativeHook = isResearcher
             ? "adjacent HQ anomaly detected on grant exits, mobile lab field survey, 8-point investigation threshold"
             : isEconomic
-                ? "surface drill bootstrap, paid mcored tech copy, moblab deep-pocket scouting column before grant expansion"
+                ? "mcored core-drill copy solving grant energy deficit, surface loop saturating Resources line, moblab deep-pocket assays — not charter boardroom contract drama"
                 : isMilitary
                     ? "anonymous Mid Vale fauna rumor, scout truck on Farm Belt, two armored tank squads clearing brush for CT0016 cash"
                 : isAbsentPlayer
@@ -146,8 +148,9 @@ public static partial class StoryDraftPromptBuilder
 
         var strategicGuidance = isEconomic
             ? """
-                Four-quarter arc: max home-grant extraction (surface drill → core drill → farms/deep pockets), moblab deep-pocket survey column, then UN town charter when production is saturated.
-                Name CT0007 and preventive servicing reward only as a deferred milestone — do NOT make hosting the UN market town the turn-1 priority.
+                Four-quarter arc: max **region output potential** on the home grant (surface drill → paid mcored core drill → farms/deep-pocket cdrills), moblab deep-pocket survey column, UN town charter only when production is saturated.
+                Q1–Q2 must **grant technology mcored** and field core drill ASAP to fix energy deficit before expansion — same grant bootstrap as contractor play but **no contract-first distraction** (ignore loud CT0026-style jobs this quarter).
+                CT0007 / preventive servicing: deferred milestone only. See Draft/economic-story.md doctrine.
                 """
             : isResearcher
                 ? """
@@ -230,8 +233,9 @@ public static partial class StoryDraftPromptBuilder
 
             Write ONLY ## Narrative, 150-250 words hard SF prose for turn {context.ReportTurn} on the home grant,
             gold Helios light on Arbor, {narrativeHook}.
-            Reflect this report and any new contract/rumor releases; do not rewrite the four-quarter strategic arc.
+            Reflect this report and rumor releases; do not rewrite the four-quarter strategic arc.
             {(isContractor ? "State the quarter's Turn priority focus and name the active CTxxxx when focus is contract." : string.Empty)}
+            {(isEconomic ? "Center grant extraction, mcored deployment, and energy margin — mention open CTs at most in passing." : string.Empty)}
             No other headings.
             """));
 
@@ -250,13 +254,45 @@ public static partial class StoryDraftPromptBuilder
             + Environment.NewLine;
     }
 
-    private static string BuildReportExcerpt(string reportText, int maxLines)
+    public static string BuildReportExcerpt(string reportText, int maxLines = 120)
     {
         var lines = reportText
             .Replace("\r\n", "\n")
             .Split('\n')
             .Take(maxLines);
         return string.Join(Environment.NewLine, lines);
+    }
+
+    /// <summary>Full Battles report section when present (may exceed line-based excerpt).</summary>
+    public static string ExtractBattlesReportSection(string reportText)
+    {
+        if (string.IsNullOrWhiteSpace(reportText))
+        {
+            return string.Empty;
+        }
+
+        var normalized = reportText.Replace("\r\n", "\n");
+        var start = normalized.IndexOf("Battles report:", StringComparison.OrdinalIgnoreCase);
+        if (start < 0)
+        {
+            return string.Empty;
+        }
+
+        var tail = normalized[start..];
+        var endMarkers = new[] { "\nGalaxy report:", "\nOrders Template:", "\nTechnology reports:" };
+        var end = tail.Length;
+        foreach (var marker in endMarkers)
+        {
+            var idx = tail.IndexOf(marker, StringComparison.OrdinalIgnoreCase);
+            if (idx > 0)
+            {
+                end = Math.Min(end, idx);
+            }
+        }
+
+        const int cap = 12000;
+        var section = tail[..end].Trim();
+        return section.Length <= cap ? section : section[..cap] + "\n… [truncated]";
     }
 
     private static string ExtractContractHint(string reportText)

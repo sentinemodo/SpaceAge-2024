@@ -1,6 +1,6 @@
 # Public campaign website — implementation plan
 
-Last updated: 2026-09-16  
+Last updated: 2026-10-09  
 Decision: [ADR-0007](../adr/ADR-0007-public-campaign-website.md)
 
 This is the **product brief and implementation plan** for a public SpaceAge lobby site. It is **not** the engine, **not** the visual tool, and **not** a built site. Do not create `website/` source from this document unless you are the website implementer executing a later phase.
@@ -49,6 +49,18 @@ The site is a **content lobby**, not a signup mill and not a report browser. Pha
 
 **Play-loop checkbox:** whether `play/runs/<id>/` scripts exist and can emit status JSON is tracked on [`campaign-play.md`](campaign-play.md). Website Phase 2 waits on that checkbox; this plan does not duplicate or tick it.
 
+## Player-facing documentation sync
+
+Engine changes to **order syntax** or **catalog level 0–1 technologies** are not website-complete until [`player-facing-docs-sync.md`](player-facing-docs-sync.md) is satisfied.
+
+| Surface | Source | Website role |
+|---------|--------|----------------|
+| `/rules` | `docs/human/rules.md` | Rebuild/redeploy after markdown edits; Vitest [`website/tests/humanRules.test.ts`](../../../website/tests/humanRules.test.ts) guards dictionary size |
+| `/faq` | `docs/human/faq.md` | Same — no Astro copy of tech ids |
+| Technologies panel (visual client) | `docs/human/basic_technologies.md` | Copied into game-host image, not rendered as a public Astro page today |
+
+**`/website-developer`** updates Vitest expectations when verb counts change; **`/tdd`** + **`/player`** own markdown and tooling rows in the sync doc. Agent/RAG manuals stay in `play/player/` but must match live behavior.
+
 ## Product stance — closed lobby
 
 SpaceAge campaign play is a **closed PBEM lobby** for ten Interests (factions **2–11**). NPC factions **1 / 12 / 13** never appear as order-submission rows. There is no public account creation, no password reset, and no “join the game” form.
@@ -79,7 +91,7 @@ Do **not** copy fantasy hex art or an open-enrollment CTA.
 | Next Turn countdown | `nextTurnAt` if the GM set a wall-clock deadline; else “GM-scheduled” |
 | Join Game Now | **Omitted.** Replace with “Closed campaign” + Client / Turns CTAs |
 | Game Client card | Visual tool CTA → `/client` (placeholder until Phase 3) |
-| Rules card | `/rules` renders `docs/human/rules.md` (intro + full human rules) |
+| Rules card | `/rules` renders `docs/human/rules.md` (intro + full human rules) — **no duplicate rules prose in Astro**; see [Player-facing doc sync](#player-facing-documentation-sync) |
 | Discord / community | Optional; omit until a real channel exists |
 | Players & Turns | `/turns` — per-faction **orders submitted: yes/no** only |
 | *(none — add in Phase 4)* | **Tools** card → `/eta` (transit ETA) and `/battle` (what-if fight) |
@@ -91,7 +103,8 @@ Do **not** copy fantasy hex art or an open-enrollment CTA.
 | `/` | Concept, flavour excerpt, **required attribution**, status dashboard, Client + Turns + Rules cards |
 | `/client` | Visual tool: what it is, screenshot/placeholder, launch/download link (Phase 3) or “coming later” (Phases 1–2) |
 | `/turns` | Players & Turns: ten seats, submitted / missing, turn number, next deadline |
-| `/rules` | Short principles (Open PBEM, Interests, quarterly reports). Link out to `play/player/rules.md` / Rules.txt — **do not** paste the book |
+| `/rules` | Renders [`docs/human/rules.md`](../../docs/human/rules.md) at build time (full human dictionary). Do not duplicate order syntax in `website/src/` |
+| `/faq` | Renders [`docs/human/faq.md`](../../docs/human/faq.md); update when L0–L1 ids or turn behavior cited in FAQ change |
 | `/eta` | **Phase 4.** Transit time calculator (ship-report paste + two AU-from-star). See [Phase 4](#phase-4--player-tools-feature-requests) |
 | `/battle` | **Phase 4.** Two-side battle what-if. Same section |
 

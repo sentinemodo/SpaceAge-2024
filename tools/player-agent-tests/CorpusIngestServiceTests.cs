@@ -33,6 +33,7 @@ public class FactionIngestPlannerTests
 
         var plan = FactionIngestPlanner.BuildPlan(
             _factionDir,
+            2,
             new FactionIngestOptions { MaxOrderTurns = 2 });
 
         Assert.That(plan.IngestPaths.Select(Path.GetFileName), Is.EquivalentTo(new[]
@@ -62,6 +63,7 @@ public class FactionIngestPlannerTests
 
         var plan = FactionIngestPlanner.BuildPlan(
             _factionDir,
+            2,
             new FactionIngestOptions { StoryOnly = true });
 
         Assert.That(plan.IngestPaths.Select(Path.GetFileName), Is.EquivalentTo(new[] { "story.md" }));
@@ -79,6 +81,7 @@ public class FactionIngestPlannerTests
 
         var plan = FactionIngestPlanner.BuildPlan(
             _factionDir,
+            2,
             new FactionIngestOptions { FullCorpus = true });
 
         Assert.That(plan.IngestPaths.Select(Path.GetFileName), Is.EquivalentTo(new[]

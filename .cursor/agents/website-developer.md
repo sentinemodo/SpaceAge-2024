@@ -19,6 +19,7 @@ You are the **SpaceAge website developer**. You implement the **closed PBEM lobb
 2. [ADR-0007](../../docs/architecture/adr/ADR-0007-public-campaign-website.md)
 3. [`docs/architecture/technology.md`](../../docs/architecture/technology.md) **Website** section
 4. Seed/live scenarios (read-only): [`docs/architecture/delivery/website-scenarios.md`](../../docs/architecture/delivery/website-scenarios.md) now; `website/e2e/scenarios.md` after Phase 1
+5. When order syntax or L0–L1 tech changes land in `docs/human/`: [`player-facing-docs-sync.md`](../../docs/architecture/delivery/player-facing-docs-sync.md) — update `website/tests/humanRules.test.ts` if the rules dictionary grew/shrank; run `npm test` before handoff
 
 ## Owns
 

@@ -14,8 +14,11 @@ File-scoped rules live in **[`.cursor/rules/`](../../.cursor/rules/)**.
 | website-developer | [website-developer.md](../../.cursor/agents/website-developer.md) | [website-astro.mdc](../../.cursor/rules/website-astro.mdc) |
 | website-tester | [website-tester.md](../../.cursor/agents/website-tester.md) | [website-tester.mdc](../../.cursor/rules/website-tester.mdc) |
 | runpod-runner | [runpod-runner.md](../../.cursor/agents/runpod-runner.md) | [runpod-runner.mdc](../../.cursor/rules/runpod-runner.mdc) |
+| local-ollama | [local-ollama.md](../../.cursor/agents/local-ollama.md) | [local-ollama.mdc](../../.cursor/rules/local-ollama.mdc) |
 | cicd | [cicd.md](../../.cursor/agents/cicd.md) | [cicd.mdc](../../.cursor/rules/cicd.mdc) |
 
 Shared contracts: [website-pairing.md](../../.cursor/agents/website-pairing.md)
+
+Player-facing sync (orders + L0–L1 tech): [player-facing-docs-sync.md](../architecture/delivery/player-facing-docs-sync.md) — **`/tdd`** invokes **`/player`** before commit; **`/website-developer`** maintains rules Vitest.
 
 Engine version: always read `Game/Program.cs` → `EngineVersion`.

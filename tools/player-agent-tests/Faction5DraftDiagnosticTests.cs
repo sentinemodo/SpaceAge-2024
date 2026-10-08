@@ -16,24 +16,30 @@ public class Faction5DraftDiagnosticTests
     [Explicit("Calls local Ollama; ~4 min for 1 attempt (F smoke).")]
     public async Task CaptureFaction5SingleAttemptWithCatalog()
     {
-        await CaptureAttemptsAsync(maxAttempts: 1);
+        await CaptureAttemptsAsync(factionId: 5, reportFile: "report.1.5.txt", maxAttempts: 1);
+    }
+
+    [Test]
+    [Explicit("Calls local Ollama; F8 turn-2 quality diagnostic.")]
+    public async Task CaptureFaction8SingleAttemptTurn2()
+    {
+        await CaptureAttemptsAsync(factionId: 8, reportFile: "report.2.8.txt", maxAttempts: 1);
     }
 
     [Test]
     [Explicit("Calls local Ollama; ~15+ min for 5 attempts.")]
     public async Task CaptureFaction5DraftAttempts()
     {
-        await CaptureAttemptsAsync(maxAttempts: 5);
+        await CaptureAttemptsAsync(factionId: 5, reportFile: "report.1.5.txt", maxAttempts: 5);
     }
 
-    private static async Task CaptureAttemptsAsync(int maxAttempts)
+    private static async Task CaptureAttemptsAsync(int factionId, string reportFile, int maxAttempts)
     {
         var repoRoot = RepoPaths.FindRepositoryRoot();
         var settings = PlayerAgentSettings.Load(allowRunPodFlag: true);
-        var factionId = 5;
         var runId = "beta-1";
         var factionDir = RepoPaths.FactionFolder(repoRoot, runId, factionId);
-        var reportPath = Path.Combine(factionDir, "report.1.5.txt");
+        var reportPath = Path.Combine(factionDir, reportFile);
         var storyPath = Path.Combine(factionDir, "story.md");
         var personaPath = Path.Combine(factionDir, "persona.md");
 
@@ -150,6 +156,31 @@ public class Faction5DraftDiagnosticTests
         foreach (var v in OrderDraftQuality.DescribeSetHoldViolations(prepared))
         {
             TestContext.WriteLine($"  sethold: {v}");
+        }
+
+        foreach (var v in OrderDraftQuality.DescribeDrillUseResourceViolations(prepared, reportText))
+        {
+            TestContext.WriteLine($"  drill: {v}");
+        }
+
+        foreach (var v in OrderDraftQuality.DescribeWindGrantDrillViolations(prepared, reportText, pref))
+        {
+            TestContext.WriteLine($"  wind: {v}");
+        }
+
+        foreach (var v in OrderDraftQuality.DescribeEconomicPersonaViolations(prepared, reportText))
+        {
+            TestContext.WriteLine($"  econ: {v}");
+        }
+
+        foreach (var v in OrderDraftQuality.DescribeEconomicTurn2RepeatViolations(prepared, pref, reportText))
+        {
+            TestContext.WriteLine($"  turn2repeat: {v}");
+        }
+
+        foreach (var v in OrderDraftQuality.DescribeEnergyStagingViolations(prepared, reportText))
+        {
+            TestContext.WriteLine($"  energy: {v}");
         }
     }
 }

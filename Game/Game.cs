@@ -178,13 +178,31 @@ namespace SpaceAge
             this.UpdateBankAccounts();
             this.UpdateRates();
             this.GenerateOffers();
+			this.ApplyPendingFactionPasswords();
         }
+
+		public void ApplyPendingFactionPasswords()
+		{
+			foreach (Faction faction in this.Factions.Values)
+			{
+				if (string.IsNullOrEmpty(faction.PendingPassword))
+				{
+					continue;
+				}
+
+				faction.Password = faction.PendingPassword;
+				faction.PendingPassword = null;
+				faction.EventReports.Add(this.week, "password changed.");
+			}
+		}
 
 		public void ClearEventReports()
 		{
 			foreach (Faction faction in this.Factions.Values)
 			{
 				faction.EventReports.Clear();
+				faction.ContractEventReports.Clear();
+				faction.Bank.Transactions.Clear();
 			}
 			foreach (ModuleStack moduleStack in this.ModuleStacks.Values)
 			{

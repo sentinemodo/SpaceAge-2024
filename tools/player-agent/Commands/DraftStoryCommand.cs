@@ -64,7 +64,7 @@ internal static class DraftStoryCommand
             }
 
             var outputPath = string.IsNullOrWhiteSpace(output)
-                ? Path.Combine(factionDir, "story.md")
+                ? StoryFileNaming.PathFor(factionDir, factionIdValue, reportTurn)
                 : Path.GetFullPath(output);
             var hasPriorStory = File.Exists(outputPath);
 

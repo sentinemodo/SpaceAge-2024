@@ -1458,6 +1458,7 @@ namespace SpaceAge
 			}
 
 			List<ModuleStack> scavengers = this.collectScavengers(winningSide);
+			List<ModuleStack> lootRecipients = this.collectLootRecipients(winningSide);
 			HashSet<Faction> loserOwners = this.collectLoserOwners(winnerOwner);
 			Location location = winnerInitiator.Location;
 			if (location == null)
@@ -1475,7 +1476,7 @@ namespace SpaceAge
 			}
 			foreach (ModuleStack stack in loserStacks)
 			{
-				this.applyVictoryToStack(stack, disposition, week, winnerOwner, scavengers, loserOwners);
+				this.applyVictoryToStack(stack, disposition, week, winnerOwner, scavengers, lootRecipients, loserOwners);
 			}
 		}
 
@@ -1542,6 +1543,37 @@ namespace SpaceAge
 			return scavengers;
 		}
 
+		private List<ModuleStack> collectLootRecipients(ModuleStacks winningSide)
+		{
+			List<ModuleStack> recipients = new List<ModuleStack>();
+			if (winningSide == null)
+			{
+				return recipients;
+			}
+			foreach (ModuleStack stack in winningSide.Values)
+			{
+				if (stack.IsFormed && stack.IsRootModuleStack)
+				{
+					recipients.Add(stack);
+				}
+			}
+			return recipients;
+		}
+
+		internal void SplitLootAmongRecipients(List<ModuleStack> recipients, ItemStack itemStack)
+		{
+			this.splitAmongRecipients(recipients, itemStack);
+		}
+
+		internal void ReportFaunaLoot(ItemStack itemStack)
+		{
+			if (itemStack == null || itemStack.Quantity <= 0)
+			{
+				return;
+			}
+			this.report(string.Format("  Fauna wreckage yielded {0}.", itemStack.ReportName));
+		}
+
 		private HashSet<Faction> collectLoserOwners(Faction winnerOwner)
 		{
 			HashSet<Faction> loserOwners = new HashSet<Faction>();
@@ -1562,6 +1594,7 @@ namespace SpaceAge
 			int week,
 			Faction winnerOwner,
 			List<ModuleStack> scavengers,
+			List<ModuleStack> lootRecipients,
 			HashSet<Faction> loserOwners)
 		{
 			List<Module> modules = new List<Module>(stack.Modules);
@@ -1574,10 +1607,10 @@ namespace SpaceAge
 				switch (disposition)
 				{
 					case EVictoryDisposition.destroy:
-						this.destroyDisabledModule(module, week, winnerOwner, null);
+						this.destroyDisabledModule(module, week, winnerOwner, null, lootRecipients);
 						break;
 					case EVictoryDisposition.scavenge:
-						this.destroyDisabledModule(module, week, winnerOwner, scavengers);
+						this.destroyDisabledModule(module, week, winnerOwner, scavengers, lootRecipients);
 						break;
 					case EVictoryDisposition.capture:
 						this.transferVictoryCapturedModule(module, week, winnerOwner);
@@ -1588,12 +1621,17 @@ namespace SpaceAge
 			{
 				if (loserOwners.Contains(nested.Owner))
 				{
-					this.applyVictoryToStack(nested, disposition, week, winnerOwner, scavengers, loserOwners);
+					this.applyVictoryToStack(nested, disposition, week, winnerOwner, scavengers, lootRecipients, loserOwners);
 				}
 			}
 		}
 
-		private void destroyDisabledModule(Module module, int week, Faction winnerOwner, List<ModuleStack> scavengers)
+		private void destroyDisabledModule(
+			Module module,
+			int week,
+			Faction winnerOwner,
+			List<ModuleStack> scavengers,
+			List<ModuleStack> lootRecipients)
 		{
 			ModuleStack source = module.Parent;
 			int originalCount = source.Quantity;
@@ -1621,6 +1659,11 @@ namespace SpaceAge
 			{
 				this.removeProportionalItems(source, 1, originalCount, false);
 			}
+
+			List<ModuleStack> faunaLootRecipients = scavengers != null && scavengers.Count > 0
+				? scavengers
+				: lootRecipients;
+			FaunaBattleLoot.DropFromDestroyedModule(this, source, faunaLootRecipients, week);
 
 			this.destroyProportionalNested(source, 1, originalCount, winnerOwner);
 			string moduleReportName = module.ReportName;

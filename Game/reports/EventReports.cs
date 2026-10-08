@@ -26,11 +26,22 @@ namespace SpaceAge
 					|| eventReport.Description.StartsWith("WARNING:"));
 		}
 
-		private bool anyVisible(Faction faction, bool excludeParsingWarnings)
+		public static bool IsLegacyBankEvent(EventReport eventReport)
+		{
+			return eventReport.Description != null
+				&& (eventReport.Description.StartsWith("Bank account credited:")
+					|| eventReport.Description.StartsWith("Bank account debited:"));
+		}
+
+		private bool anyVisible(Faction faction, bool excludeParsingWarnings, bool excludeLegacyBankEvents)
 		{
 			foreach (EventReport eventReport in this)
 			{
 				if (excludeParsingWarnings && IsParsingWarning(eventReport))
+				{
+					continue;
+				}
+				if (excludeLegacyBankEvents && IsLegacyBankEvent(eventReport))
 				{
 					continue;
 				}
@@ -58,14 +69,28 @@ namespace SpaceAge
 			string sectionTitle,
 			bool excludeParsingWarnings)
 		{
+			return this.Report(faction, level, sectionTitle, excludeParsingWarnings, false);
+		}
+
+		public List<string> Report(
+			Faction faction,
+			int level,
+			string sectionTitle,
+			bool excludeParsingWarnings,
+			bool excludeLegacyBankEvents)
+		{
 			ReportLines reportLines = new ReportLines();
-			if (this.anyVisible(faction, excludeParsingWarnings))
+			if (this.anyVisible(faction, excludeParsingWarnings, excludeLegacyBankEvents))
 			{
 				reportLines.Add(sectionTitle, level);
 
 				foreach (EventReport eventReport in this)
 				{
 					if (excludeParsingWarnings && IsParsingWarning(eventReport))
+					{
+						continue;
+					}
+					if (excludeLegacyBankEvents && IsLegacyBankEvent(eventReport))
 					{
 						continue;
 					}

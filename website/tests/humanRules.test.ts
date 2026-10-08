@@ -25,7 +25,7 @@ describe('human rules loader', () => {
   it('indexes all dictionary orders as immediate vs long', () => {
     const md = loadHumanRulesMarkdown();
     const index = parseOrdersIndex(md);
-    expect(index.immediate).toHaveLength(28);
+    expect(index.immediate).toHaveLength(29);
     expect(index.long).toHaveLength(7);
     expect(index.immediate[0]).toBe('ACTIVE');
     expect(index.long.map((v) => v.toUpperCase())).toEqual([
@@ -48,5 +48,6 @@ describe('human rules loader', () => {
     );
     const html = renderHumanRulesHtml();
     expect(html).toMatch(new RegExp(`id="${orderAnchorId('MOVE')}"`));
+    expect(html).toMatch(new RegExp(`id="${orderAnchorId('PASSWORD')}"`));
   });
 });

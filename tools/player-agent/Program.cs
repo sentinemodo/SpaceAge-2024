@@ -19,6 +19,7 @@ static RootCommand BuildRootCommand()
     root.AddCommand(DraftCommand.Create());
     root.AddCommand(QueryCommand.Create());
     root.AddCommand(DraftStoryCommand.Create());
+    root.AddCommand(DraftKnowledgeCommand.Create());
     root.AddCommand(DraftRunCommand.Create());
     root.AddCommand(AuditIsolationCommand.Create());
     root.AddCommand(UsageCommand.Create());

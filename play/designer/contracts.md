@@ -47,7 +47,7 @@ Wreck target stacks: faction 1, wrecked or inert module (`alnhul`, `robofc`, `he
 
 ## Contract completion press
 
-When a contract trigger completes, **`Contract.Award`** emits a **planet-scoped `PressRelease`** (issuer faction `1`, visible only on that body's faction report under **Press releases:**). GM-authored `PRESS` uses the same planet prefix once live: `PRESS <planet-id> TITLE "…" FLAVOUR "…"`.
+When a contract trigger completes, **`Contract.Award`** emits a **planet-scoped `PressRelease`** (issuer faction `1`, visible in the faction report **Press releases:** block for factions with stacks on that body). GM-authored `PRESS` uses the same planet prefix once live: `PRESS <planet-id> TITLE "…" FLAVOUR "…"`.
 
 **When it posts:** automatically on award, same turn/week as the completion event. Issuer is always **United Star Nations** (`name-en`). Scope is the **planet or moon** of the contract's `location` region (not galaxy-wide).
 

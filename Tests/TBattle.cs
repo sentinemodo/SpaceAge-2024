@@ -928,6 +928,30 @@ namespace UnitTests
 		}
 
 		[Test]
+		public void ApplyVictoryResolution_Destroy_FaunaYieldsFoodAndAnvilMetals()
+		{
+			SpaceSystem system = new SpaceSystem("SS0099");
+			Planet anvil = new Planet(system, "P00005");
+			Region region = new Region(anvil, "faunaloot");
+			Faction fauna = new Faction("15", "Anvil Fauna");
+			Faction attackerOwner = this.game.Factions["2"];
+			ModuleStack attacker = new ModuleStack(region, attackerOwner, ModuleType.All["tanks"], "faunalootatk");
+			attacker.AddModule();
+			attacker.ApplyTactic("destroy");
+			ModuleStack defender = new ModuleStack(region, fauna, ModuleType.All["inftry"], "faunalootdef");
+			defender.AddModule();
+			this.disableByHeavyDamage(defender);
+
+			Battle battle = this.simulateAttackerVictory(attacker, defender);
+			battle.ApplyVictoryResolution(this.game.Week);
+
+			Assert.That(attacker.ItemStacks[ItemType.All["food"]].Quantity, Is.EqualTo(12));
+			Assert.That(attacker.ItemStacks[ItemType.All["copper"]].Quantity, Is.EqualTo(5));
+			Assert.That(attacker.ItemStacks[ItemType.All["iron"]].Quantity, Is.EqualTo(5));
+			Assert.That(attacker.ItemStacks[ItemType.All["titani"]].Quantity, Is.EqualTo(3));
+		}
+
+		[Test]
 		public void ApplyVictoryResolution_Destroy_RemovesDisabledModulesAndItems()
 		{
 			Region region = new Region(Region.All["R00002"].RegionHolder, "vdesregion");

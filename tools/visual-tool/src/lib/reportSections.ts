@@ -1,9 +1,26 @@
 import type { ReportSection } from '../api/client';
 
+const LEGACY_SECTION_IDS: Record<string, string[]> = {
+  events: ['quarterEvents'],
+};
+
+function resolveSection(sections: ReportSection[], id: string): ReportSection | undefined {
+  const aliases = LEGACY_SECTION_IDS[id] ?? [];
+  return sections.find((s) => s.id === id || aliases.includes(s.id));
+}
+
 export function sectionText(sections: ReportSection[], id: string, fallback = 'No section in report.'): string {
-  const hit = sections.find((s) => s.id === id);
+  const hit = resolveSection(sections, id);
   if (hit?.text?.trim()) return hit.text;
   return fallback;
+}
+
+/** Full engine report for the faction panel (prefer host text file; else join parsed sections). */
+export function fullFactionReportText(sections: ReportSection[], fullText = ''): string {
+  const trimmed = fullText.trim();
+  if (trimmed) return trimmed;
+  if (!sections.length) return '';
+  return sections.map((s) => s.text).filter(Boolean).join('\n\n');
 }
 
 /** Extract a section body when splitReportSections missed it (e.g. older host). */

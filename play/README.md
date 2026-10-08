@@ -259,7 +259,7 @@ Text reports only into `factions/02`–`11`. No XML reports. No faction 1/12/13 
 
 ## NPC orders
 
-Factions **1 / 12 / 13** submit no `order.*` until a later GM/raid slice.
+Faction **1** (UN): versioned drafts in `gm/orders.1.{turn}.{version}.txt` (UTF-8); `turn.ps1` copies the latest match to `turn/order.1.txt` (1251) when present. Legacy `gm/order.1.txt` still works. Factions **12 / 13** submit no `order.*` until a later GM/raid slice.
 
 ## Passwords
 
@@ -272,7 +272,7 @@ Not scripts yet (GM documents and may run the documented `Game.exe` line; GM doe
 | Need | Notes |
 |------|--------|
 | `play/no-turn.ps1` | Wrap `/no-turn` + UN `order.1.txt` staging + optional `next` |
-| NPC 12/13 orders on a full turn | `turn.ps1` copies factions 2–11 only (raids / hostility-flip later) |
+| NPC 12/13 orders on a full turn | `turn.ps1` copies factions 2–11 plus optional UN `gm/orders.1.*`; militia raids / hostility-flip later |
 
 Do not point `/data` at `play/campaign/`. Do not commit `play/runs/`.
 

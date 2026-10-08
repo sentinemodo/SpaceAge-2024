@@ -75,7 +75,11 @@ Split stacks keep proportional nested cargo. Movement uses ground `move` speed; 
 
 ---
 
-## Battle rewards (wishlist — on fauna stack destroyed)
+## Battle rewards (live — on fauna module destroyed after victory cleanup)
+
+Engine (`FaunaBattleLoot`): **food** on every wild-fauna module destroyed (factions 14–17). **Arbor** (`P00001`, Helios): **25 food** per module. **Other bodies**: **12 food**. **Anvil** (`P00005`): **12 food** plus **5 copper**, **5 iron**, **3 titani** per module. Loot splits round-robin across winning side stacks (or scavenge recipients). Battle report line: `Fauna wreckage yielded …`.
+
+## Battle rewards (design reference — RP and extended tables)
 
 When fauna modules are **destroyed** (not captured), drop **item stacks** and **research points** to attackers. Split loot **evenly among participating attacker stacks** (survived to battle end; equal shares, remainder to lowest stack id).
 

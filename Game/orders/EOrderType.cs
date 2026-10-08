@@ -26,6 +26,7 @@ namespace SpaceAge
 		jump,
 		move,
 		name,
+		password,
 		press,
 		rumor,
 		produce,

@@ -31,6 +31,7 @@ namespace SpaceAge
 			{ "jump", subject => new JumpOrder(subject) },
 			{ "move", subject => new MoveOrder(subject) },
 			{ "name", subject => new NameOrder(subject) },
+			{ "password", subject => new PasswordOrder(subject) },
 			{ "produce", subject => new ProduceOrder(subject) },
 			{ "repair", subject => new RepairOrder(subject) },
 			{ "research", subject => new ResearchOrder(subject) },

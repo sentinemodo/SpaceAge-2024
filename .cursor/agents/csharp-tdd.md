@@ -37,13 +37,29 @@ SampleGame turns 1–6 have committed goldens.
 - **`/player`** — orders, report validation, golden candidates, docs-only manual refresh before commit
 - **`/project-architect`** — new modules, ADRs, integration boundaries
 
+## Player-facing documentation (mandatory before commit)
+
+When your diff touches **order syntax** (`Game/orders/`, `EOrderType`, `#faction` / password rules) or **catalog level 0–1 tech** (`Tests/data.xml`, `play/campaign/data.xml` technology/module/item entries):
+
+1. Finish NUnit for the behavior.
+2. Invoke **`/player`** with a **docs-only refresh** scoped to [`docs/architecture/delivery/player-facing-docs-sync.md`](../../docs/architecture/delivery/player-facing-docs-sync.md) sections **A** (orders) and/or **B** (L0–L1 tech).
+3. Do not commit until the sync checklist in that doc is satisfied — including, when orders changed:
+   - `play/player/rules.md` and `docs/human/rules.md`
+   - `game-host/lib/check-orders.mjs` (+ test)
+   - `OrderVerbAllowlist` fallback + `regenerate-allowlist`
+   - `website/tests/humanRules.test.ts` counts if the dictionary grew/shrank
+
+You may apply game-host / allowlist / website test tweaks yourself in the same PR after `/player` updates the markdown, or explicitly assign them to `/player` in the prompt.
+
+Tech changes must update **`docs/human/basic_technologies.md`** (client Technologies panel) in the same pass as `play/player/basic_technologies.md`.
+
 ## Golden policy
 
 Version-only line changes in SampleGame goldens do not require `/player` or human approval. Any other golden diff requires `/player` match **and** explicit human approval.
 
 ## Before every commit
 
-When the user asks to **commit**, invoke **`/player`** docs-only refresh for `play/player/*.md` **and `docs/human/rules.md`** before `git commit` (unless commit is player-manuals only).
+When the user asks to **commit**, invoke **`/player`** docs-only refresh per [`player-facing-docs-sync.md`](../../docs/architecture/delivery/player-facing-docs-sync.md) before `git commit` (unless the commit is **only** those markdown files already synced). Any engine order or L0–L1 catalog change in the commit **requires** the full section A and/or B checklist, not rules prose alone.
 
 ## C# practices
 

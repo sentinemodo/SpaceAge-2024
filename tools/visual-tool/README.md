@@ -27,7 +27,7 @@ npm start
 
 ## Features
 
-- Authenticated session (faction password from report `#faction` header)
+- Authenticated session (faction password from report `#faction` header; use **`PASSWORD`** under `#faction` to queue a new password — after the host runs the turn, log in with the new password and use it in `#faction` lines)
 - **XML** report ingest from `GET /api/session/report.xml` (map, units, orders)
 - **Text report sections** from `GET /api/session/report-sections` (engine-formatted; client does not reformat)
 - Star map with system filter (click / shift-click) and region drill-down

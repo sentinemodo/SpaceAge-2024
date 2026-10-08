@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using SpaceAge.PlayerAgent.Draft;
+using SpaceAge.PlayerAgent.Lint;
 using SpaceAge.PlayerAgent.Paths;
 
 namespace SpaceAge.PlayerAgent.Tests;
@@ -466,5 +467,44 @@ public class OrderDraftQualityTests
                 Is.True,
                 () => $"faction {faction} {ordersPath}");
         }
+    }
+
+    [Test]
+    public void IsUsable_F9Orders522_Turn2FailsOnGiveAllBeforeMove()
+    {
+        var repoRoot = RepoPaths.FindRepositoryRoot();
+        var folder = RepoPaths.FactionFolder(repoRoot, "beta-1", 9);
+        var ordersPath = Path.Combine(folder, "orders.9.2.2.txt");
+        if (!File.Exists(ordersPath))
+        {
+            Assert.Ignore("orders.9.2.2.txt not present in this checkout");
+        }
+
+        var report = File.ReadAllText(Path.Combine(folder, "report.2.9.txt"));
+        var orders = File.ReadAllText(ordersPath);
+        var violations = OrderDraftQuality.DescribeMilitaryFieldedTurnViolations(orders, report);
+        Assert.That(
+            violations.Any(v => v.Contains("give all", StringComparison.OrdinalIgnoreCase)),
+            Is.True,
+            () => string.Join("; ", violations));
+    }
+
+    [Test]
+    public void IsUsable_F9Orders524_Turn2PassesQualityAndLint()
+    {
+        var repoRoot = RepoPaths.FindRepositoryRoot();
+        var folder = RepoPaths.FactionFolder(repoRoot, "beta-1", 9);
+        var ordersPath = Path.Combine(folder, "orders.9.2.4.txt");
+        var reportPath = Path.Combine(folder, "report.2.9.txt");
+        var persona = VerbInference.DetectPersonaPreference(File.ReadAllText(Path.Combine(folder, "persona.md")));
+        var orders = File.ReadAllText(ordersPath);
+        var report = File.ReadAllText(reportPath);
+        var allowlist = OrderVerbAllowlist.FromRulesMarkdown(File.ReadAllText(Path.Combine(RepoPaths.PlayerDirectory(repoRoot), "rules.md")));
+        var lint = OrderDraftLinter.Lint(orders, allowlist);
+        Assert.That(lint.IsValid, Is.True, () => string.Join("; ", lint.Errors));
+        Assert.That(
+            OrderDraftQuality.IsUsable(orders, persona, report),
+            Is.True,
+            () => OrderDraftQuality.BuildRetryInstruction(persona, orders, report));
     }
 }

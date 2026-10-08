@@ -120,6 +120,7 @@ namespace SpaceAge
 					ordersReader.Load(turn_dir);
 					Console.WriteLine("Applying between-turn orders");
 					game.ExecuteBetweenTurnOrders();
+					game.ApplyPendingFactionPasswords();
 					Contract.All.WriteAnnouncements(turn_dir, game);
 					Console.WriteLine("Saving game");
 					dataFile.SaveGame();

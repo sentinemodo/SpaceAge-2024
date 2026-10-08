@@ -74,7 +74,7 @@ internal static class IngestFactionCommand
                 throw new InvalidOperationException($"Faction folder not found: {factionDir}");
             }
 
-            var plan = FactionIngestPlanner.BuildPlan(factionDir, options);
+            var plan = FactionIngestPlanner.BuildPlan(factionDir, factionId, options);
             Console.WriteLine("Faction sources:");
             foreach (var path in plan.IngestPaths)
             {
@@ -96,7 +96,7 @@ internal static class IngestFactionCommand
                 {
                     var normalizedPath = SourcePathNormalizer.Normalize(path);
                     var content = await File.ReadAllTextAsync(normalizedPath, context.GetCancellationToken());
-                    var chunks = path.EndsWith("story.md", StringComparison.OrdinalIgnoreCase)
+                    var chunks = StoryFileNaming.IsStoryFileName(Path.GetFileName(path))
                         ? MarkdownChunker.ChunkStory(normalizedPath, content)
                         : path.Contains("report", StringComparison.OrdinalIgnoreCase)
                             ? MarkdownChunker.ChunkReport(normalizedPath, content)

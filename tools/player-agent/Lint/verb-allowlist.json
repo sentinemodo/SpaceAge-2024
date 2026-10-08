@@ -1,7 +1,7 @@
 ﻿{
   "sourcePath": "play/player/rules.md",
-  "sourceContentHash": "f45ef4cde2d2878a87f41386a97cd41139c8755004261b276f4fad14b2fa78ed",
-  "generatedAtUtc": "2026-09-28T15:31:05.8349362Z",
+  "sourceContentHash": "71c3b0a3a4a442d37a7a72da77d4262fe09c95afc4e2644801f26fd5f45e49c3",
+  "generatedAtUtc": "2026-10-08T22:07:51.5943354Z",
   "verbs": [
     "ACTIVATE",
     "ACTIVE",
@@ -22,6 +22,7 @@
     "HAS",
     "MOVE",
     "NAME",
+    "PASSWORD",
     "PRESS",
     "PRODUCE",
     "REPAIR",

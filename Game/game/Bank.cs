@@ -15,6 +15,12 @@ namespace SpaceAge
 
         private Faction faction;
 
+		private BankTransactions transactions = new BankTransactions();
+		public BankTransactions Transactions
+		{
+			get { return this.transactions; }
+		}
+
 		private double balance;
 		public double Balance
 		{
@@ -56,13 +62,13 @@ namespace SpaceAge
         public void Credit(int week, double amount, string title)
         {
             this.Balance += amount;
-            this.faction.EventReports.Add(week, string.Concat("Bank account credited: ", title));
+            this.transactions.Add(new BankTransaction(week, amount, title, this.Balance));
         }
 
         public void Debit(int week, double amount, string title)
         {
             this.Balance -= amount;
-            this.faction.EventReports.Add(week, string.Concat("Bank account debited: ", title));
+            this.transactions.Add(new BankTransaction(week, -amount, title, this.Balance));
         }
 
 		public void AddQuarterlyInterest(int week)
@@ -72,15 +78,11 @@ namespace SpaceAge
             if (this.balance < 0)
 			{
                 interest = Math.Round(this.Balance * this.creditRate / 4, MidpointRounding.AwayFromZero);
-                this.Debit(week, interest, string.Format("Credit line interests accounted to {0}. Current balance: {1}.",
-                            interest,
-                            this.balance + interest));
+                this.Debit(week, interest, "Credit line interests accounted.");
 			} else
 			{
                 interest = Math.Round(this.Balance * this.depositRate / 4, MidpointRounding.AwayFromZero);
-                this.Credit(week, interest, string.Format("Deposit interests accounted to {0}. Current balance: {1}.",
-                            interest,
-                            this.balance + interest));
+                this.Credit(week, interest, "Deposit interests accounted.");
             }
 		}
 
@@ -104,6 +106,7 @@ namespace SpaceAge
                 string.Format("  Credit line maximum: {0}.", this.CreditLine),
                 string.Format("  Credit rate: {0}%, Deposit rate: {1}%.", this.CreditRate * 100, this.DepositRate * 100)
             };
+			lines.AddRange(this.transactions.Report(1));
 			return lines;
 		}
 

@@ -147,7 +147,7 @@ internal static class DraftRunCommand
                             turnOverride,
                             iterationOverride,
                             reportPath);
-                        var storyPath = FactionCorpusPaths.StoryPath(factionDir);
+                        var storyPath = FactionCorpusPaths.StoryPath(factionDir, factionId);
                         var personaPath = Path.Combine(factionDir, "persona.md");
                         var draftTurn = turnOverride
                             ?? (OrderFileNaming.TryParseReportFileName(reportPath, out var reportTurn, out _)

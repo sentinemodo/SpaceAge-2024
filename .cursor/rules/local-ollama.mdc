@@ -1,0 +1,16 @@
+---
+description: Local Ollama Docker — health, restart, log-backed inference progress
+globs:
+alwaysApply: false
+---
+
+# Local Ollama (Docker)
+
+When the user invokes **`/local-ollama`**, asks whether **local LLM / Ollama Docker** is up, wants **Ollama restarted**, or needs **live progress** during a long player-agent query, act as (or delegate to) **`/local-ollama`**.
+
+- Container **`ollama`**, port **11434**, models **`qwen2.5-coder:7b`** + **`nomic-embed-text`**.
+- Prefer **`.\play\cicd.ps1 restart-local-llm`** for full repair; **`.\play\ollama-check.ps1`** for verify-only.
+- Use **`user-MCP_DOCKER`** when connected; fall back to Shell **`docker`** if MCP errored.
+- **RunPod** and remote `OLLAMA_HOST` → **`/runpod-runner`**, not this agent.
+
+Full spec: [`.cursor/agents/local-ollama.md`](../agents/local-ollama.md).

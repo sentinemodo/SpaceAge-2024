@@ -18,6 +18,7 @@ public class OrderVerbAllowlistTests
         Assert.That(allowlist.Contains("STACK"), Is.True);
         Assert.That(allowlist.Contains("RESEARCH"), Is.True);
         Assert.That(allowlist.Contains("TRAIN"), Is.True);
+        Assert.That(allowlist.Contains("PASSWORD"), Is.True);
     }
 
     [Test]

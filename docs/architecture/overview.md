@@ -99,3 +99,4 @@ Known engine stubs (not product backlog unless ADR): `Request`, `EventsReaders` 
 4. [`technology.md`](technology.md) — stack pins.
 5. [`delivery/cicd-conventions.md`](delivery/cicd-conventions.md) — build and test.
 6. Human rules: [`play/player/rules.md`](../play/player/rules.md) or [`docs/human/rules.md`](../docs/human/rules.md).
+7. Player-facing sync gate (orders + L0–L1 tech): [`delivery/player-facing-docs-sync.md`](delivery/player-facing-docs-sync.md).

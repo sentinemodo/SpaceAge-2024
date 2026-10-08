@@ -35,11 +35,12 @@ Events this quarter:
   Prime [2].
   week 13: battle at Northern Hemisphere [R00002] (0,0), attackers: Gelvaren [3], defenders: Caste
   Prime [2].
-  week 13: Bank account credited: Deposit interests accounted to 59. Current balance: 5308.
 Bank report:
   Bank account balance: 5308.
   Credit line maximum: 10000.
   Credit rate: 20%, Deposit rate: 4%.
+  Account activity:
+    week 13: Bank account credited: 59 cash (Deposit interests accounted.). Balance: 5308.
 
 Technology reports:
 + armored combat [armcbt]: The basic mobile armor, powered by oil consuming engines. Unlocks TRAIN

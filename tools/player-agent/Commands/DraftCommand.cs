@@ -68,7 +68,8 @@ internal static class DraftCommand
                 turnOverride,
                 iterationOverride,
                 reportPath);
-            var storyPath = factionDir is null ? null : FactionCorpusPaths.StoryPath(factionDir);
+            var storyPath = factionDir is null ? null : FactionCorpusPaths.StoryPath(factionDir, factionIdValue);
+            var knowledgePath = factionDir is null ? null : Path.Combine(factionDir, "knowledge.md");
             var personaPath = factionDir is null ? null : Path.Combine(factionDir, "persona.md");
             var draftTurn = turnOverride
                 ?? (reportPath is not null && OrderFileNaming.TryParseReportFileName(reportPath, out var reportTurn, out _)
@@ -80,6 +81,7 @@ internal static class DraftCommand
             Console.WriteLine($"Draft output:     {draftPath}");
             Console.WriteLine($"Report:           {reportPath ?? "(none)"}");
             Console.WriteLine($"Story:            {storyPath ?? "(none)"}");
+            Console.WriteLine($"Knowledge:        {(knowledgePath is not null && File.Exists(knowledgePath) ? knowledgePath : "(none)")}");
             Console.WriteLine($"Remote host:      {settings.IsRemoteHost}");
             Console.WriteLine($"Top-k retrieval:  {topK}");
             Console.WriteLine($"Quality retries:  {maxQualityAttempts}");
@@ -94,6 +96,7 @@ internal static class DraftCommand
                 FactionDir = factionDir,
                 ReportPath = reportPath,
                 StoryPath = storyPath,
+                KnowledgePath = knowledgePath,
                 PersonaPath = personaPath,
                 DryRun = dryRun,
                 TopK = topK,

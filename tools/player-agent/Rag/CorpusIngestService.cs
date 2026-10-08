@@ -1,4 +1,5 @@
 using SpaceAge.PlayerAgent.Inference;
+using SpaceAge.PlayerAgent.Paths;
 
 namespace SpaceAge.PlayerAgent.Rag;
 
@@ -71,8 +72,8 @@ public sealed class CorpusIngestService
             summary.Sources.Add(SourcePathNormalizer.Normalize(reportPath));
         }
 
-        var storyPath = FactionCorpusPaths.StoryPath(factionDir);
-        if (storyPath is not null)
+        var factionId = InferFactionIdFromFolder(factionDir);
+        foreach (var storyPath in StoryFileNaming.AllStoryPaths(factionDir, factionId))
         {
             summary.ChunkCount += await IngestFileAsync(
                 store,
@@ -80,6 +81,17 @@ public sealed class CorpusIngestService
                 MarkdownChunker.ChunkStory,
                 cancellationToken);
             summary.Sources.Add(SourcePathNormalizer.Normalize(storyPath));
+        }
+
+        var knowledgePath = FactionCorpusPaths.KnowledgePath(factionDir);
+        if (knowledgePath is not null)
+        {
+            summary.ChunkCount += await IngestFileAsync(
+                store,
+                knowledgePath,
+                MarkdownChunker.ChunkStory,
+                cancellationToken);
+            summary.Sources.Add(SourcePathNormalizer.Normalize(knowledgePath));
         }
 
         foreach (var orderPath in FactionCorpusPaths.OrderPaths(factionDir))
@@ -107,7 +119,8 @@ public sealed class CorpusIngestService
         FactionIngestOptions options,
         CancellationToken cancellationToken = default)
     {
-        var plan = FactionIngestPlanner.BuildPlan(factionDir, options);
+        var factionId = InferFactionIdFromFolder(factionDir);
+        var plan = FactionIngestPlanner.BuildPlan(factionDir, factionId, options);
         using var store = new SqliteVectorStore(sqlitePath);
         var summary = new IngestSummary();
 
@@ -146,7 +159,9 @@ public sealed class CorpusIngestService
 
     private static Func<string, string, IReadOnlyList<TextChunk>> SelectChunkFactory(string sourcePath)
     {
-        if (sourcePath.EndsWith("story.md", StringComparison.OrdinalIgnoreCase))
+        var fileName = Path.GetFileName(sourcePath);
+        if (StoryFileNaming.IsStoryFileName(fileName)
+            || sourcePath.EndsWith("knowledge.md", StringComparison.OrdinalIgnoreCase))
         {
             return MarkdownChunker.ChunkStory;
         }
@@ -185,6 +200,17 @@ public sealed class CorpusIngestService
         }
 
         return embedded;
+    }
+
+    private static int InferFactionIdFromFolder(string factionDir)
+    {
+        var name = Path.GetFileName(factionDir.TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar));
+        if (int.TryParse(name, out var id))
+        {
+            return id;
+        }
+
+        throw new InvalidOperationException($"Could not infer faction id from folder name: {factionDir}");
     }
 }
 

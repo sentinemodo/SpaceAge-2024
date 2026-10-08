@@ -216,11 +216,10 @@ namespace SpaceAge
 						this.RewardTechnology.ReportName));
 			}
 
-			winner.EventReports.Add(
+			this.recordContractCompletion(
 				week,
-				string.Format("completed contract {0} and received a copy of {1} technology.",
-					this.Name,
-					this.RewardTechnology.ReportName));
+				winner,
+				string.Format("reward: copy of {0} technology.", this.RewardTechnology.ReportName));
 
 			if (this.Location != null)
 			{
@@ -232,6 +231,19 @@ namespace SpaceAge
 			}
 
 			this.issueCompletionPress(winner);
+		}
+
+		private void recordContractCompletion(int week, Faction winner, string rewardDetail)
+		{
+			if (winner == null || string.IsNullOrEmpty(rewardDetail))
+			{
+				return;
+			}
+
+			string titleSuffix = string.IsNullOrEmpty(this.Title) ? string.Empty : string.Format(" ({0})", this.Title);
+			winner.ContractEventReports.Add(
+				week,
+				string.Format("completed {0}{1}; {2}", this.Name, titleSuffix, rewardDetail));
 		}
 
 		private void issueCompletionPress(Faction winner)
@@ -257,6 +269,15 @@ namespace SpaceAge
 				this.Name,
 				this.Location.FullName,
 				PressRelease.ScopeReportName(scopeId));
+			if (this.RewardCash > 0)
+			{
+				flavour = string.Format(
+					"{0} {1} paid {2} credits to {3}.",
+					flavour,
+					issuerName,
+					this.RewardCash,
+					winner.FullName);
+			}
 			new PressRelease(this.Issuer, title, flavour, false, scopeId);
 		}
 
@@ -308,11 +329,12 @@ namespace SpaceAge
 				week,
 				this.RewardCash,
 				string.Format("contract {0} completion.", this.Name));
-			winner.EventReports.Add(
+			this.recordContractCompletion(
 				week,
-				string.Format("completed contract {0} and received {1} cash.",
-					this.Name,
-					this.RewardCash));
+				winner,
+				string.Format("reward: {0} cash credited to bank (balance {1}).",
+					this.RewardCash,
+					winner.Bank.Balance.ToString("0")));
 			if (this.Location != null)
 			{
 				this.Location.EventReports.Add(
@@ -336,11 +358,10 @@ namespace SpaceAge
 				winner.RevealSkillsGrantedBy(technology);
 			}
 
-			winner.EventReports.Add(
+			this.recordContractCompletion(
 				week,
-				string.Format("completed contract {0} and received {1}. Systems activated.",
-					this.Name,
-					this.RewardStack.ReportName));
+				winner,
+				string.Format("reward: {0} (systems activated).", this.RewardStack.ReportName));
 			this.RewardStack.EventReports.Add(
 				week,
 				"activated onboard systems.");

@@ -188,7 +188,7 @@ Triggers (any of):
 
 ### Procedure
 
-1. **Refresh player docs first** (Cursor `/player` docs-only path or human): update `rules.md` / tech manuals / `battle.md` from engine + the correct catalog. Do not ingest stale manuals.
+1. **Refresh player docs first** (Cursor `/player` docs-only path or human): complete [`player-facing-docs-sync.md`](player-facing-docs-sync.md) sections A and/or B — `play/player/` manuals, `docs/human/rules.md`, `docs/human/basic_technologies.md`, game-host verbs, allowlist, website Vitest counts. Do not ingest stale manuals.
 2. **Rebuild shared index:** `ingest-shared` (full replace or content-hash upsert).
 3. **Test vs campaign:** rebuild the index that matches the play mode; if both modes are used on one machine, keep **separate** index directories (`…/shared-test`, `…/shared-campaign`).
 4. **Faction indexes:** no mandatory wipe; re-ingest factions only if report templates or order syntax examples in drafts must change.

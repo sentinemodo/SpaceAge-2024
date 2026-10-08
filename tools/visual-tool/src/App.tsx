@@ -117,6 +117,7 @@ import { defaultLoginFactionId, readUrlFactionId } from './lib/factionLink';
 import { focusReportId } from './lib/navigation';
 import {
   sectionText,
+  fullFactionReportText,
   filterReportLines,
   extractDiplomacyText,
   splitTechnologyReport,
@@ -816,7 +817,7 @@ export default function App() {
       const parsed = enrichReportFromGalaxyText(parseReportXml(xml), galaxyText);
       setReport(parsed);
       setSections(reportSections);
-      setReportFullText(fullText);
+      setReportFullText(fullText.trim() || fullFactionReportText(reportSections, ''));
     } catch {
       setReport(null);
       setSections([]);
@@ -1871,11 +1872,7 @@ export default function App() {
             {factionView === 'report' ? (
               <div className="faction-panel-body">
                 <ReportSearchText
-                  text={[
-                    sectionText(sections, 'events', ''),
-                    sectionText(sections, 'survey', ''),
-                    sectionText(sections, 'galaxy', 'No galaxy report section.'),
-                  ].filter(Boolean).join('\n\n')}
+                  text={fullFactionReportText(sections, reportFullText) || 'No report loaded.'}
                   query={factionSearch}
                   onFocusId={focusFromText}
                 />

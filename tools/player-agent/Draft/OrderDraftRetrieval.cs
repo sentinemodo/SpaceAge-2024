@@ -52,12 +52,22 @@ public static class OrderDraftRetrieval
         var repoRoot = RepoPaths.FindRepositoryRoot();
         var sharedPath = VectorIndexPaths.SharedSqlitePath(
             RepoPaths.SharedIndexDirectory(settings.IndexDirectory, request.Mode));
-        var extraQueries = BuildSupplementaryQueries(
-            personaPreference,
-            await ReadReportSnippetAsync(request, cancellationToken));
+        var reportText = await ReadReportTextAsync(request, cancellationToken);
+        var extraQueries = BuildSupplementaryQueries(personaPreference, reportText);
 
         var allQueries = new List<string> { primaryQuery };
         allQueries.AddRange(extraQueries);
+        if (!string.IsNullOrWhiteSpace(reportText))
+        {
+            var resources = ReportRegionGraph.ParseGrantRegionResourceIds(reportText);
+            if (resources.Count > 0)
+            {
+                allQueries.Add(
+                    "grant resources "
+                    + string.Join(" ", resources.OrderBy(static id => id, StringComparer.Ordinal))
+                    + " sdrill iminng hcdril one use only");
+            }
+        }
 
         var merged = new Dictionary<string, RetrievalResult>(StringComparer.OrdinalIgnoreCase);
         var perQueryTop = Math.Max(2, (request.TopK + allQueries.Count - 1) / allQueries.Count);
@@ -127,14 +137,13 @@ public static class OrderDraftRetrieval
             .ToList();
     }
 
-    private static async Task<string?> ReadReportSnippetAsync(OrderDraftRequest request, CancellationToken cancellationToken)
+    private static async Task<string?> ReadReportTextAsync(OrderDraftRequest request, CancellationToken cancellationToken)
     {
         if (string.IsNullOrWhiteSpace(request.ReportPath) || !File.Exists(request.ReportPath))
         {
             return null;
         }
 
-        var text = await File.ReadAllTextAsync(request.ReportPath, cancellationToken);
-        return text.Length <= 4000 ? text : text[..4000];
+        return await File.ReadAllTextAsync(request.ReportPath, cancellationToken);
     }
 }

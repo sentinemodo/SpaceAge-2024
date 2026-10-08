@@ -2,9 +2,9 @@
 
 **Human-facing publish copy:** [`docs/human/rules.md`](../docs/human/rules.md) — website SSOT, no code references.
 
-Checked **28 Sep 2026** against engine **0.8.002** (`Game/Program.cs` → `EngineVersion`).
+Checked **2 Oct 2026** against engine **0.8.003** (`Game/Program.cs` → `EngineVersion`).
 
-Sources: `Game/orders/EOrderType.cs`, `Game/orders/OrderFactory.cs`, `Game/orders/OrdersReader.cs`, `Game/orders/Orders.cs`, `Game/orders/JumpOrder.cs`, `Game/orders/MoveOrder.cs`, `Game/orders/LongOrder.cs` (`CanOperate`, atmosphere and effective location), `Game/orders/SetOrder.cs` (`ENERGY`, `SHARING`, …), `Game/orders/UseOrder.cs` (underwater settlement seat tender), `Game/game/SpaceTransit.cs` (`f(ΔAU)`, mass factor, baked space-exit weeks), `Game/Game.cs` (week loop, `GenerateOffers`, `ProcessBuyOffers`), `Game/Program.cs` (`/data`, `/turn-dir`, `/reports`, `/no-turn`, `/check`), `Game/Research.cs` (weekly output, breakthrough, preference, space-object proximity and reveal), `Game/SurveyReports.cs`, `Game/data structures/SurveyObjects.cs`, `Game/data structures/ModuleStack.Upkeep.cs` (sick bay, medical consume, quarterly maintenance, high-gravity bill, `AllowBank` on cash upkeep), `Game/data structures/ModuleStack.Economy.cs` (`AllowBank`, `HasBankAccess`), `Game/data structures/ModuleStack.Energy.cs` (regional pool, priority allocation, `SET ENERGY`), `Game/data structures/ModuleEnergyPriority.cs` (default priority by module group), `Game/data structures/ModuleStack.Reporting.cs` (`Visible`, `IsUnderwaterStealthy`, orbit spaceship reveal, `energy priority` line), `Game/data structures/Location.cs` (`HasUnderwaterPresence`), `Game/data structures/Galaxy.cs` (`LoadXml` / `LoadExits` / save of environment attrs, belt and alderson exits), `Game/data structures/Alderson.cs` (`PairName`, orbit only), `Game/data structures/Belt.cs` (`LocationType` space), `Game/data structures/Planet.cs` / `Moon.cs` (`HasEnvironmentAttrs`), `Game/data structures/ELocationType.cs` (`atmosphere`), `Game/data structures/BodyEnvironment.cs` (`EffectiveLocationType`, `HasAtmosphereResources`, `LaunchSurcharge`, `SurfaceOrbitSurcharge`, `BansNonShuttleSurfaceHop`, settlement temperature, gravity), `Game/data structures/Orbit.cs` (`HasAtmosphere`, orbit resources), `Game/data structures/ModuleType.cs` (`IsShipHullType` / `IsShuttleUnit` / `Underwater`), `Game/data structures/Exits.cs` / `ExitMode.cs` / `Region.cs` (region **Exits:** lines), `Game/data structures/Faction.cs` (blank line before `Bank report:`), `Game/reports/ReportWriter.cs` (faction report sections and blank lines), `Game/battle/Battles.cs` (blank line between consecutive battles), `Game/game/DataFile.cs` (`LoadLocationType`, `LoadOrders` / `SaveOrders` delegate to `OrderXml`), `Game/game/OrderXml.cs` (XML switch, including `jump`), `Game/game/ModuleTypeGroupXml.cs` (`RESEARCH GROUP` tokens), `Game/game/CatalogLoader.cs` (`planet-atmosphere`, `location-type`, `underwater`), `Game/game/Market.cs` (`GetPrice`, `payBuyer`, `availableFunds`), `Game/game/Market.Clearing.cs` (regional buy clearing, pro-rata), `Game/data structures/Offer.cs` (`GetEffectiveBidCap`, `MatchesAsk`), `Game/effects/Effects.cs` (`LoadXml` effect types), `Game/effects/Producing.cs` (omit empty `technology=`), each `Game/orders/*Order.Parse` / `Execute`. Sample prefix usage: `Tests/SampleGame/orders.*.txt`.
+Sources: `Game/orders/EOrderType.cs`, `Game/orders/OrderFactory.cs`, `Game/orders/OrdersReader.cs`, `Game/orders/Orders.cs`, `Game/orders/JumpOrder.cs`, `Game/orders/MoveOrder.cs`, `Game/orders/LongOrder.cs` (`CanOperate`, atmosphere and effective location), `Game/orders/SetOrder.cs` (`ENERGY`, `SHARING`, …), `Game/orders/SeeOrder.cs` / `Game/orders/ESeeScope.cs`, `Game/orders/UseOrder.cs` (underwater settlement seat tender), `Game/visibility/StackVisibility.cs`, `Game/game/SpaceTransit.cs` (`f(ΔAU)`, mass factor, baked space-exit weeks), `Game/Game.cs` (week loop, `GenerateOffers`, `ProcessBuyOffers`), `Game/Program.cs` (`/data`, `/turn-dir`, `/reports`, `/no-turn`, `/check`), `Game/Research.cs` (weekly output, breakthrough, preference, space-object proximity and reveal), `Game/SurveyReports.cs`, `Game/data structures/SurveyObjects.cs`, `Game/data structures/ModuleStack.Upkeep.cs` (sick bay, medical consume, quarterly maintenance, high-gravity bill, `AllowBank` on cash upkeep), `Game/data structures/ModuleStack.Economy.cs` (`AllowBank`, `HasBankAccess`), `Game/data structures/ModuleStack.Energy.cs` (regional pool, priority allocation, `SET ENERGY`), `Game/data structures/ModuleEnergyPriority.cs` (default priority by module group), `Game/data structures/ModuleStack.Reporting.cs` (`Visible`, nested report filter, `IsUnderwaterStealthy`, `energy priority` line), `Game/data structures/Location.cs` (`HasUnderwaterPresence`), `Game/data structures/Galaxy.cs` (`LoadXml` / `LoadExits` / save of environment attrs, belt and alderson exits), `Game/data structures/Alderson.cs` (`PairName`, orbit only), `Game/data structures/Belt.cs` (`LocationType` space), `Game/data structures/Planet.cs` / `Moon.cs` (`HasEnvironmentAttrs`), `Game/data structures/ELocationType.cs` (`atmosphere`), `Game/data structures/BodyEnvironment.cs` (`EffectiveLocationType`, `HasAtmosphereResources`, `LaunchSurcharge`, `SurfaceOrbitSurcharge`, `BansNonShuttleSurfaceHop`, settlement temperature, gravity), `Game/data structures/Orbit.cs` (`HasAtmosphere`, orbit resources), `Game/data structures/ModuleType.cs` (`Detection` / `Stealth`, `IsShipHullType` / `IsShuttleUnit` / `Underwater`), `Game/data structures/Technology.cs` (`DetectionBonus`), `Game/data structures/Exits.cs` / `ExitMode.cs` / `Region.cs` (region **Exits:** lines), `Game/data structures/Faction.cs` (blank line before `Bank report:`), `Game/reports/ReportWriter.cs` (faction report sections and blank lines), `Game/battle/Battles.cs` (blank line between consecutive battles), `Game/game/DataFile.cs` (`LoadLocationType`, `LoadOrders` / `SaveOrders` delegate to `OrderXml`), `Game/game/OrderXml.cs` (XML switch, including `jump`), `Game/game/ModuleTypeGroupXml.cs` (`RESEARCH GROUP` tokens), `Game/game/CatalogLoader.cs` (`planet-atmosphere`, `location-type`, `underwater`, `detection`, `stealth`), `Game/game/Market.cs` (`GetPrice`, `payBuyer`, `availableFunds`), `Game/game/Market.Clearing.cs` (regional buy clearing, pro-rata), `Game/data structures/Offer.cs` (`GetEffectiveBidCap`, `MatchesAsk`), `Game/effects/Effects.cs` (`LoadXml` effect types), `Game/effects/Producing.cs` (omit empty `technology=`), each `Game/orders/*Order.Parse` / `Execute`. Sample prefix usage: `Tests/SampleGame/orders.*.txt`.
 
 Not source of truth: legacy Alderson docs in [`docs/legacy/alderson/`](../docs/legacy/alderson/). Turn order files are **Windows-1251** (same as reports). Verbs are case-insensitive; most arguments are not.
 
@@ -121,7 +121,7 @@ Always: load catalog (`data.xml`) and the saved game. Then one branch (`/check` 
 
 `**/reports`:** `ReportWriter.GenerateReports(turn_dir)` only. No order load, no events, no `Game.Execute`, no `SaveGame`. Filenames use the **saved** `turn` (seed `turn="1"` writes `report.1.{faction}.txt` into `/turn-dir`). Faction XML (`report.{turn}.{faction}.xml`) is written when that faction’s `xml-report` option is true (default). Does not increment the turn and does not write `gameout`.
 
-`**/no-turn`:** load orders, run **between-turn** immediates only (`AllowedBetweenTurns` — live text verbs: `CONTRACT`, `PRESS`), write announcements (`announce.{turn}.{faction}.txt` for new contracts at that location and for press releases), save.
+`**/no-turn`:** load orders, run **between-turn** immediates only (`AllowedBetweenTurns` — live text verbs: `CONTRACT`, `GRANT`, `PASSWORD`, `RUMOR`, `PRESS`), write announcements (`announce.{turn}.{faction}.txt` for new contracts at that location and for press releases), save. Pending `PASSWORD` changes apply when `/no-turn` saves.
 
 **Full run** (none of the above):
 
@@ -130,7 +130,11 @@ Always: load catalog (`data.xml`) and the saved game. Then one branch (`/check` 
 3. `Game.Execute` (below) — `turn++` first, so seed `turn="1"` becomes turn 2.
 4. Write faction reports (`ReportWriter.GenerateReports`), then save the game (`gameout.{turn}.xml` into `/data`). After that increment the files are `report.2.{faction}.txt` (and `.xml` when `xml-report` is true) plus `gameout.2.xml`.
 
-Text reports insert **blank lines** between major sections: after the engine-version line, between declared stances and `Bank report:` when declarations exist (`Faction.Report`), before/after `Technology reports:` when that section is present, before/after `**Survey reports:`** when that section is present (between technology reports and battles), before `Battles report:`, between consecutive battles (`Battles.Report`), after each space system, and before each visible region. The galaxy block ends with a blank line.
+Text reports insert **blank lines** between major sections: after the engine-version line, between declared stances and `Events this quarter:` when declarations exist (`Faction.Report`), before/after `Technology reports:` when that section is present, before/after `**Survey reports:`** when that section is present (between technology reports and battles), before `Battles report:`, between consecutive battles (`Battles.Report`), after each space system, and before each visible region. The galaxy block ends with a blank line.
+
+Faction report order after battles: **Contract reports:** (open charters), **Contract events:** (completions and rewards), **Bank report:** (balance plus **Account activity:** debits/credits with amount and balance after). Bank lines do not repeat under **Events this quarter:**.
+
+**Foreign stacks in the galaxy report** use [stack visibility](#stack-visibility-reports-and-see): nested children that fail the detection check are skipped under a visible parent (you may see a settlement root but not a nested garrison). Your own stacks always report in full.
 
 ### Each turn (`Game.Execute`)
 
@@ -140,7 +144,7 @@ Clear last turn’s event reports, then `turn++`. Drop stale per-unit stances (`
 
 1. Clear each subject’s “already did a long order” flag and each immediate’s `Executed` flag.
 2. **Orders** (`ExecuteOrders`):
-  - Every **faction** (e.g. `CONTRACT`, `PRESS`).
+  - Every **faction** (e.g. `CONTRACT`, `PASSWORD`, `PRESS`).
   - **Module stacks that still have orders** (`HasOrders`), looping until a pass does nothing. Each stack: immediate loop → one long → immediate loop, drop finished non-repeating orders, then tick **effects** (`Moving`, `Producing*`, `Training*`).
   - **People that still have orders**, same loop (person effects are commented out and do not tick here).
 3. **Sick-bay heal** — stacks whose module type heals `wndtrn` (catalog: sick bay `[sckbay]`). With medicines `[medici]` on the stack, convert up to **4 wounded per bay** into terran `[terran]` this week and consume 1 medici each. Without medicines, count unmedicated weeks and every **4 weeks** convert **2 wounded per bay**. Medical facility `[medfac]` heal is catalog-only (`target="stacked"`) and does not run here.
@@ -191,7 +195,7 @@ The two kinds are independent except where you chain them with `-` / `+`. An imm
 
 **Long** orders are the week’s work: jump, move, produce, repair, research, train, use. A second long on the same subject waits until the first completes (or until its conditions clear). Accepting modules mid-week can mark the receiver as having already used its long slot. `JUMP` occupies the long slot but does **not** call `CanOperate` (see [JUMP](#jump)).
 
-`CONTRACT` and `PRESS` are immediate and also **allowed between turns** (`/no-turn`). No other live text verb is.
+`CONTRACT`, `GRANT`, `PASSWORD`, `RUMOR`, and `PRESS` are immediate and also **allowed between turns** (`/no-turn`). No other live text verb is.
 
 ## Order playbooks (templates)
 
@@ -420,7 +424,7 @@ Player turn files use **text**. XML matters for saved games, not for `order.*` d
 
 ## Immediate orders
 
-ACTIVE, ACTIVATE, ALIAS, ATTACK, BUY, CAPTURE, CONTRACT, COPY, DECLARE, DEACTIVATE, DEPOSIT, ERASE, FORM, GET, GIVE, GRANT, HAS, NAME, PRESS, SEE, SELL, SET, STACK, TACTIC, TRANSFER, WITHDRAW.
+ACTIVE, ACTIVATE, ALIAS, ATTACK, BUY, CAPTURE, CONTRACT, COPY, DECLARE, DEACTIVATE, DEPOSIT, ERASE, FORM, GET, GIVE, GRANT, HAS, NAME, PASSWORD, PRESS, SEE, SELL, SET, STACK, TACTIC, TRANSFER, WITHDRAW.
 
 ### ACTIVE
 
@@ -627,6 +631,17 @@ Condition probe: succeeds if recursive cargo / nested module count / person pres
 
 **Subject:** modulestack.
 
+### PASSWORD
+
+**Syntax:**
+
+- `PASSWORD "<new-password>"` or `PASSWORD new-password` (unquoted token when it contains no spaces)
+- The new password must be non-empty and must not contain `"` (order files quote the `#faction` password separately).
+
+**Subject:** **faction** only — place directly under `#faction` before any `#modulestack`. Also allowed **between turns**.
+
+Queues the new password on the issuer. The **current turn still uses the old password** in `#faction` headers and for login until turn execution finishes; `ApplyPendingFactionPasswords` runs at end of `Game.Execute` (and after `/no-turn` immediates). The next saved `gamein.xml` and report orders template carry the new password. Event: `password change scheduled for after this turn.` when queued; `password changed.` when applied.
+
 ### PRESS
 
 **Syntax:**
@@ -655,6 +670,40 @@ Creates an anonymous publication scoped to `<planet-id>`. The issuer is not show
 
 **Fauna rumors (automatic):** before each report generation and at the start of turn processing (`Events.Execute`), the engine scans fauna factions **14–17**. When a stack sits in a region **adjacent** to a region holding any settlement-group module, an anonymous rumor is added for that planet — title `Hostile fauna in {region name}`, flavour cites the module type, stack id, fauna region id, and a neighbouring settlement region. One rumor per stack (deduped by stack id). Treat as **contact** for diplomacy with that fauna faction.
 
+### Stack visibility (reports and SEE)
+
+Designer spec: [`play/designer/stack-visibility.md`](../designer/stack-visibility.md). Human summary: [`docs/human/rules.md`](../../docs/human/rules.md) (SEE / STACK).
+
+**Visibility test (foreign targets):** some **formed** observer stack you own must satisfy **`detection > effective stealth`** (strict). The faction report uses the **best** margin among observers in the target’s **star system** (you must have at least one formed observer with `Size > 0` in that system). **Own** stacks are always visible to you. Faction **`NPC`** (United Star Nations) sees everything.
+
+**Who observes:** any **formed** stack you own with modules aboard counts — **including nested** stacks (a scout nested under a foreign city still observes from its location). **Unformed** `newN` placeholders and **empty** stacks do not observe.
+
+**Detection** (observer stack):
+
+| Source | Effect |
+| ------ | ------ |
+| Module type | Catalog `detection` (campaign default **1** when omitted in XML) |
+| Technologies on stack | Sum of catalog `detection-bonus` |
+| Orbit sweep | **+1** when the observer is in **orbit of the planet or moon** the target is on (region, orbit, or belt on that body) |
+| Underwater channel | **+1** when the target is [underwater-stealthy](#underwater-settlement-and-stealth) and you have **underwater presence** in the target’s **region**, or an own **spaceship hull** in that body’s orbit |
+
+Orbit **+1** does **not** apply when the target is underwater-stealthy (orbital pass alone is not enough without the underwater channel).
+
+**Stealth** (target stack):
+
+| Source | Effect |
+| ------ | ------ |
+| Module type | Catalog `stealth` (default **0**) |
+| Nesting | **+1 per level** under a location root (`STACK` under a city adds stealth) |
+| Underwater-stealthy | **+1** (see below) |
+| Same body, different region | **+1 per region hop** (shortest path on that planet/moon’s region graph; same region or orbit↔surface on one body = 0 hops) |
+| Geography | **+10** other star system; **+1** other planet; **+1** other moon (when both sides resolve); belt: **+2** from your **region** on a planet to a unit on that planet’s **belt**, else **+1** when target is on a belt you are not on |
+| Fauna owner (factions **14–17**) | **+1** when the observer would get orbit **+1** |
+
+**Reports:** `ModuleStack.Report` skips nested foreign subtrees when `Visible` fails. Orbit **resource** lines still require your faction to **occupy that orbit** (`Orbit.Visible` — own stack present), separate from detecting foreign hulls.
+
+**Pending orders on visible stacks:** when a foreign stack is visible, its **leftover order lines** from the saved template may appear in your report (e.g. `use …`, `move …`) even when nested module detail is hidden.
+
 ### SEE
 
 **Syntax:**
@@ -663,11 +712,21 @@ Creates an anonymous publication scoped to `<planet-id>`. The issuer is not show
 - `SEE PERSON <person-id|newN> [AT <region-id>|ANYWHERE]`
 - `SEE <person-id|newN> PERSON [AT <region-id>|ANYWHERE]`
 
-**Subject:** holder.
+**Subject:** `#modulestack` or `#person`. The **observer** for detection is the subject stack, or the **host stack** when the subject is a person (`Person.Parent`).
 
-Succeeds when **`detection > stealth`** for the observer stack (`StackVisibility`). Default: target in the observer’s **current location** (region or orbit). `AT <region-id>`: target in that region. `ANYWHERE`: target anywhere the observer’s detection reaches (regional/system stealth still applies). Unformed observer stacks never detect. Spec: [`play/designer/stack-visibility.md`](../designer/stack-visibility.md).
+| Scope | Target must be |
+| ----- | -------------- |
+| *(default)* | In the **same location** as the observer (same region or same orbit instance) |
+| `AT <region-id>` | In that **region** |
+| `ANYWHERE` | Anywhere (stealth still uses geography from observer location to target) |
 
-Both person word orders parse (`person` must be lowercase). Leftover/template (`SeeOrder.Report`) prints `see <id> person` (or `see newN person` if unformed). XML today: `see-type="person"` plus `person="<id>"` on the `<see>` element; extended attrs `at-region` / `anywhere` when visibility ships.
+**Foreign module stack:** succeeds when scope matches and **`detection > stealth`** for the **observer stack** (not faction-best). **Own** module stacks bypass stealth. Both targets must be **formed**. Unformed observers never detect.
+
+**Foreign person:** same scope rules; success when the person is listed among units at the observer’s location (`ModuleStack.All[location]`). **Own** persons bypass the check.
+
+On success: event `saw {target} in {location}.` On failure: silent (order stays unexecuted).
+
+Both person word orders parse (`person` must be lowercase). Leftover/template (`SeeOrder.Report`) prints `see <id> person` (or `see newN person` if unformed), plus ` at R…` or ` anywhere`. Saved games: `<see see-type="…" at-region="R…"/>` or `anywhere="yes"`.
 
 ### SELL
 
@@ -717,6 +776,8 @@ Flag name and `TRUE`/`FALSE` are **case-insensitive**; Parse stores the flag as 
 **Subject:** stack (or person as item holder).
 
 Nests the subject under another stack (same location, same faction, not self), under the root parent (`TOP`), or out into the location (`OUT`). `**top` and `out` must be lowercase.** Fighter drones may only `STACK OUT` (location) or stack under a fighter drone bay; stacking under a hull fails. Shuttles may also nest under a frigate hull.
+
+Nesting adds **+1 stealth per level** for foreign observers ([stack visibility](#stack-visibility-reports-and-see)): a garrison under a visible city root may stay off the report while the city line appears. Orbit observers with default **detection 1** usually see foreign **roots** in a region but not **one level nested** (1 > 1 fails).
 
 ### SYNCHRO
 
@@ -976,7 +1037,7 @@ Uses a loaded (or level-0) technology: consumes catalog inputs and after `use-ti
 
 **Settlement air upkeep (campaign flavour):** under-surface city `[uscty]` omits `<upkeep type="terair"/>` (shaft air). Small dome city `[dmdcty]` always bills food + terran air `[terair]` + cash, including on liquid-surface (closed shell, no surface shaft). Underwater vehicles still **consume** `terair` as crew life support.
 
-**Underwater stealth (reports):** a foreign stack is hidden from your report when `ModuleStack.IsUnderwaterStealthy` and you lack an exemption. Stealthy means catalog `underwater="yes"`, **or** `dmdcty` sitting on liquid-surface. You still see your own stacks. Exemptions for other factions: own underwater presence in the **same region**, or own **spaceship hull** (`IsShipHullType`) on that body’s **orbit**. Ordinary surface presence alone does not reveal them. Pontoon cities are not underwater-flagged and use normal visibility.
+**Underwater settlement and stealth:** catalog `underwater="yes"` modules, and small dome city `[dmdcty]` on **liquid-surface**, are **underwater-stealthy** (+1 stealth; orbit sweep **+1** does not apply to them). Reveal them with the **underwater channel** (+1 detection when you have underwater craft in the target **region**, or a **ship hull** on that body’s orbit). Surface-only presence is not enough. Pontoon and normal surface cities use standard [stack visibility](#stack-visibility-reports-and-see) only.
 
 In-progress work is a `Producing*` effect. It only ticks when a matching unconditioned `USE` runs that week (`Use()`). After save/load, the leftover order reconnects to that effect (`producing-modules` persists `technology=`):
 

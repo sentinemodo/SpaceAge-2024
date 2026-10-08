@@ -1,6 +1,6 @@
 # Documentation index
 
-Last updated: 2026-09-11  
+Last updated: 2026-10-09  
 Purpose: canonical vendor/spec links for implementers. Summaries only — do not paste manuals into architecture docs.
 
 | Resource | Version / band | Purpose | Date retrieved |
@@ -51,7 +51,9 @@ Purpose: canonical vendor/spec links for implementers. Summaries only — do not
 | `docs/architecture/delivery/website-scenarios.md` | Seed acceptance catalog (WS-001…WS-009, reserved WS-010…WS-012 Phase 4, reserved UT-*). After Phase 1: tester moves to `website/e2e/scenarios.md` (canonical) |
 | `docs/legacy/alderson/Rules.txt` §§1, 1.1, 2.1 | Home-page flavour source (Alderson V 1.5); excerpt, do not dump |
 | `docs/human/rules.md` | Website `/rules` SSOT — live order syntax for players |
+| `docs/human/basic_technologies.md` | Visual client Technologies panel + human L0–L1 reference |
 | `play/player/rules.md` | Agent/RAG manual with code sources |
+| [`delivery/player-facing-docs-sync.md`](delivery/player-facing-docs-sync.md) | **Done gate:** replicate order syntax and L0–L1 tech across rules, human docs, website tests, game-host, allowlist |
 
 ## In-repo ADRs
 
