@@ -6,7 +6,7 @@ Player client URL (HTTPS, same origin as API):
 
 Game-host and the visual tool run on the GM laptop at port **8787**. Caddy on that laptop (`C:\Users\akacz\caddy\Caddyfile`) terminates TLS for `spaceage-pbem.duckdns.org` and forwards to `127.0.0.1:8787`. DuckDNS points the name at WAN `91.220.222.102`. The Huawei HS8145V forwards TCP **80** and **443** to the laptop `192.168.100.17`. Port **8787** is not mapped on the router.
 
-ngrok (`https://manatee-sabbath-kudos.ngrok-free.dev/client/`) remains the fallback when the WAN forward is unreachable. The GitHub Pages workflow still bakes `PUBLIC_CLIENT_URL` to that ngrok URL until the workflow is changed. Caddy does not start on reboot (`caddy start` from `C:\Users\akacz\caddy`).
+ngrok (`https://manatee-sabbath-kudos.ngrok-free.dev/client/`) remains the fallback when the WAN forward is unreachable. **`play/cicd.ps1 restart-prod`** starts Caddy after Docker game-host (config: `%USERPROFILE%\caddy\Caddyfile`). Caddy does not auto-start on Windows reboot — run **`restart-prod`** or `caddy start --config Caddyfile` from `%USERPROFILE%\caddy` after a reboot.
 
 See also: [`docker/README.md`](../docker/README.md), [`game-host/README.md`](../game-host/README.md).
 

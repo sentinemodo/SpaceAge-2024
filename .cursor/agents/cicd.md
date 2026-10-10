@@ -43,6 +43,7 @@ Reports from **test** / **test-e2e** are written to `.cursor/cicd-test-results/l
 ### restart-prod
 - Stops listeners on **4321**, **5173**, and **8787** (Docker's own 8787 proxy is left for `compose down`), then **restart-dev** (lobby + visual tool only — `-SkipGameHost`), then:
 - `docker compose down` + `docker compose up -d --build` and wait for `http://localhost:8787/health`.
+- **Caddy:** if `caddy` is in PATH and `%USERPROFILE%\caddy\Caddyfile` exists, run `caddy start` (skip if admin API already up) and wait for `https://spaceage-pbem.duckdns.org/health`.
 - **GitHub Pages:** `git fetch origin`, compare `origin/<default branch>` to the latest successful **Website** workflow run. If Pages is not already deployed for that commit, run `gh workflow run website.yml` and **`gh run watch`** until deploy succeeds. Requires **`gh`** authenticated (`gh auth login`). Skipped with a warning if `gh` is missing.
 
 Public client URL (Caddy + DuckDNS, not ngrok): **https://spaceage-pbem.duckdns.org/client/**

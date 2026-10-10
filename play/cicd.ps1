@@ -5,7 +5,7 @@
 
 .DESCRIPTION
   restart-dev        — Astro lobby (4321) + visual tool (5173) + game-host Node (8787)
-  restart-prod       — restart-dev + game-host Docker + GitHub Pages (latest origin)
+  restart-prod       — restart-dev + game-host Docker + Caddy (DuckDNS HTTPS) + GitHub Pages (latest origin)
   restart-local-llm  — Ollama Docker, pull/warm qwen2.5-coder:7b, health check
   commit             — git commit working changes, then restart-dev
   push               — git commit, push branch, then restart-prod
@@ -227,6 +227,68 @@ function Test-GameHostHealth {
 	Invoke-RestMethod -Uri "http://127.0.0.1:$Port/health" -TimeoutSec 15 | Out-Null
 }
 
+function Test-CaddyAdminRunning {
+	try {
+		Invoke-RestMethod -Uri 'http://127.0.0.1:2019/config/' -TimeoutSec 3 | Out-Null
+		return $true
+	}
+	catch {
+		return $false
+	}
+}
+
+function Invoke-EnsureCaddyPublicEdge {
+	Write-CicdStep 'Ensure Caddy public HTTPS (DuckDNS)'
+	if (-not (Get-Command caddy -ErrorAction SilentlyContinue)) {
+		Write-Host '  skipped: caddy not in PATH (install Caddy for https://spaceage-pbem.duckdns.org/)' -ForegroundColor Yellow
+		return
+	}
+
+	$caddyDir = Join-Path $env:USERPROFILE 'caddy'
+	$config = Join-Path $caddyDir 'Caddyfile'
+	if (-not (Test-Path -LiteralPath $config)) {
+		Write-Host "  skipped: missing Caddyfile at $config" -ForegroundColor Yellow
+		return
+	}
+
+	Push-Location $caddyDir
+	try {
+		if (-not (Test-CaddyAdminRunning)) {
+			Write-Host '  starting Caddy (background)'
+			$start = Invoke-ExternalCommandCapture -FilePath 'caddy' -ArgumentList @('start', '--config', 'Caddyfile') -WorkingDirectory $caddyDir
+			$startText = ($start.Lines -join ' ')
+			if ($start.ExitCode -ne 0 -and $startText -notmatch 'already running') {
+				throw "caddy start failed (exit $($start.ExitCode)): $startText"
+			}
+			Start-Sleep -Seconds 2
+		}
+		else {
+			Write-Host '  Caddy already running (admin :2019)'
+		}
+
+		$deadline = (Get-Date).AddSeconds(45)
+		do {
+			try {
+				Test-GameHostHealth
+				$public = Invoke-RestMethod -Uri 'https://spaceage-pbem.duckdns.org/health' -TimeoutSec 15
+				if ($public.ok) {
+					Write-Host '  public edge: https://spaceage-pbem.duckdns.org/health ok'
+					return
+				}
+			}
+			catch {
+				if ((Get-Date) -gt $deadline) {
+					throw "Public HTTPS health check failed: $($_.Exception.Message). Is router forwarding 443 to this PC?"
+				}
+				Start-Sleep -Seconds 3
+			}
+		} while ($true)
+	}
+	finally {
+		Pop-Location
+	}
+}
+
 function Invoke-RestartGameHostDocker {
 	Write-CicdStep 'Restart game-host Docker stack'
 	Stop-GameHostPort
@@ -327,9 +389,10 @@ function Invoke-RestartProd {
 	Stop-CicdStackPorts
 	Invoke-RestartDev -SkipGameHost
 	Invoke-RestartGameHostDocker
+	Invoke-EnsureCaddyPublicEdge
 	Ensure-GitHubPagesDeploy
 	Write-Host ""
-	Write-Host "Prod stack ready (local dev + Docker game-host + GitHub Pages)."
+	Write-Host "Prod stack ready (local dev + Docker game-host + Caddy + GitHub Pages)."
 	Write-Host "  Public client: https://spaceage-pbem.duckdns.org/client/"
 	Write-Host "  Live lobby status: https://spaceage-pbem.duckdns.org/api/public/lobby-status"
 }
