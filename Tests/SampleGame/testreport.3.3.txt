@@ -5,7 +5,7 @@ Content-Disposition: attachment
 SpaceAge report for Gelvaren [3].
 Turn 3, Year 2156, July 1.
 
-SpaceAge Engine Version: 0.8.003.
+SpaceAge Engine Version: 0.8.004.
 
 Declared stances:
   default: neutral, unknown: hostile.
@@ -70,7 +70,6 @@ Battles report:
     size: 240, mass: 396 (240), crew: 16/16.
     hit points: 100/100, attack: 4, defense: 4.
     tactics: prioritize armed.
-      #1 hit points: 100/100.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1042 (720), crew: 48/48.
     hit points: 300/300, attack: 12, defense: 12.
@@ -83,7 +82,6 @@ Battles report:
     immobile, owned by Caste Prime [2].
     size: 1000.
     hit points: 100/100, defense: 5.
-      #1 hit points: 100/100.
   - small cargo bay [000013], 5 small cargo bays [cargob], immobile,
     owned by Caste Prime [2].
     size: 10000.
@@ -111,7 +109,6 @@ Battles report:
     Prime [2].
     size: 1000.
     hit points: 100/100.
-      #1 hit points: 100/100.
   - factory [000017], 5 factories [factry], partially disabled,
     immobile, owned by Caste Prime [2].
     size: 5000.
@@ -131,29 +128,25 @@ Battles report:
       #4 hit points: 100/100, effects: inactive.
       #5 hit points: 100/100, effects: inactive.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111]
-  (chance: 3/9) and hits #1 gun placement [111] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime
-  Headquarters [000012] (chance: 9/17) and misses.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime
-  Headquarters [000012] (chance: 9/17) and hits #1 Caste Prime
-  Headquarters [000012] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime
-  Headquarters [000012] (chance: 9/17) and hits #1 Caste Prime
-  Headquarters [000012] doing 4 damage.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout
-  [108] (chance: 2/9) and hits #1 peaceful scout [108] doing 1 damage.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout
-  [108] (chance: 2/9) and hits #1 peaceful scout [108] doing 1 damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/9) and
+  hits #1 gun placement [111] doing 4 damage.
+  Surrender or die! [109] fire on Caste Prime Headquarters [000012]
+  (chance: 18/17) and hits doing 4 damage.
+  Surrender or die! [109] fire on Caste Prime Headquarters [000012]
+  (chance: 18/17) and hits doing 4 damage.
+  Surrender or die! [109] fire on Caste Prime Headquarters [000012]
+  (chance: 18/17) and hits doing 4 damage.
+  5 gun placements [111] fire on peaceful scout [108].
+  (chance: 5/9) and misses.
+  (chance: 5/9) and hits doing 1 damage.
   ------------------------------------------------------------
   Round 2:
   ------------------------------------------------------------
   Attackers:
   + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
-    hit points: 100/98, attack: 4, defense: 4.
+    hit points: 100/99, attack: 4, defense: 4.
     tactics: prioritize armed.
-      #1 hit points: 100/98.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1042 (720), crew: 48/48.
     hit points: 300/300, attack: 12, defense: 12.
@@ -165,8 +158,7 @@ Battles report:
   - Caste Prime Headquarters [000012], corporate headquarters [corphq],
     immobile, owned by Caste Prime [2].
     size: 1000.
-    hit points: 100/92, defense: 5.
-      #1 hit points: 100/92.
+    hit points: 100/88, defense: 5.
   - small cargo bay [000013], 5 small cargo bays [cargob], immobile,
     owned by Caste Prime [2].
     size: 10000.
@@ -194,7 +186,6 @@ Battles report:
     Prime [2].
     size: 1000.
     hit points: 100/100.
-      #1 hit points: 100/100.
   - factory [000017], 5 factories [factry], partially disabled,
     immobile, owned by Caste Prime [2].
     size: 5000.
@@ -214,30 +205,25 @@ Battles report:
       #4 hit points: 100/100, effects: inactive.
       #5 hit points: 100/100, effects: inactive.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111]
-  (chance: 3/9) and hits #4 gun placement [111] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime
-  Headquarters [000012] (chance: 9/17) and hits #1 Caste Prime
-  Headquarters [000012] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime
-  Headquarters [000012] (chance: 9/17) and hits #1 Caste Prime
-  Headquarters [000012] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime
-  Headquarters [000012] (chance: 9/17) and hits #1 Caste Prime
-  Headquarters [000012] doing 4 damage.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout
-  [108] (chance: 2/9) and hits #1 peaceful scout [108] doing 1 damage.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout
-  [108] (chance: 2/9) and hits #1 peaceful scout [108] doing 1 damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/9) and
+  hits #4 gun placement [111] doing 4 damage.
+  Surrender or die! [109] fire on Caste Prime Headquarters [000012]
+  (chance: 18/17) and hits doing 4 damage.
+  Surrender or die! [109] fire on Caste Prime Headquarters [000012]
+  (chance: 18/17) and hits doing 4 damage.
+  Surrender or die! [109] fire on Caste Prime Headquarters [000012]
+  (chance: 18/17) and hits doing 4 damage.
+  5 gun placements [111] fire on peaceful scout [108].
+  (chance: 5/9) and hits doing 1 damage.
+  (chance: 5/9) and hits doing 1 damage.
   ------------------------------------------------------------
   Round 3:
   ------------------------------------------------------------
   Attackers:
   + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
-    hit points: 100/96, attack: 4, defense: 4.
+    hit points: 100/97, attack: 4, defense: 4.
     tactics: prioritize armed.
-      #1 hit points: 100/96.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1042 (720), crew: 48/48.
     hit points: 300/300, attack: 12, defense: 12.
@@ -249,8 +235,7 @@ Battles report:
   - Caste Prime Headquarters [000012], corporate headquarters [corphq],
     immobile, owned by Caste Prime [2].
     size: 1000.
-    hit points: 100/80, defense: 5.
-      #1 hit points: 100/80.
+    hit points: 100/76, defense: 5.
   - small cargo bay [000013], 5 small cargo bays [cargob], immobile,
     owned by Caste Prime [2].
     size: 10000.
@@ -278,7 +263,6 @@ Battles report:
     Prime [2].
     size: 1000.
     hit points: 100/100.
-      #1 hit points: 100/100.
   - factory [000017], 5 factories [factry], partially disabled,
     immobile, owned by Caste Prime [2].
     size: 5000.
@@ -298,32 +282,28 @@ Battles report:
       #4 hit points: 100/96, effects: inactive.
       #5 hit points: 100/100, effects: inactive.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111]
-  (chance: 3/9) and hits #3 gun placement [111] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime
-  Headquarters [000012] (chance: 9/17) and hits #1 Caste Prime
-  Headquarters [000012] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime
-  Headquarters [000012] (chance: 9/17) and hits #1 Caste Prime
-  Headquarters [000012] doing 4 damage.
-    #1 corporate headquarters [corphq] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime
-  Headquarters [000012] (chance: 9/17) and hits #1 Caste Prime
-  Headquarters [000012] doing 4 damage.
-    #1 corporate headquarters [corphq] is lightly damaged.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout
-  [108] (chance: 2/9) and hits #1 peaceful scout [108] doing 1 damage.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout
-  [108] (chance: 2/9) and hits #1 peaceful scout [108] doing 1 damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/9) and
+  hits #3 gun placement [111] doing 4 damage.
+  Surrender or die! [109] fire on Caste Prime Headquarters [000012]
+  (chance: 18/17) and hits doing 4 damage.
+    corporate headquarters [corphq] is lightly damaged.
+  Surrender or die! [109] fire on Caste Prime Headquarters [000012]
+  (chance: 18/17) and hits doing 4 damage.
+    corporate headquarters [corphq] is lightly damaged.
+  Surrender or die! [109] fire on Caste Prime Headquarters [000012]
+  (chance: 18/17) and hits doing 4 damage.
+    corporate headquarters [corphq] is lightly damaged.
+  5 gun placements [111] fire on peaceful scout [108].
+  (chance: 5/9) and hits doing 1 damage.
+  (chance: 5/9) and hits doing 1 damage.
   ------------------------------------------------------------
   Round 4:
   ------------------------------------------------------------
   Attackers:
   + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
-    hit points: 100/94, attack: 4, defense: 4.
+    hit points: 100/95, attack: 4, defense: 4.
     tactics: prioritize armed.
-      #1 hit points: 100/94.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1042 (720), crew: 48/48.
     hit points: 300/300, attack: 12, defense: 12.
@@ -335,8 +315,7 @@ Battles report:
   - Caste Prime Headquarters [000012], corporate headquarters [corphq],
     immobile, owned by Caste Prime [2].
     size: 1000.
-    hit points: 100/68, defense: 5.
-      #1 hit points: 100/68, lightly damaged.
+    hit points: 100/64, defense: 5, lightly damaged.
   - small cargo bay [000013], 5 small cargo bays [cargob], immobile,
     owned by Caste Prime [2].
     size: 10000.
@@ -364,7 +343,6 @@ Battles report:
     Prime [2].
     size: 1000.
     hit points: 100/100.
-      #1 hit points: 100/100.
   - factory [000017], 5 factories [factry], partially disabled,
     immobile, owned by Caste Prime [2].
     size: 5000.
@@ -384,33 +362,28 @@ Battles report:
       #4 hit points: 100/96, effects: inactive.
       #5 hit points: 100/100, effects: inactive.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111]
-  (chance: 3/9) and hits #2 gun placement [111] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime
-  Headquarters [000012] (chance: 9/17) and hits #1 Caste Prime
-  Headquarters [000012] doing 4 damage.
-    #1 corporate headquarters [corphq] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime
-  Headquarters [000012] (chance: 9/17) and hits #1 Caste Prime
-  Headquarters [000012] doing 4 damage.
-    #1 corporate headquarters [corphq] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime
-  Headquarters [000012] (chance: 9/17) and hits #1 Caste Prime
-  Headquarters [000012] doing 4 damage.
-    #1 corporate headquarters [corphq] is lightly damaged.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout
-  [108] (chance: 2/9) and hits #1 peaceful scout [108] doing 1 damage.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout
-  [108] (chance: 2/9) and hits #1 peaceful scout [108] doing 1 damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/9) and
+  hits #2 gun placement [111] doing 4 damage.
+  Surrender or die! [109] fire on Caste Prime Headquarters [000012]
+  (chance: 18/17) and hits doing 4 damage.
+    corporate headquarters [corphq] is lightly damaged.
+  Surrender or die! [109] fire on Caste Prime Headquarters [000012]
+  (chance: 18/17) and hits doing 4 damage.
+    corporate headquarters [corphq] is lightly damaged.
+  Surrender or die! [109] fire on Caste Prime Headquarters [000012]
+  (chance: 18/17) and hits doing 4 damage.
+    corporate headquarters [corphq] is lightly damaged.
+  5 gun placements [111] fire on peaceful scout [108].
+  (chance: 5/9) and hits doing 1 damage.
+  (chance: 5/9) and hits doing 1 damage.
   ------------------------------------------------------------
   Round 5:
   ------------------------------------------------------------
   Attackers:
   + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
-    hit points: 100/92, attack: 4, defense: 4.
+    hit points: 100/93, attack: 4, defense: 4.
     tactics: prioritize armed.
-      #1 hit points: 100/92.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1042 (720), crew: 48/48.
     hit points: 300/300, attack: 12, defense: 12.
@@ -422,8 +395,7 @@ Battles report:
   - Caste Prime Headquarters [000012], corporate headquarters [corphq],
     immobile, owned by Caste Prime [2].
     size: 1000.
-    hit points: 100/56, defense: 5.
-      #1 hit points: 100/56, lightly damaged.
+    hit points: 100/52, defense: 5, lightly damaged.
   - small cargo bay [000013], 5 small cargo bays [cargob], immobile,
     owned by Caste Prime [2].
     size: 10000.
@@ -451,7 +423,6 @@ Battles report:
     Prime [2].
     size: 1000.
     hit points: 100/100.
-      #1 hit points: 100/100.
   - factory [000017], 5 factories [factry], partially disabled,
     immobile, owned by Caste Prime [2].
     size: 5000.
@@ -471,32 +442,25 @@ Battles report:
       #4 hit points: 100/96, effects: inactive.
       #5 hit points: 100/100, effects: inactive.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111]
-  (chance: 3/9) and hits #1 gun placement [111] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime
-  Headquarters [000012] (chance: 9/17) and hits #1 Caste Prime
-  Headquarters [000012] doing 4 damage.
-    #1 corporate headquarters [corphq] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime
-  Headquarters [000012] (chance: 9/17) and hits #1 Caste Prime
-  Headquarters [000012] doing 4 damage.
-    #1 corporate headquarters [corphq] is heavily damaged.
-    #1 corporate headquarters [corphq] is disabled.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/9) and
+  hits #1 gun placement [111] doing 4 damage.
+  Surrender or die! [109] fire on Caste Prime Headquarters [000012]
+  (chance: 18/17) and hits doing 4 damage.
+    corporate headquarters [corphq] is heavily damaged.
+    corporate headquarters [corphq] is disabled.
     Caste Prime Headquarters [000012] lost it's command module and
     disables.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout
-  [108] (chance: 2/9) and hits #1 peaceful scout [108] doing 1 damage.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout
-  [108] (chance: 2/9) and hits #1 peaceful scout [108] doing 1 damage.
+  5 gun placements [111] fire on peaceful scout [108].
+  (chance: 5/9) and hits doing 1 damage.
+  (chance: 5/9) and hits doing 1 damage.
   ------------------------------------------------------------
   Round 6:
   ------------------------------------------------------------
   Attackers:
   + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
-    hit points: 100/90, attack: 4, defense: 4.
+    hit points: 100/91, attack: 4, defense: 4.
     tactics: prioritize armed.
-      #1 hit points: 100/90.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1042 (720), crew: 48/48.
     hit points: 300/300, attack: 12, defense: 12.
@@ -532,7 +496,6 @@ Battles report:
     Prime [2].
     size: 1000.
     hit points: 100/100.
-      #1 hit points: 100/100.
   - factory [000017], 5 factories [factry], partially disabled,
     immobile, owned by Caste Prime [2].
     size: 5000.
@@ -552,27 +515,25 @@ Battles report:
       #4 hit points: 100/96, effects: inactive.
       #5 hit points: 100/100, effects: inactive.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111]
-  (chance: 3/9) and hits #1 gun placement [111] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111]
-  (chance: 9/17) and hits #5 gun placement [111] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111]
-  (chance: 9/17) and hits #4 gun placement [111] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111]
-  (chance: 9/17) and hits #3 gun placement [111] doing 4 damage.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout
-  [108] (chance: 2/9) and hits #1 peaceful scout [108] doing 1 damage.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout
-  [108] (chance: 2/9) and hits #1 peaceful scout [108] doing 1 damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/9) and
+  hits #2 gun placement [111] doing 4 damage.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17)
+  and hits #1 gun placement [111] doing 4 damage.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17)
+  and hits #5 gun placement [111] doing 4 damage.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17)
+  and hits #4 gun placement [111] doing 4 damage.
+  5 gun placements [111] fire on peaceful scout [108].
+  (chance: 5/9) and hits doing 1 damage.
+  (chance: 5/9) and hits doing 1 damage.
   ------------------------------------------------------------
   Round 7:
   ------------------------------------------------------------
   Attackers:
   + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
-    hit points: 100/88, attack: 4, defense: 4.
+    hit points: 100/89, attack: 4, defense: 4.
     tactics: prioritize armed.
-      #1 hit points: 100/88.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1042 (720), crew: 48/48.
     hit points: 300/300, attack: 12, defense: 12.
@@ -608,7 +569,6 @@ Battles report:
     Prime [2].
     size: 1000.
     hit points: 100/100.
-      #1 hit points: 100/100.
   - factory [000017], 5 factories [factry], partially disabled,
     immobile, owned by Caste Prime [2].
     size: 5000.
@@ -623,32 +583,30 @@ Battles report:
     size: 500.
     hit points: 500/464, attack: 5, defense: 5.
       #1 hit points: 100/88.
-      #2 hit points: 100/96.
-      #3 hit points: 100/92, effects: inactive.
+      #2 hit points: 100/92.
+      #3 hit points: 100/96, effects: inactive.
       #4 hit points: 100/92, effects: inactive.
       #5 hit points: 100/96, effects: inactive.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111]
-  (chance: 3/9) and hits #5 gun placement [111] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111]
-  (chance: 9/17) and hits #4 gun placement [111] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111]
-  (chance: 9/17) and hits #3 gun placement [111] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111]
-  (chance: 9/17) and hits #2 gun placement [111] doing 4 damage.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout
-  [108] (chance: 2/9) and hits #1 peaceful scout [108] doing 1 damage.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout
-  [108] (chance: 2/9) and hits #1 peaceful scout [108] doing 1 damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/9) and
+  hits #1 gun placement [111] doing 4 damage.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17)
+  and hits #5 gun placement [111] doing 4 damage.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17)
+  and hits #4 gun placement [111] doing 4 damage.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17)
+  and hits #3 gun placement [111] doing 4 damage.
+  5 gun placements [111] fire on peaceful scout [108].
+  (chance: 5/9) and hits doing 1 damage.
+  (chance: 5/9) and hits doing 1 damage.
   ------------------------------------------------------------
   Round 8:
   ------------------------------------------------------------
   Attackers:
   + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
-    hit points: 100/86, attack: 4, defense: 4.
+    hit points: 100/87, attack: 4, defense: 4.
     tactics: prioritize armed.
-      #1 hit points: 100/86.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1042 (720), crew: 48/48.
     hit points: 300/300, attack: 12, defense: 12.
@@ -684,7 +642,6 @@ Battles report:
     Prime [2].
     size: 1000.
     hit points: 100/100.
-      #1 hit points: 100/100.
   - factory [000017], 5 factories [factry], partially disabled,
     immobile, owned by Caste Prime [2].
     size: 5000.
@@ -698,33 +655,31 @@ Battles report:
     immobile, owned by Caste Prime [2].
     size: 500.
     hit points: 500/448, attack: 5, defense: 5.
-      #1 hit points: 100/88.
+      #1 hit points: 100/84.
       #2 hit points: 100/92.
-      #3 hit points: 100/88, effects: inactive.
+      #3 hit points: 100/92, effects: inactive.
       #4 hit points: 100/88, effects: inactive.
       #5 hit points: 100/92, effects: inactive.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111]
-  (chance: 3/9) and hits #4 gun placement [111] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111]
-  (chance: 9/17) and hits #3 gun placement [111] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111]
-  (chance: 9/17) and hits #2 gun placement [111] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111]
-  (chance: 9/17) and hits #1 gun placement [111] doing 4 damage.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout
-  [108] (chance: 2/9) and hits #1 peaceful scout [108] doing 1 damage.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout
-  [108] (chance: 2/9) and hits #1 peaceful scout [108] doing 1 damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/9) and
+  hits #5 gun placement [111] doing 4 damage.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17)
+  and hits #4 gun placement [111] doing 4 damage.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17)
+  and hits #3 gun placement [111] doing 4 damage.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17)
+  and hits #2 gun placement [111] doing 4 damage.
+  5 gun placements [111] fire on peaceful scout [108].
+  (chance: 5/9) and hits doing 1 damage.
+  (chance: 5/9) and hits doing 1 damage.
   ------------------------------------------------------------
   Round 9:
   ------------------------------------------------------------
   Attackers:
   + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
-    hit points: 100/84, attack: 4, defense: 4.
+    hit points: 100/85, attack: 4, defense: 4.
     tactics: prioritize armed.
-      #1 hit points: 100/84.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1042 (720), crew: 48/48.
     hit points: 300/300, attack: 12, defense: 12.
@@ -760,7 +715,6 @@ Battles report:
     Prime [2].
     size: 1000.
     hit points: 100/100.
-      #1 hit points: 100/100.
   - factory [000017], 5 factories [factry], partially disabled,
     immobile, owned by Caste Prime [2].
     size: 5000.
@@ -776,31 +730,29 @@ Battles report:
     hit points: 500/432, attack: 5, defense: 5.
       #1 hit points: 100/84.
       #2 hit points: 100/88.
-      #3 hit points: 100/84, effects: inactive.
+      #3 hit points: 100/88, effects: inactive.
       #4 hit points: 100/84, effects: inactive.
-      #5 hit points: 100/92, effects: inactive.
+      #5 hit points: 100/88, effects: inactive.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111]
-  (chance: 3/9) and hits #3 gun placement [111] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111]
-  (chance: 9/17) and hits #2 gun placement [111] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111]
-  (chance: 9/17) and hits #1 gun placement [111] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111]
-  (chance: 9/17) and hits #5 gun placement [111] doing 4 damage.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout
-  [108] (chance: 2/9) and hits #1 peaceful scout [108] doing 1 damage.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout
-  [108] (chance: 2/9) and hits #1 peaceful scout [108] doing 1 damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/9) and
+  hits #4 gun placement [111] doing 4 damage.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17)
+  and hits #3 gun placement [111] doing 4 damage.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17)
+  and hits #2 gun placement [111] doing 4 damage.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17)
+  and hits #1 gun placement [111] doing 4 damage.
+  5 gun placements [111] fire on peaceful scout [108].
+  (chance: 5/9) and hits doing 1 damage.
+  (chance: 5/9) and hits doing 1 damage.
   ------------------------------------------------------------
   Round 10:
   ------------------------------------------------------------
   Attackers:
   + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
-    hit points: 100/82, attack: 4, defense: 4.
+    hit points: 100/83, attack: 4, defense: 4.
     tactics: prioritize armed.
-      #1 hit points: 100/82.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1042 (720), crew: 48/48.
     hit points: 300/300, attack: 12, defense: 12.
@@ -836,7 +788,6 @@ Battles report:
     Prime [2].
     size: 1000.
     hit points: 100/100.
-      #1 hit points: 100/100.
   - factory [000017], 5 factories [factry], partially disabled,
     immobile, owned by Caste Prime [2].
     size: 5000.
@@ -852,22 +803,21 @@ Battles report:
     hit points: 500/416, attack: 5, defense: 5.
       #1 hit points: 100/80.
       #2 hit points: 100/84.
-      #3 hit points: 100/80, effects: inactive.
-      #4 hit points: 100/84, effects: inactive.
+      #3 hit points: 100/84, effects: inactive.
+      #4 hit points: 100/80, effects: inactive.
       #5 hit points: 100/88, effects: inactive.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111]
-  (chance: 3/9) and hits #2 gun placement [111] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111]
-  (chance: 9/17) and hits #1 gun placement [111] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111]
-  (chance: 9/17) and hits #5 gun placement [111] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111]
-  (chance: 9/17) and hits #4 gun placement [111] doing 4 damage.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout
-  [108] (chance: 2/9) and hits #1 peaceful scout [108] doing 1 damage.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout
-  [108] (chance: 2/9) and hits #1 peaceful scout [108] doing 1 damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/9) and
+  hits #3 gun placement [111] doing 4 damage.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17)
+  and hits #2 gun placement [111] doing 4 damage.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17)
+  and hits #1 gun placement [111] doing 4 damage.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17)
+  and hits #5 gun placement [111] doing 4 damage.
+  5 gun placements [111] fire on peaceful scout [108].
+  (chance: 5/9) and hits doing 1 damage.
+  (chance: 5/9) and hits doing 1 damage.
   ------------------------------------------------------------
   Battle ended indecisively.
 
@@ -881,9 +831,8 @@ Battles report:
   Attackers:
   + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
-    hit points: 100/80, attack: 4, defense: 4.
+    hit points: 100/81, attack: 4, defense: 4.
     tactics: prioritize armed.
-      #1 hit points: 100/80.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1042 (720), crew: 48/48.
     hit points: 300/300, attack: 12, defense: 12.
@@ -895,8 +844,7 @@ Battles report:
   - Caste Prime Headquarters [000012], corporate headquarters [corphq],
     disabled, immobile, owned by Caste Prime [2].
     size: 1000.
-    hit points: 100/48.
-      #1 hit points: 100/48, heavily damaged, effects: disabled.
+    hit points: 100/48, heavily damaged, disabled.
   - small cargo bay [000013], 5 small cargo bays [cargob], immobile,
     owned by Caste Prime [2].
     size: 10000.
@@ -924,7 +872,6 @@ Battles report:
     Prime [2].
     size: 1000.
     hit points: 100/100.
-      #1 hit points: 100/100.
   - factory [000017], 5 factories [factry], partially disabled,
     immobile, owned by Caste Prime [2].
     size: 5000.
@@ -944,37 +891,31 @@ Battles report:
       #4 hit points: 100/80, effects: inactive.
       #5 hit points: 100/84, effects: inactive.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111]
-  (chance: 3/9) and hits #1 gun placement [111] doing 4 damage.
-    #1 gun placement [gunplc] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime
-  Headquarters [000012] (chance: 9/12) and hits #1 Caste Prime
-  Headquarters [000012] doing 4 damage.
-    #1 corporate headquarters [corphq] is heavily damaged.
-    #1 corporate headquarters [corphq] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime
-  Headquarters [000012] (chance: 9/12) and hits #1 Caste Prime
-  Headquarters [000012] doing 4 damage.
-    #1 corporate headquarters [corphq] is heavily damaged.
-    #1 corporate headquarters [corphq] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime
-  Headquarters [000012] (chance: 9/12) and hits #1 Caste Prime
-  Headquarters [000012] doing 4 damage.
-    #1 corporate headquarters [corphq] is heavily damaged.
-    #1 corporate headquarters [corphq] is disabled.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout
-  [108] (chance: 2/9) and hits #1 peaceful scout [108] doing 1 damage.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout
-  [108] (chance: 2/9) and hits #1 peaceful scout [108] doing 1 damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/9) and
+  hits #2 gun placement [111] doing 4 damage.
+  Surrender or die! [109] fire on Caste Prime Headquarters [000012]
+  (chance: 18/12) and hits doing 4 damage.
+    corporate headquarters [corphq] is heavily damaged.
+    corporate headquarters [corphq] is disabled.
+  Surrender or die! [109] fire on Caste Prime Headquarters [000012]
+  (chance: 18/12) and hits doing 4 damage.
+    corporate headquarters [corphq] is heavily damaged.
+    corporate headquarters [corphq] is disabled.
+  Surrender or die! [109] fire on Caste Prime Headquarters [000012]
+  (chance: 18/12) and hits doing 4 damage.
+    corporate headquarters [corphq] is heavily damaged.
+    corporate headquarters [corphq] is disabled.
+  5 gun placements [111] fire on peaceful scout [108].
+  (chance: 5/9) and hits doing 1 damage.
+  (chance: 5/9) and hits doing 1 damage.
   ------------------------------------------------------------
   Round 2:
   ------------------------------------------------------------
   Attackers:
   + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
-    hit points: 100/78, attack: 4, defense: 4.
+    hit points: 100/79, attack: 4, defense: 4.
     tactics: prioritize armed.
-      #1 hit points: 100/78.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1042 (720), crew: 48/48.
     hit points: 300/300, attack: 12, defense: 12.
@@ -986,8 +927,7 @@ Battles report:
   - Caste Prime Headquarters [000012], corporate headquarters [corphq],
     disabled, immobile, owned by Caste Prime [2].
     size: 1000.
-    hit points: 100/36.
-      #1 hit points: 100/36, heavily damaged, effects: disabled.
+    hit points: 100/36, heavily damaged, disabled.
   - small cargo bay [000013], 5 small cargo bays [cargob], immobile,
     owned by Caste Prime [2].
     size: 10000.
@@ -1015,7 +955,6 @@ Battles report:
     Prime [2].
     size: 1000.
     hit points: 100/100.
-      #1 hit points: 100/100.
   - factory [000017], 5 factories [factry], partially disabled,
     immobile, owned by Caste Prime [2].
     size: 5000.
@@ -1029,42 +968,38 @@ Battles report:
     immobile, owned by Caste Prime [2].
     size: 500.
     hit points: 500/396, attack: 5, defense: 5.
-      #1 hit points: 100/72, lightly damaged.
-      #2 hit points: 100/80.
+      #1 hit points: 100/76.
+      #2 hit points: 100/76.
       #3 hit points: 100/80, effects: inactive.
       #4 hit points: 100/80, effects: inactive.
       #5 hit points: 100/84, effects: inactive.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111]
-  (chance: 3/9) and hits #5 gun placement [111] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime
-  Headquarters [000012] (chance: 9/12) and hits #1 Caste Prime
-  Headquarters [000012] doing 4 damage.
-    #1 corporate headquarters [corphq] is heavily damaged.
-    #1 corporate headquarters [corphq] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime
-  Headquarters [000012] (chance: 9/12) and hits #1 Caste Prime
-  Headquarters [000012] doing 4 damage.
-    #1 corporate headquarters [corphq] is heavily damaged.
-    #1 corporate headquarters [corphq] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime
-  Headquarters [000012] (chance: 9/12) and hits #1 Caste Prime
-  Headquarters [000012] doing 4 damage.
-    #1 corporate headquarters [corphq] is critically damaged.
-    #1 corporate headquarters [corphq] is disabled.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout
-  [108] (chance: 2/9) and hits #1 peaceful scout [108] doing 1 damage.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout
-  [108] (chance: 2/9) and hits #1 peaceful scout [108] doing 1 damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/9) and
+  hits #1 gun placement [111] doing 4 damage.
+    #1 gun placement [gunplc] is lightly damaged.
+  Surrender or die! [109] fire on Caste Prime Headquarters [000012]
+  (chance: 18/12) and hits doing 4 damage.
+    corporate headquarters [corphq] is heavily damaged.
+    corporate headquarters [corphq] is disabled.
+  Surrender or die! [109] fire on Caste Prime Headquarters [000012]
+  (chance: 18/12) and hits doing 4 damage.
+    corporate headquarters [corphq] is heavily damaged.
+    corporate headquarters [corphq] is disabled.
+  Surrender or die! [109] fire on Caste Prime Headquarters [000012]
+  (chance: 18/12) and hits doing 4 damage.
+    corporate headquarters [corphq] is critically damaged.
+    corporate headquarters [corphq] is disabled.
+  5 gun placements [111] fire on peaceful scout [108].
+  (chance: 5/9) and hits doing 1 damage.
+  (chance: 5/9) and hits doing 1 damage.
   ------------------------------------------------------------
   Round 3:
   ------------------------------------------------------------
   Attackers:
   + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
-    hit points: 100/76, attack: 4, defense: 4.
+    hit points: 100/77, attack: 4, defense: 4.
     tactics: prioritize armed.
-      #1 hit points: 100/76.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1042 (720), crew: 48/48.
     hit points: 300/300, attack: 12, defense: 12.
@@ -1076,8 +1011,7 @@ Battles report:
   - Caste Prime Headquarters [000012], corporate headquarters [corphq],
     disabled, immobile, owned by Caste Prime [2].
     size: 1000.
-    hit points: 100/24.
-      #1 hit points: 100/24, critically damaged, effects: disabled.
+    hit points: 100/24, critically damaged, disabled.
   - small cargo bay [000013], 5 small cargo bays [cargob], immobile,
     owned by Caste Prime [2].
     size: 10000.
@@ -1105,7 +1039,6 @@ Battles report:
     Prime [2].
     size: 1000.
     hit points: 100/100.
-      #1 hit points: 100/100.
   - factory [000017], 5 factories [factry], partially disabled,
     immobile, owned by Caste Prime [2].
     size: 5000.
@@ -1120,42 +1053,36 @@ Battles report:
     size: 500.
     hit points: 500/392, attack: 5, defense: 5.
       #1 hit points: 100/72, lightly damaged.
-      #2 hit points: 100/80.
+      #2 hit points: 100/76.
       #3 hit points: 100/80, effects: inactive.
       #4 hit points: 100/80, effects: inactive.
-      #5 hit points: 100/80, effects: inactive.
+      #5 hit points: 100/84, effects: inactive.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111]
-  (chance: 3/9) and hits #4 gun placement [111] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime
-  Headquarters [000012] (chance: 9/12) and hits #1 Caste Prime
-  Headquarters [000012] doing 4 damage.
-    #1 corporate headquarters [corphq] is critically damaged.
-    #1 corporate headquarters [corphq] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime
-  Headquarters [000012] (chance: 9/12) and hits #1 Caste Prime
-  Headquarters [000012] doing 4 damage.
-    #1 corporate headquarters [corphq] is critically damaged.
-    #1 corporate headquarters [corphq] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime
-  Headquarters [000012] (chance: 9/12) and hits #1 Caste Prime
-  Headquarters [000012] doing 4 damage.
-    #1 corporate headquarters [corphq] is critically damaged.
-    #1 corporate headquarters [corphq] is disabled.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout
-  [108] (chance: 2/9) and hits #1 peaceful scout [108] doing 1 damage.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout
-  [108] (chance: 2/9) and hits #1 peaceful scout [108] doing 1 damage.
-    #1 tanks [tanks] is lightly damaged.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/9) and
+  hits #5 gun placement [111] doing 4 damage.
+  Surrender or die! [109] fire on Caste Prime Headquarters [000012]
+  (chance: 18/12) and hits doing 4 damage.
+    corporate headquarters [corphq] is critically damaged.
+    corporate headquarters [corphq] is disabled.
+  Surrender or die! [109] fire on Caste Prime Headquarters [000012]
+  (chance: 18/12) and hits doing 4 damage.
+    corporate headquarters [corphq] is critically damaged.
+    corporate headquarters [corphq] is disabled.
+  Surrender or die! [109] fire on Caste Prime Headquarters [000012]
+  (chance: 18/12) and hits doing 4 damage.
+    corporate headquarters [corphq] is critically damaged.
+    corporate headquarters [corphq] is disabled.
+  5 gun placements [111] fire on peaceful scout [108].
+  (chance: 5/9) and hits doing 1 damage.
+  (chance: 5/9) and hits doing 1 damage.
   ------------------------------------------------------------
   Round 4:
   ------------------------------------------------------------
   Attackers:
   + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
-    hit points: 100/74, attack: 4, defense: 4.
+    hit points: 100/75, attack: 4, defense: 4.
     tactics: prioritize armed.
-      #1 hit points: 100/74, lightly damaged.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1042 (720), crew: 48/48.
     hit points: 300/300, attack: 12, defense: 12.
@@ -1167,8 +1094,7 @@ Battles report:
   - Caste Prime Headquarters [000012], corporate headquarters [corphq],
     disabled, immobile, owned by Caste Prime [2].
     size: 1000.
-    hit points: 100/12.
-      #1 hit points: 100/12, critically damaged, effects: disabled.
+    hit points: 100/12, critically damaged, disabled.
   - small cargo bay [000013], 5 small cargo bays [cargob], immobile,
     owned by Caste Prime [2].
     size: 10000.
@@ -1196,7 +1122,6 @@ Battles report:
     Prime [2].
     size: 1000.
     hit points: 100/100.
-      #1 hit points: 100/100.
   - factory [000017], 5 factories [factry], partially disabled,
     immobile, owned by Caste Prime [2].
     size: 5000.
@@ -1211,42 +1136,37 @@ Battles report:
     size: 500.
     hit points: 500/388, attack: 5, defense: 5.
       #1 hit points: 100/72, lightly damaged.
-      #2 hit points: 100/80.
+      #2 hit points: 100/76.
       #3 hit points: 100/80, effects: inactive.
-      #4 hit points: 100/76, effects: inactive.
+      #4 hit points: 100/80, effects: inactive.
       #5 hit points: 100/80, effects: inactive.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111]
-  (chance: 3/9) and hits #3 gun placement [111] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime
-  Headquarters [000012] (chance: 9/12) and hits #1 Caste Prime
-  Headquarters [000012] doing 4 damage.
-    #1 corporate headquarters [corphq] is critically damaged.
-    #1 corporate headquarters [corphq] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime
-  Headquarters [000012] (chance: 9/12) and hits #1 Caste Prime
-  Headquarters [000012] doing 4 damage.
-    #1 corporate headquarters [corphq] is critically damaged.
-    #1 corporate headquarters [corphq] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime
-  Headquarters [000012] (chance: 9/12) and hits #1 Caste Prime
-  Headquarters [000012] doing 4 damage.
-    #1 corporate headquarters [corphq] is wrecked.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout
-  [108] (chance: 2/9) and hits #1 peaceful scout [108] doing 1 damage.
-    #1 tanks [tanks] is lightly damaged.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout
-  [108] (chance: 2/9) and hits #1 peaceful scout [108] doing 1 damage.
-    #1 tanks [tanks] is lightly damaged.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/9) and
+  hits #4 gun placement [111] doing 4 damage.
+  Surrender or die! [109] fire on Caste Prime Headquarters [000012]
+  (chance: 18/12) and hits doing 4 damage.
+    corporate headquarters [corphq] is critically damaged.
+    corporate headquarters [corphq] is disabled.
+  Surrender or die! [109] fire on Caste Prime Headquarters [000012]
+  (chance: 18/12) and hits doing 4 damage.
+    corporate headquarters [corphq] is critically damaged.
+    corporate headquarters [corphq] is disabled.
+  Surrender or die! [109] fire on Caste Prime Headquarters [000012]
+  (chance: 18/12) and hits doing 4 damage.
+    corporate headquarters [corphq] is wrecked.
+  5 gun placements [111] fire on peaceful scout [108].
+  (chance: 5/9) and hits doing 1 damage.
+    tanks [tanks] is lightly damaged.
+  (chance: 5/9) and hits doing 1 damage.
+    tanks [tanks] is lightly damaged.
   ------------------------------------------------------------
   Round 5:
   ------------------------------------------------------------
   Attackers:
   + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
-    hit points: 100/72, attack: 4, defense: 4.
+    hit points: 100/73, attack: 4, defense: 4, lightly damaged.
     tactics: prioritize armed.
-      #1 hit points: 100/72, lightly damaged.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1042 (720), crew: 48/48.
     hit points: 300/300, attack: 12, defense: 12.
@@ -1258,8 +1178,7 @@ Battles report:
   - Caste Prime Headquarters [000012], corporate headquarters [corphq],
     disabled, immobile, owned by Caste Prime [2].
     size: 1000.
-    hit points: 100/0.
-      #1 hit points: 100/0, destroyed, effects: disabled.
+    hit points: 100/0, destroyed, disabled.
   - small cargo bay [000013], 5 small cargo bays [cargob], immobile,
     owned by Caste Prime [2].
     size: 10000.
@@ -1287,7 +1206,6 @@ Battles report:
     Prime [2].
     size: 1000.
     hit points: 100/100.
-      #1 hit points: 100/100.
   - factory [000017], 5 factories [factry], partially disabled,
     immobile, owned by Caste Prime [2].
     size: 5000.
@@ -1302,36 +1220,34 @@ Battles report:
     size: 500.
     hit points: 500/384, attack: 5, defense: 5.
       #1 hit points: 100/72, lightly damaged.
-      #2 hit points: 100/80.
-      #3 hit points: 100/76, effects: inactive.
+      #2 hit points: 100/76.
+      #3 hit points: 100/80, effects: inactive.
       #4 hit points: 100/76, effects: inactive.
       #5 hit points: 100/80, effects: inactive.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111]
-  (chance: 3/9) and hits #2 gun placement [111] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111]
-  (chance: 9/17) and hits #1 gun placement [111] doing 4 damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/9) and
+  hits #3 gun placement [111] doing 4 damage.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17)
+  and hits #2 gun placement [111] doing 4 damage.
+    #2 gun placement [gunplc] is lightly damaged.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17)
+  and hits #1 gun placement [111] doing 4 damage.
     #1 gun placement [gunplc] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111]
-  (chance: 9/17) and hits #5 gun placement [111] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111]
-  (chance: 9/17) and hits #4 gun placement [111] doing 4 damage.
-    #4 gun placement [gunplc] is lightly damaged.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout
-  [108] (chance: 2/9) and hits #1 peaceful scout [108] doing 1 damage.
-    #1 tanks [tanks] is lightly damaged.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout
-  [108] (chance: 2/9) and hits #1 peaceful scout [108] doing 1 damage.
-    #1 tanks [tanks] is lightly damaged.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17)
+  and hits #5 gun placement [111] doing 4 damage.
+  5 gun placements [111] fire on peaceful scout [108].
+  (chance: 5/9) and hits doing 1 damage.
+    tanks [tanks] is lightly damaged.
+  (chance: 5/9) and hits doing 1 damage.
+    tanks [tanks] is lightly damaged.
   ------------------------------------------------------------
   Round 6:
   ------------------------------------------------------------
   Attackers:
   + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
-    hit points: 100/70, attack: 4, defense: 4.
+    hit points: 100/71, attack: 4, defense: 4, lightly damaged.
     tactics: prioritize armed.
-      #1 hit points: 100/70, lightly damaged.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1042 (720), crew: 48/48.
     hit points: 300/300, attack: 12, defense: 12.
@@ -1343,8 +1259,7 @@ Battles report:
   - Caste Prime Headquarters [000012], corporate headquarters [corphq],
     disabled, immobile, owned by Caste Prime [2].
     size: 1000.
-    hit points: 100/0.
-      #1 hit points: 100/0, destroyed, effects: disabled.
+    hit points: 100/0, destroyed, disabled.
   - small cargo bay [000013], 5 small cargo bays [cargob], immobile,
     owned by Caste Prime [2].
     size: 10000.
@@ -1372,7 +1287,6 @@ Battles report:
     Prime [2].
     size: 1000.
     hit points: 100/100.
-      #1 hit points: 100/100.
   - factory [000017], 5 factories [factry], partially disabled,
     immobile, owned by Caste Prime [2].
     size: 5000.
@@ -1387,38 +1301,36 @@ Battles report:
     size: 500.
     hit points: 500/368, attack: 5, defense: 5.
       #1 hit points: 100/68, lightly damaged.
-      #2 hit points: 100/76.
+      #2 hit points: 100/72, lightly damaged.
       #3 hit points: 100/76, effects: inactive.
-      #4 hit points: 100/72, lightly damaged, effects: inactive.
+      #4 hit points: 100/76, effects: inactive.
       #5 hit points: 100/76, effects: inactive.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111]
-  (chance: 3/9) and hits #1 gun placement [111] doing 4 damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/9) and
+  hits #2 gun placement [111] doing 4 damage.
+    #2 gun placement [gunplc] is lightly damaged.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17)
+  and hits #1 gun placement [111] doing 4 damage.
     #1 gun placement [gunplc] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111]
-  (chance: 9/17) and hits #5 gun placement [111] doing 4 damage.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17)
+  and hits #5 gun placement [111] doing 4 damage.
     #5 gun placement [gunplc] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111]
-  (chance: 9/17) and hits #4 gun placement [111] doing 4 damage.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17)
+  and hits #4 gun placement [111] doing 4 damage.
     #4 gun placement [gunplc] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111]
-  (chance: 9/17) and hits #3 gun placement [111] doing 4 damage.
-    #3 gun placement [gunplc] is lightly damaged.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout
-  [108] (chance: 2/9) and hits #1 peaceful scout [108] doing 1 damage.
-    #1 tanks [tanks] is lightly damaged.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout
-  [108] (chance: 2/9) and hits #1 peaceful scout [108] doing 1 damage.
-    #1 tanks [tanks] is lightly damaged.
+  5 gun placements [111] fire on peaceful scout [108].
+  (chance: 5/9) and hits doing 1 damage.
+    tanks [tanks] is lightly damaged.
+  (chance: 5/9) and hits doing 1 damage.
+    tanks [tanks] is lightly damaged.
   ------------------------------------------------------------
   Round 7:
   ------------------------------------------------------------
   Attackers:
   + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
-    hit points: 100/68, attack: 4, defense: 4.
+    hit points: 100/69, attack: 4, defense: 4, lightly damaged.
     tactics: prioritize armed.
-      #1 hit points: 100/68, lightly damaged.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1042 (720), crew: 48/48.
     hit points: 300/300, attack: 12, defense: 12.
@@ -1430,8 +1342,7 @@ Battles report:
   - Caste Prime Headquarters [000012], corporate headquarters [corphq],
     disabled, immobile, owned by Caste Prime [2].
     size: 1000.
-    hit points: 100/0.
-      #1 hit points: 100/0, destroyed, effects: disabled.
+    hit points: 100/0, destroyed, disabled.
   - small cargo bay [000013], 5 small cargo bays [cargob], immobile,
     owned by Caste Prime [2].
     size: 10000.
@@ -1459,7 +1370,6 @@ Battles report:
     Prime [2].
     size: 1000.
     hit points: 100/100.
-      #1 hit points: 100/100.
   - factory [000017], 5 factories [factry], partially disabled,
     immobile, owned by Caste Prime [2].
     size: 5000.
@@ -1474,38 +1384,36 @@ Battles report:
     size: 500.
     hit points: 500/352, attack: 5, defense: 5.
       #1 hit points: 100/64, lightly damaged.
-      #2 hit points: 100/76.
-      #3 hit points: 100/72, lightly damaged, effects: inactive.
-      #4 hit points: 100/68, lightly damaged, effects: inactive.
+      #2 hit points: 100/68, lightly damaged.
+      #3 hit points: 100/76, effects: inactive.
+      #4 hit points: 100/72, lightly damaged, effects: inactive.
       #5 hit points: 100/72, lightly damaged, effects: inactive.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111]
-  (chance: 3/9) and hits #5 gun placement [111] doing 4 damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/9) and
+  hits #1 gun placement [111] doing 4 damage.
+    #1 gun placement [gunplc] is lightly damaged.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17)
+  and hits #5 gun placement [111] doing 4 damage.
     #5 gun placement [gunplc] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111]
-  (chance: 9/17) and hits #4 gun placement [111] doing 4 damage.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17)
+  and hits #4 gun placement [111] doing 4 damage.
     #4 gun placement [gunplc] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111]
-  (chance: 9/17) and hits #3 gun placement [111] doing 4 damage.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17)
+  and hits #3 gun placement [111] doing 4 damage.
     #3 gun placement [gunplc] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111]
-  (chance: 9/17) and hits #2 gun placement [111] doing 4 damage.
-    #2 gun placement [gunplc] is lightly damaged.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout
-  [108] (chance: 2/9) and hits #1 peaceful scout [108] doing 1 damage.
-    #1 tanks [tanks] is lightly damaged.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout
-  [108] (chance: 2/9) and hits #1 peaceful scout [108] doing 1 damage.
-    #1 tanks [tanks] is lightly damaged.
+  5 gun placements [111] fire on peaceful scout [108].
+  (chance: 5/9) and hits doing 1 damage.
+    tanks [tanks] is lightly damaged.
+  (chance: 5/9) and hits doing 1 damage.
+    tanks [tanks] is lightly damaged.
   ------------------------------------------------------------
   Round 8:
   ------------------------------------------------------------
   Attackers:
   + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
-    hit points: 100/66, attack: 4, defense: 4.
+    hit points: 100/67, attack: 4, defense: 4, lightly damaged.
     tactics: prioritize armed.
-      #1 hit points: 100/66, lightly damaged.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1042 (720), crew: 48/48.
     hit points: 300/300, attack: 12, defense: 12.
@@ -1517,8 +1425,7 @@ Battles report:
   - Caste Prime Headquarters [000012], corporate headquarters [corphq],
     disabled, immobile, owned by Caste Prime [2].
     size: 1000.
-    hit points: 100/0.
-      #1 hit points: 100/0, destroyed, effects: disabled.
+    hit points: 100/0, destroyed, disabled.
   - small cargo bay [000013], 5 small cargo bays [cargob], immobile,
     owned by Caste Prime [2].
     size: 10000.
@@ -1546,7 +1453,6 @@ Battles report:
     Prime [2].
     size: 1000.
     hit points: 100/100.
-      #1 hit points: 100/100.
   - factory [000017], 5 factories [factry], partially disabled,
     immobile, owned by Caste Prime [2].
     size: 5000.
@@ -1560,39 +1466,37 @@ Battles report:
     immobile, owned by Caste Prime [2].
     size: 500.
     hit points: 500/336, attack: 5, defense: 5.
-      #1 hit points: 100/64, lightly damaged.
-      #2 hit points: 100/72, lightly damaged.
-      #3 hit points: 100/68, lightly damaged, effects: inactive.
-      #4 hit points: 100/64, lightly damaged, effects: inactive.
+      #1 hit points: 100/60, lightly damaged.
+      #2 hit points: 100/68, lightly damaged.
+      #3 hit points: 100/72, lightly damaged, effects: inactive.
+      #4 hit points: 100/68, lightly damaged, effects: inactive.
       #5 hit points: 100/68, lightly damaged, effects: inactive.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111]
-  (chance: 3/9) and hits #4 gun placement [111] doing 4 damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/9) and
+  hits #5 gun placement [111] doing 4 damage.
+    #5 gun placement [gunplc] is lightly damaged.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17)
+  and hits #4 gun placement [111] doing 4 damage.
     #4 gun placement [gunplc] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111]
-  (chance: 9/17) and hits #3 gun placement [111] doing 4 damage.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17)
+  and hits #3 gun placement [111] doing 4 damage.
     #3 gun placement [gunplc] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111]
-  (chance: 9/17) and hits #2 gun placement [111] doing 4 damage.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17)
+  and hits #2 gun placement [111] doing 4 damage.
     #2 gun placement [gunplc] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111]
-  (chance: 9/17) and hits #1 gun placement [111] doing 4 damage.
-    #1 gun placement [gunplc] is lightly damaged.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout
-  [108] (chance: 2/9) and hits #1 peaceful scout [108] doing 1 damage.
-    #1 tanks [tanks] is lightly damaged.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout
-  [108] (chance: 2/9) and hits #1 peaceful scout [108] doing 1 damage.
-    #1 tanks [tanks] is lightly damaged.
+  5 gun placements [111] fire on peaceful scout [108].
+  (chance: 5/9) and hits doing 1 damage.
+    tanks [tanks] is lightly damaged.
+  (chance: 5/9) and hits doing 1 damage.
+    tanks [tanks] is lightly damaged.
   ------------------------------------------------------------
   Round 9:
   ------------------------------------------------------------
   Attackers:
   + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
-    hit points: 100/64, attack: 4, defense: 4.
+    hit points: 100/65, attack: 4, defense: 4, lightly damaged.
     tactics: prioritize armed.
-      #1 hit points: 100/64, lightly damaged.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1042 (720), crew: 48/48.
     hit points: 300/300, attack: 12, defense: 12.
@@ -1604,8 +1508,7 @@ Battles report:
   - Caste Prime Headquarters [000012], corporate headquarters [corphq],
     disabled, immobile, owned by Caste Prime [2].
     size: 1000.
-    hit points: 100/0.
-      #1 hit points: 100/0, destroyed, effects: disabled.
+    hit points: 100/0, destroyed, disabled.
   - small cargo bay [000013], 5 small cargo bays [cargob], immobile,
     owned by Caste Prime [2].
     size: 10000.
@@ -1633,7 +1536,6 @@ Battles report:
     Prime [2].
     size: 1000.
     hit points: 100/100.
-      #1 hit points: 100/100.
   - factory [000017], 5 factories [factry], partially disabled,
     immobile, owned by Caste Prime [2].
     size: 5000.
@@ -1648,38 +1550,36 @@ Battles report:
     size: 500.
     hit points: 500/320, attack: 5, defense: 5.
       #1 hit points: 100/60, lightly damaged.
-      #2 hit points: 100/68, lightly damaged.
-      #3 hit points: 100/64, lightly damaged, effects: inactive.
-      #4 hit points: 100/60, lightly damaged, effects: inactive.
-      #5 hit points: 100/68, lightly damaged, effects: inactive.
+      #2 hit points: 100/64, lightly damaged.
+      #3 hit points: 100/68, lightly damaged, effects: inactive.
+      #4 hit points: 100/64, lightly damaged, effects: inactive.
+      #5 hit points: 100/64, lightly damaged, effects: inactive.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111]
-  (chance: 3/9) and hits #3 gun placement [111] doing 4 damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/9) and
+  hits #4 gun placement [111] doing 4 damage.
+    #4 gun placement [gunplc] is lightly damaged.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17)
+  and hits #3 gun placement [111] doing 4 damage.
     #3 gun placement [gunplc] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111]
-  (chance: 9/17) and hits #2 gun placement [111] doing 4 damage.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17)
+  and hits #2 gun placement [111] doing 4 damage.
     #2 gun placement [gunplc] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111]
-  (chance: 9/17) and hits #1 gun placement [111] doing 4 damage.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17)
+  and hits #1 gun placement [111] doing 4 damage.
     #1 gun placement [gunplc] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111]
-  (chance: 9/17) and hits #5 gun placement [111] doing 4 damage.
-    #5 gun placement [gunplc] is lightly damaged.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout
-  [108] (chance: 2/9) and hits #1 peaceful scout [108] doing 1 damage.
-    #1 tanks [tanks] is lightly damaged.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout
-  [108] (chance: 2/9) and hits #1 peaceful scout [108] doing 1 damage.
-    #1 tanks [tanks] is lightly damaged.
+  5 gun placements [111] fire on peaceful scout [108].
+  (chance: 5/9) and hits doing 1 damage.
+    tanks [tanks] is lightly damaged.
+  (chance: 5/9) and hits doing 1 damage.
+    tanks [tanks] is lightly damaged.
   ------------------------------------------------------------
   Round 10:
   ------------------------------------------------------------
   Attackers:
   + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
-    hit points: 100/62, attack: 4, defense: 4.
+    hit points: 100/63, attack: 4, defense: 4, lightly damaged.
     tactics: prioritize armed.
-      #1 hit points: 100/62, lightly damaged.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1042 (720), crew: 48/48.
     hit points: 300/300, attack: 12, defense: 12.
@@ -1691,8 +1591,7 @@ Battles report:
   - Caste Prime Headquarters [000012], corporate headquarters [corphq],
     disabled, immobile, owned by Caste Prime [2].
     size: 1000.
-    hit points: 100/0.
-      #1 hit points: 100/0, destroyed, effects: disabled.
+    hit points: 100/0, destroyed, disabled.
   - small cargo bay [000013], 5 small cargo bays [cargob], immobile,
     owned by Caste Prime [2].
     size: 10000.
@@ -1720,7 +1619,6 @@ Battles report:
     Prime [2].
     size: 1000.
     hit points: 100/100.
-      #1 hit points: 100/100.
   - factory [000017], 5 factories [factry], partially disabled,
     immobile, owned by Caste Prime [2].
     size: 5000.
@@ -1735,29 +1633,28 @@ Battles report:
     size: 500.
     hit points: 500/304, attack: 5, defense: 5.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/64, lightly damaged.
-      #3 hit points: 100/60, lightly damaged, effects: inactive.
+      #2 hit points: 100/60, lightly damaged.
+      #3 hit points: 100/64, lightly damaged, effects: inactive.
       #4 hit points: 100/60, lightly damaged, effects: inactive.
       #5 hit points: 100/64, lightly damaged, effects: inactive.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111]
-  (chance: 3/9) and hits #2 gun placement [111] doing 4 damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/9) and
+  hits #3 gun placement [111] doing 4 damage.
+    #3 gun placement [gunplc] is lightly damaged.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17)
+  and hits #2 gun placement [111] doing 4 damage.
     #2 gun placement [gunplc] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111]
-  (chance: 9/17) and hits #1 gun placement [111] doing 4 damage.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17)
+  and hits #1 gun placement [111] doing 4 damage.
     #1 gun placement [gunplc] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111]
-  (chance: 9/17) and hits #5 gun placement [111] doing 4 damage.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17)
+  and hits #5 gun placement [111] doing 4 damage.
     #5 gun placement [gunplc] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111]
-  (chance: 9/17) and hits #4 gun placement [111] doing 4 damage.
-    #4 gun placement [gunplc] is lightly damaged.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout
-  [108] (chance: 2/9) and hits #1 peaceful scout [108] doing 1 damage.
-    #1 tanks [tanks] is lightly damaged.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout
-  [108] (chance: 2/9) and hits #1 peaceful scout [108] doing 1 damage.
-    #1 tanks [tanks] is lightly damaged.
+  5 gun placements [111] fire on peaceful scout [108].
+  (chance: 5/9) and hits doing 1 damage.
+    tanks [tanks] is lightly damaged.
+  (chance: 5/9) and hits doing 1 damage.
+    tanks [tanks] is lightly damaged.
   ------------------------------------------------------------
   Battle ended indecisively.
 
@@ -1771,9 +1668,8 @@ Battles report:
   Attackers:
   + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
-    hit points: 100/60, attack: 4, defense: 4.
+    hit points: 100/61, attack: 4, defense: 4, lightly damaged.
     tactics: prioritize armed.
-      #1 hit points: 100/60, lightly damaged.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1042 (720), crew: 48/48.
     hit points: 300/300, attack: 12, defense: 12.
@@ -1809,7 +1705,6 @@ Battles report:
     Prime [2].
     size: 1000.
     hit points: 100/100.
-      #1 hit points: 100/100.
   - factory [000017], 5 factories [factry], partially disabled,
     immobile, owned by Caste Prime [2].
     size: 5000.
@@ -1824,39 +1719,37 @@ Battles report:
     size: 500.
     hit points: 500/288, attack: 5, defense: 5.
       #1 hit points: 100/52, lightly damaged.
-      #2 hit points: 100/60, lightly damaged.
+      #2 hit points: 100/56, lightly damaged.
       #3 hit points: 100/60, lightly damaged, effects: inactive.
-      #4 hit points: 100/56, lightly damaged, effects: inactive.
+      #4 hit points: 100/60, lightly damaged, effects: inactive.
       #5 hit points: 100/60, lightly damaged, effects: inactive.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111]
-  (chance: 3/9) and hits #1 gun placement [111] doing 4 damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/9) and
+  hits #2 gun placement [111] doing 4 damage.
+    #2 gun placement [gunplc] is lightly damaged.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17)
+  and hits #1 gun placement [111] doing 4 damage.
     #1 gun placement [gunplc] is heavily damaged.
     #1 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111]
-  (chance: 9/16) and hits #5 gun placement [111] doing 4 damage.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/16)
+  and hits #5 gun placement [111] doing 4 damage.
     #5 gun placement [gunplc] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111]
-  (chance: 9/16) and hits #4 gun placement [111] doing 4 damage.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/16)
+  and hits #4 gun placement [111] doing 4 damage.
     #4 gun placement [gunplc] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111]
-  (chance: 9/16) and hits #3 gun placement [111] doing 4 damage.
-    #3 gun placement [gunplc] is lightly damaged.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout
-  [108] (chance: 2/8) and hits #1 peaceful scout [108] doing 1 damage.
-    #1 tanks [tanks] is lightly damaged.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout
-  [108] (chance: 2/8) and hits #1 peaceful scout [108] doing 1 damage.
-    #1 tanks [tanks] is lightly damaged.
+  4 gun placements [111] fire on peaceful scout [108].
+  (chance: 4/8) and hits doing 1 damage.
+    tanks [tanks] is lightly damaged.
+  (chance: 4/8) and hits doing 1 damage.
+    tanks [tanks] is lightly damaged.
   ------------------------------------------------------------
   Round 2:
   ------------------------------------------------------------
   Attackers:
   + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
-    hit points: 100/58, attack: 4, defense: 4.
+    hit points: 100/59, attack: 4, defense: 4, lightly damaged.
     tactics: prioritize armed.
-      #1 hit points: 100/58, lightly damaged.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1042 (720), crew: 48/48.
     hit points: 300/300, attack: 12, defense: 12.
@@ -1892,7 +1785,6 @@ Battles report:
     Prime [2].
     size: 1000.
     hit points: 100/100.
-      #1 hit points: 100/100.
   - factory [000017], 5 factories [factry], partially disabled,
     immobile, owned by Caste Prime [2].
     size: 5000.
@@ -1907,39 +1799,37 @@ Battles report:
     size: 500.
     hit points: 500/272, attack: 4, defense: 4.
       #1 hit points: 100/48, heavily damaged, effects: disabled.
-      #2 hit points: 100/60, lightly damaged.
-      #3 hit points: 100/56, lightly damaged.
-      #4 hit points: 100/52, lightly damaged, effects: inactive.
+      #2 hit points: 100/52, lightly damaged.
+      #3 hit points: 100/60, lightly damaged.
+      #4 hit points: 100/56, lightly damaged, effects: inactive.
       #5 hit points: 100/56, lightly damaged, effects: inactive.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111]
-  (chance: 3/8) and hits #5 gun placement [111] doing 4 damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/8) and
+  hits #1 gun placement [111] doing 4 damage.
+    #1 gun placement [gunplc] is heavily damaged.
+    #1 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/16)
+  and hits #5 gun placement [111] doing 4 damage.
     #5 gun placement [gunplc] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111]
-  (chance: 9/16) and hits #4 gun placement [111] doing 4 damage.
-    #4 gun placement [gunplc] is heavily damaged.
-    #4 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111]
-  (chance: 9/15) and hits #3 gun placement [111] doing 4 damage.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/16)
+  and hits #4 gun placement [111] doing 4 damage.
+    #4 gun placement [gunplc] is lightly damaged.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/16)
+  and hits #3 gun placement [111] doing 4 damage.
     #3 gun placement [gunplc] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111]
-  (chance: 9/15) and hits #2 gun placement [111] doing 4 damage.
-    #2 gun placement [gunplc] is lightly damaged.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout
-  [108] (chance: 1/7) and hits #1 peaceful scout [108] doing 1 damage.
-    #1 tanks [tanks] is lightly damaged.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout
-  [108] (chance: 1/7) and hits #1 peaceful scout [108] doing 1 damage.
-    #1 tanks [tanks] is lightly damaged.
+  4 gun placements [111] fire on peaceful scout [108].
+  (chance: 4/8) and hits doing 1 damage.
+    tanks [tanks] is lightly damaged.
+  (chance: 4/8) and hits doing 1 damage.
+    tanks [tanks] is lightly damaged.
   ------------------------------------------------------------
   Round 3:
   ------------------------------------------------------------
   Attackers:
   + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
-    hit points: 100/56, attack: 4, defense: 4.
+    hit points: 100/57, attack: 4, defense: 4, lightly damaged.
     tactics: prioritize armed.
-      #1 hit points: 100/56, lightly damaged.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1042 (720), crew: 48/48.
     hit points: 300/300, attack: 12, defense: 12.
@@ -1975,7 +1865,6 @@ Battles report:
     Prime [2].
     size: 1000.
     hit points: 100/100.
-      #1 hit points: 100/100.
   - factory [000017], 5 factories [factry], partially disabled,
     immobile, owned by Caste Prime [2].
     size: 5000.
@@ -1988,43 +1877,39 @@ Battles report:
   - gun placement [111], 5 gun placements [gunplc], partially disabled,
     immobile, owned by Caste Prime [2].
     size: 500.
-    hit points: 500/256, attack: 3, defense: 3.
-      #1 hit points: 100/48, heavily damaged, effects: disabled.
-      #2 hit points: 100/56, lightly damaged.
-      #3 hit points: 100/52, lightly damaged.
-      #4 hit points: 100/48, heavily damaged, effects: disabled.
+    hit points: 500/256, attack: 4, defense: 4.
+      #1 hit points: 100/44, heavily damaged, effects: disabled.
+      #2 hit points: 100/52, lightly damaged.
+      #3 hit points: 100/56, lightly damaged.
+      #4 hit points: 100/52, lightly damaged, effects: inactive.
       #5 hit points: 100/52, lightly damaged, effects: inactive.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111]
-  (chance: 3/7) and hits #4 gun placement [111] doing 4 damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/8) and
+  hits #5 gun placement [111] doing 4 damage.
+    #5 gun placement [gunplc] is heavily damaged.
+    #5 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/15)
+  and hits #4 gun placement [111] doing 4 damage.
     #4 gun placement [gunplc] is heavily damaged.
     #4 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111]
-  (chance: 9/15) and hits #3 gun placement [111] doing 4 damage.
-    #3 gun placement [gunplc] is heavily damaged.
-    #3 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111]
-  (chance: 9/14) and hits #2 gun placement [111] doing 4 damage.
-    #2 gun placement [gunplc] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111]
-  (chance: 9/14) and hits #1 gun placement [111] doing 4 damage.
-    #1 gun placement [gunplc] is heavily damaged.
-    #1 gun placement [gunplc] is disabled.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout
-  [108] (chance: 1/6) and hits #1 peaceful scout [108] doing 1 damage.
-    #1 tanks [tanks] is lightly damaged.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout
-  [108] (chance: 1/6) and hits #1 peaceful scout [108] doing 1 damage.
-    #1 tanks [tanks] is lightly damaged.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/14)
+  and hits #3 gun placement [111] doing 4 damage.
+    #3 gun placement [gunplc] is lightly damaged.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/14)
+  and hits #2 gun placement [111] doing 4 damage.
+    #2 gun placement [gunplc] is heavily damaged.
+    #2 gun placement [gunplc] is disabled.
+  gun placement [111] fires on peaceful scout [108] (chance: 1/5) and
+  hits doing 1 damage.
+    tanks [tanks] is lightly damaged.
   ------------------------------------------------------------
   Round 4:
   ------------------------------------------------------------
   Attackers:
   + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
-    hit points: 100/54, attack: 4, defense: 4.
+    hit points: 100/56, attack: 4, defense: 4, lightly damaged.
     tactics: prioritize armed.
-      #1 hit points: 100/54, lightly damaged.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1042 (720), crew: 48/48.
     hit points: 300/300, attack: 12, defense: 12.
@@ -2060,7 +1945,6 @@ Battles report:
     Prime [2].
     size: 1000.
     hit points: 100/100.
-      #1 hit points: 100/100.
   - factory [000017], 5 factories [factry], partially disabled,
     immobile, owned by Caste Prime [2].
     size: 5000.
@@ -2073,38 +1957,33 @@ Battles report:
   - gun placement [111], 5 gun placements [gunplc], immobile, owned by
     Caste Prime [2].
     size: 500.
-    hit points: 500/240, attack: 2, defense: 2.
+    hit points: 500/240, attack: 1, defense: 1.
       #1 hit points: 100/44, heavily damaged, effects: disabled.
-      #2 hit points: 100/52, lightly damaged.
-      #3 hit points: 100/48, heavily damaged, effects: disabled.
-      #4 hit points: 100/44, heavily damaged, effects: disabled.
-      #5 hit points: 100/52, lightly damaged.
+      #2 hit points: 100/48, heavily damaged, effects: disabled.
+      #3 hit points: 100/52, lightly damaged.
+      #4 hit points: 100/48, heavily damaged, effects: disabled.
+      #5 hit points: 100/48, heavily damaged, effects: disabled.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111]
-  (chance: 3/6) and hits #3 gun placement [111] doing 4 damage.
-    #3 gun placement [gunplc] is heavily damaged.
-    #3 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111]
-  (chance: 9/14) and hits #2 gun placement [111] doing 4 damage.
-    #2 gun placement [gunplc] is heavily damaged.
-    #2 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111]
-  (chance: 9/13) and hits #1 gun placement [111] doing 4 damage.
-    #1 gun placement [gunplc] is heavily damaged.
-    #1 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111]
-  (chance: 9/13) and hits #5 gun placement [111] doing 4 damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/5) and
+  hits #5 gun placement [111] doing 4 damage.
     #5 gun placement [gunplc] is heavily damaged.
     #5 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/13)
+  and hits #4 gun placement [111] doing 4 damage.
+    #4 gun placement [gunplc] is heavily damaged.
+    #4 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/13)
+  and hits #3 gun placement [111] doing 4 damage.
+    #3 gun placement [gunplc] is heavily damaged.
+    #3 gun placement [gunplc] is disabled.
   ------------------------------------------------------------
   Round 5:
   ------------------------------------------------------------
   Attackers:
   + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
-    hit points: 100/54, attack: 4, defense: 4.
+    hit points: 100/56, attack: 4, defense: 4, lightly damaged.
     tactics: prioritize armed.
-      #1 hit points: 100/54, lightly damaged.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1042 (720), crew: 48/48.
     hit points: 300/300, attack: 12, defense: 12.
@@ -2140,7 +2019,6 @@ Battles report:
     Prime [2].
     size: 1000.
     hit points: 100/100.
-      #1 hit points: 100/100.
   - factory [000017], 5 factories [factry], partially disabled,
     immobile, owned by Caste Prime [2].
     size: 5000.
@@ -2151,26 +2029,22 @@ Battles report:
       #4 hit points: 100/100.
       #5 hit points: 100/100, effects: inactive.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on small cargo bay [000013]
-  (chance: 3/4) and hits #2 small cargo bay [000013] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 9/12) and hits #5 small cargo bay [000013] doing 4
-  damage.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 9/12) and hits #3 small cargo bay [000013] doing 4
-  damage.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 9/12) and hits #1 small cargo bay [000013] doing 4
-  damage.
+  peaceful scout [108] fires on small cargo bay [000013] (chance: 6/4)
+  and hits #3 small cargo bay [000013] doing 4 damage.
+  Surrender or die! [109] fire on small cargo bay [000013] (chance:
+  18/12) and hits #1 small cargo bay [000013] doing 4 damage.
+  Surrender or die! [109] fire on small cargo bay [000013] (chance:
+  18/12) and hits #4 small cargo bay [000013] doing 4 damage.
+  Surrender or die! [109] fire on small cargo bay [000013] (chance:
+  18/12) and hits #2 small cargo bay [000013] doing 4 damage.
   ------------------------------------------------------------
   Round 6:
   ------------------------------------------------------------
   Attackers:
   + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
-    hit points: 100/54, attack: 4, defense: 4.
+    hit points: 100/56, attack: 4, defense: 4, lightly damaged.
     tactics: prioritize armed.
-      #1 hit points: 100/54, lightly damaged.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1042 (720), crew: 48/48.
     hit points: 300/300, attack: 12, defense: 12.
@@ -2186,7 +2060,68 @@ Battles report:
       #1 hit points: 55/51.
       #2 hit points: 55/51.
       #3 hit points: 55/51.
-      #4 hit points: 55/55.
+      #4 hit points: 55/51.
+      #5 hit points: 55/55.
+  - farming complex [000014], 3 farming complexes [farms], immobile,
+    owned by Caste Prime [2].
+    size: 3000.
+    hit points: 165/165.
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
+  - coal-burning plant [000015], 3 coal-burning plants [cplant],
+    immobile, owned by Caste Prime [2].
+    size: 3000.
+    hit points: 300/300, attack: 3.
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  - core drill [000016], core drill [cdrill], immobile, owned by Caste
+    Prime [2].
+    size: 1000.
+    hit points: 100/100.
+  - factory [000017], 5 factories [factry], partially disabled,
+    immobile, owned by Caste Prime [2].
+    size: 5000.
+    hit points: 500/500.
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100, effects: inactive.
+  ------------------------------------------------------------
+  peaceful scout [108] fires on small cargo bay [000013] (chance: 6/4)
+  and hits #5 small cargo bay [000013] doing 4 damage.
+  Surrender or die! [109] fire on small cargo bay [000013] (chance:
+  18/12) and hits #3 small cargo bay [000013] doing 4 damage.
+  Surrender or die! [109] fire on small cargo bay [000013] (chance:
+  18/12) and hits #1 small cargo bay [000013] doing 4 damage.
+  Surrender or die! [109] fire on small cargo bay [000013] (chance:
+  18/12) and hits #4 small cargo bay [000013] doing 4 damage.
+  ------------------------------------------------------------
+  Round 7:
+  ------------------------------------------------------------
+  Attackers:
+  + peaceful scout [108], tanks [tanks].
+    size: 240, mass: 396 (240), crew: 16/16.
+    hit points: 100/56, attack: 4, defense: 4, lightly damaged.
+    tactics: prioritize armed.
+  + Surrender or die! [109], 3 tanks [tanks].
+    size: 720, mass: 1042 (720), crew: 48/48.
+    hit points: 300/300, attack: 12, defense: 12.
+    tactics: prioritize command.
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  Defenders:
+  - small cargo bay [000013], 5 small cargo bays [cargob], immobile,
+    owned by Caste Prime [2].
+    size: 10000.
+    hit points: 275/243.
+      #1 hit points: 55/47.
+      #2 hit points: 55/51.
+      #3 hit points: 55/47.
+      #4 hit points: 55/47.
       #5 hit points: 55/51.
   - farming complex [000014], 3 farming complexes [farms], immobile,
     owned by Caste Prime [2].
@@ -2206,7 +2141,6 @@ Battles report:
     Prime [2].
     size: 1000.
     hit points: 100/100.
-      #1 hit points: 100/100.
   - factory [000017], 5 factories [factry], partially disabled,
     immobile, owned by Caste Prime [2].
     size: 5000.
@@ -2217,26 +2151,22 @@ Battles report:
       #4 hit points: 100/100.
       #5 hit points: 100/100, effects: inactive.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on small cargo bay [000013]
-  (chance: 3/4) and hits #4 small cargo bay [000013] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 9/12) and hits #2 small cargo bay [000013] doing 4
-  damage.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 9/12) and hits #5 small cargo bay [000013] doing 4
-  damage.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 9/12) and hits #3 small cargo bay [000013] doing 4
-  damage.
+  peaceful scout [108] fires on small cargo bay [000013] (chance: 6/4)
+  and hits #2 small cargo bay [000013] doing 4 damage.
+  Surrender or die! [109] fire on small cargo bay [000013] (chance:
+  18/12) and hits #5 small cargo bay [000013] doing 4 damage.
+  Surrender or die! [109] fire on small cargo bay [000013] (chance:
+  18/12) and hits #3 small cargo bay [000013] doing 4 damage.
+  Surrender or die! [109] fire on small cargo bay [000013] (chance:
+  18/12) and hits #1 small cargo bay [000013] doing 4 damage.
   ------------------------------------------------------------
-  Round 7:
+  Round 8:
   ------------------------------------------------------------
   Attackers:
   + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
-    hit points: 100/54, attack: 4, defense: 4.
+    hit points: 100/56, attack: 4, defense: 4, lightly damaged.
     tactics: prioritize armed.
-      #1 hit points: 100/54, lightly damaged.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1042 (720), crew: 48/48.
     hit points: 300/300, attack: 12, defense: 12.
@@ -2248,11 +2178,11 @@ Battles report:
   - small cargo bay [000013], 5 small cargo bays [cargob], immobile,
     owned by Caste Prime [2].
     size: 10000.
-    hit points: 275/243.
-      #1 hit points: 55/51.
+    hit points: 275/227.
+      #1 hit points: 55/43.
       #2 hit points: 55/47.
-      #3 hit points: 55/47.
-      #4 hit points: 55/51.
+      #3 hit points: 55/43.
+      #4 hit points: 55/47.
       #5 hit points: 55/47.
   - farming complex [000014], 3 farming complexes [farms], immobile,
     owned by Caste Prime [2].
@@ -2272,7 +2202,6 @@ Battles report:
     Prime [2].
     size: 1000.
     hit points: 100/100.
-      #1 hit points: 100/100.
   - factory [000017], 5 factories [factry], partially disabled,
     immobile, owned by Caste Prime [2].
     size: 5000.
@@ -2283,93 +2212,23 @@ Battles report:
       #4 hit points: 100/100.
       #5 hit points: 100/100, effects: inactive.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on small cargo bay [000013]
-  (chance: 3/4) and hits #1 small cargo bay [000013] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 9/12) and hits #4 small cargo bay [000013] doing 4
-  damage.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 9/12) and hits #2 small cargo bay [000013] doing 4
-  damage.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 9/12) and hits #5 small cargo bay [000013] doing 4
-  damage.
-  ------------------------------------------------------------
-  Round 8:
-  ------------------------------------------------------------
-  Attackers:
-  + peaceful scout [108], tanks [tanks].
-    size: 240, mass: 396 (240), crew: 16/16.
-    hit points: 100/54, attack: 4, defense: 4.
-    tactics: prioritize armed.
-      #1 hit points: 100/54, lightly damaged.
-  + Surrender or die! [109], 3 tanks [tanks].
-    size: 720, mass: 1042 (720), crew: 48/48.
-    hit points: 300/300, attack: 12, defense: 12.
-    tactics: prioritize command.
-      #1 hit points: 100/100.
-      #2 hit points: 100/100.
-      #3 hit points: 100/100.
-  Defenders:
-  - small cargo bay [000013], 5 small cargo bays [cargob], immobile,
-    owned by Caste Prime [2].
-    size: 10000.
-    hit points: 275/227.
-      #1 hit points: 55/47.
-      #2 hit points: 55/43.
-      #3 hit points: 55/47.
-      #4 hit points: 55/47.
-      #5 hit points: 55/43.
-  - farming complex [000014], 3 farming complexes [farms], immobile,
-    owned by Caste Prime [2].
-    size: 3000.
-    hit points: 165/165.
-      #1 hit points: 55/55.
-      #2 hit points: 55/55.
-      #3 hit points: 55/55.
-  - coal-burning plant [000015], 3 coal-burning plants [cplant],
-    immobile, owned by Caste Prime [2].
-    size: 3000.
-    hit points: 300/300, attack: 3.
-      #1 hit points: 100/100.
-      #2 hit points: 100/100.
-      #3 hit points: 100/100.
-  - core drill [000016], core drill [cdrill], immobile, owned by Caste
-    Prime [2].
-    size: 1000.
-    hit points: 100/100.
-      #1 hit points: 100/100.
-  - factory [000017], 5 factories [factry], partially disabled,
-    immobile, owned by Caste Prime [2].
-    size: 5000.
-    hit points: 500/500.
-      #1 hit points: 100/100.
-      #2 hit points: 100/100.
-      #3 hit points: 100/100.
-      #4 hit points: 100/100.
-      #5 hit points: 100/100, effects: inactive.
-  ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on small cargo bay [000013]
-  (chance: 3/4) and hits #3 small cargo bay [000013] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 9/12) and hits #1 small cargo bay [000013] doing 4
-  damage.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 9/12) and hits #4 small cargo bay [000013] doing 4
-  damage.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 9/12) and hits #2 small cargo bay [000013] doing 4
-  damage.
-    #2 small cargo bay [cargob] is lightly damaged.
+  peaceful scout [108] fires on small cargo bay [000013] (chance: 6/4)
+  and hits #4 small cargo bay [000013] doing 4 damage.
+  Surrender or die! [109] fire on small cargo bay [000013] (chance:
+  18/12) and hits #2 small cargo bay [000013] doing 4 damage.
+  Surrender or die! [109] fire on small cargo bay [000013] (chance:
+  18/12) and hits #5 small cargo bay [000013] doing 4 damage.
+  Surrender or die! [109] fire on small cargo bay [000013] (chance:
+  18/12) and hits #3 small cargo bay [000013] doing 4 damage.
+    #3 small cargo bay [cargob] is lightly damaged.
   ------------------------------------------------------------
   Round 9:
   ------------------------------------------------------------
   Attackers:
   + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
-    hit points: 100/54, attack: 4, defense: 4.
+    hit points: 100/56, attack: 4, defense: 4, lightly damaged.
     tactics: prioritize armed.
-      #1 hit points: 100/54, lightly damaged.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1042 (720), crew: 48/48.
     hit points: 300/300, attack: 12, defense: 12.
@@ -2383,8 +2242,8 @@ Battles report:
     size: 10000.
     hit points: 275/211.
       #1 hit points: 55/43.
-      #2 hit points: 55/39, lightly damaged.
-      #3 hit points: 55/43.
+      #2 hit points: 55/43.
+      #3 hit points: 55/39, lightly damaged.
       #4 hit points: 55/43.
       #5 hit points: 55/43.
   - farming complex [000014], 3 farming complexes [farms], immobile,
@@ -2405,7 +2264,6 @@ Battles report:
     Prime [2].
     size: 1000.
     hit points: 100/100.
-      #1 hit points: 100/100.
   - factory [000017], 5 factories [factry], partially disabled,
     immobile, owned by Caste Prime [2].
     size: 5000.
@@ -2416,30 +2274,26 @@ Battles report:
       #4 hit points: 100/100.
       #5 hit points: 100/100, effects: inactive.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on small cargo bay [000013]
-  (chance: 3/4) and hits #5 small cargo bay [000013] doing 4 damage.
-    #5 small cargo bay [cargob] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 9/12) and hits #3 small cargo bay [000013] doing 4
-  damage.
-    #3 small cargo bay [cargob] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 9/12) and hits #1 small cargo bay [000013] doing 4
-  damage.
+  peaceful scout [108] fires on small cargo bay [000013] (chance: 6/4)
+  and hits #1 small cargo bay [000013] doing 4 damage.
     #1 small cargo bay [cargob] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 9/12) and hits #4 small cargo bay [000013] doing 4
-  damage.
+  Surrender or die! [109] fire on small cargo bay [000013] (chance:
+  18/12) and hits #4 small cargo bay [000013] doing 4 damage.
     #4 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fire on small cargo bay [000013] (chance:
+  18/12) and hits #2 small cargo bay [000013] doing 4 damage.
+    #2 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fire on small cargo bay [000013] (chance:
+  18/12) and hits #5 small cargo bay [000013] doing 4 damage.
+    #5 small cargo bay [cargob] is lightly damaged.
   ------------------------------------------------------------
   Round 10:
   ------------------------------------------------------------
   Attackers:
   + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
-    hit points: 100/54, attack: 4, defense: 4.
+    hit points: 100/56, attack: 4, defense: 4, lightly damaged.
     tactics: prioritize armed.
-      #1 hit points: 100/54, lightly damaged.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1042 (720), crew: 48/48.
     hit points: 300/300, attack: 12, defense: 12.
@@ -2475,7 +2329,6 @@ Battles report:
     Prime [2].
     size: 1000.
     hit points: 100/100.
-      #1 hit points: 100/100.
   - factory [000017], 5 factories [factry], partially disabled,
     immobile, owned by Caste Prime [2].
     size: 5000.
@@ -2486,21 +2339,18 @@ Battles report:
       #4 hit points: 100/100.
       #5 hit points: 100/100, effects: inactive.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on small cargo bay [000013]
-  (chance: 3/4) and hits #2 small cargo bay [000013] doing 4 damage.
-    #2 small cargo bay [cargob] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 9/12) and hits #5 small cargo bay [000013] doing 4
-  damage.
-    #5 small cargo bay [cargob] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 9/12) and hits #3 small cargo bay [000013] doing 4
-  damage.
+  peaceful scout [108] fires on small cargo bay [000013] (chance: 6/4)
+  and hits #3 small cargo bay [000013] doing 4 damage.
     #3 small cargo bay [cargob] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 9/12) and hits #1 small cargo bay [000013] doing 4
-  damage.
+  Surrender or die! [109] fire on small cargo bay [000013] (chance:
+  18/12) and hits #1 small cargo bay [000013] doing 4 damage.
     #1 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fire on small cargo bay [000013] (chance:
+  18/12) and hits #4 small cargo bay [000013] doing 4 damage.
+    #4 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fire on small cargo bay [000013] (chance:
+  18/12) and hits #2 small cargo bay [000013] doing 4 damage.
+    #2 small cargo bay [cargob] is lightly damaged.
   ------------------------------------------------------------
   Battle ended indecisively.
 
@@ -2514,9 +2364,8 @@ Battles report:
   Attackers:
   + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
-    hit points: 100/54, attack: 4, defense: 4.
+    hit points: 100/56, attack: 4, defense: 4, lightly damaged.
     tactics: prioritize armed.
-      #1 hit points: 100/54, lightly damaged.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1042 (720), crew: 48/48.
     hit points: 300/300, attack: 12, defense: 12.
@@ -2532,7 +2381,159 @@ Battles report:
       #1 hit points: 55/35, lightly damaged.
       #2 hit points: 55/35, lightly damaged.
       #3 hit points: 55/35, lightly damaged.
-      #4 hit points: 55/39, lightly damaged.
+      #4 hit points: 55/35, lightly damaged.
+      #5 hit points: 55/39, lightly damaged.
+  - farming complex [000014], 3 farming complexes [farms], immobile,
+    owned by Caste Prime [2].
+    size: 3000.
+    hit points: 165/165.
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
+  - coal-burning plant [000015], 3 coal-burning plants [cplant],
+    immobile, owned by Caste Prime [2].
+    size: 3000.
+    hit points: 300/300, attack: 3.
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  - core drill [000016], core drill [cdrill], immobile, owned by Caste
+    Prime [2].
+    size: 1000.
+    hit points: 100/100.
+  - factory [000017], 5 factories [factry], partially disabled,
+    immobile, owned by Caste Prime [2].
+    size: 5000.
+    hit points: 500/500.
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100, effects: inactive.
+  - gun placement [111], 5 gun placements [gunplc], disabled, immobile,
+    owned by Caste Prime [2].
+    size: 500.
+    hit points: 500/228.
+      #1 hit points: 100/44, heavily damaged, effects: disabled.
+      #2 hit points: 100/48, heavily damaged, effects: disabled.
+      #3 hit points: 100/48, heavily damaged, effects: disabled.
+      #4 hit points: 100/44, heavily damaged, effects: disabled.
+      #5 hit points: 100/44, heavily damaged, effects: disabled.
+  ------------------------------------------------------------
+  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and
+  hits #3 gun placement [111] doing 4 damage.
+    #3 gun placement [gunplc] is heavily damaged.
+    #3 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fire on small cargo bay [000013] (chance:
+  18/12) and hits #3 small cargo bay [000013] doing 4 damage.
+    #3 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fire on small cargo bay [000013] (chance:
+  18/12) and hits #1 small cargo bay [000013] doing 4 damage.
+    #1 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fire on small cargo bay [000013] (chance:
+  18/12) and hits #4 small cargo bay [000013] doing 4 damage.
+    #4 small cargo bay [cargob] is lightly damaged.
+  ------------------------------------------------------------
+  Round 2:
+  ------------------------------------------------------------
+  Attackers:
+  + peaceful scout [108], tanks [tanks].
+    size: 240, mass: 396 (240), crew: 16/16.
+    hit points: 100/56, attack: 4, defense: 4, lightly damaged.
+    tactics: prioritize armed.
+  + Surrender or die! [109], 3 tanks [tanks].
+    size: 720, mass: 1042 (720), crew: 48/48.
+    hit points: 300/300, attack: 12, defense: 12.
+    tactics: prioritize command.
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  Defenders:
+  - small cargo bay [000013], 5 small cargo bays [cargob], immobile,
+    owned by Caste Prime [2].
+    size: 10000.
+    hit points: 275/167.
+      #1 hit points: 55/31, lightly damaged.
+      #2 hit points: 55/35, lightly damaged.
+      #3 hit points: 55/31, lightly damaged.
+      #4 hit points: 55/31, lightly damaged.
+      #5 hit points: 55/39, lightly damaged.
+  - farming complex [000014], 3 farming complexes [farms], immobile,
+    owned by Caste Prime [2].
+    size: 3000.
+    hit points: 165/165.
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
+  - coal-burning plant [000015], 3 coal-burning plants [cplant],
+    immobile, owned by Caste Prime [2].
+    size: 3000.
+    hit points: 300/300, attack: 3.
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  - core drill [000016], core drill [cdrill], immobile, owned by Caste
+    Prime [2].
+    size: 1000.
+    hit points: 100/100.
+  - factory [000017], 5 factories [factry], partially disabled,
+    immobile, owned by Caste Prime [2].
+    size: 5000.
+    hit points: 500/500.
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100, effects: inactive.
+  - gun placement [111], 5 gun placements [gunplc], disabled, immobile,
+    owned by Caste Prime [2].
+    size: 500.
+    hit points: 500/224.
+      #1 hit points: 100/44, heavily damaged, effects: disabled.
+      #2 hit points: 100/48, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/44, heavily damaged, effects: disabled.
+      #5 hit points: 100/44, heavily damaged, effects: disabled.
+  ------------------------------------------------------------
+  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and
+  hits #4 gun placement [111] doing 4 damage.
+    #4 gun placement [gunplc] is heavily damaged.
+    #4 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fire on small cargo bay [000013] (chance:
+  18/12) and hits #5 small cargo bay [000013] doing 4 damage.
+    #5 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fire on small cargo bay [000013] (chance:
+  18/12) and hits #3 small cargo bay [000013] doing 4 damage.
+    #3 small cargo bay [cargob] is heavily damaged.
+    #3 small cargo bay [cargob] is disabled.
+  Surrender or die! [109] fire on small cargo bay [000013] (chance:
+  18/12) and hits #1 small cargo bay [000013] doing 4 damage.
+    #1 small cargo bay [cargob] is heavily damaged.
+    #1 small cargo bay [cargob] is disabled.
+  ------------------------------------------------------------
+  Round 3:
+  ------------------------------------------------------------
+  Attackers:
+  + peaceful scout [108], tanks [tanks].
+    size: 240, mass: 396 (240), crew: 16/16.
+    hit points: 100/56, attack: 4, defense: 4, lightly damaged.
+    tactics: prioritize armed.
+  + Surrender or die! [109], 3 tanks [tanks].
+    size: 720, mass: 1042 (720), crew: 48/48.
+    hit points: 300/300, attack: 12, defense: 12.
+    tactics: prioritize command.
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  Defenders:
+  - small cargo bay [000013], 5 small cargo bays [cargob], immobile,
+    owned by Caste Prime [2].
+    size: 10000.
+    hit points: 275/155.
+      #1 hit points: 55/27, heavily damaged, effects: disabled.
+      #2 hit points: 55/35, lightly damaged.
+      #3 hit points: 55/27, heavily damaged, effects: disabled.
+      #4 hit points: 55/31, lightly damaged.
       #5 hit points: 55/35, lightly damaged.
   - farming complex [000014], 3 farming complexes [farms], immobile,
     owned by Caste Prime [2].
@@ -2552,7 +2553,6 @@ Battles report:
     Prime [2].
     size: 1000.
     hit points: 100/100.
-      #1 hit points: 100/100.
   - factory [000017], 5 factories [factry], partially disabled,
     immobile, owned by Caste Prime [2].
     size: 5000.
@@ -2565,38 +2565,35 @@ Battles report:
   - gun placement [111], 5 gun placements [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 500.
-    hit points: 500/224.
-      #1 hit points: 100/40, heavily damaged, effects: disabled.
+    hit points: 500/220.
+      #1 hit points: 100/44, heavily damaged, effects: disabled.
       #2 hit points: 100/48, heavily damaged, effects: disabled.
       #3 hit points: 100/44, heavily damaged, effects: disabled.
-      #4 hit points: 100/44, heavily damaged, effects: disabled.
-      #5 hit points: 100/48, heavily damaged, effects: disabled.
+      #4 hit points: 100/40, heavily damaged, effects: disabled.
+      #5 hit points: 100/44, heavily damaged, effects: disabled.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111]
-  (chance: 3/4) and hits #5 gun placement [111] doing 4 damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and
+  hits #5 gun placement [111] doing 4 damage.
     #5 gun placement [gunplc] is heavily damaged.
     #5 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 9/12) and hits #2 small cargo bay [000013] doing 4
-  damage.
+  Surrender or die! [109] fire on small cargo bay [000013] (chance:
+  18/12) and hits #2 small cargo bay [000013] doing 4 damage.
     #2 small cargo bay [cargob] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 9/12) and hits #5 small cargo bay [000013] doing 4
-  damage.
+  Surrender or die! [109] fire on small cargo bay [000013] (chance:
+  18/12) and hits #5 small cargo bay [000013] doing 4 damage.
     #5 small cargo bay [cargob] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 9/12) and hits #3 small cargo bay [000013] doing 4
-  damage.
-    #3 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fire on small cargo bay [000013] (chance:
+  18/12) and hits #3 small cargo bay [000013] doing 4 damage.
+    #3 small cargo bay [cargob] is heavily damaged.
+    #3 small cargo bay [cargob] is disabled.
   ------------------------------------------------------------
-  Round 2:
+  Round 4:
   ------------------------------------------------------------
   Attackers:
   + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
-    hit points: 100/54, attack: 4, defense: 4.
+    hit points: 100/56, attack: 4, defense: 4, lightly damaged.
     tactics: prioritize armed.
-      #1 hit points: 100/54, lightly damaged.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1042 (720), crew: 48/48.
     hit points: 300/300, attack: 12, defense: 12.
@@ -2608,11 +2605,11 @@ Battles report:
   - small cargo bay [000013], 5 small cargo bays [cargob], immobile,
     owned by Caste Prime [2].
     size: 10000.
-    hit points: 275/167.
-      #1 hit points: 55/35, lightly damaged.
+    hit points: 275/143.
+      #1 hit points: 55/27, heavily damaged, effects: disabled.
       #2 hit points: 55/31, lightly damaged.
-      #3 hit points: 55/31, lightly damaged.
-      #4 hit points: 55/39, lightly damaged.
+      #3 hit points: 55/23, heavily damaged, effects: disabled.
+      #4 hit points: 55/31, lightly damaged.
       #5 hit points: 55/31, lightly damaged.
   - farming complex [000014], 3 farming complexes [farms], immobile,
     owned by Caste Prime [2].
@@ -2632,89 +2629,6 @@ Battles report:
     Prime [2].
     size: 1000.
     hit points: 100/100.
-      #1 hit points: 100/100.
-  - factory [000017], 5 factories [factry], partially disabled,
-    immobile, owned by Caste Prime [2].
-    size: 5000.
-    hit points: 500/500.
-      #1 hit points: 100/100.
-      #2 hit points: 100/100.
-      #3 hit points: 100/100.
-      #4 hit points: 100/100.
-      #5 hit points: 100/100, effects: inactive.
-  - gun placement [111], 5 gun placements [gunplc], disabled, immobile,
-    owned by Caste Prime [2].
-    size: 500.
-    hit points: 500/220.
-      #1 hit points: 100/40, heavily damaged, effects: disabled.
-      #2 hit points: 100/48, heavily damaged, effects: disabled.
-      #3 hit points: 100/44, heavily damaged, effects: disabled.
-      #4 hit points: 100/44, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
-  ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111]
-  (chance: 3/4) and hits #1 gun placement [111] doing 4 damage.
-    #1 gun placement [gunplc] is heavily damaged.
-    #1 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 9/12) and hits #4 small cargo bay [000013] doing 4
-  damage.
-    #4 small cargo bay [cargob] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 9/12) and hits #2 small cargo bay [000013] doing 4
-  damage.
-    #2 small cargo bay [cargob] is heavily damaged.
-    #2 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 9/12) and hits #5 small cargo bay [000013] doing 4
-  damage.
-    #5 small cargo bay [cargob] is heavily damaged.
-    #5 small cargo bay [cargob] is disabled.
-  ------------------------------------------------------------
-  Round 3:
-  ------------------------------------------------------------
-  Attackers:
-  + peaceful scout [108], tanks [tanks].
-    size: 240, mass: 396 (240), crew: 16/16.
-    hit points: 100/54, attack: 4, defense: 4.
-    tactics: prioritize armed.
-      #1 hit points: 100/54, lightly damaged.
-  + Surrender or die! [109], 3 tanks [tanks].
-    size: 720, mass: 1042 (720), crew: 48/48.
-    hit points: 300/300, attack: 12, defense: 12.
-    tactics: prioritize command.
-      #1 hit points: 100/100.
-      #2 hit points: 100/100.
-      #3 hit points: 100/100.
-  Defenders:
-  - small cargo bay [000013], 5 small cargo bays [cargob], immobile,
-    owned by Caste Prime [2].
-    size: 10000.
-    hit points: 275/155.
-      #1 hit points: 55/35, lightly damaged.
-      #2 hit points: 55/27, heavily damaged, effects: disabled.
-      #3 hit points: 55/31, lightly damaged.
-      #4 hit points: 55/35, lightly damaged.
-      #5 hit points: 55/27, heavily damaged, effects: disabled.
-  - farming complex [000014], 3 farming complexes [farms], immobile,
-    owned by Caste Prime [2].
-    size: 3000.
-    hit points: 165/165.
-      #1 hit points: 55/55.
-      #2 hit points: 55/55.
-      #3 hit points: 55/55.
-  - coal-burning plant [000015], 3 coal-burning plants [cplant],
-    immobile, owned by Caste Prime [2].
-    size: 3000.
-    hit points: 300/300, attack: 3.
-      #1 hit points: 100/100.
-      #2 hit points: 100/100.
-      #3 hit points: 100/100.
-  - core drill [000016], core drill [cdrill], immobile, owned by Caste
-    Prime [2].
-    size: 1000.
-    hit points: 100/100.
-      #1 hit points: 100/100.
   - factory [000017], 5 factories [factry], partially disabled,
     immobile, owned by Caste Prime [2].
     size: 5000.
@@ -2728,38 +2642,36 @@ Battles report:
     owned by Caste Prime [2].
     size: 500.
     hit points: 500/216.
-      #1 hit points: 100/36, heavily damaged, effects: disabled.
+      #1 hit points: 100/44, heavily damaged, effects: disabled.
       #2 hit points: 100/48, heavily damaged, effects: disabled.
       #3 hit points: 100/44, heavily damaged, effects: disabled.
-      #4 hit points: 100/44, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/40, heavily damaged, effects: disabled.
+      #5 hit points: 100/40, heavily damaged, effects: disabled.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111]
-  (chance: 3/4) and hits #2 gun placement [111] doing 4 damage.
-    #2 gun placement [gunplc] is heavily damaged.
-    #2 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 9/12) and hits #1 small cargo bay [000013] doing 4
-  damage.
-    #1 small cargo bay [cargob] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 9/12) and hits #4 small cargo bay [000013] doing 4
-  damage.
-    #4 small cargo bay [cargob] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 9/12) and hits #2 small cargo bay [000013] doing 4
-  damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and
+  hits #1 gun placement [111] doing 4 damage.
+    #1 gun placement [gunplc] is heavily damaged.
+    #1 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fire on small cargo bay [000013] (chance:
+  18/12) and hits #4 small cargo bay [000013] doing 4 damage.
+    #4 small cargo bay [cargob] is heavily damaged.
+    #4 small cargo bay [cargob] is disabled.
+  Surrender or die! [109] fire on small cargo bay [000013] (chance:
+  18/12) and hits #2 small cargo bay [000013] doing 4 damage.
     #2 small cargo bay [cargob] is heavily damaged.
     #2 small cargo bay [cargob] is disabled.
+  Surrender or die! [109] fire on small cargo bay [000013] (chance:
+  18/12) and hits #5 small cargo bay [000013] doing 4 damage.
+    #5 small cargo bay [cargob] is heavily damaged.
+    #5 small cargo bay [cargob] is disabled.
   ------------------------------------------------------------
-  Round 4:
+  Round 5:
   ------------------------------------------------------------
   Attackers:
   + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
-    hit points: 100/54, attack: 4, defense: 4.
+    hit points: 100/56, attack: 4, defense: 4, lightly damaged.
     tactics: prioritize armed.
-      #1 hit points: 100/54, lightly damaged.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1042 (720), crew: 48/48.
     hit points: 300/300, attack: 12, defense: 12.
@@ -2768,15 +2680,6 @@ Battles report:
       #2 hit points: 100/100.
       #3 hit points: 100/100.
   Defenders:
-  - small cargo bay [000013], 5 small cargo bays [cargob], immobile,
-    owned by Caste Prime [2].
-    size: 10000.
-    hit points: 275/143.
-      #1 hit points: 55/31, lightly damaged.
-      #2 hit points: 55/23, heavily damaged, effects: disabled.
-      #3 hit points: 55/31, lightly damaged.
-      #4 hit points: 55/31, lightly damaged.
-      #5 hit points: 55/27, heavily damaged, effects: disabled.
   - farming complex [000014], 3 farming complexes [farms], immobile,
     owned by Caste Prime [2].
     size: 3000.
@@ -2795,7 +2698,6 @@ Battles report:
     Prime [2].
     size: 1000.
     hit points: 100/100.
-      #1 hit points: 100/100.
   - factory [000017], 5 factories [factry], partially disabled,
     immobile, owned by Caste Prime [2].
     size: 5000.
@@ -2809,40 +2711,30 @@ Battles report:
     owned by Caste Prime [2].
     size: 500.
     hit points: 500/212.
-      #1 hit points: 100/36, heavily damaged, effects: disabled.
-      #2 hit points: 100/44, heavily damaged, effects: disabled.
+      #1 hit points: 100/40, heavily damaged, effects: disabled.
+      #2 hit points: 100/48, heavily damaged, effects: disabled.
       #3 hit points: 100/44, heavily damaged, effects: disabled.
-      #4 hit points: 100/44, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/40, heavily damaged, effects: disabled.
+      #5 hit points: 100/40, heavily damaged, effects: disabled.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111]
-  (chance: 3/4) and hits #3 gun placement [111] doing 4 damage.
-    #3 gun placement [gunplc] is heavily damaged.
-    #3 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 9/12) and hits #3 small cargo bay [000013] doing 4
-  damage.
-    #3 small cargo bay [cargob] is heavily damaged.
-    #3 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 9/12) and hits #1 small cargo bay [000013] doing 4
-  damage.
-    #1 small cargo bay [cargob] is heavily damaged.
-    #1 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay
-  [000013] (chance: 9/12) and hits #4 small cargo bay [000013] doing 4
-  damage.
-    #4 small cargo bay [cargob] is heavily damaged.
-    #4 small cargo bay [cargob] is disabled.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and
+  hits #2 gun placement [111] doing 4 damage.
+    #2 gun placement [gunplc] is heavily damaged.
+    #2 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fire on farming complex [000014] (chance:
+  18/12) and hits #1 farming complex [000014] doing 4 damage.
+  Surrender or die! [109] fire on farming complex [000014] (chance:
+  18/12) and hits #3 farming complex [000014] doing 4 damage.
+  Surrender or die! [109] fire on farming complex [000014] (chance:
+  18/12) and hits #1 farming complex [000014] doing 4 damage.
   ------------------------------------------------------------
-  Round 5:
+  Round 6:
   ------------------------------------------------------------
   Attackers:
   + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
-    hit points: 100/54, attack: 4, defense: 4.
+    hit points: 100/56, attack: 4, defense: 4, lightly damaged.
     tactics: prioritize armed.
-      #1 hit points: 100/54, lightly damaged.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1042 (720), crew: 48/48.
     hit points: 300/300, attack: 12, defense: 12.
@@ -2854,10 +2746,10 @@ Battles report:
   - farming complex [000014], 3 farming complexes [farms], immobile,
     owned by Caste Prime [2].
     size: 3000.
-    hit points: 165/165.
-      #1 hit points: 55/55.
+    hit points: 165/153.
+      #1 hit points: 55/47.
       #2 hit points: 55/55.
-      #3 hit points: 55/55.
+      #3 hit points: 55/51.
   - coal-burning plant [000015], 3 coal-burning plants [cplant],
     immobile, owned by Caste Prime [2].
     size: 3000.
@@ -2869,7 +2761,6 @@ Battles report:
     Prime [2].
     size: 1000.
     hit points: 100/100.
-      #1 hit points: 100/100.
   - factory [000017], 5 factories [factry], partially disabled,
     immobile, owned by Caste Prime [2].
     size: 5000.
@@ -2883,34 +2774,30 @@ Battles report:
     owned by Caste Prime [2].
     size: 500.
     hit points: 500/208.
-      #1 hit points: 100/36, heavily damaged, effects: disabled.
+      #1 hit points: 100/40, heavily damaged, effects: disabled.
       #2 hit points: 100/44, heavily damaged, effects: disabled.
-      #3 hit points: 100/40, heavily damaged, effects: disabled.
-      #4 hit points: 100/44, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/40, heavily damaged, effects: disabled.
+      #5 hit points: 100/40, heavily damaged, effects: disabled.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111]
-  (chance: 3/4) and hits #4 gun placement [111] doing 4 damage.
-    #4 gun placement [gunplc] is heavily damaged.
-    #4 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on farming complex
-  [000014] (chance: 9/12) and hits #2 farming complex [000014] doing 4
-  damage.
-  Surrender or die! [109] fires tanks [tanks] on farming complex
-  [000014] (chance: 9/12) and hits #3 farming complex [000014] doing 4
-  damage.
-  Surrender or die! [109] fires tanks [tanks] on farming complex
-  [000014] (chance: 9/12) and hits #1 farming complex [000014] doing 4
-  damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and
+  hits #3 gun placement [111] doing 4 damage.
+    #3 gun placement [gunplc] is heavily damaged.
+    #3 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fire on farming complex [000014] (chance:
+  18/12) and hits #3 farming complex [000014] doing 4 damage.
+  Surrender or die! [109] fire on farming complex [000014] (chance:
+  18/12) and hits #1 farming complex [000014] doing 4 damage.
+  Surrender or die! [109] fire on farming complex [000014] (chance:
+  18/12) and hits #3 farming complex [000014] doing 4 damage.
   ------------------------------------------------------------
-  Round 6:
+  Round 7:
   ------------------------------------------------------------
   Attackers:
   + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
-    hit points: 100/54, attack: 4, defense: 4.
+    hit points: 100/56, attack: 4, defense: 4, lightly damaged.
     tactics: prioritize armed.
-      #1 hit points: 100/54, lightly damaged.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1042 (720), crew: 48/48.
     hit points: 300/300, attack: 12, defense: 12.
@@ -2922,10 +2809,10 @@ Battles report:
   - farming complex [000014], 3 farming complexes [farms], immobile,
     owned by Caste Prime [2].
     size: 3000.
-    hit points: 165/153.
-      #1 hit points: 55/51.
-      #2 hit points: 55/51.
-      #3 hit points: 55/51.
+    hit points: 165/141.
+      #1 hit points: 55/43.
+      #2 hit points: 55/55.
+      #3 hit points: 55/43.
   - coal-burning plant [000015], 3 coal-burning plants [cplant],
     immobile, owned by Caste Prime [2].
     size: 3000.
@@ -2937,7 +2824,6 @@ Battles report:
     Prime [2].
     size: 1000.
     hit points: 100/100.
-      #1 hit points: 100/100.
   - factory [000017], 5 factories [factry], partially disabled,
     immobile, owned by Caste Prime [2].
     size: 5000.
@@ -2951,34 +2837,32 @@ Battles report:
     owned by Caste Prime [2].
     size: 500.
     hit points: 500/204.
-      #1 hit points: 100/36, heavily damaged, effects: disabled.
+      #1 hit points: 100/40, heavily damaged, effects: disabled.
       #2 hit points: 100/44, heavily damaged, effects: disabled.
       #3 hit points: 100/40, heavily damaged, effects: disabled.
       #4 hit points: 100/40, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #5 hit points: 100/40, heavily damaged, effects: disabled.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111]
-  (chance: 3/4) and hits #5 gun placement [111] doing 4 damage.
-    #5 gun placement [gunplc] is heavily damaged.
-    #5 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on farming complex
-  [000014] (chance: 9/12) and hits #1 farming complex [000014] doing 4
-  damage.
-  Surrender or die! [109] fires tanks [tanks] on farming complex
-  [000014] (chance: 9/12) and hits #2 farming complex [000014] doing 4
-  damage.
-  Surrender or die! [109] fires tanks [tanks] on farming complex
-  [000014] (chance: 9/12) and hits #3 farming complex [000014] doing 4
-  damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and
+  hits #4 gun placement [111] doing 4 damage.
+    #4 gun placement [gunplc] is heavily damaged.
+    #4 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fire on farming complex [000014] (chance:
+  18/12) and hits #2 farming complex [000014] doing 4 damage.
+  Surrender or die! [109] fire on farming complex [000014] (chance:
+  18/12) and hits #3 farming complex [000014] doing 4 damage.
+    #3 farming complex [farms] is lightly damaged.
+  Surrender or die! [109] fire on farming complex [000014] (chance:
+  18/12) and hits #1 farming complex [000014] doing 4 damage.
+    #1 farming complex [farms] is lightly damaged.
   ------------------------------------------------------------
-  Round 7:
+  Round 8:
   ------------------------------------------------------------
   Attackers:
   + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
-    hit points: 100/54, attack: 4, defense: 4.
+    hit points: 100/56, attack: 4, defense: 4, lightly damaged.
     tactics: prioritize armed.
-      #1 hit points: 100/54, lightly damaged.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1042 (720), crew: 48/48.
     hit points: 300/300, attack: 12, defense: 12.
@@ -2990,10 +2874,10 @@ Battles report:
   - farming complex [000014], 3 farming complexes [farms], immobile,
     owned by Caste Prime [2].
     size: 3000.
-    hit points: 165/141.
-      #1 hit points: 55/47.
-      #2 hit points: 55/47.
-      #3 hit points: 55/47.
+    hit points: 165/129.
+      #1 hit points: 55/39, lightly damaged.
+      #2 hit points: 55/51.
+      #3 hit points: 55/39, lightly damaged.
   - coal-burning plant [000015], 3 coal-burning plants [cplant],
     immobile, owned by Caste Prime [2].
     size: 3000.
@@ -3005,7 +2889,6 @@ Battles report:
     Prime [2].
     size: 1000.
     hit points: 100/100.
-      #1 hit points: 100/100.
   - factory [000017], 5 factories [factry], partially disabled,
     immobile, owned by Caste Prime [2].
     size: 5000.
@@ -3019,105 +2902,32 @@ Battles report:
     owned by Caste Prime [2].
     size: 500.
     hit points: 500/200.
-      #1 hit points: 100/36, heavily damaged, effects: disabled.
+      #1 hit points: 100/40, heavily damaged, effects: disabled.
       #2 hit points: 100/44, heavily damaged, effects: disabled.
       #3 hit points: 100/40, heavily damaged, effects: disabled.
-      #4 hit points: 100/40, heavily damaged, effects: disabled.
+      #4 hit points: 100/36, heavily damaged, effects: disabled.
       #5 hit points: 100/40, heavily damaged, effects: disabled.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111]
-  (chance: 3/4) and hits #1 gun placement [111] doing 4 damage.
-    #1 gun placement [gunplc] is heavily damaged.
-    #1 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on farming complex
-  [000014] (chance: 9/12) and hits #3 farming complex [000014] doing 4
-  damage.
-  Surrender or die! [109] fires tanks [tanks] on farming complex
-  [000014] (chance: 9/12) and hits #1 farming complex [000014] doing 4
-  damage.
-  Surrender or die! [109] fires tanks [tanks] on farming complex
-  [000014] (chance: 9/12) and hits #2 farming complex [000014] doing 4
-  damage.
-  ------------------------------------------------------------
-  Round 8:
-  ------------------------------------------------------------
-  Attackers:
-  + peaceful scout [108], tanks [tanks].
-    size: 240, mass: 396 (240), crew: 16/16.
-    hit points: 100/54, attack: 4, defense: 4.
-    tactics: prioritize armed.
-      #1 hit points: 100/54, lightly damaged.
-  + Surrender or die! [109], 3 tanks [tanks].
-    size: 720, mass: 1042 (720), crew: 48/48.
-    hit points: 300/300, attack: 12, defense: 12.
-    tactics: prioritize command.
-      #1 hit points: 100/100.
-      #2 hit points: 100/100.
-      #3 hit points: 100/100.
-  Defenders:
-  - farming complex [000014], 3 farming complexes [farms], immobile,
-    owned by Caste Prime [2].
-    size: 3000.
-    hit points: 165/129.
-      #1 hit points: 55/43.
-      #2 hit points: 55/43.
-      #3 hit points: 55/43.
-  - coal-burning plant [000015], 3 coal-burning plants [cplant],
-    immobile, owned by Caste Prime [2].
-    size: 3000.
-    hit points: 300/300, attack: 3.
-      #1 hit points: 100/100.
-      #2 hit points: 100/100.
-      #3 hit points: 100/100.
-  - core drill [000016], core drill [cdrill], immobile, owned by Caste
-    Prime [2].
-    size: 1000.
-    hit points: 100/100.
-      #1 hit points: 100/100.
-  - factory [000017], 5 factories [factry], partially disabled,
-    immobile, owned by Caste Prime [2].
-    size: 5000.
-    hit points: 500/500.
-      #1 hit points: 100/100.
-      #2 hit points: 100/100.
-      #3 hit points: 100/100.
-      #4 hit points: 100/100.
-      #5 hit points: 100/100, effects: inactive.
-  - gun placement [111], 5 gun placements [gunplc], disabled, immobile,
-    owned by Caste Prime [2].
-    size: 500.
-    hit points: 500/196.
-      #1 hit points: 100/32, heavily damaged, effects: disabled.
-      #2 hit points: 100/44, heavily damaged, effects: disabled.
-      #3 hit points: 100/40, heavily damaged, effects: disabled.
-      #4 hit points: 100/40, heavily damaged, effects: disabled.
-      #5 hit points: 100/40, heavily damaged, effects: disabled.
-  ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111]
-  (chance: 3/4) and hits #2 gun placement [111] doing 4 damage.
-    #2 gun placement [gunplc] is heavily damaged.
-    #2 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on farming complex
-  [000014] (chance: 9/12) and hits #1 farming complex [000014] doing 4
-  damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and
+  hits #5 gun placement [111] doing 4 damage.
+    #5 gun placement [gunplc] is heavily damaged.
+    #5 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fire on farming complex [000014] (chance:
+  18/12) and hits #1 farming complex [000014] doing 4 damage.
     #1 farming complex [farms] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on farming complex
-  [000014] (chance: 9/12) and hits #3 farming complex [000014] doing 4
-  damage.
+  Surrender or die! [109] fire on farming complex [000014] (chance:
+  18/12) and hits #2 farming complex [000014] doing 4 damage.
+  Surrender or die! [109] fire on farming complex [000014] (chance:
+  18/12) and hits #3 farming complex [000014] doing 4 damage.
     #3 farming complex [farms] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on farming complex
-  [000014] (chance: 9/12) and hits #1 farming complex [000014] doing 4
-  damage.
-    #1 farming complex [farms] is lightly damaged.
   ------------------------------------------------------------
   Round 9:
   ------------------------------------------------------------
   Attackers:
   + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
-    hit points: 100/54, attack: 4, defense: 4.
+    hit points: 100/56, attack: 4, defense: 4, lightly damaged.
     tactics: prioritize armed.
-      #1 hit points: 100/54, lightly damaged.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1042 (720), crew: 48/48.
     hit points: 300/300, attack: 12, defense: 12.
@@ -3131,8 +2941,8 @@ Battles report:
     size: 3000.
     hit points: 165/117.
       #1 hit points: 55/35, lightly damaged.
-      #2 hit points: 55/43.
-      #3 hit points: 55/39, lightly damaged.
+      #2 hit points: 55/47.
+      #3 hit points: 55/35, lightly damaged.
   - coal-burning plant [000015], 3 coal-burning plants [cplant],
     immobile, owned by Caste Prime [2].
     size: 3000.
@@ -3144,7 +2954,6 @@ Battles report:
     Prime [2].
     size: 1000.
     hit points: 100/100.
-      #1 hit points: 100/100.
   - factory [000017], 5 factories [factry], partially disabled,
     immobile, owned by Caste Prime [2].
     size: 5000.
@@ -3157,38 +2966,33 @@ Battles report:
   - gun placement [111], 5 gun placements [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 500.
-    hit points: 500/192.
-      #1 hit points: 100/32, heavily damaged, effects: disabled.
-      #2 hit points: 100/40, heavily damaged, effects: disabled.
+    hit points: 500/196.
+      #1 hit points: 100/40, heavily damaged, effects: disabled.
+      #2 hit points: 100/44, heavily damaged, effects: disabled.
       #3 hit points: 100/40, heavily damaged, effects: disabled.
-      #4 hit points: 100/40, heavily damaged, effects: disabled.
-      #5 hit points: 100/40, heavily damaged, effects: disabled.
+      #4 hit points: 100/36, heavily damaged, effects: disabled.
+      #5 hit points: 100/36, heavily damaged, effects: disabled.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111]
-  (chance: 3/4) and hits #3 gun placement [111] doing 4 damage.
-    #3 gun placement [gunplc] is heavily damaged.
-    #3 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on farming complex
-  [000014] (chance: 9/12) and hits #3 farming complex [000014] doing 4
-  damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and
+  hits #1 gun placement [111] doing 4 damage.
+    #1 gun placement [gunplc] is heavily damaged.
+    #1 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fire on farming complex [000014] (chance:
+  18/12) and hits #3 farming complex [000014] doing 4 damage.
     #3 farming complex [farms] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on farming complex
-  [000014] (chance: 9/12) and hits #1 farming complex [000014] doing 4
-  damage.
+  Surrender or die! [109] fire on farming complex [000014] (chance:
+  18/12) and hits #1 farming complex [000014] doing 4 damage.
     #1 farming complex [farms] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on farming complex
-  [000014] (chance: 9/12) and hits #3 farming complex [000014] doing 4
-  damage.
-    #3 farming complex [farms] is lightly damaged.
+  Surrender or die! [109] fire on farming complex [000014] (chance:
+  18/12) and hits #2 farming complex [000014] doing 4 damage.
   ------------------------------------------------------------
   Round 10:
   ------------------------------------------------------------
   Attackers:
   + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
-    hit points: 100/54, attack: 4, defense: 4.
+    hit points: 100/56, attack: 4, defense: 4, lightly damaged.
     tactics: prioritize armed.
-      #1 hit points: 100/54, lightly damaged.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1042 (720), crew: 48/48.
     hit points: 300/300, attack: 12, defense: 12.
@@ -3215,7 +3019,6 @@ Battles report:
     Prime [2].
     size: 1000.
     hit points: 100/100.
-      #1 hit points: 100/100.
   - factory [000017], 5 factories [factry], partially disabled,
     immobile, owned by Caste Prime [2].
     size: 5000.
@@ -3228,29 +3031,27 @@ Battles report:
   - gun placement [111], 5 gun placements [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 500.
-    hit points: 500/188.
-      #1 hit points: 100/32, heavily damaged, effects: disabled.
-      #2 hit points: 100/40, heavily damaged, effects: disabled.
-      #3 hit points: 100/36, heavily damaged, effects: disabled.
-      #4 hit points: 100/40, heavily damaged, effects: disabled.
-      #5 hit points: 100/40, heavily damaged, effects: disabled.
+    hit points: 500/192.
+      #1 hit points: 100/36, heavily damaged, effects: disabled.
+      #2 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/40, heavily damaged, effects: disabled.
+      #4 hit points: 100/36, heavily damaged, effects: disabled.
+      #5 hit points: 100/36, heavily damaged, effects: disabled.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111]
-  (chance: 3/4) and hits #4 gun placement [111] doing 4 damage.
-    #4 gun placement [gunplc] is heavily damaged.
-    #4 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on farming complex
-  [000014] (chance: 9/12) and hits #2 farming complex [000014] doing 4
-  damage.
-    #2 farming complex [farms] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on farming complex
-  [000014] (chance: 9/12) and hits #3 farming complex [000014] doing 4
-  damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and
+  hits #2 gun placement [111] doing 4 damage.
+    #2 gun placement [gunplc] is heavily damaged.
+    #2 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fire on farming complex [000014] (chance:
+  18/12) and hits #1 farming complex [000014] doing 4 damage.
+    #1 farming complex [farms] is heavily damaged.
+    #1 farming complex [farms] is disabled.
+  Surrender or die! [109] fire on farming complex [000014] (chance:
+  18/12) and hits #3 farming complex [000014] doing 4 damage.
     #3 farming complex [farms] is heavily damaged.
     #3 farming complex [farms] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on farming complex
-  [000014] (chance: 9/12) and hits #1 farming complex [000014] doing 4
-  damage.
+  Surrender or die! [109] fire on farming complex [000014] (chance:
+  18/12) and hits #1 farming complex [000014] doing 4 damage.
     #1 farming complex [farms] is heavily damaged.
     #1 farming complex [farms] is disabled.
   ------------------------------------------------------------
@@ -3266,9 +3067,8 @@ Battles report:
   Attackers:
   + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
-    hit points: 100/54, attack: 4, defense: 4.
+    hit points: 100/56, attack: 4, defense: 4, lightly damaged.
     tactics: prioritize armed.
-      #1 hit points: 100/54, lightly damaged.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1042 (720), crew: 48/48.
     hit points: 300/300, attack: 12, defense: 12.
@@ -3282,16 +3082,16 @@ Battles report:
     size: 10000.
     hit points: 275/131.
       #1 hit points: 55/27, heavily damaged, effects: disabled.
-      #2 hit points: 55/23, heavily damaged, effects: disabled.
-      #3 hit points: 55/27, heavily damaged, effects: disabled.
+      #2 hit points: 55/27, heavily damaged, effects: disabled.
+      #3 hit points: 55/23, heavily damaged, effects: disabled.
       #4 hit points: 55/27, heavily damaged, effects: disabled.
       #5 hit points: 55/27, heavily damaged, effects: disabled.
   - farming complex [000014], 3 farming complexes [farms], immobile,
     owned by Caste Prime [2].
     size: 3000.
     hit points: 165/93.
-      #1 hit points: 55/27, heavily damaged, effects: disabled.
-      #2 hit points: 55/39, lightly damaged.
+      #1 hit points: 55/23, heavily damaged, effects: disabled.
+      #2 hit points: 55/43.
       #3 hit points: 55/27, heavily damaged, effects: disabled.
   - coal-burning plant [000015], 3 coal-burning plants [cplant],
     immobile, owned by Caste Prime [2].
@@ -3304,7 +3104,84 @@ Battles report:
     Prime [2].
     size: 1000.
     hit points: 100/100.
+  - factory [000017], 5 factories [factry], partially disabled,
+    immobile, owned by Caste Prime [2].
+    size: 5000.
+    hit points: 500/500.
       #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100, effects: inactive.
+  - gun placement [111], 5 gun placements [gunplc], disabled, immobile,
+    owned by Caste Prime [2].
+    size: 500.
+    hit points: 500/188.
+      #1 hit points: 100/36, heavily damaged, effects: disabled.
+      #2 hit points: 100/40, heavily damaged, effects: disabled.
+      #3 hit points: 100/40, heavily damaged, effects: disabled.
+      #4 hit points: 100/36, heavily damaged, effects: disabled.
+      #5 hit points: 100/36, heavily damaged, effects: disabled.
+  ------------------------------------------------------------
+  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and
+  hits #2 gun placement [111] doing 4 damage.
+    #2 gun placement [gunplc] is heavily damaged.
+    #2 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fire on farming complex [000014] (chance:
+  18/12) and hits #1 farming complex [000014] doing 4 damage.
+    #1 farming complex [farms] is heavily damaged.
+    #1 farming complex [farms] is disabled.
+  Surrender or die! [109] fire on farming complex [000014] (chance:
+  18/12) and hits #3 farming complex [000014] doing 4 damage.
+    #3 farming complex [farms] is heavily damaged.
+    #3 farming complex [farms] is disabled.
+  Surrender or die! [109] fire on farming complex [000014] (chance:
+  18/12) and hits #1 farming complex [000014] doing 4 damage.
+    #1 farming complex [farms] is heavily damaged.
+    #1 farming complex [farms] is disabled.
+  ------------------------------------------------------------
+  Round 2:
+  ------------------------------------------------------------
+  Attackers:
+  + peaceful scout [108], tanks [tanks].
+    size: 240, mass: 396 (240), crew: 16/16.
+    hit points: 100/56, attack: 4, defense: 4, lightly damaged.
+    tactics: prioritize armed.
+  + Surrender or die! [109], 3 tanks [tanks].
+    size: 720, mass: 1042 (720), crew: 48/48.
+    hit points: 300/300, attack: 12, defense: 12.
+    tactics: prioritize command.
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  Defenders:
+  - small cargo bay [000013], 5 small cargo bays [cargob], disabled,
+    immobile, owned by Caste Prime [2].
+    size: 10000.
+    hit points: 275/131.
+      #1 hit points: 55/27, heavily damaged, effects: disabled.
+      #2 hit points: 55/27, heavily damaged, effects: disabled.
+      #3 hit points: 55/23, heavily damaged, effects: disabled.
+      #4 hit points: 55/27, heavily damaged, effects: disabled.
+      #5 hit points: 55/27, heavily damaged, effects: disabled.
+  - farming complex [000014], 3 farming complexes [farms], immobile,
+    owned by Caste Prime [2].
+    size: 3000.
+    hit points: 165/81.
+      #1 hit points: 55/15, heavily damaged, effects: disabled.
+      #2 hit points: 55/43.
+      #3 hit points: 55/23, heavily damaged, effects: disabled.
+  - coal-burning plant [000015], 3 coal-burning plants [cplant],
+    immobile, owned by Caste Prime [2].
+    size: 3000.
+    hit points: 300/300, attack: 3.
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  - core drill [000016], core drill [cdrill], immobile, owned by Caste
+    Prime [2].
+    size: 1000.
+    hit points: 100/100.
   - factory [000017], 5 factories [factry], partially disabled,
     immobile, owned by Caste Prime [2].
     size: 5000.
@@ -3318,39 +3195,36 @@ Battles report:
     owned by Caste Prime [2].
     size: 500.
     hit points: 500/184.
-      #1 hit points: 100/32, heavily damaged, effects: disabled.
-      #2 hit points: 100/40, heavily damaged, effects: disabled.
-      #3 hit points: 100/36, heavily damaged, effects: disabled.
+      #1 hit points: 100/36, heavily damaged, effects: disabled.
+      #2 hit points: 100/36, heavily damaged, effects: disabled.
+      #3 hit points: 100/40, heavily damaged, effects: disabled.
       #4 hit points: 100/36, heavily damaged, effects: disabled.
-      #5 hit points: 100/40, heavily damaged, effects: disabled.
+      #5 hit points: 100/36, heavily damaged, effects: disabled.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111]
-  (chance: 3/4) and hits #4 gun placement [111] doing 4 damage.
-    #4 gun placement [gunplc] is heavily damaged.
-    #4 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on farming complex
-  [000014] (chance: 9/12) and hits #2 farming complex [000014] doing 4
-  damage.
-    #2 farming complex [farms] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on farming complex
-  [000014] (chance: 9/12) and hits #3 farming complex [000014] doing 4
-  damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and
+  hits #3 gun placement [111] doing 4 damage.
+    #3 gun placement [gunplc] is heavily damaged.
+    #3 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fire on farming complex [000014] (chance:
+  18/12) and hits #3 farming complex [000014] doing 4 damage.
     #3 farming complex [farms] is heavily damaged.
     #3 farming complex [farms] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on farming complex
-  [000014] (chance: 9/12) and hits #1 farming complex [000014] doing 4
-  damage.
-    #1 farming complex [farms] is heavily damaged.
+  Surrender or die! [109] fire on farming complex [000014] (chance:
+  18/12) and hits #1 farming complex [000014] doing 4 damage.
+    #1 farming complex [farms] is critically damaged.
     #1 farming complex [farms] is disabled.
+  Surrender or die! [109] fire on farming complex [000014] (chance:
+  18/12) and hits #3 farming complex [000014] doing 4 damage.
+    #3 farming complex [farms] is heavily damaged.
+    #3 farming complex [farms] is disabled.
   ------------------------------------------------------------
-  Round 2:
+  Round 3:
   ------------------------------------------------------------
   Attackers:
   + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
-    hit points: 100/54, attack: 4, defense: 4.
+    hit points: 100/56, attack: 4, defense: 4, lightly damaged.
     tactics: prioritize armed.
-      #1 hit points: 100/54, lightly damaged.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1042 (720), crew: 48/48.
     hit points: 300/300, attack: 12, defense: 12.
@@ -3364,17 +3238,17 @@ Battles report:
     size: 10000.
     hit points: 275/131.
       #1 hit points: 55/27, heavily damaged, effects: disabled.
-      #2 hit points: 55/23, heavily damaged, effects: disabled.
-      #3 hit points: 55/27, heavily damaged, effects: disabled.
+      #2 hit points: 55/27, heavily damaged, effects: disabled.
+      #3 hit points: 55/23, heavily damaged, effects: disabled.
       #4 hit points: 55/27, heavily damaged, effects: disabled.
       #5 hit points: 55/27, heavily damaged, effects: disabled.
   - farming complex [000014], 3 farming complexes [farms], immobile,
     owned by Caste Prime [2].
     size: 3000.
-    hit points: 165/81.
-      #1 hit points: 55/23, heavily damaged, effects: disabled.
-      #2 hit points: 55/35, lightly damaged.
-      #3 hit points: 55/23, heavily damaged, effects: disabled.
+    hit points: 165/69.
+      #1 hit points: 55/11, critically damaged, effects: disabled.
+      #2 hit points: 55/43.
+      #3 hit points: 55/15, heavily damaged, effects: disabled.
   - coal-burning plant [000015], 3 coal-burning plants [cplant],
     immobile, owned by Caste Prime [2].
     size: 3000.
@@ -3386,7 +3260,6 @@ Battles report:
     Prime [2].
     size: 1000.
     hit points: 100/100.
-      #1 hit points: 100/100.
   - factory [000017], 5 factories [factry], partially disabled,
     immobile, owned by Caste Prime [2].
     size: 5000.
@@ -3400,39 +3273,35 @@ Battles report:
     owned by Caste Prime [2].
     size: 500.
     hit points: 500/180.
-      #1 hit points: 100/32, heavily damaged, effects: disabled.
-      #2 hit points: 100/40, heavily damaged, effects: disabled.
+      #1 hit points: 100/36, heavily damaged, effects: disabled.
+      #2 hit points: 100/36, heavily damaged, effects: disabled.
       #3 hit points: 100/36, heavily damaged, effects: disabled.
-      #4 hit points: 100/32, heavily damaged, effects: disabled.
-      #5 hit points: 100/40, heavily damaged, effects: disabled.
+      #4 hit points: 100/36, heavily damaged, effects: disabled.
+      #5 hit points: 100/36, heavily damaged, effects: disabled.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111]
-  (chance: 3/4) and hits #5 gun placement [111] doing 4 damage.
-    #5 gun placement [gunplc] is heavily damaged.
-    #5 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on farming complex
-  [000014] (chance: 9/12) and hits #1 farming complex [000014] doing 4
-  damage.
-    #1 farming complex [farms] is heavily damaged.
-    #1 farming complex [farms] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on farming complex
-  [000014] (chance: 9/12) and hits #2 farming complex [000014] doing 4
-  damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and
+  hits #4 gun placement [111] doing 4 damage.
+    #4 gun placement [gunplc] is heavily damaged.
+    #4 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fire on farming complex [000014] (chance:
+  18/12) and hits #2 farming complex [000014] doing 4 damage.
     #2 farming complex [farms] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on farming complex
-  [000014] (chance: 9/12) and hits #3 farming complex [000014] doing 4
-  damage.
-    #3 farming complex [farms] is heavily damaged.
+  Surrender or die! [109] fire on farming complex [000014] (chance:
+  18/12) and hits #3 farming complex [000014] doing 4 damage.
+    #3 farming complex [farms] is critically damaged.
     #3 farming complex [farms] is disabled.
+  Surrender or die! [109] fire on farming complex [000014] (chance:
+  18/12) and hits #1 farming complex [000014] doing 4 damage.
+    #1 farming complex [farms] is critically damaged.
+    #1 farming complex [farms] is disabled.
   ------------------------------------------------------------
-  Round 3:
+  Round 4:
   ------------------------------------------------------------
   Attackers:
   + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
-    hit points: 100/54, attack: 4, defense: 4.
+    hit points: 100/56, attack: 4, defense: 4, lightly damaged.
     tactics: prioritize armed.
-      #1 hit points: 100/54, lightly damaged.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1042 (720), crew: 48/48.
     hit points: 300/300, attack: 12, defense: 12.
@@ -3446,17 +3315,17 @@ Battles report:
     size: 10000.
     hit points: 275/131.
       #1 hit points: 55/27, heavily damaged, effects: disabled.
-      #2 hit points: 55/23, heavily damaged, effects: disabled.
-      #3 hit points: 55/27, heavily damaged, effects: disabled.
+      #2 hit points: 55/27, heavily damaged, effects: disabled.
+      #3 hit points: 55/23, heavily damaged, effects: disabled.
       #4 hit points: 55/27, heavily damaged, effects: disabled.
       #5 hit points: 55/27, heavily damaged, effects: disabled.
   - farming complex [000014], 3 farming complexes [farms], immobile,
     owned by Caste Prime [2].
     size: 3000.
-    hit points: 165/69.
-      #1 hit points: 55/19, heavily damaged, effects: disabled.
-      #2 hit points: 55/31, lightly damaged.
-      #3 hit points: 55/19, heavily damaged, effects: disabled.
+    hit points: 165/57.
+      #1 hit points: 55/7, critically damaged, effects: disabled.
+      #2 hit points: 55/39, lightly damaged.
+      #3 hit points: 55/11, critically damaged, effects: disabled.
   - coal-burning plant [000015], 3 coal-burning plants [cplant],
     immobile, owned by Caste Prime [2].
     size: 3000.
@@ -3468,7 +3337,6 @@ Battles report:
     Prime [2].
     size: 1000.
     hit points: 100/100.
-      #1 hit points: 100/100.
   - factory [000017], 5 factories [factry], partially disabled,
     immobile, owned by Caste Prime [2].
     size: 5000.
@@ -3482,40 +3350,35 @@ Battles report:
     owned by Caste Prime [2].
     size: 500.
     hit points: 500/176.
-      #1 hit points: 100/32, heavily damaged, effects: disabled.
-      #2 hit points: 100/40, heavily damaged, effects: disabled.
+      #1 hit points: 100/36, heavily damaged, effects: disabled.
+      #2 hit points: 100/36, heavily damaged, effects: disabled.
       #3 hit points: 100/36, heavily damaged, effects: disabled.
       #4 hit points: 100/32, heavily damaged, effects: disabled.
       #5 hit points: 100/36, heavily damaged, effects: disabled.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111]
-  (chance: 3/4) and hits #1 gun placement [111] doing 4 damage.
-    #1 gun placement [gunplc] is heavily damaged.
-    #1 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on farming complex
-  [000014] (chance: 9/12) and hits #3 farming complex [000014] doing 4
-  damage.
-    #3 farming complex [farms] is heavily damaged.
-    #3 farming complex [farms] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on farming complex
-  [000014] (chance: 9/12) and hits #1 farming complex [000014] doing 4
-  damage.
-    #1 farming complex [farms] is heavily damaged.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and
+  hits #5 gun placement [111] doing 4 damage.
+    #5 gun placement [gunplc] is heavily damaged.
+    #5 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fire on farming complex [000014] (chance:
+  18/12) and hits #1 farming complex [000014] doing 4 damage.
+    #1 farming complex [farms] is critically damaged.
     #1 farming complex [farms] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on farming complex
-  [000014] (chance: 9/12) and hits #2 farming complex [000014] doing 4
-  damage.
-    #2 farming complex [farms] is heavily damaged.
-    #2 farming complex [farms] is disabled.
+  Surrender or die! [109] fire on farming complex [000014] (chance:
+  18/12) and hits #2 farming complex [000014] doing 4 damage.
+    #2 farming complex [farms] is lightly damaged.
+  Surrender or die! [109] fire on farming complex [000014] (chance:
+  18/12) and hits #3 farming complex [000014] doing 4 damage.
+    #3 farming complex [farms] is critically damaged.
+    #3 farming complex [farms] is disabled.
   ------------------------------------------------------------
-  Round 4:
+  Round 5:
   ------------------------------------------------------------
   Attackers:
   + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
-    hit points: 100/54, attack: 4, defense: 4.
+    hit points: 100/56, attack: 4, defense: 4, lightly damaged.
     tactics: prioritize armed.
-      #1 hit points: 100/54, lightly damaged.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1042 (720), crew: 48/48.
     hit points: 300/300, attack: 12, defense: 12.
@@ -3529,10 +3392,17 @@ Battles report:
     size: 10000.
     hit points: 275/131.
       #1 hit points: 55/27, heavily damaged, effects: disabled.
-      #2 hit points: 55/23, heavily damaged, effects: disabled.
-      #3 hit points: 55/27, heavily damaged, effects: disabled.
+      #2 hit points: 55/27, heavily damaged, effects: disabled.
+      #3 hit points: 55/23, heavily damaged, effects: disabled.
       #4 hit points: 55/27, heavily damaged, effects: disabled.
       #5 hit points: 55/27, heavily damaged, effects: disabled.
+  - farming complex [000014], 3 farming complexes [farms], immobile,
+    owned by Caste Prime [2].
+    size: 3000.
+    hit points: 165/45.
+      #1 hit points: 55/3, critically damaged, effects: disabled.
+      #2 hit points: 55/35, lightly damaged.
+      #3 hit points: 55/7, critically damaged, effects: disabled.
   - coal-burning plant [000015], 3 coal-burning plants [cplant],
     immobile, owned by Caste Prime [2].
     size: 3000.
@@ -3544,7 +3414,6 @@ Battles report:
     Prime [2].
     size: 1000.
     hit points: 100/100.
-      #1 hit points: 100/100.
   - factory [000017], 5 factories [factry], partially disabled,
     immobile, owned by Caste Prime [2].
     size: 5000.
@@ -3558,34 +3427,34 @@ Battles report:
     owned by Caste Prime [2].
     size: 500.
     hit points: 500/172.
-      #1 hit points: 100/28, heavily damaged, effects: disabled.
-      #2 hit points: 100/40, heavily damaged, effects: disabled.
+      #1 hit points: 100/36, heavily damaged, effects: disabled.
+      #2 hit points: 100/36, heavily damaged, effects: disabled.
       #3 hit points: 100/36, heavily damaged, effects: disabled.
       #4 hit points: 100/32, heavily damaged, effects: disabled.
-      #5 hit points: 100/36, heavily damaged, effects: disabled.
+      #5 hit points: 100/32, heavily damaged, effects: disabled.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111]
-  (chance: 3/4) and hits #2 gun placement [111] doing 4 damage.
-    #2 gun placement [gunplc] is heavily damaged.
-    #2 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant
-  [000015] (chance: 9/12) and hits #1 coal-burning plant [000015] doing
-  4 damage.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant
-  [000015] (chance: 9/12) and hits #2 coal-burning plant [000015] doing
-  4 damage.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant
-  [000015] (chance: 9/12) and hits #1 coal-burning plant [000015] doing
-  4 damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and
+  hits #1 gun placement [111] doing 4 damage.
+    #1 gun placement [gunplc] is heavily damaged.
+    #1 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fire on farming complex [000014] (chance:
+  18/12) and hits #3 farming complex [000014] doing 4 damage.
+    #3 farming complex [farms] is critically damaged.
+    #3 farming complex [farms] is disabled.
+  Surrender or die! [109] fire on farming complex [000014] (chance:
+  18/12) and hits #1 farming complex [000014] doing 3 damage.
+    #1 farming complex [farms] is wrecked.
+  Surrender or die! [109] fire on farming complex [000014] (chance:
+  18/12) and hits #2 farming complex [000014] doing 4 damage.
+    #2 farming complex [farms] is lightly damaged.
   ------------------------------------------------------------
-  Round 5:
+  Round 6:
   ------------------------------------------------------------
   Attackers:
   + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
-    hit points: 100/54, attack: 4, defense: 4.
+    hit points: 100/56, attack: 4, defense: 4, lightly damaged.
     tactics: prioritize armed.
-      #1 hit points: 100/54, lightly damaged.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1042 (720), crew: 48/48.
     hit points: 300/300, attack: 12, defense: 12.
@@ -3599,22 +3468,28 @@ Battles report:
     size: 10000.
     hit points: 275/131.
       #1 hit points: 55/27, heavily damaged, effects: disabled.
-      #2 hit points: 55/23, heavily damaged, effects: disabled.
-      #3 hit points: 55/27, heavily damaged, effects: disabled.
+      #2 hit points: 55/27, heavily damaged, effects: disabled.
+      #3 hit points: 55/23, heavily damaged, effects: disabled.
       #4 hit points: 55/27, heavily damaged, effects: disabled.
       #5 hit points: 55/27, heavily damaged, effects: disabled.
+  - farming complex [000014], 3 farming complexes [farms], immobile,
+    owned by Caste Prime [2].
+    size: 3000.
+    hit points: 165/34.
+      #1 hit points: 55/0, destroyed, effects: disabled.
+      #2 hit points: 55/31, lightly damaged.
+      #3 hit points: 55/3, critically damaged, effects: disabled.
   - coal-burning plant [000015], 3 coal-burning plants [cplant],
     immobile, owned by Caste Prime [2].
     size: 3000.
-    hit points: 300/288, attack: 3.
-      #1 hit points: 100/92.
-      #2 hit points: 100/96.
+    hit points: 300/300, attack: 3.
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
       #3 hit points: 100/100.
   - core drill [000016], core drill [cdrill], immobile, owned by Caste
     Prime [2].
     size: 1000.
     hit points: 100/100.
-      #1 hit points: 100/100.
   - factory [000017], 5 factories [factry], partially disabled,
     immobile, owned by Caste Prime [2].
     size: 5000.
@@ -3628,34 +3503,28 @@ Battles report:
     owned by Caste Prime [2].
     size: 500.
     hit points: 500/168.
-      #1 hit points: 100/28, heavily damaged, effects: disabled.
+      #1 hit points: 100/32, heavily damaged, effects: disabled.
       #2 hit points: 100/36, heavily damaged, effects: disabled.
       #3 hit points: 100/36, heavily damaged, effects: disabled.
       #4 hit points: 100/32, heavily damaged, effects: disabled.
-      #5 hit points: 100/36, heavily damaged, effects: disabled.
+      #5 hit points: 100/32, heavily damaged, effects: disabled.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111]
-  (chance: 3/4) and hits #3 gun placement [111] doing 4 damage.
-    #3 gun placement [gunplc] is heavily damaged.
-    #3 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant
-  [000015] (chance: 9/12) and hits #2 coal-burning plant [000015] doing
-  4 damage.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant
-  [000015] (chance: 9/12) and hits #1 coal-burning plant [000015] doing
-  4 damage.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant
-  [000015] (chance: 9/12) and hits #2 coal-burning plant [000015] doing
-  4 damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and
+  hits #2 gun placement [111] doing 4 damage.
+    #2 gun placement [gunplc] is heavily damaged.
+    #2 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fire on farming complex [000014] (chance:
+  18/12) and hits #2 farming complex [000014] doing 4 damage.
+    #2 farming complex [farms] is heavily damaged.
+    #2 farming complex [farms] is disabled.
   ------------------------------------------------------------
-  Round 6:
+  Round 7:
   ------------------------------------------------------------
   Attackers:
   + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
-    hit points: 100/54, attack: 4, defense: 4.
+    hit points: 100/56, attack: 4, defense: 4, lightly damaged.
     tactics: prioritize armed.
-      #1 hit points: 100/54, lightly damaged.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1042 (720), crew: 48/48.
     hit points: 300/300, attack: 12, defense: 12.
@@ -3669,22 +3538,21 @@ Battles report:
     size: 10000.
     hit points: 275/131.
       #1 hit points: 55/27, heavily damaged, effects: disabled.
-      #2 hit points: 55/23, heavily damaged, effects: disabled.
-      #3 hit points: 55/27, heavily damaged, effects: disabled.
+      #2 hit points: 55/27, heavily damaged, effects: disabled.
+      #3 hit points: 55/23, heavily damaged, effects: disabled.
       #4 hit points: 55/27, heavily damaged, effects: disabled.
       #5 hit points: 55/27, heavily damaged, effects: disabled.
   - coal-burning plant [000015], 3 coal-burning plants [cplant],
     immobile, owned by Caste Prime [2].
     size: 3000.
-    hit points: 300/276, attack: 3.
-      #1 hit points: 100/88.
-      #2 hit points: 100/88.
+    hit points: 300/300, attack: 3.
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
       #3 hit points: 100/100.
   - core drill [000016], core drill [cdrill], immobile, owned by Caste
     Prime [2].
     size: 1000.
     hit points: 100/100.
-      #1 hit points: 100/100.
   - factory [000017], 5 factories [factry], partially disabled,
     immobile, owned by Caste Prime [2].
     size: 5000.
@@ -3698,34 +3566,30 @@ Battles report:
     owned by Caste Prime [2].
     size: 500.
     hit points: 500/164.
-      #1 hit points: 100/28, heavily damaged, effects: disabled.
-      #2 hit points: 100/36, heavily damaged, effects: disabled.
-      #3 hit points: 100/32, heavily damaged, effects: disabled.
+      #1 hit points: 100/32, heavily damaged, effects: disabled.
+      #2 hit points: 100/32, heavily damaged, effects: disabled.
+      #3 hit points: 100/36, heavily damaged, effects: disabled.
       #4 hit points: 100/32, heavily damaged, effects: disabled.
-      #5 hit points: 100/36, heavily damaged, effects: disabled.
+      #5 hit points: 100/32, heavily damaged, effects: disabled.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111]
-  (chance: 3/4) and hits #4 gun placement [111] doing 4 damage.
-    #4 gun placement [gunplc] is heavily damaged.
-    #4 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant
-  [000015] (chance: 9/12) and hits #3 coal-burning plant [000015] doing
-  4 damage.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant
-  [000015] (chance: 9/12) and hits #2 coal-burning plant [000015] doing
-  4 damage.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant
-  [000015] (chance: 9/12) and hits #1 coal-burning plant [000015] doing
-  4 damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and
+  hits #5 gun placement [111] doing 4 damage.
+    #5 gun placement [gunplc] is heavily damaged.
+    #5 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fire on coal-burning plant [000015] (chance:
+  18/12) and hits #1 coal-burning plant [000015] doing 4 damage.
+  Surrender or die! [109] fire on coal-burning plant [000015] (chance:
+  18/12) and hits #3 coal-burning plant [000015] doing 4 damage.
+  Surrender or die! [109] fire on coal-burning plant [000015] (chance:
+  18/12) and hits #2 coal-burning plant [000015] doing 4 damage.
   ------------------------------------------------------------
-  Round 7:
+  Round 8:
   ------------------------------------------------------------
   Attackers:
   + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
-    hit points: 100/54, attack: 4, defense: 4.
+    hit points: 100/56, attack: 4, defense: 4, lightly damaged.
     tactics: prioritize armed.
-      #1 hit points: 100/54, lightly damaged.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1042 (720), crew: 48/48.
     hit points: 300/300, attack: 12, defense: 12.
@@ -3739,22 +3603,21 @@ Battles report:
     size: 10000.
     hit points: 275/131.
       #1 hit points: 55/27, heavily damaged, effects: disabled.
-      #2 hit points: 55/23, heavily damaged, effects: disabled.
-      #3 hit points: 55/27, heavily damaged, effects: disabled.
+      #2 hit points: 55/27, heavily damaged, effects: disabled.
+      #3 hit points: 55/23, heavily damaged, effects: disabled.
       #4 hit points: 55/27, heavily damaged, effects: disabled.
       #5 hit points: 55/27, heavily damaged, effects: disabled.
   - coal-burning plant [000015], 3 coal-burning plants [cplant],
     immobile, owned by Caste Prime [2].
     size: 3000.
-    hit points: 300/264, attack: 3.
-      #1 hit points: 100/84.
-      #2 hit points: 100/84.
+    hit points: 300/288, attack: 3.
+      #1 hit points: 100/96.
+      #2 hit points: 100/96.
       #3 hit points: 100/96.
   - core drill [000016], core drill [cdrill], immobile, owned by Caste
     Prime [2].
     size: 1000.
     hit points: 100/100.
-      #1 hit points: 100/100.
   - factory [000017], 5 factories [factry], partially disabled,
     immobile, owned by Caste Prime [2].
     size: 5000.
@@ -3768,34 +3631,30 @@ Battles report:
     owned by Caste Prime [2].
     size: 500.
     hit points: 500/160.
-      #1 hit points: 100/28, heavily damaged, effects: disabled.
-      #2 hit points: 100/36, heavily damaged, effects: disabled.
-      #3 hit points: 100/32, heavily damaged, effects: disabled.
-      #4 hit points: 100/28, heavily damaged, effects: disabled.
-      #5 hit points: 100/36, heavily damaged, effects: disabled.
+      #1 hit points: 100/32, heavily damaged, effects: disabled.
+      #2 hit points: 100/32, heavily damaged, effects: disabled.
+      #3 hit points: 100/36, heavily damaged, effects: disabled.
+      #4 hit points: 100/32, heavily damaged, effects: disabled.
+      #5 hit points: 100/28, heavily damaged, effects: disabled.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111]
-  (chance: 3/4) and hits #5 gun placement [111] doing 4 damage.
-    #5 gun placement [gunplc] is heavily damaged.
-    #5 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant
-  [000015] (chance: 9/12) and hits #1 coal-burning plant [000015] doing
-  4 damage.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant
-  [000015] (chance: 9/12) and hits #3 coal-burning plant [000015] doing
-  4 damage.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant
-  [000015] (chance: 9/12) and hits #2 coal-burning plant [000015] doing
-  4 damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and
+  hits #1 gun placement [111] doing 4 damage.
+    #1 gun placement [gunplc] is heavily damaged.
+    #1 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fire on coal-burning plant [000015] (chance:
+  18/12) and hits #2 coal-burning plant [000015] doing 4 damage.
+  Surrender or die! [109] fire on coal-burning plant [000015] (chance:
+  18/12) and hits #1 coal-burning plant [000015] doing 4 damage.
+  Surrender or die! [109] fire on coal-burning plant [000015] (chance:
+  18/12) and hits #3 coal-burning plant [000015] doing 4 damage.
   ------------------------------------------------------------
-  Round 8:
+  Round 9:
   ------------------------------------------------------------
   Attackers:
   + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
-    hit points: 100/54, attack: 4, defense: 4.
+    hit points: 100/56, attack: 4, defense: 4, lightly damaged.
     tactics: prioritize armed.
-      #1 hit points: 100/54, lightly damaged.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1042 (720), crew: 48/48.
     hit points: 300/300, attack: 12, defense: 12.
@@ -3809,22 +3668,21 @@ Battles report:
     size: 10000.
     hit points: 275/131.
       #1 hit points: 55/27, heavily damaged, effects: disabled.
-      #2 hit points: 55/23, heavily damaged, effects: disabled.
-      #3 hit points: 55/27, heavily damaged, effects: disabled.
+      #2 hit points: 55/27, heavily damaged, effects: disabled.
+      #3 hit points: 55/23, heavily damaged, effects: disabled.
       #4 hit points: 55/27, heavily damaged, effects: disabled.
       #5 hit points: 55/27, heavily damaged, effects: disabled.
   - coal-burning plant [000015], 3 coal-burning plants [cplant],
     immobile, owned by Caste Prime [2].
     size: 3000.
-    hit points: 300/252, attack: 3.
-      #1 hit points: 100/80.
-      #2 hit points: 100/80.
+    hit points: 300/276, attack: 3.
+      #1 hit points: 100/92.
+      #2 hit points: 100/92.
       #3 hit points: 100/92.
   - core drill [000016], core drill [cdrill], immobile, owned by Caste
     Prime [2].
     size: 1000.
     hit points: 100/100.
-      #1 hit points: 100/100.
   - factory [000017], 5 factories [factry], partially disabled,
     immobile, owned by Caste Prime [2].
     size: 5000.
@@ -3839,33 +3697,29 @@ Battles report:
     size: 500.
     hit points: 500/156.
       #1 hit points: 100/28, heavily damaged, effects: disabled.
-      #2 hit points: 100/36, heavily damaged, effects: disabled.
-      #3 hit points: 100/32, heavily damaged, effects: disabled.
-      #4 hit points: 100/28, heavily damaged, effects: disabled.
-      #5 hit points: 100/32, heavily damaged, effects: disabled.
+      #2 hit points: 100/32, heavily damaged, effects: disabled.
+      #3 hit points: 100/36, heavily damaged, effects: disabled.
+      #4 hit points: 100/32, heavily damaged, effects: disabled.
+      #5 hit points: 100/28, heavily damaged, effects: disabled.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111]
-  (chance: 3/4) and hits #1 gun placement [111] doing 4 damage.
-    #1 gun placement [gunplc] is critically damaged.
-    #1 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant
-  [000015] (chance: 9/12) and hits #2 coal-burning plant [000015] doing
-  4 damage.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant
-  [000015] (chance: 9/12) and hits #1 coal-burning plant [000015] doing
-  4 damage.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant
-  [000015] (chance: 9/12) and hits #3 coal-burning plant [000015] doing
-  4 damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and
+  hits #2 gun placement [111] doing 4 damage.
+    #2 gun placement [gunplc] is heavily damaged.
+    #2 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fire on coal-burning plant [000015] (chance:
+  18/12) and hits #1 coal-burning plant [000015] doing 4 damage.
+  Surrender or die! [109] fire on coal-burning plant [000015] (chance:
+  18/12) and hits #2 coal-burning plant [000015] doing 4 damage.
+  Surrender or die! [109] fire on coal-burning plant [000015] (chance:
+  18/12) and hits #1 coal-burning plant [000015] doing 4 damage.
   ------------------------------------------------------------
-  Round 9:
+  Round 10:
   ------------------------------------------------------------
   Attackers:
   + peaceful scout [108], tanks [tanks].
     size: 240, mass: 396 (240), crew: 16/16.
-    hit points: 100/54, attack: 4, defense: 4.
+    hit points: 100/56, attack: 4, defense: 4, lightly damaged.
     tactics: prioritize armed.
-      #1 hit points: 100/54, lightly damaged.
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1042 (720), crew: 48/48.
     hit points: 300/300, attack: 12, defense: 12.
@@ -3879,22 +3733,21 @@ Battles report:
     size: 10000.
     hit points: 275/131.
       #1 hit points: 55/27, heavily damaged, effects: disabled.
-      #2 hit points: 55/23, heavily damaged, effects: disabled.
-      #3 hit points: 55/27, heavily damaged, effects: disabled.
+      #2 hit points: 55/27, heavily damaged, effects: disabled.
+      #3 hit points: 55/23, heavily damaged, effects: disabled.
       #4 hit points: 55/27, heavily damaged, effects: disabled.
       #5 hit points: 55/27, heavily damaged, effects: disabled.
   - coal-burning plant [000015], 3 coal-burning plants [cplant],
     immobile, owned by Caste Prime [2].
     size: 3000.
-    hit points: 300/240, attack: 3.
-      #1 hit points: 100/76.
-      #2 hit points: 100/76.
-      #3 hit points: 100/88.
+    hit points: 300/264, attack: 3.
+      #1 hit points: 100/84.
+      #2 hit points: 100/88.
+      #3 hit points: 100/92.
   - core drill [000016], core drill [cdrill], immobile, owned by Caste
     Prime [2].
     size: 1000.
     hit points: 100/100.
-      #1 hit points: 100/100.
   - factory [000017], 5 factories [factry], partially disabled,
     immobile, owned by Caste Prime [2].
     size: 5000.
@@ -3908,101 +3761,22 @@ Battles report:
     owned by Caste Prime [2].
     size: 500.
     hit points: 500/152.
-      #1 hit points: 100/24, critically damaged, effects: disabled.
-      #2 hit points: 100/36, heavily damaged, effects: disabled.
-      #3 hit points: 100/32, heavily damaged, effects: disabled.
-      #4 hit points: 100/28, heavily damaged, effects: disabled.
-      #5 hit points: 100/32, heavily damaged, effects: disabled.
+      #1 hit points: 100/28, heavily damaged, effects: disabled.
+      #2 hit points: 100/28, heavily damaged, effects: disabled.
+      #3 hit points: 100/36, heavily damaged, effects: disabled.
+      #4 hit points: 100/32, heavily damaged, effects: disabled.
+      #5 hit points: 100/28, heavily damaged, effects: disabled.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111]
-  (chance: 3/4) and hits #2 gun placement [111] doing 4 damage.
-    #2 gun placement [gunplc] is heavily damaged.
-    #2 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant
-  [000015] (chance: 9/12) and hits #1 coal-burning plant [000015] doing
-  4 damage.
-    #1 coal-burning plant [cplant] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant
-  [000015] (chance: 9/12) and hits #2 coal-burning plant [000015] doing
-  4 damage.
-    #2 coal-burning plant [cplant] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant
-  [000015] (chance: 9/12) and hits #1 coal-burning plant [000015] doing
-  4 damage.
-    #1 coal-burning plant [cplant] is lightly damaged.
-  ------------------------------------------------------------
-  Round 10:
-  ------------------------------------------------------------
-  Attackers:
-  + peaceful scout [108], tanks [tanks].
-    size: 240, mass: 396 (240), crew: 16/16.
-    hit points: 100/54, attack: 4, defense: 4.
-    tactics: prioritize armed.
-      #1 hit points: 100/54, lightly damaged.
-  + Surrender or die! [109], 3 tanks [tanks].
-    size: 720, mass: 1042 (720), crew: 48/48.
-    hit points: 300/300, attack: 12, defense: 12.
-    tactics: prioritize command.
-      #1 hit points: 100/100.
-      #2 hit points: 100/100.
-      #3 hit points: 100/100.
-  Defenders:
-  - small cargo bay [000013], 5 small cargo bays [cargob], disabled,
-    immobile, owned by Caste Prime [2].
-    size: 10000.
-    hit points: 275/131.
-      #1 hit points: 55/27, heavily damaged, effects: disabled.
-      #2 hit points: 55/23, heavily damaged, effects: disabled.
-      #3 hit points: 55/27, heavily damaged, effects: disabled.
-      #4 hit points: 55/27, heavily damaged, effects: disabled.
-      #5 hit points: 55/27, heavily damaged, effects: disabled.
-  - coal-burning plant [000015], 3 coal-burning plants [cplant],
-    immobile, owned by Caste Prime [2].
-    size: 3000.
-    hit points: 300/228, attack: 3.
-      #1 hit points: 100/68, lightly damaged.
-      #2 hit points: 100/72, lightly damaged.
-      #3 hit points: 100/88.
-  - core drill [000016], core drill [cdrill], immobile, owned by Caste
-    Prime [2].
-    size: 1000.
-    hit points: 100/100.
-      #1 hit points: 100/100.
-  - factory [000017], 5 factories [factry], partially disabled,
-    immobile, owned by Caste Prime [2].
-    size: 5000.
-    hit points: 500/500.
-      #1 hit points: 100/100.
-      #2 hit points: 100/100.
-      #3 hit points: 100/100.
-      #4 hit points: 100/100.
-      #5 hit points: 100/100, effects: inactive.
-  - gun placement [111], 5 gun placements [gunplc], disabled, immobile,
-    owned by Caste Prime [2].
-    size: 500.
-    hit points: 500/148.
-      #1 hit points: 100/24, critically damaged, effects: disabled.
-      #2 hit points: 100/32, heavily damaged, effects: disabled.
-      #3 hit points: 100/32, heavily damaged, effects: disabled.
-      #4 hit points: 100/28, heavily damaged, effects: disabled.
-      #5 hit points: 100/32, heavily damaged, effects: disabled.
-  ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111]
-  (chance: 3/4) and hits #3 gun placement [111] doing 4 damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and
+  hits #3 gun placement [111] doing 4 damage.
     #3 gun placement [gunplc] is heavily damaged.
     #3 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant
-  [000015] (chance: 9/12) and hits #2 coal-burning plant [000015] doing
-  4 damage.
-    #2 coal-burning plant [cplant] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant
-  [000015] (chance: 9/12) and hits #1 coal-burning plant [000015] doing
-  4 damage.
-    #1 coal-burning plant [cplant] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant
-  [000015] (chance: 9/12) and hits #2 coal-burning plant [000015] doing
-  4 damage.
-    #2 coal-burning plant [cplant] is lightly damaged.
+  Surrender or die! [109] fire on coal-burning plant [000015] (chance:
+  18/12) and hits #2 coal-burning plant [000015] doing 4 damage.
+  Surrender or die! [109] fire on coal-burning plant [000015] (chance:
+  18/12) and hits #1 coal-burning plant [000015] doing 4 damage.
+  Surrender or die! [109] fire on coal-burning plant [000015] (chance:
+  18/12) and hits #2 coal-burning plant [000015] doing 4 damage.
   ------------------------------------------------------------
   Battle ended indecisively.
 
@@ -4073,8 +3847,8 @@ Galaxy report:
     size: 240, mass: 364 (240), capacity: 200/112, crew: 16/16, upkeep:
     40 (24) cash [cash], consume: 32 (16) units of food [food], 32 (16)
     units of terran breathing gas mixture [terair].
-    hit points: 100/54.
-      #1 hit points: 100/54, lightly damaged.
+    hit points: 100/56.
+      #1 hit points: 100/56, lightly damaged.
     movement speed: 0.5 on ground.
     fuel requirements: 4 units of oil [oil] per 13 weeks.
     items: 16 terrans [terran] (size: 64, mass: 64, upkeep: 16 cash

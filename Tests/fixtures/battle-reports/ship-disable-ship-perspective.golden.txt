@@ -1,0 +1,121 @@
+Battles report:
+
+  Week 1.
+  Battle has commenced at orbit [O00003] of Earth [P00002] at AU 1, ocean planet [ocean] in system Sol [SS0001] (0, 0, 0).
+  ------------------------------------------------------------
+  Round 1:
+  ------------------------------------------------------------
+  Attackers:
+  + Frigate [100011], spaceship hull [sshull].
+    size: 5000, mass: 10000/4680 (100), energy: 120/78 (1), crew: 6/30.
+    hit points: 370/370 (50/50), attack: 24 (0), defense: 17 (10), initiative: 50 (40).
+    tactics: disable.
+    + command bridge [100012], command bridge [cbridg].
+      size: 800, mass: 340 (300), energy: 5, crew: 1/10.
+      hit points: 55/55, defense: 5, initiative: 10 (5).
+      technologies: military tactics [miltac] (initiative: 5).
+      + terran officer [200002], terran [terran].
+        mass: 4, defense: 5, initiative: 5.
+        skills: frigate pilot [frgplt] (defense: 5, initiative: 5).
+    + fission reactor [100013], 2 fission reactors [fisrec].
+      size: 800, mass: 384 (280), energy: 120/20, crew: 2/6.
+      hit points: 90/90, attack: 4.
+        #1 hit points: 45/45.
+        #2 hit points: 45/45.
+    + reaction drive [100014], reaction drive [rctdrv].
+      size: 600, mass: 10000/804 (700), energy: 30, crew: 1/1.
+      hit points: 65/65.
+    + x-ray laser [100015], 2 x-ray lasers [xraylz].
+      size: 200, mass: 208 (200), energy: 20, crew: 2/2.
+      hit points: 20/20, attack: 20, defense: 2.
+        #1 hit points: 10/10.
+        #2 hit points: 10/10.
+    + crew quarters [100016], 2 crew quarters [crwqrt].
+      size: 1000, mass: 2844 (800), energy: 2.
+      hit points: 90/90.
+        #1 hit points: 45/45.
+        #2 hit points: 45/45.
+  Defenders:
+  - Station [100021], orbital complex [orcmpx], immobile, owned by NPC [1].
+    size: 5000.
+    hit points: 305/305 (50/50), attack: 2 (0), defense: 5 (0), initiative: 40.
+    - command bridge [100022], command bridge [cbridg], immobile, owned by NPC [1].
+      size: 800.
+      hit points: 55/55, defense: 5.
+      - terran officer [200003], terran [terran], working for NPC [1].
+        defense: 5.
+    - fission reactor [100023], fission reactor [fisrec], immobile, owned by NPC [1].
+      size: 400.
+      hit points: 45/45, attack: 2.
+    - small cargo bay [100024], 2 small cargo bays [cargob], immobile, owned by NPC [1].
+      size: 4000.
+      hit points: 110/110.
+        #1 hit points: 55/55.
+        #2 hit points: 55/55.
+    - crew quarters [100025], crew quarters [crwqrt], immobile, owned by NPC [1].
+      size: 500.
+      hit points: 45/45.
+  ------------------------------------------------------------
+  Frigate [100011] fires x-ray laser [xraylz] on Station [100021] (chance: 36/29) and hits Station [100021] doing 10 damage.
+  Frigate [100011] fires x-ray laser [xraylz] on Station [100021] (chance: 36/29) and hits Station [100021] doing 10 damage.
+    orbital complex [orcmpx] is lightly damaged.
+  ------------------------------------------------------------
+  Round 2:
+  ------------------------------------------------------------
+  Attackers:
+  + Frigate [100011], spaceship hull [sshull].
+    size: 5000, mass: 10000/4680 (100), energy: 120/78 (1), crew: 6/30.
+    hit points: 370/370 (50/50), attack: 24 (0), defense: 17 (10), initiative: 50 (40).
+    tactics: disable.
+    + command bridge [100012], command bridge [cbridg].
+      size: 800, mass: 340 (300), energy: 5, crew: 1/10.
+      hit points: 55/55, defense: 5, initiative: 10 (5).
+      technologies: military tactics [miltac] (initiative: 5).
+      + terran officer [200002], terran [terran].
+        mass: 4, defense: 5, initiative: 5.
+        skills: frigate pilot [frgplt] (defense: 5, initiative: 5).
+    + fission reactor [100013], 2 fission reactors [fisrec].
+      size: 800, mass: 384 (280), energy: 120/20, crew: 2/6.
+      hit points: 90/90, attack: 4.
+        #1 hit points: 45/45.
+        #2 hit points: 45/45.
+    + reaction drive [100014], reaction drive [rctdrv].
+      size: 600, mass: 10000/804 (700), energy: 30, crew: 1/1.
+      hit points: 65/65.
+    + x-ray laser [100015], 2 x-ray lasers [xraylz].
+      size: 200, mass: 208 (200), energy: 20, crew: 2/2.
+      hit points: 20/20, attack: 20, defense: 2.
+        #1 hit points: 10/10.
+        #2 hit points: 10/10.
+    + crew quarters [100016], 2 crew quarters [crwqrt].
+      size: 1000, mass: 2844 (800), energy: 2.
+      hit points: 90/90.
+        #1 hit points: 45/45.
+        #2 hit points: 45/45.
+  Defenders:
+  - Station [100021], orbital complex [orcmpx], immobile, owned by NPC [1].
+    size: 5000.
+    hit points: 305/285 (50/30), attack: 2 (0), defense: 5 (0), initiative: 40, lightly damaged.
+    - command bridge [100022], command bridge [cbridg], immobile, owned by NPC [1].
+      size: 800.
+      hit points: 55/55, defense: 5.
+      - terran officer [200003], terran [terran], working for NPC [1].
+        defense: 5.
+    - fission reactor [100023], fission reactor [fisrec], immobile, owned by NPC [1].
+      size: 400.
+      hit points: 45/45, attack: 2.
+    - small cargo bay [100024], 2 small cargo bays [cargob], immobile, owned by NPC [1].
+      size: 4000.
+      hit points: 110/110.
+        #1 hit points: 55/55.
+        #2 hit points: 55/55.
+    - crew quarters [100025], crew quarters [crwqrt], immobile, owned by NPC [1].
+      size: 500.
+      hit points: 45/45.
+  ------------------------------------------------------------
+  Frigate [100011] fires x-ray laser [xraylz] on Station [100021] (chance: 36/29) and hits Station [100021] doing 10 damage.
+    orbital complex [orcmpx] is heavily damaged.
+    orbital complex [orcmpx] is disabled.
+  ------------------------------------------------------------
+  Battle won by attackers.
+

@@ -1,0 +1,25 @@
+  Week 1.
+  Battle has commenced at orbit [O00003] of Earth [P00002] at AU 1, ocean planet [ocean] in system Sol [SS0001] (0, 0, 0).
+  ------------------------------------------------------------
+  Round 1:
+  ------------------------------------------------------------
+    tactics: capture.
+  ------------------------------------------------------------
+  Frigate [100011] fires x-ray laser [xraylz] on Station [100021] (chance: 36/29) and hits Station [100021] doing 2 damage and 8 capture damage.
+  Frigate [100011] fires x-ray laser [xraylz] on Station [100021] (chance: 36/29) and hits Station [100021] doing 2 damage and 8 capture damage.
+  ------------------------------------------------------------
+  Round 2:
+  ------------------------------------------------------------
+    tactics: capture.
+  ------------------------------------------------------------
+  Frigate [100011] fires x-ray laser [xraylz] on Station [100021] (chance: 36/29) and hits Station [100021] doing 2 damage and 8 capture damage.
+  Frigate [100011] fires x-ray laser [xraylz] on Station [100021] (chance: 36/29) and hits Station [100021] doing 2 damage and 8 capture damage.
+  ------------------------------------------------------------
+  Round 3:
+  ------------------------------------------------------------
+    tactics: capture.
+  ------------------------------------------------------------
+  Frigate [100011] fires x-ray laser [xraylz] on Station [100021] (chance: 36/29) and hits Station [100021] doing 2 damage and 8 capture damage.
+    orbital complex [orcmpx] module captured by Caste Prime [2].
+  ------------------------------------------------------------
+  Battle won by attackers.

@@ -123,7 +123,7 @@ Quantities are **per unit** in the destroyed stack; divide total drops across pa
 
 | Id | Name | Tier | HP | Atk | Def | Dmg | Speed | Flavour |
 |----|------|------|----|-----|-----|-----|-------|---------|
-| `crstlb` | crust burrower | 1 | 58 | 2 | 4 | 2 | 1.0 | Armoured diggers |
+| `crstlb` | crust burrower | 1 | 64 | 2 | 6 | 2 | 1.0 | Armoured diggers (tank platoon benchmark ~2 rounds) |
 | `slgmnt` | slag mantlet | 2 | 75 | 6 | 5 | 6 | 0.75 | Mineral-plated grazer |
 | `urstlk` | umber stalker | 3 | 85 | 10 | 4 | 13 | 0.5 | Rad spit; missile |
 

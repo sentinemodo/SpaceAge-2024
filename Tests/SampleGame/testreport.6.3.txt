@@ -5,7 +5,7 @@ Content-Disposition: attachment
 SpaceAge report for Gelvaren [3].
 Turn 6, Year 2157, April 1.
 
-SpaceAge Engine Version: 0.8.003.
+SpaceAge Engine Version: 0.8.004.
 
 Declared stances:
   default: neutral, unknown: hostile.
@@ -95,16 +95,16 @@ Battles report:
     hit points: 100/59, attack: 1, defense: 1, lightly damaged,
     inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #3 factory [000017] doing 1 damage and 3 capture damage.
     #3 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #2 factory [000017] doing 1 damage and 3 capture damage.
     #2 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #1 factory [000017] doing 1 damage and 3 capture damage.
     #1 factory [factry] is lightly damaged.
-  infantry battalion [110] fires on factory [000017] (chance: 1/3) and
+  infantry battalion [110] fires on factory [000017] (chance: 4/3) and
   hits #5 factory [000017] doing 0 damage and 1 capture damage.
     #5 factory [factry] is lightly damaged.
   ------------------------------------------------------------
@@ -146,16 +146,16 @@ Battles report:
     hit points: 100/59, attack: 1, defense: 1, lightly damaged,
     inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #4 factory [000017] doing 1 damage and 3 capture damage.
     #4 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #3 factory [000017] doing 1 damage and 3 capture damage.
     #3 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #2 factory [000017] doing 1 damage and 3 capture damage.
     #2 factory [factry] is lightly damaged.
-  infantry battalion [110] fires on factory [000017] (chance: 1/3) and
+  infantry battalion [110] fires on factory [000017] (chance: 4/3) and
   hits #1 factory [000017] doing 0 damage and 1 capture damage.
     #1 factory [factry] is lightly damaged.
   ------------------------------------------------------------
@@ -197,16 +197,16 @@ Battles report:
     hit points: 100/59, attack: 1, defense: 1, lightly damaged,
     inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #5 factory [000017] doing 1 damage and 3 capture damage.
     #5 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #4 factory [000017] doing 1 damage and 3 capture damage.
     #4 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #3 factory [000017] doing 1 damage and 3 capture damage.
     #3 factory [factry] is lightly damaged.
-  infantry battalion [110] fires on factory [000017] (chance: 1/3) and
+  infantry battalion [110] fires on factory [000017] (chance: 4/3) and
   hits #2 factory [000017] doing 0 damage and 1 capture damage.
     #2 factory [factry] is lightly damaged.
   ------------------------------------------------------------
@@ -248,16 +248,16 @@ Battles report:
     hit points: 100/59, attack: 1, defense: 1, lightly damaged,
     inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #1 factory [000017] doing 1 damage and 3 capture damage.
     #1 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #5 factory [000017] doing 1 damage and 3 capture damage.
     #5 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #4 factory [000017] doing 1 damage and 3 capture damage.
     #4 factory [factry] is lightly damaged.
-  infantry battalion [110] fires on factory [000017] (chance: 1/3) and
+  infantry battalion [110] fires on factory [000017] (chance: 4/3) and
   hits #3 factory [000017] doing 0 damage and 1 capture damage.
     #3 factory [factry] is lightly damaged.
   ------------------------------------------------------------
@@ -299,16 +299,16 @@ Battles report:
     hit points: 100/59, attack: 1, defense: 1, lightly damaged,
     inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #2 factory [000017] doing 1 damage and 3 capture damage.
     #2 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #1 factory [000017] doing 1 damage and 3 capture damage.
     #1 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #5 factory [000017] doing 1 damage and 3 capture damage.
     #5 factory [factry] is lightly damaged.
-  infantry battalion [110] fires on factory [000017] (chance: 1/3) and
+  infantry battalion [110] fires on factory [000017] (chance: 4/3) and
   hits #4 factory [000017] doing 0 damage and 1 capture damage.
     #4 factory [factry] is lightly damaged.
   ------------------------------------------------------------
@@ -350,16 +350,16 @@ Battles report:
     hit points: 100/59, attack: 1, defense: 1, lightly damaged,
     inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #3 factory [000017] doing 1 damage and 3 capture damage.
     #3 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #2 factory [000017] doing 1 damage and 3 capture damage.
     #2 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #1 factory [000017] doing 1 damage and 3 capture damage.
     #1 factory [factry] is lightly damaged.
-  infantry battalion [110] fires on factory [000017] (chance: 1/3) and
+  infantry battalion [110] fires on factory [000017] (chance: 4/3) and
   hits #5 factory [000017] doing 0 damage and 1 capture damage.
     #5 factory [factry] is lightly damaged.
   ------------------------------------------------------------
@@ -401,16 +401,16 @@ Battles report:
     hit points: 100/59, attack: 1, defense: 1, lightly damaged,
     inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #4 factory [000017] doing 1 damage and 3 capture damage.
     #4 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #3 factory [000017] doing 1 damage and 3 capture damage.
     #3 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #2 factory [000017] doing 1 damage and 3 capture damage.
     #2 factory [factry] is lightly damaged.
-  infantry battalion [110] fires on factory [000017] (chance: 1/3) and
+  infantry battalion [110] fires on factory [000017] (chance: 4/3) and
   hits #1 factory [000017] doing 0 damage and 1 capture damage.
     #1 factory [factry] is lightly damaged.
   ------------------------------------------------------------
@@ -452,16 +452,16 @@ Battles report:
     hit points: 100/59, attack: 1, defense: 1, lightly damaged,
     inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #5 factory [000017] doing 1 damage and 3 capture damage.
     #5 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #4 factory [000017] doing 1 damage and 3 capture damage.
     #4 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #3 factory [000017] doing 1 damage and 3 capture damage.
     #3 factory [factry] is lightly damaged.
-  infantry battalion [110] fires on factory [000017] (chance: 1/3) and
+  infantry battalion [110] fires on factory [000017] (chance: 4/3) and
   hits #2 factory [000017] doing 0 damage and 1 capture damage.
     #2 factory [factry] is lightly damaged.
   ------------------------------------------------------------
@@ -503,16 +503,16 @@ Battles report:
     hit points: 100/59, attack: 1, defense: 1, lightly damaged,
     inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #1 factory [000017] doing 1 damage and 3 capture damage.
     #1 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #5 factory [000017] doing 1 damage and 3 capture damage.
     #5 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #4 factory [000017] doing 1 damage and 3 capture damage.
     #4 factory [factry] is lightly damaged.
-  infantry battalion [110] fires on factory [000017] (chance: 1/3) and
+  infantry battalion [110] fires on factory [000017] (chance: 4/3) and
   hits #3 factory [000017] doing 0 damage and 1 capture damage.
     #3 factory [factry] is lightly damaged.
   ------------------------------------------------------------
@@ -554,16 +554,16 @@ Battles report:
     hit points: 100/59, attack: 1, defense: 1, lightly damaged,
     inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #2 factory [000017] doing 1 damage and 3 capture damage.
     #2 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #1 factory [000017] doing 1 damage and 3 capture damage.
     #1 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #5 factory [000017] doing 1 damage and 3 capture damage.
     #5 factory [factry] is lightly damaged.
-  infantry battalion [110] fires on factory [000017] (chance: 1/3) and
+  infantry battalion [110] fires on factory [000017] (chance: 4/3) and
   hits #4 factory [000017] doing 0 damage and 1 capture damage.
     #4 factory [factry] is lightly damaged.
   ------------------------------------------------------------
@@ -611,16 +611,16 @@ Battles report:
     hit points: 100/59, attack: 1, defense: 1, lightly damaged,
     inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #3 factory [000017] doing 1 damage and 3 capture damage.
     #3 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #2 factory [000017] doing 1 damage and 3 capture damage.
     #2 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #1 factory [000017] doing 1 damage and 3 capture damage.
     #1 factory [factry] is lightly damaged.
-  infantry battalion [110] fires on factory [000017] (chance: 1/3) and
+  infantry battalion [110] fires on factory [000017] (chance: 4/3) and
   hits #5 factory [000017] doing 0 damage and 1 capture damage.
     #5 factory [factry] is lightly damaged.
   ------------------------------------------------------------
@@ -662,16 +662,16 @@ Battles report:
     hit points: 100/59, attack: 1, defense: 1, lightly damaged,
     inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #4 factory [000017] doing 1 damage and 3 capture damage.
     #4 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #3 factory [000017] doing 1 damage and 3 capture damage.
     #3 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #2 factory [000017] doing 1 damage and 3 capture damage.
     #2 factory [factry] is lightly damaged.
-  infantry battalion [110] fires on factory [000017] (chance: 1/3) and
+  infantry battalion [110] fires on factory [000017] (chance: 4/3) and
   hits #1 factory [000017] doing 0 damage and 1 capture damage.
     #1 factory [factry] is lightly damaged.
   ------------------------------------------------------------
@@ -713,16 +713,16 @@ Battles report:
     hit points: 100/59, attack: 1, defense: 1, lightly damaged,
     inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #5 factory [000017] doing 1 damage and 3 capture damage.
     #5 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #4 factory [000017] doing 1 damage and 3 capture damage.
     #4 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #3 factory [000017] doing 1 damage and 3 capture damage.
     #3 factory [factry] is lightly damaged.
-  infantry battalion [110] fires on factory [000017] (chance: 1/3) and
+  infantry battalion [110] fires on factory [000017] (chance: 4/3) and
   hits #2 factory [000017] doing 0 damage and 1 capture damage.
     #2 factory [factry] is lightly damaged.
   ------------------------------------------------------------
@@ -764,16 +764,16 @@ Battles report:
     hit points: 100/59, attack: 1, defense: 1, lightly damaged,
     inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #1 factory [000017] doing 1 damage and 3 capture damage.
     #1 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #5 factory [000017] doing 1 damage and 3 capture damage.
     #5 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #4 factory [000017] doing 1 damage and 3 capture damage.
     #4 factory [factry] is lightly damaged.
-  infantry battalion [110] fires on factory [000017] (chance: 1/3) and
+  infantry battalion [110] fires on factory [000017] (chance: 4/3) and
   hits #3 factory [000017] doing 0 damage and 1 capture damage.
     #3 factory [factry] is lightly damaged.
   ------------------------------------------------------------
@@ -815,16 +815,16 @@ Battles report:
     hit points: 100/59, attack: 1, defense: 1, lightly damaged,
     inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #2 factory [000017] doing 1 damage and 3 capture damage.
     #2 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #1 factory [000017] doing 1 damage and 3 capture damage.
     #1 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #5 factory [000017] doing 1 damage and 3 capture damage.
     #5 factory [factry] is lightly damaged.
-  infantry battalion [110] fires on factory [000017] (chance: 1/3) and
+  infantry battalion [110] fires on factory [000017] (chance: 4/3) and
   hits #4 factory [000017] doing 0 damage and 1 capture damage.
     #4 factory [factry] is lightly damaged.
   ------------------------------------------------------------
@@ -866,16 +866,16 @@ Battles report:
     hit points: 100/59, attack: 1, defense: 1, lightly damaged,
     inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #3 factory [000017] doing 1 damage and 3 capture damage.
     #3 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #2 factory [000017] doing 1 damage and 3 capture damage.
     #2 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #1 factory [000017] doing 1 damage and 3 capture damage.
     #1 factory [factry] is lightly damaged.
-  infantry battalion [110] fires on factory [000017] (chance: 1/3) and
+  infantry battalion [110] fires on factory [000017] (chance: 4/3) and
   hits #5 factory [000017] doing 0 damage and 1 capture damage.
     #5 factory [factry] is lightly damaged.
   ------------------------------------------------------------
@@ -917,16 +917,16 @@ Battles report:
     hit points: 100/59, attack: 1, defense: 1, lightly damaged,
     inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #4 factory [000017] doing 1 damage and 3 capture damage.
     #4 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #3 factory [000017] doing 1 damage and 3 capture damage.
     #3 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #2 factory [000017] doing 1 damage and 3 capture damage.
     #2 factory [factry] is lightly damaged.
-  infantry battalion [110] fires on factory [000017] (chance: 1/3) and
+  infantry battalion [110] fires on factory [000017] (chance: 4/3) and
   hits #1 factory [000017] doing 0 damage and 1 capture damage.
     #1 factory [factry] is lightly damaged.
   ------------------------------------------------------------
@@ -968,16 +968,16 @@ Battles report:
     hit points: 100/59, attack: 1, defense: 1, lightly damaged,
     inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #5 factory [000017] doing 1 damage and 3 capture damage.
     #5 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #4 factory [000017] doing 1 damage and 3 capture damage.
     #4 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #3 factory [000017] doing 1 damage and 3 capture damage.
     #3 factory [factry] is lightly damaged.
-  infantry battalion [110] fires on factory [000017] (chance: 1/3) and
+  infantry battalion [110] fires on factory [000017] (chance: 4/3) and
   hits #2 factory [000017] doing 0 damage and 1 capture damage.
     #2 factory [factry] is lightly damaged.
   ------------------------------------------------------------
@@ -1019,16 +1019,16 @@ Battles report:
     hit points: 100/59, attack: 1, defense: 1, lightly damaged,
     inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #1 factory [000017] doing 1 damage and 3 capture damage.
     #1 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #5 factory [000017] doing 1 damage and 3 capture damage.
     #5 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #4 factory [000017] doing 1 damage and 3 capture damage.
     #4 factory [factry] is lightly damaged.
-  infantry battalion [110] fires on factory [000017] (chance: 1/3) and
+  infantry battalion [110] fires on factory [000017] (chance: 4/3) and
   hits #3 factory [000017] doing 0 damage and 1 capture damage.
     #3 factory [factry] is lightly damaged.
   ------------------------------------------------------------
@@ -1070,16 +1070,16 @@ Battles report:
     hit points: 100/59, attack: 1, defense: 1, lightly damaged,
     inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #2 factory [000017] doing 1 damage and 3 capture damage.
     #2 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #1 factory [000017] doing 1 damage and 3 capture damage.
     #1 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #5 factory [000017] doing 1 damage and 3 capture damage.
     #5 factory [factry] is lightly damaged.
-  infantry battalion [110] fires on factory [000017] (chance: 1/3) and
+  infantry battalion [110] fires on factory [000017] (chance: 4/3) and
   hits #4 factory [000017] doing 0 damage and 1 capture damage.
     #4 factory [factry] is lightly damaged.
   ------------------------------------------------------------
@@ -1127,16 +1127,16 @@ Battles report:
     hit points: 100/59, attack: 1, defense: 1, lightly damaged,
     inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #3 factory [000017] doing 1 damage and 3 capture damage.
     #3 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #2 factory [000017] doing 1 damage and 3 capture damage.
     #2 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #1 factory [000017] doing 1 damage and 3 capture damage.
     #1 factory [factry] is lightly damaged.
-  infantry battalion [110] fires on factory [000017] (chance: 1/3) and
+  infantry battalion [110] fires on factory [000017] (chance: 4/3) and
   hits #5 factory [000017] doing 0 damage and 1 capture damage.
     #5 factory [factry] is lightly damaged.
   ------------------------------------------------------------
@@ -1178,16 +1178,16 @@ Battles report:
     hit points: 100/59, attack: 1, defense: 1, lightly damaged,
     inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #4 factory [000017] doing 1 damage and 3 capture damage.
     #4 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #3 factory [000017] doing 1 damage and 3 capture damage.
     #3 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #2 factory [000017] doing 1 damage and 3 capture damage.
     #2 factory [factry] is lightly damaged.
-  infantry battalion [110] fires on factory [000017] (chance: 1/3) and
+  infantry battalion [110] fires on factory [000017] (chance: 4/3) and
   hits #1 factory [000017] doing 0 damage and 1 capture damage.
     #1 factory [factry] is lightly damaged.
   ------------------------------------------------------------
@@ -1229,16 +1229,16 @@ Battles report:
     hit points: 100/59, attack: 1, defense: 1, lightly damaged,
     inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #5 factory [000017] doing 1 damage and 3 capture damage.
     #5 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #4 factory [000017] doing 1 damage and 3 capture damage.
     #4 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #3 factory [000017] doing 1 damage and 3 capture damage.
     #3 factory [factry] is lightly damaged.
-  infantry battalion [110] fires on factory [000017] (chance: 1/3) and
+  infantry battalion [110] fires on factory [000017] (chance: 4/3) and
   hits #2 factory [000017] doing 0 damage and 1 capture damage.
     #2 factory [factry] is lightly damaged.
   ------------------------------------------------------------
@@ -1280,16 +1280,16 @@ Battles report:
     hit points: 100/59, attack: 1, defense: 1, lightly damaged,
     inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #1 factory [000017] doing 1 damage and 3 capture damage.
     #1 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #5 factory [000017] doing 1 damage and 3 capture damage.
     #5 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #4 factory [000017] doing 1 damage and 3 capture damage.
     #4 factory [factry] is lightly damaged.
-  infantry battalion [110] fires on factory [000017] (chance: 1/3) and
+  infantry battalion [110] fires on factory [000017] (chance: 4/3) and
   hits #3 factory [000017] doing 0 damage and 1 capture damage.
     #3 factory [factry] is lightly damaged.
   ------------------------------------------------------------
@@ -1331,16 +1331,16 @@ Battles report:
     hit points: 100/59, attack: 1, defense: 1, lightly damaged,
     inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #2 factory [000017] doing 1 damage and 3 capture damage.
     #2 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #1 factory [000017] doing 1 damage and 3 capture damage.
     #1 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #5 factory [000017] doing 1 damage and 3 capture damage.
     #5 factory [factry] is lightly damaged.
-  infantry battalion [110] fires on factory [000017] (chance: 1/3) and
+  infantry battalion [110] fires on factory [000017] (chance: 4/3) and
   hits #4 factory [000017] doing 0 damage and 1 capture damage.
     #4 factory [factry] is lightly damaged.
   ------------------------------------------------------------
@@ -1382,16 +1382,16 @@ Battles report:
     hit points: 100/59, attack: 1, defense: 1, lightly damaged,
     inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #3 factory [000017] doing 1 damage and 3 capture damage.
     #3 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #2 factory [000017] doing 1 damage and 3 capture damage.
     #2 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #1 factory [000017] doing 1 damage and 3 capture damage.
     #1 factory [factry] is lightly damaged.
-  infantry battalion [110] fires on factory [000017] (chance: 1/3) and
+  infantry battalion [110] fires on factory [000017] (chance: 4/3) and
   hits #5 factory [000017] doing 0 damage and 1 capture damage.
     #5 factory [factry] is lightly damaged.
   ------------------------------------------------------------
@@ -1433,16 +1433,16 @@ Battles report:
     hit points: 100/59, attack: 1, defense: 1, lightly damaged,
     inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #4 factory [000017] doing 1 damage and 3 capture damage.
     #4 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #3 factory [000017] doing 1 damage and 3 capture damage.
     #3 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #2 factory [000017] doing 1 damage and 3 capture damage.
     #2 factory [factry] is lightly damaged.
-  infantry battalion [110] fires on factory [000017] (chance: 1/3) and
+  infantry battalion [110] fires on factory [000017] (chance: 4/3) and
   hits #1 factory [000017] doing 0 damage and 1 capture damage.
     #1 factory [factry] is lightly damaged.
   ------------------------------------------------------------
@@ -1484,16 +1484,16 @@ Battles report:
     hit points: 100/59, attack: 1, defense: 1, lightly damaged,
     inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #5 factory [000017] doing 1 damage and 3 capture damage.
     #5 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #4 factory [000017] doing 1 damage and 3 capture damage.
     #4 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #3 factory [000017] doing 1 damage and 3 capture damage.
     #3 factory [factry] is lightly damaged.
-  infantry battalion [110] fires on factory [000017] (chance: 1/3) and
+  infantry battalion [110] fires on factory [000017] (chance: 4/3) and
   hits #2 factory [000017] doing 0 damage and 1 capture damage.
     #2 factory [factry] is lightly damaged.
   ------------------------------------------------------------
@@ -1535,16 +1535,16 @@ Battles report:
     hit points: 100/59, attack: 1, defense: 1, lightly damaged,
     inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #1 factory [000017] doing 1 damage and 3 capture damage.
     #1 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #5 factory [000017] doing 1 damage and 3 capture damage.
     #5 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #4 factory [000017] doing 1 damage and 3 capture damage.
     #4 factory [factry] is lightly damaged.
-  infantry battalion [110] fires on factory [000017] (chance: 1/3) and
+  infantry battalion [110] fires on factory [000017] (chance: 4/3) and
   hits #3 factory [000017] doing 0 damage and 1 capture damage.
     #3 factory [factry] is lightly damaged.
   ------------------------------------------------------------
@@ -1586,16 +1586,16 @@ Battles report:
     hit points: 100/59, attack: 1, defense: 1, lightly damaged,
     inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #2 factory [000017] doing 1 damage and 3 capture damage.
     #2 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #1 factory [000017] doing 1 damage and 3 capture damage.
     #1 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #5 factory [000017] doing 1 damage and 3 capture damage.
     #5 factory [factry] is lightly damaged.
-  infantry battalion [110] fires on factory [000017] (chance: 1/3) and
+  infantry battalion [110] fires on factory [000017] (chance: 4/3) and
   hits #4 factory [000017] doing 0 damage and 1 capture damage.
     #4 factory [factry] is lightly damaged.
   ------------------------------------------------------------
@@ -1643,16 +1643,16 @@ Battles report:
     hit points: 100/59, attack: 1, defense: 1, lightly damaged,
     inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #3 factory [000017] doing 1 damage and 3 capture damage.
     #3 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #2 factory [000017] doing 1 damage and 3 capture damage.
     #2 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #1 factory [000017] doing 1 damage and 3 capture damage.
     #1 factory [factry] is lightly damaged.
-  infantry battalion [110] fires on factory [000017] (chance: 1/3) and
+  infantry battalion [110] fires on factory [000017] (chance: 4/3) and
   hits #5 factory [000017] doing 0 damage and 1 capture damage.
     #5 factory [factry] is lightly damaged.
   ------------------------------------------------------------
@@ -1694,18 +1694,18 @@ Battles report:
     hit points: 100/59, attack: 1, defense: 1, lightly damaged,
     inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #4 factory [000017] doing 1 damage and 3 capture damage.
     #4 factory [factry] is heavily damaged.
     #4 factory [factry] is disabled.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #3 factory [000017] doing 1 damage and 3 capture damage.
     #3 factory [factry] is heavily damaged.
     #3 factory [factry] is disabled.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #2 factory [000017] doing 1 damage and 3 capture damage.
     #2 factory [factry] is lightly damaged.
-  infantry battalion [110] fires on factory [000017] (chance: 1/3) and
+  infantry battalion [110] fires on factory [000017] (chance: 4/3) and
   hits #1 factory [000017] doing 0 damage and 1 capture damage.
     #1 factory [factry] is lightly damaged.
   ------------------------------------------------------------
@@ -1748,19 +1748,19 @@ Battles report:
     hit points: 100/59, attack: 1, defense: 1, lightly damaged,
     inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #5 factory [000017] doing 1 damage and 3 capture damage.
     #5 factory [factry] is heavily damaged.
     #5 factory [factry] is disabled.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #4 factory [000017] doing 1 damage and 3 capture damage.
     #4 factory [factry] is heavily damaged.
     #4 factory [factry] is disabled.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #3 factory [000017] doing 1 damage and 3 capture damage.
     #3 factory [factry] is heavily damaged.
     #3 factory [factry] is disabled.
-  infantry battalion [110] fires on factory [000017] (chance: 1/3) and
+  infantry battalion [110] fires on factory [000017] (chance: 4/3) and
   hits #2 factory [000017] doing 0 damage and 1 capture damage.
     #2 factory [factry] is lightly damaged.
   ------------------------------------------------------------
@@ -1804,19 +1804,19 @@ Battles report:
     hit points: 100/59, attack: 1, defense: 1, lightly damaged,
     inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #1 factory [000017] doing 1 damage and 3 capture damage.
     #1 factory [factry] is heavily damaged.
     #1 factory [factry] is disabled.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #5 factory [000017] doing 1 damage and 3 capture damage.
     #5 factory [factry] is heavily damaged.
     #5 factory [factry] is disabled.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #4 factory [000017] doing 1 damage and 3 capture damage.
     #4 factory [factry] is heavily damaged.
     #4 factory [factry] is disabled.
-  infantry battalion [110] fires on factory [000017] (chance: 1/3) and
+  infantry battalion [110] fires on factory [000017] (chance: 4/3) and
   hits #3 factory [000017] doing 0 damage and 1 capture damage.
     #3 factory [factry] is heavily damaged.
     #3 factory [factry] is disabled.
@@ -1862,18 +1862,18 @@ Battles report:
     hit points: 100/59, attack: 1, defense: 1, lightly damaged,
     inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #2 factory [000017] doing 1 damage and 3 capture damage.
     #2 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #1 factory [000017] doing 1 damage and 3 capture damage.
     #1 factory [factry] is heavily damaged.
     #1 factory [factry] is disabled.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #5 factory [000017] doing 1 damage and 3 capture damage.
     #5 factory [factry] is heavily damaged.
     #5 factory [factry] is disabled.
-  infantry battalion [110] fires on factory [000017] (chance: 1/3) and
+  infantry battalion [110] fires on factory [000017] (chance: 4/3) and
   hits #4 factory [000017] doing 0 damage and 1 capture damage.
     #4 factory [factry] is heavily damaged.
     #4 factory [factry] is disabled.
@@ -1919,18 +1919,18 @@ Battles report:
     hit points: 100/59, attack: 1, defense: 1, lightly damaged,
     inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #3 factory [000017] doing 1 damage and 3 capture damage.
     #3 factory [factry] is heavily damaged.
     #3 factory [factry] is disabled.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #2 factory [000017] doing 1 damage and 3 capture damage.
     #2 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #1 factory [000017] doing 1 damage and 3 capture damage.
     #1 factory [factry] is heavily damaged.
     #1 factory [factry] is disabled.
-  infantry battalion [110] fires on factory [000017] (chance: 1/3) and
+  infantry battalion [110] fires on factory [000017] (chance: 4/3) and
   hits #5 factory [000017] doing 0 damage and 1 capture damage.
     #5 factory [factry] is heavily damaged.
     #5 factory [factry] is disabled.
@@ -1976,18 +1976,18 @@ Battles report:
     hit points: 100/59, attack: 1, defense: 1, lightly damaged,
     inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #4 factory [000017] doing 1 damage and 3 capture damage.
     #4 factory [factry] is heavily damaged.
     #4 factory [factry] is disabled.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #3 factory [000017] doing 1 damage and 3 capture damage.
     #3 factory [factry] is heavily damaged.
     #3 factory [factry] is disabled.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #2 factory [000017] doing 1 damage and 3 capture damage.
     #2 factory [factry] is lightly damaged.
-  infantry battalion [110] fires on factory [000017] (chance: 1/3) and
+  infantry battalion [110] fires on factory [000017] (chance: 4/3) and
   hits #1 factory [000017] doing 0 damage and 1 capture damage.
     #1 factory [factry] is heavily damaged.
     #1 factory [factry] is disabled.
@@ -2033,19 +2033,19 @@ Battles report:
     hit points: 100/59, attack: 1, defense: 1, lightly damaged,
     inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #5 factory [000017] doing 1 damage and 3 capture damage.
     #5 factory [factry] is heavily damaged.
     #5 factory [factry] is disabled.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #4 factory [000017] doing 1 damage and 3 capture damage.
     #4 factory [factry] is heavily damaged.
     #4 factory [factry] is disabled.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #3 factory [000017] doing 1 damage and 3 capture damage.
     #3 factory [factry] is heavily damaged.
     #3 factory [factry] is disabled.
-  infantry battalion [110] fires on factory [000017] (chance: 1/3) and
+  infantry battalion [110] fires on factory [000017] (chance: 4/3) and
   hits #2 factory [000017] doing 0 damage and 1 capture damage.
     #2 factory [factry] is lightly damaged.
   ------------------------------------------------------------
@@ -2090,19 +2090,19 @@ Battles report:
     hit points: 100/59, attack: 1, defense: 1, lightly damaged,
     inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #1 factory [000017] doing 1 damage and 3 capture damage.
     #1 factory [factry] is heavily damaged.
     #1 factory [factry] is disabled.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #5 factory [000017] doing 1 damage and 3 capture damage.
     #5 factory [factry] is heavily damaged.
     #5 factory [factry] is disabled.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #4 factory [000017] doing 1 damage and 3 capture damage.
     #4 factory [factry] is heavily damaged.
     #4 factory [factry] is disabled.
-  infantry battalion [110] fires on factory [000017] (chance: 1/3) and
+  infantry battalion [110] fires on factory [000017] (chance: 4/3) and
   hits #3 factory [000017] doing 0 damage and 1 capture damage.
     #3 factory [factry] is heavily damaged.
     #3 factory [factry] is disabled.
@@ -2148,18 +2148,18 @@ Battles report:
     hit points: 100/59, attack: 1, defense: 1, lightly damaged,
     inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #2 factory [000017] doing 1 damage and 3 capture damage.
     #2 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #1 factory [000017] doing 1 damage and 3 capture damage.
     #1 factory [factry] is heavily damaged.
     #1 factory [factry] is disabled.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #5 factory [000017] doing 1 damage and 3 capture damage.
     #5 factory [factry] is heavily damaged.
     #5 factory [factry] is disabled.
-  infantry battalion [110] fires on factory [000017] (chance: 1/3) and
+  infantry battalion [110] fires on factory [000017] (chance: 4/3) and
   hits #4 factory [000017] doing 0 damage and 1 capture damage.
     #4 factory [factry] is heavily damaged.
     #4 factory [factry] is disabled.
@@ -2208,18 +2208,18 @@ Battles report:
     hit points: 100/59, attack: 1, defense: 1, lightly damaged,
     inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #3 factory [000017] doing 1 damage and 3 capture damage.
     #3 factory [factry] is heavily damaged.
     #3 factory [factry] is disabled.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #2 factory [000017] doing 1 damage and 3 capture damage.
     #2 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #1 factory [000017] doing 1 damage and 3 capture damage.
     #1 factory [factry] is heavily damaged.
     #1 factory [factry] is disabled.
-  infantry battalion [110] fires on factory [000017] (chance: 1/3) and
+  infantry battalion [110] fires on factory [000017] (chance: 4/3) and
   hits #5 factory [000017] doing 0 damage and 1 capture damage.
     #5 factory [factry] is heavily damaged.
     #5 factory [factry] is disabled.
@@ -2264,15 +2264,15 @@ Battles report:
     hit points: 100/59, attack: 1, defense: 1, lightly damaged,
     inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #4 factory [000017] doing 1 damage and 3 capture damage.
     #4 factory [factry] is heavily damaged.
     #4 factory [factry] is disabled.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #3 factory [000017] doing 1 damage and 3 capture damage.
     #3 factory [factry] is heavily damaged.
     #3 factory [factry] is disabled.
-  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #2 factory [000017] doing 1 damage and 3 capture damage.
     #2 factory [factry] is heavily damaged.
     #2 factory [factry] is disabled.
@@ -3342,7 +3342,7 @@ Battles report:
   drone bay [drnbay].
   ------------------------------------------------------------
   space shuttle [117] fires orbital rocket launcher [orbrkt] on
-  spaceship hull [101] (chance: 1/13) and hits spaceship hull [101]
+  spaceship hull [101] (chance: 3/13) and hits spaceship hull [101]
   doing 3 damage.
   ------------------------------------------------------------
   Round 2:
@@ -3395,13 +3395,12 @@ Battles report:
       hit points: 40/40, attack: 3, defense: 1.
   ------------------------------------------------------------
   space shuttle [117] fires orbital rocket launcher [orbrkt] on
-  spaceship hull [101] (chance: 1/13) and hits fission reactor [113]
-  doing 3 damage.
+  spaceship hull [101] (chance: 3/13) and hits doing 3 damage.
   4 alien fighter drones [450] fire on space shuttle [117].
-  (chance: 8/17) and hits space shuttle [117] doing 2 damage.
-  (chance: 8/17) and hits orbital rocket launcher [350] doing 2 damage.
-  (chance: 8/17) and hits orbital rocket launcher [350] doing 2 damage.
-  (chance: 8/17) and hits orbital rocket launcher [350] doing 2 damage.
+  (chance: 16/17) and hits space shuttle [117] doing 2 damage.
+  (chance: 16/17) and hits doing 2 damage.
+  (chance: 16/17) and hits doing 2 damage.
+  (chance: 16/17) and hits doing 2 damage.
   ------------------------------------------------------------
   Round 3:
   ------------------------------------------------------------
@@ -3453,13 +3452,12 @@ Battles report:
       hit points: 40/34, attack: 3, defense: 1.
   ------------------------------------------------------------
   space shuttle [117] fires orbital rocket launcher [orbrkt] on
-  spaceship hull [101] (chance: 1/13) and hits fission reactor [113]
-  doing 3 damage.
+  spaceship hull [101] (chance: 3/13) and hits doing 3 damage.
   4 alien fighter drones [450] fire on space shuttle [117].
-  (chance: 8/17) and hits space shuttle [117] doing 2 damage.
-  (chance: 8/17) and hits orbital rocket launcher [350] doing 2 damage.
-  (chance: 8/17) and hits orbital rocket launcher [350] doing 2 damage.
-  (chance: 8/17) and hits orbital rocket launcher [350] doing 2 damage.
+  (chance: 16/17) and hits space shuttle [117] doing 2 damage.
+  (chance: 16/17) and hits doing 2 damage.
+  (chance: 16/17) and hits doing 2 damage.
+  (chance: 16/17) and hits doing 2 damage.
     orbital rocket launcher [orbrkt] is lightly damaged.
   ------------------------------------------------------------
   Round 4:
@@ -3512,16 +3510,15 @@ Battles report:
       hit points: 40/28, attack: 3, defense: 1, lightly damaged.
   ------------------------------------------------------------
   space shuttle [117] fires orbital rocket launcher [orbrkt] on
-  spaceship hull [101] (chance: 1/13) and hits fission reactor [113]
-  doing 3 damage.
+  spaceship hull [101] (chance: 3/13) and hits doing 3 damage.
   4 alien fighter drones [450] fire on space shuttle [117].
-  (chance: 8/17) and hits space shuttle [117] doing 2 damage.
+  (chance: 16/17) and hits space shuttle [117] doing 2 damage.
     space shuttle [shuttl] is lightly damaged.
-  (chance: 8/17) and hits orbital rocket launcher [350] doing 2 damage.
+  (chance: 16/17) and hits doing 2 damage.
     orbital rocket launcher [orbrkt] is lightly damaged.
-  (chance: 8/17) and hits orbital rocket launcher [350] doing 2 damage.
+  (chance: 16/17) and hits doing 2 damage.
     orbital rocket launcher [orbrkt] is lightly damaged.
-  (chance: 8/17) and hits orbital rocket launcher [350] doing 2 damage.
+  (chance: 16/17) and hits doing 2 damage.
     orbital rocket launcher [orbrkt] is lightly damaged.
   ------------------------------------------------------------
   Round 5:
@@ -3574,18 +3571,17 @@ Battles report:
       hit points: 40/22, attack: 3, defense: 1, lightly damaged.
   ------------------------------------------------------------
   space shuttle [117] fires orbital rocket launcher [orbrkt] on
-  spaceship hull [101] (chance: 1/13) and hits fission reactor [113]
-  doing 3 damage.
+  spaceship hull [101] (chance: 3/13) and hits doing 3 damage.
     fission reactor [fisrec] is lightly damaged.
   4 alien fighter drones [450] fire on space shuttle [117].
-  (chance: 8/17) and hits space shuttle [117] doing 2 damage.
+  (chance: 16/17) and hits space shuttle [117] doing 2 damage.
     space shuttle [shuttl] is lightly damaged.
-  (chance: 8/17) and hits orbital rocket launcher [350] doing 2 damage.
+  (chance: 16/17) and hits doing 2 damage.
     orbital rocket launcher [orbrkt] is lightly damaged.
-  (chance: 8/17) and hits orbital rocket launcher [350] doing 2 damage.
+  (chance: 16/17) and hits doing 2 damage.
     orbital rocket launcher [orbrkt] is heavily damaged.
     orbital rocket launcher [orbrkt] is disabled.
-  (chance: 8/16) and hits orbital rocket launcher [350] doing 2 damage.
+  (chance: 16/16) and hits doing 2 damage.
     orbital rocket launcher [orbrkt] is heavily damaged.
     orbital rocket launcher [orbrkt] is disabled.
   ------------------------------------------------------------
@@ -3639,10 +3635,10 @@ Battles report:
       hit points: 40/16, heavily damaged, disabled.
   ------------------------------------------------------------
   4 alien fighter drones [450] fire on space shuttle [117].
-  (chance: 8/16) and hits orbital rocket launcher [350] doing 2 damage.
+  (chance: 16/16) and hits doing 2 damage.
     orbital rocket launcher [orbrkt] is heavily damaged.
     orbital rocket launcher [orbrkt] is disabled.
-  (chance: 8/16) and hits space shuttle [117] doing 2 damage.
+  (chance: 16/16) and hits space shuttle [117] doing 2 damage.
     space shuttle [shuttl] is heavily damaged.
     space shuttle [shuttl] is disabled.
   ------------------------------------------------------------

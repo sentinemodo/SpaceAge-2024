@@ -293,26 +293,30 @@ namespace UnitTests
 		[Test]
 		public void Execute_DoesNotExceedTenRounds()
 		{
-			ModuleStack frigate = this.game.ModuleStacks["100011"];
-			ModuleStack station = this.game.ModuleStacks["100021"];
-			frigate.ApplyTactic("capture");
+			Region region = new Region(Region.All["R00002"].RegionHolder, "tenround");
+			Faction attackerOwner = this.game.Factions["2"];
+			Faction defenderOwner = this.game.Factions["1"];
+			ModuleStack attacker = new ModuleStack(region, attackerOwner, ModuleType.All["tanks"], "tenatk");
+			attacker.AddModule();
+			attacker.ItemStacks.Add(new ItemStack(ItemType.All["terran"], 16));
+			ModuleStack defender = new ModuleStack(region, defenderOwner, ModuleType.All["tanks"], "tendef");
+			defender.AddModule();
+			defender.ItemStacks.Add(new ItemStack(ItemType.All["terran"], 16));
 
 			Sequence.Rolls.Clear();
 			Sequence.Ints.Clear();
-			for (int i = 0; i < 30; i++)
+			for (int i = 0; i < 200; i++)
 			{
-				Sequence.Ints.Push(250);
-				Sequence.Ints.Push(1);
+				Sequence.Ints.Push(9);
 			}
-			Sequence.Ints.Push(13);
 
-			Battle battle = new Battle(frigate, station);
+			Battle battle = new Battle(attacker, defender);
 			battle.Execute(this.game.Week);
 
 			Assert.That(battle.Round, Is.LessThanOrEqualTo(Battle.MaxRounds));
 			Assert.That(battle.Round, Is.EqualTo(Battle.MaxRounds));
 
-			string report = string.Join("\n", this.game.Battles.Report(frigate.Owner).ToArray());
+			string report = string.Join("\n", battle.Report(attackerOwner).ToArray());
 			Assert.That(report, Does.Not.Contain("Round 11"));
 			Assert.That(report, Does.Contain("Round 10:"));
 		}
@@ -695,7 +699,7 @@ namespace UnitTests
 
 			string report = string.Join("\n", battle.Report(attackerOwner).ToArray());
 			Assert.That(report, Does.Match(@"chance: \d+/9\)"));
-			Assert.That(report, Does.Contain("(chance: 3/9)"));
+			Assert.That(report, Does.Contain("(chance: 6/9)"));
 		}
 
 		private void disableByHeavyDamage(ModuleStack stack)

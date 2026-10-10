@@ -155,8 +155,8 @@
 						</modulestack>
 						<modulestack name="000013" type="cargob" quantity="5" faction="2">
 							<module damage="28" />
-							<module damage="32" />
 							<module damage="28" />
+							<module damage="32" />
 							<module damage="28" />
 							<module damage="28" />
 							<itemstack type="food" quantity="915" />
@@ -205,9 +205,9 @@
 							<event week="13" description="paid 10 cash [cash] upkeep." />
 						</modulestack>
 						<modulestack name="000014" type="farms" quantity="3" faction="2">
-							<module damage="40" />
+							<module damage="55" />
 							<module damage="28" />
-							<module damage="40" />
+							<module damage="52" />
 							<itemstack type="terran" quantity="15" />
 							<upkeep type="cash" quantity="15" />
 							<event week="1" description="given 15 units of food [food] to small cargo bay [000013]." />
@@ -244,9 +244,9 @@
 							<event week="13" description="paid 15 cash [cash] upkeep." />
 						</modulestack>
 						<modulestack name="000015" type="cplant" quantity="3" faction="2">
-							<module damage="36" />
-							<module damage="36" />
-							<module damage="12" />
+							<module damage="20" />
+							<module damage="20" />
+							<module damage="8" />
 							<itemstack type="terran" quantity="6" />
 							<upkeep type="cash" quantity="156" />
 							<event week="1" description="got 15 units of carbon [carbon] from small cargo bay [000013]." />
@@ -328,11 +328,11 @@
 							<event week="13" description="paid 346 cash [cash] upkeep." />
 						</modulestack>
 						<modulestack name="111" type="gunplc" quantity="5" faction="2">
-							<module damage="76" />
-							<module damage="68" />
 							<module damage="72" />
 							<module damage="72" />
 							<module damage="68" />
+							<module damage="68" />
+							<module damage="72" />
 							<itemstack type="terran" quantity="4" />
 							<upkeep type="cash" quantity="4" />
 							<event week="1" description="formed by factory [000017] with gun placement [gunplc]." />
@@ -351,7 +351,7 @@
 						</modulestack>
 					</modulestack>
 					<modulestack name="108" name-en="peaceful scout" type="tanks" quantity="1" faction="3">
-						<module damage="46" />
+						<module damage="44" />
 						<itemstack type="terran" quantity="16" />
 						<itemstack type="oil" quantity="12" />
 						<upkeep type="cash" quantity="40" />

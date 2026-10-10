@@ -5,11 +5,10 @@ Content-Disposition: attachment
 SpaceAge report for Caste Prime [2].
 Turn 3, Year 2156, July 1.
 
-SpaceAge Engine Version: 0.8.002.
+SpaceAge Engine Version: 0.8.004.
 
 
 Events this quarter:
-  week 1: Bank account credited: payment from NPC [1].
   week 9: battle at Northern Hemisphere [R00002] (0,0), attackers: Gelvaren [3], defenders: Caste
   Prime [2].
   week 10: battle at Northern Hemisphere [R00002] (0,0), attackers: Gelvaren [3], defenders: Caste
@@ -20,7 +19,6 @@ Events this quarter:
   Prime [2].
   week 13: battle at Northern Hemisphere [R00002] (0,0), attackers: Gelvaren [3], defenders: Caste
   Prime [2].
-  week 13: Bank account credited: Deposit interests accounted to 108. Current balance: 8748.
 
 Press releases:
   Earth [P00001] at AU 1, ocean planet [ocean]: NPC [1] — Gelvaren closes CT0121.
@@ -30,6 +28,9 @@ Bank report:
   Bank account balance: 8748.
   Credit line maximum: 10000.
   Credit rate: 20%, Deposit rate: 4.5%.
+  Account activity:
+    week 1: Bank account credited: 0 cash (payment from NPC [1].). Balance: 10000.
+    week 13: Bank account credited: 108 cash (Deposit interests accounted.). Balance: 8748.
 
 Battles report:
 
@@ -43,7 +44,6 @@ Battles report:
   - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
     hit points: 100/100, attack: 4, defense: 4.
-      #1 hit points: 100/100.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 12, defense: 12.
@@ -55,7 +55,6 @@ Battles report:
     size: 1000, mass: 1240 (1000), energy: 10, crew: 20/60.
     hit points: 100/100, defense: 5.
     items: 60 terrans [terran], 2200 cash [cash].
-      #1 hit points: 100/100.
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
     size: 10000, mass: 6830 (1000).
     hit points: 275/275.
@@ -86,7 +85,6 @@ Battles report:
     size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
     hit points: 100/100.
     items: 6 terrans [terran], unit of carbon [carbon].
-      #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
     size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
@@ -106,26 +104,24 @@ Battles report:
       #4 hit points: 100/100, effects: inactive.
       #5 hit points: 100/100, effects: inactive.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] (chance: 3/9) and hits #1 gun
-  placement [111] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 9/17)
-  and misses.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 9/17)
-  and hits #1 Caste Prime Headquarters [000012] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 9/17)
-  and hits #1 Caste Prime Headquarters [000012] doing 4 damage.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 2/9) and hits #1
-  peaceful scout [108] doing 1 damage.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 2/9) and hits #1
-  peaceful scout [108] doing 1 damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/9) and hits #1 gun placement [111]
+  doing 4 damage.
+  Surrender or die! [109] fire on Caste Prime Headquarters [000012] (chance: 18/17) and hits doing 4
+  damage.
+  Surrender or die! [109] fire on Caste Prime Headquarters [000012] (chance: 18/17) and hits doing 4
+  damage.
+  Surrender or die! [109] fire on Caste Prime Headquarters [000012] (chance: 18/17) and hits doing 4
+  damage.
+  5 gun placements [111] fire on peaceful scout [108].
+  (chance: 5/9) and misses.
+  (chance: 5/9) and hits doing 1 damage.
   ------------------------------------------------------------
   Round 2:
   ------------------------------------------------------------
   Attackers:
   - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
-    hit points: 100/98, attack: 4, defense: 4.
-      #1 hit points: 100/98.
+    hit points: 100/99, attack: 4, defense: 4.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 12, defense: 12.
@@ -135,9 +131,8 @@ Battles report:
   Defenders:
   + Caste Prime Headquarters [000012], corporate headquarters [corphq], immobile.
     size: 1000, mass: 1240 (1000), energy: 10, crew: 20/60.
-    hit points: 100/92, defense: 5.
+    hit points: 100/88, defense: 5.
     items: 60 terrans [terran], 2200 cash [cash].
-      #1 hit points: 100/92.
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
     size: 10000, mass: 6830 (1000).
     hit points: 275/275.
@@ -168,7 +163,6 @@ Battles report:
     size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
     hit points: 100/100.
     items: 6 terrans [terran], unit of carbon [carbon].
-      #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
     size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
@@ -188,26 +182,24 @@ Battles report:
       #4 hit points: 100/100, effects: inactive.
       #5 hit points: 100/100, effects: inactive.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] (chance: 3/9) and hits #4 gun
-  placement [111] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 9/17)
-  and hits #1 Caste Prime Headquarters [000012] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 9/17)
-  and hits #1 Caste Prime Headquarters [000012] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 9/17)
-  and hits #1 Caste Prime Headquarters [000012] doing 4 damage.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 2/9) and hits #1
-  peaceful scout [108] doing 1 damage.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 2/9) and hits #1
-  peaceful scout [108] doing 1 damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/9) and hits #4 gun placement [111]
+  doing 4 damage.
+  Surrender or die! [109] fire on Caste Prime Headquarters [000012] (chance: 18/17) and hits doing 4
+  damage.
+  Surrender or die! [109] fire on Caste Prime Headquarters [000012] (chance: 18/17) and hits doing 4
+  damage.
+  Surrender or die! [109] fire on Caste Prime Headquarters [000012] (chance: 18/17) and hits doing 4
+  damage.
+  5 gun placements [111] fire on peaceful scout [108].
+  (chance: 5/9) and hits doing 1 damage.
+  (chance: 5/9) and hits doing 1 damage.
   ------------------------------------------------------------
   Round 3:
   ------------------------------------------------------------
   Attackers:
   - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
-    hit points: 100/96, attack: 4, defense: 4.
-      #1 hit points: 100/96.
+    hit points: 100/97, attack: 4, defense: 4.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 12, defense: 12.
@@ -217,9 +209,8 @@ Battles report:
   Defenders:
   + Caste Prime Headquarters [000012], corporate headquarters [corphq], immobile.
     size: 1000, mass: 1240 (1000), energy: 10, crew: 20/60.
-    hit points: 100/80, defense: 5.
+    hit points: 100/76, defense: 5.
     items: 60 terrans [terran], 2200 cash [cash].
-      #1 hit points: 100/80.
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
     size: 10000, mass: 6830 (1000).
     hit points: 275/275.
@@ -250,7 +241,6 @@ Battles report:
     size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
     hit points: 100/100.
     items: 6 terrans [terran], unit of carbon [carbon].
-      #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
     size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
@@ -270,28 +260,27 @@ Battles report:
       #4 hit points: 100/96, effects: inactive.
       #5 hit points: 100/100, effects: inactive.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] (chance: 3/9) and hits #3 gun
-  placement [111] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 9/17)
-  and hits #1 Caste Prime Headquarters [000012] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 9/17)
-  and hits #1 Caste Prime Headquarters [000012] doing 4 damage.
-    #1 corporate headquarters [corphq] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 9/17)
-  and hits #1 Caste Prime Headquarters [000012] doing 4 damage.
-    #1 corporate headquarters [corphq] is lightly damaged.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 2/9) and hits #1
-  peaceful scout [108] doing 1 damage.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 2/9) and hits #1
-  peaceful scout [108] doing 1 damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/9) and hits #3 gun placement [111]
+  doing 4 damage.
+  Surrender or die! [109] fire on Caste Prime Headquarters [000012] (chance: 18/17) and hits doing 4
+  damage.
+    corporate headquarters [corphq] is lightly damaged.
+  Surrender or die! [109] fire on Caste Prime Headquarters [000012] (chance: 18/17) and hits doing 4
+  damage.
+    corporate headquarters [corphq] is lightly damaged.
+  Surrender or die! [109] fire on Caste Prime Headquarters [000012] (chance: 18/17) and hits doing 4
+  damage.
+    corporate headquarters [corphq] is lightly damaged.
+  5 gun placements [111] fire on peaceful scout [108].
+  (chance: 5/9) and hits doing 1 damage.
+  (chance: 5/9) and hits doing 1 damage.
   ------------------------------------------------------------
   Round 4:
   ------------------------------------------------------------
   Attackers:
   - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
-    hit points: 100/94, attack: 4, defense: 4.
-      #1 hit points: 100/94.
+    hit points: 100/95, attack: 4, defense: 4.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 12, defense: 12.
@@ -301,9 +290,8 @@ Battles report:
   Defenders:
   + Caste Prime Headquarters [000012], corporate headquarters [corphq], immobile.
     size: 1000, mass: 1240 (1000), energy: 10, crew: 20/60.
-    hit points: 100/68, defense: 5.
+    hit points: 100/64, defense: 5, lightly damaged.
     items: 60 terrans [terran], 2200 cash [cash].
-      #1 hit points: 100/68, lightly damaged.
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
     size: 10000, mass: 6830 (1000).
     hit points: 275/275.
@@ -334,7 +322,6 @@ Battles report:
     size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
     hit points: 100/100.
     items: 6 terrans [terran], unit of carbon [carbon].
-      #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
     size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
@@ -354,29 +341,27 @@ Battles report:
       #4 hit points: 100/96, effects: inactive.
       #5 hit points: 100/100, effects: inactive.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] (chance: 3/9) and hits #2 gun
-  placement [111] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 9/17)
-  and hits #1 Caste Prime Headquarters [000012] doing 4 damage.
-    #1 corporate headquarters [corphq] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 9/17)
-  and hits #1 Caste Prime Headquarters [000012] doing 4 damage.
-    #1 corporate headquarters [corphq] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 9/17)
-  and hits #1 Caste Prime Headquarters [000012] doing 4 damage.
-    #1 corporate headquarters [corphq] is lightly damaged.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 2/9) and hits #1
-  peaceful scout [108] doing 1 damage.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 2/9) and hits #1
-  peaceful scout [108] doing 1 damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/9) and hits #2 gun placement [111]
+  doing 4 damage.
+  Surrender or die! [109] fire on Caste Prime Headquarters [000012] (chance: 18/17) and hits doing 4
+  damage.
+    corporate headquarters [corphq] is lightly damaged.
+  Surrender or die! [109] fire on Caste Prime Headquarters [000012] (chance: 18/17) and hits doing 4
+  damage.
+    corporate headquarters [corphq] is lightly damaged.
+  Surrender or die! [109] fire on Caste Prime Headquarters [000012] (chance: 18/17) and hits doing 4
+  damage.
+    corporate headquarters [corphq] is lightly damaged.
+  5 gun placements [111] fire on peaceful scout [108].
+  (chance: 5/9) and hits doing 1 damage.
+  (chance: 5/9) and hits doing 1 damage.
   ------------------------------------------------------------
   Round 5:
   ------------------------------------------------------------
   Attackers:
   - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
-    hit points: 100/92, attack: 4, defense: 4.
-      #1 hit points: 100/92.
+    hit points: 100/93, attack: 4, defense: 4.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 12, defense: 12.
@@ -386,9 +371,8 @@ Battles report:
   Defenders:
   + Caste Prime Headquarters [000012], corporate headquarters [corphq], immobile.
     size: 1000, mass: 1240 (1000), energy: 10, crew: 20/60.
-    hit points: 100/56, defense: 5.
+    hit points: 100/52, defense: 5, lightly damaged.
     items: 60 terrans [terran], 2200 cash [cash].
-      #1 hit points: 100/56, lightly damaged.
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
     size: 10000, mass: 6830 (1000).
     hit points: 275/275.
@@ -419,7 +403,6 @@ Battles report:
     size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
     hit points: 100/100.
     items: 6 terrans [terran], unit of carbon [carbon].
-      #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
     size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
@@ -439,28 +422,23 @@ Battles report:
       #4 hit points: 100/96, effects: inactive.
       #5 hit points: 100/100, effects: inactive.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] (chance: 3/9) and hits #1 gun
-  placement [111] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 9/17)
-  and hits #1 Caste Prime Headquarters [000012] doing 4 damage.
-    #1 corporate headquarters [corphq] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 9/17)
-  and hits #1 Caste Prime Headquarters [000012] doing 4 damage.
-    #1 corporate headquarters [corphq] is heavily damaged.
-    #1 corporate headquarters [corphq] is disabled.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/9) and hits #1 gun placement [111]
+  doing 4 damage.
+  Surrender or die! [109] fire on Caste Prime Headquarters [000012] (chance: 18/17) and hits doing 4
+  damage.
+    corporate headquarters [corphq] is heavily damaged.
+    corporate headquarters [corphq] is disabled.
     Caste Prime Headquarters [000012] lost it's command module and disables.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 2/9) and hits #1
-  peaceful scout [108] doing 1 damage.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 2/9) and hits #1
-  peaceful scout [108] doing 1 damage.
+  5 gun placements [111] fire on peaceful scout [108].
+  (chance: 5/9) and hits doing 1 damage.
+  (chance: 5/9) and hits doing 1 damage.
   ------------------------------------------------------------
   Round 6:
   ------------------------------------------------------------
   Attackers:
   - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
-    hit points: 100/90, attack: 4, defense: 4.
-      #1 hit points: 100/90.
+    hit points: 100/91, attack: 4, defense: 4.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 12, defense: 12.
@@ -498,7 +476,6 @@ Battles report:
     size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
     hit points: 100/100.
     items: 6 terrans [terran], unit of carbon [carbon].
-      #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
     size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
@@ -518,26 +495,24 @@ Battles report:
       #4 hit points: 100/96, effects: inactive.
       #5 hit points: 100/100, effects: inactive.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] (chance: 3/9) and hits #1 gun
-  placement [111] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 9/17) and hits #5 gun
-  placement [111] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 9/17) and hits #4 gun
-  placement [111] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 9/17) and hits #3 gun
-  placement [111] doing 4 damage.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 2/9) and hits #1
-  peaceful scout [108] doing 1 damage.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 2/9) and hits #1
-  peaceful scout [108] doing 1 damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/9) and hits #2 gun placement [111]
+  doing 4 damage.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17) and hits #1 gun placement
+  [111] doing 4 damage.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17) and hits #5 gun placement
+  [111] doing 4 damage.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17) and hits #4 gun placement
+  [111] doing 4 damage.
+  5 gun placements [111] fire on peaceful scout [108].
+  (chance: 5/9) and hits doing 1 damage.
+  (chance: 5/9) and hits doing 1 damage.
   ------------------------------------------------------------
   Round 7:
   ------------------------------------------------------------
   Attackers:
   - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
-    hit points: 100/88, attack: 4, defense: 4.
-      #1 hit points: 100/88.
+    hit points: 100/89, attack: 4, defense: 4.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 12, defense: 12.
@@ -575,7 +550,6 @@ Battles report:
     size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
     hit points: 100/100.
     items: 6 terrans [terran], unit of carbon [carbon].
-      #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
     size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
@@ -590,31 +564,29 @@ Battles report:
     hit points: 500/464, attack: 5, defense: 5.
     items: 4 terrans [terran].
       #1 hit points: 100/88.
-      #2 hit points: 100/96.
-      #3 hit points: 100/92, effects: inactive.
+      #2 hit points: 100/92.
+      #3 hit points: 100/96, effects: inactive.
       #4 hit points: 100/92, effects: inactive.
       #5 hit points: 100/96, effects: inactive.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] (chance: 3/9) and hits #5 gun
-  placement [111] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 9/17) and hits #4 gun
-  placement [111] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 9/17) and hits #3 gun
-  placement [111] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 9/17) and hits #2 gun
-  placement [111] doing 4 damage.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 2/9) and hits #1
-  peaceful scout [108] doing 1 damage.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 2/9) and hits #1
-  peaceful scout [108] doing 1 damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/9) and hits #1 gun placement [111]
+  doing 4 damage.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17) and hits #5 gun placement
+  [111] doing 4 damage.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17) and hits #4 gun placement
+  [111] doing 4 damage.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17) and hits #3 gun placement
+  [111] doing 4 damage.
+  5 gun placements [111] fire on peaceful scout [108].
+  (chance: 5/9) and hits doing 1 damage.
+  (chance: 5/9) and hits doing 1 damage.
   ------------------------------------------------------------
   Round 8:
   ------------------------------------------------------------
   Attackers:
   - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
-    hit points: 100/86, attack: 4, defense: 4.
-      #1 hit points: 100/86.
+    hit points: 100/87, attack: 4, defense: 4.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 12, defense: 12.
@@ -652,7 +624,6 @@ Battles report:
     size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
     hit points: 100/100.
     items: 6 terrans [terran], unit of carbon [carbon].
-      #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
     size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
@@ -666,32 +637,30 @@ Battles report:
     size: 500, mass: 2516 (2500), crew: 10/4.
     hit points: 500/448, attack: 5, defense: 5.
     items: 4 terrans [terran].
-      #1 hit points: 100/88.
+      #1 hit points: 100/84.
       #2 hit points: 100/92.
-      #3 hit points: 100/88, effects: inactive.
+      #3 hit points: 100/92, effects: inactive.
       #4 hit points: 100/88, effects: inactive.
       #5 hit points: 100/92, effects: inactive.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] (chance: 3/9) and hits #4 gun
-  placement [111] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 9/17) and hits #3 gun
-  placement [111] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 9/17) and hits #2 gun
-  placement [111] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 9/17) and hits #1 gun
-  placement [111] doing 4 damage.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 2/9) and hits #1
-  peaceful scout [108] doing 1 damage.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 2/9) and hits #1
-  peaceful scout [108] doing 1 damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/9) and hits #5 gun placement [111]
+  doing 4 damage.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17) and hits #4 gun placement
+  [111] doing 4 damage.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17) and hits #3 gun placement
+  [111] doing 4 damage.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17) and hits #2 gun placement
+  [111] doing 4 damage.
+  5 gun placements [111] fire on peaceful scout [108].
+  (chance: 5/9) and hits doing 1 damage.
+  (chance: 5/9) and hits doing 1 damage.
   ------------------------------------------------------------
   Round 9:
   ------------------------------------------------------------
   Attackers:
   - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
-    hit points: 100/84, attack: 4, defense: 4.
-      #1 hit points: 100/84.
+    hit points: 100/85, attack: 4, defense: 4.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 12, defense: 12.
@@ -729,7 +698,6 @@ Battles report:
     size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
     hit points: 100/100.
     items: 6 terrans [terran], unit of carbon [carbon].
-      #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
     size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
@@ -745,30 +713,28 @@ Battles report:
     items: 4 terrans [terran].
       #1 hit points: 100/84.
       #2 hit points: 100/88.
-      #3 hit points: 100/84, effects: inactive.
+      #3 hit points: 100/88, effects: inactive.
       #4 hit points: 100/84, effects: inactive.
-      #5 hit points: 100/92, effects: inactive.
+      #5 hit points: 100/88, effects: inactive.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] (chance: 3/9) and hits #3 gun
-  placement [111] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 9/17) and hits #2 gun
-  placement [111] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 9/17) and hits #1 gun
-  placement [111] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 9/17) and hits #5 gun
-  placement [111] doing 4 damage.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 2/9) and hits #1
-  peaceful scout [108] doing 1 damage.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 2/9) and hits #1
-  peaceful scout [108] doing 1 damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/9) and hits #4 gun placement [111]
+  doing 4 damage.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17) and hits #3 gun placement
+  [111] doing 4 damage.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17) and hits #2 gun placement
+  [111] doing 4 damage.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17) and hits #1 gun placement
+  [111] doing 4 damage.
+  5 gun placements [111] fire on peaceful scout [108].
+  (chance: 5/9) and hits doing 1 damage.
+  (chance: 5/9) and hits doing 1 damage.
   ------------------------------------------------------------
   Round 10:
   ------------------------------------------------------------
   Attackers:
   - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
-    hit points: 100/82, attack: 4, defense: 4.
-      #1 hit points: 100/82.
+    hit points: 100/83, attack: 4, defense: 4.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 12, defense: 12.
@@ -806,7 +772,6 @@ Battles report:
     size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
     hit points: 100/100.
     items: 6 terrans [terran], unit of carbon [carbon].
-      #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
     size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
@@ -822,22 +787,21 @@ Battles report:
     items: 4 terrans [terran].
       #1 hit points: 100/80.
       #2 hit points: 100/84.
-      #3 hit points: 100/80, effects: inactive.
-      #4 hit points: 100/84, effects: inactive.
+      #3 hit points: 100/84, effects: inactive.
+      #4 hit points: 100/80, effects: inactive.
       #5 hit points: 100/88, effects: inactive.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] (chance: 3/9) and hits #2 gun
-  placement [111] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 9/17) and hits #1 gun
-  placement [111] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 9/17) and hits #5 gun
-  placement [111] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 9/17) and hits #4 gun
-  placement [111] doing 4 damage.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 2/9) and hits #1
-  peaceful scout [108] doing 1 damage.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 2/9) and hits #1
-  peaceful scout [108] doing 1 damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/9) and hits #3 gun placement [111]
+  doing 4 damage.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17) and hits #2 gun placement
+  [111] doing 4 damage.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17) and hits #1 gun placement
+  [111] doing 4 damage.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17) and hits #5 gun placement
+  [111] doing 4 damage.
+  5 gun placements [111] fire on peaceful scout [108].
+  (chance: 5/9) and hits doing 1 damage.
+  (chance: 5/9) and hits doing 1 damage.
   ------------------------------------------------------------
   Battle ended indecisively.
 
@@ -850,8 +814,7 @@ Battles report:
   Attackers:
   - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
-    hit points: 100/80, attack: 4, defense: 4.
-      #1 hit points: 100/80.
+    hit points: 100/81, attack: 4, defense: 4.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 12, defense: 12.
@@ -861,9 +824,8 @@ Battles report:
   Defenders:
   + Caste Prime Headquarters [000012], corporate headquarters [corphq], disabled, immobile.
     size: 1000, mass: 1240 (1000).
-    hit points: 100/48.
+    hit points: 100/48, heavily damaged, disabled.
     items: 60 terrans [terran], 2200 cash [cash].
-      #1 hit points: 100/48, heavily damaged, effects: disabled.
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
     size: 10000, mass: 6850 (1000).
     hit points: 275/275.
@@ -894,7 +856,6 @@ Battles report:
     size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
     hit points: 100/100.
     items: 6 terrans [terran], unit of carbon [carbon].
-      #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
     size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
@@ -914,33 +875,30 @@ Battles report:
       #4 hit points: 100/80, effects: inactive.
       #5 hit points: 100/84, effects: inactive.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] (chance: 3/9) and hits #1 gun
-  placement [111] doing 4 damage.
-    #1 gun placement [gunplc] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 9/12)
-  and hits #1 Caste Prime Headquarters [000012] doing 4 damage.
-    #1 corporate headquarters [corphq] is heavily damaged.
-    #1 corporate headquarters [corphq] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 9/12)
-  and hits #1 Caste Prime Headquarters [000012] doing 4 damage.
-    #1 corporate headquarters [corphq] is heavily damaged.
-    #1 corporate headquarters [corphq] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 9/12)
-  and hits #1 Caste Prime Headquarters [000012] doing 4 damage.
-    #1 corporate headquarters [corphq] is heavily damaged.
-    #1 corporate headquarters [corphq] is disabled.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 2/9) and hits #1
-  peaceful scout [108] doing 1 damage.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 2/9) and hits #1
-  peaceful scout [108] doing 1 damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/9) and hits #2 gun placement [111]
+  doing 4 damage.
+  Surrender or die! [109] fire on Caste Prime Headquarters [000012] (chance: 18/12) and hits doing 4
+  damage.
+    corporate headquarters [corphq] is heavily damaged.
+    corporate headquarters [corphq] is disabled.
+  Surrender or die! [109] fire on Caste Prime Headquarters [000012] (chance: 18/12) and hits doing 4
+  damage.
+    corporate headquarters [corphq] is heavily damaged.
+    corporate headquarters [corphq] is disabled.
+  Surrender or die! [109] fire on Caste Prime Headquarters [000012] (chance: 18/12) and hits doing 4
+  damage.
+    corporate headquarters [corphq] is heavily damaged.
+    corporate headquarters [corphq] is disabled.
+  5 gun placements [111] fire on peaceful scout [108].
+  (chance: 5/9) and hits doing 1 damage.
+  (chance: 5/9) and hits doing 1 damage.
   ------------------------------------------------------------
   Round 2:
   ------------------------------------------------------------
   Attackers:
   - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
-    hit points: 100/78, attack: 4, defense: 4.
-      #1 hit points: 100/78.
+    hit points: 100/79, attack: 4, defense: 4.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 12, defense: 12.
@@ -950,9 +908,8 @@ Battles report:
   Defenders:
   + Caste Prime Headquarters [000012], corporate headquarters [corphq], disabled, immobile.
     size: 1000, mass: 1240 (1000).
-    hit points: 100/36.
+    hit points: 100/36, heavily damaged, disabled.
     items: 60 terrans [terran], 2200 cash [cash].
-      #1 hit points: 100/36, heavily damaged, effects: disabled.
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
     size: 10000, mass: 6850 (1000).
     hit points: 275/275.
@@ -983,7 +940,6 @@ Battles report:
     size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
     hit points: 100/100.
     items: 6 terrans [terran], unit of carbon [carbon].
-      #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
     size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
@@ -997,38 +953,37 @@ Battles report:
     size: 500, mass: 2516 (2500), crew: 10/4.
     hit points: 500/396, attack: 5, defense: 5.
     items: 4 terrans [terran].
-      #1 hit points: 100/72, lightly damaged.
-      #2 hit points: 100/80.
+      #1 hit points: 100/76.
+      #2 hit points: 100/76.
       #3 hit points: 100/80, effects: inactive.
       #4 hit points: 100/80, effects: inactive.
       #5 hit points: 100/84, effects: inactive.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] (chance: 3/9) and hits #5 gun
-  placement [111] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 9/12)
-  and hits #1 Caste Prime Headquarters [000012] doing 4 damage.
-    #1 corporate headquarters [corphq] is heavily damaged.
-    #1 corporate headquarters [corphq] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 9/12)
-  and hits #1 Caste Prime Headquarters [000012] doing 4 damage.
-    #1 corporate headquarters [corphq] is heavily damaged.
-    #1 corporate headquarters [corphq] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 9/12)
-  and hits #1 Caste Prime Headquarters [000012] doing 4 damage.
-    #1 corporate headquarters [corphq] is critically damaged.
-    #1 corporate headquarters [corphq] is disabled.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 2/9) and hits #1
-  peaceful scout [108] doing 1 damage.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 2/9) and hits #1
-  peaceful scout [108] doing 1 damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/9) and hits #1 gun placement [111]
+  doing 4 damage.
+    #1 gun placement [gunplc] is lightly damaged.
+  Surrender or die! [109] fire on Caste Prime Headquarters [000012] (chance: 18/12) and hits doing 4
+  damage.
+    corporate headquarters [corphq] is heavily damaged.
+    corporate headquarters [corphq] is disabled.
+  Surrender or die! [109] fire on Caste Prime Headquarters [000012] (chance: 18/12) and hits doing 4
+  damage.
+    corporate headquarters [corphq] is heavily damaged.
+    corporate headquarters [corphq] is disabled.
+  Surrender or die! [109] fire on Caste Prime Headquarters [000012] (chance: 18/12) and hits doing 4
+  damage.
+    corporate headquarters [corphq] is critically damaged.
+    corporate headquarters [corphq] is disabled.
+  5 gun placements [111] fire on peaceful scout [108].
+  (chance: 5/9) and hits doing 1 damage.
+  (chance: 5/9) and hits doing 1 damage.
   ------------------------------------------------------------
   Round 3:
   ------------------------------------------------------------
   Attackers:
   - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
-    hit points: 100/76, attack: 4, defense: 4.
-      #1 hit points: 100/76.
+    hit points: 100/77, attack: 4, defense: 4.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 12, defense: 12.
@@ -1038,9 +993,8 @@ Battles report:
   Defenders:
   + Caste Prime Headquarters [000012], corporate headquarters [corphq], disabled, immobile.
     size: 1000, mass: 1240 (1000).
-    hit points: 100/24.
+    hit points: 100/24, critically damaged, disabled.
     items: 60 terrans [terran], 2200 cash [cash].
-      #1 hit points: 100/24, critically damaged, effects: disabled.
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
     size: 10000, mass: 6850 (1000).
     hit points: 275/275.
@@ -1071,7 +1025,6 @@ Battles report:
     size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
     hit points: 100/100.
     items: 6 terrans [terran], unit of carbon [carbon].
-      #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
     size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
@@ -1086,38 +1039,35 @@ Battles report:
     hit points: 500/392, attack: 5, defense: 5.
     items: 4 terrans [terran].
       #1 hit points: 100/72, lightly damaged.
-      #2 hit points: 100/80.
+      #2 hit points: 100/76.
       #3 hit points: 100/80, effects: inactive.
       #4 hit points: 100/80, effects: inactive.
-      #5 hit points: 100/80, effects: inactive.
+      #5 hit points: 100/84, effects: inactive.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] (chance: 3/9) and hits #4 gun
-  placement [111] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 9/12)
-  and hits #1 Caste Prime Headquarters [000012] doing 4 damage.
-    #1 corporate headquarters [corphq] is critically damaged.
-    #1 corporate headquarters [corphq] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 9/12)
-  and hits #1 Caste Prime Headquarters [000012] doing 4 damage.
-    #1 corporate headquarters [corphq] is critically damaged.
-    #1 corporate headquarters [corphq] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 9/12)
-  and hits #1 Caste Prime Headquarters [000012] doing 4 damage.
-    #1 corporate headquarters [corphq] is critically damaged.
-    #1 corporate headquarters [corphq] is disabled.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 2/9) and hits #1
-  peaceful scout [108] doing 1 damage.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 2/9) and hits #1
-  peaceful scout [108] doing 1 damage.
-    #1 tanks [tanks] is lightly damaged.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/9) and hits #5 gun placement [111]
+  doing 4 damage.
+  Surrender or die! [109] fire on Caste Prime Headquarters [000012] (chance: 18/12) and hits doing 4
+  damage.
+    corporate headquarters [corphq] is critically damaged.
+    corporate headquarters [corphq] is disabled.
+  Surrender or die! [109] fire on Caste Prime Headquarters [000012] (chance: 18/12) and hits doing 4
+  damage.
+    corporate headquarters [corphq] is critically damaged.
+    corporate headquarters [corphq] is disabled.
+  Surrender or die! [109] fire on Caste Prime Headquarters [000012] (chance: 18/12) and hits doing 4
+  damage.
+    corporate headquarters [corphq] is critically damaged.
+    corporate headquarters [corphq] is disabled.
+  5 gun placements [111] fire on peaceful scout [108].
+  (chance: 5/9) and hits doing 1 damage.
+  (chance: 5/9) and hits doing 1 damage.
   ------------------------------------------------------------
   Round 4:
   ------------------------------------------------------------
   Attackers:
   - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
-    hit points: 100/74, attack: 4, defense: 4.
-      #1 hit points: 100/74, lightly damaged.
+    hit points: 100/75, attack: 4, defense: 4.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 12, defense: 12.
@@ -1127,9 +1077,8 @@ Battles report:
   Defenders:
   + Caste Prime Headquarters [000012], corporate headquarters [corphq], disabled, immobile.
     size: 1000, mass: 1240 (1000).
-    hit points: 100/12.
+    hit points: 100/12, critically damaged, disabled.
     items: 60 terrans [terran], 2200 cash [cash].
-      #1 hit points: 100/12, critically damaged, effects: disabled.
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
     size: 10000, mass: 6850 (1000).
     hit points: 275/275.
@@ -1160,7 +1109,6 @@ Battles report:
     size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
     hit points: 100/100.
     items: 6 terrans [terran], unit of carbon [carbon].
-      #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
     size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
@@ -1175,38 +1123,36 @@ Battles report:
     hit points: 500/388, attack: 5, defense: 5.
     items: 4 terrans [terran].
       #1 hit points: 100/72, lightly damaged.
-      #2 hit points: 100/80.
+      #2 hit points: 100/76.
       #3 hit points: 100/80, effects: inactive.
-      #4 hit points: 100/76, effects: inactive.
+      #4 hit points: 100/80, effects: inactive.
       #5 hit points: 100/80, effects: inactive.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] (chance: 3/9) and hits #3 gun
-  placement [111] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 9/12)
-  and hits #1 Caste Prime Headquarters [000012] doing 4 damage.
-    #1 corporate headquarters [corphq] is critically damaged.
-    #1 corporate headquarters [corphq] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 9/12)
-  and hits #1 Caste Prime Headquarters [000012] doing 4 damage.
-    #1 corporate headquarters [corphq] is critically damaged.
-    #1 corporate headquarters [corphq] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on Caste Prime Headquarters [000012] (chance: 9/12)
-  and hits #1 Caste Prime Headquarters [000012] doing 4 damage.
-    #1 corporate headquarters [corphq] is wrecked.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 2/9) and hits #1
-  peaceful scout [108] doing 1 damage.
-    #1 tanks [tanks] is lightly damaged.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 2/9) and hits #1
-  peaceful scout [108] doing 1 damage.
-    #1 tanks [tanks] is lightly damaged.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/9) and hits #4 gun placement [111]
+  doing 4 damage.
+  Surrender or die! [109] fire on Caste Prime Headquarters [000012] (chance: 18/12) and hits doing 4
+  damage.
+    corporate headquarters [corphq] is critically damaged.
+    corporate headquarters [corphq] is disabled.
+  Surrender or die! [109] fire on Caste Prime Headquarters [000012] (chance: 18/12) and hits doing 4
+  damage.
+    corporate headquarters [corphq] is critically damaged.
+    corporate headquarters [corphq] is disabled.
+  Surrender or die! [109] fire on Caste Prime Headquarters [000012] (chance: 18/12) and hits doing 4
+  damage.
+    corporate headquarters [corphq] is wrecked.
+  5 gun placements [111] fire on peaceful scout [108].
+  (chance: 5/9) and hits doing 1 damage.
+    tanks [tanks] is lightly damaged.
+  (chance: 5/9) and hits doing 1 damage.
+    tanks [tanks] is lightly damaged.
   ------------------------------------------------------------
   Round 5:
   ------------------------------------------------------------
   Attackers:
   - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
-    hit points: 100/72, attack: 4, defense: 4.
-      #1 hit points: 100/72, lightly damaged.
+    hit points: 100/73, attack: 4, defense: 4, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 12, defense: 12.
@@ -1216,9 +1162,8 @@ Battles report:
   Defenders:
   + Caste Prime Headquarters [000012], corporate headquarters [corphq], disabled, immobile.
     size: 1000, mass: 1240 (1000).
-    hit points: 100/0.
+    hit points: 100/0, destroyed, disabled.
     items: 60 terrans [terran], 2200 cash [cash].
-      #1 hit points: 100/0, destroyed, effects: disabled.
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
     size: 10000, mass: 6850 (1000).
     hit points: 275/275.
@@ -1249,7 +1194,6 @@ Battles report:
     size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
     hit points: 100/100.
     items: 6 terrans [terran], unit of carbon [carbon].
-      #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
     size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
@@ -1264,35 +1208,33 @@ Battles report:
     hit points: 500/384, attack: 5, defense: 5.
     items: 4 terrans [terran].
       #1 hit points: 100/72, lightly damaged.
-      #2 hit points: 100/80.
-      #3 hit points: 100/76, effects: inactive.
+      #2 hit points: 100/76.
+      #3 hit points: 100/80, effects: inactive.
       #4 hit points: 100/76, effects: inactive.
       #5 hit points: 100/80, effects: inactive.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] (chance: 3/9) and hits #2 gun
-  placement [111] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 9/17) and hits #1 gun
-  placement [111] doing 4 damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/9) and hits #3 gun placement [111]
+  doing 4 damage.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17) and hits #2 gun placement
+  [111] doing 4 damage.
+    #2 gun placement [gunplc] is lightly damaged.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17) and hits #1 gun placement
+  [111] doing 4 damage.
     #1 gun placement [gunplc] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 9/17) and hits #5 gun
-  placement [111] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 9/17) and hits #4 gun
-  placement [111] doing 4 damage.
-    #4 gun placement [gunplc] is lightly damaged.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 2/9) and hits #1
-  peaceful scout [108] doing 1 damage.
-    #1 tanks [tanks] is lightly damaged.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 2/9) and hits #1
-  peaceful scout [108] doing 1 damage.
-    #1 tanks [tanks] is lightly damaged.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17) and hits #5 gun placement
+  [111] doing 4 damage.
+  5 gun placements [111] fire on peaceful scout [108].
+  (chance: 5/9) and hits doing 1 damage.
+    tanks [tanks] is lightly damaged.
+  (chance: 5/9) and hits doing 1 damage.
+    tanks [tanks] is lightly damaged.
   ------------------------------------------------------------
   Round 6:
   ------------------------------------------------------------
   Attackers:
   - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
-    hit points: 100/70, attack: 4, defense: 4.
-      #1 hit points: 100/70, lightly damaged.
+    hit points: 100/71, attack: 4, defense: 4, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 12, defense: 12.
@@ -1302,9 +1244,8 @@ Battles report:
   Defenders:
   + Caste Prime Headquarters [000012], corporate headquarters [corphq], disabled, immobile.
     size: 1000, mass: 1240 (1000).
-    hit points: 100/0.
+    hit points: 100/0, destroyed, disabled.
     items: 60 terrans [terran], 2200 cash [cash].
-      #1 hit points: 100/0, destroyed, effects: disabled.
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
     size: 10000, mass: 6850 (1000).
     hit points: 275/275.
@@ -1335,7 +1276,6 @@ Battles report:
     size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
     hit points: 100/100.
     items: 6 terrans [terran], unit of carbon [carbon].
-      #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
     size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
@@ -1350,37 +1290,35 @@ Battles report:
     hit points: 500/368, attack: 5, defense: 5.
     items: 4 terrans [terran].
       #1 hit points: 100/68, lightly damaged.
-      #2 hit points: 100/76.
+      #2 hit points: 100/72, lightly damaged.
       #3 hit points: 100/76, effects: inactive.
-      #4 hit points: 100/72, lightly damaged, effects: inactive.
+      #4 hit points: 100/76, effects: inactive.
       #5 hit points: 100/76, effects: inactive.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] (chance: 3/9) and hits #1 gun
-  placement [111] doing 4 damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/9) and hits #2 gun placement [111]
+  doing 4 damage.
+    #2 gun placement [gunplc] is lightly damaged.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17) and hits #1 gun placement
+  [111] doing 4 damage.
     #1 gun placement [gunplc] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 9/17) and hits #5 gun
-  placement [111] doing 4 damage.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17) and hits #5 gun placement
+  [111] doing 4 damage.
     #5 gun placement [gunplc] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 9/17) and hits #4 gun
-  placement [111] doing 4 damage.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17) and hits #4 gun placement
+  [111] doing 4 damage.
     #4 gun placement [gunplc] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 9/17) and hits #3 gun
-  placement [111] doing 4 damage.
-    #3 gun placement [gunplc] is lightly damaged.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 2/9) and hits #1
-  peaceful scout [108] doing 1 damage.
-    #1 tanks [tanks] is lightly damaged.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 2/9) and hits #1
-  peaceful scout [108] doing 1 damage.
-    #1 tanks [tanks] is lightly damaged.
+  5 gun placements [111] fire on peaceful scout [108].
+  (chance: 5/9) and hits doing 1 damage.
+    tanks [tanks] is lightly damaged.
+  (chance: 5/9) and hits doing 1 damage.
+    tanks [tanks] is lightly damaged.
   ------------------------------------------------------------
   Round 7:
   ------------------------------------------------------------
   Attackers:
   - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
-    hit points: 100/68, attack: 4, defense: 4.
-      #1 hit points: 100/68, lightly damaged.
+    hit points: 100/69, attack: 4, defense: 4, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 12, defense: 12.
@@ -1390,9 +1328,8 @@ Battles report:
   Defenders:
   + Caste Prime Headquarters [000012], corporate headquarters [corphq], disabled, immobile.
     size: 1000, mass: 1240 (1000).
-    hit points: 100/0.
+    hit points: 100/0, destroyed, disabled.
     items: 60 terrans [terran], 2200 cash [cash].
-      #1 hit points: 100/0, destroyed, effects: disabled.
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
     size: 10000, mass: 6850 (1000).
     hit points: 275/275.
@@ -1423,7 +1360,6 @@ Battles report:
     size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
     hit points: 100/100.
     items: 6 terrans [terran], unit of carbon [carbon].
-      #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
     size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
@@ -1438,37 +1374,35 @@ Battles report:
     hit points: 500/352, attack: 5, defense: 5.
     items: 4 terrans [terran].
       #1 hit points: 100/64, lightly damaged.
-      #2 hit points: 100/76.
-      #3 hit points: 100/72, lightly damaged, effects: inactive.
-      #4 hit points: 100/68, lightly damaged, effects: inactive.
+      #2 hit points: 100/68, lightly damaged.
+      #3 hit points: 100/76, effects: inactive.
+      #4 hit points: 100/72, lightly damaged, effects: inactive.
       #5 hit points: 100/72, lightly damaged, effects: inactive.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] (chance: 3/9) and hits #5 gun
-  placement [111] doing 4 damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/9) and hits #1 gun placement [111]
+  doing 4 damage.
+    #1 gun placement [gunplc] is lightly damaged.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17) and hits #5 gun placement
+  [111] doing 4 damage.
     #5 gun placement [gunplc] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 9/17) and hits #4 gun
-  placement [111] doing 4 damage.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17) and hits #4 gun placement
+  [111] doing 4 damage.
     #4 gun placement [gunplc] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 9/17) and hits #3 gun
-  placement [111] doing 4 damage.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17) and hits #3 gun placement
+  [111] doing 4 damage.
     #3 gun placement [gunplc] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 9/17) and hits #2 gun
-  placement [111] doing 4 damage.
-    #2 gun placement [gunplc] is lightly damaged.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 2/9) and hits #1
-  peaceful scout [108] doing 1 damage.
-    #1 tanks [tanks] is lightly damaged.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 2/9) and hits #1
-  peaceful scout [108] doing 1 damage.
-    #1 tanks [tanks] is lightly damaged.
+  5 gun placements [111] fire on peaceful scout [108].
+  (chance: 5/9) and hits doing 1 damage.
+    tanks [tanks] is lightly damaged.
+  (chance: 5/9) and hits doing 1 damage.
+    tanks [tanks] is lightly damaged.
   ------------------------------------------------------------
   Round 8:
   ------------------------------------------------------------
   Attackers:
   - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
-    hit points: 100/66, attack: 4, defense: 4.
-      #1 hit points: 100/66, lightly damaged.
+    hit points: 100/67, attack: 4, defense: 4, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 12, defense: 12.
@@ -1478,9 +1412,8 @@ Battles report:
   Defenders:
   + Caste Prime Headquarters [000012], corporate headquarters [corphq], disabled, immobile.
     size: 1000, mass: 1240 (1000).
-    hit points: 100/0.
+    hit points: 100/0, destroyed, disabled.
     items: 60 terrans [terran], 2200 cash [cash].
-      #1 hit points: 100/0, destroyed, effects: disabled.
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
     size: 10000, mass: 6850 (1000).
     hit points: 275/275.
@@ -1511,7 +1444,6 @@ Battles report:
     size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
     hit points: 100/100.
     items: 6 terrans [terran], unit of carbon [carbon].
-      #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
     size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
@@ -1525,38 +1457,36 @@ Battles report:
     size: 500, mass: 2516 (2500), crew: 10/4.
     hit points: 500/336, attack: 5, defense: 5.
     items: 4 terrans [terran].
-      #1 hit points: 100/64, lightly damaged.
-      #2 hit points: 100/72, lightly damaged.
-      #3 hit points: 100/68, lightly damaged, effects: inactive.
-      #4 hit points: 100/64, lightly damaged, effects: inactive.
+      #1 hit points: 100/60, lightly damaged.
+      #2 hit points: 100/68, lightly damaged.
+      #3 hit points: 100/72, lightly damaged, effects: inactive.
+      #4 hit points: 100/68, lightly damaged, effects: inactive.
       #5 hit points: 100/68, lightly damaged, effects: inactive.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] (chance: 3/9) and hits #4 gun
-  placement [111] doing 4 damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/9) and hits #5 gun placement [111]
+  doing 4 damage.
+    #5 gun placement [gunplc] is lightly damaged.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17) and hits #4 gun placement
+  [111] doing 4 damage.
     #4 gun placement [gunplc] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 9/17) and hits #3 gun
-  placement [111] doing 4 damage.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17) and hits #3 gun placement
+  [111] doing 4 damage.
     #3 gun placement [gunplc] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 9/17) and hits #2 gun
-  placement [111] doing 4 damage.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17) and hits #2 gun placement
+  [111] doing 4 damage.
     #2 gun placement [gunplc] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 9/17) and hits #1 gun
-  placement [111] doing 4 damage.
-    #1 gun placement [gunplc] is lightly damaged.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 2/9) and hits #1
-  peaceful scout [108] doing 1 damage.
-    #1 tanks [tanks] is lightly damaged.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 2/9) and hits #1
-  peaceful scout [108] doing 1 damage.
-    #1 tanks [tanks] is lightly damaged.
+  5 gun placements [111] fire on peaceful scout [108].
+  (chance: 5/9) and hits doing 1 damage.
+    tanks [tanks] is lightly damaged.
+  (chance: 5/9) and hits doing 1 damage.
+    tanks [tanks] is lightly damaged.
   ------------------------------------------------------------
   Round 9:
   ------------------------------------------------------------
   Attackers:
   - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
-    hit points: 100/64, attack: 4, defense: 4.
-      #1 hit points: 100/64, lightly damaged.
+    hit points: 100/65, attack: 4, defense: 4, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 12, defense: 12.
@@ -1566,9 +1496,8 @@ Battles report:
   Defenders:
   + Caste Prime Headquarters [000012], corporate headquarters [corphq], disabled, immobile.
     size: 1000, mass: 1240 (1000).
-    hit points: 100/0.
+    hit points: 100/0, destroyed, disabled.
     items: 60 terrans [terran], 2200 cash [cash].
-      #1 hit points: 100/0, destroyed, effects: disabled.
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
     size: 10000, mass: 6850 (1000).
     hit points: 275/275.
@@ -1599,7 +1528,6 @@ Battles report:
     size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
     hit points: 100/100.
     items: 6 terrans [terran], unit of carbon [carbon].
-      #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
     size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
@@ -1614,37 +1542,35 @@ Battles report:
     hit points: 500/320, attack: 5, defense: 5.
     items: 4 terrans [terran].
       #1 hit points: 100/60, lightly damaged.
-      #2 hit points: 100/68, lightly damaged.
-      #3 hit points: 100/64, lightly damaged, effects: inactive.
-      #4 hit points: 100/60, lightly damaged, effects: inactive.
-      #5 hit points: 100/68, lightly damaged, effects: inactive.
+      #2 hit points: 100/64, lightly damaged.
+      #3 hit points: 100/68, lightly damaged, effects: inactive.
+      #4 hit points: 100/64, lightly damaged, effects: inactive.
+      #5 hit points: 100/64, lightly damaged, effects: inactive.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] (chance: 3/9) and hits #3 gun
-  placement [111] doing 4 damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/9) and hits #4 gun placement [111]
+  doing 4 damage.
+    #4 gun placement [gunplc] is lightly damaged.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17) and hits #3 gun placement
+  [111] doing 4 damage.
     #3 gun placement [gunplc] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 9/17) and hits #2 gun
-  placement [111] doing 4 damage.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17) and hits #2 gun placement
+  [111] doing 4 damage.
     #2 gun placement [gunplc] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 9/17) and hits #1 gun
-  placement [111] doing 4 damage.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17) and hits #1 gun placement
+  [111] doing 4 damage.
     #1 gun placement [gunplc] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 9/17) and hits #5 gun
-  placement [111] doing 4 damage.
-    #5 gun placement [gunplc] is lightly damaged.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 2/9) and hits #1
-  peaceful scout [108] doing 1 damage.
-    #1 tanks [tanks] is lightly damaged.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 2/9) and hits #1
-  peaceful scout [108] doing 1 damage.
-    #1 tanks [tanks] is lightly damaged.
+  5 gun placements [111] fire on peaceful scout [108].
+  (chance: 5/9) and hits doing 1 damage.
+    tanks [tanks] is lightly damaged.
+  (chance: 5/9) and hits doing 1 damage.
+    tanks [tanks] is lightly damaged.
   ------------------------------------------------------------
   Round 10:
   ------------------------------------------------------------
   Attackers:
   - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
-    hit points: 100/62, attack: 4, defense: 4.
-      #1 hit points: 100/62, lightly damaged.
+    hit points: 100/63, attack: 4, defense: 4, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 12, defense: 12.
@@ -1654,9 +1580,8 @@ Battles report:
   Defenders:
   + Caste Prime Headquarters [000012], corporate headquarters [corphq], disabled, immobile.
     size: 1000, mass: 1240 (1000).
-    hit points: 100/0.
+    hit points: 100/0, destroyed, disabled.
     items: 60 terrans [terran], 2200 cash [cash].
-      #1 hit points: 100/0, destroyed, effects: disabled.
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
     size: 10000, mass: 6850 (1000).
     hit points: 275/275.
@@ -1687,7 +1612,6 @@ Battles report:
     size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
     hit points: 100/100.
     items: 6 terrans [terran], unit of carbon [carbon].
-      #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
     size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
@@ -1702,29 +1626,28 @@ Battles report:
     hit points: 500/304, attack: 5, defense: 5.
     items: 4 terrans [terran].
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/64, lightly damaged.
-      #3 hit points: 100/60, lightly damaged, effects: inactive.
+      #2 hit points: 100/60, lightly damaged.
+      #3 hit points: 100/64, lightly damaged, effects: inactive.
       #4 hit points: 100/60, lightly damaged, effects: inactive.
       #5 hit points: 100/64, lightly damaged, effects: inactive.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] (chance: 3/9) and hits #2 gun
-  placement [111] doing 4 damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/9) and hits #3 gun placement [111]
+  doing 4 damage.
+    #3 gun placement [gunplc] is lightly damaged.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17) and hits #2 gun placement
+  [111] doing 4 damage.
     #2 gun placement [gunplc] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 9/17) and hits #1 gun
-  placement [111] doing 4 damage.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17) and hits #1 gun placement
+  [111] doing 4 damage.
     #1 gun placement [gunplc] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 9/17) and hits #5 gun
-  placement [111] doing 4 damage.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17) and hits #5 gun placement
+  [111] doing 4 damage.
     #5 gun placement [gunplc] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 9/17) and hits #4 gun
-  placement [111] doing 4 damage.
-    #4 gun placement [gunplc] is lightly damaged.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 2/9) and hits #1
-  peaceful scout [108] doing 1 damage.
-    #1 tanks [tanks] is lightly damaged.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 2/9) and hits #1
-  peaceful scout [108] doing 1 damage.
-    #1 tanks [tanks] is lightly damaged.
+  5 gun placements [111] fire on peaceful scout [108].
+  (chance: 5/9) and hits doing 1 damage.
+    tanks [tanks] is lightly damaged.
+  (chance: 5/9) and hits doing 1 damage.
+    tanks [tanks] is lightly damaged.
   ------------------------------------------------------------
   Battle ended indecisively.
 
@@ -1737,8 +1660,7 @@ Battles report:
   Attackers:
   - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
-    hit points: 100/60, attack: 4, defense: 4.
-      #1 hit points: 100/60, lightly damaged.
+    hit points: 100/61, attack: 4, defense: 4, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 12, defense: 12.
@@ -1776,7 +1698,6 @@ Battles report:
     size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
     hit points: 100/100.
     items: 6 terrans [terran], unit of carbon [carbon].
-      #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
     size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
@@ -1791,38 +1712,36 @@ Battles report:
     hit points: 500/288, attack: 5, defense: 5.
     items: 4 terrans [terran].
       #1 hit points: 100/52, lightly damaged.
-      #2 hit points: 100/60, lightly damaged.
+      #2 hit points: 100/56, lightly damaged.
       #3 hit points: 100/60, lightly damaged, effects: inactive.
-      #4 hit points: 100/56, lightly damaged, effects: inactive.
+      #4 hit points: 100/60, lightly damaged, effects: inactive.
       #5 hit points: 100/60, lightly damaged, effects: inactive.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] (chance: 3/9) and hits #1 gun
-  placement [111] doing 4 damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/9) and hits #2 gun placement [111]
+  doing 4 damage.
+    #2 gun placement [gunplc] is lightly damaged.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/17) and hits #1 gun placement
+  [111] doing 4 damage.
     #1 gun placement [gunplc] is heavily damaged.
     #1 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 9/16) and hits #5 gun
-  placement [111] doing 4 damage.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/16) and hits #5 gun placement
+  [111] doing 4 damage.
     #5 gun placement [gunplc] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 9/16) and hits #4 gun
-  placement [111] doing 4 damage.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/16) and hits #4 gun placement
+  [111] doing 4 damage.
     #4 gun placement [gunplc] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 9/16) and hits #3 gun
-  placement [111] doing 4 damage.
-    #3 gun placement [gunplc] is lightly damaged.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 2/8) and hits #1
-  peaceful scout [108] doing 1 damage.
-    #1 tanks [tanks] is lightly damaged.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 2/8) and hits #1
-  peaceful scout [108] doing 1 damage.
-    #1 tanks [tanks] is lightly damaged.
+  4 gun placements [111] fire on peaceful scout [108].
+  (chance: 4/8) and hits doing 1 damage.
+    tanks [tanks] is lightly damaged.
+  (chance: 4/8) and hits doing 1 damage.
+    tanks [tanks] is lightly damaged.
   ------------------------------------------------------------
   Round 2:
   ------------------------------------------------------------
   Attackers:
   - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
-    hit points: 100/58, attack: 4, defense: 4.
-      #1 hit points: 100/58, lightly damaged.
+    hit points: 100/59, attack: 4, defense: 4, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 12, defense: 12.
@@ -1860,7 +1779,6 @@ Battles report:
     size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
     hit points: 100/100.
     items: 6 terrans [terran], unit of carbon [carbon].
-      #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
     size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
@@ -1875,38 +1793,36 @@ Battles report:
     hit points: 500/272, attack: 4, defense: 4.
     items: 4 terrans [terran].
       #1 hit points: 100/48, heavily damaged, effects: disabled.
-      #2 hit points: 100/60, lightly damaged.
-      #3 hit points: 100/56, lightly damaged.
-      #4 hit points: 100/52, lightly damaged, effects: inactive.
+      #2 hit points: 100/52, lightly damaged.
+      #3 hit points: 100/60, lightly damaged.
+      #4 hit points: 100/56, lightly damaged, effects: inactive.
       #5 hit points: 100/56, lightly damaged, effects: inactive.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] (chance: 3/8) and hits #5 gun
-  placement [111] doing 4 damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/8) and hits #1 gun placement [111]
+  doing 4 damage.
+    #1 gun placement [gunplc] is heavily damaged.
+    #1 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/16) and hits #5 gun placement
+  [111] doing 4 damage.
     #5 gun placement [gunplc] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 9/16) and hits #4 gun
-  placement [111] doing 4 damage.
-    #4 gun placement [gunplc] is heavily damaged.
-    #4 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 9/15) and hits #3 gun
-  placement [111] doing 4 damage.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/16) and hits #4 gun placement
+  [111] doing 4 damage.
+    #4 gun placement [gunplc] is lightly damaged.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/16) and hits #3 gun placement
+  [111] doing 4 damage.
     #3 gun placement [gunplc] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 9/15) and hits #2 gun
-  placement [111] doing 4 damage.
-    #2 gun placement [gunplc] is lightly damaged.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 1/7) and hits #1
-  peaceful scout [108] doing 1 damage.
-    #1 tanks [tanks] is lightly damaged.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 1/7) and hits #1
-  peaceful scout [108] doing 1 damage.
-    #1 tanks [tanks] is lightly damaged.
+  4 gun placements [111] fire on peaceful scout [108].
+  (chance: 4/8) and hits doing 1 damage.
+    tanks [tanks] is lightly damaged.
+  (chance: 4/8) and hits doing 1 damage.
+    tanks [tanks] is lightly damaged.
   ------------------------------------------------------------
   Round 3:
   ------------------------------------------------------------
   Attackers:
   - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
-    hit points: 100/56, attack: 4, defense: 4.
-      #1 hit points: 100/56, lightly damaged.
+    hit points: 100/57, attack: 4, defense: 4, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 12, defense: 12.
@@ -1944,7 +1860,6 @@ Battles report:
     size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
     hit points: 100/100.
     items: 6 terrans [terran], unit of carbon [carbon].
-      #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
     size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
@@ -1955,44 +1870,39 @@ Battles report:
       #4 hit points: 100/100.
       #5 hit points: 100/100, effects: inactive.
   + gun placement [111], 5 gun placements [gunplc], partially disabled, immobile.
-    size: 500, mass: 2516 (2500), crew: 6/4.
-    hit points: 500/256, attack: 3, defense: 3.
+    size: 500, mass: 2516 (2500), crew: 8/4.
+    hit points: 500/256, attack: 4, defense: 4.
     items: 4 terrans [terran].
-      #1 hit points: 100/48, heavily damaged, effects: disabled.
-      #2 hit points: 100/56, lightly damaged.
-      #3 hit points: 100/52, lightly damaged.
-      #4 hit points: 100/48, heavily damaged, effects: disabled.
+      #1 hit points: 100/44, heavily damaged, effects: disabled.
+      #2 hit points: 100/52, lightly damaged.
+      #3 hit points: 100/56, lightly damaged.
+      #4 hit points: 100/52, lightly damaged, effects: inactive.
       #5 hit points: 100/52, lightly damaged, effects: inactive.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] (chance: 3/7) and hits #4 gun
-  placement [111] doing 4 damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/8) and hits #5 gun placement [111]
+  doing 4 damage.
+    #5 gun placement [gunplc] is heavily damaged.
+    #5 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/15) and hits #4 gun placement
+  [111] doing 4 damage.
     #4 gun placement [gunplc] is heavily damaged.
     #4 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 9/15) and hits #3 gun
-  placement [111] doing 4 damage.
-    #3 gun placement [gunplc] is heavily damaged.
-    #3 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 9/14) and hits #2 gun
-  placement [111] doing 4 damage.
-    #2 gun placement [gunplc] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 9/14) and hits #1 gun
-  placement [111] doing 4 damage.
-    #1 gun placement [gunplc] is heavily damaged.
-    #1 gun placement [gunplc] is disabled.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 1/6) and hits #1
-  peaceful scout [108] doing 1 damage.
-    #1 tanks [tanks] is lightly damaged.
-  gun placement [111] fires gun placement [gunplc] on peaceful scout [108] (chance: 1/6) and hits #1
-  peaceful scout [108] doing 1 damage.
-    #1 tanks [tanks] is lightly damaged.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/14) and hits #3 gun placement
+  [111] doing 4 damage.
+    #3 gun placement [gunplc] is lightly damaged.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/14) and hits #2 gun placement
+  [111] doing 4 damage.
+    #2 gun placement [gunplc] is heavily damaged.
+    #2 gun placement [gunplc] is disabled.
+  gun placement [111] fires on peaceful scout [108] (chance: 1/5) and hits doing 1 damage.
+    tanks [tanks] is lightly damaged.
   ------------------------------------------------------------
   Round 4:
   ------------------------------------------------------------
   Attackers:
   - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
-    hit points: 100/54, attack: 4, defense: 4.
-      #1 hit points: 100/54, lightly damaged.
+    hit points: 100/56, attack: 4, defense: 4, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 12, defense: 12.
@@ -2030,7 +1940,6 @@ Battles report:
     size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
     hit points: 100/100.
     items: 6 terrans [terran], unit of carbon [carbon].
-      #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
     size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
@@ -2041,39 +1950,34 @@ Battles report:
       #4 hit points: 100/100.
       #5 hit points: 100/100, effects: inactive.
   + gun placement [111], 5 gun placements [gunplc], immobile.
-    size: 500, mass: 2516 (2500), crew: 4/4.
-    hit points: 500/240, attack: 2, defense: 2.
+    size: 500, mass: 2516 (2500), crew: 2/4.
+    hit points: 500/240, attack: 1, defense: 1.
     items: 4 terrans [terran].
       #1 hit points: 100/44, heavily damaged, effects: disabled.
-      #2 hit points: 100/52, lightly damaged.
-      #3 hit points: 100/48, heavily damaged, effects: disabled.
-      #4 hit points: 100/44, heavily damaged, effects: disabled.
-      #5 hit points: 100/52, lightly damaged.
+      #2 hit points: 100/48, heavily damaged, effects: disabled.
+      #3 hit points: 100/52, lightly damaged.
+      #4 hit points: 100/48, heavily damaged, effects: disabled.
+      #5 hit points: 100/48, heavily damaged, effects: disabled.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] (chance: 3/6) and hits #3 gun
-  placement [111] doing 4 damage.
-    #3 gun placement [gunplc] is heavily damaged.
-    #3 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 9/14) and hits #2 gun
-  placement [111] doing 4 damage.
-    #2 gun placement [gunplc] is heavily damaged.
-    #2 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 9/13) and hits #1 gun
-  placement [111] doing 4 damage.
-    #1 gun placement [gunplc] is heavily damaged.
-    #1 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on gun placement [111] (chance: 9/13) and hits #5 gun
-  placement [111] doing 4 damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/5) and hits #5 gun placement [111]
+  doing 4 damage.
     #5 gun placement [gunplc] is heavily damaged.
     #5 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/13) and hits #4 gun placement
+  [111] doing 4 damage.
+    #4 gun placement [gunplc] is heavily damaged.
+    #4 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fire on gun placement [111] (chance: 18/13) and hits #3 gun placement
+  [111] doing 4 damage.
+    #3 gun placement [gunplc] is heavily damaged.
+    #3 gun placement [gunplc] is disabled.
   ------------------------------------------------------------
   Round 5:
   ------------------------------------------------------------
   Attackers:
   - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
-    hit points: 100/54, attack: 4, defense: 4.
-      #1 hit points: 100/54, lightly damaged.
+    hit points: 100/56, attack: 4, defense: 4, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 12, defense: 12.
@@ -2111,7 +2015,6 @@ Battles report:
     size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
     hit points: 100/100.
     items: 6 terrans [terran], unit of carbon [carbon].
-      #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
     size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
@@ -2122,22 +2025,21 @@ Battles report:
       #4 hit points: 100/100.
       #5 hit points: 100/100, effects: inactive.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on small cargo bay [000013] (chance: 3/4) and hits #2
-  small cargo bay [000013] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 9/12) and hits #5
-  small cargo bay [000013] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 9/12) and hits #3
-  small cargo bay [000013] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 9/12) and hits #1
-  small cargo bay [000013] doing 4 damage.
+  peaceful scout [108] fires on small cargo bay [000013] (chance: 6/4) and hits #3 small cargo bay
+  [000013] doing 4 damage.
+  Surrender or die! [109] fire on small cargo bay [000013] (chance: 18/12) and hits #1 small cargo
+  bay [000013] doing 4 damage.
+  Surrender or die! [109] fire on small cargo bay [000013] (chance: 18/12) and hits #4 small cargo
+  bay [000013] doing 4 damage.
+  Surrender or die! [109] fire on small cargo bay [000013] (chance: 18/12) and hits #2 small cargo
+  bay [000013] doing 4 damage.
   ------------------------------------------------------------
   Round 6:
   ------------------------------------------------------------
   Attackers:
   - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
-    hit points: 100/54, attack: 4, defense: 4.
-      #1 hit points: 100/54, lightly damaged.
+    hit points: 100/56, attack: 4, defense: 4, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 12, defense: 12.
@@ -2155,7 +2057,69 @@ Battles report:
       #1 hit points: 55/51.
       #2 hit points: 55/51.
       #3 hit points: 55/51.
-      #4 hit points: 55/55.
+      #4 hit points: 55/51.
+      #5 hit points: 55/55.
+  + farming complex [000014], 3 farming complexes [farms], immobile.
+    size: 3000, mass: 375 (300), energy: 15, crew: 15/15.
+    hit points: 165/165.
+    items: 15 terrans [terran], 15 units of food [food].
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
+  + coal-burning plant [000015], 3 coal-burning plants [cplant], immobile.
+    size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
+    hit points: 300/300, attack: 3.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  + core drill [000016], core drill [cdrill], immobile.
+    size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
+    hit points: 100/100.
+    items: 6 terrans [terran], unit of carbon [carbon].
+  + factory [000017], 5 factories [factry], partially disabled, immobile.
+    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
+    hit points: 500/500.
+    items: 46 terrans [terran].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100, effects: inactive.
+  ------------------------------------------------------------
+  peaceful scout [108] fires on small cargo bay [000013] (chance: 6/4) and hits #5 small cargo bay
+  [000013] doing 4 damage.
+  Surrender or die! [109] fire on small cargo bay [000013] (chance: 18/12) and hits #3 small cargo
+  bay [000013] doing 4 damage.
+  Surrender or die! [109] fire on small cargo bay [000013] (chance: 18/12) and hits #1 small cargo
+  bay [000013] doing 4 damage.
+  Surrender or die! [109] fire on small cargo bay [000013] (chance: 18/12) and hits #4 small cargo
+  bay [000013] doing 4 damage.
+  ------------------------------------------------------------
+  Round 7:
+  ------------------------------------------------------------
+  Attackers:
+  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
+    size: 240.
+    hit points: 100/56, attack: 4, defense: 4, lightly damaged.
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/300, attack: 12, defense: 12.
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  Defenders:
+  + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
+    size: 10000, mass: 6870 (1000).
+    hit points: 275/243.
+    items: 895 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 93
+    units of carbon [carbon].
+      #1 hit points: 55/47.
+      #2 hit points: 55/51.
+      #3 hit points: 55/47.
+      #4 hit points: 55/47.
       #5 hit points: 55/51.
   + farming complex [000014], 3 farming complexes [farms], immobile.
     size: 3000, mass: 375 (300), energy: 15, crew: 15/15.
@@ -2175,7 +2139,6 @@ Battles report:
     size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
     hit points: 100/100.
     items: 6 terrans [terran], unit of carbon [carbon].
-      #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
     size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
@@ -2186,22 +2149,21 @@ Battles report:
       #4 hit points: 100/100.
       #5 hit points: 100/100, effects: inactive.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on small cargo bay [000013] (chance: 3/4) and hits #4
-  small cargo bay [000013] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 9/12) and hits #2
-  small cargo bay [000013] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 9/12) and hits #5
-  small cargo bay [000013] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 9/12) and hits #3
-  small cargo bay [000013] doing 4 damage.
+  peaceful scout [108] fires on small cargo bay [000013] (chance: 6/4) and hits #2 small cargo bay
+  [000013] doing 4 damage.
+  Surrender or die! [109] fire on small cargo bay [000013] (chance: 18/12) and hits #5 small cargo
+  bay [000013] doing 4 damage.
+  Surrender or die! [109] fire on small cargo bay [000013] (chance: 18/12) and hits #3 small cargo
+  bay [000013] doing 4 damage.
+  Surrender or die! [109] fire on small cargo bay [000013] (chance: 18/12) and hits #1 small cargo
+  bay [000013] doing 4 damage.
   ------------------------------------------------------------
-  Round 7:
+  Round 8:
   ------------------------------------------------------------
   Attackers:
   - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
-    hit points: 100/54, attack: 4, defense: 4.
-      #1 hit points: 100/54, lightly damaged.
+    hit points: 100/56, attack: 4, defense: 4, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 12, defense: 12.
@@ -2211,15 +2173,15 @@ Battles report:
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
     size: 10000, mass: 6870 (1000).
-    hit points: 275/243.
+    hit points: 275/227.
     items: 895 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
     of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
     [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 93
     units of carbon [carbon].
-      #1 hit points: 55/51.
+      #1 hit points: 55/43.
       #2 hit points: 55/47.
-      #3 hit points: 55/47.
-      #4 hit points: 55/51.
+      #3 hit points: 55/43.
+      #4 hit points: 55/47.
       #5 hit points: 55/47.
   + farming complex [000014], 3 farming complexes [farms], immobile.
     size: 3000, mass: 375 (300), energy: 15, crew: 15/15.
@@ -2239,7 +2201,6 @@ Battles report:
     size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
     hit points: 100/100.
     items: 6 terrans [terran], unit of carbon [carbon].
-      #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
     size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
@@ -2250,87 +2211,22 @@ Battles report:
       #4 hit points: 100/100.
       #5 hit points: 100/100, effects: inactive.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on small cargo bay [000013] (chance: 3/4) and hits #1
-  small cargo bay [000013] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 9/12) and hits #4
-  small cargo bay [000013] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 9/12) and hits #2
-  small cargo bay [000013] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 9/12) and hits #5
-  small cargo bay [000013] doing 4 damage.
-  ------------------------------------------------------------
-  Round 8:
-  ------------------------------------------------------------
-  Attackers:
-  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
-    size: 240.
-    hit points: 100/54, attack: 4, defense: 4.
-      #1 hit points: 100/54, lightly damaged.
-  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
-    size: 720.
-    hit points: 300/300, attack: 12, defense: 12.
-      #1 hit points: 100/100.
-      #2 hit points: 100/100.
-      #3 hit points: 100/100.
-  Defenders:
-  + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 6870 (1000).
-    hit points: 275/227.
-    items: 895 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
-    of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
-    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 93
-    units of carbon [carbon].
-      #1 hit points: 55/47.
-      #2 hit points: 55/43.
-      #3 hit points: 55/47.
-      #4 hit points: 55/47.
-      #5 hit points: 55/43.
-  + farming complex [000014], 3 farming complexes [farms], immobile.
-    size: 3000, mass: 375 (300), energy: 15, crew: 15/15.
-    hit points: 165/165.
-    items: 15 terrans [terran], 15 units of food [food].
-      #1 hit points: 55/55.
-      #2 hit points: 55/55.
-      #3 hit points: 55/55.
-  + coal-burning plant [000015], 3 coal-burning plants [cplant], immobile.
-    size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
-    hit points: 300/300, attack: 3.
-    items: 6 terrans [terran].
-      #1 hit points: 100/100.
-      #2 hit points: 100/100.
-      #3 hit points: 100/100.
-  + core drill [000016], core drill [cdrill], immobile.
-    size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
-    hit points: 100/100.
-    items: 6 terrans [terran], unit of carbon [carbon].
-      #1 hit points: 100/100.
-  + factory [000017], 5 factories [factry], partially disabled, immobile.
-    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
-    hit points: 500/500.
-    items: 46 terrans [terran].
-      #1 hit points: 100/100.
-      #2 hit points: 100/100.
-      #3 hit points: 100/100.
-      #4 hit points: 100/100.
-      #5 hit points: 100/100, effects: inactive.
-  ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on small cargo bay [000013] (chance: 3/4) and hits #3
-  small cargo bay [000013] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 9/12) and hits #1
-  small cargo bay [000013] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 9/12) and hits #4
-  small cargo bay [000013] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 9/12) and hits #2
-  small cargo bay [000013] doing 4 damage.
-    #2 small cargo bay [cargob] is lightly damaged.
+  peaceful scout [108] fires on small cargo bay [000013] (chance: 6/4) and hits #4 small cargo bay
+  [000013] doing 4 damage.
+  Surrender or die! [109] fire on small cargo bay [000013] (chance: 18/12) and hits #2 small cargo
+  bay [000013] doing 4 damage.
+  Surrender or die! [109] fire on small cargo bay [000013] (chance: 18/12) and hits #5 small cargo
+  bay [000013] doing 4 damage.
+  Surrender or die! [109] fire on small cargo bay [000013] (chance: 18/12) and hits #3 small cargo
+  bay [000013] doing 4 damage.
+    #3 small cargo bay [cargob] is lightly damaged.
   ------------------------------------------------------------
   Round 9:
   ------------------------------------------------------------
   Attackers:
   - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
-    hit points: 100/54, attack: 4, defense: 4.
-      #1 hit points: 100/54, lightly damaged.
+    hit points: 100/56, attack: 4, defense: 4, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 12, defense: 12.
@@ -2346,8 +2242,8 @@ Battles report:
     [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 93
     units of carbon [carbon].
       #1 hit points: 55/43.
-      #2 hit points: 55/39, lightly damaged.
-      #3 hit points: 55/43.
+      #2 hit points: 55/43.
+      #3 hit points: 55/39, lightly damaged.
       #4 hit points: 55/43.
       #5 hit points: 55/43.
   + farming complex [000014], 3 farming complexes [farms], immobile.
@@ -2368,7 +2264,6 @@ Battles report:
     size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
     hit points: 100/100.
     items: 6 terrans [terran], unit of carbon [carbon].
-      #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
     size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
@@ -2379,26 +2274,25 @@ Battles report:
       #4 hit points: 100/100.
       #5 hit points: 100/100, effects: inactive.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on small cargo bay [000013] (chance: 3/4) and hits #5
-  small cargo bay [000013] doing 4 damage.
-    #5 small cargo bay [cargob] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 9/12) and hits #3
-  small cargo bay [000013] doing 4 damage.
-    #3 small cargo bay [cargob] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 9/12) and hits #1
-  small cargo bay [000013] doing 4 damage.
+  peaceful scout [108] fires on small cargo bay [000013] (chance: 6/4) and hits #1 small cargo bay
+  [000013] doing 4 damage.
     #1 small cargo bay [cargob] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 9/12) and hits #4
-  small cargo bay [000013] doing 4 damage.
+  Surrender or die! [109] fire on small cargo bay [000013] (chance: 18/12) and hits #4 small cargo
+  bay [000013] doing 4 damage.
     #4 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fire on small cargo bay [000013] (chance: 18/12) and hits #2 small cargo
+  bay [000013] doing 4 damage.
+    #2 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fire on small cargo bay [000013] (chance: 18/12) and hits #5 small cargo
+  bay [000013] doing 4 damage.
+    #5 small cargo bay [cargob] is lightly damaged.
   ------------------------------------------------------------
   Round 10:
   ------------------------------------------------------------
   Attackers:
   - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
-    hit points: 100/54, attack: 4, defense: 4.
-      #1 hit points: 100/54, lightly damaged.
+    hit points: 100/56, attack: 4, defense: 4, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 12, defense: 12.
@@ -2436,7 +2330,6 @@ Battles report:
     size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
     hit points: 100/100.
     items: 6 terrans [terran], unit of carbon [carbon].
-      #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
     size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
@@ -2447,18 +2340,18 @@ Battles report:
       #4 hit points: 100/100.
       #5 hit points: 100/100, effects: inactive.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on small cargo bay [000013] (chance: 3/4) and hits #2
-  small cargo bay [000013] doing 4 damage.
-    #2 small cargo bay [cargob] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 9/12) and hits #5
-  small cargo bay [000013] doing 4 damage.
-    #5 small cargo bay [cargob] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 9/12) and hits #3
-  small cargo bay [000013] doing 4 damage.
+  peaceful scout [108] fires on small cargo bay [000013] (chance: 6/4) and hits #3 small cargo bay
+  [000013] doing 4 damage.
     #3 small cargo bay [cargob] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 9/12) and hits #1
-  small cargo bay [000013] doing 4 damage.
+  Surrender or die! [109] fire on small cargo bay [000013] (chance: 18/12) and hits #1 small cargo
+  bay [000013] doing 4 damage.
     #1 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fire on small cargo bay [000013] (chance: 18/12) and hits #4 small cargo
+  bay [000013] doing 4 damage.
+    #4 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fire on small cargo bay [000013] (chance: 18/12) and hits #2 small cargo
+  bay [000013] doing 4 damage.
+    #2 small cargo bay [cargob] is lightly damaged.
   ------------------------------------------------------------
   Battle ended indecisively.
 
@@ -2471,8 +2364,7 @@ Battles report:
   Attackers:
   - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
-    hit points: 100/54, attack: 4, defense: 4.
-      #1 hit points: 100/54, lightly damaged.
+    hit points: 100/56, attack: 4, defense: 4, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 12, defense: 12.
@@ -2490,7 +2382,161 @@ Battles report:
       #1 hit points: 55/35, lightly damaged.
       #2 hit points: 55/35, lightly damaged.
       #3 hit points: 55/35, lightly damaged.
-      #4 hit points: 55/39, lightly damaged.
+      #4 hit points: 55/35, lightly damaged.
+      #5 hit points: 55/39, lightly damaged.
+  + farming complex [000014], 3 farming complexes [farms], immobile.
+    size: 3000, mass: 375 (300), energy: 15, crew: 15/15.
+    hit points: 165/165.
+    items: 15 terrans [terran], 15 units of food [food].
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
+  + coal-burning plant [000015], 3 coal-burning plants [cplant], immobile.
+    size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
+    hit points: 300/300, attack: 3.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  + core drill [000016], core drill [cdrill], immobile.
+    size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
+    hit points: 100/100.
+    items: 6 terrans [terran], unit of carbon [carbon].
+  + factory [000017], 5 factories [factry], partially disabled, immobile.
+    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
+    hit points: 500/500.
+    items: 46 terrans [terran].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100, effects: inactive.
+  + gun placement [111], 5 gun placements [gunplc], disabled, immobile.
+    size: 500, mass: 2516 (2500).
+    hit points: 500/228.
+    items: 4 terrans [terran].
+      #1 hit points: 100/44, heavily damaged, effects: disabled.
+      #2 hit points: 100/48, heavily damaged, effects: disabled.
+      #3 hit points: 100/48, heavily damaged, effects: disabled.
+      #4 hit points: 100/44, heavily damaged, effects: disabled.
+      #5 hit points: 100/44, heavily damaged, effects: disabled.
+  ------------------------------------------------------------
+  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and hits #3 gun placement [111]
+  doing 4 damage.
+    #3 gun placement [gunplc] is heavily damaged.
+    #3 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fire on small cargo bay [000013] (chance: 18/12) and hits #3 small cargo
+  bay [000013] doing 4 damage.
+    #3 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fire on small cargo bay [000013] (chance: 18/12) and hits #1 small cargo
+  bay [000013] doing 4 damage.
+    #1 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fire on small cargo bay [000013] (chance: 18/12) and hits #4 small cargo
+  bay [000013] doing 4 damage.
+    #4 small cargo bay [cargob] is lightly damaged.
+  ------------------------------------------------------------
+  Round 2:
+  ------------------------------------------------------------
+  Attackers:
+  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
+    size: 240.
+    hit points: 100/56, attack: 4, defense: 4, lightly damaged.
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/300, attack: 12, defense: 12.
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  Defenders:
+  + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
+    size: 10000, mass: 6890 (1000).
+    hit points: 275/167.
+    items: 910 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 94
+    units of carbon [carbon].
+      #1 hit points: 55/31, lightly damaged.
+      #2 hit points: 55/35, lightly damaged.
+      #3 hit points: 55/31, lightly damaged.
+      #4 hit points: 55/31, lightly damaged.
+      #5 hit points: 55/39, lightly damaged.
+  + farming complex [000014], 3 farming complexes [farms], immobile.
+    size: 3000, mass: 375 (300), energy: 15, crew: 15/15.
+    hit points: 165/165.
+    items: 15 terrans [terran], 15 units of food [food].
+      #1 hit points: 55/55.
+      #2 hit points: 55/55.
+      #3 hit points: 55/55.
+  + coal-burning plant [000015], 3 coal-burning plants [cplant], immobile.
+    size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
+    hit points: 300/300, attack: 3.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  + core drill [000016], core drill [cdrill], immobile.
+    size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
+    hit points: 100/100.
+    items: 6 terrans [terran], unit of carbon [carbon].
+  + factory [000017], 5 factories [factry], partially disabled, immobile.
+    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
+    hit points: 500/500.
+    items: 46 terrans [terran].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100, effects: inactive.
+  + gun placement [111], 5 gun placements [gunplc], disabled, immobile.
+    size: 500, mass: 2516 (2500).
+    hit points: 500/224.
+    items: 4 terrans [terran].
+      #1 hit points: 100/44, heavily damaged, effects: disabled.
+      #2 hit points: 100/48, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/44, heavily damaged, effects: disabled.
+      #5 hit points: 100/44, heavily damaged, effects: disabled.
+  ------------------------------------------------------------
+  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and hits #4 gun placement [111]
+  doing 4 damage.
+    #4 gun placement [gunplc] is heavily damaged.
+    #4 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fire on small cargo bay [000013] (chance: 18/12) and hits #5 small cargo
+  bay [000013] doing 4 damage.
+    #5 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fire on small cargo bay [000013] (chance: 18/12) and hits #3 small cargo
+  bay [000013] doing 4 damage.
+    #3 small cargo bay [cargob] is heavily damaged.
+    #3 small cargo bay [cargob] is disabled.
+  Surrender or die! [109] fire on small cargo bay [000013] (chance: 18/12) and hits #1 small cargo
+  bay [000013] doing 4 damage.
+    #1 small cargo bay [cargob] is heavily damaged.
+    #1 small cargo bay [cargob] is disabled.
+  ------------------------------------------------------------
+  Round 3:
+  ------------------------------------------------------------
+  Attackers:
+  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
+    size: 240.
+    hit points: 100/56, attack: 4, defense: 4, lightly damaged.
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/300, attack: 12, defense: 12.
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  Defenders:
+  + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
+    size: 10000, mass: 6890 (1000).
+    hit points: 275/155.
+    items: 910 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 94
+    units of carbon [carbon].
+      #1 hit points: 55/27, heavily damaged, effects: disabled.
+      #2 hit points: 55/35, lightly damaged.
+      #3 hit points: 55/27, heavily damaged, effects: disabled.
+      #4 hit points: 55/31, lightly damaged.
       #5 hit points: 55/35, lightly damaged.
   + farming complex [000014], 3 farming complexes [farms], immobile.
     size: 3000, mass: 375 (300), energy: 15, crew: 15/15.
@@ -2510,7 +2556,6 @@ Battles report:
     size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
     hit points: 100/100.
     items: 6 terrans [terran], unit of carbon [carbon].
-      #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
     size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
@@ -2522,35 +2567,35 @@ Battles report:
       #5 hit points: 100/100, effects: inactive.
   + gun placement [111], 5 gun placements [gunplc], disabled, immobile.
     size: 500, mass: 2516 (2500).
-    hit points: 500/224.
+    hit points: 500/220.
     items: 4 terrans [terran].
-      #1 hit points: 100/40, heavily damaged, effects: disabled.
+      #1 hit points: 100/44, heavily damaged, effects: disabled.
       #2 hit points: 100/48, heavily damaged, effects: disabled.
       #3 hit points: 100/44, heavily damaged, effects: disabled.
-      #4 hit points: 100/44, heavily damaged, effects: disabled.
-      #5 hit points: 100/48, heavily damaged, effects: disabled.
+      #4 hit points: 100/40, heavily damaged, effects: disabled.
+      #5 hit points: 100/44, heavily damaged, effects: disabled.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] (chance: 3/4) and hits #5 gun
-  placement [111] doing 4 damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and hits #5 gun placement [111]
+  doing 4 damage.
     #5 gun placement [gunplc] is heavily damaged.
     #5 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 9/12) and hits #2
-  small cargo bay [000013] doing 4 damage.
+  Surrender or die! [109] fire on small cargo bay [000013] (chance: 18/12) and hits #2 small cargo
+  bay [000013] doing 4 damage.
     #2 small cargo bay [cargob] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 9/12) and hits #5
-  small cargo bay [000013] doing 4 damage.
+  Surrender or die! [109] fire on small cargo bay [000013] (chance: 18/12) and hits #5 small cargo
+  bay [000013] doing 4 damage.
     #5 small cargo bay [cargob] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 9/12) and hits #3
-  small cargo bay [000013] doing 4 damage.
-    #3 small cargo bay [cargob] is lightly damaged.
+  Surrender or die! [109] fire on small cargo bay [000013] (chance: 18/12) and hits #3 small cargo
+  bay [000013] doing 4 damage.
+    #3 small cargo bay [cargob] is heavily damaged.
+    #3 small cargo bay [cargob] is disabled.
   ------------------------------------------------------------
-  Round 2:
+  Round 4:
   ------------------------------------------------------------
   Attackers:
   - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
-    hit points: 100/54, attack: 4, defense: 4.
-      #1 hit points: 100/54, lightly damaged.
+    hit points: 100/56, attack: 4, defense: 4, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 12, defense: 12.
@@ -2560,15 +2605,15 @@ Battles report:
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
     size: 10000, mass: 6890 (1000).
-    hit points: 275/167.
+    hit points: 275/143.
     items: 910 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
     of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
     [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 94
     units of carbon [carbon].
-      #1 hit points: 55/35, lightly damaged.
+      #1 hit points: 55/27, heavily damaged, effects: disabled.
       #2 hit points: 55/31, lightly damaged.
-      #3 hit points: 55/31, lightly damaged.
-      #4 hit points: 55/39, lightly damaged.
+      #3 hit points: 55/23, heavily damaged, effects: disabled.
+      #4 hit points: 55/31, lightly damaged.
       #5 hit points: 55/31, lightly damaged.
   + farming complex [000014], 3 farming complexes [farms], immobile.
     size: 3000, mass: 375 (300), energy: 15, crew: 15/15.
@@ -2588,87 +2633,6 @@ Battles report:
     size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
     hit points: 100/100.
     items: 6 terrans [terran], unit of carbon [carbon].
-      #1 hit points: 100/100.
-  + factory [000017], 5 factories [factry], partially disabled, immobile.
-    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
-    hit points: 500/500.
-    items: 46 terrans [terran].
-      #1 hit points: 100/100.
-      #2 hit points: 100/100.
-      #3 hit points: 100/100.
-      #4 hit points: 100/100.
-      #5 hit points: 100/100, effects: inactive.
-  + gun placement [111], 5 gun placements [gunplc], disabled, immobile.
-    size: 500, mass: 2516 (2500).
-    hit points: 500/220.
-    items: 4 terrans [terran].
-      #1 hit points: 100/40, heavily damaged, effects: disabled.
-      #2 hit points: 100/48, heavily damaged, effects: disabled.
-      #3 hit points: 100/44, heavily damaged, effects: disabled.
-      #4 hit points: 100/44, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
-  ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] (chance: 3/4) and hits #1 gun
-  placement [111] doing 4 damage.
-    #1 gun placement [gunplc] is heavily damaged.
-    #1 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 9/12) and hits #4
-  small cargo bay [000013] doing 4 damage.
-    #4 small cargo bay [cargob] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 9/12) and hits #2
-  small cargo bay [000013] doing 4 damage.
-    #2 small cargo bay [cargob] is heavily damaged.
-    #2 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 9/12) and hits #5
-  small cargo bay [000013] doing 4 damage.
-    #5 small cargo bay [cargob] is heavily damaged.
-    #5 small cargo bay [cargob] is disabled.
-  ------------------------------------------------------------
-  Round 3:
-  ------------------------------------------------------------
-  Attackers:
-  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
-    size: 240.
-    hit points: 100/54, attack: 4, defense: 4.
-      #1 hit points: 100/54, lightly damaged.
-  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
-    size: 720.
-    hit points: 300/300, attack: 12, defense: 12.
-      #1 hit points: 100/100.
-      #2 hit points: 100/100.
-      #3 hit points: 100/100.
-  Defenders:
-  + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 6890 (1000).
-    hit points: 275/155.
-    items: 910 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
-    of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
-    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 94
-    units of carbon [carbon].
-      #1 hit points: 55/35, lightly damaged.
-      #2 hit points: 55/27, heavily damaged, effects: disabled.
-      #3 hit points: 55/31, lightly damaged.
-      #4 hit points: 55/35, lightly damaged.
-      #5 hit points: 55/27, heavily damaged, effects: disabled.
-  + farming complex [000014], 3 farming complexes [farms], immobile.
-    size: 3000, mass: 375 (300), energy: 15, crew: 15/15.
-    hit points: 165/165.
-    items: 15 terrans [terran], 15 units of food [food].
-      #1 hit points: 55/55.
-      #2 hit points: 55/55.
-      #3 hit points: 55/55.
-  + coal-burning plant [000015], 3 coal-burning plants [cplant], immobile.
-    size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
-    hit points: 300/300, attack: 3.
-    items: 6 terrans [terran].
-      #1 hit points: 100/100.
-      #2 hit points: 100/100.
-      #3 hit points: 100/100.
-  + core drill [000016], core drill [cdrill], immobile.
-    size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
-    hit points: 100/100.
-    items: 6 terrans [terran], unit of carbon [carbon].
-      #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
     size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
@@ -2682,34 +2646,35 @@ Battles report:
     size: 500, mass: 2516 (2500).
     hit points: 500/216.
     items: 4 terrans [terran].
-      #1 hit points: 100/36, heavily damaged, effects: disabled.
+      #1 hit points: 100/44, heavily damaged, effects: disabled.
       #2 hit points: 100/48, heavily damaged, effects: disabled.
       #3 hit points: 100/44, heavily damaged, effects: disabled.
-      #4 hit points: 100/44, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/40, heavily damaged, effects: disabled.
+      #5 hit points: 100/40, heavily damaged, effects: disabled.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] (chance: 3/4) and hits #2 gun
-  placement [111] doing 4 damage.
-    #2 gun placement [gunplc] is heavily damaged.
-    #2 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 9/12) and hits #1
-  small cargo bay [000013] doing 4 damage.
-    #1 small cargo bay [cargob] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 9/12) and hits #4
-  small cargo bay [000013] doing 4 damage.
-    #4 small cargo bay [cargob] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 9/12) and hits #2
-  small cargo bay [000013] doing 4 damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and hits #1 gun placement [111]
+  doing 4 damage.
+    #1 gun placement [gunplc] is heavily damaged.
+    #1 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fire on small cargo bay [000013] (chance: 18/12) and hits #4 small cargo
+  bay [000013] doing 4 damage.
+    #4 small cargo bay [cargob] is heavily damaged.
+    #4 small cargo bay [cargob] is disabled.
+  Surrender or die! [109] fire on small cargo bay [000013] (chance: 18/12) and hits #2 small cargo
+  bay [000013] doing 4 damage.
     #2 small cargo bay [cargob] is heavily damaged.
     #2 small cargo bay [cargob] is disabled.
+  Surrender or die! [109] fire on small cargo bay [000013] (chance: 18/12) and hits #5 small cargo
+  bay [000013] doing 4 damage.
+    #5 small cargo bay [cargob] is heavily damaged.
+    #5 small cargo bay [cargob] is disabled.
   ------------------------------------------------------------
-  Round 4:
+  Round 5:
   ------------------------------------------------------------
   Attackers:
   - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
-    hit points: 100/54, attack: 4, defense: 4.
-      #1 hit points: 100/54, lightly damaged.
+    hit points: 100/56, attack: 4, defense: 4, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 12, defense: 12.
@@ -2717,18 +2682,6 @@ Battles report:
       #2 hit points: 100/100.
       #3 hit points: 100/100.
   Defenders:
-  + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 6890 (1000).
-    hit points: 275/143.
-    items: 910 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
-    of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
-    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 94
-    units of carbon [carbon].
-      #1 hit points: 55/31, lightly damaged.
-      #2 hit points: 55/23, heavily damaged, effects: disabled.
-      #3 hit points: 55/31, lightly damaged.
-      #4 hit points: 55/31, lightly damaged.
-      #5 hit points: 55/27, heavily damaged, effects: disabled.
   + farming complex [000014], 3 farming complexes [farms], immobile.
     size: 3000, mass: 375 (300), energy: 15, crew: 15/15.
     hit points: 165/165.
@@ -2747,7 +2700,6 @@ Battles report:
     size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
     hit points: 100/100.
     items: 6 terrans [terran], unit of carbon [carbon].
-      #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
     size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
@@ -2761,36 +2713,29 @@ Battles report:
     size: 500, mass: 2516 (2500).
     hit points: 500/212.
     items: 4 terrans [terran].
-      #1 hit points: 100/36, heavily damaged, effects: disabled.
-      #2 hit points: 100/44, heavily damaged, effects: disabled.
+      #1 hit points: 100/40, heavily damaged, effects: disabled.
+      #2 hit points: 100/48, heavily damaged, effects: disabled.
       #3 hit points: 100/44, heavily damaged, effects: disabled.
-      #4 hit points: 100/44, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/40, heavily damaged, effects: disabled.
+      #5 hit points: 100/40, heavily damaged, effects: disabled.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] (chance: 3/4) and hits #3 gun
-  placement [111] doing 4 damage.
-    #3 gun placement [gunplc] is heavily damaged.
-    #3 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 9/12) and hits #3
-  small cargo bay [000013] doing 4 damage.
-    #3 small cargo bay [cargob] is heavily damaged.
-    #3 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 9/12) and hits #1
-  small cargo bay [000013] doing 4 damage.
-    #1 small cargo bay [cargob] is heavily damaged.
-    #1 small cargo bay [cargob] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on small cargo bay [000013] (chance: 9/12) and hits #4
-  small cargo bay [000013] doing 4 damage.
-    #4 small cargo bay [cargob] is heavily damaged.
-    #4 small cargo bay [cargob] is disabled.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and hits #2 gun placement [111]
+  doing 4 damage.
+    #2 gun placement [gunplc] is heavily damaged.
+    #2 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fire on farming complex [000014] (chance: 18/12) and hits #1 farming
+  complex [000014] doing 4 damage.
+  Surrender or die! [109] fire on farming complex [000014] (chance: 18/12) and hits #3 farming
+  complex [000014] doing 4 damage.
+  Surrender or die! [109] fire on farming complex [000014] (chance: 18/12) and hits #1 farming
+  complex [000014] doing 4 damage.
   ------------------------------------------------------------
-  Round 5:
+  Round 6:
   ------------------------------------------------------------
   Attackers:
   - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
-    hit points: 100/54, attack: 4, defense: 4.
-      #1 hit points: 100/54, lightly damaged.
+    hit points: 100/56, attack: 4, defense: 4, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 12, defense: 12.
@@ -2800,11 +2745,11 @@ Battles report:
   Defenders:
   + farming complex [000014], 3 farming complexes [farms], immobile.
     size: 3000, mass: 375 (300), energy: 15, crew: 15/15.
-    hit points: 165/165.
+    hit points: 165/153.
     items: 15 terrans [terran], 15 units of food [food].
-      #1 hit points: 55/55.
+      #1 hit points: 55/47.
       #2 hit points: 55/55.
-      #3 hit points: 55/55.
+      #3 hit points: 55/51.
   + coal-burning plant [000015], 3 coal-burning plants [cplant], immobile.
     size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
     hit points: 300/300, attack: 3.
@@ -2816,7 +2761,6 @@ Battles report:
     size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
     hit points: 100/100.
     items: 6 terrans [terran], unit of carbon [carbon].
-      #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
     size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
@@ -2830,30 +2774,29 @@ Battles report:
     size: 500, mass: 2516 (2500).
     hit points: 500/208.
     items: 4 terrans [terran].
-      #1 hit points: 100/36, heavily damaged, effects: disabled.
+      #1 hit points: 100/40, heavily damaged, effects: disabled.
       #2 hit points: 100/44, heavily damaged, effects: disabled.
-      #3 hit points: 100/40, heavily damaged, effects: disabled.
-      #4 hit points: 100/44, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/40, heavily damaged, effects: disabled.
+      #5 hit points: 100/40, heavily damaged, effects: disabled.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] (chance: 3/4) and hits #4 gun
-  placement [111] doing 4 damage.
-    #4 gun placement [gunplc] is heavily damaged.
-    #4 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 9/12) and hits #2
-  farming complex [000014] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 9/12) and hits #3
-  farming complex [000014] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 9/12) and hits #1
-  farming complex [000014] doing 4 damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and hits #3 gun placement [111]
+  doing 4 damage.
+    #3 gun placement [gunplc] is heavily damaged.
+    #3 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fire on farming complex [000014] (chance: 18/12) and hits #3 farming
+  complex [000014] doing 4 damage.
+  Surrender or die! [109] fire on farming complex [000014] (chance: 18/12) and hits #1 farming
+  complex [000014] doing 4 damage.
+  Surrender or die! [109] fire on farming complex [000014] (chance: 18/12) and hits #3 farming
+  complex [000014] doing 4 damage.
   ------------------------------------------------------------
-  Round 6:
+  Round 7:
   ------------------------------------------------------------
   Attackers:
   - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
-    hit points: 100/54, attack: 4, defense: 4.
-      #1 hit points: 100/54, lightly damaged.
+    hit points: 100/56, attack: 4, defense: 4, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 12, defense: 12.
@@ -2863,11 +2806,11 @@ Battles report:
   Defenders:
   + farming complex [000014], 3 farming complexes [farms], immobile.
     size: 3000, mass: 375 (300), energy: 15, crew: 15/15.
-    hit points: 165/153.
+    hit points: 165/141.
     items: 15 terrans [terran], 15 units of food [food].
-      #1 hit points: 55/51.
-      #2 hit points: 55/51.
-      #3 hit points: 55/51.
+      #1 hit points: 55/43.
+      #2 hit points: 55/55.
+      #3 hit points: 55/43.
   + coal-burning plant [000015], 3 coal-burning plants [cplant], immobile.
     size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
     hit points: 300/300, attack: 3.
@@ -2879,7 +2822,6 @@ Battles report:
     size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
     hit points: 100/100.
     items: 6 terrans [terran], unit of carbon [carbon].
-      #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
     size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
@@ -2893,30 +2835,31 @@ Battles report:
     size: 500, mass: 2516 (2500).
     hit points: 500/204.
     items: 4 terrans [terran].
-      #1 hit points: 100/36, heavily damaged, effects: disabled.
+      #1 hit points: 100/40, heavily damaged, effects: disabled.
       #2 hit points: 100/44, heavily damaged, effects: disabled.
       #3 hit points: 100/40, heavily damaged, effects: disabled.
       #4 hit points: 100/40, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #5 hit points: 100/40, heavily damaged, effects: disabled.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] (chance: 3/4) and hits #5 gun
-  placement [111] doing 4 damage.
-    #5 gun placement [gunplc] is heavily damaged.
-    #5 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 9/12) and hits #1
-  farming complex [000014] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 9/12) and hits #2
-  farming complex [000014] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 9/12) and hits #3
-  farming complex [000014] doing 4 damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and hits #4 gun placement [111]
+  doing 4 damage.
+    #4 gun placement [gunplc] is heavily damaged.
+    #4 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fire on farming complex [000014] (chance: 18/12) and hits #2 farming
+  complex [000014] doing 4 damage.
+  Surrender or die! [109] fire on farming complex [000014] (chance: 18/12) and hits #3 farming
+  complex [000014] doing 4 damage.
+    #3 farming complex [farms] is lightly damaged.
+  Surrender or die! [109] fire on farming complex [000014] (chance: 18/12) and hits #1 farming
+  complex [000014] doing 4 damage.
+    #1 farming complex [farms] is lightly damaged.
   ------------------------------------------------------------
-  Round 7:
+  Round 8:
   ------------------------------------------------------------
   Attackers:
   - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
-    hit points: 100/54, attack: 4, defense: 4.
-      #1 hit points: 100/54, lightly damaged.
+    hit points: 100/56, attack: 4, defense: 4, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 12, defense: 12.
@@ -2926,11 +2869,11 @@ Battles report:
   Defenders:
   + farming complex [000014], 3 farming complexes [farms], immobile.
     size: 3000, mass: 375 (300), energy: 15, crew: 15/15.
-    hit points: 165/141.
+    hit points: 165/129.
     items: 15 terrans [terran], 15 units of food [food].
-      #1 hit points: 55/47.
-      #2 hit points: 55/47.
-      #3 hit points: 55/47.
+      #1 hit points: 55/39, lightly damaged.
+      #2 hit points: 55/51.
+      #3 hit points: 55/39, lightly damaged.
   + coal-burning plant [000015], 3 coal-burning plants [cplant], immobile.
     size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
     hit points: 300/300, attack: 3.
@@ -2942,7 +2885,6 @@ Battles report:
     size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
     hit points: 100/100.
     items: 6 terrans [terran], unit of carbon [carbon].
-      #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
     size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
@@ -2956,30 +2898,31 @@ Battles report:
     size: 500, mass: 2516 (2500).
     hit points: 500/200.
     items: 4 terrans [terran].
-      #1 hit points: 100/36, heavily damaged, effects: disabled.
+      #1 hit points: 100/40, heavily damaged, effects: disabled.
       #2 hit points: 100/44, heavily damaged, effects: disabled.
       #3 hit points: 100/40, heavily damaged, effects: disabled.
-      #4 hit points: 100/40, heavily damaged, effects: disabled.
+      #4 hit points: 100/36, heavily damaged, effects: disabled.
       #5 hit points: 100/40, heavily damaged, effects: disabled.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] (chance: 3/4) and hits #1 gun
-  placement [111] doing 4 damage.
-    #1 gun placement [gunplc] is heavily damaged.
-    #1 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 9/12) and hits #3
-  farming complex [000014] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 9/12) and hits #1
-  farming complex [000014] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 9/12) and hits #2
-  farming complex [000014] doing 4 damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and hits #5 gun placement [111]
+  doing 4 damage.
+    #5 gun placement [gunplc] is heavily damaged.
+    #5 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fire on farming complex [000014] (chance: 18/12) and hits #1 farming
+  complex [000014] doing 4 damage.
+    #1 farming complex [farms] is lightly damaged.
+  Surrender or die! [109] fire on farming complex [000014] (chance: 18/12) and hits #2 farming
+  complex [000014] doing 4 damage.
+  Surrender or die! [109] fire on farming complex [000014] (chance: 18/12) and hits #3 farming
+  complex [000014] doing 4 damage.
+    #3 farming complex [farms] is lightly damaged.
   ------------------------------------------------------------
-  Round 8:
+  Round 9:
   ------------------------------------------------------------
   Attackers:
   - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
-    hit points: 100/54, attack: 4, defense: 4.
-      #1 hit points: 100/54, lightly damaged.
+    hit points: 100/56, attack: 4, defense: 4, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 12, defense: 12.
@@ -2989,11 +2932,11 @@ Battles report:
   Defenders:
   + farming complex [000014], 3 farming complexes [farms], immobile.
     size: 3000, mass: 375 (300), energy: 15, crew: 15/15.
-    hit points: 165/129.
+    hit points: 165/117.
     items: 15 terrans [terran], 15 units of food [food].
-      #1 hit points: 55/43.
-      #2 hit points: 55/43.
-      #3 hit points: 55/43.
+      #1 hit points: 55/35, lightly damaged.
+      #2 hit points: 55/47.
+      #3 hit points: 55/35, lightly damaged.
   + coal-burning plant [000015], 3 coal-burning plants [cplant], immobile.
     size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
     hit points: 300/300, attack: 3.
@@ -3005,7 +2948,6 @@ Battles report:
     size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
     hit points: 100/100.
     items: 6 terrans [terran], unit of carbon [carbon].
-      #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
     size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
@@ -3019,99 +2961,31 @@ Battles report:
     size: 500, mass: 2516 (2500).
     hit points: 500/196.
     items: 4 terrans [terran].
-      #1 hit points: 100/32, heavily damaged, effects: disabled.
+      #1 hit points: 100/40, heavily damaged, effects: disabled.
       #2 hit points: 100/44, heavily damaged, effects: disabled.
       #3 hit points: 100/40, heavily damaged, effects: disabled.
-      #4 hit points: 100/40, heavily damaged, effects: disabled.
-      #5 hit points: 100/40, heavily damaged, effects: disabled.
+      #4 hit points: 100/36, heavily damaged, effects: disabled.
+      #5 hit points: 100/36, heavily damaged, effects: disabled.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] (chance: 3/4) and hits #2 gun
-  placement [111] doing 4 damage.
-    #2 gun placement [gunplc] is heavily damaged.
-    #2 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 9/12) and hits #1
-  farming complex [000014] doing 4 damage.
-    #1 farming complex [farms] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 9/12) and hits #3
-  farming complex [000014] doing 4 damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and hits #1 gun placement [111]
+  doing 4 damage.
+    #1 gun placement [gunplc] is heavily damaged.
+    #1 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fire on farming complex [000014] (chance: 18/12) and hits #3 farming
+  complex [000014] doing 4 damage.
     #3 farming complex [farms] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 9/12) and hits #1
-  farming complex [000014] doing 4 damage.
+  Surrender or die! [109] fire on farming complex [000014] (chance: 18/12) and hits #1 farming
+  complex [000014] doing 4 damage.
     #1 farming complex [farms] is lightly damaged.
-  ------------------------------------------------------------
-  Round 9:
-  ------------------------------------------------------------
-  Attackers:
-  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
-    size: 240.
-    hit points: 100/54, attack: 4, defense: 4.
-      #1 hit points: 100/54, lightly damaged.
-  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
-    size: 720.
-    hit points: 300/300, attack: 12, defense: 12.
-      #1 hit points: 100/100.
-      #2 hit points: 100/100.
-      #3 hit points: 100/100.
-  Defenders:
-  + farming complex [000014], 3 farming complexes [farms], immobile.
-    size: 3000, mass: 375 (300), energy: 15, crew: 15/15.
-    hit points: 165/117.
-    items: 15 terrans [terran], 15 units of food [food].
-      #1 hit points: 55/35, lightly damaged.
-      #2 hit points: 55/43.
-      #3 hit points: 55/39, lightly damaged.
-  + coal-burning plant [000015], 3 coal-burning plants [cplant], immobile.
-    size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
-    hit points: 300/300, attack: 3.
-    items: 6 terrans [terran].
-      #1 hit points: 100/100.
-      #2 hit points: 100/100.
-      #3 hit points: 100/100.
-  + core drill [000016], core drill [cdrill], immobile.
-    size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
-    hit points: 100/100.
-    items: 6 terrans [terran], unit of carbon [carbon].
-      #1 hit points: 100/100.
-  + factory [000017], 5 factories [factry], partially disabled, immobile.
-    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
-    hit points: 500/500.
-    items: 46 terrans [terran].
-      #1 hit points: 100/100.
-      #2 hit points: 100/100.
-      #3 hit points: 100/100.
-      #4 hit points: 100/100.
-      #5 hit points: 100/100, effects: inactive.
-  + gun placement [111], 5 gun placements [gunplc], disabled, immobile.
-    size: 500, mass: 2516 (2500).
-    hit points: 500/192.
-    items: 4 terrans [terran].
-      #1 hit points: 100/32, heavily damaged, effects: disabled.
-      #2 hit points: 100/40, heavily damaged, effects: disabled.
-      #3 hit points: 100/40, heavily damaged, effects: disabled.
-      #4 hit points: 100/40, heavily damaged, effects: disabled.
-      #5 hit points: 100/40, heavily damaged, effects: disabled.
-  ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] (chance: 3/4) and hits #3 gun
-  placement [111] doing 4 damage.
-    #3 gun placement [gunplc] is heavily damaged.
-    #3 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 9/12) and hits #3
-  farming complex [000014] doing 4 damage.
-    #3 farming complex [farms] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 9/12) and hits #1
-  farming complex [000014] doing 4 damage.
-    #1 farming complex [farms] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 9/12) and hits #3
-  farming complex [000014] doing 4 damage.
-    #3 farming complex [farms] is lightly damaged.
+  Surrender or die! [109] fire on farming complex [000014] (chance: 18/12) and hits #2 farming
+  complex [000014] doing 4 damage.
   ------------------------------------------------------------
   Round 10:
   ------------------------------------------------------------
   Attackers:
   - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
-    hit points: 100/54, attack: 4, defense: 4.
-      #1 hit points: 100/54, lightly damaged.
+    hit points: 100/56, attack: 4, defense: 4, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 12, defense: 12.
@@ -3137,7 +3011,6 @@ Battles report:
     size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
     hit points: 100/100.
     items: 6 terrans [terran], unit of carbon [carbon].
-      #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
     size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
@@ -3149,27 +3022,28 @@ Battles report:
       #5 hit points: 100/100, effects: inactive.
   + gun placement [111], 5 gun placements [gunplc], disabled, immobile.
     size: 500, mass: 2516 (2500).
-    hit points: 500/188.
+    hit points: 500/192.
     items: 4 terrans [terran].
-      #1 hit points: 100/32, heavily damaged, effects: disabled.
-      #2 hit points: 100/40, heavily damaged, effects: disabled.
-      #3 hit points: 100/36, heavily damaged, effects: disabled.
-      #4 hit points: 100/40, heavily damaged, effects: disabled.
-      #5 hit points: 100/40, heavily damaged, effects: disabled.
+      #1 hit points: 100/36, heavily damaged, effects: disabled.
+      #2 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/40, heavily damaged, effects: disabled.
+      #4 hit points: 100/36, heavily damaged, effects: disabled.
+      #5 hit points: 100/36, heavily damaged, effects: disabled.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] (chance: 3/4) and hits #4 gun
-  placement [111] doing 4 damage.
-    #4 gun placement [gunplc] is heavily damaged.
-    #4 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 9/12) and hits #2
-  farming complex [000014] doing 4 damage.
-    #2 farming complex [farms] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 9/12) and hits #3
-  farming complex [000014] doing 4 damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and hits #2 gun placement [111]
+  doing 4 damage.
+    #2 gun placement [gunplc] is heavily damaged.
+    #2 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fire on farming complex [000014] (chance: 18/12) and hits #1 farming
+  complex [000014] doing 4 damage.
+    #1 farming complex [farms] is heavily damaged.
+    #1 farming complex [farms] is disabled.
+  Surrender or die! [109] fire on farming complex [000014] (chance: 18/12) and hits #3 farming
+  complex [000014] doing 4 damage.
     #3 farming complex [farms] is heavily damaged.
     #3 farming complex [farms] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 9/12) and hits #1
-  farming complex [000014] doing 4 damage.
+  Surrender or die! [109] fire on farming complex [000014] (chance: 18/12) and hits #1 farming
+  complex [000014] doing 4 damage.
     #1 farming complex [farms] is heavily damaged.
     #1 farming complex [farms] is disabled.
   ------------------------------------------------------------
@@ -3184,8 +3058,7 @@ Battles report:
   Attackers:
   - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
-    hit points: 100/54, attack: 4, defense: 4.
-      #1 hit points: 100/54, lightly damaged.
+    hit points: 100/56, attack: 4, defense: 4, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 12, defense: 12.
@@ -3201,16 +3074,16 @@ Battles report:
     [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 95
     units of carbon [carbon].
       #1 hit points: 55/27, heavily damaged, effects: disabled.
-      #2 hit points: 55/23, heavily damaged, effects: disabled.
-      #3 hit points: 55/27, heavily damaged, effects: disabled.
+      #2 hit points: 55/27, heavily damaged, effects: disabled.
+      #3 hit points: 55/23, heavily damaged, effects: disabled.
       #4 hit points: 55/27, heavily damaged, effects: disabled.
       #5 hit points: 55/27, heavily damaged, effects: disabled.
   + farming complex [000014], 3 farming complexes [farms], immobile.
     size: 3000, mass: 365 (300), energy: 5, crew: 5/15.
     hit points: 165/93.
     items: 15 terrans [terran], 5 units of food [food].
-      #1 hit points: 55/27, heavily damaged, effects: disabled.
-      #2 hit points: 55/39, lightly damaged.
+      #1 hit points: 55/23, heavily damaged, effects: disabled.
+      #2 hit points: 55/43.
       #3 hit points: 55/27, heavily damaged, effects: disabled.
   + coal-burning plant [000015], 3 coal-burning plants [cplant], immobile.
     size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
@@ -3223,7 +3096,85 @@ Battles report:
     size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
     hit points: 100/100.
     items: 6 terrans [terran], unit of carbon [carbon].
+  + factory [000017], 5 factories [factry], partially disabled, immobile.
+    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
+    hit points: 500/500.
+    items: 46 terrans [terran].
       #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100, effects: inactive.
+  + gun placement [111], 5 gun placements [gunplc], disabled, immobile.
+    size: 500, mass: 2516 (2500).
+    hit points: 500/188.
+    items: 4 terrans [terran].
+      #1 hit points: 100/36, heavily damaged, effects: disabled.
+      #2 hit points: 100/40, heavily damaged, effects: disabled.
+      #3 hit points: 100/40, heavily damaged, effects: disabled.
+      #4 hit points: 100/36, heavily damaged, effects: disabled.
+      #5 hit points: 100/36, heavily damaged, effects: disabled.
+  ------------------------------------------------------------
+  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and hits #2 gun placement [111]
+  doing 4 damage.
+    #2 gun placement [gunplc] is heavily damaged.
+    #2 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fire on farming complex [000014] (chance: 18/12) and hits #1 farming
+  complex [000014] doing 4 damage.
+    #1 farming complex [farms] is heavily damaged.
+    #1 farming complex [farms] is disabled.
+  Surrender or die! [109] fire on farming complex [000014] (chance: 18/12) and hits #3 farming
+  complex [000014] doing 4 damage.
+    #3 farming complex [farms] is heavily damaged.
+    #3 farming complex [farms] is disabled.
+  Surrender or die! [109] fire on farming complex [000014] (chance: 18/12) and hits #1 farming
+  complex [000014] doing 4 damage.
+    #1 farming complex [farms] is heavily damaged.
+    #1 farming complex [farms] is disabled.
+  ------------------------------------------------------------
+  Round 2:
+  ------------------------------------------------------------
+  Attackers:
+  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
+    size: 240.
+    hit points: 100/56, attack: 4, defense: 4, lightly damaged.
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/300, attack: 12, defense: 12.
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  Defenders:
+  + small cargo bay [000013], 5 small cargo bays [cargob], disabled, immobile.
+    size: 10000, mass: 6910 (1000).
+    hit points: 275/131.
+    items: 925 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 95
+    units of carbon [carbon].
+      #1 hit points: 55/27, heavily damaged, effects: disabled.
+      #2 hit points: 55/27, heavily damaged, effects: disabled.
+      #3 hit points: 55/23, heavily damaged, effects: disabled.
+      #4 hit points: 55/27, heavily damaged, effects: disabled.
+      #5 hit points: 55/27, heavily damaged, effects: disabled.
+  + farming complex [000014], 3 farming complexes [farms], immobile.
+    size: 3000, mass: 365 (300), energy: 5, crew: 5/15.
+    hit points: 165/81.
+    items: 15 terrans [terran], 5 units of food [food].
+      #1 hit points: 55/15, heavily damaged, effects: disabled.
+      #2 hit points: 55/43.
+      #3 hit points: 55/23, heavily damaged, effects: disabled.
+  + coal-burning plant [000015], 3 coal-burning plants [cplant], immobile.
+    size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
+    hit points: 300/300, attack: 3.
+    items: 6 terrans [terran].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  + core drill [000016], core drill [cdrill], immobile.
+    size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
+    hit points: 100/100.
+    items: 6 terrans [terran], unit of carbon [carbon].
   + factory [000017], 5 factories [factry], partially disabled, immobile.
     size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
@@ -3237,35 +3188,35 @@ Battles report:
     size: 500, mass: 2516 (2500).
     hit points: 500/184.
     items: 4 terrans [terran].
-      #1 hit points: 100/32, heavily damaged, effects: disabled.
-      #2 hit points: 100/40, heavily damaged, effects: disabled.
-      #3 hit points: 100/36, heavily damaged, effects: disabled.
+      #1 hit points: 100/36, heavily damaged, effects: disabled.
+      #2 hit points: 100/36, heavily damaged, effects: disabled.
+      #3 hit points: 100/40, heavily damaged, effects: disabled.
       #4 hit points: 100/36, heavily damaged, effects: disabled.
-      #5 hit points: 100/40, heavily damaged, effects: disabled.
+      #5 hit points: 100/36, heavily damaged, effects: disabled.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] (chance: 3/4) and hits #4 gun
-  placement [111] doing 4 damage.
-    #4 gun placement [gunplc] is heavily damaged.
-    #4 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 9/12) and hits #2
-  farming complex [000014] doing 4 damage.
-    #2 farming complex [farms] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 9/12) and hits #3
-  farming complex [000014] doing 4 damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and hits #3 gun placement [111]
+  doing 4 damage.
+    #3 gun placement [gunplc] is heavily damaged.
+    #3 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fire on farming complex [000014] (chance: 18/12) and hits #3 farming
+  complex [000014] doing 4 damage.
     #3 farming complex [farms] is heavily damaged.
     #3 farming complex [farms] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 9/12) and hits #1
-  farming complex [000014] doing 4 damage.
-    #1 farming complex [farms] is heavily damaged.
+  Surrender or die! [109] fire on farming complex [000014] (chance: 18/12) and hits #1 farming
+  complex [000014] doing 4 damage.
+    #1 farming complex [farms] is critically damaged.
     #1 farming complex [farms] is disabled.
+  Surrender or die! [109] fire on farming complex [000014] (chance: 18/12) and hits #3 farming
+  complex [000014] doing 4 damage.
+    #3 farming complex [farms] is heavily damaged.
+    #3 farming complex [farms] is disabled.
   ------------------------------------------------------------
-  Round 2:
+  Round 3:
   ------------------------------------------------------------
   Attackers:
   - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
-    hit points: 100/54, attack: 4, defense: 4.
-      #1 hit points: 100/54, lightly damaged.
+    hit points: 100/56, attack: 4, defense: 4, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 12, defense: 12.
@@ -3281,17 +3232,17 @@ Battles report:
     [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 95
     units of carbon [carbon].
       #1 hit points: 55/27, heavily damaged, effects: disabled.
-      #2 hit points: 55/23, heavily damaged, effects: disabled.
-      #3 hit points: 55/27, heavily damaged, effects: disabled.
+      #2 hit points: 55/27, heavily damaged, effects: disabled.
+      #3 hit points: 55/23, heavily damaged, effects: disabled.
       #4 hit points: 55/27, heavily damaged, effects: disabled.
       #5 hit points: 55/27, heavily damaged, effects: disabled.
   + farming complex [000014], 3 farming complexes [farms], immobile.
     size: 3000, mass: 365 (300), energy: 5, crew: 5/15.
-    hit points: 165/81.
+    hit points: 165/69.
     items: 15 terrans [terran], 5 units of food [food].
-      #1 hit points: 55/23, heavily damaged, effects: disabled.
-      #2 hit points: 55/35, lightly damaged.
-      #3 hit points: 55/23, heavily damaged, effects: disabled.
+      #1 hit points: 55/11, critically damaged, effects: disabled.
+      #2 hit points: 55/43.
+      #3 hit points: 55/15, heavily damaged, effects: disabled.
   + coal-burning plant [000015], 3 coal-burning plants [cplant], immobile.
     size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
     hit points: 300/300, attack: 3.
@@ -3303,7 +3254,6 @@ Battles report:
     size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
     hit points: 100/100.
     items: 6 terrans [terran], unit of carbon [carbon].
-      #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
     size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
@@ -3317,35 +3267,34 @@ Battles report:
     size: 500, mass: 2516 (2500).
     hit points: 500/180.
     items: 4 terrans [terran].
-      #1 hit points: 100/32, heavily damaged, effects: disabled.
-      #2 hit points: 100/40, heavily damaged, effects: disabled.
+      #1 hit points: 100/36, heavily damaged, effects: disabled.
+      #2 hit points: 100/36, heavily damaged, effects: disabled.
       #3 hit points: 100/36, heavily damaged, effects: disabled.
-      #4 hit points: 100/32, heavily damaged, effects: disabled.
-      #5 hit points: 100/40, heavily damaged, effects: disabled.
+      #4 hit points: 100/36, heavily damaged, effects: disabled.
+      #5 hit points: 100/36, heavily damaged, effects: disabled.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] (chance: 3/4) and hits #5 gun
-  placement [111] doing 4 damage.
-    #5 gun placement [gunplc] is heavily damaged.
-    #5 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 9/12) and hits #1
-  farming complex [000014] doing 4 damage.
-    #1 farming complex [farms] is heavily damaged.
-    #1 farming complex [farms] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 9/12) and hits #2
-  farming complex [000014] doing 4 damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and hits #4 gun placement [111]
+  doing 4 damage.
+    #4 gun placement [gunplc] is heavily damaged.
+    #4 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fire on farming complex [000014] (chance: 18/12) and hits #2 farming
+  complex [000014] doing 4 damage.
     #2 farming complex [farms] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 9/12) and hits #3
-  farming complex [000014] doing 4 damage.
-    #3 farming complex [farms] is heavily damaged.
+  Surrender or die! [109] fire on farming complex [000014] (chance: 18/12) and hits #3 farming
+  complex [000014] doing 4 damage.
+    #3 farming complex [farms] is critically damaged.
     #3 farming complex [farms] is disabled.
+  Surrender or die! [109] fire on farming complex [000014] (chance: 18/12) and hits #1 farming
+  complex [000014] doing 4 damage.
+    #1 farming complex [farms] is critically damaged.
+    #1 farming complex [farms] is disabled.
   ------------------------------------------------------------
-  Round 3:
+  Round 4:
   ------------------------------------------------------------
   Attackers:
   - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
-    hit points: 100/54, attack: 4, defense: 4.
-      #1 hit points: 100/54, lightly damaged.
+    hit points: 100/56, attack: 4, defense: 4, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 12, defense: 12.
@@ -3361,17 +3310,17 @@ Battles report:
     [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 95
     units of carbon [carbon].
       #1 hit points: 55/27, heavily damaged, effects: disabled.
-      #2 hit points: 55/23, heavily damaged, effects: disabled.
-      #3 hit points: 55/27, heavily damaged, effects: disabled.
+      #2 hit points: 55/27, heavily damaged, effects: disabled.
+      #3 hit points: 55/23, heavily damaged, effects: disabled.
       #4 hit points: 55/27, heavily damaged, effects: disabled.
       #5 hit points: 55/27, heavily damaged, effects: disabled.
   + farming complex [000014], 3 farming complexes [farms], immobile.
     size: 3000, mass: 365 (300), energy: 5, crew: 5/15.
-    hit points: 165/69.
+    hit points: 165/57.
     items: 15 terrans [terran], 5 units of food [food].
-      #1 hit points: 55/19, heavily damaged, effects: disabled.
-      #2 hit points: 55/31, lightly damaged.
-      #3 hit points: 55/19, heavily damaged, effects: disabled.
+      #1 hit points: 55/7, critically damaged, effects: disabled.
+      #2 hit points: 55/39, lightly damaged.
+      #3 hit points: 55/11, critically damaged, effects: disabled.
   + coal-burning plant [000015], 3 coal-burning plants [cplant], immobile.
     size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
     hit points: 300/300, attack: 3.
@@ -3383,7 +3332,6 @@ Battles report:
     size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
     hit points: 100/100.
     items: 6 terrans [terran], unit of carbon [carbon].
-      #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
     size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
@@ -3397,36 +3345,34 @@ Battles report:
     size: 500, mass: 2516 (2500).
     hit points: 500/176.
     items: 4 terrans [terran].
-      #1 hit points: 100/32, heavily damaged, effects: disabled.
-      #2 hit points: 100/40, heavily damaged, effects: disabled.
+      #1 hit points: 100/36, heavily damaged, effects: disabled.
+      #2 hit points: 100/36, heavily damaged, effects: disabled.
       #3 hit points: 100/36, heavily damaged, effects: disabled.
       #4 hit points: 100/32, heavily damaged, effects: disabled.
       #5 hit points: 100/36, heavily damaged, effects: disabled.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] (chance: 3/4) and hits #1 gun
-  placement [111] doing 4 damage.
-    #1 gun placement [gunplc] is heavily damaged.
-    #1 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 9/12) and hits #3
-  farming complex [000014] doing 4 damage.
-    #3 farming complex [farms] is heavily damaged.
-    #3 farming complex [farms] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 9/12) and hits #1
-  farming complex [000014] doing 4 damage.
-    #1 farming complex [farms] is heavily damaged.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and hits #5 gun placement [111]
+  doing 4 damage.
+    #5 gun placement [gunplc] is heavily damaged.
+    #5 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fire on farming complex [000014] (chance: 18/12) and hits #1 farming
+  complex [000014] doing 4 damage.
+    #1 farming complex [farms] is critically damaged.
     #1 farming complex [farms] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on farming complex [000014] (chance: 9/12) and hits #2
-  farming complex [000014] doing 4 damage.
-    #2 farming complex [farms] is heavily damaged.
-    #2 farming complex [farms] is disabled.
+  Surrender or die! [109] fire on farming complex [000014] (chance: 18/12) and hits #2 farming
+  complex [000014] doing 4 damage.
+    #2 farming complex [farms] is lightly damaged.
+  Surrender or die! [109] fire on farming complex [000014] (chance: 18/12) and hits #3 farming
+  complex [000014] doing 4 damage.
+    #3 farming complex [farms] is critically damaged.
+    #3 farming complex [farms] is disabled.
   ------------------------------------------------------------
-  Round 4:
+  Round 5:
   ------------------------------------------------------------
   Attackers:
   - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
-    hit points: 100/54, attack: 4, defense: 4.
-      #1 hit points: 100/54, lightly damaged.
+    hit points: 100/56, attack: 4, defense: 4, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 12, defense: 12.
@@ -3442,10 +3388,17 @@ Battles report:
     [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 95
     units of carbon [carbon].
       #1 hit points: 55/27, heavily damaged, effects: disabled.
-      #2 hit points: 55/23, heavily damaged, effects: disabled.
-      #3 hit points: 55/27, heavily damaged, effects: disabled.
+      #2 hit points: 55/27, heavily damaged, effects: disabled.
+      #3 hit points: 55/23, heavily damaged, effects: disabled.
       #4 hit points: 55/27, heavily damaged, effects: disabled.
       #5 hit points: 55/27, heavily damaged, effects: disabled.
+  + farming complex [000014], 3 farming complexes [farms], immobile.
+    size: 3000, mass: 365 (300), energy: 5, crew: 5/15.
+    hit points: 165/45.
+    items: 15 terrans [terran], 5 units of food [food].
+      #1 hit points: 55/3, critically damaged, effects: disabled.
+      #2 hit points: 55/35, lightly damaged.
+      #3 hit points: 55/7, critically damaged, effects: disabled.
   + coal-burning plant [000015], 3 coal-burning plants [cplant], immobile.
     size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
     hit points: 300/300, attack: 3.
@@ -3457,7 +3410,6 @@ Battles report:
     size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
     hit points: 100/100.
     items: 6 terrans [terran], unit of carbon [carbon].
-      #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
     size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
@@ -3471,30 +3423,33 @@ Battles report:
     size: 500, mass: 2516 (2500).
     hit points: 500/172.
     items: 4 terrans [terran].
-      #1 hit points: 100/28, heavily damaged, effects: disabled.
-      #2 hit points: 100/40, heavily damaged, effects: disabled.
+      #1 hit points: 100/36, heavily damaged, effects: disabled.
+      #2 hit points: 100/36, heavily damaged, effects: disabled.
       #3 hit points: 100/36, heavily damaged, effects: disabled.
       #4 hit points: 100/32, heavily damaged, effects: disabled.
-      #5 hit points: 100/36, heavily damaged, effects: disabled.
+      #5 hit points: 100/32, heavily damaged, effects: disabled.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] (chance: 3/4) and hits #2 gun
-  placement [111] doing 4 damage.
-    #2 gun placement [gunplc] is heavily damaged.
-    #2 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 9/12) and hits
-  #1 coal-burning plant [000015] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 9/12) and hits
-  #2 coal-burning plant [000015] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 9/12) and hits
-  #1 coal-burning plant [000015] doing 4 damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and hits #1 gun placement [111]
+  doing 4 damage.
+    #1 gun placement [gunplc] is heavily damaged.
+    #1 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fire on farming complex [000014] (chance: 18/12) and hits #3 farming
+  complex [000014] doing 4 damage.
+    #3 farming complex [farms] is critically damaged.
+    #3 farming complex [farms] is disabled.
+  Surrender or die! [109] fire on farming complex [000014] (chance: 18/12) and hits #1 farming
+  complex [000014] doing 3 damage.
+    #1 farming complex [farms] is wrecked.
+  Surrender or die! [109] fire on farming complex [000014] (chance: 18/12) and hits #2 farming
+  complex [000014] doing 4 damage.
+    #2 farming complex [farms] is lightly damaged.
   ------------------------------------------------------------
-  Round 5:
+  Round 6:
   ------------------------------------------------------------
   Attackers:
   - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
-    hit points: 100/54, attack: 4, defense: 4.
-      #1 hit points: 100/54, lightly damaged.
+    hit points: 100/56, attack: 4, defense: 4, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 12, defense: 12.
@@ -3510,22 +3465,28 @@ Battles report:
     [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 95
     units of carbon [carbon].
       #1 hit points: 55/27, heavily damaged, effects: disabled.
-      #2 hit points: 55/23, heavily damaged, effects: disabled.
-      #3 hit points: 55/27, heavily damaged, effects: disabled.
+      #2 hit points: 55/27, heavily damaged, effects: disabled.
+      #3 hit points: 55/23, heavily damaged, effects: disabled.
       #4 hit points: 55/27, heavily damaged, effects: disabled.
       #5 hit points: 55/27, heavily damaged, effects: disabled.
+  + farming complex [000014], 3 farming complexes [farms], immobile.
+    size: 3000, mass: 365 (300), energy: 5, crew: 5/15.
+    hit points: 165/34.
+    items: 15 terrans [terran], 5 units of food [food].
+      #1 hit points: 55/0, destroyed, effects: disabled.
+      #2 hit points: 55/31, lightly damaged.
+      #3 hit points: 55/3, critically damaged, effects: disabled.
   + coal-burning plant [000015], 3 coal-burning plants [cplant], immobile.
     size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
-    hit points: 300/288, attack: 3.
+    hit points: 300/300, attack: 3.
     items: 6 terrans [terran].
-      #1 hit points: 100/92.
-      #2 hit points: 100/96.
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
       #3 hit points: 100/100.
   + core drill [000016], core drill [cdrill], immobile.
     size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
     hit points: 100/100.
     items: 6 terrans [terran], unit of carbon [carbon].
-      #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
     size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
@@ -3539,30 +3500,27 @@ Battles report:
     size: 500, mass: 2516 (2500).
     hit points: 500/168.
     items: 4 terrans [terran].
-      #1 hit points: 100/28, heavily damaged, effects: disabled.
+      #1 hit points: 100/32, heavily damaged, effects: disabled.
       #2 hit points: 100/36, heavily damaged, effects: disabled.
       #3 hit points: 100/36, heavily damaged, effects: disabled.
       #4 hit points: 100/32, heavily damaged, effects: disabled.
-      #5 hit points: 100/36, heavily damaged, effects: disabled.
+      #5 hit points: 100/32, heavily damaged, effects: disabled.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] (chance: 3/4) and hits #3 gun
-  placement [111] doing 4 damage.
-    #3 gun placement [gunplc] is heavily damaged.
-    #3 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 9/12) and hits
-  #2 coal-burning plant [000015] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 9/12) and hits
-  #1 coal-burning plant [000015] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 9/12) and hits
-  #2 coal-burning plant [000015] doing 4 damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and hits #2 gun placement [111]
+  doing 4 damage.
+    #2 gun placement [gunplc] is heavily damaged.
+    #2 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fire on farming complex [000014] (chance: 18/12) and hits #2 farming
+  complex [000014] doing 4 damage.
+    #2 farming complex [farms] is heavily damaged.
+    #2 farming complex [farms] is disabled.
   ------------------------------------------------------------
-  Round 6:
+  Round 7:
   ------------------------------------------------------------
   Attackers:
   - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
-    hit points: 100/54, attack: 4, defense: 4.
-      #1 hit points: 100/54, lightly damaged.
+    hit points: 100/56, attack: 4, defense: 4, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 12, defense: 12.
@@ -3578,22 +3536,21 @@ Battles report:
     [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 95
     units of carbon [carbon].
       #1 hit points: 55/27, heavily damaged, effects: disabled.
-      #2 hit points: 55/23, heavily damaged, effects: disabled.
-      #3 hit points: 55/27, heavily damaged, effects: disabled.
+      #2 hit points: 55/27, heavily damaged, effects: disabled.
+      #3 hit points: 55/23, heavily damaged, effects: disabled.
       #4 hit points: 55/27, heavily damaged, effects: disabled.
       #5 hit points: 55/27, heavily damaged, effects: disabled.
   + coal-burning plant [000015], 3 coal-burning plants [cplant], immobile.
     size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
-    hit points: 300/276, attack: 3.
+    hit points: 300/300, attack: 3.
     items: 6 terrans [terran].
-      #1 hit points: 100/88.
-      #2 hit points: 100/88.
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
       #3 hit points: 100/100.
   + core drill [000016], core drill [cdrill], immobile.
     size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
     hit points: 100/100.
     items: 6 terrans [terran], unit of carbon [carbon].
-      #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
     size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
@@ -3607,30 +3564,29 @@ Battles report:
     size: 500, mass: 2516 (2500).
     hit points: 500/164.
     items: 4 terrans [terran].
-      #1 hit points: 100/28, heavily damaged, effects: disabled.
-      #2 hit points: 100/36, heavily damaged, effects: disabled.
-      #3 hit points: 100/32, heavily damaged, effects: disabled.
+      #1 hit points: 100/32, heavily damaged, effects: disabled.
+      #2 hit points: 100/32, heavily damaged, effects: disabled.
+      #3 hit points: 100/36, heavily damaged, effects: disabled.
       #4 hit points: 100/32, heavily damaged, effects: disabled.
-      #5 hit points: 100/36, heavily damaged, effects: disabled.
+      #5 hit points: 100/32, heavily damaged, effects: disabled.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] (chance: 3/4) and hits #4 gun
-  placement [111] doing 4 damage.
-    #4 gun placement [gunplc] is heavily damaged.
-    #4 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 9/12) and hits
-  #3 coal-burning plant [000015] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 9/12) and hits
-  #2 coal-burning plant [000015] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 9/12) and hits
-  #1 coal-burning plant [000015] doing 4 damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and hits #5 gun placement [111]
+  doing 4 damage.
+    #5 gun placement [gunplc] is heavily damaged.
+    #5 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fire on coal-burning plant [000015] (chance: 18/12) and hits #1
+  coal-burning plant [000015] doing 4 damage.
+  Surrender or die! [109] fire on coal-burning plant [000015] (chance: 18/12) and hits #3
+  coal-burning plant [000015] doing 4 damage.
+  Surrender or die! [109] fire on coal-burning plant [000015] (chance: 18/12) and hits #2
+  coal-burning plant [000015] doing 4 damage.
   ------------------------------------------------------------
-  Round 7:
+  Round 8:
   ------------------------------------------------------------
   Attackers:
   - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
-    hit points: 100/54, attack: 4, defense: 4.
-      #1 hit points: 100/54, lightly damaged.
+    hit points: 100/56, attack: 4, defense: 4, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 12, defense: 12.
@@ -3646,22 +3602,21 @@ Battles report:
     [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 95
     units of carbon [carbon].
       #1 hit points: 55/27, heavily damaged, effects: disabled.
-      #2 hit points: 55/23, heavily damaged, effects: disabled.
-      #3 hit points: 55/27, heavily damaged, effects: disabled.
+      #2 hit points: 55/27, heavily damaged, effects: disabled.
+      #3 hit points: 55/23, heavily damaged, effects: disabled.
       #4 hit points: 55/27, heavily damaged, effects: disabled.
       #5 hit points: 55/27, heavily damaged, effects: disabled.
   + coal-burning plant [000015], 3 coal-burning plants [cplant], immobile.
     size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
-    hit points: 300/264, attack: 3.
+    hit points: 300/288, attack: 3.
     items: 6 terrans [terran].
-      #1 hit points: 100/84.
-      #2 hit points: 100/84.
+      #1 hit points: 100/96.
+      #2 hit points: 100/96.
       #3 hit points: 100/96.
   + core drill [000016], core drill [cdrill], immobile.
     size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
     hit points: 100/100.
     items: 6 terrans [terran], unit of carbon [carbon].
-      #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
     size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
@@ -3675,30 +3630,29 @@ Battles report:
     size: 500, mass: 2516 (2500).
     hit points: 500/160.
     items: 4 terrans [terran].
-      #1 hit points: 100/28, heavily damaged, effects: disabled.
-      #2 hit points: 100/36, heavily damaged, effects: disabled.
-      #3 hit points: 100/32, heavily damaged, effects: disabled.
-      #4 hit points: 100/28, heavily damaged, effects: disabled.
-      #5 hit points: 100/36, heavily damaged, effects: disabled.
+      #1 hit points: 100/32, heavily damaged, effects: disabled.
+      #2 hit points: 100/32, heavily damaged, effects: disabled.
+      #3 hit points: 100/36, heavily damaged, effects: disabled.
+      #4 hit points: 100/32, heavily damaged, effects: disabled.
+      #5 hit points: 100/28, heavily damaged, effects: disabled.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] (chance: 3/4) and hits #5 gun
-  placement [111] doing 4 damage.
-    #5 gun placement [gunplc] is heavily damaged.
-    #5 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 9/12) and hits
-  #1 coal-burning plant [000015] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 9/12) and hits
-  #3 coal-burning plant [000015] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 9/12) and hits
-  #2 coal-burning plant [000015] doing 4 damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and hits #1 gun placement [111]
+  doing 4 damage.
+    #1 gun placement [gunplc] is heavily damaged.
+    #1 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fire on coal-burning plant [000015] (chance: 18/12) and hits #2
+  coal-burning plant [000015] doing 4 damage.
+  Surrender or die! [109] fire on coal-burning plant [000015] (chance: 18/12) and hits #1
+  coal-burning plant [000015] doing 4 damage.
+  Surrender or die! [109] fire on coal-burning plant [000015] (chance: 18/12) and hits #3
+  coal-burning plant [000015] doing 4 damage.
   ------------------------------------------------------------
-  Round 8:
+  Round 9:
   ------------------------------------------------------------
   Attackers:
   - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
-    hit points: 100/54, attack: 4, defense: 4.
-      #1 hit points: 100/54, lightly damaged.
+    hit points: 100/56, attack: 4, defense: 4, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 12, defense: 12.
@@ -3714,22 +3668,21 @@ Battles report:
     [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 95
     units of carbon [carbon].
       #1 hit points: 55/27, heavily damaged, effects: disabled.
-      #2 hit points: 55/23, heavily damaged, effects: disabled.
-      #3 hit points: 55/27, heavily damaged, effects: disabled.
+      #2 hit points: 55/27, heavily damaged, effects: disabled.
+      #3 hit points: 55/23, heavily damaged, effects: disabled.
       #4 hit points: 55/27, heavily damaged, effects: disabled.
       #5 hit points: 55/27, heavily damaged, effects: disabled.
   + coal-burning plant [000015], 3 coal-burning plants [cplant], immobile.
     size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
-    hit points: 300/252, attack: 3.
+    hit points: 300/276, attack: 3.
     items: 6 terrans [terran].
-      #1 hit points: 100/80.
-      #2 hit points: 100/80.
+      #1 hit points: 100/92.
+      #2 hit points: 100/92.
       #3 hit points: 100/92.
   + core drill [000016], core drill [cdrill], immobile.
     size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
     hit points: 100/100.
     items: 6 terrans [terran], unit of carbon [carbon].
-      #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
     size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
@@ -3744,29 +3697,28 @@ Battles report:
     hit points: 500/156.
     items: 4 terrans [terran].
       #1 hit points: 100/28, heavily damaged, effects: disabled.
-      #2 hit points: 100/36, heavily damaged, effects: disabled.
-      #3 hit points: 100/32, heavily damaged, effects: disabled.
-      #4 hit points: 100/28, heavily damaged, effects: disabled.
-      #5 hit points: 100/32, heavily damaged, effects: disabled.
+      #2 hit points: 100/32, heavily damaged, effects: disabled.
+      #3 hit points: 100/36, heavily damaged, effects: disabled.
+      #4 hit points: 100/32, heavily damaged, effects: disabled.
+      #5 hit points: 100/28, heavily damaged, effects: disabled.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] (chance: 3/4) and hits #1 gun
-  placement [111] doing 4 damage.
-    #1 gun placement [gunplc] is critically damaged.
-    #1 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 9/12) and hits
-  #2 coal-burning plant [000015] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 9/12) and hits
-  #1 coal-burning plant [000015] doing 4 damage.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 9/12) and hits
-  #3 coal-burning plant [000015] doing 4 damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and hits #2 gun placement [111]
+  doing 4 damage.
+    #2 gun placement [gunplc] is heavily damaged.
+    #2 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fire on coal-burning plant [000015] (chance: 18/12) and hits #1
+  coal-burning plant [000015] doing 4 damage.
+  Surrender or die! [109] fire on coal-burning plant [000015] (chance: 18/12) and hits #2
+  coal-burning plant [000015] doing 4 damage.
+  Surrender or die! [109] fire on coal-burning plant [000015] (chance: 18/12) and hits #1
+  coal-burning plant [000015] doing 4 damage.
   ------------------------------------------------------------
-  Round 9:
+  Round 10:
   ------------------------------------------------------------
   Attackers:
   - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
     size: 240.
-    hit points: 100/54, attack: 4, defense: 4.
-      #1 hit points: 100/54, lightly damaged.
+    hit points: 100/56, attack: 4, defense: 4, lightly damaged.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
     hit points: 300/300, attack: 12, defense: 12.
@@ -3782,22 +3734,21 @@ Battles report:
     [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 95
     units of carbon [carbon].
       #1 hit points: 55/27, heavily damaged, effects: disabled.
-      #2 hit points: 55/23, heavily damaged, effects: disabled.
-      #3 hit points: 55/27, heavily damaged, effects: disabled.
+      #2 hit points: 55/27, heavily damaged, effects: disabled.
+      #3 hit points: 55/23, heavily damaged, effects: disabled.
       #4 hit points: 55/27, heavily damaged, effects: disabled.
       #5 hit points: 55/27, heavily damaged, effects: disabled.
   + coal-burning plant [000015], 3 coal-burning plants [cplant], immobile.
     size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
-    hit points: 300/240, attack: 3.
+    hit points: 300/264, attack: 3.
     items: 6 terrans [terran].
-      #1 hit points: 100/76.
-      #2 hit points: 100/76.
-      #3 hit points: 100/88.
+      #1 hit points: 100/84.
+      #2 hit points: 100/88.
+      #3 hit points: 100/92.
   + core drill [000016], core drill [cdrill], immobile.
     size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
     hit points: 100/100.
     items: 6 terrans [terran], unit of carbon [carbon].
-      #1 hit points: 100/100.
   + factory [000017], 5 factories [factry], partially disabled, immobile.
     size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
     hit points: 500/500.
@@ -3811,96 +3762,22 @@ Battles report:
     size: 500, mass: 2516 (2500).
     hit points: 500/152.
     items: 4 terrans [terran].
-      #1 hit points: 100/24, critically damaged, effects: disabled.
-      #2 hit points: 100/36, heavily damaged, effects: disabled.
-      #3 hit points: 100/32, heavily damaged, effects: disabled.
-      #4 hit points: 100/28, heavily damaged, effects: disabled.
-      #5 hit points: 100/32, heavily damaged, effects: disabled.
+      #1 hit points: 100/28, heavily damaged, effects: disabled.
+      #2 hit points: 100/28, heavily damaged, effects: disabled.
+      #3 hit points: 100/36, heavily damaged, effects: disabled.
+      #4 hit points: 100/32, heavily damaged, effects: disabled.
+      #5 hit points: 100/28, heavily damaged, effects: disabled.
   ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] (chance: 3/4) and hits #2 gun
-  placement [111] doing 4 damage.
-    #2 gun placement [gunplc] is heavily damaged.
-    #2 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 9/12) and hits
-  #1 coal-burning plant [000015] doing 4 damage.
-    #1 coal-burning plant [cplant] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 9/12) and hits
-  #2 coal-burning plant [000015] doing 4 damage.
-    #2 coal-burning plant [cplant] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 9/12) and hits
-  #1 coal-burning plant [000015] doing 4 damage.
-    #1 coal-burning plant [cplant] is lightly damaged.
-  ------------------------------------------------------------
-  Round 10:
-  ------------------------------------------------------------
-  Attackers:
-  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
-    size: 240.
-    hit points: 100/54, attack: 4, defense: 4.
-      #1 hit points: 100/54, lightly damaged.
-  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
-    size: 720.
-    hit points: 300/300, attack: 12, defense: 12.
-      #1 hit points: 100/100.
-      #2 hit points: 100/100.
-      #3 hit points: 100/100.
-  Defenders:
-  + small cargo bay [000013], 5 small cargo bays [cargob], disabled, immobile.
-    size: 10000, mass: 6910 (1000).
-    hit points: 275/131.
-    items: 925 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
-    of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
-    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 95
-    units of carbon [carbon].
-      #1 hit points: 55/27, heavily damaged, effects: disabled.
-      #2 hit points: 55/23, heavily damaged, effects: disabled.
-      #3 hit points: 55/27, heavily damaged, effects: disabled.
-      #4 hit points: 55/27, heavily damaged, effects: disabled.
-      #5 hit points: 55/27, heavily damaged, effects: disabled.
-  + coal-burning plant [000015], 3 coal-burning plants [cplant], immobile.
-    size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
-    hit points: 300/228, attack: 3.
-    items: 6 terrans [terran].
-      #1 hit points: 100/68, lightly damaged.
-      #2 hit points: 100/72, lightly damaged.
-      #3 hit points: 100/88.
-  + core drill [000016], core drill [cdrill], immobile.
-    size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
-    hit points: 100/100.
-    items: 6 terrans [terran], unit of carbon [carbon].
-      #1 hit points: 100/100.
-  + factory [000017], 5 factories [factry], partially disabled, immobile.
-    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
-    hit points: 500/500.
-    items: 46 terrans [terran].
-      #1 hit points: 100/100.
-      #2 hit points: 100/100.
-      #3 hit points: 100/100.
-      #4 hit points: 100/100.
-      #5 hit points: 100/100, effects: inactive.
-  + gun placement [111], 5 gun placements [gunplc], disabled, immobile.
-    size: 500, mass: 2516 (2500).
-    hit points: 500/148.
-    items: 4 terrans [terran].
-      #1 hit points: 100/24, critically damaged, effects: disabled.
-      #2 hit points: 100/32, heavily damaged, effects: disabled.
-      #3 hit points: 100/32, heavily damaged, effects: disabled.
-      #4 hit points: 100/28, heavily damaged, effects: disabled.
-      #5 hit points: 100/32, heavily damaged, effects: disabled.
-  ------------------------------------------------------------
-  peaceful scout [108] fires tanks [tanks] on gun placement [111] (chance: 3/4) and hits #3 gun
-  placement [111] doing 4 damage.
+  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and hits #3 gun placement [111]
+  doing 4 damage.
     #3 gun placement [gunplc] is heavily damaged.
     #3 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 9/12) and hits
-  #2 coal-burning plant [000015] doing 4 damage.
-    #2 coal-burning plant [cplant] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 9/12) and hits
-  #1 coal-burning plant [000015] doing 4 damage.
-    #1 coal-burning plant [cplant] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on coal-burning plant [000015] (chance: 9/12) and hits
-  #2 coal-burning plant [000015] doing 4 damage.
-    #2 coal-burning plant [cplant] is lightly damaged.
+  Surrender or die! [109] fire on coal-burning plant [000015] (chance: 18/12) and hits #2
+  coal-burning plant [000015] doing 4 damage.
+  Surrender or die! [109] fire on coal-burning plant [000015] (chance: 18/12) and hits #1
+  coal-burning plant [000015] doing 4 damage.
+  Surrender or die! [109] fire on coal-burning plant [000015] (chance: 18/12) and hits #2
+  coal-burning plant [000015] doing 4 damage.
   ------------------------------------------------------------
   Battle ended indecisively.
 
@@ -4041,8 +3918,8 @@ Galaxy report:
       (0) units of food [food], 10 (0) units of terran breathing gas mixture [terair].
       hit points: 275/131.
         #1 hit points: 55/27, heavily damaged, disabled.
-        #2 hit points: 55/23, heavily damaged, disabled.
-        #3 hit points: 55/27, heavily damaged, disabled.
+        #2 hit points: 55/27, heavily damaged, disabled.
+        #3 hit points: 55/23, heavily damaged, disabled.
         #4 hit points: 55/27, heavily damaged, disabled.
         #5 hit points: 55/27, heavily damaged, disabled.
       items: 915 units of food [food] (size: 915, mass: 915), 850 units of terran breathing gas
@@ -4090,10 +3967,10 @@ Galaxy report:
     + farming complex [000014], 3 farming complexes [farms], disabled, immobile.
       size: 3000, mass: 360 (300), capacity: 1500/60, upkeep: 15 (0) cash [cash], consume: 15 (0)
       units of food [food], 15 (0) units of terran breathing gas mixture [terair].
-      hit points: 165/57.
-        #1 hit points: 55/15, heavily damaged, disabled.
+      hit points: 165/30.
+        #1 hit points: 55/0, destroyed, disabled.
         #2 hit points: 55/27, heavily damaged, disabled.
-        #3 hit points: 55/15, heavily damaged, disabled.
+        #3 hit points: 55/3, critically damaged, disabled.
       items: 15 terrans [terran] (size: 60, mass: 60, upkeep: 15 cash [cash], consume: 15 units of
       food [food], 15 units of terran breathing gas mixture [terair]).
       events:
@@ -4133,10 +4010,10 @@ Galaxy report:
       size: 3000, mass: 3024 (3000), capacity: 1500/24, energy: 120/30 (consume: 15 units of carbon
       [carbon] for 13 weeks), crew: 6/6, upkeep: 156 (150) cash [cash], consume: 6 (0) units of food
       [food], 6 (0) units of terran breathing gas mixture [terair].
-      hit points: 300/216.
-        #1 hit points: 100/64, lightly damaged.
-        #2 hit points: 100/64, lightly damaged.
-        #3 hit points: 100/88.
+      hit points: 300/252.
+        #1 hit points: 100/80.
+        #2 hit points: 100/80.
+        #3 hit points: 100/92.
       fuel requirements: 15 units of carbon [carbon] per 13 weeks.
       items: 6 terrans [terran] (size: 24, mass: 24, upkeep: 6 cash [cash], consume: 6 units of food
       [food], 6 units of terran breathing gas mixture [terair]).
@@ -4232,12 +4109,12 @@ Galaxy report:
     + gun placement [111], 5 gun placements [gunplc], disabled, immobile.
       size: 500, mass: 2516 (2500), capacity: 500/16, upkeep: 4 (0) cash [cash], consume: 4 (0)
       units of food [food], 4 (0) units of terran breathing gas mixture [terair].
-      hit points: 500/144.
-        #1 hit points: 100/24, critically damaged, disabled.
-        #2 hit points: 100/32, heavily damaged, disabled.
-        #3 hit points: 100/28, heavily damaged, disabled.
-        #4 hit points: 100/28, heavily damaged, disabled.
-        #5 hit points: 100/32, heavily damaged, disabled.
+      hit points: 500/148.
+        #1 hit points: 100/28, heavily damaged, disabled.
+        #2 hit points: 100/28, heavily damaged, disabled.
+        #3 hit points: 100/32, heavily damaged, disabled.
+        #4 hit points: 100/32, heavily damaged, disabled.
+        #5 hit points: 100/28, heavily damaged, disabled.
       items: 4 terrans [terran] (size: 16, mass: 16, upkeep: 4 cash [cash], consume: 4 units of food
       [food], 4 units of terran breathing gas mixture [terair]).
       events:
@@ -4258,20 +4135,10 @@ Galaxy report:
     size: 240.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-
-Press releases:
-  Earth [P00001] at AU 1, ocean planet [ocean]: NPC [1] — Gelvaren closes CT0121.
-    NPC records Gelvaren's fulfillment of CT0121 at Southern Hemisphere on Earth [P00001] at AU 1,
-    ocean planet [ocean].
 ------------------------------------------------------------
   * Luna [P00001], rocky moon [rock] 0.02 AU from the planet.
 ------------------------------------------------------------
     orbit [O00001], has no atmosphere.
-
-Press releases:
-  Earth [P00001] at AU 1, ocean planet [ocean]: NPC [1] — Gelvaren closes CT0121.
-    NPC records Gelvaren's fulfillment of CT0121 at Southern Hemisphere on Earth [P00001] at AU 1,
-    ocean planet [ocean].
 
 
 Orders Template:

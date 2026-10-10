@@ -899,7 +899,7 @@ namespace SpaceAge
 
 		private int getChance(ModuleStack modulestack, ModuleStack target, ETactic eTactic)
 		{
-			int chance = System.Convert.ToInt32((modulestack.Attack + modulestack.ModuleStacks.Attack()) / 2);
+			int chance = modulestack.Attack + modulestack.ModuleStacks.Attack();
 			if (target != null && !string.IsNullOrEmpty(modulestack.ModuleType != null ? modulestack.ModuleType.WeaponGroup : null))
 			{
 				string resists = target.ModuleType != null ? target.ModuleType.Resists : string.Empty;
@@ -909,7 +909,8 @@ namespace SpaceAge
 			{
 				chance = chance / 2;
 			}
-			if (target != null && target.IsImmobile)
+			if (target != null && target.IsImmobile
+				&& (target.ModuleType == null || !target.ModuleType.LivingUnit))
 			{
 				chance = chance + (chance / 2);
 			}

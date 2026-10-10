@@ -5,7 +5,7 @@ Content-Disposition: attachment
 SpaceAge report for Gelvaren [3].
 Turn 2, Year 2156, April 1.
 
-SpaceAge Engine Version: 0.8.003.
+SpaceAge Engine Version: 0.8.004.
 
 Bank report:
   Bank account balance: 10000.
@@ -460,6 +460,7 @@ train terran officer as new107
 ; effects:
 ;   producing tanks [tanks] for military barrack [000025] into tanks
 ;   [109], 3 weeks to complete.
+use armcbt as 109 for 000025
 
 #modulestack 000025
 ; + military barrack [000025], military barrack [barrck], immobile.
@@ -484,6 +485,9 @@ train terran officer as new107
 
 #person 000002
 ; + Gelvaren CEO [000002], terran [terran].
+train skill arpldr
+-see 109
+--stack 109
 
 #person 107
 ; + unformed officer [107].

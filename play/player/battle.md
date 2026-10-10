@@ -136,11 +136,11 @@ Fighter drones: high module `initiative` (20), small `damage` and hit points, ca
 Each **operational firing module** on the shooter (and nested armed stacks) rolls once.
 
 ```
-chance = (shooter.Attack + nested.Attack) / 2     // integer
+chance = shooter.Attack + nested.Attack
 if shooter.ModuleType.WeaponGroup is non-empty:
     chance = ceil(chance * CombatMatchup.ChanceMultiplier(weaponGroup, target.ModuleType.Resists))
 if target.HasEvade:     chance = chance / 2
-if target.IsImmobile:   chance = chance + chance / 2
+if target.IsImmobile and not a living unit:   chance = chance + chance / 2
 
 `IsImmobile` is the root’s ability to relocate: formed, `IsActive` (not disabled/partially disabled), and a usable move (space via self or nested drive with fuel, or ground with fuel). Nested modules inherit the root — a factory on a moving ship is not immobile; the same factory on a city is. Independent tanks/infantry that are roots use their own disable and fuel state. Launched fighter drones have shuttle-speed space move and are mobile when fueled. Gun placements on a city stay immobile for the combat to-hit bonus.
 dice   = shooter.Attack + nested.Attack + target.Defense + nested.Defense
