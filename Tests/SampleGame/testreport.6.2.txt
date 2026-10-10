@@ -68,7 +68,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -83,21 +82,20 @@ Battles report:
       #5 hit points: 100/68, lightly damaged, effects: inactive.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #3
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #3 factory [000017]
+  doing 1 damage and 3 capture damage.
     #3 factory [factry] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #2
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #2 factory [000017]
+  doing 1 damage and 3 capture damage.
     #2 factory [factry] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #1
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #1 factory [000017]
+  doing 1 damage and 3 capture damage.
     #1 factory [factry] is lightly damaged.
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] (chance: 1/3) and
-  hits #5 factory [000017] doing 0 damage and 1 capture damage.
+  infantry battalion [110] fires on factory [000017] (chance: 1/3) and hits #5 factory [000017]
+  doing 0 damage and 1 capture damage.
     #5 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Round 2:
@@ -114,7 +112,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -129,21 +126,20 @@ Battles report:
       #5 hit points: 100/68, capture: 1, lightly damaged, effects: inactive.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #4
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #4 factory [000017]
+  doing 1 damage and 3 capture damage.
     #4 factory [factry] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #3
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #3 factory [000017]
+  doing 1 damage and 3 capture damage.
     #3 factory [factry] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #2
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #2 factory [000017]
+  doing 1 damage and 3 capture damage.
     #2 factory [factry] is lightly damaged.
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] (chance: 1/3) and
-  hits #1 factory [000017] doing 0 damage and 1 capture damage.
+  infantry battalion [110] fires on factory [000017] (chance: 1/3) and hits #1 factory [000017]
+  doing 0 damage and 1 capture damage.
     #1 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Round 3:
@@ -160,7 +156,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -175,21 +170,20 @@ Battles report:
       #5 hit points: 100/68, capture: 1, lightly damaged, effects: inactive.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #5
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #5 factory [000017]
+  doing 1 damage and 3 capture damage.
     #5 factory [factry] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #4
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #4 factory [000017]
+  doing 1 damage and 3 capture damage.
     #4 factory [factry] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #3
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #3 factory [000017]
+  doing 1 damage and 3 capture damage.
     #3 factory [factry] is lightly damaged.
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] (chance: 1/3) and
-  hits #2 factory [000017] doing 0 damage and 1 capture damage.
+  infantry battalion [110] fires on factory [000017] (chance: 1/3) and hits #2 factory [000017]
+  doing 0 damage and 1 capture damage.
     #2 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Round 4:
@@ -206,7 +200,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -221,21 +214,20 @@ Battles report:
       #5 hit points: 100/67, capture: 4, lightly damaged, effects: inactive.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #1
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #1 factory [000017]
+  doing 1 damage and 3 capture damage.
     #1 factory [factry] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #5
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #5 factory [000017]
+  doing 1 damage and 3 capture damage.
     #5 factory [factry] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #4
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #4 factory [000017]
+  doing 1 damage and 3 capture damage.
     #4 factory [factry] is lightly damaged.
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] (chance: 1/3) and
-  hits #3 factory [000017] doing 0 damage and 1 capture damage.
+  infantry battalion [110] fires on factory [000017] (chance: 1/3) and hits #3 factory [000017]
+  doing 0 damage and 1 capture damage.
     #3 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Round 5:
@@ -252,7 +244,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -267,21 +258,20 @@ Battles report:
       #5 hit points: 100/66, capture: 7, lightly damaged, effects: inactive.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #2
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #2 factory [000017]
+  doing 1 damage and 3 capture damage.
     #2 factory [factry] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #1
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #1 factory [000017]
+  doing 1 damage and 3 capture damage.
     #1 factory [factry] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #5
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #5 factory [000017]
+  doing 1 damage and 3 capture damage.
     #5 factory [factry] is lightly damaged.
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] (chance: 1/3) and
-  hits #4 factory [000017] doing 0 damage and 1 capture damage.
+  infantry battalion [110] fires on factory [000017] (chance: 1/3) and hits #4 factory [000017]
+  doing 0 damage and 1 capture damage.
     #4 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Round 6:
@@ -298,7 +288,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -313,21 +302,20 @@ Battles report:
       #5 hit points: 100/65, capture: 10, lightly damaged, effects: inactive.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #3
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #3 factory [000017]
+  doing 1 damage and 3 capture damage.
     #3 factory [factry] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #2
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #2 factory [000017]
+  doing 1 damage and 3 capture damage.
     #2 factory [factry] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #1
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #1 factory [000017]
+  doing 1 damage and 3 capture damage.
     #1 factory [factry] is lightly damaged.
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] (chance: 1/3) and
-  hits #5 factory [000017] doing 0 damage and 1 capture damage.
+  infantry battalion [110] fires on factory [000017] (chance: 1/3) and hits #5 factory [000017]
+  doing 0 damage and 1 capture damage.
     #5 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Round 7:
@@ -344,7 +332,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -359,21 +346,20 @@ Battles report:
       #5 hit points: 100/65, capture: 11, lightly damaged, effects: inactive.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #4
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #4 factory [000017]
+  doing 1 damage and 3 capture damage.
     #4 factory [factry] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #3
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #3 factory [000017]
+  doing 1 damage and 3 capture damage.
     #3 factory [factry] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #2
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #2 factory [000017]
+  doing 1 damage and 3 capture damage.
     #2 factory [factry] is lightly damaged.
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] (chance: 1/3) and
-  hits #1 factory [000017] doing 0 damage and 1 capture damage.
+  infantry battalion [110] fires on factory [000017] (chance: 1/3) and hits #1 factory [000017]
+  doing 0 damage and 1 capture damage.
     #1 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Round 8:
@@ -390,7 +376,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -405,21 +390,20 @@ Battles report:
       #5 hit points: 100/65, capture: 11, lightly damaged, effects: inactive.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #5
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #5 factory [000017]
+  doing 1 damage and 3 capture damage.
     #5 factory [factry] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #4
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #4 factory [000017]
+  doing 1 damage and 3 capture damage.
     #4 factory [factry] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #3
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #3 factory [000017]
+  doing 1 damage and 3 capture damage.
     #3 factory [factry] is lightly damaged.
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] (chance: 1/3) and
-  hits #2 factory [000017] doing 0 damage and 1 capture damage.
+  infantry battalion [110] fires on factory [000017] (chance: 1/3) and hits #2 factory [000017]
+  doing 0 damage and 1 capture damage.
     #2 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Round 9:
@@ -436,7 +420,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -451,21 +434,20 @@ Battles report:
       #5 hit points: 100/64, capture: 14, lightly damaged, effects: inactive.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #1
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #1 factory [000017]
+  doing 1 damage and 3 capture damage.
     #1 factory [factry] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #5
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #5 factory [000017]
+  doing 1 damage and 3 capture damage.
     #5 factory [factry] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #4
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #4 factory [000017]
+  doing 1 damage and 3 capture damage.
     #4 factory [factry] is lightly damaged.
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] (chance: 1/3) and
-  hits #3 factory [000017] doing 0 damage and 1 capture damage.
+  infantry battalion [110] fires on factory [000017] (chance: 1/3) and hits #3 factory [000017]
+  doing 0 damage and 1 capture damage.
     #3 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Round 10:
@@ -482,7 +464,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -497,21 +478,20 @@ Battles report:
       #5 hit points: 100/63, capture: 17, lightly damaged, effects: inactive.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #2
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #2 factory [000017]
+  doing 1 damage and 3 capture damage.
     #2 factory [factry] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #1
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #1 factory [000017]
+  doing 1 damage and 3 capture damage.
     #1 factory [factry] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #5
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #5 factory [000017]
+  doing 1 damage and 3 capture damage.
     #5 factory [factry] is lightly damaged.
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] (chance: 1/3) and
-  hits #4 factory [000017] doing 0 damage and 1 capture damage.
+  infantry battalion [110] fires on factory [000017] (chance: 1/3) and hits #4 factory [000017]
+  doing 0 damage and 1 capture damage.
     #4 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Battle ended indecisively.
@@ -534,7 +514,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -549,21 +528,20 @@ Battles report:
       #5 hit points: 100/62, lightly damaged, effects: inactive.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #3
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #3 factory [000017]
+  doing 1 damage and 3 capture damage.
     #3 factory [factry] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #2
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #2 factory [000017]
+  doing 1 damage and 3 capture damage.
     #2 factory [factry] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #1
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #1 factory [000017]
+  doing 1 damage and 3 capture damage.
     #1 factory [factry] is lightly damaged.
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] (chance: 1/3) and
-  hits #5 factory [000017] doing 0 damage and 1 capture damage.
+  infantry battalion [110] fires on factory [000017] (chance: 1/3) and hits #5 factory [000017]
+  doing 0 damage and 1 capture damage.
     #5 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Round 2:
@@ -580,7 +558,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -595,21 +572,20 @@ Battles report:
       #5 hit points: 100/62, capture: 1, lightly damaged, effects: inactive.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #4
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #4 factory [000017]
+  doing 1 damage and 3 capture damage.
     #4 factory [factry] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #3
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #3 factory [000017]
+  doing 1 damage and 3 capture damage.
     #3 factory [factry] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #2
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #2 factory [000017]
+  doing 1 damage and 3 capture damage.
     #2 factory [factry] is lightly damaged.
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] (chance: 1/3) and
-  hits #1 factory [000017] doing 0 damage and 1 capture damage.
+  infantry battalion [110] fires on factory [000017] (chance: 1/3) and hits #1 factory [000017]
+  doing 0 damage and 1 capture damage.
     #1 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Round 3:
@@ -626,7 +602,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -641,21 +616,20 @@ Battles report:
       #5 hit points: 100/62, capture: 1, lightly damaged, effects: inactive.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #5
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #5 factory [000017]
+  doing 1 damage and 3 capture damage.
     #5 factory [factry] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #4
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #4 factory [000017]
+  doing 1 damage and 3 capture damage.
     #4 factory [factry] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #3
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #3 factory [000017]
+  doing 1 damage and 3 capture damage.
     #3 factory [factry] is lightly damaged.
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] (chance: 1/3) and
-  hits #2 factory [000017] doing 0 damage and 1 capture damage.
+  infantry battalion [110] fires on factory [000017] (chance: 1/3) and hits #2 factory [000017]
+  doing 0 damage and 1 capture damage.
     #2 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Round 4:
@@ -672,7 +646,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -687,21 +660,20 @@ Battles report:
       #5 hit points: 100/61, capture: 4, lightly damaged, effects: inactive.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #1
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #1 factory [000017]
+  doing 1 damage and 3 capture damage.
     #1 factory [factry] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #5
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #5 factory [000017]
+  doing 1 damage and 3 capture damage.
     #5 factory [factry] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #4
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #4 factory [000017]
+  doing 1 damage and 3 capture damage.
     #4 factory [factry] is lightly damaged.
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] (chance: 1/3) and
-  hits #3 factory [000017] doing 0 damage and 1 capture damage.
+  infantry battalion [110] fires on factory [000017] (chance: 1/3) and hits #3 factory [000017]
+  doing 0 damage and 1 capture damage.
     #3 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Round 5:
@@ -718,7 +690,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -733,21 +704,20 @@ Battles report:
       #5 hit points: 100/60, capture: 7, lightly damaged, effects: inactive.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #2
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #2 factory [000017]
+  doing 1 damage and 3 capture damage.
     #2 factory [factry] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #1
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #1 factory [000017]
+  doing 1 damage and 3 capture damage.
     #1 factory [factry] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #5
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #5 factory [000017]
+  doing 1 damage and 3 capture damage.
     #5 factory [factry] is lightly damaged.
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] (chance: 1/3) and
-  hits #4 factory [000017] doing 0 damage and 1 capture damage.
+  infantry battalion [110] fires on factory [000017] (chance: 1/3) and hits #4 factory [000017]
+  doing 0 damage and 1 capture damage.
     #4 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Round 6:
@@ -764,7 +734,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -779,21 +748,20 @@ Battles report:
       #5 hit points: 100/59, capture: 10, lightly damaged, effects: inactive.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #3
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #3 factory [000017]
+  doing 1 damage and 3 capture damage.
     #3 factory [factry] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #2
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #2 factory [000017]
+  doing 1 damage and 3 capture damage.
     #2 factory [factry] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #1
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #1 factory [000017]
+  doing 1 damage and 3 capture damage.
     #1 factory [factry] is lightly damaged.
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] (chance: 1/3) and
-  hits #5 factory [000017] doing 0 damage and 1 capture damage.
+  infantry battalion [110] fires on factory [000017] (chance: 1/3) and hits #5 factory [000017]
+  doing 0 damage and 1 capture damage.
     #5 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Round 7:
@@ -810,7 +778,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -825,21 +792,20 @@ Battles report:
       #5 hit points: 100/59, capture: 11, lightly damaged, effects: inactive.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #4
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #4 factory [000017]
+  doing 1 damage and 3 capture damage.
     #4 factory [factry] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #3
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #3 factory [000017]
+  doing 1 damage and 3 capture damage.
     #3 factory [factry] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #2
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #2 factory [000017]
+  doing 1 damage and 3 capture damage.
     #2 factory [factry] is lightly damaged.
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] (chance: 1/3) and
-  hits #1 factory [000017] doing 0 damage and 1 capture damage.
+  infantry battalion [110] fires on factory [000017] (chance: 1/3) and hits #1 factory [000017]
+  doing 0 damage and 1 capture damage.
     #1 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Round 8:
@@ -856,7 +822,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -871,21 +836,20 @@ Battles report:
       #5 hit points: 100/59, capture: 11, lightly damaged, effects: inactive.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #5
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #5 factory [000017]
+  doing 1 damage and 3 capture damage.
     #5 factory [factry] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #4
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #4 factory [000017]
+  doing 1 damage and 3 capture damage.
     #4 factory [factry] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #3
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #3 factory [000017]
+  doing 1 damage and 3 capture damage.
     #3 factory [factry] is lightly damaged.
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] (chance: 1/3) and
-  hits #2 factory [000017] doing 0 damage and 1 capture damage.
+  infantry battalion [110] fires on factory [000017] (chance: 1/3) and hits #2 factory [000017]
+  doing 0 damage and 1 capture damage.
     #2 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Round 9:
@@ -902,7 +866,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -917,21 +880,20 @@ Battles report:
       #5 hit points: 100/58, capture: 14, lightly damaged, effects: inactive.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #1
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #1 factory [000017]
+  doing 1 damage and 3 capture damage.
     #1 factory [factry] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #5
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #5 factory [000017]
+  doing 1 damage and 3 capture damage.
     #5 factory [factry] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #4
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #4 factory [000017]
+  doing 1 damage and 3 capture damage.
     #4 factory [factry] is lightly damaged.
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] (chance: 1/3) and
-  hits #3 factory [000017] doing 0 damage and 1 capture damage.
+  infantry battalion [110] fires on factory [000017] (chance: 1/3) and hits #3 factory [000017]
+  doing 0 damage and 1 capture damage.
     #3 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Round 10:
@@ -948,7 +910,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -963,21 +924,20 @@ Battles report:
       #5 hit points: 100/57, capture: 17, lightly damaged, effects: inactive.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #2
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #2 factory [000017]
+  doing 1 damage and 3 capture damage.
     #2 factory [factry] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #1
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #1 factory [000017]
+  doing 1 damage and 3 capture damage.
     #1 factory [factry] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #5
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #5 factory [000017]
+  doing 1 damage and 3 capture damage.
     #5 factory [factry] is lightly damaged.
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] (chance: 1/3) and
-  hits #4 factory [000017] doing 0 damage and 1 capture damage.
+  infantry battalion [110] fires on factory [000017] (chance: 1/3) and hits #4 factory [000017]
+  doing 0 damage and 1 capture damage.
     #4 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Battle ended indecisively.
@@ -1000,7 +960,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -1015,21 +974,20 @@ Battles report:
       #5 hit points: 100/56, lightly damaged, effects: inactive.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #3
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #3 factory [000017]
+  doing 1 damage and 3 capture damage.
     #3 factory [factry] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #2
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #2 factory [000017]
+  doing 1 damage and 3 capture damage.
     #2 factory [factry] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #1
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #1 factory [000017]
+  doing 1 damage and 3 capture damage.
     #1 factory [factry] is lightly damaged.
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] (chance: 1/3) and
-  hits #5 factory [000017] doing 0 damage and 1 capture damage.
+  infantry battalion [110] fires on factory [000017] (chance: 1/3) and hits #5 factory [000017]
+  doing 0 damage and 1 capture damage.
     #5 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Round 2:
@@ -1046,7 +1004,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -1061,21 +1018,20 @@ Battles report:
       #5 hit points: 100/56, capture: 1, lightly damaged, effects: inactive.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #4
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #4 factory [000017]
+  doing 1 damage and 3 capture damage.
     #4 factory [factry] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #3
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #3 factory [000017]
+  doing 1 damage and 3 capture damage.
     #3 factory [factry] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #2
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #2 factory [000017]
+  doing 1 damage and 3 capture damage.
     #2 factory [factry] is lightly damaged.
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] (chance: 1/3) and
-  hits #1 factory [000017] doing 0 damage and 1 capture damage.
+  infantry battalion [110] fires on factory [000017] (chance: 1/3) and hits #1 factory [000017]
+  doing 0 damage and 1 capture damage.
     #1 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Round 3:
@@ -1092,7 +1048,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -1107,21 +1062,20 @@ Battles report:
       #5 hit points: 100/56, capture: 1, lightly damaged, effects: inactive.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #5
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #5 factory [000017]
+  doing 1 damage and 3 capture damage.
     #5 factory [factry] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #4
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #4 factory [000017]
+  doing 1 damage and 3 capture damage.
     #4 factory [factry] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #3
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #3 factory [000017]
+  doing 1 damage and 3 capture damage.
     #3 factory [factry] is lightly damaged.
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] (chance: 1/3) and
-  hits #2 factory [000017] doing 0 damage and 1 capture damage.
+  infantry battalion [110] fires on factory [000017] (chance: 1/3) and hits #2 factory [000017]
+  doing 0 damage and 1 capture damage.
     #2 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Round 4:
@@ -1138,7 +1092,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -1153,21 +1106,20 @@ Battles report:
       #5 hit points: 100/55, capture: 4, lightly damaged, effects: inactive.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #1
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #1 factory [000017]
+  doing 1 damage and 3 capture damage.
     #1 factory [factry] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #5
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #5 factory [000017]
+  doing 1 damage and 3 capture damage.
     #5 factory [factry] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #4
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #4 factory [000017]
+  doing 1 damage and 3 capture damage.
     #4 factory [factry] is lightly damaged.
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] (chance: 1/3) and
-  hits #3 factory [000017] doing 0 damage and 1 capture damage.
+  infantry battalion [110] fires on factory [000017] (chance: 1/3) and hits #3 factory [000017]
+  doing 0 damage and 1 capture damage.
     #3 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Round 5:
@@ -1184,7 +1136,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -1199,21 +1150,20 @@ Battles report:
       #5 hit points: 100/54, capture: 7, lightly damaged, effects: inactive.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #2
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #2 factory [000017]
+  doing 1 damage and 3 capture damage.
     #2 factory [factry] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #1
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #1 factory [000017]
+  doing 1 damage and 3 capture damage.
     #1 factory [factry] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #5
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #5 factory [000017]
+  doing 1 damage and 3 capture damage.
     #5 factory [factry] is lightly damaged.
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] (chance: 1/3) and
-  hits #4 factory [000017] doing 0 damage and 1 capture damage.
+  infantry battalion [110] fires on factory [000017] (chance: 1/3) and hits #4 factory [000017]
+  doing 0 damage and 1 capture damage.
     #4 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Round 6:
@@ -1230,7 +1180,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -1245,21 +1194,20 @@ Battles report:
       #5 hit points: 100/53, capture: 10, lightly damaged, effects: inactive.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #3
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #3 factory [000017]
+  doing 1 damage and 3 capture damage.
     #3 factory [factry] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #2
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #2 factory [000017]
+  doing 1 damage and 3 capture damage.
     #2 factory [factry] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #1
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #1 factory [000017]
+  doing 1 damage and 3 capture damage.
     #1 factory [factry] is lightly damaged.
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] (chance: 1/3) and
-  hits #5 factory [000017] doing 0 damage and 1 capture damage.
+  infantry battalion [110] fires on factory [000017] (chance: 1/3) and hits #5 factory [000017]
+  doing 0 damage and 1 capture damage.
     #5 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Round 7:
@@ -1276,7 +1224,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -1291,21 +1238,20 @@ Battles report:
       #5 hit points: 100/53, capture: 11, lightly damaged, effects: inactive.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #4
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #4 factory [000017]
+  doing 1 damage and 3 capture damage.
     #4 factory [factry] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #3
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #3 factory [000017]
+  doing 1 damage and 3 capture damage.
     #3 factory [factry] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #2
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #2 factory [000017]
+  doing 1 damage and 3 capture damage.
     #2 factory [factry] is lightly damaged.
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] (chance: 1/3) and
-  hits #1 factory [000017] doing 0 damage and 1 capture damage.
+  infantry battalion [110] fires on factory [000017] (chance: 1/3) and hits #1 factory [000017]
+  doing 0 damage and 1 capture damage.
     #1 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Round 8:
@@ -1322,7 +1268,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -1337,21 +1282,20 @@ Battles report:
       #5 hit points: 100/53, capture: 11, lightly damaged, effects: inactive.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #5
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #5 factory [000017]
+  doing 1 damage and 3 capture damage.
     #5 factory [factry] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #4
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #4 factory [000017]
+  doing 1 damage and 3 capture damage.
     #4 factory [factry] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #3
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #3 factory [000017]
+  doing 1 damage and 3 capture damage.
     #3 factory [factry] is lightly damaged.
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] (chance: 1/3) and
-  hits #2 factory [000017] doing 0 damage and 1 capture damage.
+  infantry battalion [110] fires on factory [000017] (chance: 1/3) and hits #2 factory [000017]
+  doing 0 damage and 1 capture damage.
     #2 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Round 9:
@@ -1368,7 +1312,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -1383,21 +1326,20 @@ Battles report:
       #5 hit points: 100/52, capture: 14, lightly damaged, effects: inactive.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #1
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #1 factory [000017]
+  doing 1 damage and 3 capture damage.
     #1 factory [factry] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #5
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #5 factory [000017]
+  doing 1 damage and 3 capture damage.
     #5 factory [factry] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #4
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #4 factory [000017]
+  doing 1 damage and 3 capture damage.
     #4 factory [factry] is lightly damaged.
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] (chance: 1/3) and
-  hits #3 factory [000017] doing 0 damage and 1 capture damage.
+  infantry battalion [110] fires on factory [000017] (chance: 1/3) and hits #3 factory [000017]
+  doing 0 damage and 1 capture damage.
     #3 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Round 10:
@@ -1414,7 +1356,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -1429,21 +1370,20 @@ Battles report:
       #5 hit points: 100/51, capture: 17, lightly damaged, effects: inactive.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #2
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #2 factory [000017]
+  doing 1 damage and 3 capture damage.
     #2 factory [factry] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #1
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #1 factory [000017]
+  doing 1 damage and 3 capture damage.
     #1 factory [factry] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #5
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #5 factory [000017]
+  doing 1 damage and 3 capture damage.
     #5 factory [factry] is lightly damaged.
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] (chance: 1/3) and
-  hits #4 factory [000017] doing 0 damage and 1 capture damage.
+  infantry battalion [110] fires on factory [000017] (chance: 1/3) and hits #4 factory [000017]
+  doing 0 damage and 1 capture damage.
     #4 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Battle ended indecisively.
@@ -1466,7 +1406,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -1481,21 +1420,20 @@ Battles report:
       #5 hit points: 100/50, lightly damaged, effects: inactive.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #3
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #3 factory [000017]
+  doing 1 damage and 3 capture damage.
     #3 factory [factry] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #2
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #2 factory [000017]
+  doing 1 damage and 3 capture damage.
     #2 factory [factry] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #1
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #1 factory [000017]
+  doing 1 damage and 3 capture damage.
     #1 factory [factry] is lightly damaged.
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] (chance: 1/3) and
-  hits #5 factory [000017] doing 0 damage and 1 capture damage.
+  infantry battalion [110] fires on factory [000017] (chance: 1/3) and hits #5 factory [000017]
+  doing 0 damage and 1 capture damage.
     #5 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Round 2:
@@ -1512,7 +1450,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -1527,23 +1464,22 @@ Battles report:
       #5 hit points: 100/50, capture: 1, lightly damaged, effects: inactive.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #4
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #4 factory [000017]
+  doing 1 damage and 3 capture damage.
     #4 factory [factry] is heavily damaged.
     #4 factory [factry] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #3
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #3 factory [000017]
+  doing 1 damage and 3 capture damage.
     #3 factory [factry] is heavily damaged.
     #3 factory [factry] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #2
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #2 factory [000017]
+  doing 1 damage and 3 capture damage.
     #2 factory [factry] is lightly damaged.
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] (chance: 1/3) and
-  hits #1 factory [000017] doing 0 damage and 1 capture damage.
+  infantry battalion [110] fires on factory [000017] (chance: 1/3) and hits #1 factory [000017]
+  doing 0 damage and 1 capture damage.
     #1 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Round 3:
@@ -1560,7 +1496,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -1575,24 +1510,23 @@ Battles report:
       #5 hit points: 100/50, capture: 1, lightly damaged.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #5
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #5 factory [000017]
+  doing 1 damage and 3 capture damage.
     #5 factory [factry] is heavily damaged.
     #5 factory [factry] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #4
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #4 factory [000017]
+  doing 1 damage and 3 capture damage.
     #4 factory [factry] is heavily damaged.
     #4 factory [factry] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #3
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #3 factory [000017]
+  doing 1 damage and 3 capture damage.
     #3 factory [factry] is heavily damaged.
     #3 factory [factry] is disabled.
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] (chance: 1/3) and
-  hits #2 factory [000017] doing 0 damage and 1 capture damage.
+  infantry battalion [110] fires on factory [000017] (chance: 1/3) and hits #2 factory [000017]
+  doing 0 damage and 1 capture damage.
     #2 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Round 4:
@@ -1609,7 +1543,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -1624,24 +1557,23 @@ Battles report:
       #5 hit points: 100/49, capture: 4, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #1
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #1 factory [000017]
+  doing 1 damage and 3 capture damage.
     #1 factory [factry] is heavily damaged.
     #1 factory [factry] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #5
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #5 factory [000017]
+  doing 1 damage and 3 capture damage.
     #5 factory [factry] is heavily damaged.
     #5 factory [factry] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #4
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #4 factory [000017]
+  doing 1 damage and 3 capture damage.
     #4 factory [factry] is heavily damaged.
     #4 factory [factry] is disabled.
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] (chance: 1/3) and
-  hits #3 factory [000017] doing 0 damage and 1 capture damage.
+  infantry battalion [110] fires on factory [000017] (chance: 1/3) and hits #3 factory [000017]
+  doing 0 damage and 1 capture damage.
     #3 factory [factry] is heavily damaged.
     #3 factory [factry] is disabled.
   ------------------------------------------------------------
@@ -1659,7 +1591,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -1674,23 +1605,22 @@ Battles report:
       #5 hit points: 100/48, capture: 7, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #2
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #2 factory [000017]
+  doing 1 damage and 3 capture damage.
     #2 factory [factry] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #1
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #1 factory [000017]
+  doing 1 damage and 3 capture damage.
     #1 factory [factry] is heavily damaged.
     #1 factory [factry] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #5
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #5 factory [000017]
+  doing 1 damage and 3 capture damage.
     #5 factory [factry] is heavily damaged.
     #5 factory [factry] is disabled.
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] (chance: 1/3) and
-  hits #4 factory [000017] doing 0 damage and 1 capture damage.
+  infantry battalion [110] fires on factory [000017] (chance: 1/3) and hits #4 factory [000017]
+  doing 0 damage and 1 capture damage.
     #4 factory [factry] is heavily damaged.
     #4 factory [factry] is disabled.
   ------------------------------------------------------------
@@ -1708,7 +1638,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -1723,23 +1652,22 @@ Battles report:
       #5 hit points: 100/47, capture: 10, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #3
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #3 factory [000017]
+  doing 1 damage and 3 capture damage.
     #3 factory [factry] is heavily damaged.
     #3 factory [factry] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #2
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #2 factory [000017]
+  doing 1 damage and 3 capture damage.
     #2 factory [factry] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #1
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #1 factory [000017]
+  doing 1 damage and 3 capture damage.
     #1 factory [factry] is heavily damaged.
     #1 factory [factry] is disabled.
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] (chance: 1/3) and
-  hits #5 factory [000017] doing 0 damage and 1 capture damage.
+  infantry battalion [110] fires on factory [000017] (chance: 1/3) and hits #5 factory [000017]
+  doing 0 damage and 1 capture damage.
     #5 factory [factry] is heavily damaged.
     #5 factory [factry] is disabled.
   ------------------------------------------------------------
@@ -1757,7 +1685,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -1772,23 +1699,22 @@ Battles report:
       #5 hit points: 100/47, capture: 11, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #4
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #4 factory [000017]
+  doing 1 damage and 3 capture damage.
     #4 factory [factry] is heavily damaged.
     #4 factory [factry] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #3
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #3 factory [000017]
+  doing 1 damage and 3 capture damage.
     #3 factory [factry] is heavily damaged.
     #3 factory [factry] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #2
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #2 factory [000017]
+  doing 1 damage and 3 capture damage.
     #2 factory [factry] is lightly damaged.
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] (chance: 1/3) and
-  hits #1 factory [000017] doing 0 damage and 1 capture damage.
+  infantry battalion [110] fires on factory [000017] (chance: 1/3) and hits #1 factory [000017]
+  doing 0 damage and 1 capture damage.
     #1 factory [factry] is heavily damaged.
     #1 factory [factry] is disabled.
   ------------------------------------------------------------
@@ -1806,7 +1732,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -1821,24 +1746,23 @@ Battles report:
       #5 hit points: 100/47, capture: 11, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #5
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #5 factory [000017]
+  doing 1 damage and 3 capture damage.
     #5 factory [factry] is heavily damaged.
     #5 factory [factry] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #4
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #4 factory [000017]
+  doing 1 damage and 3 capture damage.
     #4 factory [factry] is heavily damaged.
     #4 factory [factry] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #3
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #3 factory [000017]
+  doing 1 damage and 3 capture damage.
     #3 factory [factry] is heavily damaged.
     #3 factory [factry] is disabled.
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] (chance: 1/3) and
-  hits #2 factory [000017] doing 0 damage and 1 capture damage.
+  infantry battalion [110] fires on factory [000017] (chance: 1/3) and hits #2 factory [000017]
+  doing 0 damage and 1 capture damage.
     #2 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Round 9:
@@ -1855,7 +1779,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -1870,24 +1793,23 @@ Battles report:
       #5 hit points: 100/46, capture: 14, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #1
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #1 factory [000017]
+  doing 1 damage and 3 capture damage.
     #1 factory [factry] is heavily damaged.
     #1 factory [factry] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #5
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #5 factory [000017]
+  doing 1 damage and 3 capture damage.
     #5 factory [factry] is heavily damaged.
     #5 factory [factry] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #4
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #4 factory [000017]
+  doing 1 damage and 3 capture damage.
     #4 factory [factry] is heavily damaged.
     #4 factory [factry] is disabled.
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] (chance: 1/3) and
-  hits #3 factory [000017] doing 0 damage and 1 capture damage.
+  infantry battalion [110] fires on factory [000017] (chance: 1/3) and hits #3 factory [000017]
+  doing 0 damage and 1 capture damage.
     #3 factory [factry] is heavily damaged.
     #3 factory [factry] is disabled.
   ------------------------------------------------------------
@@ -1905,7 +1827,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -1920,23 +1841,22 @@ Battles report:
       #5 hit points: 100/45, capture: 17, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #2
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #2 factory [000017]
+  doing 1 damage and 3 capture damage.
     #2 factory [factry] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #1
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #1 factory [000017]
+  doing 1 damage and 3 capture damage.
     #1 factory [factry] is heavily damaged.
     #1 factory [factry] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #5
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #5 factory [000017]
+  doing 1 damage and 3 capture damage.
     #5 factory [factry] is heavily damaged.
     #5 factory [factry] is disabled.
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] (chance: 1/3) and
-  hits #4 factory [000017] doing 0 damage and 1 capture damage.
+  infantry battalion [110] fires on factory [000017] (chance: 1/3) and hits #4 factory [000017]
+  doing 0 damage and 1 capture damage.
     #4 factory [factry] is heavily damaged.
     #4 factory [factry] is disabled.
   ------------------------------------------------------------
@@ -1960,7 +1880,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -1975,23 +1894,22 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #3
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #3 factory [000017]
+  doing 1 damage and 3 capture damage.
     #3 factory [factry] is heavily damaged.
     #3 factory [factry] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #2
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #2 factory [000017]
+  doing 1 damage and 3 capture damage.
     #2 factory [factry] is lightly damaged.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #1
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #1 factory [000017]
+  doing 1 damage and 3 capture damage.
     #1 factory [factry] is heavily damaged.
     #1 factory [factry] is disabled.
-  infantry battalion [110] fires infantry battalion [inftry] on factory [000017] (chance: 1/3) and
-  hits #5 factory [000017] doing 0 damage and 1 capture damage.
+  infantry battalion [110] fires on factory [000017] (chance: 1/3) and hits #5 factory [000017]
+  doing 0 damage and 1 capture damage.
     #5 factory [factry] is heavily damaged.
     #5 factory [factry] is disabled.
   ------------------------------------------------------------
@@ -2009,7 +1927,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -2024,20 +1941,19 @@ Battles report:
       #5 hit points: 100/44, capture: 1, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #4
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #4 factory [000017]
+  doing 1 damage and 3 capture damage.
     #4 factory [factry] is heavily damaged.
     #4 factory [factry] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #3
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #3 factory [000017]
+  doing 1 damage and 3 capture damage.
     #3 factory [factry] is heavily damaged.
     #3 factory [factry] is disabled.
-  Surrender or die! [109] fires tanks [tanks] on factory [000017] (chance: 15/20) and hits #2
-  factory [000017] doing 1 damage and 3 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 15/20) and hits #2 factory [000017]
+  doing 1 damage and 3 capture damage.
     #2 factory [factry] is heavily damaged.
     #2 factory [factry] is disabled.
   ------------------------------------------------------------
@@ -2055,15 +1971,13 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 4:
@@ -2080,15 +1994,13 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 5:
@@ -2105,15 +2017,13 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 6:
@@ -2130,15 +2040,13 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 7:
@@ -2155,15 +2063,13 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 8:
@@ -2180,15 +2086,13 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 9:
@@ -2205,15 +2109,13 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 10:
@@ -2230,15 +2132,13 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Battle ended indecisively.
@@ -2261,7 +2161,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -2276,9 +2175,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 2:
@@ -2295,7 +2193,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -2310,9 +2207,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 3:
@@ -2329,7 +2225,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -2344,9 +2239,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 4:
@@ -2363,7 +2257,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -2378,9 +2271,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 5:
@@ -2397,7 +2289,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -2412,9 +2303,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 6:
@@ -2431,7 +2321,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -2446,9 +2335,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 7:
@@ -2465,7 +2353,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -2480,9 +2367,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 8:
@@ -2499,7 +2385,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -2514,9 +2399,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 9:
@@ -2533,7 +2417,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -2548,9 +2431,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 10:
@@ -2567,7 +2449,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -2582,9 +2463,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Battle ended indecisively.
@@ -2607,7 +2487,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -2622,9 +2501,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 2:
@@ -2641,7 +2519,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -2656,9 +2533,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 3:
@@ -2675,7 +2551,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -2690,9 +2565,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 4:
@@ -2709,7 +2583,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -2724,9 +2597,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 5:
@@ -2743,7 +2615,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -2758,9 +2629,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 6:
@@ -2777,7 +2647,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -2792,9 +2661,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 7:
@@ -2811,7 +2679,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -2826,9 +2693,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 8:
@@ -2845,7 +2711,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -2860,9 +2725,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 9:
@@ -2879,7 +2743,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -2894,9 +2757,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 10:
@@ -2913,7 +2775,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -2928,9 +2789,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Battle ended indecisively.
@@ -2946,30 +2806,24 @@ Battles report:
     size: 5000, mass: 13000/2378 (100), energy: 60/56 (1), crew: 3/4.
     hit points: 357/357 (50/50), attack: 18 (0), defense: 14 (10), initiative: 90 (70).
     tactics: destroy, prioritize armed.
-      #1 hit points: 50/50.
     + command bridge [112], command bridge [cbridg].
       size: 800, mass: 376 (300), energy: 5, crew: 1/2.
       hit points: 55/55.
-        #1 hit points: 55/55.
       + Caste Prime CEO [000001], terran [terran].
         mass: 4.
         skills: armor platoon leader [arpldr] (attack: 0, initiative: 0).
     + fission reactor [113], fission reactor [fisrec].
       size: 400, mass: 162 (140), energy: 60/10, crew: 1/1.
       hit points: 45/45, attack: 2.
-        #1 hit points: 45/45.
     + reaction drive [114], reaction drive [rctdrv].
       size: 600, mass: 10000/742 (700), energy: 30, crew: 1/1.
       hit points: 65/65.
-        #1 hit points: 65/65.
     + computer library [115], computer library [cmplib].
       size: 200, mass: 50 (50), energy: 5.
       hit points: 50/50.
-        #1 hit points: 50/50.
     + fighter drone bay [206], fighter drone bay [drnbay].
       size: 400, mass: 3000/624 (300), energy: 5.
       hit points: 92/92 (60/60), attack: 16 (0), defense: 4 (0), initiative: 20 (0).
-        #1 hit points: 60/60.
       + alien fighter drone [450], 4 alien fighter drones [alndrn].
         size: 320, mass: 3000/324 (320).
         hit points: 32/32, attack: 16, defense: 4, initiative: 20.
@@ -2982,15 +2836,13 @@ Battles report:
   - space shuttle [117], space shuttle [shuttl], owned by Gelvaren [3].
     size: 200.
     hit points: 57/57 (17/17), attack: 3 (0), defense: 1 (0), initiative: 60.
-      #1 hit points: 17/17.
     - orbital rocket launcher [350], orbital rocket launcher [orbrkt], owned by Gelvaren [3].
       size: 40.
       hit points: 40/40, attack: 3, defense: 1.
-        #1 hit points: 40/40.
   spaceship hull [101] launches alien fighter drone [450] from fighter drone bay [drnbay].
   ------------------------------------------------------------
   space shuttle [117] fires orbital rocket launcher [orbrkt] on spaceship hull [101] (chance: 1/13)
-  and hits #1 spaceship hull [101] doing 3 damage.
+  and hits spaceship hull [101] doing 3 damage.
   ------------------------------------------------------------
   Round 2:
   ------------------------------------------------------------
@@ -2999,30 +2851,24 @@ Battles report:
     size: 5000, mass: 10000/1730 (100), energy: 60/56 (1), crew: 3/4.
     hit points: 325/322 (50/47), attack: 2 (0), defense: 10, initiative: 70.
     tactics: destroy, prioritize armed.
-      #1 hit points: 50/47.
     + command bridge [112], command bridge [cbridg].
       size: 800, mass: 376 (300), energy: 5, crew: 1/2.
       hit points: 55/55.
-        #1 hit points: 55/55.
       + Caste Prime CEO [000001], terran [terran].
         mass: 4.
         skills: armor platoon leader [arpldr] (attack: 0, initiative: 0).
     + fission reactor [113], fission reactor [fisrec].
       size: 400, mass: 162 (140), energy: 60/10, crew: 1/1.
       hit points: 45/45, attack: 2.
-        #1 hit points: 45/45.
     + reaction drive [114], reaction drive [rctdrv].
       size: 600, mass: 10000/742 (700), energy: 30, crew: 1/1.
       hit points: 65/65.
-        #1 hit points: 65/65.
     + computer library [115], computer library [cmplib].
       size: 200, mass: 50 (50), energy: 5.
       hit points: 50/50.
-        #1 hit points: 50/50.
     + fighter drone bay [206], fighter drone bay [drnbay].
       size: 400, mass: 300 (300), energy: 5.
       hit points: 60/60.
-        #1 hit points: 60/60.
   + alien fighter drone [450], 4 alien fighter drones [alndrn].
     size: 320, mass: 3000/324 (320), energy: 60/56.
     hit points: 32/32, attack: 16, defense: 4, initiative: 120.
@@ -3035,22 +2881,17 @@ Battles report:
   - space shuttle [117], space shuttle [shuttl], owned by Gelvaren [3].
     size: 200.
     hit points: 57/57 (17/17), attack: 3 (0), defense: 1 (0), initiative: 60.
-      #1 hit points: 17/17.
     - orbital rocket launcher [350], orbital rocket launcher [orbrkt], owned by Gelvaren [3].
       size: 40.
       hit points: 40/40, attack: 3, defense: 1.
-        #1 hit points: 40/40.
   ------------------------------------------------------------
   space shuttle [117] fires orbital rocket launcher [orbrkt] on spaceship hull [101] (chance: 1/13)
-  and hits #1 fission reactor [113] doing 3 damage.
-  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 8/17)
-  and hits #1 space shuttle [117] doing 2 damage.
-  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 8/17)
-  and hits #1 orbital rocket launcher [350] doing 2 damage.
-  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 8/17)
-  and hits #1 orbital rocket launcher [350] doing 2 damage.
-  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 8/17)
-  and hits #1 orbital rocket launcher [350] doing 2 damage.
+  and hits fission reactor [113] doing 3 damage.
+  4 alien fighter drones [450] fire on space shuttle [117].
+  (chance: 8/17) and hits space shuttle [117] doing 2 damage.
+  (chance: 8/17) and hits orbital rocket launcher [350] doing 2 damage.
+  (chance: 8/17) and hits orbital rocket launcher [350] doing 2 damage.
+  (chance: 8/17) and hits orbital rocket launcher [350] doing 2 damage.
   ------------------------------------------------------------
   Round 3:
   ------------------------------------------------------------
@@ -3059,30 +2900,24 @@ Battles report:
     size: 5000, mass: 10000/1730 (100), energy: 60/56 (1), crew: 3/4.
     hit points: 325/319 (50/47), attack: 2 (0), defense: 10, initiative: 70.
     tactics: destroy, prioritize armed.
-      #1 hit points: 50/47.
     + command bridge [112], command bridge [cbridg].
       size: 800, mass: 376 (300), energy: 5, crew: 1/2.
       hit points: 55/55.
-        #1 hit points: 55/55.
       + Caste Prime CEO [000001], terran [terran].
         mass: 4.
         skills: armor platoon leader [arpldr] (attack: 0, initiative: 0).
     + fission reactor [113], fission reactor [fisrec].
       size: 400, mass: 162 (140), energy: 60/10, crew: 1/1.
       hit points: 45/42, attack: 2.
-        #1 hit points: 45/42.
     + reaction drive [114], reaction drive [rctdrv].
       size: 600, mass: 10000/742 (700), energy: 30, crew: 1/1.
       hit points: 65/65.
-        #1 hit points: 65/65.
     + computer library [115], computer library [cmplib].
       size: 200, mass: 50 (50), energy: 5.
       hit points: 50/50.
-        #1 hit points: 50/50.
     + fighter drone bay [206], fighter drone bay [drnbay].
       size: 400, mass: 300 (300), energy: 5.
       hit points: 60/60.
-        #1 hit points: 60/60.
   + alien fighter drone [450], 4 alien fighter drones [alndrn].
     size: 320, mass: 3000/324 (320), energy: 60/56.
     hit points: 32/32, attack: 16, defense: 4, initiative: 120.
@@ -3095,23 +2930,18 @@ Battles report:
   - space shuttle [117], space shuttle [shuttl], owned by Gelvaren [3].
     size: 200.
     hit points: 57/49 (17/15), attack: 3 (0), defense: 1 (0), initiative: 60.
-      #1 hit points: 17/15.
     - orbital rocket launcher [350], orbital rocket launcher [orbrkt], owned by Gelvaren [3].
       size: 40.
       hit points: 40/34, attack: 3, defense: 1.
-        #1 hit points: 40/34.
   ------------------------------------------------------------
   space shuttle [117] fires orbital rocket launcher [orbrkt] on spaceship hull [101] (chance: 1/13)
-  and hits #1 fission reactor [113] doing 3 damage.
-  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 8/17)
-  and hits #1 space shuttle [117] doing 2 damage.
-  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 8/17)
-  and hits #1 orbital rocket launcher [350] doing 2 damage.
-  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 8/17)
-  and hits #1 orbital rocket launcher [350] doing 2 damage.
-  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 8/17)
-  and hits #1 orbital rocket launcher [350] doing 2 damage.
-    #1 orbital rocket launcher [orbrkt] is lightly damaged.
+  and hits fission reactor [113] doing 3 damage.
+  4 alien fighter drones [450] fire on space shuttle [117].
+  (chance: 8/17) and hits space shuttle [117] doing 2 damage.
+  (chance: 8/17) and hits orbital rocket launcher [350] doing 2 damage.
+  (chance: 8/17) and hits orbital rocket launcher [350] doing 2 damage.
+  (chance: 8/17) and hits orbital rocket launcher [350] doing 2 damage.
+    orbital rocket launcher [orbrkt] is lightly damaged.
   ------------------------------------------------------------
   Round 4:
   ------------------------------------------------------------
@@ -3120,30 +2950,24 @@ Battles report:
     size: 5000, mass: 10000/1730 (100), energy: 60/56 (1), crew: 3/4.
     hit points: 325/316 (50/47), attack: 2 (0), defense: 10, initiative: 70.
     tactics: destroy, prioritize armed.
-      #1 hit points: 50/47.
     + command bridge [112], command bridge [cbridg].
       size: 800, mass: 376 (300), energy: 5, crew: 1/2.
       hit points: 55/55.
-        #1 hit points: 55/55.
       + Caste Prime CEO [000001], terran [terran].
         mass: 4.
         skills: armor platoon leader [arpldr] (attack: 0, initiative: 0).
     + fission reactor [113], fission reactor [fisrec].
       size: 400, mass: 162 (140), energy: 60/10, crew: 1/1.
       hit points: 45/39, attack: 2.
-        #1 hit points: 45/39.
     + reaction drive [114], reaction drive [rctdrv].
       size: 600, mass: 10000/742 (700), energy: 30, crew: 1/1.
       hit points: 65/65.
-        #1 hit points: 65/65.
     + computer library [115], computer library [cmplib].
       size: 200, mass: 50 (50), energy: 5.
       hit points: 50/50.
-        #1 hit points: 50/50.
     + fighter drone bay [206], fighter drone bay [drnbay].
       size: 400, mass: 300 (300), energy: 5.
       hit points: 60/60.
-        #1 hit points: 60/60.
   + alien fighter drone [450], 4 alien fighter drones [alndrn].
     size: 320, mass: 3000/324 (320), energy: 60/56.
     hit points: 32/32, attack: 16, defense: 4, initiative: 120.
@@ -3156,26 +2980,21 @@ Battles report:
   - space shuttle [117], space shuttle [shuttl], owned by Gelvaren [3].
     size: 200.
     hit points: 57/41 (17/13), attack: 3 (0), defense: 1 (0), initiative: 60.
-      #1 hit points: 17/13.
     - orbital rocket launcher [350], orbital rocket launcher [orbrkt], owned by Gelvaren [3].
       size: 40.
-      hit points: 40/28, attack: 3, defense: 1.
-        #1 hit points: 40/28, lightly damaged.
+      hit points: 40/28, attack: 3, defense: 1, lightly damaged.
   ------------------------------------------------------------
   space shuttle [117] fires orbital rocket launcher [orbrkt] on spaceship hull [101] (chance: 1/13)
-  and hits #1 fission reactor [113] doing 3 damage.
-  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 8/17)
-  and hits #1 space shuttle [117] doing 2 damage.
-    #1 space shuttle [shuttl] is lightly damaged.
-  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 8/17)
-  and hits #1 orbital rocket launcher [350] doing 2 damage.
-    #1 orbital rocket launcher [orbrkt] is lightly damaged.
-  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 8/17)
-  and hits #1 orbital rocket launcher [350] doing 2 damage.
-    #1 orbital rocket launcher [orbrkt] is lightly damaged.
-  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 8/17)
-  and hits #1 orbital rocket launcher [350] doing 2 damage.
-    #1 orbital rocket launcher [orbrkt] is lightly damaged.
+  and hits fission reactor [113] doing 3 damage.
+  4 alien fighter drones [450] fire on space shuttle [117].
+  (chance: 8/17) and hits space shuttle [117] doing 2 damage.
+    space shuttle [shuttl] is lightly damaged.
+  (chance: 8/17) and hits orbital rocket launcher [350] doing 2 damage.
+    orbital rocket launcher [orbrkt] is lightly damaged.
+  (chance: 8/17) and hits orbital rocket launcher [350] doing 2 damage.
+    orbital rocket launcher [orbrkt] is lightly damaged.
+  (chance: 8/17) and hits orbital rocket launcher [350] doing 2 damage.
+    orbital rocket launcher [orbrkt] is lightly damaged.
   ------------------------------------------------------------
   Round 5:
   ------------------------------------------------------------
@@ -3184,30 +3003,24 @@ Battles report:
     size: 5000, mass: 10000/1730 (100), energy: 60/56 (1), crew: 3/4.
     hit points: 325/313 (50/47), attack: 2 (0), defense: 10, initiative: 70.
     tactics: destroy, prioritize armed.
-      #1 hit points: 50/47.
     + command bridge [112], command bridge [cbridg].
       size: 800, mass: 376 (300), energy: 5, crew: 1/2.
       hit points: 55/55.
-        #1 hit points: 55/55.
       + Caste Prime CEO [000001], terran [terran].
         mass: 4.
         skills: armor platoon leader [arpldr] (attack: 0, initiative: 0).
     + fission reactor [113], fission reactor [fisrec].
       size: 400, mass: 162 (140), energy: 60/10, crew: 1/1.
       hit points: 45/36, attack: 2.
-        #1 hit points: 45/36.
     + reaction drive [114], reaction drive [rctdrv].
       size: 600, mass: 10000/742 (700), energy: 30, crew: 1/1.
       hit points: 65/65.
-        #1 hit points: 65/65.
     + computer library [115], computer library [cmplib].
       size: 200, mass: 50 (50), energy: 5.
       hit points: 50/50.
-        #1 hit points: 50/50.
     + fighter drone bay [206], fighter drone bay [drnbay].
       size: 400, mass: 300 (300), energy: 5.
       hit points: 60/60.
-        #1 hit points: 60/60.
   + alien fighter drone [450], 4 alien fighter drones [alndrn].
     size: 320, mass: 3000/324 (320), energy: 60/56.
     hit points: 32/32, attack: 16, defense: 4, initiative: 120.
@@ -3219,30 +3032,25 @@ Battles report:
   Defenders:
   - space shuttle [117], space shuttle [shuttl], owned by Gelvaren [3].
     size: 200.
-    hit points: 57/33 (17/11), attack: 3 (0), defense: 1 (0), initiative: 60.
-      #1 hit points: 17/11, lightly damaged.
+    hit points: 57/33 (17/11), attack: 3 (0), defense: 1 (0), initiative: 60, lightly damaged.
     - orbital rocket launcher [350], orbital rocket launcher [orbrkt], owned by Gelvaren [3].
       size: 40.
-      hit points: 40/22, attack: 3, defense: 1.
-        #1 hit points: 40/22, lightly damaged.
+      hit points: 40/22, attack: 3, defense: 1, lightly damaged.
   ------------------------------------------------------------
   space shuttle [117] fires orbital rocket launcher [orbrkt] on spaceship hull [101] (chance: 1/13)
-  and hits #1 fission reactor [113] doing 3 damage.
-    #1 fission reactor [fisrec] is lightly damaged.
-  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 8/17)
-  and hits #1 space shuttle [117] doing 2 damage.
-    #1 space shuttle [shuttl] is lightly damaged.
-  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 8/17)
-  and hits #1 orbital rocket launcher [350] doing 2 damage.
-    #1 orbital rocket launcher [orbrkt] is lightly damaged.
-  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 8/17)
-  and hits #1 orbital rocket launcher [350] doing 2 damage.
-    #1 orbital rocket launcher [orbrkt] is heavily damaged.
-    #1 orbital rocket launcher [orbrkt] is disabled.
-  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 8/16)
-  and hits #1 orbital rocket launcher [350] doing 2 damage.
-    #1 orbital rocket launcher [orbrkt] is heavily damaged.
-    #1 orbital rocket launcher [orbrkt] is disabled.
+  and hits fission reactor [113] doing 3 damage.
+    fission reactor [fisrec] is lightly damaged.
+  4 alien fighter drones [450] fire on space shuttle [117].
+  (chance: 8/17) and hits space shuttle [117] doing 2 damage.
+    space shuttle [shuttl] is lightly damaged.
+  (chance: 8/17) and hits orbital rocket launcher [350] doing 2 damage.
+    orbital rocket launcher [orbrkt] is lightly damaged.
+  (chance: 8/17) and hits orbital rocket launcher [350] doing 2 damage.
+    orbital rocket launcher [orbrkt] is heavily damaged.
+    orbital rocket launcher [orbrkt] is disabled.
+  (chance: 8/16) and hits orbital rocket launcher [350] doing 2 damage.
+    orbital rocket launcher [orbrkt] is heavily damaged.
+    orbital rocket launcher [orbrkt] is disabled.
   ------------------------------------------------------------
   Round 6:
   ------------------------------------------------------------
@@ -3251,30 +3059,24 @@ Battles report:
     size: 5000, mass: 10000/1730 (100), energy: 60/56 (1), crew: 3/4.
     hit points: 325/310 (50/47), attack: 2 (0), defense: 10, initiative: 70.
     tactics: destroy, prioritize armed.
-      #1 hit points: 50/47.
     + command bridge [112], command bridge [cbridg].
       size: 800, mass: 376 (300), energy: 5, crew: 1/2.
       hit points: 55/55.
-        #1 hit points: 55/55.
       + Caste Prime CEO [000001], terran [terran].
         mass: 4.
         skills: armor platoon leader [arpldr] (attack: 0, initiative: 0).
     + fission reactor [113], fission reactor [fisrec].
       size: 400, mass: 162 (140), energy: 60/10, crew: 1/1.
-      hit points: 45/33, attack: 2.
-        #1 hit points: 45/33, lightly damaged.
+      hit points: 45/33, attack: 2, lightly damaged.
     + reaction drive [114], reaction drive [rctdrv].
       size: 600, mass: 10000/742 (700), energy: 30, crew: 1/1.
       hit points: 65/65.
-        #1 hit points: 65/65.
     + computer library [115], computer library [cmplib].
       size: 200, mass: 50 (50), energy: 5.
       hit points: 50/50.
-        #1 hit points: 50/50.
     + fighter drone bay [206], fighter drone bay [drnbay].
       size: 400, mass: 300 (300), energy: 5.
       hit points: 60/60.
-        #1 hit points: 60/60.
   + alien fighter drone [450], 4 alien fighter drones [alndrn].
     size: 320, mass: 3000/324 (320), energy: 60/56.
     hit points: 32/32, attack: 16, defense: 4, initiative: 120.
@@ -3286,22 +3088,19 @@ Battles report:
   Defenders:
   - space shuttle [117], space shuttle [shuttl], owned by Gelvaren [3].
     size: 200.
-    hit points: 57/25 (17/9), initiative: 60.
-      #1 hit points: 17/9, lightly damaged.
+    hit points: 57/25 (17/9), initiative: 60, lightly damaged.
     - orbital rocket launcher [350], orbital rocket launcher [orbrkt], disabled, owned by Gelvaren
       [3].
       size: 40.
-      hit points: 40/16.
-        #1 hit points: 40/16, heavily damaged, effects: disabled.
+      hit points: 40/16, heavily damaged, disabled.
   ------------------------------------------------------------
-  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 8/16)
-  and hits #1 orbital rocket launcher [350] doing 2 damage.
-    #1 orbital rocket launcher [orbrkt] is heavily damaged.
-    #1 orbital rocket launcher [orbrkt] is disabled.
-  alien fighter drone [450] fires alien fighter drone [alndrn] on space shuttle [117] (chance: 8/16)
-  and hits #1 space shuttle [117] doing 2 damage.
-    #1 space shuttle [shuttl] is heavily damaged.
-    #1 space shuttle [shuttl] is disabled.
+  4 alien fighter drones [450] fire on space shuttle [117].
+  (chance: 8/16) and hits orbital rocket launcher [350] doing 2 damage.
+    orbital rocket launcher [orbrkt] is heavily damaged.
+    orbital rocket launcher [orbrkt] is disabled.
+  (chance: 8/16) and hits space shuttle [117] doing 2 damage.
+    space shuttle [shuttl] is heavily damaged.
+    space shuttle [shuttl] is disabled.
   ------------------------------------------------------------
   Battle won by attackers.
     #1 space shuttle [shuttl] is destroyed.
@@ -3324,7 +3123,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -3339,9 +3137,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 2:
@@ -3358,7 +3155,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -3373,9 +3169,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 3:
@@ -3392,7 +3187,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -3407,9 +3201,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 4:
@@ -3426,7 +3219,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -3441,9 +3233,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 5:
@@ -3460,7 +3251,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -3475,9 +3265,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 6:
@@ -3494,7 +3283,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -3509,9 +3297,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 7:
@@ -3528,7 +3315,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -3543,9 +3329,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 8:
@@ -3562,7 +3347,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -3577,9 +3361,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 9:
@@ -3596,7 +3379,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -3611,9 +3393,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 10:
@@ -3630,7 +3411,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -3645,9 +3425,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Battle ended indecisively.
@@ -3670,7 +3449,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -3685,9 +3463,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 2:
@@ -3704,7 +3481,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -3719,9 +3495,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 3:
@@ -3738,7 +3513,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -3753,9 +3527,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 4:
@@ -3772,7 +3545,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -3787,9 +3559,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 5:
@@ -3806,7 +3577,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -3821,9 +3591,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 6:
@@ -3840,7 +3609,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -3855,9 +3623,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 7:
@@ -3874,7 +3641,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -3889,9 +3655,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 8:
@@ -3908,7 +3673,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -3923,9 +3687,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 9:
@@ -3942,7 +3705,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -3957,9 +3719,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 10:
@@ -3976,7 +3737,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -3991,9 +3751,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Battle ended indecisively.
@@ -4016,7 +3775,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -4031,9 +3789,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 2:
@@ -4050,7 +3807,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -4065,9 +3821,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 3:
@@ -4084,7 +3839,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -4099,9 +3853,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 4:
@@ -4118,7 +3871,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -4133,9 +3885,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 5:
@@ -4152,7 +3903,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -4167,9 +3917,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 6:
@@ -4186,7 +3935,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -4201,9 +3949,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 7:
@@ -4220,7 +3967,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -4235,9 +3981,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 8:
@@ -4254,7 +3999,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -4269,9 +4013,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 9:
@@ -4288,7 +4031,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -4303,9 +4045,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 10:
@@ -4322,7 +4063,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -4337,9 +4077,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Battle ended indecisively.
@@ -4362,7 +4101,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -4377,9 +4115,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 2:
@@ -4396,7 +4133,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -4411,9 +4147,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 3:
@@ -4430,7 +4165,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -4445,9 +4179,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 4:
@@ -4464,7 +4197,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -4479,9 +4211,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 5:
@@ -4498,7 +4229,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -4513,9 +4243,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 6:
@@ -4532,7 +4261,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -4547,9 +4275,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 7:
@@ -4566,7 +4293,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -4581,9 +4307,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 8:
@@ -4600,7 +4325,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -4615,9 +4339,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 9:
@@ -4634,7 +4357,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -4649,9 +4371,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 10:
@@ -4668,7 +4389,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -4683,9 +4403,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Battle ended indecisively.
@@ -4708,7 +4427,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -4723,9 +4441,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 2:
@@ -4742,7 +4459,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -4757,9 +4473,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 3:
@@ -4776,7 +4491,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -4791,9 +4505,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 4:
@@ -4810,7 +4523,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -4825,9 +4537,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 5:
@@ -4844,7 +4555,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -4859,9 +4569,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 6:
@@ -4878,7 +4587,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -4893,9 +4601,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 7:
@@ -4912,7 +4619,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -4927,9 +4633,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 8:
@@ -4946,7 +4651,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -4961,9 +4665,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 9:
@@ -4980,7 +4683,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -4995,9 +4697,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 10:
@@ -5014,7 +4715,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -5029,9 +4729,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Battle ended indecisively.
@@ -5054,7 +4753,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -5069,9 +4767,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 2:
@@ -5088,7 +4785,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -5103,9 +4799,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 3:
@@ -5122,7 +4817,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -5137,9 +4831,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 4:
@@ -5156,7 +4849,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -5171,9 +4863,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 5:
@@ -5190,7 +4881,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -5205,9 +4895,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 6:
@@ -5224,7 +4913,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -5239,9 +4927,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 7:
@@ -5258,7 +4945,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -5273,9 +4959,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 8:
@@ -5292,7 +4977,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -5307,9 +4991,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 9:
@@ -5326,7 +5009,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -5341,9 +5023,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Round 10:
@@ -5360,7 +5041,6 @@ Battles report:
   - infantry battalion [110], infantry battalion [inftry], owned by Gelvaren [3].
     size: 500.
     hit points: 50/50, attack: 3, defense: 2, initiative: 5 (0).
-      #1 hit points: 50/50.
     - terran officer [107], terran [terran], working for Gelvaren [3].
       attack: 2, defense: 1, initiative: 5.
   Defenders:
@@ -5375,9 +5055,8 @@ Battles report:
       #5 hit points: 100/44, heavily damaged, effects: disabled.
   + gun placement [111], gun placement [gunplc], disabled, immobile.
     size: 100, mass: 504 (500), crew: 2/1.
-    hit points: 100/59, attack: 1, defense: 1.
+    hit points: 100/59, attack: 1, defense: 1, lightly damaged, inactive.
     items: terran [terran].
-      #1 hit points: 100/59, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   ------------------------------------------------------------
   Battle ended indecisively.

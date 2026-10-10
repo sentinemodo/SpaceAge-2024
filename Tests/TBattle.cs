@@ -385,8 +385,8 @@ namespace UnitTests
 			battle.Execute(this.game.Week);
 
 			string report = string.Join("\n", battle.Report(attackerOwner).ToArray());
-			Assert.That(report, Does.Contain("fires"));
-			Assert.That(report, Does.Contain("tanks [tanks]"));
+			Assert.That(report, Does.Contain("fires on"));
+			Assert.That(report, Does.Not.Contain("fires tanks [tanks] on"));
 		}
 
 		[Test]
@@ -1172,6 +1172,157 @@ namespace UnitTests
 
 			Assert.That(tanks.HasScavenge, Is.False);
 			Assert.That(tanks.HasCapture);
+		}
+
+		[Test]
+		public void BattleFireReport_CompositeFrigateKeepsWeaponInOpening()
+		{
+			ModuleStack frigate = this.game.ModuleStacks["100011"];
+			ModuleStack station = this.game.ModuleStacks["100021"];
+
+			Sequence.Rolls.Clear();
+			Sequence.Ints.Clear();
+			Sequence.Ints.Push(120);
+			Sequence.Ints.Push(1);
+			Sequence.Ints.Push(20);
+
+			Battle battle = new Battle(frigate, station);
+			battle.Execute(this.game.Week);
+
+			string report = string.Join("\n", battle.Report(frigate.Owner).ToArray());
+			Assert.That(report, Does.Contain("Frigate [100011] fires x-ray laser [xraylz] on Station [100021]"));
+		}
+
+		[Test]
+		public void BattleFireReport_CustomNameUsesFiresOn()
+		{
+			Region region = new Region(Region.All["R00002"].RegionHolder, "custfire");
+			Faction attackerOwner = this.game.Factions["2"];
+			Faction defenderOwner = this.game.Factions["1"];
+			ModuleStack tanks = new ModuleStack(region, attackerOwner, ModuleType.All["tanks"], "custatk");
+			tanks.FullName = "Surrender or die!";
+			tanks.AddModule();
+			tanks.ItemStacks.Add(new ItemStack(ItemType.All["terran"], 16));
+			tanks.ApplyPrioritizeTactic("prioritize command");
+			ModuleStack target = new ModuleStack(region, defenderOwner, ModuleType.All["corphq"], "custdef");
+			target.FullName = "My production facility";
+			target.AddModule();
+			target.ItemStacks.Add(new ItemStack(ItemType.All["terran"], 20));
+
+			Sequence.Rolls.Clear();
+			Sequence.Ints.Clear();
+			Sequence.Ints.Push(1);
+			Sequence.Ints.Push(1);
+
+			Battle battle = new Battle(tanks, target);
+			battle.Execute(this.game.Week);
+
+			string report = string.Join("\n", battle.Report(attackerOwner).ToArray());
+			Assert.That(report, Does.Contain("Surrender or die! [custatk] fires on My production facility [custdef]"));
+		}
+
+		[Test]
+		public void BattleFireReport_LivingInfantryAttacks()
+		{
+			ModuleType infantryType = ModuleType.All["inftry"];
+			bool previousLiving = infantryType.LivingUnit;
+			infantryType.LivingUnit = true;
+			try
+			{
+				Region region = new Region(Region.All["R00002"].RegionHolder, "inffire");
+				Faction attackerOwner = this.game.Factions["2"];
+				Faction defenderOwner = this.game.Factions["1"];
+				ModuleStack infantry = new ModuleStack(region, attackerOwner, infantryType, "infatk");
+				infantry.AddModule();
+				infantry.ItemStacks.Add(new ItemStack(ItemType.All["terran"], 16));
+				infantry.ApplyPrioritizeTactic("prioritize command");
+				ModuleStack target = new ModuleStack(region, defenderOwner, ModuleType.All["corphq"], "infdef");
+				target.AddModule();
+				target.ItemStacks.Add(new ItemStack(ItemType.All["terran"], 20));
+
+				Sequence.Rolls.Clear();
+				Sequence.Ints.Clear();
+				Sequence.Ints.Push(1);
+				Sequence.Ints.Push(1);
+
+				Battle battle = new Battle(infantry, target);
+				battle.Execute(this.game.Week);
+
+				string report = string.Join("\n", battle.Report(attackerOwner).ToArray());
+				Assert.That(report, Does.Contain("infantry battalion [infatk] attacks corporate headquarters [infdef]"));
+				Assert.That(report, Does.Not.Contain("fires infantry battalion [inftry] on"));
+			}
+			finally
+			{
+				infantryType.LivingUnit = previousLiving;
+			}
+		}
+
+		[Test]
+		public void BattleFireReport_PluralVolleyPrintsHeaderOnce()
+		{
+			Region region = new Region(Region.All["R00002"].RegionHolder, "plufire");
+			Faction attackerOwner = this.game.Factions["2"];
+			Faction defenderOwner = this.game.Factions["1"];
+			ModuleStack tanks = new ModuleStack(region, attackerOwner, ModuleType.All["tanks"], "pluatk");
+			tanks.AddModule();
+			tanks.AddModule();
+			tanks.AddModule();
+			tanks.ItemStacks.Add(new ItemStack(ItemType.All["terran"], 48));
+			tanks.ApplyPrioritizeTactic("prioritize command");
+			ModuleStack target = new ModuleStack(region, defenderOwner, ModuleType.All["corphq"], "pludef");
+			target.AddModule();
+			target.ItemStacks.Add(new ItemStack(ItemType.All["terran"], 20));
+
+			Sequence.Rolls.Clear();
+			Sequence.Ints.Clear();
+			for (int i = 0; i < 6; i++)
+			{
+				Sequence.Ints.Push(1);
+				Sequence.Ints.Push(1);
+			}
+
+			Battle battle = new Battle(tanks, target);
+			battle.Execute(this.game.Week);
+
+			string report = string.Join("\n", battle.Report(attackerOwner).ToArray());
+			Assert.That(report, Does.Contain("3 tanks [pluatk] fire on"));
+			Assert.That(report, Does.Contain("(chance:"));
+		}
+
+		[Test]
+		public void BattleFireReport_SingleModuleStackConsolidatesRosterAndOmitsHashOnHit()
+		{
+			ModuleType faunaType = ModuleType.All["inftry"];
+			faunaType.LivingUnit = true;
+			Region region = new Region(Region.All["R00002"].RegionHolder, "fauna1");
+			Faction fauna = new Faction("15", "Anvil Fauna");
+			Faction attackerOwner = this.game.Factions["2"];
+			ModuleStack pack = new ModuleStack(region, fauna, faunaType, "fauna1");
+			pack.FullName = "Slope burrow pack";
+			pack.AddModule();
+			pack.Modules[0].Damage = 24;
+			ModuleStack tanks = new ModuleStack(region, attackerOwner, ModuleType.All["tanks"], "faunaatk");
+			tanks.AddModule();
+			tanks.ItemStacks.Add(new ItemStack(ItemType.All["terran"], 16));
+			tanks.ApplyPrioritizeTactic("prioritize command");
+
+			Sequence.Rolls.Clear();
+			Sequence.Ints.Clear();
+			Sequence.Ints.Push(1);
+			Sequence.Ints.Push(1);
+
+			Battle battle = new Battle(tanks, pack);
+			battle.Execute(this.game.Week);
+
+			string report = string.Join("\n", battle.Report(attackerOwner).ToArray());
+			Assert.That(report, Does.Not.Contain("#1 hit points:"));
+			Assert.That(report, Does.Contain("wounded"));
+			Assert.That(report, Does.Not.Contain("hits #1 Slope burrow pack"));
+			Assert.That(report, Does.Contain("hits doing 4 damage"));
+			Assert.That(report, Does.Not.Contain("hits Slope burrow pack [fauna1] doing"));
+			Assert.That(report, Does.Not.Contain("#1 infantry battalion [inftry] is"));
+			Assert.That(report, Does.Contain("infantry battalion [inftry] is"));
 		}
 
 	}

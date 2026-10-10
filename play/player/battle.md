@@ -47,7 +47,15 @@ Every **root** that qualifies is a combatant. Nested stacks are scanned (`isDefe
 
 Nested armed modules under a joining parent still **print indented** in that parent’s `BattleReport`. They are not a second same-id sibling on the defender list.
 
-**Firing:** `executeAttack` walks `GetFiringModules` on each combatant: the stack’s own operational combat-armed modules, then nested stacks except hangar craft. Nested shuttle-units still in the bay are skipped; nested `orbrkt` (military, not a shuttle unit) still fires as a weapon on the parent. One shot sequence per combatant. The fire line names the **combatant** and the **weapon type** (`shuttle [117] fires orbital rocket launcher`), not a nested stack firing as its own combatant plus the parent firing the same launcher.
+**Firing:** `executeAttack` walks `GetFiringModules` on each combatant: the stack’s own operational combat-armed modules, then nested stacks except hangar craft. Nested shuttle-units still in the bay are skipped; nested `orbrkt` (military, not a shuttle unit) still fires as a weapon on the parent. One shot sequence per combatant.
+
+**Fire line wording:** stacks with nested firing weapons (ships, shuttles with nested launchers, stations) keep `{combatant} fires {weapon} on {target}` (e.g. `Frigate [100011] fires x-ray laser [xraylz] on Station [100021]`). Flat combatants (tanks, infantry, drones, single-module fauna) omit the weapon clause and name attacker and target from stack/catalog names:
+
+1. Custom stack name (`name-en` / player rename): `{ReportName} fires on {target}` (plural quantity: `fire on`).
+2. Default singular: `{ReportName}` then `attacks` (living units) or `fires on` (others).
+3. Plural without custom name: `{N} {type plural} [{id}] fire on {target}` once per volley, then each shot line starts with `(chance: …)` only.
+
+Hit lines still append `(chance: C/D)`, damage, and capture detail. **Flat targets** (no nested modulestacks, and the hit location is the stack itself—not `#N`) name the stack only in the opening; the hit clause is `hits doing N damage` (no repeated name). **Nested or multi-module targets** keep `hits #N …` or nested stack names in the hit clause. Single-module flat stacks also omit `#1` on status lines; round rosters merge wound/disable into the stack stats line instead of `#1 hit points:`.
 
 **Sit out:** a third faction that would qualify as **both** attacker (ally of initiator) **and** defender (ally or friendly to the target) joins **neither** side (`sitsOutBothSides`).
 

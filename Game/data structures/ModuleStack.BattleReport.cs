@@ -40,6 +40,7 @@ namespace SpaceAge
 			line = this.reportAttack(faction, line);
 			line = this.reportDefense(faction, line);
 			line = this.reportInitiative(line);
+			line = this.AppendSingleModuleBattleDetailToStatsLine(line);
 			lines.Add(string.Concat(line, "."));
 			
 			if (this.owner == faction & this.tactics.Count > 0)
@@ -65,7 +66,10 @@ namespace SpaceAge
 			//{
 			//    reportLines.Add(this.effects.Report(faction, level + 1));
 			//}
-			lines.Add(this.modules.BattleReport(faction), 1);
+			if (!this.UsesSingleModuleBattleDetail())
+			{
+				lines.Add(this.modules.BattleReport(faction), 1);
+			}
 
 			if (this.People.CountBattleSkilled > 0)
 			{

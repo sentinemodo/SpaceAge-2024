@@ -70,6 +70,7 @@ import {
   starTypeBorderColor,
 } from './lib/bodyStyles';
 import { MovementPanel } from './components/MovementPanel';
+import { BattlePanel } from './components/BattlePanel';
 import { SidePanel, type SideTab } from './components/SidePanel';
 import { AiPane, type AiViewMode } from './components/AiPane';
 import { OrbitSelector } from './components/OrbitSelector';
@@ -1817,24 +1818,16 @@ export default function App() {
         )}
 
         {panel === 'battle' && (
-          <div className="sub-panel scroll-area">
-            <h3>Battle summaries</h3>
-            <ClickableReportText
-              text={sectionText(sections, 'battles', 'No battles this quarter.')}
-              onFocusId={focusFromText}
-            />
-            <h4>Battle simulator</h4>
-            <textarea
-              value={battleSimXml}
-              onChange={(e) => setBattleSimXml(e.target.value)}
-              placeholder={'Paste <battle-sim> XML…'}
-              style={{ width: '100%', minHeight: 120, fontFamily: 'Consolas, monospace', fontSize: '0.75rem' }}
-            />
-            <button type="button" onClick={handleBattleSim}>Run simulation</button>
-            {battleSimOutput && (
-              <pre className="report-section" style={{ marginTop: '0.75rem' }}>{battleSimOutput}</pre>
-            )}
-          </div>
+          <BattlePanel
+            sections={sections}
+            reportFullText={reportFullText}
+            report={report}
+            onFocusId={focusFromText}
+            battleSimXml={battleSimXml}
+            onBattleSimXmlChange={setBattleSimXml}
+            battleSimOutput={battleSimOutput}
+            onRunBattleSim={handleBattleSim}
+          />
         )}
 
         {panel === 'faction' && (

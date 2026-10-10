@@ -570,6 +570,7 @@ namespace SpaceAge
 
 		private Dictionary<ModuleStack, int> unhitRounds = new Dictionary<ModuleStack, int>();
 		private List<ModuleStack> hitThisRound = new List<ModuleStack>();
+		private HashSet<string> pluralFireHeadersThisRound = new HashSet<string>();
 		private List<Module> pendingCaptures = new List<Module>();
 		private List<ModuleStack> launchedHangarCraft = new List<ModuleStack>();
 		private List<ModuleStack> hangarLaunchCarriers = new List<ModuleStack>();
@@ -601,6 +602,8 @@ namespace SpaceAge
 				int remainingItemShots = modulestack.ItemStacks.CombatDamageShotBudget(
 					modulestack.ModuleType.Group,
 					modulestack.QuantityActive);
+				bool compositeFire = modulestack.UsesCompositeBattleFireReporting();
+				bool pluralVolley = modulestack.UsesPluralBattleFireOpening() && !compositeFire;
 				foreach (Module module in firingModules)
 				{
 					if (!this.defenders.Contains(target.Name) && !this.attackers.Contains(target.Name))
@@ -610,20 +613,27 @@ namespace SpaceAge
 					string weaponName = module.Parent.ModuleType != null
 						? module.Parent.ModuleType.ReportName
 						: module.Parent.ReportName;
-					line = string.Concat(
-						modulestack.ReportName,
-						" fires ",
-						weaponName,
-						" on ",
-						target.ReportName);
+					string fireOpening = modulestack.FormatBattleFireOpening(target, weaponName);
 
 					int chance = this.getChance(modulestack, target, firing);
 
 					int dice = modulestack.Attack + modulestack.ModuleStacks.Attack() + target.Defense + target.ModuleStacks.Defense();
-					line = string.Format("{0} (chance: {1}/{2}) and",
-						line,
-						chance,
-						dice);
+					if (pluralVolley)
+					{
+						if (!this.pluralFireHeadersThisRound.Contains(modulestack.Name))
+						{
+							this.report(string.Concat(fireOpening, "."));
+							this.pluralFireHeadersThisRound.Add(modulestack.Name);
+						}
+						line = string.Format("(chance: {0}/{1}) and", chance, dice);
+					}
+					else
+					{
+						line = string.Format("{0} (chance: {1}/{2}) and",
+							fireOpening,
+							chance,
+							dice);
+					}
 
                     int roll = this.getRoll(dice, line);
 
@@ -683,17 +693,17 @@ namespace SpaceAge
 
 						line = this.formatHitLine(line, targetModule, hpDamage, captureDamage);
 						this.report(line);
-						this.reportObserver(string.Format("{0} fires {1} on {2} and hits {3} {4}.",
-							modulestack.ReportName,
+						this.reportObserver(this.formatObserverHitLine(
+							modulestack,
+							target,
 							weaponName,
-							target.ReportName,
-							targetModule.ReportID,
-							targetModule.Parent.ReportName));
+							targetModule,
+							compositeFire));
 
 						if (targetModule.IsWrecked)
 						{
 							this.pendingCaptures.Remove(targetModule);
-							line = string.Format("  {0} is wrecked.", targetModule.ReportName);
+							line = string.Format("  {0} is wrecked.", targetModule.ReportBattleStatusName);
 							this.report(line);
 							this.reportObserver(line);
 							if (!target.HasIntactModules())
@@ -704,7 +714,7 @@ namespace SpaceAge
 						else if (firing == ETactic.capture && targetModule.IsCaptureComplete)
 						{
 							targetModule.Online = false;
-							string capturedName = targetModule.ReportName;
+							string capturedName = targetModule.ReportBattleStatusName;
 							line = string.Format("  {0} module captured by {1}.",
 								capturedName,
 								this.attacker.Owner.ReportName);
@@ -717,18 +727,18 @@ namespace SpaceAge
 							if (targetModule.DamageStatus != EDamageStatus.undamaged)
 							{
 								line = string.Format("  {0} is {1}.",
-									targetModule.ReportName, 
+									targetModule.ReportBattleStatusName, 
 									targetModule.ReportDamage);
 								this.report(line);
 							}
 							if (!targetModule.IsActive)
 							{
 								line = string.Format("  {0} is {1}.",
-									targetModule.ReportName, 
+									targetModule.ReportBattleStatusName, 
 									targetModule.ReportActive);
 								this.report(line);
 								this.reportObserver(string.Format("  {0} is {1}.",
-									targetModule.ReportName,
+									targetModule.ReportBattleStatusName,
 									targetModule.ReportActive));
 
 								if (targetWasOperational && !target.HasOperationalModules)
@@ -767,10 +777,11 @@ namespace SpaceAge
 					{
 						line = string.Format("{0} misses.", line);
 						this.report(line);
-						this.reportObserver(string.Format("{0} fires {1} on {2} and misses.",
-							modulestack.ReportName,
+						this.reportObserver(this.formatObserverMissLine(
+							modulestack,
+							target,
 							weaponName,
-							target.ReportName));
+							compositeFire));
 					}
 				}
 			}
@@ -786,20 +797,85 @@ namespace SpaceAge
 
 		private string formatHitLine(string line, Module targetModule, int hpDamage, int captureDamage)
 		{
+			bool simplifyHitLocation = targetModule.Parent != null
+				&& targetModule.Parent.UsesSimplifiedHitLocationReportingFor(targetModule);
 			if (captureDamage > 0)
 			{
-				return string.Format("{0} hits {1} {2} doing {3} damage and {4} capture damage.",
+				if (simplifyHitLocation)
+				{
+					return string.Format("{0} hits doing {1} damage and {2} capture damage.",
+						line,
+						hpDamage,
+						captureDamage);
+				}
+				return string.Format("{0} hits {1} doing {2} damage and {3} capture damage.",
 					line,
-					targetModule.ReportID,
-					targetModule.Parent.ReportName,
+					targetModule.ReportHitLocationLabel,
 					hpDamage,
 					captureDamage);
 			}
-			return string.Format("{0} hits {1} {2} doing {3} damage.",
+			if (simplifyHitLocation)
+			{
+				return string.Format("{0} hits doing {1} damage.",
+					line,
+					hpDamage);
+			}
+			return string.Format("{0} hits {1} doing {2} damage.",
 				line,
-				targetModule.ReportID,
-				targetModule.Parent.ReportName,
+				targetModule.ReportHitLocationLabel,
 				hpDamage);
+		}
+
+		private string formatObserverHitLine(
+			ModuleStack modulestack,
+			ModuleStack target,
+			string weaponName,
+			Module targetModule,
+			bool compositeFire)
+		{
+			if (compositeFire)
+			{
+				if (target.UsesSimplifiedHitLocationReportingFor(targetModule))
+				{
+					return string.Format("{0} fires {1} on {2} and hits.",
+						modulestack.ReportName,
+						weaponName,
+						target.ReportName);
+				}
+				return string.Format("{0} fires {1} on {2} and hits {3}.",
+					modulestack.ReportName,
+					weaponName,
+					target.ReportName,
+					targetModule.ReportHitLocationLabel);
+			}
+			if (target.UsesSimplifiedHitLocationReportingFor(targetModule))
+			{
+				return string.Format("{0} {1} and hits.",
+					modulestack.BattleFireSubjectVerbOn(),
+					target.ReportName);
+			}
+			return string.Format("{0} {1} and hits {2}.",
+				modulestack.BattleFireSubjectVerbOn(),
+				target.ReportName,
+				targetModule.ReportHitLocationLabel);
+		}
+
+		private string formatObserverMissLine(
+			ModuleStack modulestack,
+			ModuleStack target,
+			string weaponName,
+			bool compositeFire)
+		{
+			if (compositeFire)
+			{
+				return string.Format("{0} fires {1} on {2} and misses.",
+					modulestack.ReportName,
+					weaponName,
+					target.ReportName);
+			}
+			return string.Format("{0} {1} and misses.",
+				modulestack.BattleFireSubjectVerbOn(),
+				target.ReportName);
 		}
 
 		private int getRoll(int dice, string description)
@@ -1184,6 +1260,7 @@ namespace SpaceAge
 				}
 				this.report("------------------------------------------------------------");
 				this.hitThisRound.Clear();
+				this.pluralFireHeadersThisRound.Clear();
 				
 				// decide superiorities and bonuses
 				// validate participating modulestacks (remove destroyed, disabled)

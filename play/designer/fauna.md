@@ -13,6 +13,7 @@ Benchmarks vs player units: [`combat-balance.md`](combat-balance.md) — `inftry
 | Diplomacy | Fauna factions 14–17 start **neutral** (attitude 2); hostile only after contact |
 | Settlement rumors | When a fauna stack occupies a region **adjacent** to a region with a settlement-group module (`town`, `city`, `mtrply`, dome variants), the engine issues an anonymous planet-scoped **Rumor** naming the fauna region and stack id (engine (live)). Counts as contact for `DECLARE`. |
 | Production | **None** at campaign start — catalog modules only for combat/load |
+| **Ground move (live catalog)** | All fauna have `<move mode="ground">`. **Tier 1** speed **1.0**, **tier 2** **0.75**, **tier 3** **0.5** — mobile stacks (not immobile structures); no oil fuel |
 | Tame variants | Wishlist L3+ breeding techs (below); −1 atk, +can-convert, player upkeep |
 
 Fauna vehicle-tier units use `group="vehicle"` but **no oil fuel** — metabolism covered by food/terair consume.
@@ -112,9 +113,9 @@ Quantities are **per unit** in the destroyed stack; divide total drops across pa
 
 | Id | Name | Tier | HP | Atk | Def | Dmg | Speed | Flavour |
 |----|------|------|----|-----|-----|-----|-------|---------|
-| `brmstr` | brush stalker | 1 | 35 | 3 | 2 | 3 | 0.12 | Pack hunters in tall grass |
-| `mulcrw` | mulch crawler | 2 | 65 | 5 | 3 | 6 | 0.35 | Peat-plated grazer |
-| `canalp` | canopy alpha | 3 | 90 | 11 | 3 | 12 | 0.15 | Treeline apex; kinetic |
+| `brmstr` | brush stalker | 1 | 35 | 3 | 2 | 3 | 1.0 | Pack hunters in tall grass |
+| `mulcrw` | mulch crawler | 2 | 65 | 5 | 3 | 6 | 0.75 | Peat-plated grazer |
+| `canalp` | canopy alpha | 3 | 90 | 11 | 3 | 12 | 0.5 | Treeline apex; kinetic |
 
 **Seeded:** Mid Vale (`brmstr`×2), East Steppe (`mulcrw`×1), Loess (`canalp`×1) — not on UN city cells (Windgap hosts city `100020`).
 
@@ -122,9 +123,9 @@ Quantities are **per unit** in the destroyed stack; divide total drops across pa
 
 | Id | Name | Tier | HP | Atk | Def | Dmg | Speed | Flavour |
 |----|------|------|----|-----|-----|-----|-------|---------|
-| `crstlb` | crust burrower | 1 | 58 | 2 | 4 | 2 | 0.08 | Armoured diggers |
-| `slgmnt` | slag mantlet | 2 | 75 | 6 | 5 | 6 | 0.30 | Mineral-plated grazer |
-| `urstlk` | umber stalker | 3 | 85 | 10 | 4 | 13 | 0.12 | Rad spit; missile |
+| `crstlb` | crust burrower | 1 | 58 | 2 | 4 | 2 | 1.0 | Armoured diggers |
+| `slgmnt` | slag mantlet | 2 | 75 | 6 | 5 | 6 | 0.75 | Mineral-plated grazer |
+| `urstlk` | umber stalker | 3 | 85 | 10 | 4 | 13 | 0.5 | Rad spit; missile |
 
 **Seeded:** Slope (`crstlb`×2), Scree (`slgmnt`×1), Crag (`urstlk`×1).
 
@@ -132,9 +133,9 @@ Quantities are **per unit** in the destroyed stack; divide total drops across pa
 
 | Id | Name | Tier | HP | Atk | Def | Dmg | Speed | Flavour |
 |----|------|------|----|-----|-----|-----|-------|---------|
-| `ribgrz` | ridge grazer | 1 | 42 | 2 | 3 | 2 | 0.14 | Hardy herd beasts |
-| `glacra` | glacier crab | 2 | 72 | 4 | 5 | 5 | 0.25 | Ice-carapace scuttler |
-| `frostb` | frost brood | 3 | 70 | 9 | 6 | 10 | 0.10 | Ice-glint beam; laser |
+| `ribgrz` | ridge grazer | 1 | 42 | 2 | 3 | 2 | 1.0 | Hardy herd beasts |
+| `glacra` | glacier crab | 2 | 72 | 4 | 5 | 5 | 0.75 | Ice-carapace scuttler |
+| `frostb` | frost brood | 3 | 70 | 9 | 6 | 10 | 0.5 | Ice-glint beam; laser |
 
 **Seeded:** Haven 1,1 (`ribgrz`×2), Haven 2,1 (`glacra`×1), Haven 0,1 (`frostb`×1).
 
@@ -142,9 +143,9 @@ Quantities are **per unit** in the destroyed stack; divide total drops across pa
 
 | Id | Name | Tier | HP | Atk | Def | Dmg | Speed | Flavour |
 |----|------|------|----|-----|-----|-----|-------|---------|
-| `silskk` | silicate skitter | 1 | 28 | 4 | 1 | 4 | 0.18 | Fragile shard swarms |
-| `qtzrol` | quartz roller | 2 | 70 | 5 | 4 | 6 | 0.45 | Rolling boulder beast |
-| `spngrf` | spine reef | 3 | 88 | 12 | 2 | 13 | 0.08 | Crystal spine; laser |
+| `silskk` | silicate skitter | 1 | 28 | 4 | 1 | 4 | 1.0 | Fragile shard swarms |
+| `qtzrol` | quartz roller | 2 | 70 | 5 | 4 | 6 | 0.75 | Rolling boulder beast |
+| `spngrf` | spine reef | 3 | 88 | 12 | 2 | 13 | 0.5 | Crystal spine; laser |
 
 **Seeded:** Graph 2,0 (`silskk`×2), Graph 3,1 (`qtzrol`×1), Graph 1,2 (`spngrf`×1).
 

@@ -45,6 +45,32 @@ namespace SpaceAge
 			}
 		}
 
+		public string ReportBattleStatusName
+		{
+			get
+			{
+				if (this.parent != null && this.parent.UsesSingleModuleBattleDetail())
+				{
+					return this.parent.ModuleType != null
+						? this.parent.ModuleType.ReportName
+						: this.parent.ReportName;
+				}
+				return this.ReportName;
+			}
+		}
+
+		public string ReportHitLocationLabel
+		{
+			get
+			{
+				if (this.parent != null && this.parent.UsesSingleModuleBattleDetail())
+				{
+					return this.parent.ReportName;
+				}
+				return string.Concat(this.ReportID, " ", this.parent.ReportName);
+			}
+		}
+
 		public int id
 		{
 			get

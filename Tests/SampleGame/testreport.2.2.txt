@@ -339,22 +339,6 @@ Orders Template:
 ;   can operate for another 10 weeks without refueling.
 ;   producing spaceship hull [sshull] into spaceship hull [101], 2 weeks to complete (x10 efficiency
 ;   multiplier).
-move R00001
-+use ssassm as 101
-+-use spctrl as new102
-+-use urfiss as new103
-+-use areact as new104
-+-use crewhs as new105
-+--give -20 terran to new105
-+--give -20 terair to new105
-+--give -20 food to new105
-+-use strans as new106
-+--give all iron to new106
-+--give all titani to new106
-+--give all silici to new106
-+--give all copper to new106
-+--give -10 uraniu to new106
-+--give -10 h2o2 to new106
 
 #modulestack 101
 ; + spaceship hull [101], spaceship hull [sshull], disabled, immobile.
@@ -363,8 +347,6 @@ active 101
 
 #person 000001
 ; + Caste Prime CEO [000001], terran [terran].
-active 101
--stack new102
 
 #end
 
