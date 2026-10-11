@@ -8686,7 +8686,7 @@ Galaxy report:
       movement speed: 0.1 on ground.
       items: 99 units of food [food] (size: 99, mass: 99).
       effects:
-        will move for another 4 weeks before next destination.
+        will move for another 3 weeks before next destination.
       events:
         week 1: moving from Southern Hemisphere [R00003] (1,0) to
         Northern Hemisphere [R00002] (0,0), ETA 16.
@@ -8816,7 +8816,7 @@ sell 100 food
 ; + infantry battalion [110], infantry battalion [inftry], immobile.
 ; items: 99 units of food [food].
 ; effects:
-;   will move for another 4 weeks before next destination.
+;   will move for another 3 weeks before next destination.
 move R00002
 -capture 000012
 -capture all

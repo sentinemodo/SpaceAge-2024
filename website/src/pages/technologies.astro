@@ -1,0 +1,352 @@
+---
+import Layout from '../layouts/Layout.astro';
+import {
+  loadHumanTechnologiesMarkdown,
+  parseTechnologiesIndex,
+  renderHumanTechnologiesHtml,
+} from '../lib/humanTechnologies';
+
+const technologiesHtml = renderHumanTechnologiesHtml();
+const indexGroups = parseTechnologiesIndex(loadHumanTechnologiesMarkdown());
+const totalEntries = indexGroups.reduce((sum, group) => sum + group.entries.length, 0);
+---
+
+<Layout
+  title="Basic technologies"
+  description="SpaceAge open beta — level 0 and level 1 technologies, modules, and items."
+>
+  <section class="technologies-content">
+    <div class="technologies-main">
+      <div class="intro-card card">
+        <h1>Basic technologies</h1>
+        <p>
+          Level 0 and level 1 <strong>technologies</strong>, the <strong>module stack</strong> types you build and
+          operate, and the <strong>items</strong> they consume — for the open-beta campaign. Bracketed ids such as
+          <code>[iron]</code> jump to that entry below. Use the catalog on the right to search by name.
+        </p>
+      </div>
+
+      <article class="technologies-catalog card" set:html={technologiesHtml} />
+    </div>
+
+    <aside class="tech-index card" aria-label="Technology catalog index">
+      <h2 class="tech-index-title">Catalog</h2>
+      <p class="tech-index-lead">{totalEntries} entries</p>
+      <label class="tech-index-search-label">
+        <span class="visually-hidden">Search catalog</span>
+        <input
+          type="search"
+          id="tech-index-search"
+          class="tech-index-search"
+          placeholder="Search names…"
+          autocomplete="off"
+          spellcheck="false"
+        />
+      </label>
+
+      {
+        indexGroups.map((group) => (
+          <div class="tech-index-group" data-index-group>
+            <h3 class="tech-index-heading">
+              {group.label}
+              <span class="tech-index-count">({group.entries.length})</span>
+            </h3>
+            <ul class="tech-index-list">
+              {group.entries.map((entry) => (
+                <li data-index-item>
+                  <a class="tech-index-link" href={`#${entry.anchor}`} title={`[${entry.id}]`}>
+                    {entry.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+      <p class="tech-index-empty" id="tech-index-empty" hidden>No matches.</p>
+    </aside>
+  </section>
+</Layout>
+
+<script>
+  const SCROLL_GAP_PX = 12;
+
+  function syncTechScrollOffset() {
+    const nav = document.querySelector('.nav');
+    const navHeight = nav?.getBoundingClientRect().height ?? 0;
+    const offset = navHeight + SCROLL_GAP_PX;
+    document.documentElement.style.setProperty('--tech-scroll-offset', `${offset}px`);
+    return offset;
+  }
+
+  function scrollTechIntoView(id: string) {
+    syncTechScrollOffset();
+    const target = document.getElementById(id);
+    if (!target) return;
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    history.replaceState(null, '', `#${id}`);
+  }
+
+  syncTechScrollOffset();
+  window.addEventListener('resize', syncTechScrollOffset);
+
+  document.querySelectorAll<HTMLAnchorElement>('a.tech-index-link, a.tech-crosslink').forEach((link) => {
+    link.addEventListener('click', (event) => {
+      const hash = link.getAttribute('href');
+      if (!hash?.startsWith('#')) return;
+      event.preventDefault();
+      scrollTechIntoView(hash.slice(1));
+    });
+  });
+
+  const initialHash = window.location.hash;
+  if (initialHash.startsWith('#')) {
+    requestAnimationFrame(() => scrollTechIntoView(initialHash.slice(1)));
+  }
+
+  const searchInput = document.getElementById('tech-index-search') as HTMLInputElement | null;
+  const emptyNote = document.getElementById('tech-index-empty');
+
+  function filterTechIndex() {
+    const query = (searchInput?.value ?? '').trim().toLowerCase();
+    let visibleCount = 0;
+
+    document.querySelectorAll<HTMLElement>('[data-index-group]').forEach((group) => {
+      let groupVisible = 0;
+      group.querySelectorAll<HTMLElement>('[data-index-item]').forEach((item) => {
+        const text = item.textContent?.toLowerCase() ?? '';
+        const show = query.length === 0 || text.includes(query);
+        item.hidden = !show;
+        if (show) groupVisible += 1;
+      });
+      group.hidden = groupVisible === 0;
+      visibleCount += groupVisible;
+    });
+
+    if (emptyNote) emptyNote.hidden = visibleCount > 0;
+  }
+
+  searchInput?.addEventListener('input', filterTechIndex);
+</script>
+
+<style>
+  .technologies-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(11rem, 14rem);
+    gap: var(--space-lg);
+    align-items: start;
+  }
+
+  .technologies-main {
+    min-width: 0;
+  }
+
+  h1 {
+    color: var(--color-accent-teal);
+    margin-top: 0;
+    margin-bottom: var(--space-md);
+  }
+
+  .intro-card {
+    margin-bottom: var(--space-xl);
+  }
+
+  .intro-card code {
+    font-family: ui-monospace, monospace;
+    font-size: 0.9em;
+  }
+
+  .technologies-catalog :global(.tech-page-title) {
+    display: none;
+  }
+
+  .technologies-catalog :global(.tech-section) {
+    color: var(--color-accent-teal);
+    margin-top: var(--space-xl);
+    scroll-margin-top: var(--tech-scroll-offset, 4rem);
+  }
+
+  .technologies-catalog :global(.tech-section:first-child) {
+    margin-top: 0;
+  }
+
+  .technologies-catalog :global(.tech-subsection) {
+    color: var(--color-accent-teal);
+    margin-top: var(--space-lg);
+  }
+
+  .technologies-catalog :global(.tech-entry) {
+    margin-top: var(--space-lg);
+  }
+
+  .technologies-catalog :global(.tech-entry-title) {
+    color: var(--color-accent-teal);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    margin: 0 0 var(--space-sm);
+  }
+
+  .technologies-catalog :global(.tech-id) {
+    font-family: ui-monospace, monospace;
+    font-size: var(--font-size-sm);
+    color: var(--color-accent-teal);
+    font-weight: normal;
+  }
+
+  .technologies-catalog :global(.tech-paragraph) {
+    color: var(--color-text-dark);
+    line-height: 1.65;
+    margin: 0 0 var(--space-sm);
+  }
+
+  .technologies-catalog :global(.tech-paragraph strong) {
+    color: var(--color-text-dark);
+  }
+
+  .technologies-catalog :global(.tech-table-wrap) {
+    overflow-x: auto;
+    margin: var(--space-md) 0;
+  }
+
+  .technologies-catalog :global(.tech-table) {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--font-size-sm);
+  }
+
+  .technologies-catalog :global(.tech-table th),
+  .technologies-catalog :global(.tech-table td) {
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    padding: var(--space-sm);
+    text-align: left;
+    vertical-align: top;
+  }
+
+  .technologies-catalog :global(a.tech-crosslink) {
+    color: var(--color-accent-teal);
+  }
+
+  .technologies-catalog :global(.tech-anchor) {
+    display: block;
+    scroll-margin-top: var(
+      --tech-scroll-offset,
+      calc(var(--font-size-2xl) * 2 + var(--space-md) * 2 + var(--space-sm))
+    );
+    height: 0;
+  }
+
+  .tech-index {
+    position: sticky;
+    top: var(--space-md);
+    max-height: calc(100vh - 2 * var(--space-md));
+    overflow-y: auto;
+    padding: var(--space-md);
+  }
+
+  .tech-index-title {
+    margin: 0 0 var(--space-xs);
+    font-size: var(--font-size-lg);
+    color: var(--color-accent-teal);
+  }
+
+  .tech-index-lead {
+    margin: 0 0 var(--space-sm);
+    font-size: var(--font-size-sm);
+    opacity: 0.85;
+  }
+
+  .tech-index-search-label {
+    display: block;
+    margin-bottom: var(--space-md);
+  }
+
+  .tech-index-search {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.35rem 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.25);
+    color: var(--color-text-light);
+    font-size: var(--font-size-sm);
+  }
+
+  .tech-index-search:focus-visible {
+    outline: 2px solid var(--color-accent-teal);
+    outline-offset: 1px;
+  }
+
+  .tech-index-heading {
+    margin: var(--space-md) 0 var(--space-xs);
+    font-size: var(--font-size-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--color-accent-teal);
+  }
+
+  .tech-index-heading:first-of-type {
+    margin-top: 0;
+  }
+
+  .tech-index-count {
+    font-weight: normal;
+    opacity: 0.75;
+  }
+
+  .tech-index-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .tech-index-list a {
+    display: block;
+    padding: 0.15rem 0.35rem;
+    border-radius: 3px;
+    font-size: var(--font-size-sm);
+    color: var(--color-accent-teal);
+    text-decoration: none;
+    line-height: 1.35;
+  }
+
+  .tech-index-list a:hover,
+  .tech-index-list a:focus-visible {
+    background: rgba(255, 255, 255, 0.08);
+    text-decoration: underline;
+  }
+
+  .tech-index-empty {
+    margin: var(--space-md) 0 0;
+    font-size: var(--font-size-sm);
+    opacity: 0.85;
+  }
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  @media (max-width: 960px) {
+    .technologies-content {
+      grid-template-columns: 1fr;
+    }
+
+    .tech-index {
+      position: static;
+      max-height: none;
+      order: -1;
+    }
+  }
+</style>

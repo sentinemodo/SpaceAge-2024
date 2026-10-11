@@ -47,7 +47,7 @@ Treat [`docs/legacy/alderson/Rules.txt`](../../docs/legacy/alderson/Rules.txt) a
 
 **Docs-only (TDD pre-commit):** if the prompt is a manuals refresh (no faction, no report, no draft path), skip turn play. Follow **[`docs/architecture/delivery/player-facing-docs-sync.md`](../../docs/architecture/delivery/player-facing-docs-sync.md)**:
 
-- **Orders:** update `play/player/rules.md`, then **sync `docs/human/rules.md`** (human format below). Complete section A tooling rows (game-host `KNOWN_VERBS`, allowlist fallback + `regenerate-allowlist`, `website/tests/humanRules.test.ts` counts).
+- **Orders:** update `play/player/rules.md`, then **sync `docs/human/rules.md`** (human format below). Complete section A tooling rows (`regenerate-allowlist` → `verb-allowlist.json` for game-host + player-agent lint, `website/tests/humanRules.test.ts` counts).
 - **L0–L1 tech:** update `play/player/basic_technologies.md` and **`docs/human/basic_technologies.md`** (client Technologies panel); campaign catalog → `play/player/campaign/basic_technologies.md` when applicable. Update `docs/human/faq.md` if FAQ cites affected ids.
 - Always refresh `play/player/advanced_technologies.md` and `play/player/battle.md` when catalog or combat code changed in the same slice.
 

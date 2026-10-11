@@ -193,6 +193,12 @@ namespace SpaceAge
 		public override void Execute(int week)
 		{
 			this.Executed = false;
+			ModuleStack receiverStack = this.Receiver as ModuleStack;
+			if (receiverStack != null && receiverStack.RootModuleStack.IsInTransit)
+			{
+				base.Execute(week);
+				return;
+			}
             if (this.GettingFromAll)
 			{
 				this.executeGetAll(week, this.Receiver.Location.ModuleStacks);
@@ -314,14 +320,18 @@ namespace SpaceAge
                     this.FailedToExecute = true;
                 }
 
-                if ((this.Receiver.Capacity - this.Receiver.CapacityUsed < transfer.Size) & !this.FailedToExecute)
+                double capacityAvailable = this.Receiver.Capacity - this.Receiver.CapacityUsed;
+                if (capacityAvailable < transfer.Size & !this.FailedToExecute)
 				{
-                    this.Receiver.EventReports.Add(
-                        week,
-                        string.Format("GET failed, tried to get {0}, but there is not enough capacity: {1} required, {2} available.",
-                            transfer.ReportName,
-                            transfer.Size,
-                            this.Receiver.Capacity - this.Receiver.CapacityUsed));
+                    if (this.shouldReportCapacityShortfall(capacityAvailable))
+                    {
+                        this.Receiver.EventReports.Add(
+                            week,
+                            string.Format("GET failed, tried to get {0}, but there is not enough capacity: {1} required, {2} available.",
+                                transfer.ReportName,
+                                transfer.Size,
+                                capacityAvailable));
+                    }
                     this.FailedToExecute = true;
 				}
 
@@ -380,6 +390,16 @@ namespace SpaceAge
             xmlElement.AppendChild(elGet);
 			return xmlElement;
 		}
+
+        private bool shouldReportCapacityShortfall(double capacityAvailable)
+        {
+            ModuleStack receiverStack = this.Receiver as ModuleStack;
+            if (receiverStack != null && receiverStack.Quantity == 0 && capacityAvailable <= 0)
+            {
+                return false;
+            }
+            return true;
+        }
 
         public override List<string> Report(Faction owner)
         {

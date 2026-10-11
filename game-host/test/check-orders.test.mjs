@@ -68,3 +68,14 @@ test('validateOrderText accepts numeric repeat before verb', () => {
   const w = validateOrderText(body, 2, 'secret');
   assert.equal(w.length, 0);
 });
+
+test('validateOrderText accepts ACTIVE and NAME on modulestack', () => {
+  const body = [
+    '#faction 2 "secret"',
+    '#modulestack new3',
+    'ACTIVE new3',
+    'NAME "River explorer"',
+  ].join('\n');
+  const w = validateOrderText(body, 2, 'secret');
+  assert.equal(w.length, 0);
+});

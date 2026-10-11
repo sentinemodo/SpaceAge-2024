@@ -609,20 +609,34 @@ namespace SpaceAge
 								}
 								else if (elProduce.HasAttribute("effect"))
 								{
-									int duration = -1;
-									if (elProduce.HasAttribute("duration"))
-									{
-										if (elProduce.GetAttribute("duration") != "permanent")
-										{
-											duration = this.dataFile.XMLAssignInteger(elProduce.GetAttribute("duration"), -1);
-										}
-									}
 									string effect = this.dataFile.XMLAssignString(elProduce.GetAttribute("effect"), "effect");
-									switch (effect)
+									string value = elProduce.HasAttribute("value")
+										? elProduce.GetAttribute("value")
+										: string.Empty;
+									if (CatalogLoader.isPercentProduceValue(value))
 									{
-										case "region cost reduction":
-											moduleType.EffectsProduction.Add(EProducableEffects.regionCostReduction);
-											break;
+										moduleType.PercentProduces.Add(new SkillPercentProduce
+										{
+											Effect = effect,
+											Percent = int.Parse(value.Substring(0, value.Length - 1))
+										});
+									}
+									else
+									{
+										int duration = -1;
+										if (elProduce.HasAttribute("duration"))
+										{
+											if (elProduce.GetAttribute("duration") != "permanent")
+											{
+												duration = this.dataFile.XMLAssignInteger(elProduce.GetAttribute("duration"), -1);
+											}
+										}
+										switch (effect)
+										{
+											case "region cost reduction":
+												moduleType.EffectsProduction.Add(EProducableEffects.regionCostReduction);
+												break;
+										}
 									}
 								}
 								else

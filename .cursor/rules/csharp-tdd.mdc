@@ -12,6 +12,6 @@ When editing `*.cs` under `Game/` or `Tests/`:
 
 - Test-first (red → green → refactor)
 - Invoke **`/player`** for orders, report validation, goldens, and docs refresh before commit
-- Order or L0–L1 catalog changes: follow **[`docs/architecture/delivery/player-facing-docs-sync.md`](../../docs/architecture/delivery/player-facing-docs-sync.md)** (rules + human rules + game-host verbs + allowlist + website tests; tech → `docs/human/basic_technologies.md`)
+- Order or L0–L1 catalog changes: follow **[`docs/architecture/delivery/player-facing-docs-sync.md`](../../docs/architecture/delivery/player-facing-docs-sync.md)** section A/B (rules + human rules + `regenerate-allowlist` / `verb-allowlist.json` for game-host parse + player-agent lint + website tests; tech → `docs/human/basic_technologies.md`)
 - Invoke **`/project-architect`** when changing module boundaries or integrations
 - Engine version: read `Game/Program.cs` → `EngineVersion`

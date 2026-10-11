@@ -54,7 +54,11 @@ namespace SpaceAge
         public TextReader TextReader { get; set; }
         public void Dispose()
         {
-            this.TextReader.Dispose();
+			if (this.TextReader != null)
+			{
+				this.TextReader.Dispose();
+				this.TextReader = null;
+			}
         }
 
         public List<string> ReadOrdersFile(string filename)
@@ -65,11 +69,15 @@ namespace SpaceAge
                 this.TextReader = null;
             }
 
-            this.TextReader = new StreamReader(filename, System.Text.Encoding.GetEncoding(1251));
 			List<string> lines = new List<string>();
-			string line;
-			while ((line = this.TextReader.ReadLine()) != null)
-				lines.Add(line);
+			using (StreamReader reader = new StreamReader(filename, System.Text.Encoding.GetEncoding(1251)))
+			{
+				string line;
+				while ((line = reader.ReadLine()) != null)
+				{
+					lines.Add(line);
+				}
+			}
 			return lines;
 		}
 
@@ -379,14 +387,19 @@ namespace SpaceAge
 				string productionError = produceOrder.GetProductionValidationError();
 				if (productionError != null)
 				{
-					subject.Orders.Remove(order);
-					Faction owner = subject.Owner;
-					if (owner != null)
+					bool deferUntilFormed = productionError == "unit is not formed yet"
+						&& ModuleStack.IsUnformedNewAlias(produceOrder.Producer);
+					if (!deferUntilFormed)
 					{
-						owner.EventReports.Add(
-							string.Format("PARSING: {0} - order ignored, {1}.", command, productionError));
+						subject.Orders.Remove(order);
+						Faction owner = subject.Owner;
+						if (owner != null)
+						{
+							owner.EventReports.Add(
+								string.Format("PARSING: {0} - order ignored, {1}.", command, productionError));
+						}
+						return null;
 					}
-					return null;
 				}
 			}
 			order.Repeat = repeat;
@@ -422,6 +435,21 @@ namespace SpaceAge
 						return leftoverUse;
 					}
 					subject.Orders.Remove(leftoverUse);
+				}
+			}
+			MoveOrder assignedMove = order as MoveOrder;
+			if (assignedMove != null && orderLevel == 0)
+			{
+				foreach (Order existing in subject.Orders)
+				{
+					MoveOrder leftoverMove = existing as MoveOrder;
+					if (leftoverMove != null && leftoverMove != assignedMove && leftoverMove.Mover.IsInTransit
+						&& (this.preexistingOrders == null || this.preexistingOrders.Contains(leftoverMove)))
+					{
+						leftoverMove.ApplyInTransitAssignment(assignedMove);
+						subject.Orders.Remove(assignedMove);
+						return leftoverMove;
+					}
 				}
 			}
 			TrainOrder assignedTrain = order as TrainOrder;

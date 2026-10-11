@@ -776,6 +776,37 @@ namespace UnitTests
 		}
 
 		[Test]
+		public void ExecuteGetOrder_NoModuleCopies_SilentCapacityShortfall()
+		{
+			Faction owner = this.game.Factions["2"];
+			ModuleStack receiver = ModuleStack.All.GetOrCreateNewModuleStack(owner, "901888");
+			receiver.Parent = Region.All["R00001"];
+			receiver.ModuleType = ModuleType.All["moblab"];
+			ModuleStack holder = this.game.ModuleStacks["000006"];
+			ItemType oil = ItemType.All["oil"];
+			if (!holder.ItemStacks.ContainsKey(oil))
+			{
+				holder.ItemStacks.Add(new ItemStack(oil, 5));
+			}
+
+			GetOrder get = new GetOrder(receiver, holder, oil, 2);
+			get.Repeat = -1;
+			receiver.Orders.Add(get);
+
+			get.Execute(1);
+			ClassicAssert.IsFalse(get.Executed);
+			ClassicAssert.IsFalse(
+				receiver.EventReports.Exists(r => r.Description.IndexOf("GET failed") >= 0));
+
+			receiver.AddModule();
+			receiver.ExecutedLongOrder = false;
+			get.Execute(2);
+			ClassicAssert.IsTrue(get.Executed);
+			ClassicAssert.IsTrue(
+				receiver.EventReports.Exists(r => r.Description.Contains("got") && r.Description.Contains("oil")));
+		}
+
+		[Test]
 		public void ExecuteGetOrder_RootDroneTakesHeliumFuel()
 		{
 			Orbit orbit = Orbit.All["O00003"];

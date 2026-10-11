@@ -1,8 +1,4 @@
-const KNOWN_VERBS = new Set([
-  'MOVE', 'USE', 'ATTACK', 'TACTIC', 'GIVE', 'GET', 'SET', 'STACK', 'HAS',
-  'BUY', 'SELL', 'RESEARCH', 'TRAIN', 'COPY', 'TRANSFER', 'CAPTURE', 'DECLARE',
-  'CONTRACT', 'GRANT', 'PASSWORD', 'PRESS', 'RUMOR', 'JUMP', 'REPAIR', 'SURVEY', 'PRODUCE', 'ONLINE', 'OFFLINE',
-]);
+import { knownVerbs } from './known-verbs.mjs';
 
 function normalizeVerb(token) {
   return token.toUpperCase().replace(/^[@+-]+/, '');
@@ -71,7 +67,7 @@ export function validateOrderText(body, factionId, expectedPassword) {
     }
 
     const verb = orderVerbToken(line);
-    if (!KNOWN_VERBS.has(verb)) {
+    if (!knownVerbs().has(verb)) {
       warnings.push(lineWarning(raw, `unknown or unsupported verb "${verb}"`));
     }
 

@@ -4,6 +4,8 @@ Catalog: `Tests/data.xml`, loaded by `Game/game/CatalogLoader.cs` (`DataFile.Loa
 
 This file lists **level 0 and level 1** technologies, then the **module types** and **item types** those technologies produce or consume. Level 2 and above: `play/player/advanced_technologies.md`. Alphabetical by English `name-en` inside each level.
 
+**Open-beta campaign** adds L0–L1 ids not in `Tests/data.xml` (for example `mobctr`, `engtrk`, `advspc`). Those live in [`play/player/campaign/basic_technologies.md`](campaign/basic_technologies.md) and [`docs/human/basic_technologies.md`](../../docs/human/basic_technologies.md).
+
 Omitted `use-time` defaults to **1** week in `CatalogLoader`. Omitted consume/produce `quantity` defaults to **1**.
 
 ## Levels
@@ -403,3 +405,15 @@ Industral wastes and radioactive decay products cause problems as they accumulat
 Size 5, mass 5, radiation 1. Consumed by waste disposal `[wastdp]` (2). Upkeep 1 cash (radiation 10% if unpaid). Fission reactors produce wastes as an energy byproduct.
 
 Items also used at level 1 and already listed above: **copper**, **food**, **iron**, **silicium**, **titanium**.
+
+---
+
+## Campaign catalog only (`play/campaign/data.xml`)
+
+See [`play/player/campaign/basic_technologies.md`](campaign/basic_technologies.md) for the full campaign L0–L1 list. Sample entries:
+
+**mobile construction team [mobctr]** (L1, requires `grndtr`) — builds **engineering truck [engtrk]**.
+
+**engineering truck [engtrk]** — mobile `production` module; factory USE techs on solid surface at 10× duration; needs oil fuel.
+
+**advanced space command [advspc]** (L1, requires `spctrl`) — builds **advanced space command module [advcmd]**; grants skill `sscmnd` (moved from `servic`).

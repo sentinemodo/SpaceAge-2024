@@ -35,7 +35,8 @@
 							<itemstack type="h2o2" quantity="58" />
 							<itemstack type="terair" quantity="93" />
 							<upkeep type="cash" quantity="1037" />
-							<effect duration="6" type="fuelled" />
+							<effect duration="7" type="fuelled" />
+							<effect duration="1" type="moving" origin="O00001" destination="O00001" move-mode="ground" initial-duration="1" return-leg-weeks="0" />
 							<event week="1" description="given terran [terran] to command bridge [112]." />
 							<event week="1" description="given terran [terran] to fission reactor [113]." />
 							<event week="1" description="given terran [terran] to reaction drive [114]." />
@@ -49,8 +50,16 @@
 							<event week="2" description="consumed unit of oxyhydro [h2o2] as fuel for reaction drive [114]." />
 							<event week="3" description="departed from Dusty field [R00001] (0,0) to orbit [O00001], ETA 0." />
 							<event week="3" description="arrived at orbit [O00001] from Dusty field [R00001] (0,0)." />
-							<event week="4" description="departed from orbit [O00001] to orbit [O00001], ETA 0." />
-							<event week="4" description="arrived at orbit [O00001] from orbit [O00001]." />
+							<event week="4" description="MOVE failed. Unit need to be movable by ground." />
+							<event week="5" description="MOVE failed. Unit need to be movable by ground." />
+							<event week="6" description="MOVE failed. Unit need to be movable by ground." />
+							<event week="7" description="MOVE failed. Unit need to be movable by ground." />
+							<event week="8" description="MOVE failed. Unit need to be movable by ground." />
+							<event week="9" description="MOVE failed. Unit need to be movable by ground." />
+							<event week="10" description="MOVE failed. Unit need to be movable by ground." />
+							<event week="11" description="MOVE failed. Unit need to be movable by ground." />
+							<event week="12" description="MOVE failed. Unit need to be movable by ground." />
+							<event week="13" description="MOVE failed. Unit need to be movable by ground." />
 							<event week="13" description="paid 1037 cash [cash] upkeep." />
 						</modulestack>
 					</orbit>
@@ -265,8 +274,6 @@
 							<event week="7" description="got unit of carbon [carbon] from core drill [000016]." />
 							<event week="7" description="engaged in battle" />
 							<event week="7" description="lost #1 small cargo bay [cargob] to capture." />
-							<event week="8" description="GET failed, tried to get 15 units of food [food], but there is not enough capacity: 15 required, 0 available." />
-							<event week="8" description="GET failed, tried to get unit of carbon [carbon], but there is not enough capacity: 5 required, 0 available." />
 						</modulestack>
 						<modulestack name="000014" type="farms" quantity="0" faction="2">
 							<upkeep type="cash" quantity="0" />
@@ -860,7 +867,7 @@
 							</person>
 							<itemstack type="food" quantity="99" />
 							<upkeep type="cash" quantity="15" />
-							<effect duration="4" type="moving" destination="R00002" move-mode="ground" />
+							<effect duration="3" type="moving" destination="R00002" move-mode="ground" initial-duration="17" return-leg-weeks="13" />
 							<event week="1" description="moving from Southern Hemisphere [R00003] (1,0) to Northern Hemisphere [R00002] (0,0), ETA 16." />
 							<event week="2" description="moving from Southern Hemisphere [R00003] (1,0) to Northern Hemisphere [R00002] (0,0), ETA 15." />
 							<event week="3" description="moving from Southern Hemisphere [R00003] (1,0) to Northern Hemisphere [R00002] (0,0), ETA 14." />

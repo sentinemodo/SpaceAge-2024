@@ -707,14 +707,14 @@ Galaxy report:
   * Luna [P00001], rocky moon [rock] 0.02 AU from the planet.
 ------------------------------------------------------------
     orbit [O00001], has no atmosphere.
+    - space shuttle [100], 10 space shuttle [shuttl], owned by Caste Prime [2].
+      size: 2000.
 
     Dusty field [R00001] (0,0), dusty region, settlement capacity 4/0.
     Exits:
     Resources: 100 units of iron [iron], 100 units of silicium [silici], 100 units of titanium
     [titani], 100 units of uranium [uraniu], 100 units of copper [copper], 100 units of silicium
     [silici], 100 units of helium-3 [heliu3].
-    - space shuttle [100], 10 space shuttle [shuttl], owned by Caste Prime [2].
-      size: 2000.
     - crashed alien vessel [200], alien vessel hull [alnhul], owned by Caste Prime [2].
       size: 6500.
       - advanced robo-factory [201], advanced robo-factory [robofc], owned by Caste Prime [2].
@@ -733,8 +733,6 @@ Galaxy report:
         size: 400.
         - alien fighter drone [450], 4 alien fighter drones [alndrn], owned by Caste Prime [2].
           size: 320.
-      - life support system [250], life support system [lifsys], owned by Caste Prime [2].
-        size: 100.
     - spaceship hull [101], spaceship hull [sshull], owned by Caste Prime [2].
       size: 5000.
       - command bridge [112], command bridge [cbridg], owned by Caste Prime [2].

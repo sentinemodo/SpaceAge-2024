@@ -100,7 +100,11 @@ public sealed class StagedOrderDraftService
             request.FactionId,
             password,
             cancellationToken);
-        var pass1Prepared = OrderDraftWriter.PrepareForWrite(pass1Raw, request.FactionId, password);
+        var pass1Prepared = OrderDraftWriter.PrepareForWrite(
+            pass1Raw,
+            request.FactionId,
+            password,
+            hints.PersonaPreference);
 
         var pass2Template = StagedOrderPromptBuilder.FilterOrdersTemplate(
             fullTemplate,
@@ -121,12 +125,19 @@ public sealed class StagedOrderDraftService
             request.FactionId,
             password,
             cancellationToken);
-        var pass2Prepared = OrderDraftWriter.PrepareForWrite(pass2Raw, request.FactionId, password);
+        var pass2Prepared = OrderDraftWriter.PrepareForWrite(
+            pass2Raw,
+            request.FactionId,
+            password,
+            hints.PersonaPreference);
 
         var merged = OrderDraftMerger.MergeBootstrapAndProduction(pass1Prepared, pass2Prepared);
         var maxAttempts = request.MaxQualityAttempts;
         OrderDraftLintResult lintResult = new(false, []);
-        string prepared = merged;
+        string prepared = OrderDraftStackNaming.InjectMissingNames(
+            merged,
+            request.FactionId,
+            hints.PersonaPreference);
 
         for (var attempt = 1; attempt <= maxAttempts; attempt++)
         {
@@ -151,7 +162,11 @@ public sealed class StagedOrderDraftService
                 + prepared;
 
             var fixedRaw = await _client.ChatAsync(fixPrompt, DraftPromptBuilder.SystemPrompt, cancellationToken);
-            prepared = OrderDraftWriter.PrepareForWrite(fixedRaw, request.FactionId, password);
+            prepared = OrderDraftWriter.PrepareForWrite(
+                fixedRaw,
+                request.FactionId,
+                password,
+                hints.PersonaPreference);
         }
 
         if (!lintResult.IsValid)
@@ -195,7 +210,7 @@ public sealed class StagedOrderDraftService
         for (var attempt = 1; attempt <= passAttempts; attempt++)
         {
             var generated = await _client.ChatAsync(prompt, systemPrompt, cancellationToken);
-            var prepared = OrderDraftWriter.PrepareForWrite(generated, factionId, password);
+            var prepared = OrderDraftWriter.PrepareForWrite(generated, factionId, password, personaPreference: null);
             var lint = OrderDraftLinter.Lint(prepared, allowlist);
             if (lint.IsValid)
             {

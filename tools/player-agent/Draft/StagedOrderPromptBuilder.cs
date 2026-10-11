@@ -197,7 +197,7 @@ public static class StagedOrderPromptBuilder
             var fauna = hints.AnomalyRegionId ?? "valid exit from grant table";
             return $"""
                 Pass 2: factry — grant technology armcbt, use grndtr as new1, two use armcbt as new2/new3 with +get iron/titani.
-                new1: move {fauna}, +get terran/oil/food. new2/new3: has 1 tanks, -get provisioning, -move {fauna}, tactic destroy.
+                new1: NAME military-flavor scout title, move {fauna}, +get terran/oil/food. new2/new3: NAME tank platoon titles, has 1 tanks, -get provisioning, -move {fauna}, tactic destroy.
                 Ground moves must use grant Exits ids only.
                 """;
         }
@@ -211,6 +211,9 @@ public static class StagedOrderPromptBuilder
                 """;
         }
 
-        return "Pass 2: factory and mobile stacks per persona; use template ids only.";
+        return """
+            Pass 2: factory and mobile stacks per persona; use template ids only.
+            Add `NAME "…"` on every `#modulestack newN` (science/military/trade/charter flavor per persona; include UN `twnbld` prefabs).
+            """;
     }
 }

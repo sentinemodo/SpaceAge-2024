@@ -121,6 +121,7 @@ namespace SpaceAge
 					}
 				}
 			}
+			collectModuleProductionDurationPercent(root, ref best);
 			return best;
 		}
 
@@ -253,7 +254,57 @@ namespace SpaceAge
 					totalBonus += skillType.PercentProduces.GetPercent(effect) - 100;
 				}
 			}
+			totalBonus += collectModuleItemOutputBonus(root, effect);
 			return 100 + totalBonus;
+		}
+
+		private static void collectModuleProductionDurationPercent(ModuleStack stack, ref int best)
+		{
+			if (stack == null)
+			{
+				return;
+			}
+
+			if (stack.QuantityActive > 0 && stack.ModuleType != null
+				&& stack.ModuleType.PercentProduces.HasEffect(ProductionDuration))
+			{
+				int percent = stack.ModuleType.PercentProduces.GetPercent(ProductionDuration);
+				if (percent < best)
+				{
+					best = percent;
+				}
+			}
+
+			foreach (ModuleStack nested in stack.ModuleStacks.Values)
+			{
+				collectModuleProductionDurationPercent(nested, ref best);
+			}
+		}
+
+		private static int collectModuleItemOutputBonus(ModuleStack stack, string effect)
+		{
+			int bonus = 0;
+			collectModuleItemOutputBonusRecursive(stack, effect, ref bonus);
+			return bonus;
+		}
+
+		private static void collectModuleItemOutputBonusRecursive(ModuleStack stack, string effect, ref int bonus)
+		{
+			if (stack == null)
+			{
+				return;
+			}
+
+			if (stack.QuantityActive > 0 && stack.ModuleType != null
+				&& stack.ModuleType.PercentProduces.HasEffect(effect))
+			{
+				bonus += stack.ModuleType.PercentProduces.GetPercent(effect) - 100;
+			}
+
+			foreach (ModuleStack nested in stack.ModuleStacks.Values)
+			{
+				collectModuleItemOutputBonusRecursive(nested, effect, ref bonus);
+			}
 		}
 	}
 }

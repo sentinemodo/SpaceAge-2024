@@ -84,6 +84,7 @@
     <Compile Include="TRegions.cs" />
     <Compile Include="TReport.cs" />
     <Compile Include="TMobLabReport.cs" />
+    <Compile Include="TMobLabBetaMoveTrace.cs" />
     <Compile Include="TNamedObject.cs" />
     <Compile Include="TModuleStack.cs" />
     <Compile Include="TStackVisibility.cs" />
@@ -96,6 +97,7 @@
     <Compile Include="TRegionalEnergy.cs" />
     <Compile Include="TUseRepairEffect.cs" />
     <Compile Include="TMove.cs" />
+    <Compile Include="TMoveInTransit.cs" />
     <Compile Include="TMoveMode.cs" />
     <Compile Include="TBodyRace.cs" />
     <Compile Include="TBelt.cs" />
@@ -334,6 +336,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="fixtures\has-order-production\orders.2.3.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="fixtures\moblab-beta-move\orders.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="fixtures\naval\gamein.xml">

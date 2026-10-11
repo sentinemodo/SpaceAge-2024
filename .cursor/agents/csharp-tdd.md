@@ -45,8 +45,8 @@ When your diff touches **order syntax** (`Game/orders/`, `EOrderType`, `#faction
 2. Invoke **`/player`** with a **docs-only refresh** scoped to [`docs/architecture/delivery/player-facing-docs-sync.md`](../../docs/architecture/delivery/player-facing-docs-sync.md) sections **A** (orders) and/or **B** (L0–L1 tech).
 3. Do not commit until the sync checklist in that doc is satisfied — including, when orders changed:
    - `play/player/rules.md` and `docs/human/rules.md`
-   - `game-host/lib/check-orders.mjs` (+ test)
-   - `OrderVerbAllowlist` fallback + `regenerate-allowlist`
+   - `regenerate-allowlist` (updates `verb-allowlist.json` for game-host parse + player-agent lint) + `game-host/test/check-orders.test.mjs` when syntax is new
+   - `OrderVerbAllowlist` fallback when a verb is in `OrderFactory` before `rules.md` has a `### VERB` heading
    - `website/tests/humanRules.test.ts` counts if the dictionary grew/shrank
 
 You may apply game-host / allowlist / website test tweaks yourself in the same PR after `/player` updates the markdown, or explicitly assign them to `/player` in the prompt.

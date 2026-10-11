@@ -58,6 +58,13 @@ namespace SpaceAge
                 }
                 else
                 {
+                    ModuleStack moduleStack = order.Subject as ModuleStack;
+                    if (moduleStack != null
+                        && !(order is MoveOrder)
+                        && moduleStack.RootModuleStack.IsInTransit)
+                    {
+                        continue;
+                    }
                     if (!order.Subject.ExecutedLongOrder & !order.Executed & order.ConditionalOrders.Count == 0)
                     {
                         order.Execute(week);

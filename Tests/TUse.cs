@@ -381,6 +381,45 @@ namespace UnitTests
 			Assert.That(farms.ItemStacks[food].Quantity, Is.EqualTo(foodBefore + farming.UseProduceItems[food].Quantity));
 		}
 
+		[Test]
+		public void WoundedTerran_CountsForModuleOperation()
+		{
+			ModuleStack farms = this.game.ModuleStacks["000008"];
+			ItemType terran = ItemType.All["terran"];
+			ItemType wounded = ItemType.All["wndtrn"];
+			int perModule = farms.ModuleType.CrewRequired;
+			int extraCrew = farms.ItemStacks[terran].Quantity - perModule;
+			farms.ItemStacks.Remove(new ItemStack(terran, extraCrew));
+			farms.ItemStacks.Remove(new ItemStack(terran, perModule));
+			farms.ItemStacks.Add(new ItemStack(wounded, perModule));
+
+			Assert.That(farms.QuantityOperational, Is.EqualTo(1));
+			Assert.That(farms.HasOperationalModules, Is.True);
+		}
+
+		[Test]
+		public void WoundedTerran_CountsForModuleOperation_WhenNotCrewItemGroup()
+		{
+			ModuleStack farms = this.game.ModuleStacks["000008"];
+			ItemType terran = ItemType.All["terran"];
+			ItemType wounded = ItemType.All["wndtrn"];
+			EItemTypesGroup savedGroup = wounded.Group;
+			try
+			{
+				wounded.Group = EItemTypesGroup.resource;
+				int perModule = farms.ModuleType.CrewRequired;
+				farms.ItemStacks.Remove(new ItemStack(terran, farms.ItemStacks.Quantity(terran)));
+				farms.ItemStacks.Add(new ItemStack(wounded, perModule));
+
+				Assert.That(farms.QuantityOperational, Is.EqualTo(1));
+				Assert.That(farms.HasOperationalModules, Is.True);
+			}
+			finally
+			{
+				wounded.Group = savedGroup;
+			}
+		}
+
 
 		[Test]
 		public void AssignUseOrder_AliasRepeatable()
@@ -973,6 +1012,63 @@ namespace UnitTests
             Assert.That(shuttles.Effects.IsProducing);
         }
 
+
+		[Test]
+		public void AssignProduceEnergy_onUnformedNewAlias_keepsOrderWithoutParsingWarning()
+		{
+			Faction faction = this.game.Factions["2"];
+			int eventReportsBefore = faction.EventReports.Count;
+
+			OrdersReader ordersReader = new OrdersReader(this.game);
+			ordersReader.AssignOrders(new List<string>
+			{
+				"#faction 2",
+				"#modulestack new1",
+				"@produce energy",
+				"#end"
+			});
+
+			ModuleStack placeholder = ModuleStack.All[faction, "new1", true];
+			Assert.That(placeholder, Is.Not.Null);
+			Assert.That(placeholder.Orders.Count, Is.EqualTo(1));
+			Assert.That(placeholder.Orders[0], Is.InstanceOf<ProduceOrder>());
+
+			for (int i = eventReportsBefore; i < faction.EventReports.Count; i++)
+			{
+				string description = faction.EventReports[i].Description;
+				Assert.That(description == null || !description.StartsWith("PARSING:"), Is.True);
+			}
+		}
+
+		[Test]
+		public void ParseProduceEnergy_onUnformedNewAlias_ok()
+		{
+			string path = Path.Combine(
+				Path.GetTempPath(),
+				"testparse.new1.produce." + Guid.NewGuid().ToString("N") + ".txt");
+			File.WriteAllLines(
+				path,
+				new[]
+				{
+					"#faction 2",
+					"#modulestack new1",
+					"@produce energy",
+					"#end",
+				});
+			try
+			{
+				OrderParseResult parseResult = OrderParseRunner.ParseFile(this.game, path);
+				Assert.That(parseResult.Ok, Is.True);
+				Assert.That(parseResult.Warnings.Count, Is.EqualTo(0));
+			}
+			finally
+			{
+				if (File.Exists(path))
+				{
+					File.Delete(path);
+				}
+			}
+		}
 
 		[Test]
 		public void AssignProduceEnergy_onHeadquarters_ignoredWithParsingWarning()

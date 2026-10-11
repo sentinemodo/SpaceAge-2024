@@ -95,6 +95,22 @@ namespace SpaceAge
 			}
 		}
 
+		/// <summary>
+		/// Placeholder stack created for a <c>newN</c> alias before <c>USE … AS</c> completes.
+		/// </summary>
+		public static bool IsUnformedNewAlias(IItemStacksHolder holder)
+		{
+			if (holder == null || holder.IsFormed)
+			{
+				return false;
+			}
+
+			string alias = holder.Alias ?? string.Empty;
+			int split = alias.IndexOf('_');
+			string raw = split >= 0 ? alias.Substring(split + 1) : alias;
+			return raw.StartsWith("new", StringComparison.OrdinalIgnoreCase);
+		}
+
 		private ModuleType moduleType;
 		public ModuleType ModuleType
 		{

@@ -625,7 +625,7 @@
 							<itemstack type="cash" quantity="10" />
 							<itemstack type="food" quantity="200" />
 							<upkeep type="cash" quantity="15" />
-							<effect duration="17" type="moving" destination="R00002" move-mode="ground" />
+							<effect duration="17" type="moving" destination="R00002" move-mode="ground" initial-duration="17" return-leg-weeks="0" />
 							<event week="1" description="got 10 cash [cash] from Gelvaren Headquarters [000018]." />
 							<event week="1" description="got 200 units of food [food] from small cargo bay [000019]." />
 							<event week="1" description="departed from Southern Hemisphere [R00003] (1,0) to Northern Hemisphere [R00002] (0,0), ETA 29." />

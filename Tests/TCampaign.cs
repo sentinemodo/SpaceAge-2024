@@ -302,6 +302,40 @@ namespace UnitTests
 		}
 
 		[Test]
+		public void AdvancedSpaceCommandModule_AppliesFivePercentNestedProductivity()
+		{
+			this.dataFile.LoadConfiguration(CampaignDir(), "data.xml");
+			ModuleType advcmd = ModuleType.All["advcmd"];
+			Assert.That(advcmd.PercentProduces.GetPercent(SkillEffects.ProductionDuration), Is.EqualTo(95));
+			Assert.That(advcmd.PercentProduces.GetPercent(SkillEffects.ExtractionOutput), Is.EqualTo(105));
+
+			this.dataFile.LoadGameDocument(CampaignDir(), "gamein.1.xml");
+			this.dataFile.LoadFactions();
+			this.dataFile.LoadGalaxy();
+			this.game = this.dataFile.Game;
+
+			Faction owner = Faction.All["2"];
+			Region region = Region.All["R00002"];
+			ModuleStack vessel = new ModuleStack(region, owner, ModuleType.All["shuttl"], "tadvs1");
+			vessel.AddModule();
+			ModuleStack command = new ModuleStack(vessel, owner, advcmd, "tadvs2");
+			command.AddModule();
+			ModuleStack factory = new ModuleStack(vessel, owner, ModuleType.All["factry"], "tadvs3");
+			factory.AddModule();
+			ModuleStack drill = new ModuleStack(vessel, owner, ModuleType.All["cdrill"], "tadvs4");
+			drill.AddModule();
+
+			Assert.That(SkillEffects.ProductionDurationPercent(factory), Is.EqualTo(95));
+			Assert.That(SkillEffects.ApplyDurationPercent(4, 95), Is.EqualTo(4));
+			Assert.That(SkillEffects.ItemOutputPercent(drill), Is.EqualTo(105));
+
+			Technology advspc = Technology.All["advspc"];
+			Assert.That(advspc.GrantsSkills, Does.Contain(SkillType.All["sscmnd"]));
+			Technology servic = Technology.All["servic"];
+			Assert.That(servic.GrantsSkills, Is.Empty);
+		}
+
+		[Test]
 		public void LoadConfiguration_CampaignCatalog_LoadsNavalModules()
 		{
 			this.dataFile.LoadConfiguration(CampaignDir(), "data.xml");
