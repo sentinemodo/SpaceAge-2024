@@ -6,6 +6,7 @@ Ideas collected for Cursor agents. Do not implement from this file unless explic
 
 - [ ] Technologies for creating underground regions
 - [ ] Visibility system: **stack stealth vs detection** — design [`play/designer/stack-visibility.md`](../../play/designer/stack-visibility.md); wishlist + load conservation in [`play/designer/engine-wishlist.md`](../../play/designer/engine-wishlist.md). Still open: planet/region/resource **map** blur (home-system-only galaxy), stealth/detection catalog on campaign modules, settlement aggregate reporting.
+- [ ] Press releases to Discord: publish game press releases to a Discord channel.
 
 ## Done
 
