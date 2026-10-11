@@ -840,9 +840,8 @@ namespace SpaceAge
 						this.movementDuration();
 					}
 
-					// move — fuel before canMove so inactive weeks still consume staging fuel
-					bool blockedByFuel = this.needFuel(week);
-					if (!blockedByFuel && this.canMove(week))
+					// move
+					if (this.canMove(week) && !this.needFuel(week))
 					{
                         int legDuration = this.movementDuration();
                         bool firstStepOfLeg = !resume && this.DurationLeft == legDuration;
