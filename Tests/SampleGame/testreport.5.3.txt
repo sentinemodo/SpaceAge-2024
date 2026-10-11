@@ -6055,6 +6055,9 @@ Galaxy report:
   * Luna [P00001], rocky moon [rock] 0.02 AU from the planet.
 ------------------------------------------------------------
     orbit [O00001], has no atmosphere.
+    - space shuttle [100], 10 space shuttle [shuttl], owned by Caste
+      Prime [2].
+      size: 2000.
 
 
 Orders Template:

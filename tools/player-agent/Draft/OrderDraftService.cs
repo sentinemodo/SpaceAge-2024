@@ -89,7 +89,11 @@ public sealed class OrderDraftService
                 prompt,
                 DraftPromptBuilder.SystemPrompt,
                 cancellationToken);
-            prepared = OrderDraftWriter.PrepareForWrite(generated, request.FactionId, password);
+            prepared = OrderDraftWriter.PrepareForWrite(
+                generated,
+                request.FactionId,
+                password,
+                hints.PersonaPreference);
             lintResult = OrderDraftLinter.Lint(prepared, allowlist);
 
             if (lintResult.IsValid && OrderDraftQuality.IsUsable(prepared, hints.PersonaPreference, reportText))

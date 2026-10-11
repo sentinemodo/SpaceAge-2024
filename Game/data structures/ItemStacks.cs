@@ -32,12 +32,25 @@ namespace SpaceAge
 			int count = 0;
 			foreach (ItemStack itemStack in this.Values)
 			{
-				if (itemStack.ItemType.Group == EItemTypesGroup.crew)
+				if (ItemStacks.countsForModuleOperation(itemStack.ItemType))
 				{
 					count += itemStack.Quantity;
 				}
 			}
 			return count;
+		}
+
+		private static bool countsForModuleOperation(ItemType itemType)
+		{
+			if (itemType == null)
+			{
+				return false;
+			}
+			if (itemType.Name == "wndtrn")
+			{
+				return true;
+			}
+			return itemType.Group == EItemTypesGroup.crew;
 		}
 
 

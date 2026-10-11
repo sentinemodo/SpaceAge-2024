@@ -3907,9 +3907,9 @@ Galaxy report:
       [000019].
       week 3: set tactic to prioritize command.
       week 3: TACTIC failed. Immobile units may only use destroy.
+      week 4: consumed 12 units of oil [oil] as fuel.
       week 4: departed from Southern Hemisphere [R00003] (1,0) to
       Northern Hemisphere [R00002] (0,0), ETA 5.
-      week 4: consumed 12 units of oil [oil] as fuel.
       week 5: moving from Southern Hemisphere [R00003] (1,0) to Northern
       Hemisphere [R00002] (0,0), ETA 4.
       week 6: moving from Southern Hemisphere [R00003] (1,0) to Northern
@@ -4242,7 +4242,8 @@ Galaxy report:
       items: 5 cash [cash], 100 units of food [food] (size: 100, mass:
       100).
       effects:
-        will move for another 17 weeks before next destination.
+        moving from Southern Hemisphere [R00003] (1,0) to Northern
+        Hemisphere [R00002] (0,0), 16 weeks remaining of 30 week leg.
       events:
         week 1: got 10 cash [cash] from Gelvaren Headquarters [000018].
         week 1: got 200 units of food [food] from small cargo bay
@@ -4346,8 +4347,9 @@ get 48 terran from 000018
 ; + infantry battalion [110], infantry battalion [inftry], immobile.
 ; items: 5 cash [cash], 100 units of food [food].
 ; effects:
-;   will move for another 17 weeks before next destination.
-move R00002
+;   moving from Southern Hemisphere [R00003] (1,0) to Northern Hemisphere
+;   [R00002] (0,0), 16 weeks remaining of 30 week leg.
+move from R00003 to R00002
 -capture 000012
 -capture all
 

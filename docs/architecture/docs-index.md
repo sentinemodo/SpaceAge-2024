@@ -1,6 +1,6 @@
 # Documentation index
 
-Last updated: 2026-10-09  
+Last updated: 2026-10-11  
 Purpose: canonical vendor/spec links for implementers. Summaries only — do not paste manuals into architecture docs.
 
 | Resource | Version / band | Purpose | Date retrieved |
@@ -28,6 +28,8 @@ Purpose: canonical vendor/spec links for implementers. Summaries only — do not
 | [Cloudflare Pages](https://developers.cloudflare.com/pages/) | current | Acceptable alternative static host | 2026-08-29 |
 | [Atlantis New Origins (atlantis-pbem.com)](https://atlantis-pbem.com/) | live site | IA reference only (not a visual or PHP clone); reviewed for lobby widgets | 2026-08-29 |
 | [Overlord / Vincent Archer](https://overlord.sourceforge.net/) | historical | 1998 generic PBEM engine; Overlord then Rise of Heroes lineage | 2026-08-29 |
+| [Discord Execute Webhook](https://discord.com/developers/docs/resources/webhook#execute-webhook) | current API | POST embeds for campaign publications feed ([ADR-0012](adr/ADR-0012-discord-publications-feed.md)) | 2026-10-11 |
+| [Discord rate limits](https://discord.com/developers/docs/topics/rate-limits) | current | Webhook throttling for batched turn messages | 2026-10-11 |
 
 ## In-repo design notes (not vendor docs)
 

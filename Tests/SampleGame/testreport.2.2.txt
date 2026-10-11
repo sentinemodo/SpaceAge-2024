@@ -59,8 +59,8 @@ Galaxy report:
       week 10: got 100 units of oxyhydro [h2o2] from small cargo bay [000013].
       week 10: got 150 units of terran breathing gas mixture [terair] from small cargo bay [000013].
       week 10: has Caste Prime CEO [000001].
-      week 11: departed from Northern Hemisphere [R00002] (0,0) to orbit [O00002], ETA 0.
       week 11: consumed 10 units of uranium [uraniu], 10 units of oxyhydro [h2o2] as fuel.
+      week 11: departed from Northern Hemisphere [R00002] (0,0) to orbit [O00002], ETA 0.
       week 11: arrived at orbit [O00002] from Northern Hemisphere [R00002] (0,0).
       week 12: consumed 6 units of iron [iron], 4 units of titanium [titani] to produce spaceship
       hull [sshull] module.

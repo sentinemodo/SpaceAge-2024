@@ -132,6 +132,7 @@ test.describe('Phase 1 lobby acceptance', () => {
     await toggle.click();
     await expect(menu).toHaveClass(/is-open/);
     await expect(menu.getByRole('link', { name: 'Rules', exact: true })).toBeVisible();
+    await expect(menu.getByRole('link', { name: 'Technologies', exact: true })).toBeVisible();
 
     for (const route of PHASE1_ROUTES) {
       const response = await page.goto(route);
@@ -171,6 +172,10 @@ test.describe('Phase 1 lobby acceptance', () => {
 
     await nav.getByRole('link', { name: 'Rules', exact: true }).click();
     await expect(page).toHaveURL('/rules');
+
+    await nav.getByRole('link', { name: 'Technologies', exact: true }).click();
+    await expect(page).toHaveURL(/\/technologies\/?$/);
+    await expect(page.locator('main').getByRole('heading', { name: /Basic technologies/i })).toBeVisible();
 
     await nav.getByRole('link', { name: 'Client', exact: true }).click();
     await expect(page).toHaveURL('/client');

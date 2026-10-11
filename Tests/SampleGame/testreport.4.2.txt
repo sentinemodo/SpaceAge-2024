@@ -7616,10 +7616,6 @@ Galaxy report:
         week 7: got unit of carbon [carbon] from core drill [000016].
         week 7: engaged in battle
         week 7: lost #1 small cargo bay [cargob] to capture.
-        week 8: GET failed, tried to get 15 units of food [food], but there is not enough capacity:
-        15 required, 0 available.
-        week 8: GET failed, tried to get unit of carbon [carbon], but there is not enough capacity:
-        5 required, 0 available.
     + farming complex [000014], farming complex [farms], disabled, immobile.
       size: 0, mass: 0.
       events:
@@ -7789,7 +7785,8 @@ Galaxy report:
       units of food [food] (size: 93, mass: 93), 58 units of oxyhydro [h2o2] (size: 58, mass: 58),
       93 units of terran breathing gas mixture [terair] (size: 93, mass: 93).
       effects:
-        can operate for another 6 weeks without refueling.
+        can operate for another 7 weeks without refueling.
+        moving from orbit [O00001] to orbit [O00001], 1 weeks remaining of 1 week leg.
       events:
         week 1: given terran [terran] to command bridge [112].
         week 1: given terran [terran] to fission reactor [113].
@@ -7805,8 +7802,16 @@ Galaxy report:
         week 2: consumed unit of oxyhydro [h2o2] as fuel for reaction drive [114].
         week 3: departed from Dusty field [R00001] (0,0) to orbit [O00001], ETA 0.
         week 3: arrived at orbit [O00001] from Dusty field [R00001] (0,0).
-        week 4: departed from orbit [O00001] to orbit [O00001], ETA 0.
-        week 4: arrived at orbit [O00001] from orbit [O00001].
+        week 4: MOVE failed. Unit need to be movable by ground.
+        week 5: MOVE failed. Unit need to be movable by ground.
+        week 6: MOVE failed. Unit need to be movable by ground.
+        week 7: MOVE failed. Unit need to be movable by ground.
+        week 8: MOVE failed. Unit need to be movable by ground.
+        week 9: MOVE failed. Unit need to be movable by ground.
+        week 10: MOVE failed. Unit need to be movable by ground.
+        week 11: MOVE failed. Unit need to be movable by ground.
+        week 12: MOVE failed. Unit need to be movable by ground.
+        week 13: MOVE failed. Unit need to be movable by ground.
         week 13: paid 1037 cash [cash] upkeep.
 
     Dusty field [R00001] (0,0), dusty region, settlement capacity 4/0.
@@ -7981,7 +7986,9 @@ sell 300 food
 ; silicium [silici], 15 units of copper [copper], 93 units of food [food], 58 units of oxyhydro
 ; [h2o2], 93 units of terran breathing gas mixture [terair].
 ; effects:
-;   can operate for another 6 weeks without refueling.
+;   can operate for another 7 weeks without refueling.
+;   moving from orbit [O00001] to orbit [O00001], 1 weeks remaining of 1 week leg.
+move from O00001 to O00001
 
 #modulestack 101
 ; + spaceship hull [101], spaceship hull [sshull].

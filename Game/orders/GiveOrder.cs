@@ -233,6 +233,12 @@ namespace SpaceAge
 		public override void Execute(int week)
 		{
 			this.Executed = false;
+			ModuleStack transfererStack = this.Transferer as ModuleStack;
+			if (transfererStack != null && transfererStack.RootModuleStack.IsInTransit)
+			{
+				base.Execute(week);
+				return;
+			}
 
 			if (this.receiver == null && !string.IsNullOrEmpty(this.receiverName))
 			{

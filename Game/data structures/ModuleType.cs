@@ -264,6 +264,12 @@ namespace SpaceAge
 			get { return this.effectsProduction; }
 		}
 
+		private readonly SkillPercentProduces percentProduces = new SkillPercentProduces();
+		public SkillPercentProduces PercentProduces
+		{
+			get { return this.percentProduces; }
+		}
+
 		#endregion
 
 		#region combat

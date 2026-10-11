@@ -150,7 +150,8 @@ namespace SpaceAge
 
 		public bool Usable(int week)
 		{
-			if (this.Producer.ModuleType == null || this.Producer.Location == null)
+			Location useLocation = this.Producer.RootModuleStack.EffectiveOrderLocation();
+			if (this.Producer.ModuleType == null || useLocation == null)
 			{
 				return false;
 			}
@@ -160,46 +161,46 @@ namespace SpaceAge
 			// verify if the atmosphere is valid
 			// verify if regionType is valid
 			if (this.Producer.ModuleType.UseCondition_LocationTypes.Count > 0
-                & !this.Producer.ModuleType.UseCondition_LocationTypes.Contains(BodyEnvironment.EffectiveLocationType(this.Producer.Location)))
+                & !this.Producer.ModuleType.UseCondition_LocationTypes.Contains(BodyEnvironment.EffectiveLocationType(useLocation)))
 			{
 				this.Producer.EventReports.Add(
 						week,
 						string.Format("USE failed: {0} cannot operate in {1}.",
 								this.Producer.ModuleType.ReportName,
-								this.Producer.Location.ReportName));
+								useLocation.ReportName));
 
 				return false;
 			}
 
 			if (this.Technology.UseCondition_LocationTypes != null
 				&& this.Technology.UseCondition_LocationTypes.Count > 0
-				&& !this.Technology.UseCondition_LocationTypes.Contains(BodyEnvironment.EffectiveLocationType(this.Producer.Location)))
+				&& !this.Technology.UseCondition_LocationTypes.Contains(BodyEnvironment.EffectiveLocationType(useLocation)))
 			{
 				this.Producer.EventReports.Add(
 						week,
 						string.Format("USE failed: {0} cannot operate in {1}.",
 								this.Technology.ReportName,
-								this.Producer.Location.ReportName));
+								useLocation.ReportName));
 
 				return false;
 			}
 
 			if (this.Technology.UseCondition_AtmosphereResources != null
 				&& this.Technology.UseCondition_AtmosphereResources.Count > 0
-				&& !BodyEnvironment.HasAtmosphereResources(this.Producer.Location, this.Technology.UseCondition_AtmosphereResources))
+				&& !BodyEnvironment.HasAtmosphereResources(useLocation, this.Technology.UseCondition_AtmosphereResources))
 			{
 				this.Producer.EventReports.Add(
 						week,
 						string.Format("USE failed: {0} cannot operate in {1}.",
 								this.Technology.ReportName,
-								this.Producer.Location.ReportName));
+								useLocation.ReportName));
 
 				return false;
 			}
 
 			if (this.Technology.UseCondition_PlanetTypes != null
 				&& this.Technology.UseCondition_PlanetTypes.Count > 0
-				&& !BodyEnvironment.MatchesPlanetType(this.Producer.Location, this.Technology.UseCondition_PlanetTypes))
+				&& !BodyEnvironment.MatchesPlanetType(useLocation, this.Technology.UseCondition_PlanetTypes))
 			{
 				this.Producer.EventReports.Add(
 						week,
@@ -211,13 +212,13 @@ namespace SpaceAge
 			}
 
 			if (this.Technology.UseCondition_TemperatureBand.HasValue
-				&& BodyEnvironment.TemperatureAt(this.Producer.Location) != this.Technology.UseCondition_TemperatureBand.Value)
+				&& BodyEnvironment.TemperatureAt(useLocation) != this.Technology.UseCondition_TemperatureBand.Value)
 			{
 				this.Producer.EventReports.Add(
 						week,
 						string.Format("USE failed: {0} cannot operate in {1}.",
 								this.Technology.ReportName,
-								this.Producer.Location.ReportName));
+								useLocation.ReportName));
 
 				return false;
 			}

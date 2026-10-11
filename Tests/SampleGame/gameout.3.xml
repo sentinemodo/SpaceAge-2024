@@ -386,8 +386,8 @@
 						<event week="3" description="got 100 units of food [food] from small cargo bay [000019]." />
 						<event week="3" description="set tactic to prioritize command." />
 						<event week="3" description="TACTIC failed. Immobile units may only use destroy." />
-						<event week="4" description="departed from Southern Hemisphere [R00003] (1,0) to Northern Hemisphere [R00002] (0,0), ETA 5." />
 						<event week="4" description="consumed 12 units of oil [oil] as fuel." />
+						<event week="4" description="departed from Southern Hemisphere [R00003] (1,0) to Northern Hemisphere [R00002] (0,0), ETA 5." />
 						<event week="5" description="moving from Southern Hemisphere [R00003] (1,0) to Northern Hemisphere [R00002] (0,0), ETA 4." />
 						<event week="6" description="moving from Southern Hemisphere [R00003] (1,0) to Northern Hemisphere [R00002] (0,0), ETA 3." />
 						<event week="7" description="moving from Southern Hemisphere [R00003] (1,0) to Northern Hemisphere [R00002] (0,0), ETA 2." />
@@ -656,7 +656,7 @@
 							<itemstack type="cash" quantity="5" />
 							<itemstack type="food" quantity="100" />
 							<upkeep type="cash" quantity="5" />
-							<effect duration="17" type="moving" destination="R00002" move-mode="ground" />
+							<effect duration="16" type="moving" origin="R00003" destination="R00002" move-mode="ground" initial-duration="30" return-leg-weeks="13" />
 							<event week="1" description="got 10 cash [cash] from Gelvaren Headquarters [000018]." />
 							<event week="1" description="got 200 units of food [food] from small cargo bay [000019]." />
 							<event week="1" description="departed from Southern Hemisphere [R00003] (1,0) to Northern Hemisphere [R00002] (0,0), ETA 29." />

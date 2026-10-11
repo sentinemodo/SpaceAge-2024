@@ -6,11 +6,16 @@ namespace SpaceAge.PlayerAgent.Draft;
 
 public static partial class OrderDraftWriter
 {
-    public static string PrepareForWrite(string generatedText, int factionId, string? password)
+    public static string PrepareForWrite(
+        string generatedText,
+        int factionId,
+        string? password,
+        string? personaPreference = null)
     {
         var normalized = ExtractOrderBody(generatedText);
         normalized = StripReportTemplateComments(normalized);
         normalized = EnsureFactionHeader(normalized, factionId, password);
+        normalized = OrderDraftStackNaming.InjectMissingNames(normalized, factionId, personaPreference);
         normalized = EnsureEndTrailer(normalized);
         return normalized.TrimEnd() + Environment.NewLine;
     }

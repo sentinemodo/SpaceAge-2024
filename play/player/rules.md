@@ -272,7 +272,9 @@ Order stacks on the **same subject**: HQ or branch office `@produce cash` / `@pr
 
 ### Multi-stop MOVE (preferred)
 
-**Syntax:** `MOVE <dest> [<dest2> …]` on one line — e.g. `move R00014 R00009` walks Grant → Farm Belt → Mid Vale using report exit durations.
+**Syntax:** `MOVE <dest> [<dest2> …]` | `MOVE BACK` on one line — e.g. `move R00014 R00009` walks Grant → Farm Belt → Mid Vale using report exit durations.
+
+**In transit:** effects and the orders template list **from** origin **to** destination (ids), leg length, and weeks left. No new `move` next turn continues toward the current destination. Mid-trip only `move <same dest>`, `move back`, or `move <origin-id>` (return time = weeks already traveled). Other `move` targets fail with an event; travel still **continues toward the current destination** that week. `get`/`give` fail silently; other long orders wait. Immediate orders use origin until half the leg, then destination (visible to observers).
 
 **Subject:** a **mobile `#modulestack`** only (shuttle, infantry stack, ship hull, etc.). Immobile stacks (`corphq`, `brnofc`, `cargob`, …) cannot move.
 

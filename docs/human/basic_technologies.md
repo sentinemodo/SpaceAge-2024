@@ -179,6 +179,10 @@ The unit that uses one of these must hold a copy (research or copy from a neighb
 Advancing techniques and breeds selection allows increase of farms the output. Unlocks TRAIN SKILL: exoagriculture `[exoagr]`.  
 Where: agricultural, on ocean worlds with terran atmosphere `[terair]`, solid-surface. Builds: 8 food `[food]`. Time: 1 week.
 
+**advanced space command [advspc]**  
+Space stations have not much of dodge possibilities, but still they do have small manoeuvre engines that can present stronger points or deflectors. Fleet coordination trims nested schedules (+5% extraction and agriculture output, −5% production cycle time on the stack). Unlocks TRAIN SKILL: space station command `[sscmnd]`. Tag: `production`. **Requires:** space control `[spctrl]`.  
+Where: production. Needs: 2 iron `[iron]`, 6 titanium `[titani]`, 2 silicium `[silici]`, 2 copper `[copper]`. Builds: advanced space command module `[advcmd]`. Time: 4 weeks.
+
 **armored combat [armcbt]**  
 The basic mobile armor, powered by oil consuming engines. Tag: `military`. Unlocks TRAIN SKILL: armor platoon leader `[arpldr]`.  
 Where: production. Needs: 8 iron `[iron]`, 2 titanium `[titani]`. Builds: tanks `[tanks]`. Time: 10 weeks.
@@ -235,6 +239,10 @@ Where: extraction, solid-surface. Builds: 2 nickel-iron `[nickfe]`. Time: 1 week
 A rack of chemically boosted rockets sized to nest on a shuttle or station and fire in orbit. Built in a factory on the ground or assembled in space. Unlocks TRAIN SKILL: frigate pilot `[frgplt]`. Tag: `military`.  
 Where: production. Needs: 4 iron `[iron]`. Builds: orbital rocket launcher `[orbrkt]`. Time: 8 weeks.
 
+**mobile construction team [mobctr]**  
+Field fabrication truck with cranes and prefab kits. Tag: `production`. **Requires:** ground transport `[grndtr]`.  
+Where: production. Needs: 2 iron `[iron]`, 2 titanium `[titani]`. Builds: engineering truck `[engtrk]`. Time: 2 weeks.
+
 **mobile survey team [msrvtm]**  
 Truck-mounted FTIR, XRF sample prep, and a rugged field terminal for half-rate research away from the factory floor. Tag: `research`. **Requires:** file indexing `[filidx]`.  
 Where: production. Needs: 2 iron `[iron]`, 2 silicium `[silici]`. Builds: mobile laboratory `[moblab]`. Time: 3 weeks.
@@ -252,7 +260,7 @@ Compact man-portable high-frequency laser for infantry battalions. Tag: `militar
 Where: production. Needs: 2 terran breathing gas `[terair]`, 1 copper `[copper]`, 1 oxyhydro `[h2o2]`. Builds: personal laser `[prllsr]` (item). Time: 3 weeks.
 
 **preventive servicing [servic]**  
-Maintenance and repairs are best done in advance. Unlocks TRAIN SKILL: space station command `[sscmnd]`. Tag: `repair`.  
+Maintenance and repairs are best done in advance. Tag: `repair`.  
 Where: production. Needs: 1 titanium `[titani]`, 1 iron `[iron]`, 1 copper `[copper]`, 1 silicium `[silici]`. Builds: 10 spare parts `[spare]`. Time: 1 week.
 
 **rocket launcher production [rckter]**  
@@ -306,6 +314,10 @@ Group `vehicle`. Built by naval transport `[nvltrs]`. Size 250, mass 100, crew 1
 **command bridge [cbridg]**  
 A command bridge is mandated for the control of any spaceship.  
 Group `command`. Built by space control `[spctrl]`. Size 800, mass 300, crew 1, energy 5, capacity 200, HP 55, tech-cap 1. Upkeep 10 cash. Operates in frigate, space station.
+
+**advanced space command module [advcmd]**  
+Secondary command node with load-balancing schedulers for nested bays and factories (+5% extraction and agriculture output, −5% production cycle time on the stack).  
+Group `command`. Built by advanced space command `[advspc]`. Size 900, mass 350, crew 2, energy 6, capacity 250, HP 60, tech-cap 2, defense 2. Upkeep 15 cash. Operates in frigate through ark hull groups and space station.
 
 **computer library [cmplib]**  
 The efficiency of the computer library allows on to store and manipulate larger than usual files and technological reference documents.  
@@ -378,6 +390,10 @@ Group `extraction`. Built by mineral surface drilling `[sdrill]`. Size 500, mass
 **trucks [trucks]**  
 Group of large and slow ground moving trucks.  
 Group `vehicle`. Built by ground transport `[grndtr]`. Size 250, mass 100, crew 1, capacity 150, HP 17. Upkeep 5 cash. Consumes 4 food and 4 terran air (damage 25% if not). Ground move speed 0.5. Fuel duration 13 (1 oil). Operates on solid-surface with terran atmosphere.
+
+**engineering truck [engtrk]**  
+Mobile production module on an oil-fuelled chassis. Any factory USE allowed on solid ground applies here at one-tenth speed; needs oil fuel before USE.  
+Group `production`. Built by mobile construction team `[mobctr]`. Size 250, mass 120, crew 2, capacity 150, HP 17. Upkeep 8 cash. Consumes 6 food and 6 terran air (damage 25% if not). Ground move speed 0.4. Fuel duration 13 (1 oil). Operates on solid-surface with terran atmosphere.
 
 **mobile laboratory [moblab]**  
 Six-wheel flatbed carries FTIR, XRF, and a field terminal for half-rate research and anomaly investigation (spectral, radiometric).  
@@ -487,7 +503,7 @@ Size 5, mass 3. Produced by silicium melting `[slcmlt]` (1). Consumed by L0: cor
 
 **unit of titanium [titani]**  
 Due to its resistance to wear, titanium is a good construction material.  
-Size 10, mass 10. Produced by titanium mining `[tminng]` (2). Consumed by L0: action and reaction `[areact]` (10), industrial automation `[indust]` (10), stationary defense `[stnrdf]` (4), shuttles assembly `[shtlas]` (1), space ship assembly `[ssassm]` (4), space control `[spctrl]` (4), uranium fission `[urfiss]` (8), small scale transportation `[strans]` (2), crew housing `[crewhs]` (2). Also L1: mineral core drilling `[mcored]` (10), laser optics `[lasopt]` (2), laser turret `[lstrrt]` (4), preventive servicing `[servic]` (1), armored combat `[armcbt]` (2), naval combat `[nvlcbt]` (2), staged hydrolox `[hydstg]` (4), underwater drilling `[udrill]` (15), underwater transport `[uwtrs]` (4).
+Size 10, mass 10. Produced by titanium mining `[tminng]` (2). Consumed by L0: action and reaction `[areact]` (10), industrial automation `[indust]` (10), stationary defense `[stnrdf]` (4), shuttles assembly `[shtlas]` (1), space ship assembly `[ssassm]` (4), space control `[spctrl]` (4), uranium fission `[urfiss]` (8), small scale transportation `[strans]` (2), crew housing `[crewhs]` (2). Also L1: mineral core drilling `[mcored]` (10), laser optics `[lasopt]` (2), laser turret `[lstrrt]` (4), preventive servicing `[servic]` (1), armored combat `[armcbt]` (2), naval combat `[nvlcbt]` (2), staged hydrolox `[hydstg]` (4), underwater drilling `[udrill]` (15), underwater transport `[uwtrs]` (4), mobile construction team `[mobctr]` (2), advanced space command `[advspc]` (6).
 
 **unit of uranium [uraniu]**  
 With a half-life of million of years, this is one of the most stable of the radio-active elements, and one very easy to use in energy power modules.  

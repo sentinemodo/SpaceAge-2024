@@ -66,19 +66,20 @@ namespace SpaceAge
 		public static OrderParseResult ParseFile(Game game, string filename)
 		{
 			OrderParseResult result = new OrderParseResult();
-			OrdersReader reader = new OrdersReader(game);
-
-			try
+			using (OrdersReader reader = new OrdersReader(game))
 			{
-				List<string> commands = reader.ReadOrdersFile(filename);
-				commands = reader.RemoveCommentsAndEmptyLines(commands);
-				reader.AssignOrders(commands);
-				result.Ok = true;
-			}
-			catch (Exception ex)
-			{
-				result.Ok = false;
-				AddExceptionMessages(result.Errors, ex);
+				try
+				{
+					List<string> commands = reader.ReadOrdersFile(filename);
+					commands = reader.RemoveCommentsAndEmptyLines(commands);
+					reader.AssignOrders(commands);
+					result.Ok = true;
+				}
+				catch (Exception ex)
+				{
+					result.Ok = false;
+					AddExceptionMessages(result.Errors, ex);
+				}
 			}
 
 			CollectParsingWarnings(game, result.Warnings);

@@ -97,7 +97,7 @@ namespace SpaceAge
             {
                 foreach (Effect effect in this)
                 {
-                    if (effect is Moving)
+                    if (effect is Moving && !effect.Executed)
                     {
                         return true;
                     }

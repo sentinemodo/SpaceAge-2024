@@ -16,8 +16,10 @@ namespace SpaceAge
 		}
 
         public EMoveMode    MoveMode        { get; set; }
+		public IHolder      Origin          { get; set; }
 		public IHolder      Destination     { get; set; }
         public int          InitialDuration { get; set; }
+		public int          ReturnLegWeeks  { get; set; }
 
 		public Moving(IEffectable mover)
 			: base(mover, 0)
@@ -25,12 +27,14 @@ namespace SpaceAge
 			this.ExecuteCondition = false;
 		}
 
-		public Moving(IEffectable mover, EMoveMode moveMode, IHolder destination, int duration)
+		public Moving(IEffectable mover, EMoveMode moveMode, IHolder origin, IHolder destination, int duration)
 			: base(mover, duration)
 		{
             this.MoveMode = moveMode;
+			this.Origin = origin;
 			this.Destination = destination;
             this.InitialDuration = duration;
+			this.ReturnLegWeeks = 0;
 			this.ExecuteCondition = false;
 		}
 
@@ -56,6 +60,15 @@ namespace SpaceAge
         {
             get
             {
+				if (this.Origin != null && this.Destination != null)
+				{
+					return string.Format(
+						"moving from {0} to {1}, {2} weeks remaining of {3} week leg.",
+						this.Origin.ReportName,
+						this.Destination.ReportName,
+						this.Duration,
+						this.InitialDuration);
+				}
                 return string.Format("will move for another {0} weeks before next destination.", this.Duration);
             }
         }
@@ -64,6 +77,10 @@ namespace SpaceAge
         {
             base.LoadXml(elEffect);
             this.Destination = this.findDestination(elEffect.GetAttribute("destination"));
+			if (elEffect.HasAttribute("origin"))
+			{
+				this.Origin = this.findDestination(elEffect.GetAttribute("origin"));
+			}
             if (elEffect.HasAttribute("move-mode"))
             {
                 this.MoveMode = MoveModeXml.Parse(elEffect.GetAttribute("move-mode"));
@@ -72,7 +89,18 @@ namespace SpaceAge
             {
                 this.MoveMode = EMoveMode.ground;
             }
-            this.InitialDuration = this.Duration;
+			if (elEffect.HasAttribute("initial-duration"))
+			{
+				this.InitialDuration = this.XMLAssignInteger(elEffect.GetAttribute("initial-duration"), this.Duration);
+			}
+			else
+			{
+				this.InitialDuration = this.Duration;
+			}
+			if (elEffect.HasAttribute("return-leg-weeks"))
+			{
+				this.ReturnLegWeeks = this.XMLAssignInteger(elEffect.GetAttribute("return-leg-weeks"), 0);
+			}
             if (this.Mover.MovingTo == null)
             {
                 this.Mover.MovingTo = this.Destination;
@@ -83,8 +111,14 @@ namespace SpaceAge
         {
             base.SaveXml(doc);
             this.xmlElement.SetAttribute("type", "moving");
+			if (this.Origin != null)
+			{
+				this.xmlElement.SetAttribute("origin", this.Origin.Name);
+			}
             this.xmlElement.SetAttribute("destination", this.Destination.Name);
-            this.xmlElement.SetAttribute("move-mode", MoveModeXml.ToToken(this.MoveMode)); 
+            this.xmlElement.SetAttribute("move-mode", MoveModeXml.ToToken(this.MoveMode));
+			this.xmlElement.SetAttribute("initial-duration", this.InitialDuration.ToString());
+			this.xmlElement.SetAttribute("return-leg-weeks", this.ReturnLegWeeks.ToString());
 
             return this.xmlElement;
         }

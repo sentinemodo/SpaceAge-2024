@@ -38,6 +38,7 @@ COPY --from=visual-build /src/dist tools/visual-tool/dist/
 COPY game-host/package.json game-host/
 RUN cd game-host && npm install --omit=dev
 COPY game-host/ game-host/
+COPY tools/player-agent/Lint/verb-allowlist.json tools/player-agent/Lint/verb-allowlist.json
 COPY play/campaign/ play/campaign/
 
 EXPOSE 8787

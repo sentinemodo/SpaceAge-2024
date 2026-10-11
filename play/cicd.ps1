@@ -237,6 +237,82 @@ function Test-CaddyAdminRunning {
 	}
 }
 
+function Get-GameHostHealthPayload {
+	param(
+		[string] $BaseUrl,
+		[int] $Port = $script:GameHostPort
+	)
+	if ($BaseUrl) {
+		return Invoke-RestMethod -Uri "$BaseUrl/health" -TimeoutSec 15
+	}
+	return Invoke-RestMethod -Uri "http://127.0.0.1:$Port/health" -TimeoutSec 15
+}
+
+function Test-PublicEdgeMatchesGameHost {
+	param(
+		[Parameter(Mandatory = $true)][string] $ExpectedRunId
+	)
+	try {
+		$public = Get-GameHostHealthPayload -BaseUrl 'https://spaceage-pbem.duckdns.org'
+		return ($public.ok -and $public.runId -eq $ExpectedRunId)
+	}
+	catch {
+		return $false
+	}
+}
+
+function Wait-CaddyAdmin {
+	param(
+		[Parameter(Mandatory = $true)][bool] $WantRunning,
+		[int] $TimeoutSec = 30
+	)
+	$deadline = (Get-Date).AddSeconds($TimeoutSec)
+	do {
+		$up = Test-CaddyAdminRunning
+		if ($up -eq $WantRunning) { return }
+		if ((Get-Date) -gt $deadline) {
+			$state = if ($WantRunning) { 'up' } else { 'down' }
+			throw "Caddy admin API (:2019) did not become $state within ${TimeoutSec}s"
+		}
+		Start-Sleep -Seconds 2
+	} while ($true)
+}
+
+function Invoke-CaddyStartBackground {
+	param(
+		[Parameter(Mandatory = $true)][string] $CaddyDir
+	)
+	# caddy start/stop can block on Windows even when the service changes state; do not wait on the CLI.
+	Start-Process -FilePath 'caddy' -ArgumentList @('start', '--config', 'Caddyfile') -WorkingDirectory $CaddyDir -WindowStyle Hidden | Out-Null
+	Wait-CaddyAdmin -WantRunning $true -TimeoutSec 30
+}
+
+function Invoke-CaddyStopBackground {
+	param(
+		[Parameter(Mandatory = $true)][string] $CaddyDir
+	)
+	Start-Process -FilePath 'caddy' -ArgumentList @('stop') -WorkingDirectory $CaddyDir -WindowStyle Hidden | Out-Null
+	Wait-CaddyAdmin -WantRunning $false -TimeoutSec 30
+}
+
+function Wait-PublicEdgeMatchesGameHost {
+	param(
+		[Parameter(Mandatory = $true)][string] $ExpectedRunId,
+		[int] $TimeoutSec = 45
+	)
+	$deadline = (Get-Date).AddSeconds($TimeoutSec)
+	do {
+		if (Test-PublicEdgeMatchesGameHost -ExpectedRunId $ExpectedRunId) {
+			Write-Host '  public edge: https://spaceage-pbem.duckdns.org/health ok (runId matches game-host)'
+			return
+		}
+		if ((Get-Date) -gt $deadline) {
+			throw 'Public HTTPS health did not match local game-host after Caddy start/restart. Is router forwarding 443 to this PC?'
+		}
+		Start-Sleep -Seconds 3
+	} while ($true)
+}
+
 function Invoke-EnsureCaddyPublicEdge {
 	Write-CicdStep 'Ensure Caddy public HTTPS (DuckDNS)'
 	if (-not (Get-Command caddy -ErrorAction SilentlyContinue)) {
@@ -253,36 +329,26 @@ function Invoke-EnsureCaddyPublicEdge {
 
 	Push-Location $caddyDir
 	try {
-		if (-not (Test-CaddyAdminRunning)) {
-			Write-Host '  starting Caddy (background)'
-			$start = Invoke-ExternalCommandCapture -FilePath 'caddy' -ArgumentList @('start', '--config', 'Caddyfile') -WorkingDirectory $caddyDir
-			$startText = ($start.Lines -join ' ')
-			if ($start.ExitCode -ne 0 -and $startText -notmatch 'already running') {
-				throw "caddy start failed (exit $($start.ExitCode)): $startText"
-			}
-			Start-Sleep -Seconds 2
-		}
-		else {
-			Write-Host '  Caddy already running (admin :2019)'
+		$local = Get-GameHostHealthPayload
+		if (-not $local.ok) {
+			throw 'Local game-host /health is not ok; fix Docker game-host before Caddy'
 		}
 
-		$deadline = (Get-Date).AddSeconds(45)
-		do {
-			try {
-				Test-GameHostHealth
-				$public = Invoke-RestMethod -Uri 'https://spaceage-pbem.duckdns.org/health' -TimeoutSec 15
-				if ($public.ok) {
-					Write-Host '  public edge: https://spaceage-pbem.duckdns.org/health ok'
-					return
-				}
-			}
-			catch {
-				if ((Get-Date) -gt $deadline) {
-					throw "Public HTTPS health check failed: $($_.Exception.Message). Is router forwarding 443 to this PC?"
-				}
-				Start-Sleep -Seconds 3
-			}
-		} while ($true)
+		if (Test-PublicEdgeMatchesGameHost -ExpectedRunId $local.runId) {
+			Write-Host "  Caddy restart not needed (public edge runId=$($local.runId))"
+			return
+		}
+
+		if (Test-CaddyAdminRunning) {
+			Write-Host '  public edge stale or down after game-host restart — restarting Caddy'
+			Invoke-CaddyStopBackground -CaddyDir $caddyDir
+		}
+		else {
+			Write-Host '  starting Caddy (background)'
+		}
+
+		Invoke-CaddyStartBackground -CaddyDir $caddyDir
+		Wait-PublicEdgeMatchesGameHost -ExpectedRunId $local.runId
 	}
 	finally {
 		Pop-Location

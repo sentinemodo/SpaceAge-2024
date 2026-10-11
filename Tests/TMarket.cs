@@ -1871,6 +1871,93 @@ namespace UnitTests
 		}
 
 		[Test]
+		public void ReportPublications_OnlyNewRumorsAndPress()
+		{
+			Faction faction = Faction.All["2"];
+			new PressRelease(Faction.All["1"], "Moon shot", "We go to Luna.", false, string.Empty);
+			PressRelease.All[0].CreatedThisSession = false;
+			new PressRelease(null, "Hostile fauna", "Something hunts the grass.", true, "P00002");
+			PressRelease.All[1].CreatedThisSession = false;
+
+			List<string> report = faction.Report();
+			string reportText = string.Join("\n", report.ToArray());
+			Assert.That(reportText, Does.Not.Contain("Press releases:"));
+			Assert.That(reportText, Does.Not.Contain("Rumors:"));
+			Assert.That(reportText, Does.Not.Contain("Moon shot"));
+			Assert.That(reportText, Does.Not.Contain("Hostile fauna"));
+
+			new PressRelease(Faction.All["2"], "Fresh headline", "Published this turn.", false, string.Empty);
+			report = faction.Report();
+			reportText = string.Join("\n", report.ToArray());
+			Assert.That(reportText, Does.Contain("Press releases:"));
+			Assert.That(reportText, Does.Contain("Fresh headline"));
+		}
+
+		[Test]
+		public void Parse_AmendContract_UpdatesFlavour()
+		{
+			Contract contract = this.Publish("CT0098", "R00001", "000005");
+			contract.Flavour = "Original charter language.";
+
+			List<string> commands = new List<string>
+			{
+				"#faction 1",
+				"CONTRACT CT0098 FLAVOUR \"Revised isotope ledger and calorie escrow terms.\"",
+				"#end"
+			};
+			OrdersReader reader = new OrdersReader(this.game);
+			reader.AssignOrders(commands);
+			ContractOrder amend = (ContractOrder)Faction.All["1"].Orders[0];
+			Assert.That(amend.IsAmend, Is.True);
+			Assert.That(amend.Flavour, Does.Contain("Revised isotope"));
+
+			amend.Execute(1);
+			Assert.That(contract.Flavour, Does.Contain("Revised isotope"));
+			Assert.That(contract.ChangedThisSession, Is.True);
+			Assert.That(contract.RewardCash, Is.EqualTo(0));
+			Assert.That(((GiveModuleTrigger)contract.Trigger).Quantity, Is.EqualTo(1));
+
+			List<string> report = Faction.All["2"].Report();
+			Assert.That(string.Join("\n", report.ToArray()), Does.Contain("Revised isotope"));
+		}
+
+		[Test]
+		public void Parse_AmendContract_IncreasesCashReward()
+		{
+			Contract contract = this.Publish("CT0099", "R00001", "000005");
+			contract.Title = "Calorie charter";
+			contract.RewardTechnology = null;
+			contract.RewardCash = 1000;
+			GiveModuleTrigger give = (GiveModuleTrigger)contract.Trigger;
+			give.Quantity = 4;
+			give.ModuleType = ModuleType.All["farms"];
+
+			List<string> commands = new List<string>
+			{
+				"#faction 1",
+				"CONTRACT CT0099 REWARD 4000 cash",
+				"#end"
+			};
+			OrdersReader reader = new OrdersReader(this.game);
+			reader.AssignOrders(commands);
+			ContractOrder amend = (ContractOrder)Faction.All["1"].Orders[0];
+			Assert.That(amend.IsAmend, Is.True);
+			Assert.That(amend.ContractName, Is.EqualTo("CT0099"));
+			Assert.That(amend.RewardCash, Is.EqualTo(4000));
+
+			amend.Execute(1);
+			Assert.That(contract.RewardCash, Is.EqualTo(4000));
+			Assert.That(contract.ChangedThisSession, Is.True);
+			Assert.That(give.Quantity, Is.EqualTo(4));
+
+			List<string> report = Faction.All["2"].Report();
+			string reportText = string.Join("\n", report.ToArray());
+			Assert.That(reportText, Does.Contain("Contract reports:"));
+			Assert.That(reportText, Does.Contain("CT0099"));
+			Assert.That(reportText, Does.Contain("4000 cash"));
+		}
+
+		[Test]
 		public void Parse_Rumor_BetweenTurns()
 		{
 			List<string> commands = new List<string>

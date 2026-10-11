@@ -13,6 +13,8 @@ public static partial class DraftPromptBuilder
         + "Turn 1: every HQ stack needs `set hold 20 terran` beside `@produce terran`. "
         + "Disabled stacks cannot move: on mobile stacks use definite `get`/`-get`/`move`/`-move` (like use/repair); use `@research` for continuous research (like `@produce`). Stage terran crew and oil before move. "
         + "@use farmng only on farms stacks; @use hcdril only on sdrill stacks (match Orders template module types). "
+        + "Every freshly built stack (`use … as newN`, `train … as newN`, including UN town `twnbld` prefabs for TRANSFER TO FACTION 1) needs "
+        + "`NAME \"…\"` on its `#modulestack newN` block (persona-flavored display name; omit only if already present). "
         + "No prose, no markdown fences, no numbered lists, no explanations.";
 
     public static string BuildRetrievalQuery(string? objectiveText, string? reportText, string? personaText = null)
@@ -295,6 +297,7 @@ public static partial class DraftPromptBuilder
                 +get 2 silici from <cargob-id>
 
                 #modulestack new109
+                NAME "Bench survey team"
                 move {{anomaly}}
                 +get 1 terran from <hq-id>
                 +get 2 oil from <cargob-id>
@@ -599,12 +602,14 @@ public static partial class DraftPromptBuilder
                 +get 2 titani from <cargob-id>
 
                 #modulestack new1
+                NAME "Grant scout"
                 move {{safeScout}}
                 +get 1 terran from <hq-id>
                 +get 2 oil from <cargob-id>
                 +get 2 food from <cargob-id>
 
                 #modulestack new2
+                NAME "Slope striker"
                 has 1 tanks
                 -get 16 terran from <hq-id>
                 -get 8 oil from <cargob-id>
@@ -613,6 +618,7 @@ public static partial class DraftPromptBuilder
                 tactic destroy
 
                 #modulestack new3
+                NAME "Burrow breaker"
                 has 1 tanks
                 -get 16 terran from <hq-id>
                 -get 8 oil from <cargob-id>

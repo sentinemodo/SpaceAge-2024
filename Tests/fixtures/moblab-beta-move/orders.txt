@@ -1,0 +1,11 @@
+#faction 2
+#modulestack 901004
+@produce energy
+#modulestack 901001
+use msrvtm as 901010 for 901002
+#modulestack 901010
+move R00002
++get 1 terran from 901002
++get 2 oil from 901003
++get 2 food from 901003
+#end

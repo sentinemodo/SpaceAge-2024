@@ -251,7 +251,7 @@ namespace UnitTests
 			}
 
 			Assert.That(order.Route.Count, Is.EqualTo(0));
-			Assert.That(order.Report(faction)[0], Is.EqualTo("move R00002"));
+			Assert.That(order.Report(faction)[0], Is.EqualTo("move from R00001 to R00002"));
 			Assert.That(order.DurationLeft, Is.EqualTo(3));
 
 			XmlDocument doc = new XmlDocument();

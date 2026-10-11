@@ -1,4 +1,3 @@
-
 namespace SpaceAge
 {
 	public partial class ModuleStack
@@ -10,6 +9,46 @@ namespace SpaceAge
 		{
 			get { return this.movingTo; }
 			set { this.movingTo = value; }
+		}
+
+		public bool IsInTransit
+		{
+			get { return this.movingTo != null; }
+		}
+
+		public Location EffectiveOrderLocation()
+		{
+			Moving traveling = this.Effects.Moving;
+			if (this.IsInTransit && traveling != null)
+			{
+				return this.TravelEffectiveRegion(traveling);
+			}
+			return this.Location;
+		}
+
+		public Location TravelEffectiveRegion(Moving moving)
+		{
+			if (moving == null || !this.IsInTransit)
+			{
+				return this.Location;
+			}
+			int initial = moving.InitialDuration;
+			if (initial <= 0)
+			{
+				return this.Location;
+			}
+			int elapsed = initial - moving.Duration;
+			Location origin = moving.Origin as Location;
+			Location destination = moving.Destination as Location;
+			if (origin == null || destination == null)
+			{
+				return this.Location;
+			}
+			if (elapsed * 2 > initial)
+			{
+				return destination;
+			}
+			return origin;
 		}
 
 		public bool IsRoot

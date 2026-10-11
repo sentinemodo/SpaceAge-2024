@@ -400,11 +400,13 @@ Stack specific module, damage modules or selected number of modules to unit or f
 
 **JUMP** — `JUMP <gate-id>` — Usable by moveable spaceships only. Alderson hop between paired Alderson points, 1 week, ships only.
 
-**MOVE** — `MOVE <dest> [dest2 …]` — usable by move-capable modules - multi-hop travel; disabled stacks fail; person cannot move on it's own. Destination must be reachable.
+**MOVE** — `MOVE <dest> [dest2 …]` | `MOVE BACK` — usable by move-capable modules - multi-hop travel; disabled stacks fail; person cannot move on it's own. Destination must be reachable.
 
 `MOVE <dest> [<dest2> …]` — **module stack only** (not a person alone).
 
 One line, multiple hops: `move R00014 R00009 O00003`. Valid destinations: region, orbit, planet, moon, belt, star, anomaly, or alderson point id from report.
+
+While a stack is **in transit**, reports and the orders template show **origin and destination** (name and id), leg length, and weeks remaining. If you issue no new `move` next turn, travel **continues toward the current destination**. Mid-trip you may only `move` to that same destination or **`move back`** / **`move <origin-region-id>`** to return; return time equals weeks already traveled on the current leg. Other destinations **fail with an event** and travel **continues toward the current destination** that week. **`get` / `give` silently fail** during transit. Other **long** orders do not run until travel ends. **Immediate** orders use the origin region until half the leg has elapsed, then the destination region (observers see the same travel timing in effects).
 
 **PRODUCE** — `PRODUCE ENERGY` | `PRODUCE <item-id>` — e.g. `@produce cash`, `@produce energy`. Usable in producing modules. Continues use of the modulestack. some modulestack may operate only in specific location types or within specific atmosphere.
 

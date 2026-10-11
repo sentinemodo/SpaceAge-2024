@@ -229,8 +229,8 @@ namespace IntegrationTests
 
 			Assert.That(
 				moblab.EventReports.Any(e => e.Week == 1 && e.Description.Contains("GET failed") && e.Description.Contains("capacity")),
-				Is.True,
-				"week 1 staging onto empty forming stack should fail like beta\n" + diagnostics);
+				Is.False,
+				"week 1 GET onto stack with no module copies should fail silently\n" + diagnostics);
 			Assert.That(
 				moblab.EventReports.Any(e => e.Description.Contains("formed by")),
 				Is.True,
@@ -255,6 +255,12 @@ namespace IntegrationTests
 				moblab.EventReports.Any(e => e.Description.Contains("MOVE failed") && e.Description.Contains("disabled")),
 				Is.True,
 				"move should fail at least once while the stack is still disabled\n" + diagnostics);
+			Assert.That(
+				moblab.EventReports.Any(e =>
+					e.Description.Contains("departed from")
+					&& e.Week < moblab.EventReports.Where(x => x.Description.Contains("consumed") && x.Description.Contains("fuel")).Min(x => x.Week)),
+				Is.False,
+				"departed should not be logged before the first week movement actually progresses\n" + diagnostics);
 			Assert.That(
 				moblab.EventReports.Any(e => e.Description.Contains("consumed") && e.Description.Contains("oil") && e.Description.Contains("fuel")),
 				Is.True,
