@@ -46,6 +46,7 @@ namespace UnitTests
 			Region.All.Clear();
 			Planet.All.Clear();
 			Orbit.All.Clear();
+			Belt.All.Clear();
 			Faction.All.Clear();
 		}
 
@@ -97,6 +98,28 @@ namespace UnitTests
 		}
 
 		[Test]
+		public void SameOrbit_RootVisible_NestedHidden()
+		{
+			ModuleStack hull = this.form(this.orbit, this.owner, this.scoutType, "hull1");
+			ModuleStack nested = this.form(this.orbit, this.owner, this.garrisonType, "bridge1");
+			nested.Parent = hull;
+			this.form(this.orbit, this.observer, this.scoutType, "shut1");
+
+			Assert.That(hull.Visible(this.observer), Is.True);
+			Assert.That(nested.Visible(this.observer), Is.False);
+		}
+
+		[Test]
+		public void OrbitObserver_DoesNotSeeBeltUnit()
+		{
+			Belt belt = new Belt(this.system, this.planet, "visbl");
+			ModuleStack asteroid = this.form(belt, this.owner, this.scoutType, "ast1");
+			this.form(this.orbit, this.observer, this.scoutType, "orb2");
+
+			Assert.That(asteroid.Visible(this.observer), Is.False);
+		}
+
+		[Test]
 		public void SeeOrder_Anywhere_DetectsAcrossRegionsFromOrbit()
 		{
 			ModuleStack foreign = this.form(this.regionB, this.owner, this.scoutType, "for2");
@@ -126,6 +149,45 @@ namespace UnitTests
 			Assert.That(town.Visible(this.observer), Is.True);
 			Assert.That(garrison.Visible(this.observer), Is.False);
 			Assert.That(nestedScout.Visible(this.observer), Is.True);
+		}
+
+		[Test]
+		public void OrbitStack_RevealsSurfaceAndSeaRegions_NotUnderground()
+		{
+			RegionType grass = new RegionType("grassl");
+			grass.LocationType = ELocationType.solidSurface;
+			RegionType sea = new RegionType("sea");
+			sea.LocationType = ELocationType.liquidSurface;
+			RegionType buriedType = new RegionType("underg");
+			buriedType.LocationType = ELocationType.underground;
+			this.regionA.RegionType = grass;
+			this.regionB.RegionType = sea;
+			Region buried = new Region(this.planet, "visU");
+			buried.RegionType = buriedType;
+
+			this.form(this.orbit, this.observer, this.scoutType, "shut2");
+
+			Assert.That(this.regionA.Visible(this.observer), Is.True);
+			Assert.That(this.regionB.Visible(this.observer), Is.True);
+			Assert.That(buried.Visible(this.observer), Is.False);
+		}
+
+		[Test]
+		public void Region_HiddenWithoutLocalOrOrbitalStack()
+		{
+			Assert.That(this.regionB.Visible(this.observer), Is.False);
+		}
+
+		[Test]
+		public void UndergroundRegion_VisibleWhenFactionHasStackThere()
+		{
+			RegionType buriedType = new RegionType("underg");
+			buriedType.LocationType = ELocationType.underground;
+			Region buried = new Region(this.planet, "visU2");
+			buried.RegionType = buriedType;
+			this.form(buried, this.observer, this.scoutType, "dig1");
+
+			Assert.That(buried.Visible(this.observer), Is.True);
 		}
 
 		[Test]

@@ -204,6 +204,36 @@ namespace SpaceAge
 			{
 				return true;
 			}
+			if (this.IsUnderground)
+			{
+				return false;
+			}
+			return this.HasFormedOrbitalObserver(faction);
+		}
+
+		public bool IsUnderground
+		{
+			get
+			{
+				return this.RegionType != null
+					&& this.RegionType.LocationType == ELocationType.underground;
+			}
+		}
+
+		private bool HasFormedOrbitalObserver(Faction faction)
+		{
+			IOrbitHolder body = this.RegionHolder as IOrbitHolder;
+			if (body == null || body.Orbit == null)
+			{
+				return false;
+			}
+			foreach (ModuleStack stack in body.Orbit.ModuleStacks.Values)
+			{
+				if (stack.Owner == faction && stack.IsFormed && stack.Size > 0)
+				{
+					return true;
+				}
+			}
 			return false;
 		}
 

@@ -263,6 +263,7 @@ namespace SpaceAge
 
 		private void loadRegions(XmlElement elRegionsHolder, IRegionHolder regionHolder, DataFile dataFile)
 		{
+			List<KeyValuePair<XmlElement, Region>> regionStackLoads = new List<KeyValuePair<XmlElement, Region>>();
 			foreach (XmlElement elRegion in elRegionsHolder.SelectNodes("region"))
 			{
 				Region region = new Region(regionHolder, elRegion.GetAttribute("name"));
@@ -280,11 +281,23 @@ namespace SpaceAge
 					this.loadDeepPocket(elRegion, region, dataFile);
 					this.loadAnomaly(elRegion, region, dataFile);
 
-                    ModuleStack.All.LoadXml(elRegion, region);
+					regionStackLoads.Add(new KeyValuePair<XmlElement, Region>(elRegion, region));
 				}
 				catch (Exception ex)
 				{
 					throw new Exception("Tried to parse region" + region.ReportName, ex);
+				}
+			}
+
+			foreach (KeyValuePair<XmlElement, Region> pending in regionStackLoads)
+			{
+				try
+				{
+					ModuleStack.All.LoadXml(pending.Key, pending.Value);
+				}
+				catch (Exception ex)
+				{
+					throw new Exception("Tried to parse region" + pending.Value.ReportName, ex);
 				}
 			}
 		}
@@ -882,7 +895,9 @@ namespace SpaceAge
 					}
 				}
 				this.saveResources(doc, elRegion, region, factionXMLreport);
-				if (region.HasDeepPocket)
+				bool occupiedByReporter = factionXMLreport == null
+					|| region.ModuleStacks.Contains(factionXMLreport);
+				if (region.HasDeepPocket && occupiedByReporter)
 				{
 					XmlElement elDeepPocket = doc.CreateElement("deep-pocket");
 					elRegion.AppendChild(elDeepPocket);
@@ -894,7 +909,7 @@ namespace SpaceAge
 						elResource.SetAttribute("quantity", resource.Quantity.ToString());
 					}
 				}
-				if (region.HasAnomaly)
+				if (region.HasAnomaly && occupiedByReporter)
 				{
 					XmlElement elAnomaly = doc.CreateElement("anomaly");
 					elRegion.AppendChild(elAnomaly);

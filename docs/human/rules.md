@@ -363,7 +363,7 @@ SEE <transporter>
 
 **STACK** — `STACK <parent|newN>` | `STACK top` | `STACK out` — **`top`/`out` lowercase**. Nest the modulestack under different parent unit or eject them to the region. Unit must have sufficient capacity to accept the stacked unit size. 
 
-Stacking under units reduce stack visibility for other factions. e.g. standard orbital unit will detect all non-hidden units in region. but it will only report a town if units are stacked under one.
+Stacking under units reduce stack visibility for other factions. e.g. standard orbital unit will detect all non-hidden units in region. but it will only report a town if units are stacked under one. The orbit sweep bonus applies to regions of that planet or moon, not to other units in the same orbit or on a belt. A ship in orbit reports every surface and sea region of that body even with no stack of yours there. Underground regions stay hidden. Undersea stacks keep their extra stealth.
 
 Some units may only be stacked under specific type of modules, e.g. figther drones may only be stacked under drone bay if they are to participate in combat.
 

@@ -119,7 +119,12 @@ namespace SpaceAge
 			{
 				return false;
 			}
-			IOrbitHolder targetBody = GetOrbitHolderForStack(target);
+			Region targetRegion = target.Location as Region;
+			if (targetRegion == null)
+			{
+				return false;
+			}
+			IOrbitHolder targetBody = targetRegion.RegionHolder as IOrbitHolder;
 			return targetBody != null && ReferenceEquals(observerOrbit.OrbitHolder, targetBody);
 		}
 
@@ -362,27 +367,6 @@ namespace SpaceAge
 				}
 			}
 			return int.MaxValue / 4;
-		}
-
-		private static IOrbitHolder GetOrbitHolderForStack(ModuleStack stack)
-		{
-			Location location = stack.Location;
-			Region region = location as Region;
-			if (region != null)
-			{
-				return region.RegionHolder as IOrbitHolder;
-			}
-			Orbit orbit = location as Orbit;
-			if (orbit != null)
-			{
-				return orbit.OrbitHolder;
-			}
-			Belt belt = location as Belt;
-			if (belt != null && belt.Planet != null)
-			{
-				return belt.Planet;
-			}
-			return null;
 		}
 
 		private static SpaceSystem GetSpaceSystem(Location location)

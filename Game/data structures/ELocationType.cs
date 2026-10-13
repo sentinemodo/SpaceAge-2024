@@ -10,6 +10,7 @@ namespace SpaceAge
         liquidSurface,
         orbit,
 		atmosphere,
-		space
+		space,
+		underground
 	}
 }

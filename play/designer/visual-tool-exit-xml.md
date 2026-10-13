@@ -6,7 +6,7 @@ Last updated: 2026-09-14
 
 ## Problem
 
-Faction-filtered report XML (`report.{turn}.{faction}.xml`) is built by `Galaxy.SaveXml(doc, faction)`. A `<region>` is emitted only when `Region.Visible(faction)` — the faction holds at least one module stack in that cell ([`Region.Visible`](../../Game/data%20structures/Region.cs)). Exits on **visible** regions still list neighbours by id only:
+Faction-filtered report XML (`report.{turn}.{faction}.xml`) is built by `Galaxy.SaveXml(doc, faction)`. A `<region>` is emitted only when `Region.Visible(faction)` — the faction holds a module stack in that cell, or a formed stack in that body's orbit. Underground regions stay hidden from orbit ([`Region.Visible`](../../Game/data%20structures/Region.cs)). Exits on **visible** regions still list neighbours by id only:
 
 ```xml
 <exit region="R00002">
@@ -36,14 +36,14 @@ Align XML stubs with live text reporting ([`Exits.Report`](../../Game/data%20str
 | Tier | Condition | XML on exit `<target>` |
 |------|-----------|-------------------------|
 | **Adjacent map cell** | Source region `Visible(faction)` and exit `To` is a `Region` on the same planet/moon | `name`, `name-en`, `X`, `Y`, `type`; attr `discovered="partial"` |
-| **Visited cell** | Target region `Visible(faction)` (faction stack in cell) | Full `<region>` in galaxy slice; stub optional. Attr `discovered="yes"` if stub present |
+| **Visited cell** | Target region `Visible(faction)` (faction stack in cell, or formed stack in that body's orbit; not an underground region seen only from orbit) | Full `<region>` in galaxy slice; stub optional. Attr `discovered="yes"` if stub present |
 | **Settlement hint** | Target `HasSettlement` and source visible | `<capacity group="settlement" quantity="…"/>` on stub (matches “, settlement detected”) |
 | **Surface resources** | Target `Visible(faction)` | `<resource type="…" quantity="…"/>` children (same as today’s region save) |
 | **Deep pocket hint** | Target `HasDeepPocket`, source visible, source `HasCdrillTechnologyFor(faction)` | `<deep-pocket>` with resources (matches “, deep pocket of resources detected”). Quantities only when mcored tech or core drill module is **in the pocket region** (matches “Deep resources:” assay) |
 | **Anomaly hint** | Target has unresolved anomaly, source visible | `<anomaly type="…" points="…"/>` only — **no** `description`, rewards, or progress (matches “, anomaly detected”) |
 | **Unknown** | Exit listed but faction lacks layout intel (future SEE/long-range cases) | `<target discovered="no"/>` or omit `X`/`Y`/`type`; visual tool greys label only |
 
-**Note:** `Region.Visible` today means “stack present”, not “seen on map”. Adjacent stubs (`discovered="partial"`) intentionally expose grid layout and terrain id so the regional map matches text exit lines, while stacks and market data stay off the stub until visited.
+**Note:** `Region.Visible` means a stack is in the cell, or a formed stack is in that body's orbit (underground regions excluded). Adjacent stubs (`discovered="partial"`) intentionally expose grid layout and terrain id so the regional map matches text exit lines, while stacks and market data stay off the stub until the region itself is visible. Deep-pocket and anomaly elements on the region still require a stack in the cell.
 
 ## Recommended XML schema
 

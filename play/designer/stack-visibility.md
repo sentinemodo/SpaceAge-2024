@@ -19,7 +19,7 @@ effectiveStealth(target, observer) =
 observerDetection(O, target) =
     O.baseDetection
   + O.technologyDetectionBonus
-  + (O.location is Orbit of target body ? 1 : 0)   // orbit sweep bonus
+  + (O.location is Orbit of target body AND target is in a region of that body ? 1 : 0)   // orbit sweep bonus
   + underwaterChannelBonus(O, target)             // see below
 
 visible iff observerDetection(O, target) > effectiveStealth(target, observer)   // strict
@@ -36,6 +36,9 @@ Own units remain always visible to their owner in the region (human rules); owne
 | Ground stack, **same region**, detection 1 | Foreign **root** (nest 0), not underwater | **Seen** (1 > 0) |
 | Ground stack, **same region**, detection 1 | Foreign **nested** once (nest 1) | **Not seen** (1 > 1 false) |
 | **Orbit** on planet (detection 1 + orbit +1 = **2**) | Any **root** on that planet/moon regions, not underwater, within regional reach | **Seen** (2 > stealth) |
+| **Orbit**, same orbit as target (detection 1, no orbit +1) | Foreign **root** in that orbit | **Seen** (1 > 0) |
+| **Orbit**, same orbit | Foreign **nested** once | **Not seen** (1 > 1) |
+| **Orbit** vs **belt** | Foreign root on that planet's belt | **Not seen** (detection 1, belt geo +1; orbit +1 does not apply) |
 | Orbit sweep | **Underwater-stealthy** root | **Not seen** without extra channel (underwater +1 stealth; orbit +1 does **not** apply to underwater targets — see detection) |
 | Ground, **adjacent region** (+1 regional stealth) | Foreign root | **Not seen** with detection 1 (1 > 1 false) |
 
@@ -83,7 +86,7 @@ Same **region** instance: regional hops = 0; geo may still apply for cross-body 
 | Base | `ModuleType.Detection` (default 0) | Campaign “standard” sensor units → **1** when attrs land |
 | Stack technologies | sum `Technology.DetectionBonus` | Catalog |
 | Modules / skills | e.g. `survsc` +1 same-region | Narrow scope |
-| **Orbit bonus** | **+1** when O’s location is **`Orbit`** of the **target body** (planet/moon the target is on) | Enables planet-wide root sweep |
+| **Orbit bonus** | **+1** when O’s location is **`Orbit`** of the **target body** and the target’s location is a **region** of that body | Planet-wide sweep of surface regions. Same-orbit and belt targets do not receive it |
 | Underwater channel | +1 when target is underwater-stealthy **and** (faction `HasUnderwaterPresence` in target **region** OR own `IsShipHullType` on that body’s orbit) | Replaces old boolean hide; **orbit +1 does not apply** when target is underwater-stealthy (surface orbital pass only) |
 
 **Observers (decided):** **Unformed** stacks (`!IsFormed`) **never** observe. **Size ≤ 0** stacks do not observe.
@@ -120,6 +123,7 @@ XML: add optional `at-region="R00001"` or `anywhere="yes"` on `<see>` when TDD e
 | `ModuleStack.Report` nested children | Skip child subtree when `!child.Visible(faction)` |
 | `SeeOrder` | Parse `AT` / `ANYWHERE`; call `Visibility.CanSee` |
 | Exit hints | Unchanged |
+| `Region.Visible` | True with a stack in the region, or a formed stack in that body's orbit. `location-type="underground"` stays hidden from orbit |
 
 ## Catalog (campaign)
 
