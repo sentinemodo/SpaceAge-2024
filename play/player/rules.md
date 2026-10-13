@@ -155,7 +155,7 @@ Clear last turn’s event reports, then `turn++`. Drop stale per-unit stances (`
 
 After week 13: **quarterly maintenance**, then **quarterly wounded outcome**, then clear long/immediate flags; drop unformed stacks that should not report (`RemoveNonReporting`).
 
-**Quarterly maintenance** (`ExecuteMaintenance`, once, week 13): cash upkeep, then food, then terran air `[terair]` if the stack needs canned air (orbit, space, or a moon region). Bills auto-GET from this stack’s own nest (self, then nested children), then the parent chain, then other same-owner stacks at the same location. Cash shortfall can also debit the faction bank when the stack has `**AllowBank` true** (default; see [SET](#set)). When cash (or any other upkeep item) is actually deducted (`taken > 0`), the stack logs `week 13: paid N cash [cash] upkeep.` (`ItemType.ReportName` is `cash [cash]`; same `paid N {item} upkeep.` shape for food/air). Each formed stack pays its own `UpkeepNetto` (`localUpkeep` does not roll nested children into the parent bill). Nested hangar craft still pay if they remain nested through week 13; after hangar launch they pay as roots (4 alien fighter drones `[alndrn]` at 20 cash each = `paid 80 cash [cash] upkeep.`). Unpaid food/air can wound healthy terrans (catalog 25%). Unpaid cash can damage the module or print race off-duty. `medici` is skipped here (already weekly).
+**Quarterly maintenance** (`ExecuteMaintenance`, once, week 13): **player factions 2–11 only** — NPC owners (UN `[1]`, militias, fauna, etc.) skip the upkeep/supply pass entirely. For those NPC stacks, reports treat modules as **active** unless **damage** disables them; missing crew, fuel, or energy does not print disabled/immobile for NPC-owned gear (player factions still follow crew/energy/fuel rules). Player stacks: cash upkeep, then food, then terran air `[terair]` if the stack needs canned air (orbit, space, or a moon region). Bills auto-GET from this stack’s own nest (self, then nested children), then the parent chain, then other same-owner stacks at the same location. Cash shortfall can also debit the faction bank when the stack has `**AllowBank` true** (default; see [SET](#set)). When cash (or any other upkeep item) is actually deducted (`taken > 0`), the stack logs `week 13: paid N cash [cash] upkeep.` (`ItemType.ReportName` is `cash [cash]`; same `paid N {item} upkeep.` shape for food/air). Each formed stack pays its own `UpkeepNetto` (`localUpkeep` does not roll nested children into the parent bill). Nested hangar craft still pay if they remain nested through week 13; after hangar launch they pay as roots (4 alien fighter drones `[alndrn]` at 20 cash each = `paid 80 cash [cash] upkeep.`). Unpaid food/air can wound healthy terrans (catalog 25%). Unpaid cash can damage the module or print race off-duty. `medici` is skipped here (already weekly).
 
 **High gravity** (`BodyEnvironment.GravityAt` == `high`): that stack’s local cash bill is multiplied by **1.5** (ceiling). Stacks with people or `population-maximum` > 0 also add **2 food**. Planets with no `gravity` attribute load as `normal`; moons with no attribute load as `low`. SampleGame maps have no `gravity=` attrs, so this surcharge does not fire there.
 
@@ -268,7 +268,7 @@ Adjust quantities to match catalog crew per module (`cdrill` 6, `farms` 5×qty, 
 
 Order stacks on the **same subject**: HQ or branch office `@produce cash` / `@produce terran`, cargo bay `@get` / `@sell` / `@buy`, each module stack its own `#modulestack` block.
 
-**Orders template (report footer):** reuse **numeric stack ids** only. Do **not** paste template comment lines (`; + …`, `; items: …`) into the order file. Do **not** emit `#person` CEO blocks unless issuing a person-only verb (`TRAIN`, `ACTIVE`, `SEE`). `**@produce cash`** / `**@produce terran`** belong under `#modulestack <id>` for a producing command module (`corphq` or `brnofc`), never under `#person` or cargo bay. After `#modulestack <id>`, put verb lines immediately — comments do not change the subject.
+**Orders template (report footer):** reuse **numeric stack ids** for formed stacks; **unformed stacks** show the same **`newN` alias** as in `use … as newN`. For **officers in training**, the template uses **`#person newN`** matching `train terran officer as newN` — do not copy the internal id from the comment line (`[102209]`). **`has person newN`** (not placeholder ids like `000001`) when conditioning on a trainee. Do **not** paste template comment lines (`; + …`, `; items: …`) into the order file. Empty `#person` blocks (unformed, no orders) are omitted. Do **not** emit `#person` CEO blocks unless issuing a person-only verb (`TRAIN`, `ACTIVE`, `SEE`). `**@produce cash`** / `**@produce terran`** belong under `#modulestack <id>` for a producing command module (`corphq` or `brnofc`), never under `#person` or cargo bay. After `#modulestack <id>`, put verb lines immediately — comments do not change the subject.
 
 ### Multi-stop MOVE (preferred)
 
@@ -276,23 +276,18 @@ Order stacks on the **same subject**: HQ or branch office `@produce cash` / `@pr
 
 **In transit:** effects and the orders template list **from** origin **to** destination (ids), leg length, and weeks left. No new `move` next turn continues toward the current destination. Mid-trip only `move <same dest>`, `move back`, or `move <origin-id>` (return time = weeks already traveled). Other `move` targets fail with an event; travel still **continues toward the current destination** that week. `get`/`give` fail silently; other long orders wait. Immediate orders use origin until half the leg, then destination (visible to observers).
 
-**Subject:** a **mobile `#modulestack`** only (shuttle, infantry stack, ship hull, etc.). Immobile stacks (`corphq`, `brnofc`, `cargob`, …) cannot move.
+**Subject:** a **mobile `#modulestack`** (shuttle, infantry stack, ship hull, …) or a **formed `#person`**. Immobile stacks (`corphq`, `brnofc`, `cargob`, …) cannot move.
 
 **Space fuel on MOVE:** pre-flight fuel applies to the mover and nested **propulsion** modules only (e.g. reaction drive). Nested passengers such as hangar-launched drones do not block the parent hull's MOVE.
 
-**People travel with vehicles, not alone.** A `#person` cannot take `MOVE` — `MoveOrder` casts the subject to `ModuleStack` and throws `InvalidCastException`. Board the CEO on a vehicle first:
+**Person foot travel:** `#person <id>` may `move` **ground region-to-region hops on the same body** only. Speed comes from the person's race move mode (terran **ground 0.1** — same as `[inftry]`). Orbit, space, and **naval-only** exits fail with the same move-mode events as stacks (`movable by sea`, `move in space`, …). Starting a walk from a host stack (CEO on HQ) **steps the person onto the region** automatically. Bulk cargo, orbit, and combat still use vehicles — board with `ACTIVE` + `STACK` on a `#modulestack` mover:
 
 ```
-#person 200010
-active 100
--stack 100
-
 #modulestack 100
-; space shuttle [shuttl] or other ground-capable stack
 move R00014 R00009
 ```
 
-Use `ACTIVE` + `STACK` (or start the turn already nested under a mover). Conditional `-move` chains are optional; for reconnaissance prefer a **single** `MOVE` with multiple region ids on the vehicle stack.
+Conditional `-move` chains are optional; for reconnaissance prefer a **single** `MOVE` with multiple region ids on the vehicle stack (or on foot when only a lone officer is traveling).
 
 ### Turn-1 economic bootstrap (pattern)
 
@@ -884,9 +879,9 @@ Alderson-gate hop. Parse takes **one** token; it must be an **Alderson Gate** id
 
 **Syntax:** `MOVE <dest> [<dest2> …]`
 
-**Subject:** modulestack only (not `#person`). People move only when boarded on a vehicle (`ACTIVE` + `STACK` onto a shuttle, infantry stack, or hull) — see [Order playbooks](#order-playbooks-templates).
+**Subject:** `#modulestack` (vehicle or infantry stack) or **formed `#person`** (foot travel — ground **region→region** on one body only; terran speed matches `[inftry]`). Vehicles still required for orbit, space, naval-only exits, and cargo — see [Order playbooks](#order-playbooks-templates).
 
-Walks a route in one order — e.g. `move R00014 R00009` (Grant → Farm Belt → Mid Vale). Each dest token is a **region**, **star**, **planet**, **moon**, **belt**, **alderson**, **anomaly**, or **orbit** id. Conditional `-move` / `+move` chains are optional; prefer listing all ground hops on one `MOVE` line for reconnaissance. Immobile stacks (e.g. `corphq`) cannot move. Stars, planets, moons, anomalies, and Alderson Gates resolve to their **orbit**. A **belt** token is the belt itself (location-type **space**, not a landing). Starts a `Moving` effect, consumes fuel when required, changes parent on arrival.
+Walks a route in one order — e.g. `move R00014 R00009` (Grant → Farm Belt → Mid Vale). Each dest token is a **region**, **star**, **planet**, **moon**, **belt**, **alderson**, **anomaly**, or **orbit** id (person foot travel: **regions only** on the same surface). Conditional `-move` / `+move` chains are optional; prefer listing all ground hops on one `MOVE` line for reconnaissance. Immobile stacks (e.g. `corphq`) cannot move. Stars, planets, moons, anomalies, and Alderson Gates resolve to their **orbit**. A **belt** token is the belt itself (location-type **space**, not a landing). Starts a `Moving` effect, consumes fuel when required (stacks only), changes parent on arrival.
 
 **Exits on the report:** a **region** block includes `Exits:` (`Region.Report` → `Exits.Report`). A region destination prints `{name} [id] (x,y), {region type}, {ground|naval|space} travel duration N week(s).` A non-region destination prints that location’s `ReportName` plus the mode duration — `orbit [id], space travel duration N week(s).` for an orbit, or `{name} [id] at AU N, belt, space travel duration N week(s).` for a belt. Orbit reports and `Belt.Report` do not list exits (belt exits still exist in the save and are used by MOVE). Maps without `orbit=` / `belt=` / `alderson=` exits (SampleGame) never show those lines.
 

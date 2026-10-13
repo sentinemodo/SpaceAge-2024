@@ -5,7 +5,7 @@ using System.Xml;
 
 namespace SpaceAge
 {
-	public class Person : NamedObject, IItemStacksHolder, IOfferent, IReporting, IEventReporting, IEffectable, IMoveable
+	public partial class Person : NamedObject, IItemStacksHolder, IOfferent, IReporting, IEventReporting, IEffectable, IMoveable
 	{
         public static People All = new People();         
         public const int PersonNameLength = 6;
@@ -51,18 +51,23 @@ namespace SpaceAge
             this.Parent = parent;
         }
 
-		public Person(ModuleStack parent, Faction owner, Race race, string name)
+		public Person(IHolder parent, Faction owner, Race race, string name)
 			: base(name)
 		{
 			if (Person.All.ContainsKey(name))
 				throw new Exception("Person with name [" + name + "] already exists");
-			
+
 			Person.All.Add(this.name, this);
 
-			this.alias = this.name; 
+			this.alias = this.name;
 			this.Parent = parent;
 			this.Owner = owner;
 			this.Race = race;
+		}
+
+		public Person(ModuleStack parent, Faction owner, Race race, string name)
+			: this((IHolder)parent, owner, race, name)
+		{
 		}
 
 		public Person(Faction owner, string name)
@@ -258,8 +263,8 @@ namespace SpaceAge
 
             executed = this.Orders.Execute(week);
             this.Orders.RemoveExecuted();
-            //this.Effects.Execute(week);
-            //this.Effects.RemoveExecuted();
+            this.Effects.Execute(week);
+            this.Effects.RemoveExecuted();
 
             return executed;
         }
@@ -560,6 +565,30 @@ namespace SpaceAge
             set { this.alias = value; }
         }
 
+		public string OrderPersonReferenceToken()
+		{
+			if (!this.IsFormed && !string.IsNullOrEmpty(this.alias) && this.alias.StartsWith("new"))
+			{
+				return this.alias;
+			}
+
+			return this.name;
+		}
+
+		public bool IncludeInOrdersTemplate(Faction faction)
+		{
+			if (this.Owner != faction)
+			{
+				return false;
+			}
+
+			if (this.Orders.Count > 0)
+			{
+				return true;
+			}
+
+			return this.IsFormed;
+		}
 
 		public override string ReportName
 		{
@@ -575,7 +604,7 @@ namespace SpaceAge
                 {
                     return string.Format("{0} [{1}]",
                         string.IsNullOrEmpty(this.FullName) ? "unformed officer" : this.FullName,
-                        this.name);
+                        this.OrderPersonReferenceToken());
                 }
 			}
 		}
@@ -671,14 +700,7 @@ namespace SpaceAge
 
         public Moving Moving
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
+            get { return this.Effects.Moving; }
         }
         
         public MoveModes MoveModes

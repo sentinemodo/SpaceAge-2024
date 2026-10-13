@@ -7,10 +7,13 @@ namespace SpaceAge
 {
 	public class MoveOrder : LongOrder
 	{
+		private readonly MoveOrderSubject moveSubject;
+
 		public MoveOrder(IOrderable subject)
 			: base(subject)
 		{
 			this.type = EOrderType.move;
+			this.moveSubject = MoveOrderSubject.From(subject);
 		}
 
         private Location destination = null;
@@ -41,7 +44,7 @@ namespace SpaceAge
 
 		public ModuleStack Mover
 		{
-			get { return (ModuleStack)this.Subject; }
+			get { return this.moveSubject.Stack; }
 		}
 
 		public int TotalDuration
@@ -82,13 +85,13 @@ namespace SpaceAge
 			this.route.Clear();
 			if (assigned.moveBack)
 			{
-				this.destination = this.Mover.Location;
+				this.destination = this.moveSubject.Location;
 			}
 			else if (assigned.Route.Count > 0)
 			{
 				this.destination = assigned.Route[0];
 			}
-			if (this.Mover.IsInTransit)
+			if (this.moveSubject.IsInTransit)
 			{
 				this.applyInTransitRedirect(0);
 			}
@@ -194,8 +197,8 @@ namespace SpaceAge
                 this.Conditions,
                 (this.Repeat > 1) ? string.Concat(this.Repeat.ToString(), " ") : ((this.Repeat < 0) ? "@" : string.Empty));
 
-			Moving traveling = this.Mover.Effects.Moving;
-			if (this.Mover.IsInTransit && traveling != null && traveling.Origin != null && traveling.Destination != null)
+			Moving traveling = this.moveSubject.Effects.Moving;
+			if (this.moveSubject.IsInTransit && traveling != null && traveling.Origin != null && traveling.Destination != null)
 			{
 				line = string.Concat(
 					line,
@@ -254,24 +257,25 @@ namespace SpaceAge
             get
             {
                 Dictionary<EMoveMode, List<IMoveable>> moveModes = new Dictionary<EMoveMode, List<IMoveable>>();
-                if (this.Mover.MoveModes.ContainsKey(EMoveMode.ground))
+                IMoveable mover = this.moveSubject.Moveable;
+                if (this.moveSubject.MoveModes.ContainsKey(EMoveMode.ground))
                 {
                     List<IMoveable> ground = new List<IMoveable>
                     {
-                        this.Mover
+                        mover
                     };
                     moveModes.Add(EMoveMode.ground, ground);
                 }
-                if (this.Mover.MoveModes.ContainsKey(EMoveMode.naval))
+                if (!this.moveSubject.IsPerson && this.moveSubject.MoveModes.ContainsKey(EMoveMode.naval))
                 {
                     List<IMoveable> naval = new List<IMoveable>
                     {
-                        this.Mover
+                        mover
                     };
                     moveModes.Add(EMoveMode.naval, naval);
                 }
 
-                List<IMoveable> space = this.spaceMoveableRecursive(this.Mover);
+                List<IMoveable> space = this.spaceMoveableRecursive(mover);
                 if (space.Count > 0)
                 {
                     moveModes.Add(EMoveMode.space, space);
@@ -305,11 +309,12 @@ namespace SpaceAge
         private List<IMoveable> spaceMoveablesForFuel()
         {
             List<IMoveable> fuelMoveables = new List<IMoveable>();
-            if (this.Mover.MoveModes.ContainsKey(EMoveMode.space) && this.Mover.Fuel.Count > 0)
+            IMoveable mover = this.moveSubject.Moveable;
+            if (this.moveSubject.MoveModes.ContainsKey(EMoveMode.space) && this.moveSubject.Fuel.Count > 0)
             {
-                fuelMoveables.Add(this.Mover);
+                fuelMoveables.Add(mover);
             }
-            this.collectSpacePropulsionMoveables(this.Mover, fuelMoveables);
+            this.collectSpacePropulsionMoveables(mover, fuelMoveables);
             return fuelMoveables;
         }
 
@@ -335,52 +340,122 @@ namespace SpaceAge
 
 		private bool isWay(int week)
 		{
-            if (!this.Mover.IsFormed)
+            if (!this.moveSubject.IsFormed)
             {
-                this.Mover.EventReports.Add(
+                this.moveSubject.EventReports.Add(
                     week,
                     string.Format("MOVE failed. unformed units cannot move."));		
                 return false;
             }
 
-			if (this.Mover.IsInTransit
+			if (this.moveSubject.IsPerson && !this.validatePersonRoute(week))
+			{
+				return false;
+			}
+
+			if (this.moveSubject.IsInTransit
 				&& this.destination != null
-				&& this.destinationsMatch(this.destination, this.Mover.Location))
+				&& this.destinationsMatch(this.destination, this.moveSubject.Location))
 			{
 				return true;
 			}
 
-            if (this.moveModesRecursive.ContainsKey(EMoveMode.space))
+            if (!this.moveSubject.IsPerson && this.moveModesRecursive.ContainsKey(EMoveMode.space))
             {
                 return true;
             }
 
-            Location current = (Location)this.Mover.Location;
+            Location current = (Location)this.moveSubject.Location;
             if (!current.Exits.Contains(this.destination))
             {
                 return false;
             }
-            EMoveMode unused;
-            return this.tryCompatibleSurfaceMode(current.Exits[this.destination], out unused);
+            EMoveMode surfaceMode;
+            if (!this.tryCompatibleSurfaceMode(current.Exits[this.destination], out surfaceMode))
+            {
+				this.reportMoveModeFailure(week, surfaceMode);
+                return false;
+            }
+            return true;
+		}
+
+		private bool validatePersonRoute(int week)
+		{
+			if (!(this.destination is Region))
+			{
+				this.reportMoveModeFailure(week, EMoveMode.space);
+				return false;
+			}
+			if (!(this.moveSubject.Location is Region))
+			{
+				this.reportMoveModeFailure(week, EMoveMode.ground);
+				return false;
+			}
+			Region from = (Region)this.moveSubject.Location;
+			Region to = (Region)this.destination;
+			if (from.RegionHolder != to.RegionHolder)
+			{
+				this.moveSubject.EventReports.Add(
+					week,
+					"MOVE failed. Persons can only move between regions on the same surface.");
+				return false;
+			}
+			return true;
+		}
+
+		private void reportMoveModeFailure(int week, EMoveMode mode)
+		{
+			if (mode == EMoveMode.ground)
+			{
+				this.moveSubject.EventReports.Add(
+					week,
+					"MOVE failed. Unit need to be movable by ground.");
+			}
+			else if (mode == EMoveMode.naval)
+			{
+				this.moveSubject.EventReports.Add(
+					week,
+					"MOVE failed. Unit need to be movable by sea.");
+			}
+			else
+			{
+				this.moveSubject.EventReports.Add(
+					week,
+					"MOVE failed. Unit need to be able to move in space.");
+			}
 		}
 
 		private bool tryCompatibleSurfaceMode(Exit exit, out EMoveMode mode)
 		{
-			bool canNaval = this.moveModesRecursive.ContainsKey(EMoveMode.naval)
-				&& exit.ExitModes.ContainsKey(EMoveMode.naval);
-			bool canGround = this.moveModesRecursive.ContainsKey(EMoveMode.ground)
-				&& exit.ExitModes.ContainsKey(EMoveMode.ground);
-			if (canNaval && !canGround)
+			bool exitNaval = exit.ExitModes.ContainsKey(EMoveMode.naval);
+			bool exitGround = exit.ExitModes.ContainsKey(EMoveMode.ground);
+			bool unitGround = this.moveModesRecursive.ContainsKey(EMoveMode.ground) && exitGround;
+			bool unitNaval = !this.moveSubject.IsPerson
+				&& this.moveModesRecursive.ContainsKey(EMoveMode.naval)
+				&& exitNaval;
+
+			if (this.moveSubject.IsPerson)
+			{
+				if (unitGround)
+				{
+					mode = EMoveMode.ground;
+					return true;
+				}
+				mode = exitNaval && !exitGround ? EMoveMode.naval : EMoveMode.ground;
+				return false;
+			}
+
+			if (unitNaval && !unitGround)
 			{
 				mode = EMoveMode.naval;
 				return true;
 			}
-			if (canGround)
+			if (unitGround)
 			{
 				mode = EMoveMode.ground;
 				return true;
 			}
-			if (canNaval)
+			if (unitNaval)
 			{
 				mode = EMoveMode.naval;
 				return true;
@@ -391,7 +466,7 @@ namespace SpaceAge
 
 		private int movementDuration()
 		{
-			Location current = (Location)this.Mover.Location;
+			Location current = (Location)this.moveSubject.Location;
 			if (this.destination != null && this.destinationsMatch(this.destination, current))
 			{
 				return this.DurationLeft > 0 && this.DurationLeft < Int32.MaxValue
@@ -399,9 +474,9 @@ namespace SpaceAge
 					: 1;
 			}
 
-			if (this.Mover.Location is Region && this.destination is Region)
+			if (this.moveSubject.Location is Region && this.destination is Region)
 			{
-				Region region1 = (Region)this.Mover.Location;
+				Region region1 = (Region)this.moveSubject.Location;
 				Region region2 = (Region)this.destination;
 
 				if (region1.RegionHolder == region2.RegionHolder)
@@ -414,7 +489,7 @@ namespace SpaceAge
 					}
 					this.moveMode = surfaceMode;
 					ExitMode exitMode = exit.ExitModes[surfaceMode];
-					double speed = this.Mover.MoveModes[surfaceMode].Speed;
+					double speed = this.moveSubject.MoveModes[surfaceMode].Speed;
 					return Convert.ToInt32(Math.Ceiling(exitMode.Duration / speed));
 				}
 				if (this.hasSpaceExit(current))
@@ -423,7 +498,7 @@ namespace SpaceAge
 				}
 				return this.spaceAuDuration();
 			}
-			if (this.destination is Belt || this.Mover.Location is Belt)
+			if (this.destination is Belt || this.moveSubject.Location is Belt)
 			{
 				if (this.hasSpaceExit(current))
 				{
@@ -431,9 +506,9 @@ namespace SpaceAge
 				}
 				return this.spaceAuDuration();
 			}
-			if ((this.Mover.Location is Region && this.destination is Orbit) || (this.Mover.Location is Orbit && this.destination is Region))
+			if ((this.moveSubject.Location is Region && this.destination is Orbit) || (this.moveSubject.Location is Orbit && this.destination is Region))
 			{
-				if (this.Mover.Location.LocationParent == this.destination.LocationParent)
+				if (this.moveSubject.Location.LocationParent == this.destination.LocationParent)
 				{
 					this.moveMode = EMoveMode.space;
 					return 1;
@@ -444,7 +519,7 @@ namespace SpaceAge
 				}
 				return this.spaceAuDuration();
 			}
-			if (this.Mover.Location is Orbit && this.destination is Orbit)
+			if (this.moveSubject.Location is Orbit && this.destination is Orbit)
 			{
 				return this.spaceAuDuration();
 			}
@@ -465,16 +540,16 @@ namespace SpaceAge
 		{
 			this.moveMode = EMoveMode.space;
 			ExitMode exitMode = current.Exits[this.destination].ExitModes[EMoveMode.space];
-			int weeks = SpaceTransit.ExitDurationWeeks(exitMode.Duration, this.Mover);
-			return SkillEffects.ApplyDurationPercent(weeks, SkillEffects.MoveDurationPercent(this.Mover.RootModuleStack));
+			int weeks = SpaceTransit.ExitDurationWeeks(exitMode.Duration, this.moveSubject.Stack);
+			return SkillEffects.ApplyDurationPercent(weeks, SkillEffects.MoveDurationPercent(this.moveSubject.RootModuleStack));
 		}
 
 		private int spaceAuDuration()
 		{
 			this.moveMode = EMoveMode.space;
-			double deltaAu = Math.Abs(SpaceTransit.BodyAu(this.Mover.Location) - SpaceTransit.BodyAu(this.destination));
-			int weeks = SpaceTransit.DurationWeeks(deltaAu, SpaceTransit.EffectiveSpaceSpeed(this.Mover));
-			return SkillEffects.ApplyDurationPercent(weeks, SkillEffects.MoveDurationPercent(this.Mover.RootModuleStack));
+			double deltaAu = Math.Abs(SpaceTransit.BodyAu(this.moveSubject.Location) - SpaceTransit.BodyAu(this.destination));
+			int weeks = SpaceTransit.DurationWeeks(deltaAu, SpaceTransit.EffectiveSpaceSpeed(this.moveSubject.Stack));
+			return SkillEffects.ApplyDurationPercent(weeks, SkillEffects.MoveDurationPercent(this.moveSubject.RootModuleStack));
 		}
 
 		private bool applyPatrolRules(int week)
@@ -485,13 +560,13 @@ namespace SpaceAge
 				return true;
 			}
 
-			ModuleStack blocker = PatrolGuard.FindBlocker(destinationRegion, this.Mover.Owner);
+			ModuleStack blocker = PatrolGuard.FindBlocker(destinationRegion, this.moveSubject.Owner);
 			if (blocker == null)
 			{
 				return true;
 			}
 
-			this.Mover.EventReports.Add(
+			this.moveSubject.EventReports.Add(
 				week,
 				string.Format(
 					"MOVE failed. {0} is patrolling {1}.",
@@ -502,7 +577,7 @@ namespace SpaceAge
 
 		private bool applyEnvironmentMoveRules(int week)
 		{
-			Location from = this.Mover.Location as Location;
+			Location from = this.moveSubject.Location as Location;
 			Location to = this.destination;
 			if (!this.applyPatrolRules(week))
 			{
@@ -512,9 +587,14 @@ namespace SpaceAge
 			{
 				return true;
 			}
-			if (BodyEnvironment.BansNonShuttleSurfaceHop(this.Mover.ModuleType, from, to))
+			if (this.moveSubject.IsPerson || this.moveSubject.Stack == null)
 			{
-				this.Mover.EventReports.Add(
+				return true;
+			}
+			ModuleStack moverStack = this.moveSubject.Stack;
+			if (BodyEnvironment.BansNonShuttleSurfaceHop(moverStack.ModuleType, from, to))
+			{
+				this.moveSubject.EventReports.Add(
 					week,
 					"MOVE failed. Spaceships cannot use solid-surface exits on atmospheres.");
 				return false;
@@ -528,17 +608,17 @@ namespace SpaceAge
 			ItemType h2o2 = ItemType.All["h2o2"];
 			ItemStacks need = new ItemStacks();
 			need.Add(new ItemStack(h2o2, surcharge));
-			if (!this.Mover.HasItemsAvailableTo(this.Mover, need))
+			if (!this.moveSubject.HasItemsAvailableTo(moverStack, need))
 			{
-				this.Mover.EventReports.Add(
+				this.moveSubject.EventReports.Add(
 					week,
 					string.Format("MOVE failed. Not enough {0} for launch.", ItemType.All["h2o2"].ReportName));
 				return false;
 			}
-			IItemStacksHolder holder = this.Mover.FindItemHolderAvailableTo(this.Mover, need);
+			IItemStacksHolder holder = this.moveSubject.FindItemHolderAvailableTo(moverStack, need);
 			if (holder == null)
 			{
-				this.Mover.EventReports.Add(
+				this.moveSubject.EventReports.Add(
 					week,
 					string.Format("MOVE failed. Not enough {0} for launch.", ItemType.All["h2o2"].ReportName));
 				return false;
@@ -549,21 +629,21 @@ namespace SpaceAge
 				string.Format(
 					"consumed {0} for launch{1}.",
 					need.ReportList,
-					holder == this.Mover ? string.Empty : string.Concat(" for ", this.Mover.ReportName)));
+					holder == moverStack ? string.Empty : string.Concat(" for ", this.moveSubject.ReportName)));
 			return true;
 		}
 
 		private bool canMove(int week)
 		{          
-			if (!this.Mover.IsActive)
+			if (!this.moveSubject.IsActive)
 			{
-				string inactiveState = this.Mover.IsPartiallyDisabled
-					? (this.Mover.IsLivingUnit ? "partially routed" : "partially disabled")
-					: (this.Mover.IsLivingUnit ? "routed" : "disabled");
-				this.Mover.EventReports.Add(
+				string inactiveState = this.moveSubject.IsPartiallyDisabled
+					? (this.moveSubject.IsLivingUnit ? "partially routed" : "partially disabled")
+					: (this.moveSubject.IsLivingUnit ? "routed" : "disabled");
+				this.moveSubject.EventReports.Add(
 					week,
 					string.Format("MOVE failed. {0} is {1}.",
-						this.Mover.ReportName,
+						this.moveSubject.ReportName,
 						inactiveState));
 				return false;
 			}
@@ -572,19 +652,19 @@ namespace SpaceAge
             {
                 if (this.moveMode == EMoveMode.ground)
                 {
-                    this.Mover.EventReports.Add(
+                    this.moveSubject.EventReports.Add(
                         week,
                         string.Format("MOVE failed. Unit need to be movable by ground."));
                 }
                 else if (this.moveMode == EMoveMode.naval)
                 {
-                    this.Mover.EventReports.Add(
+                    this.moveSubject.EventReports.Add(
                         week,
                         string.Format("MOVE failed. Unit need to be movable by sea."));
                 }
                 else
                 {
-                    this.Mover.EventReports.Add(
+                    this.moveSubject.EventReports.Add(
                            week,
                            string.Format("MOVE failed. Unit need to be able to move in space."));
                 }
@@ -633,9 +713,14 @@ namespace SpaceAge
             {
                 if (!moveable.Effects.IsFuelled)
                 {
-                    if (this.Mover.HasItemsAvailableTo(this.Mover, moveable.Fuel))
+                    ModuleStack fuelRoot = this.moveSubject.Stack;
+                    if (fuelRoot == null)
                     {
-                        IItemStacksHolder holder = this.Mover.FindItemHolderAvailableTo(this.Mover, moveable.Fuel);
+                        continue;
+                    }
+                    if (this.moveSubject.HasItemsAvailableTo(fuelRoot, moveable.Fuel))
+                    {
+                        IItemStacksHolder holder = this.moveSubject.FindItemHolderAvailableTo(fuelRoot, moveable.Fuel);
 
                         if (holder != null)
                         {
@@ -652,7 +737,7 @@ namespace SpaceAge
                     }
                     else
                     {
-                        this.Mover.EventReports.Add(week, string.Format("is out of fuel for {0}.", moveable.ReportName));
+                        this.moveSubject.EventReports.Add(week, string.Format("is out of fuel for {0}.", moveable.ReportName));
                         return true;
                     }
                 }
@@ -668,11 +753,11 @@ namespace SpaceAge
 		{
             Dictionary<EMoveMode, List<IMoveable>> moveModes = moveModesRecursive;
 
-            ItemStacks fuelItemStacks = this.Mover.Fuel;
+            ItemStacks fuelItemStacks = this.moveSubject.Fuel;
 
             if (this.moveMode == EMoveMode.ground || this.moveMode == EMoveMode.naval)
             {
-                if (this.Mover.Fuel.Count == 0)
+                if (this.moveSubject.Fuel.Count == 0)
                     return false;
 
                 return this.consumeFuel(week, moveModes[this.moveMode]);
@@ -697,26 +782,26 @@ namespace SpaceAge
 
 		private bool applyInTransitRedirect(int week)
 		{
-			if (!this.Mover.IsInTransit)
+			if (!this.moveSubject.IsInTransit)
 			{
 				return true;
 			}
 			if (this.moving == null)
 			{
-				this.moving = this.Mover.Effects.Moving;
+				this.moving = this.moveSubject.Effects.Moving;
 			}
 			if (this.moving == null || this.destination == null)
 			{
 				return true;
 			}
-			IHolder tripOrigin = this.Mover.Location as IHolder;
-			if (this.destinationsMatch(this.destination as IHolder, this.Mover.MovingTo))
+			IHolder tripOrigin = this.moveSubject.Location as IHolder;
+			if (this.destinationsMatch(this.destination as IHolder, this.moveSubject.MovingTo))
 			{
 				return true;
 			}
 			if (this.destinationsMatch(this.destination, tripOrigin))
 			{
-				if (!this.destinationsMatch(this.Mover.MovingTo, tripOrigin))
+				if (!this.destinationsMatch(this.moveSubject.MovingTo, tripOrigin))
 				{
 					int weeksToOrigin = this.moving.ReturnLegWeeks;
 					if (weeksToOrigin <= 0)
@@ -727,23 +812,23 @@ namespace SpaceAge
 					this.moving.Origin = previousDestination;
 					this.moving.Destination = tripOrigin;
 					this.destination = tripOrigin as Location;
-					this.Mover.MovingTo = tripOrigin;
+					this.moveSubject.MovingTo = tripOrigin;
 					this.DurationLeft = weeksToOrigin;
 					this.moving.Duration = weeksToOrigin;
 					this.moving.InitialDuration = weeksToOrigin;
 					this.moving.ReturnLegWeeks = 0;
-					this.moving.Destination = this.Mover.MovingTo;
+					this.moving.Destination = this.moveSubject.MovingTo;
 				}
 				return true;
 			}
-			this.Mover.EventReports.Add(
+			this.moveSubject.EventReports.Add(
 				week,
 				string.Format(
 					"MOVE failed. {0} is in transit from {1} to {2}; only continue to destination or move back to origin.",
-					this.Mover.ReportName,
+					this.moveSubject.ReportName,
 					tripOrigin != null ? tripOrigin.ReportName : this.moving.Origin.ReportName,
-					this.Mover.MovingTo.ReportName));
-			this.destination = this.Mover.MovingTo as Location;
+					this.moveSubject.MovingTo.ReportName));
+			this.destination = this.moveSubject.MovingTo as Location;
 			this.Executing = true;
 			this.Executed = false;
 			return true;
@@ -755,11 +840,11 @@ namespace SpaceAge
 			{
 				base.Execute(week);
 
-				this.moving = this.Mover.Effects.Moving;
+				this.moving = this.moveSubject.Effects.Moving;
 
 				if (this.moveBack)
 				{
-					this.destination = this.Mover.Location;
+					this.destination = this.moveSubject.Location;
 					this.moveBack = false;
 				}
 
@@ -777,13 +862,13 @@ namespace SpaceAge
 					}
 				}
 
-				if (this.destination == null && this.Mover.IsInTransit && this.Mover.MovingTo != null)
+				if (this.destination == null && this.moveSubject.IsInTransit && this.moveSubject.MovingTo != null)
 				{
-					this.destination = this.Mover.MovingTo as Location;
+					this.destination = this.moveSubject.MovingTo as Location;
 				}
-				else if (this.destination == null && this.Mover.IsInTransit && this.Mover.Effects.Moving != null)
+				else if (this.destination == null && this.moveSubject.IsInTransit && this.moveSubject.Effects.Moving != null)
 				{
-					this.destination = this.Mover.Effects.Moving.Destination as Location;
+					this.destination = this.moveSubject.Effects.Moving.Destination as Location;
 				}
 
 				this.applyInTransitRedirect(week);
@@ -792,7 +877,7 @@ namespace SpaceAge
 				{
 					if (this.moving == null)
 					{
-						this.moving = this.Mover.Effects.Moving;
+						this.moving = this.moveSubject.Effects.Moving;
 					}
 					if ((this.DurationLeft <= 0 || this.DurationLeft >= Int32.MaxValue)
 						&& this.moving != null && this.moving.Duration > 0)
@@ -800,14 +885,14 @@ namespace SpaceAge
 						this.DurationLeft = this.moving.Duration;
 					}
 
-					bool resume = this.Mover.MovingTo != null
+					bool resume = this.moveSubject.MovingTo != null
 						|| (this.DurationLeft > 0 && this.DurationLeft < Int32.MaxValue);
 
 					// assign destination if not moving
-					if (this.Mover.MovingTo == null)
+					if (this.moveSubject.MovingTo == null)
 					{
-						DeliveringPurchase.CancelAll(this.Mover, week);
-						DeliveringPurchase.CancelReturns(this.Mover, week);
+						this.moveSubject.PrepareFootDeparture(week);
+						this.moveSubject.CancelDeliveringPurchases(week);
 						if (!this.applyEnvironmentMoveRules(week))
 						{
 							this.Executing = false;
@@ -815,7 +900,7 @@ namespace SpaceAge
 							return;
 						}
 						this.Executing = true;
-						this.Mover.MovingTo = this.destination;
+						this.moveSubject.MovingTo = this.destination;
 						resume = this.DurationLeft > 0 && this.DurationLeft < Int32.MaxValue;
 						if (!resume)
 						{
@@ -828,9 +913,9 @@ namespace SpaceAge
 						if (this.moving == null)
 						{
 							this.moving = new Moving(
-								this.Mover,
+								this.moveSubject.Effectable,
 								this.MoveMode,
-								this.Mover.Location,
+								this.moveSubject.Location,
 								this.Destination,
 								this.DurationLeft);
 						}
@@ -848,11 +933,11 @@ namespace SpaceAge
                         this.DurationLeft--;
                         if (firstStepOfLeg)
                         {
-                            this.Mover.EventReports.Add(
+                            this.moveSubject.EventReports.Add(
                                 week,
                                 string.Format(
                                     "departed from {0} to {1}, ETA {2}.",
-                                    this.Mover.Location.ReportName,
+                                    this.moveSubject.Location.ReportName,
                                     this.destination.ReportName,
                                     this.DurationLeft));
                         }
@@ -864,17 +949,17 @@ namespace SpaceAge
 
                         if ((this.DurationLeft + 1) != this.movementDuration() && this.DurationLeft != 0)
                         {
-                            this.Mover.EventReports.Add(
+                            this.moveSubject.EventReports.Add(
                                 week,
                                 string.Format(
                                     "moving from {0} to {1}, ETA {2}.",
-                                    this.Mover.Location.ReportName,
+                                    this.moveSubject.Location.ReportName,
                                     this.destination.ReportName,
                                     this.DurationLeft));
                         }
 						if (this.moving == null)
 						{
-							this.moving = this.Mover.Effects.Moving;
+							this.moving = this.moveSubject.Effects.Moving;
 						}
 						if (this.moving != null)
 						{
@@ -886,23 +971,23 @@ namespace SpaceAge
 					// change location if arrived
 					if (this.DurationLeft == 0)
 					{
-						this.Mover.EventReports.Add(
+						this.moveSubject.EventReports.Add(
 							week,
 							string.Format(
 								"arrived at {0} from {1}.",
 								this.destination.ReportName,
-								this.Mover.Location.ReportName));
-						if (this.Mover.Parent != this.Mover.MovingTo)
+								this.moveSubject.Location.ReportName));
+						if (this.moveSubject.Parent != this.moveSubject.MovingTo)
 						{
-							this.Mover.Parent = this.Mover.MovingTo;
+							this.moveSubject.Parent = this.moveSubject.MovingTo;
 						}
-						this.Mover.MovingTo = null;
+						this.moveSubject.MovingTo = null;
 						this.destination = null;
 						if (this.moving != null)
 						{
 							this.moving.Duration = 0;
 							this.moving.Executed = true;
-							this.Mover.Effects.Remove(this.moving);
+							this.moveSubject.Effects.Remove(this.moving);
 							this.moving = null;
 						}
                         
@@ -923,7 +1008,7 @@ namespace SpaceAge
 			}
 			catch (Exception ex)
 			{
-				throw new Exception("tried to move " + this.Mover.ToString() + " to " + this.Destination.ToString(), ex);
+				throw new Exception("tried to move " + this.moveSubject.ToString() + " to " + this.Destination.ToString(), ex);
 			}
 		}
 	}

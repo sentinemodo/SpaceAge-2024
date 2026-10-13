@@ -121,7 +121,7 @@ namespace SpaceAge
                 else
                 {
                     this.personName = token;
-                    this.person = Person.All.GetOrCreateNewPerson(this.Observer.Owner, this.personName);
+                    this.person = null;
                 }
             } else
 			{
@@ -166,7 +166,10 @@ namespace SpaceAge
                         break;
                     case "person":
                         this.HasType = EHasType.Person;
-                        this.Person = Person.All[elHasType.GetAttribute("name")];
+                        this.personName = elHasType.GetAttribute("name");
+                        this.person = Person.All.ContainsKey(this.personName)
+                            ? Person.All[this.personName]
+                            : null;
                         break;
                     case "modules":
                         this.HasType = EHasType.Modules;
@@ -199,7 +202,7 @@ namespace SpaceAge
                 case EHasType.Person:
 				    XmlElement elPerson;
 				    elPerson = doc.CreateElement("person");
-				    elPerson.SetAttribute("name", this.person.Name);
+				    elPerson.SetAttribute("name", this.person != null ? this.person.Name : this.personName);
                     elHas.AppendChild(elPerson);
                     break;
                 case EHasType.Modules:
@@ -236,10 +239,13 @@ namespace SpaceAge
                         string.Concat(this.quantity.ToString(), " ", this.itemType.Name));
                     break;
                 case EHasType.Person:
+					string personToken = this.person != null
+						? this.person.OrderPersonReferenceToken()
+						: this.personName;
                     line = string.Format("{0}{1}has {2}",
                         this.Conditions,
                         (this.Repeat == 1) ? string.Empty : ((this.Repeat < 0) ? "@" : string.Concat(this.Repeat.ToString(), " ")),
-                        string.Concat("person ", this.person.Name));
+                        string.Concat("person ", personToken));
                     break;
                 case EHasType.Modules:
                     line = string.Format("{0}{1}has {2}",
@@ -277,7 +283,8 @@ namespace SpaceAge
                     }	
                     break;
                 case EHasType.Person:
-                    if (Person.All[this.Observer, true].Contains(this.personName)) 
+					this.person = Person.All.FindUnder(this.Observer, this.personName, true);
+                    if (this.person != null)
                     {
 				        this.Executed = true;
                         this.Observer.EventReports.Add(

@@ -11,7 +11,7 @@ namespace SpaceAge
 		{
 			get
 			{
-				return (ModuleStack)this.Subject;
+				return this.Subject as ModuleStack;
 			}
 		}
 
@@ -101,10 +101,7 @@ namespace SpaceAge
 			{
 				this.ReturnLegWeeks = this.XMLAssignInteger(elEffect.GetAttribute("return-leg-weeks"), 0);
 			}
-            if (this.Mover.MovingTo == null)
-            {
-                this.Mover.MovingTo = this.Destination;
-            }
+            this.syncTransitDestination();
         }
 
         public override XmlElement SaveXml(XmlDocument doc)
@@ -122,6 +119,25 @@ namespace SpaceAge
 
             return this.xmlElement;
         }
+
+		private void syncTransitDestination()
+		{
+			ModuleStack stack = this.Subject as ModuleStack;
+			if (stack != null)
+			{
+				if (stack.MovingTo == null)
+				{
+					stack.MovingTo = this.Destination;
+				}
+				return;
+			}
+
+			Person person = this.Subject as Person;
+			if (person != null && person.MovingTo == null)
+			{
+				person.MovingTo = this.Destination;
+			}
+		}
 
 		private IHolder findDestination(string token)
 		{

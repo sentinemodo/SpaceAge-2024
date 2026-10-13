@@ -169,6 +169,7 @@
     <Compile Include="data structures\People.cs" />
     <Compile Include="data structures\PatrolGuard.cs" />
     <Compile Include="data structures\Person.cs" />
+    <Compile Include="data structures\Person.Movement.cs" />
     <Compile Include="data structures\Race.cs" />
     <Compile Include="data structures\Resource.cs" />
     <Compile Include="data structures\Resources.cs" />
@@ -273,6 +274,7 @@
     <Compile Include="orders\TrainOrder.cs" />
     <Compile Include="orders\UseOrder.cs" />
     <Compile Include="orders\MoveOrder.cs" />
+    <Compile Include="orders\MoveOrderSubject.cs" />
     <Compile Include="orders\JumpOrder.cs" />
     <Compile Include="orders\IOrderable.cs" />
     <Compile Include="reports\EventReports.cs" />

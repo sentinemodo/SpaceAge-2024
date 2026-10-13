@@ -242,8 +242,10 @@ namespace SpaceAge
 				(this.trainingOfficer)
 					? string.Concat(
 						this.race.Name,
-						(this.officer.IsFormed) ? " officer as " : " officer as new", 
-						this.officer.Name, 
+						" officer as ",
+						this.officer.IsFormed
+							? this.officer.Name
+							: this.officer.OrderPersonReferenceToken(),
 						((this.officerParent != null) ? string.Concat(" for ", this.officerParent.Name) : string.Empty)) 
 					: string.Concat(
 						"skill ",

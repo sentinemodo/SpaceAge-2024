@@ -443,7 +443,8 @@ namespace SpaceAge
 				foreach (Order existing in subject.Orders)
 				{
 					MoveOrder leftoverMove = existing as MoveOrder;
-					if (leftoverMove != null && leftoverMove != assignedMove && leftoverMove.Mover.IsInTransit
+					if (leftoverMove != null && leftoverMove != assignedMove
+						&& MoveOrderSubject.From(leftoverMove.Subject).IsInTransit
 						&& (this.preexistingOrders == null || this.preexistingOrders.Contains(leftoverMove)))
 					{
 						leftoverMove.ApplyInTransitAssignment(assignedMove);

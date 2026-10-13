@@ -149,7 +149,7 @@ namespace SpaceAge
 
 			foreach (ModuleStack moduleStack in moduleStackSorted)
 			{
-				this.Write(string.Concat("#modulestack ", moduleStack.Name));
+				this.Write(string.Concat("#modulestack ", moduleStack.OrderStackReferenceToken()));
 				this.Write(moduleStack.ReportOrdersTemplateHeader(faction), false, true);
 				this.Write(moduleStack.Orders, faction, false);
 				this.Write();
@@ -161,7 +161,12 @@ namespace SpaceAge
 
 			foreach (Person person in peopleSorted)
 			{
-				this.Write(string.Concat("#person ", person.Name));
+				if (!person.IncludeInOrdersTemplate(faction))
+				{
+					continue;
+				}
+
+				this.Write(string.Concat("#person ", person.OrderPersonReferenceToken()));
 				this.Write(person.ReportOrdersTemplateHeader(faction), false, true);
 				this.Write(person.Orders, faction, false);
 				this.Write();

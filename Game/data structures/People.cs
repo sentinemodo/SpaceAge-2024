@@ -367,6 +367,24 @@ namespace SpaceAge
             return found;
         }
 
+		public Person FindUnder(IHolder observer, string token, bool recursive)
+		{
+			if (string.IsNullOrEmpty(token))
+			{
+				return null;
+			}
+
+			foreach (Person person in this[observer, recursive].Values)
+			{
+				if (person.Name == token || person.OrderPersonReferenceToken() == token)
+				{
+					return person;
+				}
+			}
+
+			return null;
+		}
+
         public static int CompareByNames(Person person1, Person person2)
         {
             return String.Compare(person1.Name, person2.Name);
