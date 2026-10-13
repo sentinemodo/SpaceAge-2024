@@ -160,9 +160,11 @@ namespace IntegrationTests
 			ModuleStack trucks = ModuleStack.All["100001"];
 			ModuleStack cplant = ModuleStack.All["000007"];
 			ModuleStack cdrill = ModuleStack.All["000006"];
+			ModuleStack frigate = ModuleStack.All["100011"];
 			trucks.Owner = npc;
 			cplant.Owner = npc;
 			cdrill.Owner = npc;
+			frigate.SetOwnerRecursive(npc);
 
 			List<string> lines = grant.Report(faction);
 			string exits = string.Join("\n", lines);

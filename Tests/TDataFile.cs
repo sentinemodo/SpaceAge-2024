@@ -1753,7 +1753,8 @@ namespace UnitTests
 			Assert.That(saved.SelectNodes("/game/faction[@name='2']").Count, Is.EqualTo(1));
 			Assert.That(saved.SelectNodes("/game/faction[@name='1']").Count, Is.EqualTo(0));
 			Assert.That(saved.SelectSingleNode("//region[@name='R00001']"), Is.Not.Null);
-			Assert.That(saved.SelectSingleNode("//region[@name='R10001']"), Is.Null);
+			Assert.That(saved.SelectSingleNode("//region[@name='R10001']"), Is.Not.Null);
+			Assert.That(saved.SelectSingleNode("//region[@name='R00010']"), Is.Null);
 		}
 
 		[Test]
@@ -1768,7 +1769,7 @@ namespace UnitTests
 
 			Faction castePrime = this.game.Factions["2"];
 			Faction northwind = this.game.Factions["1"];
-			foreach (string stackId in new[] { "000112", "000002", "000003", "000004", "100002" })
+			foreach (string stackId in new[] { "000112", "000002", "000003", "000004", "100002", "100011" })
 			{
 				ModuleStack.All[stackId].SetOwnerRecursive(northwind);
 			}
