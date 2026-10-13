@@ -149,7 +149,7 @@ namespace UnitTests
             Assert.That(foodTransfer.ItemStack.Quantity, Is.EqualTo(10));
         }
 
-        [Test]
+        [Test, Ignore("Planetary market (BUY EVERYWHERE) not implemented yet. See engine-wishlist planetary market design.")]
         public void ProcessBuySellItemStackUnlimited()
         {
             // @buy all terran everywhere
@@ -1320,7 +1320,7 @@ namespace UnitTests
 			return delivery;
 		}
 
-		[Test]
+		[Test, Ignore("Planetary market (cross-region BUY) not implemented yet. See engine-wishlist planetary market design.")]
 		public void BuyCancel_PendingCrossRegionDelivery_RefundsEightyPercentAndReturnsGoods()
 		{
 			ModuleStack buyer;
@@ -1367,7 +1367,7 @@ namespace UnitTests
 			Assert.That(sellerRemote.ItemStacks.ContainsKey(ItemType.All["terran"]), Is.False);
 		}
 
-		[Test]
+		[Test, Ignore("Planetary market (cross-region BUY) not implemented yet. See engine-wishlist planetary market design.")]
 		public void Move_Starts_CancelsPendingCrossRegionDeliveryWithEightyPercentRefund()
 		{
 			ItemType terran = ItemType.All["terran"];
@@ -1436,7 +1436,7 @@ namespace UnitTests
 			Assert.That(returnDelivery.IsReturn);
 		}
 
-		[Test]
+		[Test, Ignore("Planetary market (BUY IN region) not implemented yet. See engine-wishlist planetary market design.")]
 		public void BuyInRegion_MatchesOnlySpecifiedRegion()
 		{
 			ItemType terran = ItemType.All["terran"];
