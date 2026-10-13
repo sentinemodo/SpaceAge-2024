@@ -42,7 +42,7 @@ Press releases:
     planet [ocean].
 
 Contract events:
-  week 7: completed CT0122 (Wake the crashed ship); reward: crashed alien vessel [200] (systems
+  week 6: completed CT0122 (Wake the crashed ship); reward: crashed alien vessel [200] (systems
   activated).
 Bank report:
   Bank account balance: 8090.
@@ -924,10 +924,9 @@ Battles report:
       #4 hit points: 100/74, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   3 gun placements [111] fire on Surrender or die! [109].
-  (chance: 3/15) and hits #2 Surrender or die! [109] doing 1 damage.
-    #2 tanks [tanks] is lightly damaged.
   (chance: 3/15) and hits #1 Surrender or die! [109] doing 1 damage.
     #1 tanks [tanks] is lightly damaged.
+  (chance: 3/15) and misses.
   Surrender or die! [109] fire on gun placement [111] (chance: 30/23) and hits #3 gun placement
   [111] doing 1 damage and 3 capture damage.
     #3 gun placement [gunplc] is lightly damaged.
@@ -944,9 +943,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/232, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/233, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/66, lightly damaged.
-      #2 hit points: 100/66, lightly damaged.
+      #2 hit points: 100/67, lightly damaged.
       #3 hit points: 100/100.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -1020,9 +1019,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/230, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/231, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/65, lightly damaged.
-      #2 hit points: 100/65, lightly damaged.
+      #2 hit points: 100/66, lightly damaged.
       #3 hit points: 100/100.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -1097,9 +1096,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/228, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/229, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/64, lightly damaged.
-      #2 hit points: 100/64, lightly damaged.
+      #2 hit points: 100/65, lightly damaged.
       #3 hit points: 100/100.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -1174,9 +1173,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/226, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/227, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/63, lightly damaged.
-      #2 hit points: 100/63, lightly damaged.
+      #2 hit points: 100/64, lightly damaged.
       #3 hit points: 100/100.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -1252,9 +1251,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/224, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/225, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/62, lightly damaged.
-      #2 hit points: 100/62, lightly damaged.
+      #2 hit points: 100/63, lightly damaged.
       #3 hit points: 100/100.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -1327,9 +1326,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/223, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/224, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/62, lightly damaged.
-      #2 hit points: 100/61, lightly damaged.
+      #2 hit points: 100/62, lightly damaged.
       #3 hit points: 100/100.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -1402,9 +1401,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/222, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/223, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/61, lightly damaged.
-      #2 hit points: 100/61, lightly damaged.
+      #2 hit points: 100/62, lightly damaged.
       #3 hit points: 100/100.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -1477,9 +1476,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/221, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/222, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/61, lightly damaged.
-      #2 hit points: 100/60, lightly damaged.
+      #2 hit points: 100/61, lightly damaged.
       #3 hit points: 100/100.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -1552,9 +1551,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/220, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/221, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/61, lightly damaged.
-      #2 hit points: 100/60, lightly damaged.
+      #2 hit points: 100/61, lightly damaged.
       #3 hit points: 100/99.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -1633,9 +1632,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/219, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/220, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/60, lightly damaged.
-      #2 hit points: 100/60, lightly damaged.
+      #2 hit points: 100/61, lightly damaged.
       #3 hit points: 100/99.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -1705,9 +1704,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/219, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/220, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/60, lightly damaged.
-      #2 hit points: 100/60, lightly damaged.
+      #2 hit points: 100/61, lightly damaged.
       #3 hit points: 100/99.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -1779,9 +1778,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/218, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/219, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/59, lightly damaged.
-      #2 hit points: 100/60, lightly damaged.
+      #2 hit points: 100/61, lightly damaged.
       #3 hit points: 100/99.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -1854,9 +1853,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/217, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/218, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/59, lightly damaged.
-      #2 hit points: 100/59, lightly damaged.
+      #2 hit points: 100/60, lightly damaged.
       #3 hit points: 100/99.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -1928,9 +1927,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/216, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/217, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/59, lightly damaged.
-      #2 hit points: 100/59, lightly damaged.
+      #2 hit points: 100/60, lightly damaged.
       #3 hit points: 100/98.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -2002,9 +2001,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/215, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/216, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/58, lightly damaged.
-      #2 hit points: 100/59, lightly damaged.
+      #2 hit points: 100/60, lightly damaged.
       #3 hit points: 100/98.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -2076,9 +2075,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/214, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/215, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/58, lightly damaged.
-      #2 hit points: 100/58, lightly damaged.
+      #2 hit points: 100/59, lightly damaged.
       #3 hit points: 100/98.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -2150,9 +2149,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/213, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/214, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/57, lightly damaged.
-      #2 hit points: 100/58, lightly damaged.
+      #2 hit points: 100/59, lightly damaged.
       #3 hit points: 100/98.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -2225,9 +2224,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/212, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/213, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/57, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/98.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -2298,9 +2297,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/212, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/57, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -2375,9 +2374,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -2438,9 +2437,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -2501,9 +2500,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -2564,9 +2563,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -2627,9 +2626,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -2691,9 +2690,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -2753,9 +2752,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -2815,9 +2814,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -2877,9 +2876,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -2939,9 +2938,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -3008,9 +3007,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -3069,9 +3068,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -3130,9 +3129,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -3191,9 +3190,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -3252,9 +3251,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -3313,9 +3312,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -3374,9 +3373,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -3435,9 +3434,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -3496,9 +3495,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -3557,9 +3556,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -3625,9 +3624,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -3689,9 +3688,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -3753,9 +3752,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -3817,9 +3816,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -3880,9 +3879,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -3940,9 +3939,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -4000,9 +3999,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -4063,9 +4062,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -4126,9 +4125,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -4186,9 +4185,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -4253,9 +4252,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -4314,9 +4313,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -4375,9 +4374,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -4436,9 +4435,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -4490,9 +4489,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -4541,9 +4540,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -4592,9 +4591,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -4643,9 +4642,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -4694,9 +4693,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -4745,9 +4744,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -4802,9 +4801,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -4853,9 +4852,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -4904,9 +4903,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -4958,9 +4957,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -5012,9 +5011,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -5062,9 +5061,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -5112,9 +5111,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -5162,9 +5161,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -5215,9 +5214,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -5266,9 +5265,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -5320,9 +5319,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -5370,9 +5369,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -5421,9 +5420,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -5472,9 +5471,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -5520,9 +5519,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -5564,9 +5563,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -5608,9 +5607,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -5652,9 +5651,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -5696,9 +5695,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -5740,9 +5739,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -5790,9 +5789,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -5834,9 +5833,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -5878,9 +5877,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -5922,9 +5921,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -5966,9 +5965,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -6010,9 +6009,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -6054,9 +6053,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -6101,9 +6100,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -6148,9 +6147,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -6191,9 +6190,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -6240,9 +6239,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -6283,9 +6282,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -6326,9 +6325,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -6369,9 +6368,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -6412,9 +6411,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -6455,9 +6454,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -6498,9 +6497,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -6541,9 +6540,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -6586,9 +6585,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -6631,9 +6630,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -6682,9 +6681,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -6728,9 +6727,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -6774,9 +6773,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -6820,9 +6819,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -6866,9 +6865,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -6912,9 +6911,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -6958,9 +6957,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -6999,9 +6998,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -7040,9 +7039,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -7081,9 +7080,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -7131,9 +7130,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -7175,9 +7174,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -7219,9 +7218,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -7263,9 +7262,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -7307,9 +7306,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -7351,9 +7350,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -7395,9 +7394,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -7432,9 +7431,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -7469,9 +7468,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -7506,9 +7505,9 @@ Battles report:
   Attackers:
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
       attack: 8, initiative: 5.
@@ -7572,18 +7571,18 @@ Galaxy report:
     Offers of buying modules:
       buy farming complex [farms] at 100 by Berlin [000001].
       buy small cargo bay [cargob] at 100 by Berlin [000001].
-      buy wind powerplant [wnplnt] at 50 by Berlin [000001].
-      buy coal-burning plant [cplant] at 100 by Berlin [000001].
+      buy 5 wind powerplants [wnplnt] at 20 each by Berlin [000001].
+      buy coal-burning plant [cplant] at 200 by Berlin [000001].
       buy surface drill [sdrill] at 100 by Berlin [000001].
       buy core drill [cdrill] at 100 by Berlin [000001].
-      buy factory [factry] at 100 by Berlin [000001].
+      buy factory [factry] at 200 by Berlin [000001].
     Offers of selling technologies:
       none.
     Offers of buying technologies:
       none.
   
   - Berlin [000001], 3 cities [city], immobile, owned by NPC [1].
-    size: 75000, capacity: 45000/41120, energy: 200/200 (30).
+    size: 75000, capacity: 45000/41313, energy: 200/200 (30).
     + Caste Prime Headquarters [000012], corporate headquarters [corphq], disabled, immobile.
       size: 0, mass: 0.
     + small cargo bay [000013], small cargo bay [cargob], disabled, immobile.
@@ -7824,7 +7823,7 @@ Galaxy report:
       cash [cash].
       technologies: advanced hull construction [ahlcns].
       events:
-        week 7: activated onboard systems.
+        week 6: activated onboard systems.
         week 13: paid 20 cash [cash] upkeep.
       + advanced robo-factory [201], advanced robo-factory [robofc].
         size: 1000, mass: 750 (750), capacity: 500/0, energy: 15, upkeep: 60 cash [cash].
@@ -7943,11 +7942,11 @@ Galaxy report:
         events:
           week 1: formed by space shuttle [100] with computer library [cmplib].
           week 2: received computer library [cmplib] produced by space shuttle [100].
+          week 2: researched crashed alien vessel [200].
           week 3: researched crashed alien vessel [200].
           week 4: researched crashed alien vessel [200].
           week 5: researched crashed alien vessel [200].
           week 6: researched crashed alien vessel [200].
-          week 7: researched crashed alien vessel [200].
           week 13: paid 1 cash [cash] upkeep.
 
 

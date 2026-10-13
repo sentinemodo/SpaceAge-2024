@@ -74,18 +74,18 @@ Galaxy report:
       week 4: got 42 cash [cash] from Gelvaren Headquarters [000018].
       week 4: got 16 units of oil [oil] from small cargo bay [000019].
       week 4: got 32 units of food [food] from small cargo bay [000019].
-      week 5: departed from Southern Hemisphere [R00003] (1,0) to
+      week 4: consumed 4 units of oil [oil] as fuel.
+      week 4: departed from Southern Hemisphere [R00003] (1,0) to
       Northern Hemisphere [R00002] (0,0), ETA 5.
-      week 5: consumed 4 units of oil [oil] as fuel.
-      week 6: moving from Southern Hemisphere [R00003] (1,0) to Northern
+      week 5: moving from Southern Hemisphere [R00003] (1,0) to Northern
       Hemisphere [R00002] (0,0), ETA 4.
-      week 7: moving from Southern Hemisphere [R00003] (1,0) to Northern
+      week 6: moving from Southern Hemisphere [R00003] (1,0) to Northern
       Hemisphere [R00002] (0,0), ETA 3.
-      week 8: moving from Southern Hemisphere [R00003] (1,0) to Northern
+      week 7: moving from Southern Hemisphere [R00003] (1,0) to Northern
       Hemisphere [R00002] (0,0), ETA 2.
-      week 9: moving from Southern Hemisphere [R00003] (1,0) to Northern
+      week 8: moving from Southern Hemisphere [R00003] (1,0) to Northern
       Hemisphere [R00002] (0,0), ETA 1.
-      week 10: arrived at Northern Hemisphere [R00002] (0,0) from
+      week 9: arrived at Northern Hemisphere [R00002] (0,0) from
       Southern Hemisphere [R00003] (1,0).
 
   Southern Hemisphere [R00003] (1,0), grassland region, settlement
@@ -267,8 +267,6 @@ Galaxy report:
     + wind powerplant [000021], 20 wind powerplants [wnplnt], immobile.
       size: 200, mass: 200 (200), energy: 80/20, upkeep: 200 cash
       [cash].
-      events:
-        week 1: started energy production for the next 13 weeks.
     + core drill [000022], core drill [cdrill], immobile.
       size: 1000, mass: 1034 (1000), capacity: 750/32, energy: 5, crew:
       6/6, upkeep: 46 (40) cash [cash], consume: 6 (0) units of food
@@ -426,7 +424,7 @@ Orders Template:
 ; effects:
 ;   training terran [terran] officer for Gelvaren Headquarters [000018], 2
 ;   weeks to complete.
-train terran officer as new107
+train terran officer as new3
 @get all cash from 000026
 @get all terran from 000026
 @buy all terran
@@ -489,8 +487,8 @@ train skill arpldr
 -see 109
 --stack 109
 
-#person 107
-; + unformed officer [107].
+#person new3
+; + unformed officer [new3].
 stack 000025
 -train skill inbtcm
 --see 110

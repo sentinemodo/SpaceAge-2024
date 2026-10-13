@@ -907,10 +907,9 @@ Battles report:
       #4 hit points: 100/74, lightly damaged, effects: inactive.
   ------------------------------------------------------------
   3 gun placements [111] fire on Surrender or die! [109].
-  (chance: 3/15) and hits #2 Surrender or die! [109] doing 1 damage.
-    #2 tanks [tanks] is lightly damaged.
   (chance: 3/15) and hits #1 Surrender or die! [109] doing 1 damage.
     #1 tanks [tanks] is lightly damaged.
+  (chance: 3/15) and misses.
   Surrender or die! [109] fire on gun placement [111] (chance: 30/23)
   and hits #3 gun placement [111] doing 1 damage and 3 capture damage.
     #3 gun placement [gunplc] is lightly damaged.
@@ -927,10 +926,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/232, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/233, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/66, lightly damaged.
-      #2 hit points: 100/66, lightly damaged.
+      #2 hit points: 100/67, lightly damaged.
       #3 hit points: 100/100.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -1003,10 +1002,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/230, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/231, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/65, lightly damaged.
-      #2 hit points: 100/65, lightly damaged.
+      #2 hit points: 100/66, lightly damaged.
       #3 hit points: 100/100.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -1080,10 +1079,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/228, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/229, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/64, lightly damaged.
-      #2 hit points: 100/64, lightly damaged.
+      #2 hit points: 100/65, lightly damaged.
       #3 hit points: 100/100.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -1158,10 +1157,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/226, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/227, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/63, lightly damaged.
-      #2 hit points: 100/63, lightly damaged.
+      #2 hit points: 100/64, lightly damaged.
       #3 hit points: 100/100.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -1237,10 +1236,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/224, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/225, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/62, lightly damaged.
-      #2 hit points: 100/62, lightly damaged.
+      #2 hit points: 100/63, lightly damaged.
       #3 hit points: 100/100.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -1314,10 +1313,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/223, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/224, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/62, lightly damaged.
-      #2 hit points: 100/61, lightly damaged.
+      #2 hit points: 100/62, lightly damaged.
       #3 hit points: 100/100.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -1391,10 +1390,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/222, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/223, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/61, lightly damaged.
-      #2 hit points: 100/61, lightly damaged.
+      #2 hit points: 100/62, lightly damaged.
       #3 hit points: 100/100.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -1468,10 +1467,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/221, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/222, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/61, lightly damaged.
-      #2 hit points: 100/60, lightly damaged.
+      #2 hit points: 100/61, lightly damaged.
       #3 hit points: 100/100.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -1545,10 +1544,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/220, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/221, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/61, lightly damaged.
-      #2 hit points: 100/60, lightly damaged.
+      #2 hit points: 100/61, lightly damaged.
       #3 hit points: 100/99.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -1629,10 +1628,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/219, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/220, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/60, lightly damaged.
-      #2 hit points: 100/60, lightly damaged.
+      #2 hit points: 100/61, lightly damaged.
       #3 hit points: 100/99.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -1701,10 +1700,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/219, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/220, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/60, lightly damaged.
-      #2 hit points: 100/60, lightly damaged.
+      #2 hit points: 100/61, lightly damaged.
       #3 hit points: 100/99.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -1776,10 +1775,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/218, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/219, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/59, lightly damaged.
-      #2 hit points: 100/60, lightly damaged.
+      #2 hit points: 100/61, lightly damaged.
       #3 hit points: 100/99.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -1852,10 +1851,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/217, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/218, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/59, lightly damaged.
-      #2 hit points: 100/59, lightly damaged.
+      #2 hit points: 100/60, lightly damaged.
       #3 hit points: 100/99.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -1927,10 +1926,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/216, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/217, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/59, lightly damaged.
-      #2 hit points: 100/59, lightly damaged.
+      #2 hit points: 100/60, lightly damaged.
       #3 hit points: 100/98.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -2002,10 +2001,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/215, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/216, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/58, lightly damaged.
-      #2 hit points: 100/59, lightly damaged.
+      #2 hit points: 100/60, lightly damaged.
       #3 hit points: 100/98.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -2077,10 +2076,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/214, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/215, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/58, lightly damaged.
-      #2 hit points: 100/58, lightly damaged.
+      #2 hit points: 100/59, lightly damaged.
       #3 hit points: 100/98.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -2152,10 +2151,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/213, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/214, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/57, lightly damaged.
-      #2 hit points: 100/58, lightly damaged.
+      #2 hit points: 100/59, lightly damaged.
       #3 hit points: 100/98.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -2228,10 +2227,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/212, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/213, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/57, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/98.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -2302,10 +2301,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/212, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/57, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -2380,10 +2379,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -2446,10 +2445,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -2512,10 +2511,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -2578,10 +2577,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -2644,10 +2643,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -2711,10 +2710,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -2776,10 +2775,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -2841,10 +2840,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -2906,10 +2905,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -2971,10 +2970,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -3044,10 +3043,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -3108,10 +3107,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -3172,10 +3171,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -3236,10 +3235,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -3300,10 +3299,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -3364,10 +3363,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -3428,10 +3427,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -3492,10 +3491,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -3556,10 +3555,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -3620,10 +3619,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -3692,10 +3691,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -3759,10 +3758,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -3826,10 +3825,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -3893,10 +3892,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -3958,10 +3957,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -4021,10 +4020,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -4084,10 +4083,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -4150,10 +4149,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -4215,10 +4214,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -4275,10 +4274,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -4343,10 +4342,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -4404,10 +4403,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -4465,10 +4464,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -4526,10 +4525,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -4581,10 +4580,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -4638,10 +4637,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -4695,10 +4694,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -4752,10 +4751,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -4809,10 +4808,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -4866,10 +4865,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -4930,10 +4929,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -4987,10 +4986,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -5044,10 +5043,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -5104,10 +5103,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -5164,10 +5163,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -5220,10 +5219,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -5276,10 +5275,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -5332,10 +5331,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -5391,10 +5390,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -5446,10 +5445,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -5504,10 +5503,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -5557,10 +5556,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -5611,10 +5610,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -5665,10 +5664,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -5716,10 +5715,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -5766,10 +5765,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -5816,10 +5815,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -5866,10 +5865,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -5916,10 +5915,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -5966,10 +5965,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -6023,10 +6022,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -6073,10 +6072,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -6123,10 +6122,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -6173,10 +6172,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -6223,10 +6222,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -6273,10 +6272,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -6323,10 +6322,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -6376,10 +6375,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -6428,10 +6427,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -6477,10 +6476,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -6533,10 +6532,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -6582,10 +6581,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -6631,10 +6630,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -6680,10 +6679,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -6729,10 +6728,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -6778,10 +6777,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -6827,10 +6826,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -6876,10 +6875,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -6927,10 +6926,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -6978,10 +6977,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -7036,10 +7035,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -7088,10 +7087,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -7140,10 +7139,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -7192,10 +7191,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -7244,10 +7243,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -7296,10 +7295,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -7347,10 +7346,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -7391,10 +7390,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -7435,10 +7434,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -7479,10 +7478,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -7533,10 +7532,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -7580,10 +7579,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -7628,10 +7627,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -7676,10 +7675,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -7724,10 +7723,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -7772,10 +7771,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -7820,10 +7819,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -7860,10 +7859,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -7900,10 +7899,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -7940,10 +7939,10 @@ Battles report:
   Attackers:
   + Surrender or die! [109], 3 tanks [tanks].
     size: 720, mass: 1046 (720), crew: 48/49.
-    hit points: 300/210, attack: 20, defense: 12, initiative: 5 (0).
+    hit points: 300/211, attack: 20, defense: 12, initiative: 5 (0).
     tactics: prioritize command, capture.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     + Gelvaren CEO [000002], terran [terran].
       mass: 4, attack: 8, initiative: 5.
@@ -8012,18 +8011,18 @@ Galaxy report:
     Offers of buying modules:
       buy farming complex [farms] at 100 by Berlin [000001].
       buy small cargo bay [cargob] at 100 by Berlin [000001].
-      buy wind powerplant [wnplnt] at 50 by Berlin [000001].
-      buy coal-burning plant [cplant] at 100 by Berlin [000001].
+      buy 5 wind powerplants [wnplnt] at 20 each by Berlin [000001].
+      buy coal-burning plant [cplant] at 200 by Berlin [000001].
       buy surface drill [sdrill] at 100 by Berlin [000001].
       buy core drill [cdrill] at 100 by Berlin [000001].
-      buy factory [factry] at 100 by Berlin [000001].
+      buy factory [factry] at 200 by Berlin [000001].
     Offers of selling technologies:
       none.
     Offers of buying technologies:
       none.
   
   - Berlin [000001], 3 cities [city], immobile, owned by NPC [1].
-    size: 75000, capacity: 45000/41120, energy: 200/200 (30).
+    size: 75000, capacity: 45000/41313, energy: 200/200 (30).
     + corporate headquarters [c000012], corporate headquarters [corphq],
       disabled, immobile.
       size: 1000, mass: 1120 (1000), capacity: 750/120, upkeep: 30 (0)
@@ -8314,9 +8313,9 @@ Galaxy report:
     size: 720, mass: 949 (720), capacity: 600/223, crew: 48/49, upkeep:
     130 (72) cash [cash], consume: 97 (48) units of food [food], 97 (48)
     units of terran breathing gas mixture [terair].
-    hit points: 300/210.
+    hit points: 300/211.
       #1 hit points: 100/56, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
+      #2 hit points: 100/58, lightly damaged.
       #3 hit points: 100/97.
     movement speed: 0.5 on ground.
     fuel requirements: 12 units of oil [oil] per 13 weeks.
@@ -8417,11 +8416,11 @@ Galaxy report:
     Offers of buying modules:
       buy small cargo bay [cargob] at 100 by Sydney [000006].
       buy farming complex [farms] at 100 by Sydney [000006].
-      buy wind powerplant [wnplnt] at 50 by Sydney [000006].
-      buy coal-burning plant [cplant] at 100 by Sydney [000006].
+      buy 5 wind powerplants [wnplnt] at 20 each by Sydney [000006].
+      buy coal-burning plant [cplant] at 200 by Sydney [000006].
       buy surface drill [sdrill] at 100 by Sydney [000006].
       buy core drill [cdrill] at 100 by Sydney [000006].
-      buy factory [factry] at 100 by Sydney [000006].
+      buy factory [factry] at 200 by Sydney [000006].
     Offers of selling technologies:
       none.
     Offers of buying technologies:
@@ -8605,7 +8604,6 @@ Galaxy report:
       size: 200, mass: 200 (200), energy: 80/20, upkeep: 200 cash
       [cash].
       events:
-        week 1: started energy production for the next 13 weeks.
         week 13: paid 200 cash [cash] upkeep.
     + core drill [000022], core drill [cdrill], immobile.
       size: 1000, mass: 1024 (1000), capacity: 750/24, energy: 5, crew:
@@ -8721,7 +8719,7 @@ Galaxy report:
         mixture [terair].
         skills: infantry battalion commander [inbtcm].
     + computer library [116], computer library [cmplib], immobile.
-      size: 200, mass: 50 (50), research points: 11, energy: 5, upkeep:
+      size: 200, mass: 50 (50), research points: 12, energy: 5, upkeep:
       cash [cash].
       events:
         week 1: formed by factory [000023] with computer library

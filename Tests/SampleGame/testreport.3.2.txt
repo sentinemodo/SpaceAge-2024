@@ -9,6 +9,8 @@ SpaceAge Engine Version: 0.8.004.
 
 
 Events this quarter:
+  week 8: battle at Northern Hemisphere [R00002] (0,0), attackers: Gelvaren [3], defenders: Caste
+  Prime [2].
   week 9: battle at Northern Hemisphere [R00002] (0,0), attackers: Gelvaren [3], defenders: Caste
   Prime [2].
   week 10: battle at Northern Hemisphere [R00002] (0,0), attackers: Gelvaren [3], defenders: Caste
@@ -34,7 +36,7 @@ Bank report:
 
 Battles report:
 
-  Week 9.
+  Week 8.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
   ------------------------------------------------------------
@@ -54,13 +56,13 @@ Battles report:
   + Caste Prime Headquarters [000012], corporate headquarters [corphq], immobile.
     size: 1000, mass: 1240 (1000), energy: 10, crew: 20/60.
     hit points: 100/100, defense: 5.
-    items: 60 terrans [terran], 2200 cash [cash].
+    items: 60 terrans [terran], 2100 cash [cash].
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 6830 (1000).
+    size: 10000, mass: 6810 (1000).
     hit points: 275/275.
-    items: 865 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    items: 850 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
     of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
-    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 91
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 90
     units of carbon [carbon].
       #1 hit points: 55/55.
       #2 hit points: 55/55.
@@ -132,13 +134,13 @@ Battles report:
   + Caste Prime Headquarters [000012], corporate headquarters [corphq], immobile.
     size: 1000, mass: 1240 (1000), energy: 10, crew: 20/60.
     hit points: 100/88, defense: 5.
-    items: 60 terrans [terran], 2200 cash [cash].
+    items: 60 terrans [terran], 2100 cash [cash].
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 6830 (1000).
+    size: 10000, mass: 6810 (1000).
     hit points: 275/275.
-    items: 865 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    items: 850 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
     of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
-    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 91
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 90
     units of carbon [carbon].
       #1 hit points: 55/55.
       #2 hit points: 55/55.
@@ -210,13 +212,13 @@ Battles report:
   + Caste Prime Headquarters [000012], corporate headquarters [corphq], immobile.
     size: 1000, mass: 1240 (1000), energy: 10, crew: 20/60.
     hit points: 100/76, defense: 5.
-    items: 60 terrans [terran], 2200 cash [cash].
+    items: 60 terrans [terran], 2100 cash [cash].
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 6830 (1000).
+    size: 10000, mass: 6810 (1000).
     hit points: 275/275.
-    items: 865 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    items: 850 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
     of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
-    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 91
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 90
     units of carbon [carbon].
       #1 hit points: 55/55.
       #2 hit points: 55/55.
@@ -291,13 +293,13 @@ Battles report:
   + Caste Prime Headquarters [000012], corporate headquarters [corphq], immobile.
     size: 1000, mass: 1240 (1000), energy: 10, crew: 20/60.
     hit points: 100/64, defense: 5, lightly damaged.
-    items: 60 terrans [terran], 2200 cash [cash].
+    items: 60 terrans [terran], 2100 cash [cash].
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 6830 (1000).
+    size: 10000, mass: 6810 (1000).
     hit points: 275/275.
-    items: 865 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    items: 850 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
     of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
-    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 91
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 90
     units of carbon [carbon].
       #1 hit points: 55/55.
       #2 hit points: 55/55.
@@ -372,13 +374,13 @@ Battles report:
   + Caste Prime Headquarters [000012], corporate headquarters [corphq], immobile.
     size: 1000, mass: 1240 (1000), energy: 10, crew: 20/60.
     hit points: 100/52, defense: 5, lightly damaged.
-    items: 60 terrans [terran], 2200 cash [cash].
+    items: 60 terrans [terran], 2100 cash [cash].
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 6830 (1000).
+    size: 10000, mass: 6810 (1000).
     hit points: 275/275.
-    items: 865 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    items: 850 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
     of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
-    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 91
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 90
     units of carbon [carbon].
       #1 hit points: 55/55.
       #2 hit points: 55/55.
@@ -447,11 +449,11 @@ Battles report:
       #3 hit points: 100/100.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 6830 (1000).
+    size: 10000, mass: 6810 (1000).
     hit points: 275/275.
-    items: 865 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    items: 850 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
     of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
-    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 91
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 90
     units of carbon [carbon].
       #1 hit points: 55/55.
       #2 hit points: 55/55.
@@ -521,11 +523,11 @@ Battles report:
       #3 hit points: 100/100.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 6830 (1000).
+    size: 10000, mass: 6810 (1000).
     hit points: 275/275.
-    items: 865 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    items: 850 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
     of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
-    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 91
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 90
     units of carbon [carbon].
       #1 hit points: 55/55.
       #2 hit points: 55/55.
@@ -595,11 +597,11 @@ Battles report:
       #3 hit points: 100/100.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 6830 (1000).
+    size: 10000, mass: 6810 (1000).
     hit points: 275/275.
-    items: 865 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    items: 850 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
     of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
-    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 91
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 90
     units of carbon [carbon].
       #1 hit points: 55/55.
       #2 hit points: 55/55.
@@ -669,11 +671,11 @@ Battles report:
       #3 hit points: 100/100.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 6830 (1000).
+    size: 10000, mass: 6810 (1000).
     hit points: 275/275.
-    items: 865 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    items: 850 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
     of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
-    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 91
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 90
     units of carbon [carbon].
       #1 hit points: 55/55.
       #2 hit points: 55/55.
@@ -743,11 +745,11 @@ Battles report:
       #3 hit points: 100/100.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 6830 (1000).
+    size: 10000, mass: 6810 (1000).
     hit points: 275/275.
-    items: 865 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    items: 850 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
     of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
-    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 91
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 90
     units of carbon [carbon].
       #1 hit points: 55/55.
       #2 hit points: 55/55.
@@ -805,7 +807,7 @@ Battles report:
   ------------------------------------------------------------
   Battle ended indecisively.
 
-  Week 10.
+  Week 9.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
   ------------------------------------------------------------
@@ -825,13 +827,13 @@ Battles report:
   + Caste Prime Headquarters [000012], corporate headquarters [corphq], disabled, immobile.
     size: 1000, mass: 1240 (1000).
     hit points: 100/48, heavily damaged, disabled.
-    items: 60 terrans [terran], 2200 cash [cash].
+    items: 60 terrans [terran], 2100 cash [cash].
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 6850 (1000).
+    size: 10000, mass: 6830 (1000).
     hit points: 275/275.
-    items: 880 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    items: 865 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
     of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
-    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 92
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 91
     units of carbon [carbon].
       #1 hit points: 55/55.
       #2 hit points: 55/55.
@@ -909,13 +911,13 @@ Battles report:
   + Caste Prime Headquarters [000012], corporate headquarters [corphq], disabled, immobile.
     size: 1000, mass: 1240 (1000).
     hit points: 100/36, heavily damaged, disabled.
-    items: 60 terrans [terran], 2200 cash [cash].
+    items: 60 terrans [terran], 2100 cash [cash].
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 6850 (1000).
+    size: 10000, mass: 6830 (1000).
     hit points: 275/275.
-    items: 880 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    items: 865 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
     of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
-    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 92
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 91
     units of carbon [carbon].
       #1 hit points: 55/55.
       #2 hit points: 55/55.
@@ -994,13 +996,13 @@ Battles report:
   + Caste Prime Headquarters [000012], corporate headquarters [corphq], disabled, immobile.
     size: 1000, mass: 1240 (1000).
     hit points: 100/24, critically damaged, disabled.
-    items: 60 terrans [terran], 2200 cash [cash].
+    items: 60 terrans [terran], 2100 cash [cash].
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 6850 (1000).
+    size: 10000, mass: 6830 (1000).
     hit points: 275/275.
-    items: 880 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    items: 865 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
     of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
-    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 92
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 91
     units of carbon [carbon].
       #1 hit points: 55/55.
       #2 hit points: 55/55.
@@ -1078,13 +1080,13 @@ Battles report:
   + Caste Prime Headquarters [000012], corporate headquarters [corphq], disabled, immobile.
     size: 1000, mass: 1240 (1000).
     hit points: 100/12, critically damaged, disabled.
-    items: 60 terrans [terran], 2200 cash [cash].
+    items: 60 terrans [terran], 2100 cash [cash].
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 6850 (1000).
+    size: 10000, mass: 6830 (1000).
     hit points: 275/275.
-    items: 880 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    items: 865 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
     of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
-    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 92
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 91
     units of carbon [carbon].
       #1 hit points: 55/55.
       #2 hit points: 55/55.
@@ -1163,13 +1165,13 @@ Battles report:
   + Caste Prime Headquarters [000012], corporate headquarters [corphq], disabled, immobile.
     size: 1000, mass: 1240 (1000).
     hit points: 100/0, destroyed, disabled.
-    items: 60 terrans [terran], 2200 cash [cash].
+    items: 60 terrans [terran], 2100 cash [cash].
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 6850 (1000).
+    size: 10000, mass: 6830 (1000).
     hit points: 275/275.
-    items: 880 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    items: 865 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
     of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
-    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 92
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 91
     units of carbon [carbon].
       #1 hit points: 55/55.
       #2 hit points: 55/55.
@@ -1245,13 +1247,13 @@ Battles report:
   + Caste Prime Headquarters [000012], corporate headquarters [corphq], disabled, immobile.
     size: 1000, mass: 1240 (1000).
     hit points: 100/0, destroyed, disabled.
-    items: 60 terrans [terran], 2200 cash [cash].
+    items: 60 terrans [terran], 2100 cash [cash].
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 6850 (1000).
+    size: 10000, mass: 6830 (1000).
     hit points: 275/275.
-    items: 880 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    items: 865 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
     of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
-    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 92
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 91
     units of carbon [carbon].
       #1 hit points: 55/55.
       #2 hit points: 55/55.
@@ -1329,13 +1331,13 @@ Battles report:
   + Caste Prime Headquarters [000012], corporate headquarters [corphq], disabled, immobile.
     size: 1000, mass: 1240 (1000).
     hit points: 100/0, destroyed, disabled.
-    items: 60 terrans [terran], 2200 cash [cash].
+    items: 60 terrans [terran], 2100 cash [cash].
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 6850 (1000).
+    size: 10000, mass: 6830 (1000).
     hit points: 275/275.
-    items: 880 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    items: 865 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
     of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
-    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 92
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 91
     units of carbon [carbon].
       #1 hit points: 55/55.
       #2 hit points: 55/55.
@@ -1413,13 +1415,13 @@ Battles report:
   + Caste Prime Headquarters [000012], corporate headquarters [corphq], disabled, immobile.
     size: 1000, mass: 1240 (1000).
     hit points: 100/0, destroyed, disabled.
-    items: 60 terrans [terran], 2200 cash [cash].
+    items: 60 terrans [terran], 2100 cash [cash].
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 6850 (1000).
+    size: 10000, mass: 6830 (1000).
     hit points: 275/275.
-    items: 880 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    items: 865 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
     of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
-    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 92
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 91
     units of carbon [carbon].
       #1 hit points: 55/55.
       #2 hit points: 55/55.
@@ -1497,13 +1499,13 @@ Battles report:
   + Caste Prime Headquarters [000012], corporate headquarters [corphq], disabled, immobile.
     size: 1000, mass: 1240 (1000).
     hit points: 100/0, destroyed, disabled.
-    items: 60 terrans [terran], 2200 cash [cash].
+    items: 60 terrans [terran], 2100 cash [cash].
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 6850 (1000).
+    size: 10000, mass: 6830 (1000).
     hit points: 275/275.
-    items: 880 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    items: 865 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
     of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
-    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 92
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 91
     units of carbon [carbon].
       #1 hit points: 55/55.
       #2 hit points: 55/55.
@@ -1581,13 +1583,13 @@ Battles report:
   + Caste Prime Headquarters [000012], corporate headquarters [corphq], disabled, immobile.
     size: 1000, mass: 1240 (1000).
     hit points: 100/0, destroyed, disabled.
-    items: 60 terrans [terran], 2200 cash [cash].
+    items: 60 terrans [terran], 2100 cash [cash].
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 6850 (1000).
+    size: 10000, mass: 6830 (1000).
     hit points: 275/275.
-    items: 880 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    items: 865 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
     of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
-    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 92
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 91
     units of carbon [carbon].
       #1 hit points: 55/55.
       #2 hit points: 55/55.
@@ -1651,7 +1653,7 @@ Battles report:
   ------------------------------------------------------------
   Battle ended indecisively.
 
-  Week 11.
+  Week 10.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
   ------------------------------------------------------------
@@ -1669,11 +1671,11 @@ Battles report:
       #3 hit points: 100/100.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 6870 (1000).
+    size: 10000, mass: 6850 (1000).
     hit points: 275/275.
-    items: 895 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    items: 880 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
     of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
-    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 93
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 92
     units of carbon [carbon].
       #1 hit points: 55/55.
       #2 hit points: 55/55.
@@ -1750,11 +1752,11 @@ Battles report:
       #3 hit points: 100/100.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 6870 (1000).
+    size: 10000, mass: 6850 (1000).
     hit points: 275/275.
-    items: 895 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    items: 880 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
     of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
-    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 93
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 92
     units of carbon [carbon].
       #1 hit points: 55/55.
       #2 hit points: 55/55.
@@ -1831,11 +1833,11 @@ Battles report:
       #3 hit points: 100/100.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 6870 (1000).
+    size: 10000, mass: 6850 (1000).
     hit points: 275/275.
-    items: 895 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    items: 880 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
     of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
-    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 93
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 92
     units of carbon [carbon].
       #1 hit points: 55/55.
       #2 hit points: 55/55.
@@ -1911,11 +1913,11 @@ Battles report:
       #3 hit points: 100/100.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 6870 (1000).
+    size: 10000, mass: 6850 (1000).
     hit points: 275/275.
-    items: 895 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    items: 880 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
     of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
-    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 93
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 92
     units of carbon [carbon].
       #1 hit points: 55/55.
       #2 hit points: 55/55.
@@ -1986,11 +1988,11 @@ Battles report:
       #3 hit points: 100/100.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 6870 (1000).
+    size: 10000, mass: 6850 (1000).
     hit points: 275/275.
-    items: 895 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    items: 880 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
     of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
-    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 93
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 92
     units of carbon [carbon].
       #1 hit points: 55/55.
       #2 hit points: 55/55.
@@ -2048,11 +2050,11 @@ Battles report:
       #3 hit points: 100/100.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 6870 (1000).
+    size: 10000, mass: 6850 (1000).
     hit points: 275/259.
-    items: 895 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    items: 880 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
     of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
-    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 93
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 92
     units of carbon [carbon].
       #1 hit points: 55/51.
       #2 hit points: 55/51.
@@ -2110,11 +2112,11 @@ Battles report:
       #3 hit points: 100/100.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 6870 (1000).
+    size: 10000, mass: 6850 (1000).
     hit points: 275/243.
-    items: 895 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    items: 880 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
     of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
-    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 93
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 92
     units of carbon [carbon].
       #1 hit points: 55/47.
       #2 hit points: 55/51.
@@ -2172,11 +2174,11 @@ Battles report:
       #3 hit points: 100/100.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 6870 (1000).
+    size: 10000, mass: 6850 (1000).
     hit points: 275/227.
-    items: 895 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    items: 880 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
     of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
-    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 93
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 92
     units of carbon [carbon].
       #1 hit points: 55/43.
       #2 hit points: 55/47.
@@ -2235,11 +2237,11 @@ Battles report:
       #3 hit points: 100/100.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 6870 (1000).
+    size: 10000, mass: 6850 (1000).
     hit points: 275/211.
-    items: 895 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    items: 880 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
     of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
-    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 93
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 92
     units of carbon [carbon].
       #1 hit points: 55/43.
       #2 hit points: 55/43.
@@ -2301,11 +2303,11 @@ Battles report:
       #3 hit points: 100/100.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 6870 (1000).
+    size: 10000, mass: 6850 (1000).
     hit points: 275/195.
-    items: 895 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    items: 880 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
     of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
-    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 93
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 92
     units of carbon [carbon].
       #1 hit points: 55/39, lightly damaged.
       #2 hit points: 55/39, lightly damaged.
@@ -2355,7 +2357,7 @@ Battles report:
   ------------------------------------------------------------
   Battle ended indecisively.
 
-  Week 12.
+  Week 11.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
   ------------------------------------------------------------
@@ -2373,11 +2375,11 @@ Battles report:
       #3 hit points: 100/100.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 6890 (1000).
+    size: 10000, mass: 6870 (1000).
     hit points: 275/179.
-    items: 910 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    items: 895 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
     of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
-    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 94
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 93
     units of carbon [carbon].
       #1 hit points: 55/35, lightly damaged.
       #2 hit points: 55/35, lightly damaged.
@@ -2449,11 +2451,11 @@ Battles report:
       #3 hit points: 100/100.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 6890 (1000).
+    size: 10000, mass: 6870 (1000).
     hit points: 275/167.
-    items: 910 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    items: 895 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
     of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
-    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 94
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 93
     units of carbon [carbon].
       #1 hit points: 55/31, lightly damaged.
       #2 hit points: 55/35, lightly damaged.
@@ -2527,11 +2529,11 @@ Battles report:
       #3 hit points: 100/100.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 6890 (1000).
+    size: 10000, mass: 6870 (1000).
     hit points: 275/155.
-    items: 910 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    items: 895 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
     of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
-    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 94
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 93
     units of carbon [carbon].
       #1 hit points: 55/27, heavily damaged, effects: disabled.
       #2 hit points: 55/35, lightly damaged.
@@ -2604,11 +2606,11 @@ Battles report:
       #3 hit points: 100/100.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], immobile.
-    size: 10000, mass: 6890 (1000).
+    size: 10000, mass: 6870 (1000).
     hit points: 275/143.
-    items: 910 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    items: 895 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
     of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
-    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 94
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 93
     units of carbon [carbon].
       #1 hit points: 55/27, heavily damaged, effects: disabled.
       #2 hit points: 55/31, lightly damaged.
@@ -3049,7 +3051,7 @@ Battles report:
   ------------------------------------------------------------
   Battle ended indecisively.
 
-  Week 13.
+  Week 12.
   Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
   [ocean] in system Sol [SS0001] (0, 0, 0).
   ------------------------------------------------------------
@@ -3067,11 +3069,11 @@ Battles report:
       #3 hit points: 100/100.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], disabled, immobile.
-    size: 10000, mass: 6910 (1000).
+    size: 10000, mass: 6890 (1000).
     hit points: 275/131.
-    items: 925 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    items: 910 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
     of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
-    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 95
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 94
     units of carbon [carbon].
       #1 hit points: 55/27, heavily damaged, effects: disabled.
       #2 hit points: 55/27, heavily damaged, effects: disabled.
@@ -3115,14 +3117,10 @@ Battles report:
       #4 hit points: 100/36, heavily damaged, effects: disabled.
       #5 hit points: 100/36, heavily damaged, effects: disabled.
   ------------------------------------------------------------
-  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and hits #2 gun placement [111]
+  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and hits #3 gun placement [111]
   doing 4 damage.
-    #2 gun placement [gunplc] is heavily damaged.
-    #2 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fire on farming complex [000014] (chance: 18/12) and hits #1 farming
-  complex [000014] doing 4 damage.
-    #1 farming complex [farms] is heavily damaged.
-    #1 farming complex [farms] is disabled.
+    #3 gun placement [gunplc] is heavily damaged.
+    #3 gun placement [gunplc] is disabled.
   Surrender or die! [109] fire on farming complex [000014] (chance: 18/12) and hits #3 farming
   complex [000014] doing 4 damage.
     #3 farming complex [farms] is heavily damaged.
@@ -3131,6 +3129,10 @@ Battles report:
   complex [000014] doing 4 damage.
     #1 farming complex [farms] is heavily damaged.
     #1 farming complex [farms] is disabled.
+  Surrender or die! [109] fire on farming complex [000014] (chance: 18/12) and hits #3 farming
+  complex [000014] doing 4 damage.
+    #3 farming complex [farms] is heavily damaged.
+    #3 farming complex [farms] is disabled.
   ------------------------------------------------------------
   Round 2:
   ------------------------------------------------------------
@@ -3146,11 +3148,11 @@ Battles report:
       #3 hit points: 100/100.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], disabled, immobile.
-    size: 10000, mass: 6910 (1000).
+    size: 10000, mass: 6890 (1000).
     hit points: 275/131.
-    items: 925 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    items: 910 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
     of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
-    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 95
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 94
     units of carbon [carbon].
       #1 hit points: 55/27, heavily damaged, effects: disabled.
       #2 hit points: 55/27, heavily damaged, effects: disabled.
@@ -3161,9 +3163,9 @@ Battles report:
     size: 3000, mass: 365 (300), energy: 5, crew: 5/15.
     hit points: 165/81.
     items: 15 terrans [terran], 5 units of food [food].
-      #1 hit points: 55/15, heavily damaged, effects: disabled.
+      #1 hit points: 55/19, heavily damaged, effects: disabled.
       #2 hit points: 55/43.
-      #3 hit points: 55/23, heavily damaged, effects: disabled.
+      #3 hit points: 55/19, heavily damaged, effects: disabled.
   + coal-burning plant [000015], 3 coal-burning plants [cplant], immobile.
     size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
     hit points: 300/300, attack: 3.
@@ -3189,27 +3191,26 @@ Battles report:
     hit points: 500/184.
     items: 4 terrans [terran].
       #1 hit points: 100/36, heavily damaged, effects: disabled.
-      #2 hit points: 100/36, heavily damaged, effects: disabled.
-      #3 hit points: 100/40, heavily damaged, effects: disabled.
+      #2 hit points: 100/40, heavily damaged, effects: disabled.
+      #3 hit points: 100/36, heavily damaged, effects: disabled.
       #4 hit points: 100/36, heavily damaged, effects: disabled.
       #5 hit points: 100/36, heavily damaged, effects: disabled.
   ------------------------------------------------------------
-  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and hits #3 gun placement [111]
+  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and hits #4 gun placement [111]
   doing 4 damage.
-    #3 gun placement [gunplc] is heavily damaged.
-    #3 gun placement [gunplc] is disabled.
+    #4 gun placement [gunplc] is heavily damaged.
+    #4 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fire on farming complex [000014] (chance: 18/12) and hits #2 farming
+  complex [000014] doing 4 damage.
+    #2 farming complex [farms] is lightly damaged.
   Surrender or die! [109] fire on farming complex [000014] (chance: 18/12) and hits #3 farming
   complex [000014] doing 4 damage.
     #3 farming complex [farms] is heavily damaged.
     #3 farming complex [farms] is disabled.
   Surrender or die! [109] fire on farming complex [000014] (chance: 18/12) and hits #1 farming
   complex [000014] doing 4 damage.
-    #1 farming complex [farms] is critically damaged.
+    #1 farming complex [farms] is heavily damaged.
     #1 farming complex [farms] is disabled.
-  Surrender or die! [109] fire on farming complex [000014] (chance: 18/12) and hits #3 farming
-  complex [000014] doing 4 damage.
-    #3 farming complex [farms] is heavily damaged.
-    #3 farming complex [farms] is disabled.
   ------------------------------------------------------------
   Round 3:
   ------------------------------------------------------------
@@ -3225,11 +3226,11 @@ Battles report:
       #3 hit points: 100/100.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], disabled, immobile.
-    size: 10000, mass: 6910 (1000).
+    size: 10000, mass: 6890 (1000).
     hit points: 275/131.
-    items: 925 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    items: 910 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
     of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
-    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 95
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 94
     units of carbon [carbon].
       #1 hit points: 55/27, heavily damaged, effects: disabled.
       #2 hit points: 55/27, heavily damaged, effects: disabled.
@@ -3240,8 +3241,8 @@ Battles report:
     size: 3000, mass: 365 (300), energy: 5, crew: 5/15.
     hit points: 165/69.
     items: 15 terrans [terran], 5 units of food [food].
-      #1 hit points: 55/11, critically damaged, effects: disabled.
-      #2 hit points: 55/43.
+      #1 hit points: 55/15, heavily damaged, effects: disabled.
+      #2 hit points: 55/39, lightly damaged.
       #3 hit points: 55/15, heavily damaged, effects: disabled.
   + coal-burning plant [000015], 3 coal-burning plants [cplant], immobile.
     size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
@@ -3268,15 +3269,19 @@ Battles report:
     hit points: 500/180.
     items: 4 terrans [terran].
       #1 hit points: 100/36, heavily damaged, effects: disabled.
-      #2 hit points: 100/36, heavily damaged, effects: disabled.
+      #2 hit points: 100/40, heavily damaged, effects: disabled.
       #3 hit points: 100/36, heavily damaged, effects: disabled.
-      #4 hit points: 100/36, heavily damaged, effects: disabled.
+      #4 hit points: 100/32, heavily damaged, effects: disabled.
       #5 hit points: 100/36, heavily damaged, effects: disabled.
   ------------------------------------------------------------
-  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and hits #4 gun placement [111]
+  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and hits #5 gun placement [111]
   doing 4 damage.
-    #4 gun placement [gunplc] is heavily damaged.
-    #4 gun placement [gunplc] is disabled.
+    #5 gun placement [gunplc] is heavily damaged.
+    #5 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fire on farming complex [000014] (chance: 18/12) and hits #1 farming
+  complex [000014] doing 4 damage.
+    #1 farming complex [farms] is critically damaged.
+    #1 farming complex [farms] is disabled.
   Surrender or die! [109] fire on farming complex [000014] (chance: 18/12) and hits #2 farming
   complex [000014] doing 4 damage.
     #2 farming complex [farms] is lightly damaged.
@@ -3284,10 +3289,6 @@ Battles report:
   complex [000014] doing 4 damage.
     #3 farming complex [farms] is critically damaged.
     #3 farming complex [farms] is disabled.
-  Surrender or die! [109] fire on farming complex [000014] (chance: 18/12) and hits #1 farming
-  complex [000014] doing 4 damage.
-    #1 farming complex [farms] is critically damaged.
-    #1 farming complex [farms] is disabled.
   ------------------------------------------------------------
   Round 4:
   ------------------------------------------------------------
@@ -3303,11 +3304,11 @@ Battles report:
       #3 hit points: 100/100.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], disabled, immobile.
-    size: 10000, mass: 6910 (1000).
+    size: 10000, mass: 6890 (1000).
     hit points: 275/131.
-    items: 925 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    items: 910 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
     of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
-    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 95
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 94
     units of carbon [carbon].
       #1 hit points: 55/27, heavily damaged, effects: disabled.
       #2 hit points: 55/27, heavily damaged, effects: disabled.
@@ -3318,8 +3319,8 @@ Battles report:
     size: 3000, mass: 365 (300), energy: 5, crew: 5/15.
     hit points: 165/57.
     items: 15 terrans [terran], 5 units of food [food].
-      #1 hit points: 55/7, critically damaged, effects: disabled.
-      #2 hit points: 55/39, lightly damaged.
+      #1 hit points: 55/11, critically damaged, effects: disabled.
+      #2 hit points: 55/35, lightly damaged.
       #3 hit points: 55/11, critically damaged, effects: disabled.
   + coal-burning plant [000015], 3 coal-burning plants [cplant], immobile.
     size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
@@ -3346,15 +3347,19 @@ Battles report:
     hit points: 500/176.
     items: 4 terrans [terran].
       #1 hit points: 100/36, heavily damaged, effects: disabled.
-      #2 hit points: 100/36, heavily damaged, effects: disabled.
+      #2 hit points: 100/40, heavily damaged, effects: disabled.
       #3 hit points: 100/36, heavily damaged, effects: disabled.
       #4 hit points: 100/32, heavily damaged, effects: disabled.
-      #5 hit points: 100/36, heavily damaged, effects: disabled.
+      #5 hit points: 100/32, heavily damaged, effects: disabled.
   ------------------------------------------------------------
-  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and hits #5 gun placement [111]
+  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and hits #1 gun placement [111]
   doing 4 damage.
-    #5 gun placement [gunplc] is heavily damaged.
-    #5 gun placement [gunplc] is disabled.
+    #1 gun placement [gunplc] is heavily damaged.
+    #1 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fire on farming complex [000014] (chance: 18/12) and hits #3 farming
+  complex [000014] doing 4 damage.
+    #3 farming complex [farms] is critically damaged.
+    #3 farming complex [farms] is disabled.
   Surrender or die! [109] fire on farming complex [000014] (chance: 18/12) and hits #1 farming
   complex [000014] doing 4 damage.
     #1 farming complex [farms] is critically damaged.
@@ -3362,10 +3367,6 @@ Battles report:
   Surrender or die! [109] fire on farming complex [000014] (chance: 18/12) and hits #2 farming
   complex [000014] doing 4 damage.
     #2 farming complex [farms] is lightly damaged.
-  Surrender or die! [109] fire on farming complex [000014] (chance: 18/12) and hits #3 farming
-  complex [000014] doing 4 damage.
-    #3 farming complex [farms] is critically damaged.
-    #3 farming complex [farms] is disabled.
   ------------------------------------------------------------
   Round 5:
   ------------------------------------------------------------
@@ -3381,11 +3382,11 @@ Battles report:
       #3 hit points: 100/100.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], disabled, immobile.
-    size: 10000, mass: 6910 (1000).
+    size: 10000, mass: 6890 (1000).
     hit points: 275/131.
-    items: 925 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    items: 910 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
     of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
-    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 95
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 94
     units of carbon [carbon].
       #1 hit points: 55/27, heavily damaged, effects: disabled.
       #2 hit points: 55/27, heavily damaged, effects: disabled.
@@ -3396,8 +3397,8 @@ Battles report:
     size: 3000, mass: 365 (300), energy: 5, crew: 5/15.
     hit points: 165/45.
     items: 15 terrans [terran], 5 units of food [food].
-      #1 hit points: 55/3, critically damaged, effects: disabled.
-      #2 hit points: 55/35, lightly damaged.
+      #1 hit points: 55/7, critically damaged, effects: disabled.
+      #2 hit points: 55/31, lightly damaged.
       #3 hit points: 55/7, critically damaged, effects: disabled.
   + coal-burning plant [000015], 3 coal-burning plants [cplant], immobile.
     size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
@@ -3423,16 +3424,20 @@ Battles report:
     size: 500, mass: 2516 (2500).
     hit points: 500/172.
     items: 4 terrans [terran].
-      #1 hit points: 100/36, heavily damaged, effects: disabled.
-      #2 hit points: 100/36, heavily damaged, effects: disabled.
+      #1 hit points: 100/32, heavily damaged, effects: disabled.
+      #2 hit points: 100/40, heavily damaged, effects: disabled.
       #3 hit points: 100/36, heavily damaged, effects: disabled.
       #4 hit points: 100/32, heavily damaged, effects: disabled.
       #5 hit points: 100/32, heavily damaged, effects: disabled.
   ------------------------------------------------------------
-  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and hits #1 gun placement [111]
+  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and hits #2 gun placement [111]
   doing 4 damage.
-    #1 gun placement [gunplc] is heavily damaged.
-    #1 gun placement [gunplc] is disabled.
+    #2 gun placement [gunplc] is heavily damaged.
+    #2 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fire on farming complex [000014] (chance: 18/12) and hits #1 farming
+  complex [000014] doing 4 damage.
+    #1 farming complex [farms] is critically damaged.
+    #1 farming complex [farms] is disabled.
   Surrender or die! [109] fire on farming complex [000014] (chance: 18/12) and hits #3 farming
   complex [000014] doing 4 damage.
     #3 farming complex [farms] is critically damaged.
@@ -3440,9 +3445,6 @@ Battles report:
   Surrender or die! [109] fire on farming complex [000014] (chance: 18/12) and hits #1 farming
   complex [000014] doing 3 damage.
     #1 farming complex [farms] is wrecked.
-  Surrender or die! [109] fire on farming complex [000014] (chance: 18/12) and hits #2 farming
-  complex [000014] doing 4 damage.
-    #2 farming complex [farms] is lightly damaged.
   ------------------------------------------------------------
   Round 6:
   ------------------------------------------------------------
@@ -3458,11 +3460,11 @@ Battles report:
       #3 hit points: 100/100.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], disabled, immobile.
-    size: 10000, mass: 6910 (1000).
+    size: 10000, mass: 6890 (1000).
     hit points: 275/131.
-    items: 925 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    items: 910 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
     of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
-    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 95
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 94
     units of carbon [carbon].
       #1 hit points: 55/27, heavily damaged, effects: disabled.
       #2 hit points: 55/27, heavily damaged, effects: disabled.
@@ -3506,10 +3508,10 @@ Battles report:
       #4 hit points: 100/32, heavily damaged, effects: disabled.
       #5 hit points: 100/32, heavily damaged, effects: disabled.
   ------------------------------------------------------------
-  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and hits #2 gun placement [111]
+  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and hits #3 gun placement [111]
   doing 4 damage.
-    #2 gun placement [gunplc] is heavily damaged.
-    #2 gun placement [gunplc] is disabled.
+    #3 gun placement [gunplc] is heavily damaged.
+    #3 gun placement [gunplc] is disabled.
   Surrender or die! [109] fire on farming complex [000014] (chance: 18/12) and hits #2 farming
   complex [000014] doing 4 damage.
     #2 farming complex [farms] is heavily damaged.
@@ -3529,11 +3531,11 @@ Battles report:
       #3 hit points: 100/100.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], disabled, immobile.
-    size: 10000, mass: 6910 (1000).
+    size: 10000, mass: 6890 (1000).
     hit points: 275/131.
-    items: 925 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    items: 910 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
     of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
-    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 95
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 94
     units of carbon [carbon].
       #1 hit points: 55/27, heavily damaged, effects: disabled.
       #2 hit points: 55/27, heavily damaged, effects: disabled.
@@ -3565,20 +3567,20 @@ Battles report:
     hit points: 500/164.
     items: 4 terrans [terran].
       #1 hit points: 100/32, heavily damaged, effects: disabled.
-      #2 hit points: 100/32, heavily damaged, effects: disabled.
-      #3 hit points: 100/36, heavily damaged, effects: disabled.
+      #2 hit points: 100/36, heavily damaged, effects: disabled.
+      #3 hit points: 100/32, heavily damaged, effects: disabled.
       #4 hit points: 100/32, heavily damaged, effects: disabled.
       #5 hit points: 100/32, heavily damaged, effects: disabled.
   ------------------------------------------------------------
-  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and hits #5 gun placement [111]
+  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and hits #1 gun placement [111]
   doing 4 damage.
-    #5 gun placement [gunplc] is heavily damaged.
-    #5 gun placement [gunplc] is disabled.
+    #1 gun placement [gunplc] is heavily damaged.
+    #1 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fire on coal-burning plant [000015] (chance: 18/12) and hits #2
+  coal-burning plant [000015] doing 4 damage.
   Surrender or die! [109] fire on coal-burning plant [000015] (chance: 18/12) and hits #1
   coal-burning plant [000015] doing 4 damage.
   Surrender or die! [109] fire on coal-burning plant [000015] (chance: 18/12) and hits #3
-  coal-burning plant [000015] doing 4 damage.
-  Surrender or die! [109] fire on coal-burning plant [000015] (chance: 18/12) and hits #2
   coal-burning plant [000015] doing 4 damage.
   ------------------------------------------------------------
   Round 8:
@@ -3595,11 +3597,11 @@ Battles report:
       #3 hit points: 100/100.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], disabled, immobile.
-    size: 10000, mass: 6910 (1000).
+    size: 10000, mass: 6890 (1000).
     hit points: 275/131.
-    items: 925 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    items: 910 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
     of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
-    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 95
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 94
     units of carbon [carbon].
       #1 hit points: 55/27, heavily damaged, effects: disabled.
       #2 hit points: 55/27, heavily damaged, effects: disabled.
@@ -3630,21 +3632,21 @@ Battles report:
     size: 500, mass: 2516 (2500).
     hit points: 500/160.
     items: 4 terrans [terran].
-      #1 hit points: 100/32, heavily damaged, effects: disabled.
-      #2 hit points: 100/32, heavily damaged, effects: disabled.
-      #3 hit points: 100/36, heavily damaged, effects: disabled.
+      #1 hit points: 100/28, heavily damaged, effects: disabled.
+      #2 hit points: 100/36, heavily damaged, effects: disabled.
+      #3 hit points: 100/32, heavily damaged, effects: disabled.
       #4 hit points: 100/32, heavily damaged, effects: disabled.
-      #5 hit points: 100/28, heavily damaged, effects: disabled.
+      #5 hit points: 100/32, heavily damaged, effects: disabled.
   ------------------------------------------------------------
-  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and hits #1 gun placement [111]
+  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and hits #2 gun placement [111]
   doing 4 damage.
-    #1 gun placement [gunplc] is heavily damaged.
-    #1 gun placement [gunplc] is disabled.
+    #2 gun placement [gunplc] is heavily damaged.
+    #2 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fire on coal-burning plant [000015] (chance: 18/12) and hits #1
+  coal-burning plant [000015] doing 4 damage.
   Surrender or die! [109] fire on coal-burning plant [000015] (chance: 18/12) and hits #2
   coal-burning plant [000015] doing 4 damage.
   Surrender or die! [109] fire on coal-burning plant [000015] (chance: 18/12) and hits #1
-  coal-burning plant [000015] doing 4 damage.
-  Surrender or die! [109] fire on coal-burning plant [000015] (chance: 18/12) and hits #3
   coal-burning plant [000015] doing 4 damage.
   ------------------------------------------------------------
   Round 9:
@@ -3661,11 +3663,11 @@ Battles report:
       #3 hit points: 100/100.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], disabled, immobile.
-    size: 10000, mass: 6910 (1000).
+    size: 10000, mass: 6890 (1000).
     hit points: 275/131.
-    items: 925 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    items: 910 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
     of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
-    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 95
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 94
     units of carbon [carbon].
       #1 hit points: 55/27, heavily damaged, effects: disabled.
       #2 hit points: 55/27, heavily damaged, effects: disabled.
@@ -3676,9 +3678,9 @@ Battles report:
     size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
     hit points: 300/276, attack: 3.
     items: 6 terrans [terran].
-      #1 hit points: 100/92.
+      #1 hit points: 100/88.
       #2 hit points: 100/92.
-      #3 hit points: 100/92.
+      #3 hit points: 100/96.
   + core drill [000016], core drill [cdrill], immobile.
     size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
     hit points: 100/100.
@@ -3698,19 +3700,19 @@ Battles report:
     items: 4 terrans [terran].
       #1 hit points: 100/28, heavily damaged, effects: disabled.
       #2 hit points: 100/32, heavily damaged, effects: disabled.
-      #3 hit points: 100/36, heavily damaged, effects: disabled.
+      #3 hit points: 100/32, heavily damaged, effects: disabled.
       #4 hit points: 100/32, heavily damaged, effects: disabled.
-      #5 hit points: 100/28, heavily damaged, effects: disabled.
+      #5 hit points: 100/32, heavily damaged, effects: disabled.
   ------------------------------------------------------------
-  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and hits #2 gun placement [111]
+  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and hits #3 gun placement [111]
   doing 4 damage.
-    #2 gun placement [gunplc] is heavily damaged.
-    #2 gun placement [gunplc] is disabled.
-  Surrender or die! [109] fire on coal-burning plant [000015] (chance: 18/12) and hits #1
-  coal-burning plant [000015] doing 4 damage.
+    #3 gun placement [gunplc] is heavily damaged.
+    #3 gun placement [gunplc] is disabled.
   Surrender or die! [109] fire on coal-burning plant [000015] (chance: 18/12) and hits #2
   coal-burning plant [000015] doing 4 damage.
   Surrender or die! [109] fire on coal-burning plant [000015] (chance: 18/12) and hits #1
+  coal-burning plant [000015] doing 4 damage.
+  Surrender or die! [109] fire on coal-burning plant [000015] (chance: 18/12) and hits #2
   coal-burning plant [000015] doing 4 damage.
   ------------------------------------------------------------
   Round 10:
@@ -3727,11 +3729,11 @@ Battles report:
       #3 hit points: 100/100.
   Defenders:
   + small cargo bay [000013], 5 small cargo bays [cargob], disabled, immobile.
-    size: 10000, mass: 6910 (1000).
+    size: 10000, mass: 6890 (1000).
     hit points: 275/131.
-    items: 925 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    items: 910 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
     of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
-    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 95
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 94
     units of carbon [carbon].
       #1 hit points: 55/27, heavily damaged, effects: disabled.
       #2 hit points: 55/27, heavily damaged, effects: disabled.
@@ -3743,8 +3745,8 @@ Battles report:
     hit points: 300/264, attack: 3.
     items: 6 terrans [terran].
       #1 hit points: 100/84.
-      #2 hit points: 100/88.
-      #3 hit points: 100/92.
+      #2 hit points: 100/84.
+      #3 hit points: 100/96.
   + core drill [000016], core drill [cdrill], immobile.
     size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
     hit points: 100/100.
@@ -3763,21 +3765,791 @@ Battles report:
     hit points: 500/152.
     items: 4 terrans [terran].
       #1 hit points: 100/28, heavily damaged, effects: disabled.
-      #2 hit points: 100/28, heavily damaged, effects: disabled.
-      #3 hit points: 100/36, heavily damaged, effects: disabled.
+      #2 hit points: 100/32, heavily damaged, effects: disabled.
+      #3 hit points: 100/28, heavily damaged, effects: disabled.
       #4 hit points: 100/32, heavily damaged, effects: disabled.
-      #5 hit points: 100/28, heavily damaged, effects: disabled.
+      #5 hit points: 100/32, heavily damaged, effects: disabled.
   ------------------------------------------------------------
-  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and hits #3 gun placement [111]
+  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and hits #4 gun placement [111]
   doing 4 damage.
-    #3 gun placement [gunplc] is heavily damaged.
-    #3 gun placement [gunplc] is disabled.
+    #4 gun placement [gunplc] is heavily damaged.
+    #4 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fire on coal-burning plant [000015] (chance: 18/12) and hits #3
+  coal-burning plant [000015] doing 4 damage.
   Surrender or die! [109] fire on coal-burning plant [000015] (chance: 18/12) and hits #2
   coal-burning plant [000015] doing 4 damage.
   Surrender or die! [109] fire on coal-burning plant [000015] (chance: 18/12) and hits #1
   coal-burning plant [000015] doing 4 damage.
+  ------------------------------------------------------------
+  Battle ended indecisively.
+
+  Week 13.
+  Battle has commenced at Northern Hemisphere [R00002] (0,0) on Earth [P00001] at AU 1, ocean planet
+  [ocean] in system Sol [SS0001] (0, 0, 0).
+  ------------------------------------------------------------
+  Round 1:
+  ------------------------------------------------------------
+  Attackers:
+  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
+    size: 240.
+    hit points: 100/56, attack: 4, defense: 4, lightly damaged.
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/300, attack: 12, defense: 12.
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  Defenders:
+  + small cargo bay [000013], 5 small cargo bays [cargob], disabled, immobile.
+    size: 10000, mass: 6900 (1000).
+    hit points: 275/131.
+    items: 915 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 95
+    units of carbon [carbon].
+      #1 hit points: 55/27, heavily damaged, effects: disabled.
+      #2 hit points: 55/27, heavily damaged, effects: disabled.
+      #3 hit points: 55/23, heavily damaged, effects: disabled.
+      #4 hit points: 55/27, heavily damaged, effects: disabled.
+      #5 hit points: 55/27, heavily damaged, effects: disabled.
+  + farming complex [000014], 3 farming complexes [farms], disabled, immobile.
+    size: 3000, mass: 360 (300).
+    hit points: 165/30.
+    items: 15 terrans [terran].
+      #1 hit points: 55/0, destroyed, effects: disabled.
+      #2 hit points: 55/27, heavily damaged, effects: disabled.
+      #3 hit points: 55/3, critically damaged, effects: disabled.
+  + coal-burning plant [000015], 3 coal-burning plants [cplant], immobile.
+    size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
+    hit points: 300/252, attack: 3.
+    items: 6 terrans [terran].
+      #1 hit points: 100/80.
+      #2 hit points: 100/80.
+      #3 hit points: 100/92.
+  + core drill [000016], core drill [cdrill], immobile.
+    size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
+    hit points: 100/100.
+    items: 6 terrans [terran], unit of carbon [carbon].
+  + factory [000017], 5 factories [factry], partially disabled, immobile.
+    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
+    hit points: 500/500.
+    items: 46 terrans [terran].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100, effects: inactive.
+  + gun placement [111], 5 gun placements [gunplc], disabled, immobile.
+    size: 500, mass: 2516 (2500).
+    hit points: 500/148.
+    items: 4 terrans [terran].
+      #1 hit points: 100/28, heavily damaged, effects: disabled.
+      #2 hit points: 100/32, heavily damaged, effects: disabled.
+      #3 hit points: 100/28, heavily damaged, effects: disabled.
+      #4 hit points: 100/28, heavily damaged, effects: disabled.
+      #5 hit points: 100/32, heavily damaged, effects: disabled.
+  ------------------------------------------------------------
+  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and hits #4 gun placement [111]
+  doing 4 damage.
+    #4 gun placement [gunplc] is critically damaged.
+    #4 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fire on coal-burning plant [000015] (chance: 18/12) and hits #3
+  coal-burning plant [000015] doing 4 damage.
   Surrender or die! [109] fire on coal-burning plant [000015] (chance: 18/12) and hits #2
   coal-burning plant [000015] doing 4 damage.
+  Surrender or die! [109] fire on coal-burning plant [000015] (chance: 18/12) and hits #1
+  coal-burning plant [000015] doing 4 damage.
+  ------------------------------------------------------------
+  Round 2:
+  ------------------------------------------------------------
+  Attackers:
+  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
+    size: 240.
+    hit points: 100/56, attack: 4, defense: 4, lightly damaged.
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/300, attack: 12, defense: 12.
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  Defenders:
+  + small cargo bay [000013], 5 small cargo bays [cargob], disabled, immobile.
+    size: 10000, mass: 6900 (1000).
+    hit points: 275/131.
+    items: 915 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 95
+    units of carbon [carbon].
+      #1 hit points: 55/27, heavily damaged, effects: disabled.
+      #2 hit points: 55/27, heavily damaged, effects: disabled.
+      #3 hit points: 55/23, heavily damaged, effects: disabled.
+      #4 hit points: 55/27, heavily damaged, effects: disabled.
+      #5 hit points: 55/27, heavily damaged, effects: disabled.
+  + farming complex [000014], 3 farming complexes [farms], disabled, immobile.
+    size: 3000, mass: 360 (300).
+    hit points: 165/30.
+    items: 15 terrans [terran].
+      #1 hit points: 55/0, destroyed, effects: disabled.
+      #2 hit points: 55/27, heavily damaged, effects: disabled.
+      #3 hit points: 55/3, critically damaged, effects: disabled.
+  + coal-burning plant [000015], 3 coal-burning plants [cplant], immobile.
+    size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
+    hit points: 300/240, attack: 3.
+    items: 6 terrans [terran].
+      #1 hit points: 100/76.
+      #2 hit points: 100/76.
+      #3 hit points: 100/88.
+  + core drill [000016], core drill [cdrill], immobile.
+    size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
+    hit points: 100/100.
+    items: 6 terrans [terran], unit of carbon [carbon].
+  + factory [000017], 5 factories [factry], partially disabled, immobile.
+    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
+    hit points: 500/500.
+    items: 46 terrans [terran].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100, effects: inactive.
+  + gun placement [111], 5 gun placements [gunplc], disabled, immobile.
+    size: 500, mass: 2516 (2500).
+    hit points: 500/144.
+    items: 4 terrans [terran].
+      #1 hit points: 100/28, heavily damaged, effects: disabled.
+      #2 hit points: 100/32, heavily damaged, effects: disabled.
+      #3 hit points: 100/28, heavily damaged, effects: disabled.
+      #4 hit points: 100/24, critically damaged, effects: disabled.
+      #5 hit points: 100/32, heavily damaged, effects: disabled.
+  ------------------------------------------------------------
+  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and hits #5 gun placement [111]
+  doing 4 damage.
+    #5 gun placement [gunplc] is heavily damaged.
+    #5 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fire on coal-burning plant [000015] (chance: 18/12) and hits #1
+  coal-burning plant [000015] doing 4 damage.
+    #1 coal-burning plant [cplant] is lightly damaged.
+  Surrender or die! [109] fire on coal-burning plant [000015] (chance: 18/12) and hits #3
+  coal-burning plant [000015] doing 4 damage.
+  Surrender or die! [109] fire on coal-burning plant [000015] (chance: 18/12) and hits #2
+  coal-burning plant [000015] doing 4 damage.
+    #2 coal-burning plant [cplant] is lightly damaged.
+  ------------------------------------------------------------
+  Round 3:
+  ------------------------------------------------------------
+  Attackers:
+  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
+    size: 240.
+    hit points: 100/56, attack: 4, defense: 4, lightly damaged.
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/300, attack: 12, defense: 12.
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  Defenders:
+  + small cargo bay [000013], 5 small cargo bays [cargob], disabled, immobile.
+    size: 10000, mass: 6900 (1000).
+    hit points: 275/131.
+    items: 915 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 95
+    units of carbon [carbon].
+      #1 hit points: 55/27, heavily damaged, effects: disabled.
+      #2 hit points: 55/27, heavily damaged, effects: disabled.
+      #3 hit points: 55/23, heavily damaged, effects: disabled.
+      #4 hit points: 55/27, heavily damaged, effects: disabled.
+      #5 hit points: 55/27, heavily damaged, effects: disabled.
+  + farming complex [000014], 3 farming complexes [farms], disabled, immobile.
+    size: 3000, mass: 360 (300).
+    hit points: 165/30.
+    items: 15 terrans [terran].
+      #1 hit points: 55/0, destroyed, effects: disabled.
+      #2 hit points: 55/27, heavily damaged, effects: disabled.
+      #3 hit points: 55/3, critically damaged, effects: disabled.
+  + coal-burning plant [000015], 3 coal-burning plants [cplant], immobile.
+    size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
+    hit points: 300/228, attack: 3.
+    items: 6 terrans [terran].
+      #1 hit points: 100/72, lightly damaged.
+      #2 hit points: 100/72, lightly damaged.
+      #3 hit points: 100/84.
+  + core drill [000016], core drill [cdrill], immobile.
+    size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
+    hit points: 100/100.
+    items: 6 terrans [terran], unit of carbon [carbon].
+  + factory [000017], 5 factories [factry], partially disabled, immobile.
+    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
+    hit points: 500/500.
+    items: 46 terrans [terran].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100, effects: inactive.
+  + gun placement [111], 5 gun placements [gunplc], disabled, immobile.
+    size: 500, mass: 2516 (2500).
+    hit points: 500/140.
+    items: 4 terrans [terran].
+      #1 hit points: 100/28, heavily damaged, effects: disabled.
+      #2 hit points: 100/32, heavily damaged, effects: disabled.
+      #3 hit points: 100/28, heavily damaged, effects: disabled.
+      #4 hit points: 100/24, critically damaged, effects: disabled.
+      #5 hit points: 100/28, heavily damaged, effects: disabled.
+  ------------------------------------------------------------
+  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and hits #1 gun placement [111]
+  doing 4 damage.
+    #1 gun placement [gunplc] is critically damaged.
+    #1 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fire on coal-burning plant [000015] (chance: 18/12) and hits #2
+  coal-burning plant [000015] doing 4 damage.
+    #2 coal-burning plant [cplant] is lightly damaged.
+  Surrender or die! [109] fire on coal-burning plant [000015] (chance: 18/12) and hits #1
+  coal-burning plant [000015] doing 4 damage.
+    #1 coal-burning plant [cplant] is lightly damaged.
+  Surrender or die! [109] fire on coal-burning plant [000015] (chance: 18/12) and hits #3
+  coal-burning plant [000015] doing 4 damage.
+  ------------------------------------------------------------
+  Round 4:
+  ------------------------------------------------------------
+  Attackers:
+  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
+    size: 240.
+    hit points: 100/56, attack: 4, defense: 4, lightly damaged.
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/300, attack: 12, defense: 12.
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  Defenders:
+  + small cargo bay [000013], 5 small cargo bays [cargob], disabled, immobile.
+    size: 10000, mass: 6900 (1000).
+    hit points: 275/131.
+    items: 915 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 95
+    units of carbon [carbon].
+      #1 hit points: 55/27, heavily damaged, effects: disabled.
+      #2 hit points: 55/27, heavily damaged, effects: disabled.
+      #3 hit points: 55/23, heavily damaged, effects: disabled.
+      #4 hit points: 55/27, heavily damaged, effects: disabled.
+      #5 hit points: 55/27, heavily damaged, effects: disabled.
+  + farming complex [000014], 3 farming complexes [farms], disabled, immobile.
+    size: 3000, mass: 360 (300).
+    hit points: 165/30.
+    items: 15 terrans [terran].
+      #1 hit points: 55/0, destroyed, effects: disabled.
+      #2 hit points: 55/27, heavily damaged, effects: disabled.
+      #3 hit points: 55/3, critically damaged, effects: disabled.
+  + coal-burning plant [000015], 3 coal-burning plants [cplant], immobile.
+    size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
+    hit points: 300/216, attack: 3.
+    items: 6 terrans [terran].
+      #1 hit points: 100/68, lightly damaged.
+      #2 hit points: 100/68, lightly damaged.
+      #3 hit points: 100/80.
+  + core drill [000016], core drill [cdrill], immobile.
+    size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
+    hit points: 100/100.
+    items: 6 terrans [terran], unit of carbon [carbon].
+  + factory [000017], 5 factories [factry], partially disabled, immobile.
+    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
+    hit points: 500/500.
+    items: 46 terrans [terran].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100, effects: inactive.
+  + gun placement [111], 5 gun placements [gunplc], disabled, immobile.
+    size: 500, mass: 2516 (2500).
+    hit points: 500/136.
+    items: 4 terrans [terran].
+      #1 hit points: 100/24, critically damaged, effects: disabled.
+      #2 hit points: 100/32, heavily damaged, effects: disabled.
+      #3 hit points: 100/28, heavily damaged, effects: disabled.
+      #4 hit points: 100/24, critically damaged, effects: disabled.
+      #5 hit points: 100/28, heavily damaged, effects: disabled.
+  ------------------------------------------------------------
+  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and hits #2 gun placement [111]
+  doing 4 damage.
+    #2 gun placement [gunplc] is heavily damaged.
+    #2 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fire on coal-burning plant [000015] (chance: 18/12) and hits #1
+  coal-burning plant [000015] doing 4 damage.
+    #1 coal-burning plant [cplant] is lightly damaged.
+  Surrender or die! [109] fire on coal-burning plant [000015] (chance: 18/12) and hits #2
+  coal-burning plant [000015] doing 4 damage.
+    #2 coal-burning plant [cplant] is lightly damaged.
+  Surrender or die! [109] fire on coal-burning plant [000015] (chance: 18/12) and hits #1
+  coal-burning plant [000015] doing 4 damage.
+    #1 coal-burning plant [cplant] is lightly damaged.
+  ------------------------------------------------------------
+  Round 5:
+  ------------------------------------------------------------
+  Attackers:
+  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
+    size: 240.
+    hit points: 100/56, attack: 4, defense: 4, lightly damaged.
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/300, attack: 12, defense: 12.
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  Defenders:
+  + small cargo bay [000013], 5 small cargo bays [cargob], disabled, immobile.
+    size: 10000, mass: 6900 (1000).
+    hit points: 275/131.
+    items: 915 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 95
+    units of carbon [carbon].
+      #1 hit points: 55/27, heavily damaged, effects: disabled.
+      #2 hit points: 55/27, heavily damaged, effects: disabled.
+      #3 hit points: 55/23, heavily damaged, effects: disabled.
+      #4 hit points: 55/27, heavily damaged, effects: disabled.
+      #5 hit points: 55/27, heavily damaged, effects: disabled.
+  + farming complex [000014], 3 farming complexes [farms], disabled, immobile.
+    size: 3000, mass: 360 (300).
+    hit points: 165/30.
+    items: 15 terrans [terran].
+      #1 hit points: 55/0, destroyed, effects: disabled.
+      #2 hit points: 55/27, heavily damaged, effects: disabled.
+      #3 hit points: 55/3, critically damaged, effects: disabled.
+  + coal-burning plant [000015], 3 coal-burning plants [cplant], immobile.
+    size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
+    hit points: 300/204, attack: 3.
+    items: 6 terrans [terran].
+      #1 hit points: 100/60, lightly damaged.
+      #2 hit points: 100/64, lightly damaged.
+      #3 hit points: 100/80.
+  + core drill [000016], core drill [cdrill], immobile.
+    size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
+    hit points: 100/100.
+    items: 6 terrans [terran], unit of carbon [carbon].
+  + factory [000017], 5 factories [factry], partially disabled, immobile.
+    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
+    hit points: 500/500.
+    items: 46 terrans [terran].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100, effects: inactive.
+  + gun placement [111], 5 gun placements [gunplc], disabled, immobile.
+    size: 500, mass: 2516 (2500).
+    hit points: 500/132.
+    items: 4 terrans [terran].
+      #1 hit points: 100/24, critically damaged, effects: disabled.
+      #2 hit points: 100/28, heavily damaged, effects: disabled.
+      #3 hit points: 100/28, heavily damaged, effects: disabled.
+      #4 hit points: 100/24, critically damaged, effects: disabled.
+      #5 hit points: 100/28, heavily damaged, effects: disabled.
+  ------------------------------------------------------------
+  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and hits #3 gun placement [111]
+  doing 4 damage.
+    #3 gun placement [gunplc] is critically damaged.
+    #3 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fire on coal-burning plant [000015] (chance: 18/12) and hits #2
+  coal-burning plant [000015] doing 4 damage.
+    #2 coal-burning plant [cplant] is lightly damaged.
+  Surrender or die! [109] fire on coal-burning plant [000015] (chance: 18/12) and hits #1
+  coal-burning plant [000015] doing 4 damage.
+    #1 coal-burning plant [cplant] is lightly damaged.
+  Surrender or die! [109] fire on coal-burning plant [000015] (chance: 18/12) and hits #2
+  coal-burning plant [000015] doing 4 damage.
+    #2 coal-burning plant [cplant] is lightly damaged.
+  ------------------------------------------------------------
+  Round 6:
+  ------------------------------------------------------------
+  Attackers:
+  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
+    size: 240.
+    hit points: 100/56, attack: 4, defense: 4, lightly damaged.
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/300, attack: 12, defense: 12.
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  Defenders:
+  + small cargo bay [000013], 5 small cargo bays [cargob], disabled, immobile.
+    size: 10000, mass: 6900 (1000).
+    hit points: 275/131.
+    items: 915 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 95
+    units of carbon [carbon].
+      #1 hit points: 55/27, heavily damaged, effects: disabled.
+      #2 hit points: 55/27, heavily damaged, effects: disabled.
+      #3 hit points: 55/23, heavily damaged, effects: disabled.
+      #4 hit points: 55/27, heavily damaged, effects: disabled.
+      #5 hit points: 55/27, heavily damaged, effects: disabled.
+  + farming complex [000014], 3 farming complexes [farms], disabled, immobile.
+    size: 3000, mass: 360 (300).
+    hit points: 165/30.
+    items: 15 terrans [terran].
+      #1 hit points: 55/0, destroyed, effects: disabled.
+      #2 hit points: 55/27, heavily damaged, effects: disabled.
+      #3 hit points: 55/3, critically damaged, effects: disabled.
+  + coal-burning plant [000015], 3 coal-burning plants [cplant], immobile.
+    size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
+    hit points: 300/192, attack: 3.
+    items: 6 terrans [terran].
+      #1 hit points: 100/56, lightly damaged.
+      #2 hit points: 100/56, lightly damaged.
+      #3 hit points: 100/80.
+  + core drill [000016], core drill [cdrill], immobile.
+    size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
+    hit points: 100/100.
+    items: 6 terrans [terran], unit of carbon [carbon].
+  + factory [000017], 5 factories [factry], partially disabled, immobile.
+    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
+    hit points: 500/500.
+    items: 46 terrans [terran].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100, effects: inactive.
+  + gun placement [111], 5 gun placements [gunplc], disabled, immobile.
+    size: 500, mass: 2516 (2500).
+    hit points: 500/128.
+    items: 4 terrans [terran].
+      #1 hit points: 100/24, critically damaged, effects: disabled.
+      #2 hit points: 100/28, heavily damaged, effects: disabled.
+      #3 hit points: 100/24, critically damaged, effects: disabled.
+      #4 hit points: 100/24, critically damaged, effects: disabled.
+      #5 hit points: 100/28, heavily damaged, effects: disabled.
+  ------------------------------------------------------------
+  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and hits #4 gun placement [111]
+  doing 4 damage.
+    #4 gun placement [gunplc] is critically damaged.
+    #4 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fire on coal-burning plant [000015] (chance: 18/12) and hits #3
+  coal-burning plant [000015] doing 4 damage.
+  Surrender or die! [109] fire on coal-burning plant [000015] (chance: 18/12) and hits #2
+  coal-burning plant [000015] doing 4 damage.
+    #2 coal-burning plant [cplant] is lightly damaged.
+  Surrender or die! [109] fire on coal-burning plant [000015] (chance: 18/12) and hits #1
+  coal-burning plant [000015] doing 4 damage.
+    #1 coal-burning plant [cplant] is lightly damaged.
+  ------------------------------------------------------------
+  Round 7:
+  ------------------------------------------------------------
+  Attackers:
+  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
+    size: 240.
+    hit points: 100/56, attack: 4, defense: 4, lightly damaged.
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/300, attack: 12, defense: 12.
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  Defenders:
+  + small cargo bay [000013], 5 small cargo bays [cargob], disabled, immobile.
+    size: 10000, mass: 6900 (1000).
+    hit points: 275/131.
+    items: 915 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 95
+    units of carbon [carbon].
+      #1 hit points: 55/27, heavily damaged, effects: disabled.
+      #2 hit points: 55/27, heavily damaged, effects: disabled.
+      #3 hit points: 55/23, heavily damaged, effects: disabled.
+      #4 hit points: 55/27, heavily damaged, effects: disabled.
+      #5 hit points: 55/27, heavily damaged, effects: disabled.
+  + farming complex [000014], 3 farming complexes [farms], disabled, immobile.
+    size: 3000, mass: 360 (300).
+    hit points: 165/30.
+    items: 15 terrans [terran].
+      #1 hit points: 55/0, destroyed, effects: disabled.
+      #2 hit points: 55/27, heavily damaged, effects: disabled.
+      #3 hit points: 55/3, critically damaged, effects: disabled.
+  + coal-burning plant [000015], 3 coal-burning plants [cplant], immobile.
+    size: 3000, mass: 3024 (3000), energy: 120/30, crew: 6/6.
+    hit points: 300/180, attack: 3.
+    items: 6 terrans [terran].
+      #1 hit points: 100/52, lightly damaged.
+      #2 hit points: 100/52, lightly damaged.
+      #3 hit points: 100/76.
+  + core drill [000016], core drill [cdrill], immobile.
+    size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
+    hit points: 100/100.
+    items: 6 terrans [terran], unit of carbon [carbon].
+  + factory [000017], 5 factories [factry], partially disabled, immobile.
+    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
+    hit points: 500/500.
+    items: 46 terrans [terran].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100, effects: inactive.
+  + gun placement [111], 5 gun placements [gunplc], disabled, immobile.
+    size: 500, mass: 2516 (2500).
+    hit points: 500/124.
+    items: 4 terrans [terran].
+      #1 hit points: 100/24, critically damaged, effects: disabled.
+      #2 hit points: 100/28, heavily damaged, effects: disabled.
+      #3 hit points: 100/24, critically damaged, effects: disabled.
+      #4 hit points: 100/20, critically damaged, effects: disabled.
+      #5 hit points: 100/28, heavily damaged, effects: disabled.
+  ------------------------------------------------------------
+  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and hits #5 gun placement [111]
+  doing 4 damage.
+    #5 gun placement [gunplc] is critically damaged.
+    #5 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fire on coal-burning plant [000015] (chance: 18/12) and hits #1
+  coal-burning plant [000015] doing 4 damage.
+    #1 coal-burning plant [cplant] is heavily damaged.
+    #1 coal-burning plant [cplant] is disabled.
+  Surrender or die! [109] fire on coal-burning plant [000015] (chance: 18/12) and hits #3
+  coal-burning plant [000015] doing 4 damage.
+    #3 coal-burning plant [cplant] is lightly damaged.
+  Surrender or die! [109] fire on coal-burning plant [000015] (chance: 18/12) and hits #2
+  coal-burning plant [000015] doing 4 damage.
+    #2 coal-burning plant [cplant] is heavily damaged.
+    #2 coal-burning plant [cplant] is disabled.
+  ------------------------------------------------------------
+  Round 8:
+  ------------------------------------------------------------
+  Attackers:
+  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
+    size: 240.
+    hit points: 100/56, attack: 4, defense: 4, lightly damaged.
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/300, attack: 12, defense: 12.
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  Defenders:
+  + small cargo bay [000013], 5 small cargo bays [cargob], disabled, immobile.
+    size: 10000, mass: 6900 (1000).
+    hit points: 275/131.
+    items: 915 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 95
+    units of carbon [carbon].
+      #1 hit points: 55/27, heavily damaged, effects: disabled.
+      #2 hit points: 55/27, heavily damaged, effects: disabled.
+      #3 hit points: 55/23, heavily damaged, effects: disabled.
+      #4 hit points: 55/27, heavily damaged, effects: disabled.
+      #5 hit points: 55/27, heavily damaged, effects: disabled.
+  + farming complex [000014], 3 farming complexes [farms], disabled, immobile.
+    size: 3000, mass: 360 (300).
+    hit points: 165/30.
+    items: 15 terrans [terran].
+      #1 hit points: 55/0, destroyed, effects: disabled.
+      #2 hit points: 55/27, heavily damaged, effects: disabled.
+      #3 hit points: 55/3, critically damaged, effects: disabled.
+  + coal-burning plant [000015], 3 coal-burning plants [cplant], immobile.
+    size: 3000, mass: 3024 (3000), energy: 40/10, crew: 2/6.
+    hit points: 300/168, attack: 1.
+    items: 6 terrans [terran].
+      #1 hit points: 100/48, heavily damaged, effects: disabled.
+      #2 hit points: 100/48, heavily damaged, effects: disabled.
+      #3 hit points: 100/72, lightly damaged.
+  + core drill [000016], core drill [cdrill], immobile.
+    size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
+    hit points: 100/100.
+    items: 6 terrans [terran], unit of carbon [carbon].
+  + factory [000017], 5 factories [factry], partially disabled, immobile.
+    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
+    hit points: 500/500.
+    items: 46 terrans [terran].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100, effects: inactive.
+  + gun placement [111], 5 gun placements [gunplc], disabled, immobile.
+    size: 500, mass: 2516 (2500).
+    hit points: 500/120.
+    items: 4 terrans [terran].
+      #1 hit points: 100/24, critically damaged, effects: disabled.
+      #2 hit points: 100/28, heavily damaged, effects: disabled.
+      #3 hit points: 100/24, critically damaged, effects: disabled.
+      #4 hit points: 100/20, critically damaged, effects: disabled.
+      #5 hit points: 100/24, critically damaged, effects: disabled.
+  ------------------------------------------------------------
+  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and hits #1 gun placement [111]
+  doing 4 damage.
+    #1 gun placement [gunplc] is critically damaged.
+    #1 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fire on coal-burning plant [000015] (chance: 18/12) and hits #2
+  coal-burning plant [000015] doing 4 damage.
+    #2 coal-burning plant [cplant] is heavily damaged.
+    #2 coal-burning plant [cplant] is disabled.
+  Surrender or die! [109] fire on coal-burning plant [000015] (chance: 18/12) and hits #1
+  coal-burning plant [000015] doing 4 damage.
+    #1 coal-burning plant [cplant] is heavily damaged.
+    #1 coal-burning plant [cplant] is disabled.
+  Surrender or die! [109] fire on coal-burning plant [000015] (chance: 18/12) and hits #3
+  coal-burning plant [000015] doing 4 damage.
+    #3 coal-burning plant [cplant] is lightly damaged.
+  ------------------------------------------------------------
+  Round 9:
+  ------------------------------------------------------------
+  Attackers:
+  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
+    size: 240.
+    hit points: 100/56, attack: 4, defense: 4, lightly damaged.
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/300, attack: 12, defense: 12.
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  Defenders:
+  + small cargo bay [000013], 5 small cargo bays [cargob], disabled, immobile.
+    size: 10000, mass: 6900 (1000).
+    hit points: 275/131.
+    items: 915 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 95
+    units of carbon [carbon].
+      #1 hit points: 55/27, heavily damaged, effects: disabled.
+      #2 hit points: 55/27, heavily damaged, effects: disabled.
+      #3 hit points: 55/23, heavily damaged, effects: disabled.
+      #4 hit points: 55/27, heavily damaged, effects: disabled.
+      #5 hit points: 55/27, heavily damaged, effects: disabled.
+  + farming complex [000014], 3 farming complexes [farms], disabled, immobile.
+    size: 3000, mass: 360 (300).
+    hit points: 165/30.
+    items: 15 terrans [terran].
+      #1 hit points: 55/0, destroyed, effects: disabled.
+      #2 hit points: 55/27, heavily damaged, effects: disabled.
+      #3 hit points: 55/3, critically damaged, effects: disabled.
+  + coal-burning plant [000015], 3 coal-burning plants [cplant], immobile.
+    size: 3000, mass: 3024 (3000), energy: 40/10, crew: 2/6.
+    hit points: 300/156, attack: 1.
+    items: 6 terrans [terran].
+      #1 hit points: 100/44, heavily damaged, effects: disabled.
+      #2 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/68, lightly damaged.
+  + core drill [000016], core drill [cdrill], immobile.
+    size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
+    hit points: 100/100.
+    items: 6 terrans [terran], unit of carbon [carbon].
+  + factory [000017], 5 factories [factry], partially disabled, immobile.
+    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
+    hit points: 500/500.
+    items: 46 terrans [terran].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100, effects: inactive.
+  + gun placement [111], 5 gun placements [gunplc], disabled, immobile.
+    size: 500, mass: 2516 (2500).
+    hit points: 500/116.
+    items: 4 terrans [terran].
+      #1 hit points: 100/20, critically damaged, effects: disabled.
+      #2 hit points: 100/28, heavily damaged, effects: disabled.
+      #3 hit points: 100/24, critically damaged, effects: disabled.
+      #4 hit points: 100/20, critically damaged, effects: disabled.
+      #5 hit points: 100/24, critically damaged, effects: disabled.
+  ------------------------------------------------------------
+  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and hits #2 gun placement [111]
+  doing 4 damage.
+    #2 gun placement [gunplc] is critically damaged.
+    #2 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fire on coal-burning plant [000015] (chance: 18/12) and hits #1
+  coal-burning plant [000015] doing 4 damage.
+    #1 coal-burning plant [cplant] is heavily damaged.
+    #1 coal-burning plant [cplant] is disabled.
+  Surrender or die! [109] fire on coal-burning plant [000015] (chance: 18/12) and hits #2
+  coal-burning plant [000015] doing 4 damage.
+    #2 coal-burning plant [cplant] is heavily damaged.
+    #2 coal-burning plant [cplant] is disabled.
+  Surrender or die! [109] fire on coal-burning plant [000015] (chance: 18/12) and hits #1
+  coal-burning plant [000015] doing 4 damage.
+    #1 coal-burning plant [cplant] is heavily damaged.
+    #1 coal-burning plant [cplant] is disabled.
+  ------------------------------------------------------------
+  Round 10:
+  ------------------------------------------------------------
+  Attackers:
+  - peaceful scout [108], tanks [tanks], owned by Gelvaren [3].
+    size: 240.
+    hit points: 100/56, attack: 4, defense: 4, lightly damaged.
+  - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
+    size: 720.
+    hit points: 300/300, attack: 12, defense: 12.
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+  Defenders:
+  + small cargo bay [000013], 5 small cargo bays [cargob], disabled, immobile.
+    size: 10000, mass: 6900 (1000).
+    hit points: 275/131.
+    items: 915 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units
+    of oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
+    [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 95
+    units of carbon [carbon].
+      #1 hit points: 55/27, heavily damaged, effects: disabled.
+      #2 hit points: 55/27, heavily damaged, effects: disabled.
+      #3 hit points: 55/23, heavily damaged, effects: disabled.
+      #4 hit points: 55/27, heavily damaged, effects: disabled.
+      #5 hit points: 55/27, heavily damaged, effects: disabled.
+  + farming complex [000014], 3 farming complexes [farms], disabled, immobile.
+    size: 3000, mass: 360 (300).
+    hit points: 165/30.
+    items: 15 terrans [terran].
+      #1 hit points: 55/0, destroyed, effects: disabled.
+      #2 hit points: 55/27, heavily damaged, effects: disabled.
+      #3 hit points: 55/3, critically damaged, effects: disabled.
+  + coal-burning plant [000015], 3 coal-burning plants [cplant], immobile.
+    size: 3000, mass: 3024 (3000), energy: 40/10, crew: 2/6.
+    hit points: 300/144, attack: 1.
+    items: 6 terrans [terran].
+      #1 hit points: 100/36, heavily damaged, effects: disabled.
+      #2 hit points: 100/40, heavily damaged, effects: disabled.
+      #3 hit points: 100/68, lightly damaged.
+  + core drill [000016], core drill [cdrill], immobile.
+    size: 1000, mass: 1029 (1000), energy: 5, crew: 6/6.
+    hit points: 100/100.
+    items: 6 terrans [terran], unit of carbon [carbon].
+  + factory [000017], 5 factories [factry], partially disabled, immobile.
+    size: 5000, mass: 3934 (3750), energy: 75, crew: 50/46.
+    hit points: 500/500.
+    items: 46 terrans [terran].
+      #1 hit points: 100/100.
+      #2 hit points: 100/100.
+      #3 hit points: 100/100.
+      #4 hit points: 100/100.
+      #5 hit points: 100/100, effects: inactive.
+  + gun placement [111], 5 gun placements [gunplc], disabled, immobile.
+    size: 500, mass: 2516 (2500).
+    hit points: 500/112.
+    items: 4 terrans [terran].
+      #1 hit points: 100/20, critically damaged, effects: disabled.
+      #2 hit points: 100/24, critically damaged, effects: disabled.
+      #3 hit points: 100/24, critically damaged, effects: disabled.
+      #4 hit points: 100/20, critically damaged, effects: disabled.
+      #5 hit points: 100/24, critically damaged, effects: disabled.
+  ------------------------------------------------------------
+  peaceful scout [108] fires on gun placement [111] (chance: 6/4) and hits #3 gun placement [111]
+  doing 4 damage.
+    #3 gun placement [gunplc] is critically damaged.
+    #3 gun placement [gunplc] is disabled.
+  Surrender or die! [109] fire on coal-burning plant [000015] (chance: 18/12) and hits #2
+  coal-burning plant [000015] doing 4 damage.
+    #2 coal-burning plant [cplant] is heavily damaged.
+    #2 coal-burning plant [cplant] is disabled.
+  Surrender or die! [109] fire on coal-burning plant [000015] (chance: 18/12) and hits #1
+  coal-burning plant [000015] doing 4 damage.
+    #1 coal-burning plant [cplant] is heavily damaged.
+    #1 coal-burning plant [cplant] is disabled.
+  Surrender or die! [109] fire on coal-burning plant [000015] (chance: 18/12) and hits #2
+  coal-burning plant [000015] doing 4 damage.
+    #2 coal-burning plant [cplant] is heavily damaged.
+    #2 coal-burning plant [cplant] is disabled.
   ------------------------------------------------------------
   Battle ended indecisively.
 
@@ -3790,56 +4562,60 @@ Galaxy report:
 ------------------------------------------------------------
   orbit [O00002], has atmosphere suitable for terran [terran].
   + space shuttle [100], 10 space shuttle [shuttl].
-    size: 2000, mass: 7500/1085 (300), capacity: 1250/723, energy: 60/46, crew: 20/40, upkeep: 1040
+    size: 2000, mass: 7500/1035 (300), capacity: 1250/688, energy: 60/46, crew: 20/40, upkeep: 1040
     (1000) cash [cash], consume: 40 (0) units of food [food], 40 (0) units of terran breathing gas
     mixture [terair].
     movement speed: 0.7 in space.
     fuel requirements: 10 units of uranium [uraniu] , 10 units of oxyhydro [h2o2] per 13 weeks.
     items: 40 terrans [terran] (size: 160, mass: 160, upkeep: 40 cash [cash], consume: 40 units of
-    food [food], 40 units of terran breathing gas mixture [terair]), 11 units of iron [iron] (size:
-    55, mass: 110), 4 units of titanium [titani] (size: 40, mass: 40), 19 units of silicium [silici]
+    food [food], 40 units of terran breathing gas mixture [terair]), 8 units of iron [iron] (size:
+    40, mass: 80), 2 units of titanium [titani] (size: 20, mass: 20), 19 units of silicium [silici]
     (size: 95, mass: 57), 15 units of copper [copper] (size: 75, mass: 120), 109 units of food
     [food] (size: 109, mass: 109), 80 units of oxyhydro [h2o2] (size: 80, mass: 80), 109 units of
     terran breathing gas mixture [terair] (size: 109, mass: 109).
     effects:
-      can operate for another 10 weeks without refueling.
+      can operate for another 9 weeks without refueling.
+      producing crew quarters [crwqrt] into crew quarters [115], 1 weeks to complete (x10 efficiency
+      multiplier).
     events:
-      week 2: produced spaceship hull [sshull] into spaceship hull [101].
-      week 3: consumed unit of iron [iron], 4 units of titanium [titani], unit of silicium [silici]
+      week 1: produced spaceship hull [sshull] into spaceship hull [101].
+      week 2: consumed unit of iron [iron], 4 units of titanium [titani], unit of silicium [silici]
       to produce command bridge [cbridg] module.
-      week 5: produced command bridge [cbridg] into command bridge [112].
-      week 6: consumed 2 units of iron [iron], 8 units of titanium [titani], 5 units of copper
+      week 4: produced command bridge [cbridg] into command bridge [112].
+      week 5: consumed 2 units of iron [iron], 8 units of titanium [titani], 5 units of copper
       [copper] to produce fission reactor [fisrec] module.
-      week 11: consumed 10 units of uranium [uraniu], 10 units of oxyhydro [h2o2] as fuel.
-      week 11: produced fission reactor [fisrec] into fission reactor [113].
-      week 12: consumed 10 units of iron [iron], 10 units of titanium [titani] to produce reaction
+      week 10: consumed 10 units of uranium [uraniu], 10 units of oxyhydro [h2o2] as fuel.
+      week 10: produced fission reactor [fisrec] into fission reactor [113].
+      week 11: consumed 10 units of iron [iron], 10 units of titanium [titani] to produce reaction
       drive [rctdrv] module.
-      week 13: produced reaction drive [rctdrv] into reaction drive [114].
+      week 12: produced reaction drive [rctdrv] into reaction drive [114].
+      week 13: consumed 3 units of iron [iron], 2 units of titanium [titani] to produce crew
+      quarters [crwqrt] module.
       week 13: paid 1040 cash [cash] upkeep.
   + Caste Prime valiant explorer [101], spaceship hull [sshull], immobile.
     size: 5000, mass: 100 (100), capacity: 4500/0, energy: 60/46, upkeep: 20 cash [cash].
     events:
-      week 2: received spaceship hull [sshull] produced by space shuttle [100].
+      week 1: received spaceship hull [sshull] produced by space shuttle [100].
       week 13: paid 20 cash [cash] upkeep.
   + command bridge [112], command bridge [cbridg], immobile.
     size: 800, mass: 304 (300), capacity: 200/4, energy: 60/46, crew: 1/1, upkeep: 110 (100) cash
     [cash], consume: (0) unit of food [food], (0) unit of terran breathing gas mixture [terair].
     events:
-      week 3: formed by space shuttle [100] with command bridge [cbridg].
-      week 5: received command bridge [cbridg] produced by space shuttle [100].
+      week 2: formed by space shuttle [100] with command bridge [cbridg].
+      week 4: received command bridge [cbridg] produced by space shuttle [100].
       week 13: paid 110 cash [cash] upkeep.
     + Caste Prime CEO [000001], terran [terran].
       size: 4, mass: 4, capacity: 3/0, upkeep: 10 cash [cash], consume: unit of food [food], unit of
       terran breathing gas mixture [terair].
       events:
-        week 11: stacked under command bridge [112].
+        week 10: stacked under command bridge [112].
   + fission reactor [113], fission reactor [fisrec], disabled, immobile.
     size: 400, mass: 140 (140), capacity: 100/0, energy: 60/46 (consume: unit of uranium [uraniu]
     for 13 weeks), crew: 1/0, upkeep: 90 cash [cash].
     fuel requirements:  unit of uranium [uraniu] per 13 weeks.
     events:
-      week 6: formed by space shuttle [100] with fission reactor [fisrec].
-      week 11: received fission reactor [fisrec] produced by space shuttle [100].
+      week 5: formed by space shuttle [100] with fission reactor [fisrec].
+      week 10: received fission reactor [fisrec] produced by space shuttle [100].
       week 13: paid 90 cash [cash] upkeep.
   + reaction drive [114], reaction drive [rctdrv], disabled, immobile.
     size: 600, mass: 10000/700 (700), capacity: 150/0, energy: 60/46, crew: 1/0, upkeep: 100 cash
@@ -3847,9 +4623,13 @@ Galaxy report:
     movement speed: 14.3 in space.
     fuel requirements:  unit of oxyhydro [h2o2] per week.
     events:
-      week 12: formed by space shuttle [100] with reaction drive [rctdrv].
-      week 13: received reaction drive [rctdrv] produced by space shuttle [100].
+      week 11: formed by space shuttle [100] with reaction drive [rctdrv].
+      week 12: received reaction drive [rctdrv] produced by space shuttle [100].
       week 13: paid 100 cash [cash] upkeep.
+  + crew quarters [115], crew quarters [crwqrt], disabled, immobile.
+    size: 0, mass: 0, energy: 60/46.
+    events:
+      week 13: formed by space shuttle [100] with crew quarters [crwqrt].
 
   Northern Hemisphere [R00002] (0,0), grassland region, settlement capacity 8/3.
   Exits:
@@ -3873,18 +4653,18 @@ Galaxy report:
     Offers of buying modules:
       buy farming complex [farms] at 100 by Berlin [000001].
       buy small cargo bay [cargob] at 100 by Berlin [000001].
-      buy wind powerplant [wnplnt] at 50 by Berlin [000001].
-      buy coal-burning plant [cplant] at 100 by Berlin [000001].
+      buy 5 wind powerplants [wnplnt] at 20 each by Berlin [000001].
+      buy coal-burning plant [cplant] at 200 by Berlin [000001].
       buy surface drill [sdrill] at 100 by Berlin [000001].
       buy core drill [cdrill] at 100 by Berlin [000001].
-      buy factory [factry] at 100 by Berlin [000001].
+      buy factory [factry] at 200 by Berlin [000001].
     Offers of selling technologies:
       none.
     Offers of buying technologies:
       none.
   
   - Berlin [000001], 3 cities [city], immobile, owned by NPC [1].
-    size: 75000, capacity: 45000/41120, energy: 320/240 (30).
+    size: 75000, capacity: 45000/41283, energy: 240/220 (30).
     - Berlin garrison [000002], infantry battalion [inftry], immobile, owned by NPC [1].
       size: 500.
     - Berlin farms [000003], 10 farming complexes [farms], immobile, owned by NPC [1].
@@ -3899,7 +4679,7 @@ Galaxy report:
       hit points: 100/0.
         #1 hit points: 100/0, destroyed, disabled.
       items: 60 terrans [terran] (size: 240, mass: 240, upkeep: 60 cash [cash], consume: 60 units of
-      food [food], 60 units of terran breathing gas mixture [terair]), 2140 cash [cash].
+      food [food], 60 units of terran breathing gas mixture [terair]), 2040 cash [cash].
       events:
         week 1: produced 100 cash [cash].
         week 2: produced 100 cash [cash].
@@ -3909,12 +4689,11 @@ Galaxy report:
         week 6: produced 100 cash [cash].
         week 7: produced 100 cash [cash].
         week 8: produced 100 cash [cash].
-        week 9: produced 100 cash [cash].
+        week 8: engaged in battle
         week 9: engaged in battle
-        week 10: engaged in battle
         week 13: paid 60 cash [cash] upkeep.
     + small cargo bay [000013], 5 small cargo bays [cargob], disabled, immobile.
-      size: 10000, mass: 6900 (1000), capacity: 9000/4960, upkeep: 10 (0) cash [cash], consume: 10
+      size: 10000, mass: 6890 (1000), capacity: 9000/4950, upkeep: 10 (0) cash [cash], consume: 10
       (0) units of food [food], 10 (0) units of terran breathing gas mixture [terair].
       hit points: 275/131.
         #1 hit points: 55/27, heavily damaged, disabled.
@@ -3922,7 +4701,7 @@ Galaxy report:
         #3 hit points: 55/23, heavily damaged, disabled.
         #4 hit points: 55/27, heavily damaged, disabled.
         #5 hit points: 55/27, heavily damaged, disabled.
-      items: 915 units of food [food] (size: 915, mass: 915), 850 units of terran breathing gas
+      items: 905 units of food [food] (size: 905, mass: 905), 850 units of terran breathing gas
       mixture [terair] (size: 850, mass: 850), 900 units of oxyhydro [h2o2] (size: 900, mass: 900),
       60 units of iron [iron] (size: 300, mass: 600), 60 units of titanium [titani] (size: 600,
       mass: 600), 80 units of silicium [silici] (size: 400, mass: 240), 80 units of copper [copper]
@@ -3948,6 +4727,7 @@ Galaxy report:
         week 7: got unit of carbon [carbon] from core drill [000016].
         week 8: got 15 units of food [food] from farming complex [000014].
         week 8: got unit of carbon [carbon] from core drill [000016].
+        week 8: engaged in battle
         week 9: got 15 units of food [food] from farming complex [000014].
         week 9: got unit of carbon [carbon] from core drill [000016].
         week 9: engaged in battle
@@ -3960,7 +4740,7 @@ Galaxy report:
         week 12: got 15 units of food [food] from farming complex [000014].
         week 12: got unit of carbon [carbon] from core drill [000016].
         week 12: engaged in battle
-        week 13: got 15 units of food [food] from farming complex [000014].
+        week 13: got 5 units of food [food] from farming complex [000014].
         week 13: got unit of carbon [carbon] from core drill [000016].
         week 13: engaged in battle
         week 13: paid 10 cash [cash] upkeep.
@@ -3990,6 +4770,7 @@ Galaxy report:
         week 7: produced 15 units of food [food].
         week 8: given 15 units of food [food] to small cargo bay [000013].
         week 8: produced 15 units of food [food].
+        week 8: engaged in battle
         week 9: given 15 units of food [food] to small cargo bay [000013].
         week 9: produced 15 units of food [food].
         week 9: engaged in battle
@@ -4000,20 +4781,19 @@ Galaxy report:
         week 11: produced 15 units of food [food].
         week 11: engaged in battle
         week 12: given 15 units of food [food] to small cargo bay [000013].
-        week 12: produced 15 units of food [food].
+        week 12: produced 5 units of food [food].
         week 12: engaged in battle
-        week 13: given 15 units of food [food] to small cargo bay [000013].
-        week 13: produced 5 units of food [food].
+        week 13: given 5 units of food [food] to small cargo bay [000013].
         week 13: engaged in battle
         week 13: paid 15 cash [cash] upkeep.
     + coal-burning plant [000015], 3 coal-burning plants [cplant], immobile.
-      size: 3000, mass: 3024 (3000), capacity: 1500/24, energy: 120/30 (consume: 15 units of carbon
-      [carbon] for 13 weeks), crew: 6/6, upkeep: 156 (150) cash [cash], consume: 6 (0) units of food
+      size: 3000, mass: 3024 (3000), capacity: 1500/24, energy: 40/10 (consume: 5 units of carbon
+      [carbon] for 13 weeks), crew: 2/6, upkeep: 56 (50) cash [cash], consume: 6 (0) units of food
       [food], 6 (0) units of terran breathing gas mixture [terair].
-      hit points: 300/252.
-        #1 hit points: 100/80.
-        #2 hit points: 100/80.
-        #3 hit points: 100/92.
+      hit points: 300/132.
+        #1 hit points: 100/32, heavily damaged, disabled.
+        #2 hit points: 100/32, heavily damaged, disabled.
+        #3 hit points: 100/68, lightly damaged.
       fuel requirements: 15 units of carbon [carbon] per 13 weeks.
       items: 6 terrans [terran] (size: 24, mass: 24, upkeep: 6 cash [cash], consume: 6 units of food
       [food], 6 units of terran breathing gas mixture [terair]).
@@ -4021,12 +4801,13 @@ Galaxy report:
         week 1: got 15 units of carbon [carbon] from small cargo bay [000013].
         week 1: consumed 15 units of carbon [carbon] as fuel.
         week 1: started energy production for the next 13 weeks.
+        week 8: engaged in battle
         week 9: engaged in battle
         week 10: engaged in battle
         week 11: engaged in battle
         week 12: engaged in battle
         week 13: engaged in battle
-        week 13: paid 156 cash [cash] upkeep.
+        week 13: paid 56 cash [cash] upkeep.
     + core drill [000016], core drill [cdrill], immobile.
       size: 1000, mass: 1029 (1000), capacity: 750/29, energy: 5, crew: 6/6, upkeep: 46 (40) cash
       [cash], consume: 6 (0) units of food [food], 6 (0) units of terran breathing gas mixture
@@ -4051,6 +4832,7 @@ Galaxy report:
         week 7: produced unit of carbon [carbon].
         week 8: given unit of carbon [carbon] to small cargo bay [000013].
         week 8: produced unit of carbon [carbon].
+        week 8: engaged in battle
         week 9: given unit of carbon [carbon] to small cargo bay [000013].
         week 9: produced unit of carbon [carbon].
         week 9: engaged in battle
@@ -4100,6 +4882,7 @@ Galaxy report:
         placement [gunplc] module.
         week 5: produced gun placement [gunplc] into gun placement [111].
         week 5: given 4 terrans [terran] to gun placement [111].
+        week 8: engaged in battle
         week 9: engaged in battle
         week 10: engaged in battle
         week 11: engaged in battle
@@ -4109,12 +4892,12 @@ Galaxy report:
     + gun placement [111], 5 gun placements [gunplc], disabled, immobile.
       size: 500, mass: 2516 (2500), capacity: 500/16, upkeep: 4 (0) cash [cash], consume: 4 (0)
       units of food [food], 4 (0) units of terran breathing gas mixture [terair].
-      hit points: 500/148.
-        #1 hit points: 100/28, heavily damaged, disabled.
-        #2 hit points: 100/28, heavily damaged, disabled.
-        #3 hit points: 100/32, heavily damaged, disabled.
-        #4 hit points: 100/32, heavily damaged, disabled.
-        #5 hit points: 100/28, heavily damaged, disabled.
+      hit points: 500/108.
+        #1 hit points: 100/20, critically damaged, disabled.
+        #2 hit points: 100/24, critically damaged, disabled.
+        #3 hit points: 100/20, critically damaged, disabled.
+        #4 hit points: 100/20, critically damaged, disabled.
+        #5 hit points: 100/24, critically damaged, disabled.
       items: 4 terrans [terran] (size: 16, mass: 16, upkeep: 4 cash [cash], consume: 4 units of food
       [food], 4 units of terran breathing gas mixture [terair]).
       events:
@@ -4125,6 +4908,7 @@ Galaxy report:
         week 4: received gun placement [gunplc] produced by factory [000017].
         week 5: received gun placement [gunplc] produced by factory [000017].
         week 5: got 4 terrans [terran] from factory [000017].
+        week 8: engaged in battle
         week 9: engaged in battle
         week 10: engaged in battle
         week 11: engaged in battle
@@ -4135,6 +4919,82 @@ Galaxy report:
     size: 240.
   - Surrender or die! [109], 3 tanks [tanks], owned by Gelvaren [3].
     size: 720.
+
+  Southern Hemisphere [R00003] (1,0), grassland region, settlement capacity 8/3.
+  Exits:
+    Northern Hemisphere [R00002] (0,0), grassland region, ground travel duration 3 weeks, settlement
+    detected.
+  Resources: 20 units of iron [iron], 20 units of oil [oil], 20 units of titanium [titani], 20 units
+  of uranium [uraniu], 20 units of copper [copper], 20 units of silicium [silici], 250 units of
+  oxyhydro [h2o2], 500 units of food [food].
+  Market report:
+    Offers of selling items:
+      sell 59 units of food [food] at 5 each from Sydney [000006].
+      sell 100 units of food [food] at -1 each from small cargo bay [000019].
+      sell 25 units of food [food] at 5 each from Gelvaren complex [000026].
+      sell 10 terrans [terran] at 50 each from Gelvaren complex [000026].
+    Offers of buying items:
+      buy 200 units of food [food] at 1 each by Sydney [000006].
+      buy 50 units of iron [iron] at 1 each by Sydney [000006].
+      buy 50 units of carbon [carbon] at 2 each by Sydney [000006].
+      buy 40 units of silicium [silici] at 2 each by Sydney [000006].
+      buy 20 units of titanium [titani] at 2 each by Sydney [000006].
+      buy all terrans [terran] at any price by Gelvaren Headquarters [000018].
+      buy 100 units of food [food] at 1 each by Gelvaren complex [000026].
+    Offers of selling modules:
+      none.
+    Offers of buying modules:
+      buy small cargo bay [cargob] at 100 by Sydney [000006].
+      buy farming complex [farms] at 100 by Sydney [000006].
+      buy 5 wind powerplants [wnplnt] at 20 each by Sydney [000006].
+      buy coal-burning plant [cplant] at 200 by Sydney [000006].
+      buy surface drill [sdrill] at 100 by Sydney [000006].
+      buy core drill [cdrill] at 100 by Sydney [000006].
+      buy factory [factry] at 200 by Sydney [000006].
+    Offers of selling technologies:
+      none.
+    Offers of buying technologies:
+      none.
+  
+  - Sydney [000006], 2 cities [city], immobile, owned by NPC [1].
+    size: 50000.
+    - Sydney garrison [000007], 2 infantry battalions [inftry], immobile, owned by NPC [1].
+      size: 1000.
+    - Sydney farms [000008], 10 farming complexes [farms], immobile, owned by NPC [1].
+      size: 10000.
+    - Sydney wind powerplants [000009], 10 wind powerplants [wnplnt], immobile, owned by NPC [1].
+      size: 100.
+    - Sydney oil powerplants [000010], 5 oil-burning plants [oplant], immobile, owned by NPC [1].
+      size: 4000.
+    - Sydney granary [000011], small cargo bay [cargob], immobile, owned by NPC [1].
+      size: 2000.
+    - wind powerplant [122], wind powerplant [wnplnt], immobile, owned by NPC [1].
+      size: 10.
+    - wind powerplant [1], wind powerplant [wnplnt], immobile, owned by NPC [1].
+      size: 10.
+  - Gelvaren complex [000026], city [city], immobile, owned by Gelvaren [3].
+    size: 25000.
+    - Gelvaren Headquarters [000018], corporate headquarters [corphq], immobile, owned by Gelvaren
+      [3].
+      size: 1000.
+    - small cargo bay [000019], small cargo bay [cargob], immobile, owned by Gelvaren [3].
+      size: 2000.
+    - farming complex [000020], 2 farming complexes [farms], immobile, owned by Gelvaren [3].
+      size: 2000.
+    - wind powerplant [000021], 19 wind powerplants [wnplnt], immobile, owned by Gelvaren [3].
+      size: 190.
+    - core drill [000022], core drill [cdrill], immobile, owned by Gelvaren [3].
+      size: 1000.
+    - factory [000023], factory [factry], immobile, owned by Gelvaren [3].
+      size: 1000.
+    - military barrack [000025], military barrack [barrck], immobile, owned by Gelvaren [3].
+      size: 2000.
+      - terran officer [107], terran [terran], working for Gelvaren [3].
+        size: 4.
+      - Gelvaren CEO [000002], terran [terran], working for Gelvaren [3].
+        size: 4.
+    - infantry battalion [110], infantry battalion [inftry], immobile, owned by Gelvaren [3].
+      size: 500.
 ------------------------------------------------------------
   * Luna [P00001], rocky moon [rock] 0.02 AU from the planet.
 ------------------------------------------------------------
@@ -4145,12 +5005,12 @@ Orders Template:
 #faction 2 "xyzzy"
 #modulestack 000012
 ; + Caste Prime Headquarters [000012], corporate headquarters [corphq], disabled, immobile.
-; items: 60 terrans [terran], 2140 cash [cash].
+; items: 60 terrans [terran], 2040 cash [cash].
 @produce cash
 
 #modulestack 000013
 ; + small cargo bay [000013], 5 small cargo bays [cargob], disabled, immobile.
-; items: 915 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units of
+; items: 905 units of food [food], 850 units of terran breathing gas mixture [terair], 900 units of
 ; oxyhydro [h2o2], 60 units of iron [iron], 60 units of titanium [titani], 80 units of silicium
 ; [silici], 80 units of copper [copper], 80 units of uranium [uraniu], 10 terrans [terran], 95 units
 ; of carbon [carbon].
@@ -4179,16 +5039,18 @@ sell 0 food
 
 #modulestack 100
 ; + space shuttle [100], 10 space shuttle [shuttl].
-; items: 40 terrans [terran], 11 units of iron [iron], 4 units of titanium [titani], 19 units of
+; items: 40 terrans [terran], 8 units of iron [iron], 2 units of titanium [titani], 19 units of
 ; silicium [silici], 15 units of copper [copper], 109 units of food [food], 80 units of oxyhydro
 ; [h2o2], 109 units of terran breathing gas mixture [terair].
 ; effects:
-;   can operate for another 10 weeks without refueling.
+;   can operate for another 9 weeks without refueling.
+;   producing crew quarters [crwqrt] into crew quarters [115], 1 weeks to complete (x10 efficiency
+;   multiplier).
 move R00001
-+use crewhs as new115
-+-give -20 terran to new115
-+-give -20 terair to new115
-+-give -20 food to new115
++use crewhs as 115
++-give -20 terran to 115
++-give -20 terair to 115
++-give -20 food to 115
 +use strans as new116
 +-give all iron to new116
 +-give all titani to new116
@@ -4197,7 +5059,7 @@ move R00001
 +-give -10 uraniu to new116
 +-give -10 h2o2 to new116
 +use indust as new117
-+-get 10 terran from new115
++-get 10 terran from 115
 
 #modulestack 101
 ; + Caste Prime valiant explorer [101], spaceship hull [sshull], immobile.
@@ -4214,6 +5076,9 @@ move R00001
 
 #modulestack 114
 ; + reaction drive [114], reaction drive [rctdrv], disabled, immobile.
+
+#modulestack 115
+; + crew quarters [115], crew quarters [crwqrt], disabled, immobile.
 
 #person 000001
 ; + Caste Prime CEO [000001], terran [terran].

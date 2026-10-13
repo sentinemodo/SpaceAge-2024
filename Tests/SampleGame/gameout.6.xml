@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="windows-1251"?>
 <game turn="6">
-	<faction name="1" name-en="NPC" password="" email="" default-attitude="2" text-report="True" text-report-line-length="100" xml-report="True" balance="1842" credit-line="0" credit-rate="0" deposit-rate="0" />
+	<faction name="1" name-en="NPC" password="" email="" default-attitude="2" text-report="True" text-report-line-length="100" xml-report="True" balance="2895" credit-line="0" credit-rate="0" deposit-rate="0" />
 	<faction name="2" name-en="Caste Prime" password="xyzzy" email="mail1@mail.pl" default-attitude="2" text-report="True" text-report-line-length="100" xml-report="True" balance="4461" credit-line="10000" credit-rate="0.2" deposit-rate="0.05">
 		<technology name="ahlcns" />
 		<technology name="autfab" />
@@ -17,7 +17,7 @@
 		<skill name="excoff" />
 		<attitude faction="3" attitude="enemy" />
 	</faction>
-	<faction name="3" name-en="Gelvaren" password="abccb" email="mail2@mail.pl" default-attitude="2" text-report="True" text-report-line-length="72" xml-report="True" balance="7186" credit-line="10000" credit-rate="0.2" deposit-rate="0.045">
+	<faction name="3" name-en="Gelvaren" password="abccb" email="mail2@mail.pl" default-attitude="2" text-report="True" text-report-line-length="72" xml-report="True" balance="7224" credit-line="10000" credit-rate="0.2" deposit-rate="0.045">
 		<technology name="rckter" />
 		<technology name="servic" />
 		<skill name="sscmnd" />
@@ -247,12 +247,11 @@
 						<buying item="silici" quantity="60" price="2" />
 						<buying item="titani" quantity="30" price="2" />
 						<buying module="cargob" quantity="1" price="100" />
-						<buying module="wnplnt" quantity="1" price="50" />
-						<buying module="cplant" quantity="1" price="100" />
+						<buying module="wnplnt" quantity="5" price="20" />
+						<buying module="cplant" quantity="1" price="200" />
 						<buying module="sdrill" quantity="1" price="100" />
 						<buying module="cdrill" quantity="1" price="100" />
-						<buying module="factry" quantity="1" price="100" />
-						<event week="13" description="paid 300 unit of food [food] upkeep." />
+						<buying module="factry" quantity="1" price="200" />
 						<modulestack name="c00008" type="cargob" quantity="1" faction="3">
 							<module damage="39" capture="16" online="false" />
 							<itemstack type="terair" quantity="170" />
@@ -270,23 +269,20 @@
 						<modulestack name="000002" name-en="Berlin garrison" type="inftry" quantity="1" faction="1">
 							<itemstack type="rctlnc" quantity="1" />
 							<upkeep type="cash" quantity="5" />
-							<event week="13" description="paid 5 cash [cash] upkeep." />
 						</modulestack>
 						<modulestack name="000003" name-en="Berlin farms" type="farms" quantity="10" faction="1">
 							<itemstack type="terran" quantity="75" />
 							<upkeep type="cash" quantity="575" />
-							<event week="13" description="paid 575 cash [cash] upkeep." />
 						</modulestack>
 						<modulestack name="000004" name-en="Berlin coal powerplants" type="cplant" quantity="5" faction="1">
 							<itemstack type="carbon" quantity="100" />
 							<itemstack type="terran" quantity="15" />
 							<upkeep type="cash" quantity="265" />
-							<event week="13" description="paid 265 cash [cash] upkeep." />
 						</modulestack>
 						<modulestack name="000005" name-en="Berlin granary" type="cargob" quantity="1" faction="1">
+							<itemstack type="food" quantity="127" />
 							<itemstack type="terran" quantity="3" />
 							<upkeep type="cash" quantity="33" />
-							<event week="13" description="paid 33 cash [cash] upkeep." />
 						</modulestack>
 						<modulestack name="000012" name-en="Caste Prime Headquarters" type="corphq" quantity="0" faction="2">
 							<upkeep type="cash" quantity="0" />
@@ -368,6 +364,7 @@
 						<modulestack name="c000012" type="corphq" quantity="1" faction="3">
 							<module capture="75" />
 							<itemstack type="terran" quantity="53" />
+							<itemstack type="cash" quantity="840" />
 							<upkeep type="cash" quantity="336" />
 							<buying item="food" quantity="all" price="any" />
 							<buying item="terran" quantity="all" price="any" />
@@ -479,6 +476,7 @@
 						</modulestack>
 						<modulestack name="c00009" type="cargob" quantity="1" faction="3">
 							<module damage="40" capture="15" online="false" />
+							<itemstack type="food" quantity="159" />
 							<itemstack type="terair" quantity="170" />
 							<itemstack type="h2o2" quantity="180" />
 							<itemstack type="iron" quantity="14" />
@@ -493,6 +491,7 @@
 						</modulestack>
 						<modulestack name="c00010" type="cargob" quantity="1" faction="3">
 							<module damage="40" capture="15" online="false" />
+							<itemstack type="food" quantity="159" />
 							<itemstack type="terair" quantity="170" />
 							<itemstack type="h2o2" quantity="180" />
 							<itemstack type="iron" quantity="14" />
@@ -507,7 +506,7 @@
 						</modulestack>
 						<modulestack name="c00011" type="cargob" quantity="1" faction="3">
 							<module damage="40" capture="15" online="false" />
-							<itemstack type="food" quantity="111" />
+							<itemstack type="food" quantity="159" />
 							<itemstack type="terair" quantity="170" />
 							<itemstack type="h2o2" quantity="180" />
 							<itemstack type="iron" quantity="14" />
@@ -657,7 +656,7 @@
 					<resource type="food" quantity="500" />
 					<modulestack name="000006" name-en="Sydney" type="city" quantity="2" faction="1">
 						<upkeep type="food" quantity="200" />
-						<upkeep type="cash" quantity="1030" />
+						<upkeep type="cash" quantity="1053" />
 						<selling item="food" quantity="59" price="5" />
 						<buying item="food" quantity="200" price="1" />
 						<buying item="iron" quantity="50" price="1" />
@@ -666,60 +665,37 @@
 						<buying item="titani" quantity="20" price="2" />
 						<buying module="cargob" quantity="1" price="100" />
 						<buying module="farms" quantity="1" price="100" />
-						<buying module="wnplnt" quantity="1" price="50" />
-						<buying module="cplant" quantity="1" price="100" />
+						<buying module="wnplnt" quantity="5" price="20" />
+						<buying module="cplant" quantity="1" price="200" />
 						<buying module="sdrill" quantity="1" price="100" />
 						<buying module="cdrill" quantity="1" price="100" />
-						<buying module="factry" quantity="1" price="100" />
-						<event week="13" description="paid 200 unit of food [food] upkeep." />
+						<buying module="factry" quantity="1" price="200" />
 						<modulestack name="000007" name-en="Sydney garrison" type="inftry" quantity="2" faction="1">
-							<module damage="1" />
-							<module />
 							<itemstack type="rctlnc" quantity="1" />
 							<upkeep type="cash" quantity="10" />
-							<event week="13" description="paid 10 cash [cash] upkeep." />
-							<event week="13" description="Lack of supplies: 186 unit of food [food]." />
-							<event week="13" description="Damaged from lack of supplies." />
 						</modulestack>
 						<modulestack name="000008" name-en="Sydney farms" type="farms" quantity="10" faction="1">
-							<itemstack type="terran" quantity="52" />
-							<itemstack type="wndtrn" quantity="4" />
-							<upkeep type="cash" quantity="556" />
-							<event week="13" description="paid 575 cash [cash] upkeep." />
-							<event week="13" description="Lack of supplies: 75 unit of food [food]." />
-							<event week="13" description="37 terrans [terran] wounded from lack of supplies." />
-							<event week="13" description="19 wounded terrans [wndtrn] died of their wounds." />
-							<event week="13" description="14 wounded terrans [wndtrn] recovered from their wounds." />
+							<itemstack type="terran" quantity="75" />
+							<upkeep type="cash" quantity="575" />
 						</modulestack>
 						<modulestack name="000009" name-en="Sydney wind powerplants" type="wnplnt" quantity="10" faction="1">
 							<upkeep type="cash" quantity="100" />
-							<event week="13" description="paid 100 cash [cash] upkeep." />
 						</modulestack>
 						<modulestack name="000010" name-en="Sydney oil powerplants" type="oplant" quantity="5" faction="1">
 							<itemstack type="oil" quantity="100" />
-							<itemstack type="terran" quantity="11" />
-							<upkeep type="cash" quantity="311" />
-							<event week="13" description="paid 315 cash [cash] upkeep." />
-							<event week="13" description="Lack of supplies: 15 unit of food [food]." />
-							<event week="13" description="8 terrans [terran] wounded from lack of supplies." />
-							<event week="13" description="4 wounded terrans [wndtrn] died of their wounds." />
-							<event week="13" description="4 wounded terrans [wndtrn] recovered from their wounds." />
+							<itemstack type="terran" quantity="15" />
+							<upkeep type="cash" quantity="315" />
 						</modulestack>
 						<modulestack name="000011" name-en="Sydney granary" type="cargob" quantity="1" faction="1">
-							<itemstack type="wndtrn" quantity="1" />
-							<itemstack type="terran" quantity="2" />
+							<itemstack type="food" quantity="214" />
+							<itemstack type="terran" quantity="3" />
 							<upkeep type="cash" quantity="33" />
-							<event week="13" description="paid 33 cash [cash] upkeep." />
-							<event week="13" description="Lack of supplies: 3 unit of food [food]." />
-							<event week="13" description="1 terran [terran] wounded from lack of supplies." />
 						</modulestack>
 						<modulestack name="122" type="wnplnt" quantity="1" faction="1">
 							<upkeep type="cash" quantity="10" />
-							<event week="13" description="paid 10 cash [cash] upkeep." />
 						</modulestack>
 						<modulestack name="1" type="wnplnt" quantity="1" faction="1">
 							<upkeep type="cash" quantity="10" />
-							<event week="13" description="paid 10 cash [cash] upkeep." />
 						</modulestack>
 					</modulestack>
 					<modulestack name="000026" name-en="Gelvaren complex" type="city" quantity="1" faction="3">
@@ -860,7 +836,6 @@
 						</modulestack>
 						<modulestack name="000021" type="wnplnt" quantity="19" faction="3">
 							<upkeep type="cash" quantity="190" />
-							<event week="1" description="started energy production for the next 13 weeks." />
 							<event week="13" description="paid 190 cash [cash] upkeep." />
 						</modulestack>
 						<modulestack name="000022" type="cdrill" quantity="1" faction="3">

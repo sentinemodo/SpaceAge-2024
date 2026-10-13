@@ -478,7 +478,7 @@ namespace IntegrationTests
 
             this.compareFiles("testreport.2.1.txt", "report.2.1.txt");
             this.compareFiles("testreport.2.2.txt", "report.2.2.txt", true, 292);
-            this.compareFiles("testreport.2.3.txt", "report.2.3.txt", true, 435);
+            this.compareFiles("testreport.2.3.txt", "report.2.3.txt", true, 417);
         }
 
 		[Test]
@@ -628,7 +628,7 @@ namespace IntegrationTests
 			Assert.That(ModuleStack.All["200"].Owner.Name, Is.EqualTo("2"));
 			Assert.That(ModuleStack.All.ContainsKey("207"), Is.True);
 			Assert.That(ModuleStack.All["207"].Quantity, Is.EqualTo(4));
-			Assert.That(ModuleStack.All["116"].ResearchPoints, Is.EqualTo(11),
+			Assert.That(ModuleStack.All["116"].ResearchPoints, Is.EqualTo(12),
 				"Sydney lab 116 accumulates tag-repair research once wnplnt grant restores regional power");
 		}
 
