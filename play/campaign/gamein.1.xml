@@ -18,6 +18,7 @@
 	<faction name="15" name-en="Anvil Fauna" password="" email="" default-attitude="0" unknown-attitude="0" text-report="True" text-report-line-length="100" xml-report="True" balance="0" credit-line="0" credit-rate="0" deposit-rate="0" />
 	<faction name="16" name-en="Haven Fauna" password="" email="" default-attitude="0" unknown-attitude="0" text-report="True" text-report-line-length="100" xml-report="True" balance="0" credit-line="0" credit-rate="0" deposit-rate="0" />
 	<faction name="17" name-en="Graph Fauna" password="" email="" default-attitude="0" unknown-attitude="0" text-report="True" text-report-line-length="100" xml-report="True" balance="0" credit-line="0" credit-rate="0" deposit-rate="0" />
+	<grant-pricing technology-credit-multiplier="125" item-value-multiplier="8" module-cost-floor="500" module-build-multiplier="10" module-level-multiplier="200" />
 	<contracts>
 		<contract name="CT0001" location="R00040" issuer="1" trigger="give-module" reward-type="technology" reward="ctypln" quantity="1" module="farms" receiver="100030" baseline="6" title="Slagport calorie charter" flavour="Slagport's granary spectra show a thin 1.6 um water-ice band and a weak chlorophyll shoulder. Deliver one farming complex so the metal town can close its own calorie loop." />
 		<contract name="CT0002" location="R00068" issuer="1" trigger="give-module" reward-type="technology" reward="servic" quantity="2" module="wnplnt" receiver="100050" baseline="4" title="Isotope wind survey" flavour="Isotope sits on a uraninite spine with a measured 8 m/s mean surface wind. Two more wind plants keep the assay mill online without burning the local fissile stockpile." />
@@ -318,6 +319,9 @@
 						<itemstack type="terran" quantity="20" />
 						<upkeep type="food" quantity="200" />
 						<buying quantity="80" price="1" item="food" />
+						<buying quantity="5" price="20" module="wnplnt" />
+						<buying quantity="1" price="200" module="factry" />
+						<buying quantity="1" price="200" module="cplant" />
 						<selling quantity="15" price="5" item="oil" />
 						<modulestack name="100011" type="farms" quantity="6" faction="1" name-en="Tidewatch farms">
 							<upkeep type="cash" quantity="180" />
@@ -429,11 +433,10 @@
 					<resource type="water" quantity="150" />
 					<modulestack name="200001" type="corphq" quantity="1" faction="2" name-en="Northwind Headquarters">
 						<person name="200010" name-en="Northwind CEO" race="terran" faction="2">
-							<upkeep type="cash" quantity="10" />
-				<skill name="exmgmt" experience="10" />
+							<upkeep type="cash" quantity="20" />
 						</person>
 						<itemstack type="terran" quantity="20" />
-						<upkeep type="cash" quantity="90" />
+						<upkeep type="cash" quantity="180" />
 					</modulestack>
 					<modulestack name="200003" type="cargob" quantity="2" faction="2">
 						<itemstack type="food" quantity="400" />
@@ -444,24 +447,24 @@
 						<itemstack type="silici" quantity="15" />
 						<itemstack type="titani" quantity="2" />
 						<itemstack type="oil" quantity="5" />
-						<upkeep type="cash" quantity="20" />
+						<upkeep type="cash" quantity="40" />
 					</modulestack>
 					<modulestack name="200004" type="sdrill" quantity="1" faction="2">
 						<itemstack type="terran" quantity="6" />
-						<upkeep type="cash" quantity="35" />
+						<upkeep type="cash" quantity="70" />
 					</modulestack>
 					<modulestack name="200005" type="factry" quantity="2" faction="2">
 						<itemstack type="terran" quantity="20" />
-						<upkeep type="cash" quantity="110" />
+						<upkeep type="cash" quantity="220" />
 					</modulestack>
 					<modulestack name="200006" type="farms" quantity="3" faction="2">
 						<itemstack type="terran" quantity="15" />
-						<upkeep type="cash" quantity="90" />
+						<upkeep type="cash" quantity="180" />
 					</modulestack>
 					<modulestack name="200007" type="cplant" quantity="2" faction="2">
 						<itemstack type="carbon" quantity="20" />
 						<itemstack type="terran" quantity="4" />
-						<upkeep type="cash" quantity="80" />
+						<upkeep type="cash" quantity="160" />
 					</modulestack>
 				</region>
 				<region name="R00009" name-en="Mid Vale" X="2" Y="1" type="grassl">
@@ -487,7 +490,7 @@
 					<deep-pocket>
 						<resource type="titani" quantity="55" />
 					</deep-pocket>
-					<anomaly type="spectral" points="8" description="Photic-band albedo steps on an otherwise uniform grassland ï¿½ buried oxide or organics.">
+					<anomaly type="spectral" points="8" description="Photic-band albedo steps on an otherwise uniform grassland — buried oxide or organics.">
 						<reward band="0" kind="survey-blurb" />
 						<reward band="0" kind="research-rp" technology="optins" quantity="20" />
 						<reward band="2" kind="research-rp" technology="survts" quantity="8" />
@@ -513,11 +516,10 @@
 					<resource type="water" quantity="150" />
 					<modulestack name="210001" type="corphq" quantity="1" faction="3" name-en="Greenwell Headquarters">
 						<person name="210010" name-en="Greenwell CEO" race="terran" faction="3">
-							<upkeep type="cash" quantity="10" />
-				<skill name="exmgmt" experience="10" />
+							<upkeep type="cash" quantity="20" />
 						</person>
 						<itemstack type="terran" quantity="20" />
-						<upkeep type="cash" quantity="90" />
+						<upkeep type="cash" quantity="180" />
 					</modulestack>
 					<modulestack name="210003" type="cargob" quantity="2" faction="3">
 						<itemstack type="food" quantity="400" />
@@ -528,24 +530,24 @@
 						<itemstack type="silici" quantity="15" />
 						<itemstack type="titani" quantity="2" />
 						<itemstack type="oil" quantity="5" />
-						<upkeep type="cash" quantity="20" />
+						<upkeep type="cash" quantity="40" />
 					</modulestack>
 					<modulestack name="210004" type="sdrill" quantity="1" faction="3">
 						<itemstack type="terran" quantity="6" />
-						<upkeep type="cash" quantity="35" />
+						<upkeep type="cash" quantity="70" />
 					</modulestack>
 					<modulestack name="210005" type="factry" quantity="2" faction="3">
 						<itemstack type="terran" quantity="20" />
-						<upkeep type="cash" quantity="110" />
+						<upkeep type="cash" quantity="220" />
 					</modulestack>
 					<modulestack name="210006" type="farms" quantity="3" faction="3">
 						<itemstack type="terran" quantity="15" />
-						<upkeep type="cash" quantity="90" />
+						<upkeep type="cash" quantity="180" />
 					</modulestack>
 					<modulestack name="210007" type="cplant" quantity="2" faction="3">
 						<itemstack type="carbon" quantity="20" />
 						<itemstack type="terran" quantity="4" />
-						<upkeep type="cash" quantity="80" />
+						<upkeep type="cash" quantity="160" />
 					</modulestack>
 				</region>
 				<region name="R00011" name-en="South Ridge" X="4" Y="1" type="mountn">
@@ -681,6 +683,9 @@
 						<buying quantity="500" price="1" item="food" />
 						<buying quantity="80" price="2" item="carbon" />
 						<buying quantity="2" price="100" module="farms" />
+						<buying quantity="5" price="20" module="wnplnt" />
+						<buying quantity="1" price="200" module="factry" />
+						<buying quantity="1" price="200" module="cplant" />
 						<selling quantity="120" price="4" item="food" />
 						<selling quantity="30" price="3" item="iron" />
 						<selling quantity="15" price="4" item="silici" />
@@ -751,11 +756,10 @@
 					<resource type="water" quantity="150" />
 					<modulestack name="220001" type="corphq" quantity="1" faction="4" name-en="Rivermark Headquarters">
 						<person name="220010" name-en="Rivermark CEO" race="terran" faction="4">
-							<upkeep type="cash" quantity="10" />
-				<skill name="exmgmt" experience="10" />
+							<upkeep type="cash" quantity="20" />
 						</person>
 						<itemstack type="terran" quantity="20" />
-						<upkeep type="cash" quantity="90" />
+						<upkeep type="cash" quantity="180" />
 					</modulestack>
 					<modulestack name="220003" type="cargob" quantity="2" faction="4">
 						<itemstack type="food" quantity="400" />
@@ -766,24 +770,24 @@
 						<itemstack type="silici" quantity="15" />
 						<itemstack type="titani" quantity="2" />
 						<itemstack type="oil" quantity="5" />
-						<upkeep type="cash" quantity="20" />
+						<upkeep type="cash" quantity="40" />
 					</modulestack>
 					<modulestack name="220004" type="sdrill" quantity="1" faction="4">
 						<itemstack type="terran" quantity="6" />
-						<upkeep type="cash" quantity="35" />
+						<upkeep type="cash" quantity="70" />
 					</modulestack>
 					<modulestack name="220005" type="factry" quantity="2" faction="4">
 						<itemstack type="terran" quantity="20" />
-						<upkeep type="cash" quantity="110" />
+						<upkeep type="cash" quantity="220" />
 					</modulestack>
 					<modulestack name="220006" type="farms" quantity="3" faction="4">
 						<itemstack type="terran" quantity="15" />
-						<upkeep type="cash" quantity="90" />
+						<upkeep type="cash" quantity="180" />
 					</modulestack>
 					<modulestack name="220007" type="cplant" quantity="2" faction="4">
 						<itemstack type="carbon" quantity="20" />
 						<itemstack type="terran" quantity="4" />
-						<upkeep type="cash" quantity="80" />
+						<upkeep type="cash" quantity="160" />
 					</modulestack>
 				</region>
 				<region name="R00018" name-en="East Peak" X="5" Y="2" type="mountn">
@@ -891,11 +895,10 @@
 					<resource type="water" quantity="150" />
 					<modulestack name="230001" type="corphq" quantity="1" faction="5" name-en="Sundock Headquarters">
 						<person name="230010" name-en="Sundock CEO" race="terran" faction="5">
-							<upkeep type="cash" quantity="10" />
-				<skill name="exmgmt" experience="10" />
+							<upkeep type="cash" quantity="20" />
 						</person>
 						<itemstack type="terran" quantity="20" />
-						<upkeep type="cash" quantity="90" />
+						<upkeep type="cash" quantity="180" />
 					</modulestack>
 					<modulestack name="230003" type="cargob" quantity="2" faction="5">
 						<itemstack type="food" quantity="400" />
@@ -906,24 +909,24 @@
 						<itemstack type="silici" quantity="15" />
 						<itemstack type="titani" quantity="2" />
 						<itemstack type="oil" quantity="5" />
-						<upkeep type="cash" quantity="20" />
+						<upkeep type="cash" quantity="40" />
 					</modulestack>
 					<modulestack name="230004" type="sdrill" quantity="1" faction="5">
 						<itemstack type="terran" quantity="6" />
-						<upkeep type="cash" quantity="35" />
+						<upkeep type="cash" quantity="70" />
 					</modulestack>
 					<modulestack name="230005" type="factry" quantity="2" faction="5">
 						<itemstack type="terran" quantity="20" />
-						<upkeep type="cash" quantity="110" />
+						<upkeep type="cash" quantity="220" />
 					</modulestack>
 					<modulestack name="230006" type="farms" quantity="3" faction="5">
 						<itemstack type="terran" quantity="15" />
-						<upkeep type="cash" quantity="90" />
+						<upkeep type="cash" quantity="180" />
 					</modulestack>
 					<modulestack name="230007" type="cplant" quantity="2" faction="5">
 						<itemstack type="carbon" quantity="20" />
 						<itemstack type="terran" quantity="4" />
-						<upkeep type="cash" quantity="80" />
+						<upkeep type="cash" quantity="160" />
 					</modulestack>
 					<deep-pocket>
 						<resource type="titani" quantity="50" />
@@ -1030,11 +1033,10 @@
 					<resource type="water" quantity="150" />
 					<modulestack name="240001" type="corphq" quantity="1" faction="6" name-en="Copse Headquarters">
 						<person name="240010" name-en="Copse CEO" race="terran" faction="6">
-							<upkeep type="cash" quantity="10" />
-				<skill name="exmgmt" experience="10" />
+							<upkeep type="cash" quantity="20" />
 						</person>
 						<itemstack type="terran" quantity="20" />
-						<upkeep type="cash" quantity="90" />
+						<upkeep type="cash" quantity="180" />
 					</modulestack>
 					<modulestack name="240003" type="cargob" quantity="2" faction="6">
 						<itemstack type="food" quantity="400" />
@@ -1045,24 +1047,24 @@
 						<itemstack type="silici" quantity="15" />
 						<itemstack type="titani" quantity="2" />
 						<itemstack type="oil" quantity="5" />
-						<upkeep type="cash" quantity="20" />
+						<upkeep type="cash" quantity="40" />
 					</modulestack>
 					<modulestack name="240004" type="sdrill" quantity="1" faction="6">
 						<itemstack type="terran" quantity="6" />
-						<upkeep type="cash" quantity="35" />
+						<upkeep type="cash" quantity="70" />
 					</modulestack>
 					<modulestack name="240005" type="factry" quantity="2" faction="6">
 						<itemstack type="terran" quantity="20" />
-						<upkeep type="cash" quantity="110" />
+						<upkeep type="cash" quantity="220" />
 					</modulestack>
 					<modulestack name="240006" type="farms" quantity="3" faction="6">
 						<itemstack type="terran" quantity="15" />
-						<upkeep type="cash" quantity="90" />
+						<upkeep type="cash" quantity="180" />
 					</modulestack>
 					<modulestack name="240007" type="cplant" quantity="2" faction="6">
 						<itemstack type="carbon" quantity="20" />
 						<itemstack type="terran" quantity="4" />
-						<upkeep type="cash" quantity="80" />
+						<upkeep type="cash" quantity="160" />
 					</modulestack>
 				</region>
 				<region name="R00028" name-en="Windgap" X="3" Y="4" type="grassl">
@@ -1088,6 +1090,9 @@
 						<itemstack type="terran" quantity="12" />
 						<upkeep type="food" quantity="100" />
 						<buying quantity="100" price="1" item="food" />
+						<buying quantity="5" price="20" module="wnplnt" />
+						<buying quantity="1" price="200" module="factry" />
+						<buying quantity="1" price="200" module="cplant" />
 						<selling quantity="30" price="4" item="food" />
 						<modulestack name="100021" type="farms" quantity="4" faction="1" name-en="Windgap farms">
 							<upkeep type="cash" quantity="120" />
@@ -1106,7 +1111,7 @@
 					<deep-pocket>
 						<resource type="uraniu" quantity="25" />
 					</deep-pocket>
-					<anomaly type="spectral" points="8" description="Narrow IR emission line in a wind-cut saddle ï¿½ heated outcrop or shallow geothermal bleed.">
+					<anomaly type="spectral" points="8" description="Narrow IR emission line in a wind-cut saddle — heated outcrop or shallow geothermal bleed.">
 						<reward band="0" kind="survey-blurb" />
 						<reward band="0" kind="research-rp" technology="optins" quantity="20" />
 						<reward band="2" kind="research-rp" technology="survts" quantity="8" />
@@ -2711,6 +2716,9 @@
 						<buying quantity="20" price="2" item="titani" />
 						<buying quantity="20" price="2" item="copper" />
 						<buying quantity="20" price="2" item="silici" />
+						<buying quantity="5" price="20" module="wnplnt" />
+						<buying quantity="1" price="200" module="factry" />
+						<buying quantity="1" price="200" module="cplant" />
 						<selling quantity="40" price="6" item="food" />
 						<selling quantity="25" price="4" item="titani" />
 						<selling quantity="25" price="4" item="copper" />
@@ -2819,11 +2827,10 @@
 					<resource type="silici" quantity="30" />
 					<modulestack name="250001" type="corphq" quantity="1" faction="7" name-en="Ironclad Headquarters">
 						<person name="250010" name-en="Ironclad CEO" race="terran" faction="7">
-							<upkeep type="cash" quantity="10" />
-				<skill name="exmgmt" experience="10" />
+							<upkeep type="cash" quantity="20" />
 						</person>
 						<itemstack type="terran" quantity="20" />
-						<upkeep type="cash" quantity="90" />
+						<upkeep type="cash" quantity="180" />
 					</modulestack>
 					<modulestack name="250003" type="cargob" quantity="2" faction="7">
 						<itemstack type="food" quantity="80" />
@@ -2835,22 +2842,22 @@
 						<itemstack type="copper" quantity="30" />
 						<itemstack type="uraniu" quantity="20" />
 						<itemstack type="oil" quantity="5" />
-						<upkeep type="cash" quantity="20" />
+						<upkeep type="cash" quantity="40" />
 					</modulestack>
 					<modulestack name="250004" type="sdrill" quantity="1" faction="7">
 						<itemstack type="terran" quantity="6" />
-						<upkeep type="cash" quantity="35" />
+						<upkeep type="cash" quantity="70" />
 					</modulestack>
 					<modulestack name="250005" type="factry" quantity="2" faction="7">
 						<itemstack type="terran" quantity="20" />
-						<upkeep type="cash" quantity="110" />
+						<upkeep type="cash" quantity="220" />
 					</modulestack>
 					<modulestack name="250006" type="farms" quantity="2" faction="7">
 						<itemstack type="terran" quantity="10" />
-						<upkeep type="cash" quantity="60" />
+						<upkeep type="cash" quantity="120" />
 					</modulestack>
-					<modulestack name="250007" type="wnplnt" quantity="8" faction="7">
-						<upkeep type="cash" quantity="8" />
+					<modulestack name="250007" type="wnplnt" quantity="16" faction="7">
+						<upkeep type="cash" quantity="32" />
 					</modulestack>
 				</region>
 				<region name="R00046" name-en="Slope" X="2" Y="1" type="grassl">
@@ -2948,11 +2955,10 @@
 					<resource type="silici" quantity="30" />
 					<modulestack name="260001" type="corphq" quantity="1" faction="8" name-en="Oreline Headquarters">
 						<person name="260010" name-en="Oreline CEO" race="terran" faction="8">
-							<upkeep type="cash" quantity="10" />
-				<skill name="exmgmt" experience="10" />
+							<upkeep type="cash" quantity="20" />
 						</person>
 						<itemstack type="terran" quantity="20" />
-						<upkeep type="cash" quantity="90" />
+						<upkeep type="cash" quantity="180" />
 					</modulestack>
 					<modulestack name="260003" type="cargob" quantity="2" faction="8">
 						<itemstack type="food" quantity="80" />
@@ -2964,22 +2970,22 @@
 						<itemstack type="copper" quantity="30" />
 						<itemstack type="uraniu" quantity="20" />
 						<itemstack type="oil" quantity="5" />
-						<upkeep type="cash" quantity="20" />
+						<upkeep type="cash" quantity="40" />
 					</modulestack>
 					<modulestack name="260004" type="sdrill" quantity="1" faction="8">
 						<itemstack type="terran" quantity="6" />
-						<upkeep type="cash" quantity="35" />
+						<upkeep type="cash" quantity="70" />
 					</modulestack>
 					<modulestack name="260005" type="factry" quantity="2" faction="8">
 						<itemstack type="terran" quantity="20" />
-						<upkeep type="cash" quantity="110" />
+						<upkeep type="cash" quantity="220" />
 					</modulestack>
 					<modulestack name="260006" type="farms" quantity="2" faction="8">
 						<itemstack type="terran" quantity="10" />
-						<upkeep type="cash" quantity="60" />
+						<upkeep type="cash" quantity="120" />
 					</modulestack>
-					<modulestack name="260007" type="wnplnt" quantity="8" faction="8">
-						<upkeep type="cash" quantity="8" />
+					<modulestack name="260007" type="wnplnt" quantity="16" faction="8">
+						<upkeep type="cash" quantity="32" />
 					</modulestack>
 				</region>
 				<region name="R00050" name-en="East Talus" X="6" Y="1" type="dust">
@@ -3067,7 +3073,7 @@
 					<deep-pocket>
 						<resource type="silici" quantity="50" />
 					</deep-pocket>
-					<anomaly type="seismic" points="8" description="Reflected compressional wave off a shallow density contrast ï¿½ void or ore lens.">
+					<anomaly type="seismic" points="8" description="Reflected compressional wave off a shallow density contrast — void or ore lens.">
 						<reward band="0" kind="survey-blurb" />
 						<reward band="0" kind="research-rp" technology="optins" quantity="20" />
 						<reward band="2" kind="resource" item="copper" quantity="1" />
@@ -3094,11 +3100,10 @@
 					<resource type="silici" quantity="30" />
 					<modulestack name="270001" type="corphq" quantity="1" faction="9" name-en="Basalt Headquarters">
 						<person name="270010" name-en="Basalt CEO" race="terran" faction="9">
-							<upkeep type="cash" quantity="10" />
-				<skill name="exmgmt" experience="10" />
+							<upkeep type="cash" quantity="20" />
 						</person>
 						<itemstack type="terran" quantity="20" />
-						<upkeep type="cash" quantity="90" />
+						<upkeep type="cash" quantity="180" />
 					</modulestack>
 					<modulestack name="270003" type="cargob" quantity="2" faction="9">
 						<itemstack type="food" quantity="80" />
@@ -3110,22 +3115,22 @@
 						<itemstack type="copper" quantity="30" />
 						<itemstack type="uraniu" quantity="20" />
 						<itemstack type="oil" quantity="5" />
-						<upkeep type="cash" quantity="20" />
+						<upkeep type="cash" quantity="40" />
 					</modulestack>
 					<modulestack name="270004" type="sdrill" quantity="1" faction="9">
 						<itemstack type="terran" quantity="6" />
-						<upkeep type="cash" quantity="35" />
+						<upkeep type="cash" quantity="70" />
 					</modulestack>
 					<modulestack name="270005" type="factry" quantity="2" faction="9">
 						<itemstack type="terran" quantity="20" />
-						<upkeep type="cash" quantity="110" />
+						<upkeep type="cash" quantity="220" />
 					</modulestack>
 					<modulestack name="270006" type="farms" quantity="2" faction="9">
 						<itemstack type="terran" quantity="10" />
-						<upkeep type="cash" quantity="60" />
+						<upkeep type="cash" quantity="120" />
 					</modulestack>
-					<modulestack name="270007" type="wnplnt" quantity="8" faction="9">
-						<upkeep type="cash" quantity="8" />
+					<modulestack name="270007" type="wnplnt" quantity="16" faction="9">
+						<upkeep type="cash" quantity="32" />
 					</modulestack>
 				</region>
 				<region name="R00055" name-en="Scree" X="4" Y="2" type="dust">
@@ -3198,6 +3203,9 @@
 						<itemstack type="terran" quantity="10" />
 						<upkeep type="food" quantity="100" />
 						<buying quantity="60" price="2" item="food" />
+						<buying quantity="5" price="20" module="wnplnt" />
+						<buying quantity="1" price="200" module="factry" />
+						<buying quantity="1" price="200" module="cplant" />
 						<selling quantity="10" price="4" item="titani" />
 						<modulestack name="100041" type="farms" quantity="4" faction="1" name-en="Ridge farms">
 							<upkeep type="cash" quantity="120" />
@@ -3257,11 +3265,10 @@
 					<resource type="iron" quantity="15" />
 					<modulestack name="280001" type="corphq" quantity="1" faction="10" name-en="Silicate Headquarters">
 						<person name="280010" name-en="Silicate CEO" race="terran" faction="10">
-							<upkeep type="cash" quantity="10" />
-				<skill name="exmgmt" experience="10" />
+							<upkeep type="cash" quantity="20" />
 						</person>
 						<itemstack type="terran" quantity="20" />
-						<upkeep type="cash" quantity="90" />
+						<upkeep type="cash" quantity="180" />
 					</modulestack>
 					<modulestack name="280003" type="cargob" quantity="2" faction="10">
 						<itemstack type="food" quantity="80" />
@@ -3273,22 +3280,22 @@
 						<itemstack type="copper" quantity="30" />
 						<itemstack type="uraniu" quantity="20" />
 						<itemstack type="oil" quantity="5" />
-						<upkeep type="cash" quantity="20" />
+						<upkeep type="cash" quantity="40" />
 					</modulestack>
 					<modulestack name="280004" type="sdrill" quantity="1" faction="10">
 						<itemstack type="terran" quantity="6" />
-						<upkeep type="cash" quantity="35" />
+						<upkeep type="cash" quantity="70" />
 					</modulestack>
 					<modulestack name="280005" type="factry" quantity="2" faction="10">
 						<itemstack type="terran" quantity="20" />
-						<upkeep type="cash" quantity="110" />
+						<upkeep type="cash" quantity="220" />
 					</modulestack>
 					<modulestack name="280006" type="farms" quantity="2" faction="10">
 						<itemstack type="terran" quantity="10" />
-						<upkeep type="cash" quantity="60" />
+						<upkeep type="cash" quantity="120" />
 					</modulestack>
-					<modulestack name="280007" type="wnplnt" quantity="8" faction="10">
-						<upkeep type="cash" quantity="8" />
+					<modulestack name="280007" type="wnplnt" quantity="16" faction="10">
+						<upkeep type="cash" quantity="32" />
 					</modulestack>
 				</region>
 				<region name="R00060" name-en="Vale" X="2" Y="3" type="grassl">
@@ -3398,11 +3405,10 @@
 					<resource type="silici" quantity="30" />
 					<modulestack name="290001" type="corphq" quantity="1" faction="11" name-en="Fission Headquarters">
 						<person name="290010" name-en="Fission CEO" race="terran" faction="11">
-							<upkeep type="cash" quantity="10" />
-				<skill name="exmgmt" experience="10" />
+							<upkeep type="cash" quantity="20" />
 						</person>
 						<itemstack type="terran" quantity="20" />
-						<upkeep type="cash" quantity="90" />
+						<upkeep type="cash" quantity="180" />
 					</modulestack>
 					<modulestack name="290003" type="cargob" quantity="2" faction="11">
 						<itemstack type="food" quantity="80" />
@@ -3414,22 +3420,22 @@
 						<itemstack type="copper" quantity="30" />
 						<itemstack type="uraniu" quantity="20" />
 						<itemstack type="oil" quantity="5" />
-						<upkeep type="cash" quantity="20" />
+						<upkeep type="cash" quantity="40" />
 					</modulestack>
 					<modulestack name="290004" type="sdrill" quantity="1" faction="11">
 						<itemstack type="terran" quantity="6" />
-						<upkeep type="cash" quantity="35" />
+						<upkeep type="cash" quantity="70" />
 					</modulestack>
 					<modulestack name="290005" type="factry" quantity="2" faction="11">
 						<itemstack type="terran" quantity="20" />
-						<upkeep type="cash" quantity="110" />
+						<upkeep type="cash" quantity="220" />
 					</modulestack>
 					<modulestack name="290006" type="farms" quantity="2" faction="11">
 						<itemstack type="terran" quantity="10" />
-						<upkeep type="cash" quantity="60" />
+						<upkeep type="cash" quantity="120" />
 					</modulestack>
-					<modulestack name="290007" type="wnplnt" quantity="8" faction="11">
-						<upkeep type="cash" quantity="8" />
+					<modulestack name="290007" type="wnplnt" quantity="16" faction="11">
+						<upkeep type="cash" quantity="32" />
 					</modulestack>
 				</region>
 				<region name="R00064" name-en="Fan" X="6" Y="3" type="dust">
@@ -3520,6 +3526,9 @@
 						<itemstack type="terran" quantity="10" />
 						<upkeep type="food" quantity="100" />
 						<buying quantity="60" price="2" item="food" />
+						<buying quantity="5" price="20" module="wnplnt" />
+						<buying quantity="1" price="200" module="factry" />
+						<buying quantity="1" price="200" module="cplant" />
 						<selling quantity="6" price="8" item="uraniu" />
 						<modulestack name="100051" type="farms" quantity="4" faction="1" name-en="Isotope farms">
 							<upkeep type="cash" quantity="120" />

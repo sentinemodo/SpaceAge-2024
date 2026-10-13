@@ -563,6 +563,17 @@ namespace UnitTests
             Assert.That(cargobBid, Is.Not.Null);
             Assert.That(cargobBid.Quantity, Is.EqualTo(1));
             Assert.That(cargobBid.Price, Is.EqualTo(100));
+
+            ModuleType wnplnt = ModuleType.All["wnplnt"];
+            Offer windBid = this.findModuleBuyOffer(berlin, wnplnt);
+            Assert.That(windBid, Is.Not.Null);
+            Assert.That(windBid.Quantity, Is.EqualTo(5));
+            Assert.That(windBid.Price, Is.EqualTo(20));
+
+            ModuleType factry = ModuleType.All["factry"];
+            Offer factoryBid = this.findModuleBuyOffer(berlin, factry);
+            Assert.That(factoryBid, Is.Not.Null);
+            Assert.That(factoryBid.Price, Is.EqualTo(200));
         }
 
         private Offer findModuleBuyOffer(ModuleStack stack, ModuleType moduleType)

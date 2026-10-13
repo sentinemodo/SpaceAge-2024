@@ -330,8 +330,8 @@ Standing t=1 XML buys are preserved: existing offers keep their **price**; quant
 | Tier | Item buys (× stack qty) | Module buys (per stack) |
 |------|-------------------------|-------------------------|
 | **`town`** | `food` **60 @ 1**; `iron` **15 @ 1**; `carbon` **15 @ 2** | — |
-| **`city`** | `food` **100 @ 1**; `iron` **25 @ 1**; `carbon` **25 @ 2**; `silici` **20 @ 2**; `titani` **10 @ 2** | `cargob`, `farms`, `wnplnt`, `cplant`, `sdrill`, `cdrill`, `factry` — **1 each @ 50–100** (cargo/food/drill/factory @ 100, wind @ 50) |
-| **`mtrply`** | `food` **500 @ 1**; `iron` **40 @ 1**; `carbon` **40 @ 2**; `silici` **30 @ 2**; `titani` **25 @ 2**; `copper` **25 @ 2**; `uraniu` **10 @ 4** | Same module types as city — **2 each @ 50–100** |
+| **`city`** | `food` **100 @ 1**; `iron` **25 @ 1**; `carbon` **25 @ 2**; `silici` **20 @ 2**; `titani` **10 @ 2** | `cargob`, `farms`, `sdrill`, `cdrill` — **1 each @ 100**; `wnplnt` **5 @ 20**; `cplant`, `factry` — **1 each @ 200** |
+| **`mtrply`** | `food` **500 @ 1**; `iron` **40 @ 1**; `carbon` **40 @ 2**; `silici` **30 @ 2**; `titani` **25 @ 2**; `copper` **25 @ 2**; `uraniu` **10 @ 4** | Same module types as city — module bids **×2** (`wnplnt` **10 @ 20**; `cplant`/`factry` **2 @ 200**; others **2 @ 100**) |
 
 Implementation: `SettlementBuyBook.cs` + `Game.RefillSettlementBuyOffers()`.
 

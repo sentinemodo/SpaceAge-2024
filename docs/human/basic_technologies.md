@@ -321,7 +321,7 @@ Group `command`. Built by advanced space command `[advspc]`. Size 900, mass 350,
 
 **computer library [cmplib]**  
 The efficiency of the computer library allows on to store and manipulate larger than usual files and technological reference documents.  
-Group `research`. Built by file indexing `[filidx]`. Size 200, mass 50, energy 5, HP 50, tech-cap 4, research-output 1, value 1000. Upkeep 5 cash.
+Group `research`. Built by file indexing `[filidx]`. Size 200, mass 50, crew 2, energy 5, HP 50, tech-cap 4, research-output 1, value 1000. Upkeep 5 cash.
 
 **optical lab [optlab]**  
 Diffraction-limited optical and IR instruments for survey and targeting research.  
@@ -377,7 +377,7 @@ Group `storage`. Built by small scale transportation `[strans]`. Size 2000, mass
 
 **space shuttle [shuttl]**  
 Basic shuttle used for orbital constructions. It has basic construction facitilites, small fission reactor and is propelled by a small reaction drive.  
-Group `production`. Built by shuttles assembly `[shtlas]`. Size 200, mass 30, crew 2, capacity 125, HP 17, tech-cap 1. Upkeep 10 cash. USE in orbit at 10× efficiency, requires fuel. Space move, speed 1, mass-capacity 750. Fuel duration 13 (1 uranium, 1 oxyhydro). Operates on solid-surface, liquid-surface, orbit. Counts as a shuttle.
+Group `production`. Built by shuttles assembly `[shtlas]`. Size 200, mass 30, crew 2, capacity 125, HP 17, tech-cap 1, energy 0. Upkeep 10 cash. Orbit USE at one-tenth factory speed (same `efficiency-multiplier` 10 as engineering truck `[engtrk]`), requires fuel. Space move, speed 1, mass-capacity 750. Fuel duration 13 (1 uranium, 1 oxyhydro). Operates on solid-surface, liquid-surface, orbit. Counts as a shuttle.
 
 **spaceship hull [sshull]**  
 The basic spaceship hull, it embodies the technology and experience in space travel.  
@@ -392,12 +392,12 @@ Group of large and slow ground moving trucks.
 Group `vehicle`. Built by ground transport `[grndtr]`. Size 250, mass 100, crew 1, capacity 150, HP 17. Upkeep 5 cash. Consumes 4 food and 4 terran air (damage 25% if not). Ground move speed 0.5. Fuel duration 13 (1 oil). Operates on solid-surface with terran atmosphere.
 
 **engineering truck [engtrk]**  
-Mobile production module on an oil-fuelled chassis. Any factory USE allowed on solid ground applies here at one-tenth speed; needs oil fuel before USE.  
-Group `production`. Built by mobile construction team `[mobctr]`. Size 250, mass 120, crew 2, capacity 150, HP 17. Upkeep 8 cash. Consumes 6 food and 6 terran air (damage 25% if not). Ground move speed 0.4. Fuel duration 13 (1 oil). Operates on solid-surface with terran atmosphere.
+Mobile production module on an oil-fuelled chassis. Any factory USE allowed on solid ground applies here at one-tenth factory speed (same `efficiency-multiplier` 10 as orbit shuttle `[shuttl]`); needs oil fuel before USE.  
+Group `production`. Built by mobile construction team `[mobctr]`. Size 250, mass 120, crew 2, capacity 150, HP 17. Upkeep 8 cash. Ground move speed 0.4. Fuel duration 13 (1 oil). Operates on solid-surface with terran atmosphere.
 
 **mobile laboratory [moblab]**  
 Six-wheel flatbed carries FTIR, XRF, and a field terminal for half-rate research and anomaly investigation (spectral, radiometric).  
-Group `research`. Built by mobile survey team `[msrvtm]`. Size 220, mass 75, crew 1, capacity 50, energy 3, HP 30, tech-cap 2, research-output 1 (divisor 2), investigation-output 1. Upkeep 5 cash. Consumes 1 food and 1 terran air per quarter (damage 25% if not). Ground move speed 0.5. **Fuel duration 13 (1 oil)** — same ground fuel rule as `trucks`. Operates on solid-surface with terran atmosphere.
+Group `research`. Built by mobile survey team `[msrvtm]`. Size 220, mass 75, crew 1, capacity 50, energy 3, HP 30, tech-cap 2, research-output 1 (divisor 2), investigation-output 1. Upkeep 5 cash. Ground move speed 0.5. Fuel duration 13 (1 oil). Operates on solid-surface with terran atmosphere.
 
 **wind powerplant [wnplnt]**  
 Small serviceless energy system, utilising power of the wind.  

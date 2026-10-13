@@ -44,6 +44,17 @@ NEST_CPLANT_CASH_UPKEEP = 160
 NEST_FARMS_CASH_UPKEEP_ANVIL = 120
 NEST_WNPLNT_CASH_UPKEEP = 32
 
+# Standing NPC city module bids at t=1 (matches SettlementBuyBook city tier).
+CITY_MODULE_BUYS = (
+    {"module": "wnplnt", "quantity": 5, "price": 20},
+    {"module": "factry", "quantity": 1, "price": 200},
+    {"module": "cplant", "quantity": 1, "price": 200},
+)
+
+
+def city_module_buys(*item_buys):
+    return list(item_buys) + list(CITY_MODULE_BUYS)
+
 
 def next_gate_au():
     """Random Alderson gate AU in [GATE_AU_MIN, GATE_AU_MAX] (deterministic per GATE_AU_SEED)."""
@@ -1405,11 +1416,11 @@ def build_world():
             Stack("100005", "inftry", 1, 4, "Assembly garrison"),
             Stack("100006", "cargob", 1, 2, "Assembly granary"),
         ],
-        buying=[
+        buying=city_module_buys(
             {"item": "food", "quantity": 500, "price": 1},
             {"item": "carbon", "quantity": 80, "price": 2},
             {"module": "farms", "quantity": 2, "price": 100},
-        ],
+        ),
         selling=[
             {"item": "food", "quantity": 120, "price": 4},
             {"item": "iron", "quantity": 30, "price": 3},
@@ -1467,7 +1478,7 @@ def build_world():
             2,
             1,
             [("food", 400), ("oil", 20)],
-            [{"item": "food", "quantity": 80, "price": 1}],
+            city_module_buys({"item": "food", "quantity": 80, "price": 1}),
             [{"item": "oil", "quantity": 15, "price": 5}],
         )
     )
@@ -1484,7 +1495,7 @@ def build_world():
             6,
             1,
             [("food", 200)],
-            [{"item": "food", "quantity": 100, "price": 1}],
+            city_module_buys({"item": "food", "quantity": 100, "price": 1}),
             [{"item": "food", "quantity": 30, "price": 4}],
         )
     )
@@ -1501,13 +1512,13 @@ def build_world():
             10,
             1,
             [("food", 80), ("titani", 25), ("copper", 25), ("uraniu", 10), ("silici", 20)],
-            [
+            city_module_buys(
                 {"item": "food", "quantity": 200, "price": 2},
                 {"item": "iron", "quantity": 40, "price": 1},
                 {"item": "titani", "quantity": 20, "price": 2},
                 {"item": "copper", "quantity": 20, "price": 2},
                 {"item": "silici", "quantity": 20, "price": 2},
-            ],
+            ),
             [
                 {"item": "food", "quantity": 40, "price": 6},
                 {"item": "titani", "quantity": 25, "price": 4},
@@ -1531,7 +1542,7 @@ def build_world():
             6,
             1,
             [("food", 80), ("titani", 12)],
-            [{"item": "food", "quantity": 60, "price": 2}],
+            city_module_buys({"item": "food", "quantity": 60, "price": 2}),
             [{"item": "titani", "quantity": 10, "price": 4}],
         )
     )
@@ -1548,7 +1559,7 @@ def build_world():
             4,
             1,
             [("food", 60), ("uraniu", 8)],
-            [{"item": "food", "quantity": 60, "price": 2}],
+            city_module_buys({"item": "food", "quantity": 60, "price": 2}),
             [{"item": "uraniu", "quantity": 6, "price": 8}],
         )
     )

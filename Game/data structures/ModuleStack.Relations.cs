@@ -189,6 +189,10 @@ namespace SpaceAge
 		{
 			get
 			{
+				if (!this.UsesPlayerSupplyRules)
+				{
+					return this.quantityOperationalForOwnerRules();
+				}
 				if (!this.IsFormed || !this.online)
 				{
 					return 0;

@@ -58,11 +58,11 @@ namespace SpaceAge
 
 			yield return moduleTarget("cargob", 1, 100);
 			yield return moduleTarget("farms", 1, 100);
-			yield return moduleTarget("wnplnt", 1, 50);
-			yield return moduleTarget("cplant", 1, 100);
+			yield return moduleTarget("wnplnt", 5, 20);
+			yield return moduleTarget("cplant", 1, 200);
 			yield return moduleTarget("sdrill", 1, 100);
 			yield return moduleTarget("cdrill", 1, 100);
-			yield return moduleTarget("factry", 1, 100);
+			yield return moduleTarget("factry", 1, 200);
 		}
 
 		private static IEnumerable<SettlementBuyTarget> metropolyTargets(int stackQuantity)
@@ -77,11 +77,11 @@ namespace SpaceAge
 
 			yield return moduleTarget("cargob", 2, 100);
 			yield return moduleTarget("farms", 2, 100);
-			yield return moduleTarget("wnplnt", 2, 50);
-			yield return moduleTarget("cplant", 2, 100);
+			yield return moduleTarget("wnplnt", 10, 20);
+			yield return moduleTarget("cplant", 2, 200);
 			yield return moduleTarget("sdrill", 2, 100);
 			yield return moduleTarget("cdrill", 2, 100);
-			yield return moduleTarget("factry", 2, 100);
+			yield return moduleTarget("factry", 2, 200);
 		}
 
 		private static SettlementBuyTarget itemTarget(string itemName, int quantity, int price)

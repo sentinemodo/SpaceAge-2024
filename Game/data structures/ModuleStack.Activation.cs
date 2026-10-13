@@ -109,6 +109,19 @@ namespace SpaceAge
 				return false;
 			}
 
+			if (!this.UsesPlayerSupplyRules)
+			{
+				foreach (ModuleStack mover in this.spaceMovers())
+				{
+					if (mover.QuantityActive > 0)
+					{
+						return true;
+					}
+				}
+
+				return this.MoveModes.ContainsKey(EMoveMode.ground);
+			}
+
 			foreach (ModuleStack mover in this.spaceMovers())
 			{
 				if (mover.HasOperationalModules && !mover.NeedFuel(null))

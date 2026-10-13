@@ -2549,7 +2549,7 @@ Researchers can query the library. The system can handle natural language questi
 			name-en="engineering truck"
 			name-en2="engineering trucks"
 			group="production"
-			description="Mobile production module on an oil-fuelled chassis. Any factory USE allowed on solid ground applies here at one-tenth speed; suited to field cplants, drills, and contract modules—not hauling finished complexes."
+			description="Mobile production module on an oil-fuelled chassis. Any factory USE allowed on solid ground applies here at one-tenth factory speed (efficiency-multiplier 10, same as orbit shuttles); needs oil fuel before USE. Suited to field cplants, drills, and contract modules—not hauling finished complexes."
 			size="250"
 			mass="120"
 			capacity="150"
@@ -2559,9 +2559,6 @@ Researchers can query the library. The system can handle natural language questi
 			<operation-allowed-in planet-atmosphere="terair"/>
 			<operation-allowed-in location-type="solid-surface"/>
 			<upkeep type="cash" quantity="8"/>
-			<consume type="food" quantity="6"/>
-			<consume type="terair" quantity="6"/>
-			<no-consume effect="damage" chance="25"/>
 			<move mode="ground" speed="0.4"/>
 			<use efficiency-multiplier="10" require-fuel="true" location-type="solid-surface"/>
 			<fuel duration="13">
@@ -2672,15 +2669,16 @@ Researchers can query the library. The system can handle natural language questi
 			name="shuttl"
 			name-en="space shuttle"
 			group="production" 
-			description="Basic shuttle used for orbital constructions. It has basic construction facitilites, small fission reactor and is propelled by a small reaction drive." 
+			description="Basic shuttle used for orbital constructions. It has basic construction facitilites, small fission reactor and is propelled by a small reaction drive. Orbit USE runs at one-tenth factory speed (efficiency-multiplier 10, same as engineering truck [engtrk]); requires fuel before USE." 
 			size="200"			
 			mass="30" 
 			capacity="125"
 			crew="2"
+			energy="0"
 			technology-capacity="1"
 			hit-points="17">
 			<upkeep type="cash" quantity="10"/>
-			<use location-type="orbit" efficiency-multiplier="10" require-fuel="true"/>
+			<use efficiency-multiplier="10" require-fuel="true" location-type="orbit"/>
 			<move mode="space" mass-capacity="750">
 			</move>
 			<fuel duration="13">
@@ -3361,6 +3359,7 @@ Researchers can query the library. The system can handle natural language questi
 			description="The efficiency of the computer library allows on to store and manipulate larger than usual files and technological reference documents."
 			size="200"
 			mass="50"
+			crew="2"
 			hit-points="50"
 			energy="5"			
 			technology-capacity="4"
@@ -3389,9 +3388,6 @@ Researchers can query the library. The system can handle natural language questi
 			<operation-allowed-in planet-atmosphere="terair"/>
 			<operation-allowed-in location-type="solid-surface"/>
 			<upkeep type="cash" quantity="5"/>
-			<consume type="food" quantity="1"/>
-			<consume type="terair" quantity="1"/>
-			<no-consume effect="damage" chance="25"/>
 			<move mode="ground" speed="0.5"/>
 			<fuel duration="13">
 				<item type="oil" quantity="1"/>
@@ -3501,7 +3497,7 @@ Researchers can query the library. The system can handle natural language questi
 			<operation-allowed-in location-type="solid-surface"/>
 			<operation-allowed-in location-type="orbit"/>
 		</entry>
-		<entry name="advlib" name-en="advanced research complex" name-en2="advanced research complexes" group="research" description="A large, high-throughput research facility building on computer-library methods." size="400" mass="100" energy="10" hit-points="80" technology-capacity="8" research-output="2">
+		<entry name="advlib" name-en="advanced research complex" name-en2="advanced research complexes" group="research" description="A large, high-throughput research facility building on computer-library methods." size="400" mass="100" crew="4" energy="10" hit-points="80" technology-capacity="8" research-output="2">
 			<upkeep type="cash" quantity="40"/>
 		</entry>
 		<entry

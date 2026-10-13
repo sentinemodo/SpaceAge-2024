@@ -104,6 +104,11 @@ namespace SpaceAge
 				return;
 			}
 
+			if (!this.UsesPlayerSupplyRules)
+			{
+				return;
+			}
+
 			this.payLocalUpkeep(week);
 			this.consumeLocalSupplies(week);
 		}

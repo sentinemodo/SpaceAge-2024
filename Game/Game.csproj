@@ -218,6 +218,7 @@
     <Compile Include="data structures\ModuleStack.Sharing.cs" />
     <Compile Include="data structures\ModuleEnergyPriority.cs" />
     <Compile Include="data structures\ModuleStack.Energy.cs" />
+    <Compile Include="data structures\ModuleStack.NpcFaction.cs" />
     <Compile Include="data structures\ModuleStack.Upkeep.cs" />
     <Compile Include="data structures\ModuleStack.Xml.cs" />
     <Compile Include="data structures\ModuleStacks.cs" />

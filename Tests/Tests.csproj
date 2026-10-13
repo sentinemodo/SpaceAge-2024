@@ -98,6 +98,7 @@
     <Compile Include="TUseRepairEffect.cs" />
     <Compile Include="TMove.cs" />
     <Compile Include="TMovePerson.cs" />
+    <Compile Include="TNpcFactionSupply.cs" />
     <Compile Include="TPersonOrdersTemplate.cs" />
     <Compile Include="TMoveInTransit.cs" />
     <Compile Include="TMoveMode.cs" />

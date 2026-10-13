@@ -282,7 +282,7 @@ Group `storage`. Built by small scale transportation `[strans]`. Size 2000, mass
 
 **space shuttle [shuttl]**  
 Basic shuttle used for orbital constructions. It has basic construction facitilites, small fission reactor and is propelled by a small reaction drive.  
-Group `production` (stays production so orbit `USE` still works). Built by shuttles assembly `[shtlas]`. Size 200, mass 30, crew 2, capacity 125, HP 17, tech-cap 1. Upkeep 100 cash. USE in orbit at 10× efficiency, requires fuel. Space move, speed 1 (omitted in catalog), mass-capacity 750. Fuel duration 13. Operates on solid-surface, liquid-surface, orbit. Shuttle unit (`IsShuttleUnit` / hangar craft) by type id, same as fighter drones `[alndrn]` (those use catalog group `shuttle`).
+Group `production` (stays production so orbit `USE` still works). Built by shuttles assembly `[shtlas]`. Size 200, mass 30, crew 2, capacity 125, HP 17, tech-cap 1. Upkeep 100 cash. USE in orbit at one-tenth factory speed (`efficiency-multiplier` 10; duration ×10 vs a factory), requires fuel. Space move, speed 1 (omitted in catalog), mass-capacity 750. Fuel duration 13. Operates on solid-surface, liquid-surface, orbit. Shuttle unit (`IsShuttleUnit` / hangar craft) by type id, same as fighter drones `[alndrn]` (those use catalog group `shuttle`).
 
 **spaceship hull [sshull]**  
 The basic spaceship hull, it embodies the technology and experience in space travel.  
@@ -414,6 +414,6 @@ See [`play/player/campaign/basic_technologies.md`](campaign/basic_technologies.m
 
 **mobile construction team [mobctr]** (L1, requires `grndtr`) — builds **engineering truck [engtrk]**.
 
-**engineering truck [engtrk]** — mobile `production` module; factory USE techs on solid surface at 10× duration; needs oil fuel.
+**engineering truck [engtrk]** — mobile `production` module; factory USE techs on solid surface at one-tenth factory speed (`efficiency-multiplier` 10, same as orbit `[shuttl]` in campaign); needs oil fuel.
 
 **advanced space command [advspc]** (L1, requires `spctrl`) — builds **advanced space command module [advcmd]**; grants skill `sscmnd` (moved from `servic`).
