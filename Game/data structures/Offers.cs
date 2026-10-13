@@ -69,7 +69,7 @@ namespace SpaceAge
 				Offers offers = new Offers();
 				foreach (Offer offer in this)
 				{
-					if (offer.Market == market)
+					if (offer.IsListedInMarket(market))
 					{
 						offers.Add(offer);
 					}

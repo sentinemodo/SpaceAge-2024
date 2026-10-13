@@ -933,6 +933,42 @@ namespace UnitTests
 		}
 
 		[Test]
+		public void RegionalMarketIndexer_UsesOfferentLocationNotStaleMarketField()
+		{
+			Region regionA = this.game.Regions["R00001"];
+			Region regionB = this.game.Regions["R00002"];
+			ModuleStack seller = this.game.ModuleStacks["000008"];
+			ItemType food = ItemType.All["food"];
+			this.removeSellOffers(seller, food);
+			Offer sellOffer = new Offer(regionB.Market, seller, EOfferType.SellItems);
+			sellOffer.ItemType = food;
+			sellOffer.Quantity = 10;
+			sellOffer.Price = 1;
+
+			Assert.That(sellOffer.IsListedInMarket(regionA.Market), Is.True);
+			Assert.That(sellOffer.IsListedInMarket(regionB.Market), Is.False);
+			Assert.That(Offer.All[regionA.Market].Contains(sellOffer), Is.True);
+			Assert.That(Offer.All[regionB.Market].Contains(sellOffer), Is.False);
+			Assert.That(regionA.Market.Report(this.game.Factions["2"]).Exists(l => l.Contains("sell 10 units of food")), Is.True);
+		}
+
+		[Test]
+		public void BuyOrder_Everywhere_StubDoesNotPostOffer()
+		{
+			ModuleStack buyer = this.game.ModuleStacks["000004"];
+			ItemType terran = ItemType.All["terran"];
+			int offersBefore = Offer.All[buyer][EOfferType.BuyItems][terran].Count;
+
+			BuyOrder buyOrder = new BuyOrder(buyer);
+			buyOrder.Parse("all terran everywhere");
+			buyOrder.Execute(1);
+
+			Assert.That(buyOrder.FailedToExecute, Is.True);
+			Assert.That(Offer.All[buyer][EOfferType.BuyItems][terran].Count, Is.EqualTo(offersBefore));
+			Assert.That(this.hasEvent(buyer, 1, "cross-region market matching is not available"), Is.True);
+		}
+
+		[Test]
 		public void ParseBuyOrder_AtPlusOne_SetsRelativeOffset()
 		{
 			ModuleStack buyer = this.game.ModuleStacks["000004"];

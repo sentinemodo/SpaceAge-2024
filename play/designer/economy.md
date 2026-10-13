@@ -335,6 +335,27 @@ Standing t=1 XML buys are preserved: existing offers keep their **price**; quant
 
 Implementation: `SettlementBuyBook.cs` + `Game.RefillSettlementBuyOffers()`.
 
+### Regional market (live)
+
+Each **region** has one market. Standing offers **belong to the offerent’s current region** (`Offer.RegionalMarket` = `Offerent.Location.Market`) for **reports**, **price drift**, and **`ProcessBuyClearing`** — not a frozen region from when the sell was first posted. Moving a stack moves its listings to the destination region’s market section.
+
+**Cross-region catalog buy** (`BUY … EVERYWHERE`, `BUY … IN <region>`) is **stubbed** (local region only). Planetary body-wide matching is wishlisted — [`engine-wishlist.md`](engine-wishlist.md#planetary-market-design).
+
+### NPC market settlement (live)
+
+Regional matching runs **each week** (`ProcessBuyClearing`). **Player ↔ player** trades still require buyer cash/bank (including `AllowBank`), seller on-hand stock, and normal technology copy rules.
+
+For **NPC factions** — any owner outside player ids **2–11** (UN `[1]`, militias `[12]`/`[13]`, fauna, etc.):
+
+| NPC role | Engine behavior |
+|----------|-----------------|
+| **Buyer** (player sells) | NPC stack/bank is **not** debited; the player seller still receives payment as today (`paySeller`). |
+| **Seller** (player buys) | Clears against the listed offer **without** requiring on-hand items, modules, or technologies; goods are **created** for delivery at trade time. |
+
+Standing `<buying>` / `<selling>` on stacks in save XML are unchanged; only settlement at match time is relaxed. UN towns with **zero** faction bank can still fill standing food/ore bids against player sells.
+
+Implementation: `ContractScope.IsNpcFaction`, `Game/game/Market.NpcTrade.cs`.
+
 ### GenerateOffers — auto-sell (live)
 
 Each quarter, for every NPC faction `[1]` stack whose module type is **`city`**:

@@ -71,6 +71,24 @@ namespace SpaceAge
 			Offer.All.Add(this);
 		}
 
+		/// <summary>Region market where this offer trades (follows offerent location, not the stale Market field).</summary>
+		public Market RegionalMarket
+		{
+			get
+			{
+				if (this.Offerent == null || this.Offerent.Location == null)
+				{
+					return this.Market;
+				}
+				return this.Offerent.Location.Market;
+			}
+		}
+
+		public bool IsListedInMarket(Market market)
+		{
+			return market != null && this.RegionalMarket == market;
+		}
+
 		public bool SameMarketPosition(Offer other)
 		{
 			if (other == null)

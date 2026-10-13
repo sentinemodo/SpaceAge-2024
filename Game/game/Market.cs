@@ -477,6 +477,11 @@ namespace SpaceAge
 					return false;
 			}
 
+			if (buyOffer.Everywhere || buyOffer.BuyInRegion != null)
+			{
+				return false;
+			}
+
 			this.Buy = buyOffer;
             this.Sell = this.FindMatch(buyOffer);
 

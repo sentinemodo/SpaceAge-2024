@@ -767,7 +767,7 @@ namespace SpaceAge
                 }
                 else if (buyOffer.Everywhere || buyOffer.BuyInRegion != null)
                 {
-                    buyOffer.Process(this.week);
+                    // Planetary / cross-region catalog buy — stub until planetary market (wishlist).
                 }
             }
         }

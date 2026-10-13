@@ -432,6 +432,16 @@ namespace SpaceAge
 				return;
 			}
 
+			if (this.Everywhere || this.BuyInRegion != null)
+			{
+				this.Buyer.EventReports.Add(
+					week,
+					"BUY failed, cross-region market matching is not available (local region only).");
+				this.FailedToExecute = true;
+				base.Execute(week);
+				return;
+			}
+
 			if (this.Buy == null)
 			{
 				// create an offer, or keep a standing identical one
