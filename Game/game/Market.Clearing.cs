@@ -194,6 +194,10 @@ namespace SpaceAge
 					int ask = this.getSellAskPrice(sellOffer);
 					foreach (Offer buy in tier)
 					{
+						if (ContractScope.IsNpcFaction(buy.Offerent.Owner))
+						{
+							continue;
+						}
 						if (this.availableFunds(buy) < ask)
 						{
 							buy.Offerent.EventReports.Add(week, "BUY failed, not enough cash.");

@@ -145,7 +145,14 @@ namespace SpaceAge
 
 		public double Capacity
 		{
-			get { return this.Race.Capacity; }
+			get
+			{
+				if (this.Race == null)
+				{
+					return 0;
+				}
+				return this.Race.Capacity;
+			}
 		}
 
 		public double CapacityUsed

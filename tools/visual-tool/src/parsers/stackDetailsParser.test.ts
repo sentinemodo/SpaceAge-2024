@@ -32,4 +32,30 @@ Orders Template:
     expect(block).toMatch(/40 units of iron/);
     expect(block).toMatch(/5 units of oil/);
   });
+
+  it('keeps stack events on separate lines and stops at region text', () => {
+    const text = `
+  + peaceful scout [108], tanks [tanks].
+    events:
+      week 5: departed from Southern Hemisphere [R00003] (1,0) to
+      Northern Hemisphere [R00002] (0,0), ETA 5.
+      week 6: moving from Southern Hemisphere [R00003] (1,0) to Northern
+      Hemisphere [R00002] (0,0), ETA 4.
+      week 7: moving from Southern Hemisphere [R00003] (1,0) to Northern
+      Hemisphere [R00002] (0,0), ETA 3.
+
+  Southern Hemisphere [R00003] (1,0), grassland region, settlement
+  capacity 8/3.
+  Exits:
+    Northern Hemisphere [R00002] (0,0), grassland region, ground travel
+    duration 3 weeks, settlement detected.
+  Resources: 20 units of iron [iron].
+`;
+    const block = parseStackDetails(text).get('108') ?? '';
+    expect(block).toMatch(/events:\n\s*week 5:/);
+    expect(block).toMatch(/week 6: moving from Southern Hemisphere \[R00003\].*ETA 4\./s);
+    expect(block).toMatch(/week 7: moving from Southern Hemisphere \[R00003\].*ETA 3\./s);
+    expect(block).not.toMatch(/grassland region/);
+    expect(block).not.toMatch(/Resources:/);
+  });
 });

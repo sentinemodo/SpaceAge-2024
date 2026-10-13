@@ -218,6 +218,106 @@ function Get-TurnFromGamein {
 	return $null
 }
 
+# Full exe: Game.Execute() turn++ first; report.* and gameout.* use the post-increment turn.
+# Player "processing turn N" = that output report number; order files use T = N - 1 = gamein turn.
+function Get-TurnExecutionPlan {
+	param(
+		[Parameter(Mandatory = $true)][hashtable]$Paths
+	)
+	if ($Paths.ContainsKey('ProcessingTurn') -and $null -ne $Paths.ProcessingTurn) {
+		$processingTurn = [int]$Paths.ProcessingTurn
+		if ($processingTurn -lt 2) {
+			throw "Processing turn must be >= 2 (turn 1 is the seed gamein only)."
+		}
+		$gameinTurn = $processingTurn - 1
+		return @{
+			GameinTurn         = $gameinTurn
+			ProcessingTurn     = $processingTurn
+			OutputReportTurn   = $processingTurn
+			ExpectedOrdersTurn = $gameinTurn
+			ExplicitProcessingTurn = $true
+		}
+	}
+
+	$gamein = Join-Path $Paths.DataDir 'gamein.xml'
+	$gameinTurn = Get-TurnFromGamein -GameinPath $gamein
+	if ($null -eq $gameinTurn -or $gameinTurn -le 0) {
+		$gameinTurn = 1
+	}
+	$outputReportTurn = $gameinTurn + 1
+	return @{
+		GameinTurn         = $gameinTurn
+		ProcessingTurn     = $outputReportTurn
+		OutputReportTurn   = $outputReportTurn
+		ExpectedOrdersTurn = $gameinTurn
+		ExplicitProcessingTurn = $false
+	}
+}
+
+function Clear-GameinPersistedOrders {
+	param(
+		[Parameter(Mandatory = $true)][string]$GameinPath
+	)
+	$text = Read-Win1251Text -Path $GameinPath
+	if ($text -notmatch '(?s)<orders>(.*?)</orders>') {
+		return 0
+	}
+	$inner = $Matches[1]
+	if ([string]::IsNullOrWhiteSpace($inner)) {
+		return 0
+	}
+	$orderCount = [regex]::Matches($inner, '<order\b').Count
+	$cleared = [regex]::Replace($text, '(?s)<orders>.*?</orders>', '<orders></orders>')
+	Write-Win1251Text -Path $GameinPath -Text $cleared
+	return $orderCount
+}
+
+function Install-GameinForProcessingTurn {
+	param(
+		[Parameter(Mandatory = $true)][hashtable]$Paths,
+		[Parameter(Mandatory = $true)][int]$ProcessingTurn
+	)
+	if ($ProcessingTurn -lt 2) {
+		throw "Processing turn must be >= 2 (turn 1 is the seed gamein only)."
+	}
+	$priorGameoutTurn = $ProcessingTurn - 1
+	$src = Join-Path $Paths.DataDir ("gameout.{0}.xml" -f $priorGameoutTurn)
+	$dst = Join-Path $Paths.DataDir 'gamein.xml'
+	if (-not (Test-Path -LiteralPath $src)) {
+		throw "Cannot run processing turn $ProcessingTurn - missing $src (need gameout after turn $($ProcessingTurn - 1))."
+	}
+	Copy-Item -LiteralPath $src -Destination $dst -Force
+	Write-Host ("  data/gamein.xml <= data/gameout.{0}.xml (processing turn {1})" -f $priorGameoutTurn, $ProcessingTurn)
+	$clearedOrders = Clear-GameinPersistedOrders -GameinPath $dst
+	if ($clearedOrders -gt 0) {
+		Write-Host ("  cleared {0} persisted XML order(s) in gamein (this turn uses faction order files only)" -f $clearedOrders)
+	}
+	$xmlTurn = Get-TurnFromGamein -GameinPath $dst
+	if ($null -ne $xmlTurn -and $xmlTurn -ne $priorGameoutTurn) {
+		Write-Warning ("gameout.{0}.xml contains turn=`"{1}`" in XML; expected turn=`"{0}`" before turn++." -f $priorGameoutTurn, $xmlTurn)
+	}
+}
+
+function Write-TurnExecutionBanner {
+	param(
+		[Parameter(Mandatory = $true)][string]$RunId,
+		[Parameter(Mandatory = $true)][hashtable]$Paths
+	)
+	$plan = Get-TurnExecutionPlan -Paths $Paths
+	Write-Host ''
+	Write-Host ("=== Run '{0}': processing turn {1} ===" -f $RunId, $plan.ProcessingTurn) -ForegroundColor Cyan
+	if ($plan.ExplicitProcessingTurn) {
+		Write-Host ("  (explicit -Turn {0}; gamein from gameout.{1}.xml)" -f $plan.ProcessingTurn, $plan.GameinTurn)
+	}
+	Write-Host ("  gamein turn {0} -> turn++ -> report.{1}.* and data/gameout.{1}.xml" -f $plan.GameinTurn, $plan.OutputReportTurn)
+	Write-Host ("  order drafts: orders.{{id}}.{0}.{{version}}.txt (after report.{0}.*)" -f $plan.ExpectedOrdersTurn)
+	$latest = Get-LatestIsolatedReportTurn -FactionsDir $Paths.FactionsDir
+	if ($null -ne $latest -and $latest -ge $plan.OutputReportTurn) {
+		Write-Warning ("Isolated report.{0}.* already present (latest={1}). Roll back data/gamein, gameout, and faction reports if re-testing this turn." -f $plan.OutputReportTurn, $latest)
+	}
+	return $plan
+}
+
 function Get-LatestIsolatedReportTurn {
 	param([Parameter(Mandatory = $true)][string]$FactionsDir)
 	$maxTurn = $null
@@ -266,6 +366,9 @@ function Get-LatestVersionedOrderPath {
 	$bestVersion = -1
 	foreach ($file in Get-ChildItem -LiteralPath $FactionFolder -Filter 'orders.*.txt' -File -ErrorAction SilentlyContinue) {
 		if ($file.Name -match $pattern) {
+			if (-not (Test-NonEmptyOrderFile -Path $file.FullName)) {
+				continue
+			}
 			$version = [int]$Matches[1]
 			if ($version -gt $bestVersion) {
 				$bestVersion = $version
@@ -276,35 +379,88 @@ function Get-LatestVersionedOrderPath {
 	return $bestPath
 }
 
-function Resolve-FactionOrderSourcePath {
+function Get-FactionWrongTurnOrderFiles {
 	param(
 		[Parameter(Mandatory = $true)][int]$FactionId,
-		[Parameter(Mandatory = $true)][hashtable]$Paths
+		[Parameter(Mandatory = $true)][int]$ExpectedOrdersTurn,
+		[Parameter(Mandatory = $true)][string]$FactionFolder
 	)
-	$gamein = Join-Path $Paths.DataDir 'gamein.xml'
-	$turn = Get-TurnFromGamein -GameinPath $gamein
-	if ($null -eq $turn -or $turn -le 0) {
-		$turn = 1
+	if (-not (Test-Path -LiteralPath $FactionFolder)) {
+		return @()
 	}
-	$folder = Get-FactionOrdersFolder -FactionId $FactionId -Paths $Paths
+	$pattern = "^orders\.$FactionId\.(\d+)\.(\d+)\.txt$"
+	$wrong = [System.Collections.Generic.List[string]]::new()
+	foreach ($file in Get-ChildItem -LiteralPath $FactionFolder -Filter 'orders.*.txt' -File -ErrorAction SilentlyContinue) {
+		if ($file.Name -match $pattern) {
+			$fileTurn = [int]$Matches[1]
+			if ($fileTurn -eq $ExpectedOrdersTurn) {
+				continue
+			}
+			if (Test-NonEmptyOrderFile -Path $file.FullName) {
+				$wrong.Add($file.Name)
+			}
+		}
+	}
+	return ,$wrong.ToArray()
+}
 
+function Get-FactionLatestReportTurn {
+	param(
+		[Parameter(Mandatory = $true)][int]$FactionId,
+		[Parameter(Mandatory = $true)][string]$FactionFolder
+	)
 	$reportTurn = 0
-	foreach ($reportFile in Get-ChildItem -LiteralPath $folder -Filter "report.*.$FactionId.txt" -File -ErrorAction SilentlyContinue) {
+	foreach ($reportFile in Get-ChildItem -LiteralPath $FactionFolder -Filter "report.*.$FactionId.txt" -File -ErrorAction SilentlyContinue) {
 		if ($reportFile.Name -match '^report\.(\d+)\.') {
 			$rt = [int]$Matches[1]
 			if ($rt -gt $reportTurn) { $reportTurn = $rt }
 		}
 	}
-	$tryTurns = @($turn)
-	if ($reportTurn -gt 0 -and $reportTurn -ne $turn) { $tryTurns += $reportTurn }
-	if ($reportTurn -gt 0) { $tryTurns += ($reportTurn + 1) }
-	if ($turn -gt 0) { $tryTurns += ($turn + 1) }
-	$tryTurns = $tryTurns | Select-Object -Unique
-	foreach ($orderTurn in $tryTurns) {
-		$versioned = Get-LatestVersionedOrderPath -FactionId $FactionId -OrderTurn $orderTurn -FactionFolder $folder
-		if ($versioned) {
-			return $versioned
-		}
+	return $reportTurn
+}
+
+function Get-ExpectedFactionOrderFilenameHint {
+	param(
+		[Parameter(Mandatory = $true)][int]$FactionId,
+		[Parameter(Mandatory = $true)][hashtable]$Paths
+	)
+	$plan = Get-TurnExecutionPlan -Paths $Paths
+	return ("orders.{0}.{1}.{{version}}.txt for processing turn {2} (gamein turn {3} -> report.{2}.*)" -f $FactionId, $plan.ExpectedOrdersTurn, $plan.ProcessingTurn, $plan.GameinTurn)
+}
+
+function Get-FactionOrderMissingMessage {
+	param(
+		[Parameter(Mandatory = $true)][int]$FactionId,
+		[Parameter(Mandatory = $true)][hashtable]$Paths
+	)
+	$plan = Get-TurnExecutionPlan -Paths $Paths
+	$folder = Get-FactionOrdersFolder -FactionId $FactionId -Paths $Paths
+	$hint = Get-ExpectedFactionOrderFilenameHint -FactionId $FactionId -Paths $Paths
+	$lines = @(
+		"faction $FactionId - need non-empty $hint under:",
+		"  $folder"
+	)
+	$legacyPath = Join-Path $folder ("order.{0}.txt" -f $FactionId)
+	$lines += "  (or non-empty order.$FactionId.txt draft in that folder)"
+	$wrong = Get-FactionWrongTurnOrderFiles -FactionId $FactionId -ExpectedOrdersTurn $plan.ExpectedOrdersTurn -FactionFolder $folder
+	if ($wrong.Count -gt 0) {
+		$sorted = $wrong | Sort-Object
+		$lines += "  Wrong turn bucket (not used): $($sorted -join ', ')"
+		$lines += "  Rename or add orders.$FactionId.$($plan.ExpectedOrdersTurn).{{version}}.txt for this processing turn."
+	}
+	return ($lines -join "`n")
+}
+
+function Resolve-FactionOrderSourcePath {
+	param(
+		[Parameter(Mandatory = $true)][int]$FactionId,
+		[Parameter(Mandatory = $true)][hashtable]$Paths
+	)
+	$plan = Get-TurnExecutionPlan -Paths $Paths
+	$folder = Get-FactionOrdersFolder -FactionId $FactionId -Paths $Paths
+	$versioned = Get-LatestVersionedOrderPath -FactionId $FactionId -OrderTurn $plan.ExpectedOrdersTurn -FactionFolder $folder
+	if ($versioned) {
+		return $versioned
 	}
 
 	$legacyPath = Join-Path $folder ("order.{0}.txt" -f $FactionId)
@@ -313,6 +469,19 @@ function Resolve-FactionOrderSourcePath {
 	}
 
 	return $null
+}
+
+function Test-VersionedOrderPathMatchesTurn {
+	param(
+		[Parameter(Mandatory = $true)][string]$Path,
+		[Parameter(Mandatory = $true)][int]$FactionId,
+		[Parameter(Mandatory = $true)][int]$ExpectedOrdersTurn
+	)
+	$name = Split-Path -Leaf $Path
+	if ($name -match "^orders\.$FactionId\.(\d+)\.\d+\.txt$") {
+		return ([int]$Matches[1] -eq $ExpectedOrdersTurn)
+	}
+	return $true
 }
 
 function Test-FactionOrdersSubmitted {

@@ -313,13 +313,19 @@ namespace SpaceAge
 			if (this.Transferer.ItemStacks.ContainsKey(itemType))
 			{
 				available = this.Transferer.ItemStacks[itemType].Quantity;
+				int maxTransfer = available;
+				ModuleStack transfererStack = this.Transferer as ModuleStack;
+				if (transfererStack != null)
+				{
+					maxTransfer = transfererStack.GetTransferrableQuantity(itemType);
+				}
 				if (this.givingAllQuantity | this.quantity == 0)
 				{
-					transferrable = available;
+					transferrable = maxTransfer;
 				}
 				else if (this.quantity > 0)
 				{
-					transferrable = Math.Min(this.quantity, available);
+					transferrable = Math.Min(this.quantity, maxTransfer);
 				}
 				else if (available > -this.quantity)
 				{

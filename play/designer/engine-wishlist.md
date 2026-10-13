@@ -80,6 +80,8 @@ Designer does **not** implement these. TDD adds a failing test first. Campaign X
 | **Solar ground trucks and tanks** | **L0 base evolution** over live `grndtr`→`trucks` and `armcbt`→`tanks` (oil-fuelled ground MOVE). New techs **`slvtrk`** / **`slvcbt`** (names TBD) **require** the oil parent tech; **`use-consume`** = parent bill **plus extra `copper`** (e.g. +2 truck, +3 tank — tune in [`technology.md`](technology.md)). New modules **`sltruk`** / **`sltnk`** (ids ≤6): same combat/upkeep/crew/HP as oil counterparts; **omit `<fuel>`** so ground MOVE needs no `oil`; **`<move mode="ground" speed="0.375"/>`** (25% slower than oil **0.5**); **`capacity`** **112** (from `trucks` 150) and **150** (from `tanks` 200). Rationale: Anvil and other oil-poor grants can field logistics/combat without petroleum; copper cost ties to existing electric stack. Not a replacement for `wndtrb`/`solth` grid power — vehicles are self-contained PV/battery haulers. | Catalog module types; `MoveOrder` already skips fuel when no `fuel` block (verify); optional report line “solar — no fuel consumed” |
 | **Predictable weekly order sequence (PRODUCE before USE)** | Within each week, stack order execution is **one long order per pass** (`ExecutedLongOrder`) in **file/list order**, while **effects** (factory `USE` module delivery, transfers, …) can run earlier/later and block later verbs unpredictably — e.g. `@produce energy` on a wind farm after `@use wnplnt for new3` may not run until deliveries stop. Players should be able to rely on a **documented phase order** on the same stack: at minimum **`PRODUCE` / `REPAIR` / prep before `USE` / `MOVE` / `TRAIN`**, or a full verb priority table. Cross-stack timing (factory delivers into receiver) may stay separate; goal is same-stack `@produce` always runs before same-stack `@use` when both are eligible that week. | `Orders.Execute` multi-pass by verb class or per-stack sort; stop side effects from setting `ExecutedLongOrder` on unrelated stacks; `play/player/rules.md` “Order execution order”; regression on factory+wind `@produce energy` same week |
 | **Planetary market (cross-region on one body)** | High-tech trade network: match buys against sells **anywhere on the same planet or moon** (not galaxy-wide), with **ground distance × transfer cost + delivery time** (reuse `Region.All.TryGroundDistance`, existing cross-region purchase delivery). Gate behind a technology band (e.g. L4 **`ctypln`** + optional comms module) or a `Planet`/`Moon` flag once body has a qualifying city. **`BUY … EVERYWHERE`** (or `IN <region>` for remote pickup) becomes body-scoped catalog matching instead of today’s stub. Reports: optional **planetary** market summary on body survey lines; regional sections stay for local order books. | See [Planetary market (design)](#planetary-market-design) below |
+| **Random regional hazards** | Per-region (or region-type) **random events** each quarter or week: e.g. **tornado** in grassland/dusty — bias damage toward **`wnplnt`** / exposed energy; **earthquake** in mountain — damage **`factry`**, **`city`**, drills, settlement shells. Roll only where player or NPC stacks exist; severity scales with module size or stack count; use existing **`module-damage`** / disable rules; log on stack `EventReports` + optional planet rumor. Campaign weights by `region-type` and body `gravity`/`temperature`. | `Events` pipeline; catalog or XML **`regional-effect`** table; `Tests/TEvents.cs` fixture |
+| **Random planetary conditions** | Body-wide **weather / space-weather** each quarter: e.g. **solar flare** (thin atmosphere or high orbit activity) — destroy or disable **`moblab`**, **`cmplib`**, research-sensitive modules; **ideal season** — **×2 fauna growth** that quarter (extends **Fauna quarterly growth** row). One active planetary modifier per body per quarter; visible in planet header or press/rumor. Orbit stacks may use parent planet roll or separate belt/orbit table. | `Events.Execute` body pass; `Planet`/`Moon` persisted modifier on save; hook fauna growth multiplier |
 
 When TDD lands a row, tick it here with engine version and date, then migrate any parked catalog lines from `play/designer/catalog.md` into `play/campaign/data.xml`.
 
@@ -98,3 +100,23 @@ When TDD lands a row, tick it here with engine version and date, then migrate an
 7. **Tests** — Two regions on SampleGame or mini fixture; sell in A, `@buy … everywhere` from B after unlock clears with delivery; stub still fails without tech; moved seller updates regional report bucket.
 
 **Not in scope:** AU-wide or system-wide markets (separate wishlist row if needed); belt/orbit-only trade without a surface city anchor.
+
+## Random regional and planetary effects (design)
+
+**Today:** No random hazard or weather pipeline (`Game/Events.cs` stub; fauna growth/movement rows not live).
+
+**Regional (one `Region` per roll):**
+
+- **When** — e.g. week 13 after upkeep, or one random week 1–13 per region with low probability; skip empty regions.
+- **Examples** — **tornado** (grassland/dusty): damage **`wnplnt`**, light **`farms`**; **earthquake** (mountain): damage **`factry`**, **`sdrill`/`cdrill`**, **`city`/`town`** shells; **wildfire** (dry grassland): consume regional `food` resource node or damage **`farms`**.
+- **Targeting** — root stacks in region; optional nest-depth bias (surface vs nested); respect **`pdltur`** / hardened modules later.
+- **Output** — `EventReports` on hit stacks; optional anonymous rumor if any player stack affected.
+
+**Planetary (one `Planet` / `Moon` per roll):**
+
+- **When** — once per quarter per body, before or after fauna growth pass.
+- **Examples** — **solar flare**: disable/destroy research modules (`moblab`, nested labs); **ideal weather**: fauna growth multiplier **2×**; **dust storm** (Anvil): −energy production region-wide for one quarter; **auroral calm** (Arbor): +research output modifier.
+- **Persistence** — `<planetary-effect name="…" weeks-remaining="…"/>` on body save XML for multi-week modifiers.
+- **Visibility** — line under planet in galaxy report when a player owns presence on that body; UN press for severe flares.
+
+**Shared implementation sketch:** `RegionalEffects.Roll(week)` and `PlanetaryEffects.Roll(week)` called from `Events.Execute`; tables in campaign data or `play/campaign/regional-effects.xml`; unit tests with fixed RNG seed.

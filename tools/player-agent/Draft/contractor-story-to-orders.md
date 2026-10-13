@@ -1,6 +1,6 @@
 # Contractor: story objectives → orders (CT0026 pattern)
 
-Use when **## Turn priority** focus is **contract** and **Active contract** is a **`give-module`** job (e.g. CT0026: 4× `[farms]` to Rootfast `[120001]` at `[R00014]`).
+Use when **## Turn priority** focus is **contract** and **Active contract** is a **`give-module`** job (e.g. CT0026: 2× `[farms]` to Rootfast `[120001]` at `[R00014]`).
 
 ## Decompose the contract (tactical checklist)
 

@@ -12,7 +12,9 @@ namespace SpaceAge
 		}
 
 		public bool IsWithdraw { get; set; }
+		public bool IsAmend { get; set; }
 		public string ContractName { get; set; }
+		public int RewardCash { get; set; }
 		public Region Location { get; set; }
 		public int Quantity { get; set; }
 		public ModuleType ModuleType { get; set; }
@@ -61,7 +63,10 @@ namespace SpaceAge
 			this.IsWithdraw = false;
 			if (!Region.All.ContainsKey(token))
 			{
-				throw new Exception("Unknown location: " + token);
+				this.ContractName = token;
+				this.IsAmend = true;
+				this.parseAmend(second, ref command);
+				return;
 			}
 			this.Location = Region.All[token];
 
@@ -192,6 +197,52 @@ namespace SpaceAge
 			}
 		}
 
+		private void parseAmend(string firstToken, ref string command)
+		{
+			string pending = firstToken;
+			if (!string.IsNullOrEmpty(command))
+			{
+				pending = string.Concat(firstToken, " ", command);
+			}
+
+			while (!string.IsNullOrEmpty(pending))
+			{
+				string token = LineParser.GetToken(ref pending);
+				if (token.ToLowerInvariant() == "title")
+				{
+					this.Title = LineParser.GetQuotedToken(ref pending);
+				}
+				else if (token.ToLowerInvariant() == "flavour" || token.ToLowerInvariant() == "flavor")
+				{
+					this.Flavour = LineParser.GetQuotedToken(ref pending);
+				}
+				else if (token.ToLowerInvariant() == "reward")
+				{
+					this.parseAmendCashReward(ref pending);
+				}
+				else
+				{
+					throw new Exception("Bad syntax, TITLE, FLAVOUR or REWARD expected for contract amend.");
+				}
+			}
+		}
+
+		private void parseAmendCashReward(ref string command)
+		{
+			string amountToken = LineParser.GetToken(ref command);
+			string kindToken = LineParser.GetToken(ref command);
+			if (kindToken.ToLowerInvariant() != "cash")
+			{
+				throw new Exception("Bad syntax, cash reward expected on contract amend.");
+			}
+
+			this.RewardCash = Convert.ToInt32(amountToken);
+			if (this.RewardCash < 1)
+			{
+				throw new Exception("Bad syntax, positive cash reward expected.");
+			}
+		}
+
 		public override void Execute(int week)
 		{
 			this.Executed = false;
@@ -214,6 +265,38 @@ namespace SpaceAge
 
 				Contract.All.Remove(contract);
 				issuer.EventReports.Add(week, string.Format("withdrew contract {0}.", contract.Name));
+				this.Executed = true;
+				base.Execute(week);
+				return;
+			}
+
+			if (this.IsAmend)
+			{
+				Contract contract = Contract.All[this.ContractName];
+				if (contract == null)
+				{
+					issuer.EventReports.Add(week, string.Format("CONTRACT failed. Unknown contract {0}.", this.ContractName));
+					base.Execute(week);
+					return;
+				}
+
+				if (!string.IsNullOrEmpty(this.Title))
+				{
+					contract.Title = this.Title;
+				}
+				if (!string.IsNullOrEmpty(this.Flavour))
+				{
+					contract.Flavour = this.Flavour;
+				}
+				if (this.RewardCash > 0)
+				{
+					contract.RewardCash = this.RewardCash;
+					contract.RewardTechnology = null;
+					contract.RewardStack = null;
+				}
+
+				contract.ChangedThisSession = true;
+				issuer.EventReports.Add(week, string.Format("amended contract {0}.", contract.Name));
 				this.Executed = true;
 				base.Execute(week);
 				return;
@@ -358,6 +441,10 @@ namespace SpaceAge
 			if (this.IsWithdraw)
 			{
 				lines.Add(string.Format("{0}contract {1} withdraw", prefix, this.ContractName));
+			}
+			else if (this.IsAmend)
+			{
+				lines.Add(string.Format("{0}contract {1} amend", prefix, this.ContractName));
 			}
 			else if (this.ResearchTarget != null)
 			{

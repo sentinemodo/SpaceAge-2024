@@ -56,11 +56,9 @@ namespace SpaceAge
 				if (!moduleStack.HasOperationalModules)
 				{
 					if (moduleStack.ModuleType == null)
-						moduleStack.EventReports.Add(
-								week,
-								string.Format("{0} failed: {1} is not formed yet.",
-										this.type.ToString().ToUpper(),
-										moduleStack.ReportName));
+					{
+						return false;
+					}
 					if (moduleStack.CrewRequired + moduleStack.ModuleStacks.CrewRequired() > moduleStack.CrewCurrent + moduleStack.ModuleStacks.CrewCurrent())
 						moduleStack.EventReports.Add(
 								week,

@@ -78,10 +78,11 @@ From the repo root (`powershell -NoProfile -File` if execution policy blocks `.\
 .\play\reports.ps1 demo
 .\play\isolate.ps1 demo
 .\play\turn.ps1 demo
+.\play\turn.ps1 demo 3
 .\play\next.ps1 demo
 ```
 
-Optional `-Exe path\to\Game.exe` on `reports.ps1` / `turn.ps1`. `turn.ps1` also accepts `-GmLog` (e.g. `all`) for `gmturn-log.{turn}.txt` in the run turn folder; when omitted, uses `$env:GM_LOG` if set. `init-run.ps1` accepts `-Exe` for consistency but does not launch the engine.
+Optional `-Exe path\to\Game.exe` on `reports.ps1` / `turn.ps1`. **`turn.ps1 <run> <N>`** sets processing turn **N** explicitly: copies `data/gameout.(N-1).xml` → `gamein.xml`, clears persisted `<orders>` in that snapshot (avoids stale stack ids from an earlier save), loads `orders.*.(N-1).*`, runs the engine, isolates `report.N.*`. Without **N**, turn and order bucket are inferred from `gamein` only (easy to mis-read after a partial rollback). `turn.ps1` also accepts `-GmLog` (e.g. `all`) for `gmturn-log.{turn}.txt` in the run turn folder; when omitted, uses `$env:GM_LOG` if set. `init-run.ps1` accepts `-Exe` for consistency but does not launch the engine.
 
 Typical first quarter: `init-run` → `reports` → `isolate` → (ten order files in faction folders) → `turn` → `next`.
 

@@ -12,7 +12,10 @@ tools/visual-tool/dist
 tools/visual-tool/node_modules
 website
 Tests
-tools/player-agent
+tools/player-agent/*
+!tools/player-agent/Lint
+tools/player-agent/Lint/*
+!tools/player-agent/Lint/verb-allowlist.json
 tools/player-agent-tests
 tools/battle-simulator
 architecture

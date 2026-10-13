@@ -1181,26 +1181,21 @@ namespace UnitTests
 			testModuleStack.Effects.Execute(this.game.Week + 0);
 			testModuleStack.Effects.RemoveExecuted();
 
-            Assert.That(testModuleStack.Effects.IsProducing, "Should be producing - it's a 13 weeks duration order for wind powerplants");
+            Assert.That(testModuleStack.Effects.IsProducing, Is.False, "Wind @produce energy is one week per cycle (no fuel)");
             Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
-            Assert.That(order.DurationLeft, Is.EqualTo(12));
-            Assert.That(order.Repeat, Is.EqualTo(-1));
-            Assert.That(order.Executing);
+            Assert.That(order.Repeat, Is.EqualTo(-2));
+            Assert.That(order.Executing, Is.False);
             Assert.That(order.Executed, Is.False);
 
-			for (int i = 0; i < 12;i++)
-			{
-				testModuleStack.ExecutedLongOrder = false;
-				testModuleStack.Orders[0].Execute(this.game.Week + i);
-				testModuleStack.Orders.RemoveExecuted();
-				testModuleStack.Effects.Execute(this.game.Week + i);
-				testModuleStack.Effects.RemoveExecuted();
-			}
+			testModuleStack.ExecutedLongOrder = false;
+			testModuleStack.Orders[0].Execute(this.game.Week + 1);
+			testModuleStack.Orders.RemoveExecuted();
+			testModuleStack.Effects.Execute(this.game.Week + 1);
+			testModuleStack.Effects.RemoveExecuted();
 
-            Assert.That(testModuleStack.Effects.IsProducing, Is.False, "Shouldn't be producing - it's a 13 weeks duration order for wind powerplants");
+            Assert.That(testModuleStack.Effects.IsProducing, Is.False);
             Assert.That(testModuleStack.Orders.Count, Is.EqualTo(1));
-            //ClassicAssert.AreEqual(0, order.DurationLeft);
-            Assert.That(order.Repeat, Is.EqualTo(-2));
+            Assert.That(order.Repeat, Is.EqualTo(-3));
             Assert.That(order.Executing, Is.False);
             Assert.That(order.Executed, Is.False);
 		}
@@ -1350,6 +1345,31 @@ namespace UnitTests
 
             Assert.That(testModuleStack.ItemStacks.ContainsKey(cash), "cash should appear in modulestack");
             Assert.That(testModuleStack.ItemStacks[cash].Quantity, Is.EqualTo(200), "cash should appear in modulestack");
+		}
+
+		[Test]
+		public void AssignProduceCash_ReplacesLeftoverProduceTerran()
+		{
+			ModuleStack hq = this.game.ModuleStacks["000112"];
+			new OrdersReader(this.game).AssignOrders(new List<string>
+			{
+				"#faction 2",
+				"#modulestack 000112",
+				"@produce terran",
+				"#end"
+			});
+			Assert.That(hq.Orders.Count, Is.EqualTo(1));
+
+			new OrdersReader(this.game).AssignOrders(new List<string>
+			{
+				"#faction 2",
+				"#modulestack 000112",
+				"@produce cash",
+				"#end"
+			});
+			Assert.That(hq.Orders.Count, Is.EqualTo(1));
+			ProduceOrder produce = (ProduceOrder)hq.Orders[0];
+			Assert.That(produce.ItemType.Name, Is.EqualTo("cash"));
 		}
 
         public void AssignProduceCash_unlimited()

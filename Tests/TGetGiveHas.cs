@@ -895,6 +895,29 @@ namespace UnitTests
 		}
 
 		[Test]
+		public void SetHoldOrder_BlocksGiveAllBelowReserve()
+		{
+			ModuleStack hq = this.game.ModuleStacks["000006"];
+			ItemType terran = ItemType.All["terran"];
+			hq.ItemStacks[terran].Quantity = 6;
+			ModuleStack receiver = this.game.ModuleStacks["100001"];
+			this.clearReceiverTerran(receiver, terran);
+
+			new OrdersReader(this.game).AssignOrders(new List<string>
+			{
+				"#faction 2",
+				"#modulestack 000006",
+				"set hold 6 terran",
+				"give all to 100001",
+				"#end"
+			});
+			hq.Execute(this.game.Week);
+
+			Assert.That(hq.ItemStacks[terran].Quantity, Is.EqualTo(6));
+			Assert.That(receiver.ItemStacks.ContainsKey(terran), Is.False);
+		}
+
+		[Test]
 		public void SetHoldZero_ClearsReserve()
 		{
 			ModuleStack hq = this.game.ModuleStacks["000006"];

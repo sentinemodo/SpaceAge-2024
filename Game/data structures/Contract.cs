@@ -19,6 +19,7 @@ namespace SpaceAge
 		public string Title { get; set; }
 		public string Flavour { get; set; }
 		public bool CreatedThisSession { get; set; }
+		public bool ChangedThisSession { get; set; }
 
 		public Contract(string name)
 			: base(name)

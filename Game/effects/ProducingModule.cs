@@ -130,7 +130,6 @@ namespace SpaceAge
 				{
 					// producing modules for something that exists already (ie. we want to add modules to the existing stack
                     this.produced.AddModule();
-                    this.produced.ExecutedLongOrder = true;
 
                     this.Producer.EventReports.Add(
                         week,

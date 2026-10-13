@@ -128,5 +128,11 @@ namespace SpaceAge
 
 			return id >= 2 && id <= 11;
 		}
+
+		/// <summary>Non-player factions (UN, militias, fauna, etc.) use simplified market settlement.</summary>
+		public static bool IsNpcFaction(Faction faction)
+		{
+			return faction != null && !IsPlayerFaction(faction);
+		}
 	}
 }

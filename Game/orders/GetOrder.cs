@@ -398,6 +398,11 @@ namespace SpaceAge
             {
                 return false;
             }
+            Person receiverPerson = this.Receiver as Person;
+            if (receiverPerson != null && !receiverPerson.IsFormed && capacityAvailable <= 0)
+            {
+                return false;
+            }
             return true;
         }
 

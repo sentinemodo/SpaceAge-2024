@@ -121,10 +121,20 @@ namespace SpaceAge
 				return true;
 			}
 
+			if (!this.shouldReportProductionFailure(error))
+			{
+				return false;
+			}
+
 			this.Producer.EventReports.Add(
 				week,
 				string.Format("PRODUCE failed: {0}.", error));
 			return false;
+		}
+
+		private bool shouldReportProductionFailure(string error)
+		{
+			return error != "unit is not formed yet";
 		}
 
         public override List<string> Report(Faction owner)
@@ -387,9 +397,7 @@ namespace SpaceAge
 
         private void startProduction(int week)
         {
-            this.durationLeft = SkillEffects.ApplyDurationPercent(
-                this.Producer.ModuleType.ProduceDuration,
-                SkillEffects.ProductionDurationPercent(this.Producer));
+            this.durationLeft = this.initialProduceDuration();
             switch (this.ProduceType)
             {
                 case EProduceType.Items:
@@ -407,16 +415,35 @@ namespace SpaceAge
                     this.Producing = new ProducingItems(this);
                     break;
                 case EProduceType.Energy:
-                    this.Producer.EventReports.Add(
-                        week,
-                        string.Format(
-                            "started energy production for the next {0} weeks.",
-                            this.DurationLeft));
+                    if (this.DurationLeft > 1)
+                    {
+                        this.Producer.EventReports.Add(
+                            week,
+                            string.Format(
+                                "started energy production for the next {0} weeks.",
+                                this.DurationLeft));
+                    }
                     this.Producing = new ProducingEnergy(this);
                     break;
                 default:
                     throw new Exception("Unknown type for PRODUCE");
             }
         }
+
+		private int initialProduceDuration()
+		{
+			ModuleType moduleType = this.Producer.ModuleType;
+			int catalogDuration = moduleType.ProduceDuration;
+			if (this.ProduceType == EProduceType.Energy
+				&& moduleType.ProduceEnergyConsume.Count == 0
+				&& moduleType.Fuel.Count == 0)
+			{
+				catalogDuration = 1;
+			}
+
+			return SkillEffects.ApplyDurationPercent(
+				catalogDuration,
+				SkillEffects.ProductionDurationPercent(this.Producer));
+		}
 	}
 }

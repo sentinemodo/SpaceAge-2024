@@ -104,7 +104,7 @@ namespace IntegrationTests
 			game.ClearExecutedLongOrder();
 			game.ClearExecutedImmediateOrders();
 			game.ExecuteOrders();
-			game.ExecuteMedicalConsume(game.Week);
+			game.ExecuteMedicalConsume();
 		}
 
 		private static void RunTurnWeekWithMaintenance(Game game)

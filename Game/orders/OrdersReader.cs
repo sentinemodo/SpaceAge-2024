@@ -283,16 +283,15 @@ namespace SpaceAge
 			Order parentOrder = null;
 			foreach (Order subjectOrder in subject.Orders)
 			{
-				if (subjectOrder != order)
+				if (subjectOrder == order)
 				{
-					if (parentOrder == null)
-					{
-						parentOrder = subjectOrder;
-					} else if (subjectOrder.Level < orderLevel & subjectOrder.Level >= parentOrder.Level)
-					{
-						parentOrder = subjectOrder;
-					}
+					continue;
 				}
+				if (subjectOrder.Level >= orderLevel)
+				{
+					continue;
+				}
+				parentOrder = subjectOrder;
 			}
 			return parentOrder;
 		}
@@ -334,6 +333,25 @@ namespace SpaceAge
 				}
 			}
 			return null;
+		}
+
+		private void discardLeftoverProduceOrder(ProduceOrder leftoverProduce)
+		{
+			ModuleStack producer = leftoverProduce.Producer;
+			if (producer == null)
+			{
+				return;
+			}
+
+			if (leftoverProduce.Producing != null)
+			{
+				producer.Effects.Remove(leftoverProduce.Producing);
+				leftoverProduce.Producing = null;
+			}
+
+			leftoverProduce.Executing = false;
+			leftoverProduce.DurationLeft = int.MaxValue;
+			producer.ExecutedLongOrder = false;
 		}
 
 		public Order AssignOrder(IOrderable subject, string command)
@@ -413,6 +431,30 @@ namespace SpaceAge
 					return existing;
 				}
 			}
+			ProduceOrder assignedProduce = order as ProduceOrder;
+			if (assignedProduce != null && orderLevel == 0 && this.preexistingOrders != null)
+			{
+				List<ProduceOrder> leftoverProduces = new List<ProduceOrder>();
+				foreach (Order existing in subject.Orders)
+				{
+					ProduceOrder leftoverProduce = existing as ProduceOrder;
+					if (leftoverProduce != null && leftoverProduce != assignedProduce
+						&& this.preexistingOrders.Contains(leftoverProduce))
+					{
+						leftoverProduces.Add(leftoverProduce);
+					}
+				}
+				foreach (ProduceOrder leftoverProduce in leftoverProduces)
+				{
+					if (assignedProduce.IsEquivalentTo(leftoverProduce))
+					{
+						subject.Orders.Remove(assignedProduce);
+						return leftoverProduce;
+					}
+					this.discardLeftoverProduceOrder(leftoverProduce);
+					subject.Orders.Remove(leftoverProduce);
+				}
+			}
 			UseOrder assignedUse = order as UseOrder;
 			if (assignedUse != null && orderLevel == 0 && this.preexistingOrders != null)
 			{
@@ -478,6 +520,17 @@ namespace SpaceAge
 			while (orderLevel > 0)
 			{
 				Order parentOrder = this.getParentOrder(subject, order, orderLevel);
+				if (parentOrder == null)
+				{
+					subject.Orders.Remove(order);
+					Faction owner = subject.Owner;
+					if (owner != null)
+					{
+						owner.EventReports.Add(
+							string.Format("PARSING: {0} - order ignored, no parent order on this stack.", command));
+					}
+					return null;
+				}
 				this.assignCondition(parentOrder, order, conditions[orderLevel-1]);
                 orderLevel--;
 			}
