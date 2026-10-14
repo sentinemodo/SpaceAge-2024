@@ -176,6 +176,7 @@
     <Compile Include="effects\Effects.cs" />
     <Compile Include="effects\IEffectable.cs" />
     <Compile Include="battle\Battle.cs" />
+    <Compile Include="battle\Battle.Engagement.cs" />
     <Compile Include="battle\Battle.Fire.cs" />
     <Compile Include="battle\Battle.Hangar.cs" />
     <Compile Include="battle\Battle.Victory.cs" />

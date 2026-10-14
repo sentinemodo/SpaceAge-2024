@@ -1,7 +1,7 @@
 # ADR-0012: Battle partial seams
 
 Date: 2026-10-14  
-Status: **Accepted**  
+Status: **Implemented** (2026-10-14)  
 Engine cited: `Game/Program.cs` → `EngineVersion` **0.8.004** (not bumped for this split)
 
 ## Context
