@@ -238,6 +238,7 @@
     <Compile Include="game\Market.Clearing.cs" />
     <Compile Include="game\Market.Economy.cs" />
     <Compile Include="game\Market.NpcTrade.cs" />
+    <Compile Include="game\Market.Quarter.cs" />
     <Compile Include="orders\BuyOrder.cs" />
     <Compile Include="orders\ProduceOrder.cs" />
     <Compile Include="orders\SeeOrder.cs" />
