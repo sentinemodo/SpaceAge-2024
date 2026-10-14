@@ -40,4 +40,4 @@ There is no `cybersecurity/` package yet; add it only if a security review is co
 
 ## Changing the architecture
 
-Prefer a numbered ADR in `adr/` or a dated revision note in the affected file (what changed, why, impact on tests/modules). Persistence / `DataFile` splits: [ADR-0006](adr/ADR-0006-datafile-facade-and-xml-seams.md). `ModuleStack` partial seams: [ADR-0008](adr/ADR-0008-modulestack-decomposition.md). Public website: [ADR-0007](adr/ADR-0007-public-campaign-website.md). Local / RunPod player-agent LLM: [ADR-0009](adr/ADR-0009-local-llm-player-agent.md).
+Prefer a numbered ADR in `adr/` or a dated revision note in the affected file (what changed, why, impact on tests/modules). Persistence / `DataFile` splits: [ADR-0006](adr/ADR-0006-datafile-facade-and-xml-seams.md). `ModuleStack` partial seams: [ADR-0008](adr/ADR-0008-modulestack-decomposition.md). Battle partial seams: [ADR-0012](adr/ADR-0012-battle-partials.md). Public website: [ADR-0007](adr/ADR-0007-public-campaign-website.md). Local / RunPod player-agent LLM: [ADR-0009](adr/ADR-0009-local-llm-player-agent.md).

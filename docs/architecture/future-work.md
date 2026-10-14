@@ -1,6 +1,6 @@
 # SpaceAge-2024 — future development backlog
 
-Last updated: 2026-09-16
+Last updated: 2026-10-14
 
 This file tracks **deferred modernization** — good practices that are intentionally **out of scope** for day-to-day work on the current engine. They are recorded here (not enforced by the TDD rule or coding guidance) so the running net48 engine stays stable and diffs stay small.
 
@@ -16,7 +16,9 @@ Each item requires a numbered **ADR** in [`adr/`](adr/) plus a full test pass on
 - **Dependency injection / interfaces at boundaries** to replace the pervasive static `*.All` registries, enabling parallel tests and multiple in-process games. Today [ADR-0003](adr/ADR-0003-filesystem-pbem-batch.md) and the `*.All` pattern are load-bearing.
 - **Split the single `SpaceAge` namespace** into folder-aligned namespaces (currently folders are organizational only).
 - **`DataFile` extracts** — seams and phases are named in [ADR-0006](adr/ADR-0006-datafile-facade-and-xml-seams.md). Remaining work is executing those phases (catalog loader, order factory, faction/galaxy XML on domain types). Do not opportunistic-split `DataFile` or invent extra loader types. Optional later slice: catalog fill-pass on `ItemType`/`Technology`/`ModuleType` without collapsing two-pass.
+  - **2026-10-14 (engine `0.8.004`):** those phases have landed. `DataFile` is the thin facade; `LoadConfigurationItems` delegates to `CatalogLoader`, orders go through `OrderXml` / `OrderFactory`, faction and galaxy XML sit on those types. Do not re-execute the extract. Still open under ADR-0006 only: the optional catalog fill-pass, and nested location XML still inside `Galaxy` (not a new loader type). `CatalogLoader.LoadItems` is one large method; splitting it is an internal slice of that ADR, not a new facade.
 - **`ModuleStack` decomposition** — **Implemented** (2026-09-16); see [ADR-0008](adr/ADR-0008-modulestack-decomposition.md) and [`delivery/modulestack-refactor.md`](delivery/modulestack-refactor.md). **`Person`** mirror (six shared interfaces) remains a follow-up ADR.
+  - **2026-10-14:** later partials (`Energy`, `Sharing`, `Hold`, `BattleFireReport`, `NpcFaction`) stay on the same type. Do not reopen ADR-0008. Battle file splits are [ADR-0012](adr/ADR-0012-battle-partials.md) only.
 
 ## Build, test, and delivery
 
@@ -45,3 +47,7 @@ Designer wishlist rows that say “`Events` pipeline or GM orders” ([`play/des
 - ~~Finish the economy methods `Game.GenerateOffers` / `UpdateRates`~~ — live **0.1.159** (open beta).
 - ~~SampleGame turns 4–5 goldens~~ — **live** (2026-09-16). `ExecuteTurn4` / `ExecuteTurn5` in [`Tests/SampleGame/SampleGame.cs`](../../Tests/SampleGame/SampleGame.cs) load committed `gamein.4.xml` / `gamein.5.xml` (no `[Ignore]`). Turns 1–3 use the same independent-`gamein` pattern; do not reintroduce a `copyFile` daisy chain.
 - **SampleGame follow-ups (optional):** `Tests/data.unit.xml` catalog for unit tests, `Tests/Stories/` scenario fixtures, and an `[Explicit]` chain-consistency test (`gameout.N` vs committed `gamein.N+1`).
+
+## Revision
+
+- 2026-10-14 (engine `0.8.004`, read from `Game/Program.cs`): DataFile phase list and ModuleStack status corrected against the tree. Battle decomposition is [ADR-0012](adr/ADR-0012-battle-partials.md). Parse/save quirks that the code already fixed (catalog `use-consume` checks the consume element; moon names come from the moon element; `LoadExits` walks moon regions; `ModuleTypeGroupXml.ToToken` emits `research`) stay out of this backlog — do not re-open them as DataFile work. `delivery/saveload-quirks.md` still describes some of those rows as open and is stale on that point.
