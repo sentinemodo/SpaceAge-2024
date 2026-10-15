@@ -359,6 +359,7 @@ namespace UnitTests
 		{
 			this.AssignUseOrder_unlimited();
 			ModuleStack farms = this.game.ModuleStacks["000008"];
+			farms.Owner = this.game.Factions["2"];
 			ItemType food = ItemType.All["food"];
 			ItemType terran = ItemType.All["terran"];
 			Technology farming = Technology.All["farmng"];
@@ -385,6 +386,7 @@ namespace UnitTests
 		public void WoundedTerran_CountsForModuleOperation()
 		{
 			ModuleStack farms = this.game.ModuleStacks["000008"];
+			farms.Owner = this.game.Factions["2"];
 			ItemType terran = ItemType.All["terran"];
 			ItemType wounded = ItemType.All["wndtrn"];
 			int perModule = farms.ModuleType.CrewRequired;
@@ -401,6 +403,7 @@ namespace UnitTests
 		public void WoundedTerran_CountsForModuleOperation_WhenNotCrewItemGroup()
 		{
 			ModuleStack farms = this.game.ModuleStacks["000008"];
+			farms.Owner = this.game.Factions["2"];
 			ItemType terran = ItemType.All["terran"];
 			ItemType wounded = ItemType.All["wndtrn"];
 			EItemTypesGroup savedGroup = wounded.Group;

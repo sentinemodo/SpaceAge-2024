@@ -501,7 +501,7 @@ namespace UnitTests
 		{
 			Region region = new Region(Region.All["R00002"].RegionHolder, "prioregion");
 			Faction attackerOwner = this.game.Factions["2"];
-			Faction defenderOwner = this.game.Factions["1"];
+			Faction defenderOwner = this.game.Factions["3"];
 			ModuleStack attacker = new ModuleStack(region, attackerOwner, ModuleType.All["tanks"], "prioatk");
 			attacker.AddModule();
 			attacker.ItemStacks.Add(new ItemStack(ItemType.All["terran"], 16));
