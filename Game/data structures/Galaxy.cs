@@ -87,84 +87,17 @@ namespace SpaceAge
 				// planets
 				foreach (XmlElement elPlanet in elSystem.SelectNodes("planet"))
 				{
-					Planet planet = new Planet(system, elPlanet.GetAttribute("name"));
-					planet.LoadXml(elPlanet);
-					try
-					{
-						planet.PlanetType = dataFile.Game.PlanetTypes[elPlanet.GetAttribute("type")];
-						planet.AU = dataFile.XMLAssignDouble(elPlanet.GetAttribute("AU"), 0);
-						planet.SurfaceSizeX = dataFile.XMLAssignInteger(elPlanet.GetAttribute("surface-size-X"), 0);
-						planet.SurfaceSizeY = dataFile.XMLAssignInteger(elPlanet.GetAttribute("surface-size-Y"), 0);
-						planet.GravityBand = BodyEnvironment.ParseGravity(elPlanet.HasAttribute("gravity") ? elPlanet.GetAttribute("gravity") : "normal");
-						planet.TemperatureBand = BodyEnvironment.ParseTemperature(elPlanet.HasAttribute("temperature") ? elPlanet.GetAttribute("temperature") : "habitable");
-						planet.AtmosphereBand = BodyEnvironment.ParseAtmosphere(elPlanet.GetAttribute("atmosphere"));
-						planet.HasEnvironmentAttrs = elPlanet.HasAttribute("gravity")
-							|| elPlanet.HasAttribute("temperature")
-							|| elPlanet.HasAttribute("atmosphere");
-						if (elPlanet.HasAttribute("pair"))
-						{
-							planet.PairName = elPlanet.GetAttribute("pair");
-						}
-
-						if (elPlanet.HasAttribute("mass"))
-							planet.Mass = Convert.ToDouble(elPlanet.GetAttribute("mass"));
-
-						this.loadRaces(elPlanet, planet.Races);
-
-						foreach (XmlElement elMoon in elPlanet.SelectNodes("moon"))
-						{
-							Moon moon = new Moon(system, planet, elMoon.GetAttribute("name"));
-							moon.LoadXml(elMoon);
-
-							try
-							{
-								moon.MoonType = dataFile.Game.MoonTypes[elMoon.GetAttribute("type")];
-								moon.AU = dataFile.XMLAssignDouble(elMoon.GetAttribute("AU"), 0);
-								moon.SurfaceSizeX = dataFile.XMLAssignInteger(elMoon.GetAttribute("surface-size-X"), 0);
-								moon.SurfaceSizeY = dataFile.XMLAssignInteger(elMoon.GetAttribute("surface-size-Y"), 0);
-								moon.GravityBand = BodyEnvironment.ParseGravity(elMoon.HasAttribute("gravity") ? elMoon.GetAttribute("gravity") : "low");
-								moon.TemperatureBand = BodyEnvironment.ParseTemperature(elMoon.GetAttribute("temperature"));
-								moon.AtmosphereBand = BodyEnvironment.ParseAtmosphere(elMoon.GetAttribute("atmosphere"));
-								moon.HasEnvironmentAttrs = elMoon.HasAttribute("gravity")
-									|| elMoon.HasAttribute("temperature")
-									|| elMoon.HasAttribute("atmosphere");
-
-								if (elMoon.HasAttribute("mass"))
-									moon.Mass = Convert.ToDouble(elMoon.GetAttribute("mass"));
-
-								this.loadRaces(elMoon, moon.Races);
-								this.loadOrbit(elMoon, moon, dataFile);
-								this.loadRegions(elMoon, moon, dataFile);
-							}
-							catch (Exception ex)
-							{
-								throw new Exception("Tried to parse moon " + moon.ReportName, ex);
-							}
-						}
-
-						foreach (XmlElement elBelt in elPlanet.SelectNodes("belt"))
-						{
-							this.loadBelt(elBelt, system, planet, dataFile);
-						}
-
-						this.loadOrbit(elPlanet, planet, dataFile);
-						this.loadRegions(elPlanet, planet, dataFile);
-						system.Objects.Add(planet.Name, planet);
-					}
-					catch (Exception ex)
-					{
-						throw new Exception("Tried to parse planet: " + planet.ReportName + ".", ex);
-					}
+					Planet.LoadGalaxyXml(elPlanet, system, dataFile);
 				}
 
 				foreach (XmlElement elBelt in elSystem.SelectNodes("belt"))
 				{
-					this.loadBelt(elBelt, system, null, dataFile);
+					Galaxy.loadBelt(elBelt, system, null, dataFile);
 				}
 
 				foreach (XmlElement elAlderson in elSystem.SelectNodes("alderson"))
 				{
-					this.loadAlderson(elAlderson, system, dataFile);
+					loadAlderson(elAlderson, system, dataFile);
 				}
 
 				// asteroid belts
@@ -190,57 +123,18 @@ namespace SpaceAge
 						// planets
 						foreach (XmlElement elPlanet in elSystem.SelectNodes("planet"))
 						{
-							try
-							{
-								// orbits
-								// regions
-								foreach (XmlElement elRegion in elPlanet.SelectNodes("region"))
-								{
-									try
-									{
-										Region region = Region.All[elRegion.GetAttribute("name")];
-										this.loadGalaxyExits(elRegion, region, dataFile);
-									}
-									catch (Exception ex)
-									{
-										throw new Exception("Tried to parse exits for region " + elRegion.GetAttribute("name"), ex);
-									}
-								}
-							}
-							catch (Exception ex)
-							{
-								throw new Exception("Tried to parse exits for planet " + elPlanet.GetAttribute("name"), ex);
-							}
-							foreach (XmlElement elMoon in elPlanet.SelectNodes("moon"))
-							{
-								foreach (XmlElement elRegion in elMoon.SelectNodes("region"))
-								{
-									try
-									{
-										Region region = Region.All[elRegion.GetAttribute("name")];
-										this.loadGalaxyExits(elRegion, region, dataFile);
-									}
-									catch (Exception ex)
-									{
-										throw new Exception("Tried to parse exits for region " + elRegion.GetAttribute("name"), ex);
-									}
-								}
-							}
-							foreach (XmlElement elBelt in elPlanet.SelectNodes("belt"))
-							{
-								this.loadGalaxyExits(elBelt, Belt.All[elBelt.GetAttribute("name")], dataFile);
-							}
+							Planet.LoadGalaxyExits(elPlanet, dataFile);
 						}
 
 						foreach (XmlElement elBelt in elSystem.SelectNodes("belt"))
 						{
-							this.loadGalaxyExits(elBelt, Belt.All[elBelt.GetAttribute("name")], dataFile);
+							Galaxy.loadGalaxyExits(elBelt, Belt.All[elBelt.GetAttribute("name")], dataFile);
 						}
 
 						foreach (XmlElement elAlderson in elSystem.SelectNodes("alderson"))
 						{
 							Alderson alderson = Alderson.All[elAlderson.GetAttribute("name")];
-							this.loadGalaxyExits(elAlderson, alderson.Orbit, dataFile);
+							Galaxy.loadGalaxyExits(elAlderson, alderson.Orbit, dataFile);
 						}
 
 						// asteroid belts
@@ -261,77 +155,13 @@ namespace SpaceAge
 			}
 		}
 
-		private void loadRegions(XmlElement elRegionsHolder, IRegionHolder regionHolder, DataFile dataFile)
-		{
-			List<KeyValuePair<XmlElement, Region>> regionStackLoads = new List<KeyValuePair<XmlElement, Region>>();
-			foreach (XmlElement elRegion in elRegionsHolder.SelectNodes("region"))
-			{
-				Region region = new Region(regionHolder, elRegion.GetAttribute("name"));
-				region.LoadXml(elRegion);
 
-				try
-				{
-					region.RegionType = dataFile.Game.RegionTypes[elRegion.GetAttribute("type")];
 
-					region.Coordinates.X = dataFile.XMLAssignInteger(elRegion.GetAttribute("X"), 0);
-					region.Coordinates.Y = dataFile.XMLAssignInteger(elRegion.GetAttribute("Y"), 0);
 
-					this.loadCapacities(elRegion, region, dataFile);
-					this.loadResources(elRegion, region, dataFile);
-					this.loadDeepPocket(elRegion, region, dataFile);
-					this.loadAnomaly(elRegion, region, dataFile);
 
-					regionStackLoads.Add(new KeyValuePair<XmlElement, Region>(elRegion, region));
-				}
-				catch (Exception ex)
-				{
-					throw new Exception("Tried to parse region" + region.ReportName, ex);
-				}
-			}
 
-			foreach (KeyValuePair<XmlElement, Region> pending in regionStackLoads)
-			{
-				try
-				{
-					ModuleStack.All.LoadXml(pending.Key, pending.Value);
-				}
-				catch (Exception ex)
-				{
-					throw new Exception("Tried to parse region" + pending.Value.ReportName, ex);
-				}
-			}
-		}
 
-		private void loadCapacities(XmlElement elRegion, Region region, DataFile dataFile)
-		{
-			foreach (XmlElement elCapacity in elRegion.SelectNodes("capacity"))
-			{
-				Capacity capacity = new Capacity();
-				capacity.Group = ModuleTypeGroupXml.Parse(elCapacity.GetAttribute("group"));
-				capacity.Quantity = dataFile.XMLAssignInteger(elCapacity.GetAttribute("quantity"), 1);
-				region.Capacities.Add(capacity);
-			}
-		}
-
-		private void loadOrbit(XmlElement elOrbitHolder, IOrbitHolder orbitHolder, DataFile dataFile)
-		{
-			XmlElement elOrbit = (XmlElement)elOrbitHolder.SelectSingleNode("orbit");
-			Orbit orbit = new Orbit(orbitHolder, elOrbit.GetAttribute("name"));
-			try
-			{
-				this.loadRaces(elOrbit, orbit.Races);
-				this.loadResources(elOrbit, orbit, dataFile);
-
-                ModuleStack.All.LoadXml(elOrbit, orbit);
-
-			}
-			catch (Exception ex)
-			{
-				throw new Exception("tried to parse orbit " + orbit.ReportName, ex);
-			}
-		}
-
-		private void loadRaces(XmlElement elHolder, Races races)
+		internal static void loadRaces(XmlElement elHolder, Races races)
 		{
 			foreach (XmlElement elRace in elHolder.SelectNodes("race"))
 			{
@@ -346,7 +176,7 @@ namespace SpaceAge
 			}
 		}
 
-		private void loadResources(XmlElement elHolder, IResourcesHolder holder, DataFile dataFile)
+		internal static void loadResources(XmlElement elHolder, IResourcesHolder holder, DataFile dataFile)
 		{
 			foreach (XmlElement elResource in elHolder.SelectNodes("resource"))
 			{
@@ -364,48 +194,11 @@ namespace SpaceAge
 			}
 		}
 
-		private void loadDeepPocket(XmlElement elRegion, Region region, DataFile dataFile)
-		{
-			XmlElement elDeepPocket = (XmlElement)elRegion.SelectSingleNode("deep-pocket");
-			if (elDeepPocket == null)
-			{
-				return;
-			}
 
-			foreach (XmlElement elResource in elDeepPocket.SelectNodes("resource"))
-			{
-				try
-				{
-					Resource resource = new Resource();
-					resource.ItemType = dataFile.Game.ItemTypes[elResource.GetAttribute("type")];
-					resource.Quantity = dataFile.XMLAssignInteger(elResource.GetAttribute("quantity"), 1);
-					resource.IsDeep = true;
-					region.DeepPocketResources.Add(resource);
-				}
-				catch (Exception ex)
-				{
-					throw new Exception("Tried to parse deep-pocket resources", ex);
-				}
-			}
-		}
 
-		private void loadAnomaly(XmlElement elRegion, Region region, DataFile dataFile)
-		{
-			XmlElement elAnomaly = (XmlElement)elRegion.SelectSingleNode("anomaly");
-			if (elAnomaly == null)
-			{
-				elAnomaly = (XmlElement)elRegion.SelectSingleNode("poi");
-			}
-			if (elAnomaly == null)
-			{
-				return;
-			}
 
-			region.Anomaly = new RegionAnomaly();
-			region.Anomaly.LoadXml(elAnomaly, dataFile);
-		}
 
-		private void loadGalaxyExits(XmlElement elHolder, Location holder, DataFile dataFile)
+		internal static void loadGalaxyExits(XmlElement elHolder, Location holder, DataFile dataFile)
 		{
 			foreach (XmlElement elExit in elHolder.SelectNodes("exit"))
 			{
@@ -452,7 +245,7 @@ namespace SpaceAge
 			}
 		}
 
-		private void loadBelt(XmlElement elBelt, SpaceSystem system, Planet planet, DataFile dataFile)
+		internal static void loadBelt(XmlElement elBelt, SpaceSystem system, Planet planet, DataFile dataFile)
 		{
 			Belt belt = new Belt(system, planet, elBelt.GetAttribute("name"));
 			belt.LoadXml(elBelt);
@@ -479,7 +272,7 @@ namespace SpaceAge
 			}
 		}
 
-		private void loadAlderson(XmlElement elAlderson, SpaceSystem system, DataFile dataFile)
+		private static void loadAlderson(XmlElement elAlderson, SpaceSystem system, DataFile dataFile)
 		{
 			Alderson alderson = new Alderson(system, elAlderson.GetAttribute("name"));
 			alderson.LoadXml(elAlderson);
@@ -492,7 +285,7 @@ namespace SpaceAge
 				{
 					alderson.PairName = elAlderson.GetAttribute("pair");
 				}
-				this.loadOrbit(elAlderson, alderson, dataFile);
+				Orbit.LoadGalaxyXml(elAlderson, alderson, dataFile);
 				system.Objects.Add(alderson.Name, alderson);
 			}
 			catch (Exception ex)
@@ -538,67 +331,7 @@ namespace SpaceAge
 					}
 					else if (systemObject is Planet)
 					{
-						Planet planet;
-						planet = (Planet)systemObject;
-						elObject = doc.CreateElement("planet");
-						elSystem.AppendChild(elObject);
-						elObject.SetAttribute("name", planet.Name);
-						elObject.SetAttribute("name-en", planet.FullName);
-						elObject.SetAttribute("AU", planet.AU.ToString());
-						elObject.SetAttribute("surface-size-X", planet.SurfaceSizeX.ToString());
-						elObject.SetAttribute("surface-size-Y", planet.SurfaceSizeY.ToString());
-						elObject.SetAttribute("type", planet.PlanetType.Name);
-						if (planet.HasEnvironmentAttrs)
-						{
-							elObject.SetAttribute("gravity", BodyEnvironment.GravityToken(planet.GravityBand));
-							elObject.SetAttribute("temperature", BodyEnvironment.TemperatureToken(planet.TemperatureBand));
-							elObject.SetAttribute("atmosphere", BodyEnvironment.AtmosphereToken(planet.AtmosphereBand));
-						}
-						if (!string.IsNullOrEmpty(planet.PairName))
-						{
-							elObject.SetAttribute("pair", planet.PairName);
-						}
-
-						this.saveRaces(doc, elObject, planet.Races);
-
-						foreach (Moon moon in planet.Moons.Values)
-						{
-							// do nost save is the xml report is prepared for faction and faction is not observing the object
-							if (factionXMLreport != null && !moon.Visible(factionXMLreport))
-								continue;
-
-							XmlElement elMoon;
-							elMoon = doc.CreateElement("moon");
-
-							elObject.AppendChild(elMoon);
-							elMoon.SetAttribute("name", moon.Name);
-							elMoon.SetAttribute("name-en", moon.FullName);
-							elMoon.SetAttribute("AU", moon.AU.ToString());
-							elMoon.SetAttribute("surface-size-X", moon.SurfaceSizeX.ToString());
-							elMoon.SetAttribute("surface-size-Y", moon.SurfaceSizeY.ToString());
-							elMoon.SetAttribute("type", moon.MoonType.Name);
-							if (moon.HasEnvironmentAttrs)
-							{
-								elMoon.SetAttribute("gravity", BodyEnvironment.GravityToken(moon.GravityBand));
-								elMoon.SetAttribute("temperature", BodyEnvironment.TemperatureToken(moon.TemperatureBand));
-								elMoon.SetAttribute("atmosphere", BodyEnvironment.AtmosphereToken(moon.AtmosphereBand));
-							}
-							this.saveRaces(doc, elMoon, moon.Races);
-							this.saveOrbit(doc, elMoon, moon, factionXMLreport);
-							this.saveRegions(doc, elMoon, moon, factionXMLreport);
-						}
-
-						foreach (Belt ring in Belt.All[planet].Values)
-						{
-							if (factionXMLreport != null && !ring.Visible(factionXMLreport))
-							{
-								continue;
-							}
-							this.saveBelt(doc, elObject, ring, factionXMLreport);
-						}
-
-						this.saveOrbit(doc, elObject, (IOrbitHolder)systemObject, factionXMLreport);
-						this.saveRegions(doc, elObject, (IRegionHolder)systemObject, factionXMLreport);
+						Planet.SaveGalaxyXml(doc, elSystem, (Planet)systemObject, factionXMLreport);
 					}
 					else if (systemObject is Alderson)
 					{
@@ -614,10 +347,10 @@ namespace SpaceAge
 						{
 							elObject.SetAttribute("pair", alderson.PairName);
 						}
-						this.saveOrbit(doc, elObject, alderson, factionXMLreport);
+						Orbit.SaveGalaxyXml(doc, elObject, alderson, factionXMLreport);
 						if (alderson.Orbit != null)
 						{
-							this.saveExits(doc, elObject, alderson.Orbit);
+							saveExits(doc, elObject, alderson.Orbit);
 						}
 					}
 
@@ -629,13 +362,13 @@ namespace SpaceAge
 					{
 						continue;
 					}
-					this.saveBelt(doc, elSystem, belt, factionXMLreport);
+					Galaxy.saveBelt(doc, elSystem, belt, factionXMLreport);
 				}
-            }
+			}
 			return elGalaxy;
 		}
 
-		private void saveRaces(XmlDocument doc, XmlElement elHolder, Races races)
+		internal static void saveRaces(XmlDocument doc, XmlElement elHolder, Races races)
 		{
 			foreach (Race race in races.Values)
 			{
@@ -645,26 +378,9 @@ namespace SpaceAge
 			}
 		}
 
-		private void saveOrbit(XmlDocument doc, XmlElement elObject, IOrbitHolder orbitHolder, Faction factionXMLreport = null)
-		{
-			XmlElement elOrbit = doc.CreateElement("orbit");
-			elObject.AppendChild(elOrbit);
-			elOrbit.SetAttribute("name", orbitHolder.Orbit.Name);
 
-			// do nost save is the xml report is prepared for faction and faction is not observing the object
-			if (factionXMLreport != null && !orbitHolder.Orbit.Visible(factionXMLreport))
-			{
-			}
-			else
-			{
-				this.saveRaces(doc, elOrbit, orbitHolder.Orbit.Races);
-				this.saveResources(doc, elOrbit, orbitHolder.Orbit, factionXMLreport);
 
-                orbitHolder.Orbit.ModuleStacks.SaveXml(doc, elOrbit, factionXMLreport);
-			}
-		}
-
-		private void saveResources(XmlDocument doc, XmlElement elObject, IResourcesHolder resourcesHolder, Faction factionXMLreport = null)
+		internal static void saveResources(XmlDocument doc, XmlElement elObject, IResourcesHolder resourcesHolder, Faction factionXMLreport = null)
 		{
 			XmlElement elResource;
 			if (factionXMLreport != null && !resourcesHolder.Visible(factionXMLreport))
@@ -685,7 +401,7 @@ namespace SpaceAge
 			}
 		}
 
-		private void saveBelt(XmlDocument doc, XmlElement elParent, Belt belt, Faction factionXMLreport = null)
+		internal static void saveBelt(XmlDocument doc, XmlElement elParent, Belt belt, Faction factionXMLreport = null)
 		{
 			XmlElement elBelt = doc.CreateElement("belt");
 			elParent.AppendChild(elBelt);
@@ -712,11 +428,11 @@ namespace SpaceAge
 				}
 			}
 
-			this.saveExits(doc, elBelt, belt);
+			saveExits(doc, elBelt, belt);
 			belt.ModuleStacks.SaveXml(doc, elBelt, factionXMLreport);
 		}
 
-		private void setExitTarget(XmlElement elExit, IHolder to)
+		internal static void setExitTarget(XmlElement elExit, IHolder to)
 		{
 			Orbit orbit = to as Orbit;
 			if (orbit != null)
@@ -738,13 +454,13 @@ namespace SpaceAge
 			elExit.SetAttribute("region", to.Name);
 		}
 
-		private void saveExits(XmlDocument doc, XmlElement elHolder, Location holder)
+		internal static void saveExits(XmlDocument doc, XmlElement elHolder, Location holder)
 		{
 			foreach (Exit exit in holder.Exits)
 			{
 				XmlElement elExit = doc.CreateElement("exit");
 				elHolder.AppendChild(elExit);
-				this.setExitTarget(elExit, exit.To);
+				setExitTarget(elExit, exit.To);
 				foreach (ExitMode exitMode in exit.ExitModes.Values)
 				{
 					XmlElement elExitMode = doc.CreateElement("exitmode");
@@ -755,169 +471,8 @@ namespace SpaceAge
 			}
 		}
 
-		private void saveExitTarget(XmlDocument doc, XmlElement elExit, Exit exit, Region fromRegion, Faction factionXMLreport)
-		{
-			Region targetRegion = exit.To as Region;
-			if (targetRegion == null || factionXMLreport == null)
-			{
-				return;
-			}
 
-			if (!fromRegion.Visible(factionXMLreport))
-			{
-				return;
-			}
 
-			if (fromRegion.RegionHolder != targetRegion.RegionHolder)
-			{
-				return;
-			}
 
-			XmlElement elTarget = doc.CreateElement("target");
-			elExit.AppendChild(elTarget);
-			elTarget.SetAttribute("name", targetRegion.Name);
-
-			bool targetVisible = targetRegion.Visible(factionXMLreport);
-			elTarget.SetAttribute("discovered", targetVisible ? "yes" : "partial");
-			elTarget.SetAttribute("name-en", targetRegion.FullName);
-			elTarget.SetAttribute("X", targetRegion.Coordinates.X.ToString());
-			elTarget.SetAttribute("Y", targetRegion.Coordinates.Y.ToString());
-			elTarget.SetAttribute("type", targetRegion.RegionType.Name);
-
-			if (targetRegion.HasSettlement)
-			{
-				foreach (Capacity capacity in targetRegion.Capacities)
-				{
-					if (capacity.Group != EModuleTypesGroup.settlement)
-					{
-						continue;
-					}
-
-					XmlElement elCapacity = doc.CreateElement("capacity");
-					elTarget.AppendChild(elCapacity);
-					string groupToken = ModuleTypeGroupXml.ToToken(capacity.Group);
-					if (groupToken != null)
-					{
-						elCapacity.SetAttribute("group", groupToken);
-					}
-
-					elCapacity.SetAttribute("quantity", capacity.Quantity.ToString());
-				}
-			}
-
-			if (targetVisible)
-			{
-				foreach (Resource resource in targetRegion.Resources)
-				{
-					if (!resource.Visible(factionXMLreport))
-					{
-						continue;
-					}
-
-					XmlElement elResource = doc.CreateElement("resource");
-					elTarget.AppendChild(elResource);
-					elResource.SetAttribute("type", resource.ItemType.Name);
-					elResource.SetAttribute("quantity", resource.Quantity.ToString());
-				}
-			}
-
-			if (targetRegion.HasDeepPocket && fromRegion.HasCdrillTechnologyFor(factionXMLreport))
-			{
-				XmlElement elDeepPocket = doc.CreateElement("deep-pocket");
-				elTarget.AppendChild(elDeepPocket);
-				if (targetRegion.HasCdrillTechnologyFor(factionXMLreport))
-				{
-					foreach (Resource resource in targetRegion.DeepPocketResources)
-					{
-						XmlElement elResource = doc.CreateElement("resource");
-						elDeepPocket.AppendChild(elResource);
-						elResource.SetAttribute("type", resource.ItemType.Name);
-						elResource.SetAttribute("quantity", resource.Quantity.ToString());
-					}
-				}
-			}
-
-			if (targetRegion.HasAnomaly && !targetRegion.Anomaly.IsResolved(factionXMLreport))
-			{
-				XmlElement elAnomaly = doc.CreateElement("anomaly");
-				elTarget.AppendChild(elAnomaly);
-				elAnomaly.SetAttribute("type", targetRegion.Anomaly.Type);
-				elAnomaly.SetAttribute("points", targetRegion.Anomaly.Points.ToString());
-			}
-		}
-
-		private void saveRegions(XmlDocument doc, XmlElement elObject, IRegionHolder regionHolder, Faction factionXMLreport = null)
-		{
-			XmlElement elRegion, elCapacity, elExit, elExitMode;
-
-			foreach (Region region in regionHolder.Regions.Values)
-			{
-				if (factionXMLreport != null && !region.Visible(factionXMLreport))
-					    continue;
-
-				elRegion = doc.CreateElement("region");
-				elObject.AppendChild(elRegion);
-				elRegion.SetAttribute("name", region.Name);
-				elRegion.SetAttribute("name-en", region.FullName);
-				elRegion.SetAttribute("X", region.Coordinates.X.ToString());
-				elRegion.SetAttribute("Y", region.Coordinates.Y.ToString());
-				elRegion.SetAttribute("type", region.RegionType.Name);
-
-				foreach (Capacity capacity in region.Capacities)
-				{
-					elCapacity = doc.CreateElement("capacity");
-					elRegion.AppendChild(elCapacity);
-					string groupToken = ModuleTypeGroupXml.ToToken(capacity.Group);
-					if (groupToken != null)
-					{
-						elCapacity.SetAttribute("group", groupToken);
-					}
-					
-					elCapacity.SetAttribute("quantity", capacity.Quantity.ToString());
-
-				}
-				foreach (Exit exit in region.Exits)
-				{
-					elExit = doc.CreateElement("exit");
-					elRegion.AppendChild(elExit);
-					this.setExitTarget(elExit, exit.To);
-					foreach (ExitMode exitMode in exit.ExitModes.Values)
-					{
-						elExitMode = doc.CreateElement("exitmode");
-						elExit.AppendChild(elExitMode);
-
-						elExitMode.SetAttribute("mode", MoveModeXml.ToToken(exitMode.Mode));
-						elExitMode.SetAttribute("duration", exitMode.Duration.ToString());
-					}
-					if (factionXMLreport != null)
-					{
-						this.saveExitTarget(doc, elExit, exit, region, factionXMLreport);
-					}
-				}
-				this.saveResources(doc, elRegion, region, factionXMLreport);
-				bool occupiedByReporter = factionXMLreport == null
-					|| region.ModuleStacks.Contains(factionXMLreport);
-				if (region.HasDeepPocket && occupiedByReporter)
-				{
-					XmlElement elDeepPocket = doc.CreateElement("deep-pocket");
-					elRegion.AppendChild(elDeepPocket);
-					foreach (Resource resource in region.DeepPocketResources)
-					{
-						XmlElement elResource = doc.CreateElement("resource");
-						elDeepPocket.AppendChild(elResource);
-						elResource.SetAttribute("type", resource.ItemType.Name);
-						elResource.SetAttribute("quantity", resource.Quantity.ToString());
-					}
-				}
-				if (region.HasAnomaly && occupiedByReporter)
-				{
-					XmlElement elAnomaly = doc.CreateElement("anomaly");
-					elRegion.AppendChild(elAnomaly);
-					region.Anomaly.SaveXml(doc, elAnomaly);
-				}
-
-                region.ModuleStacks.SaveXml(doc, elRegion, factionXMLreport);
-			}
-		}
 	}
 }

@@ -52,7 +52,7 @@ From **repo root** (`powershell -NoProfile -File` if policy blocks `.\`). `-RunI
 | `play/reports.ps1 <id>` | After init, or after `next` when you need reports without `Execute` | `Game.exe /data … /turn-dir … /reports` |
 | `play/isolate.ps1 <id> [-Turn n]` | After reports or a full turn | Text `report.{T}.{2–11}.txt` → `factions/NN/` only |
 | `play/turn.ps1 <id>` | Ten `factions/NN/order.{id}.txt` exist | Clears `turn/order.*`, copies UTF-8 → 1251, full exe, then isolate |
-| `play/next.ps1 <id> [-Turn n]` | After a full turn | `data/gameout.{N}.xml` → `data/gamein.xml` (seed 1 → **N = 2**) |
+| `play/next.ps1 <id> [n]` | After a full turn | `data/gameout.{N}.xml` → `data/gamein.xml` (`next.ps1 <id> 3` uses `gameout.3.xml`; omit **n** for the latest). Seed 1 → **N = 2**. Named `-Turn n` still works. |
 | `play/generate-status.ps1 <id> [-OutPath …] [-NextTurnAt …]` | After lobby-visible state changes, or mid order collection | Writes `website/public/status.json` from the run (no `Game.exe`). `isolate`, `turn`, and `next` call this automatically. |
 
 Exact exe lines (also in the README):
@@ -142,7 +142,7 @@ Live verbs: `CONTRACT` and `PRESS` on **`#faction`**, allowed `/no-turn` ([play/
 1. **Need** (player report beat, human request, or quiet table) → ask **`/game-designer`** for the vector ([play/designer/contracts.md](../../play/designer/contracts.md): title, flavour, location, trigger, reward ids, any new wreck/NPC stack). Designer owns XML and flavour.
 2. Ask **`/player`** to draft **UN** (faction **1**) orders: `#faction 1 ""` then `CONTRACT` / `PRESS` only. Password for NPC 1 is empty. Put that draft in `play/runs/<id>/gm/` (not in a player faction folder).
 3. **Apply** without writing a new script:
-   - **Orders path (preferred for PRESS and live `CONTRACT`):** empty `turn/order.*` of leftover player files (those globs would load). Copy only `gm/order.1.txt` → `turn/order.1.txt` as Windows-1251 (the same encoding `turn.ps1` uses — you may copy bytes / `Out-File` encoding 1251; you still must not add `no-turn.ps1`). Run the documented `Game.exe … /no-turn`. Then treat `data/gameout.{currentTurn}.xml` like a `next` promotion if `SaveGame` wrote it (`next.ps1 -Turn <current>` or copy yourself with the same rule as `next.ps1`).
+   - **Orders path (preferred for PRESS and live `CONTRACT`):** empty `turn/order.*` of leftover player files (those globs would load). Copy only `gm/order.1.txt` → `turn/order.1.txt` as Windows-1251 (the same encoding `turn.ps1` uses — you may copy bytes / `Out-File` encoding 1251; you still must not add `no-turn.ps1`). Run the documented `Game.exe … /no-turn`. Then treat `data/gameout.{currentTurn}.xml` like a `next` promotion if `SaveGame` wrote it (`next.ps1 <id> <current>` or copy yourself with the same rule as `next.ps1`).
    - **Galaxy XML path (new wrecks, receivers, stacks):** designer patches **`play/runs/<id>/data/gamein.xml`** (the run copy). You may paste a designer-supplied snippet into that run file. Never rewrite `play/campaign/gamein.1.xml` for a live table.
 4. `/reports` + `isolate` if players must see the announcement next.
 

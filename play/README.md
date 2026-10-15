@@ -80,9 +80,10 @@ From the repo root (`powershell -NoProfile -File` if execution policy blocks `.\
 .\play\turn.ps1 demo
 .\play\turn.ps1 demo 3
 .\play\next.ps1 demo
+.\play\next.ps1 demo 3
 ```
 
-Optional `-Exe path\to\Game.exe` on `reports.ps1` / `turn.ps1`. **`turn.ps1 <run> <N>`** sets processing turn **N** explicitly: copies `data/gameout.(N-1).xml` → `gamein.xml`, clears persisted `<orders>` in that snapshot (avoids stale stack ids from an earlier save), loads `orders.*.(N-1).*`, runs the engine, isolates `report.N.*`. Without **N**, turn and order bucket are inferred from `gamein` only (easy to mis-read after a partial rollback). `turn.ps1` also accepts `-GmLog` (e.g. `all`) for `gmturn-log.{turn}.txt` in the run turn folder; when omitted, uses `$env:GM_LOG` if set. `init-run.ps1` accepts `-Exe` for consistency but does not launch the engine.
+Optional `-Exe path\to\Game.exe` on `reports.ps1` / `turn.ps1`. **`turn.ps1 <run> <N>`** sets processing turn **N** explicitly: copies `data/gameout.(N-1).xml` → `gamein.xml`, clears persisted `<orders>` in that snapshot (avoids stale stack ids from an earlier save), loads `orders.*.(N-1).*`, runs the engine, isolates `report.N.*`. Without **N**, turn and order bucket are inferred from `gamein` only (easy to mis-read after a partial rollback). `turn.ps1` also accepts `-GmLog` (e.g. `all`) for `gmturn-log.{turn}.txt` in the run turn folder; when omitted, uses `$env:GM_LOG` if set. `init-run.ps1` accepts `-Exe` for consistency but does not launch the engine. **`next.ps1 <run> <N>`** copies `data/gameout.{N}.xml` → `data/gamein.xml` (`next.ps1 demo 3` uses `gameout.3.xml`). Omit **N** to promote the latest `gameout.*`. Named `-Turn N` still works.
 
 Typical first quarter: `init-run` → `reports` → `isolate` → (ten order files in faction folders) → `turn` → `next`.
 
@@ -228,7 +229,7 @@ There is no `play/no-turn.ps1`. Until one exists, from repo root:
 Game\bin\Debug\Game.exe /data play\runs\<id>\data /turn-dir play\runs\<id>\turn /no-turn
 ```
 
-Stage only GM/UN orders (typically `turn\order.1.txt`, Windows-1251, `#faction 1 ""` then `CONTRACT` / `PRESS` per `play/player/rules.md`). Flavour and contract ids come from `/game-designer` + `/player` — the GM does not invent them. `/no-turn` does not increment the turn; `SaveGame` writes `data\gameout.{currentTurn}.xml`. Promote with `.\play\next.ps1 <id> -Turn <currentTurn>` when that file is the snapshot you want as the next `gamein.xml`.
+Stage only GM/UN orders (typically `turn\order.1.txt`, Windows-1251, `#faction 1 ""` then `CONTRACT` / `PRESS` per `play/player/rules.md`). Flavour and contract ids come from `/game-designer` + `/player` — the GM does not invent them. `/no-turn` does not increment the turn; `SaveGame` writes `data\gameout.{currentTurn}.xml`. Promote with `.\play\next.ps1 <id> <currentTurn>` when that file is the snapshot you want as the next `gamein.xml`.
 
 New wrecks or receivers that are not live `CONTRACT` orders: `/game-designer` patches the **run** `data\gamein.xml` only, not committed `play/campaign/gamein.1.xml`.
 

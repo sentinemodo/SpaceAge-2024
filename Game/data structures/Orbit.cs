@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SpaceAge
 {
-	public class Orbit : Location, IBattleReporting, IResourcesHolder
+	public partial class Orbit : Location, IBattleReporting, IResourcesHolder
 	{
 		public Orbit(IOrbitHolder orbitHolder, string name)
 			: base(name) 

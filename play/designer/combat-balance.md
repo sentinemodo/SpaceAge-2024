@@ -134,4 +134,4 @@ Engine Parse accepts dedicated groups. Keep `group="frigate"` on campaign hulls 
 
 ## Engine dependencies
 
-See [`engine-wishlist.md`](engine-wishlist.md): armour 5× hit weight + no capture; shield 90% intercept; typed `weapon-group`/`resists`; hull groups beyond frigate.
+See [`engine-wishlist.md`](engine-wishlist.md): armour 5× hit weight + no capture; shield 90% intercept; typed `weapon-group`/`resists`; hull groups beyond frigate. Still open: range bands (`long` / `middle` / `close`) for second-line artillery, and aerial combat above the ground lines.

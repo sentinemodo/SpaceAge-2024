@@ -18,7 +18,7 @@ All engine types live in namespace `SpaceAge`. Folders below are **bounded conte
 | **World model** | `Game/data structures/` | Galaxy graph, factions, stacks, items, techs, offers. `ModuleStack` (~2,960 lines, 8 interfaces) — partial splits proposed in [ADR-0008](adr/ADR-0008-modulestack-decomposition.md); ownership/upkeep partials per [ADR-0005](adr/ADR-0005-modulestack-partials.md) | Used by every other module via `*.All` and object references |
 | **Tests** | `Tests/` | Unit and SampleGame integration | Project reference to `Game`; filesystem fixtures |
 | **Website** | `website/` | Public closed PBEM lobby: flavour, `/turns` orders status, `/client` link. Phase 4: `/eta`, `/battle` | Reads **`status.json` only**; links to visual tool. **No** `Game` reference. [ADR-0007](adr/ADR-0007-public-campaign-website.md) |
-| **Game host** | `game-host/` | Node HTTP: faction auth, reports, orders, GM turn | Spawns `Game.exe`; session API for visual tool. [ADR-0011](adr/ADR-0011-hosted-game-service.md) |
+| **Game host** | `game-host/` | Node HTTP: faction auth, reports, orders, GM turn | `server.mjs` listens; `routes/` handles session, AI, RunPod, and GM. `lib/game-exe.mjs` spawns `Game.exe`. [ADR-0011](adr/ADR-0011-hosted-game-service.md) |
 | **Visual tool** | `tools/visual-tool/` | Authenticated XML report client | Calls game-host session API. [ADR-0010](adr/ADR-0010-visual-tool.md) |
 | **Player agent** | `tools/player-agent/` | LLM order drafting (Ollama/RAG) | Files + CLI to engine; [ADR-0009](adr/ADR-0009-local-llm-player-agent.md) |
 Website, game-host, and visual-tool are **separate bounded contexts** — not `SpaceAge` namespace folders.

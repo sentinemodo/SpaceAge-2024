@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -188,6 +188,8 @@
     <Compile Include="game\DataFile.cs" />
     <Compile Include="game\ModuleTypeGroupXml.cs" />
     <Compile Include="game\CatalogLoader.cs" />
+    <Compile Include="game\CatalogLoader.Stubs.cs" />
+    <Compile Include="game\CatalogLoader.Fill.cs" />
     <Compile Include="game\SpaceTransit.cs" />
     <Compile Include="data structures\BodyEnvironment.cs" />
     <Compile Include="game\OrderXml.cs" />
@@ -231,6 +233,7 @@
     <Compile Include="data structures\ModuleTypes.cs" />
     <Compile Include="data structures\NamedObject.cs" />
     <Compile Include="data structures\Orbit.cs" />
+    <Compile Include="data structures\Orbit.GalaxyXml.cs" />
     <Compile Include="data structures\PlanetType.cs" />
     <Compile Include="data structures\PlanetTypes.cs" />
     <Compile Include="data structures\Regions.cs" />
@@ -238,6 +241,7 @@
     <Compile Include="data structures\LocationTypes.cs" />
     <Compile Include="data structures\SpaceSystemObject.cs" />
     <Compile Include="data structures\Moon.cs" />
+    <Compile Include="data structures\Moon.GalaxyXml.cs" />
     <Compile Include="game\GrantCost.cs" />
     <Compile Include="game\Market.cs" />
     <Compile Include="game\Market.Clearing.cs" />
@@ -301,6 +305,7 @@
     <Compile Include="orders\OrdersReader.cs" />
     <Compile Include="orders\OrderParseRunner.cs" />
     <Compile Include="data structures\Planet.cs" />
+    <Compile Include="data structures\Planet.GalaxyXml.cs" />
     <Compile Include="data structures\Point2D.cs" />
     <Compile Include="data structures\Point3D.cs" />
     <Compile Include="orders\ESeeScope.cs" />
@@ -308,6 +313,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="data structures\Region.cs" />
+    <Compile Include="data structures\Region.GalaxyXml.cs" />
     <Compile Include="reports\ReportLine.cs" />
     <Compile Include="reports\ReportLines.cs" />
     <Compile Include="reports\ReportWriter.cs" />

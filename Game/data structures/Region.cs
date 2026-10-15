@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SpaceAge
 {
-	public class Region : Location, IResourcesHolder, IBattleReporting
+	public partial class Region : Location, IResourcesHolder, IBattleReporting
 	{
 		public Region(IRegionHolder regionHolder, string name)
 			: base(name) 

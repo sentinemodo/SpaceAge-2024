@@ -57,3 +57,4 @@ Open beta requires ten invited players to use a **hosted web client** instead of
 
 - 2026-09-11: Accepted for open beta.
 - 2026-09-24: Public edge is Caddy + DuckDNS on the home WAN. ngrok is fallback.
+- 2026-10-15: HTTP routes live in `game-host/routes/` (`session.mjs`, `ai.mjs`, `runpod.mjs`, `gm.mjs`). `server.mjs` listens and serves `/health`, the public lobby, and `/client`. `lib/game-exe.mjs` remains the only `Game.exe` spawn. Paths and auth rules are unchanged.

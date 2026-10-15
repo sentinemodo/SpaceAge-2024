@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SpaceAge
 {
-	public class Planet : SpaceSystemObject, IOrbitHolder, IRegionHolder
+	public partial class Planet : SpaceSystemObject, IOrbitHolder, IRegionHolder
 	{
 		public Planet(SpaceSystem spaceSystem, string name)
 			: base(name)

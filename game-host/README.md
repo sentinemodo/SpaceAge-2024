@@ -2,6 +2,8 @@
 
 HTTP service for open beta: faction auth, report XML, order upload, GM turn runner.
 
+`server.mjs` listens and serves `/health`, `/api/public/lobby-status`, and the visual-tool `/client` files. Request handlers live in `routes/session.mjs`, `routes/ai.mjs`, `routes/runpod.mjs`, and `routes/gm.mjs`. `lib/game-exe.mjs` is the only module that spawns `Game.exe`.
+
 GM step-by-step scenarios (Docker, ngrok, turn loop): [`play/hosted-beta-gm.md`](../play/hosted-beta-gm.md).
 
 Decision: [docs/architecture/adr/ADR-0011-hosted-game-service.md](../docs/architecture/adr/ADR-0011-hosted-game-service.md)
@@ -73,13 +75,23 @@ Use returned `token` as `Authorization: Bearer <token>`.
 
 | Method | Path | Purpose |
 |--------|------|---------|
+| GET | `/api/session/meta` | Turn, faction, run, and admin browse |
 | GET | `/api/session/report.xml` | Faction-scoped XML (map/units/orders) |
 | GET | `/api/session/report.txt` | Full text report |
 | GET | `/api/session/report-sections` | Text report split into engine sections (JSON) |
+| GET | `/api/session/orders` | Submitted orders for the viewed turn |
+| PUT | `/api/session/orders` | Submit orders for current turn |
 | POST | `/api/session/parse-orders` | Parse order text via Game.exe (`{ ok, errors, warnings }`) |
 | POST | `/api/session/battle-sim` | Run battle sim (`{ xml, seed? }` → `{ output, result }`) |
 | POST | `/api/session/check-orders` | Lightweight syntax warnings (legacy) |
-| PUT | `/api/session/orders` | Submit orders for current turn |
+| GET | `/api/session/runpod/status` | RunPod pod status |
+| POST | `/api/session/runpod/start` | Start the RunPod pod |
+| POST | `/api/session/runpod/stop` | Stop the RunPod pod |
+| GET/PUT | `/api/session/story` | Read or save the faction story |
+| POST | `/api/session/ai/query` | Ask the faction AI |
+| POST | `/api/session/ai/draft-story` | Regenerate story from a persona |
+
+Admin sessions also have `/api/session/view-as`, `/api/session/context`, and `/api/session/admin/orders`. The full path list is in [`docs/architecture/delivery/game-host.md`](../docs/architecture/delivery/game-host.md).
 
 ## Tests
 

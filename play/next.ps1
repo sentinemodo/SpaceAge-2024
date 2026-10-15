@@ -3,6 +3,8 @@ param(
 	[Parameter(Mandatory = $true, Position = 0)]
 	[string]$RunId,
 
+	# Copy data/gameout.{N}.xml -> data/gamein.xml. Omit to use the latest gameout.
+	[Parameter(Position = 1)]
 	[int]$Turn
 )
 
