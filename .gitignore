@@ -50,6 +50,9 @@ Generated\ Files/
 TestResult.xml
 nunit-*.xml
 
+# Legacy Subversion metadata (must not be recommitted after git migration)
+.svn/
+
 # Build Results of an ATL Project
 [Dd]ebugPS/
 [Rr]eleasePS/
