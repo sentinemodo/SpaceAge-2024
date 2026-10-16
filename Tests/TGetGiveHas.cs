@@ -625,7 +625,7 @@ namespace UnitTests
             Assert.That(
                 tanks.EventReports.Any(eventReport => eventReport.Week == 4 && eventReport.Description.Contains("departed from")),
                 Is.True,
-                "move should start on week 4 once ExecutedLongOrder clears");
+                "move should start on week 4 once integration clears");
 
             for (int week = 5; week <= 13; week++)
             {

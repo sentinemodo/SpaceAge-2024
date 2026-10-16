@@ -389,7 +389,9 @@ namespace SpaceAge
 		{
 			if (this.Index > 0)
 			{
-				destination.AddModule(picked[0]);
+				Module module = picked[0];
+				destination.AddModule(module);
+				module.ReceivedThisWeek = true;
 				sourceStack.RemoveModule(this.Index - 1);
 				return;
 			}
@@ -403,6 +405,7 @@ namespace SpaceAge
 					{
 						sourceStack.RemoveModule(i);
 						destination.AddModule(module);
+						module.ReceivedThisWeek = true;
 					}
 				}
 				return;
@@ -413,6 +416,7 @@ namespace SpaceAge
 				Module module = sourceStack.Modules[0];
 				sourceStack.RemoveModule(0);
 				destination.AddModule(module);
+				module.ReceivedThisWeek = true;
 			}
 		}
 

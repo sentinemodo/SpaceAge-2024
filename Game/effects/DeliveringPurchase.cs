@@ -249,10 +249,7 @@ namespace SpaceAge
 					module = this.ModuleStack.Modules[0];
 					this.ModuleStack.RemoveModule(0);
 					this.Receiver.AddModule(module);
-				}
-				if (this.ModuleStack.ExecutedLongOrder)
-				{
-					this.Receiver.ExecutedLongOrder = true;
+					module.ReceivedThisWeek = true;
 				}
 				ModuleStack.All.Remove(this.ModuleStack);
 			}

@@ -41,7 +41,8 @@ namespace UnitTests
 		[Test]
 		public void PlayerOwnedStack_StillPaysMaintenance()
 		{
-			ModuleStack hq = this.game.ModuleStacks["000012"];
+			ModuleStack hq = this.game.ModuleStacks["000112"];
+			Assert.That(hq, Is.Not.Null, "player HQ stack 000112 must exist in Tests/gamein.xml");
 			Assert.That(ContractScope.IsPlayerFaction(hq.Owner), Is.True);
 			int bankBefore = (int)hq.Owner.Bank.Balance;
 			this.game.Week = 1;

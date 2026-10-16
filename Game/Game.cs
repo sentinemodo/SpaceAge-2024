@@ -295,13 +295,23 @@ namespace SpaceAge
 				faction.ExecutedLongOrder = false;
 			}
 
-			foreach (ModuleStack moduleStack in this.ModuleStacks.Values)
+			foreach (ModuleStack moduleStack in ModuleStack.All.Values)
 			{
 				moduleStack.ExecutedLongOrder = false;
 			}
 			foreach (Person person in this.People.Values)
 			{
 				person.ExecutedLongOrder = false;
+			}
+
+			this.ClearReceivedThisWeek();
+		}
+
+		public void ClearReceivedThisWeek()
+		{
+			foreach (ModuleStack moduleStack in ModuleStack.All.Values)
+			{
+				moduleStack.ClearReceivedThisWeek();
 			}
 		}
 

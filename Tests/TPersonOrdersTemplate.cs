@@ -43,7 +43,10 @@ namespace UnitTests
 		[Test]
 		public void IncludeInOrdersTemplate_IncludesFormedCeoWithoutOrders()
 		{
-			Person ceo = this.game.People["200010"];
+			Person ceo = this.game.People["000101"];
+			Assert.That(ceo, Is.Not.Null, "formed CEO 000101 must exist in Tests/gamein.xml");
+			Assert.That(ceo.IsFormed, Is.True);
+			Assert.That(ceo.Orders.Count, Is.EqualTo(0));
 			ClassicAssert.IsTrue(ceo.IncludeInOrdersTemplate(ceo.Owner));
 		}
 

@@ -633,9 +633,21 @@ namespace SpaceAge
 			return true;
 		}
 
-		private bool canMove(int week)
-		{          
-			if (!this.moveSubject.IsActive)
+		private bool canMove(int week, bool departInitiation)
+		{
+			if (departInitiation && this.Mover != null && !this.Mover.CanInitiateMove(this.moveMode))
+			{
+				this.moveSubject.EventReports.Add(
+					week,
+					string.Format(
+						"MOVE failed. {0} cannot depart while modules are integrating or disabled.",
+						this.moveSubject.ReportName));
+				return false;
+			}
+
+			bool nestedMoverInitiation = this.Mover != null
+				&& this.Mover.UsesNestedMoverForMoveInitiation(this.moveMode);
+			if (!this.moveSubject.IsInTransit && !nestedMoverInitiation && !this.moveSubject.IsActive)
 			{
 				string inactiveState = this.moveSubject.IsPartiallyDisabled
 					? (this.moveSubject.IsLivingUnit ? "partially routed" : "partially disabled")
@@ -888,7 +900,6 @@ namespace SpaceAge
 					bool resume = this.moveSubject.MovingTo != null
 						|| (this.DurationLeft > 0 && this.DurationLeft < Int32.MaxValue);
 
-					// assign destination if not moving
 					if (this.moveSubject.MovingTo == null)
 					{
 						this.moveSubject.PrepareFootDeparture(week);
@@ -899,9 +910,6 @@ namespace SpaceAge
 							this.Executed = true;
 							return;
 						}
-						this.Executing = true;
-						this.moveSubject.MovingTo = this.destination;
-						resume = this.DurationLeft > 0 && this.DurationLeft < Int32.MaxValue;
 						if (!resume)
 						{
 							this.DurationLeft = this.movementDuration();
@@ -910,53 +918,58 @@ namespace SpaceAge
 						{
 							this.movementDuration();
 						}
-						if (this.moving == null)
-						{
-							this.moving = new Moving(
-								this.moveSubject.Effectable,
-								this.MoveMode,
-								this.moveSubject.Location,
-								this.Destination,
-								this.DurationLeft);
-						}
 					}
 					else
 					{
 						this.movementDuration();
 					}
 
-					// move
-					if (this.canMove(week) && !this.needFuel(week))
+					int legDuration = this.movementDuration();
+					bool firstStepOfLeg = !resume && this.DurationLeft == legDuration;
+					if (this.canMove(week, firstStepOfLeg) && !this.needFuel(week))
 					{
-                        int legDuration = this.movementDuration();
-                        bool firstStepOfLeg = !resume && this.DurationLeft == legDuration;
-                        this.DurationLeft--;
-                        if (firstStepOfLeg)
-                        {
-                            this.moveSubject.EventReports.Add(
-                                week,
-                                string.Format(
-                                    "departed from {0} to {1}, ETA {2}.",
-                                    this.moveSubject.Location.ReportName,
-                                    this.destination.ReportName,
-                                    this.DurationLeft));
-                        }
+						if (this.moveSubject.MovingTo == null)
+						{
+							this.Executing = true;
+							this.moveSubject.MovingTo = this.destination;
+							if (this.moving == null)
+							{
+								this.moving = new Moving(
+									this.moveSubject.Effectable,
+									this.MoveMode,
+									this.moveSubject.Location,
+									this.Destination,
+									this.DurationLeft);
+							}
+						}
+
+						this.DurationLeft--;
+						if (firstStepOfLeg)
+						{
+							this.moveSubject.EventReports.Add(
+								week,
+								string.Format(
+									"departed from {0} to {1}, ETA {2}.",
+									this.moveSubject.Location.ReportName,
+									this.destination.ReportName,
+									this.DurationLeft));
+						}
 						if (this.moving != null)
 						{
 							this.moving.Duration = this.DurationLeft;
 							this.moving.ReturnLegWeeks = this.moving.InitialDuration - this.DurationLeft;
 						}
 
-                        if ((this.DurationLeft + 1) != this.movementDuration() && this.DurationLeft != 0)
-                        {
-                            this.moveSubject.EventReports.Add(
-                                week,
-                                string.Format(
-                                    "moving from {0} to {1}, ETA {2}.",
-                                    this.moveSubject.Location.ReportName,
-                                    this.destination.ReportName,
-                                    this.DurationLeft));
-                        }
+						if ((this.DurationLeft + 1) != this.movementDuration() && this.DurationLeft != 0)
+						{
+							this.moveSubject.EventReports.Add(
+								week,
+								string.Format(
+									"moving from {0} to {1}, ETA {2}.",
+									this.moveSubject.Location.ReportName,
+									this.destination.ReportName,
+									this.DurationLeft));
+						}
 						if (this.moving == null)
 						{
 							this.moving = this.moveSubject.Effects.Moving;
@@ -965,8 +978,12 @@ namespace SpaceAge
 						{
 							this.moving.Use();
 						}
-                        //this.moving.Execute(week);
-                    }
+					}
+					else if (this.moveSubject.MovingTo == null)
+					{
+						this.Executing = false;
+						this.DurationLeft = Int32.MaxValue;
+					}
 
 					// change location if arrived
 					if (this.DurationLeft == 0)

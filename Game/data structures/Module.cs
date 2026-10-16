@@ -117,7 +117,11 @@ namespace SpaceAge
 
 		public bool HasPersistedState
 		{
-			get { return this.damage > 0 || this.captureDamage > 0 || !this.online || !this.activated; }
+			get
+			{
+				return this.damage > 0 || this.captureDamage > 0 || !this.online || !this.activated
+					|| this.receivedThisWeek;
+			}
 		}
 
 		public bool IsWrecked
@@ -196,10 +200,21 @@ namespace SpaceAge
 			set { this.activated = value; }
 		}
 
+		private bool receivedThisWeek;
+		public bool ReceivedThisWeek
+		{
+			get { return this.receivedThisWeek; }
+			set { this.receivedThisWeek = value; }
+		}
+
 		public bool IsActive
 		{
 			get
 			{
+				if (this.receivedThisWeek)
+				{
+					return false;
+				}
 				// the individual modules will be switched off on missing crew or energy
 				if (!this.online)
 					return false;

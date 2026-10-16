@@ -74,13 +74,7 @@ namespace SpaceAge
                     module = this.ModuleStack.Modules[0];
                     this.ModuleStack.RemoveModule(0);                    
                     this.Receiver.AddModule(module);
-                }
-
-                // keeping in mind status of long order execution to avoid transfer/new order abuse
-                if (this.ModuleStack.ExecutedLongOrder)
-                {
-                    // accepting modules to the stack that executed long order forfeits the ability to execute long order
-                    this.Receiver.ExecutedLongOrder = true;
+                    module.ReceivedThisWeek = true;
                 }
 
                 // since it has been moved to receiver, remove the transferred stack

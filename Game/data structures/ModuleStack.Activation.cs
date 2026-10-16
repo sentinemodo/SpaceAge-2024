@@ -102,6 +102,117 @@ namespace SpaceAge
 			}
 		}
 
+		public void ClearReceivedThisWeek()
+		{
+			foreach (Module module in this.modules)
+			{
+				module.ReceivedThisWeek = false;
+			}
+			foreach (ModuleStack nested in this.ModuleStacks.Values)
+			{
+				nested.ClearReceivedThisWeek();
+			}
+		}
+
+		public bool ModuleBlocksMoveInitiation(Module module)
+		{
+			if (module == null)
+			{
+				return false;
+			}
+			if (module.ReceivedThisWeek)
+			{
+				return true;
+			}
+			if (!module.Activated || !module.Online)
+			{
+				return false;
+			}
+			return !module.IsActive;
+		}
+
+		public bool AnyModuleInTreeBlocksMoveInitiation()
+		{
+			foreach (Module module in this.modules)
+			{
+				if (this.ModuleBlocksMoveInitiation(module))
+				{
+					return true;
+				}
+			}
+			foreach (ModuleStack nested in this.ModuleStacks.Values)
+			{
+				if (nested.AnyModuleInTreeBlocksMoveInitiation())
+				{
+					return true;
+				}
+			}
+			return false;
+		}
+
+		public bool CanInitiateMove(EMoveMode moveMode)
+		{
+			if (!this.IsFormed)
+			{
+				return false;
+			}
+			if (this.UsesNestedMoverForMoveInitiation(moveMode))
+			{
+				return true;
+			}
+			return !this.AnyModuleInTreeBlocksMoveInitiation();
+		}
+
+		public bool UsesNestedMoverForMoveInitiation(EMoveMode moveMode)
+		{
+			return this.canInitiateMoveViaNestedMovers(moveMode);
+		}
+
+		private bool canInitiateMoveViaNestedMovers(EMoveMode moveMode)
+		{
+			if (moveMode != EMoveMode.space)
+			{
+				return false;
+			}
+			List<ModuleStack> movers = this.spaceMovers();
+			if (movers.Count == 0)
+			{
+				return false;
+			}
+			if (!this.UsesPlayerSupplyRules)
+			{
+				foreach (ModuleStack mover in movers)
+				{
+					if (mover.QuantityActive > 0 && !mover.HasModuleBlockingMoveInitiation())
+					{
+						return true;
+					}
+				}
+				return false;
+			}
+			foreach (ModuleStack mover in movers)
+			{
+				if (mover.HasOperationalModules && !mover.NeedFuel(null)
+					&& !mover.HasModuleBlockingMoveInitiation())
+				{
+					return true;
+				}
+			}
+			return false;
+		}
+
+		public bool HasModuleBlockingMoveInitiation()
+		{
+			foreach (Module module in this.modules)
+			{
+				if (this.ModuleBlocksMoveInitiation(module))
+				{
+					return true;
+				}
+			}
+			return false;
+		}
+
 		private bool canRelocate()
 		{
 			if (!this.IsActive)

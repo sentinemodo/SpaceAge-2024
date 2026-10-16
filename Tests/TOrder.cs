@@ -156,6 +156,67 @@ namespace UnitTests
 			Assert.That(produceEnergy, Is.EqualTo(1));
 		}
 
+		[Test]
+		public void AssignOrders_PerModuleStack_ReplacesUnclaimedNumberedProduceButKeepsTrainAndNewLines()
+		{
+			ModuleStack hq = this.game.ModuleStacks["000112"];
+			OrdersReader reader = new OrdersReader(this.game);
+			reader.AssignOrders(new List<string>
+			{
+				"#faction 2",
+				"#modulestack 000112",
+				"15 produce cash",
+				"train terran officer as new1",
+				"#end"
+			});
+			ProduceOrder numberedCash = hq.Orders.OfType<ProduceOrder>().Single();
+			numberedCash.Repeat = 2;
+
+			reader.AssignOrders(new List<string>
+			{
+				"#faction 2",
+				"#modulestack 000112",
+				"15 produce terran",
+				"train terran officer as new1",
+				"@produce cash",
+				"#end"
+			});
+
+			List<ProduceOrder> produces = hq.Orders.OfType<ProduceOrder>().ToList();
+			Assert.That(produces.Count, Is.EqualTo(2));
+			Assert.That(produces.Any(p => p.IsUnlimited && p.ItemType.Name == "cash"), Is.True);
+			ProduceOrder numberedTerran = produces.First(p => !p.IsUnlimited);
+			Assert.That(numberedTerran.ItemType.Name, Is.EqualTo("terran"));
+			Assert.That(numberedTerran.Repeat, Is.EqualTo(15));
+			Assert.That(hq.Orders.OfType<ProduceOrder>().Any(p => p.ItemType.Name == "cash" && p.Repeat == 2), Is.False);
+			Assert.That(hq.Orders.OfType<TrainOrder>().Count(), Is.EqualTo(1));
+		}
+
+		[Test]
+		public void ExecuteProduceOrders_RunsFirstListedProduceBeforeSecond()
+		{
+			ModuleStack hq = this.game.ModuleStacks["000112"];
+			new OrdersReader(this.game).AssignOrders(new List<string>
+			{
+				"#faction 2",
+				"#modulestack 000112",
+				"@produce terran",
+				"@produce cash",
+				"#end"
+			});
+			Assert.That(hq.Orders.Count, Is.EqualTo(2));
+			ProduceOrder first = (ProduceOrder)hq.Orders[0];
+			ProduceOrder second = (ProduceOrder)hq.Orders[1];
+			Assert.That(first.ItemType.Name, Is.EqualTo("terran"));
+			Assert.That(second.ItemType.Name, Is.EqualTo("cash"));
+
+			hq.ExecutedLongOrder = false;
+			hq.Execute(this.game.Week);
+
+			Assert.That(first.Repeat, Is.EqualTo(-2));
+			Assert.That(second.Repeat, Is.EqualTo(-1));
+		}
+
 
 		[Test]
 		public void ExecuteNameOrder()
