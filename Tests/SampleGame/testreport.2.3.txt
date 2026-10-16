@@ -74,18 +74,20 @@ Galaxy report:
       week 4: got 42 cash [cash] from Gelvaren Headquarters [000018].
       week 4: got 16 units of oil [oil] from small cargo bay [000019].
       week 4: got 32 units of food [food] from small cargo bay [000019].
-      week 4: consumed 4 units of oil [oil] as fuel.
-      week 4: departed from Southern Hemisphere [R00003] (1,0) to
+      week 4: MOVE failed. peaceful scout [108] cannot depart while
+      modules are integrating or disabled.
+      week 5: consumed 4 units of oil [oil] as fuel.
+      week 5: departed from Southern Hemisphere [R00003] (1,0) to
       Northern Hemisphere [R00002] (0,0), ETA 5.
-      week 5: moving from Southern Hemisphere [R00003] (1,0) to Northern
-      Hemisphere [R00002] (0,0), ETA 4.
       week 6: moving from Southern Hemisphere [R00003] (1,0) to Northern
-      Hemisphere [R00002] (0,0), ETA 3.
+      Hemisphere [R00002] (0,0), ETA 4.
       week 7: moving from Southern Hemisphere [R00003] (1,0) to Northern
-      Hemisphere [R00002] (0,0), ETA 2.
+      Hemisphere [R00002] (0,0), ETA 3.
       week 8: moving from Southern Hemisphere [R00003] (1,0) to Northern
+      Hemisphere [R00002] (0,0), ETA 2.
+      week 9: moving from Southern Hemisphere [R00003] (1,0) to Northern
       Hemisphere [R00002] (0,0), ETA 1.
-      week 9: arrived at Northern Hemisphere [R00002] (0,0) from
+      week 10: arrived at Northern Hemisphere [R00002] (0,0) from
       Southern Hemisphere [R00003] (1,0).
 
   Southern Hemisphere [R00003] (1,0), grassland region, settlement

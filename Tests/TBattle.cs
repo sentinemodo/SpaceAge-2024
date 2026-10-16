@@ -304,10 +304,10 @@ namespace UnitTests
 			defender.ItemStacks.Add(new ItemStack(ItemType.All["terran"], 16));
 
 			Sequence.Rolls.Clear();
-			Sequence.Ints.Clear();
+			Sequence.BattleInts.Clear();
 			for (int i = 0; i < 200; i++)
 			{
-				Sequence.Ints.Push(9);
+				Sequence.BattleInts.Push(9);
 			}
 
 			Battle battle = new Battle(attacker, defender);
@@ -336,10 +336,10 @@ namespace UnitTests
 			frigate.Modules[0].CaptureDamage = 3;
 
 			Sequence.Rolls.Clear();
-			Sequence.Ints.Clear();
+			Sequence.BattleInts.Clear();
 			for (int i = 0; i < 40; i++)
 			{
-				Sequence.Ints.Push(13);
+				Sequence.BattleInts.Push(13);
 			}
 
 			Battle battle = new Battle(frigate, station);
@@ -381,9 +381,9 @@ namespace UnitTests
 			target.ItemStacks.Add(new ItemStack(ItemType.All["terran"], 20));
 
 			Sequence.Rolls.Clear();
-			Sequence.Ints.Clear();
-			Sequence.Ints.Push(1);
-			Sequence.Ints.Push(1);
+			Sequence.BattleInts.Clear();
+			Sequence.BattleInts.Push(1);
+			Sequence.BattleInts.Push(1);
 
 			Battle battle = new Battle(tanks, target);
 			battle.Execute(this.game.Week);
@@ -397,7 +397,7 @@ namespace UnitTests
 		public void CollectDefenders_IncludesHeadquartersSiblings()
 		{
 			Region region = new Region(Region.All["R00002"].RegionHolder, "hqregion");
-			Faction gelvaren = new Faction("3", "Gelvaren");
+			Faction gelvaren = this.game.Factions["3"];
 			ModuleStack city = new ModuleStack(region, Faction.All["1"], ModuleType.All["city"], "hqcity");
 			ModuleStack headquarters = new ModuleStack(city, Faction.All["2"], ModuleType.All["corphq"], "hqdef");
 			headquarters.AddModule();
@@ -418,7 +418,7 @@ namespace UnitTests
 		[Test]
 		public void StartAtLocations_NestedEnemyStackCanBeDefender()
 		{
-			Faction gelvaren = new Faction("3", "Gelvaren");
+			Faction gelvaren = this.game.Factions["3"];
 			Region region = Region.All["R00002"];
 			ModuleStack city = new ModuleStack(region, Faction.All["1"], ModuleType.All["city"], "citytest");
 			ModuleStack attacker = new ModuleStack(region, gelvaren, ModuleType.All["tanks"], "atktest");
@@ -458,7 +458,7 @@ namespace UnitTests
 			Region region = new Region(Region.All["R00002"].RegionHolder, "capregion");
 			Faction cityOwner = this.game.Factions["1"];
 			Faction hqOwner = this.game.Factions["2"];
-			Faction attackerOwner = new Faction("3", "Gelvaren");
+			Faction attackerOwner = this.game.Factions["3"];
 			ModuleStack city = new ModuleStack(region, cityOwner, ModuleType.All["city"], "capcity");
 			ModuleStack headquarters = new ModuleStack(city, hqOwner, ModuleType.All["corphq"], "caphq");
 			headquarters.AddModule();
@@ -516,9 +516,9 @@ namespace UnitTests
 			Assert.That(guns.IsArmed, Is.True);
 
 			Sequence.Rolls.Clear();
-			Sequence.Ints.Clear();
-			Sequence.Ints.Push(1);
-			Sequence.Ints.Push(1);
+			Sequence.BattleInts.Clear();
+			Sequence.BattleInts.Push(1);
+			Sequence.BattleInts.Push(1);
 
 			Battle battle = new Battle(attacker, headquarters);
 			battle.Execute(this.game.Week);
@@ -544,9 +544,9 @@ namespace UnitTests
 			guns.AddModule();
 
 			Sequence.Rolls.Clear();
-			Sequence.Ints.Clear();
-			Sequence.Ints.Push(1);
-			Sequence.Ints.Push(1);
+			Sequence.BattleInts.Clear();
+			Sequence.BattleInts.Push(1);
+			Sequence.BattleInts.Push(1);
 
 			Battle battle = new Battle(attacker, headquarters);
 			battle.Execute(this.game.Week);
@@ -597,9 +597,9 @@ namespace UnitTests
 			cargo.AddModule();
 
 			Sequence.Rolls.Clear();
-			Sequence.Ints.Clear();
-			Sequence.Ints.Push(1);
-			Sequence.Ints.Push(1);
+			Sequence.BattleInts.Clear();
+			Sequence.BattleInts.Push(1);
+			Sequence.BattleInts.Push(1);
 
 			Battle battle = new Battle(attacker, headquarters);
 			battle.Execute(this.game.Week);
@@ -627,9 +627,9 @@ namespace UnitTests
 			drones.ItemStacks.Add(new ItemStack(ItemType.All["heliu3"], 1));
 
 			Sequence.Rolls.Clear();
-			Sequence.Ints.Clear();
-			Sequence.Ints.Push(1);
-			Sequence.Ints.Push(1);
+			Sequence.BattleInts.Clear();
+			Sequence.BattleInts.Push(1);
+			Sequence.BattleInts.Push(1);
 
 			Battle battle = new Battle(attacker, headquarters);
 			battle.Execute(this.game.Week);
@@ -690,9 +690,9 @@ namespace UnitTests
 			target.ItemStacks.Add(new ItemStack(ItemType.All["terran"], 20));
 
 			Sequence.Rolls.Clear();
-			Sequence.Ints.Clear();
-			Sequence.Ints.Push(1);
-			Sequence.Ints.Push(1);
+			Sequence.BattleInts.Clear();
+			Sequence.BattleInts.Push(1);
+			Sequence.BattleInts.Push(1);
 
 			Battle battle = new Battle(attacker, target);
 			battle.Execute(this.game.Week);
@@ -880,7 +880,7 @@ namespace UnitTests
 		{
 			Region region = new Region(Region.All["R00002"].RegionHolder, "remotebattle");
 			Faction participantA = this.game.Factions["2"];
-			Faction participantB = new Faction("3", "Gelvaren");
+			Faction participantB = this.game.Factions["3"];
 			Faction bystander = new Faction("4", "Bystander");
 			participantA.Attitudes["3"] = FactionAttitude.Enemy;
 			participantB.Attitudes["2"] = FactionAttitude.Enemy;
@@ -1185,10 +1185,10 @@ namespace UnitTests
 			ModuleStack station = this.game.ModuleStacks["100021"];
 
 			Sequence.Rolls.Clear();
-			Sequence.Ints.Clear();
-			Sequence.Ints.Push(120);
-			Sequence.Ints.Push(1);
-			Sequence.Ints.Push(20);
+			Sequence.BattleInts.Clear();
+			Sequence.BattleInts.Push(120);
+			Sequence.BattleInts.Push(1);
+			Sequence.BattleInts.Push(20);
 
 			Battle battle = new Battle(frigate, station);
 			battle.Execute(this.game.Week);
@@ -1214,9 +1214,9 @@ namespace UnitTests
 			target.ItemStacks.Add(new ItemStack(ItemType.All["terran"], 20));
 
 			Sequence.Rolls.Clear();
-			Sequence.Ints.Clear();
-			Sequence.Ints.Push(1);
-			Sequence.Ints.Push(1);
+			Sequence.BattleInts.Clear();
+			Sequence.BattleInts.Push(1);
+			Sequence.BattleInts.Push(1);
 
 			Battle battle = new Battle(tanks, target);
 			battle.Execute(this.game.Week);
@@ -1245,9 +1245,9 @@ namespace UnitTests
 				target.ItemStacks.Add(new ItemStack(ItemType.All["terran"], 20));
 
 				Sequence.Rolls.Clear();
-				Sequence.Ints.Clear();
-				Sequence.Ints.Push(1);
-				Sequence.Ints.Push(1);
+				Sequence.BattleInts.Clear();
+				Sequence.BattleInts.Push(1);
+				Sequence.BattleInts.Push(1);
 
 				Battle battle = new Battle(infantry, target);
 				battle.Execute(this.game.Week);
@@ -1279,11 +1279,11 @@ namespace UnitTests
 			target.ItemStacks.Add(new ItemStack(ItemType.All["terran"], 20));
 
 			Sequence.Rolls.Clear();
-			Sequence.Ints.Clear();
+			Sequence.BattleInts.Clear();
 			for (int i = 0; i < 6; i++)
 			{
-				Sequence.Ints.Push(1);
-				Sequence.Ints.Push(1);
+				Sequence.BattleInts.Push(1);
+				Sequence.BattleInts.Push(1);
 			}
 
 			Battle battle = new Battle(tanks, target);
@@ -1312,9 +1312,9 @@ namespace UnitTests
 			tanks.ApplyPrioritizeTactic("prioritize command");
 
 			Sequence.Rolls.Clear();
-			Sequence.Ints.Clear();
-			Sequence.Ints.Push(1);
-			Sequence.Ints.Push(1);
+			Sequence.BattleInts.Clear();
+			Sequence.BattleInts.Push(1);
+			Sequence.BattleInts.Push(1);
 
 			Battle battle = new Battle(tanks, pack);
 			battle.Execute(this.game.Week);
@@ -1327,6 +1327,39 @@ namespace UnitTests
 			Assert.That(report, Does.Not.Contain("hits Slope burrow pack [fauna1] doing"));
 			Assert.That(report, Does.Not.Contain("#1 infantry battalion [inftry] is"));
 			Assert.That(report, Does.Contain("infantry battalion [inftry] is"));
+		}
+
+		[Test]
+		public void ReceivedThisWeek_IntegratingModuleCannotFireButCanBeHit()
+		{
+			Region region = Region.All["R00002"];
+			Faction defenderOwner = this.game.Factions["3"];
+			ModuleStack defender = new ModuleStack(region, defenderOwner, ModuleType.All["tanks"], "defint");
+			defender.AddModule();
+			defender.AddModule();
+			defender.ItemStacks.Add(new ItemStack(ItemType.All["terran"], 32));
+			defender.Modules[0].ReceivedThisWeek = true;
+
+			Assert.That(defender.GetFiringModules().Count, Is.EqualTo(1));
+			Assert.That(defender.Modules[0].IsActive, Is.False);
+			Assert.That(defender.Modules[1].IsActive, Is.True);
+
+			ModuleStack attacker = new ModuleStack(region, this.game.Factions["2"], ModuleType.All["tanks"], "attint");
+			attacker.AddModule();
+			attacker.ItemStacks.Add(new ItemStack(ItemType.All["terran"], 16));
+
+			Sequence.BattleInts.Clear();
+			for (int i = 0; i < 40; i++)
+			{
+				Sequence.BattleInts.Push(1);
+			}
+
+			int damageBefore = defender.Modules[0].Damage + defender.Modules[1].Damage;
+			Battle battle = new Battle(attacker, defender);
+			battle.Execute(this.game.Week);
+			int damageAfter = defender.Modules[0].Damage + defender.Modules[1].Damage;
+
+			Assert.That(damageAfter, Is.GreaterThan(damageBefore));
 		}
 
 	}

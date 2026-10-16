@@ -78,6 +78,12 @@ namespace SpaceAge
 			this.attackers.AddEvent(week, "engaged in battle");
 			this.defenders.AddEvent(week, "engaged in battle");
 
+			string locationName = this.attacker.Location != null ? this.attacker.Location.Name : string.Empty;
+			string defenderName = this.battleDefender != null ? this.battleDefender.Name : string.Empty;
+			int battleSeed = Sequence.ComputeBattleSeed(week, locationName, this.attacker.Name, defenderName);
+			Sequence.EnterBattleScope(battleSeed);
+			try
+			{
 			this.round = 0;
 
 			while (!this.concluded)
@@ -165,6 +171,11 @@ namespace SpaceAge
 			}
 			this.ApplyCaptures(week);
 			this.ApplyVictoryResolution(week);
+			}
+			finally
+			{
+				Sequence.ExitBattleScope();
+			}
 		}
 
 

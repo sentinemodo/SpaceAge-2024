@@ -488,13 +488,13 @@ namespace IntegrationTests
 			ModuleStack station = ModuleStack.All["100021"];
 
             Sequence.Rolls.Clear();
-            Sequence.Ints.Push(120);
-            Sequence.Ints.Push(1);
-            Sequence.Ints.Push(120);
-            Sequence.Ints.Push(1);
-            Sequence.Ints.Push(120);
-            Sequence.Ints.Push(1);
-			Sequence.Ints.Push(20);
+            Sequence.BattleInts.Push(120);
+            Sequence.BattleInts.Push(1);
+            Sequence.BattleInts.Push(120);
+            Sequence.BattleInts.Push(1);
+            Sequence.BattleInts.Push(120);
+            Sequence.BattleInts.Push(1);
+			Sequence.BattleInts.Push(20);
 
 			Battle battle = new Battle(frigate, station);
 			battle.Execute(this.game.Week);
@@ -591,15 +591,15 @@ namespace IntegrationTests
 			this.resetModuleBattleDamage(station);
 
 			Sequence.Rolls.Clear();
-			Sequence.Ints.Clear();
+			Sequence.BattleInts.Clear();
 			// LIFO: last push is consumed first. Location 250 is past hull/command/reactor
 			// on the capture-weighted station and lands on cargo [100024].
 			for (int i = 0; i < 20; i++)
 			{
-				Sequence.Ints.Push(250);
-				Sequence.Ints.Push(1);   // hit
+				Sequence.BattleInts.Push(250);
+				Sequence.BattleInts.Push(1);   // hit
 			}
-			Sequence.Ints.Push(20); // first shot misses (20 > chance 18)
+			Sequence.BattleInts.Push(20); // first shot misses (20 > chance 18)
 
 			Battle battle = new Battle(frigate, station);
 			battle.Execute(this.game.Week);
@@ -647,13 +647,13 @@ namespace IntegrationTests
 			new Person(command, command.Owner, Race.All["terran"], "200012");
 
 			Sequence.Rolls.Clear();
-			Sequence.Ints.Clear();
+			Sequence.BattleInts.Clear();
 			for (int i = 0; i < 10; i++)
 			{
-				Sequence.Ints.Push(120);
-				Sequence.Ints.Push(1);
+				Sequence.BattleInts.Push(120);
+				Sequence.BattleInts.Push(1);
 			}
-			Sequence.Ints.Push(20);
+			Sequence.BattleInts.Push(20);
 
 			Battle battle = new Battle(frigate, station);
 			battle.Execute(this.game.Week);
@@ -689,13 +689,13 @@ namespace IntegrationTests
 			ModuleStack station = ModuleStack.All["100021"];
 
             Sequence.Rolls.Clear();
-            Sequence.Ints.Push(120);
-            Sequence.Ints.Push(1);
-            Sequence.Ints.Push(120);
-            Sequence.Ints.Push(1);
-            Sequence.Ints.Push(120);
-            Sequence.Ints.Push(1);
-            Sequence.Ints.Push(20);
+            Sequence.BattleInts.Push(120);
+            Sequence.BattleInts.Push(1);
+            Sequence.BattleInts.Push(120);
+            Sequence.BattleInts.Push(1);
+            Sequence.BattleInts.Push(120);
+            Sequence.BattleInts.Push(1);
+            Sequence.BattleInts.Push(20);
 
             Battle battle = new Battle(frigate, station);
 			battle.Execute(this.game.Week);
@@ -777,7 +777,7 @@ namespace IntegrationTests
 		[Test]
 		public void OrdersTemplate_producingEffect()
 		{
-            Sequence.Ints.Push(100);
+            Sequence.BattleInts.Push(100);
 		//orbit [O00002], has atmosphere suitable for terran [terran].
 		// + space shuttle [100], 10 space shuttle [shuttl].
 		//	 effects:
