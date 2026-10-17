@@ -69,32 +69,15 @@ export function listRuns() {
     } catch {
       continue;
     }
-    let dataXmlMtime = null;
-    const xmlPath = path.join(dir, 'data', 'data.xml');
-    try {
-      if (fs.existsSync(xmlPath)) dataXmlMtime = fs.statSync(xmlPath).mtimeMs;
-    } catch {
-      /* skip */
-    }
-    rows.push({ id, dataXmlMtime });
+    rows.push({ id });
   }
-  let newest = null;
-  for (const row of rows) {
-    if (row.dataXmlMtime == null) continue;
-    if (
-      !newest
-      || row.dataXmlMtime > newest.dataXmlMtime
-      || (row.dataXmlMtime === newest.dataXmlMtime && row.id > newest.id)
-    ) {
-      newest = row;
-    }
-  }
+  const canonicalRunId = runId();
   return rows
     .sort((a, b) => a.id.localeCompare(b.id))
     .map((row) => ({
       id: row.id,
       label: row.id,
-      playerVisible: newest != null && row.id === newest.id,
+      playerVisible: row.id === canonicalRunId,
     }));
 }
 

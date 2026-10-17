@@ -62,7 +62,7 @@ export interface FactionOption {
 export interface RunOption {
   id: string;
   label: string;
-  /** True for the single campaign whose data.xml is newest. Marked "x" in the admin list. */
+  /** True for the canonical live run (GAME_HOST_RUN_ID, default beta-1). Marked "x" in the admin list. */
   playerVisible?: boolean;
 }
 
