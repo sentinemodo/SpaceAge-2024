@@ -1,0 +1,373 @@
+To: 
+Subject: [SpaceAge] Report for turn 1
+Content-Disposition: attachment
+
+SpaceAge report for Graph Fauna [17].
+Turn 1, Year 2156, January 1.
+
+SpaceAge Engine Version: 0.8.004.
+
+Declared stances:
+  default: enemy, unknown: enemy.
+
+Bank report:
+  Bank account balance: 0.
+  Credit line maximum: 0.
+  Credit rate: 0%, Deposit rate: 0%.
+Galaxy report:
+------------------------------------------------------------
+* system Helios [SS0001] (5, 5, 0).
+------------------------------------------------------------
+
+  * Arbor [P00001] at AU 1, ocean planet [ocean].
+------------------------------------------------------------
+  orbit [O00001], has atmosphere suitable for terran [terran].
+------------------------------------------------------------
+  * Selene [M00001], rocky moon [rock] 0.003 AU from the planet.
+------------------------------------------------------------
+    orbit [O00002], has no atmosphere.
+
+  * Scoria [P00002] at AU 1.5, dust planet [dust].
+------------------------------------------------------------
+  orbit [O00003], has atmosphere.
+
+  * Aeolus [P00004] at AU 5.2, gas giant planet [gasgnt].
+------------------------------------------------------------
+  orbit [O00004], has atmosphere.
+------------------------------------------------------------
+  * Rime [M00002], ice moon [ice] 0.003 AU from the planet.
+------------------------------------------------------------
+    orbit [O00005], has no atmosphere.
+------------------------------------------------------------
+  * Glaze [M00003], ice moon [ice] 0.005 AU from the planet.
+------------------------------------------------------------
+    orbit [O00006], has no atmosphere.
+------------------------------------------------------------
+  * Shard [M00004], rocky moon [rock] 0.007 AU from the planet.
+------------------------------------------------------------
+    orbit [O00007], has no atmosphere.
+------------------------------------------------------------
+  * Cindercone [M00005], vulcanic moon [vulcan] 0.009 AU from the planet.
+------------------------------------------------------------
+    orbit [O00008], has no atmosphere.
+
+  * Helios Fomal Gate [P00009] at AU 69, Alderson Gate.
+------------------------------------------------------------
+  orbit [O00110], has no atmosphere.
+
+  * Helios Ember Gate [P00041] at AU 79, Alderson Gate.
+------------------------------------------------------------
+  orbit [O00153], has no atmosphere.
+
+* system Fomal [SS0002] (6, 5, 0).
+------------------------------------------------------------
+
+  * Anvil [P00005] at AU 1.4, ocean planet [ocean].
+------------------------------------------------------------
+  orbit [O00112], has atmosphere suitable for terran [terran].
+------------------------------------------------------------
+  * Anvil Rock [M00006], rocky moon [rock] 0.002 AU from the planet.
+------------------------------------------------------------
+    orbit [O00113], has no atmosphere.
+------------------------------------------------------------
+  * Anvil Ice [M00007], ice moon [ice] 0.004 AU from the planet.
+------------------------------------------------------------
+    orbit [O00114], has no atmosphere.
+
+  * Pyre [P00006] at AU 0.6, dust planet [dust].
+------------------------------------------------------------
+  orbit [O00115], has atmosphere.
+
+  * Fomal Giant [P00008] at AU 6, gas giant planet [gasgnt].
+------------------------------------------------------------
+  orbit [O00116], has atmosphere.
+------------------------------------------------------------
+  * Drift [M00008], ice moon [ice] 0.005 AU from the planet.
+------------------------------------------------------------
+    orbit [O00117], has no atmosphere.
+------------------------------------------------------------
+  * Rimeband [M00009], ice moon [ice] 0.005 AU from the planet.
+------------------------------------------------------------
+    orbit [O00118], has no atmosphere.
+
+  * Fomal Helios Gate [P00010] at AU 64, Alderson Gate.
+------------------------------------------------------------
+  orbit [O00111], has no atmosphere.
+
+  * Fomal Gleam Gate [P00043] at AU 79, Alderson Gate.
+------------------------------------------------------------
+  orbit [O00155], has no atmosphere.
+
+* system Ember [SS0003] (4, 7, 0).
+------------------------------------------------------------
+
+  * Ember Dust [P00011] at AU 0.7, dust planet [dust].
+------------------------------------------------------------
+  orbit [O00119], has atmosphere.
+
+  * Ember Giant [P00013] at AU 4.1, gas giant planet [gasgnt].
+------------------------------------------------------------
+  orbit [O00120], has atmosphere.
+------------------------------------------------------------
+  * Ember Ice 0 [M00010], ice moon [ice] 0.004 AU from the planet.
+------------------------------------------------------------
+    orbit [O00121], has no atmosphere.
+------------------------------------------------------------
+  * Ember Ice 1 [M00011], ice moon [ice] 0.006 AU from the planet.
+------------------------------------------------------------
+    orbit [O00122], has no atmosphere.
+------------------------------------------------------------
+  * Ember Ice 2 [M00012], ice moon [ice] 0.008 AU from the planet.
+------------------------------------------------------------
+    orbit [O00123], has no atmosphere.
+
+  * Ember Helios Gate [P00042] at AU 61, Alderson Gate.
+------------------------------------------------------------
+  orbit [O00154], has no atmosphere.
+
+  * Ember Cinder Gate [P00045] at AU 71, Alderson Gate.
+------------------------------------------------------------
+  orbit [O00157], has no atmosphere.
+
+  * Ember Ash Gate [P00047] at AU 70, Alderson Gate.
+------------------------------------------------------------
+  orbit [O00159], has no atmosphere.
+
+  * Ember Graph Gate [P00049] at AU 71, Alderson Gate.
+------------------------------------------------------------
+  orbit [O00161], has no atmosphere.
+
+  * Ember Gleam Gate [P00057] at AU 66, Alderson Gate.
+------------------------------------------------------------
+  orbit [O00169], has no atmosphere.
+
+* system Gleam [SS0004] (7, 3, 0).
+------------------------------------------------------------
+
+  * Gleam Inner [P00014] at AU 0.12, dust planet [dust].
+------------------------------------------------------------
+  orbit [O00124], has no atmosphere.
+
+  * Gleam Ice [P00016] at AU 0.8, dust planet [dust].
+------------------------------------------------------------
+  orbit [O00125], has no atmosphere.
+
+  * Gleam Fomal Gate [P00044] at AU 73, Alderson Gate.
+------------------------------------------------------------
+  orbit [O00156], has no atmosphere.
+
+  * Gleam Shards Gate [P00051] at AU 77, Alderson Gate.
+------------------------------------------------------------
+  orbit [O00163], has no atmosphere.
+
+  * Gleam Deep Gate [P00053] at AU 71, Alderson Gate.
+------------------------------------------------------------
+  orbit [O00165], has no atmosphere.
+
+  * Gleam Spare Gate [P00055] at AU 63, Alderson Gate.
+------------------------------------------------------------
+  orbit [O00167], has no atmosphere.
+
+  * Gleam Ember Gate [P00058] at AU 61, Alderson Gate.
+------------------------------------------------------------
+  orbit [O00170], has no atmosphere.
+
+* system Cinder [SS0005] (3, 6, 0).
+------------------------------------------------------------
+
+  * Cinder Dust [P00017] at AU 1.2, dust planet [dust].
+------------------------------------------------------------
+  orbit [O00126], has atmosphere.
+
+  * Cinder Giant [P00019] at AU 8, gas giant planet [gasgnt].
+------------------------------------------------------------
+  orbit [O00127], has atmosphere.
+------------------------------------------------------------
+  * Cinder Vulcan [M00013], vulcanic moon [vulcan] 0.003 AU from the planet.
+------------------------------------------------------------
+    orbit [O00128], has no atmosphere.
+------------------------------------------------------------
+  * Cinder Rock [M00014], rocky moon [rock] 0.005 AU from the planet.
+------------------------------------------------------------
+    orbit [O00129], has no atmosphere.
+------------------------------------------------------------
+  * Cinder Ice [M00015], ice moon [ice] 0.007 AU from the planet.
+------------------------------------------------------------
+    orbit [O00130], has no atmosphere.
+
+  * Cinder Ember Gate [P00046] at AU 80, Alderson Gate.
+------------------------------------------------------------
+  orbit [O00158], has no atmosphere.
+
+* system Ash [SS0006] (2, 4, 0).
+------------------------------------------------------------
+
+  * Ash Inner Giant [P00022] at AU 6, gas giant planet [gasgnt].
+------------------------------------------------------------
+  orbit [O00131], has atmosphere.
+------------------------------------------------------------
+  * Ash Moon 0 [M00016], ice moon [ice] 0.003 AU from the planet.
+------------------------------------------------------------
+    orbit [O00132], has no atmosphere.
+------------------------------------------------------------
+  * Ash Moon 1 [M00017], ice moon [ice] 0.005 AU from the planet.
+------------------------------------------------------------
+    orbit [O00133], has no atmosphere.
+------------------------------------------------------------
+  * Ash Moon 2 [M00018], rocky moon [rock] 0.007 AU from the planet.
+------------------------------------------------------------
+    orbit [O00134], has no atmosphere.
+------------------------------------------------------------
+  * Ash Moon 3 [M00019], vulcanic moon [vulcan] 0.009 AU from the planet.
+------------------------------------------------------------
+    orbit [O00135], has no atmosphere.
+
+  * Ash Outer Giant [P00024] at AU 18, gas giant planet [gasgnt].
+------------------------------------------------------------
+  orbit [O00136], has atmosphere.
+
+  * Ash Ember Gate [P00048] at AU 65, Alderson Gate.
+------------------------------------------------------------
+  orbit [O00160], has no atmosphere.
+
+* system Shards [SS0007] (8, 4, 0).
+------------------------------------------------------------
+
+  * Shards Dust [P00027] at AU 0.9, dust planet [dust].
+------------------------------------------------------------
+  orbit [O00137], has atmosphere.
+
+  * Shards Gleam Gate [P00052] at AU 78, Alderson Gate.
+------------------------------------------------------------
+  orbit [O00164], has no atmosphere.
+
+* system Deep [SS0008] (9, 6, 0).
+------------------------------------------------------------
+
+  * Deep Dust [P00028] at AU 0.5, dust planet [dust].
+------------------------------------------------------------
+  orbit [O00138], has atmosphere.
+
+  * Deep Inner Giant [P00029] at AU 4.5, gas giant planet [gasgnt].
+------------------------------------------------------------
+  orbit [O00139], has atmosphere.
+------------------------------------------------------------
+  * Haven [M00020], ice moon [ice] 0.004 AU from the planet.
+------------------------------------------------------------
+    orbit [O00140], has atmosphere suitable for terran [terran].
+------------------------------------------------------------
+  * Deep Ice A [M00021], ice moon [ice] 0.006 AU from the planet.
+------------------------------------------------------------
+    orbit [O00141], has no atmosphere.
+------------------------------------------------------------
+  * Deep Rock [M00022], rocky moon [rock] 0.008 AU from the planet.
+------------------------------------------------------------
+    orbit [O00142], has no atmosphere.
+------------------------------------------------------------
+  * Deep Ice B [M00023], ice moon [ice] 0.01 AU from the planet.
+------------------------------------------------------------
+    orbit [O00143], has no atmosphere.
+
+  * Deep Outer Giant [P00030] at AU 9.2, gas giant planet [gasgnt].
+------------------------------------------------------------
+  orbit [O00144], has atmosphere.
+------------------------------------------------------------
+  * Deep Outer 0 [M00024], rocky moon [rock] 0.004 AU from the planet.
+------------------------------------------------------------
+    orbit [O00145], has no atmosphere.
+------------------------------------------------------------
+  * Deep Outer 1 [M00025], ice moon [ice] 0.007 AU from the planet.
+------------------------------------------------------------
+    orbit [O00146], has no atmosphere.
+------------------------------------------------------------
+  * Deep Outer 2 [M00026], ice moon [ice] 0.01 AU from the planet.
+------------------------------------------------------------
+    orbit [O00147], has no atmosphere.
+
+  * Deep Gleam Gate [P00054] at AU 63, Alderson Gate.
+------------------------------------------------------------
+  orbit [O00166], has no atmosphere.
+
+* system Graph [SS0009] (1, 3, 0).
+------------------------------------------------------------
+
+  * Graph [P00031] at AU 0.95, ocean planet [ocean].
+------------------------------------------------------------
+  orbit [O00148], has atmosphere suitable for terran [terran].
+
+  Graph 2,0 [R00503] (2,0), grassland region, settlement capacity 8/0.
+  Exits:
+    Graph 1,0 [R00502] (1,0), sea region, naval travel duration 3 weeks.
+    Graph 3,0 [R00504] (3,0), grassland region, ground travel duration 3 weeks.
+    Graph 2,1 [R00509] (2,1), grassland region, ground travel duration 3 weeks.
+  Resources: 300 units of food [food], 20 units of carbon [carbon], 80 units of water [water], 12
+  units of iron [iron].
+  + Graph silicate skitters [170010], silicate skitter [silskk].
+    size: 380, mass: 380 (380), capacity: 90/0.
+    movement speed: 1.0 on ground.
+
+  Graph 3,1 [R00510] (3,1), grassland region, settlement capacity 8/0.
+  Exits:
+    Graph 2,1 [R00509] (2,1), grassland region, ground travel duration 3 weeks.
+    Graph 4,1 [R00511] (4,1), grassland region, ground travel duration 3 weeks.
+    Graph 3,0 [R00504] (3,0), grassland region, ground travel duration 3 weeks.
+    Graph 3,2 [R00516] (3,2), grassland region, ground travel duration 3 weeks.
+  Resources: 300 units of food [food], 20 units of carbon [carbon], 80 units of water [water], 12
+  units of iron [iron].
+  + Graph quartz roller [170020], quartz roller [qtzrol].
+    size: 230, mass: 310 (310), capacity: 110/0.
+    movement speed: 0.8 on ground.
+
+  Graph 1,2 [R00514] (1,2), grassland region, settlement capacity 8/0.
+  Exits:
+    Graph 0,2 [R00513] (0,2), ocean region, naval travel duration 3 weeks.
+    Graph 2,2 [R00515] (2,2), grassland region, ground travel duration 3 weeks.
+    Graph 1,1 [R00508] (1,1), sea region, naval travel duration 3 weeks.
+    Graph 1,3 [R00520] (1,3), grassland region, ground travel duration 3 weeks.
+  Resources: 300 units of food [food], 20 units of carbon [carbon], 80 units of water [water], 12
+  units of iron [iron].
+  + Graph spine reef [170030], spine reef [spngrf].
+    size: 360, mass: 360 (360), capacity: 65/0.
+    movement speed: 0.5 on ground.
+
+  * Graph Dust [P00032] at AU 1.6, dust planet [dust].
+------------------------------------------------------------
+  orbit [O00149], has no atmosphere.
+------------------------------------------------------------
+  * Graph Rock [M00027], rocky moon [rock] 0.002 AU from the planet.
+------------------------------------------------------------
+    orbit [O00150], has no atmosphere.
+
+  * Graph Ember Gate [P00050] at AU 63, Alderson Gate.
+------------------------------------------------------------
+  orbit [O00162], has no atmosphere.
+
+* system Spare [SS0010] (10, 7, 0).
+------------------------------------------------------------
+
+  * Spare Dust [P00034] at AU 1.1, dust planet [dust].
+------------------------------------------------------------
+  orbit [O00151], has no atmosphere.
+------------------------------------------------------------
+  * Spare Ice [M00028], ice moon [ice] 0.003 AU from the planet.
+------------------------------------------------------------
+    orbit [O00152], has no atmosphere.
+
+  * Spare Gleam Gate [P00056] at AU 66, Alderson Gate.
+------------------------------------------------------------
+  orbit [O00168], has no atmosphere.
+
+
+Orders Template:
+#faction 17 ""
+#modulestack 170010
+; + Graph silicate skitters [170010], silicate skitter [silskk].
+
+#modulestack 170020
+; + Graph quartz roller [170020], quartz roller [qtzrol].
+
+#modulestack 170030
+; + Graph spine reef [170030], spine reef [spngrf].
+
+#end
+

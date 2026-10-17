@@ -1,0 +1,632 @@
+Basic technologies:
+
+All these technologies are automatically available in any of your units, and
+do not require loading, unloading or copying.  These technologies are never
+reported and can be USEd at all times.
+
+
+action and reaction [reactio]: The construction of reaction-based drives,
+  using cheap reaction mass heated by large energy systems. Works in factory
+  modules. Use consumes: 3 iron [iron], 3 titanium [tita]. Use builds: 1
+  reaction drive [rdrive] module in 3 weeks. Technology level 0.
+
+agricultural complex [agrplex]: The placing of farms and others complexes on
+  a planet for farming and ranching. Works in factory modules. Use consumes:
+  7 iron [iron]. Use builds: 1 farming complex [farms1] module in 4 weeks.
+  Technology level 0.
+
+city defenses [citydef]: The construction of a perimeter defense allows the
+  creation of a strong, defended city, at the expense of practicality. Works
+  in any module. Use consumes: 4 iron [iron]. Use builds: 1 settlement [settlm]
+  module in 2 weeks. Technology level 0.
+
+copper mining [cmining]: The extraction, purification and refining of copper
+  ores from a variety of locations. Copper mining is used on planetary surfaces
+  and asteroids. Works in extraction modules. Use harvests: 2 copper [copp] per
+  week. Technology level 0.
+
+coordinated movements [coordmv]: The most basic navigation facility, the
+  coordination of movements allow a few small ships to move in concert, but
+  does not provide a benefit. The ordering module becomes the first module
+  in the fleet. May be used only by a space unit. Works in space ship core
+  modules. Use builds: 1 ship grouping [shipgr] module in 1 week.
+  Technology level 0.
+
+crew housing [crewhsn]: Habitations for crew members in hostile environment
+  require careful design to avoid cohabitation problems. Works in factory
+  modules. Use consumes: 3 iron [iron], 2 titanium [tita]. Use builds: 1
+  crew quarters [crewq1] module in 3 weeks. Technology level 0.
+
+disperse water [disph2o]: The disposal of unneeded and extra production. Works
+  in all modules. Use consumes: 1 oxyhydro [h2o2] per week. Technology level 0.
+
+domed city [domcity]: How to create covered structures to house people in an
+  hostile environment. Works in factory modules. Use consumes: 9 iron [iron].
+  Use builds: 1 outpost [outpst] module in 4 weeks. Technology level 0.
+
+file indexing [filindx]: How to organise computer files in an efficient and
+  centralised manner. Works in factory modules. Use consumes: 1 iron [iron],
+  1 titanium [tita], 2 silicium [sili]. Use builds: 1 computer library [comlib]
+  module in 2 weeks. Technology level 0.
+
+found city [fndcity]: The staking and creation of basic infrastructures for
+  cities. Works in all modules. Use builds: 1 city [cities] module per week.
+  Technology level 0.
+
+fossil use [fossuse]: Use of fossil fuels allows one to produce huge and
+  dirty plants that transform carbon-based resources into energy. Works in
+  factory modules. Use consumes: 10 iron [iron]. Use builds: 1 coal-burning
+  plant [cplant] in 8 weeks. Technology level 0.
+
+hydrocarbons drilling [hcarbon]: The extraction and refining of hydrocarbons,
+  or fossil fuels, from a planetary surface. Hydrocarbon drilling is used on
+  planetary surfaces. Works in extraction modules. Use harvests: 1 carbon
+  [carb] per week. Technology level 0.
+
+industrial alloys [ialloys]: The fabrication of strong, durable alloys that
+  resist over time. Works in factory modules. Use consumes: 10 iron [iron],
+  10 titanium [tita]. Use builds: 1 heavy shielding [hvshld] module in 6
+  weeks. Technology level 0.
+
+industrial automation [industr]: Most industries these day use automated
+  production management to avoid requiring thousands of workmen at the same
+  time. Works in factory modules. Use consumes: 8 iron [iron], 3 titanium
+  [tita]. Use builds: 1 factory [factry] module in 7 weeks. Technology
+  level 0.
+
+intensive farming [farming]: Long experience in exploitation techniques and
+  breeds selection makes for intensive farming. Intensive farming is used on
+  terran planets. Works in farming modules. Use harvests: 3 food [food] per
+  week. Technology level 0.
+
+iron mining [imining]: The extraction, purification and refining of iron ores
+  from a variety of locations. Iron mining is used on planetary surfaces and
+  asteroids.  Works in extraction modules. Use harvests: 3 iron [iron] per
+  week. Technology level 0.
+
+mineral core drilling [cdrills]: The basic technologies for mineral
+  exploitation, simplex, yet flexible. Works in factory modules. Use consumes:
+  5 iron [iron]. Use builds: 1 core drill [mines1] module in 3 weeks.
+  Technology level 0.
+
+orbital assembly [orbitas]: The putting together of frames for basic orbital
+  complexes. Works in factory modules. Use consumes: 2 iron [iron]. Use
+  builds: 1 orbital complex [orbplx] module in 2 weeks. Technology level 0.
+
+restructuration [restruc]: It is possible to destroy a module to make room for
+  improvements, notably when space is at a premium. One copy of the target
+  module will be destroyed by the use of this technology, if that module
+  belongs to your interest. A random amount of the original production
+  materials, up to half the original amount, may be restored. Works in
+  factory modules. Use produces: 1 destruction per week. Technology level 0.
+
+scrap copper [scrpcop]: The disposal of unneeded and extra production. Works
+  in extraction modules, production modules. Use consumes: 1 copper [copp] per
+  week. Technology level 0.
+
+scrap iron [scrpirn]: The disposal of unneeded and extra production. Works in
+  extraction modules, production modules. Use consumes: 1 iron [iron] per week.
+  Technology level 0.
+
+scrap silicium [scrpsil]: The disposal of unneeded and extra production. Works
+  in extraction modules, production modules. Use consumes: 1 silicium [sili] per
+  week. Technology level 0.
+
+scrap titanium [scrptit]: The disposal of unneeded and extra production. Works
+  in extraction modules, production modules. Use consumes: 1 titanium [tita] per
+  week. Technology level 0.
+
+silicium melting [silmelt]: The extraction and refining of silicates into
+  electronic-grade silicium for hi-tech elements. Silicium melting is used on
+  planetary surfaces and asteroids. Works in extraction modules. Use harvests:
+  1 silicium [sili] in 2 weeks. Technology level 0.
+
+small scale transportation [stransp]: Transport over interstellar distances and
+  storage of freight poses logistics problems. Works in factory modules. Use
+  consumes: 2 iron [iron], 2 titanium [tita]. Use builds: 1 cargo bay [cargob]
+  module in 2 weeks. Technology level 0.
+
+space assembly [sassemb]: The assembly of space-based ships. Most ships can
+  never land, and rely on orbital shuttles for exploration and ferrying. Works
+  in factory modules. Use consumes: 3 iron [iron], 2 titanium [tita]. Use
+  builds: 1 spaceship [shull1] module in 5 weeks. Technology level 0.
+
+space controls [spcntrl]: Any self-respecting space vessel requires a
+  command structure to navigate and direct a ship. Works in factory modules.
+  Use consumes: 1 iron [iron], 4 titanium [tita], 1 silicium [sili]. Use
+  builds: 1 command bridge [cbridg] module in 4 weeks. Technology level 0.
+
+titanium mining [tmining]: The extraction, purification and refining of
+  titanium ores from a variety of locations. Titanium mining is used on
+  planetary surfaces and asteroids. Works in extraction modules. Use harvests:
+  2 titanium [tita] per week. Technology level 0.
+
+uranium fission [urfissi]: Heavy elements can be made to fission faster using
+  heavy shielded structures to provide lasting power. Works in factory modules.
+  Use consumes: 2 iron [iron], 3 titanium [tita], 1 copper [copp]. Use builds:
+  1 fission reactor [fisrec] in 8 weeks. Technology level 0.
+
+uranium mining [umining]: The extraction, purification and refining of
+  pechblend, the basic uranium ore from a variety of locations. Uranium mining
+  is used on planetary surfaces and asteroids. Works in extraction modules. Use
+  harvests: 1 uranium [uran] per week. Technology level 0.
+
+urbanism [urbansm]: Building appartments, condos and other habitations for
+  human use. Works in factory modules. Use consumes: 6 iron [iron]. Use builds
+  1 appartment [appart] module in 2 weeks. Technology level 0.
+
+waste disposal [wastdsp]: This simple yet effective technique sends wastes
+  into a sun, preventing accumulation of radio-active or unbreakable toxic
+  wastes. May be used only by a space unit. Takes 1 week to execute. Works in
+  space core modules. Use consumes: 2 waste product [wast]. Technology level 0.
+
+water distillation [waterds]: The extraction of salts and minerals from water,
+  making it suitable for industrial uses. Water distillation is used on
+  planteary surfaces. Works in extraction modules. Use harvests: 3 oxyhydro
+  [h2o2] per week. Technology level 0.
+
+
+Basic modules:
+
+
+apartment [apartm]: The most commonly used form of habitation for people out
+  in urban areas. An apartment may only be placed in terran planets. Habitat
+  module. Size:1300, energy:1, upkeep:$60, tech:0/1.
+	Startup cost: $600
+
+cargo bays [cargob]: The cargo bays may hold a wide variety of cargo for bulk
+  transportations. Storage module. Size:2000/1800, mass:100, crew:2,
+  upkeep:$30, tech:0/1.
+	Startup cost: $300
+
+city [cities]: The city infrastructure, underlying a settlement.  A city may
+  only be placed in terran planets. This is an open module. Additional core
+  modules may be added at any time. Core/Settlement module. Size:0/10000,
+  crew:2, energy:2, upkeep:$20.
+	Startup cost: $200
+
+coal-burning plant [cplant]: This primitive facility burns coal and other
+  fossil fuels to provide energies to a burgeoning city or settlement. A coal
+  plant may only be placed in terran planets. Consume: 1 carbon [carb] per
+  turn. Energy module. Size:1000, mass:1000, crew:2, energy:0/25,
+  upkeep:$50, attack:1, tech:0/1.
+	Startup cost: $500
+
+command bridge [cbridg]: A command bridge is mandated for the control of any
+  spaceship. Command/Bridge module. Size:800, mass:300, crew:10, energy:5,
+  upkeep:$100, tech:0/1.
+	Startup cost: $1000
+
+computer library [comlib]: The efficiency of the computer library allows on
+  to store and manipulate larger than usual files and technological reference
+  documents. If fully active, it adds 4% to your technology discover chance.
+  Use the RESEARCH order to select a specific research direction. Research
+  module. Size:200, mass:50, crew:2, energy:5, upkeep:$100, tech:0/4.
+	Startup cost: $1000
+
+core drill [mines1]: The base and efficient mining system. A core drill allows
+  you to strip minerals and various resources out of any solid body. A core
+  mine may only be placed on non-gas giant planets, asteroid belts or
+  planetoids. Extraction module. Size:1000, mass:1000, crew:6, energy:5,
+  upkeep:$40.
+	Startup cost: $400
+
+crew quarters [crewq1]: These sealed and protected quarters house crew in the
+  most hostile of the areas. Habitat module. Size:500, mass:400, crew:1,
+  energy:1, upkeep:$50, tech:0/1.
+	Startup cost: $500
+
+factory [factry]: Factories are everywhere since the dawn of Industral age,
+  and even the Space age couldn't change the fact. Factory module. Size:1000,
+  mass:750, crew:10, energy:15, upkeep:$60, tech:0/1.
+	Startup cost: $600
+
+farming complex [farms1]: A low-energy, low-technology food producing and
+  harvesting complex. A farming complex may only be placed in terran planets.
+  Farm module. Size:1000, mass:100, crew:5, energy:5, upkeep:$50, tech:0/1.
+	Startup cost: $500
+
+fission reactor [fisrec]: The basic nuclear power reactors, which works using
+  heavy fissile elements to produce energy. Produces: 1 waste product [wast]
+  per turn. Energy module. Consume: 1 uranium [uran] per turn. Size:400,
+  mass:500, crew:3, energy:0/40, attack:2, upkeep:$90, tech:0/1.
+	Startup cost: $900
+
+heavy shielding [hvshld]: A large and bulky, but efficient shielding that
+  protects vital parts of any structure. Heavy shields cannot be placed on
+  open core modules, such as cities or open bases. Military module. Size:1000,
+  mass:1200, upkeep:$5, defense:5.
+	Startup cost: $50
+
+orbital complex [orbplx]: An elongated set of struts, cables, frames and other
+  interconnecting parts assembling modules in orbit. The orbital complex is
+  cheap, simple and easy to build, but lacks sophistication. This is an open
+  module. Additional core modules may be added at any time. Core/Space base
+  module. Size:100/5000, mass:10, crew:1, energy:1, upkeep:$15.
+	Startup cost: $150
+
+outpost [outpst]: The basic domed and shielded city, built on alien planets
+  to protect against harsh environment that do not support earth-compatible
+  life. An outpost may only be placed in non-gas giant planets. Consumes: 1
+  oxyhydro [h2o2] per turn. Core/Settlement module. Size:1000/10000, crew:2,
+  energy:2, upkeep:$30, defense:10, tech:0/1.
+	Startup cost: $300
+
+reaction drive [rdrive]: A long experience in fluid dynamics and combustion
+  has gone into these drives. Each drive requires 1 oxyhydro [h2o2] for 2
+  weeks of movement. Propulsion module. Size:600, mass:700/10000, crew:1,
+  energy:40, upkeep:$100, tech:0/1.
+	Startup cost: $1000
+
+settlement [settlm]: This enclosed settlement provide additional protection
+  against local marauding life on dangerous planets. A settlement may only be
+  placed in terran planets. Core/Settlement module. Size:500/10000, crew:2,
+  energy:2, upkeep:$20, defense:8, tech:0/1.
+	Startup cost: $200
+
+ship grouping [shipgr]: This is the most basic of the fleets, and does not
+  provide any bonus to its composing ships. This is an open module.
+  Additional core modules may be added at any time. Core/Fleet module.
+  Size:0/100000.
+
+spaceship [shull1]: The basic spaceship hull, it embodies the technology and
+  experience in space travel of centuries. Core/Spaceship module.
+  Size:100/5000, mass:100, crew:1, energy:1, upkeep:$20, defense:10,
+  tech:0/1.
+	Startup cost: $200
+
+
+Basic items:
+
+carbon [carb]: In solid form or combined with hydrogen for organic basics,
+  the carbon is used as a good source of both fuel and food enrichments.
+  May store 100 per module. May store in energy modules, factory modules.
+  Mass:5.
+	Startup cost: $15
+
+cash [cash]: The material token of wealth.
+	Startup cost: $1
+
+copper [copp]: This very useful metal is the basis of most energy based or
+  energy intensive structures. May store 100 per module. May store in
+  factory modules. Mass:10.
+	Startup cost: $10
+
+crew [crew]: The basic crew member, working and maintaining your factories,
+  habitat cities and crewing space concerns. Each crew member require one
+  ration of nutrients per turn, or may sicken, die or desert. May store 10
+  per module. May store in habitat modules. Mass:40, crew:0/1, upkeep:$15.
+	Startup cost: $80
+
+food [food]: An carefully designed set of pastes, liquids and solids, lending
+  itself to taste-satisfying preparations, yet a source of all essential
+  minerals, vitamins and calories for human consumption. May store 100 per
+  module. May store in farming modules, habitat modules. Mass:1.
+	Startup cost: $5
+
+iron [iron]: Extracted, refined, and purified into industrial steels, iron is
+  a basic construction material widely used in most structures. Mass:10.
+  May store 100 per module. May store in factory modules. 
+	Startup cost: $10
+
+oxyhydro [h2o2]: A very useful combination of two volatiles that react
+  strongly. Mass:1. May store 100 in a module. May store in any module.
+	Startup cost: $5
+
+silicium [sili]: The silicium is a very common material in most areas, but
+  high-grade siliciums are base components for smart systems and modules.
+  Mass:3. May store 100 per module. May store in factory modules. 
+	Startup cost: $10
+
+titanium [tita]: Due to its resistance to wear, titanium is a good
+  construction material. Mass:10. May store 50 per module. May store in
+  factory modules. 
+	Startup cost: $10
+
+uranium [uran]: With a half-life  of million of years, this is one of the most
+  stable of the radio-active elements, and one very easy to use in energy
+  power modules. Mass:8. May store 100 per module. May store in energy
+  modules, factory modules.
+	Startup cost: $20
+
+waste product [wast]: Industral "dirty" wastes and radioactive decay products
+  cause problems as they accumulate in modules. Each unit of wastes require
+  one crew to manage, until disposed of. Mass:5, crew:1, upkeep:$1.
+	Startup cost: none
+
+Optional technologies:
+
+These technologies can be purchased at the beginning of the game, or at most
+imperium cities. If your purchase a module that requires a technology to
+function, you will also have to purchase the technology - but only once, of
+course.
+
+cold fusion [coldfus]: The cold fusion represents a big improvement over the
+  "dirty" fission, as the end wastes are non-radioactive gases that may be
+  safely vented out. Works in factory modules. Use consumes: 2 iron [iron],
+  2 titanium [tita], 2 copper [copp]. Use builds: 1 fusion reactor [fusrec]
+  module in 10 weeks. Technology level 1.
+	Startup cost: $8000
+
+control command and communication [ceecubd]: This represents the basics for
+  military units. Works in factory modules. Use consumes: 6 iron [iron], 5
+  titanium [tita]. Use builds: 1 weapons platform [weaplt] module in 4 weeks.
+  Technology level 1.
+	Startup cost: $8000
+
+electromagnetic force-fields [emfield]: The basical electromagnetic field
+  provide active protection, damping energy discharges. Use consumes: 2
+  titanium [tita], 6 copper [copp]. Use builds: 1 force field generator
+  [ffgene] module in 4 weeks. Technology level 1.
+	Startup cost: $5500
+
+helium 3 harvesting [hel3har]: The harvesting of helium 3 directly out of
+  atmospheric gases. Works in jovian extraction modules. Use harvests: 5
+  helium 3 [hel3] per week. Technology level 1.
+	Startup cost: $6000
+
+helium 3 separation [hel3sep]: The sorting process from standard volatile
+  mixes to produce useful helium 3. Works in factory modules. Use consumes: 5
+  oxyhydro [h2o2]. Use produces: 1 helium 3 [hel3] in 3 weeks. Technology
+  level 1.
+	Startup cost: $5000
+
+hydrogen harvesting [hydrhar]: The harvesting of hydrogen and oxygen directly
+  out of atmospheric gases. Works in jovian extraction modules. Use harvests:
+  4 oxyhydro [h2o2] per week. Technology level 1.
+	Startup cost: $3000
+
+hydroponic cultures [hydropo]: The basics of hydroponics, or the ability to
+  cultivate plants in an artificial environment. Works in hydroponic modules.
+  Use consumes: 1 oxyhydro [h2o2], 1 carbon [carb]. Use produces: 20 food
+  [food] in 13 weeks. Technology level 1.
+	Startup cost: $3000
+
+hydroponic tanks [hydrtnk]: The manufacturing of hydroponics structures.
+  Works in factory modules. Use consumes: 7 iron [iron], 1 titanium [tita].
+  Use builds: 1 hydroponics [ponics] module in 6 weeks. Technology level 1.
+	Startup cost: $3000
+
+laser optics [lasopts]: The working of high-frequency lasers. Works in factory
+  modules. Use consumes: 1 titanium [tita], 4 copper [copp], 1 silicium [sili].
+  Use builds: 1 x-ray lasers [xraylz] module in 4 weeks. Technology level 1.
+	Startup cost: $7000
+
+maintenance [mntnanc]: Maintenance allows you to recover from ship damage,
+  either from military actions or neglect. This technology removes 1 damage
+  indicator from the target module. Works in factory modules. Use produces:
+  1 maintenance in 2 week. Technology level 1.
+	Startup cost: $4000
+
+military tactics [miltact]: Elementary military tactics, which enable a higher
+  level of combat proficiency. Works in command modules. Attack:5, defense:5.
+  Technology level 1.
+	Startup cost: $6000
+
+preventive servicing [prevser]: Maintenance is best done in advance. Works in
+  factory modules. Use consumes: 1 titanium [tita]. Use produces: 1 spare
+  part [part] in 1 week. Technology level 1.
+	Startup cost: $8000
+
+rotational gravity [rotgrav]: The simplest way to make gravity in space is to
+  use coriolis inertia to simulate it in rotating structures. Works in factory
+  modules. Use consumes: 7 iron [iron], 2 titanium [tita]. Use builds: 1
+  orbital wheel [orbwhl] module in 4 weeks. Technology level 1.
+	Startup cost: $5000
+
+skimming [skimmin]: The building of structures that can withstand a plunge
+  into the upper parts of a jovian-class atmosphere. Works in factory modules.
+  Use consumes: 1 iron [iron], 3 titanium [tita], 1 copper [copp]. Use
+  builds: 1 ramscoop [ramsco] module in 5 weeks. Technology level 1.
+	Startup cost: $3500
+
+systems upgrade [sysupgr]: At times, it is more cost effective to remove
+  modules from an existing hull to replace them than to try to cram
+  technological fixes. One copy of a module that belongs to your interest
+  will be extracted and stored in a safe place from a working unit to make
+  room for others. Syntax: use SYSUPGR amount module-id storage-id. Works in
+  space factory modules. Use produces: 1 extraction per week. Technology
+  level 1.
+	Startup cost: $3000
+
+waste recycling [wstrecy]: The processing of wastes, to extract potentially
+  useful elements from the apparently useless wastes. Works in factory modules.
+  Use consumes: 1 waste product [wast]. Use produces: 1 uranium [uran] in 15
+  weeks. Technology level 1.
+	Startup cost: $4000
+
+Optional modules:
+
+These modules all cost 15 times their upkeep cost for a startup position. Any
+technology required to function must also be purchased. However, it is not
+necessary to purchase the technology used to manufacture a module when
+purchasing said module.
+
+
+force field generator [ffgene]: The basic force field projection provide
+  elementary protection against magneto-optic discharges. Military module:
+  Size:300, mass:100, energy:12, upkeep:$70, defense:8, tech:0/1.
+  Require: electromagnetic force-fields [emfield] to function.
+	Startup cost: $1050
+
+fusion reactor [fusrec]: The cheap and efficient fusion power, which requires
+  helium3 fusion to work. Energy module. Consume: 1 helium 3 [hel3] per turn.
+  Size:500, mass:400, crew:3, energy:0/40, attack:3, upkeep:$100, tech:0/1.
+  Require: cold fusion [coldfus] to function.
+	Startup cost: $1500
+
+hydroponics [ponics]: A self-contained farm-like structure that produces a
+  mix of algea and various nutritive matter. Farm/Hydroponic module. Size:400,
+  mass:300, crew:1, energy:3, upkeep:$50, tech:0/1.
+	Startup cost: $750
+
+orbital wheel [orbwhl]: Stations built in a wheel shape rotate and provide an
+  articifical gravity, helping to offset the hardships of living into space.
+  The upkeep of an orbital wheel is only 120% in space instead of the basic
+  125%. Core/Space base module. Size:2000/10000, mass:500, crew:2, energy:5,
+  upkeep:$70, defense:5, tech:0/1. Require: rotational gravity [rotgrav] to
+  function.
+	Startup cost: $1050
+
+ramscoop [ramsco]: An ingenious system to harvest gases from gas giants, the
+  ramscoop plunges into the upper atmosphere of such planets to harvest
+  precious volatiles. Extraction/Jovian module. Works only on gas giants.
+  Size:200, mass:150, crew:2, energy:2, upkeep:$70, tech:0/1.
+	Startup cost: $1050
+
+weapons platform [weaplt]: This specialised bridge controls offense and defense
+  in a ship. The presence of one or more weapons platform adds 10% to the
+  offense and defense factors of a ship. Command module. Size:800, mass:600,
+  crew:5, energy:1, upkeep:$150, tech:0/1.
+	Startup cost: $2250
+
+x-ray lasers [xraylz]: The penetrating x-ray lasers are efficient weapons over
+  large distances. Military module: Size:100, mass:100, crew:1, energy:10,
+  upkeep:$100, attack:10, defense:1, tech:0/1. Require: laser optics [lasopts]
+  to function.
+	Startup cost: $1500
+
+
+Advanced items:
+
+helium 3 [hel3]: This rare light isotope of helium is the basic for fusion
+  power. Without it, fusion is almost impossible to sustain. May store 100
+  in a module. May store in storage modules. Mass:1.
+	Startup cost: $20
+
+spare part [part]: Otherwise unoccupied crew members may use spare parts for
+  the maintenance of a unit. Each extra crew may consume 1 spare part, and
+  reduce the upkeep of the unit by $70 instead of $25. May store 10 in a
+  module. May store in any module. Mass:2.
+	Startup cost: $40
+
+
+Sample units:
+
+1) Low-tech scoutship		size	mass		crew	energy
+   1 spaceship		shull1	100/5000 100		1	1	$20
+   1 command bridge	cbridg	800	300		10	5	$100
+   3 crew quarters	crewq1	1500	1200		3	3	$150
+   2 fission reactor	fisrec	800	1000		6	/80	$180
+   1 reaction drive	rdrive	600	700/10000	1	40	$100
+   Total		      4200/5000 3300/10000	21/30	49/80	$550
+
+   Once loaded with 30 crew members, food, uranium, and oxyhydro for reaction,
+   this ship can go very fast (a little below 2 times base speed) anywhere.
+   Its main drawbacks are lack of cargo space (it can transport only food,
+   oxyhydro and power supplies), lack of research capability, and weak military
+   levels, and the need to periodically unload the radio-active waste that
+   builds up in the fission reactors.  That waste is the reason why 3 fully
+   crewed quarters are required. This is the minimum-sized unit that can be
+   built using 0-level technologies.
+
+2) Low-tech general-purpose	size	mass		crew	energy
+   2 spaceship		shull1	200/10000 200		2	2	$40
+   1 command bridge	cbridg	800	300		10	5	$100
+   3 crew quarters	crewq1	1500	1200		3	3	$150
+   1 computer library	comlib	200	50		2	5	$100
+   2 cargo bays		cargob	4000	200		4	-	$60
+   2 fission reactor	fisrec	800	1000		6	/80	$180
+   1 reaction drive	rdrive	600	700/10000	1	40	$100
+   Total		     8500/10000 3650/10000	28/30	54/80	$730
+
+   This is an expanded version of the scoutship, rewired to a general-purpose
+   ship.  This ship has a research center, so it can perform research (14%
+   chance of finding a new technology each turn), and also cargo bays, capable
+   of holding 3600 in size.  Note that this ship has the exact minimum required
+   in crew members to function, as the fission reactors produce 2 wastes per
+   turn, requiring 2 crew members for upkeep.  Wastes must be unloaded each
+   turn, or the ship's efficiency will start to drop.
+
+3) Medium-tech explorer		size	mass		crew	energy
+   2 spaceship		shull1	200/10000 200		2	2	$40
+   1 command bridge	cbridg	800	300		10	5	$100
+   5 crew quarters	crewq1	2500	2000		5	5	$250
+   3 hydroponics	ponics	1200	900		3	9	$150
+   1 computer library	comlib	200	50		2	5	$100
+   2 fusion reactors	fusrec	1000	800		6	/80	$200
+   1 cargo bay		cargob	2000	100		2	-	$30
+   1 ramscoop		ramsco	200	150		2	2	$70
+   1 core drill		mines1	1000	1000		6	5	$40
+   1 reaction drive	rdrive	600	700/10000	1	40	$100
+   Total		     9700/10000	6200/10000	39/50	73/80	$1080
+
+   This is a fully staffed research vessel, with a large autonomy, and the
+   capacities for long-term stay in space (many turns).  It features a clean
+   energy (fusion reactors), the cargo bay to hold helium3 or any interesting
+   discoveries you might make, a research library, a ramscoop to refuel at gas
+   giants (a common occurence in most systems, about 70-80% of the systems
+   feature gas giants), a core drill to get carbon, and hydroponics to make
+   food for the crew.  The only obstacle to full self-sufficiency is the need
+   for maintenance, which requires you to ship out with spare parts. Your
+   extra 11 crew members will make use of these parts to drop $770 out of your
+   local upkeep.
+
+4) Needleship			size	mass	crew	energy	at/def
+   2 spaceship		shull1	200	200	2	2	0/20	$40
+   1 command bridge	cbridg	800	300	10	5	5/5	$100
+   1 weapons platform	weaplt	800	600	5	1	5/5+10%	$150
+   3 crew quarters	crewq1	1500	1200	3	3		$150
+   2 fusion reactors	fusrec	1000	800	6	/80	4/0	$200
+   1 cargo bay		cargob	2000	100	2	-		$30
+   1 force field gener.	ffgene	300	100	-	12	0/8	$70
+   1 x-ray laser	xraylz	100	100	1	10	10/1	$100
+   1 reaction drive	rdrive	600	700	1	40		$100
+   Total		     	7000	4100	30/30	73/80	16/25	$940
+
+   This is the most basic and smallest warship possible, using many of the
+   technologies available.   Its size is kept to the minimum, to avoid the
+   size factor that reduces the ship's attack and defense factors.  Both
+   command modules are loaded with military tactics for a maximum bonus.  Note
+   that it is possible to add more defenses using 3 heavy shielding, at the
+   cost of a lot of maneuverability, as your mass increases.  Further hit power
+   would require additional generators, and more crew members.
+
+5) City					size		crew	energy
+   2 city			cities	/20000		4	4	$40
+   11 apartment			apartm	14000		/100	11	$660
+   3 farming complex		farms1	3000		15	15	$150
+   1 core drill			mines1	1000		6	5	$40
+   1 factory			factry	1000		10	15	$60
+   2 coal-burning plant		cplant	2000		4	0/50	$100
+   Total				20000/20000	39/100	50/50	$1050
+
+   This is the most basic, low-tech city design for a terran planet, given base
+   resources.  A city should have at least 100 people, to enable research to
+   occur.  Here, we house 100 people, but have room for 110, to allow births to
+   happen, and the city to grow over time.  Farming complexes provide for the
+   population, and the core drill brings back carbon-based substances to
+   provide for an inefficient, but not cumbersome coal-burning plant.  Note
+   that the city upkeep is entirely paid by the crew, who spare you $1525 in
+   maintenance costs each turn.  The factory may be put to use at times to
+   manufacture some modules, or make spare parts.
+
+   Note that this city has 0 defense factors, so it is totally open to any
+   raider.  It also has 23% chance of finding a technology each turn.
+   The city is at maximum expansion.  Further expansion will be tricky: one
+   needs to shut down the mines first (to allow energy).  Then, a new city plan
+   made (to increase useable room), then a new energy plant assembled in the
+   factory to fuel the expanded city.  The core drill may then be restarted,
+   with energy to spare.  Your upkeep costs would still be met.  You may also
+   dispense with the factory, and order the modules from a merchant.
+
+6) Space base			size		crew	energy	def/att
+   3 orbital wheel	orbwhl	6000/30000	6	15	15	$210
+   1 weapons platform	weaplt	800		5	1	10%/10%	$150
+   5 crew quarters	crewq1	2500		5/50	5	-	$250
+   1 computer library	comlib	200		2	5	-	$100
+   10 cargo bays	cargob	20000/18000	20	-	-	$300
+   1 fission reactor	fisrec	400		3	/40	0/2	$90
+   Total			29000/30000	41/50	26/40	16/2	$1110
+
+   This is a template for a good merchant space base located out at an Alderson
+   jump point.  It has all its requirement fulfilled, and has very large holds
+   (18000 in size) that can accept two medium-sized ships at the same time.
+   Note that the base needs to be refueled and supplied, as it has no
+   facilities onboard due to the lack of resources around.  It also has only
+   minimal defenses.
+
+   Note that we chose a weapons platform as command module over a command
+   bridge, because the weapons platform has an additional $60 final upkeep
+   requirement (after space penalties), but free 5 crew members, which can
+   reduce by $125 the total upkeep needed.

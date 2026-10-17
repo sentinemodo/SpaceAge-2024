@@ -1,0 +1,734 @@
+To: 
+Subject: [SpaceAge] Report for turn 1
+Content-Disposition: attachment
+
+SpaceAge report for United Star Nations [1].
+Turn 1, Year 2156, January 1.
+
+SpaceAge Engine Version: 0.8.004.
+
+
+Rumors:
+  Arbor [P00001] at AU 1, ocean planet [ocean]: Hostile fauna in Mid Vale.
+    Traders report brush stalker [140010] in Mid Vale [R00009], adjacent to Tidewatch Coast.
+  Arbor [P00001] at AU 1, ocean planet [ocean]: Hostile fauna in Loess.
+    Traders report canopy alpha [140030] in Loess [R00029], adjacent to Windgap.
+  Anvil [P00005] at AU 1.4, ocean planet [ocean]: Hostile fauna in Crag.
+    Traders report umber stalker [150030] in Crag [R00053], adjacent to Vale.
+Bank report:
+  Bank account balance: 0.
+  Credit line maximum: 0.
+  Credit rate: 0%, Deposit rate: 0%.
+Galaxy report:
+------------------------------------------------------------
+* system Helios [SS0001] (5, 5, 0).
+------------------------------------------------------------
+
+  * Arbor [P00001] at AU 1, ocean planet [ocean].
+------------------------------------------------------------
+  orbit [O00001], has atmosphere suitable for terran [terran].
+
+  Tidewatch Coast [R00003] (2,0), grassland region, settlement capacity 8/2.
+  Exits:
+    Shelf [R00002] (1,0), sea region, naval travel duration 3 weeks.
+    South Vale [R00004] (3,0), grassland region, ground travel duration 3 weeks.
+    Mid Vale [R00009] (2,1), grassland region, ground travel duration 3 weeks, anomaly detected.
+  Resources: 500 units of food [food], 30 units of oil [oil], 15 units of iron [iron], 150 units of
+  water [water].
+  Market report:
+    Offers of selling items:
+      sell 15 units of oil [oil] at 5 each from Tidewatch [100010].
+    Offers of buying items:
+      buy 80 units of food [food] at 1 each by Tidewatch [100010].
+    Offers of selling modules:
+      none.
+    Offers of buying modules:
+      buy 5 wind powerplants [wnplnt] at 20 each by Tidewatch [100010].
+      buy factory [factry] at 200 by Tidewatch [100010].
+      buy coal-burning plant [cplant] at 200 by Tidewatch [100010].
+    Offers of selling technologies:
+      none.
+    Offers of buying technologies:
+      none.
+  
+  + Tidewatch [100010], 2 cities [city], immobile.
+    size: 50000, mass: 3980 (0), capacity: 30000/10580, energy: 80/70 (20), crew: 34/20 (0/20),
+    upkeep: 200 units of food [food], 305 (0) cash [cash], consume: 46 (0) units of food [food], 46
+    (0) units of terran breathing gas mixture [terair].
+    items: 1500 cash [cash], 20 terrans [terran] (size: 80, mass: 80, upkeep: 20 cash [cash],
+    consume: 20 units of food [food], 20 units of terran breathing gas mixture [terair]).
+    + Tidewatch farms [100011], 6 farming complexes [farms], immobile.
+      size: 6000, mass: 600 (600), capacity: 3000/0, energy: 30, crew: 30/0, upkeep: 180 cash
+      [cash].
+    + Tidewatch power [100012], 2 coal-burning plants [cplant], immobile.
+      size: 2000, mass: 2100 (2000), capacity: 1000/100, energy: 80/20 (consume: 10 units of carbon
+      [carbon] for 13 weeks), crew: 4/0, upkeep: 80 cash [cash].
+      fuel requirements: 10 units of carbon [carbon] per 13 weeks.
+      items: 20 units of carbon [carbon] (size: 100, mass: 100).
+    + Tidewatch garrison [100013], infantry squad [inftry], immobile.
+      size: 500, mass: 500 (500), capacity: 300/0, upkeep: 15 cash [cash], consume: 26 units of food
+      [food], 26 units of terran breathing gas mixture [terair].
+      movement speed: 0.2 on ground.
+    + Tidewatch granary [100014], small cargo bay [cargob], immobile.
+      size: 2000, mass: 700 (200), capacity: 1800/480, upkeep: 10 cash [cash].
+      items: 400 units of food [food] (size: 400, mass: 400), 20 units of oil [oil] (size: 80, mass:
+      100).
+
+  Assembly Basin [R00015] (2,2), grassland region, settlement capacity 16/6.
+  Exits:
+    Farm Belt [R00014] (1,2), grassland region, ground travel duration 3 weeks, settlement detected.
+    Central Basin [R00016] (3,2), grassland region, ground travel duration 3 weeks.
+    Mid Vale [R00009] (2,1), grassland region, ground travel duration 3 weeks, anomaly detected.
+    Prairie [R00021] (2,3), grassland region, ground travel duration 3 weeks.
+  Resources: 800 units of food [food], 40 units of carbon [carbon], 25 units of iron [iron], 180
+  units of water [water].
+  Market report:
+    Offers of selling items:
+      sell 120 units of food [food] at 4 each from Assembly [100001].
+      sell 30 units of iron [iron] at 3 each from Assembly [100001].
+      sell 15 units of silicium [silici] at 4 each from Assembly [100001].
+      sell 10 units of titanium [titani] at 6 each from Assembly [100001].
+      sell 8 units of copper [copper] at 6 each from Assembly [100001].
+      sell 50 units of terran breathing gas mixture [terair] at 1 each from Assembly [100001].
+      sell 50 terrans [terran] at 50 each from Assembly [100001].
+    Offers of buying items:
+      buy 500 units of food [food] at 1 each by Assembly [100001].
+      buy 80 units of carbon [carbon] at 2 each by Assembly [100001].
+    Offers of selling modules:
+      none.
+    Offers of buying modules:
+      buy 2 farming complexes [farms] at 100 each by Assembly [100001].
+      buy 5 wind powerplants [wnplnt] at 20 each by Assembly [100001].
+      buy factory [factry] at 200 by Assembly [100001].
+      buy coal-burning plant [cplant] at 200 by Assembly [100001].
+    Offers of selling technologies:
+      none.
+    Offers of buying technologies:
+      none.
+  
+  + Assembly [100001], 6 cities [city], immobile.
+    size: 150000, mass: 20129 (0), capacity: 90000/40370, energy: 420/285 (60), crew: 140/80 (0/80),
+    upkeep: 600 units of food [food], 1285 (0) cash [cash], consume: 184 (0) units of food [food],
+    184 (0) units of terran breathing gas mixture [terair].
+    items: 8000 cash [cash], 80 terrans [terran] (size: 320, mass: 320, upkeep: 80 cash [cash],
+    consume: 80 units of food [food], 80 units of terran breathing gas mixture [terair]).
+    + Assembly farms [100002], 24 farming complexes [farms], immobile.
+      size: 24000, mass: 2400 (2400), capacity: 12000/0, energy: 120, crew: 120/0, upkeep: 720 cash
+      [cash].
+    + Assembly coal plants [100003], 10 coal-burning plants [cplant], immobile.
+      size: 10000, mass: 10400 (10000), capacity: 5000/400, energy: 400/100 (consume: 50 units of
+      carbon [carbon] for 13 weeks), crew: 20/0, upkeep: 400 cash [cash].
+      fuel requirements: 50 units of carbon [carbon] per 13 weeks.
+      items: 80 units of carbon [carbon] (size: 400, mass: 400).
+    + Assembly wind plants [100004], 5 wind powerplants [wnplnt], immobile.
+      size: 50, mass: 50 (50), energy: 20/5, upkeep: 5 cash [cash].
+    + Assembly garrison [100005], 4 infantry squads [inftry], immobile.
+      size: 2000, mass: 2000 (2000), capacity: 1200/0, upkeep: 60 cash [cash], consume: 104 units of
+      food [food], 104 units of terran breathing gas mixture [terair].
+      movement speed: 0.2 on ground.
+    + Assembly granary [100006], 2 small cargo bays [cargob], immobile.
+      size: 4000, mass: 4959 (400), capacity: 3600/4415, upkeep: 20 cash [cash].
+      items: 4000 units of food [food] (size: 4000, mass: 4000), 30 units of iron [iron] (size: 150,
+      mass: 300), 15 units of silicium [silici] (size: 75, mass: 45), 10 units of titanium [titani]
+      (size: 100, mass: 100), 8 units of copper [copper] (size: 40, mass: 64), 50 units of terran
+      breathing gas mixture [terair] (size: 50, mass: 50).
+
+  Windgap [R00028] (3,4), grassland region, settlement capacity 8/1.
+  Exits:
+    Copse Grant [R00027] (2,4), grassland region, ground travel duration 3 weeks.
+    Loess [R00029] (4,4), dusty region, ground travel duration 3 weeks.
+    Sundock Grant [R00022] (3,3), grassland region, ground travel duration 3 weeks.
+    Tundra [R00034] (3,5), grassland region, ground travel duration 3 weeks.
+  Resources: 450 units of food [food], 20 units of carbon [carbon], 15 units of iron [iron], 140
+  units of water [water].
+  Market report:
+    Offers of selling items:
+      sell 30 units of food [food] at 4 each from Windgap [100020].
+    Offers of buying items:
+      buy 100 units of food [food] at 1 each by Windgap [100020].
+    Offers of selling modules:
+      none.
+    Offers of buying modules:
+      buy 5 wind powerplants [wnplnt] at 20 each by Windgap [100020].
+      buy factory [factry] at 200 by Windgap [100020].
+      buy coal-burning plant [cplant] at 200 by Windgap [100020].
+    Offers of selling technologies:
+      none.
+    Offers of buying technologies:
+      none.
+  
+  + Windgap [100020], city [city], immobile.
+    size: 25000, mass: 1408 (0), capacity: 15000/6608, energy: 24/21 (10), crew: 20/12 (0/12),
+    upkeep: 100 units of food [food], 163 (0) cash [cash], consume: 38 (0) units of food [food], 38
+    (0) units of terran breathing gas mixture [terair].
+    items: 800 cash [cash], 12 terrans [terran] (size: 48, mass: 48, upkeep: 12 cash [cash],
+    consume: 12 units of food [food], 12 units of terran breathing gas mixture [terair]).
+    + Windgap farms [100021], 4 farming complexes [farms], immobile.
+      size: 4000, mass: 400 (400), capacity: 2000/0, energy: 5, crew: 20/0, upkeep: 120 cash [cash].
+    + Windgap power [100022], 6 wind powerplants [wnplnt], immobile.
+      size: 60, mass: 60 (60), energy: 24/6, upkeep: 6 cash [cash].
+    + Windgap garrison [100023], infantry squad [inftry], immobile.
+      size: 500, mass: 500 (500), capacity: 300/0, upkeep: 15 cash [cash], consume: 26 units of food
+      [food], 26 units of terran breathing gas mixture [terair].
+      movement speed: 0.2 on ground.
+    + Windgap granary [100024], small cargo bay [cargob], immobile.
+      size: 2000, mass: 400 (200), capacity: 1800/200, upkeep: 10 cash [cash].
+      items: 200 units of food [food] (size: 200, mass: 200).
+------------------------------------------------------------
+  * Selene [M00001], rocky moon [rock] 0.003 AU from the planet.
+------------------------------------------------------------
+    orbit [O00002], has no atmosphere.
+
+  * Scoria [P00002] at AU 1.5, dust planet [dust].
+------------------------------------------------------------
+  orbit [O00003], has atmosphere.
+
+  * Aeolus [P00004] at AU 5.2, gas giant planet [gasgnt].
+------------------------------------------------------------
+  orbit [O00004], has atmosphere.
+------------------------------------------------------------
+  * Rime [M00002], ice moon [ice] 0.003 AU from the planet.
+------------------------------------------------------------
+    orbit [O00005], has no atmosphere.
+------------------------------------------------------------
+  * Glaze [M00003], ice moon [ice] 0.005 AU from the planet.
+------------------------------------------------------------
+    orbit [O00006], has no atmosphere.
+------------------------------------------------------------
+  * Shard [M00004], rocky moon [rock] 0.007 AU from the planet.
+------------------------------------------------------------
+    orbit [O00007], has no atmosphere.
+------------------------------------------------------------
+  * Cindercone [M00005], vulcanic moon [vulcan] 0.009 AU from the planet.
+------------------------------------------------------------
+    orbit [O00008], has no atmosphere.
+
+  * Helios Fomal Gate [P00009] at AU 69, Alderson Gate.
+------------------------------------------------------------
+  orbit [O00110], has no atmosphere.
+
+  * Helios Ember Gate [P00041] at AU 79, Alderson Gate.
+------------------------------------------------------------
+  orbit [O00153], has no atmosphere.
+
+* system Fomal [SS0002] (6, 5, 0).
+------------------------------------------------------------
+
+  * Anvil [P00005] at AU 1.4, ocean planet [ocean].
+------------------------------------------------------------
+  orbit [O00112], has atmosphere suitable for terran [terran].
+
+  Slagport [R00040] (3,0), grassland region, settlement capacity 8/2.
+  Exits:
+    Pad [R00039] (2,0), dusty region, ground travel duration 3 weeks.
+    South Ore [R00041] (4,0), mountain region, ground travel duration 3 weeks.
+    West Spine [R00047] (3,1), mountain region, ground travel duration 3 weeks.
+  Resources: 120 units of food [food], 80 units of water [water], 20 units of iron [iron], 30 units
+  of silicium [silici], 20 units of titanium [titani].
+  Market report:
+    Offers of selling items:
+      sell 40 units of food [food] at 6 each from Slagport [100030].
+      sell 25 units of titanium [titani] at 4 each from Slagport [100030].
+      sell 25 units of copper [copper] at 4 each from Slagport [100030].
+      sell 10 units of uranium [uraniu] at 8 each from Slagport [100030].
+      sell 20 units of silicium [silici] at 3 each from Slagport [100030].
+      sell 12 terrans [terran] at 50 each from Slagport [100030].
+    Offers of buying items:
+      buy 200 units of food [food] at 2 each by Slagport [100030].
+      buy 40 units of iron [iron] at 1 each by Slagport [100030].
+      buy 20 units of titanium [titani] at 2 each by Slagport [100030].
+      buy 20 units of copper [copper] at 2 each by Slagport [100030].
+      buy 20 units of silicium [silici] at 2 each by Slagport [100030].
+    Offers of selling modules:
+      none.
+    Offers of buying modules:
+      buy 5 wind powerplants [wnplnt] at 20 each by Slagport [100030].
+      buy factory [factry] at 200 by Slagport [100030].
+      buy coal-burning plant [cplant] at 200 by Slagport [100030].
+    Offers of selling technologies:
+      none.
+    Offers of buying technologies:
+      none.
+  
+  + Slagport [100030], 2 cities [city], immobile.
+    size: 50000, mass: 2142 (0), capacity: 30000/8672, energy: 40/40 (20), crew: 30/18 (0/18),
+    upkeep: 200 units of food [food], 233 (0) cash [cash], consume: 44 (0) units of food [food], 44
+    (0) units of terran breathing gas mixture [terair].
+    items: 1200 cash [cash], 18 terrans [terran] (size: 72, mass: 72, upkeep: 18 cash [cash],
+    consume: 18 units of food [food], 18 units of terran breathing gas mixture [terair]).
+    + Slagport farms [100031], 6 farming complexes [farms], immobile.
+      size: 6000, mass: 600 (600), capacity: 3000/0, energy: 10, crew: 30/0, upkeep: 180 cash
+      [cash].
+    + Slagport power [100032], 10 wind powerplants [wnplnt], immobile.
+      size: 100, mass: 100 (100), energy: 40/10, upkeep: 10 cash [cash].
+    + Slagport garrison [100033], infantry squad [inftry], immobile.
+      size: 500, mass: 500 (500), capacity: 300/0, upkeep: 15 cash [cash], consume: 26 units of food
+      [food], 26 units of terran breathing gas mixture [terair].
+      movement speed: 0.2 on ground.
+    + Slagport granary [100034], small cargo bay [cargob], immobile.
+      size: 2000, mass: 870 (200), capacity: 1800/565, upkeep: 10 cash [cash].
+      items: 80 units of food [food] (size: 80, mass: 80), 25 units of titanium [titani] (size: 250,
+      mass: 250), 25 units of copper [copper] (size: 125, mass: 200), 10 units of uranium [uraniu]
+      (size: 10, mass: 80), 20 units of silicium [silici] (size: 100, mass: 60).
+
+  Ridge [R00057] (6,2), grassland region, settlement capacity 8/1.
+  Exits:
+    East Peak [R00056] (5,2), mountain region, ground travel duration 3 weeks, anomaly detected.
+    East Talus [R00050] (6,1), dusty region, ground travel duration 3 weeks.
+    Fan [R00064] (6,3), dusty region, ground travel duration 3 weeks.
+    Marsh [R00051] (0,2), grassland region, ground travel duration 3 weeks.
+  Resources: 100 units of food [food], 70 units of water [water], 30 units of silicium [silici], 20
+  units of titanium [titani], 15 units of iron [iron].
+  Market report:
+    Offers of selling items:
+      sell 10 units of titanium [titani] at 4 each from Ridge [100040].
+    Offers of buying items:
+      buy 60 units of food [food] at 2 each by Ridge [100040].
+    Offers of selling modules:
+      none.
+    Offers of buying modules:
+      buy 5 wind powerplants [wnplnt] at 20 each by Ridge [100040].
+      buy factory [factry] at 200 by Ridge [100040].
+      buy coal-burning plant [cplant] at 200 by Ridge [100040].
+    Offers of selling technologies:
+      none.
+    Offers of buying technologies:
+      none.
+  
+  + Ridge [100040], city [city], immobile.
+    size: 25000, mass: 1400 (0), capacity: 15000/6600, energy: 24/21 (10), crew: 20/10 (0/10),
+    upkeep: 100 units of food [food], 161 (0) cash [cash], consume: 36 (0) units of food [food], 36
+    (0) units of terran breathing gas mixture [terair].
+    items: 700 cash [cash], 10 terrans [terran] (size: 40, mass: 40, upkeep: 10 cash [cash],
+    consume: 10 units of food [food], 10 units of terran breathing gas mixture [terair]).
+    + Ridge farms [100041], 4 farming complexes [farms], immobile.
+      size: 4000, mass: 400 (400), capacity: 2000/0, energy: 5, crew: 20/0, upkeep: 120 cash [cash].
+    + Ridge power [100042], 6 wind powerplants [wnplnt], immobile.
+      size: 60, mass: 60 (60), energy: 24/6, upkeep: 6 cash [cash].
+    + Ridge garrison [100043], infantry squad [inftry], immobile.
+      size: 500, mass: 500 (500), capacity: 300/0, upkeep: 15 cash [cash], consume: 26 units of food
+      [food], 26 units of terran breathing gas mixture [terair].
+      movement speed: 0.2 on ground.
+    + Ridge granary [100044], small cargo bay [cargob], immobile.
+      size: 2000, mass: 400 (200), capacity: 1800/200, upkeep: 10 cash [cash].
+      items: 80 units of food [food] (size: 80, mass: 80), 12 units of titanium [titani] (size: 120,
+      mass: 120).
+
+  Isotope [R00068] (3,4), grassland region, settlement capacity 8/1.
+  Exits:
+    Ash [R00067] (2,4), dusty region, ground travel duration 3 weeks.
+    Shield [R00069] (4,4), mountain region, ground travel duration 3 weeks.
+    Uraninite [R00061] (3,3), mountain region, ground travel duration 3 weeks.
+  Resources: 90 units of food [food], 70 units of water [water], 25 units of silicium [silici], 15
+  units of titanium [titani], 15 units of iron [iron].
+  Market report:
+    Offers of selling items:
+      sell 6 units of uranium [uraniu] at 8 each from Isotope [100050].
+    Offers of buying items:
+      buy 60 units of food [food] at 2 each by Isotope [100050].
+    Offers of selling modules:
+      none.
+    Offers of buying modules:
+      buy 5 wind powerplants [wnplnt] at 20 each by Isotope [100050].
+      buy factory [factry] at 200 by Isotope [100050].
+      buy coal-burning plant [cplant] at 200 by Isotope [100050].
+    Offers of selling technologies:
+      none.
+    Offers of buying technologies:
+      none.
+  
+  + Isotope [100050], city [city], immobile.
+    size: 25000, mass: 1304 (0), capacity: 15000/6580, energy: 16/14 (10), crew: 20/10 (0/10),
+    upkeep: 100 units of food [food], 159 (0) cash [cash], consume: 36 (0) units of food [food], 36
+    (0) units of terran breathing gas mixture [terair].
+    items: 700 cash [cash], 10 terrans [terran] (size: 40, mass: 40, upkeep: 10 cash [cash],
+    consume: 10 units of food [food], 10 units of terran breathing gas mixture [terair]).
+    + Isotope farms [100051], 4 farming complexes [farms], immobile.
+      size: 4000, mass: 400 (400), capacity: 2000/0, crew: 20/0, upkeep: 120 cash [cash].
+    + Isotope power [100052], 4 wind powerplants [wnplnt], immobile.
+      size: 40, mass: 40 (40), energy: 16/4, upkeep: 4 cash [cash].
+    + Isotope garrison [100053], infantry squad [inftry], immobile.
+      size: 500, mass: 500 (500), capacity: 300/0, upkeep: 15 cash [cash], consume: 26 units of food
+      [food], 26 units of terran breathing gas mixture [terair].
+      movement speed: 0.2 on ground.
+    + Isotope granary [100054], small cargo bay [cargob], immobile.
+      size: 2000, mass: 324 (200), capacity: 1800/68, upkeep: 10 cash [cash].
+      items: 60 units of food [food] (size: 60, mass: 60), 8 units of uranium [uraniu] (size: 8,
+      mass: 64).
+------------------------------------------------------------
+  * Anvil Rock [M00006], rocky moon [rock] 0.002 AU from the planet.
+------------------------------------------------------------
+    orbit [O00113], has no atmosphere.
+------------------------------------------------------------
+  * Anvil Ice [M00007], ice moon [ice] 0.004 AU from the planet.
+------------------------------------------------------------
+    orbit [O00114], has no atmosphere.
+
+  * Pyre [P00006] at AU 0.6, dust planet [dust].
+------------------------------------------------------------
+  orbit [O00115], has atmosphere.
+
+  * Fomal Giant [P00008] at AU 6, gas giant planet [gasgnt].
+------------------------------------------------------------
+  orbit [O00116], has atmosphere.
+------------------------------------------------------------
+  * Drift [M00008], ice moon [ice] 0.005 AU from the planet.
+------------------------------------------------------------
+    orbit [O00117], has no atmosphere.
+------------------------------------------------------------
+  * Rimeband [M00009], ice moon [ice] 0.005 AU from the planet.
+------------------------------------------------------------
+    orbit [O00118], has no atmosphere.
+
+  * Fomal Helios Gate [P00010] at AU 64, Alderson Gate.
+------------------------------------------------------------
+  orbit [O00111], has no atmosphere.
+
+  * Fomal Gleam Gate [P00043] at AU 79, Alderson Gate.
+------------------------------------------------------------
+  orbit [O00155], has no atmosphere.
+
+* system Ember [SS0003] (4, 7, 0).
+------------------------------------------------------------
+
+  * Ember Dust [P00011] at AU 0.7, dust planet [dust].
+------------------------------------------------------------
+  orbit [O00119], has atmosphere.
+
+  * Ember Giant [P00013] at AU 4.1, gas giant planet [gasgnt].
+------------------------------------------------------------
+  orbit [O00120], has atmosphere.
+------------------------------------------------------------
+  * Ember Ice 0 [M00010], ice moon [ice] 0.004 AU from the planet.
+------------------------------------------------------------
+    orbit [O00121], has no atmosphere.
+------------------------------------------------------------
+  * Ember Ice 1 [M00011], ice moon [ice] 0.006 AU from the planet.
+------------------------------------------------------------
+    orbit [O00122], has no atmosphere.
+------------------------------------------------------------
+  * Ember Ice 2 [M00012], ice moon [ice] 0.008 AU from the planet.
+------------------------------------------------------------
+    orbit [O00123], has no atmosphere.
+
+  * Ember Helios Gate [P00042] at AU 61, Alderson Gate.
+------------------------------------------------------------
+  orbit [O00154], has no atmosphere.
+
+  * Ember Cinder Gate [P00045] at AU 71, Alderson Gate.
+------------------------------------------------------------
+  orbit [O00157], has no atmosphere.
+
+  * Ember Ash Gate [P00047] at AU 70, Alderson Gate.
+------------------------------------------------------------
+  orbit [O00159], has no atmosphere.
+
+  * Ember Graph Gate [P00049] at AU 71, Alderson Gate.
+------------------------------------------------------------
+  orbit [O00161], has no atmosphere.
+
+  * Ember Gleam Gate [P00057] at AU 66, Alderson Gate.
+------------------------------------------------------------
+  orbit [O00169], has no atmosphere.
+
+* system Gleam [SS0004] (7, 3, 0).
+------------------------------------------------------------
+
+  * Gleam Inner [P00014] at AU 0.12, dust planet [dust].
+------------------------------------------------------------
+  orbit [O00124], has no atmosphere.
+
+  * Gleam Ice [P00016] at AU 0.8, dust planet [dust].
+------------------------------------------------------------
+  orbit [O00125], has no atmosphere.
+
+  * Gleam Fomal Gate [P00044] at AU 73, Alderson Gate.
+------------------------------------------------------------
+  orbit [O00156], has no atmosphere.
+
+  * Gleam Shards Gate [P00051] at AU 77, Alderson Gate.
+------------------------------------------------------------
+  orbit [O00163], has no atmosphere.
+
+  * Gleam Deep Gate [P00053] at AU 71, Alderson Gate.
+------------------------------------------------------------
+  orbit [O00165], has no atmosphere.
+
+  * Gleam Spare Gate [P00055] at AU 63, Alderson Gate.
+------------------------------------------------------------
+  orbit [O00167], has no atmosphere.
+
+  * Gleam Ember Gate [P00058] at AU 61, Alderson Gate.
+------------------------------------------------------------
+  orbit [O00170], has no atmosphere.
+
+* system Cinder [SS0005] (3, 6, 0).
+------------------------------------------------------------
+
+  * Cinder Dust [P00017] at AU 1.2, dust planet [dust].
+------------------------------------------------------------
+  orbit [O00126], has atmosphere.
+
+  * Cinder Giant [P00019] at AU 8, gas giant planet [gasgnt].
+------------------------------------------------------------
+  orbit [O00127], has atmosphere.
+------------------------------------------------------------
+  * Cinder Vulcan [M00013], vulcanic moon [vulcan] 0.003 AU from the planet.
+------------------------------------------------------------
+    orbit [O00128], has no atmosphere.
+------------------------------------------------------------
+  * Cinder Rock [M00014], rocky moon [rock] 0.005 AU from the planet.
+------------------------------------------------------------
+    orbit [O00129], has no atmosphere.
+------------------------------------------------------------
+  * Cinder Ice [M00015], ice moon [ice] 0.007 AU from the planet.
+------------------------------------------------------------
+    orbit [O00130], has no atmosphere.
+
+  * Cinder Ember Gate [P00046] at AU 80, Alderson Gate.
+------------------------------------------------------------
+  orbit [O00158], has no atmosphere.
+
+* system Ash [SS0006] (2, 4, 0).
+------------------------------------------------------------
+
+  * Ash Inner Giant [P00022] at AU 6, gas giant planet [gasgnt].
+------------------------------------------------------------
+  orbit [O00131], has atmosphere.
+------------------------------------------------------------
+  * Ash Moon 0 [M00016], ice moon [ice] 0.003 AU from the planet.
+------------------------------------------------------------
+    orbit [O00132], has no atmosphere.
+------------------------------------------------------------
+  * Ash Moon 1 [M00017], ice moon [ice] 0.005 AU from the planet.
+------------------------------------------------------------
+    orbit [O00133], has no atmosphere.
+------------------------------------------------------------
+  * Ash Moon 2 [M00018], rocky moon [rock] 0.007 AU from the planet.
+------------------------------------------------------------
+    orbit [O00134], has no atmosphere.
+------------------------------------------------------------
+  * Ash Moon 3 [M00019], vulcanic moon [vulcan] 0.009 AU from the planet.
+------------------------------------------------------------
+    orbit [O00135], has no atmosphere.
+
+  * Ash Outer Giant [P00024] at AU 18, gas giant planet [gasgnt].
+------------------------------------------------------------
+  orbit [O00136], has atmosphere.
+
+  * Ash Ember Gate [P00048] at AU 65, Alderson Gate.
+------------------------------------------------------------
+  orbit [O00160], has no atmosphere.
+
+* system Shards [SS0007] (8, 4, 0).
+------------------------------------------------------------
+
+  * Shards Dust [P00027] at AU 0.9, dust planet [dust].
+------------------------------------------------------------
+  orbit [O00137], has atmosphere.
+
+  * Shards Gleam Gate [P00052] at AU 78, Alderson Gate.
+------------------------------------------------------------
+  orbit [O00164], has no atmosphere.
+
+* system Deep [SS0008] (9, 6, 0).
+------------------------------------------------------------
+
+  * Deep Dust [P00028] at AU 0.5, dust planet [dust].
+------------------------------------------------------------
+  orbit [O00138], has atmosphere.
+
+  * Deep Inner Giant [P00029] at AU 4.5, gas giant planet [gasgnt].
+------------------------------------------------------------
+  orbit [O00139], has atmosphere.
+------------------------------------------------------------
+  * Haven [M00020], ice moon [ice] 0.004 AU from the planet.
+------------------------------------------------------------
+    orbit [O00140], has atmosphere suitable for terran [terran].
+------------------------------------------------------------
+  * Deep Ice A [M00021], ice moon [ice] 0.006 AU from the planet.
+------------------------------------------------------------
+    orbit [O00141], has no atmosphere.
+------------------------------------------------------------
+  * Deep Rock [M00022], rocky moon [rock] 0.008 AU from the planet.
+------------------------------------------------------------
+    orbit [O00142], has no atmosphere.
+------------------------------------------------------------
+  * Deep Ice B [M00023], ice moon [ice] 0.01 AU from the planet.
+------------------------------------------------------------
+    orbit [O00143], has no atmosphere.
+
+  * Deep Outer Giant [P00030] at AU 9.2, gas giant planet [gasgnt].
+------------------------------------------------------------
+  orbit [O00144], has atmosphere.
+------------------------------------------------------------
+  * Deep Outer 0 [M00024], rocky moon [rock] 0.004 AU from the planet.
+------------------------------------------------------------
+    orbit [O00145], has no atmosphere.
+------------------------------------------------------------
+  * Deep Outer 1 [M00025], ice moon [ice] 0.007 AU from the planet.
+------------------------------------------------------------
+    orbit [O00146], has no atmosphere.
+------------------------------------------------------------
+  * Deep Outer 2 [M00026], ice moon [ice] 0.01 AU from the planet.
+------------------------------------------------------------
+    orbit [O00147], has no atmosphere.
+
+  * Deep Gleam Gate [P00054] at AU 63, Alderson Gate.
+------------------------------------------------------------
+  orbit [O00166], has no atmosphere.
+
+* system Graph [SS0009] (1, 3, 0).
+------------------------------------------------------------
+
+  * Graph [P00031] at AU 0.95, ocean planet [ocean].
+------------------------------------------------------------
+  orbit [O00148], has atmosphere suitable for terran [terran].
+
+  * Graph Dust [P00032] at AU 1.6, dust planet [dust].
+------------------------------------------------------------
+  orbit [O00149], has no atmosphere.
+------------------------------------------------------------
+  * Graph Rock [M00027], rocky moon [rock] 0.002 AU from the planet.
+------------------------------------------------------------
+    orbit [O00150], has no atmosphere.
+
+  * Graph Ember Gate [P00050] at AU 63, Alderson Gate.
+------------------------------------------------------------
+  orbit [O00162], has no atmosphere.
+
+* system Spare [SS0010] (10, 7, 0).
+------------------------------------------------------------
+
+  * Spare Dust [P00034] at AU 1.1, dust planet [dust].
+------------------------------------------------------------
+  orbit [O00151], has no atmosphere.
+------------------------------------------------------------
+  * Spare Ice [M00028], ice moon [ice] 0.003 AU from the planet.
+------------------------------------------------------------
+    orbit [O00152], has no atmosphere.
+
+  * Spare Gleam Gate [P00056] at AU 66, Alderson Gate.
+------------------------------------------------------------
+  orbit [O00168], has no atmosphere.
+
+
+Orders Template:
+#faction 1 ""
+#modulestack 100001
+; + Assembly [100001], 6 cities [city], immobile.
+; items: 8000 cash [cash], 80 terrans [terran].
+
+#modulestack 100002
+; + Assembly farms [100002], 24 farming complexes [farms], immobile.
+
+#modulestack 100003
+; + Assembly coal plants [100003], 10 coal-burning plants [cplant], immobile.
+; items: 80 units of carbon [carbon].
+
+#modulestack 100004
+; + Assembly wind plants [100004], 5 wind powerplants [wnplnt], immobile.
+
+#modulestack 100005
+; + Assembly garrison [100005], 4 infantry squads [inftry], immobile.
+
+#modulestack 100006
+; + Assembly granary [100006], 2 small cargo bays [cargob], immobile.
+; items: 4000 units of food [food], 30 units of iron [iron], 15 units of silicium [silici], 10 units
+; of titanium [titani], 8 units of copper [copper], 50 units of terran breathing gas mixture [terair].
+
+#modulestack 100010
+; + Tidewatch [100010], 2 cities [city], immobile.
+; items: 1500 cash [cash], 20 terrans [terran].
+
+#modulestack 100011
+; + Tidewatch farms [100011], 6 farming complexes [farms], immobile.
+
+#modulestack 100012
+; + Tidewatch power [100012], 2 coal-burning plants [cplant], immobile.
+; items: 20 units of carbon [carbon].
+
+#modulestack 100013
+; + Tidewatch garrison [100013], infantry squad [inftry], immobile.
+
+#modulestack 100014
+; + Tidewatch granary [100014], small cargo bay [cargob], immobile.
+; items: 400 units of food [food], 20 units of oil [oil].
+
+#modulestack 100020
+; + Windgap [100020], city [city], immobile.
+; items: 800 cash [cash], 12 terrans [terran].
+
+#modulestack 100021
+; + Windgap farms [100021], 4 farming complexes [farms], immobile.
+
+#modulestack 100022
+; + Windgap power [100022], 6 wind powerplants [wnplnt], immobile.
+
+#modulestack 100023
+; + Windgap garrison [100023], infantry squad [inftry], immobile.
+
+#modulestack 100024
+; + Windgap granary [100024], small cargo bay [cargob], immobile.
+; items: 200 units of food [food].
+
+#modulestack 100030
+; + Slagport [100030], 2 cities [city], immobile.
+; items: 1200 cash [cash], 18 terrans [terran].
+
+#modulestack 100031
+; + Slagport farms [100031], 6 farming complexes [farms], immobile.
+
+#modulestack 100032
+; + Slagport power [100032], 10 wind powerplants [wnplnt], immobile.
+
+#modulestack 100033
+; + Slagport garrison [100033], infantry squad [inftry], immobile.
+
+#modulestack 100034
+; + Slagport granary [100034], small cargo bay [cargob], immobile.
+; items: 80 units of food [food], 25 units of titanium [titani], 25 units of copper [copper], 10 units
+; of uranium [uraniu], 20 units of silicium [silici].
+
+#modulestack 100040
+; + Ridge [100040], city [city], immobile.
+; items: 700 cash [cash], 10 terrans [terran].
+
+#modulestack 100041
+; + Ridge farms [100041], 4 farming complexes [farms], immobile.
+
+#modulestack 100042
+; + Ridge power [100042], 6 wind powerplants [wnplnt], immobile.
+
+#modulestack 100043
+; + Ridge garrison [100043], infantry squad [inftry], immobile.
+
+#modulestack 100044
+; + Ridge granary [100044], small cargo bay [cargob], immobile.
+; items: 80 units of food [food], 12 units of titanium [titani].
+
+#modulestack 100050
+; + Isotope [100050], city [city], immobile.
+; items: 700 cash [cash], 10 terrans [terran].
+
+#modulestack 100051
+; + Isotope farms [100051], 4 farming complexes [farms], immobile.
+
+#modulestack 100052
+; + Isotope power [100052], 4 wind powerplants [wnplnt], immobile.
+
+#modulestack 100053
+; + Isotope garrison [100053], infantry squad [inftry], immobile.
+
+#modulestack 100054
+; + Isotope granary [100054], small cargo bay [cargob], immobile.
+; items: 60 units of food [food], 8 units of uranium [uraniu].
+
+#modulestack W00001
+; + Helios belt hulk [W00001], alien vessel hull [alnhul], immobile.
+
+#modulestack W00002
+; + Fomal belt fabricator [W00002], advanced robo-factory [robofc], immobile.
+
+#end
+

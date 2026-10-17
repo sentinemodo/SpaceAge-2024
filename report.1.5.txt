@@ -1,0 +1,165 @@
+To: player5@local
+Subject: [SpaceAge] Report for turn 1
+Content-Disposition: attachment
+
+SpaceAge report for Sundock [5].
+Turn 1, Year 2156, January 1.
+
+SpaceAge Engine Version: 0.8.004.
+
+
+Rumors:
+  Arbor [P00001] at AU 1, ocean planet [ocean]: Hostile fauna in Mid Vale.
+    Traders report brush stalker [140010] in Mid Vale [R00009], adjacent to Tidewatch Coast.
+  Arbor [P00001] at AU 1, ocean planet [ocean]: Hostile fauna in Loess.
+    Traders report canopy alpha [140030] in Loess [R00029], adjacent to Windgap.
+Bank report:
+  Bank account balance: 10000.
+  Credit line maximum: 10000.
+  Credit rate: 20%, Deposit rate: 5%.
+
+Survey reports:
++ Helios [S00001]: The primary is a coin of warm gold, about the Sun radius, about the Sun
+  luminosity - the colour of wheat and old brass. Limb darkening turns the edge a softer orange.
+Arbor hangs in the one-AU water zone like something you were always meant to see: white cloud, green
+basins, the kind of blue that makes a visor feel like a mistake. The pair-axis is a rumour of Fomal,
+too far for the eye. You have not come to a wilderness. You have come home to a lamp that feeds
+cities.
++ Arbor [P00001] at AU 1, ocean planet [ocean]: An ocean world under gold light, one AU out, the
+  size of a settled continent mapped and a pelagic rest left off the chart. White cloud, green
+basins, coastal peat and banded iron in old sediments. The air is thick enough to forget the visor.
+There is no rutile glare here, no pitchblende spine - organics and common iron, and a hinterland
+that still has empty grass. UN towns sit like pins in a living map. You could walk without a suit.
+That is the luxury and the trap.
+
+Galaxy report:
+------------------------------------------------------------
+* system Helios [SS0001] (5, 5, 0).
+------------------------------------------------------------
+
+  * Arbor [P00001] at AU 1, ocean planet [ocean].
+------------------------------------------------------------
+  orbit [O00001], has atmosphere suitable for terran [terran].
+
+  Sundock Grant [R00022] (3,3), grassland region, settlement capacity 8/0.
+  Exits:
+    Prairie [R00021] (2,3), grassland region, ground travel duration 3 weeks.
+    East Steppe [R00023] (4,3), grassland region, ground travel duration 3 weeks, anomaly detected.
+    Central Basin [R00016] (3,2), grassland region, ground travel duration 3 weeks.
+    Windgap [R00028] (3,4), grassland region, ground travel duration 3 weeks, anomaly detected,
+    settlement detected.
+  Resources: 600 units of food [food], 20 units of oil [oil], 20 units of iron [iron], 150 units of
+  water [water].
+  + Sundock Headquarters [230001], corporate headquarters [corphq], immobile.
+    size: 1000, mass: 1084 (1000), capacity: 750/84, energy: 80/80, crew: 20/21, upkeep: 120 (90)
+    cash [cash], consume: 21 (0) units of food [food], 21 (0) units of terran breathing gas mixture
+    [terair].
+    items: 20 terrans [terran] (size: 80, mass: 80, upkeep: 20 cash [cash], consume: 20 units of
+    food [food], 20 units of terran breathing gas mixture [terair]).
+    + Sundock CEO [230010], terran [terran].
+      size: 4, mass: 4, capacity: 3/0, upkeep: 10 cash [cash], consume: unit of food [food], unit of
+      terran breathing gas mixture [terair].
+  + small cargo bay [230003], 2 small cargo bays [cargob], immobile.
+    size: 4000, mass: 1890 (400), capacity: 3600/1315, energy: 80/80, upkeep: 20 cash [cash].
+    items: 400 units of food [food] (size: 400, mass: 400), 200 units of terran breathing gas
+    mixture [terair] (size: 200, mass: 200), 200 units of oxyhydro [h2o2] (size: 200, mass: 200), 40
+    units of iron [iron] (size: 200, mass: 400), 40 units of carbon [carbon] (size: 200, mass: 200),
+    15 units of silicium [silici] (size: 75, mass: 45), 2 units of titanium [titani] (size: 20,
+    mass: 20), 5 units of oil [oil] (size: 20, mass: 25).
+  + surface drill [230004], surface drill [sdrill], immobile.
+    size: 500, mass: 524 (500), capacity: 250/24, energy: 80/80, crew: 6/6, upkeep: 41 (35) cash
+    [cash], consume: 6 (0) units of food [food], 6 (0) units of terran breathing gas mixture
+    [terair].
+    items: 6 terrans [terran] (size: 24, mass: 24, upkeep: 6 cash [cash], consume: 6 units of food
+    [food], 6 units of terran breathing gas mixture [terair]).
+  + factory [230005], 2 factories [factry], immobile.
+    size: 2000, mass: 1580 (1500), capacity: 1000/80, energy: 80/80, crew: 20/20, upkeep: 130 (110)
+    cash [cash], consume: 20 (0) units of food [food], 20 (0) units of terran breathing gas mixture
+    [terair].
+    items: 20 terrans [terran] (size: 80, mass: 80, upkeep: 20 cash [cash], consume: 20 units of
+    food [food], 20 units of terran breathing gas mixture [terair]).
+  + farming complex [230006], 3 farming complexes [farms], immobile.
+    size: 3000, mass: 360 (300), capacity: 1500/60, energy: 80/80, crew: 15/15, upkeep: 105 (90)
+    cash [cash], consume: 15 (0) units of food [food], 15 (0) units of terran breathing gas mixture
+    [terair].
+    items: 15 terrans [terran] (size: 60, mass: 60, upkeep: 15 cash [cash], consume: 15 units of
+    food [food], 15 units of terran breathing gas mixture [terair]).
+  + coal-burning plant [230007], 2 coal-burning plants [cplant], immobile.
+    size: 2000, mass: 2116 (2000), capacity: 1000/116, energy: 80/80 (consume: 10 units of carbon
+    [carbon] for 13 weeks), crew: 4/4, upkeep: 84 (80) cash [cash], consume: 4 (0) units of food
+    [food], 4 (0) units of terran breathing gas mixture [terair].
+    fuel requirements: 10 units of carbon [carbon] per 13 weeks.
+    items: 20 units of carbon [carbon] (size: 100, mass: 100), 4 terrans [terran] (size: 16, mass:
+    16, upkeep: 4 cash [cash], consume: 4 units of food [food], 4 units of terran breathing gas
+    mixture [terair]).
+------------------------------------------------------------
+  * Selene [M00001], rocky moon [rock] 0.003 AU from the planet.
+------------------------------------------------------------
+    orbit [O00002], has no atmosphere.
+
+  * Scoria [P00002] at AU 1.5, dust planet [dust].
+------------------------------------------------------------
+  orbit [O00003], has atmosphere.
+
+  * Aeolus [P00004] at AU 5.2, gas giant planet [gasgnt].
+------------------------------------------------------------
+  orbit [O00004], has atmosphere.
+------------------------------------------------------------
+  * Rime [M00002], ice moon [ice] 0.003 AU from the planet.
+------------------------------------------------------------
+    orbit [O00005], has no atmosphere.
+------------------------------------------------------------
+  * Glaze [M00003], ice moon [ice] 0.005 AU from the planet.
+------------------------------------------------------------
+    orbit [O00006], has no atmosphere.
+------------------------------------------------------------
+  * Shard [M00004], rocky moon [rock] 0.007 AU from the planet.
+------------------------------------------------------------
+    orbit [O00007], has no atmosphere.
+------------------------------------------------------------
+  * Cindercone [M00005], vulcanic moon [vulcan] 0.009 AU from the planet.
+------------------------------------------------------------
+    orbit [O00008], has no atmosphere.
+
+  * Helios Fomal Gate [P00009] at AU 69, Alderson Gate.
+------------------------------------------------------------
+  orbit [O00110], has no atmosphere.
+
+  * Helios Ember Gate [P00041] at AU 79, Alderson Gate.
+------------------------------------------------------------
+  orbit [O00153], has no atmosphere.
+
+
+Orders Template:
+#faction 5 "sundock"
+#modulestack 230001
+; + Sundock Headquarters [230001], corporate headquarters [corphq], immobile.
+; items: 20 terrans [terran].
+
+#modulestack 230003
+; + small cargo bay [230003], 2 small cargo bays [cargob], immobile.
+; items: 400 units of food [food], 200 units of terran breathing gas mixture [terair], 200 units of
+; oxyhydro [h2o2], 40 units of iron [iron], 40 units of carbon [carbon], 15 units of silicium
+; [silici], 2 units of titanium [titani], 5 units of oil [oil].
+
+#modulestack 230004
+; + surface drill [230004], surface drill [sdrill], immobile.
+; items: 6 terrans [terran].
+
+#modulestack 230005
+; + factory [230005], 2 factories [factry], immobile.
+; items: 20 terrans [terran].
+
+#modulestack 230006
+; + farming complex [230006], 3 farming complexes [farms], immobile.
+; items: 15 terrans [terran].
+
+#modulestack 230007
+; + coal-burning plant [230007], 2 coal-burning plants [cplant], immobile.
+; items: 20 units of carbon [carbon], 4 terrans [terran].
+
+#person 230010
+; + Sundock CEO [230010], terran [terran].
+
+#end
+
