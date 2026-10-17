@@ -141,6 +141,7 @@
     <Compile Include="data structures\Offers.cs" />
     <Compile Include="data structures\IProducable.cs" />
     <Compile Include="data structures\EMoveMode.cs" />
+    <Compile Include="data structures\EMoveInitiationBlock.cs" />
     <Compile Include="data structures\MoveModes.cs" />
     <Compile Include="data structures\MoveMode.cs" />
     <Compile Include="data structures\EItemTypesGroup.cs" />
