@@ -294,7 +294,7 @@ namespace SpaceAge
                 { this.reportDetails(faction), level + 1 }
             };
 
-            if (this.owner == faction && this.modules.HasPersistedState)
+            if (this.owner == faction && this.modules.HasDamagedOrOfflineStatus)
             {
                 string hitPoints = string.Empty;
                 hitPoints = this.reportOwnHitPoints(hitPoints);

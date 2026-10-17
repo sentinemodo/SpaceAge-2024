@@ -160,6 +160,7 @@ namespace SpaceAge
                         this.quantity,
                         0);
                     transferModules.Execute(week);
+                    this.Formed.ClearReceivedThisWeek();
 				}
 
 				if (this.alias != string.Empty)

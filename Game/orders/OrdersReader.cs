@@ -427,6 +427,10 @@ namespace SpaceAge
 				Order existing = this.findEquivalentLeftover(subject, order);
 				if (existing != null)
 				{
+					if (this.preexistingOrders != null)
+					{
+						this.preexistingOrders.Remove(existing);
+					}
 					subject.Orders.Remove(order);
 					return existing;
 				}
@@ -448,6 +452,7 @@ namespace SpaceAge
 				{
 					if (assignedProduce.IsEquivalentTo(leftoverProduce))
 					{
+						this.preexistingOrders.Remove(leftoverProduce);
 						subject.Orders.Remove(assignedProduce);
 						return leftoverProduce;
 					}

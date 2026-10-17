@@ -397,6 +397,7 @@ namespace IntegrationTests
 				moduleStack.Execute(this.game.Week);
 				this.game.Week++;	
 			}
+			this.game.ClearReceivedThisWeek();
 			ModuleStack farmsStack = producing.Produced;
 
 			List<string> testlines1 = new List<string>
@@ -777,7 +778,7 @@ namespace IntegrationTests
 		[Test]
 		public void OrdersTemplate_producingEffect()
 		{
-            Sequence.BattleInts.Push(100);
+            Sequence.Ints.Push(100);
 		//orbit [O00002], has atmosphere suitable for terran [terran].
 		// + space shuttle [100], 10 space shuttle [shuttl].
 		//	 effects:

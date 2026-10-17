@@ -318,12 +318,15 @@ namespace UnitTests
 			this.dataFile.LoadFactions();
 			this.game = this.dataFile.Game;
             Assert.That(this.game.Factions, Is.Not.Null);
-            Assert.That(this.game.Factions.Count, Is.EqualTo(2));
+            Assert.That(this.game.Factions.Count, Is.EqualTo(3));
             Assert.That(this.game.Factions["1"].Name, Is.EqualTo("1"));
             Assert.That(this.game.Factions["1"].FullName, Is.EqualTo("NPC"));
             Assert.That(this.game.Factions["2"].Name, Is.EqualTo("2"));
             Assert.That(this.game.Factions["2"].FullName, Is.EqualTo("Caste Prime"));
             Assert.That(this.game.Factions["2"].Password, Is.EqualTo(""));
+            Assert.That(this.game.Factions["3"].Name, Is.EqualTo("3"));
+            Assert.That(this.game.Factions["3"].FullName, Is.EqualTo("Test opponent"));
+            Assert.That(this.game.Factions["3"].Password, Is.EqualTo(""));
         }
 
         [Test]

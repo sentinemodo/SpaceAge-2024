@@ -926,57 +926,72 @@ namespace SpaceAge
 
 					int legDuration = this.movementDuration();
 					bool firstStepOfLeg = !resume && this.DurationLeft == legDuration;
-					if (this.canMove(week, firstStepOfLeg) && !this.needFuel(week))
+					bool departInitiation = this.moveSubject.MovingTo == null;
+					if (this.canMove(week, firstStepOfLeg))
 					{
-						if (this.moveSubject.MovingTo == null)
+						if (departInitiation && this.moving == null)
 						{
-							this.Executing = true;
-							this.moveSubject.MovingTo = this.destination;
+							this.moving = new Moving(
+								this.moveSubject.Effectable,
+								this.MoveMode,
+								this.moveSubject.Location,
+								this.Destination,
+								this.DurationLeft);
+						}
+
+						if (!this.needFuel(week))
+						{
+							if (departInitiation)
+							{
+								this.Executing = true;
+								this.moveSubject.MovingTo = this.destination;
+							}
+
+							this.DurationLeft--;
+							if (firstStepOfLeg)
+							{
+								this.moveSubject.EventReports.Add(
+									week,
+									string.Format(
+										"departed from {0} to {1}, ETA {2}.",
+										this.moveSubject.Location.ReportName,
+										this.destination.ReportName,
+										this.DurationLeft));
+							}
+							if (this.moving != null)
+							{
+								this.moving.Duration = this.DurationLeft;
+								this.moving.ReturnLegWeeks = this.moving.InitialDuration - this.DurationLeft;
+							}
+
+							if ((this.DurationLeft + 1) != this.movementDuration() && this.DurationLeft != 0)
+							{
+								this.moveSubject.EventReports.Add(
+									week,
+									string.Format(
+										"moving from {0} to {1}, ETA {2}.",
+										this.moveSubject.Location.ReportName,
+										this.destination.ReportName,
+										this.DurationLeft));
+							}
 							if (this.moving == null)
 							{
-								this.moving = new Moving(
-									this.moveSubject.Effectable,
-									this.MoveMode,
-									this.moveSubject.Location,
-									this.Destination,
-									this.DurationLeft);
+								this.moving = this.moveSubject.Effects.Moving;
+							}
+							if (this.moving != null)
+							{
+								this.moving.Use();
 							}
 						}
-
-						this.DurationLeft--;
-						if (firstStepOfLeg)
+						else if (departInitiation)
 						{
-							this.moveSubject.EventReports.Add(
-								week,
-								string.Format(
-									"departed from {0} to {1}, ETA {2}.",
-									this.moveSubject.Location.ReportName,
-									this.destination.ReportName,
-									this.DurationLeft));
-						}
-						if (this.moving != null)
-						{
-							this.moving.Duration = this.DurationLeft;
-							this.moving.ReturnLegWeeks = this.moving.InitialDuration - this.DurationLeft;
-						}
-
-						if ((this.DurationLeft + 1) != this.movementDuration() && this.DurationLeft != 0)
-						{
-							this.moveSubject.EventReports.Add(
-								week,
-								string.Format(
-									"moving from {0} to {1}, ETA {2}.",
-									this.moveSubject.Location.ReportName,
-									this.destination.ReportName,
-									this.DurationLeft));
-						}
-						if (this.moving == null)
-						{
-							this.moving = this.moveSubject.Effects.Moving;
-						}
-						if (this.moving != null)
-						{
-							this.moving.Use();
+							if (this.moving != null)
+							{
+								this.moveSubject.Effects.Remove(this.moving);
+								this.moving = null;
+							}
+							this.Executing = false;
+							this.DurationLeft = Int32.MaxValue;
 						}
 					}
 					else if (this.moveSubject.MovingTo == null)

@@ -7,6 +7,21 @@ namespace SpaceAge
 {
 	public class Modules : List<Module>
 	{
+		public bool HasDamagedOrOfflineStatus
+		{
+			get
+			{
+				foreach (Module module in this)
+				{
+					if (module.HasDamagedOrOfflineStatus)
+					{
+						return true;
+					}
+				}
+				return false;
+			}
+		}
+
 		public bool HasPersistedState
 		{
 			get

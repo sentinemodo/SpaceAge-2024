@@ -20,19 +20,16 @@ namespace SpaceAge
 		{
 			get 
             { 
-                IHolder parent = this.Parent;
-                if (parent == null)
+                IHolder current = this.Parent;
+                while (current != null)
                 {
-                    return (Location)parent;
-                }
-                else
-                {
-                    while (!parent.Parent.IsLocation)
+                    if (current is Location location)
                     {
-                        parent = parent.Parent;
+                        return location;
                     }
-                    return (Location)parent.Parent;
+                    current = current.Parent;
                 }
+                return null;
             }
 		}
 

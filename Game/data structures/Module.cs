@@ -115,6 +115,14 @@ namespace SpaceAge
 			set { this.captureDamage = value; }
 		}
 
+		public bool HasDamagedOrOfflineStatus
+		{
+			get
+			{
+				return this.damage > 0 || this.captureDamage > 0 || !this.online || !this.activated;
+			}
+		}
+
 		public bool HasPersistedState
 		{
 			get

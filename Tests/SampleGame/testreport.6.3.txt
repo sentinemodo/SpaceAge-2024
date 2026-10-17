@@ -96,17 +96,16 @@ Battles report:
     inactive.
   ------------------------------------------------------------
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #3 factory [000017] doing 1 damage and 3 capture damage.
-    #3 factory [factry] is lightly damaged.
+  hits #1 factory [000017] doing 1 damage and 3 capture damage.
+    #1 factory [factry] is lightly damaged.
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #2 factory [000017] doing 1 damage and 3 capture damage.
-    #2 factory [factry] is lightly damaged.
+  hits #1 factory [000017] doing 1 damage and 3 capture damage.
+    #1 factory [factry] is lightly damaged.
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #1 factory [000017] doing 1 damage and 3 capture damage.
     #1 factory [factry] is lightly damaged.
   infantry battalion [110] fires on factory [000017] (chance: 4/3) and
-  hits #5 factory [000017] doing 0 damage and 1 capture damage.
-    #5 factory [factry] is lightly damaged.
+  hits #2 factory [000017] doing 0 damage and 1 capture damage.
   ------------------------------------------------------------
   Round 2:
   ------------------------------------------------------------
@@ -134,12 +133,11 @@ Battles report:
     immobile, owned by Caste Prime [2].
     size: 5000.
     hit points: 500/346, capture: 10.
-      #1 hit points: 100/68, capture: 3, lightly damaged.
-      #2 hit points: 100/74, capture: 3, lightly damaged.
-      #3 hit points: 100/68, capture: 3, lightly damaged.
+      #1 hit points: 100/66, capture: 9, lightly damaged.
+      #2 hit points: 100/75, capture: 1.
+      #3 hit points: 100/69, lightly damaged.
       #4 hit points: 100/68, lightly damaged.
-      #5 hit points: 100/68, capture: 1, lightly damaged, effects:
-      inactive.
+      #5 hit points: 100/68, lightly damaged, effects: inactive.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -147,17 +145,17 @@ Battles report:
     inactive.
   ------------------------------------------------------------
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #4 factory [000017] doing 1 damage and 3 capture damage.
-    #4 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #3 factory [000017] doing 1 damage and 3 capture damage.
     #3 factory [factry] is lightly damaged.
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #2 factory [000017] doing 1 damage and 3 capture damage.
-    #2 factory [factry] is lightly damaged.
-  infantry battalion [110] fires on factory [000017] (chance: 4/3) and
-  hits #1 factory [000017] doing 0 damage and 1 capture damage.
+  hits #1 factory [000017] doing 1 damage and 3 capture damage.
     #1 factory [factry] is lightly damaged.
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
+  hits #3 factory [000017] doing 1 damage and 3 capture damage.
+    #3 factory [factry] is lightly damaged.
+  infantry battalion [110] fires on factory [000017] (chance: 4/3) and
+  hits #5 factory [000017] doing 0 damage and 1 capture damage.
+    #5 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Round 3:
   ------------------------------------------------------------
@@ -185,10 +183,10 @@ Battles report:
     immobile, owned by Caste Prime [2].
     size: 5000.
     hit points: 500/343, capture: 20.
-      #1 hit points: 100/68, capture: 4, lightly damaged.
-      #2 hit points: 100/73, capture: 6, lightly damaged.
+      #1 hit points: 100/65, capture: 12, lightly damaged.
+      #2 hit points: 100/75, capture: 1.
       #3 hit points: 100/67, capture: 6, lightly damaged.
-      #4 hit points: 100/67, capture: 3, lightly damaged.
+      #4 hit points: 100/68, lightly damaged.
       #5 hit points: 100/68, capture: 1, lightly damaged, effects:
       inactive.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
@@ -198,14 +196,14 @@ Battles report:
     inactive.
   ------------------------------------------------------------
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #5 factory [000017] doing 1 damage and 3 capture damage.
-    #5 factory [factry] is lightly damaged.
+  hits #2 factory [000017] doing 1 damage and 3 capture damage.
+    #2 factory [factry] is lightly damaged.
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #4 factory [000017] doing 1 damage and 3 capture damage.
-    #4 factory [factry] is lightly damaged.
+  hits #2 factory [000017] doing 1 damage and 3 capture damage.
+    #2 factory [factry] is lightly damaged.
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #3 factory [000017] doing 1 damage and 3 capture damage.
-    #3 factory [factry] is lightly damaged.
+  hits #1 factory [000017] doing 1 damage and 3 capture damage.
+    #1 factory [factry] is lightly damaged.
   infantry battalion [110] fires on factory [000017] (chance: 4/3) and
   hits #2 factory [000017] doing 0 damage and 1 capture damage.
     #2 factory [factry] is lightly damaged.
@@ -236,11 +234,11 @@ Battles report:
     immobile, owned by Caste Prime [2].
     size: 5000.
     hit points: 500/340, capture: 30.
-      #1 hit points: 100/68, capture: 4, lightly damaged.
-      #2 hit points: 100/73, capture: 7, lightly damaged.
-      #3 hit points: 100/66, capture: 9, lightly damaged.
-      #4 hit points: 100/66, capture: 6, lightly damaged.
-      #5 hit points: 100/67, capture: 4, lightly damaged, effects:
+      #1 hit points: 100/64, capture: 15, lightly damaged.
+      #2 hit points: 100/73, capture: 8, lightly damaged.
+      #3 hit points: 100/67, capture: 6, lightly damaged.
+      #4 hit points: 100/68, lightly damaged.
+      #5 hit points: 100/68, capture: 1, lightly damaged, effects:
       inactive.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
@@ -249,17 +247,17 @@ Battles report:
     inactive.
   ------------------------------------------------------------
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #1 factory [000017] doing 1 damage and 3 capture damage.
-    #1 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #5 factory [000017] doing 1 damage and 3 capture damage.
     #5 factory [factry] is lightly damaged.
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #4 factory [000017] doing 1 damage and 3 capture damage.
-    #4 factory [factry] is lightly damaged.
+  hits #1 factory [000017] doing 1 damage and 3 capture damage.
+    #1 factory [factry] is lightly damaged.
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
+  hits #1 factory [000017] doing 1 damage and 3 capture damage.
+    #1 factory [factry] is lightly damaged.
   infantry battalion [110] fires on factory [000017] (chance: 4/3) and
-  hits #3 factory [000017] doing 0 damage and 1 capture damage.
-    #3 factory [factry] is lightly damaged.
+  hits #4 factory [000017] doing 0 damage and 1 capture damage.
+    #4 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Round 5:
   ------------------------------------------------------------
@@ -287,11 +285,11 @@ Battles report:
     immobile, owned by Caste Prime [2].
     size: 5000.
     hit points: 500/337, capture: 40.
-      #1 hit points: 100/67, capture: 7, lightly damaged.
-      #2 hit points: 100/73, capture: 7, lightly damaged.
-      #3 hit points: 100/66, capture: 10, lightly damaged.
-      #4 hit points: 100/65, capture: 9, lightly damaged.
-      #5 hit points: 100/66, capture: 7, lightly damaged, effects:
+      #1 hit points: 100/62, capture: 21, lightly damaged.
+      #2 hit points: 100/73, capture: 8, lightly damaged.
+      #3 hit points: 100/67, capture: 6, lightly damaged.
+      #4 hit points: 100/68, capture: 1, lightly damaged.
+      #5 hit points: 100/67, capture: 4, lightly damaged, effects:
       inactive.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
@@ -300,17 +298,17 @@ Battles report:
     inactive.
   ------------------------------------------------------------
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #2 factory [000017] doing 1 damage and 3 capture damage.
-    #2 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #1 factory [000017] doing 1 damage and 3 capture damage.
     #1 factory [factry] is lightly damaged.
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #5 factory [000017] doing 1 damage and 3 capture damage.
-    #5 factory [factry] is lightly damaged.
-  infantry battalion [110] fires on factory [000017] (chance: 4/3) and
-  hits #4 factory [000017] doing 0 damage and 1 capture damage.
+  hits #4 factory [000017] doing 1 damage and 3 capture damage.
     #4 factory [factry] is lightly damaged.
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
+  hits #4 factory [000017] doing 1 damage and 3 capture damage.
+    #4 factory [factry] is lightly damaged.
+  infantry battalion [110] fires on factory [000017] (chance: 4/3) and
+  hits #2 factory [000017] doing 0 damage and 1 capture damage.
+    #2 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Round 6:
   ------------------------------------------------------------
@@ -338,11 +336,11 @@ Battles report:
     immobile, owned by Caste Prime [2].
     size: 5000.
     hit points: 500/334, capture: 50.
-      #1 hit points: 100/66, capture: 10, lightly damaged.
-      #2 hit points: 100/72, capture: 10, lightly damaged.
-      #3 hit points: 100/66, capture: 10, lightly damaged.
-      #4 hit points: 100/65, capture: 10, lightly damaged.
-      #5 hit points: 100/65, capture: 10, lightly damaged, effects:
+      #1 hit points: 100/61, capture: 24, lightly damaged.
+      #2 hit points: 100/73, capture: 9, lightly damaged.
+      #3 hit points: 100/67, capture: 6, lightly damaged.
+      #4 hit points: 100/66, capture: 7, lightly damaged.
+      #5 hit points: 100/67, capture: 4, lightly damaged, effects:
       inactive.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
@@ -351,17 +349,17 @@ Battles report:
     inactive.
   ------------------------------------------------------------
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #3 factory [000017] doing 1 damage and 3 capture damage.
-    #3 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #2 factory [000017] doing 1 damage and 3 capture damage.
     #2 factory [factry] is lightly damaged.
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #1 factory [000017] doing 1 damage and 3 capture damage.
-    #1 factory [factry] is lightly damaged.
-  infantry battalion [110] fires on factory [000017] (chance: 4/3) and
-  hits #5 factory [000017] doing 0 damage and 1 capture damage.
+  hits #5 factory [000017] doing 1 damage and 3 capture damage.
     #5 factory [factry] is lightly damaged.
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
+  hits #4 factory [000017] doing 1 damage and 3 capture damage.
+    #4 factory [factry] is lightly damaged.
+  infantry battalion [110] fires on factory [000017] (chance: 4/3) and
+  hits #1 factory [000017] doing 0 damage and 1 capture damage.
+    #1 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Round 7:
   ------------------------------------------------------------
@@ -389,11 +387,11 @@ Battles report:
     immobile, owned by Caste Prime [2].
     size: 5000.
     hit points: 500/331, capture: 60.
-      #1 hit points: 100/65, capture: 13, lightly damaged.
-      #2 hit points: 100/71, capture: 13, lightly damaged.
-      #3 hit points: 100/65, capture: 13, lightly damaged.
+      #1 hit points: 100/61, capture: 25, lightly damaged.
+      #2 hit points: 100/72, capture: 12, lightly damaged.
+      #3 hit points: 100/67, capture: 6, lightly damaged.
       #4 hit points: 100/65, capture: 10, lightly damaged.
-      #5 hit points: 100/65, capture: 11, lightly damaged, effects:
+      #5 hit points: 100/66, capture: 7, lightly damaged, effects:
       inactive.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
@@ -402,17 +400,17 @@ Battles report:
     inactive.
   ------------------------------------------------------------
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #4 factory [000017] doing 1 damage and 3 capture damage.
-    #4 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #3 factory [000017] doing 1 damage and 3 capture damage.
-    #3 factory [factry] is lightly damaged.
+  hits #5 factory [000017] doing 1 damage and 3 capture damage.
+    #5 factory [factry] is lightly damaged.
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #2 factory [000017] doing 1 damage and 3 capture damage.
     #2 factory [factry] is lightly damaged.
-  infantry battalion [110] fires on factory [000017] (chance: 4/3) and
-  hits #1 factory [000017] doing 0 damage and 1 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
+  hits #1 factory [000017] doing 1 damage and 3 capture damage.
     #1 factory [factry] is lightly damaged.
+  infantry battalion [110] fires on factory [000017] (chance: 4/3) and
+  hits #5 factory [000017] doing 0 damage and 1 capture damage.
+    #5 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Round 8:
   ------------------------------------------------------------
@@ -440,10 +438,10 @@ Battles report:
     immobile, owned by Caste Prime [2].
     size: 5000.
     hit points: 500/328, capture: 70.
-      #1 hit points: 100/65, capture: 14, lightly damaged.
-      #2 hit points: 100/70, capture: 16, lightly damaged.
-      #3 hit points: 100/64, capture: 16, lightly damaged.
-      #4 hit points: 100/64, capture: 13, lightly damaged.
+      #1 hit points: 100/60, capture: 28, lightly damaged.
+      #2 hit points: 100/71, capture: 15, lightly damaged.
+      #3 hit points: 100/67, capture: 6, lightly damaged.
+      #4 hit points: 100/65, capture: 10, lightly damaged.
       #5 hit points: 100/65, capture: 11, lightly damaged, effects:
       inactive.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
@@ -453,17 +451,17 @@ Battles report:
     inactive.
   ------------------------------------------------------------
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
+  hits #2 factory [000017] doing 1 damage and 3 capture damage.
+    #2 factory [factry] is lightly damaged.
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #5 factory [000017] doing 1 damage and 3 capture damage.
     #5 factory [factry] is lightly damaged.
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #4 factory [000017] doing 1 damage and 3 capture damage.
-    #4 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #3 factory [000017] doing 1 damage and 3 capture damage.
-    #3 factory [factry] is lightly damaged.
-  infantry battalion [110] fires on factory [000017] (chance: 4/3) and
-  hits #2 factory [000017] doing 0 damage and 1 capture damage.
+  hits #2 factory [000017] doing 1 damage and 3 capture damage.
     #2 factory [factry] is lightly damaged.
+  infantry battalion [110] fires on factory [000017] (chance: 4/3) and
+  hits #4 factory [000017] doing 0 damage and 1 capture damage.
+    #4 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Round 9:
   ------------------------------------------------------------
@@ -491,10 +489,10 @@ Battles report:
     immobile, owned by Caste Prime [2].
     size: 5000.
     hit points: 500/325, capture: 80.
-      #1 hit points: 100/65, capture: 14, lightly damaged.
-      #2 hit points: 100/70, capture: 17, lightly damaged.
-      #3 hit points: 100/63, capture: 19, lightly damaged.
-      #4 hit points: 100/63, capture: 16, lightly damaged.
+      #1 hit points: 100/60, capture: 28, lightly damaged.
+      #2 hit points: 100/69, capture: 21, lightly damaged.
+      #3 hit points: 100/67, capture: 6, lightly damaged.
+      #4 hit points: 100/65, capture: 11, lightly damaged.
       #5 hit points: 100/64, capture: 14, lightly damaged, effects:
       inactive.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
@@ -504,17 +502,17 @@ Battles report:
     inactive.
   ------------------------------------------------------------
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #1 factory [000017] doing 1 damage and 3 capture damage.
-    #1 factory [factry] is lightly damaged.
+  hits #2 factory [000017] doing 1 damage and 3 capture damage.
+    #2 factory [factry] is lightly damaged.
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #5 factory [000017] doing 1 damage and 3 capture damage.
     #5 factory [factry] is lightly damaged.
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #4 factory [000017] doing 1 damage and 3 capture damage.
-    #4 factory [factry] is lightly damaged.
-  infantry battalion [110] fires on factory [000017] (chance: 4/3) and
-  hits #3 factory [000017] doing 0 damage and 1 capture damage.
+  hits #3 factory [000017] doing 1 damage and 3 capture damage.
     #3 factory [factry] is lightly damaged.
+  infantry battalion [110] fires on factory [000017] (chance: 4/3) and
+  hits #4 factory [000017] doing 0 damage and 1 capture damage.
+    #4 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Round 10:
   ------------------------------------------------------------
@@ -542,10 +540,10 @@ Battles report:
     immobile, owned by Caste Prime [2].
     size: 5000.
     hit points: 500/322, capture: 90.
-      #1 hit points: 100/64, capture: 17, lightly damaged.
-      #2 hit points: 100/70, capture: 17, lightly damaged.
-      #3 hit points: 100/63, capture: 20, lightly damaged.
-      #4 hit points: 100/62, capture: 19, lightly damaged.
+      #1 hit points: 100/60, capture: 28, lightly damaged.
+      #2 hit points: 100/68, capture: 24, lightly damaged.
+      #3 hit points: 100/66, capture: 9, lightly damaged.
+      #4 hit points: 100/65, capture: 12, lightly damaged.
       #5 hit points: 100/63, capture: 17, lightly damaged, effects:
       inactive.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
@@ -558,14 +556,14 @@ Battles report:
   hits #2 factory [000017] doing 1 damage and 3 capture damage.
     #2 factory [factry] is lightly damaged.
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #1 factory [000017] doing 1 damage and 3 capture damage.
-    #1 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #5 factory [000017] doing 1 damage and 3 capture damage.
     #5 factory [factry] is lightly damaged.
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
+  hits #2 factory [000017] doing 1 damage and 3 capture damage.
+    #2 factory [factry] is lightly damaged.
   infantry battalion [110] fires on factory [000017] (chance: 4/3) and
-  hits #4 factory [000017] doing 0 damage and 1 capture damage.
-    #4 factory [factry] is lightly damaged.
+  hits #5 factory [000017] doing 0 damage and 1 capture damage.
+    #5 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Battle ended indecisively.
 
@@ -600,10 +598,10 @@ Battles report:
     immobile, owned by Caste Prime [2].
     size: 5000.
     hit points: 500/319.
-      #1 hit points: 100/63, lightly damaged.
-      #2 hit points: 100/69, lightly damaged.
-      #3 hit points: 100/63, lightly damaged.
-      #4 hit points: 100/62, lightly damaged.
+      #1 hit points: 100/60, lightly damaged.
+      #2 hit points: 100/66, lightly damaged.
+      #3 hit points: 100/66, lightly damaged.
+      #4 hit points: 100/65, lightly damaged.
       #5 hit points: 100/62, lightly damaged, effects: inactive.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
@@ -612,17 +610,17 @@ Battles report:
     inactive.
   ------------------------------------------------------------
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #3 factory [000017] doing 1 damage and 3 capture damage.
-    #3 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #2 factory [000017] doing 1 damage and 3 capture damage.
-    #2 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #1 factory [000017] doing 1 damage and 3 capture damage.
     #1 factory [factry] is lightly damaged.
-  infantry battalion [110] fires on factory [000017] (chance: 4/3) and
-  hits #5 factory [000017] doing 0 damage and 1 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
+  hits #5 factory [000017] doing 1 damage and 3 capture damage.
     #5 factory [factry] is lightly damaged.
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
+  hits #4 factory [000017] doing 1 damage and 3 capture damage.
+    #4 factory [factry] is lightly damaged.
+  infantry battalion [110] fires on factory [000017] (chance: 4/3) and
+  hits #3 factory [000017] doing 0 damage and 1 capture damage.
+    #3 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Round 2:
   ------------------------------------------------------------
@@ -650,11 +648,11 @@ Battles report:
     immobile, owned by Caste Prime [2].
     size: 5000.
     hit points: 500/316, capture: 10.
-      #1 hit points: 100/62, capture: 3, lightly damaged.
-      #2 hit points: 100/68, capture: 3, lightly damaged.
-      #3 hit points: 100/62, capture: 3, lightly damaged.
-      #4 hit points: 100/62, lightly damaged.
-      #5 hit points: 100/62, capture: 1, lightly damaged, effects:
+      #1 hit points: 100/59, capture: 3, lightly damaged.
+      #2 hit points: 100/66, lightly damaged.
+      #3 hit points: 100/66, capture: 1, lightly damaged.
+      #4 hit points: 100/64, capture: 3, lightly damaged.
+      #5 hit points: 100/61, capture: 3, lightly damaged, effects:
       inactive.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
@@ -663,17 +661,17 @@ Battles report:
     inactive.
   ------------------------------------------------------------
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #4 factory [000017] doing 1 damage and 3 capture damage.
-    #4 factory [factry] is lightly damaged.
+  hits #1 factory [000017] doing 1 damage and 3 capture damage.
+    #1 factory [factry] is lightly damaged.
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
+  hits #1 factory [000017] doing 1 damage and 3 capture damage.
+    #1 factory [factry] is lightly damaged.
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #3 factory [000017] doing 1 damage and 3 capture damage.
     #3 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #2 factory [000017] doing 1 damage and 3 capture damage.
-    #2 factory [factry] is lightly damaged.
   infantry battalion [110] fires on factory [000017] (chance: 4/3) and
-  hits #1 factory [000017] doing 0 damage and 1 capture damage.
-    #1 factory [factry] is lightly damaged.
+  hits #4 factory [000017] doing 0 damage and 1 capture damage.
+    #4 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Round 3:
   ------------------------------------------------------------
@@ -701,11 +699,11 @@ Battles report:
     immobile, owned by Caste Prime [2].
     size: 5000.
     hit points: 500/313, capture: 20.
-      #1 hit points: 100/62, capture: 4, lightly damaged.
-      #2 hit points: 100/67, capture: 6, lightly damaged.
-      #3 hit points: 100/61, capture: 6, lightly damaged.
-      #4 hit points: 100/61, capture: 3, lightly damaged.
-      #5 hit points: 100/62, capture: 1, lightly damaged, effects:
+      #1 hit points: 100/57, capture: 9, lightly damaged.
+      #2 hit points: 100/66, lightly damaged.
+      #3 hit points: 100/65, capture: 4, lightly damaged.
+      #4 hit points: 100/64, capture: 4, lightly damaged.
+      #5 hit points: 100/61, capture: 3, lightly damaged, effects:
       inactive.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
@@ -714,17 +712,17 @@ Battles report:
     inactive.
   ------------------------------------------------------------
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #5 factory [000017] doing 1 damage and 3 capture damage.
-    #5 factory [factry] is lightly damaged.
+  hits #2 factory [000017] doing 1 damage and 3 capture damage.
+    #2 factory [factry] is lightly damaged.
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #4 factory [000017] doing 1 damage and 3 capture damage.
-    #4 factory [factry] is lightly damaged.
+  hits #1 factory [000017] doing 1 damage and 3 capture damage.
+    #1 factory [factry] is lightly damaged.
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #3 factory [000017] doing 1 damage and 3 capture damage.
     #3 factory [factry] is lightly damaged.
   infantry battalion [110] fires on factory [000017] (chance: 4/3) and
-  hits #2 factory [000017] doing 0 damage and 1 capture damage.
-    #2 factory [factry] is lightly damaged.
+  hits #1 factory [000017] doing 0 damage and 1 capture damage.
+    #1 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Round 4:
   ------------------------------------------------------------
@@ -752,11 +750,11 @@ Battles report:
     immobile, owned by Caste Prime [2].
     size: 5000.
     hit points: 500/310, capture: 30.
-      #1 hit points: 100/62, capture: 4, lightly damaged.
-      #2 hit points: 100/67, capture: 7, lightly damaged.
-      #3 hit points: 100/60, capture: 9, lightly damaged.
-      #4 hit points: 100/60, capture: 6, lightly damaged.
-      #5 hit points: 100/61, capture: 4, lightly damaged, effects:
+      #1 hit points: 100/56, capture: 13, lightly damaged.
+      #2 hit points: 100/65, capture: 3, lightly damaged.
+      #3 hit points: 100/64, capture: 7, lightly damaged.
+      #4 hit points: 100/64, capture: 4, lightly damaged.
+      #5 hit points: 100/61, capture: 3, lightly damaged, effects:
       inactive.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
@@ -765,17 +763,17 @@ Battles report:
     inactive.
   ------------------------------------------------------------
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
+  hits #3 factory [000017] doing 1 damage and 3 capture damage.
+    #3 factory [factry] is lightly damaged.
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #1 factory [000017] doing 1 damage and 3 capture damage.
     #1 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #5 factory [000017] doing 1 damage and 3 capture damage.
-    #5 factory [factry] is lightly damaged.
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #4 factory [000017] doing 1 damage and 3 capture damage.
     #4 factory [factry] is lightly damaged.
   infantry battalion [110] fires on factory [000017] (chance: 4/3) and
-  hits #3 factory [000017] doing 0 damage and 1 capture damage.
-    #3 factory [factry] is lightly damaged.
+  hits #2 factory [000017] doing 0 damage and 1 capture damage.
+    #2 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Round 5:
   ------------------------------------------------------------
@@ -803,11 +801,11 @@ Battles report:
     immobile, owned by Caste Prime [2].
     size: 5000.
     hit points: 500/307, capture: 40.
-      #1 hit points: 100/61, capture: 7, lightly damaged.
-      #2 hit points: 100/67, capture: 7, lightly damaged.
-      #3 hit points: 100/60, capture: 10, lightly damaged.
-      #4 hit points: 100/59, capture: 9, lightly damaged.
-      #5 hit points: 100/60, capture: 7, lightly damaged, effects:
+      #1 hit points: 100/55, capture: 16, lightly damaged.
+      #2 hit points: 100/65, capture: 4, lightly damaged.
+      #3 hit points: 100/63, capture: 10, lightly damaged.
+      #4 hit points: 100/63, capture: 7, lightly damaged.
+      #5 hit points: 100/61, capture: 3, lightly damaged, effects:
       inactive.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
@@ -819,14 +817,14 @@ Battles report:
   hits #2 factory [000017] doing 1 damage and 3 capture damage.
     #2 factory [factry] is lightly damaged.
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #1 factory [000017] doing 1 damage and 3 capture damage.
-    #1 factory [factry] is lightly damaged.
+  hits #2 factory [000017] doing 1 damage and 3 capture damage.
+    #2 factory [factry] is lightly damaged.
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #5 factory [000017] doing 1 damage and 3 capture damage.
     #5 factory [factry] is lightly damaged.
   infantry battalion [110] fires on factory [000017] (chance: 4/3) and
-  hits #4 factory [000017] doing 0 damage and 1 capture damage.
-    #4 factory [factry] is lightly damaged.
+  hits #1 factory [000017] doing 0 damage and 1 capture damage.
+    #1 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Round 6:
   ------------------------------------------------------------
@@ -854,11 +852,11 @@ Battles report:
     immobile, owned by Caste Prime [2].
     size: 5000.
     hit points: 500/304, capture: 50.
-      #1 hit points: 100/60, capture: 10, lightly damaged.
-      #2 hit points: 100/66, capture: 10, lightly damaged.
-      #3 hit points: 100/60, capture: 10, lightly damaged.
-      #4 hit points: 100/59, capture: 10, lightly damaged.
-      #5 hit points: 100/59, capture: 10, lightly damaged, effects:
+      #1 hit points: 100/55, capture: 17, lightly damaged.
+      #2 hit points: 100/63, capture: 10, lightly damaged.
+      #3 hit points: 100/63, capture: 10, lightly damaged.
+      #4 hit points: 100/63, capture: 7, lightly damaged.
+      #5 hit points: 100/60, capture: 6, lightly damaged, effects:
       inactive.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
@@ -867,17 +865,17 @@ Battles report:
     inactive.
   ------------------------------------------------------------
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
+  hits #5 factory [000017] doing 1 damage and 3 capture damage.
+    #5 factory [factry] is lightly damaged.
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #3 factory [000017] doing 1 damage and 3 capture damage.
     #3 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #2 factory [000017] doing 1 damage and 3 capture damage.
-    #2 factory [factry] is lightly damaged.
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #1 factory [000017] doing 1 damage and 3 capture damage.
     #1 factory [factry] is lightly damaged.
   infantry battalion [110] fires on factory [000017] (chance: 4/3) and
-  hits #5 factory [000017] doing 0 damage and 1 capture damage.
-    #5 factory [factry] is lightly damaged.
+  hits #1 factory [000017] doing 0 damage and 1 capture damage.
+    #1 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Round 7:
   ------------------------------------------------------------
@@ -905,11 +903,11 @@ Battles report:
     immobile, owned by Caste Prime [2].
     size: 5000.
     hit points: 500/301, capture: 60.
-      #1 hit points: 100/59, capture: 13, lightly damaged.
-      #2 hit points: 100/65, capture: 13, lightly damaged.
-      #3 hit points: 100/59, capture: 13, lightly damaged.
-      #4 hit points: 100/59, capture: 10, lightly damaged.
-      #5 hit points: 100/59, capture: 11, lightly damaged, effects:
+      #1 hit points: 100/54, capture: 21, lightly damaged.
+      #2 hit points: 100/63, capture: 10, lightly damaged.
+      #3 hit points: 100/62, capture: 13, lightly damaged.
+      #4 hit points: 100/63, capture: 7, lightly damaged.
+      #5 hit points: 100/59, capture: 9, lightly damaged, effects:
       inactive.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
@@ -918,17 +916,17 @@ Battles report:
     inactive.
   ------------------------------------------------------------
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #4 factory [000017] doing 1 damage and 3 capture damage.
-    #4 factory [factry] is lightly damaged.
+  hits #1 factory [000017] doing 1 damage and 3 capture damage.
+    #1 factory [factry] is lightly damaged.
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #3 factory [000017] doing 1 damage and 3 capture damage.
-    #3 factory [factry] is lightly damaged.
+  hits #2 factory [000017] doing 1 damage and 3 capture damage.
+    #2 factory [factry] is lightly damaged.
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #2 factory [000017] doing 1 damage and 3 capture damage.
     #2 factory [factry] is lightly damaged.
   infantry battalion [110] fires on factory [000017] (chance: 4/3) and
-  hits #1 factory [000017] doing 0 damage and 1 capture damage.
-    #1 factory [factry] is lightly damaged.
+  hits #5 factory [000017] doing 0 damage and 1 capture damage.
+    #5 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Round 8:
   ------------------------------------------------------------
@@ -956,11 +954,11 @@ Battles report:
     immobile, owned by Caste Prime [2].
     size: 5000.
     hit points: 500/298, capture: 70.
-      #1 hit points: 100/59, capture: 14, lightly damaged.
-      #2 hit points: 100/64, capture: 16, lightly damaged.
-      #3 hit points: 100/58, capture: 16, lightly damaged.
-      #4 hit points: 100/58, capture: 13, lightly damaged.
-      #5 hit points: 100/59, capture: 11, lightly damaged, effects:
+      #1 hit points: 100/53, capture: 24, lightly damaged.
+      #2 hit points: 100/61, capture: 16, lightly damaged.
+      #3 hit points: 100/62, capture: 13, lightly damaged.
+      #4 hit points: 100/63, capture: 7, lightly damaged.
+      #5 hit points: 100/59, capture: 10, lightly damaged, effects:
       inactive.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
@@ -969,14 +967,14 @@ Battles report:
     inactive.
   ------------------------------------------------------------
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #5 factory [000017] doing 1 damage and 3 capture damage.
-    #5 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #4 factory [000017] doing 1 damage and 3 capture damage.
     #4 factory [factry] is lightly damaged.
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #3 factory [000017] doing 1 damage and 3 capture damage.
     #3 factory [factry] is lightly damaged.
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
+  hits #1 factory [000017] doing 1 damage and 3 capture damage.
+    #1 factory [factry] is lightly damaged.
   infantry battalion [110] fires on factory [000017] (chance: 4/3) and
   hits #2 factory [000017] doing 0 damage and 1 capture damage.
     #2 factory [factry] is lightly damaged.
@@ -1007,11 +1005,11 @@ Battles report:
     immobile, owned by Caste Prime [2].
     size: 5000.
     hit points: 500/295, capture: 80.
-      #1 hit points: 100/59, capture: 14, lightly damaged.
-      #2 hit points: 100/64, capture: 17, lightly damaged.
-      #3 hit points: 100/57, capture: 19, lightly damaged.
-      #4 hit points: 100/57, capture: 16, lightly damaged.
-      #5 hit points: 100/58, capture: 14, lightly damaged, effects:
+      #1 hit points: 100/52, capture: 27, lightly damaged.
+      #2 hit points: 100/61, capture: 17, lightly damaged.
+      #3 hit points: 100/61, capture: 16, lightly damaged.
+      #4 hit points: 100/62, capture: 10, lightly damaged.
+      #5 hit points: 100/59, capture: 10, lightly damaged, effects:
       inactive.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
@@ -1020,17 +1018,17 @@ Battles report:
     inactive.
   ------------------------------------------------------------
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #1 factory [000017] doing 1 damage and 3 capture damage.
-    #1 factory [factry] is lightly damaged.
+  hits #2 factory [000017] doing 1 damage and 3 capture damage.
+    #2 factory [factry] is lightly damaged.
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
+  hits #3 factory [000017] doing 1 damage and 3 capture damage.
+    #3 factory [factry] is lightly damaged.
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #5 factory [000017] doing 1 damage and 3 capture damage.
     #5 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #4 factory [000017] doing 1 damage and 3 capture damage.
-    #4 factory [factry] is lightly damaged.
   infantry battalion [110] fires on factory [000017] (chance: 4/3) and
-  hits #3 factory [000017] doing 0 damage and 1 capture damage.
-    #3 factory [factry] is lightly damaged.
+  hits #1 factory [000017] doing 0 damage and 1 capture damage.
+    #1 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Round 10:
   ------------------------------------------------------------
@@ -1058,11 +1056,11 @@ Battles report:
     immobile, owned by Caste Prime [2].
     size: 5000.
     hit points: 500/292, capture: 90.
-      #1 hit points: 100/58, capture: 17, lightly damaged.
-      #2 hit points: 100/64, capture: 17, lightly damaged.
-      #3 hit points: 100/57, capture: 20, lightly damaged.
-      #4 hit points: 100/56, capture: 19, lightly damaged.
-      #5 hit points: 100/57, capture: 17, lightly damaged, effects:
+      #1 hit points: 100/52, capture: 28, lightly damaged.
+      #2 hit points: 100/60, capture: 20, lightly damaged.
+      #3 hit points: 100/60, capture: 19, lightly damaged.
+      #4 hit points: 100/62, capture: 10, lightly damaged.
+      #5 hit points: 100/58, capture: 13, lightly damaged, effects:
       inactive.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
@@ -1071,17 +1069,17 @@ Battles report:
     inactive.
   ------------------------------------------------------------
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #2 factory [000017] doing 1 damage and 3 capture damage.
-    #2 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #1 factory [000017] doing 1 damage and 3 capture damage.
     #1 factory [factry] is lightly damaged.
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #5 factory [000017] doing 1 damage and 3 capture damage.
-    #5 factory [factry] is lightly damaged.
-  infantry battalion [110] fires on factory [000017] (chance: 4/3) and
-  hits #4 factory [000017] doing 0 damage and 1 capture damage.
+  hits #3 factory [000017] doing 1 damage and 3 capture damage.
+    #3 factory [factry] is lightly damaged.
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
+  hits #4 factory [000017] doing 1 damage and 3 capture damage.
     #4 factory [factry] is lightly damaged.
+  infantry battalion [110] fires on factory [000017] (chance: 4/3) and
+  hits #5 factory [000017] doing 0 damage and 1 capture damage.
+    #5 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Battle ended indecisively.
 
@@ -1116,11 +1114,11 @@ Battles report:
     immobile, owned by Caste Prime [2].
     size: 5000.
     hit points: 500/289.
-      #1 hit points: 100/57, lightly damaged.
-      #2 hit points: 100/63, lightly damaged.
-      #3 hit points: 100/57, lightly damaged.
-      #4 hit points: 100/56, lightly damaged.
-      #5 hit points: 100/56, lightly damaged, effects: inactive.
+      #1 hit points: 100/51, lightly damaged.
+      #2 hit points: 100/60, lightly damaged.
+      #3 hit points: 100/59, lightly damaged.
+      #4 hit points: 100/61, lightly damaged.
+      #5 hit points: 100/58, lightly damaged, effects: inactive.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -1131,14 +1129,14 @@ Battles report:
   hits #3 factory [000017] doing 1 damage and 3 capture damage.
     #3 factory [factry] is lightly damaged.
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #2 factory [000017] doing 1 damage and 3 capture damage.
-    #2 factory [factry] is lightly damaged.
+  hits #3 factory [000017] doing 1 damage and 3 capture damage.
+    #3 factory [factry] is lightly damaged.
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #1 factory [000017] doing 1 damage and 3 capture damage.
-    #1 factory [factry] is lightly damaged.
+  hits #4 factory [000017] doing 1 damage and 3 capture damage.
+    #4 factory [factry] is lightly damaged.
   infantry battalion [110] fires on factory [000017] (chance: 4/3) and
-  hits #5 factory [000017] doing 0 damage and 1 capture damage.
-    #5 factory [factry] is lightly damaged.
+  hits #4 factory [000017] doing 0 damage and 1 capture damage.
+    #4 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Round 2:
   ------------------------------------------------------------
@@ -1166,12 +1164,11 @@ Battles report:
     immobile, owned by Caste Prime [2].
     size: 5000.
     hit points: 500/286, capture: 10.
-      #1 hit points: 100/56, capture: 3, lightly damaged.
-      #2 hit points: 100/62, capture: 3, lightly damaged.
-      #3 hit points: 100/56, capture: 3, lightly damaged.
-      #4 hit points: 100/56, lightly damaged.
-      #5 hit points: 100/56, capture: 1, lightly damaged, effects:
-      inactive.
+      #1 hit points: 100/51, lightly damaged.
+      #2 hit points: 100/60, lightly damaged.
+      #3 hit points: 100/57, capture: 6, lightly damaged.
+      #4 hit points: 100/60, capture: 4, lightly damaged.
+      #5 hit points: 100/58, lightly damaged, effects: inactive.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -1179,17 +1176,17 @@ Battles report:
     inactive.
   ------------------------------------------------------------
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #4 factory [000017] doing 1 damage and 3 capture damage.
-    #4 factory [factry] is lightly damaged.
+  hits #5 factory [000017] doing 1 damage and 3 capture damage.
+    #5 factory [factry] is lightly damaged.
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
+  hits #5 factory [000017] doing 1 damage and 3 capture damage.
+    #5 factory [factry] is lightly damaged.
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #3 factory [000017] doing 1 damage and 3 capture damage.
     #3 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #2 factory [000017] doing 1 damage and 3 capture damage.
-    #2 factory [factry] is lightly damaged.
   infantry battalion [110] fires on factory [000017] (chance: 4/3) and
-  hits #1 factory [000017] doing 0 damage and 1 capture damage.
-    #1 factory [factry] is lightly damaged.
+  hits #4 factory [000017] doing 0 damage and 1 capture damage.
+    #4 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Round 3:
   ------------------------------------------------------------
@@ -1217,11 +1214,11 @@ Battles report:
     immobile, owned by Caste Prime [2].
     size: 5000.
     hit points: 500/283, capture: 20.
-      #1 hit points: 100/56, capture: 4, lightly damaged.
-      #2 hit points: 100/61, capture: 6, lightly damaged.
-      #3 hit points: 100/55, capture: 6, lightly damaged.
-      #4 hit points: 100/55, capture: 3, lightly damaged.
-      #5 hit points: 100/56, capture: 1, lightly damaged, effects:
+      #1 hit points: 100/51, lightly damaged.
+      #2 hit points: 100/60, lightly damaged.
+      #3 hit points: 100/56, capture: 9, lightly damaged.
+      #4 hit points: 100/60, capture: 5, lightly damaged.
+      #5 hit points: 100/56, capture: 6, lightly damaged, effects:
       inactive.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
@@ -1236,11 +1233,11 @@ Battles report:
   hits #4 factory [000017] doing 1 damage and 3 capture damage.
     #4 factory [factry] is lightly damaged.
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #3 factory [000017] doing 1 damage and 3 capture damage.
-    #3 factory [factry] is lightly damaged.
+  hits #4 factory [000017] doing 1 damage and 3 capture damage.
+    #4 factory [factry] is lightly damaged.
   infantry battalion [110] fires on factory [000017] (chance: 4/3) and
-  hits #2 factory [000017] doing 0 damage and 1 capture damage.
-    #2 factory [factry] is lightly damaged.
+  hits #5 factory [000017] doing 0 damage and 1 capture damage.
+    #5 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Round 4:
   ------------------------------------------------------------
@@ -1268,11 +1265,11 @@ Battles report:
     immobile, owned by Caste Prime [2].
     size: 5000.
     hit points: 500/280, capture: 30.
-      #1 hit points: 100/56, capture: 4, lightly damaged.
-      #2 hit points: 100/61, capture: 7, lightly damaged.
-      #3 hit points: 100/54, capture: 9, lightly damaged.
-      #4 hit points: 100/54, capture: 6, lightly damaged.
-      #5 hit points: 100/55, capture: 4, lightly damaged, effects:
+      #1 hit points: 100/51, lightly damaged.
+      #2 hit points: 100/60, lightly damaged.
+      #3 hit points: 100/56, capture: 9, lightly damaged.
+      #4 hit points: 100/58, capture: 11, lightly damaged.
+      #5 hit points: 100/55, capture: 10, lightly damaged, effects:
       inactive.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
@@ -1281,17 +1278,17 @@ Battles report:
     inactive.
   ------------------------------------------------------------
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #1 factory [000017] doing 1 damage and 3 capture damage.
-    #1 factory [factry] is lightly damaged.
+  hits #2 factory [000017] doing 1 damage and 3 capture damage.
+    #2 factory [factry] is lightly damaged.
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #5 factory [000017] doing 1 damage and 3 capture damage.
-    #5 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #4 factory [000017] doing 1 damage and 3 capture damage.
-    #4 factory [factry] is lightly damaged.
-  infantry battalion [110] fires on factory [000017] (chance: 4/3) and
-  hits #3 factory [000017] doing 0 damage and 1 capture damage.
+  hits #3 factory [000017] doing 1 damage and 3 capture damage.
     #3 factory [factry] is lightly damaged.
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
+  hits #3 factory [000017] doing 1 damage and 3 capture damage.
+    #3 factory [factry] is lightly damaged.
+  infantry battalion [110] fires on factory [000017] (chance: 4/3) and
+  hits #4 factory [000017] doing 0 damage and 1 capture damage.
+    #4 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Round 5:
   ------------------------------------------------------------
@@ -1319,11 +1316,11 @@ Battles report:
     immobile, owned by Caste Prime [2].
     size: 5000.
     hit points: 500/277, capture: 40.
-      #1 hit points: 100/55, capture: 7, lightly damaged.
-      #2 hit points: 100/61, capture: 7, lightly damaged.
-      #3 hit points: 100/54, capture: 10, lightly damaged.
-      #4 hit points: 100/53, capture: 9, lightly damaged.
-      #5 hit points: 100/54, capture: 7, lightly damaged, effects:
+      #1 hit points: 100/51, lightly damaged.
+      #2 hit points: 100/59, capture: 3, lightly damaged.
+      #3 hit points: 100/54, capture: 15, lightly damaged.
+      #4 hit points: 100/58, capture: 12, lightly damaged.
+      #5 hit points: 100/55, capture: 10, lightly damaged, effects:
       inactive.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
@@ -1332,17 +1329,20 @@ Battles report:
     inactive.
   ------------------------------------------------------------
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #2 factory [000017] doing 1 damage and 3 capture damage.
-    #2 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #1 factory [000017] doing 1 damage and 3 capture damage.
     #1 factory [factry] is lightly damaged.
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #5 factory [000017] doing 1 damage and 3 capture damage.
-    #5 factory [factry] is lightly damaged.
+  hits #1 factory [000017] doing 1 damage and 3 capture damage.
+    #1 factory [factry] is heavily damaged.
+    #1 factory [factry] is disabled.
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
+  hits #1 factory [000017] doing 1 damage and 3 capture damage.
+    #1 factory [factry] is heavily damaged.
+    #1 factory [factry] is disabled.
   infantry battalion [110] fires on factory [000017] (chance: 4/3) and
-  hits #4 factory [000017] doing 0 damage and 1 capture damage.
-    #4 factory [factry] is lightly damaged.
+  hits #1 factory [000017] doing 0 damage and 1 capture damage.
+    #1 factory [factry] is heavily damaged.
+    #1 factory [factry] is disabled.
   ------------------------------------------------------------
   Round 6:
   ------------------------------------------------------------
@@ -1366,16 +1366,16 @@ Battles report:
       skills: infantry battalion commander [inbtcm] (attack: 2,
       initiative: 5).
   Defenders:
-  - factory [000017], 5 factories [factry], partially disabled,
-    immobile, owned by Caste Prime [2].
+  - factory [000017], 5 factories [factry], immobile, owned by Caste
+    Prime [2].
     size: 5000.
     hit points: 500/274, capture: 50.
-      #1 hit points: 100/54, capture: 10, lightly damaged.
-      #2 hit points: 100/60, capture: 10, lightly damaged.
-      #3 hit points: 100/54, capture: 10, lightly damaged.
-      #4 hit points: 100/53, capture: 10, lightly damaged.
-      #5 hit points: 100/53, capture: 10, lightly damaged, effects:
-      inactive.
+      #1 hit points: 100/48, capture: 10, heavily damaged, effects:
+      disabled.
+      #2 hit points: 100/59, capture: 3, lightly damaged.
+      #3 hit points: 100/54, capture: 15, lightly damaged.
+      #4 hit points: 100/58, capture: 12, lightly damaged.
+      #5 hit points: 100/55, capture: 10, lightly damaged.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -1383,17 +1383,18 @@ Battles report:
     inactive.
   ------------------------------------------------------------
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #3 factory [000017] doing 1 damage and 3 capture damage.
-    #3 factory [factry] is lightly damaged.
+  hits #5 factory [000017] doing 1 damage and 3 capture damage.
+    #5 factory [factry] is lightly damaged.
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #2 factory [000017] doing 1 damage and 3 capture damage.
     #2 factory [factry] is lightly damaged.
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #1 factory [000017] doing 1 damage and 3 capture damage.
-    #1 factory [factry] is lightly damaged.
+    #1 factory [factry] is heavily damaged.
+    #1 factory [factry] is disabled.
   infantry battalion [110] fires on factory [000017] (chance: 4/3) and
-  hits #5 factory [000017] doing 0 damage and 1 capture damage.
-    #5 factory [factry] is lightly damaged.
+  hits #4 factory [000017] doing 0 damage and 1 capture damage.
+    #4 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Round 7:
   ------------------------------------------------------------
@@ -1417,16 +1418,16 @@ Battles report:
       skills: infantry battalion commander [inbtcm] (attack: 2,
       initiative: 5).
   Defenders:
-  - factory [000017], 5 factories [factry], partially disabled,
-    immobile, owned by Caste Prime [2].
+  - factory [000017], 5 factories [factry], immobile, owned by Caste
+    Prime [2].
     size: 5000.
     hit points: 500/271, capture: 60.
-      #1 hit points: 100/53, capture: 13, lightly damaged.
-      #2 hit points: 100/59, capture: 13, lightly damaged.
-      #3 hit points: 100/53, capture: 13, lightly damaged.
-      #4 hit points: 100/53, capture: 10, lightly damaged.
-      #5 hit points: 100/53, capture: 11, lightly damaged, effects:
-      inactive.
+      #1 hit points: 100/47, capture: 13, heavily damaged, effects:
+      disabled.
+      #2 hit points: 100/58, capture: 6, lightly damaged.
+      #3 hit points: 100/54, capture: 15, lightly damaged.
+      #4 hit points: 100/58, capture: 13, lightly damaged.
+      #5 hit points: 100/54, capture: 13, lightly damaged.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -1434,17 +1435,18 @@ Battles report:
     inactive.
   ------------------------------------------------------------
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
+  hits #1 factory [000017] doing 1 damage and 3 capture damage.
+    #1 factory [factry] is heavily damaged.
+    #1 factory [factry] is disabled.
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #4 factory [000017] doing 1 damage and 3 capture damage.
     #4 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #3 factory [000017] doing 1 damage and 3 capture damage.
-    #3 factory [factry] is lightly damaged.
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #2 factory [000017] doing 1 damage and 3 capture damage.
     #2 factory [factry] is lightly damaged.
   infantry battalion [110] fires on factory [000017] (chance: 4/3) and
-  hits #1 factory [000017] doing 0 damage and 1 capture damage.
-    #1 factory [factry] is lightly damaged.
+  hits #5 factory [000017] doing 0 damage and 1 capture damage.
+    #5 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Round 8:
   ------------------------------------------------------------
@@ -1468,16 +1470,16 @@ Battles report:
       skills: infantry battalion commander [inbtcm] (attack: 2,
       initiative: 5).
   Defenders:
-  - factory [000017], 5 factories [factry], partially disabled,
-    immobile, owned by Caste Prime [2].
+  - factory [000017], 5 factories [factry], immobile, owned by Caste
+    Prime [2].
     size: 5000.
     hit points: 500/268, capture: 70.
-      #1 hit points: 100/53, capture: 14, lightly damaged.
-      #2 hit points: 100/58, capture: 16, lightly damaged.
-      #3 hit points: 100/52, capture: 16, lightly damaged.
-      #4 hit points: 100/52, capture: 13, lightly damaged.
-      #5 hit points: 100/53, capture: 11, lightly damaged, effects:
-      inactive.
+      #1 hit points: 100/46, capture: 16, heavily damaged, effects:
+      disabled.
+      #2 hit points: 100/57, capture: 9, lightly damaged.
+      #3 hit points: 100/54, capture: 15, lightly damaged.
+      #4 hit points: 100/57, capture: 16, lightly damaged.
+      #5 hit points: 100/54, capture: 14, lightly damaged.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -1488,14 +1490,15 @@ Battles report:
   hits #5 factory [000017] doing 1 damage and 3 capture damage.
     #5 factory [factry] is lightly damaged.
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #4 factory [000017] doing 1 damage and 3 capture damage.
-    #4 factory [factry] is lightly damaged.
+  hits #1 factory [000017] doing 1 damage and 3 capture damage.
+    #1 factory [factry] is heavily damaged.
+    #1 factory [factry] is disabled.
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #3 factory [000017] doing 1 damage and 3 capture damage.
     #3 factory [factry] is lightly damaged.
   infantry battalion [110] fires on factory [000017] (chance: 4/3) and
-  hits #2 factory [000017] doing 0 damage and 1 capture damage.
-    #2 factory [factry] is lightly damaged.
+  hits #4 factory [000017] doing 0 damage and 1 capture damage.
+    #4 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Round 9:
   ------------------------------------------------------------
@@ -1519,16 +1522,16 @@ Battles report:
       skills: infantry battalion commander [inbtcm] (attack: 2,
       initiative: 5).
   Defenders:
-  - factory [000017], 5 factories [factry], partially disabled,
-    immobile, owned by Caste Prime [2].
+  - factory [000017], 5 factories [factry], immobile, owned by Caste
+    Prime [2].
     size: 5000.
     hit points: 500/265, capture: 80.
-      #1 hit points: 100/53, capture: 14, lightly damaged.
-      #2 hit points: 100/58, capture: 17, lightly damaged.
-      #3 hit points: 100/51, capture: 19, lightly damaged.
-      #4 hit points: 100/51, capture: 16, lightly damaged.
-      #5 hit points: 100/52, capture: 14, lightly damaged, effects:
-      inactive.
+      #1 hit points: 100/45, capture: 19, heavily damaged, effects:
+      disabled.
+      #2 hit points: 100/57, capture: 9, lightly damaged.
+      #3 hit points: 100/53, capture: 18, lightly damaged.
+      #4 hit points: 100/57, capture: 17, lightly damaged.
+      #5 hit points: 100/53, capture: 17, lightly damaged.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -1536,17 +1539,17 @@ Battles report:
     inactive.
   ------------------------------------------------------------
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #1 factory [000017] doing 1 damage and 3 capture damage.
-    #1 factory [factry] is lightly damaged.
+  hits #4 factory [000017] doing 1 damage and 3 capture damage.
+    #4 factory [factry] is lightly damaged.
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
+  hits #2 factory [000017] doing 1 damage and 3 capture damage.
+    #2 factory [factry] is lightly damaged.
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #5 factory [000017] doing 1 damage and 3 capture damage.
     #5 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #4 factory [000017] doing 1 damage and 3 capture damage.
-    #4 factory [factry] is lightly damaged.
   infantry battalion [110] fires on factory [000017] (chance: 4/3) and
-  hits #3 factory [000017] doing 0 damage and 1 capture damage.
-    #3 factory [factry] is lightly damaged.
+  hits #2 factory [000017] doing 0 damage and 1 capture damage.
+    #2 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Round 10:
   ------------------------------------------------------------
@@ -1570,16 +1573,16 @@ Battles report:
       skills: infantry battalion commander [inbtcm] (attack: 2,
       initiative: 5).
   Defenders:
-  - factory [000017], 5 factories [factry], partially disabled,
-    immobile, owned by Caste Prime [2].
+  - factory [000017], 5 factories [factry], immobile, owned by Caste
+    Prime [2].
     size: 5000.
     hit points: 500/262, capture: 90.
-      #1 hit points: 100/52, capture: 17, lightly damaged.
-      #2 hit points: 100/58, capture: 17, lightly damaged.
-      #3 hit points: 100/51, capture: 20, lightly damaged.
-      #4 hit points: 100/50, capture: 19, lightly damaged.
-      #5 hit points: 100/51, capture: 17, lightly damaged, effects:
-      inactive.
+      #1 hit points: 100/45, capture: 19, heavily damaged, effects:
+      disabled.
+      #2 hit points: 100/56, capture: 13, lightly damaged.
+      #3 hit points: 100/53, capture: 18, lightly damaged.
+      #4 hit points: 100/56, capture: 20, lightly damaged.
+      #5 hit points: 100/52, capture: 20, lightly damaged.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -1587,17 +1590,18 @@ Battles report:
     inactive.
   ------------------------------------------------------------
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #2 factory [000017] doing 1 damage and 3 capture damage.
-    #2 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #1 factory [000017] doing 1 damage and 3 capture damage.
-    #1 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #5 factory [000017] doing 1 damage and 3 capture damage.
     #5 factory [factry] is lightly damaged.
-  infantry battalion [110] fires on factory [000017] (chance: 4/3) and
-  hits #4 factory [000017] doing 0 damage and 1 capture damage.
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
+  hits #4 factory [000017] doing 1 damage and 3 capture damage.
     #4 factory [factry] is lightly damaged.
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
+  hits #1 factory [000017] doing 1 damage and 3 capture damage.
+    #1 factory [factry] is heavily damaged.
+    #1 factory [factry] is disabled.
+  infantry battalion [110] fires on factory [000017] (chance: 4/3) and
+  hits #5 factory [000017] doing 0 damage and 1 capture damage.
+    #5 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Battle ended indecisively.
 
@@ -1628,15 +1632,15 @@ Battles report:
       skills: infantry battalion commander [inbtcm] (attack: 2,
       initiative: 5).
   Defenders:
-  - factory [000017], 5 factories [factry], partially disabled,
-    immobile, owned by Caste Prime [2].
+  - factory [000017], 5 factories [factry], immobile, owned by Caste
+    Prime [2].
     size: 5000.
     hit points: 500/259.
-      #1 hit points: 100/51, lightly damaged.
-      #2 hit points: 100/57, lightly damaged.
-      #3 hit points: 100/51, lightly damaged.
-      #4 hit points: 100/50, lightly damaged.
-      #5 hit points: 100/50, lightly damaged, effects: inactive.
+      #1 hit points: 100/44, heavily damaged, effects: disabled.
+      #2 hit points: 100/56, lightly damaged.
+      #3 hit points: 100/53, lightly damaged.
+      #4 hit points: 100/55, lightly damaged.
+      #5 hit points: 100/51, lightly damaged.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -1644,17 +1648,18 @@ Battles report:
     inactive.
   ------------------------------------------------------------
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
+  hits #1 factory [000017] doing 1 damage and 3 capture damage.
+    #1 factory [factry] is heavily damaged.
+    #1 factory [factry] is disabled.
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
+  hits #5 factory [000017] doing 1 damage and 3 capture damage.
+    #5 factory [factry] is lightly damaged.
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #3 factory [000017] doing 1 damage and 3 capture damage.
     #3 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #2 factory [000017] doing 1 damage and 3 capture damage.
-    #2 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #1 factory [000017] doing 1 damage and 3 capture damage.
-    #1 factory [factry] is lightly damaged.
   infantry battalion [110] fires on factory [000017] (chance: 4/3) and
-  hits #5 factory [000017] doing 0 damage and 1 capture damage.
-    #5 factory [factry] is lightly damaged.
+  hits #3 factory [000017] doing 0 damage and 1 capture damage.
+    #3 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Round 2:
   ------------------------------------------------------------
@@ -1678,16 +1683,16 @@ Battles report:
       skills: infantry battalion commander [inbtcm] (attack: 2,
       initiative: 5).
   Defenders:
-  - factory [000017], 5 factories [factry], partially disabled,
-    immobile, owned by Caste Prime [2].
+  - factory [000017], 5 factories [factry], immobile, owned by Caste
+    Prime [2].
     size: 5000.
     hit points: 500/256, capture: 10.
-      #1 hit points: 100/50, capture: 3, lightly damaged.
-      #2 hit points: 100/56, capture: 3, lightly damaged.
-      #3 hit points: 100/50, capture: 3, lightly damaged.
-      #4 hit points: 100/50, lightly damaged.
-      #5 hit points: 100/50, capture: 1, lightly damaged, effects:
-      inactive.
+      #1 hit points: 100/43, capture: 3, heavily damaged, effects:
+      disabled.
+      #2 hit points: 100/56, lightly damaged.
+      #3 hit points: 100/52, capture: 4, lightly damaged.
+      #4 hit points: 100/55, lightly damaged.
+      #5 hit points: 100/50, capture: 3, lightly damaged.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -1695,19 +1700,18 @@ Battles report:
     inactive.
   ------------------------------------------------------------
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
+  hits #1 factory [000017] doing 1 damage and 3 capture damage.
+    #1 factory [factry] is heavily damaged.
+    #1 factory [factry] is disabled.
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #4 factory [000017] doing 1 damage and 3 capture damage.
-    #4 factory [factry] is heavily damaged.
-    #4 factory [factry] is disabled.
+    #4 factory [factry] is lightly damaged.
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #3 factory [000017] doing 1 damage and 3 capture damage.
-    #3 factory [factry] is heavily damaged.
-    #3 factory [factry] is disabled.
-  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #2 factory [000017] doing 1 damage and 3 capture damage.
-    #2 factory [factry] is lightly damaged.
+  hits #4 factory [000017] doing 1 damage and 3 capture damage.
+    #4 factory [factry] is lightly damaged.
   infantry battalion [110] fires on factory [000017] (chance: 4/3) and
-  hits #1 factory [000017] doing 0 damage and 1 capture damage.
-    #1 factory [factry] is lightly damaged.
+  hits #4 factory [000017] doing 0 damage and 1 capture damage.
+    #4 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Round 3:
   ------------------------------------------------------------
@@ -1735,13 +1739,12 @@ Battles report:
     Prime [2].
     size: 5000.
     hit points: 500/253, capture: 20.
-      #1 hit points: 100/50, capture: 4, lightly damaged.
-      #2 hit points: 100/55, capture: 6, lightly damaged.
-      #3 hit points: 100/49, capture: 6, heavily damaged, effects:
+      #1 hit points: 100/42, capture: 6, heavily damaged, effects:
       disabled.
-      #4 hit points: 100/49, capture: 3, heavily damaged, effects:
-      disabled.
-      #5 hit points: 100/50, capture: 1, lightly damaged.
+      #2 hit points: 100/56, lightly damaged.
+      #3 hit points: 100/52, capture: 4, lightly damaged.
+      #4 hit points: 100/53, capture: 7, lightly damaged.
+      #5 hit points: 100/50, capture: 3, lightly damaged.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -1749,20 +1752,17 @@ Battles report:
     inactive.
   ------------------------------------------------------------
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #5 factory [000017] doing 1 damage and 3 capture damage.
-    #5 factory [factry] is heavily damaged.
-    #5 factory [factry] is disabled.
-  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #4 factory [000017] doing 1 damage and 3 capture damage.
-    #4 factory [factry] is heavily damaged.
-    #4 factory [factry] is disabled.
+    #4 factory [factry] is lightly damaged.
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #3 factory [000017] doing 1 damage and 3 capture damage.
-    #3 factory [factry] is heavily damaged.
-    #3 factory [factry] is disabled.
+    #3 factory [factry] is lightly damaged.
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
+  hits #4 factory [000017] doing 1 damage and 3 capture damage.
+    #4 factory [factry] is lightly damaged.
   infantry battalion [110] fires on factory [000017] (chance: 4/3) and
-  hits #2 factory [000017] doing 0 damage and 1 capture damage.
-    #2 factory [factry] is lightly damaged.
+  hits #3 factory [000017] doing 0 damage and 1 capture damage.
+    #3 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Round 4:
   ------------------------------------------------------------
@@ -1790,14 +1790,12 @@ Battles report:
     Prime [2].
     size: 5000.
     hit points: 500/250, capture: 30.
-      #1 hit points: 100/50, capture: 4, lightly damaged.
-      #2 hit points: 100/55, capture: 7, lightly damaged.
-      #3 hit points: 100/48, capture: 9, heavily damaged, effects:
+      #1 hit points: 100/42, capture: 6, heavily damaged, effects:
       disabled.
-      #4 hit points: 100/48, capture: 6, heavily damaged, effects:
-      disabled.
-      #5 hit points: 100/49, capture: 4, heavily damaged, effects:
-      disabled.
+      #2 hit points: 100/56, lightly damaged.
+      #3 hit points: 100/51, capture: 8, lightly damaged.
+      #4 hit points: 100/51, capture: 13, lightly damaged.
+      #5 hit points: 100/50, capture: 3, lightly damaged.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -1809,17 +1807,16 @@ Battles report:
     #1 factory [factry] is heavily damaged.
     #1 factory [factry] is disabled.
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #5 factory [000017] doing 1 damage and 3 capture damage.
-    #5 factory [factry] is heavily damaged.
-    #5 factory [factry] is disabled.
+  hits #1 factory [000017] doing 1 damage and 3 capture damage.
+    #1 factory [factry] is heavily damaged.
+    #1 factory [factry] is disabled.
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #4 factory [000017] doing 1 damage and 3 capture damage.
-    #4 factory [factry] is heavily damaged.
-    #4 factory [factry] is disabled.
+  hits #2 factory [000017] doing 1 damage and 3 capture damage.
+    #2 factory [factry] is lightly damaged.
   infantry battalion [110] fires on factory [000017] (chance: 4/3) and
-  hits #3 factory [000017] doing 0 damage and 1 capture damage.
-    #3 factory [factry] is heavily damaged.
-    #3 factory [factry] is disabled.
+  hits #1 factory [000017] doing 0 damage and 1 capture damage.
+    #1 factory [factry] is heavily damaged.
+    #1 factory [factry] is disabled.
   ------------------------------------------------------------
   Round 5:
   ------------------------------------------------------------
@@ -1847,15 +1844,12 @@ Battles report:
     Prime [2].
     size: 5000.
     hit points: 500/247, capture: 40.
-      #1 hit points: 100/49, capture: 7, heavily damaged, effects:
+      #1 hit points: 100/40, capture: 13, heavily damaged, effects:
       disabled.
-      #2 hit points: 100/55, capture: 7, lightly damaged.
-      #3 hit points: 100/48, capture: 10, heavily damaged, effects:
-      disabled.
-      #4 hit points: 100/47, capture: 9, heavily damaged, effects:
-      disabled.
-      #5 hit points: 100/48, capture: 7, heavily damaged, effects:
-      disabled.
+      #2 hit points: 100/55, capture: 3, lightly damaged.
+      #3 hit points: 100/51, capture: 8, lightly damaged.
+      #4 hit points: 100/51, capture: 13, lightly damaged.
+      #5 hit points: 100/50, capture: 3, lightly damaged.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -1863,20 +1857,18 @@ Battles report:
     inactive.
   ------------------------------------------------------------
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #2 factory [000017] doing 1 damage and 3 capture damage.
-    #2 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #1 factory [000017] doing 1 damage and 3 capture damage.
     #1 factory [factry] is heavily damaged.
     #1 factory [factry] is disabled.
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #5 factory [000017] doing 1 damage and 3 capture damage.
-    #5 factory [factry] is heavily damaged.
-    #5 factory [factry] is disabled.
+  hits #4 factory [000017] doing 1 damage and 3 capture damage.
+    #4 factory [factry] is lightly damaged.
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
+  hits #2 factory [000017] doing 1 damage and 3 capture damage.
+    #2 factory [factry] is lightly damaged.
   infantry battalion [110] fires on factory [000017] (chance: 4/3) and
-  hits #4 factory [000017] doing 0 damage and 1 capture damage.
-    #4 factory [factry] is heavily damaged.
-    #4 factory [factry] is disabled.
+  hits #3 factory [000017] doing 0 damage and 1 capture damage.
+    #3 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Round 6:
   ------------------------------------------------------------
@@ -1904,15 +1896,12 @@ Battles report:
     Prime [2].
     size: 5000.
     hit points: 500/244, capture: 50.
-      #1 hit points: 100/48, capture: 10, heavily damaged, effects:
+      #1 hit points: 100/39, capture: 16, heavily damaged, effects:
       disabled.
-      #2 hit points: 100/54, capture: 10, lightly damaged.
-      #3 hit points: 100/48, capture: 10, heavily damaged, effects:
-      disabled.
-      #4 hit points: 100/47, capture: 10, heavily damaged, effects:
-      disabled.
-      #5 hit points: 100/47, capture: 10, heavily damaged, effects:
-      disabled.
+      #2 hit points: 100/54, capture: 6, lightly damaged.
+      #3 hit points: 100/51, capture: 9, lightly damaged.
+      #4 hit points: 100/50, capture: 16, lightly damaged.
+      #5 hit points: 100/50, capture: 3, lightly damaged.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -1920,20 +1909,18 @@ Battles report:
     inactive.
   ------------------------------------------------------------
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #3 factory [000017] doing 1 damage and 3 capture damage.
-    #3 factory [factry] is heavily damaged.
-    #3 factory [factry] is disabled.
-  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #2 factory [000017] doing 1 damage and 3 capture damage.
     #2 factory [factry] is lightly damaged.
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #1 factory [000017] doing 1 damage and 3 capture damage.
     #1 factory [factry] is heavily damaged.
     #1 factory [factry] is disabled.
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
+  hits #2 factory [000017] doing 1 damage and 3 capture damage.
+    #2 factory [factry] is lightly damaged.
   infantry battalion [110] fires on factory [000017] (chance: 4/3) and
-  hits #5 factory [000017] doing 0 damage and 1 capture damage.
-    #5 factory [factry] is heavily damaged.
-    #5 factory [factry] is disabled.
+  hits #2 factory [000017] doing 0 damage and 1 capture damage.
+    #2 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Round 7:
   ------------------------------------------------------------
@@ -1961,21 +1948,21 @@ Battles report:
     Prime [2].
     size: 5000.
     hit points: 500/241, capture: 60.
-      #1 hit points: 100/47, capture: 13, heavily damaged, effects:
+      #1 hit points: 100/38, capture: 19, heavily damaged, effects:
       disabled.
-      #2 hit points: 100/53, capture: 13, lightly damaged.
-      #3 hit points: 100/47, capture: 13, heavily damaged, effects:
-      disabled.
-      #4 hit points: 100/47, capture: 10, heavily damaged, effects:
-      disabled.
-      #5 hit points: 100/47, capture: 11, heavily damaged, effects:
-      disabled.
+      #2 hit points: 100/52, capture: 13, lightly damaged.
+      #3 hit points: 100/51, capture: 9, lightly damaged.
+      #4 hit points: 100/50, capture: 16, lightly damaged.
+      #5 hit points: 100/50, capture: 3, lightly damaged.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
     hit points: 100/59, attack: 1, defense: 1, lightly damaged,
     inactive.
   ------------------------------------------------------------
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
+  hits #3 factory [000017] doing 1 damage and 3 capture damage.
+    #3 factory [factry] is lightly damaged.
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #4 factory [000017] doing 1 damage and 3 capture damage.
     #4 factory [factry] is heavily damaged.
@@ -1984,13 +1971,9 @@ Battles report:
   hits #3 factory [000017] doing 1 damage and 3 capture damage.
     #3 factory [factry] is heavily damaged.
     #3 factory [factry] is disabled.
-  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #2 factory [000017] doing 1 damage and 3 capture damage.
-    #2 factory [factry] is lightly damaged.
   infantry battalion [110] fires on factory [000017] (chance: 4/3) and
-  hits #1 factory [000017] doing 0 damage and 1 capture damage.
-    #1 factory [factry] is heavily damaged.
-    #1 factory [factry] is disabled.
+  hits #2 factory [000017] doing 0 damage and 1 capture damage.
+    #2 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Round 8:
   ------------------------------------------------------------
@@ -2018,15 +2001,14 @@ Battles report:
     Prime [2].
     size: 5000.
     hit points: 500/238, capture: 70.
-      #1 hit points: 100/47, capture: 14, heavily damaged, effects:
+      #1 hit points: 100/38, capture: 19, heavily damaged, effects:
       disabled.
-      #2 hit points: 100/52, capture: 16, lightly damaged.
-      #3 hit points: 100/46, capture: 16, heavily damaged, effects:
+      #2 hit points: 100/52, capture: 14, lightly damaged.
+      #3 hit points: 100/49, capture: 15, heavily damaged, effects:
       disabled.
-      #4 hit points: 100/46, capture: 13, heavily damaged, effects:
+      #4 hit points: 100/49, capture: 19, heavily damaged, effects:
       disabled.
-      #5 hit points: 100/47, capture: 11, heavily damaged, effects:
-      disabled.
+      #5 hit points: 100/50, capture: 3, lightly damaged.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -2038,16 +2020,16 @@ Battles report:
     #5 factory [factry] is heavily damaged.
     #5 factory [factry] is disabled.
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #4 factory [000017] doing 1 damage and 3 capture damage.
-    #4 factory [factry] is heavily damaged.
-    #4 factory [factry] is disabled.
+  hits #2 factory [000017] doing 1 damage and 3 capture damage.
+    #2 factory [factry] is lightly damaged.
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #3 factory [000017] doing 1 damage and 3 capture damage.
+  hits #5 factory [000017] doing 1 damage and 3 capture damage.
+    #5 factory [factry] is heavily damaged.
+    #5 factory [factry] is disabled.
+  infantry battalion [110] fires on factory [000017] (chance: 4/3) and
+  hits #3 factory [000017] doing 0 damage and 1 capture damage.
     #3 factory [factry] is heavily damaged.
     #3 factory [factry] is disabled.
-  infantry battalion [110] fires on factory [000017] (chance: 4/3) and
-  hits #2 factory [000017] doing 0 damage and 1 capture damage.
-    #2 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Round 9:
   ------------------------------------------------------------
@@ -2075,14 +2057,14 @@ Battles report:
     Prime [2].
     size: 5000.
     hit points: 500/235, capture: 80.
-      #1 hit points: 100/47, capture: 14, heavily damaged, effects:
+      #1 hit points: 100/38, capture: 19, heavily damaged, effects:
       disabled.
-      #2 hit points: 100/52, capture: 17, lightly damaged.
-      #3 hit points: 100/45, capture: 19, heavily damaged, effects:
+      #2 hit points: 100/51, capture: 17, lightly damaged.
+      #3 hit points: 100/49, capture: 16, heavily damaged, effects:
       disabled.
-      #4 hit points: 100/45, capture: 16, heavily damaged, effects:
+      #4 hit points: 100/49, capture: 19, heavily damaged, effects:
       disabled.
-      #5 hit points: 100/46, capture: 14, heavily damaged, effects:
+      #5 hit points: 100/48, capture: 9, heavily damaged, effects:
       disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
@@ -2091,21 +2073,21 @@ Battles report:
     inactive.
   ------------------------------------------------------------
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #1 factory [000017] doing 1 damage and 3 capture damage.
-    #1 factory [factry] is heavily damaged.
-    #1 factory [factry] is disabled.
-  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #5 factory [000017] doing 1 damage and 3 capture damage.
-    #5 factory [factry] is heavily damaged.
-    #5 factory [factry] is disabled.
-  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #4 factory [000017] doing 1 damage and 3 capture damage.
-    #4 factory [factry] is heavily damaged.
-    #4 factory [factry] is disabled.
-  infantry battalion [110] fires on factory [000017] (chance: 4/3) and
-  hits #3 factory [000017] doing 0 damage and 1 capture damage.
+  hits #3 factory [000017] doing 1 damage and 3 capture damage.
     #3 factory [factry] is heavily damaged.
     #3 factory [factry] is disabled.
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
+  hits #3 factory [000017] doing 1 damage and 3 capture damage.
+    #3 factory [factry] is heavily damaged.
+    #3 factory [factry] is disabled.
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
+  hits #3 factory [000017] doing 1 damage and 3 capture damage.
+    #3 factory [factry] is heavily damaged.
+    #3 factory [factry] is disabled.
+  infantry battalion [110] fires on factory [000017] (chance: 4/3) and
+  hits #1 factory [000017] doing 0 damage and 1 capture damage.
+    #1 factory [factry] is heavily damaged.
+    #1 factory [factry] is disabled.
   ------------------------------------------------------------
   Round 10:
   ------------------------------------------------------------
@@ -2133,14 +2115,14 @@ Battles report:
     Prime [2].
     size: 5000.
     hit points: 500/232, capture: 90.
-      #1 hit points: 100/46, capture: 17, heavily damaged, effects:
+      #1 hit points: 100/38, capture: 20, heavily damaged, effects:
       disabled.
-      #2 hit points: 100/52, capture: 17, lightly damaged.
-      #3 hit points: 100/45, capture: 20, heavily damaged, effects:
+      #2 hit points: 100/51, capture: 17, lightly damaged.
+      #3 hit points: 100/46, capture: 25, heavily damaged, effects:
       disabled.
-      #4 hit points: 100/44, capture: 19, heavily damaged, effects:
+      #4 hit points: 100/49, capture: 19, heavily damaged, effects:
       disabled.
-      #5 hit points: 100/45, capture: 17, heavily damaged, effects:
+      #5 hit points: 100/48, capture: 9, heavily damaged, effects:
       disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
@@ -2149,9 +2131,6 @@ Battles report:
     inactive.
   ------------------------------------------------------------
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #2 factory [000017] doing 1 damage and 3 capture damage.
-    #2 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #1 factory [000017] doing 1 damage and 3 capture damage.
     #1 factory [factry] is heavily damaged.
     #1 factory [factry] is disabled.
@@ -2159,10 +2138,13 @@ Battles report:
   hits #5 factory [000017] doing 1 damage and 3 capture damage.
     #5 factory [factry] is heavily damaged.
     #5 factory [factry] is disabled.
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
+  hits #2 factory [000017] doing 1 damage and 3 capture damage.
+    #2 factory [factry] is lightly damaged.
   infantry battalion [110] fires on factory [000017] (chance: 4/3) and
-  hits #4 factory [000017] doing 0 damage and 1 capture damage.
-    #4 factory [factry] is heavily damaged.
-    #4 factory [factry] is disabled.
+  hits #3 factory [000017] doing 0 damage and 1 capture damage.
+    #3 factory [factry] is heavily damaged.
+    #3 factory [factry] is disabled.
   ------------------------------------------------------------
   Battle ended indecisively.
 
@@ -2197,11 +2179,11 @@ Battles report:
     Prime [2].
     size: 5000.
     hit points: 500/229.
-      #1 hit points: 100/45, heavily damaged, effects: disabled.
-      #2 hit points: 100/51, lightly damaged.
-      #3 hit points: 100/45, heavily damaged, effects: disabled.
-      #4 hit points: 100/44, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
+      #2 hit points: 100/50, lightly damaged.
+      #3 hit points: 100/46, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/47, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -2213,16 +2195,16 @@ Battles report:
     #3 factory [factry] is heavily damaged.
     #3 factory [factry] is disabled.
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #2 factory [000017] doing 1 damage and 3 capture damage.
-    #2 factory [factry] is lightly damaged.
-  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #1 factory [000017] doing 1 damage and 3 capture damage.
-    #1 factory [factry] is heavily damaged.
-    #1 factory [factry] is disabled.
-  infantry battalion [110] fires on factory [000017] (chance: 4/3) and
-  hits #5 factory [000017] doing 0 damage and 1 capture damage.
+  hits #5 factory [000017] doing 1 damage and 3 capture damage.
     #5 factory [factry] is heavily damaged.
     #5 factory [factry] is disabled.
+  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
+  hits #3 factory [000017] doing 1 damage and 3 capture damage.
+    #3 factory [factry] is heavily damaged.
+    #3 factory [factry] is disabled.
+  infantry battalion [110] fires on factory [000017] (chance: 4/3) and
+  hits #2 factory [000017] doing 0 damage and 1 capture damage.
+    #2 factory [factry] is lightly damaged.
   ------------------------------------------------------------
   Round 2:
   ------------------------------------------------------------
@@ -2250,13 +2232,12 @@ Battles report:
     Prime [2].
     size: 5000.
     hit points: 500/226, capture: 10.
-      #1 hit points: 100/44, capture: 3, heavily damaged, effects:
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
+      #2 hit points: 100/50, capture: 1, lightly damaged.
+      #3 hit points: 100/44, capture: 6, heavily damaged, effects:
       disabled.
-      #2 hit points: 100/50, capture: 3, lightly damaged.
-      #3 hit points: 100/44, capture: 3, heavily damaged, effects:
-      disabled.
-      #4 hit points: 100/44, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, capture: 1, heavily damaged, effects:
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, capture: 3, heavily damaged, effects:
       disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
@@ -2264,14 +2245,6 @@ Battles report:
     hit points: 100/59, attack: 1, defense: 1, lightly damaged,
     inactive.
   ------------------------------------------------------------
-  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #4 factory [000017] doing 1 damage and 3 capture damage.
-    #4 factory [factry] is heavily damaged.
-    #4 factory [factry] is disabled.
-  Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
-  hits #3 factory [000017] doing 1 damage and 3 capture damage.
-    #3 factory [factry] is heavily damaged.
-    #3 factory [factry] is disabled.
   Surrender or die! [109] fire on factory [000017] (chance: 30/20) and
   hits #2 factory [000017] doing 1 damage and 3 capture damage.
     #2 factory [factry] is heavily damaged.
@@ -2541,12 +2514,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -2579,12 +2552,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -2617,12 +2590,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -2655,12 +2628,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -2693,12 +2666,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -2731,12 +2704,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -2769,12 +2742,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -2807,12 +2780,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -2845,12 +2818,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -2883,12 +2856,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -2928,12 +2901,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -2966,12 +2939,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -3004,12 +2977,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -3042,12 +3015,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -3080,12 +3053,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -3118,12 +3091,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -3156,12 +3129,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -3194,12 +3167,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -3232,12 +3205,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -3270,12 +3243,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -3332,18 +3305,15 @@ Battles report:
   Defenders:
   + space shuttle [117], space shuttle [shuttl].
     size: 200, mass: 750/119 (30), crew: 2/2.
-    hit points: 57/57 (17/17), attack: 3 (0), defense: 1 (0),
-    initiative: 60.
+    hit points: 57/57 (17/17), initiative: 60.
     tactics: destroy, prioritize armed.
-    + orbital rocket launcher [350], orbital rocket launcher [orbrkt].
+    + orbital rocket launcher [350], orbital rocket launcher [orbrkt],
+      disabled.
       size: 40, mass: 40 (40).
-      hit points: 40/40, attack: 3, defense: 1.
+      hit points: 40/40, disabled.
   spaceship hull [101] launches alien fighter drone [450] from fighter
   drone bay [drnbay].
   ------------------------------------------------------------
-  space shuttle [117] fires orbital rocket launcher [orbrkt] on
-  spaceship hull [101] (chance: 3/13) and hits spaceship hull [101]
-  doing 3 damage.
   ------------------------------------------------------------
   Round 2:
   ------------------------------------------------------------
@@ -3351,7 +3321,7 @@ Battles report:
   - spaceship hull [101], spaceship hull [sshull], owned by Caste Prime
     [2].
     size: 5000.
-    hit points: 325/322 (50/47), attack: 2 (0), defense: 10, initiative:
+    hit points: 325/325 (50/50), attack: 2 (0), defense: 10, initiative:
     70.
     - command bridge [112], command bridge [cbridg], owned by Caste
       Prime [2].
@@ -3387,20 +3357,20 @@ Battles report:
   Defenders:
   + space shuttle [117], space shuttle [shuttl].
     size: 200, mass: 750/119 (30), crew: 2/2.
-    hit points: 57/57 (17/17), attack: 3 (0), defense: 1 (0),
-    initiative: 60.
+    hit points: 57/57 (17/17), initiative: 60.
     tactics: destroy, prioritize armed.
-    + orbital rocket launcher [350], orbital rocket launcher [orbrkt].
+    + orbital rocket launcher [350], orbital rocket launcher [orbrkt],
+      disabled.
       size: 40, mass: 40 (40).
-      hit points: 40/40, attack: 3, defense: 1.
+      hit points: 40/40, disabled.
   ------------------------------------------------------------
-  space shuttle [117] fires orbital rocket launcher [orbrkt] on
-  spaceship hull [101] (chance: 3/13) and hits doing 3 damage.
   4 alien fighter drones [450] fire on space shuttle [117].
-  (chance: 16/17) and hits space shuttle [117] doing 2 damage.
-  (chance: 16/17) and hits doing 2 damage.
-  (chance: 16/17) and hits doing 2 damage.
-  (chance: 16/17) and hits doing 2 damage.
+  (chance: 16/16) and hits space shuttle [117] doing 2 damage.
+  (chance: 16/16) and hits doing 2 damage.
+    orbital rocket launcher [orbrkt] is disabled.
+  (chance: 16/16) and hits space shuttle [117] doing 2 damage.
+  (chance: 16/16) and hits doing 2 damage.
+    orbital rocket launcher [orbrkt] is disabled.
   ------------------------------------------------------------
   Round 3:
   ------------------------------------------------------------
@@ -3408,7 +3378,7 @@ Battles report:
   - spaceship hull [101], spaceship hull [sshull], owned by Caste Prime
     [2].
     size: 5000.
-    hit points: 325/319 (50/47), attack: 2 (0), defense: 10, initiative:
+    hit points: 325/325 (50/50), attack: 2 (0), defense: 10, initiative:
     70.
     - command bridge [112], command bridge [cbridg], owned by Caste
       Prime [2].
@@ -3420,7 +3390,7 @@ Battles report:
     - fission reactor [113], fission reactor [fisrec], owned by Caste
       Prime [2].
       size: 400.
-      hit points: 45/42, attack: 2.
+      hit points: 45/45, attack: 2.
     - reaction drive [114], reaction drive [rctdrv], owned by Caste
       Prime [2].
       size: 600.
@@ -3444,21 +3414,22 @@ Battles report:
   Defenders:
   + space shuttle [117], space shuttle [shuttl].
     size: 200, mass: 750/119 (30), crew: 2/2.
-    hit points: 57/49 (17/15), attack: 3 (0), defense: 1 (0),
-    initiative: 60.
+    hit points: 57/49 (17/13), initiative: 60.
     tactics: destroy, prioritize armed.
-    + orbital rocket launcher [350], orbital rocket launcher [orbrkt].
+    + orbital rocket launcher [350], orbital rocket launcher [orbrkt],
+      disabled.
       size: 40, mass: 40 (40).
-      hit points: 40/34, attack: 3, defense: 1.
+      hit points: 40/36, disabled.
   ------------------------------------------------------------
-  space shuttle [117] fires orbital rocket launcher [orbrkt] on
-  spaceship hull [101] (chance: 3/13) and hits doing 3 damage.
   4 alien fighter drones [450] fire on space shuttle [117].
-  (chance: 16/17) and hits space shuttle [117] doing 2 damage.
-  (chance: 16/17) and hits doing 2 damage.
-  (chance: 16/17) and hits doing 2 damage.
-  (chance: 16/17) and hits doing 2 damage.
-    orbital rocket launcher [orbrkt] is lightly damaged.
+  (chance: 16/16) and hits space shuttle [117] doing 2 damage.
+    space shuttle [shuttl] is lightly damaged.
+  (chance: 16/16) and hits doing 2 damage.
+    orbital rocket launcher [orbrkt] is disabled.
+  (chance: 16/16) and hits doing 2 damage.
+    orbital rocket launcher [orbrkt] is disabled.
+  (chance: 16/16) and hits doing 2 damage.
+    orbital rocket launcher [orbrkt] is disabled.
   ------------------------------------------------------------
   Round 4:
   ------------------------------------------------------------
@@ -3466,7 +3437,7 @@ Battles report:
   - spaceship hull [101], spaceship hull [sshull], owned by Caste Prime
     [2].
     size: 5000.
-    hit points: 325/316 (50/47), attack: 2 (0), defense: 10, initiative:
+    hit points: 325/325 (50/50), attack: 2 (0), defense: 10, initiative:
     70.
     - command bridge [112], command bridge [cbridg], owned by Caste
       Prime [2].
@@ -3478,7 +3449,7 @@ Battles report:
     - fission reactor [113], fission reactor [fisrec], owned by Caste
       Prime [2].
       size: 400.
-      hit points: 45/39, attack: 2.
+      hit points: 45/45, attack: 2.
     - reaction drive [114], reaction drive [rctdrv], owned by Caste
       Prime [2].
       size: 600.
@@ -3502,24 +3473,25 @@ Battles report:
   Defenders:
   + space shuttle [117], space shuttle [shuttl].
     size: 200, mass: 750/119 (30), crew: 2/2.
-    hit points: 57/41 (17/13), attack: 3 (0), defense: 1 (0),
-    initiative: 60.
+    hit points: 57/41 (17/11), initiative: 60, lightly damaged.
     tactics: destroy, prioritize armed.
-    + orbital rocket launcher [350], orbital rocket launcher [orbrkt].
+    + orbital rocket launcher [350], orbital rocket launcher [orbrkt],
+      disabled.
       size: 40, mass: 40 (40).
-      hit points: 40/28, attack: 3, defense: 1, lightly damaged.
+      hit points: 40/30, disabled.
   ------------------------------------------------------------
-  space shuttle [117] fires orbital rocket launcher [orbrkt] on
-  spaceship hull [101] (chance: 3/13) and hits doing 3 damage.
   4 alien fighter drones [450] fire on space shuttle [117].
-  (chance: 16/17) and hits space shuttle [117] doing 2 damage.
+  (chance: 16/16) and hits doing 2 damage.
+    orbital rocket launcher [orbrkt] is lightly damaged.
+    orbital rocket launcher [orbrkt] is disabled.
+  (chance: 16/16) and hits doing 2 damage.
+    orbital rocket launcher [orbrkt] is lightly damaged.
+    orbital rocket launcher [orbrkt] is disabled.
+  (chance: 16/16) and hits space shuttle [117] doing 2 damage.
     space shuttle [shuttl] is lightly damaged.
-  (chance: 16/17) and hits doing 2 damage.
+  (chance: 16/16) and hits doing 2 damage.
     orbital rocket launcher [orbrkt] is lightly damaged.
-  (chance: 16/17) and hits doing 2 damage.
-    orbital rocket launcher [orbrkt] is lightly damaged.
-  (chance: 16/17) and hits doing 2 damage.
-    orbital rocket launcher [orbrkt] is lightly damaged.
+    orbital rocket launcher [orbrkt] is disabled.
   ------------------------------------------------------------
   Round 5:
   ------------------------------------------------------------
@@ -3527,7 +3499,7 @@ Battles report:
   - spaceship hull [101], spaceship hull [sshull], owned by Caste Prime
     [2].
     size: 5000.
-    hit points: 325/313 (50/47), attack: 2 (0), defense: 10, initiative:
+    hit points: 325/325 (50/50), attack: 2 (0), defense: 10, initiative:
     70.
     - command bridge [112], command bridge [cbridg], owned by Caste
       Prime [2].
@@ -3539,7 +3511,7 @@ Battles report:
     - fission reactor [113], fission reactor [fisrec], owned by Caste
       Prime [2].
       size: 400.
-      hit points: 45/36, attack: 2.
+      hit points: 45/45, attack: 2.
     - reaction drive [114], reaction drive [rctdrv], owned by Caste
       Prime [2].
       size: 600.
@@ -3563,78 +3535,20 @@ Battles report:
   Defenders:
   + space shuttle [117], space shuttle [shuttl].
     size: 200, mass: 750/119 (30), crew: 2/2.
-    hit points: 57/33 (17/11), attack: 3 (0), defense: 1 (0),
-    initiative: 60, lightly damaged.
-    tactics: destroy, prioritize armed.
-    + orbital rocket launcher [350], orbital rocket launcher [orbrkt].
-      size: 40, mass: 40 (40).
-      hit points: 40/22, attack: 3, defense: 1, lightly damaged.
-  ------------------------------------------------------------
-  space shuttle [117] fires orbital rocket launcher [orbrkt] on
-  spaceship hull [101] (chance: 3/13) and hits doing 3 damage.
-    fission reactor [fisrec] is lightly damaged.
-  4 alien fighter drones [450] fire on space shuttle [117].
-  (chance: 16/17) and hits space shuttle [117] doing 2 damage.
-    space shuttle [shuttl] is lightly damaged.
-  (chance: 16/17) and hits doing 2 damage.
-    orbital rocket launcher [orbrkt] is lightly damaged.
-  (chance: 16/17) and hits doing 2 damage.
-    orbital rocket launcher [orbrkt] is heavily damaged.
-    orbital rocket launcher [orbrkt] is disabled.
-  (chance: 16/16) and hits doing 2 damage.
-    orbital rocket launcher [orbrkt] is heavily damaged.
-    orbital rocket launcher [orbrkt] is disabled.
-  ------------------------------------------------------------
-  Round 6:
-  ------------------------------------------------------------
-  Attackers:
-  - spaceship hull [101], spaceship hull [sshull], owned by Caste Prime
-    [2].
-    size: 5000.
-    hit points: 325/310 (50/47), attack: 2 (0), defense: 10, initiative:
-    70.
-    - command bridge [112], command bridge [cbridg], owned by Caste
-      Prime [2].
-      size: 800.
-      hit points: 55/55.
-      - Caste Prime CEO [000001], terran [terran], working for Caste
-        Prime [2].
-        .
-    - fission reactor [113], fission reactor [fisrec], owned by Caste
-      Prime [2].
-      size: 400.
-      hit points: 45/33, attack: 2, lightly damaged.
-    - reaction drive [114], reaction drive [rctdrv], owned by Caste
-      Prime [2].
-      size: 600.
-      hit points: 65/65.
-    - computer library [115], computer library [cmplib], owned by Caste
-      Prime [2].
-      size: 200.
-      hit points: 50/50.
-    - fighter drone bay [206], fighter drone bay [drnbay], owned by
-      Caste Prime [2].
-      size: 400.
-      hit points: 60/60.
-  - alien fighter drone [450], 4 alien fighter drones [alndrn], owned by
-    Caste Prime [2].
-    size: 320.
-    hit points: 32/32, attack: 16, defense: 4, initiative: 120.
-      #1 hit points: 8/8.
-      #2 hit points: 8/8.
-      #3 hit points: 8/8.
-      #4 hit points: 8/8.
-  Defenders:
-  + space shuttle [117], space shuttle [shuttl].
-    size: 200, mass: 750/119 (30), crew: 2/2.
-    hit points: 57/25 (17/9), initiative: 60, lightly damaged.
+    hit points: 57/33 (17/9), initiative: 60, lightly damaged.
     tactics: destroy, prioritize armed.
     + orbital rocket launcher [350], orbital rocket launcher [orbrkt],
       disabled.
       size: 40, mass: 40 (40).
-      hit points: 40/16, heavily damaged, disabled.
+      hit points: 40/24, lightly damaged, disabled.
   ------------------------------------------------------------
   4 alien fighter drones [450] fire on space shuttle [117].
+  (chance: 16/16) and hits doing 2 damage.
+    orbital rocket launcher [orbrkt] is lightly damaged.
+    orbital rocket launcher [orbrkt] is disabled.
+  (chance: 16/16) and hits doing 2 damage.
+    orbital rocket launcher [orbrkt] is lightly damaged.
+    orbital rocket launcher [orbrkt] is disabled.
   (chance: 16/16) and hits doing 2 damage.
     orbital rocket launcher [orbrkt] is heavily damaged.
     orbital rocket launcher [orbrkt] is disabled.
@@ -3675,12 +3589,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -3713,12 +3627,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -3751,12 +3665,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -3789,12 +3703,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -3827,12 +3741,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -3865,12 +3779,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -3903,12 +3817,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -3941,12 +3855,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -3979,12 +3893,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -4017,12 +3931,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -4062,12 +3976,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -4100,12 +4014,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -4138,12 +4052,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -4176,12 +4090,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -4214,12 +4128,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -4252,12 +4166,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -4290,12 +4204,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -4328,12 +4242,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -4366,12 +4280,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -4404,12 +4318,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -4449,12 +4363,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -4487,12 +4401,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -4525,12 +4439,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -4563,12 +4477,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -4601,12 +4515,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -4639,12 +4553,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -4677,12 +4591,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -4715,12 +4629,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -4753,12 +4667,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -4791,12 +4705,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -4836,12 +4750,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -4874,12 +4788,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -4912,12 +4826,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -4950,12 +4864,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -4988,12 +4902,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -5026,12 +4940,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -5064,12 +4978,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -5102,12 +5016,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -5140,12 +5054,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -5178,12 +5092,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -5223,12 +5137,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -5261,12 +5175,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -5299,12 +5213,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -5337,12 +5251,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -5375,12 +5289,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -5413,12 +5327,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -5451,12 +5365,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -5489,12 +5403,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -5527,12 +5441,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -5565,12 +5479,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -5610,12 +5524,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -5648,12 +5562,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -5686,12 +5600,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -5724,12 +5638,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -5762,12 +5676,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -5800,12 +5714,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -5838,12 +5752,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -5876,12 +5790,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -5914,12 +5828,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -5952,12 +5866,12 @@ Battles report:
   - factory [000017], 5 factories [factry], disabled, immobile, owned by
     Caste Prime [2].
     size: 5000.
-    hit points: 500/223.
-      #1 hit points: 100/44, heavily damaged, effects: disabled.
+    hit points: 500/225.
+      #1 hit points: 100/37, heavily damaged, effects: disabled.
       #2 hit points: 100/49, heavily damaged, effects: disabled.
-      #3 hit points: 100/43, heavily damaged, effects: disabled.
-      #4 hit points: 100/43, heavily damaged, effects: disabled.
-      #5 hit points: 100/44, heavily damaged, effects: disabled.
+      #3 hit points: 100/44, heavily damaged, effects: disabled.
+      #4 hit points: 100/49, heavily damaged, effects: disabled.
+      #5 hit points: 100/46, heavily damaged, effects: disabled.
   - gun placement [111], gun placement [gunplc], disabled, immobile,
     owned by Caste Prime [2].
     size: 100.
@@ -6072,7 +5986,7 @@ Galaxy report:
           week 3: REPAIR failed: gun placement [c00001] has not enough
           energy to operate - 230 required, 200 available.
           week 4: REPAIR failed: gun placement [c00001] has not enough
-          energy to operate - 230 required, 200 available.
+          energy to operate - 215 required, 200 available.
           week 7: repaired 1 damage.
           week 8: repaired 1 damage.
           week 9: repaired 1 damage.
@@ -6099,7 +6013,7 @@ Galaxy report:
           week 3: REPAIR failed: gun placement [c00002] has not enough
           energy to operate - 230 required, 200 available.
           week 4: REPAIR failed: gun placement [c00002] has not enough
-          energy to operate - 230 required, 200 available.
+          energy to operate - 215 required, 200 available.
           week 13: paid 2 cash [cash] upkeep.
       + gun placement [c00003], gun placement [gunplc], disabled,
         immobile.
@@ -6120,7 +6034,7 @@ Galaxy report:
           week 3: REPAIR failed: gun placement [c00003] has not enough
           energy to operate - 230 required, 200 available.
           week 4: REPAIR failed: gun placement [c00003] has not enough
-          energy to operate - 230 required, 200 available.
+          energy to operate - 215 required, 200 available.
           week 13: paid 2 cash [cash] upkeep.
       + gun placement [c00004], gun placement [gunplc], disabled,
         immobile.
@@ -6140,7 +6054,7 @@ Galaxy report:
           week 3: REPAIR failed: gun placement [c00004] has not enough
           energy to operate - 230 required, 200 available.
           week 4: REPAIR failed: gun placement [c00004] has not enough
-          energy to operate - 230 required, 200 available.
+          energy to operate - 215 required, 200 available.
           week 13: paid 2 cash [cash] upkeep.
       + farming complex [c00005], farming complex [farms], immobile.
         size: 1000, mass: 120 (100), capacity: 500/20, energy: 5, crew:
@@ -6159,7 +6073,7 @@ Galaxy report:
           week 3: REPAIR failed: farming complex [c00005] has not enough
           energy to operate - 230 required, 200 available.
           week 4: REPAIR failed: farming complex [c00005] has not enough
-          energy to operate - 230 required, 200 available.
+          energy to operate - 215 required, 200 available.
           week 5: repaired 1 damage.
           week 6: repaired 1 damage.
           week 7: repaired 1 damage.
@@ -6187,7 +6101,7 @@ Galaxy report:
           week 3: REPAIR failed: farming complex [c00006] has not enough
           energy to operate - 230 required, 200 available.
           week 4: REPAIR failed: farming complex [c00006] has not enough
-          energy to operate - 230 required, 200 available.
+          energy to operate - 215 required, 200 available.
           week 5: repaired 1 damage.
           week 6: repaired 1 damage.
           week 7: repaired 1 damage.
@@ -6215,7 +6129,7 @@ Galaxy report:
           week 3: REPAIR failed: farming complex [c00007] has not enough
           energy to operate - 230 required, 200 available.
           week 4: REPAIR failed: farming complex [c00007] has not enough
-          energy to operate - 230 required, 200 available.
+          energy to operate - 215 required, 200 available.
           week 5: repaired 1 damage.
           week 6: repaired 1 damage.
           week 7: repaired 1 damage.

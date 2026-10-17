@@ -40,8 +40,8 @@
 						<itemstack type="h2o2" quantity="90" />
 						<itemstack type="terair" quantity="150" />
 						<upkeep type="cash" quantity="1050" />
-						<effect duration="9" type="fuelled" />
-						<effect duration="1" technology="ssassm" type="producing-modules" module="sshull" receiver-parent="100" receiver="101" />
+						<effect duration="10" type="fuelled" />
+						<effect duration="2" technology="ssassm" type="producing-modules" module="sshull" receiver-parent="100" receiver="101" />
 						<event week="1" description="formed by factory [000017] with space shuttle [shuttl]." />
 						<event week="1" description="received space shuttle [shuttl] produced by factory [000017]." />
 						<event week="2" description="received space shuttle [shuttl] produced by factory [000017]." />
@@ -64,14 +64,15 @@
 						<event week="10" description="got 100 units of oxyhydro [h2o2] from small cargo bay [000013]." />
 						<event week="10" description="got 150 units of terran breathing gas mixture [terair] from small cargo bay [000013]." />
 						<event week="10" description="has Caste Prime CEO [000001]." />
-						<event week="10" description="consumed 10 units of uranium [uraniu], 10 units of oxyhydro [h2o2] as fuel." />
-						<event week="10" description="departed from Northern Hemisphere [R00002] (0,0) to orbit [O00002], ETA 0." />
-						<event week="10" description="arrived at orbit [O00002] from Northern Hemisphere [R00002] (0,0)." />
-						<event week="11" description="consumed 6 units of iron [iron], 4 units of titanium [titani] to produce spaceship hull [sshull] module." />
+						<event week="10" description="MOVE failed. space shuttle [100] cannot depart while modules are integrating or disabled." />
+						<event week="11" description="consumed 10 units of uranium [uraniu], 10 units of oxyhydro [h2o2] as fuel." />
+						<event week="11" description="departed from Northern Hemisphere [R00002] (0,0) to orbit [O00002], ETA 0." />
+						<event week="11" description="arrived at orbit [O00002] from Northern Hemisphere [R00002] (0,0)." />
+						<event week="12" description="consumed 6 units of iron [iron], 4 units of titanium [titani] to produce spaceship hull [sshull] module." />
 					</modulestack>
 					<modulestack name="101" type="sshull" quantity="0" faction="2">
 						<upkeep type="cash" quantity="0" />
-						<event week="11" description="formed by space shuttle [100] with spaceship hull [sshull]." />
+						<event week="12" description="formed by space shuttle [100] with spaceship hull [sshull]." />
 					</modulestack>
 				</orbit>
 				<region name="R00002" name-en="Northern Hemisphere" X="0" Y="0" type="grassl">
@@ -285,13 +286,14 @@
 						<event week="4" description="got 42 cash [cash] from Gelvaren Headquarters [000018]." />
 						<event week="4" description="got 16 units of oil [oil] from small cargo bay [000019]." />
 						<event week="4" description="got 32 units of food [food] from small cargo bay [000019]." />
-						<event week="4" description="consumed 4 units of oil [oil] as fuel." />
-						<event week="4" description="departed from Southern Hemisphere [R00003] (1,0) to Northern Hemisphere [R00002] (0,0), ETA 5." />
-						<event week="5" description="moving from Southern Hemisphere [R00003] (1,0) to Northern Hemisphere [R00002] (0,0), ETA 4." />
-						<event week="6" description="moving from Southern Hemisphere [R00003] (1,0) to Northern Hemisphere [R00002] (0,0), ETA 3." />
-						<event week="7" description="moving from Southern Hemisphere [R00003] (1,0) to Northern Hemisphere [R00002] (0,0), ETA 2." />
-						<event week="8" description="moving from Southern Hemisphere [R00003] (1,0) to Northern Hemisphere [R00002] (0,0), ETA 1." />
-						<event week="9" description="arrived at Northern Hemisphere [R00002] (0,0) from Southern Hemisphere [R00003] (1,0)." />
+						<event week="4" description="MOVE failed. peaceful scout [108] cannot depart while modules are integrating or disabled." />
+						<event week="5" description="consumed 4 units of oil [oil] as fuel." />
+						<event week="5" description="departed from Southern Hemisphere [R00003] (1,0) to Northern Hemisphere [R00002] (0,0), ETA 5." />
+						<event week="6" description="moving from Southern Hemisphere [R00003] (1,0) to Northern Hemisphere [R00002] (0,0), ETA 4." />
+						<event week="7" description="moving from Southern Hemisphere [R00003] (1,0) to Northern Hemisphere [R00002] (0,0), ETA 3." />
+						<event week="8" description="moving from Southern Hemisphere [R00003] (1,0) to Northern Hemisphere [R00002] (0,0), ETA 2." />
+						<event week="9" description="moving from Southern Hemisphere [R00003] (1,0) to Northern Hemisphere [R00002] (0,0), ETA 1." />
+						<event week="10" description="arrived at Northern Hemisphere [R00002] (0,0) from Southern Hemisphere [R00003] (1,0)." />
 					</modulestack>
 				</region>
 				<region name="R00003" name-en="Southern Hemisphere" X="1" Y="0" type="grassl">

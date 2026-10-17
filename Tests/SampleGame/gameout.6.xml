@@ -135,7 +135,6 @@
 				<orbit name="O00002">
 					<race type="terran" />
 					<modulestack name="101" type="sshull" quantity="1" faction="2">
-						<module damage="3" />
 						<upkeep type="cash" quantity="364" />
 						<tactic name="destroy" />
 						<tactic name="prioritize armed" />
@@ -166,7 +165,6 @@
 							<event week="13" description="paid 111 cash [cash] upkeep." />
 						</modulestack>
 						<modulestack name="113" type="fisrec" quantity="1" faction="2">
-							<module damage="12" />
 							<itemstack type="terran" quantity="1" />
 							<itemstack type="food" quantity="8" />
 							<itemstack type="terair" quantity="8" />
@@ -289,7 +287,7 @@
 							<event week="1" description="PRODUCE failed: Caste Prime Headquarters [000012] has not enough energy to operate - 230 required, 200 available." />
 							<event week="2" description="PRODUCE failed: Caste Prime Headquarters [000012] has not enough energy to operate - 230 required, 200 available." />
 							<event week="3" description="PRODUCE failed: Caste Prime Headquarters [000012] has not enough energy to operate - 230 required, 200 available." />
-							<event week="4" description="PRODUCE failed: Caste Prime Headquarters [000012] has not enough energy to operate - 230 required, 200 available." />
+							<event week="4" description="PRODUCE failed: Caste Prime Headquarters [000012] has not enough energy to operate - 215 required, 200 available." />
 						</modulestack>
 						<modulestack name="000013" type="cargob" quantity="0" faction="2">
 							<upkeep type="cash" quantity="0" />
@@ -300,7 +298,7 @@
 							<event week="1" description="USE failed: farming complex [000014] has not enough energy to operate - 230 required, 200 available." />
 							<event week="2" description="USE failed: farming complex [000014] has not enough energy to operate - 230 required, 200 available." />
 							<event week="3" description="USE failed: farming complex [000014] has not enough energy to operate - 230 required, 200 available." />
-							<event week="4" description="USE failed: farming complex [000014] has not enough energy to operate - 230 required, 200 available." />
+							<event week="4" description="USE failed: farming complex [000014] has not enough energy to operate - 215 required, 200 available." />
 						</modulestack>
 						<modulestack name="000015" type="cplant" quantity="0" faction="2">
 							<upkeep type="cash" quantity="0" />
@@ -309,21 +307,21 @@
 							<event week="1" description="PRODUCE failed: coal-burning plant [000015] has not enough energy to operate - 230 required, 200 available." />
 							<event week="2" description="PRODUCE failed: coal-burning plant [000015] has not enough energy to operate - 230 required, 200 available." />
 							<event week="3" description="PRODUCE failed: coal-burning plant [000015] has not enough energy to operate - 230 required, 200 available." />
-							<event week="4" description="PRODUCE failed: coal-burning plant [000015] has not enough energy to operate - 230 required, 200 available." />
+							<event week="4" description="PRODUCE failed: coal-burning plant [000015] has not enough energy to operate - 215 required, 200 available." />
 						</modulestack>
 						<modulestack name="000016" type="cdrill" quantity="0" faction="2">
 							<upkeep type="cash" quantity="0" />
 							<event week="1" description="USE failed: core drill [000016] has not enough energy to operate - 230 required, 200 available." />
 							<event week="2" description="USE failed: core drill [000016] has not enough energy to operate - 230 required, 200 available." />
 							<event week="3" description="USE failed: core drill [000016] has not enough energy to operate - 230 required, 200 available." />
-							<event week="4" description="USE failed: core drill [000016] has not enough energy to operate - 230 required, 200 available." />
+							<event week="4" description="USE failed: core drill [000016] has not enough energy to operate - 215 required, 200 available." />
 						</modulestack>
 						<modulestack name="000017" type="factry" quantity="5" faction="2">
+							<module damage="63" />
+							<module damage="51" />
 							<module damage="56" />
 							<module damage="51" />
-							<module damage="57" />
-							<module damage="57" />
-							<module damage="56" />
+							<module damage="54" />
 							<itemstack type="terran" quantity="46" />
 							<itemstack type="iron" quantity="20" />
 							<upkeep type="cash" quantity="46" />
@@ -376,7 +374,7 @@
 								<event week="1" description="REPAIR failed: gun placement [c00001] has not enough energy to operate - 230 required, 200 available." />
 								<event week="2" description="REPAIR failed: gun placement [c00001] has not enough energy to operate - 230 required, 200 available." />
 								<event week="3" description="REPAIR failed: gun placement [c00001] has not enough energy to operate - 230 required, 200 available." />
-								<event week="4" description="REPAIR failed: gun placement [c00001] has not enough energy to operate - 230 required, 200 available." />
+								<event week="4" description="REPAIR failed: gun placement [c00001] has not enough energy to operate - 215 required, 200 available." />
 								<event week="7" description="repaired 1 damage." />
 								<event week="8" description="repaired 1 damage." />
 								<event week="9" description="repaired 1 damage." />
@@ -393,7 +391,7 @@
 								<event week="1" description="REPAIR failed: gun placement [c00002] has not enough energy to operate - 230 required, 200 available." />
 								<event week="2" description="REPAIR failed: gun placement [c00002] has not enough energy to operate - 230 required, 200 available." />
 								<event week="3" description="REPAIR failed: gun placement [c00002] has not enough energy to operate - 230 required, 200 available." />
-								<event week="4" description="REPAIR failed: gun placement [c00002] has not enough energy to operate - 230 required, 200 available." />
+								<event week="4" description="REPAIR failed: gun placement [c00002] has not enough energy to operate - 215 required, 200 available." />
 								<event week="13" description="paid 2 cash [cash] upkeep." />
 							</modulestack>
 							<modulestack name="c00003" type="gunplc" quantity="1" faction="3">
@@ -403,7 +401,7 @@
 								<event week="1" description="REPAIR failed: gun placement [c00003] has not enough energy to operate - 230 required, 200 available." />
 								<event week="2" description="REPAIR failed: gun placement [c00003] has not enough energy to operate - 230 required, 200 available." />
 								<event week="3" description="REPAIR failed: gun placement [c00003] has not enough energy to operate - 230 required, 200 available." />
-								<event week="4" description="REPAIR failed: gun placement [c00003] has not enough energy to operate - 230 required, 200 available." />
+								<event week="4" description="REPAIR failed: gun placement [c00003] has not enough energy to operate - 215 required, 200 available." />
 								<event week="13" description="paid 2 cash [cash] upkeep." />
 							</modulestack>
 							<modulestack name="c00004" type="gunplc" quantity="1" faction="3">
@@ -413,7 +411,7 @@
 								<event week="1" description="REPAIR failed: gun placement [c00004] has not enough energy to operate - 230 required, 200 available." />
 								<event week="2" description="REPAIR failed: gun placement [c00004] has not enough energy to operate - 230 required, 200 available." />
 								<event week="3" description="REPAIR failed: gun placement [c00004] has not enough energy to operate - 230 required, 200 available." />
-								<event week="4" description="REPAIR failed: gun placement [c00004] has not enough energy to operate - 230 required, 200 available." />
+								<event week="4" description="REPAIR failed: gun placement [c00004] has not enough energy to operate - 215 required, 200 available." />
 								<event week="13" description="paid 2 cash [cash] upkeep." />
 							</modulestack>
 							<modulestack name="c00005" type="farms" quantity="1" faction="3">
@@ -423,7 +421,7 @@
 								<event week="1" description="REPAIR failed: farming complex [c00005] has not enough energy to operate - 230 required, 200 available." />
 								<event week="2" description="REPAIR failed: farming complex [c00005] has not enough energy to operate - 230 required, 200 available." />
 								<event week="3" description="REPAIR failed: farming complex [c00005] has not enough energy to operate - 230 required, 200 available." />
-								<event week="4" description="REPAIR failed: farming complex [c00005] has not enough energy to operate - 230 required, 200 available." />
+								<event week="4" description="REPAIR failed: farming complex [c00005] has not enough energy to operate - 215 required, 200 available." />
 								<event week="5" description="repaired 1 damage." />
 								<event week="6" description="repaired 1 damage." />
 								<event week="7" description="repaired 1 damage." />
@@ -442,7 +440,7 @@
 								<event week="1" description="REPAIR failed: farming complex [c00006] has not enough energy to operate - 230 required, 200 available." />
 								<event week="2" description="REPAIR failed: farming complex [c00006] has not enough energy to operate - 230 required, 200 available." />
 								<event week="3" description="REPAIR failed: farming complex [c00006] has not enough energy to operate - 230 required, 200 available." />
-								<event week="4" description="REPAIR failed: farming complex [c00006] has not enough energy to operate - 230 required, 200 available." />
+								<event week="4" description="REPAIR failed: farming complex [c00006] has not enough energy to operate - 215 required, 200 available." />
 								<event week="5" description="repaired 1 damage." />
 								<event week="6" description="repaired 1 damage." />
 								<event week="7" description="repaired 1 damage." />
@@ -461,7 +459,7 @@
 								<event week="1" description="REPAIR failed: farming complex [c00007] has not enough energy to operate - 230 required, 200 available." />
 								<event week="2" description="REPAIR failed: farming complex [c00007] has not enough energy to operate - 230 required, 200 available." />
 								<event week="3" description="REPAIR failed: farming complex [c00007] has not enough energy to operate - 230 required, 200 available." />
-								<event week="4" description="REPAIR failed: farming complex [c00007] has not enough energy to operate - 230 required, 200 available." />
+								<event week="4" description="REPAIR failed: farming complex [c00007] has not enough energy to operate - 215 required, 200 available." />
 								<event week="5" description="repaired 1 damage." />
 								<event week="6" description="repaired 1 damage." />
 								<event week="7" description="repaired 1 damage." />

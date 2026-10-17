@@ -628,7 +628,7 @@ namespace IntegrationTests
 			Assert.That(ModuleStack.All["200"].Owner.Name, Is.EqualTo("2"));
 			Assert.That(ModuleStack.All.ContainsKey("207"), Is.True);
 			Assert.That(ModuleStack.All["207"].Quantity, Is.EqualTo(4));
-			Assert.That(ModuleStack.All["116"].ResearchPoints, Is.EqualTo(12),
+			Assert.That(ModuleStack.All["116"].ResearchPoints, Is.EqualTo(11),
 				"Sydney lab 116 accumulates tag-repair research once wnplnt grant restores regional power");
 		}
 

@@ -1029,18 +1029,33 @@ This assembly technology represents the pinnacle of human ingenuity and collabor
 			<grants-skill name="inbtcm"/>
 		</entry>
 		<entry
+			name="advspc"
+			name-en="advanced space command"
+			level="1"
+			tags="production"
+			requires="spctrl"
+			description="Space stations have not much of dodge possibilities, but still they do have small manoeuvre engines that can present stronger points or deflectors. Fleet coordination trims nested schedules (+5% extraction and agriculture output, -5% production cycle time on the stack). Unlocks TRAIN SKILL: space station command [sscmnd]."
+			use-time="4">
+			<use-allowed-in module-type-group="production"/>
+			<use-consume item="iron" quantity="2"/>
+			<use-consume item="titani" quantity="6"/>
+			<use-consume item="silici" quantity="2"/>
+			<use-consume item="copper" quantity="2"/>
+			<use-produce module="advcmd"/>
+			<grants-skill name="sscmnd"/>
+		</entry>
+		<entry
 			name="servic"
 			name-en="preventive servicing"
 			level="1"
 			tags="repair"
-			description="Maintenance and repairs are best done in advance. Unlocks TRAIN SKILL: space station command [sscmnd].">
+			description="Maintenance and repairs are best done in advance.">
 			<use-allowed-in module-type-group="production"/>
 			<use-consume item="titani" quantity="1"/>
 			<use-consume item="iron" quantity="1"/>
 			<use-consume item="copper" quantity="1"/>
 			<use-consume item="silici" quantity="1"/>
 			<use-produce item="spare" quantity="10"/>
-			<grants-skill name="sscmnd"/>
 		</entry>
 		<entry
 			name="engshp"
@@ -2757,6 +2772,30 @@ Researchers can query the library. The system can handle natural language questi
 			technology-capacity="1"
 			hit-points="55">
 			<upkeep type="cash" quantity="10"/>
+			<operation-allowed-in module-group="frigate"/>
+			<operation-allowed-in module-group="corvette"/>
+			<operation-allowed-in module-group="destroyer"/>
+			<operation-allowed-in module-group="cruiser"/>
+			<operation-allowed-in module-group="capital"/>
+			<operation-allowed-in module-group="ark"/>
+			<operation-allowed-in module-group="space station"/>
+		</entry>
+		<entry
+			name="advcmd" 
+			name-en="advanced space command module"
+			group="command" 
+			description="Secondary command node with load-balancing schedulers for nested bays and factories (+5% extraction and agriculture output, -5% production cycle time on the stack)."
+			size="900"
+			mass="350" 
+			energy="6"
+			crew="2"
+			capacity="250" 
+			technology-capacity="2"
+			hit-points="60"
+			defense="2">
+			<produce effect="production duration" value="95%"/>
+			<produce effect="extraction output" value="105%"/>
+			<upkeep type="cash" quantity="15"/>
 			<operation-allowed-in module-group="frigate"/>
 			<operation-allowed-in module-group="corvette"/>
 			<operation-allowed-in module-group="destroyer"/>

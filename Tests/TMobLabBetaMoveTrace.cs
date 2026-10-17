@@ -251,8 +251,12 @@ namespace IntegrationTests
 				"+get staging after production (week 2)\n" + trace);
 			Assert.That(
 				timeline.First(s => s.Week == 2).IsActive,
+				Is.False,
+				"module copy integrating on arrival in week 2\n" + trace);
+			Assert.That(
+				timeline.First(s => s.Week == 3).IsActive,
 				Is.True,
-				"module copy active once formed and crew staged\n" + trace);
+				"module copy active in week 3 once integration completes\n" + trace);
 			Assert.That(
 				finalLab.EventReports.Any(e => e.Week == 3 && e.Description.Contains("consumed") && e.Description.Contains("fuel")),
 				Is.True,

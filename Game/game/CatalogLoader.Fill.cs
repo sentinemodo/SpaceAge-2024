@@ -191,6 +191,25 @@ namespace SpaceAge
 						race.NoUpkeepChance = this.dataFile.XMLAssignInteger(elNoUpkeep.GetAttribute("chance"), 0);
 					}
 					#endregion
+
+					#region movement
+					foreach (XmlElement elMove in el.SelectNodes("move"))
+					{
+						MoveMode moveMode = new MoveMode();
+						if (elMove.HasAttribute("mode"))
+						{
+							moveMode.Mode = MoveModeXml.Parse(elMove.GetAttribute("mode"));
+						}
+						else
+						{
+							moveMode.Mode = EMoveMode.ground;
+						}
+						moveMode.Speed = this.dataFile.XMLAssignDouble(elMove.GetAttribute("speed"), 1);
+						moveMode.MassCapacity = this.dataFile.XMLAssignDouble(elMove.GetAttribute("mass-capacity"), 0);
+
+						race.MoveModes.Add(moveMode.Mode, moveMode);
+					}
+					#endregion
 				
 
 			}

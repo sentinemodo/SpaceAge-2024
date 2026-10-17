@@ -163,6 +163,10 @@ namespace SpaceAge
 			bool headerAdded = false;
 			foreach (PressRelease release in PressRelease.All)
 			{
+				if (!release.CreatedThisSession)
+				{
+					continue;
+				}
 				if (release.Anonymous || release.Issuer == null)
 				{
 					continue;
@@ -218,6 +222,10 @@ namespace SpaceAge
 			bool headerAdded = false;
 			foreach (PressRelease release in PressRelease.All)
 			{
+				if (!release.CreatedThisSession)
+				{
+					continue;
+				}
 				if (!release.Anonymous)
 				{
 					continue;
