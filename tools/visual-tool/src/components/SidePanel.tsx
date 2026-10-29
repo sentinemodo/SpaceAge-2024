@@ -17,6 +17,7 @@ export function SidePanel({
   systemViewId,
   selectedStack,
   selectedPerson,
+  focusExpanded = false,
   width,
   onResize,
   onSelectStack,
@@ -38,6 +39,8 @@ export function SidePanel({
   onResize: (delta: number) => void;
   selectedStack: StackNode | null;
   selectedPerson: PersonNode | null;
+  /** When true the focus view lives in the main stage, so the unit tree starts at the top. */
+  focusExpanded?: boolean;
   onSelectStack: (id: string) => void;
   onSelectPerson: (id: string) => void;
   sideTab: SideTab;
@@ -48,6 +51,7 @@ export function SidePanel({
   return (
     <aside className="side-panel">
       <ResizeHandle direction="horizontal" onDelta={(d) => onResize(-d)} className="side-panel-resize" />
+      {!focusExpanded && (
       <ObjectDescription
         report={report}
         selectedStack={selectedStack}
@@ -59,6 +63,7 @@ export function SidePanel({
         systemViewId={systemViewId}
         onFocusId={onFocusId}
       />
+      )}
       <div className="panel-tabs">
         <button
           type="button"

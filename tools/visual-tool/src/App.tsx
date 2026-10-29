@@ -72,6 +72,7 @@ import {
 import { MovementPanel } from './components/MovementPanel';
 import { BattlePanel } from './components/BattlePanel';
 import { SidePanel, type SideTab } from './components/SidePanel';
+import { ExpandedFocusView } from './components/ExpandedFocusView';
 import { AiPane, type AiViewMode } from './components/AiPane';
 import { OrbitSelector } from './components/OrbitSelector';
 import { PresenceIcons } from './components/PresenceIcons';
@@ -797,6 +798,13 @@ export default function App() {
   const [battleSimXml, setBattleSimXml] = useState('');
   const [battleSimOutput, setBattleSimOutput] = useState('');
   const [sideTab, setSideTab] = useState<SideTab>('units');
+  const [focusExpanded, setFocusExpanded] = useState<boolean>(() => {
+    try { return window.localStorage.getItem('sa-focus-expanded') === '1'; } catch { return false; }
+  });
+
+  useEffect(() => {
+    try { window.localStorage.setItem('sa-focus-expanded', focusExpanded ? '1' : '0'); } catch { /* private mode */ }
+  }, [focusExpanded]);
 
   const load = useCallback(async () => {
     const m = await fetchMeta();
@@ -1618,7 +1626,36 @@ export default function App() {
       </nav>
 
       <main className="main-stage">
-        {panel === 'map' && report && systemView && bodyView && (
+        {panel === 'map' && report && !focusExpanded && (
+          <button
+            type="button"
+            className="focus-expand-btn"
+            title="Minimize galaxy map — expand focus view"
+            aria-label="Minimize galaxy map and expand focus view"
+            onClick={() => setFocusExpanded(true)}
+          >
+            ⤢ Focus
+          </button>
+        )}
+
+        {panel === 'map' && report && focusExpanded && (
+          <ExpandedFocusView
+            report={report}
+            selectedStack={selected ?? null}
+            selectedPerson={selectedPersonNode ?? null}
+            filterRegionId={filterRegionId}
+            filterBodyId={filterBodyId}
+            filterOrbitId={filterOrbitId}
+            filterStar={filterStar}
+            systemViewId={systemViewId}
+            onFocusId={focusFromText}
+            onRestoreMap={() => setFocusExpanded(false)}
+            onSelectStack={selectStack}
+            onSelectPerson={selectPerson}
+          />
+        )}
+
+        {panel === 'map' && report && !focusExpanded && systemView && bodyView && (
           <BodyView
             report={report}
             detail={systemView}
@@ -1637,7 +1674,7 @@ export default function App() {
           />
         )}
 
-        {panel === 'map' && report && systemView && !bodyView && (
+        {panel === 'map' && report && !focusExpanded && systemView && !bodyView && (
           <SystemView
             detail={systemView}
             selectedBodyId={filterBodyId}
@@ -1654,7 +1691,7 @@ export default function App() {
           />
         )}
 
-        {panel === 'map' && report && !systemView && (
+        {panel === 'map' && report && !focusExpanded && !systemView && (
           <div className="star-map">
             <StarMapLinks links={aldersonLines} systems={report.systems} route={moveRoute} />
             {report.systems.map((sys) => {
@@ -2176,6 +2213,7 @@ export default function App() {
           systemViewId={systemViewId}
           selectedStack={selected ?? null}
           selectedPerson={selectedPersonNode ?? null}
+          focusExpanded={panel === 'map' && focusExpanded}
           onSelectStack={selectStack}
           onSelectPerson={selectPerson}
           sideTab={sideTab}

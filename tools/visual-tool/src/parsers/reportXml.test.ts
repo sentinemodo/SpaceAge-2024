@@ -120,6 +120,17 @@ describe('parseReportXml', () => {
     expect(hq.children[0].moduleCount).toBe(2);
   });
 
+  it('parses direct itemstacks on modulestacks', () => {
+    const report = parseReportXml(fixtureXml);
+    const bay = flattenStacks(report.stacks).find((s) => s.id === '100016');
+    expect(bay?.items).toEqual(expect.arrayContaining([
+      { type: 'cash', quantity: 10000 },
+      { type: 'food', quantity: 1000 },
+    ]));
+    const frigate = flattenStacks(report.stacks).find((s) => s.id === '100011');
+    expect(frigate?.items).toEqual([]);
+  });
+
   it('parses persons under modulestacks', () => {
     const report = parseReportXml(fixtureXml);
     const hq = flattenStacks(report.stacks).find((s) => s.id === '000112');

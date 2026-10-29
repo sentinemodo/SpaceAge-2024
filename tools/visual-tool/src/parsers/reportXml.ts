@@ -62,6 +62,8 @@ export interface StackNode {
   /** Installed module count (`quantity` or `<module>` elements), not child modulestacks. */
   moduleCount: number;
   persons: PersonNode[];
+  /** Direct `<itemstack>` children from report XML (quantity only; size/mass come from report text). */
+  items?: { type: string; quantity: number }[];
   /** Galaxy report text line, e.g. `+ small cargo bay [230003], 2 small cargo bays [cargob], immobile.` */
   reportLine?: string;
   /** Indented stats/items block from galaxy report text. */
@@ -368,6 +370,10 @@ function parseStackEl(el: Element, ctx: LocationContext): StackNode {
     producesEnergy: el.querySelector(':scope > produce[produce-type="energy"]') != null,
     moduleCount: moduleCountFromEl(el),
     persons: [...el.querySelectorAll(':scope > person')].map(parsePersonEl),
+    items: [...el.querySelectorAll(':scope > itemstack')].map((item) => ({
+      type: item.getAttribute('type') || '',
+      quantity: parseInt(item.getAttribute('quantity') || '0', 10),
+    })),
     children: childEls.map((child) => parseStackEl(child, ctx)),
   };
 }
